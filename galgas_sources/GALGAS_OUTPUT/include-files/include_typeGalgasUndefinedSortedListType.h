@@ -33,7 +33,7 @@ class cPtr_typeGalgasUndefinedSortedListType : public cPtr_AC_galgasType {
 //--- Attributes
   public : GGS_lstring  mListTypeName ;
 //--- Method 'getTypeName'
-  public : virtual void method_getTypeName (C_Compiler &,
+  public : virtual void method_getTypeName (C_CompilerEx &,
                                 GGS_string& 
                                 COMMA_LOCATION_ARGS) const ;
 

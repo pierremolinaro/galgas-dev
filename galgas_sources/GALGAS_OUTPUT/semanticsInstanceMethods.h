@@ -43,7 +43,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterInstanceMethodWithoutArgument (C_Compiler &,
+void routine_enterInstanceMethodWithoutArgument (C_CompilerEx &,
                                 GGS_instanceMethodMap  &,
                                 const GGS_lstring  ,
                                 const GGS_bool  COMMA_LOCATION_ARGS) ;
@@ -54,7 +54,7 @@ void routine_enterInstanceMethodWithoutArgument (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterInstanceMethodWithInputArgument (C_Compiler &,
+void routine_enterInstanceMethodWithInputArgument (C_CompilerEx &,
                                 GGS_instanceMethodMap  &,
                                 GGS_unifiedTypeMap  &,
                                 const GGS_string ,
@@ -67,7 +67,7 @@ void routine_enterInstanceMethodWithInputArgument (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterInstanceMethodWithOutputArgument (C_Compiler &,
+void routine_enterInstanceMethodWithOutputArgument (C_CompilerEx &,
                                 GGS_instanceMethodMap  &,
                                 GGS_unifiedTypeMap  &,
                                 const GGS_string ,

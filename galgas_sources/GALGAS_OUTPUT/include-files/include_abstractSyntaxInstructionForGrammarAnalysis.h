@@ -23,7 +23,7 @@ class cPureBNFproductionsList ;
 class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public cPtr__AC_galgas_class {
 //--- START OF USER ZONE 2
 
-  public : virtual bool isSameSyntaxInstructionThan (C_Compiler & inLexique,
+  public : virtual bool isSameSyntaxInstructionThan (C_CompilerEx & inLexique,
                           cPtr_abstractSyntaxInstructionForGrammarAnalysis * inInstruction,
                           const GGS_location & inEndOfInstructionListLocation) const = 0 ;
   public : virtual void printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) = 0 ;

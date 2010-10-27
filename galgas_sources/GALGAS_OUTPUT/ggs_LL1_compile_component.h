@@ -90,17 +90,17 @@ class GGS_EXtargetFileListMap : public AC_GGS_listmap {
 
 //--- Reader 'allKeys'
   public : GGS_stringset
-  reader_allKeys (C_Compiler & inLexique
+  reader_allKeys (C_CompilerEx & inLexique
                   COMMA_LOCATION_ARGS) const ;
 
 //--- Reader 'keyList'
   public : GGS_stringlist
-  reader_keyList (C_Compiler & inLexique
+  reader_keyList (C_CompilerEx & inLexique
                   COMMA_LOCATION_ARGS) const ;
 
 //--- Reader 'listForKey'
   public : GGS_stringlist
-  reader_listForKey (C_Compiler & inLexique,
+  reader_listForKey (C_CompilerEx & inLexique,
                      const GGS_string & inKey
                      COMMA_LOCATION_ARGS) const ;
 
@@ -117,7 +117,7 @@ class GGS_EXtargetFileListMap : public AC_GGS_listmap {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_EXtargetFileListMap castFromObject (C_Compiler & inLexique,
+  public : static GGS_EXtargetFileListMap castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -161,34 +161,34 @@ class GGS_EXsourceFileKind : public GGS__root {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_EXsourceFileKind castFromObject (C_Compiler & inLexique,
+  public : static GGS_EXsourceFileKind castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
 
 //--- Construction from GALGAS constructor
-  public : static inline GGS_EXsourceFileKind  constructor_externSourceFile (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_EXsourceFileKind  constructor_externSourceFile (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_EXsourceFileKind (enum_externSourceFile) ;
   }
-  public : static inline GGS_EXsourceFileKind  constructor_grammarSourceFile (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_EXsourceFileKind  constructor_grammarSourceFile (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_EXsourceFileKind (enum_grammarSourceFile) ;
   }
-  public : static inline GGS_EXsourceFileKind  constructor_guiSourceFile (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_EXsourceFileKind  constructor_guiSourceFile (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_EXsourceFileKind (enum_guiSourceFile) ;
   }
-  public : static inline GGS_EXsourceFileKind  constructor_lexiqueSourceFile (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_EXsourceFileKind  constructor_lexiqueSourceFile (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_EXsourceFileKind (enum_lexiqueSourceFile) ;
   }
-  public : static inline GGS_EXsourceFileKind  constructor_optionSourceFile (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_EXsourceFileKind  constructor_optionSourceFile (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_EXsourceFileKind (enum_optionSourceFile) ;
   }
-  public : static inline GGS_EXsourceFileKind  constructor_programSourceFile (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_EXsourceFileKind  constructor_programSourceFile (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_EXsourceFileKind (enum_programSourceFile) ;
   }
-  public : static inline GGS_EXsourceFileKind  constructor_semanticsSourceFile (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_EXsourceFileKind  constructor_semanticsSourceFile (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_EXsourceFileKind (enum_semanticsSourceFile) ;
   }
-  public : static inline GGS_EXsourceFileKind  constructor_syntaxSourceFile (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_EXsourceFileKind  constructor_syntaxSourceFile (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_EXsourceFileKind (enum_syntaxSourceFile) ;
   }
 
@@ -238,7 +238,7 @@ class GGS_EXsourceFileMap : public AC_GGS_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_EXsourceFileMap castFromObject (C_Compiler & inLexique,
+  public : static GGS_EXsourceFileMap castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -260,10 +260,10 @@ class GGS_EXsourceFileMap : public AC_GGS_map {
   public : inline const GGS_EXsourceFileMap * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_EXsourceFileMap constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_EXsourceFileMap constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- 'mapWithKeyAndValue' constructor
-  public : static GGS_EXsourceFileMap constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+  public : static GGS_EXsourceFileMap constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
 ,
                                              const GGS_string& inValue0,
@@ -278,7 +278,7 @@ class GGS_EXsourceFileMap : public AC_GGS_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_Compiler & inLexique,
+  public : void modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_string&  inParameter0,
                                 const GGS_EXsourceFileKind&  inParameter1 COMMA_LOCATION_ARGS) ;
@@ -286,12 +286,12 @@ class GGS_EXsourceFileMap : public AC_GGS_map {
   public : static const utf32 kSearchMessage_searchKey [] ;
 
 //--- 'searchKey' Search Method
-  public : void method_searchKey (C_Compiler & inLexique,
+  public : void method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_string  & outParameter0,
                                 GGS_EXsourceFileKind  & outParameter1 COMMA_LOCATION_ARGS) const ;
 //--- Internal method for inserting an element
-  protected : void insertElement (C_Compiler & inLexique,
+  protected : void insertElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inInitialState,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -300,7 +300,7 @@ class GGS_EXsourceFileMap : public AC_GGS_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_Compiler & inLexique,
+  protected : void searchElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inActionIndex,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -309,10 +309,10 @@ class GGS_EXsourceFileMap : public AC_GGS_map {
                                   GGS_luint * outIndex
                                   COMMA_LOCATION_ARGS) const ;
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_EXsourceFileMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
+  public : static GGS_EXsourceFileMap constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
                                             const GGS_EXsourceFileMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_EXsourceFileMap reader_overriddenMap (C_Compiler & inLexique
+  public : GGS_EXsourceFileMap reader_overriddenMap (C_CompilerEx & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Key stringset (for map with an associated automaton)
@@ -350,7 +350,7 @@ extern const cDirectoryWrapperEx gWrapperDirectory_0_EXfileListTemplateFileWrapp
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_EXfileListTemplateFileWrapper_EXfileListTemplate (C_Compiler & inLexique,
+template_filewrapper_EXfileListTemplateFileWrapper_EXfileListTemplate (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_HAND_CODED_SOURCES_SUB_DIRS,
                                 const GGS_string& var_cas_GALGAS_SOURCE_LIST,
                                 const GGS_string& var_cas_HAND_CODED_SOURCE_LIST) ;

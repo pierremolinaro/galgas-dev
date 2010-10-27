@@ -21,7 +21,7 @@ class cPtr_terminalInstructionForGrammarAnalysis : public cPtr_abstractSyntaxIns
   private : typedef cPtr_abstractSyntaxInstructionForGrammarAnalysis inherited ;
 //--- START OF USER ZONE 2
 
- public : virtual bool isSameSyntaxInstructionThan (C_Compiler & inLexique,
+ public : virtual bool isSameSyntaxInstructionThan (C_CompilerEx & inLexique,
                             cPtr_abstractSyntaxInstructionForGrammarAnalysis * inInstruction,
                             const GGS_location & inEndOfInstructionListLocation) const ;
   public : virtual void printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) ;

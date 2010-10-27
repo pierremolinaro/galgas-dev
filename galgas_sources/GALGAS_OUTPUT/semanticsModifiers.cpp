@@ -48,7 +48,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithInputArgument (C_Compiler & inLexique,
+void routine_enterModifierWithInputArgument (C_CompilerEx & inLexique,
                                 GGS_modifierMap  & var_cas_ioModifierMap,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 const GGS_string  var_cas_inInputArgumentTypeName,
@@ -74,7 +74,7 @@ void routine_enterModifierWithInputArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithOutputArgument (C_Compiler & inLexique,
+void routine_enterModifierWithOutputArgument (C_CompilerEx & inLexique,
                                 GGS_modifierMap  & var_cas_ioModifierMap,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 const GGS_string  var_cas_inInputArgumentTypeName,
@@ -100,7 +100,7 @@ void routine_enterModifierWithOutputArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWith2InputArguments (C_Compiler & inLexique,
+void routine_enterModifierWith2InputArguments (C_CompilerEx & inLexique,
                                 GGS_modifierMap  & var_cas_ioModifierMap,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 const GGS_string  var_cas_inInputArgument1TypeName,
@@ -129,7 +129,7 @@ void routine_enterModifierWith2InputArguments (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithoutArgument (C_Compiler & inLexique,
+void routine_enterModifierWithoutArgument (C_CompilerEx & inLexique,
                                 GGS_modifierMap  & var_cas_ioModifierMap,
                                 const GGS_string  var_cas_inModifierName,
                                 const GGS_bool  var_cas_inHasCompilerArgument
@@ -150,7 +150,7 @@ void routine_enterModifierWithoutArgument (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__stringPredefinedTypeAST__getModifierMap (C_Compiler & inLexique,
+category_method__stringPredefinedTypeAST__getModifierMap (C_CompilerEx & inLexique,
                                 const cPtr_stringPredefinedTypeAST * operand_4530,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_modifierMap  & var_cas_outModifierMap
@@ -172,7 +172,7 @@ category_method__stringPredefinedTypeAST__getModifierMap (C_Compiler & inLexique
 //---------------------------------------------------------------------------*
 
 static void
-category_method__dataPredefinedTypeAST__getModifierMap (C_Compiler & inLexique,
+category_method__dataPredefinedTypeAST__getModifierMap (C_CompilerEx & inLexique,
                                 const cPtr_dataPredefinedTypeAST * operand_5329,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_modifierMap  & var_cas_outModifierMap
@@ -196,7 +196,7 @@ category_method__dataPredefinedTypeAST__getModifierMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__filewrapperPredefinedTypeAST__getModifierMap (C_Compiler & inLexique,
+category_method__filewrapperPredefinedTypeAST__getModifierMap (C_CompilerEx & inLexique,
                                 const cPtr_filewrapperPredefinedTypeAST * operand_6314,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_modifierMap  & var_cas_outModifierMap

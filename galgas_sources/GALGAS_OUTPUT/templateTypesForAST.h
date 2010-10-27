@@ -159,7 +159,7 @@ class GGS_templateInstructionAST : public AC_GGS_class {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateInstructionAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
@@ -194,7 +194,7 @@ AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateInstructionAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateInstructionAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -232,13 +232,13 @@ class GGS_templateInstructionListAST : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_templateInstructionListAST
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_templateInstructionListAST
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -253,19 +253,19 @@ class GGS_templateInstructionListAST : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_templateInstructionListAST * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_templateInstructionAST & _out_0
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_templateInstructionAST & _out_0
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_templateInstructionAST & _out_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_templateInstructionAST & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
@@ -275,7 +275,7 @@ class GGS_templateInstructionListAST : public AC_GGS_list {
   public : void addAssign_operation (const GGS_templateInstructionAST & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_templateInstructionListAST operator_concat (const GGS_templateInstructionListAST & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_templateInstructionAST & argument_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Internal Methods
@@ -293,11 +293,11 @@ class GGS_templateInstructionListAST : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_templateInstructionAST 
-  reader_mInstructionAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mInstructionAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMInstructionAtIndex (C_Compiler & inLexique,
+  modifier_setMInstructionAtIndex (C_CompilerEx & inLexique,
                               const GGS_templateInstructionAST  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -307,7 +307,7 @@ class GGS_templateInstructionListAST : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateInstructionListAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateInstructionListAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -351,7 +351,7 @@ class GGS_templateExpressionAST : public AC_GGS_class {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateExpressionAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
@@ -386,7 +386,7 @@ AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateExpressionAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateExpressionAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -425,13 +425,13 @@ class GGS_templateExpressionListAST : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_templateExpressionListAST
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_templateExpressionListAST
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -446,22 +446,22 @@ class GGS_templateExpressionListAST : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_templateExpressionListAST * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_templateExpressionAST & _out_0,
                               GGS_location & _out_1
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_templateExpressionAST & _out_0,
                              GGS_location & _out_1
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_templateExpressionAST & _out_0,
                                 GGS_location & _out_1
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_templateExpressionAST & _out_0,
                                  GGS_location & _out_1
                                  COMMA_LOCATION_ARGS) ;
@@ -473,7 +473,7 @@ class GGS_templateExpressionListAST : public AC_GGS_list {
                                 const GGS_location & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_templateExpressionListAST operator_concat (const GGS_templateExpressionListAST & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_templateExpressionAST & argument_0,
                                 const GGS_location & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -494,18 +494,18 @@ class GGS_templateExpressionListAST : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_templateExpressionAST 
-  reader_mExpressionAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mExpressionAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_location 
-  reader_mEndOfExpressionLocationAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mEndOfExpressionLocationAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMExpressionAtIndex (C_Compiler & inLexique,
+  modifier_setMExpressionAtIndex (C_CompilerEx & inLexique,
                               const GGS_templateExpressionAST  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMEndOfExpressionLocationAtIndex (C_Compiler & inLexique,
+  modifier_setMEndOfExpressionLocationAtIndex (C_CompilerEx & inLexique,
                               const GGS_location  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -515,7 +515,7 @@ class GGS_templateExpressionListAST : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateExpressionListAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateExpressionListAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -560,14 +560,14 @@ class GGS_templateReaderCallInExpressionAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateReaderCallInExpressionAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateReaderCallInExpressionAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateReaderCallInExpressionAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_templateExpressionAST & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_templateExpressionListAST & argument_2
@@ -582,9 +582,9 @@ class GGS_templateReaderCallInExpressionAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_templateExpressionAST  reader_mReceiverExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_lstring  reader_mReaderName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionListAST  reader_mExpressionList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mReceiverExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mReaderName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionListAST  reader_mExpressionList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -602,7 +602,7 @@ class GGS_templateReaderCallInExpressionAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateReaderCallInExpressionAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateReaderCallInExpressionAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -636,14 +636,14 @@ class GGS_templateConstructorAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateConstructorAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateConstructorAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateConstructorAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_templateExpressionListAST & argument_2
@@ -658,9 +658,9 @@ class GGS_templateConstructorAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_lstring  reader_mTypeName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_lstring  reader_mConstructorName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionListAST  reader_mExpressionList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mTypeName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mConstructorName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionListAST  reader_mExpressionList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -678,7 +678,7 @@ class GGS_templateConstructorAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateConstructorAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateConstructorAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -712,14 +712,14 @@ class GGS_templateFileWrapperWithStaticPathAST : public GGS_templateExpressionAS
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateFileWrapperWithStaticPathAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateFileWrapperWithStaticPathAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateFileWrapperWithStaticPathAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_uint & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -733,8 +733,8 @@ class GGS_templateFileWrapperWithStaticPathAST : public GGS_templateExpressionAS
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_lstring  reader_mFileWrapperName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_uint  reader_mFileIndex (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mFileWrapperName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_uint  reader_mFileIndex (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -752,7 +752,7 @@ class GGS_templateFileWrapperWithStaticPathAST : public GGS_templateExpressionAS
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateFileWrapperWithStaticPathAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateFileWrapperWithStaticPathAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -786,14 +786,14 @@ class GGS_templateFileWrapperTemplateCallAST : public GGS_templateExpressionAST 
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateFileWrapperTemplateCallAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateFileWrapperTemplateCallAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateFileWrapperTemplateCallAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_templateExpressionListAST & argument_2
@@ -808,9 +808,9 @@ class GGS_templateFileWrapperTemplateCallAST : public GGS_templateExpressionAST 
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_lstring  reader_mFileWrapperName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_lstring  reader_mTemplateName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionListAST  reader_mOutExpressionList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mFileWrapperName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mTemplateName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionListAST  reader_mOutExpressionList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -828,7 +828,7 @@ class GGS_templateFileWrapperTemplateCallAST : public GGS_templateExpressionAST 
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateFileWrapperTemplateCallAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateFileWrapperTemplateCallAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -862,14 +862,14 @@ class GGS_templateCategoryTemplateCallAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateCategoryTemplateCallAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateCategoryTemplateCallAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateCategoryTemplateCallAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_templateExpressionAST & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_templateExpressionListAST & argument_2
@@ -884,9 +884,9 @@ class GGS_templateCategoryTemplateCallAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_templateExpressionAST  reader_mExpressionValue (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_lstring  reader_mTemplateName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionListAST  reader_mOutExpressionList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mExpressionValue (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mTemplateName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionListAST  reader_mOutExpressionList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -904,7 +904,7 @@ class GGS_templateCategoryTemplateCallAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateCategoryTemplateCallAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateCategoryTemplateCallAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -938,14 +938,14 @@ class GGS_templateAndOperationAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateAndOperationAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateAndOperationAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateAndOperationAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1,
                                 const GGS_templateExpressionAST & argument_2
@@ -960,9 +960,9 @@ class GGS_templateAndOperationAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mLeftExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mRightExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mLeftExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mRightExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -980,7 +980,7 @@ class GGS_templateAndOperationAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateAndOperationAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateAndOperationAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1014,14 +1014,14 @@ class GGS_templateOrOperationAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateOrOperationAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateOrOperationAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateOrOperationAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1,
                                 const GGS_templateExpressionAST & argument_2
@@ -1036,9 +1036,9 @@ class GGS_templateOrOperationAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mLeftExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mRightExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mLeftExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mRightExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -1056,7 +1056,7 @@ class GGS_templateOrOperationAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateOrOperationAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateOrOperationAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1090,14 +1090,14 @@ class GGS_templateXorOperationAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateXorOperationAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateXorOperationAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateXorOperationAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1,
                                 const GGS_templateExpressionAST & argument_2
@@ -1112,9 +1112,9 @@ class GGS_templateXorOperationAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mLeftExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mRightExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mLeftExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mRightExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -1132,7 +1132,7 @@ class GGS_templateXorOperationAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateXorOperationAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateXorOperationAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1166,14 +1166,14 @@ class GGS_templateConcatOperationAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateConcatOperationAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateConcatOperationAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateConcatOperationAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1,
                                 const GGS_templateExpressionAST & argument_2
@@ -1188,9 +1188,9 @@ class GGS_templateConcatOperationAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mLeftExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mRightExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mLeftExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mRightExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -1208,7 +1208,7 @@ class GGS_templateConcatOperationAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateConcatOperationAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateConcatOperationAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1242,14 +1242,14 @@ class GGS_templateTrueBoolAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateTrueBoolAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateTrueBoolAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateTrueBoolAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0
                                 COMMA_LOCATION_ARGS) ;
 
@@ -1262,7 +1262,7 @@ class GGS_templateTrueBoolAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -1280,7 +1280,7 @@ class GGS_templateTrueBoolAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateTrueBoolAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateTrueBoolAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1314,14 +1314,14 @@ class GGS_templateFalseBoolAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateFalseBoolAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateFalseBoolAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateFalseBoolAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0
                                 COMMA_LOCATION_ARGS) ;
 
@@ -1334,7 +1334,7 @@ class GGS_templateFalseBoolAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -1352,7 +1352,7 @@ class GGS_templateFalseBoolAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateFalseBoolAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateFalseBoolAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1386,14 +1386,14 @@ class GGS_templateLiteralStringExpressionAST : public GGS_templateExpressionAST 
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateLiteralStringExpressionAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateLiteralStringExpressionAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateLiteralStringExpressionAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_stringlist & argument_0,
                                 const GGS_location & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -1407,8 +1407,8 @@ class GGS_templateLiteralStringExpressionAST : public GGS_templateExpressionAST 
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_stringlist  reader_mLiteralStringList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_location  reader_mLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_stringlist  reader_mLiteralStringList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -1426,7 +1426,7 @@ class GGS_templateLiteralStringExpressionAST : public GGS_templateExpressionAST 
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateLiteralStringExpressionAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateLiteralStringExpressionAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1460,14 +1460,14 @@ class GGS_templateLiteralUIntExpressionAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateLiteralUIntExpressionAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateLiteralUIntExpressionAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateLiteralUIntExpressionAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_luint & argument_0
                                 COMMA_LOCATION_ARGS) ;
 
@@ -1480,7 +1480,7 @@ class GGS_templateLiteralUIntExpressionAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_luint  reader_mLiteralInt (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_luint  reader_mLiteralInt (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -1498,7 +1498,7 @@ class GGS_templateLiteralUIntExpressionAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateLiteralUIntExpressionAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateLiteralUIntExpressionAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1532,14 +1532,14 @@ class GGS_templateLiteralSIntExpressionAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateLiteralSIntExpressionAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateLiteralSIntExpressionAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateLiteralSIntExpressionAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_lsint & argument_0
                                 COMMA_LOCATION_ARGS) ;
 
@@ -1552,7 +1552,7 @@ class GGS_templateLiteralSIntExpressionAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_lsint  reader_mLiteralInt (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lsint  reader_mLiteralInt (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -1570,7 +1570,7 @@ class GGS_templateLiteralSIntExpressionAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateLiteralSIntExpressionAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateLiteralSIntExpressionAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1604,14 +1604,14 @@ class GGS_templateLiteralUInt64ExpressionAST : public GGS_templateExpressionAST 
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateLiteralUInt64ExpressionAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateLiteralUInt64ExpressionAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateLiteralUInt64ExpressionAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_luint64 & argument_0
                                 COMMA_LOCATION_ARGS) ;
 
@@ -1624,7 +1624,7 @@ class GGS_templateLiteralUInt64ExpressionAST : public GGS_templateExpressionAST 
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_luint64  reader_mLiteralInt (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_luint64  reader_mLiteralInt (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -1642,7 +1642,7 @@ class GGS_templateLiteralUInt64ExpressionAST : public GGS_templateExpressionAST 
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateLiteralUInt64ExpressionAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateLiteralUInt64ExpressionAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1676,14 +1676,14 @@ class GGS_templateLiteralSInt64ExpressionAST : public GGS_templateExpressionAST 
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateLiteralSInt64ExpressionAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateLiteralSInt64ExpressionAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateLiteralSInt64ExpressionAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_lsint64 & argument_0
                                 COMMA_LOCATION_ARGS) ;
 
@@ -1696,7 +1696,7 @@ class GGS_templateLiteralSInt64ExpressionAST : public GGS_templateExpressionAST 
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_lsint64  reader_mLiteralInt (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lsint64  reader_mLiteralInt (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -1714,7 +1714,7 @@ class GGS_templateLiteralSInt64ExpressionAST : public GGS_templateExpressionAST 
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateLiteralSInt64ExpressionAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateLiteralSInt64ExpressionAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1748,14 +1748,14 @@ class GGS_templateLiteralCharExpressionAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateLiteralCharExpressionAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateLiteralCharExpressionAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateLiteralCharExpressionAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_lchar & argument_0
                                 COMMA_LOCATION_ARGS) ;
 
@@ -1768,7 +1768,7 @@ class GGS_templateLiteralCharExpressionAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_lchar  reader_mLiteralChar (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lchar  reader_mLiteralChar (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -1786,7 +1786,7 @@ class GGS_templateLiteralCharExpressionAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateLiteralCharExpressionAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateLiteralCharExpressionAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1820,14 +1820,14 @@ class GGS_templateLiteralDoubleExpressionAST : public GGS_templateExpressionAST 
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateLiteralDoubleExpressionAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateLiteralDoubleExpressionAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateLiteralDoubleExpressionAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_ldouble & argument_0
                                 COMMA_LOCATION_ARGS) ;
 
@@ -1840,7 +1840,7 @@ class GGS_templateLiteralDoubleExpressionAST : public GGS_templateExpressionAST 
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_ldouble  reader_mLiteralDouble (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_ldouble  reader_mLiteralDouble (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -1858,7 +1858,7 @@ class GGS_templateLiteralDoubleExpressionAST : public GGS_templateExpressionAST 
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateLiteralDoubleExpressionAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateLiteralDoubleExpressionAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1892,14 +1892,14 @@ class GGS_templateIfThenElseExpressionAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateIfThenElseExpressionAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateIfThenElseExpressionAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateIfThenElseExpressionAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1,
                                 const GGS_templateExpressionAST & argument_2,
@@ -1915,10 +1915,10 @@ class GGS_templateIfThenElseExpressionAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mIfExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mThenExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mElseExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mIfExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mThenExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mElseExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -1936,7 +1936,7 @@ class GGS_templateIfThenElseExpressionAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateIfThenElseExpressionAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateIfThenElseExpressionAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1970,14 +1970,14 @@ class GGS_templateNotOperatorAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateNotOperatorAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateNotOperatorAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateNotOperatorAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -1991,8 +1991,8 @@ class GGS_templateNotOperatorAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -2010,7 +2010,7 @@ class GGS_templateNotOperatorAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateNotOperatorAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateNotOperatorAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -2044,14 +2044,14 @@ class GGS_templateLogicalNegateAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateLogicalNegateAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateLogicalNegateAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateLogicalNegateAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -2065,8 +2065,8 @@ class GGS_templateLogicalNegateAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -2084,7 +2084,7 @@ class GGS_templateLogicalNegateAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateLogicalNegateAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateLogicalNegateAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -2118,14 +2118,14 @@ class GGS_templateOptionAccessAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateOptionAccessAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateOptionAccessAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateOptionAccessAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstring & argument_2
@@ -2140,9 +2140,9 @@ class GGS_templateOptionAccessAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_lstring  reader_mOptionComponentName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_lstring  reader_mOptionName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_lstring  reader_mReaderName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mOptionComponentName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mOptionName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mReaderName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -2160,7 +2160,7 @@ class GGS_templateOptionAccessAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateOptionAccessAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateOptionAccessAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -2194,14 +2194,14 @@ class GGS_templateFunctionCallAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateFunctionCallAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateFunctionCallAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateFunctionCallAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_templateExpressionListAST & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -2215,8 +2215,8 @@ class GGS_templateFunctionCallAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_lstring  reader_mFunctionName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionListAST  reader_mExpressionList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mFunctionName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionListAST  reader_mExpressionList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -2234,7 +2234,7 @@ class GGS_templateFunctionCallAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateFunctionCallAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateFunctionCallAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -2268,14 +2268,14 @@ class GGS_templateVarInExpressionAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateVarInExpressionAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateVarInExpressionAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateVarInExpressionAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_lstringlist & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -2289,8 +2289,8 @@ class GGS_templateVarInExpressionAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_lstring  reader_mVarName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_lstringlist  reader_mStructAttributeList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mVarName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstringlist  reader_mStructAttributeList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -2308,7 +2308,7 @@ class GGS_templateVarInExpressionAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateVarInExpressionAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateVarInExpressionAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -2342,14 +2342,14 @@ class GGS_templateAddOperationAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateAddOperationAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateAddOperationAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateAddOperationAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1,
                                 const GGS_templateExpressionAST & argument_2
@@ -2364,9 +2364,9 @@ class GGS_templateAddOperationAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mLeftExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mRightExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mLeftExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mRightExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -2384,7 +2384,7 @@ class GGS_templateAddOperationAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateAddOperationAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateAddOperationAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -2418,14 +2418,14 @@ class GGS_templateSubOperationAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateSubOperationAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateSubOperationAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateSubOperationAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1,
                                 const GGS_templateExpressionAST & argument_2
@@ -2440,9 +2440,9 @@ class GGS_templateSubOperationAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mLeftExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mRightExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mLeftExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mRightExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -2460,7 +2460,7 @@ class GGS_templateSubOperationAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateSubOperationAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateSubOperationAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -2494,14 +2494,14 @@ class GGS_templateMultiplyOperationAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateMultiplyOperationAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateMultiplyOperationAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateMultiplyOperationAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1,
                                 const GGS_templateExpressionAST & argument_2
@@ -2516,9 +2516,9 @@ class GGS_templateMultiplyOperationAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mLeftExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mRightExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mLeftExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mRightExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -2536,7 +2536,7 @@ class GGS_templateMultiplyOperationAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateMultiplyOperationAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateMultiplyOperationAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -2570,14 +2570,14 @@ class GGS_templateDivideOperationAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateDivideOperationAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateDivideOperationAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateDivideOperationAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1,
                                 const GGS_templateExpressionAST & argument_2
@@ -2592,9 +2592,9 @@ class GGS_templateDivideOperationAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mLeftExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mRightExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mLeftExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mRightExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -2612,7 +2612,7 @@ class GGS_templateDivideOperationAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateDivideOperationAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateDivideOperationAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -2646,14 +2646,14 @@ class GGS_templateModuloOperationAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateModuloOperationAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateModuloOperationAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateModuloOperationAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1,
                                 const GGS_templateExpressionAST & argument_2
@@ -2668,9 +2668,9 @@ class GGS_templateModuloOperationAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mLeftExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mRightExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mLeftExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mRightExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -2688,7 +2688,7 @@ class GGS_templateModuloOperationAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateModuloOperationAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateModuloOperationAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -2722,14 +2722,14 @@ class GGS_templateUnaryMinusOperationAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateUnaryMinusOperationAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateUnaryMinusOperationAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateUnaryMinusOperationAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -2743,8 +2743,8 @@ class GGS_templateUnaryMinusOperationAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -2762,7 +2762,7 @@ class GGS_templateUnaryMinusOperationAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateUnaryMinusOperationAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateUnaryMinusOperationAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -2796,14 +2796,14 @@ class GGS_templateEqualTestAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateEqualTestAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateEqualTestAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateEqualTestAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1,
                                 const GGS_templateExpressionAST & argument_2
@@ -2818,9 +2818,9 @@ class GGS_templateEqualTestAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mLeftExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mRightExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mLeftExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mRightExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -2838,7 +2838,7 @@ class GGS_templateEqualTestAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateEqualTestAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateEqualTestAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -2872,14 +2872,14 @@ class GGS_templateNonEqualTestAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateNonEqualTestAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateNonEqualTestAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateNonEqualTestAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1,
                                 const GGS_templateExpressionAST & argument_2
@@ -2894,9 +2894,9 @@ class GGS_templateNonEqualTestAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mLeftExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mRightExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mLeftExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mRightExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -2914,7 +2914,7 @@ class GGS_templateNonEqualTestAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateNonEqualTestAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateNonEqualTestAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -2948,14 +2948,14 @@ class GGS_templateStrictInfTestAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateStrictInfTestAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateStrictInfTestAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateStrictInfTestAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1,
                                 const GGS_templateExpressionAST & argument_2
@@ -2970,9 +2970,9 @@ class GGS_templateStrictInfTestAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mLeftExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mRightExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mLeftExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mRightExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -2990,7 +2990,7 @@ class GGS_templateStrictInfTestAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateStrictInfTestAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateStrictInfTestAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3024,14 +3024,14 @@ class GGS_templateInfOrEqualTestAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateInfOrEqualTestAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateInfOrEqualTestAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateInfOrEqualTestAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1,
                                 const GGS_templateExpressionAST & argument_2
@@ -3046,9 +3046,9 @@ class GGS_templateInfOrEqualTestAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mLeftExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mRightExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mLeftExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mRightExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -3066,7 +3066,7 @@ class GGS_templateInfOrEqualTestAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateInfOrEqualTestAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateInfOrEqualTestAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3100,14 +3100,14 @@ class GGS_templateStrictSupTestAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateStrictSupTestAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateStrictSupTestAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateStrictSupTestAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1,
                                 const GGS_templateExpressionAST & argument_2
@@ -3122,9 +3122,9 @@ class GGS_templateStrictSupTestAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mLeftExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mRightExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mLeftExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mRightExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -3142,7 +3142,7 @@ class GGS_templateStrictSupTestAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateStrictSupTestAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateStrictSupTestAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3176,14 +3176,14 @@ class GGS_templateSupOrEqualTestAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateSupOrEqualTestAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateSupOrEqualTestAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateSupOrEqualTestAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1,
                                 const GGS_templateExpressionAST & argument_2
@@ -3198,9 +3198,9 @@ class GGS_templateSupOrEqualTestAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mLeftExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mRightExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mLeftExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mRightExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -3218,7 +3218,7 @@ class GGS_templateSupOrEqualTestAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateSupOrEqualTestAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateSupOrEqualTestAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3252,14 +3252,14 @@ class GGS_templateLeftShiftOperationAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateLeftShiftOperationAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateLeftShiftOperationAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateLeftShiftOperationAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1,
                                 const GGS_templateExpressionAST & argument_2
@@ -3274,9 +3274,9 @@ class GGS_templateLeftShiftOperationAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mLeftExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mRightExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mLeftExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mRightExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -3294,7 +3294,7 @@ class GGS_templateLeftShiftOperationAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateLeftShiftOperationAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateLeftShiftOperationAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3328,14 +3328,14 @@ class GGS_templateRightShiftOperationAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateRightShiftOperationAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateRightShiftOperationAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateRightShiftOperationAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_templateExpressionAST & argument_1,
                                 const GGS_templateExpressionAST & argument_2
@@ -3350,9 +3350,9 @@ class GGS_templateRightShiftOperationAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_location  reader_mOperatorLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mLeftExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mRightExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mOperatorLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mLeftExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mRightExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -3370,7 +3370,7 @@ class GGS_templateRightShiftOperationAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateRightShiftOperationAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateRightShiftOperationAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3404,14 +3404,14 @@ class GGS_templateClassToTypeOperandAST : public GGS_templateExpressionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateClassToTypeOperandAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateClassToTypeOperandAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateClassToTypeOperandAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_lstring & argument_0
                                 COMMA_LOCATION_ARGS) ;
 
@@ -3424,7 +3424,7 @@ class GGS_templateClassToTypeOperandAST : public GGS_templateExpressionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_lstring  reader_mTypeName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mTypeName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -3442,7 +3442,7 @@ class GGS_templateClassToTypeOperandAST : public GGS_templateExpressionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateClassToTypeOperandAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateClassToTypeOperandAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3476,14 +3476,14 @@ class GGS_templateInstructionStringAST : public GGS_templateInstructionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateInstructionStringAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateInstructionStringAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateInstructionStringAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0
                                 COMMA_LOCATION_ARGS) ;
 
@@ -3496,7 +3496,7 @@ class GGS_templateInstructionStringAST : public GGS_templateInstructionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_string reader_mTemplateString (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_string reader_mTemplateString (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -3514,7 +3514,7 @@ class GGS_templateInstructionStringAST : public GGS_templateInstructionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateInstructionStringAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateInstructionStringAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3548,14 +3548,14 @@ class GGS_templateInstructionExpressionAST : public GGS_templateInstructionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateInstructionExpressionAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateInstructionExpressionAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateInstructionExpressionAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_templateExpressionAST & argument_0,
                                 const GGS_location & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -3569,8 +3569,8 @@ class GGS_templateInstructionExpressionAST : public GGS_templateInstructionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_templateExpressionAST  reader_mExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_location  reader_mLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -3588,7 +3588,7 @@ class GGS_templateInstructionExpressionAST : public GGS_templateInstructionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateInstructionExpressionAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateInstructionExpressionAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3622,14 +3622,14 @@ class GGS_templateBlockInstructionAST : public GGS_templateInstructionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateBlockInstructionAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateBlockInstructionAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateBlockInstructionAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_templateExpressionAST & argument_0,
                                 const GGS_location & argument_1,
                                 const GGS_templateInstructionListAST & argument_2
@@ -3644,9 +3644,9 @@ class GGS_templateBlockInstructionAST : public GGS_templateInstructionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_templateExpressionAST  reader_mExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_location  reader_mLocation (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateInstructionListAST  reader_mBlockInstructionList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mLocation (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateInstructionListAST  reader_mBlockInstructionList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -3664,7 +3664,7 @@ class GGS_templateBlockInstructionAST : public GGS_templateInstructionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateBlockInstructionAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateBlockInstructionAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3698,14 +3698,14 @@ class GGS_templateInstructionGetColumnLocationAST : public GGS_templateInstructi
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateInstructionGetColumnLocationAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateInstructionGetColumnLocationAST constructor_new (C_Compiler & inLexique
+  public : static GGS_templateInstructionGetColumnLocationAST constructor_new (C_CompilerEx & inLexique
                                 COMMA_LOCATION_ARGS) ;
 
 //--- getPtr
@@ -3734,7 +3734,7 @@ class GGS_templateInstructionGetColumnLocationAST : public GGS_templateInstructi
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateInstructionGetColumnLocationAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateInstructionGetColumnLocationAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3768,14 +3768,14 @@ class GGS_templateInstructionGotoColumnLocationAST : public GGS_templateInstruct
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateInstructionGotoColumnLocationAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateInstructionGotoColumnLocationAST constructor_new (C_Compiler & inLexique
+  public : static GGS_templateInstructionGotoColumnLocationAST constructor_new (C_CompilerEx & inLexique
                                 COMMA_LOCATION_ARGS) ;
 
 //--- getPtr
@@ -3804,7 +3804,7 @@ class GGS_templateInstructionGotoColumnLocationAST : public GGS_templateInstruct
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateInstructionGotoColumnLocationAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateInstructionGotoColumnLocationAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3838,14 +3838,14 @@ class GGS_templateInstructionForeachAST : public GGS_templateInstructionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateInstructionForeachAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateInstructionForeachAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateInstructionForeachAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_bool& argument_0,
                                 const GGS_templateExpressionAST & argument_1,
                                 const GGS_string& argument_2,
@@ -3865,14 +3865,14 @@ class GGS_templateInstructionForeachAST : public GGS_templateInstructionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_bool reader_mIsAscending (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateExpressionAST  reader_mExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_mPrefix (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateInstructionListAST  reader_mBeforeInstructionList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateInstructionListAST  reader_mDoInstructionList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_lstring  reader_mIndexIdentifier (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateInstructionListAST  reader_mBetweenInstructionList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateInstructionListAST  reader_mAfterInstructionList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_bool reader_mIsAscending (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_string reader_mPrefix (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateInstructionListAST  reader_mBeforeInstructionList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateInstructionListAST  reader_mDoInstructionList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mIndexIdentifier (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateInstructionListAST  reader_mBetweenInstructionList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateInstructionListAST  reader_mAfterInstructionList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -3890,7 +3890,7 @@ class GGS_templateInstructionForeachAST : public GGS_templateInstructionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateInstructionForeachAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateInstructionForeachAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3929,13 +3929,13 @@ class GGS_templateInstructionIfBranchListAST : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_templateInstructionIfBranchListAST
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_templateInstructionIfBranchListAST
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -3950,22 +3950,22 @@ class GGS_templateInstructionIfBranchListAST : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_templateInstructionIfBranchListAST * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_templateExpressionAST & _out_0,
                               GGS_templateInstructionListAST & _out_1
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_templateExpressionAST & _out_0,
                              GGS_templateInstructionListAST & _out_1
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_templateExpressionAST & _out_0,
                                 GGS_templateInstructionListAST & _out_1
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_templateExpressionAST & _out_0,
                                  GGS_templateInstructionListAST & _out_1
                                  COMMA_LOCATION_ARGS) ;
@@ -3977,7 +3977,7 @@ class GGS_templateInstructionIfBranchListAST : public AC_GGS_list {
                                 const GGS_templateInstructionListAST & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_templateInstructionIfBranchListAST operator_concat (const GGS_templateInstructionIfBranchListAST & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_templateExpressionAST & argument_0,
                                 const GGS_templateInstructionListAST & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -3998,18 +3998,18 @@ class GGS_templateInstructionIfBranchListAST : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_templateExpressionAST 
-  reader_mExpressionAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mExpressionAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_templateInstructionListAST 
-  reader_mInstructionListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mInstructionListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMExpressionAtIndex (C_Compiler & inLexique,
+  modifier_setMExpressionAtIndex (C_CompilerEx & inLexique,
                               const GGS_templateExpressionAST  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMInstructionListAtIndex (C_Compiler & inLexique,
+  modifier_setMInstructionListAtIndex (C_CompilerEx & inLexique,
                               const GGS_templateInstructionListAST  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -4019,7 +4019,7 @@ class GGS_templateInstructionIfBranchListAST : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateInstructionIfBranchListAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateInstructionIfBranchListAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -4064,14 +4064,14 @@ class GGS_templateInstructionIfAST : public GGS_templateInstructionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateInstructionIfAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateInstructionIfAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateInstructionIfAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_templateInstructionIfBranchListAST & argument_0,
                                 const GGS_templateInstructionListAST & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -4085,8 +4085,8 @@ class GGS_templateInstructionIfAST : public GGS_templateInstructionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_templateInstructionIfBranchListAST  reader_mTemplateInstructionIfBranchList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateInstructionListAST  reader_mElseInstructionList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateInstructionIfBranchListAST  reader_mTemplateInstructionIfBranchList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateInstructionListAST  reader_mElseInstructionList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -4104,7 +4104,7 @@ class GGS_templateInstructionIfAST : public GGS_templateInstructionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateInstructionIfAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateInstructionIfAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -4143,13 +4143,13 @@ class GGS_templateInstructionSwitchBranchListAST : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_templateInstructionSwitchBranchListAST
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_templateInstructionSwitchBranchListAST
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -4164,22 +4164,22 @@ class GGS_templateInstructionSwitchBranchListAST : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_templateInstructionSwitchBranchListAST * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_lstringlist & _out_0,
                               GGS_templateInstructionListAST & _out_1
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_lstringlist & _out_0,
                              GGS_templateInstructionListAST & _out_1
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_lstringlist & _out_0,
                                 GGS_templateInstructionListAST & _out_1
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_lstringlist & _out_0,
                                  GGS_templateInstructionListAST & _out_1
                                  COMMA_LOCATION_ARGS) ;
@@ -4191,7 +4191,7 @@ class GGS_templateInstructionSwitchBranchListAST : public AC_GGS_list {
                                 const GGS_templateInstructionListAST & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_templateInstructionSwitchBranchListAST operator_concat (const GGS_templateInstructionSwitchBranchListAST & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_lstringlist & argument_0,
                                 const GGS_templateInstructionListAST & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -4212,18 +4212,18 @@ class GGS_templateInstructionSwitchBranchListAST : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_lstringlist 
-  reader_mConstantListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mConstantListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_templateInstructionListAST 
-  reader_mInstructionListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mInstructionListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMConstantListAtIndex (C_Compiler & inLexique,
+  modifier_setMConstantListAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstringlist  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMInstructionListAtIndex (C_Compiler & inLexique,
+  modifier_setMInstructionListAtIndex (C_CompilerEx & inLexique,
                               const GGS_templateInstructionListAST  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -4233,7 +4233,7 @@ class GGS_templateInstructionSwitchBranchListAST : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateInstructionSwitchBranchListAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateInstructionSwitchBranchListAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -4278,14 +4278,14 @@ class GGS_templateInstructionSwitchAST : public GGS_templateInstructionAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_templateInstructionSwitchAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_templateInstructionSwitchAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_templateInstructionSwitchAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_templateExpressionAST & argument_0,
                                 const GGS_templateInstructionSwitchBranchListAST & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -4299,8 +4299,8 @@ class GGS_templateInstructionSwitchAST : public GGS_templateInstructionAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_templateExpressionAST  reader_mSwitchExpression (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_templateInstructionSwitchBranchListAST  reader_mTemplateInstructionSwitchBranchList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateExpressionAST  reader_mSwitchExpression (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_templateInstructionSwitchBranchListAST  reader_mTemplateInstructionSwitchBranchList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -4318,7 +4318,7 @@ class GGS_templateInstructionSwitchAST : public GGS_templateInstructionAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_templateInstructionSwitchAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_templateInstructionSwitchAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;

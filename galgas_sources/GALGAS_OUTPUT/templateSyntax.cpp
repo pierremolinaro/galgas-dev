@@ -642,7 +642,7 @@ void templateSyntax::rule_templateSyntax_output_5F_expression_5F_list_i22_ (C_Le
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterTemplateString (C_Compiler & inLexique,
+void routine_enterTemplateString (C_CompilerEx & inLexique,
                                 GGS_templateInstructionListAST  & var_cas_outResultingInstructionList
                         COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED

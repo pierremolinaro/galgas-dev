@@ -44,7 +44,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildTerminalMap (C_Compiler &,
+void routine_buildTerminalMap (C_CompilerEx &,
                                 const GGS_lexiqueComponentAST  ,
                                 GGS_terminalMap  & COMMA_LOCATION_ARGS) ;
 
@@ -54,7 +54,7 @@ void routine_buildTerminalMap (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileSyntaxComponent (C_Compiler &,
+void routine_compileSyntaxComponent (C_CompilerEx &,
                                 const GGS_lstring  ,
                                 const GGS_string ,
                                 GGS_parsedComponentStruct & COMMA_LOCATION_ARGS) ;

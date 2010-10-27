@@ -73,34 +73,34 @@ class GGS_sourceFileKind : public GGS__root {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_sourceFileKind castFromObject (C_Compiler & inLexique,
+  public : static GGS_sourceFileKind castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
 
 //--- Construction from GALGAS constructor
-  public : static inline GGS_sourceFileKind  constructor_externSourceFile (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_sourceFileKind  constructor_externSourceFile (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_sourceFileKind (enum_externSourceFile) ;
   }
-  public : static inline GGS_sourceFileKind  constructor_grammarSourceFile (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_sourceFileKind  constructor_grammarSourceFile (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_sourceFileKind (enum_grammarSourceFile) ;
   }
-  public : static inline GGS_sourceFileKind  constructor_guiSourceFile (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_sourceFileKind  constructor_guiSourceFile (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_sourceFileKind (enum_guiSourceFile) ;
   }
-  public : static inline GGS_sourceFileKind  constructor_lexiqueSourceFile (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_sourceFileKind  constructor_lexiqueSourceFile (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_sourceFileKind (enum_lexiqueSourceFile) ;
   }
-  public : static inline GGS_sourceFileKind  constructor_optionSourceFile (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_sourceFileKind  constructor_optionSourceFile (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_sourceFileKind (enum_optionSourceFile) ;
   }
-  public : static inline GGS_sourceFileKind  constructor_programSourceFile (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_sourceFileKind  constructor_programSourceFile (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_sourceFileKind (enum_programSourceFile) ;
   }
-  public : static inline GGS_sourceFileKind  constructor_semanticsSourceFile (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_sourceFileKind  constructor_semanticsSourceFile (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_sourceFileKind (enum_semanticsSourceFile) ;
   }
-  public : static inline GGS_sourceFileKind  constructor_syntaxSourceFile (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_sourceFileKind  constructor_syntaxSourceFile (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_sourceFileKind (enum_syntaxSourceFile) ;
   }
 
@@ -150,13 +150,13 @@ class GGS_projectSourceList : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_projectSourceList
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_projectSourceList
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -171,25 +171,25 @@ class GGS_projectSourceList : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_projectSourceList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_sourceFileKind& _out_0,
                               GGS_lstring & _out_1,
                               GGS_lstringlist & _out_2
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_sourceFileKind& _out_0,
                              GGS_lstring & _out_1,
                              GGS_lstringlist & _out_2
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_sourceFileKind& _out_0,
                                 GGS_lstring & _out_1,
                                 GGS_lstringlist & _out_2
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_sourceFileKind& _out_0,
                                  GGS_lstring & _out_1,
                                  GGS_lstringlist & _out_2
@@ -203,7 +203,7 @@ class GGS_projectSourceList : public AC_GGS_list {
                                 const GGS_lstringlist & argument_2) ;
 //--- Handling '.' GALGAS operator
   public : GGS_projectSourceList operator_concat (const GGS_projectSourceList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_sourceFileKind& argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstringlist & argument_2
@@ -227,25 +227,25 @@ class GGS_projectSourceList : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_sourceFileKind
-  reader_mSourceKindAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mSourceKindAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_lstring 
-  reader_mFilePathAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mFilePathAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_lstringlist 
-  reader_mTargetListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mTargetListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMSourceKindAtIndex (C_Compiler & inLexique,
+  modifier_setMSourceKindAtIndex (C_CompilerEx & inLexique,
                               const GGS_sourceFileKind & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMFilePathAtIndex (C_Compiler & inLexique,
+  modifier_setMFilePathAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMTargetListAtIndex (C_Compiler & inLexique,
+  modifier_setMTargetListAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstringlist  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -255,7 +255,7 @@ class GGS_projectSourceList : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_projectSourceList castFromObject (C_Compiler & inLexique,
+  public : static GGS_projectSourceList castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;

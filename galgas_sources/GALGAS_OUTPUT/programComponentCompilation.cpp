@@ -90,7 +90,7 @@ const cDirectoryWrapperEx gWrapperDirectory_0_programFileGenerationTemplate (
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_programFileGenerationTemplate_programFileHeader (C_Compiler & /* inLexique */,
+template_filewrapper_programFileGenerationTemplate_programFileHeader (C_CompilerEx & /* inLexique */,
                                 const GGS_string& var_cas_COMPONENT_NAME,
                                 const GGS_stringlist & var_cas_IMPORTED_COMPONENT_LIST,
                                 const GGS_lstringlist & var_cas_TYPE_PREDECLARATION_LIST) {
@@ -143,7 +143,7 @@ template_filewrapper_programFileGenerationTemplate_programFileHeader (C_Compiler
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_programFileGenerationTemplate_programFileImplementation (C_Compiler & inLexique,
+template_filewrapper_programFileGenerationTemplate_programFileImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_COMPONENT_NAME,
                                 const GGS_stringlist & var_cas_IMPORTED_COMPONENT_LIST,
                                 const GGS_programRuleList & var_cas_PROGRAM_RULE_LIST,
@@ -247,8 +247,8 @@ template_filewrapper_programFileGenerationTemplate_programFileImplementation (C_
       "    C_galgas_io * galgasIOptr = NULL ;\n"
       "    macroMyNew (galgasIOptr, C_galgas_io (HERE)) ;\n"
       "  //--- Common lexique object\n"
-      "    C_Compiler * commonLexique = NULL ;\n"
-      "    macroMyNew (commonLexique, C_Compiler (NULL, \"\", \"\", galgasIOptr COMMA_HERE)) ;\n"
+      "    C_CompilerEx * commonLexique = NULL ;\n"
+      "    macroMyNew (commonLexique, C_CompilerEx (NULL, \"\", \"\", galgasIOptr COMMA_HERE)) ;\n"
       "  //--- Ask Save On Close \? (Carbon and Windows SIOUX Only)\n"
       "    #ifdef SIOUX_IS_IMPLEMENTED\n"
       "      SIOUXSettings.asktosaveonclose = gOption_generic_5F_cli_5F_options_options_asktosaveonclose.mValue ;\n"
@@ -331,7 +331,7 @@ return GGS_string (isBuilt, result) ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileBeforeClause (C_Compiler & inLexique,
+void routine_compileBeforeClause (C_CompilerEx & inLexique,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 const GGS_programComponentAST  var_cas_inProgramComponentAST,
                                 GGS_semanticDeclarationSortedListForGeneration  & var_cas_ioDecoratedDeclarationListForGeneration
@@ -354,7 +354,7 @@ var_cas_ioDecoratedDeclarationListForGeneration.addAssign_operation (GGS_routine
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileProgramRules (C_Compiler & inLexique,
+void routine_compileProgramRules (C_CompilerEx & inLexique,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 const GGS_programComponentAST  var_cas_inProgramComponentAST,
                                 GGS_semanticDeclarationSortedListForGeneration  & var_cas_ioDecoratedDeclarationListForGeneration
@@ -388,7 +388,7 @@ while (((operand_4498 = enumerator_4498.nextObject ()))) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileAfterClause (C_Compiler & inLexique,
+void routine_compileAfterClause (C_CompilerEx & inLexique,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 const GGS_programComponentAST  var_cas_inProgramComponentAST,
                                 GGS_semanticDeclarationSortedListForGeneration  & var_cas_ioDecoratedDeclarationListForGeneration
@@ -411,7 +411,7 @@ var_cas_ioDecoratedDeclarationListForGeneration.addAssign_operation (GGS_routine
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileProgramComponent (C_Compiler & inLexique,
+void routine_compileProgramComponent (C_CompilerEx & inLexique,
                                 const GGS_lstring   var_cas_inSourceFile,
                                 const GGS_string  var_cas_inOutputDirectory,
                                 GGS_parsedComponentStruct & var_cas_ioParsedComponentStruct

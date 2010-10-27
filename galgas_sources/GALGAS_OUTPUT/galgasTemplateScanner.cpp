@@ -28,7 +28,7 @@
 #include "galgasTemplateScanner.h"
 
 #include "strings/unicode_character_cpp.h"
-#include "galgas/scanner_actions.h"
+#include "galgas/scanner_actionsEx.h"
 #ifndef DO_NOT_GENERATE_CHECKINGS
   #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (HERE), lineNumber ()
   #define COMMA_LINE_AND_SOURCE_FILE , LINE_AND_SOURCE_FILE
@@ -56,24 +56,24 @@ mLexicalAttribute_uint_36__34_value () {
 
 //---------------------------------------------------------------------------*
 
-C_Lexique_galgasTemplateScanner::C_Lexique_galgasTemplateScanner (C_Compiler * inCallerCompiler,
+C_Lexique_galgasTemplateScanner::C_Lexique_galgasTemplateScanner (C_CompilerEx * inCallerCompiler,
                 const C_String & inDependencyFileExtension,
                 const C_String & inDependencyFilePath,
                 C_galgas_io * inParametersPtr,
                 const C_String & inSourceFileName
                 COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inParametersPtr, inSourceFileName COMMA_THERE),
+C_LexiqueEx (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inParametersPtr, inSourceFileName COMMA_THERE),
 mMatchedTemplateDelimiterIndex (-1) {
 }
 
 //---------------------------------------------------------------------------*
 
-C_Lexique_galgasTemplateScanner::C_Lexique_galgasTemplateScanner (C_Compiler * inCallerCompiler,
+C_Lexique_galgasTemplateScanner::C_Lexique_galgasTemplateScanner (C_CompilerEx * inCallerCompiler,
                 C_galgas_io * inParametersPtr,
                 const C_String & inSourceString,
                 const C_String & inStringForError
                 COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inParametersPtr, inSourceString, inStringForError COMMA_THERE),
+C_LexiqueEx (inCallerCompiler, inParametersPtr, inSourceString, inStringForError COMMA_THERE),
 mMatchedTemplateDelimiterIndex (-1) {
 }
 
@@ -6577,8 +6577,8 @@ C_String C_Lexique_galgasTemplateScanner::getCurrentTokenString (const cToken * 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-static const cTemplateDelimiter kTemplateDefinitionArray [1] = {
-  cTemplateDelimiter (kUnicodeString__25_, 1, kUnicodeString__25_, 1, NULL, true)
+static const cTemplateDelimiterEx kTemplateDefinitionArray [1] = {
+  cTemplateDelimiterEx (kUnicodeString__25_, 1, kUnicodeString__25_, 1, NULL, true)
 } ;
 
 //---------------------------------------------------------------------------*
@@ -6587,10 +6587,10 @@ static const cTemplateDelimiter kTemplateDefinitionArray [1] = {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-static const cTemplateDelimiter kTemplateReplacementArray [3] = {
-  cTemplateDelimiter (kUnicodeString__5C__25_, 2, kUnicodeString__25_, 1, NULL, true),
-  cTemplateDelimiter (kUnicodeString__5C_n, 2, kUnicodeString__A_, 1, NULL, true),
-  cTemplateDelimiter (kUnicodeString__5C__5C_, 2, kUnicodeString__5C_, 1, NULL, true)
+static const cTemplateDelimiterEx kTemplateReplacementArray [3] = {
+  cTemplateDelimiterEx (kUnicodeString__5C__25_, 2, kUnicodeString__25_, 1, NULL, true),
+  cTemplateDelimiterEx (kUnicodeString__5C_n, 2, kUnicodeString__A_, 1, NULL, true),
+  cTemplateDelimiterEx (kUnicodeString__5C__5C_, 2, kUnicodeString__5C_, 1, NULL, true)
 } ;
 
 //---------------------------------------------------------------------------*

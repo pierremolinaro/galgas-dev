@@ -48,7 +48,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterInstanceMethodWithoutArgument (C_Compiler & inLexique,
+void routine_enterInstanceMethodWithoutArgument (C_CompilerEx & inLexique,
                                 GGS_instanceMethodMap  & var_cas_ioInstanceMethodMap,
                                 const GGS_lstring   var_cas_inInstanceMethodName,
                                 const GGS_bool  var_cas_inHasCompilerArgument
@@ -68,7 +68,7 @@ void routine_enterInstanceMethodWithoutArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterInstanceMethodWithInputArgument (C_Compiler & inLexique,
+void routine_enterInstanceMethodWithInputArgument (C_CompilerEx & inLexique,
                                 GGS_instanceMethodMap  & var_cas_ioInstanceMethodMap,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 const GGS_string  var_cas_inInputArgumentTypeName,
@@ -94,7 +94,7 @@ void routine_enterInstanceMethodWithInputArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterInstanceMethodWithOutputArgument (C_Compiler & inLexique,
+void routine_enterInstanceMethodWithOutputArgument (C_CompilerEx & inLexique,
                                 GGS_instanceMethodMap  & var_cas_ioInstanceMethodMap,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 const GGS_string  var_cas_inInputArgumentTypeName,
@@ -121,7 +121,7 @@ void routine_enterInstanceMethodWithOutputArgument (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__dataPredefinedTypeAST__getInstanceMethodMap (C_Compiler & inLexique,
+category_method__dataPredefinedTypeAST__getInstanceMethodMap (C_CompilerEx & inLexique,
                                 const cPtr_dataPredefinedTypeAST * operand_3797,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_instanceMethodMap  & var_cas_outInstanceMethodMap
@@ -139,7 +139,7 @@ category_method__dataPredefinedTypeAST__getInstanceMethodMap (C_Compiler & inLex
 //---------------------------------------------------------------------------*
 
 static void
-category_method__stringPredefinedTypeAST__getInstanceMethodMap (C_Compiler & inLexique,
+category_method__stringPredefinedTypeAST__getInstanceMethodMap (C_CompilerEx & inLexique,
                                 const cPtr_stringPredefinedTypeAST * operand_4228,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_instanceMethodMap  & var_cas_outInstanceMethodMap

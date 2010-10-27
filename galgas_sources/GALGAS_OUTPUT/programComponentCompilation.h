@@ -44,7 +44,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileBeforeClause (C_Compiler &,
+void routine_compileBeforeClause (C_CompilerEx &,
                                 const GGS_analysisContext ,
                                 const GGS_programComponentAST ,
                                 GGS_semanticDeclarationSortedListForGeneration  & COMMA_LOCATION_ARGS) ;
@@ -55,7 +55,7 @@ void routine_compileBeforeClause (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileProgramRules (C_Compiler &,
+void routine_compileProgramRules (C_CompilerEx &,
                                 const GGS_analysisContext ,
                                 const GGS_programComponentAST ,
                                 GGS_semanticDeclarationSortedListForGeneration  & COMMA_LOCATION_ARGS) ;
@@ -66,7 +66,7 @@ void routine_compileProgramRules (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileAfterClause (C_Compiler &,
+void routine_compileAfterClause (C_CompilerEx &,
                                 const GGS_analysisContext ,
                                 const GGS_programComponentAST ,
                                 GGS_semanticDeclarationSortedListForGeneration  & COMMA_LOCATION_ARGS) ;
@@ -77,7 +77,7 @@ void routine_compileAfterClause (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileProgramComponent (C_Compiler &,
+void routine_compileProgramComponent (C_CompilerEx &,
                                 const GGS_lstring  ,
                                 const GGS_string ,
                                 GGS_parsedComponentStruct & COMMA_LOCATION_ARGS) ;
@@ -97,7 +97,7 @@ extern const cDirectoryWrapperEx gWrapperDirectory_0_programFileGenerationTempla
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_programFileGenerationTemplate_programFileHeader (C_Compiler & inLexique,
+template_filewrapper_programFileGenerationTemplate_programFileHeader (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_COMPONENT_NAME,
                                 const GGS_stringlist & var_cas_IMPORTED_COMPONENT_LIST,
                                 const GGS_lstringlist & var_cas_TYPE_PREDECLARATION_LIST) ;
@@ -109,7 +109,7 @@ template_filewrapper_programFileGenerationTemplate_programFileHeader (C_Compiler
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_programFileGenerationTemplate_programFileImplementation (C_Compiler & inLexique,
+template_filewrapper_programFileGenerationTemplate_programFileImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_COMPONENT_NAME,
                                 const GGS_stringlist & var_cas_IMPORTED_COMPONENT_LIST,
                                 const GGS_programRuleList & var_cas_PROGRAM_RULE_LIST,

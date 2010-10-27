@@ -48,7 +48,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_string function_generateProcedure (C_Compiler & inLexique,
+GGS_string function_generateProcedure (C_CompilerEx & inLexique,
                                 const GGS_string  var_cas_inProcedureName,
                                 const GGS_formalParameterListForGeneration   var_cas_inFormalArgumentList,
                                 const GGS_semanticInstructionListForGeneration   var_cas_inInstructionList,
@@ -206,7 +206,7 @@ GGS_string function_generateProcedure (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_generateProcedure (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_generateProcedure (C_CompilerEx & inLexique,
                            const GGS_objectlist & inEffectiveParameterArray,
                            const GGS_location & inErrorLocation
                            COMMA_LOCATION_ARGS) {
@@ -253,7 +253,7 @@ kFunction_descriptor_generateProcedure ("generateProcedure",
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_string function_generateFunction (C_Compiler & inLexique,
+GGS_string function_generateFunction (C_CompilerEx & inLexique,
                                 const GGS_string  var_cas_inProcedureName,
                                 const GGS_formalInputParameterListForGeneration   var_cas_inFormalArgumentList,
                                 const GGS_semanticInstructionListForGeneration   var_cas_inInstructionList,
@@ -356,7 +356,7 @@ GGS_string function_generateFunction (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_generateFunction (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_generateFunction (C_CompilerEx & inLexique,
                            const GGS_objectlist & inEffectiveParameterArray,
                            const GGS_location & inErrorLocation
                            COMMA_LOCATION_ARGS) {
@@ -403,7 +403,7 @@ kFunction_descriptor_generateFunction ("generateFunction",
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_string function_generateCategoryMethod (C_Compiler & inLexique,
+GGS_string function_generateCategoryMethod (C_CompilerEx & inLexique,
                                 const GGS_string  var_cas_inClassName,
                                 const GGS_string  var_cas_inBaseClassName,
                                 const GGS_string  var_cas_inMethodName,
@@ -510,7 +510,7 @@ GGS_string function_generateCategoryMethod (C_Compiler & inLexique,
   }
   var_cas_outGeneratedCode.appendCString (",\n") ;
   var_cas_outGeneratedCode.modifier_appendSpacesUntilColumn (inLexique, var_cas_colRef COMMA_SOURCE_FILE_AT_LINE (257)) ;
-  var_cas_outGeneratedCode.appendCString ("C_Compiler * ") ;
+  var_cas_outGeneratedCode.appendCString ("C_CompilerEx * ") ;
   const GGS_bool cond_11460 = var_cas_unusedVariableCppNameSet.reader_hasKey (function_compilerCppName (inLexique COMMA_SOURCE_FILE_AT_LINE (259))) ;
   if (cond_11460.isBuiltAndTrue ()) {
     var_cas_outGeneratedCode.appendCString ("/* ") ;
@@ -551,7 +551,7 @@ GGS_string function_generateCategoryMethod (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_generateCategoryMethod (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_generateCategoryMethod (C_CompilerEx & inLexique,
                            const GGS_objectlist & inEffectiveParameterArray,
                            const GGS_location & inErrorLocation
                            COMMA_LOCATION_ARGS) {
@@ -592,7 +592,7 @@ kFunction_descriptor_generateCategoryMethod ("generateCategoryMethod",
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_string function_generateCategoryReader (C_Compiler & inLexique,
+GGS_string function_generateCategoryReader (C_CompilerEx & inLexique,
                                 const GGS_string  var_cas_inClassName,
                                 const GGS_string  var_cas_inBaseClassName,
                                 const GGS_string  var_cas_inReaderName,
@@ -732,7 +732,7 @@ GGS_string function_generateCategoryReader (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_generateCategoryReader (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_generateCategoryReader (C_CompilerEx & inLexique,
                            const GGS_objectlist & inEffectiveParameterArray,
                            const GGS_location & inErrorLocation
                            COMMA_LOCATION_ARGS) {
@@ -817,7 +817,7 @@ const cDirectoryWrapperEx gWrapperDirectory_0_typeGenerationTemplate (
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_unifiedClassBodyForType (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_unifiedClassBodyForType (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_bool& var_cas_IS_CONCRETE,
@@ -858,7 +858,7 @@ template_filewrapper_typeGenerationTemplate_unifiedClassBodyForType (C_Compiler 
     result << "const GALGAS_object & inObject,\n"
       "               " ;
     result.appendSpacesUntilColumn (columnMarker) ;
-    result << "C_Compiler * inCompiler,\n"
+    result << "C_CompilerEx * inCompiler,\n"
       "               " ;
     result.appendSpacesUntilColumn (columnMarker) ;
     result << "const GALGAS_location & inErrorLocation\n"
@@ -897,12 +897,12 @@ template_filewrapper_typeGenerationTemplate_unifiedClassBodyForType (C_Compiler 
     if ((operand_573->mInfo.mHasCompilerArgument).operator_and ((operand_573->mInfo.mArgumentTypeList.reader_length ()).operator_strictSup (GGS_uint (0U))).boolValue ()) {
       result << ",\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
-      result << "C_Compiler * inCompiler\n" ;
+      result << "C_CompilerEx * inCompiler\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result << "COMMA_LOCATION_ARGS) ;\n"
         "\n" ;
     }else if (operand_573->mInfo.mHasCompilerArgument.boolValue ()) {
-      result << "C_Compiler * inCompiler\n" ;
+      result << "C_CompilerEx * inCompiler\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result << "COMMA_LOCATION_ARGS) ;\n"
         "\n" ;
@@ -1069,7 +1069,7 @@ result << "const GALGAS_" ;
 result << var_cas_TYPE_IDENTIFIER ;
 result << " & inOperand,\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) const ;\n"
   "\n" ;
@@ -1085,7 +1085,7 @@ result << "const GALGAS_" ;
 result << var_cas_TYPE_IDENTIFIER ;
 result << " & inOperand,\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) const ;\n"
   "\n" ;
@@ -1101,7 +1101,7 @@ result << "const GALGAS_" ;
 result << var_cas_TYPE_IDENTIFIER ;
 result << " & inOperand,\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) const ;\n"
   "\n" ;
@@ -1117,7 +1117,7 @@ result << "const GALGAS_" ;
 result << var_cas_TYPE_IDENTIFIER ;
 result << " & inOperand,\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) const ;\n"
   "\n" ;
@@ -1133,7 +1133,7 @@ result << "const GALGAS_" ;
 result << var_cas_TYPE_IDENTIFIER ;
 result << " & inOperand,\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) const ;\n"
   "\n" ;
@@ -1145,7 +1145,7 @@ result << "//--------------------------------- unary - operator\n"
 result << var_cas_TYPE_IDENTIFIER ;
 result << " operator_unary_minus (" ;
 columnMarker = result.currentColumn () ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) const ;\n"
   "\n" ;
@@ -1155,13 +1155,13 @@ if (((var_cas_SUPPORTED_OPERATORS).operator_and (function_incDecOperator (inLexi
 result << "//--------------------------------- ++, -- operators\n"
   "  public : VIRTUAL_IN_DEBUG void increment_operation (" ;
 columnMarker = result.currentColumn () ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) ;\n"
   "\n"
   "  public : VIRTUAL_IN_DEBUG void decrement_operation (" ;
 columnMarker = result.currentColumn () ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) ;\n"
   "\n" ;
@@ -1226,7 +1226,7 @@ var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 }
 if ((operand_7178->mInfo.mParameterList.reader_length ()).operator_isEqual (GGS_uint (0U)).boolValue ()) {
 if (operand_7178->mInfo.mHasCompilerArgument.boolValue ()) {
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS" ;
 }else {
@@ -1237,7 +1237,7 @@ result << "LOCATION_ARGS" ;
 if (operand_7178->mInfo.mHasCompilerArgument.boolValue ()) {
 result << ",\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS" ;
 }else {
@@ -1298,7 +1298,7 @@ var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 }
 if ((operand_8714->mInfo.mParameterList.reader_length ()).operator_isEqual (GGS_uint (0U)).boolValue ()) {
 if (operand_8714->mInfo.mHasCompilerArgument.boolValue ()) {
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS" ;
 }else {
@@ -1309,7 +1309,7 @@ result << "LOCATION_ARGS" ;
 if (operand_8714->mInfo.mHasCompilerArgument.boolValue ()) {
 result << ",\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS" ;
 }else {
@@ -1369,7 +1369,7 @@ var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 }
 if ((operand_10344->mInfo.mParameterList.reader_length ()).operator_isEqual (GGS_uint (0U)).boolValue ()) {
 if (operand_10344->mInfo.mHasCompilerArgument.boolValue ()) {
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS" ;
 }else {
@@ -1380,7 +1380,7 @@ result << "LOCATION_ARGS" ;
 if (operand_10344->mInfo.mHasCompilerArgument.boolValue ()) {
 result << ",\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS" ;
 }else {
@@ -1424,7 +1424,7 @@ var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 }
 if ((operand_11638->mInfo.mArgumentTypeList.reader_length ()).operator_isEqual (GGS_uint (0U)).boolValue ()) {
 if (operand_11638->mInfo.mHasCompilerArgument.boolValue ()) {
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS" ;
 }else {
@@ -1434,7 +1434,7 @@ result << "LOCATION_ARGS" ;
 if (operand_11638->mInfo.mHasCompilerArgument.boolValue ()) {
 result << ",\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS" ;
 }else {
@@ -1472,7 +1472,7 @@ result << " * readWriteAccessForWithInstruction_" ;
 result << operand_13229->mKey.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (310)).reader_identifierRepresentation () ;
 result << " (" ;
 columnMarker = result.currentColumn () ;
-result << "C_Compiler * inCompiler,\n" ;
+result << "C_CompilerEx * inCompiler,\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "const GALGAS_" ;
 result << operand_13229->mInfo.mArgumentType.reader_identifierRepresentation (inLexique COMMA_SOURCE_FILE_AT_LINE (311)) ;
@@ -1546,7 +1546,7 @@ result << "cCollectionElement * readWriteAccessForWithInstruction_" ;
 result << operand_14776->mKey.reader_string (inLexique COMMA_SOURCE_FILE_AT_LINE (346)).reader_identifierRepresentation () ;
 result << " (" ;
 columnMarker = result.currentColumn () ;
-result << "C_Compiler * inCompiler,\n" ;
+result << "C_CompilerEx * inCompiler,\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "GALGAS_" ;
 result << var_cas_TYPE_IDENTIFIER ;
@@ -1572,7 +1572,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_genericTypeImplementation (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_genericTypeImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_unifiedTypeMapProxy & var_cas_SUPER_TYPE_INDEX,
@@ -1645,7 +1645,7 @@ columnMarker = result.currentColumn () ;
 result << "const GALGAS_object & inObject,\n"
   "               " ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler,\n"
+result << "C_CompilerEx * inCompiler,\n"
   "               " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "const GALGAS_location & inErrorLocation\n"
@@ -1685,7 +1685,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_structTypeHeader1 (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_structTypeHeader1 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_typedAttributeList & var_cas_ATTRIBUTE_LIST) {
@@ -1764,7 +1764,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_structTypeSpecificImplementation (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_structTypeSpecificImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_typedAttributeList & var_cas_ATTRIBUTE_LIST) {
@@ -2092,7 +2092,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_listTypeHeader1 (C_Compiler & /* inLexique */,
+template_filewrapper_typeGenerationTemplate_listTypeHeader1 (C_CompilerEx & /* inLexique */,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_typedAttributeList & var_cas_ATTRIBUTE_LIST) {
@@ -2140,7 +2140,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_listTypeSpecificImplementation (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_listTypeSpecificImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_typedAttributeList & var_cas_ATTRIBUTE_LIST) {
@@ -2574,7 +2574,7 @@ result.appendSpacesUntilColumn (columnMarker) ;
 var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 }
 }
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   "  " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) {\n"
@@ -2637,7 +2637,7 @@ result.appendSpacesUntilColumn (columnMarker) ;
 var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 }
 }
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   "  " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) {\n"
@@ -2700,7 +2700,7 @@ result.appendSpacesUntilColumn (columnMarker) ;
 var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 }
 }
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   "  " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) const {\n"
@@ -2763,7 +2763,7 @@ result.appendSpacesUntilColumn (columnMarker) ;
 var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 }
 }
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   "  " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) const {\n"
@@ -2844,7 +2844,7 @@ result.appendSpacesUntilColumn (columnMarker) ;
 result << "const GALGAS_uint & inLength,\n"
   "                                               " ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   "                                               " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) const {\n"
@@ -2868,7 +2868,7 @@ columnMarker = result.currentColumn () ;
 result << "const GALGAS_uint & inIndex,\n"
   "                                               " ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   "                                               " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) const {\n"
@@ -2917,7 +2917,7 @@ result.appendSpacesUntilColumn (columnMarker) ;
 result << "GALGAS_uint inIndex,\n"
   "                                              " ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   "                                              " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) {\n"
@@ -2958,7 +2958,7 @@ columnMarker = result.currentColumn () ;
 result << "const GALGAS_uint & inIndex,\n"
   "                                              " ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   "                                              " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) const {\n"
@@ -3049,7 +3049,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_sortedlistTypeHeader1 (C_Compiler & /* inLexique */,
+template_filewrapper_typeGenerationTemplate_sortedlistTypeHeader1 (C_CompilerEx & /* inLexique */,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_typedAttributeList & var_cas_ATTRIBUTE_LIST) {
@@ -3085,7 +3085,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_sortedlistTypeSpecificImplementation (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_sortedlistTypeSpecificImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_typedAttributeList & var_cas_ATTRIBUTE_LIST,
                                 const GGS_sortDescriptorListForGeneration & var_cas_SORT_ATTRIBUTE_LIST) {
@@ -3517,7 +3517,7 @@ result.appendSpacesUntilColumn (columnMarker) ;
 var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 }
 }
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) {\n"
   "  capSortedListElement attributes ;\n"
@@ -3579,7 +3579,7 @@ result.appendSpacesUntilColumn (columnMarker) ;
 var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 }
 }
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) {\n"
   "  capSortedListElement attributes ;\n"
@@ -3641,7 +3641,7 @@ result.appendSpacesUntilColumn (columnMarker) ;
 var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 }
 }
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) const {\n"
   "  capSortedListElement attributes ;\n"
@@ -3703,7 +3703,7 @@ result.appendSpacesUntilColumn (columnMarker) ;
 var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 }
 }
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) const {\n"
   "  capSortedListElement attributes ;\n"
@@ -3806,7 +3806,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_enumTypeHeader1 (C_Compiler & /* inLexique */,
+template_filewrapper_typeGenerationTemplate_enumTypeHeader1 (C_CompilerEx & /* inLexique */,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_stringlist & var_cas_CONSTANT_LIST) {
@@ -3864,7 +3864,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_enumTypeSpecificImplementation (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_enumTypeSpecificImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_stringlist & var_cas_CONSTANT_LIST,
@@ -4021,7 +4021,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_mapTypeHeader1 (C_Compiler & /* inLexique */,
+template_filewrapper_typeGenerationTemplate_mapTypeHeader1 (C_CompilerEx & /* inLexique */,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_typedAttributeList & var_cas_ATTRIBUTE_LIST) {
@@ -4075,7 +4075,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_mapTypeHeader2 (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_mapTypeHeader2 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_typedAttributeList & var_cas_ATTRIBUTE_LIST) {
@@ -4153,7 +4153,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_mapTypeSpecificImplementation (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_mapTypeSpecificImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_typedAttributeList & var_cas_ATTRIBUTE_LIST,
                                 const GGS_insertMethodListAST & var_cas_INSERT_METHOD_LIST,
@@ -4401,7 +4401,7 @@ var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 result << ",\n"
   " " ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   " " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) {\n"
@@ -4489,7 +4489,7 @@ var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 result << ",\n"
   " " ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   " " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) const {\n" ;
@@ -4562,7 +4562,7 @@ var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 result << ",\n"
   " " ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   " " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) {\n" ;
@@ -4676,7 +4676,7 @@ columnMarker = result.currentColumn () ;
 result << "const GALGAS_string & inKey,\n"
   "                                               " ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   "                                               " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) const {\n"
@@ -4724,7 +4724,7 @@ result.appendSpacesUntilColumn (columnMarker) ;
 result << "GALGAS_string inKey,\n"
   "                           " ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   "                           " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) {\n"
@@ -4761,7 +4761,7 @@ result << "::readWriteAccessForWithInstruction_" ;
 result << operand_10271->mKey.ggs_string ().reader_identifierRepresentation () ;
 result << " (" ;
 columnMarker = result.currentColumn () ;
-result << "C_Compiler * inCompiler,\n" ;
+result << "C_CompilerEx * inCompiler,\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "const GALGAS_" ;
 result << operand_10271->mInfo.mArgumentType.reader_identifierRepresentation (inLexique COMMA_SOURCE_FILE_AT_LINE (230)) ;
@@ -4860,7 +4860,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_classTypeHeader1 (C_Compiler & /* inLexique */,
+template_filewrapper_typeGenerationTemplate_classTypeHeader1 (C_CompilerEx & /* inLexique */,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_string& var_cas_SUPER_TYPE_IDENTIFIER,
@@ -4927,7 +4927,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_classTypeHeader2 (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_classTypeHeader2 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_string& var_cas_SUPER_TYPE_IDENTIFIER,
@@ -5041,7 +5041,7 @@ result << operand_1293->mFormalArgumentCppName ;
 result << ",\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 }
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) const = 0 ;\n"
   "\n" ;
@@ -5083,7 +5083,7 @@ result << operand_2263->mFormalArgumentCppName ;
 result << ",\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 }
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) const ;\n"
   "\n" ;
@@ -5114,7 +5114,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_classTypeSpecificImplementation (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_classTypeSpecificImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_string& var_cas_SUPER_TYPE_IDENTIFIER,
@@ -5372,7 +5372,7 @@ while (((operand_4382 = enumerator_4382.nextObject ()))) {
 macroValidPointer (operand_4382) ;
 result << "//---------------------------------------------------------------------------*\n"
   "\n" ;
-result << function_generateProcedure (inLexique, (((GGS_string ("cPtr_")).operator_concat (var_cas_TYPE_IDENTIFIER)).operator_concat (GGS_string ("::method_"))).operator_concat (operand_4382->mMethodName.ggs_string ().reader_identifierRepresentation ()), operand_4382->mSignature, operand_4382->mInstructionList, GGS_bool (true), GGS_string ("C_Compiler"), GGS_bool (true), GGS_bool (false) COMMA_SOURCE_FILE_AT_LINE (104)) ;
+result << function_generateProcedure (inLexique, (((GGS_string ("cPtr_")).operator_concat (var_cas_TYPE_IDENTIFIER)).operator_concat (GGS_string ("::method_"))).operator_concat (operand_4382->mMethodName.ggs_string ().reader_identifierRepresentation ()), operand_4382->mSignature, operand_4382->mInstructionList, GGS_bool (true), GGS_string ("C_CompilerEx"), GGS_bool (true), GGS_bool (false) COMMA_SOURCE_FILE_AT_LINE (104)) ;
 }
 GGS_typedAttributeList::cEnumerator enumerator_4796 (var_cas_CURRENT_ATTRIBUTE_LIST, true) ;
 const GGS_typedAttributeList::cElement * operand_4796 = NULL ;
@@ -5496,7 +5496,7 @@ var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 }
 if ((operand_6159->mInfo.mParameterList.reader_length ()).operator_isEqual (GGS_uint (0U)).boolValue ()) {
 if (operand_6159->mInfo.mHasCompilerArgument.boolValue ()) {
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS" ;
 }else {
@@ -5507,7 +5507,7 @@ result << "LOCATION_ARGS" ;
 if (operand_6159->mInfo.mHasCompilerArgument.boolValue ()) {
 result << ",\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS" ;
 }else {
@@ -5698,7 +5698,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_listmapTypeSpecificImplementation (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_listmapTypeSpecificImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_string& var_cas_ASSOCIATED_LISTTYPE_IDENTIFIER,
                                 const GGS_typedAttributeList & var_cas_ATTRIBUTE_LIST) {
@@ -5818,7 +5818,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_mapProxyTypeSpecificImplementation (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_mapProxyTypeSpecificImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_string& var_cas_ASSOCIATED_MAP_TYPE_IDENTIFIER,
@@ -5906,7 +5906,7 @@ result << "::reader_" ;
 result << operand_1254->mAttributeName.ggs_string ().reader_identifierRepresentation () ;
 result << " (" ;
 columnMarker = result.currentColumn () ;
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   "                                       " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) const {\n"
@@ -5953,7 +5953,7 @@ result.appendSpacesUntilColumn (columnMarker) ;
 result << "GALGASap_lstring & inKey,\n"
   "                                                " ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   "                                                " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) {\n"
@@ -6038,7 +6038,7 @@ const cDirectoryWrapperEx gWrapperDirectory_0_semanticComponentGenerationTemplat
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_abstractCategoryReaderDeclaration (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_abstractCategoryReaderDeclaration (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_CLASS_NAME,
                                 const GGS_string& var_cas_READER_NAME,
                                 const GGS_formalInputParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST,
@@ -6085,7 +6085,7 @@ var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 }
 result << ",\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   " " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) ;\n"
@@ -6129,7 +6129,7 @@ result << operand_1521->mFormalArgumentName.ggs_string ().reader_identifierRepre
 }
 result << ",\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) ;\n"
   "\n" ;
@@ -6144,7 +6144,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_abstractCategoryReaderImplementation (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_abstractCategoryReaderImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_CLASS_NAME,
                                 const GGS_string& var_cas_READER_NAME,
                                 const GGS_formalInputParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST,
@@ -6250,7 +6250,7 @@ result << operand_2091->mFormalArgumentName.ggs_string ().reader_identifierRepre
 }
 result << ",\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) {\n"
   "  GALGAS_" ;
@@ -6326,7 +6326,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_categoryReaderDeclaration (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_categoryReaderDeclaration (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_CLASS_NAME,
                                 const GGS_string& var_cas_READER_NAME,
                                 const GGS_formalInputParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST,
@@ -6373,7 +6373,7 @@ var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 }
 result << ",\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   " " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) ;\n"
@@ -6417,7 +6417,7 @@ result << operand_1512->mFormalArgumentName.ggs_string ().reader_identifierRepre
 }
 result << ",\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) ;\n"
   "\n" ;
@@ -6432,7 +6432,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_categoryReaderImplementation (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_categoryReaderImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_CLASS_NAME,
                                 const GGS_string& var_cas_READER_NAME,
                                 const GGS_formalInputParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST,
@@ -6509,7 +6509,7 @@ result << operand_1442->mFormalArgumentName.ggs_string ().reader_identifierRepre
 }
 result << ",\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) {\n"
   "  GALGAS_" ;
@@ -6647,7 +6647,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_overridingCategoryReaderImplementation (C_Compiler & /* inLexique */,
+template_filewrapper_semanticComponentGenerationTemplate_overridingCategoryReaderImplementation (C_CompilerEx & /* inLexique */,
                                 const GGS_string& var_cas_CLASS_NAME,
                                 const GGS_string& var_cas_READER_NAME,
                                 const GGS_unifiedTypeMapProxy & var_cas_RETURN_TYPE,
@@ -6715,7 +6715,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_abstractCategoryMethodDeclaration (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_abstractCategoryMethodDeclaration (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_CLASS_NAME,
                                 const GGS_string& var_cas_METHOD_NAME,
                                 const GGS_formalParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST) {
@@ -6775,7 +6775,7 @@ var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 }
 result << ",\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   " " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) ;\n"
@@ -6834,7 +6834,7 @@ result << operand_2020->mFormalArgumentName.ggs_string ().reader_identifierRepre
 }
 result << ",\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) ;\n"
   "\n" ;
@@ -6849,7 +6849,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_abstractCategoryMethodImplementation (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_abstractCategoryMethodImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_CLASS_NAME,
                                 const GGS_string& var_cas_METHOD_NAME,
                                 const GGS_formalParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST) {
@@ -6968,7 +6968,7 @@ result << operand_2047->mFormalArgumentName.ggs_string ().reader_identifierRepre
 }
 result << ",\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) {\n"
   "//--- Drop output arguments\n" ;
@@ -7063,7 +7063,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_categoryMethodDeclaration (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_categoryMethodDeclaration (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_CLASS_NAME,
                                 const GGS_string& var_cas_METHOD_NAME,
                                 const GGS_formalParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST) {
@@ -7123,7 +7123,7 @@ var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 }
 result << ",\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   " " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) ;\n"
@@ -7182,7 +7182,7 @@ result << operand_2011->mFormalArgumentName.ggs_string ().reader_identifierRepre
 }
 result << ",\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) ;\n"
   "\n" ;
@@ -7197,7 +7197,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_categoryMethodImplementation (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_categoryMethodImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_CLASS_NAME,
                                 const GGS_string& var_cas_METHOD_NAME,
                                 const GGS_formalParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST,
@@ -7287,7 +7287,7 @@ result << operand_1398->mFormalArgumentName.ggs_string ().reader_identifierRepre
 }
 result << ",\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) {\n"
   "//--- Drop output arguments\n" ;
@@ -7444,7 +7444,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_overridingCategoryMethodImplementation (C_Compiler & /* inLexique */,
+template_filewrapper_semanticComponentGenerationTemplate_overridingCategoryMethodImplementation (C_CompilerEx & /* inLexique */,
                                 const GGS_string& var_cas_CLASS_NAME,
                                 const GGS_string& var_cas_METHOD_NAME,
                                 const GGS_string& var_cas_METHOD_IMPLEMENTATION) {
@@ -7510,7 +7510,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_filewrapperDeclaration (C_Compiler & /* inLexique */,
+template_filewrapper_semanticComponentGenerationTemplate_filewrapperDeclaration (C_CompilerEx & /* inLexique */,
                                 const GGS_stringlist & var_cas_FILE_INDEX_STRING_LIST,
                                 const GGS_string& var_cas_FILEWRAPPER_NAME) {
   C_String result ;
@@ -7551,7 +7551,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_filewrapperImplementation (C_Compiler & /* inLexique */,
+template_filewrapper_semanticComponentGenerationTemplate_filewrapperImplementation (C_CompilerEx & /* inLexique */,
                                 const GGS_string& var_cas_FILEWRAPPER_NAME,
                                 const GGS_string& var_cas_FILEWRAPPER_IMPLEMENTATION) {
   C_String result ;
@@ -7579,7 +7579,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_routineDeclaration (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_routineDeclaration (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_ROUTINE_NAME,
                                 const GGS_formalParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST) {
   C_String result ;
@@ -7630,7 +7630,7 @@ result.appendSpacesUntilColumn (columnMarker) ;
 var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 }
 }
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   " " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) ;\n"
@@ -7646,7 +7646,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_functionDeclaration (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_functionDeclaration (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_FUNCTION_NAME,
                                 const GGS_formalInputParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST,
                                 const GGS_string& var_cas_RETURN_TYPE_IDENTIFIER) {
@@ -7684,7 +7684,7 @@ result.appendSpacesUntilColumn (columnMarker) ;
 var_cas_IDX.increment_operation (inLexique COMMA_HERE) ;
 }
 }
-result << "C_Compiler * inCompiler\n" ;
+result << "C_CompilerEx * inCompiler\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) ;\n"
   "\n" ;
@@ -7699,7 +7699,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_routineImplementation (C_Compiler & /* inLexique */,
+template_filewrapper_semanticComponentGenerationTemplate_routineImplementation (C_CompilerEx & /* inLexique */,
                                 const GGS_string& var_cas_ROUTINE_NAME,
                                 const GGS_string& var_cas_ROUTINE_IMPLEMENTATION) {
   C_String result ;
@@ -7727,7 +7727,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_functionImplementation (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_functionImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_FUNCTION_NAME,
                                 const GGS_string& var_cas_FUNCTION_IMPLEMENTATION,
                                 const GGS_formalInputParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST,
@@ -7776,7 +7776,7 @@ result << "static GALGAS_object functionWithGenericHeader_" ;
 result << var_cas_FUNCTION_NAME.reader_identifierRepresentation () ;
 result << " (" ;
 columnMarker = result.currentColumn () ;
-result << "C_Compiler * inCompiler,\n" ;
+result << "C_CompilerEx * inCompiler,\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "const cObjectArray & /* inEffectiveParameterArray */,\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
@@ -7792,7 +7792,7 @@ result << "static GALGAS_object functionWithGenericHeader_" ;
 result << var_cas_FUNCTION_NAME.reader_identifierRepresentation () ;
 result << " (" ;
 columnMarker = result.currentColumn () ;
-result << "C_Compiler * inCompiler,\n" ;
+result << "C_CompilerEx * inCompiler,\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "const cObjectArray & inEffectiveParameterArray,\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
@@ -7869,7 +7869,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_onceFunctionImplementation (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_onceFunctionImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_FUNCTION_NAME,
                                 const GGS_string& var_cas_FUNCTION_IMPLEMENTATION,
                                 const GGS_formalInputParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST,
@@ -7913,7 +7913,7 @@ result << " function_" ;
 result << var_cas_FUNCTION_NAME.reader_identifierRepresentation () ;
 result << " (" ;
 result.appendSpacesUntilColumn (columnMarker) ;
-result << "C_Compiler * inCompiler\n"
+result << "C_CompilerEx * inCompiler\n"
   "              " ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "COMMA_LOCATION_ARGS) {\n"
@@ -7984,7 +7984,7 @@ result << "static GALGAS_object functionWithGenericHeader_" ;
 result << var_cas_FUNCTION_NAME.reader_identifierRepresentation () ;
 result << " (" ;
 columnMarker = result.currentColumn () ;
-result << "C_Compiler * inCompiler,\n" ;
+result << "C_CompilerEx * inCompiler,\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "const cObjectArray & /* inEffectiveParameterArray */,\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
@@ -8000,7 +8000,7 @@ result << "static GALGAS_object functionWithGenericHeader_" ;
 result << var_cas_FUNCTION_NAME.reader_identifierRepresentation () ;
 result << " (" ;
 columnMarker = result.currentColumn () ;
-result << "C_Compiler * inCompiler,\n" ;
+result << "C_CompilerEx * inCompiler,\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
 result << "const cObjectArray & inEffectiveParameterArray,\n" ;
 result.appendSpacesUntilColumn (columnMarker) ;
@@ -8077,7 +8077,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_filewrapperTemplateDeclaration (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_filewrapperTemplateDeclaration (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_FILEWRAPPER_NAME,
                                 const GGS_string& var_cas_TEMPLATE_NAME,
                                 const GGS_formalInputParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST) {
@@ -8101,7 +8101,7 @@ result << "_" ;
 result << var_cas_TEMPLATE_NAME.reader_identifierRepresentation () ;
 result << " (" ;
 columnMarker = result.currentColumn () ;
-result << "C_Compiler * inCompiler" ;
+result << "C_CompilerEx * inCompiler" ;
 GGS_formalInputParameterListForGeneration::cEnumerator enumerator_621 (var_cas_FORMAL_ARGUMENT_LIST, true) ;
 const GGS_formalInputParameterListForGeneration::cElement * operand_621 = NULL ;
 while (((operand_621 = enumerator_621.nextObject ()))) {
@@ -8129,7 +8129,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_filewrapperTemplateImplementation (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_filewrapperTemplateImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_FILEWRAPPER_NAME,
                                 const GGS_string& var_cas_TEMPLATE_NAME,
                                 const GGS_formalInputParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST,
@@ -8159,7 +8159,7 @@ result << "_" ;
 result << var_cas_TEMPLATE_NAME.reader_identifierRepresentation () ;
 result << " (" ;
 columnMarker = result.currentColumn () ;
-result << "C_Compiler * " ;
+result << "C_CompilerEx * " ;
 if (var_cas_USES_COMPILER_ARGUMENT.boolValue ()) {
 result << function_compilerCppName (inLexique COMMA_SOURCE_FILE_AT_LINE (9)) ;
 }else {
@@ -8210,7 +8210,7 @@ return GGS_string (isBuilt, result) ;
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__semanticDeclarationForGeneration__appendDeclaration1 (C_Compiler &,
+category_reader__semanticDeclarationForGeneration__appendDeclaration1 (C_CompilerEx &,
                                 const cPtr_semanticDeclarationForGeneration * operand_26370
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outHeader ;
@@ -8239,7 +8239,7 @@ enterCategoryReader__semanticDeclarationForGeneration__appendDeclaration1 (typeC
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__semanticDeclarationForGeneration_defaultReader_appendDeclaration1 (C_Compiler &,
+category_reader__semanticDeclarationForGeneration_defaultReader_appendDeclaration1 (C_CompilerEx &,
                                 const cPtr_semanticDeclarationForGeneration *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_string () ;
@@ -8273,7 +8273,7 @@ findCategoryReader__semanticDeclarationForGeneration__appendDeclaration1 (AC_gal
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__routinePrototypeDeclarationForGeneration__appendDeclaration1 (C_Compiler & inLexique,
+category_reader__routinePrototypeDeclarationForGeneration__appendDeclaration1 (C_CompilerEx & inLexique,
                                 const cPtr_routinePrototypeDeclarationForGeneration * operand_26583
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outHeader ;
@@ -8290,7 +8290,7 @@ var_cas_outHeader = template_filewrapper_semanticComponentGenerationTemplate_rou
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__functionPrototypeDeclarationForGeneration__appendDeclaration1 (C_Compiler & inLexique,
+category_reader__functionPrototypeDeclarationForGeneration__appendDeclaration1 (C_CompilerEx & inLexique,
                                 const cPtr_functionPrototypeDeclarationForGeneration * operand_26910
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outHeader ;
@@ -8307,7 +8307,7 @@ var_cas_outHeader = template_filewrapper_semanticComponentGenerationTemplate_fun
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__onceFunctionDeclarationForGeneration__appendDeclaration1 (C_Compiler & inLexique,
+category_reader__onceFunctionDeclarationForGeneration__appendDeclaration1 (C_CompilerEx & inLexique,
                                 const cPtr_onceFunctionDeclarationForGeneration * operand_27278
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outHeader ;
@@ -8324,7 +8324,7 @@ var_cas_outHeader = template_filewrapper_semanticComponentGenerationTemplate_fun
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__classTypeForGeneration__appendDeclaration1 (C_Compiler & inLexique,
+category_reader__classTypeForGeneration__appendDeclaration1 (C_CompilerEx & inLexique,
                                 const cPtr_classTypeForGeneration * operand_27663
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outHeader ;
@@ -8342,7 +8342,7 @@ var_cas_outHeader.dotAssign_operation (template_filewrapper_typeGenerationTempla
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__mapTypeForGeneration__appendDeclaration1 (C_Compiler & inLexique,
+category_reader__mapTypeForGeneration__appendDeclaration1 (C_CompilerEx & inLexique,
                                 const cPtr_mapTypeForGeneration * operand_28608
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outHeader ;
@@ -8360,7 +8360,7 @@ var_cas_outHeader.dotAssign_operation (template_filewrapper_typeGenerationTempla
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__structTypeForGeneration__appendDeclaration1 (C_Compiler & inLexique,
+category_reader__structTypeForGeneration__appendDeclaration1 (C_CompilerEx & inLexique,
                                 const cPtr_structTypeForGeneration * operand_29449
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outHeader ;
@@ -8378,7 +8378,7 @@ var_cas_outHeader.dotAssign_operation (template_filewrapper_typeGenerationTempla
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__listTypeForGeneration__appendDeclaration1 (C_Compiler & inLexique,
+category_reader__listTypeForGeneration__appendDeclaration1 (C_CompilerEx & inLexique,
                                 const cPtr_listTypeForGeneration * operand_30291
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outHeader ;
@@ -8396,7 +8396,7 @@ var_cas_outHeader.dotAssign_operation (template_filewrapper_typeGenerationTempla
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__sortedListTypeForGeneration__appendDeclaration1 (C_Compiler & inLexique,
+category_reader__sortedListTypeForGeneration__appendDeclaration1 (C_CompilerEx & inLexique,
                                 const cPtr_sortedListTypeForGeneration * operand_31137
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outHeader ;
@@ -8414,7 +8414,7 @@ var_cas_outHeader.dotAssign_operation (template_filewrapper_typeGenerationTempla
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__enumTypeForGeneration__appendDeclaration1 (C_Compiler & inLexique,
+category_reader__enumTypeForGeneration__appendDeclaration1 (C_CompilerEx & inLexique,
                                 const cPtr_enumTypeForGeneration * operand_31983
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outHeader ;
@@ -8431,7 +8431,7 @@ var_cas_outHeader.dotAssign_operation (template_filewrapper_typeGenerationTempla
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_recursivlyEnumerateRegularFile (C_Compiler & inLexique,
+void routine_recursivlyEnumerateRegularFile (C_CompilerEx & inLexique,
                                 const GGS_wrapperFileMap   var_cas_inFilewrapperFileMap,
                                 const GGS_wrapperDirectoryMap   var_cas_inFilewrapperDirectoryMap,
                                 GGS_stringlist  & var_cas_ioRegularFileIndexStringList
@@ -8467,7 +8467,7 @@ while (((operand_33109 = enumerator_33109.nextObject ()))) {
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__filewrapperDeclarationForGeneration__appendDeclaration1 (C_Compiler & inLexique,
+category_reader__filewrapperDeclarationForGeneration__appendDeclaration1 (C_CompilerEx & inLexique,
                                 const cPtr_filewrapperDeclarationForGeneration * operand_33416
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outHeader ;
@@ -8494,7 +8494,7 @@ var_cas_outHeader.dotAssign_operation (template_filewrapper_semanticComponentGen
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__abstractCategoryMethodForGeneration__appendDeclaration1 (C_Compiler & inLexique,
+category_reader__abstractCategoryMethodForGeneration__appendDeclaration1 (C_CompilerEx & inLexique,
                                 const cPtr_abstractCategoryMethodForGeneration * operand_34234
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outHeader ;
@@ -8511,7 +8511,7 @@ var_cas_outHeader = template_filewrapper_semanticComponentGenerationTemplate_abs
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__categoryMethodForGeneration__appendDeclaration1 (C_Compiler & inLexique,
+category_reader__categoryMethodForGeneration__appendDeclaration1 (C_CompilerEx & inLexique,
                                 const cPtr_categoryMethodForGeneration * operand_34615
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outHeader ;
@@ -8528,7 +8528,7 @@ var_cas_outHeader = template_filewrapper_semanticComponentGenerationTemplate_cat
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__abstractCategoryReaderForGeneration__appendDeclaration1 (C_Compiler & inLexique,
+category_reader__abstractCategoryReaderForGeneration__appendDeclaration1 (C_CompilerEx & inLexique,
                                 const cPtr_abstractCategoryReaderForGeneration * operand_34980
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outHeader ;
@@ -8545,7 +8545,7 @@ var_cas_outHeader = template_filewrapper_semanticComponentGenerationTemplate_abs
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__categoryReaderForGeneration__appendDeclaration1 (C_Compiler & inLexique,
+category_reader__categoryReaderForGeneration__appendDeclaration1 (C_CompilerEx & inLexique,
                                 const cPtr_categoryReaderForGeneration * operand_35378
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outHeader ;
@@ -8562,7 +8562,7 @@ var_cas_outHeader = template_filewrapper_semanticComponentGenerationTemplate_cat
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__semanticDeclarationForGeneration__appendDeclaration2 (C_Compiler &,
+category_reader__semanticDeclarationForGeneration__appendDeclaration2 (C_CompilerEx &,
                                 const cPtr_semanticDeclarationForGeneration * operand_36060
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outHeader ;
@@ -8591,7 +8591,7 @@ enterCategoryReader__semanticDeclarationForGeneration__appendDeclaration2 (typeC
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__semanticDeclarationForGeneration_defaultReader_appendDeclaration2 (C_Compiler &,
+category_reader__semanticDeclarationForGeneration_defaultReader_appendDeclaration2 (C_CompilerEx &,
                                 const cPtr_semanticDeclarationForGeneration *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_string () ;
@@ -8625,7 +8625,7 @@ findCategoryReader__semanticDeclarationForGeneration__appendDeclaration2 (AC_gal
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__mapTypeForGeneration__appendDeclaration2 (C_Compiler & inLexique,
+category_reader__mapTypeForGeneration__appendDeclaration2 (C_CompilerEx & inLexique,
                                 const cPtr_mapTypeForGeneration * operand_36253
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outHeader ;
@@ -8642,7 +8642,7 @@ var_cas_outHeader = template_filewrapper_typeGenerationTemplate_mapTypeHeader2 (
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__classTypeForGeneration__appendDeclaration2 (C_Compiler & inLexique,
+category_reader__classTypeForGeneration__appendDeclaration2 (C_CompilerEx & inLexique,
                                 const cPtr_classTypeForGeneration * operand_36590
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outHeader ;
@@ -8659,7 +8659,7 @@ var_cas_outHeader = template_filewrapper_typeGenerationTemplate_classTypeHeader2
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__semanticDeclarationForGeneration__appendTypeGenericImplementation (C_Compiler &,
+category_reader__semanticDeclarationForGeneration__appendTypeGenericImplementation (C_CompilerEx &,
                                 const cPtr_semanticDeclarationForGeneration * operand_37505
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;
@@ -8688,7 +8688,7 @@ enterCategoryReader__semanticDeclarationForGeneration__appendTypeGenericImplemen
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__semanticDeclarationForGeneration_defaultReader_appendTypeGenericImplementation (C_Compiler &,
+category_reader__semanticDeclarationForGeneration_defaultReader_appendTypeGenericImplementation (C_CompilerEx &,
                                 const cPtr_semanticDeclarationForGeneration *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_string () ;
@@ -8722,7 +8722,7 @@ findCategoryReader__semanticDeclarationForGeneration__appendTypeGenericImplement
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__semanticTypeForGeneration__appendTypeGenericImplementation (C_Compiler & inLexique,
+category_reader__semanticTypeForGeneration__appendTypeGenericImplementation (C_CompilerEx & inLexique,
                                 const cPtr_semanticTypeForGeneration * operand_37731
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;
@@ -8739,7 +8739,7 @@ var_cas_outImplementation = template_filewrapper_typeGenerationTemplate_genericT
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__semanticDeclarationForGeneration__appendSpecificImplementation (C_Compiler &,
+category_reader__semanticDeclarationForGeneration__appendSpecificImplementation (C_CompilerEx &,
                                 const cPtr_semanticDeclarationForGeneration * operand_38462
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;
@@ -8768,7 +8768,7 @@ enterCategoryReader__semanticDeclarationForGeneration__appendSpecificImplementat
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__semanticDeclarationForGeneration_defaultReader_appendSpecificImplementation (C_Compiler &,
+category_reader__semanticDeclarationForGeneration_defaultReader_appendSpecificImplementation (C_CompilerEx &,
                                 const cPtr_semanticDeclarationForGeneration *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_string () ;
@@ -8802,7 +8802,7 @@ findCategoryReader__semanticDeclarationForGeneration__appendSpecificImplementati
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__listmapTypeForGeneration__appendSpecificImplementation (C_Compiler & inLexique,
+category_reader__listmapTypeForGeneration__appendSpecificImplementation (C_CompilerEx & inLexique,
                                 const cPtr_listmapTypeForGeneration * operand_38684
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;
@@ -8819,7 +8819,7 @@ var_cas_outImplementation = template_filewrapper_typeGenerationTemplate_listmapT
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__mapTypeForGeneration__appendSpecificImplementation (C_Compiler & inLexique,
+category_reader__mapTypeForGeneration__appendSpecificImplementation (C_CompilerEx & inLexique,
                                 const cPtr_mapTypeForGeneration * operand_39185
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;
@@ -8836,7 +8836,7 @@ var_cas_outImplementation = template_filewrapper_typeGenerationTemplate_mapTypeS
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__sortedListTypeForGeneration__appendSpecificImplementation (C_Compiler & inLexique,
+category_reader__sortedListTypeForGeneration__appendSpecificImplementation (C_CompilerEx & inLexique,
                                 const cPtr_sortedListTypeForGeneration * operand_39738
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;
@@ -8853,7 +8853,7 @@ var_cas_outImplementation = template_filewrapper_typeGenerationTemplate_sortedli
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__enumTypeForGeneration__appendSpecificImplementation (C_Compiler & inLexique,
+category_reader__enumTypeForGeneration__appendSpecificImplementation (C_CompilerEx & inLexique,
                                 const cPtr_enumTypeForGeneration * operand_40201
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;
@@ -8870,7 +8870,7 @@ var_cas_outImplementation = template_filewrapper_typeGenerationTemplate_enumType
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__mapProxyTypeForGeneration__appendSpecificImplementation (C_Compiler & inLexique,
+category_reader__mapProxyTypeForGeneration__appendSpecificImplementation (C_CompilerEx & inLexique,
                                 const cPtr_mapProxyTypeForGeneration * operand_40668
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;
@@ -8887,7 +8887,7 @@ var_cas_outImplementation = template_filewrapper_typeGenerationTemplate_mapProxy
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__classTypeForGeneration__appendSpecificImplementation (C_Compiler & inLexique,
+category_reader__classTypeForGeneration__appendSpecificImplementation (C_CompilerEx & inLexique,
                                 const cPtr_classTypeForGeneration * operand_41216
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;
@@ -8904,7 +8904,7 @@ var_cas_outImplementation = template_filewrapper_typeGenerationTemplate_classTyp
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__structTypeForGeneration__appendSpecificImplementation (C_Compiler & inLexique,
+category_reader__structTypeForGeneration__appendSpecificImplementation (C_CompilerEx & inLexique,
                                 const cPtr_structTypeForGeneration * operand_41976
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;
@@ -8921,7 +8921,7 @@ var_cas_outImplementation = template_filewrapper_typeGenerationTemplate_structTy
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__listTypeForGeneration__appendSpecificImplementation (C_Compiler & inLexique,
+category_reader__listTypeForGeneration__appendSpecificImplementation (C_CompilerEx & inLexique,
                                 const cPtr_listTypeForGeneration * operand_42427
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;
@@ -8938,12 +8938,12 @@ var_cas_outImplementation = template_filewrapper_typeGenerationTemplate_listType
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__routineImplementationForGeneration__appendSpecificImplementation (C_Compiler & inLexique,
+category_reader__routineImplementationForGeneration__appendSpecificImplementation (C_CompilerEx & inLexique,
                                 const cPtr_routineImplementationForGeneration * operand_42887
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;
   if (operand_42887 != NULL) {
-var_cas_outImplementation = template_filewrapper_semanticComponentGenerationTemplate_routineImplementation (inLexique, operand_42887->mRoutineName, function_generateProcedure (inLexique, (GGS_string ("routine_")).operator_concat (operand_42887->mRoutineName.reader_identifierRepresentation ()), operand_42887->mFormalArgumentList, operand_42887->mRoutineInstructionList, GGS_bool (false), GGS_string ("C_Compiler"), GGS_bool (true), GGS_bool (false) COMMA_SOURCE_FILE_AT_LINE (1105))) ;
+var_cas_outImplementation = template_filewrapper_semanticComponentGenerationTemplate_routineImplementation (inLexique, operand_42887->mRoutineName, function_generateProcedure (inLexique, (GGS_string ("routine_")).operator_concat (operand_42887->mRoutineName.reader_identifierRepresentation ()), operand_42887->mFormalArgumentList, operand_42887->mRoutineInstructionList, GGS_bool (false), GGS_string ("C_CompilerEx"), GGS_bool (true), GGS_bool (false) COMMA_SOURCE_FILE_AT_LINE (1105))) ;
   }
   return var_cas_outImplementation ;
 }
@@ -8955,12 +8955,12 @@ var_cas_outImplementation = template_filewrapper_semanticComponentGenerationTemp
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__functionImplementationForGeneration__appendSpecificImplementation (C_Compiler & inLexique,
+category_reader__functionImplementationForGeneration__appendSpecificImplementation (C_CompilerEx & inLexique,
                                 const cPtr_functionImplementationForGeneration * operand_43606
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;
   if (operand_43606 != NULL) {
-var_cas_outImplementation = template_filewrapper_semanticComponentGenerationTemplate_functionImplementation (inLexique, operand_43606->mFunctionName, function_generateFunction (inLexique, (GGS_string ("function_")).operator_concat (operand_43606->mFunctionName.reader_identifierRepresentation ()), operand_43606->mFormalArgumentList, operand_43606->mFunctionInstructionList, GGS_string ("C_Compiler"), operand_43606->mReturnType.reader_key (inLexique COMMA_SOURCE_FILE_AT_LINE (1128)), operand_43606->mResultVariableCppName, GGS_bool (false) COMMA_SOURCE_FILE_AT_LINE (1123)), operand_43606->mFormalArgumentList, operand_43606->mReturnType.reader_identifierRepresentation (inLexique COMMA_SOURCE_FILE_AT_LINE (1133))) ;
+var_cas_outImplementation = template_filewrapper_semanticComponentGenerationTemplate_functionImplementation (inLexique, operand_43606->mFunctionName, function_generateFunction (inLexique, (GGS_string ("function_")).operator_concat (operand_43606->mFunctionName.reader_identifierRepresentation ()), operand_43606->mFormalArgumentList, operand_43606->mFunctionInstructionList, GGS_string ("C_CompilerEx"), operand_43606->mReturnType.reader_key (inLexique COMMA_SOURCE_FILE_AT_LINE (1128)), operand_43606->mResultVariableCppName, GGS_bool (false) COMMA_SOURCE_FILE_AT_LINE (1123)), operand_43606->mFormalArgumentList, operand_43606->mReturnType.reader_identifierRepresentation (inLexique COMMA_SOURCE_FILE_AT_LINE (1133))) ;
   }
   return var_cas_outImplementation ;
 }
@@ -8972,12 +8972,12 @@ var_cas_outImplementation = template_filewrapper_semanticComponentGenerationTemp
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__onceFunctionDeclarationForGeneration__appendSpecificImplementation (C_Compiler & inLexique,
+category_reader__onceFunctionDeclarationForGeneration__appendSpecificImplementation (C_CompilerEx & inLexique,
                                 const cPtr_onceFunctionDeclarationForGeneration * operand_44341
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;
   if (operand_44341 != NULL) {
-var_cas_outImplementation = template_filewrapper_semanticComponentGenerationTemplate_onceFunctionImplementation (inLexique, operand_44341->mFunctionName, function_generateFunction (inLexique, (GGS_string ("onceFunction_")).operator_concat (operand_44341->mFunctionName.reader_identifierRepresentation ()), GGS_formalInputParameterListForGeneration ::constructor_emptyList (), operand_44341->mFunctionInstructionList, GGS_string ("C_Compiler"), operand_44341->mReturnType.reader_key (inLexique COMMA_SOURCE_FILE_AT_LINE (1148)), operand_44341->mResultVariableCppName, GGS_bool (true) COMMA_SOURCE_FILE_AT_LINE (1143)), GGS_formalInputParameterListForGeneration ::constructor_emptyList (), operand_44341->mReturnType.reader_identifierRepresentation (inLexique COMMA_SOURCE_FILE_AT_LINE (1153))) ;
+var_cas_outImplementation = template_filewrapper_semanticComponentGenerationTemplate_onceFunctionImplementation (inLexique, operand_44341->mFunctionName, function_generateFunction (inLexique, (GGS_string ("onceFunction_")).operator_concat (operand_44341->mFunctionName.reader_identifierRepresentation ()), GGS_formalInputParameterListForGeneration ::constructor_emptyList (), operand_44341->mFunctionInstructionList, GGS_string ("C_CompilerEx"), operand_44341->mReturnType.reader_key (inLexique COMMA_SOURCE_FILE_AT_LINE (1148)), operand_44341->mResultVariableCppName, GGS_bool (true) COMMA_SOURCE_FILE_AT_LINE (1143)), GGS_formalInputParameterListForGeneration ::constructor_emptyList (), operand_44341->mReturnType.reader_identifierRepresentation (inLexique COMMA_SOURCE_FILE_AT_LINE (1153))) ;
   }
   return var_cas_outImplementation ;
 }
@@ -8989,7 +8989,7 @@ var_cas_outImplementation = template_filewrapper_semanticComponentGenerationTemp
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__abstractCategoryMethodForGeneration__appendSpecificImplementation (C_Compiler & inLexique,
+category_reader__abstractCategoryMethodForGeneration__appendSpecificImplementation (C_CompilerEx & inLexique,
                                 const cPtr_abstractCategoryMethodForGeneration * operand_45136
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;
@@ -9006,7 +9006,7 @@ var_cas_outImplementation = template_filewrapper_semanticComponentGenerationTemp
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__categoryMethodForGeneration__appendSpecificImplementation (C_Compiler & inLexique,
+category_reader__categoryMethodForGeneration__appendSpecificImplementation (C_CompilerEx & inLexique,
                                 const cPtr_categoryMethodForGeneration * operand_45629
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;
@@ -9024,7 +9024,7 @@ var_cas_outImplementation = template_filewrapper_semanticComponentGenerationTemp
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__overridingCategoryMethodForGeneration__appendSpecificImplementation (C_Compiler & inLexique,
+category_reader__overridingCategoryMethodForGeneration__appendSpecificImplementation (C_CompilerEx & inLexique,
                                 const cPtr_overridingCategoryMethodForGeneration * operand_46328
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;
@@ -9042,7 +9042,7 @@ var_cas_outImplementation = template_filewrapper_semanticComponentGenerationTemp
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__abstractCategoryReaderForGeneration__appendSpecificImplementation (C_Compiler & inLexique,
+category_reader__abstractCategoryReaderForGeneration__appendSpecificImplementation (C_CompilerEx & inLexique,
                                 const cPtr_abstractCategoryReaderForGeneration * operand_47016
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;
@@ -9059,12 +9059,12 @@ var_cas_outImplementation = template_filewrapper_semanticComponentGenerationTemp
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__categoryReaderForGeneration__appendSpecificImplementation (C_Compiler & inLexique,
+category_reader__categoryReaderForGeneration__appendSpecificImplementation (C_CompilerEx & inLexique,
                                 const cPtr_categoryReaderForGeneration * operand_47526
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;
   if (operand_47526 != NULL) {
-const GGS_string var_cas_categoryReaderCode = function_generateCategoryReader (inLexique, operand_47526->mTypeName, GGS_string (""), operand_47526->mCategoryReaderName, operand_47526->mCategoryReaderFormalParameterList, operand_47526->mSemanticInstructionListForGeneration, GGS_string ("C_Compiler"), operand_47526->mResultType.reader_key (inLexique COMMA_SOURCE_FILE_AT_LINE (1228)), operand_47526->mResultVarCppName COMMA_SOURCE_FILE_AT_LINE (1221)) ;
+const GGS_string var_cas_categoryReaderCode = function_generateCategoryReader (inLexique, operand_47526->mTypeName, GGS_string (""), operand_47526->mCategoryReaderName, operand_47526->mCategoryReaderFormalParameterList, operand_47526->mSemanticInstructionListForGeneration, GGS_string ("C_CompilerEx"), operand_47526->mResultType.reader_key (inLexique COMMA_SOURCE_FILE_AT_LINE (1228)), operand_47526->mResultVarCppName COMMA_SOURCE_FILE_AT_LINE (1221)) ;
 var_cas_outImplementation = template_filewrapper_semanticComponentGenerationTemplate_categoryReaderImplementation (inLexique, operand_47526->mTypeName, operand_47526->mCategoryReaderName, operand_47526->mCategoryReaderFormalParameterList, operand_47526->mResultType, var_cas_categoryReaderCode) ;
   }
   return var_cas_outImplementation ;
@@ -9077,12 +9077,12 @@ var_cas_outImplementation = template_filewrapper_semanticComponentGenerationTemp
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__overrideCategoryReaderForGeneration__appendSpecificImplementation (C_Compiler & inLexique,
+category_reader__overrideCategoryReaderForGeneration__appendSpecificImplementation (C_CompilerEx & inLexique,
                                 const cPtr_overrideCategoryReaderForGeneration * operand_48300
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;
   if (operand_48300 != NULL) {
-const GGS_string var_cas_categoryReaderCode = function_generateCategoryReader (inLexique, operand_48300->mTypeName, operand_48300->mBaseTypeName, operand_48300->mOverridingCategoryReaderName, operand_48300->mOverridingCategoryReaderFormalParameterList, operand_48300->mSemanticInstructionListForGeneration, GGS_string ("C_Compiler"), operand_48300->mResultType.reader_key (inLexique COMMA_SOURCE_FILE_AT_LINE (1251)), operand_48300->mResultVarCppName COMMA_SOURCE_FILE_AT_LINE (1244)) ;
+const GGS_string var_cas_categoryReaderCode = function_generateCategoryReader (inLexique, operand_48300->mTypeName, operand_48300->mBaseTypeName, operand_48300->mOverridingCategoryReaderName, operand_48300->mOverridingCategoryReaderFormalParameterList, operand_48300->mSemanticInstructionListForGeneration, GGS_string ("C_CompilerEx"), operand_48300->mResultType.reader_key (inLexique COMMA_SOURCE_FILE_AT_LINE (1251)), operand_48300->mResultVarCppName COMMA_SOURCE_FILE_AT_LINE (1244)) ;
 var_cas_outImplementation = template_filewrapper_semanticComponentGenerationTemplate_overridingCategoryReaderImplementation (inLexique, operand_48300->mTypeName, operand_48300->mOverridingCategoryReaderName, operand_48300->mResultType, var_cas_categoryReaderCode) ;
   }
   return var_cas_outImplementation ;
@@ -9094,7 +9094,7 @@ var_cas_outImplementation = template_filewrapper_semanticComponentGenerationTemp
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_generateWrapperContents (C_Compiler & inLexique,
+void routine_generateWrapperContents (C_CompilerEx & inLexique,
                                 const GGS_string  var_cas_inFilewrapperName,
                                 const GGS_string  var_cas_inFilewrapperDirectory,
                                 const GGS_uint   var_cas_inFilewrapperDirectoryIndex,
@@ -9247,7 +9247,7 @@ var_cas_ioImplementation.appendCString ("\n"
 //---------------------------------------------------------------------------*
 
 static GGS_string
-category_reader__filewrapperDeclarationForGeneration__appendSpecificImplementation (C_Compiler & inLexique,
+category_reader__filewrapperDeclarationForGeneration__appendSpecificImplementation (C_CompilerEx & inLexique,
                                 const cPtr_filewrapperDeclarationForGeneration * operand_52498
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_string var_cas_outImplementation ;

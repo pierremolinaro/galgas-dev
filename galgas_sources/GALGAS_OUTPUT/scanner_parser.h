@@ -44,7 +44,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildLexicalTypeMap (C_Compiler &,
+void routine_buildLexicalTypeMap (C_CompilerEx &,
                                 GGS_EXLexicalTypeMap  & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*

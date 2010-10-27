@@ -46,7 +46,7 @@ class GGS_grammarComponentASTList ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_parseSemanticComponent (C_Compiler &,
+void routine_parseSemanticComponent (C_CompilerEx &,
                                 const GGS_lstring  ,
                                 GGS_parsedComponentStruct &,
                                 GGS_semanticsComponentAST  & COMMA_LOCATION_ARGS) ;
@@ -78,13 +78,13 @@ class GGS_grammarComponentASTList : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_grammarComponentASTList
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_grammarComponentASTList
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -99,19 +99,19 @@ class GGS_grammarComponentASTList : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_grammarComponentASTList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_grammarComponentAST & _out_0
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_grammarComponentAST & _out_0
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_grammarComponentAST & _out_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_grammarComponentAST & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
@@ -121,7 +121,7 @@ class GGS_grammarComponentASTList : public AC_GGS_list {
   public : void addAssign_operation (const GGS_grammarComponentAST & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_grammarComponentASTList operator_concat (const GGS_grammarComponentASTList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_grammarComponentAST & argument_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Internal Methods
@@ -139,11 +139,11 @@ class GGS_grammarComponentASTList : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_grammarComponentAST 
-  reader_mGrammarComponentASTAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mGrammarComponentASTAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMGrammarComponentASTAtIndex (C_Compiler & inLexique,
+  modifier_setMGrammarComponentASTAtIndex (C_CompilerEx & inLexique,
                               const GGS_grammarComponentAST  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -153,7 +153,7 @@ class GGS_grammarComponentASTList : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_grammarComponentASTList castFromObject (C_Compiler & inLexique,
+  public : static GGS_grammarComponentASTList castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -180,7 +180,7 @@ class GGS_grammarComponentASTList : public AC_GGS_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_recursivelyImportSemanticComponent (C_Compiler &,
+void routine_recursivelyImportSemanticComponent (C_CompilerEx &,
                                 GGS_parsedComponentStruct &,
                                 GGS_lstringlist  &,
                                 GGS_grammarComponentASTList  &,
@@ -197,7 +197,7 @@ void routine_recursivelyImportSemanticComponent (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildOptionComponentMapForSemanticAnalysis (C_Compiler &,
+void routine_buildOptionComponentMapForSemanticAnalysis (C_CompilerEx &,
                                 const GGS_lstringlist  ,
                                 GGS_parsedComponentStruct &,
                                 GGS_optionComponentMapForSemanticAnalysis  & COMMA_LOCATION_ARGS) ;
@@ -208,7 +208,7 @@ void routine_buildOptionComponentMapForSemanticAnalysis (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildGrammarComponentMapForSemanticAnalysis (C_Compiler &,
+void routine_buildGrammarComponentMapForSemanticAnalysis (C_CompilerEx &,
                                 const GGS_grammarComponentASTList  ,
                                 GGS_semanticContext & COMMA_LOCATION_ARGS) ;
 
@@ -218,7 +218,7 @@ void routine_buildGrammarComponentMapForSemanticAnalysis (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileSemanticsComponent (C_Compiler &,
+void routine_compileSemanticsComponent (C_CompilerEx &,
                                 const GGS_lstring  ,
                                 const GGS_string ,
                                 GGS_parsedComponentStruct & COMMA_LOCATION_ARGS) ;
@@ -238,7 +238,7 @@ extern const cDirectoryWrapperEx gWrapperDirectory_0_semanticFileGenerationTempl
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticFileGenerationTemplate_semanticFileHeader (C_Compiler & inLexique,
+template_filewrapper_semanticFileGenerationTemplate_semanticFileHeader (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_COMPONENT_NAME,
                                 const GGS_stringlist & var_cas_IMPORTED_COMPONENT_LIST,
                                 const GGS_lstringlist & var_cas_TYPE_PREDECLARATION_LIST) ;
@@ -250,7 +250,7 @@ template_filewrapper_semanticFileGenerationTemplate_semanticFileHeader (C_Compil
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticFileGenerationTemplate_semanticFileImplementation (C_Compiler & inLexique,
+template_filewrapper_semanticFileGenerationTemplate_semanticFileImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_COMPONENT_NAME,
                                 const GGS_stringlist & var_cas_IMPORTED_COMPONENT_LIST) ;
 

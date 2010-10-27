@@ -168,7 +168,7 @@ dotAssign_operation (const GGS_XcodeObjectReferenceList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_XcodeObjectReferenceList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_string& argument_0,
                      const GGS_string& argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
@@ -241,7 +241,7 @@ internalSubListWithRange (GGS_XcodeObjectReferenceList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_XcodeObjectReferenceList GGS_XcodeObjectReferenceList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -261,7 +261,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_XcodeObjectReferenceList GGS_XcodeObjectReferenceList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_XcodeObjectReferenceList result ;
@@ -286,7 +286,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_XcodeObjectReferenceList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_string& _out_0,
               GGS_string& _out_1
               COMMA_LOCATION_ARGS) const {
@@ -309,7 +309,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_XcodeObjectReferenceList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_string& _out_0,
              GGS_string& _out_1
              COMMA_LOCATION_ARGS) const {
@@ -332,7 +332,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_XcodeObjectReferenceList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_string& _out_0,
                  GGS_string& _out_1
                  COMMA_LOCATION_ARGS) {
@@ -357,7 +357,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_XcodeObjectReferenceList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_string& _out_0,
                 GGS_string& _out_1
                 COMMA_LOCATION_ARGS) {
@@ -382,7 +382,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_XcodeObjectReferenceList::
-reader_mRefStringAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mRefStringAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -396,7 +396,7 @@ reader_mRefStringAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_XcodeObjectReferenceList::
-reader_mCommentAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mCommentAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -410,7 +410,7 @@ reader_mCommentAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_L
 //---------------------------------------------------------------------------*
 
 void GGS_XcodeObjectReferenceList::
-modifier_setMRefStringAtIndex (C_Compiler & inLexique,
+modifier_setMRefStringAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -425,7 +425,7 @@ modifier_setMRefStringAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_XcodeObjectReferenceList::
-modifier_setMCommentAtIndex (C_Compiler & inLexique,
+modifier_setMCommentAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -465,7 +465,7 @@ GGS_object GGS_XcodeObjectReferenceList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_XcodeObjectReferenceList GGS_XcodeObjectReferenceList::castFromObject (C_Compiler & inLexique,
+GGS_XcodeObjectReferenceList GGS_XcodeObjectReferenceList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -577,7 +577,7 @@ GGS_Xcode_PBXFileReference_abstract (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXFileReference_abstract GGS_Xcode_PBXFileReference_abstract::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -604,7 +604,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_uint  GGS_Xcode_PBXFileReference_abstract::
-reader_mSequenceNumber (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mSequenceNumber (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_uint   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -618,7 +618,7 @@ reader_mSequenceNumber (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS)
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_Xcode_PBXFileReference_abstract::
-reader_mFileName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mFileName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string  result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -663,7 +663,7 @@ GGS_object GGS_Xcode_PBXFileReference_abstract::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXFileReference_abstract GGS_Xcode_PBXFileReference_abstract::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXFileReference_abstract GGS_Xcode_PBXFileReference_abstract::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -692,7 +692,7 @@ const C_galgas_type_descriptorEX * GGS_Xcode_PBXFileReference_abstract::typeDesc
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_string function_getPBXFileReferenceKey (C_Compiler & inLexique,
+GGS_string function_getPBXFileReferenceKey (C_CompilerEx & inLexique,
                                 const GGS_uint   var_cas_inSequenceNumber COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER function_getPBXFileReferenceKey at %s:%d\n", __FILE__, __LINE__) ;
@@ -707,7 +707,7 @@ GGS_string function_getPBXFileReferenceKey (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_getPBXFileReferenceKey (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_getPBXFileReferenceKey (C_CompilerEx & inLexique,
                            const GGS_objectlist & inEffectiveParameterArray,
                            const GGS_location & inErrorLocation
                            COMMA_LOCATION_ARGS) {
@@ -817,7 +817,7 @@ GGS_Xcode_productFileReference (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_productFileReference GGS_Xcode_productFileReference::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -865,7 +865,7 @@ GGS_object GGS_Xcode_productFileReference::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_productFileReference GGS_Xcode_productFileReference::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_productFileReference GGS_Xcode_productFileReference::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -928,7 +928,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_Xcode_PBXFileReference_CompiledMachOExecutable::
-method_buildXcodeProject (C_Compiler & inLexique,
+method_buildXcodeProject (C_CompilerEx & inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outString.appendCString ("\t\t") ;
   var_cas_outString.dotAssign_operation (function_getPBXFileReferenceKey (inLexique, mSequenceNumber COMMA_SOURCE_FILE_AT_LINE (50))) ;
@@ -940,7 +940,7 @@ method_buildXcodeProject (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_Xcode_PBXFileReference_CompiledMachOExecutable::
-method_productExtension (C_Compiler & /* inLexique */,
+method_productExtension (C_CompilerEx & /* inLexique */,
                                 GGS_string& var_cas_outProductExtension COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outProductExtension = GGS_string ("tool") ;
 }
@@ -1017,7 +1017,7 @@ GGS_Xcode_PBXFileReference_CompiledMachOExecutable (cPtr__AC_galgas_class & inOb
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXFileReference_CompiledMachOExecutable GGS_Xcode_PBXFileReference_CompiledMachOExecutable::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -1044,7 +1044,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_CompiledMachOExecutable GGS_Xcode_PBXFileReference_CompiledMachOExecutable::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -1078,7 +1078,7 @@ GGS_object GGS_Xcode_PBXFileReference_CompiledMachOExecutable::reader_object (vo
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXFileReference_CompiledMachOExecutable GGS_Xcode_PBXFileReference_CompiledMachOExecutable::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXFileReference_CompiledMachOExecutable GGS_Xcode_PBXFileReference_CompiledMachOExecutable::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -1141,7 +1141,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_Xcode_PBXFileReference_Application::
-method_buildXcodeProject (C_Compiler & inLexique,
+method_buildXcodeProject (C_CompilerEx & inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outString.appendCString ("\t\t") ;
   var_cas_outString.dotAssign_operation (function_getPBXFileReferenceKey (inLexique, mSequenceNumber COMMA_SOURCE_FILE_AT_LINE (65))) ;
@@ -1153,7 +1153,7 @@ method_buildXcodeProject (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void cPtr_Xcode_PBXFileReference_Application::
-method_productExtension (C_Compiler & /* inLexique */,
+method_productExtension (C_CompilerEx & /* inLexique */,
                                 GGS_string& var_cas_outProductExtension COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outProductExtension = GGS_string ("application") ;
 }
@@ -1230,7 +1230,7 @@ GGS_Xcode_PBXFileReference_Application (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXFileReference_Application GGS_Xcode_PBXFileReference_Application::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -1257,7 +1257,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_Application GGS_Xcode_PBXFileReference_Application::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -1291,7 +1291,7 @@ GGS_object GGS_Xcode_PBXFileReference_Application::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXFileReference_Application GGS_Xcode_PBXFileReference_Application::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXFileReference_Application GGS_Xcode_PBXFileReference_Application::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -1354,7 +1354,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_Xcode_PBXFileReference_cppSourceFile::
-method_buildXcodeProject (C_Compiler & inLexique,
+method_buildXcodeProject (C_CompilerEx & inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outString.appendCString ("\t\t") ;
   var_cas_outString.dotAssign_operation (function_getPBXFileReferenceKey (inLexique, mSequenceNumber COMMA_SOURCE_FILE_AT_LINE (79))) ;
@@ -1439,7 +1439,7 @@ GGS_Xcode_PBXFileReference_cppSourceFile (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXFileReference_cppSourceFile GGS_Xcode_PBXFileReference_cppSourceFile::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -1466,7 +1466,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_cppSourceFile GGS_Xcode_PBXFileReference_cppSourceFile::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -1500,7 +1500,7 @@ GGS_object GGS_Xcode_PBXFileReference_cppSourceFile::reader_object (void) const 
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXFileReference_cppSourceFile GGS_Xcode_PBXFileReference_cppSourceFile::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXFileReference_cppSourceFile GGS_Xcode_PBXFileReference_cppSourceFile::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -1563,7 +1563,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_Xcode_PBXFileReference_hSourceFile::
-method_buildXcodeProject (C_Compiler & inLexique,
+method_buildXcodeProject (C_CompilerEx & inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outString.appendCString ("\t\t") ;
   var_cas_outString.dotAssign_operation (function_getPBXFileReferenceKey (inLexique, mSequenceNumber COMMA_SOURCE_FILE_AT_LINE (90))) ;
@@ -1648,7 +1648,7 @@ GGS_Xcode_PBXFileReference_hSourceFile (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXFileReference_hSourceFile GGS_Xcode_PBXFileReference_hSourceFile::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -1675,7 +1675,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_hSourceFile GGS_Xcode_PBXFileReference_hSourceFile::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -1709,7 +1709,7 @@ GGS_object GGS_Xcode_PBXFileReference_hSourceFile::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXFileReference_hSourceFile GGS_Xcode_PBXFileReference_hSourceFile::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXFileReference_hSourceFile GGS_Xcode_PBXFileReference_hSourceFile::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -1772,7 +1772,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_Xcode_PBXFileReference_pchSourceFile::
-method_buildXcodeProject (C_Compiler & inLexique,
+method_buildXcodeProject (C_CompilerEx & inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outString.appendCString ("\t\t") ;
   var_cas_outString.dotAssign_operation (function_getPBXFileReferenceKey (inLexique, mSequenceNumber COMMA_SOURCE_FILE_AT_LINE (101))) ;
@@ -1857,7 +1857,7 @@ GGS_Xcode_PBXFileReference_pchSourceFile (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXFileReference_pchSourceFile GGS_Xcode_PBXFileReference_pchSourceFile::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -1884,7 +1884,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_pchSourceFile GGS_Xcode_PBXFileReference_pchSourceFile::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -1918,7 +1918,7 @@ GGS_object GGS_Xcode_PBXFileReference_pchSourceFile::reader_object (void) const 
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXFileReference_pchSourceFile GGS_Xcode_PBXFileReference_pchSourceFile::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXFileReference_pchSourceFile GGS_Xcode_PBXFileReference_pchSourceFile::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -1981,7 +1981,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_Xcode_PBXFileReference_mSourceFile::
-method_buildXcodeProject (C_Compiler & inLexique,
+method_buildXcodeProject (C_CompilerEx & inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outString.appendCString ("\t\t") ;
   var_cas_outString.dotAssign_operation (function_getPBXFileReferenceKey (inLexique, mSequenceNumber COMMA_SOURCE_FILE_AT_LINE (112))) ;
@@ -2066,7 +2066,7 @@ GGS_Xcode_PBXFileReference_mSourceFile (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXFileReference_mSourceFile GGS_Xcode_PBXFileReference_mSourceFile::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -2093,7 +2093,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_mSourceFile GGS_Xcode_PBXFileReference_mSourceFile::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -2127,7 +2127,7 @@ GGS_object GGS_Xcode_PBXFileReference_mSourceFile::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXFileReference_mSourceFile GGS_Xcode_PBXFileReference_mSourceFile::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXFileReference_mSourceFile GGS_Xcode_PBXFileReference_mSourceFile::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -2190,7 +2190,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_Xcode_PBXFileReference_mmSourceFile::
-method_buildXcodeProject (C_Compiler & inLexique,
+method_buildXcodeProject (C_CompilerEx & inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outString.appendCString ("\t\t") ;
   var_cas_outString.dotAssign_operation (function_getPBXFileReferenceKey (inLexique, mSequenceNumber COMMA_SOURCE_FILE_AT_LINE (123))) ;
@@ -2275,7 +2275,7 @@ GGS_Xcode_PBXFileReference_mmSourceFile (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXFileReference_mmSourceFile GGS_Xcode_PBXFileReference_mmSourceFile::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -2302,7 +2302,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_mmSourceFile GGS_Xcode_PBXFileReference_mmSourceFile::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -2336,7 +2336,7 @@ GGS_object GGS_Xcode_PBXFileReference_mmSourceFile::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXFileReference_mmSourceFile GGS_Xcode_PBXFileReference_mmSourceFile::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXFileReference_mmSourceFile GGS_Xcode_PBXFileReference_mmSourceFile::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -2399,7 +2399,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_Xcode_PBXFileReference_gifFile::
-method_buildXcodeProject (C_Compiler & inLexique,
+method_buildXcodeProject (C_CompilerEx & inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outString.appendCString ("\t\t") ;
   var_cas_outString.dotAssign_operation (function_getPBXFileReferenceKey (inLexique, mSequenceNumber COMMA_SOURCE_FILE_AT_LINE (134))) ;
@@ -2484,7 +2484,7 @@ GGS_Xcode_PBXFileReference_gifFile (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXFileReference_gifFile GGS_Xcode_PBXFileReference_gifFile::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -2511,7 +2511,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_gifFile GGS_Xcode_PBXFileReference_gifFile::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -2545,7 +2545,7 @@ GGS_object GGS_Xcode_PBXFileReference_gifFile::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXFileReference_gifFile GGS_Xcode_PBXFileReference_gifFile::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXFileReference_gifFile GGS_Xcode_PBXFileReference_gifFile::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -2608,7 +2608,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_Xcode_PBXFileReference_tiffFile::
-method_buildXcodeProject (C_Compiler & inLexique,
+method_buildXcodeProject (C_CompilerEx & inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outString.appendCString ("\t\t") ;
   var_cas_outString.dotAssign_operation (function_getPBXFileReferenceKey (inLexique, mSequenceNumber COMMA_SOURCE_FILE_AT_LINE (145))) ;
@@ -2693,7 +2693,7 @@ GGS_Xcode_PBXFileReference_tiffFile (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXFileReference_tiffFile GGS_Xcode_PBXFileReference_tiffFile::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -2720,7 +2720,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_tiffFile GGS_Xcode_PBXFileReference_tiffFile::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -2754,7 +2754,7 @@ GGS_object GGS_Xcode_PBXFileReference_tiffFile::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXFileReference_tiffFile GGS_Xcode_PBXFileReference_tiffFile::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXFileReference_tiffFile GGS_Xcode_PBXFileReference_tiffFile::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -2817,7 +2817,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_Xcode_PBXFileReference_pngFile::
-method_buildXcodeProject (C_Compiler & inLexique,
+method_buildXcodeProject (C_CompilerEx & inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outString.appendCString ("\t\t") ;
   var_cas_outString.dotAssign_operation (function_getPBXFileReferenceKey (inLexique, mSequenceNumber COMMA_SOURCE_FILE_AT_LINE (156))) ;
@@ -2902,7 +2902,7 @@ GGS_Xcode_PBXFileReference_pngFile (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXFileReference_pngFile GGS_Xcode_PBXFileReference_pngFile::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -2929,7 +2929,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_pngFile GGS_Xcode_PBXFileReference_pngFile::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -2963,7 +2963,7 @@ GGS_object GGS_Xcode_PBXFileReference_pngFile::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXFileReference_pngFile GGS_Xcode_PBXFileReference_pngFile::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXFileReference_pngFile GGS_Xcode_PBXFileReference_pngFile::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -3026,7 +3026,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_Xcode_PBXFileReference_plistFile::
-method_buildXcodeProject (C_Compiler & inLexique,
+method_buildXcodeProject (C_CompilerEx & inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outString.appendCString ("\t\t") ;
   var_cas_outString.dotAssign_operation (function_getPBXFileReferenceKey (inLexique, mSequenceNumber COMMA_SOURCE_FILE_AT_LINE (167))) ;
@@ -3111,7 +3111,7 @@ GGS_Xcode_PBXFileReference_plistFile (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXFileReference_plistFile GGS_Xcode_PBXFileReference_plistFile::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -3138,7 +3138,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_plistFile GGS_Xcode_PBXFileReference_plistFile::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -3172,7 +3172,7 @@ GGS_object GGS_Xcode_PBXFileReference_plistFile::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXFileReference_plistFile GGS_Xcode_PBXFileReference_plistFile::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXFileReference_plistFile GGS_Xcode_PBXFileReference_plistFile::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -3235,7 +3235,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_Xcode_PBXFileReference_frameworkFile::
-method_buildXcodeProject (C_Compiler & inLexique,
+method_buildXcodeProject (C_CompilerEx & inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outString.appendCString ("\t\t") ;
   var_cas_outString.dotAssign_operation (function_getPBXFileReferenceKey (inLexique, mSequenceNumber COMMA_SOURCE_FILE_AT_LINE (178))) ;
@@ -3320,7 +3320,7 @@ GGS_Xcode_PBXFileReference_frameworkFile (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXFileReference_frameworkFile GGS_Xcode_PBXFileReference_frameworkFile::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -3347,7 +3347,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_frameworkFile GGS_Xcode_PBXFileReference_frameworkFile::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -3381,7 +3381,7 @@ GGS_object GGS_Xcode_PBXFileReference_frameworkFile::reader_object (void) const 
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXFileReference_frameworkFile GGS_Xcode_PBXFileReference_frameworkFile::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXFileReference_frameworkFile GGS_Xcode_PBXFileReference_frameworkFile::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -3444,7 +3444,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_Xcode_PBXFileReference_icnsFile::
-method_buildXcodeProject (C_Compiler & inLexique,
+method_buildXcodeProject (C_CompilerEx & inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outString.appendCString ("\t\t") ;
   var_cas_outString.dotAssign_operation (function_getPBXFileReferenceKey (inLexique, mSequenceNumber COMMA_SOURCE_FILE_AT_LINE (189))) ;
@@ -3529,7 +3529,7 @@ GGS_Xcode_PBXFileReference_icnsFile (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXFileReference_icnsFile GGS_Xcode_PBXFileReference_icnsFile::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -3556,7 +3556,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_icnsFile GGS_Xcode_PBXFileReference_icnsFile::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -3590,7 +3590,7 @@ GGS_object GGS_Xcode_PBXFileReference_icnsFile::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXFileReference_icnsFile GGS_Xcode_PBXFileReference_icnsFile::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXFileReference_icnsFile GGS_Xcode_PBXFileReference_icnsFile::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -3656,7 +3656,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_Xcode_PBXFileReference_xibFile::
-method_buildXcodeProject (C_Compiler & inLexique,
+method_buildXcodeProject (C_CompilerEx & inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outString.appendCString ("\t\t") ;
   var_cas_outString.dotAssign_operation (function_getPBXFileReferenceKey (inLexique, mSequenceNumber COMMA_SOURCE_FILE_AT_LINE (201))) ;
@@ -3742,7 +3742,7 @@ GGS_Xcode_PBXFileReference_xibFile (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXFileReference_xibFile GGS_Xcode_PBXFileReference_xibFile::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -3769,7 +3769,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_xibFile GGS_Xcode_PBXFileReference_xibFile::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_string& argument_1,
                  const GGS_string& argument_2
@@ -3784,7 +3784,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_Xcode_PBXFileReference_xibFile::
-reader_mFilePath (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mFilePath (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string  result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -3819,7 +3819,7 @@ GGS_object GGS_Xcode_PBXFileReference_xibFile::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXFileReference_xibFile GGS_Xcode_PBXFileReference_xibFile::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXFileReference_xibFile GGS_Xcode_PBXFileReference_xibFile::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -3885,7 +3885,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_Xcode_PBXFileReference_plistStringFile::
-method_buildXcodeProject (C_Compiler & inLexique,
+method_buildXcodeProject (C_CompilerEx & inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outString.appendCString ("\t\t") ;
   var_cas_outString.dotAssign_operation (function_getPBXFileReferenceKey (inLexique, mSequenceNumber COMMA_SOURCE_FILE_AT_LINE (213))) ;
@@ -3971,7 +3971,7 @@ GGS_Xcode_PBXFileReference_plistStringFile (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXFileReference_plistStringFile GGS_Xcode_PBXFileReference_plistStringFile::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -3998,7 +3998,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_plistStringFile GGS_Xcode_PBXFileReference_plistStringFile::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_string& argument_1,
                  const GGS_string& argument_2
@@ -4013,7 +4013,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_Xcode_PBXFileReference_plistStringFile::
-reader_mFilePath (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mFilePath (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string  result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -4048,7 +4048,7 @@ GGS_object GGS_Xcode_PBXFileReference_plistStringFile::reader_object (void) cons
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXFileReference_plistStringFile GGS_Xcode_PBXFileReference_plistStringFile::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXFileReference_plistStringFile GGS_Xcode_PBXFileReference_plistStringFile::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -4153,7 +4153,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_map GGS_Xcode_PBXFileReference_map::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_Xcode_PBXFileReference_map result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -4198,7 +4198,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXFileReference_map::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -4226,7 +4226,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXFileReference_map::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -4298,7 +4298,7 @@ const utf32 GGS_Xcode_PBXFileReference_map::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXFileReference_map::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_Xcode_PBXFileReference_abstract   & outParameter0 COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
@@ -4369,7 +4369,7 @@ const utf32 GGS_Xcode_PBXFileReference_map::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXFileReference_map::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_Xcode_PBXFileReference_abstract & inParameter0 COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
@@ -4384,7 +4384,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_map GGS_Xcode_PBXFileReference_map::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_Xcode_PBXFileReference_map & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_Xcode_PBXFileReference_map result ; // Not Built
@@ -4401,7 +4401,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_map GGS_Xcode_PBXFileReference_map::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_Xcode_PBXFileReference_map result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -4475,7 +4475,7 @@ GGS_object GGS_Xcode_PBXFileReference_map::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXFileReference_map GGS_Xcode_PBXFileReference_map::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXFileReference_map GGS_Xcode_PBXFileReference_map::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -4500,7 +4500,7 @@ const C_galgas_type_descriptorEX * GGS_Xcode_PBXFileReference_map::typeDescripto
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXFileReference_map GGS_Xcode_PBXFileReference_map::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_Xcode_PBXFileReference_map GGS_Xcode_PBXFileReference_map::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_Xcode_PBXFileReference_abstract & inValue0
                                              COMMA_LOCATION_ARGS) {
@@ -4557,7 +4557,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_Xcode_PBXBuildFile::
-method_buildXcodeProject (C_Compiler & inLexique,
+method_buildXcodeProject (C_CompilerEx & inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outString.appendCString ("\t\t") ;
   var_cas_outString.dotAssign_operation (function_getPBXFileReferenceKey (inLexique, mSequenceNumber COMMA_SOURCE_FILE_AT_LINE (240))) ;
@@ -4641,7 +4641,7 @@ GGS_Xcode_PBXBuildFile (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXBuildFile GGS_Xcode_PBXBuildFile::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -4668,7 +4668,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXBuildFile GGS_Xcode_PBXBuildFile::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_Xcode_PBXFileReference_abstract & argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -4681,7 +4681,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_uint  GGS_Xcode_PBXBuildFile::
-reader_mSequenceNumber (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mSequenceNumber (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_uint   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -4695,7 +4695,7 @@ reader_mSequenceNumber (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS)
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_abstract  GGS_Xcode_PBXBuildFile::
-reader_mSourceFile (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mSourceFile (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_Xcode_PBXFileReference_abstract   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -4740,7 +4740,7 @@ GGS_object GGS_Xcode_PBXBuildFile::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXBuildFile GGS_Xcode_PBXBuildFile::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXBuildFile GGS_Xcode_PBXBuildFile::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -4875,7 +4875,7 @@ dotAssign_operation (const GGS_Xcode_PBXBuildFile_list inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXBuildFile_list::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_Xcode_PBXBuildFile & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
@@ -4944,7 +4944,7 @@ internalSubListWithRange (GGS_Xcode_PBXBuildFile_list & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXBuildFile_list GGS_Xcode_PBXBuildFile_list::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -4964,7 +4964,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXBuildFile_list GGS_Xcode_PBXBuildFile_list::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXBuildFile_list result ;
@@ -4989,7 +4989,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXBuildFile_list::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_Xcode_PBXBuildFile & _out_0
               COMMA_LOCATION_ARGS) const {
   cElement * ptr = NULL ;
@@ -5009,7 +5009,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXBuildFile_list::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_Xcode_PBXBuildFile & _out_0
              COMMA_LOCATION_ARGS) const {
   cElement * ptr = NULL ;
@@ -5029,7 +5029,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXBuildFile_list::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_Xcode_PBXBuildFile & _out_0
                  COMMA_LOCATION_ARGS) {
   cElement * ptr = NULL ;
@@ -5051,7 +5051,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXBuildFile_list::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_Xcode_PBXBuildFile & _out_0
                 COMMA_LOCATION_ARGS) {
   cElement * ptr = NULL ;
@@ -5073,7 +5073,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXBuildFile  GGS_Xcode_PBXBuildFile_list::
-reader_mFileAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mFileAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXBuildFile  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -5087,7 +5087,7 @@ reader_mFileAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCA
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXBuildFile_list::
-modifier_setMFileAtIndex (C_Compiler & inLexique,
+modifier_setMFileAtIndex (C_CompilerEx & inLexique,
                               const GGS_Xcode_PBXBuildFile  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -5120,7 +5120,7 @@ GGS_object GGS_Xcode_PBXBuildFile_list::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXBuildFile_list GGS_Xcode_PBXBuildFile_list::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXBuildFile_list GGS_Xcode_PBXBuildFile_list::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -5258,7 +5258,7 @@ GGS_Xcode_PBXSourcesBuildPhase (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXSourcesBuildPhase GGS_Xcode_PBXSourcesBuildPhase::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -5285,7 +5285,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXSourcesBuildPhase GGS_Xcode_PBXSourcesBuildPhase::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_string& argument_1,
                  const GGS_Xcode_PBXBuildFile_list & argument_2
@@ -5300,7 +5300,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_uint  GGS_Xcode_PBXSourcesBuildPhase::
-reader_mSequenceNumber (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mSequenceNumber (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_uint   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -5314,7 +5314,7 @@ reader_mSequenceNumber (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS)
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_Xcode_PBXSourcesBuildPhase::
-reader_mNameForComment (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mNameForComment (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string  result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -5328,7 +5328,7 @@ reader_mNameForComment (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS)
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXBuildFile_list  GGS_Xcode_PBXSourcesBuildPhase::
-reader_mFileReferenceList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mFileReferenceList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_Xcode_PBXBuildFile_list   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -5373,7 +5373,7 @@ GGS_object GGS_Xcode_PBXSourcesBuildPhase::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXSourcesBuildPhase GGS_Xcode_PBXSourcesBuildPhase::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXSourcesBuildPhase GGS_Xcode_PBXSourcesBuildPhase::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -5508,7 +5508,7 @@ dotAssign_operation (const GGS_Xcode_PBXSourcesBuildPhase_list inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXSourcesBuildPhase_list::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_Xcode_PBXSourcesBuildPhase & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
@@ -5577,7 +5577,7 @@ internalSubListWithRange (GGS_Xcode_PBXSourcesBuildPhase_list & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXSourcesBuildPhase_list GGS_Xcode_PBXSourcesBuildPhase_list::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -5597,7 +5597,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXSourcesBuildPhase_list GGS_Xcode_PBXSourcesBuildPhase_list::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXSourcesBuildPhase_list result ;
@@ -5622,7 +5622,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXSourcesBuildPhase_list::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_Xcode_PBXSourcesBuildPhase & _out_0
               COMMA_LOCATION_ARGS) const {
   cElement * ptr = NULL ;
@@ -5642,7 +5642,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXSourcesBuildPhase_list::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_Xcode_PBXSourcesBuildPhase & _out_0
              COMMA_LOCATION_ARGS) const {
   cElement * ptr = NULL ;
@@ -5662,7 +5662,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXSourcesBuildPhase_list::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_Xcode_PBXSourcesBuildPhase & _out_0
                  COMMA_LOCATION_ARGS) {
   cElement * ptr = NULL ;
@@ -5684,7 +5684,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXSourcesBuildPhase_list::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_Xcode_PBXSourcesBuildPhase & _out_0
                 COMMA_LOCATION_ARGS) {
   cElement * ptr = NULL ;
@@ -5706,7 +5706,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXSourcesBuildPhase  GGS_Xcode_PBXSourcesBuildPhase_list::
-reader_mBuildPhaseAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mBuildPhaseAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXSourcesBuildPhase  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -5720,7 +5720,7 @@ reader_mBuildPhaseAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMM
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXSourcesBuildPhase_list::
-modifier_setMBuildPhaseAtIndex (C_Compiler & inLexique,
+modifier_setMBuildPhaseAtIndex (C_CompilerEx & inLexique,
                               const GGS_Xcode_PBXSourcesBuildPhase  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -5753,7 +5753,7 @@ GGS_object GGS_Xcode_PBXSourcesBuildPhase_list::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXSourcesBuildPhase_list GGS_Xcode_PBXSourcesBuildPhase_list::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXSourcesBuildPhase_list GGS_Xcode_PBXSourcesBuildPhase_list::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -5891,7 +5891,7 @@ GGS_Xcode_PBXResourcesBuildPhase (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXResourcesBuildPhase GGS_Xcode_PBXResourcesBuildPhase::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -5918,7 +5918,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXResourcesBuildPhase GGS_Xcode_PBXResourcesBuildPhase::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_string& argument_1,
                  const GGS_Xcode_PBXBuildFile_list & argument_2
@@ -5933,7 +5933,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_uint  GGS_Xcode_PBXResourcesBuildPhase::
-reader_mSequenceNumber (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mSequenceNumber (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_uint   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -5947,7 +5947,7 @@ reader_mSequenceNumber (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS)
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_Xcode_PBXResourcesBuildPhase::
-reader_mNameForComment (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mNameForComment (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string  result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -5961,7 +5961,7 @@ reader_mNameForComment (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS)
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXBuildFile_list  GGS_Xcode_PBXResourcesBuildPhase::
-reader_mFileReferenceList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mFileReferenceList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_Xcode_PBXBuildFile_list   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -6006,7 +6006,7 @@ GGS_object GGS_Xcode_PBXResourcesBuildPhase::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXResourcesBuildPhase GGS_Xcode_PBXResourcesBuildPhase::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXResourcesBuildPhase GGS_Xcode_PBXResourcesBuildPhase::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -6141,7 +6141,7 @@ dotAssign_operation (const GGS_Xcode_PBXResourcesBuildPhase_list inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXResourcesBuildPhase_list::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_Xcode_PBXResourcesBuildPhase & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
@@ -6210,7 +6210,7 @@ internalSubListWithRange (GGS_Xcode_PBXResourcesBuildPhase_list & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXResourcesBuildPhase_list GGS_Xcode_PBXResourcesBuildPhase_list::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -6230,7 +6230,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXResourcesBuildPhase_list GGS_Xcode_PBXResourcesBuildPhase_list::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXResourcesBuildPhase_list result ;
@@ -6255,7 +6255,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXResourcesBuildPhase_list::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_Xcode_PBXResourcesBuildPhase & _out_0
               COMMA_LOCATION_ARGS) const {
   cElement * ptr = NULL ;
@@ -6275,7 +6275,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXResourcesBuildPhase_list::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_Xcode_PBXResourcesBuildPhase & _out_0
              COMMA_LOCATION_ARGS) const {
   cElement * ptr = NULL ;
@@ -6295,7 +6295,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXResourcesBuildPhase_list::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_Xcode_PBXResourcesBuildPhase & _out_0
                  COMMA_LOCATION_ARGS) {
   cElement * ptr = NULL ;
@@ -6317,7 +6317,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXResourcesBuildPhase_list::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_Xcode_PBXResourcesBuildPhase & _out_0
                 COMMA_LOCATION_ARGS) {
   cElement * ptr = NULL ;
@@ -6339,7 +6339,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXResourcesBuildPhase  GGS_Xcode_PBXResourcesBuildPhase_list::
-reader_mBuildPhaseAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mBuildPhaseAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXResourcesBuildPhase  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -6353,7 +6353,7 @@ reader_mBuildPhaseAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMM
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXResourcesBuildPhase_list::
-modifier_setMBuildPhaseAtIndex (C_Compiler & inLexique,
+modifier_setMBuildPhaseAtIndex (C_CompilerEx & inLexique,
                               const GGS_Xcode_PBXResourcesBuildPhase  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -6386,7 +6386,7 @@ GGS_object GGS_Xcode_PBXResourcesBuildPhase_list::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXResourcesBuildPhase_list GGS_Xcode_PBXResourcesBuildPhase_list::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXResourcesBuildPhase_list GGS_Xcode_PBXResourcesBuildPhase_list::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -6454,7 +6454,7 @@ isEqualToObject (const cPtr__AC_galgas_class * inOperand) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_Xcode_PBXFrameworksBuildPhase::
-method_buildXcodeProject (C_Compiler & inLexique,
+method_buildXcodeProject (C_CompilerEx & inLexique,
                                 GGS_string& var_cas_outString COMMA_UNUSED_LOCATION_ARGS) const {
   var_cas_outString.appendCString ("\t\t") ;
   var_cas_outString.dotAssign_operation (function_getPBXFileReferenceKey (inLexique, mSequenceNumber COMMA_SOURCE_FILE_AT_LINE (300))) ;
@@ -6552,7 +6552,7 @@ GGS_Xcode_PBXFrameworksBuildPhase (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXFrameworksBuildPhase GGS_Xcode_PBXFrameworksBuildPhase::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -6579,7 +6579,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFrameworksBuildPhase GGS_Xcode_PBXFrameworksBuildPhase::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_string& argument_1,
                  const GGS_Xcode_PBXBuildFile_list & argument_2
@@ -6594,7 +6594,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_uint  GGS_Xcode_PBXFrameworksBuildPhase::
-reader_mSequenceNumber (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mSequenceNumber (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_uint   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -6608,7 +6608,7 @@ reader_mSequenceNumber (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS)
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_Xcode_PBXFrameworksBuildPhase::
-reader_mNameForComment (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mNameForComment (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string  result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -6622,7 +6622,7 @@ reader_mNameForComment (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS)
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXBuildFile_list  GGS_Xcode_PBXFrameworksBuildPhase::
-reader_mFileReferenceList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mFileReferenceList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_Xcode_PBXBuildFile_list   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -6667,7 +6667,7 @@ GGS_object GGS_Xcode_PBXFrameworksBuildPhase::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXFrameworksBuildPhase GGS_Xcode_PBXFrameworksBuildPhase::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXFrameworksBuildPhase GGS_Xcode_PBXFrameworksBuildPhase::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -6802,7 +6802,7 @@ dotAssign_operation (const GGS_Xcode_PBXFrameworksBuildPhase_list inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXFrameworksBuildPhase_list::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_Xcode_PBXFrameworksBuildPhase & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
@@ -6871,7 +6871,7 @@ internalSubListWithRange (GGS_Xcode_PBXFrameworksBuildPhase_list & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFrameworksBuildPhase_list GGS_Xcode_PBXFrameworksBuildPhase_list::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -6891,7 +6891,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFrameworksBuildPhase_list GGS_Xcode_PBXFrameworksBuildPhase_list::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXFrameworksBuildPhase_list result ;
@@ -6916,7 +6916,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXFrameworksBuildPhase_list::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_Xcode_PBXFrameworksBuildPhase & _out_0
               COMMA_LOCATION_ARGS) const {
   cElement * ptr = NULL ;
@@ -6936,7 +6936,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXFrameworksBuildPhase_list::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_Xcode_PBXFrameworksBuildPhase & _out_0
              COMMA_LOCATION_ARGS) const {
   cElement * ptr = NULL ;
@@ -6956,7 +6956,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXFrameworksBuildPhase_list::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_Xcode_PBXFrameworksBuildPhase & _out_0
                  COMMA_LOCATION_ARGS) {
   cElement * ptr = NULL ;
@@ -6978,7 +6978,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXFrameworksBuildPhase_list::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_Xcode_PBXFrameworksBuildPhase & _out_0
                 COMMA_LOCATION_ARGS) {
   cElement * ptr = NULL ;
@@ -7000,7 +7000,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFrameworksBuildPhase  GGS_Xcode_PBXFrameworksBuildPhase_list::
-reader_mBuildPhaseAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mBuildPhaseAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXFrameworksBuildPhase  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -7014,7 +7014,7 @@ reader_mBuildPhaseAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMM
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXFrameworksBuildPhase_list::
-modifier_setMBuildPhaseAtIndex (C_Compiler & inLexique,
+modifier_setMBuildPhaseAtIndex (C_CompilerEx & inLexique,
                               const GGS_Xcode_PBXFrameworksBuildPhase  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -7047,7 +7047,7 @@ GGS_object GGS_Xcode_PBXFrameworksBuildPhase_list::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXFrameworksBuildPhase_list GGS_Xcode_PBXFrameworksBuildPhase_list::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXFrameworksBuildPhase_list GGS_Xcode_PBXFrameworksBuildPhase_list::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -7189,7 +7189,7 @@ GGS_Xcode_PBXGroup (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_PBXGroup GGS_Xcode_PBXGroup::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -7216,7 +7216,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXGroup GGS_Xcode_PBXGroup::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_string& argument_1,
                  const GGS_string& argument_2,
@@ -7233,7 +7233,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_uint  GGS_Xcode_PBXGroup::
-reader_mSequenceNumber (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mSequenceNumber (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_uint   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -7247,7 +7247,7 @@ reader_mSequenceNumber (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS)
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_Xcode_PBXGroup::
-reader_mGroupName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mGroupName (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string  result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -7261,7 +7261,7 @@ reader_mGroupName (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) cons
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_Xcode_PBXGroup::
-reader_mGroupPath (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mGroupPath (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string  result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -7275,7 +7275,7 @@ reader_mGroupPath (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) cons
 //---------------------------------------------------------------------------*
 
 GGS_XcodeObjectReferenceList  GGS_Xcode_PBXGroup::
-reader_mChildrenGroupList (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mChildrenGroupList (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_XcodeObjectReferenceList   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -7320,7 +7320,7 @@ GGS_object GGS_Xcode_PBXGroup::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXGroup GGS_Xcode_PBXGroup::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXGroup GGS_Xcode_PBXGroup::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -7455,7 +7455,7 @@ dotAssign_operation (const GGS_Xcode_PBXGroup_list inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXGroup_list::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_Xcode_PBXGroup & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
@@ -7524,7 +7524,7 @@ internalSubListWithRange (GGS_Xcode_PBXGroup_list & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXGroup_list GGS_Xcode_PBXGroup_list::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -7544,7 +7544,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXGroup_list GGS_Xcode_PBXGroup_list::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXGroup_list result ;
@@ -7569,7 +7569,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXGroup_list::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_Xcode_PBXGroup & _out_0
               COMMA_LOCATION_ARGS) const {
   cElement * ptr = NULL ;
@@ -7589,7 +7589,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXGroup_list::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_Xcode_PBXGroup & _out_0
              COMMA_LOCATION_ARGS) const {
   cElement * ptr = NULL ;
@@ -7609,7 +7609,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXGroup_list::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_Xcode_PBXGroup & _out_0
                  COMMA_LOCATION_ARGS) {
   cElement * ptr = NULL ;
@@ -7631,7 +7631,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXGroup_list::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_Xcode_PBXGroup & _out_0
                 COMMA_LOCATION_ARGS) {
   cElement * ptr = NULL ;
@@ -7653,7 +7653,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXGroup  GGS_Xcode_PBXGroup_list::
-reader_mGroupAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mGroupAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXGroup  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -7667,7 +7667,7 @@ reader_mGroupAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOC
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXGroup_list::
-modifier_setMGroupAtIndex (C_Compiler & inLexique,
+modifier_setMGroupAtIndex (C_CompilerEx & inLexique,
                               const GGS_Xcode_PBXGroup  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -7700,7 +7700,7 @@ GGS_object GGS_Xcode_PBXGroup_list::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXGroup_list GGS_Xcode_PBXGroup_list::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXGroup_list GGS_Xcode_PBXGroup_list::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -7838,7 +7838,7 @@ GGS_Xcode_XCBuildConfiguration (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_XCBuildConfiguration GGS_Xcode_XCBuildConfiguration::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -7865,7 +7865,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_XCBuildConfiguration GGS_Xcode_XCBuildConfiguration::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_uint & argument_1,
                  const GGS_stringlist & argument_2
@@ -7880,7 +7880,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_uint  GGS_Xcode_XCBuildConfiguration::
-reader_mSequenceNumber1 (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mSequenceNumber1 (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_uint   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -7894,7 +7894,7 @@ reader_mSequenceNumber1 (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS
 //---------------------------------------------------------------------------*
 
 GGS_uint  GGS_Xcode_XCBuildConfiguration::
-reader_mSequenceNumber2 (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mSequenceNumber2 (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_uint   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -7908,7 +7908,7 @@ reader_mSequenceNumber2 (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS
 //---------------------------------------------------------------------------*
 
 GGS_stringlist  GGS_Xcode_XCBuildConfiguration::
-reader_mSettings (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mSettings (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_stringlist   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -7953,7 +7953,7 @@ GGS_object GGS_Xcode_XCBuildConfiguration::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_XCBuildConfiguration GGS_Xcode_XCBuildConfiguration::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_XCBuildConfiguration GGS_Xcode_XCBuildConfiguration::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -8088,7 +8088,7 @@ dotAssign_operation (const GGS_Xcode_XCBuildConfiguration_list inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_XCBuildConfiguration_list::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_Xcode_XCBuildConfiguration & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
@@ -8157,7 +8157,7 @@ internalSubListWithRange (GGS_Xcode_XCBuildConfiguration_list & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_XCBuildConfiguration_list GGS_Xcode_XCBuildConfiguration_list::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -8177,7 +8177,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_XCBuildConfiguration_list GGS_Xcode_XCBuildConfiguration_list::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_XCBuildConfiguration_list result ;
@@ -8202,7 +8202,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_XCBuildConfiguration_list::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_Xcode_XCBuildConfiguration & _out_0
               COMMA_LOCATION_ARGS) const {
   cElement * ptr = NULL ;
@@ -8222,7 +8222,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_XCBuildConfiguration_list::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_Xcode_XCBuildConfiguration & _out_0
              COMMA_LOCATION_ARGS) const {
   cElement * ptr = NULL ;
@@ -8242,7 +8242,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_XCBuildConfiguration_list::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_Xcode_XCBuildConfiguration & _out_0
                  COMMA_LOCATION_ARGS) {
   cElement * ptr = NULL ;
@@ -8264,7 +8264,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_XCBuildConfiguration_list::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_Xcode_XCBuildConfiguration & _out_0
                 COMMA_LOCATION_ARGS) {
   cElement * ptr = NULL ;
@@ -8286,7 +8286,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_XCBuildConfiguration  GGS_Xcode_XCBuildConfiguration_list::
-reader_mBuildConfigAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mBuildConfigAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_Xcode_XCBuildConfiguration  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -8300,7 +8300,7 @@ reader_mBuildConfigAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COM
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_XCBuildConfiguration_list::
-modifier_setMBuildConfigAtIndex (C_Compiler & inLexique,
+modifier_setMBuildConfigAtIndex (C_CompilerEx & inLexique,
                               const GGS_Xcode_XCBuildConfiguration  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -8333,7 +8333,7 @@ GGS_object GGS_Xcode_XCBuildConfiguration_list::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_XCBuildConfiguration_list GGS_Xcode_XCBuildConfiguration_list::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_XCBuildConfiguration_list GGS_Xcode_XCBuildConfiguration_list::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -8566,7 +8566,7 @@ dotAssign_operation (const GGS_Xcode_PBXNativeTarget_list inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXNativeTarget_list::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_string& argument_0,
                      const GGS_string& argument_1,
                      const GGS_Xcode_XCBuildConfiguration & argument_2,
@@ -8663,7 +8663,7 @@ internalSubListWithRange (GGS_Xcode_PBXNativeTarget_list & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXNativeTarget_list GGS_Xcode_PBXNativeTarget_list::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -8683,7 +8683,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXNativeTarget_list GGS_Xcode_PBXNativeTarget_list::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXNativeTarget_list result ;
@@ -8708,7 +8708,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXNativeTarget_list::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_string& _out_0,
               GGS_string& _out_1,
               GGS_Xcode_XCBuildConfiguration & _out_2,
@@ -8749,7 +8749,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXNativeTarget_list::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_string& _out_0,
              GGS_string& _out_1,
              GGS_Xcode_XCBuildConfiguration & _out_2,
@@ -8790,7 +8790,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXNativeTarget_list::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_string& _out_0,
                  GGS_string& _out_1,
                  GGS_Xcode_XCBuildConfiguration & _out_2,
@@ -8833,7 +8833,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXNativeTarget_list::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_string& _out_0,
                 GGS_string& _out_1,
                 GGS_Xcode_XCBuildConfiguration & _out_2,
@@ -8876,7 +8876,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_Xcode_PBXNativeTarget_list::
-reader_mTargetKeyAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mTargetKeyAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -8890,7 +8890,7 @@ reader_mTargetKeyAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_Xcode_PBXNativeTarget_list::
-reader_mTargetNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mTargetNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -8904,7 +8904,7 @@ reader_mTargetNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMM
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_XCBuildConfiguration  GGS_Xcode_PBXNativeTarget_list::
-reader_mTargetConfigurationAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mTargetConfigurationAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_Xcode_XCBuildConfiguration  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -8918,7 +8918,7 @@ reader_mTargetConfigurationAtIndex (C_Compiler & inLexique, const GGS_uint & inI
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_Xcode_PBXNativeTarget_list::
-reader_mProductInstallPathAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mProductInstallPathAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -8932,7 +8932,7 @@ reader_mProductInstallPathAtIndex (C_Compiler & inLexique, const GGS_uint & inIn
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_Xcode_PBXNativeTarget_list::
-reader_mProductNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mProductNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -8946,7 +8946,7 @@ reader_mProductNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COM
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_productFileReference  GGS_Xcode_PBXNativeTarget_list::
-reader_mProductAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mProductAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_Xcode_productFileReference  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -8960,7 +8960,7 @@ reader_mProductAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_L
 //---------------------------------------------------------------------------*
 
 GGS_stringlist  GGS_Xcode_PBXNativeTarget_list::
-reader_mBuildPhaseKeyListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mBuildPhaseKeyListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_stringlist  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -8974,7 +8974,7 @@ reader_mBuildPhaseKeyListAtIndex (C_Compiler & inLexique, const GGS_uint & inInd
 //---------------------------------------------------------------------------*
 
 GGS_stringlist  GGS_Xcode_PBXNativeTarget_list::
-reader_mDependencyKeyListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mDependencyKeyListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_stringlist  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -8988,7 +8988,7 @@ reader_mDependencyKeyListAtIndex (C_Compiler & inLexique, const GGS_uint & inInd
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXNativeTarget_list::
-modifier_setMTargetKeyAtIndex (C_Compiler & inLexique,
+modifier_setMTargetKeyAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -9003,7 +9003,7 @@ modifier_setMTargetKeyAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXNativeTarget_list::
-modifier_setMTargetNameAtIndex (C_Compiler & inLexique,
+modifier_setMTargetNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -9018,7 +9018,7 @@ modifier_setMTargetNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXNativeTarget_list::
-modifier_setMTargetConfigurationAtIndex (C_Compiler & inLexique,
+modifier_setMTargetConfigurationAtIndex (C_CompilerEx & inLexique,
                               const GGS_Xcode_XCBuildConfiguration  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -9033,7 +9033,7 @@ modifier_setMTargetConfigurationAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXNativeTarget_list::
-modifier_setMProductInstallPathAtIndex (C_Compiler & inLexique,
+modifier_setMProductInstallPathAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -9048,7 +9048,7 @@ modifier_setMProductInstallPathAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXNativeTarget_list::
-modifier_setMProductNameAtIndex (C_Compiler & inLexique,
+modifier_setMProductNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -9063,7 +9063,7 @@ modifier_setMProductNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXNativeTarget_list::
-modifier_setMProductAtIndex (C_Compiler & inLexique,
+modifier_setMProductAtIndex (C_CompilerEx & inLexique,
                               const GGS_Xcode_productFileReference  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -9078,7 +9078,7 @@ modifier_setMProductAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXNativeTarget_list::
-modifier_setMBuildPhaseKeyListAtIndex (C_Compiler & inLexique,
+modifier_setMBuildPhaseKeyListAtIndex (C_CompilerEx & inLexique,
                               const GGS_stringlist  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -9093,7 +9093,7 @@ modifier_setMBuildPhaseKeyListAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXNativeTarget_list::
-modifier_setMDependencyKeyListAtIndex (C_Compiler & inLexique,
+modifier_setMDependencyKeyListAtIndex (C_CompilerEx & inLexique,
                               const GGS_stringlist  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -9175,7 +9175,7 @@ GGS_object GGS_Xcode_PBXNativeTarget_list::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXNativeTarget_list GGS_Xcode_PBXNativeTarget_list::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXNativeTarget_list GGS_Xcode_PBXNativeTarget_list::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -9309,7 +9309,7 @@ GGS_Xcode_targetDependencyDescription (cPtr__AC_galgas_class & inObject) {
 
 //--- castFrom class method (implements cast expression)
 GGS_Xcode_targetDependencyDescription GGS_Xcode_targetDependencyDescription::
-castFrom (C_Compiler & inLexique,
+castFrom (C_CompilerEx & inLexique,
            cPtr__AC_galgas_class * inPointer,
            const bool inUseKindOfClass,
            const GGS_location & inErrorLocation
@@ -9336,7 +9336,7 @@ castFrom (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_targetDependencyDescription GGS_Xcode_targetDependencyDescription::
-constructor_new (C_Compiler & /* inLexique */,
+constructor_new (C_CompilerEx & /* inLexique */,
                  const GGS_uint & argument_0,
                  const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) {
@@ -9349,7 +9349,7 @@ constructor_new (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_uint  GGS_Xcode_targetDependencyDescription::
-reader_mSequenceNumber (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mSequenceNumber (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_uint   result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -9363,7 +9363,7 @@ reader_mSequenceNumber (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS)
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_Xcode_targetDependencyDescription::
-reader_mDependencyTarget (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
+reader_mDependencyTarget (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_string  result ;
   if (mPointer != NULL) {
     macroValidPointer (mPointer) ;
@@ -9408,7 +9408,7 @@ GGS_object GGS_Xcode_targetDependencyDescription::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_targetDependencyDescription GGS_Xcode_targetDependencyDescription::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_targetDependencyDescription GGS_Xcode_targetDependencyDescription::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -9543,7 +9543,7 @@ dotAssign_operation (const GGS_Xcode_targetDependencyDescription_list inOperand)
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_targetDependencyDescription_list::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_Xcode_targetDependencyDescription & argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
@@ -9612,7 +9612,7 @@ internalSubListWithRange (GGS_Xcode_targetDependencyDescription_list & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_targetDependencyDescription_list GGS_Xcode_targetDependencyDescription_list::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -9632,7 +9632,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_targetDependencyDescription_list GGS_Xcode_targetDependencyDescription_list::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_targetDependencyDescription_list result ;
@@ -9657,7 +9657,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_targetDependencyDescription_list::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_Xcode_targetDependencyDescription & _out_0
               COMMA_LOCATION_ARGS) const {
   cElement * ptr = NULL ;
@@ -9677,7 +9677,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_targetDependencyDescription_list::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_Xcode_targetDependencyDescription & _out_0
              COMMA_LOCATION_ARGS) const {
   cElement * ptr = NULL ;
@@ -9697,7 +9697,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_targetDependencyDescription_list::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_Xcode_targetDependencyDescription & _out_0
                  COMMA_LOCATION_ARGS) {
   cElement * ptr = NULL ;
@@ -9719,7 +9719,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_targetDependencyDescription_list::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_Xcode_targetDependencyDescription & _out_0
                 COMMA_LOCATION_ARGS) {
   cElement * ptr = NULL ;
@@ -9741,7 +9741,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_targetDependencyDescription  GGS_Xcode_targetDependencyDescription_list::
-reader_mDependencyAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mDependencyAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_Xcode_targetDependencyDescription  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -9755,7 +9755,7 @@ reader_mDependencyAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMM
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_targetDependencyDescription_list::
-modifier_setMDependencyAtIndex (C_Compiler & inLexique,
+modifier_setMDependencyAtIndex (C_CompilerEx & inLexique,
                               const GGS_Xcode_targetDependencyDescription  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -9788,7 +9788,7 @@ GGS_object GGS_Xcode_targetDependencyDescription_list::reader_object (void) cons
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_targetDependencyDescription_list GGS_Xcode_targetDependencyDescription_list::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_targetDependencyDescription_list GGS_Xcode_targetDependencyDescription_list::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -9951,7 +9951,7 @@ dotAssign_operation (const GGS_Xcode_PBXVariantGroup_list inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXVariantGroup_list::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_string& argument_0,
                      const GGS_string& argument_1,
                      const GGS_string& argument_2
@@ -10028,7 +10028,7 @@ internalSubListWithRange (GGS_Xcode_PBXVariantGroup_list & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXVariantGroup_list GGS_Xcode_PBXVariantGroup_list::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -10048,7 +10048,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXVariantGroup_list GGS_Xcode_PBXVariantGroup_list::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_Xcode_PBXVariantGroup_list result ;
@@ -10073,7 +10073,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXVariantGroup_list::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_string& _out_0,
               GGS_string& _out_1,
               GGS_string& _out_2
@@ -10099,7 +10099,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXVariantGroup_list::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_string& _out_0,
              GGS_string& _out_1,
              GGS_string& _out_2
@@ -10125,7 +10125,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXVariantGroup_list::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_string& _out_0,
                  GGS_string& _out_1,
                  GGS_string& _out_2
@@ -10153,7 +10153,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXVariantGroup_list::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_string& _out_0,
                 GGS_string& _out_1,
                 GGS_string& _out_2
@@ -10181,7 +10181,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_Xcode_PBXVariantGroup_list::
-reader_mPBXVariantKeyAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mPBXVariantKeyAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -10195,7 +10195,7 @@ reader_mPBXVariantKeyAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex C
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_Xcode_PBXVariantGroup_list::
-reader_mPBXFileReferenceKeyAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mPBXFileReferenceKeyAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -10209,7 +10209,7 @@ reader_mPBXFileReferenceKeyAtIndex (C_Compiler & inLexique, const GGS_uint & inI
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_Xcode_PBXVariantGroup_list::
-reader_mNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -10223,7 +10223,7 @@ reader_mNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCA
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXVariantGroup_list::
-modifier_setMPBXVariantKeyAtIndex (C_Compiler & inLexique,
+modifier_setMPBXVariantKeyAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -10238,7 +10238,7 @@ modifier_setMPBXVariantKeyAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXVariantGroup_list::
-modifier_setMPBXFileReferenceKeyAtIndex (C_Compiler & inLexique,
+modifier_setMPBXFileReferenceKeyAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -10253,7 +10253,7 @@ modifier_setMPBXFileReferenceKeyAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_Xcode_PBXVariantGroup_list::
-modifier_setMNameAtIndex (C_Compiler & inLexique,
+modifier_setMNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -10300,7 +10300,7 @@ GGS_object GGS_Xcode_PBXVariantGroup_list::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_Xcode_PBXVariantGroup_list GGS_Xcode_PBXVariantGroup_list::castFromObject (C_Compiler & inLexique,
+GGS_Xcode_PBXVariantGroup_list GGS_Xcode_PBXVariantGroup_list::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -10543,7 +10543,7 @@ GGS_object GGS_XcodeProjectDescription::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_XcodeProjectDescription GGS_XcodeProjectDescription::castFromObject (C_Compiler & inLexique,
+GGS_XcodeProjectDescription GGS_XcodeProjectDescription::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -10572,7 +10572,7 @@ const C_galgas_type_descriptorEX * GGS_XcodeProjectDescription::typeDescriptor (
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_initXcodeProjectDescription (C_Compiler & inLexique,
+void routine_initXcodeProjectDescription (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_outDescription
                         COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
@@ -10590,7 +10590,7 @@ void routine_initXcodeProjectDescription (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_group (C_Compiler & inLexique,
+void routine_enter_group (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_string  var_cas_inGroupName,
                                 const GGS_string  var_cas_inGroupPath,
@@ -10614,7 +10614,7 @@ void routine_enter_group (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_subgroup (C_Compiler & inLexique,
+void routine_enter_subgroup (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_string  var_cas_inSubGroupName,
                                 const GGS_string  var_cas_inSubGroupPath,
@@ -10639,7 +10639,7 @@ void routine_enter_subgroup (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_append_cpp_h_files (C_Compiler &,
+void routine_append_cpp_h_files (C_CompilerEx &,
                                 GGS_stringlist  & var_cas_ioList,
                                 GGS_string  var_cas_inBaseName
                         COMMA_UNUSED_LOCATION_ARGS) {
@@ -10659,7 +10659,7 @@ void routine_append_cpp_h_files (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_append_m_h_files (C_Compiler &,
+void routine_append_m_h_files (C_CompilerEx &,
                                 GGS_stringlist  & var_cas_ioList,
                                 GGS_string  var_cas_inBaseName
                         COMMA_UNUSED_LOCATION_ARGS) {
@@ -10679,7 +10679,7 @@ void routine_append_m_h_files (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_append_mm_h_files (C_Compiler &,
+void routine_append_mm_h_files (C_CompilerEx &,
                                 GGS_stringlist  & var_cas_ioList,
                                 GGS_string  var_cas_inBaseName
                         COMMA_UNUSED_LOCATION_ARGS) {
@@ -10699,7 +10699,7 @@ void routine_append_mm_h_files (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_cpp_file_in_group (C_Compiler & inLexique,
+void routine_enter_cpp_file_in_group (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_string  var_cas_inCppFile,
                                 GGS_XcodeObjectReferenceList  & var_cas_ioFileListForGroup
@@ -10723,7 +10723,7 @@ void routine_enter_cpp_file_in_group (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_h_file_in_group (C_Compiler & inLexique,
+void routine_enter_h_file_in_group (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_string  var_cas_inCppFile,
                                 GGS_XcodeObjectReferenceList  & var_cas_ioFileListForGroup
@@ -10747,7 +10747,7 @@ void routine_enter_h_file_in_group (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_pch_file_in_group (C_Compiler & inLexique,
+void routine_enter_pch_file_in_group (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_string  var_cas_inCppFile,
                                 GGS_XcodeObjectReferenceList  & var_cas_ioFileListForGroup
@@ -10771,7 +10771,7 @@ void routine_enter_pch_file_in_group (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_m_file_in_group (C_Compiler & inLexique,
+void routine_enter_m_file_in_group (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_string  var_cas_inCppFile,
                                 GGS_XcodeObjectReferenceList  & var_cas_ioFileListForGroup
@@ -10795,7 +10795,7 @@ void routine_enter_m_file_in_group (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_mm_file_in_group (C_Compiler & inLexique,
+void routine_enter_mm_file_in_group (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_string  var_cas_inCppFile,
                                 GGS_XcodeObjectReferenceList  & var_cas_ioFileListForGroup
@@ -10819,7 +10819,7 @@ void routine_enter_mm_file_in_group (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_gif_file_in_group (C_Compiler & inLexique,
+void routine_enter_gif_file_in_group (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_string  var_cas_inFile,
                                 GGS_XcodeObjectReferenceList  & var_cas_ioFileListForGroup
@@ -10843,7 +10843,7 @@ void routine_enter_gif_file_in_group (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_tiff_file_in_group (C_Compiler & inLexique,
+void routine_enter_tiff_file_in_group (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_string  var_cas_inCppFile,
                                 GGS_XcodeObjectReferenceList  & var_cas_ioFileListForGroup
@@ -10867,7 +10867,7 @@ void routine_enter_tiff_file_in_group (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_png_file_in_group (C_Compiler & inLexique,
+void routine_enter_png_file_in_group (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_string  var_cas_inCppFile,
                                 GGS_XcodeObjectReferenceList  & var_cas_ioFileListForGroup
@@ -10891,7 +10891,7 @@ void routine_enter_png_file_in_group (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_plist_file_in_group (C_Compiler & inLexique,
+void routine_enter_plist_file_in_group (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_string  var_cas_inCppFile,
                                 GGS_XcodeObjectReferenceList  & var_cas_ioFileListForGroup
@@ -10915,7 +10915,7 @@ void routine_enter_plist_file_in_group (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_framework_file_in_group (C_Compiler & inLexique,
+void routine_enter_framework_file_in_group (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_string  var_cas_inCppFile,
                                 GGS_XcodeObjectReferenceList  & var_cas_ioFileListForGroup
@@ -10939,7 +10939,7 @@ void routine_enter_framework_file_in_group (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_icns_file_in_group (C_Compiler & inLexique,
+void routine_enter_icns_file_in_group (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_string  var_cas_inCppFile,
                                 GGS_XcodeObjectReferenceList  & var_cas_ioFileListForGroup
@@ -10963,7 +10963,7 @@ void routine_enter_icns_file_in_group (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_file_in_group (C_Compiler & inLexique,
+void routine_enter_file_in_group (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_string  var_cas_inFileName,
                                 GGS_XcodeObjectReferenceList  & var_cas_ioFileListForGroup
@@ -11039,7 +11039,7 @@ void routine_enter_file_in_group (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_files_in_group (C_Compiler & inLexique,
+void routine_enter_files_in_group (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_stringlist   var_cas_inFileList,
                                 GGS_XcodeObjectReferenceList  & var_cas_ioFileListForGroup
@@ -11066,7 +11066,7 @@ void routine_enter_files_in_group (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_xib_in_group (C_Compiler & inLexique,
+void routine_enter_xib_in_group (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_string  var_cas_in_lproj_dir,
                                 const GGS_string  var_cas_in_xib_fileName,
@@ -11094,7 +11094,7 @@ void routine_enter_xib_in_group (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_plist_strings_in_group (C_Compiler & inLexique,
+void routine_enter_plist_strings_in_group (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_string  var_cas_in_lproj_dir,
                                 const GGS_string  var_cas_in_plist_string_fileName,
@@ -11122,7 +11122,7 @@ void routine_enter_plist_strings_in_group (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_file_for_sources_build_phase (C_Compiler & inLexique,
+void routine_enter_file_for_sources_build_phase (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_string  var_cas_in_fileName,
                                 GGS_Xcode_PBXBuildFile_list  & var_cas_ioBuildPhaseList
@@ -11151,7 +11151,7 @@ void routine_enter_file_for_sources_build_phase (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_file_list_for_sources_build_phase (C_Compiler & inLexique,
+void routine_enter_file_list_for_sources_build_phase (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_stringlist   var_cas_in_fileList,
                                 GGS_Xcode_PBXBuildFile_list  & var_cas_ioBuildPhaseList
@@ -11178,7 +11178,7 @@ void routine_enter_file_list_for_sources_build_phase (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_files_for_resources_build_phase (C_Compiler & inLexique,
+void routine_enter_files_for_resources_build_phase (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_stringlist   var_cas_in_fileList,
                                 GGS_Xcode_PBXBuildFile_list  & var_cas_ioBuildPhaseList
@@ -11214,7 +11214,7 @@ void routine_enter_files_for_resources_build_phase (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enter_files_for_frameworks_build_phase (C_Compiler & inLexique,
+void routine_enter_files_for_frameworks_build_phase (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_stringlist   var_cas_in_framework_fileList,
                                 GGS_Xcode_PBXBuildFile_list  & var_cas_ioBuildPhaseList
@@ -11250,7 +11250,7 @@ void routine_enter_files_for_frameworks_build_phase (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_add_tool_target (C_Compiler & inLexique,
+void routine_add_tool_target (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_string  var_cas_inProductFileName,
                                 const GGS_string  var_cas_inTargetName,
@@ -11304,7 +11304,7 @@ void routine_add_tool_target (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_add_app_target (C_Compiler & inLexique,
+void routine_add_app_target (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_string  var_cas_inProductFileName,
                                 const GGS_string  var_cas_inTargetName,
@@ -11380,7 +11380,7 @@ void routine_add_app_target (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterProjectDefaultSettings (C_Compiler &,
+void routine_enterProjectDefaultSettings (C_CompilerEx &,
                                 const GGS_stringlist   var_cas_inHeaderSearchPathList,
                                 GGS_stringlist  & var_cas_outProjectDefaultSettings
                         COMMA_UNUSED_LOCATION_ARGS) {
@@ -11450,7 +11450,7 @@ void routine_enterProjectDefaultSettings (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildXcodeProjectString (C_Compiler & inLexique,
+void routine_buildXcodeProjectString (C_CompilerEx & inLexique,
                                 const GGS_XcodeProjectDescription  var_cas_inXcodeProjectDescription,
                                 const GGS_string  var_cas_inProjectName,
                                 const GGS_string  var_cas_inMainGroupKey,
@@ -11894,7 +11894,7 @@ void routine_buildXcodeProjectString (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_generateXCodeFile (C_Compiler & inLexique,
+void routine_generateXCodeFile (C_CompilerEx & inLexique,
                                 GGS_XcodeProjectDescription & var_cas_ioXcodeProjectDescription,
                                 const GGS_string  var_cas_in_xcodeproj_filePath,
                                 const GGS_stringlist   var_cas_inProjectDefaultSettings,

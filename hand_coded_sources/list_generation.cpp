@@ -32,7 +32,7 @@
 
 void cPtr_C_listTypeToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
-                         C_Compiler & /* inLexique */) const {
+                         C_CompilerEx & /* inLexique */) const {
 //----------------------- Element of list class declaration ----------------  
   inHfile.appendCppTitleComment (C_String ("Element of list '@") + aNomListe + "'") ;
 //--------- Declare internal element class ------------
@@ -133,12 +133,12 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "                            const PMSInt32 inFirstIndex,\n"
              "                            const PMSInt32 inCount) const ;\n\n"
              "  public : GGS_" << aNomListe << "\n"
-             "  reader_subListWithRange (C_Compiler & inLexique,\n"
+             "  reader_subListWithRange (C_CompilerEx & inLexique,\n"
              "                           const GGS_uint & inFirstIndex,\n"
              "                           const GGS_uint & inCount\n"
              "                           COMMA_LOCATION_ARGS) const ;\n\n"
              "  public : GGS_" << aNomListe << "\n"
-             "  reader_subListFromIndex (C_Compiler & inLexique,\n"
+             "  reader_subListFromIndex (C_CompilerEx & inLexique,\n"
              "                           const GGS_uint & inIndex\n"
              "                           COMMA_LOCATION_ARGS) const ;\n\n"
 
@@ -160,7 +160,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare method 'first'
              "//--- Method 'first'\n"
-             "  public : void method_first (C_Compiler & inLexique" ;
+             "  public : void method_first (C_CompilerEx & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -175,7 +175,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare method 'last'
              "//--- Method 'last'\n"
-             "  public : void method_last (C_Compiler & inLexique" ;
+             "  public : void method_last (C_CompilerEx & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -190,7 +190,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare modifier 'popLast'
              "//--- Modifier 'popLast'\n"
-             "  public : void modifier_popLast (C_Compiler & inLexique" ;
+             "  public : void modifier_popLast (C_CompilerEx & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -205,7 +205,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare modifier 'popFirst'
              "//--- Modifier 'popFirst'\n"
-             "  public : void modifier_popFirst (C_Compiler & inLexique" ;
+             "  public : void modifier_popFirst (C_CompilerEx & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -246,7 +246,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 //             "  public : cElement * operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) const ;\n"
 
 //--- Prepend a new value
-             "  public : void modifier_prependValue (C_Compiler & inLexique" ;
+             "  public : void modifier_prependValue (C_CompilerEx & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -302,7 +302,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
     inHfile << "  public : " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inHfile) ;
     inHfile << "\n"
-               "  reader_" << current._mAttributeName (HERE) << "AtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;\n" ;
+               "  reader_" << current._mAttributeName (HERE) << "AtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;\n" ;
     current.next () ;
   }
   inHfile << "\n" ;
@@ -312,7 +312,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   current.rewind () ;
   while (current.hasCurrentObject ()) {
     inHfile << "  public : void\n"
-               "  modifier_set" << current._mAttributeName (HERE).stringByCapitalizingFirstCharacter () << "AtIndex (C_Compiler & inLexique,\n"
+               "  modifier_set" << current._mAttributeName (HERE).stringByCapitalizingFirstCharacter () << "AtIndex (C_CompilerEx & inLexique,\n"
                "                              const " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inHfile) ;
     inHfile << " & inObject,\n"
@@ -325,7 +325,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Introspection\n"
              "  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;\n\n"
              "  public : GGS_object reader_object (void) const ;\n\n"
-             "  public : static GGS_" << aNomListe << " castFromObject (C_Compiler & inLexique,\n"
+             "  public : static GGS_" << aNomListe << " castFromObject (C_CompilerEx & inLexique,\n"
              "                                           const GGS_object & inObject,\n"
              "                                           const GGS_location & inErrorLocation\n"
              "                                           COMMA_LOCATION_ARGS) ;\n\n"
@@ -378,7 +378,7 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_listTypeToImplement::
-generateCppClassImplementation (C_Compiler & /* inLexique */,
+generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                   const C_String & /* inTargetFileName */,
                                   PMSInt32 & /* ioPrototypeIndex */,
@@ -636,7 +636,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Generate 'prepend' method
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "modifier_prependValue (C_Compiler & /* inLexique */" ;
+               "modifier_prependValue (C_CompilerEx & /* inLexique */" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -778,7 +778,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.appendCppHyphenLineComment () ;
 
   inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
-               "reader_subListWithRange (C_Compiler & inLexique,\n"
+               "reader_subListWithRange (C_CompilerEx & inLexique,\n"
                "                         const GGS_uint & inFirstIndex,\n"
                "                         const GGS_uint & inCount\n"
                "                         COMMA_LOCATION_ARGS) const {\n"
@@ -797,7 +797,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   inCppFile.appendCppHyphenLineComment () ;
 
   inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::\n"
-               "reader_subListFromIndex (C_Compiler & inLexique,\n"
+               "reader_subListFromIndex (C_CompilerEx & inLexique,\n"
                "                         const GGS_uint & inIndex\n"
                "                         COMMA_LOCATION_ARGS) const {\n"
                "  GGS_" << aNomListe << " result ;\n"
@@ -822,7 +822,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement method 'first'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "method_first (C_Compiler & inLexique" ;
+               "method_first (C_CompilerEx & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hasCurrentObject ()) {
@@ -865,7 +865,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement method 'last'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "method_last (C_Compiler & inLexique" ;
+               "method_last (C_CompilerEx & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hasCurrentObject ()) {
@@ -907,7 +907,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement method 'popFirst'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "modifier_popFirst (C_Compiler & inLexique" ;
+               "modifier_popFirst (C_CompilerEx & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hasCurrentObject ()) {
@@ -950,7 +950,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement method 'popLast'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "modifier_popLast (C_Compiler & inLexique" ;
+               "modifier_popLast (C_CompilerEx & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hasCurrentObject ()) {
@@ -996,7 +996,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
     inCppFile.appendCppHyphenLineComment () ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " GGS_" << aNomListe << "::\n"
-                 "reader_" << current._mAttributeName (HERE) << "AtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {\n"
+                 "reader_" << current._mAttributeName (HERE) << "AtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {\n"
                  "  " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " result ;\n"
@@ -1016,7 +1016,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
   while (current.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "void GGS_" << aNomListe << "::\n"
-                 "modifier_set" << current._mAttributeName (HERE).stringByCapitalizingFirstCharacter () << "AtIndex (C_Compiler & inLexique,\n"
+                 "modifier_set" << current._mAttributeName (HERE).stringByCapitalizingFirstCharacter () << "AtIndex (C_CompilerEx & inLexique,\n"
                  "                              const " ;
     current._mAttributType (HERE) (HERE)->generateCppClassName (inCppFile) ;
     inCppFile << " & inObject,\n"
@@ -1055,7 +1055,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  return result ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::castFromObject (C_Compiler & inLexique,\n"
+  inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::castFromObject (C_CompilerEx & inLexique,\n"
                "                                   const GGS_object & inObject,\n"
                "                                   const GGS_location & inErrorLocation\n"
                "                                   COMMA_LOCATION_ARGS) {\n"
@@ -1088,7 +1088,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 void cPtr_C_sortedListTypeToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
-                         C_Compiler & /* inLexique */) const {
+                         C_CompilerEx & /* inLexique */) const {
 //----------------------- Element of list class declaration ----------------  
   inHfile.appendCppTitleComment (C_String ("Element of sorted list '@") + aNomListe + "'") ;
 //--------- Declare internal element class ------------
@@ -1210,7 +1210,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare method 'smallest'
              "//--- Method 'smallest'\n"
-             "  public : void method_smallest (C_Compiler & inLexique" ;
+             "  public : void method_smallest (C_CompilerEx & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -1225,7 +1225,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare method 'greatest'
              "//--- Method 'greatest'\n"
-             "  public : void method_greatest (C_Compiler & inLexique" ;
+             "  public : void method_greatest (C_CompilerEx & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -1240,7 +1240,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare modifier 'popGreatest'
              "//--- Method 'popGreatest'\n"
-             "  public : void modifier_popGreatest (C_Compiler & inLexique" ;
+             "  public : void modifier_popGreatest (C_CompilerEx & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -1255,7 +1255,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
 
 //--- Declare modifier 'popSmallest'
              "//--- Modifier 'popSmallest'\n"
-             "  public : void modifier_popSmallest (C_Compiler & inLexique" ;
+             "  public : void modifier_popSmallest (C_CompilerEx & inLexique" ;
   current.rewind () ;
   numeroVariable = 0 ;
   while (current.hasCurrentObject ()) {
@@ -1315,7 +1315,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Introspection\n"
              "  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;\n\n"
              "  public : GGS_object reader_object (void) const ;\n\n"
-             "  public : static GGS_" << aNomListe << " castFromObject (C_Compiler & inLexique,\n"
+             "  public : static GGS_" << aNomListe << " castFromObject (C_CompilerEx & inLexique,\n"
              "                                           const GGS_object & inObject,\n"
              "                                           const GGS_location & inErrorLocation\n"
              "                                           COMMA_LOCATION_ARGS) ;\n\n"
@@ -1367,7 +1367,7 @@ generateCppClassDeclaration (AC_OutputStream & /* inHfile*/,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_sortedListTypeToImplement::
-generateCppClassImplementation (C_Compiler & /* inLexique */,
+generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                   const C_String & /* inTargetFileName */,
                                   PMSInt32 & /* ioPrototypeIndex */,
@@ -1686,7 +1686,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement method 'smallest'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "method_smallest (C_Compiler & inLexique" ;
+               "method_smallest (C_CompilerEx & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hasCurrentObject ()) {
@@ -1729,7 +1729,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement method 'greatest'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "method_greatest (C_Compiler & inLexique" ;
+               "method_greatest (C_CompilerEx & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hasCurrentObject ()) {
@@ -1771,7 +1771,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement method 'popSmallest'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "modifier_popSmallest (C_Compiler & inLexique" ;
+               "modifier_popSmallest (C_CompilerEx & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hasCurrentObject ()) {
@@ -1814,7 +1814,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
 
 //--- Implement modifier 'popGreatest'
   inCppFile << "void GGS_" << aNomListe << "::\n"
-               "modifier_popGreatest (C_Compiler & inLexique" ;
+               "modifier_popGreatest (C_CompilerEx & inLexique" ;
   numeroVariable = 0 ;
   current.rewind () ;
   while (current.hasCurrentObject ()) {
@@ -1876,7 +1876,7 @@ generateCppClassImplementation (C_Compiler & /* inLexique */,
                "  return result ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::castFromObject (C_Compiler & inLexique,\n"
+  inCppFile << "GGS_" << aNomListe << " GGS_" << aNomListe << "::castFromObject (C_CompilerEx & inLexique,\n"
                "                                   const GGS_object & inObject,\n"
                "                                   const GGS_location & inErrorLocation\n"
                "                                   COMMA_LOCATION_ARGS) {\n"

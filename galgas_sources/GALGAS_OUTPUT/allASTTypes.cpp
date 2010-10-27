@@ -124,7 +124,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_parsedLexiqueComponentMap GGS_parsedLexiqueComponentMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_parsedLexiqueComponentMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -169,7 +169,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedLexiqueComponentMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -197,7 +197,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_parsedLexiqueComponentMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -282,7 +282,7 @@ const utf32 GGS_parsedLexiqueComponentMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedLexiqueComponentMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_lexiqueComponentAST   & outParameter0 COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
@@ -353,7 +353,7 @@ const utf32 GGS_parsedLexiqueComponentMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedLexiqueComponentMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_lexiqueComponentAST & inParameter0 COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
@@ -368,7 +368,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_parsedLexiqueComponentMap GGS_parsedLexiqueComponentMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_parsedLexiqueComponentMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_parsedLexiqueComponentMap result ; // Not Built
@@ -385,7 +385,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_parsedLexiqueComponentMap GGS_parsedLexiqueComponentMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_parsedLexiqueComponentMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -459,7 +459,7 @@ GGS_object GGS_parsedLexiqueComponentMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_parsedLexiqueComponentMap GGS_parsedLexiqueComponentMap::castFromObject (C_Compiler & inLexique,
+GGS_parsedLexiqueComponentMap GGS_parsedLexiqueComponentMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -484,7 +484,7 @@ const C_galgas_type_descriptorEX * GGS_parsedLexiqueComponentMap::typeDescriptor
 
 //---------------------------------------------------------------------------*
 
-GGS_parsedLexiqueComponentMap GGS_parsedLexiqueComponentMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_parsedLexiqueComponentMap GGS_parsedLexiqueComponentMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_lexiqueComponentAST & inValue0
                                              COMMA_LOCATION_ARGS) {
@@ -595,7 +595,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_parsedOptionComponentMap GGS_parsedOptionComponentMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_parsedOptionComponentMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -640,7 +640,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedOptionComponentMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -674,7 +674,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_parsedOptionComponentMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -764,7 +764,7 @@ const utf32 GGS_parsedOptionComponentMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedOptionComponentMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_commandLineOptionMap   & outParameter0,
                                 GGS_commandLineOptionMap   & outParameter1,
@@ -838,7 +838,7 @@ const utf32 GGS_parsedOptionComponentMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedOptionComponentMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_commandLineOptionMap & inParameter0,
                                 const GGS_commandLineOptionMap & inParameter1,
@@ -857,7 +857,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_parsedOptionComponentMap GGS_parsedOptionComponentMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_parsedOptionComponentMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_parsedOptionComponentMap result ; // Not Built
@@ -874,7 +874,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_parsedOptionComponentMap GGS_parsedOptionComponentMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_parsedOptionComponentMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -960,7 +960,7 @@ GGS_object GGS_parsedOptionComponentMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_parsedOptionComponentMap GGS_parsedOptionComponentMap::castFromObject (C_Compiler & inLexique,
+GGS_parsedOptionComponentMap GGS_parsedOptionComponentMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -985,7 +985,7 @@ const C_galgas_type_descriptorEX * GGS_parsedOptionComponentMap::typeDescriptor 
 
 //---------------------------------------------------------------------------*
 
-GGS_parsedOptionComponentMap GGS_parsedOptionComponentMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_parsedOptionComponentMap GGS_parsedOptionComponentMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_commandLineOptionMap & inValue0,
                                              const GGS_commandLineOptionMap & inValue1,
@@ -1086,7 +1086,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_parsedSemanticsComponentMap GGS_parsedSemanticsComponentMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_parsedSemanticsComponentMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -1131,7 +1131,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedSemanticsComponentMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -1159,7 +1159,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_parsedSemanticsComponentMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -1246,7 +1246,7 @@ const utf32 GGS_parsedSemanticsComponentMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedSemanticsComponentMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_semanticsComponentAST   & outParameter0 COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
@@ -1319,7 +1319,7 @@ const utf32 GGS_parsedSemanticsComponentMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedSemanticsComponentMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_semanticsComponentAST & inParameter0 COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
@@ -1334,7 +1334,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_parsedSemanticsComponentMap GGS_parsedSemanticsComponentMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_parsedSemanticsComponentMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_parsedSemanticsComponentMap result ; // Not Built
@@ -1351,7 +1351,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_parsedSemanticsComponentMap GGS_parsedSemanticsComponentMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_parsedSemanticsComponentMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -1425,7 +1425,7 @@ GGS_object GGS_parsedSemanticsComponentMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_parsedSemanticsComponentMap GGS_parsedSemanticsComponentMap::castFromObject (C_Compiler & inLexique,
+GGS_parsedSemanticsComponentMap GGS_parsedSemanticsComponentMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -1450,7 +1450,7 @@ const C_galgas_type_descriptorEX * GGS_parsedSemanticsComponentMap::typeDescript
 
 //---------------------------------------------------------------------------*
 
-GGS_parsedSemanticsComponentMap GGS_parsedSemanticsComponentMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_parsedSemanticsComponentMap GGS_parsedSemanticsComponentMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_semanticsComponentAST & inValue0
                                              COMMA_LOCATION_ARGS) {
@@ -1547,7 +1547,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_parsedSyntaxComponentMap GGS_parsedSyntaxComponentMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_parsedSyntaxComponentMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -1592,7 +1592,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedSyntaxComponentMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -1620,7 +1620,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_parsedSyntaxComponentMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -1697,7 +1697,7 @@ const utf32 GGS_parsedSyntaxComponentMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedSyntaxComponentMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_syntaxComponentAST  & outParameter0 COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
@@ -1767,7 +1767,7 @@ const utf32 GGS_parsedSyntaxComponentMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedSyntaxComponentMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_syntaxComponentAST& inParameter0 COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
@@ -1782,7 +1782,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_parsedSyntaxComponentMap GGS_parsedSyntaxComponentMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_parsedSyntaxComponentMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_parsedSyntaxComponentMap result ; // Not Built
@@ -1799,7 +1799,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_parsedSyntaxComponentMap GGS_parsedSyntaxComponentMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_parsedSyntaxComponentMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -1873,7 +1873,7 @@ GGS_object GGS_parsedSyntaxComponentMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_parsedSyntaxComponentMap GGS_parsedSyntaxComponentMap::castFromObject (C_Compiler & inLexique,
+GGS_parsedSyntaxComponentMap GGS_parsedSyntaxComponentMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -1898,7 +1898,7 @@ const C_galgas_type_descriptorEX * GGS_parsedSyntaxComponentMap::typeDescriptor 
 
 //---------------------------------------------------------------------------*
 
-GGS_parsedSyntaxComponentMap GGS_parsedSyntaxComponentMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_parsedSyntaxComponentMap GGS_parsedSyntaxComponentMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_syntaxComponentAST& inValue0
                                              COMMA_LOCATION_ARGS) {
@@ -1995,7 +1995,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_parsedGrammarComponentMap GGS_parsedGrammarComponentMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_parsedGrammarComponentMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -2040,7 +2040,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedGrammarComponentMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -2068,7 +2068,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_parsedGrammarComponentMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -2146,7 +2146,7 @@ const utf32 GGS_parsedGrammarComponentMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedGrammarComponentMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_grammarComponentAST   & outParameter0 COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
@@ -2217,7 +2217,7 @@ const utf32 GGS_parsedGrammarComponentMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedGrammarComponentMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_grammarComponentAST & inParameter0 COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
@@ -2232,7 +2232,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_parsedGrammarComponentMap GGS_parsedGrammarComponentMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_parsedGrammarComponentMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_parsedGrammarComponentMap result ; // Not Built
@@ -2249,7 +2249,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_parsedGrammarComponentMap GGS_parsedGrammarComponentMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_parsedGrammarComponentMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -2323,7 +2323,7 @@ GGS_object GGS_parsedGrammarComponentMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_parsedGrammarComponentMap GGS_parsedGrammarComponentMap::castFromObject (C_Compiler & inLexique,
+GGS_parsedGrammarComponentMap GGS_parsedGrammarComponentMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -2348,7 +2348,7 @@ const C_galgas_type_descriptorEX * GGS_parsedGrammarComponentMap::typeDescriptor
 
 //---------------------------------------------------------------------------*
 
-GGS_parsedGrammarComponentMap GGS_parsedGrammarComponentMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_parsedGrammarComponentMap GGS_parsedGrammarComponentMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_grammarComponentAST & inValue0
                                              COMMA_LOCATION_ARGS) {
@@ -2445,7 +2445,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_parsedProgramComponentMap GGS_parsedProgramComponentMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_parsedProgramComponentMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -2490,7 +2490,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedProgramComponentMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -2518,7 +2518,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_parsedProgramComponentMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -2596,7 +2596,7 @@ const utf32 GGS_parsedProgramComponentMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedProgramComponentMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_programComponentAST  & outParameter0 COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
@@ -2667,7 +2667,7 @@ const utf32 GGS_parsedProgramComponentMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_parsedProgramComponentMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_programComponentAST& inParameter0 COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
@@ -2682,7 +2682,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_parsedProgramComponentMap GGS_parsedProgramComponentMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_parsedProgramComponentMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_parsedProgramComponentMap result ; // Not Built
@@ -2699,7 +2699,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_parsedProgramComponentMap GGS_parsedProgramComponentMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_parsedProgramComponentMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -2773,7 +2773,7 @@ GGS_object GGS_parsedProgramComponentMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_parsedProgramComponentMap GGS_parsedProgramComponentMap::castFromObject (C_Compiler & inLexique,
+GGS_parsedProgramComponentMap GGS_parsedProgramComponentMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -2798,7 +2798,7 @@ const C_galgas_type_descriptorEX * GGS_parsedProgramComponentMap::typeDescriptor
 
 //---------------------------------------------------------------------------*
 
-GGS_parsedProgramComponentMap GGS_parsedProgramComponentMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_parsedProgramComponentMap GGS_parsedProgramComponentMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_programComponentAST& inValue0
                                              COMMA_LOCATION_ARGS) {
@@ -2956,7 +2956,7 @@ GGS_object GGS_parsedComponentStruct::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_parsedComponentStruct GGS_parsedComponentStruct::castFromObject (C_Compiler & inLexique,
+GGS_parsedComponentStruct GGS_parsedComponentStruct::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {

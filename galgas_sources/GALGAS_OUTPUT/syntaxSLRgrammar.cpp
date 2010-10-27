@@ -14375,7 +14375,7 @@ void C_Grammar_syntaxSLRgrammar::nt_syntax_5F_component_5F_start_5F_symbol_ (C_L
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_Grammar_syntaxSLRgrammar::_performSourceFileParsing_ (C_Compiler & inCompiler,
+void C_Grammar_syntaxSLRgrammar::_performSourceFileParsing_ (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -14419,7 +14419,7 @@ void C_Grammar_syntaxSLRgrammar::_performSourceFileParsing_ (C_Compiler & inComp
 
 //---------------------------------------------------------------------------*
 
-void C_Grammar_syntaxSLRgrammar::_performSourceStringParsing_ (C_Compiler & inCompiler,
+void C_Grammar_syntaxSLRgrammar::_performSourceStringParsing_ (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string _inSourceString,
                                 GGS_syntaxComponentAST & parameter_1

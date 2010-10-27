@@ -32,7 +32,7 @@ public : virtual void generateCppClassName (AC_OutputStream & fichier) const ;
 //--- Attributes
   public : GGS_lstring  mGalgasClassName ;
 //--- Method 'getTypeName'
-  public : virtual void method_getTypeName (C_Compiler &,
+  public : virtual void method_getTypeName (C_CompilerEx &,
                                 GGS_string& 
                                 COMMA_LOCATION_ARGS) const ;
 

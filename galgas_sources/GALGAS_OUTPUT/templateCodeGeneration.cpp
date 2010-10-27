@@ -82,7 +82,7 @@ findCategoryMethod__templateInstructionForGeneration__templateCodeGeneration (AC
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_templateCodeGenerationForListInstruction (C_Compiler & inLexique,
+void routine_templateCodeGenerationForListInstruction (C_CompilerEx & inLexique,
                                 const GGS_templateInstructionListForGeneration   var_cas_inInstructionList,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -116,7 +116,7 @@ void routine_templateCodeGenerationForListInstruction (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateInstructionStringForGeneration__templateCodeGeneration (C_Compiler &,
+category_method__templateInstructionStringForGeneration__templateCodeGeneration (C_CompilerEx &,
                                 const cPtr_templateInstructionStringForGeneration * operand_2606,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & /* var_cas_ioTemporaryVariableIndex */,
@@ -137,7 +137,7 @@ category_method__templateInstructionStringForGeneration__templateCodeGeneration 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateInstructionExpressionForGeneration__templateCodeGeneration (C_Compiler & inLexique,
+category_method__templateInstructionExpressionForGeneration__templateCodeGeneration (C_CompilerEx & inLexique,
                                 const cPtr_templateInstructionExpressionForGeneration * operand_3022,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -164,7 +164,7 @@ category_method__templateInstructionExpressionForGeneration__templateCodeGenerat
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateBlockInstructionForGeneration__templateCodeGeneration (C_Compiler & inLexique,
+category_method__templateBlockInstructionForGeneration__templateCodeGeneration (C_CompilerEx & inLexique,
                                 const cPtr_templateBlockInstructionForGeneration * operand_3561,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -203,7 +203,7 @@ category_method__templateBlockInstructionForGeneration__templateCodeGeneration (
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateInstructionGetColumnLocationForGeneration__templateCodeGeneration (C_Compiler &,
+category_method__templateInstructionGetColumnLocationForGeneration__templateCodeGeneration (C_CompilerEx &,
                                 const cPtr_templateInstructionGetColumnLocationForGeneration * operand_4677,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & /* var_cas_ioTemporaryVariableIndex */,
@@ -223,7 +223,7 @@ category_method__templateInstructionGetColumnLocationForGeneration__templateCode
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateInstructionGotoColumnLocationForGeneration__templateCodeGeneration (C_Compiler &,
+category_method__templateInstructionGotoColumnLocationForGeneration__templateCodeGeneration (C_CompilerEx &,
                                 const cPtr_templateInstructionGotoColumnLocationForGeneration * operand_5108,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & /* var_cas_ioTemporaryVariableIndex */,
@@ -243,7 +243,7 @@ category_method__templateInstructionGotoColumnLocationForGeneration__templateCod
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateInstructionForeachForGeneration__templateCodeGeneration (C_Compiler & inLexique,
+category_method__templateInstructionForeachForGeneration__templateCodeGeneration (C_CompilerEx & inLexique,
                                 const cPtr_templateInstructionForeachForGeneration * operand_5535,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -340,7 +340,7 @@ category_method__templateInstructionForeachForGeneration__templateCodeGeneration
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateInstructionIfForGeneration__templateCodeGeneration (C_Compiler & inLexique,
+category_method__templateInstructionIfForGeneration__templateCodeGeneration (C_CompilerEx & inLexique,
                                 const cPtr_templateInstructionIfForGeneration * operand_8716,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -389,7 +389,7 @@ category_method__templateInstructionIfForGeneration__templateCodeGeneration (C_C
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateInstructionSwitchForGeneration__templateCodeGeneration (C_Compiler & inLexique,
+category_method__templateInstructionSwitchForGeneration__templateCodeGeneration (C_CompilerEx & inLexique,
                                 const cPtr_templateInstructionSwitchForGeneration * operand_10039,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,

@@ -48,7 +48,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseFinalReaderWithoutArgument (C_Compiler & inLexique,
+void routine_enterBaseFinalReaderWithoutArgument (C_CompilerEx & inLexique,
                                 GGS_readerMap  & var_cas_ioReaderMap,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 const GGS_string  var_cas_inReaderName,
@@ -72,7 +72,7 @@ void routine_enterBaseFinalReaderWithoutArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterInheritedReaderWithoutArgument (C_Compiler & inLexique,
+void routine_enterInheritedReaderWithoutArgument (C_CompilerEx & inLexique,
                                 GGS_readerMap  & var_cas_ioReaderMap,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 const GGS_string  var_cas_inReaderName,
@@ -96,7 +96,7 @@ void routine_enterInheritedReaderWithoutArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterInheritedReaderWithArgument (C_Compiler & inLexique,
+void routine_enterInheritedReaderWithArgument (C_CompilerEx & inLexique,
                                 GGS_readerMap  & var_cas_ioReaderMap,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 const GGS_string  var_cas_inReaderName,
@@ -125,7 +125,7 @@ void routine_enterInheritedReaderWithArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWithoutArgument (C_Compiler & inLexique,
+void routine_enterBaseReaderWithoutArgument (C_CompilerEx & inLexique,
                                 GGS_readerMap  & var_cas_ioReaderMap,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 const GGS_string  var_cas_inReaderName,
@@ -149,7 +149,7 @@ void routine_enterBaseReaderWithoutArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWithArgument (C_Compiler & inLexique,
+void routine_enterBaseReaderWithArgument (C_CompilerEx & inLexique,
                                 GGS_readerMap  & var_cas_ioReaderMap,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 const GGS_string  var_cas_inReaderName,
@@ -178,7 +178,7 @@ void routine_enterBaseReaderWithArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseFinalReaderWithArgument (C_Compiler & inLexique,
+void routine_enterBaseFinalReaderWithArgument (C_CompilerEx & inLexique,
                                 GGS_readerMap  & var_cas_ioReaderMap,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 const GGS_string  var_cas_inReaderName,
@@ -207,7 +207,7 @@ void routine_enterBaseFinalReaderWithArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWith2Arguments (C_Compiler & inLexique,
+void routine_enterBaseReaderWith2Arguments (C_CompilerEx & inLexique,
                                 GGS_readerMap  & var_cas_ioReaderMap,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 const GGS_string  var_cas_inReaderName,
@@ -239,7 +239,7 @@ void routine_enterBaseReaderWith2Arguments (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseFinalReaderWith2Arguments (C_Compiler & inLexique,
+void routine_enterBaseFinalReaderWith2Arguments (C_CompilerEx & inLexique,
                                 GGS_readerMap  & var_cas_ioReaderMap,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 const GGS_string  var_cas_inReaderName,
@@ -271,7 +271,7 @@ void routine_enterBaseFinalReaderWith2Arguments (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWith3Arguments (C_Compiler & inLexique,
+void routine_enterBaseReaderWith3Arguments (C_CompilerEx & inLexique,
                                 GGS_readerMap  & var_cas_ioReaderMap,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 const GGS_string  var_cas_inReaderName,
@@ -306,7 +306,7 @@ void routine_enterBaseReaderWith3Arguments (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseFinalReaderWith3Arguments (C_Compiler & inLexique,
+void routine_enterBaseFinalReaderWith3Arguments (C_CompilerEx & inLexique,
                                 GGS_readerMap  & var_cas_ioReaderMap,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 const GGS_string  var_cas_inReaderName,
@@ -341,7 +341,7 @@ void routine_enterBaseFinalReaderWith3Arguments (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_commonReaderMapForAllTypes (C_Compiler & inLexique,
+void routine_commonReaderMapForAllTypes (C_CompilerEx & inLexique,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_readerMap  & var_cas_outMap
                         COMMA_UNUSED_LOCATION_ARGS) {
@@ -365,7 +365,7 @@ void routine_commonReaderMapForAllTypes (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__locationPredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
+category_method__locationPredefinedTypeAST__getReaderMap (C_CompilerEx & inLexique,
                                 const cPtr_locationPredefinedTypeAST * operand_11224,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_readerMap  & var_cas_outMap
@@ -385,7 +385,7 @@ category_method__locationPredefinedTypeAST__getReaderMap (C_Compiler & inLexique
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterReaderFor_string_lstring_types (C_Compiler & inLexique,
+void routine_enterReaderFor_string_lstring_types (C_CompilerEx & inLexique,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_readerMap  & var_cas_ioMap
                         COMMA_UNUSED_LOCATION_ARGS) {
@@ -448,7 +448,7 @@ void routine_enterReaderFor_string_lstring_types (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__stringPredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
+category_method__stringPredefinedTypeAST__getReaderMap (C_CompilerEx & inLexique,
                                 const cPtr_stringPredefinedTypeAST * operand_16712,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_readerMap  & var_cas_outMap
@@ -466,7 +466,7 @@ category_method__stringPredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__charPredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
+category_method__charPredefinedTypeAST__getReaderMap (C_CompilerEx & inLexique,
                                 const cPtr_charPredefinedTypeAST * operand_17043,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_readerMap  & var_cas_outMap
@@ -503,7 +503,7 @@ category_method__charPredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__boolPredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
+category_method__boolPredefinedTypeAST__getReaderMap (C_CompilerEx & inLexique,
                                 const cPtr_boolPredefinedTypeAST * operand_19294,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_readerMap  & var_cas_outMap
@@ -526,7 +526,7 @@ category_method__boolPredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__uintPredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
+category_method__uintPredefinedTypeAST__getReaderMap (C_CompilerEx & inLexique,
                                 const cPtr_uintPredefinedTypeAST * operand_20122,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_readerMap  & var_cas_outMap
@@ -553,7 +553,7 @@ category_method__uintPredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__sintPredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
+category_method__sintPredefinedTypeAST__getReaderMap (C_CompilerEx & inLexique,
                                 const cPtr_sintPredefinedTypeAST * operand_21358,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_readerMap  & var_cas_outMap
@@ -575,7 +575,7 @@ category_method__sintPredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__uint64PredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
+category_method__uint64PredefinedTypeAST__getReaderMap (C_CompilerEx & inLexique,
                                 const cPtr_uint64PredefinedTypeAST * operand_22092,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_readerMap  & var_cas_outMap
@@ -600,7 +600,7 @@ category_method__uint64PredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__sint64PredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
+category_method__sint64PredefinedTypeAST__getReaderMap (C_CompilerEx & inLexique,
                                 const cPtr_sint64PredefinedTypeAST * operand_23125,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_readerMap  & var_cas_outMap
@@ -622,7 +622,7 @@ category_method__sint64PredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__doublePredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
+category_method__doublePredefinedTypeAST__getReaderMap (C_CompilerEx & inLexique,
                                 const cPtr_doublePredefinedTypeAST * operand_23854,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_readerMap  & var_cas_outMap
@@ -644,7 +644,7 @@ category_method__doublePredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__stringsetPredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
+category_method__stringsetPredefinedTypeAST__getReaderMap (C_CompilerEx & inLexique,
                                 const cPtr_stringsetPredefinedTypeAST * operand_24585,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_readerMap  & var_cas_outMap
@@ -664,7 +664,7 @@ category_method__stringsetPredefinedTypeAST__getReaderMap (C_Compiler & inLexiqu
 //---------------------------------------------------------------------------*
 
 static void
-category_method__binarysetPredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
+category_method__binarysetPredefinedTypeAST__getReaderMap (C_CompilerEx & inLexique,
                                 const cPtr_binarysetPredefinedTypeAST * operand_25148,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_readerMap  & var_cas_outMap
@@ -713,7 +713,7 @@ category_method__binarysetPredefinedTypeAST__getReaderMap (C_Compiler & inLexiqu
 //---------------------------------------------------------------------------*
 
 static void
-category_method__typePredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
+category_method__typePredefinedTypeAST__getReaderMap (C_CompilerEx & inLexique,
                                 const cPtr_typePredefinedTypeAST * operand_29142,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_readerMap  & var_cas_outMap
@@ -733,7 +733,7 @@ category_method__typePredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__dataPredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
+category_method__dataPredefinedTypeAST__getReaderMap (C_CompilerEx & inLexique,
                                 const cPtr_dataPredefinedTypeAST * operand_29694,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_readerMap  & var_cas_outMap
@@ -751,7 +751,7 @@ category_method__dataPredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__functionPredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
+category_method__functionPredefinedTypeAST__getReaderMap (C_CompilerEx & inLexique,
                                 const cPtr_functionPredefinedTypeAST * operand_30054,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_readerMap  & var_cas_outMap
@@ -772,7 +772,7 @@ category_method__functionPredefinedTypeAST__getReaderMap (C_Compiler & inLexique
 //---------------------------------------------------------------------------*
 
 static void
-category_method__objectPredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
+category_method__objectPredefinedTypeAST__getReaderMap (C_CompilerEx & inLexique,
                                 const cPtr_objectPredefinedTypeAST * operand_30743,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_readerMap  & var_cas_outMap
@@ -791,7 +791,7 @@ category_method__objectPredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__filewrapperPredefinedTypeAST__getReaderMap (C_Compiler & inLexique,
+category_method__filewrapperPredefinedTypeAST__getReaderMap (C_CompilerEx & inLexique,
                                 const cPtr_filewrapperPredefinedTypeAST * operand_31220,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_readerMap  & var_cas_outMap

@@ -32,11 +32,11 @@ class cPureBNFproductionsList ;
 class cVocabulary ;
 class C_HTML_FileWrite ;
 class C_String ;
-class C_Lexique ;
+class C_LexiqueEx ;
 
 //---------------------------------------------------------------------------*
 
-void LR1_computations (C_Compiler & inLexique,
+void LR1_computations (C_CompilerEx & inLexique,
                        const cPureBNFproductionsList & inProductionRules,
                        const cVocabulary & inVocabulary,
                        C_HTML_FileWrite * inHTMLfile,

@@ -43,7 +43,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__templateInstructionForGeneration__templateCodeGeneration)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__templateInstructionForGeneration__templateCodeGeneration)  (C_CompilerEx & inLexique,
                                 const cPtr_templateInstructionForGeneration * inObjectPtr,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -68,7 +68,7 @@ findCategoryMethod__templateInstructionForGeneration__templateCodeGeneration (AC
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_templateCodeGenerationForListInstruction (C_Compiler &,
+void routine_templateCodeGenerationForListInstruction (C_CompilerEx &,
                                 const GGS_templateInstructionListForGeneration  ,
                                 GGS_string &,
                                 GGS_uint  &,

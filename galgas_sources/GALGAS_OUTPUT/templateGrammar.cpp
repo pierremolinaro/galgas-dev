@@ -4029,7 +4029,7 @@ void C_Grammar_templateGrammar::nt_template_5F_parser_5F_start_5F_symbol_ (C_Lex
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_Grammar_templateGrammar::_performSourceFileParsing_ (C_Compiler & inCompiler,
+void C_Grammar_templateGrammar::_performSourceFileParsing_ (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -4073,7 +4073,7 @@ void C_Grammar_templateGrammar::_performSourceFileParsing_ (C_Compiler & inCompi
 
 //---------------------------------------------------------------------------*
 
-void C_Grammar_templateGrammar::_performSourceStringParsing_ (C_Compiler & inCompiler,
+void C_Grammar_templateGrammar::_performSourceStringParsing_ (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string _inSourceString,
                                 GGS_templateInstructionListAST & parameter_1

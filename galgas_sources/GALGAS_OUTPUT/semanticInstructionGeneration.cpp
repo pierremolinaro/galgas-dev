@@ -83,7 +83,7 @@ findCategoryMethod__actualParameterForGeneration__generateActualParameter (AC_ga
 //---------------------------------------------------------------------------*
 
 static void
-category_method__outputActualParameterForGeneration__generateActualParameter (C_Compiler & inLexique,
+category_method__outputActualParameterForGeneration__generateActualParameter (C_CompilerEx & inLexique,
                                 const cPtr_outputActualParameterForGeneration * operand_2084,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_string & var_cas_ioImplementation,
@@ -107,7 +107,7 @@ category_method__outputActualParameterForGeneration__generateActualParameter (C_
 //---------------------------------------------------------------------------*
 
 static void
-category_method__outputInputActualParameterForGeneration__generateActualParameter (C_Compiler & inLexique,
+category_method__outputInputActualParameterForGeneration__generateActualParameter (C_CompilerEx & inLexique,
                                 const cPtr_outputInputActualParameterForGeneration * operand_2587,
                                 GGS_uint  & /* var_cas_ioTemporaryVariableIndex */,
                                 GGS_string & var_cas_ioImplementation,
@@ -136,7 +136,7 @@ category_method__outputInputActualParameterForGeneration__generateActualParamete
 //---------------------------------------------------------------------------*
 
 static void
-category_method__inputActualParameterForGeneration__generateActualParameter (C_Compiler & inLexique,
+category_method__inputActualParameterForGeneration__generateActualParameter (C_CompilerEx & inLexique,
                                 const cPtr_inputActualParameterForGeneration * operand_3188,
                                 GGS_uint  & /* var_cas_ioTemporaryVariableIndex */,
                                 GGS_string & /* var_cas_ioImplementation */,
@@ -157,7 +157,7 @@ category_method__inputActualParameterForGeneration__generateActualParameter (C_C
 //---------------------------------------------------------------------------*
 
 static void
-category_method__inputJokerParameterForGeneration__generateActualParameter (C_Compiler & inLexique,
+category_method__inputJokerParameterForGeneration__generateActualParameter (C_CompilerEx & inLexique,
                                 const cPtr_inputJokerParameterForGeneration * operand_3648,
                                 GGS_uint  & /* var_cas_ioTemporaryVariableIndex */,
                                 GGS_string & var_cas_ioImplementation,
@@ -183,7 +183,7 @@ category_method__inputJokerParameterForGeneration__generateActualParameter (C_Co
 //---------------------------------------------------------------------------*
 
 static void
-category_method__semanticInstructionForGeneration__generateInstruction (C_Compiler &,
+category_method__semanticInstructionForGeneration__generateInstruction (C_CompilerEx &,
                                 const cPtr_semanticInstructionForGeneration * operand_4538,
                                 GGS_uint  & /* var_cas_ioTemporaryVariableIndex */,
                                 GGS_stringset  & /* var_cas_ioUnusedVariableCppNameSet */,
@@ -234,7 +234,7 @@ findCategoryMethod__semanticInstructionForGeneration__generateInstruction (AC_ga
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_string function_generateRoutineBody (C_Compiler & inLexique,
+GGS_string function_generateRoutineBody (C_CompilerEx & inLexique,
                                 const GGS_semanticInstructionListForGeneration   var_cas_inInstructionList COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER function_generateRoutineBody at %s:%d\n", __FILE__, __LINE__) ;
@@ -265,7 +265,7 @@ GGS_string function_generateRoutineBody (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_generateRoutineBody (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_generateRoutineBody (C_CompilerEx & inLexique,
                            const GGS_objectlist & inEffectiveParameterArray,
                            const GGS_location & inErrorLocation
                            COMMA_LOCATION_ARGS) {
@@ -294,7 +294,7 @@ kFunction_descriptor_generateRoutineBody ("generateRoutineBody",
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_generateInstructionList (C_Compiler & inLexique,
+void routine_generateInstructionList (C_CompilerEx & inLexique,
                                 const GGS_semanticInstructionListForGeneration   var_cas_inInstructionList,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -329,7 +329,7 @@ void routine_generateInstructionList (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__localVariableOrConstantDeclarationWithSourceExpressionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__localVariableOrConstantDeclarationWithSourceExpressionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_localVariableOrConstantDeclarationWithSourceExpressionForGeneration * operand_6023,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -360,7 +360,7 @@ category_method__localVariableOrConstantDeclarationWithSourceExpressionForGenera
 //---------------------------------------------------------------------------*
 
 static void
-category_method__localVariableDeclarationForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__localVariableDeclarationForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_localVariableDeclarationForGeneration * operand_6703,
                                 GGS_uint  & /* var_cas_ioTemporaryVariableIndex */,
                                 GGS_stringset  & /* var_cas_ioUnusedVariableCppNameSet */,
@@ -383,7 +383,7 @@ category_method__localVariableDeclarationForGeneration__generateInstruction (C_C
 //---------------------------------------------------------------------------*
 
 static void
-category_method__localVariableOrConstantDeclarationWithConstructorCallForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__localVariableOrConstantDeclarationWithConstructorCallForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_localVariableOrConstantDeclarationWithConstructorCallForGeneration * operand_7208,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -462,7 +462,7 @@ category_method__localVariableOrConstantDeclarationWithConstructorCallForGenerat
 //---------------------------------------------------------------------------*
 
 static void
-category_method__assignmentInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__assignmentInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_assignmentInstructionForGeneration * operand_8828,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -501,7 +501,7 @@ category_method__assignmentInstructionForGeneration__generateInstruction (C_Comp
 //---------------------------------------------------------------------------*
 
 static void
-category_method__dropInstructionForGeneration__generateInstruction (C_Compiler &,
+category_method__dropInstructionForGeneration__generateInstruction (C_CompilerEx &,
                                 const cPtr_dropInstructionForGeneration * operand_9628,
                                 GGS_uint  & /* var_cas_ioTemporaryVariableIndex */,
                                 GGS_stringset  & /* var_cas_ioUnusedVariableCppNameSet */,
@@ -530,7 +530,7 @@ category_method__dropInstructionForGeneration__generateInstruction (C_Compiler &
 //---------------------------------------------------------------------------*
 
 static void
-category_method__appendInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__appendInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_appendInstructionForGeneration * operand_10086,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -569,7 +569,7 @@ category_method__appendInstructionForGeneration__generateInstruction (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__grammarInstructionWithSourceFileForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__grammarInstructionWithSourceFileForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_grammarInstructionWithSourceFileForGeneration * operand_10979,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -631,7 +631,7 @@ category_method__grammarInstructionWithSourceFileForGeneration__generateInstruct
 //---------------------------------------------------------------------------*
 
 static void
-category_method__grammarInstructionWithSourceExpressionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__grammarInstructionWithSourceExpressionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_grammarInstructionWithSourceExpressionForGeneration * operand_12536,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -693,7 +693,7 @@ category_method__grammarInstructionWithSourceExpressionForGeneration__generateIn
 //---------------------------------------------------------------------------*
 
 static void
-category_method__ifInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__ifInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_ifInstructionForGeneration * operand_14076,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -727,7 +727,7 @@ category_method__ifInstructionForGeneration__generateInstruction (C_Compiler & i
 //---------------------------------------------------------------------------*
 
 static void
-category_method__errorInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__errorInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_errorInstructionForGeneration * operand_15104,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -786,7 +786,7 @@ category_method__errorInstructionForGeneration__generateInstruction (C_Compiler 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__warningInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__warningInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_warningInstructionForGeneration * operand_16687,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -836,7 +836,7 @@ category_method__warningInstructionForGeneration__generateInstruction (C_Compile
 //---------------------------------------------------------------------------*
 
 static void
-category_method__methodCallInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__methodCallInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_methodCallInstructionForGeneration * operand_18111,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -930,7 +930,7 @@ category_method__methodCallInstructionForGeneration__generateInstruction (C_Comp
 //---------------------------------------------------------------------------*
 
 static void
-category_method__thisMethodCallInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__thisMethodCallInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_thisMethodCallInstructionForGeneration * operand_20197,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -1017,7 +1017,7 @@ category_method__thisMethodCallInstructionForGeneration__generateInstruction (C_
 //---------------------------------------------------------------------------*
 
 static void
-category_method__superMethodCallInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__superMethodCallInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_superMethodCallInstructionForGeneration * operand_22115,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -1095,7 +1095,7 @@ category_method__superMethodCallInstructionForGeneration__generateInstruction (C
 //---------------------------------------------------------------------------*
 
 static void
-category_method__routineCallInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__routineCallInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_routineCallInstructionForGeneration * operand_23842,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -1147,7 +1147,7 @@ category_method__routineCallInstructionForGeneration__generateInstruction (C_Com
 //---------------------------------------------------------------------------*
 
 static void
-category_method__modifierCallInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__modifierCallInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_modifierCallInstructionForGeneration * operand_25094,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -1231,7 +1231,7 @@ category_method__modifierCallInstructionForGeneration__generateInstruction (C_Co
 //---------------------------------------------------------------------------*
 
 static void
-category_method__thisModifierCallInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__thisModifierCallInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_thisModifierCallInstructionForGeneration * operand_26929,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -1303,7 +1303,7 @@ category_method__thisModifierCallInstructionForGeneration__generateInstruction (
 //---------------------------------------------------------------------------*
 
 static void
-category_method__superModifierCallInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__superModifierCallInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_superModifierCallInstructionForGeneration * operand_28505,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -1377,7 +1377,7 @@ category_method__superModifierCallInstructionForGeneration__generateInstruction 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__typeMethodInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__typeMethodInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_typeMethodInstructionForGeneration * operand_30151,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -1449,7 +1449,7 @@ category_method__typeMethodInstructionForGeneration__generateInstruction (C_Comp
 //---------------------------------------------------------------------------*
 
 static void
-category_method__structuredCastInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__structuredCastInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_structuredCastInstructionForGeneration * operand_31784,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -1527,7 +1527,7 @@ category_method__structuredCastInstructionForGeneration__generateInstruction (C_
 //---------------------------------------------------------------------------*
 
 static void
-category_method__addAssignInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__addAssignInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_addAssignInstructionForGeneration * operand_33628,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -1592,7 +1592,7 @@ category_method__addAssignInstructionForGeneration__generateInstruction (C_Compi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__incrementInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__incrementInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_incrementInstructionForGeneration * operand_34838,
                                 GGS_uint  & /* var_cas_ioTemporaryVariableIndex */,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -1628,7 +1628,7 @@ category_method__incrementInstructionForGeneration__generateInstruction (C_Compi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__decrementInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__decrementInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_decrementInstructionForGeneration * operand_35729,
                                 GGS_uint  & /* var_cas_ioTemporaryVariableIndex */,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -1664,7 +1664,7 @@ category_method__decrementInstructionForGeneration__generateInstruction (C_Compi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__messageInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__messageInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_messageInstructionForGeneration * operand_36618,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -1695,7 +1695,7 @@ category_method__messageInstructionForGeneration__generateInstruction (C_Compile
 //---------------------------------------------------------------------------*
 
 static void
-category_method__loopInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__loopInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_loopInstructionForGeneration * operand_37440,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -1784,7 +1784,7 @@ category_method__loopInstructionForGeneration__generateInstruction (C_Compiler &
 //---------------------------------------------------------------------------*
 
 static void
-category_method__readOnlyWithInstructionForGeneration__generateInstruction (C_Compiler &,
+category_method__readOnlyWithInstructionForGeneration__generateInstruction (C_CompilerEx &,
                                 const cPtr_readOnlyWithInstructionForGeneration * operand_39804,
                                 GGS_uint  & /* var_cas_ioTemporaryVariableIndex */,
                                 GGS_stringset  & /* var_cas_ioUnusedVariableCppNameSet */,
@@ -1803,7 +1803,7 @@ category_method__readOnlyWithInstructionForGeneration__generateInstruction (C_Co
 //---------------------------------------------------------------------------*
 
 static void
-category_method__readWriteWithInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__readWriteWithInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_readWriteWithInstructionForGeneration * operand_40205,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -1885,7 +1885,7 @@ category_method__readWriteWithInstructionForGeneration__generateInstruction (C_C
 //---------------------------------------------------------------------------*
 
 static void
-category_method__foreachInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__foreachInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_foreachInstructionForGeneration * operand_42273,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -2125,7 +2125,7 @@ category_method__foreachInstructionForGeneration__generateInstruction (C_Compile
 //---------------------------------------------------------------------------*
 
 static void
-category_method__sendInstructionForGeneration__generateInstruction (C_Compiler &,
+category_method__sendInstructionForGeneration__generateInstruction (C_CompilerEx &,
                                 const cPtr_sendInstructionForGeneration * operand_48471,
                                 GGS_uint  & /* var_cas_ioTemporaryVariableIndex */,
                                 GGS_stringset  & /* var_cas_ioUnusedVariableCppNameSet */,
@@ -2143,7 +2143,7 @@ category_method__sendInstructionForGeneration__generateInstruction (C_Compiler &
 //---------------------------------------------------------------------------*
 
 static void
-category_method__logInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__logInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_logInstructionForGeneration * operand_48827,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -2171,7 +2171,7 @@ category_method__logInstructionForGeneration__generateInstruction (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__switchInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__switchInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_switchInstructionForGeneration * operand_49389,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -2231,7 +2231,7 @@ category_method__switchInstructionForGeneration__generateInstruction (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__matchInstructionForGeneration__generateInstruction (C_Compiler & inLexique,
+category_method__matchInstructionForGeneration__generateInstruction (C_CompilerEx & inLexique,
                                 const cPtr_matchInstructionForGeneration * operand_50794,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,

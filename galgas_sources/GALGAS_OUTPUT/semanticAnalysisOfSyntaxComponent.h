@@ -72,7 +72,7 @@ class GGS_nonterminalLabelMap : public AC_GGS_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_nonterminalLabelMap castFromObject (C_Compiler & inLexique,
+  public : static GGS_nonterminalLabelMap castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -94,10 +94,10 @@ class GGS_nonterminalLabelMap : public AC_GGS_map {
   public : inline const GGS_nonterminalLabelMap * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_nonterminalLabelMap constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_nonterminalLabelMap constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- 'mapWithKeyAndValue' constructor
-  public : static GGS_nonterminalLabelMap constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+  public : static GGS_nonterminalLabelMap constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
 ,
                                              const GGS_formalParameterListForGeneration & inValue0,
@@ -113,7 +113,7 @@ class GGS_nonterminalLabelMap : public AC_GGS_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_Compiler & inLexique,
+  public : void modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_formalParameterListForGeneration &  inParameter0,
                                 const GGS_formalParameterSignature &  inParameter1,
@@ -122,13 +122,13 @@ class GGS_nonterminalLabelMap : public AC_GGS_map {
   public : static const utf32 kSearchMessage_searchKey [] ;
 
 //--- 'searchKey' Search Method
-  public : void method_searchKey (C_Compiler & inLexique,
+  public : void method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_formalParameterListForGeneration   & outParameter0,
                                 GGS_formalParameterSignature   & outParameter1,
                                 GGS_location   & outParameter2 COMMA_LOCATION_ARGS) const ;
 //--- Internal method for inserting an element
-  protected : void insertElement (C_Compiler & inLexique,
+  protected : void insertElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inInitialState,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -138,7 +138,7 @@ class GGS_nonterminalLabelMap : public AC_GGS_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_Compiler & inLexique,
+  protected : void searchElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inActionIndex,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -148,10 +148,10 @@ class GGS_nonterminalLabelMap : public AC_GGS_map {
                                   GGS_luint * outIndex
                                   COMMA_LOCATION_ARGS) const ;
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_nonterminalLabelMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
+  public : static GGS_nonterminalLabelMap constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
                                             const GGS_nonterminalLabelMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_nonterminalLabelMap reader_overriddenMap (C_Compiler & inLexique
+  public : GGS_nonterminalLabelMap reader_overriddenMap (C_CompilerEx & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Key stringset (for map with an associated automaton)
@@ -204,7 +204,7 @@ class GGS_nonterminalMap : public AC_GGS_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_nonterminalMap castFromObject (C_Compiler & inLexique,
+  public : static GGS_nonterminalMap castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -226,10 +226,10 @@ class GGS_nonterminalMap : public AC_GGS_map {
   public : inline const GGS_nonterminalMap * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_nonterminalMap constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_nonterminalMap constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- 'mapWithKeyAndValue' constructor
-  public : static GGS_nonterminalMap constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+  public : static GGS_nonterminalMap constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
 ,
                                              const GGS_nonterminalLabelMap & inValue0,
@@ -244,7 +244,7 @@ class GGS_nonterminalMap : public AC_GGS_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_Compiler & inLexique,
+  public : void modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_nonterminalLabelMap &  inParameter0,
                                 const GGS_bool&  inParameter1 COMMA_LOCATION_ARGS) ;
@@ -252,12 +252,12 @@ class GGS_nonterminalMap : public AC_GGS_map {
   public : static const utf32 kSearchMessage_searchKey [] ;
 
 //--- 'searchKey' Search Method
-  public : void method_searchKey (C_Compiler & inLexique,
+  public : void method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_nonterminalLabelMap   & outParameter0,
                                 GGS_bool  & outParameter1 COMMA_LOCATION_ARGS) const ;
 //--- Internal method for inserting an element
-  protected : void insertElement (C_Compiler & inLexique,
+  protected : void insertElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inInitialState,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -266,7 +266,7 @@ class GGS_nonterminalMap : public AC_GGS_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_Compiler & inLexique,
+  protected : void searchElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inActionIndex,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -275,10 +275,10 @@ class GGS_nonterminalMap : public AC_GGS_map {
                                   GGS_luint * outIndex
                                   COMMA_LOCATION_ARGS) const ;
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_nonterminalMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
+  public : static GGS_nonterminalMap constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
                                             const GGS_nonterminalMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_nonterminalMap reader_overriddenMap (C_Compiler & inLexique
+  public : GGS_nonterminalMap reader_overriddenMap (C_CompilerEx & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Key stringset (for map with an associated automaton)
@@ -332,13 +332,13 @@ class GGS_ruleLabelImplementationList : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_ruleLabelImplementationList
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_ruleLabelImplementationList
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -353,7 +353,7 @@ class GGS_ruleLabelImplementationList : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_ruleLabelImplementationList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_lstring & _out_0,
                               GGS_formalParameterListForGeneration & _out_1,
                               GGS_formalParameterSignature & _out_2,
@@ -361,7 +361,7 @@ class GGS_ruleLabelImplementationList : public AC_GGS_list {
                               GGS_semanticInstructionListForGeneration & _out_4
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_lstring & _out_0,
                              GGS_formalParameterListForGeneration & _out_1,
                              GGS_formalParameterSignature & _out_2,
@@ -369,7 +369,7 @@ class GGS_ruleLabelImplementationList : public AC_GGS_list {
                              GGS_semanticInstructionListForGeneration & _out_4
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_lstring & _out_0,
                                 GGS_formalParameterListForGeneration & _out_1,
                                 GGS_formalParameterSignature & _out_2,
@@ -377,7 +377,7 @@ class GGS_ruleLabelImplementationList : public AC_GGS_list {
                                 GGS_semanticInstructionListForGeneration & _out_4
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_lstring & _out_0,
                                  GGS_formalParameterListForGeneration & _out_1,
                                  GGS_formalParameterSignature & _out_2,
@@ -395,7 +395,7 @@ class GGS_ruleLabelImplementationList : public AC_GGS_list {
                                 const GGS_semanticInstructionListForGeneration & argument_4) ;
 //--- Handling '.' GALGAS operator
   public : GGS_ruleLabelImplementationList operator_concat (const GGS_ruleLabelImplementationList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_formalParameterListForGeneration & argument_1,
                                 const GGS_formalParameterSignature & argument_2,
@@ -425,39 +425,39 @@ class GGS_ruleLabelImplementationList : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
-  reader_mLabelNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mLabelNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_formalParameterListForGeneration 
-  reader_mSignatureForGenerationAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mSignatureForGenerationAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_formalParameterSignature 
-  reader_mSignatureAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mSignatureAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_location 
-  reader_mEndOfArgumentLocationAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mEndOfArgumentLocationAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_semanticInstructionListForGeneration 
-  reader_mInstructionListForGenerationAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mInstructionListForGenerationAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMLabelNameAtIndex (C_Compiler & inLexique,
+  modifier_setMLabelNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMSignatureForGenerationAtIndex (C_Compiler & inLexique,
+  modifier_setMSignatureForGenerationAtIndex (C_CompilerEx & inLexique,
                               const GGS_formalParameterListForGeneration  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMSignatureAtIndex (C_Compiler & inLexique,
+  modifier_setMSignatureAtIndex (C_CompilerEx & inLexique,
                               const GGS_formalParameterSignature  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMEndOfArgumentLocationAtIndex (C_Compiler & inLexique,
+  modifier_setMEndOfArgumentLocationAtIndex (C_CompilerEx & inLexique,
                               const GGS_location  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMInstructionListForGenerationAtIndex (C_Compiler & inLexique,
+  modifier_setMInstructionListForGenerationAtIndex (C_CompilerEx & inLexique,
                               const GGS_semanticInstructionListForGeneration  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -467,7 +467,7 @@ class GGS_ruleLabelImplementationList : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_ruleLabelImplementationList castFromObject (C_Compiler & inLexique,
+  public : static GGS_ruleLabelImplementationList castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -522,13 +522,13 @@ class GGS_ruleDeclarationList : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_ruleDeclarationList
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_ruleDeclarationList
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -543,28 +543,28 @@ class GGS_ruleDeclarationList : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_ruleDeclarationList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_string& _out_0,
                               GGS_uint & _out_1,
                               GGS_ruleLabelImplementationList & _out_2,
                               GGS_bool& _out_3
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_string& _out_0,
                              GGS_uint & _out_1,
                              GGS_ruleLabelImplementationList & _out_2,
                              GGS_bool& _out_3
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_string& _out_0,
                                 GGS_uint & _out_1,
                                 GGS_ruleLabelImplementationList & _out_2,
                                 GGS_bool& _out_3
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_string& _out_0,
                                  GGS_uint & _out_1,
                                  GGS_ruleLabelImplementationList & _out_2,
@@ -580,7 +580,7 @@ class GGS_ruleDeclarationList : public AC_GGS_list {
                                 const GGS_bool& argument_3) ;
 //--- Handling '.' GALGAS operator
   public : GGS_ruleDeclarationList operator_concat (const GGS_ruleDeclarationList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_uint & argument_1,
                                 const GGS_ruleLabelImplementationList & argument_2,
@@ -607,32 +607,32 @@ class GGS_ruleDeclarationList : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_string
-  reader_mNonterminalNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mNonterminalNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_uint 
-  reader_mRuleIndexAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mRuleIndexAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_ruleLabelImplementationList 
-  reader_mLabelImplementationListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mLabelImplementationListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_bool
-  reader_mHasParseLabelAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mHasParseLabelAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMNonterminalNameAtIndex (C_Compiler & inLexique,
+  modifier_setMNonterminalNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMRuleIndexAtIndex (C_Compiler & inLexique,
+  modifier_setMRuleIndexAtIndex (C_CompilerEx & inLexique,
                               const GGS_uint  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMLabelImplementationListAtIndex (C_Compiler & inLexique,
+  modifier_setMLabelImplementationListAtIndex (C_CompilerEx & inLexique,
                               const GGS_ruleLabelImplementationList  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMHasParseLabelAtIndex (C_Compiler & inLexique,
+  modifier_setMHasParseLabelAtIndex (C_CompilerEx & inLexique,
                               const GGS_bool & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -642,7 +642,7 @@ class GGS_ruleDeclarationList : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_ruleDeclarationList castFromObject (C_Compiler & inLexique,
+  public : static GGS_ruleDeclarationList castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -689,14 +689,14 @@ class GGS_syntaxDeclarationForGeneration : public GGS_semanticDeclarationForGene
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_syntaxDeclarationForGeneration
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_syntaxDeclarationForGeneration constructor_new (C_Compiler & inLexique,
+  public : static GGS_syntaxDeclarationForGeneration constructor_new (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_string& argument_1,
                                 const GGS_nonterminalMap & argument_2,
@@ -713,11 +713,11 @@ class GGS_syntaxDeclarationForGeneration : public GGS_semanticDeclarationForGene
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_string reader_mComponentName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_string reader_mLexiqueName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_nonterminalMap  reader_mNonterminalDeclarationMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_ruleDeclarationList  reader_mRuleDeclarationList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_uint  reader_mSelectMethodCount (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_string reader_mComponentName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_string reader_mLexiqueName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_nonterminalMap  reader_mNonterminalDeclarationMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_ruleDeclarationList  reader_mRuleDeclarationList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_uint  reader_mSelectMethodCount (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -735,7 +735,7 @@ class GGS_syntaxDeclarationForGeneration : public GGS_semanticDeclarationForGene
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_syntaxDeclarationForGeneration castFromObject (C_Compiler & inLexique,
+  public : static GGS_syntaxDeclarationForGeneration castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -752,7 +752,7 @@ extern C_galgasClassRunTimeInformationEX gClassInfoFor__syntaxDeclarationForGene
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterNonterminalNonTerminalInMapAndCheck (C_Compiler &,
+void routine_enterNonterminalNonTerminalInMapAndCheck (C_CompilerEx &,
                                 const GGS_lstring  ,
                                 const GGS_nonterminalLabelMap  ,
                                 const GGS_bool ,
@@ -764,7 +764,7 @@ void routine_enterNonterminalNonTerminalInMapAndCheck (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildNonterminalDeclarationsMap (C_Compiler &,
+void routine_buildNonterminalDeclarationsMap (C_CompilerEx &,
                                 const GGS_nonterminalDeclarationListAST  ,
                                 const GGS_semanticContext ,
                                 GGS_nonterminalMap  & COMMA_LOCATION_ARGS) ;
@@ -775,7 +775,7 @@ void routine_buildNonterminalDeclarationsMap (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__syntaxInstructionAST__analyzeSyntaxInstruction)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__syntaxInstructionAST__analyzeSyntaxInstruction)  (C_CompilerEx & inLexique,
                                 const cPtr_syntaxInstructionAST * inObjectPtr,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 const GGS_terminalMap   var_cas_inTerminalMap,
@@ -804,7 +804,7 @@ findCategoryMethod__syntaxInstructionAST__analyzeSyntaxInstruction (AC_galgasCla
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_analyzeSyntaxInstructionList (C_Compiler &,
+void routine_analyzeSyntaxInstructionList (C_CompilerEx &,
                                 const GGS_analysisContext ,
                                 const GGS_terminalMap  ,
                                 const GGS_string ,
@@ -822,7 +822,7 @@ void routine_analyzeSyntaxInstructionList (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_semanticAnalysisOfRuleLabel (C_Compiler &,
+void routine_semanticAnalysisOfRuleLabel (C_CompilerEx &,
                                 const GGS_formalParameterListAST  ,
                                 const GGS_syntaxInstructionList  ,
                                 const GGS_analysisContext ,
@@ -842,7 +842,7 @@ void routine_semanticAnalysisOfRuleLabel (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_semanticAnalysisOfSyntaxComponent (C_Compiler &,
+void routine_semanticAnalysisOfSyntaxComponent (C_CompilerEx &,
                                 const GGS_nonterminalDeclarationListAST  ,
                                 const GGS_syntaxRuleListAST  ,
                                 const GGS_string ,
@@ -1058,7 +1058,7 @@ extern const cDirectoryWrapperEx gWrapperDirectory_0_syntaxFileGenerationTemplat
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_syntaxFileGenerationTemplate_syntaxFileHeader (C_Compiler & inLexique,
+template_filewrapper_syntaxFileGenerationTemplate_syntaxFileHeader (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_COMPONENT_NAME,
                                 const GGS_string& var_cas_LEXIQUE_NAME,
                                 const GGS_stringlist & var_cas_IMPORTED_COMPONENT_LIST,
@@ -1071,7 +1071,7 @@ template_filewrapper_syntaxFileGenerationTemplate_syntaxFileHeader (C_Compiler &
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_syntaxFileGenerationTemplate_syntaxFileImplementation (C_Compiler & inLexique,
+template_filewrapper_syntaxFileGenerationTemplate_syntaxFileImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_COMPONENT_NAME,
                                 const GGS_stringlist & var_cas_IMPORTED_COMPONENT_LIST) ;
 
@@ -1082,7 +1082,7 @@ template_filewrapper_syntaxFileGenerationTemplate_syntaxFileImplementation (C_Co
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_syntaxFileGenerationTemplate_syntaxAnalyserClassDeclaration (C_Compiler & inLexique,
+template_filewrapper_syntaxFileGenerationTemplate_syntaxAnalyserClassDeclaration (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_COMPONENT_NAME,
                                 const GGS_string& var_cas_LEXIQUE_NAME,
                                 const GGS_nonterminalMap & var_cas_NONTERMINAL_MAP,

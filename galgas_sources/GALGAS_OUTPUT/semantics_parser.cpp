@@ -320,7 +320,7 @@ void semantics_parser::rule_semantics_5F_parser_galgas_5F_component_i0_importSyn
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_parse_semantics_component_for_importing (C_Compiler & inLexique,
+void routine_parse_semantics_component_for_importing (C_CompilerEx & inLexique,
                                 const GGS_lstring   var_cas_inFileName,
                                 GGS_M_semanticsComponents  & var_cas_ioSemanticsMapForUse,
                                 GGS_EXsemanticContext & var_cas_ioSemanticContext,
@@ -9435,7 +9435,7 @@ void semantics_parser::rule_semantics_5F_parser_semantics_5F_declaration_i75_par
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_recursivelyEnumerateDirectoriesEX (C_Compiler & inLexique,
+void routine_recursivelyEnumerateDirectoriesEX (C_CompilerEx & inLexique,
                                 const GGS_string  var_cas_inAbsoluteSourcePath,
                                 const GGS_string  var_cas_inPathInWrapper,
                                 const GGS_wrapperExtensionMapEX   var_cas_inExtensionMap,

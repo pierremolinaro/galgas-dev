@@ -47,7 +47,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_compilerCppName
 
 //---------------------------------------------------------------------------*
 
-GGS_string function_compilerCppName (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_string function_compilerCppName (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -55,7 +55,7 @@ GGS_string function_compilerCppName (C_Compiler & COMMA_LOCATION_ARGS) ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_bool (*typeCategoryReader__semanticExpressionForGeneration__isTrueExpression)  (C_Compiler & inLexique,
+typedef GGS_bool (*typeCategoryReader__semanticExpressionForGeneration__isTrueExpression)  (C_CompilerEx & inLexique,
                                 const cPtr_semanticExpressionForGeneration * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -76,7 +76,7 @@ findCategoryReader__semanticExpressionForGeneration__isTrueExpression (AC_galgas
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__semanticExpressionForGeneration__generateExpression)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__semanticExpressionForGeneration__generateExpression)  (C_CompilerEx & inLexique,
                                 const cPtr_semanticExpressionForGeneration * inObjectPtr,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,

@@ -56,7 +56,7 @@
 //---------------------------------------------------------------------------*
 
 static void
-category_method__semanticInstructionForGeneration__appendSyntaxSignature (C_Compiler &,
+category_method__semanticInstructionForGeneration__appendSyntaxSignature (C_CompilerEx &,
                                 const cPtr_semanticInstructionForGeneration * operand_2108,
                                 GGS_semanticInstructionListForGeneration  & /* var_cas_ioInstructionListForGeneration */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -104,7 +104,7 @@ findCategoryMethod__semanticInstructionForGeneration__appendSyntaxSignature (AC_
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_semanticInstructionListForGeneration  function_syntaxSignatureOfInstructionList (C_Compiler & inLexique,
+GGS_semanticInstructionListForGeneration  function_syntaxSignatureOfInstructionList (C_CompilerEx & inLexique,
                                 const GGS_semanticInstructionListForGeneration   var_cas_inInstructionList COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER function_syntaxSignatureOfInstructionList at %s:%d\n", __FILE__, __LINE__) ;
@@ -131,7 +131,7 @@ GGS_semanticInstructionListForGeneration  function_syntaxSignatureOfInstructionL
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_syntaxSignatureOfInstructionList (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_syntaxSignatureOfInstructionList (C_CompilerEx & inLexique,
                            const GGS_objectlist & inEffectiveParameterArray,
                            const GGS_location & inErrorLocation
                            COMMA_LOCATION_ARGS) {
@@ -161,7 +161,7 @@ kFunction_descriptor_syntaxSignatureOfInstructionList ("syntaxSignatureOfInstruc
 //---------------------------------------------------------------------------*
 
 static void
-category_method__nonterminalInstructionForGeneration__appendSyntaxSignature (C_Compiler & inLexique,
+category_method__nonterminalInstructionForGeneration__appendSyntaxSignature (C_CompilerEx & inLexique,
                                 const cPtr_nonterminalInstructionForGeneration * operand_2778,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -177,7 +177,7 @@ category_method__nonterminalInstructionForGeneration__appendSyntaxSignature (C_C
 //---------------------------------------------------------------------------*
 
 static void
-category_method__terminalCheckInstructionForGeneration__appendSyntaxSignature (C_Compiler & inLexique,
+category_method__terminalCheckInstructionForGeneration__appendSyntaxSignature (C_CompilerEx & inLexique,
                                 const cPtr_terminalCheckInstructionForGeneration * operand_3220,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -193,7 +193,7 @@ category_method__terminalCheckInstructionForGeneration__appendSyntaxSignature (C
 //---------------------------------------------------------------------------*
 
 static void
-category_method__repeatInstructionForGeneration__appendSyntaxSignature (C_Compiler & inLexique,
+category_method__repeatInstructionForGeneration__appendSyntaxSignature (C_CompilerEx & inLexique,
                                 const cPtr_repeatInstructionForGeneration * operand_3661,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -219,7 +219,7 @@ category_method__repeatInstructionForGeneration__appendSyntaxSignature (C_Compil
 //---------------------------------------------------------------------------*
 
 static void
-category_method__selectInstructionForGeneration__appendSyntaxSignature (C_Compiler & inLexique,
+category_method__selectInstructionForGeneration__appendSyntaxSignature (C_CompilerEx & inLexique,
                                 const cPtr_selectInstructionForGeneration * operand_4624,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -244,7 +244,7 @@ category_method__selectInstructionForGeneration__appendSyntaxSignature (C_Compil
 //---------------------------------------------------------------------------*
 
 static void
-category_method__parseRewindInstructionForGeneration__appendSyntaxSignature (C_Compiler & inLexique,
+category_method__parseRewindInstructionForGeneration__appendSyntaxSignature (C_CompilerEx & inLexique,
                                 const cPtr_parseRewindInstructionForGeneration * operand_5385,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -265,7 +265,7 @@ category_method__parseRewindInstructionForGeneration__appendSyntaxSignature (C_C
 //---------------------------------------------------------------------------*
 
 static void
-category_method__parseLoopInstructionForGeneration__appendSyntaxSignature (C_Compiler & inLexique,
+category_method__parseLoopInstructionForGeneration__appendSyntaxSignature (C_CompilerEx & inLexique,
                                 const cPtr_parseLoopInstructionForGeneration * operand_5850,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -281,7 +281,7 @@ category_method__parseLoopInstructionForGeneration__appendSyntaxSignature (C_Com
 //---------------------------------------------------------------------------*
 
 static void
-category_method__parseWhenInstructionForGeneration__appendSyntaxSignature (C_Compiler & inLexique,
+category_method__parseWhenInstructionForGeneration__appendSyntaxSignature (C_CompilerEx & inLexique,
                                 const cPtr_parseWhenInstructionForGeneration * operand_6182,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -297,7 +297,7 @@ category_method__parseWhenInstructionForGeneration__appendSyntaxSignature (C_Com
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__semanticInstructionForGeneration__compareSyntaxInstruction (C_Compiler &,
+category_reader__semanticInstructionForGeneration__compareSyntaxInstruction (C_CompilerEx &,
                                 const cPtr_semanticInstructionForGeneration * operand_6819,
                                 const GGS_semanticInstructionForGeneration   /* var_cas_inTestedInstruction */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -327,7 +327,7 @@ enterCategoryReader__semanticInstructionForGeneration__compareSyntaxInstruction 
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__semanticInstructionForGeneration_defaultReader_compareSyntaxInstruction (C_Compiler &,
+category_reader__semanticInstructionForGeneration_defaultReader_compareSyntaxInstruction (C_CompilerEx &,
                                 const cPtr_semanticInstructionForGeneration *,
                                 const GGS_semanticInstructionForGeneration   
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -361,7 +361,7 @@ findCategoryReader__semanticInstructionForGeneration__compareSyntaxInstruction (
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_bool function_compareSyntaxSignature (C_Compiler & inLexique,
+GGS_bool function_compareSyntaxSignature (C_CompilerEx & inLexique,
                                 const GGS_semanticInstructionListForGeneration   var_cas_inReferenceSignature,
                                 const GGS_semanticInstructionListForGeneration   var_cas_inTestedSignature,
                                 const GGS_location   var_cas_inErrorLocation COMMA_UNUSED_LOCATION_ARGS) {
@@ -423,7 +423,7 @@ GGS_bool function_compareSyntaxSignature (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_compareSyntaxSignature (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_compareSyntaxSignature (C_CompilerEx & inLexique,
                            const GGS_objectlist & inEffectiveParameterArray,
                            const GGS_location & inErrorLocation
                            COMMA_LOCATION_ARGS) {
@@ -459,7 +459,7 @@ kFunction_descriptor_compareSyntaxSignature ("compareSyntaxSignature",
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__terminalCheckInstructionForGeneration__compareSyntaxInstruction (C_Compiler & inLexique,
+category_reader__terminalCheckInstructionForGeneration__compareSyntaxInstruction (C_CompilerEx & inLexique,
                                 const cPtr_terminalCheckInstructionForGeneration * operand_8784,
                                 const GGS_semanticInstructionForGeneration   var_cas_inTestedInstruction
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -500,7 +500,7 @@ category_reader__terminalCheckInstructionForGeneration__compareSyntaxInstruction
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__nonterminalInstructionForGeneration__compareSyntaxInstruction (C_Compiler & inLexique,
+category_reader__nonterminalInstructionForGeneration__compareSyntaxInstruction (C_CompilerEx & inLexique,
                                 const cPtr_nonterminalInstructionForGeneration * operand_9820,
                                 const GGS_semanticInstructionForGeneration   var_cas_inTestedInstruction
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -541,7 +541,7 @@ category_reader__nonterminalInstructionForGeneration__compareSyntaxInstruction (
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__repeatInstructionForGeneration__compareSyntaxInstruction (C_Compiler & inLexique,
+category_reader__repeatInstructionForGeneration__compareSyntaxInstruction (C_CompilerEx & inLexique,
                                 const cPtr_repeatInstructionForGeneration * operand_10859,
                                 const GGS_semanticInstructionForGeneration   var_cas_inTestedInstruction
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -596,7 +596,7 @@ category_reader__repeatInstructionForGeneration__compareSyntaxInstruction (C_Com
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__selectInstructionForGeneration__compareSyntaxInstruction (C_Compiler & inLexique,
+category_reader__selectInstructionForGeneration__compareSyntaxInstruction (C_CompilerEx & inLexique,
                                 const cPtr_selectInstructionForGeneration * operand_12521,
                                 const GGS_semanticInstructionForGeneration   var_cas_inTestedInstruction
                                 COMMA_UNUSED_LOCATION_ARGS) {

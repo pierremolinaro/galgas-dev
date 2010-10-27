@@ -124,7 +124,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_grammarLabelMap GGS_grammarLabelMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_grammarLabelMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -169,7 +169,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_grammarLabelMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -197,7 +197,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_grammarLabelMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -273,7 +273,7 @@ const utf32 GGS_grammarLabelMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_grammarLabelMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_formalParameterSignature   & outParameter0 COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
@@ -348,7 +348,7 @@ const utf32 GGS_grammarLabelMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_grammarLabelMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_formalParameterSignature & inParameter0 COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
@@ -363,7 +363,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_grammarLabelMap GGS_grammarLabelMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_grammarLabelMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_grammarLabelMap result ; // Not Built
@@ -380,7 +380,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_grammarLabelMap GGS_grammarLabelMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_grammarLabelMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -454,7 +454,7 @@ GGS_object GGS_grammarLabelMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_grammarLabelMap GGS_grammarLabelMap::castFromObject (C_Compiler & inLexique,
+GGS_grammarLabelMap GGS_grammarLabelMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -479,7 +479,7 @@ const C_galgas_type_descriptorEX * GGS_grammarLabelMap::typeDescriptor (void) co
 
 //---------------------------------------------------------------------------*
 
-GGS_grammarLabelMap GGS_grammarLabelMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_grammarLabelMap GGS_grammarLabelMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_formalParameterSignature & inValue0
                                              COMMA_LOCATION_ARGS) {
@@ -576,7 +576,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_grammarMap GGS_grammarMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_grammarMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -621,7 +621,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_grammarMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -649,7 +649,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_grammarMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -719,7 +719,7 @@ const utf32 GGS_grammarMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_grammarMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_grammarLabelMap   & outParameter0 COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
@@ -788,7 +788,7 @@ const utf32 GGS_grammarMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_grammarMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_grammarLabelMap & inParameter0 COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
@@ -803,7 +803,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_grammarMap GGS_grammarMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_grammarMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_grammarMap result ; // Not Built
@@ -820,7 +820,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_grammarMap GGS_grammarMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_grammarMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -894,7 +894,7 @@ GGS_object GGS_grammarMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_grammarMap GGS_grammarMap::castFromObject (C_Compiler & inLexique,
+GGS_grammarMap GGS_grammarMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -919,7 +919,7 @@ const C_galgas_type_descriptorEX * GGS_grammarMap::typeDescriptor (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_grammarMap GGS_grammarMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_grammarMap GGS_grammarMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_grammarLabelMap & inValue0
                                              COMMA_LOCATION_ARGS) {
@@ -1016,7 +1016,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_routineMap GGS_routineMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_routineMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -1061,7 +1061,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_routineMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -1089,7 +1089,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_routineMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -1159,7 +1159,7 @@ const utf32 GGS_routineMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_routineMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_formalParameterSignature   & outParameter0 COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
@@ -1228,7 +1228,7 @@ const utf32 GGS_routineMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_routineMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_formalParameterSignature & inParameter0 COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
@@ -1243,7 +1243,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_routineMap GGS_routineMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_routineMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_routineMap result ; // Not Built
@@ -1260,7 +1260,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_routineMap GGS_routineMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_routineMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -1334,7 +1334,7 @@ GGS_object GGS_routineMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_routineMap GGS_routineMap::castFromObject (C_Compiler & inLexique,
+GGS_routineMap GGS_routineMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -1359,7 +1359,7 @@ const C_galgas_type_descriptorEX * GGS_routineMap::typeDescriptor (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_routineMap GGS_routineMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_routineMap GGS_routineMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_formalParameterSignature & inValue0
                                              COMMA_LOCATION_ARGS) {
@@ -1463,7 +1463,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_functionMap GGS_functionMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_functionMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -1508,7 +1508,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_functionMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -1539,7 +1539,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_functionMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -1613,7 +1613,7 @@ const utf32 GGS_functionMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_functionMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_unifiedTypeMapProxyList   & outParameter0,
                                 GGS_unifiedTypeMapProxy   & outParameter1 COMMA_LOCATION_ARGS) const {
@@ -1685,7 +1685,7 @@ const utf32 GGS_functionMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_functionMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_unifiedTypeMapProxyList & inParameter0,
                                 const GGS_unifiedTypeMapProxy & inParameter1 COMMA_LOCATION_ARGS) {
@@ -1702,7 +1702,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_functionMap GGS_functionMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_functionMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_functionMap result ; // Not Built
@@ -1719,7 +1719,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_functionMap GGS_functionMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_functionMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -1799,7 +1799,7 @@ GGS_object GGS_functionMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_functionMap GGS_functionMap::castFromObject (C_Compiler & inLexique,
+GGS_functionMap GGS_functionMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -1824,7 +1824,7 @@ const C_galgas_type_descriptorEX * GGS_functionMap::typeDescriptor (void) const 
 
 //---------------------------------------------------------------------------*
 
-GGS_functionMap GGS_functionMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_functionMap GGS_functionMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_unifiedTypeMapProxyList & inValue0,
                                              const GGS_unifiedTypeMapProxy & inValue1
@@ -1937,7 +1937,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_wrapperFileMap GGS_wrapperFileMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_wrapperFileMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -1982,7 +1982,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_wrapperFileMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -2016,7 +2016,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_wrapperFileMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -2074,7 +2074,7 @@ const utf32 GGS_wrapperFileMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_wrapperFileMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_string  & outParameter0,
                                 GGS_uint   & outParameter1,
@@ -2113,7 +2113,7 @@ const utf32 GGS_wrapperFileMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_wrapperFileMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_string& inParameter0,
                                 const GGS_uint & inParameter1,
@@ -2132,7 +2132,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_wrapperFileMap GGS_wrapperFileMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_wrapperFileMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_wrapperFileMap result ; // Not Built
@@ -2149,7 +2149,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_wrapperFileMap GGS_wrapperFileMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_wrapperFileMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -2235,7 +2235,7 @@ GGS_object GGS_wrapperFileMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_wrapperFileMap GGS_wrapperFileMap::castFromObject (C_Compiler & inLexique,
+GGS_wrapperFileMap GGS_wrapperFileMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -2260,7 +2260,7 @@ const C_galgas_type_descriptorEX * GGS_wrapperFileMap::typeDescriptor (void) con
 
 //---------------------------------------------------------------------------*
 
-GGS_wrapperFileMap GGS_wrapperFileMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_wrapperFileMap GGS_wrapperFileMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_string& inValue0,
                                              const GGS_uint & inValue1,
@@ -2375,7 +2375,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_wrapperDirectoryMap GGS_wrapperDirectoryMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_wrapperDirectoryMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -2420,7 +2420,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_wrapperDirectoryMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -2454,7 +2454,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_wrapperDirectoryMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -2512,7 +2512,7 @@ const utf32 GGS_wrapperDirectoryMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_wrapperDirectoryMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_wrapperFileMap   & outParameter0,
                                 GGS_wrapperDirectoryMap   & outParameter1,
@@ -2551,7 +2551,7 @@ const utf32 GGS_wrapperDirectoryMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_wrapperDirectoryMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_wrapperFileMap & inParameter0,
                                 const GGS_wrapperDirectoryMap & inParameter1,
@@ -2570,7 +2570,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_wrapperDirectoryMap GGS_wrapperDirectoryMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_wrapperDirectoryMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_wrapperDirectoryMap result ; // Not Built
@@ -2587,7 +2587,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_wrapperDirectoryMap GGS_wrapperDirectoryMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_wrapperDirectoryMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -2673,7 +2673,7 @@ GGS_object GGS_wrapperDirectoryMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_wrapperDirectoryMap GGS_wrapperDirectoryMap::castFromObject (C_Compiler & inLexique,
+GGS_wrapperDirectoryMap GGS_wrapperDirectoryMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -2698,7 +2698,7 @@ const C_galgas_type_descriptorEX * GGS_wrapperDirectoryMap::typeDescriptor (void
 
 //---------------------------------------------------------------------------*
 
-GGS_wrapperDirectoryMap GGS_wrapperDirectoryMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_wrapperDirectoryMap GGS_wrapperDirectoryMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_wrapperFileMap & inValue0,
                                              const GGS_wrapperDirectoryMap & inValue1,
@@ -2806,7 +2806,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_filewrapperTemplateMap GGS_filewrapperTemplateMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_filewrapperTemplateMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -2851,7 +2851,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_filewrapperTemplateMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -2882,7 +2882,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_filewrapperTemplateMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -2968,7 +2968,7 @@ const utf32 GGS_filewrapperTemplateMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_filewrapperTemplateMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_unifiedTypeMapProxyList   & outParameter0,
                                 GGS_lstring   & outParameter1 COMMA_LOCATION_ARGS) const {
@@ -3052,7 +3052,7 @@ const utf32 GGS_filewrapperTemplateMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_filewrapperTemplateMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_unifiedTypeMapProxyList & inParameter0,
                                 const GGS_lstring & inParameter1 COMMA_LOCATION_ARGS) {
@@ -3069,7 +3069,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_filewrapperTemplateMap GGS_filewrapperTemplateMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_filewrapperTemplateMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_filewrapperTemplateMap result ; // Not Built
@@ -3086,7 +3086,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_filewrapperTemplateMap GGS_filewrapperTemplateMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_filewrapperTemplateMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -3166,7 +3166,7 @@ GGS_object GGS_filewrapperTemplateMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_filewrapperTemplateMap GGS_filewrapperTemplateMap::castFromObject (C_Compiler & inLexique,
+GGS_filewrapperTemplateMap GGS_filewrapperTemplateMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -3191,7 +3191,7 @@ const C_galgas_type_descriptorEX * GGS_filewrapperTemplateMap::typeDescriptor (v
 
 //---------------------------------------------------------------------------*
 
-GGS_filewrapperTemplateMap GGS_filewrapperTemplateMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_filewrapperTemplateMap GGS_filewrapperTemplateMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_unifiedTypeMapProxyList & inValue0,
                                              const GGS_lstring & inValue1
@@ -3318,7 +3318,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_filewrapperMap GGS_filewrapperMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_filewrapperMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -3363,7 +3363,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_filewrapperMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -3403,7 +3403,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_filewrapperMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -3489,7 +3489,7 @@ const utf32 GGS_filewrapperMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_filewrapperMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_lstring   & outParameter0,
                                 GGS_lstringlist   & outParameter1,
@@ -3570,7 +3570,7 @@ const utf32 GGS_filewrapperMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_filewrapperMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_lstring & inParameter0,
                                 const GGS_lstringlist & inParameter1,
@@ -3593,7 +3593,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_filewrapperMap GGS_filewrapperMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_filewrapperMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_filewrapperMap result ; // Not Built
@@ -3610,7 +3610,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_filewrapperMap GGS_filewrapperMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_filewrapperMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -3708,7 +3708,7 @@ GGS_object GGS_filewrapperMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_filewrapperMap GGS_filewrapperMap::castFromObject (C_Compiler & inLexique,
+GGS_filewrapperMap GGS_filewrapperMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -3733,7 +3733,7 @@ const C_galgas_type_descriptorEX * GGS_filewrapperMap::typeDescriptor (void) con
 
 //---------------------------------------------------------------------------*
 
-GGS_filewrapperMap GGS_filewrapperMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_filewrapperMap GGS_filewrapperMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_lstring & inValue0,
                                              const GGS_lstringlist & inValue1,
@@ -3852,7 +3852,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_optionComponentMapForSemanticAnalysis GGS_optionComponentMapForSemanticAnalysis::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_optionComponentMapForSemanticAnalysis result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -3897,7 +3897,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_optionComponentMapForSemanticAnalysis::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -3931,7 +3931,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_optionComponentMapForSemanticAnalysis::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -4016,7 +4016,7 @@ const utf32 GGS_optionComponentMapForSemanticAnalysis::kSearchMessage_searchKey 
 //---------------------------------------------------------------------------*
 
 void GGS_optionComponentMapForSemanticAnalysis::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_commandLineOptionMap   & outParameter0,
                                 GGS_commandLineOptionMap   & outParameter1,
@@ -4117,7 +4117,7 @@ const utf32 GGS_optionComponentMapForSemanticAnalysis::kInsertMessage_insertKey 
 //---------------------------------------------------------------------------*
 
 void GGS_optionComponentMapForSemanticAnalysis::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_commandLineOptionMap & inParameter0,
                                 const GGS_commandLineOptionMap & inParameter1,
@@ -4136,7 +4136,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_optionComponentMapForSemanticAnalysis GGS_optionComponentMapForSemanticAnalysis::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_optionComponentMapForSemanticAnalysis & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_optionComponentMapForSemanticAnalysis result ; // Not Built
@@ -4153,7 +4153,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_optionComponentMapForSemanticAnalysis GGS_optionComponentMapForSemanticAnalysis::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_optionComponentMapForSemanticAnalysis result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -4239,7 +4239,7 @@ GGS_object GGS_optionComponentMapForSemanticAnalysis::reader_object (void) const
 
 //---------------------------------------------------------------------------*
 
-GGS_optionComponentMapForSemanticAnalysis GGS_optionComponentMapForSemanticAnalysis::castFromObject (C_Compiler & inLexique,
+GGS_optionComponentMapForSemanticAnalysis GGS_optionComponentMapForSemanticAnalysis::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -4264,7 +4264,7 @@ const C_galgas_type_descriptorEX * GGS_optionComponentMapForSemanticAnalysis::ty
 
 //---------------------------------------------------------------------------*
 
-GGS_optionComponentMapForSemanticAnalysis GGS_optionComponentMapForSemanticAnalysis::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_optionComponentMapForSemanticAnalysis GGS_optionComponentMapForSemanticAnalysis::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_commandLineOptionMap & inValue0,
                                              const GGS_commandLineOptionMap & inValue1,
@@ -4437,7 +4437,7 @@ GGS_object GGS_semanticContext::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_semanticContext GGS_semanticContext::castFromObject (C_Compiler & inLexique,
+GGS_semanticContext GGS_semanticContext::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -4525,7 +4525,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_collectedTypeMap GGS_collectedTypeMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_collectedTypeMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -4570,7 +4570,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_collectedTypeMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -4595,7 +4595,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_collectedTypeMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -4659,7 +4659,7 @@ const utf32 GGS_collectedTypeMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_collectedTypeMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
                  0,
@@ -4722,7 +4722,7 @@ const utf32 GGS_collectedTypeMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_collectedTypeMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
                  0,
@@ -4735,7 +4735,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_collectedTypeMap GGS_collectedTypeMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_collectedTypeMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_collectedTypeMap result ; // Not Built
@@ -4752,7 +4752,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_collectedTypeMap GGS_collectedTypeMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_collectedTypeMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -4820,7 +4820,7 @@ GGS_object GGS_collectedTypeMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_collectedTypeMap GGS_collectedTypeMap::castFromObject (C_Compiler & inLexique,
+GGS_collectedTypeMap GGS_collectedTypeMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -4845,7 +4845,7 @@ const C_galgas_type_descriptorEX * GGS_collectedTypeMap::typeDescriptor (void) c
 
 //---------------------------------------------------------------------------*
 
-GGS_collectedTypeMap GGS_collectedTypeMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_collectedTypeMap GGS_collectedTypeMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
                                              COMMA_LOCATION_ARGS) {
   GGS_collectedTypeMap result = constructor_emptyMap (inLexique COMMA_THERE) ;
@@ -4869,7 +4869,7 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_collectedTypeMapIndex ("col
 //---------------------------------------------------------------------------*
 
 GGS_collectedTypeMapIndex GGS_collectedTypeMapIndex::
-constructor_null (C_Compiler & /* inLexique */
+constructor_null (C_CompilerEx & /* inLexique */
                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_collectedTypeMapIndex result ;
   result.mState = kNull ;
@@ -4924,7 +4924,7 @@ reader_description (const PMSInt32 /* inIndentation */) const {
 //---------------------------------------------------------------------------*
 
 void GGS_collectedTypeMapIndex::
-class_method_makeRegularProxy (C_Compiler & /* inLexique*/ ,
+class_method_makeRegularProxy (C_CompilerEx & /* inLexique*/ ,
                                GGS_collectedTypeMap & ioMap,
                                const GGS_string & inKey,
                                GGS_collectedTypeMapIndex & outIndex
@@ -4939,7 +4939,7 @@ class_method_makeRegularProxy (C_Compiler & /* inLexique*/ ,
 
 //---------------------------------------------------------------------------*
 
-GGS_collectedTypeMapIndex GGS_collectedTypeMapIndex::constructor_searchKey (C_Compiler & inLexique,
+GGS_collectedTypeMapIndex GGS_collectedTypeMapIndex::constructor_searchKey (C_CompilerEx & inLexique,
               const GGS_collectedTypeMap & inMap,
               const GGS_lstring & inKey
               COMMA_LOCATION_ARGS) {
@@ -4967,7 +4967,7 @@ GGS_object GGS_collectedTypeMapIndex::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_collectedTypeMapIndex GGS_collectedTypeMapIndex::castFromObject (C_Compiler & inLexique,
+GGS_collectedTypeMapIndex GGS_collectedTypeMapIndex::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -5072,7 +5072,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_categoryMethodMapForType GGS_categoryMethodMapForType::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_categoryMethodMapForType result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -5117,7 +5117,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_categoryMethodMapForType::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -5145,7 +5145,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_categoryMethodMapForType::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -5177,7 +5177,7 @@ searchElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_categoryMethodMapForType GGS_categoryMethodMapForType::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_categoryMethodMapForType & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_categoryMethodMapForType result ; // Not Built
@@ -5194,7 +5194,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_categoryMethodMapForType GGS_categoryMethodMapForType::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_categoryMethodMapForType result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -5268,7 +5268,7 @@ GGS_object GGS_categoryMethodMapForType::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_categoryMethodMapForType GGS_categoryMethodMapForType::castFromObject (C_Compiler & inLexique,
+GGS_categoryMethodMapForType GGS_categoryMethodMapForType::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -5293,7 +5293,7 @@ const C_galgas_type_descriptorEX * GGS_categoryMethodMapForType::typeDescriptor 
 
 //---------------------------------------------------------------------------*
 
-void GGS_categoryMethodMapForType::modifier_insertOrReplace (C_Compiler & /* inLexique */,
+void GGS_categoryMethodMapForType::modifier_insertOrReplace (C_CompilerEx & /* inLexique */,
                                 const GGS_lstring & inKey,
                                 const GGS_formalParameterListAST &  inParameter0 COMMA_LOCATION_ARGS) {
   if (isBuilt () && inKey.isBuilt ()
@@ -5307,7 +5307,7 @@ void GGS_categoryMethodMapForType::modifier_insertOrReplace (C_Compiler & /* inL
 
 //---------------------------------------------------------------------------*
 
-GGS_categoryMethodMapForType GGS_categoryMethodMapForType::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_categoryMethodMapForType GGS_categoryMethodMapForType::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_formalParameterListAST & inValue0
                                              COMMA_LOCATION_ARGS) {
@@ -5404,7 +5404,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_categoryMethodMapForBuildingContext GGS_categoryMethodMapForBuildingContext::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_categoryMethodMapForBuildingContext result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -5449,7 +5449,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_categoryMethodMapForBuildingContext::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -5477,7 +5477,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_categoryMethodMapForBuildingContext::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -5529,7 +5529,7 @@ const utf32 GGS_categoryMethodMapForBuildingContext::kSearchMessage_searchKey []
 //---------------------------------------------------------------------------*
 
 void GGS_categoryMethodMapForBuildingContext::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_categoryMethodMapForType   & outParameter0 COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
@@ -5564,7 +5564,7 @@ const utf32 GGS_categoryMethodMapForBuildingContext::kInsertMessage_insertKey []
 //---------------------------------------------------------------------------*
 
 void GGS_categoryMethodMapForBuildingContext::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_categoryMethodMapForType & inParameter0 COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
@@ -5579,7 +5579,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_categoryMethodMapForBuildingContext GGS_categoryMethodMapForBuildingContext::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_categoryMethodMapForBuildingContext & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_categoryMethodMapForBuildingContext result ; // Not Built
@@ -5596,7 +5596,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_categoryMethodMapForBuildingContext GGS_categoryMethodMapForBuildingContext::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_categoryMethodMapForBuildingContext result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -5670,7 +5670,7 @@ GGS_object GGS_categoryMethodMapForBuildingContext::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_categoryMethodMapForBuildingContext GGS_categoryMethodMapForBuildingContext::castFromObject (C_Compiler & inLexique,
+GGS_categoryMethodMapForBuildingContext GGS_categoryMethodMapForBuildingContext::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -5695,7 +5695,7 @@ const C_galgas_type_descriptorEX * GGS_categoryMethodMapForBuildingContext::type
 
 //---------------------------------------------------------------------------*
 
-GGS_categoryMethodMapForBuildingContext GGS_categoryMethodMapForBuildingContext::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_categoryMethodMapForBuildingContext GGS_categoryMethodMapForBuildingContext::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_categoryMethodMapForType & inValue0
                                              COMMA_LOCATION_ARGS) {
@@ -5799,7 +5799,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_categoryReaderMapForType GGS_categoryReaderMapForType::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_categoryReaderMapForType result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -5844,7 +5844,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_categoryReaderMapForType::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -5875,7 +5875,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_categoryReaderMapForType::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -5910,7 +5910,7 @@ searchElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_categoryReaderMapForType GGS_categoryReaderMapForType::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_categoryReaderMapForType & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_categoryReaderMapForType result ; // Not Built
@@ -5927,7 +5927,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_categoryReaderMapForType GGS_categoryReaderMapForType::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_categoryReaderMapForType result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -6007,7 +6007,7 @@ GGS_object GGS_categoryReaderMapForType::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_categoryReaderMapForType GGS_categoryReaderMapForType::castFromObject (C_Compiler & inLexique,
+GGS_categoryReaderMapForType GGS_categoryReaderMapForType::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -6032,7 +6032,7 @@ const C_galgas_type_descriptorEX * GGS_categoryReaderMapForType::typeDescriptor 
 
 //---------------------------------------------------------------------------*
 
-void GGS_categoryReaderMapForType::modifier_insertOrReplace (C_Compiler & /* inLexique */,
+void GGS_categoryReaderMapForType::modifier_insertOrReplace (C_CompilerEx & /* inLexique */,
                                 const GGS_lstring & inKey,
                                 const GGS_lstring &  inParameter0,
                                 const GGS_formalInputParameterListAST &  inParameter1 COMMA_LOCATION_ARGS) {
@@ -6049,7 +6049,7 @@ void GGS_categoryReaderMapForType::modifier_insertOrReplace (C_Compiler & /* inL
 
 //---------------------------------------------------------------------------*
 
-GGS_categoryReaderMapForType GGS_categoryReaderMapForType::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_categoryReaderMapForType GGS_categoryReaderMapForType::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_lstring & inValue0,
                                              const GGS_formalInputParameterListAST & inValue1
@@ -6148,7 +6148,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_categoryReaderMapForBuildingContext GGS_categoryReaderMapForBuildingContext::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_categoryReaderMapForBuildingContext result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -6193,7 +6193,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_categoryReaderMapForBuildingContext::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -6221,7 +6221,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_categoryReaderMapForBuildingContext::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -6273,7 +6273,7 @@ const utf32 GGS_categoryReaderMapForBuildingContext::kSearchMessage_searchKey []
 //---------------------------------------------------------------------------*
 
 void GGS_categoryReaderMapForBuildingContext::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_categoryReaderMapForType   & outParameter0 COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
@@ -6308,7 +6308,7 @@ const utf32 GGS_categoryReaderMapForBuildingContext::kInsertMessage_insertKey []
 //---------------------------------------------------------------------------*
 
 void GGS_categoryReaderMapForBuildingContext::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_categoryReaderMapForType & inParameter0 COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
@@ -6323,7 +6323,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_categoryReaderMapForBuildingContext GGS_categoryReaderMapForBuildingContext::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_categoryReaderMapForBuildingContext & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_categoryReaderMapForBuildingContext result ; // Not Built
@@ -6340,7 +6340,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_categoryReaderMapForBuildingContext GGS_categoryReaderMapForBuildingContext::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_categoryReaderMapForBuildingContext result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -6414,7 +6414,7 @@ GGS_object GGS_categoryReaderMapForBuildingContext::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_categoryReaderMapForBuildingContext GGS_categoryReaderMapForBuildingContext::castFromObject (C_Compiler & inLexique,
+GGS_categoryReaderMapForBuildingContext GGS_categoryReaderMapForBuildingContext::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -6439,7 +6439,7 @@ const C_galgas_type_descriptorEX * GGS_categoryReaderMapForBuildingContext::type
 
 //---------------------------------------------------------------------------*
 
-GGS_categoryReaderMapForBuildingContext GGS_categoryReaderMapForBuildingContext::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_categoryReaderMapForBuildingContext GGS_categoryReaderMapForBuildingContext::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_categoryReaderMapForType & inValue0
                                              COMMA_LOCATION_ARGS) {
@@ -6460,7 +6460,7 @@ GGS_categoryReaderMapForBuildingContext GGS_categoryReaderMapForBuildingContext:
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_collectAttributeTypes (C_Compiler & inLexique,
+void routine_collectAttributeTypes (C_CompilerEx & inLexique,
                                 const GGS_attributeInCollectionListAST   var_cas_inAttributeList,
                                 GGS_collectedTypeMap  & var_cas_ioCollectedTypeMap
                         COMMA_UNUSED_LOCATION_ARGS) {
@@ -6488,7 +6488,7 @@ void routine_collectAttributeTypes (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__semanticDeclarationAST__display (C_Compiler &,
+category_method__semanticDeclarationAST__display (C_CompilerEx &,
                                 const cPtr_semanticDeclarationAST * operand_10767,
                                 GGS_string & /* var_cas_ioString */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -6537,7 +6537,7 @@ findCategoryMethod__semanticDeclarationAST__display (AC_galgasClassRunTimeInform
 //---------------------------------------------------------------------------*
 
 static void
-category_method__abstractCategoryMethodAST__display (C_Compiler &,
+category_method__abstractCategoryMethodAST__display (C_CompilerEx &,
                                 const cPtr_abstractCategoryMethodAST * operand_10941,
                                 GGS_string & var_cas_ioString
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -6557,7 +6557,7 @@ category_method__abstractCategoryMethodAST__display (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__categoryMethodAST__display (C_Compiler &,
+category_method__categoryMethodAST__display (C_CompilerEx &,
                                 const cPtr_categoryMethodAST * operand_11204,
                                 GGS_string & var_cas_ioString
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -6577,7 +6577,7 @@ category_method__categoryMethodAST__display (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__overridingCategoryMethodAST__display (C_Compiler &,
+category_method__overridingCategoryMethodAST__display (C_CompilerEx &,
                                 const cPtr_overridingCategoryMethodAST * operand_11460,
                                 GGS_string & var_cas_ioString
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -6597,7 +6597,7 @@ category_method__overridingCategoryMethodAST__display (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__abstractCategoryReaderAST__display (C_Compiler &,
+category_method__abstractCategoryReaderAST__display (C_CompilerEx &,
                                 const cPtr_abstractCategoryReaderAST * operand_11735,
                                 GGS_string & var_cas_ioString
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -6617,7 +6617,7 @@ category_method__abstractCategoryReaderAST__display (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__categoryReaderAST__display (C_Compiler &,
+category_method__categoryReaderAST__display (C_CompilerEx &,
                                 const cPtr_categoryReaderAST * operand_11998,
                                 GGS_string & var_cas_ioString
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -6637,7 +6637,7 @@ category_method__categoryReaderAST__display (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__overridingCategoryReaderAST__display (C_Compiler &,
+category_method__overridingCategoryReaderAST__display (C_CompilerEx &,
                                 const cPtr_overridingCategoryReaderAST * operand_12254,
                                 GGS_string & var_cas_ioString
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -6657,7 +6657,7 @@ category_method__overridingCategoryReaderAST__display (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__predefinedTypeAST__display (C_Compiler &,
+category_method__predefinedTypeAST__display (C_CompilerEx &,
                                 const cPtr_predefinedTypeAST * operand_12521,
                                 GGS_string & var_cas_ioString
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -6675,7 +6675,7 @@ category_method__predefinedTypeAST__display (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__mapDeclarationAST__display (C_Compiler &,
+category_method__mapDeclarationAST__display (C_CompilerEx &,
                                 const cPtr_mapDeclarationAST * operand_12749,
                                 GGS_string & var_cas_ioString
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -6693,7 +6693,7 @@ category_method__mapDeclarationAST__display (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__mapProxyDeclarationAST__display (C_Compiler &,
+category_method__mapProxyDeclarationAST__display (C_CompilerEx &,
                                 const cPtr_mapProxyDeclarationAST * operand_12963,
                                 GGS_string & var_cas_ioString
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -6713,7 +6713,7 @@ category_method__mapProxyDeclarationAST__display (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__enumDeclarationAST__display (C_Compiler &,
+category_method__enumDeclarationAST__display (C_CompilerEx &,
                                 const cPtr_enumDeclarationAST * operand_13225,
                                 GGS_string & var_cas_ioString
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -6731,7 +6731,7 @@ category_method__enumDeclarationAST__display (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__sortedListDeclarationAST__display (C_Compiler &,
+category_method__sortedListDeclarationAST__display (C_CompilerEx &,
                                 const cPtr_sortedListDeclarationAST * operand_13443,
                                 GGS_string & var_cas_ioString
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -6749,7 +6749,7 @@ category_method__sortedListDeclarationAST__display (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__structDeclarationAST__display (C_Compiler &,
+category_method__structDeclarationAST__display (C_CompilerEx &,
                                 const cPtr_structDeclarationAST * operand_13670,
                                 GGS_string & var_cas_ioString
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -6767,7 +6767,7 @@ category_method__structDeclarationAST__display (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__listDeclarationAST__display (C_Compiler &,
+category_method__listDeclarationAST__display (C_CompilerEx &,
                                 const cPtr_listDeclarationAST * operand_13886,
                                 GGS_string & var_cas_ioString
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -6785,7 +6785,7 @@ category_method__listDeclarationAST__display (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__classDeclarationAST__display (C_Compiler & inLexique,
+category_method__classDeclarationAST__display (C_CompilerEx & inLexique,
                                 const cPtr_classDeclarationAST * operand_14099,
                                 GGS_string & var_cas_ioString
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -6808,7 +6808,7 @@ category_method__classDeclarationAST__display (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__listmapDeclarationAST__display (C_Compiler &,
+category_method__listmapDeclarationAST__display (C_CompilerEx &,
                                 const cPtr_listmapDeclarationAST * operand_14425,
                                 GGS_string & var_cas_ioString
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -6826,7 +6826,7 @@ category_method__listmapDeclarationAST__display (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__semanticDeclarationAST__collectTypes (C_Compiler &,
+category_method__semanticDeclarationAST__collectTypes (C_CompilerEx &,
                                 const cPtr_semanticDeclarationAST * operand_14955,
                                 GGS_collectedTypeMap  & /* var_cas_ioCollectedTypeMap */,
                                 GGS_categoryMethodMapForBuildingContext  & /* var_cas_ioCategoryMethodMapForBuildingContext */,
@@ -6877,7 +6877,7 @@ findCategoryMethod__semanticDeclarationAST__collectTypes (AC_galgasClassRunTimeI
 //---------------------------------------------------------------------------*
 
 static void
-category_method__abstractCategoryMethodAST__collectTypes (C_Compiler & inLexique,
+category_method__abstractCategoryMethodAST__collectTypes (C_CompilerEx & inLexique,
                                 const cPtr_abstractCategoryMethodAST * operand_15326,
                                 GGS_collectedTypeMap  & var_cas_ioCollectedTypeMap,
                                 GGS_categoryMethodMapForBuildingContext  & var_cas_ioCategoryMethodMapForBuildingContext,
@@ -6913,7 +6913,7 @@ category_method__abstractCategoryMethodAST__collectTypes (C_Compiler & inLexique
 //---------------------------------------------------------------------------*
 
 static void
-category_method__categoryMethodAST__collectTypes (C_Compiler & inLexique,
+category_method__categoryMethodAST__collectTypes (C_CompilerEx & inLexique,
                                 const cPtr_categoryMethodAST * operand_16417,
                                 GGS_collectedTypeMap  & var_cas_ioCollectedTypeMap,
                                 GGS_categoryMethodMapForBuildingContext  & var_cas_ioCategoryMethodMapForBuildingContext,
@@ -6949,7 +6949,7 @@ category_method__categoryMethodAST__collectTypes (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__overridingCategoryMethodAST__collectTypes (C_Compiler & inLexique,
+category_method__overridingCategoryMethodAST__collectTypes (C_CompilerEx & inLexique,
                                 const cPtr_overridingCategoryMethodAST * operand_17494,
                                 GGS_collectedTypeMap  & var_cas_ioCollectedTypeMap,
                                 GGS_categoryMethodMapForBuildingContext  & /* var_cas_ioCategoryMethodMapForBuildingContext */,
@@ -6977,7 +6977,7 @@ category_method__overridingCategoryMethodAST__collectTypes (C_Compiler & inLexiq
 //---------------------------------------------------------------------------*
 
 static void
-category_method__overridingAbstractCategoryMethodAST__collectTypes (C_Compiler & inLexique,
+category_method__overridingAbstractCategoryMethodAST__collectTypes (C_CompilerEx & inLexique,
                                 const cPtr_overridingAbstractCategoryMethodAST * operand_18165,
                                 GGS_collectedTypeMap  & var_cas_ioCollectedTypeMap,
                                 GGS_categoryMethodMapForBuildingContext  & /* var_cas_ioCategoryMethodMapForBuildingContext */,
@@ -7005,7 +7005,7 @@ category_method__overridingAbstractCategoryMethodAST__collectTypes (C_Compiler &
 //---------------------------------------------------------------------------*
 
 static void
-category_method__abstractCategoryReaderAST__collectTypes (C_Compiler & inLexique,
+category_method__abstractCategoryReaderAST__collectTypes (C_CompilerEx & inLexique,
                                 const cPtr_abstractCategoryReaderAST * operand_18826,
                                 GGS_collectedTypeMap  & var_cas_ioCollectedTypeMap,
                                 GGS_categoryMethodMapForBuildingContext  & /* var_cas_ioCategoryMethodMapForBuildingContext */,
@@ -7045,7 +7045,7 @@ category_method__abstractCategoryReaderAST__collectTypes (C_Compiler & inLexique
 //---------------------------------------------------------------------------*
 
 static void
-category_method__categoryReaderAST__collectTypes (C_Compiler & inLexique,
+category_method__categoryReaderAST__collectTypes (C_CompilerEx & inLexique,
                                 const cPtr_categoryReaderAST * operand_20216,
                                 GGS_collectedTypeMap  & var_cas_ioCollectedTypeMap,
                                 GGS_categoryMethodMapForBuildingContext  & /* var_cas_ioCategoryMethodMapForBuildingContext */,
@@ -7083,7 +7083,7 @@ category_method__categoryReaderAST__collectTypes (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__overridingCategoryReaderAST__collectTypes (C_Compiler & inLexique,
+category_method__overridingCategoryReaderAST__collectTypes (C_CompilerEx & inLexique,
                                 const cPtr_overridingCategoryReaderAST * operand_21454,
                                 GGS_collectedTypeMap  & var_cas_ioCollectedTypeMap,
                                 GGS_categoryMethodMapForBuildingContext  & /* var_cas_ioCategoryMethodMapForBuildingContext */,
@@ -7113,7 +7113,7 @@ category_method__overridingCategoryReaderAST__collectTypes (C_Compiler & inLexiq
 //---------------------------------------------------------------------------*
 
 static void
-category_method__overridingAbstractCategoryReaderAST__collectTypes (C_Compiler & inLexique,
+category_method__overridingAbstractCategoryReaderAST__collectTypes (C_CompilerEx & inLexique,
                                 const cPtr_overridingAbstractCategoryReaderAST * operand_22252,
                                 GGS_collectedTypeMap  & var_cas_ioCollectedTypeMap,
                                 GGS_categoryMethodMapForBuildingContext  & /* var_cas_ioCategoryMethodMapForBuildingContext */,
@@ -7143,7 +7143,7 @@ category_method__overridingAbstractCategoryReaderAST__collectTypes (C_Compiler &
 //---------------------------------------------------------------------------*
 
 static void
-category_method__predefinedTypeAST__collectTypes (C_Compiler & inLexique,
+category_method__predefinedTypeAST__collectTypes (C_CompilerEx & inLexique,
                                 const cPtr_predefinedTypeAST * operand_23028,
                                 GGS_collectedTypeMap  & var_cas_ioCollectedTypeMap,
                                 GGS_categoryMethodMapForBuildingContext  & /* var_cas_ioCategoryMethodMapForBuildingContext */,
@@ -7161,7 +7161,7 @@ category_method__predefinedTypeAST__collectTypes (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__mapDeclarationAST__collectTypes (C_Compiler & inLexique,
+category_method__mapDeclarationAST__collectTypes (C_CompilerEx & inLexique,
                                 const cPtr_mapDeclarationAST * operand_23464,
                                 GGS_collectedTypeMap  & var_cas_ioCollectedTypeMap,
                                 GGS_categoryMethodMapForBuildingContext  & /* var_cas_ioCategoryMethodMapForBuildingContext */,
@@ -7180,7 +7180,7 @@ category_method__mapDeclarationAST__collectTypes (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__mapProxyDeclarationAST__collectTypes (C_Compiler & inLexique,
+category_method__mapProxyDeclarationAST__collectTypes (C_CompilerEx & inLexique,
                                 const cPtr_mapProxyDeclarationAST * operand_23939,
                                 GGS_collectedTypeMap  & var_cas_ioCollectedTypeMap,
                                 GGS_categoryMethodMapForBuildingContext  & /* var_cas_ioCategoryMethodMapForBuildingContext */,
@@ -7198,7 +7198,7 @@ category_method__mapProxyDeclarationAST__collectTypes (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__enumDeclarationAST__collectTypes (C_Compiler & inLexique,
+category_method__enumDeclarationAST__collectTypes (C_CompilerEx & inLexique,
                                 const cPtr_enumDeclarationAST * operand_24352,
                                 GGS_collectedTypeMap  & var_cas_ioCollectedTypeMap,
                                 GGS_categoryMethodMapForBuildingContext  & /* var_cas_ioCategoryMethodMapForBuildingContext */,
@@ -7216,7 +7216,7 @@ category_method__enumDeclarationAST__collectTypes (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__sortedListDeclarationAST__collectTypes (C_Compiler & inLexique,
+category_method__sortedListDeclarationAST__collectTypes (C_CompilerEx & inLexique,
                                 const cPtr_sortedListDeclarationAST * operand_24767,
                                 GGS_collectedTypeMap  & var_cas_ioCollectedTypeMap,
                                 GGS_categoryMethodMapForBuildingContext  & /* var_cas_ioCategoryMethodMapForBuildingContext */,
@@ -7235,7 +7235,7 @@ category_method__sortedListDeclarationAST__collectTypes (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__structDeclarationAST__collectTypes (C_Compiler & inLexique,
+category_method__structDeclarationAST__collectTypes (C_CompilerEx & inLexique,
                                 const cPtr_structDeclarationAST * operand_25247,
                                 GGS_collectedTypeMap  & var_cas_ioCollectedTypeMap,
                                 GGS_categoryMethodMapForBuildingContext  & /* var_cas_ioCategoryMethodMapForBuildingContext */,
@@ -7254,7 +7254,7 @@ category_method__structDeclarationAST__collectTypes (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__listDeclarationAST__collectTypes (C_Compiler & inLexique,
+category_method__listDeclarationAST__collectTypes (C_CompilerEx & inLexique,
                                 const cPtr_listDeclarationAST * operand_25721,
                                 GGS_collectedTypeMap  & var_cas_ioCollectedTypeMap,
                                 GGS_categoryMethodMapForBuildingContext  & /* var_cas_ioCategoryMethodMapForBuildingContext */,
@@ -7273,7 +7273,7 @@ category_method__listDeclarationAST__collectTypes (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__classDeclarationAST__collectTypes (C_Compiler & inLexique,
+category_method__classDeclarationAST__collectTypes (C_CompilerEx & inLexique,
                                 const cPtr_classDeclarationAST * operand_26194,
                                 GGS_collectedTypeMap  & var_cas_ioCollectedTypeMap,
                                 GGS_categoryMethodMapForBuildingContext  & /* var_cas_ioCategoryMethodMapForBuildingContext */,
@@ -7329,7 +7329,7 @@ category_method__classDeclarationAST__collectTypes (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__listmapDeclarationAST__collectTypes (C_Compiler & inLexique,
+category_method__listmapDeclarationAST__collectTypes (C_CompilerEx & inLexique,
                                 const cPtr_listmapDeclarationAST * operand_27214,
                                 GGS_collectedTypeMap  & var_cas_ioCollectedTypeMap,
                                 GGS_categoryMethodMapForBuildingContext  & /* var_cas_ioCategoryMethodMapForBuildingContext */,
@@ -7383,7 +7383,7 @@ findCategoryMethod__semanticDeclarationAST__enterInSemanticContext (AC_galgasCla
 //---------------------------------------------------------------------------*
 
 static void
-category_method__abstractCategoryMethodAST__enterInSemanticContext (C_Compiler &,
+category_method__abstractCategoryMethodAST__enterInSemanticContext (C_CompilerEx &,
                                 const cPtr_abstractCategoryMethodAST * operand_28422,
                                 const GGS_categoryMethodMapForBuildingContext   /* var_cas_inCategoryMethodMapForBuildingContext */,
                                 const GGS_categoryReaderMapForBuildingContext   /* var_cas_inCategoryReaderMapForBuildingContext */,
@@ -7400,7 +7400,7 @@ category_method__abstractCategoryMethodAST__enterInSemanticContext (C_Compiler &
 //---------------------------------------------------------------------------*
 
 static void
-category_method__categoryMethodAST__enterInSemanticContext (C_Compiler &,
+category_method__categoryMethodAST__enterInSemanticContext (C_CompilerEx &,
                                 const cPtr_categoryMethodAST * operand_28792,
                                 const GGS_categoryMethodMapForBuildingContext   /* var_cas_inCategoryMethodMapForBuildingContext */,
                                 const GGS_categoryReaderMapForBuildingContext   /* var_cas_inCategoryReaderMapForBuildingContext */,
@@ -7417,7 +7417,7 @@ category_method__categoryMethodAST__enterInSemanticContext (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__overridingCategoryMethodAST__enterInSemanticContext (C_Compiler &,
+category_method__overridingCategoryMethodAST__enterInSemanticContext (C_CompilerEx &,
                                 const cPtr_overridingCategoryMethodAST * operand_29172,
                                 const GGS_categoryMethodMapForBuildingContext   /* var_cas_inCategoryMethodMapForBuildingContext */,
                                 const GGS_categoryReaderMapForBuildingContext   /* var_cas_inCategoryReaderMapForBuildingContext */,
@@ -7434,7 +7434,7 @@ category_method__overridingCategoryMethodAST__enterInSemanticContext (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__overridingAbstractCategoryMethodAST__enterInSemanticContext (C_Compiler &,
+category_method__overridingAbstractCategoryMethodAST__enterInSemanticContext (C_CompilerEx &,
                                 const cPtr_overridingAbstractCategoryMethodAST * operand_29560,
                                 const GGS_categoryMethodMapForBuildingContext   /* var_cas_inCategoryMethodMapForBuildingContext */,
                                 const GGS_categoryReaderMapForBuildingContext   /* var_cas_inCategoryReaderMapForBuildingContext */,
@@ -7451,7 +7451,7 @@ category_method__overridingAbstractCategoryMethodAST__enterInSemanticContext (C_
 //---------------------------------------------------------------------------*
 
 static void
-category_method__abstractCategoryReaderAST__enterInSemanticContext (C_Compiler &,
+category_method__abstractCategoryReaderAST__enterInSemanticContext (C_CompilerEx &,
                                 const cPtr_abstractCategoryReaderAST * operand_29939,
                                 const GGS_categoryMethodMapForBuildingContext   /* var_cas_inCategoryMethodMapForBuildingContext */,
                                 const GGS_categoryReaderMapForBuildingContext   /* var_cas_inCategoryReaderMapForBuildingContext */,
@@ -7468,7 +7468,7 @@ category_method__abstractCategoryReaderAST__enterInSemanticContext (C_Compiler &
 //---------------------------------------------------------------------------*
 
 static void
-category_method__categoryReaderAST__enterInSemanticContext (C_Compiler &,
+category_method__categoryReaderAST__enterInSemanticContext (C_CompilerEx &,
                                 const cPtr_categoryReaderAST * operand_30309,
                                 const GGS_categoryMethodMapForBuildingContext   /* var_cas_inCategoryMethodMapForBuildingContext */,
                                 const GGS_categoryReaderMapForBuildingContext   /* var_cas_inCategoryReaderMapForBuildingContext */,
@@ -7485,7 +7485,7 @@ category_method__categoryReaderAST__enterInSemanticContext (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__overridingCategoryReaderAST__enterInSemanticContext (C_Compiler &,
+category_method__overridingCategoryReaderAST__enterInSemanticContext (C_CompilerEx &,
                                 const cPtr_overridingCategoryReaderAST * operand_30689,
                                 const GGS_categoryMethodMapForBuildingContext   /* var_cas_inCategoryMethodMapForBuildingContext */,
                                 const GGS_categoryReaderMapForBuildingContext   /* var_cas_inCategoryReaderMapForBuildingContext */,
@@ -7502,7 +7502,7 @@ category_method__overridingCategoryReaderAST__enterInSemanticContext (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__overridingAbstractCategoryReaderAST__enterInSemanticContext (C_Compiler &,
+category_method__overridingAbstractCategoryReaderAST__enterInSemanticContext (C_CompilerEx &,
                                 const cPtr_overridingAbstractCategoryReaderAST * operand_31077,
                                 const GGS_categoryMethodMapForBuildingContext   /* var_cas_inCategoryMethodMapForBuildingContext */,
                                 const GGS_categoryReaderMapForBuildingContext   /* var_cas_inCategoryReaderMapForBuildingContext */,
@@ -7519,7 +7519,7 @@ category_method__overridingAbstractCategoryReaderAST__enterInSemanticContext (C_
 //---------------------------------------------------------------------------*
 
 static void
-category_method__predefinedTypeAST__enterInSemanticContext (C_Compiler & inLexique,
+category_method__predefinedTypeAST__enterInSemanticContext (C_CompilerEx & inLexique,
                                 const cPtr_predefinedTypeAST * operand_31447,
                                 const GGS_categoryMethodMapForBuildingContext   /* var_cas_inCategoryMethodMapForBuildingContext */,
                                 const GGS_categoryReaderMapForBuildingContext   /* var_cas_inCategoryReaderMapForBuildingContext */,
@@ -7582,7 +7582,7 @@ category_method__predefinedTypeAST__enterInSemanticContext (C_Compiler & inLexiq
 //---------------------------------------------------------------------------*
 
 static void
-category_method__mapDeclarationAST__enterInSemanticContext (C_Compiler & inLexique,
+category_method__mapDeclarationAST__enterInSemanticContext (C_CompilerEx & inLexique,
                                 const cPtr_mapDeclarationAST * operand_33623,
                                 const GGS_categoryMethodMapForBuildingContext   /* var_cas_inCategoryMethodMapForBuildingContext */,
                                 const GGS_categoryReaderMapForBuildingContext   /* var_cas_inCategoryReaderMapForBuildingContext */,
@@ -7745,7 +7745,7 @@ category_method__mapDeclarationAST__enterInSemanticContext (C_Compiler & inLexiq
 //---------------------------------------------------------------------------*
 
 static void
-category_method__mapProxyDeclarationAST__enterInSemanticContext (C_Compiler & inLexique,
+category_method__mapProxyDeclarationAST__enterInSemanticContext (C_CompilerEx & inLexique,
                                 const cPtr_mapProxyDeclarationAST * operand_42934,
                                 const GGS_categoryMethodMapForBuildingContext   /* var_cas_inCategoryMethodMapForBuildingContext */,
                                 const GGS_categoryReaderMapForBuildingContext   /* var_cas_inCategoryReaderMapForBuildingContext */,
@@ -7859,7 +7859,7 @@ category_method__mapProxyDeclarationAST__enterInSemanticContext (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 static void
-category_method__enumDeclarationAST__enterInSemanticContext (C_Compiler & inLexique,
+category_method__enumDeclarationAST__enterInSemanticContext (C_CompilerEx & inLexique,
                                 const cPtr_enumDeclarationAST * operand_48140,
                                 const GGS_categoryMethodMapForBuildingContext   /* var_cas_inCategoryMethodMapForBuildingContext */,
                                 const GGS_categoryReaderMapForBuildingContext   /* var_cas_inCategoryReaderMapForBuildingContext */,
@@ -7961,7 +7961,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_wrapperExtensionMap GGS_wrapperExtensionMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_wrapperExtensionMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -8006,7 +8006,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_wrapperExtensionMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -8031,7 +8031,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_wrapperExtensionMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -8110,7 +8110,7 @@ const utf32 GGS_wrapperExtensionMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_wrapperExtensionMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
                  0,
@@ -8123,7 +8123,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_wrapperExtensionMap GGS_wrapperExtensionMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_wrapperExtensionMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_wrapperExtensionMap result ; // Not Built
@@ -8140,7 +8140,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_wrapperExtensionMap GGS_wrapperExtensionMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_wrapperExtensionMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -8208,7 +8208,7 @@ GGS_object GGS_wrapperExtensionMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_wrapperExtensionMap GGS_wrapperExtensionMap::castFromObject (C_Compiler & inLexique,
+GGS_wrapperExtensionMap GGS_wrapperExtensionMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -8233,7 +8233,7 @@ const C_galgas_type_descriptorEX * GGS_wrapperExtensionMap::typeDescriptor (void
 
 //---------------------------------------------------------------------------*
 
-GGS_wrapperExtensionMap GGS_wrapperExtensionMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_wrapperExtensionMap GGS_wrapperExtensionMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
                                              COMMA_LOCATION_ARGS) {
   GGS_wrapperExtensionMap result = constructor_emptyMap (inLexique COMMA_THERE) ;
@@ -8252,7 +8252,7 @@ GGS_wrapperExtensionMap GGS_wrapperExtensionMap::constructor_mapWithKeyAndValue 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_recursivelyEnumerateDirectories (C_Compiler & inLexique,
+void routine_recursivelyEnumerateDirectories (C_CompilerEx & inLexique,
                                 const GGS_string  var_cas_inAbsoluteSourcePath,
                                 const GGS_string  var_cas_inPathInWrapper,
                                 const GGS_wrapperExtensionMap   var_cas_inExtensionMap,
@@ -8307,7 +8307,7 @@ void routine_recursivelyEnumerateDirectories (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__filewrapperDeclarationAST__enterInSemanticContext (C_Compiler & inLexique,
+category_method__filewrapperDeclarationAST__enterInSemanticContext (C_CompilerEx & inLexique,
                                 const cPtr_filewrapperDeclarationAST * operand_52277,
                                 const GGS_categoryMethodMapForBuildingContext   /* var_cas_inCategoryMethodMapForBuildingContext */,
                                 const GGS_categoryReaderMapForBuildingContext   /* var_cas_inCategoryReaderMapForBuildingContext */,
@@ -8373,7 +8373,7 @@ category_method__filewrapperDeclarationAST__enterInSemanticContext (C_Compiler &
 //---------------------------------------------------------------------------*
 
 static void
-category_method__listDeclarationAST__enterInSemanticContext (C_Compiler & inLexique,
+category_method__listDeclarationAST__enterInSemanticContext (C_CompilerEx & inLexique,
                                 const cPtr_listDeclarationAST * operand_54586,
                                 const GGS_categoryMethodMapForBuildingContext   /* var_cas_inCategoryMethodMapForBuildingContext */,
                                 const GGS_categoryReaderMapForBuildingContext   /* var_cas_inCategoryReaderMapForBuildingContext */,
@@ -8454,7 +8454,7 @@ category_method__listDeclarationAST__enterInSemanticContext (C_Compiler & inLexi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__sortedListDeclarationAST__enterInSemanticContext (C_Compiler & inLexique,
+category_method__sortedListDeclarationAST__enterInSemanticContext (C_CompilerEx & inLexique,
                                 const cPtr_sortedListDeclarationAST * operand_59916,
                                 const GGS_categoryMethodMapForBuildingContext   /* var_cas_inCategoryMethodMapForBuildingContext */,
                                 const GGS_categoryReaderMapForBuildingContext   /* var_cas_inCategoryReaderMapForBuildingContext */,
@@ -8504,7 +8504,7 @@ category_method__sortedListDeclarationAST__enterInSemanticContext (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__structDeclarationAST__enterInSemanticContext (C_Compiler & inLexique,
+category_method__structDeclarationAST__enterInSemanticContext (C_CompilerEx & inLexique,
                                 const cPtr_structDeclarationAST * operand_63628,
                                 const GGS_categoryMethodMapForBuildingContext   /* var_cas_inCategoryMethodMapForBuildingContext */,
                                 const GGS_categoryReaderMapForBuildingContext   /* var_cas_inCategoryReaderMapForBuildingContext */,
@@ -8555,7 +8555,7 @@ category_method__structDeclarationAST__enterInSemanticContext (C_Compiler & inLe
 //---------------------------------------------------------------------------*
 
 static void
-category_method__classDeclarationAST__enterInSemanticContext (C_Compiler & inLexique,
+category_method__classDeclarationAST__enterInSemanticContext (C_CompilerEx & inLexique,
                                 const cPtr_classDeclarationAST * operand_66456,
                                 const GGS_categoryMethodMapForBuildingContext   var_cas_inCategoryMethodMapForBuildingContext,
                                 const GGS_categoryReaderMapForBuildingContext   var_cas_inCategoryReaderMapForBuildingContext,
@@ -8795,7 +8795,7 @@ category_method__classDeclarationAST__enterInSemanticContext (C_Compiler & inLex
 //---------------------------------------------------------------------------*
 
 static void
-category_method__externRoutineDeclarationAST__enterInSemanticContext (C_Compiler & inLexique,
+category_method__externRoutineDeclarationAST__enterInSemanticContext (C_CompilerEx & inLexique,
                                 const cPtr_externRoutineDeclarationAST * operand_75714,
                                 const GGS_categoryMethodMapForBuildingContext   /* var_cas_inCategoryMethodMapForBuildingContext */,
                                 const GGS_categoryReaderMapForBuildingContext   /* var_cas_inCategoryReaderMapForBuildingContext */,
@@ -8824,7 +8824,7 @@ category_method__externRoutineDeclarationAST__enterInSemanticContext (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__externFunctionDeclarationAST__enterInSemanticContext (C_Compiler & inLexique,
+category_method__externFunctionDeclarationAST__enterInSemanticContext (C_CompilerEx & inLexique,
                                 const cPtr_externFunctionDeclarationAST * operand_76618,
                                 const GGS_categoryMethodMapForBuildingContext   /* var_cas_inCategoryMethodMapForBuildingContext */,
                                 const GGS_categoryReaderMapForBuildingContext   /* var_cas_inCategoryReaderMapForBuildingContext */,
@@ -8855,7 +8855,7 @@ category_method__externFunctionDeclarationAST__enterInSemanticContext (C_Compile
 //---------------------------------------------------------------------------*
 
 static void
-category_method__onceFunctionDeclarationAST__enterInSemanticContext (C_Compiler & inLexique,
+category_method__onceFunctionDeclarationAST__enterInSemanticContext (C_CompilerEx & inLexique,
                                 const cPtr_onceFunctionDeclarationAST * operand_77690,
                                 const GGS_categoryMethodMapForBuildingContext   /* var_cas_inCategoryMethodMapForBuildingContext */,
                                 const GGS_categoryReaderMapForBuildingContext   /* var_cas_inCategoryReaderMapForBuildingContext */,
@@ -8875,7 +8875,7 @@ category_method__onceFunctionDeclarationAST__enterInSemanticContext (C_Compiler 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__listmapDeclarationAST__enterInSemanticContext (C_Compiler & inLexique,
+category_method__listmapDeclarationAST__enterInSemanticContext (C_CompilerEx & inLexique,
                                 const cPtr_listmapDeclarationAST * operand_78388,
                                 const GGS_categoryMethodMapForBuildingContext   /* var_cas_inCategoryMethodMapForBuildingContext */,
                                 const GGS_categoryReaderMapForBuildingContext   /* var_cas_inCategoryReaderMapForBuildingContext */,
@@ -9142,7 +9142,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_partiallyOrderedSemanticDeclarationListAST::
-method_smallest (C_Compiler & inLexique,
+method_smallest (C_CompilerEx & inLexique,
                  GGS_string& _out_0,
                  GGS_string& _out_1,
                  GGS_semanticDeclarationAST & _out_2
@@ -9168,7 +9168,7 @@ method_smallest (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_partiallyOrderedSemanticDeclarationListAST::
-method_greatest (C_Compiler & inLexique,
+method_greatest (C_CompilerEx & inLexique,
              GGS_string& _out_0,
              GGS_string& _out_1,
              GGS_semanticDeclarationAST & _out_2
@@ -9194,7 +9194,7 @@ method_greatest (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_partiallyOrderedSemanticDeclarationListAST::
-modifier_popSmallest (C_Compiler & inLexique,
+modifier_popSmallest (C_CompilerEx & inLexique,
                  GGS_string& _out_0,
                  GGS_string& _out_1,
                  GGS_semanticDeclarationAST & _out_2
@@ -9222,7 +9222,7 @@ modifier_popSmallest (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_partiallyOrderedSemanticDeclarationListAST::
-modifier_popGreatest (C_Compiler & inLexique,
+modifier_popGreatest (C_CompilerEx & inLexique,
                 GGS_string& _out_0,
                 GGS_string& _out_1,
                 GGS_semanticDeclarationAST & _out_2
@@ -9282,7 +9282,7 @@ GGS_object GGS_partiallyOrderedSemanticDeclarationListAST::reader_object (void) 
 
 //---------------------------------------------------------------------------*
 
-GGS_partiallyOrderedSemanticDeclarationListAST GGS_partiallyOrderedSemanticDeclarationListAST::castFromObject (C_Compiler & inLexique,
+GGS_partiallyOrderedSemanticDeclarationListAST GGS_partiallyOrderedSemanticDeclarationListAST::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -9312,7 +9312,7 @@ const C_galgas_type_descriptorEX * GGS_partiallyOrderedSemanticDeclarationListAS
 //---------------------------------------------------------------------------*
 
 static void
-category_method__semanticDeclarationAST__enterOrderedDeclaration (C_Compiler &,
+category_method__semanticDeclarationAST__enterOrderedDeclaration (C_CompilerEx &,
                                 const cPtr_semanticDeclarationAST * operand_82616,
                                 GGS_partiallyOrderedSemanticDeclarationListAST  & /* var_cas_ioPartiallyOrderedDeclarationList */
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -9361,7 +9361,7 @@ findCategoryMethod__semanticDeclarationAST__enterOrderedDeclaration (AC_galgasCl
 //---------------------------------------------------------------------------*
 
 static void
-category_method__predefinedTypeAST__enterOrderedDeclaration (C_Compiler &,
+category_method__predefinedTypeAST__enterOrderedDeclaration (C_CompilerEx &,
                                 const cPtr_predefinedTypeAST * operand_82859,
                                 GGS_partiallyOrderedSemanticDeclarationListAST  & var_cas_ioPartiallyOrderedDeclarationList
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -9378,7 +9378,7 @@ category_method__predefinedTypeAST__enterOrderedDeclaration (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__classDeclarationAST__enterOrderedDeclaration (C_Compiler & inLexique,
+category_method__classDeclarationAST__enterOrderedDeclaration (C_CompilerEx & inLexique,
                                 const cPtr_classDeclarationAST * operand_83228,
                                 GGS_partiallyOrderedSemanticDeclarationListAST  & var_cas_ioPartiallyOrderedDeclarationList
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -9394,7 +9394,7 @@ category_method__classDeclarationAST__enterOrderedDeclaration (C_Compiler & inLe
 //---------------------------------------------------------------------------*
 
 static void
-category_method__listDeclarationAST__enterOrderedDeclaration (C_Compiler & inLexique,
+category_method__listDeclarationAST__enterOrderedDeclaration (C_CompilerEx & inLexique,
                                 const cPtr_listDeclarationAST * operand_83567,
                                 GGS_partiallyOrderedSemanticDeclarationListAST  & var_cas_ioPartiallyOrderedDeclarationList
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -9410,7 +9410,7 @@ category_method__listDeclarationAST__enterOrderedDeclaration (C_Compiler & inLex
 //---------------------------------------------------------------------------*
 
 static void
-category_method__structDeclarationAST__enterOrderedDeclaration (C_Compiler & inLexique,
+category_method__structDeclarationAST__enterOrderedDeclaration (C_CompilerEx & inLexique,
                                 const cPtr_structDeclarationAST * operand_83885,
                                 GGS_partiallyOrderedSemanticDeclarationListAST  & var_cas_ioPartiallyOrderedDeclarationList
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -9426,7 +9426,7 @@ category_method__structDeclarationAST__enterOrderedDeclaration (C_Compiler & inL
 //---------------------------------------------------------------------------*
 
 static void
-category_method__enumDeclarationAST__enterOrderedDeclaration (C_Compiler & inLexique,
+category_method__enumDeclarationAST__enterOrderedDeclaration (C_CompilerEx & inLexique,
                                 const cPtr_enumDeclarationAST * operand_84203,
                                 GGS_partiallyOrderedSemanticDeclarationListAST  & var_cas_ioPartiallyOrderedDeclarationList
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -9442,7 +9442,7 @@ category_method__enumDeclarationAST__enterOrderedDeclaration (C_Compiler & inLex
 //---------------------------------------------------------------------------*
 
 static void
-category_method__sortedListDeclarationAST__enterOrderedDeclaration (C_Compiler & inLexique,
+category_method__sortedListDeclarationAST__enterOrderedDeclaration (C_CompilerEx & inLexique,
                                 const cPtr_sortedListDeclarationAST * operand_84525,
                                 GGS_partiallyOrderedSemanticDeclarationListAST  & var_cas_ioPartiallyOrderedDeclarationList
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -9458,7 +9458,7 @@ category_method__sortedListDeclarationAST__enterOrderedDeclaration (C_Compiler &
 //---------------------------------------------------------------------------*
 
 static void
-category_method__listmapDeclarationAST__enterOrderedDeclaration (C_Compiler & inLexique,
+category_method__listmapDeclarationAST__enterOrderedDeclaration (C_CompilerEx & inLexique,
                                 const cPtr_listmapDeclarationAST * operand_84850,
                                 GGS_partiallyOrderedSemanticDeclarationListAST  & var_cas_ioPartiallyOrderedDeclarationList
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -9474,7 +9474,7 @@ category_method__listmapDeclarationAST__enterOrderedDeclaration (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 static void
-category_method__mapDeclarationAST__enterOrderedDeclaration (C_Compiler & inLexique,
+category_method__mapDeclarationAST__enterOrderedDeclaration (C_CompilerEx & inLexique,
                                 const cPtr_mapDeclarationAST * operand_85198,
                                 GGS_partiallyOrderedSemanticDeclarationListAST  & var_cas_ioPartiallyOrderedDeclarationList
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -9490,7 +9490,7 @@ category_method__mapDeclarationAST__enterOrderedDeclaration (C_Compiler & inLexi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__mapProxyDeclarationAST__enterOrderedDeclaration (C_Compiler & inLexique,
+category_method__mapProxyDeclarationAST__enterOrderedDeclaration (C_CompilerEx & inLexique,
                                 const cPtr_mapProxyDeclarationAST * operand_85517,
                                 GGS_partiallyOrderedSemanticDeclarationListAST  & var_cas_ioPartiallyOrderedDeclarationList
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -9506,7 +9506,7 @@ category_method__mapProxyDeclarationAST__enterOrderedDeclaration (C_Compiler & i
 //---------------------------------------------------------------------------*
 
 static void
-category_method__externFunctionDeclarationAST__enterOrderedDeclaration (C_Compiler &,
+category_method__externFunctionDeclarationAST__enterOrderedDeclaration (C_CompilerEx &,
                                 const cPtr_externFunctionDeclarationAST * operand_85876,
                                 GGS_partiallyOrderedSemanticDeclarationListAST  & var_cas_ioPartiallyOrderedDeclarationList
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -9522,7 +9522,7 @@ category_method__externFunctionDeclarationAST__enterOrderedDeclaration (C_Compil
 //---------------------------------------------------------------------------*
 
 static void
-category_method__onceFunctionDeclarationAST__enterOrderedDeclaration (C_Compiler &,
+category_method__onceFunctionDeclarationAST__enterOrderedDeclaration (C_CompilerEx &,
                                 const cPtr_onceFunctionDeclarationAST * operand_86180,
                                 GGS_partiallyOrderedSemanticDeclarationListAST  & var_cas_ioPartiallyOrderedDeclarationList
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -9538,7 +9538,7 @@ category_method__onceFunctionDeclarationAST__enterOrderedDeclaration (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__externRoutineDeclarationAST__enterOrderedDeclaration (C_Compiler &,
+category_method__externRoutineDeclarationAST__enterOrderedDeclaration (C_CompilerEx &,
                                 const cPtr_externRoutineDeclarationAST * operand_86485,
                                 GGS_partiallyOrderedSemanticDeclarationListAST  & var_cas_ioPartiallyOrderedDeclarationList
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -9554,7 +9554,7 @@ category_method__externRoutineDeclarationAST__enterOrderedDeclaration (C_Compile
 //---------------------------------------------------------------------------*
 
 static void
-category_method__filewrapperDeclarationAST__enterOrderedDeclaration (C_Compiler &,
+category_method__filewrapperDeclarationAST__enterOrderedDeclaration (C_CompilerEx &,
                                 const cPtr_filewrapperDeclarationAST * operand_86788,
                                 GGS_partiallyOrderedSemanticDeclarationListAST  & var_cas_ioPartiallyOrderedDeclarationList
                                 COMMA_UNUSED_LOCATION_ARGS) {
@@ -9569,7 +9569,7 @@ category_method__filewrapperDeclarationAST__enterOrderedDeclaration (C_Compiler 
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildSemanticContext (C_Compiler & inLexique,
+void routine_buildSemanticContext (C_CompilerEx & inLexique,
                                 const GGS_string  var_cas_inSourceFile,
                                 const GGS_semanticDeclarationListAST   var_cas_inSemanticDeclarationList,
                                 const GGS_location   var_cas_inEndOfSourceFile,

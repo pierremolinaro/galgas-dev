@@ -48,7 +48,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterTemplateStringEX (C_Compiler & inLexique,
+void routine_enterTemplateStringEX (C_CompilerEx & inLexique,
                                 GGS_templateInstructionList  & var_cas_outResultingInstructionList
                         COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED

@@ -43,7 +43,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseFinalReaderWithoutArgument (C_Compiler &,
+void routine_enterBaseFinalReaderWithoutArgument (C_CompilerEx &,
                                 GGS_readerMap  &,
                                 GGS_unifiedTypeMap  &,
                                 const GGS_string ,
@@ -56,7 +56,7 @@ void routine_enterBaseFinalReaderWithoutArgument (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterInheritedReaderWithoutArgument (C_Compiler &,
+void routine_enterInheritedReaderWithoutArgument (C_CompilerEx &,
                                 GGS_readerMap  &,
                                 GGS_unifiedTypeMap  &,
                                 const GGS_string ,
@@ -69,7 +69,7 @@ void routine_enterInheritedReaderWithoutArgument (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterInheritedReaderWithArgument (C_Compiler &,
+void routine_enterInheritedReaderWithArgument (C_CompilerEx &,
                                 GGS_readerMap  &,
                                 GGS_unifiedTypeMap  &,
                                 const GGS_string ,
@@ -83,7 +83,7 @@ void routine_enterInheritedReaderWithArgument (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWithoutArgument (C_Compiler &,
+void routine_enterBaseReaderWithoutArgument (C_CompilerEx &,
                                 GGS_readerMap  &,
                                 GGS_unifiedTypeMap  &,
                                 const GGS_string ,
@@ -96,7 +96,7 @@ void routine_enterBaseReaderWithoutArgument (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWithArgument (C_Compiler &,
+void routine_enterBaseReaderWithArgument (C_CompilerEx &,
                                 GGS_readerMap  &,
                                 GGS_unifiedTypeMap  &,
                                 const GGS_string ,
@@ -110,7 +110,7 @@ void routine_enterBaseReaderWithArgument (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseFinalReaderWithArgument (C_Compiler &,
+void routine_enterBaseFinalReaderWithArgument (C_CompilerEx &,
                                 GGS_readerMap  &,
                                 GGS_unifiedTypeMap  &,
                                 const GGS_string ,
@@ -124,7 +124,7 @@ void routine_enterBaseFinalReaderWithArgument (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWith2Arguments (C_Compiler &,
+void routine_enterBaseReaderWith2Arguments (C_CompilerEx &,
                                 GGS_readerMap  &,
                                 GGS_unifiedTypeMap  &,
                                 const GGS_string ,
@@ -139,7 +139,7 @@ void routine_enterBaseReaderWith2Arguments (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseFinalReaderWith2Arguments (C_Compiler &,
+void routine_enterBaseFinalReaderWith2Arguments (C_CompilerEx &,
                                 GGS_readerMap  &,
                                 GGS_unifiedTypeMap  &,
                                 const GGS_string ,
@@ -154,7 +154,7 @@ void routine_enterBaseFinalReaderWith2Arguments (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseReaderWith3Arguments (C_Compiler &,
+void routine_enterBaseReaderWith3Arguments (C_CompilerEx &,
                                 GGS_readerMap  &,
                                 GGS_unifiedTypeMap  &,
                                 const GGS_string ,
@@ -170,7 +170,7 @@ void routine_enterBaseReaderWith3Arguments (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterBaseFinalReaderWith3Arguments (C_Compiler &,
+void routine_enterBaseFinalReaderWith3Arguments (C_CompilerEx &,
                                 GGS_readerMap  &,
                                 GGS_unifiedTypeMap  &,
                                 const GGS_string ,
@@ -186,7 +186,7 @@ void routine_enterBaseFinalReaderWith3Arguments (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_commonReaderMapForAllTypes (C_Compiler &,
+void routine_commonReaderMapForAllTypes (C_CompilerEx &,
                                 GGS_unifiedTypeMap  &,
                                 GGS_readerMap  & COMMA_LOCATION_ARGS) ;
 
@@ -196,7 +196,7 @@ void routine_commonReaderMapForAllTypes (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterReaderFor_string_lstring_types (C_Compiler &,
+void routine_enterReaderFor_string_lstring_types (C_CompilerEx &,
                                 GGS_unifiedTypeMap  &,
                                 GGS_readerMap  & COMMA_LOCATION_ARGS) ;
 

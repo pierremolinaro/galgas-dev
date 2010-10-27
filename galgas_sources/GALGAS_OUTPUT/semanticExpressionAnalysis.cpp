@@ -53,7 +53,7 @@ static bool gCacheFlagForOnceFunction_selfMarkName = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_string function_selfMarkName (C_Compiler & COMMA_UNUSED_LOCATION_ARGS) {
+GGS_string function_selfMarkName (C_CompilerEx & COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_selfMarkName) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_selfMarkName at %s:%d\n", __FILE__, __LINE__) ;
@@ -71,7 +71,7 @@ GGS_string function_selfMarkName (C_Compiler & COMMA_UNUSED_LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_selfMarkName (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_selfMarkName (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -2944,7 +2944,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_variableMap GGS_variableMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_variableMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -2989,7 +2989,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -3023,7 +3023,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 inActionIndex,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -3062,7 +3062,7 @@ searchElement (C_Compiler & inLexique,
 
 //---------------------------------------------------------------------------*
 
-void GGS_variableMap::method_checkAutomatonStates (C_Compiler & inLexique,
+void GGS_variableMap::method_checkAutomatonStates (C_CompilerEx & inLexique,
                                              const GGS_location & inErrorLocation
                                              COMMA_LOCATION_ARGS) const {
   checkAutomatonStates (inLexique, inErrorLocation, kFinalIssue_variableMap COMMA_THERE) ;
@@ -3227,7 +3227,7 @@ const utf32 GGS_variableMap::kSearchMessage_searchForDropAccess [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_searchForReadAccess (C_Compiler & inLexique,
+modifier_searchForReadAccess (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_unifiedTypeMapProxy   & outParameter0,
                                 GGS_string  & outParameter1,
@@ -3246,7 +3246,7 @@ modifier_searchForReadAccess (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_searchForWriteAccess (C_Compiler & inLexique,
+modifier_searchForWriteAccess (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_unifiedTypeMapProxy   & outParameter0,
                                 GGS_string  & outParameter1,
@@ -3265,7 +3265,7 @@ modifier_searchForWriteAccess (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_searchForReadWriteAccess (C_Compiler & inLexique,
+modifier_searchForReadWriteAccess (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_unifiedTypeMapProxy   & outParameter0,
                                 GGS_string  & outParameter1,
@@ -3284,7 +3284,7 @@ modifier_searchForReadWriteAccess (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_searchForDropAccess (C_Compiler & inLexique,
+modifier_searchForDropAccess (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_unifiedTypeMapProxy   & outParameter0,
                                 GGS_string  & outParameter1,
@@ -4120,7 +4120,7 @@ const utf32 GGS_variableMap::kInsertMessage_insertInputOutputFormalArgumentDecla
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertNonMutableAttribute (C_Compiler & inLexique,
+modifier_insertNonMutableAttribute (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_unifiedTypeMapProxy & inParameter0,
                                 const GGS_string& inParameter1,
@@ -4139,7 +4139,7 @@ modifier_insertNonMutableAttribute (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertUndefinedLocalVariable (C_Compiler & inLexique,
+modifier_insertUndefinedLocalVariable (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_unifiedTypeMapProxy & inParameter0,
                                 const GGS_string& inParameter1,
@@ -4158,7 +4158,7 @@ modifier_insertUndefinedLocalVariable (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertDefinedLocalVariable (C_Compiler & inLexique,
+modifier_insertDefinedLocalVariable (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_unifiedTypeMapProxy & inParameter0,
                                 const GGS_string& inParameter1,
@@ -4177,7 +4177,7 @@ modifier_insertDefinedLocalVariable (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertLocalConstant (C_Compiler & inLexique,
+modifier_insertLocalConstant (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_unifiedTypeMapProxy & inParameter0,
                                 const GGS_string& inParameter1,
@@ -4196,7 +4196,7 @@ modifier_insertLocalConstant (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertUsedLocalConstant (C_Compiler & inLexique,
+modifier_insertUsedLocalConstant (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_unifiedTypeMapProxy & inParameter0,
                                 const GGS_string& inParameter1,
@@ -4215,7 +4215,7 @@ modifier_insertUsedLocalConstant (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertInputFormalArgument (C_Compiler & inLexique,
+modifier_insertInputFormalArgument (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_unifiedTypeMapProxy & inParameter0,
                                 const GGS_string& inParameter1,
@@ -4234,7 +4234,7 @@ modifier_insertInputFormalArgument (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertInputFormalArgumentDeclaredAsUnused (C_Compiler & inLexique,
+modifier_insertInputFormalArgumentDeclaredAsUnused (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_unifiedTypeMapProxy & inParameter0,
                                 const GGS_string& inParameter1,
@@ -4253,7 +4253,7 @@ modifier_insertInputFormalArgumentDeclaredAsUnused (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertConstantInputFormalArgument (C_Compiler & inLexique,
+modifier_insertConstantInputFormalArgument (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_unifiedTypeMapProxy & inParameter0,
                                 const GGS_string& inParameter1,
@@ -4272,7 +4272,7 @@ modifier_insertConstantInputFormalArgument (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertConstantInputFormalArgumentDeclaredAsUnused (C_Compiler & inLexique,
+modifier_insertConstantInputFormalArgumentDeclaredAsUnused (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_unifiedTypeMapProxy & inParameter0,
                                 const GGS_string& inParameter1,
@@ -4291,7 +4291,7 @@ modifier_insertConstantInputFormalArgumentDeclaredAsUnused (C_Compiler & inLexiq
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertOutputFormalArgument (C_Compiler & inLexique,
+modifier_insertOutputFormalArgument (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_unifiedTypeMapProxy & inParameter0,
                                 const GGS_string& inParameter1,
@@ -4310,7 +4310,7 @@ modifier_insertOutputFormalArgument (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertInputOutputFormalArgument (C_Compiler & inLexique,
+modifier_insertInputOutputFormalArgument (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_unifiedTypeMapProxy & inParameter0,
                                 const GGS_string& inParameter1,
@@ -4329,7 +4329,7 @@ modifier_insertInputOutputFormalArgument (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_variableMap::
-modifier_insertInputOutputFormalArgumentDeclaredAsUnused (C_Compiler & inLexique,
+modifier_insertInputOutputFormalArgumentDeclaredAsUnused (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_unifiedTypeMapProxy & inParameter0,
                                 const GGS_string& inParameter1,
@@ -4348,7 +4348,7 @@ modifier_insertInputOutputFormalArgumentDeclaredAsUnused (C_Compiler & inLexique
 //---------------------------------------------------------------------------*
 
 GGS_variableMap GGS_variableMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_variableMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_variableMap result ; // Not Built
@@ -4365,7 +4365,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_variableMap GGS_variableMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_variableMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -4451,7 +4451,7 @@ GGS_object GGS_variableMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_variableMap GGS_variableMap::castFromObject (C_Compiler & inLexique,
+GGS_variableMap GGS_variableMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -4476,140 +4476,140 @@ const C_galgas_type_descriptorEX * GGS_variableMap::typeDescriptor (void) const 
 
 //---------------------------------------------------------------------------*
 
-GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfUsedLocalConstantState (C_Compiler & /* inLexique */
+GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfUsedLocalConstantState (C_CompilerEx & /* inLexique */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   return stringSetWithKeysOfState (0) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfLocalConstantState (C_Compiler & /* inLexique */
+GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfLocalConstantState (C_CompilerEx & /* inLexique */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   return stringSetWithKeysOfState (1) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfUndefinedLocalVariableState (C_Compiler & /* inLexique */
+GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfUndefinedLocalVariableState (C_CompilerEx & /* inLexique */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   return stringSetWithKeysOfState (2) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfDefinedLocalVariableState (C_Compiler & /* inLexique */
+GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfDefinedLocalVariableState (C_CompilerEx & /* inLexique */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   return stringSetWithKeysOfState (3) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfUsedLocalVariableState (C_Compiler & /* inLexique */
+GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfUsedLocalVariableState (C_CompilerEx & /* inLexique */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   return stringSetWithKeysOfState (4) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfDroppedLocalVariableState (C_Compiler & /* inLexique */
+GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfDroppedLocalVariableState (C_CompilerEx & /* inLexique */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   return stringSetWithKeysOfState (5) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfUndefinedOutputFormalArgumentState (C_Compiler & /* inLexique */
+GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfUndefinedOutputFormalArgumentState (C_CompilerEx & /* inLexique */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   return stringSetWithKeysOfState (6) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfDefinedOutputFormalArgumentState (C_Compiler & /* inLexique */
+GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfDefinedOutputFormalArgumentState (C_CompilerEx & /* inLexique */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   return stringSetWithKeysOfState (7) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfUnusedInputOutputFormalArgumentState (C_Compiler & /* inLexique */
+GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfUnusedInputOutputFormalArgumentState (C_CompilerEx & /* inLexique */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   return stringSetWithKeysOfState (8) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfUsedInputOutputFormalArgumentState (C_Compiler & /* inLexique */
+GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfUsedInputOutputFormalArgumentState (C_CompilerEx & /* inLexique */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   return stringSetWithKeysOfState (9) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfDroppedInputOutputFormalArgumentState (C_Compiler & /* inLexique */
+GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfDroppedInputOutputFormalArgumentState (C_CompilerEx & /* inLexique */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   return stringSetWithKeysOfState (10) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfInputOutputFormalArgumentDeclaredAsUnusedState (C_Compiler & /* inLexique */
+GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfInputOutputFormalArgumentDeclaredAsUnusedState (C_CompilerEx & /* inLexique */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   return stringSetWithKeysOfState (11) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfConstantInputFormalArgumentState (C_Compiler & /* inLexique */
+GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfConstantInputFormalArgumentState (C_CompilerEx & /* inLexique */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   return stringSetWithKeysOfState (12) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfUsedConstantInputFormalArgumentState (C_Compiler & /* inLexique */
+GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfUsedConstantInputFormalArgumentState (C_CompilerEx & /* inLexique */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   return stringSetWithKeysOfState (13) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfConstantInputFormalArgumentDeclaredAsUnusedState (C_Compiler & /* inLexique */
+GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfConstantInputFormalArgumentDeclaredAsUnusedState (C_CompilerEx & /* inLexique */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   return stringSetWithKeysOfState (14) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfInputFormalParameterState (C_Compiler & /* inLexique */
+GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfInputFormalParameterState (C_CompilerEx & /* inLexique */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   return stringSetWithKeysOfState (15) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfUsedInputFormalArgumentState (C_Compiler & /* inLexique */
+GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfUsedInputFormalArgumentState (C_CompilerEx & /* inLexique */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   return stringSetWithKeysOfState (16) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfDroppedInputFormalArgumentState (C_Compiler & /* inLexique */
+GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfDroppedInputFormalArgumentState (C_CompilerEx & /* inLexique */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   return stringSetWithKeysOfState (17) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfInputFormalArgumentDeclaredAsUnusedState (C_Compiler & /* inLexique */
+GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfInputFormalArgumentDeclaredAsUnusedState (C_CompilerEx & /* inLexique */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   return stringSetWithKeysOfState (18) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfCurrentInstanceAttributeState (C_Compiler & /* inLexique */
+GGS_stringset GGS_variableMap::reader_stringSetWithKeysOfCurrentInstanceAttributeState (C_CompilerEx & /* inLexique */
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   return stringSetWithKeysOfState (19) ;
 }
@@ -6433,7 +6433,7 @@ static const cBranchOverrideCompatibilityDescriptor kBranchCombinationForOverrid
 
 //---------------------------------------------------------------------------*
 
-void GGS_variableMap::modifier_beginOverrideForSelectBlock (C_Compiler & inLexique
+void GGS_variableMap::modifier_beginOverrideForSelectBlock (C_CompilerEx & inLexique
                                 COMMA_LOCATION_ARGS) {
   if (isBuilt ()) {
     beginOverride (kBranchBehaviourForOverride_selectBlock_forMap_variableMap, 26,
@@ -7618,7 +7618,7 @@ static const cBranchOverrideCompatibilityDescriptor kBranchCombinationForOverrid
 
 //---------------------------------------------------------------------------*
 
-void GGS_variableMap::modifier_beginOverrideForRepeatBlock (C_Compiler & inLexique
+void GGS_variableMap::modifier_beginOverrideForRepeatBlock (C_CompilerEx & inLexique
                                 COMMA_LOCATION_ARGS) {
   if (isBuilt ()) {
     beginOverride (kBranchBehaviourForOverride_repeatBlock_forMap_variableMap, 26,
@@ -7630,7 +7630,7 @@ void GGS_variableMap::modifier_beginOverrideForRepeatBlock (C_Compiler & inLexiq
 
 //---------------------------------------------------------------------------*
 
-void GGS_variableMap::modifier_endBranch (C_Compiler & inCompiler,
+void GGS_variableMap::modifier_endBranch (C_CompilerEx & inCompiler,
                        const GGS_location & inErrorLocation
                        COMMA_LOCATION_ARGS) {
   internalEndBranch (inCompiler, inErrorLocation, kFinalIssue_variableMap COMMA_THERE) ;
@@ -7642,7 +7642,7 @@ void GGS_variableMap::modifier_endBranch (C_Compiler & inCompiler,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_checkAssignmentTypes (C_Compiler & inLexique,
+void routine_checkAssignmentTypes (C_CompilerEx & inLexique,
                                 const GGS_unifiedTypeMapProxy   var_cas_inTargetType,
                                 const GGS_unifiedTypeMapProxy   var_cas_inSourceType,
                                 const GGS_location   var_cas_inErrorLocation
@@ -7940,7 +7940,7 @@ GGS_object GGS_predefinedTypes::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_predefinedTypes GGS_predefinedTypes::castFromObject (C_Compiler & inLexique,
+GGS_predefinedTypes GGS_predefinedTypes::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -8084,7 +8084,7 @@ GGS_object GGS_analysisContext::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_analysisContext GGS_analysisContext::castFromObject (C_Compiler & inLexique,
+GGS_analysisContext GGS_analysisContext::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -8148,7 +8148,7 @@ findCategoryMethod__semanticExpressionAST__analyzeSemanticExpression (AC_galgasC
 //---------------------------------------------------------------------------*
 
 static void
-category_method__selfCopyInExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__selfCopyInExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_selfCopyInExpressionAST * operand_27000,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & /* var_cas_ioVariableMap */,
@@ -8173,7 +8173,7 @@ category_method__selfCopyInExpressionAST__analyzeSemanticExpression (C_Compiler 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__hereExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__hereExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_hereExpressionAST * operand_27732,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & /* var_cas_ioVariableMap */,
@@ -8191,7 +8191,7 @@ category_method__hereExpressionAST__analyzeSemanticExpression (C_Compiler & inLe
 //---------------------------------------------------------------------------*
 
 static void
-category_method__trueExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__trueExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_trueExpressionAST * operand_28134,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & /* var_cas_ioVariableMap */,
@@ -8209,7 +8209,7 @@ category_method__trueExpressionAST__analyzeSemanticExpression (C_Compiler & inLe
 //---------------------------------------------------------------------------*
 
 static void
-category_method__falseExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__falseExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_falseExpressionAST * operand_28533,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & /* var_cas_ioVariableMap */,
@@ -8227,7 +8227,7 @@ category_method__falseExpressionAST__analyzeSemanticExpression (C_Compiler & inL
 //---------------------------------------------------------------------------*
 
 static void
-category_method__literalCharExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__literalCharExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_literalCharExpressionAST * operand_28939,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & /* var_cas_ioVariableMap */,
@@ -8245,7 +8245,7 @@ category_method__literalCharExpressionAST__analyzeSemanticExpression (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__literalStringExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__literalStringExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_literalStringExpressionAST * operand_29384,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & /* var_cas_ioVariableMap */,
@@ -8272,7 +8272,7 @@ category_method__literalStringExpressionAST__analyzeSemanticExpression (C_Compil
 //---------------------------------------------------------------------------*
 
 static void
-category_method__literalDoubleExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__literalDoubleExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_literalDoubleExpressionAST * operand_29888,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & /* var_cas_ioVariableMap */,
@@ -8290,7 +8290,7 @@ category_method__literalDoubleExpressionAST__analyzeSemanticExpression (C_Compil
 //---------------------------------------------------------------------------*
 
 static void
-category_method__literalUIntExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__literalUIntExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_literalUIntExpressionAST * operand_30329,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & /* var_cas_ioVariableMap */,
@@ -8308,7 +8308,7 @@ category_method__literalUIntExpressionAST__analyzeSemanticExpression (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__literalUInt64ExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__literalUInt64ExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_literalUInt64ExpressionAST * operand_30766,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & /* var_cas_ioVariableMap */,
@@ -8326,7 +8326,7 @@ category_method__literalUInt64ExpressionAST__analyzeSemanticExpression (C_Compil
 //---------------------------------------------------------------------------*
 
 static void
-category_method__literalSIntExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__literalSIntExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_literalSIntExpressionAST * operand_31207,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & /* var_cas_ioVariableMap */,
@@ -8344,7 +8344,7 @@ category_method__literalSIntExpressionAST__analyzeSemanticExpression (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__literalSInt64ExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__literalSInt64ExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_literalSInt64ExpressionAST * operand_31644,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & /* var_cas_ioVariableMap */,
@@ -8361,7 +8361,7 @@ category_method__literalSInt64ExpressionAST__analyzeSemanticExpression (C_Compil
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_analyzeConstructorInvocation (C_Compiler & inLexique,
+void routine_analyzeConstructorInvocation (C_CompilerEx & inLexique,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
                                 const GGS_lstring   var_cas_inTypeName,
@@ -8457,7 +8457,7 @@ void routine_analyzeConstructorInvocation (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__constructorExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__constructorExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_constructorExpressionAST * operand_34981,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -8480,7 +8480,7 @@ category_method__constructorExpressionAST__analyzeSemanticExpression (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__readerCallExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__readerCallExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_readerCallExpressionAST * operand_35921,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -8642,7 +8642,7 @@ category_method__readerCallExpressionAST__analyzeSemanticExpression (C_Compiler 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__thisReaderCallExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__thisReaderCallExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_thisReaderCallExpressionAST * operand_40772,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -8744,7 +8744,7 @@ category_method__thisReaderCallExpressionAST__analyzeSemanticExpression (C_Compi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_string function_checkReaderImplementationInSuperClasses (C_Compiler & inLexique,
+GGS_string function_checkReaderImplementationInSuperClasses (C_CompilerEx & inLexique,
                                 const GGS_lstring   var_cas_inReaderName,
                                 const GGS_unifiedTypeMapProxy   var_cas_inSuperClass COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
@@ -8793,7 +8793,7 @@ GGS_string function_checkReaderImplementationInSuperClasses (C_Compiler & inLexi
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_checkReaderImplementationInSuperClasses (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_checkReaderImplementationInSuperClasses (C_CompilerEx & inLexique,
                            const GGS_objectlist & inEffectiveParameterArray,
                            const GGS_location & inErrorLocation
                            COMMA_LOCATION_ARGS) {
@@ -8826,7 +8826,7 @@ kFunction_descriptor_checkReaderImplementationInSuperClasses ("checkReaderImplem
 //---------------------------------------------------------------------------*
 
 static void
-category_method__superReaderCallExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__superReaderCallExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_superReaderCallExpressionAST * operand_44497,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -8945,7 +8945,7 @@ category_method__superReaderCallExpressionAST__analyzeSemanticExpression (C_Comp
 //---------------------------------------------------------------------------*
 
 static void
-category_method__optionExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__optionExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_optionExpressionAST * operand_48164,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & /* var_cas_ioVariableMap */,
@@ -9041,7 +9041,7 @@ category_method__optionExpressionAST__analyzeSemanticExpression (C_Compiler & in
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_checkDiadicOperator (C_Compiler & inLexique,
+void routine_checkDiadicOperator (C_CompilerEx & inLexique,
                                 const GGS_unifiedTypeMapProxy   var_cas_inLeftType,
                                 const GGS_unifiedTypeMapProxy   var_cas_inRightType,
                                 const GGS_bool  var_cas_inOperandIsHandled,
@@ -9109,7 +9109,7 @@ void routine_checkDiadicOperator (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__concatExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__concatExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_concatExpressionAST * operand_53434,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9141,7 +9141,7 @@ category_method__concatExpressionAST__analyzeSemanticExpression (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 static void
-category_method__orExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__orExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_orExpressionAST * operand_54533,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9173,7 +9173,7 @@ category_method__orExpressionAST__analyzeSemanticExpression (C_Compiler & inLexi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__andExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__andExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_andExpressionAST * operand_55625,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9205,7 +9205,7 @@ category_method__andExpressionAST__analyzeSemanticExpression (C_Compiler & inLex
 //---------------------------------------------------------------------------*
 
 static void
-category_method__xorExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__xorExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_xorExpressionAST * operand_56719,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9237,7 +9237,7 @@ category_method__xorExpressionAST__analyzeSemanticExpression (C_Compiler & inLex
 //---------------------------------------------------------------------------*
 
 static void
-category_method__equalExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__equalExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_equalExpressionAST * operand_57815,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9275,7 +9275,7 @@ category_method__equalExpressionAST__analyzeSemanticExpression (C_Compiler & inL
 //---------------------------------------------------------------------------*
 
 static void
-category_method__notEqualExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__notEqualExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_notEqualExpressionAST * operand_59132,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9313,7 +9313,7 @@ category_method__notEqualExpressionAST__analyzeSemanticExpression (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__lowerOrEqualExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__lowerOrEqualExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_lowerOrEqualExpressionAST * operand_60454,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9357,7 +9357,7 @@ category_method__lowerOrEqualExpressionAST__analyzeSemanticExpression (C_Compile
 //---------------------------------------------------------------------------*
 
 static void
-category_method__greaterOrEqualExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__greaterOrEqualExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_greaterOrEqualExpressionAST * operand_61980,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9401,7 +9401,7 @@ category_method__greaterOrEqualExpressionAST__analyzeSemanticExpression (C_Compi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__strictGreaterExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__strictGreaterExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_strictGreaterExpressionAST * operand_63507,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9445,7 +9445,7 @@ category_method__strictGreaterExpressionAST__analyzeSemanticExpression (C_Compil
 //---------------------------------------------------------------------------*
 
 static void
-category_method__strictLowerExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__strictLowerExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_strictLowerExpressionAST * operand_65029,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9489,7 +9489,7 @@ category_method__strictLowerExpressionAST__analyzeSemanticExpression (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__rightShiftExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__rightShiftExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_rightShiftExpressionAST * operand_66548,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9533,7 +9533,7 @@ category_method__rightShiftExpressionAST__analyzeSemanticExpression (C_Compiler 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__leftShiftExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__leftShiftExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_leftShiftExpressionAST * operand_67976,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9577,7 +9577,7 @@ category_method__leftShiftExpressionAST__analyzeSemanticExpression (C_Compiler &
 //---------------------------------------------------------------------------*
 
 static void
-category_method__addExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__addExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_addExpressionAST * operand_69397,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9609,7 +9609,7 @@ category_method__addExpressionAST__analyzeSemanticExpression (C_Compiler & inLex
 //---------------------------------------------------------------------------*
 
 static void
-category_method__subExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__subExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_subExpressionAST * operand_70491,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9641,7 +9641,7 @@ category_method__subExpressionAST__analyzeSemanticExpression (C_Compiler & inLex
 //---------------------------------------------------------------------------*
 
 static void
-category_method__multiplicationExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__multiplicationExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_multiplicationExpressionAST * operand_71596,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9673,7 +9673,7 @@ category_method__multiplicationExpressionAST__analyzeSemanticExpression (C_Compi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__divisionExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__divisionExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_divisionExpressionAST * operand_72706,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9705,7 +9705,7 @@ category_method__divisionExpressionAST__analyzeSemanticExpression (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__moduloExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__moduloExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_moduloExpressionAST * operand_73808,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9737,7 +9737,7 @@ category_method__moduloExpressionAST__analyzeSemanticExpression (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 static void
-category_method__unaryMinusExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__unaryMinusExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_unaryMinusExpressionAST * operand_74914,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9768,7 +9768,7 @@ category_method__unaryMinusExpressionAST__analyzeSemanticExpression (C_Compiler 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__notExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__notExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_notExpressionAST * operand_75828,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9799,7 +9799,7 @@ category_method__notExpressionAST__analyzeSemanticExpression (C_Compiler & inLex
 //---------------------------------------------------------------------------*
 
 static void
-category_method__complementExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__complementExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_complementExpressionAST * operand_76734,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9830,7 +9830,7 @@ category_method__complementExpressionAST__analyzeSemanticExpression (C_Compiler 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__ifExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__ifExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_ifExpressionAST * operand_77634,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9878,7 +9878,7 @@ category_method__ifExpressionAST__analyzeSemanticExpression (C_Compiler & inLexi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__functionCallExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__functionCallExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_functionCallExpressionAST * operand_79192,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9927,7 +9927,7 @@ category_method__functionCallExpressionAST__analyzeSemanticExpression (C_Compile
 //---------------------------------------------------------------------------*
 
 static void
-category_method__varInExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__varInExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_varInExpressionAST * operand_80725,
                                 const GGS_analysisContext  /* var_cas_inAnalysisContext */,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -9960,7 +9960,7 @@ category_method__varInExpressionAST__analyzeSemanticExpression (C_Compiler & inL
 //---------------------------------------------------------------------------*
 
 static void
-category_method__literalTypeInExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__literalTypeInExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_literalTypeInExpressionAST * operand_81586,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & /* var_cas_ioVariableMap */,
@@ -10002,7 +10002,7 @@ category_method__literalTypeInExpressionAST__analyzeSemanticExpression (C_Compil
 //---------------------------------------------------------------------------*
 
 static void
-category_method__castInExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__castInExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_castInExpressionAST * operand_82247,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -10089,7 +10089,7 @@ category_method__castInExpressionAST__analyzeSemanticExpression (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 static void
-category_method__filewrapperObjectInstanciationInExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__filewrapperObjectInstanciationInExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_filewrapperObjectInstanciationInExpressionAST * operand_86423,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & /* var_cas_ioVariableMap */,
@@ -10115,7 +10115,7 @@ category_method__filewrapperObjectInstanciationInExpressionAST__analyzeSemanticE
 //---------------------------------------------------------------------------*
 
 static void
-category_method__filewrapperTemplateInExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__filewrapperTemplateInExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_filewrapperTemplateInExpressionAST * operand_87232,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & var_cas_ioVariableMap,
@@ -10173,7 +10173,7 @@ category_method__filewrapperTemplateInExpressionAST__analyzeSemanticExpression (
 //---------------------------------------------------------------------------*
 
 static void
-category_method__filewrapperInExpressionAST__analyzeSemanticExpression (C_Compiler & inLexique,
+category_method__filewrapperInExpressionAST__analyzeSemanticExpression (C_CompilerEx & inLexique,
                                 const cPtr_filewrapperInExpressionAST * operand_88982,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_variableMap  & /* var_cas_ioVariableMap */,

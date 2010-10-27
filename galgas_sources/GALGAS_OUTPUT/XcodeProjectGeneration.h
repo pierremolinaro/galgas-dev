@@ -43,7 +43,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_BDD_group (C_Compiler &,
+void routine_build_LIBPM_BDD_group (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_XcodeObjectReferenceList  & COMMA_LOCATION_ARGS) ;
 
@@ -53,7 +53,7 @@ void routine_build_LIBPM_BDD_group (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_BDD_source_files_for_sources_build_phase (C_Compiler &,
+void routine_build_LIBPM_BDD_source_files_for_sources_build_phase (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_Xcode_PBXBuildFile_list  & COMMA_LOCATION_ARGS) ;
 
@@ -63,7 +63,7 @@ void routine_build_LIBPM_BDD_source_files_for_sources_build_phase (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_getGALGAS_UTILITIES_source_file_list (C_Compiler &,
+void routine_getGALGAS_UTILITIES_source_file_list (C_CompilerEx &,
                                 GGS_stringlist  & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
@@ -72,7 +72,7 @@ void routine_getGALGAS_UTILITIES_source_file_list (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_getGALGAS_2_source_file_list (C_Compiler &,
+void routine_getGALGAS_2_source_file_list (C_CompilerEx &,
                                 GGS_stringlist  & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
@@ -81,7 +81,7 @@ void routine_getGALGAS_2_source_file_list (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_getGALGAS_source_file_list (C_Compiler &,
+void routine_getGALGAS_source_file_list (C_CompilerEx &,
                                 GGS_stringlist  & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
@@ -90,7 +90,7 @@ void routine_getGALGAS_source_file_list (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_GALGAS_group (C_Compiler &,
+void routine_build_LIBPM_GALGAS_group (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_XcodeObjectReferenceList  & COMMA_LOCATION_ARGS) ;
 
@@ -100,7 +100,7 @@ void routine_build_LIBPM_GALGAS_group (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_GALGAS_2_group (C_Compiler &,
+void routine_build_LIBPM_GALGAS_2_group (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_XcodeObjectReferenceList  & COMMA_LOCATION_ARGS) ;
 
@@ -110,7 +110,7 @@ void routine_build_LIBPM_GALGAS_2_group (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_GALGAS_files_for_sources_build_phase (C_Compiler &,
+void routine_build_LIBPM_GALGAS_files_for_sources_build_phase (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_Xcode_PBXBuildFile_list  & COMMA_LOCATION_ARGS) ;
 
@@ -120,7 +120,7 @@ void routine_build_LIBPM_GALGAS_files_for_sources_build_phase (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_GALGAS_2_files_for_sources_build_phase (C_Compiler &,
+void routine_build_LIBPM_GALGAS_2_files_for_sources_build_phase (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_Xcode_PBXBuildFile_list  & COMMA_LOCATION_ARGS) ;
 
@@ -130,7 +130,7 @@ void routine_build_LIBPM_GALGAS_2_files_for_sources_build_phase (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_GALGAS_UTILITIES_group (C_Compiler &,
+void routine_build_LIBPM_GALGAS_UTILITIES_group (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_XcodeObjectReferenceList  & COMMA_LOCATION_ARGS) ;
 
@@ -140,7 +140,7 @@ void routine_build_LIBPM_GALGAS_UTILITIES_group (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_GALGAS_UTILITIES_files_for_sources_build_phase (C_Compiler &,
+void routine_build_LIBPM_GALGAS_UTILITIES_files_for_sources_build_phase (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_Xcode_PBXBuildFile_list  & COMMA_LOCATION_ARGS) ;
 
@@ -150,7 +150,7 @@ void routine_build_LIBPM_GALGAS_UTILITIES_files_for_sources_build_phase (C_Compi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_COCOA_GALGAS_group (C_Compiler &,
+void routine_build_LIBPM_COCOA_GALGAS_group (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_XcodeObjectReferenceList  & COMMA_LOCATION_ARGS) ;
 
@@ -160,7 +160,7 @@ void routine_build_LIBPM_COCOA_GALGAS_group (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_COCOA_DEBUG_group (C_Compiler &,
+void routine_build_LIBPM_COCOA_DEBUG_group (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_XcodeObjectReferenceList  & COMMA_LOCATION_ARGS) ;
 
@@ -170,7 +170,7 @@ void routine_build_LIBPM_COCOA_DEBUG_group (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_COCOA_UTILITIES_group (C_Compiler &,
+void routine_build_LIBPM_COCOA_UTILITIES_group (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_XcodeObjectReferenceList  & COMMA_LOCATION_ARGS) ;
 
@@ -180,7 +180,7 @@ void routine_build_LIBPM_COCOA_UTILITIES_group (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_FILES_group (C_Compiler &,
+void routine_build_LIBPM_FILES_group (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_XcodeObjectReferenceList  & COMMA_LOCATION_ARGS) ;
 
@@ -190,7 +190,7 @@ void routine_build_LIBPM_FILES_group (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_FILES_files_for_sources_build_phase (C_Compiler &,
+void routine_build_LIBPM_FILES_files_for_sources_build_phase (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_Xcode_PBXBuildFile_list  & COMMA_LOCATION_ARGS) ;
 
@@ -200,7 +200,7 @@ void routine_build_LIBPM_FILES_files_for_sources_build_phase (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_COMMAND_LINE_INTERFACE_group (C_Compiler &,
+void routine_build_LIBPM_COMMAND_LINE_INTERFACE_group (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_XcodeObjectReferenceList  & COMMA_LOCATION_ARGS) ;
 
@@ -210,7 +210,7 @@ void routine_build_LIBPM_COMMAND_LINE_INTERFACE_group (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase (C_Compiler &,
+void routine_build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_Xcode_PBXBuildFile_list  & COMMA_LOCATION_ARGS) ;
 
@@ -220,7 +220,7 @@ void routine_build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase (C
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_COLLECTIONS_group (C_Compiler &,
+void routine_build_LIBPM_COLLECTIONS_group (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_XcodeObjectReferenceList  & COMMA_LOCATION_ARGS) ;
 
@@ -230,7 +230,7 @@ void routine_build_LIBPM_COLLECTIONS_group (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_PROJECT_RESOURCES_group (C_Compiler &,
+void routine_build_PROJECT_RESOURCES_group (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 const GGS_stringlist  ,
                                 GGS_XcodeObjectReferenceList  & COMMA_LOCATION_ARGS) ;
@@ -241,7 +241,7 @@ void routine_build_PROJECT_RESOURCES_group (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_STRINGS_group (C_Compiler &,
+void routine_build_LIBPM_STRINGS_group (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_XcodeObjectReferenceList  & COMMA_LOCATION_ARGS) ;
 
@@ -251,7 +251,7 @@ void routine_build_LIBPM_STRINGS_group (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_STRINGS_files_for_sources_build_phase (C_Compiler &,
+void routine_build_LIBPM_STRINGS_files_for_sources_build_phase (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_Xcode_PBXBuildFile_list  & COMMA_LOCATION_ARGS) ;
 
@@ -261,7 +261,7 @@ void routine_build_LIBPM_STRINGS_files_for_sources_build_phase (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_UTILITIES_group (C_Compiler &,
+void routine_build_LIBPM_UTILITIES_group (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_XcodeObjectReferenceList  & COMMA_LOCATION_ARGS) ;
 
@@ -271,7 +271,7 @@ void routine_build_LIBPM_UTILITIES_group (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_UTILITIES_files_for_sources_build_phase (C_Compiler &,
+void routine_build_LIBPM_UTILITIES_files_for_sources_build_phase (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_Xcode_PBXBuildFile_list  & COMMA_LOCATION_ARGS) ;
 
@@ -281,7 +281,7 @@ void routine_build_LIBPM_UTILITIES_files_for_sources_build_phase (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_STREAMS_group (C_Compiler &,
+void routine_build_LIBPM_STREAMS_group (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_XcodeObjectReferenceList  & COMMA_LOCATION_ARGS) ;
 
@@ -291,7 +291,7 @@ void routine_build_LIBPM_STREAMS_group (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_STREAMS_files_for_sources_build_phase (C_Compiler &,
+void routine_build_LIBPM_STREAMS_files_for_sources_build_phase (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_Xcode_PBXBuildFile_list  & COMMA_LOCATION_ARGS) ;
 
@@ -301,7 +301,7 @@ void routine_build_LIBPM_STREAMS_files_for_sources_build_phase (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_TIME_group (C_Compiler &,
+void routine_build_LIBPM_TIME_group (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_XcodeObjectReferenceList  & COMMA_LOCATION_ARGS) ;
 
@@ -311,7 +311,7 @@ void routine_build_LIBPM_TIME_group (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_LIBPM_TIME_files_for_sources_build_phase (C_Compiler &,
+void routine_build_LIBPM_TIME_files_for_sources_build_phase (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_Xcode_PBXBuildFile_list  & COMMA_LOCATION_ARGS) ;
 
@@ -321,7 +321,7 @@ void routine_build_LIBPM_TIME_files_for_sources_build_phase (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_GENERATED_BY_GALGAS_files_for_sources_build_phase (C_Compiler &,
+void routine_build_GENERATED_BY_GALGAS_files_for_sources_build_phase (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 const GGS_stringset  ,
                                 GGS_Xcode_PBXBuildFile_list  & COMMA_LOCATION_ARGS) ;
@@ -332,7 +332,7 @@ void routine_build_GENERATED_BY_GALGAS_files_for_sources_build_phase (C_Compiler
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_GENERATED_BY_GALGAS_group (C_Compiler &,
+void routine_build_GENERATED_BY_GALGAS_group (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 const GGS_stringset  ,
                                 const GGS_stringset  ,
@@ -344,7 +344,7 @@ void routine_build_GENERATED_BY_GALGAS_group (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_HAND_CODED_source_files_for_sources_tool_build_phase (C_Compiler &,
+void routine_build_HAND_CODED_source_files_for_sources_tool_build_phase (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 const GGS_stringset  ,
                                 GGS_Xcode_PBXBuildFile_list  & COMMA_LOCATION_ARGS) ;
@@ -355,7 +355,7 @@ void routine_build_HAND_CODED_source_files_for_sources_tool_build_phase (C_Compi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_HAND_CODED_source_files_for_sources_cocoa_build_phase (C_Compiler &,
+void routine_build_HAND_CODED_source_files_for_sources_cocoa_build_phase (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 const GGS_stringset  ,
                                 GGS_Xcode_PBXBuildFile_list  & COMMA_LOCATION_ARGS) ;
@@ -366,7 +366,7 @@ void routine_build_HAND_CODED_source_files_for_sources_cocoa_build_phase (C_Comp
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_HAND_CODED_SOURCES_group (C_Compiler &,
+void routine_build_HAND_CODED_SOURCES_group (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 const GGS_stringset  ,
                                 GGS_XcodeObjectReferenceList  & COMMA_LOCATION_ARGS) ;
@@ -377,7 +377,7 @@ void routine_build_HAND_CODED_SOURCES_group (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_FRAMEWORKS_group (C_Compiler &,
+void routine_build_FRAMEWORKS_group (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 GGS_XcodeObjectReferenceList  &,
                                 const GGS_stringset  ,
@@ -389,7 +389,7 @@ void routine_build_FRAMEWORKS_group (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_FRAMEWORKS_for_frameworks_build_phase (C_Compiler &,
+void routine_build_FRAMEWORKS_for_frameworks_build_phase (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 const GGS_stringset  ,
                                 GGS_Xcode_PBXBuildFile_list  & COMMA_LOCATION_ARGS) ;
@@ -400,7 +400,7 @@ void routine_build_FRAMEWORKS_for_frameworks_build_phase (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_RESOURCES_for_resources_build_phase (C_Compiler &,
+void routine_build_RESOURCES_for_resources_build_phase (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 const GGS_string ,
                                 const GGS_stringlist  ,
@@ -412,7 +412,7 @@ void routine_build_RESOURCES_for_resources_build_phase (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_build_COCOA_APP_files_for_sources_build_phase (C_Compiler &,
+void routine_build_COCOA_APP_files_for_sources_build_phase (C_CompilerEx &,
                                 GGS_XcodeProjectDescription &,
                                 const GGS_stringset  ,
                                 const GGS_stringset  ,
@@ -426,7 +426,7 @@ void routine_build_COCOA_APP_files_for_sources_build_phase (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_generateXcodeProject (C_Compiler &,
+void routine_generateXcodeProject (C_CompilerEx &,
                                 const GGS_stringset  ,
                                 const GGS_stringset  ,
                                 const GGS_stringset  ,

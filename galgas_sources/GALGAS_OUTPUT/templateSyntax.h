@@ -44,7 +44,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterTemplateString (C_Compiler &,
+void routine_enterTemplateString (C_CompilerEx &,
                                 GGS_templateInstructionListAST  & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*

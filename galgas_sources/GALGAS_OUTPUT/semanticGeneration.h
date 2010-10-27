@@ -48,7 +48,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_generateProcedu
 
 //---------------------------------------------------------------------------*
 
-GGS_string function_generateProcedure (C_Compiler &,
+GGS_string function_generateProcedure (C_CompilerEx &,
                                 const GGS_string ,
                                 const GGS_formalParameterListForGeneration  ,
                                 const GGS_semanticInstructionListForGeneration  ,
@@ -67,7 +67,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_generateFunctio
 
 //---------------------------------------------------------------------------*
 
-GGS_string function_generateFunction (C_Compiler &,
+GGS_string function_generateFunction (C_CompilerEx &,
                                 const GGS_string ,
                                 const GGS_formalInputParameterListForGeneration  ,
                                 const GGS_semanticInstructionListForGeneration  ,
@@ -86,7 +86,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_generateCategor
 
 //---------------------------------------------------------------------------*
 
-GGS_string function_generateCategoryMethod (C_Compiler &,
+GGS_string function_generateCategoryMethod (C_CompilerEx &,
                                 const GGS_string ,
                                 const GGS_string ,
                                 const GGS_string ,
@@ -103,7 +103,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_generateCategor
 
 //---------------------------------------------------------------------------*
 
-GGS_string function_generateCategoryReader (C_Compiler &,
+GGS_string function_generateCategoryReader (C_CompilerEx &,
                                 const GGS_string ,
                                 const GGS_string ,
                                 const GGS_string ,
@@ -119,7 +119,7 @@ GGS_string function_generateCategoryReader (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_string (*typeCategoryReader__semanticDeclarationForGeneration__appendDeclaration1)  (C_Compiler & inLexique,
+typedef GGS_string (*typeCategoryReader__semanticDeclarationForGeneration__appendDeclaration1)  (C_CompilerEx & inLexique,
                                 const cPtr_semanticDeclarationForGeneration * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -140,7 +140,7 @@ findCategoryReader__semanticDeclarationForGeneration__appendDeclaration1 (AC_gal
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_recursivlyEnumerateRegularFile (C_Compiler &,
+void routine_recursivlyEnumerateRegularFile (C_CompilerEx &,
                                 const GGS_wrapperFileMap  ,
                                 const GGS_wrapperDirectoryMap  ,
                                 GGS_stringlist  & COMMA_LOCATION_ARGS) ;
@@ -151,7 +151,7 @@ void routine_recursivlyEnumerateRegularFile (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_string (*typeCategoryReader__semanticDeclarationForGeneration__appendDeclaration2)  (C_Compiler & inLexique,
+typedef GGS_string (*typeCategoryReader__semanticDeclarationForGeneration__appendDeclaration2)  (C_CompilerEx & inLexique,
                                 const cPtr_semanticDeclarationForGeneration * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -172,7 +172,7 @@ findCategoryReader__semanticDeclarationForGeneration__appendDeclaration2 (AC_gal
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_string (*typeCategoryReader__semanticDeclarationForGeneration__appendTypeGenericImplementation)  (C_Compiler & inLexique,
+typedef GGS_string (*typeCategoryReader__semanticDeclarationForGeneration__appendTypeGenericImplementation)  (C_CompilerEx & inLexique,
                                 const cPtr_semanticDeclarationForGeneration * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -193,7 +193,7 @@ findCategoryReader__semanticDeclarationForGeneration__appendTypeGenericImplement
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_string (*typeCategoryReader__semanticDeclarationForGeneration__appendSpecificImplementation)  (C_Compiler & inLexique,
+typedef GGS_string (*typeCategoryReader__semanticDeclarationForGeneration__appendSpecificImplementation)  (C_CompilerEx & inLexique,
                                 const cPtr_semanticDeclarationForGeneration * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -214,7 +214,7 @@ findCategoryReader__semanticDeclarationForGeneration__appendSpecificImplementati
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_generateWrapperContents (C_Compiler &,
+void routine_generateWrapperContents (C_CompilerEx &,
                                 const GGS_string ,
                                 const GGS_string ,
                                 const GGS_uint  ,
@@ -237,7 +237,7 @@ extern const cDirectoryWrapperEx gWrapperDirectory_0_typeGenerationTemplate ;
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_unifiedClassBodyForType (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_unifiedClassBodyForType (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_bool& var_cas_IS_CONCRETE,
@@ -258,7 +258,7 @@ template_filewrapper_typeGenerationTemplate_unifiedClassBodyForType (C_Compiler 
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_genericTypeImplementation (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_genericTypeImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_unifiedTypeMapProxy & var_cas_SUPER_TYPE_INDEX,
@@ -271,7 +271,7 @@ template_filewrapper_typeGenerationTemplate_genericTypeImplementation (C_Compile
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_structTypeHeader1 (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_structTypeHeader1 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_typedAttributeList & var_cas_ATTRIBUTE_LIST) ;
@@ -283,7 +283,7 @@ template_filewrapper_typeGenerationTemplate_structTypeHeader1 (C_Compiler & inLe
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_structTypeSpecificImplementation (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_structTypeSpecificImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_typedAttributeList & var_cas_ATTRIBUTE_LIST) ;
@@ -295,7 +295,7 @@ template_filewrapper_typeGenerationTemplate_structTypeSpecificImplementation (C_
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_listTypeHeader1 (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_listTypeHeader1 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_typedAttributeList & var_cas_ATTRIBUTE_LIST) ;
@@ -307,7 +307,7 @@ template_filewrapper_typeGenerationTemplate_listTypeHeader1 (C_Compiler & inLexi
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_listTypeSpecificImplementation (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_listTypeSpecificImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_typedAttributeList & var_cas_ATTRIBUTE_LIST) ;
@@ -319,7 +319,7 @@ template_filewrapper_typeGenerationTemplate_listTypeSpecificImplementation (C_Co
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_sortedlistTypeHeader1 (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_sortedlistTypeHeader1 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_typedAttributeList & var_cas_ATTRIBUTE_LIST) ;
@@ -331,7 +331,7 @@ template_filewrapper_typeGenerationTemplate_sortedlistTypeHeader1 (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_sortedlistTypeSpecificImplementation (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_sortedlistTypeSpecificImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_typedAttributeList & var_cas_ATTRIBUTE_LIST,
                                 const GGS_sortDescriptorListForGeneration & var_cas_SORT_ATTRIBUTE_LIST) ;
@@ -343,7 +343,7 @@ template_filewrapper_typeGenerationTemplate_sortedlistTypeSpecificImplementation
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_enumTypeHeader1 (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_enumTypeHeader1 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_stringlist & var_cas_CONSTANT_LIST) ;
@@ -355,7 +355,7 @@ template_filewrapper_typeGenerationTemplate_enumTypeHeader1 (C_Compiler & inLexi
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_enumTypeSpecificImplementation (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_enumTypeSpecificImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_stringlist & var_cas_CONSTANT_LIST,
@@ -368,7 +368,7 @@ template_filewrapper_typeGenerationTemplate_enumTypeSpecificImplementation (C_Co
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_mapTypeHeader1 (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_mapTypeHeader1 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_typedAttributeList & var_cas_ATTRIBUTE_LIST) ;
@@ -380,7 +380,7 @@ template_filewrapper_typeGenerationTemplate_mapTypeHeader1 (C_Compiler & inLexiq
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_mapTypeHeader2 (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_mapTypeHeader2 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_typedAttributeList & var_cas_ATTRIBUTE_LIST) ;
@@ -392,7 +392,7 @@ template_filewrapper_typeGenerationTemplate_mapTypeHeader2 (C_Compiler & inLexiq
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_mapTypeSpecificImplementation (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_mapTypeSpecificImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_typedAttributeList & var_cas_ATTRIBUTE_LIST,
                                 const GGS_insertMethodListAST & var_cas_INSERT_METHOD_LIST,
@@ -408,7 +408,7 @@ template_filewrapper_typeGenerationTemplate_mapTypeSpecificImplementation (C_Com
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_classTypeHeader1 (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_classTypeHeader1 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_string& var_cas_SUPER_TYPE_IDENTIFIER,
@@ -422,7 +422,7 @@ template_filewrapper_typeGenerationTemplate_classTypeHeader1 (C_Compiler & inLex
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_classTypeHeader2 (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_classTypeHeader2 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_string& var_cas_SUPER_TYPE_IDENTIFIER,
@@ -439,7 +439,7 @@ template_filewrapper_typeGenerationTemplate_classTypeHeader2 (C_Compiler & inLex
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_classTypeSpecificImplementation (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_classTypeSpecificImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_string& var_cas_SUPER_TYPE_IDENTIFIER,
@@ -458,7 +458,7 @@ template_filewrapper_typeGenerationTemplate_classTypeSpecificImplementation (C_C
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_listmapTypeSpecificImplementation (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_listmapTypeSpecificImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_string& var_cas_ASSOCIATED_LISTTYPE_IDENTIFIER,
                                 const GGS_typedAttributeList & var_cas_ATTRIBUTE_LIST) ;
@@ -470,7 +470,7 @@ template_filewrapper_typeGenerationTemplate_listmapTypeSpecificImplementation (C
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_typeGenerationTemplate_mapProxyTypeSpecificImplementation (C_Compiler & inLexique,
+template_filewrapper_typeGenerationTemplate_mapProxyTypeSpecificImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_TYPE_NAME,
                                 const GGS_string& var_cas_TYPE_IDENTIFIER,
                                 const GGS_string& var_cas_ASSOCIATED_MAP_TYPE_IDENTIFIER,
@@ -492,7 +492,7 @@ extern const cDirectoryWrapperEx gWrapperDirectory_0_semanticComponentGeneration
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_abstractCategoryReaderDeclaration (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_abstractCategoryReaderDeclaration (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_CLASS_NAME,
                                 const GGS_string& var_cas_READER_NAME,
                                 const GGS_formalInputParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST,
@@ -505,7 +505,7 @@ template_filewrapper_semanticComponentGenerationTemplate_abstractCategoryReaderD
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_abstractCategoryReaderImplementation (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_abstractCategoryReaderImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_CLASS_NAME,
                                 const GGS_string& var_cas_READER_NAME,
                                 const GGS_formalInputParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST,
@@ -518,7 +518,7 @@ template_filewrapper_semanticComponentGenerationTemplate_abstractCategoryReaderI
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_categoryReaderDeclaration (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_categoryReaderDeclaration (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_CLASS_NAME,
                                 const GGS_string& var_cas_READER_NAME,
                                 const GGS_formalInputParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST,
@@ -531,7 +531,7 @@ template_filewrapper_semanticComponentGenerationTemplate_categoryReaderDeclarati
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_categoryReaderImplementation (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_categoryReaderImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_CLASS_NAME,
                                 const GGS_string& var_cas_READER_NAME,
                                 const GGS_formalInputParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST,
@@ -545,7 +545,7 @@ template_filewrapper_semanticComponentGenerationTemplate_categoryReaderImplement
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_overridingCategoryReaderImplementation (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_overridingCategoryReaderImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_CLASS_NAME,
                                 const GGS_string& var_cas_READER_NAME,
                                 const GGS_unifiedTypeMapProxy & var_cas_RETURN_TYPE,
@@ -558,7 +558,7 @@ template_filewrapper_semanticComponentGenerationTemplate_overridingCategoryReade
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_abstractCategoryMethodDeclaration (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_abstractCategoryMethodDeclaration (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_CLASS_NAME,
                                 const GGS_string& var_cas_METHOD_NAME,
                                 const GGS_formalParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST) ;
@@ -570,7 +570,7 @@ template_filewrapper_semanticComponentGenerationTemplate_abstractCategoryMethodD
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_abstractCategoryMethodImplementation (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_abstractCategoryMethodImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_CLASS_NAME,
                                 const GGS_string& var_cas_METHOD_NAME,
                                 const GGS_formalParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST) ;
@@ -582,7 +582,7 @@ template_filewrapper_semanticComponentGenerationTemplate_abstractCategoryMethodI
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_categoryMethodDeclaration (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_categoryMethodDeclaration (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_CLASS_NAME,
                                 const GGS_string& var_cas_METHOD_NAME,
                                 const GGS_formalParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST) ;
@@ -594,7 +594,7 @@ template_filewrapper_semanticComponentGenerationTemplate_categoryMethodDeclarati
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_categoryMethodImplementation (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_categoryMethodImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_CLASS_NAME,
                                 const GGS_string& var_cas_METHOD_NAME,
                                 const GGS_formalParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST,
@@ -607,7 +607,7 @@ template_filewrapper_semanticComponentGenerationTemplate_categoryMethodImplement
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_overridingCategoryMethodImplementation (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_overridingCategoryMethodImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_CLASS_NAME,
                                 const GGS_string& var_cas_METHOD_NAME,
                                 const GGS_string& var_cas_METHOD_IMPLEMENTATION) ;
@@ -619,7 +619,7 @@ template_filewrapper_semanticComponentGenerationTemplate_overridingCategoryMetho
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_filewrapperDeclaration (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_filewrapperDeclaration (C_CompilerEx & inLexique,
                                 const GGS_stringlist & var_cas_FILE_INDEX_STRING_LIST,
                                 const GGS_string& var_cas_FILEWRAPPER_NAME) ;
 
@@ -630,7 +630,7 @@ template_filewrapper_semanticComponentGenerationTemplate_filewrapperDeclaration 
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_filewrapperImplementation (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_filewrapperImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_FILEWRAPPER_NAME,
                                 const GGS_string& var_cas_FILEWRAPPER_IMPLEMENTATION) ;
 
@@ -641,7 +641,7 @@ template_filewrapper_semanticComponentGenerationTemplate_filewrapperImplementati
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_routineDeclaration (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_routineDeclaration (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_ROUTINE_NAME,
                                 const GGS_formalParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST) ;
 
@@ -652,7 +652,7 @@ template_filewrapper_semanticComponentGenerationTemplate_routineDeclaration (C_C
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_functionDeclaration (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_functionDeclaration (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_FUNCTION_NAME,
                                 const GGS_formalInputParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST,
                                 const GGS_string& var_cas_RETURN_TYPE_IDENTIFIER) ;
@@ -664,7 +664,7 @@ template_filewrapper_semanticComponentGenerationTemplate_functionDeclaration (C_
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_routineImplementation (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_routineImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_ROUTINE_NAME,
                                 const GGS_string& var_cas_ROUTINE_IMPLEMENTATION) ;
 
@@ -675,7 +675,7 @@ template_filewrapper_semanticComponentGenerationTemplate_routineImplementation (
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_functionImplementation (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_functionImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_FUNCTION_NAME,
                                 const GGS_string& var_cas_FUNCTION_IMPLEMENTATION,
                                 const GGS_formalInputParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST,
@@ -688,7 +688,7 @@ template_filewrapper_semanticComponentGenerationTemplate_functionImplementation 
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_onceFunctionImplementation (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_onceFunctionImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_FUNCTION_NAME,
                                 const GGS_string& var_cas_FUNCTION_IMPLEMENTATION,
                                 const GGS_formalInputParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST,
@@ -701,7 +701,7 @@ template_filewrapper_semanticComponentGenerationTemplate_onceFunctionImplementat
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_filewrapperTemplateDeclaration (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_filewrapperTemplateDeclaration (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_FILEWRAPPER_NAME,
                                 const GGS_string& var_cas_TEMPLATE_NAME,
                                 const GGS_formalInputParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST) ;
@@ -713,7 +713,7 @@ template_filewrapper_semanticComponentGenerationTemplate_filewrapperTemplateDecl
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_semanticComponentGenerationTemplate_filewrapperTemplateImplementation (C_Compiler & inLexique,
+template_filewrapper_semanticComponentGenerationTemplate_filewrapperTemplateImplementation (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_FILEWRAPPER_NAME,
                                 const GGS_string& var_cas_TEMPLATE_NAME,
                                 const GGS_formalInputParameterListForGeneration & var_cas_FORMAL_ARGUMENT_LIST,

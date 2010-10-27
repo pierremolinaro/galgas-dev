@@ -46,7 +46,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__lexicalSendDefaultActionAST__checkLexicalDefaultAction)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__lexicalSendDefaultActionAST__checkLexicalDefaultAction)  (C_CompilerEx & inLexique,
                                 const cPtr_lexicalSendDefaultActionAST * inObjectPtr,
                                 GGS_lexiqueAnalysisContext & var_cas_ioLexiqueAnalysisContext
                                 COMMA_LOCATION_ARGS) ;
@@ -68,7 +68,7 @@ findCategoryMethod__lexicalSendDefaultActionAST__checkLexicalDefaultAction (AC_g
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__lexicalExpressionAST__checkLexicalExpression)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__lexicalExpressionAST__checkLexicalExpression)  (C_CompilerEx & inLexique,
                                 const cPtr_lexicalExpressionAST * inObjectPtr,
                                 GGS_lexiqueAnalysisContext & var_cas_ioLexiqueAnalysisContext
                                 COMMA_LOCATION_ARGS) ;
@@ -90,7 +90,7 @@ findCategoryMethod__lexicalExpressionAST__checkLexicalExpression (AC_galgasClass
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__lexicalRoutineOrFunctionFormalInputArgumentAST__checkLexicalFunctionCallArgument)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__lexicalRoutineOrFunctionFormalInputArgumentAST__checkLexicalFunctionCallArgument)  (C_CompilerEx & inLexique,
                                 const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObjectPtr,
                                 GGS_lexiqueAnalysisContext & var_cas_ioLexiqueAnalysisContext,
                                 GGS_lexicalTypeEnum  var_cas_inLexicalRoutineFormalArgumentType
@@ -113,7 +113,7 @@ findCategoryMethod__lexicalRoutineOrFunctionFormalInputArgumentAST__checkLexical
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__lexicalRoutineOrFunctionFormalInputArgumentAST__checkLexicalRoutineCallArgument)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__lexicalRoutineOrFunctionFormalInputArgumentAST__checkLexicalRoutineCallArgument)  (C_CompilerEx & inLexique,
                                 const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObjectPtr,
                                 GGS_lexiqueAnalysisContext & var_cas_ioLexiqueAnalysisContext,
                                 GGS_lexicalTypeEnum  var_cas_inLexicalRoutineFormalArgumentType
@@ -136,7 +136,7 @@ findCategoryMethod__lexicalRoutineOrFunctionFormalInputArgumentAST__checkLexical
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__abstractLexicalRoutineActualArgumentAST__checkLexicalRoutineCallArgument)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__abstractLexicalRoutineActualArgumentAST__checkLexicalRoutineCallArgument)  (C_CompilerEx & inLexique,
                                 const cPtr_abstractLexicalRoutineActualArgumentAST * inObjectPtr,
                                 GGS_lexiqueAnalysisContext & var_cas_ioLexiqueAnalysisContext,
                                 GGS_lexicalArgumentModeAST  var_cas_inLexicalRoutineFormalArgumentMode,
@@ -160,7 +160,7 @@ findCategoryMethod__abstractLexicalRoutineActualArgumentAST__checkLexicalRoutine
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__lexicalInstructionAST__checkLexicalInstruction)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__lexicalInstructionAST__checkLexicalInstruction)  (C_CompilerEx & inLexique,
                                 const cPtr_lexicalInstructionAST * inObjectPtr,
                                 GGS_lexiqueAnalysisContext & var_cas_ioLexiqueAnalysisContext,
                                 GGS_lexicalTagMap  & var_cas_ioTagMap
@@ -183,7 +183,7 @@ findCategoryMethod__lexicalInstructionAST__checkLexicalInstruction (AC_galgasCla
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__abstractLexicalRuleAST__checkLexicalRule)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__abstractLexicalRuleAST__checkLexicalRule)  (C_CompilerEx & inLexique,
                                 const cPtr_abstractLexicalRuleAST * inObjectPtr,
                                 GGS_lexiqueAnalysisContext & var_cas_ioLexiqueAnalysisContext
                                 COMMA_LOCATION_ARGS) ;
@@ -205,7 +205,7 @@ findCategoryMethod__abstractLexicalRuleAST__checkLexicalRule (AC_galgasClassRunT
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_parseLexiqueComponent (C_Compiler &,
+void routine_parseLexiqueComponent (C_CompilerEx &,
                                 const GGS_lstring  ,
                                 GGS_parsedComponentStruct &,
                                 GGS_lexiqueComponentAST  & COMMA_LOCATION_ARGS) ;
@@ -220,7 +220,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_buildLexicalTyp
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalTypeMap  function_buildLexicalTypeMap (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_lexicalTypeMap  function_buildLexicalTypeMap (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -228,7 +228,7 @@ GGS_lexicalTypeMap  function_buildLexicalTypeMap (C_Compiler & COMMA_LOCATION_AR
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildLexicalAttributeMap (C_Compiler &,
+void routine_buildLexicalAttributeMap (C_CompilerEx &,
                                 const GGS_lexicalTypeMap  ,
                                 const GGS_lexicalAttributeListAST  ,
                                 GGS_lexicalAttributeMap  & COMMA_LOCATION_ARGS) ;
@@ -239,7 +239,7 @@ void routine_buildLexicalAttributeMap (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileLexiqueComponent (C_Compiler &,
+void routine_compileLexiqueComponent (C_CompilerEx &,
                                 const GGS_lstring  ,
                                 const GGS_string ,
                                 GGS_parsedComponentStruct & COMMA_LOCATION_ARGS) ;
@@ -259,7 +259,7 @@ extern const cDirectoryWrapperEx gWrapperDirectory_0_lexiqueGenerationTemplates 
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_lexiqueGenerationTemplates_headerZone2 (C_Compiler & inLexique,
+template_filewrapper_lexiqueGenerationTemplates_headerZone2 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_LEXIQUE_IDENTIFIER,
                                 const GGS_lexiqueAnalysisContext& var_cas_LEXIQUE_ANALYSIS_CONTEXT,
                                 const GGS_lexiqueComponentAST & var_cas_LEXIQUE_COMPONENT_ROOT) ;
@@ -271,7 +271,7 @@ template_filewrapper_lexiqueGenerationTemplates_headerZone2 (C_Compiler & inLexi
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_lexiqueGenerationTemplates_headerZone3 (C_Compiler & inLexique,
+template_filewrapper_lexiqueGenerationTemplates_headerZone3 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_LEXIQUE_IDENTIFIER,
                                 const GGS_lexicalListDeclarationListAST & var_cas_DELIMITOR_LIST_LIST,
                                 const GGS_lexiqueAnalysisContext& var_cas_LEXIQUE_ANALYSIS_CONTEXT) ;
@@ -283,7 +283,7 @@ template_filewrapper_lexiqueGenerationTemplates_headerZone3 (C_Compiler & inLexi
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_lexiqueGenerationTemplates_implementationZone2 (C_Compiler & inLexique,
+template_filewrapper_lexiqueGenerationTemplates_implementationZone2 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_LEXIQUE_IDENTIFIER,
                                 const GGS_lexicalAttributeMap & var_cas_LEXICAL_ATTRIBUTE_MAP,
                                 const GGS_lexicalMessageMap & var_cas_LEXICAL_MESSAGE_MAP,
@@ -301,7 +301,7 @@ template_filewrapper_lexiqueGenerationTemplates_implementationZone2 (C_Compiler 
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_lexiqueGenerationTemplates_cocoaHeaderZone2 (C_Compiler & inLexique,
+template_filewrapper_lexiqueGenerationTemplates_cocoaHeaderZone2 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_LEXIQUE_CLASS_NAME,
                                 const GGS_lexiqueAnalysisContext& var_cas_LEXIQUE_ANALYSIS_CONTEXT) ;
 
@@ -312,7 +312,7 @@ template_filewrapper_lexiqueGenerationTemplates_cocoaHeaderZone2 (C_Compiler & i
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_lexiqueGenerationTemplates_cocoaHeaderZone3 (C_Compiler & inLexique,
+template_filewrapper_lexiqueGenerationTemplates_cocoaHeaderZone3 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_LEXIQUE_CLASS_NAME,
                                 const GGS_lexiqueAnalysisContext& var_cas_LEXIQUE_ANALYSIS_CONTEXT) ;
 
@@ -323,7 +323,7 @@ template_filewrapper_lexiqueGenerationTemplates_cocoaHeaderZone3 (C_Compiler & i
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_lexiqueGenerationTemplates_cocoaImplementationZone2 (C_Compiler & inLexique,
+template_filewrapper_lexiqueGenerationTemplates_cocoaImplementationZone2 (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_LEXIQUE_CLASS_NAME,
                                 const GGS_lexicalAttributeMap & var_cas_LEXICAL_ATTRIBUTE_MAP,
                                 const GGS_lexicalMessageMap & var_cas_LEXICAL_MESSAGE_MAP,

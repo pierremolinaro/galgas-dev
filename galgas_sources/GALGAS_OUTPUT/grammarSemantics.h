@@ -84,13 +84,13 @@ class GGS_signatureForGrammarAnalysis : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_signatureForGrammarAnalysis
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_signatureForGrammarAnalysis
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -105,22 +105,22 @@ class GGS_signatureForGrammarAnalysis : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_signatureForGrammarAnalysis * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_formalArgumentPassingModeAST& _out_0,
                               GGS_lstring & _out_1
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_formalArgumentPassingModeAST& _out_0,
                              GGS_lstring & _out_1
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_formalArgumentPassingModeAST& _out_0,
                                 GGS_lstring & _out_1
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_formalArgumentPassingModeAST& _out_0,
                                  GGS_lstring & _out_1
                                  COMMA_LOCATION_ARGS) ;
@@ -132,7 +132,7 @@ class GGS_signatureForGrammarAnalysis : public AC_GGS_list {
                                 const GGS_lstring & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_signatureForGrammarAnalysis operator_concat (const GGS_signatureForGrammarAnalysis & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_formalArgumentPassingModeAST& argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -153,18 +153,18 @@ class GGS_signatureForGrammarAnalysis : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_formalArgumentPassingModeAST
-  reader_mFormalArgumentPassingModeForGrammarAnalysisAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mFormalArgumentPassingModeForGrammarAnalysisAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_lstring 
-  reader_mGalgasTypeNameForGrammarAnalysisAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mGalgasTypeNameForGrammarAnalysisAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMFormalArgumentPassingModeForGrammarAnalysisAtIndex (C_Compiler & inLexique,
+  modifier_setMFormalArgumentPassingModeForGrammarAnalysisAtIndex (C_CompilerEx & inLexique,
                               const GGS_formalArgumentPassingModeAST & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMGalgasTypeNameForGrammarAnalysisAtIndex (C_Compiler & inLexique,
+  modifier_setMGalgasTypeNameForGrammarAnalysisAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -174,7 +174,7 @@ class GGS_signatureForGrammarAnalysis : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_signatureForGrammarAnalysis castFromObject (C_Compiler & inLexique,
+  public : static GGS_signatureForGrammarAnalysis castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -225,7 +225,7 @@ class GGS_nonterminalSymbolLabelMapForGrammarAnalysis : public AC_GGS_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_nonterminalSymbolLabelMapForGrammarAnalysis castFromObject (C_Compiler & inLexique,
+  public : static GGS_nonterminalSymbolLabelMapForGrammarAnalysis castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -247,10 +247,10 @@ class GGS_nonterminalSymbolLabelMapForGrammarAnalysis : public AC_GGS_map {
   public : inline const GGS_nonterminalSymbolLabelMapForGrammarAnalysis * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_nonterminalSymbolLabelMapForGrammarAnalysis constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_nonterminalSymbolLabelMapForGrammarAnalysis constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- 'mapWithKeyAndValue' constructor
-  public : static GGS_nonterminalSymbolLabelMapForGrammarAnalysis constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+  public : static GGS_nonterminalSymbolLabelMapForGrammarAnalysis constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
 ,
                                              const GGS_signatureForGrammarAnalysis & inValue0
@@ -264,18 +264,18 @@ class GGS_nonterminalSymbolLabelMapForGrammarAnalysis : public AC_GGS_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_Compiler & inLexique,
+  public : void modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_signatureForGrammarAnalysis &  inParameter0 COMMA_LOCATION_ARGS) ;
 
   public : static const utf32 kSearchMessage_searchKey [] ;
 
 //--- 'searchKey' Search Method
-  public : void method_searchKey (C_Compiler & inLexique,
+  public : void method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_signatureForGrammarAnalysis   & outParameter0 COMMA_LOCATION_ARGS) const ;
 //--- Internal method for inserting an element
-  protected : void insertElement (C_Compiler & inLexique,
+  protected : void insertElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inInitialState,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -283,7 +283,7 @@ class GGS_nonterminalSymbolLabelMapForGrammarAnalysis : public AC_GGS_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_Compiler & inLexique,
+  protected : void searchElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inActionIndex,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -291,10 +291,10 @@ class GGS_nonterminalSymbolLabelMapForGrammarAnalysis : public AC_GGS_map {
                                   GGS_luint * outIndex
                                   COMMA_LOCATION_ARGS) const ;
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_nonterminalSymbolLabelMapForGrammarAnalysis constructor_mapWithMapToOverride (C_Compiler & inLexique,
+  public : static GGS_nonterminalSymbolLabelMapForGrammarAnalysis constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
                                             const GGS_nonterminalSymbolLabelMapForGrammarAnalysis & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_nonterminalSymbolLabelMapForGrammarAnalysis reader_overriddenMap (C_Compiler & inLexique
+  public : GGS_nonterminalSymbolLabelMapForGrammarAnalysis reader_overriddenMap (C_CompilerEx & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Key stringset (for map with an associated automaton)
@@ -339,7 +339,7 @@ class GGS_abstractSyntaxInstructionForGrammarAnalysis : public AC_GGS_class {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_abstractSyntaxInstructionForGrammarAnalysis
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
@@ -374,7 +374,7 @@ AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_abstractSyntaxInstructionForGrammarAnalysis castFromObject (C_Compiler & inLexique,
+  public : static GGS_abstractSyntaxInstructionForGrammarAnalysis castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -412,13 +412,13 @@ class GGS_syntaxInstructionListForGrammarAnalysis : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_syntaxInstructionListForGrammarAnalysis
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_syntaxInstructionListForGrammarAnalysis
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -433,19 +433,19 @@ class GGS_syntaxInstructionListForGrammarAnalysis : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_syntaxInstructionListForGrammarAnalysis * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_abstractSyntaxInstructionForGrammarAnalysis & _out_0
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_abstractSyntaxInstructionForGrammarAnalysis & _out_0
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_abstractSyntaxInstructionForGrammarAnalysis & _out_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_abstractSyntaxInstructionForGrammarAnalysis & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
@@ -455,7 +455,7 @@ class GGS_syntaxInstructionListForGrammarAnalysis : public AC_GGS_list {
   public : void addAssign_operation (const GGS_abstractSyntaxInstructionForGrammarAnalysis & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_syntaxInstructionListForGrammarAnalysis operator_concat (const GGS_syntaxInstructionListForGrammarAnalysis & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_abstractSyntaxInstructionForGrammarAnalysis & argument_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Internal Methods
@@ -473,11 +473,11 @@ class GGS_syntaxInstructionListForGrammarAnalysis : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_abstractSyntaxInstructionForGrammarAnalysis 
-  reader_mInstructionAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mInstructionAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMInstructionAtIndex (C_Compiler & inLexique,
+  modifier_setMInstructionAtIndex (C_CompilerEx & inLexique,
                               const GGS_abstractSyntaxInstructionForGrammarAnalysis  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -487,7 +487,7 @@ class GGS_syntaxInstructionListForGrammarAnalysis : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_syntaxInstructionListForGrammarAnalysis castFromObject (C_Compiler & inLexique,
+  public : static GGS_syntaxInstructionListForGrammarAnalysis castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -538,13 +538,13 @@ class GGS_productionRuleListForGrammarAnalysis : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_productionRuleListForGrammarAnalysis
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_productionRuleListForGrammarAnalysis
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -559,28 +559,28 @@ class GGS_productionRuleListForGrammarAnalysis : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_productionRuleListForGrammarAnalysis * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_lstring & _out_0,
                               GGS_uint & _out_1,
                               GGS_syntaxInstructionListForGrammarAnalysis & _out_2,
                               GGS_uint & _out_3
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_lstring & _out_0,
                              GGS_uint & _out_1,
                              GGS_syntaxInstructionListForGrammarAnalysis & _out_2,
                              GGS_uint & _out_3
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_lstring & _out_0,
                                 GGS_uint & _out_1,
                                 GGS_syntaxInstructionListForGrammarAnalysis & _out_2,
                                 GGS_uint & _out_3
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_lstring & _out_0,
                                  GGS_uint & _out_1,
                                  GGS_syntaxInstructionListForGrammarAnalysis & _out_2,
@@ -596,7 +596,7 @@ class GGS_productionRuleListForGrammarAnalysis : public AC_GGS_list {
                                 const GGS_uint & argument_3) ;
 //--- Handling '.' GALGAS operator
   public : GGS_productionRuleListForGrammarAnalysis operator_concat (const GGS_productionRuleListForGrammarAnalysis & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_uint & argument_1,
                                 const GGS_syntaxInstructionListForGrammarAnalysis & argument_2,
@@ -623,32 +623,32 @@ class GGS_productionRuleListForGrammarAnalysis : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
-  reader_mLeftNonterminalSymbolAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mLeftNonterminalSymbolAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_uint 
-  reader_mLeftNonterminalSymbolIndexAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mLeftNonterminalSymbolIndexAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_syntaxInstructionListForGrammarAnalysis 
-  reader_mInstructionListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mInstructionListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_uint 
-  reader_mProductionIndexAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mProductionIndexAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMLeftNonterminalSymbolAtIndex (C_Compiler & inLexique,
+  modifier_setMLeftNonterminalSymbolAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMLeftNonterminalSymbolIndexAtIndex (C_Compiler & inLexique,
+  modifier_setMLeftNonterminalSymbolIndexAtIndex (C_CompilerEx & inLexique,
                               const GGS_uint  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMInstructionListAtIndex (C_Compiler & inLexique,
+  modifier_setMInstructionListAtIndex (C_CompilerEx & inLexique,
                               const GGS_syntaxInstructionListForGrammarAnalysis  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMProductionIndexAtIndex (C_Compiler & inLexique,
+  modifier_setMProductionIndexAtIndex (C_CompilerEx & inLexique,
                               const GGS_uint  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -658,7 +658,7 @@ class GGS_productionRuleListForGrammarAnalysis : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_productionRuleListForGrammarAnalysis castFromObject (C_Compiler & inLexique,
+  public : static GGS_productionRuleListForGrammarAnalysis castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -711,7 +711,7 @@ class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_GGS_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_unusedNonTerminalSymbolMapForGrammarAnalysis castFromObject (C_Compiler & inLexique,
+  public : static GGS_unusedNonTerminalSymbolMapForGrammarAnalysis castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -733,10 +733,10 @@ class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_GGS_map {
   public : inline const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_unusedNonTerminalSymbolMapForGrammarAnalysis constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_unusedNonTerminalSymbolMapForGrammarAnalysis constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- 'mapWithKeyAndValue' constructor
-  public : static GGS_unusedNonTerminalSymbolMapForGrammarAnalysis constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+  public : static GGS_unusedNonTerminalSymbolMapForGrammarAnalysis constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
 ,
                                              const GGS_uint & inValue0
@@ -750,12 +750,12 @@ class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_GGS_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_Compiler & inLexique,
+  public : void modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_uint &  inParameter0 COMMA_LOCATION_ARGS) ;
 
 //--- Internal method for inserting an element
-  protected : void insertElement (C_Compiler & inLexique,
+  protected : void insertElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inInitialState,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -763,7 +763,7 @@ class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_GGS_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_Compiler & inLexique,
+  protected : void searchElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inActionIndex,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -771,10 +771,10 @@ class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis : public AC_GGS_map {
                                   GGS_luint * outIndex
                                   COMMA_LOCATION_ARGS) const ;
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_unusedNonTerminalSymbolMapForGrammarAnalysis constructor_mapWithMapToOverride (C_Compiler & inLexique,
+  public : static GGS_unusedNonTerminalSymbolMapForGrammarAnalysis constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
                                             const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_unusedNonTerminalSymbolMapForGrammarAnalysis reader_overriddenMap (C_Compiler & inLexique
+  public : GGS_unusedNonTerminalSymbolMapForGrammarAnalysis reader_overriddenMap (C_CompilerEx & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Key stringset (for map with an associated automaton)
@@ -825,7 +825,7 @@ class GGS_nonTerminalSymbolMapForGrammarAnalysis : public AC_GGS_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_nonTerminalSymbolMapForGrammarAnalysis castFromObject (C_Compiler & inLexique,
+  public : static GGS_nonTerminalSymbolMapForGrammarAnalysis castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -847,10 +847,10 @@ class GGS_nonTerminalSymbolMapForGrammarAnalysis : public AC_GGS_map {
   public : inline const GGS_nonTerminalSymbolMapForGrammarAnalysis * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_nonTerminalSymbolMapForGrammarAnalysis constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_nonTerminalSymbolMapForGrammarAnalysis constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- 'mapWithKeyAndValue' constructor
-  public : static GGS_nonTerminalSymbolMapForGrammarAnalysis constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+  public : static GGS_nonTerminalSymbolMapForGrammarAnalysis constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
 ,
                                              const GGS_uint & inValue0,
@@ -865,7 +865,7 @@ class GGS_nonTerminalSymbolMapForGrammarAnalysis : public AC_GGS_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_Compiler & inLexique,
+  public : void modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_uint &  inParameter0,
                                 const GGS_nonterminalSymbolLabelMapForGrammarAnalysis &  inParameter1 COMMA_LOCATION_ARGS) ;
@@ -873,12 +873,12 @@ class GGS_nonTerminalSymbolMapForGrammarAnalysis : public AC_GGS_map {
   public : static const utf32 kSearchMessage_searchKey [] ;
 
 //--- 'searchKey' Search Method
-  public : void method_searchKey (C_Compiler & inLexique,
+  public : void method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_uint   & outParameter0,
                                 GGS_nonterminalSymbolLabelMapForGrammarAnalysis   & outParameter1 COMMA_LOCATION_ARGS) const ;
 //--- Internal method for inserting an element
-  protected : void insertElement (C_Compiler & inLexique,
+  protected : void insertElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inInitialState,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -887,7 +887,7 @@ class GGS_nonTerminalSymbolMapForGrammarAnalysis : public AC_GGS_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_Compiler & inLexique,
+  protected : void searchElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inActionIndex,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -896,10 +896,10 @@ class GGS_nonTerminalSymbolMapForGrammarAnalysis : public AC_GGS_map {
                                   GGS_luint * outIndex
                                   COMMA_LOCATION_ARGS) const ;
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_nonTerminalSymbolMapForGrammarAnalysis constructor_mapWithMapToOverride (C_Compiler & inLexique,
+  public : static GGS_nonTerminalSymbolMapForGrammarAnalysis constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
                                             const GGS_nonTerminalSymbolMapForGrammarAnalysis & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_nonTerminalSymbolMapForGrammarAnalysis reader_overriddenMap (C_Compiler & inLexique
+  public : GGS_nonTerminalSymbolMapForGrammarAnalysis reader_overriddenMap (C_CompilerEx & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Key stringset (for map with an associated automaton)
@@ -945,14 +945,14 @@ class GGS_terminalInstructionForGrammarAnalysis : public GGS_abstractSyntaxInstr
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_terminalInstructionForGrammarAnalysis
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_terminalInstructionForGrammarAnalysis constructor_new (C_Compiler & inLexique,
+  public : static GGS_terminalInstructionForGrammarAnalysis constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_uint & argument_2
@@ -984,7 +984,7 @@ class GGS_terminalInstructionForGrammarAnalysis : public GGS_abstractSyntaxInstr
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_terminalInstructionForGrammarAnalysis castFromObject (C_Compiler & inLexique,
+  public : static GGS_terminalInstructionForGrammarAnalysis castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1018,14 +1018,14 @@ class GGS_nonTerminalInstructionForGrammarAnalysis : public GGS_abstractSyntaxIn
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_nonTerminalInstructionForGrammarAnalysis
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_nonTerminalInstructionForGrammarAnalysis constructor_new (C_Compiler & inLexique,
+  public : static GGS_nonTerminalInstructionForGrammarAnalysis constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_uint & argument_2
@@ -1057,7 +1057,7 @@ class GGS_nonTerminalInstructionForGrammarAnalysis : public GGS_abstractSyntaxIn
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_nonTerminalInstructionForGrammarAnalysis castFromObject (C_Compiler & inLexique,
+  public : static GGS_nonTerminalInstructionForGrammarAnalysis castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1095,13 +1095,13 @@ class GGS_branchListForGrammarAnalysis : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_branchListForGrammarAnalysis
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_branchListForGrammarAnalysis
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -1116,19 +1116,19 @@ class GGS_branchListForGrammarAnalysis : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_branchListForGrammarAnalysis * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_syntaxInstructionListForGrammarAnalysis & _out_0
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_syntaxInstructionListForGrammarAnalysis & _out_0
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_syntaxInstructionListForGrammarAnalysis & _out_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_syntaxInstructionListForGrammarAnalysis & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
@@ -1138,7 +1138,7 @@ class GGS_branchListForGrammarAnalysis : public AC_GGS_list {
   public : void addAssign_operation (const GGS_syntaxInstructionListForGrammarAnalysis & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_branchListForGrammarAnalysis operator_concat (const GGS_branchListForGrammarAnalysis & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_syntaxInstructionListForGrammarAnalysis & argument_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Internal Methods
@@ -1156,11 +1156,11 @@ class GGS_branchListForGrammarAnalysis : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_syntaxInstructionListForGrammarAnalysis 
-  reader_mSyntaxInstructionListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mSyntaxInstructionListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMSyntaxInstructionListAtIndex (C_Compiler & inLexique,
+  modifier_setMSyntaxInstructionListAtIndex (C_CompilerEx & inLexique,
                               const GGS_syntaxInstructionListForGrammarAnalysis  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -1170,7 +1170,7 @@ class GGS_branchListForGrammarAnalysis : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_branchListForGrammarAnalysis castFromObject (C_Compiler & inLexique,
+  public : static GGS_branchListForGrammarAnalysis castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1214,14 +1214,14 @@ class GGS_selectInstructionForGrammarAnalysis : public GGS_abstractSyntaxInstruc
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_selectInstructionForGrammarAnalysis
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_selectInstructionForGrammarAnalysis constructor_new (C_Compiler & inLexique,
+  public : static GGS_selectInstructionForGrammarAnalysis constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_branchListForGrammarAnalysis & argument_1,
                                 const GGS_uint & argument_2
@@ -1253,7 +1253,7 @@ class GGS_selectInstructionForGrammarAnalysis : public GGS_abstractSyntaxInstruc
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_selectInstructionForGrammarAnalysis castFromObject (C_Compiler & inLexique,
+  public : static GGS_selectInstructionForGrammarAnalysis castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1287,14 +1287,14 @@ class GGS_repeatInstructionForGrammarAnalysis : public GGS_abstractSyntaxInstruc
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_repeatInstructionForGrammarAnalysis
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_repeatInstructionForGrammarAnalysis constructor_new (C_Compiler & inLexique,
+  public : static GGS_repeatInstructionForGrammarAnalysis constructor_new (C_CompilerEx & inLexique,
                                 const GGS_location & argument_0,
                                 const GGS_branchListForGrammarAnalysis & argument_1,
                                 const GGS_uint & argument_2
@@ -1326,7 +1326,7 @@ class GGS_repeatInstructionForGrammarAnalysis : public GGS_abstractSyntaxInstruc
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_repeatInstructionForGrammarAnalysis castFromObject (C_Compiler & inLexique,
+  public : static GGS_repeatInstructionForGrammarAnalysis castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1365,13 +1365,13 @@ class GGS_syntaxComponentListForGrammarAnalysis : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_syntaxComponentListForGrammarAnalysis
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_syntaxComponentListForGrammarAnalysis
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -1386,22 +1386,22 @@ class GGS_syntaxComponentListForGrammarAnalysis : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_syntaxComponentListForGrammarAnalysis * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_productionRuleListForGrammarAnalysis & _out_0,
                               GGS_lstring & _out_1
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_productionRuleListForGrammarAnalysis & _out_0,
                              GGS_lstring & _out_1
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_productionRuleListForGrammarAnalysis & _out_0,
                                 GGS_lstring & _out_1
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_productionRuleListForGrammarAnalysis & _out_0,
                                  GGS_lstring & _out_1
                                  COMMA_LOCATION_ARGS) ;
@@ -1413,7 +1413,7 @@ class GGS_syntaxComponentListForGrammarAnalysis : public AC_GGS_list {
                                 const GGS_lstring & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_syntaxComponentListForGrammarAnalysis operator_concat (const GGS_syntaxComponentListForGrammarAnalysis & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_productionRuleListForGrammarAnalysis & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -1434,18 +1434,18 @@ class GGS_syntaxComponentListForGrammarAnalysis : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_productionRuleListForGrammarAnalysis 
-  reader_mProductionRulesListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mProductionRulesListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_lstring 
-  reader_mSyntaxComponentNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mSyntaxComponentNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMProductionRulesListAtIndex (C_Compiler & inLexique,
+  modifier_setMProductionRulesListAtIndex (C_CompilerEx & inLexique,
                               const GGS_productionRuleListForGrammarAnalysis  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMSyntaxComponentNameAtIndex (C_Compiler & inLexique,
+  modifier_setMSyntaxComponentNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -1455,7 +1455,7 @@ class GGS_syntaxComponentListForGrammarAnalysis : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_syntaxComponentListForGrammarAnalysis castFromObject (C_Compiler & inLexique,
+  public : static GGS_syntaxComponentListForGrammarAnalysis castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1506,7 +1506,7 @@ class GGS_terminalSymbolsMapForGrammarAnalysis : public AC_GGS_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_terminalSymbolsMapForGrammarAnalysis castFromObject (C_Compiler & inLexique,
+  public : static GGS_terminalSymbolsMapForGrammarAnalysis castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1528,10 +1528,10 @@ class GGS_terminalSymbolsMapForGrammarAnalysis : public AC_GGS_map {
   public : inline const GGS_terminalSymbolsMapForGrammarAnalysis * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_terminalSymbolsMapForGrammarAnalysis constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_terminalSymbolsMapForGrammarAnalysis constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- 'mapWithKeyAndValue' constructor
-  public : static GGS_terminalSymbolsMapForGrammarAnalysis constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+  public : static GGS_terminalSymbolsMapForGrammarAnalysis constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
 ,
                                              const GGS_uint & inValue0
@@ -1545,18 +1545,18 @@ class GGS_terminalSymbolsMapForGrammarAnalysis : public AC_GGS_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_Compiler & inLexique,
+  public : void modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_uint &  inParameter0 COMMA_LOCATION_ARGS) ;
 
   public : static const utf32 kSearchMessage_searchKey [] ;
 
 //--- 'searchKey' Search Method
-  public : void method_searchKey (C_Compiler & inLexique,
+  public : void method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_uint   & outParameter0 COMMA_LOCATION_ARGS) const ;
 //--- Internal method for inserting an element
-  protected : void insertElement (C_Compiler & inLexique,
+  protected : void insertElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inInitialState,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -1564,7 +1564,7 @@ class GGS_terminalSymbolsMapForGrammarAnalysis : public AC_GGS_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_Compiler & inLexique,
+  protected : void searchElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inActionIndex,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -1572,10 +1572,10 @@ class GGS_terminalSymbolsMapForGrammarAnalysis : public AC_GGS_map {
                                   GGS_luint * outIndex
                                   COMMA_LOCATION_ARGS) const ;
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_terminalSymbolsMapForGrammarAnalysis constructor_mapWithMapToOverride (C_Compiler & inLexique,
+  public : static GGS_terminalSymbolsMapForGrammarAnalysis constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
                                             const GGS_terminalSymbolsMapForGrammarAnalysis & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_terminalSymbolsMapForGrammarAnalysis reader_overriddenMap (C_Compiler & inLexique
+  public : GGS_terminalSymbolsMapForGrammarAnalysis reader_overriddenMap (C_CompilerEx & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Key stringset (for map with an associated automaton)
@@ -1597,7 +1597,7 @@ class GGS_terminalSymbolsMapForGrammarAnalysis : public AC_GGS_map {
   } ;
 } ;
 
-void routine_analyzeGrammar (C_Compiler &,
+void routine_analyzeGrammar (C_CompilerEx &,
                                 const GGS_lstring  ,
                                 const GGS_lstring  ,
                                 const GGS_uint  ,

@@ -44,7 +44,7 @@ class cPtr_typeGalgasMapType : public cPtr_typeGalgasUndefinedMapType {
   public : GGS_mapStateList  mMapStateList ;
   public : GGS_lstringlist  mOverrideNameList ;
 //--- Method 'check_with_InstructionAccess'
-  public : virtual void method_check_with_InstructionAccess (C_Compiler &,
+  public : virtual void method_check_with_InstructionAccess (C_CompilerEx &,
                                 GGS_location  ,
                                 GGS_lstring  ,
                                 GGS_AC_galgasType  ,
@@ -54,13 +54,13 @@ class cPtr_typeGalgasMapType : public cPtr_typeGalgasUndefinedMapType {
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleModifierCall'
-  public : virtual void method_handleModifierCall (C_Compiler &,
+  public : virtual void method_handleModifierCall (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_L_EXsignature & 
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleMethodInstructionCall'
-  public : virtual void method_handleMethodInstructionCall (C_Compiler &,
+  public : virtual void method_handleMethodInstructionCall (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_EXcategoryMethodMap  ,
                                 GGS_L_EXsignature & ,
@@ -68,7 +68,7 @@ class cPtr_typeGalgasMapType : public cPtr_typeGalgasUndefinedMapType {
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'acceptForeachInstruction'
-  public : virtual void method_acceptForeachInstruction (C_Compiler &,
+  public : virtual void method_acceptForeachInstruction (C_CompilerEx &,
                                 GGS_M_semanticsEntitiesForUse  ,
                                 GGS_location  ,
                                 GGS_typeListeAttributsSemantiques & ,
@@ -77,7 +77,7 @@ class cPtr_typeGalgasMapType : public cPtr_typeGalgasUndefinedMapType {
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleConstructorInvocation'
-  public : virtual void method_handleConstructorInvocation (C_Compiler &,
+  public : virtual void method_handleConstructorInvocation (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_typeListeAttributsSemantiques & ,
                                 GGS_bool& ,

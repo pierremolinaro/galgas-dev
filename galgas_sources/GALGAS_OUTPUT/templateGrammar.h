@@ -53,7 +53,7 @@ class C_Grammar_templateGrammar : public templateSyntax {
   public : virtual void nt_template_5F_parser_5F_start_5F_symbol_ (C_Lexique_galgasTemplateScanner &,
                                                                    GGS_templateInstructionListAST &) ;
 
-  public : static void _performSourceFileParsing_ (C_Compiler & inCompiler,
+  public : static void _performSourceFileParsing_ (C_CompilerEx & inCompiler,
                                                    const C_String & inDependancyExtension,
                                                    const C_String & inDependancyPath,
                                                    GGS_string * inSentStringPtr,
@@ -61,7 +61,7 @@ class C_Grammar_templateGrammar : public templateSyntax {
                                                    GGS_templateInstructionListAST &
                                                    COMMA_LOCATION_ARGS) ;
 
-  public : static void _performSourceStringParsing_ (C_Compiler & inCompiler,
+  public : static void _performSourceStringParsing_ (C_CompilerEx & inCompiler,
                                                      GGS_string * inSentStringPtr,
                                                      const GGS_string inSourceString,
                                                      GGS_templateInstructionListAST &

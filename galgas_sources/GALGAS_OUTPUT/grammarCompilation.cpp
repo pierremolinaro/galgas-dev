@@ -56,7 +56,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_nonterminalSymbolLabelMapForGrammarAnalysis  function_transformLabelMap (C_Compiler & inLexique,
+GGS_nonterminalSymbolLabelMapForGrammarAnalysis  function_transformLabelMap (C_CompilerEx & inLexique,
                                 const GGS_nonTerminalLabelListAST   var_cas_inLabels,
                                 const GGS_bool  var_cas_inHasParseLabel COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
@@ -93,7 +93,7 @@ GGS_nonterminalSymbolLabelMapForGrammarAnalysis  function_transformLabelMap (C_C
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_transformLabelMap (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_transformLabelMap (C_CompilerEx & inLexique,
                            const GGS_objectlist & inEffectiveParameterArray,
                            const GGS_location & inErrorLocation
                            COMMA_LOCATION_ARGS) {
@@ -125,7 +125,7 @@ kFunction_descriptor_transformLabelMap ("transformLabelMap",
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_checkLabelMap (C_Compiler & inLexique,
+void routine_checkLabelMap (C_CompilerEx & inLexique,
                                 const GGS_location   var_cas_inNonTerminalLocation,
                                 const GGS_nonTerminalLabelListAST   var_cas_inLabels,
                                 const GGS_bool  var_cas_inHasParseLabel,
@@ -202,7 +202,7 @@ void routine_checkLabelMap (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_handleNonTerminalDeclarations (C_Compiler & inLexique,
+void routine_handleNonTerminalDeclarations (C_CompilerEx & inLexique,
                                 GGS_nonTerminalSymbolMapForGrammarAnalysis  & var_cas_ioNonTerminalMapForGrammarAnalysis,
                                 const GGS_nonterminalDeclarationListAST   var_cas_inNonterminalDeclarationList
                         COMMA_UNUSED_LOCATION_ARGS) {
@@ -268,7 +268,7 @@ findCategoryMethod__syntaxInstructionAST__transformInstruction (AC_galgasClassRu
 //---------------------------------------------------------------------------*
 
 static void
-category_method__semanticInstructionAST__transformInstruction (C_Compiler &,
+category_method__semanticInstructionAST__transformInstruction (C_CompilerEx &,
                                 const cPtr_semanticInstructionAST * operand_7465,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & /* var_cas_ioActuallyUsedTerminalSymbolMap */,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   /* var_cas_inNonTerminalSymbolMap */,
@@ -285,7 +285,7 @@ category_method__semanticInstructionAST__transformInstruction (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_transformInstructionList (C_Compiler & inLexique,
+void routine_transformInstructionList (C_CompilerEx & inLexique,
                                 const GGS_syntaxInstructionList   var_cas_inInstructionList,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -319,7 +319,7 @@ void routine_transformInstructionList (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__terminalCheckInstruction__transformInstruction (C_Compiler & inLexique,
+category_method__terminalCheckInstruction__transformInstruction (C_CompilerEx & inLexique,
                                 const cPtr_terminalCheckInstruction * operand_8540,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   /* var_cas_inNonTerminalSymbolMap */,
@@ -346,7 +346,7 @@ category_method__terminalCheckInstruction__transformInstruction (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 static void
-category_method__nonterminalCallInstruction__transformInstruction (C_Compiler & inLexique,
+category_method__nonterminalCallInstruction__transformInstruction (C_CompilerEx & inLexique,
                                 const cPtr_nonterminalCallInstruction * operand_9434,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & /* var_cas_ioActuallyUsedTerminalSymbolMap */,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -370,7 +370,7 @@ category_method__nonterminalCallInstruction__transformInstruction (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__repeatInstruction__transformInstruction (C_Compiler & inLexique,
+category_method__repeatInstruction__transformInstruction (C_CompilerEx & inLexique,
                                 const cPtr_repeatInstruction * operand_10119,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -404,7 +404,7 @@ category_method__repeatInstruction__transformInstruction (C_Compiler & inLexique
 //---------------------------------------------------------------------------*
 
 static void
-category_method__selectInstruction__transformInstruction (C_Compiler & inLexique,
+category_method__selectInstruction__transformInstruction (C_CompilerEx & inLexique,
                                 const cPtr_selectInstruction * operand_11500,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -436,7 +436,7 @@ category_method__selectInstruction__transformInstruction (C_Compiler & inLexique
 //---------------------------------------------------------------------------*
 
 static void
-category_method__parseRewindInstruction__transformInstruction (C_Compiler & inLexique,
+category_method__parseRewindInstruction__transformInstruction (C_CompilerEx & inLexique,
                                 const cPtr_parseRewindInstruction * operand_12588,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -460,7 +460,7 @@ category_method__parseRewindInstruction__transformInstruction (C_Compiler & inLe
 //---------------------------------------------------------------------------*
 
 static void
-category_method__parseWhenInstruction__transformInstruction (C_Compiler & inLexique,
+category_method__parseWhenInstruction__transformInstruction (C_CompilerEx & inLexique,
                                 const cPtr_parseWhenInstruction * operand_13281,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -479,7 +479,7 @@ category_method__parseWhenInstruction__transformInstruction (C_Compiler & inLexi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__parseLoopInstruction__transformInstruction (C_Compiler & inLexique,
+category_method__parseLoopInstruction__transformInstruction (C_CompilerEx & inLexique,
                                 const cPtr_parseLoopInstruction * operand_13862,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -498,7 +498,7 @@ category_method__parseLoopInstruction__transformInstruction (C_Compiler & inLexi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__blockInstruction__transformInstruction (C_Compiler & inLexique,
+category_method__blockInstruction__transformInstruction (C_CompilerEx & inLexique,
                                 const cPtr_blockInstruction * operand_14437,
                                 GGS_terminalSymbolsMapForGrammarAnalysis  & var_cas_ioActuallyUsedTerminalSymbolMap,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalSymbolMap,
@@ -516,7 +516,7 @@ category_method__blockInstruction__transformInstruction (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildRuleList (C_Compiler & inLexique,
+void routine_buildRuleList (C_CompilerEx & inLexique,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis   var_cas_inNonTerminalMapForGrammarAnalysis,
                                 const GGS_lstring   var_cas_inSyntaxComponentName,
                                 const GGS_syntaxRuleListAST   var_cas_inRuleList,
@@ -683,7 +683,7 @@ dotAssign_operation (const GGS_nonTerminalToAddList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_nonTerminalToAddList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_string& argument_0,
                      const GGS_uint & argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
@@ -756,7 +756,7 @@ internalSubListWithRange (GGS_nonTerminalToAddList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_nonTerminalToAddList GGS_nonTerminalToAddList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -776,7 +776,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_nonTerminalToAddList GGS_nonTerminalToAddList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_nonTerminalToAddList result ;
@@ -801,7 +801,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_nonTerminalToAddList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_string& _out_0,
               GGS_uint & _out_1
               COMMA_LOCATION_ARGS) const {
@@ -824,7 +824,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_nonTerminalToAddList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_string& _out_0,
              GGS_uint & _out_1
              COMMA_LOCATION_ARGS) const {
@@ -847,7 +847,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_nonTerminalToAddList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_string& _out_0,
                  GGS_uint & _out_1
                  COMMA_LOCATION_ARGS) {
@@ -872,7 +872,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_nonTerminalToAddList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_string& _out_0,
                 GGS_uint & _out_1
                 COMMA_LOCATION_ARGS) {
@@ -897,7 +897,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_nonTerminalToAddList::
-reader_mSyntaxComponentNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mSyntaxComponentNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -911,7 +911,7 @@ reader_mSyntaxComponentNameAtIndex (C_Compiler & inLexique, const GGS_uint & inI
 //---------------------------------------------------------------------------*
 
 GGS_uint  GGS_nonTerminalToAddList::
-reader_mNonTerminalToAddCountAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mNonTerminalToAddCountAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_uint  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -925,7 +925,7 @@ reader_mNonTerminalToAddCountAtIndex (C_Compiler & inLexique, const GGS_uint & i
 //---------------------------------------------------------------------------*
 
 void GGS_nonTerminalToAddList::
-modifier_setMSyntaxComponentNameAtIndex (C_Compiler & inLexique,
+modifier_setMSyntaxComponentNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -940,7 +940,7 @@ modifier_setMSyntaxComponentNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_nonTerminalToAddList::
-modifier_setMNonTerminalToAddCountAtIndex (C_Compiler & inLexique,
+modifier_setMNonTerminalToAddCountAtIndex (C_CompilerEx & inLexique,
                               const GGS_uint  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -980,7 +980,7 @@ GGS_object GGS_nonTerminalToAddList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_nonTerminalToAddList GGS_nonTerminalToAddList::castFromObject (C_Compiler & inLexique,
+GGS_nonTerminalToAddList GGS_nonTerminalToAddList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -1044,7 +1044,7 @@ const cDirectoryWrapperEx gWrapperDirectory_0_grammarGenerationTemplate (
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_grammarGenerationTemplate_oldGrammarZone2Header (C_Compiler & inLexique,
+template_filewrapper_grammarGenerationTemplate_oldGrammarZone2Header (C_CompilerEx & inLexique,
                                 const GGS_grammarComponentAST & var_cas_GRAMMAR_COMPONENT_ROOT) {
   C_String result ;
   const bool isBuilt = var_cas_GRAMMAR_COMPONENT_ROOT.isBuilt () ;
@@ -1078,7 +1078,7 @@ template_filewrapper_grammarGenerationTemplate_oldGrammarZone2Header (C_Compiler
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_grammarGenerationTemplate_oldGrammarZone3Header (C_Compiler & inLexique,
+template_filewrapper_grammarGenerationTemplate_oldGrammarZone3Header (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_LEXIQUE_CLASS,
                                 const GGS_grammarComponentAST & var_cas_GRAMMAR_COMPONENT_ROOT,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis & var_cas_NON_TERMINAL_MAP,
@@ -1143,7 +1143,7 @@ template_filewrapper_grammarGenerationTemplate_oldGrammarZone3Header (C_Compiler
           result << operand_410->mKey.ggs_string ().reader_identifierRepresentation () ;
           result << " (" ;
           columnMarker = result.currentColumn () ;
-          result << "C_Compiler & inCompiler,\n" ;
+          result << "C_CompilerEx & inCompiler,\n" ;
           result.appendSpacesUntilColumn (columnMarker) ;
           result << "const C_String & inDependancyExtension,\n" ;
           result.appendSpacesUntilColumn (columnMarker) ;
@@ -1171,7 +1171,7 @@ template_filewrapper_grammarGenerationTemplate_oldGrammarZone3Header (C_Compiler
           result << operand_410->mKey.ggs_string ().reader_identifierRepresentation () ;
           result << " (" ;
           columnMarker = result.currentColumn () ;
-          result << "C_Compiler & inCompiler,\n" ;
+          result << "C_CompilerEx & inCompiler,\n" ;
           result.appendSpacesUntilColumn (columnMarker) ;
           result << "GGS_string * inSentStringPtr,\n" ;
           result.appendSpacesUntilColumn (columnMarker) ;
@@ -1226,7 +1226,7 @@ template_filewrapper_grammarGenerationTemplate_oldGrammarZone3Header (C_Compiler
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_grammarGenerationTemplate_grammarZone2Header (C_Compiler & inLexique,
+template_filewrapper_grammarGenerationTemplate_grammarZone2Header (C_CompilerEx & inLexique,
                                 const GGS_grammarComponentAST & var_cas_GRAMMAR_COMPONENT_ROOT) {
   C_String result ;
   const bool isBuilt = var_cas_GRAMMAR_COMPONENT_ROOT.isBuilt () ;
@@ -1260,7 +1260,7 @@ template_filewrapper_grammarGenerationTemplate_grammarZone2Header (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_grammarGenerationTemplate_grammarZone3Header (C_Compiler & inLexique,
+template_filewrapper_grammarGenerationTemplate_grammarZone3Header (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_LEXIQUE_IDENTIFIER,
                                 const GGS_grammarComponentAST & var_cas_GRAMMAR_COMPONENT_ROOT,
                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis & var_cas_NON_TERMINAL_MAP,
@@ -1344,7 +1344,7 @@ template_filewrapper_grammarGenerationTemplate_grammarZone3Header (C_Compiler & 
       result << operand_444->mKey.ggs_string ().reader_identifierRepresentation () ;
       result << " (" ;
       columnMarker = result.currentColumn () ;
-      result << "C_Compiler * inCompiler,\n" ;
+      result << "C_CompilerEx * inCompiler,\n" ;
       result.appendSpacesUntilColumn (columnMarker) ;
       result << "GALGAS_lstring inFileName" ;
       GGS_signatureForGrammarAnalysis::cEnumerator enumerator_1802 (operand_444->mInfo.mFormalParametersList, true) ;
@@ -1386,7 +1386,7 @@ template_filewrapper_grammarGenerationTemplate_grammarZone3Header (C_Compiler & 
   result << operand_444->mKey.ggs_string ().reader_identifierRepresentation () ;
   result << " (" ;
   columnMarker = result.currentColumn () ;
-  result << "C_Compiler * inCompiler,\n" ;
+  result << "C_CompilerEx * inCompiler,\n" ;
   result.appendSpacesUntilColumn (columnMarker) ;
   result << "GALGAS_string inSourceString" ;
   GGS_signatureForGrammarAnalysis::cEnumerator enumerator_2934 (operand_444->mInfo.mFormalParametersList, true) ;
@@ -1459,7 +1459,7 @@ return GGS_string (isBuilt, result) ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_parseGrammarComponent (C_Compiler & inLexique,
+void routine_parseGrammarComponent (C_CompilerEx & inLexique,
                                 const GGS_lstring   var_cas_inSourceFile,
                                 GGS_parsedComponentStruct & var_cas_ioParsedComponentStruct,
                                 GGS_grammarComponentAST  & var_cas_outGrammarComponentRoot
@@ -1496,7 +1496,7 @@ var_cas_ioParsedComponentStruct.mParsedGrammarComponentMap.modifier_insertKey (i
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_compileGrammarComponent (C_Compiler & inLexique,
+void routine_compileGrammarComponent (C_CompilerEx & inLexique,
                                 const GGS_lstring   var_cas_inSourceFile,
                                 const GGS_string  var_cas_inOutputDirectoryForCppFiles,
                                 const GGS_string  var_cas_inOutputDirectoryForHTMLFile,

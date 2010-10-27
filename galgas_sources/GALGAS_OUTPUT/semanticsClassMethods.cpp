@@ -48,7 +48,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterClassMethodWithStringInputArgument (C_Compiler & inLexique,
+void routine_enterClassMethodWithStringInputArgument (C_CompilerEx & inLexique,
                                 GGS_classMethodMap  & var_cas_ioClassMethodMap,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 const GGS_string  var_cas_inClassMethodName,
@@ -74,7 +74,7 @@ void routine_enterClassMethodWithStringInputArgument (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__stringPredefinedTypeAST__getClassMethodMap (C_Compiler & inLexique,
+category_method__stringPredefinedTypeAST__getClassMethodMap (C_CompilerEx & inLexique,
                                 const cPtr_stringPredefinedTypeAST * operand_2362,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_classMethodMap  & var_cas_outClassMethodMap

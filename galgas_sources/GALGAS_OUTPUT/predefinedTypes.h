@@ -43,7 +43,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_appendPredefinedListTypeAST (C_Compiler &,
+void routine_appendPredefinedListTypeAST (C_CompilerEx &,
                                 GGS_semanticDeclarationListAST  &,
                                 const GGS_string  COMMA_LOCATION_ARGS) ;
 
@@ -53,7 +53,7 @@ void routine_appendPredefinedListTypeAST (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_appendPredefined2StringListTypeAST (C_Compiler &,
+void routine_appendPredefined2StringListTypeAST (C_CompilerEx &,
                                 GGS_semanticDeclarationListAST  & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
@@ -62,7 +62,7 @@ void routine_appendPredefined2StringListTypeAST (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_appendStructASTForTypeWithLocation (C_Compiler &,
+void routine_appendStructASTForTypeWithLocation (C_CompilerEx &,
                                 GGS_semanticDeclarationListAST  &,
                                 const GGS_string  COMMA_LOCATION_ARGS) ;
 
@@ -72,7 +72,7 @@ void routine_appendStructASTForTypeWithLocation (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_appendPredefinedTypesASTs (C_Compiler &,
+void routine_appendPredefinedTypesASTs (C_CompilerEx &,
                                 GGS_semanticDeclarationListAST  & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
@@ -81,7 +81,7 @@ void routine_appendPredefinedTypesASTs (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_string (*typeCategoryReader__semanticDeclarationForGeneration__appendPrimitiveTypeDeclaration)  (C_Compiler & inLexique,
+typedef GGS_string (*typeCategoryReader__semanticDeclarationForGeneration__appendPrimitiveTypeDeclaration)  (C_CompilerEx & inLexique,
                                 const cPtr_semanticDeclarationForGeneration * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -102,7 +102,7 @@ findCategoryReader__semanticDeclarationForGeneration__appendPrimitiveTypeDeclara
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_generatePredefinedTypeFiles (C_Compiler &,
+void routine_generatePredefinedTypeFiles (C_CompilerEx &,
                                 const GGS_string  COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
@@ -120,7 +120,7 @@ extern const cDirectoryWrapperEx gWrapperDirectory_0_predefinedTypeGenerationTem
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_predefinedTypeGenerationTemplate_predefinedTypesImplementation (C_Compiler & inLexique) ;
+template_filewrapper_predefinedTypeGenerationTemplate_predefinedTypesImplementation (C_CompilerEx & inLexique) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -129,7 +129,7 @@ template_filewrapper_predefinedTypeGenerationTemplate_predefinedTypesImplementat
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_predefinedTypeGenerationTemplate_primitiveTypesHeaderPrologue (C_Compiler & inLexique,
+template_filewrapper_predefinedTypeGenerationTemplate_primitiveTypesHeaderPrologue (C_CompilerEx & inLexique,
                                 const GGS_stringset & var_cas_TYPE_LIST) ;
 
 //---------------------------------------------------------------------------*
@@ -139,7 +139,7 @@ template_filewrapper_predefinedTypeGenerationTemplate_primitiveTypesHeaderProlog
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_predefinedTypeGenerationTemplate_predefinedTypeSeparation (C_Compiler & inLexique) ;
+template_filewrapper_predefinedTypeGenerationTemplate_predefinedTypeSeparation (C_CompilerEx & inLexique) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -148,7 +148,7 @@ template_filewrapper_predefinedTypeGenerationTemplate_predefinedTypeSeparation (
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_predefinedTypeGenerationTemplate_sint_type (C_Compiler & inLexique) ;
+template_filewrapper_predefinedTypeGenerationTemplate_sint_type (C_CompilerEx & inLexique) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -157,7 +157,7 @@ template_filewrapper_predefinedTypeGenerationTemplate_sint_type (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_predefinedTypeGenerationTemplate_sint64_type (C_Compiler & inLexique) ;
+template_filewrapper_predefinedTypeGenerationTemplate_sint64_type (C_CompilerEx & inLexique) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -166,7 +166,7 @@ template_filewrapper_predefinedTypeGenerationTemplate_sint64_type (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_predefinedTypeGenerationTemplate_object_type (C_Compiler & inLexique) ;
+template_filewrapper_predefinedTypeGenerationTemplate_object_type (C_CompilerEx & inLexique) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -175,7 +175,7 @@ template_filewrapper_predefinedTypeGenerationTemplate_object_type (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_predefinedTypeGenerationTemplate_uint_type (C_Compiler & inLexique) ;
+template_filewrapper_predefinedTypeGenerationTemplate_uint_type (C_CompilerEx & inLexique) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -184,7 +184,7 @@ template_filewrapper_predefinedTypeGenerationTemplate_uint_type (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_predefinedTypeGenerationTemplate_uint64_type (C_Compiler & inLexique) ;
+template_filewrapper_predefinedTypeGenerationTemplate_uint64_type (C_CompilerEx & inLexique) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -193,7 +193,7 @@ template_filewrapper_predefinedTypeGenerationTemplate_uint64_type (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_predefinedTypeGenerationTemplate_bool_type (C_Compiler & inLexique) ;
+template_filewrapper_predefinedTypeGenerationTemplate_bool_type (C_CompilerEx & inLexique) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -202,7 +202,7 @@ template_filewrapper_predefinedTypeGenerationTemplate_bool_type (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_predefinedTypeGenerationTemplate_binaryset_type (C_Compiler & inLexique) ;
+template_filewrapper_predefinedTypeGenerationTemplate_binaryset_type (C_CompilerEx & inLexique) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -211,7 +211,7 @@ template_filewrapper_predefinedTypeGenerationTemplate_binaryset_type (C_Compiler
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_predefinedTypeGenerationTemplate_function_type (C_Compiler & inLexique) ;
+template_filewrapper_predefinedTypeGenerationTemplate_function_type (C_CompilerEx & inLexique) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -220,7 +220,7 @@ template_filewrapper_predefinedTypeGenerationTemplate_function_type (C_Compiler 
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_predefinedTypeGenerationTemplate_type_type (C_Compiler & inLexique) ;
+template_filewrapper_predefinedTypeGenerationTemplate_type_type (C_CompilerEx & inLexique) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -229,7 +229,7 @@ template_filewrapper_predefinedTypeGenerationTemplate_type_type (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_predefinedTypeGenerationTemplate_location_type (C_Compiler & inLexique) ;
+template_filewrapper_predefinedTypeGenerationTemplate_location_type (C_CompilerEx & inLexique) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -238,7 +238,7 @@ template_filewrapper_predefinedTypeGenerationTemplate_location_type (C_Compiler 
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_predefinedTypeGenerationTemplate_data_type (C_Compiler & inLexique) ;
+template_filewrapper_predefinedTypeGenerationTemplate_data_type (C_CompilerEx & inLexique) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -247,7 +247,7 @@ template_filewrapper_predefinedTypeGenerationTemplate_data_type (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_predefinedTypeGenerationTemplate_char_type (C_Compiler & inLexique) ;
+template_filewrapper_predefinedTypeGenerationTemplate_char_type (C_CompilerEx & inLexique) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -256,7 +256,7 @@ template_filewrapper_predefinedTypeGenerationTemplate_char_type (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_predefinedTypeGenerationTemplate_double_type (C_Compiler & inLexique) ;
+template_filewrapper_predefinedTypeGenerationTemplate_double_type (C_CompilerEx & inLexique) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -265,7 +265,7 @@ template_filewrapper_predefinedTypeGenerationTemplate_double_type (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_predefinedTypeGenerationTemplate_string_type (C_Compiler & inLexique) ;
+template_filewrapper_predefinedTypeGenerationTemplate_string_type (C_CompilerEx & inLexique) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -274,7 +274,7 @@ template_filewrapper_predefinedTypeGenerationTemplate_string_type (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_predefinedTypeGenerationTemplate_stringset_type (C_Compiler & inLexique) ;
+template_filewrapper_predefinedTypeGenerationTemplate_stringset_type (C_CompilerEx & inLexique) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -283,7 +283,7 @@ template_filewrapper_predefinedTypeGenerationTemplate_stringset_type (C_Compiler
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_predefinedTypeGenerationTemplate_filewrapper_type (C_Compiler & inLexique) ;
+template_filewrapper_predefinedTypeGenerationTemplate_filewrapper_type (C_CompilerEx & inLexique) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -292,7 +292,7 @@ template_filewrapper_predefinedTypeGenerationTemplate_filewrapper_type (C_Compil
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_predefinedTypeGenerationTemplate_application_type (C_Compiler & inLexique) ;
+template_filewrapper_predefinedTypeGenerationTemplate_application_type (C_CompilerEx & inLexique) ;
 
 //---------------------------------------------------------------------------*
 

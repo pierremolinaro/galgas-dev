@@ -75,19 +75,19 @@ class GGS_optionDefaultValueEnumAST : public GGS__root {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_optionDefaultValueEnumAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_optionDefaultValueEnumAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
 
 //--- Construction from GALGAS constructor
-  public : static inline GGS_optionDefaultValueEnumAST  constructor_noDefaultValue (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_optionDefaultValueEnumAST  constructor_noDefaultValue (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_optionDefaultValueEnumAST (enum_noDefaultValue) ;
   }
-  public : static inline GGS_optionDefaultValueEnumAST  constructor_stringDefaultValue (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_optionDefaultValueEnumAST  constructor_stringDefaultValue (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_optionDefaultValueEnumAST (enum_stringDefaultValue) ;
   }
-  public : static inline GGS_optionDefaultValueEnumAST  constructor_unsignedDefaultValue (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_optionDefaultValueEnumAST  constructor_unsignedDefaultValue (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_optionDefaultValueEnumAST (enum_unsignedDefaultValue) ;
   }
 
@@ -141,13 +141,13 @@ class GGS_commandLineOptionListAST : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_commandLineOptionListAST
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_commandLineOptionListAST
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -162,7 +162,7 @@ class GGS_commandLineOptionListAST : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_commandLineOptionListAST * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_lstring & _out_0,
                               GGS_lstring & _out_1,
                               GGS_lchar & _out_2,
@@ -172,7 +172,7 @@ class GGS_commandLineOptionListAST : public AC_GGS_list {
                               GGS_optionDefaultValueEnumAST& _out_6
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_lstring & _out_0,
                              GGS_lstring & _out_1,
                              GGS_lchar & _out_2,
@@ -182,7 +182,7 @@ class GGS_commandLineOptionListAST : public AC_GGS_list {
                              GGS_optionDefaultValueEnumAST& _out_6
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_lstring & _out_0,
                                 GGS_lstring & _out_1,
                                 GGS_lchar & _out_2,
@@ -192,7 +192,7 @@ class GGS_commandLineOptionListAST : public AC_GGS_list {
                                 GGS_optionDefaultValueEnumAST& _out_6
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_lstring & _out_0,
                                  GGS_lstring & _out_1,
                                  GGS_lchar & _out_2,
@@ -214,7 +214,7 @@ class GGS_commandLineOptionListAST : public AC_GGS_list {
                                 const GGS_optionDefaultValueEnumAST& argument_6) ;
 //--- Handling '.' GALGAS operator
   public : GGS_commandLineOptionListAST operator_concat (const GGS_commandLineOptionListAST & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lchar & argument_2,
@@ -250,53 +250,53 @@ class GGS_commandLineOptionListAST : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_lstring 
-  reader_mOptionTypeNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mOptionTypeNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_lstring 
-  reader_mOptionInternalNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mOptionInternalNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_lchar 
-  reader_mOptionInvocationLetterAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mOptionInvocationLetterAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_lstring 
-  reader_mOptionInvocationStringAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mOptionInvocationStringAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_lstring 
-  reader_mOptionCommentAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mOptionCommentAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_lstring 
-  reader_mOptionDefaultValueAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mOptionDefaultValueAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_optionDefaultValueEnumAST
-  reader_mOptionDefaultValueKindAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mOptionDefaultValueKindAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMOptionTypeNameAtIndex (C_Compiler & inLexique,
+  modifier_setMOptionTypeNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMOptionInternalNameAtIndex (C_Compiler & inLexique,
+  modifier_setMOptionInternalNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMOptionInvocationLetterAtIndex (C_Compiler & inLexique,
+  modifier_setMOptionInvocationLetterAtIndex (C_CompilerEx & inLexique,
                               const GGS_lchar  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMOptionInvocationStringAtIndex (C_Compiler & inLexique,
+  modifier_setMOptionInvocationStringAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMOptionCommentAtIndex (C_Compiler & inLexique,
+  modifier_setMOptionCommentAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMOptionDefaultValueAtIndex (C_Compiler & inLexique,
+  modifier_setMOptionDefaultValueAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMOptionDefaultValueKindAtIndex (C_Compiler & inLexique,
+  modifier_setMOptionDefaultValueKindAtIndex (C_CompilerEx & inLexique,
                               const GGS_optionDefaultValueEnumAST & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -306,7 +306,7 @@ class GGS_commandLineOptionListAST : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_commandLineOptionListAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_commandLineOptionListAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -356,14 +356,14 @@ class GGS_optionComponentAST : public AC_GGS_class {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_optionComponentAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_optionComponentAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_optionComponentAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_commandLineOptionListAST & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -377,8 +377,8 @@ class GGS_optionComponentAST : public AC_GGS_class {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_lstring  reader_mOptionComponentName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_commandLineOptionListAST  reader_mOptions (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mOptionComponentName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_commandLineOptionListAST  reader_mOptions (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -399,7 +399,7 @@ AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_optionComponentAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_optionComponentAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;

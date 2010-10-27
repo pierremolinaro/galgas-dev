@@ -53,7 +53,7 @@ static bool gCacheFlagForOnceFunction_compilerCppName = false ;
 
 //---------------------------------------------------------------------------*
 
-GGS_string function_compilerCppName (C_Compiler & COMMA_UNUSED_LOCATION_ARGS) {
+GGS_string function_compilerCppName (C_CompilerEx & COMMA_UNUSED_LOCATION_ARGS) {
   if (! gCacheFlagForOnceFunction_compilerCppName) {
     #ifdef DEBUG_TRACE_ENABLED
       printf ("ENTER function_compilerCppName at %s:%d\n", __FILE__, __LINE__) ;
@@ -71,7 +71,7 @@ GGS_string function_compilerCppName (C_Compiler & COMMA_UNUSED_LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_compilerCppName (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_compilerCppName (C_CompilerEx & inLexique,
                            const GGS_objectlist & /* inEffectiveParameterArray */,
                            const GGS_location & /* inErrorLocation */
                            COMMA_LOCATION_ARGS) {
@@ -95,7 +95,7 @@ const C_galgas_function_descriptorEX kFunction_descriptor_compilerCppName ("comp
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__semanticExpressionForGeneration__isTrueExpression (C_Compiler &,
+category_reader__semanticExpressionForGeneration__isTrueExpression (C_CompilerEx &,
                                 const cPtr_semanticExpressionForGeneration * operand_2188
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -124,7 +124,7 @@ enterCategoryReader__semanticExpressionForGeneration__isTrueExpression (typeCate
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__semanticExpressionForGeneration_defaultReader_isTrueExpression (C_Compiler &,
+category_reader__semanticExpressionForGeneration_defaultReader_isTrueExpression (C_CompilerEx &,
                                 const cPtr_semanticExpressionForGeneration *
                                 COMMA_UNUSED_LOCATION_ARGS) {
   return GGS_bool () ;
@@ -158,7 +158,7 @@ findCategoryReader__semanticExpressionForGeneration__isTrueExpression (AC_galgas
 //---------------------------------------------------------------------------*
 
 static GGS_bool
-category_reader__trueExpressionForGeneration__isTrueExpression (C_Compiler &,
+category_reader__trueExpressionForGeneration__isTrueExpression (C_CompilerEx &,
                                 const cPtr_trueExpressionForGeneration * operand_2388
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_bool var_cas_outResult ;
@@ -175,7 +175,7 @@ category_reader__trueExpressionForGeneration__isTrueExpression (C_Compiler &,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__semanticExpressionForGeneration__generateExpression (C_Compiler &,
+category_method__semanticExpressionForGeneration__generateExpression (C_CompilerEx &,
                                 const cPtr_semanticExpressionForGeneration * operand_2896,
                                 GGS_string & /* var_cas_ioGeneratedCode */,
                                 GGS_uint  & /* var_cas_ioTemporaryVariableIndex */,
@@ -228,7 +228,7 @@ findCategoryMethod__semanticExpressionForGeneration__generateExpression (AC_galg
 //---------------------------------------------------------------------------*
 
 static void
-category_method__selfCopyInExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__selfCopyInExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_selfCopyInExpressionForGeneration * operand_3240,
                                 GGS_string & /* var_cas_ioGeneratedCode */,
                                 GGS_uint  & /* var_cas_ioTemporaryVariableIndex */,
@@ -248,7 +248,7 @@ category_method__selfCopyInExpressionForGeneration__generateExpression (C_Compil
 //---------------------------------------------------------------------------*
 
 static void
-category_method__hereExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__hereExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_hereExpressionForGeneration * operand_3633,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -274,7 +274,7 @@ category_method__hereExpressionForGeneration__generateExpression (C_Compiler & i
 //---------------------------------------------------------------------------*
 
 static void
-category_method__trueExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__trueExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_trueExpressionForGeneration * operand_4198,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -298,7 +298,7 @@ category_method__trueExpressionForGeneration__generateExpression (C_Compiler & i
 //---------------------------------------------------------------------------*
 
 static void
-category_method__falseExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__falseExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_falseExpressionForGeneration * operand_4713,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -322,7 +322,7 @@ category_method__falseExpressionForGeneration__generateExpression (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__literalCharExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__literalCharExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_literalCharExpressionForGeneration * operand_5236,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -348,7 +348,7 @@ category_method__literalCharExpressionForGeneration__generateExpression (C_Compi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__literalStringExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__literalStringExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_literalStringExpressionForGeneration * operand_5828,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -374,7 +374,7 @@ category_method__literalStringExpressionForGeneration__generateExpression (C_Com
 //---------------------------------------------------------------------------*
 
 static void
-category_method__literalDoubleExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__literalDoubleExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_literalDoubleExpressionForGeneration * operand_6648,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -400,7 +400,7 @@ category_method__literalDoubleExpressionForGeneration__generateExpression (C_Com
 //---------------------------------------------------------------------------*
 
 static void
-category_method__literalUIntExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__literalUIntExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_literalUIntExpressionForGeneration * operand_7217,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -426,7 +426,7 @@ category_method__literalUIntExpressionForGeneration__generateExpression (C_Compi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__literalUInt64ExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__literalUInt64ExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_literalUInt64ExpressionForGeneration * operand_7796,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -452,7 +452,7 @@ category_method__literalUInt64ExpressionForGeneration__generateExpression (C_Com
 //---------------------------------------------------------------------------*
 
 static void
-category_method__literalSIntExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__literalSIntExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_literalSIntExpressionForGeneration * operand_8385,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -478,7 +478,7 @@ category_method__literalSIntExpressionForGeneration__generateExpression (C_Compi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__literalSInt64ExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__literalSInt64ExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_literalSInt64ExpressionForGeneration * operand_8964,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -504,7 +504,7 @@ category_method__literalSInt64ExpressionForGeneration__generateExpression (C_Com
 //---------------------------------------------------------------------------*
 
 static void
-category_method__constructorExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__constructorExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_constructorExpressionForGeneration * operand_9552,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -585,7 +585,7 @@ category_method__constructorExpressionForGeneration__generateExpression (C_Compi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__readerCallExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__readerCallExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_readerCallExpressionForGeneration * operand_11145,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -683,7 +683,7 @@ category_method__readerCallExpressionForGeneration__generateExpression (C_Compil
 //---------------------------------------------------------------------------*
 
 static void
-category_method__optionValueExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__optionValueExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_optionValueExpressionForGeneration * operand_13105,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -713,7 +713,7 @@ category_method__optionValueExpressionForGeneration__generateExpression (C_Compi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__optionCharExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__optionCharExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_optionCharExpressionForGeneration * operand_13823,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -743,7 +743,7 @@ category_method__optionCharExpressionForGeneration__generateExpression (C_Compil
 //---------------------------------------------------------------------------*
 
 static void
-category_method__optionStringExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__optionStringExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_optionStringExpressionForGeneration * operand_14573,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -773,7 +773,7 @@ category_method__optionStringExpressionForGeneration__generateExpression (C_Comp
 //---------------------------------------------------------------------------*
 
 static void
-category_method__optionCommentExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__optionCommentExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_optionCommentExpressionForGeneration * operand_15330,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -803,7 +803,7 @@ category_method__optionCommentExpressionForGeneration__generateExpression (C_Com
 //---------------------------------------------------------------------------*
 
 static void
-category_method__concatExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__concatExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_concatExpressionForGeneration * operand_16078,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -847,7 +847,7 @@ category_method__concatExpressionForGeneration__generateExpression (C_Compiler &
 //---------------------------------------------------------------------------*
 
 static void
-category_method__orExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__orExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_orExpressionForGeneration * operand_17196,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -891,7 +891,7 @@ category_method__orExpressionForGeneration__generateExpression (C_Compiler & inL
 //---------------------------------------------------------------------------*
 
 static void
-category_method__xorExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__xorExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_xorExpressionForGeneration * operand_18307,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -935,7 +935,7 @@ category_method__xorExpressionForGeneration__generateExpression (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 static void
-category_method__andExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__andExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_andExpressionForGeneration * operand_19421,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -979,7 +979,7 @@ category_method__andExpressionForGeneration__generateExpression (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 static void
-category_method__equalExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__equalExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_equalExpressionForGeneration * operand_20536,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1019,7 +1019,7 @@ category_method__equalExpressionForGeneration__generateExpression (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__notEqualExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__notEqualExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_notEqualExpressionForGeneration * operand_21533,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1059,7 +1059,7 @@ category_method__notEqualExpressionForGeneration__generateExpression (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__lowerOrEqualExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__lowerOrEqualExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_lowerOrEqualExpressionForGeneration * operand_22540,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1099,7 +1099,7 @@ category_method__lowerOrEqualExpressionForGeneration__generateExpression (C_Comp
 //---------------------------------------------------------------------------*
 
 static void
-category_method__greaterOrEqualExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__greaterOrEqualExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_greaterOrEqualExpressionForGeneration * operand_23555,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1139,7 +1139,7 @@ category_method__greaterOrEqualExpressionForGeneration__generateExpression (C_Co
 //---------------------------------------------------------------------------*
 
 static void
-category_method__strictGreaterExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__strictGreaterExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_strictGreaterExpressionForGeneration * operand_24571,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1179,7 +1179,7 @@ category_method__strictGreaterExpressionForGeneration__generateExpression (C_Com
 //---------------------------------------------------------------------------*
 
 static void
-category_method__strictLowerExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__strictLowerExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_strictLowerExpressionForGeneration * operand_25583,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1219,7 +1219,7 @@ category_method__strictLowerExpressionForGeneration__generateExpression (C_Compi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__rightShiftExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__rightShiftExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_rightShiftExpressionForGeneration * operand_26592,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1262,7 +1262,7 @@ category_method__rightShiftExpressionForGeneration__generateExpression (C_Compil
 //---------------------------------------------------------------------------*
 
 static void
-category_method__leftShiftExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__leftShiftExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_leftShiftExpressionForGeneration * operand_27677,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1305,7 +1305,7 @@ category_method__leftShiftExpressionForGeneration__generateExpression (C_Compile
 //---------------------------------------------------------------------------*
 
 static void
-category_method__addExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__addExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_addExpressionForGeneration * operand_28757,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1352,7 +1352,7 @@ category_method__addExpressionForGeneration__generateExpression (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 static void
-category_method__subExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__subExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_subExpressionForGeneration * operand_29964,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1399,7 +1399,7 @@ category_method__subExpressionForGeneration__generateExpression (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 static void
-category_method__multiplicationExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__multiplicationExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_multiplicationExpressionForGeneration * operand_31188,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1446,7 +1446,7 @@ category_method__multiplicationExpressionForGeneration__generateExpression (C_Co
 //---------------------------------------------------------------------------*
 
 static void
-category_method__divisionExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__divisionExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_divisionExpressionForGeneration * operand_32417,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1493,7 +1493,7 @@ category_method__divisionExpressionForGeneration__generateExpression (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__moduloExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__moduloExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_moduloExpressionForGeneration * operand_33635,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1540,7 +1540,7 @@ category_method__moduloExpressionForGeneration__generateExpression (C_Compiler &
 //---------------------------------------------------------------------------*
 
 static void
-category_method__unaryMinusExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__unaryMinusExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_unaryMinusExpressionForGeneration * operand_34855,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1579,7 +1579,7 @@ category_method__unaryMinusExpressionForGeneration__generateExpression (C_Compil
 //---------------------------------------------------------------------------*
 
 static void
-category_method__notExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__notExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_notExpressionForGeneration * operand_35810,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1615,7 +1615,7 @@ category_method__notExpressionForGeneration__generateExpression (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 static void
-category_method__tildeExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__tildeExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_tildeExpressionForGeneration * operand_36620,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1651,7 +1651,7 @@ category_method__tildeExpressionForGeneration__generateExpression (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__ifExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__ifExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_ifExpressionForGeneration * operand_37436,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1712,7 +1712,7 @@ category_method__ifExpressionForGeneration__generateExpression (C_Compiler & inL
 //---------------------------------------------------------------------------*
 
 static void
-category_method__literalTypeInExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__literalTypeInExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_literalTypeInExpressionForGeneration * operand_38993,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1738,7 +1738,7 @@ category_method__literalTypeInExpressionForGeneration__generateExpression (C_Com
 //---------------------------------------------------------------------------*
 
 static void
-category_method__extractObjectInExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__extractObjectInExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_extractObjectInExpressionForGeneration * operand_39610,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1787,7 +1787,7 @@ category_method__extractObjectInExpressionForGeneration__generateExpression (C_C
 //---------------------------------------------------------------------------*
 
 static void
-category_method__castInExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__castInExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_castInExpressionForGeneration * operand_40905,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1861,7 +1861,7 @@ category_method__castInExpressionForGeneration__generateExpression (C_Compiler &
 //---------------------------------------------------------------------------*
 
 static void
-category_method__functionCallExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__functionCallExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_functionCallExpressionForGeneration * operand_42878,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1918,7 +1918,7 @@ category_method__functionCallExpressionForGeneration__generateExpression (C_Comp
 //---------------------------------------------------------------------------*
 
 static void
-category_method__varInExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__varInExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_varInExpressionForGeneration * operand_44093,
                                 GGS_string & /* var_cas_ioGeneratedCode */,
                                 GGS_uint  & /* var_cas_ioTemporaryVariableIndex */,
@@ -1947,7 +1947,7 @@ category_method__varInExpressionForGeneration__generateExpression (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__filewrapperInExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__filewrapperInExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_filewrapperInExpressionForGeneration * operand_44641,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -1973,7 +1973,7 @@ category_method__filewrapperInExpressionForGeneration__generateExpression (C_Com
 //---------------------------------------------------------------------------*
 
 static void
-category_method__filewrapperTemplateInExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__filewrapperTemplateInExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_filewrapperTemplateInExpressionForGeneration * operand_45255,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
@@ -2030,7 +2030,7 @@ category_method__filewrapperTemplateInExpressionForGeneration__generateExpressio
 //---------------------------------------------------------------------------*
 
 static void
-category_method__filewrapperStaticPathInExpressionForGeneration__generateExpression (C_Compiler & inLexique,
+category_method__filewrapperStaticPathInExpressionForGeneration__generateExpression (C_CompilerEx & inLexique,
                                 const cPtr_filewrapperStaticPathInExpressionForGeneration * operand_46509,
                                 GGS_string & var_cas_ioGeneratedCode,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,

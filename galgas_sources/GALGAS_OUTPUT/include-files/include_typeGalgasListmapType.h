@@ -39,7 +39,7 @@ class cPtr_typeGalgasListmapType : public cPtr_AC_galgasType {
   public : GGS_typeGalgasListType  mListType ;
   public : GGS_typeListeAttributsSemantiques  mAttributeList ;
 //--- Method 'acceptForeachInstruction'
-  public : virtual void method_acceptForeachInstruction (C_Compiler &,
+  public : virtual void method_acceptForeachInstruction (C_CompilerEx &,
                                 GGS_M_semanticsEntitiesForUse  ,
                                 GGS_location  ,
                                 GGS_typeListeAttributsSemantiques & ,
@@ -48,12 +48,12 @@ class cPtr_typeGalgasListmapType : public cPtr_AC_galgasType {
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'getTypeName'
-  public : virtual void method_getTypeName (C_Compiler &,
+  public : virtual void method_getTypeName (C_CompilerEx &,
                                 GGS_string& 
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleConstructorInvocation'
-  public : virtual void method_handleConstructorInvocation (C_Compiler &,
+  public : virtual void method_handleConstructorInvocation (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_typeListeAttributsSemantiques & ,
                                 GGS_bool& ,
@@ -61,7 +61,7 @@ class cPtr_typeGalgasListmapType : public cPtr_AC_galgasType {
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleAddAssignOperatorCall'
-  public : virtual void method_handleAddAssignOperatorCall (C_Compiler &,
+  public : virtual void method_handleAddAssignOperatorCall (C_CompilerEx &,
                                 GGS_location  ,
                                 GGS_typeListeAttributsSemantiques & 
                                 COMMA_LOCATION_ARGS) const ;

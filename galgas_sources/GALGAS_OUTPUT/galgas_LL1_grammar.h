@@ -284,7 +284,7 @@ class C_Grammar_galgas_5F_LL_31__5F_grammar : public grammar_parser,
                                                        GGS_M_optionComponents &,
                                                        GGS_EXsemanticContext &) ;
 
-  public : static void _performSourceFileParsing_ (C_Compiler & inCompiler,
+  public : static void _performSourceFileParsing_ (C_CompilerEx & inCompiler,
                                                    const C_String & inDependancyExtension,
                                                    const C_String & inDependancyPath,
                                                    GGS_string * inSentStringPtr,
@@ -297,7 +297,7 @@ class C_Grammar_galgas_5F_LL_31__5F_grammar : public grammar_parser,
                                                    GGS_EXsemanticContext &
                                                    COMMA_LOCATION_ARGS) ;
 
-  public : static void _performSourceStringParsing_ (C_Compiler & inCompiler,
+  public : static void _performSourceStringParsing_ (C_CompilerEx & inCompiler,
                                                      GGS_string * inSentStringPtr,
                                                      const GGS_string inSourceString,
                                                      GGS_M_lexiqueComponents &,
@@ -310,14 +310,14 @@ class C_Grammar_galgas_5F_LL_31__5F_grammar : public grammar_parser,
 
   public : virtual void nt_galgas_5F_start_5F_symbol_compileFile (C_Lexique_galgas_5F_scanner &) ;
 
-  public : static void _performSourceFileParsing_compileFile (C_Compiler & inCompiler,
+  public : static void _performSourceFileParsing_compileFile (C_CompilerEx & inCompiler,
                                                               const C_String & inDependancyExtension,
                                                               const C_String & inDependancyPath,
                                                               GGS_string * inSentStringPtr,
                                                               const GGS_lstring inFileName
                                                               COMMA_LOCATION_ARGS) ;
 
-  public : static void _performSourceStringParsing_compileFile (C_Compiler & inCompiler,
+  public : static void _performSourceStringParsing_compileFile (C_CompilerEx & inCompiler,
                                                                 GGS_string * inSentStringPtr,
                                                                 const GGS_string inSourceString
                                                                 COMMA_LOCATION_ARGS) ;
@@ -327,7 +327,7 @@ class C_Grammar_galgas_5F_LL_31__5F_grammar : public grammar_parser,
                                                                                 GGS_M_optionComponents &,
                                                                                 GGS_EXsemanticContext &) ;
 
-  public : static void _performSourceFileParsing_importGrammarForSemantics (C_Compiler & inCompiler,
+  public : static void _performSourceFileParsing_importGrammarForSemantics (C_CompilerEx & inCompiler,
                                                                             const C_String & inDependancyExtension,
                                                                             const C_String & inDependancyPath,
                                                                             GGS_string * inSentStringPtr,
@@ -337,7 +337,7 @@ class C_Grammar_galgas_5F_LL_31__5F_grammar : public grammar_parser,
                                                                             GGS_EXsemanticContext &
                                                                             COMMA_LOCATION_ARGS) ;
 
-  public : static void _performSourceStringParsing_importGrammarForSemantics (C_Compiler & inCompiler,
+  public : static void _performSourceStringParsing_importGrammarForSemantics (C_CompilerEx & inCompiler,
                                                                               GGS_string * inSentStringPtr,
                                                                               const GGS_string inSourceString,
                                                                               GGS_M_grammarComponents &,
@@ -348,7 +348,7 @@ class C_Grammar_galgas_5F_LL_31__5F_grammar : public grammar_parser,
   public : virtual void nt_galgas_5F_start_5F_symbol_importLexique (C_Lexique_galgas_5F_scanner &,
                                                                     GGS_M_lexiqueComponents &) ;
 
-  public : static void _performSourceFileParsing_importLexique (C_Compiler & inCompiler,
+  public : static void _performSourceFileParsing_importLexique (C_CompilerEx & inCompiler,
                                                                 const C_String & inDependancyExtension,
                                                                 const C_String & inDependancyPath,
                                                                 GGS_string * inSentStringPtr,
@@ -356,7 +356,7 @@ class C_Grammar_galgas_5F_LL_31__5F_grammar : public grammar_parser,
                                                                 GGS_M_lexiqueComponents &
                                                                 COMMA_LOCATION_ARGS) ;
 
-  public : static void _performSourceStringParsing_importLexique (C_Compiler & inCompiler,
+  public : static void _performSourceStringParsing_importLexique (C_CompilerEx & inCompiler,
                                                                   GGS_string * inSentStringPtr,
                                                                   const GGS_string inSourceString,
                                                                   GGS_M_lexiqueComponents &
@@ -365,7 +365,7 @@ class C_Grammar_galgas_5F_LL_31__5F_grammar : public grammar_parser,
   public : virtual void nt_galgas_5F_start_5F_symbol_importOptions (C_Lexique_galgas_5F_scanner &,
                                                                     GGS_M_optionComponents &) ;
 
-  public : static void _performSourceFileParsing_importOptions (C_Compiler & inCompiler,
+  public : static void _performSourceFileParsing_importOptions (C_CompilerEx & inCompiler,
                                                                 const C_String & inDependancyExtension,
                                                                 const C_String & inDependancyPath,
                                                                 GGS_string * inSentStringPtr,
@@ -373,7 +373,7 @@ class C_Grammar_galgas_5F_LL_31__5F_grammar : public grammar_parser,
                                                                 GGS_M_optionComponents &
                                                                 COMMA_LOCATION_ARGS) ;
 
-  public : static void _performSourceStringParsing_importOptions (C_Compiler & inCompiler,
+  public : static void _performSourceStringParsing_importOptions (C_CompilerEx & inCompiler,
                                                                   GGS_string * inSentStringPtr,
                                                                   const GGS_string inSourceString,
                                                                   GGS_M_optionComponents &
@@ -384,7 +384,7 @@ class C_Grammar_galgas_5F_LL_31__5F_grammar : public grammar_parser,
                                                                       GGS_EXsemanticContext &,
                                                                       GGS_stringset &) ;
 
-  public : static void _performSourceFileParsing_importSemantics (C_Compiler & inCompiler,
+  public : static void _performSourceFileParsing_importSemantics (C_CompilerEx & inCompiler,
                                                                   const C_String & inDependancyExtension,
                                                                   const C_String & inDependancyPath,
                                                                   GGS_string * inSentStringPtr,
@@ -394,7 +394,7 @@ class C_Grammar_galgas_5F_LL_31__5F_grammar : public grammar_parser,
                                                                   GGS_stringset &
                                                                   COMMA_LOCATION_ARGS) ;
 
-  public : static void _performSourceStringParsing_importSemantics (C_Compiler & inCompiler,
+  public : static void _performSourceStringParsing_importSemantics (C_CompilerEx & inCompiler,
                                                                     GGS_string * inSentStringPtr,
                                                                     const GGS_string inSourceString,
                                                                     GGS_M_semanticsComponents &,
@@ -406,7 +406,7 @@ class C_Grammar_galgas_5F_LL_31__5F_grammar : public grammar_parser,
                                                                    GGS_M_syntaxComponents &,
                                                                    GGS_EXsemanticContext &) ;
 
-  public : static void _performSourceFileParsing_importSyntax (C_Compiler & inCompiler,
+  public : static void _performSourceFileParsing_importSyntax (C_CompilerEx & inCompiler,
                                                                const C_String & inDependancyExtension,
                                                                const C_String & inDependancyPath,
                                                                GGS_string * inSentStringPtr,
@@ -415,7 +415,7 @@ class C_Grammar_galgas_5F_LL_31__5F_grammar : public grammar_parser,
                                                                GGS_EXsemanticContext &
                                                                COMMA_LOCATION_ARGS) ;
 
-  public : static void _performSourceStringParsing_importSyntax (C_Compiler & inCompiler,
+  public : static void _performSourceStringParsing_importSyntax (C_CompilerEx & inCompiler,
                                                                  GGS_string * inSentStringPtr,
                                                                  const GGS_string inSourceString,
                                                                  GGS_M_syntaxComponents &,

@@ -30,17 +30,17 @@ public : virtual void generateCppClassName (AC_OutputStream & fichier) const ;
 
 //--- Attributes
 //--- Method 'getTypeName'
-  public : virtual void method_getTypeName (C_Compiler &,
+  public : virtual void method_getTypeName (C_CompilerEx &,
                                 GGS_string& 
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'acceptToBeSortKeyInSortedListDefinition'
-  public : virtual void method_acceptToBeSortKeyInSortedListDefinition (C_Compiler &,
+  public : virtual void method_acceptToBeSortKeyInSortedListDefinition (C_CompilerEx &,
                                 GGS_lstring  
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleConstructorInvocation'
-  public : virtual void method_handleConstructorInvocation (C_Compiler &,
+  public : virtual void method_handleConstructorInvocation (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_typeListeAttributsSemantiques & ,
                                 GGS_bool& ,

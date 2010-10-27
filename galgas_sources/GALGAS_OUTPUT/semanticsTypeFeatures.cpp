@@ -49,7 +49,7 @@
 //---------------------------------------------------------------------------*
 
 static void
-category_method__stringsetPredefinedTypeAST__getEnumerationList (C_Compiler & inLexique,
+category_method__stringsetPredefinedTypeAST__getEnumerationList (C_CompilerEx & inLexique,
                                 const cPtr_stringsetPredefinedTypeAST * operand_1998,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_enumerationDescriptorList  & var_cas_outEnumerationList
@@ -69,7 +69,7 @@ category_method__stringsetPredefinedTypeAST__getEnumerationList (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 static void
-category_method__dataPredefinedTypeAST__getEnumerationList (C_Compiler & inLexique,
+category_method__dataPredefinedTypeAST__getEnumerationList (C_CompilerEx & inLexique,
                                 const cPtr_dataPredefinedTypeAST * operand_2483,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_enumerationDescriptorList  & var_cas_outEnumerationList
@@ -89,7 +89,7 @@ category_method__dataPredefinedTypeAST__getEnumerationList (C_Compiler & inLexiq
 //---------------------------------------------------------------------------*
 
 static void
-category_method__stringsetPredefinedTypeAST__getModifierMap (C_Compiler & inLexique,
+category_method__stringsetPredefinedTypeAST__getModifierMap (C_CompilerEx & inLexique,
                                 const cPtr_stringsetPredefinedTypeAST * operand_3274,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_modifierMap  & var_cas_outModifierMap
@@ -109,7 +109,7 @@ category_method__stringsetPredefinedTypeAST__getModifierMap (C_Compiler & inLexi
 //---------------------------------------------------------------------------*
 
 static GGS_uint 
-category_reader__applicationPredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & inLexique,
+category_reader__applicationPredefinedTypeAST__getSupportedOperatorFlags (C_CompilerEx & inLexique,
                                 const cPtr_applicationPredefinedTypeAST * operand_4232
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uint  var_cas_outFlags ;
@@ -126,7 +126,7 @@ category_reader__applicationPredefinedTypeAST__getSupportedOperatorFlags (C_Comp
 //---------------------------------------------------------------------------*
 
 static GGS_uint 
-category_reader__objectPredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & inLexique,
+category_reader__objectPredefinedTypeAST__getSupportedOperatorFlags (C_CompilerEx & inLexique,
                                 const cPtr_objectPredefinedTypeAST * operand_4471
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uint  var_cas_outFlags ;
@@ -143,7 +143,7 @@ category_reader__objectPredefinedTypeAST__getSupportedOperatorFlags (C_Compiler 
 //---------------------------------------------------------------------------*
 
 static GGS_uint 
-category_reader__stringPredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & inLexique,
+category_reader__stringPredefinedTypeAST__getSupportedOperatorFlags (C_CompilerEx & inLexique,
                                 const cPtr_stringPredefinedTypeAST * operand_4710
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uint  var_cas_outFlags ;
@@ -160,7 +160,7 @@ category_reader__stringPredefinedTypeAST__getSupportedOperatorFlags (C_Compiler 
 //---------------------------------------------------------------------------*
 
 static GGS_uint 
-category_reader__charPredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & inLexique,
+category_reader__charPredefinedTypeAST__getSupportedOperatorFlags (C_CompilerEx & inLexique,
                                 const cPtr_charPredefinedTypeAST * operand_5150
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uint  var_cas_outFlags ;
@@ -177,7 +177,7 @@ category_reader__charPredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 static GGS_uint 
-category_reader__boolPredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & inLexique,
+category_reader__boolPredefinedTypeAST__getSupportedOperatorFlags (C_CompilerEx & inLexique,
                                 const cPtr_boolPredefinedTypeAST * operand_5535
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uint  var_cas_outFlags ;
@@ -194,7 +194,7 @@ category_reader__boolPredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 static GGS_uint 
-category_reader__uintPredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & inLexique,
+category_reader__uintPredefinedTypeAST__getSupportedOperatorFlags (C_CompilerEx & inLexique,
                                 const cPtr_uintPredefinedTypeAST * operand_6016
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uint  var_cas_outFlags ;
@@ -211,7 +211,7 @@ category_reader__uintPredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 static GGS_uint 
-category_reader__sintPredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & inLexique,
+category_reader__sintPredefinedTypeAST__getSupportedOperatorFlags (C_CompilerEx & inLexique,
                                 const cPtr_sintPredefinedTypeAST * operand_6690
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uint  var_cas_outFlags ;
@@ -228,7 +228,7 @@ category_reader__sintPredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 static GGS_uint 
-category_reader__uint64PredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & inLexique,
+category_reader__uint64PredefinedTypeAST__getSupportedOperatorFlags (C_CompilerEx & inLexique,
                                 const cPtr_uint64PredefinedTypeAST * operand_7391
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uint  var_cas_outFlags ;
@@ -245,7 +245,7 @@ category_reader__uint64PredefinedTypeAST__getSupportedOperatorFlags (C_Compiler 
 //---------------------------------------------------------------------------*
 
 static GGS_uint 
-category_reader__sint64PredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & inLexique,
+category_reader__sint64PredefinedTypeAST__getSupportedOperatorFlags (C_CompilerEx & inLexique,
                                 const cPtr_sint64PredefinedTypeAST * operand_8067
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uint  var_cas_outFlags ;
@@ -262,7 +262,7 @@ category_reader__sint64PredefinedTypeAST__getSupportedOperatorFlags (C_Compiler 
 //---------------------------------------------------------------------------*
 
 static GGS_uint 
-category_reader__doublePredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & inLexique,
+category_reader__doublePredefinedTypeAST__getSupportedOperatorFlags (C_CompilerEx & inLexique,
                                 const cPtr_doublePredefinedTypeAST * operand_8769
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uint  var_cas_outFlags ;
@@ -279,7 +279,7 @@ category_reader__doublePredefinedTypeAST__getSupportedOperatorFlags (C_Compiler 
 //---------------------------------------------------------------------------*
 
 static GGS_uint 
-category_reader__stringsetPredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & inLexique,
+category_reader__stringsetPredefinedTypeAST__getSupportedOperatorFlags (C_CompilerEx & inLexique,
                                 const cPtr_stringsetPredefinedTypeAST * operand_9307
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uint  var_cas_outFlags ;
@@ -296,7 +296,7 @@ category_reader__stringsetPredefinedTypeAST__getSupportedOperatorFlags (C_Compil
 //---------------------------------------------------------------------------*
 
 static GGS_uint 
-category_reader__binarysetPredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & inLexique,
+category_reader__binarysetPredefinedTypeAST__getSupportedOperatorFlags (C_CompilerEx & inLexique,
                                 const cPtr_binarysetPredefinedTypeAST * operand_9832
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uint  var_cas_outFlags ;
@@ -313,7 +313,7 @@ category_reader__binarysetPredefinedTypeAST__getSupportedOperatorFlags (C_Compil
 //---------------------------------------------------------------------------*
 
 static GGS_uint 
-category_reader__typePredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & inLexique,
+category_reader__typePredefinedTypeAST__getSupportedOperatorFlags (C_CompilerEx & inLexique,
                                 const cPtr_typePredefinedTypeAST * operand_10287
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uint  var_cas_outFlags ;
@@ -330,7 +330,7 @@ category_reader__typePredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 static GGS_uint 
-category_reader__dataPredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & inLexique,
+category_reader__dataPredefinedTypeAST__getSupportedOperatorFlags (C_CompilerEx & inLexique,
                                 const cPtr_dataPredefinedTypeAST * operand_10613
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uint  var_cas_outFlags ;
@@ -347,7 +347,7 @@ category_reader__dataPredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 static GGS_uint 
-category_reader__functionPredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & inLexique,
+category_reader__functionPredefinedTypeAST__getSupportedOperatorFlags (C_CompilerEx & inLexique,
                                 const cPtr_functionPredefinedTypeAST * operand_10989
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uint  var_cas_outFlags ;
@@ -364,7 +364,7 @@ category_reader__functionPredefinedTypeAST__getSupportedOperatorFlags (C_Compile
 //---------------------------------------------------------------------------*
 
 static GGS_uint 
-category_reader__locationPredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & inLexique,
+category_reader__locationPredefinedTypeAST__getSupportedOperatorFlags (C_CompilerEx & inLexique,
                                 const cPtr_locationPredefinedTypeAST * operand_11319
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uint  var_cas_outFlags ;
@@ -381,7 +381,7 @@ category_reader__locationPredefinedTypeAST__getSupportedOperatorFlags (C_Compile
 //---------------------------------------------------------------------------*
 
 static GGS_uint 
-category_reader__filewrapperPredefinedTypeAST__getSupportedOperatorFlags (C_Compiler & inLexique,
+category_reader__filewrapperPredefinedTypeAST__getSupportedOperatorFlags (C_CompilerEx & inLexique,
                                 const cPtr_filewrapperPredefinedTypeAST * operand_11652
                                 COMMA_UNUSED_LOCATION_ARGS) {
   GGS_uint  var_cas_outFlags ;
@@ -398,7 +398,7 @@ category_reader__filewrapperPredefinedTypeAST__getSupportedOperatorFlags (C_Comp
 //---------------------------------------------------------------------------*
 
 static void
-category_method__stringsetPredefinedTypeAST__getAddAssignArgumentList (C_Compiler & inLexique,
+category_method__stringsetPredefinedTypeAST__getAddAssignArgumentList (C_CompilerEx & inLexique,
                                 const cPtr_stringsetPredefinedTypeAST * operand_11893,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_unifiedTypeMapProxyList  & var_cas_outAddAssignArgumentList

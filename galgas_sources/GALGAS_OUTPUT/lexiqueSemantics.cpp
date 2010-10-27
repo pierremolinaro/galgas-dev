@@ -108,7 +108,7 @@ operator_strictSup (const GGS_lexicalTypeEnum inOperand) const {
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalTypeEnum::
-reader_lexicalTypeBaseName (C_Compiler & /* inLexique */
+reader_lexicalTypeBaseName (C_CompilerEx & /* inLexique */
                        COMMA_UNUSED_LOCATION_ARGS) const {
   const char * kMessages [8] = {"",
     "char",
@@ -125,7 +125,7 @@ reader_lexicalTypeBaseName (C_Compiler & /* inLexique */
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalTypeEnum::
-reader_cppTypeName (C_Compiler & /* inLexique */
+reader_cppTypeName (C_CompilerEx & /* inLexique */
                        COMMA_UNUSED_LOCATION_ARGS) const {
   const char * kMessages [8] = {"",
     "utf32",
@@ -142,7 +142,7 @@ reader_cppTypeName (C_Compiler & /* inLexique */
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalTypeEnum::
-reader_appendMethodName (C_Compiler & /* inLexique */
+reader_appendMethodName (C_CompilerEx & /* inLexique */
                        COMMA_UNUSED_LOCATION_ARGS) const {
   const char * kMessages [8] = {"",
     "appendUnicodeCharacter",
@@ -159,7 +159,7 @@ reader_appendMethodName (C_Compiler & /* inLexique */
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalTypeEnum::
-reader_appendArgumentOfMethod (C_Compiler & /* inLexique */
+reader_appendArgumentOfMethod (C_CompilerEx & /* inLexique */
                        COMMA_UNUSED_LOCATION_ARGS) const {
   const char * kMessages [8] = {"",
     " COMMA_HERE",
@@ -176,7 +176,7 @@ reader_appendArgumentOfMethod (C_Compiler & /* inLexique */
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalTypeEnum::
-reader_initialization (C_Compiler & /* inLexique */
+reader_initialization (C_CompilerEx & /* inLexique */
                        COMMA_UNUSED_LOCATION_ARGS) const {
   const char * kMessages [8] = {"",
     " = TO_UNICODE (0)",
@@ -193,7 +193,7 @@ reader_initialization (C_Compiler & /* inLexique */
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalTypeEnum::
-reader_cocoaTypeName (C_Compiler & /* inLexique */
+reader_cocoaTypeName (C_CompilerEx & /* inLexique */
                        COMMA_UNUSED_LOCATION_ARGS) const {
   const char * kMessages [8] = {"",
     "UInt32",
@@ -210,7 +210,7 @@ reader_cocoaTypeName (C_Compiler & /* inLexique */
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalTypeEnum::
-reader_cocoaInitializationCode (C_Compiler & /* inLexique */
+reader_cocoaInitializationCode (C_CompilerEx & /* inLexique */
                        COMMA_UNUSED_LOCATION_ARGS) const {
   const char * kMessages [8] = {"",
     "0",
@@ -227,7 +227,7 @@ reader_cocoaInitializationCode (C_Compiler & /* inLexique */
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalTypeEnum::
-reader_cocoaResetPrefix (C_Compiler & /* inLexique */
+reader_cocoaResetPrefix (C_CompilerEx & /* inLexique */
                        COMMA_UNUSED_LOCATION_ARGS) const {
   const char * kMessages [8] = {"",
     "",
@@ -244,7 +244,7 @@ reader_cocoaResetPrefix (C_Compiler & /* inLexique */
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalTypeEnum::
-reader_cocoaReset (C_Compiler & /* inLexique */
+reader_cocoaReset (C_CompilerEx & /* inLexique */
                        COMMA_UNUSED_LOCATION_ARGS) const {
   const char * kMessages [8] = {"",
     " = 0",
@@ -307,7 +307,7 @@ GGS_object GGS_lexicalTypeEnum::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalTypeEnum GGS_lexicalTypeEnum::castFromObject (C_Compiler & inLexique,
+GGS_lexicalTypeEnum GGS_lexicalTypeEnum::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -442,7 +442,7 @@ dotAssign_operation (const GGS_lexicalTypeList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalTypeList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lexicalTypeEnum& argument_0
                      COMMA_UNUSED_LOCATION_ARGS) {
   if (isBuilt ()) {
@@ -511,7 +511,7 @@ internalSubListWithRange (GGS_lexicalTypeList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalTypeList GGS_lexicalTypeList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -531,7 +531,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalTypeList GGS_lexicalTypeList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_lexicalTypeList result ;
@@ -556,7 +556,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalTypeList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lexicalTypeEnum& _out_0
               COMMA_LOCATION_ARGS) const {
   cElement * ptr = NULL ;
@@ -576,7 +576,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalTypeList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lexicalTypeEnum& _out_0
              COMMA_LOCATION_ARGS) const {
   cElement * ptr = NULL ;
@@ -596,7 +596,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalTypeList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lexicalTypeEnum& _out_0
                  COMMA_LOCATION_ARGS) {
   cElement * ptr = NULL ;
@@ -618,7 +618,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalTypeList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lexicalTypeEnum& _out_0
                 COMMA_LOCATION_ARGS) {
   cElement * ptr = NULL ;
@@ -640,7 +640,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalTypeEnum GGS_lexicalTypeList::
-reader_mLexicalTypeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mLexicalTypeAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lexicalTypeEnum result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -654,7 +654,7 @@ reader_mLexicalTypeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COM
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalTypeList::
-modifier_setMLexicalTypeAtIndex (C_Compiler & inLexique,
+modifier_setMLexicalTypeAtIndex (C_CompilerEx & inLexique,
                               const GGS_lexicalTypeEnum & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -687,7 +687,7 @@ GGS_object GGS_lexicalTypeList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalTypeList GGS_lexicalTypeList::castFromObject (C_Compiler & inLexique,
+GGS_lexicalTypeList GGS_lexicalTypeList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -792,7 +792,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_lexicalTypeMap GGS_lexicalTypeMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lexicalTypeMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -837,7 +837,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalTypeMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -865,7 +865,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalTypeMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -933,7 +933,7 @@ const utf32 GGS_lexicalTypeMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalTypeMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_lexicalTypeEnum  & outParameter0 COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
@@ -1002,7 +1002,7 @@ const utf32 GGS_lexicalTypeMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalTypeMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_lexicalTypeEnum& inParameter0 COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
@@ -1017,7 +1017,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalTypeMap GGS_lexicalTypeMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_lexicalTypeMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lexicalTypeMap result ; // Not Built
@@ -1034,7 +1034,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalTypeMap GGS_lexicalTypeMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalTypeMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -1108,7 +1108,7 @@ GGS_object GGS_lexicalTypeMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalTypeMap GGS_lexicalTypeMap::castFromObject (C_Compiler & inLexique,
+GGS_lexicalTypeMap GGS_lexicalTypeMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -1133,7 +1133,7 @@ const C_galgas_type_descriptorEX * GGS_lexicalTypeMap::typeDescriptor (void) con
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalTypeMap GGS_lexicalTypeMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_lexicalTypeMap GGS_lexicalTypeMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_lexicalTypeEnum& inValue0
                                              COMMA_LOCATION_ARGS) {
@@ -1230,7 +1230,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_lexicalAttributeMap GGS_lexicalAttributeMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lexicalAttributeMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -1275,7 +1275,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalAttributeMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -1303,7 +1303,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalAttributeMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -1383,7 +1383,7 @@ const utf32 GGS_lexicalAttributeMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalAttributeMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_lexicalTypeEnum  & outParameter0 COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
@@ -1462,7 +1462,7 @@ const utf32 GGS_lexicalAttributeMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalAttributeMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_lexicalTypeEnum& inParameter0 COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
@@ -1477,7 +1477,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalAttributeMap GGS_lexicalAttributeMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_lexicalAttributeMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lexicalAttributeMap result ; // Not Built
@@ -1494,7 +1494,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalAttributeMap GGS_lexicalAttributeMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalAttributeMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -1568,7 +1568,7 @@ GGS_object GGS_lexicalAttributeMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalAttributeMap GGS_lexicalAttributeMap::castFromObject (C_Compiler & inLexique,
+GGS_lexicalAttributeMap GGS_lexicalAttributeMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -1593,7 +1593,7 @@ const C_galgas_type_descriptorEX * GGS_lexicalAttributeMap::typeDescriptor (void
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalAttributeMap GGS_lexicalAttributeMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_lexicalAttributeMap GGS_lexicalAttributeMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_lexicalTypeEnum& inValue0
                                              COMMA_LOCATION_ARGS) {
@@ -1734,7 +1734,7 @@ dotAssign_operation (const GGS_lexicalSentValueList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSentValueList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_string& argument_0,
                      const GGS_lexicalTypeEnum& argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
@@ -1807,7 +1807,7 @@ internalSubListWithRange (GGS_lexicalSentValueList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalSentValueList GGS_lexicalSentValueList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -1827,7 +1827,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalSentValueList GGS_lexicalSentValueList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_lexicalSentValueList result ;
@@ -1852,7 +1852,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSentValueList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_string& _out_0,
               GGS_lexicalTypeEnum& _out_1
               COMMA_LOCATION_ARGS) const {
@@ -1875,7 +1875,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSentValueList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_string& _out_0,
              GGS_lexicalTypeEnum& _out_1
              COMMA_LOCATION_ARGS) const {
@@ -1898,7 +1898,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSentValueList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_string& _out_0,
                  GGS_lexicalTypeEnum& _out_1
                  COMMA_LOCATION_ARGS) {
@@ -1923,7 +1923,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSentValueList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_string& _out_0,
                 GGS_lexicalTypeEnum& _out_1
                 COMMA_LOCATION_ARGS) {
@@ -1948,7 +1948,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalSentValueList::
-reader_mLexicalAttributeNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mLexicalAttributeNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -1962,7 +1962,7 @@ reader_mLexicalAttributeNameAtIndex (C_Compiler & inLexique, const GGS_uint & in
 //---------------------------------------------------------------------------*
 
 GGS_lexicalTypeEnum GGS_lexicalSentValueList::
-reader_mLexicalTypeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mLexicalTypeAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lexicalTypeEnum result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -1976,7 +1976,7 @@ reader_mLexicalTypeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COM
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSentValueList::
-modifier_setMLexicalAttributeNameAtIndex (C_Compiler & inLexique,
+modifier_setMLexicalAttributeNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -1991,7 +1991,7 @@ modifier_setMLexicalAttributeNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalSentValueList::
-modifier_setMLexicalTypeAtIndex (C_Compiler & inLexique,
+modifier_setMLexicalTypeAtIndex (C_CompilerEx & inLexique,
                               const GGS_lexicalTypeEnum & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -2031,7 +2031,7 @@ GGS_object GGS_lexicalSentValueList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalSentValueList GGS_lexicalSentValueList::castFromObject (C_Compiler & inLexique,
+GGS_lexicalSentValueList GGS_lexicalSentValueList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -2136,7 +2136,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_terminalMap GGS_terminalMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_terminalMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -2181,7 +2181,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_terminalMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -2209,7 +2209,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_terminalMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -2280,7 +2280,7 @@ const utf32 GGS_terminalMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_terminalMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_lexicalSentValueList   & outParameter0 COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
@@ -2350,7 +2350,7 @@ const utf32 GGS_terminalMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_terminalMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_lexicalSentValueList & inParameter0 COMMA_LOCATION_ARGS) {
   insertElement (inLexique,
@@ -2365,7 +2365,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_terminalMap GGS_terminalMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_terminalMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_terminalMap result ; // Not Built
@@ -2382,7 +2382,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_terminalMap GGS_terminalMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_terminalMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -2456,7 +2456,7 @@ GGS_object GGS_terminalMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_terminalMap GGS_terminalMap::castFromObject (C_Compiler & inLexique,
+GGS_terminalMap GGS_terminalMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -2481,7 +2481,7 @@ const C_galgas_type_descriptorEX * GGS_terminalMap::typeDescriptor (void) const 
 
 //---------------------------------------------------------------------------*
 
-GGS_terminalMap GGS_terminalMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_terminalMap GGS_terminalMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_lexicalSentValueList & inValue0
                                              COMMA_LOCATION_ARGS) {
@@ -2664,7 +2664,7 @@ dotAssign_operation (const GGS_terminalList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_terminalList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_lexicalSentValueList & argument_1,
                      const GGS_string& argument_2,
@@ -2749,7 +2749,7 @@ internalSubListWithRange (GGS_terminalList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_terminalList GGS_terminalList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -2769,7 +2769,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_terminalList GGS_terminalList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_terminalList result ;
@@ -2794,7 +2794,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_terminalList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lstring & _out_0,
               GGS_lexicalSentValueList & _out_1,
               GGS_string& _out_2,
@@ -2826,7 +2826,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_terminalList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lstring & _out_0,
              GGS_lexicalSentValueList & _out_1,
              GGS_string& _out_2,
@@ -2858,7 +2858,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_terminalList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lexicalSentValueList & _out_1,
                  GGS_string& _out_2,
@@ -2892,7 +2892,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_terminalList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lexicalSentValueList & _out_1,
                 GGS_string& _out_2,
@@ -2926,7 +2926,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_terminalList::
-reader_mTerminalNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mTerminalNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -2940,7 +2940,7 @@ reader_mTerminalNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex CO
 //---------------------------------------------------------------------------*
 
 GGS_lexicalSentValueList  GGS_terminalList::
-reader_mSentAttributeListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mSentAttributeListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lexicalSentValueList  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -2954,7 +2954,7 @@ reader_mSentAttributeListAtIndex (C_Compiler & inLexique, const GGS_uint & inInd
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_terminalList::
-reader_mSyntaxErrorMessageAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mSyntaxErrorMessageAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -2968,7 +2968,7 @@ reader_mSyntaxErrorMessageAtIndex (C_Compiler & inLexique, const GGS_uint & inIn
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_terminalList::
-reader_mIsEndOfTemplateMarkAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mIsEndOfTemplateMarkAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -2982,7 +2982,7 @@ reader_mIsEndOfTemplateMarkAtIndex (C_Compiler & inLexique, const GGS_uint & inI
 //---------------------------------------------------------------------------*
 
 GGS_uint  GGS_terminalList::
-reader_mStyleIndexAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mStyleIndexAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_uint  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -2996,7 +2996,7 @@ reader_mStyleIndexAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMM
 //---------------------------------------------------------------------------*
 
 void GGS_terminalList::
-modifier_setMTerminalNameAtIndex (C_Compiler & inLexique,
+modifier_setMTerminalNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -3011,7 +3011,7 @@ modifier_setMTerminalNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_terminalList::
-modifier_setMSentAttributeListAtIndex (C_Compiler & inLexique,
+modifier_setMSentAttributeListAtIndex (C_CompilerEx & inLexique,
                               const GGS_lexicalSentValueList  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -3026,7 +3026,7 @@ modifier_setMSentAttributeListAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_terminalList::
-modifier_setMSyntaxErrorMessageAtIndex (C_Compiler & inLexique,
+modifier_setMSyntaxErrorMessageAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -3041,7 +3041,7 @@ modifier_setMSyntaxErrorMessageAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_terminalList::
-modifier_setMIsEndOfTemplateMarkAtIndex (C_Compiler & inLexique,
+modifier_setMIsEndOfTemplateMarkAtIndex (C_CompilerEx & inLexique,
                               const GGS_bool & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -3056,7 +3056,7 @@ modifier_setMIsEndOfTemplateMarkAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_terminalList::
-modifier_setMStyleIndexAtIndex (C_Compiler & inLexique,
+modifier_setMStyleIndexAtIndex (C_CompilerEx & inLexique,
                               const GGS_uint  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -3117,7 +3117,7 @@ GGS_object GGS_terminalList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_terminalList GGS_terminalList::castFromObject (C_Compiler & inLexique,
+GGS_terminalList GGS_terminalList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -3229,7 +3229,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lexicalExplicitTokenListMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -3274,7 +3274,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExplicitTokenListMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -3305,7 +3305,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExplicitTokenListMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -3379,7 +3379,7 @@ const utf32 GGS_lexicalExplicitTokenListMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExplicitTokenListMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_lstring   & outParameter0,
                                 GGS_lstringlist   & outParameter1 COMMA_LOCATION_ARGS) const {
@@ -3457,7 +3457,7 @@ const utf32 GGS_lexicalExplicitTokenListMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExplicitTokenListMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_lstring & inParameter0,
                                 const GGS_lstringlist & inParameter1 COMMA_LOCATION_ARGS) {
@@ -3474,7 +3474,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_lexicalExplicitTokenListMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lexicalExplicitTokenListMap result ; // Not Built
@@ -3491,7 +3491,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalExplicitTokenListMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -3571,7 +3571,7 @@ GGS_object GGS_lexicalExplicitTokenListMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMap::castFromObject (C_Compiler & inLexique,
+GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -3596,7 +3596,7 @@ const C_galgas_type_descriptorEX * GGS_lexicalExplicitTokenListMap::typeDescript
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_lexicalExplicitTokenListMap GGS_lexicalExplicitTokenListMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_lstring & inValue0,
                                              const GGS_lstringlist & inValue1
@@ -3815,7 +3815,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_tokenSortedlist::
-method_smallest (C_Compiler & inLexique,
+method_smallest (C_CompilerEx & inLexique,
                  GGS_uint & _out_0,
                  GGS_string& _out_1,
                  GGS_string& _out_2
@@ -3841,7 +3841,7 @@ method_smallest (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_tokenSortedlist::
-method_greatest (C_Compiler & inLexique,
+method_greatest (C_CompilerEx & inLexique,
              GGS_uint & _out_0,
              GGS_string& _out_1,
              GGS_string& _out_2
@@ -3867,7 +3867,7 @@ method_greatest (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_tokenSortedlist::
-modifier_popSmallest (C_Compiler & inLexique,
+modifier_popSmallest (C_CompilerEx & inLexique,
                  GGS_uint & _out_0,
                  GGS_string& _out_1,
                  GGS_string& _out_2
@@ -3895,7 +3895,7 @@ modifier_popSmallest (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_tokenSortedlist::
-modifier_popGreatest (C_Compiler & inLexique,
+modifier_popGreatest (C_CompilerEx & inLexique,
                 GGS_uint & _out_0,
                 GGS_string& _out_1,
                 GGS_string& _out_2
@@ -3955,7 +3955,7 @@ GGS_object GGS_tokenSortedlist::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_tokenSortedlist GGS_tokenSortedlist::castFromObject (C_Compiler & inLexique,
+GGS_tokenSortedlist GGS_tokenSortedlist::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -4074,7 +4074,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_lexicalExplicitTokenListMapMap GGS_lexicalExplicitTokenListMapMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lexicalExplicitTokenListMapMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -4119,7 +4119,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExplicitTokenListMapMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -4153,7 +4153,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExplicitTokenListMapMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -4191,7 +4191,7 @@ searchElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExplicitTokenListMapMap::
-modifier_setMShouldBeGeneratedForKey (C_Compiler & inLexique,
+modifier_setMShouldBeGeneratedForKey (C_CompilerEx & inLexique,
                         const GGS_bool& inValue,
                         const GGS_string & inKey
                         COMMA_LOCATION_ARGS) {
@@ -4254,7 +4254,7 @@ const utf32 GGS_lexicalExplicitTokenListMapMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExplicitTokenListMapMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_lexicalExplicitTokenListMap   & outParameter0,
                                 GGS_tokenSortedlist   & outParameter1,
@@ -4330,7 +4330,7 @@ const utf32 GGS_lexicalExplicitTokenListMapMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalExplicitTokenListMapMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_lexicalExplicitTokenListMap & inParameter0,
                                 const GGS_tokenSortedlist & inParameter1,
@@ -4349,7 +4349,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalExplicitTokenListMapMap GGS_lexicalExplicitTokenListMapMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_lexicalExplicitTokenListMapMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lexicalExplicitTokenListMapMap result ; // Not Built
@@ -4366,7 +4366,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalExplicitTokenListMapMap GGS_lexicalExplicitTokenListMapMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalExplicitTokenListMapMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -4452,7 +4452,7 @@ GGS_object GGS_lexicalExplicitTokenListMapMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalExplicitTokenListMapMap GGS_lexicalExplicitTokenListMapMap::castFromObject (C_Compiler & inLexique,
+GGS_lexicalExplicitTokenListMapMap GGS_lexicalExplicitTokenListMapMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -4477,7 +4477,7 @@ const C_galgas_type_descriptorEX * GGS_lexicalExplicitTokenListMapMap::typeDescr
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalExplicitTokenListMapMap GGS_lexicalExplicitTokenListMapMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_lexicalExplicitTokenListMapMap GGS_lexicalExplicitTokenListMapMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_lexicalExplicitTokenListMap & inValue0,
                                              const GGS_tokenSortedlist & inValue1,
@@ -4585,7 +4585,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_lexicalMessageMap GGS_lexicalMessageMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lexicalMessageMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -4630,7 +4630,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalMessageMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -4661,7 +4661,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalMessageMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -4734,7 +4734,7 @@ const utf32 GGS_lexicalMessageMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalMessageMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_lstring   & outParameter0,
                                 GGS_bool  & outParameter1 COMMA_LOCATION_ARGS) const {
@@ -4805,7 +4805,7 @@ const utf32 GGS_lexicalMessageMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalMessageMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_lstring & inParameter0,
                                 const GGS_bool& inParameter1 COMMA_LOCATION_ARGS) {
@@ -4822,7 +4822,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalMessageMap GGS_lexicalMessageMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_lexicalMessageMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lexicalMessageMap result ; // Not Built
@@ -4839,7 +4839,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalMessageMap GGS_lexicalMessageMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalMessageMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -4919,7 +4919,7 @@ GGS_object GGS_lexicalMessageMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalMessageMap GGS_lexicalMessageMap::castFromObject (C_Compiler & inLexique,
+GGS_lexicalMessageMap GGS_lexicalMessageMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -4944,7 +4944,7 @@ const C_galgas_type_descriptorEX * GGS_lexicalMessageMap::typeDescriptor (void) 
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalMessageMap GGS_lexicalMessageMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_lexicalMessageMap GGS_lexicalMessageMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_lstring & inValue0,
                                              const GGS_bool& inValue1
@@ -5101,7 +5101,7 @@ dotAssign_operation (const GGS_lexicalRoutineFormalArgumentList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRoutineFormalArgumentList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lexicalArgumentModeAST& argument_0,
                      const GGS_lexicalTypeEnum& argument_1,
                      const GGS_string& argument_2
@@ -5178,7 +5178,7 @@ internalSubListWithRange (GGS_lexicalRoutineFormalArgumentList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalRoutineFormalArgumentList GGS_lexicalRoutineFormalArgumentList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -5198,7 +5198,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalRoutineFormalArgumentList GGS_lexicalRoutineFormalArgumentList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_lexicalRoutineFormalArgumentList result ;
@@ -5223,7 +5223,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRoutineFormalArgumentList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lexicalArgumentModeAST& _out_0,
               GGS_lexicalTypeEnum& _out_1,
               GGS_string& _out_2
@@ -5249,7 +5249,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRoutineFormalArgumentList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lexicalArgumentModeAST& _out_0,
              GGS_lexicalTypeEnum& _out_1,
              GGS_string& _out_2
@@ -5275,7 +5275,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRoutineFormalArgumentList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lexicalArgumentModeAST& _out_0,
                  GGS_lexicalTypeEnum& _out_1,
                  GGS_string& _out_2
@@ -5303,7 +5303,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRoutineFormalArgumentList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lexicalArgumentModeAST& _out_0,
                 GGS_lexicalTypeEnum& _out_1,
                 GGS_string& _out_2
@@ -5331,7 +5331,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalArgumentModeAST GGS_lexicalRoutineFormalArgumentList::
-reader_mLexicalFormalArgumentModeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mLexicalFormalArgumentModeAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lexicalArgumentModeAST result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -5345,7 +5345,7 @@ reader_mLexicalFormalArgumentModeAtIndex (C_Compiler & inLexique, const GGS_uint
 //---------------------------------------------------------------------------*
 
 GGS_lexicalTypeEnum GGS_lexicalRoutineFormalArgumentList::
-reader_mLexicalFormalArgumentTypeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mLexicalFormalArgumentTypeAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lexicalTypeEnum result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -5359,7 +5359,7 @@ reader_mLexicalFormalArgumentTypeAtIndex (C_Compiler & inLexique, const GGS_uint
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalRoutineFormalArgumentList::
-reader_mArgumentNameForCommentAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mArgumentNameForCommentAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -5373,7 +5373,7 @@ reader_mArgumentNameForCommentAtIndex (C_Compiler & inLexique, const GGS_uint & 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRoutineFormalArgumentList::
-modifier_setMLexicalFormalArgumentModeAtIndex (C_Compiler & inLexique,
+modifier_setMLexicalFormalArgumentModeAtIndex (C_CompilerEx & inLexique,
                               const GGS_lexicalArgumentModeAST & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -5388,7 +5388,7 @@ modifier_setMLexicalFormalArgumentModeAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRoutineFormalArgumentList::
-modifier_setMLexicalFormalArgumentTypeAtIndex (C_Compiler & inLexique,
+modifier_setMLexicalFormalArgumentTypeAtIndex (C_CompilerEx & inLexique,
                               const GGS_lexicalTypeEnum & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -5403,7 +5403,7 @@ modifier_setMLexicalFormalArgumentTypeAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRoutineFormalArgumentList::
-modifier_setMArgumentNameForCommentAtIndex (C_Compiler & inLexique,
+modifier_setMArgumentNameForCommentAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -5450,7 +5450,7 @@ GGS_object GGS_lexicalRoutineFormalArgumentList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalRoutineFormalArgumentList GGS_lexicalRoutineFormalArgumentList::castFromObject (C_Compiler & inLexique,
+GGS_lexicalRoutineFormalArgumentList GGS_lexicalRoutineFormalArgumentList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -5576,7 +5576,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_lexicalRoutineMap GGS_lexicalRoutineMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lexicalRoutineMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -5621,7 +5621,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRoutineMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -5658,7 +5658,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRoutineMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -5745,7 +5745,7 @@ const utf32 GGS_lexicalRoutineMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRoutineMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_lexicalRoutineFormalArgumentList   & outParameter0,
                                 GGS_stringlist   & outParameter1,
@@ -5822,7 +5822,7 @@ const utf32 GGS_lexicalRoutineMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalRoutineMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_lexicalRoutineFormalArgumentList & inParameter0,
                                 const GGS_stringlist & inParameter1,
@@ -5843,7 +5843,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalRoutineMap GGS_lexicalRoutineMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_lexicalRoutineMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lexicalRoutineMap result ; // Not Built
@@ -5860,7 +5860,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalRoutineMap GGS_lexicalRoutineMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalRoutineMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -5952,7 +5952,7 @@ GGS_object GGS_lexicalRoutineMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalRoutineMap GGS_lexicalRoutineMap::castFromObject (C_Compiler & inLexique,
+GGS_lexicalRoutineMap GGS_lexicalRoutineMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -5977,7 +5977,7 @@ const C_galgas_type_descriptorEX * GGS_lexicalRoutineMap::typeDescriptor (void) 
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalRoutineMap GGS_lexicalRoutineMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_lexicalRoutineMap GGS_lexicalRoutineMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_lexicalRoutineFormalArgumentList & inValue0,
                                              const GGS_stringlist & inValue1,
@@ -6124,7 +6124,7 @@ dotAssign_operation (const GGS_lexicalFunctionFormalArgumentList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalFunctionFormalArgumentList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lexicalTypeEnum& argument_0,
                      const GGS_string& argument_1
                      COMMA_UNUSED_LOCATION_ARGS) {
@@ -6197,7 +6197,7 @@ internalSubListWithRange (GGS_lexicalFunctionFormalArgumentList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalFunctionFormalArgumentList GGS_lexicalFunctionFormalArgumentList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -6217,7 +6217,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalFunctionFormalArgumentList GGS_lexicalFunctionFormalArgumentList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_lexicalFunctionFormalArgumentList result ;
@@ -6242,7 +6242,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalFunctionFormalArgumentList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lexicalTypeEnum& _out_0,
               GGS_string& _out_1
               COMMA_LOCATION_ARGS) const {
@@ -6265,7 +6265,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalFunctionFormalArgumentList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lexicalTypeEnum& _out_0,
              GGS_string& _out_1
              COMMA_LOCATION_ARGS) const {
@@ -6288,7 +6288,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalFunctionFormalArgumentList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lexicalTypeEnum& _out_0,
                  GGS_string& _out_1
                  COMMA_LOCATION_ARGS) {
@@ -6313,7 +6313,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalFunctionFormalArgumentList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lexicalTypeEnum& _out_0,
                 GGS_string& _out_1
                 COMMA_LOCATION_ARGS) {
@@ -6338,7 +6338,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalTypeEnum GGS_lexicalFunctionFormalArgumentList::
-reader_mLexicalTypeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mLexicalTypeAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lexicalTypeEnum result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -6352,7 +6352,7 @@ reader_mLexicalTypeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COM
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_lexicalFunctionFormalArgumentList::
-reader_mArgumentNameForCommentAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mArgumentNameForCommentAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -6366,7 +6366,7 @@ reader_mArgumentNameForCommentAtIndex (C_Compiler & inLexique, const GGS_uint & 
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalFunctionFormalArgumentList::
-modifier_setMLexicalTypeAtIndex (C_Compiler & inLexique,
+modifier_setMLexicalTypeAtIndex (C_CompilerEx & inLexique,
                               const GGS_lexicalTypeEnum & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -6381,7 +6381,7 @@ modifier_setMLexicalTypeAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalFunctionFormalArgumentList::
-modifier_setMArgumentNameForCommentAtIndex (C_Compiler & inLexique,
+modifier_setMArgumentNameForCommentAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -6421,7 +6421,7 @@ GGS_object GGS_lexicalFunctionFormalArgumentList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalFunctionFormalArgumentList GGS_lexicalFunctionFormalArgumentList::castFromObject (C_Compiler & inLexique,
+GGS_lexicalFunctionFormalArgumentList GGS_lexicalFunctionFormalArgumentList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -6547,7 +6547,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_lexicalFunctionMap GGS_lexicalFunctionMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lexicalFunctionMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -6592,7 +6592,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalFunctionMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -6629,7 +6629,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalFunctionMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -6717,7 +6717,7 @@ const utf32 GGS_lexicalFunctionMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalFunctionMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_lexicalFunctionFormalArgumentList   & outParameter0,
                                 GGS_lexicalTypeEnum  & outParameter1,
@@ -6795,7 +6795,7 @@ const utf32 GGS_lexicalFunctionMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalFunctionMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_lexicalFunctionFormalArgumentList & inParameter0,
                                 const GGS_lexicalTypeEnum& inParameter1,
@@ -6816,7 +6816,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalFunctionMap GGS_lexicalFunctionMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_lexicalFunctionMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lexicalFunctionMap result ; // Not Built
@@ -6833,7 +6833,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalFunctionMap GGS_lexicalFunctionMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalFunctionMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -6925,7 +6925,7 @@ GGS_object GGS_lexicalFunctionMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalFunctionMap GGS_lexicalFunctionMap::castFromObject (C_Compiler & inLexique,
+GGS_lexicalFunctionMap GGS_lexicalFunctionMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -6950,7 +6950,7 @@ const C_galgas_type_descriptorEX * GGS_lexicalFunctionMap::typeDescriptor (void)
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalFunctionMap GGS_lexicalFunctionMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_lexicalFunctionMap GGS_lexicalFunctionMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_lexicalFunctionFormalArgumentList & inValue0,
                                              const GGS_lexicalTypeEnum& inValue1,
@@ -7111,7 +7111,7 @@ dotAssign_operation (const GGS_templateDelimitorList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_templateDelimitorList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_lstring & argument_1,
                      const GGS_bool& argument_2
@@ -7188,7 +7188,7 @@ internalSubListWithRange (GGS_templateDelimitorList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_templateDelimitorList GGS_templateDelimitorList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -7208,7 +7208,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_templateDelimitorList GGS_templateDelimitorList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_templateDelimitorList result ;
@@ -7233,7 +7233,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_templateDelimitorList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1,
               GGS_bool& _out_2
@@ -7259,7 +7259,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_templateDelimitorList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1,
              GGS_bool& _out_2
@@ -7285,7 +7285,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_templateDelimitorList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1,
                  GGS_bool& _out_2
@@ -7313,7 +7313,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_templateDelimitorList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1,
                 GGS_bool& _out_2
@@ -7341,7 +7341,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_templateDelimitorList::
-reader_mStartStringAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mStartStringAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -7355,7 +7355,7 @@ reader_mStartStringAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COM
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_templateDelimitorList::
-reader_mEndStringAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mEndStringAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -7369,7 +7369,7 @@ reader_mEndStringAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_templateDelimitorList::
-reader_mPreservesStartDelimiterAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mPreservesStartDelimiterAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -7383,7 +7383,7 @@ reader_mPreservesStartDelimiterAtIndex (C_Compiler & inLexique, const GGS_uint &
 //---------------------------------------------------------------------------*
 
 void GGS_templateDelimitorList::
-modifier_setMStartStringAtIndex (C_Compiler & inLexique,
+modifier_setMStartStringAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -7398,7 +7398,7 @@ modifier_setMStartStringAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_templateDelimitorList::
-modifier_setMEndStringAtIndex (C_Compiler & inLexique,
+modifier_setMEndStringAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -7413,7 +7413,7 @@ modifier_setMEndStringAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_templateDelimitorList::
-modifier_setMPreservesStartDelimiterAtIndex (C_Compiler & inLexique,
+modifier_setMPreservesStartDelimiterAtIndex (C_CompilerEx & inLexique,
                               const GGS_bool & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -7460,7 +7460,7 @@ GGS_object GGS_templateDelimitorList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_templateDelimitorList GGS_templateDelimitorList::castFromObject (C_Compiler & inLexique,
+GGS_templateDelimitorList GGS_templateDelimitorList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -7572,7 +7572,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_styleMap GGS_styleMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_styleMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -7617,7 +7617,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_styleMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -7648,7 +7648,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_styleMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -7719,7 +7719,7 @@ const utf32 GGS_styleMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_styleMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_lstring   & outParameter0,
                                 GGS_uint   & outParameter1 COMMA_LOCATION_ARGS) const {
@@ -7782,7 +7782,7 @@ const utf32 GGS_styleMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_styleMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_lstring & inParameter0,
                                 const GGS_uint & inParameter1 COMMA_LOCATION_ARGS) {
@@ -7799,7 +7799,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_styleMap GGS_styleMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_styleMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_styleMap result ; // Not Built
@@ -7816,7 +7816,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_styleMap GGS_styleMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_styleMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -7896,7 +7896,7 @@ GGS_object GGS_styleMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_styleMap GGS_styleMap::castFromObject (C_Compiler & inLexique,
+GGS_styleMap GGS_styleMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -7921,7 +7921,7 @@ const C_galgas_type_descriptorEX * GGS_styleMap::typeDescriptor (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_styleMap GGS_styleMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_styleMap GGS_styleMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_lstring & inValue0,
                                              const GGS_uint & inValue1
@@ -8003,7 +8003,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_lexicalTagMap GGS_lexicalTagMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lexicalTagMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -8048,7 +8048,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalTagMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -8073,7 +8073,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalTagMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -8136,7 +8136,7 @@ const utf32 GGS_lexicalTagMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalTagMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) const {
   searchElement (inLexique,
                  0,
@@ -8235,7 +8235,7 @@ const utf32 GGS_lexicalTagMap::kShadowMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_lexicalTagMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) {
   const bool shadowExists = internal_search_in_overridden_maps (inKey) != NULL ;
   if (shadowExists) {
@@ -8253,7 +8253,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalTagMap GGS_lexicalTagMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_lexicalTagMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_lexicalTagMap result ; // Not Built
@@ -8270,7 +8270,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_lexicalTagMap GGS_lexicalTagMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_lexicalTagMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -8338,7 +8338,7 @@ GGS_object GGS_lexicalTagMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalTagMap GGS_lexicalTagMap::castFromObject (C_Compiler & inLexique,
+GGS_lexicalTagMap GGS_lexicalTagMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -8363,7 +8363,7 @@ const C_galgas_type_descriptorEX * GGS_lexicalTagMap::typeDescriptor (void) cons
 
 //---------------------------------------------------------------------------*
 
-GGS_lexicalTagMap GGS_lexicalTagMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_lexicalTagMap GGS_lexicalTagMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
                                              COMMA_LOCATION_ARGS) {
   GGS_lexicalTagMap result = constructor_emptyMap (inLexique COMMA_THERE) ;
@@ -8563,7 +8563,7 @@ GGS_object GGS_lexiqueAnalysisContext::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_lexiqueAnalysisContext GGS_lexiqueAnalysisContext::castFromObject (C_Compiler & inLexique,
+GGS_lexiqueAnalysisContext GGS_lexiqueAnalysisContext::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {

@@ -446,7 +446,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
 
 //---------------------------------------------------------------------------*
 
-static void old_generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
+static void old_generate_LL1_grammar_Cpp_file (C_CompilerEx & inLexique,
                                                const GGS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
                                                const PMUInt32 inOriginalGrammarStartSymbol,
                                                const C_String & inTargetFileName,
@@ -628,7 +628,7 @@ static void old_generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
       //--- Define file parsing static method
         generatedZone3 << "void C_Grammar_" << inTargetFileName.identifierRepresentation ()
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
-                       << " (C_Compiler & inCompiler"
+                       << " (C_CompilerEx & inCompiler"
                           ",\n                                "
                           "const C_String & inDependancyExtension"
                           ",\n                                "
@@ -714,7 +714,7 @@ static void old_generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         generatedZone3.appendCppHyphenLineComment () ;
         generatedZone3 << "void C_Grammar_" << inTargetFileName.identifierRepresentation ()
                        << "::_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
-                       << " (C_Compiler & inCompiler"
+                       << " (C_CompilerEx & inCompiler"
                           ",\n                                "
                           "GGS_string * inSentStringPtr"
                           ",\n                                "
@@ -794,7 +794,7 @@ static void old_generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
+generate_LL1_grammar_Cpp_file (C_CompilerEx & inLexique,
                                const GGS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
                                const PMUInt32 inOriginalGrammarStartSymbol,
                                const C_String & inTargetFileName,
@@ -995,7 +995,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
       //--- Define file parsing static method
         generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
-                       << " (C_Compiler * inCompiler"
+                       << " (C_CompilerEx * inCompiler"
                           ",\n                                "
                           "GALGAS_lstring inFilePath" ;
         GGS_signatureForGrammarAnalysis::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
@@ -1097,7 +1097,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         generatedZone3.appendCppHyphenLineComment () ;
         generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                        << "::_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
-                       << " (C_Compiler * inCompiler"
+                       << " (C_CompilerEx * inCompiler"
                           ",\n                                "
                           "GALGAS_string inSourceString" ;
         parametre.rewind () ;
@@ -1193,7 +1193,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-LL1_computations (C_Compiler & inLexique,
+LL1_computations (C_CompilerEx & inLexique,
                   const cPureBNFproductionsList & inPureBNFproductions,
                   C_HTML_FileWrite * inHTMLfile,
                   const cVocabulary & inVocabulary,
