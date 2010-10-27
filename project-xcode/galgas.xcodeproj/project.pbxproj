@@ -2135,11 +2135,9 @@
 		CF6A7CDD114858E40034A94E /* include_typeWithInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeWithInstruction.h; sourceTree = "<group>"; };
 		CF6A7CDE114858E40034A94E /* include_typeXorOperation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeXorOperation.h; sourceTree = "<group>"; };
 		CF6CEB6F1278B57400E8F785 /* C_Compiler.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_Compiler.cpp; sourceTree = "<group>"; };
-		CF6CEB701278B57400E8F785 /* C_Compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_Compiler.h; sourceTree = "<group>"; };
 		CF6CEB711278B57400E8F785 /* C_galgas_io.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_galgas_io.cpp; sourceTree = "<group>"; };
 		CF6CEB721278B57400E8F785 /* C_galgas_io.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_galgas_io.h; sourceTree = "<group>"; };
 		CF6CEB731278B57400E8F785 /* C_Lexique.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_Lexique.cpp; sourceTree = "<group>"; };
-		CF6CEB741278B57400E8F785 /* C_Lexique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_Lexique.h; sourceTree = "<group>"; };
 		CF6CEB751278B57400E8F785 /* C_LocationInSource.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_LocationInSource.cpp; sourceTree = "<group>"; };
 		CF6CEB761278B57400E8F785 /* C_LocationInSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_LocationInSource.h; sourceTree = "<group>"; };
 		CF6CEB771278B57400E8F785 /* C_SourceTextInString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_SourceTextInString.cpp; sourceTree = "<group>"; };
@@ -2228,6 +2226,10 @@
 		CF82F10E10BEDAB200F40B32 /* C_CommandLineOption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_CommandLineOption.cpp; sourceTree = "<group>"; };
 		CF82F10F10BEDAB200F40B32 /* C_CommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_CommandLineOption.h; sourceTree = "<group>"; };
 		CF83184B104A7A9200FDF2EC /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/galgasUpdate.xib; sourceTree = "<group>"; };
+		CF8A320F1278D21600E3EDC9 /* C_Compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_Compiler.h; sourceTree = "<group>"; };
+		CF8A32101278D21600E3EDC9 /* C_Lexique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_Lexique.h; sourceTree = "<group>"; };
+		CF8A32111278D21600E3EDC9 /* cProductionNameDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cProductionNameDescriptor.h; sourceTree = "<group>"; };
+		CF8A32121278D21600E3EDC9 /* cTemplateDelimiter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cTemplateDelimiter.h; sourceTree = "<group>"; };
 		CF8D51940E46334400CFF259 /* GGSUpdateCocoaGalgas.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GGSUpdateCocoaGalgas.h; sourceTree = "<group>"; };
 		CF8D51950E46334400CFF259 /* GGSUpdateCocoaGalgas.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GGSUpdateCocoaGalgas.m; sourceTree = "<group>"; };
 		CF8E30220D9EE03700EF3764 /* projectCreation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = projectCreation.cpp; sourceTree = "<group>"; };
@@ -2952,14 +2954,16 @@
 		CFA5890010D285C800B7E541 /* galgas2 */ = {
 			isa = PBXGroup;
 			children = (
+				CF8A32111278D21600E3EDC9 /* cProductionNameDescriptor.h */,
+				CF8A32121278D21600E3EDC9 /* cTemplateDelimiter.h */,
 				CF6CEC571278CBD500E8F785 /* scanner_actions.cpp */,
 				CF6CEC581278CBD500E8F785 /* scanner_actions.h */,
 				CF6CEB6F1278B57400E8F785 /* C_Compiler.cpp */,
-				CF6CEB701278B57400E8F785 /* C_Compiler.h */,
+				CF8A320F1278D21600E3EDC9 /* C_Compiler.h */,
 				CF6CEB711278B57400E8F785 /* C_galgas_io.cpp */,
 				CF6CEB721278B57400E8F785 /* C_galgas_io.h */,
 				CF6CEB731278B57400E8F785 /* C_Lexique.cpp */,
-				CF6CEB741278B57400E8F785 /* C_Lexique.h */,
+				CF8A32101278D21600E3EDC9 /* C_Lexique.h */,
 				CF6CEB751278B57400E8F785 /* C_LocationInSource.cpp */,
 				CF6CEB761278B57400E8F785 /* C_LocationInSource.h */,
 				CF6CEB771278B57400E8F785 /* C_SourceTextInString.cpp */,
