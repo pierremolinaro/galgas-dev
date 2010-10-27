@@ -18,7 +18,7 @@
 
 #include "galgas_cli_options.h"
 #include "galgas/C_galgas_CLI_Options.h"
-#include "galgas-utilities/C_Lexique.h"
+#include "galgas2/C_Lexique.h"
 #include "command_line_interface/C_builtin_CLI_Options.h"
 
 //---------------------------------------------------------------------------*

@@ -8,7 +8,7 @@ class C_SourceTextInString ;
 
 //---------------------------------------------------------------------------*
 
-#include "galgas-utilities/C_LocationInSource.h"
+#include "galgas2/C_LocationInSource.h"
 
 //---------------------------------------------------------------------------*
 
