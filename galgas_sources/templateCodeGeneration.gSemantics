@@ -224,7 +224,7 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
   #--- IF expression
     @string ifVarCppName ;
     [mExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?ifVarCppName] ;
-    ioGeneratedCode .= "if (" . ioGeneratedCode . ".isValidAndTrue ()) {\n" ;
+    ioGeneratedCode .= "if (" . ifVarCppName . ".isValidAndTrue ()) {\n" ;
     [!?ioGeneratedCode incIndentation !2] ;
     templateCodeGenerationForListInstruction
       !mInstructionList

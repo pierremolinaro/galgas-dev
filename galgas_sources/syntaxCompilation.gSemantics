@@ -18,6 +18,8 @@
 
 semantics syntaxCompilation :
 import "semanticAnalysisOfSyntaxComponent.gSemantics" ;
+import "lexiqueCompilation.gSemantics" ;
+import "syntaxSLRgrammar.gGrammar" ;
 
 import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
 import semantics semanticAnalysisOfSyntaxComponent in "semanticAnalysisOfSyntaxComponent.gSemantics" ;

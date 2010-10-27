@@ -2,7 +2,7 @@
 #                                                                           *
 #  Grammar component compilation                                            *
 #                                                                           *
-#  Copyright (C) 2009, ..., 2009 Pierre Molinaro.                           *
+#  Copyright (C) 2009, ..., 2010 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -20,6 +20,8 @@ semantics grammarCompilation :
 import "allASTTypes.gSemantics" ;
 import "grammarSemantics.gSemantics" ;
 import "galgas_cli_options.gOption" ;
+import "grammarLL1grammar.gGrammar" ;
+import "syntaxSLRgrammar.gGrammar" ;
 
 import semantics allASTTypes in "allASTTypes.gSemantics" ;
 import semantics grammarSemantics in "grammarSemantics.gSemantics" ;

@@ -23,6 +23,8 @@ with "galgas_scanner.gLexique" ;
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
 import semantics programMetamodel in "programMetamodel.gSemantics" ;
+import "semanticsTypesForAST.gSemantics" ;
+import "programMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 

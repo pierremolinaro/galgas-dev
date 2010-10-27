@@ -22,6 +22,7 @@ with "galgas_scanner.gLexique" ;
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 import semantics projectMetamodel in "projectMetamodel.gSemantics" ;
+import "projectMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
