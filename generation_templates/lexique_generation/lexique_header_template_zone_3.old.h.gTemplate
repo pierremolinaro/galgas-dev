@@ -1,0 +1,48 @@
+
+//--- Terminal symbols enumeration
+  public : enum {kToken_%
+    foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList] do
+      %,\n   kToken_% ![[mTerminalName string] identifierRepresentation]
+    end foreach
+  %} ;
+%
+  foreach DELIMITOR_LIST_LIST do
+    %\n//--- Key words table '%![mName string]%'\n%
+    %  public : static PMSInt16 search_into_%![mName string]% (const C_String & inSearchedString) ;\n%
+  end foreach
+%  
+
+//--- Assign from attribute (v1)
+%
+  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
+    %  public : void assignFromAttribute_%![lkey identifierRepresentation]% (GGS_l%![mLexicalType lexicalTypeBaseName]% & outValue) const ;\n%
+  end foreach
+%
+
+//--- Attribute access
+%
+  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
+    %  public : %![mLexicalType cppTypeName]% attributeValue_%![lkey identifierRepresentation]% (void) const ;\n%
+  end foreach
+%
+
+//--- Parse lexical token
+  protected : virtual bool parseLexicalToken (void) ;
+
+//--- Append terminal message
+  protected : virtual void appendTerminalMessageToSyntaxErrorMessage (const PMSInt16 numeroTerminal,
+                                                              C_String & messageErreur) ;
+
+//--- Get terminal count
+  public : virtual PMSInt16 terminalVocabularyCount (void) const { return %![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string]% ; }
+
+//--- Get Token String
+  public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;
+
+//--- Enter Token
+  protected : void enterToken (const cTokenFor_%!LEXIQUE_IDENTIFIER% & inToken) ;
+} ;
+
+//---------------------------------------------------------------------------*
+
+#endif

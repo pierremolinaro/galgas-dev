@@ -1,0 +1,101 @@
+
+#ifndef %!LEXIQUE_IDENTIFIER%_0_DEFINED
+#define %!LEXIQUE_IDENTIFIER%_0_DEFINED
+
+//---------------------------------------------------------------------------*
+
+#include "galgas/GGS_lstring.h"
+#include "galgas/GGS_luint.h"
+#include "galgas/GGS_lsint.h"
+#include "galgas/GGS_luint64.h"
+#include "galgas/GGS_lsint64.h"
+#include "galgas/GGS_lchar.h"
+#include "galgas/GGS_ldouble.h"
+#include "galgas/GGS_lbool.h"
+#include "galgas/C_LexiqueEx.h"
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//                    E X T E R N    R O U T I N E S                         *
+//                                                                           *
+//---------------------------------------------------------------------------*
+%
+  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalRoutineMessageMap] do
+    if mIsExtern then
+      %\nvoid scanner_routine_%![lkey string]% (C_LexiqueEx & inLexique%
+      foreach mLexicalRoutineFormalArgumentList do
+        %,\n                %![mLexicalFormalArgumentMode cppConstInFormalArgument]
+                             ![mLexicalFormalArgumentType cppTypeName]
+                             ![mLexicalFormalArgumentMode cppReferenceInFormalArgument]
+                             % %!mArgumentNameForComment
+      end foreach
+      foreach mErrorMessageList do
+        %,\n                const char * %!mValue
+      end foreach
+      %) ;\n%
+    end if
+  end foreach
+%
+//---------------------------------------------------------------------------*
+//                                                                           *
+//                    E X T E R N    F U N C T I O N S                       *
+//                                                                           *
+//---------------------------------------------------------------------------*
+%
+  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalFunctionMap] do
+    if mIsExtern then
+      %\n%![mReturnedLexicalType cppTypeName]% scanner_function_%![lkey string]% (C_LexiqueEx & inLexique%
+      foreach mLexicalTypeList do
+        %,\n                const %![mLexicalType cppTypeName]% %!mArgumentNameForComment
+      end foreach
+      %) ;\n%
+    end if
+  end foreach
+%
+//---------------------------------------------------------------------------*
+//                                                                           *
+//                       T O K E N    C L A S S                              *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class cTokenFor_%!LEXIQUE_IDENTIFIER% : public cToken {
+%
+  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
+    %  public : %![mLexicalType cppTypeName]% mLexicalAttribute_%![lkey identifierRepresentation]% ;\n%
+  end foreach
+%
+  public : cTokenFor_%!LEXIQUE_IDENTIFIER% (void) ;
+} ;
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//                     S C A N N E R    C L A S S                            *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class C_Lexique_%!LEXIQUE_IDENTIFIER% : public C_LexiqueEx {
+//--- Constructors
+  public : C_Lexique_%!LEXIQUE_IDENTIFIER% (C_CompilerEx * inCallerCompiler,
+                       const C_String & inDependencyFileExtension,
+                       const C_String & inDependencyFilePath,
+                       C_galgas_io * inParametersPtr,
+                       const C_String & inSourceFileName
+                       COMMA_LOCATION_ARGS) ;
+
+  public : C_Lexique_%!LEXIQUE_IDENTIFIER% (C_CompilerEx * inCallerCompiler,
+                       C_galgas_io * inParametersPtr,
+                       const C_String & inSourceString,
+                       const C_String & inStringForError
+                       COMMA_LOCATION_ARGS) ;
+
+//--- Declaring a protected virtual destructor enables the compiler to raise
+//    an error if a direct delete is performed; only the static method
+//    C_GGS_Object::detachPointer may invoke delete.
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    protected : virtual ~ C_Lexique_%!LEXIQUE_IDENTIFIER% (void) {}
+  #endif
+%if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then%
+//--- Scanner mode for template scanner
+  private : PMSInt32 mMatchedTemplateDelimiterIndex ;
+%end if%
+
