@@ -33,7 +33,7 @@ class cVocabulary ;
 class C_HTML_FileWrite ;
 class C_BDD_Set1 ;
 class C_BDD_Set2 ;
-class C_Lexique ;
+class C_LexiqueEx ;
 
 //---------------------------------------------------------------------------*
 

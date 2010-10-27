@@ -43,7 +43,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterClassMethodWithStringInputArgument (C_Compiler &,
+void routine_enterClassMethodWithStringInputArgument (C_CompilerEx &,
                                 GGS_classMethodMap  &,
                                 GGS_unifiedTypeMap  &,
                                 const GGS_string ,

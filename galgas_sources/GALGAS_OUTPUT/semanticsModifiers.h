@@ -43,7 +43,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithInputArgument (C_Compiler &,
+void routine_enterModifierWithInputArgument (C_CompilerEx &,
                                 GGS_modifierMap  &,
                                 GGS_unifiedTypeMap  &,
                                 const GGS_string ,
@@ -56,7 +56,7 @@ void routine_enterModifierWithInputArgument (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithOutputArgument (C_Compiler &,
+void routine_enterModifierWithOutputArgument (C_CompilerEx &,
                                 GGS_modifierMap  &,
                                 GGS_unifiedTypeMap  &,
                                 const GGS_string ,
@@ -69,7 +69,7 @@ void routine_enterModifierWithOutputArgument (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWith2InputArguments (C_Compiler &,
+void routine_enterModifierWith2InputArguments (C_CompilerEx &,
                                 GGS_modifierMap  &,
                                 GGS_unifiedTypeMap  &,
                                 const GGS_string ,
@@ -83,7 +83,7 @@ void routine_enterModifierWith2InputArguments (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterModifierWithoutArgument (C_Compiler &,
+void routine_enterModifierWithoutArgument (C_CompilerEx &,
                                 GGS_modifierMap  &,
                                 const GGS_string ,
                                 const GGS_bool  COMMA_LOCATION_ARGS) ;

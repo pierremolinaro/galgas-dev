@@ -43,7 +43,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__actualParameterForGeneration__generateActualParameter)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__actualParameterForGeneration__generateActualParameter)  (C_CompilerEx & inLexique,
                                 const cPtr_actualParameterForGeneration * inObjectPtr,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_string & var_cas_ioImplementation,
@@ -69,7 +69,7 @@ findCategoryMethod__actualParameterForGeneration__generateActualParameter (AC_ga
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__semanticInstructionForGeneration__generateInstruction)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__semanticInstructionForGeneration__generateInstruction)  (C_CompilerEx & inLexique,
                                 const cPtr_semanticInstructionForGeneration * inObjectPtr,
                                 GGS_uint  & var_cas_ioTemporaryVariableIndex,
                                 GGS_stringset  & var_cas_ioUnusedVariableCppNameSet,
@@ -97,7 +97,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_generateRoutine
 
 //---------------------------------------------------------------------------*
 
-GGS_string function_generateRoutineBody (C_Compiler &,
+GGS_string function_generateRoutineBody (C_CompilerEx &,
                                 const GGS_semanticInstructionListForGeneration   COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
@@ -106,7 +106,7 @@ GGS_string function_generateRoutineBody (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_generateInstructionList (C_Compiler &,
+void routine_generateInstructionList (C_CompilerEx &,
                                 const GGS_semanticInstructionListForGeneration  ,
                                 GGS_uint  &,
                                 GGS_stringset  &,

@@ -145,7 +145,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_commandLineOptionMap GGS_commandLineOptionMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_commandLineOptionMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -190,7 +190,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_commandLineOptionMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -227,7 +227,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_commandLineOptionMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -318,7 +318,7 @@ const utf32 GGS_commandLineOptionMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_commandLineOptionMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_char  & outParameter0,
                                 GGS_string  & outParameter1,
@@ -405,7 +405,7 @@ const utf32 GGS_commandLineOptionMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_commandLineOptionMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_char& inParameter0,
                                 const GGS_string& inParameter1,
@@ -426,7 +426,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_commandLineOptionMap GGS_commandLineOptionMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_commandLineOptionMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_commandLineOptionMap result ; // Not Built
@@ -443,7 +443,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_commandLineOptionMap GGS_commandLineOptionMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_commandLineOptionMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -535,7 +535,7 @@ GGS_object GGS_commandLineOptionMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_commandLineOptionMap GGS_commandLineOptionMap::castFromObject (C_Compiler & inLexique,
+GGS_commandLineOptionMap GGS_commandLineOptionMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -560,7 +560,7 @@ const C_galgas_type_descriptorEX * GGS_commandLineOptionMap::typeDescriptor (voi
 
 //---------------------------------------------------------------------------*
 
-GGS_commandLineOptionMap GGS_commandLineOptionMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_commandLineOptionMap GGS_commandLineOptionMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_char& inValue0,
                                              const GGS_string& inValue1,

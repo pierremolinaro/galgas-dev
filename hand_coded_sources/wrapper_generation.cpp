@@ -43,7 +43,7 @@ wrapperFileCount (const GGS_wrapperFileSortedListEX & inRegularFileSortedList,
 
 void cPtr_C_wrapperToImplement::
 generateHdeclarations_2 (AC_OutputStream & inHfile,
-                         C_Compiler & /* inLexique */) const {
+                         C_CompilerEx & /* inLexique */) const {
   inHfile.appendCppTitleComment (C_String ("Declarations for '") + mWrapperName + "' wrapper") ;
   const PMSInt32 n = wrapperFileCount (mRegularFileSortedList, mDirectorySortedList) ;
   for (PMSInt32 i=0 ; i<n ; i++) {
@@ -219,7 +219,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
 //---------------------------------------------------------------------------*
 
 void cPtr_C_wrapperToImplement::
-generateCppClassImplementation (C_Compiler & /* inLexique */,
+generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                                 AC_OutputStream & inCppFile,
                                 const C_String & /* inTargetFileName */,
                                 PMSInt32 & /* ioPrototypeIndex */,

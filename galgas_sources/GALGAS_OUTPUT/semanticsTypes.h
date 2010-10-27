@@ -117,13 +117,13 @@ class GGS_unifiedTypeMapProxyList : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_unifiedTypeMapProxyList
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_unifiedTypeMapProxyList
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -138,19 +138,19 @@ class GGS_unifiedTypeMapProxyList : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_unifiedTypeMapProxyList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_unifiedTypeMapProxy & _out_0
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_unifiedTypeMapProxy & _out_0
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_unifiedTypeMapProxy & _out_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_unifiedTypeMapProxy & _out_0
                                  COMMA_LOCATION_ARGS) ;
 //--- Handle '.=' operator
@@ -160,7 +160,7 @@ class GGS_unifiedTypeMapProxyList : public AC_GGS_list {
   public : void addAssign_operation (const GGS_unifiedTypeMapProxy & argument_0) ;
 //--- Handling '.' GALGAS operator
   public : GGS_unifiedTypeMapProxyList operator_concat (const GGS_unifiedTypeMapProxyList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_unifiedTypeMapProxy & argument_0
                                 COMMA_LOCATION_ARGS) ;
 //--- Internal Methods
@@ -178,11 +178,11 @@ class GGS_unifiedTypeMapProxyList : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_unifiedTypeMapProxy 
-  reader_mTypeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mTypeAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMTypeAtIndex (C_Compiler & inLexique,
+  modifier_setMTypeAtIndex (C_CompilerEx & inLexique,
                               const GGS_unifiedTypeMapProxy  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -192,7 +192,7 @@ class GGS_unifiedTypeMapProxyList : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_unifiedTypeMapProxyList castFromObject (C_Compiler & inLexique,
+  public : static GGS_unifiedTypeMapProxyList castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -242,7 +242,7 @@ class GGS_constructorMap : public AC_GGS_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_constructorMap castFromObject (C_Compiler & inLexique,
+  public : static GGS_constructorMap castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -264,10 +264,10 @@ class GGS_constructorMap : public AC_GGS_map {
   public : inline const GGS_constructorMap * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_constructorMap constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_constructorMap constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- 'mapWithKeyAndValue' constructor
-  public : static GGS_constructorMap constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+  public : static GGS_constructorMap constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
 ,
                                              const GGS_unifiedTypeMapProxyList & inValue0,
@@ -283,7 +283,7 @@ class GGS_constructorMap : public AC_GGS_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_Compiler & inLexique,
+  public : void modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_unifiedTypeMapProxyList &  inParameter0,
                                 const GGS_bool&  inParameter1,
@@ -292,13 +292,13 @@ class GGS_constructorMap : public AC_GGS_map {
   public : static const utf32 kSearchMessage_searchKey [] ;
 
 //--- 'searchKey' Search Method
-  public : void method_searchKey (C_Compiler & inLexique,
+  public : void method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_unifiedTypeMapProxyList   & outParameter0,
                                 GGS_bool  & outParameter1,
                                 GGS_unifiedTypeMapProxy   & outParameter2 COMMA_LOCATION_ARGS) const ;
 //--- Internal method for inserting an element
-  protected : void insertElement (C_Compiler & inLexique,
+  protected : void insertElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inInitialState,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -308,7 +308,7 @@ class GGS_constructorMap : public AC_GGS_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_Compiler & inLexique,
+  protected : void searchElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inActionIndex,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -318,10 +318,10 @@ class GGS_constructorMap : public AC_GGS_map {
                                   GGS_luint * outIndex
                                   COMMA_LOCATION_ARGS) const ;
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_constructorMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
+  public : static GGS_constructorMap constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
                                             const GGS_constructorMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_constructorMap reader_overriddenMap (C_Compiler & inLexique
+  public : GGS_constructorMap reader_overriddenMap (C_CompilerEx & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Key stringset (for map with an associated automaton)
@@ -382,28 +382,28 @@ class GGS_methodQualifier : public GGS__root {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_methodQualifier castFromObject (C_Compiler & inLexique,
+  public : static GGS_methodQualifier castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
 
 //--- Construction from GALGAS constructor
-  public : static inline GGS_methodQualifier  constructor_isAbstract (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_methodQualifier  constructor_isAbstract (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_methodQualifier (enum_isAbstract) ;
   }
-  public : static inline GGS_methodQualifier  constructor_isBasic (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_methodQualifier  constructor_isBasic (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_methodQualifier (enum_isBasic) ;
   }
-  public : static inline GGS_methodQualifier  constructor_isBasicFinal (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_methodQualifier  constructor_isBasicFinal (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_methodQualifier (enum_isBasicFinal) ;
   }
-  public : static inline GGS_methodQualifier  constructor_isInherited (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_methodQualifier  constructor_isInherited (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_methodQualifier (enum_isInherited) ;
   }
-  public : static inline GGS_methodQualifier  constructor_isOverriding (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_methodQualifier  constructor_isOverriding (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_methodQualifier (enum_isOverriding) ;
   }
-  public : static inline GGS_methodQualifier  constructor_isOverridingAbstract (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_methodQualifier  constructor_isOverridingAbstract (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_methodQualifier (enum_isOverridingAbstract) ;
   }
 
@@ -453,7 +453,7 @@ class GGS_readerMap : public AC_GGS_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_readerMap castFromObject (C_Compiler & inLexique,
+  public : static GGS_readerMap castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -475,10 +475,10 @@ class GGS_readerMap : public AC_GGS_map {
   public : inline const GGS_readerMap * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_readerMap constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_readerMap constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- 'mapWithKeyAndValue' constructor
-  public : static GGS_readerMap constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+  public : static GGS_readerMap constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
 ,
                                              const GGS_bool& inValue0,
@@ -497,7 +497,7 @@ class GGS_readerMap : public AC_GGS_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_Compiler & inLexique,
+  public : void modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_bool&  inParameter0,
                                 const GGS_unifiedTypeMapProxyList &  inParameter1,
@@ -509,7 +509,7 @@ class GGS_readerMap : public AC_GGS_map {
   public : static const utf32 kSearchMessage_searchKey [] ;
 
 //--- 'searchKey' Search Method
-  public : void method_searchKey (C_Compiler & inLexique,
+  public : void method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_bool  & outParameter0,
                                 GGS_unifiedTypeMapProxyList   & outParameter1,
@@ -518,7 +518,7 @@ class GGS_readerMap : public AC_GGS_map {
                                 GGS_unifiedTypeMapProxy   & outParameter4,
                                 GGS_methodQualifier  & outParameter5 COMMA_LOCATION_ARGS) const ;
 //--- Internal method for inserting an element
-  protected : void insertElement (C_Compiler & inLexique,
+  protected : void insertElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inInitialState,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -531,7 +531,7 @@ class GGS_readerMap : public AC_GGS_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_Compiler & inLexique,
+  protected : void searchElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inActionIndex,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -544,7 +544,7 @@ class GGS_readerMap : public AC_GGS_map {
                                   GGS_luint * outIndex
                                   COMMA_LOCATION_ARGS) const ;
 //--- 'insertOrReplace' Modifier
-  public : void modifier_insertOrReplace (C_Compiler & inLexique,
+  public : void modifier_insertOrReplace (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_bool&  inParameter0,
                                 const GGS_unifiedTypeMapProxyList &  inParameter1,
@@ -554,10 +554,10 @@ class GGS_readerMap : public AC_GGS_map {
                                 const GGS_methodQualifier&  inParameter5 COMMA_LOCATION_ARGS) ;
 
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_readerMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
+  public : static GGS_readerMap constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
                                             const GGS_readerMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_readerMap reader_overriddenMap (C_Compiler & inLexique
+  public : GGS_readerMap reader_overriddenMap (C_CompilerEx & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Key stringset (for map with an associated automaton)
@@ -612,13 +612,13 @@ class GGS_formalParameterSignature : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_formalParameterSignature
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_formalParameterSignature
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -633,22 +633,22 @@ class GGS_formalParameterSignature : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_formalParameterSignature * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_unifiedTypeMapProxy & _out_0,
                               GGS_formalArgumentPassingModeAST& _out_1
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_unifiedTypeMapProxy & _out_0,
                              GGS_formalArgumentPassingModeAST& _out_1
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_unifiedTypeMapProxy & _out_0,
                                 GGS_formalArgumentPassingModeAST& _out_1
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_unifiedTypeMapProxy & _out_0,
                                  GGS_formalArgumentPassingModeAST& _out_1
                                  COMMA_LOCATION_ARGS) ;
@@ -660,7 +660,7 @@ class GGS_formalParameterSignature : public AC_GGS_list {
                                 const GGS_formalArgumentPassingModeAST& argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_formalParameterSignature operator_concat (const GGS_formalParameterSignature & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_unifiedTypeMapProxy & argument_0,
                                 const GGS_formalArgumentPassingModeAST& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -681,18 +681,18 @@ class GGS_formalParameterSignature : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_unifiedTypeMapProxy 
-  reader_mFormalArgumentTypeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mFormalArgumentTypeAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_formalArgumentPassingModeAST
-  reader_mFormalArgumentPassingModeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mFormalArgumentPassingModeAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMFormalArgumentTypeAtIndex (C_Compiler & inLexique,
+  modifier_setMFormalArgumentTypeAtIndex (C_CompilerEx & inLexique,
                               const GGS_unifiedTypeMapProxy  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMFormalArgumentPassingModeAtIndex (C_Compiler & inLexique,
+  modifier_setMFormalArgumentPassingModeAtIndex (C_CompilerEx & inLexique,
                               const GGS_formalArgumentPassingModeAST & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -702,7 +702,7 @@ class GGS_formalParameterSignature : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_formalParameterSignature castFromObject (C_Compiler & inLexique,
+  public : static GGS_formalParameterSignature castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -753,7 +753,7 @@ class GGS_modifierMap : public AC_GGS_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_modifierMap castFromObject (C_Compiler & inLexique,
+  public : static GGS_modifierMap castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -775,10 +775,10 @@ class GGS_modifierMap : public AC_GGS_map {
   public : inline const GGS_modifierMap * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_modifierMap constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_modifierMap constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- 'mapWithKeyAndValue' constructor
-  public : static GGS_modifierMap constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+  public : static GGS_modifierMap constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
 ,
                                              const GGS_formalParameterSignature & inValue0,
@@ -794,7 +794,7 @@ class GGS_modifierMap : public AC_GGS_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_Compiler & inLexique,
+  public : void modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_formalParameterSignature &  inParameter0,
                                 const GGS_bool&  inParameter1,
@@ -803,13 +803,13 @@ class GGS_modifierMap : public AC_GGS_map {
   public : static const utf32 kSearchMessage_searchKey [] ;
 
 //--- 'searchKey' Search Method
-  public : void method_searchKey (C_Compiler & inLexique,
+  public : void method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_formalParameterSignature   & outParameter0,
                                 GGS_bool  & outParameter1,
                                 GGS_methodQualifier  & outParameter2 COMMA_LOCATION_ARGS) const ;
 //--- Internal method for inserting an element
-  protected : void insertElement (C_Compiler & inLexique,
+  protected : void insertElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inInitialState,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -819,7 +819,7 @@ class GGS_modifierMap : public AC_GGS_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_Compiler & inLexique,
+  protected : void searchElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inActionIndex,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -829,17 +829,17 @@ class GGS_modifierMap : public AC_GGS_map {
                                   GGS_luint * outIndex
                                   COMMA_LOCATION_ARGS) const ;
 //--- 'insertOrReplace' Modifier
-  public : void modifier_insertOrReplace (C_Compiler & inLexique,
+  public : void modifier_insertOrReplace (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_formalParameterSignature &  inParameter0,
                                 const GGS_bool&  inParameter1,
                                 const GGS_methodQualifier&  inParameter2 COMMA_LOCATION_ARGS) ;
 
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_modifierMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
+  public : static GGS_modifierMap constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
                                             const GGS_modifierMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_modifierMap reader_overriddenMap (C_Compiler & inLexique
+  public : GGS_modifierMap reader_overriddenMap (C_CompilerEx & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Key stringset (for map with an associated automaton)
@@ -892,7 +892,7 @@ class GGS_instanceMethodMap : public AC_GGS_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_instanceMethodMap castFromObject (C_Compiler & inLexique,
+  public : static GGS_instanceMethodMap castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -914,10 +914,10 @@ class GGS_instanceMethodMap : public AC_GGS_map {
   public : inline const GGS_instanceMethodMap * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_instanceMethodMap constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_instanceMethodMap constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- 'mapWithKeyAndValue' constructor
-  public : static GGS_instanceMethodMap constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+  public : static GGS_instanceMethodMap constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
 ,
                                              const GGS_bool& inValue0,
@@ -935,7 +935,7 @@ class GGS_instanceMethodMap : public AC_GGS_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_Compiler & inLexique,
+  public : void modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_bool&  inParameter0,
                                 const GGS_formalParameterSignature &  inParameter1,
@@ -948,7 +948,7 @@ class GGS_instanceMethodMap : public AC_GGS_map {
   public : static const utf32 kSearchMessage_searchInheritedKey [] ;
 
 //--- 'searchKey' Search Method
-  public : void method_searchKey (C_Compiler & inLexique,
+  public : void method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_bool  & outParameter0,
                                 GGS_formalParameterSignature   & outParameter1,
@@ -956,7 +956,7 @@ class GGS_instanceMethodMap : public AC_GGS_map {
                                 GGS_bool  & outParameter3,
                                 GGS_methodQualifier  & outParameter4 COMMA_LOCATION_ARGS) const ;
 //--- 'searchInheritedKey' Search Method
-  public : void method_searchInheritedKey (C_Compiler & inLexique,
+  public : void method_searchInheritedKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_bool  & outParameter0,
                                 GGS_formalParameterSignature   & outParameter1,
@@ -964,7 +964,7 @@ class GGS_instanceMethodMap : public AC_GGS_map {
                                 GGS_bool  & outParameter3,
                                 GGS_methodQualifier  & outParameter4 COMMA_LOCATION_ARGS) const ;
 //--- Internal method for inserting an element
-  protected : void insertElement (C_Compiler & inLexique,
+  protected : void insertElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inInitialState,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -976,7 +976,7 @@ class GGS_instanceMethodMap : public AC_GGS_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_Compiler & inLexique,
+  protected : void searchElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inActionIndex,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -988,10 +988,10 @@ class GGS_instanceMethodMap : public AC_GGS_map {
                                   GGS_luint * outIndex
                                   COMMA_LOCATION_ARGS) const ;
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_instanceMethodMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
+  public : static GGS_instanceMethodMap constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
                                             const GGS_instanceMethodMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_instanceMethodMap reader_overriddenMap (C_Compiler & inLexique
+  public : GGS_instanceMethodMap reader_overriddenMap (C_CompilerEx & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Key stringset (for map with an associated automaton)
@@ -1046,7 +1046,7 @@ class GGS_classMethodMap : public AC_GGS_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_classMethodMap castFromObject (C_Compiler & inLexique,
+  public : static GGS_classMethodMap castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1068,10 +1068,10 @@ class GGS_classMethodMap : public AC_GGS_map {
   public : inline const GGS_classMethodMap * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_classMethodMap constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_classMethodMap constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- 'mapWithKeyAndValue' constructor
-  public : static GGS_classMethodMap constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+  public : static GGS_classMethodMap constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
 ,
                                              const GGS_formalParameterSignature & inValue0,
@@ -1086,7 +1086,7 @@ class GGS_classMethodMap : public AC_GGS_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_Compiler & inLexique,
+  public : void modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_formalParameterSignature &  inParameter0,
                                 const GGS_bool&  inParameter1 COMMA_LOCATION_ARGS) ;
@@ -1094,12 +1094,12 @@ class GGS_classMethodMap : public AC_GGS_map {
   public : static const utf32 kSearchMessage_searchKey [] ;
 
 //--- 'searchKey' Search Method
-  public : void method_searchKey (C_Compiler & inLexique,
+  public : void method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_formalParameterSignature   & outParameter0,
                                 GGS_bool  & outParameter1 COMMA_LOCATION_ARGS) const ;
 //--- Internal method for inserting an element
-  protected : void insertElement (C_Compiler & inLexique,
+  protected : void insertElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inInitialState,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -1108,7 +1108,7 @@ class GGS_classMethodMap : public AC_GGS_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_Compiler & inLexique,
+  protected : void searchElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inActionIndex,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -1117,16 +1117,16 @@ class GGS_classMethodMap : public AC_GGS_map {
                                   GGS_luint * outIndex
                                   COMMA_LOCATION_ARGS) const ;
 //--- 'insertOrReplace' Modifier
-  public : void modifier_insertOrReplace (C_Compiler & inLexique,
+  public : void modifier_insertOrReplace (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_formalParameterSignature &  inParameter0,
                                 const GGS_bool&  inParameter1 COMMA_LOCATION_ARGS) ;
 
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_classMethodMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
+  public : static GGS_classMethodMap constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
                                             const GGS_classMethodMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_classMethodMap reader_overriddenMap (C_Compiler & inLexique
+  public : GGS_classMethodMap reader_overriddenMap (C_CompilerEx & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Key stringset (for map with an associated automaton)
@@ -1178,7 +1178,7 @@ class GGS_withAccessorMap : public AC_GGS_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_withAccessorMap castFromObject (C_Compiler & inLexique,
+  public : static GGS_withAccessorMap castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1200,10 +1200,10 @@ class GGS_withAccessorMap : public AC_GGS_map {
   public : inline const GGS_withAccessorMap * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_withAccessorMap constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_withAccessorMap constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- 'mapWithKeyAndValue' constructor
-  public : static GGS_withAccessorMap constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+  public : static GGS_withAccessorMap constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
 ,
                                              const GGS_unifiedTypeMapProxy & inValue0
@@ -1217,18 +1217,18 @@ class GGS_withAccessorMap : public AC_GGS_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_Compiler & inLexique,
+  public : void modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_unifiedTypeMapProxy &  inParameter0 COMMA_LOCATION_ARGS) ;
 
   public : static const utf32 kSearchMessage_searchKey [] ;
 
 //--- 'searchKey' Search Method
-  public : void method_searchKey (C_Compiler & inLexique,
+  public : void method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_unifiedTypeMapProxy   & outParameter0 COMMA_LOCATION_ARGS) const ;
 //--- Internal method for inserting an element
-  protected : void insertElement (C_Compiler & inLexique,
+  protected : void insertElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inInitialState,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -1236,7 +1236,7 @@ class GGS_withAccessorMap : public AC_GGS_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_Compiler & inLexique,
+  protected : void searchElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inActionIndex,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -1244,10 +1244,10 @@ class GGS_withAccessorMap : public AC_GGS_map {
                                   GGS_luint * outIndex
                                   COMMA_LOCATION_ARGS) const ;
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_withAccessorMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
+  public : static GGS_withAccessorMap constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
                                             const GGS_withAccessorMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_withAccessorMap reader_overriddenMap (C_Compiler & inLexique
+  public : GGS_withAccessorMap reader_overriddenMap (C_CompilerEx & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Key stringset (for map with an associated automaton)
@@ -1297,13 +1297,13 @@ class GGS_enumerationDescriptorList : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_enumerationDescriptorList
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_enumerationDescriptorList
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -1318,22 +1318,22 @@ class GGS_enumerationDescriptorList : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_enumerationDescriptorList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_unifiedTypeMapProxy & _out_0,
                               GGS_string& _out_1
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_unifiedTypeMapProxy & _out_0,
                              GGS_string& _out_1
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_unifiedTypeMapProxy & _out_0,
                                 GGS_string& _out_1
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_unifiedTypeMapProxy & _out_0,
                                  GGS_string& _out_1
                                  COMMA_LOCATION_ARGS) ;
@@ -1345,7 +1345,7 @@ class GGS_enumerationDescriptorList : public AC_GGS_list {
                                 const GGS_string& argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_enumerationDescriptorList operator_concat (const GGS_enumerationDescriptorList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_unifiedTypeMapProxy & argument_0,
                                 const GGS_string& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -1366,18 +1366,18 @@ class GGS_enumerationDescriptorList : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_unifiedTypeMapProxy 
-  reader_mEnumeratedTypeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mEnumeratedTypeAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_string
-  reader_mEnumerationNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mEnumerationNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMEnumeratedTypeAtIndex (C_Compiler & inLexique,
+  modifier_setMEnumeratedTypeAtIndex (C_CompilerEx & inLexique,
                               const GGS_unifiedTypeMapProxy  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMEnumerationNameAtIndex (C_Compiler & inLexique,
+  modifier_setMEnumerationNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -1387,7 +1387,7 @@ class GGS_enumerationDescriptorList : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_enumerationDescriptorList castFromObject (C_Compiler & inLexique,
+  public : static GGS_enumerationDescriptorList castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1437,13 +1437,13 @@ class GGS_typedAttributeList : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_typedAttributeList
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_typedAttributeList
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -1458,22 +1458,22 @@ class GGS_typedAttributeList : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_typedAttributeList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_unifiedTypeMapProxy & _out_0,
                               GGS_lstring & _out_1
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_unifiedTypeMapProxy & _out_0,
                              GGS_lstring & _out_1
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_unifiedTypeMapProxy & _out_0,
                                 GGS_lstring & _out_1
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_unifiedTypeMapProxy & _out_0,
                                  GGS_lstring & _out_1
                                  COMMA_LOCATION_ARGS) ;
@@ -1485,7 +1485,7 @@ class GGS_typedAttributeList : public AC_GGS_list {
                                 const GGS_lstring & argument_1) ;
 //--- Handling '.' GALGAS operator
   public : GGS_typedAttributeList operator_concat (const GGS_typedAttributeList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_unifiedTypeMapProxy & argument_0,
                                 const GGS_lstring & argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -1506,18 +1506,18 @@ class GGS_typedAttributeList : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_unifiedTypeMapProxy 
-  reader_mAttributeTypeProxyAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mAttributeTypeProxyAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_lstring 
-  reader_mAttributeNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mAttributeNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMAttributeTypeProxyAtIndex (C_Compiler & inLexique,
+  modifier_setMAttributeTypeProxyAtIndex (C_CompilerEx & inLexique,
                               const GGS_unifiedTypeMapProxy  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMAttributeNameAtIndex (C_Compiler & inLexique,
+  modifier_setMAttributeNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -1527,7 +1527,7 @@ class GGS_typedAttributeList : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_typedAttributeList castFromObject (C_Compiler & inLexique,
+  public : static GGS_typedAttributeList castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1586,61 +1586,61 @@ class GGS_predefinedTypeKindEnum : public GGS__root {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_predefinedTypeKindEnum castFromObject (C_Compiler & inLexique,
+  public : static GGS_predefinedTypeKindEnum castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
 
 //--- Construction from GALGAS constructor
-  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_application (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_application (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_predefinedTypeKindEnum (enum_predefined_application) ;
   }
-  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_binaryset (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_binaryset (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_predefinedTypeKindEnum (enum_predefined_binaryset) ;
   }
-  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_bool (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_bool (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_predefinedTypeKindEnum (enum_predefined_bool) ;
   }
-  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_char (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_char (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_predefinedTypeKindEnum (enum_predefined_char) ;
   }
-  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_data (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_data (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_predefinedTypeKindEnum (enum_predefined_data) ;
   }
-  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_double (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_double (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_predefinedTypeKindEnum (enum_predefined_double) ;
   }
-  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_filewrapper (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_filewrapper (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_predefinedTypeKindEnum (enum_predefined_filewrapper) ;
   }
-  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_function (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_function (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_predefinedTypeKindEnum (enum_predefined_function) ;
   }
-  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_location (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_location (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_predefinedTypeKindEnum (enum_predefined_location) ;
   }
-  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_object (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_object (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_predefinedTypeKindEnum (enum_predefined_object) ;
   }
-  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_sint (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_sint (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_predefinedTypeKindEnum (enum_predefined_sint) ;
   }
-  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_sint64 (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_sint64 (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_predefinedTypeKindEnum (enum_predefined_sint64) ;
   }
-  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_string (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_string (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_predefinedTypeKindEnum (enum_predefined_string) ;
   }
-  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_stringset (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_stringset (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_predefinedTypeKindEnum (enum_predefined_stringset) ;
   }
-  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_type (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_type (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_predefinedTypeKindEnum (enum_predefined_type) ;
   }
-  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_uint (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_uint (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_predefinedTypeKindEnum (enum_predefined_uint) ;
   }
-  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_uint64 (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_predefinedTypeKindEnum  constructor_predefined_uint64 (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_predefinedTypeKindEnum (enum_predefined_uint64) ;
   }
 
@@ -1698,42 +1698,42 @@ class GGS_typeKindEnum : public GGS__root {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_typeKindEnum castFromObject (C_Compiler & inLexique,
+  public : static GGS_typeKindEnum castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
 
 //--- Construction from GALGAS constructor
-  public : static inline GGS_typeKindEnum  constructor_classType (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_typeKindEnum  constructor_classType (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_typeKindEnum (enum_classType) ;
   }
-  public : static inline GGS_typeKindEnum  constructor_enumType (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_typeKindEnum  constructor_enumType (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_typeKindEnum (enum_enumType) ;
   }
-  public : static inline GGS_typeKindEnum  constructor_listMapType (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_typeKindEnum  constructor_listMapType (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_typeKindEnum (enum_listMapType) ;
   }
-  public : static inline GGS_typeKindEnum  constructor_listType (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_typeKindEnum  constructor_listType (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_typeKindEnum (enum_listType) ;
   }
-  public : static inline GGS_typeKindEnum  constructor_mapProxyType (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_typeKindEnum  constructor_mapProxyType (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_typeKindEnum (enum_mapProxyType) ;
   }
-  public : static inline GGS_typeKindEnum  constructor_mapType (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_typeKindEnum  constructor_mapType (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_typeKindEnum (enum_mapType) ;
   }
-  public : static inline GGS_typeKindEnum  constructor_predefinedType (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_typeKindEnum  constructor_predefinedType (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_typeKindEnum (enum_predefinedType) ;
   }
-  public : static inline GGS_typeKindEnum  constructor_sortedListType (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_typeKindEnum  constructor_sortedListType (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_typeKindEnum (enum_sortedListType) ;
   }
-  public : static inline GGS_typeKindEnum  constructor_structType (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+  public : static inline GGS_typeKindEnum  constructor_structType (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
     return GGS_typeKindEnum (enum_structType) ;
   }
 
 //--- Readers
-  public : GGS_string reader_kind (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_string reader_kind (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- 'description' reader
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
@@ -1783,13 +1783,13 @@ class GGS_nativeAttributeList : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_nativeAttributeList
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_nativeAttributeList
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -1804,7 +1804,7 @@ class GGS_nativeAttributeList : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_nativeAttributeList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_string& _out_0,
                               GGS_bool& _out_1,
                               GGS_string& _out_2,
@@ -1814,7 +1814,7 @@ class GGS_nativeAttributeList : public AC_GGS_list {
                               GGS_bool& _out_6
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_string& _out_0,
                              GGS_bool& _out_1,
                              GGS_string& _out_2,
@@ -1824,7 +1824,7 @@ class GGS_nativeAttributeList : public AC_GGS_list {
                              GGS_bool& _out_6
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_string& _out_0,
                                 GGS_bool& _out_1,
                                 GGS_string& _out_2,
@@ -1834,7 +1834,7 @@ class GGS_nativeAttributeList : public AC_GGS_list {
                                 GGS_bool& _out_6
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_string& _out_0,
                                  GGS_bool& _out_1,
                                  GGS_string& _out_2,
@@ -1856,7 +1856,7 @@ class GGS_nativeAttributeList : public AC_GGS_list {
                                 const GGS_bool& argument_6) ;
 //--- Handling '.' GALGAS operator
   public : GGS_nativeAttributeList operator_concat (const GGS_nativeAttributeList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_bool& argument_1,
                                 const GGS_string& argument_2,
@@ -1892,53 +1892,53 @@ class GGS_nativeAttributeList : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_string
-  reader_mCppClassNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mCppClassNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_bool
-  reader_mIsPointerAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mIsPointerAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_string
-  reader_mAttributeNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mAttributeNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_bool
-  reader_mUseReferenceForConstructorAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mUseReferenceForConstructorAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_string
-  reader_mGetterNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mGetterNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_string
-  reader_mDefaultValueAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mDefaultValueAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_bool
-  reader_mIsConstAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mIsConstAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMCppClassNameAtIndex (C_Compiler & inLexique,
+  modifier_setMCppClassNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMIsPointerAtIndex (C_Compiler & inLexique,
+  modifier_setMIsPointerAtIndex (C_CompilerEx & inLexique,
                               const GGS_bool & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMAttributeNameAtIndex (C_Compiler & inLexique,
+  modifier_setMAttributeNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMUseReferenceForConstructorAtIndex (C_Compiler & inLexique,
+  modifier_setMUseReferenceForConstructorAtIndex (C_CompilerEx & inLexique,
                               const GGS_bool & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMGetterNameAtIndex (C_Compiler & inLexique,
+  modifier_setMGetterNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMDefaultValueAtIndex (C_Compiler & inLexique,
+  modifier_setMDefaultValueAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMIsConstAtIndex (C_Compiler & inLexique,
+  modifier_setMIsConstAtIndex (C_CompilerEx & inLexique,
                               const GGS_bool & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -1948,7 +1948,7 @@ class GGS_nativeAttributeList : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_nativeAttributeList castFromObject (C_Compiler & inLexique,
+  public : static GGS_nativeAttributeList castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -1985,7 +1985,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_binaryAddOperat
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_binaryAddOperator (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_binaryAddOperator (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -1997,7 +1997,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_binarySubOperat
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_binarySubOperator (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_binarySubOperator (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2009,7 +2009,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_binaryMulOperat
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_binaryMulOperator (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_binaryMulOperator (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2021,7 +2021,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_binaryDivOperat
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_binaryDivOperator (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_binaryDivOperator (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2033,7 +2033,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_binaryModOperat
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_binaryModOperator (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_binaryModOperator (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2045,7 +2045,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_binaryShiftOper
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_binaryShiftOperator (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_binaryShiftOperator (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2057,7 +2057,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_unaryPlusOperat
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_unaryPlusOperator (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_unaryPlusOperator (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2069,7 +2069,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_unaryMinusOpera
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_unaryMinusOperator (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_unaryMinusOperator (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2081,7 +2081,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_unaryTildeOpera
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_unaryTildeOperator (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_unaryTildeOperator (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2093,7 +2093,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_incDecOperator 
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_incDecOperator (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_incDecOperator (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2105,7 +2105,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_binaryAndOperat
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_binaryAndOperator (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_binaryAndOperator (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2117,7 +2117,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_binaryOrOperato
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_binaryOrOperator (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_binaryOrOperator (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2129,7 +2129,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_binaryXorOperat
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_binaryXorOperator (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_binaryXorOperator (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2141,7 +2141,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_unaryNotOperato
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_unaryNotOperator (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_unaryNotOperator (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2153,7 +2153,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_binaryConcatOpe
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_binaryConcatOperator (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_binaryConcatOperator (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2165,7 +2165,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_dotAssignOperat
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_dotAssignOperator (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_dotAssignOperator (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2177,7 +2177,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_isComparable ;
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_isComparable (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_isComparable (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2189,7 +2189,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_generateConstru
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_generateConstructorWithSelfObject (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_generateConstructorWithSelfObject (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2201,7 +2201,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_generateEnumera
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_generateEnumerationHelperMethods (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_generateEnumerationHelperMethods (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2213,7 +2213,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_generateCppCons
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_generateCppConstructorWithAllAttributeList (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_generateCppConstructorWithAllAttributeList (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2225,7 +2225,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_generateCppCons
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_generateCppConstructorWithCurrentAttributeList (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_generateCppConstructorWithCurrentAttributeList (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2237,7 +2237,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_generateCppCons
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_generateCppConstructorWithNativeAttributeList (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_generateCppConstructorWithNativeAttributeList (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2249,7 +2249,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_doNotGenererate
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_doNotGenererateObjectCompare (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_doNotGenererateObjectCompare (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2261,7 +2261,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_generateDescrip
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_generateDescriptionReaderUtilityMethod (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_generateDescriptionReaderUtilityMethod (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2273,7 +2273,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_generateNativeN
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_generateNativeNewConstructor (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_generateNativeNewConstructor (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2285,7 +2285,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_generateCopyCon
 
 //---------------------------------------------------------------------------*
 
-GGS_uint  function_generateCopyConstructorAndAssignmentOperator (C_Compiler & COMMA_LOCATION_ARGS) ;
+GGS_uint  function_generateCopyConstructorAndAssignmentOperator (C_CompilerEx & COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2316,7 +2316,7 @@ class GGS_attributeMap : public AC_GGS_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_attributeMap castFromObject (C_Compiler & inLexique,
+  public : static GGS_attributeMap castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -2338,10 +2338,10 @@ class GGS_attributeMap : public AC_GGS_map {
   public : inline const GGS_attributeMap * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_attributeMap constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_attributeMap constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- 'mapWithKeyAndValue' constructor
-  public : static GGS_attributeMap constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+  public : static GGS_attributeMap constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
 ,
                                              const GGS_unifiedTypeMapProxy & inValue0
@@ -2355,18 +2355,18 @@ class GGS_attributeMap : public AC_GGS_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_Compiler & inLexique,
+  public : void modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_unifiedTypeMapProxy &  inParameter0 COMMA_LOCATION_ARGS) ;
 
   public : static const utf32 kSearchMessage_searchKey [] ;
 
 //--- 'searchKey' Search Method
-  public : void method_searchKey (C_Compiler & inLexique,
+  public : void method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_unifiedTypeMapProxy   & outParameter0 COMMA_LOCATION_ARGS) const ;
 //--- Internal method for inserting an element
-  protected : void insertElement (C_Compiler & inLexique,
+  protected : void insertElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inInitialState,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -2374,7 +2374,7 @@ class GGS_attributeMap : public AC_GGS_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_Compiler & inLexique,
+  protected : void searchElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inActionIndex,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -2382,10 +2382,10 @@ class GGS_attributeMap : public AC_GGS_map {
                                   GGS_luint * outIndex
                                   COMMA_LOCATION_ARGS) const ;
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_attributeMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
+  public : static GGS_attributeMap constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
                                             const GGS_attributeMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_attributeMap reader_overriddenMap (C_Compiler & inLexique
+  public : GGS_attributeMap reader_overriddenMap (C_CompilerEx & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Key stringset (for map with an associated automaton)
@@ -2436,7 +2436,7 @@ class GGS_unifiedTypeMap : public AC_GGS_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_unifiedTypeMap castFromObject (C_Compiler & inLexique,
+  public : static GGS_unifiedTypeMap castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -2458,10 +2458,10 @@ class GGS_unifiedTypeMap : public AC_GGS_map {
   public : inline const GGS_unifiedTypeMap * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_unifiedTypeMap constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_unifiedTypeMap constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- 'mapWithKeyAndValue' constructor
-  public : static GGS_unifiedTypeMap constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+  public : static GGS_unifiedTypeMap constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
 ,
                                              const GGS_bool& inValue0,
@@ -2495,7 +2495,7 @@ class GGS_unifiedTypeMap : public AC_GGS_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_Compiler & inLexique,
+  public : void modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_bool&  inParameter0,
                                 const GGS_unifiedTypeMapProxy &  inParameter1,
@@ -2522,7 +2522,7 @@ class GGS_unifiedTypeMap : public AC_GGS_map {
   public : static const utf32 kSearchMessage_searchKey [] ;
 
 //--- 'searchKey' Search Method
-  public : void method_searchKey (C_Compiler & inLexique,
+  public : void method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_bool  & outParameter0,
                                 GGS_unifiedTypeMapProxy   & outParameter1,
@@ -2546,7 +2546,7 @@ class GGS_unifiedTypeMap : public AC_GGS_map {
                                 GGS_mapSearchMethodListAST   & outParameter19,
                                 GGS_withAccessorMap   & outParameter20 COMMA_LOCATION_ARGS) const ;
 //--- Internal method for inserting an element
-  protected : void insertElement (C_Compiler & inLexique,
+  protected : void insertElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inInitialState,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -2574,7 +2574,7 @@ class GGS_unifiedTypeMap : public AC_GGS_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_Compiler & inLexique,
+  protected : void searchElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inActionIndex,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -2602,10 +2602,10 @@ class GGS_unifiedTypeMap : public AC_GGS_map {
                                   GGS_luint * outIndex
                                   COMMA_LOCATION_ARGS) const ;
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_unifiedTypeMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
+  public : static GGS_unifiedTypeMap constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
                                             const GGS_unifiedTypeMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_unifiedTypeMap reader_overriddenMap (C_Compiler & inLexique
+  public : GGS_unifiedTypeMap reader_overriddenMap (C_CompilerEx & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Key stringset (for map with an associated automaton)
@@ -2660,7 +2660,7 @@ extern const C_galgas_type_descriptorEX kTypeDescriptor_GGS_unifiedTypeMapProxy 
 class GGS_unifiedTypeMapProxy : public AC_GGS_mapindex {
 //--- 'null' constructor
   public : static GGS_unifiedTypeMapProxy
-  constructor_null (C_Compiler & inLexique
+  constructor_null (C_CompilerEx & inLexique
                     COMMA_LOCATION_ARGS) ;
 
 //--- Comparison operators
@@ -2675,14 +2675,14 @@ class GGS_unifiedTypeMapProxy : public AC_GGS_mapindex {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_unifiedTypeMapProxy castFromObject (C_Compiler & inLexique,
+  public : static GGS_unifiedTypeMapProxy castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
 
 //--- Type Method 'makeRegularProxy'
   public : static void
-  class_method_makeRegularProxy (C_Compiler & inLexique,
+  class_method_makeRegularProxy (C_CompilerEx & inLexique,
                                  GGS_unifiedTypeMap & ioMap,
                                  const GGS_string & inKey,
                                  GGS_unifiedTypeMapProxy & outIndex
@@ -2695,29 +2695,29 @@ class GGS_unifiedTypeMapProxy : public AC_GGS_mapindex {
   }
 
 //--- Attribute access
-  public : GGS_bool reader_mIsConcrete (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_unifiedTypeMapProxy  reader_mSuperType (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_typeKindEnum reader_mTypeKindEnum (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_typedAttributeList  reader_mAllTypedAttributeList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_attributeMap  reader_mAttributeMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_typedAttributeList  reader_mCurrentTypedAttributeList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_constructorMap  reader_mConstructorMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_readerMap  reader_mReaderMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_modifierMap  reader_mModifierMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_instanceMethodMap  reader_mInstanceMethodMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_classMethodMap  reader_mClassMethodMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_enumerationDescriptorList  reader_mEnumerationDescriptor (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_uint  reader_mHandledOperatorFlags (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_unifiedTypeMapProxyList  reader_mAddAssignOperatorArguments (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_nativeAttributeList  reader_mNativeAttributeList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_stringset  reader_mEnumConstantSet (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_lstringlist  reader_mEnumConstantList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_typedAttributeList  reader_mPrivateDataMemberList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_mapSearchMethodListAST  reader_mMapSearchMethodList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_mapSearchMethodListAST  reader_mMapProxySearchConstructorList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_withAccessorMap  reader_mWithAccessorMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_bool reader_mIsConcrete (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_unifiedTypeMapProxy  reader_mSuperType (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_typeKindEnum reader_mTypeKindEnum (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_typedAttributeList  reader_mAllTypedAttributeList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_attributeMap  reader_mAttributeMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_typedAttributeList  reader_mCurrentTypedAttributeList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_constructorMap  reader_mConstructorMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_readerMap  reader_mReaderMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_modifierMap  reader_mModifierMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_instanceMethodMap  reader_mInstanceMethodMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_classMethodMap  reader_mClassMethodMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_enumerationDescriptorList  reader_mEnumerationDescriptor (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_uint  reader_mHandledOperatorFlags (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_unifiedTypeMapProxyList  reader_mAddAssignOperatorArguments (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_nativeAttributeList  reader_mNativeAttributeList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_stringset  reader_mEnumConstantSet (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstringlist  reader_mEnumConstantList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_typedAttributeList  reader_mPrivateDataMemberList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_mapSearchMethodListAST  reader_mMapSearchMethodList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_mapSearchMethodListAST  reader_mMapProxySearchConstructorList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_withAccessorMap  reader_mWithAccessorMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 //--- Constructors from map readers
-  public : static GGS_unifiedTypeMapProxy constructor_searchKey (C_Compiler & inLexique,
+  public : static GGS_unifiedTypeMapProxy constructor_searchKey (C_CompilerEx & inLexique,
               const GGS_unifiedTypeMap & inMap,
               const GGS_lstring & inKey
               COMMA_LOCATION_ARGS) ;
@@ -2746,7 +2746,7 @@ class GGS_predefinedTypeAST : public GGS_semanticDeclarationAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_predefinedTypeAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
@@ -2761,8 +2761,8 @@ class GGS_predefinedTypeAST : public GGS_semanticDeclarationAST {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_string reader_mPredefinedTypeName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_predefinedTypeKindEnum reader_mKind (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_string reader_mPredefinedTypeName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_predefinedTypeKindEnum reader_mKind (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -2780,7 +2780,7 @@ class GGS_predefinedTypeAST : public GGS_semanticDeclarationAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_predefinedTypeAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_predefinedTypeAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -2814,14 +2814,14 @@ class GGS_applicationPredefinedTypeAST : public GGS_predefinedTypeAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_applicationPredefinedTypeAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_applicationPredefinedTypeAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_applicationPredefinedTypeAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_predefinedTypeKindEnum& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -2852,7 +2852,7 @@ class GGS_applicationPredefinedTypeAST : public GGS_predefinedTypeAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_applicationPredefinedTypeAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_applicationPredefinedTypeAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -2886,14 +2886,14 @@ class GGS_objectPredefinedTypeAST : public GGS_predefinedTypeAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_objectPredefinedTypeAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_objectPredefinedTypeAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_objectPredefinedTypeAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_predefinedTypeKindEnum& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -2924,7 +2924,7 @@ class GGS_objectPredefinedTypeAST : public GGS_predefinedTypeAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_objectPredefinedTypeAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_objectPredefinedTypeAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -2958,14 +2958,14 @@ class GGS_filewrapperPredefinedTypeAST : public GGS_predefinedTypeAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_filewrapperPredefinedTypeAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_filewrapperPredefinedTypeAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_filewrapperPredefinedTypeAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_predefinedTypeKindEnum& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -2996,7 +2996,7 @@ class GGS_filewrapperPredefinedTypeAST : public GGS_predefinedTypeAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_filewrapperPredefinedTypeAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_filewrapperPredefinedTypeAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3030,14 +3030,14 @@ class GGS_binarysetPredefinedTypeAST : public GGS_predefinedTypeAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_binarysetPredefinedTypeAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_binarysetPredefinedTypeAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_binarysetPredefinedTypeAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_predefinedTypeKindEnum& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -3068,7 +3068,7 @@ class GGS_binarysetPredefinedTypeAST : public GGS_predefinedTypeAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_binarysetPredefinedTypeAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_binarysetPredefinedTypeAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3102,14 +3102,14 @@ class GGS_boolPredefinedTypeAST : public GGS_predefinedTypeAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_boolPredefinedTypeAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_boolPredefinedTypeAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_boolPredefinedTypeAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_predefinedTypeKindEnum& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -3140,7 +3140,7 @@ class GGS_boolPredefinedTypeAST : public GGS_predefinedTypeAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_boolPredefinedTypeAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_boolPredefinedTypeAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3174,14 +3174,14 @@ class GGS_uintPredefinedTypeAST : public GGS_predefinedTypeAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_uintPredefinedTypeAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_uintPredefinedTypeAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_uintPredefinedTypeAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_predefinedTypeKindEnum& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -3212,7 +3212,7 @@ class GGS_uintPredefinedTypeAST : public GGS_predefinedTypeAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_uintPredefinedTypeAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_uintPredefinedTypeAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3246,14 +3246,14 @@ class GGS_uint64PredefinedTypeAST : public GGS_predefinedTypeAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_uint64PredefinedTypeAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_uint64PredefinedTypeAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_uint64PredefinedTypeAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_predefinedTypeKindEnum& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -3284,7 +3284,7 @@ class GGS_uint64PredefinedTypeAST : public GGS_predefinedTypeAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_uint64PredefinedTypeAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_uint64PredefinedTypeAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3318,14 +3318,14 @@ class GGS_sintPredefinedTypeAST : public GGS_predefinedTypeAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_sintPredefinedTypeAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_sintPredefinedTypeAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_sintPredefinedTypeAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_predefinedTypeKindEnum& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -3356,7 +3356,7 @@ class GGS_sintPredefinedTypeAST : public GGS_predefinedTypeAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_sintPredefinedTypeAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_sintPredefinedTypeAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3390,14 +3390,14 @@ class GGS_sint64PredefinedTypeAST : public GGS_predefinedTypeAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_sint64PredefinedTypeAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_sint64PredefinedTypeAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_sint64PredefinedTypeAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_predefinedTypeKindEnum& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -3428,7 +3428,7 @@ class GGS_sint64PredefinedTypeAST : public GGS_predefinedTypeAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_sint64PredefinedTypeAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_sint64PredefinedTypeAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3462,14 +3462,14 @@ class GGS_charPredefinedTypeAST : public GGS_predefinedTypeAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_charPredefinedTypeAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_charPredefinedTypeAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_charPredefinedTypeAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_predefinedTypeKindEnum& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -3500,7 +3500,7 @@ class GGS_charPredefinedTypeAST : public GGS_predefinedTypeAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_charPredefinedTypeAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_charPredefinedTypeAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3534,14 +3534,14 @@ class GGS_doublePredefinedTypeAST : public GGS_predefinedTypeAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_doublePredefinedTypeAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_doublePredefinedTypeAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_doublePredefinedTypeAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_predefinedTypeKindEnum& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -3572,7 +3572,7 @@ class GGS_doublePredefinedTypeAST : public GGS_predefinedTypeAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_doublePredefinedTypeAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_doublePredefinedTypeAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3606,14 +3606,14 @@ class GGS_stringPredefinedTypeAST : public GGS_predefinedTypeAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_stringPredefinedTypeAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_stringPredefinedTypeAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_stringPredefinedTypeAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_predefinedTypeKindEnum& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -3644,7 +3644,7 @@ class GGS_stringPredefinedTypeAST : public GGS_predefinedTypeAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_stringPredefinedTypeAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_stringPredefinedTypeAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3678,14 +3678,14 @@ class GGS_locationPredefinedTypeAST : public GGS_predefinedTypeAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_locationPredefinedTypeAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_locationPredefinedTypeAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_locationPredefinedTypeAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_predefinedTypeKindEnum& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -3716,7 +3716,7 @@ class GGS_locationPredefinedTypeAST : public GGS_predefinedTypeAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_locationPredefinedTypeAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_locationPredefinedTypeAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3750,14 +3750,14 @@ class GGS_stringsetPredefinedTypeAST : public GGS_predefinedTypeAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_stringsetPredefinedTypeAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_stringsetPredefinedTypeAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_stringsetPredefinedTypeAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_predefinedTypeKindEnum& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -3788,7 +3788,7 @@ class GGS_stringsetPredefinedTypeAST : public GGS_predefinedTypeAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_stringsetPredefinedTypeAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_stringsetPredefinedTypeAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3822,14 +3822,14 @@ class GGS_functionPredefinedTypeAST : public GGS_predefinedTypeAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_functionPredefinedTypeAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_functionPredefinedTypeAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_functionPredefinedTypeAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_predefinedTypeKindEnum& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -3860,7 +3860,7 @@ class GGS_functionPredefinedTypeAST : public GGS_predefinedTypeAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_functionPredefinedTypeAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_functionPredefinedTypeAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3894,14 +3894,14 @@ class GGS_typePredefinedTypeAST : public GGS_predefinedTypeAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_typePredefinedTypeAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_typePredefinedTypeAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_typePredefinedTypeAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_predefinedTypeKindEnum& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -3932,7 +3932,7 @@ class GGS_typePredefinedTypeAST : public GGS_predefinedTypeAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_typePredefinedTypeAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_typePredefinedTypeAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -3966,14 +3966,14 @@ class GGS_dataPredefinedTypeAST : public GGS_predefinedTypeAST {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_dataPredefinedTypeAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_dataPredefinedTypeAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_dataPredefinedTypeAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_string& argument_0,
                                 const GGS_predefinedTypeKindEnum& argument_1
                                 COMMA_LOCATION_ARGS) ;
@@ -4004,7 +4004,7 @@ class GGS_dataPredefinedTypeAST : public GGS_predefinedTypeAST {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_dataPredefinedTypeAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_dataPredefinedTypeAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -4021,7 +4021,7 @@ extern C_galgasClassRunTimeInformationEX gClassInfoFor__dataPredefinedTypeAST ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__predefinedTypeAST__getConstructorMap)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__predefinedTypeAST__getConstructorMap)  (C_CompilerEx & inLexique,
                                 const cPtr_predefinedTypeAST * inObjectPtr,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_constructorMap  & var_cas_outConstructorMap
@@ -4044,7 +4044,7 @@ findCategoryMethod__predefinedTypeAST__getConstructorMap (AC_galgasClassRunTimeI
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__predefinedTypeAST__getReaderMap)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__predefinedTypeAST__getReaderMap)  (C_CompilerEx & inLexique,
                                 const cPtr_predefinedTypeAST * inObjectPtr,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_readerMap  & var_cas_outReaderMap
@@ -4067,7 +4067,7 @@ findCategoryMethod__predefinedTypeAST__getReaderMap (AC_galgasClassRunTimeInform
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__predefinedTypeAST__getModifierMap)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__predefinedTypeAST__getModifierMap)  (C_CompilerEx & inLexique,
                                 const cPtr_predefinedTypeAST * inObjectPtr,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_modifierMap  & var_cas_outModifierMap
@@ -4090,7 +4090,7 @@ findCategoryMethod__predefinedTypeAST__getModifierMap (AC_galgasClassRunTimeInfo
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__predefinedTypeAST__getInstanceMethodMap)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__predefinedTypeAST__getInstanceMethodMap)  (C_CompilerEx & inLexique,
                                 const cPtr_predefinedTypeAST * inObjectPtr,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_instanceMethodMap  & var_cas_outInstanceMethodMap
@@ -4113,7 +4113,7 @@ findCategoryMethod__predefinedTypeAST__getInstanceMethodMap (AC_galgasClassRunTi
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__predefinedTypeAST__getClassMethodMap)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__predefinedTypeAST__getClassMethodMap)  (C_CompilerEx & inLexique,
                                 const cPtr_predefinedTypeAST * inObjectPtr,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_classMethodMap  & var_cas_outClassMethodMap
@@ -4136,7 +4136,7 @@ findCategoryMethod__predefinedTypeAST__getClassMethodMap (AC_galgasClassRunTimeI
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_uint  (*typeCategoryReader__predefinedTypeAST__getSupportedOperatorFlags)  (C_Compiler & inLexique,
+typedef GGS_uint  (*typeCategoryReader__predefinedTypeAST__getSupportedOperatorFlags)  (C_CompilerEx & inLexique,
                                 const cPtr_predefinedTypeAST * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -4157,7 +4157,7 @@ findCategoryReader__predefinedTypeAST__getSupportedOperatorFlags (AC_galgasClass
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__predefinedTypeAST__getAddAssignArgumentList)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__predefinedTypeAST__getAddAssignArgumentList)  (C_CompilerEx & inLexique,
                                 const cPtr_predefinedTypeAST * inObjectPtr,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_unifiedTypeMapProxyList  & var_cas_outAddAssignArgumentList
@@ -4180,7 +4180,7 @@ findCategoryMethod__predefinedTypeAST__getAddAssignArgumentList (AC_galgasClassR
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_nativeAttributeList  (*typeCategoryReader__predefinedTypeAST__getNativeAttributeList)  (C_Compiler & inLexique,
+typedef GGS_nativeAttributeList  (*typeCategoryReader__predefinedTypeAST__getNativeAttributeList)  (C_CompilerEx & inLexique,
                                 const cPtr_predefinedTypeAST * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -4201,7 +4201,7 @@ findCategoryReader__predefinedTypeAST__getNativeAttributeList (AC_galgasClassRun
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__predefinedTypeAST__getEnumerationList)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__predefinedTypeAST__getEnumerationList)  (C_CompilerEx & inLexique,
                                 const cPtr_predefinedTypeAST * inObjectPtr,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_enumerationDescriptorList  & var_cas_outEnumerationList

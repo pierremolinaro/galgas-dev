@@ -44,7 +44,7 @@ class cPtr_typeGalgasMapindexType : public cPtr_typeGalgasUndefinedMapindexType 
   public : GGS_mapModifierMap  mModifierMethodMap ;
   public : GGS_EXmapMethodMap  mReaderMethodMap ;
 //--- Method 'handleConstructorInvocation'
-  public : virtual void method_handleConstructorInvocation (C_Compiler &,
+  public : virtual void method_handleConstructorInvocation (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_typeListeAttributsSemantiques & ,
                                 GGS_bool& ,
@@ -52,7 +52,7 @@ class cPtr_typeGalgasMapindexType : public cPtr_typeGalgasUndefinedMapindexType 
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleClassMethodCall'
-  public : virtual void method_handleClassMethodCall (C_Compiler &,
+  public : virtual void method_handleClassMethodCall (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_L_EXsignature & 
                                 COMMA_LOCATION_ARGS) const ;

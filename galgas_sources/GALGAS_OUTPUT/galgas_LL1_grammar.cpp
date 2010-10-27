@@ -20410,7 +20410,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::nt_galgas_5F_start_5F_symbol_compile
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_ (C_Compiler & inCompiler,
+void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_ (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -20457,7 +20457,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_ (C_Compil
 
 //---------------------------------------------------------------------------*
 
-void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_ (C_Compiler & inCompiler,
+void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_ (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string _inSourceString,
                                 GGS_M_lexiqueComponents & parameter_1,
@@ -20491,7 +20491,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_ (C_Comp
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importLexique (C_Compiler & inCompiler,
+void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importLexique (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -20533,7 +20533,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importLexi
 
 //---------------------------------------------------------------------------*
 
-void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importLexique (C_Compiler & inCompiler,
+void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importLexique (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string _inSourceString,
                                 GGS_M_lexiqueComponents & parameter_1
@@ -20562,7 +20562,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importLe
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importSyntax (C_Compiler & inCompiler,
+void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importSyntax (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -20605,7 +20605,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importSynt
 
 //---------------------------------------------------------------------------*
 
-void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importSyntax (C_Compiler & inCompiler,
+void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importSyntax (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string _inSourceString,
                                 GGS_M_syntaxComponents & parameter_1,
@@ -20635,7 +20635,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importSy
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importSemantics (C_Compiler & inCompiler,
+void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importSemantics (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -20679,7 +20679,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importSema
 
 //---------------------------------------------------------------------------*
 
-void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importSemantics (C_Compiler & inCompiler,
+void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importSemantics (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string _inSourceString,
                                 GGS_M_semanticsComponents & parameter_1,
@@ -20710,7 +20710,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importSe
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importGrammarForSemantics (C_Compiler & inCompiler,
+void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importGrammarForSemantics (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -20754,7 +20754,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importGram
 
 //---------------------------------------------------------------------------*
 
-void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importGrammarForSemantics (C_Compiler & inCompiler,
+void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importGrammarForSemantics (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string _inSourceString,
                                 GGS_M_grammarComponents & parameter_1,
@@ -20785,7 +20785,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importGr
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importOptions (C_Compiler & inCompiler,
+void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importOptions (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -20827,7 +20827,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importOpti
 
 //---------------------------------------------------------------------------*
 
-void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importOptions (C_Compiler & inCompiler,
+void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importOptions (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string _inSourceString,
                                 GGS_M_optionComponents & parameter_1
@@ -20856,7 +20856,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importOp
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_compileFile (C_Compiler & inCompiler,
+void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_compileFile (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -20897,7 +20897,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_compileFil
 
 //---------------------------------------------------------------------------*
 
-void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_compileFile (C_Compiler & inCompiler,
+void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_compileFile (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string _inSourceString
                                 COMMA_UNUSED_LOCATION_ARGS) {

@@ -64,7 +64,7 @@ class GGS_commandLineOptionMap : public AC_GGS_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_commandLineOptionMap castFromObject (C_Compiler & inLexique,
+  public : static GGS_commandLineOptionMap castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -86,10 +86,10 @@ class GGS_commandLineOptionMap : public AC_GGS_map {
   public : inline const GGS_commandLineOptionMap * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_commandLineOptionMap constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_commandLineOptionMap constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- 'mapWithKeyAndValue' constructor
-  public : static GGS_commandLineOptionMap constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+  public : static GGS_commandLineOptionMap constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
 ,
                                              const GGS_char& inValue0,
@@ -106,7 +106,7 @@ class GGS_commandLineOptionMap : public AC_GGS_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_Compiler & inLexique,
+  public : void modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_char&  inParameter0,
                                 const GGS_string&  inParameter1,
@@ -116,14 +116,14 @@ class GGS_commandLineOptionMap : public AC_GGS_map {
   public : static const utf32 kSearchMessage_searchKey [] ;
 
 //--- 'searchKey' Search Method
-  public : void method_searchKey (C_Compiler & inLexique,
+  public : void method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_char  & outParameter0,
                                 GGS_string  & outParameter1,
                                 GGS_string  & outParameter2,
                                 GGS_string  & outParameter3 COMMA_LOCATION_ARGS) const ;
 //--- Internal method for inserting an element
-  protected : void insertElement (C_Compiler & inLexique,
+  protected : void insertElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inInitialState,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -134,7 +134,7 @@ class GGS_commandLineOptionMap : public AC_GGS_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_Compiler & inLexique,
+  protected : void searchElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inActionIndex,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -145,10 +145,10 @@ class GGS_commandLineOptionMap : public AC_GGS_map {
                                   GGS_luint * outIndex
                                   COMMA_LOCATION_ARGS) const ;
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_commandLineOptionMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
+  public : static GGS_commandLineOptionMap constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
                                             const GGS_commandLineOptionMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_commandLineOptionMap reader_overriddenMap (C_Compiler & inLexique
+  public : GGS_commandLineOptionMap reader_overriddenMap (C_CompilerEx & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Key stringset (for map with an associated automaton)

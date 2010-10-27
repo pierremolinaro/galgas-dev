@@ -31,12 +31,12 @@ class cPtr_typeGalgas_function : public cPtr_AC_galgasType {
 
 //--- Attributes
 //--- Method 'getTypeName'
-  public : virtual void method_getTypeName (C_Compiler &,
+  public : virtual void method_getTypeName (C_CompilerEx &,
                                 GGS_string& 
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleConstructorInvocation'
-  public : virtual void method_handleConstructorInvocation (C_Compiler &,
+  public : virtual void method_handleConstructorInvocation (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_typeListeAttributsSemantiques & ,
                                 GGS_bool& ,

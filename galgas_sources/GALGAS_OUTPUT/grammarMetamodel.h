@@ -62,14 +62,14 @@ class GGS_grammarComponentAST : public AC_GGS_class {
 
 //--- castFrom class method (implements cast expression)
   public : static GGS_grammarComponentAST
-  castFrom (C_Compiler & inLexique,
+  castFrom (C_CompilerEx & inLexique,
              cPtr__AC_galgas_class * inPointer,
              const bool inUseKindOfClass,
              const GGS_location & inErrorLocation
              COMMA_LOCATION_ARGS) ;
 
 //--- 'new' constructor
-  public : static GGS_grammarComponentAST constructor_new (C_Compiler & inLexique,
+  public : static GGS_grammarComponentAST constructor_new (C_CompilerEx & inLexique,
                                 const GGS_lstring & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_lstringlist & argument_2,
@@ -89,14 +89,14 @@ class GGS_grammarComponentAST : public AC_GGS_class {
   public : virtual const char * actualTypeName (void) const ;
 
 //--- Readers
-  public : GGS_lstring  reader_mGrammarName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_lstring  reader_mGrammarClass (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_lstringlist  reader_mSyntaxComponents (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_lstring  reader_mStartSymbolName (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_nonTerminalLabelListAST  reader_mStartSymbolLabelList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_bool reader_mStartSymbolHasParseLabel (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_lstringlist  reader_mUnusedNonterminalList (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
-  public : GGS_location  reader_mEndOfSourceText (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mGrammarName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mGrammarClass (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstringlist  reader_mSyntaxComponents (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstring  reader_mStartSymbolName (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_nonTerminalLabelListAST  reader_mStartSymbolLabelList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_bool reader_mStartSymbolHasParseLabel (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_lstringlist  reader_mUnusedNonterminalList (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
+  public : GGS_location  reader_mEndOfSourceText (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;
 
 //--- Modifiers
 
@@ -117,7 +117,7 @@ AC_galgasClassRunTimeInformationEX * galgasObjectRunTimeInfo (void) const ;
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_grammarComponentAST castFromObject (C_Compiler & inLexique,
+  public : static GGS_grammarComponentAST castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;

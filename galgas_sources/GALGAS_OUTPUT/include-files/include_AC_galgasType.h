@@ -38,17 +38,17 @@ class cPtr_AC_galgasType : public cPtr__AC_galgas_class {
 
 //--- Attributes
 //--- Method 'getTypeName'
-  public : virtual void method_getTypeName (C_Compiler &,
+  public : virtual void method_getTypeName (C_CompilerEx &,
                                 GGS_string& 
                                 COMMA_LOCATION_ARGS) const = 0 ;
 
 //--- Method 'acceptToBeSortKeyInSortedListDefinition'
-  public : virtual void method_acceptToBeSortKeyInSortedListDefinition (C_Compiler &,
+  public : virtual void method_acceptToBeSortKeyInSortedListDefinition (C_CompilerEx &,
                                 GGS_lstring  
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'check_with_InstructionAccess'
-  public : virtual void method_check_with_InstructionAccess (C_Compiler &,
+  public : virtual void method_check_with_InstructionAccess (C_CompilerEx &,
                                 GGS_location  ,
                                 GGS_lstring  ,
                                 GGS_AC_galgasType  ,
@@ -58,12 +58,12 @@ class cPtr_AC_galgasType : public cPtr__AC_galgas_class {
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'acceptAssignmentFromHere'
-  public : virtual void method_acceptAssignmentFromHere (C_Compiler &,
+  public : virtual void method_acceptAssignmentFromHere (C_CompilerEx &,
                                 GGS_lstring  
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'acceptForeachInstruction'
-  public : virtual void method_acceptForeachInstruction (C_Compiler &,
+  public : virtual void method_acceptForeachInstruction (C_CompilerEx &,
                                 GGS_M_semanticsEntitiesForUse  ,
                                 GGS_location  ,
                                 GGS_typeListeAttributsSemantiques & ,
@@ -72,13 +72,13 @@ class cPtr_AC_galgasType : public cPtr__AC_galgas_class {
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleModifierCall'
-  public : virtual void method_handleModifierCall (C_Compiler &,
+  public : virtual void method_handleModifierCall (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_L_EXsignature & 
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleMethodInstructionCall'
-  public : virtual void method_handleMethodInstructionCall (C_Compiler &,
+  public : virtual void method_handleMethodInstructionCall (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_EXcategoryMethodMap  ,
                                 GGS_L_EXsignature & ,
@@ -86,7 +86,7 @@ class cPtr_AC_galgasType : public cPtr__AC_galgas_class {
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleConstructorInvocation'
-  public : virtual void method_handleConstructorInvocation (C_Compiler &,
+  public : virtual void method_handleConstructorInvocation (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_typeListeAttributsSemantiques & ,
                                 GGS_bool& ,
@@ -94,29 +94,29 @@ class cPtr_AC_galgasType : public cPtr__AC_galgas_class {
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleClassMethodCall'
-  public : virtual void method_handleClassMethodCall (C_Compiler &,
+  public : virtual void method_handleClassMethodCall (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_L_EXsignature & 
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleAddAssignOperatorCall'
-  public : virtual void method_handleAddAssignOperatorCall (C_Compiler &,
+  public : virtual void method_handleAddAssignOperatorCall (C_CompilerEx &,
                                 GGS_location  ,
                                 GGS_typeListeAttributsSemantiques & 
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleIncrementOperatorCall'
-  public : virtual void method_handleIncrementOperatorCall (C_Compiler &,
+  public : virtual void method_handleIncrementOperatorCall (C_CompilerEx &,
                                 GGS_location  
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleDecrementOperatorCall'
-  public : virtual void method_handleDecrementOperatorCall (C_Compiler &,
+  public : virtual void method_handleDecrementOperatorCall (C_CompilerEx &,
                                 GGS_location  
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'checkAbilityToBeSilentlyConvertedToLocation'
-  public : virtual void method_checkAbilityToBeSilentlyConvertedToLocation (C_Compiler &
+  public : virtual void method_checkAbilityToBeSilentlyConvertedToLocation (C_CompilerEx &
                                 COMMA_LOCATION_ARGS) const ;
 
   public : virtual const char * message_messageGalgasType (void) const ;

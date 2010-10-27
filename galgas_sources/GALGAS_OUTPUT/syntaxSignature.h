@@ -44,7 +44,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__semanticInstructionForGeneration__appendSyntaxSignature)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__semanticInstructionForGeneration__appendSyntaxSignature)  (C_CompilerEx & inLexique,
                                 const cPtr_semanticInstructionForGeneration * inObjectPtr,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration
                                 COMMA_LOCATION_ARGS) ;
@@ -70,7 +70,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_syntaxSignature
 
 //---------------------------------------------------------------------------*
 
-GGS_semanticInstructionListForGeneration  function_syntaxSignatureOfInstructionList (C_Compiler &,
+GGS_semanticInstructionListForGeneration  function_syntaxSignatureOfInstructionList (C_CompilerEx &,
                                 const GGS_semanticInstructionListForGeneration   COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
@@ -79,7 +79,7 @@ GGS_semanticInstructionListForGeneration  function_syntaxSignatureOfInstructionL
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_bool (*typeCategoryReader__semanticInstructionForGeneration__compareSyntaxInstruction)  (C_Compiler & inLexique,
+typedef GGS_bool (*typeCategoryReader__semanticInstructionForGeneration__compareSyntaxInstruction)  (C_CompilerEx & inLexique,
                                 const cPtr_semanticInstructionForGeneration * inObjectPtr,
                                 const GGS_semanticInstructionForGeneration   var_cas_inTestedInstruction
                                 COMMA_LOCATION_ARGS) ;
@@ -105,7 +105,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_compareSyntaxSi
 
 //---------------------------------------------------------------------------*
 
-GGS_bool function_compareSyntaxSignature (C_Compiler &,
+GGS_bool function_compareSyntaxSignature (C_CompilerEx &,
                                 const GGS_semanticInstructionListForGeneration  ,
                                 const GGS_semanticInstructionListForGeneration  ,
                                 const GGS_location   COMMA_LOCATION_ARGS) ;

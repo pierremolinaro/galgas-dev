@@ -1195,7 +1195,7 @@ nt_lexique_5F_component_5F_start_5F_symbol_ (C_Lexique_galgas_5F_scanner & inLex
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_Grammar_lexiqueLL_31_grammar::_performSourceFileParsing_ (C_Compiler & inCompiler,
+void C_Grammar_lexiqueLL_31_grammar::_performSourceFileParsing_ (C_CompilerEx & inCompiler,
                                 const C_String & inDependancyExtension,
                                 const C_String & inDependancyPath,
                                 GGS_string * inSentStringPtr,
@@ -1238,7 +1238,7 @@ void C_Grammar_lexiqueLL_31_grammar::_performSourceFileParsing_ (C_Compiler & in
 
 //---------------------------------------------------------------------------*
 
-void C_Grammar_lexiqueLL_31_grammar::_performSourceStringParsing_ (C_Compiler & inCompiler,
+void C_Grammar_lexiqueLL_31_grammar::_performSourceStringParsing_ (C_CompilerEx & inCompiler,
                                 GGS_string * inSentStringPtr,
                                 const GGS_string inSourceString,
                                 GGS_lexiqueComponentAST & parameter_1

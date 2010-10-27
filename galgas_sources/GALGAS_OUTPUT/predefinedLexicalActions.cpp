@@ -48,7 +48,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildLexicalRoutineMap (C_Compiler & inLexique,
+void routine_buildLexicalRoutineMap (C_CompilerEx & inLexique,
                                 GGS_lexicalRoutineMap  & var_cas_outLexicalRoutineMap
                         COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
@@ -259,7 +259,7 @@ void routine_buildLexicalRoutineMap (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_buildLexicalFunctionMap (C_Compiler & inLexique,
+void routine_buildLexicalFunctionMap (C_CompilerEx & inLexique,
                                 GGS_lexicalFunctionMap  & var_cas_outLexicalFunctionMap
                         COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
@@ -283,7 +283,7 @@ void routine_buildLexicalFunctionMap (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_printPredefinedLexicalActions (C_Compiler & inLexique
+void routine_printPredefinedLexicalActions (C_CompilerEx & inLexique
                         COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
     printf ("ENTER routine_printPredefinedLexicalActions at %s:%d\n", __FILE__, __LINE__) ;

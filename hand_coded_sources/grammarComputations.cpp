@@ -272,7 +272,7 @@ static PMUInt16 bddBitCountForVocabulary (const cVocabulary & inVocabulary) {
 //---------------------------------------------------------------------------*
 
 static void
-analyzeGrammar (C_Compiler & inLexique,
+analyzeGrammar (C_CompilerEx & inLexique,
                 const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                 const GGS_lstring & inTargetFileName,
                 const GGS_lstring & inGrammarClass,
@@ -673,7 +673,7 @@ analyzeGrammar (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_analyzeGrammar (C_Compiler & inLexique,
+routine_analyzeGrammar (C_CompilerEx & inLexique,
                         const GGS_lstring inTargetFileName,
                         const GGS_lstring inGrammarClass,
                         const GGS_uint inOriginalGrammarStartSymbol,

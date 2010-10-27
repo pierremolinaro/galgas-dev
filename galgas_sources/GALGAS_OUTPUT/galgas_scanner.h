@@ -25,7 +25,7 @@
 #include "galgas/GGS_lchar.h"
 #include "galgas/GGS_ldouble.h"
 #include "galgas/GGS_lbool.h"
-#include "galgas2/C_Lexique.h"
+#include "galgas/C_LexiqueEx.h"
 
 //---------------------------------------------------------------------------*
 
@@ -68,16 +68,16 @@ class cTokenFor_galgas_5F_scanner : public cToken {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class C_Lexique_galgas_5F_scanner : public C_Lexique {
+class C_Lexique_galgas_5F_scanner : public C_LexiqueEx {
 //--- Constructors
-  public : C_Lexique_galgas_5F_scanner (C_Compiler * inCallerCompiler,
+  public : C_Lexique_galgas_5F_scanner (C_CompilerEx * inCallerCompiler,
                        const C_String & inDependencyFileExtension,
                        const C_String & inDependencyFilePath,
                        C_galgas_io * inParametersPtr,
                        const C_String & inSourceFileName
                        COMMA_LOCATION_ARGS) ;
 
-  public : C_Lexique_galgas_5F_scanner (C_Compiler * inCallerCompiler,
+  public : C_Lexique_galgas_5F_scanner (C_CompilerEx * inCallerCompiler,
                        C_galgas_io * inParametersPtr,
                        const C_String & inSourceString,
                        const C_String & inStringForError

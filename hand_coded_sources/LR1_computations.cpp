@@ -1114,7 +1114,7 @@ class c_LR1_automaton_transition {
 //---------------------------------------------------------------------------*
 
 static void
-generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
+generate_LR1_grammar_cpp_file (C_CompilerEx & inLexique,
                                const cPureBNFproductionsList & inProductionRules,
                                const cVocabulary & inVocabulary,
                                const TC_UniqueArray2 <cDecisionTableElement> & inSLRdecisionTable,
@@ -1363,7 +1363,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
         generatedZone3.appendCppHyphenLineComment () ;
         generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
-                       << " (C_Compiler * inCompiler"
+                       << " (C_CompilerEx * inCompiler"
                           ",\n                                "
                           "GALGAS_lstring inFilePath" ;
         GGS_signatureForGrammarAnalysis::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
@@ -1463,7 +1463,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
       //--- Define string parsing static method
         generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                        << "::_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
-                       << " (C_Compiler * inCompiler"
+                       << " (C_CompilerEx * inCompiler"
                           ",\n                                "
                           "GALGAS_string inSourceString" ;
         parametre.rewind () ;
@@ -1572,7 +1572,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-generate_LR1_grammar_old_cpp_file (C_Compiler & inLexique,
+generate_LR1_grammar_old_cpp_file (C_CompilerEx & inLexique,
                                const cPureBNFproductionsList & inProductionRules,
                                const cVocabulary & inVocabulary,
                                const TC_UniqueArray2 <cDecisionTableElement> & inSLRdecisionTable,
@@ -1803,7 +1803,7 @@ generate_LR1_grammar_old_cpp_file (C_Compiler & inLexique,
         generatedZone3.appendCppHyphenLineComment () ;
         generatedZone3 << "void C_Grammar_" << inTargetFileName.identifierRepresentation ()
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
-                       << " (C_Compiler & inCompiler"
+                       << " (C_CompilerEx & inCompiler"
                           ",\n                                "
                           "const C_String & inDependancyExtension"
                           ",\n                                "
@@ -1887,7 +1887,7 @@ generate_LR1_grammar_old_cpp_file (C_Compiler & inLexique,
       //--- Define string parsing static method
         generatedZone3 << "void C_Grammar_" << inTargetFileName.identifierRepresentation ()
                        << "::_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
-                       << " (C_Compiler & inCompiler"
+                       << " (C_CompilerEx & inCompiler"
                           ",\n                                "
                           "GGS_string * inSentStringPtr"
                           ",\n                                "
@@ -2025,7 +2025,7 @@ compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
 //---------------------------------------------------------------------------*
 
 void
-LR1_computations (C_Compiler & inLexique,
+LR1_computations (C_CompilerEx & inLexique,
                   const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
                   C_HTML_FileWrite * inHTMLfile,

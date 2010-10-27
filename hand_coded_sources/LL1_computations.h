@@ -33,12 +33,12 @@ class C_HTML_FileWrite ;
 class cVocabulary ;
 class C_BDD_Set2 ;
 class C_String ;
-class C_Lexique ;
+class C_LexiqueEx ;
 
 //---------------------------------------------------------------------------*
 
 void
-LL1_computations (C_Compiler & inLexique,
+LL1_computations (C_CompilerEx & inLexique,
                   const cPureBNFproductionsList & inPureBNFproductions,
                   C_HTML_FileWrite * inHTMLfile,
                   const cVocabulary & inVocabulary,

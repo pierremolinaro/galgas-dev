@@ -43,7 +43,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWithoutArgument (C_Compiler &,
+void routine_enterConstructorWithoutArgument (C_CompilerEx &,
                                 GGS_constructorMap  &,
                                 GGS_unifiedTypeMap  &,
                                 const GGS_string ,
@@ -56,7 +56,7 @@ void routine_enterConstructorWithoutArgument (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWithArgument (C_Compiler &,
+void routine_enterConstructorWithArgument (C_CompilerEx &,
                                 GGS_constructorMap  &,
                                 GGS_unifiedTypeMap  &,
                                 const GGS_string ,
@@ -70,7 +70,7 @@ void routine_enterConstructorWithArgument (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWith2Arguments (C_Compiler &,
+void routine_enterConstructorWith2Arguments (C_CompilerEx &,
                                 GGS_constructorMap  &,
                                 GGS_unifiedTypeMap  &,
                                 const GGS_string ,
@@ -85,7 +85,7 @@ void routine_enterConstructorWith2Arguments (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWith3Arguments (C_Compiler &,
+void routine_enterConstructorWith3Arguments (C_CompilerEx &,
                                 GGS_constructorMap  &,
                                 GGS_unifiedTypeMap  &,
                                 const GGS_string ,

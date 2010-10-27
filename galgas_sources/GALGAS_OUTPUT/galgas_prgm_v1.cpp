@@ -81,7 +81,7 @@
 //---------------------------------------------------------------------------*
 
 static void
-galgas_prgm_v1_prologue (C_Compiler & inLexique,
+galgas_prgm_v1_prologue (C_CompilerEx & inLexique,
                      const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {
   const GGS_string var_cas_creationProjectName = gOption_galgas_5F_cli_5F_options_create_5F_project.reader_value () ;
   ::routine_projectCreation (inLexique,  var_cas_creationProjectName COMMA_SOURCE_FILE_AT_LINE (47)) ;
@@ -99,7 +99,7 @@ galgas_prgm_v1_prologue (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-galgas_prgm_v1_epilogue (C_Compiler & /* inLexique */,
+galgas_prgm_v1_epilogue (C_CompilerEx & /* inLexique */,
                      const TC_UniqueArray <C_String> & /* inSourceFilesArray */) {
 }
 
@@ -131,8 +131,8 @@ int mainForLIBPM  (const int argc, const char * argv []) {
     C_galgas_io * galgasIOptr = NULL ;
     macroMyNew (galgasIOptr, C_galgas_io (HERE)) ;
   //--- Common lexique object
-    C_Compiler * commonLexique = NULL ;
-    macroMyNew (commonLexique, C_Compiler (NULL, "", "", galgasIOptr COMMA_HERE)) ;
+    C_CompilerEx * commonLexique = NULL ;
+    macroMyNew (commonLexique, C_CompilerEx (NULL, "", "", galgasIOptr COMMA_HERE)) ;
   //--- Ask Save On Close ? (Carbon and Windows SIOUX Only)
     #ifdef SIOUX_IS_IMPLEMENTED
       SIOUXSettings.asktosaveonclose = gOption_generic_5F_cli_5F_options_options_asktosaveonclose.mValue ;
@@ -152,7 +152,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
         const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
         PMSInt16 r = 0 ;
           if (fileExtension.compare ("gOption") == 0) {
-          C_Compiler & inLexique = * commonLexique ;
+          C_CompilerEx & inLexique = * commonLexique ;
           const GGS_string source (true, sourceFilesArray (i COMMA_HERE)) ;
           const GGS_location _here (inLexique) ;
           const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, source, _here COMMA_HERE)) ;
@@ -189,7 +189,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
             }
           }
           }else if (fileExtension.compare ("gLexique") == 0) {
-          C_Compiler & inLexique = * commonLexique ;
+          C_CompilerEx & inLexique = * commonLexique ;
           const GGS_string source (true, sourceFilesArray (i COMMA_HERE)) ;
           const GGS_location _here (inLexique) ;
           const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, source, _here COMMA_HERE)) ;
@@ -226,7 +226,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
             }
           }
           }else if (fileExtension.compare ("gSemantics") == 0) {
-          C_Compiler & inLexique = * commonLexique ;
+          C_CompilerEx & inLexique = * commonLexique ;
           const GGS_string source (true, sourceFilesArray (i COMMA_HERE)) ;
           const GGS_location _here (inLexique) ;
           const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, source, _here COMMA_HERE)) ;
@@ -289,7 +289,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
             }
           }
           }else if (fileExtension.compare ("gSyntax") == 0) {
-          C_Compiler & inLexique = * commonLexique ;
+          C_CompilerEx & inLexique = * commonLexique ;
           const GGS_string source (true, sourceFilesArray (i COMMA_HERE)) ;
           const GGS_location _here (inLexique) ;
           const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, source, _here COMMA_HERE)) ;
@@ -352,7 +352,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
             }
           }
           }else if (fileExtension.compare ("gGrammar") == 0) {
-          C_Compiler & inLexique = * commonLexique ;
+          C_CompilerEx & inLexique = * commonLexique ;
           const GGS_string source (true, sourceFilesArray (i COMMA_HERE)) ;
           const GGS_location _here (inLexique) ;
           const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, source, _here COMMA_HERE)) ;
@@ -389,7 +389,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
             }
           }
           }else if (fileExtension.compare ("gGui") == 0) {
-          C_Compiler & inLexique = * commonLexique ;
+          C_CompilerEx & inLexique = * commonLexique ;
           const GGS_string source (true, sourceFilesArray (i COMMA_HERE)) ;
           const GGS_location _here (inLexique) ;
           const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, source, _here COMMA_HERE)) ;
@@ -426,7 +426,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
             }
           }
           }else if (fileExtension.compare ("gProgram") == 0) {
-          C_Compiler & inLexique = * commonLexique ;
+          C_CompilerEx & inLexique = * commonLexique ;
           const GGS_string source (true, sourceFilesArray (i COMMA_HERE)) ;
           const GGS_location _here (inLexique) ;
           const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, source, _here COMMA_HERE)) ;
@@ -489,7 +489,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
             }
           }
           }else if (fileExtension.compare ("gProject") == 0) {
-          C_Compiler & inLexique = * commonLexique ;
+          C_CompilerEx & inLexique = * commonLexique ;
           const GGS_string source (true, sourceFilesArray (i COMMA_HERE)) ;
           const GGS_location _here (inLexique) ;
           const GGS_lstring var_cas_inSourceFile (GGS_lstring::constructor_new (inLexique, source, _here COMMA_HERE)) ;

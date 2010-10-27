@@ -48,7 +48,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWithoutArgument (C_Compiler & inLexique,
+void routine_enterConstructorWithoutArgument (C_CompilerEx & inLexique,
                                 GGS_constructorMap  & var_cas_ioConstructorMap,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 const GGS_string  var_cas_inConstructorName,
@@ -72,7 +72,7 @@ void routine_enterConstructorWithoutArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWithArgument (C_Compiler & inLexique,
+void routine_enterConstructorWithArgument (C_CompilerEx & inLexique,
                                 GGS_constructorMap  & var_cas_ioConstructorMap,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 const GGS_string  var_cas_inConstructorName,
@@ -99,7 +99,7 @@ void routine_enterConstructorWithArgument (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWith2Arguments (C_Compiler & inLexique,
+void routine_enterConstructorWith2Arguments (C_CompilerEx & inLexique,
                                 GGS_constructorMap  & var_cas_ioConstructorMap,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 const GGS_string  var_cas_inConstructorName,
@@ -131,7 +131,7 @@ void routine_enterConstructorWith2Arguments (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_enterConstructorWith3Arguments (C_Compiler & inLexique,
+void routine_enterConstructorWith3Arguments (C_CompilerEx & inLexique,
                                 GGS_constructorMap  & var_cas_ioConstructorMap,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 const GGS_string  var_cas_inConstructorName,
@@ -167,7 +167,7 @@ void routine_enterConstructorWith3Arguments (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__stringPredefinedTypeAST__getConstructorMap (C_Compiler & inLexique,
+category_method__stringPredefinedTypeAST__getConstructorMap (C_CompilerEx & inLexique,
                                 const cPtr_stringPredefinedTypeAST * operand_5192,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_constructorMap  & var_cas_outMap
@@ -199,7 +199,7 @@ category_method__stringPredefinedTypeAST__getConstructorMap (C_Compiler & inLexi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__applicationPredefinedTypeAST__getConstructorMap (C_Compiler & inLexique,
+category_method__applicationPredefinedTypeAST__getConstructorMap (C_CompilerEx & inLexique,
                                 const cPtr_applicationPredefinedTypeAST * operand_7147,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_constructorMap  & var_cas_outMap
@@ -228,7 +228,7 @@ category_method__applicationPredefinedTypeAST__getConstructorMap (C_Compiler & i
 //---------------------------------------------------------------------------*
 
 static void
-category_method__charPredefinedTypeAST__getConstructorMap (C_Compiler & inLexique,
+category_method__charPredefinedTypeAST__getConstructorMap (C_CompilerEx & inLexique,
                                 const cPtr_charPredefinedTypeAST * operand_9003,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_constructorMap  & var_cas_outMap
@@ -247,7 +247,7 @@ category_method__charPredefinedTypeAST__getConstructorMap (C_Compiler & inLexiqu
 //---------------------------------------------------------------------------*
 
 static void
-category_method__uintPredefinedTypeAST__getConstructorMap (C_Compiler & inLexique,
+category_method__uintPredefinedTypeAST__getConstructorMap (C_CompilerEx & inLexique,
                                 const cPtr_uintPredefinedTypeAST * operand_9478,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_constructorMap  & var_cas_outMap
@@ -268,7 +268,7 @@ category_method__uintPredefinedTypeAST__getConstructorMap (C_Compiler & inLexiqu
 //---------------------------------------------------------------------------*
 
 static void
-category_method__sintPredefinedTypeAST__getConstructorMap (C_Compiler & inLexique,
+category_method__sintPredefinedTypeAST__getConstructorMap (C_CompilerEx & inLexique,
                                 const cPtr_sintPredefinedTypeAST * operand_10116,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_constructorMap  & var_cas_outMap
@@ -287,7 +287,7 @@ category_method__sintPredefinedTypeAST__getConstructorMap (C_Compiler & inLexiqu
 //---------------------------------------------------------------------------*
 
 static void
-category_method__uint64PredefinedTypeAST__getConstructorMap (C_Compiler & inLexique,
+category_method__uint64PredefinedTypeAST__getConstructorMap (C_CompilerEx & inLexique,
                                 const cPtr_uint64PredefinedTypeAST * operand_10546,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_constructorMap  & var_cas_outMap
@@ -308,7 +308,7 @@ category_method__uint64PredefinedTypeAST__getConstructorMap (C_Compiler & inLexi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__sint64PredefinedTypeAST__getConstructorMap (C_Compiler & inLexique,
+category_method__sint64PredefinedTypeAST__getConstructorMap (C_CompilerEx & inLexique,
                                 const cPtr_sint64PredefinedTypeAST * operand_11257,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_constructorMap  & var_cas_outMap
@@ -327,7 +327,7 @@ category_method__sint64PredefinedTypeAST__getConstructorMap (C_Compiler & inLexi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__stringsetPredefinedTypeAST__getConstructorMap (C_Compiler & inLexique,
+category_method__stringsetPredefinedTypeAST__getConstructorMap (C_CompilerEx & inLexique,
                                 const cPtr_stringsetPredefinedTypeAST * operand_11694,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_constructorMap  & var_cas_outMap
@@ -346,7 +346,7 @@ category_method__stringsetPredefinedTypeAST__getConstructorMap (C_Compiler & inL
 //---------------------------------------------------------------------------*
 
 static void
-category_method__binarysetPredefinedTypeAST__getConstructorMap (C_Compiler & inLexique,
+category_method__binarysetPredefinedTypeAST__getConstructorMap (C_CompilerEx & inLexique,
                                 const cPtr_binarysetPredefinedTypeAST * operand_12159,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_constructorMap  & var_cas_outMap
@@ -380,7 +380,7 @@ category_method__binarysetPredefinedTypeAST__getConstructorMap (C_Compiler & inL
 //---------------------------------------------------------------------------*
 
 static void
-category_method__typePredefinedTypeAST__getConstructorMap (C_Compiler & inLexique,
+category_method__typePredefinedTypeAST__getConstructorMap (C_CompilerEx & inLexique,
                                 const cPtr_typePredefinedTypeAST * operand_14728,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_constructorMap  & var_cas_outMap
@@ -398,7 +398,7 @@ category_method__typePredefinedTypeAST__getConstructorMap (C_Compiler & inLexiqu
 //---------------------------------------------------------------------------*
 
 static void
-category_method__dataPredefinedTypeAST__getConstructorMap (C_Compiler & inLexique,
+category_method__dataPredefinedTypeAST__getConstructorMap (C_CompilerEx & inLexique,
                                 const cPtr_dataPredefinedTypeAST * operand_15079,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_constructorMap  & var_cas_outMap
@@ -416,7 +416,7 @@ category_method__dataPredefinedTypeAST__getConstructorMap (C_Compiler & inLexiqu
 //---------------------------------------------------------------------------*
 
 static void
-category_method__functionPredefinedTypeAST__getConstructorMap (C_Compiler & inLexique,
+category_method__functionPredefinedTypeAST__getConstructorMap (C_CompilerEx & inLexique,
                                 const cPtr_functionPredefinedTypeAST * operand_15431,
                                 GGS_unifiedTypeMap  & var_cas_ioUnifiedTypeMap,
                                 GGS_constructorMap  & var_cas_outMap

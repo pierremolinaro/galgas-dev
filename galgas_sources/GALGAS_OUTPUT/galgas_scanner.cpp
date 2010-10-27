@@ -28,7 +28,7 @@
 #include "galgas_scanner.h"
 
 #include "strings/unicode_character_cpp.h"
-#include "galgas/scanner_actions.h"
+#include "galgas/scanner_actionsEx.h"
 #ifndef DO_NOT_GENERATE_CHECKINGS
   #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (HERE), lineNumber ()
   #define COMMA_LINE_AND_SOURCE_FILE , LINE_AND_SOURCE_FILE
@@ -56,23 +56,23 @@ mLexicalAttribute_uint_36__34_value () {
 
 //---------------------------------------------------------------------------*
 
-C_Lexique_galgas_5F_scanner::C_Lexique_galgas_5F_scanner (C_Compiler * inCallerCompiler,
+C_Lexique_galgas_5F_scanner::C_Lexique_galgas_5F_scanner (C_CompilerEx * inCallerCompiler,
                 const C_String & inDependencyFileExtension,
                 const C_String & inDependencyFilePath,
                 C_galgas_io * inParametersPtr,
                 const C_String & inSourceFileName
                 COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inParametersPtr, inSourceFileName COMMA_THERE) {
+C_LexiqueEx (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inParametersPtr, inSourceFileName COMMA_THERE) {
 }
 
 //---------------------------------------------------------------------------*
 
-C_Lexique_galgas_5F_scanner::C_Lexique_galgas_5F_scanner (C_Compiler * inCallerCompiler,
+C_Lexique_galgas_5F_scanner::C_Lexique_galgas_5F_scanner (C_CompilerEx * inCallerCompiler,
                 C_galgas_io * inParametersPtr,
                 const C_String & inSourceString,
                 const C_String & inStringForError
                 COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inParametersPtr, inSourceString, inStringForError COMMA_THERE) {
+C_LexiqueEx (inCallerCompiler, inParametersPtr, inSourceString, inStringForError COMMA_THERE) {
 }
 
 //---------------------------------------------------------------------------*

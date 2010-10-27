@@ -224,7 +224,7 @@ dotAssign_operation (const GGS_programRuleList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_programRuleList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_lstring & argument_0,
                      const GGS_lstring & argument_1,
                      const GGS_lstring & argument_2,
@@ -313,7 +313,7 @@ internalSubListWithRange (GGS_programRuleList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_programRuleList GGS_programRuleList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -333,7 +333,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_programRuleList GGS_programRuleList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_programRuleList result ;
@@ -358,7 +358,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_programRuleList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_lstring & _out_0,
               GGS_lstring & _out_1,
               GGS_lstring & _out_2,
@@ -393,7 +393,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_programRuleList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_lstring & _out_0,
              GGS_lstring & _out_1,
              GGS_lstring & _out_2,
@@ -428,7 +428,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_programRuleList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_lstring & _out_0,
                  GGS_lstring & _out_1,
                  GGS_lstring & _out_2,
@@ -465,7 +465,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_programRuleList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_lstring & _out_0,
                 GGS_lstring & _out_1,
                 GGS_lstring & _out_2,
@@ -502,7 +502,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_programRuleList::
-reader_mSourceFileExtensionAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mSourceFileExtensionAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -516,7 +516,7 @@ reader_mSourceFileExtensionAtIndex (C_Compiler & inLexique, const GGS_uint & inI
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_programRuleList::
-reader_mSourceFileHelpAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mSourceFileHelpAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -530,7 +530,7 @@ reader_mSourceFileHelpAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex 
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_programRuleList::
-reader_mSourceFileVariableNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mSourceFileVariableNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -544,7 +544,7 @@ reader_mSourceFileVariableNameAtIndex (C_Compiler & inLexique, const GGS_uint & 
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_programRuleList::
-reader_mSourceFileVariableNameIsUnusedAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mSourceFileVariableNameIsUnusedAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -558,7 +558,7 @@ reader_mSourceFileVariableNameIsUnusedAtIndex (C_Compiler & inLexique, const GGS
 //---------------------------------------------------------------------------*
 
 GGS_semanticInstructionListAST  GGS_programRuleList::
-reader_mInstructionListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mInstructionListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_semanticInstructionListAST  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -572,7 +572,7 @@ reader_mInstructionListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex
 //---------------------------------------------------------------------------*
 
 GGS_location  GGS_programRuleList::
-reader_mEndOfInstructionListAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mEndOfInstructionListAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_location  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -586,7 +586,7 @@ reader_mEndOfInstructionListAtIndex (C_Compiler & inLexique, const GGS_uint & in
 //---------------------------------------------------------------------------*
 
 void GGS_programRuleList::
-modifier_setMSourceFileExtensionAtIndex (C_Compiler & inLexique,
+modifier_setMSourceFileExtensionAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -601,7 +601,7 @@ modifier_setMSourceFileExtensionAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_programRuleList::
-modifier_setMSourceFileHelpAtIndex (C_Compiler & inLexique,
+modifier_setMSourceFileHelpAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -616,7 +616,7 @@ modifier_setMSourceFileHelpAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_programRuleList::
-modifier_setMSourceFileVariableNameAtIndex (C_Compiler & inLexique,
+modifier_setMSourceFileVariableNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -631,7 +631,7 @@ modifier_setMSourceFileVariableNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_programRuleList::
-modifier_setMSourceFileVariableNameIsUnusedAtIndex (C_Compiler & inLexique,
+modifier_setMSourceFileVariableNameIsUnusedAtIndex (C_CompilerEx & inLexique,
                               const GGS_bool & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -646,7 +646,7 @@ modifier_setMSourceFileVariableNameIsUnusedAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_programRuleList::
-modifier_setMInstructionListAtIndex (C_Compiler & inLexique,
+modifier_setMInstructionListAtIndex (C_CompilerEx & inLexique,
                               const GGS_semanticInstructionListAST  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -661,7 +661,7 @@ modifier_setMInstructionListAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_programRuleList::
-modifier_setMEndOfInstructionListAtIndex (C_Compiler & inLexique,
+modifier_setMEndOfInstructionListAtIndex (C_CompilerEx & inLexique,
                               const GGS_location  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -729,7 +729,7 @@ GGS_object GGS_programRuleList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_programRuleList GGS_programRuleList::castFromObject (C_Compiler & inLexique,
+GGS_programRuleList GGS_programRuleList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -939,7 +939,7 @@ GGS_object GGS_programComponentAST::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_programComponentAST GGS_programComponentAST::castFromObject (C_Compiler & inLexique,
+GGS_programComponentAST GGS_programComponentAST::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {

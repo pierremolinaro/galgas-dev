@@ -230,7 +230,7 @@ dotAssign_operation (const GGS_localConstantList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_localConstantList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_unifiedTypeMapProxy & argument_0,
                      const GGS_lstring & argument_1,
                      const GGS_bool& argument_2,
@@ -311,7 +311,7 @@ internalSubListWithRange (GGS_localConstantList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_localConstantList GGS_localConstantList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -331,7 +331,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_localConstantList GGS_localConstantList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_localConstantList result ;
@@ -356,7 +356,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_localConstantList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_unifiedTypeMapProxy & _out_0,
               GGS_lstring & _out_1,
               GGS_bool& _out_2,
@@ -385,7 +385,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_localConstantList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_unifiedTypeMapProxy & _out_0,
              GGS_lstring & _out_1,
              GGS_bool& _out_2,
@@ -414,7 +414,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_localConstantList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_unifiedTypeMapProxy & _out_0,
                  GGS_lstring & _out_1,
                  GGS_bool& _out_2,
@@ -445,7 +445,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_localConstantList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_unifiedTypeMapProxy & _out_0,
                 GGS_lstring & _out_1,
                 GGS_bool& _out_2,
@@ -476,7 +476,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_unifiedTypeMapProxy  GGS_localConstantList::
-reader_mTypeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mTypeAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_unifiedTypeMapProxy  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -490,7 +490,7 @@ reader_mTypeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCA
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_localConstantList::
-reader_mNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -504,7 +504,7 @@ reader_mNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCA
 //---------------------------------------------------------------------------*
 
 GGS_bool GGS_localConstantList::
-reader_mNoWarningIfUnusedAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mNoWarningIfUnusedAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_bool result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -518,7 +518,7 @@ reader_mNoWarningIfUnusedAtIndex (C_Compiler & inLexique, const GGS_uint & inInd
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_localConstantList::
-reader_mCppNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mCppNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -532,7 +532,7 @@ reader_mCppNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_L
 //---------------------------------------------------------------------------*
 
 void GGS_localConstantList::
-modifier_setMTypeAtIndex (C_Compiler & inLexique,
+modifier_setMTypeAtIndex (C_CompilerEx & inLexique,
                               const GGS_unifiedTypeMapProxy  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -547,7 +547,7 @@ modifier_setMTypeAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_localConstantList::
-modifier_setMNameAtIndex (C_Compiler & inLexique,
+modifier_setMNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -562,7 +562,7 @@ modifier_setMNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_localConstantList::
-modifier_setMNoWarningIfUnusedAtIndex (C_Compiler & inLexique,
+modifier_setMNoWarningIfUnusedAtIndex (C_CompilerEx & inLexique,
                               const GGS_bool & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -577,7 +577,7 @@ modifier_setMNoWarningIfUnusedAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_localConstantList::
-modifier_setMCppNameAtIndex (C_Compiler & inLexique,
+modifier_setMCppNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -631,7 +631,7 @@ GGS_object GGS_localConstantList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_localConstantList GGS_localConstantList::castFromObject (C_Compiler & inLexique,
+GGS_localConstantList GGS_localConstantList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -794,7 +794,7 @@ dotAssign_operation (const GGS_localInitializedVariableList inOperand) {
 //---------------------------------------------------------------------------*
 
 void GGS_localInitializedVariableList::
-modifier_prependValue (C_Compiler & /* inLexique */,
+modifier_prependValue (C_CompilerEx & /* inLexique */,
                      const GGS_unifiedTypeMapProxy & argument_0,
                      const GGS_lstring & argument_1,
                      const GGS_string& argument_2
@@ -871,7 +871,7 @@ internalSubListWithRange (GGS_localInitializedVariableList & ioList,
 //---------------------------------------------------------------------------*
 
 GGS_localInitializedVariableList GGS_localInitializedVariableList::
-reader_subListWithRange (C_Compiler & inLexique,
+reader_subListWithRange (C_CompilerEx & inLexique,
                          const GGS_uint & inFirstIndex,
                          const GGS_uint & inCount
                          COMMA_LOCATION_ARGS) const {
@@ -891,7 +891,7 @@ reader_subListWithRange (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_localInitializedVariableList GGS_localInitializedVariableList::
-reader_subListFromIndex (C_Compiler & inLexique,
+reader_subListFromIndex (C_CompilerEx & inLexique,
                          const GGS_uint & inIndex
                          COMMA_LOCATION_ARGS) const {
   GGS_localInitializedVariableList result ;
@@ -916,7 +916,7 @@ reader_description (const PMSInt32 inIndentation) const {
 //---------------------------------------------------------------------------*
 
 void GGS_localInitializedVariableList::
-method_first (C_Compiler & inLexique,
+method_first (C_CompilerEx & inLexique,
               GGS_unifiedTypeMapProxy & _out_0,
               GGS_lstring & _out_1,
               GGS_string& _out_2
@@ -942,7 +942,7 @@ method_first (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_localInitializedVariableList::
-method_last (C_Compiler & inLexique,
+method_last (C_CompilerEx & inLexique,
              GGS_unifiedTypeMapProxy & _out_0,
              GGS_lstring & _out_1,
              GGS_string& _out_2
@@ -968,7 +968,7 @@ method_last (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_localInitializedVariableList::
-modifier_popFirst (C_Compiler & inLexique,
+modifier_popFirst (C_CompilerEx & inLexique,
                  GGS_unifiedTypeMapProxy & _out_0,
                  GGS_lstring & _out_1,
                  GGS_string& _out_2
@@ -996,7 +996,7 @@ modifier_popFirst (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_localInitializedVariableList::
-modifier_popLast (C_Compiler & inLexique,
+modifier_popLast (C_CompilerEx & inLexique,
                 GGS_unifiedTypeMapProxy & _out_0,
                 GGS_lstring & _out_1,
                 GGS_string& _out_2
@@ -1024,7 +1024,7 @@ modifier_popLast (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_unifiedTypeMapProxy  GGS_localInitializedVariableList::
-reader_mTypeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mTypeAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_unifiedTypeMapProxy  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -1038,7 +1038,7 @@ reader_mTypeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCA
 //---------------------------------------------------------------------------*
 
 GGS_lstring  GGS_localInitializedVariableList::
-reader_mNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_lstring  result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -1052,7 +1052,7 @@ reader_mNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCA
 //---------------------------------------------------------------------------*
 
 GGS_string GGS_localInitializedVariableList::
-reader_mCppNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
+reader_mCppNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const {
   GGS_string result ;
   if (isBuilt () && inIndex.isBuilt ()) {
     cElement * object = (cElement *) objectAtIndex (inLexique, inIndex.uintValue () COMMA_THERE) ;
@@ -1066,7 +1066,7 @@ reader_mCppNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_L
 //---------------------------------------------------------------------------*
 
 void GGS_localInitializedVariableList::
-modifier_setMTypeAtIndex (C_Compiler & inLexique,
+modifier_setMTypeAtIndex (C_CompilerEx & inLexique,
                               const GGS_unifiedTypeMapProxy  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -1081,7 +1081,7 @@ modifier_setMTypeAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_localInitializedVariableList::
-modifier_setMNameAtIndex (C_Compiler & inLexique,
+modifier_setMNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -1096,7 +1096,7 @@ modifier_setMNameAtIndex (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_localInitializedVariableList::
-modifier_setMCppNameAtIndex (C_Compiler & inLexique,
+modifier_setMCppNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const {
@@ -1143,7 +1143,7 @@ GGS_object GGS_localInitializedVariableList::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_localInitializedVariableList GGS_localInitializedVariableList::castFromObject (C_Compiler & inLexique,
+GGS_localInitializedVariableList GGS_localInitializedVariableList::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -1172,7 +1172,7 @@ const C_galgas_type_descriptorEX * GGS_localInitializedVariableList::typeDescrip
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_analyzeSemanticInstructionList (C_Compiler & inLexique,
+void routine_analyzeSemanticInstructionList (C_CompilerEx & inLexique,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 const GGS_localConstantList   var_cas_inLocalConstantList,
                                 const GGS_localInitializedVariableList   var_cas_inLocalInitializedVariableList,
@@ -1232,7 +1232,7 @@ void routine_analyzeSemanticInstructionList (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__localVariableOrConstantDeclarationWithConstructorCallAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__localVariableOrConstantDeclarationWithConstructorCallAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_localVariableOrConstantDeclarationWithConstructorCallAST * operand_4153,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -1267,7 +1267,7 @@ category_method__localVariableOrConstantDeclarationWithConstructorCallAST__analy
 //---------------------------------------------------------------------------*
 
 static void
-category_method__localVariableOrConstantDeclarationWithAssignmentAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__localVariableOrConstantDeclarationWithAssignmentAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_localVariableOrConstantDeclarationWithAssignmentAST * operand_6012,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -1300,7 +1300,7 @@ category_method__localVariableOrConstantDeclarationWithAssignmentAST__analyzeSem
 //---------------------------------------------------------------------------*
 
 static void
-category_method__localVariableDeclarationAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__localVariableDeclarationAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_localVariableDeclarationAST * operand_7389,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -1321,7 +1321,7 @@ category_method__localVariableDeclarationAST__analyzeSemanticInstruction (C_Comp
 //---------------------------------------------------------------------------*
 
 static void
-category_method__assignmentInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__assignmentInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_assignmentInstructionAST * operand_8232,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -1367,7 +1367,7 @@ category_method__assignmentInstructionAST__analyzeSemanticInstruction (C_Compile
 //---------------------------------------------------------------------------*
 
 static void
-category_method__sendInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__sendInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_sendInstructionAST * operand_9589,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -1394,7 +1394,7 @@ category_method__sendInstructionAST__analyzeSemanticInstruction (C_Compiler & in
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_analyzeErrorOrWarningInstruction (C_Compiler & inLexique,
+void routine_analyzeErrorOrWarningInstruction (C_CompilerEx & inLexique,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 const GGS_semanticExpressionAST   var_cas_inLocationExpression,
                                 const GGS_semanticExpressionAST   var_cas_inMessageExpression,
@@ -1455,7 +1455,7 @@ void routine_analyzeErrorOrWarningInstruction (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__errorInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__errorInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_errorInstructionAST * operand_13236,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -1490,7 +1490,7 @@ category_method__errorInstructionAST__analyzeSemanticInstruction (C_Compiler & i
 //---------------------------------------------------------------------------*
 
 static void
-category_method__warningInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__warningInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_warningInstructionAST * operand_14428,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -1546,7 +1546,7 @@ findCategoryMethod__actualParameterAST__checkAgainstFormalArgument (AC_galgasCla
 //---------------------------------------------------------------------------*
 
 static void
-category_method__outputActualParameterAST__checkAgainstFormalArgument (C_Compiler & inLexique,
+category_method__outputActualParameterAST__checkAgainstFormalArgument (C_CompilerEx & inLexique,
                                 const cPtr_outputActualParameterAST * operand_15758,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 const GGS_unifiedTypeMapProxy   var_cas_inFormalArgumentType,
@@ -1579,7 +1579,7 @@ category_method__outputActualParameterAST__checkAgainstFormalArgument (C_Compile
 //---------------------------------------------------------------------------*
 
 static void
-category_method__outputInputActualParameterAST__checkAgainstFormalArgument (C_Compiler & inLexique,
+category_method__outputInputActualParameterAST__checkAgainstFormalArgument (C_CompilerEx & inLexique,
                                 const cPtr_outputInputActualParameterAST * operand_17173,
                                 const GGS_analysisContext  /* var_cas_inAnalysisContext */,
                                 const GGS_unifiedTypeMapProxy   var_cas_inFormalArgumentType,
@@ -1628,7 +1628,7 @@ category_method__outputInputActualParameterAST__checkAgainstFormalArgument (C_Co
 //---------------------------------------------------------------------------*
 
 static void
-category_method__inputActualParameterAST__checkAgainstFormalArgument (C_Compiler & inLexique,
+category_method__inputActualParameterAST__checkAgainstFormalArgument (C_CompilerEx & inLexique,
                                 const cPtr_inputActualParameterAST * operand_19181,
                                 const GGS_analysisContext  /* var_cas_inAnalysisContext */,
                                 const GGS_unifiedTypeMapProxy   var_cas_inFormalArgumentType,
@@ -1666,7 +1666,7 @@ category_method__inputActualParameterAST__checkAgainstFormalArgument (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__inputJokerActualParameterAST__checkAgainstFormalArgument (C_Compiler & inLexique,
+category_method__inputJokerActualParameterAST__checkAgainstFormalArgument (C_CompilerEx & inLexique,
                                 const cPtr_inputJokerActualParameterAST * operand_20933,
                                 const GGS_analysisContext  /* var_cas_inAnalysisContext */,
                                 const GGS_unifiedTypeMapProxy   var_cas_inFormalArgumentType,
@@ -1692,7 +1692,7 @@ category_method__inputJokerActualParameterAST__checkAgainstFormalArgument (C_Com
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_analyzeRoutineArguments (C_Compiler & inLexique,
+void routine_analyzeRoutineArguments (C_CompilerEx & inLexique,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 const GGS_lstring   var_cas_inRoutineName,
                                 const GGS_string  var_cas_inInvokedEntityName,
@@ -1740,7 +1740,7 @@ void routine_analyzeRoutineArguments (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__routineCallInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__routineCallInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_routineCallInstructionAST * operand_23329,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -1764,7 +1764,7 @@ category_method__routineCallInstructionAST__analyzeSemanticInstruction (C_Compil
 //---------------------------------------------------------------------------*
 
 static void
-category_method__typeMethodCallInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__typeMethodCallInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_typeMethodCallInstructionAST * operand_24303,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -1791,7 +1791,7 @@ category_method__typeMethodCallInstructionAST__analyzeSemanticInstruction (C_Com
 //---------------------------------------------------------------------------*
 
 static void
-category_method__methodCallInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__methodCallInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_methodCallInstructionAST * operand_25492,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -1826,7 +1826,7 @@ category_method__methodCallInstructionAST__analyzeSemanticInstruction (C_Compile
 //---------------------------------------------------------------------------*
 
 static void
-category_method__thisMethodCallInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__thisMethodCallInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_thisMethodCallInstructionAST * operand_26873,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -1865,7 +1865,7 @@ category_method__thisMethodCallInstructionAST__analyzeSemanticInstruction (C_Com
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_string function_checkMethodImplementationInSuperClasses (C_Compiler & inLexique,
+GGS_string function_checkMethodImplementationInSuperClasses (C_CompilerEx & inLexique,
                                 const GGS_lstring   var_cas_inMethodName,
                                 const GGS_unifiedTypeMapProxy   var_cas_inSuperClass COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
@@ -1916,7 +1916,7 @@ GGS_string function_checkMethodImplementationInSuperClasses (C_Compiler & inLexi
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_checkMethodImplementationInSuperClasses (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_checkMethodImplementationInSuperClasses (C_CompilerEx & inLexique,
                            const GGS_objectlist & inEffectiveParameterArray,
                            const GGS_location & inErrorLocation
                            COMMA_LOCATION_ARGS) {
@@ -1949,7 +1949,7 @@ kFunction_descriptor_checkMethodImplementationInSuperClasses ("checkMethodImplem
 //---------------------------------------------------------------------------*
 
 static void
-category_method__superMethodCallInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__superMethodCallInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_superMethodCallInstructionAST * operand_29219,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -2001,7 +2001,7 @@ category_method__superMethodCallInstructionAST__analyzeSemanticInstruction (C_Co
 //---------------------------------------------------------------------------*
 
 static void
-category_method__modifierCallInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__modifierCallInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_modifierCallInstructionAST * operand_31381,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -2043,7 +2043,7 @@ category_method__modifierCallInstructionAST__analyzeSemanticInstruction (C_Compi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__thisModifierCallInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__thisModifierCallInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_thisModifierCallInstructionAST * operand_32884,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -2079,7 +2079,7 @@ category_method__thisModifierCallInstructionAST__analyzeSemanticInstruction (C_C
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GGS_string function_checkModifierImplementationInSuperClasses (C_Compiler & inLexique,
+GGS_string function_checkModifierImplementationInSuperClasses (C_CompilerEx & inLexique,
                                 const GGS_lstring   var_cas_inModifierName,
                                 const GGS_unifiedTypeMapProxy   var_cas_inSuperClass COMMA_UNUSED_LOCATION_ARGS) {
   #ifdef DEBUG_TRACE_ENABLED
@@ -2128,7 +2128,7 @@ GGS_string function_checkModifierImplementationInSuperClasses (C_Compiler & inLe
 
 //---------------------------------------------------------------------------*
 
-static GGS_object functionForGenericCall_checkModifierImplementationInSuperClasses (C_Compiler & inLexique,
+static GGS_object functionForGenericCall_checkModifierImplementationInSuperClasses (C_CompilerEx & inLexique,
                            const GGS_objectlist & inEffectiveParameterArray,
                            const GGS_location & inErrorLocation
                            COMMA_LOCATION_ARGS) {
@@ -2161,7 +2161,7 @@ kFunction_descriptor_checkModifierImplementationInSuperClasses ("checkModifierIm
 //---------------------------------------------------------------------------*
 
 static void
-category_method__superModifierCallInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__superModifierCallInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_superModifierCallInstructionAST * operand_35061,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -2211,7 +2211,7 @@ category_method__superModifierCallInstructionAST__analyzeSemanticInstruction (C_
 //---------------------------------------------------------------------------*
 
 static void
-category_method__appendInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__appendInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_appendInstructionAST * operand_37188,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -2255,7 +2255,7 @@ category_method__appendInstructionAST__analyzeSemanticInstruction (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__addInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__addInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_addInstructionAST * operand_38682,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -2319,7 +2319,7 @@ category_method__addInstructionAST__analyzeSemanticInstruction (C_Compiler & inL
 //---------------------------------------------------------------------------*
 
 static void
-category_method__incrementInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__incrementInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_incrementInstructionAST * operand_40845,
                                 const GGS_analysisContext  /* var_cas_inAnalysisContext */,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -2356,7 +2356,7 @@ category_method__incrementInstructionAST__analyzeSemanticInstruction (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__decrementInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__decrementInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_decrementInstructionAST * operand_42011,
                                 const GGS_analysisContext  /* var_cas_inAnalysisContext */,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -2393,7 +2393,7 @@ category_method__decrementInstructionAST__analyzeSemanticInstruction (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__messageInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__messageInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_messageInstructionAST * operand_43175,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -2421,7 +2421,7 @@ category_method__messageInstructionAST__analyzeSemanticInstruction (C_Compiler &
 //---------------------------------------------------------------------------*
 
 static void
-category_method__logInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__logInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_logInstructionAST * operand_44108,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -2452,7 +2452,7 @@ category_method__logInstructionAST__analyzeSemanticInstruction (C_Compiler & inL
 //---------------------------------------------------------------------------*
 
 static void
-category_method__dropInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__dropInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_dropInstructionAST * operand_44806,
                                 const GGS_analysisContext  /* var_cas_inAnalysisContext */,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -2483,7 +2483,7 @@ category_method__dropInstructionAST__analyzeSemanticInstruction (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 static void
-category_method__ifInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__ifInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_ifInstructionAST * operand_45495,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -2513,7 +2513,7 @@ category_method__ifInstructionAST__analyzeSemanticInstruction (C_Compiler & inLe
 //---------------------------------------------------------------------------*
 
 static void
-category_method__foreachInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__foreachInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_foreachInstructionAST * operand_46933,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -2623,7 +2623,7 @@ category_method__foreachInstructionAST__analyzeSemanticInstruction (C_Compiler &
 //---------------------------------------------------------------------------*
 
 static void
-category_method__loopInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__loopInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_loopInstructionAST * operand_53199,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -2667,7 +2667,7 @@ category_method__loopInstructionAST__analyzeSemanticInstruction (C_Compiler & in
 //---------------------------------------------------------------------------*
 
 static void
-category_method__structuredCastInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__structuredCastInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_structuredCastInstructionAST * operand_55637,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -2737,7 +2737,7 @@ category_method__structuredCastInstructionAST__analyzeSemanticInstruction (C_Com
 //---------------------------------------------------------------------------*
 
 static void
-category_method__grammarInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__grammarInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_grammarInstructionAST * operand_58530,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -2788,7 +2788,7 @@ category_method__grammarInstructionAST__analyzeSemanticInstruction (C_Compiler &
 //---------------------------------------------------------------------------*
 
 static void
-category_method__readWriteAccessWithInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__readWriteAccessWithInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_readWriteAccessWithInstructionAST * operand_60969,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -2889,7 +2889,7 @@ category_method__readWriteAccessWithInstructionAST__analyzeSemanticInstruction (
 //---------------------------------------------------------------------------*
 
 static void
-category_method__readAccessWithInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__readAccessWithInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_readAccessWithInstructionAST * operand_65011,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -2982,7 +2982,7 @@ category_method__readAccessWithInstructionAST__analyzeSemanticInstruction (C_Com
 //---------------------------------------------------------------------------*
 
 static void
-category_method__switchInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__switchInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_switchInstructionAST * operand_68986,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -3057,7 +3057,7 @@ category_method__switchInstructionAST__analyzeSemanticInstruction (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__matchInstructionAST__analyzeSemanticInstruction (C_Compiler & inLexique,
+category_method__matchInstructionAST__analyzeSemanticInstruction (C_CompilerEx & inLexique,
                                 const cPtr_matchInstructionAST * operand_71784,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,

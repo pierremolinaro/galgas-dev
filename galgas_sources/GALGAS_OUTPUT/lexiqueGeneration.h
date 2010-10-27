@@ -45,7 +45,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_string (*typeCategoryReader__lexicalExpressionAST__generateConditionCode)  (C_Compiler & inLexique,
+typedef GGS_string (*typeCategoryReader__lexicalExpressionAST__generateConditionCode)  (C_CompilerEx & inLexique,
                                 const cPtr_lexicalExpressionAST * inObjectPtr,
                                 GGS_lexiqueAnalysisContext  var_cas_inLexiqueAnalysisContext
                                 COMMA_LOCATION_ARGS) ;
@@ -67,7 +67,7 @@ findCategoryReader__lexicalExpressionAST__generateConditionCode (AC_galgasClassR
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_string (*typeCategoryReader__lexicalRoutineOrFunctionFormalInputArgumentAST__generateRoutineOrFunctionArgument)  (C_Compiler & inLexique,
+typedef GGS_string (*typeCategoryReader__lexicalRoutineOrFunctionFormalInputArgumentAST__generateRoutineOrFunctionArgument)  (C_CompilerEx & inLexique,
                                 const cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -88,7 +88,7 @@ findCategoryReader__lexicalRoutineOrFunctionFormalInputArgumentAST__generateRout
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_string (*typeCategoryReader__abstractLexicalRoutineActualArgumentAST__generateRoutineArgument)  (C_Compiler & inLexique,
+typedef GGS_string (*typeCategoryReader__abstractLexicalRoutineActualArgumentAST__generateRoutineArgument)  (C_CompilerEx & inLexique,
                                 const cPtr_abstractLexicalRoutineActualArgumentAST * inObjectPtr
                                 COMMA_LOCATION_ARGS) ;
 
@@ -109,7 +109,7 @@ findCategoryReader__abstractLexicalRoutineActualArgumentAST__generateRoutineArgu
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_string (*typeCategoryReader__lexicalSendDefaultActionAST__generateDefaultSendCode)  (C_Compiler & inLexique,
+typedef GGS_string (*typeCategoryReader__lexicalSendDefaultActionAST__generateDefaultSendCode)  (C_CompilerEx & inLexique,
                                 const cPtr_lexicalSendDefaultActionAST * inObjectPtr,
                                 GGS_string  var_cas_inScannerClassName
                                 COMMA_LOCATION_ARGS) ;
@@ -131,7 +131,7 @@ findCategoryReader__lexicalSendDefaultActionAST__generateDefaultSendCode (AC_gal
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_string (*typeCategoryReader__lexicalInstructionAST__generateInstructionCode)  (C_Compiler & inLexique,
+typedef GGS_string (*typeCategoryReader__lexicalInstructionAST__generateInstructionCode)  (C_CompilerEx & inLexique,
                                 const cPtr_lexicalInstructionAST * inObjectPtr,
                                 GGS_string  var_cas_inScannerClassName,
                                 GGS_lexiqueAnalysisContext  var_cas_inLexiqueAnalysisContext
@@ -154,7 +154,7 @@ findCategoryReader__lexicalInstructionAST__generateInstructionCode (AC_galgasCla
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef GGS_string (*typeCategoryReader__abstractLexicalRuleAST__generateCode)  (C_Compiler & inLexique,
+typedef GGS_string (*typeCategoryReader__abstractLexicalRuleAST__generateCode)  (C_CompilerEx & inLexique,
                                 const cPtr_abstractLexicalRuleAST * inObjectPtr,
                                 GGS_string  var_cas_inScannerClassName,
                                 GGS_lexiqueAnalysisContext  var_cas_inLexiqueAnalysisContext

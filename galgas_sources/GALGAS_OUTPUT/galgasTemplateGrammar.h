@@ -60,7 +60,7 @@ class C_Grammar_galgasTemplateGrammar : public galgasTemplateParser,
                                                                      GGS_templateInstructionList &,
                                                                      GGS_bool &) ;
 
-  public : static void _performSourceFileParsing_ (C_Compiler & inCompiler,
+  public : static void _performSourceFileParsing_ (C_CompilerEx & inCompiler,
                                                    const C_String & inDependancyExtension,
                                                    const C_String & inDependancyPath,
                                                    GGS_string * inSentStringPtr,
@@ -73,7 +73,7 @@ class C_Grammar_galgasTemplateGrammar : public galgasTemplateParser,
                                                    GGS_bool &
                                                    COMMA_LOCATION_ARGS) ;
 
-  public : static void _performSourceStringParsing_ (C_Compiler & inCompiler,
+  public : static void _performSourceStringParsing_ (C_CompilerEx & inCompiler,
                                                      GGS_string * inSentStringPtr,
                                                      const GGS_string inSourceString,
                                                      const GGS_templateVariableMapEX,

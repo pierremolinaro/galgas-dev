@@ -131,7 +131,7 @@ assignInfo (AC_galgas_map_element * inPtr, void * inInfo) {
 //---------------------------------------------------------------------------*
 
 GGS_templateVariableMap GGS_templateVariableMap::
-constructor_emptyMap (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
+constructor_emptyMap (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {
   GGS_templateVariableMap result ;
   macroMyNew (result.mSharedMapRoot, cMapRoot) ;
   return result ;
@@ -176,7 +176,7 @@ internalInsertForDuplication (AC_galgas_map_element * inPtr) {
 //---------------------------------------------------------------------------*
 
 void GGS_templateVariableMap::
-insertElement (C_Compiler & inLexique,
+insertElement (C_CompilerEx & inLexique,
                const PMUInt32 inInitialState,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -207,7 +207,7 @@ insertElement (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void GGS_templateVariableMap::
-searchElement (C_Compiler & inLexique,
+searchElement (C_CompilerEx & inLexique,
                const PMUInt32 /* inActionIndex */,
                const utf32 * inErrorMessage,
                const GGS_lstring & inKey,
@@ -281,7 +281,7 @@ const utf32 GGS_templateVariableMap::kSearchMessage_searchKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_templateVariableMap::
-method_searchKey (C_Compiler & inLexique,
+method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_unifiedTypeMapProxy   & outParameter0,
                                 GGS_string  & outParameter1 COMMA_LOCATION_ARGS) const {
@@ -347,7 +347,7 @@ const utf32 GGS_templateVariableMap::kInsertMessage_insertKey [] = {
 //---------------------------------------------------------------------------*
 
 void GGS_templateVariableMap::
-modifier_insertKey (C_Compiler & inLexique,
+modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_unifiedTypeMapProxy & inParameter0,
                                 const GGS_string& inParameter1 COMMA_LOCATION_ARGS) {
@@ -364,7 +364,7 @@ modifier_insertKey (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 GGS_templateVariableMap GGS_templateVariableMap::
-constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
+constructor_mapWithMapToOverride (C_CompilerEx & /* inLexique */,
                                   const GGS_templateVariableMap & inMapToOverride
                                   COMMA_UNUSED_LOCATION_ARGS) {
   GGS_templateVariableMap result ; // Not Built
@@ -381,7 +381,7 @@ constructor_mapWithMapToOverride (C_Compiler & /* inLexique */,
 //---------------------------------------------------------------------------*
 
 GGS_templateVariableMap GGS_templateVariableMap::
-reader_overriddenMap (C_Compiler & /* inLexique */
+reader_overriddenMap (C_CompilerEx & /* inLexique */
                       COMMA_UNUSED_LOCATION_ARGS) const {
   GGS_templateVariableMap result ; // Not Built
   if (mSharedMapRoot != NULL) {
@@ -461,7 +461,7 @@ GGS_object GGS_templateVariableMap::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_templateVariableMap GGS_templateVariableMap::castFromObject (C_Compiler & inLexique,
+GGS_templateVariableMap GGS_templateVariableMap::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -486,7 +486,7 @@ const C_galgas_type_descriptorEX * GGS_templateVariableMap::typeDescriptor (void
 
 //---------------------------------------------------------------------------*
 
-GGS_templateVariableMap GGS_templateVariableMap::constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+GGS_templateVariableMap GGS_templateVariableMap::constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey,
                                              const GGS_unifiedTypeMapProxy & inValue0,
                                              const GGS_string& inValue1
@@ -613,7 +613,7 @@ GGS_object GGS_templateAnalysisContext::reader_object (void) const {
 
 //---------------------------------------------------------------------------*
 
-GGS_templateAnalysisContext GGS_templateAnalysisContext::castFromObject (C_Compiler & inLexique,
+GGS_templateAnalysisContext GGS_templateAnalysisContext::castFromObject (C_CompilerEx & inLexique,
                                    const GGS_object & inObject,
                                    const GGS_location & inErrorLocation
                                    COMMA_LOCATION_ARGS) {
@@ -677,7 +677,7 @@ findCategoryMethod__templateExpressionAST__templateExpressionAnalysis (AC_galgas
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateReaderCallInExpressionAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateReaderCallInExpressionAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateReaderCallInExpressionAST * operand_3581,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -838,7 +838,7 @@ category_method__templateReaderCallInExpressionAST__templateExpressionAnalysis (
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateConstructorAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateConstructorAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateConstructorAST * operand_8555,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -928,7 +928,7 @@ category_method__templateConstructorAST__templateExpressionAnalysis (C_Compiler 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateFileWrapperWithStaticPathAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateFileWrapperWithStaticPathAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateFileWrapperWithStaticPathAST * operand_11630,
                                 const GGS_templateAnalysisContext  /* var_cas_inAnalysisContext */,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -946,7 +946,7 @@ category_method__templateFileWrapperWithStaticPathAST__templateExpressionAnalysi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateFileWrapperTemplateCallAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateFileWrapperTemplateCallAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateFileWrapperTemplateCallAST * operand_12318,
                                 const GGS_templateAnalysisContext  /* var_cas_inAnalysisContext */,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -964,7 +964,7 @@ category_method__templateFileWrapperTemplateCallAST__templateExpressionAnalysis 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateAndOperationAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateAndOperationAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateAndOperationAST * operand_13485,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -995,7 +995,7 @@ category_method__templateAndOperationAST__templateExpressionAnalysis (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateOrOperationAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateOrOperationAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateOrOperationAST * operand_14534,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1026,7 +1026,7 @@ category_method__templateOrOperationAST__templateExpressionAnalysis (C_Compiler 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateXorOperationAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateXorOperationAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateXorOperationAST * operand_15582,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1057,7 +1057,7 @@ category_method__templateXorOperationAST__templateExpressionAnalysis (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateConcatOperationAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateConcatOperationAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateConcatOperationAST * operand_16635,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1088,7 +1088,7 @@ category_method__templateConcatOperationAST__templateExpressionAnalysis (C_Compi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateTrueBoolAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateTrueBoolAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateTrueBoolAST * operand_17687,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1105,7 +1105,7 @@ category_method__templateTrueBoolAST__templateExpressionAnalysis (C_Compiler & i
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateFalseBoolAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateFalseBoolAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateFalseBoolAST * operand_18060,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1122,7 +1122,7 @@ category_method__templateFalseBoolAST__templateExpressionAnalysis (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateLiteralStringExpressionAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateLiteralStringExpressionAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateLiteralStringExpressionAST * operand_18448,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1148,7 +1148,7 @@ category_method__templateLiteralStringExpressionAST__templateExpressionAnalysis 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateLiteralUIntExpressionAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateLiteralUIntExpressionAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateLiteralUIntExpressionAST * operand_18933,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1165,7 +1165,7 @@ category_method__templateLiteralUIntExpressionAST__templateExpressionAnalysis (C
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateLiteralSIntExpressionAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateLiteralSIntExpressionAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateLiteralSIntExpressionAST * operand_19373,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1182,7 +1182,7 @@ category_method__templateLiteralSIntExpressionAST__templateExpressionAnalysis (C
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateLiteralUInt64ExpressionAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateLiteralUInt64ExpressionAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateLiteralUInt64ExpressionAST * operand_19815,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1199,7 +1199,7 @@ category_method__templateLiteralUInt64ExpressionAST__templateExpressionAnalysis 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateLiteralSInt64ExpressionAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateLiteralSInt64ExpressionAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateLiteralSInt64ExpressionAST * operand_20263,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1216,7 +1216,7 @@ category_method__templateLiteralSInt64ExpressionAST__templateExpressionAnalysis 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateLiteralCharExpressionAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateLiteralCharExpressionAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateLiteralCharExpressionAST * operand_20708,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1233,7 +1233,7 @@ category_method__templateLiteralCharExpressionAST__templateExpressionAnalysis (C
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateLiteralDoubleExpressionAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateLiteralDoubleExpressionAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateLiteralDoubleExpressionAST * operand_21152,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1250,7 +1250,7 @@ category_method__templateLiteralDoubleExpressionAST__templateExpressionAnalysis 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateIfThenElseExpressionAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateIfThenElseExpressionAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateIfThenElseExpressionAST * operand_21603,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1297,7 +1297,7 @@ category_method__templateIfThenElseExpressionAST__templateExpressionAnalysis (C_
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateNotOperatorAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateNotOperatorAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateNotOperatorAST * operand_23091,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1327,7 +1327,7 @@ category_method__templateNotOperatorAST__templateExpressionAnalysis (C_Compiler 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateLogicalNegateAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateLogicalNegateAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateLogicalNegateAST * operand_23961,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1357,7 +1357,7 @@ category_method__templateLogicalNegateAST__templateExpressionAnalysis (C_Compile
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateOptionAccessAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateOptionAccessAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateOptionAccessAST * operand_24832,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1453,7 +1453,7 @@ category_method__templateOptionAccessAST__templateExpressionAnalysis (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateFunctionCallAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateFunctionCallAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateFunctionCallAST * operand_27822,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1501,7 +1501,7 @@ category_method__templateFunctionCallAST__templateExpressionAnalysis (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateCategoryTemplateCallAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateCategoryTemplateCallAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateCategoryTemplateCallAST * operand_29496,
                                 const GGS_templateAnalysisContext  /* var_cas_inAnalysisContext */,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1519,7 +1519,7 @@ category_method__templateCategoryTemplateCallAST__templateExpressionAnalysis (C_
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateVarInExpressionAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateVarInExpressionAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateVarInExpressionAST * operand_30066,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1552,7 +1552,7 @@ category_method__templateVarInExpressionAST__templateExpressionAnalysis (C_Compi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateAddOperationAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateAddOperationAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateAddOperationAST * operand_30974,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1583,7 +1583,7 @@ category_method__templateAddOperationAST__templateExpressionAnalysis (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateSubOperationAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateSubOperationAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateSubOperationAST * operand_32179,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1614,7 +1614,7 @@ category_method__templateSubOperationAST__templateExpressionAnalysis (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateMultiplyOperationAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateMultiplyOperationAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateMultiplyOperationAST * operand_33389,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1645,7 +1645,7 @@ category_method__templateMultiplyOperationAST__templateExpressionAnalysis (C_Com
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateDivideOperationAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateDivideOperationAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateDivideOperationAST * operand_34608,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1676,7 +1676,7 @@ category_method__templateDivideOperationAST__templateExpressionAnalysis (C_Compi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateModuloOperationAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateModuloOperationAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateModuloOperationAST * operand_35821,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1707,7 +1707,7 @@ category_method__templateModuloOperationAST__templateExpressionAnalysis (C_Compi
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateUnaryMinusOperationAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateUnaryMinusOperationAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateUnaryMinusOperationAST * operand_37038,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1737,7 +1737,7 @@ category_method__templateUnaryMinusOperationAST__templateExpressionAnalysis (C_C
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateEqualTestAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateEqualTestAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateEqualTestAST * operand_38075,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1774,7 +1774,7 @@ category_method__templateEqualTestAST__templateExpressionAnalysis (C_Compiler & 
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateNonEqualTestAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateNonEqualTestAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateNonEqualTestAST * operand_39342,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1811,7 +1811,7 @@ category_method__templateNonEqualTestAST__templateExpressionAnalysis (C_Compiler
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateStrictInfTestAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateStrictInfTestAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateStrictInfTestAST * operand_40611,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1854,7 +1854,7 @@ category_method__templateStrictInfTestAST__templateExpressionAnalysis (C_Compile
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateInfOrEqualTestAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateInfOrEqualTestAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateInfOrEqualTestAST * operand_42080,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1897,7 +1897,7 @@ category_method__templateInfOrEqualTestAST__templateExpressionAnalysis (C_Compil
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateStrictSupTestAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateStrictSupTestAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateStrictSupTestAST * operand_43551,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1940,7 +1940,7 @@ category_method__templateStrictSupTestAST__templateExpressionAnalysis (C_Compile
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateSupOrEqualTestAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateSupOrEqualTestAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateSupOrEqualTestAST * operand_45022,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -1983,7 +1983,7 @@ category_method__templateSupOrEqualTestAST__templateExpressionAnalysis (C_Compil
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateLeftShiftOperationAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateLeftShiftOperationAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateLeftShiftOperationAST * operand_46500,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -2026,7 +2026,7 @@ category_method__templateLeftShiftOperationAST__templateExpressionAnalysis (C_Co
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateRightShiftOperationAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateRightShiftOperationAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateRightShiftOperationAST * operand_47883,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -2069,7 +2069,7 @@ category_method__templateRightShiftOperationAST__templateExpressionAnalysis (C_C
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateClassToTypeOperandAST__templateExpressionAnalysis (C_Compiler & inLexique,
+category_method__templateClassToTypeOperandAST__templateExpressionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateClassToTypeOperandAST * operand_49267,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticExpressionForGeneration  & var_cas_outExpression
@@ -2143,7 +2143,7 @@ findCategoryMethod__templateInstructionAST__templateInstructionAnalysis (AC_galg
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_templateInstructionListAnalysis (C_Compiler & inLexique,
+void routine_templateInstructionListAnalysis (C_CompilerEx & inLexique,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 const GGS_templateInstructionListAST   var_cas_inInstructionList,
                                 GGS_templateInstructionListForGeneration  & var_cas_ioInstructionList
@@ -2175,7 +2175,7 @@ void routine_templateInstructionListAnalysis (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateInstructionStringAST__templateInstructionAnalysis (C_Compiler & inLexique,
+category_method__templateInstructionStringAST__templateInstructionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateInstructionStringAST * operand_50885,
                                 const GGS_templateAnalysisContext  /* var_cas_inAnalysisContext */,
                                 GGS_templateInstructionListForGeneration  & var_cas_ioInstructionList
@@ -2192,7 +2192,7 @@ category_method__templateInstructionStringAST__templateInstructionAnalysis (C_Co
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateInstructionExpressionAST__templateInstructionAnalysis (C_Compiler & inLexique,
+category_method__templateInstructionExpressionAST__templateInstructionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateInstructionExpressionAST * operand_51261,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_templateInstructionListForGeneration  & var_cas_ioInstructionList
@@ -2219,7 +2219,7 @@ category_method__templateInstructionExpressionAST__templateInstructionAnalysis (
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateBlockInstructionAST__templateInstructionAnalysis (C_Compiler & inLexique,
+category_method__templateBlockInstructionAST__templateInstructionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateBlockInstructionAST * operand_51910,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_templateInstructionListForGeneration  & var_cas_ioInstructionList
@@ -2248,7 +2248,7 @@ category_method__templateBlockInstructionAST__templateInstructionAnalysis (C_Com
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateInstructionGetColumnLocationAST__templateInstructionAnalysis (C_Compiler & inLexique,
+category_method__templateInstructionGetColumnLocationAST__templateInstructionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateInstructionGetColumnLocationAST * operand_52771,
                                 const GGS_templateAnalysisContext  /* var_cas_inAnalysisContext */,
                                 GGS_templateInstructionListForGeneration  & var_cas_ioInstructionList
@@ -2265,7 +2265,7 @@ category_method__templateInstructionGetColumnLocationAST__templateInstructionAna
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateInstructionGotoColumnLocationAST__templateInstructionAnalysis (C_Compiler & inLexique,
+category_method__templateInstructionGotoColumnLocationAST__templateInstructionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateInstructionGotoColumnLocationAST * operand_53149,
                                 const GGS_templateAnalysisContext  /* var_cas_inAnalysisContext */,
                                 GGS_templateInstructionListForGeneration  & var_cas_ioInstructionList
@@ -2282,7 +2282,7 @@ category_method__templateInstructionGotoColumnLocationAST__templateInstructionAn
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateInstructionForeachAST__templateInstructionAnalysis (C_Compiler & inLexique,
+category_method__templateInstructionForeachAST__templateInstructionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateInstructionForeachAST * operand_53517,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_templateInstructionListForGeneration  & var_cas_ioInstructionList
@@ -2334,7 +2334,7 @@ category_method__templateInstructionForeachAST__templateInstructionAnalysis (C_C
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateInstructionIfAST__templateInstructionAnalysis (C_Compiler & inLexique,
+category_method__templateInstructionIfAST__templateInstructionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateInstructionIfAST * operand_56320,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_templateInstructionListForGeneration  & var_cas_ioInstructionList
@@ -2374,7 +2374,7 @@ category_method__templateInstructionIfAST__templateInstructionAnalysis (C_Compil
 //---------------------------------------------------------------------------*
 
 static void
-category_method__templateInstructionSwitchAST__templateInstructionAnalysis (C_Compiler & inLexique,
+category_method__templateInstructionSwitchAST__templateInstructionAnalysis (C_CompilerEx & inLexique,
                                 const cPtr_templateInstructionSwitchAST * operand_57615,
                                 const GGS_templateAnalysisContext  var_cas_inAnalysisContext,
                                 GGS_templateInstructionListForGeneration  & var_cas_ioInstructionList

@@ -29,7 +29,7 @@
 
 void cPtr_enumGalgasType::
 generateHdeclarations_2 (AC_OutputStream & /* inHfile */,
-                         C_Compiler & /* inLexique */) const {
+                         C_CompilerEx & /* inLexique */) const {
 }
 
 //---------------------------------------------------------------------------*
@@ -81,7 +81,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Introspection\n"
              "  public : virtual const C_galgas_type_descriptorEX * typeDescriptor (void) const ;\n\n"
              "  public : GGS_object reader_object (void) const ;\n\n"
-             "  public : static GGS_" << mEnumTypeName << " castFromObject (C_Compiler & inLexique,\n"
+             "  public : static GGS_" << mEnumTypeName << " castFromObject (C_CompilerEx & inLexique,\n"
              "                                           const GGS_object & inObject,\n"
              "                                           const GGS_location & inErrorLocation\n"
              "                                           COMMA_LOCATION_ARGS) ;\n\n"
@@ -89,7 +89,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   constant.rewind () ;
   while (constant.hasCurrentObject ()) {
     inHfile << "  public : static inline GGS_" << mEnumTypeName
-            << "  constructor_" << constant._key (HERE) << " (C_Compiler & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
+            << "  constructor_" << constant._key (HERE) << " (C_CompilerEx & /* inLexique */ COMMA_UNUSED_LOCATION_ARGS) {\n"
                "    return GGS_" << mEnumTypeName << " (enum_" << constant._key (HERE) << ") ;\n"
                "  }\n" ;
     constant.next () ;
@@ -100,7 +100,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   inHfile << "//--- Readers\n" ;
   GGS_typeEnumMessageMap::cEnumerator m (mEnumMessageMap) ;
   while (m.hasCurrentObject ()) {
-    inHfile << "  public : GGS_string reader_" << m._key (HERE) << " (C_Compiler & inLexique COMMA_LOCATION_ARGS) const ;\n" ;
+    inHfile << "  public : GGS_string reader_" << m._key (HERE) << " (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) const ;\n" ;
     m.next () ;
   }
   inHfile << "\n" ;
@@ -144,7 +144,7 @@ generateCppClassDeclaration (AC_OutputStream & /*inHfile */,
 //---------------------------------------------------------------------------*
 
 void cPtr_enumGalgasType::
-generateCppClassImplementation (C_Compiler & /* inCompiler */,
+generateCppClassImplementation (C_CompilerEx & /* inCompiler */,
                                 AC_OutputStream & inCppFile,
                                 const C_String & /* inTargetFileName */,
                                 PMSInt32 & /* ioPrototypeIndex */,
@@ -219,7 +219,7 @@ generateCppClassImplementation (C_Compiler & /* inCompiler */,
   while (m .hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "GGS_string GGS_" << mEnumTypeName << "::\n"
-                 "reader_" << m._key (HERE) << " (C_Compiler & /* inLexique */\n"
+                 "reader_" << m._key (HERE) << " (C_CompilerEx & /* inLexique */\n"
                  "                       COMMA_UNUSED_LOCATION_ARGS) const {\n"
                  "  const char * kMessages [" << cStringWithSigned (m._mMessageStringList (HERE).count () + 1) << "] = {\"\"" ;
     GGS_lstringlist::cEnumerator e (m._mMessageStringList (HERE), true) ;
@@ -267,7 +267,7 @@ generateCppClassImplementation (C_Compiler & /* inCompiler */,
                "  return result ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
-  inCppFile << "GGS_" << mEnumTypeName << " GGS_" << mEnumTypeName << "::castFromObject (C_Compiler & inLexique,\n"
+  inCppFile << "GGS_" << mEnumTypeName << " GGS_" << mEnumTypeName << "::castFromObject (C_CompilerEx & inLexique,\n"
                "                                   const GGS_object & inObject,\n"
                "                                   const GGS_location & inErrorLocation\n"
                "                                   COMMA_LOCATION_ARGS) {\n"

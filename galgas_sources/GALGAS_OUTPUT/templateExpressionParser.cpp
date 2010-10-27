@@ -48,7 +48,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_matchConcatOperatorForTemplate (C_Compiler & inLexique,
+void routine_matchConcatOperatorForTemplate (C_CompilerEx & inLexique,
                                 const GGS_AC_galgasType   var_cas_inLeftExpressionType,
                                 const GGS_AC_galgasType   var_cas_inRightExpressionType,
                                 GGS_AC_galgasType  & var_cas_outResultType
@@ -105,7 +105,7 @@ void routine_matchConcatOperatorForTemplate (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_matchAndOperatorForTemplate (C_Compiler & inLexique,
+void routine_matchAndOperatorForTemplate (C_CompilerEx & inLexique,
                                 const GGS_AC_galgasType   var_cas_inLeftExpressionType,
                                 const GGS_AC_galgasType   var_cas_inRightExpressionType,
                                 GGS_AC_galgasType  & var_cas_outResultType
@@ -172,7 +172,7 @@ void routine_matchAndOperatorForTemplate (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_matchOrOperatorForTemplate (C_Compiler & inLexique,
+void routine_matchOrOperatorForTemplate (C_CompilerEx & inLexique,
                                 const GGS_AC_galgasType   var_cas_inLeftExpressionType,
                                 const GGS_AC_galgasType   var_cas_inRightExpressionType,
                                 GGS_AC_galgasType  & var_cas_outResultType
@@ -239,7 +239,7 @@ void routine_matchOrOperatorForTemplate (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_matchXorOperatorForTemplate (C_Compiler & inLexique,
+void routine_matchXorOperatorForTemplate (C_CompilerEx & inLexique,
                                 const GGS_AC_galgasType   var_cas_inLeftExpressionType,
                                 const GGS_AC_galgasType   var_cas_inRightExpressionType,
                                 GGS_AC_galgasType  & var_cas_outResultType
@@ -300,7 +300,7 @@ void routine_matchXorOperatorForTemplate (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_checkNotOperatorForTemplate (C_Compiler & inLexique,
+void routine_checkNotOperatorForTemplate (C_CompilerEx & inLexique,
                                 const GGS_AC_galgasType   var_cas_inOperandType,
                                 GGS_AC_galgasType  & var_cas_outResultType
                         COMMA_UNUSED_LOCATION_ARGS) {
@@ -320,7 +320,7 @@ void routine_checkNotOperatorForTemplate (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_checkLogicalNegateOperatorForTemplate (C_Compiler & inLexique,
+void routine_checkLogicalNegateOperatorForTemplate (C_CompilerEx & inLexique,
                                 const GGS_AC_galgasType   var_cas_inOperandType,
                                 GGS_AC_galgasType  & var_cas_outResultType
                         COMMA_UNUSED_LOCATION_ARGS) {
@@ -357,7 +357,7 @@ void routine_checkLogicalNegateOperatorForTemplate (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_comparison_types_checkForTemplate (C_Compiler & inLexique,
+void routine_comparison_types_checkForTemplate (C_CompilerEx & inLexique,
                                 const GGS_AC_galgasType   var_cas_inLeftExpressionType,
                                 const GGS_AC_galgasType   var_cas_inRightExpressionType
                         COMMA_UNUSED_LOCATION_ARGS) {
@@ -516,7 +516,7 @@ void routine_comparison_types_checkForTemplate (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_magnitude_comparison_types_checkForTemplate (C_Compiler & inLexique,
+void routine_magnitude_comparison_types_checkForTemplate (C_CompilerEx & inLexique,
                                 const GGS_AC_galgasType   var_cas_inLeftExpressionType,
                                 const GGS_AC_galgasType   var_cas_inRightExpressionType
                         COMMA_UNUSED_LOCATION_ARGS) {
@@ -593,7 +593,7 @@ void routine_magnitude_comparison_types_checkForTemplate (C_Compiler & inLexique
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_left_shift_types_checkForTemplate (C_Compiler & inLexique,
+void routine_left_shift_types_checkForTemplate (C_CompilerEx & inLexique,
                                 const GGS_AC_galgasType   var_cas_inLeftExpressionType,
                                 const GGS_AC_galgasType   var_cas_inRightExpressionType,
                                 GGS_AC_galgasType  & var_cas_outResultType
@@ -648,7 +648,7 @@ void routine_left_shift_types_checkForTemplate (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_right_shift_types_checkForTemplate (C_Compiler & inLexique,
+void routine_right_shift_types_checkForTemplate (C_CompilerEx & inLexique,
                                 const GGS_AC_galgasType   var_cas_inLeftExpressionType,
                                 const GGS_AC_galgasType   var_cas_inRightExpressionType,
                                 GGS_AC_galgasType  & var_cas_outResultType
@@ -703,7 +703,7 @@ void routine_right_shift_types_checkForTemplate (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_addition_types_checkForTemplate (C_Compiler & inLexique,
+void routine_addition_types_checkForTemplate (C_CompilerEx & inLexique,
                                 const GGS_AC_galgasType   var_cas_inLeftExpressionType,
                                 const GGS_AC_galgasType   var_cas_inRightExpressionType,
                                 GGS_AC_galgasType  & var_cas_outResultType
@@ -752,7 +752,7 @@ void routine_addition_types_checkForTemplate (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_substraction_types_checkForTemplate (C_Compiler & inLexique,
+void routine_substraction_types_checkForTemplate (C_CompilerEx & inLexique,
                                 const GGS_AC_galgasType   var_cas_inLeftExpressionType,
                                 const GGS_AC_galgasType   var_cas_inRightExpressionType,
                                 GGS_AC_galgasType  & var_cas_outResultType
@@ -807,7 +807,7 @@ void routine_substraction_types_checkForTemplate (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_multiply_types_checkForTemplate (C_Compiler & inLexique,
+void routine_multiply_types_checkForTemplate (C_CompilerEx & inLexique,
                                 const GGS_AC_galgasType   var_cas_inLeftExpressionType,
                                 const GGS_AC_galgasType   var_cas_inRightExpressionType,
                                 GGS_AC_galgasType  & var_cas_outResultType
@@ -856,7 +856,7 @@ void routine_multiply_types_checkForTemplate (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_divide_types_checkForTemplate (C_Compiler & inLexique,
+void routine_divide_types_checkForTemplate (C_CompilerEx & inLexique,
                                 const GGS_AC_galgasType   var_cas_inLeftExpressionType,
                                 const GGS_AC_galgasType   var_cas_inRightExpressionType,
                                 GGS_AC_galgasType  & var_cas_outResultType
@@ -905,7 +905,7 @@ void routine_divide_types_checkForTemplate (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_modulo_types_checkForTemplate (C_Compiler & inLexique,
+void routine_modulo_types_checkForTemplate (C_CompilerEx & inLexique,
                                 const GGS_AC_galgasType   var_cas_inLeftExpressionType,
                                 const GGS_AC_galgasType   var_cas_inRightExpressionType,
                                 GGS_AC_galgasType  & var_cas_outResultType
@@ -954,7 +954,7 @@ void routine_modulo_types_checkForTemplate (C_Compiler & inLexique,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_unary_minus_type_checkForTemplate (C_Compiler & inLexique,
+void routine_unary_minus_type_checkForTemplate (C_CompilerEx & inLexique,
                                 const GGS_AC_galgasType   var_cas_inExpressionType,
                                 GGS_AC_galgasType  & var_cas_outResultType
                         COMMA_UNUSED_LOCATION_ARGS) {

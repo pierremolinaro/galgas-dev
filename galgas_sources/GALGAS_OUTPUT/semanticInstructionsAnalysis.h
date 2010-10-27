@@ -45,7 +45,7 @@ class GGS_localInitializedVariableList ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__semanticInstructionAST__analyzeSemanticInstruction)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__semanticInstructionAST__analyzeSemanticInstruction)  (C_CompilerEx & inLexique,
                                 const cPtr_semanticInstructionAST * inObjectPtr,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 GGS_semanticInstructionListForGeneration  & var_cas_ioInstructionListForGeneration,
@@ -93,13 +93,13 @@ class GGS_localConstantList : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_localConstantList
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_localConstantList
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -114,28 +114,28 @@ class GGS_localConstantList : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_localConstantList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_unifiedTypeMapProxy & _out_0,
                               GGS_lstring & _out_1,
                               GGS_bool& _out_2,
                               GGS_string& _out_3
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_unifiedTypeMapProxy & _out_0,
                              GGS_lstring & _out_1,
                              GGS_bool& _out_2,
                              GGS_string& _out_3
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_unifiedTypeMapProxy & _out_0,
                                 GGS_lstring & _out_1,
                                 GGS_bool& _out_2,
                                 GGS_string& _out_3
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_unifiedTypeMapProxy & _out_0,
                                  GGS_lstring & _out_1,
                                  GGS_bool& _out_2,
@@ -151,7 +151,7 @@ class GGS_localConstantList : public AC_GGS_list {
                                 const GGS_string& argument_3) ;
 //--- Handling '.' GALGAS operator
   public : GGS_localConstantList operator_concat (const GGS_localConstantList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_unifiedTypeMapProxy & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_bool& argument_2,
@@ -178,32 +178,32 @@ class GGS_localConstantList : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_unifiedTypeMapProxy 
-  reader_mTypeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mTypeAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_lstring 
-  reader_mNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_bool
-  reader_mNoWarningIfUnusedAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mNoWarningIfUnusedAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_string
-  reader_mCppNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mCppNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMTypeAtIndex (C_Compiler & inLexique,
+  modifier_setMTypeAtIndex (C_CompilerEx & inLexique,
                               const GGS_unifiedTypeMapProxy  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMNameAtIndex (C_Compiler & inLexique,
+  modifier_setMNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMNoWarningIfUnusedAtIndex (C_Compiler & inLexique,
+  modifier_setMNoWarningIfUnusedAtIndex (C_CompilerEx & inLexique,
                               const GGS_bool & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMCppNameAtIndex (C_Compiler & inLexique,
+  modifier_setMCppNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -213,7 +213,7 @@ class GGS_localConstantList : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_localConstantList castFromObject (C_Compiler & inLexique,
+  public : static GGS_localConstantList castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -266,13 +266,13 @@ class GGS_localInitializedVariableList : public AC_GGS_list {
                             const PMSInt32 inCount) const ;
 
   public : GGS_localInitializedVariableList
-  reader_subListWithRange (C_Compiler & inLexique,
+  reader_subListWithRange (C_CompilerEx & inLexique,
                            const GGS_uint & inFirstIndex,
                            const GGS_uint & inCount
                            COMMA_LOCATION_ARGS) const ;
 
   public : GGS_localInitializedVariableList
-  reader_subListFromIndex (C_Compiler & inLexique,
+  reader_subListFromIndex (C_CompilerEx & inLexique,
                            const GGS_uint & inIndex
                            COMMA_LOCATION_ARGS) const ;
 
@@ -287,25 +287,25 @@ class GGS_localInitializedVariableList : public AC_GGS_list {
 //--- Operator () used for method call
   public : const GGS_localInitializedVariableList * operator () (UNUSED_LOCATION_ARGS) const { return this ;} 
 //--- Method 'first'
-  public : void method_first (C_Compiler & inLexique,
+  public : void method_first (C_CompilerEx & inLexique,
                               GGS_unifiedTypeMapProxy & _out_0,
                               GGS_lstring & _out_1,
                               GGS_string& _out_2
                               COMMA_LOCATION_ARGS) const ;
 //--- Method 'last'
-  public : void method_last (C_Compiler & inLexique,
+  public : void method_last (C_CompilerEx & inLexique,
                              GGS_unifiedTypeMapProxy & _out_0,
                              GGS_lstring & _out_1,
                              GGS_string& _out_2
                              COMMA_LOCATION_ARGS) const ;
 //--- Modifier 'popLast'
-  public : void modifier_popLast (C_Compiler & inLexique,
+  public : void modifier_popLast (C_CompilerEx & inLexique,
                                 GGS_unifiedTypeMapProxy & _out_0,
                                 GGS_lstring & _out_1,
                                 GGS_string& _out_2
                                 COMMA_LOCATION_ARGS) ;
 //--- Modifier 'popFirst'
-  public : void modifier_popFirst (C_Compiler & inLexique,
+  public : void modifier_popFirst (C_CompilerEx & inLexique,
                                  GGS_unifiedTypeMapProxy & _out_0,
                                  GGS_lstring & _out_1,
                                  GGS_string& _out_2
@@ -319,7 +319,7 @@ class GGS_localInitializedVariableList : public AC_GGS_list {
                                 const GGS_string& argument_2) ;
 //--- Handling '.' GALGAS operator
   public : GGS_localInitializedVariableList operator_concat (const GGS_localInitializedVariableList & inOperand) const ;
-  public : void modifier_prependValue (C_Compiler & inLexique,
+  public : void modifier_prependValue (C_CompilerEx & inLexique,
                                 const GGS_unifiedTypeMapProxy & argument_0,
                                 const GGS_lstring & argument_1,
                                 const GGS_string& argument_2
@@ -343,25 +343,25 @@ class GGS_localInitializedVariableList : public AC_GGS_list {
 
 //--------------------------------- Direct Read Access
   public : GGS_unifiedTypeMapProxy 
-  reader_mTypeAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mTypeAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_lstring 
-  reader_mNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
   public : GGS_string
-  reader_mCppNameAtIndex (C_Compiler & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
+  reader_mCppNameAtIndex (C_CompilerEx & inLexique, const GGS_uint & inIndex COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Direct Write Access
   public : void
-  modifier_setMTypeAtIndex (C_Compiler & inLexique,
+  modifier_setMTypeAtIndex (C_CompilerEx & inLexique,
                               const GGS_unifiedTypeMapProxy  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMNameAtIndex (C_Compiler & inLexique,
+  modifier_setMNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_lstring  & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
   public : void
-  modifier_setMCppNameAtIndex (C_Compiler & inLexique,
+  modifier_setMCppNameAtIndex (C_CompilerEx & inLexique,
                               const GGS_string & inObject,
                               const GGS_uint & inIndex
                               COMMA_LOCATION_ARGS) const ;
@@ -371,7 +371,7 @@ class GGS_localInitializedVariableList : public AC_GGS_list {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_localInitializedVariableList castFromObject (C_Compiler & inLexique,
+  public : static GGS_localInitializedVariableList castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -400,7 +400,7 @@ class GGS_localInitializedVariableList : public AC_GGS_list {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_analyzeSemanticInstructionList (C_Compiler &,
+void routine_analyzeSemanticInstructionList (C_CompilerEx &,
                                 const GGS_analysisContext ,
                                 const GGS_localConstantList  ,
                                 const GGS_localInitializedVariableList  ,
@@ -415,7 +415,7 @@ void routine_analyzeSemanticInstructionList (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_analyzeErrorOrWarningInstruction (C_Compiler &,
+void routine_analyzeErrorOrWarningInstruction (C_CompilerEx &,
                                 const GGS_analysisContext ,
                                 const GGS_semanticExpressionAST  ,
                                 const GGS_semanticExpressionAST  ,
@@ -432,7 +432,7 @@ void routine_analyzeErrorOrWarningInstruction (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__actualParameterAST__checkAgainstFormalArgument)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__actualParameterAST__checkAgainstFormalArgument)  (C_CompilerEx & inLexique,
                                 const cPtr_actualParameterAST * inObjectPtr,
                                 const GGS_analysisContext  var_cas_inAnalysisContext,
                                 const GGS_unifiedTypeMapProxy   var_cas_inFormalArgumentType,
@@ -459,7 +459,7 @@ findCategoryMethod__actualParameterAST__checkAgainstFormalArgument (AC_galgasCla
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_analyzeRoutineArguments (C_Compiler &,
+void routine_analyzeRoutineArguments (C_CompilerEx &,
                                 const GGS_analysisContext ,
                                 const GGS_lstring  ,
                                 const GGS_string ,
@@ -478,7 +478,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_checkMethodImpl
 
 //---------------------------------------------------------------------------*
 
-GGS_string function_checkMethodImplementationInSuperClasses (C_Compiler &,
+GGS_string function_checkMethodImplementationInSuperClasses (C_CompilerEx &,
                                 const GGS_lstring  ,
                                 const GGS_unifiedTypeMapProxy   COMMA_LOCATION_ARGS) ;
 
@@ -492,7 +492,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_checkModifierIm
 
 //---------------------------------------------------------------------------*
 
-GGS_string function_checkModifierImplementationInSuperClasses (C_Compiler &,
+GGS_string function_checkModifierImplementationInSuperClasses (C_CompilerEx &,
                                 const GGS_lstring  ,
                                 const GGS_unifiedTypeMapProxy   COMMA_LOCATION_ARGS) ;
 

@@ -31,12 +31,12 @@ class cPtr_typeGalgas_filewrapper : public cPtr_AC_galgasType {
 
 //--- Attributes
 //--- Method 'getTypeName'
-  public : virtual void method_getTypeName (C_Compiler &,
+  public : virtual void method_getTypeName (C_CompilerEx &,
                                 GGS_string& 
                                 COMMA_LOCATION_ARGS) const ;
 
 //--- Method 'handleModifierCall'
-  public : virtual void method_handleModifierCall (C_Compiler &,
+  public : virtual void method_handleModifierCall (C_CompilerEx &,
                                 GGS_lstring  ,
                                 GGS_L_EXsignature & 
                                 COMMA_LOCATION_ARGS) const ;

@@ -96,17 +96,17 @@ class GGS_genericCategoryMethodListMap : public AC_GGS_listmap {
 
 //--- Reader 'allKeys'
   public : GGS_stringset
-  reader_allKeys (C_Compiler & inLexique
+  reader_allKeys (C_CompilerEx & inLexique
                   COMMA_LOCATION_ARGS) const ;
 
 //--- Reader 'keyList'
   public : GGS_stringlist
-  reader_keyList (C_Compiler & inLexique
+  reader_keyList (C_CompilerEx & inLexique
                   COMMA_LOCATION_ARGS) const ;
 
 //--- Reader 'listForKey'
   public : GGS_lstringlist
-  reader_listForKey (C_Compiler & inLexique,
+  reader_listForKey (C_CompilerEx & inLexique,
                      const GGS_string & inKey
                      COMMA_LOCATION_ARGS) const ;
 
@@ -123,7 +123,7 @@ class GGS_genericCategoryMethodListMap : public AC_GGS_listmap {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_genericCategoryMethodListMap castFromObject (C_Compiler & inLexique,
+  public : static GGS_genericCategoryMethodListMap castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -136,7 +136,7 @@ class GGS_genericCategoryMethodListMap : public AC_GGS_listmap {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef void (*typeCategoryMethod__semanticDeclarationAST__buildCategoryMethodListMaps)  (C_Compiler & inLexique,
+typedef void (*typeCategoryMethod__semanticDeclarationAST__buildCategoryMethodListMaps)  (C_CompilerEx & inLexique,
                                 const cPtr_semanticDeclarationAST * inObjectPtr,
                                 GGS_genericCategoryMethodListMap & var_cas_ioAbstractCategoryMethodListMapAST,
                                 GGS_genericCategoryMethodListMap & var_cas_ioCategoryMethodListMap,
@@ -202,17 +202,17 @@ class GGS_descendantClassListMap : public AC_GGS_listmap {
 
 //--- Reader 'allKeys'
   public : GGS_stringset
-  reader_allKeys (C_Compiler & inLexique
+  reader_allKeys (C_CompilerEx & inLexique
                   COMMA_LOCATION_ARGS) const ;
 
 //--- Reader 'keyList'
   public : GGS_stringlist
-  reader_keyList (C_Compiler & inLexique
+  reader_keyList (C_CompilerEx & inLexique
                   COMMA_LOCATION_ARGS) const ;
 
 //--- Reader 'listForKey'
   public : GGS_unifiedTypeMapProxyList
-  reader_listForKey (C_Compiler & inLexique,
+  reader_listForKey (C_CompilerEx & inLexique,
                      const GGS_string & inKey
                      COMMA_LOCATION_ARGS) const ;
 
@@ -229,7 +229,7 @@ class GGS_descendantClassListMap : public AC_GGS_listmap {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_descendantClassListMap castFromObject (C_Compiler & inLexique,
+  public : static GGS_descendantClassListMap castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -265,7 +265,7 @@ class GGS_categoryMethodMapForGlobalCheckings : public AC_GGS_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_categoryMethodMapForGlobalCheckings castFromObject (C_Compiler & inLexique,
+  public : static GGS_categoryMethodMapForGlobalCheckings castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -287,10 +287,10 @@ class GGS_categoryMethodMapForGlobalCheckings : public AC_GGS_map {
   public : inline const GGS_categoryMethodMapForGlobalCheckings * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_categoryMethodMapForGlobalCheckings constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_categoryMethodMapForGlobalCheckings constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- 'mapWithKeyAndValue' constructor
-  public : static GGS_categoryMethodMapForGlobalCheckings constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+  public : static GGS_categoryMethodMapForGlobalCheckings constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
 
                                              COMMA_LOCATION_ARGS) ;
@@ -303,28 +303,28 @@ class GGS_categoryMethodMapForGlobalCheckings : public AC_GGS_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_Compiler & inLexique,
+  public : void modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) ;
 
 //--- Internal method for inserting an element
-  protected : void insertElement (C_Compiler & inLexique,
+  protected : void insertElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inInitialState,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_Compiler & inLexique,
+  protected : void searchElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inActionIndex,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
                                   GGS_luint * outIndex
                                   COMMA_LOCATION_ARGS) const ;
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_categoryMethodMapForGlobalCheckings constructor_mapWithMapToOverride (C_Compiler & inLexique,
+  public : static GGS_categoryMethodMapForGlobalCheckings constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
                                             const GGS_categoryMethodMapForGlobalCheckings & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_categoryMethodMapForGlobalCheckings reader_overriddenMap (C_Compiler & inLexique
+  public : GGS_categoryMethodMapForGlobalCheckings reader_overriddenMap (C_CompilerEx & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Key stringset (for map with an associated automaton)
@@ -374,7 +374,7 @@ class GGS_categoryReaderMapForGlobalCheckings : public AC_GGS_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_categoryReaderMapForGlobalCheckings castFromObject (C_Compiler & inLexique,
+  public : static GGS_categoryReaderMapForGlobalCheckings castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -396,10 +396,10 @@ class GGS_categoryReaderMapForGlobalCheckings : public AC_GGS_map {
   public : inline const GGS_categoryReaderMapForGlobalCheckings * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_categoryReaderMapForGlobalCheckings constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_categoryReaderMapForGlobalCheckings constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- 'mapWithKeyAndValue' constructor
-  public : static GGS_categoryReaderMapForGlobalCheckings constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+  public : static GGS_categoryReaderMapForGlobalCheckings constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
 
                                              COMMA_LOCATION_ARGS) ;
@@ -412,28 +412,28 @@ class GGS_categoryReaderMapForGlobalCheckings : public AC_GGS_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_Compiler & inLexique,
+  public : void modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey COMMA_LOCATION_ARGS) ;
 
 //--- Internal method for inserting an element
-  protected : void insertElement (C_Compiler & inLexique,
+  protected : void insertElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inInitialState,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_Compiler & inLexique,
+  protected : void searchElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inActionIndex,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
                                   GGS_luint * outIndex
                                   COMMA_LOCATION_ARGS) const ;
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_categoryReaderMapForGlobalCheckings constructor_mapWithMapToOverride (C_Compiler & inLexique,
+  public : static GGS_categoryReaderMapForGlobalCheckings constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
                                             const GGS_categoryReaderMapForGlobalCheckings & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_categoryReaderMapForGlobalCheckings reader_overriddenMap (C_Compiler & inLexique
+  public : GGS_categoryReaderMapForGlobalCheckings reader_overriddenMap (C_CompilerEx & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Key stringset (for map with an associated automaton)
@@ -464,7 +464,7 @@ extern const C_galgas_function_descriptorEX kFunction_descriptor_outputDirectory
 
 //---------------------------------------------------------------------------*
 
-GGS_string function_outputDirectory (C_Compiler &,
+GGS_string function_outputDirectory (C_CompilerEx &,
                                 const GGS_lstring   COMMA_LOCATION_ARGS) ;
 
 //---------------------------------------------------------------------------*
@@ -473,7 +473,7 @@ GGS_string function_outputDirectory (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_checkCategoryMethodDefinitionForClass (C_Compiler &,
+void routine_checkCategoryMethodDefinitionForClass (C_CompilerEx &,
                                 const GGS_string ,
                                 const GGS_string ,
                                 const GGS_lstring  ,
@@ -487,7 +487,7 @@ void routine_checkCategoryMethodDefinitionForClass (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_checkCategoryReaderDefinitionForClass (C_Compiler &,
+void routine_checkCategoryReaderDefinitionForClass (C_CompilerEx &,
                                 const GGS_string ,
                                 const GGS_string ,
                                 const GGS_lstring  ,
@@ -501,7 +501,7 @@ void routine_checkCategoryReaderDefinitionForClass (C_Compiler &,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void routine_performProjectGlobalCheckings (C_Compiler &,
+void routine_performProjectGlobalCheckings (C_CompilerEx &,
                                 const GGS_parsedComponentStruct ,
                                 const GGS_location   COMMA_LOCATION_ARGS) ;
 
@@ -548,17 +548,17 @@ class GGS_targetFileListMap : public AC_GGS_listmap {
 
 //--- Reader 'allKeys'
   public : GGS_stringset
-  reader_allKeys (C_Compiler & inLexique
+  reader_allKeys (C_CompilerEx & inLexique
                   COMMA_LOCATION_ARGS) const ;
 
 //--- Reader 'keyList'
   public : GGS_stringlist
-  reader_keyList (C_Compiler & inLexique
+  reader_keyList (C_CompilerEx & inLexique
                   COMMA_LOCATION_ARGS) const ;
 
 //--- Reader 'listForKey'
   public : GGS_stringlist
-  reader_listForKey (C_Compiler & inLexique,
+  reader_listForKey (C_CompilerEx & inLexique,
                      const GGS_string & inKey
                      COMMA_LOCATION_ARGS) const ;
 
@@ -575,7 +575,7 @@ class GGS_targetFileListMap : public AC_GGS_listmap {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_targetFileListMap castFromObject (C_Compiler & inLexique,
+  public : static GGS_targetFileListMap castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -611,7 +611,7 @@ class GGS_sourceFileMap : public AC_GGS_map {
 
   public : GGS_object reader_object (void) const ;
 
-  public : static GGS_sourceFileMap castFromObject (C_Compiler & inLexique,
+  public : static GGS_sourceFileMap castFromObject (C_CompilerEx & inLexique,
                                            const GGS_object & inObject,
                                            const GGS_location & inErrorLocation
                                            COMMA_LOCATION_ARGS) ;
@@ -633,10 +633,10 @@ class GGS_sourceFileMap : public AC_GGS_map {
   public : inline const GGS_sourceFileMap * operator () (UNUSED_LOCATION_ARGS) const { return this ; }
 
 //--- 'emptyMap' constructor
-  public : static GGS_sourceFileMap constructor_emptyMap (C_Compiler & inLexique COMMA_LOCATION_ARGS) ;
+  public : static GGS_sourceFileMap constructor_emptyMap (C_CompilerEx & inLexique COMMA_LOCATION_ARGS) ;
 
 //--- 'mapWithKeyAndValue' constructor
-  public : static GGS_sourceFileMap constructor_mapWithKeyAndValue (C_Compiler & inLexique,
+  public : static GGS_sourceFileMap constructor_mapWithKeyAndValue (C_CompilerEx & inLexique,
                                              const GGS_lstring & inKey
 ,
                                              const GGS_string& inValue0,
@@ -651,7 +651,7 @@ class GGS_sourceFileMap : public AC_GGS_map {
   public : static const utf32 kInsertMessage_insertKey [] ;
 
 //--- 'insertKey' Insert Modifier
-  public : void modifier_insertKey (C_Compiler & inLexique,
+  public : void modifier_insertKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 const GGS_string&  inParameter0,
                                 const GGS_sourceFileKind&  inParameter1 COMMA_LOCATION_ARGS) ;
@@ -659,12 +659,12 @@ class GGS_sourceFileMap : public AC_GGS_map {
   public : static const utf32 kSearchMessage_searchKey [] ;
 
 //--- 'searchKey' Search Method
-  public : void method_searchKey (C_Compiler & inLexique,
+  public : void method_searchKey (C_CompilerEx & inLexique,
                                 const GGS_lstring & inKey,
                                 GGS_string  & outParameter0,
                                 GGS_sourceFileKind  & outParameter1 COMMA_LOCATION_ARGS) const ;
 //--- Internal method for inserting an element
-  protected : void insertElement (C_Compiler & inLexique,
+  protected : void insertElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inInitialState,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -673,7 +673,7 @@ class GGS_sourceFileMap : public AC_GGS_map {
                                    GGS_luint * outIndex
                                    COMMA_LOCATION_ARGS) ;
 //--- Internal method for searching for an element
-  protected : void searchElement (C_Compiler & inLexique,
+  protected : void searchElement (C_CompilerEx & inLexique,
                                   const PMUInt32 inActionIndex,
                                   const utf32 * inErrorMessage,
                                   const GGS_lstring & inKey,
@@ -682,10 +682,10 @@ class GGS_sourceFileMap : public AC_GGS_map {
                                   GGS_luint * outIndex
                                   COMMA_LOCATION_ARGS) const ;
   public : virtual GGS_string reader_description (const PMSInt32 inIndentation = 0) const ;
-  public : static GGS_sourceFileMap constructor_mapWithMapToOverride (C_Compiler & inLexique,
+  public : static GGS_sourceFileMap constructor_mapWithMapToOverride (C_CompilerEx & inLexique,
                                             const GGS_sourceFileMap & inMapToOverride
                                             COMMA_LOCATION_ARGS) ;
-  public : GGS_sourceFileMap reader_overriddenMap (C_Compiler & inLexique
+  public : GGS_sourceFileMap reader_overriddenMap (C_CompilerEx & inLexique
                                             COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Key stringset (for map with an associated automaton)
@@ -822,7 +822,7 @@ extern const cDirectoryWrapperEx gWrapperDirectory_0_fileListTemplateFileWrapper
 //---------------------------------------------------------------------------*
 
 GGS_string
-template_filewrapper_fileListTemplateFileWrapper_fileListTemplate (C_Compiler & inLexique,
+template_filewrapper_fileListTemplateFileWrapper_fileListTemplate (C_CompilerEx & inLexique,
                                 const GGS_string& var_cas_HAND_CODED_SOURCES_SUB_DIRS,
                                 const GGS_string& var_cas_GALGAS_SOURCE_LIST,
                                 const GGS_string& var_cas_HAND_CODED_SOURCE_LIST) ;
