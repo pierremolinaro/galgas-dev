@@ -8,13 +8,13 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
 //--- List attributes
 %
     foreach ATTRIBUTE_LIST
-      do %  public : GALGAS_%![mAttributeTypeIndex identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+      do %  public : GALGAS_%![mAttributeTypeProxy identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
     end foreach
 %
 //--- Constructor
   public : cCollectionElement_%!TYPE_IDENTIFIER% (%?^
   foreach ATTRIBUTE_LIST
-    do %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+    do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
     between %,\n%!^
   end foreach
 %\n%
@@ -37,7 +37,7 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
 
 cCollectionElement_%!TYPE_IDENTIFIER%::cCollectionElement_%!TYPE_IDENTIFIER% (%?^
   foreach ATTRIBUTE_LIST
-    do %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+    do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
     between %,\n%!^
   end foreach
 %\n%
@@ -113,7 +113,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (LOCA
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue (%?^
   foreach ATTRIBUTE_LIST
-  do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & inOperand%![IDX string]
+  do index IDX %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end foreach
   %\n%!^%COMMA_LOCATION_ARGS) {
@@ -144,7 +144,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue (
 
 void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
   foreach ATTRIBUTE_LIST
-  do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & inOperand%![IDX string]
+  do index IDX %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
   end foreach
   %\n%!^%COMMA_LOCATION_ARGS) {
@@ -171,7 +171,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
 
 void GALGAS_%!TYPE_IDENTIFIER%::modifier_prependValue (%?^
   foreach ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% inOperand%![IDX string]
+  do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inOperand%![IDX string]
   between %,\n%!^
   end foreach
   %\n%!^%COMMA_LOCATION_ARGS) {
@@ -198,7 +198,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_prependValue (%?^
 
 void GALGAS_%!TYPE_IDENTIFIER%::modifier_popFirst (%?^
   foreach ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end foreach
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) {
@@ -223,7 +223,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popFirst (%?^
 
 void GALGAS_%!TYPE_IDENTIFIER%::modifier_popLast (%?^
   foreach ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end foreach
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) {
@@ -248,7 +248,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popLast (%?^
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^
   foreach ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end foreach
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) const {
@@ -273,7 +273,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^
 
 void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^
   foreach ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
+  do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string] %,\n%!^
   end foreach
   %C_Compiler * inCompiler
   %!^%COMMA_LOCATION_ARGS) const {
@@ -337,7 +337,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::dotAssign_operation (%?^%const GALGAS_%!TYPE_IDE
 %
 foreach ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]%AtIndex (%?^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% inOperand,\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]%AtIndex (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inOperand,\n%
   %                                              %!^%GALGAS_uint inIndex,\n%
   %                                              %!^%C_Compiler * inCompiler\n%
   %                                              %!^%COMMA_LOCATION_ARGS) {\n%
@@ -352,12 +352,12 @@ end foreach
 %
 foreach ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]%AtIndex (%?^%const GALGAS_uint & inIndex,\n%
+  %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]%AtIndex (%?^%const GALGAS_uint & inIndex,\n%
   %                                              %!^%C_Compiler * inCompiler\n%
   %                                              %!^%COMMA_LOCATION_ARGS) const {\n%
   %  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%
   %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;\n%
-  %  GALGAS_%![mAttributeTypeIndex identifierRepresentation]% result ;\n%
+  %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
   %  if (NULL != p) {\n%
   %    macroValidObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
   %    result = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
@@ -377,7 +377,7 @@ cGenericAbstractEnumerator () {
 
 %foreach ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (void) const {\n%
+  %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (void) const {\n%
   %  const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr () ;\n%
   %  macroValidObject (p, const cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%

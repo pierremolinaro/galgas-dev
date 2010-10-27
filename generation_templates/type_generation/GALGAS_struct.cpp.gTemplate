@@ -28,7 +28,7 @@ end foreach
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
 foreach ATTRIBUTE_LIST
-  do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & inOperand%![IDX string]
+  do index IDX %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
 end foreach%) :\n%
 foreach ATTRIBUTE_LIST do index IDX
@@ -51,7 +51,7 @@ end foreach
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
 foreach ATTRIBUTE_LIST
-  do index IDX %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & inOperand%![IDX string]
+  do index IDX %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inOperand%![IDX string]
   between %,\n%!^
 end foreach% \n%!^%COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
@@ -122,7 +122,7 @@ end foreach
 
 %foreach ATTRIBUTE_LIST do
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
+  %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
   %  return mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%
 

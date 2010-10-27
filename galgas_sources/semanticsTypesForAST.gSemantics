@@ -971,7 +971,9 @@ class @readAccessWithInstructionAST extends @semanticInstructionAST {
   @lstring mSearchMethodName ;
   @semanticExpressionAST mKeyExpression ;
   @semanticInstructionListAST mDoBranchInstructions ;
+  @location mEndOf_do_instructions ;
   @semanticInstructionListAST mElseBranchInstructions ;
+  @location mEndOf_else_instructions ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1224,6 +1226,24 @@ list @insertOrReplaceDeclarationListAST {
 
 #---------------------------------------------------------------------------*
 
+list @mapOverrideBlockDescriptorAST {
+  @lstring mSourceState1 ;
+  @lstring mSourceState2 ;
+  @lstring mResultingState1 ;
+  @mapAutomatonMessageKind mMessageKind ;
+  @lstring mMessage ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @mapOverrideBlockListAST {
+  @lstring mOverrideBlockName ;
+  @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor1AST ;
+  @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor2AST ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @mapDeclarationAST extends @semanticDeclarationAST {
   @lstring mMapTypeName ;
   @attributeInCollectionListAST mAttributeList ;
@@ -1232,6 +1252,7 @@ class @mapDeclarationAST extends @semanticDeclarationAST {
   @mapRemoveMethodListAST mRemoveMethodList ;
   @insertOrReplaceDeclarationListAST mInsertOrReplaceDeclarationListAST ;
   @mapStateList mMapStateList ;
+  @mapOverrideBlockListAST mMapOverrideBlockListAST ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1373,6 +1394,7 @@ class @enumDeclarationAST extends @semanticDeclarationAST {
 list @formalTemplateInputParameterListAST {
   @lstring mFormalArgumentTypeName ;
   @lstring mFormalArgumentName ;
+  @bool mIsUnused ;
 }
 
 #---------------------------------------------------------------------------*

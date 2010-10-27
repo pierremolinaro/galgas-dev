@@ -922,6 +922,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   $do$ ;
   @semanticInstructionListAST mDoBranchInstructions ;
   <semantic_instruction_list> ? mDoBranchInstructions ;
+  const @location endOfDoInstructions := here ;
   @semanticInstructionListAST mElseBranchInstructions ;
   select
     mElseBranchInstructions := [@semanticInstructionListAST emptyList] ;
@@ -936,7 +937,9 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     !mSearchMethodName
     !mKeyExpression
     !mDoBranchInstructions
+    !endOfDoInstructions
     !mElseBranchInstructions
+    !here
   ] ;
   $end$ ;
   $with$ ;

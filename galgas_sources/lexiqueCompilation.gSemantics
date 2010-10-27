@@ -21,12 +21,14 @@ semantics lexiqueCompilation :
 import "lexiqueGeneration.gSemantics" ;
 import "lexiqueCocoaGeneration.gSemantics" ;
 import "allASTTypes.gSemantics" ;
+import "lexiqueSemantics.gSemantics" ;
 
 import semantics allASTTypes in "allASTTypes.gSemantics" ;
 import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
 import semantics lexiqueGeneration in "lexiqueGeneration.gSemantics" ;
 import semantics lexiqueCocoaGeneration in "lexiqueCocoaGeneration.gSemantics" ;
 import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
+import "lexiqueLL1grammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
 #                     checkLexicalDefaultAction                             *
@@ -398,7 +400,6 @@ override method @lexicalFormalInputArgumentAST checkLexicalRoutineCallArgument
   ?@lexicalTypeEnum inLexicalRoutineFormalArgumentType
 :
 #--- Check attribute definition
-  @lexicalTypeEnum attributeLexicalType ;
   [mRoutineOrFunctionFormalInputArgument checkLexicalRoutineCallArgument
     !?ioLexiqueAnalysisContext
     !inLexicalRoutineFormalArgumentType
@@ -672,7 +673,7 @@ routine parseLexiqueComponent
   ?!@parsedComponentStruct ioParsedComponentStruct
   !@lexiqueComponentAST outLexiqueComponentRoot
 :
-  @lstring key [new ![[inSourceFile lastPathComponent] stringByDeletingPathExtension] ![inSourceFile location]] ;
+  @lstring key [new ![[[inSourceFile string] lastPathComponent] stringByDeletingPathExtension] ![inSourceFile location]] ;
   if [[ioParsedComponentStruct mParsedLexiqueComponentMap] hasKey ! [key string]] then
     [[ioParsedComponentStruct mParsedLexiqueComponentMap] searchKey !key ?outLexiqueComponentRoot] ;
   else
@@ -743,7 +744,7 @@ routine compileLexiqueComponent
   ;
 #--------------------------------------- Check component name
   @lstring componentName := [lexiqueComponentRoot mLexiqueComponentName] ;
-  @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+  @string basename := [[[inSourceFile string] lastPathComponent] stringByDeletingPathExtension] ;
   if [componentName string] != basename then
     warning componentName: "GALGAS checks "
       "the component name ('" . [componentName string]
@@ -850,7 +851,7 @@ routine compileLexiqueComponent
     @lexicalExplicitTokenListMap lexicalTokenListMap [emptyMap] ;
     @tokenSortedlist tokenSortedlist [emptySortedList] ;
     foreach mEntryList do
-      @string syntaxErrorMessage := [mSyntaxErrorMessage stringByReplacingStringByString !"%K" ![mTerminalSpelling string]] ;
+      @string syntaxErrorMessage := [[mSyntaxErrorMessage string] stringByReplacingStringByString !"%K" ![mTerminalSpelling string]] ;
       @bool isEndOfTemplateMark := false ;
       foreach mFeatureList do
         if [mValue string] != "templateEndMark" then
@@ -870,7 +871,7 @@ routine compileLexiqueComponent
       ;
       [!?lexiqueAnalysisContext->mTerminalMap insertKey !mTerminalSpelling !argumentTypeList] ;
       [!?lexicalTokenListMap insertKey !mEntrySpelling !mTerminalSpelling !mFeatureList] ;
-      tokenSortedlist += ![mEntrySpelling length] ![mEntrySpelling string] ![mTerminalSpelling string] ;
+      tokenSortedlist += ![[mEntrySpelling string] length] ![mEntrySpelling string] ![mTerminalSpelling string] ;
       lexiqueAnalysisContext->mUnicodeStringToGenerate += ![mEntrySpelling string] ;
     end foreach ;
     [!?lexiqueAnalysisContext->mLexicalTokenListMap insertKey !mName !lexicalTokenListMap !tokenSortedlist !false] ;

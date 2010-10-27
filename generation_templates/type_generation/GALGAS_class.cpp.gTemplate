@@ -53,7 +53,7 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
   %//---------------------------------------------------------------------------*\n\n%
   %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
   foreach ALL_ATTRIBUTE_LIST
-    do %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & inAttribute_%![mAttributeName identifierRepresentation]
+    do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inAttribute_%![mAttributeName identifierRepresentation]
     between %,\n%!^
   end foreach
   if [ALL_ATTRIBUTE_LIST length] == 0 then
@@ -114,8 +114,8 @@ end foreach
 
 foreach CURRENT_ATTRIBUTE_LIST do
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGAS_%![mAttributeTypeIndex identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
-  %  GALGAS_%![mAttributeTypeIndex identifierRepresentation]% result ;\n%
+  %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
+  %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
   %  if (NULL != mObjectPtr) {\n%
   %    const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
   %    macroValidObject (p, const cPtr_%!TYPE_IDENTIFIER%) ;\n%
@@ -127,7 +127,7 @@ end foreach
 
 foreach CURRENT_ATTRIBUTE_LIST do
   %//---------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mAttributeTypeIndex identifierRepresentation]% inValue\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inValue\n%
                         !^%COMMA_UNUSED_LOCATION_ARGS) {\n%
   %  if (NULL != mObjectPtr) {\n%
   %    cPtr_%!TYPE_IDENTIFIER% * p = (cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
@@ -199,7 +199,7 @@ end foreach
 
 cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^
   foreach ALL_ATTRIBUTE_LIST
-    do %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+    do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
     between %,\n%!^
   end foreach
   if [ALL_ATTRIBUTE_LIST length] > 0 then

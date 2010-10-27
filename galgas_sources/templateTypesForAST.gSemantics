@@ -195,7 +195,7 @@ class @templateIfThenElseExpressionAST extends @templateExpressionAST {
  
 #---------------------------------------------------------------------------*
 
-class @templateTestComplementAST extends @templateExpressionAST {
+class @templateNotOperatorAST extends @templateExpressionAST {
   @location mOperatorLocation ;
   @templateExpressionAST mExpression ;
 }
@@ -404,6 +404,7 @@ class @templateInstructionGotoColumnLocationAST extends @templateInstructionAST 
 class @templateInstructionForeachAST extends @templateInstructionAST {
   @bool mIsAscending ;
   @templateExpressionAST mExpression ;
+  @string mPrefix ;
   @templateInstructionListAST mBeforeInstructionList ;
   @templateInstructionListAST mDoInstructionList ;
   @lstring mIndexIdentifier ;

@@ -22,6 +22,7 @@ with "galgas_scanner.gLexique" ;
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 import semantics optionTypesForAST in "optionTypesForAST.gSemantics" ;
+import "optionTypesForAST.gSemantics" ;
 
 nonterminal <option_component_start_symbol> !@optionComponentAST outOptionComponentRoot;
 
@@ -73,7 +74,7 @@ rule <option> ?!@commandLineOptionListAST ioCommandLineOptionList :
       optionDefaultValueKind := [@optionDefaultValueEnumAST stringDefaultValue] ;
     or
       $unsigned_literal_integer$ ? @luint v ;
-      [!?defaultValue setString ![[v uint] string]] ;
+      defaultValue := [@lstring new ![[v uint] string] ![v location]] ;
       optionDefaultValueKind := [@optionDefaultValueEnumAST unsignedDefaultValue] ;
     end select ;
   end select ;

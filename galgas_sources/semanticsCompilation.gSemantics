@@ -161,54 +161,56 @@ routine buildOptionComponentMapForSemanticAnalysis
     ] ;
   end foreach ;
 #--- Add predefined option component
-  @string2list optionNameList := [@system boolOptionNameList] ;
-  @commandLineOptionMap boolOptionMap [emptyMap] ;
-  foreach optionNameList do
-    if (mValue0 == "galgas_cli_options") then
-    [!?boolOptionMap insertKey
-      ![@lstring new !mValue1 !here]
-      ![@system boolOptionInvocationLetter !mValue0 !mValue1]
-      ![@system boolOptionInvocationString !mValue0 !mValue1]
-      ![@system boolOptionCommentString !mValue0 !mValue1]
-      !"" # Not used
-      ] ;
-    end if ;
-  end foreach ;
-#--- 
-  optionNameList := [@system uintOptionNameList] ;
-  @commandLineOptionMap uintOptionMap [emptyMap] ;
-  foreach optionNameList do
-    if (mValue0 == "galgas_cli_options") then
-    [!?uintOptionMap insertKey
-      ![@lstring new !mValue1 !here]
-      ![@system uintOptionInvocationLetter !mValue0 !mValue1]
-      ![@system uintOptionInvocationString !mValue0 !mValue1]
-      ![@system uintOptionCommentString !mValue0 !mValue1]
-      !"" # Not used
-      ] ;
-    end if ;
-  end foreach ;
-#--- 
-  optionNameList := [@system stringOptionNameList] ;
-  @commandLineOptionMap stringOptionMap [emptyMap] ;
-  foreach optionNameList do
-    if (mValue0 == "galgas_cli_options") then
-    [!?stringOptionMap insertKey
-      ![@lstring new !mValue1 !here]
-      ![@system stringOptionInvocationLetter !mValue0 !mValue1]
-      ![@system stringOptionInvocationString !mValue0 !mValue1]
-      ![@system stringOptionCommentString !mValue0 !mValue1]
-      !"" # Not used
-      ] ;
-    end if ;
-  end foreach ;
-#---
-  [!?ioOptionComponentMapForSemanticAnalysis insertKey
-    ![@lstring new !"galgas_cli_options" !here]
-    !boolOptionMap
-    !uintOptionMap
-    !stringOptionMap
-  ] ;
+  if not [ioOptionComponentMapForSemanticAnalysis hasKey !"galgas_cli_options"] then
+    @string2list optionNameList := [@system boolOptionNameList] ;
+    @commandLineOptionMap boolOptionMap [emptyMap] ;
+    foreach optionNameList do
+      if (mValue0 == "galgas_cli_options") then
+      [!?boolOptionMap insertKey
+        ![@lstring new !mValue1 !here]
+        ![@system boolOptionInvocationLetter !mValue0 !mValue1]
+        ![@system boolOptionInvocationString !mValue0 !mValue1]
+        ![@system boolOptionCommentString !mValue0 !mValue1]
+        !"" # Not used
+        ] ;
+      end if ;
+    end foreach ;
+  #--- 
+    optionNameList := [@system uintOptionNameList] ;
+    @commandLineOptionMap uintOptionMap [emptyMap] ;
+    foreach optionNameList do
+      if (mValue0 == "galgas_cli_options") then
+      [!?uintOptionMap insertKey
+        ![@lstring new !mValue1 !here]
+        ![@system uintOptionInvocationLetter !mValue0 !mValue1]
+        ![@system uintOptionInvocationString !mValue0 !mValue1]
+        ![@system uintOptionCommentString !mValue0 !mValue1]
+        !"" # Not used
+        ] ;
+      end if ;
+    end foreach ;
+  #--- 
+    optionNameList := [@system stringOptionNameList] ;
+    @commandLineOptionMap stringOptionMap [emptyMap] ;
+    foreach optionNameList do
+      if (mValue0 == "galgas_cli_options") then
+      [!?stringOptionMap insertKey
+        ![@lstring new !mValue1 !here]
+        ![@system stringOptionInvocationLetter !mValue0 !mValue1]
+        ![@system stringOptionInvocationString !mValue0 !mValue1]
+        ![@system stringOptionCommentString !mValue0 !mValue1]
+        !"" # Not used
+        ] ;
+      end if ;
+    end foreach ;
+  #---
+    [!?ioOptionComponentMapForSemanticAnalysis insertKey
+      ![@lstring new !"galgas_cli_options" !here]
+      !boolOptionMap
+      !uintOptionMap
+      !stringOptionMap
+    ] ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*

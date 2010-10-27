@@ -82,7 +82,7 @@ override reader @lexicalStringNotMatchAST generateConditionCode
   outGeneratedCode .= ", " ;
   outGeneratedCode .= [[mString length] string] ;
   outGeneratedCode .= ", gLexicalMessage_" ;
-  outGeneratedCode .= mErrorMessage ;
+  outGeneratedCode .= [mErrorMessage string] ;
   outGeneratedCode .= " COMMA_LINE_AND_SOURCE_FILE)" ;
 end reader ;
 
@@ -104,7 +104,7 @@ override reader @lexicalCharacterSetMatchAST generateConditionCode
   -> @string outGeneratedCode
 :
   outGeneratedCode := "testForCharWithFunction (" ;
-  outGeneratedCode .= mCharacterSetName ;
+  outGeneratedCode .= [mCharacterSetName string] ;
   outGeneratedCode .= ")" ;
 end reader ;
 

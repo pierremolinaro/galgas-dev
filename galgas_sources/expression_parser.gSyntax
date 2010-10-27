@@ -2016,7 +2016,7 @@ rule <read_access>
   ?!@typeVariablesMap ioVariablesMap
 :
   $identifier$ ? nomVariable ;
-  [!?ioVariablesMap searchForReadOnlyAccess !nomVariable ?typeEntite ?nomCppEntite] ; 
+  [!?ioVariablesMap searchForReadOnlyAccess !nomVariable ?typeEntite ?nomCppEntite] ;
 end rule ;
 
 #------------------------------------------------------------------------------*

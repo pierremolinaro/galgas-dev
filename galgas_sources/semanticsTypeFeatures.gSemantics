@@ -61,7 +61,8 @@ override method @stringsetPredefinedTypeAST getModifierMap
 :
   @unifiedTypeMapProxy stringType ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"string" ?stringType] ;
-  outModifierMap := [@modifierMap mapWithKeyAndValue
+  outModifierMap := [@modifierMap emptyMap] ;
+  [!?outModifierMap insertKey
     ![@lstring new !"removeKey" !here]
     ![@formalParameterSignature listWithValue !stringType ![@formalArgumentPassingModeAST argumentIn]]
     !false # No Compiler argument

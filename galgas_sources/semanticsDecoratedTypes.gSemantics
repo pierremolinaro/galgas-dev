@@ -123,6 +123,7 @@ class @constructorExpressionForGeneration extends @semanticExpressionForGenerati
 class @readerCallExpressionForGeneration extends @semanticExpressionForGeneration {
   @bool mIsCategory ;
   @semanticExpressionForGeneration mReceiverExpression ;
+  @stringlist mFieldList ;
   @string mReaderName ;
   @semanticExpressionListForGeneration mExpressions ;
   @bool mHasCompilerArgument ;
@@ -308,7 +309,7 @@ class @notExpressionForGeneration extends @semanticExpressionForGeneration {
 
 #---------------------------------------------------------------------------*
 
-class @complementExpressionForGeneration extends @semanticExpressionForGeneration {
+class @tildeExpressionForGeneration extends @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mExpression ;
 }
 
@@ -979,7 +980,7 @@ class @grammarInstructionWithSourceExpressionForGeneration extends @semanticInst
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  W I T H    I N S T R U C T I O N                                         *
+#  R E A D  /  W R I T E    ' W I T H '    I N S T R U C T I O N            *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -987,6 +988,21 @@ class @readWriteWithInstructionForGeneration extends @semanticInstructionForGene
   @string mReceiverVariableCppName ;
   @unifiedTypeMapProxy mReceiverType ;
   @lstringlist mStructAttributeList ;
+  @string mAccessName ;
+  @string mObjectArrayCppName ;
+  @semanticExpressionForGeneration mKeyExpression ;
+  @semanticInstructionListForGeneration mDoBranchInstructions ;
+  @semanticInstructionListForGeneration mElseBranchInstructions ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  R E A D  O N L Y    ' W I T H '    I N S T R U C T I O N                 *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @readOnlyWithInstructionForGeneration extends @semanticInstructionForGeneration {
+  @semanticExpressionForGeneration mReceiverExpression ;
   @string mAccessName ;
   @string mObjectArrayCppName ;
   @semanticExpressionForGeneration mKeyExpression ;

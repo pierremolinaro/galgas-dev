@@ -157,7 +157,7 @@ list @enumerationDescriptorList {
 #---------------------------------------------------------------------------*
 
 list @typedAttributeList {
-  @unifiedTypeMapProxy mAttributeTypeIndex ;
+  @unifiedTypeMapProxy mAttributeTypeProxy ;
   @lstring mAttributeName ;
 }
 

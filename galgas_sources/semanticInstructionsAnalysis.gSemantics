@@ -1635,7 +1635,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   @localInitializedVariableList localInitializedVariableList [emptyList] ;
   foreach [targetType mCurrentTypedAttributeList] do
     localInitializedVariableList +=
-      !mAttributeTypeIndex
+      !mAttributeTypeProxy
       ![@lstring new ![mPrefix string] . mAttributeName ![mAccessName location]]
       !objectArrayCppName . "->mAttribute_" . [mAttributeName identifierRepresentation]
     ;
@@ -1678,13 +1678,105 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @readAccessWithInstructionAST analyzeSemanticInstruction
-  ??@analysisContext unused inAnalysisContext
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
+  ??@analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
 :
-  error mSearchMethodName
-  : "unhandled instruction @readAccessWithInstructionAST"
+#--- Analyze receiver expression
+  @semanticExpressionForGeneration receiverExpression ;
+  [mReceiverExpression analyzeSemanticExpression
+    !inAnalysisContext
+    !?ioVariableMap
+    ?receiverExpression
+  ] ;
+  const @unifiedTypeMapProxy receiverType := [receiverExpression mType] ;
+#--- Analyze key expression
+  @semanticExpressionForGeneration keyExpression ;
+  [mKeyExpression analyzeSemanticExpression
+    !inAnalysisContext
+    !?ioVariableMap
+    ?keyExpression
+  ] ;
+#--- Object Array cpp name
+  const @string objectArrayCppName := "objectArray_" . [[mInstructionLocation locationIndex] string] ;
+#--- Check this type handle 'with' access
+  const @withAccessorMap withAccessorMap := [receiverType mWithAccessorMap] ;
+  @unifiedTypeMapProxyList argumentTypeList ;
+  with withAccessorMap hasKey ![mSearchMethodName string] do
+    argumentTypeList := [@unifiedTypeMapProxyList listWithValue !mArgumentType] ;
+  else
+    if [withAccessorMap count] == 0 then
+      error mSearchMethodName
+      : "the '@". [receiverType key] . "' type cannot be used in a 'with' instruction"
+      : argumentTypeList
+      ;
+    else
+      @string s := "" ;
+      foreach withAccessorMap do
+        s .= "\n  - " . lkey ." ?@" . [mArgumentType key] ;
+      end foreach ;
+      error mSearchMethodName
+      : "the '@". [receiverType key] . "' type does not define the '" . mSearchMethodName . "' accessor for the 'with' instruction; available "
+      . if [withAccessorMap count] > 1 then "accessors are" else "accessor is" end
+      . ":" . s
+      : argumentTypeList
+      ;
+    end if ;
+  end with ;
+#--- Check parameter list
+  const @semanticExpressionListForGeneration effectiveExpressionList [listWithValue !keyExpression]  ;
+  if [effectiveExpressionList length] != [argumentTypeList length] then
+    error mSearchMethodName: "calling the '" . mSearchMethodName . "' accessor of '@" . [receiverType key] . "' requires "
+    . [[argumentTypeList length] string] . " parameter(s), while this call has "
+    . [[effectiveExpressionList length] string] . " parameter(s)" ;
+  else
+    foreach effectiveExpressionList, argumentTypeList do
+      checkAssignmentTypes !mType ![mExpression mType] ![mSearchMethodName location] ;
+    end foreach ;
+  end if ;
+#--- Enter in a select block
+  [!?ioVariableMap beginOverrideForSelectBlock] ;
+#--- 'do' branch
+  @localConstantList localConstantList [emptyList] ;
+  foreach [receiverType mCurrentTypedAttributeList] do
+    localConstantList +=
+      !mAttributeTypeProxy
+      ![@lstring new ![mPrefix string] . mAttributeName ![mSearchMethodName location]]
+      !true # Do not warn if unused
+      !objectArrayCppName . "->mAttribute_" . [mAttributeName identifierRepresentation]
+    ;
+  end foreach ;
+  @semanticInstructionListForGeneration do_instructionList ;
+  analyzeSemanticInstructionList
+    !inAnalysisContext
+    !localConstantList
+    ![@localInitializedVariableList emptyList]
+    !mDoBranchInstructions
+    !mEndOf_do_instructions
+    !?ioVariableMap
+    ?do_instructionList
   ;
+#--- else branch
+  @semanticInstructionListForGeneration else_instructionList ;
+  analyzeSemanticInstructionList
+    !inAnalysisContext
+    ![@localConstantList emptyList]
+    ![@localInitializedVariableList emptyList]
+    !mElseBranchInstructions
+    !mEndOf_else_instructions
+    !?ioVariableMap
+    ?else_instructionList
+  ;
+  [!?ioVariableMap endOverride !mEndOf_else_instructions] ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@readOnlyWithInstructionForGeneration new
+    !receiverExpression
+    ![mSearchMethodName string]
+    !objectArrayCppName
+    !keyExpression
+    !do_instructionList
+    !else_instructionList
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*

@@ -278,8 +278,11 @@ override method @readerCallExpressionForGeneration generateExpression
   end foreach ;
 #--- Generate Reader call
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " " . outCppName
-                   . " (" . receiverCppName . ".reader_" . [mReaderName identifierRepresentation] . " (" ;
+  ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " " . outCppName . " (" . receiverCppName ;
+  foreach mFieldList do
+    ioGeneratedCode .= ".mAttribute_" . [mValue identifierRepresentation] ;
+  end foreach ;
+  ioGeneratedCode .=  ".reader_" . [mReaderName identifierRepresentation] . " (" ;
   foreach readerArgumentCppNameList
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;
@@ -763,7 +766,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @complementExpressionForGeneration generateExpression
+override method @tildeExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
@@ -924,7 +927,7 @@ override method @varInExpressionForGeneration generateExpression
   outCppName := mCppVarName ;
   [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing] ;
   foreach mStructFieldList do
-    outCppName .= ".mAttribute_" . [mValue identifierRepresentation] ;
+    outCppName .= ".mAttribute_" . [[mValue string] identifierRepresentation] ;
   end foreach ;
 end method ;
 

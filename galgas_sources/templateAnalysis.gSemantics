@@ -77,13 +77,51 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
   @bool isCategory ;
   @bool hasCompilerArgument ;
   @unifiedTypeMapProxy returnedType ;
+  @stringlist fieldList [emptyList] ;
   with readerMap hasKey ![mReaderName string] do
     readerFormalArgumentTypeList := mArgumentTypeList ;
     hasCompilerArgument := mHasCompilerArgument ;
     returnedType := mReturnedType ;
     isCategory := mIsCategory ;
   else
-    if [readerMap count] == 0 then
+    @uint matchingReaderCount := 0 ;
+    if [receiverType mTypeKindEnum] == [@typeKindEnum structType] then
+      readerFormalArgumentTypeList := [@unifiedTypeMapProxyList emptyList] ;
+      hasCompilerArgument := true ;
+      returnedType := [@unifiedTypeMapProxy null] ;
+      isCategory := true ;
+      foreach [receiverType mCurrentTypedAttributeList] do
+        const @unifiedTypeMapProxy attributeType [searchKey !inAnalysisContext->mSemanticContext->mTypeMap ![@lstring new ![mAttributeTypeProxy key] !here]] ;
+        const @readerMap aMap := [attributeType mReaderMap] ;
+#        const @readerMap aMap := [mAttributeTypeProxy mReaderMap] ; # Bug in GALGAS 1, for GALGAS 2
+        with aMap hasKey ![mReaderName string] do
+          matchingReaderCount ++ ;
+          readerFormalArgumentTypeList := mArgumentTypeList ;
+          hasCompilerArgument := mHasCompilerArgument ;
+          returnedType := mReturnedType ;
+          isCategory := mIsCategory ;
+          fieldList += ![mAttributeName string] ;
+        end with ;
+      end foreach ;
+      if matchingReaderCount == 0 then
+        error mReaderName
+        : "the '@". [receiverType key] . "' struct type does not define the '" . [mReaderName string]
+        . "' reader, and none of its fields defines it"
+        : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory
+        ;
+      elsif matchingReaderCount > 1 then
+        @string s := "" ;
+        foreach fieldList
+          do s .= mValue ;
+          between s .= ", " ;
+        end foreach ;
+        error mReaderName
+        : "the '@". [receiverType key] . "' struct type does not define the '" . [mReaderName string]
+        . "' reader, and several of its fields defines it:" . s . " (exactly one field should define it)"
+        : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory
+        ;
+      end if ;
+    elsif [readerMap count] == 0 then
       error mReaderName
       : "the '@". [receiverType key] . "' type does not define any reader"
       : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory
@@ -123,6 +161,7 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
       ![mReaderName location]
       !isCategory
       !receiverExpression
+      !fieldList
       ![mReaderName string]
       !constructorEffectiveParameterList
       !hasCompilerArgument
@@ -518,7 +557,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @templateTestComplementAST templateExpressionAnalysis
+override method @templateNotOperatorAST templateExpressionAnalysis
   ??@templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression
 :
@@ -527,14 +566,14 @@ override method @templateTestComplementAST templateExpressionAnalysis
   [mExpression templateExpressionAnalysis !inAnalysisContext ?expression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy type := [expression mType] ;
-  if ([type mHandledOperatorFlags] & unaryTildeOperator []) == 0 then
+  if ([type mHandledOperatorFlags] & unaryNotOperator []) == 0 then
     error mOperatorLocation
-    : "operand type is '@" . [type key] . "' and does not support the '~' operator"
+    : "operand type is '@" . [type key] . "' and does not support the 'not' operator"
     :outExpression
     ;
   else
   #--- Generate expression
-    outExpression := [@complementExpressionForGeneration new
+    outExpression := [@notExpressionForGeneration new
       !type
       !mOperatorLocation
       !expression
@@ -553,14 +592,14 @@ override method @templateLogicalNegateAST templateExpressionAnalysis
   [mExpression templateExpressionAnalysis !inAnalysisContext ?expression] ;
 #--- Check operator availability
   const @unifiedTypeMapProxy type := [expression mType] ;
-  if ([type mHandledOperatorFlags] & unaryNotOperator []) == 0 then
+  if ([type mHandledOperatorFlags] & unaryTildeOperator []) == 0 then
     error mOperatorLocation
-    : "operand type is '@" . [type key] . "' and does not support the 'not' operator"
+    : "operand type is '@" . [type key] . "' and does not support the '~' operator"
     :outExpression
     ;
   else
   #--- Generate expression
-    outExpression := [@notExpressionForGeneration new
+    outExpression := [@tildeExpressionForGeneration new
       !type
       !mOperatorLocation
       !expression
@@ -1298,11 +1337,13 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
 #--- Do instructions
   const @string enumeratorCppName := "enumerator_" . [[[mIndexIdentifier location] locationIndex] string] ;
   @templateVariableMap doVariableMap := inAnalysisContext->mTemplateVariableMap ;
-  const @string cppIndexVarName := "index_" . [[[mIndexIdentifier location] locationIndex] string] . "_" . [mIndexIdentifier identifierRepresentation] ;
-  [!?doVariableMap insertKey !mIndexIdentifier !inAnalysisContext->mPredefinedTypes->mUIntType !cppIndexVarName] ;
+  const @string cppIndexVarName := "index_" . [[[mIndexIdentifier location] locationIndex] string] . "_" . [[mIndexIdentifier string] identifierRepresentation] ;
+  if [mIndexIdentifier string] != "" then
+    [!?doVariableMap insertKey !mIndexIdentifier !inAnalysisContext->mPredefinedTypes->mUIntType !cppIndexVarName] ;
+  end if ;
   foreach enumerationDescriptor do
     [!?doVariableMap insertKey
-      ![@lstring new !mEnumerationName ![expression mLocation]]
+      ![@lstring new !mPrefix . mEnumerationName ![expression mLocation]]
       !mEnumeratedType
       !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation] . " ()"
     ] ;

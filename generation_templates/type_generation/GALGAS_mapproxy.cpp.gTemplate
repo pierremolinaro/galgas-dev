@@ -29,9 +29,9 @@ void GALGAS_%!TYPE_IDENTIFIER%::class_method_makeRegularProxy (%?^%GALGASap_%!AS
 }
 %foreach ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGASap_%![mAttributeTypeIndex identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (%?^%C_Compiler * inCompiler\n%
+  %GALGASap_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (%?^%C_Compiler * inCompiler\n%
   %                                       %!^%COMMA_LOCATION_ARGS) const {\n%
-  %  GALGASap_%![mAttributeTypeIndex identifierRepresentation]% result ;\n%
+  %  GALGASap_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
   %  capCollectionElement attributeList = getAttributeList (inCompiler COMMA_THERE) ;\n%
   %  if (attributeList.ptrNoVerif () != NULL) {\n%
   %    macroValidObject (attributeList.ptrNoVerif (), cCollectionElement_%!ASSOCIATED_MAP_TYPE_IDENTIFIER%) ;\n%

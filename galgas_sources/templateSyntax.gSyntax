@@ -322,7 +322,7 @@ rule <factor>
   $not$ ;
   @templateExpressionAST ifCondition ;
   <factor> ?ifCondition ;
-  outExpression := [@templateTestComplementAST new !operatorLocation !ifCondition] ;
+  outExpression := [@templateNotOperatorAST new !operatorLocation !ifCondition] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -737,6 +737,7 @@ rule <template_instruction>
   ioResultingInstructionList += ![@templateInstructionForeachAST new
    !ascending
    !expression
+   !foreachPrefix
    !beforeInstructionList
    !doInstructionList
    !indexIdentifier

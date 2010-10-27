@@ -351,6 +351,7 @@ routine enterReaderFor_string_lstring_types
   enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"lowercaseString" !"string" !false ;
   enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"uppercaseString" !"string" !false ;
   enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"reversedString" !"string" !false ;
+  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"currentColumn" !"uint" !false ;
   enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"system" !"sint" !false ;
   enterBaseReaderWithArgument !?ioMap !?ioUnifiedTypeMap !"characterAtIndex" !"uint" !"char" !true ;
   enterBaseReaderWithArgument !?ioMap !?ioUnifiedTypeMap !"stringByRemovingCharacterAtIndex" !"uint" !"string" !true ;

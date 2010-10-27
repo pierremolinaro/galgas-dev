@@ -473,7 +473,7 @@ routine printPredefinedLexicalActions :
   @string s := "" ;
   s .= "**************** Prefined lexical routines  ****************\n" ;
   foreach lexicalRoutineMap do
-    s .= lkey ;
+    s .= [lkey string] ;
     foreach mLexicalRoutineFormalArgumentList do
       s .= " " . [mLexicalFormalArgumentMode lexicalFormalModeName] . "@" . [mLexicalFormalArgumentType lexicalTypeBaseName] . " " . mArgumentNameForComment ;
     end foreach ;
@@ -494,7 +494,7 @@ routine printPredefinedLexicalActions :
 #--------------------------------------- Display lexical functions
   s .= "**************** Prefined lexical functions ****************\n" ;
   foreach lexicalFunctionMap do
-    s .= lkey ;
+    s .= [lkey string] ;
     foreach mLexicalTypeList do
       s .= " ?@" . [mLexicalType lexicalTypeBaseName]. " " . mArgumentNameForComment ;
     end foreach ;
