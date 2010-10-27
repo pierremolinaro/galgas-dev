@@ -1252,9 +1252,9 @@ generateCppClassName (AC_OutputStream & inFile) const {
 
 //---------------------------------------------------------------------------*
 
-void cPtr_typeGalgas_system::
+void cPtr_typeGalgas_application::
 generateCppClassName (AC_OutputStream & inFile) const {
-  inFile << "GGS_system " ;
+  inFile << "GGS_application " ;
 }
 
 //---------------------------------------------------------------------------*

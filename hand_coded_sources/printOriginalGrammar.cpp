@@ -22,7 +22,6 @@
 #include "files/C_HTML_FileWrite.h"
 
 #include "printOriginalGrammar.h"
-#include "common_semantics.h"
 
 //---------------------------------------------------------------------------*
 

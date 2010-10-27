@@ -29,7 +29,6 @@
 #include "SLR_computations.h"
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
-#include "common_semantics.h"
 #include "semantics_instructions.h"
 #include "cDecisionTableElement.h"
 #include "galgas_cli_options.h"

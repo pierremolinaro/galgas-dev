@@ -26,7 +26,8 @@
 #include "buildPureBNFgrammar.h"
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
-#include "common_semantics.h"
+
+//---------------------------------------------------------------------------*
 
 #include <stdlib.h>
 

@@ -720,20 +720,29 @@ override method @templateFunctionCallAST templateExpressionAnalysis
 end method ;
 
 #---------------------------------------------------------------------------*
+#   T E M P L A T E    C A T E G O R Y                                      *
+#---------------------------------------------------------------------------*
+
+override method @templateCategoryTemplateCallAST templateExpressionAnalysis
+  ??@templateAnalysisContext unused inAnalysisContext
+  !@semanticExpressionForGeneration outExpression
+:
+  error mTemplateName
+  :"INTERNAL ERROR: @templateCategoryTemplateCallAST templateExpressionAnalysis not implemented yet"
+  :outExpression
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
 #   S I M P L E    V A R I A B L E                                          *
 #---------------------------------------------------------------------------*
 
-#class @templateVarInExpressionAST extends @templateExpressionAST {
-#  @lstring mVarName ;
-#  @lstringlist mStructAttributeList ;
-#}
 override method @templateVarInExpressionAST templateExpressionAnalysis
   ??@templateAnalysisContext inAnalysisContext
   !@semanticExpressionForGeneration outExpression
 :
   @unifiedTypeMapProxy type ;
   @string sourceVariableCppName ;
-  @string nameForCheckingFormalParameterUsing ;
   [inAnalysisContext->mTemplateVariableMap searchKey !mVarName ?type ?sourceVariableCppName] ;
   foreach mStructAttributeList do
     const @attributeMap attributeMap := [type mAttributeMap] ;

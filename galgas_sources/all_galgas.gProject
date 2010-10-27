@@ -121,7 +121,6 @@ project all_galgas:
   grammar   "projectLL1grammar.gGrammar" : makefile ;
 
 #--- Old style components
-  program   "galgas_prgm_v1.gProgram" : makefile ;
   semantics "common_semantics.gSemantics" : makefile ;
   semantics "semantics_semantics.gSemantics" : makefile ;
   syntax    "expression_parser.gSyntax" : makefile ;
@@ -141,6 +140,7 @@ project all_galgas:
   syntax    "ggs_LL1_compile_component.gSyntax" : makefile ;
   syntax    "galgas_start.gSyntax" : makefile ;
   grammar   "galgas_LL1_grammar.gGrammar" : makefile ;
+  program   "galgas_prgm_v1.gProgram" : makefile ;
 
 #--- Hand coded sources
   extern "assignment_instructions.cpp" : makefile ;

@@ -47,8 +47,6 @@
 #include "cVocabulary.h"
 #include "printOriginalGrammar.h"
 #include "buildPureBNFgrammar.h"
-#include "semantics_instructions.h"
-#include "grammar_parser.h"
 #include "galgas_cli_options.h"
 
 //---------------------------------------------------------------------------*
