@@ -160,7 +160,7 @@ message incorrectTypeNameError : "in a type name, a letter should follow the '@'
 
 rule '@' :
   select
-  when 'a'->'z' | 'A'->'Z' | '_' :
+  when 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
     repeat
       enterCharacterIntoString !?tokenString !* ;
     while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :

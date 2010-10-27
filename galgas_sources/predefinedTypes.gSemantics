@@ -41,7 +41,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine appendPredefinedString2ListTypeAST
+routine appendPredefined2StringListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs
 :
   @attributeInCollectionListAST attributeList [emptyList] ;
@@ -54,7 +54,7 @@ routine appendPredefinedString2ListTypeAST
     ![@lstring new !"mValue1" !here]
   ;
   ioDeclarationListASTs += ![@listDeclarationAST new
-    ![@lstring new !"string2list" !here]
+    ![@lstring new !"2stringlist" !here]
     !attributeList
   ] ;
 end routine ;
@@ -115,7 +115,7 @@ routine appendPredefinedTypesASTs
   appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"double" ;
   appendStructASTForTypeWithLocation !?ioDeclarationListASTs !"string" ;
 
-  appendPredefinedString2ListTypeAST !?ioDeclarationListASTs ;
+  appendPredefined2StringListTypeAST !?ioDeclarationListASTs ;
 
 #--- Enumeration predefined type (used only for testing type generation)
 #  @lstringlist constantList [emptyList] ;

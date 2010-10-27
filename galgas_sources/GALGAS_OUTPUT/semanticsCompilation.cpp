@@ -700,11 +700,11 @@ void routine_buildOptionComponentMapForSemanticAnalysis (C_Compiler & inLexique,
   }
   const GGS_bool cond_9091 = (var_cas_ioOptionComponentMapForSemanticAnalysis.reader_hasKey (GGS_string ("galgas_cli_options"))).operator_not () ;
   if (cond_9091.isBuiltAndTrue ()) {
-    GGS_string2list  var_cas_optionNameList = GGS_application ::constructor_boolOptionNameList () ;
+    GGS_2stringlist  var_cas_optionNameList = GGS_application ::constructor_boolOptionNameList () ;
     GGS_commandLineOptionMap  var_cas_boolOptionMap = GGS_commandLineOptionMap ::constructor_emptyMap (inLexique COMMA_SOURCE_FILE_AT_LINE (167)) ;
     {
-      GGS_string2list::cEnumerator enumerator_7409 (var_cas_optionNameList, true) ;
-      const GGS_string2list::cElement * operand_7409 = NULL ;
+      GGS_2stringlist::cEnumerator enumerator_7409 (var_cas_optionNameList, true) ;
+      const GGS_2stringlist::cElement * operand_7409 = NULL ;
       while (((operand_7409 = enumerator_7409.nextObject ()))) {
         macroValidPointer (operand_7409) ;
         const GGS_bool cond_7781 = (operand_7409->mValue0).operator_isEqual (GGS_string ("galgas_cli_options")) ;
@@ -716,8 +716,8 @@ void routine_buildOptionComponentMapForSemanticAnalysis (C_Compiler & inLexique,
     var_cas_optionNameList = GGS_application ::constructor_uintOptionNameList () ;
     GGS_commandLineOptionMap  var_cas_uintOptionMap = GGS_commandLineOptionMap ::constructor_emptyMap (inLexique COMMA_SOURCE_FILE_AT_LINE (181)) ;
     {
-      GGS_string2list::cEnumerator enumerator_7950 (var_cas_optionNameList, true) ;
-      const GGS_string2list::cElement * operand_7950 = NULL ;
+      GGS_2stringlist::cEnumerator enumerator_7950 (var_cas_optionNameList, true) ;
+      const GGS_2stringlist::cElement * operand_7950 = NULL ;
       while (((operand_7950 = enumerator_7950.nextObject ()))) {
         macroValidPointer (operand_7950) ;
         const GGS_bool cond_8322 = (operand_7950->mValue0).operator_isEqual (GGS_string ("galgas_cli_options")) ;
@@ -729,8 +729,8 @@ void routine_buildOptionComponentMapForSemanticAnalysis (C_Compiler & inLexique,
     var_cas_optionNameList = GGS_application ::constructor_stringOptionNameList () ;
     GGS_commandLineOptionMap  var_cas_stringOptionMap = GGS_commandLineOptionMap ::constructor_emptyMap (inLexique COMMA_SOURCE_FILE_AT_LINE (195)) ;
     {
-      GGS_string2list::cEnumerator enumerator_8495 (var_cas_optionNameList, true) ;
-      const GGS_string2list::cElement * operand_8495 = NULL ;
+      GGS_2stringlist::cEnumerator enumerator_8495 (var_cas_optionNameList, true) ;
+      const GGS_2stringlist::cElement * operand_8495 = NULL ;
       while (((operand_8495 = enumerator_8495.nextObject ()))) {
         macroValidPointer (operand_8495) ;
         const GGS_bool cond_8875 = (operand_8495->mValue0).operator_isEqual (GGS_string ("galgas_cli_options")) ;
