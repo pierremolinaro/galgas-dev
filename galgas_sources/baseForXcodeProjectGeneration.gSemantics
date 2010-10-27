@@ -277,10 +277,6 @@ class @Xcode_PBXResourcesBuildPhase {
   @uint mSequenceNumber ;
   @string mNameForComment  ;
   @Xcode_PBXBuildFile_list mFileReferenceList  ;
-
-  once @string PBXResourcesBuildPhaseKey :
-    PBXResourcesBuildPhaseKey := [[[mSequenceNumber string] md5] rightSubString!24] ;
-  end once ;
 }
 
 #---------------------------------------------------------------------------*
@@ -299,10 +295,6 @@ class @Xcode_PBXFrameworksBuildPhase {
   @uint mSequenceNumber ;
   @string mNameForComment ;
   @Xcode_PBXBuildFile_list mFileReferenceList ;
-
-  once @string PBXFrameworksBuildPhaseKey :
-    PBXFrameworksBuildPhaseKey := [[[mSequenceNumber string] md5] rightSubString!24] ;
-  end once ;
 
   method buildXcodeProject ?!@string outString :
     outString .= "\t\t" . getPBXFileReferenceKey [!mSequenceNumber] . " /* Frameworks */ = {\n"
@@ -336,10 +328,6 @@ class @Xcode_PBXGroup {
   @string mGroupName  ;
   @string mGroupPath  ;
   @XcodeObjectReferenceList mChildrenGroupList  ;
-
-  once @string PBXGroupKey :
-    PBXGroupKey := [[[mSequenceNumber string] md5] rightSubString!24] ;
-  end once ;
 }
 
 #---------------------------------------------------------------------------*
@@ -358,14 +346,6 @@ class @Xcode_XCBuildConfiguration {
   @uint mSequenceNumber1 ;
   @uint mSequenceNumber2 ;
   @stringlist mSettings  ;
-
-  once @string configurationKey :
-    configurationKey := [[[mSequenceNumber1 string] md5] rightSubString!24] ;
-  end once ;
-
-  once @string XCBuildConfigurationKey :
-    XCBuildConfigurationKey := [[[mSequenceNumber2 string] md5] rightSubString!24] ;
-  end once ;
 }
 
 #---------------------------------------------------------------------------*
@@ -400,10 +380,6 @@ list @Xcode_PBXNativeTarget_list {
 class @Xcode_targetDependencyDescription {
   @uint mSequenceNumber ;
   @string mDependencyTarget  ;
-
-  once @string PBXTargetDependencyKey :
-    PBXTargetDependencyKey := [[[mSequenceNumber string] md5] rightSubString!24] ;
-  end once ;
 }
 
 #---------------------------------------------------------------------------*
@@ -873,7 +849,7 @@ end routine ;
 #  @lstring projectNameKey [new !inProductFileName !here] ;
 #  [!?ioXcodeProjectDescription->mFileReferenceMap insertKey !projectNameKey !toolFileReference] ;
 #
-#  ioXcodeProjectDescription->mProductGroupChildrenList  += !getPBXFileReferenceKey [![toolFileReference mSequenceNumber]] !inTargetName ;
+#  ioXcodeProjectDescription->mProductGroupChildrenList  += ![toolFileReference PBXFileReferenceKey] !inTargetName ;
 ##--- Source Build Phase
 #  @Xcode_PBXSourcesBuildPhase compileSourcesBuildPhase [new
 #    !"Sources"
@@ -1083,8 +1059,7 @@ routine enterProjectDefaultSettings
   end foreach ;
   outProjectDefaultSettings := [@stringlist emptyList] ;
   outProjectDefaultSettings  += !"ALWAYS_SEARCH_USER_PATHS = NO;" ;
-#  outProjectDefaultSettings  += !"ARCHS = (\n\t\t\t\t\ti386,\n\t\t\t\t\tppc,\n\t\t\t\t);" ;
-  outProjectDefaultSettings  += !"ARCHS = (\n\t\t\t\t\ti386);" ;
+  outProjectDefaultSettings  += !"ARCHS = (\n\t\t\t\t\ti386,\n\t\t\t\t\tppc,\n\t\t\t\t);" ;
   outProjectDefaultSettings  += !"GCC_DEBUGGING_SYMBOLS = default;" ;
   outProjectDefaultSettings  += !"GCC_GENERATE_DEBUGGING_SYMBOLS = NO;" ;
   outProjectDefaultSettings  += !"GCC_PRECOMPILE_PREFIX_HEADER = YES;" ;
@@ -1192,7 +1167,7 @@ routine buildXcodeProjectString
   do
     outString .= "\t\t" . mTargetKey . " /* " . mTargetName . " */ = {\n"
     . "\t\t\tisa = PBXNativeTarget;\n"
-    . "\t\t\tbuildConfigurationList = " . getPBXFileReferenceKey [! [mTargetConfiguration mSequenceNumber1]] . " /* Build configuration list for PBXNativeTarget \"" . mTargetName . "\" */;\n"
+    . "\t\t\tbuildConfigurationList = " . getPBXFileReferenceKey [![mTargetConfiguration mSequenceNumber2]] . " /* Build configuration list for PBXNativeTarget \"" . mTargetName . "\" */;\n"
     . "\t\t\tbuildPhases = (\n" ;
     foreach mBuildPhaseKeyList do
       outString .= "\t\t\t\t" . mValue . " ,\n" ;
@@ -1316,7 +1291,7 @@ routine buildXcodeProjectString
     . inProjectName . "\" */ = {\n"
     . "\t\t\tisa = XCConfigurationList;\n"
     . "\t\t\tbuildConfigurations = (\n"
-    . "\t\t\t\t" . getPBXFileReferenceKey [![mBuildConfig mSequenceNumber2]] . " /* Default */,\n"
+    . "\t\t\t\t" . getPBXFileReferenceKey [![mBuildConfig mSequenceNumber1]] . " /* Default */,\n"
     . "\t\t\t);\n"
     . "\t\t\tdefaultConfigurationIsVisible = 0;\n"
     . "\t\t\tdefaultConfigurationName = Default;\n"

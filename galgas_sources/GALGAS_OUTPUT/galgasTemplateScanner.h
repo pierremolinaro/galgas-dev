@@ -25,7 +25,7 @@
 #include "galgas/GGS_lchar.h"
 #include "galgas/GGS_ldouble.h"
 #include "galgas/GGS_lbool.h"
-#include "galgas-utilities/C_Lexique.h"
+#include "galgas2/C_Lexique.h"
 
 //---------------------------------------------------------------------------*
 

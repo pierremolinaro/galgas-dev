@@ -45,7 +45,7 @@ generate_header_file_for_prgm (C_Compiler & inLexique,
   }
   
   generatedZone2 << "#include \"galgas/C_galgas_CLI_Options.h\"\n"
-                    "#include \"galgas-utilities/C_Lexique.h\"\n"
+                    "#include \"galgas2/C_Lexique.h\"\n"
                     "#include \"command_line_interface/C_builtin_CLI_Options.h\"\n" ;
 
   generatedZone2 << "\n" ;

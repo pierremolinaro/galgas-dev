@@ -4,7 +4,7 @@
 #include "cCollectionElement.h"
 #include "cSortedListElement.h"
 #include "capSortedListElement.h"
-#include "galgas-utilities/C_Compiler.h"
+#include "galgas2/C_Compiler.h"
 
 //---------------------------------------------------------------------------*
 
