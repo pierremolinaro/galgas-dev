@@ -2734,7 +2734,34 @@ end once ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-once EXbuild_string2list_type -> @AC_galgasType outType :
+#once EXbuild_string2list_type -> @AC_galgasType outType :
+#  @typeListeAttributsSemantiques attributesList [emptyList] ;
+#  attributesList += ![@typeGalgas_string new] ![@lstring new !"mValue0" !here] ;
+#  attributesList += ![@typeGalgas_string new] ![@lstring new !"mValue1" !here] ;
+#
+#  @L_EXsignature extractSignature [emptyList] ;
+#  extractSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentOut] ;
+#  extractSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentOut] ;
+#
+#  @L_EXsignature inputSignature [emptyList] ;
+#  inputSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+#  inputSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+#
+#  outType := [@typeGalgasListType new
+#    ![@lstring new !"string2list" !here]
+#    !attributesList
+#    !extractSignature
+#    !inputSignature
+#  ] ;
+#end once ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#   G A L G A S    2 s t r i n g l i s t    T Y P E                         *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+once EXbuild_2stringlist_type -> @AC_galgasType outType :
   @typeListeAttributsSemantiques attributesList [emptyList] ;
   attributesList += ![@typeGalgas_string new] ![@lstring new !"mValue0" !here] ;
   attributesList += ![@typeGalgas_string new] ![@lstring new !"mValue1" !here] ;
@@ -2748,7 +2775,7 @@ once EXbuild_string2list_type -> @AC_galgasType outType :
   inputSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
 
   outType := [@typeGalgasListType new
-    ![@lstring new !"string2list" !here]
+    ![@lstring new !"2stringlist" !here]
     !attributesList
     !extractSignature
     !inputSignature
@@ -2757,33 +2784,33 @@ end once ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   G A L G A S    s t r i n g 2 l i s t    T Y P E                         *
+#   G A L G A S    s t r i n g 3 l i s t    T Y P E                         *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-once EXbuild_string3list_type -> @AC_galgasType outType :
-  @typeListeAttributsSemantiques attributesList [emptyList] ;
-  attributesList += ![@typeGalgas_string new] ![@lstring new !"mValue0" !here] ;
-  attributesList += ![@typeGalgas_string new] ![@lstring new !"mValue1" !here] ;
-  attributesList += ![@typeGalgas_string new] ![@lstring new !"mValue2" !here] ;
-
-  @L_EXsignature extractSignature [emptyList] ;
-  extractSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentOut] ;
-  extractSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentOut] ;
-  extractSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentOut] ;
-
-  @L_EXsignature inputSignature [emptyList] ;
-  inputSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  inputSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  inputSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
-
-  outType := [@typeGalgasListType new
-    ![@lstring new !"string3list" !here]
-    !attributesList
-    !extractSignature
-    !inputSignature
-  ] ;
-end once ;
+#once EXbuild_string3list_type -> @AC_galgasType outType :
+#  @typeListeAttributsSemantiques attributesList [emptyList] ;
+#  attributesList += ![@typeGalgas_string new] ![@lstring new !"mValue0" !here] ;
+#  attributesList += ![@typeGalgas_string new] ![@lstring new !"mValue1" !here] ;
+#  attributesList += ![@typeGalgas_string new] ![@lstring new !"mValue2" !here] ;
+#
+#  @L_EXsignature extractSignature [emptyList] ;
+#  extractSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentOut] ;
+#  extractSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentOut] ;
+#  extractSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentOut] ;
+#
+#  @L_EXsignature inputSignature [emptyList] ;
+#  inputSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+#  inputSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+#  inputSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentConstantIn] ;
+#
+#  outType := [@typeGalgasListType new
+#    ![@lstring new !"string3list" !here]
+#    !attributesList
+#    !extractSignature
+#    !inputSignature
+#  ] ;
+#end once ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -4078,43 +4105,43 @@ routine handleReaderCall
   outCategoryReaderClassBaseName := "" ; # Means not a category reader
 
   cast inReceiverType :
-  when >= @typeGalgasDomainType t do
-    if [inReaderName string] == "description" then
-      outReturnedType := [@typeGalgas_string new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "object" then
-      outReturnedType := [@typeGalgas_object new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    elsif [inReaderName string] == "dynamicType" then
-      outReturnedType := [@typeGalgas_type new] ;
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outHasLexiqueAndLocationArguments := false ;
-    else
-      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
-      outReturnedType := EXbuild_stringlist_type [] ; # Any Value
-      @bool found := false ;
-      @string s := "" ;
-      foreach [t mDomainRelationMap] while not found do
-        if [mDomains length] == 1 then
-          s .= " " . [lkey string] . "StringValueList" ;
-          found := [inReaderName string] == ([lkey string] . "StringValueList") ;
-          outReturnedType := EXbuild_stringlist_type [] ;
-        elsif [mDomains length] == 2 then
-          s .= " " . [lkey string] . "StringValueList" ;
-          found := [inReaderName string] == ([lkey string] . "StringValueList") ;
-          outReturnedType := EXbuild_string2list_type [] ;
-        elsif [mDomains length] == 3 then
-          s .= " " . [lkey string] . "StringValueList" ;
-          found := [inReaderName string] == ([lkey string] . "StringValueList") ;
-          outReturnedType := EXbuild_string3list_type [] ;
-        end if ;
-      end foreach ;
-      if not found then
-        error inReaderName:"this domain accepts the following readers:" . s ;
-      end if ;
-    end if ;
+#  when >= @typeGalgasDomainType do
+#    if [inReaderName string] == "description" then
+#      outReturnedType := [@typeGalgas_string new] ;
+#      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+#      outHasLexiqueAndLocationArguments := false ;
+#    elsif [inReaderName string] == "object" then
+#      outReturnedType := [@typeGalgas_object new] ;
+#      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+#      outHasLexiqueAndLocationArguments := false ;
+#    elsif [inReaderName string] == "dynamicType" then
+#      outReturnedType := [@typeGalgas_type new] ;
+#      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+#      outHasLexiqueAndLocationArguments := false ;
+#    else
+#      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+#      outReturnedType := EXbuild_stringlist_type [] ; # Any Value
+#      @bool found := false ;
+#      @string s := "" ;
+#      foreach [t mDomainRelationMap] while not found do
+#        if [mDomains length] == 1 then
+#          s .= " " . [lkey string] . "StringValueList" ;
+#          found := [inReaderName string] == ([lkey string] . "StringValueList") ;
+#          outReturnedType := EXbuild_stringlist_type [] ;
+#        elsif [mDomains length] == 2 then
+#          s .= " " . [lkey string] . "StringValueList" ;
+#          found := [inReaderName string] == ([lkey string] . "StringValueList") ;
+#          outReturnedType := EXbuild_2stringlist_type [] ;
+#        elsif [mDomains length] == 3 then
+#          s .= " " . [lkey string] . "StringValueList" ;
+#          found := [inReaderName string] == ([lkey string] . "StringValueList") ;
+#          outReturnedType := EXbuild_string3list_type [] ;
+#        end if ;
+#      end foreach ;
+#      if not found then
+#        error inReaderName:"this domain accepts the following readers:" . s ;
+#      end if ;
+#    end if ;
   when >= @typeGalgas_filewrapper do
     if [inReaderName string] == "description" then
       outReturnedType := [@typeGalgas_string new] ;
@@ -5452,7 +5479,7 @@ class @typeGalgas_application extends @AC_galgasType {
     outHasLexiqueAndLocationArguments := false ;
     outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     if [inConstructorName string] == "boolOptionNameList" then
-      outReturnedType := EXbuild_string2list_type [] ;
+      outReturnedType := EXbuild_2stringlist_type [] ;
     elsif [inConstructorName string] == "boolOptionInvocationLetter" then
       outReturnedType := [@typeGalgas_char new] ;
       outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
@@ -5466,7 +5493,7 @@ class @typeGalgas_application extends @AC_galgasType {
       outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
       outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
     elsif [inConstructorName string] == "uintOptionNameList" then
-      outReturnedType := EXbuild_string2list_type [] ;
+      outReturnedType := EXbuild_2stringlist_type [] ;
     elsif [inConstructorName string] == "uintOptionInvocationLetter" then
       outReturnedType := [@typeGalgas_char new] ;
       outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
@@ -5480,7 +5507,7 @@ class @typeGalgas_application extends @AC_galgasType {
       outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
       outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
     elsif [inConstructorName string] == "stringOptionNameList" then
-      outReturnedType := EXbuild_string2list_type [] ;
+      outReturnedType := EXbuild_2stringlist_type [] ;
     elsif [inConstructorName string] == "stringOptionInvocationLetter" then
       outReturnedType := [@typeGalgas_char new] ;
       outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
@@ -5610,12 +5637,15 @@ routine enterBuiltinTypes !@M_semanticsEntitiesForUse ioComponentSemanticsEntiti
   e := [@typeEntiteType new !EXbuild_lstringlist_type []] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"lstringlist" !here] !e] ;
 
-  e := [@typeEntiteType new !EXbuild_string2list_type []] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"string2list" !here] !e] ;
+#  e := [@typeEntiteType new !EXbuild_string2list_type []] ;
+#  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"string2list" !here] !e] ;
 
-  e := [@typeEntiteType new !EXbuild_string3list_type []] ;
-  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"string3list" !here] !e] ;
+  e := [@typeEntiteType new !EXbuild_2stringlist_type []] ;
+  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"2stringlist" !here] !e] ;
 
+#  e := [@typeEntiteType new !EXbuild_string3list_type []] ;
+#  [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"string3list" !here] !e] ;
+#
   e := [@typeEntiteType new !EXbuild_typelist_type []] ;
   [!?ioComponentSemanticsEntitiesMap insertKey ![@lstring new !"typelist" !here] !e] ;
 

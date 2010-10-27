@@ -150,17 +150,17 @@ override method @applicationPredefinedTypeAST getConstructorMap
 :
   outMap := [@constructorMap emptyMap] ;
 #--- Constructors for "bool" options
-  enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"boolOptionNameList" !"string2list" !false ;
+  enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"boolOptionNameList" !"2stringlist" !false ;
   enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"boolOptionInvocationLetter" !"string" !"string" !"char" !false ;
   enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"boolOptionInvocationString" !"string" !"string" !"string" !false ;
   enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"boolOptionCommentString" !"string" !"string" !"string" !false ;
 #--- Constructors for "uint" options
-  enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"uintOptionNameList" !"string2list" !false ;
+  enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"uintOptionNameList" !"2stringlist" !false ;
   enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"uintOptionInvocationLetter" !"string" !"string" !"char" !false ;
   enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"uintOptionInvocationString" !"string" !"string" !"string" !false ;
   enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"uintOptionCommentString" !"string" !"string" !"string" !false ;
 #--- Constructors for "string" options
-  enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringOptionNameList" !"string2list" !false ;
+  enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringOptionNameList" !"2stringlist" !false ;
   enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringOptionInvocationLetter" !"string" !"string" !"char" !false ;
   enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringOptionInvocationString" !"string" !"string" !"string" !false ;
   enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringOptionCommentString" !"string" !"string" !"string" !false ;
