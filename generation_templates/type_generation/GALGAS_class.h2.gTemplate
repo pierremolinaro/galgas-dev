@@ -9,13 +9,13 @@ class cPtr_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %acP
 //--- Attributes
 %
   foreach CURRENT_ATTRIBUTE_LIST do
-    %  public : GALGAS_%![mAttributeTypeIndex identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %  public : GALGAS_%![mAttributeTypeProxy identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end foreach
 %
 //--- Constructor
   public : cPtr_%!TYPE_IDENTIFIER% (%?^
   foreach ALL_ATTRIBUTE_LIST
-    do %const GALGAS_%![mAttributeTypeIndex identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+    do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
     between %,\n%!^
   end foreach
   if [ALL_ATTRIBUTE_LIST length] > 0 then

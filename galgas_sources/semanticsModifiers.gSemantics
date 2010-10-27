@@ -112,6 +112,7 @@ override method @stringPredefinedTypeAST getModifierMap
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"setCapacity" !true ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"incIndentation" !true ;
   enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"decIndentation" !true ;
+  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"appendSpacesUntilColumn" !true ;
   enterModifierWith2InputArguments !?outModifierMap !?ioUnifiedTypeMap !"char" !"uint" !"setCharacterAtIndex" !true ;
 end method ;
 

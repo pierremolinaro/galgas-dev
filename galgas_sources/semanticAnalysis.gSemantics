@@ -345,7 +345,7 @@ override method @mapDeclarationAST performSemanticAnalysis
   foreach mInsertMethodList do
     [!?insertMethodMap insertKey !mMethodName] ;
   #--- Check error message escape sequences : only %K, %L or %%
-    foreach [mErrorMessage componentsSeparatedByString !"%%"] do
+    foreach [[mErrorMessage string] componentsSeparatedByString !"%%"] do
       @stringlist explodedArray := [mValue componentsSeparatedByString !"%"] ;
       [!?explodedArray popFirst ?*] ;
       foreach explodedArray do
@@ -358,7 +358,7 @@ override method @mapDeclarationAST performSemanticAnalysis
       end foreach ;
     end foreach ;
   #--- Check shadow error message escape sequences : only %K, %L or %%
-    foreach [mShadowErrorMessage componentsSeparatedByString !"%%"] do
+    foreach [[mShadowErrorMessage string] componentsSeparatedByString !"%%"] do
       @stringlist explodedArray := [mValue componentsSeparatedByString !"%"] ;
       [!?explodedArray popFirst ?*] ;
       foreach explodedArray do
@@ -376,7 +376,7 @@ override method @mapDeclarationAST performSemanticAnalysis
   foreach mSearchMethodList do
     [!?searchMethodMap insertKey !mMethodName] ;
   #--- Check error message escape sequences : only %K or %%
-    foreach [mErrorMessage componentsSeparatedByString !"%%"] do
+    foreach [[mErrorMessage string] componentsSeparatedByString !"%%"] do
       @stringlist explodedArray := [mValue componentsSeparatedByString !"%"] ;
       [!?explodedArray popFirst ?*] ;
       foreach explodedArray do
@@ -393,7 +393,7 @@ override method @mapDeclarationAST performSemanticAnalysis
   foreach mRemoveMethodList do
     [!?insertMethodMap insertKey !mMethodName] ;
   #--- Check error message escape sequences : only %K or %%
-    foreach [mErrorMessage componentsSeparatedByString !"%%"] do
+    foreach [[mErrorMessage string] componentsSeparatedByString !"%%"] do
       @stringlist explodedArray := [mValue componentsSeparatedByString !"%"] ;
       [!?explodedArray popFirst ?*] ;
       foreach explodedArray do
@@ -484,24 +484,24 @@ routine buildLocalVariableMapAndSignature
     @string formalArgumentCppName ;
     switch mFormalArgumentPassingMode
     when argumentIn :
-      formalArgumentCppName := "inArgument_" . [mFormalArgumentName identifierRepresentation] ;
+      formalArgumentCppName := "inArgument_" . [[mFormalArgumentName string] identifierRepresentation] ;
       if mIsUnused then
         [!?ioVariableMap insertInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName] ;
       else
         [!?ioVariableMap insertInputFormalArgument !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName] ;
       end if ;
     when argumentOut :
-      formalArgumentCppName := "outArgument_" . [mFormalArgumentName identifierRepresentation] ;
+      formalArgumentCppName := "outArgument_" . [[mFormalArgumentName string] identifierRepresentation] ;
       [!?ioVariableMap insertOutputFormalArgument !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName] ;
     when argumentInOut :
-      formalArgumentCppName := "ioArgument_" . [mFormalArgumentName identifierRepresentation] ;
+      formalArgumentCppName := "ioArgument_" . [[mFormalArgumentName string] identifierRepresentation] ;
       if mIsUnused then
         [!?ioVariableMap insertInputOutputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName] ;
       else
         [!?ioVariableMap insertInputOutputFormalArgument !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName] ;
       end if ;
     when argumentConstantIn :
-      formalArgumentCppName := "constinArgument_" . [mFormalArgumentName identifierRepresentation] ;
+      formalArgumentCppName := "constinArgument_" . [[mFormalArgumentName string] identifierRepresentation] ;
       if mIsUnused then
         [!?ioVariableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !type !formalArgumentCppName !formalArgumentCppName] ;
       else
@@ -538,8 +538,8 @@ routine analyzeRoutineBody
   foreach inTypedAttributeList do
     [!?variableMap insertNonMutableAttribute
       !mAttributeName
-      !mAttributeTypeIndex
-      !inAttributeVariableNamePrefix . "mAttribute_". [mAttributeName identifierRepresentation]
+      !mAttributeTypeProxy
+      !inAttributeVariableNamePrefix . "mAttribute_". [[mAttributeName string] identifierRepresentation]
       !selfMarkName []
     ] ;
   end foreach ;
@@ -833,8 +833,8 @@ routine analyzeFunctionBody
   foreach inTypedAttributeList do
     [!?variableMap insertNonMutableAttribute
       !mAttributeName
-      !mAttributeTypeIndex
-      !inAttributeVariableNamePrefix . "mAttribute_". [mAttributeName identifierRepresentation]
+      !mAttributeTypeProxy
+      !inAttributeVariableNamePrefix . "mAttribute_". [[mAttributeName string] identifierRepresentation]
       !selfMarkName []
     ] ;
   end foreach ;
@@ -843,7 +843,7 @@ routine analyzeFunctionBody
   foreach inFunctionSignature do
     const @unifiedTypeMapProxy parameterType [searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
     if mIsConstant then
-      const @string cppName := "constinArgument_" . [mFormalArgumentName identifierRepresentation] ;
+      const @string cppName := "constinArgument_" . [[mFormalArgumentName string] identifierRepresentation] ;
       outSignatureForGeneration +=
         !parameterType
         !cppName
@@ -856,7 +856,7 @@ routine analyzeFunctionBody
         [!?variableMap insertConstantInputFormalArgument !mFormalArgumentName !parameterType !cppName !cppName] ;
       end if ;
     else
-      const @string cppName := "inArgument_" . [mFormalArgumentName identifierRepresentation] ;
+      const @string cppName := "inArgument_" . [[mFormalArgumentName string] identifierRepresentation] ;
       outSignatureForGeneration +=
         !parameterType
         !cppName
@@ -872,7 +872,7 @@ routine analyzeFunctionBody
   end foreach ;
 #--- Enter return variable
   outReturnedType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !inResultTypeName] ;
-  outResultVariableCppName := "result_" . [inResultTypeName identifierRepresentation] ;
+  outResultVariableCppName := "result_" . [[inResultTypeName string] identifierRepresentation] ;
   [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !outResultVariableCppName !outResultVariableCppName] ;
 #---  Analyze instruction list
   outSemanticInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
@@ -997,7 +997,7 @@ override method @filewrapperDeclarationAST performSemanticAnalysis
   ] ;
 #--- Build absolute path
   @string absoluteSourcePath ;
-  if [mFilewrapperPath firstCharacterOrNul] == '/' then
+  if [[mFilewrapperPath string] firstCharacterOrNul] == '/' then
     absoluteSourcePath := [mFilewrapperPath string] ;
   else
     absoluteSourcePath := [[inSemanticContext mSourceFileAbsolutePath] stringByDeletingLastPathComponent] . "/" . [mFilewrapperPath string] ;
@@ -1008,7 +1008,7 @@ override method @filewrapperDeclarationAST performSemanticAnalysis
   #---- Analyze filewrapper templates
     @filewrapperTemplateListForGeneration filewrapperTemplateListForGeneration [emptyList] ;
     foreach mFilewrapperTemplateList do
-      if [mFilewrapperTemplatePath firstCharacterOrNul] == '/' then
+      if [[mFilewrapperTemplatePath string] firstCharacterOrNul] == '/' then
         error mFilewrapperTemplatePath : "the path should not begin with a '/'; it is relative to filewrapper path '" . absoluteSourcePath . "'" ;
       end if ;
       const @string absoluteTemplatePath := absoluteSourcePath . "/" . mFilewrapperTemplatePath ;
@@ -1020,7 +1020,7 @@ override method @filewrapperDeclarationAST performSemanticAnalysis
       @formalInputParameterListForGeneration filewrapperTemplateFormalInputParameters [emptyList] ;
       foreach mFilewrapperTemplateFormalInputParameters do
         @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
-        const @string cppVarName := "in_" . [mFormalArgumentName identifierRepresentation] ;
+        const @string cppVarName := "in_" . [[mFormalArgumentName string] identifierRepresentation] ;
         [!?templateVariableMap insertKey !mFormalArgumentName !type !cppVarName] ;
         filewrapperTemplateFormalInputParameters += !type !cppVarName !mFormalArgumentName !true ;
       end foreach ;

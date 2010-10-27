@@ -599,18 +599,56 @@ override method @readerCallExpressionAST analyzeSemanticExpression
   const @unifiedTypeMapProxy receiverType := [receiverExpression mType] ;
 #--- Get reader map
   const @readerMap readerMap := [receiverType mReaderMap] ;
-#--- Search contructor
+#--- Search reader
   @unifiedTypeMapProxyList readerFormalArgumentTypeList ;
   @bool isCategory ;
   @bool hasCompilerArgument ;
   @unifiedTypeMapProxy returnedType ;
+  @stringlist fieldList [emptyList] ;
   with readerMap hasKey ![mReaderName string] do
     readerFormalArgumentTypeList := mArgumentTypeList ;
     hasCompilerArgument := mHasCompilerArgument ;
     returnedType := mReturnedType ;
     isCategory := mIsCategory ;
   else
-    if [readerMap count] == 0 then
+    @uint matchingReaderCount := 0 ;
+    if [receiverType mTypeKindEnum] == [@typeKindEnum structType] then
+      readerFormalArgumentTypeList := [@unifiedTypeMapProxyList emptyList] ;
+      hasCompilerArgument := true ;
+      returnedType := [@unifiedTypeMapProxy null] ;
+      isCategory := true ;
+      foreach [receiverType mCurrentTypedAttributeList] do
+        const @unifiedTypeMapProxy attributeType [searchKey !inAnalysisContext->mSemanticContext->mTypeMap ![@lstring new ![mAttributeTypeProxy key] !here]] ;
+        const @readerMap aMap := [attributeType mReaderMap] ;
+#        const @readerMap aMap := [mAttributeTypeProxy mReaderMap] ; # Bug in GALGAS 1, for GALGAS 2
+        with aMap hasKey ![mReaderName string] do
+          matchingReaderCount ++ ;
+          readerFormalArgumentTypeList := mArgumentTypeList ;
+          hasCompilerArgument := mHasCompilerArgument ;
+          returnedType := mReturnedType ;
+          isCategory := mIsCategory ;
+          fieldList += ![mAttributeName string] ;
+        end with ;
+      end foreach ;
+      if matchingReaderCount == 0 then
+        error mReaderName
+        : "the '@". [receiverType key] . "' struct type does not define the '" . [mReaderName string]
+        . "' reader, and none of its fields defines it"
+        : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory
+        ;
+      elsif matchingReaderCount > 1 then
+        @string s := "" ;
+        foreach fieldList
+          do s .= mValue ;
+          between s .= ", " ;
+        end foreach ;
+        error mReaderName
+        : "the '@". [receiverType key] . "' struct type does not define the '" . [mReaderName string]
+        . "' reader, and several of its fields defines it:" . s . " (exactly one field should define it)"
+        : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory
+        ;
+      end if ;
+    elsif [readerMap count] == 0 then
       error mReaderName
       : "the '@". [receiverType key] . "' type does not define any reader"
       : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory
@@ -650,6 +688,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
       ![mReaderName location]
       !isCategory
       !receiverExpression
+      !fieldList
       ![mReaderName string]
       !constructorEffectiveParameterList
       !hasCompilerArgument
@@ -951,6 +990,7 @@ routine checkDiadicOperator
           !inErrorLocation
           !isCategory
           !ioRightExpression
+          ![@stringlist emptyList]
           ![inLeftType key]
           ![@semanticExpressionListForGeneration emptyList]
           !hasCompilerArgument
@@ -1616,7 +1656,7 @@ override method @complementExpressionAST analyzeSemanticExpression
     ;
   else
   #--- Generate expression
-    outExpression := [@complementExpressionForGeneration new
+    outExpression := [@tildeExpressionForGeneration new
       !type
       !mOperatorLocation
       !expression
@@ -1796,6 +1836,7 @@ override method @castInExpressionAST analyzeSemanticExpression
         !mEndOfErrorLocationExpression
         !false
         !errorLocationExpression
+        ![@stringlist emptyList]
         !"location"
         ![@semanticExpressionListForGeneration emptyList]
         !mHasCompilerArgument

@@ -208,7 +208,7 @@ override method @assignmentInstructionForGeneration generateInstruction
   [mSourceExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
   @string receiverCppName := mTargetCppName ;
   foreach mStructAttributeList do
-    receiverCppName .= ".mAttribute_" . [mValue identifierRepresentation] ;
+    receiverCppName .= ".mAttribute_" . [[mValue string] identifierRepresentation] ;
   end foreach ;
   ioGeneratedCode .= receiverCppName . " = " . sourceVar . " ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !mTargetCppName] ;
@@ -528,7 +528,7 @@ override method @routineCallInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
-  ioGeneratedCode .= "routine_" . [mRoutineName identifierRepresentation] . " (" ;
+  ioGeneratedCode .= "routine_" . [[mRoutineName string] identifierRepresentation] . " (" ;
   foreach parameterCppNameList do
     ioGeneratedCode .= mValue . ", " ;
   end foreach ;
@@ -547,7 +547,7 @@ override method @modifierCallInstructionForGeneration generateInstruction
   ioGeneratedCode .= "{ //-------- @modifierCallInstructionForGeneration\n" ;
   @string receiverCppName := mReceiverCppName ;
   foreach mReceiverStructAttributes do
-    receiverCppName .= ".mAttribute_" . [mValue identifierRepresentation] ;
+    receiverCppName .= ".mAttribute_" . [[mValue string] identifierRepresentation] ;
   end foreach ;
 #--- Parameters
   @stringlist parameterCppNameList [emptyList] ;
@@ -559,7 +559,7 @@ override method @modifierCallInstructionForGeneration generateInstruction
   end foreach ;
 #--- Generate method call
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName] ;
-  ioGeneratedCode .= receiverCppName . ".modifier_" . [mModifierName identifierRepresentation] . " (" ;
+  ioGeneratedCode .= receiverCppName . ".modifier_" . [[mModifierName string] identifierRepresentation] . " (" ;
   foreach parameterCppNameList
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;
@@ -595,7 +595,7 @@ override method @thisModifierCallInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
-  ioGeneratedCode .= "modifier_" . [mModifierName identifierRepresentation] . " (" ;
+  ioGeneratedCode .= "modifier_" . [[mModifierName string] identifierRepresentation] . " (" ;
   foreach parameterCppNameList
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;
@@ -631,7 +631,7 @@ override method @superModifierCallInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
-  ioGeneratedCode .= "cPtr_" . [mSuperClassThatImplementsModifier identifierRepresentation] . "::modifier_" . [mModifierName identifierRepresentation] . " (" ;
+  ioGeneratedCode .= "cPtr_" . [mSuperClassThatImplementsModifier identifierRepresentation] . "::modifier_" . [[mModifierName string] identifierRepresentation] . " (" ;
   foreach parameterCppNameList
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;
@@ -667,8 +667,8 @@ override method @typeMethodInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
-  ioGeneratedCode .= "GALGAS_" . [mTypeName identifierRepresentation]
-                  . "::class_method_" . [mMethodName identifierRepresentation] . " (" ;
+  ioGeneratedCode .= "GALGAS_" . [[mTypeName string] identifierRepresentation]
+                  . "::class_method_" . [[mMethodName string] identifierRepresentation] . " (" ;
   foreach parameterCppNameList
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;
@@ -753,7 +753,7 @@ override method @addAssignInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName] ;
   @string receiverCppName := mReceiverCppName ;
   foreach mStructAttributeList do
-    receiverCppName .= ".mAttribute_" . [mValue identifierRepresentation] ;
+    receiverCppName .= ".mAttribute_" . [[mValue string] identifierRepresentation] ;
   end foreach ;
 #--- Call add assign (+=) operator
   ioGeneratedCode .= receiverCppName . ".addAssign_operation (" ;
@@ -776,7 +776,7 @@ override method @incrementInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName] ;
   @string receiverCppName := mReceiverCppName ;
   foreach mStructAttributeList do
-    receiverCppName .= ".mAttribute_" . [mValue identifierRepresentation] ;
+    receiverCppName .= ".mAttribute_" . [[mValue string] identifierRepresentation] ;
   end foreach ;
 #--- Invoke incrementation
   ioGeneratedCode .= receiverCppName . ".increment_operation (" . compilerCppName []
@@ -796,7 +796,7 @@ override method @decrementInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName] ;
   @string receiverCppName := mReceiverCppName ;
   foreach mStructAttributeList do
-    receiverCppName .= ".mAttribute_" . [mValue identifierRepresentation] ;
+    receiverCppName .= ".mAttribute_" . [[mValue string] identifierRepresentation] ;
   end foreach ;
 #--- Invoke incrementation
   ioGeneratedCode .= receiverCppName . ".decrement_operation (" . compilerCppName []
@@ -864,6 +864,17 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @readOnlyWithInstructionForGeneration generateInstruction
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@string ioGeneratedCode
+:
+  ioGeneratedCode .= "//-------- @readOnlyWithInstructionForGeneration\n" ;
+  ioGeneratedCode .= " (TO_DO)\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @readWriteWithInstructionForGeneration generateInstruction
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
@@ -872,14 +883,14 @@ override method @readWriteWithInstructionForGeneration generateInstruction
   ioGeneratedCode .= "//-------- @readWriteWithInstructionForGeneration\n" ;
   @string receiverCppName := mReceiverVariableCppName ;
   foreach mStructAttributeList do
-    receiverCppName .= ".mAttribute_" . [mValue identifierRepresentation] ;
+    receiverCppName .= ".mAttribute_" . [[mValue string] identifierRepresentation] ;
   end foreach ;
 #--- key expression
   @string keyVarCppName ;
   [mKeyExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?keyVarCppName] ;
 #---
   foreach [mReceiverType mCurrentTypedAttributeList] index IDX do
-    ioGeneratedCode .= "// index " . [IDX+1 string] . ": attribute '" . mAttributeName . "', type @" . [mAttributeTypeIndex key] . "\n" ;
+    ioGeneratedCode .= "// index " . [IDX+1 string] . ": attribute '" . mAttributeName . "', type @" . [mAttributeTypeProxy key] . "\n" ;
   end foreach ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverVariableCppName] ;
@@ -1085,7 +1096,7 @@ override method @switchInstructionForGeneration generateInstruction
   ioGeneratedCode .= "  break ;\n" ;
   foreach mBranches do
     foreach mSwitchConstantList do
-      ioGeneratedCode .= "case GALGAS_" . [[mSwitchExpression mType] identifierRepresentation] . "::kEnum_" . [mValue identifierRepresentation] . ": " ;
+      ioGeneratedCode .= "case GALGAS_" . [[mSwitchExpression mType] identifierRepresentation] . "::kEnum_" . [[mValue string] identifierRepresentation] . ": " ;
     end foreach ;
     ioGeneratedCode .= "{\n" ;
     generateInstructionList

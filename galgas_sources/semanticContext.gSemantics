@@ -823,7 +823,7 @@ override method @mapDeclarationAST enterInSemanticContext
   end if ;
 #---------- Enter "set...Attribute...forKey" modifiers
   foreach mAttributeList do
-    const @lstring accessorName [new !"set" . [mAttributeName stringByCapitalizingFirstCharacter] . "ForKey" ![mAttributeName location]] ;
+    const @lstring accessorName [new !"set" . [[mAttributeName string] stringByCapitalizingFirstCharacter] . "ForKey" ![mAttributeName location]] ;
     @unifiedTypeMapProxy attributeTypeIndex ;
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mAttributeTypeName string] ?attributeTypeIndex] ;
     @formalParameterSignature accessorFormalArgumentList [emptyList] ;
@@ -965,7 +965,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
         ![@unifiedTypeMapProxyList emptyList]
         !here
         !true
-        !mAttributeTypeIndex
+        !mAttributeTypeProxy
         ![@methodQualifier isBasic]
       ] ;
     end if ;
@@ -1142,7 +1142,7 @@ override method @filewrapperDeclarationAST enterInSemanticContext
   @wrapperFileMap regularRootFileMap ;
   @wrapperDirectoryMap wrapperDirectoryMap ;
   @string absoluteSourcePath ;
-  if [mFilewrapperPath firstCharacterOrNul] == '/' then
+  if [[mFilewrapperPath string] firstCharacterOrNul] == '/' then
     absoluteSourcePath := [mFilewrapperPath string] ;
   else
     absoluteSourcePath := [mSourceFileAbsolutePath stringByDeletingLastPathComponent] . "/" . [mFilewrapperPath string] ;
@@ -1202,10 +1202,10 @@ override method @listDeclarationAST enterInSemanticContext
   @formalParameterSignature modifierOutputFormalArgumentList [emptyList] ;
   @formalParameterSignature modifierInputFormalArgumentList [emptyList] ;
   foreach typedAttributeList do
-    enumerationDescriptor += !mAttributeTypeIndex ![mAttributeName string] ;
-    constructorAttributeTypeList += !mAttributeTypeIndex ;
-    modifierOutputFormalArgumentList += !mAttributeTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
-    modifierInputFormalArgumentList += !mAttributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    enumerationDescriptor += !mAttributeTypeProxy ![mAttributeName string] ;
+    constructorAttributeTypeList += !mAttributeTypeProxy ;
+    modifierOutputFormalArgumentList += !mAttributeTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
+    modifierInputFormalArgumentList += !mAttributeTypeProxy ![@formalArgumentPassingModeAST argumentConstantIn] ;
   end foreach ;
 #--- Constructors
   @constructorMap constructorMap [emptyMap] ;
@@ -1228,7 +1228,7 @@ override method @listDeclarationAST enterInSemanticContext
       ![@unifiedTypeMapProxyList listWithValue !uintType]
       !here
       !true
-      !mAttributeTypeIndex
+      !mAttributeTypeProxy
       ![@methodQualifier isBasic]
     ] ;
   end foreach ;
@@ -1254,10 +1254,10 @@ override method @listDeclarationAST enterInSemanticContext
   ] ;
   foreach typedAttributeList do
     @formalParameterSignature setterFormalArgumentList [emptyList] ;
-    setterFormalArgumentList += !mAttributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    setterFormalArgumentList += !mAttributeTypeProxy ![@formalArgumentPassingModeAST argumentConstantIn] ;
     setterFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] ;
     [!?modifierMap insertOrReplace
-      ![@lstring new !"set" . [mAttributeName stringByCapitalizingFirstCharacter] . "AtIndex" ![mAttributeName location]]
+      ![@lstring new !"set" . [[mAttributeName string] stringByCapitalizingFirstCharacter] . "AtIndex" ![mAttributeName location]]
       !setterFormalArgumentList
       !true
       ![@methodQualifier isBasic]
@@ -1553,7 +1553,7 @@ override method @classDeclarationAST enterInSemanticContext
 #--- Build attribute Map and constructor argument list
   @unifiedTypeMapProxyList constructorAttributeTypeList [emptyList] ;
   foreach inheritedTypedAttributeList do
-    constructorAttributeTypeList += !mAttributeTypeIndex ;
+    constructorAttributeTypeList += !mAttributeTypeProxy ;
   end foreach ;
   foreach mAttributeList do
     @unifiedTypeMapProxy attributeTypeIndex ;
@@ -1694,8 +1694,8 @@ override method @classDeclarationAST enterInSemanticContext
 #--- set...attribute modifier
   foreach currentClassTypedAttributeList do
     [!?modifierMap insertKey
-      ![@lstring new !"set". [mAttributeName stringByCapitalizingFirstCharacter] !here]
-      ![@formalParameterSignature listWithValue !mAttributeTypeIndex ![@formalArgumentPassingModeAST argumentIn]]
+      ![@lstring new !"set". [[mAttributeName string] stringByCapitalizingFirstCharacter] !here]
+      ![@formalParameterSignature listWithValue !mAttributeTypeProxy ![@formalArgumentPassingModeAST argumentIn]]
       !false # No compiler argument
       ![@methodQualifier isBasicFinal]
     ] ; 
@@ -1831,7 +1831,7 @@ override method @listmapDeclarationAST enterInSemanticContext
   @unifiedTypeMapProxyList addAssignOperatorDescription [emptyList] ;
   addAssignOperatorDescription += !stringTypeIndex ;
   foreach listTypedAttributeList do
-    addAssignOperatorDescription += !mAttributeTypeIndex ;
+    addAssignOperatorDescription += !mAttributeTypeProxy ;
   end foreach ;
 #--- Enter type in type map
   [!?ioSemanticContext->mTypeMap insertKey
@@ -1957,6 +1957,14 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @externFunctionDeclarationAST enterOrderedDeclaration
+  ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
+:
+  ioPartiallyOrderedDeclarationList += !"" !"" !selfcopy ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @onceFunctionDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
   ioPartiallyOrderedDeclarationList += !"" !"" !selfcopy ;

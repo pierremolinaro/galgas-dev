@@ -13,7 +13,7 @@
 if [CONSTRUCTOR_MAP count] > 0 then
   %//--------------------------------- GALGAS constructors\n%
   foreach CONSTRUCTOR_MAP do
-    %  public : static GALGAS_%![mReturnedType identifierRepresentation]% constructor_%![lkey identifierRepresentation]% (%?^
+    %  public : static GALGAS_%![mReturnedType identifierRepresentation]% constructor_%![[lkey string] identifierRepresentation]% (%?^
     foreach mArgumentTypeList
       do index IDX %const GALGAS_% ![mType identifierRepresentation] % & inOperand%![IDX string]
       between %,\n%!^
@@ -162,7 +162,7 @@ if (SUPPORTED_OPERATORS & doNotGenererateObjectCompare []) == 0 then
 %
 foreach MODIFIER_MAP do
   if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal]) then
-    %  public : VIRTUAL_IN_DEBUG void modifier_%![lkey identifierRepresentation]% (%?^
+    %  public : VIRTUAL_IN_DEBUG void modifier_%![[lkey string] identifierRepresentation]% (%?^
     foreach mParameterList do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
         %GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
@@ -199,7 +199,7 @@ end foreach
 foreach INSTANCE_METHOD_MAP do
   if not mIsCategory then
     if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal]) then
-      %  public : VIRTUAL_IN_DEBUG void method_%![lkey identifierRepresentation]% (%?^
+      %  public : VIRTUAL_IN_DEBUG void method_%![[lkey string] identifierRepresentation]% (%?^
       foreach mParameterList do index IDX
         if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
           %GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
@@ -234,7 +234,7 @@ end foreach
 %//--------------------------------- Class Methods
 %
 foreach CLASS_METHOD_MAP do
-  %  public : static void class_method_%![lkey identifierRepresentation]% (%?^
+  %  public : static void class_method_%![[lkey string] identifierRepresentation]% (%?^
   foreach mParameterList do index IDX
     if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
       %GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
@@ -270,7 +270,7 @@ end foreach
 foreach READER_MAP do
   if not mIsCategory then
     if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal]) then
-      %  public : VIRTUAL_IN_DEBUG GALGAS_% ![mReturnedType identifierRepresentation] % reader_% ![lkey identifierRepresentation] % (%?^
+      %  public : VIRTUAL_IN_DEBUG GALGAS_% ![mReturnedType identifierRepresentation] % reader_% ![[lkey string] identifierRepresentation] % (%?^
       foreach mArgumentTypeList
         do index IDX %const GALGAS_%![mType identifierRepresentation]% & constinOperand% ![IDX string]
         between %,\n% !^
@@ -307,7 +307,7 @@ if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods []) != 0) then
 if [WITH_ACCESSOR_MAP count] > 0 then
   %//--------------------------------- 'with' accessors\n%
   foreach WITH_ACCESSOR_MAP do
-    %  public : VIRTUAL_IN_DEBUG cMapElement_%!TYPE_IDENTIFIER% * readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+    %  public : VIRTUAL_IN_DEBUG cMapElement_%!TYPE_IDENTIFIER% * readWriteAccessForWithInstruction_%![[lkey string] identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
     !^%const GALGAS_%![mArgumentType identifierRepresentation]% & inKey\n%
     !^%COMMA_LOCATION_ARGS) ;\n\n%
   end foreach
@@ -343,7 +343,7 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% 
 if [WITH_ACCESSOR_MAP count] > 0 then
   %//--------------------------------- 'with' accessors\n%
   foreach WITH_ACCESSOR_MAP do
-    %cCollectionElement * readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
+    %cCollectionElement * readWriteAccessForWithInstruction_%![[lkey string] identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
     !^%GALGAS_%!TYPE_IDENTIFIER% & ioMap,\n%
     !^%GALGAS_%![mArgumentType identifierRepresentation]% & inKey\n%
     !^%COMMA_LOCATION_ARGS) ;\n\n%

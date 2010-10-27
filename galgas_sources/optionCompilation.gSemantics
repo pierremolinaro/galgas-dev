@@ -23,6 +23,7 @@ import "optionSemantics.gSemantics" ;
 import semantics allASTTypes in "allASTTypes.gSemantics" ;
 import semantics optionSemantics in "optionSemantics.gSemantics" ;
 import grammar optionLL1grammar in "optionLL1grammar.gGrammar" ;
+import "optionLL1grammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
 #         G E N E R A T I O N    T E M P L A T E S                          *
@@ -128,7 +129,7 @@ routine parseOptionComponent
   !@commandLineOptionMap outUIntOptionMap
   !@commandLineOptionMap outStringOptionMap
 :
-  outOptionComponentName := [@lstring new ![[inSourceFile lastPathComponent] stringByDeletingPathExtension] ![inSourceFile location]] ;
+  outOptionComponentName := [@lstring new ![[[inSourceFile string] lastPathComponent] stringByDeletingPathExtension] ![inSourceFile location]] ;
   if [[ioParsedComponentStruct mParsedOptionComponentMap] hasKey ! [outOptionComponentName string]] then
     [ioParsedComponentStruct->mParsedOptionComponentMap searchKey !outOptionComponentName ?outBoolOptionMap ?outUIntOptionMap ?outStringOptionMap] ;
   else
@@ -136,7 +137,7 @@ routine parseOptionComponent
     grammar optionLL1grammar in inSourceFile ?optionComponentAST ;
   #--- Check component name
     @lstring componentName := [optionComponentAST mOptionComponentName] ;
-    @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+    @string basename := [[[inSourceFile string] lastPathComponent] stringByDeletingPathExtension] ;
     if [componentName string] != basename then
       warning componentName: "GALGAS checks "
         "the component name ('" . [componentName string]
@@ -144,7 +145,7 @@ routine parseOptionComponent
       ;
     end if ; 
   #--- Check component name
-    @string baseName := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+    @string baseName := [[[inSourceFile string] lastPathComponent] stringByDeletingPathExtension] ;
     if [[optionComponentAST mOptionComponentName] string] != baseName then
       error [optionComponentAST mOptionComponentName]: "the component name is '"
       . [optionComponentAST mOptionComponentName] . "' should be the file base name '"

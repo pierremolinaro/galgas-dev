@@ -619,6 +619,24 @@ rule <expression>
   ;
   repeat
   while
+    $->$ ;
+    $identifier$ ? @lstring fieldName ;
+    cast outResultType :
+    when == @typeGalgasStructType st do
+      @bool found := false ;
+      foreach [st mAttributeList] while not found do
+        found := [fieldName string] == [mAttributeName string] ;
+        outResultType := mAttributType ;
+      end foreach ;
+      if found then
+        outExpression := [@typeFieldAccessOperation new !outExpression !fieldName] ;
+      else
+        error fieldName : "this structure does have a '" . fieldName . "' field" ;
+      end if ;
+    else
+      error fieldName : "only a structure accepts field access" ;
+    end cast ;
+  while
     @location operatorLocation := here ;
     $.$ ;
     @typeExpression leftOperand := outExpression ;

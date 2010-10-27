@@ -22,6 +22,7 @@ with "galgas_scanner.gLexique" ;
 
 import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
+import "semanticsTypesForAST.gSemantics" ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
@@ -155,6 +156,7 @@ rule <semantic_declaration>
   @mapRemoveMethodListAST mRemoveMethodList [emptyList] ;
   @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST [emptyList] ;
   @mapStateList mapStateList [emptyList] ;
+  @mapOverrideBlockListAST mapOverrideBlockListAST [emptyList] ;
   repeat
   while
     $state$ ;
@@ -249,18 +251,73 @@ rule <semantic_declaration>
     $replace$ ;
     insertOrReplaceDeclarationListAST += !here ;
     $;$ ;
+  while
+    $override$ ;
+    $identifier$ ? @lstring overrideBlockName ;
+    @mapOverrideBlockDescriptorAST mapOverrideBlockDescriptor1AST [emptyList] ;
+    ${$ ;
+    repeat
+    while
+      $identifier$ ? @lstring sourceState1 ;
+      $:$ ;
+      $identifier$ ? @lstring sourceState2 ;
+      $->$ ;
+      $identifier$ ? @lstring targetState ;
+      @mapAutomatonMessageKind messageKind ;
+      @lstring messageText ;
+      select
+        messageKind := [@mapAutomatonMessageKind noMessage] ;
+        messageText := [@lstring new !"" !here] ;
+      or
+        $warning$ ;
+        messageKind := [@mapAutomatonMessageKind warningMessage] ;
+        $literal_string$ ? messageText ;
+      or
+        $error$ ;
+        messageKind := [@mapAutomatonMessageKind errorMessage] ;
+        $literal_string$ ? messageText ;
+      end select ;
+      mapOverrideBlockDescriptor1AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText ;
+    end repeat ;
+    $}$ ;
+    @mapOverrideBlockDescriptorAST mapOverrideBlockDescriptor2AST [emptyList] ;
+    ${$ ;
+    repeat
+    while
+      $identifier$ ? @lstring sourceState1 ;
+      $:$ ;
+      $identifier$ ? @lstring sourceState2 ;
+      $->$ ;
+      $identifier$ ? @lstring targetState ;
+      @mapAutomatonMessageKind messageKind ;
+      @lstring messageText ;
+      select
+        messageKind := [@mapAutomatonMessageKind noMessage] ;
+        messageText := [@lstring new !"" !here] ;
+      or
+        $warning$ ;
+        messageKind := [@mapAutomatonMessageKind warningMessage] ;
+        $literal_string$ ? messageText ;
+      or
+        $error$ ;
+        messageKind := [@mapAutomatonMessageKind errorMessage] ;
+        $literal_string$ ? messageText ;
+      end select ;
+      mapOverrideBlockDescriptor2AST += !sourceState1 !sourceState2 !targetState !messageKind !messageText ;
+    end repeat ;
+    $}$ ;
+    mapOverrideBlockListAST += !overrideBlockName !mapOverrideBlockDescriptor1AST !mapOverrideBlockDescriptor2AST ;
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@mapDeclarationAST new
     !mMapTypeName
-#    !mAssociatedEnumTypeName
-#    !mAssociatedTerminaisonMethodName
     !mAttributeList
     !mInsertMethodList
     !mSearchMethodList
     !mRemoveMethodList
     !insertOrReplaceDeclarationListAST
     !mapStateList
+    !mapOverrideBlockListAST
   ] ;
 end rule ;
 
@@ -772,8 +829,15 @@ rule <semantic_declaration>
     while
       $?$ ;
       $type_name$ ? @lstring typeName ;
+      @bool isUnused ;
+      select
+        isUnused := false ;
+      or
+        $unused$ ;
+        isUnused := true ;
+      end select ;
       $identifier$ ? @lstring argumentName ;
-      filewrapperTemplateFormalInputParameters += !typeName !argumentName ;
+      filewrapperTemplateFormalInputParameters += !typeName !argumentName !isUnused ;
     end repeat ;
     $;$ ;
     mFilewrapperTemplateList +=

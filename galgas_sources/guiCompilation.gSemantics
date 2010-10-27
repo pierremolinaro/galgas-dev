@@ -28,6 +28,7 @@ import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
 import semantics optionCompilation in "optionCompilation.gSemantics" ;
 
 import grammar guiGrammar in "guiGrammar.gGrammar" ;
+import "guiGrammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*
 
@@ -106,7 +107,7 @@ routine compileGuiComponent
   grammar guiGrammar in inSourceFile ?guiComponentRoot ;
 #--- Check component name
   @lstring componentName := [guiComponentRoot mGUIName] ;
-  @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+  @string basename := [[[inSourceFile string] lastPathComponent] stringByDeletingPathExtension] ;
   if [componentName string] != basename then
     warning componentName: "GALGAS checks "
       "the component name ('" . [componentName string]
@@ -125,18 +126,18 @@ routine compileGuiComponent
   ] ;
 #--- Check imported options components
   foreach [guiComponentRoot mImportedOptionList] do 
-    if [mValue pathExtension] != "gOption" then
+    if [[mValue string] pathExtension] != "gOption" then
       error mValue: "only an option component (path extension '.gOption') can be imported here" ;
     else
       parseOptionComponent
         ![@lstring new
-          ![mValue absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]]
+          ![[mValue string] absolutePathFromPath ![[inSourceFile string] stringByDeletingLastPathComponent]]
           ![mValue location]
         ]
         !?ioParsedComponentStruct
         ?4*
       ;
-      context->mImportedOptionComponentList += ![[mValue lastPathComponent] stringByDeletingPathExtension] ;
+      context->mImportedOptionComponentList += ![[[mValue string] lastPathComponent] stringByDeletingPathExtension] ;
     end if ;
   end foreach ;
 #--- Nib and main classes
@@ -145,7 +146,7 @@ routine compileGuiComponent
       warning mKey:"the '" . mKey . "' key is invalid and has no effect" ;
 #      error mKey:"the '" . mKey . "' key is invalid: only 'nibAndMainClass' is allowed here" ;
     else
-      @stringlist x := [mValue componentsSeparatedByString !"."] ;
+      @stringlist x := [[mValue string] componentsSeparatedByString !"."] ;
       if [x length] != 2 then
         error mValue:"the string string should conform to \"nib_name.nib_main_class\"" ;
       else
@@ -160,11 +161,11 @@ routine compileGuiComponent
   foreach [guiComponentRoot mWithLexiqueList] do
   #--- Check lexique
     @lexiqueComponentAST lexiqueComponentRoot ;
-    if [mLexiqueFileName pathExtension] != "gLexique" then
+    if [[mLexiqueFileName string] pathExtension] != "gLexique" then
       error mLexiqueFileName:"the file extension for a lexique component should be 'gLexique'" : lexiqueComponentRoot ;
     else
       @lstring lexiqueFullPathName [new
-        ![mLexiqueFileName absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]]
+        ![[mLexiqueFileName string] absolutePathFromPath ![[inSourceFile string] stringByDeletingLastPathComponent]]
         ![mLexiqueFileName location]
       ] ;
       parseLexiqueComponent
@@ -213,7 +214,7 @@ routine compileGuiComponent
     @string blockComment := "" ;
     foreach mSimpleAttributes do
       if [mKey string] == "fileExtension" then
-        [!?context->mExtensionMap insertKey !mValue ![[mLexiqueFileName lastPathComponent] stringByDeletingPathExtension]] ;
+        [!?context->mExtensionMap insertKey !mValue ![[[mLexiqueFileName string] lastPathComponent] stringByDeletingPathExtension]] ;
         hasAssociatedExtension := true ;
       elsif [mKey string] == "title" then
         if hasTabViewTitle then
@@ -241,7 +242,7 @@ routine compileGuiComponent
     end if ;
   #---
     context->mWithLexiqueList +=
-      ![[mLexiqueFileName lastPathComponent] stringByDeletingPathExtension]
+      ![[[mLexiqueFileName string] lastPathComponent] stringByDeletingPathExtension]
       !blockComment
       !tabViewTitle
       !textMacroList

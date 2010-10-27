@@ -126,16 +126,6 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-#class @templateInstructionForeachForGeneration extends @templateInstructionForGeneration {
-#  @bool mIsAscending ;
-#  @semanticExpressionForGeneration mExpression ;
-#  @templateInstructionListForGeneration mBeforeInstructionList ;
-#  @templateInstructionListForGeneration mDoInstructionList ;
-#  @string mIndexIdentifier ;
-#  @templateInstructionListForGeneration mBetweenInstructionList ;
-#  @templateInstructionListForGeneration mAfterInstructionList ;
-#}
-
 override method @templateInstructionForeachForGeneration templateCodeGeneration
   ?!@string ioGeneratedCode
   ?!@uint ioTemporaryVariableIndex
@@ -279,7 +269,7 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
 #---
   foreach mTemplateInstructionSwitchBranchList do
     foreach mConstantList do
-      ioGeneratedCode .= "case GALGAS_" . [[mSwitchExpression mType] identifierRepresentation] . "::kEnum_" . [mValue identifierRepresentation] . " :\n" ;
+      ioGeneratedCode .= "case GALGAS_" . [[mSwitchExpression mType] identifierRepresentation] . "::kEnum_" . [[mValue string] identifierRepresentation] . " :\n" ;
     end foreach ;
     [!?ioGeneratedCode incIndentation !2] ;
     templateCodeGenerationForListInstruction
