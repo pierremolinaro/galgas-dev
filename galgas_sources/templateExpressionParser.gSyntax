@@ -1583,7 +1583,7 @@ rule <factor>
       else
         error readerName:"only the 'value', 'char', 'string' and 'comment' readers are defined" :outResultType ;
       end if ;
-      outExpression := [@typeOptionAccess new !"galgas_cli_options" !optionName ![readerName string]] ;
+      outExpression := [@typeOptionAccess new !outResultType !"galgas_cli_options" !optionName ![readerName string]] ;
     or
       $identifier$ ?@lstring optionComponentName ;
       @M_cli_options boolOptionsMap ;
@@ -1613,7 +1613,7 @@ rule <factor>
       else
         error readerName:"only the 'value', 'char', 'string' and 'comment' readers are defined" :outResultType ;
       end if ;
-      outExpression := [@typeOptionAccess new ![optionComponentName string] !optionName ![readerName string]] ;
+      outExpression := [@typeOptionAccess new !outResultType ![optionComponentName string] !optionName ![readerName string]] ;
     end select ;
   end select ;
   $]$ ;

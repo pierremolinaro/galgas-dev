@@ -44,7 +44,7 @@ generate_header_file_for_prgm (C_CompilerEx & inLexique,
     currentOptionComponent.next () ;
   }
   
-  generatedZone2 << "#include \"galgas/C_galgas_CLI_Options.h\"\n"
+  generatedZone2 << "#include \"galgas2/C_galgas_CLI_Options.h\"\n"
                     "#include \"galgas/C_LexiqueEx.h\"\n"
                     "#include \"command_line_interface/C_builtin_CLI_Options.h\"\n" ;
 

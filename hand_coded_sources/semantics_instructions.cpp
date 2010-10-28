@@ -307,7 +307,6 @@ generateInstructions (AC_OutputStream & inCppFile,
 bool cPtr_C_defaultForCastInstruction::
 isLexiqueFormalArgumentUsed (const bool /* inGenerateSemanticInstructions */) const {
   return true ;
-//  return mErrorLocationExpression (HERE)->isLexiqueFormalArgumentUsedForTest () ;
 }
 
 //---------------------------------------------------------------------------*

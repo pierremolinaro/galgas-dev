@@ -1286,7 +1286,7 @@ generate_cpp_file (C_CompilerEx & inLexique,
   generatedZone2 << "#include <typeinfo>\n"
                     "#include \"utilities/MF_MemoryControl.h\"\n"
                     "#include \"files/C_TextFileWrite.h\"\n"
-                    "#include \"galgas/C_galgas_CLI_Options.h\"\n"
+                    "#include \"galgas2/C_galgas_CLI_Options.h\"\n"
                     "#include \"" << nomComposant << ".h\"\n\n";
 
   generatedZone2.appendCppHyphenLineComment () ;

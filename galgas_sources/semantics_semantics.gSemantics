@@ -503,6 +503,7 @@ class @typeLogicalNegate extends @typeExpression {
 #---------------------------------------------------------------------------*
 
 class @typeOptionAccess extends @typeExpression {
+  @AC_galgasType mOptionType ;
   @string mOptionComponentName ;
   @lstring mOptionName ;
   @string mAccessorName ;

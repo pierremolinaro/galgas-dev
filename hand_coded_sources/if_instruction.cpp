@@ -1835,13 +1835,14 @@ formalCurrentObjectArgumentIsUsedForTest (void) const {
 //---------------------------------------------------------------------------*
 
 void cPtr_typeOptionAccess::generateExpression (AC_OutputStream & ioCppFile) const {
-  ioCppFile << "gOption_"
+  mOptionType (HERE)->generateCppClassName (ioCppFile) ;
+  ioCppFile << " (gOption_"
             << mOptionComponentName.string ().identifierRepresentation ()
             << "_"
             << mOptionName.string ().identifierRepresentation ()
             << ".reader_"
             << mAccessorName.string ()
-            << " ()" ;
+            << " ())" ;
 }
 
 //---------------------------------------------------------------------------*
