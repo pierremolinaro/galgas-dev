@@ -518,15 +518,19 @@ map @sourceFileMap {
 }
 
 #------------------------------------------------------------------------------*
+#                                                                              *
+#          File List Template                                                  *
+#                                                                              *
+#------------------------------------------------------------------------------*
 
 filewrapper fileListTemplateFileWrapper in "../generation_templates/file_list_template" {
- "mke"
 } {
 #--- Project
   template fileListTemplate "file_list_template.mke.gTemplate"
     ?@string HAND_CODED_SOURCES_SUB_DIRS
     ?@string GALGAS_SOURCE_LIST
     ?@string HAND_CODED_SOURCE_LIST
+    ?@bool COMPILE_FOR_GALGAS_1
   ;
 }
 

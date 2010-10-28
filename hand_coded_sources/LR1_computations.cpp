@@ -1363,7 +1363,7 @@ generate_LR1_grammar_cpp_file (C_CompilerEx & inLexique,
         generatedZone3.appendCppHyphenLineComment () ;
         generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                        << "::_performSourceFileParsing_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
-                       << " (C_CompilerEx * inCompiler"
+                       << " (C_Compiler * inCompiler"
                           ",\n                                "
                           "GALGAS_lstring inFilePath" ;
         GGS_signatureForGrammarAnalysis::cEnumerator parametre (currentAltForNonTerminal._mFormalParametersList (HERE), true) ;
@@ -1405,7 +1405,7 @@ generate_LR1_grammar_cpp_file (C_CompilerEx & inLexique,
                           "    if (filePath.fileExists ()) {\n"
                           "      C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
                           "      macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", inCompiler->ioParametersPtr (), filePath COMMA_HERE)) ;\n"
-                          "      if (scanner->needsCompiling ()) {\n"
+                          "      // if (scanner->needsCompiling ()) {\n"
                           "        if (scanner->sourceText () != NULL) {\n"
                           "          scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n"
                           "          const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
@@ -1441,7 +1441,7 @@ generate_LR1_grammar_cpp_file (C_CompilerEx & inLexique,
           numeroParametre ++ ;
         }
         generatedZone3 << "        }\n"
-                          "      }\n"
+                          "      // }\n"
                           "      macroReleaseObject (scanner) ;\n"
                           "    }else{\n"
                           "      C_String message ;\n"
@@ -1463,7 +1463,7 @@ generate_LR1_grammar_cpp_file (C_CompilerEx & inLexique,
       //--- Define string parsing static method
         generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                        << "::_performSourceStringParsing_" << currentAltForNonTerminal._key (HERE).identifierRepresentation ()
-                       << " (C_CompilerEx * inCompiler"
+                       << " (C_Compiler * inCompiler"
                           ",\n                                "
                           "GALGAS_string inSourceString" ;
         parametre.rewind () ;

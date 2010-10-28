@@ -23,7 +23,7 @@
 #include <typeinfo>
 #include "utilities/MF_MemoryControl.h"
 #include "files/C_TextFileWrite.h"
-#include "galgas/C_galgas_CLI_Options.h"
+#include "galgas2/C_galgas_CLI_Options.h"
 #include "programMetamodel.h"
 
 //---------------------------------------------------------------------------*

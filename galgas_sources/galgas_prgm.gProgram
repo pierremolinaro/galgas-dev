@@ -318,6 +318,7 @@ message "a GALGAS project source file"
         !pathesString
         !galgasSourceList
         !externSourceFileList
+        !false # Do not generate for GALGAS 1
       ] ;
       @string fileListPath := outputDirectory . "/file_list.mke" ;
       [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
@@ -426,6 +427,7 @@ message "a GALGAS project source file"
         ![fullXcodePath stringByDeletingLastPathComponent] # Full Path of xxx.xcodeproj file
         !iconFiles
         !intermediateFilePath
+        !false # Do not generate for GALGAS 1
       ;
     end if ;
   end if ;

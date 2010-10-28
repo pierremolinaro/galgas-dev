@@ -15,7 +15,7 @@
 #include "%![[LEXIQUE_COMPONENT_ROOT mLexiqueComponentName] string]%.h"
 
 #include "strings/unicode_character_cpp.h"
-#include "galgas/scanner_actions.h"
+#include "galgas2/scanner_actions.h"
 #ifndef DO_NOT_GENERATE_CHECKINGS
   #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (HERE), lineNumber ()
   #define COMMA_LINE_AND_SOURCE_FILE , LINE_AND_SOURCE_FILE
@@ -361,19 +361,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDEN
   end foreach
 %//---------------------------------------------------------------------------*
 //                                                                           *
-//         A S S I G N    F R O M    A T T R I B U T E    ( V 1 )            *
-//                                                                           *
-%
-  foreach LEXICAL_ATTRIBUTE_MAP do
-    %//---------------------------------------------------------------------------*\n\n%
-    %void C_Lexique_%!LEXIQUE_IDENTIFIER%::assignFromAttribute_%![lkey identifierRepresentation]% (GGS_l%![mLexicalType lexicalTypeBaseName]% & outValue) const {\n%
-    %  cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = (cTokenFor_%!LEXIQUE_IDENTIFIER% *) mCurrentTokenPtr ;\n%
-    %  outValue = GGS_l%![mLexicalType lexicalTypeBaseName]% (* this, ptr->mLexicalAttribute_%![lkey identifierRepresentation]%) ;\n%
-    %}\n\n%
-  end foreach
-%//---------------------------------------------------------------------------*
-//                                                                           *
-//         A S S I G N    F R O M    A T T R I B U T E    ( V 2 )            *
+//         A S S I G N    F R O M    A T T R I B U T E                       *
 //                                                                           *
 %
   foreach LEXICAL_ATTRIBUTE_MAP do

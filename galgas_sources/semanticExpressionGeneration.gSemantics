@@ -313,7 +313,7 @@ override method @optionValueExpressionForGeneration generateExpression
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " " . outCppName 
                   . " (gOption_" . [mOptionComponentName identifierRepresentation]
-                  . "_" . [mOptionEntryName identifierRepresentation] . ".mValue) ;\n" ;
+                  . "_" . [mOptionEntryName identifierRepresentation] . ".reader_value ()) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -327,8 +327,8 @@ override method @optionCharExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @optionCharExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_char " . outCppName 
-                  . "  = gOption_" . [mOptionComponentName identifierRepresentation]
-                  . "_" . [mOptionEntryName identifierRepresentation] . ".invocationChar (SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
+                  . "  (gOption_" . [mOptionComponentName identifierRepresentation]
+                  . "_" . [mOptionEntryName identifierRepresentation] . ".reader_char ()) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -342,8 +342,8 @@ override method @optionStringExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @optionStringExpressionForGeneration\n" ;
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_string " . outCppName 
-                  . "  = gOption_" . [mOptionComponentName identifierRepresentation]
-                  . "_" . [mOptionEntryName identifierRepresentation] . ".invocationString (SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
+                  . "  (gOption_" . [mOptionComponentName identifierRepresentation]
+                  . "_" . [mOptionEntryName identifierRepresentation] . ".reader_string ()) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -358,7 +358,7 @@ override method @optionCommentExpressionForGeneration generateExpression
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_string " . outCppName 
                   . "  = gOption_" . [mOptionComponentName identifierRepresentation]
-                  . "_" . [mOptionEntryName identifierRepresentation] . ".commentString (SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
+                  . "_" . [mOptionEntryName identifierRepresentation] . ".reader_comment ()) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*

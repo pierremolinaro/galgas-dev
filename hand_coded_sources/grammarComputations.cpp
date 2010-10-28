@@ -31,7 +31,7 @@
 #include "bdd/C_BDD_Set2.h"
 #include "utilities/MF_MemoryControl.h"
 #include "streams/C_ConsoleOut.h"
-#include "galgas/C_galgas_CLI_Options.h"
+#include "galgas2/C_galgas_CLI_Options.h"
 
 //---------------------------------------------------------------------------*
 

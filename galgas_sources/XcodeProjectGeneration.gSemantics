@@ -56,32 +56,34 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine getGALGAS_UTILITIES_source_file_list
-  !@stringlist out_cpp_and_h_fileList
-:
-  out_cpp_and_h_fileList := [@stringlist emptyList] ;
-  out_cpp_and_h_fileList += !"C_Compiler" ;
-  out_cpp_and_h_fileList += !"C_Lexique" ;
-  out_cpp_and_h_fileList += !"C_galgas_io" ;
-  out_cpp_and_h_fileList += !"C_LocationInSource" ;
-  out_cpp_and_h_fileList += !"C_SourceTextInString" ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
 routine getGALGAS_2_source_file_list
   !@stringlist out_fileList
 :
   out_fileList := [@stringlist emptyList] ;
   out_fileList += !"enumComparisonResult.h" ;
+  out_fileList += !"C_Compiler.cpp" ;
+  out_fileList += !"C_Compiler.h" ;
+  out_fileList += !"C_Lexique.cpp" ;
+  out_fileList += !"C_Lexique.h" ;
+  out_fileList += !"scanner_actions.cpp" ;
+  out_fileList += !"scanner_actions.h" ;
+  out_fileList += !"C_galgas_io.cpp" ;
+  out_fileList += !"C_galgas_io.h" ;
+  out_fileList += !"C_LocationInSource.cpp" ;
+  out_fileList += !"C_LocationInSource.h" ;
+  out_fileList += !"C_SourceTextInString.cpp" ;
   out_fileList += !"cCollectionElement.cpp" ;
   out_fileList += !"cCollectionElement.h" ;
   out_fileList += !"capCollectionElementArray.cpp" ;
   out_fileList += !"capCollectionElementArray.h" ;
   out_fileList += !"C_galgas_function_descriptor.cpp" ;
   out_fileList += !"C_galgas_function_descriptor.h" ;
+  out_fileList += !"C_galgas_class_inspector.cpp" ;
+  out_fileList += !"C_galgas_class_inspector.h" ;
   out_fileList += !"C_galgas_type_descriptor.cpp" ;
   out_fileList += !"C_galgas_type_descriptor.h" ;
+  out_fileList += !"C_galgas_CLI_Options.cpp" ;
+  out_fileList += !"C_galgas_CLI_Options.h" ;
   out_fileList += !"cGenericAbstractEnumerator.cpp" ;
   out_fileList += !"cGenericAbstractEnumerator.h" ;
   out_fileList += !"capSortedListElement.cpp" ;
@@ -106,6 +108,7 @@ routine getGALGAS_2_source_file_list
   out_fileList += !"acPtr_class.h" ;
   out_fileList += !"cPtr_object.cpp" ;
   out_fileList += !"cPtr_object.h" ;
+  out_fileList += !"GALGAS_application.cpp" ;
   out_fileList += !"GALGAS_binaryset.cpp" ;
   out_fileList += !"GALGAS_bool.cpp" ;
   out_fileList += !"GALGAS_char.cpp" ;
@@ -132,6 +135,8 @@ routine getGALGAS_source_file_list
   !@stringlist out_cpp_and_h_fileList
 :
   out_cpp_and_h_fileList := [@stringlist emptyList] ;
+  out_cpp_and_h_fileList += !"C_CompilerEx" ;
+  out_cpp_and_h_fileList += !"C_LexiqueEx" ;
   out_cpp_and_h_fileList += !"PM_C_Array" ;
   out_cpp_and_h_fileList += !"PM_C_Dictionary" ;
   out_cpp_and_h_fileList += !"PM_C_Object" ;
@@ -142,10 +147,8 @@ routine getGALGAS_source_file_list
   out_cpp_and_h_fileList += !"AC_GGS_mapindex" ;
   out_cpp_and_h_fileList += !"AC_GGS_domain" ;
   out_cpp_and_h_fileList += !"AC_GGS_class" ;
-  out_cpp_and_h_fileList += !"C_galgas_CLI_Options" ;
-  out_cpp_and_h_fileList += !"scanner_actions" ;
+  out_cpp_and_h_fileList += !"scanner_actionsEx" ;
   out_cpp_and_h_fileList += !"galgas_introspection" ;
-  out_cpp_and_h_fileList += !"C_galgas_class_inspector" ;
   out_cpp_and_h_fileList += !"predefined_types" ;
   out_cpp_and_h_fileList += !"GGS_binaryset" ;
   out_cpp_and_h_fileList += !"GGS_stringset" ;
@@ -171,7 +174,7 @@ routine getGALGAS_source_file_list
   out_cpp_and_h_fileList += !"GGS_type" ;
   out_cpp_and_h_fileList += !"GGS_object" ;
   out_cpp_and_h_fileList += !"GGS_function" ;
-  out_cpp_and_h_fileList += !"GGS_system" ;
+  out_cpp_and_h_fileList += !"GGS_application" ;
   out_cpp_and_h_fileList += !"GGS__root" ;
 end routine ;
 
@@ -250,47 +253,6 @@ routine build_LIBPM_GALGAS_2_files_for_sources_build_phase
   enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription
    !cppFileList
-   !?ioBuildPhaseList
-  ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine build_LIBPM_GALGAS_UTILITIES_group
-  ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@XcodeObjectReferenceList ioFileListForGroup
-:
-  @stringlist cpp_and_h_fileList ;
-  getGALGAS_UTILITIES_source_file_list ?cpp_and_h_fileList ;
-  @stringlist fileList [emptyList] ;
-  foreach cpp_and_h_fileList do 
-    append_cpp_h_files !?fileList !mValue ;
-  end foreach ;
-  fileList += !"galgas_header.h" ;
-#---
-  enter_files_in_group
-   !?ioXcodeProjectDescription
-   !fileList
-   !?ioFileListForGroup
-  ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine build_LIBPM_GALGAS_UTILITIES_files_for_sources_build_phase
-  ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
-:
-  @stringlist cpp_and_h_fileList ;
-  getGALGAS_UTILITIES_source_file_list ?cpp_and_h_fileList ;
-  @stringlist fileList [emptyList] ;
-  foreach cpp_and_h_fileList do 
-    fileList += !mValue . ".cpp" ;
-  end foreach ;
-#---
-  enter_file_list_for_sources_build_phase
-   !?ioXcodeProjectDescription
-   !fileList
    !?ioBuildPhaseList
   ;
 end routine ;
@@ -952,6 +914,7 @@ routine generateXcodeProject
   ??@string in_xcodeproj_filePath
   ??@stringlist inIconFiles
   ??@string inReferenceFilePath
+  ??@bool inGenerateCodeGalgas1
 :
   @XcodeProjectDescription XcodeProjectDescription ;
   initXcodeProjectDescription ?XcodeProjectDescription ;
@@ -1096,19 +1059,21 @@ routine generateXcodeProject
     !?libpmGroupChildrenList
   ;
 #---------- LIBPM / GALGAS
-  @XcodeObjectReferenceList fileListOf_LIBPM_GALGAS_group [emptyList] ;
-  build_LIBPM_GALGAS_group
-    !?XcodeProjectDescription
-    !?fileListOf_LIBPM_GALGAS_group
-  ;
-#---
-  enter_subgroup
-    !?XcodeProjectDescription
-    !"GALGAS"
-    !"galgas"
-    !fileListOf_LIBPM_GALGAS_group
-    !?libpmGroupChildrenList
-  ;
+  if inGenerateCodeGalgas1 then
+    @XcodeObjectReferenceList fileListOf_LIBPM_GALGAS_group [emptyList] ;
+    build_LIBPM_GALGAS_group
+      !?XcodeProjectDescription
+      !?fileListOf_LIBPM_GALGAS_group
+    ;
+  #---
+    enter_subgroup
+      !?XcodeProjectDescription
+      !"GALGAS"
+      !"galgas"
+      !fileListOf_LIBPM_GALGAS_group
+      !?libpmGroupChildrenList
+    ;
+  end if ;
 #---------- LIBPM / GALGAS 2
   @XcodeObjectReferenceList fileListOf_LIBPM_GALGAS_2_group [emptyList] ;
   build_LIBPM_GALGAS_2_group
@@ -1121,20 +1086,6 @@ routine generateXcodeProject
     !"GALGAS 2"
     !"galgas2"
     !fileListOf_LIBPM_GALGAS_2_group
-    !?libpmGroupChildrenList
-  ;
-#---------- LIBPM / GALGAS UTILITIES
-  @XcodeObjectReferenceList fileListOf_LIBPM_GALGAS_UTILITIES_group [emptyList] ;
-  build_LIBPM_GALGAS_UTILITIES_group
-    !?XcodeProjectDescription
-    !?fileListOf_LIBPM_GALGAS_UTILITIES_group
-  ;
-#---
-  enter_subgroup
-    !?XcodeProjectDescription
-    !"GALGAS UTILITIES"
-    !"galgas-utilities"
-    !fileListOf_LIBPM_GALGAS_UTILITIES_group
     !?libpmGroupChildrenList
   ;
 #---------- LIBPM / STREAMS
@@ -1258,17 +1209,14 @@ routine generateXcodeProject
     !?listForSourceBuildPhaseOfTool
   ;
 # LIBPM / GALGAS
-  build_LIBPM_GALGAS_files_for_sources_build_phase
-    !?XcodeProjectDescription
-    !?listForSourceBuildPhaseOfTool
-  ;
+  if inGenerateCodeGalgas1 then
+    build_LIBPM_GALGAS_files_for_sources_build_phase
+      !?XcodeProjectDescription
+      !?listForSourceBuildPhaseOfTool
+    ;
+  end if ;
 # LIBPM / GALGAS 2
   build_LIBPM_GALGAS_2_files_for_sources_build_phase
-    !?XcodeProjectDescription
-    !?listForSourceBuildPhaseOfTool
-  ;
-# LIBPM / GALGAS UTILITIES
-  build_LIBPM_GALGAS_UTILITIES_files_for_sources_build_phase
     !?XcodeProjectDescription
     !?listForSourceBuildPhaseOfTool
   ;
@@ -1345,17 +1293,14 @@ routine generateXcodeProject
     !?listForSourceBuildPhaseOfDebugTool
   ;
 # LIBPM / GALGAS
-  build_LIBPM_GALGAS_files_for_sources_build_phase
-    !?XcodeProjectDescription
-    !?listForSourceBuildPhaseOfDebugTool
-  ;
+  if inGenerateCodeGalgas1 then
+    build_LIBPM_GALGAS_files_for_sources_build_phase
+      !?XcodeProjectDescription
+      !?listForSourceBuildPhaseOfDebugTool
+    ;
+  end if ;
 # LIBPM / GALGAS 2
   build_LIBPM_GALGAS_2_files_for_sources_build_phase
-    !?XcodeProjectDescription
-    !?listForSourceBuildPhaseOfDebugTool
-  ;
-# LIBPM / GALGAS UTILITIES
-  build_LIBPM_GALGAS_UTILITIES_files_for_sources_build_phase
     !?XcodeProjectDescription
     !?listForSourceBuildPhaseOfDebugTool
   ;
