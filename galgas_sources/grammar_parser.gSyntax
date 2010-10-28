@@ -427,7 +427,7 @@ rule <galgas_component>
    $;$ ;
   end repeat ;
 #--- Analyze grammar
-  analyzeGrammar
+  grammarAnalysisAndGeneration
     !grammarName
     !grammarClass
     !startSymbolIndex

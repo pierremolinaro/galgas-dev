@@ -25,7 +25,7 @@ class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
                             cPtr_abstractSyntaxInstructionForGrammarAnalysis * inInstruction,
                             const GGS_location & inEndOfInstructionListLocation) const ;
   public : virtual void printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) ;
-  public : virtual void fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
+  public : virtual void fixNewNonterminalSymbols (cVocabularyEx & ioVocabulary,
                                                   const C_String & inSyntaxComponentName,
                                                   PMSInt32 & ioCount) ;
   public : virtual void buildRightDerivation (const PMSInt32 inTerminalSymbolsCount,
@@ -34,7 +34,7 @@ class cPtr_repeatInstructionForGrammarAnalysis : public cPtr_abstractSyntaxInstr
   public : virtual void buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
                                               const PMSInt32 inOriginalGrammarSymbolCount,
                                            const C_String & inSyntaxComponentName,
-                                           cPureBNFproductionsList & ioProductions) ;
+                                           cPureBNFproductionsListEx & ioProductions) ;
 
 //--- END OF USER ZONE 2
 
