@@ -9,8 +9,8 @@
 //--- START OF USER ZONE 1
 
 class C_HTML_FileWrite ;
-class cVocabulary ;
-class cPureBNFproductionsList ;
+class cVocabularyEx ;
+class cPureBNFproductionsListEx ;
 
 //--- END OF USER ZONE 1
 
@@ -27,7 +27,7 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public cPtr__AC_galgas_
                           cPtr_abstractSyntaxInstructionForGrammarAnalysis * inInstruction,
                           const GGS_location & inEndOfInstructionListLocation) const = 0 ;
   public : virtual void printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) = 0 ;
-  public : virtual void fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
+  public : virtual void fixNewNonterminalSymbols (cVocabularyEx & ioVocabulary,
                                                   const C_String & inSyntaxComponentName,
                                                   PMSInt32 & ioCount) = 0 ;
   public : virtual void buildRightDerivation (const PMSInt32 inTerminalSymbolsCount,
@@ -36,7 +36,7 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public cPtr__AC_galgas_
   public : virtual void buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
                                               const PMSInt32 inOriginalGrammarSymbolCount,
                                            const C_String & inSyntaxComponentName,
-                                           cPureBNFproductionsList & ioProductions) = 0 ;
+                                           cPureBNFproductionsListEx & ioProductions) = 0 ;
 
 //--- END OF USER ZONE 2
 

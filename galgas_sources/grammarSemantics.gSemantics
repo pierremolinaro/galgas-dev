@@ -185,7 +185,7 @@ map @terminalSymbolsMapForGrammarAnalysis {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-extern routine analyzeGrammar
+extern routine grammarAnalysisAndGeneration
   ??@lstring inGrammarName
   ??@lstring inGrammarClass
   ??@uint startSymbolIndex

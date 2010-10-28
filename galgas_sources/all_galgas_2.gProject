@@ -19,117 +19,117 @@
 
 project all_galgas_2:
 #--- Command Line Options
-  option "galgas_cli_options.gOption" : makefile ;
+  option "galgas_cli_options.gOption" : makefile, xcode_tool ;
 
 #--- Common Scanner
-  lexique "galgas_scanner.gLexique" : makefile ;
+  lexique "galgas_scanner.gLexique" : makefile, xcode_tool ;
 
 #--- Cocoa Interface
-  gui       "cocoaGalgas.gGui" ;
+  gui       "cocoaGalgas.gGui" : xcode_app ;
 
 #--- Project Creation
-  semantics "projectCreation.gSemantics" : makefile ;
+  semantics "projectCreation.gSemantics" : makefile, xcode_tool ;
 
 #--- Template
-  lexique   "galgasTemplateScanner.gLexique" : makefile ;
-  semantics "templateTypesForAST.gSemantics" : makefile ;
-  syntax    "templateSyntax.gSyntax" : makefile ;
-  grammar   "templateGrammar.gGrammar" : makefile ;
-  semantics "templateDecoratedTypes.gSemantics" : makefile ;
-  semantics "templateAnalysis.gSemantics" : makefile ;
-  semantics "templateCodeGeneration.gSemantics" : makefile ;
+  lexique   "galgasTemplateScanner.gLexique" : makefile, xcode_tool ;
+  semantics "templateTypesForAST.gSemantics" : makefile, xcode_tool ;
+  syntax    "templateSyntax.gSyntax" : makefile, xcode_tool ;
+  grammar   "templateGrammar.gGrammar" : makefile, xcode_tool ;
+  semantics "templateDecoratedTypes.gSemantics" : makefile, xcode_tool ;
+  semantics "templateAnalysis.gSemantics" : makefile, xcode_tool ;
+  semantics "templateCodeGeneration.gSemantics" : makefile, xcode_tool ;
  
 #--- Lexique Component
-  semantics "lexiqueTypesForAST.gSemantics" : makefile ;
-  syntax    "lexiqueSyntax.gSyntax" : makefile ;
-  grammar   "lexiqueLL1grammar.gGrammar" : makefile ;
-  semantics "lexiqueSemantics.gSemantics" : makefile ;
-  semantics "predefinedLexicalActions.gSemantics" : makefile ;
-  semantics "lexiqueGeneration.gSemantics" : makefile ;
-  semantics "lexiqueCocoaGeneration.gSemantics" : makefile ;
-  semantics "lexiqueCompilation.gSemantics" : makefile ;
+  semantics "lexiqueTypesForAST.gSemantics" : makefile, xcode_tool ;
+  syntax    "lexiqueSyntax.gSyntax" : makefile, xcode_tool ;
+  grammar   "lexiqueLL1grammar.gGrammar" : makefile, xcode_tool ;
+  semantics "lexiqueSemantics.gSemantics" : makefile, xcode_tool ;
+  semantics "predefinedLexicalActions.gSemantics" : makefile, xcode_tool ;
+  semantics "lexiqueGeneration.gSemantics" : makefile, xcode_tool ;
+  semantics "lexiqueCocoaGeneration.gSemantics" : makefile, xcode_tool ;
+  semantics "lexiqueCompilation.gSemantics" : makefile, xcode_tool ;
 
 #--- Option Component
-  semantics "optionTypesForAST.gSemantics" : makefile ;
-  syntax    "optionSyntax.gSyntax" : makefile ;
-  grammar   "optionLL1grammar.gGrammar" : makefile ;
-  semantics "optionSemantics.gSemantics" : makefile ;
-  semantics "optionCompilation.gSemantics" : makefile ;
+  semantics "optionTypesForAST.gSemantics" : makefile, xcode_tool ;
+  syntax    "optionSyntax.gSyntax" : makefile, xcode_tool ;
+  grammar   "optionLL1grammar.gGrammar" : makefile, xcode_tool ;
+  semantics "optionSemantics.gSemantics" : makefile, xcode_tool ;
+  semantics "optionCompilation.gSemantics" : makefile, xcode_tool ;
 
 #--- GUI component
-  semantics "guiTypesForAST.gSemantics" : makefile ;
-  syntax    "guiSyntax.gSyntax" : makefile ;
-  grammar   "guiGrammar.gGrammar" : makefile ;
-  semantics "guiCompilation.gSemantics" : makefile ;
+  semantics "guiTypesForAST.gSemantics" : makefile, xcode_tool ;
+  syntax    "guiSyntax.gSyntax" : makefile, xcode_tool ;
+  grammar   "guiGrammar.gGrammar" : makefile, xcode_tool ;
+  semantics "guiCompilation.gSemantics" : makefile, xcode_tool ;
 
 #--- All AST types
-  semantics "allASTTypes.gSemantics" : makefile ;
+  semantics "allASTTypes.gSemantics" : makefile, xcode_tool ;
 
 #--- Semantics Component
-  semantics "semanticsTypesForAST.gSemantics" : makefile ;
-  syntax    "expressionSyntax.gSyntax" : makefile ;
-  syntax    "parameterArgumentSyntax.gSyntax" : makefile ;
-  syntax    "semanticInstructionsSyntax.gSyntax" : makefile ;
-  syntax    "semanticDeclarationsSyntax.gSyntax" : makefile ;
-  syntax    "semanticsComponent.gSyntax" : makefile ;
-  grammar   "semanticsSLRgrammar.gGrammar" : makefile ;
-  semantics "semanticsTypes.gSemantics" : makefile ;
-  semantics "semanticsTypeFeatures.gSemantics" : makefile ;
-  semantics "semanticsConstructors.gSemantics" : makefile ;
-  semantics "semanticsReaders.gSemantics" : makefile ;
-  semantics "semanticsModifiers.gSemantics" : makefile ;
-  semantics "semanticsInstanceMethods.gSemantics" : makefile ;
-  semantics "semanticsClassMethods.gSemantics" : makefile ;
-  semantics "semanticContext.gSemantics" : makefile ;
-  semantics "semanticsDecoratedTypes.gSemantics" : makefile ;
-  semantics "semanticExpressionAnalysis.gSemantics" : makefile ;
-  semantics "semanticInstructionsAnalysis.gSemantics" : makefile ;
-  semantics "semanticAnalysis.gSemantics" : makefile ;
-  semantics "semanticGeneration.gSemantics" : makefile ;
-  semantics "semanticsCompilation.gSemantics" : makefile ;
+  semantics "semanticsTypesForAST.gSemantics" : makefile, xcode_tool ;
+  syntax    "expressionSyntax.gSyntax" : makefile, xcode_tool ;
+  syntax    "parameterArgumentSyntax.gSyntax" : makefile, xcode_tool ;
+  syntax    "semanticInstructionsSyntax.gSyntax" : makefile, xcode_tool ;
+  syntax    "semanticDeclarationsSyntax.gSyntax" : makefile, xcode_tool ;
+  syntax    "semanticsComponent.gSyntax" : makefile, xcode_tool ;
+  grammar   "semanticsSLRgrammar.gGrammar" : makefile, xcode_tool ;
+  semantics "semanticsTypes.gSemantics" : makefile, xcode_tool ;
+  semantics "semanticsTypeFeatures.gSemantics" : makefile, xcode_tool ;
+  semantics "semanticsConstructors.gSemantics" : makefile, xcode_tool ;
+  semantics "semanticsReaders.gSemantics" : makefile, xcode_tool ;
+  semantics "semanticsModifiers.gSemantics" : makefile, xcode_tool ;
+  semantics "semanticsInstanceMethods.gSemantics" : makefile, xcode_tool ;
+  semantics "semanticsClassMethods.gSemantics" : makefile, xcode_tool ;
+  semantics "semanticContext.gSemantics" : makefile, xcode_tool ;
+  semantics "semanticsDecoratedTypes.gSemantics" : makefile, xcode_tool ;
+  semantics "semanticExpressionAnalysis.gSemantics" : makefile, xcode_tool ;
+  semantics "semanticInstructionsAnalysis.gSemantics" : makefile, xcode_tool ;
+  semantics "semanticAnalysis.gSemantics" : makefile, xcode_tool ;
+  semantics "semanticGeneration.gSemantics" : makefile, xcode_tool ;
+  semantics "semanticsCompilation.gSemantics" : makefile, xcode_tool ;
 
 #--- Syntax Component
-  semantics "syntaxMetamodel.gSemantics" : makefile ;
-  syntax    "syntaxModelBuilder.gSyntax" : makefile ;
-  grammar   "syntaxSLRgrammar.gGrammar" : makefile ;
-  semantics "syntaxCompilation.gSemantics" : makefile ;
+  semantics "syntaxMetamodel.gSemantics" : makefile, xcode_tool ;
+  syntax    "syntaxModelBuilder.gSyntax" : makefile, xcode_tool ;
+  grammar   "syntaxSLRgrammar.gGrammar" : makefile, xcode_tool ;
+  semantics "syntaxCompilation.gSemantics" : makefile, xcode_tool ;
 
 #--- Grammar component
-  semantics "grammarMetamodel.gSemantics" : makefile ;
-  syntax    "grammarModelBuilder.gSyntax" : makefile ;
-  grammar   "grammarLL1grammar.gGrammar" : makefile ;
-  semantics "grammarSemantics.gSemantics" : makefile ;
-  semantics "grammarCompilation.gSemantics" : makefile ;
+  semantics "grammarMetamodel.gSemantics" : makefile, xcode_tool ;
+  syntax    "grammarModelBuilder.gSyntax" : makefile, xcode_tool ;
+  grammar   "grammarLL1grammar.gGrammar" : makefile, xcode_tool ;
+  semantics "grammarSemantics.gSemantics" : makefile, xcode_tool ;
+  semantics "grammarCompilation.gSemantics" : makefile, xcode_tool ;
 
 #--- Program component
-  semantics "programMetamodel.gSemantics" : makefile ;
-  syntax    "programModelBuilder.gSyntax" : makefile ;
-  grammar   "programSLRgrammar.gGrammar" : makefile ;
+  semantics "programMetamodel.gSemantics" : makefile, xcode_tool ;
+  syntax    "programModelBuilder.gSyntax" : makefile, xcode_tool ;
+  grammar   "programSLRgrammar.gGrammar" : makefile, xcode_tool ;
 
 #--- Project component
-  semantics "projectGlobalCheckings.gSemantics" : makefile ;
-  semantics "projectMetamodel.gSemantics" : makefile ;
-  semantics "baseForXcodeProjectGeneration.gSemantics" : makefile ;
-  semantics "XcodeProjectGeneration.gSemantics" : makefile ;
-  syntax    "projectModelBuilder.gSyntax" : makefile ;
-  grammar   "projectLL1grammar.gGrammar" : makefile ;
+  semantics "projectGlobalCheckings.gSemantics" : makefile, xcode_tool ;
+  semantics "projectMetamodel.gSemantics" : makefile, xcode_tool ;
+  semantics "baseForXcodeProjectGeneration.gSemantics" : makefile, xcode_tool ;
+  semantics "XcodeProjectGeneration.gSemantics" : makefile, xcode_tool ;
+  syntax    "projectModelBuilder.gSyntax" : makefile, xcode_tool ;
+  grammar   "projectLL1grammar.gGrammar" : makefile, xcode_tool ;
 
 #--- Main program
-  program "galgas_prgm.gProgram" : makefile ;
+  program "galgas_prgm.gProgram" : makefile, xcode_tool ;
 
 #--- Hand coded sources
-  extern "buildPureBNFgrammar.cpp" : makefile ;
-  extern "cVocabulary.cpp" : makefile ;
-  extern "FIRST_computations.cpp" : makefile ;
-  extern "follow_by_empty_computation.cpp" : makefile ;
-  extern "FOLLOW_computations.cpp" : makefile ;
-  extern "foreach_instructions.cpp" : makefile ;
-  extern "grammarComputations.cpp" : makefile ;
-  extern "LL1_computations.cpp" : makefile ;
-  extern "LR1_computations.cpp" : makefile ;
-  extern "printOriginalGrammar.cpp" : makefile ;
-  extern "SLR_computations.cpp" : makefile ;
-  extern "useful_symbols_computations.cpp" : makefile ;
+  extern "../hand_coded_sources/buildPureBNFgrammar.cpp" : makefile, xcode_tool ;
+  extern "../hand_coded_sources/cVocabulary.cpp" : makefile, xcode_tool ;
+  extern "../hand_coded_sources/follow_by_empty_computation.cpp" : makefile, xcode_tool ;
+  extern "../hand_coded_sources/foreach_instructions.cpp" : makefile, xcode_tool ;
+  extern "../hand_coded_sources/grammarComputations.cpp" : makefile, xcode_tool ;
+  extern "../hand_coded_sources/printOriginalGrammar.cpp" : makefile, xcode_tool ;
+  extern "../hand_coded_sources/useful_symbols_computations.cpp" : makefile, xcode_tool ;
+  extern "../hand_coded_sources/FIRST_computations.cpp" : makefile, xcode_tool ;
+  extern "../hand_coded_sources/FOLLOW_computations.cpp" : makefile, xcode_tool ;
+  extern "../hand_coded_sources/LL1_computations.cpp" : makefile, xcode_tool ;
+  extern "../hand_coded_sources/LR1_computations.cpp" : makefile, xcode_tool ;
+  extern "../hand_coded_sources/SLR_computations.cpp" : makefile, xcode_tool ;
 end project ;
 
 #---------------------------------------------------------------------------*

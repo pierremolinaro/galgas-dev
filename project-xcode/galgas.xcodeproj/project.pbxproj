@@ -182,29 +182,29 @@
 		CF2A87CA058CCE92003EF2F4 /* semantics_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53785057A50E400854C83 /* semantics_parser.cpp */; };
 		CF2A87CB058CCE92003EF2F4 /* semantics_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53787057A50E400854C83 /* semantics_semantics.cpp */; };
 		CF2A87CC058CCEAF003EF2F4 /* assignment_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53792057A514300854C83 /* assignment_instructions.cpp */; };
-		CF2A87CD058CCEB0003EF2F4 /* buildPureBNFgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537C8057A526E00854C83 /* buildPureBNFgrammar.cpp */; };
+		CF2A87CD058CCEB0003EF2F4 /* buildPureBNFgrammarEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537C8057A526E00854C83 /* buildPureBNFgrammarEx.cpp */; };
 		CF2A87CE058CCEB1003EF2F4 /* call_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53793057A514300854C83 /* call_instructions.cpp */; };
 		CF2A87CF058CCEB2003EF2F4 /* class_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53794057A514300854C83 /* class_generation.cpp */; };
-		CF2A87D0058CCEB3003EF2F4 /* cVocabulary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CC057A529300854C83 /* cVocabulary.cpp */; };
-		CF2A87D1058CCEB3003EF2F4 /* empty_strings_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CE057A529300854C83 /* empty_strings_computations.cpp */; };
-		CF2A87D2058CCEB4003EF2F4 /* FIRST_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D0057A529300854C83 /* FIRST_computations.cpp */; };
-		CF2A87D3058CCEB5003EF2F4 /* follow_by_empty_computation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D2057A529300854C83 /* follow_by_empty_computation.cpp */; };
-		CF2A87D4058CCEB6003EF2F4 /* FOLLOW_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D4057A529300854C83 /* FOLLOW_computations.cpp */; };
+		CF2A87D0058CCEB3003EF2F4 /* cVocabularyEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CC057A529300854C83 /* cVocabularyEx.cpp */; };
+		CF2A87D1058CCEB3003EF2F4 /* empty_strings_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CE057A529300854C83 /* empty_strings_computationsEx.cpp */; };
+		CF2A87D2058CCEB4003EF2F4 /* FIRST_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D0057A529300854C83 /* FIRST_computationsEx.cpp */; };
+		CF2A87D3058CCEB5003EF2F4 /* follow_by_empty_computationEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D2057A529300854C83 /* follow_by_empty_computationEx.cpp */; };
+		CF2A87D4058CCEB6003EF2F4 /* FOLLOW_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D4057A529300854C83 /* FOLLOW_computationsEx.cpp */; };
 		CF2A87D5058CCEB7003EF2F4 /* foreach_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5379C057A516000854C83 /* foreach_instructions.cpp */; };
-		CF2A87D7058CCEB8003EF2F4 /* grammarComputations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E0057A52C000854C83 /* grammarComputations.cpp */; };
+		CF2A87D7058CCEB8003EF2F4 /* grammarComputationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E0057A52C000854C83 /* grammarComputationsEx.cpp */; };
 		CF2A87D8058CCEB9003EF2F4 /* if_instruction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5378E057A512A00854C83 /* if_instruction.cpp */; };
 		CF2A87D9058CCEB9003EF2F4 /* list_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5378F057A512A00854C83 /* list_generation.cpp */; };
-		CF2A87DA058CCEBA003EF2F4 /* LL1_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E2057A52C000854C83 /* LL1_computations.cpp */; };
-		CF2A87DB058CCEBB003EF2F4 /* LR1_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E4057A52C000854C83 /* LR1_computations.cpp */; };
+		CF2A87DA058CCEBA003EF2F4 /* LL1_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E2057A52C000854C83 /* LL1_computationsEx.cpp */; };
+		CF2A87DB058CCEBB003EF2F4 /* LR1_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E4057A52C000854C83 /* LR1_computationsEx.cpp */; };
 		CF2A87DC058CCEBD003EF2F4 /* map_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5379D057A516000854C83 /* map_generation.cpp */; };
 		CF2A87DE058CCECC003EF2F4 /* parser_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537B8057A51F700854C83 /* parser_generation.cpp */; };
 		CF2A87DF058CCECD003EF2F4 /* parser_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537BA057A51F700854C83 /* parser_instructions.cpp */; };
 		CF2A87E0058CCECE003EF2F4 /* prgm_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537FC057A532800854C83 /* prgm_generation.cpp */; };
-		CF2A87E2058CCED0003EF2F4 /* printOriginalGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E6057A52C000854C83 /* printOriginalGrammar.cpp */; };
+		CF2A87E2058CCED0003EF2F4 /* printOriginalGrammarEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E6057A52C000854C83 /* printOriginalGrammarEx.cpp */; };
 		CF2A87E4058CCED2003EF2F4 /* semantics_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537A2057A518B00854C83 /* semantics_generation.cpp */; };
 		CF2A87E5058CCED5003EF2F4 /* semantics_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537A4057A518B00854C83 /* semantics_instructions.cpp */; };
-		CF2A87E6058CCED6003EF2F4 /* SLR_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E8057A52C000854C83 /* SLR_computations.cpp */; };
-		CF2A87E7058CCED7003EF2F4 /* useful_symbols_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF42C18B057A86FE0097F52B /* useful_symbols_computations.cpp */; };
+		CF2A87E6058CCED6003EF2F4 /* SLR_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E8057A52C000854C83 /* SLR_computationsEx.cpp */; };
+		CF2A87E7058CCED7003EF2F4 /* useful_symbols_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF42C18B057A86FE0097F52B /* useful_symbols_computationsEx.cpp */; };
 		CF2A8842058CCF43003EF2F4 /* GGS_bool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53881057A558F00854C83 /* GGS_bool.cpp */; };
 		CF2A8844058CCF44003EF2F4 /* GGS_char.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53883057A558F00854C83 /* GGS_char.cpp */; };
 		CF2A8848058CCF4A003EF2F4 /* GGS_lbool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53889057A558F00854C83 /* GGS_lbool.cpp */; };
@@ -639,29 +639,29 @@
 		CF6DF13109E3F23700506859 /* semantics_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53785057A50E400854C83 /* semantics_parser.cpp */; };
 		CF6DF13209E3F23700506859 /* semantics_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53787057A50E400854C83 /* semantics_semantics.cpp */; };
 		CF6DF13309E3F23700506859 /* assignment_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53792057A514300854C83 /* assignment_instructions.cpp */; };
-		CF6DF13409E3F23700506859 /* buildPureBNFgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537C8057A526E00854C83 /* buildPureBNFgrammar.cpp */; };
+		CF6DF13409E3F23700506859 /* buildPureBNFgrammarEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537C8057A526E00854C83 /* buildPureBNFgrammarEx.cpp */; };
 		CF6DF13509E3F23700506859 /* call_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53793057A514300854C83 /* call_instructions.cpp */; };
 		CF6DF13609E3F23700506859 /* class_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53794057A514300854C83 /* class_generation.cpp */; };
-		CF6DF13709E3F23700506859 /* cVocabulary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CC057A529300854C83 /* cVocabulary.cpp */; };
-		CF6DF13809E3F23700506859 /* empty_strings_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CE057A529300854C83 /* empty_strings_computations.cpp */; };
-		CF6DF13909E3F23700506859 /* FIRST_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D0057A529300854C83 /* FIRST_computations.cpp */; };
-		CF6DF13A09E3F23700506859 /* follow_by_empty_computation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D2057A529300854C83 /* follow_by_empty_computation.cpp */; };
-		CF6DF13B09E3F23700506859 /* FOLLOW_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D4057A529300854C83 /* FOLLOW_computations.cpp */; };
+		CF6DF13709E3F23700506859 /* cVocabularyEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CC057A529300854C83 /* cVocabularyEx.cpp */; };
+		CF6DF13809E3F23700506859 /* empty_strings_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CE057A529300854C83 /* empty_strings_computationsEx.cpp */; };
+		CF6DF13909E3F23700506859 /* FIRST_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D0057A529300854C83 /* FIRST_computationsEx.cpp */; };
+		CF6DF13A09E3F23700506859 /* follow_by_empty_computationEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D2057A529300854C83 /* follow_by_empty_computationEx.cpp */; };
+		CF6DF13B09E3F23700506859 /* FOLLOW_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D4057A529300854C83 /* FOLLOW_computationsEx.cpp */; };
 		CF6DF13C09E3F23700506859 /* foreach_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5379C057A516000854C83 /* foreach_instructions.cpp */; };
-		CF6DF13D09E3F23700506859 /* grammarComputations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E0057A52C000854C83 /* grammarComputations.cpp */; };
+		CF6DF13D09E3F23700506859 /* grammarComputationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E0057A52C000854C83 /* grammarComputationsEx.cpp */; };
 		CF6DF13E09E3F23700506859 /* if_instruction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5378E057A512A00854C83 /* if_instruction.cpp */; };
 		CF6DF13F09E3F23700506859 /* list_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5378F057A512A00854C83 /* list_generation.cpp */; };
-		CF6DF14009E3F23700506859 /* LL1_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E2057A52C000854C83 /* LL1_computations.cpp */; };
-		CF6DF14109E3F23700506859 /* LR1_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E4057A52C000854C83 /* LR1_computations.cpp */; };
+		CF6DF14009E3F23700506859 /* LL1_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E2057A52C000854C83 /* LL1_computationsEx.cpp */; };
+		CF6DF14109E3F23700506859 /* LR1_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E4057A52C000854C83 /* LR1_computationsEx.cpp */; };
 		CF6DF14209E3F23700506859 /* map_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5379D057A516000854C83 /* map_generation.cpp */; };
 		CF6DF14309E3F23700506859 /* parser_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537B8057A51F700854C83 /* parser_generation.cpp */; };
 		CF6DF14409E3F23700506859 /* parser_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537BA057A51F700854C83 /* parser_instructions.cpp */; };
 		CF6DF14509E3F23700506859 /* prgm_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537FC057A532800854C83 /* prgm_generation.cpp */; };
-		CF6DF14709E3F23700506859 /* printOriginalGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E6057A52C000854C83 /* printOriginalGrammar.cpp */; };
+		CF6DF14709E3F23700506859 /* printOriginalGrammarEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E6057A52C000854C83 /* printOriginalGrammarEx.cpp */; };
 		CF6DF14909E3F23700506859 /* semantics_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537A2057A518B00854C83 /* semantics_generation.cpp */; };
 		CF6DF14A09E3F23700506859 /* semantics_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537A4057A518B00854C83 /* semantics_instructions.cpp */; };
-		CF6DF14B09E3F23700506859 /* SLR_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E8057A52C000854C83 /* SLR_computations.cpp */; };
-		CF6DF14C09E3F23700506859 /* useful_symbols_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF42C18B057A86FE0097F52B /* useful_symbols_computations.cpp */; };
+		CF6DF14B09E3F23700506859 /* SLR_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E8057A52C000854C83 /* SLR_computationsEx.cpp */; };
+		CF6DF14C09E3F23700506859 /* useful_symbols_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF42C18B057A86FE0097F52B /* useful_symbols_computationsEx.cpp */; };
 		CF6DF15009E3F23700506859 /* GGS_bool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53881057A558F00854C83 /* GGS_bool.cpp */; };
 		CF6DF15109E3F23700506859 /* GGS_char.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53883057A558F00854C83 /* GGS_char.cpp */; };
 		CF6DF15209E3F23700506859 /* GGS_lbool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53889057A558F00854C83 /* GGS_lbool.cpp */; };
@@ -709,29 +709,29 @@
 		CF6DF1A909E3F30400506859 /* scanner_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5376F057A506700854C83 /* scanner_semantics.cpp */; };
 		CF6DF1AA09E3F30400506859 /* parser_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537AF057A51CB00854C83 /* parser_semantics.cpp */; };
 		CF6DF1AC09E3F30400506859 /* assignment_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53792057A514300854C83 /* assignment_instructions.cpp */; };
-		CF6DF1AD09E3F30400506859 /* buildPureBNFgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537C8057A526E00854C83 /* buildPureBNFgrammar.cpp */; };
+		CF6DF1AD09E3F30400506859 /* buildPureBNFgrammarEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537C8057A526E00854C83 /* buildPureBNFgrammarEx.cpp */; };
 		CF6DF1AE09E3F30400506859 /* call_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53793057A514300854C83 /* call_instructions.cpp */; };
 		CF6DF1AF09E3F30400506859 /* class_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53794057A514300854C83 /* class_generation.cpp */; };
-		CF6DF1B009E3F30400506859 /* cVocabulary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CC057A529300854C83 /* cVocabulary.cpp */; };
-		CF6DF1B109E3F30400506859 /* empty_strings_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CE057A529300854C83 /* empty_strings_computations.cpp */; };
-		CF6DF1B209E3F30400506859 /* FIRST_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D0057A529300854C83 /* FIRST_computations.cpp */; };
-		CF6DF1B309E3F30400506859 /* follow_by_empty_computation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D2057A529300854C83 /* follow_by_empty_computation.cpp */; };
-		CF6DF1B409E3F30400506859 /* FOLLOW_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D4057A529300854C83 /* FOLLOW_computations.cpp */; };
+		CF6DF1B009E3F30400506859 /* cVocabularyEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CC057A529300854C83 /* cVocabularyEx.cpp */; };
+		CF6DF1B109E3F30400506859 /* empty_strings_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CE057A529300854C83 /* empty_strings_computationsEx.cpp */; };
+		CF6DF1B209E3F30400506859 /* FIRST_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D0057A529300854C83 /* FIRST_computationsEx.cpp */; };
+		CF6DF1B309E3F30400506859 /* follow_by_empty_computationEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D2057A529300854C83 /* follow_by_empty_computationEx.cpp */; };
+		CF6DF1B409E3F30400506859 /* FOLLOW_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D4057A529300854C83 /* FOLLOW_computationsEx.cpp */; };
 		CF6DF1B509E3F30400506859 /* foreach_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5379C057A516000854C83 /* foreach_instructions.cpp */; };
-		CF6DF1B609E3F30400506859 /* grammarComputations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E0057A52C000854C83 /* grammarComputations.cpp */; };
+		CF6DF1B609E3F30400506859 /* grammarComputationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E0057A52C000854C83 /* grammarComputationsEx.cpp */; };
 		CF6DF1B709E3F30400506859 /* if_instruction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5378E057A512A00854C83 /* if_instruction.cpp */; };
 		CF6DF1B809E3F30400506859 /* list_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5378F057A512A00854C83 /* list_generation.cpp */; };
-		CF6DF1B909E3F30400506859 /* LL1_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E2057A52C000854C83 /* LL1_computations.cpp */; };
-		CF6DF1BA09E3F30400506859 /* LR1_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E4057A52C000854C83 /* LR1_computations.cpp */; };
+		CF6DF1B909E3F30400506859 /* LL1_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E2057A52C000854C83 /* LL1_computationsEx.cpp */; };
+		CF6DF1BA09E3F30400506859 /* LR1_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E4057A52C000854C83 /* LR1_computationsEx.cpp */; };
 		CF6DF1BB09E3F30400506859 /* map_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5379D057A516000854C83 /* map_generation.cpp */; };
 		CF6DF1BC09E3F30400506859 /* parser_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537B8057A51F700854C83 /* parser_generation.cpp */; };
 		CF6DF1BD09E3F30400506859 /* parser_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537BA057A51F700854C83 /* parser_instructions.cpp */; };
 		CF6DF1BE09E3F30400506859 /* prgm_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537FC057A532800854C83 /* prgm_generation.cpp */; };
-		CF6DF1C009E3F30400506859 /* printOriginalGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E6057A52C000854C83 /* printOriginalGrammar.cpp */; };
+		CF6DF1C009E3F30400506859 /* printOriginalGrammarEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E6057A52C000854C83 /* printOriginalGrammarEx.cpp */; };
 		CF6DF1C209E3F30400506859 /* semantics_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537A2057A518B00854C83 /* semantics_generation.cpp */; };
 		CF6DF1C309E3F30400506859 /* semantics_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537A4057A518B00854C83 /* semantics_instructions.cpp */; };
-		CF6DF1C409E3F30400506859 /* SLR_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E8057A52C000854C83 /* SLR_computations.cpp */; };
-		CF6DF1C509E3F30400506859 /* useful_symbols_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF42C18B057A86FE0097F52B /* useful_symbols_computations.cpp */; };
+		CF6DF1C409E3F30400506859 /* SLR_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E8057A52C000854C83 /* SLR_computationsEx.cpp */; };
+		CF6DF1C509E3F30400506859 /* useful_symbols_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF42C18B057A86FE0097F52B /* useful_symbols_computationsEx.cpp */; };
 		CF6DF1CB09E3F30400506859 /* GGS_bool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53881057A558F00854C83 /* GGS_bool.cpp */; };
 		CF6DF1CC09E3F30400506859 /* GGS_char.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53883057A558F00854C83 /* GGS_char.cpp */; };
 		CF6DF1CD09E3F30400506859 /* GGS_lbool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53889057A558F00854C83 /* GGS_lbool.cpp */; };
@@ -804,29 +804,29 @@
 		CF7A1441058CFFDB007126C1 /* scanner_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5376F057A506700854C83 /* scanner_semantics.cpp */; };
 		CF7A1442058CFFE2007126C1 /* parser_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537AF057A51CB00854C83 /* parser_semantics.cpp */; };
 		CF7A1444058CFFF0007126C1 /* assignment_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53792057A514300854C83 /* assignment_instructions.cpp */; };
-		CF7A1445058CFFFE007126C1 /* buildPureBNFgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537C8057A526E00854C83 /* buildPureBNFgrammar.cpp */; };
+		CF7A1445058CFFFE007126C1 /* buildPureBNFgrammarEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537C8057A526E00854C83 /* buildPureBNFgrammarEx.cpp */; };
 		CF7A1446058D0000007126C1 /* call_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53793057A514300854C83 /* call_instructions.cpp */; };
 		CF7A1447058D0002007126C1 /* class_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53794057A514300854C83 /* class_generation.cpp */; };
-		CF7A1448058D0005007126C1 /* cVocabulary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CC057A529300854C83 /* cVocabulary.cpp */; };
-		CF7A1449058D0008007126C1 /* empty_strings_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CE057A529300854C83 /* empty_strings_computations.cpp */; };
-		CF7A144A058D000B007126C1 /* FIRST_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D0057A529300854C83 /* FIRST_computations.cpp */; };
-		CF7A144B058D000E007126C1 /* follow_by_empty_computation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D2057A529300854C83 /* follow_by_empty_computation.cpp */; };
-		CF7A144C058D0011007126C1 /* FOLLOW_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D4057A529300854C83 /* FOLLOW_computations.cpp */; };
+		CF7A1448058D0005007126C1 /* cVocabularyEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CC057A529300854C83 /* cVocabularyEx.cpp */; };
+		CF7A1449058D0008007126C1 /* empty_strings_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CE057A529300854C83 /* empty_strings_computationsEx.cpp */; };
+		CF7A144A058D000B007126C1 /* FIRST_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D0057A529300854C83 /* FIRST_computationsEx.cpp */; };
+		CF7A144B058D000E007126C1 /* follow_by_empty_computationEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D2057A529300854C83 /* follow_by_empty_computationEx.cpp */; };
+		CF7A144C058D0011007126C1 /* FOLLOW_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D4057A529300854C83 /* FOLLOW_computationsEx.cpp */; };
 		CF7A144D058D0014007126C1 /* foreach_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5379C057A516000854C83 /* foreach_instructions.cpp */; };
-		CF7A144F058D001A007126C1 /* grammarComputations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E0057A52C000854C83 /* grammarComputations.cpp */; };
+		CF7A144F058D001A007126C1 /* grammarComputationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E0057A52C000854C83 /* grammarComputationsEx.cpp */; };
 		CF7A1450058D001D007126C1 /* if_instruction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5378E057A512A00854C83 /* if_instruction.cpp */; };
 		CF7A1451058D001F007126C1 /* list_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5378F057A512A00854C83 /* list_generation.cpp */; };
-		CF7A1452058D0024007126C1 /* LL1_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E2057A52C000854C83 /* LL1_computations.cpp */; };
-		CF7A1453058D0026007126C1 /* LR1_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E4057A52C000854C83 /* LR1_computations.cpp */; };
+		CF7A1452058D0024007126C1 /* LL1_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E2057A52C000854C83 /* LL1_computationsEx.cpp */; };
+		CF7A1453058D0026007126C1 /* LR1_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E4057A52C000854C83 /* LR1_computationsEx.cpp */; };
 		CF7A1454058D0029007126C1 /* map_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5379D057A516000854C83 /* map_generation.cpp */; };
 		CF7A1456058D002E007126C1 /* parser_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537B8057A51F700854C83 /* parser_generation.cpp */; };
 		CF7A1457058D0030007126C1 /* parser_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537BA057A51F700854C83 /* parser_instructions.cpp */; };
 		CF7A1458058D0035007126C1 /* prgm_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537FC057A532800854C83 /* prgm_generation.cpp */; };
-		CF7A145A058D003B007126C1 /* printOriginalGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E6057A52C000854C83 /* printOriginalGrammar.cpp */; };
+		CF7A145A058D003B007126C1 /* printOriginalGrammarEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E6057A52C000854C83 /* printOriginalGrammarEx.cpp */; };
 		CF7A145C058D0043007126C1 /* semantics_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537A2057A518B00854C83 /* semantics_generation.cpp */; };
 		CF7A145D058D004D007126C1 /* semantics_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537A4057A518B00854C83 /* semantics_instructions.cpp */; };
-		CF7A145E058D0051007126C1 /* SLR_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E8057A52C000854C83 /* SLR_computations.cpp */; };
-		CF7A145F058D0054007126C1 /* useful_symbols_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF42C18B057A86FE0097F52B /* useful_symbols_computations.cpp */; };
+		CF7A145E058D0051007126C1 /* SLR_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E8057A52C000854C83 /* SLR_computationsEx.cpp */; };
+		CF7A145F058D0054007126C1 /* useful_symbols_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF42C18B057A86FE0097F52B /* useful_symbols_computationsEx.cpp */; };
 		CF7A148E058D010A007126C1 /* GGS_bool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53881057A558F00854C83 /* GGS_bool.cpp */; };
 		CF7A1490058D010C007126C1 /* GGS_char.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53883057A558F00854C83 /* GGS_char.cpp */; };
 		CF7A1494058D0110007126C1 /* GGS_lbool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53889057A558F00854C83 /* GGS_lbool.cpp */; };
@@ -1232,12 +1232,12 @@
 		CFD3E86A0FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD3E85A0FA0C0F800C4995E /* unicode_string_routines.cpp */; };
 		CFD3E86B0FA0C0F800C4995E /* C_String.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD3E8520FA0C0F800C4995E /* C_String.cpp */; };
 		CFD3E86D0FA0C0F800C4995E /* unicode_string_routines.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD3E85A0FA0C0F800C4995E /* unicode_string_routines.cpp */; };
-		CFD578D60D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD578D40D50EE6400D3E2C5 /* cDecisionTableElement.cpp */; };
-		CFD578DC0D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD578D40D50EE6400D3E2C5 /* cDecisionTableElement.cpp */; };
-		CFD578E00D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD578D40D50EE6400D3E2C5 /* cDecisionTableElement.cpp */; };
-		CFD578E20D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD578D40D50EE6400D3E2C5 /* cDecisionTableElement.cpp */; };
-		CFD578E40D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD578D40D50EE6400D3E2C5 /* cDecisionTableElement.cpp */; };
-		CFD578E80D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD578D40D50EE6400D3E2C5 /* cDecisionTableElement.cpp */; };
+		CFD578D60D50EE6400D3E2C5 /* cDecisionTableElementEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD578D40D50EE6400D3E2C5 /* cDecisionTableElementEx.cpp */; };
+		CFD578DC0D50EE6400D3E2C5 /* cDecisionTableElementEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD578D40D50EE6400D3E2C5 /* cDecisionTableElementEx.cpp */; };
+		CFD578E00D50EE6400D3E2C5 /* cDecisionTableElementEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD578D40D50EE6400D3E2C5 /* cDecisionTableElementEx.cpp */; };
+		CFD578E20D50EE6400D3E2C5 /* cDecisionTableElementEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD578D40D50EE6400D3E2C5 /* cDecisionTableElementEx.cpp */; };
+		CFD578E40D50EE6400D3E2C5 /* cDecisionTableElementEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD578D40D50EE6400D3E2C5 /* cDecisionTableElementEx.cpp */; };
+		CFD578E80D50EE6400D3E2C5 /* cDecisionTableElementEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD578D40D50EE6400D3E2C5 /* cDecisionTableElementEx.cpp */; };
 		CFD75C050D733E3100AC867C /* extern_type_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD75C040D733E3100AC867C /* extern_type_generation.cpp */; };
 		CFD75C060D733E3100AC867C /* extern_type_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD75C040D733E3100AC867C /* extern_type_generation.cpp */; };
 		CFD75C080D733E3100AC867C /* extern_type_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD75C040D733E3100AC867C /* extern_type_generation.cpp */; };
@@ -1318,29 +1318,29 @@
 		CFEDF2C40C2D161F0038713A /* semantics_parser.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53785057A50E400854C83 /* semantics_parser.cpp */; };
 		CFEDF2C50C2D161F0038713A /* semantics_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53787057A50E400854C83 /* semantics_semantics.cpp */; };
 		CFEDF2C60C2D161F0038713A /* assignment_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53792057A514300854C83 /* assignment_instructions.cpp */; };
-		CFEDF2C70C2D161F0038713A /* buildPureBNFgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537C8057A526E00854C83 /* buildPureBNFgrammar.cpp */; };
+		CFEDF2C70C2D161F0038713A /* buildPureBNFgrammarEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537C8057A526E00854C83 /* buildPureBNFgrammarEx.cpp */; };
 		CFEDF2C80C2D161F0038713A /* call_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53793057A514300854C83 /* call_instructions.cpp */; };
 		CFEDF2C90C2D161F0038713A /* class_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53794057A514300854C83 /* class_generation.cpp */; };
-		CFEDF2CA0C2D161F0038713A /* cVocabulary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CC057A529300854C83 /* cVocabulary.cpp */; };
-		CFEDF2CB0C2D161F0038713A /* empty_strings_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CE057A529300854C83 /* empty_strings_computations.cpp */; };
-		CFEDF2CC0C2D161F0038713A /* FIRST_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D0057A529300854C83 /* FIRST_computations.cpp */; };
-		CFEDF2CD0C2D161F0038713A /* follow_by_empty_computation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D2057A529300854C83 /* follow_by_empty_computation.cpp */; };
-		CFEDF2CE0C2D161F0038713A /* FOLLOW_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D4057A529300854C83 /* FOLLOW_computations.cpp */; };
+		CFEDF2CA0C2D161F0038713A /* cVocabularyEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CC057A529300854C83 /* cVocabularyEx.cpp */; };
+		CFEDF2CB0C2D161F0038713A /* empty_strings_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CE057A529300854C83 /* empty_strings_computationsEx.cpp */; };
+		CFEDF2CC0C2D161F0038713A /* FIRST_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D0057A529300854C83 /* FIRST_computationsEx.cpp */; };
+		CFEDF2CD0C2D161F0038713A /* follow_by_empty_computationEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D2057A529300854C83 /* follow_by_empty_computationEx.cpp */; };
+		CFEDF2CE0C2D161F0038713A /* FOLLOW_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D4057A529300854C83 /* FOLLOW_computationsEx.cpp */; };
 		CFEDF2CF0C2D161F0038713A /* foreach_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5379C057A516000854C83 /* foreach_instructions.cpp */; };
-		CFEDF2D00C2D161F0038713A /* grammarComputations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E0057A52C000854C83 /* grammarComputations.cpp */; };
+		CFEDF2D00C2D161F0038713A /* grammarComputationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E0057A52C000854C83 /* grammarComputationsEx.cpp */; };
 		CFEDF2D10C2D161F0038713A /* if_instruction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5378E057A512A00854C83 /* if_instruction.cpp */; };
 		CFEDF2D20C2D161F0038713A /* list_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5378F057A512A00854C83 /* list_generation.cpp */; };
-		CFEDF2D30C2D161F0038713A /* LL1_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E2057A52C000854C83 /* LL1_computations.cpp */; };
-		CFEDF2D40C2D161F0038713A /* LR1_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E4057A52C000854C83 /* LR1_computations.cpp */; };
+		CFEDF2D30C2D161F0038713A /* LL1_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E2057A52C000854C83 /* LL1_computationsEx.cpp */; };
+		CFEDF2D40C2D161F0038713A /* LR1_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E4057A52C000854C83 /* LR1_computationsEx.cpp */; };
 		CFEDF2D50C2D161F0038713A /* map_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5379D057A516000854C83 /* map_generation.cpp */; };
 		CFEDF2D60C2D161F0038713A /* parser_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537B8057A51F700854C83 /* parser_generation.cpp */; };
 		CFEDF2D70C2D161F0038713A /* parser_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537BA057A51F700854C83 /* parser_instructions.cpp */; };
 		CFEDF2D80C2D161F0038713A /* prgm_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537FC057A532800854C83 /* prgm_generation.cpp */; };
-		CFEDF2D90C2D161F0038713A /* printOriginalGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E6057A52C000854C83 /* printOriginalGrammar.cpp */; };
+		CFEDF2D90C2D161F0038713A /* printOriginalGrammarEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E6057A52C000854C83 /* printOriginalGrammarEx.cpp */; };
 		CFEDF2DB0C2D161F0038713A /* semantics_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537A2057A518B00854C83 /* semantics_generation.cpp */; };
 		CFEDF2DC0C2D161F0038713A /* semantics_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537A4057A518B00854C83 /* semantics_instructions.cpp */; };
-		CFEDF2DD0C2D161F0038713A /* SLR_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E8057A52C000854C83 /* SLR_computations.cpp */; };
-		CFEDF2DE0C2D161F0038713A /* useful_symbols_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF42C18B057A86FE0097F52B /* useful_symbols_computations.cpp */; };
+		CFEDF2DD0C2D161F0038713A /* SLR_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E8057A52C000854C83 /* SLR_computationsEx.cpp */; };
+		CFEDF2DE0C2D161F0038713A /* useful_symbols_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF42C18B057A86FE0097F52B /* useful_symbols_computationsEx.cpp */; };
 		CFEDF2DF0C2D161F0038713A /* GGS_bool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53881057A558F00854C83 /* GGS_bool.cpp */; };
 		CFEDF2E00C2D161F0038713A /* GGS_char.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53883057A558F00854C83 /* GGS_char.cpp */; };
 		CFEDF2E10C2D161F0038713A /* GGS_lbool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53889057A558F00854C83 /* GGS_lbool.cpp */; };
@@ -1414,29 +1414,29 @@
 		CFEDF4240C2D16610038713A /* scanner_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5376F057A506700854C83 /* scanner_semantics.cpp */; };
 		CFEDF4250C2D16610038713A /* parser_semantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537AF057A51CB00854C83 /* parser_semantics.cpp */; };
 		CFEDF4260C2D16610038713A /* assignment_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53792057A514300854C83 /* assignment_instructions.cpp */; };
-		CFEDF4270C2D16610038713A /* buildPureBNFgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537C8057A526E00854C83 /* buildPureBNFgrammar.cpp */; };
+		CFEDF4270C2D16610038713A /* buildPureBNFgrammarEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537C8057A526E00854C83 /* buildPureBNFgrammarEx.cpp */; };
 		CFEDF4280C2D16610038713A /* call_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53793057A514300854C83 /* call_instructions.cpp */; };
 		CFEDF4290C2D16610038713A /* class_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53794057A514300854C83 /* class_generation.cpp */; };
-		CFEDF42A0C2D16610038713A /* cVocabulary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CC057A529300854C83 /* cVocabulary.cpp */; };
-		CFEDF42B0C2D16610038713A /* empty_strings_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CE057A529300854C83 /* empty_strings_computations.cpp */; };
-		CFEDF42C0C2D16610038713A /* FIRST_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D0057A529300854C83 /* FIRST_computations.cpp */; };
-		CFEDF42D0C2D16610038713A /* follow_by_empty_computation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D2057A529300854C83 /* follow_by_empty_computation.cpp */; };
-		CFEDF42E0C2D16610038713A /* FOLLOW_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D4057A529300854C83 /* FOLLOW_computations.cpp */; };
+		CFEDF42A0C2D16610038713A /* cVocabularyEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CC057A529300854C83 /* cVocabularyEx.cpp */; };
+		CFEDF42B0C2D16610038713A /* empty_strings_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537CE057A529300854C83 /* empty_strings_computationsEx.cpp */; };
+		CFEDF42C0C2D16610038713A /* FIRST_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D0057A529300854C83 /* FIRST_computationsEx.cpp */; };
+		CFEDF42D0C2D16610038713A /* follow_by_empty_computationEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D2057A529300854C83 /* follow_by_empty_computationEx.cpp */; };
+		CFEDF42E0C2D16610038713A /* FOLLOW_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537D4057A529300854C83 /* FOLLOW_computationsEx.cpp */; };
 		CFEDF42F0C2D16610038713A /* foreach_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5379C057A516000854C83 /* foreach_instructions.cpp */; };
-		CFEDF4300C2D16610038713A /* grammarComputations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E0057A52C000854C83 /* grammarComputations.cpp */; };
+		CFEDF4300C2D16610038713A /* grammarComputationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E0057A52C000854C83 /* grammarComputationsEx.cpp */; };
 		CFEDF4310C2D16610038713A /* if_instruction.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5378E057A512A00854C83 /* if_instruction.cpp */; };
 		CFEDF4320C2D16610038713A /* list_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5378F057A512A00854C83 /* list_generation.cpp */; };
-		CFEDF4330C2D16610038713A /* LL1_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E2057A52C000854C83 /* LL1_computations.cpp */; };
-		CFEDF4340C2D16610038713A /* LR1_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E4057A52C000854C83 /* LR1_computations.cpp */; };
+		CFEDF4330C2D16610038713A /* LL1_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E2057A52C000854C83 /* LL1_computationsEx.cpp */; };
+		CFEDF4340C2D16610038713A /* LR1_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E4057A52C000854C83 /* LR1_computationsEx.cpp */; };
 		CFEDF4350C2D16610038713A /* map_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF5379D057A516000854C83 /* map_generation.cpp */; };
 		CFEDF4360C2D16610038713A /* parser_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537B8057A51F700854C83 /* parser_generation.cpp */; };
 		CFEDF4370C2D16610038713A /* parser_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537BA057A51F700854C83 /* parser_instructions.cpp */; };
 		CFEDF4380C2D16610038713A /* prgm_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537FC057A532800854C83 /* prgm_generation.cpp */; };
-		CFEDF4390C2D16610038713A /* printOriginalGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E6057A52C000854C83 /* printOriginalGrammar.cpp */; };
+		CFEDF4390C2D16610038713A /* printOriginalGrammarEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E6057A52C000854C83 /* printOriginalGrammarEx.cpp */; };
 		CFEDF43B0C2D16610038713A /* semantics_generation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537A2057A518B00854C83 /* semantics_generation.cpp */; };
 		CFEDF43C0C2D16610038713A /* semantics_instructions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537A4057A518B00854C83 /* semantics_instructions.cpp */; };
-		CFEDF43D0C2D16610038713A /* SLR_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E8057A52C000854C83 /* SLR_computations.cpp */; };
-		CFEDF43E0C2D16610038713A /* useful_symbols_computations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF42C18B057A86FE0097F52B /* useful_symbols_computations.cpp */; };
+		CFEDF43D0C2D16610038713A /* SLR_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF537E8057A52C000854C83 /* SLR_computationsEx.cpp */; };
+		CFEDF43E0C2D16610038713A /* useful_symbols_computationsEx.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF42C18B057A86FE0097F52B /* useful_symbols_computationsEx.cpp */; };
 		CFEDF43F0C2D16610038713A /* GGS_bool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53881057A558F00854C83 /* GGS_bool.cpp */; };
 		CFEDF4400C2D16610038713A /* GGS_char.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53883057A558F00854C83 /* GGS_char.cpp */; };
 		CFEDF4410C2D16610038713A /* GGS_lbool.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF53889057A558F00854C83 /* GGS_lbool.cpp */; };
@@ -1820,7 +1820,7 @@
 		CF3FF0CA05877B62000D2F8C /* GGS_string.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = GGS_string.h; sourceTree = "<group>"; };
 		CF3FF0CB05877B62000D2F8C /* GGS_uint.h */ = {isa = PBXFileReference; fileEncoding = 30; lastKnownFileType = sourcecode.c.h; path = GGS_uint.h; sourceTree = "<group>"; };
 		CF41F6650912856100B3F397 /* PP_GalgasPrefix.pch */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PP_GalgasPrefix.pch; sourceTree = "<group>"; };
-		CF42C18B057A86FE0097F52B /* useful_symbols_computations.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = useful_symbols_computations.cpp; sourceTree = "<group>"; };
+		CF42C18B057A86FE0097F52B /* useful_symbols_computationsEx.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = useful_symbols_computationsEx.cpp; sourceTree = "<group>"; };
 		CF4397F40ADFE16D0085F47C /* PMCancelButtonForPanel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PMCancelButtonForPanel.h; sourceTree = "<group>"; };
 		CF4397F50ADFE16D0085F47C /* PMCancelButtonForPanel.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = PMCancelButtonForPanel.m; sourceTree = "<group>"; };
 		CF4397F60ADFE16D0085F47C /* PMOkButtonForPanel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PMOkButtonForPanel.h; sourceTree = "<group>"; };
@@ -2269,16 +2269,16 @@
 		CFA3131609FD3B95006B55E7 /* cGalgasVariablesMap.hh */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.h; path = cGalgasVariablesMap.hh; sourceTree = "<group>"; };
 		CFA3131709FD3B95006B55E7 /* cTableMethodesAimplementer.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = cTableMethodesAimplementer.h; sourceTree = "<group>"; };
 		CFA3131809FD3B95006B55E7 /* cTableMethodesAimplementer.hh */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.h; path = cTableMethodesAimplementer.hh; sourceTree = "<group>"; };
-		CFA3134D09FD3ECB006B55E7 /* buildPureBNFgrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = buildPureBNFgrammar.h; sourceTree = "<group>"; };
-		CFA3134E09FD3ECB006B55E7 /* cPureBNFproductionsList.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = cPureBNFproductionsList.h; sourceTree = "<group>"; };
-		CFA3134F09FD3ECB006B55E7 /* cVocabulary.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = cVocabulary.h; sourceTree = "<group>"; };
-		CFA3135009FD3ECB006B55E7 /* empty_strings_computations.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = empty_strings_computations.h; sourceTree = "<group>"; };
-		CFA3135109FD3ECB006B55E7 /* FIRST_computations.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = FIRST_computations.h; sourceTree = "<group>"; };
-		CFA3135209FD3ECB006B55E7 /* follow_by_empty_computation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = follow_by_empty_computation.h; sourceTree = "<group>"; };
-		CFA3135309FD3ECB006B55E7 /* FOLLOW_computations.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = FOLLOW_computations.h; sourceTree = "<group>"; };
-		CFA3135409FD3ECB006B55E7 /* useful_symbols_computations.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = useful_symbols_computations.h; sourceTree = "<group>"; };
+		CFA3134D09FD3ECB006B55E7 /* buildPureBNFgrammarEx.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = buildPureBNFgrammarEx.h; sourceTree = "<group>"; };
+		CFA3134E09FD3ECB006B55E7 /* cPureBNFproductionsListEx.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = cPureBNFproductionsListEx.h; sourceTree = "<group>"; };
+		CFA3134F09FD3ECB006B55E7 /* cVocabularyEx.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = cVocabularyEx.h; sourceTree = "<group>"; };
+		CFA3135009FD3ECB006B55E7 /* empty_strings_computationsEx.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = empty_strings_computationsEx.h; sourceTree = "<group>"; };
+		CFA3135109FD3ECB006B55E7 /* FIRST_computationsEx.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = FIRST_computationsEx.h; sourceTree = "<group>"; };
+		CFA3135209FD3ECB006B55E7 /* follow_by_empty_computationEx.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = follow_by_empty_computationEx.h; sourceTree = "<group>"; };
+		CFA3135309FD3ECB006B55E7 /* FOLLOW_computationsEx.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = FOLLOW_computationsEx.h; sourceTree = "<group>"; };
+		CFA3135409FD3ECB006B55E7 /* useful_symbols_computationsEx.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = useful_symbols_computationsEx.h; sourceTree = "<group>"; };
 		CFA3139509FD3EDA006B55E7 /* parser_generation.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = parser_generation.h; sourceTree = "<group>"; };
-		CFA3139E09FD3EE9006B55E7 /* printOriginalGrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = printOriginalGrammar.h; sourceTree = "<group>"; };
+		CFA3139E09FD3EE9006B55E7 /* printOriginalGrammarEx.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = printOriginalGrammarEx.h; sourceTree = "<group>"; };
 		CFA313B109FD3F0A006B55E7 /* semantics_instructions.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semantics_instructions.h; sourceTree = "<group>"; };
 		CFA4E7CC12749BF300C9AF35 /* include_templateInstructionSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_templateInstructionSwitch.h; sourceTree = "<group>"; };
 		CFA4E7F81274AD9400C9AF35 /* templateTypesForAST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = templateTypesForAST.cpp; sourceTree = "<group>"; };
@@ -2376,15 +2376,15 @@
 		CFD3E8570FA0C0F800C4995E /* string_encodings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = string_encodings.h; sourceTree = "<group>"; };
 		CFD3E85A0FA0C0F800C4995E /* unicode_string_routines.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = unicode_string_routines.cpp; sourceTree = "<group>"; };
 		CFD3E85B0FA0C0F800C4995E /* unicode_string_routines.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unicode_string_routines.h; sourceTree = "<group>"; };
-		CFD578D30D50EE6400D3E2C5 /* cDecisionTableElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cDecisionTableElement.h; sourceTree = "<group>"; };
-		CFD578D40D50EE6400D3E2C5 /* cDecisionTableElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cDecisionTableElement.cpp; sourceTree = "<group>"; };
+		CFD578D30D50EE6400D3E2C5 /* cDecisionTableElementEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cDecisionTableElementEx.h; sourceTree = "<group>"; };
+		CFD578D40D50EE6400D3E2C5 /* cDecisionTableElementEx.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cDecisionTableElementEx.cpp; sourceTree = "<group>"; };
 		CFD6CF110851A0B90000FA6E /* galgas_LL1_grammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = galgas_LL1_grammar.h; sourceTree = "<group>"; };
 		CFD75C040D733E3100AC867C /* extern_type_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = extern_type_generation.cpp; sourceTree = "<group>"; };
 		CFD7D48F0910C6AD00B72461 /* GGS_stringset.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = GGS_stringset.cpp; sourceTree = "<group>"; };
 		CFD7D4900910C6AD00B72461 /* GGS_stringset.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = GGS_stringset.h; sourceTree = "<group>"; };
-		CFD7D55E0911088000B72461 /* LL1_computations.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LL1_computations.h; sourceTree = "<group>"; };
-		CFD7D55F0911088000B72461 /* LR1_computations.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = LR1_computations.h; sourceTree = "<group>"; };
-		CFD7D5810911090A00B72461 /* SLR_computations.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = SLR_computations.h; sourceTree = "<group>"; };
+		CFD7D55E0911088000B72461 /* LL1_computationsEx.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = LL1_computationsEx.h; sourceTree = "<group>"; };
+		CFD7D55F0911088000B72461 /* LR1_computationsEx.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = LR1_computationsEx.h; sourceTree = "<group>"; };
+		CFD7D5810911090A00B72461 /* SLR_computationsEx.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = SLR_computationsEx.h; sourceTree = "<group>"; };
 		CFD7E26E059B5B8E00410349 /* galgas_cli_options.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = galgas_cli_options.cpp; sourceTree = "<group>"; };
 		CFD7E26F059B5B8E00410349 /* galgas_cli_options.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = galgas_cli_options.h; sourceTree = "<group>"; };
 		CFDA3E02090E758600FEB333 /* semantics_semantics.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; lineEnding = 2; path = semantics_semantics.h; sourceTree = "<group>"; };
@@ -2456,17 +2456,17 @@
 		CFF537AF057A51CB00854C83 /* parser_semantics.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = parser_semantics.cpp; sourceTree = "<group>"; };
 		CFF537B8057A51F700854C83 /* parser_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = parser_generation.cpp; sourceTree = "<group>"; };
 		CFF537BA057A51F700854C83 /* parser_instructions.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = parser_instructions.cpp; sourceTree = "<group>"; };
-		CFF537C8057A526E00854C83 /* buildPureBNFgrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = buildPureBNFgrammar.cpp; sourceTree = "<group>"; };
-		CFF537CC057A529300854C83 /* cVocabulary.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = cVocabulary.cpp; sourceTree = "<group>"; };
-		CFF537CE057A529300854C83 /* empty_strings_computations.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = empty_strings_computations.cpp; sourceTree = "<group>"; };
-		CFF537D0057A529300854C83 /* FIRST_computations.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = FIRST_computations.cpp; sourceTree = "<group>"; };
-		CFF537D2057A529300854C83 /* follow_by_empty_computation.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = follow_by_empty_computation.cpp; sourceTree = "<group>"; };
-		CFF537D4057A529300854C83 /* FOLLOW_computations.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = FOLLOW_computations.cpp; sourceTree = "<group>"; };
-		CFF537E0057A52C000854C83 /* grammarComputations.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = grammarComputations.cpp; sourceTree = "<group>"; };
-		CFF537E2057A52C000854C83 /* LL1_computations.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = LL1_computations.cpp; sourceTree = "<group>"; };
-		CFF537E4057A52C000854C83 /* LR1_computations.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = LR1_computations.cpp; sourceTree = "<group>"; };
-		CFF537E6057A52C000854C83 /* printOriginalGrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = printOriginalGrammar.cpp; sourceTree = "<group>"; };
-		CFF537E8057A52C000854C83 /* SLR_computations.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = SLR_computations.cpp; sourceTree = "<group>"; };
+		CFF537C8057A526E00854C83 /* buildPureBNFgrammarEx.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = buildPureBNFgrammarEx.cpp; sourceTree = "<group>"; };
+		CFF537CC057A529300854C83 /* cVocabularyEx.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = cVocabularyEx.cpp; sourceTree = "<group>"; };
+		CFF537CE057A529300854C83 /* empty_strings_computationsEx.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = empty_strings_computationsEx.cpp; sourceTree = "<group>"; };
+		CFF537D0057A529300854C83 /* FIRST_computationsEx.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = FIRST_computationsEx.cpp; sourceTree = "<group>"; };
+		CFF537D2057A529300854C83 /* follow_by_empty_computationEx.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = follow_by_empty_computationEx.cpp; sourceTree = "<group>"; };
+		CFF537D4057A529300854C83 /* FOLLOW_computationsEx.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = FOLLOW_computationsEx.cpp; sourceTree = "<group>"; };
+		CFF537E0057A52C000854C83 /* grammarComputationsEx.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = grammarComputationsEx.cpp; sourceTree = "<group>"; };
+		CFF537E2057A52C000854C83 /* LL1_computationsEx.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = LL1_computationsEx.cpp; sourceTree = "<group>"; };
+		CFF537E4057A52C000854C83 /* LR1_computationsEx.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = LR1_computationsEx.cpp; sourceTree = "<group>"; };
+		CFF537E6057A52C000854C83 /* printOriginalGrammarEx.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = printOriginalGrammarEx.cpp; sourceTree = "<group>"; };
+		CFF537E8057A52C000854C83 /* SLR_computationsEx.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = SLR_computationsEx.cpp; sourceTree = "<group>"; };
 		CFF537F7057A52FA00854C83 /* program_parser.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = program_parser.cpp; sourceTree = "<group>"; };
 		CFF537FC057A532800854C83 /* prgm_generation.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = prgm_generation.cpp; sourceTree = "<group>"; };
 		CFF53806057A53A700854C83 /* galgas_start.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = galgas_start.cpp; sourceTree = "<group>"; };
@@ -3440,32 +3440,32 @@
 		CFF537C7057A524B00854C83 /* Grammar Component */ = {
 			isa = PBXGroup;
 			children = (
-				CFA3134E09FD3ECB006B55E7 /* cPureBNFproductionsList.h */,
-				CFA3134D09FD3ECB006B55E7 /* buildPureBNFgrammar.h */,
-				CFF537C8057A526E00854C83 /* buildPureBNFgrammar.cpp */,
-				CFA3134F09FD3ECB006B55E7 /* cVocabulary.h */,
-				CFF537CC057A529300854C83 /* cVocabulary.cpp */,
-				CFA3135009FD3ECB006B55E7 /* empty_strings_computations.h */,
-				CFF537CE057A529300854C83 /* empty_strings_computations.cpp */,
-				CFA3135109FD3ECB006B55E7 /* FIRST_computations.h */,
-				CFF537D0057A529300854C83 /* FIRST_computations.cpp */,
-				CFA3135209FD3ECB006B55E7 /* follow_by_empty_computation.h */,
-				CFA3135309FD3ECB006B55E7 /* FOLLOW_computations.h */,
-				CFF537D4057A529300854C83 /* FOLLOW_computations.cpp */,
-				CFD578D30D50EE6400D3E2C5 /* cDecisionTableElement.h */,
-				CFF537D2057A529300854C83 /* follow_by_empty_computation.cpp */,
-				CFD578D40D50EE6400D3E2C5 /* cDecisionTableElement.cpp */,
-				CFD7D55E0911088000B72461 /* LL1_computations.h */,
-				CFF537E2057A52C000854C83 /* LL1_computations.cpp */,
-				CFD7D5810911090A00B72461 /* SLR_computations.h */,
-				CFF537E8057A52C000854C83 /* SLR_computations.cpp */,
-				CFD7D55F0911088000B72461 /* LR1_computations.h */,
-				CFF537E4057A52C000854C83 /* LR1_computations.cpp */,
-				CFA3139E09FD3EE9006B55E7 /* printOriginalGrammar.h */,
-				CFF537E6057A52C000854C83 /* printOriginalGrammar.cpp */,
-				CFA3135409FD3ECB006B55E7 /* useful_symbols_computations.h */,
-				CF42C18B057A86FE0097F52B /* useful_symbols_computations.cpp */,
-				CFF537E0057A52C000854C83 /* grammarComputations.cpp */,
+				CFA3134E09FD3ECB006B55E7 /* cPureBNFproductionsListEx.h */,
+				CFA3134D09FD3ECB006B55E7 /* buildPureBNFgrammarEx.h */,
+				CFF537C8057A526E00854C83 /* buildPureBNFgrammarEx.cpp */,
+				CFA3134F09FD3ECB006B55E7 /* cVocabularyEx.h */,
+				CFF537CC057A529300854C83 /* cVocabularyEx.cpp */,
+				CFA3135009FD3ECB006B55E7 /* empty_strings_computationsEx.h */,
+				CFF537CE057A529300854C83 /* empty_strings_computationsEx.cpp */,
+				CFA3135109FD3ECB006B55E7 /* FIRST_computationsEx.h */,
+				CFF537D0057A529300854C83 /* FIRST_computationsEx.cpp */,
+				CFA3135209FD3ECB006B55E7 /* follow_by_empty_computationEx.h */,
+				CFF537D2057A529300854C83 /* follow_by_empty_computationEx.cpp */,
+				CFA3135309FD3ECB006B55E7 /* FOLLOW_computationsEx.h */,
+				CFF537D4057A529300854C83 /* FOLLOW_computationsEx.cpp */,
+				CFD578D30D50EE6400D3E2C5 /* cDecisionTableElementEx.h */,
+				CFD578D40D50EE6400D3E2C5 /* cDecisionTableElementEx.cpp */,
+				CFD7D55E0911088000B72461 /* LL1_computationsEx.h */,
+				CFF537E2057A52C000854C83 /* LL1_computationsEx.cpp */,
+				CFD7D5810911090A00B72461 /* SLR_computationsEx.h */,
+				CFF537E8057A52C000854C83 /* SLR_computationsEx.cpp */,
+				CFD7D55F0911088000B72461 /* LR1_computationsEx.h */,
+				CFF537E4057A52C000854C83 /* LR1_computationsEx.cpp */,
+				CFA3139E09FD3EE9006B55E7 /* printOriginalGrammarEx.h */,
+				CFF537E6057A52C000854C83 /* printOriginalGrammarEx.cpp */,
+				CFA3135409FD3ECB006B55E7 /* useful_symbols_computationsEx.h */,
+				CF42C18B057A86FE0097F52B /* useful_symbols_computationsEx.cpp */,
+				CFF537E0057A52C000854C83 /* grammarComputationsEx.cpp */,
 			);
 			name = "Grammar Component";
 			sourceTree = "<group>";
@@ -4029,7 +4029,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF2A87CD058CCEB0003EF2F4 /* buildPureBNFgrammar.cpp in Sources */,
+				CF2A87CD058CCEB0003EF2F4 /* buildPureBNFgrammarEx.cpp in Sources */,
 				CF2A87B9058CCE6B003EF2F4 /* expression_parser.cpp in Sources */,
 				CF2A87BA058CCE6E003EF2F4 /* galgas_LL1_grammar.cpp in Sources */,
 				CF2A87C0058CCE86003EF2F4 /* galgas_start.cpp in Sources */,
@@ -4044,26 +4044,26 @@
 				CF2A87CC058CCEAF003EF2F4 /* assignment_instructions.cpp in Sources */,
 				CF2A87CE058CCEB1003EF2F4 /* call_instructions.cpp in Sources */,
 				CF2A87CF058CCEB2003EF2F4 /* class_generation.cpp in Sources */,
-				CF2A87D0058CCEB3003EF2F4 /* cVocabulary.cpp in Sources */,
-				CF2A87D1058CCEB3003EF2F4 /* empty_strings_computations.cpp in Sources */,
-				CF2A87D2058CCEB4003EF2F4 /* FIRST_computations.cpp in Sources */,
-				CF2A87D3058CCEB5003EF2F4 /* follow_by_empty_computation.cpp in Sources */,
-				CF2A87D4058CCEB6003EF2F4 /* FOLLOW_computations.cpp in Sources */,
+				CF2A87D0058CCEB3003EF2F4 /* cVocabularyEx.cpp in Sources */,
+				CF2A87D1058CCEB3003EF2F4 /* empty_strings_computationsEx.cpp in Sources */,
+				CF2A87D2058CCEB4003EF2F4 /* FIRST_computationsEx.cpp in Sources */,
+				CF2A87D3058CCEB5003EF2F4 /* follow_by_empty_computationEx.cpp in Sources */,
+				CF2A87D4058CCEB6003EF2F4 /* FOLLOW_computationsEx.cpp in Sources */,
 				CF2A87D5058CCEB7003EF2F4 /* foreach_instructions.cpp in Sources */,
-				CF2A87D7058CCEB8003EF2F4 /* grammarComputations.cpp in Sources */,
+				CF2A87D7058CCEB8003EF2F4 /* grammarComputationsEx.cpp in Sources */,
 				CF2A87D8058CCEB9003EF2F4 /* if_instruction.cpp in Sources */,
 				CF2A87D9058CCEB9003EF2F4 /* list_generation.cpp in Sources */,
-				CF2A87DA058CCEBA003EF2F4 /* LL1_computations.cpp in Sources */,
-				CF2A87DB058CCEBB003EF2F4 /* LR1_computations.cpp in Sources */,
+				CF2A87DA058CCEBA003EF2F4 /* LL1_computationsEx.cpp in Sources */,
+				CF2A87DB058CCEBB003EF2F4 /* LR1_computationsEx.cpp in Sources */,
 				CF2A87DC058CCEBD003EF2F4 /* map_generation.cpp in Sources */,
 				CF2A87DE058CCECC003EF2F4 /* parser_generation.cpp in Sources */,
 				CF2A87DF058CCECD003EF2F4 /* parser_instructions.cpp in Sources */,
 				CF2A87E0058CCECE003EF2F4 /* prgm_generation.cpp in Sources */,
-				CF2A87E2058CCED0003EF2F4 /* printOriginalGrammar.cpp in Sources */,
+				CF2A87E2058CCED0003EF2F4 /* printOriginalGrammarEx.cpp in Sources */,
 				CF2A87E4058CCED2003EF2F4 /* semantics_generation.cpp in Sources */,
 				CF2A87E5058CCED5003EF2F4 /* semantics_instructions.cpp in Sources */,
-				CF2A87E6058CCED6003EF2F4 /* SLR_computations.cpp in Sources */,
-				CF2A87E7058CCED7003EF2F4 /* useful_symbols_computations.cpp in Sources */,
+				CF2A87E6058CCED6003EF2F4 /* SLR_computationsEx.cpp in Sources */,
+				CF2A87E7058CCED7003EF2F4 /* useful_symbols_computationsEx.cpp in Sources */,
 				CF2A8842058CCF43003EF2F4 /* GGS_bool.cpp in Sources */,
 				CF2A8844058CCF44003EF2F4 /* GGS_char.cpp in Sources */,
 				CF2A8848058CCF4A003EF2F4 /* GGS_lbool.cpp in Sources */,
@@ -4110,7 +4110,7 @@
 				CFFE92160B7CC06E009BCBF5 /* domain_parser.cpp in Sources */,
 				CFFE92520B7CCAFF009BCBF5 /* domain_generation.cpp in Sources */,
 				CF8EE1600B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */,
-				CFD578DC0D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */,
+				CFD578DC0D50EE6400D3E2C5 /* cDecisionTableElementEx.cpp in Sources */,
 				CF59F05D0D71CB6000427156 /* wrapper_generation.cpp in Sources */,
 				CFD75C060D733E3100AC867C /* extern_type_generation.cpp in Sources */,
 				CFBD0DD60D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
@@ -4279,8 +4279,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF6DF13409E3F23700506859 /* buildPureBNFgrammar.cpp in Sources */,
-				CF6DF14709E3F23700506859 /* printOriginalGrammar.cpp in Sources */,
+				CF6DF13409E3F23700506859 /* buildPureBNFgrammarEx.cpp in Sources */,
+				CF6DF14709E3F23700506859 /* printOriginalGrammarEx.cpp in Sources */,
 				CF6DF12609E3F23700506859 /* expression_parser.cpp in Sources */,
 				CF6DF12909E3F23700506859 /* galgas_start.cpp in Sources */,
 				CF6DF12B09E3F23700506859 /* grammar_parser.cpp in Sources */,
@@ -4294,25 +4294,25 @@
 				CF6DF13309E3F23700506859 /* assignment_instructions.cpp in Sources */,
 				CF6DF13509E3F23700506859 /* call_instructions.cpp in Sources */,
 				CF6DF13609E3F23700506859 /* class_generation.cpp in Sources */,
-				CF6DF13709E3F23700506859 /* cVocabulary.cpp in Sources */,
-				CF6DF13809E3F23700506859 /* empty_strings_computations.cpp in Sources */,
-				CF6DF13909E3F23700506859 /* FIRST_computations.cpp in Sources */,
-				CF6DF13A09E3F23700506859 /* follow_by_empty_computation.cpp in Sources */,
-				CF6DF13B09E3F23700506859 /* FOLLOW_computations.cpp in Sources */,
+				CF6DF13709E3F23700506859 /* cVocabularyEx.cpp in Sources */,
+				CF6DF13809E3F23700506859 /* empty_strings_computationsEx.cpp in Sources */,
+				CF6DF13909E3F23700506859 /* FIRST_computationsEx.cpp in Sources */,
+				CF6DF13A09E3F23700506859 /* follow_by_empty_computationEx.cpp in Sources */,
+				CF6DF13B09E3F23700506859 /* FOLLOW_computationsEx.cpp in Sources */,
 				CF6DF13C09E3F23700506859 /* foreach_instructions.cpp in Sources */,
-				CF6DF13D09E3F23700506859 /* grammarComputations.cpp in Sources */,
+				CF6DF13D09E3F23700506859 /* grammarComputationsEx.cpp in Sources */,
 				CF6DF13E09E3F23700506859 /* if_instruction.cpp in Sources */,
 				CF6DF13F09E3F23700506859 /* list_generation.cpp in Sources */,
-				CF6DF14009E3F23700506859 /* LL1_computations.cpp in Sources */,
-				CF6DF14109E3F23700506859 /* LR1_computations.cpp in Sources */,
+				CF6DF14009E3F23700506859 /* LL1_computationsEx.cpp in Sources */,
+				CF6DF14109E3F23700506859 /* LR1_computationsEx.cpp in Sources */,
 				CF6DF14209E3F23700506859 /* map_generation.cpp in Sources */,
 				CF6DF14309E3F23700506859 /* parser_generation.cpp in Sources */,
 				CF6DF14409E3F23700506859 /* parser_instructions.cpp in Sources */,
 				CF6DF14509E3F23700506859 /* prgm_generation.cpp in Sources */,
 				CF6DF14909E3F23700506859 /* semantics_generation.cpp in Sources */,
 				CF6DF14A09E3F23700506859 /* semantics_instructions.cpp in Sources */,
-				CF6DF14B09E3F23700506859 /* SLR_computations.cpp in Sources */,
-				CF6DF14C09E3F23700506859 /* useful_symbols_computations.cpp in Sources */,
+				CF6DF14B09E3F23700506859 /* SLR_computationsEx.cpp in Sources */,
+				CF6DF14C09E3F23700506859 /* useful_symbols_computationsEx.cpp in Sources */,
 				CF6DF15009E3F23700506859 /* GGS_bool.cpp in Sources */,
 				CF6DF15109E3F23700506859 /* GGS_char.cpp in Sources */,
 				CF6DF15209E3F23700506859 /* GGS_lbool.cpp in Sources */,
@@ -4375,7 +4375,7 @@
 				CFE26D260C1327B90066ACB3 /* programSLRgrammar.cpp in Sources */,
 				CFDC56BD0C186FBB00DF8818 /* projectLL1grammar.cpp in Sources */,
 				CFDC56BF0C186FBB00DF8818 /* projectModelBuilder.cpp in Sources */,
-				CFD578E20D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */,
+				CFD578E20D50EE6400D3E2C5 /* cDecisionTableElementEx.cpp in Sources */,
 				CF59F0630D71CB6000427156 /* wrapper_generation.cpp in Sources */,
 				CFD75C050D733E3100AC867C /* extern_type_generation.cpp in Sources */,
 				CFBD0DD40D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
@@ -4540,29 +4540,29 @@
 				CF6DF1A909E3F30400506859 /* scanner_semantics.cpp in Sources */,
 				CF6DF1AA09E3F30400506859 /* parser_semantics.cpp in Sources */,
 				CF6DF1AC09E3F30400506859 /* assignment_instructions.cpp in Sources */,
-				CF6DF1AD09E3F30400506859 /* buildPureBNFgrammar.cpp in Sources */,
+				CF6DF1AD09E3F30400506859 /* buildPureBNFgrammarEx.cpp in Sources */,
 				CF6DF1AE09E3F30400506859 /* call_instructions.cpp in Sources */,
 				CF6DF1AF09E3F30400506859 /* class_generation.cpp in Sources */,
-				CF6DF1B009E3F30400506859 /* cVocabulary.cpp in Sources */,
-				CF6DF1B109E3F30400506859 /* empty_strings_computations.cpp in Sources */,
-				CF6DF1B209E3F30400506859 /* FIRST_computations.cpp in Sources */,
-				CF6DF1B309E3F30400506859 /* follow_by_empty_computation.cpp in Sources */,
-				CF6DF1B409E3F30400506859 /* FOLLOW_computations.cpp in Sources */,
+				CF6DF1B009E3F30400506859 /* cVocabularyEx.cpp in Sources */,
+				CF6DF1B109E3F30400506859 /* empty_strings_computationsEx.cpp in Sources */,
+				CF6DF1B209E3F30400506859 /* FIRST_computationsEx.cpp in Sources */,
+				CF6DF1B309E3F30400506859 /* follow_by_empty_computationEx.cpp in Sources */,
+				CF6DF1B409E3F30400506859 /* FOLLOW_computationsEx.cpp in Sources */,
 				CF6DF1B509E3F30400506859 /* foreach_instructions.cpp in Sources */,
-				CF6DF1B609E3F30400506859 /* grammarComputations.cpp in Sources */,
+				CF6DF1B609E3F30400506859 /* grammarComputationsEx.cpp in Sources */,
 				CF6DF1B709E3F30400506859 /* if_instruction.cpp in Sources */,
 				CF6DF1B809E3F30400506859 /* list_generation.cpp in Sources */,
-				CF6DF1B909E3F30400506859 /* LL1_computations.cpp in Sources */,
-				CF6DF1BA09E3F30400506859 /* LR1_computations.cpp in Sources */,
+				CF6DF1B909E3F30400506859 /* LL1_computationsEx.cpp in Sources */,
+				CF6DF1BA09E3F30400506859 /* LR1_computationsEx.cpp in Sources */,
 				CF6DF1BB09E3F30400506859 /* map_generation.cpp in Sources */,
 				CF6DF1BC09E3F30400506859 /* parser_generation.cpp in Sources */,
 				CF6DF1BD09E3F30400506859 /* parser_instructions.cpp in Sources */,
 				CF6DF1BE09E3F30400506859 /* prgm_generation.cpp in Sources */,
-				CF6DF1C009E3F30400506859 /* printOriginalGrammar.cpp in Sources */,
+				CF6DF1C009E3F30400506859 /* printOriginalGrammarEx.cpp in Sources */,
 				CF6DF1C209E3F30400506859 /* semantics_generation.cpp in Sources */,
 				CF6DF1C309E3F30400506859 /* semantics_instructions.cpp in Sources */,
-				CF6DF1C409E3F30400506859 /* SLR_computations.cpp in Sources */,
-				CF6DF1C509E3F30400506859 /* useful_symbols_computations.cpp in Sources */,
+				CF6DF1C409E3F30400506859 /* SLR_computationsEx.cpp in Sources */,
+				CF6DF1C509E3F30400506859 /* useful_symbols_computationsEx.cpp in Sources */,
 				CF6DF1CB09E3F30400506859 /* GGS_bool.cpp in Sources */,
 				CF6DF1CC09E3F30400506859 /* GGS_char.cpp in Sources */,
 				CF6DF1CD09E3F30400506859 /* GGS_lbool.cpp in Sources */,
@@ -4625,7 +4625,7 @@
 				CFE26D280C1327B90066ACB3 /* programSLRgrammar.cpp in Sources */,
 				CFDC56C10C186FBB00DF8818 /* projectLL1grammar.cpp in Sources */,
 				CFDC56C30C186FBB00DF8818 /* projectModelBuilder.cpp in Sources */,
-				CFD578E40D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */,
+				CFD578E40D50EE6400D3E2C5 /* cDecisionTableElementEx.cpp in Sources */,
 				CF59F0640D71CB6000427156 /* wrapper_generation.cpp in Sources */,
 				CFD75C090D733E3100AC867C /* extern_type_generation.cpp in Sources */,
 				CFBD0DDC0D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
@@ -4830,29 +4830,29 @@
 				CF7A1441058CFFDB007126C1 /* scanner_semantics.cpp in Sources */,
 				CF7A1442058CFFE2007126C1 /* parser_semantics.cpp in Sources */,
 				CF7A1444058CFFF0007126C1 /* assignment_instructions.cpp in Sources */,
-				CF7A1445058CFFFE007126C1 /* buildPureBNFgrammar.cpp in Sources */,
+				CF7A1445058CFFFE007126C1 /* buildPureBNFgrammarEx.cpp in Sources */,
 				CF7A1446058D0000007126C1 /* call_instructions.cpp in Sources */,
 				CF7A1447058D0002007126C1 /* class_generation.cpp in Sources */,
-				CF7A1448058D0005007126C1 /* cVocabulary.cpp in Sources */,
-				CF7A1449058D0008007126C1 /* empty_strings_computations.cpp in Sources */,
-				CF7A144A058D000B007126C1 /* FIRST_computations.cpp in Sources */,
-				CF7A144B058D000E007126C1 /* follow_by_empty_computation.cpp in Sources */,
-				CF7A144C058D0011007126C1 /* FOLLOW_computations.cpp in Sources */,
+				CF7A1448058D0005007126C1 /* cVocabularyEx.cpp in Sources */,
+				CF7A1449058D0008007126C1 /* empty_strings_computationsEx.cpp in Sources */,
+				CF7A144A058D000B007126C1 /* FIRST_computationsEx.cpp in Sources */,
+				CF7A144B058D000E007126C1 /* follow_by_empty_computationEx.cpp in Sources */,
+				CF7A144C058D0011007126C1 /* FOLLOW_computationsEx.cpp in Sources */,
 				CF7A144D058D0014007126C1 /* foreach_instructions.cpp in Sources */,
-				CF7A144F058D001A007126C1 /* grammarComputations.cpp in Sources */,
+				CF7A144F058D001A007126C1 /* grammarComputationsEx.cpp in Sources */,
 				CF7A1450058D001D007126C1 /* if_instruction.cpp in Sources */,
 				CF7A1451058D001F007126C1 /* list_generation.cpp in Sources */,
-				CF7A1452058D0024007126C1 /* LL1_computations.cpp in Sources */,
-				CF7A1453058D0026007126C1 /* LR1_computations.cpp in Sources */,
+				CF7A1452058D0024007126C1 /* LL1_computationsEx.cpp in Sources */,
+				CF7A1453058D0026007126C1 /* LR1_computationsEx.cpp in Sources */,
 				CF7A1454058D0029007126C1 /* map_generation.cpp in Sources */,
 				CF7A1456058D002E007126C1 /* parser_generation.cpp in Sources */,
 				CF7A1457058D0030007126C1 /* parser_instructions.cpp in Sources */,
 				CF7A1458058D0035007126C1 /* prgm_generation.cpp in Sources */,
-				CF7A145A058D003B007126C1 /* printOriginalGrammar.cpp in Sources */,
+				CF7A145A058D003B007126C1 /* printOriginalGrammarEx.cpp in Sources */,
 				CF7A145C058D0043007126C1 /* semantics_generation.cpp in Sources */,
 				CF7A145D058D004D007126C1 /* semantics_instructions.cpp in Sources */,
-				CF7A145E058D0051007126C1 /* SLR_computations.cpp in Sources */,
-				CF7A145F058D0054007126C1 /* useful_symbols_computations.cpp in Sources */,
+				CF7A145E058D0051007126C1 /* SLR_computationsEx.cpp in Sources */,
+				CF7A145F058D0054007126C1 /* useful_symbols_computationsEx.cpp in Sources */,
 				CF7A148E058D010A007126C1 /* GGS_bool.cpp in Sources */,
 				CF7A1490058D010C007126C1 /* GGS_char.cpp in Sources */,
 				CF7A1494058D0110007126C1 /* GGS_lbool.cpp in Sources */,
@@ -4899,7 +4899,7 @@
 				CFFE92140B7CC06E009BCBF5 /* domain_parser.cpp in Sources */,
 				CFFE924F0B7CCAFF009BCBF5 /* domain_generation.cpp in Sources */,
 				CF8EE15A0B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */,
-				CFD578E00D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */,
+				CFD578E00D50EE6400D3E2C5 /* cDecisionTableElementEx.cpp in Sources */,
 				CF59F0650D71CB6000427156 /* wrapper_generation.cpp in Sources */,
 				CFD75C0E0D733E3100AC867C /* extern_type_generation.cpp in Sources */,
 				CFBD0DE60D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
@@ -5086,29 +5086,29 @@
 				CFEDF2C40C2D161F0038713A /* semantics_parser.cpp in Sources */,
 				CFEDF2C50C2D161F0038713A /* semantics_semantics.cpp in Sources */,
 				CFEDF2C60C2D161F0038713A /* assignment_instructions.cpp in Sources */,
-				CFEDF2C70C2D161F0038713A /* buildPureBNFgrammar.cpp in Sources */,
+				CFEDF2C70C2D161F0038713A /* buildPureBNFgrammarEx.cpp in Sources */,
 				CFEDF2C80C2D161F0038713A /* call_instructions.cpp in Sources */,
 				CFEDF2C90C2D161F0038713A /* class_generation.cpp in Sources */,
-				CFEDF2CA0C2D161F0038713A /* cVocabulary.cpp in Sources */,
-				CFEDF2CB0C2D161F0038713A /* empty_strings_computations.cpp in Sources */,
-				CFEDF2CC0C2D161F0038713A /* FIRST_computations.cpp in Sources */,
-				CFEDF2CD0C2D161F0038713A /* follow_by_empty_computation.cpp in Sources */,
-				CFEDF2CE0C2D161F0038713A /* FOLLOW_computations.cpp in Sources */,
+				CFEDF2CA0C2D161F0038713A /* cVocabularyEx.cpp in Sources */,
+				CFEDF2CB0C2D161F0038713A /* empty_strings_computationsEx.cpp in Sources */,
+				CFEDF2CC0C2D161F0038713A /* FIRST_computationsEx.cpp in Sources */,
+				CFEDF2CD0C2D161F0038713A /* follow_by_empty_computationEx.cpp in Sources */,
+				CFEDF2CE0C2D161F0038713A /* FOLLOW_computationsEx.cpp in Sources */,
 				CFEDF2CF0C2D161F0038713A /* foreach_instructions.cpp in Sources */,
-				CFEDF2D00C2D161F0038713A /* grammarComputations.cpp in Sources */,
+				CFEDF2D00C2D161F0038713A /* grammarComputationsEx.cpp in Sources */,
 				CFEDF2D10C2D161F0038713A /* if_instruction.cpp in Sources */,
 				CFEDF2D20C2D161F0038713A /* list_generation.cpp in Sources */,
-				CFEDF2D30C2D161F0038713A /* LL1_computations.cpp in Sources */,
-				CFEDF2D40C2D161F0038713A /* LR1_computations.cpp in Sources */,
+				CFEDF2D30C2D161F0038713A /* LL1_computationsEx.cpp in Sources */,
+				CFEDF2D40C2D161F0038713A /* LR1_computationsEx.cpp in Sources */,
 				CFEDF2D50C2D161F0038713A /* map_generation.cpp in Sources */,
 				CFEDF2D60C2D161F0038713A /* parser_generation.cpp in Sources */,
 				CFEDF2D70C2D161F0038713A /* parser_instructions.cpp in Sources */,
 				CFEDF2D80C2D161F0038713A /* prgm_generation.cpp in Sources */,
-				CFEDF2D90C2D161F0038713A /* printOriginalGrammar.cpp in Sources */,
+				CFEDF2D90C2D161F0038713A /* printOriginalGrammarEx.cpp in Sources */,
 				CFEDF2DB0C2D161F0038713A /* semantics_generation.cpp in Sources */,
 				CFEDF2DC0C2D161F0038713A /* semantics_instructions.cpp in Sources */,
-				CFEDF2DD0C2D161F0038713A /* SLR_computations.cpp in Sources */,
-				CFEDF2DE0C2D161F0038713A /* useful_symbols_computations.cpp in Sources */,
+				CFEDF2DD0C2D161F0038713A /* SLR_computationsEx.cpp in Sources */,
+				CFEDF2DE0C2D161F0038713A /* useful_symbols_computationsEx.cpp in Sources */,
 				CFEDF2DF0C2D161F0038713A /* GGS_bool.cpp in Sources */,
 				CFEDF2E00C2D161F0038713A /* GGS_char.cpp in Sources */,
 				CFEDF2E10C2D161F0038713A /* GGS_lbool.cpp in Sources */,
@@ -5171,7 +5171,7 @@
 				CFEDF3500C2D161F0038713A /* programSLRgrammar.cpp in Sources */,
 				CFEDF3550C2D161F0038713A /* projectLL1grammar.cpp in Sources */,
 				CFEDF3560C2D161F0038713A /* projectModelBuilder.cpp in Sources */,
-				CFD578D60D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */,
+				CFD578D60D50EE6400D3E2C5 /* cDecisionTableElementEx.cpp in Sources */,
 				CF59F05F0D71CB6000427156 /* wrapper_generation.cpp in Sources */,
 				CFD75C0C0D733E3100AC867C /* extern_type_generation.cpp in Sources */,
 				CFBD0DE20D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
@@ -5329,29 +5329,29 @@
 				CFEDF4240C2D16610038713A /* scanner_semantics.cpp in Sources */,
 				CFEDF4250C2D16610038713A /* parser_semantics.cpp in Sources */,
 				CFEDF4260C2D16610038713A /* assignment_instructions.cpp in Sources */,
-				CFEDF4270C2D16610038713A /* buildPureBNFgrammar.cpp in Sources */,
+				CFEDF4270C2D16610038713A /* buildPureBNFgrammarEx.cpp in Sources */,
 				CFEDF4280C2D16610038713A /* call_instructions.cpp in Sources */,
 				CFEDF4290C2D16610038713A /* class_generation.cpp in Sources */,
-				CFEDF42A0C2D16610038713A /* cVocabulary.cpp in Sources */,
-				CFEDF42B0C2D16610038713A /* empty_strings_computations.cpp in Sources */,
-				CFEDF42C0C2D16610038713A /* FIRST_computations.cpp in Sources */,
-				CFEDF42D0C2D16610038713A /* follow_by_empty_computation.cpp in Sources */,
-				CFEDF42E0C2D16610038713A /* FOLLOW_computations.cpp in Sources */,
+				CFEDF42A0C2D16610038713A /* cVocabularyEx.cpp in Sources */,
+				CFEDF42B0C2D16610038713A /* empty_strings_computationsEx.cpp in Sources */,
+				CFEDF42C0C2D16610038713A /* FIRST_computationsEx.cpp in Sources */,
+				CFEDF42D0C2D16610038713A /* follow_by_empty_computationEx.cpp in Sources */,
+				CFEDF42E0C2D16610038713A /* FOLLOW_computationsEx.cpp in Sources */,
 				CFEDF42F0C2D16610038713A /* foreach_instructions.cpp in Sources */,
-				CFEDF4300C2D16610038713A /* grammarComputations.cpp in Sources */,
+				CFEDF4300C2D16610038713A /* grammarComputationsEx.cpp in Sources */,
 				CFEDF4310C2D16610038713A /* if_instruction.cpp in Sources */,
 				CFEDF4320C2D16610038713A /* list_generation.cpp in Sources */,
-				CFEDF4330C2D16610038713A /* LL1_computations.cpp in Sources */,
-				CFEDF4340C2D16610038713A /* LR1_computations.cpp in Sources */,
+				CFEDF4330C2D16610038713A /* LL1_computationsEx.cpp in Sources */,
+				CFEDF4340C2D16610038713A /* LR1_computationsEx.cpp in Sources */,
 				CFEDF4350C2D16610038713A /* map_generation.cpp in Sources */,
 				CFEDF4360C2D16610038713A /* parser_generation.cpp in Sources */,
 				CFEDF4370C2D16610038713A /* parser_instructions.cpp in Sources */,
 				CFEDF4380C2D16610038713A /* prgm_generation.cpp in Sources */,
-				CFEDF4390C2D16610038713A /* printOriginalGrammar.cpp in Sources */,
+				CFEDF4390C2D16610038713A /* printOriginalGrammarEx.cpp in Sources */,
 				CFEDF43B0C2D16610038713A /* semantics_generation.cpp in Sources */,
 				CFEDF43C0C2D16610038713A /* semantics_instructions.cpp in Sources */,
-				CFEDF43D0C2D16610038713A /* SLR_computations.cpp in Sources */,
-				CFEDF43E0C2D16610038713A /* useful_symbols_computations.cpp in Sources */,
+				CFEDF43D0C2D16610038713A /* SLR_computationsEx.cpp in Sources */,
+				CFEDF43E0C2D16610038713A /* useful_symbols_computationsEx.cpp in Sources */,
 				CFEDF43F0C2D16610038713A /* GGS_bool.cpp in Sources */,
 				CFEDF4400C2D16610038713A /* GGS_char.cpp in Sources */,
 				CFEDF4410C2D16610038713A /* GGS_lbool.cpp in Sources */,
@@ -5414,7 +5414,7 @@
 				CFEDF4B00C2D16610038713A /* programSLRgrammar.cpp in Sources */,
 				CFEDF4B50C2D16610038713A /* projectLL1grammar.cpp in Sources */,
 				CFEDF4B60C2D16610038713A /* projectModelBuilder.cpp in Sources */,
-				CFD578E80D50EE6400D3E2C5 /* cDecisionTableElement.cpp in Sources */,
+				CFD578E80D50EE6400D3E2C5 /* cDecisionTableElementEx.cpp in Sources */,
 				CF59F0620D71CB6000427156 /* wrapper_generation.cpp in Sources */,
 				CFD75C080D733E3100AC867C /* extern_type_generation.cpp in Sources */,
 				CFBD0DDA0D78AC580031CA4B /* GGS_filewrapper.cpp in Sources */,
