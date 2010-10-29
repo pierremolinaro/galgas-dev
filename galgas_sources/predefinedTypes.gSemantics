@@ -29,9 +29,12 @@ routine appendPredefinedListTypeAST
   ??@string inElementTypeName
 :
   @attributeInCollectionListAST attributeList [emptyList] ;
+  @lstringlist featureList [emptyList] ;
+  featureList += ![@lstring new !"setter" !here] ;
   attributeList +=
     ![@lstring new !inElementTypeName !here]
     ![@lstring new !"mValue" !here]
+    !featureList
   ;
   ioDeclarationListASTs += ![@listDeclarationAST new
     ![@lstring new !inElementTypeName . "list" !here]
@@ -45,13 +48,17 @@ routine appendPredefined2StringListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs
 :
   @attributeInCollectionListAST attributeList [emptyList] ;
+  @lstringlist featureList [emptyList] ;
+  featureList += ![@lstring new !"setter" !here] ;
   attributeList +=
     ![@lstring new !"string" !here]
     ![@lstring new !"mValue0" !here]
+    !featureList
   ;
   attributeList +=
     ![@lstring new !"string" !here]
     ![@lstring new !"mValue1" !here]
+    !featureList
   ;
   ioDeclarationListASTs += ![@listDeclarationAST new
     ![@lstring new !"2stringlist" !here]
@@ -65,9 +72,11 @@ routine appendStructASTForTypeWithLocation
   ?!@semanticDeclarationListAST ioDeclarationListASTs
   ??@string inElementTypeName
 :
+  @lstringlist featureList [emptyList] ;
+  featureList += ![@lstring new !"setter" !here] ;
   @attributeInCollectionListAST attributeList [emptyList] ;
-  attributeList += ![@lstring new !inElementTypeName !here] ![@lstring new !inElementTypeName !here] ;
-  attributeList += ![@lstring new !"location" !here] ![@lstring new !"location" !here] ;
+  attributeList += ![@lstring new !inElementTypeName !here] ![@lstring new !inElementTypeName !here] !featureList ;
+  attributeList += ![@lstring new !"location" !here] ![@lstring new !"location" !here] !featureList ;
   ioDeclarationListASTs += ![@structDeclarationAST new
     ![@lstring new !"l" . inElementTypeName !here]
     !attributeList

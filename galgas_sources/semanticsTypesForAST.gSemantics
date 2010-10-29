@@ -1147,7 +1147,7 @@ class @overridingAbstractCategoryReaderAST extends @semanticDeclarationAST {
 list @attributeInCollectionListAST {
   @lstring mAttributeTypeName ;
   @lstring mAttributeName ;
-#  @lstringlist mFeatureList ;
+  @lstringlist mFeatureList ;
 }
 
 #---------------------------------------------------------------------------*

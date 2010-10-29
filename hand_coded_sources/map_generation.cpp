@@ -736,6 +736,12 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
              "//--- Assign information to an existing element\n"
              "  protected : virtual void\n"
              "  assignInfo (AC_galgas_map_element * inPtr, void * inInfo) ;\n\n"
+             "//--- 'insertFakeKey' modifier\n"
+             "  public : void modifier_insertFakeKey (C_CompilerEx & inCompiler,\n"
+             "                         const GGS_string & inKey,\n"
+             "                         const GGS_location & inHelperMessageErrorLocation,\n"
+             "                         const GGS_string & inHelperMessage\n"
+             "                         COMMA_LOCATION_ARGS) ;\n\n"
              "//--- Enter an index\n"
              "  public : void enterIndex (const GGS_string & inKey,\n"
              "                            AC_galgas_index_core & outIndex) ;\n\n"
@@ -1256,6 +1262,22 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                "                      outIndex) ;\n"
                "}\n\n" ;
 
+//--- 'insertFakeKey'  modifier
+  inCppFile.appendCppHyphenLineComment () ;
+  inCppFile << "void GGS_" << mMapTypeName << "::modifier_insertFakeKey (C_CompilerEx & inCompiler,\n"
+               "                         const GGS_string & inKey,\n"
+               "                         const GGS_location & inHelperMessageErrorLocation,\n"
+               "                         const GGS_string & inHelperMessage\n"
+               "                         COMMA_LOCATION_ARGS) {\n"
+               "  e_" << mMapTypeName << " info  ;\n"
+               "  internal_insertFakeKey (inCompiler,\n"
+               "                          (void *) & info,\n"
+               "                          inKey,\n"
+               "                          inHelperMessageErrorLocation,\n"
+               "                          inHelperMessage\n"
+               "                          COMMA_THERE) ;\n"
+               "}\n\n" ;
+
 //--- Generate comparison
   inCppFile.appendCppHyphenLineComment () ;
   inCppFile << "GGS_bool GGS_" << mMapTypeName << "::\n"
@@ -1401,7 +1423,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
   if (actionCount > 0) {
     inCppFile << "    insulateMap (THERE) ;\n" ;
   }
-  inCppFile << "    AC_galgas_map_element * p = internal_search (inKey.string ()) ;\n"
+  inCppFile << "    AC_galgas_map_element * p = internal_search (inLexique, inKey.string ()) ;\n"
                "    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), \"Dynamic cast error\", 0, 0) ;\n"
                "    node = (cElement *) p ;\n"
                "    if (node == NULL) {\n"
@@ -1457,7 +1479,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                  "                        COMMA_LOCATION_ARGS) {\n"
                  "  if (isBuilt () && inValue.isBuilt () && inKey.isBuilt ()) {\n"
                  "    insulateMap (THERE) ;\n"
-                 "    AC_galgas_map_element * p = internal_search (inKey.string ()) ;\n"
+                 "    AC_galgas_map_element * p = internal_search (inLexique, inKey.string ()) ;\n"
                  "    MF_Assert ((p == NULL) || (reinterpret_cast <cElement *> (p) != NULL), \"Dynamic cast error\", 0, 0) ;\n"
                  "    cElement * node = (cElement *) p ;\n"
                  "    if (node == NULL) {\n"
