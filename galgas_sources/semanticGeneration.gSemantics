@@ -487,7 +487,18 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@bool IS_ABSTRACT
   ;
 
-  template classTypeHeader2 "GALGAS_class.h2.gTemplate"
+  template classTypeHeader2part1 "GALGAS_class.h2-part1.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string SUPER_TYPE_IDENTIFIER
+    ?@typedAttributeList CURRENT_ATTRIBUTE_LIST
+    ?@typedAttributeList ALL_ATTRIBUTE_LIST
+    ?@bool IS_ABSTRACT
+    ?@abstractMethodDefinitionListForGeneration ABSTRACT_METHOD_LIST
+    ?@methodDefinitionListForGeneration CONCRETE_METHOD_LIST
+  ;
+
+  template classTypeHeader2part2 "GALGAS_class.h2-part2.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@string SUPER_TYPE_IDENTIFIER
@@ -932,13 +943,17 @@ end reader ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-reader @semanticDeclarationForGeneration appendDeclaration2 -> @string outHeader :
+reader @semanticDeclarationForGeneration appendDeclaration2
+  ??@string unused inOutputDirectory
+ -> @string outHeader :
   outHeader := "" ;
 end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @mapTypeForGeneration appendDeclaration2 ->@string outHeader :
+override reader @mapTypeForGeneration appendDeclaration2
+  ??@string unused inOutputDirectory
+ ->@string outHeader :
   outHeader := [filewrapper typeGenerationTemplate.mapTypeHeader2
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
@@ -948,17 +963,63 @@ override reader @mapTypeForGeneration appendDeclaration2 ->@string outHeader :
 
 #---------------------------------------------------------------------------*
 
-override reader @classTypeForGeneration appendDeclaration2 ->@string outHeader :
-  outHeader := [filewrapper typeGenerationTemplate.classTypeHeader2
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
-    !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
-    !mTypedAttributeList
-    !mAllTypedAttributeList
-    !mIsAbstract
-    !mAbstractMethodList
-    !mMethodList
-  ] ;
+override reader @classTypeForGeneration appendDeclaration2
+  ??@string inOutputDirectory
+ ->@string outHeader :
+  if mGenerateHeaderInSeparateFile then
+    const @string part1 := [filewrapper typeGenerationTemplate.classTypeHeader2part1
+      ![mTypeIndex key]
+      ![mTypeIndex identifierRepresentation]
+      !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
+      !mTypedAttributeList
+      !mAllTypedAttributeList
+      !mIsAbstract
+      !mAbstractMethodList
+      !mMethodList
+    ] ;
+    const @string part2 := [filewrapper typeGenerationTemplate.classTypeHeader2part2
+      ![mTypeIndex key]
+      ![mTypeIndex identifierRepresentation]
+      !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
+      !mTypedAttributeList
+      !mAllTypedAttributeList
+      !mIsAbstract
+      !mAbstractMethodList
+      !mMethodList
+    ] ;
+    const @string headerFileName := "separateHeaderFor_" . [mTypeIndex identifierRepresentation] . ".h" ;
+    [@string generateFile
+      !inOutputDirectory
+      !headerFileName
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !part1
+      !"\n\n" # Defaut user zone2
+      !part2
+    ] ;
+    outHeader := "#include \"" . headerFileName . "\"\n\n" ;
+  else
+    outHeader := [filewrapper typeGenerationTemplate.classTypeHeader2part1
+      ![mTypeIndex key]
+      ![mTypeIndex identifierRepresentation]
+      !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
+      !mTypedAttributeList
+      !mAllTypedAttributeList
+      !mIsAbstract
+      !mAbstractMethodList
+      !mMethodList
+    ] ;
+    outHeader .= [filewrapper typeGenerationTemplate.classTypeHeader2part2
+      ![mTypeIndex key]
+      ![mTypeIndex identifierRepresentation]
+      !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
+      !mTypedAttributeList
+      !mAllTypedAttributeList
+      !mIsAbstract
+      !mAbstractMethodList
+      !mMethodList
+    ] ;
+  end if ;
  end reader ;
 
 #---------------------------------------------------------------------------*

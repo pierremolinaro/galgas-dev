@@ -491,7 +491,7 @@ list @actualInputParameterListAST {
 #---------------------------------------------------------------------------*
 
 abstract class @syntaxInstructionAST {
-  @location mInstructionLocation feature nogetter ;
+  @location mInstructionLocation ;
 }
 
 #---------------------------------------------------------------------------*

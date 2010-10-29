@@ -54,7 +54,7 @@ map @nonterminalSymbolLabelMapForGrammarAnalysis {
 #---------------------------------------------------------------------------*
 
 abstract class @abstractSyntaxInstructionForGrammarAnalysis feature generatedInSeparateFile {
-  @location mStartLocation feature nogetter ;
+  @location mStartLocation ;
 }
 
 #---------------------------------------------------------------------------*
@@ -109,8 +109,8 @@ map @nonTerminalSymbolMapForGrammarAnalysis {
 #---------------------------------------------------------------------------*
 
 class @terminalInstructionForGrammarAnalysis extends @abstractSyntaxInstructionForGrammarAnalysis {
-  @lstring mTerminalSymbolName feature nogetter ;
-  @uint mTerminalSymbolIndex feature nogetter ;
+  @lstring mTerminalSymbolName ;
+  @uint mTerminalSymbolIndex ;
 }
 
 #---------------------------------------------------------------------------*
@@ -120,8 +120,8 @@ class @terminalInstructionForGrammarAnalysis extends @abstractSyntaxInstructionF
 #---------------------------------------------------------------------------*
 
 class @nonTerminalInstructionForGrammarAnalysis extends @abstractSyntaxInstructionForGrammarAnalysis {
-  @lstring mNonterminalSymbolName feature nogetter ;
-  @uint mNonterminalSymbolIndex feature nogetter ;
+  @lstring mNonterminalSymbolName ;
+  @uint mNonterminalSymbolIndex ;
 }
 
 #---------------------------------------------------------------------------*
@@ -141,8 +141,8 @@ list @branchListForGrammarAnalysis {
 #---------------------------------------------------------------------------*
 
 class @selectInstructionForGrammarAnalysis extends @abstractSyntaxInstructionForGrammarAnalysis {
-  @branchListForGrammarAnalysis mSelectBranchList feature nogetter ;
-  @uint mAddedNonTerminalSymbolIndex feature nogetter ;
+  @branchListForGrammarAnalysis mSelectBranchList ;
+  @uint mAddedNonTerminalSymbolIndex ;
 }
 
 #---------------------------------------------------------------------------*
@@ -152,8 +152,8 @@ class @selectInstructionForGrammarAnalysis extends @abstractSyntaxInstructionFor
 #---------------------------------------------------------------------------*
 
 class @repeatInstructionForGrammarAnalysis extends @abstractSyntaxInstructionForGrammarAnalysis {
-  @branchListForGrammarAnalysis mRepeatBranchList feature nogetter ;
-  @uint mAddedNonTerminalSymbolIndex feature nogetter ;
+  @branchListForGrammarAnalysis mRepeatBranchList ;
+  @uint mAddedNonTerminalSymbolIndex ;
 }
 
 #---------------------------------------------------------------------------*

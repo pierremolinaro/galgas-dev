@@ -299,7 +299,7 @@ override method @listmapDeclarationAST performSemanticAnalysis
 #--- Check associated list is actually a list
   @typeKindEnum typeKindEnum ;
   @typedAttributeList listTypeAttributeList ;
-  [inSemanticContext->mTypeMap searchKey !mAssociatedListTypeName ?2* ?typeKindEnum ?listTypeAttributeList ?17*] ;
+  [inSemanticContext->mTypeMap searchKey !mAssociatedListTypeName ?2* ?typeKindEnum ?listTypeAttributeList ?18*] ;
 #---
   ioSemanticDeclarationListForGeneration += ![@listmapTypeForGeneration new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListmapTypeName]
@@ -456,7 +456,7 @@ override method @mapProxyDeclarationAST performSemanticAnalysis
 #--- Get attribute list of associated map
   @typedAttributeList listTypeAttributeList ;
   @mapSearchMethodListAST searchMethodList ;
-  [inSemanticContext->mTypeMap searchKey !mAssociatedMapTypeName ?5* ?listTypeAttributeList ?12* ?searchMethodList ?2*] ;
+  [inSemanticContext->mTypeMap searchKey !mAssociatedMapTypeName ?5* ?listTypeAttributeList ?12* ?searchMethodList ?3*] ;
 #---
   ioSemanticDeclarationListForGeneration += ![@mapProxyTypeForGeneration new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapProxyTypeName]
@@ -662,7 +662,9 @@ override method @classDeclarationAST performSemanticAnalysis
 :
 #------ Self type
   const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mClassTypeName] ;
-#------ Super type
+#------ Super type, and class features
+# A class that has a super may not have any feature
+# A class without a super class admits the 'generatedInSeparateFile' feature
   @unifiedTypeMapProxy superClassProxy ;
   @typedAttributeList allAttributeList ;
   @instanceMethodMap inheritedInstanceMethodMap ;
@@ -670,10 +672,28 @@ override method @classDeclarationAST performSemanticAnalysis
     superClassProxy := [@unifiedTypeMapProxy null] ;
     allAttributeList := [@typedAttributeList emptyList] ;
     inheritedInstanceMethodMap := [@instanceMethodMap emptyMap] ;
+    @bool generatedInSeparateFileFeature := false ;
+    if [mClassFeatureList length] > 0 then
+      foreach mClassFeatureList do
+        if [mValue string] == "generatedInSeparateFile" then
+          if generatedInSeparateFileFeature then
+            error mValue:"the 'generatedInSeparateFile' is already named" ;
+          end if ;
+          generatedInSeparateFileFeature := true ;
+        else
+          error mValue:"only the 'generatedInSeparateFile' feature is allowed here" ;
+        end if ;
+      end foreach ;
+    end if ;
   else
     superClassProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mSuperClassName] ;
     allAttributeList := [superClassProxy mAllTypedAttributeList] ;
     inheritedInstanceMethodMap := [superClassProxy mInstanceMethodMap] ;
+    if [mClassFeatureList length] > 0 then
+      foreach mClassFeatureList do
+        error mValue:"a class that has a super may not have any feature" ;
+      end foreach ;
+    end if ;
   end if ;
 #------ Enter attributes
   @typedAttributeList typedAttributeList [emptyList] ;
@@ -811,6 +831,7 @@ override method @classDeclarationAST performSemanticAnalysis
     !abstractMethodList
     !methodList
     ![selfType mInstanceMethodMap]
+    ![selfType mGenerateHeaderInSeparateFile]
   ]
   !sortString
   ;

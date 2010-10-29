@@ -1318,10 +1318,9 @@ class @classTypeForGeneration extends @semanticTypeForGeneration {
   @typedAttributeList mTypedAttributeList ;
   @abstractMethodDefinitionListForGeneration mAbstractMethodList ;
   @methodDefinitionListForGeneration mMethodList ;
-#  @classMessageDefinitionListForGeneration mMessageList ;
 #  @lazyAttributeListForGeneration mLazyAttributeList ;
-#  @string mClassMessage ;
   @instanceMethodMap mInstanceMethodMap ;
+  @bool mGenerateHeaderInSeparateFile ; # Significant only for classes
 }
 
 #---------------------------------------------------------------------------*

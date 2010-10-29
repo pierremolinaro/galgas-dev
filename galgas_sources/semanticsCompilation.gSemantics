@@ -327,7 +327,7 @@ routine compileSemanticsComponent
       headerString .= [mDeclaration appendDeclaration1] ;
     end foreach ;
     foreach decoratedDeclarationListForGeneration do
-      headerString .= [mDeclaration appendDeclaration2] ;
+      headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory] ;
     end foreach ;
     [@string generateFile
       !inOutputDirectory

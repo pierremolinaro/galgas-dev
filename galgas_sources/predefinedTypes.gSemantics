@@ -336,7 +336,7 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
       end foreach ;
       generatedCode .= [filewrapper predefinedTypeGenerationTemplate.predefinedTypeSeparation] ;
       foreach decoratedDeclarationListForGeneration do
-        generatedCode .= [mDeclaration appendDeclaration2] ;
+        generatedCode .= [mDeclaration appendDeclaration2 !inDirectory] ;
       end foreach ;
       if [@uint errorCount] == 0 then
         [@string generateFile
