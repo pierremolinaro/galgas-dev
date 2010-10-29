@@ -52,7 +52,7 @@ buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalS
   mTerminalSymbolsCount = inTerminalSymbolMap.count () ;
   cEnumerator_terminalSymbolsMapForGrammarAnalysis t (inTerminalSymbolMap, true) ;
   while (t.hasCurrentObject ()) {
-    mStringsArray.addObject (t.current_lkey (HERE).mAttribute_string.stringValue ()) ;  
+    mStringsArray.addObject (t.current_lkey ().mAttribute_string.stringValue ()) ;  
     t.gotoNextObject () ;
   }
 //--- One more entry for the empty string symbol (displayed '$$')
@@ -61,7 +61,7 @@ buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalS
 //--- Append non terminal symbols from original grammar
   cEnumerator_nonTerminalSymbolMapForGrammarAnalysis nonTerminal (inNonterminalSymbolsMapForGrammar, true) ;
   while (nonTerminal.hasCurrentObject ()) {
-    mStringsArray.addObject (nonTerminal.current_lkey (HERE).mAttribute_string.stringValue ()) ;  
+    mStringsArray.addObject (nonTerminal.current_lkey ().mAttribute_string.stringValue ()) ;  
     nonTerminal.gotoNextObject () ;
   }
   mOriginalGrammarSymbolsCount = mStringsArray.count () ;

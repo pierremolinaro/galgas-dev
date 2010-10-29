@@ -1108,7 +1108,7 @@ override method @abstractCategoryMethodAST performSemanticAnalysis
     ![mAbstractCategoryMethodName string]
     !formalParameterListForGeneration
   ]
-  ![selfType key]
+  !"~" # So that category are declared at the end of the file
   ;
 end method ;
 
@@ -1153,7 +1153,7 @@ override method @categoryMethodAST performSemanticAnalysis
     ![selfType mAllTypedAttributeList]
     !semanticInstructionListForGeneration
   ]
-  ![selfType key]
+  !"~" # So that category are declared at the end of the file
   ;
 end method ;
 
@@ -1224,7 +1224,7 @@ override method @overridingCategoryMethodAST performSemanticAnalysis
     ![selfType mAllTypedAttributeList]
     !semanticInstructionListForGeneration
   ]
-  !"{override}"
+  !"~" # So that category are declared at the end of the file
   ;
 end method ;
 
@@ -1311,7 +1311,7 @@ override method @abstractCategoryReaderAST performSemanticAnalysis
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAbstractCategoryReaderReturnedTypeName]
     !formalParameterListForGeneration
   ]
-  ![selfType key]
+  !"~" # So that category are declared at the end of the file
   ;
 end method ;
 
@@ -1365,7 +1365,7 @@ override method @categoryReaderAST performSemanticAnalysis
     ![selfType mAllTypedAttributeList]
     !semanticInstructionListForGeneration
   ]
-  ![selfType key]
+  !"~" # So that category are declared at the end of the file
   ;
 end method ;
 
@@ -1446,7 +1446,7 @@ override method @overridingCategoryReaderAST performSemanticAnalysis
     ![selfType mAllTypedAttributeList]
     !semanticInstructionListForGeneration
   ]
-  !"{override}"
+  !"~" # So that category are declared at the end of the file
   ;
 end method ;
 

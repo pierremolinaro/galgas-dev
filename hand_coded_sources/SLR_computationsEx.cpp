@@ -827,7 +827,7 @@ generate_SLR_grammar_cpp_file (C_CompilerEx & inLexique,
                      << "::nt_" << nonTerminal._key (HERE).identifierRepresentation ()
                      << "_" << currentAltForNonTerminal2._key (HERE).identifierRepresentation ()
                      << " (" ;
-      const PMSInt32 pureBNFleftNonterminalIndex = (PMSInt32) nonTerminal._mID (HERE) ;
+      const PMSInt32 pureBNFleftNonterminalIndex = (PMSInt32) nonTerminal._mNonTerminalIndex (HERE).mValue ;
       const PMSInt32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
       GGS_signatureForGrammarAnalysis::cEnumerator parametre (currentAltForNonTerminal2._mFormalParametersList (HERE), true) ;
       PMSInt16 numeroParametre = 1 ;
@@ -882,7 +882,7 @@ generate_SLR_grammar_cpp_file (C_CompilerEx & inLexique,
       currentAltForNonTerminal2.next () ;
     }
     //--- Engendrer l'axiome ?
-    if (nonTerminal._mID (HERE) == (PMSInt32) inOriginalGrammarStartSymbol) {
+    if (nonTerminal._mNonTerminalIndex (HERE).mValue == inOriginalGrammarStartSymbol) {
       GGS_nonterminalSymbolLabelMapForGrammarAnalysis::cEnumerator currentAltForNonTerminal (nonTerminal._mNonterminalSymbolParametersMap (HERE)) ;
       while (currentAltForNonTerminal.hasCurrentObject ()) {
         generatedZone3.appendCppTitleComment ("Grammar start symbol implementation") ;
@@ -1290,7 +1290,7 @@ generate_SLR_grammar_old_cpp_file (C_CompilerEx & inLexique,
                      << "::nt_" << nonTerminal._key (HERE).identifierRepresentation ()
                      << "_" << currentAltForNonTerminal2._key (HERE).identifierRepresentation ()
                      << " (" << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " & inLexique" ;
-      const PMSInt32 pureBNFleftNonterminalIndex = (PMSInt32) nonTerminal._mID (HERE) ;
+      const PMSInt32 pureBNFleftNonterminalIndex = (PMSInt32) nonTerminal._mNonTerminalIndex (HERE).mValue ;
       const PMSInt32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
       GGS_signatureForGrammarAnalysis::cEnumerator parametre (currentAltForNonTerminal2._mFormalParametersList (HERE), true) ;
       PMSInt16 numeroParametre = 1 ;
@@ -1326,7 +1326,7 @@ generate_SLR_grammar_old_cpp_file (C_CompilerEx & inLexique,
       currentAltForNonTerminal2.next () ;
     }
     //--- Engendrer l'axiome ?
-    if (nonTerminal._mID (HERE) == (PMSInt32) inOriginalGrammarStartSymbol) {
+    if (nonTerminal._mNonTerminalIndex (HERE).mValue == inOriginalGrammarStartSymbol) {
       GGS_nonterminalSymbolLabelMapForGrammarAnalysis::cEnumerator currentAltForNonTerminal (nonTerminal._mNonterminalSymbolParametersMap (HERE)) ;
       while (currentAltForNonTerminal.hasCurrentObject ()) {
         generatedZone3.appendCppTitleComment ("Grammar start symbol implementation") ;

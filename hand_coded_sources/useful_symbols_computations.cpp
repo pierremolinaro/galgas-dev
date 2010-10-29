@@ -106,7 +106,7 @@ displayUnusefulSymbols (C_Compiler & inLexique,
   TC_UniqueArray <PMUInt32> unusedNonTerminalArray ;
   cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis currentNT (inUnusedNonTerminalSymbolsForGrammar, true) ;
   while (currentNT.hasCurrentObject ()) {
-    const PMUInt32 nt = currentNT.current_mNonTerminalIndex (HERE).uintValue () + inVocabulary.getTerminalSymbolsCount () ;
+    const PMUInt32 nt = currentNT.current_mNonTerminalIndex ().uintValue () + inVocabulary.getTerminalSymbolsCount () ;
     unusedNonTerminalArray.addObject (nt) ;
     // printf ("DECLARED UNUSED %u ", nt) ;
     currentNT.gotoNextObject () ;
