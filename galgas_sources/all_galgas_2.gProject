@@ -118,10 +118,11 @@ project all_galgas_2:
   program "galgas_prgm.gProgram" : makefile, xcode_tool ;
 
 #--- Hand coded sources
-  extern "../hand_coded_sources/buildPureBNFgrammar.cpp" : makefile, xcode_tool ;
+  extern "../hand_coded_sources/cDecisionTableElement.cpp" : makefile, xcode_tool ;
   extern "../hand_coded_sources/cVocabulary.cpp" : makefile, xcode_tool ;
+  extern "../hand_coded_sources/buildPureBNFgrammar.cpp" : makefile, xcode_tool ;
+  extern "../hand_coded_sources/empty_strings_computations.cpp" : makefile, xcode_tool ;
   extern "../hand_coded_sources/follow_by_empty_computation.cpp" : makefile, xcode_tool ;
-  extern "../hand_coded_sources/foreach_instructions.cpp" : makefile, xcode_tool ;
   extern "../hand_coded_sources/grammarComputations.cpp" : makefile, xcode_tool ;
   extern "../hand_coded_sources/printOriginalGrammar.cpp" : makefile, xcode_tool ;
   extern "../hand_coded_sources/useful_symbols_computations.cpp" : makefile, xcode_tool ;

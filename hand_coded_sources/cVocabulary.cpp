@@ -24,6 +24,7 @@
 //---------------------------------------------------------------------------*
 
 #include "cVocabulary.h"
+#include "grammarCompilation.h"
 
 //---------------------------------------------------------------------------*
 
@@ -43,25 +44,25 @@ cVocabulary::~cVocabulary (void) {
 //---------------------------------------------------------------------------*
 
 void cVocabulary::
-buildVocabulary (const GGS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
-                 const GGS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
+buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
+                 const GALGAS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
                  const PMUInt32 inOriginalGrammarStartSymbol) {
   mOriginalGrammarSymbolsCount = 0 ;
 //--- Append terminal symbols
   mTerminalSymbolsCount = inTerminalSymbolMap.count () ;
-  GGS_terminalSymbolsMapForGrammarAnalysis::cEnumerator t (inTerminalSymbolMap) ;
+  cEnumerator_terminalSymbolsMapForGrammarAnalysis t (inTerminalSymbolMap, true) ;
   while (t.hasCurrentObject ()) {
-    mStringsArray.addObject (t._key (HERE)) ;  
-    t.next () ;
+    mStringsArray.addObject (t.current_lkey (HERE).mAttribute_string.stringValue ()) ;  
+    t.gotoNextObject () ;
   }
 //--- One more entry for the empty string symbol (displayed '$$')
   mStringsArray.addObject ("") ; // Empty string symbol
   mTerminalSymbolsCount ++ ;
 //--- Append non terminal symbols from original grammar
-  GGS_nonTerminalSymbolMapForGrammarAnalysis::cEnumerator nonTerminal (inNonterminalSymbolsMapForGrammar) ;
+  cEnumerator_nonTerminalSymbolMapForGrammarAnalysis nonTerminal (inNonterminalSymbolsMapForGrammar, true) ;
   while (nonTerminal.hasCurrentObject ()) {
-    mStringsArray.addObject (nonTerminal._key (HERE)) ;  
-    nonTerminal.next () ;
+    mStringsArray.addObject (nonTerminal.current_lkey (HERE).mAttribute_string.stringValue ()) ;  
+    nonTerminal.gotoNextObject () ;
   }
   mOriginalGrammarSymbolsCount = mStringsArray.count () ;
 //--- For all symbols of original grammar, don't generate choice

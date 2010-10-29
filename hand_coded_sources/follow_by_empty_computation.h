@@ -31,7 +31,7 @@ class cPureBNFproductionsList ;
 class C_HTML_FileWrite ;
 class cVocabulary ;
 class C_BDD_Set1 ;
-class C_LexiqueEx ;
+class C_Lexique ;
 
 //---------------------------------------------------------------------------*
 

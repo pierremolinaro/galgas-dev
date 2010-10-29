@@ -32,6 +32,8 @@
 #include "utilities/MF_MemoryControl.h"
 #include "streams/C_ConsoleOut.h"
 #include "galgas2/C_galgas_CLI_Options.h"
+#include "galgas2/C_Compiler.h"
+#include "galgas_cli_options.h"
 
 //---------------------------------------------------------------------------*
 
@@ -47,7 +49,7 @@
 #include "cVocabulary.h"
 #include "printOriginalGrammar.h"
 #include "buildPureBNFgrammar.h"
-#include "galgas_cli_options.h"
+#include "grammarCompilation.h"
 
 //---------------------------------------------------------------------------*
 
@@ -83,17 +85,10 @@ engendrerAppelProduction (const PMSInt16 nombreDeParametres,
              << "_" << inVocabulary.getSymbol (aNumeroNonTerminalGauche COMMA_HERE).identifierRepresentation ()
              << "_i" << cStringWithUnsigned (mProductionIndex)
              << "_" << inAltName.identifierRepresentation () << "(" ;
-  if (! gOption_galgas_5F_cli_5F_options_legacyCodeGeneration.mValue) {
-    for (PMSInt32 i=1 ; i<nombreDeParametres ; i++) {
-       fichierCPP << "parameter_" << cStringWithSigned (i)  << ", " ;
-    }
-    fichierCPP << "inLexique" ;
-  }else{
-    fichierCPP << "inLexique" ;
-    for (PMSInt32 i=1 ; i<nombreDeParametres ; i++) {
-      fichierCPP << ", parameter_" << cStringWithSigned (i) ;
-    }
+  for (PMSInt32 i=1 ; i<nombreDeParametres ; i++) {
+     fichierCPP << "parameter_" << cStringWithSigned (i)  << ", " ;
   }
+  fichierCPP << "inLexique" ;
   fichierCPP << ") ;\n" ;
 }
 
@@ -272,16 +267,16 @@ static PMUInt16 bddBitCountForVocabulary (const cVocabulary & inVocabulary) {
 //---------------------------------------------------------------------------*
 
 static void
-analyzeGrammar (C_CompilerEx & inLexique,
-                const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
-                const GGS_lstring & inTargetFileName,
-                const GGS_lstring & inGrammarClass,
-                const GGS_uint & inOriginalGrammarStartSymbol,
+analyzeGrammar (C_Compiler & inLexique,
+                const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
+                const GALGAS_lstring & inTargetFileName,
+                const GALGAS_lstring & inGrammarClass,
+                const GALGAS_uint & inOriginalGrammarStartSymbol,
                 const C_String & inLexiqueName,
-                const GGS_location & errorLocation,
-                const GGS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
-                const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
-                const GGS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
+                const GALGAS_location & errorLocation,
+                const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
+                const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
+                const GALGAS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
                 const C_String & inOutputDirectoryForCppFiles,
                 const C_String & inOutputDirectoryForHTMLFile) {
   bool warningFlag = false ;
@@ -289,16 +284,16 @@ analyzeGrammar (C_CompilerEx & inLexique,
 //--- Depending of grammar class, fix operations to perform
   typedef enum {kDefaultBehavior, kLL1grammar, kSLRgrammar, kLR1grammar, kGrammarClassError} enumGrammarClass ;
   enumGrammarClass grammarClass = kGrammarClassError ;
-  if (inGrammarClass.length () == 0) { // Default behavior
+  if (inGrammarClass.mAttribute_string.stringValue ().length () == 0) { // Default behavior
     grammarClass = kDefaultBehavior ;
-  }else if (inGrammarClass.compare ("LL1") == 0) { // Force LL (1) grammar
+  }else if (inGrammarClass.mAttribute_string.stringValue ().compare ("LL1") == 0) { // Force LL (1) grammar
     grammarClass = kLL1grammar ;
-  }else if (inGrammarClass.compare ("SLR") == 0) { // Force SLR grammar
+  }else if (inGrammarClass.mAttribute_string.stringValue ().compare ("SLR") == 0) { // Force SLR grammar
     grammarClass = kSLRgrammar ;
-  }else if (inGrammarClass.compare ("LR1") == 0) { // Force LR (1) grammar
+  }else if (inGrammarClass.mAttribute_string.stringValue ().compare ("LR1") == 0) { // Force LR (1) grammar
     grammarClass = kLR1grammar ;
   }else{ // Unknown class... error !
-    inGrammarClass.signalSemanticError (inLexique, "Unknown grammar class" COMMA_HERE) ;
+    inLexique.semanticErrorAtLocation (inGrammarClass.mAttribute_location, "Unknown grammar class" COMMA_HERE) ;
   }
 
 //--- Error flag
@@ -313,11 +308,11 @@ analyzeGrammar (C_CompilerEx & inLexique,
 
 //--- Create output HTML file
   inOutputDirectoryForHTMLFile.makeDirectoryIfDoesNotExist () ;
-  const C_String HTMLfileName = inOutputDirectoryForHTMLFile + "/" + inTargetFileName + ".html" ;
+  const C_String HTMLfileName = inOutputDirectoryForHTMLFile + "/" + inTargetFileName.mAttribute_string.stringValue () + ".html" ;
   C_HTML_FileWrite * HTMLfile = NULL ;
   if (outputHTMLfile && inLexique.mPerformGeneration) {
     C_String s ;
-    s << "'" << inTargetFileName << "' grammar" ;
+    s << "'" << inTargetFileName.mAttribute_string.stringValue () << "' grammar" ;
     bool ok = false ;
     macroMyNew (HTMLfile, C_HTML_FileWrite (HTMLfileName,
                                             s,
@@ -554,7 +549,7 @@ analyzeGrammar (C_CompilerEx & inLexique,
                       FOLLOWsets,
                       inNonterminalSymbolsMapForGrammar,
                       inOriginalGrammarStartSymbol.uintValue (),
-                      inTargetFileName,
+                      inTargetFileName.mAttribute_string.stringValue (),
                       inOutputDirectoryForCppFiles,
                       inLexiqueName,
                       ok,
@@ -575,7 +570,7 @@ analyzeGrammar (C_CompilerEx & inLexique,
                       FOLLOWarray,
                       inNonterminalSymbolsMapForGrammar,
                       inOriginalGrammarStartSymbol.uintValue (),
-                      inTargetFileName,
+                      inTargetFileName.mAttribute_string.stringValue (),
                       inOutputDirectoryForCppFiles,
                       inLexiqueName,
                       ok,
@@ -600,7 +595,7 @@ analyzeGrammar (C_CompilerEx & inLexique,
                       vocabularyDerivingToEmpty_Array,
                       inNonterminalSymbolsMapForGrammar,
                       inOriginalGrammarStartSymbol.uintValue (),
-                      inTargetFileName,
+                      inTargetFileName.mAttribute_string.stringValue (),
                       inOutputDirectoryForCppFiles,
                       inLexiqueName,
                       ok,
@@ -632,7 +627,7 @@ analyzeGrammar (C_CompilerEx & inLexique,
                       " turn on '--output-html-grammar-file' option in order to get an output file for debugging" ;
 
     }
-    errorLocation.signalSemanticError (inLexique, errorMessage COMMA_HERE) ;
+    inLexique.semanticErrorAtLocation (errorLocation, errorMessage COMMA_HERE) ;
   }else if (warningFlag) {
     C_String s ;
     s << "OK ; no error, but warning(s) step(s)" ;
@@ -652,9 +647,9 @@ analyzeGrammar (C_CompilerEx & inLexique,
     if (HTMLfile != NULL) {
       warningMessage << "see file '" << HTMLfileName << "'" ;
     }else{
-      warningMessage << "turn on '-H' command line option, and see generated '" << inTargetFileName << ".html' file" ;
+      warningMessage << "turn on '-H' command line option, and see generated '" << inTargetFileName.mAttribute_string.stringValue () << ".html' file" ;
     }
-    errorLocation.signalSemanticWarning (inLexique, warningMessage COMMA_HERE) ;
+    inLexique.semanticWarningAtLocation (errorLocation, warningMessage COMMA_HERE) ;
   }else if (HTMLfile != NULL) {
     HTMLfile->appendCppTitleComment ("OK (no error, no warning)", "title") ;
   }
@@ -673,20 +668,20 @@ analyzeGrammar (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_analyzeGrammar (C_CompilerEx & inLexique,
-                        const GGS_lstring inTargetFileName,
-                        const GGS_lstring inGrammarClass,
-                        const GGS_uint inOriginalGrammarStartSymbol,
-                        const GGS_string inLexiqueName,
-                        const GGS_location inErrorLocation,
-                        const GGS_terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap,
-                        const GGS_syntaxComponentListForGrammarAnalysis inSyntaxComponentsList,
-                        const GGS_nonTerminalSymbolMapForGrammarAnalysis inNonterminalSymbolsMapForGrammar,
-                        const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar,
-                        const GGS_string inOutputDirectoryForCppFiles,
-                        const GGS_string inOutputDirectoryForHTMLFile
-                        COMMA_UNUSED_LOCATION_ARGS) {
-  if (inLexique.currentFileErrorCount() == 0) {
+routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
+                                      const GALGAS_lstring inGrammarClass,
+                                      const GALGAS_uint inOriginalGrammarStartSymbol,
+                                      const GALGAS_string inLexiqueName,
+                                      const GALGAS_location inErrorLocation,
+                                      const GALGAS_terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap,
+                                      const GALGAS_syntaxComponentListForGrammarAnalysis inSyntaxComponentsList,
+                                      const GALGAS_nonTerminalSymbolMapForGrammarAnalysis inNonterminalSymbolsMapForGrammar,
+                                      const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar,
+                                      const GALGAS_string inOutputDirectoryForCppFiles,
+                                      const GALGAS_string inOutputDirectoryForHTMLFile,
+                                      C_Compiler * inLexique
+                                      COMMA_UNUSED_LOCATION_ARGS) {
+  if (inLexique->currentFileErrorCount() == 0) {
     #ifdef LOG_GRAMMAR_COMPUTATIONS
       printf ("MARK AND SWEEP BDD NODES\n") ; fflush (stdout) ;
     #endif
@@ -695,18 +690,18 @@ routine_analyzeGrammar (C_CompilerEx & inLexique,
     #ifdef LOG_GRAMMAR_COMPUTATIONS
       printf ("MARK AND SWEEP BDD NODES DONE\n") ; fflush (stdout) ;
     #endif
-    analyzeGrammar (inLexique,
+    analyzeGrammar (*inLexique,
                     inUnusedNonTerminalSymbolsForGrammar,
                     inTargetFileName,
                     inGrammarClass,
                     inOriginalGrammarStartSymbol,
-                    inLexiqueName.string (),
+                    inLexiqueName.stringValue (),
                     inErrorLocation,
                     inTerminalSymbolMap,
                     inSyntaxComponentsList,
                     inNonterminalSymbolsMapForGrammar,
-                    inOutputDirectoryForCppFiles.string (),
-                    inOutputDirectoryForHTMLFile.string ()) ;
+                    inOutputDirectoryForCppFiles.stringValue (),
+                    inOutputDirectoryForHTMLFile.stringValue ()) ;
   }
 }
 

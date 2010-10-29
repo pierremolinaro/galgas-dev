@@ -24,7 +24,6 @@
 //---------------------------------------------------------------------------*
 
 #include "collections/TC_UniqueArray.h"
-#include "common_semantics.h"
 
 //---------------------------------------------------------------------------*
 
@@ -33,19 +32,20 @@ class C_HTML_FileWrite ;
 class cVocabulary ;
 class C_BDD_Set2 ;
 class C_String ;
-class C_LexiqueEx ;
+class C_Compiler ;
+class GALGAS_nonTerminalSymbolMapForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
 void
-LL1_computations (C_CompilerEx & inLexique,
+LL1_computations (C_Compiler & inLexique,
                   const cPureBNFproductionsList & inPureBNFproductions,
                   C_HTML_FileWrite * inHTMLfile,
                   const cVocabulary & inVocabulary,
                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                   const C_BDD_Set2 & inFIRSTsets,
                   const C_BDD_Set2 & inFOLLOWsets,
-                  const GGS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForOriginalGrammar,
+                  const GALGAS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForOriginalGrammar,
                   const PMUInt32 inOriginalGrammarStartSymbol,
                   const C_String & inTargetFileName,
                   const C_String & inOutputDirectoryForCppFiles,

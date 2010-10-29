@@ -26,6 +26,7 @@
 #include "buildPureBNFgrammar.h"
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
+#include "grammarCompilation.h"
 
 //---------------------------------------------------------------------------*
 
@@ -34,14 +35,16 @@
 //---------------------------------------------------------------------------*
 
 static void
-fixNewNonterminalSymbolsForList (const GGS_syntaxInstructionListForGrammarAnalysis & inList,
+fixNewNonterminalSymbolsForList (const GALGAS_syntaxInstructionListForGrammarAnalysis & inList,
                                  cVocabulary & ioVocabulary,
                                  const C_String & inSyntaxComponentName,
                                  PMSInt32 & ioCount) {
-  GGS_syntaxInstructionListForGrammarAnalysis::cEnumerator currentInstruction (inList, true) ;
+  cEnumerator_syntaxInstructionListForGrammarAnalysis currentInstruction (inList, true) ;
   while (currentInstruction.hasCurrentObject ()) {
-    currentInstruction._mInstruction (HERE) (HERE)->fixNewNonterminalSymbols (ioVocabulary, inSyntaxComponentName, ioCount) ;
-    currentInstruction.next () ;
+    cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) currentInstruction.current_mInstruction (HERE).ptr (HERE) ;
+    macroValidObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
+    p->fixNewNonterminalSymbols (ioVocabulary, inSyntaxComponentName, ioCount) ;
+    currentInstruction.gotoNextObject () ;
   }
 }
 
@@ -149,7 +152,7 @@ buildRightDerivation (const PMSInt32 inTerminalSymbolsCount,
                       const PMSInt32 inOriginalGrammarSymbolCount,
                       TC_UniqueArray <PMSInt16> & ioInstructionsList) {
   GGS_branchListForGrammarAnalysis::cEnumerator firstBranch (mRepeatBranchList, true) ;
-  GGS_syntaxInstructionListForGrammarAnalysis::cEnumerator instruction (firstBranch._mSyntaxInstructionList (HERE), true) ;
+  GALGAS_syntaxInstructionListForGrammarAnalysis::cEnumerator instruction (firstBranch._mSyntaxInstructionList (HERE), true) ;
   while (instruction.hasCurrentObject ()) {
     instruction._mInstruction (HERE) (HERE)->buildRightDerivation (inTerminalSymbolsCount, inOriginalGrammarSymbolCount, ioInstructionsList) ;
     instruction.next () ;
@@ -183,7 +186,7 @@ buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
  GGS_branchListForGrammarAnalysis::cEnumerator currentBranch (mSelectBranchList, true) ;
   while (currentBranch.hasCurrentObject ()) {
     TC_UniqueArray <PMSInt16> derivation ;
-    GGS_syntaxInstructionListForGrammarAnalysis::cEnumerator instruction (currentBranch._mSyntaxInstructionList (HERE), true) ;
+    GALGAS_syntaxInstructionListForGrammarAnalysis::cEnumerator instruction (currentBranch._mSyntaxInstructionList (HERE), true) ;
     while (instruction.hasCurrentObject ()) {
        instruction._mInstruction (HERE) (HERE)->buildRightDerivation (inTerminalSymbolsCount, inOriginalGrammarSymbolCount, derivation) ;
        instruction.next () ;
@@ -202,7 +205,7 @@ buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
 //--- Construire les productions issues des instructions choix et repeter
   currentBranch.rewind () ;
   while (currentBranch.hasCurrentObject ()) {
-    GGS_syntaxInstructionListForGrammarAnalysis::cEnumerator instruction (currentBranch._mSyntaxInstructionList (HERE), true) ;
+    GALGAS_syntaxInstructionListForGrammarAnalysis::cEnumerator instruction (currentBranch._mSyntaxInstructionList (HERE), true) ;
     while (instruction.hasCurrentObject ()) {
       instruction._mInstruction (HERE) (HERE)->buildSelectAndRepeatProductions (inTerminalSymbolsCount,
                                                                      inOriginalGrammarSymbolCount,
@@ -251,14 +254,14 @@ buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
   while (currentBranch.hasCurrentObject ()) {
     TC_UniqueArray <PMSInt16> derivation ;
   //--- insert branch instructions
-    GGS_syntaxInstructionListForGrammarAnalysis::cEnumerator instruction (currentBranch._mSyntaxInstructionList (HERE), true) ;
+    GALGAS_syntaxInstructionListForGrammarAnalysis::cEnumerator instruction (currentBranch._mSyntaxInstructionList (HERE), true) ;
     while (instruction.hasCurrentObject ()) {
        instruction._mInstruction (HERE) (HERE)->buildRightDerivation (inTerminalSymbolsCount, inOriginalGrammarSymbolCount, derivation) ;
        instruction.next () ;
     }
   //--- insert sequence from X
     GGS_branchListForGrammarAnalysis::cEnumerator firstBranch (mRepeatBranchList, true) ;
-    GGS_syntaxInstructionListForGrammarAnalysis::cEnumerator firstBranchInstruction (firstBranch._mSyntaxInstructionList (HERE), true) ;
+    GALGAS_syntaxInstructionListForGrammarAnalysis::cEnumerator firstBranchInstruction (firstBranch._mSyntaxInstructionList (HERE), true) ;
 //    instruction = firstBranch->mInstructionList.firstObject () ;
     while (firstBranchInstruction.hasCurrentObject ()) {
       firstBranchInstruction._mInstruction (HERE) (HERE)->buildRightDerivation (inTerminalSymbolsCount, inOriginalGrammarSymbolCount, derivation) ;
@@ -280,7 +283,7 @@ buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
 //--- Construire les productions issues des instructions choix et repeter
   currentBranch.rewind () ;
   while (currentBranch.hasCurrentObject ()) {
-    GGS_syntaxInstructionListForGrammarAnalysis::cEnumerator instruction (currentBranch._mSyntaxInstructionList (HERE), true) ;
+    GALGAS_syntaxInstructionListForGrammarAnalysis::cEnumerator instruction (currentBranch._mSyntaxInstructionList (HERE), true) ;
     while (instruction.hasCurrentObject ()) {
       instruction._mInstruction (HERE) (HERE)->buildSelectAndRepeatProductions (inTerminalSymbolsCount,
                                                                      inOriginalGrammarSymbolCount,
@@ -320,13 +323,13 @@ buildSelectAndRepeatProductions (const PMSInt32 /* inTerminalSymbolsCount */,
 //---------------------------------------------------------------------------*
 
 void
-buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
+buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
                      cVocabulary & ioVocabulary,
                      cPureBNFproductionsList & ioProductions) {
 //--- Fix new non terminal symbols index and names
-  GGS_syntaxComponentListForGrammarAnalysis::cEnumerator currentComponent (inSyntaxComponentsList, true) ;
+  GALGAS_syntaxComponentListForGrammarAnalysis::cEnumerator currentComponent (inSyntaxComponentsList, true) ;
   while (currentComponent.hasCurrentObject ()) {
-    GGS_productionRuleListForGrammarAnalysis::cEnumerator currentRule (currentComponent._mProductionRulesList (HERE), true) ;
+    GALGAS_productionRuleListForGrammarAnalysis::cEnumerator currentRule (currentComponent._mProductionRulesList (HERE), true) ;
     PMSInt32 count = 0 ;
     while (currentRule.hasCurrentObject ()) {
       fixNewNonterminalSymbolsForList (currentRule._mInstructionList (HERE),
@@ -343,10 +346,10 @@ buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxC
   const PMSInt32 orginalGrammarSymbolCount = ioVocabulary.originalGrammarSymbolsCount () ;
   currentComponent.rewind () ;
   while (currentComponent.hasCurrentObject ()) {
-    GGS_productionRuleListForGrammarAnalysis::cEnumerator currentRule (currentComponent._mProductionRulesList (HERE), true) ;
+    GALGAS_productionRuleListForGrammarAnalysis::cEnumerator currentRule (currentComponent._mProductionRulesList (HERE), true) ;
     while (currentRule.hasCurrentObject ()) {
       TC_UniqueArray <PMSInt16> derivation ;
-      GGS_syntaxInstructionListForGrammarAnalysis::cEnumerator instruction (currentRule._mInstructionList (HERE), true) ;
+      GALGAS_syntaxInstructionListForGrammarAnalysis::cEnumerator instruction (currentRule._mInstructionList (HERE), true) ;
       while (instruction .hasCurrentObject ()) {
         instruction._mInstruction (HERE) (HERE)->buildRightDerivation (terminalSymbolsCount, orginalGrammarSymbolCount, derivation) ;
         instruction.next () ;
@@ -368,9 +371,9 @@ buildPureBNFgrammar (const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxC
 //--- Build pure BNF productions from 'repeat' and 'select' instructions
   currentComponent.rewind () ;
   while (currentComponent.hasCurrentObject ()) {
-    GGS_productionRuleListForGrammarAnalysis::cEnumerator currentRule (currentComponent._mProductionRulesList (HERE), true) ;
+    GALGAS_productionRuleListForGrammarAnalysis::cEnumerator currentRule (currentComponent._mProductionRulesList (HERE), true) ;
     while (currentRule.hasCurrentObject ()) {
-      GGS_syntaxInstructionListForGrammarAnalysis::cEnumerator instruction (currentRule._mInstructionList (HERE), true) ;
+      GALGAS_syntaxInstructionListForGrammarAnalysis::cEnumerator instruction (currentRule._mInstructionList (HERE), true) ;
       while (instruction.hasCurrentObject ()) {
         instruction._mInstruction (HERE) (HERE)->buildSelectAndRepeatProductions (terminalSymbolsCount,
                                                      orginalGrammarSymbolCount,

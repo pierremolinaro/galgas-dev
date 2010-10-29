@@ -23,12 +23,14 @@
 #include "files/C_HTML_FileWrite.h"
 #include "bdd/C_BDD_Set2.h"
 #include "utilities/MF_MemoryControl.h"
+#include "galgas2/C_Compiler.h"
 
 //---------------------------------------------------------------------------*
 
 #include "useful_symbols_computations.h"
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
+#include "grammarCompilation.h"
 
 //---------------------------------------------------------------------------*
 
@@ -93,8 +95,8 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
 //---------------------------------------------------------------------------*
 
 static bool
-displayUnusefulSymbols (C_CompilerEx & inLexique,
-                        const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
+displayUnusefulSymbols (C_Compiler & inLexique,
+                        const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                         const C_BDD_Set1 & inUsefulSymbols,
                         const PMUInt16 inBDDBitCount,
                         C_HTML_FileWrite * inHTMLfile,
@@ -102,12 +104,12 @@ displayUnusefulSymbols (C_CompilerEx & inLexique,
                         const PMSInt32 inIterationCount,
                         const bool inVerboseOptionOn) {
   TC_UniqueArray <PMUInt32> unusedNonTerminalArray ;
-  GGS_unusedNonTerminalSymbolMapForGrammarAnalysis::cEnumerator currentNT (inUnusedNonTerminalSymbolsForGrammar) ;
+  cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis currentNT (inUnusedNonTerminalSymbolsForGrammar, true) ;
   while (currentNT.hasCurrentObject ()) {
-    const PMUInt32 nt = currentNT._mNonTerminalIndex (HERE).uintValue () + inVocabulary.getTerminalSymbolsCount () ;
+    const PMUInt32 nt = currentNT.current_mNonTerminalIndex (HERE).uintValue () + inVocabulary.getTerminalSymbolsCount () ;
     unusedNonTerminalArray.addObject (nt) ;
     // printf ("DECLARED UNUSED %u ", nt) ;
-    currentNT.next () ;
+    currentNT.gotoNextObject () ;
   }
 
   bool warning = false ;
@@ -244,8 +246,8 @@ displayUnusefulSymbols (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-useful_symbols_computations (C_CompilerEx & inLexique,
-                             const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
+useful_symbols_computations (C_Compiler & inLexique,
+                             const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                              const cPureBNFproductionsList & inPureBNFproductions,
                              const PMUInt16 inBDDBitCount,
                              const cVocabulary & inVocabulary,
