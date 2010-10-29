@@ -821,26 +821,26 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
 //--- Generate methods, one by non terminal ----------------------------------
   cEnumerator_nonTerminalSymbolMapForGrammarAnalysis nonTerminal (inNonterminalSymbolsMapForGrammar, true) ;
   while (nonTerminal.hasCurrentObject ()) {
-    generatedZone3.appendCppTitleComment (C_String ("'") + nonTerminal.current_lkey (HERE).mAttribute_string.stringValue () + "' non terminal implementation") ;
-    cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal2 (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), true) ;
+    generatedZone3.appendCppTitleComment (C_String ("'") + nonTerminal.current_lkey ().mAttribute_string.stringValue () + "' non terminal implementation") ;
+    cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal2 (nonTerminal.current_mNonterminalSymbolParametersMap (), true) ;
     while (currentAltForNonTerminal2.hasCurrentObject ()) {
       generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-                     << "::nt_" << nonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
-                     << "_" << currentAltForNonTerminal2.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+                     << "::nt_" << nonTerminal.current_lkey ().mAttribute_string.stringValue ().identifierRepresentation ()
+                     << "_" << currentAltForNonTerminal2.current_lkey ().mAttribute_string.stringValue ().identifierRepresentation ()
                      << " (" ;
-      const PMSInt32 pureBNFleftNonterminalIndex = (PMSInt32) nonTerminal.current_mID (HERE) ;
+      const PMSInt32 pureBNFleftNonterminalIndex = (PMSInt32) nonTerminal.current_mNonTerminalIndex ().uintValue () ;
       const PMSInt32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
-      cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal2.current_mFormalParametersList (HERE), true) ;
+      cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal2.current_mFormalParametersList (), true) ;
       PMSInt16 numeroParametre = 1 ;
       while (parametre.hasCurrentObject ()) {
-        switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
+        switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis ().enumValue ()) {
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
           generatedZone3 << "const " ;
           break ;
         default : break ;
         }
-        generatedZone3 << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mAttribute_string.stringValue ().identifierRepresentation () ;
-        switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
+        generatedZone3 << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis ().mAttribute_string.stringValue ().identifierRepresentation () ;
+        switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis ().enumValue ()) {
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
           generatedZone3 << " " ;
           break ;
@@ -871,7 +871,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
           generatedZone3 << "  case " << cStringWithSigned (ip) << " :\n    " ;
           inProductionRules (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                       inVocabulary,
-                                                                      currentAltForNonTerminal2.current_lkey (HERE).mAttribute_string.stringValue (),
+                                                                      currentAltForNonTerminal2.current_lkey ().mAttribute_string.stringValue (),
                                                                       generatedZone3) ;
           generatedZone3 << "    break ;\n" ;
         }
@@ -883,28 +883,28 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
       currentAltForNonTerminal2.gotoNextObject () ;
     }
     //--- Engendrer l'axiome ?
-    if (nonTerminal.current_mID (HERE) == (PMSInt32) inOriginalGrammarStartSymbol) {
-      cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), true) ;
+    if (nonTerminal.current_mNonTerminalIndex ().uintValue () == inOriginalGrammarStartSymbol) {
+      cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (), true) ;
       while (currentAltForNonTerminal.hasCurrentObject ()) {
         generatedZone3.appendCppTitleComment ("Grammar start symbol implementation") ;
       //--- Define file parsing static method
         generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-                       << "::_performSourceFileParsing_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+                       << "::_performSourceFileParsing_" << currentAltForNonTerminal.current_lkey ().mAttribute_string.stringValue ().identifierRepresentation ()
                        << " (C_Compiler * inCompiler"
                           ",\n                                "
                           "GALGAS_lstring inFilePath" ;
-        cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), true) ;
+        cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (), true) ;
         PMSInt32 numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           generatedZone3 << ",\n                                " ;
-          switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
+          switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis ().enumValue ()) {
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
             generatedZone3 << "const " ;
             break ;
           default : break ;
           }
-          generatedZone3 << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mAttribute_string.stringValue ().identifierRepresentation () ;
-          switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
+          generatedZone3 << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis ().mAttribute_string.stringValue ().identifierRepresentation () ;
+          switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis ().enumValue ()) {
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
             generatedZone3 << " " ;
             break ;
@@ -941,8 +941,8 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                           "          if (ok && ! scanner->mParseOnlyFlag) {\n"
                           "            cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
                           "            " ;
-        generatedZone3 << "grammar.nt_" << nonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
-                       << "_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+        generatedZone3 << "grammar.nt_" << nonTerminal.current_lkey ().mAttribute_string.stringValue ().identifierRepresentation ()
+                       << "_" << currentAltForNonTerminal.current_lkey ().mAttribute_string.stringValue ().identifierRepresentation ()
                        << " (" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
@@ -961,7 +961,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
-          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut) {
+          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis ().enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut) {
             generatedZone3 << "          parameter_" << cStringWithSigned (numeroParametre) << ".drop () ;\n" ;
           }
           parametre.gotoNextObject () ;
@@ -978,7 +978,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
-          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut) {
+          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis ().enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut) {
             generatedZone3 << "    parameter_" << cStringWithSigned (numeroParametre) << ".drop () ;\n" ;
           }
           parametre.gotoNextObject () ;
@@ -990,7 +990,7 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
       //--- Define string parsing static method
         generatedZone3.appendCppHyphenLineComment () ;
         generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-                       << "::_performSourceStringParsing_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+                       << "::_performSourceStringParsing_" << currentAltForNonTerminal.current_lkey ().mAttribute_string.stringValue ().identifierRepresentation ()
                        << " (C_Compiler * inCompiler"
                           ",\n                                "
                           "GALGAS_string inSourceString" ;
@@ -998,14 +998,14 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           generatedZone3 << ",\n                                " ;
-          switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
+          switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis ().enumValue ()) {
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
             generatedZone3 << "const " ;
             break ;
           default : break ;
           }
-          generatedZone3 << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mAttribute_string.stringValue ().identifierRepresentation () ;
-          switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
+          generatedZone3 << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis ().mAttribute_string.stringValue ().identifierRepresentation () ;
+          switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis ().enumValue ()) {
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
             generatedZone3 << " " ;
             break ;
@@ -1035,8 +1035,8 @@ generate_SLR_grammar_cpp_file (C_Compiler & inLexique,
                           "    if (ok && ! scanner->mParseOnlyFlag) {\n"
                           "      cGrammar_" << inTargetFileName.identifierRepresentation () << " _grammar ;\n"
                           "      " ;
-        generatedZone3 << "_grammar.nt_" << nonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
-                       << "_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+        generatedZone3 << "_grammar.nt_" << nonTerminal.current_lkey ().mAttribute_string.stringValue ().identifierRepresentation ()
+                       << "_" << currentAltForNonTerminal.current_lkey ().mAttribute_string.stringValue ().identifierRepresentation ()
                        << " (" ;
         parametre.rewind () ;
         numeroParametre = 1 ;

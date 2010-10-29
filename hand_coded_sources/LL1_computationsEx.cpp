@@ -493,7 +493,7 @@ static void old_generate_LL1_grammar_Cpp_file (C_CompilerEx & inLexique,
   bool first = true ;
   while (nonTerminal.hasCurrentObject ()) {
     printProductions (inPureBNFproductions, inVocabulary,  inLexiqueName,
-                      nonTerminal._mID (HERE), productionIndex, first,
+                      nonTerminal._mNonTerminalIndex (HERE).mValue, productionIndex, first,
                       productionRulesIndex, productionRulesTitle,
                       productionRuleDescription,
                       firstProductionRuleIndex, generatedZone3) ;
@@ -564,7 +564,7 @@ static void old_generate_LL1_grammar_Cpp_file (C_CompilerEx & inLexique,
   nonTerminal.rewind () ;
   while (nonTerminal.hasCurrentObject ()) {
     printDecisionTable (inPureBNFproductions, inVocabulary, inLexiqueName,
-                        nonTerminal._mID (HERE), decisionTableIndex,
+                        nonTerminal._mNonTerminalIndex (HERE).mValue, decisionTableIndex,
                         productionDecisionIndex, generatedZone3) ;
     nonTerminal.next () ;
   }
@@ -594,7 +594,7 @@ static void old_generate_LL1_grammar_Cpp_file (C_CompilerEx & inLexique,
   nonTerminal.rewind () ;
   while (nonTerminal.hasCurrentObject ()) {
     generatedZone3.appendCppTitleComment (C_String ("'") + nonTerminal._key (HERE) + "' non terminal implementation") ;
-    const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction (nonTerminal._mID (HERE) COMMA_HERE) >= 0 ;
+    const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction (nonTerminal._mNonTerminalIndex (HERE).mValue COMMA_HERE) >= 0 ;
     GGS_nonterminalSymbolLabelMapForGrammarAnalysis::cEnumerator currentAltForNonTerminal (nonTerminal._mNonterminalSymbolParametersMap (HERE)) ;
     while (currentAltForNonTerminal.hasCurrentObject ()) {
       generatedZone3 << "void C_Grammar_" << inTargetFileName.identifierRepresentation ()
@@ -614,14 +614,14 @@ static void old_generate_LL1_grammar_Cpp_file (C_CompilerEx & inLexique,
         numeroParametre ++ ;
       }
       generatedZone3 << ") {\n" ; 
-      engendrerAiguillageNonTerminaux (inVocabulary, nonTerminal._mID (HERE), numeroParametre,
+      engendrerAiguillageNonTerminaux (inVocabulary, nonTerminal._mNonTerminalIndex (HERE).mValue, numeroParametre,
                                        inPureBNFproductions, generatedZone3,
                                        currentAltForNonTerminal._key (HERE)) ;
       generatedZone3 << "}\n\n" ;
       currentAltForNonTerminal.next () ;
     }
   //--- Generate 'startParsing' method ?
-    if (nonTerminal._mID (HERE) == (PMSInt32) inOriginalGrammarStartSymbol) {
+    if (nonTerminal._mNonTerminalIndex (HERE).mValue == inOriginalGrammarStartSymbol) {
       currentAltForNonTerminal.rewind () ;
       while (currentAltForNonTerminal.hasCurrentObject ()) {
         generatedZone3.appendCppTitleComment ("Grammar start symbol implementation") ;
@@ -841,7 +841,7 @@ generate_LL1_grammar_Cpp_file (C_CompilerEx & inLexique,
   bool first = true ;
   while (nonTerminal.hasCurrentObject ()) {
     printProductions (inPureBNFproductions, inVocabulary,  inLexiqueName,
-                      nonTerminal._mID (HERE), productionIndex, first,
+                      nonTerminal._mNonTerminalIndex (HERE).mValue, productionIndex, first,
                       productionRulesIndex, productionRulesTitle,
                       productionRuleDescription,
                       firstProductionRuleIndex, generatedZone3) ;
@@ -912,7 +912,7 @@ generate_LL1_grammar_Cpp_file (C_CompilerEx & inLexique,
   nonTerminal.rewind () ;
   while (nonTerminal.hasCurrentObject ()) {
     printDecisionTable (inPureBNFproductions, inVocabulary, inLexiqueName,
-                        nonTerminal._mID (HERE), decisionTableIndex,
+                        nonTerminal._mNonTerminalIndex (HERE).mValue, decisionTableIndex,
                         productionDecisionIndex, generatedZone3) ;
     nonTerminal.next () ;
   }
@@ -942,7 +942,7 @@ generate_LL1_grammar_Cpp_file (C_CompilerEx & inLexique,
   nonTerminal.rewind () ;
   while (nonTerminal.hasCurrentObject ()) {
     generatedZone3.appendCppTitleComment (C_String ("'") + nonTerminal._key (HERE) + "' non terminal implementation") ;
-    const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction (nonTerminal._mID (HERE) COMMA_HERE) >= 0 ;
+    const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction (nonTerminal._mNonTerminalIndex (HERE).mValue COMMA_HERE) >= 0 ;
     GGS_nonterminalSymbolLabelMapForGrammarAnalysis::cEnumerator currentAltForNonTerminal (nonTerminal._mNonterminalSymbolParametersMap (HERE)) ;
     while (currentAltForNonTerminal.hasCurrentObject ()) {
       generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
@@ -981,14 +981,14 @@ generate_LL1_grammar_Cpp_file (C_CompilerEx & inLexique,
       }
       generatedZone3 << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * " << (existeProduction ? "inLexique" : "")
                      << ") {\n" ; 
-      engendrerAiguillageNonTerminaux (inVocabulary, nonTerminal._mID (HERE), numeroParametre,
+      engendrerAiguillageNonTerminaux (inVocabulary, nonTerminal._mNonTerminalIndex (HERE).mValue, numeroParametre,
                                        inPureBNFproductions, generatedZone3,
                                        currentAltForNonTerminal._key (HERE)) ;
       generatedZone3 << "}\n\n" ;
       currentAltForNonTerminal.next () ;
     }
   //--- Generate 'startParsing' method ?
-    if (nonTerminal._mID (HERE) == (PMSInt32) inOriginalGrammarStartSymbol) {
+    if (nonTerminal._mNonTerminalIndex (HERE).mValue == inOriginalGrammarStartSymbol) {
       currentAltForNonTerminal.rewind () ;
       while (currentAltForNonTerminal.hasCurrentObject ()) {
         generatedZone3.appendCppTitleComment ("Grammar start symbol implementation") ;
