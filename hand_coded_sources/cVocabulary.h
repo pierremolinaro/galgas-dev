@@ -24,13 +24,12 @@
 //---------------------------------------------------------------------------*
 
 #include "strings/C_String.h"
-#include "common_semantics.h"
 
 //---------------------------------------------------------------------------*
 
 class C_TextFileWrite ;
-class GGS_productionRuleListForGrammarAnalysis ;
-class GGS_terminalSymbolsMapForGrammarAnalysis ;
+class GALGAS_terminalSymbolsMapForGrammarAnalysis ;
+class GALGAS_nonTerminalSymbolMapForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -44,8 +43,8 @@ class cVocabulary {
   public : virtual ~cVocabulary (void) ;
 
 //--- Build vocabulary from original grammar
-  public : void buildVocabulary (const GGS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
-                                 const GGS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
+  public : void buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
+                                 const GALGAS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
                                  const PMUInt32 inOriginalGrammarStartSymbol) ;
 
 //--- Add a new non terminal symbol

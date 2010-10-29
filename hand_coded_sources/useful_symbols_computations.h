@@ -29,14 +29,14 @@ class cPureBNFproductionsList ;
 class cVocabulary ;
 class C_HTML_FileWrite ;
 class C_BDD_Set1 ;
-class C_CompilerEx ;
-class GGS_unusedNonTerminalSymbolMapForGrammarAnalysis ;
+class C_Compiler ;
+class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
 void
-useful_symbols_computations (C_CompilerEx & inLexique,
-                             const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
+useful_symbols_computations (C_Compiler & inLexique,
+                             const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                              const cPureBNFproductionsList & inPureBNFproductions,
                              const PMUInt16 inBDDBitCount,
                              const cVocabulary & inVocabulary,

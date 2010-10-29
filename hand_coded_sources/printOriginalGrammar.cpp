@@ -22,13 +22,14 @@
 #include "files/C_HTML_FileWrite.h"
 
 #include "printOriginalGrammar.h"
+#include "grammarCompilation.h"
 
 //---------------------------------------------------------------------------*
 
 static void
-printInstructionsListForGrammar (const GGS_syntaxInstructionListForGrammarAnalysis & inInstructionsList,
+printInstructionsListForGrammar (const GALGAS_syntaxInstructionListForGrammarAnalysis & inInstructionsList,
                                  C_HTML_FileWrite & inHTMLfile) {
-  GGS_syntaxInstructionListForGrammarAnalysis::cEnumerator currentInstruction (inInstructionsList, true) ;
+  cEnumerator_syntaxInstructionListForGrammarAnalysis currentInstruction (inInstructionsList, true) ;
   while (currentInstruction.hasCurrentObject ()) {
     currentInstruction._mInstruction (HERE) (HERE)->printInstructionForGrammar (inHTMLfile) ;
     currentInstruction.next () ;
@@ -43,7 +44,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "repeat " ;
   inHTMLfile.outputRawData ("</span>") ;
-  GGS_branchListForGrammarAnalysis::cEnumerator currentBranch (mRepeatBranchList, true) ;
+  cEnumerator_branchListForGrammarAnalysis currentBranch (mRepeatBranchList, true) ;
   bool first = true ;
   while (currentBranch.hasCurrentObject ()) {
     if (first) {
@@ -71,7 +72,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "select " ;
   inHTMLfile.outputRawData ("</span>") ;
-  GGS_branchListForGrammarAnalysis::cEnumerator currentBranch (mSelectBranchList, true) ;
+  cEnumerator_branchListForGrammarAnalysis currentBranch (mSelectBranchList, true) ;
   bool first = true ;
   while (currentBranch.hasCurrentObject ()) {
     if (first) {
@@ -112,10 +113,10 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
 //---------------------------------------------------------------------------*
 
 void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
-                           const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList) {
+                           const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList) {
 //--- Print message
   PMSInt32 productionsCount = 0 ;
-  GGS_syntaxComponentListForGrammarAnalysis::cEnumerator currentSyntaxComponent (inSyntaxComponentsList, true) ;
+  cEnumerator_syntaxComponentListForGrammarAnalysis currentSyntaxComponent (inSyntaxComponentsList, true) ;
   while (currentSyntaxComponent.hasCurrentObject ()) {
     productionsCount += currentSyntaxComponent._mProductionRulesList (HERE).count () ;
     currentSyntaxComponent.next () ;
@@ -136,7 +137,7 @@ void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
                << currentSyntaxComponent._mSyntaxComponentName (HERE)
                << "' component" ;
     inHTMLfile.outputRawData ("</td></tr>") ;
-    GGS_productionRuleListForGrammarAnalysis::cEnumerator currentRule (currentSyntaxComponent._mProductionRulesList (HERE), true) ;
+    cEnumerator_productionRuleListForGrammarAnalysis currentRule (currentSyntaxComponent._mProductionRulesList (HERE), true) ;
     while (currentRule.hasCurrentObject ()) {
       inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     //--- Print rule

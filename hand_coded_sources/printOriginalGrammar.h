@@ -23,12 +23,13 @@
 
 //---------------------------------------------------------------------------*
 
-#include "common_semantics.h"
+class C_HTML_FileWrite ;
+class GALGAS_syntaxComponentListForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
 void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
-                           const GGS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList) ;
+                           const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList) ;
 
 //---------------------------------------------------------------------------*
 
