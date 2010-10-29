@@ -3187,7 +3187,15 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
   :
     @bool found := false ;
     outModifierSignature := [@L_EXsignature emptyList] ;
-    if [mOverrideNameList length] > 0 then
+    if [inModifierName string] == "insertFakeKey" then
+      found := true ;
+      outModifierSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentIn] ;
+      outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingModeAST argumentIn] ;
+      outModifierSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentIn] ;
+    elsif [inModifierName string] == "insertSilentFakeKey" then
+      found := true ;
+      outModifierSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentIn] ;
+    elsif [mOverrideNameList length] > 0 then
       if [inModifierName string] == "beginBranch" then
         found := true ;
       elsif [inModifierName string] == "endOverride" then

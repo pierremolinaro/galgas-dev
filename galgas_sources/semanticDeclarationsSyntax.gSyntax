@@ -57,19 +57,19 @@ nonterminal <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeI
 rule <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollectionList :
   $type_name$ ? @lstring mAttributeTypeName ;
   $identifier$ ? @lstring mAttributeName ;
-#  @lstringlist featureList [emptyList] ;
-#  select
-#  or
-#    $feature$ ;
-#    repeat
-#      $identifier$ ? @lstring featureName ;
-#      featureList += !featureName ;
-#    while
-#      $,$ ;
-#    end repeat ;
-#  end select ;
+  @lstringlist featureList [emptyList] ;
+  select
+  or
+    $feature$ ;
+    repeat
+      $identifier$ ? @lstring featureName ;
+      featureList += !featureName ;
+    while
+      $,$ ;
+    end repeat ;
+  end select ;
   $;$ ;
-  ioAttributeInCollectionList += !mAttributeTypeName !mAttributeName ; # !featureList ;
+  ioAttributeInCollectionList += !mAttributeTypeName !mAttributeName !featureList ;
 end rule ;
 
 #---------------------------------------------------------------------------*

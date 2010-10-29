@@ -69,8 +69,10 @@ map @readerMap {
   @bool mHasCompilerArgument ;
   @unifiedTypeMapProxy mReturnedType ;
   @methodQualifier mQualifier ;
+ 
   insert insertKey error message "the '%K' reader is already declared" ;
   search searchKey error message "the '%K' reader is not declared" ;
+
   insert or replace ;
 }
 
@@ -159,6 +161,8 @@ list @enumerationDescriptorList {
 list @typedAttributeList {
   @unifiedTypeMapProxy mAttributeTypeProxy ;
   @lstring mAttributeName ;
+  @bool mHasSetter ;
+  @bool mHasGetter ;
 }
 
 #---------------------------------------------------------------------------*

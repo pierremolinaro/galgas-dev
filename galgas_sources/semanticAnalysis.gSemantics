@@ -148,9 +148,13 @@ override method @listDeclarationAST performSemanticAnalysis
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
     @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
+    @bool hasGetter := true ;
+    @bool hasSetter := true ;
     typedAttributeList +=
       !t
       !mAttributeName
+      !hasSetter
+      !hasGetter
     ;
     [!?attributeMap insertKey !mAttributeName !t] ;
   end foreach ;
@@ -175,9 +179,13 @@ override method @sortedListDeclarationAST performSemanticAnalysis
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
     @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
+    @bool hasSetter := true ;
+    @bool hasGetter := true ;
     typedAttributeList +=
       !t
       !mAttributeName
+      !hasSetter
+      !hasGetter
     ;
     [!?attributeMap insertKey !mAttributeName !t] ;
   end foreach ;
@@ -215,9 +223,16 @@ override method @structDeclarationAST performSemanticAnalysis
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
     @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
+    foreach mFeatureList do
+      error mValue : "an enum attribute accepts no feature" ;
+    end foreach ;
+    @bool hasSetter := false ;
+    @bool hasGetter := false ;
     typedAttributeList +=
       !t
       !mAttributeName
+      !hasSetter
+      !hasGetter
     ;
     [!?attributeMap insertKey !mAttributeName !t] ;
   end foreach ;
@@ -334,9 +349,13 @@ override method @mapDeclarationAST performSemanticAnalysis
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
     @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
+    @bool hasSetter := true ;
+    @bool hasGetter := true ;
     typedAttributeList +=
       !t
       !mAttributeName
+      !hasSetter
+      !hasGetter
     ;
     [!?attributeMap insertKey !mAttributeName !t] ;
   end foreach ;
@@ -700,13 +719,34 @@ override method @classDeclarationAST performSemanticAnalysis
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
     @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
+    @bool hasSetter := false ;
+    @bool hasGetter := true ;
+    foreach mFeatureList do
+      if [mValue string] == "setter" then
+        if hasSetter then
+          error mValue : "the 'setter' feature is already named" ;
+        end if ;
+        hasSetter := true ;
+      elsif [mValue string] == "nogetter" then
+        if not hasGetter then
+          error mValue : "the 'nogetter' feature is already named" ;
+        end if ;
+        hasGetter := false ;
+      else
+        error mValue : "only the 'setter' or 'nogetter' are allowed here" ;
+      end if ;
+    end foreach ;
     typedAttributeList +=
       !t
       !mAttributeName
+      !hasSetter
+      !hasGetter
     ;
     allAttributeList +=
       !t
       !mAttributeName
+      !hasSetter
+      !hasGetter
     ;
     [!?attributeMap insertKey !mAttributeName !t] ;
   end foreach ;
@@ -1392,7 +1432,15 @@ override method @overridingCategoryReaderAST performSemanticAnalysis
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mReaderMap] hasKey ![mOverridingCategoryReaderName string]] then
       @methodQualifier qualifier ;
-      [[superType mReaderMap] searchKey !mOverridingCategoryReaderName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?inheritedReturnType ?qualifier] ;
+      [[superType mReaderMap] searchKey
+        !mOverridingCategoryReaderName
+        ?*
+        ?inheritedSignature
+        ?inheritedDeclarationLocation
+        ?*
+        ?inheritedReturnType
+        ?qualifier
+      ] ;
       if qualifier <= [@methodQualifier isBasicFinal] then
         baseTypeName := [superType key] ;
       end if ;
@@ -1477,7 +1525,14 @@ override method @overridingAbstractCategoryReaderAST performSemanticAnalysis
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mReaderMap] hasKey ![mAbstractCategoryReaderName string]] then
       @methodQualifier qualifier ;
-      [[superType mReaderMap] searchKey !mAbstractCategoryReaderName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?inheritedReturnType ?qualifier] ;
+      [[superType mReaderMap] searchKey
+        !mAbstractCategoryReaderName
+        ?*
+        ?inheritedSignature
+        ?inheritedDeclarationLocation
+        ?*
+        ?inheritedReturnType
+        ?qualifier] ;
       if qualifier <= [@methodQualifier isBasicFinal] then
         baseTypeName := [superType key] ;
       end if ;

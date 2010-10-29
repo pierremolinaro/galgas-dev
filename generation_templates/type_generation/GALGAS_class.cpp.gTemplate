@@ -113,28 +113,32 @@ foreach CONCRETE_METHOD_LIST do
 end foreach
 
 foreach CURRENT_ATTRIBUTE_LIST do
-  %//---------------------------------------------------------------------------*\n\n%
-  %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
-  %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
-  %  if (NULL != mObjectPtr) {\n%
-  %    const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
-  %    macroValidObject (p, const cPtr_%!TYPE_IDENTIFIER%) ;\n%
-  %    result = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-  %  }\n%
-  %  return result ;\n%
-  %}\n\n%
+  if mHasGetter then
+    %//---------------------------------------------------------------------------*\n\n%
+    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
+    %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
+    %  if (NULL != mObjectPtr) {\n%
+    %    const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
+    %    macroValidObject (p, const cPtr_%!TYPE_IDENTIFIER%) ;\n%
+    %    result = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %  }\n%
+    %  return result ;\n%
+    %}\n\n%
+  end if
 end foreach
 
 foreach CURRENT_ATTRIBUTE_LIST do
-  %//---------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inValue\n%
-                        !^%COMMA_UNUSED_LOCATION_ARGS) {\n%
-  %  if (NULL != mObjectPtr) {\n%
-  %    cPtr_%!TYPE_IDENTIFIER% * p = (cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
-  %    macroValidObject (p, cPtr_%!TYPE_IDENTIFIER%) ;\n%
-  %    p->mAttribute_%![mAttributeName identifierRepresentation]% = inValue ;\n%
-  %  }\n%
-  %}\n\n%
+  if mHasSetter then
+    %//---------------------------------------------------------------------------*\n\n%
+    %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inValue\n%
+                          !^%COMMA_UNUSED_LOCATION_ARGS) {\n%
+    %  if (NULL != mObjectPtr) {\n%
+    %    cPtr_%!TYPE_IDENTIFIER% * p = (cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
+    %    macroValidObject (p, cPtr_%!TYPE_IDENTIFIER%) ;\n%
+    %    p->mAttribute_%![mAttributeName identifierRepresentation]% = inValue ;\n%
+    %  }\n%
+    %}\n\n%
+  end if
 end foreach
 
 foreach INSTANCE_METHOD_MAP do

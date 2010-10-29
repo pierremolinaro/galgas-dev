@@ -982,7 +982,15 @@ routine checkDiadicOperator
         @bool hasCompilerArgument ;
         @unifiedTypeMapProxy returnedType ;
         @bool isCategory ;
-        [[inRightType mReaderMap] searchKey ![inLeftType lkey] ?isCategory ?argumentTypeList ?* ?hasCompilerArgument ?returnedType ?*] ;
+        [[inRightType mReaderMap] searchKey
+          ![inLeftType lkey]
+          ?isCategory
+          ?argumentTypeList
+          ?*
+          ?hasCompilerArgument
+          ?returnedType
+          ?*
+        ] ;
         ok := ([argumentTypeList length] == 0) & (returnedType == inLeftType) ;
      #--- Add conversion expression
         @semanticExpressionForGeneration conversionExpression := [@readerCallExpressionForGeneration new
