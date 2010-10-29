@@ -780,6 +780,7 @@ override method @predefinedTypeAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
+    !false # Do not generate header in separate file
   ] ;
 end method ;
 
@@ -992,6 +993,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !mSearchMethodList
     ![@mapSearchMethodListAST emptyList]
     !withAccessorMap
+    !false # Do not generate header in separate file
   ] ;
 end method ;
 
@@ -1015,7 +1017,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ?mapTypedAttributeList
     ?12*
     ?searchMethodList
-    ?2*
+    ?3*
   ] ;
   if typeKindEnum != [@typeKindEnum mapType] then
     error mAssociatedMapTypeName : "the @" . mAssociatedMapTypeName . " should be a map type" ;
@@ -1117,6 +1119,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     !searchMethodList
     ![@withAccessorMap emptyMap]
+    !false # Do not generate header in separate file
   ] ;
 end method ;
 
@@ -1172,6 +1175,7 @@ override method @enumDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
+    !false # Do not generate header in separate file
   ] ;
 end method ;
 
@@ -1428,6 +1432,7 @@ override method @listDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
+    !false # Do not generate header in separate file
   ] ;
 end method ;
 
@@ -1526,6 +1531,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
+    !false # Do not generate header in separate file
   ] ;
 end method ;
 
@@ -1601,6 +1607,7 @@ override method @structDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
+    !false # Do not generate header in separate file
   ] ;
 end method ;
 
@@ -1621,6 +1628,7 @@ override method @classDeclarationAST enterInSemanticContext
   @attributeMap attributeMap [emptyMap] ;
 #--- Handle super class
   @unifiedTypeMapProxy superClassIndex ;
+  @bool generateHeaderInSeparateFile ;
   if [mSuperClassName string] == "" then
     superClassIndex := [@unifiedTypeMapProxy null] ;
     readerMap := [@readerMap emptyMap] ;
@@ -1628,6 +1636,15 @@ override method @classDeclarationAST enterInSemanticContext
     inheritedInstanceMethodMap := [@instanceMethodMap emptyMap] ;
     inheritedTypedAttributeList := [@typedAttributeList emptyList] ;
     attributeMap := [@attributeMap emptyMap] ;
+    generateHeaderInSeparateFile := false ;
+    foreach mClassFeatureList do
+      if [mValue string] == "generatedInSeparateFile" then
+        generateHeaderInSeparateFile := true ;
+      end if ;
+    end foreach ;
+#    @unifiedTypeMapProxy classProxy ;
+#    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mClassTypeName string] ?classProxy] ;
+#    generateHeaderInSeparateFile := [classProxy mGenerateHeaderInSeparateFile] ;
   else
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mSuperClassName string] ?superClassIndex] ;
     @typeKindEnum typeKindEnum ;
@@ -1644,6 +1661,7 @@ override method @classDeclarationAST enterInSemanticContext
       ?inheritedModifierMap
       ?inheritedInstanceMethodMap
       ?11*
+      ?generateHeaderInSeparateFile
     ] ;
   #---
     if typeKindEnum != [@typeKindEnum classType] then
@@ -1847,6 +1865,7 @@ override method @classDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
+    !generateHeaderInSeparateFile
   ] ;
 end method ;
 
@@ -1919,7 +1938,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     ?2*
     ?typeKindEnum
     ?listTypedAttributeList
-    ?17*
+    ?18*
   ] ;
   if typeKindEnum != [@typeKindEnum listType] then
     error mAssociatedListTypeName : "the '@" . mAssociatedListTypeName . "' type should be a list type" ;
@@ -1980,6 +1999,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
+    !false # Do not generate header in separate file
   ] ;
 end method ;
 

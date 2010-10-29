@@ -171,7 +171,7 @@ sortedlist @tokenSortedlist {
 map @lexicalExplicitTokenListMapMap {
   @lexicalExplicitTokenListMap mExplicitTokenListMap ;
   @tokenSortedlist mTokenSortedList ;
-  @bool mShouldBeGenerated feature setter ;
+  @bool mShouldBeGenerated ;
   insert insertKey error message "the '%K' token list has been already declared in %L" ;
   search searchKey error message "the '%K' token list is not declared" ;
 }

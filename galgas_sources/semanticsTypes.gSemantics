@@ -308,6 +308,7 @@ map @unifiedTypeMap {
   @mapSearchMethodListAST mMapSearchMethodList ; # For a map, the list of search methods
   @mapSearchMethodListAST mMapProxySearchConstructorList ; # For a map proxy, the list of search methods of the associated map
   @withAccessorMap mWithAccessorMap ; # Method for with accessor
+  @bool mGenerateHeaderInSeparateFile ; # Significant only for classes
 
   insert insertKey error message "the '@%K' type has been already declared in %L" ;
   search searchKey error message "the '@%K' type is not declared" ;

@@ -399,7 +399,7 @@ list @externFunctionListAST {
 
 class @lexiqueComponentAST {
   @lstring mLexiqueComponentName  ;
-  @bool mIsTemplate feature nogetter ;
+  @bool mIsTemplate ;
   @metamodelTemplateDelimitorListAST mTemplateDelimitorList ;
   @templateReplacementListAST mTemplateReplacementList ;
   @lexicalAttributeListAST mLexicalAttributeList ;

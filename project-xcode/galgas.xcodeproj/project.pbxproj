@@ -1779,6 +1779,47 @@
 		CF333709126B13A6008DA1DE /* acPtr_class.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = acPtr_class.cpp; sourceTree = "<group>"; };
 		CF33370A126B13A6008DA1DE /* acPtr_class.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = acPtr_class.h; sourceTree = "<group>"; };
 		CF33377D126B2F15008DA1DE /* GALGAS_filewrapper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_filewrapper.cpp; sourceTree = "<group>"; };
+		CF3354C4127AE6A500DAB712 /* include_addInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_addInstructionAST.h; sourceTree = "<group>"; };
+		CF3354C5127AE6A500DAB712 /* include_appendInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_appendInstructionAST.h; sourceTree = "<group>"; };
+		CF3354C6127AE6A500DAB712 /* include_assignmentInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_assignmentInstructionAST.h; sourceTree = "<group>"; };
+		CF3354C7127AE6A500DAB712 /* include_blockInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_blockInstruction.h; sourceTree = "<group>"; };
+		CF3354C8127AE6A500DAB712 /* include_decrementInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_decrementInstructionAST.h; sourceTree = "<group>"; };
+		CF3354C9127AE6A500DAB712 /* include_dropInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_dropInstructionAST.h; sourceTree = "<group>"; };
+		CF3354CA127AE6A500DAB712 /* include_errorInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_errorInstructionAST.h; sourceTree = "<group>"; };
+		CF3354CB127AE6A500DAB712 /* include_foreachInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_foreachInstructionAST.h; sourceTree = "<group>"; };
+		CF3354CC127AE6A500DAB712 /* include_grammarInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_grammarInstructionAST.h; sourceTree = "<group>"; };
+		CF3354CD127AE6A500DAB712 /* include_ifInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_ifInstructionAST.h; sourceTree = "<group>"; };
+		CF3354CE127AE6A500DAB712 /* include_incrementInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_incrementInstructionAST.h; sourceTree = "<group>"; };
+		CF3354CF127AE6A500DAB712 /* include_localVariableDeclarationAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_localVariableDeclarationAST.h; sourceTree = "<group>"; };
+		CF3354D0127AE6A500DAB712 /* include_localVariableOrConstantDeclarationWithAssignmentAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_localVariableOrConstantDeclarationWithAssignmentAST.h; sourceTree = "<group>"; };
+		CF3354D1127AE6A500DAB712 /* include_localVariableOrConstantDeclarationWithConstructorCallAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_localVariableOrConstantDeclarationWithConstructorCallAST.h; sourceTree = "<group>"; };
+		CF3354D2127AE6A500DAB712 /* include_logInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_logInstructionAST.h; sourceTree = "<group>"; };
+		CF3354D3127AE6A500DAB712 /* include_loopInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_loopInstructionAST.h; sourceTree = "<group>"; };
+		CF3354D4127AE6A500DAB712 /* include_matchInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_matchInstructionAST.h; sourceTree = "<group>"; };
+		CF3354D5127AE6A500DAB712 /* include_messageInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_messageInstructionAST.h; sourceTree = "<group>"; };
+		CF3354D6127AE6A500DAB712 /* include_methodCallInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_methodCallInstructionAST.h; sourceTree = "<group>"; };
+		CF3354D7127AE6A500DAB712 /* include_modifierCallInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_modifierCallInstructionAST.h; sourceTree = "<group>"; };
+		CF3354D8127AE6A500DAB712 /* include_nonterminalCallInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_nonterminalCallInstruction.h; sourceTree = "<group>"; };
+		CF3354D9127AE6A500DAB712 /* include_parseLoopInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_parseLoopInstruction.h; sourceTree = "<group>"; };
+		CF3354DA127AE6A500DAB712 /* include_parseRewindInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_parseRewindInstruction.h; sourceTree = "<group>"; };
+		CF3354DB127AE6A500DAB712 /* include_parseWhenInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_parseWhenInstruction.h; sourceTree = "<group>"; };
+		CF3354DC127AE6A500DAB712 /* include_readAccessWithInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_readAccessWithInstructionAST.h; sourceTree = "<group>"; };
+		CF3354DD127AE6A500DAB712 /* include_readWriteAccessWithInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_readWriteAccessWithInstructionAST.h; sourceTree = "<group>"; };
+		CF3354DE127AE6A500DAB712 /* include_repeatInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_repeatInstruction.h; sourceTree = "<group>"; };
+		CF3354DF127AE6A500DAB712 /* include_routineCallInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_routineCallInstructionAST.h; sourceTree = "<group>"; };
+		CF3354E0127AE6A500DAB712 /* include_selectInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_selectInstruction.h; sourceTree = "<group>"; };
+		CF3354E1127AE6A500DAB712 /* include_semanticInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_semanticInstructionAST.h; sourceTree = "<group>"; };
+		CF3354E2127AE6A500DAB712 /* include_sendInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_sendInstructionAST.h; sourceTree = "<group>"; };
+		CF3354E3127AE6A500DAB712 /* include_structuredCastInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_structuredCastInstructionAST.h; sourceTree = "<group>"; };
+		CF3354E4127AE6A500DAB712 /* include_superMethodCallInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_superMethodCallInstructionAST.h; sourceTree = "<group>"; };
+		CF3354E5127AE6A500DAB712 /* include_superModifierCallInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_superModifierCallInstructionAST.h; sourceTree = "<group>"; };
+		CF3354E6127AE6A500DAB712 /* include_switchInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_switchInstructionAST.h; sourceTree = "<group>"; };
+		CF3354E7127AE6A500DAB712 /* include_syntaxInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_syntaxInstructionAST.h; sourceTree = "<group>"; };
+		CF3354E8127AE6A500DAB712 /* include_terminalCheckInstruction.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_terminalCheckInstruction.h; sourceTree = "<group>"; };
+		CF3354E9127AE6A500DAB712 /* include_thisMethodCallInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_thisMethodCallInstructionAST.h; sourceTree = "<group>"; };
+		CF3354EA127AE6A500DAB712 /* include_thisModifierCallInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_thisModifierCallInstructionAST.h; sourceTree = "<group>"; };
+		CF3354EB127AE6A500DAB712 /* include_typeMethodCallInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_typeMethodCallInstructionAST.h; sourceTree = "<group>"; };
+		CF3354EC127AE6A500DAB712 /* include_warningInstructionAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = include_warningInstructionAST.h; sourceTree = "<group>"; };
 		CF337C9611C3F8C7007E7736 /* capCollectionElementArray.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = capCollectionElementArray.cpp; sourceTree = "<group>"; };
 		CF337C9711C3F8C7007E7736 /* capCollectionElementArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = capCollectionElementArray.h; sourceTree = "<group>"; };
 		CF337CB111C3FAAF007E7736 /* cCollectionElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cCollectionElement.cpp; sourceTree = "<group>"; };
@@ -2688,6 +2729,47 @@
 		CF6A7BF9114858E30034A94E /* include-files */ = {
 			isa = PBXGroup;
 			children = (
+				CF3354C4127AE6A500DAB712 /* include_addInstructionAST.h */,
+				CF3354C5127AE6A500DAB712 /* include_appendInstructionAST.h */,
+				CF3354C6127AE6A500DAB712 /* include_assignmentInstructionAST.h */,
+				CF3354C7127AE6A500DAB712 /* include_blockInstruction.h */,
+				CF3354C8127AE6A500DAB712 /* include_decrementInstructionAST.h */,
+				CF3354C9127AE6A500DAB712 /* include_dropInstructionAST.h */,
+				CF3354CA127AE6A500DAB712 /* include_errorInstructionAST.h */,
+				CF3354CB127AE6A500DAB712 /* include_foreachInstructionAST.h */,
+				CF3354CC127AE6A500DAB712 /* include_grammarInstructionAST.h */,
+				CF3354CD127AE6A500DAB712 /* include_ifInstructionAST.h */,
+				CF3354CE127AE6A500DAB712 /* include_incrementInstructionAST.h */,
+				CF3354CF127AE6A500DAB712 /* include_localVariableDeclarationAST.h */,
+				CF3354D0127AE6A500DAB712 /* include_localVariableOrConstantDeclarationWithAssignmentAST.h */,
+				CF3354D1127AE6A500DAB712 /* include_localVariableOrConstantDeclarationWithConstructorCallAST.h */,
+				CF3354D2127AE6A500DAB712 /* include_logInstructionAST.h */,
+				CF3354D3127AE6A500DAB712 /* include_loopInstructionAST.h */,
+				CF3354D4127AE6A500DAB712 /* include_matchInstructionAST.h */,
+				CF3354D5127AE6A500DAB712 /* include_messageInstructionAST.h */,
+				CF3354D6127AE6A500DAB712 /* include_methodCallInstructionAST.h */,
+				CF3354D7127AE6A500DAB712 /* include_modifierCallInstructionAST.h */,
+				CF3354D8127AE6A500DAB712 /* include_nonterminalCallInstruction.h */,
+				CF3354D9127AE6A500DAB712 /* include_parseLoopInstruction.h */,
+				CF3354DA127AE6A500DAB712 /* include_parseRewindInstruction.h */,
+				CF3354DB127AE6A500DAB712 /* include_parseWhenInstruction.h */,
+				CF3354DC127AE6A500DAB712 /* include_readAccessWithInstructionAST.h */,
+				CF3354DD127AE6A500DAB712 /* include_readWriteAccessWithInstructionAST.h */,
+				CF3354DE127AE6A500DAB712 /* include_repeatInstruction.h */,
+				CF3354DF127AE6A500DAB712 /* include_routineCallInstructionAST.h */,
+				CF3354E0127AE6A500DAB712 /* include_selectInstruction.h */,
+				CF3354E1127AE6A500DAB712 /* include_semanticInstructionAST.h */,
+				CF3354E2127AE6A500DAB712 /* include_sendInstructionAST.h */,
+				CF3354E3127AE6A500DAB712 /* include_structuredCastInstructionAST.h */,
+				CF3354E4127AE6A500DAB712 /* include_superMethodCallInstructionAST.h */,
+				CF3354E5127AE6A500DAB712 /* include_superModifierCallInstructionAST.h */,
+				CF3354E6127AE6A500DAB712 /* include_switchInstructionAST.h */,
+				CF3354E7127AE6A500DAB712 /* include_syntaxInstructionAST.h */,
+				CF3354E8127AE6A500DAB712 /* include_terminalCheckInstruction.h */,
+				CF3354E9127AE6A500DAB712 /* include_thisMethodCallInstructionAST.h */,
+				CF3354EA127AE6A500DAB712 /* include_thisModifierCallInstructionAST.h */,
+				CF3354EB127AE6A500DAB712 /* include_typeMethodCallInstructionAST.h */,
+				CF3354EC127AE6A500DAB712 /* include_warningInstructionAST.h */,
 				CFB6E56112787AFF000F1772 /* include_typeGalgas_application.h */,
 				CFA4E7CC12749BF300C9AF35 /* include_templateInstructionSwitch.h */,
 				CF27F9FA1154060E000B61E7 /* include_typeFieldAccessOperation.h */,

@@ -31,8 +31,9 @@ printInstructionsListForGrammar (const GALGAS_syntaxInstructionListForGrammarAna
                                  C_HTML_FileWrite & inHTMLfile) {
   cEnumerator_syntaxInstructionListForGrammarAnalysis currentInstruction (inInstructionsList, true) ;
   while (currentInstruction.hasCurrentObject ()) {
-    currentInstruction._mInstruction (HERE) (HERE)->printInstructionForGrammar (inHTMLfile) ;
-    currentInstruction.next () ;
+    cPtr_abstractSyntaxInstructionForGrammarAnalysis * instruction = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) currentInstruction.current_mInstruction (HERE).ptr (HERE) ;
+    instruction->printInstructionForGrammar (inHTMLfile) ;
+    currentInstruction.gotoNextObject () ;
   }
 }
 
@@ -44,7 +45,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "repeat " ;
   inHTMLfile.outputRawData ("</span>") ;
-  cEnumerator_branchListForGrammarAnalysis currentBranch (mRepeatBranchList, true) ;
+  cEnumerator_branchListForGrammarAnalysis currentBranch (mAttribute_mRepeatBranchList, true) ;
   bool first = true ;
   while (currentBranch.hasCurrentObject ()) {
     if (first) {
@@ -55,9 +56,9 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
       inHTMLfile.outputRawData ("</span>") ;
     }
     inHTMLfile.outputRawData ("<span class=\"within_galgas_structure\">") ;
-    printInstructionsListForGrammar (currentBranch._mSyntaxInstructionList (HERE), inHTMLfile) ;
+    printInstructionsListForGrammar (currentBranch.current_mSyntaxInstructionList (HERE), inHTMLfile) ;
     inHTMLfile.outputRawData ("</span>") ;
-    currentBranch.next () ;
+    currentBranch.gotoNextObject () ;
   }
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "end repeat;" ;
@@ -72,7 +73,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "select " ;
   inHTMLfile.outputRawData ("</span>") ;
-  cEnumerator_branchListForGrammarAnalysis currentBranch (mSelectBranchList, true) ;
+  cEnumerator_branchListForGrammarAnalysis currentBranch (mAttribute_mSelectBranchList, true) ;
   bool first = true ;
   while (currentBranch.hasCurrentObject ()) {
     if (first) {
@@ -83,9 +84,9 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
       inHTMLfile.outputRawData ("</span>") ;
     }
     inHTMLfile.outputRawData ("<span class=\"within_galgas_structure\">") ;
-    printInstructionsListForGrammar (currentBranch._mSyntaxInstructionList (HERE), inHTMLfile) ;
+    printInstructionsListForGrammar (currentBranch.current_mSyntaxInstructionList (HERE), inHTMLfile) ;
     inHTMLfile.outputRawData ("</span>") ;
-    currentBranch.next () ;
+    currentBranch.gotoNextObject () ;
   }
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "end select;" ;
@@ -97,7 +98,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
 void cPtr_nonTerminalInstructionForGrammarAnalysis::
 printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_nonterminal\">") ;
-  inHTMLfile << "<" << mNonterminalSymbolName << ">; " ;
+  inHTMLfile << "<" << mAttribute_mNonterminalSymbolName.mAttribute_string.stringValue () << ">; " ;
   inHTMLfile.outputRawData ("</span>") ;
 }
 
@@ -106,7 +107,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
 void cPtr_terminalInstructionForGrammarAnalysis::
 printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_terminal\">") ;
-  inHTMLfile << "$" << mTerminalSymbolName << "$; " ;
+  inHTMLfile << "$" << mAttribute_mTerminalSymbolName.mAttribute_string.stringValue () << "$; " ;
   inHTMLfile.outputRawData ("</span>") ;
 }
 
@@ -118,8 +119,8 @@ void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
   PMSInt32 productionsCount = 0 ;
   cEnumerator_syntaxComponentListForGrammarAnalysis currentSyntaxComponent (inSyntaxComponentsList, true) ;
   while (currentSyntaxComponent.hasCurrentObject ()) {
-    productionsCount += currentSyntaxComponent._mProductionRulesList (HERE).count () ;
-    currentSyntaxComponent.next () ;
+    productionsCount += currentSyntaxComponent.current_mProductionRulesList (HERE).count () ;
+    currentSyntaxComponent.gotoNextObject () ;
   }
   inHTMLfile.outputRawData ("<p>") ;
   inHTMLfile << "The original grammar has "
@@ -134,33 +135,33 @@ void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
   while (currentSyntaxComponent.hasCurrentObject ()) {
     inHTMLfile.outputRawData ("<tr><td class=\"result_title\" colspan=\"2\">") ;
     inHTMLfile << "RULES FROM '"
-               << currentSyntaxComponent._mSyntaxComponentName (HERE)
+               << currentSyntaxComponent.current_mSyntaxComponentName (HERE).mAttribute_string.stringValue ()
                << "' component" ;
     inHTMLfile.outputRawData ("</td></tr>") ;
-    cEnumerator_productionRuleListForGrammarAnalysis currentRule (currentSyntaxComponent._mProductionRulesList (HERE), true) ;
+    cEnumerator_productionRuleListForGrammarAnalysis currentRule (currentSyntaxComponent.current_mProductionRulesList (HERE), true) ;
     while (currentRule.hasCurrentObject ()) {
       inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     //--- Print rule
       inHTMLfile << "rule " ;
       inHTMLfile.outputRawData ("<code>") ;
       inHTMLfile << "<"
-                 << currentRule._mLeftNonterminalSymbol (HERE)
+                 << currentRule.current_mLeftNonterminalSymbol (HERE).mAttribute_string.stringValue ()
                  << ">" ;
       inHTMLfile.outputRawData ("</code><br>") ;
       inHTMLfile << "file '" 
-                 << currentSyntaxComponent._mSyntaxComponentName (HERE).sourceFileName ()
+                 << currentSyntaxComponent.current_mSyntaxComponentName (HERE).mAttribute_location.sourceText ()->sourceFileName ()
                  << "'" ;
       inHTMLfile.outputRawData ("<br>") ;
       inHTMLfile << "line "
-                 << cStringWithSigned (currentRule._mLeftNonterminalSymbol (HERE).lineNumber ()) ;
+                 << cStringWithSigned (currentRule.current_mLeftNonterminalSymbol (HERE).mAttribute_location.startLocation ().mLineNumber) ;
       inHTMLfile.outputRawData ("</td><td><code>") ;
-      printInstructionsListForGrammar (currentRule._mInstructionList (HERE),
+      printInstructionsListForGrammar (currentRule.current_mInstructionList (HERE),
                                        inHTMLfile) ;
       inHTMLfile.outputRawData ("</code></td></tr>") ;
     //--- Next rule
-      currentRule.next () ;
+      currentRule.gotoNextObject () ;
     }
-    currentSyntaxComponent.next () ;
+    currentSyntaxComponent.gotoNextObject () ;
   }
   inHTMLfile.outputRawData ("</table>") ;
 }
