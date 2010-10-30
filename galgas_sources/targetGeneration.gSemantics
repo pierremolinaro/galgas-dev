@@ -28,6 +28,8 @@ filewrapper targetGenerationFileWrapper in "../generation_templates/target_gener
   template makefile_mingw_on_macosx_makefile "makefile-mingw-on-macosx/makefile" ?@string PROJECT_NAME ;
 
   template makefile_msys_on_win32_makefile "makefile-msys-on-win32/makefile" ?@string PROJECT_NAME ;
+
+  template makefile_info_plist "xcode-project/Info.plist" ?@string PROJECT_NAME ;
 }
 
 #---------------------------------------------------------------------------*
@@ -38,16 +40,20 @@ routine generateXcodeProjectTarget
 :
   const @string dir := inProjectDirectory . "/xcode-project";
   [dir makeDirectory] ;
-  [[filewrapper targetGenerationFileWrapper."xcode-project/Info.plist"] writeToFileWhenDifferentContents !dir ."/xcode-project/Info.plist" ?*] ;
+  [[filewrapper targetGenerationFileWrapper.makefile_info_plist !inProjectName] writeToFileWhenDifferentContents !dir ."/Info.plist" ?*] ;
+
   [dir . "/English.lproj" makeDirectory] ;
-  const @string InfoPlist_strings_path := dir ."/xcode-project/English.lproj/InfoPlist.strings" ;
+  const @string InfoPlist_strings_path := dir ."/English.lproj/InfoPlist.strings" ;
   if not [InfoPlist_strings_path fileExists] then
     [[filewrapper targetGenerationFileWrapper."xcode-project/English.lproj/InfoPlist.strings"] writeToFile !InfoPlist_strings_path] ;
   end if ;
-  const @string Credits_rtf_path := dir ."/xcode-project/English.lproj/Credits.rtf" ;
+  const @string Credits_rtf_path := dir ."/English.lproj/Credits.rtf" ;
   if not [Credits_rtf_path fileExists] then
     [[filewrapper targetGenerationFileWrapper."xcode-project/English.lproj/Credits.rtf"] writeToFile !Credits_rtf_path] ;
   end if ;
+#--- Make symbolic link
+  const @string libpmPosixPath := [[@string stringWithEnvironmentVariable !"LIBPM_PATH"] unixPathWithNativePath] ;
+  [dir . "/libpm" makeSymbolicLinkWithPath !libpmPosixPath] ;
 end routine ;
 
 #---------------------------------------------------------------------------*

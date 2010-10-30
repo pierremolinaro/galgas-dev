@@ -126,6 +126,7 @@ override method @stringPredefinedTypeAST getConstructorMap
 :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"retrieveAndResetTemplateString" !"string" !true ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"stringWithSymbolicLinkContents" !"string" !"string" !true ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringWithVersionString" !"string" !false ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringWithSourceFilePath" !"string" !true ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringWithCurrentDirectory" !"string" !false ;
