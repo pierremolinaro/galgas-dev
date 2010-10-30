@@ -103,7 +103,11 @@ generateWrapperContents (AC_OutputStream & inCppFile,
   GGS_wrapperFileSortedListEX::cEnumerator f (inRegularFileSortedList, true) ;
   while (f.hasCurrentObject ()) {
     TC_UniqueArray <unsigned char> binaryData ;
-    const bool ok = f._mAbsoluteFilePath (HERE).string ().binaryDataWithContentOfFile (binaryData) ;
+    bool ok = false ;
+    PMTextFileEncoding textFileEncoding ;
+    const C_String contents = C_String::stringWithContentOfFile (f._mAbsoluteFilePath (HERE).string (),
+                                                                 textFileEncoding,
+                                                                 ok) ;
     if (! ok) {
       printf ("*** error: cannot read file '%s' ***\n", f._mAbsoluteFilePath (HERE).string ().cString (HERE)) ;
     }
@@ -116,35 +120,7 @@ generateWrapperContents (AC_OutputStream & inCppFile,
               << " = // " ;
     inCppFile.appendSigned (binaryData.count () + 1) ;
     inCppFile << " bytes\n" ;
-    bool header = false ;
-    for (PMSInt32 i=0 ; i<binaryData.count () ; i++) {
-      if (! header) {
-        inCppFile << "  \"" ;
-        header = true ;
-      }
-      const unsigned char c = binaryData (i COMMA_HERE) ;
-      if (c == '\n') {
-        inCppFile << "\\n\"\n" ;
-        header = false ;
-      }else if (c == '"') {
-        inCppFile << "\\\"" ;
-      }else if (c == '\\') {
-        inCppFile << "\\\\" ;
-      }else if ((c >= ' ') && (c <= 0x7E)) {
-        inCppFile.appendUnicodeCharacter (TO_UNICODE (c) COMMA_HERE) ;
-      }else{
-        char buffer [12] ;
-        const PMSInt32 n = UTF8StringFromUTF32Character (TO_UNICODE (c), buffer) ;
-        for (PMSInt32 j=0 ; j<n ; j++) {
-          inCppFile.appendCString ("\\x") ;
-          inCppFile.appendUnsignedHex2 (buffer [j]) ;
-          inCppFile.appendCString ("\"\"") ;
-        }
-      }
-    }
-    if (header) {
-      inCppFile << "\"\n" ;
-    }
+    inCppFile.appendCLiteralStringConstant (contents) ;
     inCppFile << ";\n\n"
                  "static const cRegularFileWrapperEx gWrapperFile_" ;
     inCppFile.appendUnsigned (f._mWrapperFileIndex (HERE).uintValue ()) ;

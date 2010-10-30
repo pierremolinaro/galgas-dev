@@ -1,0 +1,176 @@
+#---------------------------------------------------------------------------*
+
+semantics targetGeneration :
+
+#---------------------------------------------------------------------------*
+
+
+filewrapper targetGenerationFileWrapper in "../generation_templates/target_generation" {
+ "plist", "bat", "command", "rtf", "strings"
+} {
+  template makefile_macosx_intel_makefile "makefile-macosx-intel/makefile" ?@string PROJECT_NAME ;
+  template makefile_macosx_intel_makefile64 "makefile-macosx-intel/makefile64" ?@string PROJECT_NAME ;
+
+  template makefile_macosx_ppc_makefile "makefile-macosx-ppc/makefile" ?@string PROJECT_NAME ;
+  template makefile_macosx_ppc_makefile64 "makefile-macosx-ppc/makefile64" ?@string PROJECT_NAME ;
+
+  template makefile_macosx_universal_makefile "makefile-macosx-universal/makefile" ?@string PROJECT_NAME ;
+  template makefile_macosx_universal_makefile64 "makefile-macosx-universal/makefile64" ?@string PROJECT_NAME ;
+
+  template makefile_macosx_makefile "makefile-macosx/makefile" ?@string PROJECT_NAME ;
+  template makefile_macosx_makefile64 "makefile-macosx/makefile64" ?@string PROJECT_NAME ;
+
+  template makefile_unix_makefile "makefile-unix/makefile" ?@string PROJECT_NAME ;
+  template makefile_unix_makefile64 "makefile-unix/makefile64" ?@string PROJECT_NAME ;
+
+  template makefile_i386_linux_on_macosx_makefile "makefile-i386-linux-on-macosx/makefile" ?@string PROJECT_NAME ;
+
+  template makefile_mingw_on_macosx_makefile "makefile-mingw-on-macosx/makefile" ?@string PROJECT_NAME ;
+
+  template makefile_msys_on_win32_makefile "makefile-msys-on-win32/makefile" ?@string PROJECT_NAME ;
+}
+
+#---------------------------------------------------------------------------*
+
+routine generateXcodeProjectTarget
+  ??@string inProjectDirectory
+  ??@string inProjectName
+:
+  const @string dir := inProjectDirectory . "/xcode-project";
+  [dir makeDirectory] ;
+  [[filewrapper targetGenerationFileWrapper."xcode-project/Info.plist"] writeToFileWhenDifferentContents !dir ."/xcode-project/Info.plist" ?*] ;
+  [dir . "/English.lproj" makeDirectory] ;
+  const @string InfoPlist_strings_path := dir ."/xcode-project/English.lproj/InfoPlist.strings" ;
+  if not [InfoPlist_strings_path fileExists] then
+    [[filewrapper targetGenerationFileWrapper."xcode-project/English.lproj/InfoPlist.strings"] writeToFile !InfoPlist_strings_path] ;
+  end if ;
+  const @string Credits_rtf_path := dir ."/xcode-project/English.lproj/Credits.rtf" ;
+  if not [Credits_rtf_path fileExists] then
+    [[filewrapper targetGenerationFileWrapper."xcode-project/English.lproj/Credits.rtf"] writeToFile !Credits_rtf_path] ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine generateMsysOnWin32Target
+  ??@string inProjectDirectory
+  ??@string inProjectName
+:
+  const @string dir := inProjectDirectory . "/makefile-msys-on-win32" ;
+  [dir makeDirectory] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-msys-on-win32/build.bat"] writeToFileWhenDifferentContents !dir ."/build.bat" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-msys-on-win32/clean.bat"] writeToFileWhenDifferentContents !dir ."/clean.bat" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-msys-on-win32/install.bat"] writeToFileWhenDifferentContents !dir ."/install.bat" ?*] ;
+  [[filewrapper targetGenerationFileWrapper.makefile_msys_on_win32_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine generateMinGWOnMacOSXTarget
+  ??@string inProjectDirectory
+  ??@string inProjectName
+:
+  const @string dir := inProjectDirectory . "/makefile-mingw-on-macosx" ;
+  [dir makeDirectory] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-mingw-on-macosx/build.command"] writeToExecutableFileWhenDifferentContents !dir ."/build.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-mingw-on-macosx/clean.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper.makefile_mingw_on_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine generateMakefileMacOSXTarget
+  ??@string inProjectDirectory
+  ??@string inProjectName
+:
+  const @string dir := inProjectDirectory . "/makefile-macosx" ;
+  [dir makeDirectory] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-macosx/build.command"] writeToExecutableFileWhenDifferentContents !dir ."/build.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-macosx/clean.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-macosx/build64.command"] writeToExecutableFileWhenDifferentContents !dir ."/build64.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-macosx/clean64.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean64.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper.makefile_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
+  [[filewrapper targetGenerationFileWrapper.makefile_macosx_makefile64 !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile64" ?*] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine generateMakefileIntelMacOSXTarget
+  ??@string inProjectDirectory
+  ??@string inProjectName
+:
+  const @string dir := inProjectDirectory . "/makefile-macosx-intel" ;
+  [dir makeDirectory] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-macosx-intel/build.command"] writeToExecutableFileWhenDifferentContents !dir ."/build.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-macosx-intel/clean.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-macosx-intel/build64.command"] writeToExecutableFileWhenDifferentContents !dir ."/build64.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-macosx-intel/clean64.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean64.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper.makefile_macosx_intel_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
+  [[filewrapper targetGenerationFileWrapper.makefile_macosx_intel_makefile64 !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile64" ?*] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine generateMakefilePPCMacOSXTarget
+  ??@string inProjectDirectory
+  ??@string inProjectName
+:
+  const @string dir := inProjectDirectory . "/makefile-macosx-ppc" ;
+  [dir makeDirectory] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-macosx-ppc/build.command"] writeToExecutableFileWhenDifferentContents !dir ."/build.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-macosx-ppc/clean.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-macosx-ppc/build64.command"] writeToExecutableFileWhenDifferentContents !dir ."/build64.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-macosx-ppc/clean64.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean64.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper.makefile_macosx_ppc_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
+  [[filewrapper targetGenerationFileWrapper.makefile_macosx_ppc_makefile64 !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile64" ?*] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine generateMakefileUniversalMacOSXTarget
+  ??@string inProjectDirectory
+  ??@string inProjectName
+:
+  const @string dir := inProjectDirectory . "/makefile-macosx-universal" ;
+  [dir makeDirectory] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-macosx-universal/build.command"] writeToExecutableFileWhenDifferentContents !dir ."/build.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-macosx-universal/clean.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-macosx-universal/build64.command"] writeToExecutableFileWhenDifferentContents !dir ."/build64.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-macosx-universal/clean64.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean64.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper.makefile_macosx_universal_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
+  [[filewrapper targetGenerationFileWrapper.makefile_macosx_universal_makefile64 !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile64" ?*] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine generateMakefileUnixTarget
+  ??@string inProjectDirectory
+  ??@string inProjectName
+:
+  const @string dir := inProjectDirectory . "/makefile-unix" ;
+  [dir makeDirectory] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-unix/build.command"] writeToExecutableFileWhenDifferentContents !dir ."/build.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-unix/clean.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-unix/build64.command"] writeToExecutableFileWhenDifferentContents !dir ."/build64.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-unix/clean64.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean64.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper.makefile_unix_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
+  [[filewrapper targetGenerationFileWrapper.makefile_unix_makefile64 !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile64" ?*] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine generateI386LinuxOnMacOSXTarget
+  ??@string inProjectDirectory
+  ??@string inProjectName
+:
+  const @string dir := inProjectDirectory . "/makefile-i386-linux-on-macosx" ;
+  [dir makeDirectory] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-i386-linux-on-macosx/build.command"] writeToExecutableFileWhenDifferentContents !dir ."/build.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile-i386-linux-on-macosx/clean.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper.makefile_i386_linux_on_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;
+

@@ -17,7 +17,18 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-project all_galgas:
+project all_galgas -> "galgas" :
+#--- Targets
+  feature "makefile-macosx" ;
+  feature "makefile-macosx-intel" ;
+  feature "makefile-macosx-ppc" ;
+  feature "makefile-macosx-universal" ;
+  feature "makefile-unix" ;
+  feature "makefile-i386-linux-on-macosx" ;
+  feature "makefile-mingw-on-macosx" ;
+  feature "makefile-msys-on-win32" ;
+  feature "xcode-project" ;
+
 #--- Command Line Options
   option "galgas_cli_options.gOption" : makefile ;
 
@@ -117,8 +128,12 @@ project all_galgas:
   semantics "projectMetamodel.gSemantics" : makefile ;
   semantics "baseForXcodeProjectGeneration.gSemantics" : makefile ;
   semantics "XcodeProjectGeneration.gSemantics" : makefile ;
+  semantics "targetGeneration.gSemantics" : makefile ;
   syntax    "projectModelBuilder.gSyntax" : makefile ;
   grammar   "projectLL1grammar.gGrammar" : makefile ;
+
+#--- Program
+  program   "galgas_prgm_v1.gProgram" : makefile ;
 
 #--- Old style components
   semantics "common_semantics.gSemantics" : makefile ;
@@ -140,7 +155,6 @@ project all_galgas:
   syntax    "ggs_LL1_compile_component.gSyntax" : makefile ;
   syntax    "galgas_start.gSyntax" : makefile ;
   grammar   "galgas_LL1_grammar.gGrammar" : makefile ;
-  program   "galgas_prgm_v1.gProgram" : makefile ;
 
 #--- Hand coded sources
   extern "assignment_instructions.cpp" : makefile ;

@@ -119,6 +119,14 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
     !true
     ![@methodQualifier isBasic]
   ] ;
+  [!?outInstanceMethodMap insertKey
+    ![@lstring new !"writeToExecutableFileWhenDifferentContents" !here]
+    !false # is not a category
+    !argList
+    !here
+    !true
+    ![@methodQualifier isBasic]
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*

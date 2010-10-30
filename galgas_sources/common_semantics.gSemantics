@@ -895,28 +895,31 @@ class @typeGalgas_string extends @AC_galgasType {
   method handleMethodInstructionCall
     ??@lstring inMethodName
     ??@EXcategoryMethodMap unused inCategoryMethodMap
-    !@L_EXsignature outReaderSignature
+    !@L_EXsignature outMethodSignature
     !@string outCategoryMethodClassBaseName
   :
     outCategoryMethodClassBaseName := "" ;
     if [inMethodName string] == "writeToFile" then
-      outReaderSignature := [@L_EXsignature emptyList] ;
-      outReaderSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentIn] ;
+      outMethodSignature := [@L_EXsignature emptyList] ;
+      outMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentIn] ;
+    elsif [inMethodName string] == "writeToExecutableFileWhenDifferentContents" then
+      outMethodSignature := [@L_EXsignature emptyList] ;
+      outMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentIn] ;
+      outMethodSignature += ![@typeGalgas_bool new] ![@formalArgumentPassingModeAST argumentOut] ;
     elsif [inMethodName string] == "writeToFileWhenDifferentContents" then
-      outReaderSignature := [@L_EXsignature emptyList] ;
-      outReaderSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentIn] ;
-      outReaderSignature += ![@typeGalgas_bool new] ![@formalArgumentPassingModeAST argumentOut] ;
-   elsif [inMethodName string] == "writeToExecutableFile" then
-      outReaderSignature := [@L_EXsignature emptyList] ;
-      outReaderSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentIn] ;
+      outMethodSignature := [@L_EXsignature emptyList] ;
+      outMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentIn] ;
+      outMethodSignature += ![@typeGalgas_bool new] ![@formalArgumentPassingModeAST argumentOut] ;
+    elsif [inMethodName string] == "writeToExecutableFile" then
+      outMethodSignature := [@L_EXsignature emptyList] ;
+      outMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentIn] ;
     elsif [inMethodName string] == "makeDirectoryAndWriteToFile" then
-      outReaderSignature := [@L_EXsignature emptyList] ;
-      outReaderSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentIn] ;
+      outMethodSignature := [@L_EXsignature emptyList] ;
+      outMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentIn] ;
     elsif [inMethodName string] == "makeDirectory" then
-      outReaderSignature := [@L_EXsignature emptyList] ;
+      outMethodSignature := [@L_EXsignature emptyList] ;
     else
-      error inMethodName: "this method is not defined (writeToFile, makeDirectoryAndWriteToFile"
-      . " and makeDirectory methods are defined on @string objects) " : outReaderSignature ;
+      error inMethodName: "this method is not defined" : outMethodSignature ;
     end if ;
   end method ;
 
