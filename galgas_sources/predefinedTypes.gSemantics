@@ -73,7 +73,6 @@ routine appendStructASTForTypeWithLocation
   ??@string inElementTypeName
 :
   @lstringlist featureList [emptyList] ;
-  featureList += ![@lstring new !"setter" !here] ;
   @attributeInCollectionListAST attributeList [emptyList] ;
   attributeList += ![@lstring new !inElementTypeName !here] ![@lstring new !inElementTypeName !here] !featureList ;
   attributeList += ![@lstring new !"location" !here] ![@lstring new !"location" !here] !featureList ;

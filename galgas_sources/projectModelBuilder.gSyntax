@@ -27,23 +27,27 @@ import "projectMetamodel.gSemantics" ;
 #---------------------------------------------------------------------------*
 
 nonterminal <project_component_start_symbol>
-  !@projectSourceList outProjectSourceList
-  !@lstring outProjectName
-  !@location outEndOfSourceFile
+  !@projectComponentAST outProjectComponentAST
 ;
 
 #---------------------------------------------------------------------------*
 
 rule <project_component_start_symbol>
-  !@projectSourceList outProjectSourceList
-  !@lstring outProjectName
-  !@location outEndOfSourceFile
+  !@projectComponentAST outProjectComponentAST
 :
   $project$ ;
-  $identifier$ ? outProjectName ;
+  $identifier$ ? @lstring projectName ;
+  $->$ ;
+  $literal_string$ ? @lstring targetName ;
   $:$ ;
-  outProjectSourceList := [@projectSourceList emptyList] ;
+  @projectSourceList projectSourceList [emptyList] ;
+  @lstringlist generateFeatureList [emptyList] ;
   repeat
+  while
+    $feature$ ;
+    $literal_string$ ? @lstring featureName ;
+    generateFeatureList += !featureName ;
+    $;$ ;
   while
     @sourceFileKind sourceFileKind ;
     select
@@ -85,15 +89,21 @@ rule <project_component_start_symbol>
       end repeat ;
     end select ;
     $;$ ;
-    outProjectSourceList +=
+    projectSourceList +=
       !sourceFileKind
       !filePath
       !targetList
     ;
   end repeat ;
   $end$ ;
+  outProjectComponentAST := [@projectComponentAST new
+    !projectSourceList
+    !generateFeatureList
+    !projectName
+    !targetName
+    !here
+  ] ;
   $project$ ;
-  outEndOfSourceFile := here ;
   $;$ ;
 end rule ;
 

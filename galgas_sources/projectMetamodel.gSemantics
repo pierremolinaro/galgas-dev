@@ -18,7 +18,17 @@ list @projectSourceList {
   @lstringlist mTargetList ;
 }
 
-#---------------------------------------------------------------------------*
+#------------------------------------------------------------------------------*
+
+struct @projectComponentAST {
+  @projectSourceList mProjectSourceList ;
+  @lstringlist mGenerationFeatureList ;
+  @lstring mProjectName ;
+  @lstring mTargetName ;
+  @location mEndOfSourceFile ;
+}
+
+#------------------------------------------------------------------------------*
 
 end semantics ;
 

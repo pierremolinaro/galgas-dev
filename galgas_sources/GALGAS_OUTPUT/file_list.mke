@@ -300,8 +300,10 @@ SOURCES += projectGlobalCheckings.cpp
 SOURCES += projectMetamodel.cpp
 SOURCES += baseForXcodeProjectGeneration.cpp
 SOURCES += XcodeProjectGeneration.cpp
+SOURCES += targetGeneration.cpp
 SOURCES += projectModelBuilder.cpp
 SOURCES += projectLL1grammar.cpp
+SOURCES += galgas_prgm_v1.cpp
 SOURCES += common_semantics.cpp
 SOURCES += semantics_semantics.cpp
 SOURCES += expression_parser.cpp
@@ -321,7 +323,6 @@ SOURCES += program_parser.cpp
 SOURCES += ggs_LL1_compile_component.cpp
 SOURCES += galgas_start.cpp
 SOURCES += galgas_LL1_grammar.cpp
-SOURCES += galgas_prgm_v1.cpp
 
 
 #---------------------------------------------------------------*

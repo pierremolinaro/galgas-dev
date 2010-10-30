@@ -224,7 +224,7 @@ override method @structDeclarationAST performSemanticAnalysis
   foreach mAttributeList do
     @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
     foreach mFeatureList do
-      error mValue : "an enum attribute accepts no feature" ;
+      error mValue : "a struct attribute accepts no feature" ;
     end foreach ;
     @bool hasSetter := false ;
     @bool hasGetter := false ;
