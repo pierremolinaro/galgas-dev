@@ -322,64 +322,56 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-routine enterReaderFor_string_lstring_types
-  ?!@unifiedTypeMap ioUnifiedTypeMap
-  ?!@readerMap ioMap
-:
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"doesEnvironmentVariableExist" !"bool" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"length" !"uint" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"identifierRepresentation" !"string" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"HTMLRepresentation" !"string" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"utf8Representation" !"string" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"utf32Representation" !"string" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"stringByTrimmingWhiteSpaces" !"string" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"md5" !"string" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"decimalUnsignedNumber" !"uint" !true ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"isDecimalUnsignedNumber" !"bool" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"capacity" !"uint" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"fileExists" !"bool" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"directoryExists" !"bool" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"pathExtension" !"string" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"nativePathWithUnixPath" !"string" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"unixPathWithNativePath" !"string" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"lastPathComponent" !"string" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"stringByDeletingPathExtension" !"string" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"stringByCapitalizingFirstCharacter" !"string" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"firstCharacterOrNul" !"char" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"stringByDeletingLastPathComponent" !"string" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"stringByStandardizingPath" !"string" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"lowercaseString" !"string" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"uppercaseString" !"string" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"reversedString" !"string" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"currentColumn" !"uint" !false ;
-  enterBaseReaderWithoutArgument !?ioMap !?ioUnifiedTypeMap !"system" !"sint" !false ;
-  enterBaseReaderWithArgument !?ioMap !?ioUnifiedTypeMap !"characterAtIndex" !"uint" !"char" !true ;
-  enterBaseReaderWithArgument !?ioMap !?ioUnifiedTypeMap !"stringByRemovingCharacterAtIndex" !"uint" !"string" !true ;
-  enterBaseReaderWithArgument !?ioMap !?ioUnifiedTypeMap !"rightSubString" !"uint" !"string" !false ;
-  enterBaseReaderWithArgument !?ioMap !?ioUnifiedTypeMap !"leftSubString" !"uint" !"string" !false ;
-  enterBaseReaderWith2Arguments !?ioMap !?ioUnifiedTypeMap !"subString" !"uint" !"uint" !"string" !false ;
-  enterBaseReaderWithArgument !?ioMap !?ioUnifiedTypeMap !"absolutePathFromPath" !"string" !"string" !false ;
-  enterBaseReaderWithArgument !?ioMap !?ioUnifiedTypeMap !"relativePathFromPath" !"string" !"string" !false ;
-  enterBaseReaderWithArgument !?ioMap !?ioUnifiedTypeMap !"componentsSeparatedByString" !"string" !"stringlist" !false ;
-  enterBaseReaderWith2Arguments !?ioMap !?ioUnifiedTypeMap !"stringByLeftPadding" !"uint" !"char" !"string" !false ;
-  enterBaseReaderWith2Arguments !?ioMap !?ioUnifiedTypeMap !"stringByRightPadding" !"uint" !"char" !"string" !false ;
-  enterBaseReaderWith2Arguments !?ioMap !?ioUnifiedTypeMap !"stringByLeftAndRightPadding" !"uint" !"char" !"string" !false ;
-  enterBaseReaderWith2Arguments !?ioMap !?ioUnifiedTypeMap !"stringByReplacingStringByString" !"string" !"string" !"string" !true ;
-  enterBaseReaderWithArgument !?ioMap !?ioUnifiedTypeMap !"regularFiles" !"bool" !"stringlist" !false ;
-  enterBaseReaderWithArgument !?ioMap !?ioUnifiedTypeMap !"hiddenFiles" !"bool" !"stringlist" !false ;
-  enterBaseReaderWithArgument !?ioMap !?ioUnifiedTypeMap !"directories"  !"bool" !"stringlist" !false ;
-  enterBaseReaderWith2Arguments !?ioMap !?ioUnifiedTypeMap !"directoriesWithExtensions" !"bool" !"stringlist" !"stringlist" !false ;
-  enterBaseReaderWith2Arguments !?ioMap !?ioUnifiedTypeMap !"regularFilesWithExtensions" !"bool" !"stringlist" !"stringlist" !false ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
 override method @stringPredefinedTypeAST getReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@readerMap outMap
 :
   commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
-  enterReaderFor_string_lstring_types !?ioUnifiedTypeMap !?outMap ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"doesEnvironmentVariableExist" !"bool" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"length" !"uint" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"identifierRepresentation" !"string" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"HTMLRepresentation" !"string" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"utf8Representation" !"string" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"utf32Representation" !"string" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringByTrimmingWhiteSpaces" !"string" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"md5" !"string" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"decimalUnsignedNumber" !"uint" !true ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"isDecimalUnsignedNumber" !"bool" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"capacity" !"uint" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"isSymbolicLink" !"bool" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"fileExists" !"bool" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"directoryExists" !"bool" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"pathExtension" !"string" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"nativePathWithUnixPath" !"string" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"unixPathWithNativePath" !"string" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"lastPathComponent" !"string" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringByDeletingPathExtension" !"string" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringByCapitalizingFirstCharacter" !"string" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"firstCharacterOrNul" !"char" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringByDeletingLastPathComponent" !"string" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringByStandardizingPath" !"string" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"lowercaseString" !"string" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"uppercaseString" !"string" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"reversedString" !"string" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"currentColumn" !"uint" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"system" !"sint" !false ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"characterAtIndex" !"uint" !"char" !true ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"stringByRemovingCharacterAtIndex" !"uint" !"string" !true ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"rightSubString" !"uint" !"string" !false ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"leftSubString" !"uint" !"string" !false ;
+  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"subString" !"uint" !"uint" !"string" !false ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"absolutePathFromPath" !"string" !"string" !false ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"relativePathFromPath" !"string" !"string" !false ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"componentsSeparatedByString" !"string" !"stringlist" !false ;
+  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringByLeftPadding" !"uint" !"char" !"string" !false ;
+  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringByRightPadding" !"uint" !"char" !"string" !false ;
+  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringByLeftAndRightPadding" !"uint" !"char" !"string" !false ;
+  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringByReplacingStringByString" !"string" !"string" !"string" !true ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"regularFiles" !"bool" !"stringlist" !false ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"hiddenFiles" !"bool" !"stringlist" !false ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"directories"  !"bool" !"stringlist" !false ;
+  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"directoriesWithExtensions" !"bool" !"stringlist" !"stringlist" !false ;
+  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"regularFilesWithExtensions" !"bool" !"stringlist" !"stringlist" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*

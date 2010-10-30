@@ -918,6 +918,9 @@ class @typeGalgas_string extends @AC_galgasType {
       outMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentIn] ;
     elsif [inMethodName string] == "makeDirectory" then
       outMethodSignature := [@L_EXsignature emptyList] ;
+    elsif [inMethodName string] == "makeSymbolicLinkWithPath" then
+      outMethodSignature := [@L_EXsignature emptyList] ;
+      outMethodSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentIn] ;
     else
       error inMethodName: "this method is not defined" : outMethodSignature ;
     end if ;
@@ -932,7 +935,9 @@ class @typeGalgas_string extends @AC_galgasType {
   :
     outReturnedType := selfcopy ;
     outHasLexiqueAndLocationArguments := true ;
-    if [inClassMethodName string] == "stringWithVersionString" then
+    if [inClassMethodName string] == "stringWithSymbolicLinkContents" then
+      outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+    elsif [inClassMethodName string] == "stringWithVersionString" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     elsif [inClassMethodName string] == "stringWithSourceFilePath" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
@@ -4044,6 +4049,7 @@ once stringReaderMap -> @EXreaderMap outMap :
   EXenterReaderWithoutArgument !?outMap !"decimalUnsignedNumber" ![@typeGalgas_uint new] !true ;
   EXenterReaderWithoutArgument !?outMap !"isDecimalUnsignedNumber" ![@typeGalgas_bool new] !false ;
   EXenterReaderWithoutArgument !?outMap !"capacity" ![@typeGalgas_uint new] !false ;
+  EXenterReaderWithoutArgument !?outMap !"isSymbolicLink" ![@typeGalgas_bool new] !false ;
   EXenterReaderWithoutArgument !?outMap !"fileExists" ![@typeGalgas_bool new] !false ;
   EXenterReaderWithoutArgument !?outMap !"directoryExists" ![@typeGalgas_bool new] !false ;
   EXenterReaderWithoutArgument !?outMap !"pathExtension" ![@typeGalgas_string new] !false ;

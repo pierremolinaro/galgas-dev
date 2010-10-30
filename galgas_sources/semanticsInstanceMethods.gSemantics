@@ -104,6 +104,7 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
   enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" ![@lstring new !"writeToFile" !here] !true ;
   enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" ![@lstring new !"writeToExecutableFile" !here] !true ;
   enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" ![@lstring new !"makeDirectoryAndWriteToFile" !here] !true ;
+  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" ![@lstring new !"makeSymbolicLinkWithPath" !here] !true ;
   enterInstanceMethodWithoutArgument !?outInstanceMethodMap ![@lstring new !"makeDirectory" !here] !true ;
   @formalParameterSignature argList [emptyList] ;
   @unifiedTypeMapProxy t ;
