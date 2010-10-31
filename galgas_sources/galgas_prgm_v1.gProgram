@@ -274,70 +274,15 @@ message "a GALGAS project source file"
   if targetName == "" then
     error [projectComponent mTargetName]: "the target name should not be empty" ;
   end if ;
-#--- Parse features
-  @stringset availableGenerationFeatures [emptySet] ;
-  availableGenerationFeatures += !"makefile-macosx-intel" ;
-  availableGenerationFeatures += !"makefile-macosx-ppc" ;
-  availableGenerationFeatures += !"makefile-macosx-universal" ;
-  availableGenerationFeatures += !"makefile-macosx" ;
-  availableGenerationFeatures += !"makefile-unix" ;
-  availableGenerationFeatures += !"makefile-i386-linux-on-macosx" ;
-  availableGenerationFeatures += !"makefile-mingw-on-macosx" ;
-  availableGenerationFeatures += !"makefile-msys-on-win32" ;
-  availableGenerationFeatures += !"xcode-project" ;
-  @stringset generationFeatures [emptySet] ;
-  foreach [projectComponent mGenerationFeatureList] do
-    if [availableGenerationFeatures hasKey ![mValue string]] then
-      if [generationFeatures hasKey ![mValue string]] then
-        error mValue: "duplicate '" . mValue . "' feature" ;
-      end if ;
-      generationFeatures += ![mValue string] ;
-    else
-      @string s := "" ;
-      foreach availableGenerationFeatures do
-        s .= "\n  - '" . key . "'" ;
-      end foreach ;
-      error mValue: "unknown '" . mValue . "' feature; avalaible features are:" . s ;
-    end if ;
-  end foreach ;
-#--- 
-  if [generationFeatures hasKey !"makefile-macosx-universal"] & not [generationFeatures hasKey !"makefile-macosx-ppc"] then
-    warning [projectComponent mProjectName] : "'feature makefile-macosx-ppc' implicitly added, due to 'feature makefile-macosx-universal'" ;
-    generationFeatures += !"makefile-macosx-ppc" ;
-  end if ;
-  if [generationFeatures hasKey !"makefile-macosx-universal"] & not [generationFeatures hasKey !"makefile-macosx-intel"] then
-    warning [projectComponent mProjectName] : "'feature makefile-macosx-intel' implicitly added, due to 'feature makefile-macosx-universal'" ;
-    generationFeatures += !"makefile-macosx-intel" ;
-  end if ;
-#--- Generate projects
-  const @string projectDirectory := [[inSourceFile stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] ;
-  if [generationFeatures hasKey !"makefile-macosx-ppc"] then
-    generateMakefilePPCMacOSXTarget !projectDirectory !targetName ;
-  end if ;
-  if [generationFeatures hasKey !"makefile-macosx-intel"] then
-    generateMakefileIntelMacOSXTarget !projectDirectory !targetName ;
-  end if ;
-  if [generationFeatures hasKey !"makefile-macosx-universal"] then
-    generateMakefileUniversalMacOSXTarget !projectDirectory !targetName ;
-  end if ;
-  if [generationFeatures hasKey !"makefile-macosx"] then
-    generateMakefileMacOSXTarget !projectDirectory !targetName ;
-  end if ;
-  if [generationFeatures hasKey !"makefile-unix"] then
-    generateMakefileUnixTarget !projectDirectory !targetName ;
-  end if ;
-  if [generationFeatures hasKey !"makefile-i386-linux-on-macosx"] then
-    generateI386LinuxOnMacOSXTarget !projectDirectory !targetName ;
-  end if ;
-  if [generationFeatures hasKey !"makefile-mingw-on-macosx"] then
-    generateMinGWOnMacOSXTarget !projectDirectory !targetName ;
-  end if ;
-  if [generationFeatures hasKey !"makefile-msys-on-win32"] then
-    generateMsysOnWin32Target !projectDirectory !targetName ;
-  end if ;
-  if [generationFeatures hasKey !"xcode-project"] then
-    generateXcodeProjectTarget !projectDirectory !targetName ;
-  end if ;
+#--- Update targets
+  updateTargets
+    !inSourceFile
+    ![projectComponent mProjectName]
+    !targetName
+    ![projectComponent mGenerationFeatureList]
+    ![projectComponent mProjectSourceList]
+    ![option galgas_cli_options.legacyCodeGeneration value]
+  ;
 #--- Check target names, file base name uniqueness, and build target file list
   @sourceFileMap sourceFileMap [emptyMap] ;
   @targetFileListMap targetFileListMap [emptyMap] ;
@@ -524,14 +469,14 @@ message "a GALGAS project source file"
       foreach pathSet do
         pathesString .= key ;
       end foreach ;
-      @string newFileListContents := [filewrapper fileListTemplateFileWrapper.fileListTemplate
-        !pathesString
-        !galgasSourceList
-        !externSourceFileList
-        ![option galgas_cli_options.legacyCodeGeneration value]
-      ] ;
-      @string fileListPath := outputDirectory . "/file_list.mke" ;
-      [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
+#      @string newFileListContents := [filewrapper fileListTemplateFileWrapper.fileListTemplate
+#        !pathesString
+#        !galgasSourceList
+#        !externSourceFileList
+#        ![option galgas_cli_options.legacyCodeGeneration value]
+#      ] ;
+#      @string fileListPath := outputDirectory . "/file_list.mke" ;
+#      [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
     end if ;
   end if ;
 #--- Update Xcode project

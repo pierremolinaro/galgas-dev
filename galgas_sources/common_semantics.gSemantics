@@ -937,6 +937,7 @@ class @typeGalgas_string extends @AC_galgasType {
     outHasLexiqueAndLocationArguments := true ;
     if [inClassMethodName string] == "stringWithSymbolicLinkContents" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
+      outAccessorTypesList += ![@typeGalgas_string new] ![@lstring new !""! here] ;
     elsif [inClassMethodName string] == "stringWithVersionString" then
       outAccessorTypesList := [@typeListeAttributsSemantiques emptyList] ;
     elsif [inClassMethodName string] == "stringWithSourceFilePath" then

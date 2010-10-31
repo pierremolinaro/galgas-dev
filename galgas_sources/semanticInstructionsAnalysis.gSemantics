@@ -1316,7 +1316,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
   @semanticInstructionListForGeneration between_instructionList ;
   analyzeSemanticInstructionList
     !inAnalysisContext
-    !indexDeclaration
+    ![@localConstantList emptyList]
     ![@localInitializedVariableList emptyList]
     !mBetweenInstructionList
     !mEndOf_between_branch

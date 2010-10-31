@@ -1,12 +1,14 @@
 #---------------------------------------------------------------------------*
 
 semantics targetGeneration :
+  import "projectMetamodel.gSemantics" ;
+  import semantics projectMetamodel in "projectMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
 
 filewrapper targetGenerationFileWrapper in "../generation_templates/target_generation" {
- "plist", "bat", "command", "rtf", "strings"
+ "bat", "command", "rtf", "strings"
 } {
   template makefile_macosx_intel_makefile "makefile-macosx-intel/makefile" ?@string PROJECT_NAME ;
   template makefile_macosx_intel_makefile64 "makefile-macosx-intel/makefile64" ?@string PROJECT_NAME ;
@@ -30,6 +32,13 @@ filewrapper targetGenerationFileWrapper in "../generation_templates/target_gener
   template makefile_msys_on_win32_makefile "makefile-msys-on-win32/makefile" ?@string PROJECT_NAME ;
 
   template makefile_info_plist "xcode-project/Info.plist" ?@string PROJECT_NAME ;
+
+  template makefile_file_list "makefile-file-list.gTemplate"
+    ?@stringlist HAND_CODED_SOURCE_DIR_LIST
+    ?@stringlist HAND_CODED_SOURCE_FILE_LIST
+    ?@stringlist MAKEFILE_FILE_LIST
+    ?@bool COMPILE_FOR_GALGAS_1
+  ;
 }
 
 #---------------------------------------------------------------------------*
@@ -53,7 +62,13 @@ routine generateXcodeProjectTarget
   end if ;
 #--- Make symbolic link
   const @string libpmPosixPath := [[@string stringWithEnvironmentVariable !"LIBPM_PATH"] unixPathWithNativePath] ;
-  [dir . "/libpm" makeSymbolicLinkWithPath !libpmPosixPath] ;
+  const @string symbLinkPath := dir . "/libpm" ;
+  if not [symbLinkPath isSymbolicLink] then
+    [symbLinkPath makeSymbolicLinkWithPath !libpmPosixPath] ;
+  elsif [@string stringWithSymbolicLinkContents !symbLinkPath] != libpmPosixPath then
+    [@string deleteFile !symbLinkPath] ;
+    [symbLinkPath makeSymbolicLinkWithPath !libpmPosixPath] ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -174,6 +189,175 @@ routine generateI386LinuxOnMacOSXTarget
   [[filewrapper targetGenerationFileWrapper."makefile-i386-linux-on-macosx/build.command"] writeToExecutableFileWhenDifferentContents !dir ."/build.command" ?*] ;
   [[filewrapper targetGenerationFileWrapper."makefile-i386-linux-on-macosx/clean.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean.command" ?*] ;
   [[filewrapper targetGenerationFileWrapper.makefile_i386_linux_on_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine updateTargets
+  ??@lstring inProjectSourceFilePath
+  ??@lstring inProjectName
+  ??@string inTargetName
+  ??@lstringlist inTargetFeatureList
+  ??@projectSourceList inProjectSourceList
+  ??@bool inGenerateForGalgas1
+:
+  const @string projectDirectory := [[inProjectSourceFilePath stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] ;
+#--- Parse features
+  message "*** Updating targets\n" ;
+  @stringset availableGenerationFeatures [emptySet] ;
+  availableGenerationFeatures += !"makefile-macosx-intel" ;
+  availableGenerationFeatures += !"makefile-macosx-ppc" ;
+  availableGenerationFeatures += !"makefile-macosx-universal" ;
+  availableGenerationFeatures += !"makefile-macosx" ;
+  availableGenerationFeatures += !"makefile-unix" ;
+  availableGenerationFeatures += !"makefile-i386-linux-on-macosx" ;
+  availableGenerationFeatures += !"makefile-mingw-on-macosx" ;
+  availableGenerationFeatures += !"makefile-msys-on-win32" ;
+  availableGenerationFeatures += !"xcode-project" ;
+  @stringset generationFeatures [emptySet] ;
+  foreach inTargetFeatureList do
+    if [availableGenerationFeatures hasKey ![mValue string]] then
+      if [generationFeatures hasKey ![mValue string]] then
+        error mValue: "duplicate '" . mValue . "' feature" ;
+      end if ;
+      generationFeatures += ![mValue string] ;
+    else
+      @string s := "" ;
+      foreach availableGenerationFeatures do
+        s .= "\n  - '" . key . "'" ;
+      end foreach ;
+      error mValue: "unknown '" . mValue . "' feature; avalaible features are:" . s ;
+    end if ;
+  end foreach ;
+#--- Special case for 'makefile-macosx-universal'
+  if [generationFeatures hasKey !"makefile-macosx-universal"] & not [generationFeatures hasKey !"makefile-macosx-ppc"] then
+    warning inProjectName : "'feature makefile-macosx-ppc' implicitly added, due to 'feature makefile-macosx-universal'" ;
+    generationFeatures += !"makefile-macosx-ppc" ;
+  end if ;
+  if [generationFeatures hasKey !"makefile-macosx-universal"] & not [generationFeatures hasKey !"makefile-macosx-intel"] then
+    warning inProjectName : "'feature makefile-macosx-intel' implicitly added, due to 'feature makefile-macosx-universal'" ;
+    generationFeatures += !"makefile-macosx-intel" ;
+  end if ;
+#--- Generate projects
+  if [generationFeatures hasKey !"makefile-macosx-ppc"] then
+    generateMakefilePPCMacOSXTarget !projectDirectory !inTargetName ;
+  end if ;
+  if [generationFeatures hasKey !"makefile-macosx-intel"] then
+    generateMakefileIntelMacOSXTarget !projectDirectory !inTargetName ;
+  end if ;
+  if [generationFeatures hasKey !"makefile-macosx-universal"] then
+    generateMakefileUniversalMacOSXTarget !projectDirectory !inTargetName ;
+  end if ;
+  if [generationFeatures hasKey !"makefile-macosx"] then
+    generateMakefileMacOSXTarget !projectDirectory !inTargetName ;
+  end if ;
+  if [generationFeatures hasKey !"makefile-unix"] then
+    generateMakefileUnixTarget !projectDirectory !inTargetName ;
+  end if ;
+  if [generationFeatures hasKey !"makefile-i386-linux-on-macosx"] then
+    generateI386LinuxOnMacOSXTarget !projectDirectory !inTargetName ;
+  end if ;
+  if [generationFeatures hasKey !"makefile-mingw-on-macosx"] then
+    generateMinGWOnMacOSXTarget !projectDirectory !inTargetName ;
+  end if ;
+  if [generationFeatures hasKey !"makefile-msys-on-win32"] then
+    generateMsysOnWin32Target !projectDirectory !inTargetName ;
+  end if ;
+  if [generationFeatures hasKey !"xcode-project"] then
+    generateXcodeProjectTarget !projectDirectory !inTargetName ;
+  end if ;
+##--- Parse file list
+#  @stringlist generatedFileListForMakefile [emptyList] ;
+#  foreach inProjectSourceList do
+#    const @string cppFile := [mFilePath stringByDeletingPathExtension] . ".cpp" ;
+##    const @string hFile := [mFilePath stringByDeletingPathExtension] . ".h" ;
+#    switch mSourceKind
+#    when externSourceFile :
+#      generatedFileListForMakefile += ![mFilePath string] ;
+#    when lexiqueSourceFile, optionSourceFile, syntaxSourceFile, semanticsSourceFile,grammarSourceFile, programSourceFile :
+#      generatedFileListForMakefile += !cppFile ;
+##      generatedFileList += hFile ;
+#    when guiSourceFile :
+#
+#    end switch ;
+#  end foreach ;
+#--- Check target names, file base name uniqueness, and build target file list
+  @stringset sourceFileSet [emptySet] ;
+  @stringlist generatedFileListForMakefile [emptyList] ;
+  @stringlist handCodedSourceList [emptyList] ;
+  @stringlist handCodedSourceDirectoryList [emptyList] ;
+  foreach inProjectSourceList do
+    const @string baseName := [[[mFilePath string] lastPathComponent] stringByDeletingPathExtension] ;
+#    const @string cppFile := baseName . ".cpp" ;
+  #--- Check base name is unique
+    if [sourceFileSet hasKey !baseName] then
+      error mFilePath: "there is already a file with '" . baseName . "' as base name in the project" ;
+    end if ;
+    sourceFileSet += !baseName ;
+  #---
+    switch mSourceKind
+    when externSourceFile :
+      handCodedSourceList += ![mFilePath lastPathComponent] ;
+      handCodedSourceDirectoryList += ![mFilePath stringByDeletingLastPathComponent] ;
+    when lexiqueSourceFile, optionSourceFile, syntaxSourceFile, semanticsSourceFile,grammarSourceFile, programSourceFile :
+      generatedFileListForMakefile += !baseName . ".cpp" ;
+    when guiSourceFile :
+
+    end switch ;
+  end foreach ;
+#--- Update makefile file list
+  const @string newFileListContents := [filewrapper targetGenerationFileWrapper.makefile_file_list
+    !handCodedSourceDirectoryList
+    !handCodedSourceList
+    !generatedFileListForMakefile
+    !inGenerateForGalgas1
+  ] ;
+  @string fileListPath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list.mke" ;
+  [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
+
+#  template makefile_file_list "makefile-file-list.gTemplate"
+#    ?@stringlist HAND_CODED_SOURCE_DIR_LIST
+#    ?@stringlist HAND_CODED_SOURCE_FILE_LIST
+#    ?@stringlist MAKEFILE_FILE_LIST
+#    ?@bool COMPILE_FOR_GALGAS_1
+#  ;
+
+#--- Build makefile file list
+#  @stringlist makefileFiles := [targetFileListMap listForKey !"makefile"] ;
+#  if [makefileFiles length] > 0 then
+#    @string externSourceFileList := "" ;
+#    @string galgasSourceList := "" ;
+#    @stringset pathSet [emptySet] ;
+#    pathSet += !"SOURCES_DIR += ../hand_coded_sources\n" ;
+#    foreach makefileFiles do
+#      @string fullPath ;
+#      @sourceFileKind sourceKind ;
+#      [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
+#      @string filePath := [fullPath stringByDeletingLastPathComponent] ;
+#      if sourceKind == [@sourceFileKind externSourceFile] then
+#        if [filePath firstCharacterOrNul] == '/' then
+#          pathSet += !"SOURCES_DIR += " . filePath . "\n" ;
+#        elsif filePath != "" then
+#          pathSet += !"SOURCES_DIR += ../hand_coded_sources/" . filePath . "\n" ;
+#        end if ;
+#        externSourceFileList .= "SOURCES += " . [fullPath lastPathComponent] . "\n" ;
+#      else
+#        galgasSourceList .= "SOURCES += " . [[fullPath lastPathComponent] stringByDeletingPathExtension] . ".cpp\n" ;
+#      end if ;
+#    end foreach ;
+#    @string pathesString := "" ;
+#    foreach pathSet do
+#      pathesString .= key ;
+#    end foreach ;
+#    @string newFileListContents := [filewrapper fileListTemplateFileWrapper.fileListTemplate
+#      !pathesString
+#      !galgasSourceList
+#      !externSourceFileList
+#      ![option galgas_cli_options.legacyCodeGeneration value]
+#    ] ;
+#    @string fileListPath := outputDirectory . "/file_list.mke" ;
+#    [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
+#  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
