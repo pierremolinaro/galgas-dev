@@ -500,23 +500,6 @@ routine performProjectGlobalCheckings
   end if ;
 end routine ;
 
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   PROJECT                                                                    *
-#                                                                              *
-#------------------------------------------------------------------------------*
-
-listmap @targetFileListMap (@stringlist) ;
-
-#------------------------------------------------------------------------------*
-
-map @sourceFileMap {
-  @string mFullPath ;
-  @sourceFileKind mSourceKind ;
-  insert insertKey error message "the '%K' source base name has been already declared in %L" ;
-  search searchKey error message "the '%K' source base name is not declared" ;
-}
-
 #---------------------------------------------------------------------------*
 
 end semantics ;

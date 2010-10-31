@@ -1050,6 +1050,7 @@ end routine ;
 
 routine enterProjectDefaultSettings
   ??@stringlist inHeaderSearchPathList
+  ??@stringlist inArchitectureList
   !@stringlist outProjectDefaultSettings
 :
 #-------------------------------------------------- Define project default configuration
@@ -1059,7 +1060,13 @@ routine enterProjectDefaultSettings
   end foreach ;
   outProjectDefaultSettings := [@stringlist emptyList] ;
   outProjectDefaultSettings  += !"ALWAYS_SEARCH_USER_PATHS = NO;" ;
-  outProjectDefaultSettings  += !"ARCHS = (\n\t\t\t\t\ti386,\n\t\t\t\t\tppc,\n\t\t\t\t);" ;
+  @string s := "ARCHS = (" ;
+  foreach inArchitectureList do
+    s .= "\n\t\t\t\t\t" . mValue . "," ;
+  end foreach ;
+  s .= "\n\t\t\t\t);" ;
+#  outProjectDefaultSettings  += !"ARCHS = (\n\t\t\t\t\ti386,\n\t\t\t\t\tppc,\n\t\t\t\t);" ;
+  outProjectDefaultSettings  += !s ;
   outProjectDefaultSettings  += !"GCC_DEBUGGING_SYMBOLS = default;" ;
   outProjectDefaultSettings  += !"GCC_GENERATE_DEBUGGING_SYMBOLS = NO;" ;
   outProjectDefaultSettings  += !"GCC_PRECOMPILE_PREFIX_HEADER = YES;" ;

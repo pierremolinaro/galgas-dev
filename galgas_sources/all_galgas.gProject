@@ -20,14 +20,14 @@
 project all_galgas -> "galgas" :
 #--- Targets
   feature "makefile-macosx" ;
-  feature "makefile-macosx-intel" ;
-  feature "makefile-macosx-ppc" ;
-  feature "makefile-macosx-universal" ;
+#  feature "makefile-macosx-intel" ;
+#  feature "makefile-macosx-ppc" ;
+#  feature "makefile-macosx-universal" ;
   feature "makefile-unix" ;
   feature "makefile-i386-linux-on-macosx" ;
   feature "makefile-mingw-on-macosx" ;
   feature "makefile-msys-on-win32" ;
-  feature "xcode-project" ;
+#  feature "xcode-project" ;
 
 #--- Command Line Options
   option "galgas_cli_options.gOption" : makefile ;

@@ -2,7 +2,10 @@
 
 semantics targetGeneration :
   import "projectMetamodel.gSemantics" ;
+  import "XcodeProjectGeneration.gSemantics" ;
+
   import semantics projectMetamodel in "projectMetamodel.gSemantics" ;
+  import semantics XcodeProjectGeneration in "XcodeProjectGeneration.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
@@ -34,42 +37,12 @@ filewrapper targetGenerationFileWrapper in "../generation_templates/target_gener
   template makefile_info_plist "xcode-project/Info.plist" ?@string PROJECT_NAME ;
 
   template makefile_file_list "makefile-file-list.gTemplate"
-    ?@stringlist HAND_CODED_SOURCE_DIR_LIST
+    ?@stringset HAND_CODED_SOURCE_DIR_SET
     ?@stringlist HAND_CODED_SOURCE_FILE_LIST
     ?@stringlist MAKEFILE_FILE_LIST
     ?@bool COMPILE_FOR_GALGAS_1
   ;
 }
-
-#---------------------------------------------------------------------------*
-
-routine generateXcodeProjectTarget
-  ??@string inProjectDirectory
-  ??@string inProjectName
-:
-  const @string dir := inProjectDirectory . "/xcode-project";
-  [dir makeDirectory] ;
-  [[filewrapper targetGenerationFileWrapper.makefile_info_plist !inProjectName] writeToFileWhenDifferentContents !dir ."/Info.plist" ?*] ;
-
-  [dir . "/English.lproj" makeDirectory] ;
-  const @string InfoPlist_strings_path := dir ."/English.lproj/InfoPlist.strings" ;
-  if not [InfoPlist_strings_path fileExists] then
-    [[filewrapper targetGenerationFileWrapper."xcode-project/English.lproj/InfoPlist.strings"] writeToFile !InfoPlist_strings_path] ;
-  end if ;
-  const @string Credits_rtf_path := dir ."/English.lproj/Credits.rtf" ;
-  if not [Credits_rtf_path fileExists] then
-    [[filewrapper targetGenerationFileWrapper."xcode-project/English.lproj/Credits.rtf"] writeToFile !Credits_rtf_path] ;
-  end if ;
-#--- Make symbolic link
-  const @string libpmPosixPath := [[@string stringWithEnvironmentVariable !"LIBPM_PATH"] unixPathWithNativePath] ;
-  const @string symbLinkPath := dir . "/libpm" ;
-  if not [symbLinkPath isSymbolicLink] then
-    [symbLinkPath makeSymbolicLinkWithPath !libpmPosixPath] ;
-  elsif [@string stringWithSymbolicLinkContents !symbLinkPath] != libpmPosixPath then
-    [@string deleteFile !symbLinkPath] ;
-    [symbLinkPath makeSymbolicLinkWithPath !libpmPosixPath] ;
-  end if ;
-end routine ;
 
 #---------------------------------------------------------------------------*
 
@@ -202,6 +175,74 @@ routine updateTargets
   ??@bool inGenerateForGalgas1
 :
   const @string projectDirectory := [[inProjectSourceFilePath stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] ;
+#--- Check target names, file base name uniqueness, and build target file list
+  @stringset externSourceSet_tool [emptySet] ;
+  @stringset guiSourceSet_tool [emptySet] ;
+  @stringset scannerSourceSet_tool [emptySet] ;
+  @stringset optionSourceSet_tool [emptySet] ;
+  @stringset semanticsSourceSet_tool [emptySet] ;
+  @stringset syntaxSourceSet_tool [emptySet] ;
+  @stringset grammarSourceSet_tool [emptySet] ;
+  @stringset programSourceSet_tool [emptySet] ;
+#---
+  @stringset externSourceSet_app [emptySet] ;
+  @stringset guiSourceSet_app [emptySet] ;
+  @stringset scannerSourceSet_app [emptySet] ;
+  @stringset optionSourceSet_app [emptySet] ;
+  @stringset semanticsSourceSet_app [emptySet] ;
+  @stringset syntaxSourceSet_app [emptySet] ;
+  @stringset grammarSourceSet_app [emptySet] ;
+  @stringset programSourceSet_app [emptySet] ;
+#---
+  @stringset sourceFileSet [emptySet] ;
+  @stringlist generatedFileListForMakefile [emptyList] ;
+  @stringlist handCodedSourceList [emptyList] ;
+  @stringset handCodedSourceDirectorySet [emptySet] ;
+  foreach inProjectSourceList do
+    const @string fullFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/" . [mFilePath string] ;
+    const @string baseName := [[[mFilePath string] lastPathComponent] stringByDeletingPathExtension] ;
+    const @string cppFile := baseName . ".cpp" ;
+  #--- Check base name is unique
+    if [sourceFileSet hasKey !baseName] then
+      error mFilePath: "there is already a file with '" . baseName . "' as base name in the project" ;
+    end if ;
+    sourceFileSet += !baseName ;
+  #---
+    switch mSourceKind
+    when externSourceFile :
+      externSourceSet_tool += !fullFilePath ;
+      externSourceSet_app += !fullFilePath ;
+      handCodedSourceList += ![mFilePath lastPathComponent] ;
+      handCodedSourceDirectorySet += !"../hand_coded_sources" . [mFilePath stringByDeletingLastPathComponent] ;
+    when lexiqueSourceFile :
+      generatedFileListForMakefile += !cppFile ;
+      scannerSourceSet_tool += !baseName ;
+      scannerSourceSet_app += !baseName ;
+    when syntaxSourceFile :
+      generatedFileListForMakefile += !cppFile ;
+      syntaxSourceSet_tool += !baseName ;
+      syntaxSourceSet_app += !baseName ;
+    when semanticsSourceFile :
+      generatedFileListForMakefile += !cppFile ;
+      semanticsSourceSet_tool += !baseName ;
+      semanticsSourceSet_app += !baseName ;
+    when grammarSourceFile :
+      generatedFileListForMakefile += !cppFile ;
+      grammarSourceSet_tool += !baseName ;
+      grammarSourceSet_app += !baseName ;
+    when programSourceFile :
+      generatedFileListForMakefile += !cppFile ;
+      programSourceSet_tool += !baseName ;
+      programSourceSet_app += !baseName ;
+    when optionSourceFile :
+      generatedFileListForMakefile += !cppFile ;
+      optionSourceSet_tool += !baseName ;
+      optionSourceSet_app += !baseName ;
+    when guiSourceFile :
+      guiSourceSet_tool += !baseName ;
+      guiSourceSet_app += !baseName ;
+    end switch ;
+  end foreach ;
 #--- Parse features
   message "*** Updating targets\n" ;
   @stringset availableGenerationFeatures [emptySet] ;
@@ -263,101 +304,75 @@ routine updateTargets
   if [generationFeatures hasKey !"makefile-msys-on-win32"] then
     generateMsysOnWin32Target !projectDirectory !inTargetName ;
   end if ;
-  if [generationFeatures hasKey !"xcode-project"] then
-    generateXcodeProjectTarget !projectDirectory !inTargetName ;
-  end if ;
-##--- Parse file list
-#  @stringlist generatedFileListForMakefile [emptyList] ;
-#  foreach inProjectSourceList do
-#    const @string cppFile := [mFilePath stringByDeletingPathExtension] . ".cpp" ;
-##    const @string hFile := [mFilePath stringByDeletingPathExtension] . ".h" ;
-#    switch mSourceKind
-#    when externSourceFile :
-#      generatedFileListForMakefile += ![mFilePath string] ;
-#    when lexiqueSourceFile, optionSourceFile, syntaxSourceFile, semanticsSourceFile,grammarSourceFile, programSourceFile :
-#      generatedFileListForMakefile += !cppFile ;
-##      generatedFileList += hFile ;
-#    when guiSourceFile :
-#
-#    end switch ;
-#  end foreach ;
-#--- Check target names, file base name uniqueness, and build target file list
-  @stringset sourceFileSet [emptySet] ;
-  @stringlist generatedFileListForMakefile [emptyList] ;
-  @stringlist handCodedSourceList [emptyList] ;
-  @stringlist handCodedSourceDirectoryList [emptyList] ;
-  foreach inProjectSourceList do
-    const @string baseName := [[[mFilePath string] lastPathComponent] stringByDeletingPathExtension] ;
-#    const @string cppFile := baseName . ".cpp" ;
-  #--- Check base name is unique
-    if [sourceFileSet hasKey !baseName] then
-      error mFilePath: "there is already a file with '" . baseName . "' as base name in the project" ;
-    end if ;
-    sourceFileSet += !baseName ;
-  #---
-    switch mSourceKind
-    when externSourceFile :
-      handCodedSourceList += ![mFilePath lastPathComponent] ;
-      handCodedSourceDirectoryList += ![mFilePath stringByDeletingLastPathComponent] ;
-    when lexiqueSourceFile, optionSourceFile, syntaxSourceFile, semanticsSourceFile,grammarSourceFile, programSourceFile :
-      generatedFileListForMakefile += !baseName . ".cpp" ;
-    when guiSourceFile :
-
-    end switch ;
-  end foreach ;
 #--- Update makefile file list
   const @string newFileListContents := [filewrapper targetGenerationFileWrapper.makefile_file_list
-    !handCodedSourceDirectoryList
+    !handCodedSourceDirectorySet
     !handCodedSourceList
     !generatedFileListForMakefile
     !inGenerateForGalgas1
   ] ;
   @string fileListPath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list.mke" ;
   [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
-
-#  template makefile_file_list "makefile-file-list.gTemplate"
-#    ?@stringlist HAND_CODED_SOURCE_DIR_LIST
-#    ?@stringlist HAND_CODED_SOURCE_FILE_LIST
-#    ?@stringlist MAKEFILE_FILE_LIST
-#    ?@bool COMPILE_FOR_GALGAS_1
-#  ;
-
-#--- Build makefile file list
-#  @stringlist makefileFiles := [targetFileListMap listForKey !"makefile"] ;
-#  if [makefileFiles length] > 0 then
-#    @string externSourceFileList := "" ;
-#    @string galgasSourceList := "" ;
-#    @stringset pathSet [emptySet] ;
-#    pathSet += !"SOURCES_DIR += ../hand_coded_sources\n" ;
-#    foreach makefileFiles do
-#      @string fullPath ;
-#      @sourceFileKind sourceKind ;
-#      [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
-#      @string filePath := [fullPath stringByDeletingLastPathComponent] ;
-#      if sourceKind == [@sourceFileKind externSourceFile] then
-#        if [filePath firstCharacterOrNul] == '/' then
-#          pathSet += !"SOURCES_DIR += " . filePath . "\n" ;
-#        elsif filePath != "" then
-#          pathSet += !"SOURCES_DIR += ../hand_coded_sources/" . filePath . "\n" ;
-#        end if ;
-#        externSourceFileList .= "SOURCES += " . [fullPath lastPathComponent] . "\n" ;
-#      else
-#        galgasSourceList .= "SOURCES += " . [[fullPath lastPathComponent] stringByDeletingPathExtension] . ".cpp\n" ;
-#      end if ;
-#    end foreach ;
-#    @string pathesString := "" ;
-#    foreach pathSet do
-#      pathesString .= key ;
-#    end foreach ;
-#    @string newFileListContents := [filewrapper fileListTemplateFileWrapper.fileListTemplate
-#      !pathesString
-#      !galgasSourceList
-#      !externSourceFileList
-#      ![option galgas_cli_options.legacyCodeGeneration value]
-#    ] ;
-#    @string fileListPath := outputDirectory . "/file_list.mke" ;
-#    [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
-#  end if ;
+#---------------------- update Xcode project
+  if [generationFeatures hasKey !"xcode-project"] then
+    const @string dir := projectDirectory . "/xcode-project";
+    [dir makeDirectory] ;
+    [[filewrapper targetGenerationFileWrapper.makefile_info_plist !inTargetName] writeToFileWhenDifferentContents !dir ."/Info.plist" ?*] ;
+  
+    [dir . "/English.lproj" makeDirectory] ;
+    const @string InfoPlist_strings_path := dir ."/English.lproj/InfoPlist.strings" ;
+    if not [InfoPlist_strings_path fileExists] then
+      [[filewrapper targetGenerationFileWrapper."xcode-project/English.lproj/InfoPlist.strings"] writeToFile !InfoPlist_strings_path] ;
+    end if ;
+    const @string Credits_rtf_path := dir ."/English.lproj/Credits.rtf" ;
+    if not [Credits_rtf_path fileExists] then
+      [[filewrapper targetGenerationFileWrapper."xcode-project/English.lproj/Credits.rtf"] writeToFile !Credits_rtf_path] ;
+    end if ;
+  #--- Make symbolic link
+    const @string libpmPosixPath := [[@string stringWithEnvironmentVariable !"LIBPM_PATH"] unixPathWithNativePath] ;
+    const @string symbLinkPath := dir . "/libpm" ;
+    if not [symbLinkPath isSymbolicLink] then
+      [symbLinkPath makeSymbolicLinkWithPath !libpmPosixPath] ;
+    elsif [@string stringWithSymbolicLinkContents !symbLinkPath] != libpmPosixPath then
+      [@string deleteFile !symbLinkPath] ;
+      [symbLinkPath makeSymbolicLinkWithPath !libpmPosixPath] ;
+    end if ;
+  #--- Enumerate icons
+    const @stringlist iconFiles := [dir regularFilesWithExtensions !false ![@stringlist listWithValue !"icns"]] ;
+  #--- Build pathes
+    const @string xcodeProjectPath := dir . "/" . inTargetName . ".xcodeproj" ; # Actually a directory
+    const @string intermediateFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list_for_xcode_project.txt" ;
+  #---
+    [xcodeProjectPath makeDirectory] ;
+  #---
+    @stringlist architectureList [emptyList] ;
+    architectureList += !"i386" ;
+  #--- Build intermediate
+    generateXcodeProject
+      !externSourceSet_tool
+      !guiSourceSet_tool
+      !scannerSourceSet_tool
+      !optionSourceSet_tool
+      !semanticsSourceSet_tool
+      !syntaxSourceSet_tool
+      !grammarSourceSet_tool
+      !programSourceSet_tool
+      !externSourceSet_app
+      !guiSourceSet_app
+      !scannerSourceSet_app
+      !optionSourceSet_app
+      !semanticsSourceSet_app
+      !syntaxSourceSet_app
+      !grammarSourceSet_app
+      !programSourceSet_app
+      !inTargetName # XCode project base name
+      !xcodeProjectPath # Full Path of xxx.xcodeproj file
+      !iconFiles
+      !intermediateFilePath
+      !architectureList
+      !inGenerateForGalgas1
+    ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
