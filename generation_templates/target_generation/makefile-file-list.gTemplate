@@ -13,8 +13,8 @@ endif
 
 SOURCES_DIR := ../galgas_sources/GALGAS_OUTPUT
 SOURCES_DIR += ../galgas_sources/GALGAS_OUTPUT/include-files
-%foreach HAND_CODED_SOURCE_DIR_LIST do
-  %SOURCES_DIR += %!mValue%\n%
+%foreach HAND_CODED_SOURCE_DIR_SET do
+  %SOURCES_DIR += %!key%\n%
 end foreach
 %
 

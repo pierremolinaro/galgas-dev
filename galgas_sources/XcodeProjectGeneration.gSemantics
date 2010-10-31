@@ -914,6 +914,7 @@ routine generateXcodeProject
   ??@string in_xcodeproj_filePath
   ??@stringlist inIconFiles
   ??@string inReferenceFilePath
+  ??@stringlist inArchitectureList
   ??@bool inGenerateCodeGalgas1
 :
   @XcodeProjectDescription XcodeProjectDescription ;
@@ -1413,6 +1414,7 @@ routine generateXcodeProject
   @stringlist projectDefaultSettings ;
   enterProjectDefaultSettings
     !pathes
+    !inArchitectureList
     ?projectDefaultSettings
   ;
 
