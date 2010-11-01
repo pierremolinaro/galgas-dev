@@ -1,5 +1,5 @@
 /* Localized versions of Info.plist keys */
-CFBundleName = "cocoa%!PROJECT_NAME%";
+CFBundleName = "cocoa%![PROJECT_NAME stringByCapitalizingFirstCharacter]%";
 CFBundleShortVersionString = "1.0.0";
 CFBundleGetInfoString = "Cocoa %!PROJECT_NAME% version 1.0.0, Copyright __MyCompanyName__.";
 NSHumanReadableCopyright = "Copyright __MyCompanyName__.";

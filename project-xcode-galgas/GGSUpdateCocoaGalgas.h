@@ -31,10 +31,6 @@
   
   @private IBOutlet NSButton * mCheckNowButton ;
   
-  @private IBOutlet NSTextField * mLIBPMStatusTextField ;
-  
-  @private IBOutlet NSTextField * mLIBPMpathTextField ;
-
   @private IBOutlet NSTextField * mDownloadTitle ;
   @private IBOutlet NSProgressIndicator * mDownloadProgressIndicator ;
   @private IBOutlet NSTextField * mDownloadSubTitle ;
@@ -46,10 +42,6 @@
 //---  
   @private BOOL mSearchForUpdatesInBackground ;
 }
-
-- (IBAction) setLIPMpathAction: (id) inSender ;
-
-- (IBAction) resetLIPMpathAction: (id) inSender ;
 
 - (IBAction) checkForNewVersion: (id) inSender ;
 
