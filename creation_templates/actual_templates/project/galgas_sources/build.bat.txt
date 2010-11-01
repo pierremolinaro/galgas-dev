@@ -1,2 +1,0 @@
-galgas -v all_%!PROJECT_NAME%.gProject
-pause
