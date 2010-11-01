@@ -17,6 +17,7 @@
 
 #import <WebKit/WebKit.h>
 #import <Security/Security.h>
+#include <Carbon/Carbon.h>
 
 //--------------------------------------------------------------------------*
 
@@ -26,6 +27,178 @@
 //--------------------------------------------------------------------------*
 
 @implementation GGSUpdateCocoaGalgas
+
+//--------------------------------------------------------------------------*
+
+#pragma mark Check for LIBPM_PATH definition
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) LIPM_PATH_definitionInEnvironmentFile {
+  NSString * result = nil ;
+  NSString * environmentFilePath = [NSHomeDirectory () stringByAppendingString:@"/.MacOSX/environment.plist"] ;
+  // NSLog (@"%@", environmentFilePath) ;
+  NSFileManager * fm = [NSFileManager defaultManager] ;
+  if ([fm fileExistsAtPath:environmentFilePath]) {
+    NSData * data = [[NSData alloc] initWithContentsOfFile:environmentFilePath] ;
+    NSDictionary * dict = [NSPropertyListSerialization
+      propertyListFromData:data
+      mutabilityOption:0
+      format:NULL
+      errorDescription:NULL
+    ] ;
+    // NSLog (@"%@", dict) ;
+    result = [dict objectForKey:@"LIBPM_PATH"] ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) setEnvironmentVariableWithValue: (NSString *) inEnvironmentVariable {
+  NSString * environmentFilePath = [NSHomeDirectory () stringByAppendingString:@"/.MacOSX/environment.plist"] ;
+  // NSLog (@"%@", environmentFilePath) ;
+  NSMutableDictionary * dict = [NSMutableDictionary dictionaryWithCapacity:0] ;
+  NSFileManager * fm = [NSFileManager defaultManager] ;
+  if ([fm fileExistsAtPath:environmentFilePath]) {
+    NSData * data = [[NSData alloc] initWithContentsOfFile:environmentFilePath] ;
+    NSDictionary * d = [NSPropertyListSerialization
+      propertyListFromData:data
+      mutabilityOption:0
+      format:NULL
+      errorDescription:NULL
+    ] ;
+    dict = [d mutableCopy] ;
+  }
+  [dict setValue:inEnvironmentVariable forKey:@"LIBPM_PATH"] ;
+  [fm
+    createDirectoryAtPath:[NSHomeDirectory () stringByAppendingString:@"/.MacOSX"]
+    withIntermediateDirectories:NO
+    attributes:0
+    error:NULL
+  ] ;
+  [dict writeToFile:environmentFilePath atomically:YES] ;
+}
+
+//---------------------------------------------------------------------------*
+// see http://developer.apple.com/qa/qa2001/qa1134.html
+
+static OSStatus SendAppleEventToSystemProcess (AEEventID EventToSend) {
+  AEAddressDesc targetDesc;
+  static const ProcessSerialNumber kPSNOfSystemProcess = { 0, kSystemProcess };
+  AppleEvent eventReply = {typeNull, NULL};
+  AppleEvent appleEventToSend = {typeNull, NULL};
+  OSStatus error = AECreateDesc (typeProcessSerialNumber, &kPSNOfSystemProcess, 
+                                 sizeof(kPSNOfSystemProcess), &targetDesc);
+
+    if (error != noErr) {
+      return(error);
+    }
+
+    error = AECreateAppleEvent(kCoreEventClass, EventToSend, &targetDesc, 
+                   kAutoGenerateReturnID, kAnyTransactionID, &appleEventToSend);
+
+    AEDisposeDesc(&targetDesc);
+    if (error != noErr)
+    {
+        return(error);
+    }
+
+    error = AESend(&appleEventToSend, &eventReply, kAENoReply, 
+                  kAENormalPriority, kAEDefaultTimeout, NULL, NULL);
+
+    AEDisposeDesc(&appleEventToSend);
+    if (error != noErr)
+    {
+        return(error);
+    }
+
+    AEDisposeDesc(&eventReply);
+
+    return(error); 
+}
+
+//---------------------------------------------------------------------------*
+
+- (BOOL) checkFor_LIPM_PATH_definition {
+//--- Check for value in environment file
+  NSString * libpmPath_inEnvironmentFile = [self LIPM_PATH_definitionInEnvironmentFile] ;
+  // NSLog (@"%@", libpmPath_inEnvironmentFile) ;
+//--- Check if value points out a valid directory
+  BOOL validDirectory = NO ;
+  if ([libpmPath_inEnvironmentFile length] > 0) {
+    validDirectory = [[NSFileManager defaultManager]
+      fileExistsAtPath:libpmPath_inEnvironmentFile
+      isDirectory: & validDirectory
+    ] ;
+  }
+//--- If the directory is not valid, display a dialog to set it
+  BOOL loop = YES ;
+  while (loop && ! validDirectory) {
+    NSOpenPanel * op = [NSOpenPanel openPanel] ;
+    [op setDelegate:self] ;
+    [op setAllowsMultipleSelection:NO] ;
+    [op setCanChooseFiles:NO] ;
+    [op setCanChooseDirectories:YES] ;
+    [op setCanCreateDirectories:NO] ;
+    [op setPrompt:@"select 'libpm' directory"] ;
+    [op setMessage:@"GALGAS requires the 'LIBPM_PATH' environment variable refers to the libpm directory."
+                    " The definition will be stored in the ~/MacOSX/environment.plist file.\n"
+                    "In order the new definition to work properly, you will ask to logout the session, and then you will log back."] ;
+    [op setTitle:@"Select 'libpm' directory"] ;
+    const NSInteger result = [op runModal] ;
+    // NSLog (@"%d", result) ;
+    if (result == NSFileHandlingPanelOKButton) {
+      NSString * selectedDirectory = [op directory] ;
+      // NSLog (@"selectedDirectory '%@'", selectedDirectory) ;
+      NSString * versionFilePath = [selectedDirectory stringByAppendingString:@"/version_libpm.h"] ;
+      validDirectory = [[NSFileManager defaultManager] fileExistsAtPath:versionFilePath] ;
+      if (validDirectory) {
+        [self setEnvironmentVariableWithValue:selectedDirectory] ;
+        libpmPath_inEnvironmentFile = selectedDirectory ;
+      }else{
+        NSAlert * alert = [NSAlert
+          alertWithMessageText:[NSString stringWithFormat:@"the '%@' directory is not valid", selectedDirectory]
+          defaultButton:@"Ok"
+          alternateButton:nil
+          otherButton:nil
+          informativeTextWithFormat:@"The '%@' does not contain the 'version_libpm.h' file", selectedDirectory
+        ] ;
+        [alert runModal] ;
+      }
+    }else{
+      loop = NO ;
+    }
+  }
+//--- Check for value from current environnement
+  BOOL environmentVariableSettingOk = NO ;
+  if (validDirectory) {
+    // NSLog (@"libpmPath_inEnvironmentFile '%@'", libpmPath_inEnvironmentFile) ;
+    NSString * libpmPath_inCurrentEnvironment = @"" ;
+    const char * s = getenv ("LIBPM_PATH") ;
+    if (s != NULL) {
+      libpmPath_inCurrentEnvironment = [NSString stringWithFormat:@"%s", s] ;
+    }
+    // NSLog (@"libpmPath_inCurrentEnvironment '%@'", libpmPath_inCurrentEnvironment) ;
+    environmentVariableSettingOk = [libpmPath_inEnvironmentFile isEqualToString:libpmPath_inCurrentEnvironment] ;
+    if (! environmentVariableSettingOk) {
+      NSAlert * alert = [NSAlert
+        alertWithMessageText:@"In order the new definition to work properly, you are required to logout the session, and then log back."
+        defaultButton:@"Log out session"
+        alternateButton:@"Continue anyway"
+        otherButton:nil
+        informativeTextWithFormat:@""
+      ] ;
+      const NSInteger result = [alert runModal] ;
+      NSLog (@"result %d", result) ;
+      if (result == 1) {
+        SendAppleEventToSystemProcess (kAEReallyLogOut) ;
+      }
+    }
+  }
+//---
+  return environmentVariableSettingOk ;
+}
 
 //---------------------------------------------------------------------------*
 
@@ -137,52 +310,10 @@
 
 //--------------------------------------------------------------------------*
 
-- (void) updateLIBPMstatus {
-  NSFileManager * fm = [NSFileManager defaultManager] ;
-  BOOL isDirectory = NO ;
-  NSString * libpmPath = [[NSUserDefaults standardUserDefaults] stringForKey:@"GGS_libpm_path"] ;
-  NSString * libpmVersionFilePath = [NSString stringWithFormat:@"%@/version.txt", libpmPath] ;
-  if ([libpmPath length] == 0) {
-    [mLIBPMStatusTextField setStringValue:@"The path is empty."] ;
-    [mLIBPMStatusTextField setTextColor:[NSColor redColor]] ;
-  }else if (! [fm fileExistsAtPath:libpmPath isDirectory:& isDirectory]) {
-    [mLIBPMStatusTextField setStringValue:@"The path does not exist."] ;
-    [mLIBPMStatusTextField setTextColor:[NSColor redColor]] ;
-  }else if (! isDirectory) {
-    [mLIBPMStatusTextField setStringValue:@"The path is not a directory."] ;
-    [mLIBPMStatusTextField setTextColor:[NSColor redColor]] ;
-  }else if (! [fm fileExistsAtPath:libpmVersionFilePath]) {
-    [mLIBPMStatusTextField setStringValue:@"The path exists, but libpm version is unknown."] ;
-    [mLIBPMStatusTextField setTextColor:[NSColor orangeColor]] ;
-  }else{
-    NSString * version = [NSString
-      stringWithContentsOfFile:libpmVersionFilePath
-      encoding:NSASCIIStringEncoding
-      error:NULL
-    ] ;
-    NSString * s = [NSString stringWithFormat:@"libpm build number: %@", version] ;
-    [mLIBPMStatusTextField setStringValue:s] ;
-    [mLIBPMStatusTextField setTextColor:[NSColor blackColor]] ;
-  }
-}
-
-//--------------------------------------------------------------------------*
-
 - (void) awakeFromNib {
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
-//--- Copy old style preferences
-  NSString * prefString = [ud objectForKey:@"cliInstallationPath"] ;
-  if (prefString != nil) {
-    [ud setObject:prefString forKey:@"GGS_cli_installation_path"] ;
-  }
-  prefString = [ud objectForKey:@"checkUpdateAtStartUp"] ;
-  if (prefString != nil) {
-    [ud setObject:prefString forKey:@"GGS_check_update_at_start_up"] ;
-  }
-  prefString = [ud objectForKey:@"libpmPath"] ;
-  if (prefString != nil) {
-    [ud setObject:prefString forKey:@"GGS_libpm_path"] ;
-  }
+//--- Suppress libpm path in application preferences
+ [ud setObject:nil forKey:@"GGS_libpm_path"] ;
 //--- Remove temporary dir, if it exists
   NSFileManager * fm = [NSFileManager defaultManager] ;
   if ([fm fileExistsAtPath:[self temporaryDir]]) {
@@ -207,12 +338,6 @@
     withKeyPath:@"GGS_check_update_at_start_up"
     options:nil
   ] ;
-  [mLIBPMpathTextField
-    bind:@"value"
-    toObject:ud
-    withKeyPath:@"GGS_libpm_path"
-    options:nil
-  ] ;
 //--- Installation Path
   if ([ud objectForKey:@"GGS_cli_installation_path"] == nil) {
     [ud setObject:@"/usr/local/bin/" forKey:@"GGS_cli_installation_path"] ;
@@ -223,22 +348,18 @@
     withKeyPath:@"GGS_cli_installation_path"
     options:nil
   ] ;
-//--- Add observers
-  [[NSUserDefaultsController sharedUserDefaultsController]
-    addObserver:self
-    forKeyPath:@"values.GGS_libpm_path"
-    options:0
-    context:NULL
-  ] ;
-//--- Update status
-  [self updateLIBPMstatus] ;
-//--- Search for update defined ? If not, force to YES
-  if ([ud objectForKey:@"GGS_check_update_at_start_up"] == nil) {
-    [ud setBool:YES forKey:@"GGS_check_update_at_start_up"] ;
-  }
-//--- Search for update ?
-  if ([ud boolForKey:@"GGS_check_update_at_start_up"]) {
-    [self checkForNewVersion:nil] ;
+//----------------------------------------- Check for definition of 'LIBPM_PATH' environment variable
+  const BOOL libpmPathOk = [self checkFor_LIPM_PATH_definition] ;
+//----------------------------------------- Check for update
+  if (libpmPathOk) {
+  //--- Search for update defined ? If not, force to YES
+    if ([ud objectForKey:@"GGS_check_update_at_start_up"] == nil) {
+      [ud setBool:YES forKey:@"GGS_check_update_at_start_up"] ;
+    }
+  //--- Search for update ?
+    if ([ud boolForKey:@"GGS_check_update_at_start_up"]) {
+      [self checkForNewVersion:nil] ;
+    }
   }
 //----------------------------------------- Change Log Tab Item
 //--- Add 'ChangeLog' tab item
@@ -248,74 +369,6 @@
   [prefsTabView addTabViewItem:tabViewItem] ;
   NSURL * url = [NSURL URLWithString:@"http://galgas.rts-software.org/download/changeLog.html"] ;
   [[mChangeLogInPreferencePaneWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
-}
-
-//--------------------------------------------------------------------------*
-
-- (void)observeValueForKeyPath: (NSString *) inKeyPath
-        ofObject:(id)object
-        change:(NSDictionary *)change
-        context:(void *)context {
-  if ([inKeyPath isEqualToString:@"values.GGS_libpm_path"]) {
-    [self updateLIBPMstatus] ;
-  }
-}
-
-//--------------------------------------------------------------------------*
-//                                                                          *
-//            Set LIBPM Path                                                *
-//                                                                          *
-//--------------------------------------------------------------------------*
-
-- (IBAction) resetLIPMpathAction: (id) inSender {
-  [[NSUserDefaults standardUserDefaults] setObject:nil forKey:@"GGS_libpm_path"] ;
-}
-
-//--------------------------------------------------------------------------*
-
-- (IBAction) setLIPMpathAction: (id) inSender {
-  NSOpenPanel * libpmOpenPanel = [NSOpenPanel openPanel] ;
-  [libpmOpenPanel setMessage:@"Select a folder named 'libpm'."] ;
-  [libpmOpenPanel setDelegate:self] ;
-  [libpmOpenPanel setCanCreateDirectories:YES] ;
-  [libpmOpenPanel setCanChooseDirectories:YES] ;
-  [libpmOpenPanel setAllowsMultipleSelection:NO] ;
-  [libpmOpenPanel setCanChooseFiles:NO] ;
-  [libpmOpenPanel setCanSelectHiddenExtension:YES] ;
-  [libpmOpenPanel setTreatsFilePackagesAsDirectories:NO] ;
-  [libpmOpenPanel
-    beginSheetForDirectory:[[NSUserDefaults standardUserDefaults] stringForKey:@"GGS_libpm_path"]
-    file:@""
-    types:nil
-    modalForWindow:[mLIBPMpathTextField window]
-    modalDelegate:self
-    didEndSelector:@selector (openPanelDidEnd:returnCode:contextInfo:)
-    contextInfo:NULL
-  ] ;
-}
-
-//--------------------------------------------------------------------------*
-
-- (void) openPanelDidEnd:(NSOpenPanel *) inPanel
-         returnCode:(int) inReturnCode
-         contextInfo:(void *) contextInfo {
-  // NSLog (@"inReturnCode %d", inReturnCode) ;
-  if (inReturnCode == NSOKButton) {
-    //NSLog (@"filenames %@", [inPanel filenames]) ;
-    NSString * newPath = [[inPanel filenames] objectAtIndex:0] ;
-    [[NSUserDefaults standardUserDefaults] setObject:newPath forKey:@"GGS_libpm_path"] ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-- (BOOL) panel:(id)sender isValidFilename:(NSString *)filename {
-  // NSLog (@"panel:isValidFilename: '%@'", filename) ;
-  const BOOL ok = [[filename lastPathComponent] isEqualToString:@"libpm"] ;
-  if (! ok) {
-    NSBeep () ;
-  }
-  return ok ;
 }
 
 //--------------------------------------------------------------------------*
@@ -365,13 +418,13 @@
     // NSLog (@"Last Available Version: '%@'", lastAvailableVersion) ;
   //--- Check Response
     NSScanner * scanner = [NSScanner scannerWithString:lastAvailableVersion] ;
-    const BOOL ok = [scanner scanInt:NULL]
+    const BOOL versionOk = [scanner scanInt:NULL]
                  && [scanner scanString:@"." intoString:NULL]
                  && [scanner scanInt:NULL]
                  && [scanner scanString:@"." intoString:NULL]
                  && [scanner scanInt:NULL]
                  && [scanner isAtEnd] ;
-    if (ok) {
+    if (versionOk) {
     //--- Get Galgas Current version
       NSBundle * mainBundle = [NSBundle mainBundle] ;
       NSDictionary * infoDictionary = [mainBundle infoDictionary] ;
@@ -692,8 +745,7 @@
   if (inReturnCode == YES) {
     NSString * galgasUpdaterApp = [[[self temporaryPathForGalgasUpdaterArchive] stringByDeletingPathExtension] stringByDeletingPathExtension] ;
     NSWorkspace * ws = [NSWorkspace sharedWorkspace] ;
-    BOOL ok = [ws launchApplication:galgasUpdaterApp] ;
-    if (ok) {
+    if ([ws launchApplication:galgasUpdaterApp]) {
       [NSApp terminate:nil] ;
     }else{
       NSAlert * alert = [NSAlert

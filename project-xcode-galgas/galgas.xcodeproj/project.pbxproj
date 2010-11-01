@@ -1096,6 +1096,7 @@
 		CFB76EED0E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB76EE50E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp */; };
 		CFB76EEF0E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB76EE50E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp */; };
 		CFB76EF10E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB76EE50E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp */; };
+		CFB7E4B8127F2F7F005B9851 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB7E4B7127F2F7F005B9851 /* Carbon.framework */; };
 		CFB8222D0BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */; };
 		CFB822310BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */; };
 		CFBC4D091152370D006CAD14 /* projectGlobalCheckings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBC4D071152370D006CAD14 /* projectGlobalCheckings.cpp */; };
@@ -2323,6 +2324,7 @@
 		CFB6E59612788349000F1772 /* GALGAS_application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_application.cpp; sourceTree = "<group>"; };
 		CFB76EE50E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = baseForXcodeProjectGeneration.cpp; sourceTree = "<group>"; };
 		CFB76EE60E8D7DA300F826A9 /* baseForXcodeProjectGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = baseForXcodeProjectGeneration.h; sourceTree = "<group>"; };
+		CFB7E4B7127F2F7F005B9851 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsSLRgrammar.cpp; sourceTree = "<group>"; };
 		CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semanticsSLRgrammar.h; sourceTree = "<group>"; };
 		CFB9E4860DF28AC500885084 /* TC_AVL_TreeForCollision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_AVL_TreeForCollision.h; sourceTree = "<group>"; };
@@ -2545,6 +2547,7 @@
 				CF6DF25209E3F3A700506859 /* Cocoa.framework in Frameworks */,
 				CF4398050ADFE1900085F47C /* WebKit.framework in Frameworks */,
 				CF04216E0B0B51AA00BB53E5 /* Security.framework in Frameworks */,
+				CFB7E4B8127F2F7F005B9851 /* Carbon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2566,6 +2569,7 @@
 			children = (
 				CF04216C0B0B51AA00BB53E5 /* Security.framework */,
 				1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */,
+				CFB7E4B7127F2F7F005B9851 /* Carbon.framework */,
 			);
 			name = "Linked Frameworks";
 			sourceTree = "<group>";

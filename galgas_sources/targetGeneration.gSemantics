@@ -11,7 +11,7 @@ semantics targetGeneration :
 
 
 filewrapper targetGenerationFileWrapper in "../generation_templates/target_generation" {
- "bat", "command", "rtf", "strings"
+ "bat", "command", "rtf"
 } {
   template makefile_macosx_intel_makefile "makefile-macosx-intel/makefile" ?@string PROJECT_NAME ;
   template makefile_macosx_intel_makefile64 "makefile-macosx-intel/makefile64" ?@string PROJECT_NAME ;
@@ -35,6 +35,8 @@ filewrapper targetGenerationFileWrapper in "../generation_templates/target_gener
   template makefile_msys_on_win32_makefile "makefile-msys-on-win32/makefile" ?@string PROJECT_NAME ;
 
   template makefile_info_plist "xcode-project/Info.plist" ?@string PROJECT_NAME ;
+
+  template makefile_info_plist_strings "xcode-project/English.lproj/InfoPlist.strings" ?@string PROJECT_NAME ;
 
   template makefile_file_list "makefile-file-list.gTemplate"
     ?@stringset HAND_CODED_SOURCE_DIR_SET
@@ -210,7 +212,7 @@ routine updateTargets
     switch mSourceKind
     when externSourceFile :
       externSourceSet_tool += ![mFilePath string] ;
-      externSourceSet_app += ![mFilePath string] ;
+#      externSourceSet_app += ![mFilePath string] ;
       handCodedSourceList += ![mFilePath lastPathComponent] ;
       handCodedSourceDirectorySet += !"../hand_coded_sources/" . [mFilePath stringByDeletingLastPathComponent] ;
     when lexiqueSourceFile :
@@ -275,11 +277,11 @@ routine updateTargets
   end foreach ;
 #--- Special case for 'makefile-macosx-universal'
   if [generationFeatures hasKey !"makefile-macosx-universal"] & not [generationFeatures hasKey !"makefile-macosx-ppc"] then
-    warning inProjectName : "'feature makefile-macosx-ppc' implicitly added, due to 'feature makefile-macosx-universal'" ;
+    warning inProjectName : "'feature \"makefile-macosx-ppc\" ;' implicitly added, due to 'feature makefile-macosx-universal'" ;
     generationFeatures += !"makefile-macosx-ppc" ;
   end if ;
   if [generationFeatures hasKey !"makefile-macosx-universal"] & not [generationFeatures hasKey !"makefile-macosx-intel"] then
-    warning inProjectName : "'feature makefile-macosx-intel' implicitly added, due to 'feature makefile-macosx-universal'" ;
+    warning inProjectName : "'feature \"makefile-macosx-intel\" ;' implicitly added, due to 'feature makefile-macosx-universal'" ;
     generationFeatures += !"makefile-macosx-intel" ;
   end if ;
 #--- Check xcode target architectures
@@ -297,7 +299,7 @@ routine updateTargets
      architectureList += !"ppc7400" ; # G4
   end if ;
   if [generationFeatures hasKey !"xcode-project"] & ([architectureList length] == 0) then
-    warning inProjectName : "'feature 'xcode-arch:i386' implicitly added, due to 'xcode-project'" ;
+    warning inProjectName : "'feature \"xcode-arch:i386\" ;' implicitly added, due to 'xcode-project'" ;
     architectureList += !"i386" ;
   end if ;
   if ([architectureList length] > 0) & not [generationFeatures hasKey !"xcode-project"] then
@@ -341,13 +343,17 @@ routine updateTargets
   if [generationFeatures hasKey !"xcode-project"] then
     const @string dir := projectDirectory . "/xcode-project";
     [dir makeDirectory] ;
-    [[filewrapper targetGenerationFileWrapper.makefile_info_plist !inTargetName] writeToFileWhenDifferentContents !dir ."/Info.plist" ?*] ;
-  
+
+    const @string icon_help_file_path := dir ."/adding-icons-to-your-application.rtf" ;
+    [[filewrapper targetGenerationFileWrapper."xcode-project/adding-icons-to-your-application.rtf"] writeToFileWhenDifferentContents !icon_help_file_path ?*] ;
+
+    if not [dir ."/Info.plist" fileExists] then
+    [[filewrapper targetGenerationFileWrapper.makefile_info_plist !inTargetName] writeToFile !dir ."/Info.plist"] ;
+    end if ;
+
     [dir . "/English.lproj" makeDirectory] ;
     const @string InfoPlist_strings_path := dir ."/English.lproj/InfoPlist.strings" ;
-    if not [InfoPlist_strings_path fileExists] then
-      [[filewrapper targetGenerationFileWrapper."xcode-project/English.lproj/InfoPlist.strings"] writeToFile !InfoPlist_strings_path] ;
-    end if ;
+    [[filewrapper targetGenerationFileWrapper.makefile_info_plist_strings !inTargetName] writeToFileWhenDifferentContents !InfoPlist_strings_path ?*] ;
     const @string Credits_rtf_path := dir ."/English.lproj/Credits.rtf" ;
     if not [Credits_rtf_path fileExists] then
       [[filewrapper targetGenerationFileWrapper."xcode-project/English.lproj/Credits.rtf"] writeToFile !Credits_rtf_path] ;
