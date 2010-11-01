@@ -1,0 +1,10 @@
+gui %!PROJECT_NAME%_cocoa "cocoa" :
+
+with option "%!PROJECT_NAME%_options.gOption" ;
+
+with lexique "%!PROJECT_NAME%_lexique.gLexique" {
+  fileExtension: "%!PROJECT_NAME%" ;
+  title: "Source" ;
+}
+
+end gui ;
