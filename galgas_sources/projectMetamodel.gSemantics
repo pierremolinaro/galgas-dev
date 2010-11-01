@@ -15,7 +15,6 @@ enum @sourceFileKind {
 list @projectSourceList {
   @sourceFileKind mSourceKind ;
   @lstring mFilePath ;
-  @lstringlist mTargetList ;
 }
 
 #------------------------------------------------------------------------------*

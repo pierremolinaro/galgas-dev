@@ -199,7 +199,6 @@ routine updateTargets
   @stringlist handCodedSourceList [emptyList] ;
   @stringset handCodedSourceDirectorySet [emptySet] ;
   foreach inProjectSourceList do
-    const @string fullFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/" . [mFilePath string] ;
     const @string baseName := [[[mFilePath string] lastPathComponent] stringByDeletingPathExtension] ;
     const @string cppFile := baseName . ".cpp" ;
   #--- Check base name is unique
@@ -210,10 +209,10 @@ routine updateTargets
   #---
     switch mSourceKind
     when externSourceFile :
-      externSourceSet_tool += !fullFilePath ;
-      externSourceSet_app += !fullFilePath ;
+      externSourceSet_tool += ![mFilePath string] ;
+      externSourceSet_app += ![mFilePath string] ;
       handCodedSourceList += ![mFilePath lastPathComponent] ;
-      handCodedSourceDirectorySet += !"../hand_coded_sources" . [mFilePath stringByDeletingLastPathComponent] ;
+      handCodedSourceDirectorySet += !"../hand_coded_sources/" . [mFilePath stringByDeletingLastPathComponent] ;
     when lexiqueSourceFile :
       generatedFileListForMakefile += !cppFile ;
       scannerSourceSet_tool += !baseName ;
@@ -255,6 +254,10 @@ routine updateTargets
   availableGenerationFeatures += !"makefile-mingw-on-macosx" ;
   availableGenerationFeatures += !"makefile-msys-on-win32" ;
   availableGenerationFeatures += !"xcode-project" ;
+  availableGenerationFeatures += !"xcode-arch:i386" ;
+  availableGenerationFeatures += !"xcode-arch:x86_64" ;
+  availableGenerationFeatures += !"xcode-arch:ppc64" ;
+  availableGenerationFeatures += !"xcode-arch:ppc" ;
   @stringset generationFeatures [emptySet] ;
   foreach inTargetFeatureList do
     if [availableGenerationFeatures hasKey ![mValue string]] then
@@ -278,6 +281,27 @@ routine updateTargets
   if [generationFeatures hasKey !"makefile-macosx-universal"] & not [generationFeatures hasKey !"makefile-macosx-intel"] then
     warning inProjectName : "'feature makefile-macosx-intel' implicitly added, due to 'feature makefile-macosx-universal'" ;
     generationFeatures += !"makefile-macosx-intel" ;
+  end if ;
+#--- Check xcode target architectures
+  @stringlist architectureList [emptyList] ;
+  if [generationFeatures hasKey !"xcode-arch:i386"] then
+     architectureList += !"i386" ;
+  end if ;
+  if [generationFeatures hasKey !"xcode-arch:x86_64"] then
+     architectureList += !"x86_64" ;
+  end if ;
+  if [generationFeatures hasKey !"xcode-arch:ppc64"] then
+     architectureList += !"ppc64" ;
+  end if ;
+  if [generationFeatures hasKey !"xcode-arch:ppc"] then
+     architectureList += !"ppc7400" ; # G4
+  end if ;
+  if [generationFeatures hasKey !"xcode-project"] & ([architectureList length] == 0) then
+    warning inProjectName : "'feature 'xcode-arch:i386' implicitly added, due to 'xcode-project'" ;
+    architectureList += !"i386" ;
+  end if ;
+  if ([architectureList length] > 0) & not [generationFeatures hasKey !"xcode-project"] then
+    error inProjectName : "'a 'xcode-arch:...' feature requires the 'xcode-project' feature" ;
   end if ;
 #--- Generate projects
   if [generationFeatures hasKey !"makefile-macosx-ppc"] then
@@ -344,9 +368,6 @@ routine updateTargets
     const @string intermediateFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list_for_xcode_project.txt" ;
   #---
     [xcodeProjectPath makeDirectory] ;
-  #---
-    @stringlist architectureList [emptyList] ;
-    architectureList += !"i386" ;
   #--- Build intermediate
     generateXcodeProject
       !externSourceSet_tool
