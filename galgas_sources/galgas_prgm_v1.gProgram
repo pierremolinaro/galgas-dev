@@ -56,9 +56,11 @@ before {
 #--- Generate project
   const @string creationProjectName := [option galgas_cli_options.create_project value] ;
   projectCreation !creationProjectName ;
+#--- Print predefined lexical action
   if [option galgas_cli_options.printPredefinedLexicalActions value] then
     printPredefinedLexicalActions ;
   end if ;
+#--- Generate predefined files
   generatePredefinedTypeFiles
     ![option galgas_cli_options.generatePredefinedTypes value]
   ;

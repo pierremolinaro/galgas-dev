@@ -76,23 +76,10 @@ rule <project_component_start_symbol>
       sourceFileKind := [@sourceFileKind programSourceFile] ;
     end select ;
     $literal_string$ ?@lstring filePath ;
-  #--- Targets
-    @lstringlist targetList [emptyList] ;
-    select
-    or
-      $:$ ;
-      repeat
-        $identifier$ ? @lstring targetName ;
-        targetList += !targetName ;
-      while
-        $,$ ;
-      end repeat ;
-    end select ;
     $;$ ;
     projectSourceList +=
       !sourceFileKind
       !filePath
-      !targetList
     ;
   end repeat ;
   $end$ ;
