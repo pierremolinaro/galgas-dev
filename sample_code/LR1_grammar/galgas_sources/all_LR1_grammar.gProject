@@ -1,10 +1,17 @@
-project all_LR1_grammar:
-  lexique "LR1_grammar_lexique.gLexique" : makefile, xcode_tool, xcode_app ;
-  option "LR1_grammar_options.gOption" : makefile, xcode_tool, xcode_app ;
-  semantics "LR1_grammar_semantics.gSemantics" : makefile, xcode_tool ;
-  syntax "LR1_grammar_syntax.gSyntax" : makefile, xcode_tool ;
-  grammar "LR1_grammar_grammar.gGrammar" : makefile, xcode_tool ;
-  gui "LR1_grammar_cocoa.gGui" : xcode_tool, xcode_app ;
-  program "LR1_grammar_program.gProgram" : makefile, xcode_tool ;
+project all_LR1_grammar -> "LR1_grammar":
+#--- Targets
+  feature "makefile-macosx" ;
+  feature "makefile-unix" ;
+  feature "makefile-msys-on-win32" ;
+  feature "xcode-project" ;
+  feature "xcode-arch:i386" ;
+#--- Sources
+  lexique "LR1_grammar_lexique.gLexique" ;
+  option "LR1_grammar_options.gOption" ;
+  semantics "LR1_grammar_semantics.gSemantics" ;
+  syntax "LR1_grammar_syntax.gSyntax" ;
+  grammar "LR1_grammar_grammar.gGrammar" ;
+  gui "LR1_grammar_cocoa.gGui" ;
+  program "LR1_grammar_program.gProgram" ;
 end project ;
 

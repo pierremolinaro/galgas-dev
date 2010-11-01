@@ -1,7 +1,0 @@
-/* Localized versions of Info.plist keys */
-CFBundleName = "cocoaDangling_else_solution";
-CFBundleShortVersionString = "1.0.0";
-CFBundleGetInfoString = "Cocoa Dangling_else_solution version 1.0.0, Copyright __MyCompanyName__.";
-NSHumanReadableCopyright = "Copyright __MyCompanyName__.";
-LSMinimumSystemVersion = "10.3.9";
-
