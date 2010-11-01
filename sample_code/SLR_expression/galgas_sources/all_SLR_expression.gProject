@@ -1,11 +1,18 @@
-project all_SLR_expression:
-  lexique "SLR_expression_lexique.gLexique" : makefile, xcode_tool, xcode_app ;
-  option "SLR_expression_options.gOption" : makefile, xcode_tool, xcode_app ;
-  semantics "SLR_expression_semantics.gSemantics" : makefile, xcode_tool ;
-  syntax "SLR_expression_syntax.gSyntax" : makefile, xcode_tool ;
-  grammar "SLR_expression_grammar.gGrammar" : makefile, xcode_tool ;
-  gui "SLR_expression_cocoa.gGui" : xcode_tool, xcode_app ;
-  program "SLR_expression_program.gProgram" : makefile, xcode_tool ;
+project all_SLR_expression -> "SLR_expression" :
+#--- Targets
+  feature "makefile-macosx" ;
+  feature "makefile-unix" ;
+  feature "makefile-msys-on-win32" ;
+  feature "xcode-project" ;
+  feature "xcode-arch:i386" ;
+#--- Sources
+  lexique "SLR_expression_lexique.gLexique" ;
+  option "SLR_expression_options.gOption" ;
+  semantics "SLR_expression_semantics.gSemantics" ;
+  syntax "SLR_expression_syntax.gSyntax" ;
+  grammar "SLR_expression_grammar.gGrammar" ;
+  gui "SLR_expression_cocoa.gGui" ;
+  program "SLR_expression_program.gProgram" ;
 end project ;
 
 
