@@ -1,0 +1,28 @@
+project all_%!PROJECT_NAME% -> %![PROJECT_NAME utf8Representation]%:
+#--- Targets
+  feature "makefile-macosx" ;
+  feature "makefile-macosx-intel" ;
+  feature "makefile-macosx-ppc" ;
+  feature "makefile-macosx-universal" ;
+  feature "makefile-unix" ;
+  feature "makefile-i386-linux-on-macosx" ;
+  feature "makefile-mingw-on-macosx" ;
+  feature "makefile-msys-on-win32" ;
+  feature "xcode-project" ;
+  feature "xcode-arch:i386" ;
+  feature "xcode-arch:x86_64" ;
+  feature "xcode-arch:ppc" ;
+  feature "xcode-arch:ppc64" ;
+
+#--- Source files (relative path from 'galgas_sources' directory)
+  lexique "%!PROJECT_NAME%_lexique.gLexique" ;
+  option "%!PROJECT_NAME%_options.gOption" ;
+  semantics "%!PROJECT_NAME%_semantics.gSemantics" ;
+  syntax "%!PROJECT_NAME%_syntax.gSyntax" ;
+  grammar "%!PROJECT_NAME%_grammar.gGrammar" ;
+  gui "%!PROJECT_NAME%_cocoa.gGui" ;
+  program "%!PROJECT_NAME%_program.gProgram" ;
+
+#--- Extern source file (relative path from 'hand_coded_sources' directory)
+  extern "%!PROJECT_NAME%_computations.cpp" ;
+end project ;

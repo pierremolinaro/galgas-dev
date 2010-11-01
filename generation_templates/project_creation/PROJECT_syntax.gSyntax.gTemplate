@@ -1,0 +1,15 @@
+syntax %!PROJECT_NAME%_syntax :
+with "%!PROJECT_NAME%_lexique.gLexique" ;
+import lexique %!PROJECT_NAME%_lexique in "%!PROJECT_NAME%_lexique.gLexique" ;
+import option %!PROJECT_NAME%_options in "%!PROJECT_NAME%_options.gOption" ;
+import semantics %!PROJECT_NAME%_semantics in "%!PROJECT_NAME%_semantics.gSemantics" ;
+
+# ADD YOUR CODE HERE
+
+nonterminal <start_symbol> ;
+
+rule <start_symbol> :
+# ADD YOUR CODE HERE
+end rule ;
+
+end syntax ;
