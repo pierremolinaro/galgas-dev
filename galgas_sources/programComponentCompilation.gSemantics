@@ -166,8 +166,6 @@ routine compileProgramComponent
   ??@string inOutputDirectory
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
-  @programComponentAST programComponentRoot ;
-
 #--- Parse source file
   const @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
   const @lstring basenameKey [new !basename !here] ;

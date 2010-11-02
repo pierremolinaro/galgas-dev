@@ -18,49 +18,48 @@
 #---------------------------------------------------------------------------*
 
 program galgas_prgm "version GALGAS_BETA_VERSION" :
-  import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
-  import semantics optionSemantics in "optionSemantics.gSemantics" ;
-  import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
-  import semantics projectGlobalCheckings in "projectGlobalCheckings.gSemantics" ;
-  import semantics projectCreation in "projectCreation.gSemantics" ;
-  import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
-  import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
-  import semantics optionTypesForAST in "optionTypesForAST.gSemantics" ;
-  import semantics optionCompilation in "optionCompilation.gSemantics" ;
-  import semantics guiTypesForAST in "guiTypesForAST.gSemantics" ;
-  import semantics guiCompilation in "guiCompilation.gSemantics" ;
-  import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
-  import semantics XcodeProjectGeneration in "XcodeProjectGeneration.gSemantics" ;
-  import semantics predefinedLexicalActions in "predefinedLexicalActions.gSemantics" ;
-  import semantics grammarCompilation in "grammarCompilation.gSemantics" ;
-  import semantics syntaxCompilation in "syntaxCompilation.gSemantics" ;
-  import semantics predefinedTypes in "predefinedTypes.gSemantics" ;
-  import semantics programComponentCompilation in "programComponentCompilation.gSemantics" ;
-
-  import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
-  import grammar projectLL1grammar in "projectLL1grammar.gGrammar" ;
-
+  import "lexiqueSemantics.gSemantics" ;
+  import "projectGlobalCheckings.gSemantics" ;
   import "projectCreation.gSemantics" ;
   import "lexiqueCompilation.gSemantics" ;
-  import "predefinedTypes.gSemantics" ;
-  import "projectGlobalCheckings.gSemantics" ;
-  import "optionCompilation.gSemantics" ;
-  import "semanticsCompilation.gSemantics" ;
-  import "lexiqueCompilation.gSemantics" ;
-  import "syntaxCompilation.gSemantics" ;
   import "guiCompilation.gSemantics" ;
+  import "syntaxCompilation.gSemantics" ;
+  import "predefinedTypes.gSemantics" ;
   import "programComponentCompilation.gSemantics" ;
   import "projectLL1grammar.gGrammar" ;
-  import "XcodeProjectGeneration.gSemantics" ;
+  import "targetGeneration.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
 before {
+#--- Check definition of 'LIBPM_PATH' environnement variable
+  const @string libpmVarName := "LIBPM_PATH" ;
+  if not [libpmVarName doesEnvironmentVariableExist] then
+    error here : "the '" . libpmVarName
+    . "' environnement variable is not set; GALGAS requires it to be defined with the absolute path to the 'libpm' directory" ;
+  else
+    const @string libpmPosixPath := [[@string stringWithEnvironmentVariable !libpmVarName] unixPathWithNativePath] ;
+    if not [libpmPosixPath directoryExists] then
+      error here : "the '" . libpmVarName
+      . "' environnement variable is set to '" . [@string stringWithEnvironmentVariable !libpmVarName]
+      . "', but this value does not designate any directory (it should designate the 'libpm' directory" ;
+    else
+      const @string libpmVersionFilePath := libpmPosixPath . "/version_libpm.h" ;
+      if not [libpmVersionFilePath fileExists] then
+        error here : "the '" . libpmVarName
+        . "' environnement variable is set to '" . [@string stringWithEnvironmentVariable !libpmVarName]
+        . "', but this value does not designate a valid 'libpm' directory (it does not contain the 'version_libpm.h' file)" ;
+      end if ;
+    end if ;
+  end if ;
+#--- Generate project
   const @string creationProjectName := [option galgas_cli_options.create_project value] ;
   projectCreation !creationProjectName ;
+#--- Print predefined lexical action
   if [option galgas_cli_options.printPredefinedLexicalActions value] then
     printPredefinedLexicalActions ;
   end if ;
+#--- Generate predefined files
   generatePredefinedTypeFiles
     ![option galgas_cli_options.generatePredefinedTypes value]
   ;
@@ -191,26 +190,30 @@ message "a GALGAS program source file"
 when . "gProject"
 message "a GALGAS project source file"
 ??@lstring inSourceFile {
-  @string outputDirectory := outputDirectory [!inSourceFile] ;
+  const @string outputDirectory := outputDirectory [!inSourceFile] ;
 #--- Parse metamodel component
-  @projectSourceList projectSourceList ;
-  @lstring projectName ;
-  @location endOfSourceFile ;
-  grammar projectLL1grammar in inSourceFile ?projectSourceList ?projectName ?endOfSourceFile ;
-#--- Check target names, file base name uniqueness, and build target file list
-  @sourceFileMap sourceFileMap [emptyMap] ;
-  @targetFileListMap targetFileListMap [emptyMap] ;
-  foreach projectSourceList do
-    @string baseName := [[[mFilePath string] lastPathComponent] stringByDeletingPathExtension] ;
-    [!?sourceFileMap insertKey ![@lstring new !baseName ![mFilePath location]] ![mFilePath string] !mSourceKind] ;
-    foreach mTargetList do
-      if ([mValue string] != "makefile") & ([mValue string] != "xcode_tool") & ([mValue string] != "xcode_app") then
-        error mValue: "the target name should be \"makefile\", \"xcode_tool\" or \"xcode_app\"" ;
-      else
-        targetFileListMap += ![mValue string] !baseName ;
-      end if ;
-    end foreach ;
-  end foreach ;
+  @projectComponentAST projectComponent ;
+  grammar projectLL1grammar in inSourceFile ?projectComponent ;
+#--- Check project name
+  if [[projectComponent mProjectName] string] != [[inSourceFile lastPathComponent] stringByDeletingPathExtension] then
+    error [projectComponent mProjectName] 
+    :"the project name ('" . [projectComponent mProjectName] . "') should be the same as the source file base name ('"
+    . [[inSourceFile lastPathComponent] stringByDeletingPathExtension] . "')" ;
+  end if ;
+#--- Check target name
+  const @string targetName := [[projectComponent mTargetName] string] ;
+  if targetName == "" then
+    error [projectComponent mTargetName]: "the target name should not be empty" ;
+  end if ;
+#--- Update targets
+  updateTargets
+    !inSourceFile
+    ![projectComponent mProjectName]
+    !targetName
+    ![projectComponent mGenerationFeatureList]
+    ![projectComponent mProjectSourceList]
+    ![option galgas_cli_options.legacyCodeGeneration value]
+  ;
 #--- Parset Component struct
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
@@ -221,7 +224,7 @@ message "a GALGAS project source file"
     ![@parsedProgramComponentMap emptyMap]
   ] ;
 #--- Parse galgas sources
-  foreach projectSourceList do
+  foreach [projectComponent mProjectSourceList] do
     @string extension := [mFilePath pathExtension] ;
     @lstring fullFilePath [new
       ![inSourceFile stringByDeletingLastPathComponent] . "/" . [mFilePath string]
@@ -259,7 +262,7 @@ message "a GALGAS project source file"
     when syntaxSourceFile :
       if extension == "gSyntax" then
         compileSyntaxComponent !fullFilePath !outputDirectory [!inSourceFile] !?parsedComponentStruct;
-     else
+      else
         error mFilePath:"extension of a syntax component should be '.gSyntax'." ;
       end if ;
     when grammarSourceFile :
@@ -284,152 +287,7 @@ message "a GALGAS project source file"
 #--- Perform global checkings
   if [@uint errorCount] == 0 then
     message "*** Perform global checkings\n" ;
-    performProjectGlobalCheckings !parsedComponentStruct !endOfSourceFile ;
-  end if ;
-#--- Update file list for makefile
-  if [@uint errorCount] == 0 then
-    @stringlist makefileFiles := [targetFileListMap listForKey !"makefile"] ;
-    if [makefileFiles length] > 0 then
-      @string externSourceFileList := "" ;
-      @string galgasSourceList := "" ;
-      @stringset pathSet [emptySet] ;
-      pathSet += !"SOURCES_DIR += ../hand_coded_sources\n" ;
-      foreach makefileFiles do
-        @string fullPath ;
-        @sourceFileKind sourceKind ;
-        [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
-        @string filePath := [fullPath stringByDeletingLastPathComponent] ;
-        if sourceKind == [@sourceFileKind externSourceFile] then
-          if [filePath firstCharacterOrNul] == '/' then
-            pathSet += !"SOURCES_DIR += " . filePath . "\n" ;
-          elsif filePath != "" then
-            pathSet += !"SOURCES_DIR += ../hand_coded_sources/" . filePath . "\n" ;
-          end if ;
-          externSourceFileList .= "SOURCES += " . [fullPath lastPathComponent] . "\n" ;
-        else
-          galgasSourceList .= "SOURCES += " . [[fullPath lastPathComponent] stringByDeletingPathExtension] . ".cpp\n" ;
-        end if ;
-      end foreach ;
-      @string pathesString := "" ;
-      foreach pathSet do
-        pathesString .= key ;
-      end foreach ;
-      @string newFileListContents := [filewrapper fileListTemplateFileWrapper.fileListTemplate
-        !pathesString
-        !galgasSourceList
-        !externSourceFileList
-        !false # Do not generate for GALGAS 1
-      ] ;
-      @string fileListPath := outputDirectory . "/file_list.mke" ;
-      [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
-    end if ;
-  end if ;
-#--- Update Xcode project
-  @stringlist xcode_tool_files := [targetFileListMap listForKey !"xcode_tool"] ;
-  @stringlist xcode_app_files := [targetFileListMap listForKey !"xcode_app"] ;
-  if [@uint errorCount] == 0 then
-    @string XcodeProjectDir := [[inSourceFile stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] . "/project_xcode" ;
-#    log XcodeProjectDir ;
-    @stringlist iconFiles := [XcodeProjectDir regularFilesWithExtensions !false ![@stringlist listWithValue !"icns"]] ;
-    @stringlist xcodeProjects := [XcodeProjectDir directoriesWithExtensions !false ![@stringlist listWithValue !"xcodeproj"]] ;
-    #log xcodeProjects ;
-    if [xcodeProjects length] == 0 then
-      message "****** Cannot update Xcode project, no project found in '" . XcodeProjectDir . "' directory. ********\n" ;
-    elsif [xcodeProjects length] > 1 then
-      message "****** Cannot update Xcode project, more than one project exist in '" . XcodeProjectDir . "' directory. ********\n" ;
-    elsif [xcodeProjects length] == 1 then
-      @string name ; [xcodeProjects first ?name] ;
-      const @string fullXcodePath := XcodeProjectDir . "/" . name . "/project.pbxproj" ;
-    #--- Update intermediate file
-      const @string intermediateFilePath := outputDirectory . "/file_list_for_xcode_project.txt" ;
-    #--- Update Xcode project
-      @stringset externSourceSet_tool [emptySet] ;
-      @stringset guiSourceSet_tool [emptySet] ;
-      @stringset scannerSourceSet_tool [emptySet] ;
-      @stringset optionSourceSet_tool [emptySet] ;
-      @stringset semanticsSourceSet_tool [emptySet] ;
-      @stringset syntaxSourceSet_tool [emptySet] ;
-      @stringset grammarSourceSet_tool [emptySet] ;
-      @stringset programSourceSet_tool [emptySet] ;
-      foreach xcode_tool_files do
-        @string fullPath ;
-        @sourceFileKind sourceKind ;
-        [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
-        switch sourceKind 
-        when externSourceFile :
-          externSourceSet_tool += !fullPath ;
-        when lexiqueSourceFile :
-          scannerSourceSet_tool += !mValue ;
-        when guiSourceFile :
-          guiSourceSet_tool += !mValue ;
-        when optionSourceFile :
-          optionSourceSet_tool += !mValue ;
-        when syntaxSourceFile :
-          syntaxSourceSet_tool += !mValue ;
-        when semanticsSourceFile :
-          semanticsSourceSet_tool += !mValue ;
-        when grammarSourceFile :
-          grammarSourceSet_tool += !mValue ;
-        when programSourceFile :
-          programSourceSet_tool += !mValue ;
-        end switch ;
-      end foreach ;
-      @stringset externSourceSet_app [emptySet] ;
-      @stringset guiSourceSet_app [emptySet] ;
-      @stringset scannerSourceSet_app [emptySet] ;
-      @stringset optionSourceSet_app [emptySet] ;
-      @stringset semanticsSourceSet_app [emptySet] ;
-      @stringset syntaxSourceSet_app [emptySet] ;
-      @stringset grammarSourceSet_app [emptySet] ;
-      @stringset programSourceSet_app [emptySet] ;
-      foreach xcode_app_files do
-        @string fullPath ;
-        @sourceFileKind sourceKind ;
-        [sourceFileMap searchKey ![@lstring new !mValue !here] ?fullPath ?sourceKind] ;
-        switch sourceKind 
-        when externSourceFile :
-          externSourceSet_app += !fullPath ;
-        when lexiqueSourceFile :
-          scannerSourceSet_app += !mValue ;
-        when guiSourceFile :
-          guiSourceSet_app += !mValue ;
-        when optionSourceFile :
-          optionSourceSet_app += !mValue ;
-        when syntaxSourceFile :
-          syntaxSourceSet_app += !mValue ;
-        when semanticsSourceFile :
-          semanticsSourceSet_app += !mValue ;
-        when grammarSourceFile :
-          grammarSourceSet_app += !mValue ;
-        when programSourceFile :
-          programSourceSet_app += !mValue ;
-        end switch ;
-      end foreach ;
-    #--- Build intermediate
-      generateXcodeProject
-        !externSourceSet_tool
-        !guiSourceSet_tool
-        !scannerSourceSet_tool
-        !optionSourceSet_tool
-        !semanticsSourceSet_tool
-        !syntaxSourceSet_tool
-        !grammarSourceSet_tool
-        !programSourceSet_tool
-        !externSourceSet_app
-        !guiSourceSet_app
-        !scannerSourceSet_app
-        !optionSourceSet_app
-        !semanticsSourceSet_app
-        !syntaxSourceSet_app
-        !grammarSourceSet_app
-        !programSourceSet_app
-        ![name stringByDeletingPathExtension] # XCode project base name
-        ![fullXcodePath stringByDeletingLastPathComponent] # Full Path of xxx.xcodeproj file
-        !iconFiles
-        !intermediateFilePath
-        !false # Do not generate for GALGAS 1
-      ;
-    end if ;
+    performProjectGlobalCheckings !parsedComponentStruct ![projectComponent mEndOfSourceFile] ;
   end if ;
 }
 

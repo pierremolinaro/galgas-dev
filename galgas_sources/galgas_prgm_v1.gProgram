@@ -30,6 +30,18 @@ program galgas_prgm_v1 "version GALGAS_BETA_VERSION" :
   import grammar projectLL1grammar in "projectLL1grammar.gGrammar" ;
   import semantics targetGeneration in "targetGeneration.gSemantics" ;
 
+  import "lexiqueSemantics.gSemantics" ;
+  import "projectGlobalCheckings.gSemantics" ;
+  import "projectCreation.gSemantics" ;
+  import "lexiqueCompilation.gSemantics" ;
+  import "guiCompilation.gSemantics" ;
+  import "syntaxCompilation.gSemantics" ;
+  import "predefinedTypes.gSemantics" ;
+  import "programComponentCompilation.gSemantics" ;
+  import "galgas_LL1_grammar.gGrammar" ;
+  import "projectLL1grammar.gGrammar" ;
+  import "targetGeneration.gSemantics" ;
+
 #---------------------------------------------------------------------------*
 
 before {
