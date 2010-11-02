@@ -38,6 +38,8 @@
 		CF01E43D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */; };
 		CF01E4410E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */; };
 		CF01E4450E80146E00D4FBF1 /* XcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF01E42D0E80146E00D4FBF1 /* XcodeProjectGeneration.cpp */; };
+		CF02E84E1280556E002306FF /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB7E4B7127F2F7F005B9851 /* Carbon.framework */; };
+		CF02E84F12805572002306FF /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB7E4B7127F2F7F005B9851 /* Carbon.framework */; };
 		CF03A5690FD9973E00D079B7 /* optionCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5CE0DFBEF3500DD782E /* optionCompilation.cpp */; };
 		CF03A56C0FD997FF00D079B7 /* optionSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB78D0BC0130500E6FABE /* optionSemantics.cpp */; };
 		CF03A5700FD9980F00D079B7 /* optionLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB8400BC019CA00E6FABE /* optionLL1grammar.cpp */; };
@@ -2537,6 +2539,7 @@
 				8D15AC340486D014006FF6A4 /* Cocoa.framework in Frameworks */,
 				CF4398040ADFE1900085F47C /* WebKit.framework in Frameworks */,
 				CF04216D0B0B51AA00BB53E5 /* Security.framework in Frameworks */,
+				CF02E84E1280556E002306FF /* Carbon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2558,6 +2561,7 @@
 				CFEDF5010C2D16840038713A /* Cocoa.framework in Frameworks */,
 				CFEDF5020C2D16840038713A /* WebKit.framework in Frameworks */,
 				CFEDF5030C2D16840038713A /* Security.framework in Frameworks */,
+				CF02E84F12805572002306FF /* Carbon.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
