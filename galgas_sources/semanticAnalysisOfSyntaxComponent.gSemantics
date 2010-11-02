@@ -683,7 +683,7 @@ override method @parseRewindInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   const @string parsingContextVar := "parsingContext_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "const C_parsingContext " . parsingContextVar . " = " . compilerCppName [] . "->parsingContext () ;\n" ;
-  foreach mListOfSemanticInstructionListForGeneration index IDX
+  foreach mListOfSemanticInstructionListForGeneration
   do
     generateInstructionList
       !mInstructionList
@@ -692,7 +692,7 @@ override method @parseRewindInstructionForGeneration generateInstruction
       !?ioGeneratedCode
     ;
   between 
-    ioGeneratedCode .= compilerCppName [] . "->setParsingContext (" . parsingContextVar . ") ; // rewind " . [IDX + 1 string] . "\n" ;
+    ioGeneratedCode .= compilerCppName [] . "->setParsingContext (" . parsingContextVar . ") ; // rewind\n" ;
   end foreach ;
   ioGeneratedCode .= "//-------- END OF @parseRewindInstructionForGeneration\n" ;
 end method ;
