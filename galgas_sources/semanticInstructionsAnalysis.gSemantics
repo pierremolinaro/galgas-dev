@@ -1461,7 +1461,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
       localConstantList +=
         !type
         !mConstantVarName
-        !false # Warns id not used
+        !mConstantVarNameIsUnused # Warns if not used ?
         !localConstantName
       ;
     else
