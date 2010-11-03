@@ -12,13 +12,6 @@
   end foreach
 %  
 
-//--- Assign from attribute (v1)
-%
-  foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
-    %  public : void assignFromAttribute_%![lkey identifierRepresentation]% (GGS_l%![mLexicalType lexicalTypeBaseName]% & outValue) const ;\n%
-  end foreach
-%
-
 //--- Assign from attribute (v2)
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
