@@ -2,7 +2,7 @@
 set -x
 DIR=`dirname $0` &&
 #----------------- class_sample_language
-galgas --legacy-code-generation -v --Werror ${DIR}/class_sample_language/galgas_sources/all_class_sample_language.gProject &&
+galgas -v --Werror ${DIR}/class_sample_language/galgas_sources/all_class_sample_language.gProject &&
 ${DIR}/class_sample_language/makefile-macosx/build.command &&
 time ${DIR}/class_sample_language/makefile-macosx/class_sample_language ${DIR}/class_sample_language/samples/100000-classes.class_sample_language &&
 #----------------- dangling_else_solution
