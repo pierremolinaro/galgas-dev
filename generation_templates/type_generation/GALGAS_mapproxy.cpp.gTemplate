@@ -43,8 +43,7 @@ foreach SEARCH_METHOD_LIST do index IDX
   %                                                %!^%COMMA_LOCATION_ARGS) {\n%
   %  GALGAS_%!TYPE_IDENTIFIER% result ;\n%
   %  if (inMap.isValid () && inKey.isValid ()) {\n%
-  %    const utf32 kSearchErrorMessage [%![[mErrorMessage length] + 1 string]%] = %![mErrorMessage utf32Representation]% ;\n%
-  %    result.internalMakeRegularProxyBySearchingKey (inMap, inKey, kSearchErrorMessage, inCompiler COMMA_THERE) ;\n%
+  %    result.internalMakeRegularProxyBySearchingKey (inMap, inKey, kSearchErrorMessage_%!ASSOCIATED_MAP_TYPE_IDENTIFIER%_%![mMethodName identifierRepresentation]%, inCompiler COMMA_THERE) ;\n%
   %  }\n%
   %  return result ;\n%
   %}\n\n%

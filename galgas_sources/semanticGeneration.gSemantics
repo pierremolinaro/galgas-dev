@@ -474,6 +474,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
+    ?@mapSearchMethodListAST SEARCH_METHOD_LIST
   ;
 
   template mapTypeHeader2 "GALGAS_map.h2.gTemplate"
@@ -669,7 +670,7 @@ filewrapper semanticComponentGenerationTemplate in "../generation_templates/sema
     ?@string FILEWRAPPER_NAME
     ?@string TEMPLATE_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
-    ?@bool USES_COMPILER_ARGUMENT
+    ?@stringset UNUSED_VAR_SET
     ?@bool USES_COLUMN_MARKER
     ?@string GENERATED_INSTRUCTION_STRING
   ;
@@ -747,6 +748,7 @@ override reader @mapTypeForGeneration appendDeclaration1 ->@string outHeader :
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
+    !mSearchMethodList
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeIndex key]
@@ -1441,6 +1443,9 @@ override reader @filewrapperDeclarationForGeneration appendSpecificImplementatio
     @uint temporaryVariableIndex := 0 ;
     @stringset unusedVariableCppNameSet [emptySet] ;
     unusedVariableCppNameSet += !compilerCppName [] ;
+    foreach mFilewrapperTemplateFormalInputParameters do
+      unusedVariableCppNameSet += !mFormalArgumentCppName ;
+    end foreach ;
     @bool useColumnMarker := false ;
     templateCodeGenerationForListInstruction
       !mTemplateInstructionListForGeneration
@@ -1454,7 +1459,7 @@ override reader @filewrapperDeclarationForGeneration appendSpecificImplementatio
       !mFilewrapperName
       !mFilewrapperTemplateName
       !mFilewrapperTemplateFormalInputParameters
-      !not [unusedVariableCppNameSet hasKey !compilerCppName []]
+      !unusedVariableCppNameSet
       !useColumnMarker
       !generatedCodeForInstructionList
     ] ;
