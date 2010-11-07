@@ -455,6 +455,20 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@enumMessageListForGeneration ENUM_MESSAGE_LIST
   ;
 
+#---------- MAP PROXY
+  template mapProxyTypeHeader1 "GALGAS_mapproxy.h1.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+  ;
+
+  template mapProxyTypeSpecificImplementation "GALGAS_mapproxy.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string ASSOCIATED_MAP_TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@mapSearchMethodListAST SEARCH_METHOD_LIST
+  ;
+
 #---------- MAP
   template mapTypeHeader1 "GALGAS_map.h1.gTemplate"
     ?@string TYPE_NAME
@@ -528,13 +542,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList ATTRIBUTE_LIST
   ;
 
-  template mapProxyTypeSpecificImplementation "GALGAS_mapproxy.cpp.gTemplate"
-    ?@string TYPE_NAME
-    ?@string TYPE_IDENTIFIER
-    ?@string ASSOCIATED_MAP_TYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
-    ?@mapSearchMethodListAST SEARCH_METHOD_LIST
-  ;
 }
 
 #---------------------------------------------------------------------------*
@@ -852,6 +859,29 @@ override reader @enumTypeForGeneration appendDeclaration1 ->@string outHeader :
     ![mTypeIndex mWithAccessorMap]
   ] ;
  end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @mapProxyTypeForGeneration appendDeclaration1 -> @string outHeader :
+  outHeader := [filewrapper typeGenerationTemplate.mapProxyTypeHeader1
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+  ] ; 
+  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+    ![mTypeIndex mIsConcrete]
+    ![mTypeIndex mConstructorMap]
+    ![mTypeIndex mReaderMap]
+    ![mTypeIndex mModifierMap]
+    ![mTypeIndex mInstanceMethodMap]
+    ![mTypeIndex mClassMethodMap]
+    ![mTypeIndex mEnumerationDescriptor]
+    ![mTypeIndex mHandledOperatorFlags]
+    ![mTypeIndex mAddAssignOperatorArguments]
+    ![mTypeIndex mWithAccessorMap]
+  ] ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 
