@@ -278,11 +278,17 @@ override method @readerCallExpressionForGeneration generateExpression
   end foreach ;
 #--- Generate Reader call
   outCppName := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " " . outCppName . " (" . receiverCppName ;
-  foreach mFieldList do
-    ioGeneratedCode .= ".mAttribute_" . [mValue identifierRepresentation] ;
-  end foreach ;
-  ioGeneratedCode .=  ".reader_" . [mReaderName identifierRepresentation] . " (" ;
+  ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " " . outCppName . " (" ;
+  if mIsCategory then
+    ioGeneratedCode .= "callCategoryReader_" . [mReaderName identifierRepresentation]
+       . " ((const cPtr_" . [[mReceiverExpression mType] identifierRepresentation] . " *) " . receiverCppName . ".ptr (), " ;
+  else
+    ioGeneratedCode .= receiverCppName ;
+    foreach mFieldList do
+      ioGeneratedCode .= ".mAttribute_" . [mValue identifierRepresentation] ;
+    end foreach ;
+    ioGeneratedCode .=  ".reader_" . [mReaderName identifierRepresentation] . " (" ;
+  end if ;
   foreach readerArgumentCppNameList
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;

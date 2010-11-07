@@ -269,7 +269,7 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
 #---
   foreach mTemplateInstructionSwitchBranchList do
     foreach mConstantList do
-      ioGeneratedCode .= "case GALGAS_" . [[mSwitchExpression mType] identifierRepresentation] . "::kEnum_" . [[mValue string] identifierRepresentation] . " :\n" ;
+      ioGeneratedCode .= "case GALGAS_" . [[mSwitchExpression mType] identifierRepresentation] . "::kEnum_" . [[mValue string] identifierRepresentation] . " : {\n" ;
     end foreach ;
     [!?ioGeneratedCode incIndentation !2] ;
     templateCodeGenerationForListInstruction
@@ -280,7 +280,7 @@ override method @templateInstructionSwitchForGeneration templateCodeGeneration
       !?ioUseColumnMarker
     ;
     [!?ioGeneratedCode decIndentation !2] ;
-    ioGeneratedCode .= "break ;\n" ;
+    ioGeneratedCode .= "} break ;\n" ;
   end foreach ;
 #---
   ioGeneratedCode .= "}\n" ;

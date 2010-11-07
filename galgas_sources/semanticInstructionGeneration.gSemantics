@@ -48,16 +48,16 @@ end method ;
 
 override method @outputInputActualParameterForGeneration generateActualParameter
   ?!@uint unused ioTemporaryVariableIndex
-  ?!@string ioImplementation
+  ?!@string unused ioImplementation
   ?!@stringlist unused ioJokerParametersToReleaseList
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppName
 :
-  foreach mStructAttributeList do
-    ioImplementation .= "(handle field in @outputInputActualParameterForGeneration)\n" ;
-  end foreach ;
   outCppName := mOutputInputVariableCppName ;
-  [!?ioUnusedVariableCppNameSet removeKey !outCppName] ;
+  foreach mStructAttributeList do
+    outCppName .= ".mAttribute_" . [mValue identifierRepresentation] ;
+  end foreach ;
+  [!?ioUnusedVariableCppNameSet removeKey !mOutputInputVariableCppName] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -352,6 +352,7 @@ override method @errorInstructionForGeneration generateInstruction
                    . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
 #--- Release dropped variables
   foreach mBuiltVariableCppNameList do
+    [!?ioUnusedVariableCppNameSet removeKey !mValue] ;
     ioGeneratedCode .= mValue . ".drop () ; // Release error dropped variable\n" ;
   end foreach ;
 end method ;
@@ -865,12 +866,38 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @readOnlyWithInstructionForGeneration generateInstruction
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "//-------- @readOnlyWithInstructionForGeneration\n" ;
-  ioGeneratedCode .= " (TO_DO)\n" ;
+#--- Receiver expression
+  @string receiverVarCppName ;
+  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverVarCppName] ;
+  const @unifiedTypeMapProxy receiverType := [mReceiverExpression mType] ;
+#--- key expression
+  @string keyVarCppName ;
+  [mKeyExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?keyVarCppName] ;
+#---
+  ioGeneratedCode .= "const cMapElement_" . [receiverType identifierRepresentation]
+                  . " * " . mObjectArrayCppName . " = (const cMapElement_" . [receiverType identifierRepresentation]
+                  . " *) " . receiverVarCppName . "." ;
+  if mAccessName != "hasKey" then
+    ioGeneratedCode .= "readAccessForWithInstruction_hasKey (" . keyVarCppName . ") ;\n" ;
+  else
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+    ioGeneratedCode .= "performSearch (" . keyVarCppName . ", " . compilerCppName []
+                     . ", kSearchErrorMessage_" . [receiverType identifierRepresentation] . "_" . [mAccessName identifierRepresentation]
+                     . " COMMA_HERE) ;\n" ;
+  end if ;
+  ioGeneratedCode .= "if (NULL != " . mObjectArrayCppName . ") {\n"
+                  .  "    macroValidSharedObject (" . mObjectArrayCppName . ", const cMapElement_" . [receiverType identifierRepresentation] . ") ;\n" ;
+  generateInstructionList !mDoBranchInstructions !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
+  if [mElseBranchInstructions length] > 0 then
+    ioGeneratedCode .= "}else{\n" ;
+    generateInstructionList !mElseBranchInstructions !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
+  end if ;
+  ioGeneratedCode .= "}\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
