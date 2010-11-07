@@ -146,7 +146,7 @@ override method @templateInstructionForeachForGeneration templateCodeGeneration
                     . [mIsAscending cString] . ") ;\n" ;
 #--- Before
   if ([mBeforeInstructionList length] + [mAfterInstructionList length]) > 0 then
-    ioGeneratedCode .= "const bool nonEmpty_" . mEnumeratorCppName . " = " . mEnumeratorCppName . ".hasCurrentObject ()) {\n" ;
+    ioGeneratedCode .= "const bool nonEmpty_" . mEnumeratorCppName . " = " . mEnumeratorCppName . ".hasCurrentObject () ;\n" ;
   end if ;
   if [mBeforeInstructionList length] > 0 then
     ioGeneratedCode .= "if (nonEmpty_" . mEnumeratorCppName . ") {\n" ;
