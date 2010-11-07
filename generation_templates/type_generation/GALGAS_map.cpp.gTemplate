@@ -117,7 +117,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_overriddenMap (UNUSE
   % COMMA_HERE)) ;\n%
   %    capCollectionElement attributes ;\n%
   %  attributes.setPointer (p) ;\n%
-  %  macroReleaseObject (p) ;\n%
+  %  macroDetachSharedObject (p) ;\n%
   block 2 :
     %const utf32 kInsertErrorMessage [%![[mErrorMessage length] + 1 string]%] = %![mErrorMessage utf32Representation]% ;\n%
     %const utf32 kShadowErrorMessage [%![[mShadowErrorMessage length] + 1 string]%] = %![mShadowErrorMessage utf32Representation]% ;\n%
@@ -140,7 +140,7 @@ foreach SEARCH_METHOD_LIST do
     %const cCollectionElement * attributes = performSearch (inKey, inCompiler, kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mMethodName identifierRepresentation]% COMMA_THERE) ;\n%
     %const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) attributes ;\n%
     %if (NULL != p) {\n%
-    %  macroValidObject (p, const cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+    %  macroValidSharedObject (p, const cMapElement_%!TYPE_IDENTIFIER%) ;\n%
     foreach ATTRIBUTE_LIST do index IDX
       %  outArgument%![IDX string]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
     end foreach
@@ -164,7 +164,7 @@ foreach REMOVE_METHOD_LIST do
     %performRemove (inKey, attributes, inCompiler, kRemoveErrorMessage COMMA_THERE) ;\n%
     %cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;\n%
     %if (NULL != p) {\n%
-    %  macroValidObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+    %  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
     foreach ATTRIBUTE_LIST do index IDX
       %  outArgument%![IDX string]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
     end foreach
@@ -188,7 +188,7 @@ if HAS_INSERT_OR_REPLACE then
   % COMMA_HERE)) ;\n%
   %  capCollectionElement attributes ;\n%
   %  attributes.setPointer (p) ;\n%
-  %  macroReleaseObject (p) ;\n%
+  %  macroDetachSharedObject (p) ;\n%
   %  performInsertOrReplace (attributes) ;\n%
   %}\n\n%
 end if
@@ -202,7 +202,7 @@ foreach ATTRIBUTE_LIST do index IDX
   %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) attributes ;\n%
   %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
   %  if (NULL != p) {\n%
-  %    macroValidObject (p, const cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+  %    macroValidSharedObject (p, const cMapElement_%!TYPE_IDENTIFIER%) ;\n%
   %    result = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %  }\n%
   %  return result ;\n%
@@ -218,7 +218,7 @@ foreach ATTRIBUTE_LIST do index IDX
   %  cCollectionElement * attributes = searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;\n%
   %  cMapElement_%!TYPE_IDENTIFIER% * p = (cMapElement_%!TYPE_IDENTIFIER% *) attributes ;\n%
   %  if (NULL != p) {\n%
-  %    macroValidObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+  %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
   %    p->mAttribute_%![mAttributeName identifierRepresentation]% = inAttributeValue ;\n%
   %  }\n%
   %}\n\n%
@@ -235,7 +235,7 @@ foreach WITH_ACCESSOR_MAP do
   %  cMapElement * p = searchForReadWriteAttribute (inKey, inCompiler, kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![lkey identifierRepresentation]% COMMA_THERE) ;\n%
   end if
   %  cMapElement_%!TYPE_IDENTIFIER% * result = (cMapElement_%!TYPE_IDENTIFIER% *) p ;\n%
-  %  macroNullOrValidObject (result, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+  %  macroNullOrValidSharedObject (result, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return result ;\n%
   %}\n\n%
 end foreach
@@ -251,7 +251,7 @@ cGenericAbstractEnumerator () {
 
 GALGAS_lstring cEnumerator_%!TYPE_IDENTIFIER%::current_lkey (void) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr () ;
-  macroValidObject (p, const cMapElement) ;
+  macroValidSharedObject (p, const cMapElement) ;
   return p->mAttribute_lkey ;
 }
 
@@ -259,7 +259,7 @@ GALGAS_lstring cEnumerator_%!TYPE_IDENTIFIER%::current_lkey (void) const {
   %//---------------------------------------------------------------------------*\n\n%
   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (void) const {\n%
   %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr () ;\n%
-  %  macroValidObject (p, const cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+  %  macroValidSharedObject (p, const cMapElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%
 end foreach 

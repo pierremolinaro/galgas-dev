@@ -92,7 +92,7 @@ enumComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compare (const cColl
   if (NULL != inOperand) {
     result = kOperandEqual ;
     cSortedListElement_%!TYPE_IDENTIFIER% * operand = (cSortedListElement_%!TYPE_IDENTIFIER% *) inOperand ;
-    macroValidObject (operand, cSortedListElement_%!TYPE_IDENTIFIER%) ;
+    macroValidSharedObject (operand, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %  foreach ATTRIBUTE_LIST do
      %    if (kOperandEqual == result) {\n%
      %      result = mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (operand->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
@@ -113,7 +113,7 @@ AC_GALGAS_sortedlist () {
 enumComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compareForSorting (const cSortedListElement * inOperand) const {
   enumComparisonResult result = kOperandEqual ;
   const cSortedListElement_%!TYPE_IDENTIFIER% * operand = (const cSortedListElement_%!TYPE_IDENTIFIER% *) inOperand ;
-  macroValidObject (operand, const cSortedListElement_%!TYPE_IDENTIFIER%) ;
+  macroValidSharedObject (operand, const cSortedListElement_%!TYPE_IDENTIFIER%) ;
 % foreach SORT_ATTRIBUTE_LIST do
     %  if (result == kOperandEqual) {\n%
     %    result = %
@@ -154,7 +154,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_sortedListWithV
   % COMMA_THERE)) ;
   capSortedListElement attributes ;
   attributes.setPointer (p) ;
-  macroReleaseObject (p) ;
+  macroDetachSharedObject (p) ;
   result.addObject (attributes) ;
   return result ;
 }
@@ -178,7 +178,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
     % COMMA_THERE)) ;
     capSortedListElement attributes ;
     attributes.setPointer (p) ;
-    macroReleaseObject (p) ;
+    macroDetachSharedObject (p) ;
     addObject (attributes) ;
   }
 }
@@ -222,7 +222,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popSmallest (%?^
     %    outOperand%![IDX string] %.drop () ;\n%
   end foreach
 %  }else{
-    macroValidObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
+    macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
     %    outOperand%![IDX string] % = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
@@ -247,7 +247,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popGreatest (%?^
     %    outOperand%![IDX string] %.drop () ;\n%
   end foreach
 %  }else{
-    macroValidObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
+    macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
     %    outOperand%![IDX string] % = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
@@ -272,7 +272,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_smallest (%?^
     %    outOperand%![IDX string] %.drop () ;\n%
   end foreach
 %  }else{
-    macroValidObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
+    macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
     %    outOperand%![IDX string] % = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
@@ -297,7 +297,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_greatest (%?^
     %    outOperand%![IDX string] %.drop () ;\n%
   end foreach
 %  }else{
-    macroValidObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
+    macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
     %    outOperand%![IDX string] % = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
@@ -317,7 +317,7 @@ cGenericAbstractEnumerator () {
   %//---------------------------------------------------------------------------*\n\n%
   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (void) const {\n%
   %  const cSortedListElement_%!TYPE_IDENTIFIER% * p = (const cSortedListElement_%!TYPE_IDENTIFIER% *) currentObjectPtr () ;\n%
-  %  macroValidObject (p, const cSortedListElement_%!TYPE_IDENTIFIER%) ;\n%
+  %  macroValidSharedObject (p, const cSortedListElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%
 end foreach

@@ -968,7 +968,7 @@ mStartLocation (argument_0) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_abstractSyntaxInstructionForGrammarAnalysis * GGS_abstractSyntaxInstructionForGrammarAnalysis::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
+    macroValidSharedObjectThere (mPointer, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
     return (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) mPointer ;
   }
 #endif
@@ -1022,14 +1022,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_abstractSyntaxInstructionFo
 
 GGS_abstractSyntaxInstructionForGrammarAnalysis::
 GGS_abstractSyntaxInstructionForGrammarAnalysis (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_abstractSyntaxInstructionForGrammarAnalysis::
 GGS_abstractSyntaxInstructionForGrammarAnalysis (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3046,7 +3046,7 @@ mTerminalSymbolIndex (argument_2) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_terminalInstructionForGrammarAnalysis * GGS_terminalInstructionForGrammarAnalysis::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_terminalInstructionForGrammarAnalysis) ;
+    macroValidSharedObjectThere (mPointer, cPtr_terminalInstructionForGrammarAnalysis) ;
     return (cPtr_terminalInstructionForGrammarAnalysis *) mPointer ;
   }
 #endif
@@ -3125,14 +3125,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_terminalInstructionForGramm
 
 GGS_terminalInstructionForGrammarAnalysis::
 GGS_terminalInstructionForGrammarAnalysis (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_terminalInstructionForGrammarAnalysis::
 GGS_terminalInstructionForGrammarAnalysis (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3274,7 +3274,7 @@ mNonterminalSymbolIndex (argument_2) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_nonTerminalInstructionForGrammarAnalysis * GGS_nonTerminalInstructionForGrammarAnalysis::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_nonTerminalInstructionForGrammarAnalysis) ;
+    macroValidSharedObjectThere (mPointer, cPtr_nonTerminalInstructionForGrammarAnalysis) ;
     return (cPtr_nonTerminalInstructionForGrammarAnalysis *) mPointer ;
   }
 #endif
@@ -3353,14 +3353,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_nonTerminalInstructionForGr
 
 GGS_nonTerminalInstructionForGrammarAnalysis::
 GGS_nonTerminalInstructionForGrammarAnalysis (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_nonTerminalInstructionForGrammarAnalysis::
 GGS_nonTerminalInstructionForGrammarAnalysis (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3882,7 +3882,7 @@ mAddedNonTerminalSymbolIndex (argument_2) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_selectInstructionForGrammarAnalysis * GGS_selectInstructionForGrammarAnalysis::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_selectInstructionForGrammarAnalysis) ;
+    macroValidSharedObjectThere (mPointer, cPtr_selectInstructionForGrammarAnalysis) ;
     return (cPtr_selectInstructionForGrammarAnalysis *) mPointer ;
   }
 #endif
@@ -3961,14 +3961,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_selectInstructionForGrammar
 
 GGS_selectInstructionForGrammarAnalysis::
 GGS_selectInstructionForGrammarAnalysis (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_selectInstructionForGrammarAnalysis::
 GGS_selectInstructionForGrammarAnalysis (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4110,7 +4110,7 @@ mAddedNonTerminalSymbolIndex (argument_2) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_repeatInstructionForGrammarAnalysis * GGS_repeatInstructionForGrammarAnalysis::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_repeatInstructionForGrammarAnalysis) ;
+    macroValidSharedObjectThere (mPointer, cPtr_repeatInstructionForGrammarAnalysis) ;
     return (cPtr_repeatInstructionForGrammarAnalysis *) mPointer ;
   }
 #endif
@@ -4189,14 +4189,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_repeatInstructionForGrammar
 
 GGS_repeatInstructionForGrammarAnalysis::
 GGS_repeatInstructionForGrammarAnalysis (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_repeatInstructionForGrammarAnalysis::
 GGS_repeatInstructionForGrammarAnalysis (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*

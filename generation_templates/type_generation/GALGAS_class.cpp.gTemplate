@@ -13,9 +13,9 @@ else
   end if
   if [CURRENT_ATTRIBUTE_LIST length] > 0 then
     %  const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
-    %  macroNullOrValidObject (p, const cPtr_%!TYPE_IDENTIFIER%) ;\n%
+    %  macroNullOrValidSharedObject (p, const cPtr_%!TYPE_IDENTIFIER%) ;\n%
     %  const cPtr_%!TYPE_IDENTIFIER% * q = (const cPtr_%!TYPE_IDENTIFIER% *) inOperand.mObjectPtr ;\n%
-    %  macroNullOrValidObject (q, const cPtr_%!TYPE_IDENTIFIER%) ;\n%
+    %  macroNullOrValidSharedObject (q, const cPtr_%!TYPE_IDENTIFIER%) ;\n%
     foreach CURRENT_ATTRIBUTE_LIST do
       %  if (kOperandEqual == result) {\n%
       %    result = p->mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (q->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
@@ -36,7 +36,7 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) :
 %if SUPER_TYPE_IDENTIFIER == "" then %AC_GALGAS_class% else %GALGAS_%!SUPER_TYPE_IDENTIFIER end if% (inSourcePtr) {
-  macroNullOrValidObject (inSourcePtr, const cPtr_%!TYPE_IDENTIFIER%) ;
+  macroNullOrValidSharedObject (inSourcePtr, const cPtr_%!TYPE_IDENTIFIER%) ;
 }
 
 %
@@ -85,7 +85,7 @@ if ([ALL_ATTRIBUTE_LIST length] > 0) & not IS_ABSTRACT then
   %void GALGAS_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {\n%
   %  if (isValid () && (mObjectPtr->retainCount () > 1)) {\n%
   %    cPtr_%!TYPE_IDENTIFIER% * p = (cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
-  %    macroValidObject (p, cPtr_%!TYPE_IDENTIFIER%) ;\n%
+  %    macroValidSharedObject (p, cPtr_%!TYPE_IDENTIFIER%) ;\n%
   %    cPtr_%!TYPE_IDENTIFIER% * r = NULL ;\n%
   %    macroMyNew (r, cPtr_%!TYPE_IDENTIFIER% (%
   foreach ALL_ATTRIBUTE_LIST
@@ -93,8 +93,8 @@ if ([ALL_ATTRIBUTE_LIST length] > 0) & not IS_ABSTRACT then
     between %, %
   end foreach
   % COMMA_THERE)) ;\n%
-  %    macroAssignObject (mObjectPtr, r) ;\n%
-  %    macroReleaseObject (r) ;\n%
+  %    macroAssignSharedObject (mObjectPtr, r) ;\n%
+  %    macroDetachSharedObject (r) ;\n%
   %  }\n%
   %}\n\n%
 end if
@@ -119,7 +119,7 @@ foreach CURRENT_ATTRIBUTE_LIST do
     %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
     %  if (NULL != mObjectPtr) {\n%
     %    const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
-    %    macroValidObject (p, const cPtr_%!TYPE_IDENTIFIER%) ;\n%
+    %    macroValidSharedObject (p, const cPtr_%!TYPE_IDENTIFIER%) ;\n%
     %    result = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
     %  }\n%
     %  return result ;\n%
@@ -134,7 +134,7 @@ foreach CURRENT_ATTRIBUTE_LIST do
                           !^%COMMA_UNUSED_LOCATION_ARGS) {\n%
     %  if (NULL != mObjectPtr) {\n%
     %    cPtr_%!TYPE_IDENTIFIER% * p = (cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
-    %    macroValidObject (p, cPtr_%!TYPE_IDENTIFIER%) ;\n%
+    %    macroValidSharedObject (p, cPtr_%!TYPE_IDENTIFIER%) ;\n%
     %    p->mAttribute_%![mAttributeName identifierRepresentation]% = inValue ;\n%
     %  }\n%
     %}\n\n%
@@ -177,7 +177,7 @@ foreach INSTANCE_METHOD_MAP do
       %) const {\n%
       %  if (mObjectPtr != NULL) {\n%
       %    const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
-      %    macroValidObject (p, const cPtr_%!TYPE_IDENTIFIER%) ;\n%
+      %    macroValidSharedObject (p, const cPtr_%!TYPE_IDENTIFIER%) ;\n%
       %    p->method_%![lkey identifierRepresentation]% (%
       foreach mParameterList do index IDX
         if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then

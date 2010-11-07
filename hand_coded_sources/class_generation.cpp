@@ -450,7 +450,7 @@ void cPtr_C_classToImplement::
 enterPrologueEpilogueAction (AC_OutputStream & /* inPrologueActions */,
                              AC_OutputStream & inEpilogueActions) const {
   if ((! mIsAbstract.boolValue ()) && (aListeTousAttributsNonExternes.count () == 0)) {
-    inEpilogueActions << "  macroReleaseObject (gSingleton_" << aNomClasse << ") ;\n" ;
+    inEpilogueActions << "  macroDetachSharedObject (gSingleton_" << aNomClasse << ") ;\n" ;
   }
 }
 
@@ -557,7 +557,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
   inCppFile << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
                "  cPtr_" << aNomClasse << " * GGS_" << aNomClasse << "::\n"
                "  operator () (LOCATION_ARGS) const {\n"
-               "    macroValidObjectThere (mPointer, cPtr_" << aNomClasse << ") ;\n"
+               "    macroValidSharedObjectThere (mPointer, cPtr_" << aNomClasse << ") ;\n"
                "    return (cPtr_" << aNomClasse << " *) mPointer ;\n"
                "  }\n"
                "#endif\n\n" ;
@@ -756,14 +756,14 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
 //--- Pointer assignment constructor
   inCppFile << "GGS_" << aNomClasse << "::\n"
                "GGS_" << aNomClasse << " (const cPtr__AC_galgas_class * inPointer) {\n"
-               "  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;\n"
+               "  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
 //--- Object assignment constructor
   inCppFile << "GGS_" << aNomClasse << "::\n"
                "GGS_" << aNomClasse << " (cPtr__AC_galgas_class & inObject) {\n"
-               "  macroAssignObject (mPointer, & inObject) ;\n"
+               "  macroAssignSharedObject (mPointer, & inObject) ;\n"
                "}\n\n" ;
   inCppFile.appendCppHyphenLineComment () ;
 
@@ -820,7 +820,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
       inCppFile << "  if (NULL == gSingleton_" << aNomClasse << ") {\n"
                    "    macroMyNew (gSingleton_" << aNomClasse << ", cPtr_" << aNomClasse << " (THERE)) ;\n"
                    "  }\n"
-                   "  macroAssignObject (result.mPointer, gSingleton_" << aNomClasse << ") ;\n" ;
+                   "  macroAssignSharedObject (result.mPointer, gSingleton_" << aNomClasse << ") ;\n" ;
     }else{
       inCppFile << "  macroMyNew (result.mPointer, cPtr_" << aNomClasse << " (" ;
       current = aListeTousAttributsNonExternes.firstObject () ;
@@ -855,7 +855,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                  "                            COMMA_LOCATION_ARGS) const {\n"
                  "  GGS_string result ;\n"
                  "  if (mPointer != NULL) {\n"
-                 "    macroValidObjectThere (mPointer, cPtr_" << aNomClasse << ") ;\n"
+                 "    macroValidSharedObjectThere (mPointer, cPtr_" << aNomClasse << ") ;\n"
                  "    cPtr_" << aNomClasse << " * p = (cPtr_" << aNomClasse << " *) mPointer ;\n"
                  "    result = GGS_string (true, p->message_" << messageCourant->mKey << " ()) ;\n"
                  "  }\n"
@@ -902,7 +902,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                   "    if (mPointer->retainCount () > 1) {\n"
                   "      cPtr_" << aNomClasse << " * clone = dynamic_cast <cPtr_" << aNomClasse << " *> (mPointer->makeClone ()) ;\n"
                   "      macroValidPointer (clone) ;\n"
-                  "      macroAssignObject (mPointer, clone) ;\n"
+                  "      macroAssignSharedObject (mPointer, clone) ;\n"
                   "    }\n"
                   "    ((cPtr_" << aNomClasse << " *) mPointer)->" << current->mAttributeName << " = inValue ;\n"
                   "  }\n"

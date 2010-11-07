@@ -961,7 +961,7 @@ mOptions (argument_1) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_optionComponentAST * GGS_optionComponentAST::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_optionComponentAST) ;
+    macroValidSharedObjectThere (mPointer, cPtr_optionComponentAST) ;
     return (cPtr_optionComponentAST *) mPointer ;
   }
 #endif
@@ -1038,14 +1038,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_optionComponentAST ("option
 
 GGS_optionComponentAST::
 GGS_optionComponentAST (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_optionComponentAST::
 GGS_optionComponentAST (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*

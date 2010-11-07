@@ -968,7 +968,7 @@ generate_SLR_grammar_cpp_file (C_CompilerEx & inLexique,
         }
         generatedZone3 << "      }\n"
                           "    // }\n"
-                          "    macroReleaseObject (scanner) ;\n"
+                          "    macroDetachSharedObject (scanner) ;\n"
                           "  }else{\n"
                           "    C_String message ;\n"
                           "    message << \"the '\" << filePath << \"' file does not exist\" ;\n"
@@ -1047,7 +1047,7 @@ generate_SLR_grammar_cpp_file (C_CompilerEx & inLexique,
         generatedZone3 << "scanner) ;\n"
                            "    }\n"
                           "  }\n"
-                          "  macroReleaseObject (scanner) ;\n"
+                          "  macroDetachSharedObject (scanner) ;\n"
                           "}\n\n" ;
         currentAltForNonTerminal.next () ;
       }
@@ -1398,7 +1398,7 @@ generate_SLR_grammar_old_cpp_file (C_CompilerEx & inLexique,
         }
         generatedZone3 << "      }\n"
                           "    }\n"
-                          "    macroReleaseObject (scanner) ;\n"
+                          "    macroDetachSharedObject (scanner) ;\n"
                           "  }else{\n"
                           "    C_String message ;\n"
                           "    message << \"the '\" << sourceFileName << \"' file does not exist\" ;\n"
@@ -1460,7 +1460,7 @@ generate_SLR_grammar_old_cpp_file (C_CompilerEx & inLexique,
                           "      }\n"
                           "    }\n"
                           "  }\n"
-                          "  macroReleaseObject (scanner) ;\n"
+                          "  macroDetachSharedObject (scanner) ;\n"
                           "}\n\n" ;
         currentAltForNonTerminal.next () ;
       }

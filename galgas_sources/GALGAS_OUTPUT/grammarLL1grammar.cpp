@@ -438,7 +438,7 @@ void C_Grammar_grammarLL_31_grammar::_performSourceFileParsing_ (C_CompilerEx & 
         parameter_1.drop () ;
       }
     }
-    macroReleaseObject (scanner) ;
+    macroDetachSharedObject (scanner) ;
   }else{
     C_String message ;
     message << "the '" << sourceFileName << "' file does not exist" ;
@@ -466,7 +466,7 @@ void C_Grammar_grammarLL_31_grammar::_performSourceStringParsing_ (C_CompilerEx 
       inSentStringPtr->dotAssign_operation (scanner->sentStringEX ()) ;
     }
   }
-  macroReleaseObject (scanner) ;
+  macroDetachSharedObject (scanner) ;
 }
 
 //---------------------------------------------------------------------------*

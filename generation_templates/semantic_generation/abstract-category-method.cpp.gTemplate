@@ -50,7 +50,7 @@ void callCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPt
   end foreach
 %//--- Find method
   if (NULL != inObject) {
-    macroValidObject (inObject, const cPtr_%![CLASS_NAME identifierRepresentation]%) ;
+    macroValidSharedObject (inObject, const cPtr_%![CLASS_NAME identifierRepresentation]%) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const PMSInt32 classIndex = info->mSlotID ;
     categoryMethodSignature_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% f = NULL ;

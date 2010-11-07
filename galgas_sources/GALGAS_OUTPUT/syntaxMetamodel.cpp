@@ -2559,7 +2559,7 @@ mActualParameterList (argument_3) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_nonterminalCallInstruction * GGS_nonterminalCallInstruction::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_nonterminalCallInstruction) ;
+    macroValidSharedObjectThere (mPointer, cPtr_nonterminalCallInstruction) ;
     return (cPtr_nonterminalCallInstruction *) mPointer ;
   }
 #endif
@@ -2640,14 +2640,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_nonterminalCallInstruction 
 
 GGS_nonterminalCallInstruction::
 GGS_nonterminalCallInstruction (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_nonterminalCallInstruction::
 GGS_nonterminalCallInstruction (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2805,7 +2805,7 @@ mActualInputParameterList (argument_2) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_terminalCheckInstruction * GGS_terminalCheckInstruction::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_terminalCheckInstruction) ;
+    macroValidSharedObjectThere (mPointer, cPtr_terminalCheckInstruction) ;
     return (cPtr_terminalCheckInstruction *) mPointer ;
   }
 #endif
@@ -2884,14 +2884,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_terminalCheckInstruction ("
 
 GGS_terminalCheckInstruction::
 GGS_terminalCheckInstruction (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_terminalCheckInstruction::
 GGS_terminalCheckInstruction (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3483,7 +3483,7 @@ mEndOf_repeat_instruction (argument_4) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_repeatInstruction * GGS_repeatInstruction::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_repeatInstruction) ;
+    macroValidSharedObjectThere (mPointer, cPtr_repeatInstruction) ;
     return (cPtr_repeatInstruction *) mPointer ;
   }
 #endif
@@ -3566,14 +3566,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_repeatInstruction ("repeatI
 
 GGS_repeatInstruction::
 GGS_repeatInstruction (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_repeatInstruction::
 GGS_repeatInstruction (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3747,7 +3747,7 @@ mEndOf_select_instruction (argument_2) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_selectInstruction * GGS_selectInstruction::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_selectInstruction) ;
+    macroValidSharedObjectThere (mPointer, cPtr_selectInstruction) ;
     return (cPtr_selectInstruction *) mPointer ;
   }
 #endif
@@ -3826,14 +3826,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_selectInstruction ("selectI
 
 GGS_selectInstruction::
 GGS_selectInstruction (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_selectInstruction::
 GGS_selectInstruction (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3975,7 +3975,7 @@ mEndOfParseDoInstruction (argument_2) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_parseRewindInstruction * GGS_parseRewindInstruction::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_parseRewindInstruction) ;
+    macroValidSharedObjectThere (mPointer, cPtr_parseRewindInstruction) ;
     return (cPtr_parseRewindInstruction *) mPointer ;
   }
 #endif
@@ -4054,14 +4054,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_parseRewindInstruction ("pa
 
 GGS_parseRewindInstruction::
 GGS_parseRewindInstruction (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_parseRewindInstruction::
 GGS_parseRewindInstruction (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4211,7 +4211,7 @@ mEndOfInstructionList (argument_6) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_parseLoopInstruction * GGS_parseLoopInstruction::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_parseLoopInstruction) ;
+    macroValidSharedObjectThere (mPointer, cPtr_parseLoopInstruction) ;
     return (cPtr_parseLoopInstruction *) mPointer ;
   }
 #endif
@@ -4298,14 +4298,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_parseLoopInstruction ("pars
 
 GGS_parseLoopInstruction::
 GGS_parseLoopInstruction (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_parseLoopInstruction::
 GGS_parseLoopInstruction (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4519,7 +4519,7 @@ mEndOfElseInstructionList (argument_6) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_parseWhenInstruction * GGS_parseWhenInstruction::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_parseWhenInstruction) ;
+    macroValidSharedObjectThere (mPointer, cPtr_parseWhenInstruction) ;
     return (cPtr_parseWhenInstruction *) mPointer ;
   }
 #endif
@@ -4606,14 +4606,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_parseWhenInstruction ("pars
 
 GGS_parseWhenInstruction::
 GGS_parseWhenInstruction (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_parseWhenInstruction::
 GGS_parseWhenInstruction (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4825,7 +4825,7 @@ mEpilogActualParameterList (argument_5) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_blockInstruction * GGS_blockInstruction::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_blockInstruction) ;
+    macroValidSharedObjectThere (mPointer, cPtr_blockInstruction) ;
     return (cPtr_blockInstruction *) mPointer ;
   }
 #endif
@@ -4910,14 +4910,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_blockInstruction ("blockIns
 
 GGS_blockInstruction::
 GGS_blockInstruction (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_blockInstruction::
 GGS_blockInstruction (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*

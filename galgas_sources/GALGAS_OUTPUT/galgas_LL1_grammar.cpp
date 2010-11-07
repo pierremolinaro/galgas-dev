@@ -20251,7 +20251,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_ (C_Compil
         _inFileName.signalSemanticError (inCompiler, message COMMA_THERE) ;
       }
     }
-    macroReleaseObject (scanner) ;
+    macroDetachSharedObject (scanner) ;
   }else{
     C_String message ;
     message << "the '" << sourceFileName << "' file does not exist" ;
@@ -20286,7 +20286,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_ (C_Comp
       }
     }
   }
-  macroReleaseObject (scanner) ;
+  macroDetachSharedObject (scanner) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20327,7 +20327,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importLexi
         _inFileName.signalSemanticError (inCompiler, message COMMA_THERE) ;
       }
     }
-    macroReleaseObject (scanner) ;
+    macroDetachSharedObject (scanner) ;
   }else{
     C_String message ;
     message << "the '" << sourceFileName << "' file does not exist" ;
@@ -20357,7 +20357,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importLe
       }
     }
   }
-  macroReleaseObject (scanner) ;
+  macroDetachSharedObject (scanner) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20399,7 +20399,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importSynt
         _inFileName.signalSemanticError (inCompiler, message COMMA_THERE) ;
       }
     }
-    macroReleaseObject (scanner) ;
+    macroDetachSharedObject (scanner) ;
   }else{
     C_String message ;
     message << "the '" << sourceFileName << "' file does not exist" ;
@@ -20430,7 +20430,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importSy
       }
     }
   }
-  macroReleaseObject (scanner) ;
+  macroDetachSharedObject (scanner) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20473,7 +20473,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importSema
         _inFileName.signalSemanticError (inCompiler, message COMMA_THERE) ;
       }
     }
-    macroReleaseObject (scanner) ;
+    macroDetachSharedObject (scanner) ;
   }else{
     C_String message ;
     message << "the '" << sourceFileName << "' file does not exist" ;
@@ -20505,7 +20505,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importSe
       }
     }
   }
-  macroReleaseObject (scanner) ;
+  macroDetachSharedObject (scanner) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20548,7 +20548,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importGram
         _inFileName.signalSemanticError (inCompiler, message COMMA_THERE) ;
       }
     }
-    macroReleaseObject (scanner) ;
+    macroDetachSharedObject (scanner) ;
   }else{
     C_String message ;
     message << "the '" << sourceFileName << "' file does not exist" ;
@@ -20580,7 +20580,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importGr
       }
     }
   }
-  macroReleaseObject (scanner) ;
+  macroDetachSharedObject (scanner) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20621,7 +20621,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_importOpti
         _inFileName.signalSemanticError (inCompiler, message COMMA_THERE) ;
       }
     }
-    macroReleaseObject (scanner) ;
+    macroDetachSharedObject (scanner) ;
   }else{
     C_String message ;
     message << "the '" << sourceFileName << "' file does not exist" ;
@@ -20651,7 +20651,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_importOp
       }
     }
   }
-  macroReleaseObject (scanner) ;
+  macroDetachSharedObject (scanner) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -20691,7 +20691,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceFileParsing_compileFil
         _inFileName.signalSemanticError (inCompiler, message COMMA_THERE) ;
       }
     }
-    macroReleaseObject (scanner) ;
+    macroDetachSharedObject (scanner) ;
   }else{
     C_String message ;
     message << "the '" << sourceFileName << "' file does not exist" ;
@@ -20720,7 +20720,7 @@ void C_Grammar_galgas_5F_LL_31__5F_grammar::_performSourceStringParsing_compileF
       }
     }
   }
-  macroReleaseObject (scanner) ;
+  macroDetachSharedObject (scanner) ;
 }
 
 //---------------------------------------------------------------------------*

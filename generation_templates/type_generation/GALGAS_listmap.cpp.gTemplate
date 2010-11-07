@@ -18,7 +18,7 @@ void GALGASap_%!TYPE_IDENTIFIER%::insulate (%?^%GALGAS_%!TYPE_IDENTIFIER% * & io
                 %!^%COMMA_LOCATION_ARGS) {
   if (ioObject->retainCount () > 1) {
     GALGAS_%!TYPE_IDENTIFIER% * source = ioObject ;
-    macroReleaseObject (ioObject) ;
+    macroDetachSharedObject (ioObject) ;
     ioObject = constructor_emptyMap (THERE) ;
     ioObject->copyFrom (source) ;
   }

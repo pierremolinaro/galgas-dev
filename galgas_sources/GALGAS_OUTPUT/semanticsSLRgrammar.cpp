@@ -12772,7 +12772,7 @@ void C_Grammar_semanticsSLRgrammar::_performSourceFileParsing_ (C_CompilerEx & i
       parameter_1.drop () ;
       }
     }
-    macroReleaseObject (scanner) ;
+    macroDetachSharedObject (scanner) ;
   }else{
     C_String message ;
     message << "the '" << sourceFileName << "' file does not exist" ;
@@ -12803,7 +12803,7 @@ void C_Grammar_semanticsSLRgrammar::_performSourceStringParsing_ (C_CompilerEx &
       }
     }
   }
-  macroReleaseObject (scanner) ;
+  macroDetachSharedObject (scanner) ;
 }
 
 //---------------------------------------------------------------------------*

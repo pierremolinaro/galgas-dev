@@ -2312,7 +2312,7 @@ mSelectMethodCount (argument_4) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_syntaxDeclarationForGeneration * GGS_syntaxDeclarationForGeneration::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_syntaxDeclarationForGeneration) ;
+    macroValidSharedObjectThere (mPointer, cPtr_syntaxDeclarationForGeneration) ;
     return (cPtr_syntaxDeclarationForGeneration *) mPointer ;
   }
 #endif
@@ -2395,14 +2395,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_syntaxDeclarationForGenerat
 
 GGS_syntaxDeclarationForGeneration::
 GGS_syntaxDeclarationForGeneration (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_syntaxDeclarationForGeneration::
 GGS_syntaxDeclarationForGeneration (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*

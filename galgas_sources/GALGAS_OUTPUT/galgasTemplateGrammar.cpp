@@ -4265,7 +4265,7 @@ void C_Grammar_galgasTemplateGrammar::_performSourceFileParsing_ (C_CompilerEx &
       parameter_6.drop () ;
       }
     }
-    macroReleaseObject (scanner) ;
+    macroDetachSharedObject (scanner) ;
   }else{
     C_String message ;
     message << "the '" << sourceFileName << "' file does not exist" ;
@@ -4302,7 +4302,7 @@ void C_Grammar_galgasTemplateGrammar::_performSourceStringParsing_ (C_CompilerEx
       }
     }
   }
-  macroReleaseObject (scanner) ;
+  macroDetachSharedObject (scanner) ;
 }
 
 //---------------------------------------------------------------------------*
