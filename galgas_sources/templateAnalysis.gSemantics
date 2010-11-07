@@ -1377,7 +1377,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     !enumeratorCppName
     !beforeInstructionList
     !doInstructionList
-    ![mIndexIdentifier string]
+    !cppIndexVarName
     !betweenInstructionList
     !afterInstructionList
   ] ;
