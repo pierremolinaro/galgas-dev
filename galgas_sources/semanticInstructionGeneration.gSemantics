@@ -882,7 +882,7 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
   ioGeneratedCode .= "const cMapElement_" . [receiverType identifierRepresentation]
                   . " * " . mObjectArrayCppName . " = (const cMapElement_" . [receiverType identifierRepresentation]
                   . " *) " . receiverVarCppName . "." ;
-  if mAccessName != "hasKey" then
+  if mAccessName == "hasKey" then
     ioGeneratedCode .= "readAccessForWithInstruction_hasKey (" . keyVarCppName . ") ;\n" ;
   else
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
