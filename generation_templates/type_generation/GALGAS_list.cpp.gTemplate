@@ -134,7 +134,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue (
     % COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
-    macroReleaseObject (p) ;
+    macroDetachSharedObject (p) ;
     result.addObject (attributes) ;
   }
   return result ;
@@ -162,7 +162,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
     % COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
-    macroReleaseObject (p) ;
+    macroDetachSharedObject (p) ;
     addObject (attributes) ;
   }
 }
@@ -189,7 +189,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_prependValue (%?^
     % COMMA_THERE)) ;
     capCollectionElement attributes ;
     attributes.setPointer (p) ;
-    macroReleaseObject (p) ;
+    macroDetachSharedObject (p) ;
     prependAttributeArray (attributes) ;
   }
 }
@@ -211,7 +211,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popFirst (%?^
     %    outOperand%![IDX string] %.drop () ;\n%
   end foreach
 %  }else{
-    macroValidObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
+    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
     %    outOperand%![IDX string] % = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
@@ -236,7 +236,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popLast (%?^
     %    outOperand%![IDX string] %.drop () ;\n%
   end foreach
 %  }else{
-    macroValidObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
+    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
     %    outOperand%![IDX string] % = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
@@ -261,7 +261,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^
     %    outOperand%![IDX string] %.drop () ;\n%
   end foreach
 %  }else{
-    macroValidObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
+    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
     %    outOperand%![IDX string] % = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
@@ -286,7 +286,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^
     %    outOperand%![IDX string] %.drop () ;\n%
   end foreach
 %  }else{
-    macroValidObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
+    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
     %    outOperand%![IDX string] % = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
@@ -343,7 +343,7 @@ foreach ATTRIBUTE_LIST do index IDX
   %                                              %!^%COMMA_LOCATION_ARGS) {\n%
   %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%
   %  if (NULL != p) {\n%
-  %    macroValidObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
+  %    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
   %    p->mAttribute_%![mAttributeName identifierRepresentation]% = inOperand ;\n%
   %  }\n%
   %}\n\n%
@@ -359,7 +359,7 @@ foreach ATTRIBUTE_LIST do index IDX
   %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;\n%
   %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
   %  if (NULL != p) {\n%
-  %    macroValidObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
+  %    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
   %    result = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %  }\n%
   %  return result ;\n%
@@ -379,7 +379,7 @@ cGenericAbstractEnumerator () {
   %//---------------------------------------------------------------------------*\n\n%
   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (void) const {\n%
   %  const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr () ;\n%
-  %  macroValidObject (p, const cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
+  %  macroValidSharedObject (p, const cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%
 end foreach

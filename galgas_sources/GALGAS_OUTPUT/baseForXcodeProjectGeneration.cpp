@@ -508,7 +508,7 @@ mFileName (argument_1) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXFileReference_abstract * GGS_Xcode_PBXFileReference_abstract::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXFileReference_abstract) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXFileReference_abstract) ;
     return (cPtr_Xcode_PBXFileReference_abstract *) mPointer ;
   }
 #endif
@@ -563,14 +563,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_abst
 
 GGS_Xcode_PBXFileReference_abstract::
 GGS_Xcode_PBXFileReference_abstract (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_abstract::
 GGS_Xcode_PBXFileReference_abstract (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -748,7 +748,7 @@ cPtr_Xcode_productFileReference (const GGS_uint & argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_productFileReference * GGS_Xcode_productFileReference::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_productFileReference) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_productFileReference) ;
     return (cPtr_Xcode_productFileReference *) mPointer ;
   }
 #endif
@@ -803,14 +803,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_productFileReference 
 
 GGS_Xcode_productFileReference::
 GGS_Xcode_productFileReference (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_productFileReference::
 GGS_Xcode_productFileReference (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -906,7 +906,7 @@ cPtr_Xcode_PBXFileReference_CompiledMachOExecutable (const GGS_uint & argument_0
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXFileReference_CompiledMachOExecutable * GGS_Xcode_PBXFileReference_CompiledMachOExecutable::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXFileReference_CompiledMachOExecutable) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXFileReference_CompiledMachOExecutable) ;
     return (cPtr_Xcode_PBXFileReference_CompiledMachOExecutable *) mPointer ;
   }
 #endif
@@ -1003,14 +1003,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_Comp
 
 GGS_Xcode_PBXFileReference_CompiledMachOExecutable::
 GGS_Xcode_PBXFileReference_CompiledMachOExecutable (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_CompiledMachOExecutable::
 GGS_Xcode_PBXFileReference_CompiledMachOExecutable (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1119,7 +1119,7 @@ cPtr_Xcode_PBXFileReference_Application (const GGS_uint & argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXFileReference_Application * GGS_Xcode_PBXFileReference_Application::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXFileReference_Application) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXFileReference_Application) ;
     return (cPtr_Xcode_PBXFileReference_Application *) mPointer ;
   }
 #endif
@@ -1216,14 +1216,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_Appl
 
 GGS_Xcode_PBXFileReference_Application::
 GGS_Xcode_PBXFileReference_Application (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_Application::
 GGS_Xcode_PBXFileReference_Application (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1332,7 +1332,7 @@ cPtr_Xcode_PBXFileReference_cppSourceFile (const GGS_uint & argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXFileReference_cppSourceFile * GGS_Xcode_PBXFileReference_cppSourceFile::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXFileReference_cppSourceFile) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXFileReference_cppSourceFile) ;
     return (cPtr_Xcode_PBXFileReference_cppSourceFile *) mPointer ;
   }
 #endif
@@ -1425,14 +1425,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_cppS
 
 GGS_Xcode_PBXFileReference_cppSourceFile::
 GGS_Xcode_PBXFileReference_cppSourceFile (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_cppSourceFile::
 GGS_Xcode_PBXFileReference_cppSourceFile (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1541,7 +1541,7 @@ cPtr_Xcode_PBXFileReference_hSourceFile (const GGS_uint & argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXFileReference_hSourceFile * GGS_Xcode_PBXFileReference_hSourceFile::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXFileReference_hSourceFile) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXFileReference_hSourceFile) ;
     return (cPtr_Xcode_PBXFileReference_hSourceFile *) mPointer ;
   }
 #endif
@@ -1634,14 +1634,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_hSou
 
 GGS_Xcode_PBXFileReference_hSourceFile::
 GGS_Xcode_PBXFileReference_hSourceFile (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_hSourceFile::
 GGS_Xcode_PBXFileReference_hSourceFile (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1750,7 +1750,7 @@ cPtr_Xcode_PBXFileReference_pchSourceFile (const GGS_uint & argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXFileReference_pchSourceFile * GGS_Xcode_PBXFileReference_pchSourceFile::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXFileReference_pchSourceFile) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXFileReference_pchSourceFile) ;
     return (cPtr_Xcode_PBXFileReference_pchSourceFile *) mPointer ;
   }
 #endif
@@ -1843,14 +1843,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_pchS
 
 GGS_Xcode_PBXFileReference_pchSourceFile::
 GGS_Xcode_PBXFileReference_pchSourceFile (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_pchSourceFile::
 GGS_Xcode_PBXFileReference_pchSourceFile (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1959,7 +1959,7 @@ cPtr_Xcode_PBXFileReference_mSourceFile (const GGS_uint & argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXFileReference_mSourceFile * GGS_Xcode_PBXFileReference_mSourceFile::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXFileReference_mSourceFile) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXFileReference_mSourceFile) ;
     return (cPtr_Xcode_PBXFileReference_mSourceFile *) mPointer ;
   }
 #endif
@@ -2052,14 +2052,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_mSou
 
 GGS_Xcode_PBXFileReference_mSourceFile::
 GGS_Xcode_PBXFileReference_mSourceFile (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_mSourceFile::
 GGS_Xcode_PBXFileReference_mSourceFile (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2168,7 +2168,7 @@ cPtr_Xcode_PBXFileReference_mmSourceFile (const GGS_uint & argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXFileReference_mmSourceFile * GGS_Xcode_PBXFileReference_mmSourceFile::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXFileReference_mmSourceFile) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXFileReference_mmSourceFile) ;
     return (cPtr_Xcode_PBXFileReference_mmSourceFile *) mPointer ;
   }
 #endif
@@ -2261,14 +2261,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_mmSo
 
 GGS_Xcode_PBXFileReference_mmSourceFile::
 GGS_Xcode_PBXFileReference_mmSourceFile (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_mmSourceFile::
 GGS_Xcode_PBXFileReference_mmSourceFile (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2377,7 +2377,7 @@ cPtr_Xcode_PBXFileReference_gifFile (const GGS_uint & argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXFileReference_gifFile * GGS_Xcode_PBXFileReference_gifFile::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXFileReference_gifFile) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXFileReference_gifFile) ;
     return (cPtr_Xcode_PBXFileReference_gifFile *) mPointer ;
   }
 #endif
@@ -2470,14 +2470,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_gifF
 
 GGS_Xcode_PBXFileReference_gifFile::
 GGS_Xcode_PBXFileReference_gifFile (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_gifFile::
 GGS_Xcode_PBXFileReference_gifFile (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2586,7 +2586,7 @@ cPtr_Xcode_PBXFileReference_tiffFile (const GGS_uint & argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXFileReference_tiffFile * GGS_Xcode_PBXFileReference_tiffFile::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXFileReference_tiffFile) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXFileReference_tiffFile) ;
     return (cPtr_Xcode_PBXFileReference_tiffFile *) mPointer ;
   }
 #endif
@@ -2679,14 +2679,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_tiff
 
 GGS_Xcode_PBXFileReference_tiffFile::
 GGS_Xcode_PBXFileReference_tiffFile (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_tiffFile::
 GGS_Xcode_PBXFileReference_tiffFile (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -2795,7 +2795,7 @@ cPtr_Xcode_PBXFileReference_pngFile (const GGS_uint & argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXFileReference_pngFile * GGS_Xcode_PBXFileReference_pngFile::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXFileReference_pngFile) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXFileReference_pngFile) ;
     return (cPtr_Xcode_PBXFileReference_pngFile *) mPointer ;
   }
 #endif
@@ -2888,14 +2888,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_pngF
 
 GGS_Xcode_PBXFileReference_pngFile::
 GGS_Xcode_PBXFileReference_pngFile (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_pngFile::
 GGS_Xcode_PBXFileReference_pngFile (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3004,7 +3004,7 @@ cPtr_Xcode_PBXFileReference_plistFile (const GGS_uint & argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXFileReference_plistFile * GGS_Xcode_PBXFileReference_plistFile::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXFileReference_plistFile) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXFileReference_plistFile) ;
     return (cPtr_Xcode_PBXFileReference_plistFile *) mPointer ;
   }
 #endif
@@ -3097,14 +3097,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_plis
 
 GGS_Xcode_PBXFileReference_plistFile::
 GGS_Xcode_PBXFileReference_plistFile (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_plistFile::
 GGS_Xcode_PBXFileReference_plistFile (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3213,7 +3213,7 @@ cPtr_Xcode_PBXFileReference_frameworkFile (const GGS_uint & argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXFileReference_frameworkFile * GGS_Xcode_PBXFileReference_frameworkFile::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXFileReference_frameworkFile) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXFileReference_frameworkFile) ;
     return (cPtr_Xcode_PBXFileReference_frameworkFile *) mPointer ;
   }
 #endif
@@ -3306,14 +3306,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_fram
 
 GGS_Xcode_PBXFileReference_frameworkFile::
 GGS_Xcode_PBXFileReference_frameworkFile (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_frameworkFile::
 GGS_Xcode_PBXFileReference_frameworkFile (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3422,7 +3422,7 @@ cPtr_Xcode_PBXFileReference_icnsFile (const GGS_uint & argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXFileReference_icnsFile * GGS_Xcode_PBXFileReference_icnsFile::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXFileReference_icnsFile) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXFileReference_icnsFile) ;
     return (cPtr_Xcode_PBXFileReference_icnsFile *) mPointer ;
   }
 #endif
@@ -3515,14 +3515,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_icns
 
 GGS_Xcode_PBXFileReference_icnsFile::
 GGS_Xcode_PBXFileReference_icnsFile (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_icnsFile::
 GGS_Xcode_PBXFileReference_icnsFile (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3633,7 +3633,7 @@ mFilePath (argument_2) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXFileReference_xibFile * GGS_Xcode_PBXFileReference_xibFile::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXFileReference_xibFile) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXFileReference_xibFile) ;
     return (cPtr_Xcode_PBXFileReference_xibFile *) mPointer ;
   }
 #endif
@@ -3728,14 +3728,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_xibF
 
 GGS_Xcode_PBXFileReference_xibFile::
 GGS_Xcode_PBXFileReference_xibFile (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_xibFile::
 GGS_Xcode_PBXFileReference_xibFile (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -3862,7 +3862,7 @@ mFilePath (argument_2) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXFileReference_plistStringFile * GGS_Xcode_PBXFileReference_plistStringFile::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXFileReference_plistStringFile) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXFileReference_plistStringFile) ;
     return (cPtr_Xcode_PBXFileReference_plistStringFile *) mPointer ;
   }
 #endif
@@ -3957,14 +3957,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFileReference_plis
 
 GGS_Xcode_PBXFileReference_plistStringFile::
 GGS_Xcode_PBXFileReference_plistStringFile (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFileReference_plistStringFile::
 GGS_Xcode_PBXFileReference_plistStringFile (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -4551,7 +4551,7 @@ mSourceFile (argument_1) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXBuildFile * GGS_Xcode_PBXBuildFile::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXBuildFile) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXBuildFile) ;
     return (cPtr_Xcode_PBXBuildFile *) mPointer ;
   }
 #endif
@@ -4643,14 +4643,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXBuildFile ("Xcode_
 
 GGS_Xcode_PBXBuildFile::
 GGS_Xcode_PBXBuildFile (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXBuildFile::
 GGS_Xcode_PBXBuildFile (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5181,7 +5181,7 @@ mFileReferenceList (argument_2) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXSourcesBuildPhase * GGS_Xcode_PBXSourcesBuildPhase::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXSourcesBuildPhase) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXSourcesBuildPhase) ;
     return (cPtr_Xcode_PBXSourcesBuildPhase *) mPointer ;
   }
 #endif
@@ -5260,14 +5260,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXSourcesBuildPhase 
 
 GGS_Xcode_PBXSourcesBuildPhase::
 GGS_Xcode_PBXSourcesBuildPhase (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXSourcesBuildPhase::
 GGS_Xcode_PBXSourcesBuildPhase (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -5814,7 +5814,7 @@ mFileReferenceList (argument_2) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXResourcesBuildPhase * GGS_Xcode_PBXResourcesBuildPhase::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXResourcesBuildPhase) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXResourcesBuildPhase) ;
     return (cPtr_Xcode_PBXResourcesBuildPhase *) mPointer ;
   }
 #endif
@@ -5893,14 +5893,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXResourcesBuildPhas
 
 GGS_Xcode_PBXResourcesBuildPhase::
 GGS_Xcode_PBXResourcesBuildPhase (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXResourcesBuildPhase::
 GGS_Xcode_PBXResourcesBuildPhase (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -6447,7 +6447,7 @@ mFileReferenceList (argument_2) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXFrameworksBuildPhase * GGS_Xcode_PBXFrameworksBuildPhase::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXFrameworksBuildPhase) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXFrameworksBuildPhase) ;
     return (cPtr_Xcode_PBXFrameworksBuildPhase *) mPointer ;
   }
 #endif
@@ -6554,14 +6554,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXFrameworksBuildPha
 
 GGS_Xcode_PBXFrameworksBuildPhase::
 GGS_Xcode_PBXFrameworksBuildPhase (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXFrameworksBuildPhase::
 GGS_Xcode_PBXFrameworksBuildPhase (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7110,7 +7110,7 @@ mChildrenGroupList (argument_3) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_PBXGroup * GGS_Xcode_PBXGroup::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_PBXGroup) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_PBXGroup) ;
     return (cPtr_Xcode_PBXGroup *) mPointer ;
   }
 #endif
@@ -7191,14 +7191,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_PBXGroup ("Xcode_PBXG
 
 GGS_Xcode_PBXGroup::
 GGS_Xcode_PBXGroup (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_PBXGroup::
 GGS_Xcode_PBXGroup (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -7761,7 +7761,7 @@ mSettings (argument_2) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_XCBuildConfiguration * GGS_Xcode_XCBuildConfiguration::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_XCBuildConfiguration) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_XCBuildConfiguration) ;
     return (cPtr_Xcode_XCBuildConfiguration *) mPointer ;
   }
 #endif
@@ -7840,14 +7840,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_XCBuildConfiguration 
 
 GGS_Xcode_XCBuildConfiguration::
 GGS_Xcode_XCBuildConfiguration (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_XCBuildConfiguration::
 GGS_Xcode_XCBuildConfiguration (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -9234,7 +9234,7 @@ mDependencyTarget (argument_1) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_Xcode_targetDependencyDescription * GGS_Xcode_targetDependencyDescription::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_Xcode_targetDependencyDescription) ;
+    macroValidSharedObjectThere (mPointer, cPtr_Xcode_targetDependencyDescription) ;
     return (cPtr_Xcode_targetDependencyDescription *) mPointer ;
   }
 #endif
@@ -9311,14 +9311,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_Xcode_targetDependencyDescr
 
 GGS_Xcode_targetDependencyDescription::
 GGS_Xcode_targetDependencyDescription (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_Xcode_targetDependencyDescription::
 GGS_Xcode_targetDependencyDescription (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*

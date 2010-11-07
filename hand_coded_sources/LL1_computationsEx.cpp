@@ -694,7 +694,7 @@ static void old_generate_LL1_grammar_Cpp_file (C_CompilerEx & inLexique,
         }
         generatedZone3 << "      }\n"
                           "    }\n"
-                          "    macroReleaseObject (scanner) ;\n"
+                          "    macroDetachSharedObject (scanner) ;\n"
                           "  }else{\n"
                           "    C_String message ;\n"
                           "    message << \"the '\" << sourceFileName << \"' file does not exist\" ;\n"
@@ -755,7 +755,7 @@ static void old_generate_LL1_grammar_Cpp_file (C_CompilerEx & inLexique,
                           "      inSentStringPtr->dotAssign_operation (scanner->sentStringEX ()) ;\n"
                           "    }\n"
                           "  }\n"
-                          "  macroReleaseObject (scanner) ;\n"
+                          "  macroDetachSharedObject (scanner) ;\n"
                           "}\n\n" ;
         currentAltForNonTerminal.next () ;
       }
@@ -1075,7 +1075,7 @@ generate_LL1_grammar_Cpp_file (C_CompilerEx & inLexique,
         }
         generatedZone3 << "      }\n"
                           "    // }\n"
-                          "    macroReleaseObject (scanner) ;\n"
+                          "    macroDetachSharedObject (scanner) ;\n"
                           "  }else{\n"
                           "    C_String message ;\n"
                           "    message << \"the '\" << filePath << \"' file does not exist\" ;\n"
@@ -1153,7 +1153,7 @@ generate_LL1_grammar_Cpp_file (C_CompilerEx & inLexique,
         }
         generatedZone3 << "scanner) ;\n"
                           "    }\n"
-                          "    macroReleaseObject (scanner) ;\n"
+                          "    macroDetachSharedObject (scanner) ;\n"
                           "  }\n"
                           "}\n\n" ;
         currentAltForNonTerminal.next () ;

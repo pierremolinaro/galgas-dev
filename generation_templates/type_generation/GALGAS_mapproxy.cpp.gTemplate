@@ -28,7 +28,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::class_method_makeRegularProxy (%?^%GALGAS_%!ASSO
   %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
   %  const cMapElement_%!ASSOCIATED_MAP_TYPE_IDENTIFIER% * p = (const cMapElement_%!ASSOCIATED_MAP_TYPE_IDENTIFIER% *) getAttributeListPointer (inCompiler, %![mAttributeName utf8Representation]% COMMA_THERE) ;\n%
   %  if (NULL != p) {\n%
-  %    macroValidObject (p, const cMapElement_%!ASSOCIATED_MAP_TYPE_IDENTIFIER%) ;\n%
+  %    macroValidSharedObject (p, const cMapElement_%!ASSOCIATED_MAP_TYPE_IDENTIFIER%) ;\n%
   %    result = p->mAttribute_%![mAttributeName identifierRepresentation]%;\n%
   %  }\n%
   %  return result ;\n%

@@ -441,7 +441,7 @@ void C_Grammar_guiGrammar::_performSourceFileParsing_ (C_CompilerEx & inCompiler
       parameter_1.drop () ;
       }
     }
-    macroReleaseObject (scanner) ;
+    macroDetachSharedObject (scanner) ;
   }else{
     C_String message ;
     message << "the '" << sourceFileName << "' file does not exist" ;
@@ -472,7 +472,7 @@ void C_Grammar_guiGrammar::_performSourceStringParsing_ (C_CompilerEx & inCompil
       }
     }
   }
-  macroReleaseObject (scanner) ;
+  macroDetachSharedObject (scanner) ;
 }
 
 //---------------------------------------------------------------------------*

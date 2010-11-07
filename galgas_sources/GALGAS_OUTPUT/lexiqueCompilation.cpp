@@ -3056,7 +3056,7 @@ template_filewrapper_lexiqueGenerationTemplates_newImplementationZone2 (C_Compil
       result << " * ptr = (cTokenFor_" ;
       result << var_cas_LEXIQUE_IDENTIFIER ;
       result << " *) mCurrentTokenPtr ;\n"
-        "  macroValidObject (ptr, cTokenFor_" ;
+        "  macroValidSharedObject (ptr, cTokenFor_" ;
       result << var_cas_LEXIQUE_IDENTIFIER ;
       result << ") ;\n"
         "  GALGAS_location currentLocation (ptr->mStartLocation, ptr->mEndLocation, sourceText ()) ;\n"

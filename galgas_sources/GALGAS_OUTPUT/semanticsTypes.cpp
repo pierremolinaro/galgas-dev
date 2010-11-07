@@ -9517,7 +9517,7 @@ mKind (argument_1) {
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_predefinedTypeAST * GGS_predefinedTypeAST::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_predefinedTypeAST) ;
+    macroValidSharedObjectThere (mPointer, cPtr_predefinedTypeAST) ;
     return (cPtr_predefinedTypeAST *) mPointer ;
   }
 #endif
@@ -9572,14 +9572,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_predefinedTypeAST ("predefi
 
 GGS_predefinedTypeAST::
 GGS_predefinedTypeAST (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_predefinedTypeAST::
 GGS_predefinedTypeAST (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -9703,7 +9703,7 @@ cPtr_applicationPredefinedTypeAST (const GGS_string& argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_applicationPredefinedTypeAST * GGS_applicationPredefinedTypeAST::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_applicationPredefinedTypeAST) ;
+    macroValidSharedObjectThere (mPointer, cPtr_applicationPredefinedTypeAST) ;
     return (cPtr_applicationPredefinedTypeAST *) mPointer ;
   }
 #endif
@@ -9780,14 +9780,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_applicationPredefinedTypeAS
 
 GGS_applicationPredefinedTypeAST::
 GGS_applicationPredefinedTypeAST (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_applicationPredefinedTypeAST::
 GGS_applicationPredefinedTypeAST (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -9896,7 +9896,7 @@ cPtr_objectPredefinedTypeAST (const GGS_string& argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_objectPredefinedTypeAST * GGS_objectPredefinedTypeAST::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_objectPredefinedTypeAST) ;
+    macroValidSharedObjectThere (mPointer, cPtr_objectPredefinedTypeAST) ;
     return (cPtr_objectPredefinedTypeAST *) mPointer ;
   }
 #endif
@@ -9973,14 +9973,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_objectPredefinedTypeAST ("o
 
 GGS_objectPredefinedTypeAST::
 GGS_objectPredefinedTypeAST (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_objectPredefinedTypeAST::
 GGS_objectPredefinedTypeAST (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10089,7 +10089,7 @@ cPtr_filewrapperPredefinedTypeAST (const GGS_string& argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_filewrapperPredefinedTypeAST * GGS_filewrapperPredefinedTypeAST::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_filewrapperPredefinedTypeAST) ;
+    macroValidSharedObjectThere (mPointer, cPtr_filewrapperPredefinedTypeAST) ;
     return (cPtr_filewrapperPredefinedTypeAST *) mPointer ;
   }
 #endif
@@ -10166,14 +10166,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_filewrapperPredefinedTypeAS
 
 GGS_filewrapperPredefinedTypeAST::
 GGS_filewrapperPredefinedTypeAST (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_filewrapperPredefinedTypeAST::
 GGS_filewrapperPredefinedTypeAST (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10282,7 +10282,7 @@ cPtr_binarysetPredefinedTypeAST (const GGS_string& argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_binarysetPredefinedTypeAST * GGS_binarysetPredefinedTypeAST::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_binarysetPredefinedTypeAST) ;
+    macroValidSharedObjectThere (mPointer, cPtr_binarysetPredefinedTypeAST) ;
     return (cPtr_binarysetPredefinedTypeAST *) mPointer ;
   }
 #endif
@@ -10359,14 +10359,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_binarysetPredefinedTypeAST 
 
 GGS_binarysetPredefinedTypeAST::
 GGS_binarysetPredefinedTypeAST (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_binarysetPredefinedTypeAST::
 GGS_binarysetPredefinedTypeAST (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10475,7 +10475,7 @@ cPtr_boolPredefinedTypeAST (const GGS_string& argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_boolPredefinedTypeAST * GGS_boolPredefinedTypeAST::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_boolPredefinedTypeAST) ;
+    macroValidSharedObjectThere (mPointer, cPtr_boolPredefinedTypeAST) ;
     return (cPtr_boolPredefinedTypeAST *) mPointer ;
   }
 #endif
@@ -10552,14 +10552,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_boolPredefinedTypeAST ("boo
 
 GGS_boolPredefinedTypeAST::
 GGS_boolPredefinedTypeAST (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_boolPredefinedTypeAST::
 GGS_boolPredefinedTypeAST (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10668,7 +10668,7 @@ cPtr_uintPredefinedTypeAST (const GGS_string& argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_uintPredefinedTypeAST * GGS_uintPredefinedTypeAST::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_uintPredefinedTypeAST) ;
+    macroValidSharedObjectThere (mPointer, cPtr_uintPredefinedTypeAST) ;
     return (cPtr_uintPredefinedTypeAST *) mPointer ;
   }
 #endif
@@ -10745,14 +10745,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_uintPredefinedTypeAST ("uin
 
 GGS_uintPredefinedTypeAST::
 GGS_uintPredefinedTypeAST (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_uintPredefinedTypeAST::
 GGS_uintPredefinedTypeAST (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -10861,7 +10861,7 @@ cPtr_uint64PredefinedTypeAST (const GGS_string& argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_uint64PredefinedTypeAST * GGS_uint64PredefinedTypeAST::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_uint64PredefinedTypeAST) ;
+    macroValidSharedObjectThere (mPointer, cPtr_uint64PredefinedTypeAST) ;
     return (cPtr_uint64PredefinedTypeAST *) mPointer ;
   }
 #endif
@@ -10938,14 +10938,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_uint64PredefinedTypeAST ("u
 
 GGS_uint64PredefinedTypeAST::
 GGS_uint64PredefinedTypeAST (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_uint64PredefinedTypeAST::
 GGS_uint64PredefinedTypeAST (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11054,7 +11054,7 @@ cPtr_sintPredefinedTypeAST (const GGS_string& argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_sintPredefinedTypeAST * GGS_sintPredefinedTypeAST::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_sintPredefinedTypeAST) ;
+    macroValidSharedObjectThere (mPointer, cPtr_sintPredefinedTypeAST) ;
     return (cPtr_sintPredefinedTypeAST *) mPointer ;
   }
 #endif
@@ -11131,14 +11131,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_sintPredefinedTypeAST ("sin
 
 GGS_sintPredefinedTypeAST::
 GGS_sintPredefinedTypeAST (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_sintPredefinedTypeAST::
 GGS_sintPredefinedTypeAST (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11247,7 +11247,7 @@ cPtr_sint64PredefinedTypeAST (const GGS_string& argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_sint64PredefinedTypeAST * GGS_sint64PredefinedTypeAST::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_sint64PredefinedTypeAST) ;
+    macroValidSharedObjectThere (mPointer, cPtr_sint64PredefinedTypeAST) ;
     return (cPtr_sint64PredefinedTypeAST *) mPointer ;
   }
 #endif
@@ -11324,14 +11324,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_sint64PredefinedTypeAST ("s
 
 GGS_sint64PredefinedTypeAST::
 GGS_sint64PredefinedTypeAST (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_sint64PredefinedTypeAST::
 GGS_sint64PredefinedTypeAST (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11440,7 +11440,7 @@ cPtr_charPredefinedTypeAST (const GGS_string& argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_charPredefinedTypeAST * GGS_charPredefinedTypeAST::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_charPredefinedTypeAST) ;
+    macroValidSharedObjectThere (mPointer, cPtr_charPredefinedTypeAST) ;
     return (cPtr_charPredefinedTypeAST *) mPointer ;
   }
 #endif
@@ -11517,14 +11517,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_charPredefinedTypeAST ("cha
 
 GGS_charPredefinedTypeAST::
 GGS_charPredefinedTypeAST (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_charPredefinedTypeAST::
 GGS_charPredefinedTypeAST (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11633,7 +11633,7 @@ cPtr_doublePredefinedTypeAST (const GGS_string& argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_doublePredefinedTypeAST * GGS_doublePredefinedTypeAST::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_doublePredefinedTypeAST) ;
+    macroValidSharedObjectThere (mPointer, cPtr_doublePredefinedTypeAST) ;
     return (cPtr_doublePredefinedTypeAST *) mPointer ;
   }
 #endif
@@ -11710,14 +11710,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_doublePredefinedTypeAST ("d
 
 GGS_doublePredefinedTypeAST::
 GGS_doublePredefinedTypeAST (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_doublePredefinedTypeAST::
 GGS_doublePredefinedTypeAST (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -11826,7 +11826,7 @@ cPtr_stringPredefinedTypeAST (const GGS_string& argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_stringPredefinedTypeAST * GGS_stringPredefinedTypeAST::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_stringPredefinedTypeAST) ;
+    macroValidSharedObjectThere (mPointer, cPtr_stringPredefinedTypeAST) ;
     return (cPtr_stringPredefinedTypeAST *) mPointer ;
   }
 #endif
@@ -11903,14 +11903,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_stringPredefinedTypeAST ("s
 
 GGS_stringPredefinedTypeAST::
 GGS_stringPredefinedTypeAST (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_stringPredefinedTypeAST::
 GGS_stringPredefinedTypeAST (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -12019,7 +12019,7 @@ cPtr_locationPredefinedTypeAST (const GGS_string& argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_locationPredefinedTypeAST * GGS_locationPredefinedTypeAST::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_locationPredefinedTypeAST) ;
+    macroValidSharedObjectThere (mPointer, cPtr_locationPredefinedTypeAST) ;
     return (cPtr_locationPredefinedTypeAST *) mPointer ;
   }
 #endif
@@ -12096,14 +12096,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_locationPredefinedTypeAST (
 
 GGS_locationPredefinedTypeAST::
 GGS_locationPredefinedTypeAST (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_locationPredefinedTypeAST::
 GGS_locationPredefinedTypeAST (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -12212,7 +12212,7 @@ cPtr_stringsetPredefinedTypeAST (const GGS_string& argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_stringsetPredefinedTypeAST * GGS_stringsetPredefinedTypeAST::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_stringsetPredefinedTypeAST) ;
+    macroValidSharedObjectThere (mPointer, cPtr_stringsetPredefinedTypeAST) ;
     return (cPtr_stringsetPredefinedTypeAST *) mPointer ;
   }
 #endif
@@ -12289,14 +12289,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_stringsetPredefinedTypeAST 
 
 GGS_stringsetPredefinedTypeAST::
 GGS_stringsetPredefinedTypeAST (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_stringsetPredefinedTypeAST::
 GGS_stringsetPredefinedTypeAST (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -12405,7 +12405,7 @@ cPtr_functionPredefinedTypeAST (const GGS_string& argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_functionPredefinedTypeAST * GGS_functionPredefinedTypeAST::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_functionPredefinedTypeAST) ;
+    macroValidSharedObjectThere (mPointer, cPtr_functionPredefinedTypeAST) ;
     return (cPtr_functionPredefinedTypeAST *) mPointer ;
   }
 #endif
@@ -12482,14 +12482,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_functionPredefinedTypeAST (
 
 GGS_functionPredefinedTypeAST::
 GGS_functionPredefinedTypeAST (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_functionPredefinedTypeAST::
 GGS_functionPredefinedTypeAST (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -12598,7 +12598,7 @@ cPtr_typePredefinedTypeAST (const GGS_string& argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_typePredefinedTypeAST * GGS_typePredefinedTypeAST::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_typePredefinedTypeAST) ;
+    macroValidSharedObjectThere (mPointer, cPtr_typePredefinedTypeAST) ;
     return (cPtr_typePredefinedTypeAST *) mPointer ;
   }
 #endif
@@ -12675,14 +12675,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_typePredefinedTypeAST ("typ
 
 GGS_typePredefinedTypeAST::
 GGS_typePredefinedTypeAST (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_typePredefinedTypeAST::
 GGS_typePredefinedTypeAST (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -12791,7 +12791,7 @@ cPtr_dataPredefinedTypeAST (const GGS_string& argument_0,
 #ifndef DO_NOT_GENERATE_CHECKINGS
   cPtr_dataPredefinedTypeAST * GGS_dataPredefinedTypeAST::
   operator () (LOCATION_ARGS) const {
-    macroValidObjectThere (mPointer, cPtr_dataPredefinedTypeAST) ;
+    macroValidSharedObjectThere (mPointer, cPtr_dataPredefinedTypeAST) ;
     return (cPtr_dataPredefinedTypeAST *) mPointer ;
   }
 #endif
@@ -12868,14 +12868,14 @@ const C_galgas_type_descriptorEX kTypeDescriptor_GGS_dataPredefinedTypeAST ("dat
 
 GGS_dataPredefinedTypeAST::
 GGS_dataPredefinedTypeAST (const cPtr__AC_galgas_class * inPointer) {
-  macroAssignObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
+  macroAssignSharedObject (mPointer, (cPtr__AC_galgas_class *) inPointer) ;
 }
 
 //---------------------------------------------------------------------------*
 
 GGS_dataPredefinedTypeAST::
 GGS_dataPredefinedTypeAST (cPtr__AC_galgas_class & inObject) {
-  macroAssignObject (mPointer, & inObject) ;
+  macroAssignSharedObject (mPointer, & inObject) ;
 }
 
 //---------------------------------------------------------------------------*

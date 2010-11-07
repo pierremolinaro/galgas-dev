@@ -756,8 +756,8 @@ int mainForLIBPM  (const int argc, const char * argv []) {
     }catch (...) {
       throw ;
     }
-    macroReleaseObject (galgasIOptr) ;
-    macroReleaseObject (commonLexique) ;
+    macroDetachSharedObject (galgasIOptr) ;
+    macroDetachSharedObject (commonLexique) ;
   }
   return returnCode ;
 }

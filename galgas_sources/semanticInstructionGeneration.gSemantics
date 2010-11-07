@@ -899,7 +899,7 @@ override method @readWriteWithInstructionForGeneration generateInstruction
                   . " *) " . receiverCppName . ".readWriteAccessForWithInstruction_" . [mAccessName identifierRepresentation] . " (" . compilerCppName []
                   .  ", " . keyVarCppName . " COMMA_HERE) ;\n"
                   .  "if (NULL != " . mObjectArrayCppName . ") {\n"
-                  .  "    macroValidObject (" . mObjectArrayCppName . ", cMapElement_" . [mReceiverType identifierRepresentation] . ") ;\n" ;
+                  .  "    macroValidSharedObject (" . mObjectArrayCppName . ", cMapElement_" . [mReceiverType identifierRepresentation] . ") ;\n" ;
   generateInstructionList !mDoBranchInstructions !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
   if [mElseBranchInstructions length] > 0 then
     ioGeneratedCode .= "}else{\n" ;

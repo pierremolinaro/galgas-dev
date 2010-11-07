@@ -299,8 +299,8 @@ generate_cpp_file_for_prgm (C_CompilerEx & inLexique,
                     "    }catch (...) {\n"
                     "      throw ;\n"
                     "    }\n"
-                    "    macroReleaseObject (galgasIOptr) ;\n"
-                    "    macroReleaseObject (commonLexique) ;\n"
+                    "    macroDetachSharedObject (galgasIOptr) ;\n"
+                    "    macroDetachSharedObject (commonLexique) ;\n"
                     "  }\n"
                     "  return returnCode ;\n"
                     "}\n\n" ;
