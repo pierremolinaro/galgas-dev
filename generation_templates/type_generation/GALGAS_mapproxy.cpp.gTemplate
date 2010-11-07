@@ -1,41 +1,35 @@
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (LOCATION_ARGS) :
-GALGAS_mapproxy (%![[ATTRIBUTE_LIST length] + 1 string]% COMMA_THERE) {
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
+AC_GALGAS_mapproxy () {
 }
 
 //---------------------------------------------------------------------------*
 
-GALGASap_%!TYPE_IDENTIFIER% GALGASap_%!TYPE_IDENTIFIER%::constructor_null (LOCATION_ARGS) {
-  GALGAS_%!TYPE_IDENTIFIER% * result = NULL ;
-  macroMyNew (result, GALGAS_%!TYPE_IDENTIFIER% (THERE)) ;
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_null (LOCATION_ARGS) {
+  GALGAS_%!TYPE_IDENTIFIER% result ;
+  result.makeNullProxy (THERE) ;
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::class_method_makeRegularProxy (%?^%GALGASap_%!ASSOCIATED_MAP_TYPE_IDENTIFIER% & ioMap,
-                                       %!^%GALGASap_string inKey,
-                                       %!^%GALGASap_%!TYPE_IDENTIFIER% & outProxy
-                                       %!^%COMMA_LOCATION_ARGS) {
-  outProxy.drop () ;
-  if (inKey.isValid () && ioMap.isValid ()) {
-    ioMap.insulate (HERE) ;
-    GALGAS_classMapIndex * p = NULL ;
-    macroMyNew (p, GALGAS_%!TYPE_IDENTIFIER% (THERE)) ;
-    outProxy = p ;
-    outProxy.ptr (HERE)->internalMakeRegularProxy (ioMap.ptr (HERE), inKey) ;
-  }
+void GALGAS_%!TYPE_IDENTIFIER%::class_method_makeRegularProxy (%?^%GALGAS_%!ASSOCIATED_MAP_TYPE_IDENTIFIER% & ioMap,
+                                       %!^%GALGAS_string inKey,
+                                       %!^%GALGAS_%!TYPE_IDENTIFIER% & outProxy
+                                       %!^%COMMA_UNUSED_LOCATION_ARGS) {
+  outProxy.internalMakeRegularProxy (ioMap, inKey) ;
 }
+
 %foreach ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGASap_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (%?^%C_Compiler * inCompiler\n%
+  %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (%?^%C_Compiler * inCompiler\n%
   %                                       %!^%COMMA_LOCATION_ARGS) const {\n%
-  %  GALGASap_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
-  %  capCollectionElement attributeList = getAttributeList (inCompiler COMMA_THERE) ;\n%
-  %  if (attributeList.ptrNoVerif () != NULL) {\n%
-  %    macroValidObject (attributeList.ptrNoVerif (), cCollectionElement_%!ASSOCIATED_MAP_TYPE_IDENTIFIER%) ;\n%
-  %    result = ((cCollectionElement_%!ASSOCIATED_MAP_TYPE_IDENTIFIER% *) attributeList.ptrNoVerif ())->mAttribute_%![mAttributeName identifierRepresentation]%;\n%
+  %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
+  %  const cMapElement_%!ASSOCIATED_MAP_TYPE_IDENTIFIER% * p = (const cMapElement_%!ASSOCIATED_MAP_TYPE_IDENTIFIER% *) getAttributeListPointer (inCompiler, %![mAttributeName utf8Representation]% COMMA_THERE) ;\n%
+  %  if (NULL != p) {\n%
+  %    macroValidObject (p, const cMapElement_%!ASSOCIATED_MAP_TYPE_IDENTIFIER%) ;\n%
+  %    result = p->mAttribute_%![mAttributeName identifierRepresentation]%;\n%
   %  }\n%
   %  return result ;\n%
   %}\n\n%
@@ -43,22 +37,14 @@ end foreach
 
 foreach SEARCH_METHOD_LIST do index IDX
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGASap_%!TYPE_IDENTIFIER% GALGASap_%!TYPE_IDENTIFIER%::constructor_%![mMethodName identifierRepresentation]% (%?^%GALGASap_%!ASSOCIATED_MAP_TYPE_IDENTIFIER% & inMap,\n%
-  %                                                %!^%GALGASap_lstring & inKey,\n%
+  %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_%![mMethodName identifierRepresentation]% (%?^%const GALGAS_%!ASSOCIATED_MAP_TYPE_IDENTIFIER% & inMap,\n%
+  %                                                %!^%const GALGAS_lstring & inKey,\n%
   %                                                %!^%C_Compiler * inCompiler\n%
   %                                                %!^%COMMA_LOCATION_ARGS) {\n%
-  %  GALGASap_%!TYPE_IDENTIFIER% result ;\n%
+  %  GALGAS_%!TYPE_IDENTIFIER% result ;\n%
   %  if (inMap.isValid () && inKey.isValid ()) {\n%
-  block 4 :
-    %GALGAS_%!TYPE_IDENTIFIER% * p = NULL ;\n%
-    %macroMyNew (p, GALGAS_%!TYPE_IDENTIFIER% (THERE)) ;\n%
-    %result = p ;\n%
-    %const utf32 kSearchErrorMessage [%![[mErrorMessage length] + 1 string]%] = %![mErrorMessage utf32Representation]% ;\n%
-    %const bool ok = result.ptr (HERE)->internalSearchKey (inMap, inKey, kSearchErrorMessage, inCompiler COMMA_THERE) ;\n%
-    %if (! ok) {\n%
-    %  result.drop () ;\n%
-    %}\n%
-  end block
+  %    const utf32 kSearchErrorMessage [%![[mErrorMessage length] + 1 string]%] = %![mErrorMessage utf32Representation]% ;\n%
+  %    result.internalMakeRegularProxyBySearchingKey (inMap, inKey, kSearchErrorMessage, inCompiler COMMA_THERE) ;\n%
   %  }\n%
   %  return result ;\n%
   %}\n\n%
