@@ -1344,7 +1344,7 @@ class @typeDefinitionTableAimplementer extends @typeEntityToGenerate {
 #         M A P                                                             *
 #---------------------------------------------------------------------------*
 
-map @mapAutomatonStateMap {
+map @EXmapAutomatonStateMap {
   @uint mStateIndex ;
   insert insertKey error message "redefinition of '%K' map automaton state" ;
   search searchKey error message "undefined '%K' map automaton state" ;
@@ -1352,7 +1352,7 @@ map @mapAutomatonStateMap {
 
 #---------------------------------------------------------------------------*
 
-map @mapAutomatonActionMap {
+map @EXmapAutomatonActionMap {
   @uint mActionIndex ;
   insert insertKey error message "redefinition of '%K' map automaton action" ;
   search searchKey error message "undefined '%K' map automaton action" ;
@@ -1360,7 +1360,7 @@ map @mapAutomatonActionMap {
 
 #---------------------------------------------------------------------------*
 
-sortedlist @mapStateTransitionSortedList {
+sortedlist @EXmapStateTransitionSortedList {
   @uint mActionIndex ;
   @string mActionName ;
   @uint mTargetStateIndex ;
@@ -1373,19 +1373,19 @@ sortedlist @mapStateTransitionSortedList {
 
 #---------------------------------------------------------------------------*
 
-sortedlist @mapStateSortedList {
+sortedlist @EXmapStateSortedList {
   @uint mStateIndex ;
   @string mStateName ;
   @mapAutomatonMessageKind mStateMessageKind ;
   @string mStateMessage ;
-  @mapStateTransitionSortedList mTransitionList ;
+  @EXmapStateTransitionSortedList mTransitionList ;
 }{
   mStateIndex <
 }
 
 #---------------------------------------------------------------------------*
 
-sortedlist @branchBehaviourSortedListForMapOverride {
+sortedlist @EXbranchBehaviourSortedListForMapOverride {
   @uint mStartStateIndex ;
   @string mStartStateName ;
   @uint mCurrentStateIndex ;
@@ -1400,10 +1400,10 @@ sortedlist @branchBehaviourSortedListForMapOverride {
 
 #---------------------------------------------------------------------------*
 
-list @mapOverrideList {
+list @EXmapOverrideList {
   @lstring mOverrideName ;
-  @branchBehaviourSortedListForMapOverride mBranchBehaviourSortedListForMapOverride ;
-  @branchBehaviourSortedListForMapOverride mBranchCombinationSortedListForMapOverride ;
+  @EXbranchBehaviourSortedListForMapOverride mBranchBehaviourSortedListForMapOverride ;
+  @EXbranchBehaviourSortedListForMapOverride mBranchCombinationSortedListForMapOverride ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1416,9 +1416,9 @@ class @C_mapToImplement extends @typeEntityToGenerate {
   @insertOrSearchMethodList mSearchMethodList feature nogetter ;
   @insertOrSearchMethodList mRemoveMethodList feature nogetter ;
   @bool mHasInsertOrReplaceModifier ;
-  @mapStateSortedList mMapStateSortedList ;
+  @EXmapStateSortedList mMapStateSortedList ;
   @uint mActionCount ;
-  @mapOverrideList mMapOverrideList ;
+  @EXmapOverrideList mMapOverrideList ;
 }
 
 #---------------------------------------------------------------------------*

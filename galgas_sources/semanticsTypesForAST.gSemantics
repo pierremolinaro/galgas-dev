@@ -1197,7 +1197,7 @@ list @mapStateList {
 #---------------------------------------------------------------------------*
 
 list @insertMethodListAST {
-  @lstring mMethodName ;
+  @lstring mInsertMethodName ;
   @lstring mErrorMessage ;
   @lstring mShadowErrorMessage ;
   @lstring mInitialStateName ;
@@ -1206,7 +1206,7 @@ list @insertMethodListAST {
 #---------------------------------------------------------------------------*
 
 list @mapSearchMethodListAST {
-  @lstring mMethodName ;
+  @lstring mSearchMethodName ;
   @lstring mErrorMessage ;
   @lstring mActionName ;
 }
@@ -1227,11 +1227,11 @@ list @insertOrReplaceDeclarationListAST {
 #---------------------------------------------------------------------------*
 
 list @mapOverrideBlockDescriptorAST {
-  @lstring mSourceState1 ;
-  @lstring mSourceState2 ;
-  @lstring mResultingState1 ;
+  @lstring mLeftState ;
+  @lstring mRightState ;
+  @lstring mResultingState ;
   @mapAutomatonMessageKind mMessageKind ;
-  @lstring mMessage ;
+  @lstring mTransitionMessage ;
 }
 
 #---------------------------------------------------------------------------*

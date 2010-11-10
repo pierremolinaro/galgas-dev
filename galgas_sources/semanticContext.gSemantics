@@ -794,6 +794,9 @@ override method @mapDeclarationAST enterInSemanticContext
 #--- string type index
   @unifiedTypeMapProxy stringTypeIndex ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"string" ?stringTypeIndex] ;
+#--- location type index
+  @unifiedTypeMapProxy locationTypeProxy ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"location" ?locationTypeProxy] ;
 #--- lstring type index
   @unifiedTypeMapProxy lstringTypeIndex ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"lstring" ?lstringTypeIndex] ;
@@ -858,11 +861,11 @@ override method @mapDeclarationAST enterInSemanticContext
   end foreach ;
 #--- Handle insert modifiers
   foreach mInsertMethodList do
-    if [modifierMap hasKey ![mMethodName string]] then
-      error mMethodName:"the '" . mMethodName . "' insert method is already declared" ;
+    if [modifierMap hasKey ![mInsertMethodName string]] then
+      error mInsertMethodName:"the '" . mInsertMethodName . "' insert method is already declared" ;
     else
       [!?modifierMap insertOrReplace
-        !mMethodName
+        !mInsertMethodName
         !insertMethodFormalArgumentList
         !true
         ![@methodQualifier isBasic]
@@ -886,10 +889,10 @@ override method @mapDeclarationAST enterInSemanticContext
   if [mMapStateList length] == 0 then
     foreach mSearchMethodList do
       [!?instanceMethodMap insertKey
-        !mMethodName
+        !mSearchMethodName
         !false # is not a category
         !removeMethodFormalArgumentList
-        ![mMethodName location]
+        ![mSearchMethodName location]
         !true
         ![@methodQualifier isBasic]
       ] ;
@@ -897,7 +900,7 @@ override method @mapDeclarationAST enterInSemanticContext
   else
     foreach mSearchMethodList do
       [!?modifierMap insertKey
-        !mMethodName
+        !mSearchMethodName
         !removeMethodFormalArgumentList
         !true
         ![@methodQualifier isBasic]
@@ -989,7 +992,7 @@ override method @mapDeclarationAST enterInSemanticContext
   [!?withAccessorMap insertKey ![@lstring new !"hasKey" !here] !stringTypeIndex] ;
   foreach mSearchMethodList do
     [!?withAccessorMap insertKey
-      !mMethodName
+      !mSearchMethodName
       !lstringTypeIndex
     ] ;
   end foreach ;
@@ -1083,7 +1086,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
   constructorAttributeTypeList += !lstringTypeIndex ;
   foreach searchMethodList do
     [!?constructorMap insertKey
-      !mMethodName
+      !mSearchMethodName
       !constructorAttributeTypeList
       !true
       !mapProxyTypeProxy
@@ -2034,7 +2037,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     !enumeratorDescriptor
-    !doNotGenererateObjectCompare [] | generateCppConstructorWithNativeAttributeList [] # | binaryConcatOperator [] | dotAssignOperator []
+    !doNotGenererateObjectCompare [] | generateCppConstructorWithNativeAttributeList []
     !addAssignOperatorDescription
     ![@nativeAttributeList emptyList]
     ![@stringset emptySet]

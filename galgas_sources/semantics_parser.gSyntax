@@ -5978,7 +5978,7 @@ rule <semantics_declaration>
       $}$ ;
     end repeat ;
   #--- Analyze map automaton
-    @mapAutomatonStateMap mapAutomatonStateMap [emptyMap] ;
+    @EXmapAutomatonStateMap mapAutomatonStateMap [emptyMap] ;
     foreach mapStateList do
       [!?mapAutomatonStateMap insertKey !mStateName ![mapAutomatonStateMap count]] ;
     end foreach ;
@@ -6001,7 +6001,7 @@ rule <semantics_declaration>
     @mapModifierMap mapModifierMethodMap [emptyMap] ;
     @EXmapMethodMap mapSearchMethodMap [emptyMap] ;
     @bool hasInsertOrReplaceMethod := false ;
-    @mapAutomatonActionMap mapAutomatonActionMap [emptyMap] ;
+    @EXmapAutomatonActionMap mapAutomatonActionMap [emptyMap] ;
     repeat
     while
       $insert$ ;
@@ -6130,10 +6130,10 @@ rule <semantics_declaration>
     end if ;
   #--- Check automaton actions are all defined
     const @stringset allActions := [mapAutomatonActionMap allKeys] ;
-    @mapStateSortedList mapStateSortedList [emptySortedList] ;
+    @EXmapStateSortedList mapStateSortedList [emptySortedList] ;
     foreach mapStateList do
       @stringset actionsForCurrentState [emptySet] ;
-      @mapStateTransitionSortedList mapStateTransitionSortedList [emptySortedList] ;
+      @EXmapStateTransitionSortedList mapStateTransitionSortedList [emptySortedList] ;
       foreach mTransitionList do
         @uint actionIndex ;
         [mapAutomatonActionMap searchKey !mActionName ?actionIndex] ;
@@ -6225,7 +6225,7 @@ rule <semantics_declaration>
       end foreach ;
     end foreach ;
   #---
-    @mapOverrideList mapOverrideList [emptyList] ;
+    @EXmapOverrideList mapOverrideList [emptyList] ;
     @lstringlist overrideNameList [emptyList] ;
     repeat
     while
@@ -6235,7 +6235,7 @@ rule <semantics_declaration>
       ${$ ;
       @stringset handledAssociations [emptySet] ;
       @stringset neededCombinaisons [emptySet] ;
-      @branchBehaviourSortedListForMapOverride branchBehaviourSortedListForMapOverride [emptySortedList] ;
+      @EXbranchBehaviourSortedListForMapOverride branchBehaviourSortedListForMapOverride [emptySortedList] ;
       repeat
       while
         $identifier$ ? @lstring startStateName ;
@@ -6306,7 +6306,7 @@ rule <semantics_declaration>
       $}$ ;
       ${$ ;
       @stringset definedCombinaisons [emptySet] ;
-      @branchBehaviourSortedListForMapOverride branchCombinationSortedListForMapOverride [emptySortedList] ;
+      @EXbranchBehaviourSortedListForMapOverride branchCombinationSortedListForMapOverride [emptySortedList] ;
       repeat
       while
         $identifier$ ? @lstring branchStateName ;

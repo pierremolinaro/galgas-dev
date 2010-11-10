@@ -338,12 +338,298 @@ map @searchMethodMap {
 }
 
 #---------------------------------------------------------------------------*
+#         M A P                                                             *
+#---------------------------------------------------------------------------*
+
+map @mapAutomatonStateMap {
+  @uint mStateIndex ;
+  insert insertKey error message "redefinition of '%K' map automaton state" ;
+  search searchKey error message "undefined '%K' map automaton state" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @mapAutomatonActionMap {
+  @uint mActionIndex ;
+  insert insertKey error message "redefinition of '%K' map automaton action" ;
+  search searchKey error message "undefined '%K' map automaton action" ;
+}
+
+#---------------------------------------------------------------------------*
+
+sortedlist @mapStateTransitionSortedList {
+  @uint mActionIndex ;
+  @string mActionName ;
+  @uint mTargetStateIndex ;
+  @string mTargetStateName ;
+  @mapAutomatonMessageKind mTransitionMessageKind ;
+  @string mTransitionMessage ;
+}{
+  mActionIndex <
+}
+
+#---------------------------------------------------------------------------*
+
+sortedlist @mapStateSortedList {
+  @uint mStateIndex ;
+  @string mStateName ;
+  @mapAutomatonMessageKind mStateMessageKind ;
+  @string mStateMessage ;
+  @mapStateTransitionSortedList mTransitionList ;
+}{
+  mStateIndex <
+}
+
+#---------------------------------------------------------------------------*
+
+sortedlist @branchBehaviourSortedListForMapOverride {
+  @uint mStartStateIndex ;
+  @string mStartStateName ;
+  @uint mCurrentStateIndex ;
+  @string mCurrentStateName ;
+  @uint mFinalStateIndex ;
+  @string mFinalStateName ;
+  @mapAutomatonMessageKind mStateMessageKind ;
+  @string mBehaviourMessage ;
+}{
+  mStartStateIndex <, mCurrentStateIndex <
+}
+
+#---------------------------------------------------------------------------*
+
+list @mapOverrideList {
+  @lstring mOverrideName ;
+  @branchBehaviourSortedListForMapOverride mBranchBehaviourSortedListForMapOverride ;
+  @branchBehaviourSortedListForMapOverride mBranchCombinationSortedListForMapOverride ;
+}
+
+#---------------------------------------------------------------------------*
+
+extern routine check_K_escapeCharacters
+ ?@lstring inString
+;
+
+#---------------------------------------------------------------------------*
 
 override method @mapDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
+#--- Compute initial state set
+  @stringset initialStateSet [emptySet] ;
+  foreach mInsertMethodList do
+    if [mMapStateList length] > 0 then
+      if [mInitialStateName string] == "" then
+        error mInsertMethodName: "the '" . mInsertMethodName . "' insert method should name an automaton state" ;
+      else
+        initialStateSet += ![mInitialStateName string] ;
+      end if ;
+    elsif [mInitialStateName string] != "" then
+      error mInsertMethodName: "the '" . mInsertMethodName . "' insert method should not name an automaton state" ;
+    end if ;
+  end foreach ;
+#--- Analyze map automation actions
+  @mapAutomatonActionMap mapAutomatonActionMap [emptyMap] ;
+  foreach mSearchMethodList do
+    if [mMapStateList length] > 0 then
+      if [mActionName string] == "" then
+        error mSearchMethodName: "the '" . mSearchMethodName . "' search method should name an automaton action" ;
+      elsif not [mapAutomatonActionMap hasKey ![mActionName string]] then
+#        actionIndex := [mapAutomatonActionMap count] ;
+        [!?mapAutomatonActionMap insertKey !mActionName ![mapAutomatonActionMap count]] ;
+#      else
+#        [mapAutomatonActionMap searchKey !mActionName ?actionIndex] ;
+      end if ;
+    elsif [mActionName string] != "" then
+      error mSearchMethodName: "the '" . mSearchMethodName . "' search method should not name an automaton action" ;
+    end if ;
+  end foreach ;
+#--- Analyze map automaton
+  @mapAutomatonStateMap mapAutomatonStateMap [emptyMap] ;
+  foreach mMapStateList do
+    [!?mapAutomatonStateMap insertKey !mStateName ![mapAutomatonStateMap count]] ;
+  end foreach ;
+  foreach mMapStateList do
+    foreach mTransitionList do
+      [mapAutomatonStateMap searchKey !mTargetStateName ?*] ;
+    end foreach ;
+  end foreach ;
+#--- Check automaton actions are all defined
+  const @stringset allActions := [mapAutomatonActionMap allKeys] ;
+  @mapStateSortedList mapStateSortedList [emptySortedList] ;
+  foreach mMapStateList do
+    @stringset actionsForCurrentState [emptySet] ;
+    @mapStateTransitionSortedList mapStateTransitionSortedList [emptySortedList] ;
+    foreach mTransitionList do
+      @uint actionIndex ;
+      [mapAutomatonActionMap searchKey !mActionName ?actionIndex] ;
+      if [actionsForCurrentState hasKey ![mActionName string]] then
+        error mActionName : "the '" . mActionName . "' action is already used for this state" ;
+      end if ;
+      actionsForCurrentState += ![mActionName string] ;
+      @uint targetStateIndex ;
+      [mapAutomatonStateMap searchKey !mTargetStateName ?targetStateIndex] ;
+      mapStateTransitionSortedList +=
+        !actionIndex
+        ![mActionName string]
+        !targetStateIndex
+        ![mTargetStateName string]
+        !mTransitionMessageKind
+        ![mTransitionMessage string]
+      ;
+    end foreach ;
+    @uint stateIndex ;
+    [mapAutomatonStateMap searchKey !mStateName ?stateIndex] ;
+    mapStateSortedList +=
+      !stateIndex
+      ![mStateName string]
+      !mStateMessageKind
+      ![mStateMessage string]
+      !mapStateTransitionSortedList
+    ;
+    @stringset missingActions := allActions - actionsForCurrentState ;
+    if [missingActions count] > 0 then
+      @string s := "" ;
+      foreach missingActions
+        do s .= "'" . key . "'" ;
+        between s .= ", " ;
+      end foreach ;
+      error mStateName : "the following actions are not named in a transition from this state: " . s ;
+    end if ;
+  end foreach ;
+#--- Check for useful automaton states
+  @stringset accessibleStates := initialStateSet ;
+  @bool progress := true ;
+  loop [mMapStateList length] + 1 : while progress do
+    progress := false ;
+    foreach mMapStateList do
+      if [accessibleStates hasKey ![mStateName string]] then
+        foreach mTransitionList do
+          if not [accessibleStates hasKey ![mTargetStateName string]] then
+            accessibleStates += ![mTargetStateName string] ;
+            progress := true ;
+          end if ;
+        end foreach ;
+      end if ;
+    end foreach ;
+  end loop ;
+  const @stringset uselessStates := [mapAutomatonStateMap allKeys] - accessibleStates ;
+  if [uselessStates count] > 0 then
+    @string s := "" ;
+    foreach uselessStates
+      do s .= "'" . key . "'" ;
+      between s .= ", " ;
+    end foreach ;
+    warning here : "the following map automaton states are useless: " . s ;
+  end if ;
+#---------------------------------- override methods
+#--- Compute needed associations
+  @stringset neededAssociations [emptySet] ;
+  @stringset accessibilityGraph [emptySet] ;
+  foreach mapAutomatonStateMap do
+    @stringset reachableStates [emptySet] ;
+    reachableStates += ![lkey string] ;
+    @bool progress := true ;
+    loop [mapAutomatonStateMap count] + 1 : while progress do
+      progress := false ;
+      foreach mMapStateList do
+        if [reachableStates hasKey ![mStateName string]] then
+          foreach mTransitionList do
+            if not [reachableStates hasKey ![mTargetStateName string]] then
+              reachableStates += ![mTargetStateName string] ;
+              accessibilityGraph += ![lkey string] . ":" . [mTargetStateName string] ;
+              progress := true ;
+            end if ;
+          end foreach ;
+        end if ;
+      end foreach ;
+    end loop ;
+    foreach reachableStates do
+      if [lkey string] != key then
+        neededAssociations += ![lkey string] . ":" . key ;
+      end if ;
+    end foreach ;
+  end foreach ;
+#---
+  foreach mMapOverrideBlockListAST do
+    @stringset handledAssociations [emptySet] ;
+    @stringset neededCombinaisons [emptySet] ;
+    foreach mMapOverrideBlockDescriptor1AST do
+      @uint startStateNameIndex ;
+      [mapAutomatonStateMap searchKey !mLeftState ?startStateNameIndex] ;
+      @uint currentStateNameIndex ;
+      [mapAutomatonStateMap searchKey !mRightState ?currentStateNameIndex] ;
+      const @string association := [mLeftState string] . ":" . [mRightState string] ;
+      if not [neededAssociations hasKey !association] then
+        warning mRightState :"the '" . association . "' association is useless" ;
+      end if ;
+      if [handledAssociations hasKey !association] then
+        error mRightState
+        :"the '" . association . "' association is already defined" ;
+      end if ;
+      handledAssociations += !association ;
+      @uint finalStateNameIndex ;
+      [mapAutomatonStateMap searchKey !mResultingState ?finalStateNameIndex] ;
+      if [mLeftState string] != [mRightState string] then
+        neededCombinaisons += ![mLeftState string] . ":" . [mRightState string] ;
+        neededCombinaisons += ![mRightState string] . ":" . [mLeftState string] ;
+        if not [accessibilityGraph hasKey ![mLeftState string] . ":" . [mRightState string]] then
+          error mRightState
+          : "the '" . mRightState . "' state is not reachable from '" . mLeftState . "' state"
+          ;
+        end if ;
+      end if ;
+      check_K_escapeCharacters !mTransitionMessage ;
+    end foreach ;
+    @stringset forgottenAssociations := neededAssociations - handledAssociations ;
+    if [forgottenAssociations count] > 0 then
+      @string s := "" ;
+      foreach forgottenAssociations do
+        s .= "\n  - " . key ;
+      end foreach ;
+      error here: [[forgottenAssociations count] string] . " associations should be defined:" . s ;
+    end if ;
+    @stringset definedCombinaisons [emptySet] ;
+    foreach mMapOverrideBlockDescriptor2AST do
+      @uint branchStateNameIndex ;
+      [mapAutomatonStateMap searchKey !mLeftState ?branchStateNameIndex] ;
+      @uint otherBranchStateNameIndex ;
+      [mapAutomatonStateMap searchKey !mRightState ?otherBranchStateNameIndex] ;
+      const @string combinaison := [mLeftState string] . ":" . [mRightState string] ;
+      if not [neededCombinaisons hasKey !combinaison] then
+        error mRightState
+        :"the '" . mLeftState . ":" . mRightState . "' combinaison is useless" ;
+      end if ;
+      if [definedCombinaisons hasKey !combinaison] then
+        error mRightState
+        :"the '" . mLeftState . ":" . mRightState . "' combinaison is already defined" ;
+      end if ;
+      definedCombinaisons += !combinaison ;
+      if mMessageKind == [@mapAutomatonMessageKind noMessage] then
+        definedCombinaisons += ![mRightState string] . ":" . [mLeftState string] ;
+      end if ;
+      @uint resultingStateNameIndex ;
+      [mapAutomatonStateMap searchKey !mResultingState ?resultingStateNameIndex] ;
+      if ([mLeftState string] != [mResultingState string])
+       & ([mRightState string] != [mResultingState string])
+       & not [accessibilityGraph hasKey ![mLeftState string] . ":" . [mResultingState string]] then
+        error mResultingState
+        :"the '" . mResultingState . "' state cannot be reached from the '" . mResultingState . "' state" ;
+      end if ;
+      check_K_escapeCharacters !mTransitionMessage ;
+    end foreach ;
+    if [forgottenAssociations count] == 0 then # Check only if all associations are defined
+      @stringset forgottenCombinaisons := neededCombinaisons - definedCombinaisons ;
+      if [forgottenCombinaisons count] > 0 then
+        @string s := "" ;
+        foreach forgottenCombinaisons do
+          s .= "\n  - " . key ;
+        end foreach ;
+        error here: [[forgottenCombinaisons count] string] . " combinaisons are forgotten:" . s ;
+      end if ;
+    end if ;
+  end foreach ;
 #------ Enter attributes
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeMap [emptyMap] ;
@@ -362,7 +648,7 @@ override method @mapDeclarationAST performSemanticAnalysis
 #--- Enter insert modifiers
   @insertMethodMap insertMethodMap [emptyMap] ;
   foreach mInsertMethodList do
-    [!?insertMethodMap insertKey !mMethodName] ;
+    [!?insertMethodMap insertKey !mInsertMethodName] ;
   #--- Check error message escape sequences : only %K, %L or %%
     foreach [[mErrorMessage string] componentsSeparatedByString !"%%"] do
       @stringlist explodedArray := [mValue componentsSeparatedByString !"%"] ;
@@ -393,10 +679,10 @@ override method @mapDeclarationAST performSemanticAnalysis
 #--- Enter search methods
   @searchMethodMap searchMethodMap [emptyMap] ;
   foreach mSearchMethodList do
-    if [mMapStateList length] == 0 then
-      [!?searchMethodMap insertKey !mMethodName] ;
+    if [mMapStateList length] == 0 then # §
+      [!?searchMethodMap insertKey !mSearchMethodName] ;
     else
-      [!?searchMethodMap insertKey !mMethodName] ;
+      [!?searchMethodMap insertKey !mSearchMethodName] ;
     end if ;
   #--- Check error message escape sequences : only %K or %%
     foreach [[mErrorMessage string] componentsSeparatedByString !"%%"] do
@@ -446,7 +732,7 @@ override method @mapDeclarationAST performSemanticAnalysis
   [!?withAccessorMap insertKey ![@lstring new !"hasKey" !here] !inPredefinedTypes->mStringType] ;
   foreach mSearchMethodList do
     [!?withAccessorMap insertKey
-      !mMethodName
+      !mSearchMethodName
       !inPredefinedTypes->mLStringType
     ] ;
   end foreach ;
