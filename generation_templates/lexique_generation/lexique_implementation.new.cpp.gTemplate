@@ -11,11 +11,18 @@
 #include <ctype.h>
 #include <string.h>
 
-#include "utilities/MF_MemoryControl.h"
-#include "%![[LEXIQUE_COMPONENT_ROOT mLexiqueComponentName] string]%.h"
+//---------------------------------------------------------------------------*
 
+#include "utilities/MF_MemoryControl.h"
 #include "strings/unicode_character_cpp.h"
 #include "galgas2/scanner_actions.h"
+
+//---------------------------------------------------------------------------*
+
+#include "%![[LEXIQUE_COMPONENT_ROOT mLexiqueComponentName] string]%.h"
+
+//---------------------------------------------------------------------------*
+
 #ifndef DO_NOT_GENERATE_CHECKINGS
   #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (HERE), lineNumber ()
   #define COMMA_LINE_AND_SOURCE_FILE , LINE_AND_SOURCE_FILE

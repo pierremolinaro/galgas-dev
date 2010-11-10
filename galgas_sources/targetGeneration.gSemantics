@@ -211,36 +211,43 @@ routine updateTargets
   #---
     switch mSourceKind
     when externSourceFile :
-      externSourceSet_tool += ![mFilePath string] ;
-#      externSourceSet_app += ![mFilePath string] ;
-      handCodedSourceList += ![mFilePath lastPathComponent] ;
-      handCodedSourceDirectorySet += !"../hand_coded_sources/" . [mFilePath stringByDeletingLastPathComponent] ;
+      const @string extension := [mFilePath pathExtension] ;
+      if (extension == "cpp") | (extension == "mm") | (extension == "framework") then
+        externSourceSet_tool += ![mFilePath string] ;
+        handCodedSourceList += ![mFilePath lastPathComponent] ;
+        handCodedSourceDirectorySet += !"../hand_coded_sources/" . [mFilePath stringByDeletingLastPathComponent] ;
+      elsif extension == "m" then
+        externSourceSet_app += ![mFilePath string] ;
+        handCodedSourceDirectorySet += !"../hand_coded_sources/" . [mFilePath stringByDeletingLastPathComponent] ;
+      else
+        error mFilePath:"unhandled extension" ;
+      end if ;
     when lexiqueSourceFile :
       generatedFileListForMakefile += !cppFile ;
       scannerSourceSet_tool += !baseName ;
-      scannerSourceSet_app += !baseName ;
+#      scannerSourceSet_app += !baseName ;
     when syntaxSourceFile :
       generatedFileListForMakefile += !cppFile ;
       syntaxSourceSet_tool += !baseName ;
-      syntaxSourceSet_app += !baseName ;
+#      syntaxSourceSet_app += !baseName ;
     when semanticsSourceFile :
       generatedFileListForMakefile += !cppFile ;
       semanticsSourceSet_tool += !baseName ;
-      semanticsSourceSet_app += !baseName ;
+#      semanticsSourceSet_app += !baseName ;
     when grammarSourceFile :
       generatedFileListForMakefile += !cppFile ;
       grammarSourceSet_tool += !baseName ;
-      grammarSourceSet_app += !baseName ;
+#      grammarSourceSet_app += !baseName ;
     when programSourceFile :
       generatedFileListForMakefile += !cppFile ;
       programSourceSet_tool += !baseName ;
-      programSourceSet_app += !baseName ;
+#      programSourceSet_app += !baseName ;
     when optionSourceFile :
       generatedFileListForMakefile += !cppFile ;
       optionSourceSet_tool += !baseName ;
-      optionSourceSet_app += !baseName ;
+#      optionSourceSet_app += !baseName ;
     when guiSourceFile :
-      guiSourceSet_tool += !baseName ;
+#      guiSourceSet_tool += !baseName ;
       guiSourceSet_app += !baseName ;
     end switch ;
   end foreach ;
