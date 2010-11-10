@@ -2034,7 +2034,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     !enumeratorDescriptor
-    !doNotGenererateObjectCompare [] | generateCppConstructorWithNativeAttributeList [] | binaryConcatOperator [] | dotAssignOperator []
+    !doNotGenererateObjectCompare [] | generateCppConstructorWithNativeAttributeList [] # | binaryConcatOperator [] | dotAssignOperator []
     !addAssignOperatorDescription
     ![@nativeAttributeList emptyList]
     ![@stringset emptySet]

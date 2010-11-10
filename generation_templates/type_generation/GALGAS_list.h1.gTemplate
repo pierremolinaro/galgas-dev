@@ -4,11 +4,23 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+class cCollectionElement_%!TYPE_IDENTIFIER%  ;
+
+//---------------------------------------------------------------------------*
+
 class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
-//--------------------------------- Handle copy
-//  public : GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
-//  public : GALGAS_%!TYPE_IDENTIFIER% & operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) ;
+//--------------------------------- List constructor used by listmap
+  public : GALGAS_%!TYPE_IDENTIFIER% (cSharedList * inSharedListPtr) ;
+
+//--------------------------------- Element constructor used by listmap
+  public : static cCollectionElement_%!TYPE_IDENTIFIER% * makeElement (%?^
+  foreach ATTRIBUTE_LIST
+    do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+    between %,\n%!^
+  end foreach
+%\n%
+!^%COMMA_LOCATION_ARGS) ;
 

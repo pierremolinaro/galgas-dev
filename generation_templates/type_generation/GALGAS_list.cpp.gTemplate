@@ -103,6 +103,12 @@ AC_GALGAS_list () {
 
 //---------------------------------------------------------------------------*
 
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (cSharedList * inSharedListPtr) :
+AC_GALGAS_list (inSharedListPtr) {
+}
+
+//---------------------------------------------------------------------------*
+
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyList (LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
   result.createNewEmptyList (THERE) ;
@@ -137,6 +143,25 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue (
     macroDetachSharedObject (p) ;
     result.addObject (attributes) ;
   }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+cCollectionElement_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::makeElement (%?^
+  foreach ATTRIBUTE_LIST
+    do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+    between %,\n%!^
+  end foreach
+%\n%
+!^%COMMA_LOCATION_ARGS) {
+  cCollectionElement_%!TYPE_IDENTIFIER% * result = NULL ;
+  macroMyNew (result, cCollectionElement_%!TYPE_IDENTIFIER% (%
+  foreach ATTRIBUTE_LIST
+    do %in_%![mAttributeName identifierRepresentation]
+    between %,\n%!^
+  end foreach
+  % COMMA_THERE)) ;
   return result ;
 }
 

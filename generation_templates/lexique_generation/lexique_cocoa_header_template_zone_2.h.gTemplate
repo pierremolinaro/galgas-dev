@@ -9,9 +9,9 @@
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalRoutineMessageMap] do
     if mIsExtern then
-      %\nvoid scanner_cocoa_routine_%![lkey string]% (BOOL * ioScanningOk%
+      %\nvoid scanner_cocoa_routine_%![lkey string]% (%?^%BOOL * ioScanningOk%
       foreach mLexicalRoutineFormalArgumentList do
-        %,\n                %![mLexicalFormalArgumentMode cppConstInFormalArgument]
+        %,\n                %!^![mLexicalFormalArgumentMode cppConstInFormalArgument]
                              ![mLexicalFormalArgumentType cocoaTypeName]
                              ![mLexicalFormalArgumentMode cocoaPointerInFormalArgument]
                              % %!mArgumentNameForComment
@@ -28,9 +28,9 @@
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalFunctionMap] do
     if mIsExtern then
-      %\n%![mReturnedLexicalType cppTypeName]% scanner_cocoa_function_%![lkey string]% (BOOL * ioScanningOk%
+      %\n%![mReturnedLexicalType cppTypeName]% scanner_cocoa_function_%![lkey string]% (%?^%BOOL * ioScanningOk%
       foreach mLexicalTypeList do
-        %,\n                const %![mLexicalType cppTypeName]% %!mArgumentNameForComment
+        %,\n                %!^%const %![mLexicalType cppTypeName]% %!mArgumentNameForComment
       end foreach
       %) ;\n%
     end if

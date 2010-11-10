@@ -415,6 +415,18 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList ATTRIBUTE_LIST
   ;
 
+#---------- LIST MAP
+  template listmapTypeHeader1 "GALGAS_listmap.h1.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+  ;
+
+  template listmapTypeSpecificImplementation "GALGAS_listmap.cpp.gTemplate"
+    ?@string TYPE_IDENTIFIER
+    ?@string ASSOCIATED_LIST_TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+  ;
+
 #---------- LIST
   template listTypeHeader1 "GALGAS_list.h1.gTemplate"
     ?@string TYPE_NAME
@@ -535,12 +547,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@abstractMethodDefinitionListForGeneration ABSTRACT_METHOD_LIST
     ?@methodDefinitionListForGeneration CONCRETE_METHOD_LIST
     ?@instanceMethodMap INSTANCE_METHOD_MAP
-  ;
-
-  template listmapTypeSpecificImplementation "GALGAS_listmap.cpp.gTemplate"
-    ?@string TYPE_IDENTIFIER
-    ?@string ASSOCIATED_LISTTYPE_IDENTIFIER
-    ?@typedAttributeList ATTRIBUTE_LIST
   ;
 
 }
@@ -797,6 +803,29 @@ override reader @listTypeForGeneration appendDeclaration1 ->@string outHeader :
     ![mTypeIndex key]
     ![mTypeIndex identifierRepresentation]
     !mTypedAttributeList
+  ] ;
+  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+    ![mTypeIndex mIsConcrete]
+    ![mTypeIndex mConstructorMap]
+    ![mTypeIndex mReaderMap]
+    ![mTypeIndex mModifierMap]
+    ![mTypeIndex mInstanceMethodMap]
+    ![mTypeIndex mClassMethodMap]
+    ![mTypeIndex mEnumerationDescriptor]
+    ![mTypeIndex mHandledOperatorFlags]
+    ![mTypeIndex mAddAssignOperatorArguments]
+    ![mTypeIndex mWithAccessorMap]
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @listmapTypeForGeneration appendDeclaration1 ->@string outHeader :
+  outHeader := [filewrapper typeGenerationTemplate.listmapTypeHeader1
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeIndex key]
