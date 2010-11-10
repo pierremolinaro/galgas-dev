@@ -970,7 +970,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
               "                                            COMMA_LOCATION_ARGS) const ;\n\n"
               "//--------------------------------- Key stringset (for map with an associated automaton)\n" ;
 //--- Keys enumerator
-  GGS_mapStateSortedList::cEnumerator stateEnumerator (mMapStateSortedList, true) ;
+  GGS_EXmapStateSortedList::cEnumerator stateEnumerator (mMapStateSortedList, true) ;
   while (stateEnumerator.hasCurrentObject ()) {
     inHfile << "  public : GGS_stringset reader_stringSetWithKeysOf"
             << stateEnumerator._mStateName (HERE).string ().stringByCapitalizingFirstCharacter ()
@@ -1002,7 +1002,7 @@ generateHdeclarations (AC_OutputStream & inHfile) const {
   }
   inHfile << "  } ;\n" ;
 //--- Map overrides
-  GGS_mapOverrideList::cEnumerator currentOverride (mMapOverrideList, true) ;
+  GGS_EXmapOverrideList::cEnumerator currentOverride (mMapOverrideList, true) ;
   while (currentOverride.hasCurrentObject ()) {
     inHfile << "//--- Override '" << currentOverride._mOverrideName (HERE) << "'\n"
                "  public : void modifier_beginOverrideFor"
@@ -1055,10 +1055,10 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
   if (actionCount > 0) {
     inCppFile.appendCppTitleComment (C_String ("AUTOMATON FOR '@") + mMapTypeName + "' MAP") ;
   //--- Generate issue routines
-    GGS_mapStateSortedList::cEnumerator stateEnumerator (mMapStateSortedList, true) ;
+    GGS_EXmapStateSortedList::cEnumerator stateEnumerator (mMapStateSortedList, true) ;
     PMUInt32 currentStateIndex = 0 ;
     while (stateEnumerator.hasCurrentObject ()) {
-      GGS_mapStateTransitionSortedList::cEnumerator transitionEnumerator (stateEnumerator._mTransitionList (HERE), true) ;
+      GGS_EXmapStateTransitionSortedList::cEnumerator transitionEnumerator (stateEnumerator._mTransitionList (HERE), true) ;
       if (stateEnumerator._mStateMessageKind (HERE).enumValue () != GGS_mapAutomatonMessageKind::enum_noMessage) {
         const C_String stateMessage = stateEnumerator._mStateMessage (HERE).string () ;
         inCppFile << "static const utf32 kStateMessageForMap_" << mMapTypeName.identifierRepresentation ()
@@ -1086,7 +1086,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
     currentStateIndex = 0 ;
     while (stateEnumerator.hasCurrentObject ()) {
       inCppFile << "  { // State '" << stateEnumerator._mStateName (HERE) << "'\n" ;
-      GGS_mapStateTransitionSortedList::cEnumerator transitionEnumerator (stateEnumerator._mTransitionList (HERE), true) ;
+      GGS_EXmapStateTransitionSortedList::cEnumerator transitionEnumerator (stateEnumerator._mTransitionList (HERE), true) ;
       PMUInt32 currentActionIndex = 0 ;
       while (transitionEnumerator.hasCurrentObject ()) {
         inCppFile << "    {" << cStringWithUnsigned (transitionEnumerator._mTargetStateIndex (HERE).uintValue ()) << ", " ;
@@ -1815,7 +1815,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                  "}\n\n" ;
   }
 //--- Keys enumerator
-  GGS_mapStateSortedList::cEnumerator stateEnumerator (mMapStateSortedList, true) ;
+  GGS_EXmapStateSortedList::cEnumerator stateEnumerator (mMapStateSortedList, true) ;
   PMUInt32 currentStateIndex = 0 ;
   while (stateEnumerator.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
@@ -1863,13 +1863,13 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
                    "}\n\n" ;
   }
 //--- Map overrides
-  GGS_mapOverrideList::cEnumerator currentOverride (mMapOverrideList, true) ;
+  GGS_EXmapOverrideList::cEnumerator currentOverride (mMapOverrideList, true) ;
   while (currentOverride.hasCurrentObject ()) {
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "// Override '" << currentOverride._mOverrideName (HERE) << "'\n" ;
     inCppFile.appendCppHyphenLineComment () ;
   //--- Issue message for branch behaviour
-    GGS_branchBehaviourSortedListForMapOverride::cEnumerator branchBehaviourOverride (currentOverride._mBranchBehaviourSortedListForMapOverride (HERE), true) ; ;
+    GGS_EXbranchBehaviourSortedListForMapOverride::cEnumerator branchBehaviourOverride (currentOverride._mBranchBehaviourSortedListForMapOverride (HERE), true) ; ;
     while (branchBehaviourOverride.hasCurrentObject ()) {
       if (branchBehaviourOverride._mStateMessageKind (HERE).enumValue () != GGS_mapAutomatonMessageKind::enum_noMessage) {
         inCppFile.appendCppHyphenLineComment () ;
@@ -1937,7 +1937,7 @@ generateCppClassImplementation (C_CompilerEx & /* inLexique */,
     inCppFile.appendCppHyphenLineComment () ;
     inCppFile << "// Override '" << currentOverride._mOverrideName (HERE) << "'\n" ;
     inCppFile.appendCppHyphenLineComment () ;
-    GGS_branchBehaviourSortedListForMapOverride::cEnumerator branchCombinationOverride (currentOverride._mBranchCombinationSortedListForMapOverride (HERE), true) ; ;
+    GGS_EXbranchBehaviourSortedListForMapOverride::cEnumerator branchCombinationOverride (currentOverride._mBranchCombinationSortedListForMapOverride (HERE), true) ; ;
     while (branchCombinationOverride.hasCurrentObject ()) {
       if (branchCombinationOverride._mStateMessageKind (HERE).enumValue () != GGS_mapAutomatonMessageKind::enum_noMessage) {
         inCppFile.appendCppHyphenLineComment () ;
