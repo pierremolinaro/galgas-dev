@@ -44,3 +44,27 @@ GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_list
   return GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER% (listForKey (inKey)) ;
 }
 
+//---------------------------------------------------------------------------*
+
+cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
+                       %!^%const bool inAscending) :
+cGenericAbstractEnumerator () {
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inAscending) ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_string cEnumerator_%!TYPE_IDENTIFIER%::current_key (void) const {
+  const cMapElement * p = (const cMapElement *) currentObjectPtr () ;
+  macroValidSharedObject (p, const cMapElement) ;
+  return p->mAttribute_lkey.mAttribute_string ;
+}
+
+//---------------------------------------------------------------------------*
+
+/*GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current_mList (void) const {
+  const cMapElement * p = (const cMapElement *) currentObjectPtr () ;
+  macroValidSharedObject (p, const cMapElement) ;
+  return GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER% (p->mAttribute_mList) ;
+}*/
+

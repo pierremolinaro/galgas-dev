@@ -659,7 +659,7 @@ rule <key_words_list_declaration>
   $message$ ;
   @lstring errorMessage ;
   $literal_string$ ?errorMessage ;
-  check_K_escapeCharacters !errorMessage ;
+  check_K_escapeCharactersEX !errorMessage ;
  #--- Style
   @lstring styleName ;
   select

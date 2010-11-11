@@ -503,6 +503,10 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@mapRemoveMethodListAST REMOVE_METHOD_LIST
     ?@bool HAS_INSERT_OR_REPLACE 
     ?@withAccessorMap WITH_ACCESSOR_MAP
+    ?@mapAutomatonStateMap MAP_AUTOMATON_STATE_MAP
+    ?@mapAutomatonActionMap MAP_AUTOMATON_ACTION_MAP
+    ?@mapStateSortedList MAP_AUTOMATON_DEFINITION_SORTEDLIST
+    ?@mapOverrideList MAP_OVERRIDE_LIST
   ;
 
 #---------- Class
@@ -1139,6 +1143,10 @@ override reader @mapTypeForGeneration appendSpecificImplementation ->@string out
     !mRemoveMethodList
     !mHasInsertOrReplaceModifier
     !mWithAccessorMap
+    !mMapAutomatonStateMap
+    !mMapAutomatonActionMap
+    !mMapStateSortedList
+    !mMapOverrideList
   ] ;
  end reader ;
 

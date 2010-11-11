@@ -35,7 +35,7 @@
 //---------------------------------------------------------------------------*
 
 void
-routine_check_KL_escapeCharacters (C_CompilerEx & inLexique,
+routine_check_KL_escapeCharactersEX (C_CompilerEx & inLexique,
                                    GGS_lstring inString
                                    COMMA_LOCATION_ARGS) {
   if (inString.isBuilt ()) {
@@ -65,7 +65,7 @@ routine_check_KL_escapeCharacters (C_CompilerEx & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-routine_check_K_escapeCharacters (C_CompilerEx & inLexique,
+routine_check_K_escapeCharactersEX (C_CompilerEx & inLexique,
                                   GGS_lstring inString
                                   COMMA_LOCATION_ARGS) {
   if (inString.isBuilt ()) {

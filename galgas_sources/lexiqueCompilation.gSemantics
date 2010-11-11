@@ -763,6 +763,7 @@ end routine ;
 routine compileLexiqueComponent
   ??@lstring inSourceFile
   ??@string inOutputDirectory
+  ??@bool inGenerateGALGAS1Code
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
   @lexiqueComponentAST lexiqueComponentRoot ;
@@ -945,7 +946,7 @@ routine compileLexiqueComponent
   @string lexiqueClassName := [componentName string] ;
 #--- Generate header file
   if [@uint errorCount] == 0 then
-    if not [option galgas_cli_options.legacyCodeGeneration value] then
+    if not inGenerateGALGAS1Code then
       [@string generateFile
         !inOutputDirectory
         !lexiqueClassName . ".h"
@@ -985,7 +986,7 @@ routine compileLexiqueComponent
   end if ;
 #--- Generate implementation file
   if [@uint errorCount] == 0 then
-    if not [option galgas_cli_options.legacyCodeGeneration value] then
+    if not inGenerateGALGAS1Code then
       [@string generateFile
         !inOutputDirectory
         !lexiqueClassName . ".cpp"

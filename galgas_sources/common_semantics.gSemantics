@@ -3205,17 +3205,17 @@ class @typeGalgasMapType extends @typeGalgasUndefinedMapType {
       found := true ;
       outModifierSignature += ![@typeGalgas_string new] ![@formalArgumentPassingModeAST argumentIn] ;
     elsif [mOverrideNameList length] > 0 then
-      if [inModifierName string] == "beginBranch" then
+      if [inModifierName string] == "openBranch" then
         found := true ;
-      elsif [inModifierName string] == "endOverride" then
+      elsif [inModifierName string] == "closeOverride" then
         found := true ;
         outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingModeAST argumentIn] ;
-      elsif [inModifierName string] == "endBranch" then
+      elsif [inModifierName string] == "closeBranch" then
         found := true ;
         outModifierSignature += ![@typeGalgas_location new] ![@formalArgumentPassingModeAST argumentIn] ;
       else
         foreach mOverrideNameList while not found do
-          found := [inModifierName string] == ("beginOverrideFor" . [mValue stringByCapitalizingFirstCharacter]) ;
+          found := [inModifierName string] == ("openOverrideFor" . [mValue stringByCapitalizingFirstCharacter]) ;
         end foreach ;
       end if ;
     end if ;
@@ -5412,13 +5412,13 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-extern routine check_KL_escapeCharacters
+extern routine check_KL_escapeCharactersEX
  ?@lstring inString
 ;
 
 #---------------------------------------------------------------------------*
 
-extern routine check_K_escapeCharacters
+extern routine check_K_escapeCharactersEX
  ?@lstring inString
 ;
 

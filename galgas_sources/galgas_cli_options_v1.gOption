@@ -16,14 +16,8 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-option galgas_cli_options :
-#  @bool doNotGenerateXcodeProject : '\0', "do-not-generate-xcode-project" -> "Prevent Generation of the corresponding Xcode project" ;
-  @bool warnsShadows         : '\0', "shadow" -> "Warn on declarations that shadow a previously declared object" ;
-  @bool outputHTMLgrammarFile: '\0', "output-html-grammar-file" -> "Output a HTML file for every grammar component" ;
-  @bool generate_debug       : '\0', "generate_debug" -> "Generate Debug Information on terminals and non-terminals symbols" ;
-  @string create_project     : '\0', "create-project" -> "Create a new GALGAS Project" ;
-  @bool printPredefinedLexicalActions: '\0', "print-predefined-lexical-actions" -> "Print the list of predefined lexical routines and functions" ;
-  @string generatePredefinedTypes: '\0', "generate-predefined-types" -> "Generate header files of builtin types (reserved for GALGAS development)" ;
+option galgas_cli_options_v1 :
+  @bool legacyCodeGeneration : '\0', "legacy-code-generation" -> "Generate GALGAS 1 Code" ;
 end option ;
 
 #---------------------------------------------------------------------------*

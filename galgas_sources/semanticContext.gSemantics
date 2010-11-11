@@ -912,22 +912,22 @@ override method @mapDeclarationAST enterInSemanticContext
     @unifiedTypeMapProxy locationTypeIndex ;
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"location" ?locationTypeIndex] ;
     [!?modifierMap insertKey
-      ![@lstring new !"beginBranch" !here]
+      ![@lstring new !"openBranch" !here]
       ![@formalParameterSignature emptyList]
       !true
-      ![@methodQualifier isBasic]
+      ![@methodQualifier isInherited]
     ] ;
     [!?modifierMap insertKey
-      ![@lstring new !"endBranch" !here]
+      ![@lstring new !"closeBranch" !here]
       ![@formalParameterSignature listWithValue !locationTypeIndex ![@formalArgumentPassingModeAST argumentIn]]
       !true
       ![@methodQualifier isBasic]
     ] ;
     [!?modifierMap insertKey
-      ![@lstring new !"endOverride" !here]
+      ![@lstring new !"closeOverride" !here]
       ![@formalParameterSignature listWithValue !locationTypeIndex ![@formalArgumentPassingModeAST argumentIn]]
       !true
-      ![@methodQualifier isBasic]
+      ![@methodQualifier isInherited]
     ] ;
     [!?instanceMethodMap insertKey
       ![@lstring new !"checkAutomatonStates" !here]
@@ -939,7 +939,7 @@ override method @mapDeclarationAST enterInSemanticContext
     ] ;
     foreach mMapOverrideBlockListAST do
       [!?modifierMap insertKey
-        ![@lstring new !"beginOverrideFor" . [mOverrideBlockName stringByCapitalizingFirstCharacter] !here]
+        ![@lstring new !"openOverrideFor" . [mOverrideBlockName stringByCapitalizingFirstCharacter] !here]
         ![@formalParameterSignature emptyList]
         !true
         ![@methodQualifier isBasic]
@@ -1011,7 +1011,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
-    !doNotGenererateObjectCompare [] | generateCppConstructorWithNativeAttributeList []
+    !doNotGenererateObjectCompare []
     ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@stringset emptySet]
@@ -1137,7 +1137,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !instanceMethodMap
     !classMethodMap
     ![@enumerationDescriptorList emptyList]
-    !doNotGenererateObjectCompare [] | generateCppConstructorWithNativeAttributeList []
+    !doNotGenererateObjectCompare []
     ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@stringset emptySet]
@@ -1452,7 +1452,7 @@ override method @listDeclarationAST enterInSemanticContext
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
-    !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator [] | generateCppConstructorWithNativeAttributeList []
+    !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator []
     !constructorAttributeTypeList
     ![@nativeAttributeList emptyList]
     ![@stringset emptySet]
@@ -1553,7 +1553,6 @@ override method @sortedListDeclarationAST enterInSemanticContext
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
     !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator []
-      | generateCppConstructorWithNativeAttributeList []
     !constructorAttributeTypeList
     ![@nativeAttributeList emptyList]
     ![@stringset emptySet]
@@ -1628,8 +1627,7 @@ override method @structDeclarationAST enterInSemanticContext
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
-    !generateCppConstructorWithCurrentAttributeList []
-      | generateDescriptionReaderUtilityMethod []
+    !generateDescriptionReaderUtilityMethod []
     ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@stringset emptySet]
@@ -1903,7 +1901,7 @@ override method @classDeclarationAST enterInSemanticContext
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
-    !generateCppConstructorWithAllAttributeList []
+    !0
     ![@unifiedTypeMapProxyList emptyList]
     ![@nativeAttributeList emptyList]
     ![@stringset emptySet]
@@ -2037,7 +2035,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     !enumeratorDescriptor
-    !doNotGenererateObjectCompare [] | generateCppConstructorWithNativeAttributeList []
+    !doNotGenererateObjectCompare []
     !addAssignOperatorDescription
     ![@nativeAttributeList emptyList]
     ![@stringset emptySet]
