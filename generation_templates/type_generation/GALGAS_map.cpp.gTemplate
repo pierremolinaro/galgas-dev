@@ -106,7 +106,12 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_overriddenMap (UNUSE
 //---------------------------------------------------------------------------*
 
 %
-foreach MAP_AUTOMATON_STATE_MAP do
+foreach MAP_AUTOMATON_STATE_MAP
+before
+  %#ifndef DO_NOT_GENERATE_CHECKINGS\n%
+  %  static const PMUInt32 kMapStateCount_%!TYPE_IDENTIFIER% = %![[MAP_AUTOMATON_STATE_MAP count] string]% ;\n%
+  %#endif\n%
+do
   %static const PMUInt32 kMapState_%!TYPE_IDENTIFIER%_%![lkey identifierRepresentation]% = %![mStateIndex string]% ;\n%
 end foreach
 %
@@ -115,7 +120,10 @@ end foreach
 //---------------------------------------------------------------------------*
 
 %
-foreach MAP_AUTOMATON_ACTION_MAP do
+foreach MAP_AUTOMATON_ACTION_MAP
+before
+  %static const PMUInt32 kMapActionCount_%!TYPE_IDENTIFIER% = %![[MAP_AUTOMATON_ACTION_MAP count] string]% ;\n%
+do
   %static const PMUInt32 kMapAction_%!TYPE_IDENTIFIER%_%![lkey identifierRepresentation]% = %![mActionIndex string]% ;\n%
 end foreach
 %
@@ -181,7 +189,12 @@ if [MAP_AUTOMATON_DEFINITION_SORTEDLIST length] > 0 then
   %void GALGAS_%!TYPE_IDENTIFIER%::modifier_closeBranch (%?^%GALGAS_location inErrorLocation,\n%
                             !^%C_Compiler * inCompiler\n%
                             !^%COMMA_LOCATION_ARGS) {\n%
-  %  closeBranch (inErrorLocation, kMapAutomatonFinalIssue_%!TYPE_IDENTIFIER%, inCompiler COMMA_THERE) ;\n%
+  %  closeBranch (inErrorLocation,\n%
+  %               kMapAutomatonFinalIssue_%!TYPE_IDENTIFIER%,\n%
+  %               #ifndef DO_NOT_GENERATE_CHECKINGS\n%
+  %                 kMapStateCount_%!TYPE_IDENTIFIER%,\n%
+  %               #endif\n%
+  %               inCompiler COMMA_THERE) ;\n%
   %}\n\n%
 end if
 
@@ -312,7 +325,10 @@ foreach SEARCH_METHOD_LIST do
     if [mActionName string] != "" then
       !^%kMapAction_%!TYPE_IDENTIFIER%_%![mActionName identifierRepresentation]%,\n%
       !^%kMapTransitions_%!TYPE_IDENTIFIER%,\n%
-      !^![[MAP_AUTOMATON_DEFINITION_SORTEDLIST length] string]%,\n%
+      !^%kMapActionCount_%!TYPE_IDENTIFIER%,\n%
+      !^%#ifndef DO_NOT_GENERATE_CHECKINGS\n%
+      !^%  kMapStateCount_%!TYPE_IDENTIFIER%,\n%
+      !^%#endif\n%
     end if
     !^%kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]%\n%
     !^%COMMA_THERE) ;\n%

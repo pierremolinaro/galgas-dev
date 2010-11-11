@@ -1664,6 +1664,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap closeOverride !mEndOf_else_instructions] ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@readWriteWithInstructionForGeneration new
+    !mInstructionLocation
     !receiverVariableCppName
     !targetType
     !mFieldList
@@ -1770,6 +1771,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
   [!?ioVariableMap closeOverride !mEndOf_else_instructions] ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@readOnlyWithInstructionForGeneration new
+    !mInstructionLocation
     !receiverExpression
     ![mSearchMethodName string]
     !objectArrayCppName

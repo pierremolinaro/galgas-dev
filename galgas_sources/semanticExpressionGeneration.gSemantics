@@ -54,14 +54,12 @@ end reader ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-method @semanticExpressionForGeneration generateExpression
-  ?!@string unused ioGeneratedCode
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+abstract method @semanticExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppName
-:
-  outCppName := "?exp name?" ;
-end method ;
+;
 
 #---------------------------------------------------------------------------*
 
@@ -255,6 +253,30 @@ override method @constructorExpressionForGeneration generateExpression
   else
     ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))) ;\n" ;
   end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @superReaderCallExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppName
+:
+  ioGeneratedCode .= "//--- @superReaderCallExpressionForGeneration\n" ;
+  outCppName := "{TO DO}" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @thisReaderCallExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppName
+:
+  ioGeneratedCode .= "//--- @thisReaderCallExpressionForGeneration\n" ;
+  outCppName := "{TO DO}" ;
 end method ;
 
 #---------------------------------------------------------------------------*

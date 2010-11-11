@@ -55,16 +55,16 @@ cGenericAbstractEnumerator () {
 //---------------------------------------------------------------------------*
 
 GALGAS_string cEnumerator_%!TYPE_IDENTIFIER%::current_key (void) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr () ;
-  macroValidSharedObject (p, const cMapElement) ;
-  return p->mAttribute_lkey.mAttribute_string ;
+  const cListMapElement * p = (const cListMapElement *) currentObjectPtr () ;
+  macroValidSharedObject (p, const cListMapElement) ;
+  return GALGAS_string (p->mKey) ;
 }
 
 //---------------------------------------------------------------------------*
 
-/*GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current_mList (void) const {
-  const cMapElement * p = (const cMapElement *) currentObjectPtr () ;
-  macroValidSharedObject (p, const cMapElement) ;
-  return GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER% (p->mAttribute_mList) ;
-}*/
+GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current_mList (void) const {
+  const cListMapElement * p = (const cListMapElement *) currentObjectPtr () ;
+  macroValidSharedObject (p, const cListMapElement) ;
+  return GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER% (p->mSharedList) ;
+}
 

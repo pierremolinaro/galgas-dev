@@ -985,6 +985,7 @@ class @grammarInstructionWithSourceExpressionForGeneration extends @semanticInst
 #---------------------------------------------------------------------------*
 
 class @readWriteWithInstructionForGeneration extends @semanticInstructionForGeneration {
+  @location mInstructionLocation ;
   @string mReceiverVariableCppName ;
   @unifiedTypeMapProxy mReceiverType ;
   @lstringlist mStructAttributeList ;
@@ -1002,6 +1003,7 @@ class @readWriteWithInstructionForGeneration extends @semanticInstructionForGene
 #---------------------------------------------------------------------------*
 
 class @readOnlyWithInstructionForGeneration extends @semanticInstructionForGeneration {
+  @location mInstructionLocation ;
   @semanticExpressionForGeneration mReceiverExpression ;
   @string mAccessName ;
   @string mObjectArrayCppName ;
