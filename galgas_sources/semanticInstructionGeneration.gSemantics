@@ -93,13 +93,11 @@ end method ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-method @semanticInstructionForGeneration generateInstruction
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+abstract method @semanticInstructionForGeneration generateInstruction
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
-:
-  ioGeneratedCode .= "?UNHANDLED INSTRUCTION?\n" ;
-end method ;
+;
 
 #---------------------------------------------------------------------------*
 
@@ -888,7 +886,7 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
     [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
     ioGeneratedCode .= "performSearch (" . keyVarCppName . ", " . compilerCppName []
                      . ", kSearchErrorMessage_" . [receiverType identifierRepresentation] . "_" . [mAccessName identifierRepresentation]
-                     . " COMMA_HERE) ;\n" ;
+                     . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   end if ;
   ioGeneratedCode .= "if (NULL != " . mObjectArrayCppName . ") {\n"
                   .  "    macroValidSharedObject (" . mObjectArrayCppName . ", const cMapElement_" . [receiverType identifierRepresentation] . ") ;\n" ;
@@ -924,7 +922,7 @@ override method @readWriteWithInstructionForGeneration generateInstruction
   ioGeneratedCode .= "cMapElement_" . [mReceiverType identifierRepresentation]
                   . " * " . mObjectArrayCppName . " = (cMapElement_" . [mReceiverType identifierRepresentation]
                   . " *) " . receiverCppName . ".readWriteAccessForWithInstruction_" . [mAccessName identifierRepresentation] . " (" . compilerCppName []
-                  .  ", " . keyVarCppName . " COMMA_HERE) ;\n"
+                  .  ", " . keyVarCppName . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n"
                   .  "if (NULL != " . mObjectArrayCppName . ") {\n"
                   .  "    macroValidSharedObject (" . mObjectArrayCppName . ", cMapElement_" . [mReceiverType identifierRepresentation] . ") ;\n" ;
   generateInstructionList !mDoBranchInstructions !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
