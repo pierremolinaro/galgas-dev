@@ -33,6 +33,7 @@
 #include "semantics_instructions.h"
 #include "cDecisionTableElementEx.h"
 #include "galgas_cli_options.h"
+#include "galgas_cli_options_v1.h"
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -2253,7 +2254,7 @@ LR1_computations (C_CompilerEx & inLexique,
   }
 //--- Generate C++ file
   if (conflictCount == 0) {
-    if (! gOption_galgas_5F_cli_5F_options_legacyCodeGeneration.mValue) {
+    if (! gOption_galgas_5F_cli_5F_options_5F_v_31__legacyCodeGeneration.mValue) {
       generate_LR1_grammar_cpp_file (inLexique,
                                      inProductionRules,
                                      inVocabulary,

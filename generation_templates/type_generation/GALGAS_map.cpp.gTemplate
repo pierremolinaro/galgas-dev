@@ -101,6 +101,162 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_overriddenMap (UNUSE
   return result ;
 }
 
+//---------------------------------------------------------------------------*
+//  Map automaton states                                                     *
+//---------------------------------------------------------------------------*
+
+%
+foreach MAP_AUTOMATON_STATE_MAP do
+  %static const PMUInt32 kMapState_%!TYPE_IDENTIFIER%_%![lkey identifierRepresentation]% = %![mStateIndex string]% ;\n%
+end foreach
+%
+//---------------------------------------------------------------------------*
+//  Map automaton actions                                                     *
+//---------------------------------------------------------------------------*
+
+%
+foreach MAP_AUTOMATON_ACTION_MAP do
+  %static const PMUInt32 kMapAction_%!TYPE_IDENTIFIER%_%![lkey identifierRepresentation]% = %![mActionIndex string]% ;\n%
+end foreach
+%
+//---------------------------------------------------------------------------*
+//  Map automaton transitions                                                *
+//---------------------------------------------------------------------------*
+
+%
+foreach MAP_AUTOMATON_DEFINITION_SORTEDLIST
+before
+  %static const cMapAutomatonTransition kMapTransitions_%!TYPE_IDENTIFIER% [%
+  ![[MAP_AUTOMATON_DEFINITION_SORTEDLIST length] string]
+  % * %
+  ![[MAP_AUTOMATON_ACTION_MAP count] string]
+  %] = {\n%
+do
+  %// State '%!mStateName%', index %![mStateIndex string]% \n%
+  foreach mTransitionList do
+    %  {kMapState_%!TYPE_IDENTIFIER%_%![mTargetStateName identifierRepresentation]% /* %![mTargetStateIndex string]% */, %
+    switch mTransitionMessageKind
+    when noMessage :
+      %kMapAutomatonNoIssue%
+    when warningMessage :
+      %kMapAutomatonIssueWarning%
+    when errorMessage :
+      %kMapAutomatonIssueError%
+    end switch
+    %, %
+    ![mTransitionMessage utf8Representation]
+    %}, // for action '%!mActionName%', (index %![mActionIndex string]%)\n%
+  end foreach
+after
+ %} ;\n%
+end foreach
+%
+//---------------------------------------------------------------------------*
+//  Map automaton final state issues                                         *
+//---------------------------------------------------------------------------*
+
+%
+foreach MAP_AUTOMATON_DEFINITION_SORTEDLIST
+before
+  %static const cMapAutomatonFinalIssue kMapAutomatonFinalIssue_%!TYPE_IDENTIFIER% [%![[MAP_AUTOMATON_DEFINITION_SORTEDLIST length] string]%] = {\n%
+do
+  %  {%
+  switch mStateMessageKind
+  when noMessage :
+    %kMapAutomatonNoIssue%
+  when warningMessage :
+    %kMapAutomatonIssueWarning%
+  when errorMessage :
+    %kMapAutomatonIssueError%
+  end switch
+  %, %
+  ![mStateMessage utf8Representation]
+  %},// state '%!mStateName%' (index %![mStateIndex string]%)\n%
+after
+  %} ;\n%
+end foreach
+
+if [MAP_AUTOMATON_DEFINITION_SORTEDLIST length] > 0 then
+  %//---------------------------------------------------------------------------*\n\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_closeBranch (%?^%GALGAS_location inErrorLocation,\n%
+                            !^%C_Compiler * inCompiler\n%
+                            !^%COMMA_LOCATION_ARGS) {\n%
+  %  closeBranch (inErrorLocation, kMapAutomatonFinalIssue_%!TYPE_IDENTIFIER%, inCompiler COMMA_THERE) ;\n%
+  %}\n\n%
+end if
+
+if [MAP_AUTOMATON_DEFINITION_SORTEDLIST length] > 0 then
+  %//---------------------------------------------------------------------------*\n\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::method_checkAutomatonStates (%?^%GALGAS_location inErrorLocation,\n%
+                            !^%C_Compiler * inCompiler\n%
+                            !^%COMMA_LOCATION_ARGS) const {\n%
+  %  checkAutomatonStates (inErrorLocation, kMapAutomatonFinalIssue_%!TYPE_IDENTIFIER%, inCompiler COMMA_THERE) ;\n%
+  %}\n\n%
+end if
+
+foreach MAP_OVERRIDE_LIST do
+  %//---------------------------------------------------------------------------*\n%
+  %//%!["map override '" . mOverrideName . "'" stringByLeftAndRightPadding !75 !' ']%*\n%
+  %//---------------------------------------------------------------------------*\n\n%
+  %static const cBranchOverrideTransformationDescriptor kBranchBehaviourForOverride_%
+  !TYPE_IDENTIFIER
+  %_%
+  ![mOverrideName identifierRepresentation]
+  % [%![[mBranchBehaviourSortedListForMapOverride length] string]%] = {\n%
+  foreach mBranchBehaviourSortedListForMapOverride do
+    %  {kMapState_%!TYPE_IDENTIFIER%_%![mStartStateName identifierRepresentation]% /* %![mStartStateIndex string]% */%
+    %, kMapState_%!TYPE_IDENTIFIER%_%![mCurrentStateName identifierRepresentation]% /* %![mCurrentStateIndex string]% */%
+    %, kMapState_%!TYPE_IDENTIFIER%_%![mFinalStateName identifierRepresentation]% /* %![mFinalStateIndex string]% */%
+    %, %
+    switch mBehaviourMessageKind
+    when noMessage :
+      %kMapAutomatonNoIssue%
+    when warningMessage :
+      %kMapAutomatonIssueWarning%
+    when errorMessage :
+      %kMapAutomatonIssueError%
+    end switch
+    %, %
+    ![mBehaviourMessage utf8Representation]
+    %},\n%
+  end foreach  
+  %} ;\n\n%
+  %//---------------------------------------------------------------------------*\n\n%
+  %static const cBranchOverrideCompatibilityDescriptor kBranchCombinationForOverride_%
+  !TYPE_IDENTIFIER
+  %_%
+  ![mOverrideName identifierRepresentation]
+  % [%![[mBranchCombinationSortedListForMapOverride length] string]%] = {\n%
+  foreach mBranchCombinationSortedListForMapOverride do
+    %  {kMapState_%!TYPE_IDENTIFIER%_%![mStartStateName identifierRepresentation]% /* %![mStartStateIndex string]% */%
+    %, kMapState_%!TYPE_IDENTIFIER%_%![mCurrentStateName identifierRepresentation]% /* %![mCurrentStateIndex string]% */%
+    %, kMapState_%!TYPE_IDENTIFIER%_%![mFinalStateName identifierRepresentation]% /* %![mFinalStateIndex string]% */%
+    %, %
+    switch mBehaviourMessageKind
+    when noMessage :
+      %kMapAutomatonNoIssue%
+    when warningMessage :
+      %kMapAutomatonIssueWarning%
+    when errorMessage :
+      %kMapAutomatonIssueError%
+    end switch
+    %, %
+    ![mBehaviourMessage utf8Representation]
+    %},\n%
+  end foreach  
+  %} ;\n\n%
+  %//---------------------------------------------------------------------------*\n\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::modifier_openOverrideFor%![[mOverrideName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%C_Compiler * inCompiler\n%
+                                !^%COMMA_LOCATION_ARGS) {\n%
+  %  openOverride (kBranchBehaviourForOverride_%!TYPE_IDENTIFIER%_%![mOverrideName identifierRepresentation]%, %![[mBranchBehaviourSortedListForMapOverride length] string]%,\n%
+  %                kBranchCombinationForOverride_%!TYPE_IDENTIFIER%_%![mOverrideName identifierRepresentation]%, %![[mBranchCombinationSortedListForMapOverride length] string]%,\n%
+  %                %![mOverrideName utf8Representation]%,\n%
+  %                inCompiler\n%
+  %                COMMA_THERE) ;\n%
+  %}\n\n%
+end foreach
+
+%
 %foreach INSERT_METHOD_LIST do
   %//---------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mInsertMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
@@ -121,7 +277,11 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_overriddenMap (UNUSE
   block 2 :
     %const char * kInsertErrorMessage = %![mErrorMessage utf8Representation]% ;\n%
     %const char * kShadowErrorMessage = %![mShadowErrorMessage utf8Representation]% ;\n%
-    %performInsert (attributes, inCompiler, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;\n%
+    if [mInitialStateName string] == "" then
+      %performInsert (attributes, inCompiler, 0, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;\n%
+    else
+      %performInsert (attributes, inCompiler, kMapState_%!TYPE_IDENTIFIER%_%![mInitialStateName identifierRepresentation]%, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;\n%
+    end if
   end block
   %}\n\n%
 end foreach
@@ -130,14 +290,32 @@ foreach SEARCH_METHOD_LIST do
   %//---------------------------------------------------------------------------*\n\n%
   %const char * kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]% = %![mErrorMessage utf8Representation]% ;\n\n%
   %//---------------------------------------------------------------------------*\n\n%
-  %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mSearchMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
+  %void GALGAS_%!TYPE_IDENTIFIER%::%
+    if [mActionName string] == "" then
+      %method_%
+    else
+      %modifier_%
+    end if
+    ![mSearchMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
     foreach ATTRIBUTE_LIST
       do index IDX %,\n%!^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outArgument%![IDX string]
     end foreach
     %,\n %!^%C_Compiler * inCompiler%
-    %\n %!^%COMMA_LOCATION_ARGS) const {\n%
+    %\n %!^%COMMA_LOCATION_ARGS) %
+    if [mActionName string] == "" then
+      %const %
+    end if
+    %{\n%
   block 2 :
-    %const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) performSearch (inKey, inCompiler, kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]% COMMA_THERE) ;\n%
+    %const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) performSearch (%?^%inKey,\n%
+    !^%inCompiler,\n%
+    if [mActionName string] != "" then
+      !^%kMapAction_%!TYPE_IDENTIFIER%_%![mActionName identifierRepresentation]%,\n%
+      !^%kMapTransitions_%!TYPE_IDENTIFIER%,\n%
+      !^![[MAP_AUTOMATON_DEFINITION_SORTEDLIST length] string]%,\n%
+    end if
+    !^%kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]%\n%
+    !^%COMMA_THERE) ;\n%
     %if (NULL == p) {\n%
     foreach ATTRIBUTE_LIST do index IDX
       %  outArgument%![IDX string]%.drop () ;\n%

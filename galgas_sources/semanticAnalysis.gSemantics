@@ -341,73 +341,23 @@ map @searchMethodMap {
 #         M A P                                                             *
 #---------------------------------------------------------------------------*
 
-map @mapAutomatonStateMap {
-  @uint mStateIndex ;
-  insert insertKey error message "redefinition of '%K' map automaton state" ;
-  search searchKey error message "undefined '%K' map automaton state" ;
-}
-
-#---------------------------------------------------------------------------*
-
-map @mapAutomatonActionMap {
-  @uint mActionIndex ;
-  insert insertKey error message "redefinition of '%K' map automaton action" ;
-  search searchKey error message "undefined '%K' map automaton action" ;
-}
-
-#---------------------------------------------------------------------------*
-
-sortedlist @mapStateTransitionSortedList {
-  @uint mActionIndex ;
-  @string mActionName ;
-  @uint mTargetStateIndex ;
-  @string mTargetStateName ;
-  @mapAutomatonMessageKind mTransitionMessageKind ;
-  @string mTransitionMessage ;
-}{
-  mActionIndex <
-}
-
-#---------------------------------------------------------------------------*
-
-sortedlist @mapStateSortedList {
-  @uint mStateIndex ;
-  @string mStateName ;
-  @mapAutomatonMessageKind mStateMessageKind ;
-  @string mStateMessage ;
-  @mapStateTransitionSortedList mTransitionList ;
-}{
-  mStateIndex <
-}
-
-#---------------------------------------------------------------------------*
-
-sortedlist @branchBehaviourSortedListForMapOverride {
-  @uint mStartStateIndex ;
-  @string mStartStateName ;
-  @uint mCurrentStateIndex ;
-  @string mCurrentStateName ;
-  @uint mFinalStateIndex ;
-  @string mFinalStateName ;
-  @mapAutomatonMessageKind mStateMessageKind ;
-  @string mBehaviourMessage ;
-}{
-  mStartStateIndex <, mCurrentStateIndex <
-}
-
-#---------------------------------------------------------------------------*
-
-list @mapOverrideList {
-  @lstring mOverrideName ;
-  @branchBehaviourSortedListForMapOverride mBranchBehaviourSortedListForMapOverride ;
-  @branchBehaviourSortedListForMapOverride mBranchCombinationSortedListForMapOverride ;
-}
-
-#---------------------------------------------------------------------------*
-
-extern routine check_K_escapeCharacters
+routine check_K_escapeCharacters
  ?@lstring inString
-;
+:
+#--- Check escape sequences : only %K or %%
+  foreach [[inString string] componentsSeparatedByString !"%%"] do
+    @stringlist explodedArray := [mValue componentsSeparatedByString !"%"] ;
+    [!?explodedArray popFirst ?*] ;
+    foreach explodedArray do
+      if [mValue length] > 0 then
+        const @char c := [mValue characterAtIndex !0] ;
+        if c != 'K' then
+          error inString: "only '%K' and '%%' escape sequences are allowed in this error message" ;
+        end if ;
+      end if ;
+    end foreach ;
+  end foreach ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 
@@ -552,9 +502,11 @@ override method @mapDeclarationAST performSemanticAnalysis
     end foreach ;
   end foreach ;
 #---
+  @mapOverrideList mapOverrideList [emptyList] ;
   foreach mMapOverrideBlockListAST do
     @stringset handledAssociations [emptySet] ;
     @stringset neededCombinaisons [emptySet] ;
+    @branchBehaviourSortedListForMapOverride branchBehaviourSortedListForMapOverride1 [emptySortedList] ;
     foreach mMapOverrideBlockDescriptor1AST do
       @uint startStateNameIndex ;
       [mapAutomatonStateMap searchKey !mLeftState ?startStateNameIndex] ;
@@ -571,16 +523,26 @@ override method @mapDeclarationAST performSemanticAnalysis
       handledAssociations += !association ;
       @uint finalStateNameIndex ;
       [mapAutomatonStateMap searchKey !mResultingState ?finalStateNameIndex] ;
-      if [mLeftState string] != [mRightState string] then
-        neededCombinaisons += ![mLeftState string] . ":" . [mRightState string] ;
-        neededCombinaisons += ![mRightState string] . ":" . [mLeftState string] ;
+      if [mLeftState string] != [mResultingState string] then
+        neededCombinaisons += ![mLeftState string] . ":" . [mResultingState string] ;
+        neededCombinaisons += ![mResultingState string] . ":" . [mLeftState string] ;
         if not [accessibilityGraph hasKey ![mLeftState string] . ":" . [mRightState string]] then
-          error mRightState
-          : "the '" . mRightState . "' state is not reachable from '" . mLeftState . "' state"
+          error mResultingState
+          : "the '" . mResultingState . "' state is not reachable from '" . mLeftState . "' state"
           ;
         end if ;
       end if ;
       check_K_escapeCharacters !mTransitionMessage ;
+      branchBehaviourSortedListForMapOverride1 +=
+        !startStateNameIndex
+        ![mLeftState string]
+        !currentStateNameIndex
+        ![mRightState string]
+        !finalStateNameIndex
+        ![mResultingState string]
+        !mMessageKind
+        ![mTransitionMessage string]
+      ;
     end foreach ;
     @stringset forgottenAssociations := neededAssociations - handledAssociations ;
     if [forgottenAssociations count] > 0 then
@@ -591,11 +553,12 @@ override method @mapDeclarationAST performSemanticAnalysis
       error here: [[forgottenAssociations count] string] . " associations should be defined:" . s ;
     end if ;
     @stringset definedCombinaisons [emptySet] ;
+    @branchBehaviourSortedListForMapOverride branchBehaviourSortedListForMapOverride2 [emptySortedList] ;
     foreach mMapOverrideBlockDescriptor2AST do
-      @uint branchStateNameIndex ;
-      [mapAutomatonStateMap searchKey !mLeftState ?branchStateNameIndex] ;
-      @uint otherBranchStateNameIndex ;
-      [mapAutomatonStateMap searchKey !mRightState ?otherBranchStateNameIndex] ;
+      @uint leftStateIndex ;
+      [mapAutomatonStateMap searchKey !mLeftState ?leftStateIndex] ;
+      @uint rightStateIndex ;
+      [mapAutomatonStateMap searchKey !mRightState ?rightStateIndex] ;
       const @string combinaison := [mLeftState string] . ":" . [mRightState string] ;
       if not [neededCombinaisons hasKey !combinaison] then
         error mRightState
@@ -618,6 +581,16 @@ override method @mapDeclarationAST performSemanticAnalysis
         :"the '" . mResultingState . "' state cannot be reached from the '" . mResultingState . "' state" ;
       end if ;
       check_K_escapeCharacters !mTransitionMessage ;
+      branchBehaviourSortedListForMapOverride2 +=
+        !leftStateIndex
+        ![mLeftState string]
+        !rightStateIndex
+        ![mRightState string]
+        !resultingStateNameIndex
+        ![mResultingState string]
+        !mMessageKind
+        ![mTransitionMessage string]
+      ;
     end foreach ;
     if [forgottenAssociations count] == 0 then # Check only if all associations are defined
       @stringset forgottenCombinaisons := neededCombinaisons - definedCombinaisons ;
@@ -629,6 +602,11 @@ override method @mapDeclarationAST performSemanticAnalysis
         error here: [[forgottenCombinaisons count] string] . " combinaisons are forgotten:" . s ;
       end if ;
     end if ;
+    mapOverrideList +=
+      ![mOverrideBlockName string]
+      !branchBehaviourSortedListForMapOverride1
+      !branchBehaviourSortedListForMapOverride2
+    ;
   end foreach ;
 #------ Enter attributes
   @typedAttributeList typedAttributeList [emptyList] ;
@@ -746,6 +724,10 @@ override method @mapDeclarationAST performSemanticAnalysis
     !mRemoveMethodList
     !hasInsertOrReplaceModifier
     !withAccessorMap
+    !mapAutomatonStateMap
+    !mapAutomatonActionMap
+    !mapStateSortedList
+    !mapOverrideList
   ]
   !""
   ;

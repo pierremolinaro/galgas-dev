@@ -32,6 +32,7 @@
 #include "cVocabularyEx.h"
 #include "semantics_instructions.h"
 #include "galgas_cli_options.h"
+#include "galgas_cli_options_v1.h"
 
 //---------------------------------------------------------------------------*
 
@@ -273,7 +274,7 @@ engendrerAiguillageNonTerminaux (const cVocabularyEx & inVocabulary,
       const PMSInt32 indiceProduction = inPureBNFproductions.tableauIndirectionProduction (first COMMA_HERE) ;
       inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP) ;
     }else{ // Plusieurs inPureBNFproductions : engendrer l'aiguillage
-      if (! gOption_galgas_5F_cli_5F_options_legacyCodeGeneration.mValue) {
+      if (! gOption_galgas_5F_cli_5F_options_5F_v_31__legacyCodeGeneration.mValue) {
         fichierCPP << "  switch (inLexique->nextProductionIndex ()) {\n" ;
       }else{
         fichierCPP << "  switch (inLexique.nextProductionIndex ()) {\n" ;
@@ -1228,7 +1229,7 @@ LL1_computations (C_CompilerEx & inLexique,
 
 //--- Generate C++ file
   if (outOk) {
-    if (! gOption_galgas_5F_cli_5F_options_legacyCodeGeneration.mValue) {
+    if (! gOption_galgas_5F_cli_5F_options_5F_v_31__legacyCodeGeneration.mValue) {
       generate_LL1_grammar_Cpp_file (inLexique,
                                      inNonterminalSymbolsMapForOriginalGrammar,
                                      inOriginalGrammarStartSymbol,

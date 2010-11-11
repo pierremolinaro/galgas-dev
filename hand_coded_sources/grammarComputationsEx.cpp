@@ -48,6 +48,7 @@
 #include "printOriginalGrammarEx.h"
 #include "buildPureBNFgrammarEx.h"
 #include "galgas_cli_options.h"
+#include "galgas_cli_options_v1.h"
 
 //---------------------------------------------------------------------------*
 
@@ -83,7 +84,7 @@ engendrerAppelProduction (const PMSInt16 nombreDeParametres,
              << "_" << inVocabulary.getSymbol (aNumeroNonTerminalGauche COMMA_HERE).identifierRepresentation ()
              << "_i" << cStringWithUnsigned (mProductionIndex)
              << "_" << inAltName.identifierRepresentation () << "(" ;
-  if (! gOption_galgas_5F_cli_5F_options_legacyCodeGeneration.mValue) {
+  if (! gOption_galgas_5F_cli_5F_options_5F_v_31__legacyCodeGeneration.mValue) {
     for (PMSInt32 i=1 ; i<nombreDeParametres ; i++) {
        fichierCPP << "parameter_" << cStringWithSigned (i)  << ", " ;
     }

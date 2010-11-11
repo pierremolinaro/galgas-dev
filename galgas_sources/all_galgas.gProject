@@ -31,12 +31,13 @@ project all_galgas -> "galgas" :
 
 #--- Command Line Options
   option "galgas_cli_options.gOption" ;
+  option "galgas_cli_options_v1.gOption" ;
 
 #--- Common Scanner
   lexique "galgas_scanner.gLexique" ;
 
 #--- Cocoa Interface
-  gui       "cocoaGalgas.gGui" ;
+  gui       "cocoaGalgas_v1.gGui" ;
 
 #--- Project Creation
   semantics "projectCreation.gSemantics" ;

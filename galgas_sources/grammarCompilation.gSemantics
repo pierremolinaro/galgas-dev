@@ -473,6 +473,7 @@ routine compileGrammarComponent
   ??@lstring inSourceFile
   ??@string inOutputDirectoryForCppFiles
   ??@string inOutputDirectoryForHTMLFile
+  ??@bool inGenerateGALGAS1Code
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
   @grammarComponentAST grammarComponentRoot ;
@@ -573,7 +574,7 @@ routine compileGrammarComponent
   ;
 #---------------------------------------------------------- Generate header
   if [@uint errorCount] == 0 then
-    if not [option galgas_cli_options.legacyCodeGeneration value] then
+    if not inGenerateGALGAS1Code then
       const @string zone2 := [filewrapper grammarGenerationTemplate.grammarZone2Header
         !grammarComponentRoot
       ] ;

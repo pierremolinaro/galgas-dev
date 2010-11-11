@@ -63,7 +63,7 @@ routine analyzeSemanticInstructionList
 :
   outInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
 #--- Begin branch
-  [!?ioVariableMap beginBranch] ;
+  [!?ioVariableMap openBranch] ;
 #--- Declare local constants
   foreach inLocalConstantList do
     if mNoWarningIfUnused then
@@ -85,7 +85,7 @@ routine analyzeSemanticInstructionList
     ] ;
   end foreach ;
 #--- Branch end
-  [!?ioVariableMap endBranch !inEndOfBranchLocation] ;
+  [!?ioVariableMap closeBranch !inEndOfBranchLocation] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -1165,7 +1165,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?if_expression
   ] ;
-  [!?ioVariableMap beginOverrideForSelectBlock] ;
+  [!?ioVariableMap openOverrideForSelectBlock] ;
 #--- Then branch
   @semanticInstructionListForGeneration then_instructionList ;
   analyzeSemanticInstructionList
@@ -1188,7 +1188,7 @@ override method @ifInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?else_instructionList
   ;
-  [!?ioVariableMap endOverride !mEndOf_if_instruction] ;
+  [!?ioVariableMap closeOverride !mEndOf_if_instruction] ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@ifInstructionForGeneration new
     !mEndOf_then_branch
@@ -1206,8 +1206,8 @@ override method @foreachInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 :
 #--- Begin override for foreach defined constants
-  [!?ioVariableMap beginOverrideForSelectBlock] ;
-  [!?ioVariableMap beginBranch] ;
+  [!?ioVariableMap openOverrideForSelectBlock] ;
+  [!?ioVariableMap openBranch] ;
 #--- Analyze enumerated objects
   @foreachInstructionEnumeratedObjectListForGeneration enumerationList [emptyList] ;
   foreach mEnumeratedObjectList do
@@ -1277,7 +1277,7 @@ override method @foreachInstructionAST analyzeSemanticInstruction
     ?whileExpression
   ] ;
 #--- Begin override for analyze foreach instruction list
-  [!?ioVariableMap beginOverrideForRepeatBlock] ;
+  [!?ioVariableMap openOverrideForRepeatBlock] ;
 #--- 'before' branch
   @semanticInstructionListForGeneration before_instructionList ;
   analyzeSemanticInstructionList
@@ -1335,10 +1335,10 @@ override method @foreachInstructionAST analyzeSemanticInstruction
     ?after_instructionList
   ;
 #--- End override
-  [!?ioVariableMap endOverride !mEndOf_foreach_instruction] ;
+  [!?ioVariableMap closeOverride !mEndOf_foreach_instruction] ;
 #--- End override for foreach defined constants
-  [!?ioVariableMap endBranch !mEndOf_foreach_instruction] ;
-  [!?ioVariableMap endOverride !mEndOf_foreach_instruction] ;
+  [!?ioVariableMap closeBranch !mEndOf_foreach_instruction] ;
+  [!?ioVariableMap closeOverride !mEndOf_foreach_instruction] ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@foreachInstructionForGeneration new
     !mInstructionLocation
@@ -1384,7 +1384,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
     : "the loop expression type should be '@" . [inAnalysisContext->mPredefinedTypes->mBoolType key] . "', but it has '@" . [[loopExpression mType] key] . "' type" ;
   end if ;
 #--- Begin override for analyze loop instruction list
-  [!?ioVariableMap beginOverrideForRepeatBlock] ;
+  [!?ioVariableMap openOverrideForRepeatBlock] ;
 #--- First branch
   @semanticInstructionListForGeneration first_instructionList ;
   analyzeSemanticInstructionList
@@ -1408,7 +1408,7 @@ override method @loopInstructionAST analyzeSemanticInstruction
     ?second_instructionList
   ;
 #--- End override
-  [!?ioVariableMap endOverride !mEndOfLoopInstruction] ;
+  [!?ioVariableMap closeOverride !mEndOfLoopInstruction] ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@loopInstructionForGeneration new
     !mInstructionLocation
@@ -1434,7 +1434,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     ?castExpression
   ] ;
 #--- Begin override for analyze loop instruction list
-  [!?ioVariableMap beginOverrideForSelectBlock] ;
+  [!?ioVariableMap openOverrideForSelectBlock] ;
 #--- Branches
   @castInstructionBranchListForGeneration castBranchList [emptyList] ;
   foreach mCastInstructionBranchList do
@@ -1492,7 +1492,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
     ?else_instructionList
   ;
 #--- End override
-  [!?ioVariableMap endOverride !mEndOfCastInstruction] ;
+  [!?ioVariableMap closeOverride !mEndOfCastInstruction] ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@structuredCastInstructionForGeneration new
     !castExpression
@@ -1630,7 +1630,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     end foreach ;
   end if ;
 #--- Enter in a select block
-  [!?ioVariableMap beginOverrideForSelectBlock] ;
+  [!?ioVariableMap openOverrideForSelectBlock] ;
 #--- 'do' branch
   @localInitializedVariableList localInitializedVariableList [emptyList] ;
   foreach [targetType mCurrentTypedAttributeList] do
@@ -1661,7 +1661,7 @@ override method @readWriteAccessWithInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?else_instructionList
   ;
-  [!?ioVariableMap endOverride !mEndOf_else_instructions] ;
+  [!?ioVariableMap closeOverride !mEndOf_else_instructions] ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@readWriteWithInstructionForGeneration new
     !receiverVariableCppName
@@ -1735,7 +1735,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     end foreach ;
   end if ;
 #--- Enter in a select block
-  [!?ioVariableMap beginOverrideForSelectBlock] ;
+  [!?ioVariableMap openOverrideForSelectBlock] ;
 #--- 'do' branch
   @localConstantList localConstantList [emptyList] ;
   foreach [receiverType mCurrentTypedAttributeList] do
@@ -1767,7 +1767,7 @@ override method @readAccessWithInstructionAST analyzeSemanticInstruction
     !?ioVariableMap
     ?else_instructionList
   ;
-  [!?ioVariableMap endOverride !mEndOf_else_instructions] ;
+  [!?ioVariableMap closeOverride !mEndOf_else_instructions] ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@readOnlyWithInstructionForGeneration new
     !receiverExpression
@@ -1802,7 +1802,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
   const @stringset enumConstantStringSet := [[switchExpression mType] mEnumConstantSet] ;
   @stringset constantsNamedInSwitchInstruction [emptySet] ;
 #--- Analyze branches
-  [!?ioVariableMap beginOverrideForSelectBlock] ;
+  [!?ioVariableMap openOverrideForSelectBlock] ;
   @switchBranchesForGeneration switchBranchesForGeneration [emptyList] ;
   foreach mBranches do
     foreach mSwitchConstantList do
@@ -1831,7 +1831,7 @@ override method @switchInstructionAST analyzeSemanticInstruction
     ;
     switchBranchesForGeneration += !mSwitchConstantList !instructionList ;
   end foreach ;
-  [!?ioVariableMap endOverride !mEndOf_switch_instruction] ;
+  [!?ioVariableMap closeOverride !mEndOf_switch_instruction] ;
 #--- Check all constants have been named
   const @stringset forgottenConstants := enumConstantStringSet - constantsNamedInSwitchInstruction ;
   if [forgottenConstants count] > 0 then
@@ -1876,7 +1876,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
     end if ;
   end foreach ;
 #--- Analyze branches
-  [!?ioVariableMap beginOverrideForSelectBlock] ;
+  [!?ioVariableMap openOverrideForSelectBlock] ;
   @matchInstructionBranchListForGeneration matchInstructionBranchList [emptyList] ;
   foreach mMatchInstructionBranchList do
   #--- Match list
@@ -1959,7 +1959,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
     ?elseInstructionList
   ;
 #---
-  [!?ioVariableMap endOverride !mEndOf_match_instruction] ;
+  [!?ioVariableMap closeOverride !mEndOf_match_instruction] ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@matchInstructionForGeneration new
     !expressionList

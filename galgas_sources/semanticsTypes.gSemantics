@@ -266,14 +266,9 @@ function binaryConcatOperator -> @uint outMask : outMask := 1 << 14 ; end functi
 function dotAssignOperator -> @uint outMask : outMask := 1 << 15 ; end function ; # var .= exp ;
 function isComparable -> @uint outMask : outMask := 1 << 16 ; end function ; # Supports <, <=, >, >= operators
 
-function generateConstructorWithSelfObject -> @uint outMask : outMask := 1 << 23 ; end function ;
-function generateEnumerationHelperMethods -> @uint outMask : outMask := 1 << 24 ; end function ;
-function generateCppConstructorWithAllAttributeList -> @uint outMask : outMask := 1 << 25 ; end function ;
-function generateCppConstructorWithCurrentAttributeList -> @uint outMask : outMask := 1 << 26 ; end function ;
-function generateCppConstructorWithNativeAttributeList -> @uint outMask : outMask := 1 << 27 ; end function ;
-function doNotGenererateObjectCompare -> @uint outMask : outMask := 1 << 28 ; end function ;
-function generateDescriptionReaderUtilityMethod -> @uint outMask : outMask := 1 << 29 ; end function ;
-function generateNativeNewConstructor -> @uint outMask : outMask := 1 << 30 ; end function ;
+function generateEnumerationHelperMethods -> @uint outMask : outMask := 1 << 28 ; end function ;
+function doNotGenererateObjectCompare -> @uint outMask : outMask := 1 << 29 ; end function ;
+function generateDescriptionReaderUtilityMethod -> @uint outMask : outMask := 1 << 30 ; end function ;
 function generateCopyConstructorAndAssignmentOperator -> @uint outMask : outMask := 1 << 31 ; end function ;
 
 #---------------------------------------------------------------------------*

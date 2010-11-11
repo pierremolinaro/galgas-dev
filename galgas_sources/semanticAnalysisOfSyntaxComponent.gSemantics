@@ -435,7 +435,7 @@ routine analyzeSyntaxInstructionList
 :
   outInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
 #--- Begin branch
-  [!?ioVariableMap beginBranch] ;
+  [!?ioVariableMap openBranch] ;
 #--- Instruction list
   foreach inSyntaxInstructionListAST do
     [mInstruction analyzeSyntaxInstruction
@@ -450,7 +450,7 @@ routine analyzeSyntaxInstructionList
     ] ;
   end foreach ;
 #--- Branch end
-  [!?ioVariableMap endBranch !inEndOfBranchLocation] ;
+  [!?ioVariableMap closeBranch !inEndOfBranchLocation] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -468,7 +468,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
   const @uint choiceIndex := ioSelectMethodCount ;
   ioSelectMethodCount ++ ;
 #--- Begin block
-  [!?ioVariableMap beginOverrideForRepeatBlock] ;
+  [!?ioVariableMap openOverrideForRepeatBlock] ;
 #--- Repeated instructions
   @semanticInstructionListForGeneration repeated_instructionList ;
   analyzeSyntaxInstructionList
@@ -502,7 +502,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
     listOfSemanticInstructionListForGeneration += !instructionList !mEndOf_instructions ;
   end foreach ;
 #--- End block
-  [!?ioVariableMap endOverride !mEndOf_repeat_instruction] ;
+  [!?ioVariableMap closeOverride !mEndOf_repeat_instruction] ;
 #---
   ioInstructionListForGeneration += ![@repeatInstructionForGeneration new
     !mInstructionLocation
@@ -566,7 +566,7 @@ override method @selectInstruction analyzeSyntaxInstruction
   const @uint choiceIndex := ioSelectMethodCount ;
   ioSelectMethodCount ++ ;
 #--- Begin block
-  [!?ioVariableMap beginOverrideForSelectBlock] ;
+  [!?ioVariableMap openOverrideForSelectBlock] ;
 #--- 'or' blocks
   @listOfSemanticInstructionListForGeneration listOfSemanticInstructionListForGeneration [emptyList] ;
   foreach mSelectBranchList do
@@ -586,7 +586,7 @@ override method @selectInstruction analyzeSyntaxInstruction
     listOfSemanticInstructionListForGeneration += !instructionList !mEndOf_instructions ;
   end foreach ;
 #--- End block
-  [!?ioVariableMap endOverride !mEndOf_select_instruction] ;
+  [!?ioVariableMap closeOverride !mEndOf_select_instruction] ;
   ioInstructionListForGeneration += ![@selectInstructionForGeneration new
     !mInstructionLocation
     !inComponentName
@@ -737,7 +737,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   end if ;
 #--- 'do' instructions
 #--- Begin block
-  [!?ioVariableMap beginOverrideForRepeatBlock] ;
+  [!?ioVariableMap openOverrideForRepeatBlock] ;
 #--- 'or' blocks
   @semanticInstructionListForGeneration instructionList ;
   analyzeSyntaxInstructionList
@@ -753,7 +753,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
     ?instructionList
   ;
 #--- End block
-  [!?ioVariableMap endOverride !mEndOfInstructionList] ;
+  [!?ioVariableMap closeOverride !mEndOfInstructionList] ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@parseLoopInstructionForGeneration new
     !mInstructionLocation
@@ -907,7 +907,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
     ?when_expression
   ] ;
 #--- Begin block
-  [!?ioVariableMap beginOverrideForRepeatBlock] ;
+  [!?ioVariableMap openOverrideForRepeatBlock] ;
 #--- 'when' branch
   @uint localSelectMethodCount := ioSelectMethodCount ;
   @semanticInstructionListForGeneration when_instructionListForGeneration ;
@@ -938,7 +938,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
     ?else_instructionListForGeneration
   ;
 #--- End block
-  [!?ioVariableMap endOverride !mEndOfElseInstructionList] ;
+  [!?ioVariableMap closeOverride !mEndOfElseInstructionList] ;
 #--- Check syntax signature
   const @bool ok := compareSyntaxSignature [
     !syntaxSignatureOfInstructionList [!when_instructionListForGeneration]

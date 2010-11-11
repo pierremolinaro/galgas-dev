@@ -5931,12 +5931,12 @@ rule <semantics_declaration>
       or
         $warning$ ;
         $literal_string$ ? stateMessage ;
-        check_K_escapeCharacters !stateMessage ;
+        check_K_escapeCharactersEX !stateMessage ;
         stateMessageKind := [@mapAutomatonMessageKind warningMessage] ;
       or
         $error$ ;
         $literal_string$ ? stateMessage ;
-        check_K_escapeCharacters !stateMessage ;
+        check_K_escapeCharactersEX !stateMessage ;
         stateMessageKind := [@mapAutomatonMessageKind errorMessage] ;
       end select ;
       ${$ ;
@@ -5954,12 +5954,12 @@ rule <semantics_declaration>
         or
           $warning$ ;
           $literal_string$ ? transitionMessage ;
-          check_K_escapeCharacters !transitionMessage ;
+          check_K_escapeCharactersEX !transitionMessage ;
           transitionMessageKind := [@mapAutomatonMessageKind warningMessage] ;
         or
           $error$ ;
           $literal_string$ ? transitionMessage ;
-          check_K_escapeCharacters !transitionMessage ;
+          check_K_escapeCharactersEX !transitionMessage ;
           transitionMessageKind := [@mapAutomatonMessageKind errorMessage] ;
         end select ;
         transitionList +=
@@ -6024,7 +6024,7 @@ rule <semantics_declaration>
       @lstring methodName ;
       @lstring errorMessage ;
       <map_method> ?methodName ?errorMessage ;
-      check_KL_escapeCharacters !errorMessage ;
+      check_KL_escapeCharactersEX !errorMessage ;
       $;$ ;
     #--- Insert method
       @L_EXsignature methodSignature [emptyList] ;
@@ -6052,7 +6052,7 @@ rule <semantics_declaration>
       $error$ ;
       $message$ ;
       $literal_string$ ?@lstring errorMessage ;
-      check_KL_escapeCharacters !errorMessage ;
+      check_KL_escapeCharactersEX !errorMessage ;
       @string shadowErrorMessage ;
       select
         shadowErrorMessage := "" ;
@@ -6060,7 +6060,7 @@ rule <semantics_declaration>
         $,$ ;
         @lstring shadowErrorMessageString ;
         $literal_string$ ? shadowErrorMessageString ;
-        check_KL_escapeCharacters !shadowErrorMessageString ;
+        check_KL_escapeCharactersEX !shadowErrorMessageString ;
         shadowErrorMessage := [shadowErrorMessageString string] ;
       end select ;
       $;$ ;
@@ -6096,7 +6096,7 @@ rule <semantics_declaration>
       $error$ ;
       $message$ ;
       $literal_string$ ? errorMessage ;
-      check_K_escapeCharacters !errorMessage ;
+      check_K_escapeCharactersEX !errorMessage ;
       $;$ ;
     #--- Insert search method in modifier map
       @L_EXsignature methodSignature [emptyList] ;
@@ -6238,33 +6238,33 @@ rule <semantics_declaration>
       @EXbranchBehaviourSortedListForMapOverride branchBehaviourSortedListForMapOverride [emptySortedList] ;
       repeat
       while
-        $identifier$ ? @lstring startStateName ;
+        $identifier$ ? @lstring leftStateName ;
         @uint startStateNameIndex ;
-        [mapAutomatonStateMap searchKey !startStateName ?startStateNameIndex] ;
+        [mapAutomatonStateMap searchKey !leftStateName ?startStateNameIndex] ;
         $:$ ;
-        $identifier$ ? @lstring currentStateName ;
-        @uint currentStateNameIndex ;
-        [mapAutomatonStateMap searchKey !currentStateName ?currentStateNameIndex] ;
-        const @string association := [startStateName string] . ":" . [currentStateName string] ;
+        $identifier$ ? @lstring rightStateName ;
+        @uint rightStateNameIndex ;
+        [mapAutomatonStateMap searchKey !rightStateName ?rightStateNameIndex] ;
+        const @string association := [leftStateName string] . ":" . [rightStateName string] ;
         if not [neededAssociations hasKey !association] then
-          warning currentStateName
+          warning rightStateName
           :"the '" . association . "' association is useless" ;
         end if ;
         if [handledAssociations hasKey !association] then
-          error currentStateName
+          error rightStateName
           :"the '" . association . "' association is already defined" ;
         end if ;
         handledAssociations += !association ;
         $->$ ;
-        $identifier$ ? @lstring finalStateName ;
-        @uint finalStateNameIndex ;
-        [mapAutomatonStateMap searchKey !finalStateName ?finalStateNameIndex] ;
-        if [startStateName string] != [finalStateName string] then
-          neededCombinaisons += ![startStateName string] . ":" . [finalStateName string] ;
-          neededCombinaisons += ![finalStateName string] . ":" . [startStateName string] ;
-          if not [accessibilityGraph hasKey ![startStateName string] . ":" . [finalStateName string]] then
-            error finalStateName
-            : "the '" . finalStateName . "' state is not reachable from '" . startStateName . "' state"
+        $identifier$ ? @lstring resultingStateName ;
+        @uint resultingStateNameIndex ;
+        [mapAutomatonStateMap searchKey !resultingStateName ?resultingStateNameIndex] ;
+        if [leftStateName string] != [resultingStateName string] then
+          neededCombinaisons += ![leftStateName string] . ":" . [resultingStateName string] ;
+          neededCombinaisons += ![resultingStateName string] . ":" . [leftStateName string] ;
+          if not [accessibilityGraph hasKey ![leftStateName string] . ":" . [resultingStateName string]] then
+            error resultingStateName
+            : "the '" . resultingStateName . "' state is not reachable from '" . leftStateName . "' state"
             ;
           end if ;
         end if ;
@@ -6276,21 +6276,21 @@ rule <semantics_declaration>
         or
           $warning$ ;
           $literal_string$ ? transitionMessage ;
-          check_K_escapeCharacters !transitionMessage ;
+          check_K_escapeCharactersEX !transitionMessage ;
           transitionMessageKind := [@mapAutomatonMessageKind warningMessage] ;
         or
           $error$ ;
           $literal_string$ ? transitionMessage ;
-          check_K_escapeCharacters !transitionMessage ;
+          check_K_escapeCharactersEX !transitionMessage ;
           transitionMessageKind := [@mapAutomatonMessageKind errorMessage] ;
         end select ;
         branchBehaviourSortedListForMapOverride +=
           !startStateNameIndex
-          ![startStateName string]
-          !currentStateNameIndex
-          ![currentStateName string]
-          !finalStateNameIndex
-          ![finalStateName string]
+          ![leftStateName string]
+          !rightStateNameIndex
+          ![rightStateName string]
+          !resultingStateNameIndex
+          ![resultingStateName string]
           !transitionMessageKind
           ![transitionMessage string]
         ;
@@ -6355,12 +6355,12 @@ rule <semantics_declaration>
         or
           $warning$ ;
           $literal_string$ ? transitionMessage ;
-          check_K_escapeCharacters !transitionMessage ;
+          check_K_escapeCharactersEX !transitionMessage ;
           transitionMessageKind := [@mapAutomatonMessageKind warningMessage] ;
         or
           $error$ ;
           $literal_string$ ? transitionMessage ;
-          check_K_escapeCharacters !transitionMessage ;
+          check_K_escapeCharactersEX !transitionMessage ;
           transitionMessageKind := [@mapAutomatonMessageKind errorMessage] ;
         end select ;
         branchCombinationSortedListForMapOverride +=
@@ -6593,12 +6593,12 @@ label importSemantics
       or
         $warning$ ;
         $literal_string$ ? stateMessage ;
-        check_K_escapeCharacters !stateMessage ;
+        check_K_escapeCharactersEX !stateMessage ;
         stateMessageKind := [@mapAutomatonMessageKind warningMessage] ;
       or
         $error$ ;
         $literal_string$ ? stateMessage ;
-        check_K_escapeCharacters !stateMessage ;
+        check_K_escapeCharactersEX !stateMessage ;
         stateMessageKind := [@mapAutomatonMessageKind errorMessage] ;
       end select ;
       ${$ ;
