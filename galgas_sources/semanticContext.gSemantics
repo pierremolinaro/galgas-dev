@@ -1600,6 +1600,8 @@ override method @structDeclarationAST enterInSemanticContext
   @readerMap readerMap ;
   commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?readerMap ;
   foreach typedAttributeList do
+    log "ATTRIBUTE" : [mAttributeName string] ;
+    log "TYPE" :  [mAttributeTypeProxy key] ;
     enterBaseFinalReaderWithoutArgument
       !?readerMap
       !?ioSemanticContext->mTypeMap 
@@ -1608,6 +1610,7 @@ override method @structDeclarationAST enterInSemanticContext
       !false
     ;
   end foreach ;
+  log mStructTypeName, readerMap ;
 #--- Modifiers
   @modifierMap modifierMap [emptyMap] ;
 #--- Instance methods

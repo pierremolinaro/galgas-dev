@@ -17,8 +17,8 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_null (LOCATION_
 void GALGAS_%!TYPE_IDENTIFIER%::class_method_makeRegularProxy (%?^%GALGAS_%!ASSOCIATED_MAP_TYPE_IDENTIFIER% & ioMap,
                                        %!^%GALGAS_string inKey,
                                        %!^%GALGAS_%!TYPE_IDENTIFIER% & outProxy
-                                       %!^%COMMA_UNUSED_LOCATION_ARGS) {
-  outProxy.internalMakeRegularProxy (ioMap, inKey) ;
+                                       %!^%COMMA_LOCATION_ARGS) {
+  outProxy.internalMakeRegularProxy (ioMap, inKey COMMA_THERE) ;
 }
 
 %foreach ATTRIBUTE_LIST do index IDX
