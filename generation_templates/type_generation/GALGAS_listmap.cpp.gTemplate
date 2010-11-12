@@ -65,6 +65,6 @@ GALGAS_string cEnumerator_%!TYPE_IDENTIFIER%::current_key (void) const {
 GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current_mList (void) const {
   const cListMapElement * p = (const cListMapElement *) currentObjectPtr () ;
   macroValidSharedObject (p, const cListMapElement) ;
-  return GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER% (p->mSharedList) ;
+  return GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER% (p->mSharedListMapList) ;
 }
 
