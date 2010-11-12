@@ -569,9 +569,6 @@ override method @mapDeclarationAST performSemanticAnalysis
         :"the '" . mLeftState . ":" . mRightState . "' combinaison is already defined" ;
       end if ;
       definedCombinaisons += !combinaison ;
-      if mMessageKind == [@mapAutomatonMessageKind noMessage] then
-        definedCombinaisons += ![mRightState string] . ":" . [mLeftState string] ;
-      end if ;
       @uint resultingStateNameIndex ;
       [mapAutomatonStateMap searchKey !mResultingState ?resultingStateNameIndex] ;
       if ([mLeftState string] != [mResultingState string])
@@ -581,6 +578,19 @@ override method @mapDeclarationAST performSemanticAnalysis
         :"the '" . mResultingState . "' state cannot be reached from the '" . mResultingState . "' state" ;
       end if ;
       check_K_escapeCharacters !mTransitionMessage ;
+      if mMessageKind == [@mapAutomatonMessageKind noMessage] then
+        definedCombinaisons += ![mRightState string] . ":" . [mLeftState string] ;
+        branchBehaviourSortedListForMapOverride2 +=
+          !rightStateIndex
+          ![mRightState string]
+          !leftStateIndex
+          ![mLeftState string]
+          !resultingStateNameIndex
+          ![mResultingState string]
+          !mMessageKind
+          ![mTransitionMessage string]
+        ;
+      end if ;
       branchBehaviourSortedListForMapOverride2 +=
         !leftStateIndex
         ![mLeftState string]

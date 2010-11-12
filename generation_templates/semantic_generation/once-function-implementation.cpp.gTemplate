@@ -32,7 +32,7 @@ static void releaseOnceFunctionResult_%![FUNCTION_NAME identifierRepresentation]
 
 //---------------------------------------------------------------------------*
 
-C_PrologueEpilogue gEpilgueForOnceFunction_%![FUNCTION_NAME identifierRepresentation]% (%?^%NULL,
+C_PrologueEpilogue gEpilogueForOnceFunction_%![FUNCTION_NAME identifierRepresentation]% (%?^%NULL,
         %!^%releaseOnceFunctionResult_%![FUNCTION_NAME identifierRepresentation]%) ;
 
 //---------------------------------------------------------------------------*

@@ -724,7 +724,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         }
         generatedZone3 << "      }\n"
                           "    // }\n"
-                          "    macroReleaseObject (scanner) ;\n"
+                          "    macroDetachSharedObject (scanner) ;\n"
                           "  }else{\n"
                           "    C_String message ;\n"
                           "    message << \"the '\" << filePath << \"' file does not exist\" ;\n"
@@ -802,7 +802,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler & inLexique,
         }
         generatedZone3 << "scanner) ;\n"
                           "    }\n"
-                          "    macroReleaseObject (scanner) ;\n"
+                          "    macroDetachSharedObject (scanner) ;\n"
                           "  }\n"
                           "}\n\n" ;
         currentAltForNonTerminal.gotoNextObject () ;
