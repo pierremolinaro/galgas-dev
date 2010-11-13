@@ -1114,12 +1114,12 @@ class c_LR1_automaton_transition {
 //---------------------------------------------------------------------------*
 
 static void
-generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
+generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
                                const cPureBNFproductionsList & inProductionRules,
                                const cVocabulary & inVocabulary,
                                const TC_UniqueArray2 <cDecisionTableElement> & inSLRdecisionTable,
                                const TC_FIFO <c_LR1_automaton_transition> & inTransitionList,
-                               const GALGAS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
+                               const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                                const PMUInt32 inOriginalGrammarStartSymbol,
                                const C_String & inLexiqueName,
                                const C_String & inTargetFileName,
@@ -1137,7 +1137,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
 
   generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
-                    "  #define SOURCE_FILE_AT_LINE(line) \"" << inLexique.sourceFileName ().lastPathComponent () << "\", line\n"
+                    "  #define SOURCE_FILE_AT_LINE(line) \"" << inCompiler->sourceFileName ().lastPathComponent () << "\", line\n"
                     "  #define COMMA_SOURCE_FILE_AT_LINE(line) , SOURCE_FILE_AT_LINE(line)\n"
                     "#else\n"
                     "  #define SOURCE_FILE_AT_LINE(line) \n"
@@ -1291,28 +1291,28 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
   generatedZone3 << "\n} ;\n\n" ;
 
 //--- Generate methods, one by non terminal ----------------------------------
-  cEnumerator_nonTerminalSymbolMapForGrammarAnalysis nonTerminal (inNonterminalSymbolsMapForGrammar, true) ;
+  cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, true) ;
   while (nonTerminal.hasCurrentObject ()) {
-    generatedZone3.appendCppTitleComment (C_String ("'") + nonTerminal.current_lkey ().mAttribute_string.stringValue () + "' non terminal implementation") ;
-    cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal2 (nonTerminal.current_mNonterminalSymbolParametersMap (), true) ;
+    generatedZone3.appendCppTitleComment (C_String ("'") + nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue () + "' non terminal implementation") ;
+    cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal2 (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), true) ;
     while (currentAltForNonTerminal2.hasCurrentObject ()) {
       generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-                     << "::nt_" << nonTerminal.current_lkey ().mAttribute_string.stringValue ().identifierRepresentation ()
-                     << "_" << currentAltForNonTerminal2.current_lkey ().mAttribute_string.stringValue ().identifierRepresentation ()
+                     << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+                     << "_" << currentAltForNonTerminal2.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                      << " (" ;
-      const PMSInt32 pureBNFleftNonterminalIndex = nonTerminal.current_mNonTerminalIndex ().uintValue () ;
+      const PMSInt32 pureBNFleftNonterminalIndex = nonTerminal.current_mNonTerminalIndex (HERE).uintValue () ;
       const PMSInt32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
-      cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal2.current_mFormalParametersList (), true) ;
+      cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal2.current_mFormalParametersList (HERE), true) ;
       PMSInt16 numeroParametre = 1 ;
       while (parametre.hasCurrentObject ()) {
-        switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis ().enumValue ()) {
+        switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
           generatedZone3 << "const " ;
           break ;
         default : break ;
         }
-        generatedZone3 << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis ().mAttribute_string.stringValue ().identifierRepresentation () ;
-        switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis ().enumValue ()) {
+        generatedZone3 << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mAttribute_string.stringValue ().identifierRepresentation () ;
+        switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
           generatedZone3 << " " ;
           break ;
@@ -1343,7 +1343,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
           generatedZone3 << "  case " << cStringWithSigned (ip) << " :\n    " ;
           inProductionRules (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                       inVocabulary,
-                                                                      currentAltForNonTerminal2.current_lkey ().mAttribute_string.stringValue (),
+                                                                      currentAltForNonTerminal2.current_lkey (HERE).mAttribute_string.stringValue (),
                                                                       generatedZone3) ;
           generatedZone3 << "    break ;\n" ;
         }
@@ -1355,29 +1355,29 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
       currentAltForNonTerminal2.gotoNextObject () ;
     }
     //--- Engendrer l'axiome ?
-    if (nonTerminal.current_mNonTerminalIndex ().uintValue () == inOriginalGrammarStartSymbol) {
-      cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (), true) ;
+    if (nonTerminal.current_mNonTerminalIndex (HERE).uintValue () == inOriginalGrammarStartSymbol) {
+      cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), true) ;
       while (currentAltForNonTerminal.hasCurrentObject ()) {
         generatedZone3.appendCppTitleComment ("Grammar start symbol implementation") ;
       //--- Define file parsing static method
         generatedZone3.appendCppHyphenLineComment () ;
         generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-                       << "::_performSourceFileParsing_" << currentAltForNonTerminal.current_lkey ().mAttribute_string.stringValue ().identifierRepresentation ()
+                       << "::_performSourceFileParsing_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                        << " (C_Compiler * inCompiler"
                           ",\n                                "
                           "GALGAS_lstring inFilePath" ;
-        cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (), true) ;
+        cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), true) ;
         PMSInt16 numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           generatedZone3 << ",\n                                " ;
-          switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis ().enumValue ()) {
+          switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
             generatedZone3 << "const " ;
             break ;
           default : break ;
           }
-          generatedZone3 << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis ().mAttribute_string.stringValue ().identifierRepresentation () ;
-          switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis ().enumValue ()) {
+          generatedZone3 << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mAttribute_string.stringValue ().identifierRepresentation () ;
+          switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
             generatedZone3 << " " ;
             break ;
@@ -1414,8 +1414,8 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                           "          if (ok && ! scanner->mParseOnlyFlag) {\n"
                           "            cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
                           "            " ;
-       generatedZone3 << "grammar.nt_" << nonTerminal.current_lkey ().mAttribute_string.stringValue ().identifierRepresentation ()
-                       << "_" << currentAltForNonTerminal.current_lkey ().mAttribute_string.stringValue ().identifierRepresentation ()
+       generatedZone3 << "grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+                       << "_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                        << " (" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
@@ -1434,7 +1434,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
-          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis ().enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut) {
+          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut) {
             generatedZone3 << "          parameter_" << cStringWithSigned (numeroParametre) << ".drop () ;\n" ;
           }
           parametre.gotoNextObject () ;
@@ -1451,7 +1451,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
          parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
-          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis ().enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut) {
+          if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut) {
             generatedZone3 << "      parameter_" << cStringWithSigned (numeroParametre) << ".drop () ;\n" ;
           }
           parametre.gotoNextObject () ;
@@ -1462,7 +1462,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                           "}\n\n" ;
       //--- Define string parsing static method
         generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
-                       << "::_performSourceStringParsing_" << currentAltForNonTerminal.current_lkey ().mAttribute_string.stringValue ().identifierRepresentation ()
+                       << "::_performSourceStringParsing_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                        << " (C_Compiler * inCompiler"
                           ",\n                                "
                           "GALGAS_string inSourceString" ;
@@ -1470,14 +1470,14 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           generatedZone3 << ",\n                                " ;
-          switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis ().enumValue ()) {
+          switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
             generatedZone3 << "const " ;
             break ;
           default : break ;
           }
-          generatedZone3 << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis ().mAttribute_string.stringValue ().identifierRepresentation () ;
-          switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis ().enumValue ()) {
+          generatedZone3 << "GALGAS_" << parametre.current_mGalgasTypeNameForGrammarAnalysis (HERE).mAttribute_string.stringValue ().identifierRepresentation () ;
+          switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
           case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
             generatedZone3 << " " ;
             break ;
@@ -1506,8 +1506,8 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
                           "  if (ok && ! scanner->mParseOnlyFlag) {\n"
                           "    cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
                           "    " ;
-        generatedZone3 << "grammar.nt_" << nonTerminal.current_lkey ().mAttribute_string.stringValue ().identifierRepresentation ()
-                       << "_" << currentAltForNonTerminal.current_lkey ().mAttribute_string.stringValue ().identifierRepresentation ()
+        generatedZone3 << "grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+                       << "_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                        << " (" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
@@ -1555,7 +1555,7 @@ generate_LR1_grammar_cpp_file (C_Compiler & inLexique,
 //--- Generate file
   TC_UniqueArray <C_String> directoriesToExclude ;
   directoriesToExclude.addObject ("DEPENDENCIES") ;
-  inLexique.generateFileFromPathes (inOutputDirectoryForCppFiles,
+  inCompiler->generateFileFromPathes (inOutputDirectoryForCppFiles,
                                     directoriesToExclude,
                                     "//",
                                     inTargetFileName + ".cpp",
@@ -1616,13 +1616,13 @@ compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
 //---------------------------------------------------------------------------*
 
 void
-LR1_computations (C_Compiler & inLexique,
+LR1_computations (C_Compiler * inCompiler,
                   const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
                   C_HTML_FileWrite * inHTMLfile,
                   const TC_UniqueArray <TC_UniqueArray <PMSInt32> > & inFIRSTarray,
                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                  const GALGAS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
+                  const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const PMUInt32 inOriginalGrammarStartSymbol,
                   const C_String & inTargetFileName,
                   const C_String & inOutputDirectoryForCppFiles,
@@ -1844,12 +1844,12 @@ LR1_computations (C_Compiler & inLexique,
   }
 //--- Generate C++ file
   if (conflictCount == 0) {
-    generate_LR1_grammar_cpp_file (inLexique,
+    generate_LR1_grammar_cpp_file (inCompiler,
                                    inProductionRules,
                                    inVocabulary,
                                    SLRdecisionTable,
                                    transitionList,
-                                   inNonterminalSymbolsMapForGrammar,
+                                   inNonTerminalSymbolSortedListForGrammarAnalysis,
                                    inOriginalGrammarStartSymbol,
                                    inLexiqueName,
                                    inTargetFileName,

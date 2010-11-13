@@ -28,6 +28,7 @@ abstract method @actualParameterForGeneration generateActualParameter
   ?!@uint ioTemporaryVariableIndex
   ?!@string ioImplementation
   ?!@stringlist ioJokerParametersToReleaseList
+  ?!@stringlist ioOutputVariableList
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppName
 ;
@@ -38,6 +39,7 @@ override method @outputActualParameterForGeneration generateActualParameter
   ?!@uint ioTemporaryVariableIndex
   ?!@string ioImplementation
   ?!@stringlist unused ioJokerParametersToReleaseList
+  ?!@stringlist unused ioOutputVariableList
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppName
 :
@@ -50,6 +52,7 @@ override method @outputInputActualParameterForGeneration generateActualParameter
   ?!@uint unused ioTemporaryVariableIndex
   ?!@string unused ioImplementation
   ?!@stringlist unused ioJokerParametersToReleaseList
+  ?!@stringlist unused ioOutputVariableList
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppName
 :
@@ -66,10 +69,12 @@ override method @inputActualParameterForGeneration generateActualParameter
   ?!@uint unused ioTemporaryVariableIndex
   ?!@string unused ioImplementation
   ?!@stringlist unused ioJokerParametersToReleaseList
+  ?!@stringlist ioOutputVariableList
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppName
 :
   outCppName := mInputActualCppName ;
+  ioOutputVariableList += !mInputActualCppName ;
   [!?ioUnusedVariableCppNameSet removeKey !outCppName] ;
 end method ;
 
@@ -79,12 +84,14 @@ override method @inputJokerParameterForGeneration generateActualParameter
   ?!@uint unused ioTemporaryVariableIndex
   ?!@string ioImplementation
   ?!@stringlist ioJokerParametersToReleaseList
+  ?!@stringlist ioOutputVariableList
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppName
 :
   outCppName := mInputActualCppName ;
   ioImplementation .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " " . outCppName . " ; // Joker input parameter\n" ;
   ioJokerParametersToReleaseList += !mInputActualCppName ;
+  ioOutputVariableList += !mInputActualCppName ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -94,6 +101,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 abstract method @semanticInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -102,6 +110,7 @@ abstract method @semanticInstructionForGeneration generateInstruction
 #---------------------------------------------------------------------------*
 
 function generateRoutineBody
+  ??@bool inGenerateCheckValid
   ??@semanticInstructionListForGeneration inInstructionList
   ->@string outGeneratedCode
 :
@@ -110,7 +119,7 @@ function generateRoutineBody
   @uint temporaryVariableIndex := 0 ;
   [!?outGeneratedCode incIndentation !2] ;
   foreach inInstructionList do
-    [mInstruction generateInstruction !?temporaryVariableIndex !?unusedVariableCppNameSet !?outGeneratedCode] ;
+    [mInstruction generateInstruction !inGenerateCheckValid !?temporaryVariableIndex !?unusedVariableCppNameSet !?outGeneratedCode] ;
   end foreach ;
   [!?outGeneratedCode decIndentation !2] ;
 end function ;
@@ -118,6 +127,7 @@ end function ;
 #---------------------------------------------------------------------------*
 
 routine generateInstructionList
+  ??@bool inGenerateCheckValid
   ??@semanticInstructionListForGeneration inInstructionList
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
@@ -125,7 +135,7 @@ routine generateInstructionList
 :
   [!?ioGeneratedCode incIndentation !2] ;
   foreach inInstructionList do
-    [mInstruction generateInstruction !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode] ;
+    [mInstruction generateInstruction !inGenerateCheckValid !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode] ;
   end foreach ;
   [!?ioGeneratedCode decIndentation !2] ;
 end routine ;
@@ -133,6 +143,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 override method @localVariableOrConstantDeclarationWithSourceExpressionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -141,12 +152,18 @@ override method @localVariableOrConstantDeclarationWithSourceExpressionForGenera
   @string sourceVar ;
   [mSourceExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
   ioGeneratedCode .= "GALGAS_" . [mTargetType identifierRepresentation] . " " . mCppVariableName
-                    . " (" . sourceVar . ") ;\n" ;
+                    . " = " . sourceVar . " ;\n" ;
+  if inGenerateCheckValid then
+    ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
+    ioGeneratedCode .= "  " . mCppVariableName . ".checkIsValid (HERE) ;\n" ;
+    ioGeneratedCode .= "#endif\n" ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @localVariableDeclarationForGeneration generateInstruction
+  ??@bool unused inGenerateCheckValid
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -158,6 +175,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @localVariableOrConstantDeclarationWithConstructorCallForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -171,7 +189,7 @@ override method @localVariableOrConstantDeclarationWithConstructorCallForGenerat
   end foreach ;
   ioGeneratedCode .= "GALGAS_" . [mTargetType identifierRepresentation]
                    . " " . mTargetVariableCppName
-                   . " (GALGAS_"  . [mTargetType identifierRepresentation]
+                   . " = GALGAS_"  . [mTargetType identifierRepresentation]
                    . "::constructor_" . [mConstructorName identifierRepresentation]
                    . " (" ;
   foreach parameterList
@@ -188,15 +206,21 @@ override method @localVariableOrConstantDeclarationWithConstructorCallForGenerat
     needsComma := true ;
   end if ;
   if needsComma then
-    ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . "))) ;\n" ;
+    ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   else
-    ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . "))) ;\n" ;
+    ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+  end if ;
+  if inGenerateCheckValid then
+    ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
+    ioGeneratedCode .= "  " . mTargetVariableCppName . ".checkIsValid (HERE) ;\n" ;
+    ioGeneratedCode .= "#endif\n" ;
   end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @assignmentInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -210,11 +234,17 @@ override method @assignmentInstructionForGeneration generateInstruction
   end foreach ;
   ioGeneratedCode .= receiverCppName . " = " . sourceVar . " ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !mTargetCppName] ;
+  if inGenerateCheckValid then
+    ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
+    ioGeneratedCode .= "  " . receiverCppName . ".checkIsValid (HERE) ;\n" ;
+    ioGeneratedCode .= "#endif\n" ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @dropInstructionForGeneration generateInstruction
+  ??@bool unused inGenerateCheckValid
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -228,6 +258,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @appendInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -241,11 +272,17 @@ override method @appendInstructionForGeneration generateInstruction
   ioGeneratedCode .= mTargetVariableCppName . ".dotAssign_operation (" . sourceVar
                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !mTargetVariableCppName] ;
+  if inGenerateCheckValid then
+    ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
+    ioGeneratedCode .= "  " . mTargetVariableCppName . ".checkIsValid (HERE) ;\n" ;
+    ioGeneratedCode .= "#endif\n" ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @grammarInstructionWithSourceFileForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -257,9 +294,17 @@ override method @grammarInstructionWithSourceFileForGeneration generateInstructi
 #--- Parameters
   @stringlist parameterCppNameList [emptyList] ;
   @stringlist jokerParametersToReleaseList [emptyList] ;
+  @stringlist inputVariableList [emptyList] ;
   foreach mActualParameterList do
     @string parameterCppName ;
-    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    [mActualParameter generateActualParameter
+      !?ioTemporaryVariableIndex
+      !?ioGeneratedCode
+      !?jokerParametersToReleaseList
+      !?inputVariableList
+      !?ioUnusedVariableCppNameSet
+      ?parameterCppName
+    ] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
   ioGeneratedCode .= "cGrammar_" . [mGrammarName identifierRepresentation]
@@ -271,11 +316,19 @@ override method @grammarInstructionWithSourceFileForGeneration generateInstructi
   ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .= "} //-------- END @grammarInstructionWithSourceFileForGeneration\n" ;
+  if inGenerateCheckValid then
+    ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
+    foreach inputVariableList do
+      ioGeneratedCode .= "  " . mValue . ".checkIsValid (HERE) ;\n" ;
+    end foreach ;
+    ioGeneratedCode .= "#endif\n" ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @grammarInstructionWithSourceExpressionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -287,9 +340,10 @@ override method @grammarInstructionWithSourceExpressionForGeneration generateIns
 #--- Parameters
   @stringlist parameterCppNameList [emptyList] ;
   @stringlist jokerParametersToReleaseList [emptyList] ;
+  @stringlist inputVariableList [emptyList] ;
   foreach mActualParameterList do
     @string parameterCppName ;
-    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
   ioGeneratedCode .= "cGrammar_" . [mGrammarName identifierRepresentation]
@@ -300,12 +354,20 @@ override method @grammarInstructionWithSourceExpressionForGeneration generateIns
   end foreach ;
   ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+  if inGenerateCheckValid then
+    ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
+    foreach inputVariableList do
+      ioGeneratedCode .= "  " . mValue . ".checkIsValid (HERE) ;\n" ;
+    end foreach ;
+    ioGeneratedCode .= "#endif\n" ;
+  end if ;
   ioGeneratedCode .= "} //---- END @grammarInstructionWithSourceExpressionForGeneration\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @ifInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -316,10 +378,22 @@ override method @ifInstructionForGeneration generateInstruction
   [mIFexpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?cppVarName] ;
 #--- If test expression is not valuated or false, execute 'else' part
   ioGeneratedCode .= "if (" . cppVarName . ".isValidAndTrue ()) {\n" ;
-  generateInstructionList !m_then_instructionList !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
+  generateInstructionList
+    !inGenerateCheckValid
+    !m_then_instructionList
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !?ioGeneratedCode
+  ;
   if [m_else_instructionList length] > 0 then
     ioGeneratedCode .= "}else{\n" ;
-    generateInstructionList !m_else_instructionList !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
+    generateInstructionList
+      !inGenerateCheckValid
+      !m_else_instructionList
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !?ioGeneratedCode
+    ;
   end if ;
   ioGeneratedCode .= "}\n" ;
 end method ;
@@ -327,6 +401,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @errorInstructionForGeneration generateInstruction
+  ??@bool unused inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -358,6 +433,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @warningInstructionForGeneration generateInstruction
+  ??@bool unused inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -384,6 +460,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @methodCallInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -395,9 +472,10 @@ override method @methodCallInstructionForGeneration generateInstruction
 #---
   @stringlist parameterCppNameList [emptyList] ;
   @stringlist jokerParametersToReleaseList [emptyList] ;
+  @stringlist inputVariableList [emptyList] ;
   foreach mActualParameterList do
     @string parameterCppName ;
-    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
@@ -424,12 +502,20 @@ override method @methodCallInstructionForGeneration generateInstruction
     ioGeneratedCode .= " COMMA_" ;
   end if ;
   ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+  if inGenerateCheckValid then
+    ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
+    foreach inputVariableList do
+      ioGeneratedCode .= "  " . mValue . ".checkIsValid (HERE) ;\n" ;
+    end foreach ;
+    ioGeneratedCode .= "#endif\n" ;
+  end if ;
   ioGeneratedCode .= "//-------- END @methodCallInstructionForGeneration\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @thisMethodCallInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -439,9 +525,10 @@ override method @thisMethodCallInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !selfMarkName []] ;
   @stringlist parameterCppNameList [emptyList] ;
   @stringlist jokerParametersToReleaseList [emptyList] ;
+  @stringlist inputVariableList [emptyList] ;
   foreach mActualParameterList do
     @string parameterCppName ;
-    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
@@ -468,12 +555,20 @@ override method @thisMethodCallInstructionForGeneration generateInstruction
     ioGeneratedCode .= " COMMA_" ;
   end if ;
   ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+  if inGenerateCheckValid then
+    ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
+    foreach inputVariableList do
+      ioGeneratedCode .= "  " . mValue . ".checkIsValid (HERE) ;\n" ;
+    end foreach ;
+    ioGeneratedCode .= "#endif\n" ;
+  end if ;
   ioGeneratedCode .= "//-------- END @thisMethodCallInstructionForGeneration\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @superMethodCallInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -482,9 +577,10 @@ override method @superMethodCallInstructionForGeneration generateInstruction
 #---
   @stringlist parameterCppNameList [emptyList] ;
   @stringlist jokerParametersToReleaseList [emptyList] ;
+  @stringlist inputVariableList [emptyList] ;
   foreach mActualParameterList do
     @string parameterCppName ;
-    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
@@ -507,12 +603,20 @@ override method @superMethodCallInstructionForGeneration generateInstruction
     ioGeneratedCode .= " COMMA_" ;
   end if ;
   ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
+  if inGenerateCheckValid then
+    ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
+    foreach inputVariableList do
+      ioGeneratedCode .= "  " . mValue . ".checkIsValid (HERE) ;\n" ;
+    end foreach ;
+    ioGeneratedCode .= "#endif\n" ;
+  end if ;
   ioGeneratedCode .= "//-------- END @superMethodCallInstructionForGeneration\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @routineCallInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -521,9 +625,10 @@ override method @routineCallInstructionForGeneration generateInstruction
 #--- Parameters
   @stringlist parameterCppNameList [emptyList] ;
   @stringlist jokerParametersToReleaseList [emptyList] ;
+  @stringlist inputVariableList [emptyList] ;
   foreach mActualParameterList do
     @string parameterCppName ;
-    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
@@ -533,12 +638,20 @@ override method @routineCallInstructionForGeneration generateInstruction
   end foreach ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .=  compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[[mRoutineName location] line] string] . ")) ;\n" ;
+  if inGenerateCheckValid then
+    ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
+    foreach inputVariableList do
+      ioGeneratedCode .= "  " . mValue . ".checkIsValid (HERE) ;\n" ;
+    end foreach ;
+    ioGeneratedCode .= "#endif\n" ;
+  end if ;
   ioGeneratedCode .= "} //-------- @routineCallInstructionForGeneration\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @modifierCallInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -551,9 +664,10 @@ override method @modifierCallInstructionForGeneration generateInstruction
 #--- Parameters
   @stringlist parameterCppNameList [emptyList] ;
   @stringlist jokerParametersToReleaseList [emptyList] ;
+  @stringlist inputVariableList [emptyList] ;
   foreach mActualParameterList do
     @string parameterCppName ;
-    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
@@ -574,12 +688,20 @@ override method @modifierCallInstructionForGeneration generateInstruction
     ioGeneratedCode .= " COMMA_" ;
   end if ;
   ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[[mModifierName location] line] string] . ")) ;\n" ;
+  if inGenerateCheckValid then
+    ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
+    foreach inputVariableList do
+      ioGeneratedCode .= "  " . mValue . ".checkIsValid (HERE) ;\n" ;
+    end foreach ;
+    ioGeneratedCode .= "#endif\n" ;
+  end if ;
   ioGeneratedCode .= "} //-------- END @typeMethodInstructionForGeneration\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @thisModifierCallInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -588,9 +710,10 @@ override method @thisModifierCallInstructionForGeneration generateInstruction
 #--- Parameters
   @stringlist parameterCppNameList [emptyList] ;
   @stringlist jokerParametersToReleaseList [emptyList] ;
+  @stringlist inputVariableList [emptyList] ;
   foreach mActualParameterList do
     @string parameterCppName ;
-    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
@@ -610,12 +733,20 @@ override method @thisModifierCallInstructionForGeneration generateInstruction
     ioGeneratedCode .= " COMMA_" ;
   end if ;
   ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[[mModifierName location] line] string] . ")) ;\n" ;
+  if inGenerateCheckValid then
+    ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
+    foreach inputVariableList do
+      ioGeneratedCode .= "  " . mValue . ".checkIsValid (HERE) ;\n" ;
+    end foreach ;
+    ioGeneratedCode .= "#endif\n" ;
+  end if ;
   ioGeneratedCode .= "} //-------- END @thisModifierCallInstructionForGeneration\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @superModifierCallInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -624,9 +755,10 @@ override method @superModifierCallInstructionForGeneration generateInstruction
 #--- Parameters
   @stringlist parameterCppNameList [emptyList] ;
   @stringlist jokerParametersToReleaseList [emptyList] ;
+  @stringlist inputVariableList [emptyList] ;
   foreach mActualParameterList do
     @string parameterCppName ;
-    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
@@ -646,12 +778,20 @@ override method @superModifierCallInstructionForGeneration generateInstruction
     ioGeneratedCode .= " COMMA_" ;
   end if ;
   ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[[mModifierName location] line] string] . ")) ;\n" ;
+  if inGenerateCheckValid then
+    ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
+    foreach inputVariableList do
+      ioGeneratedCode .= "  " . mValue . ".checkIsValid (HERE) ;\n" ;
+    end foreach ;
+    ioGeneratedCode .= "#endif\n" ;
+  end if ;
   ioGeneratedCode .= "} //-------- END @superModifierCallInstructionForGeneration\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @typeMethodInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -660,9 +800,10 @@ override method @typeMethodInstructionForGeneration generateInstruction
 #--- Parameters
   @stringlist parameterCppNameList [emptyList] ;
   @stringlist jokerParametersToReleaseList [emptyList] ;
+  @stringlist inputVariableList [emptyList] ;
   foreach mActualParameterList do
     @string parameterCppName ;
-    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
@@ -683,12 +824,20 @@ override method @typeMethodInstructionForGeneration generateInstruction
     ioGeneratedCode .= " COMMA_" ;
   end if ;
   ioGeneratedCode .= "SOURCE_FILE_AT_LINE (" . [[[mMethodName location] line] string] . ")) ;\n" ;
+  if inGenerateCheckValid then
+    ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
+    foreach inputVariableList do
+      ioGeneratedCode .= "  " . mValue . ".checkIsValid (HERE) ;\n" ;
+    end foreach ;
+    ioGeneratedCode .= "#endif\n" ;
+  end if ;
   ioGeneratedCode .= "} //-------- @routineCallInstructionForGeneration\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @structuredCastInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -710,6 +859,7 @@ override method @structuredCastInstructionForGeneration generateInstruction
       ioGeneratedCode .= "  GALGAS_" . [mType identifierRepresentation] . " " . mCastedVarCppName . " ((cPtr_" . [mType identifierRepresentation] . " *) " . castCppVarName . ".ptr ()) ;\n" ;
     end if ;
     generateInstructionList
+      !inGenerateCheckValid
       !mInstructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
@@ -721,6 +871,7 @@ override method @structuredCastInstructionForGeneration generateInstruction
   if [mElseInstructionList length] > 0 then
     ioGeneratedCode .= "}else{\n" ;
     generateInstructionList
+      !inGenerateCheckValid
       !mElseInstructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
@@ -736,6 +887,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @addAssignInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -761,11 +913,17 @@ override method @addAssignInstructionForGeneration generateInstruction
     between ioGeneratedCode .= ", " ;
   end foreach ;
   ioGeneratedCode .= " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n"  ;
+  if inGenerateCheckValid then
+    ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
+    ioGeneratedCode .= "  " . receiverCppName . ".checkIsValid (HERE) ;\n" ;
+    ioGeneratedCode .= "#endif\n" ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @incrementInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -781,11 +939,17 @@ override method @incrementInstructionForGeneration generateInstruction
   ioGeneratedCode .= receiverCppName . ".increment_operation (" . compilerCppName []
                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+  if inGenerateCheckValid then
+    ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
+    ioGeneratedCode .= "  " . receiverCppName . ".checkIsValid (HERE) ;\n" ;
+    ioGeneratedCode .= "#endif\n" ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @decrementInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -801,11 +965,17 @@ override method @decrementInstructionForGeneration generateInstruction
   ioGeneratedCode .= receiverCppName . ".decrement_operation (" . compilerCppName []
                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+  if inGenerateCheckValid then
+    ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
+    ioGeneratedCode .= "  " . receiverCppName . ".checkIsValid (HERE) ;\n" ;
+    ioGeneratedCode .= "#endif\n" ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @messageInstructionForGeneration generateInstruction
+  ??@bool unused inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -823,6 +993,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @loopInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -839,7 +1010,13 @@ override method @loopInstructionForGeneration generateInstruction
   ioGeneratedCode .= "bool " . loopVar . " = true ;\n"
                   . "while (" . loopVar . ") {\n" ;
   [!?ioGeneratedCode incIndentation !2] ;
-  generateInstructionList !mFirstInstructions !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
+  generateInstructionList
+    !inGenerateCheckValid
+    !mFirstInstructions
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !?ioGeneratedCode
+  ;
   @string loopExpressionVar ;
   [mLoopExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?loopExpressionVar] ;
   ioGeneratedCode .= loopVar . " = " . loopExpressionVar . ".isValid () ;\n"
@@ -853,7 +1030,13 @@ override method @loopInstructionForGeneration generateInstruction
                      "}\n"
                    . "if (" . loopVar . ") {\n" ;
   ioGeneratedCode .= "  " . variantVar . " -- ;\n" ;
-  generateInstructionList !mSecondInstructions !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
+  generateInstructionList
+    !inGenerateCheckValid
+    !mSecondInstructions
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !?ioGeneratedCode
+  ;
   ioGeneratedCode .= "}\n" ;
   [!?ioGeneratedCode decIndentation !2] ;
   ioGeneratedCode .= "}\n" ;
@@ -864,6 +1047,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @readOnlyWithInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -890,10 +1074,22 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
   end if ;
   ioGeneratedCode .= "if (NULL != " . mObjectArrayCppName . ") {\n"
                   .  "    macroValidSharedObject (" . mObjectArrayCppName . ", const cMapElement_" . [receiverType identifierRepresentation] . ") ;\n" ;
-  generateInstructionList !mDoBranchInstructions !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
+  generateInstructionList
+    !inGenerateCheckValid
+    !mDoBranchInstructions
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    !?ioGeneratedCode
+  ;
   if [mElseBranchInstructions length] > 0 then
     ioGeneratedCode .= "}else{\n" ;
-    generateInstructionList !mElseBranchInstructions !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
+    generateInstructionList
+      !inGenerateCheckValid
+      !mElseBranchInstructions
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !?ioGeneratedCode
+    ;
   end if ;
   ioGeneratedCode .= "}\n" ;
 end method ;
@@ -901,6 +1097,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @readWriteWithInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -925,10 +1122,22 @@ override method @readWriteWithInstructionForGeneration generateInstruction
                   .  ", " . keyVarCppName . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n"
                   .  "if (NULL != " . mObjectArrayCppName . ") {\n"
                   .  "    macroValidSharedObject (" . mObjectArrayCppName . ", cMapElement_" . [mReceiverType identifierRepresentation] . ") ;\n" ;
-  generateInstructionList !mDoBranchInstructions !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
+  generateInstructionList
+   !inGenerateCheckValid
+   !mDoBranchInstructions
+   !?ioTemporaryVariableIndex
+   !?ioUnusedVariableCppNameSet
+   !?ioGeneratedCode
+  ;
   if [mElseBranchInstructions length] > 0 then
     ioGeneratedCode .= "}else{\n" ;
-    generateInstructionList !mElseBranchInstructions !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet !?ioGeneratedCode ;
+    generateInstructionList
+      !inGenerateCheckValid
+      !mElseBranchInstructions
+      !?ioTemporaryVariableIndex
+      !?ioUnusedVariableCppNameSet
+      !?ioGeneratedCode
+    ;
   end if ;
   ioGeneratedCode .= "}\n" ;
 end method ;
@@ -936,6 +1145,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @foreachInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -974,6 +1184,7 @@ override method @foreachInstructionForGeneration generateInstruction
     end foreach ;
     ioGeneratedCode .= boolVarCppName . ") {\n" ;
     generateInstructionList
+      !inGenerateCheckValid
       !mBeforeInstructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
@@ -987,6 +1198,7 @@ override method @foreachInstructionForGeneration generateInstruction
     ioGeneratedCode .= boolVarCppName . ") {\n" ;
   #--- Generate 'do' instruction
     generateInstructionList
+      !inGenerateCheckValid
       !mDoInstructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
@@ -1007,6 +1219,7 @@ override method @foreachInstructionForGeneration generateInstruction
       end foreach ;
       ioGeneratedCode .= boolVarCppName . ") {\n" ;
       generateInstructionList
+        !inGenerateCheckValid
         !mBetweenInstructionList
         !?ioTemporaryVariableIndex
         !?ioUnusedVariableCppNameSet
@@ -1025,6 +1238,7 @@ override method @foreachInstructionForGeneration generateInstruction
     ioGeneratedCode .= "}\n" ;
   #--- Generate 'after' instruction
     generateInstructionList
+      !inGenerateCheckValid
       !mAfterInstructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
@@ -1045,6 +1259,7 @@ override method @foreachInstructionForGeneration generateInstruction
     ioGeneratedCode .= ") {\n" ;
   #--- Generate 'do' instruction
     generateInstructionList
+      !inGenerateCheckValid
       !mDoInstructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
@@ -1060,6 +1275,7 @@ override method @foreachInstructionForGeneration generateInstruction
       end foreach ;
       ioGeneratedCode .= ") {\n" ;
       generateInstructionList
+        !inGenerateCheckValid
         !mBetweenInstructionList
         !?ioTemporaryVariableIndex
         !?ioUnusedVariableCppNameSet
@@ -1083,6 +1299,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @sendInstructionForGeneration generateInstruction
+  ??@bool unused inGenerateCheckValid
   ?!@uint unused ioTemporaryVariableIndex
   ?!@stringset unused ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -1093,6 +1310,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @logInstructionForGeneration generateInstruction
+  ??@bool unused inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -1106,6 +1324,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @switchInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -1125,6 +1344,7 @@ override method @switchInstructionForGeneration generateInstruction
     end foreach ;
     ioGeneratedCode .= "{\n" ;
     generateInstructionList
+      !inGenerateCheckValid
       !mInstructions
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
@@ -1140,6 +1360,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @matchInstructionForGeneration generateInstruction
+  ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
@@ -1173,6 +1394,7 @@ override method @matchInstructionForGeneration generateInstruction
     end foreach ;
     ioGeneratedCode .= ") {\n" ;
     generateInstructionList
+      !inGenerateCheckValid
       !mMatchBranchInstructionList
       !?ioTemporaryVariableIndex
       !?ioUnusedVariableCppNameSet
@@ -1182,6 +1404,7 @@ override method @matchInstructionForGeneration generateInstruction
   end foreach ;
   ioGeneratedCode .= "}else{\n" ;
   generateInstructionList
+    !inGenerateCheckValid
     !mElseInstructionList
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet

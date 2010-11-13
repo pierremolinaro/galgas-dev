@@ -330,7 +330,7 @@ class cEnumerator_%!TYPE_IDENTIFIER% : public cGenericAbstractEnumerator {
 
 //--- Current element access\n%
     foreach ENUMERATION_DESCRIPTOR_LIST do
-%  public : GALGAS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (void) const ;\n%
+%  public : GALGAS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
     end foreach%} ;
 %
 end if

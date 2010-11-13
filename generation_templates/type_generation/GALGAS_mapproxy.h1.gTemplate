@@ -4,7 +4,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_mapproxy {
+class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_uniqueMapProxy {
 //--------------------------------- Default constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
 

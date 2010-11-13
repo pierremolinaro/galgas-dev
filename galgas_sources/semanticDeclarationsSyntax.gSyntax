@@ -155,6 +155,66 @@ rule <semantic_declaration>
   @mapSearchMethodListAST mSearchMethodList [emptyList] ;
   @mapRemoveMethodListAST mRemoveMethodList [emptyList] ;
   @insertOrReplaceDeclarationListAST insertOrReplaceDeclarationListAST [emptyList] ;
+  repeat
+  while
+    <attribute_declaration> !? mAttributeList ;
+  while
+    $insert$ ;
+    <insert_method_declaration> !? mInsertMethodList ;
+  while
+    $search$ ;
+    $identifier$ ? @lstring mMethodName ;
+    $error$ ;
+    $message$ ;
+    $literal_string$ ? @lstring mErrorMessage ;
+    $;$ ;
+    mSearchMethodList +=
+      !mMethodName
+      !mErrorMessage
+      ![@lstring new !"" !here]
+    ;
+  while
+    $remove$ ;
+    $identifier$ ? @lstring mMethodName ;
+    $error$ ;
+    $message$ ;
+    $literal_string$ ? @lstring mErrorMessage ;
+    $;$ ;
+    mRemoveMethodList +=
+      !mMethodName
+      !mErrorMessage
+    ;
+  while
+    $insert$ ;
+    $or$ ;
+    $replace$ ;
+    insertOrReplaceDeclarationListAST += !here ;
+    $;$ ;
+  end repeat ;
+  $}$ ;
+  ioSemanticDeclarations += ![@mapDeclarationAST new
+    !mMapTypeName
+    !mAttributeList
+    !mInsertMethodList
+    !mSearchMethodList
+    !mRemoveMethodList
+    !insertOrReplaceDeclarationListAST
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
+:
+  $uniquemap$ ;
+#--- Map type name
+  $type_name$ ? @lstring mMapTypeName ;
+#--- Map properties
+  ${$ ;
+  @attributeInCollectionListAST mAttributeList [emptyList] ;
+  @insertMethodListAST mInsertMethodList [emptyList] ;
+  @mapSearchMethodListAST mSearchMethodList [emptyList] ;
   @mapStateList mapStateList [emptyList] ;
   @mapOverrideBlockListAST mapOverrideBlockListAST [emptyList] ;
   repeat
@@ -235,23 +295,6 @@ rule <semantic_declaration>
       !actionName
     ;
   while
-    $remove$ ;
-    $identifier$ ? @lstring mMethodName ;
-    $error$ ;
-    $message$ ;
-    $literal_string$ ? @lstring mErrorMessage ;
-    $;$ ;
-    mRemoveMethodList +=
-      !mMethodName
-      !mErrorMessage
-    ;
-  while
-    $insert$ ;
-    $or$ ;
-    $replace$ ;
-    insertOrReplaceDeclarationListAST += !here ;
-    $;$ ;
-  while
     $override$ ;
     $identifier$ ? @lstring overrideBlockName ;
     @mapOverrideBlockDescriptorAST mapOverrideBlockDescriptor1AST [emptyList] ;
@@ -309,13 +352,11 @@ rule <semantic_declaration>
     mapOverrideBlockListAST += !overrideBlockName !mapOverrideBlockDescriptor1AST !mapOverrideBlockDescriptor2AST ;
   end repeat ;
   $}$ ;
-  ioSemanticDeclarations += ![@mapDeclarationAST new
+  ioSemanticDeclarations += ![@uniqueMapDeclarationAST new
     !mMapTypeName
     !mAttributeList
     !mInsertMethodList
     !mSearchMethodList
-    !mRemoveMethodList
-    !insertOrReplaceDeclarationListAST
     !mapStateList
     !mapOverrideBlockListAST
   ] ;
@@ -323,7 +364,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    M A P    I N D E X    D E C L A R A T I O N                            *
+#    M A P    P R O X Y    D E C L A R A T I O N                            *
 #                                                                           *
 #---------------------------------------------------------------------------*
 

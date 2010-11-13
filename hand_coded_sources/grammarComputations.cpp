@@ -267,7 +267,7 @@ static PMUInt16 bddBitCountForVocabulary (const cVocabulary & inVocabulary) {
 //---------------------------------------------------------------------------*
 
 static void
-analyzeGrammar (C_Compiler & inLexique,
+analyzeGrammar (C_Compiler * inCompiler,
                 const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                 const GALGAS_lstring & inTargetFileName,
                 const GALGAS_lstring & inGrammarClass,
@@ -276,7 +276,7 @@ analyzeGrammar (C_Compiler & inLexique,
                 const GALGAS_location & errorLocation,
                 const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
                 const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
-                const GALGAS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
+                const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                 const C_String & inOutputDirectoryForCppFiles,
                 const C_String & inOutputDirectoryForHTMLFile) {
   bool warningFlag = false ;
@@ -293,7 +293,7 @@ analyzeGrammar (C_Compiler & inLexique,
   }else if (inGrammarClass.mAttribute_string.stringValue ().compare ("LR1") == 0) { // Force LR (1) grammar
     grammarClass = kLR1grammar ;
   }else{ // Unknown class... error !
-    inLexique.semanticErrorAtLocation (inGrammarClass.mAttribute_location, "Unknown grammar class" COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (inGrammarClass.mAttribute_location, "Unknown grammar class" COMMA_HERE) ;
   }
 
 //--- Error flag
@@ -310,7 +310,7 @@ analyzeGrammar (C_Compiler & inLexique,
   inOutputDirectoryForHTMLFile.makeDirectoryIfDoesNotExist () ;
   const C_String HTMLfileName = inOutputDirectoryForHTMLFile + "/" + inTargetFileName.mAttribute_string.stringValue () + ".html" ;
   C_HTML_FileWrite * HTMLfile = NULL ;
-  if (outputHTMLfile && inLexique.mPerformGeneration) {
+  if (outputHTMLfile && inCompiler->mPerformGeneration) {
     C_String s ;
     s << "'" << inTargetFileName.mAttribute_string.stringValue () << "' grammar" ;
     bool ok = false ;
@@ -323,7 +323,7 @@ analyzeGrammar (C_Compiler & inLexique,
     if (! ok) {
       C_String message ;
       message << "Cannot open '" << HTMLfileName << "' file in write mode." ;
-      inLexique.onTheFlySemanticError (message COMMA_HERE) ;
+      inCompiler->onTheFlySemanticError (message COMMA_HERE) ;
     }
   //--- HTML title
     HTMLfile->outputRawData ("<h1>") ;
@@ -340,13 +340,13 @@ analyzeGrammar (C_Compiler & inLexique,
                              "<p><a class=\"header_link\" href=\"#grammar\">Grammar analysis</a></p>"
                              ) ;
   }else if ((! outputHTMLfile) && HTMLfileName.fileExists ()) { // Delete HTML file
-    if (inLexique.mPerformGeneration) {
+    if (inCompiler->mPerformGeneration) {
       HTMLfileName.deleteFile () ;
       if (verboseOptionOn) {
-        inLexique.ggs_printRewriteFileSuccess ((C_String ("Deleted '") + HTMLfileName + "'.\n").cString (HERE)) ;
+        inCompiler->ggs_printRewriteFileSuccess ((C_String ("Deleted '") + HTMLfileName + "'.\n").cString (HERE)) ;
       }
     }else{
-      inLexique.ggs_printWarning ((C_String ("Need to delete '") + HTMLfileName + "'.\n").cString (HERE)) ;
+      inCompiler->ggs_printWarning ((C_String ("Need to delete '") + HTMLfileName + "'.\n").cString (HERE)) ;
     }
   }
 
@@ -373,7 +373,7 @@ analyzeGrammar (C_Compiler & inLexique,
     }
   //--- Build vocabulary
     vocabulary.buildVocabulary (inTerminalSymbolMap,
-                                inNonterminalSymbolsMapForGrammar,
+                                inNonTerminalSymbolSortedListForGrammarAnalysis,
                                 inOriginalGrammarStartSymbol.uintValue ()) ;
   
   //--- Build pure BNFproductions, add new non terminal symbols from 'repeat' and 'select' instructions
@@ -455,7 +455,7 @@ analyzeGrammar (C_Compiler & inLexique,
   #endif
   C_BDD_Set1 usefulSymbols (vocabularyDescriptor) ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
-    useful_symbols_computations (inLexique,
+    useful_symbols_computations (inCompiler,
                                  inUnusedNonTerminalSymbolsForGrammar,
                                  pureBNFproductions,
                                  bddBitCount,
@@ -540,14 +540,14 @@ analyzeGrammar (C_Compiler & inLexique,
   if ((errorFlag == kNoError)
    && ((grammarClass == kDefaultBehavior) || (grammarClass == kLL1grammar))) {
     bool ok = false ;
-    LL1_computations (inLexique,
+    LL1_computations (inCompiler,
                       pureBNFproductions,
                       HTMLfile,
                       vocabulary,
                       vocabularyDerivingToEmpty_Array,
                       FIRSTsets,
                       FOLLOWsets,
-                      inNonterminalSymbolsMapForGrammar,
+                      inNonTerminalSymbolSortedListForGrammarAnalysis,
                       inOriginalGrammarStartSymbol.uintValue (),
                       inTargetFileName.mAttribute_string.stringValue (),
                       inOutputDirectoryForCppFiles,
@@ -563,12 +563,12 @@ analyzeGrammar (C_Compiler & inLexique,
         ||
      ((errorFlag == kNoError) && (grammarClass == kSLRgrammar))) {
     bool ok = false ;
-    SLR_computations (inLexique,
+    SLR_computations (inCompiler,
                       pureBNFproductions,
                       vocabulary,
                       HTMLfile,
                       FOLLOWarray,
-                      inNonterminalSymbolsMapForGrammar,
+                      inNonTerminalSymbolSortedListForGrammarAnalysis,
                       inOriginalGrammarStartSymbol.uintValue (),
                       inTargetFileName.mAttribute_string.stringValue (),
                       inOutputDirectoryForCppFiles,
@@ -587,13 +587,13 @@ analyzeGrammar (C_Compiler & inLexique,
         ||
      ((errorFlag == kNoError) && (grammarClass == kLR1grammar))) {
     bool ok = false ;
-    LR1_computations (inLexique,
+    LR1_computations (inCompiler,
                       pureBNFproductions,
                       vocabulary,
                       HTMLfile,
                       FIRSTarray,
                       vocabularyDerivingToEmpty_Array,
-                      inNonterminalSymbolsMapForGrammar,
+                      inNonTerminalSymbolSortedListForGrammarAnalysis,
                       inOriginalGrammarStartSymbol.uintValue (),
                       inTargetFileName.mAttribute_string.stringValue (),
                       inOutputDirectoryForCppFiles,
@@ -627,7 +627,7 @@ analyzeGrammar (C_Compiler & inLexique,
                       " turn on '--output-html-grammar-file' option in order to get an output file for debugging" ;
 
     }
-    inLexique.semanticErrorAtLocation (errorLocation, errorMessage COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (errorLocation, errorMessage COMMA_HERE) ;
   }else if (warningFlag) {
     C_String s ;
     s << "OK ; no error, but warning(s) step(s)" ;
@@ -649,17 +649,17 @@ analyzeGrammar (C_Compiler & inLexique,
     }else{
       warningMessage << "turn on '-H' command line option, and see generated '" << inTargetFileName.mAttribute_string.stringValue () << ".html' file" ;
     }
-    inLexique.semanticWarningAtLocation (errorLocation, warningMessage COMMA_HERE) ;
+    inCompiler->semanticWarningAtLocation (errorLocation, warningMessage COMMA_HERE) ;
   }else if (HTMLfile != NULL) {
     HTMLfile->appendCppTitleComment ("OK (no error, no warning)", "title") ;
   }
   if (outputHTMLfile) {
-    if (inLexique.mPerformGeneration) {
+    if (inCompiler->mPerformGeneration) {
       if (verboseOptionOn) {
-        inLexique.ggs_printCreatedFileSuccess (C_String ("Written '") + HTMLfileName + "'.\n") ;
+        inCompiler->ggs_printCreatedFileSuccess (C_String ("Written '") + HTMLfileName + "'.\n") ;
       }
     }else{
-      inLexique.ggs_printWarning (C_String ("Need to write '") + HTMLfileName + "'.\n") ;
+      inCompiler->ggs_printWarning (C_String ("Need to write '") + HTMLfileName + "'.\n") ;
     }
   }
   macroMyDelete (HTMLfile) ;
@@ -675,13 +675,14 @@ routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
                                       const GALGAS_location inErrorLocation,
                                       const GALGAS_terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap,
                                       const GALGAS_syntaxComponentListForGrammarAnalysis inSyntaxComponentsList,
-                                      const GALGAS_nonTerminalSymbolMapForGrammarAnalysis inNonterminalSymbolsMapForGrammar,
+                                      const GALGAS_nonTerminalSymbolMapForGrammarAnalysis /* inNonterminalSymbolsMapForGrammar */,
                                       const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar,
                                       const GALGAS_string inOutputDirectoryForCppFiles,
                                       const GALGAS_string inOutputDirectoryForHTMLFile,
-                                      C_Compiler * inLexique
+                                      const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis,
+                                      C_Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
-  if (inLexique->currentFileErrorCount() == 0) {
+  if (inCompiler->currentFileErrorCount() == 0) {
     #ifdef LOG_GRAMMAR_COMPUTATIONS
       printf ("MARK AND SWEEP BDD NODES\n") ; fflush (stdout) ;
     #endif
@@ -690,7 +691,7 @@ routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
     #ifdef LOG_GRAMMAR_COMPUTATIONS
       printf ("MARK AND SWEEP BDD NODES DONE\n") ; fflush (stdout) ;
     #endif
-    analyzeGrammar (*inLexique,
+    analyzeGrammar (inCompiler,
                     inUnusedNonTerminalSymbolsForGrammar,
                     inTargetFileName,
                     inGrammarClass,
@@ -699,7 +700,7 @@ routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
                     inErrorLocation,
                     inTerminalSymbolMap,
                     inSyntaxComponentsList,
-                    inNonterminalSymbolsMapForGrammar,
+                    inNonTerminalSymbolSortedListForGrammarAnalysis,
                     inOutputDirectoryForCppFiles.stringValue (),
                     inOutputDirectoryForHTMLFile.stringValue ()) ;
   }

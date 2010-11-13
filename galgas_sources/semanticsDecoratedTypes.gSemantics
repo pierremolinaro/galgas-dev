@@ -1206,6 +1206,16 @@ class @mapTypeForGeneration extends @semanticTypeForGeneration {
   @mapRemoveMethodListAST mRemoveMethodList ;
   @bool mHasInsertOrReplaceModifier ;
   @withAccessorMap mWithAccessorMap ; # Method for with accessor
+}
+
+#---------------------------------------------------------------------------*
+
+class @uniqueMapTypeForGeneration extends @semanticTypeForGeneration {
+  @lstring mMapTypeName ;
+  @typedAttributeList mTypedAttributeList ;
+  @insertMethodListAST mInsertMethodList ;
+  @mapSearchMethodListAST mSearchMethodList ;
+  @withAccessorMap mWithAccessorMap ; # Method for with accessor
   @mapAutomatonStateMap mMapAutomatonStateMap ;
   @mapAutomatonActionMap mMapAutomatonActionMap ;
   @mapStateSortedList mMapStateSortedList ;

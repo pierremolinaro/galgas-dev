@@ -45,25 +45,37 @@ cVocabulary::~cVocabulary (void) {
 
 void cVocabulary::
 buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
-                 const GALGAS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
+                 const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                  const PMUInt32 inOriginalGrammarStartSymbol) {
   mOriginalGrammarSymbolsCount = 0 ;
 //--- Append terminal symbols
   mTerminalSymbolsCount = inTerminalSymbolMap.count () ;
   cEnumerator_terminalSymbolsMapForGrammarAnalysis t (inTerminalSymbolMap, true) ;
   while (t.hasCurrentObject ()) {
-    mStringsArray.addObject (t.current_lkey ().mAttribute_string.stringValue ()) ;  
+    mStringsArray.addObject ("") ;  
+    t.gotoNextObject () ;
+  }
+  t.rewind () ;
+  while (t.hasCurrentObject ()) {
+   // printf ("ENTER TERMINAL: %u '%s'\n", t.current_mTerminalIndex ().uintValue (), t.current_lkey (HERE).mAttribute_string.stringValue ().cString (HERE)) ;
+    const PMUInt32 idx = t.current_mTerminalIndex (HERE).uintValue () ;
+    mStringsArray (idx COMMA_HERE) = t.current_lkey (HERE).mAttribute_string.stringValue () ;  
     t.gotoNextObject () ;
   }
 //--- One more entry for the empty string symbol (displayed '$$')
   mStringsArray.addObject ("") ; // Empty string symbol
   mTerminalSymbolsCount ++ ;
 //--- Append non terminal symbols from original grammar
-  cEnumerator_nonTerminalSymbolMapForGrammarAnalysis nonTerminal (inNonterminalSymbolsMapForGrammar, true) ;
+  cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, true) ;
   while (nonTerminal.hasCurrentObject ()) {
-    mStringsArray.addObject (nonTerminal.current_lkey ().mAttribute_string.stringValue ()) ;  
+    mStringsArray.addObject (nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ()) ;  
     nonTerminal.gotoNextObject () ;
   }
+/* for (PMSInt32 i=0 ; i<mStringsArray.count () ; i++) {
+    printf ("VOCABULARY '%s'\n", mStringsArray (i COMMA_HERE).cString (HERE));
+  }
+  printf ("----------------\n") ;
+*/
   mOriginalGrammarSymbolsCount = mStringsArray.count () ;
 //--- For all symbols of original grammar, don't generate choice
   mGenerateChoiceArray.clear () ;

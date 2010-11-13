@@ -41,7 +41,7 @@ fixNewNonterminalSymbolsForList (const GALGAS_syntaxInstructionListForGrammarAna
                                  PMSInt32 & ioCount) {
   cEnumerator_syntaxInstructionListForGrammarAnalysis currentInstruction (inList, true) ;
   while (currentInstruction.hasCurrentObject ()) {
-    cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) currentInstruction.current_mInstruction ().ptr () ;
+    cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) currentInstruction.current_mInstruction (HERE).ptr () ;
     macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
     p->fixNewNonterminalSymbols (ioVocabulary, inSyntaxComponentName, ioCount) ;
     currentInstruction.gotoNextObject () ;
@@ -62,7 +62,7 @@ fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
 
   cEnumerator_branchListForGrammarAnalysis currentBranch (mAttribute_mRepeatBranchList, true) ;
   while (currentBranch.hasCurrentObject ()) {
-    fixNewNonterminalSymbolsForList (currentBranch.current_mSyntaxInstructionList (),
+    fixNewNonterminalSymbolsForList (currentBranch.current_mSyntaxInstructionList (HERE),
                                      ioVocabulary,
                                      inSyntaxComponentName,
                                      ioCount) ;
@@ -84,7 +84,7 @@ fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
 
   cEnumerator_branchListForGrammarAnalysis currentBranch (mAttribute_mSelectBranchList, true) ;
   while (currentBranch.hasCurrentObject ()) {
-    fixNewNonterminalSymbolsForList (currentBranch.current_mSyntaxInstructionList (),
+    fixNewNonterminalSymbolsForList (currentBranch.current_mSyntaxInstructionList (HERE),
                                      ioVocabulary,
                                      inSyntaxComponentName,
                                      ioCount) ;
@@ -152,9 +152,9 @@ buildRightDerivation (const PMSInt32 inTerminalSymbolsCount,
                       const PMSInt32 inOriginalGrammarSymbolCount,
                       TC_UniqueArray <PMSInt16> & ioInstructionsList) {
   cEnumerator_branchListForGrammarAnalysis firstBranch (mAttribute_mRepeatBranchList, true) ;
-  cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (firstBranch.current_mSyntaxInstructionList (), true) ;
+  cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (firstBranch.current_mSyntaxInstructionList (HERE), true) ;
   while (instruction.hasCurrentObject ()) {
-    cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction ().ptr () ;
+    cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
     macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
     p->buildRightDerivation (inTerminalSymbolsCount, inOriginalGrammarSymbolCount, ioInstructionsList) ;
     instruction.gotoNextObject () ;
@@ -188,9 +188,9 @@ buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
  cEnumerator_branchListForGrammarAnalysis currentBranch (mAttribute_mSelectBranchList, true) ;
   while (currentBranch.hasCurrentObject ()) {
     TC_UniqueArray <PMSInt16> derivation ;
-    cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentBranch.current_mSyntaxInstructionList (), true) ;
+    cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentBranch.current_mSyntaxInstructionList (HERE), true) ;
     while (instruction.hasCurrentObject ()) {
-      cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction ().ptr () ;
+      cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
       macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
       p->buildRightDerivation (inTerminalSymbolsCount, inOriginalGrammarSymbolCount, derivation) ;
       instruction.gotoNextObject () ;
@@ -209,9 +209,9 @@ buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
 //--- Construire les productions issues des instructions choix et repeter
   currentBranch.rewind () ;
   while (currentBranch.hasCurrentObject ()) {
-    cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentBranch.current_mSyntaxInstructionList (), true) ;
+    cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentBranch.current_mSyntaxInstructionList (HERE), true) ;
     while (instruction.hasCurrentObject ()) {
-      cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction ().ptr () ;
+      cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
       macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
       p->buildSelectAndRepeatProductions (inTerminalSymbolsCount,
                                           inOriginalGrammarSymbolCount,
@@ -260,19 +260,19 @@ buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
   while (currentBranch.hasCurrentObject ()) {
     TC_UniqueArray <PMSInt16> derivation ;
   //--- insert branch instructions
-    cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentBranch.current_mSyntaxInstructionList (), true) ;
+    cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentBranch.current_mSyntaxInstructionList (HERE), true) ;
     while (instruction.hasCurrentObject ()) {
-      cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction ().ptr () ;
+      cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
       macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
       p->buildRightDerivation (inTerminalSymbolsCount, inOriginalGrammarSymbolCount, derivation) ;
       instruction.gotoNextObject () ;
     }
   //--- insert sequence from X
     cEnumerator_branchListForGrammarAnalysis firstBranch (mAttribute_mRepeatBranchList, true) ;
-    cEnumerator_syntaxInstructionListForGrammarAnalysis firstBranchInstruction (firstBranch.current_mSyntaxInstructionList (), true) ;
+    cEnumerator_syntaxInstructionListForGrammarAnalysis firstBranchInstruction (firstBranch.current_mSyntaxInstructionList (HERE), true) ;
 //    instruction = firstBranch->mInstructionList.firstObject () ;
     while (firstBranchInstruction.hasCurrentObject ()) {
-      cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) firstBranchInstruction.current_mInstruction ().ptr () ;
+      cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) firstBranchInstruction.current_mInstruction (HERE).ptr () ;
       macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
       p->buildRightDerivation (inTerminalSymbolsCount, inOriginalGrammarSymbolCount, derivation) ;
       firstBranchInstruction.gotoNextObject () ;
@@ -293,9 +293,9 @@ buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
 //--- Construire les productions issues des instructions choix et repeter
   currentBranch.rewind () ;
   while (currentBranch.hasCurrentObject ()) {
-    cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentBranch.current_mSyntaxInstructionList (), true) ;
+    cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentBranch.current_mSyntaxInstructionList (HERE), true) ;
     while (instruction.hasCurrentObject ()) {
-      cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction ().ptr () ;
+      cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
       macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
       p->buildSelectAndRepeatProductions (inTerminalSymbolsCount,
                                           inOriginalGrammarSymbolCount,
@@ -341,12 +341,12 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
 //--- Fix new non terminal symbols index and names
   cEnumerator_syntaxComponentListForGrammarAnalysis currentComponent (inSyntaxComponentsList, true) ;
   while (currentComponent.hasCurrentObject ()) {
-    cEnumerator_productionRuleListForGrammarAnalysis currentRule (currentComponent.current_mProductionRulesList (), true) ;
+    cEnumerator_productionRuleListForGrammarAnalysis currentRule (currentComponent.current_mProductionRulesList (HERE), true) ;
     PMSInt32 count = 0 ;
     while (currentRule.hasCurrentObject ()) {
-      fixNewNonterminalSymbolsForList (currentRule.current_mInstructionList (),
+      fixNewNonterminalSymbolsForList (currentRule.current_mInstructionList (HERE),
                                        ioVocabulary,
-                                       currentComponent.current_mSyntaxComponentName ().mAttribute_string.stringValue (),
+                                       currentComponent.current_mSyntaxComponentName (HERE).mAttribute_string.stringValue (),
                                        count) ;
       currentRule.gotoNextObject () ;
     }
@@ -358,23 +358,23 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
   const PMSInt32 orginalGrammarSymbolCount = ioVocabulary.originalGrammarSymbolsCount () ;
   currentComponent.rewind () ;
   while (currentComponent.hasCurrentObject ()) {
-    cEnumerator_productionRuleListForGrammarAnalysis currentRule (currentComponent.current_mProductionRulesList (), true) ;
+    cEnumerator_productionRuleListForGrammarAnalysis currentRule (currentComponent.current_mProductionRulesList (HERE), true) ;
     while (currentRule.hasCurrentObject ()) {
       TC_UniqueArray <PMSInt16> derivation ;
-      cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentRule.current_mInstructionList (), true) ;
+      cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentRule.current_mInstructionList (HERE), true) ;
       while (instruction .hasCurrentObject ()) {
-        cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction ().ptr () ;
+        cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
         macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
         p->buildRightDerivation (terminalSymbolsCount, orginalGrammarSymbolCount, derivation) ;
         instruction.gotoNextObject () ;
       }
       cProduction p ;
-      p.mSourceFileName = currentComponent.current_mSyntaxComponentName ().mAttribute_string.stringValue () ;
-      p.aLigneDefinition = currentRule.current_mLeftNonterminalSymbol ().mAttribute_location.startLocation ().mLineNumber ;
-      p.aColonneDefinition = currentRule.current_mLeftNonterminalSymbol ().mAttribute_location.startLocation ().mColumnNumber ;
-      p.mProductionIndex = currentRule.current_mProductionIndex ().uintValue () ;
+      p.mSourceFileName = currentComponent.current_mSyntaxComponentName (HERE).mAttribute_string.stringValue () ;
+      p.aLigneDefinition = currentRule.current_mLeftNonterminalSymbol (HERE).mAttribute_location.startLocation ().mLineNumber ;
+      p.aColonneDefinition = currentRule.current_mLeftNonterminalSymbol (HERE).mAttribute_location.startLocation ().mColumnNumber ;
+      p.mProductionIndex = currentRule.current_mProductionIndex (HERE).uintValue () ;
       p.aNumeroNonTerminalGauche = terminalSymbolsCount
-                                 + (PMSInt32) currentRule.current_mLeftNonterminalSymbolIndex ().uintValue () ;
+                                 + (PMSInt32) currentRule.current_mLeftNonterminalSymbolIndex (HERE).uintValue () ;
       swap (p.aDerivation, derivation) ;
       ioProductions.insertByExchange (p) ;
       currentRule.gotoNextObject () ;
@@ -385,15 +385,15 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
 //--- Build pure BNF productions from 'repeat' and 'select' instructions
   currentComponent.rewind () ;
   while (currentComponent.hasCurrentObject ()) {
-    cEnumerator_productionRuleListForGrammarAnalysis currentRule (currentComponent.current_mProductionRulesList (), true) ;
+    cEnumerator_productionRuleListForGrammarAnalysis currentRule (currentComponent.current_mProductionRulesList (HERE), true) ;
     while (currentRule.hasCurrentObject ()) {
-      cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentRule.current_mInstructionList (), true) ;
+      cEnumerator_syntaxInstructionListForGrammarAnalysis instruction (currentRule.current_mInstructionList (HERE), true) ;
       while (instruction.hasCurrentObject ()) {
-        cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction ().ptr () ;
+        cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) instruction.current_mInstruction (HERE).ptr () ;
         macroValidSharedObject (p, cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
         p->buildSelectAndRepeatProductions (terminalSymbolsCount,
                                             orginalGrammarSymbolCount,
-                                            currentComponent.current_mSyntaxComponentName ().mAttribute_string.stringValue (),
+                                            currentComponent.current_mSyntaxComponentName (HERE).mAttribute_string.stringValue (),
                                             ioProductions) ;
         instruction.gotoNextObject () ;
       }

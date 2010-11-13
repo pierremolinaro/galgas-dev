@@ -102,6 +102,8 @@ routine getGALGAS_2_source_file_list
   out_fileList += !"AC_GALGAS_sortedlist.h" ;
   out_fileList += !"AC_GALGAS_map.cpp" ;
   out_fileList += !"AC_GALGAS_map.h" ;
+  out_fileList += !"AC_GALGAS_uniqueMap.cpp" ;
+  out_fileList += !"AC_GALGAS_uniqueMap.h" ;
   out_fileList += !"AC_GALGAS_class.cpp" ;
   out_fileList += !"AC_GALGAS_class.h" ;
   out_fileList += !"acPtr_class.cpp" ;

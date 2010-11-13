@@ -215,7 +215,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popSmallest (%?^
          !^%COMMA_LOCATION_ARGS) {
   capSortedListElement attributes ;
   removeSmallestObject (attributes, inCompiler COMMA_THERE) ;
-  cSortedListElement_%!TYPE_IDENTIFIER% * p = (cSortedListElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;
+  cSortedListElement_%!TYPE_IDENTIFIER% * p = (cSortedListElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
   if (NULL == p) {
 %
  foreach ATTRIBUTE_LIST do index IDX
@@ -240,7 +240,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popGreatest (%?^
          !^%COMMA_LOCATION_ARGS) {
   capSortedListElement attributes ;
   removeGreatestObject (attributes, inCompiler COMMA_THERE) ;
-  cSortedListElement_%!TYPE_IDENTIFIER% * p = (cSortedListElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;
+  cSortedListElement_%!TYPE_IDENTIFIER% * p = (cSortedListElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
   if (NULL == p) {
 %
  foreach ATTRIBUTE_LIST do index IDX
@@ -265,7 +265,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_smallest (%?^
      !^%COMMA_LOCATION_ARGS) const {
   capSortedListElement attributes ;
   smallestObjectAttributeList (attributes, inCompiler COMMA_THERE) ;
-  cSortedListElement_%!TYPE_IDENTIFIER% * p = (cSortedListElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;
+  cSortedListElement_%!TYPE_IDENTIFIER% * p = (cSortedListElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
   if (NULL == p) {
 %
  foreach ATTRIBUTE_LIST do index IDX
@@ -290,7 +290,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_greatest (%?^
      !^%COMMA_LOCATION_ARGS) const {
   capSortedListElement attributes ;
   greatestObjectAttributeList (attributes, inCompiler COMMA_THERE) ;
-  cSortedListElement_%!TYPE_IDENTIFIER% * p = (cSortedListElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;
+  cSortedListElement_%!TYPE_IDENTIFIER% * p = (cSortedListElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
   if (NULL == p) {
 %
  foreach ATTRIBUTE_LIST do index IDX
@@ -315,8 +315,8 @@ cGenericAbstractEnumerator () {
 
 %foreach ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (void) const {\n%
-  %  const cSortedListElement_%!TYPE_IDENTIFIER% * p = (const cSortedListElement_%!TYPE_IDENTIFIER% *) currentObjectPtr () ;\n%
+  %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %  const cSortedListElement_%!TYPE_IDENTIFIER% * p = (const cSortedListElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
   %  macroValidSharedObject (p, const cSortedListElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%

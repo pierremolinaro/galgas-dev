@@ -558,6 +558,11 @@ routine compileGrammarComponent
     [nonTerminalMapForGrammarAnalysis searchKey !mValue ?nonterminalIndex ?*] ;
     [!?unusedNonTerminalSymbolsForGrammar insertKey !mValue !nonterminalIndex] ;
   end foreach ;
+#---------------------------------------------------------- Non terminal symbols, sorted by index
+  @nonTerminalSymbolSortedListForGrammarAnalysis nonTerminalSymbolSortedListForGrammarAnalysis [emptySortedList] ;
+  foreach nonTerminalMapForGrammarAnalysis do
+    nonTerminalSymbolSortedListForGrammarAnalysis += !lkey !mNonTerminalIndex !mNonterminalSymbolParametersMap ;
+  end foreach ;
 #---------------------------------------------------------- Analyze grammar
   grammarAnalysisAndGeneration
     ![grammarComponentRoot mGrammarName]
@@ -571,6 +576,7 @@ routine compileGrammarComponent
     !unusedNonTerminalSymbolsForGrammar
     !inOutputDirectoryForCppFiles
     !inOutputDirectoryForHTMLFile
+    !nonTerminalSymbolSortedListForGrammarAnalysis
   ;
 #---------------------------------------------------------- Generate header
   if [@uint errorCount] == 0 then

@@ -35,7 +35,7 @@ class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis ;
 //---------------------------------------------------------------------------*
 
 void
-useful_symbols_computations (C_Compiler & inLexique,
+useful_symbols_computations (C_Compiler * inCompiler,
                              const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                              const cPureBNFproductionsList & inPureBNFproductions,
                              const PMUInt16 inBDDBitCount,

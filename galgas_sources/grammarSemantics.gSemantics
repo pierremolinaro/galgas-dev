@@ -104,6 +104,20 @@ map @nonTerminalSymbolMapForGrammarAnalysis {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#             nonterminal symbols sorted list                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+sortedlist @nonTerminalSymbolSortedListForGrammarAnalysis {
+  @lstring mNonTerminalSymbol ;
+  @uint mNonTerminalIndex ;
+  @nonterminalSymbolLabelMapForGrammarAnalysis mNonterminalSymbolParametersMap ;
+}{
+  mNonTerminalIndex <
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #   Terminal call instruction                                               *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -197,6 +211,7 @@ extern routine grammarAnalysisAndGeneration
   ??@unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar
   ??@string inOutputDirectoryForCppFiles
   ??@string inOutputDirectoryForHTMLfile
+  ??@nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis
 ;
 
 #---------------------------------------------------------------------------*
