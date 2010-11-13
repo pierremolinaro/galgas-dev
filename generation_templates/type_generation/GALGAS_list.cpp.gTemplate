@@ -105,6 +105,9 @@ AC_GALGAS_list () {
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (cSharedList * inSharedListPtr) :
 AC_GALGAS_list (inSharedListPtr) {
+  if (NULL == inSharedListPtr) {
+    createNewEmptyList (HERE) ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -229,7 +232,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popFirst (%?^
   %!^%COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeFirstObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;
+  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
   if (NULL == p) {
 %
  foreach ATTRIBUTE_LIST do index IDX
@@ -254,7 +257,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popLast (%?^
   %!^%COMMA_LOCATION_ARGS) {
   capCollectionElement attributes ;
   removeLastObject (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;
+  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
   if (NULL == p) {
 %
  foreach ATTRIBUTE_LIST do index IDX
@@ -279,7 +282,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^
   %!^%COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readFirst (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;
+  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
   if (NULL == p) {
 %
  foreach ATTRIBUTE_LIST do index IDX
@@ -304,7 +307,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^
   %!^%COMMA_LOCATION_ARGS) const {
   capCollectionElement attributes ;
   readLast (attributes, inCompiler COMMA_THERE) ;
-  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;
+  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
   if (NULL == p) {
 %
  foreach ATTRIBUTE_LIST do index IDX
@@ -381,7 +384,7 @@ foreach ATTRIBUTE_LIST do index IDX
   %                                              %!^%C_Compiler * inCompiler\n%
   %                                              %!^%COMMA_LOCATION_ARGS) const {\n%
   %  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%
-  %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptrNoVerif () ;\n%
+  %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;\n%
   %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
   %  if (NULL != p) {\n%
   %    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
@@ -402,8 +405,8 @@ cGenericAbstractEnumerator () {
 
 %foreach ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------*\n\n%
-  %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (void) const {\n%
-  %  const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr () ;\n%
+  %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (LOCATION_ARGS) const {\n%
+  %  const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
   %  macroValidSharedObject (p, const cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%

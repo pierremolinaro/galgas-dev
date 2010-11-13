@@ -204,6 +204,7 @@ enum @typeKindEnum {
   listType,
   sortedListType,
   mapType,
+  uniqueMapType,
   mapProxyType,
   listMapType,
   structType,
@@ -215,6 +216,7 @@ enum @typeKindEnum {
   listType -> "list" ;
   sortedListType -> "sorted list" ;
   mapType -> "map" ;
+  uniqueMapType -> "unique map" ;
   mapProxyType -> "map proxy" ;
   listMapType -> "list map" ;
   structType -> "struct" ;
@@ -285,7 +287,7 @@ map @attributeMap {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @unifiedTypeMap {
+uniquemap @unifiedTypeMap {
   @bool mIsConcrete ; # false if abstract class
   @unifiedTypeMapProxy mSuperType ;
   @typeKindEnum mTypeKindEnum ;

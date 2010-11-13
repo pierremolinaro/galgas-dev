@@ -439,6 +439,7 @@ rule <galgas_component>
     !unusedNonTerminalSymbolsForGrammar
     ![[@string stringWithSourceFilePath] stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT"
     ![[@string stringWithSourceFilePath] stringByDeletingLastPathComponent]
+    ![@nonTerminalSymbolSortedListForGrammarAnalysis emptySortedList]
   ;
 #--- insert grammar in grammars map
   [!?ioGrammarComponentsMap insertKey

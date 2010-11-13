@@ -366,6 +366,130 @@ override method @mapDeclarationAST performSemanticAnalysis
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
+#------ Enter attributes
+  @typedAttributeList typedAttributeList [emptyList] ;
+  @attributeIndexMap attributeMap [emptyMap] ;
+  foreach mAttributeList do
+    @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
+    @bool hasSetter := true ;
+    @bool hasGetter := true ;
+    typedAttributeList +=
+      !t
+      !mAttributeName
+      !hasSetter
+      !hasGetter
+    ;
+    [!?attributeMap insertKey !mAttributeName !t] ;
+  end foreach ;
+#--- Enter insert modifiers
+  @insertMethodMap insertMethodMap [emptyMap] ;
+  foreach mInsertMethodList do
+    [!?insertMethodMap insertKey !mInsertMethodName] ;
+  #--- Check error message escape sequences : only %K, %L or %%
+    foreach [[mErrorMessage string] componentsSeparatedByString !"%%"] do
+      @stringlist explodedArray := [mValue componentsSeparatedByString !"%"] ;
+      [!?explodedArray popFirst ?*] ;
+      foreach explodedArray do
+        if [mValue length] > 0 then
+          const @char c := [mValue characterAtIndex !0] ;
+          if (c != 'K') & (c != 'L') then
+            error mErrorMessage: "only '%K', '%L' and '%%' escape sequences are allowed in an insert error message" ;
+          end if ;
+        end if ;
+      end foreach ;
+    end foreach ;
+  #--- Check shadow error message escape sequences : only %K, %L or %%
+    foreach [[mShadowErrorMessage string] componentsSeparatedByString !"%%"] do
+      @stringlist explodedArray := [mValue componentsSeparatedByString !"%"] ;
+      [!?explodedArray popFirst ?*] ;
+      foreach explodedArray do
+        if [mValue length] > 0 then
+          const @char c := [mValue characterAtIndex !0] ;
+          if (c != 'K') & (c != 'L') then
+            error mErrorMessage: "only '%K', '%L' and '%%' escape sequences are allowed in a shadow error message" ;
+          end if ;
+        end if ;
+      end foreach ;
+    end foreach ;
+  end foreach ;
+#--- Enter search methods
+  @searchMethodMap searchMethodMap [emptyMap] ;
+  foreach mSearchMethodList do
+    [!?searchMethodMap insertKey !mSearchMethodName] ;
+  #--- Check error message escape sequences : only %K or %%
+    foreach [[mErrorMessage string] componentsSeparatedByString !"%%"] do
+      @stringlist explodedArray := [mValue componentsSeparatedByString !"%"] ;
+      [!?explodedArray popFirst ?*] ;
+      foreach explodedArray do
+        if [mValue length] > 0 then
+          const @char c := [mValue characterAtIndex !0] ;
+          if c != 'K' then
+            error mErrorMessage: "only '%K' and '%%' escape sequences are allowed in a search error message" ;
+          end if ;
+        end if ;
+      end foreach ;
+    end foreach ;
+  end foreach ;
+#--- Enter remove methods
+  foreach mRemoveMethodList do
+    [!?insertMethodMap insertKey !mMethodName] ;
+  #--- Check error message escape sequences : only %K or %%
+    foreach [[mErrorMessage string] componentsSeparatedByString !"%%"] do
+      @stringlist explodedArray := [mValue componentsSeparatedByString !"%"] ;
+      [!?explodedArray popFirst ?*] ;
+      foreach explodedArray do
+        if [mValue length] > 0 then
+          const @char c := [mValue characterAtIndex !0] ;
+          if c != 'K' then
+            error mErrorMessage: "only '%K' and '%%' escape sequences are allowed in a remove error message" ;
+          end if ;
+        end if ;
+      end foreach ;
+    end foreach ;
+  end foreach ;
+#--- Warn for duplicated declarations or 'insertOrReplace' modifier
+  foreach mInsertOrReplaceDeclarationListAST index IDX do
+    if IDX > 0 then
+      warning mInsertOrReplaceDeclarationLocation: "the 'insertOrReplace' modifier is already declared" ;
+    end if ;
+  end foreach ;
+  const @bool hasInsertOrReplaceModifier := [mInsertOrReplaceDeclarationListAST length] > 0 ;
+  if hasInsertOrReplaceModifier & [insertMethodMap hasKey !"insertOrReplace"] then
+    @location insertOrReplaceDeclarationLocation ;
+    [mInsertOrReplaceDeclarationListAST first ?insertOrReplaceDeclarationLocation] ;
+    error insertOrReplaceDeclarationLocation : "the insertOrReplace' modifier cannot be declared : an insert modifier or a remove modifier has been declared with this name" ;
+  end if ;
+#--- Enter 'with' accessors
+  @withAccessorMap withAccessorMap [emptyMap] ;
+  [!?withAccessorMap insertKey ![@lstring new !"hasKey" !here] !inPredefinedTypes->mStringType] ;
+  foreach mSearchMethodList do
+    [!?withAccessorMap insertKey
+      !mSearchMethodName
+      !inPredefinedTypes->mLStringType
+    ] ;
+  end foreach ;
+#--- Enter map declaration
+  ioSemanticDeclarationListForGeneration += ![@mapTypeForGeneration new
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapTypeName]
+    !mMapTypeName
+    !typedAttributeList
+    !mInsertMethodList
+    !mSearchMethodList
+    !mRemoveMethodList
+    !hasInsertOrReplaceModifier
+    !withAccessorMap
+  ]
+  !""
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @uniqueMapDeclarationAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+:
 #--- Compute initial state set
   @stringset initialStateSet [emptySet] ;
   foreach mInsertMethodList do
@@ -686,35 +810,6 @@ override method @mapDeclarationAST performSemanticAnalysis
       end foreach ;
     end foreach ;
   end foreach ;
-#--- Enter remove methods
-  foreach mRemoveMethodList do
-    [!?insertMethodMap insertKey !mMethodName] ;
-  #--- Check error message escape sequences : only %K or %%
-    foreach [[mErrorMessage string] componentsSeparatedByString !"%%"] do
-      @stringlist explodedArray := [mValue componentsSeparatedByString !"%"] ;
-      [!?explodedArray popFirst ?*] ;
-      foreach explodedArray do
-        if [mValue length] > 0 then
-          const @char c := [mValue characterAtIndex !0] ;
-          if c != 'K' then
-            error mErrorMessage: "only '%K' and '%%' escape sequences are allowed in a remove error message" ;
-          end if ;
-        end if ;
-      end foreach ;
-    end foreach ;
-  end foreach ;
-#--- Warn for duplicated declarations or 'insertOrReplace' modifier
-  foreach mInsertOrReplaceDeclarationListAST index IDX do
-    if IDX > 0 then
-      warning mInsertOrReplaceDeclarationLocation: "the 'insertOrReplace' modifier is already declared" ;
-    end if ;
-  end foreach ;
-  const @bool hasInsertOrReplaceModifier := [mInsertOrReplaceDeclarationListAST length] > 0 ;
-  if hasInsertOrReplaceModifier & [insertMethodMap hasKey !"insertOrReplace"] then
-    @location insertOrReplaceDeclarationLocation ;
-    [mInsertOrReplaceDeclarationListAST first ?insertOrReplaceDeclarationLocation] ;
-    error insertOrReplaceDeclarationLocation : "the insertOrReplace' modifier cannot be declared : an insert modifier or a remove modifier has been declared with this name" ;
-  end if ;
 #--- Enter 'with' accessors
   @withAccessorMap withAccessorMap [emptyMap] ;
   [!?withAccessorMap insertKey ![@lstring new !"hasKey" !here] !inPredefinedTypes->mStringType] ;
@@ -725,14 +820,12 @@ override method @mapDeclarationAST performSemanticAnalysis
     ] ;
   end foreach ;
 #--- Enter map declaration
-  ioSemanticDeclarationListForGeneration += ![@mapTypeForGeneration new
+  ioSemanticDeclarationListForGeneration += ![@uniqueMapTypeForGeneration new
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapTypeName]
     !mMapTypeName
     !typedAttributeList
     !mInsertMethodList
     !mSearchMethodList
-    !mRemoveMethodList
-    !hasInsertOrReplaceModifier
     !withAccessorMap
     !mapAutomatonStateMap
     !mapAutomatonActionMap

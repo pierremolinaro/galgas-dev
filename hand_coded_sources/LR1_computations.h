@@ -32,17 +32,17 @@ class cVocabulary ;
 class C_HTML_FileWrite ;
 class C_String ;
 class C_Compiler ;
-class GALGAS_nonTerminalSymbolMapForGrammarAnalysis ;
+class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
-void LR1_computations (C_Compiler & inLexique,
+void LR1_computations (C_Compiler * inCompiler,
                        const cPureBNFproductionsList & inProductionRules,
                        const cVocabulary & inVocabulary,
                        C_HTML_FileWrite * inHTMLfile,
                        const TC_UniqueArray <TC_UniqueArray <PMSInt32> > & FIRSTarray,
                        const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                       const GALGAS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
+                       const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                        const PMUInt32 inOriginalGrammarStartSymbol,
                        const C_String & inTargetFileName,
                        const C_String & inOutputDirectoryForCppFiles,

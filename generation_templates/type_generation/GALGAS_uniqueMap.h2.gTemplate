@@ -1,0 +1,34 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["Class for element of '@" . TYPE_NAME . "' map" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class cMapElement_%!TYPE_IDENTIFIER% : public cMapElement {
+//--- Map attributes
+%
+    foreach ATTRIBUTE_LIST
+      do %  public : GALGAS_%![mAttributeTypeProxy identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    end foreach
+%
+//--- Constructor
+  public : cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_lstring & inKey%
+  foreach ATTRIBUTE_LIST
+    do %,\n%!^%const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
+  end foreach
+%\n%
+!^%COMMA_LOCATION_ARGS) ;
+
+//--- Virtual method for comparing elements
+  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+
+//--- Virtual method that checks that all attributes are valid
+  public : virtual bool isValid (void) const ;
+
+//--- Virtual method that returns a copy of current object
+  public : virtual cMapElement * copy (void) ;
+
+//--- Description
+ public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+} ;
+

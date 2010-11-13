@@ -29,7 +29,7 @@
 
 class C_TextFileWrite ;
 class GALGAS_terminalSymbolsMapForGrammarAnalysis ;
-class GALGAS_nonTerminalSymbolMapForGrammarAnalysis ;
+class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -44,7 +44,7 @@ class cVocabulary {
 
 //--- Build vocabulary from original grammar
   public : void buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
-                                 const GALGAS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForGrammar,
+                                 const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                                  const PMUInt32 inOriginalGrammarStartSymbol) ;
 
 //--- Add a new non terminal symbol

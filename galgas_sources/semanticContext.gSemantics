@@ -160,7 +160,7 @@ struct @semanticContext {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @collectedTypeMap {
+uniquemap @collectedTypeMap {
   insert insertKey error message "the '%K' type has been already defined in %L" ;
   search searchKey error message "the '%K' type is not declared" ;
 }
@@ -284,6 +284,14 @@ override method @predefinedTypeAST display
   ?!@string ioString
 :
   ioString .= "  - predefined type @" . mPredefinedTypeName . "\n" ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @uniqueMapDeclarationAST display
+  ?!@string ioString
+:
+  ioString .= "  - unique map @" . mMapTypeName . "\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -551,6 +559,17 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @mapDeclarationAST collectTypes
+  ?!@collectedTypeMap ioCollectedTypeMap
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+:
+  [!?ioCollectedTypeMap insertKey !mMapTypeName] ;
+  collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @uniqueMapDeclarationAST collectTypes
   ?!@collectedTypeMap ioCollectedTypeMap
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
@@ -841,8 +860,6 @@ override method @mapDeclarationAST enterInSemanticContext
   enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"locationForKey" !"string" !"location" !true ;
   enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"overriddenMap" ![mMapTypeName string] !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"count" !"uint" !false ;
-  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"unsolvedProxyCount" !"uint" !false ;
-  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"unsolvedProxyKeyList" !"stringlist" !false ;
 #--- Handle attributes
   @typedAttributeList typedAttributeList [emptyList] ;
   @formalParameterSignature insertMethodFormalArgumentList [emptyList] ;
@@ -880,6 +897,181 @@ override method @mapDeclarationAST enterInSemanticContext
       [!?modifierMap insertOrReplace
         !mMethodName
         !removeMethodFormalArgumentList
+        !true
+        ![@methodQualifier isBasic]
+      ] ;
+    end if ;
+  end foreach ;
+#--- Handle search methods (methods if no state, modifiers if states)
+  foreach mSearchMethodList do
+    [!?instanceMethodMap insertKey
+      !mSearchMethodName
+      !false # is not a category
+      !removeMethodFormalArgumentList
+      ![mSearchMethodName location]
+      !true
+      ![@methodQualifier isBasic]
+    ] ;
+  end foreach ;
+#--- Enter "attributeForKey" readers
+  foreach mAttributeList do
+    const @lstring accessorName [new ![mAttributeName string] . "ForKey" ![mAttributeName location]] ;
+    @unifiedTypeMapProxy attributeTypeIndex ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mAttributeTypeName string] ?attributeTypeIndex] ;
+    [!?readerMap insertOrReplace
+      !accessorName
+      !false # Is not a category
+      ![@unifiedTypeMapProxyList listWithValue !stringTypeIndex]
+      !here
+      !true
+      !attributeTypeIndex
+      ![@methodQualifier isBasic]
+    ] ;
+  end foreach ;
+#---------- Handle "insertOrReplace" modifier
+  if [mInsertOrReplaceDeclarationListAST length] >= 1 then
+    @location insertOrReplaceLocation ;
+    [mInsertOrReplaceDeclarationListAST first ?insertOrReplaceLocation] ;
+    [!?modifierMap insertOrReplace
+      ![@lstring new !"insertOrReplace" !insertOrReplaceLocation]
+      !insertMethodFormalArgumentList
+      !false
+      ![@methodQualifier isBasic]
+    ] ;
+  end if ;
+#---------- Enter "set...Attribute...forKey" modifiers
+  foreach mAttributeList do
+    const @lstring accessorName [new !"set" . [[mAttributeName string] stringByCapitalizingFirstCharacter] . "ForKey" ![mAttributeName location]] ;
+    @unifiedTypeMapProxy attributeTypeIndex ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mAttributeTypeName string] ?attributeTypeIndex] ;
+    @formalParameterSignature accessorFormalArgumentList [emptyList] ;
+    accessorFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    accessorFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    [!?modifierMap insertOrReplace
+      !accessorName
+      !accessorFormalArgumentList
+      !true
+      ![@methodQualifier isBasic]
+    ] ;
+  end foreach ;
+#--- Enter 'with' accessors
+  @withAccessorMap withAccessorMap [emptyMap] ;
+  [!?withAccessorMap insertKey ![@lstring new !"hasKey" !here] !stringTypeIndex] ;
+  foreach mSearchMethodList do
+    [!?withAccessorMap insertKey
+      !mSearchMethodName
+      !lstringTypeIndex
+    ] ;
+  end foreach ;
+#--- Enter in type map
+  [!?ioSemanticContext->mTypeMap insertKey
+    !mMapTypeName
+    !true # Concrete Type
+    ![@unifiedTypeMapProxy null]
+    ![@typeKindEnum mapType]
+    ![@typedAttributeList emptyList]
+    ![@attributeMap emptyMap]
+    !typedAttributeList
+    !constructorMap
+    !readerMap
+    !modifierMap
+    !instanceMethodMap
+    ![@classMethodMap emptyMap]
+    !enumerationDescriptor
+    !doNotGenererateObjectCompare []
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@nativeAttributeList emptyList]
+    ![@stringset emptySet]
+    ![@lstringlist emptyList]
+    ![@typedAttributeList emptyList]
+    !mSearchMethodList
+    ![@mapSearchMethodListAST emptyList]
+    !withAccessorMap
+    !false # Do not generate header in separate file
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @uniqueMapDeclarationAST enterInSemanticContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ?!@semanticContext ioSemanticContext
+:
+#--- string type index
+  @unifiedTypeMapProxy stringTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"string" ?stringTypeIndex] ;
+#--- location type index
+  @unifiedTypeMapProxy locationTypeProxy ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"location" ?locationTypeProxy] ;
+#--- lstring type index
+  @unifiedTypeMapProxy lstringTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"lstring" ?lstringTypeIndex] ;
+#--- current map type index
+  @unifiedTypeMapProxy currentMapTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mMapTypeName string] ?currentMapTypeIndex] ;
+#---
+  @constructorMap constructorMap [emptyMap] ;
+  @readerMap readerMap [emptyMap] ;
+  @modifierMap modifierMap [emptyMap] ;
+  @instanceMethodMap instanceMethodMap [emptyMap] ;
+  @enumerationDescriptorList enumerationDescriptor [listWithValue !lstringTypeIndex !"lkey"] ;
+#--- modifier 'insertFakeKey'
+  @unifiedTypeMapProxy locationTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"location" ?locationTypeIndex] ;
+  @formalParameterSignature insertFakeKeyFormalArgumentList [emptyList] ;
+  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Key
+  insertFakeKeyFormalArgumentList += !locationTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Error location
+  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Error Message
+  [!?modifierMap insertKey
+    ![@lstring new !"insertFakeKey" !here]
+    !insertFakeKeyFormalArgumentList
+    !true
+    ![@methodQualifier isInherited]
+  ] ;
+#--- modifier 'insertSilentFakeKey'
+  insertFakeKeyFormalArgumentList := [@formalParameterSignature emptyList] ;
+  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Key
+  [!?modifierMap insertKey
+    ![@lstring new !"insertSilentFakeKey" !here]
+    !insertFakeKeyFormalArgumentList
+    !true
+    ![@methodQualifier isInherited]
+  ] ;
+#--- Constructors
+  enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"emptyMap" ![mMapTypeName string] !false ;
+#--- Readers
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeys" !"stringset" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeyList" !"lstringlist" !false ;
+  enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"hasKey" !"string" !"bool" !false ;
+  enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"locationForKey" !"string" !"location" !true ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"count" !"uint" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"unsolvedProxyCount" !"uint" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"unsolvedProxyKeyList" !"stringlist" !false ;
+#--- Handle attributes
+  @typedAttributeList typedAttributeList [emptyList] ;
+  @formalParameterSignature insertMethodFormalArgumentList [emptyList] ;
+  insertMethodFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  @formalParameterSignature removeMethodFormalArgumentList [emptyList] ;
+  removeMethodFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  foreach mAttributeList do
+    @unifiedTypeMapProxy attributeTypeIndex ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mAttributeTypeName string] ?attributeTypeIndex] ;
+    @bool hasGetter := true ;
+    @bool hasSetter := true ;
+    typedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter ;
+    enumerationDescriptor += !attributeTypeIndex ![mAttributeName string] ;
+    insertMethodFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    removeMethodFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
+  end foreach ;
+#--- Handle insert modifiers
+  foreach mInsertMethodList do
+    if [modifierMap hasKey ![mInsertMethodName string]] then
+      error mInsertMethodName:"the '" . mInsertMethodName . "' insert method is already declared" ;
+    else
+      [!?modifierMap insertOrReplace
+        !mInsertMethodName
+        !insertMethodFormalArgumentList
         !true
         ![@methodQualifier isBasic]
       ] ;
@@ -961,17 +1153,6 @@ override method @mapDeclarationAST enterInSemanticContext
       ![@methodQualifier isBasic]
     ] ;
   end foreach ;
-#---------- Handle "insertOrReplace" modifier
-  if [mInsertOrReplaceDeclarationListAST length] >= 1 then
-    @location insertOrReplaceLocation ;
-    [mInsertOrReplaceDeclarationListAST first ?insertOrReplaceLocation] ;
-    [!?modifierMap insertOrReplace
-      ![@lstring new !"insertOrReplace" !insertOrReplaceLocation]
-      !insertMethodFormalArgumentList
-      !false
-      ![@methodQualifier isBasic]
-    ] ;
-  end if ;
 #---------- Enter "set...Attribute...forKey" modifiers
   foreach mAttributeList do
     const @lstring accessorName [new !"set" . [[mAttributeName string] stringByCapitalizingFirstCharacter] . "ForKey" ![mAttributeName location]] ;
@@ -1001,7 +1182,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !mMapTypeName
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
-    ![@typeKindEnum mapType]
+    ![@typeKindEnum uniqueMapType]
     ![@typedAttributeList emptyList]
     ![@attributeMap emptyMap]
     !typedAttributeList
@@ -1046,8 +1227,8 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ?searchMethodList
     ?3*
   ] ;
-  if typeKindEnum != [@typeKindEnum mapType] then
-    error mAssociatedMapTypeName : "the @" . mAssociatedMapTypeName . " should be a map type" ;
+  if typeKindEnum != [@typeKindEnum uniqueMapType] then
+    error mAssociatedMapTypeName : "the @" . mAssociatedMapTypeName . " should be an unique map type" ;
     mapTypedAttributeList := [@typedAttributeList emptyList] ;
   end if ;
 #---
@@ -1600,8 +1781,8 @@ override method @structDeclarationAST enterInSemanticContext
   @readerMap readerMap ;
   commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?readerMap ;
   foreach typedAttributeList do
-    log "ATTRIBUTE" : [mAttributeName string] ;
-    log "TYPE" :  [mAttributeTypeProxy key] ;
+#    log "ATTRIBUTE" : [mAttributeName string] ;
+#    log "TYPE" :  [mAttributeTypeProxy key] ;
     enterBaseFinalReaderWithoutArgument
       !?readerMap
       !?ioSemanticContext->mTypeMap 
@@ -1610,7 +1791,7 @@ override method @structDeclarationAST enterInSemanticContext
       !false
     ;
   end foreach ;
-  log mStructTypeName, readerMap ;
+#  log mStructTypeName, readerMap ;
 #--- Modifiers
   @modifierMap modifierMap [emptyMap] ;
 #--- Instance methods
@@ -2132,6 +2313,14 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @mapDeclarationAST enterOrderedDeclaration
+  ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
+:
+  ioPartiallyOrderedDeclarationList += !"" ![mMapTypeName string] !selfcopy ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @uniqueMapDeclarationAST enterOrderedDeclaration
   ?!@partiallyOrderedSemanticDeclarationListAST ioPartiallyOrderedDeclarationList
 :
   ioPartiallyOrderedDeclarationList += !"" ![mMapTypeName string] !selfcopy ;

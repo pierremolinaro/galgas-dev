@@ -1226,6 +1226,17 @@ list @insertOrReplaceDeclarationListAST {
 
 #---------------------------------------------------------------------------*
 
+class @mapDeclarationAST extends @semanticDeclarationAST {
+  @lstring mMapTypeName ;
+  @attributeInCollectionListAST mAttributeList ;
+  @insertMethodListAST mInsertMethodList ;
+  @mapSearchMethodListAST mSearchMethodList ;
+  @mapRemoveMethodListAST mRemoveMethodList ;
+  @insertOrReplaceDeclarationListAST mInsertOrReplaceDeclarationListAST ;
+}
+
+#---------------------------------------------------------------------------*
+
 list @mapOverrideBlockDescriptorAST {
   @lstring mLeftState ;
   @lstring mRightState ;
@@ -1244,13 +1255,11 @@ list @mapOverrideBlockListAST {
 
 #---------------------------------------------------------------------------*
 
-class @mapDeclarationAST extends @semanticDeclarationAST {
+class @uniqueMapDeclarationAST extends @semanticDeclarationAST {
   @lstring mMapTypeName ;
   @attributeInCollectionListAST mAttributeList ;
   @insertMethodListAST mInsertMethodList ;
   @mapSearchMethodListAST mSearchMethodList ;
-  @mapRemoveMethodListAST mRemoveMethodList ;
-  @insertOrReplaceDeclarationListAST mInsertOrReplaceDeclarationListAST ;
   @mapStateList mMapStateList ;
   @mapOverrideBlockListAST mMapOverrideBlockListAST ;
 }

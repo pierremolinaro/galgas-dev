@@ -95,7 +95,7 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
 //---------------------------------------------------------------------------*
 
 static bool
-displayUnusefulSymbols (C_Compiler & inLexique,
+displayUnusefulSymbols (C_Compiler * inCompiler,
                         const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                         const C_BDD_Set1 & inUsefulSymbols,
                         const PMUInt16 inBDDBitCount,
@@ -106,7 +106,7 @@ displayUnusefulSymbols (C_Compiler & inLexique,
   TC_UniqueArray <PMUInt32> unusedNonTerminalArray ;
   cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis currentNT (inUnusedNonTerminalSymbolsForGrammar, true) ;
   while (currentNT.hasCurrentObject ()) {
-    const PMUInt32 nt = currentNT.current_mNonTerminalIndex ().uintValue () + inVocabulary.getTerminalSymbolsCount () ;
+    const PMUInt32 nt = currentNT.current_mNonTerminalIndex (HERE).uintValue () + inVocabulary.getTerminalSymbolsCount () ;
     unusedNonTerminalArray.addObject (nt) ;
     // printf ("DECLARED UNUSED %u ", nt) ;
     currentNT.gotoNextObject () ;
@@ -206,7 +206,7 @@ displayUnusefulSymbols (C_Compiler & inLexique,
         inVocabulary.printInFile (warningMessage, symbol COMMA_HERE) ;
       }
     }
-    inLexique.onTheFlySemanticWarning (warningMessage COMMA_HERE) ;
+    inCompiler->onTheFlySemanticWarning (warningMessage COMMA_HERE) ;
   }
   
 //--- Check if there are nonterminal symbols declared as unused and actually used
@@ -237,7 +237,7 @@ displayUnusefulSymbols (C_Compiler & inLexique,
         inVocabulary.printInFile (warningMessage, symbol COMMA_HERE) ;
       }
     }
-    inLexique.onTheFlySemanticWarning (warningMessage COMMA_HERE) ;
+    inCompiler->onTheFlySemanticWarning (warningMessage COMMA_HERE) ;
   }
 //---
   return warning ;
@@ -246,7 +246,7 @@ displayUnusefulSymbols (C_Compiler & inLexique,
 //---------------------------------------------------------------------------*
 
 void
-useful_symbols_computations (C_Compiler & inLexique,
+useful_symbols_computations (C_Compiler * inCompiler,
                              const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                              const cPureBNFproductionsList & inPureBNFproductions,
                              const PMUInt16 inBDDBitCount,
@@ -270,7 +270,7 @@ useful_symbols_computations (C_Compiler & inLexique,
                         outUsefulSymbols,
                         (PMUInt16) inVocabulary.getStartSymbol (),
                         iterationsCount) ;
-  const bool warning = displayUnusefulSymbols (inLexique,
+  const bool warning = displayUnusefulSymbols (inCompiler,
                                                inUnusedNonTerminalSymbolsForGrammar,
                                                outUsefulSymbols,
                                                inBDDBitCount,

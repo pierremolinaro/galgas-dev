@@ -20,9 +20,11 @@
 semantics semanticGeneration :
   import "semanticInstructionGeneration.gSemantics" ;
   import "templateCodeGeneration.gSemantics" ;
+  import "galgas_cli_options.gOption" ;
 
   import semantics templateCodeGeneration in "templateCodeGeneration.gSemantics" ;
   import semantics semanticInstructionGeneration in "semanticInstructionGeneration.gSemantics" ;
+  import option galgas_cli_options in "galgas_cli_options.gOption" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -40,6 +42,7 @@ function generateProcedure
   ??@bool inGenerateResetTemplateString
   ->@string outGeneratedCode
 :
+  const @bool generateCheckValid := [option galgas_cli_options.generateCheckValidInstructions value] ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   if not inGenerateResetTemplateString then
@@ -55,7 +58,7 @@ function generateProcedure
   @string routineBody := "" ;
   [!?routineBody incIndentation !2] ;
   foreach inInstructionList do
-    [mInstruction generateInstruction !?temporaryVariableIndex !?unusedVariableCppNameSet !?routineBody] ;
+    [mInstruction generateInstruction !generateCheckValid !?temporaryVariableIndex !?unusedVariableCppNameSet !?routineBody] ;
   end foreach ;
   [!?routineBody decIndentation !2] ;
 #--- Generate header
@@ -132,6 +135,7 @@ function generateFunction
   ??@bool inIsStatic
   ->@string outGeneratedCode
 :
+  const @bool generateCheckValid := [option galgas_cli_options.generateCheckValidInstructions value] ;
   outGeneratedCode := "" ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
@@ -145,7 +149,7 @@ function generateFunction
   @string routineBody := "" ;
   [!?routineBody incIndentation !2] ;
   foreach inInstructionList do
-    [mInstruction generateInstruction !?temporaryVariableIndex !?unusedVariableCppNameSet !?routineBody] ;
+    [mInstruction generateInstruction !generateCheckValid !?temporaryVariableIndex !?unusedVariableCppNameSet !?routineBody] ;
   end foreach ;
   [!?routineBody decIndentation !2] ;
 #--- Generate header
@@ -203,6 +207,7 @@ function generateCategoryMethod
   ??@semanticInstructionListForGeneration inInstructionList
   ->@string outGeneratedCode
 :
+  const @bool generateCheckValid := [option galgas_cli_options.generateCheckValidInstructions value] ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   unusedVariableCppNameSet += !compilerCppName [] ;
@@ -215,7 +220,7 @@ function generateCategoryMethod
   @string routineBody := "" ;
   [!?routineBody incIndentation !2] ;
   foreach inInstructionList do
-    [mInstruction generateInstruction !?temporaryVariableIndex !?unusedVariableCppNameSet !?routineBody] ;
+    [mInstruction generateInstruction !generateCheckValid !?temporaryVariableIndex !?unusedVariableCppNameSet !?routineBody] ;
   end foreach ;
   [!?routineBody decIndentation !2] ;
 #--- Generate header
@@ -296,6 +301,7 @@ function generateCategoryReader
   ??@string inResultVariableCppName
   ->@string outGeneratedCode
 :
+  const @bool generateCheckValid := [option galgas_cli_options.generateCheckValidInstructions value] ;
   outGeneratedCode := "" ;
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
@@ -309,7 +315,7 @@ function generateCategoryReader
   @string routineBody := "" ;
   [!?routineBody incIndentation !2] ;
   foreach inInstructionList do
-    [mInstruction generateInstruction !?temporaryVariableIndex !?unusedVariableCppNameSet !?routineBody] ;
+    [mInstruction generateInstruction !generateCheckValid !?temporaryVariableIndex !?unusedVariableCppNameSet !?routineBody] ;
   end foreach ;
   [!?routineBody decIndentation !2] ;
 #--- Generate header
@@ -502,6 +508,28 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@mapSearchMethodListAST SEARCH_METHOD_LIST
     ?@mapRemoveMethodListAST REMOVE_METHOD_LIST
     ?@bool HAS_INSERT_OR_REPLACE 
+    ?@withAccessorMap WITH_ACCESSOR_MAP
+  ;
+
+#---------- UNIQUE MAP
+  template uniqueMapTypeHeader1 "GALGAS_uniqueMap.h1.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@mapSearchMethodListAST SEARCH_METHOD_LIST
+  ;
+
+  template uniqueMapTypeHeader2 "GALGAS_uniqueMap.h2.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+  ;
+
+  template uniqueMapTypeSpecificImplementation "GALGAS_uniqueMap.cpp.gTemplate"
+    ?@string TYPE_IDENTIFIER
+    ?@typedAttributeList ATTRIBUTE_LIST
+    ?@insertMethodListAST INSERT_METHOD_LIST
+    ?@mapSearchMethodListAST SEARCH_METHOD_LIST
     ?@withAccessorMap WITH_ACCESSOR_MAP
     ?@mapAutomatonStateMap MAP_AUTOMATON_STATE_MAP
     ?@mapAutomatonActionMap MAP_AUTOMATON_ACTION_MAP
@@ -778,6 +806,31 @@ override reader @mapTypeForGeneration appendDeclaration1 ->@string outHeader :
 
 #---------------------------------------------------------------------------*
 
+override reader @uniqueMapTypeForGeneration appendDeclaration1 ->@string outHeader :
+  outHeader := [filewrapper typeGenerationTemplate.uniqueMapTypeHeader1
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+    !mTypedAttributeList
+    !mSearchMethodList
+  ] ;
+  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+    ![mTypeIndex mIsConcrete]
+    ![mTypeIndex mConstructorMap]
+    ![mTypeIndex mReaderMap]
+    ![mTypeIndex mModifierMap]
+    ![mTypeIndex mInstanceMethodMap]
+    ![mTypeIndex mClassMethodMap]
+    ![mTypeIndex mEnumerationDescriptor]
+    ![mTypeIndex mHandledOperatorFlags]
+    ![mTypeIndex mAddAssignOperatorArguments]
+    ![mTypeIndex mWithAccessorMap]
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @structTypeForGeneration appendDeclaration1 ->@string outHeader :
   outHeader := [filewrapper typeGenerationTemplate.structTypeHeader1
     ![mTypeIndex key]
@@ -1028,6 +1081,18 @@ override reader @mapTypeForGeneration appendDeclaration2
 
 #---------------------------------------------------------------------------*
 
+override reader @uniqueMapTypeForGeneration appendDeclaration2
+  ??@string unused inOutputDirectory
+ ->@string outHeader :
+  outHeader := [filewrapper typeGenerationTemplate.uniqueMapTypeHeader2
+    ![mTypeIndex key]
+    ![mTypeIndex identifierRepresentation]
+    !mTypedAttributeList
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @classTypeForGeneration appendDeclaration2
   ??@string inOutputDirectory
  ->@string outHeader :
@@ -1142,6 +1207,19 @@ override reader @mapTypeForGeneration appendSpecificImplementation ->@string out
     !mSearchMethodList
     !mRemoveMethodList
     !mHasInsertOrReplaceModifier
+    !mWithAccessorMap
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @uniqueMapTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+#  message "@uniqueMapTypeForGeneration appendSpecificImplementation\n" ;
+  outImplementation := [filewrapper typeGenerationTemplate.uniqueMapTypeSpecificImplementation
+    ![mTypeIndex identifierRepresentation]
+    !mTypedAttributeList
+    !mInsertMethodList
+    !mSearchMethodList
     !mWithAccessorMap
     !mMapAutomatonStateMap
     !mMapAutomatonActionMap

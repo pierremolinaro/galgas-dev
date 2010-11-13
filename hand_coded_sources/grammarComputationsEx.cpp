@@ -685,7 +685,8 @@ routine_grammarAnalysisAndGeneration (C_CompilerEx & inLexique,
                                       const GGS_nonTerminalSymbolMapForGrammarAnalysis inNonterminalSymbolsMapForGrammar,
                                       const GGS_unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar,
                                       const GGS_string inOutputDirectoryForCppFiles,
-                                      const GGS_string inOutputDirectoryForHTMLFile
+                                      const GGS_string inOutputDirectoryForHTMLFile,
+                                      const GGS_nonTerminalSymbolSortedListForGrammarAnalysis /* inNonTerminalSymbolSortedListForGrammarAnalysis */
                                       COMMA_UNUSED_LOCATION_ARGS) {
   if (inLexique.currentFileErrorCount() == 0) {
     #ifdef LOG_GRAMMAR_COMPUTATIONS

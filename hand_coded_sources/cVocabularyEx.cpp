@@ -52,6 +52,7 @@ buildVocabulary (const GGS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymb
   mTerminalSymbolsCount = inTerminalSymbolMap.count () ;
   GGS_terminalSymbolsMapForGrammarAnalysis::cEnumerator t (inTerminalSymbolMap) ;
   while (t.hasCurrentObject ()) {
+    //  printf ("ENTER TERMINAL: '%s'\n", t._key (HERE).cString (HERE)) ;
     mStringsArray.addObject (t._key (HERE)) ;  
     t.next () ;
   }
@@ -61,9 +62,11 @@ buildVocabulary (const GGS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymb
 //--- Append non terminal symbols from original grammar
   GGS_nonTerminalSymbolMapForGrammarAnalysis::cEnumerator nonTerminal (inNonterminalSymbolsMapForGrammar) ;
   while (nonTerminal.hasCurrentObject ()) {
+    // printf ("ENTER NON TERMINAL: '%s'\n", nonTerminal._key (HERE).cString (HERE)) ;
     mStringsArray.addObject (nonTerminal._key (HERE)) ;  
     nonTerminal.next () ;
   }
+  // printf ("------------\n") ;
   mOriginalGrammarSymbolsCount = mStringsArray.count () ;
 //--- For all symbols of original grammar, don't generate choice
   mGenerateChoiceArray.clear () ;

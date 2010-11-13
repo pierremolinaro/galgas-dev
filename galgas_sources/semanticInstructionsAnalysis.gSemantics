@@ -1230,8 +1230,8 @@ override method @foreachInstructionAST analyzeSemanticInstruction
        [!?ioVariableMap insertUsedLocalConstant
          ![@lstring new ![mPrefix string] . mEnumerationName !mEndOfEnumerationExpression]
          !mEnumeratedType
-         !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation] . " ()"
-         !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation] . " ()"
+         !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation] . " (HERE)"
+         !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation] . " (HERE)"
        ] ;
       end foreach ;
     elsif (not mEndsWithEllipsis) & ([mElementList length] != [enumerationDescriptorList length]) then
@@ -1260,8 +1260,8 @@ override method @foreachInstructionAST analyzeSemanticInstruction
           [!?ioVariableMap insertUsedLocalConstant
             !mConstantName
             !mEnumeratedType
-            !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation]. " ()"
-            !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation]. " ()"
+            !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation]. " (HERE)"
+            !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation]. " (HERE)"
           ] ;
         end if ;
       end foreach ;

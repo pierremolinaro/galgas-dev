@@ -1354,7 +1354,7 @@ override method @templateInstructionForeachAST templateInstructionAnalysis
     [!?doVariableMap insertKey
       ![@lstring new !mPrefix . mEnumerationName ![expression mLocation]]
       !mEnumeratedType
-      !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation] . " ()"
+      !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation] . " (HERE)"
     ] ;
   end foreach ;
   const @templateAnalysisContext doAnalysisContext [new

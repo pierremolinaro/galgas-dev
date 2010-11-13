@@ -33,7 +33,7 @@ end once ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-map @variableMap {
+uniquemap @variableMap {
   @unifiedTypeMapProxy mTypeProxy ;
   @string mCppName ;
   @string mNameForCheckingFormalParameterUsing ;

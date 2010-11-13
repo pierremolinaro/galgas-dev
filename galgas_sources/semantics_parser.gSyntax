@@ -5754,7 +5754,7 @@ rule <semantics_declaration>
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ?!@EXsemanticContext unused ioSemanticContext
 :
-  $map$ ;
+  select $map$ ; or $uniquemap$ ; end select ;
   @lstring mapTypeName ;
   $type_name$ ? mapTypeName ;
   select
@@ -6374,7 +6374,6 @@ rule <semantics_declaration>
           ![transitionMessage string]
         ;
       end repeat ;
-      log neededCombinaisons, definedCombinaisons ;
       if [forgottenAssociations count] == 0 then # Check only if all associations are defined
         @stringset forgottenCombinaisons := neededCombinaisons - definedCombinaisons ;
         if [forgottenCombinaisons count] > 0 then
@@ -6425,7 +6424,7 @@ label importSemantics
   ?!@typeTableRoutinesAimplementer unused tableRoutinesAimplementer
   ?!@EXsemanticContext unused ioSemanticContext
 :
-  $map$ ;
+  select $map$ ; or $uniquemap$ ; end select ;
   @lstring mapTypeName ;
   $type_name$ ? mapTypeName ;
   select

@@ -33,19 +33,19 @@ class cVocabulary ;
 class C_BDD_Set2 ;
 class C_String ;
 class C_Compiler ;
-class GALGAS_nonTerminalSymbolMapForGrammarAnalysis ;
+class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
 void
-LL1_computations (C_Compiler & inLexique,
+LL1_computations (C_Compiler * inCompiler,
                   const cPureBNFproductionsList & inPureBNFproductions,
                   C_HTML_FileWrite * inHTMLfile,
                   const cVocabulary & inVocabulary,
                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                   const C_BDD_Set2 & inFIRSTsets,
                   const C_BDD_Set2 & inFOLLOWsets,
-                  const GALGAS_nonTerminalSymbolMapForGrammarAnalysis & inNonterminalSymbolsMapForOriginalGrammar,
+                  const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const PMUInt32 inOriginalGrammarStartSymbol,
                   const C_String & inTargetFileName,
                   const C_String & inOutputDirectoryForCppFiles,
