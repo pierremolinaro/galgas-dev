@@ -380,4 +380,236 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+routine printPredefinedTypes :
+  @semanticDeclarationListAST predefinedTypeASTlist [emptyList] ;
+  appendPredefinedTypesASTs !?predefinedTypeASTlist ;
+#------ Build Semantic Context
+  @semanticContext semanticContext ;
+  buildSemanticContext
+    !""
+    !predefinedTypeASTlist
+    !here
+    ?semanticContext
+  ;
+#--- Build string set of predefined types
+  @string s := "There are " . [[semanticContext->mTypeMap count] string] . " predefined types:" ;
+  foreach semanticContext->mTypeMap do
+    s .= "\n  - @" . [lkey string] ;
+  end foreach ;
+  message s . "\n" ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine printFeaturesOfType
+  ??@lstring inTypeName
+  ??@typeKindEnum inTypeKindEnum
+  ??@typedAttributeList inAllTypedAttributeList
+  ??@constructorMap inConstructorMap
+  ??@readerMap inReaderMap
+  ??@modifierMap inModifierMap
+  ??@instanceMethodMap inInstanceMethodMap
+  ??@classMethodMap inClassMethodMap
+  ??@uint inHandledOperatorFlags
+  ??@unifiedTypeMapProxyList inAddAssignOperatorArguments
+  ??@withAccessorMap inWithAccessorMap
+:
+  @string s := "Features of @" . inTypeName . " type:\n" ;
+  s .= " - kind: " . [inTypeKindEnum kind] .";\n" ;
+#---
+  foreach inAllTypedAttributeList
+  before
+    s .= " - attribute(s):\n" ;
+  do
+    s .= "    @" . [mAttributeTypeProxy key] . " " . mAttributeName . "\n" ;
+  end foreach ;
+#---
+  foreach inConstructorMap
+  before
+    s .= " - constructor(s):\n" ;
+  do
+    s .= "    " . lkey ;
+    foreach mArgumentTypeList do
+      s .= " ?@" . [mType key] ;
+    end foreach ;
+    s .= " -> @" . [mReturnedType key] . "\n" ;
+  end foreach ;
+#---
+  foreach inReaderMap
+  before
+    s .= " - readers(s):\n" ;
+  do
+    s .= "    " . lkey ;
+    foreach mArgumentTypeList do
+      s .= " ?@" . [mType key] ;
+    end foreach ;
+    s .= " -> @" . [mReturnedType key] . "\n" ;
+  end foreach ;
+#---
+  foreach inModifierMap
+  before
+    s .= " - modifiers(s):\n" ;
+  do
+    s .= "    " . lkey ;
+    foreach mParameterList do
+      s .= " " . [mFormalArgumentPassingMode string] . "@" . [mFormalArgumentType key] ;
+    end foreach ;
+    s .= "\n" ;
+  end foreach ;
+#---
+  foreach inInstanceMethodMap
+  before
+    s .= " - instance method(s):\n" ;
+  do
+    s .= "    " . lkey ;
+    foreach mParameterList do
+      s .= " " . [mFormalArgumentPassingMode string] . "@" . [mFormalArgumentType key] ;
+    end foreach ;
+    s .= "\n" ;
+  end foreach ;
+#---
+  foreach inClassMethodMap
+  before
+    s .= " - class method(s):\n" ;
+  do
+    s .= "    " . lkey ;
+    foreach mParameterList do
+      s .= " " . [mFormalArgumentPassingMode string] . "@" . [mFormalArgumentType key] ;
+    end foreach ;
+    s .= "\n" ;
+  end foreach ;
+#---
+  s .= " - operators(s):\n" ;
+  if (inHandledOperatorFlags & binaryAddOperator []) != 0 then
+    s .= "    @" . inTypeName . " + @" . inTypeName . " -> @" . inTypeName . "\n" ;
+  end if ;
+  if (inHandledOperatorFlags & binarySubOperator []) != 0 then
+    s .= "    @" . inTypeName . " - @" . inTypeName . " -> @" . inTypeName . "\n" ;
+  end if ;
+  if (inHandledOperatorFlags & binaryMulOperator []) != 0 then
+    s .= "    @" . inTypeName . " * @" . inTypeName . " -> @" . inTypeName . "\n" ;
+  end if ;
+  if (inHandledOperatorFlags & binaryDivOperator []) != 0 then
+    s .= "    @" . inTypeName . " / @" . inTypeName . " -> @" . inTypeName . "\n" ;
+  end if ;
+  if (inHandledOperatorFlags & binaryModOperator []) != 0 then
+    s .= "    @" . inTypeName . " % @" . inTypeName . " -> @" . inTypeName . "\n" ;
+  end if ;
+  if (inHandledOperatorFlags & binaryAndOperator []) != 0 then
+    s .= "    @" . inTypeName . " & @" . inTypeName . " -> @" . inTypeName . "\n" ;
+  end if ;
+  if (inHandledOperatorFlags & binaryOrOperator []) != 0 then
+    s .= "    @" . inTypeName . " | @" . inTypeName . " -> @" . inTypeName . "\n" ;
+  end if ;
+  if (inHandledOperatorFlags & binaryXorOperator []) != 0 then
+    s .= "    @" . inTypeName . " ^ @" . inTypeName . " -> @" . inTypeName . "\n" ;
+  end if ;
+  if (inHandledOperatorFlags & binaryConcatOperator []) != 0 then
+    s .= "    @" . inTypeName . " . @" . inTypeName . " -> @" . inTypeName . "\n" ;
+  end if ;
+  if (inHandledOperatorFlags & binaryShiftOperator []) != 0 then
+    s .= "    @" . inTypeName . " >> @uint -> @" . inTypeName . "\n" ;
+    s .= "    @" . inTypeName . " << @uint -> @" . inTypeName . "\n" ;
+  end if ;
+  if (inHandledOperatorFlags & unaryPlusOperator []) != 0 then
+    s .= "    + @" . inTypeName . " -> @" . inTypeName . "\n" ;
+  end if ;
+  if (inHandledOperatorFlags & unaryMinusOperator []) != 0 then
+    s .= "    - @" . inTypeName . " -> @" . inTypeName . "\n" ;
+  end if ;
+  if (inHandledOperatorFlags & unaryTildeOperator []) != 0 then
+    s .= "    ~ @" . inTypeName . " -> @" . inTypeName . "\n" ;
+  end if ;
+  if (inHandledOperatorFlags & unaryNotOperator []) != 0 then
+    s .= "    not @" . inTypeName . " -> @" . inTypeName . "\n" ;
+  end if ;
+  if (inHandledOperatorFlags & incDecOperator []) != 0 then
+    s .= "    @" . inTypeName . " ++ -> @" . inTypeName . "\n" ;
+    s .= "    @" . inTypeName . " -- -> @" . inTypeName . "\n" ;
+  end if ;
+  foreach inAddAssignOperatorArguments
+  before
+    s .= "    @" . inTypeName . " +=" ;
+  do
+    s .= " !@" . [mType key] ;
+  after
+    s .= "\n" ;
+  end foreach ;
+  if (inHandledOperatorFlags & dotAssignOperator []) != 0 then
+    s .= "    @" . inTypeName . " .= @" . inTypeName . "\n" ;
+  end if ;
+  if (inHandledOperatorFlags & isComparable []) != 0 then
+    s .= "    @" . inTypeName . " <  @" . inTypeName . " -> @bool\n" ;
+    s .= "    @" . inTypeName . " <= @" . inTypeName . " -> @bool\n" ;
+    s .= "    @" . inTypeName . " >  @" . inTypeName . " -> @bool\n" ;
+    s .= "    @" . inTypeName . " >= @" . inTypeName . " -> @bool\n" ;
+  end if ;
+  s .= "    @" . inTypeName . " =  @" . inTypeName . " -> @bool\n" ;
+  s .= "    @" . inTypeName . " != @" . inTypeName . " -> @bool\n" ;
+#---
+  foreach inWithAccessorMap
+  before
+    s .= " - 'with' accessor method(s):\n" ;
+  do
+    s .= "    " . lkey . "?@" . [mArgumentType key] . "\n" ;
+  end foreach ;
+#---
+  message s ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine printPredefinedTypeFeature
+  ??@string inTypeName
+:
+  @semanticDeclarationListAST predefinedTypeASTlist [emptyList] ;
+  appendPredefinedTypesASTs !?predefinedTypeASTlist ;
+#------ Build Semantic Context
+  @semanticContext semanticContext ;
+  buildSemanticContext
+    !""
+    !predefinedTypeASTlist
+    !here
+    ?semanticContext
+  ;
+#--- Print
+  if inTypeName == "*" then
+    foreach semanticContext->mTypeMap do
+      printFeaturesOfType
+        !lkey
+        !mTypeKindEnum
+        !mAllTypedAttributeList
+        !mConstructorMap
+        !mReaderMap
+        !mModifierMap
+        !mInstanceMethodMap
+        !mClassMethodMap
+        !mHandledOperatorFlags
+        !mAddAssignOperatorArguments
+        !mWithAccessorMap
+      ;
+    end foreach ;
+  else
+    with semanticContext->mTypeMap hasKey !inTypeName do
+      printFeaturesOfType
+        !lkey
+        !mTypeKindEnum
+        !mAllTypedAttributeList
+        !mConstructorMap
+        !mReaderMap
+        !mModifierMap
+        !mInstanceMethodMap
+        !mClassMethodMap
+        !mHandledOperatorFlags
+        !mAddAssignOperatorArguments
+        !mWithAccessorMap
+      ;
+    else
+      error here:"'" . inTypeName . "' is not a predefined type" ;
+    end with ;  
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 end semantics ;

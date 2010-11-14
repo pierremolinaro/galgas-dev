@@ -73,10 +73,17 @@ before {
   if [option galgas_cli_options.printPredefinedLexicalActions value] then
     printPredefinedLexicalActions ;
   end if ;
+#--- Print predefined types
+  if [option galgas_cli_options.printPredefinedTypes value] then
+    printPredefinedTypes ;
+  end if ;
+#--- Print predefined type feature
+  const @string printFeature := [option galgas_cli_options.printPredefinedTypeFeature value] ;
+  if printFeature != "" then
+    printPredefinedTypeFeature !printFeature ;
+  end if ;
 #--- Generate predefined files
-  generatePredefinedTypeFiles
-    ![option galgas_cli_options.generatePredefinedTypes value]
-  ;
+  generatePredefinedTypeFiles ![option galgas_cli_options.generatePredefinedTypes value] ;
 }
 
 #---------------------------------------------------------------------------*
