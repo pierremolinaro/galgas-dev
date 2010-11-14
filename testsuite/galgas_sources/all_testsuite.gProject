@@ -1,17 +1,21 @@
-project all_testsuite :
-  lexique "testsuite_lexique.gLexique" : makefile ;
-  syntax "testsuite_syntax.gSyntax" : makefile ;
-  grammar "testsuite_grammar.gGrammar" : makefile ;
-  semantics "testsuite_foreach_instruction.gSemantics" : makefile ;
-  semantics "testsuite_list.gSemantics" : makefile ;
-  semantics "testsuite_struct.gSemantics" : makefile ;
-#  semantics "testsuite_listmap.gSemantics" : makefile ;
-  semantics "testsuite_map.gSemantics" : makefile ;
-  semantics "testsuite_functions.gSemantics" : makefile ;
-#  semantics "testsuite_domain.gSemantics" : makefile ;
-  semantics "testsuite_introspection.gSemantics" : makefile ;
+project all_testsuite -> "testsuite" :
+  feature "makefile-macosx" ;
+#  feature "xcode-project" ;
+#  feature "xcode-arch:i386" ;
 
-  program "testsuite_program.gProgram" : makefile ;
+  lexique "testsuite_lexique.gLexique" ;
+  syntax "testsuite_syntax.gSyntax" ;
+  grammar "testsuite_grammar.gGrammar" ;
+  semantics "testsuite_foreach_instruction.gSemantics" ;
+  semantics "testsuite_list.gSemantics" ;
+  semantics "testsuite_struct.gSemantics" ;
+  semantics "testsuite_listmap.gSemantics" ;
+  semantics "testsuite_map.gSemantics" ;
+  semantics "testsuite_functions.gSemantics" ;
+#  semantics "testsuite_domain.gSemantics" ;
+  semantics "testsuite_introspection.gSemantics" ;
 
-  extern "testsuite_hand_coded.cpp" : makefile ;
+  program "testsuite_program.gProgram" ;
+
+  extern "testsuite_hand_coded.cpp" ;
 end project ;

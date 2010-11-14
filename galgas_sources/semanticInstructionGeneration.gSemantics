@@ -1172,7 +1172,7 @@ override method @foreachInstructionForGeneration generateInstruction
     end if ;
     const @string boolVarCppName := "bool_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
     if whileExpressionIsAllwaysTrue then
-      ioGeneratedCode .= "bool " . boolVarCppName . " = true ;\n" ;
+      ioGeneratedCode .= "const bool " . boolVarCppName . " = true ;\n" ;
     else
       @string whileVar ;
       [mWhileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVar] ;
@@ -1204,18 +1204,32 @@ override method @foreachInstructionForGeneration generateInstruction
       !?ioUnusedVariableCppNameSet
       !?ioGeneratedCode
     ;
+  #--- Goto next object
+    foreach mEnumeratedObjectList do
+      ioGeneratedCode .= "  " . mEnumeratorCppName . ".gotoNextObject () ;\n" ;
+    end foreach ;
+    if mIndexVariableCppName != "" then
+      ioGeneratedCode .= "  " . mIndexVariableCppName . ".increment () ;\n" ;
+    end if ;
   #--- Compute 'while' expression
     if not whileExpressionIsAllwaysTrue then
+      ioGeneratedCode .= "  if (" ;
+      foreach mEnumeratedObjectList
+      do  ioGeneratedCode .= mEnumeratorCppName . ".hasCurrentObject ()" ;
+      between ioGeneratedCode .= " && " ;
+      end foreach ;
+      ioGeneratedCode .= ") {\n" ;
       @string whileVar ;
       [mWhileExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?whileVar] ;
-      ioGeneratedCode .= "  " . boolVarCppName . " = " . whileVar . ".isValidAndTrue () ;\n" ;
+      ioGeneratedCode .= "    " . boolVarCppName . " = " . whileVar . ".isValidAndTrue () ;\n" ;
+      ioGeneratedCode .= "  }\n" ;
     end if ;
   #--- Generate 'between' instruction
     if [mBetweenInstructionList length] > 0 then
       [!?ioGeneratedCode incIndentation !2] ;
       ioGeneratedCode .= "if (" ;
       foreach mEnumeratedObjectList do
-        ioGeneratedCode .= mEnumeratorCppName . ".hasNextObject () && " ;
+        ioGeneratedCode .= mEnumeratorCppName . ".hasCurrentObject () && " ;
       end foreach ;
       ioGeneratedCode .= boolVarCppName . ") {\n" ;
       generateInstructionList
@@ -1229,14 +1243,9 @@ override method @foreachInstructionForGeneration generateInstruction
       [!?ioGeneratedCode decIndentation !2] ;
     end if ;
   #--- End of foreach instruction
-    foreach mEnumeratedObjectList do
-      ioGeneratedCode .= "  " . mEnumeratorCppName . ".gotoNextObject () ;\n" ;
-    end foreach ;
-    if mIndexVariableCppName != "" then
-      ioGeneratedCode .= "  " . mIndexVariableCppName . ".increment () ;\n" ;
-    end if ;
     ioGeneratedCode .= "}\n" ;
   #--- Generate 'after' instruction
+    [!?ioGeneratedCode decIndentation !2] ;
     generateInstructionList
       !inGenerateCheckValid
       !mAfterInstructionList
@@ -1244,7 +1253,6 @@ override method @foreachInstructionForGeneration generateInstruction
       !?ioUnusedVariableCppNameSet
       !?ioGeneratedCode
     ;
-    [!?ioGeneratedCode decIndentation !2] ;
     ioGeneratedCode .= "}\n" ;
   else #----- foreach instruction without 'before', 'after', while expression
     ioGeneratedCode .= "//--- simple foreach instruction\n" ;

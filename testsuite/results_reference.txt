@@ -1,3 +1,7 @@
+Insertion Test Done
+Delete Test Done
+Insertion Test Done
+Delete Test Done
 *************************************** begin of foreach instruction test 1
   before
   do 'a'
@@ -34,49 +38,33 @@ LOGGING s: <@string:"d">
 --- test .= operator on list
 LOGGING s: <@string:"d">
 *************************************** begin of struct logging
-LOGGING s: <struct @structTest
-| mString <@string:"az">
-| mInt <@uint:34>
->
+LOGGING s: <struct @structTest:<@string:"az">, <@uint:34>>
 *************************************** begin of map
-LOGGING m: <map @aMap 1 object 
-|-key 0:<@lstring:'g' at '':1:1>
-|-value 0:<@uint:37>
->
-LOGGING m: <map @aMap 1 object 
-|-key 0:<@lstring:'g' at '':1:1>
-|-value 0:<@uint:56>
->
-LOGGING mm: <map @aMap 1 object 
-------- level 1
-|-key 0:<@lstring:'g' at '':1:1>
-|-value 0:<@uint:56>
->
+LOGGING m: <map @aMap (1 object): 
+|-at 0: key 'g' >
+LOGGING m: <map @aMap (1 object): 
+|-at 0: key 'g' >
+LOGGING mm: <map @aMap (0 object): >
 LOGGING v: <@uint:56>
-LOGGING mm: <map @aMap 2 objects 
-|-key 0:<@lstring:'g' at '':1:1>
-|-value 0:<@uint:11>
-------- level 1
-|-key 0:<@lstring:'g' at '':1:1>
-|-value 0:<@uint:56>
->
+LOGGING mm: <map @aMap (1 object): 
+|-at 0: key 'g' >
 LOGGING v: <@uint:11>
-LOGGING m: <map @aMap 1 object 
-|-key 0:<@lstring:'g' at '':1:1>
-|-value 0:<@uint:56>
->
+LOGGING m: <map @aMap (1 object): 
+|-at 0: key 'g' >
 *************************************** begin of function test
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (42 types)
+--- Type list (41 types)
+  @2stringlist
   @A
   @B
+  @aList
   @aMap
+  @application
   @binaryset
   @bool
   @char
-  @charlist
   @data
   @double
   @filewrapper
@@ -84,7 +72,6 @@ LOGGING r: <@uint:5>
   @functionlist
   @lbool
   @lchar
-  @lcharlist
   @ldouble
   @location
   @lsint
@@ -95,17 +82,15 @@ LOGGING r: <@uint:5>
   @luint64
   @luintlist
   @myList
+  @myListMap
   @object
   @objectlist
   @sint
   @sint64
   @string
-  @string2list
-  @string3list
   @stringlist
   @stringset
   @structTest
-  @system
   @type
   @typelist
   @uint
@@ -113,10 +98,10 @@ LOGGING r: <@uint:5>
   @uint64list
   @uintlist
 --- Function list (1 function)
-LOGGING mValue: <@function: functionTest [?@uint ?@uint] -> @uint>
-<@function: functionTest [?@uint ?@uint] -> @uint>  functionTest [?@uint ?@uint] -> @uint
+LOGGING mValue: <@function:functionTest [?@uint ?@uint] -> @uint>
+<@function:functionTest [?@uint ?@uint] -> @uint>  functionTest [?@uint ?@uint] -> @uint
 Function 'foo' exists:false
 Function 'functionTest' exists:true
-LOGGING object: <@object: <@uint:2>>
+LOGGING object: 
 LOGGING y: <@uint:2>
-LOGGING result: <@object: <@uint:8>>
+LOGGING result: 

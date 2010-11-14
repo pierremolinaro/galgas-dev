@@ -2,9 +2,7 @@ semantics class_sample_language_semantics :
   import "class_sample_language_options.gOption" ;
   import option class_sample_language_options in "class_sample_language_options.gOption" ;
 
-mapproxy @classMapIndex ;
-
-map @classMap {
+uniquemap @classMap {
   @classMapIndex mSuperClassIndex ;
   insert insertKey error message "the '%K' class is already declared in %L" ;
   search searchKey error message "the '%K' class is not declared" ;
