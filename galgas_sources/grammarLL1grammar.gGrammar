@@ -20,9 +20,6 @@
 grammar grammarLL1grammar "LL1" :
   with "grammarModelBuilder.gSyntax" ;
 
-  import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-  import syntax grammarModelBuilder in "grammarModelBuilder.gSyntax" ;
-
   root <grammar_component_start_symbol>
     !@grammarComponentAST outGrammarComponentRoot
   ; # LL1

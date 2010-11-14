@@ -20,9 +20,6 @@
 grammar optionLL1grammar "LL1" :
   with "optionSyntax.gSyntax" ;
 
-  import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-  import syntax optionSyntax in "optionSyntax.gSyntax" ;
-
   root <option_component_start_symbol>
     !@optionComponentAST outOptionComponentRoot
   ; # LL1

@@ -19,7 +19,6 @@
 
 semantics templateCodeGeneration :
   import "semanticExpressionGeneration.gSemantics" ;
-  import semantics semanticExpressionGeneration in "semanticExpressionGeneration.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 

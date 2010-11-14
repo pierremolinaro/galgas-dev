@@ -22,25 +22,6 @@ semantics projectGlobalCheckings :
   import "predefinedTypes.gSemantics" ;
   import "projectMetamodel.gSemantics" ;
 
-  import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
-  import semantics optionSemantics in "optionSemantics.gSemantics" ;
-  import semantics semantics_semantics in "semantics_semantics.gSemantics" ;
-  import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
-  import semantics optionTypesForAST in "optionTypesForAST.gSemantics" ;
-  import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
-  import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
-  import semantics programMetamodel in "programMetamodel.gSemantics" ;
-  import semantics semanticsCompilation in "semanticsCompilation.gSemantics" ;
-  import semantics predefinedTypes in "predefinedTypes.gSemantics" ;
-  import semantics projectMetamodel in "projectMetamodel.gSemantics" ;
-
-  import grammar galgas_LL1_grammar in "galgas_LL1_grammar.gGrammar" ;
-  import grammar optionLL1grammar in "optionLL1grammar.gGrammar" ;
-  import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
-  import grammar grammarLL1grammar in "grammarLL1grammar.gGrammar" ;
-  import grammar programSLRgrammar in "programSLRgrammar.gGrammar" ;
-  import grammar projectLL1grammar in "projectLL1grammar.gGrammar" ;
-
 #---------------------------------------------------------------------------*
 #                                                                           *
 #        M U L T I - M E T H O D   L I S T M A P                            *

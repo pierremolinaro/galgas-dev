@@ -28,16 +28,16 @@ project all_galgas -> "galgas" :
   feature "makefile-mingw-on-macosx" ;
   feature "makefile-msys-on-win32" ;
 #  feature "xcode-project" ;
+#  feature "xcode-arch:i386" ;
 
 #--- Command Line Options
   option "galgas_cli_options.gOption" ;
-  option "galgas_cli_options_v1.gOption" ;
 
 #--- Common Scanner
   lexique "galgas_scanner.gLexique" ;
 
 #--- Cocoa Interface
-  gui       "cocoaGalgas_v1.gGui" ;
+  gui       "cocoaGalgas.gGui" ;
 
 #--- Project Creation
   semantics "projectCreation.gSemantics" ;
@@ -126,70 +126,30 @@ project all_galgas -> "galgas" :
 
 #--- Project component
   semantics "projectGlobalCheckings.gSemantics" ;
+  semantics "targetGeneration.gSemantics" ;
   semantics "projectMetamodel.gSemantics" ;
   semantics "baseForXcodeProjectGeneration.gSemantics" ;
   semantics "XcodeProjectGeneration.gSemantics" ;
-  semantics "targetGeneration.gSemantics" ;
   syntax    "projectModelBuilder.gSyntax" ;
   grammar   "projectLL1grammar.gGrammar" ;
 
-#--- Program
-  program   "galgas_prgm_v1.gProgram" ;
-
-#--- Old style components
-  semantics "common_semantics.gSemantics" ;
-  semantics "semantics_semantics.gSemantics" ;
-  syntax    "expression_parser.gSyntax" ;
-  syntax    "semantics_parser.gSyntax" ;
-  syntax    "domain_parser.gSyntax" ;
-  semantics "parser_semantics.gSemantics" ;
-  syntax    "parser_parser.gSyntax" ;
-  semantics "scanner_semantics.gSemantics" ;
-  syntax    "templateExpressionParser.gSyntax" ;
-  syntax    "galgasTemplateParser.gSyntax" ;
-  grammar   "galgasTemplateGrammar.gGrammar" ;
-  syntax    "cocoa_parser.gSyntax" ;
-  syntax    "cli_options_parser.gSyntax" ;
-  syntax    "scanner_parser.gSyntax" ;
-  syntax    "grammar_parser.gSyntax" ;
-  syntax    "program_parser.gSyntax" ;
-  syntax    "ggs_LL1_compile_component.gSyntax" ;
-  syntax    "galgas_start.gSyntax" ;
-  grammar   "galgas_LL1_grammar.gGrammar" ;
+#--- Main program
+  program "galgas_prgm.gProgram" ;
 
 #--- Hand coded sources
-  extern "assignment_instructions.cpp" ;
-  extern "buildPureBNFgrammarEx.cpp" ;
-  extern "call_instructions.cpp" ;
-  extern "categoryMethods.cpp" ;
-  extern "cDecisionTableElementEx.cpp" ;
-  extern "class_generation.cpp" ;
-  extern "cVocabularyEx.cpp" ;
-  extern "domain_generation.cpp" ;
-  extern "empty_strings_computationsEx.cpp" ;
-  extern "enum_generation.cpp" ;
-  extern "extern_type_generation.cpp" ;
-  extern "filewrapper_template_generation.cpp" ;
-  extern "FIRST_computationsEx.cpp" ;
-  extern "follow_by_empty_computationEx.cpp" ;
-  extern "FOLLOW_computationsEx.cpp" ;
-  extern "foreach_instructions.cpp" ;
-  extern "grammarComputationsEx.cpp" ;
-  extern "if_instruction.cpp" ;
-  extern "list_generation.cpp" ;
-  extern "LL1_computationsEx.cpp" ;
-  extern "LR1_computationsEx.cpp" ;
-  extern "map_generation.cpp" ;
-  extern "parser_generation.cpp" ;
-  extern "parser_instructions.cpp" ;
-  extern "prgm_generation.cpp" ;
-  extern "printOriginalGrammarEx.cpp" ;
-  extern "semantics_generation.cpp" ;
-  extern "semantics_instructions.cpp" ;
-  extern "SLR_computationsEx.cpp" ;
-  extern "struct_generation.cpp" ;
-  extern "useful_symbols_computationsEx.cpp" ;
-  extern "wrapper_generation.cpp" ;
+  extern "cDecisionTableElement.cpp" ;
+  extern "cVocabulary.cpp" ;
+  extern "buildPureBNFgrammar.cpp" ;
+  extern "empty_strings_computations.cpp" ;
+  extern "follow_by_empty_computation.cpp" ;
+  extern "grammarComputations.cpp" ;
+  extern "printOriginalGrammar.cpp" ;
+  extern "useful_symbols_computations.cpp" ;
+  extern "FIRST_computations.cpp" ;
+  extern "FOLLOW_computations.cpp" ;
+  extern "LL1_computations.cpp" ;
+  extern "LR1_computations.cpp" ;
+  extern "SLR_computations.cpp" ;
 end project ;
 
 #---------------------------------------------------------------------------*

@@ -1,7 +1,4 @@
-syntax xml_parsing_syntax :
-with "xml_parsing_lexique.gLexique" ;
-import lexique xml_parsing_lexique in "xml_parsing_lexique.gLexique" ;
-import semantics xml_types in "xml_types.gSemantics" ;
+syntax xml_parsing_syntax ("xml_parsing_lexique.gLexique") :
 import "xml_types.gSemantics" ;
 
 #----------------------------------------------------------------------------*

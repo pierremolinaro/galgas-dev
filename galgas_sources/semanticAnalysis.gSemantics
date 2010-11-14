@@ -22,11 +22,6 @@ semantics semanticAnalysis :
   import "templateGrammar.gGrammar" ;
   import "templateAnalysis.gSemantics" ;
 
-  import semantics templateAnalysis in "templateAnalysis.gSemantics" ;
-  import semantics semanticInstructionsAnalysis in "semanticInstructionsAnalysis.gSemantics" ;
-  import semantics templateTypesForAST in "templateTypesForAST.gSemantics" ;
-  import grammar templateGrammar in "templateGrammar.gGrammar" ;
-
 #---------------------------------------------------------------------------*
 #                                                                           *
 #    C H E C K    M E T H O D    S I G N A T U R E                          *

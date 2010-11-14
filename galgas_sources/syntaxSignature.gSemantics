@@ -20,10 +20,6 @@ semantics syntaxSignature :
 import "semanticsCompilation.gSemantics" ;
 import "lexiqueCompilation.gSemantics" ;
 
-import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
-import semantics semanticsCompilation in "semanticsCompilation.gSemantics" ;
-import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
-
 #---------------------------------------------------------------------------*
 #                                                                           *
 #    S Y N T A X    S I G N A T U R E                                       *

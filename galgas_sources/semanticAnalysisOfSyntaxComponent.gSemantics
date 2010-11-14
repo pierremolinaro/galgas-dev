@@ -19,9 +19,6 @@
 semantics semanticAnalysisOfSyntaxComponent :
 import "syntaxSignature.gSemantics" ;
 
-import semantics syntaxSignature in "syntaxSignature.gSemantics" ;
-import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
-
 #---------------------------------------------------------------------------*
 #                                                                           *
 #    S Y N T A X    D E C L A R A T I O N S                                 *

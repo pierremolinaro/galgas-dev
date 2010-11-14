@@ -20,8 +20,6 @@
 semantics semanticInstructionGeneration :
   import "semanticExpressionGeneration.gSemantics" ;
 
-  import semantics semanticExpressionGeneration in "semanticExpressionGeneration.gSemantics" ;
-
 #---------------------------------------------------------------------------*
 
 abstract method @actualParameterForGeneration generateActualParameter

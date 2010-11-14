@@ -1,8 +1,5 @@
 grammar dangling_else_solution_grammar "": # Try LL(1), SLR
 with "dangling_else_solution_syntax.gSyntax" ;
-import lexique dangling_else_solution_lexique in "dangling_else_solution_lexique.gLexique" ;
-import option dangling_else_solution_options in "dangling_else_solution_options.gOption" ;
-import syntax dangling_else_solution_syntax in "dangling_else_solution_syntax.gSyntax" ;
 
 # This grammar is not LL(1), but SLR.
 root <S> ;

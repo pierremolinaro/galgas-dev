@@ -24,13 +24,6 @@ grammar syntaxSLRgrammar "SLR" :
   with "semanticInstructionsSyntax.gSyntax" ;
   with "semanticDeclarationsSyntax.gSyntax" ;
 
-  import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-  import syntax syntaxModelBuilder in "syntaxModelBuilder.gSyntax" ;
-  import syntax expressionSyntax in "expressionSyntax.gSyntax" ;
-  import syntax parameterArgumentSyntax in "parameterArgumentSyntax.gSyntax" ;
-  import syntax semanticInstructionsSyntax in "semanticInstructionsSyntax.gSyntax" ;
-  import syntax semanticDeclarationsSyntax in "semanticDeclarationsSyntax.gSyntax" ;
-
   root <syntax_component_start_symbol>
     !@syntaxComponentAST outSyntaxComponentRoot
   ; # SLR

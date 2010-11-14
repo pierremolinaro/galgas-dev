@@ -49,7 +49,7 @@ buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalS
                  const PMUInt32 inOriginalGrammarStartSymbol) {
   mOriginalGrammarSymbolsCount = 0 ;
 //--- Append terminal symbols
-  mTerminalSymbolsCount = inTerminalSymbolMap.count () ;
+  mTerminalSymbolsCount = (PMSInt32) inTerminalSymbolMap.count () ;
   cEnumerator_terminalSymbolsMapForGrammarAnalysis t (inTerminalSymbolMap, true) ;
   while (t.hasCurrentObject ()) {
     mStringsArray.addObject ("") ;  
@@ -58,7 +58,7 @@ buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalS
   t.rewind () ;
   while (t.hasCurrentObject ()) {
    // printf ("ENTER TERMINAL: %u '%s'\n", t.current_mTerminalIndex ().uintValue (), t.current_lkey (HERE).mAttribute_string.stringValue ().cString (HERE)) ;
-    const PMUInt32 idx = t.current_mTerminalIndex (HERE).uintValue () ;
+    const PMSInt32 idx = (PMSInt32) t.current_mTerminalIndex (HERE).uintValue () ;
     mStringsArray (idx COMMA_HERE) = t.current_lkey (HERE).mAttribute_string.stringValue () ;  
     t.gotoNextObject () ;
   }

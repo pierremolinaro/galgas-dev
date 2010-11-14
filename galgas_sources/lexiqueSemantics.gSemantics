@@ -1,6 +1,5 @@
 semantics lexiqueSemantics :
 import "lexiqueTypesForAST.gSemantics" ;
-import semantics lexiqueTypesForAST in "lexiqueTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 

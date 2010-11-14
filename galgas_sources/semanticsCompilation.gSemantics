@@ -22,11 +22,6 @@ semantics semanticsCompilation :
   import "grammarCompilation.gSemantics" ;
   import "semanticsSLRgrammar.gGrammar" ;
 
-  import semantics allASTTypes in "allASTTypes.gSemantics" ;
-  import semantics predefinedTypes in "predefinedTypes.gSemantics" ;
-  import semantics grammarCompilation in "grammarCompilation.gSemantics" ;
-  import grammar semanticsSLRgrammar in "semanticsSLRgrammar.gGrammar" ;
-
 #---------------------------------------------------------------------------*
 #                                                                           *
 #           G E N E R A T I O N    F I L E W R A P P E R S                  *

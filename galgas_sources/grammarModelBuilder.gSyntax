@@ -17,11 +17,8 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax grammarModelBuilder :
-with "galgas_scanner.gLexique" ;
+syntax grammarModelBuilder ("galgas_scanner.gLexique") :
 
-import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
 import "grammarMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
@@ -78,6 +75,7 @@ rule <grammar_component_start_symbol>
       $option$ ;
     end select ;
     $identifier$ ?* ;
+    warning here:"obsolete GALGAS 1 'import' declaration: useless in GALGAS 2" ;
     $in$ ;
     $literal_string$ ? * ;
     $;$ ;

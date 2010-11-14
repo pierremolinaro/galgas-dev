@@ -25,13 +25,6 @@ semantics semanticContext :
   import "semanticsConstructors.gSemantics" ;
   import "optionCompilation.gSemantics" ;
 
-  import semantics semanticsClassMethods in "semanticsClassMethods.gSemantics" ;
-  import semantics semanticsInstanceMethods in "semanticsInstanceMethods.gSemantics" ;
-  import semantics semanticsModifiers in "semanticsModifiers.gSemantics" ;
-  import semantics semanticsReaders in "semanticsReaders.gSemantics" ;
-  import semantics semanticsConstructors in "semanticsConstructors.gSemantics" ;
-  import semantics optionCompilation in "optionCompilation.gSemantics" ;
-
 #---------------------------------------------------------------------------*
 #                                                                           *
 #  G R A M M A R   M A P                                                    *
@@ -92,8 +85,6 @@ map @wrapperFileMap { # Key is file name
 }
 
 #---------------------------------------------------------------------------*
-
-map @wrapperDirectoryMap ;
 
 map @wrapperDirectoryMap { # Key is directory name
   @wrapperFileMap mRegularFileMap ;

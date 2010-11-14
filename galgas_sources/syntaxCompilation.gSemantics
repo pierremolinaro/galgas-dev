@@ -21,10 +21,6 @@ import "semanticAnalysisOfSyntaxComponent.gSemantics" ;
 import "lexiqueCompilation.gSemantics" ;
 import "syntaxSLRgrammar.gGrammar" ;
 
-import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
-import semantics semanticAnalysisOfSyntaxComponent in "semanticAnalysisOfSyntaxComponent.gSemantics" ;
-import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
-
 #---------------------------------------------------------------------------*
 #                                                                           *
 #           B U I L D    T E R M I N A L    M A P                           *

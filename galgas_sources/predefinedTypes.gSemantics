@@ -20,8 +20,6 @@
 semantics predefinedTypes :
   import "semanticGeneration.gSemantics" ;
 
-  import semantics semanticGeneration in "semanticGeneration.gSemantics" ;
-
 #---------------------------------------------------------------------------*
 
 routine appendPredefinedListTypeAST

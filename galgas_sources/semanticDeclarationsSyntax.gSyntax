@@ -17,11 +17,8 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax semanticDeclarationsSyntax :
-with "galgas_scanner.gLexique" ;
+syntax semanticDeclarationsSyntax ("galgas_scanner.gLexique") :
 
-import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
 import "semanticsTypesForAST.gSemantics" ;
 
 #------------------------------------------------------------------------------*
@@ -102,7 +99,8 @@ end rule ;
 
 rule <obsolete_declaration> :
   $map$ ;
-  $type_name$ ? * ;
+  $type_name$ ? @lstring mListName ;
+  warning mListName: "GALGAS 1 obsolete declaration: useless for GALFAS 2" ;
   $;$ ;
 end rule ;
 
@@ -370,7 +368,8 @@ end rule ;
 
 rule <obsolete_declaration> :
   $mapproxy$ ;
-  $type_name$ ? * ;
+  $type_name$ ? @lstring mMapTypeName ;
+  warning mMapTypeName: "GALGAS 1 obsolete declaration: useless for GALFAS 2" ;
   $;$ ;
 end rule ;
 
@@ -392,76 +391,9 @@ rule <semantic_declaration>
 end rule ;
 
 #---------------------------------------------------------------------------*
-
-rule <obsolete_declaration> :
-  $map$ ;
-  $type_name$ ?* ;
-  $class$ ;
-  $identifier$ ?* ;
-  $;$ ;
-  repeat
-  while
-    $insert$ ;
-    $identifier$ ?* ;
-    $error$ ;
-    $message$ ;
-    $literal_string$ ?* ;
-    $;$ ;
-  while
-    $search$ ;
-    $identifier$ ?* ;
-    $error$ ;
-    $message$ ;
-    $literal_string$ ?* ;
-    $;$ ;
-  while
-    $type_name$ ?* ;
-    $identifier$ ?* ;
-    $;$ ;
-  while
-    $block$ ;
-    $identifier$ ?* ;
-    $:$ ;
-    $($ ;
-    repeat
-    while
-      $?$ ;
-      $type_name$ ?* ;
-      $identifier$ ?* ;
-    end repeat ;
-    $)$ ;
-    $:$ ;
-    $($ ;
-    repeat
-    while
-      $?$ ;
-      $type_name$ ?* ;
-      $identifier$ ?* ;
-    end repeat ;
-    $)$ ;
-    $;$ ;
-  end repeat ;
-  $}$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
 #                                                                           *
 #    C L A S S    D E C L A R A T I O N                                     *
 #                                                                           *
-#---------------------------------------------------------------------------*
-
-#nonterminal <class_message_declaration> ?!@classMessageDefinitionListAST ioClassMessageDefinitionList ;
-
-#---------------------------------------------------------------------------*
-
-#rule <class_message_declaration> ?!@classMessageDefinitionListAST ioClassMessageDefinitionList :
-#  $message$ ;
-#  $identifier$ ? @lstring mMessageName ;
-#  $literal_string$ ? @lstring mMessageValue ;
-#  $;$ ;
-#  ioClassMessageDefinitionList += !mMessageName !mMessageValue ;
-#end rule ;
-
 #---------------------------------------------------------------------------*
 
 nonterminal <class_abstract_method_declaration>
@@ -637,7 +569,8 @@ end rule ;
 
 rule <obsolete_declaration> :
   $list$ ;
-  $type_name$ ? * ;
+  $type_name$ ? @lstring mListName ;
+  warning mListName: "GALGAS 1 obsolete declaration: useless for GALFAS 2" ;
   $;$ ;
 end rule ;
 
@@ -649,7 +582,8 @@ end rule ;
 
 rule <obsolete_declaration> :
   $sortedlist$ ;
-  $type_name$ ? * ;
+  $type_name$ ? @lstring mListName ;
+  warning mListName: "GALGAS 1 obsolete declaration: useless for GALFAS 2" ;
   $;$ ;
 end rule ;
 
@@ -742,32 +676,12 @@ rule <semantic_declaration>
   $type_name$ ? @lstring mEnumTypeName ;
   ${$ ;
   @lstringlist mConstantList [emptyList] ;
-  select
-    repeat
-      $identifier$ ?@lstring constantName ;
-      mConstantList += !constantName ;
-    while
-     $,$ ;
-    end repeat ;
-  or
-    repeat
-    while
-      $constructor$ ;
-      repeat
-        $identifier$ ?@lstring constantName ;
-        mConstantList += !constantName ;
-      while
-      $,$ ;
-      end repeat ;
-      $;$ ;
-    end repeat ;
-#    @string s := "" ;
-#    foreach mConstantList
-#    do s .= [mValue string] ;
-#    between s .= ", " ;
-#    end foreach ;
-#    warning here : "Old style declaration: now write '... {" . s . "} ..." ;
-  end select ;
+  repeat
+    $identifier$ ?@lstring constantName ;
+    mConstantList += !constantName ;
+  while
+   $,$ ;
+  end repeat ;
   $}$ ;
   ${$ ;
   @enumMessageListAST mEnumMessageList [emptyList] ;

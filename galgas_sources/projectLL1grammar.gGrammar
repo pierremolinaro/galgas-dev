@@ -20,9 +20,6 @@
 grammar projectLL1grammar "LL1" :
   with "projectModelBuilder.gSyntax" ;
 
-  import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-  import syntax projectModelBuilder in "projectModelBuilder.gSyntax" ;
-
   root <project_component_start_symbol>
     !@projectComponentAST outComponent
   ;

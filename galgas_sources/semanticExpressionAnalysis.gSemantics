@@ -19,7 +19,6 @@
 
 semantics semanticExpressionAnalysis :
   import "semanticsDecoratedTypes.gSemantics" ;
-  import semantics semanticsDecoratedTypes in "semanticsDecoratedTypes.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 

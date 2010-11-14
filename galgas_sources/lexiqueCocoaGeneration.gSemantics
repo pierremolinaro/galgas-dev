@@ -20,11 +20,6 @@
 semantics lexiqueCocoaGeneration :
 import "predefinedLexicalActions.gSemantics" ;
 
-import semantics lexiqueTypesForAST in "lexiqueTypesForAST.gSemantics" ;
-import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
-import semantics predefinedLexicalActions in "predefinedLexicalActions.gSemantics" ;
-import grammar lexiqueLL1grammar in "lexiqueLL1grammar.gGrammar" ;
-
 #---------------------------------------------------------------------------*
 #   L E X I C A L    E X P R E S S I O N    C O D E    G E N E R A T I O N  *
 #---------------------------------------------------------------------------*

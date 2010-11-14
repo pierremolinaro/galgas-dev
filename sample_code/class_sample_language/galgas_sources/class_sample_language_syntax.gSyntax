@@ -1,8 +1,5 @@
-syntax class_sample_language_syntax :
-with "class_sample_language_lexique.gLexique" ;
-import lexique class_sample_language_lexique in "class_sample_language_lexique.gLexique" ;
-import option class_sample_language_options in "class_sample_language_options.gOption" ;
-import semantics class_sample_language_semantics in "class_sample_language_semantics.gSemantics" ;
+syntax class_sample_language_syntax ("class_sample_language_lexique.gLexique") :
+
 import "class_sample_language_options.gOption" ;
 import "class_sample_language_semantics.gSemantics" ;
 

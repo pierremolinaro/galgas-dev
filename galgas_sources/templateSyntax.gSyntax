@@ -17,12 +17,9 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax templateSyntax :
-with "galgasTemplateScanner.gLexique" ;
+syntax templateSyntax ("galgasTemplateScanner.gLexique") :
 
-import lexique galgasTemplateScanner in "galgasTemplateScanner.gLexique" ;
 import "templateTypesForAST.gSemantics" ;
-import semantics templateTypesForAST in "templateTypesForAST.gSemantics" ;
 
 nonterminal <template_parser_start_symbol>
   !@templateInstructionListAST outResultingInstructionList

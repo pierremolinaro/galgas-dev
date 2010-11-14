@@ -19,7 +19,6 @@
 
 semantics grammarMetamodel :
 import "syntaxMetamodel.gSemantics" ;
-import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 

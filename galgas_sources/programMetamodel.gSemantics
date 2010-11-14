@@ -19,7 +19,6 @@
 
 semantics programMetamodel :
 import "semanticsTypesForAST.gSemantics" ;
-import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 

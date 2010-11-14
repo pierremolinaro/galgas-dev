@@ -1,5 +1,4 @@
 semantics dangling_else_solution_semantics :
-  import option dangling_else_solution_options in "dangling_else_solution_options.gOption" ;
   import "dangling_else_solution_options.gOption" ;
 
 # ADD YOUR CODE HERE

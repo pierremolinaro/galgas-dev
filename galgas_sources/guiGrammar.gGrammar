@@ -20,9 +20,6 @@
 grammar guiGrammar "SLR" :
   with "guiSyntax.gSyntax" ;
 
-  import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-  import syntax guiSyntax in "guiSyntax.gSyntax" ;
-
   root <gui_component_start_symbol>
     !@guiComponentAST outGuiComponentRoot
   ; # LL1

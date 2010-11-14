@@ -4,9 +4,6 @@ semantics targetGeneration :
   import "projectMetamodel.gSemantics" ;
   import "XcodeProjectGeneration.gSemantics" ;
 
-  import semantics projectMetamodel in "projectMetamodel.gSemantics" ;
-  import semantics XcodeProjectGeneration in "XcodeProjectGeneration.gSemantics" ;
-
 #---------------------------------------------------------------------------*
 
 

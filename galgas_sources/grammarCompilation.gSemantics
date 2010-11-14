@@ -23,12 +23,6 @@ import "galgas_cli_options.gOption" ;
 import "grammarLL1grammar.gGrammar" ;
 import "syntaxSLRgrammar.gGrammar" ;
 
-import semantics allASTTypes in "allASTTypes.gSemantics" ;
-import semantics grammarSemantics in "grammarSemantics.gSemantics" ;
-import grammar grammarLL1grammar in "grammarLL1grammar.gGrammar" ;
-import grammar syntaxSLRgrammar in "syntaxSLRgrammar.gGrammar" ;
-import option galgas_cli_options in "galgas_cli_options.gOption" ;
-
 #---------------------------------------------------------------------------*
 
 function transformLabelMap

@@ -17,12 +17,8 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax programModelBuilder :
-with "galgas_scanner.gLexique" ;
+syntax programModelBuilder ("galgas_scanner.gLexique") :
 
-import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
-import semantics programMetamodel in "programMetamodel.gSemantics" ;
 import "semanticsTypesForAST.gSemantics" ;
 import "programMetamodel.gSemantics" ;
 
@@ -58,26 +54,31 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
     or
       $semantics$ ;
       $identifier$ ?* ;
+      warning here:"obsolete GALGAS 1 'import' declaration: useless in GALGAS 2" ;
       $in$ ;
       $literal_string$ ? * ;
     or
       $lexique$ ;
       $identifier$ ?* ;
+      warning here:"obsolete GALGAS 1 'import' declaration: useless in GALGAS 2" ;
       $in$ ;
       $literal_string$ ? * ;
     or
       $grammar$ ;
       $identifier$ ?* ;
+      warning here:"obsolete GALGAS 1 'import' declaration: useless in GALGAS 2" ;
       $in$ ;
       $literal_string$ ? * ;
     or
       $syntax$ ;
       $identifier$ ?* ;
+      warning here:"obsolete GALGAS 1 'import' declaration: useless in GALGAS 2" ;
       $in$ ;
       $literal_string$ ? * ;
     or
       $option$ ;
       $identifier$ ?* ;
+      warning here:"obsolete GALGAS 1 'import' declaration: useless in GALGAS 2" ;
       $in$ ;
       $literal_string$ ? * ;
     end select ;

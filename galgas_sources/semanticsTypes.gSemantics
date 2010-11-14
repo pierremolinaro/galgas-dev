@@ -19,16 +19,11 @@
 
 semantics semanticsTypes :
 import "semanticsTypesForAST.gSemantics" ;
-import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
 #  U N I F I E D    T Y P E    M A P                                        *
 #                                                                           *
-#---------------------------------------------------------------------------*
-
-mapproxy @unifiedTypeMapProxy ;
-
 #---------------------------------------------------------------------------*
 
 list @unifiedTypeMapProxyList {

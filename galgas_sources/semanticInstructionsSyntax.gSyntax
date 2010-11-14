@@ -17,12 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax semanticInstructionsSyntax :
-with "galgas_scanner.gLexique" ;
-
-import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
-import option galgas_cli_options in "galgas_cli_options.gOption" ;
+syntax semanticInstructionsSyntax ("galgas_scanner.gLexique") :
 
 import "semanticsTypesForAST.gSemantics" ;
 import "galgas_cli_options.gOption" ;
@@ -1342,14 +1337,6 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   const @location endOfSourceExpression := here ;
   @actualParameterListAST mActualParameterList ;
   <actual_parameter_list> ? mActualParameterList ;
-#--- Dependency (obsolete ?)
-  select
-  or
-    $dependency$ ;
-    <expression> ? * ;
-    $in$ ;
-    <expression> ? * ;
-  end select ;
   $;$ ;
   outInstruction := [@grammarInstructionAST new
     !instructionLocation
