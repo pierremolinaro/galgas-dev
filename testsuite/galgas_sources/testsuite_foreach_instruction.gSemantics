@@ -44,12 +44,11 @@ routine testsuite_foreach_instruction :
     message "  after\n" ;
   end foreach ;
   message "--- begin of foreach instruction test 4\n" ;
-  foreach < strList (@string s)
-  while s != "c"
+  foreach < strList while mValue != "c"
   before
     message "  before\n" ;
   do
-    message "  do '" . s . "'\n" ;
+    message "  do '" . mValue . "'\n" ;
   between
     message "  between\n" ;
   after
