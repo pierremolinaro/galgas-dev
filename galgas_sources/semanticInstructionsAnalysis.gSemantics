@@ -226,29 +226,6 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @sendInstructionAST analyzeSemanticInstruction
-  ??@analysisContext inAnalysisContext
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
-:
-#--- Analyze source expression
-  @semanticExpressionForGeneration expression ;
-  [mSourceExpression analyzeSemanticExpression
-    !inAnalysisContext
-    !?ioVariableMap
-    ?expression
-  ] ;
-#--- Check source expression type is @string
-  if [expression mType] != inAnalysisContext->mPredefinedTypes->mStringType then
-    error mInstructionLocation
-    :"the send expression type is '@" . [[expression mType] key] . "'; it should be of the '@string' type"
-    ;
-  end if ;
-  ioInstructionListForGeneration += ![@sendInstructionForGeneration new !expression] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
 routine analyzeErrorOrWarningInstruction
   ??@analysisContext inAnalysisContext
   ??@semanticExpressionAST inLocationExpression

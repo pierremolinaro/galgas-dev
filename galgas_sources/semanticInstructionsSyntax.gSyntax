@@ -555,24 +555,6 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    S E N D    I N S T R U C T I O N                                       *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <semantic_instruction> !@semanticInstructionAST outInstruction :
-  $send$ ;
-  const @location instructionLocation := here ;
-  @semanticExpressionAST expression ;
-  <expression> ? expression ;
-  $;$ ;
-  outInstruction := [@sendInstructionAST new
-    !instructionLocation
-    !expression
-  ] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #    I F    I N S T R U C T I O N                                           *
 #                                                                           *
 #---------------------------------------------------------------------------*

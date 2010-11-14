@@ -1306,17 +1306,6 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @sendInstructionForGeneration generateInstruction
-  ??@bool unused inGenerateCheckValid
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
-  ?!@string ioGeneratedCode
-:
-  ioGeneratedCode .= "@sendInstructionForGeneration generateInstruction\n" ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
 override method @logInstructionForGeneration generateInstruction
   ??@bool unused inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex

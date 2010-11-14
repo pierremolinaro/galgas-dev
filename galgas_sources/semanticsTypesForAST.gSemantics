@@ -634,18 +634,6 @@ class @appendInstructionAST extends @semanticInstructionAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  S E N D    I N S T R U C T I O N                                         *
-#                                                                           *
-#  send EXPRESSION ;                                                        *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @sendInstructionAST extends @semanticInstructionAST {
-  @semanticExpressionAST mSourceExpression ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #  F O R E A C H    I N S T R U C T I O N                                   *
 #                                                                           *
 #---------------------------------------------------------------------------*
