@@ -402,7 +402,7 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 routine printFeaturesOfType
-  ??@lstring inTypeName
+  ??@string inTypeName
   ??@typeKindEnum inTypeKindEnum
   ??@typedAttributeList inAllTypedAttributeList
   ??@constructorMap inConstructorMap
@@ -576,7 +576,7 @@ routine printPredefinedTypeFeature
   if inTypeName == "*" then
     foreach semanticContext->mTypeMap do
       printFeaturesOfType
-        !lkey
+        ![lkey string]
         !mTypeKindEnum
         !mAllTypedAttributeList
         !mConstructorMap
@@ -592,7 +592,7 @@ routine printPredefinedTypeFeature
   else
     with semanticContext->mTypeMap hasKey !inTypeName do
       printFeaturesOfType
-        !lkey
+        !inTypeName
         !mTypeKindEnum
         !mAllTypedAttributeList
         !mConstructorMap
