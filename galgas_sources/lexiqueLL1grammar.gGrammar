@@ -20,9 +20,6 @@
 grammar lexiqueLL1grammar "LL1" :
   with "lexiqueSyntax.gSyntax" ;
 
-  import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-  import syntax lexiqueSyntax in "lexiqueSyntax.gSyntax" ;
-
   root <lexique_component_start_symbol>
     !@lexiqueComponentAST outLexiqueComponentRoot
   ; # LL1

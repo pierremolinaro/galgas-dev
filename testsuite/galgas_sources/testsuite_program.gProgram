@@ -10,18 +10,6 @@ import "testsuite_introspection.gSemantics" ;
 
 import "testsuite_grammar.gGrammar" ;
 
-#--- Import clauses
-import semantics testsuite_foreach_instruction in "testsuite_foreach_instruction.gSemantics" ;
-import semantics testsuite_list in "testsuite_list.gSemantics" ;
-import semantics testsuite_struct in "testsuite_struct.gSemantics" ;
-#import semantics testsuite_listmap in "testsuite_listmap.gSemantics" ;
-import semantics testsuite_map in "testsuite_map.gSemantics" ;
-import semantics testsuite_functions in "testsuite_functions.gSemantics" ;
-#import semantics testsuite_domain in "testsuite_domain.gSemantics" ;
-import semantics testsuite_introspection in "testsuite_introspection.gSemantics" ;
-
-import grammar testsuite_grammar in "testsuite_grammar.gGrammar" ;
-
 #--- Prologue routine
 before {
   testsuite_hand_coded ;

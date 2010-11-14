@@ -19,7 +19,6 @@
 
 semantics semanticsTypeFeatures :
   import "semanticsTypes.gSemantics" ;
-  import semantics semanticsTypes in "semanticsTypes.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *

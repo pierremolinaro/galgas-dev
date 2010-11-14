@@ -1,8 +1,5 @@
 grammar LL1_expression_grammar "LL1":
 with "LL1_expression_syntax.gSyntax" ;
-import lexique LL1_expression_lexique in "LL1_expression_lexique.gLexique" ;
-import option LL1_expression_options in "LL1_expression_options.gOption" ;
-import syntax LL1_expression_syntax in "LL1_expression_syntax.gSyntax" ;
 
 root <StartSymbol> ;
 

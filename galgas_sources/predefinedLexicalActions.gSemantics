@@ -20,8 +20,6 @@
 semantics predefinedLexicalActions :
 import "lexiqueSemantics.gSemantics" ;
 
-import semantics lexiqueSemantics in "lexiqueSemantics.gSemantics" ;
-
 #---------------------------------------------------------------------------*
 #                         buildLexicalRoutineMap                            *
 #---------------------------------------------------------------------------*

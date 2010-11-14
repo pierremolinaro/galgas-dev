@@ -22,10 +22,6 @@ semantics templateAnalysis :
   import "semanticExpressionAnalysis.gSemantics" ;
   import "templateDecoratedTypes.gSemantics" ;
 
-  import semantics templateDecoratedTypes in "templateDecoratedTypes.gSemantics" ;
-  import semantics semanticExpressionAnalysis in "semanticExpressionAnalysis.gSemantics" ;
-  import semantics templateTypesForAST in "templateTypesForAST.gSemantics" ;
-
 #---------------------------------------------------------------------------*
 #                                                                           *
 #   T E M P L A T E    A N A L Y S I S    C O N T E X T                     *

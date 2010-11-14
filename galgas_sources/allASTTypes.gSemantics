@@ -28,17 +28,6 @@ semantics allASTTypes :
   import "optionSemantics.gSemantics" ;
   import "programMetamodel.gSemantics" ;
 
-import semantics lexiqueTypesForAST in "lexiqueTypesForAST.gSemantics" ;
-import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
-import semantics optionTypesForAST in "optionTypesForAST.gSemantics" ;
-import semantics lexiqueTypesForAST in "lexiqueTypesForAST.gSemantics" ;
-import semantics guiTypesForAST in "guiTypesForAST.gSemantics" ;
-import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
-import semantics grammarMetamodel in "grammarMetamodel.gSemantics" ;
-import semantics optionSemantics in "optionSemantics.gSemantics" ;
-import semantics programMetamodel in "programMetamodel.gSemantics" ;
-
-
 #---------------------------------------------------------------------------*
 
 map @parsedLexiqueComponentMap {

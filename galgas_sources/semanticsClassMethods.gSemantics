@@ -19,7 +19,6 @@
 
 semantics semanticsClassMethods :
   import "semanticsTypes.gSemantics" ;
-  import semantics semanticsTypes in "semanticsTypes.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 

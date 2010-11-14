@@ -20,8 +20,6 @@
 semantics semanticExpressionGeneration :
   import "semanticAnalysis.gSemantics" ;
 
-  import semantics semanticAnalysis in "semanticAnalysis.gSemantics" ;
-
 #---------------------------------------------------------------------------*
 
 once compilerCppName ->@string outCompilerCppName :

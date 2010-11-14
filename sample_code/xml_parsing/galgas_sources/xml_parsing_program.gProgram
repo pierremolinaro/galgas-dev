@@ -4,11 +4,6 @@ import "xml_types.gSemantics" ;
 import "xml_parsing_options.gOption" ;
 import "xml_parsing_grammar.gGrammar" ;
 
-#--- Import clauses
-import semantics xml_parsing_semantics in "xml_parsing_semantics.gSemantics" ;
-import semantics xml_types in "xml_types.gSemantics" ;
-import option xml_parsing_options in "xml_parsing_options.gOption" ;
-import grammar xml_parsing_grammar in "xml_parsing_grammar.gGrammar" ;
 
 #--- Prologue routine
 before {

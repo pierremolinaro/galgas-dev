@@ -22,10 +22,6 @@ semantics semanticGeneration :
   import "templateCodeGeneration.gSemantics" ;
   import "galgas_cli_options.gOption" ;
 
-  import semantics templateCodeGeneration in "templateCodeGeneration.gSemantics" ;
-  import semantics semanticInstructionGeneration in "semanticInstructionGeneration.gSemantics" ;
-  import option galgas_cli_options in "galgas_cli_options.gOption" ;
-
 #---------------------------------------------------------------------------*
 #                                                                           *
 # P R O C E D U R E    I M P L E M E N A T I O N                            *

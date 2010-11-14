@@ -20,10 +20,6 @@ semantics programComponentCompilation :
 import "semanticAnalysisOfSyntaxComponent.gSemantics" ;
 import "programSLRgrammar.gGrammar" ;
 
-import semantics lexiqueCompilation in "lexiqueCompilation.gSemantics" ;
-import semantics semanticAnalysisOfSyntaxComponent in "semanticAnalysisOfSyntaxComponent.gSemantics" ;
-import grammar programSLRgrammar in "programSLRgrammar.gGrammar" ;
-
 #---------------------------------------------------------------------------*
 #                                                                           *
 #           G E N E R A T I O N    F I L E W R A P P E R S                  *

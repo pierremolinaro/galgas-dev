@@ -17,10 +17,6 @@ map @xmlAttributeMap {
 
 #------------------------------------------------------------*
 
-list @xmlNodeList ;
-
-#------------------------------------------------------------*
-
 class @xmlNode {
   @xmlNodeType mType;
   @string name ;

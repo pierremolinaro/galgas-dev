@@ -17,12 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax syntaxModelBuilder :
-with "galgas_scanner.gLexique" ;
-
-import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
-import semantics syntaxMetamodel in "syntaxMetamodel.gSemantics" ;
+syntax syntaxModelBuilder ("galgas_scanner.gLexique") :
 import "semanticsTypesForAST.gSemantics" ;
 import "syntaxMetamodel.gSemantics" ;
 
@@ -70,11 +65,11 @@ rule <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot
   $syntax$ ;
 #--- Semantics Component Name
   $identifier$ ? @lstring mSyntaxComponentName ;
-  $:$ ;
 #--- Imported lexique
-  $with$ ;
+  $($ ;
   $literal_string$ ? @lstring importedLexiqueReference ;
-  $;$ ;
+  $)$ ;
+  $:$ ;
 #--- Loop on import declarations
   @lstringlist importedComponentPathList [emptyList] ;
   repeat
@@ -86,21 +81,25 @@ rule <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot
     or
       $semantics$ ;
       $identifier$ ?* ;
+      warning here:"obsolete GALGAS 1 'import' declaration: useless in GALGAS 2" ;
       $in$ ;
       $literal_string$ ? * ;
     or
       $lexique$ ;
       $identifier$ ?* ;
+      warning here:"obsolete GALGAS 1 'import' declaration: useless in GALGAS 2" ;
       $in$ ;
       $literal_string$ ? * ;
     or
       $grammar$ ;
       $identifier$ ?* ;
+      warning here:"obsolete GALGAS 1 'import' declaration: useless in GALGAS 2" ;
       $in$ ;
       $literal_string$ ? * ;
     or
       $option$ ;
       $identifier$ ?* ;
+      warning here:"obsolete GALGAS 1 'import' declaration: useless in GALGAS 2" ;
       $in$ ;
       $literal_string$ ? * ;
     end select ;

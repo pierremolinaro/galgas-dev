@@ -1,8 +1,4 @@
-syntax dangling_else_solution_syntax :
-with "dangling_else_solution_lexique.gLexique" ;
-import lexique dangling_else_solution_lexique in "dangling_else_solution_lexique.gLexique" ;
-import option dangling_else_solution_options in "dangling_else_solution_options.gOption" ;
-import semantics dangling_else_solution_semantics in "dangling_else_solution_semantics.gSemantics" ;
+syntax dangling_else_solution_syntax ("dangling_else_solution_lexique.gLexique") :
 import "dangling_else_solution_options.gOption" ;
 import "dangling_else_solution_semantics.gSemantics" ;
 

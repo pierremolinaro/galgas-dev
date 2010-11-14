@@ -17,11 +17,8 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax expressionSyntax :
-with "galgas_scanner.gLexique" ;
+syntax expressionSyntax ("galgas_scanner.gLexique") :
 
-import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
 import "semanticsTypesForAST.gSemantics" ;
 
 #------------------------------------------------------------------------------*

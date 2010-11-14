@@ -21,8 +21,6 @@ semantics grammarSemantics :
 
   import "semanticsTypesForAST.gSemantics" ;
 
-  import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
-
 #---------------------------------------------------------------------------*
 #                                                                           *
 #   A C T I O N ,    M E T H O D    S I G N A T U R E                       *

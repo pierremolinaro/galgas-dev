@@ -19,7 +19,6 @@
 
 semantics semanticInstructionsAnalysis :
   import "semanticExpressionAnalysis.gSemantics" ;
-  import semantics semanticExpressionAnalysis in "semanticExpressionAnalysis.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *

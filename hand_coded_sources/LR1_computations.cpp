@@ -1300,7 +1300,7 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
                      << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                      << "_" << currentAltForNonTerminal2.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                      << " (" ;
-      const PMSInt32 pureBNFleftNonterminalIndex = nonTerminal.current_mNonTerminalIndex (HERE).uintValue () ;
+      const PMSInt32 pureBNFleftNonterminalIndex = (PMSInt32) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () ;
       const PMSInt32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
       cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal2.current_mFormalParametersList (HERE), true) ;
       PMSInt16 numeroParametre = 1 ;

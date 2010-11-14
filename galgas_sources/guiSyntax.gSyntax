@@ -17,11 +17,8 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax guiSyntax :
-with "galgas_scanner.gLexique" ;
+syntax guiSyntax ("galgas_scanner.gLexique") :
 
-import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import semantics guiTypesForAST in "guiTypesForAST.gSemantics" ;
 import "guiTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*

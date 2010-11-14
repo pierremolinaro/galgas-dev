@@ -1,6 +1,5 @@
 program class_sample_language_program "version 1.0.0":
 import "class_sample_language_grammar.gGrammar" ;
-import grammar class_sample_language_grammar in "class_sample_language_grammar.gGrammar" ;
 
 before {
 }

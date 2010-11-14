@@ -20,8 +20,6 @@
 semantics semanticsDecoratedTypes :
   import "semanticContext.gSemantics" ;
 
-  import semantics semanticContext in "semanticContext.gSemantics" ;
-
 #---------------------------------------------------------------------------*
 
 abstract class @templateInstructionForGeneration {

@@ -21,8 +21,6 @@ semantics syntaxMetamodel :
 
 import "semanticsTypesForAST.gSemantics" ;
 
-import semantics semanticsTypesForAST in "semanticsTypesForAST.gSemantics" ;
-
 #---------------------------------------------------------------------------*
 
 list @syntaxInstructionList {

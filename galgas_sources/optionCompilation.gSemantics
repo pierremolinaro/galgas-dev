@@ -19,10 +19,6 @@
 semantics optionCompilation :
 import "allASTTypes.gSemantics" ;
 import "optionSemantics.gSemantics" ;
-
-import semantics allASTTypes in "allASTTypes.gSemantics" ;
-import semantics optionSemantics in "optionSemantics.gSemantics" ;
-import grammar optionLL1grammar in "optionLL1grammar.gGrammar" ;
 import "optionLL1grammar.gGrammar" ;
 
 #---------------------------------------------------------------------------*

@@ -490,14 +490,14 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
   bool first = true ;
   while (nonTerminal.hasCurrentObject ()) {
     printProductions (inPureBNFproductions, inVocabulary,  inLexiqueName,
-                      nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), productionIndex, first,
+                      (PMSInt32) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), productionIndex, first,
                       productionRulesIndex, productionRulesTitle,
                       productionRuleDescription,
                       firstProductionRuleIndex, generatedZone3) ;
     nonTerminal.gotoNextObject () ;
   }
   generatedZone3 << "//---- Added productions from 'select' and 'repeat' instructions\n" ;  
-  for (PMSInt32 i=inVocabulary.getTerminalSymbolsCount () + inNonTerminalSymbolSortedListForGrammarAnalysis.count () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
+  for (PMSInt32 i=inVocabulary.getTerminalSymbolsCount () + (PMSInt32) inNonTerminalSymbolSortedListForGrammarAnalysis.count () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
     printProductions (inPureBNFproductions, inVocabulary,  inLexiqueName,
                       i - inVocabulary.getTerminalSymbolsCount (),
                       productionIndex, first,
@@ -561,12 +561,12 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
   nonTerminal.rewind () ;
   while (nonTerminal.hasCurrentObject ()) {
     printDecisionTable (inPureBNFproductions, inVocabulary, inLexiqueName,
-                        nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), decisionTableIndex,
+                        (PMSInt32) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), decisionTableIndex,
                         productionDecisionIndex, generatedZone3) ;
     nonTerminal.gotoNextObject () ;
   }
   generatedZone3 << "//---- Added non terminal symbols from 'select' and 'repeat' instructions\n" ;  
-  { for (PMSInt32 i=inVocabulary.getTerminalSymbolsCount () + inNonTerminalSymbolSortedListForGrammarAnalysis.count () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
+  { for (PMSInt32 i=inVocabulary.getTerminalSymbolsCount () + (PMSInt32) inNonTerminalSymbolSortedListForGrammarAnalysis.count () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
       printDecisionTable (inPureBNFproductions, inVocabulary, inLexiqueName,
                           i - inVocabulary.getTerminalSymbolsCount (), decisionTableIndex,
                           productionDecisionIndex, generatedZone3) ;
@@ -591,7 +591,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
   nonTerminal.rewind () ;
   while (nonTerminal.hasCurrentObject ()) {
     generatedZone3.appendCppTitleComment (C_String ("'") + nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue () + "' non terminal implementation") ;
-    const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction (nonTerminal.current_mNonTerminalIndex (HERE).uintValue () COMMA_HERE) >= 0 ;
+    const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction ((PMSInt32) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () COMMA_HERE) >= 0 ;
     cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), true) ;
     while (currentAltForNonTerminal.hasCurrentObject ()) {
       generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
@@ -630,7 +630,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
       }
       generatedZone3 << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * " << (existeProduction ? "inLexique" : "")
                      << ") {\n" ; 
-      engendrerAiguillageNonTerminaux (inVocabulary, nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), numeroParametre,
+      engendrerAiguillageNonTerminaux (inVocabulary, (PMSInt32) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), numeroParametre,
                                        inPureBNFproductions, generatedZone3,
                                        currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ()) ;
       generatedZone3 << "}\n\n" ;

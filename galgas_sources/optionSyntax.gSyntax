@@ -17,11 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax optionSyntax :
-with "galgas_scanner.gLexique" ;
-
-import lexique galgas_scanner in "galgas_scanner.gLexique" ;
-import semantics optionTypesForAST in "optionTypesForAST.gSemantics" ;
+syntax optionSyntax ("galgas_scanner.gLexique") :
 import "optionTypesForAST.gSemantics" ;
 
 nonterminal <option_component_start_symbol> !@optionComponentAST outOptionComponentRoot;

@@ -17,12 +17,9 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-syntax lexiqueSyntax :
-with "galgas_scanner.gLexique" ;
+syntax lexiqueSyntax ("galgas_scanner.gLexique") :
 
-import lexique galgas_scanner in "galgas_scanner.gLexique" ;
 import "lexiqueTypesForAST.gSemantics" ;
-import semantics lexiqueTypesForAST in "lexiqueTypesForAST.gSemantics" ;
 
 nonterminal <lexique_component_start_symbol> !@lexiqueComponentAST outLexiqueComponentRoot;
 

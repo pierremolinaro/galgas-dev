@@ -20,9 +20,6 @@
 grammar templateGrammar "SLR" :
   with "templateSyntax.gSyntax" ;
 
-  import lexique galgasTemplateScanner in "galgasTemplateScanner.gLexique" ;
-  import syntax templateSyntax in "templateSyntax.gSyntax" ;
-
   root <template_parser_start_symbol>
     !@templateInstructionListAST outResultingInstructionList
   ;
