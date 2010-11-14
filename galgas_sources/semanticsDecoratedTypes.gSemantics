@@ -621,43 +621,8 @@ class @appendInstructionForGeneration extends @semanticInstructionForGeneration 
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  S E N D    I N S T R U C T I O N                                         *
-#                                                                           *
-#  send EXPRESSION ;                                                        *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @sendInstructionForGeneration extends @semanticInstructionForGeneration {
-  @semanticExpressionForGeneration mSourceExpression ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #  F O R E A C H    I N S T R U C T I O N                                   *
 #                                                                           *
-#---------------------------------------------------------------------------*
-
-#abstract class @foreachInstructionEnumeratedObjectElementForGeneration {
-#}
-
-#---------------------------------------------------------------------------*
-
-#class @foreachInstructionJokerForGeneration extends @foreachInstructionEnumeratedObjectElementForGeneration {
-#}
-
-#---------------------------------------------------------------------------*
-
-#class @foreachInstructionEnumeratedConstantForGeneration extends @foreachInstructionEnumeratedObjectElementForGeneration {
-#  @lstring mTypeName ;
-#  @lstring mConstantName ;
-#}
-
-#---------------------------------------------------------------------------*
-
-#list @foreachInstructionEnumeratedObjectElementListForGeneration {
-#  @foreachInstructionEnumeratedObjectElementForGeneration mElement ;
-#}
-
 #---------------------------------------------------------------------------*
 
 list @foreachInstructionEnumeratedObjectListForGeneration {
