@@ -781,7 +781,7 @@ override method @predefinedTypeAST enterInSemanticContext
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum predefinedType]
-    ![@typedAttributeList listWithValue !selfTypeProxy ![@lstring new !mPredefinedTypeName !here] !true !true]
+    ![@typedAttributeList emptyList]
     ![@attributeMap emptyMap]
     ![@typedAttributeList emptyList]
     !constructorMap
@@ -792,10 +792,8 @@ override method @predefinedTypeAST enterInSemanticContext
     !enumerationList
     ![t getSupportedOperatorFlags]
     !addAssignArgumentList
-    ![t getNativeAttributeList]
     ![@stringset emptySet]
     ![@lstringlist emptyList]
-    ![@typedAttributeList emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
@@ -980,10 +978,8 @@ override method @mapDeclarationAST enterInSemanticContext
     !enumerationDescriptor
     !doNotGenererateObjectCompare []
     ![@unifiedTypeMapProxyList emptyList]
-    ![@nativeAttributeList emptyList]
     ![@stringset emptySet]
     ![@lstringlist emptyList]
-    ![@typedAttributeList emptyList]
     !mSearchMethodList
     ![@mapSearchMethodListAST emptyList]
     !withAccessorMap
@@ -1194,10 +1190,8 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     !enumerationDescriptor
     !doNotGenererateObjectCompare []
     ![@unifiedTypeMapProxyList emptyList]
-    ![@nativeAttributeList emptyList]
     ![@stringset emptySet]
     ![@lstringlist emptyList]
-    ![@typedAttributeList emptyList]
     !mSearchMethodList
     ![@mapSearchMethodListAST emptyList]
     !withAccessorMap
@@ -1223,7 +1217,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ?typeKindEnum
     ?2*
     ?mapTypedAttributeList
-    ?12*
+    ?10*
     ?searchMethodList
     ?3*
   ] ;
@@ -1320,10 +1314,8 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ![@enumerationDescriptorList emptyList]
     !doNotGenererateObjectCompare []
     ![@unifiedTypeMapProxyList emptyList]
-    ![@nativeAttributeList emptyList]
     ![@stringset emptySet]
     ![@lstringlist emptyList]
-    ![@typedAttributeList emptyList]
     ![@mapSearchMethodListAST emptyList]
     !searchMethodList
     ![@withAccessorMap emptyMap]
@@ -1376,10 +1368,8 @@ override method @enumDeclarationAST enterInSemanticContext
     ![@enumerationDescriptorList emptyList]
     !generateDescriptionReaderUtilityMethod [] | isComparable []
     ![@unifiedTypeMapProxyList emptyList]
-    ![@nativeAttributeList emptyList]
     !constantSet
     !mConstantList
-    ![@typedAttributeList emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
@@ -1635,10 +1625,8 @@ override method @listDeclarationAST enterInSemanticContext
     !enumerationDescriptor
     !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator []
     !constructorAttributeTypeList
-    ![@nativeAttributeList emptyList]
     ![@stringset emptySet]
     ![@lstringlist emptyList]
-    ![@typedAttributeList emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
@@ -1735,10 +1723,8 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !enumerationDescriptor
     !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator []
     !constructorAttributeTypeList
-    ![@nativeAttributeList emptyList]
     ![@stringset emptySet]
     ![@lstringlist emptyList]
-    ![@typedAttributeList emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
@@ -1813,10 +1799,8 @@ override method @structDeclarationAST enterInSemanticContext
     ![@enumerationDescriptorList emptyList]
     !generateDescriptionReaderUtilityMethod []
     ![@unifiedTypeMapProxyList emptyList]
-    ![@nativeAttributeList emptyList]
     ![@stringset emptySet]
     ![@lstringlist emptyList]
-    !typedAttributeList
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
@@ -1870,7 +1854,7 @@ override method @classDeclarationAST enterInSemanticContext
       ?inheritedReaderMap
       ?inheritedModifierMap
       ?inheritedInstanceMethodMap
-      ?11*
+      ?9*
       ?generateHeaderInSeparateFile
     ] ;
   #---
@@ -2087,10 +2071,8 @@ override method @classDeclarationAST enterInSemanticContext
     ![@enumerationDescriptorList emptyList]
     !0
     ![@unifiedTypeMapProxyList emptyList]
-    ![@nativeAttributeList emptyList]
     ![@stringset emptySet]
     ![@lstringlist emptyList]
-    !currentClassTypedAttributeList
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
@@ -2167,7 +2149,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     ?2*
     ?typeKindEnum
     ?listTypedAttributeList
-    ?18*
+    ?16*
   ] ;
   if typeKindEnum != [@typeKindEnum listType] then
     error mAssociatedListTypeName : "the '@" . mAssociatedListTypeName . "' type should be a list type" ;
@@ -2221,10 +2203,8 @@ override method @listmapDeclarationAST enterInSemanticContext
     !enumeratorDescriptor
     !doNotGenererateObjectCompare []
     !addAssignOperatorDescription
-    ![@nativeAttributeList emptyList]
     ![@stringset emptySet]
     ![@lstringlist emptyList]
-    ![@typedAttributeList emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
