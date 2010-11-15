@@ -83,7 +83,6 @@ SOURCES += MF_MemoryControl.cpp
 SOURCES += cpp-allocation.cpp
 SOURCES += basic-allocation.cpp
 
-
 #---------------------------------------------------------------*
 #    G A L G A S    2                                           *
 #---------------------------------------------------------------*

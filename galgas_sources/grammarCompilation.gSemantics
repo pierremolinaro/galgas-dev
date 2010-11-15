@@ -414,15 +414,6 @@ list @nonTerminalToAddList {
 
 filewrapper grammarGenerationTemplate in "../generation_templates/grammar_generation" {
 } {
-  template oldGrammarZone2Header "grammar-zone2.old.h.gTemplate"
-    ?@grammarComponentAST GRAMMAR_COMPONENT_ROOT
-  ;
-  template oldGrammarZone3Header "grammar-zone3.old.h.gTemplate"
-    ?@string LEXIQUE_CLASS
-    ?@grammarComponentAST GRAMMAR_COMPONENT_ROOT
-    ?@nonTerminalSymbolMapForGrammarAnalysis NON_TERMINAL_MAP
-    ?@nonTerminalToAddList ADDED_NON_TERMINAL_LIST
-  ;
   template grammarZone2Header "grammar-zone2.h.gTemplate"
     ?@grammarComponentAST GRAMMAR_COMPONENT_ROOT
   ;
@@ -459,6 +450,26 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#   Extern routine that performs grammar analysis                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+extern routine grammarAnalysisAndGeneration
+  ??@lstring inGrammarName
+  ??@lstring inGrammarClass
+  ??@uint startSymbolIndex
+  ??@string inLexiqueName
+  ??@location endOfSourceFile
+  ??@terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap
+  ??@syntaxComponentListForGrammarAnalysis ioSyntaxComponentsList
+  ??@unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar
+  ??@string inOutputDirectoryForCppFiles
+  ??@string inOutputDirectoryForHTMLfile
+  ??@nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis
+;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #      C O M P I L E    G R A M M A R    C O M P O N E N T                  *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -467,7 +478,6 @@ routine compileGrammarComponent
   ??@lstring inSourceFile
   ??@string inOutputDirectoryForCppFiles
   ??@string inOutputDirectoryForHTMLFile
-  ??@bool inGenerateGALGAS1Code
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
   @grammarComponentAST grammarComponentRoot ;
@@ -566,7 +576,6 @@ routine compileGrammarComponent
     ![grammarComponentRoot mEndOfSourceText]
     !actuallyUsedTerminalSymbolMap
     !syntaxComponentListForGrammarAnalysis
-    !nonTerminalMapForGrammarAnalysis
     !unusedNonTerminalSymbolsForGrammar
     !inOutputDirectoryForCppFiles
     !inOutputDirectoryForHTMLFile
@@ -574,45 +583,24 @@ routine compileGrammarComponent
   ;
 #---------------------------------------------------------- Generate header
   if [@uint errorCount] == 0 then
-    if not inGenerateGALGAS1Code then
-      const @string zone2 := [filewrapper grammarGenerationTemplate.grammarZone2Header
-        !grammarComponentRoot
-      ] ;
-      const @string zone3 := [filewrapper grammarGenerationTemplate.grammarZone3Header
-        ![lexiqueComponentName identifierRepresentation]
-        !grammarComponentRoot
-        !nonTerminalMapForGrammarAnalysis
-        !nonTerminalToAddList
-      ] ;
-      [@string generateFile
-        !inOutputDirectoryForCppFiles
-        ![[grammarComponentRoot mGrammarName] string] . ".h"
-        !"//"
-        !"\n\n" # Defaut user zone1
-        !zone2
-        !"\n\n" # Defaut user zone2
-        !zone3
-      ] ;
-    else
-      const @string zone2 := [filewrapper grammarGenerationTemplate.oldGrammarZone2Header
-        !grammarComponentRoot
-      ] ;
-      const @string zone3 := [filewrapper grammarGenerationTemplate.oldGrammarZone3Header
-        ![lexiqueComponentName identifierRepresentation]
-        !grammarComponentRoot
-        !nonTerminalMapForGrammarAnalysis
-        !nonTerminalToAddList
-      ] ;
-      [@string generateFile
-        !inOutputDirectoryForCppFiles
-        ![[grammarComponentRoot mGrammarName] string] . ".h"
-        !"//"
-        !"\n\n" # Defaut user zone1
-        !zone2
-        !"\n\n" # Defaut user zone2
-        !zone3
-      ] ;
-    end if ;
+    const @string zone2 := [filewrapper grammarGenerationTemplate.grammarZone2Header
+      !grammarComponentRoot
+    ] ;
+    const @string zone3 := [filewrapper grammarGenerationTemplate.grammarZone3Header
+      ![lexiqueComponentName identifierRepresentation]
+      !grammarComponentRoot
+      !nonTerminalMapForGrammarAnalysis
+      !nonTerminalToAddList
+    ] ;
+    [@string generateFile
+      !inOutputDirectoryForCppFiles
+      ![[grammarComponentRoot mGrammarName] string] . ".h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      !zone2
+      !"\n\n" # Defaut user zone2
+      !zone3
+    ] ;
   end if ;
 end routine ;
 

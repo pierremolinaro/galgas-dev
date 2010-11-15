@@ -85,53 +85,6 @@ SOURCES += MF_MemoryControl.cpp
 SOURCES += cpp-allocation.cpp
 SOURCES += basic-allocation.cpp
 
-%if COMPILE_FOR_GALGAS_1 then
-%#---------------------------------------------------------------*
-#    G A L G A S    1                                           *
-#---------------------------------------------------------------*
-
-SOURCES += PM_C_Object.cpp
-SOURCES += PM_C_Array.cpp
-SOURCES += PM_C_Dictionary.cpp
-SOURCES += C_CompilerEx.cpp
-SOURCES += C_LexiqueEx.cpp
-SOURCES += scanner_actionsEx.cpp
-SOURCES += galgas_introspection.cpp
-SOURCES += AC_GGS_class.cpp
-SOURCES += AC_GGS_map.cpp
-SOURCES += AC_GGS_listmap.cpp
-SOURCES += AC_GGS_list.cpp
-SOURCES += AC_GGS_sortedlist.cpp
-SOURCES += AC_GGS_domain.cpp
-SOURCES += AC_GGS_mapindex.cpp
-SOURCES += predefined_types.cpp
-SOURCES += GGS__root.cpp
-SOURCES += GGS_object.cpp
-SOURCES += GGS_type.cpp
-SOURCES += GGS_function.cpp
-SOURCES += GGS_data.cpp
-SOURCES += GGS_bool.cpp
-SOURCES += GGS_char.cpp
-SOURCES += GGS_double.cpp
-SOURCES += GGS_location.cpp
-SOURCES += GGS_string.cpp
-SOURCES += GGS_uint.cpp
-SOURCES += GGS_sint.cpp
-SOURCES += GGS_uint64.cpp
-SOURCES += GGS_sint64.cpp
-SOURCES += GGS_lbool.cpp
-SOURCES += GGS_lchar.cpp
-SOURCES += GGS_ldouble.cpp
-SOURCES += GGS_lstring.cpp
-SOURCES += GGS_luint.cpp
-SOURCES += GGS_lsint.cpp
-SOURCES += GGS_luint64.cpp
-SOURCES += GGS_lsint64.cpp
-SOURCES += GGS_stringset.cpp
-SOURCES += GGS_binaryset.cpp
-SOURCES += GGS_filewrapper.cpp
-SOURCES += GGS_application.cpp
-%end if%
 #---------------------------------------------------------------*
 #    G A L G A S    2                                           *
 #---------------------------------------------------------------*

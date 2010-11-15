@@ -132,76 +132,6 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine getGALGAS_source_file_list
-  !@stringlist out_cpp_and_h_fileList
-:
-  out_cpp_and_h_fileList := [@stringlist emptyList] ;
-  out_cpp_and_h_fileList += !"C_CompilerEx" ;
-  out_cpp_and_h_fileList += !"C_LexiqueEx" ;
-  out_cpp_and_h_fileList += !"PM_C_Array" ;
-  out_cpp_and_h_fileList += !"PM_C_Dictionary" ;
-  out_cpp_and_h_fileList += !"PM_C_Object" ;
-  out_cpp_and_h_fileList += !"AC_GGS_listmap" ;
-  out_cpp_and_h_fileList += !"AC_GGS_map" ;
-  out_cpp_and_h_fileList += !"AC_GGS_list" ;
-  out_cpp_and_h_fileList += !"AC_GGS_sortedlist" ;
-  out_cpp_and_h_fileList += !"AC_GGS_mapindex" ;
-  out_cpp_and_h_fileList += !"AC_GGS_domain" ;
-  out_cpp_and_h_fileList += !"AC_GGS_class" ;
-  out_cpp_and_h_fileList += !"scanner_actionsEx" ;
-  out_cpp_and_h_fileList += !"galgas_introspection" ;
-  out_cpp_and_h_fileList += !"predefined_types" ;
-  out_cpp_and_h_fileList += !"GGS_binaryset" ;
-  out_cpp_and_h_fileList += !"GGS_stringset" ;
-  out_cpp_and_h_fileList += !"GGS_filewrapper" ;
-  out_cpp_and_h_fileList += !"GGS_lsint64" ;
-  out_cpp_and_h_fileList += !"GGS_luint64" ;
-  out_cpp_and_h_fileList += !"GGS_sint64" ;
-  out_cpp_and_h_fileList += !"GGS_uint64" ;
-  out_cpp_and_h_fileList += !"GGS_double" ;
-  out_cpp_and_h_fileList += !"GGS_sint" ;
-  out_cpp_and_h_fileList += !"GGS_bool" ;
-  out_cpp_and_h_fileList += !"GGS_char" ;
-  out_cpp_and_h_fileList += !"GGS_string" ;
-  out_cpp_and_h_fileList += !"GGS_uint" ;
-  out_cpp_and_h_fileList += !"GGS_data" ;
-  out_cpp_and_h_fileList += !"GGS_location" ;
-  out_cpp_and_h_fileList += !"GGS_ldouble" ;
-  out_cpp_and_h_fileList += !"GGS_lsint" ;
-  out_cpp_and_h_fileList += !"GGS_lbool" ;
-  out_cpp_and_h_fileList += !"GGS_lchar" ;
-  out_cpp_and_h_fileList += !"GGS_lstring" ;
-  out_cpp_and_h_fileList += !"GGS_luint" ;
-  out_cpp_and_h_fileList += !"GGS_type" ;
-  out_cpp_and_h_fileList += !"GGS_object" ;
-  out_cpp_and_h_fileList += !"GGS_function" ;
-  out_cpp_and_h_fileList += !"GGS_application" ;
-  out_cpp_and_h_fileList += !"GGS__root" ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine build_LIBPM_GALGAS_group
-  ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@XcodeObjectReferenceList ioFileListForGroup
-:
-  @stringlist cpp_and_h_fileList ;
-  getGALGAS_source_file_list ?cpp_and_h_fileList ;
-  @stringlist fileList [emptyList] ;
-  foreach cpp_and_h_fileList do 
-    append_cpp_h_files !?fileList !mValue ;
-  end foreach ;
-  fileList += !"PP_GalgasPrefix.pch" ;
-#---
-  enter_files_in_group
-   !?ioXcodeProjectDescription
-   !fileList
-   !?ioFileListForGroup
-  ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
 routine build_LIBPM_GALGAS_2_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ?!@XcodeObjectReferenceList ioFileListForGroup
@@ -213,26 +143,6 @@ routine build_LIBPM_GALGAS_2_group
    !?ioXcodeProjectDescription
    !fileList
    !?ioFileListForGroup
-  ;
-end routine ;
-
-#---------------------------------------------------------------------------*
-
-routine build_LIBPM_GALGAS_files_for_sources_build_phase
-  ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
-:
-  @stringlist cpp_and_h_fileList ;
-  getGALGAS_source_file_list ?cpp_and_h_fileList ;
-  @stringlist cppFileList [emptyList] ;
-  foreach cpp_and_h_fileList do 
-    cppFileList += !mValue . ".cpp" ;
-  end foreach ;
-#---
-  enter_file_list_for_sources_build_phase
-   !?ioXcodeProjectDescription
-   !cppFileList
-   !?ioBuildPhaseList
   ;
 end routine ;
 
@@ -916,7 +826,6 @@ routine generateXcodeProject
   ??@stringlist inIconFiles
   ??@string inReferenceFilePath
   ??@stringlist inArchitectureList
-  ??@bool inGenerateCodeGalgas1
 :
   @XcodeProjectDescription XcodeProjectDescription ;
   initXcodeProjectDescription ?XcodeProjectDescription ;
@@ -1060,22 +969,6 @@ routine generateXcodeProject
     !fileListOf_LIBPM_FILE_group
     !?libpmGroupChildrenList
   ;
-#---------- LIBPM / GALGAS
-  if inGenerateCodeGalgas1 then
-    @XcodeObjectReferenceList fileListOf_LIBPM_GALGAS_group [emptyList] ;
-    build_LIBPM_GALGAS_group
-      !?XcodeProjectDescription
-      !?fileListOf_LIBPM_GALGAS_group
-    ;
-  #---
-    enter_subgroup
-      !?XcodeProjectDescription
-      !"GALGAS"
-      !"galgas"
-      !fileListOf_LIBPM_GALGAS_group
-      !?libpmGroupChildrenList
-    ;
-  end if ;
 #---------- LIBPM / GALGAS 2
   @XcodeObjectReferenceList fileListOf_LIBPM_GALGAS_2_group [emptyList] ;
   build_LIBPM_GALGAS_2_group
@@ -1210,13 +1103,6 @@ routine generateXcodeProject
     !?XcodeProjectDescription
     !?listForSourceBuildPhaseOfTool
   ;
-# LIBPM / GALGAS
-  if inGenerateCodeGalgas1 then
-    build_LIBPM_GALGAS_files_for_sources_build_phase
-      !?XcodeProjectDescription
-      !?listForSourceBuildPhaseOfTool
-    ;
-  end if ;
 # LIBPM / GALGAS 2
   build_LIBPM_GALGAS_2_files_for_sources_build_phase
     !?XcodeProjectDescription
@@ -1294,13 +1180,6 @@ routine generateXcodeProject
     !?XcodeProjectDescription
     !?listForSourceBuildPhaseOfDebugTool
   ;
-# LIBPM / GALGAS
-  if inGenerateCodeGalgas1 then
-    build_LIBPM_GALGAS_files_for_sources_build_phase
-      !?XcodeProjectDescription
-      !?listForSourceBuildPhaseOfDebugTool
-    ;
-  end if ;
 # LIBPM / GALGAS 2
   build_LIBPM_GALGAS_2_files_for_sources_build_phase
     !?XcodeProjectDescription

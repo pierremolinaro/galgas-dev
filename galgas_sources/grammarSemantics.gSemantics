@@ -192,26 +192,5 @@ map @terminalSymbolsMapForGrammarAnalysis {
 }
 
 #---------------------------------------------------------------------------*
-#                                                                           *
-#   Extern routine that performs grammar analysis                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-extern routine grammarAnalysisAndGeneration
-  ??@lstring inGrammarName
-  ??@lstring inGrammarClass
-  ??@uint startSymbolIndex
-  ??@string inLexiqueName
-  ??@location endOfSourceFile
-  ??@terminalSymbolsMapForGrammarAnalysis inTerminalSymbolMap
-  ??@syntaxComponentListForGrammarAnalysis ioSyntaxComponentsList
-  ??@nonTerminalSymbolMapForGrammarAnalysis ioNonterminalSymbolsMapForGrammar
-  ??@unusedNonTerminalSymbolMapForGrammarAnalysis inUnusedNonTerminalSymbolsForGrammar
-  ??@string inOutputDirectoryForCppFiles
-  ??@string inOutputDirectoryForHTMLfile
-  ??@nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis
-;
-
-#---------------------------------------------------------------------------*
 
 end semantics ;
