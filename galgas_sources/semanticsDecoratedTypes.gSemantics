@@ -467,6 +467,7 @@ list @listOfSemanticInstructionListForGeneration {
 #---------------------------------------------------------------------------*
 
 abstract class @semanticDeclarationForGeneration {
+  @bool mIsGlobal ;
 }
 
 #---------------------------------------------------------------------------*

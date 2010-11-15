@@ -115,6 +115,7 @@ override method @predefinedTypeAST performSemanticAnalysis
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
   ioSemanticDeclarationListForGeneration += ![@primitiveTypeForGeneration new
+    !mIsGlobal
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap ![@lstring new !mPredefinedTypeName !here]]
     !mPredefinedTypeName
     !mKind
@@ -154,6 +155,7 @@ override method @listDeclarationAST performSemanticAnalysis
     [!?attributeMap insertKey !mAttributeName !t] ;
   end foreach ;
   ioSemanticDeclarationListForGeneration += ![@listTypeForGeneration new
+    !mIsGlobal
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListTypeName]
     !typedAttributeList
   ]
@@ -198,6 +200,7 @@ override method @sortedListDeclarationAST performSemanticAnalysis
   end foreach ;
 #--- Generate type
   ioSemanticDeclarationListForGeneration += ![@sortedListTypeForGeneration new
+    !mIsGlobal
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mSortedListTypeName]
     !typedAttributeList
     !sortDescriptorList
@@ -232,6 +235,7 @@ override method @structDeclarationAST performSemanticAnalysis
     [!?attributeMap insertKey !mAttributeName !t] ;
   end foreach ;
   ioSemanticDeclarationListForGeneration += ![@structTypeForGeneration new
+    !mIsGlobal
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mStructTypeName]
     !typedAttributeList
   ]
@@ -291,6 +295,7 @@ override method @enumDeclarationAST performSemanticAnalysis
   end foreach ;
 #---
   ioSemanticDeclarationListForGeneration += ![@enumTypeForGeneration new
+    !mIsGlobal
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mEnumTypeName]
     !constantList
     !enumMessageList
@@ -312,6 +317,7 @@ override method @listmapDeclarationAST performSemanticAnalysis
   [inSemanticContext->mTypeMap searchKey !mAssociatedListTypeName ?2* ?typeKindEnum ?listTypeAttributeList ?16*] ;
 #---
   ioSemanticDeclarationListForGeneration += ![@listmapTypeForGeneration new
+    !mIsGlobal
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListmapTypeName]
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAssociatedListTypeName]
     !listTypeAttributeList
@@ -465,6 +471,7 @@ override method @mapDeclarationAST performSemanticAnalysis
   end foreach ;
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration += ![@mapTypeForGeneration new
+    !mIsGlobal
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapTypeName]
     !mMapTypeName
     !typedAttributeList
@@ -816,6 +823,7 @@ override method @uniqueMapDeclarationAST performSemanticAnalysis
   end foreach ;
 #--- Enter map declaration
   ioSemanticDeclarationListForGeneration += ![@uniqueMapTypeForGeneration new
+    !mIsGlobal
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapTypeName]
     !mMapTypeName
     !typedAttributeList
@@ -844,6 +852,7 @@ override method @mapProxyDeclarationAST performSemanticAnalysis
   [inSemanticContext->mTypeMap searchKey !mAssociatedMapTypeName ?5* ?listTypeAttributeList ?10* ?searchMethodList ?3*] ;
 #---
   ioSemanticDeclarationListForGeneration += ![@mapProxyTypeForGeneration new
+    !mIsGlobal
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mMapProxyTypeName]
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAssociatedMapTypeName]
     !listTypeAttributeList
@@ -969,6 +978,7 @@ override method @externFunctionDeclarationAST performSemanticAnalysis
     ;
   end foreach ;
   ioSemanticDeclarationListForGeneration += ![@functionPrototypeDeclarationForGeneration new
+    !mIsGlobal
     ![mFunctionName string]
     !formalArgumentList
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mResultTypeName]
@@ -994,6 +1004,7 @@ override method @externRoutineDeclarationAST performSemanticAnalysis
     ;
   end foreach ;
   ioSemanticDeclarationListForGeneration += ![@routinePrototypeDeclarationForGeneration new
+    !mIsGlobal
     ![mRoutineName string]
     !formalArgumentList
   ]
@@ -1030,6 +1041,7 @@ override method @routineDeclarationAST performSemanticAnalysis
   ;
 #---
   ioSemanticDeclarationListForGeneration += ![@routineImplementationForGeneration new
+    !mIsGlobal
     ![mRoutineName string]
     !formalArgumentList
     !instructionList
@@ -1228,6 +1240,7 @@ override method @classDeclarationAST performSemanticAnalysis
   end loop ;
 #------
   ioSemanticDeclarationListForGeneration += ![@classTypeForGeneration new
+    !mIsGlobal
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mClassTypeName]
     !mIsAbstract
     !mClassTypeName
@@ -1352,6 +1365,7 @@ override method @functionDeclarationAST performSemanticAnalysis
   ;
 #---
   ioSemanticDeclarationListForGeneration += ![@functionImplementationForGeneration new
+    !mIsGlobal
     ![mFunctionName string]
     !formalInputParameterList
     !returnType
@@ -1395,6 +1409,7 @@ override method @onceFunctionDeclarationAST performSemanticAnalysis
   ;
 #---
   ioSemanticDeclarationListForGeneration += ![@onceFunctionDeclarationForGeneration new
+    !mIsGlobal
     ![mFunctionName string]
     !returnType
     !resultVariableCppName
@@ -1472,6 +1487,7 @@ override method @filewrapperDeclarationAST performSemanticAnalysis
     end foreach ;
   #---- Enter filewrapper in generated list
     ioSemanticDeclarationListForGeneration += ![@filewrapperDeclarationForGeneration new
+      !mIsGlobal
       ![mFilewrapperName string]
       ![mFilewrapperPath string]
       !wrapperFileMap
@@ -1510,6 +1526,7 @@ override method @abstractCategoryMethodAST performSemanticAnalysis
   end foreach ;
 #---
   ioSemanticDeclarationListForGeneration += ![@abstractCategoryMethodForGeneration new
+    !mIsGlobal
     ![mTypeName string]
     ![mAbstractCategoryMethodName string]
     !formalParameterListForGeneration
@@ -1553,6 +1570,7 @@ override method @categoryMethodAST performSemanticAnalysis
   ;
 #---
   ioSemanticDeclarationListForGeneration += ![@categoryMethodForGeneration new
+    !mIsGlobal
     ![mTypeName string]
     ![mCategoryMethodName string]
     !formalParameterListForGeneration
@@ -1623,6 +1641,7 @@ override method @overridingCategoryMethodAST performSemanticAnalysis
   end if ;
 #---
   ioSemanticDeclarationListForGeneration += ![@overridingCategoryMethodForGeneration new
+    !mIsGlobal
     ![mTypeName string]
     !baseTypeName
     ![mOverridingCategoryMethodName string]
@@ -1712,6 +1731,7 @@ override method @abstractCategoryReaderAST performSemanticAnalysis
   end foreach ;
 #---
   ioSemanticDeclarationListForGeneration += ![@abstractCategoryReaderForGeneration new
+    !mIsGlobal
     ![mTypeName string]
     ![mAbstractCategoryReaderName string]
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mAbstractCategoryReaderReturnedTypeName]
@@ -1763,6 +1783,7 @@ override method @categoryReaderAST performSemanticAnalysis
   ;
 #---
   ioSemanticDeclarationListForGeneration += ![@categoryReaderForGeneration new
+    !mIsGlobal
     ![mTypeName string]
     ![mCategoryReaderName string]
     !returnType
@@ -1851,6 +1872,7 @@ override method @overridingCategoryReaderAST performSemanticAnalysis
   end if ;
 #---
   ioSemanticDeclarationListForGeneration += ![@overrideCategoryReaderForGeneration new
+    !mIsGlobal
     ![mTypeName string]
     !baseTypeName
     ![mOverridingCategoryReaderName string]

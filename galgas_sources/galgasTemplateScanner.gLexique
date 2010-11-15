@@ -91,6 +91,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "lexique",
   "list",
   "listmap",
+  "local",
   "log",
   "loop",
   "map",

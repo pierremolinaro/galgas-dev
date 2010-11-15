@@ -110,8 +110,12 @@ routine recursivelyImportSemanticComponent
           ?semanticsComponentRoot
         ;
         ioHeaderIncludeList += ![[semanticsComponentRoot mSemanticsComponentName] string] ;
-      #--- Add declaration to declaration list
-        ioSemanticDeclarationList .= [semanticsComponentRoot mSemanticDeclarationList] ;
+      #--- Add declaration to declaration list (only if global)
+        foreach [semanticsComponentRoot mSemanticDeclarationList] do
+          if [mSemanticDeclaration mIsGlobal] then
+            ioSemanticDeclarationList += !mSemanticDeclaration ;
+          end if ;
+        end foreach ;
       #--- Import semantic components named in this file
         recursivelyImportSemanticComponent
           !?ioParsedComponentStruct
@@ -319,10 +323,14 @@ routine compileSemanticsComponent
       ![semanticContext->mTypeMap allKeyList]
     ] ;
     foreach decoratedDeclarationListForGeneration do
-      headerString .= [mDeclaration appendDeclaration1] ;
+      if [mDeclaration mIsGlobal] then
+        headerString .= [mDeclaration appendDeclaration1] ;
+      end if ;
     end foreach ;
     foreach decoratedDeclarationListForGeneration do
-      headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory] ;
+      if [mDeclaration mIsGlobal] then
+        headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory] ;
+      end if ;
     end foreach ;
     [@string generateFile
       !inOutputDirectory
@@ -341,9 +349,17 @@ routine compileSemanticsComponent
       !implementationIncludeList
     ] ;
     foreach decoratedDeclarationListForGeneration do
-#      message "[mDeclaration appendSpecificImplementation]\n" ;
+      if not [mDeclaration mIsGlobal] then
+        implementationString .= [mDeclaration appendDeclaration1] ;
+      end if ;
+    end foreach ;
+    foreach decoratedDeclarationListForGeneration do
+      if not [mDeclaration mIsGlobal] then
+        implementationString .= [mDeclaration appendDeclaration2 !inOutputDirectory] ;
+      end if ;
+    end foreach ;
+    foreach decoratedDeclarationListForGeneration do
       implementationString .= [mDeclaration appendSpecificImplementation] ;
-#      message "[mDeclaration appendTypeGenericImplementation]\n" ;
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
     end foreach ;
     [@string generateFile

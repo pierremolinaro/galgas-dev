@@ -66,30 +66,19 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    R O U T I N E    D E C L A R A T I O N                                 *
+#    ' L O C A L '    D E C L A R A T I O N                                 *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_declaration>
- ?!@semanticDeclarationListAST ioSemanticDeclarations
-:
-  $routine$ ;
-  $identifier$ ? @lstring mRoutineName ;
-  @formalParameterListAST mFormalParameterList ;
-  <formal_parameter_list> ? mFormalParameterList ;
-  $:$ ;
-  @semanticInstructionListAST mRoutineInstructionList ;
-  <semantic_instruction_list> ? mRoutineInstructionList ;
-  $end$ ;
-  const @location endOfInstructionList := here ;
-  $routine$ ;
-  $;$ ;
-  ioSemanticDeclarations += ![@routineDeclarationAST new
-    !mRoutineName
-    !mFormalParameterList
-    !mRoutineInstructionList
-    !endOfInstructionList
-  ] ;
+nonterminal  <local_declaration> !@bool outIsGlobal ;
+
+rule <local_declaration> !@bool outIsGlobal :
+  select
+    outIsGlobal := true ;
+  or
+    $local$ ;
+    outIsGlobal := false ;
+  end select ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -108,6 +97,7 @@ rule <semantic_declaration>
   <formal_parameter_list> ? mFormalParameterList ;
   $;$ ;
   ioSemanticDeclarations += ![@externRoutineDeclarationAST new
+    !true # Is global
     !mActionName
     !mFormalParameterList
   ] ;
@@ -115,18 +105,33 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    R O U T I N E    P R O T O T Y P E    D E C L A R A T I O N            *
+#    R O U T I N E    D E C L A R A T I O N                                 *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 rule <semantic_declaration>
- ?!@semanticDeclarationListAST unused ioSemanticDeclarations
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
-#--- For compatibility with GALGAS 1
+  @bool isGlobal ;
+  <local_declaration> ?isGlobal ;
   $routine$ ;
-  $identifier$ ? * ;
-  <formal_parameter_list> ? * ;
+  $identifier$ ? @lstring mRoutineName ;
+  @formalParameterListAST mFormalParameterList ;
+  <formal_parameter_list> ? mFormalParameterList ;
+  $:$ ;
+  @semanticInstructionListAST mRoutineInstructionList ;
+  <semantic_instruction_list> ? mRoutineInstructionList ;
+  $end$ ;
+  const @location endOfInstructionList := here ;
+  $routine$ ;
   $;$ ;
+  ioSemanticDeclarations += ![@routineDeclarationAST new
+    !isGlobal
+    !mRoutineName
+    !mFormalParameterList
+    !mRoutineInstructionList
+    !endOfInstructionList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -138,6 +143,8 @@ end rule ;
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
+  @bool isGlobal ;
+  <local_declaration> ?isGlobal ;
   $function$ ;
   $identifier$ ? @lstring mRoutineName ;
   @formalInputParameterListAST formalInputParameterList ;
@@ -153,6 +160,7 @@ rule <semantic_declaration>
   $function$ ;
   $;$ ;
   ioSemanticDeclarations += ![@functionDeclarationAST new
+    !isGlobal
     !mRoutineName
     !formalInputParameterList
     !resultTypeName
@@ -171,29 +179,28 @@ end rule ;
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
+  @bool isGlobal ;
+  <local_declaration> ?isGlobal ;
   $once$ ;
   $identifier$ ? @lstring mRoutineName ;
   $->$ ;
   $type_name$ ?@lstring resultTypeName ;
   $identifier$ ?@lstring resultVariableName ;
-  select
-    $;$ ;
-  or
-    $:$ ;
-    @semanticInstructionListAST mRoutineInstructionList ;
-    <semantic_instruction_list> ? mRoutineInstructionList ;
-    $end$ ;
-    $once$ ;
-    const @location endOfFunctionInstructionList := here ;
-    $;$ ;
-    ioSemanticDeclarations += ![@onceFunctionDeclarationAST new
-      !mRoutineName
-      !resultTypeName
-      !resultVariableName
-      !mRoutineInstructionList
-      !endOfFunctionInstructionList
-    ] ;
-  end select ;
+  $:$ ;
+  @semanticInstructionListAST mRoutineInstructionList ;
+  <semantic_instruction_list> ? mRoutineInstructionList ;
+  $end$ ;
+  $once$ ;
+  const @location endOfFunctionInstructionList := here ;
+  $;$ ;
+  ioSemanticDeclarations += ![@onceFunctionDeclarationAST new
+    !isGlobal
+    !mRoutineName
+    !resultTypeName
+    !resultVariableName
+    !mRoutineInstructionList
+    !endOfFunctionInstructionList
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -215,6 +222,7 @@ rule <semantic_declaration>
   $identifier$ ?@lstring resultVariableName ;
   $;$ ;
   ioSemanticDeclarations += ![@externFunctionDeclarationAST new
+    !true # Is global
     !mActionName
     !formalInputParameterList
     !resultTypeName
