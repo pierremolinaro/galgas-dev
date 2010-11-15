@@ -37,7 +37,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"enterHexDigitIntoASCIIcharacter" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- enterDigitIntoASCIIcharacter
@@ -51,7 +50,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"enterDigitIntoASCIIcharacter" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- enterCharacterIntoString
@@ -63,7 +61,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"enterCharacterIntoString" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- convertStringToDouble
@@ -76,7 +73,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"convertStringToDouble" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- enterCharacterIntoCharacter
@@ -88,7 +84,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"enterCharacterIntoCharacter" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- negateSInt
@@ -100,7 +95,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"negateSInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- negateSInt64
@@ -112,7 +106,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"negateSInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- convertUIntToSInt
@@ -125,7 +118,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"convertUIntToSInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- convertUInt64ToSInt64
@@ -138,7 +130,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"convertUInt64ToSInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- enterDigitIntoUInt
@@ -152,7 +143,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"enterDigitIntoUInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- enterDigitIntoUInt64
@@ -166,7 +156,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"enterDigitIntoUInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- enterHexDigitIntoUInt
@@ -180,7 +169,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"enterHexDigitIntoUInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- enterHexDigitIntoUInt64
@@ -194,7 +182,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"enterHexDigitIntoUInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- convertDecimalStringIntoUInt
@@ -208,7 +195,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"convertDecimalStringIntoUInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- convertDecimalStringIntoSInt
@@ -222,7 +208,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"convertDecimalStringIntoSInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- convertDecimalStringIntoUInt64
@@ -236,7 +221,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"convertDecimalStringIntoUInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- convertDecimalStringIntoSInt64
@@ -250,7 +234,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"convertDecimalStringIntoSInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- enterBinDigitIntoUInt
@@ -264,7 +247,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"enterBinDigitIntoUInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- enterBinDigitIntoUInt64
@@ -278,7 +260,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"enterBinDigitIntoUInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- enterOctDigitIntoUInt
@@ -292,7 +273,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"enterOctDigitIntoUInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- enterOctDigitIntoUInt
@@ -306,7 +286,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"enterOctDigitIntoUInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- multiplyUInt
@@ -319,7 +298,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"multiplyUInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- multiplyUInt64
@@ -332,7 +310,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"multiplyUInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- convertHexStringIntoUInt
@@ -346,7 +323,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"convertHexStringIntoUInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- convertHexStringIntoUInt64
@@ -360,7 +336,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"convertHexStringIntoUInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- convertHexStringIntoSInt
@@ -374,7 +349,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"convertHexStringIntoSInt" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- convertHexStringIntoSInt64
@@ -388,7 +362,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"convertHexStringIntoSInt64" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- convertUnsignedNumberToUnicodeChar
@@ -401,7 +374,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"convertUnsignedNumberToUnicodeChar" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- convertHTMLSequenceToUnicodeCharacter
@@ -414,7 +386,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"convertHTMLSequenceToUnicodeCharacter" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 #--- codePointToUnicode
@@ -426,7 +397,6 @@ routine buildLexicalRoutineMap !@lexicalRoutineMap outLexicalRoutineMap :
     ![@lstring new !"codePointToUnicode" !here]
     !mLexicalRoutineFormalArgumentList
     !mErrorMessageList
-    !""
     !false # Is not extern
   ] ;
 end routine ;
@@ -480,11 +450,7 @@ routine printPredefinedLexicalActions :
     do s .= " " . mValue ;
     between s .= "," ;
     end foreach ;
-    s .= " ;\n" ;
-    if mReplacementRoutineName != "" then
-      s .= "Note: the '" . lkey . "' routine is obsolete: use '" . mReplacementRoutineName . "' routine.\n" ;
-    end if ;
-    s .= "\n" ;
+    s .= " ;\n\n" ;
   end foreach ;
 #--------------------------------------- Build lexical function map
   @lexicalFunctionMap lexicalFunctionMap ;

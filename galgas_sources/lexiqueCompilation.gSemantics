@@ -484,18 +484,12 @@ override method @lexicalRoutineInstructionAST checkLexicalInstruction
 :
   @lexicalRoutineFormalArgumentList lexicalRoutineFormalArgumentList ;
   @stringlist routineErrorMessageList ;
-  @string replacementRoutineName ;
   [[ioLexiqueAnalysisContext mLexicalRoutineMessageMap] searchKey
     !mRoutineName
     ?lexicalRoutineFormalArgumentList
     ?routineErrorMessageList
-    ?replacementRoutineName
     ?*
   ] ;
-#--- Obsolete routine ?
-  if replacementRoutineName != "" then
-    warning mRoutineName:"obsolete lexical routine, replaced by '" . replacementRoutineName . "'" ;
-  end if ;
 #--- Check actual argument count
   if [lexicalRoutineFormalArgumentList length] != [mActualArgumentList length] then
     error mRoutineName: "this lexical routine call names "
@@ -762,7 +756,7 @@ routine compileLexiqueComponent
       [lexicalTypeMap searchKey !mLexicalTypeName ?lexicalFormalArgumentType] ;
       lexicalRoutineFormalArgumentList += !mPassingMode !lexicalFormalArgumentType ![mFormalArgumentName string] ;
     end foreach ;
-    [!?lexicalRoutineMap insertKey !mRoutineName !lexicalRoutineFormalArgumentList !mErrorMessageList !"" !true] ;
+    [!?lexicalRoutineMap insertKey !mRoutineName !lexicalRoutineFormalArgumentList !mErrorMessageList !true] ;
   end foreach ;
 #--------------------------------------- Build lexical function map
   @lexicalFunctionMap lexicalFunctionMap ;

@@ -197,7 +197,6 @@ list @lexicalRoutineFormalArgumentList {
 map @lexicalRoutineMap {
   @lexicalRoutineFormalArgumentList mLexicalRoutineFormalArgumentList ;
   @stringlist mErrorMessageList ;
-  @string mReplacementRoutineName ; # If obsolete, the name of replacement routine
   @bool mIsExtern ;
   insert insertKey error message "the '%K' lexical routine has been already declared" ;
   search searchKey error message "the '%K' lexical routine is not declared" ;
