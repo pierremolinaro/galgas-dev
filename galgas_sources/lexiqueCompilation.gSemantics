@@ -618,40 +618,16 @@ end method ;
 
 filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_generation" {
 } {
-  template oldHeaderZone2 "lexique_header_template_zone_2.old.h.gTemplate"
-    ?@string LEXIQUE_IDENTIFIER
-    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-    ?@lexiqueComponentAST LEXIQUE_COMPONENT_ROOT
-  ;
-
   template newHeaderZone2 "lexique_header_template_zone_2.new.h.gTemplate"
     ?@string LEXIQUE_IDENTIFIER
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
     ?@lexiqueComponentAST LEXIQUE_COMPONENT_ROOT
   ;
 
-  template oldHeaderZone3 "lexique_header_template_zone_3.old.h.gTemplate"
-    ?@string LEXIQUE_IDENTIFIER
-    ?@lexicalListDeclarationListAST DELIMITOR_LIST_LIST
-    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-  ;
-
   template newHeaderZone3 "lexique_header_template_zone_3.new.h.gTemplate"
     ?@string LEXIQUE_IDENTIFIER
     ?@lexicalListDeclarationListAST DELIMITOR_LIST_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-  ;
-
-  template oldImplementationZone2 "lexique_implementation.old.cpp.gTemplate"
-    ?@string LEXIQUE_IDENTIFIER
-    ?@lexicalAttributeMap LEXICAL_ATTRIBUTE_MAP
-    ?@lexicalMessageMap LEXICAL_MESSAGE_MAP
-    ?@terminalList TERMINAL_LIST
-    ?@lexicalExplicitTokenListMapMap LEXICAL_TOKEN_LIST_MAP
-    ?@stringset STRINGS_IN_EXPLICIT_RULES
-    ?@lexicalRuleListAST LEXICAL_RULE_LIST
-    ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
-    ?@lexiqueComponentAST LEXIQUE_COMPONENT_ROOT
   ;
 
   template newImplementationZone2 "lexique_implementation.new.cpp.gTemplate"
@@ -756,7 +732,6 @@ end routine ;
 routine compileLexiqueComponent
   ??@lstring inSourceFile
   ??@string inOutputDirectory
-  ??@bool inGenerateGALGAS1Code
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
   @lexiqueComponentAST lexiqueComponentRoot ;
@@ -939,87 +914,45 @@ routine compileLexiqueComponent
   @string lexiqueClassName := [componentName string] ;
 #--- Generate header file
   if [@uint errorCount] == 0 then
-    if not inGenerateGALGAS1Code then
-      [@string generateFile
-        !inOutputDirectory
-        !lexiqueClassName . ".h"
-        !"//"
-        !"\n\n" # Defaut user zone1
-        ![filewrapper lexiqueGenerationTemplates.newHeaderZone2
-           ![lexiqueClassName identifierRepresentation]
-           !lexiqueAnalysisContext
-           !lexiqueComponentRoot
-         ]
-        !"\n\n" # Defaut user zone2
-        ![filewrapper lexiqueGenerationTemplates.newHeaderZone3
-           ![lexiqueClassName identifierRepresentation]
-           ![lexiqueComponentRoot mLexicalListDeclarationList]
-           !lexiqueAnalysisContext
-         ]
-      ] ;
-    else
-      [@string generateFile
-        !inOutputDirectory
-        !lexiqueClassName . ".h"
-        !"//"
-        !"\n\n" # Defaut user zone1
-        ![filewrapper lexiqueGenerationTemplates.oldHeaderZone2
-           ![lexiqueClassName identifierRepresentation]
-           !lexiqueAnalysisContext
-           !lexiqueComponentRoot
-         ]
-        !"\n\n" # Defaut user zone2
-        ![filewrapper lexiqueGenerationTemplates.oldHeaderZone3
-           ![lexiqueClassName identifierRepresentation]
-           ![lexiqueComponentRoot mLexicalListDeclarationList]
-           !lexiqueAnalysisContext
-         ]
-      ] ;
-    end if ;
+    [@string generateFile
+      !inOutputDirectory
+      !lexiqueClassName . ".h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper lexiqueGenerationTemplates.newHeaderZone2
+         ![lexiqueClassName identifierRepresentation]
+         !lexiqueAnalysisContext
+         !lexiqueComponentRoot
+       ]
+      !"\n\n" # Defaut user zone2
+      ![filewrapper lexiqueGenerationTemplates.newHeaderZone3
+         ![lexiqueClassName identifierRepresentation]
+         ![lexiqueComponentRoot mLexicalListDeclarationList]
+         !lexiqueAnalysisContext
+       ]
+    ] ;
   end if ;
 #--- Generate implementation file
   if [@uint errorCount] == 0 then
-    if not inGenerateGALGAS1Code then
-      [@string generateFile
-        !inOutputDirectory
-        !lexiqueClassName . ".cpp"
-        !"//"
-        !"\n\n" # Defaut user zone1
-        ![filewrapper lexiqueGenerationTemplates.newImplementationZone2
-           ![lexiqueClassName identifierRepresentation]
-           ![lexiqueAnalysisContext mLexicalAttributeMap]
-           ![lexiqueAnalysisContext mLexicalMessageMap]
-           ![lexiqueAnalysisContext mTerminalList]
-           ![lexiqueAnalysisContext mLexicalTokenListMap]
-           ![lexiqueAnalysisContext mUnicodeStringToGenerate]
-           ![lexiqueComponentRoot mLexicalRuleList]
-           !lexiqueAnalysisContext
-           !lexiqueComponentRoot
-         ]
-        !"\n\n" # Defaut user zone2
-        !"\n\n" # Zone 3
-      ] ;
-    else
-      [@string generateFile
-        !inOutputDirectory
-        !lexiqueClassName . ".cpp"
-        !"//"
-        !"\n\n" # Defaut user zone1
-        ![filewrapper lexiqueGenerationTemplates.oldImplementationZone2
-           ![lexiqueClassName identifierRepresentation]
-           ![lexiqueAnalysisContext mLexicalAttributeMap]
-           ![lexiqueAnalysisContext mLexicalMessageMap]
-           ![lexiqueAnalysisContext mTerminalList]
-           ![lexiqueAnalysisContext mLexicalTokenListMap]
-           ![lexiqueAnalysisContext mUnicodeStringToGenerate]
-           ![lexiqueComponentRoot mLexicalRuleList]
-           !lexiqueAnalysisContext
-           !lexiqueComponentRoot
-         ]
-        !"\n\n" # Defaut user zone2
-        !"\n\n" # Zone 3
-      ] ;
-    end if ;
+    [@string generateFile
+      !inOutputDirectory
+      !lexiqueClassName . ".cpp"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper lexiqueGenerationTemplates.newImplementationZone2
+         ![lexiqueClassName identifierRepresentation]
+         ![lexiqueAnalysisContext mLexicalAttributeMap]
+         ![lexiqueAnalysisContext mLexicalMessageMap]
+         ![lexiqueAnalysisContext mTerminalList]
+         ![lexiqueAnalysisContext mLexicalTokenListMap]
+         ![lexiqueAnalysisContext mUnicodeStringToGenerate]
+         ![lexiqueComponentRoot mLexicalRuleList]
+         !lexiqueAnalysisContext
+         !lexiqueComponentRoot
+       ]
+      !"\n\n" # Defaut user zone2
+      !"\n\n" # Zone 3
+    ] ;
   end if ;
 #--- Generate cocoa header file
   if [@uint errorCount] == 0 then

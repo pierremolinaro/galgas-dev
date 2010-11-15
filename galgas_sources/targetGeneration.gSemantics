@@ -39,7 +39,6 @@ filewrapper targetGenerationFileWrapper in "../generation_templates/target_gener
     ?@stringset HAND_CODED_SOURCE_DIR_SET
     ?@stringlist HAND_CODED_SOURCE_FILE_LIST
     ?@stringlist MAKEFILE_FILE_LIST
-    ?@bool COMPILE_FOR_GALGAS_1
   ;
 }
 
@@ -171,7 +170,6 @@ routine updateTargets
   ??@string inTargetName
   ??@lstringlist inTargetFeatureList
   ??@projectSourceList inProjectSourceList
-  ??@bool inGenerateForGalgas1
 :
   const @string projectDirectory := [[inProjectSourceFilePath stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] ;
 #--- Check target names, file base name uniqueness, and build target file list
@@ -339,7 +337,6 @@ routine updateTargets
     !handCodedSourceDirectorySet
     !handCodedSourceList
     !generatedFileListForMakefile
-    !inGenerateForGalgas1
   ] ;
   @string fileListPath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list.mke" ;
   [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
@@ -401,7 +398,6 @@ routine updateTargets
       !iconFiles
       !intermediateFilePath
       !architectureList
-      !inGenerateForGalgas1
     ;
   end if ;
 end routine ;

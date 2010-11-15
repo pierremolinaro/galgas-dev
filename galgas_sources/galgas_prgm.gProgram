@@ -101,7 +101,7 @@ message "a GALGAS lexique source file"
     ![@parsedGrammarComponentMap emptyMap]
     ![@parsedProgramComponentMap emptyMap]
   ] ;
-  compileLexiqueComponent !inSourceFile !outputDirectory [!inSourceFile] !false !?parsedComponentStruct ;
+  compileLexiqueComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct ;
 }
 
 #---------------------------------------------------------------------------*
@@ -153,7 +153,6 @@ message "a GALGAS grammar source file"
     !inSourceFile
     !outputDirectory [!inSourceFile]
     ![inSourceFile stringByDeletingLastPathComponent]
-    !false
     !?parsedComponentStruct;
 }
 
@@ -220,7 +219,6 @@ message "a GALGAS project source file"
     !targetName
     ![projectComponent mGenerationFeatureList]
     ![projectComponent mProjectSourceList]
-    !false
   ;
 #--- Parset Component struct
   @parsedComponentStruct parsedComponentStruct [new
@@ -251,7 +249,7 @@ message "a GALGAS project source file"
       end if ;
     when lexiqueSourceFile :
       if extension == "gLexique" then
-        compileLexiqueComponent !fullFilePath !outputDirectory !false !?parsedComponentStruct ;
+        compileLexiqueComponent !fullFilePath !outputDirectory !?parsedComponentStruct ;
       else
         error mFilePath:"extension of a lexique component should be '.gLexique'." ;
       end if ;
@@ -279,7 +277,6 @@ message "a GALGAS project source file"
           !fullFilePath
           !outputDirectory [!inSourceFile]
           ![inSourceFile stringByDeletingLastPathComponent]
-          !false
           !?parsedComponentStruct
         ;
       else
