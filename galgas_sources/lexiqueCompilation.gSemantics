@@ -78,8 +78,15 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @lexicalCharacterSetMatchAST checkLexicalExpression
-  ?!@lexiqueAnalysisContext unused ioLexiqueAnalysisContext
+  ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
+  if not [ioLexiqueAnalysisContext->mExternUnicodeTestFunctions hasKey ![mCharacterSetName string]] then
+    @string s := "undefined test function; available functions are:" ;
+    foreach ioLexiqueAnalysisContext->mExternUnicodeTestFunctions do
+      s .= "\n-  " . key ;
+    end foreach ;
+    error mCharacterSetName : s ;
+  end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -773,6 +780,19 @@ routine compileLexiqueComponent
     [lexicalTypeMap searchKey !mReturnedTypeName ? returnedArgumentType] ;
     [!?lexicalFunctionMap insertKey !mFunctionName !lexicalFunctionFormalArgumentList !returnedArgumentType !"" !true] ;
   end foreach ;
+#--------------------------------------- Unicode test functions
+  @stringset externUnicodeTestFunctions [emptySet] ;
+  externUnicodeTestFunctions += !"unicodeToLower" ;
+  externUnicodeTestFunctions += !"unicodeToUpper" ;
+  externUnicodeTestFunctions += !"isUnicodeLetter" ;
+  externUnicodeTestFunctions += !"isUnicodeMark" ;
+  externUnicodeTestFunctions += !"isUnicodeNumber" ;
+  externUnicodeTestFunctions += !"isUnicodeDecimalDigit" ;
+  externUnicodeTestFunctions += !"isUnicodeASCIIHexDigit" ;
+  externUnicodeTestFunctions += !"isUnicodeSeparator" ;
+  externUnicodeTestFunctions += !"isUnicodeCommand" ;
+  externUnicodeTestFunctions += !"isUnicodePunctuation" ;
+  externUnicodeTestFunctions += !"isUnicodeSymbol" ;
 #---------------------------------------
   @lexiqueAnalysisContext lexiqueAnalysisContext [new
     !lexicalRoutineMap
@@ -785,6 +805,7 @@ routine compileLexiqueComponent
     ![@stringset emptySet]
     ![@templateDelimitorList emptyList]
     ![@styleMap emptyMap]
+    !externUnicodeTestFunctions
   ] ;
 #--------------------------------------- Build style map
   @uint styleIndex := 1 ;

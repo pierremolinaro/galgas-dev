@@ -261,6 +261,7 @@ struct @lexiqueAnalysisContext {
   @stringset mUnicodeStringToGenerate ;
   @templateDelimitorList mTemplateDelimitorList ;
   @styleMap mStyleMap ;
+  @stringset mExternUnicodeTestFunctions ;
 }
 
 #---------------------------------------------------------------------------*
