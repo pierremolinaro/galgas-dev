@@ -1,11 +1,6 @@
 program %!PROJECT_NAME%_program "version 1.0.0":
-#--- Import clauses (GALGAS 2)
 import "%!PROJECT_NAME%_semantics.gSemantics" ;
 import "%!PROJECT_NAME%_grammar.gGrammar" ;
-
-#--- Import clauses (GALGAS 1)
-import semantics %!PROJECT_NAME%_semantics in "%!PROJECT_NAME%_semantics.gSemantics" ;
-import grammar %!PROJECT_NAME%_grammar in "%!PROJECT_NAME%_grammar.gGrammar" ;
 
 #--- Prologue routine
 before {
