@@ -585,7 +585,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-filewrapper semanticComponentGenerationTemplate in "../generation_templates/semantic_generation" {
+local filewrapper semanticComponentGenerationTemplate in "../generation_templates/semantic_generation" {
 } {
   template abstractCategoryReaderDeclaration "abstract-category-reader.h.gTemplate"
     ?@string CLASS_NAME
@@ -969,7 +969,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-routine recursivlyEnumerateRegularFile
+local routine recursivlyEnumerateRegularFile
   ??@wrapperFileMap inFilewrapperFileMap
   ??@wrapperDirectoryMap inFilewrapperDirectoryMap
   ?!@stringlist ioRegularFileIndexStringList
@@ -1465,7 +1465,7 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-routine generateWrapperContents
+local routine generateWrapperContents
   ??@string inFilewrapperName
   ??@string inFilewrapperDirectory
   ??@uint inFilewrapperDirectoryIndex

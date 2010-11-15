@@ -25,7 +25,7 @@ import "optionLL1grammar.gGrammar" ;
 #         G E N E R A T I O N    T E M P L A T E S                          *
 #---------------------------------------------------------------------------*
 
-filewrapper optionGenerationTemplates in "../generation_templates/option_generation" {
+local filewrapper optionGenerationTemplates in "../generation_templates/option_generation" {
 } {
   template optionHeaderZone2 "option-header-zone2.gTemplate"
     ?@string OPTION_COMPONENT_NAME
@@ -60,7 +60,7 @@ filewrapper optionGenerationTemplates in "../generation_templates/option_generat
 #                  semanticAnalysisOfOptionComponent                        *
 #---------------------------------------------------------------------------*
 
-routine semanticAnalysisOfOptionComponent
+local routine semanticAnalysisOfOptionComponent
   ??@optionComponentAST inOptionComponentRoot
   !@commandLineOptionMap outBoolOptionMap
   !@commandLineOptionMap outUIntOptionMap

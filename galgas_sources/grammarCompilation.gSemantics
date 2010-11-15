@@ -361,7 +361,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-routine buildRuleList
+local routine buildRuleList
   ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalMapForGrammarAnalysis
   ??@lstring inSyntaxComponentName
   ??@syntaxRuleListAST inRuleList
@@ -412,7 +412,7 @@ list @nonTerminalToAddList {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-filewrapper grammarGenerationTemplate in "../generation_templates/grammar_generation" {
+local filewrapper grammarGenerationTemplate in "../generation_templates/grammar_generation" {
 } {
   template grammarZone2Header "grammar-zone2.h.gTemplate"
     ?@grammarComponentAST GRAMMAR_COMPONENT_ROOT

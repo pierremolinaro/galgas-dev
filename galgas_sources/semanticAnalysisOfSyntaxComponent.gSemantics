@@ -125,7 +125,7 @@ end reader ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-routine enterNonterminalNonTerminalInMapAndCheck
+local routine enterNonterminalNonTerminalInMapAndCheck
   ??@lstring inNonTerminalName
   ??@nonterminalLabelMap inNonterminalLabelMap
   ??@bool inHasParseLabel
@@ -184,7 +184,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine buildNonterminalDeclarationsMap
+local routine buildNonterminalDeclarationsMap
   ??@nonterminalDeclarationListAST inNonterminalDeclarationList
   ??@semanticContext inSemanticContext
   !@nonterminalMap outNonterminalDeclarationMap
@@ -1106,6 +1106,7 @@ routine semanticAnalysisOfSyntaxComponent
   end foreach ;
 #---
   outSyntaxDeclarationForGeneration := [@syntaxDeclarationForGeneration new
+    !true # is Global
     !inComponentName
     !inLexiqueName
     !nonterminalMap

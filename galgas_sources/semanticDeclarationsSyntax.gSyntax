@@ -86,6 +86,7 @@ rule <semantic_declaration>
   $)$ ;
   $;$ ;
   ioSemanticDeclarations += ![@listmapDeclarationAST new
+    !true # Is global
     !mListmapTypeName
     !mAssociatedListTypeName
   ] ;
@@ -191,6 +192,7 @@ rule <semantic_declaration>
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@mapDeclarationAST new
+    !true # Is global
     !mMapTypeName
     !mAttributeList
     !mInsertMethodList
@@ -351,6 +353,7 @@ rule <semantic_declaration>
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@uniqueMapDeclarationAST new
+    !true # Is global
     !mMapTypeName
     !mAttributeList
     !mInsertMethodList
@@ -385,6 +388,7 @@ rule <semantic_declaration>
   $)$ ;
   $;$ ;
   ioSemanticDeclarations += ![@mapProxyDeclarationAST new
+    !true # Is global
     !mMapIndexName
     !mMapTypeName
   ] ;
@@ -505,6 +509,7 @@ rule <semantic_declaration>
     end repeat ;
     $}$ ;
     ioSemanticDeclarations += ![@classDeclarationAST new
+      !true # Is global
       !mIsAbstract
       !mClassTypeName
       !mSuperClassName # Empty if no super class
@@ -536,6 +541,7 @@ rule <semantic_declaration>
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@structDeclarationAST new
+    !true # Is global
     !mListTypeName
     !mAttributeList
   ] ;
@@ -560,6 +566,7 @@ rule <semantic_declaration>
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@listDeclarationAST new
+    !true # Is global
     !mListTypeName
     !mAttributeList
   ] ;
@@ -629,6 +636,7 @@ rule <semantic_declaration>
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@sortedListDeclarationAST new
+    !true # Is global
     !mSortedListTypeName
     !mAttributeList
     !mSortDescriptorList
@@ -691,6 +699,7 @@ rule <semantic_declaration>
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@enumDeclarationAST new
+    !true # Is global
     !mEnumTypeName
     !mConstantList
     !mEnumMessageList
@@ -706,6 +715,13 @@ end rule ;
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
+  @bool isGlobal ;
+  select
+    isGlobal := true ;
+  or
+    $local$ ;
+    isGlobal := false ;
+  end select ;
   $filewrapper$ ;
   $identifier$ ? @lstring mFilewrapperName ;
   $in$ ;
@@ -754,6 +770,7 @@ rule <semantic_declaration>
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@filewrapperDeclarationAST new
+    !isGlobal
     ![@string stringWithSourceFilePath]
     !mFilewrapperName
     !mFilewrapperPath
@@ -779,6 +796,7 @@ rule <semantic_declaration>
   <formal_parameter_list> ? mFormalParameterList ;
   $;$ ;
   ioSemanticDeclarations += ![@abstractCategoryMethodAST new
+    !true # Is global
     !mClassName
     !mMethodName
     !mFormalParameterList
@@ -804,6 +822,7 @@ rule <semantic_declaration>
   <formal_parameter_list> ? mFormalParameterList ;
   $;$ ;
   ioSemanticDeclarations += ![@overridingAbstractCategoryMethodAST new
+    !true # Is global
     !mClassName
     !mMethodName
     !mFormalParameterList
@@ -832,6 +851,7 @@ rule <semantic_declaration>
   $method$ ;
   $;$ ;
   ioSemanticDeclarations += ![@categoryMethodAST new
+    !true # Is global
     !mClassName
     !mMethodName
     !mFormalParameterList
@@ -863,6 +883,7 @@ rule <semantic_declaration>
   $method$ ;
   $;$ ;
   ioSemanticDeclarations += ![@overridingCategoryMethodAST new
+    !true # Is global
     !mClassName
     !mMethodName
     !mFormalParameterList
@@ -891,6 +912,7 @@ rule <semantic_declaration>
   $identifier$ ? * ;
   $;$ ;
   ioSemanticDeclarations += ![@abstractCategoryReaderAST new
+    !true # Is global
     !mClassName
     !mReaderName
     !mFormalInputParameterList
@@ -923,6 +945,7 @@ rule <semantic_declaration>
   $reader$ ;
   $;$ ;
   ioSemanticDeclarations += ![@categoryReaderAST new
+    !true # Is global
     !mClassName
     !mMethodName
     !mFormalInputParameterList
@@ -959,6 +982,7 @@ rule <semantic_declaration>
   $reader$ ;
   $;$ ;
   ioSemanticDeclarations += ![@overridingCategoryReaderAST new
+    !true # Is global
     !mClassName
     !mMethodName
     !mFormalInputParameterList
@@ -991,6 +1015,7 @@ rule <semantic_declaration>
   $identifier$ ? * ;
   $;$ ;
   ioSemanticDeclarations += ![@overridingAbstractCategoryReaderAST new
+    !true # Is global
     !mClassName
     !mReaderName
     !mFormalInputParameterList

@@ -26,7 +26,7 @@ import "programSLRgrammar.gGrammar" ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-filewrapper programFileGenerationTemplate in "../generation_templates/program_generation" {
+local filewrapper programFileGenerationTemplate in "../generation_templates/program_generation" {
 } {
   template programFileHeader "program-file.h.gTemplate"
     ?@string COMPONENT_NAME
@@ -49,7 +49,7 @@ filewrapper programFileGenerationTemplate in "../generation_templates/program_ge
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-routine compileBeforeClause
+local routine compileBeforeClause
   ??@analysisContext inAnalysisContext
   ??@programComponentAST inProgramComponentAST
   ?!@semanticDeclarationSortedListForGeneration ioDecoratedDeclarationListForGeneration
@@ -67,6 +67,7 @@ routine compileBeforeClause
     ?*
   ;
   ioDecoratedDeclarationListForGeneration += ![@routineImplementationForGeneration new
+    !true # Is global declaration
     !"before"
     ![@formalParameterListForGeneration emptyList]
     !semanticInstructionListForGeneration
@@ -81,7 +82,7 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-routine compileProgramRules
+local routine compileProgramRules
   ??@analysisContext inAnalysisContext
   ??@programComponentAST inProgramComponentAST
   ?!@semanticDeclarationSortedListForGeneration ioDecoratedDeclarationListForGeneration
@@ -109,6 +110,7 @@ routine compileProgramRules
       ?routineSignature
     ;
     ioDecoratedDeclarationListForGeneration += ![@routineImplementationForGeneration new
+      !true # Is global declaration
       !"programRule_" . [ruleIndex string]
       !routineSignature
       !semanticInstructionListForGeneration
@@ -125,7 +127,7 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-routine compileAfterClause
+local routine compileAfterClause
   ??@analysisContext inAnalysisContext
   ??@programComponentAST inProgramComponentAST
   ?!@semanticDeclarationSortedListForGeneration ioDecoratedDeclarationListForGeneration
@@ -143,6 +145,7 @@ routine compileAfterClause
     ?*
   ;
   ioDecoratedDeclarationListForGeneration += ![@routineImplementationForGeneration new
+    !true # Is global declaration
     !"after"
     ![@formalParameterListForGeneration emptyList]
     !semanticInstructionListForGeneration

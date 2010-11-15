@@ -81,7 +81,7 @@ struct @guiAnalysisContext {
 #         G E N E R A T I O N    T E M P L A T E S                          *
 #---------------------------------------------------------------------------*
 
-filewrapper guiGenerationTemplates in "../generation_templates/gui_generation" {
+local filewrapper guiGenerationTemplates in "../generation_templates/gui_generation" {
 } {
   template gui_implementation "gui-implementation.m.gTemplate"
     ?@guiAnalysisContext GUI_CONTEXT
