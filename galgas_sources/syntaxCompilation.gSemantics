@@ -148,106 +148,108 @@ routine compileSyntaxComponent
   @terminalMap terminalMap ;
   buildTerminalMap !lexiqueComponentRoot ?terminalMap ;
 #--- Build semantic context from rule headers and non terminal declaration
-  const @predefinedTypes predefinedTypes := buildPredefinedTypes [!semanticContext] ;
-  @syntaxDeclarationForGeneration syntaxDeclarationForGeneration ;
-  const @string lexiqueName := [[[syntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] ;
-  semanticAnalysisOfSyntaxComponent
-    ![syntaxComponentRoot mNonterminalDeclarationList]
-    ![syntaxComponentRoot mRuleList]
-    ![componentName string]
-    ![lexiqueName identifierRepresentation]
-    !semanticContext
-    !predefinedTypes
-    !terminalMap
-    ?syntaxDeclarationForGeneration
-  ;
-#------ Semantic Analysis
-  @semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration ;
-  performSemanticAnalysis
-    ![syntaxComponentRoot mSemanticDeclarationList]
-    !semanticContext
-    ?decoratedDeclarationListForGeneration
-  ;
-  decoratedDeclarationListForGeneration += !syntaxDeclarationForGeneration !"" ;
-#------ Generate Header File
   if [@uint errorCount] == 0 then
-    @string headerString := [filewrapper syntaxFileGenerationTemplate.syntaxFileHeader
+    const @string lexiqueName := [[[syntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] ;
+    @semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration ;
+    const @predefinedTypes predefinedTypes := buildPredefinedTypes [!semanticContext] ;
+    @syntaxDeclarationForGeneration syntaxDeclarationForGeneration ;
+    semanticAnalysisOfSyntaxComponent
+      ![syntaxComponentRoot mNonterminalDeclarationList]
+      ![syntaxComponentRoot mRuleList]
       ![componentName string]
-      !lexiqueName
-      !headerIncludeList
-      ![semanticContext->mTypeMap allKeyList]
-    ] ;
-    foreach decoratedDeclarationListForGeneration do
-      headerString .= [mDeclaration appendDeclaration1] ;
-    end foreach ;
-    foreach decoratedDeclarationListForGeneration do
-      headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory] ;
-    end foreach ;
-    [@string generateFile
-      !inOutputDirectory
-      ![componentName string] . ".h"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      !headerString
-      !"\n\n" # Defaut user zone2
-      !"#endif\n"
-    ] ;
-  end if ;
-#------ Generate Implementation File
-  if [@uint errorCount] == 0 then
-    @string implementationString := [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementation
-      ![componentName string]
-      !implementationIncludeList
-    ] ;
-    foreach decoratedDeclarationListForGeneration do
-      implementationString .= [mDeclaration appendTypeGenericImplementation] ;
-      implementationString .= [mDeclaration appendSpecificImplementation] ;
-    end foreach ;
-    const @string lexiqueCppName := "C_Lexique_"
-    . [[[[syntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] identifierRepresentation] ;
-    foreach [syntaxDeclarationForGeneration mRuleDeclarationList] do
-      foreach mLabelImplementationList do
-        const @string ruleName := "cParser_" . [componentName identifierRepresentation]
-        . "::rule_" . [componentName identifierRepresentation] . "_"
-        . [mNonterminalName identifierRepresentation]
-        . "_i" . [mRuleIndex string] . "_" . [mLabelName identifierRepresentation] ;
-        implementationString .= generateProcedure [
-          !ruleName
-          !mSignatureForGeneration
-          !mInstructionListForGeneration
-          !false
-          !lexiqueCppName
-          !false # Do not generate location Argument
-          !false # Do not generate 'resetTemplateString'
-        ] ;
+      ![lexiqueName identifierRepresentation]
+      !semanticContext
+      !predefinedTypes
+      !terminalMap
+      ?syntaxDeclarationForGeneration
+    ;
+  #------ Semantic Analysis
+    performSemanticAnalysis
+      ![syntaxComponentRoot mSemanticDeclarationList]
+      !semanticContext
+      ?decoratedDeclarationListForGeneration
+    ;
+    decoratedDeclarationListForGeneration += !syntaxDeclarationForGeneration !"" ;
+  #------ Generate Header File
+    if [@uint errorCount] == 0 then
+      @string headerString := [filewrapper syntaxFileGenerationTemplate.syntaxFileHeader
+        ![componentName string]
+        !lexiqueName
+        !headerIncludeList
+        ![semanticContext->mTypeMap allKeyList]
+      ] ;
+      foreach decoratedDeclarationListForGeneration do
+        headerString .= [mDeclaration appendDeclaration1] ;
       end foreach ;
-      if mHasParseLabel then
-        @semanticInstructionListForGeneration instructionList ;
-        [mLabelImplementationList first ?* ?* ?* ?* ?instructionList] ;
-        const @string ruleName := "cParser_" . [componentName identifierRepresentation]
-        . "::rule_" . [componentName identifierRepresentation] . "_"
-        . [mNonterminalName identifierRepresentation]
-        . "_i" . [mRuleIndex string] . "_parse" ;
-        implementationString .= generateProcedure [
-          !ruleName
-          ![@formalParameterListForGeneration emptyList]
-          !syntaxSignatureOfInstructionList [!instructionList]
-          !false
-          !lexiqueCppName
-          !false # Do not generate location Argument
-          !true # Generate 'resetTemplateString'
+      foreach decoratedDeclarationListForGeneration do
+        headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory] ;
+      end foreach ;
+      [@string generateFile
+        !inOutputDirectory
+        ![componentName string] . ".h"
+        !"//"
+        !"\n\n" # Defaut user zone1
+        !headerString
+        !"\n\n" # Defaut user zone2
+        !"#endif\n"
+      ] ;
+    #------ Generate Implementation File
+      if [@uint errorCount] == 0 then
+        @string implementationString := [filewrapper syntaxFileGenerationTemplate.syntaxFileImplementation
+          ![componentName string]
+          !implementationIncludeList
+        ] ;
+        foreach decoratedDeclarationListForGeneration do
+          implementationString .= [mDeclaration appendTypeGenericImplementation] ;
+          implementationString .= [mDeclaration appendSpecificImplementation] ;
+        end foreach ;
+        const @string lexiqueCppName := "C_Lexique_"
+        . [[[[syntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] identifierRepresentation] ;
+        foreach [syntaxDeclarationForGeneration mRuleDeclarationList] do
+          foreach mLabelImplementationList do
+            const @string ruleName := "cParser_" . [componentName identifierRepresentation]
+            . "::rule_" . [componentName identifierRepresentation] . "_"
+            . [mNonterminalName identifierRepresentation]
+            . "_i" . [mRuleIndex string] . "_" . [mLabelName identifierRepresentation] ;
+            implementationString .= generateProcedure [
+              !ruleName
+              !mSignatureForGeneration
+              !mInstructionListForGeneration
+              !false
+              !lexiqueCppName
+              !false # Do not generate location Argument
+              !false # Do not generate 'resetTemplateString'
+            ] ;
+          end foreach ;
+          if mHasParseLabel then
+            @semanticInstructionListForGeneration instructionList ;
+            [mLabelImplementationList first ?* ?* ?* ?* ?instructionList] ;
+            const @string ruleName := "cParser_" . [componentName identifierRepresentation]
+            . "::rule_" . [componentName identifierRepresentation] . "_"
+            . [mNonterminalName identifierRepresentation]
+            . "_i" . [mRuleIndex string] . "_parse" ;
+            implementationString .= generateProcedure [
+              !ruleName
+              ![@formalParameterListForGeneration emptyList]
+              !syntaxSignatureOfInstructionList [!instructionList]
+              !false
+              !lexiqueCppName
+              !false # Do not generate location Argument
+              !true # Generate 'resetTemplateString'
+            ] ;
+          end if ;
+        end foreach ;
+        [@string generateFile
+          !inOutputDirectory
+          ![componentName string] . ".cpp"
+          !"//"
+          !"\n\n" # Defaut user zone1
+          !implementationString
+          !"\n\n" # Defaut user zone2
+          !"\n"
         ] ;
       end if ;
-    end foreach ;
-    [@string generateFile
-      !inOutputDirectory
-      ![componentName string] . ".cpp"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      !implementationString
-      !"\n\n" # Defaut user zone2
-      !"\n"
-    ] ;
+    end if ;
   end if ;
 end routine ;
 

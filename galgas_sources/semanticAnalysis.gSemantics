@@ -1991,15 +1991,17 @@ routine performSemanticAnalysis
   ??@semanticContext inSemanticContext
   !@semanticDeclarationSortedListForGeneration outDecoratedDeclarationListForGeneration
 :
-  const @predefinedTypes predefinedTypes := buildPredefinedTypes [!inSemanticContext] ;
   outDecoratedDeclarationListForGeneration := [@semanticDeclarationSortedListForGeneration emptySortedList] ;
-  foreach inDeclarationList do
-    [mSemanticDeclaration performSemanticAnalysis
-      !inSemanticContext
-      !predefinedTypes
-      !?outDecoratedDeclarationListForGeneration
-    ] ;
-  end foreach ;
+  if [@uint errorCount] == 0 then
+    const @predefinedTypes predefinedTypes := buildPredefinedTypes [!inSemanticContext] ;
+    foreach inDeclarationList do
+      [mSemanticDeclaration performSemanticAnalysis
+        !inSemanticContext
+        !predefinedTypes
+        !?outDecoratedDeclarationListForGeneration
+      ] ;
+    end foreach ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
