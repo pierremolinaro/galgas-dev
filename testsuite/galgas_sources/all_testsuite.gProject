@@ -1,7 +1,7 @@
 project all_testsuite -> "testsuite" :
-  feature "makefile-macosx" ;
-#  feature "xcode-project" ;
-#  feature "xcode-arch:i386" ;
+  feature "makefile_macosx" ;
+#  feature "project_xcode" ;
+#  feature "xcode_arch:i386" ;
 
   lexique "testsuite_lexique.gLexique" ;
   syntax "testsuite_syntax.gSyntax" ;
