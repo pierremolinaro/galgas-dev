@@ -1,18 +1,18 @@
 project all_%!PROJECT_NAME% -> %![PROJECT_NAME utf8Representation]%:
 #--- Targets
-  feature "makefile-macosx" ;
-  feature "makefile-macosx-intel" ;
-  feature "makefile-macosx-ppc" ;
-  feature "makefile-macosx-universal" ;
-  feature "makefile-unix" ;
-  feature "makefile-i386-linux-on-macosx" ;
-  feature "makefile-mingw-on-macosx" ;
-  feature "makefile-msys-on-win32" ;
-  feature "xcode-project" ;
-  feature "xcode-arch:i386" ;
-  feature "xcode-arch:x86_64" ;
-  feature "xcode-arch:ppc" ;
-  feature "xcode-arch:ppc64" ;
+  feature "makefile_macosx" ;
+  feature "makefile_macosx_intel" ;
+  feature "makefile_macosx_ppc" ;
+  feature "makefile_macosx_universal" ;
+  feature "makefile_unix" ;
+  feature "makefile_i386_linux_on_macosx" ;
+  feature "makefile_mingw_on_macosx" ;
+  feature "makefile_msys_on_win32" ;
+  feature "project_xcode" ;
+  feature "xcode_arch:i386" ;
+  feature "xcode_arch:x86_64" ;
+  feature "xcode_arch:ppc" ;
+  feature "xcode_arch:ppc64" ;
 
 #--- Source files (relative path from 'galgas_sources' directory)
   lexique "%!PROJECT_NAME%_lexique.gLexique" ;
