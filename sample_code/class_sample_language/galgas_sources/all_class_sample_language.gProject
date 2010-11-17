@@ -1,10 +1,10 @@
 project all_class_sample_language -> "class_sample_language" :
 #--- Targets
-  feature "makefile-macosx" ;
-  feature "makefile-unix" ;
-  feature "makefile-msys-on-win32" ;
-  feature "xcode-project" ;
-  feature "xcode-arch:i386" ;
+  feature "makefile_macosx" ;
+  feature "makefile_unix" ;
+  feature "makefile_msys_on_win32" ;
+  feature "project_xcode" ;
+  feature "xcode_arch:i386" ;
 #--- Sources
   lexique "class_sample_language_lexique.gLexique" ;
   option "class_sample_language_options.gOption" ;
