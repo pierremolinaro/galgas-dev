@@ -14,6 +14,7 @@ project all_testsuite -> "testsuite" :
   semantics "testsuite_functions.gSemantics" ;
 #  semantics "testsuite_domain.gSemantics" ;
   semantics "testsuite_introspection.gSemantics" ;
+  semantics "testsuite_mapproxy.gSemantics" ;
 
   program "testsuite_program.gProgram" ;
 
