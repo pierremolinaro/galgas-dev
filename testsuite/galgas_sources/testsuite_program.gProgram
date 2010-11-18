@@ -5,7 +5,7 @@ import "testsuite_struct.gSemantics" ;
 #import "testsuite_listmap.gSemantics" ;
 import "testsuite_map.gSemantics" ;
 import "testsuite_functions.gSemantics" ;
-#import "testsuite_domain.gSemantics" ;
+import "testsuite_mapproxy.gSemantics" ;
 import "testsuite_introspection.gSemantics" ;
 
 import "testsuite_grammar.gGrammar" ;
@@ -21,6 +21,7 @@ before {
   testsuite_functions ;
 #  testsuite_domain ;
   testsuite_introspection ;
+  testsuite_mapproxy ;
 }
 
 #--- 'when' clauses
