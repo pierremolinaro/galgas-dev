@@ -115,7 +115,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine handleNonTerminalDeclarations
+local routine handleNonTerminalDeclarations
   ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
   ??@nonterminalDeclarationListAST inNonterminalDeclarationList
 :
@@ -133,6 +133,32 @@ routine handleNonTerminalDeclarations
         !mNonterminalName
         ![ioNonTerminalMapForGrammarAnalysis count]
         !transformLabelMap [!mLabels !mHasParseLabel]
+      ] ;
+    end with ;  
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+local routine handleNonTerminalDeclarationsFromRuleList
+  ?!@nonTerminalSymbolMapForGrammarAnalysis ioNonTerminalMapForGrammarAnalysis
+  ??@syntaxRuleListAST inRuleList
+:
+  foreach inRuleList do
+    with !?ioNonTerminalMapForGrammarAnalysis hasKey ![mNonterminalName string] do
+    else
+      @nonTerminalLabelListAST nonTerminalLabelListAST [emptyList] ;
+      foreach mLabelList do
+        nonTerminalLabelListAST += 
+          !mLabelName
+          !mFormalArguments
+          !mEndOfArgumentLocation
+        ;
+      end foreach ;
+      [!?ioNonTerminalMapForGrammarAnalysis insertKey
+        !mNonterminalName
+        ![ioNonTerminalMapForGrammarAnalysis count]
+        !transformLabelMap [!nonTerminalLabelListAST !false]
       ] ;
     end with ;  
   end foreach ;
@@ -525,6 +551,11 @@ routine compileGrammarComponent
       handleNonTerminalDeclarations
         !?nonTerminalMapForGrammarAnalysis
         ![syntaxComponentRoot mNonterminalDeclarationList]
+      ;
+    #--- Enter non terminal definition from rule list
+      handleNonTerminalDeclarationsFromRuleList
+        !?nonTerminalMapForGrammarAnalysis
+        ![syntaxComponentRoot mRuleList]
       ;
     #--- Handle syntax rules
       buildRuleList

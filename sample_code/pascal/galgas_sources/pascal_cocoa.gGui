@@ -1,0 +1,10 @@
+gui pascal_cocoa "cocoa" :
+
+with option "pascal_options.gOption" ;
+
+with lexique "pascal_lexique.gLexique" {
+  fileExtension: "pascal" ;
+  title: "Source" ;
+}
+
+end gui ;

@@ -1,0 +1,25 @@
+program pascal_program "version 1.0.0":
+import "pascal_AST.gSemantics" ;
+import "pascal_grammar.gGrammar" ;
+
+#--- Prologue routine
+before {
+}
+
+#--- 'when' clauses
+when . "pascal"
+message "a source text file with the .pascal extension"
+??@lstring inSourceFile {
+  @pascalProgramAST pascalProgramAST ;
+  grammar pascal_grammar in inSourceFile
+    ?pascalProgramAST
+  ;
+}
+
+#--- Epilogue routine
+after {
+}
+
+#---
+
+end program ;
