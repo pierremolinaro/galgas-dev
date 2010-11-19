@@ -100,12 +100,11 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-method @semanticDeclarationAST performSemanticAnalysis
+abstract method @semanticDeclarationAST performSemanticAnalysis
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
-:
-end method ;
+;
 
 #---------------------------------------------------------------------------*
 
@@ -238,6 +237,27 @@ override method @structDeclarationAST performSemanticAnalysis
     !mIsGlobal
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mStructTypeName]
     !typedAttributeList
+  ]
+  !""
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @graphDeclarationAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+:
+  const @unifiedTypeMapProxy graphTypeProxy [searchKey !inSemanticContext->mTypeMap !mGraphTypeName] ;
+  const @unifiedTypeMapProxy associatedListTypeProxy [searchKey !inSemanticContext->mTypeMap !mAssociatedListTypeName] ;
+  if [associatedListTypeProxy mTypeKindEnum] != [@typeKindEnum listType] then
+    error mAssociatedListTypeName: "the '@" . mAssociatedListTypeName . "' type should be a list" ;
+  end if ;
+  ioSemanticDeclarationListForGeneration += ![@graphDeclarationForGeneration new
+    !true # Is Global
+    !graphTypeProxy
+    !associatedListTypeProxy
   ]
   !""
   ;

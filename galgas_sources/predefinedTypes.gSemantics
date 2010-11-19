@@ -289,18 +289,18 @@ override reader @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
     outHeader := [filewrapper predefinedTypeGenerationTemplate.application_type] ;
   end switch ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
-    ![mTypeIndex mIsConcrete]
-    ![mTypeIndex mConstructorMap]
-    ![mTypeIndex mReaderMap]
-    ![mTypeIndex mModifierMap]
-    ![mTypeIndex mInstanceMethodMap]
-    ![mTypeIndex mClassMethodMap]
-    ![mTypeIndex mEnumerationDescriptor]
-    ![mTypeIndex mHandledOperatorFlags]
-    ![mTypeIndex mAddAssignOperatorArguments]
-    ![mTypeIndex mWithAccessorMap]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mWithAccessorMap]
   ] ;
 end reader ;
 

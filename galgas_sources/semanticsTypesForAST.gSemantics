@@ -1396,6 +1396,18 @@ class @filewrapperDeclarationAST extends @semanticDeclarationAST {
 }
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#     G R A P H                                                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @graphDeclarationAST extends @semanticDeclarationAST {
+  @lstring mGraphTypeName ;
+  @lstring mAssociatedListTypeName ;
+  @lstringlist mFeatureList ;
+}
+
+#---------------------------------------------------------------------------*
 
 class @semanticsComponentAST {
   @lstring mSemanticsComponentName  ;

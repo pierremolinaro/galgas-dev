@@ -1,0 +1,23 @@
+semantics testsuite_mapproxy :
+
+#-----------------------------------------------------------------------------
+
+uniquemap @maTable {  @uint mAttribut ;  insert insertKey error message "internal error" ;}
+
+mapproxy @monMapProxy (@maTable) ;
+
+#-----------------------------------------------------------------------------
+
+routine testsuite_mapproxy :
+message "*************************************** begin of maproxy test\n" ;
+  @maTable table [emptyMap] ;
+  @monMapProxy proxy ;
+  [@monMapProxy makeRegularProxy !?table !"abc" ?proxy] ;
+  log "[table count]": [table count] ;
+  log "Proxy: " : proxy ;
+  log "[table unsolvedProxyCount]": [table unsolvedProxyCount] ;
+end routine ;
+
+#-----------------------------------------------------------------------------
+
+end semantics ;

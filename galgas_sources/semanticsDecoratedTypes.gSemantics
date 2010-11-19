@@ -486,7 +486,7 @@ sortedlist @semanticDeclarationSortedListForGeneration {
 #---------------------------------------------------------------------------*
 
 abstract class @semanticTypeForGeneration extends @semanticDeclarationForGeneration {
-  @unifiedTypeMapProxy mTypeIndex ;
+  @unifiedTypeMapProxy mTypeProxy ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1337,6 +1337,16 @@ list @enumMessageListForGeneration {
 class @enumTypeForGeneration extends @semanticTypeForGeneration {
   @stringlist mConstantList ;
   @enumMessageListForGeneration mEnumMessageList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    G R A P H    D E C L A R A T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @graphDeclarationForGeneration extends @semanticTypeForGeneration {
+  @unifiedTypeMapProxy mAssociatedListTypeProxy ;
 }
 
 #---------------------------------------------------------------------------*

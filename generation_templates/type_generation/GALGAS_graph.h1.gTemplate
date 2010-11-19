@@ -1,0 +1,10 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["@" . TYPE_NAME . " graph" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_graph {
+//--------------------------------- Default constructor
+  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+
