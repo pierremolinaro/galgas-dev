@@ -417,6 +417,18 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList ATTRIBUTE_LIST
   ;
 
+#---------- Graph
+  template graphTypeHeader1 "GALGAS_graph.h1.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+  ;
+
+  template graphTypeSpecificImplementation "GALGAS_graph.cpp.gTemplate"
+    ?@unifiedTypeMapProxy TYPE
+    ?@string TYPE_IDENTIFIER
+    ?@unifiedTypeMapProxy ASSOCIATED_LIST_TYPE
+  ;
+
 #---------- LIST MAP
   template listmapTypeHeader1 "GALGAS_listmap.h1.gTemplate"
     ?@string TYPE_NAME
@@ -753,25 +765,25 @@ end reader ;
 
 override reader @classTypeForGeneration appendDeclaration1 ->@string outHeader :
   outHeader := [filewrapper typeGenerationTemplate.classTypeHeader1
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
     !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
     !mAllTypedAttributeList
     !mIsAbstract
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
-    ![mTypeIndex mIsConcrete]
-    ![mTypeIndex mConstructorMap]
-    ![mTypeIndex mReaderMap]
-    ![mTypeIndex mModifierMap]
-    ![mTypeIndex mInstanceMethodMap]
-    ![mTypeIndex mClassMethodMap]
-    ![mTypeIndex mEnumerationDescriptor]
-    ![mTypeIndex mHandledOperatorFlags]
-    ![mTypeIndex mAddAssignOperatorArguments]
-    ![mTypeIndex mWithAccessorMap]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mWithAccessorMap]
   ] ;
  end reader ;
 
@@ -779,24 +791,24 @@ override reader @classTypeForGeneration appendDeclaration1 ->@string outHeader :
 
 override reader @mapTypeForGeneration appendDeclaration1 ->@string outHeader :
   outHeader := [filewrapper typeGenerationTemplate.mapTypeHeader1
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
     !mSearchMethodList
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
-    ![mTypeIndex mIsConcrete]
-    ![mTypeIndex mConstructorMap]
-    ![mTypeIndex mReaderMap]
-    ![mTypeIndex mModifierMap]
-    ![mTypeIndex mInstanceMethodMap]
-    ![mTypeIndex mClassMethodMap]
-    ![mTypeIndex mEnumerationDescriptor]
-    ![mTypeIndex mHandledOperatorFlags]
-    ![mTypeIndex mAddAssignOperatorArguments]
-    ![mTypeIndex mWithAccessorMap]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mWithAccessorMap]
   ] ;
  end reader ;
 
@@ -804,24 +816,24 @@ override reader @mapTypeForGeneration appendDeclaration1 ->@string outHeader :
 
 override reader @uniqueMapTypeForGeneration appendDeclaration1 ->@string outHeader :
   outHeader := [filewrapper typeGenerationTemplate.uniqueMapTypeHeader1
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
     !mSearchMethodList
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
-    ![mTypeIndex mIsConcrete]
-    ![mTypeIndex mConstructorMap]
-    ![mTypeIndex mReaderMap]
-    ![mTypeIndex mModifierMap]
-    ![mTypeIndex mInstanceMethodMap]
-    ![mTypeIndex mClassMethodMap]
-    ![mTypeIndex mEnumerationDescriptor]
-    ![mTypeIndex mHandledOperatorFlags]
-    ![mTypeIndex mAddAssignOperatorArguments]
-    ![mTypeIndex mWithAccessorMap]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mWithAccessorMap]
   ] ;
  end reader ;
 
@@ -829,23 +841,23 @@ override reader @uniqueMapTypeForGeneration appendDeclaration1 ->@string outHead
 
 override reader @structTypeForGeneration appendDeclaration1 ->@string outHeader :
   outHeader := [filewrapper typeGenerationTemplate.structTypeHeader1
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
-    ![mTypeIndex mIsConcrete]
-    ![mTypeIndex mConstructorMap]
-    ![mTypeIndex mReaderMap]
-    ![mTypeIndex mModifierMap]
-    ![mTypeIndex mInstanceMethodMap]
-    ![mTypeIndex mClassMethodMap]
-    ![mTypeIndex mEnumerationDescriptor]
-    ![mTypeIndex mHandledOperatorFlags]
-    ![mTypeIndex mAddAssignOperatorArguments]
-    ![mTypeIndex mWithAccessorMap]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mWithAccessorMap]
   ] ;
  end reader ;
 
@@ -853,23 +865,46 @@ override reader @structTypeForGeneration appendDeclaration1 ->@string outHeader 
 
 override reader @listTypeForGeneration appendDeclaration1 ->@string outHeader :
   outHeader := [filewrapper typeGenerationTemplate.listTypeHeader1
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
-    ![mTypeIndex mIsConcrete]
-    ![mTypeIndex mConstructorMap]
-    ![mTypeIndex mReaderMap]
-    ![mTypeIndex mModifierMap]
-    ![mTypeIndex mInstanceMethodMap]
-    ![mTypeIndex mClassMethodMap]
-    ![mTypeIndex mEnumerationDescriptor]
-    ![mTypeIndex mHandledOperatorFlags]
-    ![mTypeIndex mAddAssignOperatorArguments]
-    ![mTypeIndex mWithAccessorMap]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mWithAccessorMap]
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @graphDeclarationForGeneration appendDeclaration1 ->@string outHeader :
+  outHeader := [filewrapper typeGenerationTemplate.graphTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+  ] ;
+  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mWithAccessorMap]
   ] ;
  end reader ;
 
@@ -877,22 +912,22 @@ override reader @listTypeForGeneration appendDeclaration1 ->@string outHeader :
 
 override reader @listmapTypeForGeneration appendDeclaration1 ->@string outHeader :
   outHeader := [filewrapper typeGenerationTemplate.listmapTypeHeader1
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
-    ![mTypeIndex mIsConcrete]
-    ![mTypeIndex mConstructorMap]
-    ![mTypeIndex mReaderMap]
-    ![mTypeIndex mModifierMap]
-    ![mTypeIndex mInstanceMethodMap]
-    ![mTypeIndex mClassMethodMap]
-    ![mTypeIndex mEnumerationDescriptor]
-    ![mTypeIndex mHandledOperatorFlags]
-    ![mTypeIndex mAddAssignOperatorArguments]
-    ![mTypeIndex mWithAccessorMap]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mWithAccessorMap]
   ] ;
  end reader ;
 
@@ -900,23 +935,23 @@ override reader @listmapTypeForGeneration appendDeclaration1 ->@string outHeader
 
 override reader @sortedListTypeForGeneration appendDeclaration1 ->@string outHeader :
   outHeader := [filewrapper typeGenerationTemplate.sortedlistTypeHeader1
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
-    ![mTypeIndex mIsConcrete]
-    ![mTypeIndex mConstructorMap]
-    ![mTypeIndex mReaderMap]
-    ![mTypeIndex mModifierMap]
-    ![mTypeIndex mInstanceMethodMap]
-    ![mTypeIndex mClassMethodMap]
-    ![mTypeIndex mEnumerationDescriptor]
-    ![mTypeIndex mHandledOperatorFlags]
-    ![mTypeIndex mAddAssignOperatorArguments]
-    ![mTypeIndex mWithAccessorMap]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mWithAccessorMap]
   ] ;
  end reader ;
 
@@ -924,23 +959,23 @@ override reader @sortedListTypeForGeneration appendDeclaration1 ->@string outHea
 
 override reader @enumTypeForGeneration appendDeclaration1 ->@string outHeader :
   outHeader := [filewrapper typeGenerationTemplate.enumTypeHeader1
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
     !mConstantList
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
-    ![mTypeIndex mIsConcrete]
-    ![mTypeIndex mConstructorMap]
-    ![mTypeIndex mReaderMap]
-    ![mTypeIndex mModifierMap]
-    ![mTypeIndex mInstanceMethodMap]
-    ![mTypeIndex mClassMethodMap]
-    ![mTypeIndex mEnumerationDescriptor]
-    ![mTypeIndex mHandledOperatorFlags]
-    ![mTypeIndex mAddAssignOperatorArguments]
-    ![mTypeIndex mWithAccessorMap]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mWithAccessorMap]
   ] ;
  end reader ;
 
@@ -948,22 +983,22 @@ override reader @enumTypeForGeneration appendDeclaration1 ->@string outHeader :
 
 override reader @mapProxyTypeForGeneration appendDeclaration1 -> @string outHeader :
   outHeader := [filewrapper typeGenerationTemplate.mapProxyTypeHeader1
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
   ] ; 
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
-    ![mTypeIndex mIsConcrete]
-    ![mTypeIndex mConstructorMap]
-    ![mTypeIndex mReaderMap]
-    ![mTypeIndex mModifierMap]
-    ![mTypeIndex mInstanceMethodMap]
-    ![mTypeIndex mClassMethodMap]
-    ![mTypeIndex mEnumerationDescriptor]
-    ![mTypeIndex mHandledOperatorFlags]
-    ![mTypeIndex mAddAssignOperatorArguments]
-    ![mTypeIndex mWithAccessorMap]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mWithAccessorMap]
   ] ;
 end reader ;
 
@@ -1069,8 +1104,8 @@ override reader @mapTypeForGeneration appendDeclaration2
   ??@string unused inOutputDirectory
  ->@string outHeader :
   outHeader := [filewrapper typeGenerationTemplate.mapTypeHeader2
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
   ] ;
  end reader ;
@@ -1081,8 +1116,8 @@ override reader @uniqueMapTypeForGeneration appendDeclaration2
   ??@string unused inOutputDirectory
  ->@string outHeader :
   outHeader := [filewrapper typeGenerationTemplate.uniqueMapTypeHeader2
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
   ] ;
  end reader ;
@@ -1094,8 +1129,8 @@ override reader @classTypeForGeneration appendDeclaration2
  ->@string outHeader :
   if mGenerateHeaderInSeparateFile then
     const @string part1 := [filewrapper typeGenerationTemplate.classTypeHeader2part1
-      ![mTypeIndex key]
-      ![mTypeIndex identifierRepresentation]
+      ![mTypeProxy key]
+      ![mTypeProxy identifierRepresentation]
       !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
       !mTypedAttributeList
       !mAllTypedAttributeList
@@ -1104,8 +1139,8 @@ override reader @classTypeForGeneration appendDeclaration2
       !mMethodList
     ] ;
     const @string part2 := [filewrapper typeGenerationTemplate.classTypeHeader2part2
-      ![mTypeIndex key]
-      ![mTypeIndex identifierRepresentation]
+      ![mTypeProxy key]
+      ![mTypeProxy identifierRepresentation]
       !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
       !mTypedAttributeList
       !mAllTypedAttributeList
@@ -1113,7 +1148,7 @@ override reader @classTypeForGeneration appendDeclaration2
       !mAbstractMethodList
       !mMethodList
     ] ;
-    const @string headerFileName := "separateHeaderFor_" . [mTypeIndex identifierRepresentation] . ".h" ;
+    const @string headerFileName := "separateHeaderFor_" . [mTypeProxy identifierRepresentation] . ".h" ;
     [@string generateFile
       !inOutputDirectory
       !headerFileName
@@ -1126,8 +1161,8 @@ override reader @classTypeForGeneration appendDeclaration2
     outHeader := "#include \"" . headerFileName . "\"\n\n" ;
   else
     outHeader := [filewrapper typeGenerationTemplate.classTypeHeader2part1
-      ![mTypeIndex key]
-      ![mTypeIndex identifierRepresentation]
+      ![mTypeProxy key]
+      ![mTypeProxy identifierRepresentation]
       !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
       !mTypedAttributeList
       !mAllTypedAttributeList
@@ -1136,8 +1171,8 @@ override reader @classTypeForGeneration appendDeclaration2
       !mMethodList
     ] ;
     outHeader .= [filewrapper typeGenerationTemplate.classTypeHeader2part2
-      ![mTypeIndex key]
-      ![mTypeIndex identifierRepresentation]
+      ![mTypeProxy key]
+      ![mTypeProxy identifierRepresentation]
       !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
       !mTypedAttributeList
       !mAllTypedAttributeList
@@ -1163,10 +1198,10 @@ end reader ;
 
 override reader @semanticTypeForGeneration appendTypeGenericImplementation ->@string outImplementation :
   outImplementation := [filewrapper typeGenerationTemplate.genericTypeImplementation
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
-    ![mTypeIndex mSuperType]
-    ![mTypeIndex mHandledOperatorFlags]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mSuperType]
+    ![mTypeProxy mHandledOperatorFlags]
   ] ;
 end reader ;
 
@@ -1186,7 +1221,7 @@ end reader ;
 override reader @listmapTypeForGeneration appendSpecificImplementation ->@string outImplementation :
 #  message "@listmapTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.listmapTypeSpecificImplementation
-    ![mTypeIndex identifierRepresentation]
+    ![mTypeProxy identifierRepresentation]
     ![mAssociatedListTypeIndex identifierRepresentation]
     !mAssociatedListTypedAttributeList
   ] ;
@@ -1197,7 +1232,7 @@ override reader @listmapTypeForGeneration appendSpecificImplementation ->@string
 override reader @mapTypeForGeneration appendSpecificImplementation ->@string outImplementation :
 #  message "@mapTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.mapTypeSpecificImplementation
-    ![mTypeIndex identifierRepresentation]
+    ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
     !mInsertMethodList
     !mSearchMethodList
@@ -1212,7 +1247,7 @@ override reader @mapTypeForGeneration appendSpecificImplementation ->@string out
 override reader @uniqueMapTypeForGeneration appendSpecificImplementation ->@string outImplementation :
 #  message "@uniqueMapTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.uniqueMapTypeSpecificImplementation
-    ![mTypeIndex identifierRepresentation]
+    ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
     !mInsertMethodList
     !mSearchMethodList
@@ -1229,7 +1264,7 @@ override reader @uniqueMapTypeForGeneration appendSpecificImplementation ->@stri
 override reader @sortedListTypeForGeneration appendSpecificImplementation ->@string outImplementation :
 #  message "@soprtedListTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.sortedlistTypeSpecificImplementation
-    ![mTypeIndex identifierRepresentation]
+    ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
     !mSortDescriptorList
   ] ;
@@ -1240,8 +1275,8 @@ override reader @sortedListTypeForGeneration appendSpecificImplementation ->@str
 override reader @enumTypeForGeneration appendSpecificImplementation ->@string outImplementation :
 #  message "@enumTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.enumTypeSpecificImplementation
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
     !mConstantList
     !mEnumMessageList
   ] ;
@@ -1252,8 +1287,8 @@ override reader @enumTypeForGeneration appendSpecificImplementation ->@string ou
 override reader @mapProxyTypeForGeneration appendSpecificImplementation ->@string outImplementation :
 #  message "@mapProxyTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.mapProxyTypeSpecificImplementation
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
     ![mAssociatedMapTypeProxy identifierRepresentation]
     !mAssociatedMapTypedAttributeList
     !mSearchMethodList
@@ -1265,8 +1300,8 @@ override reader @mapProxyTypeForGeneration appendSpecificImplementation ->@strin
 override reader @classTypeForGeneration appendSpecificImplementation ->@string outImplementation :
 #  message "@classTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.classTypeSpecificImplementation
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
     !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
     !mTypedAttributeList
     !mAllTypedAttributeList
@@ -1283,8 +1318,8 @@ end reader ;
 override reader @structTypeForGeneration appendSpecificImplementation ->@string outImplementation :
 #  message "@structTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.structTypeSpecificImplementation
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
   ] ;
  end reader ;
@@ -1294,9 +1329,20 @@ override reader @structTypeForGeneration appendSpecificImplementation ->@string 
 override reader @listTypeForGeneration appendSpecificImplementation ->@string outImplementation :
 #  message "@listTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.listTypeSpecificImplementation
-    ![mTypeIndex key]
-    ![mTypeIndex identifierRepresentation]
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @graphDeclarationForGeneration appendSpecificImplementation ->@string outImplementation :
+#  message "@graphTypeForGeneration appendSpecificImplementation\n" ;
+  outImplementation := [filewrapper typeGenerationTemplate.graphTypeSpecificImplementation
+    !mTypeProxy
+    ![mTypeProxy identifierRepresentation]
+    !mAssociatedListTypeProxy
   ] ;
  end reader ;
 

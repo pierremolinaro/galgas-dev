@@ -134,16 +134,12 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue (
   end foreach
   %) {
     result.createNewEmptyList (THERE) ;
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
-    foreach ATTRIBUTE_LIST
-    do index IDX %inOperand%![IDX string]
-    between %, %
-    end foreach
-    % COMMA_THERE)) ;
     capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
+    GALGAS_%!TYPE_IDENTIFIER%::makeAttributesFromObjects (attributes%
+    foreach ATTRIBUTE_LIST
+    do index IDX %, inOperand%![IDX string]
+    end foreach
+    % COMMA_THERE) ;
     result.addObject (attributes) ;
   }
   return result ;
@@ -151,21 +147,21 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_listWithValue (
 
 //---------------------------------------------------------------------------*
 
-cCollectionElement_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::makeElement (%?^
+void GALGAS_%!TYPE_IDENTIFIER%::makeAttributesFromObjects (%?^%capCollectionElement & outAttributes%
   foreach ATTRIBUTE_LIST
-    do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
-    between %,\n%!^
+    do %,\n%!^%const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
   end foreach
 %\n%
 !^%COMMA_LOCATION_ARGS) {
-  cCollectionElement_%!TYPE_IDENTIFIER% * result = NULL ;
-  macroMyNew (result, cCollectionElement_%!TYPE_IDENTIFIER% (%
+  cCollectionElement_%!TYPE_IDENTIFIER% * p = NULL ;
+  macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
   foreach ATTRIBUTE_LIST
     do %in_%![mAttributeName identifierRepresentation]
     between %,\n%!^
   end foreach
   % COMMA_THERE)) ;
-  return result ;
+  outAttributes.setPointer (p) ;
+  macroDetachSharedObject (p) ;
 }
 
 //---------------------------------------------------------------------------*

@@ -16,10 +16,9 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_list {
   public : GALGAS_%!TYPE_IDENTIFIER% (cSharedList * inSharedListPtr) ;
 
 //--------------------------------- Element constructor used by listmap
-  public : static cCollectionElement_%!TYPE_IDENTIFIER% * makeElement (%?^
+  public : static void makeAttributesFromObjects (%?^%capCollectionElement & outAttributes%
   foreach ATTRIBUTE_LIST
-    do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
-    between %,\n%!^
+    do %,\n%!^%const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & in_%![mAttributeName identifierRepresentation]
   end foreach
 %\n%
 !^%COMMA_LOCATION_ARGS) ;

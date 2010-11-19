@@ -24,15 +24,12 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^%const GALGAS_string & i
     % && inOperand%![IDX string]%.isValid ()%
   end foreach
   %) {
-    cCollectionElement * p = (cCollectionElement *) GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER%::makeElement (%
+    capCollectionElement attributes ;
+    GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER%::makeAttributesFromObjects (attributes%
     foreach ATTRIBUTE_LIST
-    do index IDX %inOperand%![IDX string]
-    between %, %
+    do index IDX %, inOperand%![IDX string]
     end foreach
     % COMMA_THERE) ;
-    capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
     addObjectInListMap (inKey.stringValue (), attributes) ;
   }
 }

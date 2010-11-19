@@ -1024,5 +1024,37 @@ rule <semantic_declaration>
 end rule ;
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#     G R A P H                                                             *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
+:
+  $graph$ ;
+  $type_name$ ? @lstring graphTypeName ;
+  $($ ;
+  $type_name$ ? @lstring associatedListTypeName ;
+  $)$ ;
+  ${$ ;
+  @lstringlist featureList [emptyList] ;
+  repeat
+  while
+    $feature$ ;
+    $identifier$ ? @lstring featureName ;
+    featureList += !featureName ;
+    $;$ ;
+  end repeat ;
+  $}$ ;
+  ioSemanticDeclarations += ![@graphDeclarationAST new
+    !true # Is global
+    !graphTypeName
+    !associatedListTypeName
+    !featureList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
 
 end syntax ;
