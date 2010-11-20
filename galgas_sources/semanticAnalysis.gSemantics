@@ -254,10 +254,24 @@ override method @graphDeclarationAST performSemanticAnalysis
   if [associatedListTypeProxy mTypeKindEnum] != [@typeKindEnum listType] then
     error mAssociatedListTypeName: "the '@" . mAssociatedListTypeName . "' type should be a list" ;
   end if ;
+#--- Analyze features
+  @bool hasTopologicalSort := false ;
+  foreach mFeatureList do
+    if [mValue string] == "topologicalSort" then
+      if hasTopologicalSort then
+        error mValue: "the 'topologicalSort' feature is already set" ;
+      end if ;
+      hasTopologicalSort := true ;
+    else
+      error mValue:"unknown feature; available feature: 'topologicalSort'" ;
+    end if ;
+  end foreach ;
+#---
   ioSemanticDeclarationListForGeneration += ![@graphDeclarationForGeneration new
     !true # Is Global
     !graphTypeProxy
     !associatedListTypeProxy
+    !hasTopologicalSort
   ]
   !""
   ;

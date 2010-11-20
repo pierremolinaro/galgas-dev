@@ -27,7 +27,6 @@ rule <start_symbol> :
   end repeat ;
 #--- Check all classes are defined
   @uint undefinedClassCount := [classMap unsolvedProxyCount] ;
-  @bool noError := undefinedClassCount == 0 ;
   if undefinedClassCount == 1 then
     @string s := "1 class is undefined:" ;
     @stringlist undefinedClasses := [classMap unsolvedProxyKeyList] ;
@@ -42,45 +41,33 @@ rule <start_symbol> :
       s.= "\n- " . kClassName ;
     end foreach ;
     error here: s ;
-  end if ;
-#--- Check for no circularity and
-#    build list of classes to generate
-  @classesToGenerateList classesToGenerateList [emptySortedList] ;
-  if noError then
-    foreach classMap (@lstring kClassName @classMapIndex kSuperClassIndex) do
-      @string classPath := [kClassName string] ;
-      @stringset superClassSet [setWithString ![kClassName string]] ;
-      @classMapIndex superClassIndex := kSuperClassIndex ;
-      @bool ok := true ;
-      loop [classMap count] :
-      while ok & [superClassIndex isRegular] do
-        const @lstring superClassName := [superClassIndex lkey] ;
-        const @classMapIndex superSuperClassIndex := [superClassIndex mSuperClassIndex] ;
-        ok := not [superClassSet hasKey ![superClassName string]] ;
-        superClassSet += ![superClassName string] ;
-        classPath := [superClassName string] . "." . classPath ;
-        superClassIndex := superSuperClassIndex ;
-      end loop ;
-      if ok then
-        classesToGenerateList += !kClassName !kSuperClassIndex !classPath ;
-      else
-        noError := false ;
-        error kClassName:
-          "inheritance circularity for class '"
-        . [kClassName string] . "': "
-        . [classPath stringByReplacingStringByString !"." !" <- "] ;
+  else
+  #--- Check for no circularity and build list of classes to generate
+    @inheritanceGraph inheritanceGraph [emptyGraph] ;
+    foreach classMap do
+      const @string superClassName := if [mSuperClassIndex isNull] then "" else [mSuperClassIndex key] end ;
+      [!?inheritanceGraph addNode ![lkey string] ![lkey string] !superClassName] ;
+      if superClassName != "" then
+        [!?inheritanceGraph addArc ![lkey string] !superClassName] ;
       end if ;
     end foreach ;
-  end if ;
-#--- Generate code
-  if noError then
+    @classesToGenerateList sortedClassList ;
+    @classesToGenerateList unsortedClassList ;
+    [inheritanceGraph topologicalSort ?sortedClassList ?* ?unsortedClassList ?*] ;
+    if [unsortedClassList length] > 0 then
+      @string s := [[unsortedClassList length] string] . " classes are involved in a circular inheritance:" ;
+      foreach unsortedClassList do
+        s .= "\n  - '" . mClassName . "', that inherits from '" . mSuperClassName . "'" ;
+      end foreach ;
+      error here : s ;
+    end if ;
     @string codeToGenerate := "" ;
-    foreach classesToGenerateList (@lstring kClassName @classMapIndex kSuperClassIndex *) do
+    foreach sortedClassList do
       codeToGenerate .= "class " ;
-      codeToGenerate .= [kClassName string] ;
-      if [kSuperClassIndex isRegular] then
+      codeToGenerate .= mClassName ;
+      if mSuperClassName != "" then
         codeToGenerate .= " : " ;
-        codeToGenerate .= [kSuperClassIndex key] ;
+        codeToGenerate .= mSuperClassName ;
       end if ;
       codeToGenerate .= " { } ;\n" ;
     end foreach ;

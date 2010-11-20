@@ -9,12 +9,13 @@ uniquemap @classMap {
 
 mapproxy @classMapIndex (@classMap) ;
 
-sortedlist @classesToGenerateList {
-  @lstring mClassName ;
-  @classMapIndex mSuperClassIndex ;
-  @string mClassPath ;
-}{
-  mClassPath <
+list @classesToGenerateList {
+  @string mClassName ;
+  @string mSuperClassName ;
+}
+
+graph @inheritanceGraph (@classesToGenerateList) {
+  feature topologicalSort ;
 }
 
 end semantics ;
