@@ -55,7 +55,7 @@ LOGGING m: <map @aMap (1 object):
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (41 types)
+--- Type list (43 types)
   @2stringlist
   @A
   @B
@@ -81,6 +81,8 @@ LOGGING r: <@uint:5>
   @luint
   @luint64
   @luintlist
+  @maTable
+  @monMapProxy
   @myList
   @myListMap
   @object
@@ -105,3 +107,7 @@ Function 'functionTest' exists:true
 LOGGING object: 
 LOGGING y: <@uint:2>
 LOGGING result: 
+*************************************** begin of maproxy test
+LOGGING [table count]: <@uint:0>
+LOGGING Proxy: : <@monMapProxy regular (key )>
+LOGGING [table unsolvedProxyCount]: <@uint:1>

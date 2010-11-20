@@ -8,6 +8,8 @@ ${DIR}/pascal/makefile_macosx/build.command &&
 galgas -v --Werror ${DIR}/class_sample_language/galgas_sources/all_class_sample_language.gProject &&
 ${DIR}/class_sample_language/makefile_macosx/build.command &&
 time ${DIR}/class_sample_language/makefile_macosx/class_sample_language ${DIR}/class_sample_language/samples/100000-classes.class_sample_language &&
+cd /Volumes/dev-svn/galgas/sample_code/class_sample_language/samples &&
+time gcc -c 100000-classes.class_sample_language.cpp -o 100000-classes.class_sample_language.o &&
 #----------------- dangling_else_solution
 galgas -v --Werror ${DIR}/dangling_else_solution/galgas_sources/all_dangling_else_solution.gProject &&
 ${DIR}/dangling_else_solution/makefile_macosx/build.command &&

@@ -33,3 +33,21 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_addNode (%?^%GALGAS_string inKey%
   internalAddNode (inKey, attributes, inCompiler COMMA_THERE) ;
 }
 
+%if HAS_TOPOLOGICAL_SORT then
+  %//---------------------------------------------------------------------------*\n\n%
+  %void GALGAS_%!TYPE_IDENTIFIER%::method_topologicalSort (%?^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outSortedList,\n%
+                       !^%GALGAS_stringlist & outSortedKeyList,\n%
+                       !^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outUnsortedList,\n%
+                       !^%GALGAS_stringlist & outUnsortedKeyList,\n%
+                       !^%C_Compiler * inCompiler\n%
+                       !^%COMMA_LOCATION_ARGS) const {\n%
+  %  cSharedList * sortedList = NULL ;\n%
+  %  cSharedList * unsortedList = NULL ;\n%
+  %  internalTopologicalSort (sortedList, outSortedKeyList, unsortedList, outUnsortedKeyList, inCompiler COMMA_THERE) ;\n%
+  %  outSortedList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (sortedList) ;\n%
+  %  outUnsortedList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (unsortedList) ;\n%
+  %  GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::detachSharedList (sortedList) ;\n%
+  %  GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::detachSharedList (unsortedList) ;\n%
+  %}\n\n%
+end if
+%
