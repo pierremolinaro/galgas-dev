@@ -64,6 +64,7 @@ map @readerMap {
   @bool mHasCompilerArgument ;
   @unifiedTypeMapProxy mReturnedType ;
   @methodQualifier mQualifier ;
+  @string mErrorMessage ; # If not empty, calling the method raises an error ith this message
  
   insert insertKey error message "the '%K' reader is already declared" ;
   search searchKey error message "the '%K' reader is not declared" ;
@@ -88,6 +89,7 @@ map @modifierMap {
   @formalParameterSignature mParameterList ;
   @bool mHasCompilerArgument ;
   @methodQualifier mQualifier ;
+  @string mErrorMessage ; # If not empty, calling the modifier raises an error ith this message
   insert or replace ;
   insert insertKey error message "the '%K' modifier is already declared" ;
   search searchKey error message "the '%K' modifier is not declared" ;
@@ -105,6 +107,7 @@ map @instanceMethodMap {
   @location mDeclarationLocation ;
   @bool mHasCompilerArgument ;
   @methodQualifier mQualifier ;
+  @string mErrorMessage ; # If not empty, calling the method raises an error ith this message
   insert insertKey error message "the '%K' instance method is already declared" ;
   search searchKey error message "the '%K' instance method is not declared" ;
   search searchInheritedKey error message "as the '%K' method is tagged as 'override', it should be declared in the super class" ;

@@ -39,6 +39,7 @@ routine enterBaseFinalReaderWithoutArgument
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
     ![@methodQualifier isBasicFinal]
+    !"" # No Error message
   ] ;
 end routine ;
 
@@ -61,6 +62,7 @@ routine enterInheritedReaderWithoutArgument
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
     ![@methodQualifier isInherited]
+    !"" # No Error message
   ] ;
 end routine ;
 
@@ -88,6 +90,7 @@ routine enterInheritedReaderWithArgument
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
     ![@methodQualifier isInherited]
+    !"" # No Error message
   ] ;
 end routine ;
 
@@ -110,6 +113,7 @@ routine enterBaseReaderWithoutArgument
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
     ![@methodQualifier isBasic]
+    !"" # No Error message
   ] ;
 end routine ;
 
@@ -137,6 +141,36 @@ routine enterBaseReaderWithArgument
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
     ![@methodQualifier isBasic]
+    !"" # No Error message
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterBaseReaderWithArgumentAndMessage
+  ?!@readerMap ioReaderMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ??@string inReaderName
+  ??@string inArgument1TypeName
+  ??@string inReturnedTypeName
+  ??@bool inHasLexiqueAndLocationArguments
+  ??@string inMessage
+:
+  @unifiedTypeMapProxy returnedTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
+  @unifiedTypeMapProxyList argList [emptyList] ;
+  @unifiedTypeMapProxy t ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
+  argList += !t ;
+  [!?ioReaderMap insertOrReplace
+    ![@lstring new !inReaderName !here]
+    !false
+    !argList
+    !here
+    !inHasLexiqueAndLocationArguments
+    !returnedTypeIndex
+    ![@methodQualifier isBasic]
+    !inMessage
   ] ;
 end routine ;
 
@@ -164,6 +198,7 @@ routine enterBaseFinalReaderWithArgument
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
     ![@methodQualifier isBasicFinal]
+    !"" # No Error message
   ] ;
 end routine ;
 
@@ -194,6 +229,39 @@ routine enterBaseReaderWith2Arguments
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
     ![@methodQualifier isBasic]
+    !"" # No Error message
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine enterBaseReaderWith2ArgumentsAndMessage
+  ?!@readerMap ioReaderMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ??@string inReaderName
+  ??@string inArgument1TypeName
+  ??@string inArgument2TypeName
+  ??@string inReturnedTypeName
+  ??@bool inHasLexiqueAndLocationArguments
+  ??@string inMessage
+:
+  @unifiedTypeMapProxy returnedTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
+  @unifiedTypeMapProxyList argList [emptyList] ;
+  @unifiedTypeMapProxy t ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
+  argList += !t ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
+  argList += !t ;
+  [!?ioReaderMap insertOrReplace
+    ![@lstring new !inReaderName !here]
+    !false
+    !argList
+    !here
+    !inHasLexiqueAndLocationArguments
+    !returnedTypeIndex
+    ![@methodQualifier isBasic]
+    !inMessage
   ] ;
 end routine ;
 
@@ -224,6 +292,7 @@ routine enterBaseFinalReaderWith2Arguments
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
     ![@methodQualifier isBasicFinal]
+    !"" # No Error message
   ] ;
 end routine ;
 
@@ -257,6 +326,7 @@ routine enterBaseReaderWith3Arguments
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
     ![@methodQualifier isBasic]
+    !"" # No Error message
   ] ;
 end routine ;
 
@@ -290,6 +360,7 @@ routine enterBaseFinalReaderWith3Arguments
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
     ![@methodQualifier isBasicFinal]
+    !"" # No Error message
   ] ;
 end routine ;
 

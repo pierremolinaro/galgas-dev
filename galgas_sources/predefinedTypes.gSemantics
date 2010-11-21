@@ -27,12 +27,12 @@ local routine appendPredefinedListTypeAST
   ??@string inElementTypeName
 :
   @attributeInCollectionListAST attributeList [emptyList] ;
-  @lstringlist featureList [emptyList] ;
-  featureList += ![@lstring new !"setter" !here] ;
+  @lstringlist attributeFeatureList [emptyList] ;
+  attributeFeatureList += ![@lstring new !"setter" !here] ;
   attributeList +=
     ![@lstring new !inElementTypeName !here]
     ![@lstring new !"mValue" !here]
-    !featureList
+    !attributeFeatureList
   ;
   ioDeclarationListASTs += ![@listDeclarationAST new
     !true # Is global
@@ -47,18 +47,19 @@ local routine appendPredefined2StringListTypeAST
   ?!@semanticDeclarationListAST ioDeclarationListASTs
 :
   @attributeInCollectionListAST attributeList [emptyList] ;
-  @lstringlist featureList [emptyList] ;
-  featureList += ![@lstring new !"setter" !here] ;
+  @lstringlist attributeFeatureList [emptyList] ;
+  attributeFeatureList += ![@lstring new !"setter" !here] ;
   attributeList +=
     ![@lstring new !"string" !here]
     ![@lstring new !"mValue0" !here]
-    !featureList
+    !attributeFeatureList
   ;
   attributeList +=
     ![@lstring new !"string" !here]
     ![@lstring new !"mValue1" !here]
-    !featureList
+    !attributeFeatureList
   ;
+
   ioDeclarationListASTs += ![@listDeclarationAST new
     !true # Is global
     ![@lstring new !"2stringlist" !here]

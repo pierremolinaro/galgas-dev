@@ -877,28 +877,30 @@ override method @mapDeclarationAST enterInSemanticContext
   @modifierMap modifierMap [emptyMap] ;
   @instanceMethodMap instanceMethodMap [emptyMap] ;
   @enumerationDescriptorList enumerationDescriptor [listWithValue !lstringTypeIndex !"lkey"] ;
-#--- modifier 'insertFakeKey'
-  @unifiedTypeMapProxy locationTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"location" ?locationTypeIndex] ;
-  @formalParameterSignature insertFakeKeyFormalArgumentList [emptyList] ;
-  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Key
-  insertFakeKeyFormalArgumentList += !locationTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Error location
-  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Error Message
-  [!?modifierMap insertKey
-    ![@lstring new !"insertFakeKey" !here]
-    !insertFakeKeyFormalArgumentList
-    !true
-    ![@methodQualifier isInherited]
-  ] ;
-#--- modifier 'insertSilentFakeKey'
-  insertFakeKeyFormalArgumentList := [@formalParameterSignature emptyList] ;
-  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Key
-  [!?modifierMap insertKey
-    ![@lstring new !"insertSilentFakeKey" !here]
-    !insertFakeKeyFormalArgumentList
-    !true
-    ![@methodQualifier isInherited]
-  ] ;
+##--- modifier 'insertFakeKey'
+#  @unifiedTypeMapProxy locationTypeIndex ;
+#  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"location" ?locationTypeIndex] ;
+#  @formalParameterSignature insertFakeKeyFormalArgumentList [emptyList] ;
+#  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Key
+#  insertFakeKeyFormalArgumentList += !locationTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Error location
+#  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Error Message
+#  [!?modifierMap insertKey
+#    ![@lstring new !"insertFakeKey" !here]
+#    !insertFakeKeyFormalArgumentList
+#    !true
+#    ![@methodQualifier isInherited]
+#    !""
+#  ] ;
+##--- modifier 'insertSilentFakeKey'
+#  insertFakeKeyFormalArgumentList := [@formalParameterSignature emptyList] ;
+#  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Key
+#  [!?modifierMap insertKey
+#    ![@lstring new !"insertSilentFakeKey" !here]
+#    !insertFakeKeyFormalArgumentList
+#    !true
+#    ![@methodQualifier isInherited]
+#    !""
+#  ] ;
 #--- Constructors
   enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"emptyMap" ![mMapTypeName string] !false ;
   enterConstructorWithArgument !?constructorMap !?ioSemanticContext->mTypeMap !"mapWithMapToOverride" ![mMapTypeName string] ![mMapTypeName string] !false ;
@@ -935,6 +937,7 @@ override method @mapDeclarationAST enterInSemanticContext
         !insertMethodFormalArgumentList
         !true
         ![@methodQualifier isBasic]
+        !""
       ] ;
     end if ;
   end foreach ;
@@ -948,6 +951,7 @@ override method @mapDeclarationAST enterInSemanticContext
         !removeMethodFormalArgumentList
         !true
         ![@methodQualifier isBasic]
+        !""
       ] ;
     end if ;
   end foreach ;
@@ -960,6 +964,7 @@ override method @mapDeclarationAST enterInSemanticContext
       ![mSearchMethodName location]
       !true
       ![@methodQualifier isBasic]
+      !"" # No error message
     ] ;
   end foreach ;
 #--- Enter "attributeForKey" readers
@@ -975,6 +980,7 @@ override method @mapDeclarationAST enterInSemanticContext
       !true
       !attributeTypeIndex
       ![@methodQualifier isBasic]
+      !"" # No Error message
     ] ;
   end foreach ;
 #---------- Handle "insertOrReplace" modifier
@@ -986,6 +992,7 @@ override method @mapDeclarationAST enterInSemanticContext
       !insertMethodFormalArgumentList
       !false
       ![@methodQualifier isBasic]
+      !"" # No error message
     ] ;
   end if ;
 #---------- Enter "set...Attribute...forKey" modifiers
@@ -1001,6 +1008,7 @@ override method @mapDeclarationAST enterInSemanticContext
       !accessorFormalArgumentList
       !true
       ![@methodQualifier isBasic]
+      !"" # No error message
     ] ;
   end foreach ;
 #--- Enter 'with' accessors
@@ -1075,6 +1083,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     !insertFakeKeyFormalArgumentList
     !true
     ![@methodQualifier isInherited]
+    !"" # No error message
   ] ;
 #--- modifier 'insertSilentFakeKey'
   insertFakeKeyFormalArgumentList := [@formalParameterSignature emptyList] ;
@@ -1084,6 +1093,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     !insertFakeKeyFormalArgumentList
     !true
     ![@methodQualifier isInherited]
+    !"" # No error message
   ] ;
 #--- Constructors
   enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"emptyMap" ![mMapTypeName string] !false ;
@@ -1121,6 +1131,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
         !insertMethodFormalArgumentList
         !true
         ![@methodQualifier isBasic]
+        !"" # No error message
       ] ;
     end if ;
   end foreach ;
@@ -1134,6 +1145,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
         ![mSearchMethodName location]
         !true
         ![@methodQualifier isBasic]
+        !"" # No error message
       ] ;
     end foreach ;
   else
@@ -1143,6 +1155,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
         !removeMethodFormalArgumentList
         !true
         ![@methodQualifier isBasic]
+        !"" # No error message
       ] ;
     end foreach ;
   end if ;
@@ -1155,18 +1168,21 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
       ![@formalParameterSignature emptyList]
       !true
       ![@methodQualifier isInherited]
+      !"" # No error message
     ] ;
     [!?modifierMap insertKey
       ![@lstring new !"closeBranch" !here]
       ![@formalParameterSignature listWithValue !locationTypeIndex ![@formalArgumentPassingModeAST argumentIn]]
       !true
       ![@methodQualifier isBasic]
+      !"" # No error message
     ] ;
     [!?modifierMap insertKey
       ![@lstring new !"closeOverride" !here]
       ![@formalParameterSignature listWithValue !locationTypeIndex ![@formalArgumentPassingModeAST argumentIn]]
       !true
       ![@methodQualifier isInherited]
+      !"" # No error message
     ] ;
     [!?instanceMethodMap insertKey
       ![@lstring new !"checkAutomatonStates" !here]
@@ -1175,6 +1191,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
       !here
       !true
       ![@methodQualifier isBasic]
+      !"" # No error message
     ] ;
     foreach mMapOverrideBlockListAST do
       [!?modifierMap insertKey
@@ -1182,6 +1199,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
         ![@formalParameterSignature emptyList]
         !true
         ![@methodQualifier isBasic]
+        !"" # No error message
       ] ;
     end foreach ;
   end if ;
@@ -1198,6 +1216,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
       !true
       !attributeTypeIndex
       ![@methodQualifier isBasic]
+      !"" # No Error message
     ] ;
   end foreach ;
 #---------- Enter "set...Attribute...forKey" modifiers
@@ -1213,6 +1232,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
       !accessorFormalArgumentList
       !true
       ![@methodQualifier isBasic]
+      !"" # No error message
     ] ;
   end foreach ;
 #--- Enter 'with' accessors
@@ -1345,6 +1365,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
         !true
         !mAttributeTypeProxy
         ![@methodQualifier isBasic]
+        !"" # No Error message
       ] ;
     end if ;
   end foreach ;
@@ -1376,6 +1397,18 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+local function buildFeatureSet
+  ??@lstringlist inFeatureList
+  ->@stringset outResult
+:
+  outResult := [@stringset emptySet] ;
+  foreach inFeatureList do
+    outResult += ![mValue string] ;
+  end foreach ;
+end function ;
+ 
+#---------------------------------------------------------------------------*
+
 override method @graphDeclarationAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
@@ -1397,10 +1430,7 @@ override method @graphDeclarationAST enterInSemanticContext
   @unifiedTypeMapProxy stringListTypeProxy ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"stringlist" ?stringListTypeProxy] ;
 #--- Build feature set
-  @stringset featureSet [emptySet] ;
-  foreach mFeatureList do
-    featureSet += ![mValue string] ;
-  end foreach ;
+  const @stringset featureSet := buildFeatureSet [!mFeatureList] ;
 #---
   @readerMap readerMap [emptyMap] ;
   @constructorMap constructorMap [emptyMap] ;
@@ -1421,6 +1451,7 @@ override method @graphDeclarationAST enterInSemanticContext
       !here
       !true # Has Compiler Argument
       ![@methodQualifier isBasic]
+      !"" # No error message
     ] ;
   end if ;
 #--- Reader 'undefinedNodeCount'
@@ -1432,6 +1463,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !false # No compiler argument
     !uintTypeProxy
     ![@methodQualifier isInherited]
+    !"" # No Error message
   ] ;
 #--- Reader 'undefinedNodeKeyList'
   [!?readerMap insertKey
@@ -1442,6 +1474,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !false # No compiler argument
     !stringListTypeProxy
     ![@methodQualifier isInherited]
+    !"" # No Error message
   ] ;
 #--- Constructor 'emptyGraph'
   [!?constructorMap insertKey
@@ -1461,6 +1494,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !formalParameterList
     !true # has compiler argument
     ![@methodQualifier isBasic]
+    !"" # No error message
   ] ;
 #--- Modifier 'enterArc'
   formalParameterList := [@formalParameterSignature emptyList] ;
@@ -1471,6 +1505,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !formalParameterList
     !false # No compiler argument
     ![@methodQualifier isInherited]
+    !"" # No error message
   ] ;
 #--- Enter type in type map
   [!?ioSemanticContext->mTypeMap insertKey
@@ -1732,6 +1767,7 @@ override method @listDeclarationAST enterInSemanticContext
       !true
       !mAttributeTypeProxy
       ![@methodQualifier isBasic]
+      !"" # No Error message
     ] ;
   end foreach ;
 #--- Modifiers
@@ -1741,18 +1777,21 @@ override method @listDeclarationAST enterInSemanticContext
     !modifierOutputFormalArgumentList
     !true
     ![@methodQualifier isBasic]
+    !""
   ] ;
   [!?modifierMap insertOrReplace
     ![@lstring new !"popLast" !here]
     !modifierOutputFormalArgumentList
     !true
     ![@methodQualifier isBasic]
+    !""
   ] ;
   [!?modifierMap insertOrReplace
     ![@lstring new !"prependValue" !here]
     !modifierInputFormalArgumentList
     !false
     ![@methodQualifier isBasic]
+    !"" # No error message
   ] ;
   foreach typedAttributeList do
     @formalParameterSignature setterFormalArgumentList [emptyList] ;
@@ -1763,6 +1802,7 @@ override method @listDeclarationAST enterInSemanticContext
       !setterFormalArgumentList
       !true
       ![@methodQualifier isBasic]
+      !"" # No error message
     ] ;
   end foreach ;
 #--- Instance methods
@@ -1774,6 +1814,7 @@ override method @listDeclarationAST enterInSemanticContext
     !here
     !true
     ![@methodQualifier isBasic]
+    !""
   ] ;
   [!?instanceMethodMap insertKey
     ![@lstring new !"last" !here]
@@ -1782,6 +1823,7 @@ override method @listDeclarationAST enterInSemanticContext
     !here
     !true
     ![@methodQualifier isBasic]
+    !""
   ] ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
@@ -1856,12 +1898,14 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !modifierFormalArgumentList
     !true
     ![@methodQualifier isBasic]
+    !"" # No error message
   ] ;
   [!?modifierMap insertOrReplace
     ![@lstring new !"popSmallest" !here]
     !modifierFormalArgumentList
     !true
     ![@methodQualifier isBasic]
+    !"" # No error message
   ] ;
 #--- Instance methods
   @instanceMethodMap instanceMethodMap [emptyMap] ;
@@ -1872,6 +1916,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !here
     !true
     ![@methodQualifier isBasic]
+    !"" # No error message
   ] ;
   [!?instanceMethodMap insertKey
     ![@lstring new !"smallest" !here]
@@ -1880,6 +1925,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !here
     !true
     ![@methodQualifier isBasic]
+    !"" # No error message
   ] ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
@@ -2044,6 +2090,7 @@ override method @classDeclarationAST enterInSemanticContext
         !mParameterList
         !mHasCompilerArgument
         ![@methodQualifier isInherited]
+        !"" # No error message
       ] ; 
     end foreach ;
   #--- Mark all readers as inherited
@@ -2057,6 +2104,7 @@ override method @classDeclarationAST enterInSemanticContext
         !mHasCompilerArgument
         !mReturnedType
         ![@methodQualifier isInherited]
+        !mErrorMessage
       ] ; 
     end foreach ;
   end if ;
@@ -2094,6 +2142,7 @@ override method @classDeclarationAST enterInSemanticContext
       !mDeclarationLocation
       !mHasCompilerArgument
       ![@methodQualifier isInherited]
+      !"" # No error message
     ] ;
   end foreach ;
 #------------------------ Abstract methods
@@ -2114,6 +2163,7 @@ override method @classDeclarationAST enterInSemanticContext
         ![mMethodName location]
         !true
         ![@methodQualifier isAbstract]
+        !"" # No error message
       ] ;
       end with ;
   end foreach ;
@@ -2135,6 +2185,7 @@ override method @classDeclarationAST enterInSemanticContext
         ![mMethodName location]
         !true
         ![@methodQualifier isBasic]
+        !"" # No error message
       ] ;
     end with ;
   end foreach ;
@@ -2156,6 +2207,7 @@ override method @classDeclarationAST enterInSemanticContext
         ![lkey location]
         !true
         ![@methodQualifier isBasic]
+        !"" # No error message
       ] ;
     end foreach ;
   end if ;
@@ -2180,6 +2232,7 @@ override method @classDeclarationAST enterInSemanticContext
         !true
         !returnedType
         ![@methodQualifier isBasic]
+        !"" # No Error message
       ] ;
     end foreach ;
   end if ;
@@ -2209,6 +2262,7 @@ override method @classDeclarationAST enterInSemanticContext
         !false # No Compiler argument
         !attributeTypeIndex # Returned type
         ![@methodQualifier isBasic]
+        !"" # No Error message
       ] ;
 #    else
 #      [!?readerMap insertFakeKey
@@ -2226,6 +2280,7 @@ override method @classDeclarationAST enterInSemanticContext
         ![@formalParameterSignature listWithValue !mAttributeTypeProxy ![@formalArgumentPassingModeAST argumentIn]]
         !false # No compiler argument
         ![@methodQualifier isBasicFinal]
+        !"" # No error message
       ] ;
     end if ;
   end foreach ;
@@ -2394,7 +2449,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 graph @semanticTypePrecedenceGraph (@semanticDeclarationListAST) {
-  feature topologicalSort ;
+  feature "topologicalSort" ;
 }
 
 #---------------------------------------------------------------------------*
