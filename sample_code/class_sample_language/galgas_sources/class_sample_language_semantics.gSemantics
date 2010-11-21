@@ -15,7 +15,7 @@ list @classesToGenerateList {
 }
 
 graph @inheritanceGraph (@classesToGenerateList) {
-  feature topologicalSort ;
+  feature "topologicalSort" ;
 }
 
 end semantics ;

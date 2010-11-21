@@ -1417,18 +1417,18 @@ override method @graphDeclarationAST enterInSemanticContext
 #--- string type proxy
   @unifiedTypeMapProxy stringTypeProxy ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"string" ?stringTypeProxy] ;
+#--- lstring type proxy
+  @unifiedTypeMapProxy lstringTypeProxy ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"lstring" ?lstringTypeProxy] ;
 #--- Graph type proxy
   @unifiedTypeMapProxy graphTypeProxy ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mGraphTypeName->string ?graphTypeProxy] ;
 #--- Associated list type proxy
   @unifiedTypeMapProxy associatedListTypeProxy ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mAssociatedListTypeName string] ?associatedListTypeProxy] ;
-#--- @uint type proxy
-  @unifiedTypeMapProxy uintTypeProxy ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"uint" ?uintTypeProxy] ;
-#--- @stringlist type proxy
-  @unifiedTypeMapProxy stringListTypeProxy ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"stringlist" ?stringListTypeProxy] ;
+#--- @lstringlist type proxy
+  @unifiedTypeMapProxy lstringListTypeProxy ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"lstringlist" ?lstringListTypeProxy] ;
 #--- Build feature set
   const @stringset featureSet := buildFeatureSet [!mFeatureList] ;
 #---
@@ -1441,9 +1441,9 @@ override method @graphDeclarationAST enterInSemanticContext
   if [featureSet hasKey !"topologicalSort"] then
     @formalParameterSignature formalParameterList [emptyList] ;
     formalParameterList += !associatedListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
-    formalParameterList += !stringListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
+    formalParameterList += !lstringListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
     formalParameterList += !associatedListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
-    formalParameterList += !stringListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
+    formalParameterList += !lstringListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
     [!?instanceMethodMap insertKey
       ![@lstring new !"topologicalSort" !here]
       !false # is not a category
@@ -1455,27 +1455,29 @@ override method @graphDeclarationAST enterInSemanticContext
     ] ;
   end if ;
 #--- Reader 'undefinedNodeCount'
-  [!?readerMap insertKey
-    ![@lstring new !"undefinedNodeCount" !here]
-    !false # Is not a category
-    ![@unifiedTypeMapProxyList emptyList]
-    !here
+  enterInheritedReaderWithoutArgument
+    !?readerMap
+    !?ioSemanticContext->mTypeMap
+    !"undefinedNodeCount"
+    !"uint"
     !false # No compiler argument
-    !uintTypeProxy
-    ![@methodQualifier isInherited]
-    !"" # No Error message
-  ] ;
+  ;
 #--- Reader 'undefinedNodeKeyList'
-  [!?readerMap insertKey
-    ![@lstring new !"undefinedNodeKeyList" !here]
-    !false # Is not a category
-    ![@unifiedTypeMapProxyList emptyList]
-    !here
+  enterInheritedReaderWithoutArgument
+    !?readerMap
+    !?ioSemanticContext->mTypeMap
+    !"undefinedNodeKeyList"
+    !"stringlist"
     !false # No compiler argument
-    !stringListTypeProxy
-    ![@methodQualifier isInherited]
-    !"" # No Error message
-  ] ;
+  ;
+#--- Reader 'undefinedNodeReferenceList'
+  enterInheritedReaderWithoutArgument
+    !?readerMap
+    !?ioSemanticContext->mTypeMap
+    !"undefinedNodeReferenceList"
+    !"lstringlist"
+    !false # No compiler argument
+  ;
 #--- Constructor 'emptyGraph'
   [!?constructorMap insertKey
     ![@lstring new !"emptyGraph" !here]
@@ -1485,23 +1487,35 @@ override method @graphDeclarationAST enterInSemanticContext
   ] ;
 #--- Modifier 'enterNode'
   @formalParameterSignature formalParameterList [emptyList] ;
-  formalParameterList += !stringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
+  formalParameterList += !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
   foreach [associatedListTypeProxy mAddAssignOperatorArguments] do
     formalParameterList += !mType ![@formalArgumentPassingModeAST argumentIn] ;
   end foreach ;
-  [!?modifierMap insertKey
-    ![@lstring new !"addNode" !here]
-    !formalParameterList
-    !true # has compiler argument
-    ![@methodQualifier isBasic]
-    !"" # No error message
-  ] ;
+  foreach mInsertModifierList do
+    [!?modifierMap insertOrReplace
+      !mInsertModifierName
+      !formalParameterList
+      !true # has compiler argument
+      ![@methodQualifier isBasic]
+      !"" # No error message
+    ] ;
+  end foreach ;
 #--- Modifier 'enterArc'
   formalParameterList := [@formalParameterSignature emptyList] ;
-  formalParameterList += !stringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
-  formalParameterList += !stringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
+  formalParameterList += !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
+  formalParameterList += !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
   [!?modifierMap insertKey
     ![@lstring new !"addArc" !here]
+    !formalParameterList
+    !false # No compiler argument
+    ![@methodQualifier isInherited]
+    !"" # No error message
+  ] ;
+#--- Modifier 'noteNode'
+  formalParameterList := [@formalParameterSignature emptyList] ;
+  formalParameterList += !stringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
+  [!?modifierMap insertKey
+    ![@lstring new !"noteNode" !here]
     !formalParameterList
     !false # No compiler argument
     ![@methodQualifier isInherited]
@@ -2449,237 +2463,239 @@ end method ;
 #---------------------------------------------------------------------------*
 
 graph @semanticTypePrecedenceGraph (@semanticDeclarationListAST) {
+  insert addNode error message "the '%K' is already declared at %L" ;
   feature "topologicalSort" ;
 }
 
 #---------------------------------------------------------------------------*
 
-abstract method @semanticDeclarationAST enterOrderedDeclaration
+abstract method @semanticDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 ;
 
 #---------------------------------------------------------------------------*
 
-override method @predefinedTypeAST enterOrderedDeclaration
+override method @predefinedTypeAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 :
-  const @string key := "@" . mPredefinedTypeName ;
+  const @lstring key [new !"@" . mPredefinedTypeName !here] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @classDeclarationAST enterOrderedDeclaration
+override method @classDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 :
-  const @string key := "@" . mClassTypeName ;
+  const @lstring key [new !"@" . mClassTypeName ![mClassTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   if mSuperClassName->string != "" then
-    [!?ioSemanticTypePrecedenceGraph addArc !key !"@" . mSuperClassName] ;
+    [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mSuperClassName ![mSuperClassName location]]] ;
   end if ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @listDeclarationAST enterOrderedDeclaration
+override method @listDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 :
-  const @string key := "@" . mListTypeName ;
+  const @lstring key [new !"@" . mListTypeName ![mListTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @structDeclarationAST enterOrderedDeclaration
+override method @structDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 :
-  const @string key := "@" . mStructTypeName ;
+  const @lstring key [new !"@" . mStructTypeName ![mStructTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   foreach mAttributeList do
-    [!?ioSemanticTypePrecedenceGraph addArc !key !"@" . mAttributeTypeName] ;
+    [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mAttributeTypeName ![mAttributeTypeName location]]] ;
   end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @enumDeclarationAST enterOrderedDeclaration
+override method @enumDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 :
-  const @string key := "@" . mEnumTypeName ;
+  const @lstring key [new !"@" . mEnumTypeName ![mEnumTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @sortedListDeclarationAST enterOrderedDeclaration
+override method @sortedListDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 :
-  const @string key := "@" . mSortedListTypeName ;
+  const @lstring key [new !"@" . mSortedListTypeName ![mSortedListTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @listmapDeclarationAST enterOrderedDeclaration
+override method @listmapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 :
-  const @string key := "@" . mListmapTypeName ;
+  const @lstring key [new !"@" . mListmapTypeName ![mListmapTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key !"@" . mAssociatedListTypeName] ;
+  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mAssociatedListTypeName ![mAssociatedListTypeName location]]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @mapDeclarationAST enterOrderedDeclaration
+override method @mapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 :
-  const @string key := "@" . mMapTypeName ;
-  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @uniqueMapDeclarationAST enterOrderedDeclaration
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-:
-  const @string key := "@" . mMapTypeName ;
+  const @lstring key [new !"@" . mMapTypeName ![mMapTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @mapProxyDeclarationAST enterOrderedDeclaration
+override method @uniqueMapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 :
-  const @string key := "@" . mMapProxyTypeName ;
-  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key !"@" . mAssociatedMapTypeName] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @graphDeclarationAST enterOrderedDeclaration
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-:
-  const @string key := "@" . mGraphTypeName ;
-  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key !"@" . mAssociatedListTypeName] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @externFunctionDeclarationAST enterOrderedDeclaration
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
-:
-  const @string key := "function " . mFunctionName ;
+  const @lstring key [new !"@" . mMapTypeName ![mMapTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @onceFunctionDeclarationAST enterOrderedDeclaration
+override method @mapProxyDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 :
-  const @string key := "function " . mFunctionName ;
+  const @lstring key [new !"@" . mMapProxyTypeName ![mMapProxyTypeName location]] ;
+  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mAssociatedMapTypeName ![mAssociatedMapTypeName location]]] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @graphDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+:
+  const @lstring key [new !"@" . mGraphTypeName ![mGraphTypeName location]] ;
+  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mAssociatedListTypeName ![mAssociatedListTypeName location]]] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @externFunctionDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+:
+  const @lstring key [new !"function " . mFunctionName ![mFunctionName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @externRoutineDeclarationAST enterOrderedDeclaration
+override method @onceFunctionDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 :
-  const @string key := "routine " . mRoutineName ;
+  const @lstring key [new !"function " . mFunctionName ![mFunctionName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @filewrapperDeclarationAST enterOrderedDeclaration
+override method @externRoutineDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 :
-  const @string key := "filewrapper " . mFilewrapperName ;
+  const @lstring key [new !"routine " . mRoutineName ![mRoutineName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @overridingCategoryMethodAST enterOrderedDeclaration
+override method @filewrapperDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 :
-  const @string key := "category method @" . mTypeName . " " . mOverridingCategoryMethodName ;
+  const @lstring key [new !"filewrapper " . mFilewrapperName ![mFilewrapperName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key !"@" . mTypeName] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @overridingAbstractCategoryReaderAST enterOrderedDeclaration
+override method @overridingCategoryMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 :
-  const @string key := "category reader @" . mTypeName . " " . mAbstractCategoryReaderName ;
+  const @lstring key [new !"category method @" . mTypeName . " " . mOverridingCategoryMethodName ![mOverridingCategoryMethodName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key !"@" . mTypeName] ;
+  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @overridingAbstractCategoryMethodAST enterOrderedDeclaration
+override method @overridingAbstractCategoryReaderAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 :
-  const @string key := "category method @" . mTypeName . " " . mOverridingCategoryMethodName ;
+  const @lstring key [new !"category reader @" . mTypeName . " " . mAbstractCategoryReaderName ![mAbstractCategoryReaderName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key !"@" . mTypeName] ;
+  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @categoryReaderAST enterOrderedDeclaration
+override method @overridingAbstractCategoryMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 :
-  const @string key := "category reader @" . mTypeName . " " . mCategoryReaderName ;
+  const @lstring key [new !"category method @" . mTypeName . " " . mOverridingCategoryMethodName ![mOverridingCategoryMethodName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key !"@" . mTypeName] ;
+  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @categoryMethodAST enterOrderedDeclaration
+override method @categoryReaderAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 :
-  const @string key := "category method @" . mTypeName . " " . mCategoryMethodName ;
+  const @lstring key [new !"category reader @" . mTypeName . " " . mCategoryReaderName ![mCategoryReaderName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key !"@" . mTypeName] ;
+  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @overridingCategoryReaderAST enterOrderedDeclaration
+override method @categoryMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 :
-  const @string key := "category reader @" . mTypeName . " " . mOverridingCategoryReaderName ;
+  const @lstring key [new !"category method @" . mTypeName . " " . mCategoryMethodName ![mCategoryMethodName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key !"@" . mTypeName] ;
+  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @abstractCategoryReaderAST enterOrderedDeclaration
+override method @overridingCategoryReaderAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 :
-  const @string key := "category reader @" . mTypeName . " " . mAbstractCategoryReaderName ;
+  const @lstring key [new !"category reader @" . mTypeName . " " . mOverridingCategoryReaderName ![mOverridingCategoryReaderName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key !"@" . mTypeName] ;
+  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @abstractCategoryMethodAST enterOrderedDeclaration
+override method @abstractCategoryReaderAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
 :
-  const @string key := "category method @" . mTypeName . " " . mAbstractCategoryMethodName ;
+  const @lstring key [new !"category reader @" . mTypeName . " " . mAbstractCategoryReaderName ![mAbstractCategoryReaderName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key !"@" . mTypeName] ;
+  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
+  [!?ioSemanticTypePrecedenceGraph noteNode ![key string]] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @abstractCategoryMethodAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+:
+  const @lstring key [new !"category method @" . mTypeName . " " . mAbstractCategoryMethodName ![mAbstractCategoryMethodName location]] ;
+  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -2726,7 +2742,7 @@ routine buildSemanticContext
   #  - a list map appears after its associated list
     @semanticTypePrecedenceGraph semanticTypePrecedenceGraph [emptyGraph] ;
     foreach inSemanticDeclarationList do
-      [mSemanticDeclaration enterOrderedDeclaration !?semanticTypePrecedenceGraph] ;  
+      [mSemanticDeclaration enterDeclarationInGraph !?semanticTypePrecedenceGraph] ;  
     end foreach ;
     if [semanticTypePrecedenceGraph undefinedNodeCount] > 0 then
       const @stringlist undefinedNodeList := [semanticTypePrecedenceGraph undefinedNodeKeyList] ;
@@ -2738,7 +2754,7 @@ routine buildSemanticContext
     end if ;
     @semanticDeclarationListAST sortedSemanticDeclarationListAST ;
     @semanticDeclarationListAST unsortedSemanticDeclarationListAST ;
-    @stringlist unsortedNodeKeyList ;
+    @lstringlist unsortedNodeKeyList ;
     [semanticTypePrecedenceGraph topologicalSort
       ?sortedSemanticDeclarationListAST
       ?*

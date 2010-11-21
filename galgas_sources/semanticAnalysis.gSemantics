@@ -267,12 +267,23 @@ override method @graphDeclarationAST performSemanticAnalysis
       error mValue:"unknown feature; available feature: 'topologicalSort'" ;
     end if ;
   end foreach ;
+#--- Analyze insert methods
+  @stringset reservedModifierNames [emptySet] ;
+  reservedModifierNames += !"noteNode" ;
+  reservedModifierNames += !"addArc" ;
+  foreach mInsertModifierList do
+    if [reservedModifierNames hasKey ![mInsertModifierName string]] then
+      error mInsertModifierName : "the '" . mInsertModifierName . "' modifier name is reserved for a graph type" ;
+    end if ;
+    check_K_L_escapeCharacters !mInsertErrorMessage ;
+  end foreach ;
 #---
   ioSemanticDeclarationListForGeneration += ![@graphDeclarationForGeneration new
     !true # Is Global
     !graphTypeProxy
     !associatedListTypeProxy
     !hasTopologicalSort
+    !mInsertModifierList
   ]
   !""
   ;
@@ -377,7 +388,7 @@ map @searchMethodMap {
 #         M A P                                                             *
 #---------------------------------------------------------------------------*
 
-routine check_K_escapeCharacters
+local routine check_K_escapeCharacters
  ?@lstring inString
 :
 #--- Check escape sequences : only %K or %%
@@ -389,6 +400,26 @@ routine check_K_escapeCharacters
         const @char c := [mValue characterAtIndex !0] ;
         if c != 'K' then
           error inString: "only '%K' and '%%' escape sequences are allowed in this error message" ;
+        end if ;
+      end if ;
+    end foreach ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+local routine check_K_L_escapeCharacters
+ ?@lstring inString
+:
+#--- Check escape sequences : only %K, %L or %%
+  foreach [[inString string] componentsSeparatedByString !"%%"] do
+    @stringlist explodedArray := [mValue componentsSeparatedByString !"%"] ;
+    [!?explodedArray popFirst ?*] ;
+    foreach explodedArray do
+      if [mValue length] > 0 then
+        const @char c := [mValue characterAtIndex !0] ;
+        if (c != 'K') & (c != 'L') then
+          error inString: "only '%K', '%L' and '%%' escape sequences are allowed in this error message" ;
         end if ;
       end if ;
     end foreach ;
@@ -421,67 +452,19 @@ override method @mapDeclarationAST performSemanticAnalysis
   @insertMethodMap insertMethodMap [emptyMap] ;
   foreach mInsertMethodList do
     [!?insertMethodMap insertKey !mInsertMethodName] ;
-  #--- Check error message escape sequences : only %K, %L or %%
-    foreach [[mErrorMessage string] componentsSeparatedByString !"%%"] do
-      @stringlist explodedArray := [mValue componentsSeparatedByString !"%"] ;
-      [!?explodedArray popFirst ?*] ;
-      foreach explodedArray do
-        if [mValue length] > 0 then
-          const @char c := [mValue characterAtIndex !0] ;
-          if (c != 'K') & (c != 'L') then
-            error mErrorMessage: "only '%K', '%L' and '%%' escape sequences are allowed in an insert error message" ;
-          end if ;
-        end if ;
-      end foreach ;
-    end foreach ;
-  #--- Check shadow error message escape sequences : only %K, %L or %%
-    foreach [[mShadowErrorMessage string] componentsSeparatedByString !"%%"] do
-      @stringlist explodedArray := [mValue componentsSeparatedByString !"%"] ;
-      [!?explodedArray popFirst ?*] ;
-      foreach explodedArray do
-        if [mValue length] > 0 then
-          const @char c := [mValue characterAtIndex !0] ;
-          if (c != 'K') & (c != 'L') then
-            error mErrorMessage: "only '%K', '%L' and '%%' escape sequences are allowed in a shadow error message" ;
-          end if ;
-        end if ;
-      end foreach ;
-    end foreach ;
+    check_K_L_escapeCharacters !mErrorMessage ;
+    check_K_L_escapeCharacters !mShadowErrorMessage ;
   end foreach ;
 #--- Enter search methods
   @searchMethodMap searchMethodMap [emptyMap] ;
   foreach mSearchMethodList do
     [!?searchMethodMap insertKey !mSearchMethodName] ;
-  #--- Check error message escape sequences : only %K or %%
-    foreach [[mErrorMessage string] componentsSeparatedByString !"%%"] do
-      @stringlist explodedArray := [mValue componentsSeparatedByString !"%"] ;
-      [!?explodedArray popFirst ?*] ;
-      foreach explodedArray do
-        if [mValue length] > 0 then
-          const @char c := [mValue characterAtIndex !0] ;
-          if c != 'K' then
-            error mErrorMessage: "only '%K' and '%%' escape sequences are allowed in a search error message" ;
-          end if ;
-        end if ;
-      end foreach ;
-    end foreach ;
+    check_K_escapeCharacters !mErrorMessage ;
   end foreach ;
 #--- Enter remove methods
   foreach mRemoveMethodList do
     [!?insertMethodMap insertKey !mMethodName] ;
-  #--- Check error message escape sequences : only %K or %%
-    foreach [[mErrorMessage string] componentsSeparatedByString !"%%"] do
-      @stringlist explodedArray := [mValue componentsSeparatedByString !"%"] ;
-      [!?explodedArray popFirst ?*] ;
-      foreach explodedArray do
-        if [mValue length] > 0 then
-          const @char c := [mValue characterAtIndex !0] ;
-          if c != 'K' then
-            error mErrorMessage: "only '%K' and '%%' escape sequences are allowed in a remove error message" ;
-          end if ;
-        end if ;
-      end foreach ;
-    end foreach ;
+    check_K_escapeCharacters !mErrorMessage ;
   end foreach ;
 #--- Warn for duplicated declarations or 'insertOrReplace' modifier
   foreach mInsertOrReplaceDeclarationListAST index IDX do

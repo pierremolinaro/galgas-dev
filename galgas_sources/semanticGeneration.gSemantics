@@ -428,6 +428,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_IDENTIFIER
     ?@unifiedTypeMapProxy ASSOCIATED_LIST_TYPE
     ?@bool HAS_TOPOLOGICAL_SORT
+    ?@graphInsertModifierList INSERT_MODIFIER_LIST
   ;
 
 #---------- LIST MAP
@@ -1345,6 +1346,7 @@ override reader @graphDeclarationForGeneration appendSpecificImplementation ->@s
     ![mTypeProxy identifierRepresentation]
     !mAssociatedListTypeProxy
     !mHasTopologicalSort
+    !mInsertModifierList
   ] ;
  end reader ;
 

@@ -1039,11 +1039,20 @@ rule <semantic_declaration>
   $)$ ;
   ${$ ;
   @lstringlist featureList [emptyList] ;
+  @graphInsertModifierList graphInsertModifierList [emptyList] ;
   repeat
   while
     $feature$ ;
     $literal_string$ ? @lstring featureName ;
     featureList += !featureName ;
+    $;$ ;
+  while
+    $insert$ ;
+    $identifier$ ? @lstring insertName ;
+    $error$ ;
+    $message$ ;
+    $literal_string$ ? @lstring errorMessage ;
+    graphInsertModifierList += !insertName !errorMessage ;
     $;$ ;
   end repeat ;
   $}$ ;
@@ -1052,6 +1061,7 @@ rule <semantic_declaration>
     !graphTypeName
     !associatedListTypeName
     !featureList
+    !graphInsertModifierList
   ] ;
 end rule ;
 
