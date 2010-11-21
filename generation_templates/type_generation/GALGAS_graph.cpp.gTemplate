@@ -16,9 +16,10 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyGraph (LOC
   return result ;
 }
 
-//---------------------------------------------------------------------------*
+%foreach INSERT_MODIFIER_LIST do
+%//---------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::modifier_addNode (%?^%GALGAS_string inKey%
+void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mInsertModifierName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
   foreach [ASSOCIATED_LIST_TYPE mAddAssignOperatorArguments] do index IDX
     %,\n%!^%GALGAS_%![mType identifierRepresentation]% inArgument_%![IDX string]
   end foreach
@@ -30,15 +31,19 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_addNode (%?^%GALGAS_string inKey%
   do index IDX %, inArgument_%![IDX string]
   end foreach
   % COMMA_THERE) ;
-  internalAddNode (inKey, attributes, inCompiler COMMA_THERE) ;
+  const char * kErrorMessage = %![mInsertErrorMessage utf8Representation]% ;
+  internalAddNode (inKey, kErrorMessage, attributes, inCompiler COMMA_THERE) ;
 }
 
-%if HAS_TOPOLOGICAL_SORT then
+%
+end foreach
+
+if HAS_TOPOLOGICAL_SORT then
   %//---------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::method_topologicalSort (%?^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outSortedList,\n%
-                       !^%GALGAS_stringlist & outSortedKeyList,\n%
+                       !^%GALGAS_lstringlist & outSortedKeyList,\n%
                        !^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outUnsortedList,\n%
-                       !^%GALGAS_stringlist & outUnsortedKeyList,\n%
+                       !^%GALGAS_lstringlist & outUnsortedKeyList,\n%
                        !^%C_Compiler * inCompiler\n%
                        !^%COMMA_LOCATION_ARGS) const {\n%
   %  cSharedList * sortedList = NULL ;\n%
