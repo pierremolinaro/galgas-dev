@@ -33,7 +33,7 @@ filewrapper semanticFileGenerationTemplate in "../generation_templates/semantic_
   template semanticFileHeader "semantic-file.h.gTemplate"
     ?@string COMPONENT_NAME
     ?@stringlist IMPORTED_COMPONENT_LIST
-    ?@lstringlist TYPE_PREDECLARATION_LIST
+    ?@stringlist TYPE_PREDECLARATION_LIST
   ;
   template semanticFileImplementation "semantic-file.cpp.gTemplate"
     ?@string COMPONENT_NAME
@@ -247,6 +247,21 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+method @semanticDeclarationForGeneration addCppTypeForPredeclarationInHeaderFile
+  ?!@stringlist unused ioTypeList
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @semanticTypeForGeneration addCppTypeForPredeclarationInHeaderFile
+  ?!@stringlist ioTypeList
+:
+  ioTypeList += !"GALGAS_" . [mTypeProxy identifierRepresentation] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 routine compileSemanticsComponent
   ??@lstring inSourceFile
   ??@string inOutputDirectory
@@ -317,10 +332,14 @@ routine compileSemanticsComponent
   ;
 #------ Generate Header File
   if [@uint errorCount] == 0 then
+    @stringlist typeList [emptyList] ;
+    foreach decoratedDeclarationListForGeneration do
+      [mDeclaration addCppTypeForPredeclarationInHeaderFile !?typeList] ;
+    end foreach ;
     @string headerString := [filewrapper semanticFileGenerationTemplate.semanticFileHeader
       ![componentName string]
       !headerIncludeList
-      ![semanticContext->mTypeMap allKeyList]
+      !typeList
     ] ;
     foreach decoratedDeclarationListForGeneration do
       if [mDeclaration mIsGlobal] then

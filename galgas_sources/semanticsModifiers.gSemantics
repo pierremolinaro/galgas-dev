@@ -38,6 +38,7 @@ routine enterModifierWithInputArgument
     !argList
     !inHasCompilerArgument
     ![@methodQualifier isBasic]
+    !""
   ] ;
 end routine ;
 
@@ -59,6 +60,7 @@ routine enterModifierWithOutputArgument
     !argList
     !inHasCompilerArgument
     ![@methodQualifier isBasic]
+    !""
   ] ;
 end routine ;
 
@@ -83,6 +85,7 @@ routine enterModifierWith2InputArguments
     !argList
     !inHasCompilerArgument
     ![@methodQualifier isBasic]
+    !""
   ] ;
 end routine ;
 
@@ -98,6 +101,7 @@ routine enterModifierWithoutArgument
     ![@formalParameterSignature emptyList]
     !inHasCompilerArgument
     ![@methodQualifier isBasic]
+    !""
   ] ;
 end routine ;
 

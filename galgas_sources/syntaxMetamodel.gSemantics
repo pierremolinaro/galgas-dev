@@ -92,6 +92,7 @@ class @terminalCheckInstruction extends @syntaxInstructionAST {
 list @listOfSyntaxInstructionList {
   @syntaxInstructionList mSyntaxInstructionList ;
   @location mEndOf_instructions ;
+#  feature "first" ;
 }
 
 #---------------------------------------------------------------------------*

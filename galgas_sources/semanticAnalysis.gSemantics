@@ -153,6 +153,7 @@ override method @listDeclarationAST performSemanticAnalysis
     ;
     [!?attributeMap insertKey !mAttributeName !t] ;
   end foreach ;
+#---
   ioSemanticDeclarationListForGeneration += ![@listTypeForGeneration new
     !mIsGlobal
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListTypeName]
@@ -1191,7 +1192,7 @@ override method @classDeclarationAST performSemanticAnalysis
     if mIsOverriding then
       @formalParameterSignature inheritedSignature ;
       @location inheritedDeclarationLocation ;
-      [inheritedInstanceMethodMap searchInheritedKey !mMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?2*] ;
+      [inheritedInstanceMethodMap searchInheritedKey !mMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?3*] ;
       checkMethodSignatures
         !formalParameterListForGeneration
         ![mMethodName location]
@@ -1232,7 +1233,7 @@ override method @classDeclarationAST performSemanticAnalysis
       @formalParameterSignature inheritedSignature ;
       @location inheritedDeclarationLocation ;
       @bool inheritedIsCategory ;
-      [inheritedInstanceMethodMap searchInheritedKey !mMethodName ?inheritedIsCategory ?inheritedSignature ?inheritedDeclarationLocation ?2*] ;
+      [inheritedInstanceMethodMap searchInheritedKey !mMethodName ?inheritedIsCategory ?inheritedSignature ?inheritedDeclarationLocation ?3*] ;
       checkMethodSignatures
         !formalParameterListForGeneration
         ![mMethodName location]
@@ -1637,7 +1638,7 @@ override method @overridingCategoryMethodAST performSemanticAnalysis
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mInstanceMethodMap] hasKey ![mOverridingCategoryMethodName string]] then
       @methodQualifier qualifier ;
-      [[superType mInstanceMethodMap] searchKey !mOverridingCategoryMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?qualifier] ;
+      [[superType mInstanceMethodMap] searchKey !mOverridingCategoryMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?qualifier ?*] ;
       if qualifier <= [@methodQualifier isBasicFinal] then
         baseTypeName := [superType key] ;
       end if ;
@@ -1711,7 +1712,7 @@ override method @overridingAbstractCategoryMethodAST performSemanticAnalysis
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mInstanceMethodMap] hasKey ![mOverridingCategoryMethodName string]] then
       @methodQualifier qualifier ;
-      [[superType mInstanceMethodMap] searchKey !mOverridingCategoryMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?qualifier] ;
+      [[superType mInstanceMethodMap] searchKey !mOverridingCategoryMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?* ?qualifier ?*] ;
       if qualifier <= [@methodQualifier isBasicFinal] then
         baseTypeName := [superType key] ;
       end if ;
@@ -1861,6 +1862,7 @@ override method @overridingCategoryReaderAST performSemanticAnalysis
         ?*
         ?inheritedReturnType
         ?qualifier
+        ?*
       ] ;
       if qualifier <= [@methodQualifier isBasicFinal] then
         baseTypeName := [superType key] ;
@@ -1954,7 +1956,9 @@ override method @overridingAbstractCategoryReaderAST performSemanticAnalysis
         ?inheritedDeclarationLocation
         ?*
         ?inheritedReturnType
-        ?qualifier] ;
+        ?qualifier
+        ?*
+      ] ;
       if qualifier <= [@methodQualifier isBasicFinal] then
         baseTypeName := [superType key] ;
       end if ;

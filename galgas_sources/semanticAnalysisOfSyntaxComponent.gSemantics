@@ -50,6 +50,7 @@ list @ruleLabelImplementationList {
   @formalParameterSignature mSignature ;
   @location mEndOfArgumentLocation ;
   @semanticInstructionListForGeneration mInstructionListForGeneration ;
+#  feature "first";
 }
 
 #---------------------------------------------------------------------------*

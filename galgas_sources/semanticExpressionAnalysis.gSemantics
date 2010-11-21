@@ -610,6 +610,9 @@ override method @readerCallExpressionAST analyzeSemanticExpression
     hasCompilerArgument := mHasCompilerArgument ;
     returnedType := mReturnedType ;
     isCategory := mIsCategory ;
+    if mErrorMessage != "" then
+      error mReaderName : mErrorMessage ;
+    end if ;
   else
     @uint matchingReaderCount := 0 ;
     if [receiverType mTypeKindEnum] == [@typeKindEnum structType] then
@@ -628,6 +631,9 @@ override method @readerCallExpressionAST analyzeSemanticExpression
           returnedType := mReturnedType ;
           isCategory := mIsCategory ;
           fieldList += ![mAttributeName string] ;
+          if mErrorMessage != "" then
+            error mReaderName : mErrorMessage ;
+          end if ;
         end with ;
       end foreach ;
       if matchingReaderCount == 0 then
@@ -780,7 +786,7 @@ function checkReaderImplementationInSuperClasses
     outResult := "" ;
   else
     @methodQualifier qualifier ;
-    [[inSuperClass mModifierMap] searchKey !inReaderName ?* ?* ?qualifier] ;
+    [[inSuperClass mModifierMap] searchKey !inReaderName ?* ?* ?qualifier ?*] ;
     switch qualifier
     when isAbstract :
       outResult := "" ;
@@ -989,7 +995,7 @@ routine checkDiadicOperator
           ?*
           ?hasCompilerArgument
           ?returnedType
-          ?*
+          ?2*
         ] ;
         ok := ([argumentTypeList length] == 0) & (returnedType == inLeftType) ;
      #--- Add conversion expression

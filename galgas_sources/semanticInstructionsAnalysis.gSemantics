@@ -615,7 +615,11 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
   @bool isCategory ;
-  [[[receiverExpression mType] mInstanceMethodMap] searchKey !mMethodName ?isCategory ?routineSignature ?* ?hasCompilerArgument ?*] ;
+  @string errorMessage ;
+  [[[receiverExpression mType] mInstanceMethodMap] searchKey !mMethodName ?isCategory ?routineSignature ?* ?hasCompilerArgument ?* ?errorMessage] ;
+  if errorMessage != "" then
+    error mMethodName : errorMessage ;
+  end if ;
 #--- Check effective parameters
   @actualParameterListForGeneration actualParameterListForGeneration ;
   analyzeRoutineArguments
@@ -658,7 +662,7 @@ override method @thisMethodCallInstructionAST analyzeSemanticInstruction
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
   @bool isCategory ;
-  [[thisTypeProxy mInstanceMethodMap] searchKey !mMethodName ?isCategory ?routineSignature ?* ?hasCompilerArgument ?*] ;
+  [[thisTypeProxy mInstanceMethodMap] searchKey !mMethodName ?isCategory ?routineSignature ?* ?hasCompilerArgument ?* ?*] ;
 #--- Check effective parameters
   @actualParameterListForGeneration actualParameterListForGeneration ;
   analyzeRoutineArguments
@@ -692,7 +696,7 @@ function checkMethodImplementationInSuperClasses
     outResult := "" ;
   else
     @methodQualifier qualifier ;
-    [[inSuperClass mInstanceMethodMap] searchKey !inMethodName ?* ?* ?* ?* ?qualifier] ;
+    [[inSuperClass mInstanceMethodMap] searchKey !inMethodName ?* ?* ?* ?* ?qualifier ?*] ;
     switch qualifier
     when isAbstract :
       outResult := "" ;
@@ -726,7 +730,7 @@ override method @superMethodCallInstructionAST analyzeSemanticInstruction
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
   @bool isCategory ;
-  [[superTypeProxy mInstanceMethodMap] searchKey !mMethodName ?isCategory ?routineSignature ?* ?hasCompilerArgument ?*] ;
+  [[superTypeProxy mInstanceMethodMap] searchKey !mMethodName ?isCategory ?routineSignature ?* ?hasCompilerArgument ?* ?*] ;
 #--- Check the method is actually implemented by the super class, or by one of its super classes
   const @string superClassThatImplementsMethod := checkMethodImplementationInSuperClasses [!mMethodName !superTypeProxy] ;
   if superClassThatImplementsMethod == "" then
@@ -772,7 +776,11 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
 #--- Get modifier signature
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
-  [[receiverType mModifierMap] searchKey !mModifierName ?routineSignature ?hasCompilerArgument ?*] ;
+  @string modifierErrorMessage ;
+  [[receiverType mModifierMap] searchKey !mModifierName ?routineSignature ?hasCompilerArgument ?* ?modifierErrorMessage] ;
+  if modifierErrorMessage != "" then
+    error mModifierName : modifierErrorMessage ;
+  end if ;
 #--- Check effective parameters
   @actualParameterListForGeneration actualParameterListForGeneration ;
   analyzeRoutineArguments
@@ -812,7 +820,7 @@ override method @thisModifierCallInstructionAST analyzeSemanticInstruction
 #--- Get modifier signature
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
-  [[thisTypeProxy mModifierMap] searchKey !mModifierName ?routineSignature ?hasCompilerArgument ?*] ;
+  [[thisTypeProxy mModifierMap] searchKey !mModifierName ?routineSignature ?hasCompilerArgument ?* ?*] ;
 #--- Check effective parameters
   @actualParameterListForGeneration actualParameterListForGeneration ;
   analyzeRoutineArguments
@@ -844,7 +852,7 @@ function checkModifierImplementationInSuperClasses
     outResult := "" ;
   else
     @methodQualifier qualifier ;
-    [[inSuperClass mModifierMap] searchKey !inModifierName ?* ?* ?qualifier] ;
+    [[inSuperClass mModifierMap] searchKey !inModifierName ?* ?* ?qualifier ?*] ;
     switch qualifier
     when isAbstract :
       outResult := "" ;
@@ -879,7 +887,7 @@ override method @superModifierCallInstructionAST analyzeSemanticInstruction
 #--- Get modifier signature
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
-  [[superTypeProxy mModifierMap] searchKey !mModifierName ?routineSignature ?hasCompilerArgument ?*] ;
+  [[superTypeProxy mModifierMap] searchKey !mModifierName ?routineSignature ?hasCompilerArgument ?* ?*] ;
 #--- Check the modifier is actually implemented by the super class, or by one of its super classes
   const @string superClassThatImplementsModifier := checkModifierImplementationInSuperClasses [!mModifierName !superTypeProxy] ;
   if superClassThatImplementsModifier == "" then
