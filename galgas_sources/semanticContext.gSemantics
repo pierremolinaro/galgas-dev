@@ -147,21 +147,6 @@ struct @semanticContext {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    C O L L E C T    T Y P E S                                             *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-uniquemap @collectedTypeMap {
-  insert insertKey error message "the '%K' type has been already defined in %L" ;
-  search searchKey error message "the '%K' type is not declared" ;
-}
-
-#---------------------------------------------------------------------------*
-
-mapproxy @collectedTypeMapIndex (@collectedTypeMap) ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #    C A T E G O R Y    M E T H O D    M A P                                *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -198,17 +183,6 @@ map @categoryReaderMapForBuildingContext {
   insert insertKey error message "internal error" ;
   search searchKey error message "internal error" ;
 }
-
-#---------------------------------------------------------------------------*
-
-routine collectAttributeTypes
-  ??@attributeInCollectionListAST inAttributeList
-  ?!@collectedTypeMap ioCollectedTypeMap
-:
-  foreach inAttributeList do
-    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mAttributeTypeName string] ?*] ;
-  end foreach ;
-end routine ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -402,321 +376,6 @@ override reader @externRoutineDeclarationAST keyRepresentation
 :
   outString := "extern routine " . mRoutineName ;
 end reader ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#    C O L L E C T     T Y P E S                                            *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-method @semanticDeclarationAST collectTypes
-  ?!@collectedTypeMap unused ioCollectedTypeMap
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
-:
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @abstractCategoryMethodAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@categoryMethodMapForBuildingContext ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
-:
-  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mTypeName string] ?*] ;
-#--- Enter parameter types
-  foreach mAbstractCategoryMethodFormalParameterList do
-    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
-  end foreach ;
-#---
-  if not [ioCategoryMethodMapForBuildingContext hasKey ![mTypeName string]] then
-    [!?ioCategoryMethodMapForBuildingContext insertKey
-      !mTypeName
-      ![@categoryMethodMapForType emptyMap]
-    ] ;
-  end if ;
-  with !?ioCategoryMethodMapForBuildingContext searchKey !mTypeName do
-    [!?mCategoryMethodMapForType insertOrReplace
-      !mAbstractCategoryMethodName
-      !mAbstractCategoryMethodFormalParameterList
-    ] ;
-  end with ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @categoryMethodAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@categoryMethodMapForBuildingContext ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
-:
-  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mTypeName string] ?*] ;
-#--- Enter parameter types
-  foreach mCategoryMethodFormalParameterList do
-    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
-  end foreach ;
-#---
-  if not [ioCategoryMethodMapForBuildingContext hasKey ![mTypeName string]] then
-    [!?ioCategoryMethodMapForBuildingContext insertKey
-      !mTypeName
-      ![@categoryMethodMapForType emptyMap]
-    ] ;
-  end if ;
-  with !?ioCategoryMethodMapForBuildingContext searchKey !mTypeName do
-    [!?mCategoryMethodMapForType insertOrReplace
-      !mCategoryMethodName
-      !mCategoryMethodFormalParameterList
-    ] ;
-  end with ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @overridingCategoryMethodAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
-:
-  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mTypeName string] ?*] ;
-#--- Enter parameter types
-  foreach mOverridingCategoryMethodFormalParameterList do
-    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
-  end foreach ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @overridingAbstractCategoryMethodAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
-:
-  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mTypeName string] ?*] ;
-#--- Enter parameter types
-  foreach mOverridingCategoryMethodFormalParameterList do
-    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
-  end foreach ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @abstractCategoryReaderAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext ioCategoryReaderMapForBuildingContext
-:
-  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mAbstractCategoryReaderReturnedTypeName string] ?*] ;
-  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mTypeName string] ?*] ;
-#--- Enter parameter types
-  foreach mAbstractCategoryReaderFormalInputParameterList do
-    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
-  end foreach ;
-#---
-  if not [ioCategoryReaderMapForBuildingContext hasKey ![mTypeName string]] then
-    [!?ioCategoryReaderMapForBuildingContext insertKey
-      !mTypeName
-      ![@categoryReaderMapForType emptyMap]
-    ] ;
-  end if ;
-  with !?ioCategoryReaderMapForBuildingContext searchKey !mTypeName do
-    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mAbstractCategoryReaderReturnedTypeName string] ?*] ;
-    [!?mCategoryReaderMapForType insertOrReplace
-      !mAbstractCategoryReaderName
-      !mAbstractCategoryReaderReturnedTypeName
-      !mAbstractCategoryReaderFormalInputParameterList
-    ] ;
-  end with ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @categoryReaderAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext ioCategoryReaderMapForBuildingContext
-:
-  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mCategoryReaderReturnedTypeName string] ?*] ;
-  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mTypeName string] ?*] ;
-#--- Enter parameter types
-  foreach mCategoryReaderFormalInputParameterList do
-    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
-  end foreach ;
-#---
-  if not [ioCategoryReaderMapForBuildingContext hasKey ![mTypeName string]] then
-    [!?ioCategoryReaderMapForBuildingContext insertKey
-      !mTypeName
-      ![@categoryReaderMapForType emptyMap]
-    ] ;
-  end if ;
-  with !?ioCategoryReaderMapForBuildingContext searchKey !mTypeName do
-    [!?mCategoryReaderMapForType insertOrReplace
-      !mCategoryReaderName
-      !mCategoryReaderReturnedTypeName
-      !mCategoryReaderFormalInputParameterList
-    ] ;
-  end with ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @overridingCategoryReaderAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
-:
-  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mOverridingCategoryReaderReturnedTypeName string] ?*] ;
-  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mTypeName string] ?*] ;
-#--- Enter parameter types
-  foreach mOverridingCategoryReaderFormalInputParameterList do
-    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
-  end foreach ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @overridingAbstractCategoryReaderAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
-:
-  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mAbstractCategoryReaderReturnedTypeName string] ?*] ;
-  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mTypeName string] ?*] ;
-#--- Enter parameter types
-  foreach mAbstractCategoryReaderFormalInputParameterList do
-    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
-  end foreach ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @predefinedTypeAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
-:
-  [!?ioCollectedTypeMap insertKey ![@lstring new !mPredefinedTypeName !here]] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @mapDeclarationAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
-:
-  [!?ioCollectedTypeMap insertKey !mMapTypeName] ;
-  collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @uniqueMapDeclarationAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
-:
-  [!?ioCollectedTypeMap insertKey !mMapTypeName] ;
-  collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @mapProxyDeclarationAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
-:
-  [!?ioCollectedTypeMap insertKey !mMapProxyTypeName] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @enumDeclarationAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
-:
-  [!?ioCollectedTypeMap insertKey !mEnumTypeName] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @sortedListDeclarationAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
-:
-  [!?ioCollectedTypeMap insertKey !mSortedListTypeName] ;
-  collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @structDeclarationAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
-:
-  [!?ioCollectedTypeMap insertKey !mStructTypeName] ;
-  collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @listDeclarationAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
-:
-  [!?ioCollectedTypeMap insertKey !mListTypeName] ;
-  collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @classDeclarationAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
-:
-  [!?ioCollectedTypeMap insertKey !mClassTypeName] ;
-  if [mSuperClassName string] != "" then
-    [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mSuperClassName string] ?*] ;
-  end if ;
-  collectAttributeTypes !mAttributeList !?ioCollectedTypeMap ;
-  foreach mAbstractMethodList do
-    foreach mSignature do
-      [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
-    end foreach ;
-  end foreach ;
-  foreach mMethodList do
-    foreach mSignature do
-      [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mFormalArgumentTypeName string] ?*] ;
-    end foreach ;
-  end foreach ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @listmapDeclarationAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
-:
-  [!?ioCollectedTypeMap insertKey !mListmapTypeName] ;
-  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mAssociatedListTypeName string] ?*] ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @graphDeclarationAST collectTypes
-  ?!@collectedTypeMap ioCollectedTypeMap
-  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
-  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
-:
-  [!?ioCollectedTypeMap insertKey !mGraphTypeName] ;
-  [@collectedTypeMapIndex makeRegularProxy !?ioCollectedTypeMap ![mAssociatedListTypeName string] ?*] ;
-end method ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -2471,12 +2130,16 @@ graph @semanticTypePrecedenceGraph (@semanticDeclarationListAST) {
 
 abstract method @semanticDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext ioCategoryReaderMapForBuildingContext
 ;
 
 #---------------------------------------------------------------------------*
 
 override method @predefinedTypeAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"@" . mPredefinedTypeName !here] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2486,6 +2149,8 @@ end method ;
 
 override method @classDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"@" . mClassTypeName ![mClassTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2498,6 +2163,8 @@ end method ;
 
 override method @listDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"@" . mListTypeName ![mListTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2507,6 +2174,8 @@ end method ;
 
 override method @structDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"@" . mStructTypeName ![mStructTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2519,6 +2188,8 @@ end method ;
 
 override method @enumDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"@" . mEnumTypeName ![mEnumTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2528,6 +2199,8 @@ end method ;
 
 override method @sortedListDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"@" . mSortedListTypeName ![mSortedListTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2537,6 +2210,8 @@ end method ;
 
 override method @listmapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"@" . mListmapTypeName ![mListmapTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2547,6 +2222,8 @@ end method ;
 
 override method @mapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"@" . mMapTypeName ![mMapTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2556,6 +2233,8 @@ end method ;
 
 override method @uniqueMapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"@" . mMapTypeName ![mMapTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2565,6 +2244,8 @@ end method ;
 
 override method @mapProxyDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"@" . mMapProxyTypeName ![mMapProxyTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2575,6 +2256,8 @@ end method ;
 
 override method @graphDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"@" . mGraphTypeName ![mGraphTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2585,6 +2268,8 @@ end method ;
 
 override method @externFunctionDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"function " . mFunctionName ![mFunctionName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2594,6 +2279,8 @@ end method ;
 
 override method @onceFunctionDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"function " . mFunctionName ![mFunctionName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2603,6 +2290,8 @@ end method ;
 
 override method @externRoutineDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"routine " . mRoutineName ![mRoutineName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2612,6 +2301,8 @@ end method ;
 
 override method @filewrapperDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"filewrapper " . mFilewrapperName ![mFilewrapperName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2621,6 +2312,8 @@ end method ;
 
 override method @overridingCategoryMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"category method @" . mTypeName . " " . mOverridingCategoryMethodName ![mOverridingCategoryMethodName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2631,6 +2324,8 @@ end method ;
 
 override method @overridingAbstractCategoryReaderAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"category reader @" . mTypeName . " " . mAbstractCategoryReaderName ![mAbstractCategoryReaderName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2641,6 +2336,8 @@ end method ;
 
 override method @overridingAbstractCategoryMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"category method @" . mTypeName . " " . mOverridingCategoryMethodName ![mOverridingCategoryMethodName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2651,26 +2348,59 @@ end method ;
 
 override method @categoryReaderAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"category reader @" . mTypeName . " " . mCategoryReaderName ![mCategoryReaderName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
+#---
+  if not [ioCategoryReaderMapForBuildingContext hasKey ![mTypeName string]] then
+    [!?ioCategoryReaderMapForBuildingContext insertKey
+      !mTypeName
+      ![@categoryReaderMapForType emptyMap]
+    ] ;
+  end if ;
+  with !?ioCategoryReaderMapForBuildingContext searchKey !mTypeName do
+    [!?mCategoryReaderMapForType insertOrReplace
+      !mCategoryReaderName
+      !mCategoryReaderReturnedTypeName
+      !mCategoryReaderFormalInputParameterList
+    ] ;
+  end with ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @categoryMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"category method @" . mTypeName . " " . mCategoryMethodName ![mCategoryMethodName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
+#---
+  if not [ioCategoryMethodMapForBuildingContext hasKey ![mTypeName string]] then
+    [!?ioCategoryMethodMapForBuildingContext insertKey
+      !mTypeName
+      ![@categoryMethodMapForType emptyMap]
+    ] ;
+  end if ;
+  with !?ioCategoryMethodMapForBuildingContext searchKey !mTypeName do
+    [!?mCategoryMethodMapForType insertOrReplace
+      !mCategoryMethodName
+      !mCategoryMethodFormalParameterList
+    ] ;
+  end with ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @overridingCategoryReaderAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"category reader @" . mTypeName . " " . mOverridingCategoryReaderName ![mOverridingCategoryReaderName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2681,21 +2411,52 @@ end method ;
 
 override method @abstractCategoryReaderAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"category reader @" . mTypeName . " " . mAbstractCategoryReaderName ![mAbstractCategoryReaderName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
   [!?ioSemanticTypePrecedenceGraph noteNode ![key string]] ;
+#---
+  if not [ioCategoryReaderMapForBuildingContext hasKey ![mTypeName string]] then
+    [!?ioCategoryReaderMapForBuildingContext insertKey
+      !mTypeName
+      ![@categoryReaderMapForType emptyMap]
+    ] ;
+  end if ;
+  with !?ioCategoryReaderMapForBuildingContext searchKey !mTypeName do
+    [!?mCategoryReaderMapForType insertOrReplace
+      !mAbstractCategoryReaderName
+      !mAbstractCategoryReaderReturnedTypeName
+      !mAbstractCategoryReaderFormalInputParameterList
+    ] ;
+  end with ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @abstractCategoryMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
 :
   const @lstring key [new !"category method @" . mTypeName . " " . mAbstractCategoryMethodName ![mAbstractCategoryMethodName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
+#---
+  if not [ioCategoryMethodMapForBuildingContext hasKey ![mTypeName string]] then
+    [!?ioCategoryMethodMapForBuildingContext insertKey
+      !mTypeName
+      ![@categoryMethodMapForType emptyMap]
+    ] ;
+  end if ;
+  with !?ioCategoryMethodMapForBuildingContext searchKey !mTypeName do
+    [!?mCategoryMethodMapForType insertOrReplace
+      !mAbstractCategoryMethodName
+      !mAbstractCategoryMethodFormalParameterList
+    ] ;
+  end with ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -2710,48 +2471,26 @@ routine buildSemanticContext
   ??@location inEndOfSourceFile
   !@semanticContext outSemanticContext
 :
-#--- Collect all types, for checking there is no undefined type
-  @collectedTypeMap collectedTypeMap [emptyMap] ;
+#------ Build ordered types list, so that
+#  - a class appears after its super class
+#  - a map index appears after its associated map
+#  - a list map appears after its associated list
+  @semanticTypePrecedenceGraph semanticTypePrecedenceGraph [emptyGraph] ;
   @categoryMethodMapForBuildingContext categoryMethodMapForBuildingContext [emptyMap] ;
-  @categoryReaderMapForBuildingContext categoryReaderMapForBuildingContext [emptyMap] ;
+  @categoryReaderMapForBuildingContext categoryReaderMapForBuildingContext  [emptyMap] ;
   foreach inSemanticDeclarationList do
-    [mSemanticDeclaration collectTypes
-      !?collectedTypeMap
+    [mSemanticDeclaration enterDeclarationInGraph
+      !?semanticTypePrecedenceGraph
       !?categoryMethodMapForBuildingContext
       !?categoryReaderMapForBuildingContext
-    ] ;
+    ] ;  
   end foreach ;
-#--- Check there is no undefined type
-  @stringlist undefinedClasses := [collectedTypeMap unsolvedProxyKeyList] ;
-  if [undefinedClasses length] == 1 then
-    @string errorMessage := "there is 1 undefined type:" ;
-    foreach undefinedClasses do
-      errorMessage .= "\n-  @" . mValue ;
+  if [semanticTypePrecedenceGraph undefinedNodeCount] > 0 then
+    foreach [semanticTypePrecedenceGraph undefinedNodeReferenceList] do
+      error mValue : "the '" . mValue . "' type is not defined" ;
     end foreach ;
-    error inEndOfSourceFile : errorMessage : outSemanticContext ;
-  elsif [undefinedClasses length] > 1 then
-    @string errorMessage := "there are " . [[undefinedClasses length] string] . " undefined types:" ;
-    foreach undefinedClasses do
-      errorMessage .= "\n-  @" . mValue ;
-    end foreach ;
-    error inEndOfSourceFile : errorMessage : outSemanticContext ;
-  else # No undefined types
-  #------ Build ordered types list, so that
-  #  - a class appears after its super class
-  #  - a map index appears after its associated map
-  #  - a list map appears after its associated list
-    @semanticTypePrecedenceGraph semanticTypePrecedenceGraph [emptyGraph] ;
-    foreach inSemanticDeclarationList do
-      [mSemanticDeclaration enterDeclarationInGraph !?semanticTypePrecedenceGraph] ;  
-    end foreach ;
-    if [semanticTypePrecedenceGraph undefinedNodeCount] > 0 then
-      const @stringlist undefinedNodeList := [semanticTypePrecedenceGraph undefinedNodeKeyList] ;
-      @string s := "Internal error: undefined nodes in precedence graph:" ;
-      foreach undefinedNodeList do
-        s .= "\n  - '" . mValue . "'" ;
-      end foreach ;
-      error inEndOfSourceFile : s ;
-    end if ;
+    error inEndOfSourceFile : "semantic analysis not performed, due to undefined type error(s)" : outSemanticContext ;
+  else
     @semanticDeclarationListAST sortedSemanticDeclarationListAST ;
     @semanticDeclarationListAST unsortedSemanticDeclarationListAST ;
     @lstringlist unsortedNodeKeyList ;
@@ -2761,13 +2500,13 @@ routine buildSemanticContext
       ?unsortedSemanticDeclarationListAST
       ?unsortedNodeKeyList
     ] ;
-#    @string s := "--- Sorted declarations:\n" ;
-#    foreach sortedSemanticDeclarationListAST do
-#      [mSemanticDeclaration display !?s] ;
-#    end foreach ;
-#    message s ;
+  #    @string s := "--- Sorted declarations:\n" ;
+  #    foreach sortedSemanticDeclarationListAST do
+  #      [mSemanticDeclaration display !?s] ;
+  #    end foreach ;
+  #    message s ;
     if [unsortedSemanticDeclarationListAST length] > 0 then
-      @string s := [[unsortedSemanticDeclarationListAST length] string] . " declarations are involved in circular definition:" ;
+      @string s := "semantic analysis not performed, " . [[unsortedSemanticDeclarationListAST length] string] . " declarations are involved in circular definition:" ;
       foreach unsortedSemanticDeclarationListAST do
         s .= "\n-  " . [mSemanticDeclaration keyRepresentation] ;
       end foreach ;
@@ -2795,6 +2534,12 @@ routine buildSemanticContext
     end if ;
   end if ;
 end routine ;
+
+#---------------------------------------------------------------------------*
+
+#class @c1 extends @c2 { }
+#class @c2 extends @c3 { }
+#class @c3 extends @c1 { }
 
 #---------------------------------------------------------------------------*
 
