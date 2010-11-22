@@ -1,5 +1,6 @@
 program class_sample_language_program "version 1.0.0":
 import "class_sample_language_grammar.gGrammar" ;
+import "class_sample_language_semantics.gSemantics" ;
 
 before {
 }
@@ -7,7 +8,27 @@ before {
 when . "class_sample_language"
 message "an '.class_sample_language' source file"
 ??@lstring inSourceFile {
-  grammar class_sample_language_grammar in inSourceFile;
+#--- Build Abstract Syntax Tree
+  @declarationListAST declarationListAST ;
+  grammar class_sample_language_grammar in inSourceFile
+    ?declarationListAST
+  ;
+#--- Tri topologique
+  @inheritanceGraph inheritanceGraph [emptyGraph] ;
+  foreach declarationListAST do
+    [mDeclaration buildGraph !?inheritanceGraph] ;
+  end foreach ;
+  if [inheritanceGraph undefinedNodeCount] > 0 then    foreach [inheritanceGraph undefinedNodeReferenceList] do      error mValue : "the '" . mValue . "' class is not declared" ;    end foreach ;  else    @declarationListAST sortedDeclarationListAST ;    @lstringlist circularDefinitionClassNameList ;    [inheritanceGraph topologicalSort      ?sortedDeclarationListAST      ?*      ?*      ?circularDefinitionClassNameList    ] ;    if [circularDefinitionClassNameList length] > 0 then      foreach circularDefinitionClassNameList do
+        error mValue : "the '" . mValue . "' class is involved in a circular definition" ;
+      end foreach ;    else
+    #--- Generate code
+      @string codeToGenerate := "" ;
+      foreach sortedDeclarationListAST do
+        [mDeclaration generateCode !?codeToGenerate] ;
+      end foreach ;
+      const @string targetFile := [inSourceFile stringByDeletingPathExtension] . ".cpp" ;
+      [codeToGenerate writeToFile !targetFile] ;
+    end if ;  end if ;
 }
 
 after {

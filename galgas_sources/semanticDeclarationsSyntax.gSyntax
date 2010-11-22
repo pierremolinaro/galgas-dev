@@ -1038,14 +1038,8 @@ rule <semantic_declaration>
   $type_name$ ? @lstring associatedListTypeName ;
   $)$ ;
   ${$ ;
-  @lstringlist featureList [emptyList] ;
   @graphInsertModifierList graphInsertModifierList [emptyList] ;
   repeat
-  while
-    $feature$ ;
-    $literal_string$ ? @lstring featureName ;
-    featureList += !featureName ;
-    $;$ ;
   while
     $insert$ ;
     $identifier$ ? @lstring insertName ;
@@ -1060,7 +1054,6 @@ rule <semantic_declaration>
     !true # Is global
     !graphTypeName
     !associatedListTypeName
-    !featureList
     !graphInsertModifierList
   ] ;
 end rule ;

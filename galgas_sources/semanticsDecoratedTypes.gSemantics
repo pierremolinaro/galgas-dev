@@ -1330,7 +1330,6 @@ class @enumTypeForGeneration extends @semanticTypeForGeneration {
 
 class @graphDeclarationForGeneration extends @semanticTypeForGeneration {
   @unifiedTypeMapProxy mAssociatedListTypeProxy ;
-  @bool mHasTopologicalSort ;
   @graphInsertModifierList mInsertModifierList ;
 }
 
