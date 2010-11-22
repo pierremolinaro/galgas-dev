@@ -2122,7 +2122,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 graph @semanticTypePrecedenceGraph (@semanticDeclarationListAST) {
-  insert addNode error message "the '%K' is already declared at %L" ;
+  insert addNode error message "the '%K' type is already declared at %L" ;
   feature "topologicalSort" ;
 }
 
