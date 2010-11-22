@@ -7,7 +7,6 @@ project all_class_sample_language -> "class_sample_language" :
   feature "xcode_arch:i386" ;
 #--- Sources
   lexique "class_sample_language_lexique.gLexique" ;
-  option "class_sample_language_options.gOption" ;
   semantics "class_sample_language_semantics.gSemantics" ;
   syntax "class_sample_language_syntax.gSyntax" ;
   grammar "class_sample_language_grammar.gGrammar" ;

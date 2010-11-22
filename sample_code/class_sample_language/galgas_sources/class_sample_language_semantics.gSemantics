@@ -1,21 +1,58 @@
 semantics class_sample_language_semantics :
-  import "class_sample_language_options.gOption" ;
 
-uniquemap @classMap {
-  @classMapIndex mSuperClassIndex ;
-  insert insertKey error message "the '%K' class is already declared in %L" ;
-  search searchKey error message "the '%K' class is not declared" ;
+abstract class @declarationAST {
 }
 
-mapproxy @classMapIndex (@classMap) ;
-
-list @classesToGenerateList {
-  @string mClassName ;
-  @string mSuperClassName ;
+list @declarationListAST {
+  @declarationAST mDeclaration ;
 }
 
-graph @inheritanceGraph (@classesToGenerateList) {
-  feature "topologicalSort" ;
+class @classWithoutSuperClassAST extends @declarationAST {
+  @lstring mClassName ;
 }
+
+class @classWithSuperClassAST extends @declarationAST {
+  @lstring mClassName ;
+  @lstring mSuperClassName ;
+}
+
+
+graph @inheritanceGraph (@declarationListAST) {
+  insert addNode error message "the '%K' class is already declared" ;
+}
+
+abstract method @declarationAST buildGraph
+  ?!@inheritanceGraph ioGraph
+;
+
+override method @classWithoutSuperClassAST buildGraph
+  ?!@inheritanceGraph ioGraph
+:
+  [!?ioGraph addNode !mClassName !selfcopy] ;
+end method ;
+
+override method @classWithSuperClassAST buildGraph
+  ?!@inheritanceGraph ioGraph
+:
+  [!?ioGraph addNode !mClassName !selfcopy] ;
+  [!?ioGraph addArc  !mClassName !mSuperClassName] ;
+end method ;
+
+
+abstract method @declarationAST generateCode
+  ?!@string ioCodeToGenerate
+;
+
+override method @classWithoutSuperClassAST generateCode
+  ?!@string ioCodeToGenerate
+:
+  ioCodeToGenerate .= "class " . mClassName . " { } ;\n" ;
+end method ;
+
+override method @classWithSuperClassAST generateCode
+  ?!@string ioCodeToGenerate
+:
+  ioCodeToGenerate .= "class " . mClassName . " : " . mSuperClassName . " { } ;\n" ;
+end method ;
 
 end semantics ;

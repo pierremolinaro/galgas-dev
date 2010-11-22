@@ -10,6 +10,7 @@ ${DIR}/class_sample_language/makefile_macosx/clean.command &&
 rm -fr ${DIR}/class_sample_language/galgas_sources/GALGAS_OUTPUT &&
 cd ${DIR}/class_sample_language/project_xcode && rm -fr build
 rm -f ${DIR}/class_sample_language/samples/*.o &&
+rm -f ${DIR}/class_sample_language/samples/*.cpp &&
 #----------------- dangling_else_solution
 ${DIR}/dangling_else_solution/makefile_macosx/clean.command &&
 rm -fr ${DIR}/dangling_else_solution/galgas_sources/GALGAS_OUTPUT &&

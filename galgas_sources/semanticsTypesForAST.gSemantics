@@ -1411,7 +1411,6 @@ list @graphInsertModifierList {
 class @graphDeclarationAST extends @semanticDeclarationAST {
   @lstring mGraphTypeName ;
   @lstring mAssociatedListTypeName ;
-  @lstringlist mFeatureList ;
   @graphInsertModifierList mInsertModifierList ;
 }
 

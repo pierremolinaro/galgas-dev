@@ -1056,18 +1056,6 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-local function buildFeatureSet
-  ??@lstringlist inFeatureList
-  ->@stringset outResult
-:
-  outResult := [@stringset emptySet] ;
-  foreach inFeatureList do
-    outResult += ![mValue string] ;
-  end foreach ;
-end function ;
- 
-#---------------------------------------------------------------------------*
-
 override method @graphDeclarationAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
@@ -1088,8 +1076,6 @@ override method @graphDeclarationAST enterInSemanticContext
 #--- @lstringlist type proxy
   @unifiedTypeMapProxy lstringListTypeProxy ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"lstringlist" ?lstringListTypeProxy] ;
-#--- Build feature set
-  const @stringset featureSet := buildFeatureSet [!mFeatureList] ;
 #---
   @readerMap readerMap [emptyMap] ;
   @constructorMap constructorMap [emptyMap] ;
@@ -1097,22 +1083,20 @@ override method @graphDeclarationAST enterInSemanticContext
   @instanceMethodMap instanceMethodMap [emptyMap] ;
   @classMethodMap classMethodMap [emptyMap] ;
 #--- Method 'topologicalSort'
-  if [featureSet hasKey !"topologicalSort"] then
-    @formalParameterSignature formalParameterList [emptyList] ;
-    formalParameterList += !associatedListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
-    formalParameterList += !lstringListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
-    formalParameterList += !associatedListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
-    formalParameterList += !lstringListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
-    [!?instanceMethodMap insertKey
-      ![@lstring new !"topologicalSort" !here]
-      !false # is not a category
-      !formalParameterList
-      !here
-      !true # Has Compiler Argument
-      ![@methodQualifier isBasic]
-      !"" # No error message
-    ] ;
-  end if ;
+  @formalParameterSignature formalParameterList [emptyList] ;
+  formalParameterList += !associatedListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
+  formalParameterList += !lstringListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
+  formalParameterList += !associatedListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
+  formalParameterList += !lstringListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
+  [!?instanceMethodMap insertKey
+    ![@lstring new !"topologicalSort" !here]
+    !false # is not a category
+    !formalParameterList
+    !here
+    !true # Has Compiler Argument
+    ![@methodQualifier isBasic]
+    !"" # No error message
+  ] ;
 #--- Reader 'undefinedNodeCount'
   enterInheritedReaderWithoutArgument
     !?readerMap
@@ -1145,7 +1129,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !graphTypeProxy
   ] ;
 #--- Modifier 'enterNode'
-  @formalParameterSignature formalParameterList [emptyList] ;
+  formalParameterList := [@formalParameterSignature emptyList] ;
   formalParameterList += !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
   foreach [associatedListTypeProxy mAddAssignOperatorArguments] do
     formalParameterList += !mType ![@formalArgumentPassingModeAST argumentIn] ;
@@ -2123,7 +2107,6 @@ end method ;
 
 graph @semanticTypePrecedenceGraph (@semanticDeclarationListAST) {
   insert addNode error message "the '%K' type is already declared at %L" ;
-  feature "topologicalSort" ;
 }
 
 #---------------------------------------------------------------------------*

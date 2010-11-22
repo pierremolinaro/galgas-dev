@@ -1,82 +1,24 @@
 syntax class_sample_language_syntax ("class_sample_language_lexique.gLexique") :
 
-import "class_sample_language_options.gOption" ;
 import "class_sample_language_semantics.gSemantics" ;
 
-nonterminal <start_symbol> ;
+nonterminal <start_symbol> !@declarationListAST outDeclarationListAST ;
 
-rule <start_symbol> :
-  @classMap classMap [emptyMap] ;
+rule <start_symbol> !@declarationListAST outDeclarationListAST :
+  outDeclarationListAST := [@declarationListAST emptyList] ;
   repeat
   while
     $class$ ;
-    @lstring className ;
-    $identifier$ ? className ;
-    @lstring superClassName ;
-    @classMapIndex superClassIndex ;
+    $identifier$ ? @lstring className ;
     select
-      superClassName := [@lstring new !"" !here] ;
-      superClassIndex := [@classMapIndex null] ;
+      outDeclarationListAST += ![@classWithoutSuperClassAST new !className] ;
     or
       $:$ ;
-      $identifier$ ? superClassName ;
-      [@classMapIndex makeRegularProxy !?classMap ![superClassName string] ?superClassIndex] ;
+      $identifier$ ? @lstring superClassName ;
+      outDeclarationListAST += ![@classWithSuperClassAST new !className !superClassName] ;
     end select ;
-    [!?classMap insertKey !className !superClassIndex] ;
     $;$ ;
   end repeat ;
-#--- Check all classes are defined
-  @uint undefinedClassCount := [classMap unsolvedProxyCount] ;
-  if undefinedClassCount == 1 then
-    @string s := "1 class is undefined:" ;
-    @stringlist undefinedClasses := [classMap unsolvedProxyKeyList] ;
-    foreach undefinedClasses (@string kClassName) do
-      s.= "\n- " . kClassName ;
-    end foreach ;
-    error here: s ;
-  elsif undefinedClassCount > 1 then
-    @string s := [undefinedClassCount string] . " classes are undefined:" ;
-    @stringlist undefinedClasses := [classMap unsolvedProxyKeyList] ;
-    foreach undefinedClasses (@string kClassName) do
-      s.= "\n- " . kClassName ;
-    end foreach ;
-    error here: s ;
-  else
-  #--- Check for no circularity and build list of classes to generate
-    @inheritanceGraph inheritanceGraph [emptyGraph] ;
-    foreach classMap do
-      const @string superClassName := if [mSuperClassIndex isNull] then "" else [mSuperClassIndex key] end ;
-      [!?inheritanceGraph addNode ![lkey string] ![lkey string] !superClassName] ;
-      if superClassName != "" then
-        [!?inheritanceGraph addArc ![lkey string] !superClassName] ;
-      end if ;
-    end foreach ;
-    @classesToGenerateList sortedClassList ;
-    @classesToGenerateList unsortedClassList ;
-    [inheritanceGraph topologicalSort ?sortedClassList ?* ?unsortedClassList ?*] ;
-    if [unsortedClassList length] > 0 then
-      @string s := [[unsortedClassList length] string] . " classes are involved in a circular inheritance:" ;
-      foreach unsortedClassList do
-        s .= "\n  - '" . mClassName . "', that inherits from '" . mSuperClassName . "'" ;
-      end foreach ;
-      error here : s ;
-    end if ;
-    @string codeToGenerate := "" ;
-    foreach sortedClassList do
-      codeToGenerate .= "class " ;
-      codeToGenerate .= mClassName ;
-      if mSuperClassName != "" then
-        codeToGenerate .= " : " ;
-        codeToGenerate .= mSuperClassName ;
-      end if ;
-      codeToGenerate .= " { } ;\n" ;
-    end foreach ;
-    if [@uint errorCount] == 0 then
-      @string targetFile [stringWithSourceFilePath] ;
-      targetFile .= ".cpp" ;
-      [codeToGenerate writeToFile !targetFile] ;
-    end if ;
-  end if ;
 end rule ;
 
 end syntax ;
