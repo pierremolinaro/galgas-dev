@@ -542,15 +542,14 @@ routine analyzeConstructorInvocation
     . [[constructorFormalArgumentTypeList length] string] . " parameter(s), while this call has "
     . [[inConstuctorEffectiveParameterExpressions length] string] . " parameter(s)" 
     : outConstructorEffectiveParameterList ;
-  else
-    outConstructorEffectiveParameterList := [@semanticExpressionListForGeneration emptyList] ;
-    foreach inConstuctorEffectiveParameterExpressions, constructorFormalArgumentTypeList do
-      @semanticExpressionForGeneration exp ;
-      [mExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?exp] ;
-      checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
-      outConstructorEffectiveParameterList += !exp ;
-    end foreach ;
   end if ;
+  outConstructorEffectiveParameterList := [@semanticExpressionListForGeneration emptyList] ;
+  foreach inConstuctorEffectiveParameterExpressions, constructorFormalArgumentTypeList do
+    @semanticExpressionForGeneration exp ;
+    [mExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?exp] ;
+    checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
+    outConstructorEffectiveParameterList += !exp ;
+  end foreach ;
 end routine ;
 
 #---------------------------------------------------------------------------*

@@ -119,6 +119,16 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+override method @locationPredefinedTypeAST getConstructorMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@constructorMap outMap
+:
+  outMap := [@constructorMap emptyMap] ;
+  enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"nowhere" !"location" !false ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @stringPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
