@@ -540,8 +540,7 @@ routine analyzeConstructorInvocation
     error inConstructorName
     : "calling the '" . inConstructorName . "' constructor of '@" . inTypeName . "' requires "
     . [[constructorFormalArgumentTypeList length] string] . " parameter(s), while this call has "
-    . [[inConstuctorEffectiveParameterExpressions length] string] . " parameter(s)" 
-    : outConstructorEffectiveParameterList ;
+    . [[inConstuctorEffectiveParameterExpressions length] string] . " parameter(s)" ;
   end if ;
   outConstructorEffectiveParameterList := [@semanticExpressionListForGeneration emptyList] ;
   foreach inConstuctorEffectiveParameterExpressions, constructorFormalArgumentTypeList do
