@@ -13,14 +13,31 @@ message "an '.class_sample_language' source file"
   grammar class_sample_language_grammar in inSourceFile
     ?declarationListAST
   ;
-#--- Tri topologique
+#--- Build dependence graph
   @inheritanceGraph inheritanceGraph [emptyGraph] ;
   foreach declarationListAST do
     [mDeclaration buildGraph !?inheritanceGraph] ;
   end foreach ;
-  if [inheritanceGraph undefinedNodeCount] > 0 then    foreach [inheritanceGraph undefinedNodeReferenceList] do      error mValue : "the '" . mValue . "' class is not declared" ;    end foreach ;  else    @declarationListAST sortedDeclarationListAST ;    @lstringlist circularDefinitionClassNameList ;    [inheritanceGraph topologicalSort      ?sortedDeclarationListAST      ?*      ?*      ?circularDefinitionClassNameList    ] ;    if [circularDefinitionClassNameList length] > 0 then      foreach circularDefinitionClassNameList do
+#--- Undefined classes ?
+  if [inheritanceGraph undefinedNodeCount] > 0 then
+    foreach [inheritanceGraph undefinedNodeReferenceList] do
+      error mValue : "the '" . mValue . "' class is not declared" ;
+    end foreach ;
+  else
+  #--- Topologic sort
+    @declarationListAST sortedDeclarationListAST ;
+    @lstringlist circularDefinitionClassNameList ;
+    [inheritanceGraph topologicalSort
+      ?sortedDeclarationListAST
+      ?*
+      ?*
+      ?circularDefinitionClassNameList
+    ] ;
+    if [circularDefinitionClassNameList length] > 0 then
+      foreach circularDefinitionClassNameList do
         error mValue : "the '" . mValue . "' class is involved in a circular definition" ;
-      end foreach ;    else
+      end foreach ;
+    else
     #--- Generate code
       @string codeToGenerate := "" ;
       foreach sortedDeclarationListAST do
@@ -28,7 +45,8 @@ message "an '.class_sample_language' source file"
       end foreach ;
       const @string targetFile := [inSourceFile stringByDeletingPathExtension] . ".cpp" ;
       [codeToGenerate writeToFile !targetFile] ;
-    end if ;  end if ;
+    end if ;
+  end if ;
 }
 
 after {

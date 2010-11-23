@@ -730,30 +730,30 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
   @modifierMap modifierMap [emptyMap] ;
   @instanceMethodMap instanceMethodMap [emptyMap] ;
   @enumerationDescriptorList enumerationDescriptor [listWithValue !lstringTypeIndex !"lkey"] ;
-#--- modifier 'insertFakeKey'
-  @unifiedTypeMapProxy locationTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"location" ?locationTypeIndex] ;
-  @formalParameterSignature insertFakeKeyFormalArgumentList [emptyList] ;
-  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Key
-  insertFakeKeyFormalArgumentList += !locationTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Error location
-  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Error Message
-  [!?modifierMap insertKey
-    ![@lstring new !"insertFakeKey" !here]
-    !insertFakeKeyFormalArgumentList
-    !true
-    ![@methodQualifier isInherited]
-    !"" # No error message
-  ] ;
-#--- modifier 'insertSilentFakeKey'
-  insertFakeKeyFormalArgumentList := [@formalParameterSignature emptyList] ;
-  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Key
-  [!?modifierMap insertKey
-    ![@lstring new !"insertSilentFakeKey" !here]
-    !insertFakeKeyFormalArgumentList
-    !true
-    ![@methodQualifier isInherited]
-    !"" # No error message
-  ] ;
+##--- modifier 'insertFakeKey'
+#  @unifiedTypeMapProxy locationTypeIndex ;
+#  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"location" ?locationTypeIndex] ;
+#  @formalParameterSignature insertFakeKeyFormalArgumentList [emptyList] ;
+#  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Key
+#  insertFakeKeyFormalArgumentList += !locationTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Error location
+#  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Error Message
+#  [!?modifierMap insertKey
+#    ![@lstring new !"insertFakeKey" !here]
+#    !insertFakeKeyFormalArgumentList
+#    !true
+#    ![@methodQualifier isInherited]
+#    !"" # No error message
+#  ] ;
+##--- modifier 'insertSilentFakeKey'
+#  insertFakeKeyFormalArgumentList := [@formalParameterSignature emptyList] ;
+#  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Key
+#  [!?modifierMap insertKey
+#    ![@lstring new !"insertSilentFakeKey" !here]
+#    !insertFakeKeyFormalArgumentList
+#    !true
+#    ![@methodQualifier isInherited]
+#    !"" # No error message
+#  ] ;
 #--- Constructors
   enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"emptyMap" ![mMapTypeName string] !false ;
 #--- Readers
@@ -998,7 +998,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ] ;
   end foreach ;
 #--- readers
-  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"isSolved" !"bool" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"isSolved" !"bool" !true ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"isNull" !"bool" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"isRegular" !"bool" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"lkey" !"lstring" !true ;
@@ -1156,7 +1156,7 @@ override method @graphDeclarationAST enterInSemanticContext
   ] ;
 #--- Modifier 'noteNode'
   formalParameterList := [@formalParameterSignature emptyList] ;
-  formalParameterList += !stringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
+  formalParameterList += !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
   [!?modifierMap insertKey
     ![@lstring new !"noteNode" !here]
     !formalParameterList
@@ -2151,6 +2151,9 @@ override method @listDeclarationAST enterDeclarationInGraph
 :
   const @lstring key [new !"@" . mListTypeName ![mListTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+  foreach mAttributeList do
+    [!?ioSemanticTypePrecedenceGraph noteNode ![@lstring new !"@" . mAttributeTypeName ![mAttributeTypeName location]]] ;
+  end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -2187,6 +2190,9 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
 :
   const @lstring key [new !"@" . mSortedListTypeName ![mSortedListTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+  foreach mAttributeList do
+    [!?ioSemanticTypePrecedenceGraph noteNode ![@lstring new !"@" . mAttributeTypeName ![mAttributeTypeName location]]] ;
+  end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -2210,6 +2216,9 @@ override method @mapDeclarationAST enterDeclarationInGraph
 :
   const @lstring key [new !"@" . mMapTypeName ![mMapTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+  foreach mAttributeList do
+    [!?ioSemanticTypePrecedenceGraph noteNode ![@lstring new !"@" . mAttributeTypeName ![mAttributeTypeName location]]] ;
+  end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -2221,6 +2230,9 @@ override method @uniqueMapDeclarationAST enterDeclarationInGraph
 :
   const @lstring key [new !"@" . mMapTypeName ![mMapTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+  foreach mAttributeList do
+    [!?ioSemanticTypePrecedenceGraph noteNode ![@lstring new !"@" . mAttributeTypeName ![mAttributeTypeName location]]] ;
+  end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -2400,7 +2412,6 @@ override method @abstractCategoryReaderAST enterDeclarationInGraph
   const @lstring key [new !"category reader @" . mTypeName . " " . mAbstractCategoryReaderName ![mAbstractCategoryReaderName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
-  [!?ioSemanticTypePrecedenceGraph noteNode ![key string]] ;
 #---
   if not [ioCategoryReaderMapForBuildingContext hasKey ![mTypeName string]] then
     [!?ioCategoryReaderMapForBuildingContext insertKey

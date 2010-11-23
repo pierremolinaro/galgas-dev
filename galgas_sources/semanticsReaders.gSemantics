@@ -384,10 +384,11 @@ override method @locationPredefinedTypeAST getReaderMap
   !@readerMap outMap
 :
   commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
-  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"locationString" !"string" !false ;
-  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"locationIndex" !"uint" !false ;
-  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"line" !"uint" !false ;
-  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"column" !"uint" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"locationString" !"string" !true ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"locationIndex" !"uint" !true ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"line" !"uint" !true ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"column" !"uint" !true ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"isNowhere" !"bool" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -397,6 +398,7 @@ override method @stringPredefinedTypeAST getReaderMap
   !@readerMap outMap
 :
   commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"nowhere" !"lstring" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"doesEnvironmentVariableExist" !"bool" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"length" !"uint" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"identifierRepresentation" !"string" !false ;
