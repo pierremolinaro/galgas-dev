@@ -1,9 +1,9 @@
 #!/bin/sh
 set -x
 DIR=`dirname $0` &&
-#----------------- Pascal
-galgas -v --Werror ${DIR}/pascal/galgas_sources/all_pascal.gProject &&
-${DIR}/pascal/makefile_macosx/build.command &&
+#----------------- LBB
+galgas -v --Werror ${DIR}/lbb/galgas_sources/all_lbb.gProject &&
+${DIR}/lbb/makefile_macosx/build.command &&
 #----------------- class_sample_language
 galgas -v --Werror ${DIR}/class_sample_language/galgas_sources/all_class_sample_language.gProject &&
 ${DIR}/class_sample_language/makefile_macosx/build.command &&
