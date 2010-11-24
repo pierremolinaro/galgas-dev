@@ -1,6 +1,12 @@
 #!/bin/sh
 set -x
 DIR=`dirname $0` &&
+#----------------- Assignment language
+galgas -v --Werror ${DIR}/assignment_language/galgas_sources/all_assignment_language.gProject &&
+${DIR}/assignment_language/makefile_macosx/build.command &&
+${DIR}/assignment_language/makefile_macosx/asl -v ${DIR}/assignment_language/example.assignment_language &&
+gcc ${DIR}/assignment_language/example.c -o ${DIR}/assignment_language/example &&
+${DIR}/assignment_language/example &&
 #----------------- LBB
 galgas -v --Werror ${DIR}/lbb/galgas_sources/all_lbb.gProject &&
 ${DIR}/lbb/makefile_macosx/build.command &&

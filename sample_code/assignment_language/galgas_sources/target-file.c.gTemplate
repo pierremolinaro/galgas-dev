@@ -1,0 +1,9 @@
+#include <stdio.h>
+
+int main (void) {
+%
+foreach INSTRUCTION_LIST do
+  %  %![mInstruction generateCcode]% ;\n%
+end foreach
+%  return 0 ;
+}

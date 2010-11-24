@@ -1,0 +1,54 @@
+lexique assignment_language_lexique :
+
+@string identifierString ;
+@string tokenString ;
+
+style keywordsStyle -> "Keywords" ;
+style delimitersStyle -> "Delimiters" ;
+
+# -------------------------- identifier or key word --------------------
+# keywords can be written in lower or upper case
+# for identifiers, case is significant
+
+$identifier$ ! tokenString error message "an identifier" ;
+
+list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
+  "int", "print",
+  "end" ;
+
+rule 'a'->'z' |  'A'->'Z' :
+  repeat
+    enterCharacterIntoString !?identifierString !toLower (!*) ;
+    enterCharacterIntoString !?tokenString !* ;
+  while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+  end repeat ;
+  send search identifierString in galgasKeyWordList default $identifier$ ;
+end rule ;
+
+# ----------------------------- Delimitors ---------------------------------------
+list delimitorsList error message "the '%K' delimitor" style delimitersStyle :
+  "*", "+", "(", ")",
+  ";", ":=" ;
+
+rule list delimitorsList ;
+
+style integerStyle -> "Integer Constants" ;
+@uint uint32value ;
+$unsigned_literal_integer$ !uint32value error message "a 32-bit unsigned decimal number" style integerStyle ;
+message decimalNumberTooLarge : "decimal number too large" ;
+message characterIsNotDecimalDigitError : "internal error" ;
+
+rule '0'->'9' :
+  enterDigitIntoUInt !* !?uint32value error decimalNumberTooLarge, characterIsNotDecimalDigitError ;
+  repeat
+  while '0'->'9' :
+    enterDigitIntoUInt !* !?uint32value error decimalNumberTooLarge, characterIsNotDecimalDigitError ;
+  end repeat ;
+  send $unsigned_literal_integer$ ;
+end rule ;
+
+# --------------------- separators -----------------------------------------
+rule '\u0001' -> ' ' :
+end rule ;
+
+end lexique ;

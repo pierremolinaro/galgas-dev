@@ -1,0 +1,36 @@
+program assignment_language_program "version 1.0.0":
+  import "typesForAST.gSemantics" ;
+  import "decoratedAST.gSemantics" ;
+  import "assignment_language_grammar.gGrammar" ;
+  import "codeGeneration.gSemantics" ;
+
+#--- Prologue routine
+before {
+}
+
+#--- 'when' clauses
+when . "assignment_language"
+message "a source text file with the .assignment_language extension"
+??@lstring inSourceFile {
+  @programAST programAST ;
+  grammar assignment_language_grammar in inSourceFile ?programAST ;
+#--- Semantic analysis
+  @variableMap variableMap [emptyMap] ;
+  @instructionListForGeneration instructionListForGeneration [emptyList] ;
+  foreach [programAST mProgramInstructionList] do
+    [mInstruction semanticAnalysis !?variableMap !?instructionListForGeneration] ;
+  end foreach ;
+#--- Code generation
+  generateCfile
+    ![inSourceFile stringByDeletingPathExtension] . ".c"
+    !instructionListForGeneration
+  ;
+}
+
+#--- Epilogue routine
+after {
+}
+
+#---
+
+end program ;

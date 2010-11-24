@@ -1,0 +1,10 @@
+gui assignment_language_cocoa "cocoa" :
+
+with option "assignment_language_options.gOption" ;
+
+with lexique "assignment_language_lexique.gLexique" {
+  fileExtension: "assignment_language" ;
+  title: "Source" ;
+}
+
+end gui ;
