@@ -1,0 +1,45 @@
+syntax lbb_syntax ("lbb_lexique.gLexique") :
+import "lbb_semantics.gSemantics" ;
+
+
+rule <start_symbol> !@programAST outProgramAST :
+  @boxTypeListAST boxTypeListAST [emptyList] ;
+  @boxInstanceListAST boxInstanceListAST [emptyList ] ;
+  repeat
+  while
+    $identifier$ ? @lstring boxTypeName ;
+    $identifier$ ? @lstring boxInstanceName ;
+    ${$ ;
+    @connectionlistAST connectionList [emptyList] ;
+    repeat
+      $identifier$ ? @lstring boxInstanceName ;
+      $.$ ;
+      $identifier$ ? @lstring portName ;
+      connectionList += !boxInstanceName !portName ;
+    while
+      $,$ ;
+    end repeat ;
+    $}$ ;
+    boxInstanceListAST += !boxTypeName !boxInstanceName !connectionList ;
+  while
+    $type$ ;
+    $identifier$ ? @lstring boxTypeName ;
+    $=$ ;
+    @lstringlist portNameList [emptyList] ;
+    repeat
+      $identifier$ ? @lstring portName ;
+      portNameList += !portName ;
+    while
+      $,$ ;
+    end repeat ;
+    $;$ ;
+    boxTypeListAST += !boxTypeName !portNameList ;
+  end repeat ;
+  outProgramAST := [@programAST new
+    !boxTypeListAST
+    !boxInstanceListAST
+    !here
+  ] ;
+end rule ;
+
+end syntax ;

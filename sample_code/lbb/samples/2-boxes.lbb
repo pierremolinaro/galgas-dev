@@ -1,0 +1,8 @@
+type tb = x, y ;
+
+tb A {B.x, C.y}
+
+tb B {A.x, A.y}
+
+
+

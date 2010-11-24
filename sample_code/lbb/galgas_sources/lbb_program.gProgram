@@ -1,0 +1,69 @@
+program lbb_program "version 1.0.0":
+import "lbb_semantics.gSemantics" ;
+import "lbb_grammar.gGrammar" ;
+
+#--- Prologue routine
+before {
+}
+
+#--- 'when' clauses
+when . "lbb"
+message "a source text file with the .lbb extension"
+??@lstring inSourceFile {
+#--- Build AST
+  @programAST programAST ;
+  grammar lbb_grammar in inSourceFile ?programAST ;
+#--- Build box type map
+  @boxTypeMap boxTypeMap [emptyMap] ;
+  foreach [programAST mBoxTypeListAST] do
+    @stringset portStringSet [emptySet] ;
+    foreach mPortNameList do
+      if [portStringSet hasKey !mValue->string] then
+        error mValue : "the '" . mValue . "' port is already declared" ;
+      end if ;
+      portStringSet += !mValue->string ;
+    end foreach ;
+    [!?boxTypeMap insertKey !mBoxTypeName !mPortNameList] ;
+  end foreach ;
+#--- Analyze box connections
+  @boxInstanceMap boxInstanceMap [emptyMap] ;
+  foreach [programAST mBoxInstanceListAST] do
+    @lstringlist portNameList ;
+    [boxTypeMap searchKey !mBoxTypeName ?portNameList] ;
+    if [portNameList length] != [mConnectionList length] then
+      error mBoxInstanceName: "this instance names " . [mConnectionList length]
+      . " connection(s), although the '" . mBoxTypeName . "' type declares "
+      . [portNameList length] . " ports" ;
+    end if ;
+    @connectionMap connectionMap [emptyMap] ;
+    foreach portNameList, mConnectionList do
+      @boxInstanceProxy connectedBoxProxy ;
+      [@boxInstanceProxy makeRegularProxy !?boxInstanceMap !mConnectedBoxName->string ?connectedBoxProxy] ;
+      if [connectedBoxProxy isSolved] then
+        @connectionMap oppositeConnectionMap := [connectedBoxProxy mConnectionMap] ;
+        @boxInstanceProxy me ;
+        @lstring myPortName ;
+        [oppositeConnectionMap searchKey !mOppositePortName ?me ?myPortName] ;
+        if [me key] != mBoxInstanceName->string then
+          error mConnectedBoxName : "the opposite connection does not name this box, but '" . [me key] . "' box" ;
+        elsif mValue->string != myPortName->string then
+          error myPortName : "the opposite connection does not name this port" ;
+        end if ;
+      end if ;
+      [!?connectionMap insertKey !mValue !connectedBoxProxy !mOppositePortName] ;
+    end foreach ;
+    [!?boxInstanceMap insertKey !mBoxInstanceName !connectionMap] ;
+  end foreach ;
+#--- Raise an error for every undefined box
+  foreach [boxInstanceMap unsolvedProxyKeyList] do
+    error [programAST mEndOfSourceLine] : "the '" . mValue . "' box is not defined" ;
+  end foreach ;
+}
+
+#--- Epilogue routine
+after {
+}
+
+#---
+
+end program ;
