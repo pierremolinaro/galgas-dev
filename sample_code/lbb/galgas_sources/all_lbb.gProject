@@ -1,0 +1,16 @@
+project all_lbb -> "lbb":
+#--- Targets
+  feature "makefile_macosx" ;
+  feature "makefile_unix" ;
+  feature "makefile_msys_on_win32" ;
+  feature "project_xcode" ;
+  feature "xcode_arch:i386" ;
+
+#--- Source files (relative path from 'galgas_sources' directory)
+  lexique "lbb_lexique.gLexique" ;
+  semantics "lbb_semantics.gSemantics" ;
+  syntax "lbb_syntax.gSyntax" ;
+  grammar "lbb_grammar.gGrammar" ;
+  gui "lbb_cocoa.gGui" ;
+  program "lbb_program.gProgram" ;
+end project ;

@@ -1,0 +1,8 @@
+gui lbb_cocoa "cocoa" :
+
+with lexique "lbb_lexique.gLexique" {
+  fileExtension: "lbb" ;
+  title: "Source" ;
+}
+
+end gui ;

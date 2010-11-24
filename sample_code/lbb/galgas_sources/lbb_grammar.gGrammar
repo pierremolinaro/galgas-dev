@@ -1,0 +1,6 @@
+grammar lbb_grammar "LL1":
+with "lbb_syntax.gSyntax" ;
+
+root <start_symbol> !@programAST outProgramAST ;
+
+end grammar ;
