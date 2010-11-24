@@ -1,0 +1,6 @@
+grammar assignment_language_grammar "LL1":
+with "assignment_language_syntax.gSyntax" ;
+
+root <start_symbol> !@programAST programAST ;
+
+end grammar ;

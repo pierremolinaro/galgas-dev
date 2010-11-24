@@ -2115,6 +2115,7 @@ abstract method @semanticDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
 ;
 
 #---------------------------------------------------------------------------*
@@ -2123,6 +2124,7 @@ override method @predefinedTypeAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mPredefinedTypeName !here] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2134,6 +2136,7 @@ override method @classDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mClassTypeName ![mClassTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2148,6 +2151,7 @@ override method @listDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mListTypeName ![mListTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2162,6 +2166,7 @@ override method @structDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mStructTypeName ![mStructTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2176,6 +2181,7 @@ override method @enumDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mEnumTypeName ![mEnumTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2187,6 +2193,7 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mSortedListTypeName ![mSortedListTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2201,6 +2208,7 @@ override method @listmapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mListmapTypeName ![mListmapTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2213,6 +2221,7 @@ override method @mapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mMapTypeName ![mMapTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2227,6 +2236,7 @@ override method @uniqueMapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mMapTypeName ![mMapTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2241,6 +2251,7 @@ override method @mapProxyDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mMapProxyTypeName ![mMapProxyTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2253,6 +2264,7 @@ override method @graphDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mGraphTypeName ![mGraphTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2262,81 +2274,87 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @externFunctionDeclarationAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"function " . mFunctionName ![mFunctionName location]] ;
-  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+  ioCategoryOverrideDefinitionList += !selfcopy ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @onceFunctionDeclarationAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"function " . mFunctionName ![mFunctionName location]] ;
-  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+  ioCategoryOverrideDefinitionList += !selfcopy ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @externRoutineDeclarationAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"routine " . mRoutineName ![mRoutineName location]] ;
-  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+  ioCategoryOverrideDefinitionList += !selfcopy ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @filewrapperDeclarationAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"filewrapper " . mFilewrapperName ![mFilewrapperName location]] ;
-  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+  ioCategoryOverrideDefinitionList += !selfcopy ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @overridingCategoryMethodAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"category method @" . mTypeName . " " . mOverridingCategoryMethodName ![mOverridingCategoryMethodName location]] ;
-  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
+#  const @lstring key [new !"category method @" . mTypeName . " " . mOverridingCategoryMethodName ![mOverridingCategoryMethodName location]] ;
+#  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+#  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
+  ioCategoryOverrideDefinitionList += !selfcopy ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @overridingAbstractCategoryReaderAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"category reader @" . mTypeName . " " . mAbstractCategoryReaderName ![mAbstractCategoryReaderName location]] ;
-  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
+#  const @lstring key [new !"category reader @" . mTypeName . " " . mAbstractCategoryReaderName ![mAbstractCategoryReaderName location]] ;
+#  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+#  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
+  ioCategoryOverrideDefinitionList += !selfcopy ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @overridingAbstractCategoryMethodAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"category method @" . mTypeName . " " . mOverridingCategoryMethodName ![mOverridingCategoryMethodName location]] ;
-  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
+#  const @lstring key [new !"category method @" . mTypeName . " " . mOverridingCategoryMethodName ![mOverridingCategoryMethodName location]] ;
+#  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+#  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
+  ioCategoryOverrideDefinitionList += !selfcopy ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -2345,6 +2363,7 @@ override method @categoryReaderAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"category reader @" . mTypeName . " " . mCategoryReaderName ![mCategoryReaderName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2371,6 +2390,7 @@ override method @categoryMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"category method @" . mTypeName . " " . mCategoryMethodName ![mCategoryMethodName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2393,13 +2413,15 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @overridingCategoryReaderAST enterDeclarationInGraph
-  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
 :
-  const @lstring key [new !"category reader @" . mTypeName . " " . mOverridingCategoryReaderName ![mOverridingCategoryReaderName location]] ;
-  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
+#  const @lstring key [new !"category reader @" . mTypeName . " " . mOverridingCategoryReaderName ![mOverridingCategoryReaderName location]] ;
+#  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+#  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
+  ioCategoryOverrideDefinitionList += !selfcopy ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -2408,6 +2430,7 @@ override method @abstractCategoryReaderAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"category reader @" . mTypeName . " " . mAbstractCategoryReaderName ![mAbstractCategoryReaderName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2434,6 +2457,7 @@ override method @abstractCategoryMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"category method @" . mTypeName . " " . mAbstractCategoryMethodName ![mAbstractCategoryMethodName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
@@ -2472,11 +2496,13 @@ routine buildSemanticContext
   @semanticTypePrecedenceGraph semanticTypePrecedenceGraph [emptyGraph] ;
   @categoryMethodMapForBuildingContext categoryMethodMapForBuildingContext [emptyMap] ;
   @categoryReaderMapForBuildingContext categoryReaderMapForBuildingContext  [emptyMap] ;
+  @semanticDeclarationListAST categoryOverrideDefinitionList [emptyList] ;
   foreach inSemanticDeclarationList do
     [mSemanticDeclaration enterDeclarationInGraph
       !?semanticTypePrecedenceGraph
       !?categoryMethodMapForBuildingContext
       !?categoryReaderMapForBuildingContext
+      !?categoryOverrideDefinitionList
     ] ;  
   end foreach ;
   if [semanticTypePrecedenceGraph undefinedNodeCount] > 0 then
@@ -2506,7 +2532,8 @@ routine buildSemanticContext
       end foreach ;
       error inEndOfSourceFile : s : outSemanticContext ;
     else
-  #---
+    #--- Add category override
+      sortedSemanticDeclarationListAST .= categoryOverrideDefinitionList ;
     #--- Build initial semantic context
       outSemanticContext := [@semanticContext new
         !inSourceFile

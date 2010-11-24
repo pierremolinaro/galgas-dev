@@ -1,0 +1,91 @@
+semantics codeGeneration :
+  import "assignment_language_options.gOption" ;
+  import "decoratedAST.gSemantics" ;
+
+#---------------------------------------------------------------------------*
+
+routine generateCfile
+  ??@string inTargetFilePath
+  ??@instructionListForGeneration inInstructionListForGeneration
+:
+  if [@uint errorCount] == 0 then
+    @string generatedCode := [filewrapper cCodeGeneration.cCodeFile !inInstructionListForGeneration] ;
+    [generatedCode writeToFileWhenDifferentContents !inTargetFilePath ?*] ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+local filewrapper cCodeGeneration in "." {
+} {
+  template cCodeFile "target-file.c.gTemplate"
+    ?@instructionListForGeneration INSTRUCTION_LIST
+  ;
+}
+
+#---------------------------------------------------------------------------*
+
+abstract reader @instructionForGeneration generateCcode -> @string outGeneratedCode ;
+
+#---------------------------------------------------------------------------*
+
+override reader @assignmentForGeneration generateCcode
+  -> @string outGeneratedCode
+:
+  outGeneratedCode := mTargetVarCppName . " = " . [mSourceExpression generateExpCode] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @varDeclarationForGeneration generateCcode
+  -> @string outGeneratedCode
+:
+  outGeneratedCode := "int " . mVarCppName ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @printVariableForGeneration generateCcode
+  -> @string outGeneratedCode
+:
+  outGeneratedCode := "printf (\"" . mSourceName . ": %d\\n\", " . mVarCppName . ")" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+abstract reader @expressionForGeneration generateExpCode
+  -> @string outGeneratedCode
+;
+
+#---------------------------------------------------------------------------*
+
+override reader @varInExpressionForGeneration generateExpCode
+  -> @string outGeneratedCode
+:
+  outGeneratedCode := mVarCppName ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @cstInExpressionForGeneration generateExpCode
+  -> @string outGeneratedCode
+:
+  outGeneratedCode := [mConstantValue string] ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @diadicForGeneration generateExpCode
+  -> @string outGeneratedCode
+:
+  outGeneratedCode := "(" . [mLeftExpression generateExpCode] . ")" ;
+  switch mOperation
+  when addition : outGeneratedCode .= " + " ;
+  when multiplication : outGeneratedCode .= " * " ;
+  end switch ;
+  outGeneratedCode .= "(" . [mRightExpression generateExpCode] . ")" ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;
