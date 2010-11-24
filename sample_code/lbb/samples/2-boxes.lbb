@@ -1,6 +1,6 @@
 type tb = x, y ;
 
-tb A {B.x, C.y}
+tb A {B.x, B.y}
 
 tb B {A.x, A.y}
 

@@ -120,6 +120,25 @@ int mainForLIBPM  (const int argc, const char * argv []) {
       }
     //--- Epilogue
       routine_after (commonLexique COMMA_HERE) ;
+    //--- Display error and warnings count
+      if (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue || (commonLexique->totalWarningCount () > 0) || (commonLexique->totalErrorCount () > 0)) {
+        if (commonLexique->totalWarningCount () == 0) {
+          printf ("No warning") ;
+        }else if (commonLexique->totalWarningCount () == 1) {
+          printf ("1 warning") ;
+        }else{
+          printf ("\%u warnings", commonLexique->totalWarningCount ()) ;
+        }
+        printf (", ") ;
+        if (commonLexique->totalErrorCount () == 0) {
+          printf ("no error") ;
+        }else if (commonLexique->totalErrorCount () == 1) {
+          printf ("1 error") ;
+        }else{
+          printf ("\%u errors", commonLexique->totalErrorCount ()) ;
+        }
+        printf (".\\n") ;
+      }
     }catch (const M_STD_NAMESPACE exception & e) {
       F_default_display_exception (e) ;
       returnCode = 1 ; // Error code

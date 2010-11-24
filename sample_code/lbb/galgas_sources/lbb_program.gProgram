@@ -41,11 +41,11 @@ message "a source text file with the .lbb extension"
       [@boxInstanceProxy makeRegularProxy !?boxInstanceMap !mConnectedBoxName->string ?connectedBoxProxy] ;
       if [connectedBoxProxy isSolved] then
         @connectionMap oppositeConnectionMap := [connectedBoxProxy mConnectionMap] ;
-        @boxInstanceProxy me ;
+        @boxInstanceProxy oppositeOfOppositeBox ;
         @lstring myPortName ;
-        [oppositeConnectionMap searchKey !mOppositePortName ?me ?myPortName] ;
-        if [me key] != mBoxInstanceName->string then
-          error mConnectedBoxName : "the opposite connection does not name this box, but '" . [me key] . "' box" ;
+        [oppositeConnectionMap searchKey !mOppositePortName ?oppositeOfOppositeBox ?myPortName] ;
+        if [oppositeOfOppositeBox key] != mBoxInstanceName->string then
+          error mConnectedBoxName : "the opposite connection does not name this box, but '" . [oppositeOfOppositeBox key] . "' box" ;
         elsif mValue->string != myPortName->string then
           error myPortName : "the opposite connection does not name this port" ;
         end if ;
