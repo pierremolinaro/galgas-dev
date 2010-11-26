@@ -70,6 +70,7 @@ class @syntaxDeclarationForGeneration extends @semanticDeclarationForGeneration 
   @nonterminalMap mNonterminalDeclarationMap ;
   @ruleDeclarationList mRuleDeclarationList ;
   @uint mSelectMethodCount ;
+  @bool mHasIndexing ;
 }
 
 #---------------------------------------------------------------------------*
@@ -98,12 +99,14 @@ filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_gene
     ?@nonterminalMap NONTERMINAL_MAP
     ?@ruleDeclarationList RULE_DECLARATION_LIST
     ?@uintlist SELECT_METHOD_LIST
+    ?@bool HAS_INDEXING
   ;
 }
 
 #---------------------------------------------------------------------------*
 
-override reader @syntaxDeclarationForGeneration appendDeclaration1 -> @string outHeader :
+override reader @syntaxDeclarationForGeneration appendDeclaration1 -> @string outHeader
+:
   @uintlist selectMethodList [emptyList] ;
   @uint idx := 0 ;
   loop mSelectMethodCount + 1 :
@@ -117,6 +120,7 @@ override reader @syntaxDeclarationForGeneration appendDeclaration1 -> @string ou
     !mNonterminalDeclarationMap
     !mRuleDeclarationList
     !selectMethodList
+    !mHasIndexing
   ] ; 
 end reader ;
 
@@ -220,6 +224,7 @@ abstract method @syntaxInstructionAST analyzeSyntaxInstruction
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
   ??@string inComponentName
+  ??@stringset inIndexNameSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
@@ -233,12 +238,13 @@ override method @semanticInstructionAST analyzeSyntaxInstruction
   ??@string unused inLexiqueName
   ??@nonterminalMap unused inNonterminalMap
   ??@string unused inComponentName
+  ??@stringset unused inIndexNameSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint unused ioSelectMethodCount
 :
-  @semanticInstructionAST t := selfcopy ; # Bug in GALGAS 1
-  [t analyzeSemanticInstruction
+#  @semanticInstructionAST t := selfcopy ; # Bug in GALGAS 1
+  [self analyzeSemanticInstruction
     !inAnalysisContext
     !?ioInstructionListForGeneration
     !?ioVariableMap
@@ -253,6 +259,7 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
   ??@string unused inLexiqueName
   ??@nonterminalMap inNonterminalMap
   ??@string unused inComponentName
+  ??@stringset unused inIndexNameSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint unused ioSelectMethodCount
@@ -341,6 +348,7 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
   ??@string inLexiqueName
   ??@nonterminalMap unused inNonterminalMap
   ??@string unused inComponentName
+  ??@stringset inIndexNameSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint unused ioSelectMethodCount
@@ -394,11 +402,22 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
     end if ;
   end foreach ;
 #---
+  if mIndexingKey->string != "" then
+    if not [inIndexNameSet hasKey !mIndexingKey->string] then
+      @string s := "" ;
+      foreach inIndexNameSet do
+        s .= "\n  - " . key  ;
+      end foreach ;
+      error mIndexingKey : "the '" . mIndexingKey . "' indexing name is not declared by the lexique; available names are:" . s ;
+    end if ;
+  end if ;
+#---
   ioInstructionListForGeneration += ![@terminalCheckInstructionForGeneration new
     !mInstructionLocation
     !mTerminalName
     !inLexiqueName
     !terminalCheckAssignementList
+    !mIndexingKey->string
   ] ;
 end method ;
 
@@ -421,6 +440,10 @@ override method @terminalCheckInstructionForGeneration generateInstruction
                     . [mSourceLexicalAttributeName identifierRepresentation]
                     . " () ;\n" ;
   end foreach ;
+#--- Indexing
+  if mIndexingKey != "" then
+    ioGeneratedCode .= compilerCppName [] . "->enterIndexing (C_Lexique_" . mLexiqueIdentifier . "::kIndexing_" . [mIndexingKey identifierRepresentation] . ") ;\n" ;
+  end if ;
 #--- Check terminal symbol
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .= compilerCppName [] . "->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_"
@@ -446,6 +469,7 @@ routine analyzeSyntaxInstructionList
   ??@string  inComponentName
   ??@syntaxInstructionList inSyntaxInstructionListAST
   ??@location inEndOfBranchLocation
+  ??@stringset inIndexNameSet
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
   !@semanticInstructionListForGeneration outInstructionListForGeneration
@@ -461,6 +485,7 @@ routine analyzeSyntaxInstructionList
       !inLexiqueName
       !inNonterminalMap
       !inComponentName
+      !inIndexNameSet
       !?outInstructionListForGeneration
       !?ioVariableMap
       !?ioSelectMethodCount
@@ -478,6 +503,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
   ??@string inComponentName
+  ??@stringset inIndexNameSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
@@ -496,6 +522,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
     !inComponentName
     !mRepeatedInstructionList
     !mEndOf_repeated_instructions_branch
+    !inIndexNameSet
     !?ioVariableMap
     !?ioSelectMethodCount
     ?repeated_instructionList
@@ -512,6 +539,7 @@ override method @repeatInstruction analyzeSyntaxInstruction
       !inComponentName
       !mSyntaxInstructionList
       !mEndOf_instructions
+      !inIndexNameSet
       !?ioVariableMap
       !?ioSelectMethodCount
       ?instructionList
@@ -579,6 +607,7 @@ override method @selectInstruction analyzeSyntaxInstruction
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
   ??@string  inComponentName
+  ??@stringset inIndexNameSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
@@ -599,6 +628,7 @@ override method @selectInstruction analyzeSyntaxInstruction
       !inComponentName
       !mSyntaxInstructionList
       !mEndOf_instructions
+      !inIndexNameSet
       !?ioVariableMap
       !?ioSelectMethodCount
       ?instructionList
@@ -650,6 +680,7 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
   ??@string inComponentName
+  ??@stringset inIndexNameSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
@@ -667,6 +698,7 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
         !inLexiqueName
         !inNonterminalMap
         !inComponentName
+        !inIndexNameSet
         !?instructionList
         !?ioVariableMap
         !?ioSelectMethodCount
@@ -729,6 +761,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
   ??@string inComponentName
+  ??@stringset inIndexNameSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
@@ -772,6 +805,7 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
     !inComponentName
     !mDoInstructionList
     !mEndOfInstructionList
+    !inIndexNameSet
     !?ioVariableMap
     !?ioSelectMethodCount
     ?instructionList
@@ -853,6 +887,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
   ??@string inComponentName
+  ??@stringset inIndexNameSet
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
   ?!@uint ioSelectMethodCount
@@ -877,6 +912,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
     !inComponentName
     !mWhenInstructionList
     !mEndOfWhenInstructionList
+    !inIndexNameSet
     !?ioVariableMap
     !?localSelectMethodCount
     ?when_instructionListForGeneration
@@ -891,6 +927,7 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
     !inComponentName
     !mElseInstructionList
     !mEndOfElseInstructionList
+    !inIndexNameSet
     !?ioVariableMap
     !?ioSelectMethodCount
     ?else_instructionListForGeneration
@@ -945,22 +982,6 @@ override method @parseWhenInstructionForGeneration generateInstruction
 end method ;
 
 #---------------------------------------------------------------------------*
-
-override method @blockInstruction analyzeSyntaxInstruction
-  ??@analysisContext unused inAnalysisContext
-  ??@terminalMap unused inTerminalMap
-  ??@string unused inLexiqueName
-  ??@nonterminalMap unused inNonterminalMap
-  ??@string unused inComponentName
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
-  ?!@uint unused ioSelectMethodCount
-:
-  error mBlockMethodName
-  : "'block' instruction is not handled in GALGAS 2\n" ;
-end method ;
-
-#---------------------------------------------------------------------------*
 #                                                                           *
 #           B U I L D    C O N T E X T                                      *
 #                                                                           *
@@ -975,6 +996,7 @@ routine semanticAnalysisOfRuleLabel
   ??@nonterminalMap inNonterminalMap
   ??@string inComponentName
   ??@location inEndOfInstructionList
+  ??@stringset inIndexNameSet
   ?!@uint ioSelectMethodCount
   !@formalParameterListForGeneration outSignatureForGeneration
   !@formalParameterSignature outSignature
@@ -1002,6 +1024,7 @@ routine semanticAnalysisOfRuleLabel
       !inLexiqueName
       !inNonterminalMap
       !inComponentName
+      !inIndexNameSet
       !?outInstructionListForGeneration
       !?variableMap
       !?ioSelectMethodCount
@@ -1025,6 +1048,7 @@ routine semanticAnalysisOfSyntaxComponent
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap inTerminalMap
+  ??@stringset inIndexNameSet
   !@syntaxDeclarationForGeneration outSyntaxDeclarationForGeneration
 :
 #------------ Build nonterminal map
@@ -1081,6 +1105,7 @@ routine semanticAnalysisOfSyntaxComponent
         !nonterminalMap
         !inComponentName
         !mEndOfInstructionList
+        !inIndexNameSet
         !?localSelectMethodCount
         ?signatureForGeneration
         ?signature
@@ -1113,6 +1138,7 @@ routine semanticAnalysisOfSyntaxComponent
     !nonterminalMap
     !ruleDeclarationList
     !selectMethodCount
+    ![inIndexNameSet count] > 0
   ] ;
 end routine ;
 

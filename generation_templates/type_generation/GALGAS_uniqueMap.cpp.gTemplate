@@ -37,11 +37,17 @@ cMapElement * cMapElement_%!TYPE_IDENTIFIER%::copy (void) {
 
 //---------------------------------------------------------------------------*
 
-void cMapElement_%!TYPE_IDENTIFIER%::description (C_String & /* ioString */, const PMSInt32 /* inIndentation */) const {
-%
-  foreach ATTRIBUTE_LIST
-    do %// mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
+%if [ATTRIBUTE_LIST length] == 0 then
+  %void cMapElement_%!TYPE_IDENTIFIER%::description (C_String & /* ioString */, const PMSInt32 /* inIndentation */) const {\n%
+else
+  %void cMapElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, const PMSInt32 inIndentation) const {\n%
+  foreach ATTRIBUTE_LIST do
+    %  ioString << "\\n" ;\n%
+    %  ioString.writeStringMultiple ("| ", inIndentation) ;\n%
+    %  ioString << %![mAttributeName utf8Representation]% ":" ;\n%
+    %  mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
   end foreach
+end if
 %}
 
 //---------------------------------------------------------------------------*

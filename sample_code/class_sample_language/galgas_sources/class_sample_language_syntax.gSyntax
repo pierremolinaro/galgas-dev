@@ -9,12 +9,12 @@ rule <start_symbol> !@declarationListAST outDeclarationListAST :
   repeat
   while
     $class$ ;
-    $identifier$ ? @lstring className ;
+    $identifier$ ? @lstring className indexing classDefinition ;
     select
       outDeclarationListAST += ![@classWithoutSuperClassAST new !className] ;
     or
       $:$ ;
-      $identifier$ ? @lstring superClassName ;
+      $identifier$ ? @lstring superClassName indexing superClassReference ;
       outDeclarationListAST += ![@classWithSuperClassAST new !className !superClassName] ;
     end select ;
     $;$ ;

@@ -471,16 +471,16 @@ rule <semantic_declaration>
     mIsAbstract := true ;
   end select ;
   $class$ ;
-  $type_name$ ?@lstring mClassTypeName ;
+  $type_name$ ?@lstring mClassTypeName ; # indexing classDefinition ;
   select
     $;$ ;
   or
     @lstring mSuperClassName ; # Empty if no super class
     select
-      mSuperClassName := [@lstring new !"" !here] ;
+      mSuperClassName := ["" nowhere] ;
     or
       $extends$ ;
-      $type_name$ ? mSuperClassName ;
+      $type_name$ ? mSuperClassName ; # indexing superClassReference ;
     end select ;
     @lstringlist classFeatureList [emptyList] ;
     select

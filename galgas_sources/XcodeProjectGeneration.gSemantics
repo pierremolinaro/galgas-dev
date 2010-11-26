@@ -60,6 +60,8 @@ local routine getGALGAS_2_source_file_list
 :
   out_fileList := [@stringlist emptyList] ;
   out_fileList += !"enumComparisonResult.h" ;
+  out_fileList += !"cIndexingDictionary.cpp" ;
+  out_fileList += !"cIndexingDictionary.h" ;
   out_fileList += !"C_Compiler.cpp" ;
   out_fileList += !"C_Compiler.h" ;
   out_fileList += !"C_Lexique.cpp" ;

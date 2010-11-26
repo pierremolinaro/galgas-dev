@@ -629,6 +629,7 @@ local filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique
     ?@string LEXIQUE_IDENTIFIER
     ?@lexicalListDeclarationListAST DELIMITOR_LIST_LIST
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
+    ?@indexingListAST INDEXING_LIST
   ;
 
   template newImplementationZone2 "lexique_implementation.new.cpp.gTemplate"
@@ -919,6 +920,14 @@ routine compileLexiqueComponent
    end foreach ;
    lexiqueAnalysisContext->mTemplateDelimitorList += !mStartString !mEndString !preservesStartDelimiter ;
   end foreach ;
+#--------------------------------------- Check "indexing" declarations
+  @stringset indexNameSet [emptySet] ;
+  foreach [lexiqueComponentRoot mIndexingListAST] do
+    if [indexNameSet hasKey ![mIndexName string]] then
+      error mIndexName : "the '" . mIndexName . "' index is already declared" ;
+    end if ;
+    indexNameSet += ![mIndexName string] ;
+  end foreach ;
 #--------------------------------------- Template replacements
   foreach [lexiqueComponentRoot mTemplateReplacementList] do
    lexiqueAnalysisContext->mUnicodeStringToGenerate += ![mMatchString string] ;
@@ -944,6 +953,7 @@ routine compileLexiqueComponent
          ![lexiqueClassName identifierRepresentation]
          ![lexiqueComponentRoot mLexicalListDeclarationList]
          !lexiqueAnalysisContext
+         ![lexiqueComponentRoot mIndexingListAST]
        ]
     ] ;
   end if ;

@@ -278,7 +278,8 @@ analyzeGrammar (C_Compiler * inCompiler,
                 const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
                 const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                 const C_String & inOutputDirectoryForCppFiles,
-                const C_String & inOutputDirectoryForHTMLFile) {
+                const C_String & inOutputDirectoryForHTMLFile,
+                const bool inHasIndexing) {
   bool warningFlag = false ;
 
 //--- Depending of grammar class, fix operations to perform
@@ -553,7 +554,8 @@ analyzeGrammar (C_Compiler * inCompiler,
                       inOutputDirectoryForCppFiles,
                       inLexiqueName,
                       ok,
-                      verboseOptionOn) ;
+                      verboseOptionOn,
+                      inHasIndexing) ;
     if (! ok) {
       errorFlag = kGrammarNotLL1 ;
     }
@@ -679,6 +681,7 @@ routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
                                       const GALGAS_string inOutputDirectoryForCppFiles,
                                       const GALGAS_string inOutputDirectoryForHTMLFile,
                                       const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis,
+                                      const GALGAS_bool inHasIndexing,
                                       C_Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
   if (inCompiler->currentFileErrorCount() == 0) {
@@ -701,7 +704,8 @@ routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
                     inSyntaxComponentsList,
                     inNonTerminalSymbolSortedListForGrammarAnalysis,
                     inOutputDirectoryForCppFiles.stringValue (),
-                    inOutputDirectoryForHTMLFile.stringValue ()) ;
+                    inOutputDirectoryForHTMLFile.stringValue (),
+                    inHasIndexing.boolValue ()) ;
   }
 }
 

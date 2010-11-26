@@ -83,6 +83,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "import",
   "in",
   "index",
+  "indexing",
   "insert",
   "label",
   "lexique",

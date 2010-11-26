@@ -22,6 +22,7 @@ import "grammarSemantics.gSemantics" ;
 import "galgas_cli_options.gOption" ;
 import "grammarLL1grammar.gGrammar" ;
 import "syntaxSLRgrammar.gGrammar" ;
+import "lexiqueCompilation.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
@@ -370,23 +371,6 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @blockInstruction transformInstruction
-  ?!@terminalSymbolsMapForGrammarAnalysis ioActuallyUsedTerminalSymbolMap
-  ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalSymbolMap
-  ?!@uint ioAddedNonTerminalIndex
-  ?!@syntaxInstructionListForGrammarAnalysis ioSyntaxInstructionList
-:
-  transformInstructionList
-    !mInstructionList
-    !?ioActuallyUsedTerminalSymbolMap
-    !inNonTerminalSymbolMap
-    !?ioAddedNonTerminalIndex
-    !?ioSyntaxInstructionList
-  ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
 local routine buildRuleList
   ??@nonTerminalSymbolMapForGrammarAnalysis inNonTerminalMapForGrammarAnalysis
   ??@lstring inSyntaxComponentName
@@ -448,6 +432,7 @@ local filewrapper grammarGenerationTemplate in "../generation_templates/grammar_
     ?@grammarComponentAST GRAMMAR_COMPONENT_ROOT
     ?@nonTerminalSymbolMapForGrammarAnalysis NON_TERMINAL_MAP
     ?@nonTerminalToAddList ADDED_NON_TERMINAL_LIST
+    ?@bool HAS_INDEXING
   ;
 }
 
@@ -492,6 +477,7 @@ extern routine grammarAnalysisAndGeneration
   ??@string inOutputDirectoryForCppFiles
   ??@string inOutputDirectoryForHTMLfile
   ??@nonTerminalSymbolSortedListForGrammarAnalysis inNonTerminalSymbolSortedListForGrammarAnalysis
+  ??@bool inHasIndexing
 ;
 
 #---------------------------------------------------------------------------*
@@ -521,13 +507,14 @@ routine compileGrammarComponent
   @terminalSymbolsMapForGrammarAnalysis actuallyUsedTerminalSymbolMap [emptyMap] ;
   @nonTerminalSymbolMapForGrammarAnalysis nonTerminalMapForGrammarAnalysis [emptyMap] ;
   @string lexiqueComponentName := "" ; # Empty string means unknown
+  @lstring lexiqueComponentPath := ["" nowhere] ;
   @syntaxComponentListForGrammarAnalysis syntaxComponentListForGrammarAnalysis [emptyList] ;
   @nonTerminalToAddList nonTerminalToAddList [emptyList] ;
   @uint addedNonTerminalCount := 0 ;
   foreach [grammarComponentRoot mSyntaxComponents] do
     const @uint addedNonTerminalCountRef := addedNonTerminalCount ;
-    if ([mValue pathExtension] != "gSyntax") & ([mValue pathExtension] != "ggs") then
-      error mValue: "a syntax component file should have '.ggs' or '.gSyntax' as path extension" ;
+    if [mValue pathExtension] != "gSyntax" then
+      error mValue: "a syntax component file should have '.gSyntax' path extension" ;
     else
       @string syntaxComponentName := [[mValue lastPathComponent] stringByDeletingPathExtension] ;
       @syntaxComponentAST syntaxComponentRoot ;
@@ -539,7 +526,8 @@ routine compileGrammarComponent
         [!?ioParsedComponentStruct->mParsedSyntaxComponentMap insertKey ![@lstring new !syntaxComponentName ![mValue location]] !syntaxComponentRoot] ;
       end if ;
     #--- Handle lexique component
-      @string currentLexiqueName := [[[syntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] ;
+      lexiqueComponentPath := [syntaxComponentRoot mImportedLexiqueFilePath] ;
+      const @string currentLexiqueName := [[lexiqueComponentPath lastPathComponent] stringByDeletingPathExtension] ;
       if lexiqueComponentName == "" then
         lexiqueComponentName := currentLexiqueName ;
       elsif lexiqueComponentName != currentLexiqueName then
@@ -573,6 +561,14 @@ routine compileGrammarComponent
       end loop ;
     end if ;
   end foreach ;
+#------------------------ Get lexique component, for knowing if there are "indexing" declaration
+  @lexiqueComponentAST lexiqueComponentAST ;
+  parseLexiqueComponent
+    ![@lstring new ![lexiqueComponentPath absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]] ![lexiqueComponentPath location]]
+    !?ioParsedComponentStruct
+    ?lexiqueComponentAST
+  ;
+  const @bool hasIndexing := [[lexiqueComponentAST mIndexingListAST] length] > 0 ;
 #---------------------------------------------------------- Start symbol
 #--- Search start symbol in non terminal map
   @nonterminalSymbolLabelMapForGrammarAnalysis startSymbolAltMap ;
@@ -611,6 +607,7 @@ routine compileGrammarComponent
     !inOutputDirectoryForCppFiles
     !inOutputDirectoryForHTMLFile
     !nonTerminalSymbolSortedListForGrammarAnalysis
+    !hasIndexing
   ;
 #---------------------------------------------------------- Generate header
   if [@uint errorCount] == 0 then
@@ -622,6 +619,7 @@ routine compileGrammarComponent
       !grammarComponentRoot
       !nonTerminalMapForGrammarAnalysis
       !nonTerminalToAddList
+      !hasIndexing
     ] ;
     [@string generateFile
       !inOutputDirectoryForCppFiles

@@ -298,11 +298,19 @@ rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
   $terminal$ ? @lstring mTerminalName ;
   @actualInputParameterListAST mActualInputParameterList ;
   <actual_input_parameter_list> ? mActualInputParameterList ;
+  @lstring indexName ;
+  select
+    indexName := ["" nowhere] ;
+  or
+    $indexing$ ;
+    $identifier$ ?indexName ;
+  end select ;
   $;$ ;
   outInstruction := [@terminalCheckInstruction new
     ![mTerminalName location]
     !mTerminalName
     !mActualInputParameterList
+    !indexName
   ] ;
 end rule ;
 
@@ -506,42 +514,6 @@ rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
     !endOfWhileExpression
     !instructionList
     !endOfInstructionList
-  ] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#   B L O C K    I N S T R U C T I O N                                      *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
-  $block$ ;
-  const @location instructionLocation := here ;
-  $identifier$ ? @lstring mReceiverVariable ;
-  $.$ ;
-  $identifier$ ? @lstring mBlockMethodName ;
-  $($ ;
-  @actualParameterListAST mPrologActualParameterList ;
-  <actual_parameter_list> ? mPrologActualParameterList ;
-  $)$ ;
-  $:$ ;
-  @syntaxInstructionList mInstructionList ;
-  <syntax_instruction_list> ? mInstructionList ;
-  $end$ ;
-  $block$ ;
-  $($ ;
-  @actualParameterListAST mEpilogActualParameterList ;
-  <actual_parameter_list> ? mEpilogActualParameterList ;
-  $)$ ;
-  $;$ ;
-  outInstruction := [@blockInstruction new
-    !instructionLocation
-    !mReceiverVariable
-    !mBlockMethodName
-    !mPrologActualParameterList
-    !mInstructionList
-    !mEpilogActualParameterList
   ] ;
 end rule ;
 

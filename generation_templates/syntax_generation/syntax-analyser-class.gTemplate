@@ -30,6 +30,10 @@ class cParser_%![COMPONENT_NAME identifierRepresentation]% {
   if mHasParseLabel then
     %  protected : virtual void nt_%![lkey identifierRepresentation]%_parse (%?^%C_Lexique_%!LEXIQUE_NAME% * inLexique) = 0 ;\n\n%
   end if
+
+  if HAS_INDEXING then
+    %  protected : virtual void nt_%![lkey identifierRepresentation]%_indexing (%?^%C_Lexique_%!LEXIQUE_NAME% * inLexique) = 0 ;\n\n%
+  end if
 end foreach%
 //--- Rule declarations
 %foreach RULE_DECLARATION_LIST do
@@ -51,6 +55,9 @@ end foreach%
   end foreach
   if mHasParseLabel then
     %  protected : void rule_%![COMPONENT_NAME identifierRepresentation]%_%![mNonterminalName identifierRepresentation]%_i%![mRuleIndex string]%_parse (%?^%C_Lexique_%!LEXIQUE_NAME% * inLexique) ;\n\n%
+  end if
+  if HAS_INDEXING then
+    %  protected : void rule_%![COMPONENT_NAME identifierRepresentation]%_%![mNonterminalName identifierRepresentation]%_i%![mRuleIndex string]%_indexing (%?^%C_Lexique_%!LEXIQUE_NAME% * inLexique) ;\n\n%
   end if
 end foreach%
 
