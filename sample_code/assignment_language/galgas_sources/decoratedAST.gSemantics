@@ -56,12 +56,12 @@ uniquemap @variableMap {
   @string mCppName ;
 
 #--- Variable states
-  state declaredState {
+  state declaredState warning "the '%K' variable is unused" {
     readAccess      -> declaredState error "this variable has no value, it cannot be read"
     writeAccess     -> assignedState
   }
 
-  state assignedState {
+  state assignedState warning "the '%K' variable value has not been read" {
     readAccess      -> assignedAndReadState
     writeAccess     -> assignedState warning "the previous value has not been read"
   }
