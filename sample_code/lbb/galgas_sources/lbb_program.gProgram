@@ -25,7 +25,7 @@ message "a source text file with the .lbb extension"
     end foreach ;
     [!?boxTypeMap insertKey !mBoxTypeName !mPortNameList] ;
   end foreach ;
-#--- Analyze box connections
+#--- Build box map and connections
   @boxInstanceMap boxInstanceMap [emptyMap] ;
   foreach [programAST mBoxInstanceListAST] do
     @lstringlist portNameList ;
@@ -39,17 +39,6 @@ message "a source text file with the .lbb extension"
     foreach portNameList, mConnectionList do
       @boxInstanceProxy connectedBoxProxy ;
       [@boxInstanceProxy makeRegularProxy !?boxInstanceMap !mConnectedBoxName->string ?connectedBoxProxy] ;
-      if [connectedBoxProxy isSolved] then
-        @connectionMap oppositeConnectionMap := [connectedBoxProxy mConnectionMap] ;
-        @boxInstanceProxy oppositeOfOppositeBox ;
-        @lstring myPortName ;
-        [oppositeConnectionMap searchKey !mOppositePortName ?oppositeOfOppositeBox ?myPortName] ;
-        if [oppositeOfOppositeBox key] != mBoxInstanceName->string then
-          error mConnectedBoxName : "the opposite connection does not name this box, but '" . [oppositeOfOppositeBox key] . "' box" ;
-        elsif mValue->string != myPortName->string then
-          error myPortName : "the opposite connection does not name this port" ;
-        end if ;
-      end if ;
       [!?connectionMap insertKey !mValue !connectedBoxProxy !mOppositePortName] ;
     end foreach ;
     [!?boxInstanceMap insertKey !mBoxInstanceName !connectionMap] ;
@@ -58,6 +47,22 @@ message "a source text file with the .lbb extension"
   foreach [boxInstanceMap unsolvedProxyKeyList] do
     error [programAST mEndOfSourceLine] : "the '" . mValue . "' box is not defined" ;
   end foreach ;
+#--- Check connections
+  if [@uint errorCount] == 0 then
+    foreach boxInstanceMap prefixedby box_ do
+      foreach box_mConnectionMap do
+        @connectionMap oppositeConnectionMap := [mBoxProxy mConnectionMap] ;
+        @boxInstanceProxy oppositeOfOppositeBox ;
+        @lstring myPortName ;
+        [oppositeConnectionMap searchKey !mOppositePortName ?oppositeOfOppositeBox ?myPortName] ;
+        if [oppositeOfOppositeBox key] != box_lkey->string then
+          error mOppositePortName : "the opposite connection does not name this box, but '" . [oppositeOfOppositeBox key] . "' box" ;
+        elsif lkey->string != myPortName->string then
+          error myPortName : "the opposite connection does not name this port" ;
+        end if ;
+      end foreach ;
+    end foreach ;
+  end if ;
 }
 
 #--- Epilogue routine

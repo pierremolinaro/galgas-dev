@@ -36,6 +36,7 @@ class @assignmentAST extends @instructionAST {
 
 struct @programAST {
   @instructionListAST mProgramInstructionList ;
+  @location mEndOfSourceFile ;
 }
 
 class @varDeclarationAST extends @instructionAST {

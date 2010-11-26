@@ -20,6 +20,7 @@ message "a source text file with the .assignment_language extension"
   foreach [programAST mProgramInstructionList] do
     [mInstruction semanticAnalysis !?variableMap !?instructionListForGeneration] ;
   end foreach ;
+  [variableMap checkAutomatonStates ![programAST mEndOfSourceFile]] ;
 #--- Code generation
   generateCfile
     ![inSourceFile stringByDeletingPathExtension] . ".c"

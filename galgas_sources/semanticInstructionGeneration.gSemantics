@@ -374,8 +374,10 @@ override method @ifInstructionForGeneration generateInstruction
 #--- Generate test expression
   @string cppVarName ;
   [mIFexpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?cppVarName] ;
+  const @string testVar := "test_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "const GALGAS_bool " . testVar . " (" . cppVarName . ") ;\n" ;
 #--- If test expression is not valuated or false, execute 'else' part
-  ioGeneratedCode .= "if (" . cppVarName . ".isValidAndTrue ()) {\n" ;
+  ioGeneratedCode .= "if (" . testVar . ".isValidAndTrue ()) {\n" ;
   generateInstructionList
     !inGenerateCheckValid
     !m_then_instructionList
@@ -384,7 +386,7 @@ override method @ifInstructionForGeneration generateInstruction
     !?ioGeneratedCode
   ;
   if [m_else_instructionList length] > 0 then
-    ioGeneratedCode .= "}else{\n" ;
+    ioGeneratedCode .= "}else if (" . testVar . ".isValid ()) {\n" ;
     generateInstructionList
       !inGenerateCheckValid
       !m_else_instructionList

@@ -28,6 +28,9 @@ class GALGAS_string : public AC_GALGAS_root
 //--------------------------------- Default constructor
   public : GALGAS_string (void) ;
 
+//--------------------------------- Constructor for making an empty string
+  public : static GALGAS_string makeEmptyString (void) ;
+
 //--------------------------------- Native constructor
   public : GALGAS_string (const C_String & inValue) ;
 

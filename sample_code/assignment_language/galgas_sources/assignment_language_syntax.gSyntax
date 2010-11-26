@@ -81,7 +81,7 @@ rule <start_symbol> !@programAST programAST :
     <instruction> !?programInstructionList ;
   end repeat ;
   $end$ ;
-  programAST := [@programAST new !programInstructionList] ;
+  programAST := [@programAST new !programInstructionList !here] ;
 end rule ;
 
 end syntax ;
