@@ -147,6 +147,11 @@ routine compileSyntaxComponent
 #--- Build token map
   @terminalMap terminalMap ;
   buildTerminalMap !lexiqueComponentRoot ?terminalMap ;
+#--------------------------------------- Build "indexing" set
+  @stringset indexNameSet [emptySet] ;
+  foreach [lexiqueComponentRoot mIndexingListAST] do
+    indexNameSet += ![mIndexName string] ;
+  end foreach ;
 #--- Build semantic context from rule headers and non terminal declaration
   if [@uint errorCount] == 0 then
     const @string lexiqueName := [[[syntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] ;
@@ -161,6 +166,7 @@ routine compileSyntaxComponent
       !semanticContext
       !predefinedTypes
       !terminalMap
+      !indexNameSet
       ?syntaxDeclarationForGeneration
     ;
   #------ Semantic Analysis
@@ -206,11 +212,13 @@ routine compileSyntaxComponent
         const @string lexiqueCppName := "C_Lexique_"
         . [[[[syntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] identifierRepresentation] ;
         foreach [syntaxDeclarationForGeneration mRuleDeclarationList] do
+        #--- Generate rule label implementation
           foreach mLabelImplementationList do
             const @string ruleName := "cParser_" . [componentName identifierRepresentation]
             . "::rule_" . [componentName identifierRepresentation] . "_"
             . [mNonterminalName identifierRepresentation]
             . "_i" . [mRuleIndex string] . "_" . [mLabelName identifierRepresentation] ;
+            implementationString .= "//---------------------------------------------------------------------------*\n\n" ;
             implementationString .= generateProcedure [
               !ruleName
               !mSignatureForGeneration
@@ -221,6 +229,7 @@ routine compileSyntaxComponent
               !false # Do not generate 'resetTemplateString'
             ] ;
           end foreach ;
+        #--- Generate "parse" label
           if mHasParseLabel then
             @semanticInstructionListForGeneration instructionList ;
             [mLabelImplementationList first ?* ?* ?* ?* ?instructionList] ;
@@ -228,6 +237,7 @@ routine compileSyntaxComponent
             . "::rule_" . [componentName identifierRepresentation] . "_"
             . [mNonterminalName identifierRepresentation]
             . "_i" . [mRuleIndex string] . "_parse" ;
+            implementationString .= "//---------------------------------------------------------------------------*\n\n" ;
             implementationString .= generateProcedure [
               !ruleName
               ![@formalParameterListForGeneration emptyList]
@@ -236,6 +246,25 @@ routine compileSyntaxComponent
               !lexiqueCppName
               !false # Do not generate location Argument
               !true # Generate 'resetTemplateString'
+            ] ;
+          end if ;
+        #--- Generate indexing code
+          if [indexNameSet count] > 0 then
+            @semanticInstructionListForGeneration instructionList ;
+            [mLabelImplementationList first ?* ?* ?* ?* ?instructionList] ;
+            const @string ruleName := "cParser_" . [componentName identifierRepresentation]
+            . "::rule_" . [componentName identifierRepresentation] . "_"
+            . [mNonterminalName identifierRepresentation]
+            . "_i" . [mRuleIndex string] . "_indexing" ;
+            implementationString .= "//---------------------------------------------------------------------------*\n\n" ;
+            implementationString .= generateProcedure [
+              !ruleName
+              ![@formalParameterListForGeneration emptyList]
+              !syntaxSignatureOfInstructionList [!instructionList]
+              !false
+              !lexiqueCppName
+              !false # Do not generate location Argument
+              !false # Do not generate 'resetTemplateString'
             ] ;
           end if ;
         end foreach ;

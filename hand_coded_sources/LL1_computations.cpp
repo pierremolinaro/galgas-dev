@@ -450,7 +450,8 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
                                const C_String & inOutputDirectoryForCppFiles,
                                const C_String & inLexiqueName,
                                const cVocabulary & inVocabulary,
-                               const cPureBNFproductionsList & inPureBNFproductions) {
+                               const cPureBNFproductionsList & inPureBNFproductions,
+                               const bool inHasIndexing) {
 //--- Generate header file inclusion --------------------------------------------------------------
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2.appendCppHyphenLineComment () ;
@@ -592,6 +593,16 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
   while (nonTerminal.hasCurrentObject ()) {
     generatedZone3.appendCppTitleComment (C_String ("'") + nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue () + "' non terminal implementation") ;
     const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction ((PMSInt32) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () COMMA_HERE) >= 0 ;
+    if (inHasIndexing) {
+      generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+                   << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+                   << "_indexing (C_Lexique_" << inLexiqueName.identifierRepresentation () << " * " << (existeProduction ? "inLexique" : "")
+                   << ") {\n" ; 
+      engendrerAiguillageNonTerminaux (inVocabulary, (PMSInt32) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), 0,
+                                       inPureBNFproductions, generatedZone3,
+                                       "indexing") ;
+      generatedZone3 << "}\n\n" ;
+    }
     cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), true) ;
     while (currentAltForNonTerminal.hasCurrentObject ()) {
       generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
@@ -855,7 +866,8 @@ LL1_computations (C_Compiler * inCompiler,
                   const C_String & inOutputDirectoryForCppFiles,
                   const C_String & inLexiqueName,
                   bool & outOk,
-                  const bool inVerboseOptionOn) {
+                  const bool inVerboseOptionOn,
+                  const bool inHasIndexing) {
 //--- Console display
   if (inVerboseOptionOn) {
     co << "  Checking LL(1) condition... " ;
@@ -884,7 +896,8 @@ LL1_computations (C_Compiler * inCompiler,
                                    inOutputDirectoryForCppFiles,
                                    inLexiqueName,
                                    inVocabulary,
-                                   inPureBNFproductions) ;
+                                   inPureBNFproductions,
+                                   inHasIndexing) ;
   }
 }
 

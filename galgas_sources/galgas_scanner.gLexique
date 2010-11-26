@@ -76,6 +76,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "import",
   "in",
   "index",
+  "indexing",
   "insert",
   "label",
   "lexique",
@@ -630,5 +631,9 @@ end rule ;
 # --------------------- separators -----------------------------------------
 rule '\u0001' -> ' ' :
 end rule ;
+
+# --------------------- Indexing
+#indexing classDefinition : "Class definition" ;
+#indexing superClassReference : "Superclass reference" ;
 
 end lexique ;

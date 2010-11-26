@@ -397,6 +397,13 @@ list @externFunctionListAST {
 
 #---------------------------------------------------------------------------*
 
+list @indexingListAST {
+  @lstring mIndexName ;
+  @lstring mIndexComment ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @lexiqueComponentAST {
   @lstring mLexiqueComponentName  ;
   @bool mIsTemplate ;
@@ -410,6 +417,7 @@ class @lexiqueComponentAST {
   @lexicalRuleListAST mLexicalRuleList ;
   @externRoutineListAST mExternRoutineList ;
   @externFunctionListAST mExternFunctionList  ;
+  @indexingListAST mIndexingListAST ;
 }
 
 #---------------------------------------------------------------------------*

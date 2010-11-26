@@ -81,6 +81,7 @@ class @nonterminalCallInstruction extends @syntaxInstructionAST {
 class @terminalCheckInstruction extends @syntaxInstructionAST {
   @lstring mTerminalName ;
   @actualInputParameterListAST mActualInputParameterList ;
+  @lstring mIndexingKey ; # Empty string if no index
 }
 
 #---------------------------------------------------------------------------*
@@ -158,18 +159,8 @@ class @parseWhenInstruction extends @syntaxInstructionAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#   B L O C K   I N S T R U C T I O N                                       *
+#   S Y N T A X    C O M P O N E N T    A S T                               *
 #                                                                           *
-#---------------------------------------------------------------------------*
-
-class @blockInstruction extends @syntaxInstructionAST {
-  @lstring mReceiverVariable ;
-  @lstring mBlockMethodName ;
-  @actualParameterListAST mPrologActualParameterList ;
-  @syntaxInstructionList mInstructionList ;
-  @actualParameterListAST mEpilogActualParameterList ;
-}
-
 #---------------------------------------------------------------------------*
 
 struct @syntaxComponentAST {

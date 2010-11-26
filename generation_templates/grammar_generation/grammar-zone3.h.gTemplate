@@ -9,6 +9,7 @@ end foreach
 %
 foreach NON_TERMINAL_MAP do
   foreach mNonterminalSymbolParametersMap prefixedBy label_ do
+  #--- Non terminal declaration
     %  public : virtual void nt_%![lkey identifierRepresentation]%_%![label_lkey identifierRepresentation]% (%?^
     foreach label_mFormalParametersList do index IDX
       if mFormalArgumentPassingModeForGrammarAnalysis == [@formalArgumentPassingModeAST argumentConstantIn] then
@@ -23,6 +24,12 @@ foreach NON_TERMINAL_MAP do
       %,\n%!^
     end foreach
     %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
+  #--- indexing ?
+    if HAS_INDEXING then
+      %  public : virtual void nt_%![lkey identifierRepresentation]%_indexing (%?^
+      %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
+    end if
+  #--- Start symbol ?
     if [[GRAMMAR_COMPONENT_ROOT mStartSymbolName] string] == [lkey string] then
       %  public : static void _performSourceFileParsing_%![label_lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
       !^%GALGAS_lstring inFileName%
@@ -56,8 +63,9 @@ foreach NON_TERMINAL_MAP do
       %\n%!^ %COMMA_LOCATION_ARGS) ;\n\n%
     end if
   end foreach
-end foreach%
-%foreach ADDED_NON_TERMINAL_LIST
+end foreach
+
+foreach ADDED_NON_TERMINAL_LIST
   do %  public : virtual PMSInt32 select_%![mSyntaxComponentName identifierRepresentation]%_%![mNonTerminalToAddCount string]% (C_Lexique_%!LEXIQUE_IDENTIFIER% *) ;\n%
   between %\n%
 end foreach

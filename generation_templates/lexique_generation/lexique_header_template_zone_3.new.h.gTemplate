@@ -12,7 +12,7 @@
   end foreach
 %  
 
-//--- Assign from attribute (v2)
+//--- Assign from attribute
 %
   foreach [LEXIQUE_ANALYSIS_CONTEXT mLexicalAttributeMap] do
     %  public : GALGAS_l%![[mLexicalType lexicalTypeBaseName] identifierRepresentation]% synthetizedAttribute_%![lkey identifierRepresentation]% (void) const ;\n%
@@ -26,6 +26,15 @@
   end foreach
 %
 
+//--- Indexing keys
+%
+  foreach INDEXING_LIST
+  before %  public : enum {%
+  do %\n    kIndexing_%![mIndexName identifierRepresentation]
+  between %,%
+  after %\n  } ;\n%
+  end foreach
+%
 //--- Parse lexical token
   protected : virtual bool parseLexicalToken (void) ;
 

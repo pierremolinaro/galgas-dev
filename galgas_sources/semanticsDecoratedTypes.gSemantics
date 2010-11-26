@@ -1000,6 +1000,7 @@ class @terminalCheckInstructionForGeneration extends @syntaxInstructionForGenera
   @lstring mTerminalName ;
   @string mLexiqueIdentifier ;
   @terminalCheckAssignementList mTerminalCheckAssignementList ;
+  @string mIndexingKey ; # Empty string if not indexed
 }
 
 #---------------------------------------------------------------------------*

@@ -21,56 +21,21 @@ syntax lexiqueSyntax ("galgas_scanner.gLexique") :
 
 import "lexiqueTypesForAST.gSemantics" ;
 
-nonterminal <lexique_component_start_symbol> !@lexiqueComponentAST outLexiqueComponentRoot;
-
-nonterminal <lexical_attribute_declaration> ?!@lexicalAttributeListAST ioLexicalAttributeList ;
-
-nonterminal <style_declaration> ?!@lexicalStyleListAST ioLexicalStyleList ;
-
-nonterminal <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationList ;
-
-nonterminal <lexical_list_declaration> ?!@lexicalListDeclarationListAST ioLexicalListDeclarationList ;
-
-nonterminal <lexical_list_entry> ?!@lexicalListEntryListAST ioLexicalListEntryList ;
-
-nonterminal <lexical_explicit_rule> ?!@lexicalRuleListAST ioLexicalExplicitRuleList ;
-
-nonterminal <lexical_implicit_rule> ?!@lexicalRuleListAST ioLexicalImplicitRuleList ;
-
-nonterminal <lexical_message_declaration> ?!@lexicalMessageDeclarationListAST ioLexicalErrorMessageDeclaration ;
-
-nonterminal <lexical_instruction> ?!@lexicalInstructionListAST ioInstructionList ;
-
-nonterminal <lexical_send_instruction> !@lexicalInstructionAST outInstruction ;
-
-nonterminal <function_call_or_attribute> ??@lstring inIdf !@lexicalRoutineOrFunctionFormalInputArgumentAST outArgument ;
-
-nonterminal <lexical_output_effective_argument>
-  !@lexicalRoutineOrFunctionFormalInputArgumentAST outEffectiveArgument
-;
-
-nonterminal <lexical_expression> !@lexicalExpressionAST outExpression ;
-
-nonterminal <lexical_term> !@lexicalExpressionAST outExpression ;
-
-nonterminal <lexical_factor> !@lexicalExpressionAST outExpression ;
-
-nonterminal <repeat_while_branch> ?!@lexicalWhileBranchListAST ioLexicalWhileBranchList ;
-
-nonterminal <template_delimitor> ?!@metamodelTemplateDelimitorListAST ioTemplateDelimitorList ;
-
-nonterminal <template_replacement> ?!@templateReplacementListAST ioTemplateReplacementList ;
-
-nonterminal <extern_routine_or_function_declaration>
-  ?!@externRoutineListAST ioExternRoutineList
-  ?!@externFunctionListAST ioExternFunctionList
-;
-
 #---------------------------------------------------------------------------*
 
 rule <lexique_component_start_symbol> !@lexiqueComponentAST outLexiqueComponentRoot :
-  @lstring lexiqueComponentName ;
   @bool isTemplate ;
+  select
+    isTemplate := true ;
+    $template$ ;
+  or
+    isTemplate := false ;
+  end select ;
+  $lexique$ ;
+#--- Lexique Component Name
+  $identifier$ ?@lstring lexiqueComponentName ;
+  $:$ ;
+#--- Parse lexique body
   @metamodelTemplateDelimitorListAST templateDelimitorList [emptyList] ;
   @templateReplacementListAST templateReplacementList [emptyList] ;
   @lexicalAttributeListAST lexicalAttributeList [emptyList] ;
@@ -81,17 +46,7 @@ rule <lexique_component_start_symbol> !@lexiqueComponentAST outLexiqueComponentR
   @lexicalRuleListAST lexicalRuleList [emptyList] ;
   @externRoutineListAST externRoutineList [emptyList] ;
   @externFunctionListAST externFunctionList [emptyList] ;
-  select
-    isTemplate := true ;
-    $template$ ;
-  or
-    isTemplate := false ;
-  end select ;
-  $lexique$ ;
-#--- Lexique Component Name
-  $identifier$ ? lexiqueComponentName ;
-  $:$ ;
-#--- Parse lexique body
+  @indexingListAST indexingListAST [emptyList] ;
   repeat
   while 
     <extern_routine_or_function_declaration> !? externRoutineList !? externFunctionList ;
@@ -117,6 +72,13 @@ rule <lexique_component_start_symbol> !@lexiqueComponentAST outLexiqueComponentR
     $;$ ;
   while
     <lexical_message_declaration> !? lexicalMessageDeclarationList ;
+  while
+    $indexing$ ;
+    $identifier$ ?@lstring indexName ;
+    $:$ ;
+    $literal_string$ ?@lstring indexComment ;
+    $;$ ;
+    indexingListAST += !indexName !indexComment ;
   end repeat ;
   $end$ ;
   $lexique$ ;
@@ -134,6 +96,7 @@ rule <lexique_component_start_symbol> !@lexiqueComponentAST outLexiqueComponentR
     !lexicalRuleList
     !externRoutineList
     !externFunctionList
+    !indexingListAST
   ] ;
 end rule ;
 

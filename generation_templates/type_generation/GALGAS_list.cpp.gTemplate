@@ -75,10 +75,13 @@ cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
 
 //---------------------------------------------------------------------------*
 
-void cCollectionElement_%!TYPE_IDENTIFIER%::description (C_String & /* ioString */, const PMSInt32 /* inIndentation */) const {
+void cCollectionElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, const PMSInt32 inIndentation) const {
 %
-  foreach ATTRIBUTE_LIST
-    do %// mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
+  foreach ATTRIBUTE_LIST do
+    %  ioString << "\\n" ;\n%
+    %  ioString.writeStringMultiple ("| ", inIndentation) ;\n%
+    %  ioString << %![mAttributeName utf8Representation]% ":" ;\n%
+    %  mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
   end foreach
 %}
 
