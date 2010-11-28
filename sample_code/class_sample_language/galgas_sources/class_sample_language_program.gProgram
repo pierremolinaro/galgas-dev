@@ -7,6 +7,7 @@ before {
 
 when . "class_sample_language"
 message "an '.class_sample_language' source file"
+indexing with class_sample_language_grammar
 ??@lstring inSourceFile {
 #--- Build Abstract Syntax Tree
   @declarationListAST declarationListAST ;

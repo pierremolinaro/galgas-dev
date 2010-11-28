@@ -41,6 +41,7 @@ map @grammarLabelMap {
 
 map @grammarMap {
   @grammarLabelMap mLabelMap ;
+  @bool mHasIndexing ;
   insert insertKey error message "the '%K' grammar has been already declared in %L" ;
   search searchKey error message "the '%K' grammar is not declared" ;
 }

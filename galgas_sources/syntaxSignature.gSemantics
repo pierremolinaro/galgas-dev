@@ -26,7 +26,8 @@ import "lexiqueCompilation.gSemantics" ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-method @semanticInstructionForGeneration appendSyntaxSignature
+method @semanticInstructionForGeneration appendSyntaxSignature # Capture all semantic instructions
+  ??@string unused inPosfix
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
 :
 end method ;
@@ -34,24 +35,26 @@ end method ;
 #---------------------------------------------------------------------------*
 
 function syntaxSignatureOfInstructionList
+  ??@string inPosfix
   ??@semanticInstructionListForGeneration inInstructionList
   ->@semanticInstructionListForGeneration outResult
 :
   outResult := [@semanticInstructionListForGeneration emptyList] ;
   foreach inInstructionList do
-    [mInstruction appendSyntaxSignature !?outResult] ;
+    [mInstruction appendSyntaxSignature !inPosfix !?outResult] ;
   end foreach ;
 end function ;
 
 #---------------------------------------------------------------------------*
 
 override method @nonterminalInstructionForGeneration appendSyntaxSignature
+  ??@string inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 :
   ioInstructionListForGeneration += ![@nonterminalInstructionForGeneration new
     !mInstructionLocation
     !mNonterminalName
-    !"parse"
+    !inPosfix
     ![@actualParameterListForGeneration emptyList]
   ] ;
 end method ;
@@ -59,6 +62,7 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @terminalCheckInstructionForGeneration appendSyntaxSignature
+  ??@string unused inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 :
   ioInstructionListForGeneration += ![@terminalCheckInstructionForGeneration new
@@ -73,13 +77,14 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @repeatInstructionForGeneration appendSyntaxSignature
+  ??@string inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 :
-  const @semanticInstructionListForGeneration repeated_instructionList := syntaxSignatureOfInstructionList [!m_repeated_instructionList] ;
+  const @semanticInstructionListForGeneration repeated_instructionList := syntaxSignatureOfInstructionList [!inPosfix !m_repeated_instructionList] ;
   @listOfSemanticInstructionListForGeneration listOfSemanticInstructionListForGeneration [emptyList] ;
   foreach mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration +=
-      !syntaxSignatureOfInstructionList [!mInstructionList]
+      !syntaxSignatureOfInstructionList [!inPosfix !mInstructionList]
       !mEndOfInstructionList
     ;
   end foreach ;
@@ -97,12 +102,13 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @selectInstructionForGeneration appendSyntaxSignature
+  ??@string inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 :
   @listOfSemanticInstructionListForGeneration listOfSemanticInstructionListForGeneration [emptyList] ;
   foreach mListOfSemanticInstructionListForGeneration do
     listOfSemanticInstructionListForGeneration +=
-      !syntaxSignatureOfInstructionList [!mInstructionList]
+      !syntaxSignatureOfInstructionList [!inPosfix !mInstructionList]
       !mEndOfInstructionList
     ;
   end foreach ;
@@ -117,27 +123,30 @@ end method ;
 #---------------------------------------------------------------------------*
 
 override method @parseRewindInstructionForGeneration appendSyntaxSignature
+  ??@string inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 :
   @semanticInstructionListForGeneration instructionList ;
   [mListOfSemanticInstructionListForGeneration first ?instructionList ?*] ;
-  ioInstructionListForGeneration .= syntaxSignatureOfInstructionList [!instructionList] ;
+  ioInstructionListForGeneration .= syntaxSignatureOfInstructionList [!inPosfix !instructionList] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @parseLoopInstructionForGeneration appendSyntaxSignature
+  ??@string inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 :
-  ioInstructionListForGeneration .= syntaxSignatureOfInstructionList [!mInstructionList] ;
+  ioInstructionListForGeneration .= syntaxSignatureOfInstructionList [!inPosfix !mInstructionList] ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
 override method @parseWhenInstructionForGeneration appendSyntaxSignature
+  ??@string inPosfix
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
 :
-  ioInstructionListForGeneration .= syntaxSignatureOfInstructionList [!mInstructionList] ;
+  ioInstructionListForGeneration .= syntaxSignatureOfInstructionList [!inPosfix !mInstructionList] ;
 end method ;
 
 #---------------------------------------------------------------------------*

@@ -39,6 +39,32 @@
 
 //---------------------------------------------------------------------------*
 //                                                                           *
+//                 I N D E X I N G    D I R E C T O R Y                      *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (NSString *) indexingDirectory {
+  return @%![[LEXIQUE_COMPONENT_ROOT mIndexingDirectory] utf8Representation]% ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//                 I N D E X I N G    T I T L E S                            *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (NSArray *) indexingTitles { // Array of NSString
+  return [NSArray arrayWithObjects:
+%
+  foreach [LEXIQUE_COMPONENT_ROOT mIndexingListAST] do
+    %    @%![mIndexComment utf8Representation]%,\n%
+  end foreach
+%    NULL
+  ] ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
 //                           Template Delimiters                             *
 //                                                                           *
 //---------------------------------------------------------------------------*
@@ -116,7 +142,7 @@
   BOOL scanningOk = YES ;
   mTokenCode = 0 ;
   while ((mTokenCode == 0) && (mCurrentChar != '\0')) {
-    mTokenFirstLocation = mCurrentLocation ;
+    mTokenStartLocation = mCurrentLocation ;
 %
   if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
 %    if ((mMatchedTemplateDelimiterIndex >= 0) && ([kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [mMatchedTemplateDelimiterIndex].mStartString length] > 0)) {
@@ -139,7 +165,7 @@
 %  foreach LEXICAL_ATTRIBUTE_MAP do
     %      %![mLexicalType cocoaResetPrefix]%mLexicalAttribute_%![lkey string] ![mLexicalType cocoaReset] % ;\n%
   end foreach
-%      mTokenFirstLocation = mCurrentLocation ;
+%      mTokenStartLocation = mCurrentLocation ;
 %
   block 6 :
     foreach LEXICAL_RULE_LIST do
@@ -163,7 +189,7 @@
   foreach LEXICAL_ATTRIBUTE_MAP do
     %    %![mLexicalType cocoaResetPrefix]%mLexicalAttribute_%![lkey string] ![mLexicalType cocoaReset] % ;\n%
   end foreach
-%    mTokenFirstLocation = mCurrentLocation ;
+%    mTokenStartLocation = mCurrentLocation ;
 %
   block 4 :
     foreach LEXICAL_RULE_LIST do

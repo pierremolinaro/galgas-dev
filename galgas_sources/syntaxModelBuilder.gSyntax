@@ -53,8 +53,6 @@ nonterminal <actual_input_parameter_list>
   !@actualInputParameterListAST outActualInputParameterList
 ;
 
-nonterminal <obsolete_declaration> ;
-
 #------------------------------------------------------------------------------*
 #                                                                              *
 #      S Y N T A X    C O M P O N E N T                                        *
@@ -75,35 +73,9 @@ rule <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot
   repeat
   while
     $import$ ;
-    select
-      $literal_string$ ? @lstring path ;
-      importedComponentPathList += !path ;
-    or
-      $semantics$ ;
-      $identifier$ ?* ;
-      warning here:"obsolete GALGAS 1 'import' declaration: useless in GALGAS 2" ;
-      $in$ ;
-      $literal_string$ ? * ;
-    or
-      $lexique$ ;
-      $identifier$ ?* ;
-      warning here:"obsolete GALGAS 1 'import' declaration: useless in GALGAS 2" ;
-      $in$ ;
-      $literal_string$ ? * ;
-    or
-      $grammar$ ;
-      $identifier$ ?* ;
-      warning here:"obsolete GALGAS 1 'import' declaration: useless in GALGAS 2" ;
-      $in$ ;
-      $literal_string$ ? * ;
-    or
-      $option$ ;
-      $identifier$ ?* ;
-      warning here:"obsolete GALGAS 1 'import' declaration: useless in GALGAS 2" ;
-      $in$ ;
-      $literal_string$ ? * ;
-    end select ;
-    $;$ ;
+    $literal_string$ ? @lstring path ;
+    importedComponentPathList += !path ;
+   $;$ ;
   end repeat ;
 #--- Loop on declarations
   @nonterminalDeclarationListAST mNonterminalDeclarationList [emptyList] ;
@@ -116,8 +88,6 @@ rule <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot
     <syntax_rule_declaration> !? mRuleList ;
   while
     <semantic_declaration> !?mSemanticDeclarations ;
-  while
-    <obsolete_declaration> ;
   end repeat ;
 #--- end
   $end$ ;
@@ -160,7 +130,7 @@ end rule ;
 rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList :
   @bool mHasParseLabel := false ;
   $nonterminal$ ;
-  $non_terminal_symbol$ ? @lstring mNonterminalName ;
+  $non_terminal_symbol$ ? @lstring mNonterminalName indexing ruleDefinition ;
   @nonTerminalLabelListAST mLabels [emptyList] ;
   <nonterminal_label_declaration> ![@lstring new !"" !here] !?mLabels ;
   repeat
@@ -222,7 +192,7 @@ end rule ;
 
 rule <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList :
   $rule$ ;
-  $non_terminal_symbol$ ? @lstring mNonterminalName ;
+  $non_terminal_symbol$ ? @lstring mNonterminalName indexing ruleDefinition ;
   @lstring labelName [new !"" !here] ;
   @syntaxRuleLabelListAST mLabelList [emptyList] ;
   repeat

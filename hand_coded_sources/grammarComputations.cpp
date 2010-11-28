@@ -576,7 +576,8 @@ analyzeGrammar (C_Compiler * inCompiler,
                       inOutputDirectoryForCppFiles,
                       inLexiqueName,
                       ok,
-                      verboseOptionOn) ;
+                      verboseOptionOn,
+                      inHasIndexing) ;
     if (ok) {
       errorFlag = kNoError ;
     }else{
@@ -601,7 +602,8 @@ analyzeGrammar (C_Compiler * inCompiler,
                       inOutputDirectoryForCppFiles,
                       inLexiqueName,
                       ok,
-                      verboseOptionOn) ;
+                      verboseOptionOn,
+                      inHasIndexing) ;
     if (ok) {
       errorFlag = kNoError ;
     }else{

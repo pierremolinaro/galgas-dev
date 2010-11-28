@@ -1123,7 +1123,8 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
                                const PMUInt32 inOriginalGrammarStartSymbol,
                                const C_String & inLexiqueName,
                                const C_String & inTargetFileName,
-                               const C_String & inOutputDirectoryForCppFiles) {
+                               const C_String & inOutputDirectoryForCppFiles,
+                               const bool inHasIndexing) {
 //--- Generate header file inclusion -----------------------------------------
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2 << "#include \"version_libpm.h\"\n"
@@ -1137,7 +1138,7 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
 
   generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
-                    "  #define SOURCE_FILE_AT_LINE(line) \"" << inCompiler->sourceFileName ().lastPathComponent () << "\", line\n"
+                    "  #define SOURCE_FILE_AT_LINE(line) \"" << inCompiler->sourceFilePath ().lastPathComponent () << "\", line\n"
                     "  #define COMMA_SOURCE_FILE_AT_LINE(line) , SOURCE_FILE_AT_LINE(line)\n"
                     "#else\n"
                     "  #define SOURCE_FILE_AT_LINE(line) \n"
@@ -1293,15 +1294,41 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
 //--- Generate methods, one by non terminal ----------------------------------
   cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, true) ;
   while (nonTerminal.hasCurrentObject ()) {
+    const PMSInt32 pureBNFleftNonterminalIndex = (PMSInt32) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () ;
+    const PMSInt32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
     generatedZone3.appendCppTitleComment (C_String ("'") + nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue () + "' non terminal implementation") ;
+    if (inHasIndexing) {
+      generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+                   << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+                   << "_indexing (C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
+                   << ") {\n"
+                      "  switch (inLexique->nextProductionIndex ()) {\n" ;
+      if (first >= 0) { // first<0 means the non terminal symbol is unuseful
+        MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
+        const PMSInt32 last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
+        MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
+        for (PMSInt32 j=first ; j<=last ; j++) {
+          const PMSInt32 ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
+          generatedZone3 << "  case " << cStringWithSigned (ip) << " :\n    " ;
+          inProductionRules (ip COMMA_HERE).engendrerAppelProduction (0,
+                                                                      inVocabulary,
+                                                                      "indexing",
+                                                                      generatedZone3) ;
+          generatedZone3 << "    break ;\n" ;
+        }
+      }
+      generatedZone3 << "  default :\n"
+                        "    inLexique->internalBottomUpParserError (HERE) ;\n"
+                        "    break ;\n"
+                        "  }\n"
+                        "}\n\n" ;
+    }
     cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal2 (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), true) ;
     while (currentAltForNonTerminal2.hasCurrentObject ()) {
       generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                      << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                      << "_" << currentAltForNonTerminal2.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                      << " (" ;
-      const PMSInt32 pureBNFleftNonterminalIndex = (PMSInt32) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () ;
-      const PMSInt32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
       cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal2.current_mFormalParametersList (HERE), true) ;
       PMSInt16 numeroParametre = 1 ;
       while (parametre.hasCurrentObject ()) {
@@ -1349,13 +1376,35 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
         }
       }
       generatedZone3 << "  default :\n"
-                 "    inLexique->internalBottomUpParserError (HERE) ;\n"
+                        "    inLexique->internalBottomUpParserError (HERE) ;\n"
+                        "    break ;\n"
                         "  }\n" ;
       generatedZone3 << "}\n\n" ;
       currentAltForNonTerminal2.gotoNextObject () ;
     }
     //--- Engendrer l'axiome ?
     if (nonTerminal.current_mNonTerminalIndex (HERE).uintValue () == inOriginalGrammarStartSymbol) {
+      if (inHasIndexing) {
+        generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+                     << "::performIndexing (C_Compiler * inCompiler,\n"
+                        "             const C_String & inSourceFilePath) {\n"
+                        "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
+                        "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", inCompiler->ioParametersPtr (), inSourceFilePath COMMA_HERE)) ;\n"
+                        "  scanner->enableIndexing () ;\n"
+                        "  if (scanner->sourceText () != NULL) {\n"
+                        "    scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n"
+                        "    const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
+                        "                                                     gActionTableIndex, gSuccessorTable,\n"
+                        "                                                     gProductionsTable) ;\n"
+                        "    if (ok) {\n"
+                        "      cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
+                        "      grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation () << "_indexing (scanner) ;\n"
+                        "    }\n"
+                        "    scanner->generateIndexFile () ;\n"
+                        "  }\n"
+                        "  macroDetachSharedObject (scanner) ;\n"
+                        "}\n\n" ;
+      }
       cEnumerator_nonterminalSymbolLabelMapForGrammarAnalysis currentAltForNonTerminal (nonTerminal.current_mNonterminalSymbolParametersMap (HERE), true) ;
       while (currentAltForNonTerminal.hasCurrentObject ()) {
         generatedZone3.appendCppTitleComment ("Grammar start symbol implementation") ;
@@ -1400,7 +1449,7 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
                           "    const GALGAS_string filePathAsString = inFilePath.reader_string (HERE) ;\n"
                           "    C_String filePath = filePathAsString.stringValue () ;\n"
                           "    if (! filePath.isAbsolutePath ()) {\n"
-                          "      filePath = inCompiler->sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;\n"
+                          "      filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;\n"
                           "    }\n"
                           "    if (filePath.fileExists ()) {\n"
                           "      C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
@@ -1409,8 +1458,8 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
                           "        if (scanner->sourceText () != NULL) {\n"
                           "          scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n"
                           "          const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
-                          "                                                            gActionTableIndex, gSuccessorTable,\n"
-                          "                                                            gProductionsTable) ;\n"
+                          "                                                           gActionTableIndex, gSuccessorTable,\n"
+                          "                                                           gProductionsTable) ;\n"
                           "          if (ok && ! scanner->mParseOnlyFlag) {\n"
                           "            cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
                           "            " ;
@@ -1628,7 +1677,8 @@ LR1_computations (C_Compiler * inCompiler,
                   const C_String & inOutputDirectoryForCppFiles,
                   const C_String & inLexiqueName,
                   bool & outOk,
-                  const bool inVerboseOptionOn) {
+                  const bool inVerboseOptionOn,
+                  const bool inHasIndexing) {
 //--- Console display
   if (inVerboseOptionOn) {
     co << "  Building LR(1) automaton... " ;
@@ -1853,7 +1903,8 @@ LR1_computations (C_Compiler * inCompiler,
                                    inOriginalGrammarStartSymbol,
                                    inLexiqueName,
                                    inTargetFileName,
-                                   inOutputDirectoryForCppFiles) ;
+                                   inOutputDirectoryForCppFiles,
+                                   inHasIndexing) ;
   }
   macroMyDelete (LR1_items_sets_collection) ;
   outOk = conflictCount == 0 ;

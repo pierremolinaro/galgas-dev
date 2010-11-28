@@ -150,7 +150,7 @@ void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
                  << ">" ;
       inHTMLfile.outputRawData ("</code><br>") ;
       inHTMLfile << "file '" 
-                 << currentSyntaxComponent.current_mSyntaxComponentName (HERE).mAttribute_location.sourceText ()->sourceFileName ()
+                 << currentSyntaxComponent.current_mSyntaxComponentName (HERE).mAttribute_location.sourceText ()->sourceFilePath ()
                  << "'" ;
       inHTMLfile.outputRawData ("<br>") ;
       inHTMLfile << "line "

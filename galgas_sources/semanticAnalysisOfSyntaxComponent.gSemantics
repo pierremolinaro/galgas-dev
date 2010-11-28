@@ -710,12 +710,12 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
   @listOfSemanticInstructionListForGeneration tempListOfBranches := listOfSemanticInstructionListForGeneration ;
   @semanticInstructionListForGeneration instructionList ;
   [!?tempListOfBranches popFirst ?instructionList ?*] ;
-  const @semanticInstructionListForGeneration referenceSignature := syntaxSignatureOfInstructionList [!instructionList] ;
+  const @semanticInstructionListForGeneration referenceSignature := syntaxSignatureOfInstructionList [!"parse" !instructionList] ;
   @bool ok := true ;
   foreach tempListOfBranches while ok do
     ok := compareSyntaxSignature [
       !referenceSignature
-      !syntaxSignatureOfInstructionList [!mInstructionList]
+      !syntaxSignatureOfInstructionList [!"parse" !mInstructionList]
       !mEndOfInstructionList
     ] ;
   end foreach ;
@@ -870,7 +870,7 @@ override method @parseLoopInstructionForGeneration generateInstruction
   ioGeneratedCode .= "//--- 'parse'\n" ;
   generateInstructionList
     !inGenerateCheckValid
-    !syntaxSignatureOfInstructionList [!mInstructionList]
+    !syntaxSignatureOfInstructionList [!"parse" !mInstructionList]
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
     !?ioGeneratedCode
@@ -936,8 +936,8 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   [!?ioVariableMap closeOverride !mEndOfElseInstructionList] ;
 #--- Check syntax signature
   const @bool ok := compareSyntaxSignature [
-    !syntaxSignatureOfInstructionList [!when_instructionListForGeneration]
-    !syntaxSignatureOfInstructionList [!else_instructionListForGeneration]
+    !syntaxSignatureOfInstructionList [!"parse" !when_instructionListForGeneration]
+    !syntaxSignatureOfInstructionList [!"parse" !else_instructionListForGeneration]
     !mEndOfElseInstructionList
   ] ;
 #--- Generate instruction
@@ -1049,6 +1049,7 @@ routine semanticAnalysisOfSyntaxComponent
   ??@predefinedTypes inPredefinedTypes
   ??@terminalMap inTerminalMap
   ??@stringset inIndexNameSet
+  ??@bool inHasIndexing
   !@syntaxDeclarationForGeneration outSyntaxDeclarationForGeneration
 :
 #------------ Build nonterminal map
@@ -1138,7 +1139,7 @@ routine semanticAnalysisOfSyntaxComponent
     !nonterminalMap
     !ruleDeclarationList
     !selectMethodCount
-    ![inIndexNameSet count] > 0
+    !inHasIndexing
   ] ;
 end routine ;
 

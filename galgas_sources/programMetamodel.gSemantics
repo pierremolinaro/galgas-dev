@@ -27,6 +27,7 @@ list @programRuleList {
   @lstring mSourceFileHelp ;
   @lstring mSourceFileVariableName ;
   @bool mSourceFileVariableNameIsUnused ;
+  @lstring mIndexingGrammar ; # Empty string if no indexing
   @semanticInstructionListAST mInstructionList ;
   @location mEndOfInstructionList ;
 }

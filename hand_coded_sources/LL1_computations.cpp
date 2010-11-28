@@ -466,7 +466,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
 
   generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#ifndef DO_NOT_GENERATE_CHECKINGS\n"
-                    "  #define SOURCE_FILE_AT_LINE(line) \"" << inCompiler->sourceFileName ().lastPathComponent () << "\", line\n"
+                    "  #define SOURCE_FILE_AT_LINE(line) \"" << inCompiler->sourceFilePath ().lastPathComponent () << "\", line\n"
                     "  #define COMMA_SOURCE_FILE_AT_LINE(line) , SOURCE_FILE_AT_LINE(line)\n"
                     "#else\n"
                     "  #define SOURCE_FILE_AT_LINE(line) \n"
@@ -649,6 +649,28 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
     }
   //--- Generate 'startParsing' method ?
     if (nonTerminal.current_mNonTerminalIndex (HERE).uintValue () == inOriginalGrammarStartSymbol) {
+      if (inHasIndexing) {
+        generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+                     << "::performIndexing (C_Compiler * inCompiler,\n"
+                        "             const C_String & inSourceFilePath) {\n"
+                        "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
+                        "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", inCompiler->ioParametersPtr (), inSourceFilePath COMMA_HERE)) ;\n"
+                        "  scanner->enableIndexing () ;\n"
+                        "  if (scanner->sourceText () != NULL) {\n"
+                        "    scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n"
+                        "    const bool ok = scanner->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
+                        "                                                    gFirstProductionIndexes, gDecision, gDecisionIndexes, "
+                       << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
+                       << ") ;\n"
+                        "    if (ok) {\n"
+                        "      cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
+                        "      grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation () << "_indexing (scanner) ;\n"
+                        "    }\n"
+                        "    scanner->generateIndexFile () ;\n"
+                        "  }\n"
+                        "  macroDetachSharedObject (scanner) ;\n"
+                        "}\n\n" ;
+      }
       currentAltForNonTerminal.rewind () ;
       while (currentAltForNonTerminal.hasCurrentObject ()) {
         generatedZone3.appendCppTitleComment ("Grammar start symbol implementation") ;
@@ -692,16 +714,15 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
                           "    const GALGAS_string filePathAsString = inFilePath.reader_string (HERE) ;\n"
                           "    C_String filePath = filePathAsString.stringValue () ;\n"
                           "    if (! filePath.isAbsolutePath ()) {\n"
-                          "      filePath = inCompiler->sourceFileName ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;\n"
+                          "      filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;\n"
                           "    }\n"
                           "    if (filePath.fileExists ()) {\n"
                           "    C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
                           "    macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", inCompiler->ioParametersPtr (), filePath COMMA_HERE)) ;\n"
-                          "    // if (scanner->needsCompiling ()) {\n"
                           "      if (scanner->sourceText () != NULL) {\n"
                           "        scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n"
                           "        const bool ok = scanner->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
-                          "                                                         gFirstProductionIndexes, gDecision, gDecisionIndexes, "
+                          "                                                        gFirstProductionIndexes, gDecision, gDecisionIndexes, "
                        << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
                        << ") ;\n"
                           "        if (ok && ! scanner->mParseOnlyFlag) {\n"

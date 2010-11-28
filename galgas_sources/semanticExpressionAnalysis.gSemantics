@@ -380,7 +380,6 @@ override method @selfCopyInExpressionAST analyzeSemanticExpression
   if [inAnalysisContext->mSelfTypeProxy isNull] then
     error mSelfLocation: "'selfcopy' cannot be used in this context" : outExpression ;
   else
-#    const @string selfCppName := "GALGAS_" . [inAnalysisContext->mSelfTypeProxy identifierRepresentation] . " (" . inAnalysisContext->mSelfObjectCppPointer . ")" ;
     const @string selfCppName := inAnalysisContext->mSelfObjectCppPointer ;
     outExpression := [@selfCopyInExpressionForGeneration new !inAnalysisContext->mSelfTypeProxy !mSelfLocation !selfCppName] ;
   end if ;
@@ -1763,6 +1762,9 @@ override method @varInExpressionAST analyzeSemanticExpression
   @string nameForCheckingFormalParameterUsing ;
   [!?ioVariableMap searchForReadAccess !mVarName ?type ?sourceVariableCppName ?nameForCheckingFormalParameterUsing] ;
   foreach mStructFieldList do
+    if [type mTypeKindEnum] != [@typeKindEnum structType] then
+      error mValue:"the '->' operator requires the receiver to be a struct" ;
+    end if ;
     const @attributeMap attributeMap := [type mAttributeMap] ;
     [attributeMap searchKey !mValue ?type] ;
   end foreach ;

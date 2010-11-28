@@ -241,6 +241,7 @@ routine buildGrammarComponentMapForSemanticAnalysis
     [!?ioSemanticContext->mGrammarMap insertKey
       ![mGrammarComponentAST mGrammarName]
       !grammarLabelMap
+      ![[mGrammarComponentAST mHasIndexing] bool]
     ] ;
   end foreach ;
 end routine ;

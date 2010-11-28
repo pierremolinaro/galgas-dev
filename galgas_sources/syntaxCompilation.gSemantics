@@ -152,6 +152,7 @@ routine compileSyntaxComponent
   foreach [lexiqueComponentRoot mIndexingListAST] do
     indexNameSet += ![mIndexName string] ;
   end foreach ;
+  const @bool hasIndexing := not [[lexiqueComponentRoot mIndexingDirectory] isNowhere] ;
 #--- Build semantic context from rule headers and non terminal declaration
   if [@uint errorCount] == 0 then
     const @string lexiqueName := [[[syntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] ;
@@ -167,6 +168,7 @@ routine compileSyntaxComponent
       !predefinedTypes
       !terminalMap
       !indexNameSet
+      !hasIndexing
       ?syntaxDeclarationForGeneration
     ;
   #------ Semantic Analysis
@@ -241,7 +243,7 @@ routine compileSyntaxComponent
             implementationString .= generateProcedure [
               !ruleName
               ![@formalParameterListForGeneration emptyList]
-              !syntaxSignatureOfInstructionList [!instructionList]
+              !syntaxSignatureOfInstructionList [!"parse" !instructionList]
               !false
               !lexiqueCppName
               !false # Do not generate location Argument
@@ -249,7 +251,7 @@ routine compileSyntaxComponent
             ] ;
           end if ;
         #--- Generate indexing code
-          if [indexNameSet count] > 0 then
+          if hasIndexing then
             @semanticInstructionListForGeneration instructionList ;
             [mLabelImplementationList first ?* ?* ?* ?* ?instructionList] ;
             const @string ruleName := "cParser_" . [componentName identifierRepresentation]
@@ -260,7 +262,7 @@ routine compileSyntaxComponent
             implementationString .= generateProcedure [
               !ruleName
               ![@formalParameterListForGeneration emptyList]
-              !syntaxSignatureOfInstructionList [!instructionList]
+              !syntaxSignatureOfInstructionList [!"indexing" !instructionList]
               !false
               !lexiqueCppName
               !false # Do not generate location Argument

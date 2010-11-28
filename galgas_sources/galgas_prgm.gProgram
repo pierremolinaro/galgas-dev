@@ -76,6 +76,7 @@ before {
 
 when . "gOption"
 message "a GALGAS option source file"
+indexing with optionLL1grammar
 ??@lstring inSourceFile {
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
@@ -92,6 +93,7 @@ message "a GALGAS option source file"
 
 when . "gLexique"
 message "a GALGAS lexique source file"
+indexing with lexiqueLL1grammar
 ??@lstring inSourceFile {
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
@@ -108,6 +110,7 @@ message "a GALGAS lexique source file"
 
 when . "gSemantics"
 message "a GALGAS semantics source file"
+indexing with semanticsSLRgrammar
 ??@lstring inSourceFile {
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
@@ -124,6 +127,7 @@ message "a GALGAS semantics source file"
 
 when . "gSyntax"
 message "a GALGAS syntax source file"
+indexing with syntaxSLRgrammar
 ??@lstring inSourceFile {
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
@@ -140,6 +144,7 @@ message "a GALGAS syntax source file"
 
 when . "gGrammar"
 message "a GALGAS grammar source file"
+indexing with grammarLL1grammar
 ??@lstring inSourceFile {
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
@@ -160,6 +165,7 @@ message "a GALGAS grammar source file"
 
 when . "gGui"
 message "a GALGAS GUI source file"
+indexing with guiGrammar
 ??@lstring inSourceFile {
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
@@ -176,6 +182,7 @@ message "a GALGAS GUI source file"
 
 when . "gProgram"
 message "a GALGAS program source file"
+indexing with programSLRgrammar
 ??@lstring inSourceFile {
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
@@ -196,6 +203,7 @@ message "a GALGAS program source file"
 
 when . "gProject"
 message "a GALGAS project source file"
+indexing with projectLL1grammar
 ??@lstring inSourceFile {
   const @string outputDirectory := outputDirectory [!inSourceFile] ;
 #--- Parse metamodel component

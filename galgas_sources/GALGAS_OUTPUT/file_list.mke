@@ -100,6 +100,7 @@ SOURCES += capCollectionElementArray.cpp
 SOURCES += cSortedListElement.cpp
 SOURCES += capSortedListElement.cpp
 SOURCES += cGenericAbstractEnumerator.cpp
+SOURCES += cIndexingDictionary.cpp
 
 SOURCES += AC_GALGAS_root.cpp
 SOURCES += AC_GALGAS_list.cpp

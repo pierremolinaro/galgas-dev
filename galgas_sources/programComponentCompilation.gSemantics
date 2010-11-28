@@ -39,6 +39,7 @@ local filewrapper programFileGenerationTemplate in "../generation_templates/prog
     ?@stringlist IMPORTED_COMPONENT_LIST
     ?@programRuleList PROGRAM_RULE_LIST
     ?@string VERSION
+    ?@bool HAS_INDEXING
   ;
 
 }
@@ -86,9 +87,18 @@ local routine compileProgramRules
   ??@analysisContext inAnalysisContext
   ??@programComponentAST inProgramComponentAST
   ?!@semanticDeclarationSortedListForGeneration ioDecoratedDeclarationListForGeneration
+  ?!@bool ioHasIndexing
 :
   @uint ruleIndex := 0 ;
   foreach [inProgramComponentAST mProgramRules] do
+    if mIndexingGrammar->string != "" then
+      ioHasIndexing := true ;
+      @bool hasIndexing ;
+      [inAnalysisContext->mSemanticContext->mGrammarMap searchKey !mIndexingGrammar ?* ?hasIndexing] ;
+      if not hasIndexing then
+        error mIndexingGrammar : "the '" . mIndexingGrammar . "' grammar does not enable indexing" ;
+      end if ;
+    end if ;
     @formalParameterListAST argumentList [emptyList] ;
     argumentList +=
       ![@formalArgumentPassingModeAST argumentConstantIn]
@@ -115,8 +125,8 @@ local routine compileProgramRules
       !routineSignature
       !semanticInstructionListForGeneration
     ]
-  !""
-  ;
+    !""
+    ;
     ruleIndex ++ ;
   end foreach ;
 end routine ;
@@ -244,10 +254,12 @@ routine compileProgramComponent
     !?decoratedDeclarationListForGeneration
   ;
 #--- Analyse program rules
+  @bool hasIndexing := false ;
   compileProgramRules
     !analysisContext
     !programComponentAST
     !?decoratedDeclarationListForGeneration
+    !?hasIndexing
   ;
 #--- Analyse 'after' instructions
   compileAfterClause
@@ -285,6 +297,7 @@ routine compileProgramComponent
       !implementationIncludeList
       ![programComponentAST mProgramRules]
       ![[programComponentAST mVersionString] string]
+      !hasIndexing
     ] ;
     foreach decoratedDeclarationListForGeneration do
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;

@@ -48,7 +48,8 @@ SLR_computations (C_Compiler * inCompiler,
                   const C_String & inOutputDirectoryForCppFiles,
                   const C_String & inLexiqueName,
                   bool & outOk,
-                  const bool inVerboseOptionOn) ;
+                  const bool inVerboseOptionOn,
+                  const bool inHasIndexing) ;
 
 //---------------------------------------------------------------------------*
 
