@@ -24,7 +24,7 @@
 //---------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFileName ().cString (HERE), lineNumber ()
+  #define LINE_AND_SOURCE_FILE sourceText ()->sourceFilePath ().cString (HERE), lineNumber ()
   #define COMMA_LINE_AND_SOURCE_FILE , LINE_AND_SOURCE_FILE
 #else
   #define LINE_AND_SOURCE_FILE
@@ -73,6 +73,16 @@ C_Lexique (inCallerCompiler, inParametersPtr, inSourceString, inStringForError C
     %,\nmMatchedTemplateDelimiterIndex (-1)%
   end if
 % {
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//                 I N D E X I N G    D I R E C T O R Y                      *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
+  return %![[LEXIQUE_COMPONENT_ROOT mIndexingDirectory] utf8Representation]% ;
 }
 
 //---------------------------------------------------------------------------*
@@ -284,7 +294,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
 %  foreach LEXICAL_ATTRIBUTE_MAP do
     %    token.mLexicalAttribute_%![lkey identifierRepresentation] ![mLexicalType initialization] % ;\n%
   end foreach
-%    mTokenFirstLocation = mCurrentLocation ;
+%    mTokenStartLocation = mCurrentLocation ;
     try{
 %
   block 8 :
@@ -309,7 +319,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
   foreach LEXICAL_ATTRIBUTE_MAP do
     %    token.mLexicalAttribute_%![lkey identifierRepresentation] ![mLexicalType initialization] % ;\n%
   end foreach
-%    mTokenFirstLocation = mCurrentLocation ;
+%    mTokenStartLocation = mCurrentLocation ;
     try{
 %
   block 6 :
@@ -344,8 +354,8 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDEN
   cTokenFor_%!LEXIQUE_IDENTIFIER% * ptr = NULL ;
   macroMyNew (ptr, cTokenFor_%!LEXIQUE_IDENTIFIER% ()) ;
   ptr->mTokenCode = inToken.mTokenCode ;
-  ptr->mStartLocation = mTokenFirstLocation ;
-  ptr->mEndLocation = mTokenLastLocation ;
+  ptr->mStartLocation = mTokenStartLocation ;
+  ptr->mEndLocation = mTokenEndLocation ;
   ptr->mTemplateStringBeforeToken = inToken.mTemplateStringBeforeToken ;
 %
   foreach LEXICAL_ATTRIBUTE_MAP do

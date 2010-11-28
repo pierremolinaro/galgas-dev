@@ -568,7 +568,12 @@ routine compileGrammarComponent
     !?ioParsedComponentStruct
     ?lexiqueComponentAST
   ;
-  const @bool hasIndexing := [[lexiqueComponentAST mIndexingListAST] length] > 0 ;
+  const @bool hasIndexing := not [[lexiqueComponentAST mIndexingDirectory] isNowhere] ;
+  if hasIndexing & not grammarComponentRoot->mHasIndexing->bool then
+    error grammarComponentRoot->mHasIndexing : "the grammar enables indexing, but the '" . lexiqueComponentAST->mLexiqueComponentName . "' does not" ;
+  elsif (not hasIndexing) & grammarComponentRoot->mHasIndexing->bool then
+    error grammarComponentRoot->mGrammarName : "the grammar does not enable indexing, but the '" . lexiqueComponentAST->mLexiqueComponentName . "' does" ;
+  end if ;
 #---------------------------------------------------------- Start symbol
 #--- Search start symbol in non terminal map
   @nonterminalSymbolLabelMapForGrammarAnalysis startSymbolAltMap ;

@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-grammar grammarLL1grammar "LL1" :
+indexing grammar grammarLL1grammar "LL1" :
   with "grammarModelBuilder.gSyntax" ;
 
   root <grammar_component_start_symbol>

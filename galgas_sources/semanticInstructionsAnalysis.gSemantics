@@ -1497,6 +1497,7 @@ override method @grammarInstructionAST analyzeSemanticInstruction
   [inAnalysisContext->mSemanticContext->mGrammarMap searchKey
     !mGrammarComponentName
     ?grammarLabelMap
+    ?*
   ] ;
 #--- Search label
   @formalParameterSignature labelSignature ;

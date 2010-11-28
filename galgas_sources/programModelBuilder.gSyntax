@@ -101,6 +101,16 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
     $literal_string$ ? @lstring mSourceFileExtension ;
     $message$ ;
     $literal_string$ ? @lstring mSourceFileHelp ;
+  #--- Indexing
+    @lstring indexingGrammar ; # Empty string if no indexing
+    select
+      indexingGrammar := ["" nowhere] ;
+    or
+      $indexing$ ;
+      $with$ ;
+      $identifier$ ? indexingGrammar ;
+    end select ;
+  #--- Source file
     $??$ ;
     $type_name$ ? @lstring typeName ;
     @bool isUnused ;
@@ -114,6 +124,7 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
       error typeName : "the only type allowed here is '@lstring'" ;
     end if ;
     $identifier$ ? @lstring mSourceFileVariableName ;
+  #---
     ${$ ;
     @semanticInstructionListAST mInstructionList ;
     <semantic_instruction_list> ? mInstructionList ;
@@ -124,6 +135,7 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
       !mSourceFileHelp
       !mSourceFileVariableName
       !isUnused
+      !indexingGrammar
       !mInstructionList
       !endOfInstructionList
     ;

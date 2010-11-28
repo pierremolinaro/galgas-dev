@@ -1,4 +1,4 @@
-lexique class_sample_language_lexique :
+lexique class_sample_language_lexique indexing in "indexes" :
 
 @string tokenString ;
 

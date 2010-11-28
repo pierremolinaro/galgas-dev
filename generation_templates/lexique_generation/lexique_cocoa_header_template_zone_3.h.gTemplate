@@ -11,6 +11,10 @@
 
 - (NSString *) styleIdentifierForStyleIndex: (SInt32) inIndex ;
 
+- (NSString *) indexingDirectory ;
+
+- (NSArray *) indexingTitles ; // Array of NSString
+
 - (BOOL) isTemplateLexique ;
 @end
 

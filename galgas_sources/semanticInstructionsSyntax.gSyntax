@@ -92,7 +92,7 @@ rule <semantic_declaration>
 :
   $extern$ ;
   $routine$ ;
-  $identifier$ ? @lstring mActionName ;
+  $identifier$ ? @lstring mActionName indexing routineDefinition ;
   @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
   $;$ ;
@@ -115,7 +115,7 @@ rule <semantic_declaration>
   @bool isGlobal ;
   <local_declaration> ?isGlobal ;
   $routine$ ;
-  $identifier$ ? @lstring mRoutineName ;
+  $identifier$ ? @lstring mRoutineName indexing routineDefinition ;
   @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
   $:$ ;
@@ -146,7 +146,7 @@ rule <semantic_declaration>
   @bool isGlobal ;
   <local_declaration> ?isGlobal ;
   $function$ ;
-  $identifier$ ? @lstring mRoutineName ;
+  $identifier$ ? @lstring mRoutineName indexing functionDefinition ;
   @formalInputParameterListAST formalInputParameterList ;
   <formal_input_parameter_list> ? formalInputParameterList ;
   $->$ ;
@@ -182,7 +182,7 @@ rule <semantic_declaration>
   @bool isGlobal ;
   <local_declaration> ?isGlobal ;
   $once$ ;
-  $identifier$ ? @lstring mRoutineName ;
+  $identifier$ ? @lstring mRoutineName indexing functionDefinition ;
   $->$ ;
   $type_name$ ?@lstring resultTypeName ;
   $identifier$ ?@lstring resultVariableName ;
@@ -214,7 +214,7 @@ rule <semantic_declaration>
 :
   $extern$ ;
   $function$ ;
-  $identifier$ ? @lstring mActionName ;
+  $identifier$ ? @lstring mActionName indexing functionDefinition ;
   @formalInputParameterListAST formalInputParameterList ;
   <formal_input_parameter_list> ? formalInputParameterList ;
   $->$ ;

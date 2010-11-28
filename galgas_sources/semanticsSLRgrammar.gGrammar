@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-grammar semanticsSLRgrammar "SLR" :
+indexing grammar semanticsSLRgrammar "SLR" :
   with "expressionSyntax.gSyntax" ;
   with "parameterArgumentSyntax.gSyntax" ;
   with "semanticInstructionsSyntax.gSyntax" ;

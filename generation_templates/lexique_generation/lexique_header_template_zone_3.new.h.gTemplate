@@ -35,6 +35,9 @@
   after %\n  } ;\n%
   end foreach
 %
+//--- Indexing directory
+  protected : virtual C_String indexingDirectory (void) const ;
+
 //--- Parse lexical token
   protected : virtual bool parseLexicalToken (void) ;
 

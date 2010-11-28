@@ -34,6 +34,15 @@ rule <lexique_component_start_symbol> !@lexiqueComponentAST outLexiqueComponentR
   $lexique$ ;
 #--- Lexique Component Name
   $identifier$ ?@lstring lexiqueComponentName ;
+#--- Enable indexing ?
+  @lstring indexingDirectory ;
+  select
+    indexingDirectory := ["" nowhere] ;
+  or
+    $indexing$ ;
+    $in$ ;
+    $literal_string$ ? indexingDirectory ;
+  end select ;
   $:$ ;
 #--- Parse lexique body
   @metamodelTemplateDelimitorListAST templateDelimitorList [emptyList] ;
@@ -77,8 +86,8 @@ rule <lexique_component_start_symbol> !@lexiqueComponentAST outLexiqueComponentR
     $identifier$ ?@lstring indexName ;
     $:$ ;
     $literal_string$ ?@lstring indexComment ;
-    $;$ ;
     indexingListAST += !indexName !indexComment ;
+    $;$ ;
   end repeat ;
   $end$ ;
   $lexique$ ;
@@ -97,6 +106,7 @@ rule <lexique_component_start_symbol> !@lexiqueComponentAST outLexiqueComponentR
     !externRoutineList
     !externFunctionList
     !indexingListAST
+    !indexingDirectory
   ] ;
 end rule ;
 

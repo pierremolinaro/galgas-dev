@@ -461,7 +461,6 @@ class @outputInputActualParameterAST extends @actualParameterAST {
 #---------------------------------------------------------------------------*
 
 class @inputActualParameterAST extends @actualParameterAST {
-#  @lstring mDeclarationTypeName ; # Empty string if no type declaration
   @lstring mInputActualParameterName ;
 }
 

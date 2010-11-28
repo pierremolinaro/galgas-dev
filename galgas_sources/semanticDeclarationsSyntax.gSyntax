@@ -29,26 +29,14 @@ import "semanticsTypesForAST.gSemantics" ;
 
 nonterminal <formal_parameter_list> !@formalParameterListAST outFormalParameterList ;
 
-nonterminal <actual_parameter_list> !@actualParameterListAST outActualParameterList ;
-
 nonterminal <semantic_instruction_list> !@semanticInstructionListAST outInstructionsList ;
 
-nonterminal <semantic_declaration>
- ?!@semanticDeclarationListAST ioSemanticDeclarations
-;
-
 nonterminal <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList ;
-
-nonterminal <obsolete_declaration> ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
 #    A T T R I B U T E    I N    C O L L E C T I O N                        *
 #                                                                           *
-#---------------------------------------------------------------------------*
-
-nonterminal <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollectionList ;
-
 #---------------------------------------------------------------------------*
 
 rule <attribute_declaration> ?!@attributeInCollectionListAST ioAttributeInCollectionList :
@@ -80,7 +68,7 @@ rule <semantic_declaration>
 :
   $listmap$ ;
 #--- Map type name
-  $type_name$ ? @lstring mListmapTypeName ;
+  $type_name$ ? @lstring mListmapTypeName indexing listmapDefinition ;
   $($ ;
   $type_name$ ? @lstring mAssociatedListTypeName ;
   $)$ ;
@@ -96,19 +84,6 @@ end rule ;
 #                                                                           *
 #    M A P    D E C L A R A T I O N                                         *
 #                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <obsolete_declaration> :
-  $map$ ;
-  $type_name$ ? @lstring mListName ;
-  warning mListName: "GALGAS 1 obsolete declaration: useless for GALFAS 2" ;
-  $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-nonterminal <insert_method_declaration> ?!@insertMethodListAST ioMapMethodList ;
-
 #---------------------------------------------------------------------------*
 
 rule <insert_method_declaration> ?!@insertMethodListAST ioMapMethodList :
@@ -146,7 +121,7 @@ rule <semantic_declaration>
 :
   $map$ ;
 #--- Map type name
-  $type_name$ ? @lstring mMapTypeName ;
+  $type_name$ ? @lstring mMapTypeName indexing mapDefinition ;
 #--- Map properties
   ${$ ;
   @attributeInCollectionListAST mAttributeList [emptyList] ;
@@ -209,7 +184,7 @@ rule <semantic_declaration>
 :
   $uniquemap$ ;
 #--- Map type name
-  $type_name$ ? @lstring mMapTypeName ;
+  $type_name$ ? @lstring mMapTypeName indexing uniquemapDefinition ;
 #--- Map properties
   ${$ ;
   @attributeInCollectionListAST mAttributeList [emptyList] ;
@@ -369,20 +344,11 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <obsolete_declaration> :
-  $mapproxy$ ;
-  $type_name$ ? @lstring mMapTypeName ;
-  warning mMapTypeName: "GALGAS 1 obsolete declaration: useless for GALFAS 2" ;
-  $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   $mapproxy$ ;
-  $type_name$ ?@lstring mMapIndexName ;
+  $type_name$ ?@lstring mMapIndexName indexing mapProxyDefinition ;
   $($ ;
   $type_name$ ? @lstring mMapTypeName ;
   $)$ ;
@@ -398,12 +364,6 @@ end rule ;
 #                                                                           *
 #    C L A S S    D E C L A R A T I O N                                     *
 #                                                                           *
-#---------------------------------------------------------------------------*
-
-nonterminal <class_abstract_method_declaration>
-  ?!@abstractMethodDefinitionListAST ioAbstractMethodDefinitionList
-;
-
 #---------------------------------------------------------------------------*
 
 rule <class_abstract_method_declaration>
@@ -424,10 +384,6 @@ rule <class_abstract_method_declaration>
   $;$ ;
   ioAbstractMethodDefinitionList += !isOverriding !mMethodName !mSignature ;
 end rule ;
-
-#---------------------------------------------------------------------------*
-
-nonterminal <class_method_declaration> ?!@methodDefinitionListAST ioMethodDefinitionList ;
 
 #---------------------------------------------------------------------------*
 
@@ -471,7 +427,7 @@ rule <semantic_declaration>
     mIsAbstract := true ;
   end select ;
   $class$ ;
-  $type_name$ ?@lstring mClassTypeName ; # indexing classDefinition ;
+  $type_name$ ?@lstring mClassTypeName indexing classDefinition ;
   select
     $;$ ;
   or
@@ -480,7 +436,7 @@ rule <semantic_declaration>
       mSuperClassName := ["" nowhere] ;
     or
       $extends$ ;
-      $type_name$ ? mSuperClassName ; # indexing superClassReference ;
+      $type_name$ ? mSuperClassName indexing classReferencedAsSuperClass ;
     end select ;
     @lstringlist classFeatureList [emptyList] ;
     select
@@ -532,7 +488,7 @@ rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   $struct$ ;
-  $type_name$ ?@lstring mListTypeName ;
+  $type_name$ ?@lstring mListTypeName indexing structDefinition ;
   ${$ ;
   @attributeInCollectionListAST mAttributeList [emptyList] ;
   repeat
@@ -557,7 +513,7 @@ rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   $list$ ;
-  $type_name$ ?@lstring mListTypeName ;
+  $type_name$ ?@lstring mListTypeName indexing listDefinition ;
   ${$ ;
   @attributeInCollectionListAST mAttributeList [emptyList] ;
   repeat
@@ -573,31 +529,9 @@ rule <semantic_declaration>
 end rule ;
 
 #---------------------------------------------------------------------------*
-
-rule <obsolete_declaration> :
-  $list$ ;
-  $type_name$ ? @lstring mListName ;
-  warning mListName: "GALGAS 1 obsolete declaration: useless for GALFAS 2" ;
-  $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
 #                                                                           *
 #    S O R T E D    L I S T    D E C L A R A T I O N                        *
 #                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <obsolete_declaration> :
-  $sortedlist$ ;
-  $type_name$ ? @lstring mListName ;
-  warning mListName: "GALGAS 1 obsolete declaration: useless for GALFAS 2" ;
-  $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-nonterminal <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList ;
-
 #---------------------------------------------------------------------------*
 
 rule <sortedlist_sort_descriptor> ?!@sortedListSortDescriptorListAST ioSortedListSortDescriptorList :
@@ -619,7 +553,7 @@ rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   $sortedlist$ ;
-  $type_name$ ?@lstring mSortedListTypeName ;
+  $type_name$ ?@lstring mSortedListTypeName indexing sortedListDefinition ;
   ${$ ;
   @attributeInCollectionListAST mAttributeList [emptyList] ;
   repeat
@@ -647,10 +581,6 @@ end rule ;
 #                                                                           *
 #    E N U M    D E C L A R A T I O N                                       *
 #                                                                           *
-#---------------------------------------------------------------------------*
-
-nonterminal <enum_message_declaration> ?!@enumMessageListAST ioEnumMessageList ;
-
 #---------------------------------------------------------------------------*
 
 rule <enum_message_declaration> ?!@enumMessageListAST ioEnumMessageList :
@@ -681,7 +611,7 @@ rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   $enum$ ;
-  $type_name$ ? @lstring mEnumTypeName ;
+  $type_name$ ? @lstring mEnumTypeName indexing enumDefinition ;
   ${$ ;
   @lstringlist mConstantList [emptyList] ;
   repeat
@@ -723,7 +653,7 @@ rule <semantic_declaration>
     isGlobal := false ;
   end select ;
   $filewrapper$ ;
-  $identifier$ ? @lstring mFilewrapperName ;
+  $identifier$ ? @lstring mFilewrapperName indexing filewrapperDefinition ;
   $in$ ;
   $literal_string$ ? @lstring mFilewrapperPath ;
   ${$ ;
@@ -1033,7 +963,7 @@ rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   $graph$ ;
-  $type_name$ ? @lstring graphTypeName ;
+  $type_name$ ? @lstring graphTypeName indexing graphDefinition ;
   $($ ;
   $type_name$ ? @lstring associatedListTypeName ;
   $)$ ;

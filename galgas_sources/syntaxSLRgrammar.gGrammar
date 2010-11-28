@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-grammar syntaxSLRgrammar "SLR" :
+indexing grammar syntaxSLRgrammar "SLR" :
   with "syntaxModelBuilder.gSyntax" ;
   with "expressionSyntax.gSyntax" ;
   with "parameterArgumentSyntax.gSyntax" ;

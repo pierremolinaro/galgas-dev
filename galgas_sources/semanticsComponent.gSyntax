@@ -35,8 +35,6 @@ nonterminal <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 ;
 
-nonterminal <obsolete_declaration> ;
-
 #---------------------------------------------------------------------------*
 
 rule <semantics_component_start_symbol>
@@ -77,8 +75,6 @@ rule <semantics_component_start_symbol>
     $;$ ;
   while
     <semantic_declaration> !?mSemanticDeclarations ;
-  while
-    <obsolete_declaration> ;
   end repeat ;
 #--- end
   $end$ ;

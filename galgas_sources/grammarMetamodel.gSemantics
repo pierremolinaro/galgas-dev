@@ -22,7 +22,8 @@ import "syntaxMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-class @grammarComponentAST {
+struct @grammarComponentAST {
+  @lbool mHasIndexing ;
   @lstring mGrammarName ;
   @lstring mGrammarClass ;
   @lstringlist mSyntaxComponents ;

@@ -31,6 +31,10 @@ foreach NON_TERMINAL_MAP do
     end if
   #--- Start symbol ?
     if [[GRAMMAR_COMPONENT_ROOT mStartSymbolName] string] == [lkey string] then
+      if HAS_INDEXING then
+        %  public : static void performIndexing (%?^%C_Compiler * inCompiler,\n%
+        !^%const C_String & inSourceFilePath) ;\n\n%
+      end if
       %  public : static void _performSourceFileParsing_%![label_lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
       !^%GALGAS_lstring inFileName%
       foreach label_mFormalParametersList do index IDX

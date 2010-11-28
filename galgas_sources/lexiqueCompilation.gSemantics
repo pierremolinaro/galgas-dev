@@ -921,6 +921,11 @@ routine compileLexiqueComponent
    lexiqueAnalysisContext->mTemplateDelimitorList += !mStartString !mEndString !preservesStartDelimiter ;
   end foreach ;
 #--------------------------------------- Check "indexing" declarations
+  if [[lexiqueComponentRoot mIndexingDirectory] isNowhere] then
+    foreach [lexiqueComponentRoot mIndexingListAST] do
+      error mIndexName : "indexing declaration requires one 'indexing in \"path\";' declaration" ;
+    end foreach ;
+  end if ;
   @stringset indexNameSet [emptySet] ;
   foreach [lexiqueComponentRoot mIndexingListAST] do
     if [indexNameSet hasKey ![mIndexName string]] then

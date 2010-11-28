@@ -23,19 +23,19 @@ import "grammarMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
-nonterminal <grammar_component_start_symbol>
-  !@grammarComponentAST outGrammarComponentRoot
-;
-
-nonterminal <grammar_start_symbol_label>
-  ??@lstring inLabelName
-  ?!@nonTerminalLabelListAST ioLabelList
-;
-
-nonterminal <label_formal_parameter>
-  !@lstring outArgumentName
-  ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList
-;
+#nonterminal <grammar_component_start_symbol>
+#  !@grammarComponentAST outGrammarComponentRoot
+#;
+#
+#nonterminal <grammar_start_symbol_label>
+#  ??@lstring inLabelName
+#  ?!@nonTerminalLabelListAST ioLabelList
+#;
+#
+#nonterminal <label_formal_parameter>
+#  !@lstring outArgumentName
+#  ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList
+#;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -46,6 +46,13 @@ nonterminal <label_formal_parameter>
 rule <grammar_component_start_symbol>
   !@grammarComponentAST outGrammarComponentRoot
 :
+  @lbool hasIndexing ;
+  select
+    hasIndexing := [@lbool new !false !here] ;
+  or
+    hasIndexing := [@lbool new !true !here] ;
+    $indexing$ ;
+  end select ;
   $grammar$ ;
   $identifier$ ? @lstring mGrammarName ;
   $literal_string$ ? @lstring mGrammarClass ;
@@ -58,27 +65,6 @@ rule <grammar_component_start_symbol>
     $;$ ;
     syntaxComponents += !syntaxComponent ;
   while
-  end repeat ;
-#--- Old style imports
-  repeat
-  while
-    $import$ ;
-    select
-      $semantics$ ;
-    or
-      $lexique$ ;
-    or
-      $grammar$ ;
-    or
-      $syntax$ ;
-    or
-      $option$ ;
-    end select ;
-    $identifier$ ?* ;
-    warning here:"obsolete GALGAS 1 'import' declaration: useless in GALGAS 2" ;
-    $in$ ;
-    $literal_string$ ? * ;
-    $;$ ;
   end repeat ;
 #--- Root symbol
   $root$ ;
@@ -117,6 +103,7 @@ rule <grammar_component_start_symbol>
 #---
   $end$ ;
   outGrammarComponentRoot := [@grammarComponentAST new
+    !hasIndexing
     !mGrammarName
     !mGrammarClass
     !syntaxComponents

@@ -16,8 +16,26 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-lexique galgas_scanner :
+lexique galgas_scanner indexing in "GALGAS_INDEXES" :
+#--- Indexing keys
+indexing classDefinition : "Class Definition" ;
+indexing classReferencedAsSuperClass : "Class Referenced As Superclass" ;
+indexing enumDefinition : "Enum Definition" ;
+indexing structDefinition : "Struct Definition" ;
+indexing listDefinition : "List Definition" ;
+indexing sortedListDefinition : "Sorted List Definition" ;
+indexing listmapDefinition : "Listmap Definition" ;
+indexing mapDefinition : "Map Definition" ;
+indexing uniquemapDefinition : "Unique Map Definition" ;
+indexing mapProxyDefinition : "Map Proxy Definition" ;
+indexing filewrapperDefinition : "Filewrapper Definition" ;
+indexing graphDefinition : "Graph Definition" ;
+indexing routineDefinition : "Routine Definition" ;
+indexing functionDefinition : "Function Definition" ;
+indexing ruleDefinition : "Rule Definition" ;
 
+
+#--- Scanner attributes
 @string identifierString ;
 @uint uint32value ;
 @sint sint32value ;
