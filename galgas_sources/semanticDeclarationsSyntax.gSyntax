@@ -721,7 +721,7 @@ rule <semantic_declaration>
   $abstract$ ;
   $method$ ;
   $type_name$ ? @lstring mClassName ;
-  $identifier$ ? @lstring mMethodName ;
+  $identifier$ ? @lstring mMethodName indexing abstractCategoryMethodDefinition ;
   @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
   $;$ ;
@@ -747,7 +747,7 @@ rule <semantic_declaration>
   $abstract$ ;
   $method$ ;
   $type_name$ ? @lstring mClassName ;
-  $identifier$ ? @lstring mMethodName ;
+  $identifier$ ? @lstring mMethodName indexing overrideAbstractCategoryMethodDefinition ;
   @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
   $;$ ;
@@ -770,7 +770,7 @@ rule <semantic_declaration>
 :
   $method$ ;
   $type_name$ ? @lstring mClassName ;
-  $identifier$ ? @lstring mMethodName ;
+  $identifier$ ? @lstring mMethodName indexing categoryMethodDefinition ;
   @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
   $:$ ;
@@ -802,7 +802,7 @@ rule <semantic_declaration>
   $override$ ;
   $method$ ;
   $type_name$ ? @lstring mClassName ;
-  $identifier$ ? @lstring mMethodName ;
+  $identifier$ ? @lstring mMethodName indexing overrideCategoryMethodDefinition ;
   @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
   $:$ ;
@@ -834,7 +834,7 @@ rule <semantic_declaration>
   $abstract$ ;
   $reader$ ;
   $type_name$ ? @lstring mClassName ;
-  $identifier$ ? @lstring mReaderName ;
+  $identifier$ ? @lstring mReaderName indexing abstractCategoryReaderDefinition ;
   @formalInputParameterListAST mFormalInputParameterList ;
   <formal_input_parameter_list> ? mFormalInputParameterList ;
   $->$ ;
@@ -861,7 +861,7 @@ rule <semantic_declaration>
 :
   $reader$ ;
   $type_name$ ? @lstring mClassName ;
-  $identifier$ ? @lstring mMethodName ;
+  $identifier$ ? @lstring mMethodName indexing categoryReaderDefinition ;
   @formalInputParameterListAST mFormalInputParameterList ;
   <formal_input_parameter_list> ? mFormalInputParameterList ;
   $->$ ;
@@ -898,7 +898,7 @@ rule <semantic_declaration>
   $override$ ;
   $reader$ ;
   $type_name$ ? @lstring mClassName ;
-  $identifier$ ? @lstring mMethodName ;
+  $identifier$ ? @lstring mMethodName indexing overrideCategoryReaderDefinition ;
   @formalInputParameterListAST mFormalInputParameterList ;
   <formal_input_parameter_list> ? mFormalInputParameterList ;
   $->$ ;
@@ -937,7 +937,7 @@ rule <semantic_declaration>
   $abstract$ ;
   $reader$ ;
   $type_name$ ? @lstring mClassName ;
-  $identifier$ ? @lstring mReaderName ;
+  $identifier$ ? @lstring mReaderName indexing overrideAbstractCategoryReaderDefinition ;
   @formalInputParameterListAST mFormalInputParameterList ;
   <formal_input_parameter_list> ? mFormalInputParameterList ;
   $->$ ;

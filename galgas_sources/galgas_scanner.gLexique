@@ -33,7 +33,14 @@ indexing graphDefinition : "Graph Definition" ;
 indexing routineDefinition : "Routine Definition" ;
 indexing functionDefinition : "Function Definition" ;
 indexing ruleDefinition : "Rule Definition" ;
-
+indexing abstractCategoryMethodDefinition : "Abstract Category Method Definition" ;
+indexing overrideAbstractCategoryMethodDefinition : "Override Abstract Category Method Definition" ;
+indexing categoryMethodDefinition : "Category Method Definition" ;
+indexing overrideCategoryMethodDefinition : "Override Category Method Definition" ;
+indexing abstractCategoryReaderDefinition : "Abstract Category Reader Definition" ;
+indexing overrideAbstractCategoryReaderDefinition : "Override Abstract Category Reader Definition" ;
+indexing categoryReaderDefinition : "Category Reader Definition" ;
+indexing overrideCategoryReaderDefinition : "Override Category Reader Definition" ;
 
 #--- Scanner attributes
 @string identifierString ;
