@@ -297,6 +297,14 @@ class @complementExpressionAST extends @semanticExpressionAST {
 
 #---------------------------------------------------------------------------*
 
+class @structFieldAccessExpressionAST extends @semanticExpressionAST {
+  @location mOperatorLocation ;
+  @semanticExpressionAST mExpression ;
+  @lstring mStructFieldName ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @ifExpressionAST extends @semanticExpressionAST {
   @location mOperatorLocation ;
   @semanticExpressionAST mIfExpression ;
@@ -315,7 +323,6 @@ class @functionCallExpressionAST extends @semanticExpressionAST {
 
 class @varInExpressionAST extends @semanticExpressionAST {
   @lstring mVarName ;
-  @lstringlist mStructFieldList ;
 }
 
 #---------------------------------------------------------------------------*

@@ -307,6 +307,13 @@ class @notExpressionForGeneration extends @semanticExpressionForGeneration {
 
 #---------------------------------------------------------------------------*
 
+class @structFieldAccessExpressionForGeneration extends @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mExpression ;
+  @string mStructFieldName ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @tildeExpressionForGeneration extends @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mExpression ;
 }
@@ -331,7 +338,6 @@ class @functionCallExpressionForGeneration extends @semanticExpressionForGenerat
 class @varInExpressionForGeneration extends @semanticExpressionForGeneration {
   @string mCppVarName ;
   @string mNameForCheckingFormalParameterUsing ;
-  @lstringlist mStructFieldList ;
 }
 
 #---------------------------------------------------------------------------*

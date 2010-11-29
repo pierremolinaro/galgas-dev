@@ -24,6 +24,7 @@ option galgas_cli_options :
   @string printPredefinedTypeFeature: '\0', "print-predefined-type-features" -> "Print the feature of a given predefined type (without the leading '@', or '*' for all types)" ;
   @bool generateCheckValidInstructions: '\0', "generate-instructions-for-checking-validity" -> "Generate instructions for Checking object validity (reserved for GALGAS development)" ;
   @string generatePredefinedTypes: '\0', "generate-predefined-types" -> "Generate C++ files of predefined types (reserved for GALGAS development)" ;
+  @bool noDeprecatedWarning: '\0', "no-deprecated-warning" -> "Do not warn on a deprecated construct" ;
 end option ;
 
 #---------------------------------------------------------------------------*

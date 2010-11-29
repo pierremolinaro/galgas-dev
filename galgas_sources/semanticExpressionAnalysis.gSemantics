@@ -1650,6 +1650,32 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @structFieldAccessExpressionAST analyzeSemanticExpression
+  ??@analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+:
+#--- Expression analysis
+  @semanticExpressionForGeneration expression ;
+  [mExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?expression] ;
+#--- Check field access availability
+  @unifiedTypeMapProxy type := [expression mType] ;
+  if [type mTypeKindEnum] != [@typeKindEnum structType] then
+    error mStructFieldName:"the '->' operator requires the receiver to be a struct" ;
+  end if ;
+  const @attributeMap attributeMap := [type mAttributeMap] ;
+  [attributeMap searchKey !mStructFieldName ?type] ;
+#--- Generate expression
+  outExpression := [@structFieldAccessExpressionForGeneration new
+    !type
+    !mOperatorLocation
+    !expression
+    !mStructFieldName->string
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @complementExpressionAST analyzeSemanticExpression
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
@@ -1761,19 +1787,11 @@ override method @varInExpressionAST analyzeSemanticExpression
   @string sourceVariableCppName ;
   @string nameForCheckingFormalParameterUsing ;
   [!?ioVariableMap searchForReadAccess !mVarName ?type ?sourceVariableCppName ?nameForCheckingFormalParameterUsing] ;
-  foreach mStructFieldList do
-    if [type mTypeKindEnum] != [@typeKindEnum structType] then
-      error mValue:"the '->' operator requires the receiver to be a struct" ;
-    end if ;
-    const @attributeMap attributeMap := [type mAttributeMap] ;
-    [attributeMap searchKey !mValue ?type] ;
-  end foreach ;
   outExpression := [@varInExpressionForGeneration new
     !type
     ![mVarName location]
     !sourceVariableCppName
     !nameForCheckingFormalParameterUsing
-    !mStructFieldList
   ] ;
 end method ;
 

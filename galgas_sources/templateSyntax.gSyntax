@@ -21,46 +21,6 @@ syntax templateSyntax ("galgasTemplateScanner.gLexique") :
 
 import "templateTypesForAST.gSemantics" ;
 
-nonterminal <template_parser_start_symbol>
-  !@templateInstructionListAST outResultingInstructionList
-;
-
-nonterminal <template_instruction>
-  ?!@templateInstructionListAST ioResultingInstructionList
-;
-
-nonterminal <expression>
-  !@templateExpressionAST outExpression
-;
-
-nonterminal <concatenation_term>
-  !@templateExpressionAST outExpression
-;
-
-nonterminal <relation_term>
-  !@templateExpressionAST outExpression
-;
-
-nonterminal <relation_factor>
-  !@templateExpressionAST outExpression
-;
-
-nonterminal <simple_expression>
-  !@templateExpressionAST outExpression
-;
-
-nonterminal <term>
-  !@templateExpressionAST outExpression
-;
-
-nonterminal <factor>
-  !@templateExpressionAST outExpression
-;
-
-nonterminal <output_expression_list>
-  !@templateExpressionListAST outExpressionList 
-;
-
 #------------------------------------------------------------------------------*
 #                                                                              *
 #   E X P R E S S I O N                                                        *
@@ -265,6 +225,24 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
+#   F A C T O R    :    struct field access                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor>
+  !@templateExpressionAST outExpression
+:
+  <primary> ?outExpression ;
+  repeat
+  while
+    $->$ ;
+    $identifier$ ? @lstring structFieldName ;
+    outExpression := [@structFieldAccessTemplateExpressionAST new !structFieldName->location !outExpression !structFieldName] ;
+  end repeat ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
 #   F A C T O R    :    - factor                                               *
 #                                                                              *
 #------------------------------------------------------------------------------*
@@ -277,33 +255,6 @@ rule <factor>
   @templateExpressionAST expression ;
   <factor> ?expression ;
   outExpression := [@templateUnaryMinusOperationAST new !operatorLocation !expression] ;
-end rule ;
-
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   F A C T O R    :    <var>                                                  *
-#                                                                              *
-#------------------------------------------------------------------------------*
-
-rule <factor>
-  !@templateExpressionAST outExpression
-:
-  $identifier$ ? @lstring identifier ;
-  outExpression := [@templateVarInExpressionAST new !identifier ![@lstringlist emptyList]] ;
-end rule ;
-
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   F A C T O R    :    ( EXPRESSION )                                         *
-#                                                                              *
-#------------------------------------------------------------------------------*
-
-rule <factor>
-  !@templateExpressionAST outExpression
-:
-  $($ ;
-  <expression> ?outExpression ;
-  $)$ ;
 end rule ;
 
 #------------------------------------------------------------------------------*
@@ -340,11 +291,38 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    true                                                   *
+#   P R I M A R Y  :    <var>                                                  *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
+  !@templateExpressionAST outExpression
+:
+  $identifier$ ? @lstring identifier ;
+  outExpression := [@templateVarInExpressionAST new !identifier] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y  :    ( EXPRESSION )                                         *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary>
+  !@templateExpressionAST outExpression
+:
+  $($ ;
+  <expression> ?outExpression ;
+  $)$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y  :    true                                                   *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary>
   !@templateExpressionAST outExpression
 :
   $true$ ;
@@ -353,11 +331,11 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    false                                                  *
+#   P R I M A R Y  :    false                                                  *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   !@templateExpressionAST outExpression
 :
   $false$ ;
@@ -366,11 +344,11 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    a 32-bit unsigned literal integer value                *
+#   P R I M A R Y  :    a 32-bit unsigned literal integer value                *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   !@templateExpressionAST outExpression
 :
   @luint literalInt ;
@@ -380,11 +358,11 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    a 32-bit signed literal integer value                  *
+#   P R I M A R Y  :    a 32-bit signed literal integer value                  *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   !@templateExpressionAST outExpression
 :
   @lsint literalInt ;
@@ -394,11 +372,11 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    a 64-bit unsigned literal integer value                *
+#   P R I M A R Y  :    a 64-bit unsigned literal integer value                *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   !@templateExpressionAST outExpression
 :
   @luint64 literalInt ;
@@ -408,11 +386,11 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    a 64-bit signed literal integer value                  *
+#   P R I M A R Y  :    a 64-bit signed literal integer value                  *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   !@templateExpressionAST outExpression
 :
   @lsint64 literalInt ;
@@ -422,11 +400,11 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    a double value                                         *
+#   P R I M A R Y  :    a double value                                         *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   !@templateExpressionAST outExpression
 :
   @ldouble literalDouble ;
@@ -436,11 +414,11 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    a literal character value                              *
+#   P R I M A R Y  :    a literal character value                              *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   !@templateExpressionAST outExpression
 :
   $literal_char$ ?@lchar literalChar ;
@@ -449,11 +427,11 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    a literal character value                              *
+#   P R I M A R Y  :    a literal character value                              *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   !@templateExpressionAST outExpression
 :
   @stringlist literalStringList [emptyList] ;
@@ -478,7 +456,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   !@templateExpressionAST outExpression
 :
   $[$ ;
@@ -549,7 +527,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor>
+rule <primary>
   !@templateExpressionAST outExpression
 :
   $identifier$ ?@lstring functionName ;

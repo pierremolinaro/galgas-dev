@@ -708,6 +708,21 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @structFieldAccessExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression
+:
+#--- Operand
+  @string operand ;
+  [mExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?operand] ;
+#--- Generate
+  outCppExpression := operand . ".mAttribute_" . [mStructFieldName identifierRepresentation] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @tildeExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@uint ioTemporaryVariableIndex
@@ -857,9 +872,6 @@ override method @varInExpressionForGeneration generateExpression
 :
   outCppExpression := mCppVarName ;
   [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing] ;
-  foreach mStructFieldList do
-    outCppExpression .= ".mAttribute_" . [[mValue string] identifierRepresentation] ;
-  end foreach ;
 end method ;
 
 #---------------------------------------------------------------------------*
