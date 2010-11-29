@@ -106,25 +106,25 @@ int mainForLIBPM  (const int argc, const char * argv []) {
         PMSInt16 r = 0 ;
         %
           foreach PROGRAM_RULE_LIST 
-            do index IDX
-              if HAS_INDEXING then
-                %if (fileExtension == %![mSourceFileExtension utf8Representation]%) {\n%
-                if [mIndexingGrammar string] == "" then
-                %          if (! gOption_performIndexing.mValue) {\n%
-                %            routine_%!["programRule_" . [IDX string] identifierRepresentation]% (sourceFilePath, commonLexique COMMA_HERE) ;\n%
-                %          }\n%
-                else
-                %          if (gOption_performIndexing.mValue) {\n%
-                %            cGrammar_%![mIndexingGrammar identifierRepresentation]%::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n%
-                %          }else{\n%
-                %            routine_%!["programRule_" . [IDX string] identifierRepresentation]% (sourceFilePath, commonLexique COMMA_HERE) ;\n%
-                %          }\n%
-                end if
+          do index IDX
+            %if (fileExtension == %![mSourceFileExtension utf8Representation]%) {\n%
+            if HAS_INDEXING then
+              if [mIndexingGrammar string] == "" then
+              %          if (! gOption_performIndexing.mValue) {\n%
+              %            routine_%!["programRule_" . [IDX string] identifierRepresentation]% (sourceFilePath, commonLexique COMMA_HERE) ;\n%
+              %          }\n%
               else
-                %          routine_%!["programRule_" . [IDX string] identifierRepresentation]% (sourceFilePath, commonLexique COMMA_HERE) ;\n%
-              end if 
-             between %        }else %
-           end foreach
+              %          if (gOption_performIndexing.mValue) {\n%
+              %            cGrammar_%![mIndexingGrammar identifierRepresentation]%::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n%
+              %          }else{\n%
+              %            routine_%!["programRule_" . [IDX string] identifierRepresentation]% (sourceFilePath, commonLexique COMMA_HERE) ;\n%
+              %          }\n%
+              end if
+            else
+              %          routine_%!["programRule_" . [IDX string] identifierRepresentation]% (sourceFilePath, commonLexique COMMA_HERE) ;\n%
+            end if 
+          between %        }else %
+          end foreach
 %        }else{
           printf ("*** Error: unhandled extension for file '\%s' ***\\n", sourceFilesArray (i COMMA_HERE).cString (HERE)) ;
           r = 1 ;

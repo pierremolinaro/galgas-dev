@@ -32,7 +32,6 @@ with lexique "galgas_scanner.gLexique" {
   fileExtension : "gOption" ;
   fileExtension : "gGui" ;
   fileExtension : "gProject" ;
-  fileExtension : "ggs" ;
   blockComment : "#" ;
   title: "Source" ;
   label $map$, $type_name$ ;
