@@ -380,7 +380,7 @@ rule <class_abstract_method_declaration>
   $method$ ;
   $identifier$ ? @lstring mMethodName ;
   if not [option galgas_cli_options.noDeprecatedWarning value] then
-    warning mMethodName:"declared a method within a class is deprecated, but is used by Mikael Briday" ;
+    warning mMethodName:"declared a method within a class is deprecated, but is used by Mikaël Briday" ;
   end if ;
   @formalParameterListAST mSignature ;
   <formal_parameter_list> ? mSignature ;
@@ -401,7 +401,7 @@ rule <class_method_declaration> ?!@methodDefinitionListAST ioMethodDefinitionLis
   $method$ ;
   $identifier$ ? @lstring mMethodName ;
   if not [option galgas_cli_options.noDeprecatedWarning value] then
-    warning mMethodName:"declared a method within a class is deprecated, but is used by Mikael Briday" ;
+    warning mMethodName:"declared a method within a class is deprecated, but is used by Mikaël Briday" ;
   end if ;
   @formalParameterListAST mSignature ;
   <formal_parameter_list> ? mSignature ;
