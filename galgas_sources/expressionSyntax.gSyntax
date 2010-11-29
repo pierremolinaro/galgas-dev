@@ -29,18 +29,6 @@ import "semanticsTypesForAST.gSemantics" ;
 
 nonterminal <expression> !@semanticExpressionAST outExpression ;
 
-nonterminal <concatenation_term> !@semanticExpressionAST outExpression ;
-
-nonterminal <relation_term> !@semanticExpressionAST outExpression ;
-
-nonterminal <relation_factor> !@semanticExpressionAST outExpression ;
-
-nonterminal <simple_expression> !@semanticExpressionAST outExpression ;
-
-nonterminal <term> !@semanticExpressionAST outExpression ;
-
-nonterminal <factor> !@semanticExpressionAST outExpression ;
-
 nonterminal <output_expression_list>
   !@semanticExpressionListAST outExpressionList
 ;
@@ -251,42 +239,77 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    <var>                                                  *
+#   F A C T O R    :    not FACTOR                                             *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
 rule <factor> !@semanticExpressionAST outExpression :
-  $identifier$ ? @lstring identifier ;
-  @lstringlist structFieldList [emptyList] ;
-  repeat
-  while
-    $->$ ;
-    $identifier$ ?@lstring fieldName ;
-    structFieldList += !fieldName ;
-  end repeat ;
-  outExpression := [@varInExpressionAST new !identifier !structFieldList] ;
+  @location operatorLocation := here ;
+  $not$ ;
+  <factor> ? outExpression ;
+  outExpression := [@notExpressionAST new !operatorLocation !outExpression] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    S E L F C O P Y                                        *
+#   F A C T O R    :    ~ FACTOR                                               *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
 rule <factor> !@semanticExpressionAST outExpression :
+  @location operatorLocation := here ;
+  $~$ ;
+  <factor> ? outExpression ;
+  outExpression := [@complementExpressionAST new !operatorLocation !outExpression] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   F A C T O R    :    struct field access                                    *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <factor> !@semanticExpressionAST outExpression :
+  <primary> ? outExpression ;
+  repeat
+  while
+    $->$ ;
+    $identifier$ ? @lstring structFieldName ;
+    outExpression := [@structFieldAccessExpressionAST new !structFieldName->location !outExpression !structFieldName] ;
+  end repeat ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y    :    <var>                                                *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression :
+  $identifier$ ? @lstring identifier ;
+  outExpression := [@varInExpressionAST new !identifier] ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+#                                                                              *
+#   P R I M A R Y    :    S E L F C O P Y                                      *
+#                                                                              *
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression :
   $selfcopy$ ;
   outExpression := [@selfCopyInExpressionAST new !here] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    ( EXPRESSION )                                         *
+#   P R I M A R Y  :    ( EXPRESSION )                                         *
 #                       (cast EXP if >= @T else error ERROR_LOCATION_EXP)      *
 #                       (cast EXP if == @T else error ERROR_LOCATION_EXP)      *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpressionAST outExpression :
+rule <primary> !@semanticExpressionAST outExpression :
   $($ ;
   select
     <expression> ? outExpression ;
@@ -324,59 +347,33 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    not FACTOR                                             *
+#   P R I M A R Y    :    true                                                 *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpressionAST outExpression :
-  @location operatorLocation := here ;
-  $not$ ;
-  <factor> ? outExpression ;
-  outExpression := [@notExpressionAST new !operatorLocation !outExpression] ;
-end rule ;
-
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   F A C T O R    :    ~ FACTOR                                               *
-#                                                                              *
-#------------------------------------------------------------------------------*
-
-rule <factor> !@semanticExpressionAST outExpression :
-  @location operatorLocation := here ;
-  $~$ ;
-  <factor> ? outExpression ;
-  outExpression := [@complementExpressionAST new !operatorLocation !outExpression] ;
-end rule ;
-
-#------------------------------------------------------------------------------*
-#                                                                              *
-#   F A C T O R    :    true                                                   *
-#                                                                              *
-#------------------------------------------------------------------------------*
-
-rule <factor> !@semanticExpressionAST outExpression :
+rule <primary> !@semanticExpressionAST outExpression :
   $true$ ;
   outExpression := [@trueExpressionAST new !here] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    false                                                  *
+#   P R I M A R Y    :    false                                                *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpressionAST outExpression :
+rule <primary> !@semanticExpressionAST outExpression :
   $false$ ;
   outExpression := [@falseExpressionAST new !here] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :   literal string sequence "..."  "..."  "..."             *
+#   P R I M A R Y    :   literal string sequence "..."  "..."  "..."           *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpressionAST outExpression :
+rule <primary> !@semanticExpressionAST outExpression :
   @stringlist literalStringList [emptyList] ;
   repeat
     @lstring literalString ;
@@ -389,11 +386,11 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    a 32-bit unsigned literal integer value                *
+#   P R I M A R Y    :    a 32-bit unsigned literal integer value              *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpressionAST outExpression :
+rule <primary> !@semanticExpressionAST outExpression :
   @luint literalInt ;
   $unsigned_literal_integer$ ?literalInt ;
   outExpression := [@literalUIntExpressionAST new !literalInt] ;
@@ -401,11 +398,11 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    a 32-bit signed literal integer value                  *
+#   P R I M A R Y    :    a 32-bit signed literal integer value                *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpressionAST outExpression :
+rule <primary> !@semanticExpressionAST outExpression :
   @lsint literalInt ;
   $signed_literal_integer$ ?literalInt ;
   outExpression := [@literalSIntExpressionAST new !literalInt] ;
@@ -413,11 +410,11 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    a 64-bit unsigned literal integer value                *
+#   P R I M A R Y    :    a 64-bit unsigned literal integer value              *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpressionAST outExpression :
+rule <primary> !@semanticExpressionAST outExpression :
   @luint64 literalInt ;
   $unsigned_literal_integer64$ ?literalInt ;
   outExpression := [@literalUInt64ExpressionAST new !literalInt] ;
@@ -425,11 +422,11 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    a 64-bit signed literal integer value                  *
+#   P R I M A R Y    :    a 64-bit signed literal integer value                *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpressionAST outExpression :
+rule <primary> !@semanticExpressionAST outExpression :
   @lsint64 literalInt ;
   $signed_literal_integer64$ ?literalInt ;
   outExpression := [@literalSInt64ExpressionAST new !literalInt] ;
@@ -437,11 +434,11 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    a literal character value                              *
+#   P R I M A R Y    :    a literal character value                            *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpressionAST outExpression :
+rule <primary> !@semanticExpressionAST outExpression :
   @lchar literalChar ;
   $literal_char$ ?literalChar ;
   outExpression := [@literalCharExpressionAST new !literalChar] ;
@@ -449,11 +446,11 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    a double value                                         *
+#   P R I M A R Y    :    a double value                                       *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpressionAST outExpression :
+rule <primary> !@semanticExpressionAST outExpression :
   @ldouble literalDouble ;
   $literal_double$ ? literalDouble ?* ;
   outExpression := [@literalDoubleExpressionAST new !literalDouble] ;
@@ -461,22 +458,22 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    here                                                   *
+#   P R I M A R Y    :    here                                                 *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpressionAST outExpression :
+rule <primary> !@semanticExpressionAST outExpression :
   $here$ ;
   outExpression := [@hereExpressionAST new !here] ;
 end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   F A C T O R    :    if exp then exp else exp end                           *
+#   P R I M A R Y    :    if exp then exp else exp end                         *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpressionAST outExpression :
+rule <primary> !@semanticExpressionAST outExpression :
   $if$ ;
   @semanticExpressionAST ifExpression ;
   <expression> ? ifExpression ;
@@ -498,7 +495,7 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#                         F A C T O R                                          *
+#                         P R I M A R Y                                        *
 #   description         :   [expression description]                           *
 #   reader call         :   [expression reader !... ]                          *
 #                       :   [this reader !... ]                                *
@@ -508,7 +505,7 @@ end rule ;
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpressionAST outExpression :
+rule <primary> !@semanticExpressionAST outExpression :
   $[$ ;
   select
   #--- Get source identity characteristics
@@ -608,13 +605,13 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#                         F A C T O R                                          *
+#                         P R I M A R Y                                        *
 #                                                                              *
 #   function call        :   function_name [!... ]                             *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpressionAST outExpression :
+rule <primary> !@semanticExpressionAST outExpression :
   $identifier$ ? @lstring functionName ;
   $[$ ;
   @semanticExpressionListAST expressionList ;
@@ -628,13 +625,13 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#                         F A C T O R                                          *
+#                         P R I M A R Y                                        *
 #                                                                              *
 #   literal type         :   `@type                                            *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
-rule <factor> !@semanticExpressionAST outExpression :
+rule <primary> !@semanticExpressionAST outExpression :
   $`$ ;
   $type_name$ ? @lstring typeName ;
   outExpression := [@literalTypeInExpressionAST new

@@ -18,7 +18,7 @@
 #---------------------------------------------------------------------------*
 
 syntax semanticDeclarationsSyntax ("galgas_scanner.gLexique") :
-
+import "galgas_cli_options.gOption" ;
 import "semanticsTypesForAST.gSemantics" ;
 
 #------------------------------------------------------------------------------*
@@ -379,6 +379,9 @@ rule <class_abstract_method_declaration>
   $abstract$ ;
   $method$ ;
   $identifier$ ? @lstring mMethodName ;
+  if not [option galgas_cli_options.noDeprecatedWarning value] then
+    warning mMethodName:"declared a method within a class is deprecated, but is used by Mikael Briday" ;
+  end if ;
   @formalParameterListAST mSignature ;
   <formal_parameter_list> ? mSignature ;
   $;$ ;
@@ -397,6 +400,9 @@ rule <class_method_declaration> ?!@methodDefinitionListAST ioMethodDefinitionLis
   end select ;
   $method$ ;
   $identifier$ ? @lstring mMethodName ;
+  if not [option galgas_cli_options.noDeprecatedWarning value] then
+    warning mMethodName:"declared a method within a class is deprecated, but is used by Mikael Briday" ;
+  end if ;
   @formalParameterListAST mSignature ;
   <formal_parameter_list> ? mSignature ;
   $:$ ;

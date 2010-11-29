@@ -1298,7 +1298,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   repeat
     select
       $identifier$ ? @lstring loggedVariableName ;
-      logList += !loggedVariableName ![@varInExpressionAST new !loggedVariableName ![@lstringlist emptyList]] ;
+      logList += !loggedVariableName ![@varInExpressionAST new !loggedVariableName] ;
     or
       $literal_string$ ? @lstring logMessage ;
       $:$ ;

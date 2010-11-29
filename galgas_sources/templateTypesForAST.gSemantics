@@ -195,6 +195,14 @@ class @templateIfThenElseExpressionAST extends @templateExpressionAST {
  
 #---------------------------------------------------------------------------*
 
+class @structFieldAccessTemplateExpressionAST extends @templateExpressionAST {
+  @location mOperatorLocation ;
+  @templateExpressionAST mExpression ;
+  @lstring mStructFieldName ;
+}
+ 
+#---------------------------------------------------------------------------*
+
 class @templateNotOperatorAST extends @templateExpressionAST {
   @location mOperatorLocation ;
   @templateExpressionAST mExpression ;
@@ -230,7 +238,6 @@ class @templateFunctionCallAST extends @templateExpressionAST {
 
 class @templateVarInExpressionAST extends @templateExpressionAST {
   @lstring mVarName ;
-  @lstringlist mStructAttributeList ;
 }
  
 #---------------------------------------------------------------------------*

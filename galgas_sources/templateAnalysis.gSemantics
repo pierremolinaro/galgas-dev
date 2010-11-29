@@ -740,16 +740,11 @@ override method @templateVarInExpressionAST templateExpressionAnalysis
   @unifiedTypeMapProxy type ;
   @string sourceVariableCppName ;
   [inAnalysisContext->mTemplateVariableMap searchKey !mVarName ?type ?sourceVariableCppName] ;
-  foreach mStructAttributeList do
-    const @attributeMap attributeMap := [type mAttributeMap] ;
-    [attributeMap searchKey !mValue ?type] ;
-  end foreach ;
   outExpression := [@varInExpressionForGeneration new
     !type
     ![mVarName location]
     !sourceVariableCppName
     !sourceVariableCppName
-    !mStructAttributeList
   ] ;
 end method ;
 
@@ -944,6 +939,33 @@ override method @templateUnaryMinusOperationAST templateExpressionAnalysis
       !expression
     ] ;
   end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+#   S T R U C T    F I E L D    A C C E S S    O P E R A T I O N            *
+#---------------------------------------------------------------------------*
+
+override method @structFieldAccessTemplateExpressionAST templateExpressionAnalysis
+  ??@templateAnalysisContext inAnalysisContext
+  !@semanticExpressionForGeneration outExpression
+:
+#--- Expression analysis
+  @semanticExpressionForGeneration expression ;
+  [mExpression templateExpressionAnalysis !inAnalysisContext ?expression] ;
+#--- Check field access availability
+  @unifiedTypeMapProxy type := [expression mType] ;
+  if [type mTypeKindEnum] != [@typeKindEnum structType] then
+    error mStructFieldName:"the '->' operator requires the receiver to be a struct" ;
+  end if ;
+  const @attributeMap attributeMap := [type mAttributeMap] ;
+  [attributeMap searchKey !mStructFieldName ?type] ;
+#--- Generate expression
+  outExpression := [@structFieldAccessExpressionForGeneration new
+    !type
+    !mOperatorLocation
+    !expression
+    !mStructFieldName->string
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
