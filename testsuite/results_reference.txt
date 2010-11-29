@@ -41,16 +41,20 @@ LOGGING s: <@string:"d">
 LOGGING s: <struct @structTest:<@string:"az">, <@uint:34>>
 *************************************** begin of map
 LOGGING m: <map @aMap (1 object): 
-|-at 0: key 'g' >
+|-at 0: key 'g' 
+| | value:<@uint:37>>
 LOGGING m: <map @aMap (1 object): 
-|-at 0: key 'g' >
+|-at 0: key 'g' 
+| | value:<@uint:56>>
 LOGGING mm: <map @aMap (0 object): >
 LOGGING v: <@uint:56>
 LOGGING mm: <map @aMap (1 object): 
-|-at 0: key 'g' >
+|-at 0: key 'g' 
+| | value:<@uint:11>>
 LOGGING v: <@uint:11>
 LOGGING m: <map @aMap (1 object): 
-|-at 0: key 'g' >
+|-at 0: key 'g' 
+| | value:<@uint:56>>
 *************************************** begin of function test
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
@@ -109,5 +113,5 @@ LOGGING y: <@uint:2>
 LOGGING result: 
 *************************************** begin of maproxy test
 LOGGING [table count]: <@uint:0>
-LOGGING Proxy: : <@monMapProxy regular (key )>
+LOGGING Proxy: : <@monMapProxy regular (key , unsolved)>
 LOGGING [table unsolvedProxyCount]: <@uint:1>
