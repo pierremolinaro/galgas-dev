@@ -817,7 +817,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <semantic_instruction> !@semanticInstructionAST outInstruction :
-  $identifier$ ?@lstring mRoutineName ;
+  $identifier$ ?@lstring mRoutineName indexing routineCall ;
   @actualParameterListAST mActualParameterList ;
   <actual_parameter_list> ? mActualParameterList ;
   $;$ ;
@@ -937,7 +937,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-nonterminal <match_entry> ?!@matchEntryListAST ioMatchEntryList ;
+#nonterminal <match_entry> ?!@matchEntryListAST ioMatchEntryList ;
 
 #---------------------------------------------------------------------------*
 
@@ -988,7 +988,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-nonterminal <match_instruction_branch> ?!@matchInstructionBranchListAST ioMatchInstructionBranchList ;
+#nonterminal <match_instruction_branch> ?!@matchInstructionBranchListAST ioMatchInstructionBranchList ;
 
 #---------------------------------------------------------------------------*
 
@@ -1061,7 +1061,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-nonterminal <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstructionBranchList ;
+#nonterminal <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstructionBranchList ;
 
 #---------------------------------------------------------------------------*
 
@@ -1104,7 +1104,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-nonterminal <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault ;
+#nonterminal <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault ;
 
 #---------------------------------------------------------------------------*
 
@@ -1325,8 +1325,7 @@ end rule ;
 rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   $grammar$ ;
   const @location instructionLocation := here ;
-  @lstring mGrammarComponentName ;
-  $identifier$ ?mGrammarComponentName ;
+  $identifier$ ?@lstring mGrammarComponentName indexing grammarComponentReference;
   @lstring mLabelName ;
   select
     mLabelName := [@lstring new !"" !here] ;
@@ -1407,7 +1406,7 @@ end rule ;
 rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   $[$ ;
   const @location instructionLocation := here ;
-  $type_name$ ? @lstring mTypeName ;
+  $type_name$ ? @lstring mTypeName indexing typeReferenceInTypeMethod ;
   $identifier$ ? @lstring mMethodName ;
   @actualParameterListAST mActualParameterList ;
   <actual_parameter_list> ? mActualParameterList ;

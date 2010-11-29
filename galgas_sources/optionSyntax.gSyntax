@@ -20,10 +20,6 @@
 syntax optionSyntax ("galgas_scanner.gLexique") :
 import "optionTypesForAST.gSemantics" ;
 
-nonterminal <option_component_start_symbol> !@optionComponentAST outOptionComponentRoot;
-
-nonterminal <option> ?!@commandLineOptionListAST ioCommandLineOptionList ;
-
 #---------------------------------------------------------------------------*
 
 rule <option_component_start_symbol>
@@ -31,7 +27,7 @@ rule <option_component_start_symbol>
 :
   $option$ ;
 #--- Option Component Name
-  $identifier$ ?@lstring mOptionComponentName ;
+  $identifier$ ?@lstring mOptionComponentName indexing optionComponentDefinition ;
   $:$ ;
 #--- Parse the option list
   @commandLineOptionListAST mOptions [emptyList] ;

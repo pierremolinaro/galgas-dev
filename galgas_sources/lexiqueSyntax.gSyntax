@@ -612,7 +612,7 @@ end rule ;
 
 rule <terminal_declaration> ?!@terminalDeclarationListAST ioTerminalDeclarationList :
   @lstring name ;
-  $terminal$ ? name  ;
+  $terminal$ ? name indexing terminalDeclaration ;
   @lstringlist sentAttributeList [emptyList] ;
   repeat
   while
