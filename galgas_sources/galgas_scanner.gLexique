@@ -19,7 +19,9 @@
 lexique galgas_scanner indexing in "GALGAS_INDEXES" :
 #--- Indexing keys
 indexing classDefinition : "Class Definition" ;
-indexing classReferencedAsSuperClass : "Class Referenced As Superclass" ;
+indexing classReferencedAsSuperClass : "Class Reference as Superclass" ;
+indexing typeReferenceInConstructor : "Type reference in Constructor" ;
+indexing typeReferenceInTypeMethod : "Type reference in Type Method" ;
 indexing enumDefinition : "Enum Definition" ;
 indexing structDefinition : "Struct Definition" ;
 indexing listDefinition : "List Definition" ;
@@ -29,10 +31,16 @@ indexing mapDefinition : "Map Definition" ;
 indexing uniquemapDefinition : "Unique Map Definition" ;
 indexing mapProxyDefinition : "Map Proxy Definition" ;
 indexing filewrapperDefinition : "Filewrapper Definition" ;
+indexing filewrapperReference : "Filewrapper Reference" ;
 indexing graphDefinition : "Graph Definition" ;
 indexing routineDefinition : "Routine Definition" ;
+indexing routineCall : "Routine Call" ;
 indexing functionDefinition : "Function Definition" ;
+indexing functionCall : "Function Call" ;
+indexing terminalDeclaration : "Terminal Declaration" ;
+indexing terminalReference : "Terminal Reference" ;
 indexing ruleDefinition : "Rule Definition" ;
+indexing ruleReference : "Rule Reference" ;
 indexing abstractCategoryMethodDefinition : "Abstract Category Method Definition" ;
 indexing overrideAbstractCategoryMethodDefinition : "Override Abstract Category Method Definition" ;
 indexing categoryMethodDefinition : "Category Method Definition" ;
@@ -41,6 +49,10 @@ indexing abstractCategoryReaderDefinition : "Abstract Category Reader Definition
 indexing overrideAbstractCategoryReaderDefinition : "Override Abstract Category Reader Definition" ;
 indexing categoryReaderDefinition : "Category Reader Definition" ;
 indexing overrideCategoryReaderDefinition : "Override Category Reader Definition" ;
+indexing optionComponentDefinition : "Option Component Definition" ;
+indexing optionComponentReference : "Option Component Reference" ;
+indexing grammarComponentDefinition : "Grammar Component Definition" ;
+indexing grammarComponentReference : "Grammar Component Reference" ;
 
 #--- Scanner attributes
 @string identifierString ;

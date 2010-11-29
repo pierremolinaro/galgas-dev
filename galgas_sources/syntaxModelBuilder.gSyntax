@@ -237,7 +237,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
-  $non_terminal_symbol$ ? @lstring mNonterminalName ;
+  $non_terminal_symbol$ ? @lstring mNonterminalName indexing ruleReference ;
   @lstring mLabelName ; # No label : empty string
   select
     mLabelName := [@lstring new !"" !here] ;
@@ -265,7 +265,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
-  $terminal$ ? @lstring mTerminalName ;
+  $terminal$ ? @lstring mTerminalName indexing terminalReference ;
   @actualInputParameterListAST mActualInputParameterList ;
   <actual_input_parameter_list> ? mActualInputParameterList ;
   @lstring indexName ;

@@ -74,7 +74,7 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
     or
       $indexing$ ;
       $with$ ;
-      $identifier$ ? indexingGrammar ;
+      $identifier$ ? indexingGrammar indexing grammarComponentReference ;
     end select ;
   #--- Source file
     $??$ ;

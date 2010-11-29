@@ -543,7 +543,7 @@ rule <primary> !@semanticExpressionAST outExpression :
   or
   #--- Class name
     @lstring className ;
-    $type_name$ ?className ;
+    $type_name$ ?className indexing typeReferenceInConstructor ;
   #--- Constructor name
     @lstring constructorName ;
     $identifier$ ? constructorName ;
@@ -559,12 +559,11 @@ rule <primary> !@semanticExpressionAST outExpression :
     $option$ ;
     select
       $.$ ;
-      @lstring optionName ;
-      $identifier$ ?optionName ;
+      $identifier$ ?@lstring optionName ;
       $identifier$ ?@lstring readerName ;
       outExpression := [@optionExpressionAST new ![@lstring new !"galgas_cli_options" !here] !optionName !readerName] ;
     or
-      $identifier$ ?@lstring optionComponentName ;
+      $identifier$ ?@lstring optionComponentName indexing optionComponentReference ;
       $.$ ;
       $identifier$ ?@lstring optionName ;
       $identifier$ ?@lstring readerName ;
@@ -572,8 +571,7 @@ rule <primary> !@semanticExpressionAST outExpression :
     end select ;
   or
     $filewrapper$ ;
-    @lstring filewrapperName ;
-    $identifier$ ? filewrapperName ;
+    $identifier$ ?@lstring filewrapperName indexing filewrapperReference ;
     select
       outExpression := [@filewrapperObjectInstanciationInExpressionAST new
         !filewrapperName
@@ -612,7 +610,7 @@ end rule ;
 #------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression :
-  $identifier$ ? @lstring functionName ;
+  $identifier$ ? @lstring functionName indexing functionCall ;
   $[$ ;
   @semanticExpressionListAST expressionList ;
   <output_expression_list> ?expressionList ;

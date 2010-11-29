@@ -22,22 +22,6 @@ syntax grammarModelBuilder ("galgas_scanner.gLexique") :
 import "grammarMetamodel.gSemantics" ;
 
 #---------------------------------------------------------------------------*
-
-#nonterminal <grammar_component_start_symbol>
-#  !@grammarComponentAST outGrammarComponentRoot
-#;
-#
-#nonterminal <grammar_start_symbol_label>
-#  ??@lstring inLabelName
-#  ?!@nonTerminalLabelListAST ioLabelList
-#;
-#
-#nonterminal <label_formal_parameter>
-#  !@lstring outArgumentName
-#  ?!@formalParameterListAST ioStartSymbolLabelFormalParameterList
-#;
-
-#---------------------------------------------------------------------------*
 #                                                                           *
 #   G R A M M A R    C O M P O N E N T                                      *
 #                                                                           *
@@ -54,7 +38,7 @@ rule <grammar_component_start_symbol>
     $indexing$ ;
   end select ;
   $grammar$ ;
-  $identifier$ ? @lstring mGrammarName ;
+  $identifier$ ? @lstring mGrammarName indexing grammarComponentDefinition ;
   $literal_string$ ? @lstring mGrammarClass ;
   $:$ ;
 #--- New style imports
@@ -68,7 +52,7 @@ rule <grammar_component_start_symbol>
   end repeat ;
 #--- Root symbol
   $root$ ;
-  $non_terminal_symbol$ ?@lstring  mStartSymbol ;
+  $non_terminal_symbol$ ?@lstring  mStartSymbol indexing ruleReference ;
   @bool startSymbolHasParseLabel := false ;
   @nonTerminalLabelListAST mLabelList [emptyList] ;
   <grammar_start_symbol_label> ![@lstring new !"" !here] !?mLabelList ;
