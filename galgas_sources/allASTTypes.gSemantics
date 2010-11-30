@@ -31,7 +31,7 @@ semantics allASTTypes :
 #---------------------------------------------------------------------------*
 
 map @parsedLexiqueComponentMap {
-  @lexiqueComponentAST mRoot ;
+  @lexiqueComponentAST mLexiqueComponentAST ;
   insert insertKey error message "the '%K' lexique component has already been parsed" ;
   search searchKey error message "the '%K' lexique component symbol is not parsed" ;
 }
@@ -49,7 +49,8 @@ map @parsedOptionComponentMap {
 #---------------------------------------------------------------------------*
 
 map @parsedSemanticsComponentMap {
-  @semanticsComponentAST mRoot ;
+  @lstring mSourceFullFilePath ;
+  @semanticsComponentAST mSemanticComponentRoot ;
   insert insertKey error message "the '%K' semantics component has already been parsed" ;
   search searchKey error message "the '%K' semantics component symbol is not parsed" ;
 }
@@ -57,6 +58,7 @@ map @parsedSemanticsComponentMap {
 #---------------------------------------------------------------------------*
 
 map @parsedSyntaxComponentMap {
+  @lstring mSourceFullFilePath ;
   @syntaxComponentAST mSyntaxComponentRoot ;
   insert insertKey error message "the '%K' syntax component has already been parsed" ;
   search searchKey error message "the '%K' syntax component is not parsed" ;
@@ -65,6 +67,7 @@ map @parsedSyntaxComponentMap {
 #---------------------------------------------------------------------------*
 
 map @parsedGrammarComponentMap {
+  @lstring mSourceFullFilePath ;
   @grammarComponentAST mGrammarComponentRoot ;
   insert insertKey error message "the '%K' grammar component has already been parsed" ;
   search searchKey error message "the '%K' grammar component is not parsed" ;
@@ -73,9 +76,19 @@ map @parsedGrammarComponentMap {
 #---------------------------------------------------------------------------*
 
 map @parsedProgramComponentMap {
+  @lstring mSourceFullFilePath ;
   @programComponentAST mProgramComponentAST ;
   insert insertKey error message "the '%K' program component has already been parsed" ;
   search searchKey error message "the '%K' program component is not parsed" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @parsedGuiComponentMap {
+  @lstring mSourceFullFilePath ;
+  @guiComponentAST mGuiComponentAST ;
+  insert insertKey error message "the '%K' GUI component has already been parsed" ;
+  search searchKey error message "the '%K' GUI component is not parsed" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -87,6 +100,7 @@ struct @parsedComponentStruct {
   @parsedOptionComponentMap mParsedOptionComponentMap ;
   @parsedGrammarComponentMap mParsedGrammarComponentMap ;
   @parsedProgramComponentMap mParsedProgramComponentMap ;
+  @parsedGuiComponentMap mParsedGuiComponentMap ;
 }
 
 #---------------------------------------------------------------------------*

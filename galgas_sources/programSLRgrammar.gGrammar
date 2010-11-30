@@ -22,10 +22,11 @@ indexing grammar programSLRgrammar "SLR" :
   with "parameterArgumentSyntax.gSyntax" ;
   with "semanticInstructionsSyntax.gSyntax" ;
   with "programModelBuilder.gSyntax" ;
+  with "semanticDeclarationsSyntax.gSyntax" ;
 
   root <program_component_start_symbol>
     !@programComponentAST outProgramComponentRoot
-  ; # SLR
+  ;
 
   unused <actual_input_parameter_list> ;
 end grammar ;

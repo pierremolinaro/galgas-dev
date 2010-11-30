@@ -55,10 +55,10 @@ routine parseSemanticComponent
   @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
   @lstring basenameKey [new !basename !here] ;
   if [[ioParsedComponentStruct mParsedSemanticsComponentMap] hasKey ! basename] then
-    [[ioParsedComponentStruct mParsedSemanticsComponentMap] searchKey !basenameKey ?outSemanticsComponentRoot] ;
+    [[ioParsedComponentStruct mParsedSemanticsComponentMap] searchKey !basenameKey ?* ?outSemanticsComponentRoot] ;
   else
     grammar semanticsSLRgrammar in inSourceFile ?outSemanticsComponentRoot ;
-    [!?ioParsedComponentStruct->mParsedSemanticsComponentMap insertKey !basenameKey !outSemanticsComponentRoot] ;
+    [!?ioParsedComponentStruct->mParsedSemanticsComponentMap insertKey !basenameKey !inSourceFile !outSemanticsComponentRoot] ;
   end if ;
 end routine ;
 
@@ -263,21 +263,15 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-routine compileSemanticsComponent
+routine compileSemanticsComponentAST
   ??@lstring inSourceFile
   ??@string inOutputDirectory
+  ??@semanticsComponentAST inSemanticsComponentRoot
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
-#--- Parsing
-  @semanticsComponentAST semanticsComponentRoot ;
-  parseSemanticComponent
-    !inSourceFile
-    !?ioParsedComponentStruct
-    ?semanticsComponentRoot
-  ;
 #--- Check component name
   const @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
-  const @lstring componentName := [semanticsComponentRoot mSemanticsComponentName] ;
+  const @lstring componentName := [inSemanticsComponentRoot mSemanticsComponentName] ;
   if [componentName string] != basename then
     warning componentName: "GALGAS checks "
       "the component name ('" . [componentName string]
@@ -285,7 +279,7 @@ routine compileSemanticsComponent
     ;
   end if ; 
 #--- Recursively parse all imported files
-  @semanticDeclarationListAST semanticDeclarationList := [semanticsComponentRoot mSemanticDeclarationList] ;
+  @semanticDeclarationListAST semanticDeclarationList := [inSemanticsComponentRoot mSemanticDeclarationList] ;
   @stringset parsedFileSet [setWithString ![inSourceFile string]] ;
   @lstringlist optionComponentFileNameList [emptyList] ;
   @grammarComponentASTList grammarComponentASTList [emptyList] ;
@@ -299,7 +293,7 @@ routine compileSemanticsComponent
     !?parsedFileSet
     !?headerIncludeList
     !?implementationIncludeList
-    ![semanticsComponentRoot mImportedComponentFileNameList]
+    ![inSemanticsComponentRoot mImportedComponentFileNameList]
     ![inSourceFile stringByDeletingLastPathComponent]
   ;
 #------ Add predefined types to semantics declarations
@@ -310,7 +304,7 @@ routine compileSemanticsComponent
   buildSemanticContext
     ![inSourceFile string]
     !semanticDeclarationListWithPredefinedTypes
-    ![semanticsComponentRoot mEndOfSourceFile]
+    ![inSemanticsComponentRoot mEndOfSourceFile]
     ?semanticContext
   ;
 #------ Build option component map for analysis
@@ -327,7 +321,7 @@ routine compileSemanticsComponent
 #------ Semantic Analysis
   @semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration ;
   performSemanticAnalysis
-    ![semanticsComponentRoot mSemanticDeclarationList]
+    ![inSemanticsComponentRoot mSemanticDeclarationList]
     !semanticContext
     ?decoratedDeclarationListForGeneration
   ;
@@ -392,6 +386,28 @@ routine compileSemanticsComponent
       !"\n"
     ] ;
   end if ;
+end routine ;
+#---------------------------------------------------------------------------*
+
+routine compileSemanticsComponentFromSourceFile
+  ??@lstring inSourceFile
+  ??@string inOutputDirectory
+  ?!@parsedComponentStruct ioParsedComponentStruct
+:
+#--- Parsing
+  @semanticsComponentAST semanticsComponentRoot ;
+  parseSemanticComponent
+    !inSourceFile
+    !?ioParsedComponentStruct
+    ?semanticsComponentRoot
+  ;
+#---
+  compileSemanticsComponentAST
+    !inSourceFile
+    !inOutputDirectory
+    !semanticsComponentRoot
+    !?ioParsedComponentStruct
+  ;
 end routine ;
 
 #---------------------------------------------------------------------------*

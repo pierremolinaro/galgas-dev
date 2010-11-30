@@ -60,7 +60,7 @@ local filewrapper optionGenerationTemplates in "../generation_templates/option_g
 #                  semanticAnalysisOfOptionComponent                        *
 #---------------------------------------------------------------------------*
 
-local routine semanticAnalysisOfOptionComponent
+routine semanticAnalysisOfOptionComponent
   ??@optionComponentAST inOptionComponentRoot
   !@commandLineOptionMap outBoolOptionMap
   !@commandLineOptionMap outUIntOptionMap
@@ -161,7 +161,87 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine compileOptionComponent
+routine compileOptionComponentAST
+  ??@string inOutputDirectory
+  ??@lstring inOptionComponentName
+  ??@commandLineOptionMap boolOptionMap
+  ??@commandLineOptionMap uintOptionMap
+  ??@commandLineOptionMap stringOptionMap
+:
+#--- Generate header
+  if [@uint errorCount] == 0 then
+    [@string generateFile
+      !inOutputDirectory
+      ![inOptionComponentName string] . ".h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper optionGenerationTemplates.optionHeaderZone2
+        ![inOptionComponentName string]
+      ]
+      !"\n\n" # Defaut user zone2
+      ![filewrapper optionGenerationTemplates.optionHeaderZone3
+        ![inOptionComponentName string]
+        !boolOptionMap
+        !uintOptionMap
+        !stringOptionMap
+      ]
+    ] ;
+  end if ;
+#--- Generate Implementation
+  if [@uint errorCount] == 0 then
+    [@string generateFile
+      !inOutputDirectory
+      ![inOptionComponentName string] . ".cpp"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper optionGenerationTemplates.optionImplementation
+        ![inOptionComponentName string]
+        !boolOptionMap
+        !uintOptionMap
+        !stringOptionMap
+      ]
+      !"\n\n" # Defaut user zone2
+      !"\n\n" # User Zone 3
+    ] ;
+ end if ;
+#--- Generate Cocoa header
+  if [@uint errorCount] == 0 then
+    [@string generateFile
+      !inOutputDirectory
+      ![inOptionComponentName string] . "-cocoa.h"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper optionGenerationTemplates.optionHeaderCocoaZone2
+        ![inOptionComponentName string]
+      ]
+      !"\n\n" # Defaut user zone2
+      ![filewrapper optionGenerationTemplates.optionHeaderCocoaZone3
+        ![inOptionComponentName string]
+      ]
+    ] ;
+  end if ;
+#--- Generate Cocoa Implementation
+  if [@uint errorCount] == 0 then
+    [@string generateFile
+      !inOutputDirectory
+      ![inOptionComponentName string] . "-cocoa.m"
+      !"//"
+      !"\n\n" # Defaut user zone1
+      ![filewrapper optionGenerationTemplates.optionImplementationCocoa
+        ![inOptionComponentName string]
+        !boolOptionMap
+        !uintOptionMap
+        !stringOptionMap
+      ]
+      !"\n\n" # Defaut user zone2
+      !"\n\n" # User Zone 3
+    ] ;
+ end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine compileOptionComponentFromSourceFile
   ??@lstring inSourceFile
   ??@string inOutputDirectory
   ?!@parsedComponentStruct ioParsedComponentStruct
@@ -179,75 +259,14 @@ routine compileOptionComponent
     ?uintOptionMap
     ?stringOptionMap
   ;
-#--- Generate header
-  if [@uint errorCount] == 0 then
-    [@string generateFile
-      !inOutputDirectory
-      ![optionComponentName string] . ".h"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      ![filewrapper optionGenerationTemplates.optionHeaderZone2
-        ![optionComponentName string]
-      ]
-      !"\n\n" # Defaut user zone2
-      ![filewrapper optionGenerationTemplates.optionHeaderZone3
-        ![optionComponentName string]
-        !boolOptionMap
-        !uintOptionMap
-        !stringOptionMap
-      ]
-    ] ;
-  end if ;
-#--- Generate Implementation
-  if [@uint errorCount] == 0 then
-    [@string generateFile
-      !inOutputDirectory
-      ![optionComponentName string] . ".cpp"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      ![filewrapper optionGenerationTemplates.optionImplementation
-        ![optionComponentName string]
-        !boolOptionMap
-        !uintOptionMap
-        !stringOptionMap
-      ]
-      !"\n\n" # Defaut user zone2
-      !"\n\n" # User Zone 3
-    ] ;
- end if ;
-#--- Generate Cocoa header
-  if [@uint errorCount] == 0 then
-    [@string generateFile
-      !inOutputDirectory
-      ![optionComponentName string] . "-cocoa.h"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      ![filewrapper optionGenerationTemplates.optionHeaderCocoaZone2
-        ![optionComponentName string]
-      ]
-      !"\n\n" # Defaut user zone2
-      ![filewrapper optionGenerationTemplates.optionHeaderCocoaZone3
-        ![optionComponentName string]
-      ]
-    ] ;
-  end if ;
-#--- Generate Cocoa Implementation
-  if [@uint errorCount] == 0 then
-    [@string generateFile
-      !inOutputDirectory
-      ![optionComponentName string] . "-cocoa.m"
-      !"//"
-      !"\n\n" # Defaut user zone1
-      ![filewrapper optionGenerationTemplates.optionImplementationCocoa
-        ![optionComponentName string]
-        !boolOptionMap
-        !uintOptionMap
-        !stringOptionMap
-      ]
-      !"\n\n" # Defaut user zone2
-      !"\n\n" # User Zone 3
-    ] ;
- end if ;
+#---
+  compileOptionComponentAST
+    !inOutputDirectory
+    !optionComponentName
+    !boolOptionMap
+    !uintOptionMap
+    !stringOptionMap
+  ;
 end routine ;
 
 #---------------------------------------------------------------------------*

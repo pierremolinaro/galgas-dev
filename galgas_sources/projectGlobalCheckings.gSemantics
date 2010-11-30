@@ -328,7 +328,7 @@ routine performProjectGlobalCheckings
   appendPredefinedTypesASTs !?semanticDeclarationList ;
 #--- Build all declaration list
   foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
-    semanticDeclarationList .= [mRoot mSemanticDeclarationList] ;
+    semanticDeclarationList .= [mSemanticComponentRoot mSemanticDeclarationList] ;
   end foreach ;
 #------ Generate declarations
   @semanticContext semanticContext ;
@@ -359,7 +359,7 @@ routine performProjectGlobalCheckings
   @genericCategoryMethodListMap overridingCategoryReaderListMap [emptyMap];
   @genericCategoryMethodListMap overridingAbstractCategoryReaderListMap [emptyMap] ;
   foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
-    foreach [mRoot mSemanticDeclarationList] do
+    foreach [mSemanticComponentRoot mSemanticDeclarationList] do
       [mSemanticDeclaration buildCategoryMethodListMaps
         !?abstractCategoryMethodListMap
         !?categoryMethodListMap

@@ -728,27 +728,20 @@ routine buildLexicalAttributeMap
 end routine ;
 
 #---------------------------------------------------------------------------*
-#                         compileLexiqueComponent                           *
+#                         compileLexiqueComponentFromAST                    *
 #---------------------------------------------------------------------------*
 
-routine compileLexiqueComponent
-  ??@lstring inSourceFile
+routine compileLexiqueComponentFromAST
+  ??@string inComponentNameFromSourceFilePath
   ??@string inOutputDirectory
-  ?!@parsedComponentStruct ioParsedComponentStruct
+  ??@lexiqueComponentAST inLexiqueComponentRoot
 :
-  @lexiqueComponentAST lexiqueComponentRoot ;
-  parseLexiqueComponent
-    !inSourceFile
-    !?ioParsedComponentStruct
-    ?lexiqueComponentRoot
-  ;
 #--------------------------------------- Check component name
-  @lstring componentName := [lexiqueComponentRoot mLexiqueComponentName] ;
-  @string basename := [[[inSourceFile string] lastPathComponent] stringByDeletingPathExtension] ;
-  if [componentName string] != basename then
+  @lstring componentName := [inLexiqueComponentRoot mLexiqueComponentName] ;
+  if [componentName string] != inComponentNameFromSourceFilePath then
     warning componentName: "GALGAS checks "
       "the component name ('" . [componentName string]
-    . "') against the source file base name ('" . basename . "'): they should be identical"
+    . "') against the source file base name ('" . inComponentNameFromSourceFilePath . "'): they should be identical"
     ;
   end if ; 
 #--------------------------------------- Lexical attribute type name map
@@ -757,7 +750,7 @@ routine compileLexiqueComponent
   @lexicalRoutineMap lexicalRoutineMap ;
   buildLexicalRoutineMap ?lexicalRoutineMap ;
 #--------------------------------------- Add extern routines
-  foreach [lexiqueComponentRoot mExternRoutineList] do
+  foreach [inLexiqueComponentRoot mExternRoutineList] do
     @lexicalRoutineFormalArgumentList lexicalRoutineFormalArgumentList [emptyList] ;
     foreach mLexicalRoutineFormalArgumentList do
       @lexicalTypeEnum lexicalFormalArgumentType ;
@@ -770,7 +763,7 @@ routine compileLexiqueComponent
   @lexicalFunctionMap lexicalFunctionMap ;
   buildLexicalFunctionMap ?lexicalFunctionMap ;
 #--------------------------------------- Add extern functions
-  foreach [lexiqueComponentRoot mExternFunctionList] do
+  foreach [inLexiqueComponentRoot mExternFunctionList] do
     @lexicalFunctionFormalArgumentList lexicalFunctionFormalArgumentList [emptyList] ;
     foreach mLexicalFunctionFormalArgumentList do
       @lexicalTypeEnum lexicalFormalArgumentType ;
@@ -810,18 +803,18 @@ routine compileLexiqueComponent
   ] ;
 #--------------------------------------- Build style map
   @uint styleIndex := 1 ;
-  foreach [lexiqueComponentRoot mLexicalStyleList] do
+  foreach [inLexiqueComponentRoot mLexicalStyleList] do
     [!?lexiqueAnalysisContext->mStyleMap insertKey !mName !mComment !styleIndex] ;
     styleIndex ++ ;
   end foreach ;
 #--------------------------------------- Build lexical attribute map
   buildLexicalAttributeMap
    !lexicalTypeMap
-   ![lexiqueComponentRoot mLexicalAttributeList]
+   ![inLexiqueComponentRoot mLexicalAttributeList]
    !?lexiqueAnalysisContext->mLexicalAttributeMap
   ;
 #--------------------------------------- Build terminal map
-  foreach [lexiqueComponentRoot mTerminalDeclarationList] do
+  foreach [inLexiqueComponentRoot mTerminalDeclarationList] do
     @uint terminalStyleIndex := 0 ;
     if [[mStyle string] length] > 0 then
       [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex] ;
@@ -851,7 +844,7 @@ routine compileLexiqueComponent
       !terminalStyleIndex
     ;
   end foreach ;
-  foreach [lexiqueComponentRoot mLexicalListDeclarationList] do
+  foreach [inLexiqueComponentRoot mLexicalListDeclarationList] do
     @uint terminalStyleIndex := 0 ;
     if [[mStyle string] length] > 0 then
       [[lexiqueAnalysisContext mStyleMap] searchKey !mStyle ?* ?terminalStyleIndex] ;
@@ -891,11 +884,11 @@ routine compileLexiqueComponent
     [!?lexiqueAnalysisContext->mLexicalTokenListMap insertKey !mName !lexicalTokenListMap !tokenSortedlist !false] ;
   end foreach ;
 #--------------------------------------- Build Message map
-  foreach [lexiqueComponentRoot mLexicalMessageDeclarationList] do
+  foreach [inLexiqueComponentRoot mLexicalMessageDeclarationList] do
     [!?lexiqueAnalysisContext->mLexicalMessageMap insertKey !mMessageName !mMessageValue !false] ;
   end foreach ;
 #--------------------------------------- Check rules
-  foreach [lexiqueComponentRoot mLexicalRuleList] do
+  foreach [inLexiqueComponentRoot mLexicalRuleList] do
     [mLexicalRule checkLexicalRule !?lexiqueAnalysisContext] ;
   end foreach ;
 #--------------------------------------- Warn for unused messages
@@ -905,7 +898,7 @@ routine compileLexiqueComponent
     end if ;
   end foreach ;
 #--------------------------------------- Template delimiters
-  foreach [lexiqueComponentRoot mTemplateDelimitorList] do
+  foreach [inLexiqueComponentRoot mTemplateDelimitorList] do
    lexiqueAnalysisContext->mUnicodeStringToGenerate += ![mStartString string] ;
    lexiqueAnalysisContext->mUnicodeStringToGenerate += ![mEndString string] ;
    @bool preservesStartDelimiter := false ;
@@ -921,20 +914,20 @@ routine compileLexiqueComponent
    lexiqueAnalysisContext->mTemplateDelimitorList += !mStartString !mEndString !preservesStartDelimiter ;
   end foreach ;
 #--------------------------------------- Check "indexing" declarations
-  if [[lexiqueComponentRoot mIndexingDirectory] isNowhere] then
-    foreach [lexiqueComponentRoot mIndexingListAST] do
+  if [[inLexiqueComponentRoot mIndexingDirectory] isNowhere] then
+    foreach [inLexiqueComponentRoot mIndexingListAST] do
       error mIndexName : "indexing declaration requires one 'indexing in \"path\";' declaration" ;
     end foreach ;
   end if ;
   @stringset indexNameSet [emptySet] ;
-  foreach [lexiqueComponentRoot mIndexingListAST] do
+  foreach [inLexiqueComponentRoot mIndexingListAST] do
     if [indexNameSet hasKey ![mIndexName string]] then
       error mIndexName : "the '" . mIndexName . "' index is already declared" ;
     end if ;
     indexNameSet += ![mIndexName string] ;
   end foreach ;
 #--------------------------------------- Template replacements
-  foreach [lexiqueComponentRoot mTemplateReplacementList] do
+  foreach [inLexiqueComponentRoot mTemplateReplacementList] do
    lexiqueAnalysisContext->mUnicodeStringToGenerate += ![mMatchString string] ;
    lexiqueAnalysisContext->mUnicodeStringToGenerate += ![mReplacementString string] ;
    # § TODO Check replacement function
@@ -951,14 +944,14 @@ routine compileLexiqueComponent
       ![filewrapper lexiqueGenerationTemplates.newHeaderZone2
          ![lexiqueClassName identifierRepresentation]
          !lexiqueAnalysisContext
-         !lexiqueComponentRoot
+         !inLexiqueComponentRoot
        ]
       !"\n\n" # Defaut user zone2
       ![filewrapper lexiqueGenerationTemplates.newHeaderZone3
          ![lexiqueClassName identifierRepresentation]
-         ![lexiqueComponentRoot mLexicalListDeclarationList]
+         ![inLexiqueComponentRoot mLexicalListDeclarationList]
          !lexiqueAnalysisContext
-         ![lexiqueComponentRoot mIndexingListAST]
+         ![inLexiqueComponentRoot mIndexingListAST]
        ]
     ] ;
   end if ;
@@ -976,9 +969,9 @@ routine compileLexiqueComponent
          ![lexiqueAnalysisContext mTerminalList]
          ![lexiqueAnalysisContext mLexicalTokenListMap]
          ![lexiqueAnalysisContext mUnicodeStringToGenerate]
-         ![lexiqueComponentRoot mLexicalRuleList]
+         ![inLexiqueComponentRoot mLexicalRuleList]
          !lexiqueAnalysisContext
-         !lexiqueComponentRoot
+         !inLexiqueComponentRoot
        ]
       !"\n\n" # Defaut user zone2
       !"\n\n" # Zone 3
@@ -1015,14 +1008,36 @@ routine compileLexiqueComponent
          ![lexiqueAnalysisContext mLexicalMessageMap]
          ![lexiqueAnalysisContext mTerminalList]
          ![lexiqueAnalysisContext mUnicodeStringToGenerate]
-         ![lexiqueComponentRoot mLexicalRuleList]
+         ![inLexiqueComponentRoot mLexicalRuleList]
          !lexiqueAnalysisContext
-         !lexiqueComponentRoot
+         !inLexiqueComponentRoot
        ]
       !"\n\n" # Defaut user zone2
       !"\n\n" # Zone 3
     ] ;
   end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+#                         compileLexiqueComponentFromSource                 *
+#---------------------------------------------------------------------------*
+
+routine compileLexiqueComponentFromSource
+  ??@lstring inSourceFile
+  ??@string inOutputDirectory
+  ?!@parsedComponentStruct ioParsedComponentStruct
+:
+  @lexiqueComponentAST lexiqueComponentRoot ;
+  parseLexiqueComponent
+    !inSourceFile
+    !?ioParsedComponentStruct
+    ?lexiqueComponentRoot
+  ;
+  compileLexiqueComponentFromAST
+    ![[[inSourceFile string] lastPathComponent] stringByDeletingPathExtension]
+    !inOutputDirectory
+    !lexiqueComponentRoot
+  ;
 end routine ;
 
 #---------------------------------------------------------------------------*
