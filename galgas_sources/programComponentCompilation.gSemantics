@@ -170,23 +170,15 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-routine compileProgramComponent
+routine compileProgramComponentFromAST
   ??@lstring inSourceFile
   ??@string inOutputDirectory
+  ??@programComponentAST inProgramComponentAST
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
-#--- Parse source file
   const @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
-  const @lstring basenameKey [new !basename !here] ;
-  @programComponentAST programComponentAST ;
-  if [ioParsedComponentStruct->mParsedSyntaxComponentMap hasKey !basename] then
-    [ioParsedComponentStruct->mParsedProgramComponentMap searchKey !basenameKey ?programComponentAST] ;
-  else
-    grammar programSLRgrammar in inSourceFile ?programComponentAST ;
-    [!?ioParsedComponentStruct->mParsedProgramComponentMap insertKey !basenameKey !programComponentAST] ;
-  end if ;
 #--- Check component name
-  const @lstring componentName := [programComponentAST mProgramComponentName] ;
+  const @lstring componentName := [inProgramComponentAST mProgramComponentName] ;
   if [componentName string] != basename then
     warning componentName: "GALGAS checks "
       "the component name ('" . [componentName string]
@@ -194,7 +186,7 @@ routine compileProgramComponent
     ;
   end if ; 
 #--- Recursively parse all imported files
-  @semanticDeclarationListAST semanticDeclarationList := [programComponentAST mSemanticDeclarationList] ;
+  @semanticDeclarationListAST semanticDeclarationList := [inProgramComponentAST mSemanticDeclarationList] ;
   @stringset parsedFileSet [setWithString ![inSourceFile string]] ;
   @lstringlist optionComponentFileNameList [emptyList] ;
   @grammarComponentASTList grammarComponentASTList [emptyList] ;
@@ -208,7 +200,7 @@ routine compileProgramComponent
     !?parsedFileSet
     !?headerIncludeList
     !?implementationIncludeList
-    ![programComponentAST mImportedComponentFileNameList]
+    ![inProgramComponentAST mImportedComponentFileNameList]
     ![inSourceFile stringByDeletingLastPathComponent]
   ;
 #------ Add predefined types to semantics declarations
@@ -219,7 +211,7 @@ routine compileProgramComponent
   buildSemanticContext
     ![inSourceFile string]
     !semanticDeclarationListWithPredefinedTypes
-    ![programComponentAST mEndOfSourceFile]
+    ![inProgramComponentAST mEndOfSourceFile]
     ?semanticContext
   ;
 #--- Perform semantic analysis of grammar components
@@ -236,7 +228,7 @@ routine compileProgramComponent
 #------ Semantic Analysis
   @semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration ;
   performSemanticAnalysis
-    ![programComponentAST mSemanticDeclarationList]
+    ![inProgramComponentAST mSemanticDeclarationList]
     !semanticContext
     ?decoratedDeclarationListForGeneration
   ;
@@ -250,21 +242,21 @@ routine compileProgramComponent
 #--- Analyse 'before' instructions
   compileBeforeClause
     !analysisContext
-    !programComponentAST
+    !inProgramComponentAST
     !?decoratedDeclarationListForGeneration
   ;
 #--- Analyse program rules
   @bool hasIndexing := false ;
   compileProgramRules
     !analysisContext
-    !programComponentAST
+    !inProgramComponentAST
     !?decoratedDeclarationListForGeneration
     !?hasIndexing
   ;
 #--- Analyse 'after' instructions
   compileAfterClause
     !analysisContext
-    !programComponentAST
+    !inProgramComponentAST
     !?decoratedDeclarationListForGeneration
   ;
 #------ Generate Header File
@@ -295,8 +287,8 @@ routine compileProgramComponent
     @string implementationString := [filewrapper programFileGenerationTemplate.programFileImplementation
       ![componentName string]
       !implementationIncludeList
-      ![programComponentAST mProgramRules]
-      ![[programComponentAST mVersionString] string]
+      ![inProgramComponentAST mProgramRules]
+      ![[inProgramComponentAST mVersionString] string]
       !hasIndexing
     ] ;
     foreach decoratedDeclarationListForGeneration do
@@ -313,6 +305,32 @@ routine compileProgramComponent
       !"\n"
     ] ;
   end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine compileProgramComponentFromSourceFile
+  ??@lstring inSourceFile
+  ??@string inOutputDirectory
+  ?!@parsedComponentStruct ioParsedComponentStruct
+:
+#--- Parse source file
+  const @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+  const @lstring basenameKey [new !basename !here] ;
+  @programComponentAST programComponentAST ;
+  if [ioParsedComponentStruct->mParsedProgramComponentMap hasKey !basename] then
+    [ioParsedComponentStruct->mParsedProgramComponentMap searchKey !basenameKey ?* ?programComponentAST] ;
+  else
+    grammar programSLRgrammar in inSourceFile ?programComponentAST ;
+    [!?ioParsedComponentStruct->mParsedProgramComponentMap insertKey !basenameKey !inSourceFile !programComponentAST] ;
+  end if ;
+#---
+  compileProgramComponentFromAST
+    !inSourceFile
+    !inOutputDirectory
+    !programComponentAST
+    !?ioParsedComponentStruct
+  ;
 end routine ;
 
 #---------------------------------------------------------------------------*

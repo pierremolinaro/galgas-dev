@@ -89,18 +89,17 @@ local filewrapper guiGenerationTemplates in "../generation_templates/gui_generat
 }
 
 #---------------------------------------------------------------------------*
-#         C O M P I L E    G U I    C O M P O N E N T                       *
+#       C O M P I L E   G U I   C O M P O N E N T   F R O M   A S T         *
 #---------------------------------------------------------------------------*
 
-routine compileGuiComponent
+routine compileGuiComponentFromAST
   ??@lstring inSourceFile
   ??@string inOutputDirectory
+  ??@guiComponentAST inGuiComponentRoot
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
-  @guiComponentAST guiComponentRoot ;
-  grammar guiGrammar in inSourceFile ?guiComponentRoot ;
 #--- Check component name
-  @lstring componentName := [guiComponentRoot mGUIName] ;
+  @lstring componentName := [inGuiComponentRoot mGUIName] ;
   @string basename := [[[inSourceFile string] lastPathComponent] stringByDeletingPathExtension] ;
   if [componentName string] != basename then
     warning componentName: "GALGAS checks "
@@ -119,7 +118,7 @@ routine compileGuiComponent
     ![@importedLexiqueList emptyList]
   ] ;
 #--- Check imported options components
-  foreach [guiComponentRoot mImportedOptionList] do 
+  foreach [inGuiComponentRoot mImportedOptionList] do 
     if [[mValue string] pathExtension] != "gOption" then
       error mValue: "only an option component (path extension '.gOption') can be imported here" ;
     else
@@ -135,10 +134,9 @@ routine compileGuiComponent
     end if ;
   end foreach ;
 #--- Nib and main classes
-  foreach [guiComponentRoot mGlobalSimpleAttributeList] do
+  foreach [inGuiComponentRoot mGlobalSimpleAttributeList] do
     if [mKey string] != "nibAndMainClass" then
       warning mKey:"the '" . mKey . "' key is invalid and has no effect" ;
-#      error mKey:"the '" . mKey . "' key is invalid: only 'nibAndMainClass' is allowed here" ;
     else
       @stringlist x := [[mValue string] componentsSeparatedByString !"."] ;
       if [x length] != 2 then
@@ -152,7 +150,7 @@ routine compileGuiComponent
     end if ;
   end foreach ;
 #--- 'with lexique' construct analysis
-  foreach [guiComponentRoot mWithLexiqueList] do
+  foreach [inGuiComponentRoot mWithLexiqueList] do
   #--- Check lexique
     @lexiqueComponentAST lexiqueComponentRoot ;
     if [[mLexiqueFileName string] pathExtension] != "gLexique" then
@@ -257,6 +255,25 @@ routine compileGuiComponent
   end if ;
 end routine ;
 
+#---------------------------------------------------------------------------*
+#C O M P I L E   G U I   C O M P O N E N T   F R O M   S O U R C E   F I L E*
+#---------------------------------------------------------------------------*
+
+routine compileGuiComponentFromSourceFile
+  ??@lstring inSourceFile
+  ??@string inOutputDirectory
+  ?!@parsedComponentStruct ioParsedComponentStruct
+:
+  @guiComponentAST guiComponentRoot ;
+  grammar guiGrammar in inSourceFile ?guiComponentRoot ;
+#---
+  compileGuiComponentFromAST
+    !inSourceFile
+    !inOutputDirectory
+    !guiComponentRoot
+    !?ioParsedComponentStruct
+  ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 

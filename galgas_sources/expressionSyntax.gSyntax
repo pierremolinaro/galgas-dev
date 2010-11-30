@@ -23,18 +23,6 @@ import "semanticsTypesForAST.gSemantics" ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#          Rules prototypes                                                    *
-#                                                                              *
-#------------------------------------------------------------------------------*
-
-nonterminal <expression> !@semanticExpressionAST outExpression ;
-
-nonterminal <output_expression_list>
-  !@semanticExpressionListAST outExpressionList
-;
-
-#------------------------------------------------------------------------------*
-#                                                                              *
 #   E X P R E S S I O N                                                        *
 #                                                                              *
 #------------------------------------------------------------------------------*

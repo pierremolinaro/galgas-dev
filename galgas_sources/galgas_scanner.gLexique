@@ -19,9 +19,6 @@
 lexique galgas_scanner indexing in "GALGAS_INDEXES" :
 #--- Indexing keys
 indexing classDefinition : "Class Definition" ;
-indexing classReferencedAsSuperClass : "Class Reference as Superclass" ;
-indexing typeReferenceInConstructor : "Type reference in Constructor" ;
-indexing typeReferenceInTypeMethod : "Type reference in Type Method" ;
 indexing enumDefinition : "Enum Definition" ;
 indexing structDefinition : "Struct Definition" ;
 indexing listDefinition : "List Definition" ;
@@ -33,6 +30,9 @@ indexing mapProxyDefinition : "Map Proxy Definition" ;
 indexing filewrapperDefinition : "Filewrapper Definition" ;
 indexing filewrapperReference : "Filewrapper Reference" ;
 indexing graphDefinition : "Graph Definition" ;
+indexing classReferencedAsSuperClass : "Class Reference as Superclass" ;
+indexing typeReferenceInConstructor : "Type reference in Constructor" ;
+indexing typeReferenceInTypeMethod : "Type reference in Type Method" ;
 indexing routineDefinition : "Routine Definition" ;
 indexing routineCall : "Routine Call" ;
 indexing functionDefinition : "Function Definition" ;

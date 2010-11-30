@@ -454,6 +454,7 @@ routine parseGrammarComponent
     grammar grammarLL1grammar in inSourceFile ?outGrammarComponentRoot ;
     [!?ioParsedComponentStruct->mParsedGrammarComponentMap insertKey
       ![@lstring new !basename !here]
+      !inSourceFile
       !outGrammarComponentRoot
     ] ;
   end with ;
@@ -486,16 +487,15 @@ extern routine grammarAnalysisAndGeneration
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-routine compileGrammarComponent
+routine compileGrammarComponentFromAST
   ??@lstring inSourceFile
   ??@string inOutputDirectoryForCppFiles
-  ??@string inOutputDirectoryForHTMLFile
+  ??@grammarComponentAST inGrammarComponentRoot
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
-  @grammarComponentAST grammarComponentRoot ;
-  parseGrammarComponent !inSourceFile !?ioParsedComponentStruct ?grammarComponentRoot ;
+ const @string outputDirectoryForHTMLFile := [inSourceFile stringByDeletingLastPathComponent] ;
 #---------------------------------------------------------- Check component name
-  const @lstring grammarComponentName := [grammarComponentRoot mGrammarName] ;
+  const @lstring grammarComponentName := [inGrammarComponentRoot mGrammarName] ;
   const @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
   if [grammarComponentName string] != basename then
     warning grammarComponentName: "GALGAS checks "
@@ -511,7 +511,7 @@ routine compileGrammarComponent
   @syntaxComponentListForGrammarAnalysis syntaxComponentListForGrammarAnalysis [emptyList] ;
   @nonTerminalToAddList nonTerminalToAddList [emptyList] ;
   @uint addedNonTerminalCount := 0 ;
-  foreach [grammarComponentRoot mSyntaxComponents] do
+  foreach [inGrammarComponentRoot mSyntaxComponents] do
     const @uint addedNonTerminalCountRef := addedNonTerminalCount ;
     if [mValue pathExtension] != "gSyntax" then
       error mValue: "a syntax component file should have '.gSyntax' path extension" ;
@@ -519,11 +519,12 @@ routine compileGrammarComponent
       @string syntaxComponentName := [[mValue lastPathComponent] stringByDeletingPathExtension] ;
       @syntaxComponentAST syntaxComponentRoot ;
       if [[ioParsedComponentStruct mParsedSyntaxComponentMap] hasKey !syntaxComponentName] then
-        [[ioParsedComponentStruct mParsedSyntaxComponentMap] searchKey ![@lstring new !syntaxComponentName !here] ?syntaxComponentRoot] ;
+        [[ioParsedComponentStruct mParsedSyntaxComponentMap] searchKey ![@lstring new !syntaxComponentName !here] ?* ?syntaxComponentRoot] ;
       else
-        @string sourceFilePath := [mValue absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]] ;
-        grammar syntaxSLRgrammar in [@lstring new !sourceFilePath ![mValue location]] ?syntaxComponentRoot ;
-        [!?ioParsedComponentStruct->mParsedSyntaxComponentMap insertKey ![@lstring new !syntaxComponentName ![mValue location]] !syntaxComponentRoot] ;
+        const @string sourceFilePath := [mValue absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]] ;
+        const @lstring lSourceFilePath := [@lstring new !sourceFilePath ![mValue location]] ;
+        grammar syntaxSLRgrammar in lSourceFilePath ?syntaxComponentRoot ;
+        [!?ioParsedComponentStruct->mParsedSyntaxComponentMap insertKey ![@lstring new !syntaxComponentName ![mValue location]] !lSourceFilePath !syntaxComponentRoot] ;
       end if ;
     #--- Handle lexique component
       lexiqueComponentPath := [syntaxComponentRoot mImportedLexiqueFilePath] ;
@@ -569,27 +570,27 @@ routine compileGrammarComponent
     ?lexiqueComponentAST
   ;
   const @bool hasIndexing := not [[lexiqueComponentAST mIndexingDirectory] isNowhere] ;
-  if hasIndexing & not grammarComponentRoot->mHasIndexing->bool then
-    error grammarComponentRoot->mHasIndexing : "the grammar enables indexing, but the '" . lexiqueComponentAST->mLexiqueComponentName . "' does not" ;
-  elsif (not hasIndexing) & grammarComponentRoot->mHasIndexing->bool then
-    error grammarComponentRoot->mGrammarName : "the grammar does not enable indexing, but the '" . lexiqueComponentAST->mLexiqueComponentName . "' does" ;
+  if hasIndexing & not inGrammarComponentRoot->mHasIndexing->bool then
+    error inGrammarComponentRoot->mHasIndexing : "the grammar enables indexing, but the '" . lexiqueComponentAST->mLexiqueComponentName . "' does not" ;
+  elsif (not hasIndexing) & inGrammarComponentRoot->mHasIndexing->bool then
+    error inGrammarComponentRoot->mGrammarName : "the grammar does not enable indexing, but the '" . lexiqueComponentAST->mLexiqueComponentName . "' does" ;
   end if ;
 #---------------------------------------------------------- Start symbol
 #--- Search start symbol in non terminal map
   @nonterminalSymbolLabelMapForGrammarAnalysis startSymbolAltMap ;
   @uint startSymbolIndex ;
-  [nonTerminalMapForGrammarAnalysis searchKey ![grammarComponentRoot mStartSymbolName] ?startSymbolIndex ?startSymbolAltMap] ;
+  [nonTerminalMapForGrammarAnalysis searchKey ![inGrammarComponentRoot mStartSymbolName] ?startSymbolIndex ?startSymbolAltMap] ;
 #--- Check signatures
   checkLabelMap
-    ![[grammarComponentRoot mStartSymbolName] location]
-    ![grammarComponentRoot mStartSymbolLabelList]
-    ![grammarComponentRoot mStartSymbolHasParseLabel]
-    ![nonTerminalMapForGrammarAnalysis locationForKey ![[grammarComponentRoot mStartSymbolName] string]]
+    ![[inGrammarComponentRoot mStartSymbolName] location]
+    ![inGrammarComponentRoot mStartSymbolLabelList]
+    ![inGrammarComponentRoot mStartSymbolHasParseLabel]
+    ![nonTerminalMapForGrammarAnalysis locationForKey ![[inGrammarComponentRoot mStartSymbolName] string]]
     !startSymbolAltMap
   ;
 #---------------------------------------------------------- Unused Non Terminal Symbols
   @unusedNonTerminalSymbolMapForGrammarAnalysis unusedNonTerminalSymbolsForGrammar [emptyMap] ;
-  foreach [grammarComponentRoot mUnusedNonterminalList] do
+  foreach [inGrammarComponentRoot mUnusedNonterminalList] do
     @uint nonterminalIndex ;
     [nonTerminalMapForGrammarAnalysis searchKey !mValue ?nonterminalIndex ?*] ;
     [!?unusedNonTerminalSymbolsForGrammar insertKey !mValue !nonterminalIndex] ;
@@ -601,34 +602,34 @@ routine compileGrammarComponent
   end foreach ;
 #---------------------------------------------------------- Analyze grammar
   grammarAnalysisAndGeneration
-    ![grammarComponentRoot mGrammarName]
-    ![grammarComponentRoot mGrammarClass]
+    ![inGrammarComponentRoot mGrammarName]
+    ![inGrammarComponentRoot mGrammarClass]
     !startSymbolIndex
     !lexiqueComponentName
-    ![grammarComponentRoot mEndOfSourceText]
+    ![inGrammarComponentRoot mEndOfSourceText]
     !actuallyUsedTerminalSymbolMap
     !syntaxComponentListForGrammarAnalysis
     !unusedNonTerminalSymbolsForGrammar
     !inOutputDirectoryForCppFiles
-    !inOutputDirectoryForHTMLFile
+    !outputDirectoryForHTMLFile
     !nonTerminalSymbolSortedListForGrammarAnalysis
     !hasIndexing
   ;
 #---------------------------------------------------------- Generate header
   if [@uint errorCount] == 0 then
     const @string zone2 := [filewrapper grammarGenerationTemplate.grammarZone2Header
-      !grammarComponentRoot
+      !inGrammarComponentRoot
     ] ;
     const @string zone3 := [filewrapper grammarGenerationTemplate.grammarZone3Header
       ![lexiqueComponentName identifierRepresentation]
-      !grammarComponentRoot
+      !inGrammarComponentRoot
       !nonTerminalMapForGrammarAnalysis
       !nonTerminalToAddList
       !hasIndexing
     ] ;
     [@string generateFile
       !inOutputDirectoryForCppFiles
-      ![[grammarComponentRoot mGrammarName] string] . ".h"
+      ![[inGrammarComponentRoot mGrammarName] string] . ".h"
       !"//"
       !"\n\n" # Defaut user zone1
       !zone2
@@ -636,6 +637,24 @@ routine compileGrammarComponent
       !zone3
     ] ;
   end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+routine compileGrammarComponentFromSourceFile
+  ??@lstring inSourceFile
+  ??@string inOutputDirectoryForCppFiles
+  ?!@parsedComponentStruct ioParsedComponentStruct
+:
+  @grammarComponentAST grammarComponentRoot ;
+  parseGrammarComponent !inSourceFile !?ioParsedComponentStruct ?grammarComponentRoot ;
+#----
+  compileGrammarComponentFromAST
+    !inSourceFile
+    !inOutputDirectoryForCppFiles
+    !grammarComponentRoot
+    !?ioParsedComponentStruct
+  ;
 end routine ;
 
 #---------------------------------------------------------------------------*

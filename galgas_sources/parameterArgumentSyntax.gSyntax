@@ -22,20 +22,8 @@ syntax parameterArgumentSyntax ("galgas_scanner.gLexique") :
 import "semanticsTypesForAST.gSemantics" ;
 
 #------------------------------------------------------------------------------*
-#                                                                              *
-#          Rules prototypes                                                    *
-#                                                                              *
-#------------------------------------------------------------------------------*
 
-nonterminal <expression> !@semanticExpressionAST outExpression ;
-
-nonterminal <formal_parameter_list> !@formalParameterListAST outFormalParameterList ;
-
-nonterminal <formal_input_parameter_list> !@formalInputParameterListAST outFormalInputParameterList ;
-
-nonterminal <actual_parameter_list> !@actualParameterListAST outActualParameterList ;
-
-nonterminal <actual_input_parameter_list> !@actualInputParameterListAST outActualInputParameterList ;
+nonterminal <expression> !@semanticExpressionAST outExpressionAST ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *

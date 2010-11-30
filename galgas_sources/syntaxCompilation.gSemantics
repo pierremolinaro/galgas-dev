@@ -70,23 +70,15 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-routine compileSyntaxComponent
+routine compileSyntaxComponentFromAST
   ??@lstring inSourceFile
   ??@string inOutputDirectory
+  ??@syntaxComponentAST inSyntaxComponentRoot
   ?!@parsedComponentStruct ioParsedComponentStruct
 :
-#--- Parse source file
   const @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
-  const @lstring basenameKey [new !basename !here] ;
-  @syntaxComponentAST syntaxComponentRoot ;
-  if [[ioParsedComponentStruct mParsedSyntaxComponentMap] hasKey ! basename] then
-    [[ioParsedComponentStruct mParsedSyntaxComponentMap] searchKey !basenameKey ?syntaxComponentRoot] ;
-  else
-    grammar syntaxSLRgrammar in inSourceFile ?syntaxComponentRoot ;
-    [!?ioParsedComponentStruct->mParsedSyntaxComponentMap insertKey !basenameKey !syntaxComponentRoot] ;
-  end if ;
 #--- Check component name
-  const @lstring componentName := [syntaxComponentRoot mSyntaxComponentName] ;
+  const @lstring componentName := [inSyntaxComponentRoot mSyntaxComponentName] ;
   if [componentName string] != basename then
     warning componentName: "GALGAS checks "
       "the component name ('" . [componentName string]
@@ -94,7 +86,7 @@ routine compileSyntaxComponent
     ;
   end if ; 
 #--- Recursively parse all imported files
-  @semanticDeclarationListAST semanticDeclarationList := [syntaxComponentRoot mSemanticDeclarationList] ;
+  @semanticDeclarationListAST semanticDeclarationList := [inSyntaxComponentRoot mSemanticDeclarationList] ;
   @stringset parsedFileSet [setWithString ![inSourceFile string]] ;
   @lstringlist optionComponentFileNameList [emptyList] ;
   @grammarComponentASTList grammarComponentASTList [emptyList] ;
@@ -108,7 +100,7 @@ routine compileSyntaxComponent
     !?parsedFileSet
     !?headerIncludeList
     !?implementationIncludeList
-    ![syntaxComponentRoot mImportedComponentFileNameList]
+    ![inSyntaxComponentRoot mImportedComponentFileNameList]
     ![inSourceFile stringByDeletingLastPathComponent]
   ;
 #------ Add predefined types to semantics declarations
@@ -119,7 +111,7 @@ routine compileSyntaxComponent
   buildSemanticContext
     ![inSourceFile string]
     !semanticDeclarationListWithPredefinedTypes
-    ![syntaxComponentRoot mEndOfSourceFile]
+    ![inSyntaxComponentRoot mEndOfSourceFile]
     ?semanticContext
   ;
 #--- Perform semantic analysis of grammar components
@@ -135,8 +127,8 @@ routine compileSyntaxComponent
   ;
 #--- Parse lexique component
   const @lstring lexiqueFilePath [new
-    ![[syntaxComponentRoot mImportedLexiqueFilePath] absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]]
-    ![[syntaxComponentRoot mImportedLexiqueFilePath] location]
+    ![[inSyntaxComponentRoot mImportedLexiqueFilePath] absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]]
+    ![[inSyntaxComponentRoot mImportedLexiqueFilePath] location]
   ] ;
   @lexiqueComponentAST lexiqueComponentRoot ;
   parseLexiqueComponent
@@ -155,13 +147,13 @@ routine compileSyntaxComponent
   const @bool hasIndexing := not [[lexiqueComponentRoot mIndexingDirectory] isNowhere] ;
 #--- Build semantic context from rule headers and non terminal declaration
   if [@uint errorCount] == 0 then
-    const @string lexiqueName := [[[syntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] ;
+    const @string lexiqueName := [[[inSyntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] ;
     @semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration ;
     const @predefinedTypes predefinedTypes := buildPredefinedTypes [!semanticContext] ;
     @syntaxDeclarationForGeneration syntaxDeclarationForGeneration ;
     semanticAnalysisOfSyntaxComponent
-      ![syntaxComponentRoot mNonterminalDeclarationList]
-      ![syntaxComponentRoot mRuleList]
+      ![inSyntaxComponentRoot mNonterminalDeclarationList]
+      ![inSyntaxComponentRoot mRuleList]
       ![componentName string]
       ![lexiqueName identifierRepresentation]
       !semanticContext
@@ -173,7 +165,7 @@ routine compileSyntaxComponent
     ;
   #------ Semantic Analysis
     performSemanticAnalysis
-      ![syntaxComponentRoot mSemanticDeclarationList]
+      ![inSyntaxComponentRoot mSemanticDeclarationList]
       !semanticContext
       ?decoratedDeclarationListForGeneration
     ;
@@ -212,7 +204,7 @@ routine compileSyntaxComponent
           implementationString .= [mDeclaration appendSpecificImplementation] ;
         end foreach ;
         const @string lexiqueCppName := "C_Lexique_"
-        . [[[[syntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] identifierRepresentation] ;
+        . [[[[inSyntaxComponentRoot mImportedLexiqueFilePath] lastPathComponent] stringByDeletingPathExtension] identifierRepresentation] ;
         foreach [syntaxDeclarationForGeneration mRuleDeclarationList] do
         #--- Generate rule label implementation
           foreach mLabelImplementationList do
@@ -282,6 +274,31 @@ routine compileSyntaxComponent
       end if ;
     end if ;
   end if ;
+end routine ;
+#---------------------------------------------------------------------------*
+
+routine compileSyntaxComponentFromSourceFile
+  ??@lstring inSourceFile
+  ??@string inOutputDirectory
+  ?!@parsedComponentStruct ioParsedComponentStruct
+:
+#--- Parse source file
+  const @string basename := [[inSourceFile lastPathComponent] stringByDeletingPathExtension] ;
+  const @lstring basenameKey [new !basename !here] ;
+  @syntaxComponentAST syntaxComponentRoot ;
+  if [[ioParsedComponentStruct mParsedSyntaxComponentMap] hasKey ! basename] then
+    [[ioParsedComponentStruct mParsedSyntaxComponentMap] searchKey !basenameKey ?* ?syntaxComponentRoot] ;
+  else
+    grammar syntaxSLRgrammar in inSourceFile ?syntaxComponentRoot ;
+    [!?ioParsedComponentStruct->mParsedSyntaxComponentMap insertKey !basenameKey !inSourceFile !syntaxComponentRoot] ;
+  end if ;
+#---
+  compileSyntaxComponentFromAST
+    !inSourceFile
+    !inOutputDirectory
+    !syntaxComponentRoot
+    !?ioParsedComponentStruct
+  ;
 end routine ;
 
 #---------------------------------------------------------------------------*

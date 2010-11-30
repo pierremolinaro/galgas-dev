@@ -85,8 +85,9 @@ indexing with optionLL1grammar
     ![@parsedOptionComponentMap emptyMap]
     ![@parsedGrammarComponentMap emptyMap]
     ![@parsedProgramComponentMap emptyMap]
+    ![@parsedGuiComponentMap emptyMap]
   ] ;
-  compileOptionComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct ;
+  compileOptionComponentFromSourceFile !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct ;
 }
 
 #---------------------------------------------------------------------------*
@@ -102,8 +103,9 @@ indexing with lexiqueLL1grammar
     ![@parsedOptionComponentMap emptyMap]
     ![@parsedGrammarComponentMap emptyMap]
     ![@parsedProgramComponentMap emptyMap]
+    ![@parsedGuiComponentMap emptyMap]
   ] ;
-  compileLexiqueComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct ;
+  compileLexiqueComponentFromSource !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct ;
 }
 
 #---------------------------------------------------------------------------*
@@ -119,8 +121,9 @@ indexing with semanticsSLRgrammar
     ![@parsedOptionComponentMap emptyMap]
     ![@parsedGrammarComponentMap emptyMap]
     ![@parsedProgramComponentMap emptyMap]
+    ![@parsedGuiComponentMap emptyMap]
   ] ;
-  compileSemanticsComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct;
+  compileSemanticsComponentFromSourceFile !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct;
 }
 
 #---------------------------------------------------------------------------*
@@ -136,8 +139,9 @@ indexing with syntaxSLRgrammar
     ![@parsedOptionComponentMap emptyMap]
     ![@parsedGrammarComponentMap emptyMap]
     ![@parsedProgramComponentMap emptyMap]
+    ![@parsedGuiComponentMap emptyMap]
   ] ;
-  compileSyntaxComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct;
+  compileSyntaxComponentFromSourceFile !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct;
 }
 
 #---------------------------------------------------------------------------*
@@ -153,11 +157,11 @@ indexing with grammarLL1grammar
     ![@parsedOptionComponentMap emptyMap]
     ![@parsedGrammarComponentMap emptyMap]
     ![@parsedProgramComponentMap emptyMap]
+    ![@parsedGuiComponentMap emptyMap]
   ] ;
-  compileGrammarComponent
+  compileGrammarComponentFromSourceFile
     !inSourceFile
     !outputDirectory [!inSourceFile]
-    ![inSourceFile stringByDeletingLastPathComponent]
     !?parsedComponentStruct;
 }
 
@@ -174,8 +178,9 @@ indexing with guiGrammar
     ![@parsedOptionComponentMap emptyMap]
     ![@parsedGrammarComponentMap emptyMap]
     ![@parsedProgramComponentMap emptyMap]
+    ![@parsedGuiComponentMap emptyMap]
   ] ;
-  compileGuiComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct ;
+  compileGuiComponentFromSourceFile !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct ;
 }
 
 #---------------------------------------------------------------------------*
@@ -191,8 +196,9 @@ indexing with programSLRgrammar
     ![@parsedOptionComponentMap emptyMap]
     ![@parsedGrammarComponentMap emptyMap]
     ![@parsedProgramComponentMap emptyMap]
+    ![@parsedGuiComponentMap emptyMap]
   ] ;
-  compileProgramComponent !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct;
+  compileProgramComponentFromSourceFile !inSourceFile !outputDirectory [!inSourceFile] !?parsedComponentStruct;
 }
 
 #----------------------------------------------------------------------------*
@@ -228,7 +234,7 @@ indexing with projectLL1grammar
     ![projectComponent mGenerationFeatureList]
     ![projectComponent mProjectSourceList]
   ;
-#--- Parset Component struct
+#--- Parse Component struct
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
     ![@parsedLexiqueComponentMap emptyMap]
@@ -236,72 +242,175 @@ indexing with projectLL1grammar
     ![@parsedOptionComponentMap emptyMap]
     ![@parsedGrammarComponentMap emptyMap]
     ![@parsedProgramComponentMap emptyMap]
+    ![@parsedGuiComponentMap emptyMap]
   ] ;
-#--- Parse galgas sources
+#---------------------------------- Parse sources
+  message "*** Parsing\n" ;
   foreach [projectComponent mProjectSourceList] do
-    @string extension := [mFilePath pathExtension] ;
-    @lstring fullFilePath [new
+    const @string extension := [mFilePath pathExtension] ;
+    const @lstring componentName [new
+      ![[mFilePath lastPathComponent] stringByDeletingPathExtension]
+      ![mFilePath location]
+    ] ;
+    const @lstring fullFilePath [new
       ![inSourceFile stringByDeletingLastPathComponent] . "/" . [mFilePath string]
       ![mFilePath location]
     ] ;
     if mSourceKind != [@sourceFileKind externSourceFile] then
-      message "*** Compiling '" . mFilePath . "'\n" ;
+      message "  - '" . mFilePath . "'\n" ;
     end if ;
     switch mSourceKind
     when externSourceFile :
     when guiSourceFile :
       if extension == "gGui" then
-        compileGuiComponent !fullFilePath ! outputDirectory !?parsedComponentStruct ;
+        @guiComponentAST guiComponentRoot ;
+        grammar guiGrammar in fullFilePath ?guiComponentRoot ;
+        [!?parsedComponentStruct->mParsedGuiComponentMap insertKey !componentName !fullFilePath !guiComponentRoot] ;
       else
         error mFilePath:"extension of a gui component should be '.gGui'." ;
       end if ;
     when lexiqueSourceFile :
       if extension == "gLexique" then
-        compileLexiqueComponent !fullFilePath !outputDirectory !?parsedComponentStruct ;
+        @lexiqueComponentAST lexiqueComponentRoot ;
+        grammar lexiqueLL1grammar in fullFilePath ?lexiqueComponentRoot ;
+        [!?parsedComponentStruct->mParsedLexiqueComponentMap insertKey !componentName !lexiqueComponentRoot] ;
       else
         error mFilePath:"extension of a lexique component should be '.gLexique'." ;
       end if ;
     when optionSourceFile :
       if extension == "gOption" then
-        compileOptionComponent !fullFilePath ! outputDirectory !?parsedComponentStruct ;
+        @optionComponentAST optionComponentAST ;
+        grammar optionLL1grammar in fullFilePath ?optionComponentAST ;
+      #--- Semantic Analysis of option component
+        @commandLineOptionMap boolOptionMap ;
+        @commandLineOptionMap UIntOptionMap ;
+        @commandLineOptionMap stringOptionMap ;
+        semanticAnalysisOfOptionComponent
+          !optionComponentAST
+          ?boolOptionMap
+          ?UIntOptionMap
+          ?stringOptionMap
+        ;
+        [!?parsedComponentStruct->mParsedOptionComponentMap insertKey
+          !componentName
+          !boolOptionMap
+          !UIntOptionMap
+          !stringOptionMap
+        ] ;
       else
         error mFilePath:"extension of an option component should be '.gOption'." ;
       end if ;
     when semanticsSourceFile :
       if extension == "gSemantics" then
-        compileSemanticsComponent !fullFilePath ! outputDirectory !?parsedComponentStruct ;
+        @semanticsComponentAST semanticsComponentRoot ;
+        grammar semanticsSLRgrammar in fullFilePath ?semanticsComponentRoot ;
+        [!?parsedComponentStruct->mParsedSemanticsComponentMap insertKey !componentName !fullFilePath !semanticsComponentRoot] ;
       else
         error mFilePath:"extension of a semantics component should be '.gSemantics'." ;
       end if ;
     when syntaxSourceFile :
       if extension == "gSyntax" then
-        compileSyntaxComponent !fullFilePath !outputDirectory [!inSourceFile] !?parsedComponentStruct;
+        @syntaxComponentAST syntaxComponentRoot ;
+        grammar syntaxSLRgrammar in fullFilePath ?syntaxComponentRoot ;
+        [!?parsedComponentStruct->mParsedSyntaxComponentMap insertKey !componentName !fullFilePath !syntaxComponentRoot] ;
       else
         error mFilePath:"extension of a syntax component should be '.gSyntax'." ;
       end if ;
     when grammarSourceFile :
       if extension == "gGrammar" then
-        compileGrammarComponent
-          !fullFilePath
-          !outputDirectory [!inSourceFile]
-          ![inSourceFile stringByDeletingLastPathComponent]
-          !?parsedComponentStruct
-        ;
+        @grammarComponentAST grammarComponentRoot ;
+        grammar grammarLL1grammar in fullFilePath ?grammarComponentRoot ;
+        [!?parsedComponentStruct->mParsedGrammarComponentMap insertKey !componentName !fullFilePath !grammarComponentRoot] ;
       else
         error mFilePath:"extension of a grammar component should be '.gGrammar'." ;
       end if ;
     when programSourceFile :
       if extension == "gProgram" then
-        compileProgramComponent !fullFilePath !outputDirectory !?parsedComponentStruct ;
+        @programComponentAST programComponentAST ;
+        grammar programSLRgrammar in fullFilePath ?programComponentAST ;
+        [!?parsedComponentStruct->mParsedProgramComponentMap insertKey !componentName !fullFilePath !programComponentAST] ;
       else
         error mFilePath:"extension of a program component should be '.gProgram'." ;
       end if ;
     end switch ;
   end foreach ;
-#--- Perform global checkings
+#---------------------------------- Perform global checkings
   if [@uint errorCount] == 0 then
     message "*** Perform global checkings\n" ;
     performProjectGlobalCheckings !parsedComponentStruct ![projectComponent mEndOfSourceFile] ;
+  end if ;
+#---------------------------------- Compile galgas sources
+  if [@uint errorCount] == 0 then
+  #--- Lexique components
+    foreach parsedComponentStruct->mParsedLexiqueComponentMap do
+      message "*** Compiling '" . lkey . ".gLexique'\n" ;
+      compileLexiqueComponentFromAST
+        !lkey->string
+        !outputDirectory
+        !mLexiqueComponentAST
+      ;
+    end foreach ;
+  #--- GUI components
+    foreach parsedComponentStruct->mParsedGuiComponentMap do
+      message "*** Compiling '" . lkey . ".gGui'\n" ;
+      compileGuiComponentFromAST
+        !mSourceFullFilePath
+        !outputDirectory
+        !mGuiComponentAST
+        !?parsedComponentStruct
+      ;
+    end foreach ;
+  #--- Option components
+    foreach parsedComponentStruct->mParsedOptionComponentMap do
+      message "*** Compiling '" . lkey . ".gOption'\n" ;
+      compileOptionComponentAST
+        !outputDirectory
+        !lkey
+        !mBoolOptionMap
+        !mUIntOptionMap
+        !mStringOptionMap
+      ;
+    end foreach ;
+  #--- Semantic components
+    foreach parsedComponentStruct->mParsedSemanticsComponentMap do
+      message "*** Compiling '" . lkey . ".gSemantics'\n" ;
+      compileSemanticsComponentAST
+        !mSourceFullFilePath
+        !outputDirectory
+        !mSemanticComponentRoot
+        !?parsedComponentStruct
+      ;
+    end foreach ;
+  #--- Syntax components
+    foreach parsedComponentStruct->mParsedSyntaxComponentMap do
+      message "*** Compiling '" . lkey . ".gSyntax'\n" ;
+      compileSyntaxComponentFromAST
+        !mSourceFullFilePath
+        !outputDirectory
+        !mSyntaxComponentRoot
+        !?parsedComponentStruct
+      ;
+    end foreach ;
+  #--- Grammar components
+    foreach parsedComponentStruct->mParsedGrammarComponentMap do
+      message "*** Compiling '" . lkey . ".gGrammar'\n" ;
+      compileGrammarComponentFromAST
+        !mSourceFullFilePath
+        !outputDirectory
+        !mGrammarComponentRoot
+        !?parsedComponentStruct
+      ;
+    end foreach ;
+  #--- Program components
+    foreach parsedComponentStruct->mParsedProgramComponentMap do
+      message "*** Compiling '" . lkey . ".gProgram'\n" ;
+      compileProgramComponentFromAST
+        !mSourceFullFilePath
+        !outputDirectory
+        !mProgramComponentAST
+        !?parsedComponentStruct
+      ;
+    end foreach ;
   end if ;
 }
 
