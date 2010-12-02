@@ -1,56 +1,283 @@
-\definitionSection{@location}
+\definitionSectionType{@uint}
 
-An \nomType{@location} object value is a location in a source file. Objects of this type are useful for pointing out an error or a warning location.
+An \nomType{@uint} object value is a 32-bit unsigned integer value. You can initialize an \nomType{@uint}' object from an unsigned integer constant:\\
 
-\subsection{The \motCle{here} Keyword}
-
-The \motCle{here} keyword indicates the current parsing location is the current source file. Assigning an \nomType{@location} object from the \motCle{here} keyword is a way for initializing an \nomType{@location} object:\newline
-
-\texttt{@location currentLocation := here ;}
-
-\contructeurSansArgument{nowhere}
-{@location}
-{2.1.2}
-{@location}
-{Returns an \nomType{@location} that does not points out any location.}
-{The returned object responds \motCle{true} to the \lienReader{@location}{isNowhere}.}
+\texttt{@uint myUnsignedInteger := 123\_456 ;}
 
 
-\readerSansArgument{column}
-{@location}
-{1.8.2}
+\contructeurSansArgument{errorCount}
 {@uint}
-{Returns an \nomType{@uint} value containing the column of the receiver's value.}
-{this reader raises a run-time error if the receiver's value responds \motCle{true} to the \lienReader{@location}{isNowhere}.}
-
-
-\readerSansArgument{isNowhere}
-{@location}
-{2.1.2}
-{@bool}
-{Returns an \nomType{@bool} value indicating whether the receiver points out a source location or does not.}
-{this reader returns \motCle{true} if the receiver's value does not point out an actual location in a text source (i.e. it has been constructed using the nowhere constructor), and \motCle{false} if the receiver's value points out an actual location in a text source (i.e. it has been constructed using the \motCle{here} keyword.}
-
-
-\readerSansArgument{line}
-{@location}
-{1.8.2}
+{1.4.9}
 {@uint}
-{Returns an \nomType{@uint} value containing the line of the receiver's value.}
-{this reader raises a run-time error if the receiver's value responds \motCle{true} to the \lienReader{@location}{isNowhere}.}
+{Returns an \nomType{@uint} object that contains the number of errors.}
+{The returned value is the cumulative count of errors from the beginning of execution.}
 
+Example:
 
-\readerSansArgument{locationIndex}
-{@location}
-{1.8.2}
+\texttt{'@uint x := [@uint errorCount] ;}
+
+\contructeurSansArgument{max}
 {@uint}
-{Returns an \nomType{@uint} value containing the the offset from the the beginning of the source of the location defined by receiver's value.}
-{this reader raises a run-time error if the receiver's value responds \motCle{true} to the \lienReader{@location}{isNowhere}.}
+{1.3.0}
+{@uint}
+{Returns an \nomType{@uint} object that the maximum value of the 32-bit unsigned range.}
+{The returned value is $2^{32}-1$ (4294967295).}
 
 
-\readerSansArgument{locationString}
-{@location}
-{1.8.2}
+\contructeurDeuxArguments{valueWithMask}
+{@uint}
+{1.6.12}
+{@uint}
+{@uint inLowerIndex}
+{@uint inUpperIndex}
+{Returns an \nomType{@uint} object with bits from \emph{inLowerIndex} to \emph{inUpperIndex} equal to 1.}
+{a run-time error is raised if \emph{inLowerIndex $>$ inUpperIndex} or if \emph{inUpperIndex $>$ 31}.}
+
+
+Example:
+
+\texttt{@uint x := [@uint valueWithMask !2 !4] ; \# x is equal to 28 (11100 in binary)}
+
+
+
+
+
+\contructeurSansArgument{warningCount}
+{@uint}
+{1.4.9}
+{@uint}
+{Returns an \nomType{@uint} object that contains the number of warnings.}
+{The returned value is the cumulative count of warnings from the beginning of execution.}
+
+
+
+\readerSansArgument{double}
+{@uint}
+{1.9.8}
+{@double}
+{Returns the receiver's value converted in a \nomType{@double} object.}
+{as a 32-bit integer value can always be converted in a \nomType{@double} value, this reader never fails.}
+
+
+
+\readerSansArgument{hexString}
+{@uint}
+{1.5.2}
 {@string}
-{returns an \nomType{@string} object that contains a string representation of the location defined by receiver's value.}
-{this reader raises a run-time error if the receiver's value responds \motCle{true} to the \lienReader{@location}{isNowhere}.}
+{Returns the an hexadecimal string representation of the receiver value, prefixed by the string "0x".}
+{for getting an hexadecimal representation string without "0x" prefix, see \lienReader{@uint}{xString}.}
+
+
+
+\readerSansArgument{isUnicodeValueAssigned}
+{@uint}
+{1.8.3}
+{@bool}
+{Returns an \nomType{@bool} value indicating whether the receiver'value represents an assigned Unicode character.}
+{it returns \motCle{true} if the receiver value represents an assigned Unicode character, \motCle{false} and otherwise.}
+
+For example:\\
+\texttt{[0xFFFF isUnicodeValueAssigned]} returns \motCle{false}, as \texttt{\textbackslash uFFFF} is not assigned.\\
+\texttt{[0x41 isUnicodeValueAssigned]} returns \motCle{true}, as \texttt{\textbackslash u0041} is assigned (it is \emph{LATIN CAPITAL LETTER A}).
+
+
+
+\readerSansArgument{lsbIndex}
+{@uint}
+{1.6.12}
+{@uint}
+{Returns an \nomType{@uint} value of the index of the most significant bit of the receiver value.}
+{it raises a run-time error if the receiver value is zero.}
+
+Example :
+
+\texttt{@uint value := 192 ; \# 192 is 11000000 in binary}
+
+\texttt{@uint x := [value lsbIndex] ; \# x is equal to 6}
+
+The most significant bit of 192 is the 6th bit.
+
+
+
+
+\readerSansArgument{significantBitCount}
+{@uint}
+{1.6.12}
+{@uint}
+{Returns the number of bits needed to express the receiver value.}
+{it the receiver value is zero, it returns 0 ; otherwise, it returns the most significant bit index plus one.}
+
+Example :
+
+\texttt{@uint value := 145 ; \# 145 is 10010001 in binary}
+
+\texttt{@uint x := [value significantBitCount] ; \# x is equal to 8}
+
+
+
+
+
+\readerSansArgument{sint}
+{@uint}
+{1.6.12}
+{@sint}
+{Returns returns the receiver's value in an \lienSectionType{@sint} (32-bit signed integer) object.}
+{an error is raised is receiver's value is greater than $2^{31}-1$.}
+
+This reader is the only way to convert an \lienSectionType{@uint} object into an \lienSectionType{@sint} object.
+
+
+
+
+\readerSansArgument{sint64}
+{@uint}
+{1.6.12}
+{@sint64}
+{Returns returns the receiver's value in an \lienSectionType{@sint64} (64-bit signed integer) object.}
+{as a 32-bit unsigned value can always be converted in a 64-bit signed value, this reader never fails.}
+
+This reader is the only way to convert an \lienSectionType{@uint} object into an \lienSectionType{@sint64} object.
+
+
+\readerSansArgument{string}
+{@uint}
+{1.6.12}
+{@string}
+{Returns returns a decimal string representation of the receiver's value.}
+{for an hexadecimal string representation of the receiver's value, see \lienReader{@uint}{hexString} and \lienReader{@uint}{xString}.}
+
+
+
+
+\readerSansArgument{uint64}
+{@uint}
+{1.6.12}
+{@uint64}
+{Returns returns the receiver's value in an \lienSectionType{@uint64} (64-bit unsigned integer) object.}
+{as a 32-bit unsigned value can always be converted in a 64-bit unsigned value, this reader never fails.}
+
+This reader is the only way to convert an \lienSectionType{@uint} object into an \lienSectionType{@uint64} object.
+
+
+
+
+\readerSansArgument{xString}
+{@uint}
+{1.9.10}
+{@string}
+{Returns returns an hexadecimal string representation of the receiver's value (without any prefix).}
+{for an decimal string representation of the receiver's value, see the \lienReader{@uint}{hexString}; for a decimal string representation of the receiver's value, see the \lienReader{@uint}{string}.}
+
+
+
+
+
+
+\subsection{Incrementation and decrementation}
+
+The \lienSectionType{@uint} supports incrementation and decrementation instructions.
+
+\texttt{@uint n := ... ; n ++ ; \# Incrementation}
+
+\texttt{@uint p := ... ; p -- ; \# Decrementation}\newline
+
+The incrementation instruction raises an error if receiver's value is equal to $2^{32}-1$.\newline
+
+The incrementation instruction raises an error if receiver's value is equal to 0.\newline
+
+Note that incrementation and decrementation are not available within an expression.
+
+
+
+
+\subsection{Arithmetic Operators}
+
+The \nomType{@uint} type supports the five arithmetic operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$+$ & Addition \\
+\hline
+$-$ & Substraction \\
+\hline
+$*$ & Multiplication \\
+\hline
+$/$ & Division \\
+\hline
+$\%$ & Modulo \\
+\hline
+\end{tabular}\newline
+
+Theses operators require both arguments to be \nomType{@uint} objects.\newline
+
+A run-time error is raised if the operation leads to a 32-bit unsigned overflow.
+
+
+
+
+
+\subsection{Shift Operators}
+
+
+The \nomType{@uint} type supports right and left shift operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$<<$ & Left shift \\
+\hline
+$>>$ & Right shift \\
+\hline
+\end{tabular}\newline
+
+Theses operators require both arguments to be \nomType{@uint} objects.\newline
+
+Note the right shift inserts always a zero bit in the most significant bit location (it is a logical right shift).\newline
+
+The actual amount of the shift is the value of the right-hand operand masked by 31, i.e. the shift distance is always between 0 and 31.
+
+
+
+
+\subsection{Logical Operators}
+
+The \nomType{@uint} type supports the three bit-wise logical operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$\&$ & Bit-wise and \\
+\hline
+\textbar & Bit-wise or \\
+\hline
+\^\  & Bit-wise exclusive or \\
+\hline
+\end{tabular}\newline
+
+Theses operators require both arguments to be \nomType{@uint} objects.
+
+
+
+
+
+\subsection{Comparison Operators}
+
+The \nomType{@uint} type supports the six comparison operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$=$ & Equality \\
+\hline
+$!=$ & Non Equality \\
+\hline
+$<$  & Strict Lower Than \\
+\hline
+$<=$  & Lower or Equal \\
+\hline
+$>$  & Strict Greater Than \\
+\hline
+$>=$  & Greater or Equal \\
+\hline
+\end{tabular}\newline
+
+Theses operators require both arguments to be \nomType{@uint} objects, and return a \nomType{@bool} object.
+
+

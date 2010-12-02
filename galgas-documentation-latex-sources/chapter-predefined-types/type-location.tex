@@ -1,4 +1,4 @@
-\definitionSection{@location}
+\definitionSectionType{@location}
 
 An \nomType{@location} object value is a location in a source file. Objects of this type are useful for pointing out an error or a warning location.
 
@@ -28,7 +28,7 @@ The \motCle{here} keyword indicates the current parsing location is the current 
 {@location}
 {2.1.2}
 {@bool}
-{Returns an \nomType{@bool} value indicating whether the receiver points out a source location or does not.}
+{Returns an \nomType{@bool} value indicating whether the receiver'value points out a source location or does not.}
 {this reader returns \motCle{true} if the receiver's value does not point out an actual location in a text source (i.e. it has been constructed using the nowhere constructor), and \motCle{false} if the receiver's value points out an actual location in a text source (i.e. it has been constructed using the \motCle{here} keyword.}
 
 

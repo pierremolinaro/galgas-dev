@@ -13,10 +13,11 @@
 \newcommand \nomType[1] {\texttt{#1}}
 
 %---------------------------------------------------------------------*
-% Définition de section
-\newcommand \definitionSection[1] {\section{The \nomType{#1} Type}\label{#1}}
+% Section pour la définition des types
 
-\newcommand \lienSection[1] {\hyperref[#1]{#1 type (page \pageref{#1})}}
+\newcommand \definitionSectionType[1] {\section{The \nomType{#1} Type}\label{#1}}
+
+\newcommand \lienSectionType[1] {\hyperref[#1]{#1 type (page \pageref{#1})}}
 
 %---------------------------------------------------------------------*
 
@@ -30,7 +31,7 @@
 % {this reader raises a run-time error if ...} % Discussion
 
 \newcommand \readerSansArgument[6] {
-  \subsection{\textbf{#1} Reader}\label{reader #2 #1}
+  \subsection{\texttt{#1} Reader}\label{reader #2 #1}
   #5
   \newline
   \newline
@@ -60,7 +61,7 @@
 %{The returned object responds \motCle{true} to the isNowhere reader.} % Discussion
 
 \newcommand \contructeurSansArgument[6] {
-  \subsection{\textbf{#1} Constructor}\label{constructor #2 #1}
+  \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}
   #5
   \newline
   \newline
@@ -73,6 +74,37 @@
   \newline
   \newline
   \textbf{Discussion:} #6
+  \newline
+}
+
+%---------------------------------------------------------------------*
+
+%--- Définition d'un constructeur avec 2 arguments
+% Exemple d'appel :
+% \constructeurSansArgument{nowhere} % Nom du constructeur
+% {@location} % Nom du type
+% {1.8.2} % Première version GALGAS qui implémente ce constructeur
+% {@uint} % Type renvoyé
+%{Returns an \nomType{@location} that does not points out any location.} % Description
+%{The returned object responds \motCle{true} to the isNowhere reader.} % Discussion
+
+\newcommand \contructeurDeuxArguments[8] {
+  \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}
+  #7
+  \newline
+  \newline
+  \begin{tabular}{|l}
+  \texttt{\emph{constructor} \nomType{#2} #1}\\
+  \texttt{\ \ ?#5}\\
+  \texttt{\ \ ?#6}\\
+  \texttt{\ \ -> #4 ;}
+  \end{tabular}
+  \newline
+  \newline
+  \textbf{Availabilty:} available in GALGAS #3 and later.
+  \newline
+  \newline
+  \textbf{Discussion:} #8
   \newline
 }
 
