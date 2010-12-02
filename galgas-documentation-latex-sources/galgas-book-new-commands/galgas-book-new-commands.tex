@@ -1,0 +1,73 @@
+%---------------------------------------------------------------------*
+%                                                                     *
+% This file is included in galgas-book.tex file                       *
+%                                                                     *
+%---------------------------------------------------------------------*
+
+%--- Mot clef
+\newcommand \motCle[1] {\texttt{\textbf{#1}}}
+
+%---------------------------------------------------------------------*
+
+%--- Nom de type
+\newcommand \nomType[1] {\texttt{#1}}
+
+%---------------------------------------------------------------------*
+
+%--- Définition d'un reader sans argument
+% Exemple d'appel :
+% \readerSansArgument{line} % Nom du reader
+% {@location} % Nom du type
+% {1.8.2} % Première version GALGAS qui implémente ce reader
+% {@uint} % Type renvoyé
+% {Returns the line of the receiver's value.} % Description
+% {this reader raises a run-time error if ...} % Discussion
+
+\newcommand \readerSansArgument[6] {
+  \subsection{\textbf{#1} Reader}\label{reader #2 #1}
+  #5
+  \newline
+  \newline
+  \begin{tabular}{|l}
+  \texttt{\emph{reader} \nomType{#2} #1 -> #4 ;}
+  \end{tabular}
+  \newline
+  \newline
+  \textbf{Availabilty:} available in GALGAS #3 and later.
+  \newline
+  \newline
+  \textbf{Discussion:} #6
+  \newline
+}
+
+\newcommand \lienReader[2] {\hyperref[reader #1 #2]{\texttt{#2} reader (page \pageref{reader #1 #2})}}
+
+%---------------------------------------------------------------------*
+
+%--- Définition d'un constructeur sans argument
+% Exemple d'appel :
+% \constructeurSansArgument{nowhere} % Nom du constructeur
+% {@location} % Nom du type
+% {1.8.2} % Première version GALGAS qui implémente ce constructeur
+% {@uint} % Type renvoyé
+%{Returns an \nomType{@location} that does not points out any location.} % Description
+%{The returned object responds \motCle{true} to the isNowhere reader.} % Discussion
+
+\newcommand \contructeurSansArgument[6] {
+  \subsection{\textbf{#1} Constructor}\label{constructor #2 #1}
+  #5
+  \newline
+  \newline
+  \begin{tabular}{|l}
+  \texttt{\emph{constructor} \nomType{#2} #1 -> #4 ;}
+  \end{tabular}
+  \newline
+  \newline
+  \textbf{Availabilty:} available in GALGAS #3 and later.
+  \newline
+  \newline
+  \textbf{Discussion:} #6
+  \newline
+}
+
+%---------------------------------------------------------------------*
