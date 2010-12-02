@@ -223,7 +223,9 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
   #--- IF expression
     @string ifVarCppName ;
     [mExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?ifVarCppName] ;
-    ioGeneratedCode .= "if (" . ifVarCppName . ".isValidAndTrue ()) {\n" ;
+    const @string testVar := "test_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+    ioGeneratedCode .= "const enumGalgasBool " . testVar . " = " . ifVarCppName . ".boolEnum () ;\n" ;
+    ioGeneratedCode .= "if (kBoolTrue == " . testVar . ") {\n" ;
     [!?ioGeneratedCode incIndentation !2] ;
     templateCodeGenerationForListInstruction
       !mInstructionList
@@ -233,7 +235,7 @@ override method @templateInstructionIfForGeneration templateCodeGeneration
       !?ioUseColumnMarker
     ;
     [!?ioGeneratedCode decIndentation !2] ;
-    ioGeneratedCode .= "}else{\n" ;
+    ioGeneratedCode .= "}else if (kBoolFalse == " . testVar . ") {\n" ;
     [!?ioGeneratedCode incIndentation !2] ;
   end foreach ;
 #--- else instructions

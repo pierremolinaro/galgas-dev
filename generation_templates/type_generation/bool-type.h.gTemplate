@@ -4,6 +4,10 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+typedef enum {kBoolNotValid, kBoolFalse, kBoolTrue} enumGalgasBool ;
+
+//---------------------------------------------------------------------------*
+
 class GALGAS_bool : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private : bool mIsValid ;
@@ -12,8 +16,11 @@ class GALGAS_bool : public AC_GALGAS_root {
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
   public : inline bool isValidAndTrue (void) const { return mIsValid && mBoolValue ; }
-  public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }
   public : inline bool boolValue (void) const { return mBoolValue ; }
+  public : enumGalgasBool boolEnum (void) const ;
+
+//--------------------------------- Drop
+  public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }
 
 //--------------------------------- Default constructor
   public : GALGAS_bool (void) ;
