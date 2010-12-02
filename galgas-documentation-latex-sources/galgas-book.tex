@@ -1,0 +1,52 @@
+\documentclass [a4paper, 12pt] {book}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+%\setcounter{secnumdepth}{3}
+
+
+%\setlength{\textwidth     }{15cm}
+
+%\usepackage{picinpar}
+%\usepackage[latin1]{inputenc}
+%\usepackage{amsmath}
+%\usepackage{graphics}
+%\usepackage{epsfig}
+%\usepackage{amssymb}
+%\usepackage[french]{babel}
+
+
+
+%\usepackage{tabularx}
+%\usepackage{url}
+%\usepackage{multirow}
+%\usepackage{rotating}
+
+%--- Include my new commands
+\input{galgas-book-new-commands/galgas-book-new-commands.tex}
+
+
+%\makeindex
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true}
+\hypersetup{linkcolor=blue}
+%\hypersetup{linkbordercolor={1 0 0}}
+
+\title{GALGAS Book}
+\author{Pierre Molinaro}
+\date \today 
+
+\setcounter{tocdepth}{3}
+\begin{document} 
+
+\maketitle
+
+\tableofcontents
+ 
+
+\input{chapter-predefined-types/predefined-types.tex}
+
+%\printindex
+
+
+\end{document}
