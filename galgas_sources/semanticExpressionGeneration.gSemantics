@@ -751,7 +751,9 @@ override method @ifExpressionForGeneration generateExpression
 #--- Result variable
   outCppExpression := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "GALGAS_" . [[mThenExpression mType] identifierRepresentation] . " " . outCppExpression . " ;\n" ;
-  ioGeneratedCode .= "if (" . ifExpression . ".isValidAndTrue ()) {\n" ;
+  const @string testVar := "test_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "const enumGalgasBool " . testVar . " = " . ifExpression . ".boolEnum () ;\n" ;
+  ioGeneratedCode .= "if (kBoolTrue == " . testVar . ") {\n" ;
 #--- 'then' expression
   @string thenExpression ;
   [!?ioGeneratedCode incIndentation !2] ;
@@ -759,7 +761,7 @@ override method @ifExpressionForGeneration generateExpression
   ioGeneratedCode .= outCppExpression . " = " . thenExpression . " ;\n" ;
   [!?ioGeneratedCode decIndentation !2] ;
 #--- 'else' expression
-  ioGeneratedCode .= "}else{\n" ;
+  ioGeneratedCode .= "}else if (kBoolFalse == " . testVar . ") {\n" ;
   [!?ioGeneratedCode incIndentation !2] ;
   @string elseExpression ;
   [mElseExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?elseExpression] ;
