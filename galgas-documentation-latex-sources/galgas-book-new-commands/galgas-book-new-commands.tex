@@ -51,6 +51,36 @@
 
 %---------------------------------------------------------------------*
 
+%--- Définition d'un reader à 2 arguments
+% Exemple d'appel :
+% \readerSansArgument{line} % Nom du reader
+% {@location} % Nom du type
+% {1.8.2} % Première version GALGAS qui implémente ce reader
+% {@uint} % Type renvoyé
+% {Returns the line of the receiver's value.} % Description
+% {this reader raises a run-time error if ...} % Discussion
+
+\newcommand \readerDeuxArguments[8] {
+  \subsection{\texttt{#1} Reader}\label{reader #2 #1}
+  #7
+  \newline
+  \newline
+  \begin{tabular}{|l}
+  \texttt{\emph{reader} \nomType{#2} #1}\\
+  \texttt{\ \ ?#5}\\
+  \texttt{\ \ ?#6}\\
+  \texttt{\ \ -> #4 ;}
+  \end{tabular}
+  \newline
+  \newline
+  \textbf{Availabilty:} available in GALGAS #3 and later.
+  \newline
+  \newline
+  \textbf{Discussion:} #8
+  \newline
+}
+%---------------------------------------------------------------------*
+
 %--- Définition d'un constructeur sans argument
 % Exemple d'appel :
 % \constructeurSansArgument{nowhere} % Nom du constructeur
@@ -79,14 +109,30 @@
 
 %---------------------------------------------------------------------*
 
+%--- Définition d'un constructeur avec 1 argument
+
+\newcommand \contructeurUnArgument[7] {
+  \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}
+  #6
+  \newline
+  \newline
+  \begin{tabular}{|l}
+  \texttt{\emph{constructor} \nomType{#2} #1}\\
+  \texttt{\ \ ?#5}\\
+  \texttt{\ \ -> #4 ;}
+  \end{tabular}
+  \newline
+  \newline
+  \textbf{Availabilty:} available in GALGAS #3 and later.
+  \newline
+  \newline
+  \textbf{Discussion:} #7
+  \newline
+}
+
+%---------------------------------------------------------------------*
+
 %--- Définition d'un constructeur avec 2 arguments
-% Exemple d'appel :
-% \constructeurSansArgument{nowhere} % Nom du constructeur
-% {@location} % Nom du type
-% {1.8.2} % Première version GALGAS qui implémente ce constructeur
-% {@uint} % Type renvoyé
-%{Returns an \nomType{@location} that does not points out any location.} % Description
-%{The returned object responds \motCle{true} to the isNowhere reader.} % Discussion
 
 \newcommand \contructeurDeuxArguments[8] {
   \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}
