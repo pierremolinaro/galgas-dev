@@ -1,0 +1,123 @@
+\definitionSectionType{@double}
+
+The \nomType{@double} object values correspond to the C type \nomType{double} values. You can initialize an \nomType{@double} object from a float constant:
+
+\texttt{@double myDouble := 123.456 ;}
+
+Note that a \nomType{@double} constant is characterized by the occurrence of the decimal point (.)
+
+
+\readerSansArgument{sint}
+{@double}
+{1.9.9}
+{@sint}
+{Returns returns the receiver's value in an \lienSectionType{@sint} (32-bit signed integer) object.}
+{if receiver?s value is outside \nomType{@sint} bounds, a runtime error is raised.}
+
+
+
+\readerSansArgument{sint64}
+{@double}
+{1.9.9}
+{@sint64}
+{Returns returns the receiver's value in an \lienSectionType{@sint64} (64-bit signed integer) object.}
+{if receiver?s value is outside \nomType{@sint64} bounds, a runtime error is raised.}
+
+
+
+
+\readerSansArgument{string}
+{@double}
+{1.7.7}
+{@string}
+{Returns returns a decimal string representation of the receiver's value.}
+{this reader never fails.}
+
+
+
+
+
+
+
+\readerSansArgument{uint}
+{@double}
+{1.9.9}
+{@uint}
+{Returns returns the receiver's value in an \lienSectionType{@uint} (32-bit unsigned integer) object.}
+{if receiver?s value is outside \nomType{@uint} bounds, a runtime error is raised.}
+
+
+
+
+
+\readerSansArgument{uint64}
+{@double}
+{1.9.9}
+{@uint64}
+{Returns returns the receiver's value in an \lienSectionType{@uint64} (64-bit unsigned integer) object.}
+{if receiver?s value is outside \nomType{@uint64} bounds, a runtime error is raised.}
+
+
+
+
+\subsection{Arithmetic Operators}
+
+The \nomType{@double} type supports the five arithmetic diadic operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$+$ & Addition \\
+\hline
+$-$ & Substraction \\
+\hline
+$*$ & Multiplication \\
+\hline
+$/$ & Division \\
+\hline
+$\%$ & Modulo \\
+\hline
+\end{tabular}\newline
+
+Theses operators require both arguments to be \nomType{@double} objects.\newline
+
+A run-time error is raised if the operation leads to an overflow.
+
+The \nomType{@double} type supports the following arithmetic unary operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$+$ & No operation \\
+$-$ & Negate \\
+\hline
+\end{tabular}\newline
+
+This operator returns the receiver's value (an \nomType{@double} object).
+
+
+
+
+
+
+\subsection{Comparison Operators}
+
+The \nomType{@double} type supports the six comparison operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$=$ & Equality \\
+\hline
+$!=$ & Non Equality \\
+\hline
+$<$  & Strict Lower Than \\
+\hline
+$<=$  & Lower or Equal \\
+\hline
+$>$  & Strict Greater Than \\
+\hline
+$>=$  & Greater or Equal \\
+\hline
+\end{tabular}\newline
+
+Theses operators require both arguments to be \nomType{@double} objects, and return a \nomType{@bool} object.
+
+
