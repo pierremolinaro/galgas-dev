@@ -1,0 +1,228 @@
+\definitionSectionType{@sint}
+
+An \nomType{@sint} object value is a 32-bit signed integer value. You can initialize an \nomType{@sint}' object from an 32-bit signed integer constant:\\
+
+\texttt{@sint mySignedInteger := 123\_456S ;}
+
+Note that a 32-bit signed integer constant is characterized by the 'S' suffix.
+
+
+
+
+\contructeurSansArgument{min}
+{@sint}
+{1.3.0}
+{@sint}
+{Returns an \nomType{@sint} object that the minimum value of the 32-bit signed range.}
+{the returned value is $-2^{31}$.}
+
+
+
+
+
+\contructeurSansArgument{max}
+{@sint}
+{1.3.0}
+{@sint}
+{Returns an \nomType{@sint} object that the maximum value of the 32-bit signed range.}
+{the returned value is $2^{31}-1$.}
+
+
+
+
+
+\readerSansArgument{double}
+{@sint}
+{1.9.8}
+{@double}
+{Returns the receiver's value converted in a \nomType{@double} object.}
+{as a 32-bit integer value can always be converted in a \nomType{@double} value, this reader never fails.}
+
+
+
+
+
+\readerSansArgument{sint64}
+{@sint}
+{1.6.12}
+{@sint64}
+{Returns returns the receiver's value in an \lienSectionType{@sint64} (64-bit signed integer) object.}
+{as a 32-bit signed value can always be converted in a 64-bit signed value, this reader never fails.}
+
+This reader is the only way to convert an \lienSectionType{@sint} object into an \lienSectionType{@sint64} object.
+
+
+
+
+
+\readerSansArgument{string}
+{@sint}
+{1.6.12}
+{@string}
+{Returns returns a decimal string representation of the receiver's value.}
+{for an hexadecimal string representation of the receiver's value, see \lienReader{@uint}{hexString} and \lienReader{@uint}{xString}.}
+
+
+
+
+
+
+
+\readerSansArgument{uint}
+{@sint}
+{1.3.0}
+{@uint}
+{Returns returns the receiver's value in an \lienSectionType{@uint} (32-bit unsigned integer) object.}
+{an error is raised is receiver's value is negative.}
+
+This reader is the only way to convert an \lienSectionType{@sint} object into an \lienSectionType{@uint} object.
+
+
+
+
+\readerSansArgument{uint64}
+{@sint}
+{1.3.0}
+{@uint64}
+{Returns returns the receiver's value in an \lienSectionType{@uint64} (64-bit unsigned integer) object.}
+{an error is raised is receiver's value is negative.}
+
+This reader is the only way to convert an \lienSectionType{@sint} object into an \lienSectionType{@uint64} object.
+
+
+
+
+
+\subsection{Incrementation and decrementation}
+
+The \lienSectionType{@sint} supports incrementation and decrementation instructions.
+
+\texttt{@sint n := ... ; n ++ ; \# Incrementation}
+
+\texttt{@sint p := ... ; p -- ; \# Decrementation}\newline
+
+The incrementation instruction raises an error if receiver's value is equal to $2^{31}-1$.\newline
+
+The decrementation instruction raises an error if receiver's value is equal to $-2^{31}$.\newline
+
+Note that incrementation and decrementation are not available within an expression.
+
+
+
+
+\subsection{Arithmetic Operators}
+
+The \nomType{@sint} type supports the five arithmetic diadic operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$+$ & Addition \\
+\hline
+$-$ & Substraction \\
+\hline
+$*$ & Multiplication \\
+\hline
+$/$ & Division \\
+\hline
+$\%$ & Modulo \\
+\hline
+\end{tabular}\newline
+
+Theses operators require both arguments to be \nomType{@sint} objects.\newline
+
+A run-time error is raised if the operation leads to a 32-bit signed overflow.
+
+The \nomType{@sint} type supports the following arithmetic unary operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$+$ & No operation \\
+$-$ & Negate \\
+\hline
+\end{tabular}\newline
+
+This operator returns the receiver's value (an \nomType{@sint} object). A run-time error is raised if "-" operator is invoked on an object whose value is $-2^{31}$.
+
+
+
+
+
+
+\subsection{Shift Operators}
+
+
+The \nomType{@sint} type supports right and left shift operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$<<$ & Left shift \\
+\hline
+$>>$ & Right shift \\
+\hline
+\end{tabular}\newline
+
+Theses operators require the right argument to be \nomType{@sint} object, and the left argument to be \nomType{@uint} object.\newline
+
+Note the right shift inserts a zero bit in the most significant bit location if the receiver's value is negative, and a one bit otherwise (it is a arithmetic right shift).\newline
+
+The actual amount of the shift is the value of the right-hand operand masked by 31, i.e. the shift distance is always between 0 and 31.
+
+
+
+
+\subsection{Logical Operators}
+
+The \nomType{@sint} type supports the three bit-wise logical operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$\&$ & Bit-wise and \\
+\hline
+\textbar & Bit-wise or \\
+\hline
+\^\  & Bit-wise exclusive or \\
+\hline
+\end{tabular}\newline
+
+Theses operators require both arguments to be \nomType{@sint} objects.\newline
+
+
+The \nomType{@sint} type supports the bit-wise logical unary operator:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$\sim$ & Bit-wise complementation \\
+\hline
+\end{tabular}\newline
+
+This operator returns an \nomType{@sint} object.
+
+
+
+
+
+
+
+\subsection{Comparison Operators}
+
+The \nomType{@sint} type supports the six comparison operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$=$ & Equality \\
+\hline
+$!=$ & Non Equality \\
+\hline
+$<$  & Strict Lower Than \\
+\hline
+$<=$  & Lower or Equal \\
+\hline
+$>$  & Strict Greater Than \\
+\hline
+$>=$  & Greater or Equal \\
+\hline
+\end{tabular}\newline
+
+Theses operators require both arguments to be \nomType{@sint} objects, and return a \nomType{@bool} object.
+
+

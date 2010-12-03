@@ -167,6 +167,7 @@ routine compileSyntaxComponentFromAST
     performSemanticAnalysis
       ![inSyntaxComponentRoot mSemanticDeclarationList]
       !semanticContext
+      ![inSyntaxComponentRoot mEndOfSourceFile]
       ?decoratedDeclarationListForGeneration
     ;
     decoratedDeclarationListForGeneration += !syntaxDeclarationForGeneration !"" ;

@@ -332,6 +332,7 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
       performSemanticAnalysis
         !predefinedTypeASTlist
         !semanticContext
+        ![@location nowhere]
         ?decoratedDeclarationListForGeneration
       ;
     #------ Generate primitive types declaration file

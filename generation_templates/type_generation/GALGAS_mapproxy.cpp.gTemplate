@@ -42,9 +42,7 @@ foreach SEARCH_METHOD_LIST do index IDX
   %                                                %!^%C_Compiler * inCompiler\n%
   %                                                %!^%COMMA_LOCATION_ARGS) {\n%
   %  GALGAS_%!TYPE_IDENTIFIER% result ;\n%
-  %  if (inMap.isValid () && inKey.isValid ()) {\n%
-  %    result.internalMakeRegularProxyBySearchingKey (inMap, inKey, kSearchErrorMessage_%!ASSOCIATED_MAP_TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]%, inCompiler COMMA_THERE) ;\n%
-  %  }\n%
+  %  result.internalMakeRegularProxyBySearchingKey (inMap, inKey, kSearchErrorMessage_%!ASSOCIATED_MAP_TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]%, inCompiler COMMA_THERE) ;\n%
   %  return result ;\n%
   %}\n\n%
 end foreach

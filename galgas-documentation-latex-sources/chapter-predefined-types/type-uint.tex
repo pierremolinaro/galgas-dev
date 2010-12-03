@@ -4,6 +4,8 @@ An \nomType{@uint} object value is a 32-bit unsigned integer value. You can init
 
 \texttt{@uint myUnsignedInteger := 123\_456 ;}
 
+Note that a 32-bit unsigned integer constant is characterized by no suffix.
+
 
 \contructeurSansArgument{errorCount}
 {@uint}
@@ -93,9 +95,9 @@ Example :
 
 \texttt{@uint value := 192 ; \# 192 is 11000000 in binary}
 
-\texttt{@uint x := [value lsbIndex] ; \# x is equal to 6}
+\texttt{@uint x := [value lsbIndex] ; \# x is equal to 7}
 
-The most significant bit of 192 is the 6th bit.
+The most significant bit of 192 is the 7th bit.
 
 
 
@@ -192,7 +194,7 @@ Note that incrementation and decrementation are not available within an expressi
 
 \subsection{Arithmetic Operators}
 
-The \nomType{@uint} type supports the five arithmetic operators:\newline
+The \nomType{@uint} type supports the five arithmetic diadic operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -211,6 +213,17 @@ $\%$ & Modulo \\
 Theses operators require both arguments to be \nomType{@uint} objects.\newline
 
 A run-time error is raised if the operation leads to a 32-bit unsigned overflow.
+
+The \nomType{@uint} type supports the following arithmetic unary operator:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$+$ & No operation \\
+\hline
+\end{tabular}\newline
+
+This operator returns the receiver's value (an  \nomType{@uint} object).
+
 
 
 
@@ -252,7 +265,20 @@ $\&$ & Bit-wise and \\
 \hline
 \end{tabular}\newline
 
-Theses operators require both arguments to be \nomType{@uint} objects.
+Theses operators require both arguments to be \nomType{@uint} objects.\newline
+
+
+The \nomType{@uint} type supports the bit-wise logical unary operator:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$\sim$ & Bit-wise complementation \\
+\hline
+\end{tabular}\newline
+
+This operator returns an \nomType{@uint} object.
+
+
 
 
 

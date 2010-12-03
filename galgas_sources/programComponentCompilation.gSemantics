@@ -230,6 +230,7 @@ routine compileProgramComponentFromAST
   performSemanticAnalysis
     ![inProgramComponentAST mSemanticDeclarationList]
     !semanticContext
+    ![inProgramComponentAST mEndOfSourceFile]
     ?decoratedDeclarationListForGeneration
   ;
 #--- Analysis context
