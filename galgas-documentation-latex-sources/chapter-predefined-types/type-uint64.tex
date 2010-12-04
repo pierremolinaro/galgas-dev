@@ -8,7 +8,7 @@ Note the 'L' suffix is required for a 64-bit unsigned integer constant.
 
 
 
-\contructeurSansArgument{max}
+\constructeurSansArgument{max}
 {@uint64}
 {1.3.0}
 {@uint64}
@@ -16,7 +16,7 @@ Note the 'L' suffix is required for a 64-bit unsigned integer constant.
 {The returned value is $2^{64}-1$.}
 
 
-\contructeurUnArgument{uint64BaseValueWithCompressedBitString}
+\constructeurUnArgument{uint64BaseValueWithCompressedBitString}
 {@uint64}
 {1.6.4}
 {@uint64}
@@ -26,19 +26,18 @@ Note the 'L' suffix is required for a 64-bit unsigned integer constant.
 
 This constructor considers the \emph{inBitString} argument value as a binary encoding of an integer value. First, it internally replaces all 'X's by '0's, and then converts the resulting string into an integer value that is the one returned by this constructor.
 
-Note that the first character of the \emph{inBitString} argument value corresponds to the most significant Bit of the converted value.}
+Note that the first character of the \emph{inBitString} argument value corresponds to the most significant bit of the converted value.}
 
 
-Example:
-
-\texttt{@uint64 v [uint64BaseValueWithCompressedBitString !"01XX10"] ;}\newline
-\texttt{log v ; \# Displays <@uint64:18> ;}
-
-
+\exempleDeuxLignes
+{@uint64 v [uint64BaseValueWithCompressedBitString !"01XX10"] ;}
+{log v ; \# Displays <@uint64:18> ;}
 
 
 
-\contructeurUnArgument{uint64MaskWithCompressedBitString}
+
+
+\constructeurUnArgument{uint64MaskWithCompressedBitString}
 {@uint64}
 {1.6.4}
 {@uint64}
@@ -48,16 +47,15 @@ Example:
 
 This constructor considers the \emph{inBitString} argument value as a binary encoding of an integer value. First, it internally replaces all '0's by '1's and all 'X's by '0's, and then converts the resulting string into an integer value that is the one returned by this constructor.
 
-Note that the first character of the \emph{inBitString} argument value corresponds to the most significant Bit of the converted value.}
+Note that the first '0' or '1' character of the \emph{inBitString} argument value corresponds to the most significant Bit of the converted value.}
 
-Example:
-
-\texttt{@uint64 v [uint64MaskWithCompressedBitString !"01XX10"] ;}\newline
-\texttt{log v ; \# Displays <@uint64:51> ;}
-
+\exempleDeuxLignes
+{@uint64 v [uint64MaskWithCompressedBitString !"01XX10"] ;}
+{log v ; \# Displays <@uint64:51> ;}
 
 
-\readerSansArgument{uint64WithBitString}
+
+\constructeurUnArgument{uint64WithBitString}
 {@uint64}
 {1.6.4}
 {@uint64}
@@ -67,12 +65,11 @@ Example:
 
 This constructor considers the \emph{inBitString} argument value as a binary encoding of an integer value. It returns an \nomType{@uint64} object containing the converted value.
 
-Note that the first character of the \emph{inBitString} argument value corresponds to the most significant bit of the converted value.}
+Note that the first '1' character of the \emph{inBitString} argument value corresponds to the most significant bit of the converted value.}
 
-Example:
-
-\texttt{@uint64 v [uint64WithBitString !"0101"]] ;}\newline
-\texttt{log v ; \# Displays <@uint64:5> ;}
+\exempleDeuxLignes
+{@uint64 v [uint64WithBitString !"0101"]] ;}
+{log v ; \# Displays <@uint64:5> ;}
 
 
 
@@ -145,14 +142,14 @@ This reader is the only way to convert an \lienSectionType{@uint64} object into 
 {@uint inStartBit}
 {@uint inBitCount}
 {Returns an \lienSectionType{@uint} value, extracted from a bit slice of the receiver?s value.}
-{the receiver?s value is right shifted by \emph{inStartBit}, and the resulted value is and?ed with a mask equal to $2^{inBitCount}-1$.}
+{the receiver's value is right shifted by \emph{inStartBit}, and the resulted value is and'ed with a mask equal to $2^{inBitCount}-1$.}
 
 This reader is the only way to convert an \lienSectionType{@uint} object into an \lienSectionType{@uint64} object.
 
-Example:
 
-\texttt{@uint64 v := 0x1234\_5678\_9ABC\_DEF0L ;}\newline
-\texttt{@uint result := [v uintSlice !4 !5] ; \# The result value is 0x8\_9ABC}
+\exempleDeuxLignes
+{@uint64 v := 0x1234\_5678\_9ABC\_DEF0L ;}
+{@uint result := [v uintSlice !4 !5] ; \# The result value is 0x8\_9ABC}
 
 
 

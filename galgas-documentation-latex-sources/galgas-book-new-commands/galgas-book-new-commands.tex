@@ -51,6 +51,36 @@
 
 %---------------------------------------------------------------------*
 
+%--- Définition d'un reader à 1 argument
+% Exemple d'appel :
+% \readerSansArgument{line} % Nom du reader
+% {@location} % Nom du type
+% {1.8.2} % Première version GALGAS qui implémente ce reader
+% {@uint} % Type renvoyé
+% {Returns the line of the receiver's value.} % Description
+% {this reader raises a run-time error if ...} % Discussion
+
+\newcommand \readerUnArgument[7] {
+  \subsection{\texttt{#1} Reader}\label{reader #2 #1}
+  #6
+  \newline
+  \newline
+  \begin{tabular}{|l}
+  \texttt{\emph{reader} \nomType{#2} #1}\\
+  \texttt{\ \ ?#5}\\
+  \texttt{\ \ -> #4 ;}
+  \end{tabular}
+  \newline
+  \newline
+  \textbf{Availabilty:} available in GALGAS #3 and later.
+  \newline
+  \newline
+  \textbf{Discussion:} #7
+  \newline
+}
+
+%---------------------------------------------------------------------*
+
 %--- Définition d'un reader à 2 arguments
 % Exemple d'appel :
 % \readerSansArgument{line} % Nom du reader
@@ -79,6 +109,7 @@
   \textbf{Discussion:} #8
   \newline
 }
+
 %---------------------------------------------------------------------*
 
 %--- Définition d'un constructeur sans argument
@@ -90,7 +121,7 @@
 %{Returns an \nomType{@location} that does not points out any location.} % Description
 %{The returned object responds \motCle{true} to the isNowhere reader.} % Discussion
 
-\newcommand \contructeurSansArgument[6] {
+\newcommand \constructeurSansArgument[6] {
   \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}
   #5
   \newline
@@ -111,7 +142,7 @@
 
 %--- Définition d'un constructeur avec 1 argument
 
-\newcommand \contructeurUnArgument[7] {
+\newcommand \constructeurUnArgument[7] {
   \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}
   #6
   \newline
@@ -134,7 +165,7 @@
 
 %--- Définition d'un constructeur avec 2 arguments
 
-\newcommand \contructeurDeuxArguments[8] {
+\newcommand \constructeurDeuxArguments[8] {
   \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}
   #7
   \newline
@@ -151,6 +182,27 @@
   \newline
   \newline
   \textbf{Discussion:} #8
+  \newline
+}
+
+%---------------------------------------------------------------------*
+
+%--- Exemple un ligne
+
+\newcommand \exempleUneLigne[1] {
+  \textbf{Example:}
+  \texttt{#1}
+  \newline
+}
+
+%---------------------------------------------------------------------*
+
+%--- Exemple 2 lignes
+
+\newcommand \exempleDeuxLignes[2] {
+  \textbf{Example:}\newline
+  \texttt{#1}\newline
+  \texttt{#2}
   \newline
 }
 
