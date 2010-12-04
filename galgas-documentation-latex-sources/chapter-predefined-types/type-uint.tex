@@ -7,18 +7,17 @@ An \nomType{@uint} object value is a 32-bit unsigned integer value. You can init
 Note that a 32-bit unsigned integer constant is characterized by no suffix.
 
 
-\contructeurSansArgument{errorCount}
+\constructeurSansArgument{errorCount}
 {@uint}
 {1.4.9}
 {@uint}
 {Returns an \nomType{@uint} object that contains the number of errors.}
 {The returned value is the cumulative count of errors from the beginning of execution.}
 
-Example:
+\exempleUneLigne
+{@uint x := [@uint errorCount] ;}
 
-\texttt{'@uint x := [@uint errorCount] ;}
-
-\contructeurSansArgument{max}
+\constructeurSansArgument{max}
 {@uint}
 {1.3.0}
 {@uint}
@@ -26,7 +25,7 @@ Example:
 {The returned value is $2^{32}-1$ (4294967295).}
 
 
-\contructeurDeuxArguments{valueWithMask}
+\constructeurDeuxArguments{valueWithMask}
 {@uint}
 {1.6.12}
 {@uint}
@@ -36,15 +35,14 @@ Example:
 {a run-time error is raised if \emph{inLowerIndex $>$ inUpperIndex} or if \emph{inUpperIndex $>$ 31}.}
 
 
-Example:
-
-\texttt{@uint x := [@uint valueWithMask !2 !4] ; \# x is equal to 28 (11100 in binary)}
-
+\exempleUneLigne
+{@uint x := [@uint valueWithMask !2 !4] ; \# x is equal to 28 (11100 in binary)}
 
 
 
 
-\contructeurSansArgument{warningCount}
+
+\constructeurSansArgument{warningCount}
 {@uint}
 {1.4.9}
 {@uint}
@@ -78,9 +76,9 @@ Example:
 {Returns an \nomType{@bool} value indicating whether the receiver'value represents an assigned Unicode character.}
 {it returns \motCle{true} if the receiver value represents an assigned Unicode character, \motCle{false} and otherwise.}
 
-For example:\\
-\texttt{[0xFFFF isUnicodeValueAssigned]} returns \motCle{false}, as \texttt{\textbackslash uFFFF} is not assigned.\\
-\texttt{[0x41 isUnicodeValueAssigned]} returns \motCle{true}, as \texttt{\textbackslash u0041} is assigned (it is \emph{LATIN CAPITAL LETTER A}).
+\exempleDeuxLignes
+{[0xFFFF isUnicodeValueAssigned] \# is false, as \textbackslash uFFFF is not assigned.}
+{[0x41 isUnicodeValueAssigned] \# is true, as \textbackslash u0041 is assigned (LATIN CAPITAL LETTER A).}
 
 
 
