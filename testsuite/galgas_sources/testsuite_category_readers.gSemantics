@@ -1,0 +1,25 @@
+semantics testsuite_category_readers :
+
+abstract class @AA {}
+
+class @BB extends @AA {}
+
+abstract reader @AA aReader ?@uint inA ??@string inB -> @string outResult ;
+
+override reader @BB aReader ?@uint inA ??@string inB -> @string outResult
+:
+  inA ++ ;
+  outResult := inB . inA ;
+end reader ;
+
+reader @BB otherReader ?@uint inA ??@string inB -> @string outResult
+:
+  inA ++ ;
+  outResult := inB . inA ;
+end reader ;
+
+abstract class @CC extends @BB {}
+
+override abstract reader @CC aReader ?@uint inA ??@string inB -> @string outResult ;
+
+end semantics ;
