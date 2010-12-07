@@ -92,7 +92,8 @@ routine compileSyntaxComponentFromAST
   @grammarComponentASTList grammarComponentASTList [emptyList] ;
   @stringlist headerIncludeList [emptyList] ;
   @stringlist implementationIncludeList [emptyList] ;
-  recursivelyImportSemanticComponent
+  recursivelyImportSemanticComponentAndCheckNoCircularityInImportSemantics
+    !inSourceFile
     !?ioParsedComponentStruct
     !?optionComponentFileNameList
     !?grammarComponentASTList
