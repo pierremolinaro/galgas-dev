@@ -30,7 +30,7 @@ semantics semanticGeneration :
 
 function generateProcedure
   ??@string inProcedureName
-  ??@formalParameterListForGeneration inFormalArgumentList
+  ?@formalParameterListForGeneration inFormalArgumentList
   ??@semanticInstructionListForGeneration inInstructionList
   ??@bool inProcedureIsConst
   ??@string inCompilerTypeName
@@ -157,7 +157,11 @@ function generateFunction
   const @uint colRef := [outGeneratedCode currentColumn] ;
 #---
   foreach inFormalArgumentList do
-    outGeneratedCode .= "const GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
+    if mIsConstant then
+      outGeneratedCode .= "const GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & "  ;
+    else
+      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " " ;
+    end if ;
     if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
       outGeneratedCode .= "/* " . mFormalArgumentCppName . " */" ;
     else
@@ -333,7 +337,11 @@ function generateCategoryReader
   [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
 #---
   foreach inFormalArgumentList do
-    outGeneratedCode .= "const GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
+    if mIsConstant then
+      outGeneratedCode .= "const GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
+    else
+      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " " ;
+    end if ;
     if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
       outGeneratedCode .= "/* " . mFormalArgumentCppName . " */" ;
     else

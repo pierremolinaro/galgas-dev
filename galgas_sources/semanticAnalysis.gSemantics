@@ -980,6 +980,7 @@ override method @externFunctionDeclarationAST performSemanticAnalysis
       ![mFormalArgumentName string]
       !mFormalArgumentName
       !mIsUnused
+      !mIsConstant
     ;
   end foreach ;
   ioSemanticDeclarationListForGeneration += ![@functionPrototypeDeclarationForGeneration new
@@ -1298,6 +1299,7 @@ routine analyzeFunctionBody
         !cppName
         !mFormalArgumentName
         !mIsUnused
+        !mIsConstant
       ;
       if mIsUnused then
         [!?variableMap insertConstantInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !parameterType !cppName !cppName] ;
@@ -1311,6 +1313,7 @@ routine analyzeFunctionBody
         !cppName
         !mFormalArgumentName
         !mIsUnused
+        !mIsConstant
       ;
       if mIsUnused then
         [!?variableMap insertInputFormalArgumentDeclaredAsUnused !mFormalArgumentName !parameterType !cppName !cppName] ;
@@ -1473,7 +1476,7 @@ override method @filewrapperDeclarationAST performSemanticAnalysis
         @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
         const @string cppVarName := "in_" . [[mFormalArgumentName string] identifierRepresentation] ;
         [!?templateVariableMap insertKey !mFormalArgumentName !type !cppVarName] ;
-        filewrapperTemplateFormalInputParameters += !type !cppVarName !mFormalArgumentName !true ;
+        filewrapperTemplateFormalInputParameters += !type !cppVarName !mFormalArgumentName !true !true ;
       end foreach ;
     #--- Analyze template
       @templateInstructionListForGeneration templateInstructionListForGeneration [emptyList] ;
@@ -1732,6 +1735,7 @@ override method @abstractCategoryReaderAST performSemanticAnalysis
       ![mFormalArgumentName string]
       !mFormalArgumentName
       !mIsUnused
+      !mIsConstant
     ;
   end foreach ;
 #---
@@ -1944,6 +1948,7 @@ override method @overridingAbstractCategoryReaderAST performSemanticAnalysis
         ![mFormalArgumentName string]
         !mFormalArgumentName
         !mIsUnused
+        !mIsConstant
       ;
     end foreach ;
     checkReaderSignatures

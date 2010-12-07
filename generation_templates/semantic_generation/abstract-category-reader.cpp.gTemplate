@@ -29,7 +29,11 @@ C_PrologueEpilogue gReader_%![CLASS_NAME identifierRepresentation]%_%![READER_NA
 GALGAS_%![RETURN_TYPE identifierRepresentation]% callCategoryReader_%![READER_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   foreach FORMAL_ARGUMENT_LIST do
     %,\n%!^
-    %const GALGAS_%![mFormalArgumentType identifierRepresentation]% & constin_%![mFormalArgumentName identifierRepresentation]
+    if mIsConstant then
+      %const GALGAS_%![mFormalArgumentType identifierRepresentation]% & in_%![mFormalArgumentName identifierRepresentation]
+    else
+      %GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
+    end if
   end foreach
   %,\n%!^%C_Compiler * inCompiler%
   %\n%!^%COMMA_LOCATION_ARGS) {
@@ -55,7 +59,7 @@ GALGAS_%![RETURN_TYPE identifierRepresentation]% callCategoryReader_%![READER_NA
     }
     result = f (inObject, %
     foreach FORMAL_ARGUMENT_LIST do
-      %constin_%![mFormalArgumentName identifierRepresentation]%, %
+      %in_%![mFormalArgumentName identifierRepresentation]%, %
     end foreach
     %inCompiler COMMA_THERE) ;
   }
