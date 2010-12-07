@@ -70,8 +70,16 @@ list @grammarComponentASTList {
 
 #---------------------------------------------------------------------------*
 
-routine recursivelyImportSemanticComponent
+graph @semanticImportDependenceGraph (@stringlist) {
+  insert insertNode error message "-- INTERNAL ERROR --" ;
+}
+
+#---------------------------------------------------------------------------*
+
+local routine recursivelyImportSemanticComponent
+  ??@lstring inFilePath
   ?!@parsedComponentStruct ioParsedComponentStruct
+  ?!@semanticImportDependenceGraph ioSemanticImportDependenceGraph
   ?!@lstringlist ioOptionComponentFileNameList
   ?!@grammarComponentASTList ioGrammarComponentASTList
   ?!@semanticDeclarationListAST ioSemanticDeclarationList
@@ -81,14 +89,18 @@ routine recursivelyImportSemanticComponent
   ??@lstringlist inListOfFilesToParse
   ??@string inDirectory
 :
+  [!?ioSemanticImportDependenceGraph insertNode
+    ![@lstring new ![inFilePath lastPathComponent] ![inFilePath location]]
+    ![inFilePath lastPathComponent]
+  ] ;
   foreach inListOfFilesToParse do
     const @lstring filePath [new
       ![mValue absolutePathFromPath !inDirectory]
       ![mValue location]
     ] ;
+    const @string extension := [mValue pathExtension] ;
     if not [ioParsedFileSet hasKey ![filePath string]] then
       ioParsedFileSet += ![filePath string] ;
-      const @string extension := [[filePath string] pathExtension] ;
       if extension == "gOption" then
         ioOptionComponentFileNameList += !filePath ;
         ioImplementationIncludeList += ![[filePath lastPathComponent] stringByDeletingPathExtension] ;
@@ -102,6 +114,10 @@ routine recursivelyImportSemanticComponent
         ioGrammarComponentASTList += !grammarComponentAST ;
         ioImplementationIncludeList += ![[grammarComponentAST mGrammarName] string] ;
       elsif extension == "gSemantics" then
+        [!?ioSemanticImportDependenceGraph addArc
+          ![@lstring new ![inFilePath lastPathComponent] ![inFilePath location]]
+          ![@lstring new ![mValue lastPathComponent] ![mValue location]]
+        ] ;
       #--- Parse semantic component
         @semanticsComponentAST semanticsComponentRoot ;
         parseSemanticComponent
@@ -118,7 +134,9 @@ routine recursivelyImportSemanticComponent
         end foreach ;
       #--- Import semantic components named in this file
         recursivelyImportSemanticComponent
+          !filePath
           !?ioParsedComponentStruct
+          !?ioSemanticImportDependenceGraph
           !?ioOptionComponentFileNameList
           !?ioGrammarComponentASTList
           !?ioSemanticDeclarationList
@@ -129,8 +147,57 @@ routine recursivelyImportSemanticComponent
           !inDirectory
         ;
       end if ;
+    elsif extension == "gSemantics" then
+        [!?ioSemanticImportDependenceGraph addArc
+          ![@lstring new ![inFilePath lastPathComponent] ![inFilePath location]]
+          ![@lstring new ![mValue lastPathComponent] ![mValue location]]
+        ] ;
     end if ;
   end foreach ;
+end routine ;
+
+
+#---------------------------------------------------------------------------*
+
+routine recursivelyImportSemanticComponentAndCheckNoCircularityInImportSemantics
+  ??@lstring inSourceFile
+  ?!@parsedComponentStruct ioParsedComponentStruct
+  ?!@lstringlist ioOptionComponentFileNameList
+  ?!@grammarComponentASTList ioGrammarComponentASTList
+  ?!@semanticDeclarationListAST ioSemanticDeclarationList
+  ?!@stringset ioParsedFileSet
+  ?!@stringlist ioHeaderIncludeList
+  ?!@stringlist ioImplementationIncludeList
+  ??@lstringlist inListOfFilesToParse
+  ??@string inDirectory
+:
+  @semanticImportDependenceGraph semanticImportDependenceGraph [emptyGraph] ;
+  recursivelyImportSemanticComponent
+    !inSourceFile
+    !?ioParsedComponentStruct
+    !?semanticImportDependenceGraph
+    !?ioOptionComponentFileNameList
+    !?ioGrammarComponentASTList
+    !?ioSemanticDeclarationList
+    !?ioParsedFileSet
+    !?ioHeaderIncludeList
+    !?ioImplementationIncludeList
+    !inListOfFilesToParse
+    !inDirectory
+  ;
+#------ Check there is no import circularities
+  @lstringlist circularityList;
+  [semanticImportDependenceGraph topologicalSort ?* ?* ?* ?circularityList] ;
+  if [circularityList length] > 0 then
+    @string s := "theses components are invloved in a circular import:" ;
+    foreach circularityList do
+      s .= "\n-- '" . mValue . "'" ;
+    end foreach ;
+    error here : s ;
+    foreach circularityList do
+      error mValue : "this import is involved in a circular import";
+    end foreach ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -285,8 +352,11 @@ routine compileSemanticsComponentAST
   @grammarComponentASTList grammarComponentASTList [emptyList] ;
   @stringlist headerIncludeList [emptyList] ;
   @stringlist implementationIncludeList [emptyList] ;
+  @semanticImportDependenceGraph semanticImportDependenceGraph [emptyGraph] ;
   recursivelyImportSemanticComponent
+    !inSourceFile
     !?ioParsedComponentStruct
+    !?semanticImportDependenceGraph
     !?optionComponentFileNameList
     !?grammarComponentASTList
     !?semanticDeclarationList
@@ -296,6 +366,9 @@ routine compileSemanticsComponentAST
     ![inSemanticsComponentRoot mImportedComponentFileNameList]
     ![inSourceFile stringByDeletingLastPathComponent]
   ;
+#------ Check there is no import circularities
+  @lstringlist circularityList;
+  [semanticImportDependenceGraph topologicalSort ?* ?* ?* ?circularityList] ;
 #------ Add predefined types to semantics declarations
   @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes := semanticDeclarationList ;
   appendPredefinedTypesASTs !?semanticDeclarationListWithPredefinedTypes ;
