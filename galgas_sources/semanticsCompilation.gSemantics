@@ -189,13 +189,13 @@ routine recursivelyImportSemanticComponentAndCheckNoCircularityInImportSemantics
   @lstringlist circularityList;
   [semanticImportDependenceGraph topologicalSort ?* ?* ?* ?circularityList] ;
   if [circularityList length] > 0 then
-    @string s := "theses components are invloved in a circular import:" ;
+    @string s := "theses components are involved in a circular import:" ;
     foreach circularityList do
-      s .= "\n-- '" . mValue . "'" ;
+      s .= "\n  - '" . mValue . "'" ;
     end foreach ;
     error here : s ;
     foreach circularityList do
-      error mValue : "this import is involved in a circular import";
+      error mValue : "import was here";
     end foreach ;
   end if ;
 end routine ;

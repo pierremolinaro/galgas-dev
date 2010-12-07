@@ -408,7 +408,6 @@ list @formalInputParameterListForGeneration {
   @unifiedTypeMapProxy mFormalArgumentType ;
   @string mFormalArgumentCppName ;
   @lstring mFormalArgumentName ;
-  @bool mIsUnused ;
   @bool mIsConstant ;
 }
 
