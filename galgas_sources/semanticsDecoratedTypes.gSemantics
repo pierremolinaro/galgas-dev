@@ -409,6 +409,7 @@ list @formalInputParameterListForGeneration {
   @string mFormalArgumentCppName ;
   @lstring mFormalArgumentName ;
   @bool mIsUnused ;
+  @bool mIsConstant ;
 }
 
 #---------------------------------------------------------------------------*
