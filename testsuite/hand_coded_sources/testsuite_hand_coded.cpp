@@ -44,7 +44,7 @@ void routine_testsuite_5F_hand_5F_coded (C_Compiler * /* inCompiler */
 //---------------------------------------------------------------------------*
 
 GALGAS_uint
-function_externTestFunction (const GALGAS_uint & inArg1,
+function_externTestFunction (GALGAS_uint inArg1,
                              const GALGAS_uint & inArg2,
                              C_Compiler * inCompiler
                              COMMA_LOCATION_ARGS) {
