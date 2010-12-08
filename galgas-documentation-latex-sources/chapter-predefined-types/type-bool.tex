@@ -1,0 +1,125 @@
+\definitionSectionType{@bool}
+
+An \nomType{@bool} object has a boolean value. The two keywords \motCle{true} and \motCle{false} belong to the \nomType{@bool} type, and denotes the true and false values.
+
+No constructor is defined for the \nomType{@bool} type.
+
+\readerSansArgument{cString}
+{@bool}
+{1.8.7}
+{@string}
+{Returns a string representation of the receiver's value.}
+{returns the \texttt{\textquotedbl true\textquotedbl} string if the receiver?s value is true, and the \texttt{\textquotedbl false\textquotedbl} string otherwise.}
+
+
+
+
+
+
+
+\readerSansArgument{ocString}
+{@bool}
+{1.8.7}
+{@string}
+{Returns a string representation of the receiver's value.}
+{returns the \texttt{\textquotedbl YES\textquotedbl} string if the receiver?s value is true, and the \texttt{\textquotedbl NO\textquotedbl} string otherwise.}
+
+
+
+
+\readerSansArgument{sint}
+{@bool}
+{1.9.4}
+{@sint}
+{Returns the receiver's value in an \lienSectionType{@sint} (32-bit signed integer) object.}
+{returns the \texttt{1S} \nomType{@sint} value if the receiver?s value is true, and the \texttt{0S} \nomType{@sint} value otherwise.}
+
+
+
+
+\readerSansArgument{sint64}
+{@bool}
+{1.9.4}
+{@sint64}
+{Returns the receiver's value in an \lienSectionType{@sint64} (64-bit signed integer) object.}
+{returns the \texttt{1LS} \nomType{@sint64} value if the receiver?s value is true, and the \texttt{0LS} \nomType{@sint64} value otherwise.}
+
+
+
+
+\readerSansArgument{uint}
+{@bool}
+{1.9.4}
+{@uint}
+{Returns the receiver's value in an \lienSectionType{@uint} (32-bit unsigned integer) object.}
+{returns the \texttt{1} \nomType{@uint} value if the receiver?s value is true, and the \texttt{0} \nomType{@uint} value otherwise.}
+
+
+
+
+\readerSansArgument{uint64}
+{@bool}
+{1.9.4}
+{@uint64}
+{Returns the receiver's value in an \lienSectionType{@uint64} (64-bit unsigned integer) object.}
+{returns the \texttt{1L} \nomType{@uint64} value if the receiver?s value is true, and the \texttt{0S} \nomType{@uint64} value otherwise.}
+
+
+
+
+\subsection{Logical Operators}
+
+The \nomType{@bool} type supports the three logical operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$\&$ & And \\
+\hline
+\textbar & Or \\
+\hline
+\^\  & Exclusive or \\
+\hline
+\end{tabular}\newline
+
+Theses operators require both arguments to be \nomType{@bool} objects and return an \nomType{@bool} object.\newline
+
+
+The \nomType{@uint} type supports the logical unary operator:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+\motCle{not} & Complementation \\
+\hline
+\end{tabular}\newline
+
+This operator returns an \nomType{@bool} object.
+
+
+
+
+
+
+
+\subsection{Comparison Operators}
+
+The \nomType{@bool} type supports the six comparison operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$=$ & Equality \\
+\hline
+$!=$ & Non Equality \\
+\hline
+$<$  & Strict Lower Than \\
+\hline
+$<=$  & Lower or Equal \\
+\hline
+$>$  & Strict Greater Than \\
+\hline
+$>=$  & Greater or Equal \\
+\hline
+\end{tabular}\newline
+
+Theses operators require both arguments to be \nomType{@bool} objects, and return a \nomType{@bool} object.
+
+
