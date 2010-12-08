@@ -706,12 +706,14 @@ override method @thisReaderCallExpressionAST analyzeSemanticExpression
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-#--- Analyze this, as receiver expression
+#--- Analyze "self", as receiver expression
   @unifiedTypeMapProxy thisTypeProxy ;
-  if [ioVariableMap hasKey !selfMarkName []] then
-    [!?ioVariableMap searchForReadAccess ![@lstring new !selfMarkName [] !here] ?thisTypeProxy ?* ?*] ;
+  @string currentObjectCppPointer ;
+  if [inAnalysisContext->mSelfTypeProxy isNull] then
+    error mLocation: "'self' cannot be used in this context" : currentObjectCppPointer, thisTypeProxy ;
   else
-    error mLocation: "'this' can be used only in methods, modifiers and readers":thisTypeProxy ;
+    currentObjectCppPointer := inAnalysisContext->mSelfObjectCppPointer ;
+    thisTypeProxy := inAnalysisContext->mSelfTypeProxy ;
   end if ;
 #--- Get reader map
   const @readerMap readerMap := [thisTypeProxy mReaderMap] ;
@@ -764,6 +766,7 @@ override method @thisReaderCallExpressionAST analyzeSemanticExpression
     outExpression := [@thisReaderCallExpressionForGeneration new
       !returnedType
       ![mReaderName location]
+      !currentObjectCppPointer
       !isCategory
       ![mReaderName string]
       !constructorEffectiveParameterList

@@ -2,7 +2,10 @@ semantics testsuite_mapproxy :
 
 #-----------------------------------------------------------------------------
 
-uniquemap @maTable {  @uint mAttribut ;  insert insertKey error message "internal error" ;}
+uniquemap @maTable {
+  @uint mAttribut ;
+  insert insertKey error message "internal error" ;
+}
 
 mapproxy @monMapProxy (@maTable) ;
 

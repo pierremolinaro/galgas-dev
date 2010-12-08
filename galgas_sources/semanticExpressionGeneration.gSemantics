@@ -62,12 +62,14 @@ abstract method @semanticExpressionForGeneration generateExpression
 #---------------------------------------------------------------------------*
 
 override method @selfCopyInExpressionForGeneration generateExpression
-  ?!@string unused ioGeneratedCode
-  ?!@uint unused ioTemporaryVariableIndex
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  outCppExpression := mSelfCppName ;
+  ioGeneratedCode .= "//--- @selfCopyInExpressionForGeneration\n" ;
+  outCppExpression := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  ioGeneratedCode .= "const GALGAS_" . [mType identifierRepresentation] . " " . outCppExpression . " = " . mSelfCppName . " ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !selfMarkName []] ;
 end method ;
 
@@ -239,12 +241,41 @@ end method ;
 
 override method @thisReaderCallExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
   ioGeneratedCode .= "//--- @thisReaderCallExpressionForGeneration\n" ;
-  outCppExpression := "{TO DO}" ;
+#--- Reader operands
+  @stringlist readerArgumentCppNameList [emptyList] ;
+  foreach mExpressions do
+    @string argumentCppName ;
+    [mExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?argumentCppName] ;
+    readerArgumentCppNameList += !argumentCppName ;
+  end foreach ;
+#--- Generate Reader call
+  if mIsCategory then
+    outCppExpression := "callCategoryReader_" . [mReaderName identifierRepresentation]
+       . " (" . mCurrentObjectCppPointer . ", " ;
+  else
+    outCppExpression :=  "reader_" . [mReaderName identifierRepresentation] . " (" ;
+  end if ;
+  foreach readerArgumentCppNameList
+    do outCppExpression .= mValue ;
+    between outCppExpression .= ", " ;
+  end foreach ;
+  if [readerArgumentCppNameList length] == 0 then
+    if mHasCompilerArgument then
+      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+      outCppExpression .= compilerCppName [] . " COMMA_" ;
+    end if ;
+  elsif mHasCompilerArgument then
+    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+    outCppExpression .= ", " . compilerCppName [] . " COMMA_" ;
+  else
+    outCppExpression .= " COMMA_" ;
+  end if ;
+  outCppExpression .= "SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -266,8 +297,6 @@ override method @readerCallExpressionForGeneration generateExpression
     readerArgumentCppNameList += !argumentCppName ;
   end foreach ;
 #--- Generate Reader call
-#  outCppExpression := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-#  ioGeneratedCode .= "GALGAS_" . [mType identifierRepresentation] . " " . outCppExpression . " (" ;
   if mIsCategory then
     outCppExpression := "callCategoryReader_" . [mReaderName identifierRepresentation]
        . " ((const cPtr_" . [[mReceiverExpression mType] identifierRepresentation] . " *) " . receiverCppName . ".ptr (), " ;
@@ -304,8 +333,6 @@ override method @optionValueExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-#  ioGeneratedCode .= "//--- @optionValueExpressionForGeneration\n" ;
-#  outCppExpression := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   outCppExpression := "GALGAS_" . [mType identifierRepresentation] . " (gOption_" . [mOptionComponentName identifierRepresentation]
                    . "_" . [mOptionEntryName identifierRepresentation] . ".reader_value ())" ;
 end method ;
@@ -318,8 +345,6 @@ override method @optionCharExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-#  ioGeneratedCode .= "//--- @optionCharExpressionForGeneration\n" ;
-#  outCppExpression := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   outCppExpression := "GALGAS_char (gOption_" . [mOptionComponentName identifierRepresentation]
                   . "_" . [mOptionEntryName identifierRepresentation] . ".reader_char ())" ;
 end method ;
@@ -332,8 +357,6 @@ override method @optionStringExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-#  ioGeneratedCode .= "//--- @optionStringExpressionForGeneration\n" ;
-#  outCppExpression := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   outCppExpression := "GALGAS_string (gOption_" . [mOptionComponentName identifierRepresentation]
                   . "_" . [mOptionEntryName identifierRepresentation] . ".reader_string ())" ;
 end method ;
