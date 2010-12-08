@@ -130,6 +130,7 @@ class @readerCallExpressionForGeneration extends @semanticExpressionForGeneratio
 #---------------------------------------------------------------------------*
 
 class @thisReaderCallExpressionForGeneration extends @semanticExpressionForGeneration {
+  @string mCurrentObjectCppPointer ;
   @bool mIsCategory ;
   @string mReaderName ;
   @semanticExpressionListForGeneration mExpressions ;

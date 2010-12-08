@@ -15,11 +15,18 @@ end reader ;
 reader @BB otherReader ?@uint inA ??@string inB -> @string outResult
 :
   inA ++ ;
-  outResult := inB . inA ;
+  outResult := inB . inA . [selfcopy aReader !inA !inB] . [self aReader !inA !inB] ;
 end reader ;
 
 abstract class @CC extends @BB {}
 
 override abstract reader @CC aReader ?@uint inA ??@string inB -> @string outResult ;
+
+routine testsuite_category_readers :
+  message "*************************************** begin of category reader test\n" ;
+  @BB b := [@BB new] ;
+  @string s := [b otherReader !2 !"-"] ;
+  log s ;
+end routine ;
 
 end semantics ;

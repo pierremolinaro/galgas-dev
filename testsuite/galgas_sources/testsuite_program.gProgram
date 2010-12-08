@@ -19,9 +19,9 @@ before {
 #  testsuite_listmap ;
   testsuite_map ;
   testsuite_functions ;
-#  testsuite_domain ;
   testsuite_introspection ;
   testsuite_mapproxy ;
+  testsuite_category_readers ;
 }
 
 #--- 'when' clauses
