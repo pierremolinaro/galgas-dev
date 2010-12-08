@@ -40,7 +40,7 @@
   \end{tabular}
   \newline
   \newline
-  \textbf{Availabilty:} available in GALGAS #3 and later.
+  \textbf{Availability:} available in GALGAS #3 and later.
   \newline
   \newline
   \textbf{Discussion:} #6
@@ -72,7 +72,7 @@
   \end{tabular}
   \newline
   \newline
-  \textbf{Availabilty:} available in GALGAS #3 and later.
+  \textbf{Availability:} available in GALGAS #3 and later.
   \newline
   \newline
   \textbf{Discussion:} #7
@@ -103,7 +103,7 @@
   \end{tabular}
   \newline
   \newline
-  \textbf{Availabilty:} available in GALGAS #3 and later.
+  \textbf{Availability:} available in GALGAS #3 and later.
   \newline
   \newline
   \textbf{Discussion:} #8
@@ -131,7 +131,7 @@
   \end{tabular}
   \newline
   \newline
-  \textbf{Availabilty:} available in GALGAS #3 and later.
+  \textbf{Availability:} available in GALGAS #3 and later.
   \newline
   \newline
   \textbf{Discussion:} #6
@@ -154,7 +154,7 @@
   \end{tabular}
   \newline
   \newline
-  \textbf{Availabilty:} available in GALGAS #3 and later.
+  \textbf{Availability:} available in GALGAS #3 and later.
   \newline
   \newline
   \textbf{Discussion:} #7
@@ -178,10 +178,32 @@
   \end{tabular}
   \newline
   \newline
-  \textbf{Availabilty:} available in GALGAS #3 and later.
+  \textbf{Availability:} available in GALGAS #3 and later.
   \newline
   \newline
   \textbf{Discussion:} #8
+  \newline
+}
+
+%---------------------------------------------------------------------*
+
+%--- Définition d'un modifier à 1 argument
+
+\newcommand \modifierUnArgument[6] {
+  \subsection{\texttt{#1} Modifier}\label{modifier #2 #1}
+  #5
+  \newline
+  \newline
+  \begin{tabular}{|l}
+  \texttt{\emph{modifier} \nomType{#2} #1}\\
+  \texttt{\ \ ?#4}\\
+  \end{tabular}
+  \newline
+  \newline
+  \textbf{Availability:} available in GALGAS #3 and later.
+  \newline
+  \newline
+  \textbf{Discussion:} #6
   \newline
 }
 
@@ -191,8 +213,7 @@
 
 \newcommand \exempleUneLigne[1] {
   \textbf{Example:}
-  \texttt{#1}
-  \newline
+  \texttt{#1}\newline
 }
 
 %---------------------------------------------------------------------*
@@ -202,8 +223,18 @@
 \newcommand \exempleDeuxLignes[2] {
   \textbf{Example:}\newline
   \texttt{#1}\newline
-  \texttt{#2}
-  \newline
+  \texttt{#2}\newline
+}
+
+%---------------------------------------------------------------------*
+
+%--- Exemple 3 lignes
+
+\newcommand \exempleTroisLignes[3] {
+  \textbf{Example:}\newline
+  \texttt{#1}\newline
+  \texttt{#2}\newline
+  \texttt{#3}\newline
 }
 
 %---------------------------------------------------------------------*

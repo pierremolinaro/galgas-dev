@@ -650,7 +650,8 @@ Literal Constant & Code Point & Character \\
 {1.7.2}
 {@bool}
 {Returns an \nomType{@bool} value indicating whether the receiver'value represents an ASCII letter or an ASCII digit.}
-{seturns \motCle{true} if the receiver'value represents an ASCII letter or an ASCII digit, and \motCle{false} otherwise.}
+{returns \motCle{true} if the receiver'value represents an ASCII letter or an ASCII digit (between \texttt{\textquotesingle A\textquotesingle} and \texttt{\textquotesingle Z\textquotesingle}, or between \texttt{\textquotesingle a\textquotesingle} and \texttt{\textquotesingle z\textquotesingle}, or between \texttt{\textquotesingle 0\textquotesingle} and \texttt{\textquotesingle 9\textquotesingle}), and \motCle{false} otherwise.}
+
 
 
 
@@ -659,227 +660,188 @@ Literal Constant & Code Point & Character \\
 {1.7.2}
 {@bool}
 {Returns an \nomType{@bool} value indicating whether the receiver'value represents an ASCII letter.}
-{seturns \motCle{true} if the receiver'value represents an ASCII letter, and \motCle{false} otherwise.}
+{returns \motCle{true} if the receiver'value represents an ASCII letter (between \texttt{\textquotesingle A\textquotesingle} and \texttt{\textquotesingle Z\textquotesingle}, or between \texttt{\textquotesingle a\textquotesingle} and \texttt{\textquotesingle z\textquotesingle}), and \motCle{false} otherwise.}
 
 
 
-\readerSansArgument{hexString}
-{@uint}
-{1.5.2}
-{@string}
-{Returns the an hexadecimal string representation of the receiver value, prefixed by the string "0x".}
-{for getting an hexadecimal representation string without "0x" prefix, see \lienReader{@uint}{xString}.}
+
+\readerSansArgument{iscntrl}
+{@char}
+{1.7.2}
+{@bool}
+{Returns an \nomType{@bool} value indicating whether the receiver'value represents an ASCII control character.}
+{returns \motCle{true} if the receiver'value represents an ASCII control character (strictly before the \emph{SPACE} character), and \motCle{false} otherwise.}
 
 
 
-\readerSansArgument{isUnicodeValueAssigned}
-{@uint}
+
+
+\readerSansArgument{isdigit}
+{@char}
+{1.7.2}
+{@bool}
+{Returns an \nomType{@bool} value indicating whether the receiver'value represents an ASCII digit.}
+{returns \motCle{true} if the receiver'value represents an ASCII digit (between \texttt{\textquotesingle 0\textquotesingle} and \texttt{\textquotesingle 9\textquotesingle}), and \motCle{false} otherwise.}
+
+
+
+
+
+\readerSansArgument{islower}
+{@char}
+{1.7.2}
+{@bool}
+{Returns an \nomType{@bool} value indicating whether the receiver'value represents an ASCII lowercase ASCII letter.}
+{returns \motCle{true} if the receiver'value represents an ASCII lowercase letter (between \texttt{\textquotesingle a\textquotesingle} and \texttt{\textquotesingle z\textquotesingle}), and \motCle{false} otherwise.}
+
+
+
+
+
+
+\readerSansArgument{isUnicodeCommand}
+{@char}
 {1.8.3}
 {@bool}
-{Returns an \nomType{@bool} value indicating whether the receiver'value represents an assigned Unicode character.}
-{it returns \motCle{true} if the receiver value represents an assigned Unicode character, \motCle{false} and otherwise.}
-
-\exempleDeuxLignes
-{[0xFFFF isUnicodeValueAssigned] \# is false, as \textbackslash uFFFF is not assigned.}
-{[0x41 isUnicodeValueAssigned] \# is true, as \textbackslash u0041 is assigned (LATIN CAPITAL LETTER A).}
-
-
-
-\readerSansArgument{lsbIndex}
-{@uint}
-{1.6.12}
-{@uint}
-{Returns an \nomType{@uint} value of the index of the most significant bit of the receiver value.}
-{it raises a run-time error if the receiver value is zero.}
-
-Example :
-
-\texttt{@uint value := 192 ; \# 192 is 11000000 in binary}
-
-\texttt{@uint x := [value lsbIndex] ; \# x is equal to 7}
-
-The most significant bit of 192 is the 7th bit.
-
-
-
-
-\readerSansArgument{significantBitCount}
-{@uint}
-{1.6.12}
-{@uint}
-{Returns the number of bits needed to express the receiver value.}
-{it the receiver value is zero, it returns 0 ; otherwise, it returns the most significant bit index plus one.}
-
-Example :
-
-\texttt{@uint value := 145 ; \# 145 is 10010001 in binary}
-
-\texttt{@uint x := [value significantBitCount] ; \# x is equal to 8}
+{Returns an \nomType{@bool} value indicating whether the receiver'value represents an Unicode command.}
+{returns \motCle{true} if the receiver'value represents an Unicode command, and \motCle{false} otherwise.}
 
 
 
 
 
-\readerSansArgument{sint}
-{@uint}
-{1.6.12}
-{@sint}
-{Returns returns the receiver's value in an \lienSectionType{@sint} (32-bit signed integer) object.}
-{an error is raised is receiver's value is greater than $2^{31}-1$.}
 
-This reader is the only way to convert an \lienSectionType{@uint} object into an \lienSectionType{@sint} object.
-
+\readerSansArgument{isUnicodeLetter}
+{@char}
+{1.8.3}
+{@bool}
+{Returns an \nomType{@bool} value indicating whether the receiver'value represents an Unicode letter.}
+{returns \motCle{true} if the receiver'value represents an Unicode letter, and \motCle{false} otherwise.}
 
 
 
-\readerSansArgument{sint64}
-{@uint}
-{1.6.12}
-{@sint64}
-{Returns returns the receiver's value in an \lienSectionType{@sint64} (64-bit signed integer) object.}
-{as a 32-bit unsigned value can always be converted in a 64-bit signed value, this reader never fails.}
 
-This reader is the only way to convert an \lienSectionType{@uint} object into an \lienSectionType{@sint64} object.
+
+
+\readerSansArgument{isUnicodeMark}
+{@char}
+{1.8.3}
+{@bool}
+{Returns an \nomType{@bool} value indicating whether the receiver'value represents an Unicode mark character.}
+{returns \motCle{true} if the receiver'value represents an Unicode mark character, and \motCle{false} otherwise.}
+
+
+
+
+
+
+\readerSansArgument{isUnicodePunctuation}
+{@char}
+{1.8.3}
+{@bool}
+{Returns an \nomType{@bool} value indicating whether the receiver'value represents an Unicode punctuation character.}
+{returns \motCle{true} if the receiver'value represents an Unicode punctuation character, and \motCle{false} otherwise.}
+
+
+
+
+
+
+\readerSansArgument{isUnicodeSeparator}
+{@char}
+{1.8.3}
+{@bool}
+{Returns an \nomType{@bool} value indicating whether the receiver'value represents an Unicode separator character.}
+{returns \motCle{true} if the receiver'value represents an Unicode separator character, and \motCle{false} otherwise.}
+
+
+
+
+
+
+\readerSansArgument{isUnicodeSymbol}
+{@char}
+{1.8.3}
+{@bool}
+{Returns an \nomType{@bool} value indicating whether the receiver'value represents an Unicode symbol character.}
+{returns \motCle{true} if the receiver'value represents an Unicode symbol character, and \motCle{false} otherwise.}
+
+
+
+
+
+
+
+
+
+\readerSansArgument{isupper}
+{@char}
+{1.7.2}
+{@bool}
+{Returns an \nomType{@bool} value indicating whether the receiver'value represents an ASCII uppercase ASCII letter.}
+{returns \motCle{true} if the receiver'value represents an ASCII uppercase letter (between \texttt{\textquotesingle A\textquotesingle} and \texttt{\textquotesingle Z\textquotesingle}), and \motCle{false} otherwise.}
+
+
+
 
 
 \readerSansArgument{string}
-{@uint}
-{1.6.12}
+{@char}
+{1.5.5}
 {@string}
-{Returns returns a decimal string representation of the receiver's value.}
-{for an hexadecimal string representation of the receiver's value, see \lienReader{@uint}{hexString} and \lienReader{@uint}{xString}.}
+{Returns returns a string representation of the receiver's value.}
+{returns a one character \nomType{@string} object, containing the receiver's value.}
 
 
 
 
-\readerSansArgument{uint64}
-{@uint}
-{1.6.12}
+\readerSansArgument{uint}
+{@char}
+{1.7.7}
 {@uint64}
-{Returns returns the receiver's value in an \lienSectionType{@uint64} (64-bit unsigned integer) object.}
-{as a 32-bit unsigned value can always be converted in a 64-bit unsigned value, this reader never fails.}
-
-This reader is the only way to convert an \lienSectionType{@uint} object into an \lienSectionType{@uint64} object.
+{Returns an \nomType{@uint} object representing the Unicode code point of the receiver's value.}
+{}
 
 
 
 
-\readerSansArgument{xString}
-{@uint}
-{1.9.10}
+\readerSansArgument{unicodeName}
+{@char}
+{1.8.3}
 {@string}
-{Returns returns an hexadecimal string representation of the receiver's value (without any prefix).}
+{Returns the unicode name of the receiver's value.}
 {for an decimal string representation of the receiver's value, see the \lienReader{@uint}{hexString}; for a decimal string representation of the receiver's value, see the \lienReader{@uint}{string}.}
 
+\exempleUneLigne
+{[\textquotesingle \AE \textquotesingle unicodeName] returns \textquotedbl LATIN CAPITAL LETTER AE \textquotedbl}
 
 
 
 
+\readerSansArgument{unicodeToLower}
+{@char}
+{1.8.3}
+{@char}
+{Returns the lowercase character corresponding to the receiver's value.}
+{if the receiver's value is an Unicode uppercase character, this reader returns the corresponding lowercase character. Otherwise, it returns the receiver's value.}
 
-\subsection{Incrementation and decrementation}
-
-The \lienSectionType{@uint} supports incrementation and decrementation instructions.
-
-\texttt{@uint n := ... ; n ++ ; \# Incrementation}
-
-\texttt{@uint p := ... ; p -- ; \# Decrementation}\newline
-
-The incrementation instruction raises an error if receiver's value is equal to $2^{32}-1$.\newline
-
-The incrementation instruction raises an error if receiver's value is equal to 0.\newline
-
-Note that incrementation and decrementation are not available within an expression.
+\exempleDeuxLignes
+{[\textquotesingle\AE\textquotesingle unicodeToLower] returns \textquotesingle\ae \textquotesingle}
+{[\textquotesingle\ae\textquotesingle unicodeToLower] returns \textquotesingle\ae \textquotesingle}
 
 
 
 
-\subsection{Arithmetic Operators}
+\readerSansArgument{unicodeToUpper}
+{@char}
+{1.8.3}
+{@char}
+{Returns the uppercase character corresponding to the receiver's value.}
+{if the receiver's value is an Unicode lowercase character, this reader returns the corresponding uppercase character. Otherwise, it returns the receiver's value.}
 
-The \nomType{@uint} type supports the five arithmetic diadic operators:\newline
-
-\begin{tabular}{|c|c|}
-\hline
-$+$ & Addition \\
-\hline
-$-$ & Substraction \\
-\hline
-$*$ & Multiplication \\
-\hline
-$/$ & Division \\
-\hline
-$\%$ & Modulo \\
-\hline
-\end{tabular}\newline
-
-Theses operators require both arguments to be \nomType{@uint} objects.\newline
-
-A run-time error is raised if the operation leads to a 32-bit unsigned overflow.
-
-The \nomType{@uint} type supports the following arithmetic unary operator:\newline
-
-\begin{tabular}{|c|c|}
-\hline
-$+$ & No operation \\
-\hline
-\end{tabular}\newline
-
-This operator returns the receiver's value (an  \nomType{@uint} object).
-
-
-
-
-
-
-\subsection{Shift Operators}
-
-
-The \nomType{@uint} type supports right and left shift operators:\newline
-
-\begin{tabular}{|c|c|}
-\hline
-$<<$ & Left shift \\
-\hline
-$>>$ & Right shift \\
-\hline
-\end{tabular}\newline
-
-Theses operators require both arguments to be \nomType{@uint} objects.\newline
-
-Note the right shift inserts always a zero bit in the most significant bit location (it is a logical right shift).\newline
-
-The actual amount of the shift is the value of the right-hand operand masked by 31, i.e. the shift distance is always between 0 and 31.
-
-
-
-
-\subsection{Logical Operators}
-
-The \nomType{@uint} type supports the three bit-wise logical operators:\newline
-
-\begin{tabular}{|c|c|}
-\hline
-$\&$ & Bit-wise and \\
-\hline
-\textbar & Bit-wise or \\
-\hline
-\^\  & Bit-wise exclusive or \\
-\hline
-\end{tabular}\newline
-
-Theses operators require both arguments to be \nomType{@uint} objects.\newline
-
-
-The \nomType{@uint} type supports the bit-wise logical unary operator:\newline
-
-\begin{tabular}{|c|c|}
-\hline
-$\sim$ & Bit-wise complementation \\
-\hline
-\end{tabular}\newline
-
-This operator returns an \nomType{@uint} object.
-
-
+\exempleDeuxLignes
+{[\textquotesingle\AE\textquotesingle unicodeToUpper] returns \textquotesingle\AE\textquotesingle}
+{[\textquotesingle\ae\textquotesingle unicodeToUpper] returns \textquotesingle\AE\textquotesingle}
 
 
 
@@ -887,7 +849,7 @@ This operator returns an \nomType{@uint} object.
 
 \subsection{Comparison Operators}
 
-The \nomType{@uint} type supports the six comparison operators:\newline
+The \nomType{@char} type supports the six comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -905,6 +867,6 @@ $>=$  & Greater or Equal \\
 \hline
 \end{tabular}\newline
 
-Theses operators require both arguments to be \nomType{@uint} objects, and return a \nomType{@bool} object.
+Theses operators require both arguments to be \nomType{@char} objects, and return a \nomType{@bool} object. Comparison is done by comparing of the Unicode code point's value.
 
 
