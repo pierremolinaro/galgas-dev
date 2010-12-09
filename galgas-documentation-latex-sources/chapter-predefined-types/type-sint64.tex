@@ -1,6 +1,6 @@
 \definitionSectionType{@sint64}
 
-An \nomType{@sint64} object value is a 64-bit signed integer value. You can initialize an \nomType{@sint64}' object from an 64-bit signed integer constant:\\
+An \nomType{@sint64} object value is a 64-bit signed integer value. You can initialize an \nomType{@sint64} object from an 64-bit signed integer constant:\\
 
 \texttt{@sint64 mySignedInteger := 123\_456LS ;}
 
@@ -24,7 +24,7 @@ Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
 {@sint64}
 {1.3.0}
 {@sint64}
-{Returns an \nomType{@sint64} object that the maximum value of the 32-bit signed range.}
+{Returns an \nomType{@sint64} object that the maximum value of the 64-bit signed range.}
 {the returned value is $2^{63}-1$.}
 
 
@@ -140,6 +140,7 @@ The \nomType{@sint} type supports the following arithmetic unary operators:\newl
 \begin{tabular}{|c|c|}
 \hline
 $+$ & No operation \\
+\hline
 $-$ & Negate \\
 \hline
 \end{tabular}\newline

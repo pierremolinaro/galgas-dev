@@ -404,15 +404,261 @@ This program displays: \texttt{Accessible: 0 1 2 3 4 5}.
 
 
 
-\readerSansArgument{uint64}
+\readerUnArgument{equalTo}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@binaryset inOperand}
+{Returns the complement of the exclusive or between the receiver's value and the operand's value.}
+{}
+
+Note that \texttt{[a equalTo !b]} is equivalent to \texttt{$\sim$ (a $\wedge$ b)}.
+
+This operation returns an \nomType{@binaryset} value; do not confuse with \emph{==} operator that returns an \nomType{@bool} value.
+
+
+
+
+
+
+
+\readerUnArgument{existOnBitIndex}
+{@binaryset}
+{1.6.3}
+{@binaryset}
+{@uint inBitIndex}
+{Returns the binary computed by applying the \emph{exist} operator on the \emph{inBitIndex} bit of the receiver's value.}
+{}
+
+
+
+
+
+
+
+\readerDeuxArguments{existsOnBitRange}
+{@binaryset}
+{1.6.3}
+{@binaryset}
+{@uint inFirstBitIndex}
+{@uint inBitCount}
+{Returns the binary computed by applying the \emph{exist} operator on the receiver's value, from \emph{inFirstBitIndex} bit index until the \emph{inFirstBitIndex + inBitCount - 1} bit index.}
+{}
+
+
+\exempleUneLigne
+{}
+{@binaryset s [binarySetWithPredicateString !\textquotedbl 01110010\textquotedbl] ;}
+\texttt{log s ; \# Displays <@binaryset:~01110010>}\\
+\texttt{@binaryset ss := [s existsOnBitRange !2 !3] ;}\\
+\texttt{log s ; \# Displays <@binaryset:~011XXX10>}\\
+
+
+
+
+
+
+
+\readerUnArgument{existOnBitIndexAndBeyond}
+{@binaryset}
+{1.6.3}
+{@binaryset}
+{@uint inBitIndex}
+{Returns the binary set computed by applying the \emph{exist} operator on all bits from \emph{inFirstBitIndex} bit index of the receiver's value.}
+{}
+
+
+
+
+
+
+
+\readerUnArgument{forAllOnBitIndex}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inBitIndex}
+{Returns the binary set computed by applying the \emph{for all} operator on the \emph{inFirstBitIndex} bit index of the receiver's value.}
+{}
+
+
+
+
+
+
+
+\readerUnArgument{forAllOnBitIndexAndBeyond}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inBitIndex}
+{Returns the binary computed by applying the \emph{for all} operator on all bits from \emph{inFirstBitIndex} bit index of the receiver's value.}
+{}
+
+
+
+
+
+
+
+
+\readerUnArgument{greaterOrEqualTo}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@binaryset inOperand}
+{Returns the complement of the exclusive or between the receiver's value and the operand's value.}
+{}
+
+Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar ~$\sim$b)}.
+
+
+
+
+
+
+
+
+\readerSansArgument{isEmpty}
+{@binaryset}
+{1.6.0}
 {@bool}
-{1.9.4}
-{@uint64}
-{Returns the receiver's value in an \lienSectionType{@uint64} (64-bit unsigned integer) object.}
-{returns the \texttt{1L} \nomType{@uint64} value if the receiver?s value is true, and the \texttt{0S} \nomType{@uint64} value otherwise.}
+{Returns a \nomType{@bool} value that indicates whether the receiver's value is the empty set.}
+{returns \motCle{true} if receiver's value is the empty set, and \motCle{false} otherwise.}
 
 
 
+
+
+
+
+\readerSansArgument{isFull}
+{@binaryset}
+{1.6.0}
+{@bool}
+{Returns a \nomType{@bool} value that indicates whether the receiver's value is the full set.}
+{returns \motCle{true} if receiver's value is the full set, and \motCle{false} otherwise.}
+
+
+
+
+
+
+
+\readerDeuxArguments{ITE}
+{@binaryset}
+{1.6.3}
+{@binaryset}
+{@binaryset inThenOperand}
+{@binaryset inElseOperand}
+{Returns the binary set computed by applying the \emph{ite} operator on the receiver's value, the \emph{inThenOperand} argument, and the  \emph{inElseOperand} argument.}
+{\texttt{ite (x, y, z)} is \texttt{(x \& y) \textbar ($\sim$x \& z)}.}
+
+
+
+
+
+
+
+\readerUnArgument{lowerOrEqualTo}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@binaryset inOperand}
+{Returns the binary set computed by applying the \emph{lower or equal} operator on the receiver's value and the \emph{inOperand} argument.}
+{\texttt{[a lowerOrEqualTo !b]} is \texttt{(($\sim$x) \textbar y)}.}
+
+
+
+
+
+
+
+\readerUnArgument{notEqualTo}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@binaryset inOperand}
+{Returns the binary set computed by applying the \emph{not equal} operator on the receiver's value and the \emph{inOperand} argument.}
+{\texttt{[a notEqualTo !b]} is \texttt{(x $\wedge$ y)}.}
+
+
+
+
+
+
+
+\readerSansArgument{predicateStringValue}
+{@binaryset}
+{1.6.0}
+{@string}
+{Returns a string representation of the receiver's value.}
+{the returned string is compatible with the \lienConstructeur{@binaryset}{binarySetWithPredicateString}.}
+
+
+
+
+
+
+
+\readerUnArgument{strictGreaterThan}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@binaryset inOperand}
+{Returns the binary set computed by applying the \emph{strict greater} operator on the receiver's value and the \emph{inOperand} argument.}
+{\texttt{[a strictGreaterThan !b]} is \texttt{(x \& $\sim$y)}.}
+
+
+
+
+
+
+
+\readerUnArgument{strictLowerThan}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@binaryset inOperand}
+{Returns the binary set computed by applying the \emph{strict lower} operator on the receiver's value and the \emph{inOperand} argument.}
+{\texttt{[a strictLowerThan !b]} is \texttt{($\sim$x \& y)}.}
+
+
+
+
+
+
+
+\readerUnArgument{stringValueList}
+{@binaryset}
+{1.6.0}
+{@stringlist}
+{@uint inBitCount}
+{Returns the list of string values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.}
+{}
+
+
+
+
+
+
+
+\readerDeuxArguments{stringValueListWithNameList}
+{@binaryset}
+{1.9.3}
+{@stringlist}
+{@uint inBitCount}
+{@stringlist inNameList}
+{Returns the list of named values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.}
+{first, the receiver is enumerated, considering it uses \emph{inBitCount} bits. Each enumerated value is used as an index of \emph{inNameList}, and the string value at this index is appended at the end of the returned value.}
+
+
+
+
+
+
+
+%-------------------------------
 
 \subsection{Logical Operators}
 
@@ -420,11 +666,11 @@ The \nomType{@bool} type supports the three logical operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
-$\&$ & And \\
+\texttt{$\&$} & And \\
 \hline
-\textbar & Or \\
+\texttt{\textbar} & Or \\
 \hline
-\^\  & Exclusive or \\
+\texttt{$\wedge$}  & Exclusive or \\
 \hline
 \end{tabular}\newline
 
