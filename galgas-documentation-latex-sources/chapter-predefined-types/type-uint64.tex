@@ -1,6 +1,6 @@
 \definitionSectionType{@uint64}
 
-An \nomType{@uint64} object value is a 64-bit unsigned integer value. You can initialize an \nomType{@uint64}' object from a 64-bit unsigned integer constant:\\
+An \nomType{@uint64} object value is a 64-bit unsigned integer value. You can initialize an \nomType{@uint64} object from a 64-bit unsigned integer constant:\\
 
 \texttt{@uint64 myUnsignedInteger := 123\_456L ;}\newline
 
@@ -144,7 +144,7 @@ This reader is the only way to convert an \lienSectionType{@uint64} object into 
 {@uint}
 {@uint inStartBit}
 {@uint inBitCount}
-{Returns an \lienSectionType{@uint} value, extracted from a bit slice of the receiver?s value.}
+{Returns an \lienSectionType{@uint} value, extracted from a bit slice of the receiver's value.}
 {the receiver's value is right shifted by \emph{inStartBit}, and the resulted value is and'ed with a mask equal to $2^{inBitCount}-1$.}
 
 This reader is the only way to convert an \lienSectionType{@uint} object into an \lienSectionType{@uint64} object.
