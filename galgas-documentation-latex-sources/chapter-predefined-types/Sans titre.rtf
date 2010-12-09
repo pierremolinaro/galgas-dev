@@ -1,0 +1,392 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1038\cocoasubrtf350
+{\fonttbl\f0\fswiss\fcharset0 Helvetica;}
+{\colortbl;\red255\green255\blue255;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww15540\viewh10140\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\ql\qnatural\pardirnatural
+
+\f0\fs24 \cf0 ====== Operators ======\
+\
+===== == (egality operator) =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**operator** == ?@binaryset inOperand -> @bool;''\
+\
+The ''=='' operator returns true if the the operand values are identical, and false otherwise. This operation is very fast and is performed in a constant time (integer equality comparison).\
+\
+|Note this operation returns an ''@bool'' value; do not confuse with [[#equalTo| equalTo]] reader that returns an ''@binaryset'' value.|\
+\
+===== != (inegality operator) =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**operator** != ?@binaryset inOperand -> @bool;''\
+\
+The ''!='' operator returns true if the the operand values are different, and false otherwise. This operation is very fast and is performed in a constant time (integer equality comparison).\
+\
+|Note this operation returns an ''@bool'' value; do not confuse with [[#notEqualTo| notEqualTo]] reader that returns an ''@binaryset'' value.|\
+\
+===== & (and operator) =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**operator** & ?@binaryset inOperand -> @binaryset;''\
+\
+\
+The ''&'' operator performs the logical //and// operation between the operand values.\
+\
+\
+===== | (or operator) =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+\
+''**operator** | ?@binaryset inOperand -> @binaryset;''\
+\
+The ''|'' operator performs the logical //or// operation between the operand values.\
+\
+===== ^ (exclusive or operator) =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**operator** ^ ?@binaryset inOperand -> @binaryset;''\
+\
+The ''^'' operator performs the logical //exclusive or// operation between the operand values.\
+\
+===== ~ (complementation operator) =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**operator** ~ -> @binaryset;''\
+\
+The ''~'' operator performs the logical //negation// operation of the operand value. This operation is performed in constant time (an exclusive or on an integer value).\
+\
+For example:\
+\
+''@binaryset s [setWithPredicateString !%%"00"%%];''\\\\\
+''@binaryset s2 := ~ s;''\\\\\
+''**log** s2; # Displays <@binaryset: X1, 10>''\
+\
+===== << (left shift operator) =====\
+\
+|Available in GALGAS 1.6.2 and later.|\
+\
+''**operator** %%<<%% @uint inLeftShiftCount -> @binaryset''\
+\
+This reader returns the binary set corresponding to receiver's value, left shifted by ''inLeftShiftCount'' bits.\
+\
+For example:\
+\
+''@binaryset b [binarySetWithPredicateString !%%"1010"%%] ;''\\\\\
+''log b ; # displays: <@binaryset: 1010>''\\\\\
+''@binaryset bb := b %%<<%% 3 ;''\\\\\
+''log bb ; # displays: <@binaryset: 1010XXX>''\\\\\
+\
+===== >> (right shift operator) =====\
+\
+|Available in GALGAS 1.6.3 and later.|\
+\
+''**operator** %%>>%% @uint inRightShiftCount -> @binaryset''\
+\
+This reader returns the binary set corresponding to receiver's value, right shifted by ''inRightShiftCount'' bits.\
+\
+For example:\
+\
+''@binaryset b [binarySetWithPredicateString !%%"01110010"%%] ;''\\\\\
+''log b ; # displays: <@binaryset: 01110010>''\\\\\
+''@binaryset bb := b %%>>%% 3 ;''\\\\\
+''log bb ; # displays: <@binaryset: 01110>''\\\\\
+\
+\
+====== Readers ======\
+\
+\
+\
+\
+\
+===== equalTo =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** equalTo ?@binaryset inOperand -> @binaryset;''\
+\
+''[a equalTo !b]'' is equivalent to ''~(a ^ b)''.\
+\
+|Note this operation returns an ''@binaryset'' value; do not confuse with ''=='' operator that returns an ''@bool'' value.|\
+\
+===== existOnBitIndex =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** existOnBitIndex ?@uint inBitIndex -> @binaryset;''\
+\
+This reader returns the binary set built with ''exists'' operation on bit index ''inBitIndex'' of the receiver's value.\
+\
+===== existsOnBitRange =====\
+\
+|Available in GALGAS 1.6.3 and later.|\
+\
+''**reader** existsOnBitRange ?@uint inFirstBitIndex ?@uint inBitCount -> @binaryset;''\
+\
+|Note that no overflow test is performed.|\
+\
+Example:\
+\
+''@binaryset s [binarySetWithPredicateString !%%"01110010"%%] ;''\\\\\
+''**log** s ; # Displays <@binaryset: 01110010>''\\\\\
+''@binaryset ss := [s existsOnBitRange !2 !3] ;''\\\\\
+''**log** ss ; # Displays <@binaryset: 011XXX10 >''\
+\
+===== existOnBitIndexAndBeyond =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** existOnBitIndexAndBeyond ?@uint inBitIndex -> @binaryset;''\
+\
+This reader returns the binary set built with ''exist'' operation on bits whose index is greater or equal to ''inBitIndex'' of the receiver's value.\
+\
+\
+===== forAllOnBitIndex =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** forAllOnBitIndex ?@uint inBitIndex -> @binaryset;''\
+\
+This reader returns the binary set built with ''for all'' operation on bit index ''inBitIndex'' of the receiver's value.\
+\
+===== forAllOnBitIndexAndBeyond =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** forAllOnBitIndexAndBeyond ?@uint inBitIndex -> @binaryset;''\
+\
+This reader returns the binary set built with ''for all'' operation on bits whose index is greater or equal to ''inBitIndex'' of the receiver's value.\
+\
+\
+===== greaterOrEqualTo =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** greaterOrEqualTo ?@binaryset inOperand -> @binaryset;''\
+\
+''[a greaterOrEqualTo !b]'' is equivalent to ''a | ~b''.\
+\
+===== isEmpty =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** isEmpty -> @bool;''\
+\
+This reader returns true if the receiver is the empty set, and false otherwise.\
+\
+===== isFull =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** isFull -> @bool;''\
+\
+This reader returns true if the receiver is the full set, and false otherwise.\
+\
+===== ITE =====\
+\
+|Avalailable in GALGAS 1.6.0 and later.|\
+\
+''**reader** ITE ?@binaryset inThenOperand ?@binaryset inELSEoperand -> @binaryset;''\
+\
+The constructor returns an binary set that is the result of the ITE operand between the receiver's value (considered as IF operand, ''inTHENoperand'' and ''inELSEoperand''.\
+\
+ITE stands for IF THEN ELSE, that is ITE (x, y z) = IF x THEN y ELSE z = (x & y) | (~x & z).\
+\
+===== lowerOrEqualTo =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** lowerOrEqualTo ?@binaryset inOperand -> @binaryset;''\
+\
+''[a lowerOrEqualTo !b]'' is equivalent to ''(~a) | b''.\
+\
+===== notEqualTo =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** notEqualTo ?@binaryset inOperand -> @binaryset;''\
+\
+''[a notEqualTo !b]'' is equivalent to ''(a ^ b)''.\
+\
+|Note this operation returns an ''@binaryset'' value; do not confuse with ''!='' operator that returns an ''@bool'' value.|\
+\
+===== predicateStringValue =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** predicateStringValue -> @string;''\
+\
+This reader returns a string that fully encodes the receiver's value. The returned string compatible with [[#binarysetWithPredicateString|binarysetWithPredicateString]] constructor.\
+\
+===== strictGreaterThan =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** strictGreaterThan ?@binaryset inOperand -> @binaryset;''\
+\
+''[a strictGreaterThan !b]'' is equivalent to ''a & ~b''.\
+\
+===== strictLowerThan =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** strictLowerThan ?@binaryset inOperand -> @binaryset;''\
+\
+''[a strictLowerThan !b]'' is equivalent to ''(~a) & b''.\
+\
+===== stringValueList =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** stringValueList ?@uint inBitCount -> @stringlist''\
+\
+This reader returns the list of string values corresponding to receiver's value, considering it uses ''inBitCount'' bits.\
+\
+===== stringValueListWithNameList =====\
+\
+|Available in GALGAS 1.9.3 and later.|\
+\
+''**reader** stringValueListWithNameList ?@uint inBitCount ?@stringlist inNameList-> @stringlist''\
+\
+First, the receiver is enumerated, considering it uses ''inBitCount'' bits. Each enumeration value is used as an index of ''inNameList'', and the string value at this index is appended at the end of the returned value.\
+\
+===== swap132 =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** swap132 ?@luint inBitCount1 ?@luint inBitCount2 ?@luint inBitCount3 -> @binaryset;''\
+\
+This reader considers that the receiver encodes an ''(x, y, z)'' relation, where ''x'' is defined by bits index ''0'' to ''inBitCount1  - 1'', ''y'' is defined by bits index ''inBitCount1'' to ''inBitCount1 + inBitCount2 - 1'' and  ''z'' is defined by bits index ''inBitCount1 + inBitCount2'' to ''inBitCount1 + inBitCount2 + inBitCount3 - 1''.\
+\
+\
+The reader returns the transposed ''(x, z, y)'' relation.\
+\
+===== swap21 =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** swap21 ?@luint inBitCount1 ?@luint inBitCount2 -> @binaryset;''\
+\
+This reader considers that the receiver encodes a ''(x, y)'' relation, where ''x'' is defined by bits index ''0'' to ''inBitCount1  - 1'', and ''y'' is defined by bits index ''inBitCount1'' to ''inBitCount1 + inBitCount2 - 1''.\
+\
+\
+The reader returns the transposed ''(y, x)'' relation, where ''y'' is defined by bits index ''0'' to ''inBitCount2  - 1'', and ''x'' is defined by bits index ''inBitCount2'' to ''inBitCount2 + inBitCount1 - 1''.\
+\
+In The following example, the ''graph'' variable encodes the ''(x, y'') relation defined by ''0 -> 1'', ''1 -> 2'', ''4 -> 3'', ''5 -> 4'' and ''2 -> 7'', where ''x'' is encoded by four bits, and ''y'' by three bits. The transposed relation is: ''1 -> 0'', ''2 -> 1'', ''3 -> 4'', ''4 -> 5'' and ''7 -> 2''.\
+\
+''@binaryset graph := [@binaryset binarySetWithPredicateString !"001 0000"] # 0 -> 1''\\\\\
+''\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0| [@binaryset binarySetWithPredicateString !"010 0001"] # 1 -> 2''\\\\\
+''\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0| [@binaryset binarySetWithPredicateString !"011 0100"] # 4 -> 3''\\\\\
+''\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0| [@binaryset binarySetWithPredicateString !"100 0101"] # 5 -> 4''\\\\\
+''\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0| [@binaryset binarySetWithPredicateString !"111 0010"] # 2 -> 7''\\\\\
+'';''\\\\\
+''@uint64 count := [graph valueCount !7] ;''\\\\\
+''**log** count ; # Displays <@uint64:5>''\\\\\
+''**log** graph ; # Displays <@binaryset: 0010000, 0100001, 0110100, 1000101, 1110010>''\\\\\
+''@binaryset transposedRelation := [graph swap21 !4 !3] ;''\\\\\
+''count := [transposedRelation valueCount !7] ;''\\\\\
+''**log** count ; # Displays <@uint64:5>''\\\\\
+''valueList := [transposedRelation uint64ValueList !7] ;''\\\\\
+''**foreach** valueList (@uint64 kValue) :''\\\\\
+''\'a0\'a0@uint y := [kValue uintSlice !0 !3] ;''\\\\\
+''\'a0\'a0@uint x := [kValue uintSlice !3 ! 4] ;''\\\\\
+''\'a0\'a0**message** %%"  y = " . [y string] . ", x = " . [x string] . "\\n"%% ;''\\\\\
+''**end foreach** ;''\\\\\
+\
+The ''**foreach**'' loop displays the transposed relation:\
+\
+''\'a0\'a0y = 1, x = 0''\\\\\
+''\'a0\'a0y = 2, x = 1''\\\\\
+''\'a0\'a0y = 7, x = 2''\\\\\
+''\'a0\'a0y = 3, x = 4''\\\\\
+''\'a0\'a0y = 4, x = 5''\\\\\
+\
+===== swap213 =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** swap213 ?@luint inBitCount1 ?@luint inBitCount2 ?@luint inBitCount3 -> @binaryset;''\
+\
+This reader considers that the receiver encodes an ''(x, y, z)'' relation, where ''x'' is defined by bits index ''0'' to ''inBitCount1  - 1'', ''y'' is defined by bits index ''inBitCount1'' to ''inBitCount1 + inBitCount2 - 1'' and  ''z'' is defined by bits index ''inBitCount1 + inBitCount2'' to ''inBitCount1 + inBitCount2 + inBitCount3 - 1''.\
+\
+\
+The reader returns the transposed ''(y, x, z)'' relation.\
+\
+===== swap231 =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** swap231 ?@luint inBitCount1 ?@luint inBitCount2 ?@luint inBitCount3 -> @binaryset;''\
+\
+This reader considers that the receiver encodes an ''(x, y, z)'' relation, where ''x'' is defined by bits index ''0'' to ''inBitCount1  - 1'', ''y'' is defined by bits index ''inBitCount1'' to ''inBitCount1 + inBitCount2 - 1'' and  ''z'' is defined by bits index ''inBitCount1 + inBitCount2'' to ''inBitCount1 + inBitCount2 + inBitCount3 - 1''.\
+\
+\
+The reader returns the transposed ''(y, z, x)'' relation.\
+\
+===== swap312 =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** swap312 ?@luint inBitCount1 ?@luint inBitCount2 ?@luint inBitCount3 -> @binaryset;''\
+\
+This reader considers that the receiver encodes an ''(x, y, z)'' relation, where ''x'' is defined by bits index ''0'' to ''inBitCount1  - 1'', ''y'' is defined by bits index ''inBitCount1'' to ''inBitCount1 + inBitCount2 - 1'' and  ''z'' is defined by bits index ''inBitCount1 + inBitCount2'' to ''inBitCount1 + inBitCount2 + inBitCount3 - 1''.\
+\
+\
+The reader returns the transposed ''(z, x, y)'' relation.\
+\
+===== swap321 =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** swap321 ?@luint inBitCount1 ?@luint inBitCount2 ?@luint inBitCount3;''\
+\
+This reader considers that the receiver encodes an ''(x, y, z)'' relation, where ''x'' is defined by bits index ''0'' to ''inBitCount1  - 1'', ''y'' is defined by bits index ''inBitCount1'' to ''inBitCount1 + inBitCount2 - 1'' and  ''z'' is defined by bits index ''inBitCount1 + inBitCount2'' to ''inBitCount1 + inBitCount2 + inBitCount3 - 1''.\
+\
+\
+The reader returns the transposed ''(z, y, x)'' relation.\
+\
+===== transitiveClosure =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** transitiveClosure ?@luint inBitCount -> @binaryset;''\
+\
+This reader computes the transitive closure of the relation encoded by the receiver.\
+\
+In The following example, the ''graph'' variable encodes the relation defined by ''0 -> 1'', ''1 -> 2'', ''4 -> 3'', ''5 -> 4'' and ''2 -> 7''. The transitive closure computation adds four relations: ''0 -> 2'', ''0 -> 7'', ''1 -> 7'' and ''5 -> 3''.\
+\
+''@binaryset graph := [@binaryset binarySetWithPredicateString !"0001 0000"] # 0 -> 1''\\\\\
+''\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0| [@binaryset binarySetWithPredicateString !"0010 0001"] # 1 -> 2''\\\\\
+''\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0| [@binaryset binarySetWithPredicateString !"0011 0100"] # 4 -> 3''\\\\\
+''\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0| [@binaryset binarySetWithPredicateString !"0100 0101"] # 5 -> 4''\\\\\
+''\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0\'a0| [@binaryset binarySetWithPredicateString !"0111 0010"] # 2 -> 7''\\\\\
+'';''\\\\\
+''@uint64 count := [graph valueCount !8] ;''\\\\\
+''**log** count ; # Displays <@uint64:5>''\\\\\
+''**log** graph ; # Displays <@binaryset: 00010000, 00100001, 00110100, 01000101, 01110010>''\\\\\
+''@binaryset transitiveClosure := [graph transitiveClosure !4] ;''\\\\\
+''count := [transitiveClosure valueCount !8] ;''\\\\\
+''**log** count ; # Displays <@uint64:9>''\\\\\
+''**log** transitiveClosure ; # Displays <@binaryset: 00010000, 0010000X, 0011010X, 01000101, 0111000X, 01110010>''\\\\\
+\
+===== uint64ValueList =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** uint64ValueList ?@uint inBitCount -> @uint64list''\
+\
+This reader returns the list of @uint64 values corresponding to receiver's value, considering it uses ''inBitCount'' bits.\
+===== valueCount =====\
+\
+|Available in GALGAS 1.6.0 and later.|\
+\
+''**reader** valueCount ?@luint inBitCount -> @uint64''\
+\
+This reader returns in an ''@uint64'' value the number of different values encoded by receiver, considering it uses ''inBitCount'' bits.\
+\
+|Note that no overflow test is performed.|}

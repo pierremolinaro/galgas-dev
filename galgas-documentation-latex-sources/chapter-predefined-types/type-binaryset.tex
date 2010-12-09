@@ -1,0 +1,472 @@
+\definitionSectionType{@binaryset}
+
+The \nomType{@binaryset} type encodes sets, binary relations, boolean mathematical expressions. It is implemented with Binary Decision Diagrams (BDD).
+
+
+
+
+\constructeurUnArgument{binarySetWithBit}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inBitIndex}
+{Returns an \nomType{@binaryset} object whose \emph{inBitIndex} bit is constraint to one.}
+{}
+
+\exempleDeuxLignes
+{}
+{@binaryset s [binarySetWithBit !2] ;}
+{log s ; \# displays <@binaryset: 1XX>}
+
+
+
+
+
+\constructeurTroisArguments{binarySetWithEqualComparison}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inLeftFirstIndex}
+{@uint inBitCount}
+{@uint inRightFirstIndex}
+{Returns an \nomType{@binaryset} object that encodes a equality relation between two variables.}
+{the constructor returns an binary set that encodes the \emph{a~==~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
+
+\exempleDeuxLignes
+{}
+{@binaryset s [binarySetWithEqualComparison !0 !2 !3] ;}
+{log s; \# displays <@binaryset:~00x00, 01X01, 10X10, 11X11>}
+
+
+
+
+
+\constructeurTroisArguments{binarySetWithEqualToConstant}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inLeftFirstIndex}
+{@uint inBitCount}
+{@uint64 inConstant}
+{Returns an \nomType{@binaryset} object that encodes a equality relation between a variable and a constant.}
+{the constructor returns an binary set that encodes the \emph{a~==~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
+
+\exempleDeuxLignes
+{}
+{@binaryset s [binarySetWithEqualToConstant !0 !6 !23L] ;}
+{log s; \# displays <@binaryset:~10111>}
+
+
+
+
+
+\constructeurTroisArguments{binarySetWithGreaterOrEqualComparison}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inLeftFirstIndex}
+{@uint inBitCount}
+{@uint inRightFirstIndex}
+{Returns an \nomType{@binaryset} object that encodes a greater or equal relation between two variables.}
+{the constructor returns an binary set that encodes the \emph{a~>=~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
+
+\exempleDeuxLignes
+{}
+{@binaryset s [binarySetWithGreaterOrEqualComparison !0 !2 !3] ;}
+{log s; \# displays <@binaryset:~00XXX, 01X01, 01X1X, 10X1X, 11X11>}
+
+
+
+
+
+\constructeurTroisArguments{binarySetWithGreaterOrEqualToConstant}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inLeftFirstIndex}
+{@uint inBitCount}
+{@uint64 inConstant}
+{Returns an \nomType{@binaryset} object that encodes a greater or equal relation between a variable and a constant.}
+{the constructor returns an binary set that encodes the \emph{a~>=~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
+
+
+
+
+
+\constructeurTroisArguments{binarySetWithLowerOrEqualComparison}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inLeftFirstIndex}
+{@uint inBitCount}
+{@uint inRightFirstIndex}
+{Returns an \nomType{@binaryset} object that encodes a lower or equal relation between two variables.}
+{the constructor returns an binary set that encodes the \emph{a~<=~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
+
+\exempleDeuxLignes
+{}
+{@binaryset s [binarySetWithLowerOrEqualComparison !0 !2 !3] ;}
+{log s; \# displays <@binaryset:~00X00, 01X0X, 10X0X, 10X10, 11XXX>}
+
+
+
+
+
+\constructeurTroisArguments{binarySetWithLowerOrEqualToConstant}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inLeftFirstIndex}
+{@uint inBitCount}
+{@uint64 inConstant}
+{Returns an \nomType{@binaryset} object that encodes a lower or equal relation between a variable and a constant.}
+{the constructor returns an binary set that encodes the \emph{a~<=~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
+
+
+
+
+
+\constructeurTroisArguments{binarySetWithNotEqualComparison}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inLeftFirstIndex}
+{@uint inBitCount}
+{@uint inRightFirstIndex}
+{Returns an \nomType{@binaryset} object that encodes an inequality relation between two variables.}
+{the constructor returns an binary set that encodes the \emph{a~!=~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
+
+\exempleDeuxLignes
+{}
+{@binaryset s [binarySetWithNotEqualComparison !0 !2 !3] ;}
+{log s; \# displays <@binaryset:~00X01, 00X1X, 01X00, 01X1X, 10X0X, 10X11, 11X0X, 11X10>}
+
+
+
+
+
+\constructeurTroisArguments{binarySetWithNotEqualToConstant}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inLeftFirstIndex}
+{@uint inBitCount}
+{@uint64 inConstant}
+{Returns an \nomType{@binaryset} object that encodes an inequality relation between a variable and a constant.}
+{the constructor returns an binary set that encodes the \emph{a~!=~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
+
+
+
+
+
+
+
+\constructeurUnArgument{binarySetWithPredicateString}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@string inPredicateString}
+{Returns the \nomType{@binaryset} object described by the \emph{inPredicateString} argument.}
+{the \emph{inBitString} argument string encodes a predicate string, such as those returned by \lienReader{@binaryset}{predicateStringValue}.}
+\begin{description}
+\item The \emph{inBitString} argument string characters should have one of the five following values:
+\begin{itemize}
+\item \texttt{\textquotesingle 0\textquotesingle}: a bit set to zero;
+\item \texttt{\textquotesingle 1\textquotesingle}: a bit set to one;
+\item \texttt{\textquotesingle X\textquotesingle}: a don't care bit;
+\item \texttt{\textquotesingle~\textquotesingle}: a separator (non significant character);
+\item \texttt{\textquotesingle\textbar\textquotesingle}: the boolean \emph{or} operation (in infix notation).
+\end{itemize}
+\end{description}
+
+
+\exempleDeuxLignes
+{An empty predicate string (or a string containing only spaces) provides an empty binary set:}
+{@binaryset s [binarySetWithPredicateString !\textquotedbl~\textquotedbl] ;}
+{@bool b := [s isEmptySet]; \# b is true}
+
+
+\exempleDeuxLignes
+{A predicate string containing only \texttt{\textquotesingle X\textquotesingle} characters (at least one) provides an full binary set:}
+{@binaryset s [binarySetWithPredicateString !\textquotedbl X X\textquotedbl] ; \# Spaces are non significant}
+{@bool b := [s isFullSet]; \# b is true}
+
+
+\exempleDeuxLignes
+{You can use the boolean '\textbar' operator for providing an or'ed values:}
+{@binaryset s [binarySetWithPredicateString !\textquotedbl 1100\textquotedbl] ; \# 12 in decimal}
+{log s; \# Displays <@binaryset:~1100>}
+
+
+\exempleDeuxLignes
+{A predicate string can encode a binary value (MSB first):}
+{@binaryset s [binarySetWithPredicateString !\textquotedbl 1100\textbar 1101\textquotedbl] ;}
+{log s; \# Displays <@binaryset:~110X>}
+
+
+
+\exempleDeuxLignes
+{You can use you can use don't care bits and '\textbar' operator together:}
+{@binaryset s [binarySetWithPredicateString !\textquotedbl 11X00X0\textbar 111XXX\textquotedbl] ;}
+{log s; \# Displays <@binaryset:~1100X0, 111XXX>}
+
+
+
+
+
+\constructeurTroisArguments{binarySetWithStrictGreaterComparison}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inLeftFirstIndex}
+{@uint inBitCount}
+{@uint inRightFirstIndex}
+{Returns an \nomType{@binaryset} object that encodes a strict greater than relation between two variables.}
+{the constructor returns an binary set that encodes the \emph{a~>~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
+
+\exempleDeuxLignes
+{}
+{@binaryset s [binarySetWithStrictGreaterComparison !0 !2 !3] ;}
+{log s; \# displays <@binaryset:~00X01, 00X1X, 01X1X, 10X11>}
+
+
+
+
+
+\constructeurTroisArguments{binarySetWithStrictGreaterThanConstant}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inLeftFirstIndex}
+{@uint inBitCount}
+{@uint64 inConstant}
+{Returns an \nomType{@binaryset} object that encodes a strict greater than relation between a variable and a constant.}
+{the constructor returns an binary set that encodes the \emph{a~>~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
+
+
+
+
+
+\constructeurTroisArguments{binarySetWithStrictLowerComparison}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inLeftFirstIndex}
+{@uint inBitCount}
+{@uint inRightFirstIndex}
+{Returns an \nomType{@binaryset} object that encodes a strict lower than relation between two variables.}
+{the constructor returns an binary set that encodes the \emph{a~<~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
+
+\exempleDeuxLignes
+{}
+{@binaryset s [binarySetWithStrictLowerComparison !0 !2 !3] ;}
+{log s; \# displays <@binaryset:~01X00, 10X0X, 11X0X, 11X10>}
+
+
+
+
+
+\constructeurTroisArguments{binarySetWithStrictLowerThanConstant}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inLeftFirstIndex}
+{@uint inBitCount}
+{@uint64 inConstant}
+{Returns an \nomType{@binaryset} object that encodes a strict lower than relation between a variable and a constant.}
+{the constructor returns an binary set that encodes the \emph{a~<~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
+
+
+
+
+
+\constructeurSansArgument{emptyBinarySet}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{Returns an empty \nomType{@binaryset} object.}
+{}
+
+
+
+
+
+\constructeurSansArgument{fullBinarySet}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{Returns a full \nomType{@binaryset} object.}
+{}
+
+
+
+
+
+
+\readerSansArgument{accessibleStates}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{Returns the set of accessible states from an initial state set.}
+{computes the set of accessible states from the \emph{inInitialStateSet} state set using the accessibility relation encoded by the receiver.}
+
+\exempleUneLigne
+{}
+{@binaryset graph [binarySetWithPredicateString !\textquotedbl 0001 0000\textquotedbl] ; \# Edge 0 -> 1}
+\texttt{graph := graph | [@binaryset binarySetWithPredicateString !\textquotedbl 0010 0001\textquotedbl] ; \# Edge 1 -> 2}\\
+\texttt{graph := graph | [@binaryset binarySetWithPredicateString !\textquotedbl 0011 0010\textquotedbl] ; \# Edge 2 -> 3}\\
+\texttt{graph := graph | [@binaryset binarySetWithPredicateString !\textquotedbl 0100 0011\textquotedbl] ; \# Edge 3 -> 4}\\
+\texttt{graph := graph | [@binaryset binarySetWithPredicateString !\textquotedbl 0101 0100\textquotedbl] ; \# Edge 4 -> 5}\\
+\texttt{@binaryset initialState [binarySetWithPredicateString !\textquotedbl 0000\textquotedbl] ; \# 0 is the initial state}\\
+\texttt{@binaryset accessibleStates := [graph accessibleStates !initialState !4] ;}\\
+\texttt{message \textquotedbl Accessible:\textquotedbl ;}\\
+\texttt{@uint64list valueList := [accessibleStates uint64ValueList !4] ;}\\
+\texttt{\motCle{foreach} valueList do}\\
+\texttt{message \textquotedbl~\textquotedbl~. [mValue string] ;}\\
+\texttt{end foreach ;}\\
+\texttt{message \textquotedbl\textbackslash n\textquotedbl ;}\\
+
+
+This program displays: \texttt{Accessible: 0 1 2 3 4 5}.
+
+
+
+
+\readerDeuxArguments{binarySetByTranslatingFromIndex}
+{@binaryset}
+{1.6.3}
+{@binaryset}
+{@uint inFirstIndex}
+{@uint inTranslation}
+{Returns a \nomType{@binaryset} value computed by translating the receiver's value by \emph{inTranslation} bits from index \emph{inFirstIndex}.}
+{}
+
+
+
+\readerSansArgument{compressedValueCount}
+{@binaryset}
+{1.6.0}
+{@uint64}
+{Returns in an \nomType{@uint64} value the number of different compressed string values encoded by receiver's value.}
+{}
+
+
+
+
+\readerUnArgument{compressedStringValueList}
+{@binaryset}
+{1.6.0}
+{@stringlist}
+{@uint inBitCount}
+{Returns the list of compressed string values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.}
+{}
+
+
+
+
+
+
+
+
+
+
+\readerDeuxArguments{containsValue}
+{@binaryset}
+{1.6.4}
+{@bool}
+{@uint inFirstBit}
+{@uint inBitCount}
+{Returns an \nomType{@bool} value indicating whether the receiver'value contains a given value.}
+{returns \motCle{true} if the receiver's contains a value, and \motCle{false} otherwise; this value is computed from the \emph{inBitCount} first bits of \emph{inValue} value, shifted left by \emph{inFirstBit}.}
+
+
+\exempleUneLigne
+{}
+{@binaryset s [binarySetWithPredicateString !\textquotedbl 0 00XX X111\textbar 1 1111 1111\textquotedbl] ;}
+\texttt{log s ; \# Displays <@binaryset:~000XXX111, 111111111>}\\
+\texttt{@bool b := [s containsValue !127L !0 !7] ;}\\
+\texttt{log b ; \# Displays <@bool:true>}\\
+\texttt{b := [s containsValue !31L !1 !7] ;}\\
+\texttt{log b ; \# Displays <@bool:true>}\\
+\texttt{b := [s containsValue !63L !1 !8] ;}\\
+\texttt{log b ; \# Displays <@bool:false>}\\
+\texttt{b := [s containsValue !7L !0 !9] ;}\\
+\texttt{log b ; \# Displays <@bool:true>}\\
+\texttt{b := [s containsValue !7L !0 !10] ;}\\
+\texttt{log b ; \# Displays <@bool:true>}\\
+\texttt{b := [s containsValue !32767L !1 !12] ;}\\
+\texttt{log b ; \# Displays <@bool:true>}\\
+
+
+
+
+
+
+
+
+\readerSansArgument{uint64}
+{@bool}
+{1.9.4}
+{@uint64}
+{Returns the receiver's value in an \lienSectionType{@uint64} (64-bit unsigned integer) object.}
+{returns the \texttt{1L} \nomType{@uint64} value if the receiver?s value is true, and the \texttt{0S} \nomType{@uint64} value otherwise.}
+
+
+
+
+\subsection{Logical Operators}
+
+The \nomType{@bool} type supports the three logical operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$\&$ & And \\
+\hline
+\textbar & Or \\
+\hline
+\^\  & Exclusive or \\
+\hline
+\end{tabular}\newline
+
+Theses operators require both arguments to be \nomType{@bool} objects and return an \nomType{@bool} object.\newline
+
+
+The \nomType{@uint} type supports the logical unary operator:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+\motCle{not} & Complementation \\
+\hline
+\end{tabular}\newline
+
+This operator returns an \nomType{@bool} object.
+
+
+
+
+
+
+
+\subsection{Comparison Operators}
+
+The \nomType{@bool} type supports the six comparison operators:\newline
+
+\begin{tabular}{|c|c|}
+\hline
+$=$ & Equality \\
+\hline
+$!=$ & Non Equality \\
+\hline
+$<$  & Strict Lower Than \\
+\hline
+$<=$  & Lower or Equal \\
+\hline
+$>$  & Strict Greater Than \\
+\hline
+$>=$  & Greater or Equal \\
+\hline
+\end{tabular}\newline
+
+Theses operators require both arguments to be \nomType{@bool} objects, and return a \nomType{@bool} object.
+
+

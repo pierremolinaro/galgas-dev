@@ -41,9 +41,12 @@
   \newline
   \newline
   \textbf{Availability:} available in GALGAS #3 and later.
-  \newline
-  \newline
-  \textbf{Discussion:} #6
+  \ifthenelse{\equal{#6}{}}{
+  }{
+    \newline
+    \newline
+    \textbf{Discussion:} #6
+  }
   \newline
 }
 
@@ -73,9 +76,12 @@
   \newline
   \newline
   \textbf{Availability:} available in GALGAS #3 and later.
-  \newline
-  \newline
-  \textbf{Discussion:} #7
+  \ifthenelse{\equal{#7}{}}{
+  }{
+    \newline
+    \newline
+    \textbf{Discussion:} #7
+  }
   \newline
 }
 
@@ -104,9 +110,12 @@
   \newline
   \newline
   \textbf{Availability:} available in GALGAS #3 and later.
-  \newline
-  \newline
-  \textbf{Discussion:} #8
+  \ifthenelse{\equal{#8}{}}{
+  }{
+    \newline
+    \newline
+    \textbf{Discussion:} #8
+  }
   \newline
 }
 
@@ -132,9 +141,12 @@
   \newline
   \newline
   \textbf{Availability:} available in GALGAS #3 and later.
-  \newline
-  \newline
-  \textbf{Discussion:} #6
+  \ifthenelse{\equal{#6}{}}{
+  }{
+    \newline
+    \newline
+    \textbf{Discussion:} #6
+  }
   \newline
 }
 
@@ -155,9 +167,12 @@
   \newline
   \newline
   \textbf{Availability:} available in GALGAS #3 and later.
-  \newline
-  \newline
-  \textbf{Discussion:} #7
+  \ifthenelse{\equal{#7}{}}{
+  }{
+    \newline
+    \newline
+    \textbf{Discussion:} #7
+  }
   \newline
 }
 
@@ -179,9 +194,40 @@
   \newline
   \newline
   \textbf{Availability:} available in GALGAS #3 and later.
+  \ifthenelse{\equal{#8}{}}{
+  }{
+    \newline
+    \newline
+    \textbf{Discussion:} #8
+  }
+  \newline
+}
+
+%---------------------------------------------------------------------*
+
+%--- Définition d'un constructeur avec 3 arguments
+
+\newcommand \constructeurTroisArguments[9] {
+  \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}
+  #8
   \newline
   \newline
-  \textbf{Discussion:} #8
+  \begin{tabular}{|l}
+  \texttt{\emph{constructor} \nomType{#2} #1}\\
+  \texttt{\ \ ?#5}\\
+  \texttt{\ \ ?#6}\\
+  \texttt{\ \ ?#7}\\
+  \texttt{\ \ -> #4 ;}
+  \end{tabular}
+  \newline
+  \newline
+  \textbf{Availability:} available in GALGAS #3 and later.
+  \ifthenelse{\equal{#9}{}}{
+  }{
+    \newline
+    \newline
+    \textbf{Discussion:} #9
+  }
   \newline
 }
 
@@ -201,9 +247,12 @@
   \newline
   \newline
   \textbf{Availability:} available in GALGAS #3 and later.
-  \newline
-  \newline
-  \textbf{Discussion:} #6
+  \ifthenelse{\equal{#6}{}}{
+  }{
+    \newline
+    \newline
+    \textbf{Discussion:} #6
+  }
   \newline
 }
 
@@ -211,30 +260,45 @@
 
 %--- Exemple un ligne
 
-\newcommand \exempleUneLigne[1] {
-  \textbf{Example:}
-  \texttt{#1}\newline
+\newcommand \exempleUneLigne[2] {
+  \noindent
+  \ifthenelse{\equal{#1}{}}{
+    \textbf{Example:}\newline
+  }{
+    \textbf{Example.} #1\newline
+  }
+  \texttt{#2}\newline
 }
 
 %---------------------------------------------------------------------*
 
 %--- Exemple 2 lignes
 
-\newcommand \exempleDeuxLignes[2] {
-  \textbf{Example:}\newline
-  \texttt{#1}\newline
+\newcommand \exempleDeuxLignes[3] {
+  \noindent
+  \ifthenelse{\equal{#1}{}}{
+    \textbf{Example:}\newline
+  }{
+    \textbf{Example.} #1\newline
+  }
   \texttt{#2}\newline
+  \texttt{#3}\newline
 }
 
 %---------------------------------------------------------------------*
 
 %--- Exemple 3 lignes
 
-\newcommand \exempleTroisLignes[3] {
-  \textbf{Example:}\newline
-  \texttt{#1}\newline
+\newcommand \exempleTroisLignes[4] {
+  \noindent
+  \ifthenelse{\equal{#1}{}}{
+    \textbf{Example:}\newline
+  }{
+    \textbf{Example.} #1\newline
+  }
   \texttt{#2}\newline
   \texttt{#3}\newline
+  \texttt{#4}\newline
 }
 
 %---------------------------------------------------------------------*
