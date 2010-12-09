@@ -30,6 +30,7 @@ Note that the first character of the \emph{inBitString} argument value correspon
 
 
 \exempleDeuxLignes
+{}
 {@uint64 v [uint64BaseValueWithCompressedBitString !"01XX10"] ;}
 {log v ; \# Displays <@uint64:18> ;}
 
@@ -50,6 +51,7 @@ This constructor considers the \emph{inBitString} argument value as a binary enc
 Note that the first '0' or '1' character of the \emph{inBitString} argument value corresponds to the most significant Bit of the converted value.}
 
 \exempleDeuxLignes
+{}
 {@uint64 v [uint64MaskWithCompressedBitString !"01XX10"] ;}
 {log v ; \# Displays <@uint64:51> ;}
 
@@ -68,6 +70,7 @@ This constructor considers the \emph{inBitString} argument value as a binary enc
 Note that the first '1' character of the \emph{inBitString} argument value corresponds to the most significant bit of the converted value.}
 
 \exempleDeuxLignes
+{}
 {@uint64 v [uint64WithBitString !"0101"]] ;}
 {log v ; \# Displays <@uint64:5> ;}
 
@@ -148,6 +151,7 @@ This reader is the only way to convert an \lienSectionType{@uint} object into an
 
 
 \exempleDeuxLignes
+{}
 {@uint64 v := 0x1234\_5678\_9ABC\_DEF0L ;}
 {@uint result := [v uintSlice !4 !5] ; \# The result value is 0x8\_9ABC}
 
