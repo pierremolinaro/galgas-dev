@@ -658,34 +658,174 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 
+\readerTroisArguments{swap132}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inBitCount1}
+{@uint inBitCount2}
+{@uint inBitCount3}
+{Returns the transposed \emph{(x, z, y)} relation.}
+{this reader considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.}
+
+
+
+
+
+
+
+\readerDeuxArguments{swap21}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inBitCount1}
+{@uint inBitCount2}
+{Returns the transposed \emph{(y, x)} relation.}
+{this reader considers that the receiver encodes an \emph{(x, y)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1}.}
+
+
+
+
+
+
+
+\readerTroisArguments{swap213}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inBitCount1}
+{@uint inBitCount2}
+{@uint inBitCount3}
+{Returns the transposed \emph{(y, x, z)} relation.}
+{this reader considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.}
+
+
+
+
+
+
+
+\readerTroisArguments{swap231}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inBitCount1}
+{@uint inBitCount2}
+{@uint inBitCount3}
+{Returns the transposed \emph{(y, z, x)} relation.}
+{this reader considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.}
+
+
+
+
+
+
+
+\readerTroisArguments{swap312}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inBitCount1}
+{@uint inBitCount2}
+{@uint inBitCount3}
+{Returns the transposed \emph{(z, x, y)} relation.}
+{this reader considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.}
+
+
+
+
+
+
+
+\readerTroisArguments{swap321}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inBitCount1}
+{@uint inBitCount2}
+{@uint inBitCount3}
+{Returns the transposed \emph{(z, y, x)} relation.}
+{this reader considers that the receiver encodes an \emph{(x, y, z)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount1  - 1}, \emph{y} is defined by bits index \emph{inBitCount1} to \emph{inBitCount1 + inBitCount2 - 1} and  \emph{z} is defined by bits index \emph{inBitCount1 + inBitCount2} to \emph{inBitCount1 + inBitCount2 + inBitCount3 - 1}.}
+
+
+
+
+
+
+
+
+\readerUnArgument{transitiveClosure}
+{@binaryset}
+{1.6.0}
+{@binaryset}
+{@uint inBitCount}
+{Returns the transitive closure of the relation encoded by the receiver.}
+{this reader considers that the receiver encodes an \emph{(x, y)} relation, where \emph{x} is defined by bits index \emph{0} to \emph{inBitCount  - 1}, \emph{y} is defined by bits index \emph{inBitCount} to \emph{2 * inBitCount - 1}.}
+
+
+
+
+
+
+
+
+\readerUnArgument{uint64ValueList}
+{@binaryset}
+{1.6.0}
+{@uint64list}
+{@uint64 inBitCount}
+{Returns the list of \nomType{@uint64} values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.}
+{}
+
+
+
+
+
+
+
+
+\readerUnArgument{valueCount}
+{@binaryset}
+{1.6.0}
+{@uint64}
+{@uint inBitCount}
+{Returns in an \nomType{@uint64} object the number of different values encoded by receiver, considering it uses \emph{inBitCount} bits.}
+{no overflow test in performed.}
+
+
+
+
+
+
+
 %-------------------------------
 
 \subsection{Logical Operators}
 
-The \nomType{@bool} type supports the three logical operators:\newline
+The \nomType{@binaryset} type supports the three logical operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
-\texttt{$\&$} & And \\
+\texttt{$\&$} & Logical And, intersection \\
 \hline
-\texttt{\textbar} & Or \\
+\texttt{\textbar} & Logical Or, union \\
 \hline
 \texttt{$\wedge$}  & Exclusive or \\
 \hline
 \end{tabular}\newline
 
-Theses operators require both arguments to be \nomType{@bool} objects and return an \nomType{@bool} object.\newline
+Theses operators require both arguments to be \nomType{@binaryset} objects and return an \nomType{@binaryset} object.\newline
 
 
-The \nomType{@uint} type supports the logical unary operator:\newline
+The \nomType{@binaryset} type supports the logical unary operator:\newline
 
 \begin{tabular}{|c|c|}
 \hline
-\motCle{not} & Complementation \\
+$\sim$ & Negation, Complementation \\
 \hline
 \end{tabular}\newline
 
-This operator returns an \nomType{@bool} object.
+This operator returns an \nomType{@binaryset} object.
 
 
 
@@ -695,7 +835,7 @@ This operator returns an \nomType{@bool} object.
 
 \subsection{Comparison Operators}
 
-The \nomType{@bool} type supports the six comparison operators:\newline
+The \nomType{@binaryset} type supports the two comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -703,16 +843,34 @@ $=$ & Equality \\
 \hline
 $!=$ & Non Equality \\
 \hline
-$<$  & Strict Lower Than \\
+\end{tabular}\newline
+
+Theses operators require both arguments to be \nomType{@binaryset} objects, and return a \nomType{@bool} object. These operations are very fast and are performed in a constant time (integer equality comparison).
+
+Do not confuse with \lienReader{@binaryset}{equalTo} and \lienReader{@binaryset}{notEqualTo} that return a  \nomType{@binaryset} object.
+
+
+
+
+
+
+
+\subsection{Shift Operators}
+
+The \nomType{@binaryset} type supports the two shift operators:\newline
+
+\begin{tabular}{|c|c|}
 \hline
-$<=$  & Lower or Equal \\
+$<<$ & Left Shift \\
 \hline
-$>$  & Strict Greater Than \\
-\hline
-$>=$  & Greater or Equal \\
+$>>$ & Right Shift \\
 \hline
 \end{tabular}\newline
 
-Theses operators require both arguments to be \nomType{@bool} objects, and return a \nomType{@bool} object.
-
+\exempleUneLigne
+{}
+{@binaryset b [binarySetWithPredicateString !\textquotedbl 1010\textquotedbl] ;}
+\texttt{log b ; \# displays: <@binaryset:~1010>}\\
+\texttt{@binaryset bb := b $<<$ 3 ;}\\
+\texttt{log bb ; \# displays: <@binaryset:~1010XXX>}\\
 

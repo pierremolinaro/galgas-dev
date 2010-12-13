@@ -123,6 +123,34 @@
 
 %---------------------------------------------------------------------*
 
+%--- Définition d'un reader à 3 arguments
+
+\newcommand \readerTroisArguments[9] {
+  \subsection{\texttt{#1} Reader}\label{reader #2 #1}
+  #8
+  \newline
+  \newline
+  \begin{tabular}{|l}
+  \texttt{\emph{reader} \nomType{#2} #1}\\
+  \texttt{\ \ ?#5}\\
+  \texttt{\ \ ?#6}\\
+  \texttt{\ \ ?#7}\\
+  \texttt{\ \ -> #4 ;}
+  \end{tabular}
+  \newline
+  \newline
+  \textbf{Availability:} available in GALGAS #3 and later.
+  \ifthenelse{\equal{#9}{}}{
+  }{
+    \newline
+    \newline
+    \textbf{Discussion:} #9
+  }
+  \newline
+}
+
+%---------------------------------------------------------------------*
+
 \newcommand \lienConstructeur[2] {\hyperref[constructor #1 #2]{\texttt{#2} constructor (page \pageref{constructor #1 #2})}}
 
 %---------------------------------------------------------------------*
