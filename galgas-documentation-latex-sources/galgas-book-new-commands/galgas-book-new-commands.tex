@@ -31,12 +31,12 @@
 % {this reader raises a run-time error if ...} % Discussion
 
 \newcommand \readerSansArgument[6] {
-  \subsection{\texttt{#1} Reader}\label{reader #2 #1}
+  \subsection{\texttt{#1} Reader}\label{reader #2 #1}\index{#1!"#2 reader}
   #5
   \newline
   \newline
   \begin{tabular}{|l}
-  \texttt{\emph{reader} \nomType{#2} #1 -> #4 ;}
+  \colorbox{yellow}{\texttt{\emph{reader} \nomType{#2} #1 -> #4 ;}}
   \end{tabular}
   \newline
   \newline
@@ -66,14 +66,14 @@
 % {this reader raises a run-time error if ...} % Discussion
 
 \newcommand \readerUnArgument[7] {
-  \subsection{\texttt{#1} Reader}\label{reader #2 #1}
+  \subsection{\texttt{#1} Reader}\label{reader #2 #1}\index{#1!"#2 reader}
   #6
   \newline
   \newline
   \begin{tabular}{|l}
-  \texttt{\emph{reader} \nomType{#2} #1}\\
-  \texttt{\ \ ?#5}\\
-  \texttt{\ \ -> #4 ;}
+  \colorbox{yellow}{\texttt{\emph{reader} \nomType{#2} #1}}\\
+  \colorbox{yellow}{\texttt{\ \ ?#5}}\\
+  \colorbox{yellow}{\texttt{\ \ -> #4 ;}}
   \end{tabular}
   \newline
   \newline
@@ -99,15 +99,15 @@
 % {this reader raises a run-time error if ...} % Discussion
 
 \newcommand \readerDeuxArguments[8] {
-  \subsection{\texttt{#1} Reader}\label{reader #2 #1}
+  \subsection{\texttt{#1} Reader}\label{reader #2 #1}\index{#1!"#2 reader}
   #7
   \newline
   \newline
   \begin{tabular}{|l}
-  \texttt{\emph{reader} \nomType{#2} #1}\\
-  \texttt{\ \ ?#5}\\
-  \texttt{\ \ ?#6}\\
-  \texttt{\ \ -> #4 ;}
+  \colorbox{yellow}{\texttt{\emph{reader} \nomType{#2} #1}}\\
+  \colorbox{yellow}{\texttt{\ \ ?#5}}\\
+  \colorbox{yellow}{\texttt{\ \ ?#6}}\\
+  \colorbox{yellow}{\texttt{\ \ -> #4 ;}}
   \end{tabular}
   \newline
   \newline
@@ -126,16 +126,16 @@
 %--- Définition d'un reader à 3 arguments
 
 \newcommand \readerTroisArguments[9] {
-  \subsection{\texttt{#1} Reader}\label{reader #2 #1}
+  \subsection{\texttt{#1} Reader}\label{reader #2 #1}\index{#1!"#2 reader}
   #8
   \newline
   \newline
   \begin{tabular}{|l}
-  \texttt{\emph{reader} \nomType{#2} #1}\\
-  \texttt{\ \ ?#5}\\
-  \texttt{\ \ ?#6}\\
-  \texttt{\ \ ?#7}\\
-  \texttt{\ \ -> #4 ;}
+  \colorbox{yellow}{\texttt{\emph{reader} \nomType{#2} #1}}\\
+  \colorbox{yellow}{\texttt{\ \ ?#5}}\\
+  \colorbox{yellow}{\texttt{\ \ ?#6}}\\
+  \colorbox{yellow}{\texttt{\ \ ?#7}}\\
+  \colorbox{yellow}{\texttt{\ \ -> #4 ;}}
   \end{tabular}
   \newline
   \newline
@@ -165,12 +165,12 @@
 %{The returned object responds \motCle{true} to the isNowhere reader.} % Discussion
 
 \newcommand \constructeurSansArgument[6] {
-  \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}
+  \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}\index{#1!"#2 constructor}
   #5
   \newline
   \newline
   \begin{tabular}{|l}
-  \texttt{\emph{constructor} \nomType{#2} #1 -> #4 ;}
+  \colorbox{yellow}{\texttt{\emph{constructor} \nomType{#2} #1 -> #4 ;}}
   \end{tabular}
   \newline
   \newline
@@ -189,14 +189,14 @@
 %--- Définition d'un constructeur avec 1 argument
 
 \newcommand \constructeurUnArgument[7] {
-  \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}
+  \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}\index{#1!"#2 constructor}
   #6
   \newline
   \newline
   \begin{tabular}{|l}
-  \texttt{\emph{constructor} \nomType{#2} #1}\\
-  \texttt{\ \ ?#5}\\
-  \texttt{\ \ -> #4 ;}
+  \colorbox{yellow}{\texttt{\emph{constructor} \nomType{#2} #1}}\\
+  \colorbox{yellow}{\texttt{\ \ ?#5}}\\
+  \colorbox{yellow}{\texttt{\ \ -> #4 ;}}
   \end{tabular}
   \newline
   \newline
@@ -215,15 +215,15 @@
 %--- Définition d'un constructeur avec 2 arguments
 
 \newcommand \constructeurDeuxArguments[8] {
-  \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}
+  \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}\index{#1!"#2 constructor}
   #7
   \newline
   \newline
   \begin{tabular}{|l}
-  \texttt{\emph{constructor} \nomType{#2} #1}\\
-  \texttt{\ \ ?#5}\\
-  \texttt{\ \ ?#6}\\
-  \texttt{\ \ -> #4 ;}
+  \colorbox{yellow}{\texttt{\emph{constructor} \nomType{#2} #1}}\\
+  \colorbox{yellow}{\texttt{\ \ ?#5}}\\
+  \colorbox{yellow}{\texttt{\ \ ?#6}}\\
+  \colorbox{yellow}{\texttt{\ \ -> #4 ;}}
   \end{tabular}
   \newline
   \newline
@@ -242,16 +242,16 @@
 %--- Définition d'un constructeur avec 3 arguments
 
 \newcommand \constructeurTroisArguments[9] {
-  \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}
+  \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}\index{#1!"#2 constructor}
   #8
   \newline
   \newline
   \begin{tabular}{|l}
-  \texttt{\emph{constructor} \nomType{#2} #1}\\
-  \texttt{\ \ ?#5}\\
-  \texttt{\ \ ?#6}\\
-  \texttt{\ \ ?#7}\\
-  \texttt{\ \ -> #4 ;}
+  \colorbox{yellow}{\texttt{\emph{constructor} \nomType{#2} #1}}\\
+  \colorbox{yellow}{\texttt{\ \ ?#5}}\\
+  \colorbox{yellow}{\texttt{\ \ ?#6}}\\
+  \colorbox{yellow}{\texttt{\ \ ?#7}}\\
+  \colorbox{yellow}{\texttt{\ \ -> #4 ;}}
   \end{tabular}
   \newline
   \newline
@@ -270,13 +270,13 @@
 %--- Définition d'un modifier à 1 argument
 
 \newcommand \modifierUnArgument[6] {
-  \subsection{\texttt{#1} Modifier}\label{modifier #2 #1}
+  \subsection{\texttt{#1} Modifier}\label{modifier #2 #1}\index{#1!"#2 modifier}
   #5
   \newline
   \newline
   \begin{tabular}{|l}
-  \texttt{\emph{modifier} \nomType{#2} #1}\\
-  \texttt{\ \ ?#4}\\
+  \colorbox{yellow}{\texttt{\emph{modifier} \nomType{#2} #1}}\\
+  \colorbox{yellow}{\texttt{\ \ ?#4}}\\
   \end{tabular}
   \newline
   \newline

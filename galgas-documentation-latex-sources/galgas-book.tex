@@ -1,4 +1,4 @@
-\documentclass [a4paper, 12pt] {book}
+\documentclass [a4paper, 10pt] {book}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
@@ -25,8 +25,11 @@
 %\usepackage{graphics}
 %\usepackage{epsfig}
 %\usepackage{amssymb}
-%\usepackage[french]{babel}
 
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true}
+\hypersetup{linkcolor=blue}
 
 
 %\usepackage{tabularx}
@@ -34,32 +37,54 @@
 %\usepackage{multirow}
 %\usepackage{rotating}
 
-%--- Include my new commands
+%---------------------------------------------------- Include my new commands
 \input{galgas-book-new-commands/galgas-book-new-commands.tex}
 
 
-%\makeindex
+%---------------------------------------------------- Index
+\usepackage{makeidx}
+\makeindex
 
-\usepackage{hyperref}
-\hypersetup{colorlinks=true}
-\hypersetup{linkcolor=blue}
-%\hypersetup{linkbordercolor={1 0 0}}
+%---------------------------------------------------- Paquetage "tocbibind"
+%    Pour faire figurer la liste des tableaux (et la table des matières)
+%    dans la table des matières
+\usepackage{tocbibind}
+
+%---------------------------------------------------- Begin document
+\setcounter{tocdepth}{3}
+\begin{document} 
+
+%---------------------------------------------------- Title page
 
 \title{\Huge{\textbf{GALGAS Book}}\\ \normalsize{Version GALGAS-CURRENT-VERSION}}
 \author{Pierre Molinaro}
 \date \today 
 
-\setcounter{tocdepth}{3}
-\begin{document} 
-
 \maketitle
+
+%---------------------------------------------------- Table of contents
 
 \tableofcontents
  
+%---------------------------------------------------- Table list
+\listoftables
+\addtocontents{lot}{\protect\thispagestyle{empty}\protect\pagestyle{empty}}
 
+%---------------------------------------------------- Figure list
+\listoffigures
+\addtocontents{lof}{\protect\thispagestyle{empty}\protect\pagestyle{empty}}
+
+%---------------------------------------------------- Chapters
 \input{chapter-predefined-types/predefined-types.tex}
 
-%\printindex
+%---------------------------------------------------- Index
+%\cleardoublepage % Pour commencer à une page impaire
 
+%--- Écrire l'index
+{\small
+\printindex
+}
+
+%---------------------------------------------------- End
 
 \end{document}

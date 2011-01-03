@@ -203,7 +203,7 @@ $/$ & Division \\
 \hline
 $\%$ & Modulo \\
 \hline
-\end{tabular}\newline
+\end{tabular}
 
 Theses operators require both arguments to be \nomType{@uint64} objects.\newline
 
@@ -215,7 +215,7 @@ The \nomType{@uint64} type supports the following arithmetic unary operator:\new
 \hline
 $+$ & No operation \\
 \hline
-\end{tabular}\newline
+\end{tabular}
 
 This operator returns the receiver's value (an  \nomType{@uint64} object).
 
@@ -233,7 +233,7 @@ $<<$ & Left shift \\
 \hline
 $>>$ & Right shift \\
 \hline
-\end{tabular}\newline
+\end{tabular}
 
 Theses operators require the left argument to be \nomType{@uint64} object, and  the right argument to be \nomType{@uint} object.\newline
 
@@ -246,7 +246,7 @@ The actual amount of the shift is the value of the right-hand operand masked by 
 
 \subsection{Logical Operators}
 
-The \nomType{@uint64} type supports the three bit-wise logical diadic operators:\newline
+The \nomType{@uint64} type supports the three bit-wise logical diadic operators:
 
 \begin{tabular}{|c|c|}
 \hline
@@ -256,28 +256,27 @@ $\&$ & Bit-wise and \\
 \hline
 \^\  & Bit-wise exclusive or \\
 \hline
-\end{tabular}\newline
+\end{tabular}
 
-Theses operators require both arguments to be \nomType{@uint64} objects.\newline
+Theses operators require both arguments to be \nomType{@uint64} objects.\\newline
 
 
-The \nomType{@uint64} type supports the bit-wise logical unary operator:\newline
+The \nomType{@uint64} type supports the bit-wise logical unary operator:
 
 \begin{tabular}{|c|c|}
-\hline
-$\sim$ & Bit-wise complementation \\
-\hline
-\end{tabular}\newline
+  \hline
+  $\sim$ & Bit-wise complementation \\
+  \hline
+\end{tabular}
 
 This operator returns an \nomType{@uint64} object.
 
 
 
 
-
 \subsection{Comparison Operators}
 
-The \nomType{@uint64} type supports the six comparison operators:\newline
+The \nomType{@uint64} type supports the six comparison operators:
 
 \begin{tabular}{|c|c|}
 \hline
@@ -293,7 +292,7 @@ $>$  & Strict Greater Than \\
 \hline
 $>=$  & Greater or Equal \\
 \hline
-\end{tabular}\newline
+\end{tabular}
 
 Theses operators require both arguments to be \nomType{@uint64} objects, and return a \nomType{@bool} object.
 
