@@ -18,6 +18,10 @@
  <body>
   <div style="font: Verdana; font-size:small;">
    <p><strong>GALGAS ChangeLog</strong></p>
+   <p>2.1.5</p>
+   <ul>
+     <li>indexing is now invoked with <code>cmd</code> key (instead of the <code>alt</code> key);</li>
+   </ul>
    <p>2.1.4</p>
    <ul>
      <li>Fixed bug: self and selfcopy invocation in category reader;</li>
@@ -509,7 +513,7 @@
     <li>New <span class="api">@string</span> constructor: <a href="http://galgas.rts-software.org/doku.php?id=string_type#stringwithcurrentdatetime"><span class="api">stringWithCurrentDateTime</span></a> that returns a string containing the current date time;</li>
     <li>From now, all <span class="api">@string</span> are available for <span class="api">@lstring</span> objects;</li>
     <li>From now, concatenation operator '.' concats an <span class="api">@string</span> object with an <span class="api">@lstring</span> object, returning an <span class="api">@string</span> object;</li>
-    <li>Fixed a bug on <span class="api">count</span> reader of <span class="api">@stringset</span> type: it was badly declared in <span class="api">GGS_stringset</span> C++ class (LIBPM revision <a href="http://libpm.rts-software.org/trac/changeset/265">265</a>);</li>
+    <li>Fixed a bug on <span class="api">count</span> reader of <span class="api">@stringset</span> type: it was badly declared in <span class="api">GGS_stringset</span> C++ class (LIBPM revision 265);</li>
    </ul>
    <p>1.5.0</p>
    <ul>

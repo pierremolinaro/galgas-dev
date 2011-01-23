@@ -4,6 +4,11 @@
 %                                                                     *
 %---------------------------------------------------------------------*
 
+%--- Couleur de fond des définitions
+\newcommand \couleurFondAPI {yellow!50}
+
+%---------------------------------------------------------------------*
+
 %--- Mot clef
 \newcommand \motCle[1] {\texttt{\textbf{#1}}}
 
@@ -35,9 +40,11 @@
   #5
   \newline
   \newline
-  \begin{tabular}{|l}
-  \colorbox{yellow}{\texttt{\emph{reader} \nomType{#2} #1 -> #4 ;}}
-  \end{tabular}
+  \colorbox{\couleurFondAPI}{
+    \begin{tabular}{l}
+    \texttt{\textbf{reader} \nomType{#2} #1 -> #4 ;}
+    \end{tabular}
+  }
   \newline
   \newline
   \textbf{Availability:} available in GALGAS #3 and later.
@@ -52,7 +59,7 @@
 
 %---------------------------------------------------------------------*
 
-\newcommand \lienReader[2] {\hyperref[reader #1 #2]{\texttt{#2} reader (page \pageref{reader #1 #2})}}
+\newcommand \lienReader[2] {\hyperref[reader #1 #2]{#2 reader (page \pageref{reader #1 #2})}}
 
 %---------------------------------------------------------------------*
 
@@ -70,11 +77,13 @@
   #6
   \newline
   \newline
-  \begin{tabular}{|l}
-  \colorbox{yellow}{\texttt{\emph{reader} \nomType{#2} #1}}\\
-  \colorbox{yellow}{\texttt{\ \ ?#5}}\\
-  \colorbox{yellow}{\texttt{\ \ -> #4 ;}}
-  \end{tabular}
+  \colorbox{\couleurFondAPI}{
+    \begin{tabular}{l}
+    \texttt{\textbf{reader} \nomType{#2} #1}\\
+    \texttt{\ \ ?#5}\\
+    \texttt{\ \ -> #4 ;}
+    \end{tabular}
+  }
   \newline
   \newline
   \textbf{Availability:} available in GALGAS #3 and later.
@@ -103,12 +112,14 @@
   #7
   \newline
   \newline
-  \begin{tabular}{|l}
-  \colorbox{yellow}{\texttt{\emph{reader} \nomType{#2} #1}}\\
-  \colorbox{yellow}{\texttt{\ \ ?#5}}\\
-  \colorbox{yellow}{\texttt{\ \ ?#6}}\\
-  \colorbox{yellow}{\texttt{\ \ -> #4 ;}}
-  \end{tabular}
+  \colorbox{\couleurFondAPI}{
+    \begin{tabular}{l}
+    \texttt{\textbf{reader} \nomType{#2} #1}\\
+    \texttt{\ \ ?#5}\\
+    \texttt{\ \ ?#6}\\
+    \texttt{\ \ -> #4 ;}
+    \end{tabular}
+  }
   \newline
   \newline
   \textbf{Availability:} available in GALGAS #3 and later.
@@ -130,13 +141,15 @@
   #8
   \newline
   \newline
-  \begin{tabular}{|l}
-  \colorbox{yellow}{\texttt{\emph{reader} \nomType{#2} #1}}\\
-  \colorbox{yellow}{\texttt{\ \ ?#5}}\\
-  \colorbox{yellow}{\texttt{\ \ ?#6}}\\
-  \colorbox{yellow}{\texttt{\ \ ?#7}}\\
-  \colorbox{yellow}{\texttt{\ \ -> #4 ;}}
-  \end{tabular}
+  \colorbox{\couleurFondAPI}{
+    \begin{tabular}{l}
+    \texttt{\emph{reader} \nomType{#2} #1}\\
+    \texttt{\ \ ?#5}\\
+    \texttt{\ \ ?#6}\\
+    \texttt{\ \ ?#7}\\
+    \texttt{\ \ -> #4 ;}
+    \end{tabular}
+  }
   \newline
   \newline
   \textbf{Availability:} available in GALGAS #3 and later.
@@ -151,7 +164,7 @@
 
 %---------------------------------------------------------------------*
 
-\newcommand \lienConstructeur[2] {\hyperref[constructor #1 #2]{\texttt{#2} constructor (page \pageref{constructor #1 #2})}}
+\newcommand \lienConstructeur[2] {\hyperref[constructor #1 #2]{#2 constructor (page \pageref{constructor #1 #2})}}
 
 %---------------------------------------------------------------------*
 
@@ -169,9 +182,11 @@
   #5
   \newline
   \newline
-  \begin{tabular}{|l}
-  \colorbox{yellow}{\texttt{\emph{constructor} \nomType{#2} #1 -> #4 ;}}
-  \end{tabular}
+  \colorbox{\couleurFondAPI}{
+    \begin{tabular}{l}
+    \texttt{\textbf{constructor} \nomType{#2} #1 -> #4 ;}
+    \end{tabular}
+  }
   \newline
   \newline
   \textbf{Availability:} available in GALGAS #3 and later.
@@ -193,11 +208,13 @@
   #6
   \newline
   \newline
-  \begin{tabular}{|l}
-  \colorbox{yellow}{\texttt{\emph{constructor} \nomType{#2} #1}}\\
-  \colorbox{yellow}{\texttt{\ \ ?#5}}\\
-  \colorbox{yellow}{\texttt{\ \ -> #4 ;}}
-  \end{tabular}
+  \colorbox{\couleurFondAPI}{
+    \begin{tabular}{l}
+    \texttt{\textbf{constructor} \nomType{#2} #1}\\
+    \texttt{\ \ ?#5}\\
+    \texttt{\ \ -> #4 ;}
+    \end{tabular}
+  }
   \newline
   \newline
   \textbf{Availability:} available in GALGAS #3 and later.
@@ -219,12 +236,14 @@
   #7
   \newline
   \newline
-  \begin{tabular}{|l}
-  \colorbox{yellow}{\texttt{\emph{constructor} \nomType{#2} #1}}\\
-  \colorbox{yellow}{\texttt{\ \ ?#5}}\\
-  \colorbox{yellow}{\texttt{\ \ ?#6}}\\
-  \colorbox{yellow}{\texttt{\ \ -> #4 ;}}
-  \end{tabular}
+  \colorbox{\couleurFondAPI}{
+    \begin{tabular}{l}
+    \texttt{\textbf{constructor} \nomType{#2} #1}\\
+    \texttt{\ \ ?#5}\\
+    \texttt{\ \ ?#6}\\
+    \texttt{\ \ -> #4 ;}
+    \end{tabular}
+  }
   \newline
   \newline
   \textbf{Availability:} available in GALGAS #3 and later.
@@ -246,13 +265,15 @@
   #8
   \newline
   \newline
-  \begin{tabular}{|l}
-  \colorbox{yellow}{\texttt{\emph{constructor} \nomType{#2} #1}}\\
-  \colorbox{yellow}{\texttt{\ \ ?#5}}\\
-  \colorbox{yellow}{\texttt{\ \ ?#6}}\\
-  \colorbox{yellow}{\texttt{\ \ ?#7}}\\
-  \colorbox{yellow}{\texttt{\ \ -> #4 ;}}
-  \end{tabular}
+  \colorbox{\couleurFondAPI}{
+    \begin{tabular}{l}
+    \texttt{\textbf{constructor} \nomType{#2} #1}\\
+    \texttt{\ \ ?#5}\\
+    \texttt{\ \ ?#6}\\
+    \texttt{\ \ ?#7}\\
+    \texttt{\ \ -> #4 ;}
+    \end{tabular}
+  }
   \newline
   \newline
   \textbf{Availability:} available in GALGAS #3 and later.
@@ -274,10 +295,12 @@
   #5
   \newline
   \newline
-  \begin{tabular}{|l}
-  \colorbox{yellow}{\texttt{\emph{modifier} \nomType{#2} #1}}\\
-  \colorbox{yellow}{\texttt{\ \ ?#4}}\\
-  \end{tabular}
+  \colorbox{\couleurFondAPI}{
+    \begin{tabular}{l}
+    \texttt{\textbf{modifier} \nomType{#2} #1}\\
+    \texttt{\ \ ?#4}\\
+    \end{tabular}
+  }
   \newline
   \newline
   \textbf{Availability:} available in GALGAS #3 and later.

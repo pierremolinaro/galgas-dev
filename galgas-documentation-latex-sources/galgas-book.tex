@@ -1,83 +1,294 @@
 \documentclass [a4paper, 10pt] {book}
-\usepackage{fancyhdr}
-\pagestyle{fancy}
 
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   E N C O D A G E    D E S    S O U R C E S     :     L A T I N 1                                                     *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+%--- Paquetage pour le codage des sources en ISO-Latin1
+\usepackage[latin1]{inputenc}
+
+%--- Latex demande ce paquetage pour mieux afficher le caractère "°" et \textquotesingle "'"
+\usepackage{textcomp}
+
+%--- Ce paquetage permet d'effectuer certaines césures, et ainsi d'éviter les messages "Overfull \hbox"
 \usepackage[T1]{fontenc}
 
-%--- Pour avoir l'apostrophe droite
-% \textquotesingle -> '
-\usepackage{textcomp}
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   M I S E    E N    P A G E S                                                                                         *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+% Voir "Une courte introduction à Latex2e", § 6.4
+
+%--- Marge gauche : 2,8 cm ; le paramètre \hoffset contient cette valeur, moins 1 pouce
+%    \hoffset = 2,8 cm - 2,54 cm = 0,26 cm
+\setlength{\hoffset}{0.26 cm}
+
+%--- Marges supplémentaires, différenciées pour les pages gauches et droites ; ici, aucune.
+\setlength{\oddsidemargin }{0 cm}
+\setlength{\evensidemargin}{0 cm}
+
+%--- Largeur du texte
+%    \textwidth = 210 mm - 28 mm - 28 mm = 15,4 cm
+\setlength{\textwidth}{15.4 cm}
+
+%--- Marge haute : 2,8 cm ; le paramètre \voffset contient cette valeur, moins 1 pouce
+%    \voffset = 2,8 cm - 2,54 cm = 0,26 cm
+\setlength{\voffset}{0.26 cm}
+
+%--- Distance entre la marge haute et l'en-tête : 0 cm
+\setlength{\topmargin}{0 cm}
+
+%--- Hauteur de l'en-tête de chaque page : 1 cm
+\setlength{\headheight}{1 cm}
+
+%--- Distance entre l'en-tête de chaque page et le corps : 0,5 cm
+\setlength{\headsep}{0.5 cm}
+
+%--- Hauteur du corps
+%    \textheight = 29,7 cm - 2,8 cm - 2,8 cm - 1,5 cm = 22,6 cm
+\setlength{\textheight}{22.6 cm}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   C H O I X    D E    L A    P O L I C E                                                                              *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+% http://www.cuk.ch/articles/4237
+% Un seul des choix suivants doit être validé ; si aucun, c'est la police par défaut qui est utilisée
+
+%---------------------------------------------------- Pour utiliser la police "Times"
+%\renewcommand{\rmdefault}{ptm}
+%\usepackage{mathptmx}
+
+%---------------------------------------------------- Pour utiliser la police "Palatino"
+%\renewcommand{\rmdefault}{ppl}
+%\usepackage{mathpazo}
+
+%---------------------------------------------------- Pour utiliser la police "Bookman"
+%\usepackage{bookman}
+
+%---------------------------------------------------- Pour utiliser la police "Fourier"
+\usepackage{fouriernc}
+\usepackage[scaled=0.875]{helvet}
+\usepackage{courier}
+
+%---------------------------------------------------- Pour utiliser la police "Beton, euler"
+%\usepackage{beton, euler}
+
+%---------------------------------------------------- Pour utiliser la police "Utopia - MathDesign"
+%\usepackage[utopia]{mathdesign}
+
+%---------------------------------------------------- Pour utiliser la police "Charter - MathDesign"
+%\usepackage[charter]{mathdesign}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   G E S T I O N   D E    L A     C O U L E U R                                                                        *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+%--- Ce paquetage permet de définir des couleurs de la forme yellow!50 (jaune à 50 %)
+\usepackage{xcolor}
+
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   E X T E N S I O N S    P O U R    L ' É C R I T U R E    D E S     F O R M U L E S    M A T H É M A T I Q U E S     *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+%--- Extensions pour l'écriture des formules mathématiques
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+
+%--- Paquetage "IEEEtrantools"
+% Pour créer des tableaux d'équations, bien alignées
+% Voir courte-intro-latex.pdf, page §3.5.2 page 83
+\usepackage[retainorgcmds]{IEEEtrantools}
+
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   P A Q U E T A G E    « I F T H E N »                                                                                *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+%--- Ce paquetage permet d'effectuer des tests : \ifthenelse{test}{bloc then}{bloc else}
+\usepackage{ifthen}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   P A Q U E T A G E    « L O N G T A B L E »                                                                          *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
 
 %--- Pour afficher correctement des tables sur plusieurs pages
 \usepackage{longtable}
 
-%--- Pour utiliser des commandes conditionnelles
-\usepackage{ifthen}
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   E N - T Ê T E S    E T    P I E D S    D E    P A G E S                                                             *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
 
-%\setcounter{secnumdepth}{3}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
 
-
-%\setlength{\textwidth     }{15cm}
-
-%\usepackage{picinpar}
-%\usepackage[latin1]{inputenc}
-%\usepackage{amsmath}
-%\usepackage{graphics}
-%\usepackage{epsfig}
-%\usepackage{amssymb}
-
-
-\usepackage{hyperref}
-\hypersetup{colorlinks=true}
-\hypersetup{linkcolor=blue}
-
-
-%\usepackage{tabularx}
-%\usepackage{url}
-%\usepackage{multirow}
-%\usepackage{rotating}
 
 %---------------------------------------------------- Include my new commands
 \input{galgas-book-new-commands/galgas-book-new-commands.tex}
 
 
-%---------------------------------------------------- Index
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   G E S T I O N    D E    L ' I N D E X                                                                               *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+% http://www.cuk.ch/articles/4097
+% http://www.tuteurs.ens.fr/logiciels/latex/makeindex.html
+% http://linux.die.net/man/1/makeindex
+%
+% Attention ! Les deux commandes suivantes, ainsi que le \printindex placé plus bas ne
+% sont pas suffisants pour construire l'index : il faut utiliser l'utilitaire "makeIndex"
+% Voir le fichier de commande "build.command"
 \usepackage{makeidx}
 \makeindex
 
-%---------------------------------------------------- Paquetage "tocbibind"
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   T O C B I D I N D                                                                                                   *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
 %    Pour faire figurer la liste des tableaux (et la table des matières)
 %    dans la table des matières
 \usepackage{tocbibind}
 
-%---------------------------------------------------- Begin document
 \setcounter{tocdepth}{3}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   H Y P E R R E F                                                                                                     *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+%--- Pour les hyperliens, et le contrôle de la génération PDF 
+\usepackage{hyperref}
+\hypersetup{colorlinks=true}
+\hypersetup{linkcolor=blue}
+
+\hypersetup{breaklinks=true}
+%\hypersetup{verbose=true}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   S H O W K E Y S    ( P O U R    D É B O G U E R )                                                                   *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+%\usepackage{showkeys}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   T I T L E T O C                                                                                                     *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+%--- Description dans le paquetage titlesec
+% http://forum.mathematex.net/latex-f6/formatage-avance-de-la-table-des-matieres-t11559.html
+
+\usepackage{titletoc}
+
+
+%--- Par défaut dans la tables des matières, le numéro de sous-section est trop long et mange le début du titre
+%\titlecontents{subsection}[2.5cm]{}{\hspace*{-5.0em}\hyperref[subsection \thecontentslabel]{\thecontentslabel}\hspace*{0.5em}}{}{\titlerule*[0.66pc]{.}\contentspage}{}
+\titlecontents{subsection}[2.5cm]{}{\hspace*{-5.0em}\thecontentslabel\hspace*{0.5em}}{}{\titlerule*[0.66pc]{.}\contentspage}{}
+
+%\titlecontents{subsection}
+%  [2cm]% retrait gauche
+%  {}% pour les entrées numérotées et non numérotées
+%  {\hspace*{-3.0em}\makebox[2.5em]{\hspace*{0pt plus 1 fill minus 1fill}\thecontentslabel.}\hspace*{0.5em}}% pour les entrées numérotées uniquement
+%  {}% pour les entrées non numérotées uniquement
+%  {\titlerule*[0.66em]{.}\contentspage}% numéro de page
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   D P R O G R E S S                                                                                                   *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+%--- Affiche les sections dans le log
+\usepackage{dprogress}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   D É B U T    D U    D O C U M E N T                                                                                 *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+
 \begin{document} 
 
-%---------------------------------------------------- Title page
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   P A G E    D E    T I T R E                                                                                         *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
 
-\title{\Huge{\textbf{GALGAS Book}}\\ \normalsize{Version GALGAS-CURRENT-VERSION}}
+\title{\Huge{\textbf{GALGAS Book}}\\~\\ \normalsize{For release GALGAS-CURRENT-VERSION}}
 \author{Pierre Molinaro}
 \date \today 
 
 \maketitle
 
-%---------------------------------------------------- Table of contents
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   T A B L E    D E S    M A T I È R E S                                                                               *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
 
 \tableofcontents
  
-%---------------------------------------------------- Table list
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   L I S T E    D E S    T A B L E A U X                                                                               *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
 \listoftables
 \addtocontents{lot}{\protect\thispagestyle{empty}\protect\pagestyle{empty}}
 
-%---------------------------------------------------- Figure list
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   L I S T E    D E S    F I G U R E S                                                                                 *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
 \listoffigures
 \addtocontents{lof}{\protect\thispagestyle{empty}\protect\pagestyle{empty}}
 
-%---------------------------------------------------- Chapters
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   L E S    C H A P I T R E S                                                                                          *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
 \input{chapter-predefined-types/predefined-types.tex}
 
-%---------------------------------------------------- Index
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   I N D E X                                                                                                           *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
 %\cleardoublepage % Pour commencer à une page impaire
 
 %--- Écrire l'index
@@ -85,6 +296,10 @@
 \printindex
 }
 
-%---------------------------------------------------- End
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   F I N    D U    D O C U M E N T                                                                                     *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
 
 \end{document}
