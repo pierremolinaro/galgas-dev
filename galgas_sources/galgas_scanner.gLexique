@@ -669,8 +669,4 @@ end rule ;
 rule '\u0001' -> ' ' :
 end rule ;
 
-# --------------------- Indexing
-#indexing classDefinition : "Class definition" ;
-#indexing superClassReference : "Superclass reference" ;
-
 end lexique ;
