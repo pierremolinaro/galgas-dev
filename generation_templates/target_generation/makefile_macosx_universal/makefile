@@ -28,13 +28,13 @@ INSTALL_DIR := /usr/local/bin
 #---------------------------------------------------------------------------*
 
 all:
-	$(MAKE) -C ../makefile-macosx-ppc $(EXECUTABLE)
-	$(MAKE) -C ../makefile-macosx-intel $(EXECUTABLE)
-	lipo -create ../makefile-macosx-ppc/$(EXECUTABLE) ../makefile-macosx-intel/$(EXECUTABLE) -output $(EXECUTABLE)
+	$(MAKE) -C ../makefile_macosx_ppc $(EXECUTABLE)
+	$(MAKE) -C ../makefile_macosx_intel $(EXECUTABLE)
+	lipo -create ../makefile_macosx_ppc/$(EXECUTABLE) ../makefile_macosx_intel/$(EXECUTABLE) -output $(EXECUTABLE)
 	lipo -info $(EXECUTABLE)
-	$(MAKE) -C ../makefile-macosx-ppc $(EXECUTABLE_DEBUG)
-	$(MAKE) -C ../makefile-macosx-intel $(EXECUTABLE_DEBUG)
-	lipo -create ../makefile-macosx-ppc/$(EXECUTABLE_DEBUG) ../makefile-macosx-intel/$(EXECUTABLE_DEBUG) -output $(EXECUTABLE_DEBUG)
+	$(MAKE) -C ../makefile_macosx_ppc $(EXECUTABLE_DEBUG)
+	$(MAKE) -C ../makefile_macosx_intel $(EXECUTABLE_DEBUG)
+	lipo -create ../makefile_macosx_ppc/$(EXECUTABLE_DEBUG) ../makefile_macosx_intel/$(EXECUTABLE_DEBUG) -output $(EXECUTABLE_DEBUG)
 	lipo -info $(EXECUTABLE_DEBUG)
 
 #---------------------------------------------------------------------------*
