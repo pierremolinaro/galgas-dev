@@ -28,13 +28,13 @@ INSTALL_DIR := /usr/local/bin
 #---------------------------------------------------------------------------*
 
 all:
-	$(MAKE) -C ../makefile-macosx-ppc   -f makefile64 $(EXECUTABLE)
-	$(MAKE) -C ../makefile-macosx-intel -f makefile64 $(EXECUTABLE)
-	lipo -create ../makefile-macosx-ppc/$(EXECUTABLE) ../makefile-macosx-intel/$(EXECUTABLE) -output $(EXECUTABLE)
+	$(MAKE) -C ../makefile_macosx_ppc   -f makefile64 $(EXECUTABLE)
+	$(MAKE) -C ../makefile_macosx_intel -f makefile64 $(EXECUTABLE)
+	lipo -create ../makefile_macosx_ppc/$(EXECUTABLE) ../makefile_macosx_intel/$(EXECUTABLE) -output $(EXECUTABLE)
 	lipo -info $(EXECUTABLE)
-	$(MAKE) -C ../makefile-macosx-ppc   -f makefile64 $(EXECUTABLE_DEBUG)
-	$(MAKE) -C ../makefile-macosx-intel -f makefile64 $(EXECUTABLE_DEBUG)
-	lipo -create ../makefile-macosx-ppc/$(EXECUTABLE_DEBUG) ../makefile-macosx-intel/$(EXECUTABLE_DEBUG) -output $(EXECUTABLE_DEBUG)
+	$(MAKE) -C ../makefile_macosx_ppc   -f makefile64 $(EXECUTABLE_DEBUG)
+	$(MAKE) -C ../makefile_macosx_intel -f makefile64 $(EXECUTABLE_DEBUG)
+	lipo -create ../makefile_macosx_ppc/$(EXECUTABLE_DEBUG) ../makefile_macosx_intel/$(EXECUTABLE_DEBUG) -output $(EXECUTABLE_DEBUG)
 	lipo -info $(EXECUTABLE_DEBUG)
 
 #---------------------------------------------------------------------------*
@@ -49,8 +49,8 @@ clean:
 #---------------------------------------------------------------------------*
 
 $(EXECUTABLE_DEBUG):
-	../makefile-macosx-ppc/$(EXECUTABLE_DEBUG) | ../makefile-macosx-intel/$(EXECUTABLE_DEBUG)
-	lipo -create ../makefile-macosx-ppc/$(EXECUTABLE_DEBUG) ../makefile-macosx-intel/$(EXECUTABLE_DEBUG) -output $(EXECUTABLE_DEBUG)
+	../makefile_macosx_ppc/$(EXECUTABLE_DEBUG) | ../makefile_macosx_intel/$(EXECUTABLE_DEBUG)
+	lipo -create ../makefile_macosx_ppc/$(EXECUTABLE_DEBUG) ../makefile_macosx_intel/$(EXECUTABLE_DEBUG) -output $(EXECUTABLE_DEBUG)
 	lipo -info $(EXECUTABLE_DEBUG)
 
 #---------------------------------------------------------------------------*
