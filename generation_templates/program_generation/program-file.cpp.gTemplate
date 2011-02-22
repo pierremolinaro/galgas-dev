@@ -41,6 +41,17 @@ static C_BoolCommandLineOption gOption_performIndexing ("galgas_cli_options",
 %
 end if
 %
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//                      print_tool_help_message                              *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+void print_tool_help_message (void) {
+  co << "GALGAS archive revision NUMERO_REVISION_GALGAS\\n" ;
+}
+
 //---------------------------------------------------------------------------*
 //                                                                           *
 //                      M A I N    F O R    L I B P M                        *
