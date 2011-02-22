@@ -81,6 +81,8 @@ local routine generateMakefileMacOSXTarget
   [[filewrapper targetGenerationFileWrapper."makefile_macosx/clean.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean.command" ?*] ;
   [[filewrapper targetGenerationFileWrapper."makefile_macosx/build64.command"] writeToExecutableFileWhenDifferentContents !dir ."/build64.command" ?*] ;
   [[filewrapper targetGenerationFileWrapper."makefile_macosx/clean64.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean64.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile_macosx/install.command"] writeToExecutableFileWhenDifferentContents !dir ."/install.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile_macosx/install64.command"] writeToExecutableFileWhenDifferentContents !dir ."/install64.command" ?*] ;
   [[filewrapper targetGenerationFileWrapper.makefile_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
   [[filewrapper targetGenerationFileWrapper.makefile_macosx_makefile64 !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile64" ?*] ;
 end routine ;
@@ -94,8 +96,10 @@ local routine generateMakefileIntelMacOSXTarget
   const @string dir := inProjectDirectory . "/makefile_macosx_intel" ;
   [dir makeDirectory] ;
   [[filewrapper targetGenerationFileWrapper."makefile_macosx_intel/build.command"] writeToExecutableFileWhenDifferentContents !dir ."/build.command" ?*] ;
-  [[filewrapper targetGenerationFileWrapper."makefile_macosx_intel/clean.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean.command" ?*] ;
   [[filewrapper targetGenerationFileWrapper."makefile_macosx_intel/build64.command"] writeToExecutableFileWhenDifferentContents !dir ."/build64.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile_macosx_intel/install.command"] writeToExecutableFileWhenDifferentContents !dir ."/install.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile_macosx_intel/install64.command"] writeToExecutableFileWhenDifferentContents !dir ."/install64.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile_macosx_intel/clean.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean.command" ?*] ;
   [[filewrapper targetGenerationFileWrapper."makefile_macosx_intel/clean64.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean64.command" ?*] ;
   [[filewrapper targetGenerationFileWrapper.makefile_macosx_intel_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
   [[filewrapper targetGenerationFileWrapper.makefile_macosx_intel_makefile64 !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile64" ?*] ;
@@ -113,6 +117,8 @@ local routine generateMakefilePPCMacOSXTarget
   [[filewrapper targetGenerationFileWrapper."makefile_macosx_ppc/clean.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean.command" ?*] ;
   [[filewrapper targetGenerationFileWrapper."makefile_macosx_ppc/build64.command"] writeToExecutableFileWhenDifferentContents !dir ."/build64.command" ?*] ;
   [[filewrapper targetGenerationFileWrapper."makefile_macosx_ppc/clean64.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean64.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile_macosx_ppc/install.command"] writeToExecutableFileWhenDifferentContents !dir ."/install.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile_macosx_ppc/install64.command"] writeToExecutableFileWhenDifferentContents !dir ."/install64.command" ?*] ;
   [[filewrapper targetGenerationFileWrapper.makefile_macosx_ppc_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
   [[filewrapper targetGenerationFileWrapper.makefile_macosx_ppc_makefile64 !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile64" ?*] ;
 end routine ;
@@ -142,8 +148,10 @@ local routine generateMakefileUnixTarget
   const @string dir := inProjectDirectory . "/makefile_unix" ;
   [dir makeDirectory] ;
   [[filewrapper targetGenerationFileWrapper."makefile_unix/build.command"] writeToExecutableFileWhenDifferentContents !dir ."/build.command" ?*] ;
-  [[filewrapper targetGenerationFileWrapper."makefile_unix/clean.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean.command" ?*] ;
   [[filewrapper targetGenerationFileWrapper."makefile_unix/build64.command"] writeToExecutableFileWhenDifferentContents !dir ."/build64.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile_unix/install.command"] writeToExecutableFileWhenDifferentContents !dir ."/install.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile_unix/install64.command"] writeToExecutableFileWhenDifferentContents !dir ."/install64.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile_unix/clean.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean.command" ?*] ;
   [[filewrapper targetGenerationFileWrapper."makefile_unix/clean64.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean64.command" ?*] ;
   [[filewrapper targetGenerationFileWrapper.makefile_unix_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
   [[filewrapper targetGenerationFileWrapper.makefile_unix_makefile64 !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile64" ?*] ;
