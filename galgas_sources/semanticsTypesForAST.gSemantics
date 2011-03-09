@@ -140,7 +140,23 @@ class @optionExpressionAST extends @semanticExpressionAST {
 
 #---------------------------------------------------------------------------*
 
-class @concatExpressionAST extends @semanticExpressionAST {
+class @concatExpressionAST,
+      @orExpressionAST,
+      @xorExpressionAST,
+      @andExpressionAST,
+      @equalExpressionAST,
+      @notEqualExpressionAST,
+      @lowerOrEqualExpressionAST,
+      @greaterOrEqualExpressionAST,
+      @strictGreaterExpressionAST,
+      @strictLowerExpressionAST,
+      @rightShiftExpressionAST,
+      @leftShiftExpressionAST,
+      @addExpressionAST,
+      @subExpressionAST,
+      @multiplicationExpressionAST,
+      @divisionExpressionAST,
+      @moduloExpressionAST extends @semanticExpressionAST {
   @location mOperatorLocation ;
   @semanticExpressionAST mLeftExpression ;
   @semanticExpressionAST mRightExpression ;
@@ -148,149 +164,9 @@ class @concatExpressionAST extends @semanticExpressionAST {
 
 #---------------------------------------------------------------------------*
 
-class @orExpressionAST extends @semanticExpressionAST {
-  @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @xorExpressionAST extends @semanticExpressionAST {
-  @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @andExpressionAST extends @semanticExpressionAST {
-  @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @equalExpressionAST extends @semanticExpressionAST {
-  @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @notEqualExpressionAST extends @semanticExpressionAST {
-  @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @lowerOrEqualExpressionAST extends @semanticExpressionAST {
-  @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @greaterOrEqualExpressionAST extends @semanticExpressionAST {
-  @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @strictGreaterExpressionAST extends @semanticExpressionAST {
-  @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @strictLowerExpressionAST extends @semanticExpressionAST {
-  @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @rightShiftExpressionAST extends @semanticExpressionAST {
-  @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @leftShiftExpressionAST extends @semanticExpressionAST {
-  @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @addExpressionAST extends @semanticExpressionAST {
-  @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @subExpressionAST extends @semanticExpressionAST {
-  @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @multiplicationExpressionAST extends @semanticExpressionAST {
-  @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @divisionExpressionAST extends @semanticExpressionAST {
-  @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @moduloExpressionAST extends @semanticExpressionAST {
-  @location mOperatorLocation ;
-  @semanticExpressionAST mLeftExpression ;
-  @semanticExpressionAST mRightExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @unaryMinusExpressionAST extends @semanticExpressionAST {
-  @location mOperatorLocation ;
-  @semanticExpressionAST mExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @notExpressionAST extends @semanticExpressionAST {
-  @location mOperatorLocation ;
-  @semanticExpressionAST mExpression ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @complementExpressionAST extends @semanticExpressionAST {
+class @unaryMinusExpressionAST,
+      @notExpressionAST,
+      @complementExpressionAST extends @semanticExpressionAST {
   @location mOperatorLocation ;
   @semanticExpressionAST mExpression ;
 }

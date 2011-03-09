@@ -433,54 +433,58 @@ rule <semantic_declaration>
     mIsAbstract := true ;
   end select ;
   $class$ ;
-  $type_name$ ?@lstring mClassTypeName indexing classDefinition ;
+  @lstringlist classNameList [emptyList] ;
+  repeat
+    $type_name$ ?@lstring className indexing classDefinition ;
+    classNameList += !className ;
+  while
+    $,$ ;
+  end repeat ;
+  @lstring mSuperClassName ; # Empty if no super class
   select
-    $;$ ;
+    mSuperClassName := ["" nowhere] ;
   or
-    @lstring mSuperClassName ; # Empty if no super class
-    select
-      mSuperClassName := ["" nowhere] ;
-    or
-      $extends$ ;
-      $type_name$ ? mSuperClassName indexing classReferencedAsSuperClass ;
-    end select ;
-    @lstringlist classFeatureList [emptyList] ;
-    select
-    or
-      $feature$ ;
-      repeat
-        $identifier$ ? @lstring classFeatureName ;
-        classFeatureList += !classFeatureName ;
-      while
-        $,$ ;
-      end repeat ;
-    end select ;
-    ${$ ;
-    @string mClassMessage := "" ;
-  #--- Class properties
-    @attributeInCollectionListAST mAttributeList [emptyList] ;
-    @abstractMethodDefinitionListAST mAbstractMethodList [emptyList] ;
-    @methodDefinitionListAST mMethodList [emptyList] ;
+    $extends$ ;
+    $type_name$ ? mSuperClassName indexing classReferencedAsSuperClass ;
+  end select ;
+  @lstringlist classFeatureList [emptyList] ;
+  select
+  or
+    $feature$ ;
     repeat
+      $identifier$ ? @lstring classFeatureName ;
+      classFeatureList += !classFeatureName ;
     while
-      <attribute_declaration> !? mAttributeList ;
-    while
-      <class_abstract_method_declaration> !? mAbstractMethodList ;
-    while
-      <class_method_declaration> !? mMethodList ;
+      $,$ ;
     end repeat ;
-    $}$ ;
+  end select ;
+  ${$ ;
+  @string mClassMessage := "" ;
+#--- Class properties
+  @attributeInCollectionListAST mAttributeList [emptyList] ;
+  @abstractMethodDefinitionListAST mAbstractMethodList [emptyList] ;
+  @methodDefinitionListAST mMethodList [emptyList] ;
+  repeat
+  while
+    <attribute_declaration> !? mAttributeList ;
+  while
+    <class_abstract_method_declaration> !? mAbstractMethodList ;
+  while
+    <class_method_declaration> !? mMethodList ;
+  end repeat ;
+  $}$ ;
+  foreach classNameList do
     ioSemanticDeclarations += ![@classDeclarationAST new
       !true # Is global
       !mIsAbstract
-      !mClassTypeName
+      !mValue
       !mSuperClassName # Empty if no super class
       !classFeatureList
       !mAttributeList
       !mAbstractMethodList
       !mMethodList
     ] ;
-  end select ;
+  end foreach ;
 end rule ;
 
 
