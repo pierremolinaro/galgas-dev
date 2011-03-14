@@ -23,7 +23,6 @@ local filewrapper targetGenerationFileWrapper in "../generation_templates/target
   template makefile_macosx_makefile64 "makefile_macosx/makefile64" ?@string PROJECT_NAME ;
 
   template makefile_unix_makefile "makefile_unix/makefile" ?@string PROJECT_NAME ;
-  template makefile_unix_makefile64 "makefile_unix/makefile64" ?@string PROJECT_NAME ;
 
   template makefile_i386_linux_on_macosx_makefile "makefile_i386_linux_on_macosx/makefile" ?@string PROJECT_NAME ;
 
@@ -148,13 +147,9 @@ local routine generateMakefileUnixTarget
   const @string dir := inProjectDirectory . "/makefile_unix" ;
   [dir makeDirectory] ;
   [[filewrapper targetGenerationFileWrapper."makefile_unix/build.command"] writeToExecutableFileWhenDifferentContents !dir ."/build.command" ?*] ;
-  [[filewrapper targetGenerationFileWrapper."makefile_unix/build64.command"] writeToExecutableFileWhenDifferentContents !dir ."/build64.command" ?*] ;
   [[filewrapper targetGenerationFileWrapper."makefile_unix/install.command"] writeToExecutableFileWhenDifferentContents !dir ."/install.command" ?*] ;
-  [[filewrapper targetGenerationFileWrapper."makefile_unix/install64.command"] writeToExecutableFileWhenDifferentContents !dir ."/install64.command" ?*] ;
   [[filewrapper targetGenerationFileWrapper."makefile_unix/clean.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean.command" ?*] ;
-  [[filewrapper targetGenerationFileWrapper."makefile_unix/clean64.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean64.command" ?*] ;
   [[filewrapper targetGenerationFileWrapper.makefile_unix_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
-  [[filewrapper targetGenerationFileWrapper.makefile_unix_makefile64 !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile64" ?*] ;
 end routine ;
 
 #---------------------------------------------------------------------------*

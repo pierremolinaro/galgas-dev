@@ -1,6 +1,8 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    MAKEFILE for building "%!PROJECT_NAME%" 32-bit command line tools for Unix     *
+#    MAKEFILE for building "%!PROJECT_NAME%" command line tools for Unix    *
+#                                                                           *
+# 32-bit build on a 32-bit system, 64-bit build on a 64-bit system          *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -52,7 +54,7 @@ include ../galgas_sources/GALGAS_OUTPUT/file_list.mke
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-include $(LIBPM_PATH)/included_makefiles/unix_gcc_tools_32.mke
+include $(LIBPM_PATH)/included_makefiles/unix_gcc_tools.mke
 
 #---------------------------------------------------------------------------*
 #                                                                           *

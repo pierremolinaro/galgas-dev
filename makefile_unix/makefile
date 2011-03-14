@@ -52,7 +52,7 @@ include ../galgas_sources/GALGAS_OUTPUT/file_list.mke
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-include $(LIBPM_PATH)/included_makefiles/unix_gcc_tools_32.mke
+include $(LIBPM_PATH)/included_makefiles/unix_gcc_tools.mke
 
 #---------------------------------------------------------------------------*
 #                                                                           *
