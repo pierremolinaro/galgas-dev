@@ -2,12 +2,10 @@ syntax %!PROJECT_NAME%_syntax ("%!PROJECT_NAME%_lexique.gLexique") :
 import "%!PROJECT_NAME%_options.gOption" ;
 import "%!PROJECT_NAME%_semantics.gSemantics" ;
 
-# ADD YOUR CODE HERE
-
-nonterminal <start_symbol> ;
-
 rule <start_symbol> :
 # ADD YOUR CODE HERE
 end rule ;
+
+# ADD YOUR CODE HERE
 
 end syntax ;
