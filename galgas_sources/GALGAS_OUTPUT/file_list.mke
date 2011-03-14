@@ -1,8 +1,8 @@
 #---------------------------------------------------------------*
 
-#--- Lib PM directory
+#--- LIBPM directory
 ifndef LIBPM_PATH
-  $(info *** the LIBPM_PATH environment variable is not defined)
+  $(error *** the LIBPM_PATH environment variable is not defined)
 endif
 
 #---------------------------------------------------------------*
