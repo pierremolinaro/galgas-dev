@@ -46,7 +46,7 @@ PLATFORM_LINKER_OPTIONS :=
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-include ../galgas_sources/GALGAS_OUTPUT/file_list.mke
+include ../galgas_sources/GALGAS_OUTPUT/file_list.mak
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -54,7 +54,7 @@ include ../galgas_sources/GALGAS_OUTPUT/file_list.mke
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-include $(LIBPM_PATH)/included_makefiles/unix_gcc_tools.mke
+include $(LIBPM_PATH)/included_makefiles/unix_gcc_tools.mak
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -62,6 +62,6 @@ include $(LIBPM_PATH)/included_makefiles/unix_gcc_tools.mke
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-include $(LIBPM_PATH)/included_makefiles/generic_makefile.mke
+include $(LIBPM_PATH)/included_makefiles/generic_makefile.mak
 
 #---------------------------------------------------------------------------*
