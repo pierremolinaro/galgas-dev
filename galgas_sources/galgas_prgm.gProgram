@@ -412,7 +412,29 @@ indexing with projectLL1grammar
       ;
     end foreach ;
   end if ;
+  buildProject !inSourceFile->string ;
 }
+
+#---------------------------------------------------------------------------*
+
+routine buildProject ??@string inSourceFilePath :
+  const @string buildOption := [option galgas_cli_options.buildOption value] ;
+  if ([@uint errorCount] == 0) & (buildOption != "") then
+    @stringlist buildList := [buildOption componentsSeparatedByString !","] ;
+    foreach buildList do
+      message "*** Compiling C++ '" . mValue . "' project'\n" ;
+      const @string commandFileFullPath :=
+        [[inSourceFilePath stringByDeletingLastPathComponent] stringByDeletingLastPathComponent]
+         . "/" . mValue . "/build.command" ;
+      if [commandFileFullPath fileExists] then
+        @sint result := [commandFileFullPath system] ;
+      else
+        error [@location nowhere] : "cannot compile '" 
+        . mValue . "' project : the '" . commandFileFullPath . "' file does not exist" ;
+      end if ;
+    end foreach ;
+  end if ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 

@@ -32,6 +32,8 @@ local filewrapper targetGenerationFileWrapper in "../generation_templates/target
 
   template makefile_info_plist "project_xcode/Info.plist" ?@string PROJECT_NAME ;
 
+  template makefile_build_xcode "project_xcode/build.command" ;
+
   template makefile_info_plist_strings "project_xcode/English.lproj/InfoPlist.strings" ?@string PROJECT_NAME ;
 
   template makefile_file_list "makefile-file-list.gTemplate"
@@ -352,7 +354,11 @@ routine updateTargets
     [[filewrapper targetGenerationFileWrapper."project_xcode/adding-icons-to-your-application.rtf"] writeToFileWhenDifferentContents !icon_help_file_path ?*] ;
 
     if not [dir ."/Info.plist" fileExists] then
-    [[filewrapper targetGenerationFileWrapper.makefile_info_plist !inTargetName] writeToFile !dir ."/Info.plist"] ;
+      [[filewrapper targetGenerationFileWrapper.makefile_info_plist !inTargetName] writeToFile !dir ."/Info.plist"] ;
+    end if ;
+
+    if not [dir ."/build.command" fileExists] then
+      [[filewrapper targetGenerationFileWrapper.makefile_build_xcode] writeToExecutableFile !dir ."/build.command"] ;
     end if ;
 
     [dir . "/English.lproj" makeDirectory] ;
