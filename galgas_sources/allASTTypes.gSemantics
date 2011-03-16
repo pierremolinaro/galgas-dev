@@ -57,20 +57,20 @@ map @parsedSemanticsComponentMap {
 
 #---------------------------------------------------------------------------*
 
-map @parsedSyntaxComponentMap {
-  @lstring mSourceFullFilePath ;
-  @syntaxComponentAST mSyntaxComponentRoot ;
-  insert insertKey error message "the '%K' syntax component has already been parsed" ;
-  search searchKey error message "the '%K' syntax component is not parsed" ;
-}
-
-#---------------------------------------------------------------------------*
-
 map @parsedGrammarComponentMap {
   @lstring mSourceFullFilePath ;
   @grammarComponentAST mGrammarComponentRoot ;
   insert insertKey error message "the '%K' grammar component has already been parsed" ;
   search searchKey error message "the '%K' grammar component is not parsed" ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @parsedSyntaxComponentMap {
+  @lstring mSourceFullFilePath ;
+  @syntaxComponentAST mSyntaxComponentRoot ;
+  insert insertKey error message "the '%K' syntax component has already been parsed" ;
+  search searchKey error message "the '%K' syntax component is not parsed" ;
 }
 
 #---------------------------------------------------------------------------*
