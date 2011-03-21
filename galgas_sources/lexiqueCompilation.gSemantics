@@ -827,9 +827,16 @@ routine compileLexiqueComponentFromAST
     end foreach ;
     [!?lexiqueAnalysisContext->mTerminalMap insertKey !mName !argumentTypeList] ;
     @bool isEndOfTemplateMark := false ;
+    @bool atomicSelection := true ;
     foreach mOptionList do
-      if [mValue string] != "templateEndMark" then
-        error mValue:"only the 'templateEndMark' feature is allowed here" ;
+      if [mValue string] == "nonAtomicSelection" then
+        if atomicSelection then
+          atomicSelection := false ;
+        else
+          error mValue: "the 'nonAtomicSelection' feature is already set" ;
+        end if ;
+      elsif [mValue string] != "templateEndMark" then
+        error mValue:"only the 'templateEndMark' and 'nonAtomicSelection' features are allowed here" ;
       elsif isEndOfTemplateMark then
         error mValue:"the 'templateEndMark' feature is already set" ;
       else
@@ -841,6 +848,7 @@ routine compileLexiqueComponentFromAST
       !argumentTypeList
       ![mSyntaxErrorMessage string]
       !isEndOfTemplateMark
+      !atomicSelection
       !terminalStyleIndex
     ;
   end foreach ;
@@ -860,9 +868,16 @@ routine compileLexiqueComponentFromAST
     foreach mEntryList do
       @string syntaxErrorMessage := [[mSyntaxErrorMessage string] stringByReplacingStringByString !"%K" ![mTerminalSpelling string]] ;
       @bool isEndOfTemplateMark := false ;
+      @bool atomicSelection := true ;
       foreach mFeatureList do
-        if [mValue string] != "templateEndMark" then
-          error mValue:"only the 'templateEndMark' feature is allowed here" ;
+        if [mValue string] == "nonAtomicSelection" then
+          if atomicSelection then
+            atomicSelection := false ;
+          else
+            error mValue: "the 'nonAtomicSelection' feature is already set" ;
+          end if ;
+        elsif [mValue string] != "templateEndMark" then
+          error mValue:"only the 'templateEndMark' and 'nonAtomicSelection' features are allowed here" ;
         elsif isEndOfTemplateMark then
           error mValue:"the 'templateEndMark' feature is already set" ;
         else
@@ -874,6 +889,7 @@ routine compileLexiqueComponentFromAST
         !argumentTypeList
         !syntaxErrorMessage
         !isEndOfTemplateMark
+        !atomicSelection
         !terminalStyleIndex
       ;
       [!?lexiqueAnalysisContext->mTerminalMap insertKey !mTerminalSpelling !argumentTypeList] ;

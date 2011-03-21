@@ -343,8 +343,10 @@ routine updateTargets
     !handCodedSourceList
     !generatedFileListForMakefile
   ] ;
-  @string fileListPath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list.mak" ;
+  const @string fileListPath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list.mak" ;
   [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
+  const @string previousFileListPath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list.mke" ;
+  [@string deleteFileIfExists !previousFileListPath] ;
 #---------------------- update Xcode project
   if [generationFeatures hasKey !"project_xcode"] then
     const @string dir := projectDirectory . "/project_xcode";
