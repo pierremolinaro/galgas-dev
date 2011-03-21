@@ -143,6 +143,7 @@ list @terminalList {
   @lexicalSentValueList mSentAttributeList ;
   @string mSyntaxErrorMessage ;
   @bool mIsEndOfTemplateMark ;
+  @bool mAtomicSelection ; # True if atomic selection in source editor
   @uint mStyleIndex ; # 0 if default style
 }
 

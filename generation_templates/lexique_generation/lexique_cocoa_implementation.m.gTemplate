@@ -255,6 +255,20 @@ end foreach%\n  } ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
+//    A T O M I C    S E L E C T I O N   F O R    T E R M I N A L            *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (BOOL) atomicSelectionForToken: (NSUInteger) inTokenIndex {
+  static const BOOL kTerminalAtomicSelection [%![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] + 1 string]%] = {NO%
+foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList] do
+  %,\n    %![mAtomicSelection ocString]% /* %!LEXIQUE_CLASS_NAME%_1_%![[mTerminalName string] identifierRepresentation]% */%
+end foreach%\n  } ;
+  return kTerminalAtomicSelection [inTokenIndex] ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
 //             S T Y L E   N A M E    F O R    I N D E X                     *
 //                                                                           *
 //---------------------------------------------------------------------------*

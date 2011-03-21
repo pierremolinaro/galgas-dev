@@ -16,6 +16,9 @@
 - (NSArray *) indexingTitles ; // Array of NSString
 
 - (BOOL) isTemplateLexique ;
+
+- (BOOL) atomicSelectionForToken: (NSUInteger) inTokenIndex ;
+
 @end
 
 //---------------------------------------------------------------------------*
