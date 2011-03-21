@@ -25,7 +25,7 @@ option galgas_cli_options :
   @bool generateCheckValidInstructions: '\0', "generate-instructions-for-checking-validity" -> "Generate instructions for Checking object validity (reserved for GALGAS development)" ;
   @string generatePredefinedTypes: '\0', "generate-predefined-types" -> "Generate C++ files of predefined types (reserved for GALGAS development)" ;
   @bool noDeprecatedWarning: '\0', "no-deprecated-warning" -> "Do not warn on a deprecated construct" ;
-  @string buildOption: '\0', "build" -> "After a successful GALGAS compilation of a project file, build executable using 'makefile_<string>' build command" ;
+  @string buildOption: '\0', "build" -> "After a successful GALGAS compilation of a project file, build executable(s) using build command of 'string' directory" ;
 end option ;
 
 #---------------------------------------------------------------------------*
