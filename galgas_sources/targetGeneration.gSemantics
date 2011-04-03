@@ -26,6 +26,8 @@ local filewrapper targetGenerationFileWrapper in "../generation_templates/target
 
   template makefile_i386_linux_on_macosx_makefile "makefile_i386_linux_on_macosx/makefile" ?@string PROJECT_NAME ;
 
+  template makefile_x86_64_linux_on_macosx_makefile "makefile_x86_64_linux_on_macosx/makefile" ?@string PROJECT_NAME ;
+
   template makefile_mingw_on_macosx_makefile "makefile_mingw_on_macosx/makefile" ?@string PROJECT_NAME ;
 
   template makefile_msys_on_win32_makefile "makefile_msys_on_win32/makefile" ?@string PROJECT_NAME ;
@@ -169,6 +171,19 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+local routine generateX86_64LinuxOnMacOSXTarget
+  ??@string inProjectDirectory
+  ??@string inProjectName
+:
+  const @string dir := inProjectDirectory . "/makefile_x86_64_linux_on_macosx" ;
+  [dir makeDirectory] ;
+  [[filewrapper targetGenerationFileWrapper."makefile_x86_64_linux_on_macosx/build.command"] writeToExecutableFileWhenDifferentContents !dir ."/build.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper."makefile_x86_64_linux_on_macosx/clean.command"] writeToExecutableFileWhenDifferentContents !dir ."/clean.command" ?*] ;
+  [[filewrapper targetGenerationFileWrapper.makefile_x86_64_linux_on_macosx_makefile !inProjectName] writeToFileWhenDifferentContents !dir ."/makefile" ?*] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine updateTargets
   ??@lstring inProjectSourceFilePath
   ??@lstring inProjectName
@@ -260,6 +275,7 @@ routine updateTargets
   availableGenerationFeatures += !"makefile_macosx" ;
   availableGenerationFeatures += !"makefile_unix" ;
   availableGenerationFeatures += !"makefile_i386_linux_on_macosx" ;
+  availableGenerationFeatures += !"makefile_x86_64_linux_on_macosx" ;
   availableGenerationFeatures += !"makefile_mingw_on_macosx" ;
   availableGenerationFeatures += !"makefile_msys_on_win32" ;
   availableGenerationFeatures += !"project_xcode" ;
@@ -330,6 +346,9 @@ routine updateTargets
   end if ;
   if [generationFeatures hasKey !"makefile_i386_linux_on_macosx"] then
     generateI386LinuxOnMacOSXTarget !projectDirectory !inTargetName ;
+  end if ;
+  if [generationFeatures hasKey !"makefile_x86_64_linux_on_macosx"] then
+    generateX86_64LinuxOnMacOSXTarget !projectDirectory !inTargetName ;
   end if ;
   if [generationFeatures hasKey !"makefile_mingw_on_macosx"] then
     generateMinGWOnMacOSXTarget !projectDirectory !inTargetName ;
