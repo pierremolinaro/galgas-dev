@@ -122,7 +122,23 @@ do
 end foreach
 %
 //---------------------------------------------------------------------------*
-//  Map automaton actions                                                     *
+//  Map automaton state names                                                *
+//---------------------------------------------------------------------------*
+
+%
+foreach MAP_AUTOMATON_STATE_MAP
+before
+  %static const char * kMapStateNames_%!TYPE_IDENTIFIER% [%![[MAP_AUTOMATON_STATE_MAP count] string]%] = {\n%
+do
+  %  %![lkey utf8Representation]
+between
+  %,\n%
+after
+  %\n} ;\n%
+end foreach
+%
+//---------------------------------------------------------------------------*
+//  Map automaton actions                                                    *
 //---------------------------------------------------------------------------*
 
 %
@@ -131,6 +147,22 @@ before
   %static const PMUInt32 kMapActionCount_%!TYPE_IDENTIFIER% = %![[MAP_AUTOMATON_ACTION_MAP count] string]% ;\n%
 do
   %static const PMUInt32 kMapAction_%!TYPE_IDENTIFIER%_%![lkey identifierRepresentation]% = %![mActionIndex string]% ;\n%
+end foreach
+%
+//---------------------------------------------------------------------------*
+//  Map automaton action names                                               *
+//---------------------------------------------------------------------------*
+
+%
+foreach MAP_AUTOMATON_ACTION_MAP
+before
+  %static const char * kMapActionNames_%!TYPE_IDENTIFIER% [%![[MAP_AUTOMATON_ACTION_MAP count] string]%] = {\n%
+do
+  %  %![lkey utf8Representation]
+between
+  %,\n%
+after
+  %\n} ;\n%
 end foreach
 %
 //---------------------------------------------------------------------------*
@@ -332,6 +364,8 @@ foreach SEARCH_METHOD_LIST do
       !^%kMapAction_%!TYPE_IDENTIFIER%_%![mActionName identifierRepresentation]%,\n%
       !^%kMapTransitions_%!TYPE_IDENTIFIER%,\n%
       !^%kMapActionCount_%!TYPE_IDENTIFIER%,\n%
+      !^%kMapStateNames_%!TYPE_IDENTIFIER%,\n%
+      !^%kMapActionNames_%!TYPE_IDENTIFIER%,\n%
       !^%#ifndef DO_NOT_GENERATE_CHECKINGS\n%
       !^%  kMapStateCount_%!TYPE_IDENTIFIER%,\n%
       !^%#endif\n%

@@ -2,7 +2,7 @@
 #                                                                           *
 #  Compile all galgas sources                                               *
 #                                                                           *
-#  Copyright (C) 1997, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 1997, ..., 2011 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -22,7 +22,7 @@ project all_galgas -> "galgas" :
   feature "makefile_macosx" ;
   feature "makefile_unix" ;
   feature "makefile_i386_linux_on_macosx" ;
-  feature "makefile_x86_64_linux_on_macosx" ;
+#  feature "makefile_x86_64_linux_on_macosx" ;
   feature "makefile_mingw_on_macosx" ;
   feature "makefile_msys_on_win32" ;
 
