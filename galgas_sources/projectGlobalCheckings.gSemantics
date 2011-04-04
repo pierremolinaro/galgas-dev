@@ -257,7 +257,7 @@ routine checkCategoryMethodDefinitionForClass
     end foreach ;
     if not found then
       @bool isConcrete ;
-      [inUnifiedTypeMap searchKey !descendantClassName ?isConcrete ?19*] ;
+      [inUnifiedTypeMap searchKey !descendantClassName ?isConcrete ?20*] ;
       if not isConcrete then # Does not work in GALGAS 1, mType is an undefined mapindex type
 #      if not [mType mIsConcrete] then # Does not work in GALGAS 1, mType is an undefined mapindex type
         checkCategoryMethodDefinitionForClass
@@ -297,7 +297,7 @@ routine checkCategoryReaderDefinitionForClass
     end foreach ;
     if not found then
       @bool isConcrete ;
-      [inUnifiedTypeMap searchKey !descendantClassName ?isConcrete ?19*] ;
+      [inUnifiedTypeMap searchKey !descendantClassName ?isConcrete ?20*] ;
       if not isConcrete then # Does not work in GALGAS 1, mType is an undefined mapindex type
 #      if not [mType mIsConcrete] then # Does not work in GALGAS 1, mType is an undefined mapindex type
         checkCategoryReaderDefinitionForClass

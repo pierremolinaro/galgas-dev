@@ -50,7 +50,7 @@ buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalS
   mOriginalGrammarSymbolsCount = 0 ;
 //--- Append terminal symbols
   mTerminalSymbolsCount = (PMSInt32) inTerminalSymbolMap.count () ;
-  cEnumerator_terminalSymbolsMapForGrammarAnalysis t (inTerminalSymbolMap, true) ;
+  cEnumerator_terminalSymbolsMapForGrammarAnalysis t (inTerminalSymbolMap, kEnumeration_up) ;
   while (t.hasCurrentObject ()) {
     mStringsArray.addObject ("") ;  
     t.gotoNextObject () ;
@@ -66,7 +66,7 @@ buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalS
   mStringsArray.addObject ("") ; // Empty string symbol
   mTerminalSymbolsCount ++ ;
 //--- Append non terminal symbols from original grammar
-  cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, true) ;
+  cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, kEnumeration_up) ;
   while (nonTerminal.hasCurrentObject ()) {
     mStringsArray.addObject (nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ()) ;  
     nonTerminal.gotoNextObject () ;

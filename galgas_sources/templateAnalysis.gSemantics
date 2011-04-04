@@ -1255,7 +1255,7 @@ override method @templateClassToTypeOperandAST  templateExpressionAnalysis
   !@semanticExpressionForGeneration outExpression
 :
 #--- Get constructor map from type map
-  [inAnalysisContext->mSemanticContext->mTypeMap searchKey !mTypeName ?20*] ;
+  [inAnalysisContext->mSemanticContext->mTypeMap searchKey !mTypeName ?21*] ;
 #---
   outExpression := [@literalTypeInExpressionForGeneration new
     ![@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap ![@lstring new !"type" !here]]

@@ -484,7 +484,8 @@ override method @predefinedTypeAST enterInSemanticContext
   @unifiedTypeMapProxyList addAssignArgumentList ;
   [t getAddAssignArgumentList !?ioSemanticContext->mTypeMap ?addAssignArgumentList] ;
   @enumerationDescriptorList enumerationList ;
-  [t getEnumerationList !?ioSemanticContext->mTypeMap ?enumerationList] ;
+  @stringlist enumerationVariants ;
+  [t getEnumerationList !?ioSemanticContext->mTypeMap ?enumerationList ?enumerationVariants] ;
   @unifiedTypeMapProxy selfTypeProxy ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mPredefinedTypeName ?selfTypeProxy] ;
   [!?ioSemanticContext->mTypeMap insertKey
@@ -501,6 +502,7 @@ override method @predefinedTypeAST enterInSemanticContext
     !instanceMethodMap
     !classMethodMap
     !enumerationList
+    !enumerationVariants
     ![t getSupportedOperatorFlags]
     !addAssignArgumentList
     ![@stringset emptySet]
@@ -531,36 +533,16 @@ override method @mapDeclarationAST enterInSemanticContext
 #--- current map type index
   @unifiedTypeMapProxy currentMapTypeIndex ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mMapTypeName string] ?currentMapTypeIndex] ;
+#--- Enumeration description
+  @enumerationDescriptorList enumerationDescriptor [listWithValue !lstringTypeIndex !"lkey"] ;
+  @stringlist enumerationVariants [emptyList] ;
+  enumerationVariants += !"up" ;
+  enumerationVariants += !"down" ;
 #---
   @constructorMap constructorMap [emptyMap] ;
   @readerMap readerMap [emptyMap] ;
   @modifierMap modifierMap [emptyMap] ;
   @instanceMethodMap instanceMethodMap [emptyMap] ;
-  @enumerationDescriptorList enumerationDescriptor [listWithValue !lstringTypeIndex !"lkey"] ;
-##--- modifier 'insertFakeKey'
-#  @unifiedTypeMapProxy locationTypeIndex ;
-#  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"location" ?locationTypeIndex] ;
-#  @formalParameterSignature insertFakeKeyFormalArgumentList [emptyList] ;
-#  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Key
-#  insertFakeKeyFormalArgumentList += !locationTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Error location
-#  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Error Message
-#  [!?modifierMap insertKey
-#    ![@lstring new !"insertFakeKey" !here]
-#    !insertFakeKeyFormalArgumentList
-#    !true
-#    ![@methodQualifier isInherited]
-#    !""
-#  ] ;
-##--- modifier 'insertSilentFakeKey'
-#  insertFakeKeyFormalArgumentList := [@formalParameterSignature emptyList] ;
-#  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Key
-#  [!?modifierMap insertKey
-#    ![@lstring new !"insertSilentFakeKey" !here]
-#    !insertFakeKeyFormalArgumentList
-#    !true
-#    ![@methodQualifier isInherited]
-#    !""
-#  ] ;
 #--- Constructors
   enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"emptyMap" ![mMapTypeName string] !false ;
   enterConstructorWithArgument !?constructorMap !?ioSemanticContext->mTypeMap !"mapWithMapToOverride" ![mMapTypeName string] ![mMapTypeName string] !false ;
@@ -695,6 +677,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
+    !enumerationVariants
     !doNotGenererateObjectCompare []
     ![@unifiedTypeMapProxyList emptyList]
     ![@stringset emptySet]
@@ -725,12 +708,16 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
 #--- current map type index
   @unifiedTypeMapProxy currentMapTypeIndex ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mMapTypeName string] ?currentMapTypeIndex] ;
+#--- Enumeration description
+  @enumerationDescriptorList enumerationDescriptor [listWithValue !lstringTypeIndex !"lkey"] ;
+  @stringlist enumerationVariants [emptyList] ;
+  enumerationVariants += !"up" ;
+  enumerationVariants += !"down" ;
 #---
   @constructorMap constructorMap [emptyMap] ;
   @readerMap readerMap [emptyMap] ;
   @modifierMap modifierMap [emptyMap] ;
   @instanceMethodMap instanceMethodMap [emptyMap] ;
-  @enumerationDescriptorList enumerationDescriptor [listWithValue !lstringTypeIndex !"lkey"] ;
 #--- Constructors
   enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"emptyMap" ![mMapTypeName string] !false ;
 #--- Readers
@@ -896,6 +883,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
+    !enumerationVariants
     !doNotGenererateObjectCompare []
     ![@unifiedTypeMapProxyList emptyList]
     ![@stringset emptySet]
@@ -925,7 +913,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ?typeKindEnum
     ?2*
     ?mapTypedAttributeList
-    ?10*
+    ?11*
     ?searchMethodList
     ?3*
   ] ;
@@ -1021,6 +1009,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !instanceMethodMap
     !classMethodMap
     ![@enumerationDescriptorList emptyList]
+    ![@stringlist emptyList]
     !doNotGenererateObjectCompare []
     ![@unifiedTypeMapProxyList emptyList]
     ![@stringset emptySet]
@@ -1157,6 +1146,7 @@ override method @graphDeclarationAST enterInSemanticContext
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
+    ![@stringlist emptyList]
     !doNotGenererateObjectCompare []
     ![@unifiedTypeMapProxyList emptyList]
     ![@stringset emptySet]
@@ -1211,6 +1201,7 @@ override method @enumDeclarationAST enterInSemanticContext
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
+    ![@stringlist emptyList]
     !generateDescriptionReaderUtilityMethod [] | isComparable []
     ![@unifiedTypeMapProxyList emptyList]
     !constantSet
@@ -1460,6 +1451,9 @@ override method @listDeclarationAST enterInSemanticContext
     ![@methodQualifier isBasic]
     !""
   ] ;
+  @stringlist enumerationVariants [emptyList] ;
+  enumerationVariants += !"up" ;
+  enumerationVariants += !"down" ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mListTypeName
@@ -1475,6 +1469,7 @@ override method @listDeclarationAST enterInSemanticContext
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
+    !enumerationVariants
     !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator []
     !constructorAttributeTypeList
     ![@stringset emptySet]
@@ -1562,6 +1557,10 @@ override method @sortedListDeclarationAST enterInSemanticContext
     ![@methodQualifier isBasic]
     !"" # No error message
   ] ;
+#--- Enumeration variants
+  @stringlist enumerationVariants [emptyList] ;
+  enumerationVariants += !"up" ;
+  enumerationVariants += !"down" ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mSortedListTypeName
@@ -1577,6 +1576,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     !enumerationDescriptor
+    !enumerationVariants
     !binaryConcatOperator [] | doNotGenererateObjectCompare [] | dotAssignOperator []
     !constructorAttributeTypeList
     ![@stringset emptySet]
@@ -1653,6 +1653,7 @@ override method @structDeclarationAST enterInSemanticContext
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
+    ![@stringlist emptyList]
     !generateDescriptionReaderUtilityMethod []
     ![@unifiedTypeMapProxyList emptyList]
     ![@stringset emptySet]
@@ -1710,7 +1711,7 @@ override method @classDeclarationAST enterInSemanticContext
       ?inheritedReaderMap
       ?inheritedModifierMap
       ?inheritedInstanceMethodMap
-      ?9*
+      ?10*
       ?generateHeaderInSeparateFile
     ] ;
   #---
@@ -1934,6 +1935,7 @@ override method @classDeclarationAST enterInSemanticContext
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
+    ![@stringlist emptyList]
     !0
     ![@unifiedTypeMapProxyList emptyList]
     ![@stringset emptySet]
@@ -2014,7 +2016,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     ?2*
     ?typeKindEnum
     ?listTypedAttributeList
-    ?16*
+    ?17*
   ] ;
   if typeKindEnum != [@typeKindEnum listType] then
     error mAssociatedListTypeName : "the '@" . mAssociatedListTypeName . "' type should be a list type" ;
@@ -2051,6 +2053,10 @@ override method @listmapDeclarationAST enterInSemanticContext
   foreach listTypedAttributeList do
     addAssignOperatorDescription += !mAttributeTypeProxy ;
   end foreach ;
+#--- Enumeration variants
+  @stringlist enumerationVariants [emptyList] ;
+  enumerationVariants += !"up" ;
+  enumerationVariants += !"down" ;
 #--- Enter type in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mListmapTypeName
@@ -2066,6 +2072,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     !instanceMethodMap
     ![@classMethodMap emptyMap]
     !enumeratorDescriptor
+    !enumerationVariants
     !doNotGenererateObjectCompare []
     !addAssignOperatorDescription
     ![@stringset emptySet]
