@@ -731,35 +731,12 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
   @modifierMap modifierMap [emptyMap] ;
   @instanceMethodMap instanceMethodMap [emptyMap] ;
   @enumerationDescriptorList enumerationDescriptor [listWithValue !lstringTypeIndex !"lkey"] ;
-##--- modifier 'insertFakeKey'
-#  @unifiedTypeMapProxy locationTypeIndex ;
-#  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"location" ?locationTypeIndex] ;
-#  @formalParameterSignature insertFakeKeyFormalArgumentList [emptyList] ;
-#  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Key
-#  insertFakeKeyFormalArgumentList += !locationTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Error location
-#  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Error Message
-#  [!?modifierMap insertKey
-#    ![@lstring new !"insertFakeKey" !here]
-#    !insertFakeKeyFormalArgumentList
-#    !true
-#    ![@methodQualifier isInherited]
-#    !"" # No error message
-#  ] ;
-##--- modifier 'insertSilentFakeKey'
-#  insertFakeKeyFormalArgumentList := [@formalParameterSignature emptyList] ;
-#  insertFakeKeyFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ; # Key
-#  [!?modifierMap insertKey
-#    ![@lstring new !"insertSilentFakeKey" !here]
-#    !insertFakeKeyFormalArgumentList
-#    !true
-#    ![@methodQualifier isInherited]
-#    !"" # No error message
-#  ] ;
 #--- Constructors
   enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"emptyMap" ![mMapTypeName string] !false ;
 #--- Readers
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeys" !"stringset" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeyList" !"lstringlist" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeyListInEntryOrder" !"lstringlist" !false ;
   enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"hasKey" !"string" !"bool" !false ;
   enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"locationForKey" !"string" !"location" !true ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"count" !"uint" !false ;

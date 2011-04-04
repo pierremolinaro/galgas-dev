@@ -413,15 +413,26 @@ nonterminal <foreach_enumerated_object>
 rule <foreach_enumerated_object>
   ?!@foreachInstructionEnumeratedObjectListAST ioForeachInstructionEnumeratedObjectList
 :
+  @lstring enumerationOrder ;
   @bool ascending ;
   select
     ascending := true ;
+    enumerationOrder := [@lstring new !"up" !here] ;
   or
     $<$ ;
     ascending := true ;
+    enumerationOrder := [@lstring new !"up" !here] ;
+#    warning here:"obsolete construction : now use 'up'" ;
   or
     $>$ ;
+    enumerationOrder := [@lstring new !"down" !here] ;
+#    warning here:"obsolete construction : now use 'down'" ;
     ascending := false ;
+#  or
+#    $:$ ;
+#    $identifier$ ? enumerationOrder ;
+#    $:$ ;
+#    ascending := false ;
   end select ;
   @semanticExpressionAST mEnumeratedExpression ;
   <expression> ? mEnumeratedExpression ;
@@ -473,6 +484,7 @@ rule <foreach_enumerated_object>
   end select ;
   ioForeachInstructionEnumeratedObjectList +=
     !ascending
+    !enumerationOrder
     !mEnumeratedExpression
     !endOfEnumerationExpression
     !mElementList

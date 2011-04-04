@@ -146,6 +146,7 @@ project all_galgas -> "galgas" :
   extern "LL1_computations.cpp" ;
   extern "LR1_computations.cpp" ;
   extern "SLR_computations.cpp" ;
+  extern "enterPragma.cpp" ;
 end project ;
 
 #---------------------------------------------------------------------------*
