@@ -730,7 +730,7 @@ rule <semantic_declaration>
 :
   $abstract$ ;
   $method$ ;
-  $type_name$ ? @lstring mClassName ;
+  $type_name$ ? @lstring mClassName indexing typeReferenceAbstractCategoryMethod ;
   $identifier$ ? @lstring mMethodName indexing abstractCategoryMethodDefinition ;
   @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
@@ -756,7 +756,7 @@ rule <semantic_declaration>
   $override$ ;
   $abstract$ ;
   $method$ ;
-  $type_name$ ? @lstring mClassName ;
+  $type_name$ ? @lstring mClassName indexing typeReferenceOverrideAbstractCategoryMethod ;
   $identifier$ ? @lstring mMethodName indexing overrideAbstractCategoryMethodDefinition ;
   @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
@@ -779,7 +779,7 @@ rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   $method$ ;
-  $type_name$ ? @lstring mClassName ;
+  $type_name$ ? @lstring mClassName indexing typeReferenceCategoryMethod ;
   $identifier$ ? @lstring mMethodName indexing categoryMethodDefinition ;
   @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
@@ -811,7 +811,7 @@ rule <semantic_declaration>
 :
   $override$ ;
   $method$ ;
-  $type_name$ ? @lstring mClassName ;
+  $type_name$ ? @lstring mClassName indexing typeReferenceOverrideCategoryMethodDefinition ;
   $identifier$ ? @lstring mMethodName indexing overrideCategoryMethodDefinition ;
   @formalParameterListAST mFormalParameterList ;
   <formal_parameter_list> ? mFormalParameterList ;
