@@ -7,7 +7,7 @@ routine testsuite_foreach_instruction :
   strList += !"c" ;
   strList += !"d" ;
   message "*************************************** begin of foreach instruction test 1\n" ;
-  foreach < strList (@string s)
+  foreach strList (@string s)
   before
     message "  before\n" ;
   do
@@ -18,7 +18,7 @@ routine testsuite_foreach_instruction :
     message "  after\n" ;
   end foreach ;
   message "--- begin of foreach instruction test 2\n" ;
-  foreach < strList (@string s)
+  foreach strList (@string s)
   while false
   before
     message "  before\n" ;
@@ -31,7 +31,7 @@ routine testsuite_foreach_instruction :
   end foreach ;
   message "--- begin of foreach instruction test 3\n" ;
   @uint n := 0 ;
-  foreach < strList (@string s)
+  foreach \up strList (@string s)
   while n < 2
   before
     message "  before\n" ;
@@ -44,7 +44,7 @@ routine testsuite_foreach_instruction :
     message "  after\n" ;
   end foreach ;
   message "--- begin of foreach instruction test 4\n" ;
-  foreach < strList while mValue != "c"
+  foreach \up strList while mValue != "c"
   before
     message "  before\n" ;
   do
@@ -67,7 +67,7 @@ routine testsuite_foreach_instruction :
 #    message "  after (idx: " . [idx string] . ")\n" ;
 #  end foreach ;
   message "--- begin of foreach instruction test 6\n" ;
-  foreach < strList (@string s)
+  foreach \up strList (@string s)
   index idx
   do
     message "  do '" . s . "' (idx: " . [idx string] . ")\n" ;
