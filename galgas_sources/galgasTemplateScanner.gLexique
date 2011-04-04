@@ -37,6 +37,7 @@ replace "\\\\" -> "\\" ;
 style keywordsStyle -> "Keywords" ;
 style delimitersStyle -> "Delimiters" ;
 style nonTerminalStyle -> "Non Terminal Symbols" ;
+style variantStyle -> "Variant Symbols" ;
 style integerStyle -> "Integer Constants" ;
 style float_csts -> "Floating Point Constants" ;
 style stringStyle -> "String Constants" ;
@@ -246,6 +247,25 @@ rule '.' :
       send $.$ ;
     end select ;
   end select ;
+end rule ;
+
+# -------------------------- Variant Name -----------------------------
+
+$variant$ ! tokenString error message "a variant name (\\...)" style variantStyle ;
+
+message incorrectVariantNameError : "in a variant name, a letter should follow the '\\' character" ;
+
+rule '\\' :
+  select
+  when 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+    repeat
+      enterCharacterIntoString !?tokenString !* ;
+    while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+    end repeat ;
+  default
+    error incorrectVariantNameError ;
+  end select ;
+  send $variant$ ; 
 end rule ;
 
 #--------------------------------- Character constant ------------------------------------
