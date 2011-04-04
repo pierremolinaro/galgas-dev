@@ -30,7 +30,7 @@
 static void
 printInstructionsListForGrammar (const GALGAS_syntaxInstructionListForGrammarAnalysis & inInstructionsList,
                                  C_HTML_FileWrite & inHTMLfile) {
-  cEnumerator_syntaxInstructionListForGrammarAnalysis currentInstruction (inInstructionsList, true) ;
+  cEnumerator_syntaxInstructionListForGrammarAnalysis currentInstruction (inInstructionsList, kEnumeration_up) ;
   while (currentInstruction.hasCurrentObject ()) {
     cPtr_abstractSyntaxInstructionForGrammarAnalysis * instruction = (cPtr_abstractSyntaxInstructionForGrammarAnalysis *) currentInstruction.current_mInstruction (HERE).ptr () ;
     instruction->printInstructionForGrammar (inHTMLfile) ;
@@ -46,7 +46,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "repeat " ;
   inHTMLfile.outputRawData ("</span>") ;
-  cEnumerator_branchListForGrammarAnalysis currentBranch (mAttribute_mRepeatBranchList, true) ;
+  cEnumerator_branchListForGrammarAnalysis currentBranch (mAttribute_mRepeatBranchList, kEnumeration_up) ;
   bool first = true ;
   while (currentBranch.hasCurrentObject ()) {
     if (first) {
@@ -74,7 +74,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
   inHTMLfile.outputRawData ("<span class=\"galgas_keyword\">") ;
   inHTMLfile << "select " ;
   inHTMLfile.outputRawData ("</span>") ;
-  cEnumerator_branchListForGrammarAnalysis currentBranch (mAttribute_mSelectBranchList, true) ;
+  cEnumerator_branchListForGrammarAnalysis currentBranch (mAttribute_mSelectBranchList, kEnumeration_up) ;
   bool first = true ;
   while (currentBranch.hasCurrentObject ()) {
     if (first) {
@@ -118,7 +118,7 @@ void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
                            const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList) {
 //--- Print message
   PMSInt32 productionsCount = 0 ;
-  cEnumerator_syntaxComponentListForGrammarAnalysis currentSyntaxComponent (inSyntaxComponentsList, true) ;
+  cEnumerator_syntaxComponentListForGrammarAnalysis currentSyntaxComponent (inSyntaxComponentsList, kEnumeration_up) ;
   while (currentSyntaxComponent.hasCurrentObject ()) {
     productionsCount += currentSyntaxComponent.current_mProductionRulesList (HERE).count () ;
     currentSyntaxComponent.gotoNextObject () ;
@@ -139,7 +139,7 @@ void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
                << currentSyntaxComponent.current_mSyntaxComponentName (HERE).mAttribute_string.stringValue ()
                << "' component" ;
     inHTMLfile.outputRawData ("</td></tr>") ;
-    cEnumerator_productionRuleListForGrammarAnalysis currentRule (currentSyntaxComponent.current_mProductionRulesList (HERE), true) ;
+    cEnumerator_productionRuleListForGrammarAnalysis currentRule (currentSyntaxComponent.current_mProductionRulesList (HERE), kEnumeration_up) ;
     while (currentRule.hasCurrentObject ()) {
       inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     //--- Print rule

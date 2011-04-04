@@ -284,6 +284,7 @@ uniquemap @unifiedTypeMap {
   @instanceMethodMap mInstanceMethodMap ;
   @classMethodMap mClassMethodMap ;
   @enumerationDescriptorList mEnumerationDescriptor ; # Empty List if cannot be enumerated
+  @stringlist mEnumeratorVariants ; # Empty List if cannot be enumerated; first item is default item
   @uint mHandledOperatorFlags ;
   @unifiedTypeMapProxyList mAddAssignOperatorArguments ; # Empty list if += operator is not supported
   @stringset mEnumConstantSet ;
@@ -419,8 +420,10 @@ end method ;
 method @predefinedTypeAST getEnumerationList
   ?!@unifiedTypeMap unused ioUnifiedTypeMap
   !@enumerationDescriptorList outEnumerationList
+  !@stringlist outEnumerationVariant
 :
   outEnumerationList := [@enumerationDescriptorList emptyList] ; # Enumeration is not supported
+  outEnumerationVariant := [@stringlist emptyList] ; # Enumeration is not supported
 end method ;
 
 #---------------------------------------------------------------------------*

@@ -1158,8 +1158,8 @@ override method @foreachInstructionForGeneration generateInstruction
     enumerationVarCppNameList += !enumerationVar ;
   end foreach ;
   foreach mEnumeratedObjectList, enumerationVarCppNameList do
-    ioGeneratedCode .= "cEnumerator_" . [[mEnumeratedExpression mType] identifierRepresentation] . " " . mEnumeratorCppName . " (" . mValue . ", "
-                    . [mIsAscending cString] . ") ;\n" ;
+    ioGeneratedCode .= "cEnumerator_" . [[mEnumeratedExpression mType] identifierRepresentation] . " " . mEnumeratorCppName . " (" . mValue
+                    . ", kEnumeration_" . mEnumerationOrder . ") ;\n" ;
   end foreach ;
 #--- Analyse 'while' expression
   const @bool whileExpressionIsAllwaysTrue := [mWhileExpression isTrueExpression] ;

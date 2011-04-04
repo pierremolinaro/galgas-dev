@@ -44,9 +44,9 @@ GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_list
 //---------------------------------------------------------------------------*
 
 cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
-                       %!^%const bool inAscending) :
+                       %!^%const typeEnumerationOrder inOrder) :
 cGenericAbstractEnumerator () {
-  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inAscending) ;
+  inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
 
 //---------------------------------------------------------------------------*

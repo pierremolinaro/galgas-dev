@@ -18,10 +18,17 @@
  <body>
   <div style="font: Verdana; font-size:small;">
    <p><strong>GALGAS ChangeLog</strong></p>
+   <p>2.1.7</p>
+   <ul>
+     <li>Bug fix: some structured instructions were accepting silently erroneous variable definitions;</li>
+     <li>New target option: <code>makefile_x86_64_linux_on_macosx</code> for generating a makefile for cross compiling on Mac OS X for 64-bit Linux;</li>
+     <li>GALGAS now uses the new <a href="http://crossgcc.rts-software.org/doku.php?id=start#32-bit_linux_binaries_for_mac_intel">cross compiler on Mac OS X for 32-bit Linux</a>;</li>
+     <li>GALGAS now uses the new <a href="http://crossgcc.rts-software.org/doku.php?id=start#64-bit_linux_binaries_for_mac_intel">cross compiler on Mac OS X for 64-bit Linux</a>;</li>
+   </ul>
    <p>2.1.6</p>
    <ul>
      <li>for Unix: from now, one makefile, that builds a 32-bit executable on a 32-bit system, and a 64-bit executable on a 64-bit system;</li>
-     <li>New command line option: <code>--build=string</code> that invokes a makefile for buiilding a specific target;</li>
+     <li>New command line option: <code>--build=string</code> that invokes a makefile for building a specific target;</li>
      <li>New option for the scanner for performing word or full token selection in Cocoa editor;</li>
    </ul>
    <p>2.1.5</p>

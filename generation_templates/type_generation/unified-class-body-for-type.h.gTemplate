@@ -300,7 +300,7 @@ end foreach
 if ((SUPPORTED_OPERATORS & generateEnumerationHelperMethods []) != 0) then
 %//--------------------------------- Enumeration helper methods
   protected : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
-                                                              const bool inAscending) const ;
+                                                              const typeEnumerationOrder inOrder) const ;
 
 %end if
 
@@ -326,7 +326,7 @@ if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
 
 class cEnumerator_%!TYPE_IDENTIFIER% : public cGenericAbstractEnumerator {
   public : cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
-     %!^%const bool inAscending) ;
+     %!^%const typeEnumerationOrder inOrder) ;
 
 //--- Current element access\n%
     foreach ENUMERATION_DESCRIPTOR_LIST do

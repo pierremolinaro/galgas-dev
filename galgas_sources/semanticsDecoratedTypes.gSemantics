@@ -632,7 +632,7 @@ class @appendInstructionForGeneration extends @semanticInstructionForGeneration 
 #---------------------------------------------------------------------------*
 
 list @foreachInstructionEnumeratedObjectListForGeneration {
-  @bool mIsAscending ;
+  @string mEnumerationOrder ;
   @semanticExpressionForGeneration mEnumeratedExpression ;
   @string mEnumeratorCppName ;
 }

@@ -529,7 +529,6 @@ list @foreachInstructionEnumeratedObjectElementListAST {
 #---------------------------------------------------------------------------*
 
 list @foreachInstructionEnumeratedObjectListAST {
-  @bool mIsAscending ;
   @lstring mEnumerationOrder ;
   @semanticExpressionAST mEnumeratedExpression ;
   @location mEndOfEnumerationExpression ;

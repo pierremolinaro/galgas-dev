@@ -1203,55 +1203,72 @@ override method @foreachInstructionAST analyzeSemanticInstruction
       ?enumerationExpression
     ] ;
   #--- Check object can be enumerated
+    @string enumerationOrder := [mEnumerationOrder string] ;
     const @string enumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
     const @enumerationDescriptorList enumerationDescriptorList := [[enumerationExpression mType] mEnumerationDescriptor] ;
     if [enumerationDescriptorList length] == 0 then
       error mEndOfEnumerationExpression : "an '@" . [[enumerationExpression mType] key] . "' object cannot be enumerated" ;
-  #--- Arguments
-    elsif ([mElementList length] == 0) & not mEndsWithEllipsis then
-      const @enumerationDescriptorList currentTypedAttributeList := [[enumerationExpression mType] mEnumerationDescriptor] ;
-      foreach currentTypedAttributeList do 
-       [!?ioVariableMap insertUsedLocalConstant
-         ![@lstring new ![mPrefix string] . mEnumerationName !mEndOfEnumerationExpression]
-         !mEnumeratedType
-         !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation] . " (HERE)"
-         !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation] . " (HERE)"
-       ] ;
-      end foreach ;
-    elsif (not mEndsWithEllipsis) & ([mElementList length] != [enumerationDescriptorList length]) then
-      error mEndOfElementList
-      :"the '@" . [[enumerationExpression mType] key] . "' type requires "
-      . [[enumerationDescriptorList length] string] . " argument"
-      . if ([enumerationDescriptorList length] > 1) then "s" else "" end
-      . " for enumeration: this list provides "
-      . [[mElementList length] string]
-      ;
-    elsif (mEndsWithEllipsis) & ([mElementList length] > [enumerationDescriptorList length]) then
-      error mEndOfElementList
-      :"the '@" . [[enumerationExpression mType] key] . "' type requires "
-      . [[enumerationDescriptorList length] string] . " argument"
-      . if ([enumerationDescriptorList length] > 1) then "s" else "" end
-      . " or less for enumeration: this list provides "
-      . [[mElementList length] string]
-      ;
     else
-      foreach mElementList, enumerationDescriptorList do
-        if [mConstantName string] != "" then # Empty string if joker
-          const @unifiedTypeMapProxy foundType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
-          if foundType != mEnumeratedType then
-            error mTypeName : "incorrect '@" . [foundType key] . "' type: '@" . [mEnumeratedType key] . "' type required here" ;
-          end if ;
-          [!?ioVariableMap insertUsedLocalConstant
-            !mConstantName
-            !mEnumeratedType
-            !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation]. " (HERE)"
-            !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation]. " (HERE)"
-          ] ;
+  #--- Check enumeration variant
+      if enumerationOrder == "" then
+        enumerationOrder := [[[enumerationExpression mType] mEnumeratorVariants] mValueAtIndex !0] ;
+      else
+        @bool found := false ;
+        @string s := "" ;
+        foreach [[enumerationExpression mType] mEnumeratorVariants] while not found do
+          found := enumerationOrder == mValue ;
+          s .= "\n  \\" . mValue ;
+        end foreach ;
+        if not found then
+          error mEnumerationOrder: "unknown enumeration specifier; available ones are :" . s ;
         end if ;
-      end foreach ;
+      end if ;
+  #--- Arguments
+      if ([mElementList length] == 0) & not mEndsWithEllipsis then
+        const @enumerationDescriptorList currentTypedAttributeList := [[enumerationExpression mType] mEnumerationDescriptor] ;
+        foreach currentTypedAttributeList do 
+         [!?ioVariableMap insertUsedLocalConstant
+           ![@lstring new ![mPrefix string] . mEnumerationName !mEndOfEnumerationExpression]
+           !mEnumeratedType
+           !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation] . " (HERE)"
+           !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation] . " (HERE)"
+         ] ;
+        end foreach ;
+      elsif (not mEndsWithEllipsis) & ([mElementList length] != [enumerationDescriptorList length]) then
+        error mEndOfElementList
+        :"the '@" . [[enumerationExpression mType] key] . "' type requires "
+        . [[enumerationDescriptorList length] string] . " argument"
+        . if ([enumerationDescriptorList length] > 1) then "s" else "" end
+        . " for enumeration: this list provides "
+        . [[mElementList length] string]
+        ;
+      elsif (mEndsWithEllipsis) & ([mElementList length] > [enumerationDescriptorList length]) then
+        error mEndOfElementList
+        :"the '@" . [[enumerationExpression mType] key] . "' type requires "
+        . [[enumerationDescriptorList length] string] . " argument"
+        . if ([enumerationDescriptorList length] > 1) then "s" else "" end
+        . " or less for enumeration: this list provides "
+        . [[mElementList length] string]
+        ;
+      else
+        foreach mElementList, enumerationDescriptorList do
+          if [mConstantName string] != "" then # Empty string if joker
+            const @unifiedTypeMapProxy foundType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+            if foundType != mEnumeratedType then
+              error mTypeName : "incorrect '@" . [foundType key] . "' type: '@" . [mEnumeratedType key] . "' type required here" ;
+            end if ;
+            [!?ioVariableMap insertUsedLocalConstant
+              !mConstantName
+              !mEnumeratedType
+              !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation]. " (HERE)"
+              !enumeratorCppName .".current_" . [mEnumerationName identifierRepresentation]. " (HERE)"
+            ] ;
+          end if ;
+        end foreach ;
+      end if ;
     end if ;
   #---
-    enumerationList += !mIsAscending !enumerationExpression !enumeratorCppName ;
+    enumerationList += !enumerationOrder !enumerationExpression !enumeratorCppName ;
   end foreach ;
 #--- While expression
   @semanticExpressionForGeneration whileExpression ;

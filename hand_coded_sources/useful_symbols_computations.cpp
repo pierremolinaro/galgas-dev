@@ -104,7 +104,7 @@ displayUnusefulSymbols (C_Compiler * inCompiler,
                         const PMSInt32 inIterationCount,
                         const bool inVerboseOptionOn) {
   TC_UniqueArray <PMUInt32> unusedNonTerminalArray ;
-  cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis currentNT (inUnusedNonTerminalSymbolsForGrammar, true) ;
+  cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis currentNT (inUnusedNonTerminalSymbolsForGrammar, kEnumeration_up) ;
   while (currentNT.hasCurrentObject ()) {
     const PMUInt32 nt = currentNT.current_mNonTerminalIndex (HERE).uintValue () + inVocabulary.getTerminalSymbolsCount () ;
     unusedNonTerminalArray.addObject (nt) ;

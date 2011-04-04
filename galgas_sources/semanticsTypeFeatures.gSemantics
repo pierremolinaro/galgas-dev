@@ -29,11 +29,15 @@ semantics semanticsTypeFeatures :
 override method @stringsetPredefinedTypeAST getEnumerationList
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@enumerationDescriptorList outEnumerationList
+  !@stringlist outEnumerationVariant
 :
   @unifiedTypeMapProxy stringTypeIndex ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"string" ?stringTypeIndex] ;
   outEnumerationList := [@enumerationDescriptorList emptyList] ;
   outEnumerationList += !stringTypeIndex !"key" ;
+  outEnumerationVariant := [@stringlist emptyList] ;
+  outEnumerationVariant += !"up" ;
+  outEnumerationVariant += !"down" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -41,11 +45,15 @@ end method ;
 override method @dataPredefinedTypeAST getEnumerationList
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@enumerationDescriptorList outEnumerationList
+  !@stringlist outEnumerationVariant
 :
   @unifiedTypeMapProxy uintTypeIndex ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"uint" ?uintTypeIndex] ;
   outEnumerationList := [@enumerationDescriptorList emptyList] ;
   outEnumerationList += !uintTypeIndex !"data" ;
+  outEnumerationVariant := [@stringlist emptyList] ;
+  outEnumerationVariant += !"up" ;
+  outEnumerationVariant += !"down" ;
 end method ;
 
 #---------------------------------------------------------------------------*
