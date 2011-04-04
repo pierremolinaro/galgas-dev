@@ -888,6 +888,17 @@ class @switchInstructionAST extends @semanticInstructionAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#     P R A G M A    I N S T R U C T I O N                                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @pragmaInstructionAST extends @semanticInstructionAST {
+  @lstring mPragmaName ;
+  @lstring mPragmaArgument ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  T Y P E    M E T H O D    C A L L    I N S T R U C T I O N               *
 #                                                                           *
 #---------------------------------------------------------------------------*
