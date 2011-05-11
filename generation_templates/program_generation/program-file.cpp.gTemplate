@@ -110,6 +110,9 @@ int mainForLIBPM  (const int argc, const char * argv []) {
       routine_before (commonLexique COMMA_HERE) ;
       verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
       for (PMSInt32 i=0 ; i<sourceFilesArray.count () ; i++) {
+        if (gOption_galgas_5F_cli_5F_options_trace.mValue) {
+          enableTraceWithPath (sourceFilesArray (i COMMA_HERE)) ;
+        }
         const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
         const GALGAS_string sfp = GALGAS_string (sourceFilesArray (i COMMA_HERE)) ;
         const GALGAS_location location = commonLexique->here () ;
@@ -143,6 +146,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
         if (r != 0) {
           returnCode = r ;
         }
+        closeTrace () ;
       }
     //--- Error or warnings ?
       if (commonLexique->totalErrorCount () > 0) {
