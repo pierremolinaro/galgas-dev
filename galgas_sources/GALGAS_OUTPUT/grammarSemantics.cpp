@@ -52,7 +52,7 @@ class cCollectionElement_signatureForGrammarAnalysis : public cCollectionElement
                                                            COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -103,9 +103,9 @@ void cCollectionElement_signatureForGrammarAnalysis::description (C_String & ioS
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_signatureForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_signatureForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_signatureForGrammarAnalysis * operand = (cCollectionElement_signatureForGrammarAnalysis *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mFormalArgumentPassingModeForGrammarAnalysis.objectCompare (operand->mAttribute_mFormalArgumentPassingModeForGrammarAnalysis) ;
   }
@@ -476,9 +476,9 @@ void cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis::description (C_Str
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
   cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis * operand = (cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mFormalParametersList.objectCompare (operand->mAttribute_mFormalParametersList) ;
   }
@@ -702,7 +702,7 @@ class cCollectionElement_syntaxInstructionListForGrammarAnalysis : public cColle
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -747,9 +747,9 @@ void cCollectionElement_syntaxInstructionListForGrammarAnalysis::description (C_
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_syntaxInstructionListForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_syntaxInstructionListForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_syntaxInstructionListForGrammarAnalysis * operand = (cCollectionElement_syntaxInstructionListForGrammarAnalysis *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mInstruction.objectCompare (operand->mAttribute_mInstruction) ;
   }
@@ -1051,7 +1051,7 @@ class cCollectionElement_productionRuleListForGrammarAnalysis : public cCollecti
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -1114,9 +1114,9 @@ void cCollectionElement_productionRuleListForGrammarAnalysis::description (C_Str
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_productionRuleListForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_productionRuleListForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_productionRuleListForGrammarAnalysis * operand = (cCollectionElement_productionRuleListForGrammarAnalysis *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mLeftNonterminalSymbol.objectCompare (operand->mAttribute_mLeftNonterminalSymbol) ;
   }
@@ -1599,9 +1599,9 @@ void cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis::description (C_St
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
   cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis * operand = (cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mNonTerminalIndex.objectCompare (operand->mAttribute_mNonTerminalIndex) ;
   }
@@ -1817,9 +1817,9 @@ void cMapElement_nonTerminalSymbolMapForGrammarAnalysis::description (C_String &
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_nonTerminalSymbolMapForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_nonTerminalSymbolMapForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
   cMapElement_nonTerminalSymbolMapForGrammarAnalysis * operand = (cMapElement_nonTerminalSymbolMapForGrammarAnalysis *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mNonTerminalIndex.objectCompare (operand->mAttribute_mNonTerminalIndex) ;
   }
@@ -2097,13 +2097,13 @@ class cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis : public 
   public : virtual cSortedListElement * copy (void) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Description
  public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
 
 //--- Virtual method that comparing element for sorting
-  public : virtual enumComparisonResult compareForSorting (const cSortedListElement * inOperand) const ;
+  public : virtual typeComparisonResult compareForSorting (const cSortedListElement * inOperand) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -2151,8 +2151,8 @@ void cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis::descripti
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
-  enumComparisonResult result = kOperandNotValid ;
+typeComparisonResult cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
   if (NULL != inOperand) {
     result = kOperandEqual ;
     cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis * operand = (cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis *) inOperand ;
@@ -2178,8 +2178,8 @@ AC_GALGAS_sortedlist () {
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis::compareForSorting (const cSortedListElement * inOperand) const {
-  enumComparisonResult result = kOperandEqual ;
+typeComparisonResult cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis::compareForSorting (const cSortedListElement * inOperand) const {
+  typeComparisonResult result = kOperandEqual ;
   const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis * operand = (const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis *) inOperand ;
   macroValidSharedObject (operand, const cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis) ;
   if (result == kOperandEqual) {
@@ -2431,7 +2431,7 @@ class cCollectionElement_branchListForGrammarAnalysis : public cCollectionElemen
                                                             COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2476,9 +2476,9 @@ void cCollectionElement_branchListForGrammarAnalysis::description (C_String & io
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_branchListForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_branchListForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_branchListForGrammarAnalysis * operand = (cCollectionElement_branchListForGrammarAnalysis *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mSyntaxInstructionList.objectCompare (operand->mAttribute_mSyntaxInstructionList) ;
   }
@@ -2776,7 +2776,7 @@ class cCollectionElement_syntaxComponentListForGrammarAnalysis : public cCollect
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2827,9 +2827,9 @@ void cCollectionElement_syntaxComponentListForGrammarAnalysis::description (C_St
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_syntaxComponentListForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_syntaxComponentListForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_syntaxComponentListForGrammarAnalysis * operand = (cCollectionElement_syntaxComponentListForGrammarAnalysis *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mProductionRulesList.objectCompare (operand->mAttribute_mProductionRulesList) ;
   }
@@ -3200,9 +3200,9 @@ void cMapElement_terminalSymbolsMapForGrammarAnalysis::description (C_String & i
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_terminalSymbolsMapForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_terminalSymbolsMapForGrammarAnalysis::compare (const cCollectionElement * inOperand) const {
   cMapElement_terminalSymbolsMapForGrammarAnalysis * operand = (cMapElement_terminalSymbolsMapForGrammarAnalysis *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mTerminalIndex.objectCompare (operand->mAttribute_mTerminalIndex) ;
   }
@@ -3413,8 +3413,8 @@ GALGAS_terminalSymbolsMapForGrammarAnalysis GALGAS_terminalSymbolsMapForGrammarA
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_abstractSyntaxInstructionForGrammarAnalysis::objectCompare (const GALGAS_abstractSyntaxInstructionForGrammarAnalysis & inOperand) const {
-  enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_abstractSyntaxInstructionForGrammarAnalysis::objectCompare (const GALGAS_abstractSyntaxInstructionForGrammarAnalysis & inOperand) const {
+  typeComparisonResult result = kOperandEqual ;
   const cPtr_abstractSyntaxInstructionForGrammarAnalysis * p = (const cPtr_abstractSyntaxInstructionForGrammarAnalysis *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_abstractSyntaxInstructionForGrammarAnalysis) ;
   const cPtr_abstractSyntaxInstructionForGrammarAnalysis * q = (const cPtr_abstractSyntaxInstructionForGrammarAnalysis *) inOperand.mObjectPtr ;
@@ -3509,8 +3509,8 @@ GALGAS_abstractSyntaxInstructionForGrammarAnalysis GALGAS_abstractSyntaxInstruct
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_nonTerminalInstructionForGrammarAnalysis::objectCompare (const GALGAS_nonTerminalInstructionForGrammarAnalysis & inOperand) const {
-  enumComparisonResult result = GALGAS_abstractSyntaxInstructionForGrammarAnalysis::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_nonTerminalInstructionForGrammarAnalysis::objectCompare (const GALGAS_nonTerminalInstructionForGrammarAnalysis & inOperand) const {
+  typeComparisonResult result = GALGAS_abstractSyntaxInstructionForGrammarAnalysis::objectCompare (inOperand) ;
   const cPtr_nonTerminalInstructionForGrammarAnalysis * p = (const cPtr_nonTerminalInstructionForGrammarAnalysis *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_nonTerminalInstructionForGrammarAnalysis) ;
   const cPtr_nonTerminalInstructionForGrammarAnalysis * q = (const cPtr_nonTerminalInstructionForGrammarAnalysis *) inOperand.mObjectPtr ;
@@ -3666,8 +3666,8 @@ GALGAS_nonTerminalInstructionForGrammarAnalysis GALGAS_nonTerminalInstructionFor
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_repeatInstructionForGrammarAnalysis::objectCompare (const GALGAS_repeatInstructionForGrammarAnalysis & inOperand) const {
-  enumComparisonResult result = GALGAS_abstractSyntaxInstructionForGrammarAnalysis::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_repeatInstructionForGrammarAnalysis::objectCompare (const GALGAS_repeatInstructionForGrammarAnalysis & inOperand) const {
+  typeComparisonResult result = GALGAS_abstractSyntaxInstructionForGrammarAnalysis::objectCompare (inOperand) ;
   const cPtr_repeatInstructionForGrammarAnalysis * p = (const cPtr_repeatInstructionForGrammarAnalysis *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_repeatInstructionForGrammarAnalysis) ;
   const cPtr_repeatInstructionForGrammarAnalysis * q = (const cPtr_repeatInstructionForGrammarAnalysis *) inOperand.mObjectPtr ;
@@ -3823,8 +3823,8 @@ GALGAS_repeatInstructionForGrammarAnalysis GALGAS_repeatInstructionForGrammarAna
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_selectInstructionForGrammarAnalysis::objectCompare (const GALGAS_selectInstructionForGrammarAnalysis & inOperand) const {
-  enumComparisonResult result = GALGAS_abstractSyntaxInstructionForGrammarAnalysis::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_selectInstructionForGrammarAnalysis::objectCompare (const GALGAS_selectInstructionForGrammarAnalysis & inOperand) const {
+  typeComparisonResult result = GALGAS_abstractSyntaxInstructionForGrammarAnalysis::objectCompare (inOperand) ;
   const cPtr_selectInstructionForGrammarAnalysis * p = (const cPtr_selectInstructionForGrammarAnalysis *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_selectInstructionForGrammarAnalysis) ;
   const cPtr_selectInstructionForGrammarAnalysis * q = (const cPtr_selectInstructionForGrammarAnalysis *) inOperand.mObjectPtr ;
@@ -3980,8 +3980,8 @@ GALGAS_selectInstructionForGrammarAnalysis GALGAS_selectInstructionForGrammarAna
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_terminalInstructionForGrammarAnalysis::objectCompare (const GALGAS_terminalInstructionForGrammarAnalysis & inOperand) const {
-  enumComparisonResult result = GALGAS_abstractSyntaxInstructionForGrammarAnalysis::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_terminalInstructionForGrammarAnalysis::objectCompare (const GALGAS_terminalInstructionForGrammarAnalysis & inOperand) const {
+  typeComparisonResult result = GALGAS_abstractSyntaxInstructionForGrammarAnalysis::objectCompare (inOperand) ;
   const cPtr_terminalInstructionForGrammarAnalysis * p = (const cPtr_terminalInstructionForGrammarAnalysis *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_terminalInstructionForGrammarAnalysis) ;
   const cPtr_terminalInstructionForGrammarAnalysis * q = (const cPtr_terminalInstructionForGrammarAnalysis *) inOperand.mObjectPtr ;

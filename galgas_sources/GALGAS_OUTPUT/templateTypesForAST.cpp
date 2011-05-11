@@ -50,7 +50,7 @@ class cCollectionElement_templateInstructionListAST : public cCollectionElement 
                                                           COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -95,9 +95,9 @@ void cCollectionElement_templateInstructionListAST::description (C_String & ioSt
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_templateInstructionListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_templateInstructionListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_templateInstructionListAST * operand = (cCollectionElement_templateInstructionListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mInstruction.objectCompare (operand->mAttribute_mInstruction) ;
   }
@@ -395,7 +395,7 @@ class cCollectionElement_templateExpressionListAST : public cCollectionElement {
                                                          COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -446,9 +446,9 @@ void cCollectionElement_templateExpressionListAST::description (C_String & ioStr
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_templateExpressionListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_templateExpressionListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_templateExpressionListAST * operand = (cCollectionElement_templateExpressionListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mExpression.objectCompare (operand->mAttribute_mExpression) ;
   }
@@ -802,7 +802,7 @@ class cCollectionElement_templateInstructionIfBranchListAST : public cCollection
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -853,9 +853,9 @@ void cCollectionElement_templateInstructionIfBranchListAST::description (C_Strin
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_templateInstructionIfBranchListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_templateInstructionIfBranchListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_templateInstructionIfBranchListAST * operand = (cCollectionElement_templateInstructionIfBranchListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mExpression.objectCompare (operand->mAttribute_mExpression) ;
   }
@@ -1209,7 +1209,7 @@ class cCollectionElement_templateInstructionSwitchBranchListAST : public cCollec
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -1260,9 +1260,9 @@ void cCollectionElement_templateInstructionSwitchBranchListAST::description (C_S
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_templateInstructionSwitchBranchListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_templateInstructionSwitchBranchListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_templateInstructionSwitchBranchListAST * operand = (cCollectionElement_templateInstructionSwitchBranchListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mConstantList.objectCompare (operand->mAttribute_mConstantList) ;
   }
@@ -1601,7 +1601,7 @@ GALGAS_templateInstructionSwitchBranchListAST GALGAS_templateInstructionSwitchBr
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateExpressionAST::objectCompare (const GALGAS_templateExpressionAST & inOperand) const {
+typeComparisonResult GALGAS_templateExpressionAST::objectCompare (const GALGAS_templateExpressionAST & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -1675,8 +1675,8 @@ GALGAS_templateExpressionAST GALGAS_templateExpressionAST::extractObject (const 
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_structFieldAccessTemplateExpressionAST::objectCompare (const GALGAS_structFieldAccessTemplateExpressionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_structFieldAccessTemplateExpressionAST::objectCompare (const GALGAS_structFieldAccessTemplateExpressionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_structFieldAccessTemplateExpressionAST * p = (const cPtr_structFieldAccessTemplateExpressionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_structFieldAccessTemplateExpressionAST) ;
   const cPtr_structFieldAccessTemplateExpressionAST * q = (const cPtr_structFieldAccessTemplateExpressionAST *) inOperand.mObjectPtr ;
@@ -1848,8 +1848,8 @@ GALGAS_structFieldAccessTemplateExpressionAST GALGAS_structFieldAccessTemplateEx
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateAddOperationAST::objectCompare (const GALGAS_templateAddOperationAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateAddOperationAST::objectCompare (const GALGAS_templateAddOperationAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateAddOperationAST * p = (const cPtr_templateAddOperationAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateAddOperationAST) ;
   const cPtr_templateAddOperationAST * q = (const cPtr_templateAddOperationAST *) inOperand.mObjectPtr ;
@@ -2021,8 +2021,8 @@ GALGAS_templateAddOperationAST GALGAS_templateAddOperationAST::extractObject (co
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateAndOperationAST::objectCompare (const GALGAS_templateAndOperationAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateAndOperationAST::objectCompare (const GALGAS_templateAndOperationAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateAndOperationAST * p = (const cPtr_templateAndOperationAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateAndOperationAST) ;
   const cPtr_templateAndOperationAST * q = (const cPtr_templateAndOperationAST *) inOperand.mObjectPtr ;
@@ -2194,8 +2194,8 @@ GALGAS_templateAndOperationAST GALGAS_templateAndOperationAST::extractObject (co
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateCategoryTemplateCallAST::objectCompare (const GALGAS_templateCategoryTemplateCallAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateCategoryTemplateCallAST::objectCompare (const GALGAS_templateCategoryTemplateCallAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateCategoryTemplateCallAST * p = (const cPtr_templateCategoryTemplateCallAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateCategoryTemplateCallAST) ;
   const cPtr_templateCategoryTemplateCallAST * q = (const cPtr_templateCategoryTemplateCallAST *) inOperand.mObjectPtr ;
@@ -2367,8 +2367,8 @@ GALGAS_templateCategoryTemplateCallAST GALGAS_templateCategoryTemplateCallAST::e
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateClassToTypeOperandAST::objectCompare (const GALGAS_templateClassToTypeOperandAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateClassToTypeOperandAST::objectCompare (const GALGAS_templateClassToTypeOperandAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateClassToTypeOperandAST * p = (const cPtr_templateClassToTypeOperandAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateClassToTypeOperandAST) ;
   const cPtr_templateClassToTypeOperandAST * q = (const cPtr_templateClassToTypeOperandAST *) inOperand.mObjectPtr ;
@@ -2500,8 +2500,8 @@ GALGAS_templateClassToTypeOperandAST GALGAS_templateClassToTypeOperandAST::extra
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateConcatOperationAST::objectCompare (const GALGAS_templateConcatOperationAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateConcatOperationAST::objectCompare (const GALGAS_templateConcatOperationAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateConcatOperationAST * p = (const cPtr_templateConcatOperationAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateConcatOperationAST) ;
   const cPtr_templateConcatOperationAST * q = (const cPtr_templateConcatOperationAST *) inOperand.mObjectPtr ;
@@ -2673,8 +2673,8 @@ GALGAS_templateConcatOperationAST GALGAS_templateConcatOperationAST::extractObje
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateConstructorAST::objectCompare (const GALGAS_templateConstructorAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateConstructorAST::objectCompare (const GALGAS_templateConstructorAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateConstructorAST * p = (const cPtr_templateConstructorAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateConstructorAST) ;
   const cPtr_templateConstructorAST * q = (const cPtr_templateConstructorAST *) inOperand.mObjectPtr ;
@@ -2846,8 +2846,8 @@ GALGAS_templateConstructorAST GALGAS_templateConstructorAST::extractObject (cons
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateDivideOperationAST::objectCompare (const GALGAS_templateDivideOperationAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateDivideOperationAST::objectCompare (const GALGAS_templateDivideOperationAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateDivideOperationAST * p = (const cPtr_templateDivideOperationAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateDivideOperationAST) ;
   const cPtr_templateDivideOperationAST * q = (const cPtr_templateDivideOperationAST *) inOperand.mObjectPtr ;
@@ -3019,8 +3019,8 @@ GALGAS_templateDivideOperationAST GALGAS_templateDivideOperationAST::extractObje
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateEqualTestAST::objectCompare (const GALGAS_templateEqualTestAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateEqualTestAST::objectCompare (const GALGAS_templateEqualTestAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateEqualTestAST * p = (const cPtr_templateEqualTestAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateEqualTestAST) ;
   const cPtr_templateEqualTestAST * q = (const cPtr_templateEqualTestAST *) inOperand.mObjectPtr ;
@@ -3192,8 +3192,8 @@ GALGAS_templateEqualTestAST GALGAS_templateEqualTestAST::extractObject (const GA
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateFalseBoolAST::objectCompare (const GALGAS_templateFalseBoolAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateFalseBoolAST::objectCompare (const GALGAS_templateFalseBoolAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateFalseBoolAST * p = (const cPtr_templateFalseBoolAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateFalseBoolAST) ;
   const cPtr_templateFalseBoolAST * q = (const cPtr_templateFalseBoolAST *) inOperand.mObjectPtr ;
@@ -3325,8 +3325,8 @@ GALGAS_templateFalseBoolAST GALGAS_templateFalseBoolAST::extractObject (const GA
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateFileWrapperTemplateCallAST::objectCompare (const GALGAS_templateFileWrapperTemplateCallAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateFileWrapperTemplateCallAST::objectCompare (const GALGAS_templateFileWrapperTemplateCallAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateFileWrapperTemplateCallAST * p = (const cPtr_templateFileWrapperTemplateCallAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateFileWrapperTemplateCallAST) ;
   const cPtr_templateFileWrapperTemplateCallAST * q = (const cPtr_templateFileWrapperTemplateCallAST *) inOperand.mObjectPtr ;
@@ -3498,8 +3498,8 @@ GALGAS_templateFileWrapperTemplateCallAST GALGAS_templateFileWrapperTemplateCall
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateFileWrapperWithStaticPathAST::objectCompare (const GALGAS_templateFileWrapperWithStaticPathAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateFileWrapperWithStaticPathAST::objectCompare (const GALGAS_templateFileWrapperWithStaticPathAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateFileWrapperWithStaticPathAST * p = (const cPtr_templateFileWrapperWithStaticPathAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateFileWrapperWithStaticPathAST) ;
   const cPtr_templateFileWrapperWithStaticPathAST * q = (const cPtr_templateFileWrapperWithStaticPathAST *) inOperand.mObjectPtr ;
@@ -3651,8 +3651,8 @@ GALGAS_templateFileWrapperWithStaticPathAST GALGAS_templateFileWrapperWithStatic
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateFunctionCallAST::objectCompare (const GALGAS_templateFunctionCallAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateFunctionCallAST::objectCompare (const GALGAS_templateFunctionCallAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateFunctionCallAST * p = (const cPtr_templateFunctionCallAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateFunctionCallAST) ;
   const cPtr_templateFunctionCallAST * q = (const cPtr_templateFunctionCallAST *) inOperand.mObjectPtr ;
@@ -3804,8 +3804,8 @@ GALGAS_templateFunctionCallAST GALGAS_templateFunctionCallAST::extractObject (co
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateIfThenElseExpressionAST::objectCompare (const GALGAS_templateIfThenElseExpressionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateIfThenElseExpressionAST::objectCompare (const GALGAS_templateIfThenElseExpressionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateIfThenElseExpressionAST * p = (const cPtr_templateIfThenElseExpressionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateIfThenElseExpressionAST) ;
   const cPtr_templateIfThenElseExpressionAST * q = (const cPtr_templateIfThenElseExpressionAST *) inOperand.mObjectPtr ;
@@ -3997,8 +3997,8 @@ GALGAS_templateIfThenElseExpressionAST GALGAS_templateIfThenElseExpressionAST::e
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateInfOrEqualTestAST::objectCompare (const GALGAS_templateInfOrEqualTestAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateInfOrEqualTestAST::objectCompare (const GALGAS_templateInfOrEqualTestAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateInfOrEqualTestAST * p = (const cPtr_templateInfOrEqualTestAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateInfOrEqualTestAST) ;
   const cPtr_templateInfOrEqualTestAST * q = (const cPtr_templateInfOrEqualTestAST *) inOperand.mObjectPtr ;
@@ -4170,8 +4170,8 @@ GALGAS_templateInfOrEqualTestAST GALGAS_templateInfOrEqualTestAST::extractObject
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateLeftShiftOperationAST::objectCompare (const GALGAS_templateLeftShiftOperationAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateLeftShiftOperationAST::objectCompare (const GALGAS_templateLeftShiftOperationAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateLeftShiftOperationAST * p = (const cPtr_templateLeftShiftOperationAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateLeftShiftOperationAST) ;
   const cPtr_templateLeftShiftOperationAST * q = (const cPtr_templateLeftShiftOperationAST *) inOperand.mObjectPtr ;
@@ -4343,8 +4343,8 @@ GALGAS_templateLeftShiftOperationAST GALGAS_templateLeftShiftOperationAST::extra
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateLiteralCharExpressionAST::objectCompare (const GALGAS_templateLiteralCharExpressionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateLiteralCharExpressionAST::objectCompare (const GALGAS_templateLiteralCharExpressionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateLiteralCharExpressionAST * p = (const cPtr_templateLiteralCharExpressionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateLiteralCharExpressionAST) ;
   const cPtr_templateLiteralCharExpressionAST * q = (const cPtr_templateLiteralCharExpressionAST *) inOperand.mObjectPtr ;
@@ -4476,8 +4476,8 @@ GALGAS_templateLiteralCharExpressionAST GALGAS_templateLiteralCharExpressionAST:
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateLiteralDoubleExpressionAST::objectCompare (const GALGAS_templateLiteralDoubleExpressionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateLiteralDoubleExpressionAST::objectCompare (const GALGAS_templateLiteralDoubleExpressionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateLiteralDoubleExpressionAST * p = (const cPtr_templateLiteralDoubleExpressionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateLiteralDoubleExpressionAST) ;
   const cPtr_templateLiteralDoubleExpressionAST * q = (const cPtr_templateLiteralDoubleExpressionAST *) inOperand.mObjectPtr ;
@@ -4609,8 +4609,8 @@ GALGAS_templateLiteralDoubleExpressionAST GALGAS_templateLiteralDoubleExpression
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateLiteralSInt_36__34_ExpressionAST::objectCompare (const GALGAS_templateLiteralSInt_36__34_ExpressionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateLiteralSInt_36__34_ExpressionAST::objectCompare (const GALGAS_templateLiteralSInt_36__34_ExpressionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateLiteralSInt_36__34_ExpressionAST * p = (const cPtr_templateLiteralSInt_36__34_ExpressionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateLiteralSInt_36__34_ExpressionAST) ;
   const cPtr_templateLiteralSInt_36__34_ExpressionAST * q = (const cPtr_templateLiteralSInt_36__34_ExpressionAST *) inOperand.mObjectPtr ;
@@ -4742,8 +4742,8 @@ GALGAS_templateLiteralSInt_36__34_ExpressionAST GALGAS_templateLiteralSInt_36__3
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateLiteralSIntExpressionAST::objectCompare (const GALGAS_templateLiteralSIntExpressionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateLiteralSIntExpressionAST::objectCompare (const GALGAS_templateLiteralSIntExpressionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateLiteralSIntExpressionAST * p = (const cPtr_templateLiteralSIntExpressionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateLiteralSIntExpressionAST) ;
   const cPtr_templateLiteralSIntExpressionAST * q = (const cPtr_templateLiteralSIntExpressionAST *) inOperand.mObjectPtr ;
@@ -4875,8 +4875,8 @@ GALGAS_templateLiteralSIntExpressionAST GALGAS_templateLiteralSIntExpressionAST:
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateLiteralStringExpressionAST::objectCompare (const GALGAS_templateLiteralStringExpressionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateLiteralStringExpressionAST::objectCompare (const GALGAS_templateLiteralStringExpressionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateLiteralStringExpressionAST * p = (const cPtr_templateLiteralStringExpressionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateLiteralStringExpressionAST) ;
   const cPtr_templateLiteralStringExpressionAST * q = (const cPtr_templateLiteralStringExpressionAST *) inOperand.mObjectPtr ;
@@ -5028,8 +5028,8 @@ GALGAS_templateLiteralStringExpressionAST GALGAS_templateLiteralStringExpression
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateLiteralUInt_36__34_ExpressionAST::objectCompare (const GALGAS_templateLiteralUInt_36__34_ExpressionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateLiteralUInt_36__34_ExpressionAST::objectCompare (const GALGAS_templateLiteralUInt_36__34_ExpressionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateLiteralUInt_36__34_ExpressionAST * p = (const cPtr_templateLiteralUInt_36__34_ExpressionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateLiteralUInt_36__34_ExpressionAST) ;
   const cPtr_templateLiteralUInt_36__34_ExpressionAST * q = (const cPtr_templateLiteralUInt_36__34_ExpressionAST *) inOperand.mObjectPtr ;
@@ -5161,8 +5161,8 @@ GALGAS_templateLiteralUInt_36__34_ExpressionAST GALGAS_templateLiteralUInt_36__3
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateLiteralUIntExpressionAST::objectCompare (const GALGAS_templateLiteralUIntExpressionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateLiteralUIntExpressionAST::objectCompare (const GALGAS_templateLiteralUIntExpressionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateLiteralUIntExpressionAST * p = (const cPtr_templateLiteralUIntExpressionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateLiteralUIntExpressionAST) ;
   const cPtr_templateLiteralUIntExpressionAST * q = (const cPtr_templateLiteralUIntExpressionAST *) inOperand.mObjectPtr ;
@@ -5294,8 +5294,8 @@ GALGAS_templateLiteralUIntExpressionAST GALGAS_templateLiteralUIntExpressionAST:
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateLogicalNegateAST::objectCompare (const GALGAS_templateLogicalNegateAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateLogicalNegateAST::objectCompare (const GALGAS_templateLogicalNegateAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateLogicalNegateAST * p = (const cPtr_templateLogicalNegateAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateLogicalNegateAST) ;
   const cPtr_templateLogicalNegateAST * q = (const cPtr_templateLogicalNegateAST *) inOperand.mObjectPtr ;
@@ -5447,8 +5447,8 @@ GALGAS_templateLogicalNegateAST GALGAS_templateLogicalNegateAST::extractObject (
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateModuloOperationAST::objectCompare (const GALGAS_templateModuloOperationAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateModuloOperationAST::objectCompare (const GALGAS_templateModuloOperationAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateModuloOperationAST * p = (const cPtr_templateModuloOperationAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateModuloOperationAST) ;
   const cPtr_templateModuloOperationAST * q = (const cPtr_templateModuloOperationAST *) inOperand.mObjectPtr ;
@@ -5620,8 +5620,8 @@ GALGAS_templateModuloOperationAST GALGAS_templateModuloOperationAST::extractObje
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateMultiplyOperationAST::objectCompare (const GALGAS_templateMultiplyOperationAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateMultiplyOperationAST::objectCompare (const GALGAS_templateMultiplyOperationAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateMultiplyOperationAST * p = (const cPtr_templateMultiplyOperationAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateMultiplyOperationAST) ;
   const cPtr_templateMultiplyOperationAST * q = (const cPtr_templateMultiplyOperationAST *) inOperand.mObjectPtr ;
@@ -5793,8 +5793,8 @@ GALGAS_templateMultiplyOperationAST GALGAS_templateMultiplyOperationAST::extract
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateNonEqualTestAST::objectCompare (const GALGAS_templateNonEqualTestAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateNonEqualTestAST::objectCompare (const GALGAS_templateNonEqualTestAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateNonEqualTestAST * p = (const cPtr_templateNonEqualTestAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateNonEqualTestAST) ;
   const cPtr_templateNonEqualTestAST * q = (const cPtr_templateNonEqualTestAST *) inOperand.mObjectPtr ;
@@ -5966,8 +5966,8 @@ GALGAS_templateNonEqualTestAST GALGAS_templateNonEqualTestAST::extractObject (co
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateNotOperatorAST::objectCompare (const GALGAS_templateNotOperatorAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateNotOperatorAST::objectCompare (const GALGAS_templateNotOperatorAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateNotOperatorAST * p = (const cPtr_templateNotOperatorAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateNotOperatorAST) ;
   const cPtr_templateNotOperatorAST * q = (const cPtr_templateNotOperatorAST *) inOperand.mObjectPtr ;
@@ -6119,8 +6119,8 @@ GALGAS_templateNotOperatorAST GALGAS_templateNotOperatorAST::extractObject (cons
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateOptionAccessAST::objectCompare (const GALGAS_templateOptionAccessAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateOptionAccessAST::objectCompare (const GALGAS_templateOptionAccessAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateOptionAccessAST * p = (const cPtr_templateOptionAccessAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateOptionAccessAST) ;
   const cPtr_templateOptionAccessAST * q = (const cPtr_templateOptionAccessAST *) inOperand.mObjectPtr ;
@@ -6292,8 +6292,8 @@ GALGAS_templateOptionAccessAST GALGAS_templateOptionAccessAST::extractObject (co
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateOrOperationAST::objectCompare (const GALGAS_templateOrOperationAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateOrOperationAST::objectCompare (const GALGAS_templateOrOperationAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateOrOperationAST * p = (const cPtr_templateOrOperationAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateOrOperationAST) ;
   const cPtr_templateOrOperationAST * q = (const cPtr_templateOrOperationAST *) inOperand.mObjectPtr ;
@@ -6465,8 +6465,8 @@ GALGAS_templateOrOperationAST GALGAS_templateOrOperationAST::extractObject (cons
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateReaderCallInExpressionAST::objectCompare (const GALGAS_templateReaderCallInExpressionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateReaderCallInExpressionAST::objectCompare (const GALGAS_templateReaderCallInExpressionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateReaderCallInExpressionAST * p = (const cPtr_templateReaderCallInExpressionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateReaderCallInExpressionAST) ;
   const cPtr_templateReaderCallInExpressionAST * q = (const cPtr_templateReaderCallInExpressionAST *) inOperand.mObjectPtr ;
@@ -6638,8 +6638,8 @@ GALGAS_templateReaderCallInExpressionAST GALGAS_templateReaderCallInExpressionAS
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateRightShiftOperationAST::objectCompare (const GALGAS_templateRightShiftOperationAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateRightShiftOperationAST::objectCompare (const GALGAS_templateRightShiftOperationAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateRightShiftOperationAST * p = (const cPtr_templateRightShiftOperationAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateRightShiftOperationAST) ;
   const cPtr_templateRightShiftOperationAST * q = (const cPtr_templateRightShiftOperationAST *) inOperand.mObjectPtr ;
@@ -6811,8 +6811,8 @@ GALGAS_templateRightShiftOperationAST GALGAS_templateRightShiftOperationAST::ext
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateStrictInfTestAST::objectCompare (const GALGAS_templateStrictInfTestAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateStrictInfTestAST::objectCompare (const GALGAS_templateStrictInfTestAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateStrictInfTestAST * p = (const cPtr_templateStrictInfTestAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateStrictInfTestAST) ;
   const cPtr_templateStrictInfTestAST * q = (const cPtr_templateStrictInfTestAST *) inOperand.mObjectPtr ;
@@ -6984,8 +6984,8 @@ GALGAS_templateStrictInfTestAST GALGAS_templateStrictInfTestAST::extractObject (
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateStrictSupTestAST::objectCompare (const GALGAS_templateStrictSupTestAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateStrictSupTestAST::objectCompare (const GALGAS_templateStrictSupTestAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateStrictSupTestAST * p = (const cPtr_templateStrictSupTestAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateStrictSupTestAST) ;
   const cPtr_templateStrictSupTestAST * q = (const cPtr_templateStrictSupTestAST *) inOperand.mObjectPtr ;
@@ -7157,8 +7157,8 @@ GALGAS_templateStrictSupTestAST GALGAS_templateStrictSupTestAST::extractObject (
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateSubOperationAST::objectCompare (const GALGAS_templateSubOperationAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateSubOperationAST::objectCompare (const GALGAS_templateSubOperationAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateSubOperationAST * p = (const cPtr_templateSubOperationAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateSubOperationAST) ;
   const cPtr_templateSubOperationAST * q = (const cPtr_templateSubOperationAST *) inOperand.mObjectPtr ;
@@ -7330,8 +7330,8 @@ GALGAS_templateSubOperationAST GALGAS_templateSubOperationAST::extractObject (co
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateSupOrEqualTestAST::objectCompare (const GALGAS_templateSupOrEqualTestAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateSupOrEqualTestAST::objectCompare (const GALGAS_templateSupOrEqualTestAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateSupOrEqualTestAST * p = (const cPtr_templateSupOrEqualTestAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateSupOrEqualTestAST) ;
   const cPtr_templateSupOrEqualTestAST * q = (const cPtr_templateSupOrEqualTestAST *) inOperand.mObjectPtr ;
@@ -7503,8 +7503,8 @@ GALGAS_templateSupOrEqualTestAST GALGAS_templateSupOrEqualTestAST::extractObject
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateTrueBoolAST::objectCompare (const GALGAS_templateTrueBoolAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateTrueBoolAST::objectCompare (const GALGAS_templateTrueBoolAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateTrueBoolAST * p = (const cPtr_templateTrueBoolAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateTrueBoolAST) ;
   const cPtr_templateTrueBoolAST * q = (const cPtr_templateTrueBoolAST *) inOperand.mObjectPtr ;
@@ -7636,8 +7636,8 @@ GALGAS_templateTrueBoolAST GALGAS_templateTrueBoolAST::extractObject (const GALG
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateUnaryMinusOperationAST::objectCompare (const GALGAS_templateUnaryMinusOperationAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateUnaryMinusOperationAST::objectCompare (const GALGAS_templateUnaryMinusOperationAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateUnaryMinusOperationAST * p = (const cPtr_templateUnaryMinusOperationAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateUnaryMinusOperationAST) ;
   const cPtr_templateUnaryMinusOperationAST * q = (const cPtr_templateUnaryMinusOperationAST *) inOperand.mObjectPtr ;
@@ -7789,8 +7789,8 @@ GALGAS_templateUnaryMinusOperationAST GALGAS_templateUnaryMinusOperationAST::ext
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateVarInExpressionAST::objectCompare (const GALGAS_templateVarInExpressionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateVarInExpressionAST::objectCompare (const GALGAS_templateVarInExpressionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateVarInExpressionAST * p = (const cPtr_templateVarInExpressionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateVarInExpressionAST) ;
   const cPtr_templateVarInExpressionAST * q = (const cPtr_templateVarInExpressionAST *) inOperand.mObjectPtr ;
@@ -7922,8 +7922,8 @@ GALGAS_templateVarInExpressionAST GALGAS_templateVarInExpressionAST::extractObje
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateXorOperationAST::objectCompare (const GALGAS_templateXorOperationAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateXorOperationAST::objectCompare (const GALGAS_templateXorOperationAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateExpressionAST::objectCompare (inOperand) ;
   const cPtr_templateXorOperationAST * p = (const cPtr_templateXorOperationAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateXorOperationAST) ;
   const cPtr_templateXorOperationAST * q = (const cPtr_templateXorOperationAST *) inOperand.mObjectPtr ;
@@ -8095,7 +8095,7 @@ GALGAS_templateXorOperationAST GALGAS_templateXorOperationAST::extractObject (co
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateInstructionAST::objectCompare (const GALGAS_templateInstructionAST & inOperand) const {
+typeComparisonResult GALGAS_templateInstructionAST::objectCompare (const GALGAS_templateInstructionAST & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -8169,8 +8169,8 @@ GALGAS_templateInstructionAST GALGAS_templateInstructionAST::extractObject (cons
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateBlockInstructionAST::objectCompare (const GALGAS_templateBlockInstructionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateBlockInstructionAST::objectCompare (const GALGAS_templateBlockInstructionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateInstructionAST::objectCompare (inOperand) ;
   const cPtr_templateBlockInstructionAST * p = (const cPtr_templateBlockInstructionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateBlockInstructionAST) ;
   const cPtr_templateBlockInstructionAST * q = (const cPtr_templateBlockInstructionAST *) inOperand.mObjectPtr ;
@@ -8342,8 +8342,8 @@ GALGAS_templateBlockInstructionAST GALGAS_templateBlockInstructionAST::extractOb
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateInstructionExpressionAST::objectCompare (const GALGAS_templateInstructionExpressionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateInstructionExpressionAST::objectCompare (const GALGAS_templateInstructionExpressionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateInstructionAST::objectCompare (inOperand) ;
   const cPtr_templateInstructionExpressionAST * p = (const cPtr_templateInstructionExpressionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateInstructionExpressionAST) ;
   const cPtr_templateInstructionExpressionAST * q = (const cPtr_templateInstructionExpressionAST *) inOperand.mObjectPtr ;
@@ -8495,8 +8495,8 @@ GALGAS_templateInstructionExpressionAST GALGAS_templateInstructionExpressionAST:
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateInstructionForeachAST::objectCompare (const GALGAS_templateInstructionForeachAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateInstructionForeachAST::objectCompare (const GALGAS_templateInstructionForeachAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateInstructionAST::objectCompare (inOperand) ;
   const cPtr_templateInstructionForeachAST * p = (const cPtr_templateInstructionForeachAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateInstructionForeachAST) ;
   const cPtr_templateInstructionForeachAST * q = (const cPtr_templateInstructionForeachAST *) inOperand.mObjectPtr ;
@@ -8768,7 +8768,7 @@ GALGAS_templateInstructionForeachAST GALGAS_templateInstructionForeachAST::extra
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateInstructionGetColumnLocationAST::objectCompare (const GALGAS_templateInstructionGetColumnLocationAST & inOperand) const {
+typeComparisonResult GALGAS_templateInstructionGetColumnLocationAST::objectCompare (const GALGAS_templateInstructionGetColumnLocationAST & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -8861,7 +8861,7 @@ GALGAS_templateInstructionGetColumnLocationAST GALGAS_templateInstructionGetColu
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateInstructionGotoColumnLocationAST::objectCompare (const GALGAS_templateInstructionGotoColumnLocationAST & inOperand) const {
+typeComparisonResult GALGAS_templateInstructionGotoColumnLocationAST::objectCompare (const GALGAS_templateInstructionGotoColumnLocationAST & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -8954,8 +8954,8 @@ GALGAS_templateInstructionGotoColumnLocationAST GALGAS_templateInstructionGotoCo
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateInstructionIfAST::objectCompare (const GALGAS_templateInstructionIfAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateInstructionIfAST::objectCompare (const GALGAS_templateInstructionIfAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateInstructionAST::objectCompare (inOperand) ;
   const cPtr_templateInstructionIfAST * p = (const cPtr_templateInstructionIfAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateInstructionIfAST) ;
   const cPtr_templateInstructionIfAST * q = (const cPtr_templateInstructionIfAST *) inOperand.mObjectPtr ;
@@ -9107,8 +9107,8 @@ GALGAS_templateInstructionIfAST GALGAS_templateInstructionIfAST::extractObject (
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateInstructionStringAST::objectCompare (const GALGAS_templateInstructionStringAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateInstructionStringAST::objectCompare (const GALGAS_templateInstructionStringAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateInstructionAST::objectCompare (inOperand) ;
   const cPtr_templateInstructionStringAST * p = (const cPtr_templateInstructionStringAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateInstructionStringAST) ;
   const cPtr_templateInstructionStringAST * q = (const cPtr_templateInstructionStringAST *) inOperand.mObjectPtr ;
@@ -9240,8 +9240,8 @@ GALGAS_templateInstructionStringAST GALGAS_templateInstructionStringAST::extract
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateInstructionSwitchAST::objectCompare (const GALGAS_templateInstructionSwitchAST & inOperand) const {
-  enumComparisonResult result = GALGAS_templateInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateInstructionSwitchAST::objectCompare (const GALGAS_templateInstructionSwitchAST & inOperand) const {
+  typeComparisonResult result = GALGAS_templateInstructionAST::objectCompare (inOperand) ;
   const cPtr_templateInstructionSwitchAST * p = (const cPtr_templateInstructionSwitchAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateInstructionSwitchAST) ;
   const cPtr_templateInstructionSwitchAST * q = (const cPtr_templateInstructionSwitchAST *) inOperand.mObjectPtr ;

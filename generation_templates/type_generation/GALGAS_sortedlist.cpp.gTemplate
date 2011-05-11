@@ -27,13 +27,13 @@ class cSortedListElement_%!TYPE_IDENTIFIER% : public cSortedListElement {
   public : virtual cSortedListElement * copy (void) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Description
  public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
 
 //--- Virtual method that comparing element for sorting
-  public : virtual enumComparisonResult compareForSorting (const cSortedListElement * inOperand) const ;
+  public : virtual typeComparisonResult compareForSorting (const cSortedListElement * inOperand) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -90,8 +90,8 @@ void cSortedListElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, co
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
-  enumComparisonResult result = kOperandNotValid ;
+typeComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
   if (NULL != inOperand) {
     result = kOperandEqual ;
     cSortedListElement_%!TYPE_IDENTIFIER% * operand = (cSortedListElement_%!TYPE_IDENTIFIER% *) inOperand ;
@@ -113,8 +113,8 @@ AC_GALGAS_sortedlist () {
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compareForSorting (const cSortedListElement * inOperand) const {
-  enumComparisonResult result = kOperandEqual ;
+typeComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compareForSorting (const cSortedListElement * inOperand) const {
+  typeComparisonResult result = kOperandEqual ;
   const cSortedListElement_%!TYPE_IDENTIFIER% * operand = (const cSortedListElement_%!TYPE_IDENTIFIER% *) inOperand ;
   macroValidSharedObject (operand, const cSortedListElement_%!TYPE_IDENTIFIER%) ;
 % foreach SORT_ATTRIBUTE_LIST do

@@ -50,7 +50,7 @@ class cCollectionElement_lexicalInstructionListAST : public cCollectionElement {
                                                          COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -95,9 +95,9 @@ void cCollectionElement_lexicalInstructionListAST::description (C_String & ioStr
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_lexicalInstructionListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_lexicalInstructionListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalInstructionListAST * operand = (cCollectionElement_lexicalInstructionListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mInstruction.objectCompare (operand->mAttribute_mInstruction) ;
   }
@@ -397,7 +397,7 @@ class cCollectionElement_metamodelTemplateDelimitorListAST : public cCollectionE
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -454,9 +454,9 @@ void cCollectionElement_metamodelTemplateDelimitorListAST::description (C_String
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_metamodelTemplateDelimitorListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_metamodelTemplateDelimitorListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_metamodelTemplateDelimitorListAST * operand = (cCollectionElement_metamodelTemplateDelimitorListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mStartString.objectCompare (operand->mAttribute_mStartString) ;
   }
@@ -868,7 +868,7 @@ class cCollectionElement_templateReplacementListAST : public cCollectionElement 
                                                           COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -925,9 +925,9 @@ void cCollectionElement_templateReplacementListAST::description (C_String & ioSt
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_templateReplacementListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_templateReplacementListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_templateReplacementListAST * operand = (cCollectionElement_templateReplacementListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mMatchString.objectCompare (operand->mAttribute_mMatchString) ;
   }
@@ -1335,7 +1335,7 @@ class cCollectionElement_lexicalRuleListAST : public cCollectionElement {
                                                   COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -1380,9 +1380,9 @@ void cCollectionElement_lexicalRuleListAST::description (C_String & ioString, co
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_lexicalRuleListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_lexicalRuleListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalRuleListAST * operand = (cCollectionElement_lexicalRuleListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mLexicalRule.objectCompare (operand->mAttribute_mLexicalRule) ;
   }
@@ -1680,7 +1680,7 @@ class cCollectionElement_lexicalMessageDeclarationListAST : public cCollectionEl
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -1731,9 +1731,9 @@ void cCollectionElement_lexicalMessageDeclarationListAST::description (C_String 
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_lexicalMessageDeclarationListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_lexicalMessageDeclarationListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalMessageDeclarationListAST * operand = (cCollectionElement_lexicalMessageDeclarationListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mMessageName.objectCompare (operand->mAttribute_mMessageName) ;
   }
@@ -2087,7 +2087,7 @@ class cCollectionElement_lexicalAttributeListAST : public cCollectionElement {
                                                        COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2138,9 +2138,9 @@ void cCollectionElement_lexicalAttributeListAST::description (C_String & ioStrin
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_lexicalAttributeListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_lexicalAttributeListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalAttributeListAST * operand = (cCollectionElement_lexicalAttributeListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mTypeName.objectCompare (operand->mAttribute_mTypeName) ;
   }
@@ -2494,7 +2494,7 @@ class cCollectionElement_lexicalStyleListAST : public cCollectionElement {
                                                    COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2545,9 +2545,9 @@ void cCollectionElement_lexicalStyleListAST::description (C_String & ioString, c
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_lexicalStyleListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_lexicalStyleListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalStyleListAST * operand = (cCollectionElement_lexicalStyleListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mName.objectCompare (operand->mAttribute_mName) ;
   }
@@ -2907,7 +2907,7 @@ class cCollectionElement_terminalDeclarationListAST : public cCollectionElement 
                                                           COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2976,9 +2976,9 @@ void cCollectionElement_terminalDeclarationListAST::description (C_String & ioSt
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_terminalDeclarationListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_terminalDeclarationListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_terminalDeclarationListAST * operand = (cCollectionElement_terminalDeclarationListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mName.objectCompare (operand->mAttribute_mName) ;
   }
@@ -3502,7 +3502,7 @@ class cCollectionElement_lexicalListEntryListAST : public cCollectionElement {
                                                        COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -3559,9 +3559,9 @@ void cCollectionElement_lexicalListEntryListAST::description (C_String & ioStrin
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_lexicalListEntryListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_lexicalListEntryListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalListEntryListAST * operand = (cCollectionElement_lexicalListEntryListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mEntrySpelling.objectCompare (operand->mAttribute_mEntrySpelling) ;
   }
@@ -3977,7 +3977,7 @@ class cCollectionElement_lexicalListDeclarationListAST : public cCollectionEleme
                                                              COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -4046,9 +4046,9 @@ void cCollectionElement_lexicalListDeclarationListAST::description (C_String & i
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_lexicalListDeclarationListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_lexicalListDeclarationListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalListDeclarationListAST * operand = (cCollectionElement_lexicalListDeclarationListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mName.objectCompare (operand->mAttribute_mName) ;
   }
@@ -4570,7 +4570,7 @@ class cCollectionElement_lexicalSendSearchListAST : public cCollectionElement {
                                                         COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -4621,9 +4621,9 @@ void cCollectionElement_lexicalSendSearchListAST::description (C_String & ioStri
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_lexicalSendSearchListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_lexicalSendSearchListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalSendSearchListAST * operand = (cCollectionElement_lexicalSendSearchListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mAttributeName.objectCompare (operand->mAttribute_mAttributeName) ;
   }
@@ -4977,7 +4977,7 @@ class cCollectionElement_lexicalWhileBranchListAST : public cCollectionElement {
                                                          COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -5028,9 +5028,9 @@ void cCollectionElement_lexicalWhileBranchListAST::description (C_String & ioStr
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_lexicalWhileBranchListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_lexicalWhileBranchListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalWhileBranchListAST * operand = (cCollectionElement_lexicalWhileBranchListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mWhileExpression.objectCompare (operand->mAttribute_mWhileExpression) ;
   }
@@ -5384,7 +5384,7 @@ class cCollectionElement_lexicalSelectBranchListAST : public cCollectionElement 
                                                           COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -5435,9 +5435,9 @@ void cCollectionElement_lexicalSelectBranchListAST::description (C_String & ioSt
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_lexicalSelectBranchListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_lexicalSelectBranchListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalSelectBranchListAST * operand = (cCollectionElement_lexicalSelectBranchListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mSelectExpression.objectCompare (operand->mAttribute_mSelectExpression) ;
   }
@@ -5789,7 +5789,7 @@ class cCollectionElement_lexicalRoutineCallActualArgumentListAST : public cColle
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -5834,9 +5834,9 @@ void cCollectionElement_lexicalRoutineCallActualArgumentListAST::description (C_
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_lexicalRoutineCallActualArgumentListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_lexicalRoutineCallActualArgumentListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalRoutineCallActualArgumentListAST * operand = (cCollectionElement_lexicalRoutineCallActualArgumentListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mLexicalRoutineActualArgument.objectCompare (operand->mAttribute_mLexicalRoutineActualArgument) ;
   }
@@ -6132,7 +6132,7 @@ class cCollectionElement_lexicalFunctionCallActualArgumentListAST : public cColl
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -6177,9 +6177,9 @@ void cCollectionElement_lexicalFunctionCallActualArgumentListAST::description (C
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_lexicalFunctionCallActualArgumentListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_lexicalFunctionCallActualArgumentListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalFunctionCallActualArgumentListAST * operand = (cCollectionElement_lexicalFunctionCallActualArgumentListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mLexicalActualInputArgument.objectCompare (operand->mAttribute_mLexicalActualInputArgument) ;
   }
@@ -6571,8 +6571,8 @@ void GALGAS_lexicalArgumentModeAST::description (C_String & ioString,
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalArgumentModeAST::objectCompare (const GALGAS_lexicalArgumentModeAST & inOperand) const {
-  enumComparisonResult result = kOperandNotValid ;
+typeComparisonResult GALGAS_lexicalArgumentModeAST::objectCompare (const GALGAS_lexicalArgumentModeAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
     if (mEnum < inOperand.mEnum) {
       result = kFirstOperandLowerThanSecond ;
@@ -6648,7 +6648,7 @@ class cCollectionElement_lexicalExternRoutineFormalArgumentListAST : public cCol
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -6705,9 +6705,9 @@ void cCollectionElement_lexicalExternRoutineFormalArgumentListAST::description (
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_lexicalExternRoutineFormalArgumentListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_lexicalExternRoutineFormalArgumentListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalExternRoutineFormalArgumentListAST * operand = (cCollectionElement_lexicalExternRoutineFormalArgumentListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mPassingMode.objectCompare (operand->mAttribute_mPassingMode) ;
   }
@@ -7119,7 +7119,7 @@ class cCollectionElement_externRoutineListAST : public cCollectionElement {
                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -7176,9 +7176,9 @@ void cCollectionElement_externRoutineListAST::description (C_String & ioString, 
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_externRoutineListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_externRoutineListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_externRoutineListAST * operand = (cCollectionElement_externRoutineListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mRoutineName.objectCompare (operand->mAttribute_mRoutineName) ;
   }
@@ -7588,7 +7588,7 @@ class cCollectionElement_lexicalExternFunctionFormalArgumentListAST : public cCo
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -7639,9 +7639,9 @@ void cCollectionElement_lexicalExternFunctionFormalArgumentListAST::description 
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_lexicalExternFunctionFormalArgumentListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_lexicalExternFunctionFormalArgumentListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalExternFunctionFormalArgumentListAST * operand = (cCollectionElement_lexicalExternFunctionFormalArgumentListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mLexicalTypeName.objectCompare (operand->mAttribute_mLexicalTypeName) ;
   }
@@ -7997,7 +7997,7 @@ class cCollectionElement_externFunctionListAST : public cCollectionElement {
                                                      COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -8054,9 +8054,9 @@ void cCollectionElement_externFunctionListAST::description (C_String & ioString,
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_externFunctionListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_externFunctionListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_externFunctionListAST * operand = (cCollectionElement_externFunctionListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mFunctionName.objectCompare (operand->mAttribute_mFunctionName) ;
   }
@@ -8466,7 +8466,7 @@ class cCollectionElement_indexingListAST : public cCollectionElement {
                                                COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -8517,9 +8517,9 @@ void cCollectionElement_indexingListAST::description (C_String & ioString, const
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_indexingListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_indexingListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_indexingListAST * operand = (cCollectionElement_indexingListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mIndexName.objectCompare (operand->mAttribute_mIndexName) ;
   }
@@ -8977,8 +8977,8 @@ GALGAS_lexiqueComponentAST GALGAS_lexiqueComponentAST::constructor_new (const GA
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexiqueComponentAST::objectCompare (const GALGAS_lexiqueComponentAST & inOperand) const {
-   enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_lexiqueComponentAST::objectCompare (const GALGAS_lexiqueComponentAST & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_mLexiqueComponentName.objectCompare (inOperand.mAttribute_mLexiqueComponentName) ;
   }
@@ -9220,8 +9220,8 @@ GALGAS_lexiqueComponentAST GALGAS_lexiqueComponentAST::extractObject (const GALG
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_abstractLexicalRoutineActualArgumentAST::objectCompare (const GALGAS_abstractLexicalRoutineActualArgumentAST & inOperand) const {
-  enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_abstractLexicalRoutineActualArgumentAST::objectCompare (const GALGAS_abstractLexicalRoutineActualArgumentAST & inOperand) const {
+  typeComparisonResult result = kOperandEqual ;
   const cPtr_abstractLexicalRoutineActualArgumentAST * p = (const cPtr_abstractLexicalRoutineActualArgumentAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_abstractLexicalRoutineActualArgumentAST) ;
   const cPtr_abstractLexicalRoutineActualArgumentAST * q = (const cPtr_abstractLexicalRoutineActualArgumentAST *) inOperand.mObjectPtr ;
@@ -9316,8 +9316,8 @@ GALGAS_abstractLexicalRoutineActualArgumentAST GALGAS_abstractLexicalRoutineActu
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalAttributeInputOutputArgumentAST::objectCompare (const GALGAS_lexicalAttributeInputOutputArgumentAST & inOperand) const {
-  enumComparisonResult result = GALGAS_abstractLexicalRoutineActualArgumentAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalAttributeInputOutputArgumentAST::objectCompare (const GALGAS_lexicalAttributeInputOutputArgumentAST & inOperand) const {
+  typeComparisonResult result = GALGAS_abstractLexicalRoutineActualArgumentAST::objectCompare (inOperand) ;
   const cPtr_lexicalAttributeInputOutputArgumentAST * p = (const cPtr_lexicalAttributeInputOutputArgumentAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalAttributeInputOutputArgumentAST) ;
   const cPtr_lexicalAttributeInputOutputArgumentAST * q = (const cPtr_lexicalAttributeInputOutputArgumentAST *) inOperand.mObjectPtr ;
@@ -9453,8 +9453,8 @@ GALGAS_lexicalAttributeInputOutputArgumentAST GALGAS_lexicalAttributeInputOutput
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalFormalInputArgumentAST::objectCompare (const GALGAS_lexicalFormalInputArgumentAST & inOperand) const {
-  enumComparisonResult result = GALGAS_abstractLexicalRoutineActualArgumentAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalFormalInputArgumentAST::objectCompare (const GALGAS_lexicalFormalInputArgumentAST & inOperand) const {
+  typeComparisonResult result = GALGAS_abstractLexicalRoutineActualArgumentAST::objectCompare (inOperand) ;
   const cPtr_lexicalFormalInputArgumentAST * p = (const cPtr_lexicalFormalInputArgumentAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalFormalInputArgumentAST) ;
   const cPtr_lexicalFormalInputArgumentAST * q = (const cPtr_lexicalFormalInputArgumentAST *) inOperand.mObjectPtr ;
@@ -9590,7 +9590,7 @@ GALGAS_lexicalFormalInputArgumentAST GALGAS_lexicalFormalInputArgumentAST::extra
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_abstractLexicalRuleAST::objectCompare (const GALGAS_abstractLexicalRuleAST & inOperand) const {
+typeComparisonResult GALGAS_abstractLexicalRuleAST::objectCompare (const GALGAS_abstractLexicalRuleAST & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -9664,8 +9664,8 @@ GALGAS_abstractLexicalRuleAST GALGAS_abstractLexicalRuleAST::extractObject (cons
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalExplicitRuleAST::objectCompare (const GALGAS_lexicalExplicitRuleAST & inOperand) const {
-  enumComparisonResult result = GALGAS_abstractLexicalRuleAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalExplicitRuleAST::objectCompare (const GALGAS_lexicalExplicitRuleAST & inOperand) const {
+  typeComparisonResult result = GALGAS_abstractLexicalRuleAST::objectCompare (inOperand) ;
   const cPtr_lexicalExplicitRuleAST * p = (const cPtr_lexicalExplicitRuleAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalExplicitRuleAST) ;
   const cPtr_lexicalExplicitRuleAST * q = (const cPtr_lexicalExplicitRuleAST *) inOperand.mObjectPtr ;
@@ -9817,8 +9817,8 @@ GALGAS_lexicalExplicitRuleAST GALGAS_lexicalExplicitRuleAST::extractObject (cons
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalImplicitRuleAST::objectCompare (const GALGAS_lexicalImplicitRuleAST & inOperand) const {
-  enumComparisonResult result = GALGAS_abstractLexicalRuleAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalImplicitRuleAST::objectCompare (const GALGAS_lexicalImplicitRuleAST & inOperand) const {
+  typeComparisonResult result = GALGAS_abstractLexicalRuleAST::objectCompare (inOperand) ;
   const cPtr_lexicalImplicitRuleAST * p = (const cPtr_lexicalImplicitRuleAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalImplicitRuleAST) ;
   const cPtr_lexicalImplicitRuleAST * q = (const cPtr_lexicalImplicitRuleAST *) inOperand.mObjectPtr ;
@@ -9950,7 +9950,7 @@ GALGAS_lexicalImplicitRuleAST GALGAS_lexicalImplicitRuleAST::extractObject (cons
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalExpressionAST::objectCompare (const GALGAS_lexicalExpressionAST & inOperand) const {
+typeComparisonResult GALGAS_lexicalExpressionAST::objectCompare (const GALGAS_lexicalExpressionAST & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -10024,8 +10024,8 @@ GALGAS_lexicalExpressionAST GALGAS_lexicalExpressionAST::extractObject (const GA
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalCharacterIntervalMatchAST::objectCompare (const GALGAS_lexicalCharacterIntervalMatchAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalCharacterIntervalMatchAST::objectCompare (const GALGAS_lexicalCharacterIntervalMatchAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalExpressionAST::objectCompare (inOperand) ;
   const cPtr_lexicalCharacterIntervalMatchAST * p = (const cPtr_lexicalCharacterIntervalMatchAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalCharacterIntervalMatchAST) ;
   const cPtr_lexicalCharacterIntervalMatchAST * q = (const cPtr_lexicalCharacterIntervalMatchAST *) inOperand.mObjectPtr ;
@@ -10177,8 +10177,8 @@ GALGAS_lexicalCharacterIntervalMatchAST GALGAS_lexicalCharacterIntervalMatchAST:
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalCharacterMatchAST::objectCompare (const GALGAS_lexicalCharacterMatchAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalCharacterMatchAST::objectCompare (const GALGAS_lexicalCharacterMatchAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalExpressionAST::objectCompare (inOperand) ;
   const cPtr_lexicalCharacterMatchAST * p = (const cPtr_lexicalCharacterMatchAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalCharacterMatchAST) ;
   const cPtr_lexicalCharacterMatchAST * q = (const cPtr_lexicalCharacterMatchAST *) inOperand.mObjectPtr ;
@@ -10310,8 +10310,8 @@ GALGAS_lexicalCharacterMatchAST GALGAS_lexicalCharacterMatchAST::extractObject (
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalCharacterSetMatchAST::objectCompare (const GALGAS_lexicalCharacterSetMatchAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalCharacterSetMatchAST::objectCompare (const GALGAS_lexicalCharacterSetMatchAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalExpressionAST::objectCompare (inOperand) ;
   const cPtr_lexicalCharacterSetMatchAST * p = (const cPtr_lexicalCharacterSetMatchAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalCharacterSetMatchAST) ;
   const cPtr_lexicalCharacterSetMatchAST * q = (const cPtr_lexicalCharacterSetMatchAST *) inOperand.mObjectPtr ;
@@ -10443,8 +10443,8 @@ GALGAS_lexicalCharacterSetMatchAST GALGAS_lexicalCharacterSetMatchAST::extractOb
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalOrExpressionAST::objectCompare (const GALGAS_lexicalOrExpressionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalOrExpressionAST::objectCompare (const GALGAS_lexicalOrExpressionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalExpressionAST::objectCompare (inOperand) ;
   const cPtr_lexicalOrExpressionAST * p = (const cPtr_lexicalOrExpressionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalOrExpressionAST) ;
   const cPtr_lexicalOrExpressionAST * q = (const cPtr_lexicalOrExpressionAST *) inOperand.mObjectPtr ;
@@ -10596,8 +10596,8 @@ GALGAS_lexicalOrExpressionAST GALGAS_lexicalOrExpressionAST::extractObject (cons
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalStringMatchAST::objectCompare (const GALGAS_lexicalStringMatchAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalStringMatchAST::objectCompare (const GALGAS_lexicalStringMatchAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalExpressionAST::objectCompare (inOperand) ;
   const cPtr_lexicalStringMatchAST * p = (const cPtr_lexicalStringMatchAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalStringMatchAST) ;
   const cPtr_lexicalStringMatchAST * q = (const cPtr_lexicalStringMatchAST *) inOperand.mObjectPtr ;
@@ -10729,8 +10729,8 @@ GALGAS_lexicalStringMatchAST GALGAS_lexicalStringMatchAST::extractObject (const 
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalStringNotMatchAST::objectCompare (const GALGAS_lexicalStringNotMatchAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalExpressionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalStringNotMatchAST::objectCompare (const GALGAS_lexicalStringNotMatchAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalExpressionAST::objectCompare (inOperand) ;
   const cPtr_lexicalStringNotMatchAST * p = (const cPtr_lexicalStringNotMatchAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalStringNotMatchAST) ;
   const cPtr_lexicalStringNotMatchAST * q = (const cPtr_lexicalStringNotMatchAST *) inOperand.mObjectPtr ;
@@ -10882,7 +10882,7 @@ GALGAS_lexicalStringNotMatchAST GALGAS_lexicalStringNotMatchAST::extractObject (
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalInstructionAST::objectCompare (const GALGAS_lexicalInstructionAST & inOperand) const {
+typeComparisonResult GALGAS_lexicalInstructionAST::objectCompare (const GALGAS_lexicalInstructionAST & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -10956,8 +10956,8 @@ GALGAS_lexicalInstructionAST GALGAS_lexicalInstructionAST::extractObject (const 
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalDropInstructionAST::objectCompare (const GALGAS_lexicalDropInstructionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalDropInstructionAST::objectCompare (const GALGAS_lexicalDropInstructionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalInstructionAST::objectCompare (inOperand) ;
   const cPtr_lexicalDropInstructionAST * p = (const cPtr_lexicalDropInstructionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalDropInstructionAST) ;
   const cPtr_lexicalDropInstructionAST * q = (const cPtr_lexicalDropInstructionAST *) inOperand.mObjectPtr ;
@@ -11089,8 +11089,8 @@ GALGAS_lexicalDropInstructionAST GALGAS_lexicalDropInstructionAST::extractObject
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalErrorInstructionAST::objectCompare (const GALGAS_lexicalErrorInstructionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalErrorInstructionAST::objectCompare (const GALGAS_lexicalErrorInstructionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalInstructionAST::objectCompare (inOperand) ;
   const cPtr_lexicalErrorInstructionAST * p = (const cPtr_lexicalErrorInstructionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalErrorInstructionAST) ;
   const cPtr_lexicalErrorInstructionAST * q = (const cPtr_lexicalErrorInstructionAST *) inOperand.mObjectPtr ;
@@ -11222,7 +11222,7 @@ GALGAS_lexicalErrorInstructionAST GALGAS_lexicalErrorInstructionAST::extractObje
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalLogInstructionAST::objectCompare (const GALGAS_lexicalLogInstructionAST & inOperand) const {
+typeComparisonResult GALGAS_lexicalLogInstructionAST::objectCompare (const GALGAS_lexicalLogInstructionAST & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -11315,8 +11315,8 @@ GALGAS_lexicalLogInstructionAST GALGAS_lexicalLogInstructionAST::extractObject (
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalRepeatInstructionAST::objectCompare (const GALGAS_lexicalRepeatInstructionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalRepeatInstructionAST::objectCompare (const GALGAS_lexicalRepeatInstructionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalInstructionAST::objectCompare (inOperand) ;
   const cPtr_lexicalRepeatInstructionAST * p = (const cPtr_lexicalRepeatInstructionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalRepeatInstructionAST) ;
   const cPtr_lexicalRepeatInstructionAST * q = (const cPtr_lexicalRepeatInstructionAST *) inOperand.mObjectPtr ;
@@ -11468,8 +11468,8 @@ GALGAS_lexicalRepeatInstructionAST GALGAS_lexicalRepeatInstructionAST::extractOb
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalRewindInstructionAST::objectCompare (const GALGAS_lexicalRewindInstructionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalRewindInstructionAST::objectCompare (const GALGAS_lexicalRewindInstructionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalInstructionAST::objectCompare (inOperand) ;
   const cPtr_lexicalRewindInstructionAST * p = (const cPtr_lexicalRewindInstructionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalRewindInstructionAST) ;
   const cPtr_lexicalRewindInstructionAST * q = (const cPtr_lexicalRewindInstructionAST *) inOperand.mObjectPtr ;
@@ -11621,8 +11621,8 @@ GALGAS_lexicalRewindInstructionAST GALGAS_lexicalRewindInstructionAST::extractOb
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalRoutineInstructionAST::objectCompare (const GALGAS_lexicalRoutineInstructionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalRoutineInstructionAST::objectCompare (const GALGAS_lexicalRoutineInstructionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalInstructionAST::objectCompare (inOperand) ;
   const cPtr_lexicalRoutineInstructionAST * p = (const cPtr_lexicalRoutineInstructionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalRoutineInstructionAST) ;
   const cPtr_lexicalRoutineInstructionAST * q = (const cPtr_lexicalRoutineInstructionAST *) inOperand.mObjectPtr ;
@@ -11794,8 +11794,8 @@ GALGAS_lexicalRoutineInstructionAST GALGAS_lexicalRoutineInstructionAST::extract
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalSelectInstructionAST::objectCompare (const GALGAS_lexicalSelectInstructionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalSelectInstructionAST::objectCompare (const GALGAS_lexicalSelectInstructionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalInstructionAST::objectCompare (inOperand) ;
   const cPtr_lexicalSelectInstructionAST * p = (const cPtr_lexicalSelectInstructionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalSelectInstructionAST) ;
   const cPtr_lexicalSelectInstructionAST * q = (const cPtr_lexicalSelectInstructionAST *) inOperand.mObjectPtr ;
@@ -11947,8 +11947,8 @@ GALGAS_lexicalSelectInstructionAST GALGAS_lexicalSelectInstructionAST::extractOb
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalSimpleSendInstructionAST::objectCompare (const GALGAS_lexicalSimpleSendInstructionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalSimpleSendInstructionAST::objectCompare (const GALGAS_lexicalSimpleSendInstructionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalInstructionAST::objectCompare (inOperand) ;
   const cPtr_lexicalSimpleSendInstructionAST * p = (const cPtr_lexicalSimpleSendInstructionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalSimpleSendInstructionAST) ;
   const cPtr_lexicalSimpleSendInstructionAST * q = (const cPtr_lexicalSimpleSendInstructionAST *) inOperand.mObjectPtr ;
@@ -12080,8 +12080,8 @@ GALGAS_lexicalSimpleSendInstructionAST GALGAS_lexicalSimpleSendInstructionAST::e
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalStructuredSendInstructionAST::objectCompare (const GALGAS_lexicalStructuredSendInstructionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalStructuredSendInstructionAST::objectCompare (const GALGAS_lexicalStructuredSendInstructionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalInstructionAST::objectCompare (inOperand) ;
   const cPtr_lexicalStructuredSendInstructionAST * p = (const cPtr_lexicalStructuredSendInstructionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalStructuredSendInstructionAST) ;
   const cPtr_lexicalStructuredSendInstructionAST * q = (const cPtr_lexicalStructuredSendInstructionAST *) inOperand.mObjectPtr ;
@@ -12233,8 +12233,8 @@ GALGAS_lexicalStructuredSendInstructionAST GALGAS_lexicalStructuredSendInstructi
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalTagInstructionAST::objectCompare (const GALGAS_lexicalTagInstructionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalTagInstructionAST::objectCompare (const GALGAS_lexicalTagInstructionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalInstructionAST::objectCompare (inOperand) ;
   const cPtr_lexicalTagInstructionAST * p = (const cPtr_lexicalTagInstructionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalTagInstructionAST) ;
   const cPtr_lexicalTagInstructionAST * q = (const cPtr_lexicalTagInstructionAST *) inOperand.mObjectPtr ;
@@ -12366,8 +12366,8 @@ GALGAS_lexicalTagInstructionAST GALGAS_lexicalTagInstructionAST::extractObject (
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalWarningInstructionAST::objectCompare (const GALGAS_lexicalWarningInstructionAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalWarningInstructionAST::objectCompare (const GALGAS_lexicalWarningInstructionAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalInstructionAST::objectCompare (inOperand) ;
   const cPtr_lexicalWarningInstructionAST * p = (const cPtr_lexicalWarningInstructionAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalWarningInstructionAST) ;
   const cPtr_lexicalWarningInstructionAST * q = (const cPtr_lexicalWarningInstructionAST *) inOperand.mObjectPtr ;
@@ -12499,7 +12499,7 @@ GALGAS_lexicalWarningInstructionAST GALGAS_lexicalWarningInstructionAST::extract
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST::objectCompare (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & inOperand) const {
+typeComparisonResult GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST::objectCompare (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -12573,8 +12573,8 @@ GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST GALGAS_lexicalRoutineOrFun
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalAttributeInputArgumentAST::objectCompare (const GALGAS_lexicalAttributeInputArgumentAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalAttributeInputArgumentAST::objectCompare (const GALGAS_lexicalAttributeInputArgumentAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST::objectCompare (inOperand) ;
   const cPtr_lexicalAttributeInputArgumentAST * p = (const cPtr_lexicalAttributeInputArgumentAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalAttributeInputArgumentAST) ;
   const cPtr_lexicalAttributeInputArgumentAST * q = (const cPtr_lexicalAttributeInputArgumentAST *) inOperand.mObjectPtr ;
@@ -12706,8 +12706,8 @@ GALGAS_lexicalAttributeInputArgumentAST GALGAS_lexicalAttributeInputArgumentAST:
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalCharacterInputArgumentAST::objectCompare (const GALGAS_lexicalCharacterInputArgumentAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalCharacterInputArgumentAST::objectCompare (const GALGAS_lexicalCharacterInputArgumentAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST::objectCompare (inOperand) ;
   const cPtr_lexicalCharacterInputArgumentAST * p = (const cPtr_lexicalCharacterInputArgumentAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalCharacterInputArgumentAST) ;
   const cPtr_lexicalCharacterInputArgumentAST * q = (const cPtr_lexicalCharacterInputArgumentAST *) inOperand.mObjectPtr ;
@@ -12839,8 +12839,8 @@ GALGAS_lexicalCharacterInputArgumentAST GALGAS_lexicalCharacterInputArgumentAST:
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalCurrentCharacterInputArgumentAST::objectCompare (const GALGAS_lexicalCurrentCharacterInputArgumentAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalCurrentCharacterInputArgumentAST::objectCompare (const GALGAS_lexicalCurrentCharacterInputArgumentAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST::objectCompare (inOperand) ;
   const cPtr_lexicalCurrentCharacterInputArgumentAST * p = (const cPtr_lexicalCurrentCharacterInputArgumentAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalCurrentCharacterInputArgumentAST) ;
   const cPtr_lexicalCurrentCharacterInputArgumentAST * q = (const cPtr_lexicalCurrentCharacterInputArgumentAST *) inOperand.mObjectPtr ;
@@ -12972,8 +12972,8 @@ GALGAS_lexicalCurrentCharacterInputArgumentAST GALGAS_lexicalCurrentCharacterInp
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalFunctionInputArgumentAST::objectCompare (const GALGAS_lexicalFunctionInputArgumentAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalFunctionInputArgumentAST::objectCompare (const GALGAS_lexicalFunctionInputArgumentAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST::objectCompare (inOperand) ;
   const cPtr_lexicalFunctionInputArgumentAST * p = (const cPtr_lexicalFunctionInputArgumentAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalFunctionInputArgumentAST) ;
   const cPtr_lexicalFunctionInputArgumentAST * q = (const cPtr_lexicalFunctionInputArgumentAST *) inOperand.mObjectPtr ;
@@ -13125,8 +13125,8 @@ GALGAS_lexicalFunctionInputArgumentAST GALGAS_lexicalFunctionInputArgumentAST::e
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalUnsignedInputArgumentAST::objectCompare (const GALGAS_lexicalUnsignedInputArgumentAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalUnsignedInputArgumentAST::objectCompare (const GALGAS_lexicalUnsignedInputArgumentAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST::objectCompare (inOperand) ;
   const cPtr_lexicalUnsignedInputArgumentAST * p = (const cPtr_lexicalUnsignedInputArgumentAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalUnsignedInputArgumentAST) ;
   const cPtr_lexicalUnsignedInputArgumentAST * q = (const cPtr_lexicalUnsignedInputArgumentAST *) inOperand.mObjectPtr ;
@@ -13258,7 +13258,7 @@ GALGAS_lexicalUnsignedInputArgumentAST GALGAS_lexicalUnsignedInputArgumentAST::e
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalSendDefaultActionAST::objectCompare (const GALGAS_lexicalSendDefaultActionAST & inOperand) const {
+typeComparisonResult GALGAS_lexicalSendDefaultActionAST::objectCompare (const GALGAS_lexicalSendDefaultActionAST & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -13332,8 +13332,8 @@ GALGAS_lexicalSendDefaultActionAST GALGAS_lexicalSendDefaultActionAST::extractOb
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalErrorByDefaultAST::objectCompare (const GALGAS_lexicalErrorByDefaultAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalSendDefaultActionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalErrorByDefaultAST::objectCompare (const GALGAS_lexicalErrorByDefaultAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalSendDefaultActionAST::objectCompare (inOperand) ;
   const cPtr_lexicalErrorByDefaultAST * p = (const cPtr_lexicalErrorByDefaultAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalErrorByDefaultAST) ;
   const cPtr_lexicalErrorByDefaultAST * q = (const cPtr_lexicalErrorByDefaultAST *) inOperand.mObjectPtr ;
@@ -13465,8 +13465,8 @@ GALGAS_lexicalErrorByDefaultAST GALGAS_lexicalErrorByDefaultAST::extractObject (
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalSendTerminalByDefaultAST::objectCompare (const GALGAS_lexicalSendTerminalByDefaultAST & inOperand) const {
-  enumComparisonResult result = GALGAS_lexicalSendDefaultActionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_lexicalSendTerminalByDefaultAST::objectCompare (const GALGAS_lexicalSendTerminalByDefaultAST & inOperand) const {
+  typeComparisonResult result = GALGAS_lexicalSendDefaultActionAST::objectCompare (inOperand) ;
   const cPtr_lexicalSendTerminalByDefaultAST * p = (const cPtr_lexicalSendTerminalByDefaultAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_lexicalSendTerminalByDefaultAST) ;
   const cPtr_lexicalSendTerminalByDefaultAST * q = (const cPtr_lexicalSendTerminalByDefaultAST *) inOperand.mObjectPtr ;

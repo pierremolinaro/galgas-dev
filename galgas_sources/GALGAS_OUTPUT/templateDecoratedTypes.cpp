@@ -53,7 +53,7 @@ class cCollectionElement_templateInstructionIfBranchListForGeneration : public c
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -104,9 +104,9 @@ void cCollectionElement_templateInstructionIfBranchListForGeneration::descriptio
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_templateInstructionIfBranchListForGeneration::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_templateInstructionIfBranchListForGeneration::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_templateInstructionIfBranchListForGeneration * operand = (cCollectionElement_templateInstructionIfBranchListForGeneration *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mExpression.objectCompare (operand->mAttribute_mExpression) ;
   }
@@ -460,7 +460,7 @@ class cCollectionElement_templateInstructionSwitchBranchListForGeneration : publ
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -511,9 +511,9 @@ void cCollectionElement_templateInstructionSwitchBranchListForGeneration::descri
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_templateInstructionSwitchBranchListForGeneration::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_templateInstructionSwitchBranchListForGeneration::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_templateInstructionSwitchBranchListForGeneration * operand = (cCollectionElement_templateInstructionSwitchBranchListForGeneration *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mConstantList.objectCompare (operand->mAttribute_mConstantList) ;
   }
@@ -852,8 +852,8 @@ GALGAS_templateInstructionSwitchBranchListForGeneration GALGAS_templateInstructi
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateBlockInstructionForGeneration::objectCompare (const GALGAS_templateBlockInstructionForGeneration & inOperand) const {
-  enumComparisonResult result = GALGAS_templateInstructionForGeneration::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateBlockInstructionForGeneration::objectCompare (const GALGAS_templateBlockInstructionForGeneration & inOperand) const {
+  typeComparisonResult result = GALGAS_templateInstructionForGeneration::objectCompare (inOperand) ;
   const cPtr_templateBlockInstructionForGeneration * p = (const cPtr_templateBlockInstructionForGeneration *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateBlockInstructionForGeneration) ;
   const cPtr_templateBlockInstructionForGeneration * q = (const cPtr_templateBlockInstructionForGeneration *) inOperand.mObjectPtr ;
@@ -1025,8 +1025,8 @@ GALGAS_templateBlockInstructionForGeneration GALGAS_templateBlockInstructionForG
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateInstructionExpressionForGeneration::objectCompare (const GALGAS_templateInstructionExpressionForGeneration & inOperand) const {
-  enumComparisonResult result = GALGAS_templateInstructionForGeneration::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateInstructionExpressionForGeneration::objectCompare (const GALGAS_templateInstructionExpressionForGeneration & inOperand) const {
+  typeComparisonResult result = GALGAS_templateInstructionForGeneration::objectCompare (inOperand) ;
   const cPtr_templateInstructionExpressionForGeneration * p = (const cPtr_templateInstructionExpressionForGeneration *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateInstructionExpressionForGeneration) ;
   const cPtr_templateInstructionExpressionForGeneration * q = (const cPtr_templateInstructionExpressionForGeneration *) inOperand.mObjectPtr ;
@@ -1158,8 +1158,8 @@ GALGAS_templateInstructionExpressionForGeneration GALGAS_templateInstructionExpr
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateInstructionForeachForGeneration::objectCompare (const GALGAS_templateInstructionForeachForGeneration & inOperand) const {
-  enumComparisonResult result = GALGAS_templateInstructionForGeneration::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateInstructionForeachForGeneration::objectCompare (const GALGAS_templateInstructionForeachForGeneration & inOperand) const {
+  typeComparisonResult result = GALGAS_templateInstructionForGeneration::objectCompare (inOperand) ;
   const cPtr_templateInstructionForeachForGeneration * p = (const cPtr_templateInstructionForeachForGeneration *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateInstructionForeachForGeneration) ;
   const cPtr_templateInstructionForeachForGeneration * q = (const cPtr_templateInstructionForeachForGeneration *) inOperand.mObjectPtr ;
@@ -1431,7 +1431,7 @@ GALGAS_templateInstructionForeachForGeneration GALGAS_templateInstructionForeach
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateInstructionGetColumnLocationForGeneration::objectCompare (const GALGAS_templateInstructionGetColumnLocationForGeneration & inOperand) const {
+typeComparisonResult GALGAS_templateInstructionGetColumnLocationForGeneration::objectCompare (const GALGAS_templateInstructionGetColumnLocationForGeneration & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -1524,7 +1524,7 @@ GALGAS_templateInstructionGetColumnLocationForGeneration GALGAS_templateInstruct
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateInstructionGotoColumnLocationForGeneration::objectCompare (const GALGAS_templateInstructionGotoColumnLocationForGeneration & inOperand) const {
+typeComparisonResult GALGAS_templateInstructionGotoColumnLocationForGeneration::objectCompare (const GALGAS_templateInstructionGotoColumnLocationForGeneration & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -1617,8 +1617,8 @@ GALGAS_templateInstructionGotoColumnLocationForGeneration GALGAS_templateInstruc
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateInstructionIfForGeneration::objectCompare (const GALGAS_templateInstructionIfForGeneration & inOperand) const {
-  enumComparisonResult result = GALGAS_templateInstructionForGeneration::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateInstructionIfForGeneration::objectCompare (const GALGAS_templateInstructionIfForGeneration & inOperand) const {
+  typeComparisonResult result = GALGAS_templateInstructionForGeneration::objectCompare (inOperand) ;
   const cPtr_templateInstructionIfForGeneration * p = (const cPtr_templateInstructionIfForGeneration *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateInstructionIfForGeneration) ;
   const cPtr_templateInstructionIfForGeneration * q = (const cPtr_templateInstructionIfForGeneration *) inOperand.mObjectPtr ;
@@ -1770,8 +1770,8 @@ GALGAS_templateInstructionIfForGeneration GALGAS_templateInstructionIfForGenerat
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateInstructionStringForGeneration::objectCompare (const GALGAS_templateInstructionStringForGeneration & inOperand) const {
-  enumComparisonResult result = GALGAS_templateInstructionForGeneration::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateInstructionStringForGeneration::objectCompare (const GALGAS_templateInstructionStringForGeneration & inOperand) const {
+  typeComparisonResult result = GALGAS_templateInstructionForGeneration::objectCompare (inOperand) ;
   const cPtr_templateInstructionStringForGeneration * p = (const cPtr_templateInstructionStringForGeneration *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateInstructionStringForGeneration) ;
   const cPtr_templateInstructionStringForGeneration * q = (const cPtr_templateInstructionStringForGeneration *) inOperand.mObjectPtr ;
@@ -1903,8 +1903,8 @@ GALGAS_templateInstructionStringForGeneration GALGAS_templateInstructionStringFo
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateInstructionSwitchForGeneration::objectCompare (const GALGAS_templateInstructionSwitchForGeneration & inOperand) const {
-  enumComparisonResult result = GALGAS_templateInstructionForGeneration::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_templateInstructionSwitchForGeneration::objectCompare (const GALGAS_templateInstructionSwitchForGeneration & inOperand) const {
+  typeComparisonResult result = GALGAS_templateInstructionForGeneration::objectCompare (inOperand) ;
   const cPtr_templateInstructionSwitchForGeneration * p = (const cPtr_templateInstructionSwitchForGeneration *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_templateInstructionSwitchForGeneration) ;
   const cPtr_templateInstructionSwitchForGeneration * q = (const cPtr_templateInstructionSwitchForGeneration *) inOperand.mObjectPtr ;

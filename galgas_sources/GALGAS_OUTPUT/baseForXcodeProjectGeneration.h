@@ -1632,7 +1632,7 @@ class GALGAS_XcodeProjectDescription : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const PMSInt32 inIndentation) const ;
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_XcodeProjectDescription & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_XcodeProjectDescription & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -2095,7 +2095,7 @@ class GALGAS_Xcode_5F_PBXBuildFile : public AC_GALGAS_class {
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXBuildFile & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXBuildFile & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -2152,7 +2152,7 @@ class GALGAS_Xcode_5F_PBXFileReference_5F_abstract : public AC_GALGAS_class {
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_abstract & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_abstract & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -2216,7 +2216,7 @@ class GALGAS_Xcode_5F_PBXFileReference_5F_cppSourceFile : public GALGAS_Xcode_5F
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_cppSourceFile & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_cppSourceFile & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -2276,7 +2276,7 @@ class GALGAS_Xcode_5F_PBXFileReference_5F_frameworkFile : public GALGAS_Xcode_5F
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_frameworkFile & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_frameworkFile & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -2336,7 +2336,7 @@ class GALGAS_Xcode_5F_PBXFileReference_5F_gifFile : public GALGAS_Xcode_5F_PBXFi
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_gifFile & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_gifFile & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -2396,7 +2396,7 @@ class GALGAS_Xcode_5F_PBXFileReference_5F_hSourceFile : public GALGAS_Xcode_5F_P
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_hSourceFile & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_hSourceFile & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -2456,7 +2456,7 @@ class GALGAS_Xcode_5F_PBXFileReference_5F_icnsFile : public GALGAS_Xcode_5F_PBXF
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_icnsFile & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_icnsFile & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -2516,7 +2516,7 @@ class GALGAS_Xcode_5F_PBXFileReference_5F_mSourceFile : public GALGAS_Xcode_5F_P
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_mSourceFile & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_mSourceFile & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -2576,7 +2576,7 @@ class GALGAS_Xcode_5F_PBXFileReference_5F_mmSourceFile : public GALGAS_Xcode_5F_
                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_mmSourceFile & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_mmSourceFile & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -2636,7 +2636,7 @@ class GALGAS_Xcode_5F_PBXFileReference_5F_pchSourceFile : public GALGAS_Xcode_5F
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_pchSourceFile & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_pchSourceFile & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -2696,7 +2696,7 @@ class GALGAS_Xcode_5F_PBXFileReference_5F_plistFile : public GALGAS_Xcode_5F_PBX
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_plistFile & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_plistFile & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -2757,7 +2757,7 @@ class GALGAS_Xcode_5F_PBXFileReference_5F_plistStringFile : public GALGAS_Xcode_
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_plistStringFile & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_plistStringFile & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -2819,7 +2819,7 @@ class GALGAS_Xcode_5F_PBXFileReference_5F_pngFile : public GALGAS_Xcode_5F_PBXFi
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_pngFile & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_pngFile & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -2879,7 +2879,7 @@ class GALGAS_Xcode_5F_PBXFileReference_5F_tiffFile : public GALGAS_Xcode_5F_PBXF
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_tiffFile & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_tiffFile & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -2940,7 +2940,7 @@ class GALGAS_Xcode_5F_PBXFileReference_5F_xibFile : public GALGAS_Xcode_5F_PBXFi
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_xibFile & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_xibFile & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -2995,7 +2995,7 @@ class GALGAS_Xcode_5F_productFileReference : public GALGAS_Xcode_5F_PBXFileRefer
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_productFileReference & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_productFileReference & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3055,7 +3055,7 @@ class GALGAS_Xcode_5F_PBXFileReference_5F_Application : public GALGAS_Xcode_5F_p
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_Application & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_Application & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3115,7 +3115,7 @@ class GALGAS_Xcode_5F_PBXFileReference_5F_CompiledMachOExecutable : public GALGA
                                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_CompiledMachOExecutable & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_CompiledMachOExecutable & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3176,7 +3176,7 @@ class GALGAS_Xcode_5F_PBXFrameworksBuildPhase : public AC_GALGAS_class {
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFrameworksBuildPhase & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFrameworksBuildPhase & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3244,7 +3244,7 @@ class GALGAS_Xcode_5F_PBXGroup : public AC_GALGAS_class {
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXGroup & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXGroup & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3313,7 +3313,7 @@ class GALGAS_Xcode_5F_PBXResourcesBuildPhase : public AC_GALGAS_class {
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXResourcesBuildPhase & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXResourcesBuildPhase & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3380,7 +3380,7 @@ class GALGAS_Xcode_5F_PBXSourcesBuildPhase : public AC_GALGAS_class {
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXSourcesBuildPhase & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXSourcesBuildPhase & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3447,7 +3447,7 @@ class GALGAS_Xcode_5F_XCBuildConfiguration : public AC_GALGAS_class {
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_XCBuildConfiguration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_XCBuildConfiguration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3513,7 +3513,7 @@ class GALGAS_Xcode_5F_targetDependencyDescription : public AC_GALGAS_class {
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_Xcode_5F_targetDependencyDescription & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_targetDependencyDescription & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3644,7 +3644,7 @@ class cMapElement_Xcode_5F_PBXFileReference_5F_map : public cMapElement {
                                                          COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;

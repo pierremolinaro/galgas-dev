@@ -994,7 +994,7 @@ class GALGAS_syntaxComponentAST : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const PMSInt32 inIndentation) const ;
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_syntaxComponentAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_syntaxComponentAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -1070,7 +1070,7 @@ class GALGAS_nonterminalCallInstruction : public GALGAS_syntaxInstructionAST {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_nonterminalCallInstruction & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_nonterminalCallInstruction & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -1141,7 +1141,7 @@ class GALGAS_parseLoopInstruction : public GALGAS_syntaxInstructionAST {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_parseLoopInstruction & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_parseLoopInstruction & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -1214,7 +1214,7 @@ class GALGAS_parseRewindInstruction : public GALGAS_syntaxInstructionAST {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_parseRewindInstruction & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_parseRewindInstruction & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -1283,7 +1283,7 @@ class GALGAS_parseWhenInstruction : public GALGAS_syntaxInstructionAST {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_parseWhenInstruction & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_parseWhenInstruction & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -1358,7 +1358,7 @@ class GALGAS_repeatInstruction : public GALGAS_syntaxInstructionAST {
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_repeatInstruction & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_repeatInstruction & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -1427,7 +1427,7 @@ class GALGAS_selectInstruction : public GALGAS_syntaxInstructionAST {
                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_selectInstruction & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_selectInstruction & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -1493,7 +1493,7 @@ class GALGAS_terminalCheckInstruction : public GALGAS_syntaxInstructionAST {
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_terminalCheckInstruction & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_terminalCheckInstruction & inOperand) const ;
 
 //--------------------------------- Modifiers
 

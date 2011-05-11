@@ -113,9 +113,9 @@ void cMapElement_nonterminalLabelMap::description (C_String & ioString, const PM
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_nonterminalLabelMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_nonterminalLabelMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_nonterminalLabelMap * operand = (cMapElement_nonterminalLabelMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mSignatureForGeneration.objectCompare (operand->mAttribute_mSignatureForGeneration) ;
   }
@@ -452,9 +452,9 @@ void cMapElement_nonterminalMap::description (C_String & ioString, const PMSInt3
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_nonterminalMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_nonterminalMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_nonterminalMap * operand = (cMapElement_nonterminalMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mLabelMap.objectCompare (operand->mAttribute_mLabelMap) ;
   }
@@ -730,7 +730,7 @@ class cCollectionElement_ruleLabelImplementationList : public cCollectionElement
                                                            COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -799,9 +799,9 @@ void cCollectionElement_ruleLabelImplementationList::description (C_String & ioS
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_ruleLabelImplementationList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_ruleLabelImplementationList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_ruleLabelImplementationList * operand = (cCollectionElement_ruleLabelImplementationList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mLabelName.objectCompare (operand->mAttribute_mLabelName) ;
   }
@@ -1327,7 +1327,7 @@ class cCollectionElement_ruleDeclarationList : public cCollectionElement {
                                                    COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -1390,9 +1390,9 @@ void cCollectionElement_ruleDeclarationList::description (C_String & ioString, c
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_ruleDeclarationList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_ruleDeclarationList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_ruleDeclarationList * operand = (cCollectionElement_ruleDeclarationList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mNonterminalName.objectCompare (operand->mAttribute_mNonterminalName) ;
   }
@@ -2624,8 +2624,8 @@ void routine_semanticAnalysisOfSyntaxComponent (const GALGAS_nonterminalDeclarat
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_syntaxDeclarationForGeneration::objectCompare (const GALGAS_syntaxDeclarationForGeneration & inOperand) const {
-  enumComparisonResult result = GALGAS_semanticDeclarationForGeneration::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_syntaxDeclarationForGeneration::objectCompare (const GALGAS_syntaxDeclarationForGeneration & inOperand) const {
+  typeComparisonResult result = GALGAS_semanticDeclarationForGeneration::objectCompare (inOperand) ;
   const cPtr_syntaxDeclarationForGeneration * p = (const cPtr_syntaxDeclarationForGeneration *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_syntaxDeclarationForGeneration) ;
   const cPtr_syntaxDeclarationForGeneration * q = (const cPtr_syntaxDeclarationForGeneration *) inOperand.mObjectPtr ;

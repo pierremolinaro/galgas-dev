@@ -52,7 +52,7 @@ class cCollectionElement_guiSimpleAttributeListAST : public cCollectionElement {
                                                          COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -103,9 +103,9 @@ void cCollectionElement_guiSimpleAttributeListAST::description (C_String & ioStr
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_guiSimpleAttributeListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_guiSimpleAttributeListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_guiSimpleAttributeListAST * operand = (cCollectionElement_guiSimpleAttributeListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mKey.objectCompare (operand->mAttribute_mKey) ;
   }
@@ -461,7 +461,7 @@ class cCollectionElement_guiCompoundAttributeListAST : public cCollectionElement
                                                            COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -518,9 +518,9 @@ void cCollectionElement_guiCompoundAttributeListAST::description (C_String & ioS
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_guiCompoundAttributeListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_guiCompoundAttributeListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_guiCompoundAttributeListAST * operand = (cCollectionElement_guiCompoundAttributeListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mKey.objectCompare (operand->mAttribute_mKey) ;
   }
@@ -930,7 +930,7 @@ class cCollectionElement_guiLabelListAST : public cCollectionElement {
                                                COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -981,9 +981,9 @@ void cCollectionElement_guiLabelListAST::description (C_String & ioString, const
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_guiLabelListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_guiLabelListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_guiLabelListAST * operand = (cCollectionElement_guiLabelListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mTerminalList.objectCompare (operand->mAttribute_mTerminalList) ;
   }
@@ -1341,7 +1341,7 @@ class cCollectionElement_withLexiqueListAST : public cCollectionElement {
                                                   COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -1404,9 +1404,9 @@ void cCollectionElement_withLexiqueListAST::description (C_String & ioString, co
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_withLexiqueListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_withLexiqueListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_withLexiqueListAST * operand = (cCollectionElement_withLexiqueListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mLexiqueFileName.objectCompare (operand->mAttribute_mLexiqueFileName) ;
   }
@@ -1922,8 +1922,8 @@ GALGAS_guiComponentAST GALGAS_guiComponentAST::constructor_new (const GALGAS_lst
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_guiComponentAST::objectCompare (const GALGAS_guiComponentAST & inOperand) const {
-   enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_guiComponentAST::objectCompare (const GALGAS_guiComponentAST & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_mGUIName.objectCompare (inOperand.mAttribute_mGUIName) ;
   }

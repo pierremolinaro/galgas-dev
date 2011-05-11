@@ -326,8 +326,8 @@ void GALGAS_lexicalTypeEnum::description (C_String & ioString,
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexicalTypeEnum::objectCompare (const GALGAS_lexicalTypeEnum & inOperand) const {
-  enumComparisonResult result = kOperandNotValid ;
+typeComparisonResult GALGAS_lexicalTypeEnum::objectCompare (const GALGAS_lexicalTypeEnum & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
     if (mEnum < inOperand.mEnum) {
       result = kFirstOperandLowerThanSecond ;
@@ -399,7 +399,7 @@ class cCollectionElement_lexicalTypeList : public cCollectionElement {
                                                COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -444,9 +444,9 @@ void cCollectionElement_lexicalTypeList::description (C_String & ioString, const
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_lexicalTypeList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_lexicalTypeList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalTypeList * operand = (cCollectionElement_lexicalTypeList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mLexicalType.objectCompare (operand->mAttribute_mLexicalType) ;
   }
@@ -761,9 +761,9 @@ void cMapElement_lexicalTypeMap::description (C_String & ioString, const PMSInt3
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_lexicalTypeMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_lexicalTypeMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_lexicalTypeMap * operand = (cMapElement_lexicalTypeMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mLexicalType.objectCompare (operand->mAttribute_mLexicalType) ;
   }
@@ -1006,9 +1006,9 @@ void cMapElement_lexicalAttributeMap::description (C_String & ioString, const PM
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_lexicalAttributeMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_lexicalAttributeMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_lexicalAttributeMap * operand = (cMapElement_lexicalAttributeMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mLexicalType.objectCompare (operand->mAttribute_mLexicalType) ;
   }
@@ -1234,7 +1234,7 @@ class cCollectionElement_lexicalSentValueList : public cCollectionElement {
                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -1285,9 +1285,9 @@ void cCollectionElement_lexicalSentValueList::description (C_String & ioString, 
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_lexicalSentValueList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_lexicalSentValueList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalSentValueList * operand = (cCollectionElement_lexicalSentValueList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mLexicalAttributeName.objectCompare (operand->mAttribute_mLexicalAttributeName) ;
   }
@@ -1658,9 +1658,9 @@ void cMapElement_terminalMap::description (C_String & ioString, const PMSInt32 i
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_terminalMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_terminalMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_terminalMap * operand = (cMapElement_terminalMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mSentAttributeList.objectCompare (operand->mAttribute_mSentAttributeList) ;
   }
@@ -1894,7 +1894,7 @@ class cCollectionElement_terminalList : public cCollectionElement {
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -1969,9 +1969,9 @@ void cCollectionElement_terminalList::description (C_String & ioString, const PM
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_terminalList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_terminalList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_terminalList * operand = (cCollectionElement_terminalList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mTerminalName.objectCompare (operand->mAttribute_mTerminalName) ;
   }
@@ -2572,9 +2572,9 @@ void cMapElement_lexicalExplicitTokenListMap::description (C_String & ioString, 
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_lexicalExplicitTokenListMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_lexicalExplicitTokenListMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_lexicalExplicitTokenListMap * operand = (cMapElement_lexicalExplicitTokenListMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mTerminal.objectCompare (operand->mAttribute_mTerminal) ;
   }
@@ -2852,13 +2852,13 @@ class cSortedListElement_tokenSortedlist : public cSortedListElement {
   public : virtual cSortedListElement * copy (void) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Description
  public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
 
 //--- Virtual method that comparing element for sorting
-  public : virtual enumComparisonResult compareForSorting (const cSortedListElement * inOperand) const ;
+  public : virtual typeComparisonResult compareForSorting (const cSortedListElement * inOperand) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -2906,8 +2906,8 @@ void cSortedListElement_tokenSortedlist::description (C_String & ioString, const
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cSortedListElement_tokenSortedlist::compare (const cCollectionElement * inOperand) const {
-  enumComparisonResult result = kOperandNotValid ;
+typeComparisonResult cSortedListElement_tokenSortedlist::compare (const cCollectionElement * inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
   if (NULL != inOperand) {
     result = kOperandEqual ;
     cSortedListElement_tokenSortedlist * operand = (cSortedListElement_tokenSortedlist *) inOperand ;
@@ -2933,8 +2933,8 @@ AC_GALGAS_sortedlist () {
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cSortedListElement_tokenSortedlist::compareForSorting (const cSortedListElement * inOperand) const {
-  enumComparisonResult result = kOperandEqual ;
+typeComparisonResult cSortedListElement_tokenSortedlist::compareForSorting (const cSortedListElement * inOperand) const {
+  typeComparisonResult result = kOperandEqual ;
   const cSortedListElement_tokenSortedlist * operand = (const cSortedListElement_tokenSortedlist *) inOperand ;
   macroValidSharedObject (operand, const cSortedListElement_tokenSortedlist) ;
   if (result == kOperandEqual) {
@@ -3220,9 +3220,9 @@ void cMapElement_lexicalExplicitTokenListMapMap::description (C_String & ioStrin
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_lexicalExplicitTokenListMapMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_lexicalExplicitTokenListMapMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_lexicalExplicitTokenListMapMap * operand = (cMapElement_lexicalExplicitTokenListMapMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mExplicitTokenListMap.objectCompare (operand->mAttribute_mExplicitTokenListMap) ;
   }
@@ -3559,9 +3559,9 @@ void cMapElement_lexicalMessageMap::description (C_String & ioString, const PMSI
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_lexicalMessageMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_lexicalMessageMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_lexicalMessageMap * operand = (cMapElement_lexicalMessageMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mLexicalMessage.objectCompare (operand->mAttribute_mLexicalMessage) ;
   }
@@ -3833,7 +3833,7 @@ class cCollectionElement_lexicalRoutineFormalArgumentList : public cCollectionEl
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -3890,9 +3890,9 @@ void cCollectionElement_lexicalRoutineFormalArgumentList::description (C_String 
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_lexicalRoutineFormalArgumentList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_lexicalRoutineFormalArgumentList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalRoutineFormalArgumentList * operand = (cCollectionElement_lexicalRoutineFormalArgumentList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mLexicalFormalArgumentMode.objectCompare (operand->mAttribute_mLexicalFormalArgumentMode) ;
   }
@@ -4331,9 +4331,9 @@ void cMapElement_lexicalRoutineMap::description (C_String & ioString, const PMSI
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_lexicalRoutineMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_lexicalRoutineMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_lexicalRoutineMap * operand = (cMapElement_lexicalRoutineMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mLexicalRoutineFormalArgumentList.objectCompare (operand->mAttribute_mLexicalRoutineFormalArgumentList) ;
   }
@@ -4647,7 +4647,7 @@ class cCollectionElement_lexicalFunctionFormalArgumentList : public cCollectionE
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -4698,9 +4698,9 @@ void cCollectionElement_lexicalFunctionFormalArgumentList::description (C_String
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_lexicalFunctionFormalArgumentList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_lexicalFunctionFormalArgumentList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_lexicalFunctionFormalArgumentList * operand = (cCollectionElement_lexicalFunctionFormalArgumentList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mLexicalType.objectCompare (operand->mAttribute_mLexicalType) ;
   }
@@ -5089,9 +5089,9 @@ void cMapElement_lexicalFunctionMap::description (C_String & ioString, const PMS
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_lexicalFunctionMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_lexicalFunctionMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_lexicalFunctionMap * operand = (cMapElement_lexicalFunctionMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mLexicalTypeList.objectCompare (operand->mAttribute_mLexicalTypeList) ;
   }
@@ -5451,7 +5451,7 @@ class cCollectionElement_templateDelimitorList : public cCollectionElement {
                                                      COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -5508,9 +5508,9 @@ void cCollectionElement_templateDelimitorList::description (C_String & ioString,
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_templateDelimitorList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_templateDelimitorList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_templateDelimitorList * operand = (cCollectionElement_templateDelimitorList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mStartString.objectCompare (operand->mAttribute_mStartString) ;
   }
@@ -5943,9 +5943,9 @@ void cMapElement_styleMap::description (C_String & ioString, const PMSInt32 inIn
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_styleMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_styleMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_styleMap * operand = (cMapElement_styleMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mComment.objectCompare (operand->mAttribute_mComment) ;
   }
@@ -6226,9 +6226,9 @@ void cMapElement_lexicalTagMap::description (C_String & /* ioString */, const PM
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_lexicalTagMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_lexicalTagMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_lexicalTagMap * operand = (cMapElement_lexicalTagMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   return result ;
 }
 
@@ -6496,8 +6496,8 @@ GALGAS_lexiqueAnalysisContext GALGAS_lexiqueAnalysisContext::constructor_new (co
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_lexiqueAnalysisContext::objectCompare (const GALGAS_lexiqueAnalysisContext & inOperand) const {
-   enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_lexiqueAnalysisContext::objectCompare (const GALGAS_lexiqueAnalysisContext & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_mLexicalRoutineMessageMap.objectCompare (inOperand.mAttribute_mLexicalRoutineMessageMap) ;
   }

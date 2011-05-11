@@ -272,9 +272,9 @@ void cMapElement_categoryMethodMapForGlobalCheckings::description (C_String & /*
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_categoryMethodMapForGlobalCheckings::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_categoryMethodMapForGlobalCheckings::compare (const cCollectionElement * inOperand) const {
   cMapElement_categoryMethodMapForGlobalCheckings * operand = (cMapElement_categoryMethodMapForGlobalCheckings *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   return result ;
 }
 
@@ -437,9 +437,9 @@ void cMapElement_categoryReaderMapForGlobalCheckings::description (C_String & /*
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_categoryReaderMapForGlobalCheckings::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_categoryReaderMapForGlobalCheckings::compare (const cCollectionElement * inOperand) const {
   cMapElement_categoryReaderMapForGlobalCheckings * operand = (cMapElement_categoryReaderMapForGlobalCheckings *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   return result ;
 }
 

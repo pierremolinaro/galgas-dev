@@ -1,15 +1,15 @@
 %if [CURRENT_ATTRIBUTE_LIST length] == 0 then
   %//---------------------------------------------------------------------------*\n\n%
-  %enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {\n%
+  %typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {\n%
   %  return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;\n%
   %}\n\n%
 else
   %//---------------------------------------------------------------------------*\n\n%
-  %enumComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {\n%
+  %typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {\n%
   if SUPER_TYPE_IDENTIFIER == "" then
-    %  enumComparisonResult result = kOperandEqual ;\n%
+    %  typeComparisonResult result = kOperandEqual ;\n%
   else
-    %  enumComparisonResult result = %if SUPER_TYPE_IDENTIFIER == "" then %AC_GALGAS_class% else %GALGAS_%!SUPER_TYPE_IDENTIFIER end if%::objectCompare (inOperand) ;\n%
+    %  typeComparisonResult result = %if SUPER_TYPE_IDENTIFIER == "" then %AC_GALGAS_class% else %GALGAS_%!SUPER_TYPE_IDENTIFIER end if%::objectCompare (inOperand) ;\n%
   end if
   if [CURRENT_ATTRIBUTE_LIST length] > 0 then
     %  const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%

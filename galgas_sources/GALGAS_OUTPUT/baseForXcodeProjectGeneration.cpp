@@ -52,7 +52,7 @@ class cCollectionElement_XcodeObjectReferenceList : public cCollectionElement {
                                                         COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -103,9 +103,9 @@ void cCollectionElement_XcodeObjectReferenceList::description (C_String & ioStri
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_XcodeObjectReferenceList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_XcodeObjectReferenceList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_XcodeObjectReferenceList * operand = (cCollectionElement_XcodeObjectReferenceList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mRefString.objectCompare (operand->mAttribute_mRefString) ;
   }
@@ -520,9 +520,9 @@ void cMapElement_Xcode_5F_PBXFileReference_5F_map::description (C_String & ioStr
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_Xcode_5F_PBXFileReference_5F_map::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_Xcode_5F_PBXFileReference_5F_map::compare (const cCollectionElement * inOperand) const {
   cMapElement_Xcode_5F_PBXFileReference_5F_map * operand = (cMapElement_Xcode_5F_PBXFileReference_5F_map *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mFileReference.objectCompare (operand->mAttribute_mFileReference) ;
   }
@@ -746,7 +746,7 @@ class cCollectionElement_Xcode_5F_PBXBuildFile_5F_list : public cCollectionEleme
                                                              COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -791,9 +791,9 @@ void cCollectionElement_Xcode_5F_PBXBuildFile_5F_list::description (C_String & i
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_Xcode_5F_PBXBuildFile_5F_list::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_Xcode_5F_PBXBuildFile_5F_list::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_Xcode_5F_PBXBuildFile_5F_list * operand = (cCollectionElement_Xcode_5F_PBXBuildFile_5F_list *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mFile.objectCompare (operand->mAttribute_mFile) ;
   }
@@ -1089,7 +1089,7 @@ class cCollectionElement_Xcode_5F_PBXSourcesBuildPhase_5F_list : public cCollect
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -1134,9 +1134,9 @@ void cCollectionElement_Xcode_5F_PBXSourcesBuildPhase_5F_list::description (C_St
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_Xcode_5F_PBXSourcesBuildPhase_5F_list::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_Xcode_5F_PBXSourcesBuildPhase_5F_list::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_Xcode_5F_PBXSourcesBuildPhase_5F_list * operand = (cCollectionElement_Xcode_5F_PBXSourcesBuildPhase_5F_list *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mBuildPhase.objectCompare (operand->mAttribute_mBuildPhase) ;
   }
@@ -1432,7 +1432,7 @@ class cCollectionElement_Xcode_5F_PBXResourcesBuildPhase_5F_list : public cColle
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -1477,9 +1477,9 @@ void cCollectionElement_Xcode_5F_PBXResourcesBuildPhase_5F_list::description (C_
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_Xcode_5F_PBXResourcesBuildPhase_5F_list::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_Xcode_5F_PBXResourcesBuildPhase_5F_list::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_Xcode_5F_PBXResourcesBuildPhase_5F_list * operand = (cCollectionElement_Xcode_5F_PBXResourcesBuildPhase_5F_list *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mBuildPhase.objectCompare (operand->mAttribute_mBuildPhase) ;
   }
@@ -1775,7 +1775,7 @@ class cCollectionElement_Xcode_5F_PBXFrameworksBuildPhase_5F_list : public cColl
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -1820,9 +1820,9 @@ void cCollectionElement_Xcode_5F_PBXFrameworksBuildPhase_5F_list::description (C
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_Xcode_5F_PBXFrameworksBuildPhase_5F_list::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_Xcode_5F_PBXFrameworksBuildPhase_5F_list::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_Xcode_5F_PBXFrameworksBuildPhase_5F_list * operand = (cCollectionElement_Xcode_5F_PBXFrameworksBuildPhase_5F_list *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mBuildPhase.objectCompare (operand->mAttribute_mBuildPhase) ;
   }
@@ -2118,7 +2118,7 @@ class cCollectionElement_Xcode_5F_PBXGroup_5F_list : public cCollectionElement {
                                                          COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2163,9 +2163,9 @@ void cCollectionElement_Xcode_5F_PBXGroup_5F_list::description (C_String & ioStr
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_Xcode_5F_PBXGroup_5F_list::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_Xcode_5F_PBXGroup_5F_list::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_Xcode_5F_PBXGroup_5F_list * operand = (cCollectionElement_Xcode_5F_PBXGroup_5F_list *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mGroup.objectCompare (operand->mAttribute_mGroup) ;
   }
@@ -2461,7 +2461,7 @@ class cCollectionElement_Xcode_5F_XCBuildConfiguration_5F_list : public cCollect
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2506,9 +2506,9 @@ void cCollectionElement_Xcode_5F_XCBuildConfiguration_5F_list::description (C_St
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_Xcode_5F_XCBuildConfiguration_5F_list::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_Xcode_5F_XCBuildConfiguration_5F_list::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_Xcode_5F_XCBuildConfiguration_5F_list * operand = (cCollectionElement_Xcode_5F_XCBuildConfiguration_5F_list *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mBuildConfig.objectCompare (operand->mAttribute_mBuildConfig) ;
   }
@@ -2818,7 +2818,7 @@ class cCollectionElement_Xcode_5F_PBXNativeTarget_5F_list : public cCollectionEl
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2905,9 +2905,9 @@ void cCollectionElement_Xcode_5F_PBXNativeTarget_5F_list::description (C_String 
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_Xcode_5F_PBXNativeTarget_5F_list::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_Xcode_5F_PBXNativeTarget_5F_list::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_Xcode_5F_PBXNativeTarget_5F_list * operand = (cCollectionElement_Xcode_5F_PBXNativeTarget_5F_list *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mTargetKey.objectCompare (operand->mAttribute_mTargetKey) ;
   }
@@ -3595,7 +3595,7 @@ class cCollectionElement_Xcode_5F_targetDependencyDescription_5F_list : public c
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -3640,9 +3640,9 @@ void cCollectionElement_Xcode_5F_targetDependencyDescription_5F_list::descriptio
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_Xcode_5F_targetDependencyDescription_5F_list::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_Xcode_5F_targetDependencyDescription_5F_list::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_Xcode_5F_targetDependencyDescription_5F_list * operand = (cCollectionElement_Xcode_5F_targetDependencyDescription_5F_list *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mDependency.objectCompare (operand->mAttribute_mDependency) ;
   }
@@ -3942,7 +3942,7 @@ class cCollectionElement_Xcode_5F_PBXVariantGroup_5F_list : public cCollectionEl
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -3999,9 +3999,9 @@ void cCollectionElement_Xcode_5F_PBXVariantGroup_5F_list::description (C_String 
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_Xcode_5F_PBXVariantGroup_5F_list::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_Xcode_5F_PBXVariantGroup_5F_list::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_Xcode_5F_PBXVariantGroup_5F_list * operand = (cCollectionElement_Xcode_5F_PBXVariantGroup_5F_list *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mPBXVariantKey.objectCompare (operand->mAttribute_mPBXVariantKey) ;
   }
@@ -4509,8 +4509,8 @@ GALGAS_XcodeProjectDescription GALGAS_XcodeProjectDescription::constructor_new (
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_XcodeProjectDescription::objectCompare (const GALGAS_XcodeProjectDescription & inOperand) const {
-   enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_XcodeProjectDescription::objectCompare (const GALGAS_XcodeProjectDescription & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_mFileReferenceMap.objectCompare (inOperand.mAttribute_mFileReferenceMap) ;
   }
@@ -6117,8 +6117,8 @@ void routine_generateXCodeFile (GALGAS_XcodeProjectDescription & ioArgument_ioXc
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXBuildFile::objectCompare (const GALGAS_Xcode_5F_PBXBuildFile & inOperand) const {
-  enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_Xcode_5F_PBXBuildFile::objectCompare (const GALGAS_Xcode_5F_PBXBuildFile & inOperand) const {
+  typeComparisonResult result = kOperandEqual ;
   const cPtr_Xcode_5F_PBXBuildFile * p = (const cPtr_Xcode_5F_PBXBuildFile *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_Xcode_5F_PBXBuildFile) ;
   const cPtr_Xcode_5F_PBXBuildFile * q = (const cPtr_Xcode_5F_PBXBuildFile *) inOperand.mObjectPtr ;
@@ -6270,8 +6270,8 @@ GALGAS_Xcode_5F_PBXBuildFile GALGAS_Xcode_5F_PBXBuildFile::extractObject (const 
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_abstract::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_abstract & inOperand) const {
-  enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_abstract::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_abstract & inOperand) const {
+  typeComparisonResult result = kOperandEqual ;
   const cPtr_Xcode_5F_PBXFileReference_5F_abstract * p = (const cPtr_Xcode_5F_PBXFileReference_5F_abstract *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_Xcode_5F_PBXFileReference_5F_abstract) ;
   const cPtr_Xcode_5F_PBXFileReference_5F_abstract * q = (const cPtr_Xcode_5F_PBXFileReference_5F_abstract *) inOperand.mObjectPtr ;
@@ -6383,7 +6383,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_abstract GALGAS_Xcode_5F_PBXFileReference_5F
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_cppSourceFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_cppSourceFile & inOperand) const {
+typeComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_cppSourceFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_cppSourceFile & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -6499,7 +6499,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_cppSourceFile GALGAS_Xcode_5F_PBXFileReferen
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_frameworkFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_frameworkFile & inOperand) const {
+typeComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_frameworkFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_frameworkFile & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -6615,7 +6615,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_frameworkFile GALGAS_Xcode_5F_PBXFileReferen
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_gifFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_gifFile & inOperand) const {
+typeComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_gifFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_gifFile & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -6731,7 +6731,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_gifFile GALGAS_Xcode_5F_PBXFileReference_5F_
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_hSourceFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_hSourceFile & inOperand) const {
+typeComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_hSourceFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_hSourceFile & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -6847,7 +6847,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_hSourceFile GALGAS_Xcode_5F_PBXFileReference
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_icnsFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_icnsFile & inOperand) const {
+typeComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_icnsFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_icnsFile & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -6963,7 +6963,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_icnsFile GALGAS_Xcode_5F_PBXFileReference_5F
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_mSourceFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_mSourceFile & inOperand) const {
+typeComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_mSourceFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_mSourceFile & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -7079,7 +7079,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_mSourceFile GALGAS_Xcode_5F_PBXFileReference
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_mmSourceFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_mmSourceFile & inOperand) const {
+typeComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_mmSourceFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_mmSourceFile & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -7195,7 +7195,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_mmSourceFile GALGAS_Xcode_5F_PBXFileReferenc
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_pchSourceFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_pchSourceFile & inOperand) const {
+typeComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_pchSourceFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_pchSourceFile & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -7311,7 +7311,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_pchSourceFile GALGAS_Xcode_5F_PBXFileReferen
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_plistFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_plistFile & inOperand) const {
+typeComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_plistFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_plistFile & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -7427,8 +7427,8 @@ GALGAS_Xcode_5F_PBXFileReference_5F_plistFile GALGAS_Xcode_5F_PBXFileReference_5
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_plistStringFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_plistStringFile & inOperand) const {
-  enumComparisonResult result = GALGAS_Xcode_5F_PBXFileReference_5F_abstract::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_plistStringFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_plistStringFile & inOperand) const {
+  typeComparisonResult result = GALGAS_Xcode_5F_PBXFileReference_5F_abstract::objectCompare (inOperand) ;
   const cPtr_Xcode_5F_PBXFileReference_5F_plistStringFile * p = (const cPtr_Xcode_5F_PBXFileReference_5F_plistStringFile *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_Xcode_5F_PBXFileReference_5F_plistStringFile) ;
   const cPtr_Xcode_5F_PBXFileReference_5F_plistStringFile * q = (const cPtr_Xcode_5F_PBXFileReference_5F_plistStringFile *) inOperand.mObjectPtr ;
@@ -7568,7 +7568,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_plistStringFile GALGAS_Xcode_5F_PBXFileRefer
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_pngFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_pngFile & inOperand) const {
+typeComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_pngFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_pngFile & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -7684,7 +7684,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_pngFile GALGAS_Xcode_5F_PBXFileReference_5F_
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_tiffFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_tiffFile & inOperand) const {
+typeComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_tiffFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_tiffFile & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -7800,8 +7800,8 @@ GALGAS_Xcode_5F_PBXFileReference_5F_tiffFile GALGAS_Xcode_5F_PBXFileReference_5F
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_xibFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_xibFile & inOperand) const {
-  enumComparisonResult result = GALGAS_Xcode_5F_PBXFileReference_5F_abstract::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_xibFile::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_xibFile & inOperand) const {
+  typeComparisonResult result = GALGAS_Xcode_5F_PBXFileReference_5F_abstract::objectCompare (inOperand) ;
   const cPtr_Xcode_5F_PBXFileReference_5F_xibFile * p = (const cPtr_Xcode_5F_PBXFileReference_5F_xibFile *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_Xcode_5F_PBXFileReference_5F_xibFile) ;
   const cPtr_Xcode_5F_PBXFileReference_5F_xibFile * q = (const cPtr_Xcode_5F_PBXFileReference_5F_xibFile *) inOperand.mObjectPtr ;
@@ -7941,7 +7941,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_xibFile GALGAS_Xcode_5F_PBXFileReference_5F_
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_productFileReference::objectCompare (const GALGAS_Xcode_5F_productFileReference & inOperand) const {
+typeComparisonResult GALGAS_Xcode_5F_productFileReference::objectCompare (const GALGAS_Xcode_5F_productFileReference & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -8017,7 +8017,7 @@ GALGAS_Xcode_5F_productFileReference GALGAS_Xcode_5F_productFileReference::extra
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_Application::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_Application & inOperand) const {
+typeComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_Application::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_Application & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -8133,7 +8133,7 @@ GALGAS_Xcode_5F_PBXFileReference_5F_Application GALGAS_Xcode_5F_PBXFileReference
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_CompiledMachOExecutable::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_CompiledMachOExecutable & inOperand) const {
+typeComparisonResult GALGAS_Xcode_5F_PBXFileReference_5F_CompiledMachOExecutable::objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_CompiledMachOExecutable & inOperand) const {
   return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
 }
 
@@ -8249,8 +8249,8 @@ GALGAS_Xcode_5F_PBXFileReference_5F_CompiledMachOExecutable GALGAS_Xcode_5F_PBXF
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXFrameworksBuildPhase::objectCompare (const GALGAS_Xcode_5F_PBXFrameworksBuildPhase & inOperand) const {
-  enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_Xcode_5F_PBXFrameworksBuildPhase::objectCompare (const GALGAS_Xcode_5F_PBXFrameworksBuildPhase & inOperand) const {
+  typeComparisonResult result = kOperandEqual ;
   const cPtr_Xcode_5F_PBXFrameworksBuildPhase * p = (const cPtr_Xcode_5F_PBXFrameworksBuildPhase *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_Xcode_5F_PBXFrameworksBuildPhase) ;
   const cPtr_Xcode_5F_PBXFrameworksBuildPhase * q = (const cPtr_Xcode_5F_PBXFrameworksBuildPhase *) inOperand.mObjectPtr ;
@@ -8422,8 +8422,8 @@ GALGAS_Xcode_5F_PBXFrameworksBuildPhase GALGAS_Xcode_5F_PBXFrameworksBuildPhase:
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXGroup::objectCompare (const GALGAS_Xcode_5F_PBXGroup & inOperand) const {
-  enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_Xcode_5F_PBXGroup::objectCompare (const GALGAS_Xcode_5F_PBXGroup & inOperand) const {
+  typeComparisonResult result = kOperandEqual ;
   const cPtr_Xcode_5F_PBXGroup * p = (const cPtr_Xcode_5F_PBXGroup *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_Xcode_5F_PBXGroup) ;
   const cPtr_Xcode_5F_PBXGroup * q = (const cPtr_Xcode_5F_PBXGroup *) inOperand.mObjectPtr ;
@@ -8615,8 +8615,8 @@ GALGAS_Xcode_5F_PBXGroup GALGAS_Xcode_5F_PBXGroup::extractObject (const GALGAS_o
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXResourcesBuildPhase::objectCompare (const GALGAS_Xcode_5F_PBXResourcesBuildPhase & inOperand) const {
-  enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_Xcode_5F_PBXResourcesBuildPhase::objectCompare (const GALGAS_Xcode_5F_PBXResourcesBuildPhase & inOperand) const {
+  typeComparisonResult result = kOperandEqual ;
   const cPtr_Xcode_5F_PBXResourcesBuildPhase * p = (const cPtr_Xcode_5F_PBXResourcesBuildPhase *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_Xcode_5F_PBXResourcesBuildPhase) ;
   const cPtr_Xcode_5F_PBXResourcesBuildPhase * q = (const cPtr_Xcode_5F_PBXResourcesBuildPhase *) inOperand.mObjectPtr ;
@@ -8788,8 +8788,8 @@ GALGAS_Xcode_5F_PBXResourcesBuildPhase GALGAS_Xcode_5F_PBXResourcesBuildPhase::e
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_PBXSourcesBuildPhase::objectCompare (const GALGAS_Xcode_5F_PBXSourcesBuildPhase & inOperand) const {
-  enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_Xcode_5F_PBXSourcesBuildPhase::objectCompare (const GALGAS_Xcode_5F_PBXSourcesBuildPhase & inOperand) const {
+  typeComparisonResult result = kOperandEqual ;
   const cPtr_Xcode_5F_PBXSourcesBuildPhase * p = (const cPtr_Xcode_5F_PBXSourcesBuildPhase *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_Xcode_5F_PBXSourcesBuildPhase) ;
   const cPtr_Xcode_5F_PBXSourcesBuildPhase * q = (const cPtr_Xcode_5F_PBXSourcesBuildPhase *) inOperand.mObjectPtr ;
@@ -8961,8 +8961,8 @@ GALGAS_Xcode_5F_PBXSourcesBuildPhase GALGAS_Xcode_5F_PBXSourcesBuildPhase::extra
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_XCBuildConfiguration::objectCompare (const GALGAS_Xcode_5F_XCBuildConfiguration & inOperand) const {
-  enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_Xcode_5F_XCBuildConfiguration::objectCompare (const GALGAS_Xcode_5F_XCBuildConfiguration & inOperand) const {
+  typeComparisonResult result = kOperandEqual ;
   const cPtr_Xcode_5F_XCBuildConfiguration * p = (const cPtr_Xcode_5F_XCBuildConfiguration *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_Xcode_5F_XCBuildConfiguration) ;
   const cPtr_Xcode_5F_XCBuildConfiguration * q = (const cPtr_Xcode_5F_XCBuildConfiguration *) inOperand.mObjectPtr ;
@@ -9134,8 +9134,8 @@ GALGAS_Xcode_5F_XCBuildConfiguration GALGAS_Xcode_5F_XCBuildConfiguration::extra
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_Xcode_5F_targetDependencyDescription::objectCompare (const GALGAS_Xcode_5F_targetDependencyDescription & inOperand) const {
-  enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_Xcode_5F_targetDependencyDescription::objectCompare (const GALGAS_Xcode_5F_targetDependencyDescription & inOperand) const {
+  typeComparisonResult result = kOperandEqual ;
   const cPtr_Xcode_5F_targetDependencyDescription * p = (const cPtr_Xcode_5F_targetDependencyDescription *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_Xcode_5F_targetDependencyDescription) ;
   const cPtr_Xcode_5F_targetDependencyDescription * q = (const cPtr_Xcode_5F_targetDependencyDescription *) inOperand.mObjectPtr ;

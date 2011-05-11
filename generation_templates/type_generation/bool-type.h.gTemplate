@@ -30,7 +30,7 @@ class GALGAS_bool : public AC_GALGAS_root {
 
 //--------------------------------- Constructor for comparison result
   public : GALGAS_bool (const enumComparisonKind inComparisonKind,
-                        const enumComparisonResult inComparisonResult) ;
+                        const typeComparisonResult inComparisonResult) ;
 
 %
 

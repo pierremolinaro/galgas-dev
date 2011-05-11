@@ -57,7 +57,7 @@ class cCollectionElement_localConstantList : public cCollectionElement {
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -120,9 +120,9 @@ void cCollectionElement_localConstantList::description (C_String & ioString, con
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_localConstantList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_localConstantList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_localConstantList * operand = (cCollectionElement_localConstantList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mType.objectCompare (operand->mAttribute_mType) ;
   }
@@ -590,7 +590,7 @@ class cCollectionElement_localInitializedVariableList : public cCollectionElemen
                                                             COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -647,9 +647,9 @@ void cCollectionElement_localInitializedVariableList::description (C_String & io
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_localInitializedVariableList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_localInitializedVariableList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_localInitializedVariableList * operand = (cCollectionElement_localInitializedVariableList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mType.objectCompare (operand->mAttribute_mType) ;
   }

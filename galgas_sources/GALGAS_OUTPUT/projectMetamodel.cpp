@@ -128,8 +128,8 @@ void GALGAS_sourceFileKind::description (C_String & ioString,
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_sourceFileKind::objectCompare (const GALGAS_sourceFileKind & inOperand) const {
-  enumComparisonResult result = kOperandNotValid ;
+typeComparisonResult GALGAS_sourceFileKind::objectCompare (const GALGAS_sourceFileKind & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
     if (mEnum < inOperand.mEnum) {
       result = kFirstOperandLowerThanSecond ;
@@ -203,7 +203,7 @@ class cCollectionElement_projectSourceList : public cCollectionElement {
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -254,9 +254,9 @@ void cCollectionElement_projectSourceList::description (C_String & ioString, con
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_projectSourceList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_projectSourceList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_projectSourceList * operand = (cCollectionElement_projectSourceList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mSourceKind.objectCompare (operand->mAttribute_mSourceKind) ;
   }
@@ -660,8 +660,8 @@ GALGAS_projectComponentAST GALGAS_projectComponentAST::constructor_new (const GA
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_projectComponentAST::objectCompare (const GALGAS_projectComponentAST & inOperand) const {
-   enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_projectComponentAST::objectCompare (const GALGAS_projectComponentAST & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_mProjectSourceList.objectCompare (inOperand.mAttribute_mProjectSourceList) ;
   }

@@ -62,7 +62,7 @@ class cCollectionElement_programRuleList : public cCollectionElement {
                                                COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -143,9 +143,9 @@ void cCollectionElement_programRuleList::description (C_String & ioString, const
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_programRuleList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_programRuleList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_programRuleList * operand = (cCollectionElement_programRuleList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mSourceFileExtension.objectCompare (operand->mAttribute_mSourceFileExtension) ;
   }
@@ -859,8 +859,8 @@ GALGAS_programComponentAST GALGAS_programComponentAST::constructor_new (const GA
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_programComponentAST::objectCompare (const GALGAS_programComponentAST & inOperand) const {
-   enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_programComponentAST::objectCompare (const GALGAS_programComponentAST & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_mProgramComponentName.objectCompare (inOperand.mAttribute_mProgramComponentName) ;
   }
