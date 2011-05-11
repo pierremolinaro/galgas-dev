@@ -76,9 +76,9 @@ void cMapElement_templateVariableMap::description (C_String & ioString, const PM
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_templateVariableMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_templateVariableMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_templateVariableMap * operand = (cMapElement_templateVariableMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mTypeProxy.objectCompare (operand->mAttribute_mTypeProxy) ;
   }
@@ -386,8 +386,8 @@ GALGAS_templateAnalysisContext GALGAS_templateAnalysisContext::constructor_new (
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_templateAnalysisContext::objectCompare (const GALGAS_templateAnalysisContext & inOperand) const {
-   enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_templateAnalysisContext::objectCompare (const GALGAS_templateAnalysisContext & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_mSemanticContext.objectCompare (inOperand.mAttribute_mSemanticContext) ;
   }

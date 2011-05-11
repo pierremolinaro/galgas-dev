@@ -87,9 +87,9 @@ void cMapElement_commandLineOptionMap::description (C_String & ioString, const P
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_commandLineOptionMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_commandLineOptionMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_commandLineOptionMap * operand = (cMapElement_commandLineOptionMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mOptionChar.objectCompare (operand->mAttribute_mOptionChar) ;
   }

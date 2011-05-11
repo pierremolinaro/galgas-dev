@@ -857,7 +857,7 @@ class GALGAS_guiAnalysisContext : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const PMSInt32 inIndentation) const ;
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_guiAnalysisContext & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_guiAnalysisContext & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -931,7 +931,7 @@ class cMapElement_extensionMap : public cMapElement {
                                      COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;

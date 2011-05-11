@@ -69,9 +69,9 @@ void cMapElement_parsedLexiqueComponentMap::description (C_String & ioString, co
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_parsedLexiqueComponentMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_parsedLexiqueComponentMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_parsedLexiqueComponentMap * operand = (cMapElement_parsedLexiqueComponentMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mLexiqueComponentAST.objectCompare (operand->mAttribute_mLexiqueComponentAST) ;
   }
@@ -326,9 +326,9 @@ void cMapElement_parsedOptionComponentMap::description (C_String & ioString, con
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_parsedOptionComponentMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_parsedOptionComponentMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_parsedOptionComponentMap * operand = (cMapElement_parsedOptionComponentMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mBoolOptionMap.objectCompare (operand->mAttribute_mBoolOptionMap) ;
   }
@@ -665,9 +665,9 @@ void cMapElement_parsedSemanticsComponentMap::description (C_String & ioString, 
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_parsedSemanticsComponentMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_parsedSemanticsComponentMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_parsedSemanticsComponentMap * operand = (cMapElement_parsedSemanticsComponentMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mSourceFullFilePath.objectCompare (operand->mAttribute_mSourceFullFilePath) ;
   }
@@ -960,9 +960,9 @@ void cMapElement_parsedGrammarComponentMap::description (C_String & ioString, co
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_parsedGrammarComponentMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_parsedGrammarComponentMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_parsedGrammarComponentMap * operand = (cMapElement_parsedGrammarComponentMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mSourceFullFilePath.objectCompare (operand->mAttribute_mSourceFullFilePath) ;
   }
@@ -1255,9 +1255,9 @@ void cMapElement_parsedSyntaxComponentMap::description (C_String & ioString, con
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_parsedSyntaxComponentMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_parsedSyntaxComponentMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_parsedSyntaxComponentMap * operand = (cMapElement_parsedSyntaxComponentMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mSourceFullFilePath.objectCompare (operand->mAttribute_mSourceFullFilePath) ;
   }
@@ -1550,9 +1550,9 @@ void cMapElement_parsedProgramComponentMap::description (C_String & ioString, co
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_parsedProgramComponentMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_parsedProgramComponentMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_parsedProgramComponentMap * operand = (cMapElement_parsedProgramComponentMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mSourceFullFilePath.objectCompare (operand->mAttribute_mSourceFullFilePath) ;
   }
@@ -1845,9 +1845,9 @@ void cMapElement_parsedGuiComponentMap::description (C_String & ioString, const 
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_parsedGuiComponentMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_parsedGuiComponentMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_parsedGuiComponentMap * operand = (cMapElement_parsedGuiComponentMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mSourceFullFilePath.objectCompare (operand->mAttribute_mSourceFullFilePath) ;
   }
@@ -2179,8 +2179,8 @@ GALGAS_parsedComponentStruct GALGAS_parsedComponentStruct::constructor_new (cons
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_parsedComponentStruct::objectCompare (const GALGAS_parsedComponentStruct & inOperand) const {
-   enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_parsedComponentStruct::objectCompare (const GALGAS_parsedComponentStruct & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_mParsedSemanticsComponentMap.objectCompare (inOperand.mAttribute_mParsedSemanticsComponentMap) ;
   }

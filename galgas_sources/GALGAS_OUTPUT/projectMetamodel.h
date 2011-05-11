@@ -90,7 +90,7 @@ class GALGAS_sourceFileKind : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const PMSInt32 inIndentation) const ;
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_sourceFileKind & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_sourceFileKind & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -301,7 +301,7 @@ class GALGAS_projectComponentAST : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const PMSInt32 inIndentation) const ;
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_projectComponentAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_projectComponentAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 

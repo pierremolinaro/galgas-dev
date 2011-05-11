@@ -196,7 +196,7 @@ class cMapElement_commandLineOptionMap : public cMapElement {
                                              COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;

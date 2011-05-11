@@ -3812,7 +3812,7 @@ class GALGAS_actualParameterForGeneration : public AC_GALGAS_class {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_actualParameterForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_actualParameterForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3871,7 +3871,7 @@ class GALGAS_inputActualParameterForGeneration : public GALGAS_actualParameterFo
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_inputActualParameterForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_inputActualParameterForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3933,7 +3933,7 @@ class GALGAS_inputJokerParameterForGeneration : public GALGAS_actualParameterFor
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_inputJokerParameterForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_inputJokerParameterForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3996,7 +3996,7 @@ class GALGAS_outputActualParameterForGeneration : public GALGAS_actualParameterF
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_outputActualParameterForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_outputActualParameterForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4058,7 +4058,7 @@ class GALGAS_outputInputActualParameterForGeneration : public GALGAS_actualParam
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_outputInputActualParameterForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_outputInputActualParameterForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4115,7 +4115,7 @@ class GALGAS_semanticDeclarationForGeneration : public AC_GALGAS_class {
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_semanticDeclarationForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_semanticDeclarationForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4179,7 +4179,7 @@ class GALGAS_abstractCategoryMethodForGeneration : public GALGAS_semanticDeclara
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_abstractCategoryMethodForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_abstractCategoryMethodForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4248,7 +4248,7 @@ class GALGAS_abstractCategoryReaderForGeneration : public GALGAS_semanticDeclara
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_abstractCategoryReaderForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_abstractCategoryReaderForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4320,7 +4320,7 @@ class GALGAS_categoryMethodForGeneration : public GALGAS_semanticDeclarationForG
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_categoryMethodForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_categoryMethodForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4396,7 +4396,7 @@ class GALGAS_categoryReaderForGeneration : public GALGAS_semanticDeclarationForG
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_categoryReaderForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_categoryReaderForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4474,7 +4474,7 @@ class GALGAS_filewrapperDeclarationForGeneration : public GALGAS_semanticDeclara
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_filewrapperDeclarationForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_filewrapperDeclarationForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4546,7 +4546,7 @@ class GALGAS_functionPrototypeDeclarationForGeneration : public GALGAS_semanticD
                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_functionPrototypeDeclarationForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_functionPrototypeDeclarationForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4616,7 +4616,7 @@ class GALGAS_functionImplementationForGeneration : public GALGAS_functionPrototy
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_functionImplementationForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_functionImplementationForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4683,7 +4683,7 @@ class GALGAS_onceFunctionDeclarationForGeneration : public GALGAS_semanticDeclar
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_onceFunctionDeclarationForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_onceFunctionDeclarationForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4758,7 +4758,7 @@ class GALGAS_overrideCategoryReaderForGeneration : public GALGAS_semanticDeclara
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_overrideCategoryReaderForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_overrideCategoryReaderForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4839,7 +4839,7 @@ class GALGAS_overridingCategoryMethodForGeneration : public GALGAS_semanticDecla
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_overridingCategoryMethodForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_overridingCategoryMethodForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4912,7 +4912,7 @@ class GALGAS_routinePrototypeDeclarationForGeneration : public GALGAS_semanticDe
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_routinePrototypeDeclarationForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_routinePrototypeDeclarationForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4978,7 +4978,7 @@ class GALGAS_routineImplementationForGeneration : public GALGAS_routinePrototype
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_routineImplementationForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_routineImplementationForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -5033,7 +5033,7 @@ class GALGAS_semanticTypeForGeneration : public GALGAS_semanticDeclarationForGen
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_semanticTypeForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_semanticTypeForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -5104,7 +5104,7 @@ class GALGAS_classTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_classTypeForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_classTypeForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -5184,7 +5184,7 @@ class GALGAS_enumTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_enumTypeForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_enumTypeForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -5250,7 +5250,7 @@ class GALGAS_graphDeclarationForGeneration : public GALGAS_semanticTypeForGenera
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_graphDeclarationForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_graphDeclarationForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -5315,7 +5315,7 @@ class GALGAS_listTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_listTypeForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_listTypeForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -5379,7 +5379,7 @@ class GALGAS_listmapTypeForGeneration : public GALGAS_semanticTypeForGeneration 
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_listmapTypeForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_listmapTypeForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -5446,7 +5446,7 @@ class GALGAS_mapProxyTypeForGeneration : public GALGAS_semanticTypeForGeneration
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_mapProxyTypeForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_mapProxyTypeForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -5519,7 +5519,7 @@ class GALGAS_mapTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_mapTypeForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_mapTypeForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -5595,7 +5595,7 @@ class GALGAS_primitiveTypeForGeneration : public GALGAS_semanticTypeForGeneratio
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_primitiveTypeForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_primitiveTypeForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -5661,7 +5661,7 @@ class GALGAS_sortedListTypeForGeneration : public GALGAS_semanticTypeForGenerati
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_sortedListTypeForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_sortedListTypeForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -5726,7 +5726,7 @@ class GALGAS_structTypeForGeneration : public GALGAS_semanticTypeForGeneration {
                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_structTypeForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_structTypeForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -5797,7 +5797,7 @@ class GALGAS_uniqueMapTypeForGeneration : public GALGAS_semanticTypeForGeneratio
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_uniqueMapTypeForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_uniqueMapTypeForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -5868,7 +5868,7 @@ class GALGAS_semanticExpressionForGeneration : public AC_GALGAS_class {
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_semanticExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_semanticExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -5934,7 +5934,7 @@ class GALGAS_addExpressionForGeneration : public GALGAS_semanticExpressionForGen
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_addExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_addExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -6000,7 +6000,7 @@ class GALGAS_andExpressionForGeneration : public GALGAS_semanticExpressionForGen
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_andExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_andExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -6068,7 +6068,7 @@ class GALGAS_castInExpressionForGeneration : public GALGAS_semanticExpressionFor
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_castInExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_castInExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -6138,7 +6138,7 @@ class GALGAS_concatExpressionForGeneration : public GALGAS_semanticExpressionFor
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_concatExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_concatExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -6206,7 +6206,7 @@ class GALGAS_constructorExpressionForGeneration : public GALGAS_semanticExpressi
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_constructorExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_constructorExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -6276,7 +6276,7 @@ class GALGAS_divisionExpressionForGeneration : public GALGAS_semanticExpressionF
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_divisionExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_divisionExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -6342,7 +6342,7 @@ class GALGAS_equalExpressionForGeneration : public GALGAS_semanticExpressionForG
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_equalExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_equalExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -6409,7 +6409,7 @@ class GALGAS_extractObjectInExpressionForGeneration : public GALGAS_semanticExpr
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_extractObjectInExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_extractObjectInExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -6475,7 +6475,7 @@ class GALGAS_falseExpressionForGeneration : public GALGAS_semanticExpressionForG
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_falseExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_falseExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -6537,7 +6537,7 @@ class GALGAS_filewrapperInExpressionForGeneration : public GALGAS_semanticExpres
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_filewrapperInExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_filewrapperInExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -6603,7 +6603,7 @@ class GALGAS_filewrapperStaticPathInExpressionForGeneration : public GALGAS_sema
                                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_filewrapperStaticPathInExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_filewrapperStaticPathInExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -6670,7 +6670,7 @@ class GALGAS_filewrapperTemplateInExpressionForGeneration : public GALGAS_semant
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_filewrapperTemplateInExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_filewrapperTemplateInExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -6738,7 +6738,7 @@ class GALGAS_functionCallExpressionForGeneration : public GALGAS_semanticExpress
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_functionCallExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_functionCallExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -6804,7 +6804,7 @@ class GALGAS_greaterOrEqualExpressionForGeneration : public GALGAS_semanticExpre
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_greaterOrEqualExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_greaterOrEqualExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -6868,7 +6868,7 @@ class GALGAS_hereExpressionForGeneration : public GALGAS_semanticExpressionForGe
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_hereExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_hereExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -6931,7 +6931,7 @@ class GALGAS_ifExpressionForGeneration : public GALGAS_semanticExpressionForGene
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_ifExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_ifExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -6999,7 +6999,7 @@ class GALGAS_leftShiftExpressionForGeneration : public GALGAS_semanticExpression
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_leftShiftExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_leftShiftExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -7064,7 +7064,7 @@ class GALGAS_literalCharExpressionForGeneration : public GALGAS_semanticExpressi
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_literalCharExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_literalCharExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -7127,7 +7127,7 @@ class GALGAS_literalDoubleExpressionForGeneration : public GALGAS_semanticExpres
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_literalDoubleExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_literalDoubleExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -7190,7 +7190,7 @@ class GALGAS_literalSInt_36__34_ExpressionForGeneration : public GALGAS_semantic
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_literalSInt_36__34_ExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_literalSInt_36__34_ExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -7253,7 +7253,7 @@ class GALGAS_literalSIntExpressionForGeneration : public GALGAS_semanticExpressi
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_literalSIntExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_literalSIntExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -7316,7 +7316,7 @@ class GALGAS_literalStringExpressionForGeneration : public GALGAS_semanticExpres
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_literalStringExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_literalStringExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -7379,7 +7379,7 @@ class GALGAS_literalTypeInExpressionForGeneration : public GALGAS_semanticExpres
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_literalTypeInExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_literalTypeInExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -7442,7 +7442,7 @@ class GALGAS_literalUInt_36__34_ExpressionForGeneration : public GALGAS_semantic
                                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_literalUInt_36__34_ExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_literalUInt_36__34_ExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -7505,7 +7505,7 @@ class GALGAS_literalUIntExpressionForGeneration : public GALGAS_semanticExpressi
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_literalUIntExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_literalUIntExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -7569,7 +7569,7 @@ class GALGAS_lowerOrEqualExpressionForGeneration : public GALGAS_semanticExpress
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lowerOrEqualExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lowerOrEqualExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -7635,7 +7635,7 @@ class GALGAS_moduloExpressionForGeneration : public GALGAS_semanticExpressionFor
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_moduloExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_moduloExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -7701,7 +7701,7 @@ class GALGAS_multiplicationExpressionForGeneration : public GALGAS_semanticExpre
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_multiplicationExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_multiplicationExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -7767,7 +7767,7 @@ class GALGAS_notEqualExpressionForGeneration : public GALGAS_semanticExpressionF
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_notEqualExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_notEqualExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -7832,7 +7832,7 @@ class GALGAS_notExpressionForGeneration : public GALGAS_semanticExpressionForGen
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_notExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_notExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -7896,7 +7896,7 @@ class GALGAS_optionCharExpressionForGeneration : public GALGAS_semanticExpressio
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_optionCharExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_optionCharExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -7962,7 +7962,7 @@ class GALGAS_optionCommentExpressionForGeneration : public GALGAS_semanticExpres
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_optionCommentExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_optionCommentExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -8028,7 +8028,7 @@ class GALGAS_optionStringExpressionForGeneration : public GALGAS_semanticExpress
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_optionStringExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_optionStringExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -8094,7 +8094,7 @@ class GALGAS_optionValueExpressionForGeneration : public GALGAS_semanticExpressi
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_optionValueExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_optionValueExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -8160,7 +8160,7 @@ class GALGAS_orExpressionForGeneration : public GALGAS_semanticExpressionForGene
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_orExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_orExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -8230,7 +8230,7 @@ class GALGAS_readerCallExpressionForGeneration : public GALGAS_semanticExpressio
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_readerCallExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_readerCallExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -8304,7 +8304,7 @@ class GALGAS_rightShiftExpressionForGeneration : public GALGAS_semanticExpressio
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_rightShiftExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_rightShiftExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -8369,7 +8369,7 @@ class GALGAS_selfCopyInExpressionForGeneration : public GALGAS_semanticExpressio
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_selfCopyInExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_selfCopyInExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -8433,7 +8433,7 @@ class GALGAS_strictGreaterExpressionForGeneration : public GALGAS_semanticExpres
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_strictGreaterExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_strictGreaterExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -8499,7 +8499,7 @@ class GALGAS_strictLowerExpressionForGeneration : public GALGAS_semanticExpressi
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_strictLowerExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_strictLowerExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -8565,7 +8565,7 @@ class GALGAS_structFieldAccessExpressionForGeneration : public GALGAS_semanticEx
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_structFieldAccessExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_structFieldAccessExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -8631,7 +8631,7 @@ class GALGAS_subExpressionForGeneration : public GALGAS_semanticExpressionForGen
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_subExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_subExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -8700,7 +8700,7 @@ class GALGAS_superReaderCallExpressionForGeneration : public GALGAS_semanticExpr
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_superReaderCallExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_superReaderCallExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -8775,7 +8775,7 @@ class GALGAS_thisReaderCallExpressionForGeneration : public GALGAS_semanticExpre
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_thisReaderCallExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_thisReaderCallExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -8846,7 +8846,7 @@ class GALGAS_tildeExpressionForGeneration : public GALGAS_semanticExpressionForG
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_tildeExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_tildeExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -8908,7 +8908,7 @@ class GALGAS_trueExpressionForGeneration : public GALGAS_semanticExpressionForGe
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_trueExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_trueExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -8969,7 +8969,7 @@ class GALGAS_unaryMinusExpressionForGeneration : public GALGAS_semanticExpressio
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_unaryMinusExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_unaryMinusExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -9033,7 +9033,7 @@ class GALGAS_varInExpressionForGeneration : public GALGAS_semanticExpressionForG
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_varInExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_varInExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -9099,7 +9099,7 @@ class GALGAS_xorExpressionForGeneration : public GALGAS_semanticExpressionForGen
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_xorExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_xorExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -9156,7 +9156,7 @@ class GALGAS_semanticInstructionForGeneration : public AC_GALGAS_class {
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_semanticInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_semanticInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -9219,7 +9219,7 @@ class GALGAS_addAssignInstructionForGeneration : public GALGAS_semanticInstructi
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_addAssignInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_addAssignInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -9292,7 +9292,7 @@ class GALGAS_appendInstructionForGeneration : public GALGAS_semanticInstructionF
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_appendInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_appendInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -9364,7 +9364,7 @@ class GALGAS_assignmentInstructionForGeneration : public GALGAS_semanticInstruct
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_assignmentInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_assignmentInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -9434,7 +9434,7 @@ class GALGAS_decrementInstructionForGeneration : public GALGAS_semanticInstructi
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_decrementInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_decrementInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -9502,7 +9502,7 @@ class GALGAS_dropInstructionForGeneration : public GALGAS_semanticInstructionFor
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_dropInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_dropInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -9569,7 +9569,7 @@ class GALGAS_errorInstructionForGeneration : public GALGAS_semanticInstructionFo
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_errorInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_errorInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -9645,7 +9645,7 @@ class GALGAS_foreachInstructionForGeneration : public GALGAS_semanticInstruction
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_foreachInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_foreachInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -9724,7 +9724,7 @@ class GALGAS_grammarInstructionWithSourceExpressionForGeneration : public GALGAS
                                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_grammarInstructionWithSourceExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_grammarInstructionWithSourceExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -9797,7 +9797,7 @@ class GALGAS_grammarInstructionWithSourceFileForGeneration : public GALGAS_seman
                                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_grammarInstructionWithSourceFileForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_grammarInstructionWithSourceFileForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -9869,7 +9869,7 @@ class GALGAS_ifInstructionForGeneration : public GALGAS_semanticInstructionForGe
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_ifInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_ifInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -9939,7 +9939,7 @@ class GALGAS_incrementInstructionForGeneration : public GALGAS_semanticInstructi
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_incrementInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_incrementInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -10007,7 +10007,7 @@ class GALGAS_localVariableDeclarationForGeneration : public GALGAS_semanticInstr
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_localVariableDeclarationForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_localVariableDeclarationForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -10076,7 +10076,7 @@ class GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration 
                                                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_localVariableOrConstantDeclarationWithConstructorCallForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -10152,7 +10152,7 @@ class GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration
                                                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_localVariableOrConstantDeclarationWithSourceExpressionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -10220,7 +10220,7 @@ class GALGAS_logInstructionForGeneration : public GALGAS_semanticInstructionForG
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_logInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_logInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -10287,7 +10287,7 @@ class GALGAS_loopInstructionForGeneration : public GALGAS_semanticInstructionFor
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_loopInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_loopInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -10358,7 +10358,7 @@ class GALGAS_matchInstructionForGeneration : public GALGAS_semanticInstructionFo
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_matchInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_matchInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -10424,7 +10424,7 @@ class GALGAS_messageInstructionForGeneration : public GALGAS_semanticInstruction
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_messageInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_messageInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -10492,7 +10492,7 @@ class GALGAS_methodCallInstructionForGeneration : public GALGAS_semanticInstruct
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_methodCallInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_methodCallInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -10568,7 +10568,7 @@ class GALGAS_modifierCallInstructionForGeneration : public GALGAS_semanticInstru
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_modifierCallInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_modifierCallInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -10645,7 +10645,7 @@ class GALGAS_readOnlyWithInstructionForGeneration : public GALGAS_semanticInstru
                                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_readOnlyWithInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_readOnlyWithInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -10726,7 +10726,7 @@ class GALGAS_readWriteWithInstructionForGeneration : public GALGAS_semanticInstr
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_readWriteWithInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_readWriteWithInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -10804,7 +10804,7 @@ class GALGAS_routineCallInstructionForGeneration : public GALGAS_semanticInstruc
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_routineCallInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_routineCallInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -10869,7 +10869,7 @@ class GALGAS_structuredCastInstructionForGeneration : public GALGAS_semanticInst
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_structuredCastInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_structuredCastInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -10939,7 +10939,7 @@ class GALGAS_superMethodCallInstructionForGeneration : public GALGAS_semanticIns
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_superMethodCallInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_superMethodCallInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -11014,7 +11014,7 @@ class GALGAS_superModifierCallInstructionForGeneration : public GALGAS_semanticI
                                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_superModifierCallInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_superModifierCallInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -11084,7 +11084,7 @@ class GALGAS_switchInstructionForGeneration : public GALGAS_semanticInstructionF
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_switchInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_switchInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -11141,7 +11141,7 @@ class GALGAS_syntaxInstructionForGeneration : public GALGAS_semanticInstructionF
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_syntaxInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_syntaxInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -11205,7 +11205,7 @@ class GALGAS_nonterminalInstructionForGeneration : public GALGAS_syntaxInstructi
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_nonterminalInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_nonterminalInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -11273,7 +11273,7 @@ class GALGAS_parseLoopInstructionForGeneration : public GALGAS_syntaxInstruction
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_parseLoopInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_parseLoopInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -11339,7 +11339,7 @@ class GALGAS_parseRewindInstructionForGeneration : public GALGAS_syntaxInstructi
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_parseRewindInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_parseRewindInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -11403,7 +11403,7 @@ class GALGAS_parseWhenInstructionForGeneration : public GALGAS_syntaxInstruction
                                                                             COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_parseWhenInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_parseWhenInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -11473,7 +11473,7 @@ class GALGAS_repeatInstructionForGeneration : public GALGAS_syntaxInstructionFor
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_repeatInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_repeatInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -11545,7 +11545,7 @@ class GALGAS_selectInstructionForGeneration : public GALGAS_syntaxInstructionFor
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_selectInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_selectInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -11614,7 +11614,7 @@ class GALGAS_terminalCheckInstructionForGeneration : public GALGAS_syntaxInstruc
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_terminalCheckInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_terminalCheckInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -11686,7 +11686,7 @@ class GALGAS_thisMethodCallInstructionForGeneration : public GALGAS_semanticInst
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_thisMethodCallInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_thisMethodCallInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -11760,7 +11760,7 @@ class GALGAS_thisModifierCallInstructionForGeneration : public GALGAS_semanticIn
                                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_thisModifierCallInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_thisModifierCallInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -11830,7 +11830,7 @@ class GALGAS_typeMethodInstructionForGeneration : public GALGAS_semanticInstruct
                                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_typeMethodInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_typeMethodInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -11900,7 +11900,7 @@ class GALGAS_warningInstructionForGeneration : public GALGAS_semanticInstruction
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_warningInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_warningInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -11961,7 +11961,7 @@ class GALGAS_templateInstructionForGeneration : public AC_GALGAS_class {
                                                                          COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_templateInstructionForGeneration & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_templateInstructionForGeneration & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -11996,7 +11996,7 @@ class cMapElement_mapAutomatonStateMap : public cMapElement {
                                              COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -12024,7 +12024,7 @@ class cMapElement_mapAutomatonActionMap : public cMapElement {
                                               COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;

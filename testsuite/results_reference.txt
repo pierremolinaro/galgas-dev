@@ -37,6 +37,8 @@ LOGGING s: <@string:"c">
 LOGGING s: <@string:"d">
 --- test .= operator on list
 LOGGING s: <@string:"d">
+*************************************** begin of list compare
+LOGGING comp: <@bool:true>
 *************************************** begin of struct logging
 LOGGING s: <struct @structTest:<@string:"az">, <@uint:34>>
 *************************************** begin of map

@@ -70,9 +70,9 @@ void cMapElement_grammarLabelMap::description (C_String & ioString, const PMSInt
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_grammarLabelMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_grammarLabelMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_grammarLabelMap * operand = (cMapElement_grammarLabelMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mLabelSignature.objectCompare (operand->mAttribute_mLabelSignature) ;
   }
@@ -321,9 +321,9 @@ void cMapElement_grammarMap::description (C_String & ioString, const PMSInt32 in
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_grammarMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_grammarMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_grammarMap * operand = (cMapElement_grammarMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mLabelMap.objectCompare (operand->mAttribute_mLabelMap) ;
   }
@@ -610,9 +610,9 @@ void cMapElement_routineMap::description (C_String & ioString, const PMSInt32 in
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_routineMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_routineMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_routineMap * operand = (cMapElement_routineMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mRoutineSignature.objectCompare (operand->mAttribute_mRoutineSignature) ;
   }
@@ -861,9 +861,9 @@ void cMapElement_functionMap::description (C_String & ioString, const PMSInt32 i
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_functionMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_functionMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_functionMap * operand = (cMapElement_functionMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mFunctionSignature.objectCompare (operand->mAttribute_mFunctionSignature) ;
   }
@@ -1162,9 +1162,9 @@ void cMapElement_wrapperFileMap::description (C_String & ioString, const PMSInt3
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_wrapperFileMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_wrapperFileMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_wrapperFileMap * operand = (cMapElement_wrapperFileMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mAbsoluteFilePath.objectCompare (operand->mAttribute_mAbsoluteFilePath) ;
   }
@@ -1507,9 +1507,9 @@ void cMapElement_wrapperDirectoryMap::description (C_String & ioString, const PM
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_wrapperDirectoryMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_wrapperDirectoryMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_wrapperDirectoryMap * operand = (cMapElement_wrapperDirectoryMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mRegularFileMap.objectCompare (operand->mAttribute_mRegularFileMap) ;
   }
@@ -1846,9 +1846,9 @@ void cMapElement_filewrapperTemplateMap::description (C_String & ioString, const
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_filewrapperTemplateMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_filewrapperTemplateMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_filewrapperTemplateMap * operand = (cMapElement_filewrapperTemplateMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mTemplateSignature.objectCompare (operand->mAttribute_mTemplateSignature) ;
   }
@@ -2159,9 +2159,9 @@ void cMapElement_filewrapperMap::description (C_String & ioString, const PMSInt3
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_filewrapperMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_filewrapperMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_filewrapperMap * operand = (cMapElement_filewrapperMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mFilewrapperPath.objectCompare (operand->mAttribute_mFilewrapperPath) ;
   }
@@ -2592,9 +2592,9 @@ void cMapElement_optionComponentMapForSemanticAnalysis::description (C_String & 
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_optionComponentMapForSemanticAnalysis::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_optionComponentMapForSemanticAnalysis::compare (const cCollectionElement * inOperand) const {
   cMapElement_optionComponentMapForSemanticAnalysis * operand = (cMapElement_optionComponentMapForSemanticAnalysis *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mBoolOptionMap.objectCompare (operand->mAttribute_mBoolOptionMap) ;
   }
@@ -2970,8 +2970,8 @@ GALGAS_semanticContext GALGAS_semanticContext::constructor_new (const GALGAS_str
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_semanticContext::objectCompare (const GALGAS_semanticContext & inOperand) const {
-   enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_semanticContext::objectCompare (const GALGAS_semanticContext & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_mSourceFileAbsolutePath.objectCompare (inOperand.mAttribute_mSourceFileAbsolutePath) ;
   }
@@ -3161,9 +3161,9 @@ void cMapElement_categoryMethodMapForType::description (C_String & ioString, con
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_categoryMethodMapForType::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_categoryMethodMapForType::compare (const cCollectionElement * inOperand) const {
   cMapElement_categoryMethodMapForType * operand = (cMapElement_categoryMethodMapForType *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mFormalParameterList.objectCompare (operand->mAttribute_mFormalParameterList) ;
   }
@@ -3370,9 +3370,9 @@ void cMapElement_categoryMethodMapForBuildingContext::description (C_String & io
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_categoryMethodMapForBuildingContext::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_categoryMethodMapForBuildingContext::compare (const cCollectionElement * inOperand) const {
   cMapElement_categoryMethodMapForBuildingContext * operand = (cMapElement_categoryMethodMapForBuildingContext *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mCategoryMethodMapForType.objectCompare (operand->mAttribute_mCategoryMethodMapForType) ;
   }
@@ -3621,9 +3621,9 @@ void cMapElement_categoryReaderMapForType::description (C_String & ioString, con
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_categoryReaderMapForType::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_categoryReaderMapForType::compare (const cCollectionElement * inOperand) const {
   cMapElement_categoryReaderMapForType * operand = (cMapElement_categoryReaderMapForType *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mResultTypeName.objectCompare (operand->mAttribute_mResultTypeName) ;
   }
@@ -3871,9 +3871,9 @@ void cMapElement_categoryReaderMapForBuildingContext::description (C_String & io
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_categoryReaderMapForBuildingContext::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_categoryReaderMapForBuildingContext::compare (const cCollectionElement * inOperand) const {
   cMapElement_categoryReaderMapForBuildingContext * operand = (cMapElement_categoryReaderMapForBuildingContext *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mCategoryReaderMapForType.objectCompare (operand->mAttribute_mCategoryReaderMapForType) ;
   }
@@ -4110,9 +4110,9 @@ void cMapElement_wrapperExtensionMap::description (C_String & /* ioString */, co
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_wrapperExtensionMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_wrapperExtensionMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_wrapperExtensionMap * operand = (cMapElement_wrapperExtensionMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   return result ;
 }
 

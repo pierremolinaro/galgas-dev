@@ -75,7 +75,7 @@ class GALGAS_optionDefaultValueEnumAST : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const PMSInt32 inIndentation) const ;
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_optionDefaultValueEnumAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_optionDefaultValueEnumAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -362,7 +362,7 @@ class GALGAS_optionComponentAST : public AC_GALGAS_class {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_optionComponentAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_optionComponentAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 

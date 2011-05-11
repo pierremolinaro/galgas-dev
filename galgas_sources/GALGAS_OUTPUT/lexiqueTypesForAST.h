@@ -2270,7 +2270,7 @@ class GALGAS_lexicalArgumentModeAST : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const PMSInt32 inIndentation) const ;
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalArgumentModeAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalArgumentModeAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3118,7 +3118,7 @@ class GALGAS_lexiqueComponentAST : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const PMSInt32 inIndentation) const ;
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexiqueComponentAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexiqueComponentAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3199,7 +3199,7 @@ class GALGAS_abstractLexicalRoutineActualArgumentAST : public AC_GALGAS_class {
                                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_abstractLexicalRoutineActualArgumentAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_abstractLexicalRoutineActualArgumentAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3261,7 +3261,7 @@ class GALGAS_lexicalAttributeInputOutputArgumentAST : public GALGAS_abstractLexi
                                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalAttributeInputOutputArgumentAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalAttributeInputOutputArgumentAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3323,7 +3323,7 @@ class GALGAS_lexicalFormalInputArgumentAST : public GALGAS_abstractLexicalRoutin
                                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalFormalInputArgumentAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalFormalInputArgumentAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3378,7 +3378,7 @@ class GALGAS_abstractLexicalRuleAST : public AC_GALGAS_class {
                                                                COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_abstractLexicalRuleAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_abstractLexicalRuleAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3438,7 +3438,7 @@ class GALGAS_lexicalExplicitRuleAST : public GALGAS_abstractLexicalRuleAST {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalExplicitRuleAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalExplicitRuleAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3501,7 +3501,7 @@ class GALGAS_lexicalImplicitRuleAST : public GALGAS_abstractLexicalRuleAST {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalImplicitRuleAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalImplicitRuleAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3556,7 +3556,7 @@ class GALGAS_lexicalExpressionAST : public AC_GALGAS_class {
                                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalExpressionAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalExpressionAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3616,7 +3616,7 @@ class GALGAS_lexicalCharacterIntervalMatchAST : public GALGAS_lexicalExpressionA
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalCharacterIntervalMatchAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalCharacterIntervalMatchAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3679,7 +3679,7 @@ class GALGAS_lexicalCharacterMatchAST : public GALGAS_lexicalExpressionAST {
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalCharacterMatchAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalCharacterMatchAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3740,7 +3740,7 @@ class GALGAS_lexicalCharacterSetMatchAST : public GALGAS_lexicalExpressionAST {
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalCharacterSetMatchAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalCharacterSetMatchAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3802,7 +3802,7 @@ class GALGAS_lexicalOrExpressionAST : public GALGAS_lexicalExpressionAST {
                                                                  COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalOrExpressionAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalOrExpressionAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3865,7 +3865,7 @@ class GALGAS_lexicalStringMatchAST : public GALGAS_lexicalExpressionAST {
                                                                 COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalStringMatchAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalStringMatchAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3927,7 +3927,7 @@ class GALGAS_lexicalStringNotMatchAST : public GALGAS_lexicalExpressionAST {
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalStringNotMatchAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalStringNotMatchAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -3984,7 +3984,7 @@ class GALGAS_lexicalInstructionAST : public AC_GALGAS_class {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalInstructionAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalInstructionAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4043,7 +4043,7 @@ class GALGAS_lexicalDropInstructionAST : public GALGAS_lexicalInstructionAST {
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalDropInstructionAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalDropInstructionAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4104,7 +4104,7 @@ class GALGAS_lexicalErrorInstructionAST : public GALGAS_lexicalInstructionAST {
                                                                      COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalErrorInstructionAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalErrorInstructionAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4162,7 +4162,7 @@ class GALGAS_lexicalLogInstructionAST : public GALGAS_lexicalInstructionAST {
   public : static GALGAS_lexicalLogInstructionAST constructor_new (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalLogInstructionAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalLogInstructionAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4222,7 +4222,7 @@ class GALGAS_lexicalRepeatInstructionAST : public GALGAS_lexicalInstructionAST {
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalRepeatInstructionAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalRepeatInstructionAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4286,7 +4286,7 @@ class GALGAS_lexicalRewindInstructionAST : public GALGAS_lexicalInstructionAST {
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalRewindInstructionAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalRewindInstructionAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4351,7 +4351,7 @@ class GALGAS_lexicalRoutineInstructionAST : public GALGAS_lexicalInstructionAST 
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalRoutineInstructionAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalRoutineInstructionAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4417,7 +4417,7 @@ class GALGAS_lexicalSelectInstructionAST : public GALGAS_lexicalInstructionAST {
                                                                       COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalSelectInstructionAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalSelectInstructionAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4480,7 +4480,7 @@ class GALGAS_lexicalSimpleSendInstructionAST : public GALGAS_lexicalInstructionA
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalSimpleSendInstructionAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalSimpleSendInstructionAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4542,7 +4542,7 @@ class GALGAS_lexicalStructuredSendInstructionAST : public GALGAS_lexicalInstruct
                                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalStructuredSendInstructionAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalStructuredSendInstructionAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4605,7 +4605,7 @@ class GALGAS_lexicalTagInstructionAST : public GALGAS_lexicalInstructionAST {
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalTagInstructionAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalTagInstructionAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4666,7 +4666,7 @@ class GALGAS_lexicalWarningInstructionAST : public GALGAS_lexicalInstructionAST 
                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalWarningInstructionAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalWarningInstructionAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4721,7 +4721,7 @@ class GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST : public AC_GALGAS_c
                                                                                        COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4780,7 +4780,7 @@ class GALGAS_lexicalAttributeInputArgumentAST : public GALGAS_lexicalRoutineOrFu
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalAttributeInputArgumentAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalAttributeInputArgumentAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4841,7 +4841,7 @@ class GALGAS_lexicalCharacterInputArgumentAST : public GALGAS_lexicalRoutineOrFu
                                                                            COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalCharacterInputArgumentAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalCharacterInputArgumentAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4902,7 +4902,7 @@ class GALGAS_lexicalCurrentCharacterInputArgumentAST : public GALGAS_lexicalRout
                                                                                   COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalCurrentCharacterInputArgumentAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalCurrentCharacterInputArgumentAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -4964,7 +4964,7 @@ class GALGAS_lexicalFunctionInputArgumentAST : public GALGAS_lexicalRoutineOrFun
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalFunctionInputArgumentAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalFunctionInputArgumentAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -5027,7 +5027,7 @@ class GALGAS_lexicalUnsignedInputArgumentAST : public GALGAS_lexicalRoutineOrFun
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalUnsignedInputArgumentAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalUnsignedInputArgumentAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -5082,7 +5082,7 @@ class GALGAS_lexicalSendDefaultActionAST : public AC_GALGAS_class {
                                                                     COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalSendDefaultActionAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalSendDefaultActionAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -5141,7 +5141,7 @@ class GALGAS_lexicalErrorByDefaultAST : public GALGAS_lexicalSendDefaultActionAS
                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalErrorByDefaultAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalErrorByDefaultAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -5202,7 +5202,7 @@ class GALGAS_lexicalSendTerminalByDefaultAST : public GALGAS_lexicalSendDefaultA
                                                                           COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_lexicalSendTerminalByDefaultAST & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_lexicalSendTerminalByDefaultAST & inOperand) const ;
 
 //--------------------------------- Modifiers
 

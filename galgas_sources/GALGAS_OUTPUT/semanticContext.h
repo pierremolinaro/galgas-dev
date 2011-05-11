@@ -1290,7 +1290,7 @@ class GALGAS_semanticContext : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                               const PMSInt32 inIndentation) const ;
 //--------------------------------- Comparison
-  public : enumComparisonResult objectCompare (const GALGAS_semanticContext & inOperand) const ;
+  public : typeComparisonResult objectCompare (const GALGAS_semanticContext & inOperand) const ;
 
 //--------------------------------- Modifiers
 
@@ -2008,7 +2008,7 @@ class cMapElement_grammarLabelMap : public cMapElement {
                                         COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2038,7 +2038,7 @@ class cMapElement_grammarMap : public cMapElement {
                                    COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2066,7 +2066,7 @@ class cMapElement_routineMap : public cMapElement {
                                    COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2096,7 +2096,7 @@ class cMapElement_functionMap : public cMapElement {
                                     COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2128,7 +2128,7 @@ class cMapElement_wrapperFileMap : public cMapElement {
                                        COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2160,7 +2160,7 @@ class cMapElement_wrapperDirectoryMap : public cMapElement {
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2190,7 +2190,7 @@ class cMapElement_filewrapperTemplateMap : public cMapElement {
                                                COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2226,7 +2226,7 @@ class cMapElement_filewrapperMap : public cMapElement {
                                        COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2258,7 +2258,7 @@ class cMapElement_optionComponentMapForSemanticAnalysis : public cMapElement {
                                                               COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2286,7 +2286,7 @@ class cMapElement_categoryMethodMapForType : public cMapElement {
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2314,7 +2314,7 @@ class cMapElement_categoryMethodMapForBuildingContext : public cMapElement {
                                                             COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2344,7 +2344,7 @@ class cMapElement_categoryReaderMapForType : public cMapElement {
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2372,7 +2372,7 @@ class cMapElement_categoryReaderMapForBuildingContext : public cMapElement {
                                                             COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2398,7 +2398,7 @@ class cMapElement_wrapperExtensionMap : public cMapElement {
                                             COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;

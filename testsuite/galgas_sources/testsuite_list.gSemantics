@@ -24,6 +24,11 @@ routine testsuite_list :
   message "--- test .= operator on list\n" ;
   strList .= strList ;
   log s ;
+  message "*************************************** begin of list compare\n" ;
+  @myList aList [listWithValue !"az"] ;
+  @myList bList [listWithValue !"az"] ;
+  const @bool comp := aList == bList ;
+  log comp ;
 end routine ;
 
 end semantics ;

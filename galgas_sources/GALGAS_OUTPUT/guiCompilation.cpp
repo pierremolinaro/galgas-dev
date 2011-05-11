@@ -81,7 +81,7 @@ class cCollectionElement_guiCommandLineOptionList : public cCollectionElement {
                                                         COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -150,9 +150,9 @@ void cCollectionElement_guiCommandLineOptionList::description (C_String & ioStri
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_guiCommandLineOptionList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_guiCommandLineOptionList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_guiCommandLineOptionList * operand = (cCollectionElement_guiCommandLineOptionList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mOptionComponent.objectCompare (operand->mAttribute_mOptionComponent) ;
   }
@@ -691,9 +691,9 @@ void cMapElement_extensionMap::description (C_String & ioString, const PMSInt32 
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_extensionMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_extensionMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_extensionMap * operand = (cMapElement_extensionMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mLexiqueName.objectCompare (operand->mAttribute_mLexiqueName) ;
   }
@@ -886,7 +886,7 @@ class cCollectionElement_nibAndClassList : public cCollectionElement {
                                                COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -937,9 +937,9 @@ void cCollectionElement_nibAndClassList::description (C_String & ioString, const
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_nibAndClassList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_nibAndClassList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_nibAndClassList * operand = (cCollectionElement_nibAndClassList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mNibName.objectCompare (operand->mAttribute_mNibName) ;
   }
@@ -1293,7 +1293,7 @@ class cCollectionElement_textMacroList : public cCollectionElement {
                                              COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -1344,9 +1344,9 @@ void cCollectionElement_textMacroList::description (C_String & ioString, const P
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_textMacroList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_textMacroList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_textMacroList * operand = (cCollectionElement_textMacroList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mKey.objectCompare (operand->mAttribute_mKey) ;
   }
@@ -1706,7 +1706,7 @@ class cCollectionElement_importedLexiqueList : public cCollectionElement {
                                                    COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -1775,9 +1775,9 @@ void cCollectionElement_importedLexiqueList::description (C_String & ioString, c
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_importedLexiqueList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_importedLexiqueList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_importedLexiqueList * operand = (cCollectionElement_importedLexiqueList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mLexiqueClassName.objectCompare (operand->mAttribute_mLexiqueClassName) ;
   }
@@ -2361,8 +2361,8 @@ GALGAS_guiAnalysisContext GALGAS_guiAnalysisContext::constructor_new (const GALG
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_guiAnalysisContext::objectCompare (const GALGAS_guiAnalysisContext & inOperand) const {
-   enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_guiAnalysisContext::objectCompare (const GALGAS_guiAnalysisContext & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_mImportedOptionComponentList.objectCompare (inOperand.mAttribute_mImportedOptionComponentList) ;
   }

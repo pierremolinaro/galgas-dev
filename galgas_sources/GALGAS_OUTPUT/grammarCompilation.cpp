@@ -448,7 +448,7 @@ class cCollectionElement_nonTerminalToAddList : public cCollectionElement {
                                                     COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -499,9 +499,9 @@ void cCollectionElement_nonTerminalToAddList::description (C_String & ioString, 
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_nonTerminalToAddList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_nonTerminalToAddList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_nonTerminalToAddList * operand = (cCollectionElement_nonTerminalToAddList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mSyntaxComponentName.objectCompare (operand->mAttribute_mSyntaxComponentName) ;
   }

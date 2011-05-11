@@ -50,7 +50,7 @@ class cCollectionElement_syntaxInstructionList : public cCollectionElement {
                                                      COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -95,9 +95,9 @@ void cCollectionElement_syntaxInstructionList::description (C_String & ioString,
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_syntaxInstructionList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_syntaxInstructionList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_syntaxInstructionList * operand = (cCollectionElement_syntaxInstructionList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mInstruction.objectCompare (operand->mAttribute_mInstruction) ;
   }
@@ -397,7 +397,7 @@ class cCollectionElement_nonTerminalLabelListAST : public cCollectionElement {
                                                        COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -454,9 +454,9 @@ void cCollectionElement_nonTerminalLabelListAST::description (C_String & ioStrin
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_nonTerminalLabelListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_nonTerminalLabelListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_nonTerminalLabelListAST * operand = (cCollectionElement_nonTerminalLabelListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mLabelName.objectCompare (operand->mAttribute_mLabelName) ;
   }
@@ -868,7 +868,7 @@ class cCollectionElement_nonterminalDeclarationListAST : public cCollectionEleme
                                                              COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -925,9 +925,9 @@ void cCollectionElement_nonterminalDeclarationListAST::description (C_String & i
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_nonterminalDeclarationListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_nonterminalDeclarationListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_nonterminalDeclarationListAST * operand = (cCollectionElement_nonterminalDeclarationListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mNonterminalName.objectCompare (operand->mAttribute_mNonterminalName) ;
   }
@@ -1343,7 +1343,7 @@ class cCollectionElement_syntaxRuleLabelListAST : public cCollectionElement {
                                                       COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -1412,9 +1412,9 @@ void cCollectionElement_syntaxRuleLabelListAST::description (C_String & ioString
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_syntaxRuleLabelListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_syntaxRuleLabelListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_syntaxRuleLabelListAST * operand = (cCollectionElement_syntaxRuleLabelListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mLabelName.objectCompare (operand->mAttribute_mLabelName) ;
   }
@@ -1936,7 +1936,7 @@ class cCollectionElement_syntaxRuleListAST : public cCollectionElement {
                                                  COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -1987,9 +1987,9 @@ void cCollectionElement_syntaxRuleListAST::description (C_String & ioString, con
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_syntaxRuleListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_syntaxRuleListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_syntaxRuleListAST * operand = (cCollectionElement_syntaxRuleListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mNonterminalName.objectCompare (operand->mAttribute_mNonterminalName) ;
   }
@@ -2343,7 +2343,7 @@ class cCollectionElement_listOfSyntaxInstructionList : public cCollectionElement
                                                            COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -2394,9 +2394,9 @@ void cCollectionElement_listOfSyntaxInstructionList::description (C_String & ioS
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_listOfSyntaxInstructionList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_listOfSyntaxInstructionList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_listOfSyntaxInstructionList * operand = (cCollectionElement_listOfSyntaxInstructionList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mSyntaxInstructionList.objectCompare (operand->mAttribute_mSyntaxInstructionList) ;
   }
@@ -2812,8 +2812,8 @@ GALGAS_syntaxComponentAST GALGAS_syntaxComponentAST::constructor_new (const GALG
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_syntaxComponentAST::objectCompare (const GALGAS_syntaxComponentAST & inOperand) const {
-   enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_syntaxComponentAST::objectCompare (const GALGAS_syntaxComponentAST & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_mSyntaxComponentName.objectCompare (inOperand.mAttribute_mSyntaxComponentName) ;
   }
@@ -2971,8 +2971,8 @@ GALGAS_syntaxComponentAST GALGAS_syntaxComponentAST::extractObject (const GALGAS
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_nonterminalCallInstruction::objectCompare (const GALGAS_nonterminalCallInstruction & inOperand) const {
-  enumComparisonResult result = GALGAS_syntaxInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_nonterminalCallInstruction::objectCompare (const GALGAS_nonterminalCallInstruction & inOperand) const {
+  typeComparisonResult result = GALGAS_syntaxInstructionAST::objectCompare (inOperand) ;
   const cPtr_nonterminalCallInstruction * p = (const cPtr_nonterminalCallInstruction *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_nonterminalCallInstruction) ;
   const cPtr_nonterminalCallInstruction * q = (const cPtr_nonterminalCallInstruction *) inOperand.mObjectPtr ;
@@ -3148,8 +3148,8 @@ GALGAS_nonterminalCallInstruction GALGAS_nonterminalCallInstruction::extractObje
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_parseLoopInstruction::objectCompare (const GALGAS_parseLoopInstruction & inOperand) const {
-  enumComparisonResult result = GALGAS_syntaxInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_parseLoopInstruction::objectCompare (const GALGAS_parseLoopInstruction & inOperand) const {
+  typeComparisonResult result = GALGAS_syntaxInstructionAST::objectCompare (inOperand) ;
   const cPtr_parseLoopInstruction * p = (const cPtr_parseLoopInstruction *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_parseLoopInstruction) ;
   const cPtr_parseLoopInstruction * q = (const cPtr_parseLoopInstruction *) inOperand.mObjectPtr ;
@@ -3385,8 +3385,8 @@ GALGAS_parseLoopInstruction GALGAS_parseLoopInstruction::extractObject (const GA
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_parseRewindInstruction::objectCompare (const GALGAS_parseRewindInstruction & inOperand) const {
-  enumComparisonResult result = GALGAS_syntaxInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_parseRewindInstruction::objectCompare (const GALGAS_parseRewindInstruction & inOperand) const {
+  typeComparisonResult result = GALGAS_syntaxInstructionAST::objectCompare (inOperand) ;
   const cPtr_parseRewindInstruction * p = (const cPtr_parseRewindInstruction *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_parseRewindInstruction) ;
   const cPtr_parseRewindInstruction * q = (const cPtr_parseRewindInstruction *) inOperand.mObjectPtr ;
@@ -3542,8 +3542,8 @@ GALGAS_parseRewindInstruction GALGAS_parseRewindInstruction::extractObject (cons
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_parseWhenInstruction::objectCompare (const GALGAS_parseWhenInstruction & inOperand) const {
-  enumComparisonResult result = GALGAS_syntaxInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_parseWhenInstruction::objectCompare (const GALGAS_parseWhenInstruction & inOperand) const {
+  typeComparisonResult result = GALGAS_syntaxInstructionAST::objectCompare (inOperand) ;
   const cPtr_parseWhenInstruction * p = (const cPtr_parseWhenInstruction *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_parseWhenInstruction) ;
   const cPtr_parseWhenInstruction * q = (const cPtr_parseWhenInstruction *) inOperand.mObjectPtr ;
@@ -3779,8 +3779,8 @@ GALGAS_parseWhenInstruction GALGAS_parseWhenInstruction::extractObject (const GA
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_repeatInstruction::objectCompare (const GALGAS_repeatInstruction & inOperand) const {
-  enumComparisonResult result = GALGAS_syntaxInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_repeatInstruction::objectCompare (const GALGAS_repeatInstruction & inOperand) const {
+  typeComparisonResult result = GALGAS_syntaxInstructionAST::objectCompare (inOperand) ;
   const cPtr_repeatInstruction * p = (const cPtr_repeatInstruction *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_repeatInstruction) ;
   const cPtr_repeatInstruction * q = (const cPtr_repeatInstruction *) inOperand.mObjectPtr ;
@@ -3976,8 +3976,8 @@ GALGAS_repeatInstruction GALGAS_repeatInstruction::extractObject (const GALGAS_o
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_selectInstruction::objectCompare (const GALGAS_selectInstruction & inOperand) const {
-  enumComparisonResult result = GALGAS_syntaxInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_selectInstruction::objectCompare (const GALGAS_selectInstruction & inOperand) const {
+  typeComparisonResult result = GALGAS_syntaxInstructionAST::objectCompare (inOperand) ;
   const cPtr_selectInstruction * p = (const cPtr_selectInstruction *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_selectInstruction) ;
   const cPtr_selectInstruction * q = (const cPtr_selectInstruction *) inOperand.mObjectPtr ;
@@ -4133,8 +4133,8 @@ GALGAS_selectInstruction GALGAS_selectInstruction::extractObject (const GALGAS_o
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_terminalCheckInstruction::objectCompare (const GALGAS_terminalCheckInstruction & inOperand) const {
-  enumComparisonResult result = GALGAS_syntaxInstructionAST::objectCompare (inOperand) ;
+typeComparisonResult GALGAS_terminalCheckInstruction::objectCompare (const GALGAS_terminalCheckInstruction & inOperand) const {
+  typeComparisonResult result = GALGAS_syntaxInstructionAST::objectCompare (inOperand) ;
   const cPtr_terminalCheckInstruction * p = (const cPtr_terminalCheckInstruction *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_terminalCheckInstruction) ;
   const cPtr_terminalCheckInstruction * q = (const cPtr_terminalCheckInstruction *) inOperand.mObjectPtr ;

@@ -248,7 +248,7 @@ class cCollectionElement_grammarComponentASTList : public cCollectionElement {
                                                        COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -293,9 +293,9 @@ void cCollectionElement_grammarComponentASTList::description (C_String & ioStrin
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_grammarComponentASTList::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_grammarComponentASTList::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_grammarComponentASTList * operand = (cCollectionElement_grammarComponentASTList *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mGrammarComponentAST.objectCompare (operand->mAttribute_mGrammarComponentAST) ;
   }

@@ -192,9 +192,9 @@ void cMapElement_attributeIndexMap::description (C_String & ioString, const PMSI
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_attributeIndexMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_attributeIndexMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_attributeIndexMap * operand = (cMapElement_attributeIndexMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mAttributeTypeIndex.objectCompare (operand->mAttribute_mAttributeTypeIndex) ;
   }
@@ -437,9 +437,9 @@ void cMapElement_constantIndexMap::description (C_String & ioString, const PMSIn
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_constantIndexMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_constantIndexMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_constantIndexMap * operand = (cMapElement_constantIndexMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   if (kOperandEqual == result) {
     result = mAttribute_mIndex.objectCompare (operand->mAttribute_mIndex) ;
   }
@@ -676,9 +676,9 @@ void cMapElement_insertMethodMap::description (C_String & /* ioString */, const 
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_insertMethodMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_insertMethodMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_insertMethodMap * operand = (cMapElement_insertMethodMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   return result ;
 }
 
@@ -841,9 +841,9 @@ void cMapElement_searchMethodMap::description (C_String & /* ioString */, const 
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_searchMethodMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_searchMethodMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_searchMethodMap * operand = (cMapElement_searchMethodMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   return result ;
 }
 
@@ -1092,9 +1092,9 @@ void cMapElement_declaredMethodMap::description (C_String & /* ioString */, cons
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cMapElement_declaredMethodMap::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cMapElement_declaredMethodMap::compare (const cCollectionElement * inOperand) const {
   cMapElement_declaredMethodMap * operand = (cMapElement_declaredMethodMap *) inOperand ;
-  enumComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
+  typeComparisonResult result = mAttribute_lkey.objectCompare (operand->mAttribute_lkey) ;
   return result ;
 }
 

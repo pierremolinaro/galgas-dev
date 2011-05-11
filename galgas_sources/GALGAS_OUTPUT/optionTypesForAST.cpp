@@ -83,8 +83,8 @@ void GALGAS_optionDefaultValueEnumAST::description (C_String & ioString,
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_optionDefaultValueEnumAST::objectCompare (const GALGAS_optionDefaultValueEnumAST & inOperand) const {
-  enumComparisonResult result = kOperandNotValid ;
+typeComparisonResult GALGAS_optionDefaultValueEnumAST::objectCompare (const GALGAS_optionDefaultValueEnumAST & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
     if (mEnum < inOperand.mEnum) {
       result = kFirstOperandLowerThanSecond ;
@@ -168,7 +168,7 @@ class cCollectionElement_commandLineOptionListAST : public cCollectionElement {
                                                         COMMA_LOCATION_ARGS) ;
 
 //--- Virtual method for comparing elements
-  public : virtual enumComparisonResult compare (const cCollectionElement * inOperand) const ;
+  public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Virtual method that checks that all attributes are valid
   public : virtual bool isValid (void) const ;
@@ -249,9 +249,9 @@ void cCollectionElement_commandLineOptionListAST::description (C_String & ioStri
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult cCollectionElement_commandLineOptionListAST::compare (const cCollectionElement * inOperand) const {
+typeComparisonResult cCollectionElement_commandLineOptionListAST::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_commandLineOptionListAST * operand = (cCollectionElement_commandLineOptionListAST *) inOperand ;
-  enumComparisonResult result = kOperandEqual ;
+  typeComparisonResult result = kOperandEqual ;
   if (kOperandEqual == result) {
     result = mAttribute_mOptionTypeName.objectCompare (operand->mAttribute_mOptionTypeName) ;
   }
@@ -870,8 +870,8 @@ GALGAS_commandLineOptionListAST GALGAS_commandLineOptionListAST::extractObject (
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_optionComponentAST::objectCompare (const GALGAS_optionComponentAST & inOperand) const {
-  enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_optionComponentAST::objectCompare (const GALGAS_optionComponentAST & inOperand) const {
+  typeComparisonResult result = kOperandEqual ;
   const cPtr_optionComponentAST * p = (const cPtr_optionComponentAST *) mObjectPtr ;
   macroNullOrValidSharedObject (p, const cPtr_optionComponentAST) ;
   const cPtr_optionComponentAST * q = (const cPtr_optionComponentAST *) inOperand.mObjectPtr ;

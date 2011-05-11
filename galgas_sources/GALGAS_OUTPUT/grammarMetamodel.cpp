@@ -126,8 +126,8 @@ GALGAS_grammarComponentAST GALGAS_grammarComponentAST::constructor_new (const GA
 
 //---------------------------------------------------------------------------*
 
-enumComparisonResult GALGAS_grammarComponentAST::objectCompare (const GALGAS_grammarComponentAST & inOperand) const {
-   enumComparisonResult result = kOperandEqual ;
+typeComparisonResult GALGAS_grammarComponentAST::objectCompare (const GALGAS_grammarComponentAST & inOperand) const {
+   typeComparisonResult result = kOperandEqual ;
   if (result == kOperandEqual) {
     result = mAttribute_mHasIndexing.objectCompare (inOperand.mAttribute_mHasIndexing) ;
   }

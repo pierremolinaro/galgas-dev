@@ -7,7 +7,7 @@
 #include "strings/C_String.h"
 #include "galgas2/AC_GALGAS_root.h"
 #include "galgas2/C_galgas_type_descriptor.h"
-#include "galgas2/enumComparisonResult.h"
+#include "galgas2/typeComparisonResult.h"
 #include "galgas2/cGenericAbstractEnumerator.h"
 #include "galgas2/AC_GALGAS_list.h"
 #include "galgas2/AC_GALGAS_sortedlist.h"
