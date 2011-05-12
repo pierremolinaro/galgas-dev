@@ -1,9 +1,7 @@
 #---------------------------------------------------------------*
 
 #--- LIBPM directory
-ifndef LIBPM_PATH
-  $(error *** the LIBPM_PATH environment variable is not defined)
-endif
+LIBPM_DIRECTORY_PATH := %!LIBPM_DIRECTORY_PATH%
 
 #---------------------------------------------------------------*
 #                                                               *

@@ -19,9 +19,17 @@ list @projectSourceList {
 
 #------------------------------------------------------------------------------*
 
+list @qualifiedFeatureList {
+  @lstring mFeatureName ;
+  @lstring mFeatureValue ;
+}
+
+#------------------------------------------------------------------------------*
+
 struct @projectComponentAST {
   @projectSourceList mProjectSourceList ;
   @lstringlist mGenerationFeatureList ;
+  @qualifiedFeatureList mQualifiedFeatureList ;
   @lstring mProjectName ;
   @lstring mTargetName ;
   @location mEndOfSourceFile ;
