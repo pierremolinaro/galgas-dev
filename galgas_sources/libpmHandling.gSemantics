@@ -6,7 +6,7 @@ semantics libpmHandling :
 
 
 local filewrapper libpmFileWrapper in "../libpm" {
- "h", "cpp", "m", "mak"
+ "h", "cpp", "m", "mak", "pch", "tiff", "png", "xib", "gif"
 } {
 }
 
