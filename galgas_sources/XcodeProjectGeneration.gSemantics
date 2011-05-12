@@ -1155,7 +1155,7 @@ routine generateXcodeProject
     !inProjectName
     ![inProjectName stringByCapitalizingFirstCharacter] . " Tool"
     !toolTargetSettings
-    !"libpm/galgas2/PP_GalgasPrefix.pch"
+    !inLIBPMpath . "/galgas2/PP_GalgasPrefix.pch"
     !listForSourceBuildPhaseOfTool
     !listForFrameworksBuildPhaseOfTool
     ![@stringlist emptyList] # No Dependency
@@ -1288,7 +1288,7 @@ routine generateXcodeProject
     !"Cocoa" . [inProjectName stringByCapitalizingFirstCharacter]
     ![inProjectName stringByCapitalizingFirstCharacter] . " Cocoa"
     !cocoaAppTargetSettings
-    !"libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch" # Precompiled header (empty string if none)
+    !inLIBPMpath . "/cocoa_galgas/PP_CocoaGalgasPrefix.pch" # Precompiled header (empty string if none)
     !"Info.plist" # Info.plist file (empty string if none)
     !listForSourceBuildPhaseOfCocoaApp
     !listForFrameworksBuildPhaseOfCocoaApp
