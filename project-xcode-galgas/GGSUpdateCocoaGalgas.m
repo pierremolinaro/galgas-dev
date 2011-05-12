@@ -212,7 +212,7 @@ static OSStatus SendAppleEventToSystemProcess (AEEventID EventToSend) {
   #ifdef FORCED_GALGAS_VERSION
     return @"cocoagalgasupdater.app.tar.bz2" ;
   #else
-    return @"cocoa_galgas_updater.app.tar.bz2" ;
+    return @"cocoa_galgas_updater2.app.tar.bz2" ;
   #endif
 }
 
