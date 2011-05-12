@@ -122,6 +122,7 @@ project all_galgas -> "galgas" :
 
 #--- Project component
   semantics "projectGlobalCheckings.gSemantics" ;
+#  semantics "libpmHandling.gSemantics" ;
   semantics "targetGeneration.gSemantics" ;
   semantics "projectMetamodel.gSemantics" ;
   semantics "baseForXcodeProjectGeneration.gSemantics" ;
