@@ -1,9 +1,7 @@
 #---------------------------------------------------------------*
 
 #--- LIBPM directory
-ifndef LIBPM_PATH
-  $(error *** the LIBPM_PATH environment variable is not defined)
-endif
+LIBPM_DIRECTORY_PATH := ../libpm
 
 #---------------------------------------------------------------*
 #                                                               *
@@ -111,6 +109,7 @@ SOURCES += programModelBuilder.cpp
 SOURCES += programSLRgrammar.cpp
 SOURCES += programComponentCompilation.cpp
 SOURCES += projectGlobalCheckings.cpp
+SOURCES += libpmHandling.cpp
 SOURCES += targetGeneration.cpp
 SOURCES += projectMetamodel.cpp
 SOURCES += baseForXcodeProjectGeneration.cpp

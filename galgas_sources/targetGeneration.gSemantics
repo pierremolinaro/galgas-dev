@@ -3,6 +3,7 @@
 semantics targetGeneration :
   import "projectMetamodel.gSemantics" ;
   import "XcodeProjectGeneration.gSemantics" ;
+  import "libpmHandling.gSemantics" ;
 
 #---------------------------------------------------------------------------*
 
@@ -42,6 +43,7 @@ local filewrapper targetGenerationFileWrapper in "../generation_templates/target
     ?@stringset HAND_CODED_SOURCE_DIR_SET
     ?@stringlist HAND_CODED_SOURCE_FILE_LIST
     ?@stringlist MAKEFILE_FILE_LIST
+    ?@string LIBPM_DIRECTORY_PATH
   ;
 }
 
@@ -188,10 +190,23 @@ routine updateTargets
   ??@lstring inProjectSourceFilePath
   ??@lstring inProjectName
   ??@string inTargetName
+  ??@string inLIBPMpath
   ??@lstringlist inTargetFeatureList
   ??@projectSourceList inProjectSourceList
 :
   const @string projectDirectory := [[inProjectSourceFilePath stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] ;
+#--- Update LIBPM
+  @string libpmPath ;
+  if inLIBPMpath == "" then
+    updateLIBPMatPath ![inProjectSourceFilePath stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/libpm" ;
+    libpmPath := "../galgas_sources/GALGAS_OUTPUT/libpm" ;
+    const @string libpmAbsolutePath := [libpmPath absolutePathFromPath ![inProjectSourceFilePath stringByDeletingLastPathComponent]] ;
+    if not [libpmAbsolutePath directoryExists] then
+      error [@location nowhere]:"the '" . libpmAbsolutePath . "'  LIBPM directory does not exists" ;
+    end if ;
+  else
+    libpmPath := inLIBPMpath ;
+  end if ;
 #--- Check target names, file base name uniqueness, and build target file list
   @stringset externSourceSet_tool [emptySet] ;
   @stringset guiSourceSet_tool [emptySet] ;
@@ -361,6 +376,7 @@ routine updateTargets
     !handCodedSourceDirectorySet
     !handCodedSourceList
     !generatedFileListForMakefile
+    !libpmPath
   ] ;
   const @string fileListPath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list.mak" ;
   [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
@@ -388,15 +404,6 @@ routine updateTargets
     const @string Credits_rtf_path := dir ."/English.lproj/Credits.rtf" ;
     if not [Credits_rtf_path fileExists] then
       [[filewrapper targetGenerationFileWrapper."project_xcode/English.lproj/Credits.rtf"] writeToFile !Credits_rtf_path] ;
-    end if ;
-  #--- Make symbolic link
-    const @string libpmPosixPath := [[@string stringWithEnvironmentVariable !"LIBPM_PATH"] unixPathWithNativePath] ;
-    const @string symbLinkPath := dir . "/libpm" ;
-    if not [symbLinkPath isSymbolicLink] then
-      [symbLinkPath makeSymbolicLinkWithPath !libpmPosixPath] ;
-    elsif [@string stringWithSymbolicLinkContents !symbLinkPath] != libpmPosixPath then
-      [@string deleteFile !symbLinkPath] ;
-      [symbLinkPath makeSymbolicLinkWithPath !libpmPosixPath] ;
     end if ;
   #--- Enumerate icons
     const @stringlist iconFiles := [dir regularFilesWithExtensions !false ![@stringlist listWithValue !"icns"]] ;
@@ -428,6 +435,7 @@ routine updateTargets
       !iconFiles
       !intermediateFilePath
       !architectureList
+      !libpmPath
     ;
   end if ;
 end routine ;

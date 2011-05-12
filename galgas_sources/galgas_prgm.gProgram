@@ -32,26 +32,6 @@ program galgas_prgm "version GALGAS_BETA_VERSION" :
 #---------------------------------------------------------------------------*
 
 before {
-#--- Check definition of 'LIBPM_PATH' environnement variable
-  const @string libpmVarName := "LIBPM_PATH" ;
-  if not [libpmVarName doesEnvironmentVariableExist] then
-    error here : "the '" . libpmVarName
-    . "' environnement variable is not set; GALGAS requires it to be defined with the absolute path to the 'libpm' directory" ;
-  else
-    const @string libpmPosixPath := [[@string stringWithEnvironmentVariable !libpmVarName] unixPathWithNativePath] ;
-    if not [libpmPosixPath directoryExists] then
-      error here : "the '" . libpmVarName
-      . "' environnement variable is set to '" . [@string stringWithEnvironmentVariable !libpmVarName]
-      . "', but this value does not designate any directory (it should designate the 'libpm' directory)" ;
-    else
-      const @string libpmVersionFilePath := libpmPosixPath . "/version_libpm.h" ;
-      if not [libpmVersionFilePath fileExists] then
-        error here : "the '" . libpmVarName
-        . "' environnement variable is set to '" . [@string stringWithEnvironmentVariable !libpmVarName]
-        . "', but this value does not designate a valid 'libpm' directory (it does not contain the 'version_libpm.h' file)" ;
-      end if ;
-    end if ;
-  end if ;
 #--- Generate project
   const @string creationProjectName := [option galgas_cli_options.create_project value] ;
   projectCreation !creationProjectName ;
@@ -226,11 +206,27 @@ indexing with projectLL1grammar
   if targetName == "" then
     error [projectComponent mTargetName]: "the target name should not be empty" ;
   end if ;
+#--- Check qualified features
+  @string libpmPath := "" ; # By default, LIBPM is handled by GALGAS
+  foreach projectComponent->mQualifiedFeatureList do
+    if mFeatureName->string == "libpmAtPath" then
+      if libpmPath != "" then
+        error mFeatureName:"the libpm path is already defined" ;    
+      elsif mFeatureValue->string == "" then
+        error mFeatureValue:"the libpm path should not be empty" ;    
+      else
+        libpmPath := mFeatureValue->string ; # [mFeatureValue absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]] ;
+      end if ;    
+    else
+      error mFeatureName:"only 'libpmAtPath' is allowed here" ;    
+    end if ;  
+  end foreach ;
 #--- Update targets
   updateTargets
     !inSourceFile
     ![projectComponent mProjectName]
     !targetName
+    !libpmPath
     ![projectComponent mGenerationFeatureList]
     ![projectComponent mProjectSourceList]
   ;

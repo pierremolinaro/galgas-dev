@@ -833,6 +833,7 @@ routine generateXcodeProject
   ??@stringlist inIconFiles
   ??@string inReferenceFilePath
   ??@stringlist inArchitectureList
+  ??@string inLIBPMpath
 :
   @XcodeProjectDescription XcodeProjectDescription ;
   initXcodeProjectDescription ?XcodeProjectDescription ;
@@ -1052,7 +1053,7 @@ routine generateXcodeProject
   enter_group
     !?XcodeProjectDescription
     !"LIBPM"
-    !"libpm"
+    !inLIBPMpath
     !libpmGroupChildrenList
   ;
 #---------- "Project Resources" Group
@@ -1154,7 +1155,7 @@ routine generateXcodeProject
     !inProjectName
     ![inProjectName stringByCapitalizingFirstCharacter] . " Tool"
     !toolTargetSettings
-    !"libpm/galgas/PP_GalgasPrefix.pch"
+    !"libpm/galgas2/PP_GalgasPrefix.pch"
     !listForSourceBuildPhaseOfTool
     !listForFrameworksBuildPhaseOfTool
     ![@stringlist emptyList] # No Dependency
@@ -1298,7 +1299,7 @@ routine generateXcodeProject
 #-------------------------------------------------- Define project default configuration
   @stringlist pathes [emptyList] ;
   pathes += !"../galgas_sources/GALGAS_OUTPUT" ;
-  pathes += !"libpm" ;
+  pathes += !inLIBPMpath ;
   pathes += !"../hand_coded_sources/**" ;
   @stringlist projectDefaultSettings ;
   enterProjectDefaultSettings

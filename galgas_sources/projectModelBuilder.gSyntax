@@ -39,11 +39,19 @@ rule <project_component_start_symbol>
   $:$ ;
   @projectSourceList projectSourceList [emptyList] ;
   @lstringlist generateFeatureList [emptyList] ;
+  @qualifiedFeatureList qualifiedFeatureList [ emptyList] ;
   repeat
   while
     $feature$ ;
-    $literal_string$ ? @lstring featureName ;
-    generateFeatureList += !featureName ;
+    select
+      $identifier$ ? @lstring featureName ;
+      $:$ ;
+      $literal_string$ ? @lstring featureValue ;
+      qualifiedFeatureList += !featureName !featureValue ;
+    or
+      $literal_string$ ? @lstring featureName ;
+      generateFeatureList += !featureName ;
+    end select ;
     $;$ ;
   while
     @sourceFileKind sourceFileKind ;
@@ -83,6 +91,7 @@ rule <project_component_start_symbol>
   outProjectComponentAST := [@projectComponentAST new
     !projectSourceList
     !generateFeatureList
+    !qualifiedFeatureList
     !projectName
     !targetName
     !here
