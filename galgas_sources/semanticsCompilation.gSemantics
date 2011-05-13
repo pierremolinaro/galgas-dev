@@ -29,7 +29,8 @@ semantics semanticsCompilation :
 #---------------------------------------------------------------------------*
 
 filewrapper semanticFileGenerationTemplate in "../generation_templates/semantic_generation" {
-} {
+}{
+}{
   template semanticFileHeader "semantic-file.h.gTemplate"
     ?@string COMPONENT_NAME
     ?@stringlist IMPORTED_COMPONENT_LIST

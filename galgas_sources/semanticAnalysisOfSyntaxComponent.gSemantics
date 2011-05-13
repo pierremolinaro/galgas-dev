@@ -80,7 +80,8 @@ class @syntaxDeclarationForGeneration extends @semanticDeclarationForGeneration 
 #---------------------------------------------------------------------------*
 
 filewrapper syntaxFileGenerationTemplate in "../generation_templates/syntax_generation" {
-} {
+}{
+}{
   template syntaxFileHeader "syntax-file.h.gTemplate"
     ?@string COMPONENT_NAME
     ?@string LEXIQUE_NAME

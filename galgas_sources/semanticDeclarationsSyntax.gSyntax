@@ -667,13 +667,24 @@ rule <semantic_declaration>
   $in$ ;
   $literal_string$ ? @lstring mFilewrapperPath ;
   ${$ ;
-  @lstringlist mFilewrapperExtensionList [emptyList] ;
+  @lstringlist filewrapperTextFileExtensionList [emptyList] ;
   select
   or
     repeat
-      @lstring extension ;
-      $literal_string$ ? extension ;
-      mFilewrapperExtensionList += !extension ;
+      $literal_string$ ?@lstring extension ;
+      filewrapperTextFileExtensionList += !extension ;
+    while
+      $,$ ;
+    end repeat ;
+  end select ;
+  $}$ ;
+  ${$ ;
+  @lstringlist filewrapperBinaryFileExtensionList [emptyList] ;
+  select
+  or
+    repeat
+      $literal_string$ ?@lstring extension ;
+      filewrapperBinaryFileExtensionList += !extension ;
     while
       $,$ ;
     end repeat ;
@@ -714,7 +725,8 @@ rule <semantic_declaration>
     ![@string stringWithSourceFilePath]
     !mFilewrapperName
     !mFilewrapperPath
-    !mFilewrapperExtensionList
+    !filewrapperTextFileExtensionList
+    !filewrapperBinaryFileExtensionList
     !mFilewrapperTemplateList
   ] ;
 end rule ;

@@ -25,7 +25,8 @@ semantics projectCreation :
 #---------------------------------------------------------------------------*
 
 filewrapper projectCreationFileWrapper in "../generation_templates/project_creation" {
-} {
+}{
+}{
 #--- Project
 #  template build_bat "galgas_sources/build.bat.txt" ?@string PROJECT_NAME ;
   template PROJECT_project "all_PROJECT.gProject.gTemplate" ?@string PROJECT_NAME ;

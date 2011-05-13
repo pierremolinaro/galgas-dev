@@ -388,8 +388,8 @@ end function ;
 #---------------------------------------------------------------------------*
 
 filewrapper typeGenerationTemplate in "../generation_templates/type_generation" {
-} {
-  
+}{
+}{
   template unifiedClassBodyForType "unified-class-body-for-type.h.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
@@ -607,7 +607,8 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
 #---------------------------------------------------------------------------*
 
 local filewrapper semanticComponentGenerationTemplate in "../generation_templates/semantic_generation" {
-} {
+}{
+}{
   template abstractCategoryReaderDeclaration "abstract-category-reader.h.gTemplate"
     ?@string CLASS_NAME
     ?@string READER_NAME

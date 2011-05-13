@@ -674,7 +674,8 @@ override method @filewrapperPredefinedTypeAST getReaderMap
   !@readerMap outMap
 :
   commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
-  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"allFilePathes" !"stringlist" !false ;
+  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"allTextFilePathes" !"stringlist" !false ;
+  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"allBinaryFilePathes" !"stringlist" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"allDirectoryPathes" !"stringlist" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"currentDirectory" !"string" !false ;
   enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"allFilePathesWithExtension" !"string" !"stringlist" !false ;

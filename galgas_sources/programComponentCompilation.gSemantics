@@ -27,7 +27,8 @@ import "programSLRgrammar.gGrammar" ;
 #---------------------------------------------------------------------------*
 
 local filewrapper programFileGenerationTemplate in "../generation_templates/program_generation" {
-} {
+}{
+}{
   template programFileHeader "program-file.h.gTemplate"
     ?@string COMPONENT_NAME
     ?@stringlist IMPORTED_COMPONENT_LIST
