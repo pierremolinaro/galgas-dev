@@ -26,7 +26,8 @@ import "optionLL1grammar.gGrammar" ;
 #---------------------------------------------------------------------------*
 
 local filewrapper optionGenerationTemplates in "../generation_templates/option_generation" {
-} {
+}{
+}{
   template optionHeaderZone2 "option-header-zone2.gTemplate"
     ?@string OPTION_COMPONENT_NAME
   ;

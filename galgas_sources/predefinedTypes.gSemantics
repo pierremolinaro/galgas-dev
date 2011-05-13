@@ -200,7 +200,8 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 local filewrapper predefinedTypeGenerationTemplate in "../generation_templates/type_generation" {
-} {
+}{
+}{
   template predefinedTypesImplementation "predefined_types.cpp.gTemplate" ;
 
 

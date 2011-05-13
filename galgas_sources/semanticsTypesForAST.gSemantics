@@ -1284,7 +1284,8 @@ class @filewrapperDeclarationAST extends @semanticDeclarationAST {
   @string mSourceFileAbsolutePath ;
   @lstring mFilewrapperName ;
   @lstring mFilewrapperPath ;
-  @lstringlist mFilewrapperExtensionList ;
+  @lstringlist mFilewrapperTextFileExtensionList ;
+  @lstringlist mFilewrapperBinaryFileExtensionList ;
   @filewrapperTemplateListAST mFilewrapperTemplateList ;
 }
 

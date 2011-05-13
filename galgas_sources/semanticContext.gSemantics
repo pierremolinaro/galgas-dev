@@ -1296,7 +1296,7 @@ override method @filewrapperDeclarationAST enterInSemanticContext
   end foreach ;
 #--- Build extension map
   @wrapperExtensionMap extensionMap [emptyMap] ;
-  foreach mFilewrapperExtensionList do
+  foreach mFilewrapperTextFileExtensionList do
     [!?extensionMap insertKey !mValue] ;
   end foreach ;
 #--- Enumerate filewrapper files
@@ -1329,7 +1329,7 @@ override method @filewrapperDeclarationAST enterInSemanticContext
   [!?ioSemanticContext->mFilewrapperMap insertKey
     !mFilewrapperName
     !mFilewrapperPath
-    !mFilewrapperExtensionList
+    !mFilewrapperTextFileExtensionList
     !regularRootFileMap
     !wrapperDirectoryMap
     !filewrapperTemplateMap

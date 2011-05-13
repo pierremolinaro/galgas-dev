@@ -109,7 +109,18 @@ internalEnumerateFiles (const cDirectoryWrapper & inDirectory,
 
 //---------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_filewrapper::reader_allFilePathes (LOCATION_ARGS) const {
+GALGAS_stringlist GALGAS_filewrapper::reader_allTextFilePathes (LOCATION_ARGS) const {
+  GALGAS_stringlist result ;
+  if (mRootDirectoryPtr != NULL) {
+    result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+    internalEnumerateFiles (* mRootDirectoryPtr, "/", result) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_stringlist GALGAS_filewrapper::reader_allBinaryFilePathes (LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (mRootDirectoryPtr != NULL) {
     result = GALGAS_stringlist::constructor_emptyList (THERE) ;

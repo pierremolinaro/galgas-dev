@@ -10,7 +10,8 @@ semantics targetGeneration :
 
 local filewrapper targetGenerationFileWrapper in "../generation_templates/target_generation" {
  "bat", "command", "rtf"
-} {
+}{
+}{
   template makefile_macosx_intel_makefile "makefile_macosx_intel/makefile" ?@string PROJECT_NAME ;
   template makefile_macosx_intel_makefile64 "makefile_macosx_intel/makefile64" ?@string PROJECT_NAME ;
 

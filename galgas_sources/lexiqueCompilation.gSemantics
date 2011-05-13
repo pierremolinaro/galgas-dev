@@ -618,7 +618,8 @@ end method ;
 #---------------------------------------------------------------------------*
 
 local filewrapper lexiqueGenerationTemplates in "../generation_templates/lexique_generation" {
-} {
+}{
+}{
   template newHeaderZone2 "lexique_header_template_zone_2.new.h.gTemplate"
     ?@string LEXIQUE_IDENTIFIER
     ?@lexiqueAnalysisContext LEXIQUE_ANALYSIS_CONTEXT
