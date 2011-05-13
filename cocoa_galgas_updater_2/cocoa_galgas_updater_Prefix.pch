@@ -1,0 +1,7 @@
+//
+// Prefix header for all source files of the 'canari_updater' target in the 'canari_updater' project
+//
+
+#ifdef __OBJC__
+    #import <Cocoa/Cocoa.h>
+#endif

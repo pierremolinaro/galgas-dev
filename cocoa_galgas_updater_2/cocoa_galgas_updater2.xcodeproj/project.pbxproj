@@ -7,20 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165CFE840E0CC02AAC07 /* InfoPlist.strings */; };
 		8D11072D0486CEB800E47090 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 29B97316FDCFA39411CA2CEA /* main.m */; settings = {ATTRIBUTES = (); }; };
 		8D11072F0486CEB800E47090 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */; };
 		CF32A5030AE6713C005C5C38 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF32A5020AE6713C005C5C38 /* Security.framework */; };
 		CF3780350AE9357F00D69EDB /* PMCancelButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3780320AE9357F00D69EDB /* PMCancelButtonForPanel.m */; };
 		CF3780360AE9357F00D69EDB /* PMOkButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3780340AE9357F00D69EDB /* PMOkButtonForPanel.m */; };
 		CF9BD8480A97AE93003070D1 /* PMApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BD8470A97AE93003070D1 /* PMApplicationDelegate.m */; };
-		CFA3B8B4137DAA75006A6C58 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFA3B8B2137DAA75006A6C58 /* MainMenu.xib */; };
+		CFA3B8C7137DAB3F006A6C58 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CFA3B8C5137DAB3F006A6C58 /* InfoPlist.strings */; };
+		CFA3B8CD137DAB55006A6C58 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = CFA3B8CB137DAB55006A6C58 /* MainMenu.xib */; };
 		CFD066CB0AD8FA72005659A8 /* PMCocoaGalgasUpdaterWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD066C90AD8FA72005659A8 /* PMCocoaGalgasUpdaterWindow.m */; };
 		CFD066D00AD8FAE2005659A8 /* cocoa_galgas_updater.icns in Resources */ = {isa = PBXBuildFile; fileRef = CFD066CF0AD8FAE2005659A8 /* cocoa_galgas_updater.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		089C165DFE840E0CC02AAC07 /* English */ = {isa = PBXFileReference; fileEncoding = 10; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		1058C7A1FEA54F0111CA2CBB /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = /System/Library/Frameworks/Cocoa.framework; sourceTree = "<absolute>"; };
 		29B97316FDCFA39411CA2CEA /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		29B97324FDCFA39411CA2CEA /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = /System/Library/Frameworks/AppKit.framework; sourceTree = "<absolute>"; };
@@ -34,7 +33,8 @@
 		CF3780340AE9357F00D69EDB /* PMOkButtonForPanel.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; name = PMOkButtonForPanel.m; path = cocoa_utilities/PMOkButtonForPanel.m; sourceTree = "<group>"; };
 		CF9BD8460A97AE93003070D1 /* PMApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMApplicationDelegate.h; sourceTree = "<group>"; };
 		CF9BD8470A97AE93003070D1 /* PMApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMApplicationDelegate.m; sourceTree = "<group>"; };
-		CFA3B8B3137DAA75006A6C58 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		CFA3B8C6137DAB3F006A6C58 /* English */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.strings; name = English; path = English.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		CFA3B8CC137DAB55006A6C58 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		CFD066C80AD8FA66005659A8 /* cocoa_galgas_updater_Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = cocoa_galgas_updater_Prefix.pch; sourceTree = "<group>"; };
 		CFD066C90AD8FA72005659A8 /* PMCocoaGalgasUpdaterWindow.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = PMCocoaGalgasUpdaterWindow.m; sourceTree = "<group>"; };
 		CFD066CA0AD8FA72005659A8 /* PMCocoaGalgasUpdaterWindow.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PMCocoaGalgasUpdaterWindow.h; sourceTree = "<group>"; };
@@ -118,8 +118,8 @@
 			children = (
 				CFD066CF0AD8FAE2005659A8 /* cocoa_galgas_updater.icns */,
 				8D1107310486CEB800E47090 /* Info.plist */,
-				089C165CFE840E0CC02AAC07 /* InfoPlist.strings */,
-				CFA3B8B2137DAA75006A6C58 /* MainMenu.xib */,
+				CFA3B8CB137DAB55006A6C58 /* MainMenu.xib */,
+				CFA3B8C5137DAB3F006A6C58 /* InfoPlist.strings */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -179,7 +179,7 @@
 /* Begin PBXProject section */
 		29B97313FDCFA39411CA2CEA /* Project object */ = {
 			isa = PBXProject;
-			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "cocoa_galgas_updater" */;
+			buildConfigurationList = C01FCF4E08A954540054247B /* Build configuration list for PBXProject "cocoa_galgas_updater2" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
@@ -203,9 +203,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8D11072B0486CEB800E47090 /* InfoPlist.strings in Resources */,
 				CFD066D00AD8FAE2005659A8 /* cocoa_galgas_updater.icns in Resources */,
-				CFA3B8B4137DAA75006A6C58 /* MainMenu.xib in Resources */,
+				CFA3B8C7137DAB3F006A6C58 /* InfoPlist.strings in Resources */,
+				CFA3B8CD137DAB55006A6C58 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -227,18 +227,18 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		089C165CFE840E0CC02AAC07 /* InfoPlist.strings */ = {
+		CFA3B8C5137DAB3F006A6C58 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
-				089C165DFE840E0CC02AAC07 /* English */,
+				CFA3B8C6137DAB3F006A6C58 /* English */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		CFA3B8B2137DAA75006A6C58 /* MainMenu.xib */ = {
+		CFA3B8CB137DAB55006A6C58 /* MainMenu.xib */ = {
 			isa = PBXVariantGroup;
 			children = (
-				CFA3B8B3137DAA75006A6C58 /* English */,
+				CFA3B8CC137DAB55006A6C58 /* English */,
 			);
 			name = MainMenu.xib;
 			sourceTree = "<group>";
@@ -310,7 +310,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "cocoa_galgas_updater" */ = {
+		C01FCF4E08A954540054247B /* Build configuration list for PBXProject "cocoa_galgas_updater2" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C01FCF5008A954540054247B /* Release */,

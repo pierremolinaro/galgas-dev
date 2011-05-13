@@ -139,8 +139,6 @@
 
 - (void) awakeFromNib {
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
-//--- Suppress libpm path in application preferences
- [ud setObject:nil forKey:@"GGS_libpm_path"] ;
 //--- Remove temporary dir, if it exists
   NSFileManager * fm = [NSFileManager defaultManager] ;
   if ([fm fileExistsAtPath:[self temporaryDir]]) {
@@ -396,33 +394,6 @@
 //--------------------------------------------------------------------------*
 
 - (void) downloadNewVersionOfGALGASDidEnd: (PMDownloadFile *) inDownloader {
-  if ([inDownloader downloadHasBeenCancelled]) {
-    [self downloadHasBeenCancelled] ;
-  }else{
-    NSError * downloadError = [inDownloader downloadError] ;
-    if (downloadError != NULL) {
-      [self downloadDidFinishOnError:downloadError] ;
-    }else{
-    //--- Start download LIBPM
-      NSString * lastAvailableVersion = [inDownloader userInfo] ;
-      [mDownloadTitle setStringValue:[NSString stringWithFormat:@"Downloading libpm for GALGAS %@...", lastAvailableVersion]] ;
-      [[PMDownloadFile alloc] initWithURLString:[self libpmHTTPPathForVersion:lastAvailableVersion]
-         destinationFileName:[self temporaryPathForLIBPMArchive]
-         downloadDelegate:self
-         downloadDidEndSelector:@selector (downloadNewVersionOfLIBPMDidEnd:)
-         cancelButton:mCancelButton
-         subtitle:mDownloadSubTitle
-         progressIndicator:mDownloadProgressIndicator
-         userInfo:lastAvailableVersion
-      ] ;
-    }  
-  }
-  [inDownloader release] ;
-}
-
-//--------------------------------------------------------------------------*
-
-- (void) downloadNewVersionOfLIBPMDidEnd: (PMDownloadFile *) inDownloader {
   if ([inDownloader downloadHasBeenCancelled]) {
     [self downloadHasBeenCancelled] ;
   }else{
