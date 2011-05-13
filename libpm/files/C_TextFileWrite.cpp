@@ -84,10 +84,9 @@
 
 //---------------------------------------------------------------------------*
 
-C_TextFileWrite::
-C_TextFileWrite (const C_String & inFileName
-                 COMMA_MAC_OS_CREATOR_FORMAL_ARGUMENT,
-                 bool & outOk) :
+C_TextFileWrite::C_TextFileWrite (const C_String & inFileName
+                                  COMMA_MAC_OS_CREATOR_FORMAL_ARGUMENT,
+                                  bool & outOk) :
 mFileName (inFileName),
 mFilePtr((FILE *) NULL),
 mBufferLength (0) {

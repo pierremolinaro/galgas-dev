@@ -30,7 +30,6 @@
 #include "command_line_interface/C_StringCommandLineOption.h"
 #include "command_line_interface/C_builtin_CLI_Options.h"
 #include "streams/C_ConsoleOut.h"
-#include "version_libpm.h"
 #include "command_line_interface/mainForLIBPM.h"
 
 //---------------------------------------------------------------------------*
@@ -142,8 +141,7 @@ static void print_help (int argv,
   #ifndef DO_NOT_GENERATE_CHECKINGS
     co << " (with debug code)" ;
   #endif
-  co << ".\n"
-        "LIBPM archive revision: " << cStringWithUnsigned (CURRENT_LIBPM_VERSION) << "\n" ;
+  co << ".\n" ;
   print_tool_help_message () ;
 /*  #ifndef DO_NOT_GENERATE_CHECKINGS
     co << "sizeof (short)=" << ((PMUInt32) sizeof (short))

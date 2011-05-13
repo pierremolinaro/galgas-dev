@@ -1,14 +1,15 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//  GALGAS_filewrapper : class for GALGAS file wrappers                         *
+//  GALGAS_filewrapper : class for GALGAS file wrappers                      *
 //                                                                           *
 //  Started february 23th, 2008.                                             *
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2008, ..., 2009 Pierre Molinaro.                           *
+//  Copyright (C) 2008, ..., 2011 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//                                                                           *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
 //                                                                           *
@@ -29,12 +30,15 @@
 
 //---------------------------------------------------------------------------*
 
-cRegularFileWrapper::
-cRegularFileWrapper (const char * inName,
-                     const char * inExtension,
-                     const char * inContents) :
+cRegularFileWrapper::cRegularFileWrapper (const char * inName,
+                                          const char * inExtension,
+                                          const bool inIsTextFile,
+                                          const PMUInt32 inFileLength,
+                                          const char * inContents) :
 mName (inName),
 mExtension (inExtension),
+mIsTextFile (inIsTextFile),
+mFileLength (inFileLength),
 mContents (inContents) {
 }
 
@@ -88,13 +92,16 @@ GALGAS_filewrapper & GALGAS_filewrapper::operator = (const GALGAS_filewrapper & 
 static void
 internalEnumerateFiles (const cDirectoryWrapper & inDirectory,
                         const C_String & inWrapperPath,
+                        const bool inEnumerateTextFile,
                         GALGAS_stringlist & ioList) {
 //--- Enumerate regular files
   const cRegularFileWrapper * * mFiles = inDirectory.mFiles ;
   while ((* mFiles) != NULL) {
     C_String path = inWrapperPath ;
     path << (* mFiles)->mName ;
-    ioList.addAssign_operation (GALGAS_string (path) COMMA_HERE) ;
+    if ((* mFiles)->mIsTextFile == inEnumerateTextFile) {
+      ioList.addAssign_operation (GALGAS_string (path) COMMA_HERE) ;
+    }
     mFiles ++ ;
   }
 //--- Walk throught directories
@@ -102,7 +109,7 @@ internalEnumerateFiles (const cDirectoryWrapper & inDirectory,
   while ((* mDirs) != NULL) {
     C_String path = inWrapperPath ;
     path << (* mDirs)->mDirectoryName << "/" ;
-    internalEnumerateFiles (* * mDirs, path, ioList) ;
+    internalEnumerateFiles (* * mDirs, path, inEnumerateTextFile, ioList) ;
     mDirs ++ ;
   }
 }
@@ -113,7 +120,7 @@ GALGAS_stringlist GALGAS_filewrapper::reader_allTextFilePathes (LOCATION_ARGS) c
   GALGAS_stringlist result ;
   if (mRootDirectoryPtr != NULL) {
     result = GALGAS_stringlist::constructor_emptyList (THERE) ;
-    internalEnumerateFiles (* mRootDirectoryPtr, "/", result) ;
+    internalEnumerateFiles (* mRootDirectoryPtr, "/", true, result) ;
   }
   return result ;
 }
@@ -124,7 +131,7 @@ GALGAS_stringlist GALGAS_filewrapper::reader_allBinaryFilePathes (LOCATION_ARGS)
   GALGAS_stringlist result ;
   if (mRootDirectoryPtr != NULL) {
     result = GALGAS_stringlist::constructor_emptyList (THERE) ;
-    internalEnumerateFiles (* mRootDirectoryPtr, "/", result) ;
+    internalEnumerateFiles (* mRootDirectoryPtr, "/", false, result) ;
   }
   return result ;
 }
@@ -361,9 +368,9 @@ GALGAS_bool GALGAS_filewrapper::reader_fileExistsAtPath (const GALGAS_string & i
 
 //---------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_filewrapper::reader_fileContentsAtPath (const GALGAS_string & inPath,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS) const {
+GALGAS_string GALGAS_filewrapper::reader_textFileContentsAtPath (const GALGAS_string & inPath,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const {
   GALGAS_string result ;
   if (isValid () && inPath.isValid ()) {
     const GALGAS_string path = reader_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;
@@ -373,10 +380,40 @@ GALGAS_string GALGAS_filewrapper::reader_fileContentsAtPath (const GALGAS_string
       const cRegularFileWrapper * file = findFileInDirectory (dir, path.stringValue ().lastPathComponent ()) ;
       if (file == NULL) {
         C_String errorMessage ;
-        errorMessage << "fileContentsAtPath: the '" << inPath.stringValue () << "' path does not exist" ;
+        errorMessage << "textFileContentsAtPath: the '" << inPath.stringValue () << "' path does not exist" ;
+        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+      }else if (! file->mIsTextFile) {
+        C_String errorMessage ;
+        errorMessage << "textFileContentsAtPath: the '" << inPath.stringValue () << "' path points on a binary file" ;
         inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
       }else{
         result = GALGAS_string (file->mContents) ;
+      }
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_data GALGAS_filewrapper::reader_binaryFileContentsAtPath (const GALGAS_string & inPath,
+                                                                 C_Compiler * inCompiler
+                                                                 COMMA_LOCATION_ARGS) const {
+  GALGAS_data result ;
+  if (isValid () && inPath.isValid ()) {
+    const GALGAS_string path = reader_absolutePathForPath (inPath, inCompiler COMMA_THERE) ;
+    if (path.isValid ()) {
+      const C_String directoryPath = path.stringValue ().stringByDeletingLastPathComponent () ;
+      const cDirectoryWrapper * dir = getDirectory (directoryPath, mRootDirectoryPtr) ;
+      const cRegularFileWrapper * file = findFileInDirectory (dir, path.stringValue ().lastPathComponent ()) ;
+      if (file == NULL) {
+        C_String errorMessage ;
+        errorMessage << "binaryFileContentsAtPath: the '" << inPath.stringValue () << "' path does not exist" ;
+        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+      }else{
+        const PMUInt8 * sourcePtr = (const PMUInt8 *) file->mContents ;
+        const PMUInt32 sourceLength = file->mFileLength ;
+        result = GALGAS_data (sourcePtr, sourceLength) ;
       }
     }
   }

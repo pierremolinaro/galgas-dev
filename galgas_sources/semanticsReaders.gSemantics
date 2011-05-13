@@ -641,6 +641,7 @@ override method @dataPredefinedTypeAST getReaderMap
 :
   commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"length" !"uint" !false ;
+  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"cStringRepresentation" !"string" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -681,7 +682,8 @@ override method @filewrapperPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"allFilePathesWithExtension" !"string" !"stringlist" !false ;
   enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"directoryExistsAtPath" !"string" !"bool" !true ;
   enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"fileExistsAtPath" !"string" !"bool" !true ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"fileContentsAtPath" !"string" !"string" !true ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"textFileContentsAtPath" !"string" !"string" !true ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"binaryFileContentsAtPath" !"string" !"data" !true ;
   enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"absolutePathForPath" !"string" !"string" !true ;
 end method ;
 

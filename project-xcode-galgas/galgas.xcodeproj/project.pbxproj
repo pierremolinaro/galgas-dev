@@ -1458,7 +1458,6 @@
 		CF6DF20509E3F30400506859 /* galgasDebugI386 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasDebugI386; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF6DF25509E3F3A700506859 /* cocoaGalgasI386.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = cocoaGalgasI386.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF70273E137C53D600FA7C3E /* C_ColoredConsole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_ColoredConsole.cpp; sourceTree = "<group>"; };
-		CF774FC6115BD22A00B3EBE4 /* version_libpm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = version_libpm.h; sourceTree = "<group>"; };
 		CF7A1403058CEFE2007126C1 /* galgasDebug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = galgasDebug; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7B55711146AEE90068C5E6 /* semanticsDecoratedTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsDecoratedTypes.cpp; sourceTree = "<group>"; };
 		CF7B55721146AEE90068C5E6 /* semanticsDecoratedTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsDecoratedTypes.h; sourceTree = "<group>"; };
@@ -2709,7 +2708,6 @@
 		CFF5381C057A545B00854C83 /* libpm */ = {
 			isa = PBXGroup;
 			children = (
-				CF774FC6115BD22A00B3EBE4 /* version_libpm.h */,
 				CF4ED36D10D9256F00B4F6AA /* cocoa_debug */,
 				CFB9E4850DF28AC500885084 /* collections */,
 				CFDAE7040AD19F3E00713406 /* cocoa_utilities */,

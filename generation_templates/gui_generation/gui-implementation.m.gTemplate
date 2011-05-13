@@ -1,11 +1,4 @@
 
-#include "version_libpm.h"
-#if CURRENT_LIBPM_VERSION != VERSION_OF_LIBPM_USED_BY_GALGAS_COMPILER
-  #error "This file has been compiled with a version of GALGAS that uses libpm version VERSION_OF_LIBPM_USED_BY_GALGAS_COMPILER, different than the current version (CURRENT_LIBPM_VERSION) of libpm"
-#endif
-
-//---------------------------------------------------------------------------*
-
 #import "OC_Token.h"
 #import "F_CocoaWrapperForGalgas.h"
 %foreach [GUI_CONTEXT mWithLexiqueList] do

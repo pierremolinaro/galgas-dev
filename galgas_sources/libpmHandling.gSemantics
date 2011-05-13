@@ -20,12 +20,21 @@ routine updateLIBPMatPath ??@string inLIBPMPath :
 #--- Create directories
   foreach [fw allDirectoryPathes] do
     const @string actualDirectory := inLIBPMPath . mValue ;
+#    message "FW DIR: '" . actualDirectory . "'\n" ;
     [actualDirectory makeDirectory] ;
   end foreach ;
-#--- Update files
+#--- Update text files
   foreach [fw allTextFilePathes] do
-    const @string contents := [fw fileContentsAtPath !mValue] ;
+    const @string contents := [fw textFileContentsAtPath !mValue] ;
     const @string actualFilePath := inLIBPMPath . mValue ;
+#    message "FW FILE: '" . actualFilePath . "'\n" ;
+    [contents writeToFileWhenDifferentContents !actualFilePath ?*] ;
+  end foreach ;
+#--- Update binary files
+  foreach [fw allBinaryFilePathes] do
+    const @data contents := [fw binaryFileContentsAtPath !mValue] ;
+    const @string actualFilePath := inLIBPMPath . mValue ;
+#    message "FW FILE: '" . actualFilePath . "'\n" ;
     [contents writeToFileWhenDifferentContents !actualFilePath ?*] ;
   end foreach ;
 end routine ;

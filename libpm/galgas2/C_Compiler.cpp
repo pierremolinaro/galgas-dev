@@ -23,13 +23,12 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "galgas2/C_Compiler.h"
-#include "utilities/MF_MemoryControl.h"
-#include "files/C_TextFileWrite.h"
-#include "galgas2/C_galgas_CLI_Options.h"
-#include "version_libpm.h"
 #include "command_line_interface/F_Analyze_CLI_Options.h"
+#include "files/C_TextFileWrite.h"
+#include "galgas2/C_Compiler.h"
+#include "galgas2/C_galgas_CLI_Options.h"
 #include "galgas2/predefined-types.h"
+#include "utilities/MF_MemoryControl.h"
 
 //---------------------------------------------------------------------------*
 //                                                                           *

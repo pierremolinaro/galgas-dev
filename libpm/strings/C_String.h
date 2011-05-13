@@ -302,6 +302,8 @@ class C_String : public AC_OutputStream {
                                        COMMA_MAC_OS_CREATOR_FORMAL_ARGUMENT
                                        COMMA_LOCATION_ARGS) const ;
 
+  public : bool writeBinaryData (const TC_UniqueArray <PMUInt8> & inBinaryData) const ;
+
   public : C_DateTime fileModificationTime (void) const ;
 
   public : bool fileExists (void) const ;
