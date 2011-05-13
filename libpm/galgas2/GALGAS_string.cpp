@@ -1151,7 +1151,6 @@ void GALGAS_string::method_writeToFileWhenDifferentContents (GALGAS_string inFil
                                                              C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) const {
   if (inFilePath.isValid ()) {
-//    inCompiler->addDependancyOutputFilePath (inFilePath.mString) ;
     bool needToWrite = true ;
     const bool fileAlreadyExists = inFilePath.mString.fileExists () ;
     if (fileAlreadyExists) {

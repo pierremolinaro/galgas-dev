@@ -2006,7 +2006,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   end loop ;
   @uint fileIndex ;
   if [filewrapperFileMap hasKey !fileName] then
-    [filewrapperFileMap searchKey ![@lstring new !fileName !here] ?* ?* ?fileIndex] ;
+    [filewrapperFileMap searchKey ![@lstring new !fileName !here] ?3* ?fileIndex] ;
   else
     error mFilewrapperPath
     : "the '" . fileName . "' file does not exist in the '" . builtPath . "' directory of '" . mFilewrapperName . "' filewrapper"

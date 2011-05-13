@@ -1532,18 +1532,37 @@ local routine generateWrapperContents
 :
 #--- Generate regular files
   foreach inFilewrapperRegularFileMap do
-    const @string contents := [@string stringWithContentsOfFile !mAbsoluteFilePath] ;
-    ioImplementation .= "//--- File '" . inFilewrapperDirectory . "/" . lkey . "'\n\n"
-    .  "const char * gWrapperFileContent_"
-    . [mWrapperFileIndex string] . "_"
-    . [inFilewrapperName identifierRepresentation] . " = "
-    . [contents utf8Representation] . " ;\n\n"
-    . "static const cRegularFileWrapper gWrapperFile_" . [mWrapperFileIndex string]. "_"
-    . [inFilewrapperName identifierRepresentation] . " (\n"
-    . "  " . [lkey utf8Representation] . ",\n"
-    . "  " . [[lkey pathExtension] utf8Representation] . ",\n"
-    . "  gWrapperFileContent_" . [mWrapperFileIndex string] . "_" . [inFilewrapperName identifierRepresentation] ."\n"
-    . ") ;\n\n" ;
+    if mIsTextFile then
+      const @string contents := [@string stringWithContentsOfFile !mAbsoluteFilePath] ;
+      ioImplementation .= "//--- File '" . inFilewrapperDirectory . "/" . lkey . "'\n\n"
+      .  "static const char * gWrapperFileContent_"
+      . [mWrapperFileIndex string] . "_"
+      . [inFilewrapperName identifierRepresentation] . " = "
+      . [contents utf8Representation] . " ;\n\n"
+      . "static const cRegularFileWrapper gWrapperFile_" . [mWrapperFileIndex string]. "_"
+      . [inFilewrapperName identifierRepresentation] . " (\n"
+      . "  " . [lkey utf8Representation] . ",\n"
+      . "  " . [[lkey pathExtension] utf8Representation] . ",\n"
+      . "  true, // Text file\n"
+      . "  " . [contents length] . ", // Text length\n"
+      . "  gWrapperFileContent_" . [mWrapperFileIndex string] . "_" . [inFilewrapperName identifierRepresentation] ."\n"
+      . ") ;\n\n" ;
+    else
+      const @data contents := [@data dataWithContentsOfFile !mAbsoluteFilePath] ;
+      ioImplementation .= "//--- File '" . inFilewrapperDirectory . "/" . lkey . "'\n\n"
+      .  "static const unsigned char gWrapperFileContent_"
+      . [mWrapperFileIndex string] . "_"
+      . [inFilewrapperName identifierRepresentation] . " [" . [contents length] . "] = {"
+      . [contents cStringRepresentation] . "} ;\n\n"
+      . "static const cRegularFileWrapper gWrapperFile_" . [mWrapperFileIndex string]. "_"
+      . [inFilewrapperName identifierRepresentation] . " (\n"
+      . "  " . [lkey utf8Representation] . ",\n"
+      . "  " . [[lkey pathExtension] utf8Representation] . ",\n"
+      . "  false, // binary file\n"
+      . "  " . [contents length] . ", // Length\n"
+      . "  (const char *) gWrapperFileContent_" . [mWrapperFileIndex string] . "_" . [inFilewrapperName identifierRepresentation] ."\n"
+      . ") ;\n\n" ;
+    end if ;
   end foreach ;
 #--- Generate sub-directories
   foreach inFilewrapperDirectoryMap do

@@ -17,8 +17,10 @@ class GALGAS_data : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public : GALGAS_data (void) ;
 
-//--------------------------------- Native constructor
+//--------------------------------- Native constructors
   public : GALGAS_data (const TC_Array <PMUInt8> & inValue) ;
+  public : GALGAS_data (const PMUInt8 * inArray,
+                        const PMUInt32 inLength) ;
 
 %
 

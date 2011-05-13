@@ -276,6 +276,9 @@ template <typename TYPE> class TC_UniqueArray {
   protected : PMSInt32 mCount ;
   protected : PMSInt32 mCapacity ;
 
+//--- Array Pointer
+  public : const TYPE * arrayPointer (void) const ;
+
 //--- swap
   friend void swap <TYPE> (TC_UniqueArray <TYPE> & ioOperand1,
                            TC_UniqueArray <TYPE> & ioOperand2) ;
@@ -1395,6 +1398,16 @@ unionWithArray (const TC_UniqueArray <TYPE> & inOperand,
       outResult.addObject (inOperand.mArray [i]) ;
     }
   }
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//   Union with an other array                                               *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+template <typename TYPE> const TYPE * TC_UniqueArray <TYPE>::arrayPointer (void) const {
+  return mArray ;
 }
 
 //---------------------------------------------------------------------------*

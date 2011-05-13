@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2009, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 2009, ..., 2011 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -52,9 +52,41 @@ mData (inOperand_mData) {
 
 //---------------------------------------------------------------------------*
 
+GALGAS_data::GALGAS_data (const PMUInt8 * inSourceArray,
+                          const PMUInt32 inLength) :
+mIsValid (true),
+mData () {
+  mData.makeRoom (inLength) ;
+  for (PMUInt32 i=0 ; i<inLength ; i++) {
+    mData.addObject (inSourceArray [i]) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
 GALGAS_data GALGAS_data::constructor_emptyData (UNUSED_LOCATION_ARGS) {
   TC_Array <PMUInt8> t ;
   return GALGAS_data (t) ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_data GALGAS_data::constructor_dataWithContentsOfFile (const GALGAS_string & inFilePath,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) {
+  GALGAS_data result ;
+  if (inFilePath.isValid()){
+    TC_Array <PMUInt8> t ;
+    const bool ok = inFilePath.stringValue ().binaryDataWithContentOfFile (t) ;
+    if (ok) {
+      result = GALGAS_data (t) ;
+    }else{
+      C_String s ;
+      s << "cannot read binary file at path '" << inFilePath.stringValue () << "'" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------*
@@ -100,7 +132,28 @@ void GALGAS_data::description (C_String & ioString,
 //---------------------------------------------------------------------------*
 
 GALGAS_uint GALGAS_data::reader_length (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_uint ((PMUInt32) mData.count ()) ;
+  GALGAS_uint result ;
+  if (isValid ()) {
+    result = GALGAS_uint ((PMUInt32) mData.count ()) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_string GALGAS_data::reader_cStringRepresentation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid ()) {
+    C_String s (cStringWithUnsigned (mData (0 COMMA_HERE))) ;
+    for (PMSInt32 i=1 ; i<mData.count () ; i++) {
+      s << ", " << cStringWithUnsigned (mData (i COMMA_HERE)) ;
+      if ((i % 16) == 0) {
+        s << "\n" ;
+      }
+    }
+    result = GALGAS_string (s) ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------*
@@ -200,6 +253,52 @@ void GALGAS_data::modifier_appendData (GALGAS_data inData
                                        COMMA_UNUSED_LOCATION_ARGS) {
   if (inData.isValid ()) {
     mData.addObjectsFromArray (inData.mData) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFilePath,
+                                                           GALGAS_bool & outFileWritten,
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) const {
+  outFileWritten.drop () ;
+  if (inFilePath.isValid ()) {
+    bool needToWrite = true ;
+    const bool fileAlreadyExists = inFilePath.stringValue ().fileExists () ;
+    if (fileAlreadyExists) {
+      inCompiler->logFileRead (inFilePath.stringValue ()) ;
+      TC_UniqueArray <PMUInt8> binaryData ;
+      inFilePath.stringValue ().binaryDataWithContentOfFile (binaryData) ;
+      needToWrite = mData != binaryData ;
+    }
+    outFileWritten = GALGAS_bool (needToWrite) ;
+    if (needToWrite) {
+      if (inCompiler->mPerformGeneration) {
+        const bool verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
+        bool ok = inFilePath.stringValue ().stringByDeletingLastPathComponent ().makeDirectoryIfDoesNotExist () ;
+        if (! ok) {
+          C_String message ;
+          message << "cannot create '" << inFilePath.stringValue () << "' directory" ;
+          inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+          outFileWritten.drop () ;
+        }else{
+          ok = inFilePath.stringValue ().writeBinaryData (mData) ;
+          if (ok && verboseOptionOn && fileAlreadyExists) {
+            inCompiler->ggs_printRewriteFileSuccess (C_String ("Replaced '") + inFilePath.stringValue () + "'.\n") ;
+          }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
+            inCompiler->ggs_printCreatedFileSuccess (C_String ("Created '") + inFilePath.stringValue () + "'.\n") ;
+          }else if (! ok) {
+            C_String message ;
+            message << "cannot write '" << inFilePath.stringValue () << "' file" ;
+            inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
+            outFileWritten.drop () ;
+          }
+        }
+      }else{
+        inCompiler->ggs_printWarning (C_String ("Need to write '") + inFilePath.stringValue () + "'.\n") ;
+      }
+    }
   }
 }
 

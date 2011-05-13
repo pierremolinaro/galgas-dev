@@ -79,6 +79,7 @@ map @functionMap {
 
 map @wrapperFileMap { # Key is file name
   @string mAbsoluteFilePath ;
+  @bool mIsTextFile ; # true: text file, false: binary file
   @uint mWrapperDirectoryIndex ;
   @uint mWrapperFileIndex ;
   insert insertKey error message "INTERNAL ERROR" ;
@@ -1224,7 +1225,8 @@ map @wrapperExtensionMap {
 routine recursivelyEnumerateDirectories
   ??@string inAbsoluteSourcePath
   ??@string inPathInWrapper
-  ??@wrapperExtensionMap inExtensionMap
+  ??@wrapperExtensionMap inTextFileExtensionMap
+  ??@wrapperExtensionMap inBinaryFileExtensionMap
   !@wrapperFileMap outWrapperFileMap
   !@wrapperDirectoryMap outWrapperDirectoryMap
   ?!@uint ioWrapperFileIndex
@@ -1236,11 +1238,22 @@ routine recursivelyEnumerateDirectories
   @stringlist files := [inAbsoluteSourcePath regularFiles !false] ;
   outWrapperFileMap := [@wrapperFileMap emptyMap] ;
   foreach files do
-    if [inExtensionMap hasKey ![mValue pathExtension]] then
+    if [inTextFileExtensionMap hasKey ![mValue pathExtension]] then
       @string absoluteFilePath := inAbsoluteSourcePath . "/" . mValue ;
       [!?outWrapperFileMap insertKey
         ![@lstring new !mValue !here]
         !absoluteFilePath
+        !true # Text File
+        !currentDirectoryIndex
+        !ioWrapperFileIndex
+      ] ;
+      ioWrapperFileIndex ++ ;
+    elsif [inBinaryFileExtensionMap hasKey ![mValue pathExtension]] then
+      @string absoluteFilePath := inAbsoluteSourcePath . "/" . mValue ;
+      [!?outWrapperFileMap insertKey
+        ![@lstring new !mValue !here]
+        !absoluteFilePath
+        !false # Binary file
         !currentDirectoryIndex
         !ioWrapperFileIndex
       ] ;
@@ -1257,7 +1270,8 @@ routine recursivelyEnumerateDirectories
     recursivelyEnumerateDirectories
       !inAbsoluteSourcePath . "/" . mValue
       !inPathInWrapper . mValue . "/"
-      !inExtensionMap
+      !inTextFileExtensionMap
+      !inBinaryFileExtensionMap
       ?internalWrapperFileMap
       ?internalWrapperDirectoryMap
       !?ioWrapperFileIndex
@@ -1294,10 +1308,19 @@ override method @filewrapperDeclarationAST enterInSemanticContext
       !mFilewrapperTemplatePath
     ] ;
   end foreach ;
-#--- Build extension map
-  @wrapperExtensionMap extensionMap [emptyMap] ;
+#--- Build text file extension map
+  @wrapperExtensionMap textExtensionMap [emptyMap] ;
   foreach mFilewrapperTextFileExtensionList do
-    [!?extensionMap insertKey !mValue] ;
+    [!?textExtensionMap insertKey !mValue] ;
+  end foreach ;
+#--- Build binary file extension map
+  @wrapperExtensionMap binaryFileExtensionMap [emptyMap] ;
+  foreach mFilewrapperBinaryFileExtensionList do
+    if [textExtensionMap hasKey !mValue->string] then
+      error mValue:"the '" . mValue . "' extension is already used for text files" ;
+    else
+    [!?binaryFileExtensionMap insertKey !mValue] ;
+    end if ;
   end foreach ;
 #--- Enumerate filewrapper files
   @wrapperFileMap regularRootFileMap ;
@@ -1318,7 +1341,8 @@ override method @filewrapperDeclarationAST enterInSemanticContext
     recursivelyEnumerateDirectories
      !absoluteSourcePath
      !"/"
-     !extensionMap
+     !textExtensionMap
+     !binaryFileExtensionMap
      ?regularRootFileMap
      ?wrapperDirectoryMap
      !?wrapperFileIndex

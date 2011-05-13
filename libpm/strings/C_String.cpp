@@ -1713,10 +1713,9 @@ binaryDataWithContentOfFile (TC_UniqueArray <unsigned char> & outBinaryData) con
 
 //---------------------------------------------------------------------------*
   
-bool C_String::
-writeToFile (const C_String & inFilePath
-             COMMA_MAC_OS_CREATOR_FORMAL_ARGUMENT
-             COMMA_UNUSED_LOCATION_ARGS) const {
+bool C_String::writeToFile (const C_String & inFilePath
+                            COMMA_MAC_OS_CREATOR_FORMAL_ARGUMENT
+                            COMMA_UNUSED_LOCATION_ARGS) const {
   bool success = false ;
   inFilePath.stringByDeletingLastPathComponent().makeDirectoryIfDoesNotExist () ;
   C_TextFileWrite file (inFilePath COMMA_MAC_OS_CREATOR_FORMAL_ARGUMENT_NAME, success) ;
@@ -1724,6 +1723,35 @@ writeToFile (const C_String & inFilePath
   if (success) {
     success = file.close () ;
   }
+  return success ;
+}
+
+//---------------------------------------------------------------------------*
+  
+bool C_String::writeBinaryData (const TC_UniqueArray <PMUInt8> & inBinaryData) const {
+  stringByDeletingLastPathComponent().makeDirectoryIfDoesNotExist () ;
+//---
+  #ifdef TARGET_API_MAC_CARBON
+    FILE * filePtr = ::fopen (unixPath2macOSpath (*this).cString (HERE), "wt") ;
+  #elif defined (COMPILE_FOR_WIN32)
+    FILE * filePtr = ::fopen (unixPath2winPath (*this).cString (HERE), "wt") ;
+  #else
+    FILE * filePtr = ::fopen (cString (HERE), "wt") ;
+  #endif
+//--- Open Ok ?
+  bool success = filePtr != NULL ;
+//--- Write binary data
+  if (success) {
+    const PMUInt8 * dataPtr = inBinaryData.arrayPointer () ;
+    const PMUInt32 length = inBinaryData.count () ;
+    const size_t writtenCount = ::fwrite (dataPtr, 1, length, filePtr) ;
+    success = writtenCount == length ;
+  }
+//--- Close file
+  if (NULL != filePtr) {
+    ::fclose (filePtr) ;
+  }
+//---
   return success ;
 }
 

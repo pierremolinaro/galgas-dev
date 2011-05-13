@@ -1,17 +1,21 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//%!["@uint type" stringByLeftAndRightPadding !75 !' ']%*
+//%!["@filewrapper type" stringByLeftAndRightPadding !75 !' ']%*
 //                                                                           *
 //---------------------------------------------------------------------------*
 
 class cRegularFileWrapper {
   public : const char * mName ;
   public : const char * mExtension ;
+  public : const bool mIsTextFile ; // True: text file, false: binary file
+  public : const PMUInt32 mFileLength ;
   public : const char * mContents ;
 
 //--- Constructor
   public : cRegularFileWrapper (const char * inName,
                                 const char * inExtension,
+                                const bool inIsTextFile,
+                                const PMUInt32 inFileLength,
                                 const char * inContents) ;
 
 //--- No copy
