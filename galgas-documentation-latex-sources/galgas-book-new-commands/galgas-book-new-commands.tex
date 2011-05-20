@@ -1,4 +1,4 @@
-%!TEX encoding = IsoLatin
+%!TEX encoding = UTF-8 Unicode
 %!TEX root = ../galgas-book.tex
 
 %---------------------------------------------------------------------*
@@ -7,8 +7,12 @@
 %                                                                     *
 %---------------------------------------------------------------------*
 
-%--- Couleur de fond des définitions
-\newcommand \couleurFondAPI {yellow!50}
+%--- Couleur de fond des dÃ©finitions
+\ifthenelse{\equal{\sortieEnCouleur}{true}}{
+  \newcommand \couleurFondAPI {yellow!50}
+}{
+  \newcommand \couleurFondAPI {white}
+}
 
 %---------------------------------------------------------------------*
 
@@ -21,7 +25,7 @@
 \newcommand \nomType[1] {\texttt{#1}}
 
 %---------------------------------------------------------------------*
-% Section pour la définition des types
+% Section pour la dÃ©finition des types
 
 \newcommand \definitionSectionType[1] {\section{The \nomType{#1} Type}\label{#1}}
 
@@ -29,12 +33,12 @@
 
 %---------------------------------------------------------------------*
 
-%--- Définition d'un reader sans argument
+%--- DÃ©finition d'un reader sans argument
 % Exemple d'appel :
 % \readerSansArgument{line} % Nom du reader
 % {@location} % Nom du type
-% {1.8.2} % Première version GALGAS qui implémente ce reader
-% {@uint} % Type renvoyé
+% {1.8.2} % PremiÃ¨re version GALGAS qui implÃ©mente ce reader
+% {@uint} % Type renvoyÃ©
 % {Returns the line of the receiver's value.} % Description
 % {this reader raises a run-time error if ...} % Discussion
 
@@ -66,12 +70,12 @@
 
 %---------------------------------------------------------------------*
 
-%--- Définition d'un reader à 1 argument
+%--- DÃ©finition d'un reader Ã  1 argument
 % Exemple d'appel :
 % \readerSansArgument{line} % Nom du reader
 % {@location} % Nom du type
-% {1.8.2} % Première version GALGAS qui implémente ce reader
-% {@uint} % Type renvoyé
+% {1.8.2} % PremiÃ¨re version GALGAS qui implÃ©mente ce reader
+% {@uint} % Type renvoyÃ©
 % {Returns the line of the receiver's value.} % Description
 % {this reader raises a run-time error if ...} % Discussion
 
@@ -101,12 +105,12 @@
 
 %---------------------------------------------------------------------*
 
-%--- Définition d'un reader à 2 arguments
+%--- DÃ©finition d'un reader Ã  2 arguments
 % Exemple d'appel :
 % \readerSansArgument{line} % Nom du reader
 % {@location} % Nom du type
-% {1.8.2} % Première version GALGAS qui implémente ce reader
-% {@uint} % Type renvoyé
+% {1.8.2} % PremiÃ¨re version GALGAS qui implÃ©mente ce reader
+% {@uint} % Type renvoyÃ©
 % {Returns the line of the receiver's value.} % Description
 % {this reader raises a run-time error if ...} % Discussion
 
@@ -137,7 +141,7 @@
 
 %---------------------------------------------------------------------*
 
-%--- Définition d'un reader à 3 arguments
+%--- DÃ©finition d'un reader Ã  3 arguments
 
 \newcommand \readerTroisArguments[9] {
   \subsection{\texttt{#1} Reader}\label{reader #2 #1}\index{#1!"#2 reader}
@@ -171,12 +175,12 @@
 
 %---------------------------------------------------------------------*
 
-%--- Définition d'un constructeur sans argument
+%--- DÃ©finition d'un constructeur sans argument
 % Exemple d'appel :
 % \constructeurSansArgument{nowhere} % Nom du constructeur
 % {@location} % Nom du type
-% {1.8.2} % Première version GALGAS qui implémente ce constructeur
-% {@uint} % Type renvoyé
+% {1.8.2} % PremiÃ¨re version GALGAS qui implÃ©mente ce constructeur
+% {@uint} % Type renvoyÃ©
 %{Returns an \nomType{@location} that does not points out any location.} % Description
 %{The returned object responds \motCle{true} to the isNowhere reader.} % Discussion
 
@@ -207,7 +211,7 @@
 
 %---------------------------------------------------------------------*
 
-%--- Définition d'un constructeur avec 1 argument
+%--- DÃ©finition d'un constructeur avec 1 argument
 
 \newcommand \constructeurUnArgument[7] {
   \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}\index{#1!"#2 constructor}
@@ -235,7 +239,7 @@
 
 %---------------------------------------------------------------------*
 
-%--- Définition d'un constructeur avec 2 arguments
+%--- DÃ©finition d'un constructeur avec 2 arguments
 
 \newcommand \constructeurDeuxArguments[8] {
   \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}\index{#1!"#2 constructor}
@@ -264,7 +268,7 @@
 
 %---------------------------------------------------------------------*
 
-%--- Définition d'un constructeur avec 3 arguments
+%--- DÃ©finition d'un constructeur avec 3 arguments
 
 \newcommand \constructeurTroisArguments[9] {
   \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}\index{#1!"#2 constructor}
@@ -294,7 +298,7 @@
 
 %---------------------------------------------------------------------*
 
-%--- Définition d'un modifier à 1 argument
+%--- DÃ©finition d'un modifier Ã  1 argument
 
 \newcommand \modifierUnArgument[6] {
   \subsection{\texttt{#1} Modifier}\label{modifier #2 #1}\index{#1!"#2 modifier}
