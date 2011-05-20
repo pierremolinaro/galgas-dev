@@ -142,8 +142,8 @@
 \usepackage{listings}
 
 \lstdefinelanguage{galgas}{
-  keywordsprefix=@,
-  morekeywords={abstract, after, before, between, block, cast, class, const, default, do, drop, else, elsif, end, enum,
+%  keywordsprefix=\@,
+  morekeywords=[2]{abstract, after, before, between, block, cast, class, const, default, do, drop, else, elsif, end, enum,
     error, extends, extern, extract, false, feature, filewrapper, foreach, function, grammar, graph, gui, here, if,
     import, in, index, indexing, insert, label, lexique, list, listmap, local, log, loop, map, mapproxy, match,
     message, method, mod, modifier, nonterminal, not, on, once, operator, option, or, override, parse, pragma,
@@ -153,25 +153,22 @@
   },
   comment=[l]\#,
   string=[b]", string=[d]",
-  classoffset=1,
-  morekeywords={;}, keywordstyle=\color{green}\textbf,
-  classoffset=2
+  style=galgas
 }
 
 \ifthenelse{\equal{\sortieEnCouleur}{true}}{
-  \lstset{
-    language=galgas,
+  \lstdefinestyle{galgas}{
     basicstyle=\normalsize,
     frame=l,
-    keywordstyle=\color{blue}\textbf,
+    keywordstyle=\color{red}\textbf,
+    keywordstyle=[2]\color{blue}\textbf,
     backgroundcolor=\color{yellow!50},
     identifierstyle=\color{brown},
     commentstyle=\color{red},
     stringstyle=\color{gray}
   }
 }{
-  \lstset{
-    language=galgas,
+  \lstdefinestyle{galgas}{
     basicstyle=\normalsize,
     frame=l,
     keywordstyle=\textbf,
@@ -238,8 +235,11 @@
 %--- Pour les hyperliens, et le contrôle de la génération PDF 
 \usepackage{hyperref}
 \hypersetup{colorlinks=true}
-\hypersetup{linkcolor=blue}
-
+\ifthenelse{\equal{\sortieEnCouleur}{true}}{
+  \hypersetup{linkcolor=blue}
+}{
+  \hypersetup{linkcolor=black}
+}
 \hypersetup{breaklinks=true}
 %\hypersetup{verbose=true}
 
