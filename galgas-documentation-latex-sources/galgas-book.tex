@@ -104,7 +104,7 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 %--- Ce paquetage permet de définir des couleurs de la forme yellow!50 (jaune à 50 %)
-\usepackage{xcolor}
+\usepackage[svgnames]{xcolor}
 
 
 %-----------------------------------------------------------------------------------------------------------------------*
@@ -156,6 +156,8 @@
   style=galgas
 }
 
+\newcommand{\bcolor}[2]{\textbf{\color{#1}#2}}
+
 \ifthenelse{\equal{\sortieEnCouleur}{true}}{
   \lstdefinestyle{galgas}{
     basicstyle=\normalsize,
@@ -165,13 +167,15 @@
     backgroundcolor=\color{yellow!50},
     identifierstyle=\color{brown},
     commentstyle=\color{red},
-    stringstyle=\color{gray}
+    stringstyle=\color{gray},
+    emphstyle=\color{Green},
+    emph={@string,@uint}
   }
 }{
   \lstdefinestyle{galgas}{
     basicstyle=\normalsize,
-    frame=l,
-    keywordstyle=\textbf,
+    frame=l%,
+%    keywordstyle=\textbf
   }
 }
 
@@ -350,7 +354,6 @@
 
 \input{chapter-option-component/option-component.tex}
 
-
 \input{chapter-predefined-types/predefined-types.tex}
 
 \input{chapter-user-types/user-types.tex}
@@ -370,10 +373,10 @@
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-\cleardoublepage % Pour commencer à une page impaire
-\phantomsection  % Pour faire correctement pointer l'hyperlien dans la table des matières
+\cleardoublepage % Pour commencer a une page impaire
+\phantomsection  % Pour faire correctement pointer l'hyperlien dans la table des matieres
 
-%--- Écrire l'index
+%--- Ecrire l'index
 {\small
 \printindex
 }

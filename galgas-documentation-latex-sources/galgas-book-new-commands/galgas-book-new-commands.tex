@@ -31,6 +31,10 @@
 
 \newcommand \lienSectionType[1] {\hyperref[#1]{#1 type (page \pageref{#1})}}
 
+
+%--- chaine de caracteres 
+\newcommand \literalString[1] {\texttt{"#1"}}
+
 %---------------------------------------------------------------------*
 
 %--- Définition d'un reader sans argument
@@ -369,3 +373,8 @@
 }
 
 %---------------------------------------------------------------------*
+
+%--- Exemple new look
+\lstnewenvironment{exemple}%
+{\noindent\textbf{Example:}\lstset{language=galgas}}%
+{}
