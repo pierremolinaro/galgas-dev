@@ -555,27 +555,29 @@
 //#include <stdio.h>
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  static void performRegistering (const void * p,
+  static void performRegistering (const void * inPointer,
                                   const enumAllocation inAllocation
                                   COMMA_LOCATION_ARGS) {
     // printf ("*** registering pointer %p\n", p) ;
-    if (! gRootInited) {
-      for (PMSInt32 i=0 ; i<TAILLE_TABLE_RACINES ; i ++) {
-        gPointersTreeRoot [i] = (CelementArbreBinaireEquilibrePointeur *) NULL ;
+    if (NULL != inPointer) {
+      if (! gRootInited) {
+        for (PMSInt32 i=0 ; i<TAILLE_TABLE_RACINES ; i ++) {
+          gPointersTreeRoot [i] = (CelementArbreBinaireEquilibrePointeur *) NULL ;
+        }
+        gRootInited = true ;
       }
-      gRootInited = true ;
+      bool existeDeja = false ;
+      bool ioExtension = false ;
+      CelementArbreBinaireEquilibrePointeur * pointeurNouvelElement = NULL ;
+      gPointersCurrentCount ++ ;
+      gCreatedPointersCount ++ ;
+  //    MF_Assert (gCreatedPointersCount != 69068, "gCreatedPointersCount == %lld", gCreatedPointersCount, 0) ;
+      executerInsertionRecursiveDansArbreEquilibre (gPointersTreeRoot[HashCode(inPointer)], inPointer, existeDeja, pointeurNouvelElement, ioExtension);
+      assert_routine (!existeDeja, "(detectee par " __FILE__ ") Le pointeur existe deja", 0, 0, IN_SOURCE_FILE, IN_SOURCE_LINE) ;
+      pointeurNouvelElement->mSourceFileName = IN_SOURCE_FILE ;
+      pointeurNouvelElement->champNumeroLigneSource = IN_SOURCE_LINE ;
+      pointeurNouvelElement->champNatureObjet = inAllocation ;
     }
-    bool existeDeja = false ;
-    bool ioExtension = false ;
-    CelementArbreBinaireEquilibrePointeur * pointeurNouvelElement = NULL ;
-    gPointersCurrentCount ++ ;
-    gCreatedPointersCount ++ ;
-//    MF_Assert (gCreatedPointersCount != 69068, "gCreatedPointersCount == %lld", gCreatedPointersCount, 0) ;
-    executerInsertionRecursiveDansArbreEquilibre (gPointersTreeRoot[HashCode(p)], p, existeDeja, pointeurNouvelElement, ioExtension);
-    assert_routine (!existeDeja, "(detectee par " __FILE__ ") Le pointeur existe deja", 0, 0, IN_SOURCE_FILE, IN_SOURCE_LINE) ;
-    pointeurNouvelElement->mSourceFileName = IN_SOURCE_FILE ;
-    pointeurNouvelElement->champNumeroLigneSource = IN_SOURCE_LINE ;
-    pointeurNouvelElement->champNatureObjet = inAllocation ;
   }
 #endif
 
