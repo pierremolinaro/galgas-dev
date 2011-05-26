@@ -39,7 +39,7 @@
   #ifdef FORCED_GALGAS_VERSION
     return @"cocoagalgasupdater.app.tar.bz2" ;
   #else
-    return @"cocoa_galgas_updater2.app.tar.bz2" ;
+    return @"cocoa_galgas_updater3.app.tar.bz2" ;
   #endif
 }
 
@@ -89,12 +89,6 @@
 
 - (NSString *) temporaryPathForGALGASArchive {
   return [NSString stringWithFormat:@"%@/%@", [self temporaryDir], [self galgasArchiveName]] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (NSString *) temporaryPathForLIBPMArchive {
-  return [NSString stringWithFormat:@"%@/%@", [self temporaryDir], [self libpmArchiveName]] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -472,11 +466,6 @@
       [mDownloadSubTitle setStringValue:[NSString stringWithFormat:@"Uncompressing cocoa GALGAS archive"]] ;
       [[mCancelButton window] displayIfNeeded] ;
       int status = [self uncompressArchive:[self temporaryPathForGALGASArchive]] ;
-      if (status == 0) {
-        [mDownloadSubTitle setStringValue:[NSString stringWithFormat:@"Uncompressing libpm archive"]] ;
-        [[mCancelButton window] displayIfNeeded] ;
-        status = [self uncompressArchive:[self temporaryPathForLIBPMArchive]] ;
-      }
       if (status == 0) {
         [mDownloadSubTitle setStringValue:[NSString stringWithFormat:@"Uncompressing cocoa Galgas Updater archive"]] ;
         [[mCancelButton window] displayIfNeeded] ;
