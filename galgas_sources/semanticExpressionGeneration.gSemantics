@@ -255,6 +255,7 @@ override method @thisReaderCallExpressionForGeneration generateExpression
   end foreach ;
 #--- Generate Reader call
   if mIsCategory then
+    [!?ioUnusedVariableCppNameSet removeKey !selfMarkName []] ;
     outCppExpression := "callCategoryReader_" . [mReaderName identifierRepresentation]
        . " (" . mCurrentObjectCppPointer . ", " ;
   else
