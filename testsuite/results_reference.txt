@@ -67,13 +67,14 @@ LOGGING m: <map @aMap (1 object):
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (46 types)
+--- Type list (47 types)
   @2stringlist
   @A
   @AA
   @B
   @BB
   @CC
+  @TestCategoryMethod
   @aList
   @aMap
   @application

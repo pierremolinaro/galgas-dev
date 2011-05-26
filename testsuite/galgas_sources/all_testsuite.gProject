@@ -15,6 +15,7 @@ project all_testsuite -> "testsuite" :
   semantics "testsuite_introspection.gSemantics" ;
   semantics "testsuite_mapproxy.gSemantics" ;
   semantics "testsuite_category_readers.gSemantics" ;
+  semantics "testsuite_category_methods.gSemantics" ;
 
   program "testsuite_program.gProgram" ;
 

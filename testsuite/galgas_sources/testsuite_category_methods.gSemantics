@@ -1,0 +1,18 @@
+semantics testsuite_category_methods :
+
+class @TestCategoryMethod {}
+
+method @TestCategoryMethod method1 :
+end method ;
+
+reader @TestCategoryMethod reader1 -> @uint result :
+  result := 2 ;
+end reader ;
+
+method @TestCategoryMethod method2 !@uint result :
+#  [self method1] ;
+  result := [self reader1] ;
+end method ;
+
+
+end semantics ;
