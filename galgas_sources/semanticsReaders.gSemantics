@@ -566,6 +566,9 @@ override method @doublePredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"sint" !"sint" !true ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"uint64" !"uint64" !true ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"sint64" !"sint64" !true ;
+  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"cos" !"double" !false ;
+  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"sin" !"double" !false ;
+  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"tan" !"double" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*

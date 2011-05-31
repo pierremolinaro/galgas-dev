@@ -307,4 +307,14 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @doublePredefinedTypeAST getConstructorMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@constructorMap outMap
+:
+  outMap := [@constructorMap emptyMap] ;
+  enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"pi" !"double" !false ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 end semantics ;
