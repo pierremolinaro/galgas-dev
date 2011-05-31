@@ -49,6 +49,42 @@ mDoubleValue (inValue) {
 
 //---------------------------------------------------------------------------*
 
+GALGAS_double GALGAS_double::constructor_pi (UNUSED_LOCATION_ARGS) {
+  return GALGAS_double (M_PI) ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_double GALGAS_double::reader_cos (UNUSED_LOCATION_ARGS) const {
+  GALGAS_double result ;
+  if (isValid ()) {
+    result = GALGAS_double (cos (mDoubleValue)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_double GALGAS_double::reader_sin (UNUSED_LOCATION_ARGS) const {
+  GALGAS_double result ;
+  if (isValid ()) {
+    result = GALGAS_double (sin (mDoubleValue)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_double GALGAS_double::reader_tan (UNUSED_LOCATION_ARGS) const {
+  GALGAS_double result ;
+  if (isValid ()) {
+    result = GALGAS_double (tan (mDoubleValue)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
 GALGAS_uint GALGAS_double::reader_uint (C_Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
