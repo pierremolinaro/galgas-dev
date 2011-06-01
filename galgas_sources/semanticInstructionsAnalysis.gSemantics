@@ -1137,19 +1137,109 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+routine checkExpressionIsBoolean
+  ??@analysisContext inAnalysisContext
+  ??@location inErrorLocation
+  ??@semanticExpressionForGeneration inExpression
+  !@semanticExpressionForGeneration outExpression
+:
+  const @unifiedTypeMapProxy expressionType := [inExpression mType] ;
+#--- Boolean type
+  const @unifiedTypeMapProxy boolType := inAnalysisContext->mPredefinedTypes->mBoolType ;
+  if expressionType == boolType then
+    outExpression := inExpression ;
+  else
+    with [expressionType mReaderMap] hasKey !"bool" do
+      if mReturnedType != boolType then
+        error inErrorLocation: "the expression type is not @bool, it handles a 'bool' reader, but it does not return a '@bool' value" : outExpression ;
+      elsif [mArgumentTypeList length] > 0 then
+        error inErrorLocation: "the expression type is not @bool, it handles a 'bool' reader that requires argument(s)" : outExpression ;
+      elsif mErrorMessage != "" then
+        error inErrorLocation : mErrorMessage : outExpression ;
+      else
+        outExpression := [@readerCallExpressionForGeneration new
+          !boolType
+          !inErrorLocation
+          !mIsCategory
+          !inExpression
+          ![@stringlist emptyList]
+          !"bool"
+          ![@semanticExpressionListForGeneration emptyList]
+          !mHasCompilerArgument
+        ] ;
+      end if ;
+    else
+      if [expressionType mTypeKindEnum] == [@typeKindEnum structType] then
+        if [[expressionType mAttributeMap] hasKey !"bool"] then
+          @unifiedTypeMapProxy attributeType ;
+          [[expressionType mAttributeMap] searchKey ![@lstring new !"bool" !here] ?attributeType] ;
+          if attributeType == boolType then
+            outExpression := [@structFieldAccessExpressionForGeneration new
+              !boolType
+              !inErrorLocation
+              !inExpression
+              !"bool"
+            ] ;
+          else
+            error inErrorLocation
+            : "the '@". [expressionType key] . "' struct type defines an attribute named 'bool', but its type is not '@bool'"
+            : outExpression
+            ;
+          end if ;
+        else
+          error inErrorLocation
+          : "the '@". [expressionType key] . "' struct type does not define an attribute named 'bool'"
+          : outExpression
+          ;
+        end if ;
+      elsif [[expressionType mReaderMap] count] == 0 then
+        error inErrorLocation
+        : "the '@". [expressionType key] . "' type does not define any reader"
+        : outExpression
+        ;
+      else
+        @string s := "" ;
+        foreach [expressionType mReaderMap] do
+          s .= "\n  - " . lkey ;
+          foreach mArgumentTypeList do
+            s .= " ?@" . [mType key] ;
+          end foreach ;
+          s .= " -> @" . [mReturnedType key] ;
+        end foreach ;
+        error inErrorLocation
+        : "the '@". [expressionType key] . "' type does not define the 'bool' reader; available "
+        . if [[expressionType mReaderMap] count] > 1 then "readers are" else "reader is" end
+        . ":" . s
+        : outExpression
+        ;
+      end if ;
+    end with ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 override method @ifInstructionAST analyzeSemanticInstruction
   ??@analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 :
 #--- Test expression
-  @semanticExpressionForGeneration if_expression ;
+  @semanticExpressionForGeneration analyzed_if_expression ;
   [m_if_expression analyzeSemanticExpression
     !inAnalysisContext
     !?ioVariableMap
-    ?if_expression
+    ?analyzed_if_expression
   ] ;
   [!?ioVariableMap openOverrideForSelectBlock] ;
+#--- Check tested expression type
+  @semanticExpressionForGeneration if_expression ;
+  checkExpressionIsBoolean
+    !inAnalysisContext
+    !mEndOf_if_instruction
+    !analyzed_if_expression
+    ?if_expression
+  ;
 #--- Then branch
   @semanticInstructionListForGeneration then_instructionList ;
   analyzeSemanticInstructionList
