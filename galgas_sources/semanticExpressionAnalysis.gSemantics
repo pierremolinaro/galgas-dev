@@ -620,7 +620,6 @@ override method @readerCallExpressionAST analyzeSemanticExpression
       foreach [receiverType mCurrentTypedAttributeList] do
         const @unifiedTypeMapProxy attributeType [searchKey !inAnalysisContext->mSemanticContext->mTypeMap ![@lstring new ![mAttributeTypeProxy key] !here]] ;
         const @readerMap aMap := [attributeType mReaderMap] ;
-#        const @readerMap aMap := [mAttributeTypeProxy mReaderMap] ; # Bug in GALGAS 1, for GALGAS 2
         with aMap hasKey ![mReaderName string] do
           matchingReaderCount ++ ;
           readerFormalArgumentTypeList := mArgumentTypeList ;
