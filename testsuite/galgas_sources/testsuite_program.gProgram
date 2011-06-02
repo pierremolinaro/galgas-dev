@@ -7,6 +7,7 @@ import "testsuite_functions.gSemantics" ;
 import "testsuite_mapproxy.gSemantics" ;
 import "testsuite_introspection.gSemantics" ;
 import "testsuite_category_readers.gSemantics" ;
+import "testsuite_category_modifiers.gSemantics" ;
 
 import "testsuite_grammar.gGrammar" ;
 
@@ -22,6 +23,7 @@ before {
   testsuite_introspection ;
   testsuite_mapproxy ;
   testsuite_category_readers ;
+  testsuite_category_modifiers ;
 }
 
 #--- 'when' clauses

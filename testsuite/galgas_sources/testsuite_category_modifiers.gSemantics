@@ -1,0 +1,33 @@
+semantics testsuite_category_modifiers :
+
+abstract class @abstractTestCategoryModifier {
+  @uint mInteger ;
+}
+
+class @TestCategoryModifier extends @abstractTestCategoryModifier {
+  @string mString ;
+}
+
+modifier @TestCategoryModifier modifier1 ?!@uint ioArg :
+  mInteger := mInteger + ioArg ;
+end modifier ;
+
+modifier @TestCategoryModifier modifier2 ?!@uint ioArg ??@string inS :
+  [!?self modifier1 !?ioArg] ;
+  mString .= inS ;
+end modifier ;
+
+routine testsuite_category_modifiers :
+  message "*************************************** begin of category modifier test\n" ;
+  @TestCategoryModifier v [new !1 !"Hello"] ;
+  @uint u := 2 ;
+  @string s := " World" ;
+  [!?v modifier2 !?u !s] ;
+  log u, v ;
+end routine ;
+
+abstract modifier @abstractTestCategoryModifier m ;
+
+override modifier @TestCategoryModifier m : end modifier ;
+
+end semantics ;

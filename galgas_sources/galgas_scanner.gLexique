@@ -41,6 +41,16 @@ indexing terminalDeclaration : "Terminal Declaration" ;
 indexing terminalReference : "Terminal Reference" ;
 indexing ruleDefinition : "Rule Definition" ;
 indexing ruleReference : "Rule Reference" ;
+
+indexing abstractCategoryModifierDefinition : "Abstract Category Modifier Definition" ;
+indexing typeReferenceAbstractCategoryModifier : "Abstract Category Modifier Definition" ;
+indexing overrideAbstractCategoryModifierDefinition : "Override Abstract Category Modifier Definition" ;
+indexing categoryModifierDefinition : "Category Modifier Definition" ;
+indexing typeReferenceCategoryModifier : "Category Modifier Definition" ;
+indexing overrideCategoryModifierDefinition : "Override Category Modifier Definition" ;
+indexing typeReferenceOverrideCategoryModifierDefinition : "Override Category Modifier Definition" ;
+indexing typeReferenceOverrideAbstractCategoryModifier : "Override Abstract Category Modifier Definition" ;
+
 indexing abstractCategoryMethodDefinition : "Abstract Category Method Definition" ;
 indexing typeReferenceAbstractCategoryMethod : "Abstract Category Method Definition" ;
 indexing overrideAbstractCategoryMethodDefinition : "Override Abstract Category Method Definition" ;
@@ -49,10 +59,12 @@ indexing typeReferenceCategoryMethod : "Category Method Definition" ;
 indexing overrideCategoryMethodDefinition : "Override Category Method Definition" ;
 indexing typeReferenceOverrideCategoryMethodDefinition : "Override Category Method Definition" ;
 indexing typeReferenceOverrideAbstractCategoryMethod : "Override Abstract Category Method Definition" ;
+
 indexing abstractCategoryReaderDefinition : "Abstract Category Reader Definition" ;
 indexing overrideAbstractCategoryReaderDefinition : "Override Abstract Category Reader Definition" ;
 indexing categoryReaderDefinition : "Category Reader Definition" ;
 indexing overrideCategoryReaderDefinition : "Override Category Reader Definition" ;
+
 indexing optionComponentDefinition : "Option Component Definition" ;
 indexing optionComponentReference : "Option Component Reference" ;
 indexing grammarComponentDefinition : "Grammar Component Definition" ;

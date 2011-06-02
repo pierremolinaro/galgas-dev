@@ -650,19 +650,19 @@ override method @thisMethodCallInstructionAST analyzeSemanticInstruction
   ?!@variableMap ioVariableMap
 :
 #--- Analyze "self", as receiver expression
-  @unifiedTypeMapProxy thisTypeProxy ;
+  @unifiedTypeMapProxy selfTypeProxy ;
   @string currentObjectCppPointer ;
   if [inAnalysisContext->mSelfTypeProxy isNull] then
-    error mMethodName: "'self' cannot be used in this context" : currentObjectCppPointer, thisTypeProxy ;
+    error mMethodName: "'self' cannot be used in this context" : currentObjectCppPointer, selfTypeProxy ;
   else
     currentObjectCppPointer := inAnalysisContext->mSelfObjectCppPointer ;
-    thisTypeProxy := inAnalysisContext->mSelfTypeProxy ;
+    selfTypeProxy := inAnalysisContext->mSelfTypeProxy ;
   end if ;
 #--- Get type method signature
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
   @bool isCategory ;
-  [[thisTypeProxy mInstanceMethodMap] searchKey !mMethodName ?isCategory ?routineSignature ?* ?hasCompilerArgument ?* ?*] ;
+  [[selfTypeProxy mInstanceMethodMap] searchKey !mMethodName ?isCategory ?routineSignature ?* ?hasCompilerArgument ?* ?*] ;
 #--- Check effective parameters
   @actualParameterListForGeneration actualParameterListForGeneration ;
   analyzeRoutineArguments
@@ -777,7 +777,8 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
   @string modifierErrorMessage ;
-  [[receiverType mModifierMap] searchKey !mModifierName ?routineSignature ?hasCompilerArgument ?* ?modifierErrorMessage] ;
+  @bool isCategory ;
+  [[receiverType mModifierMap] searchKey !mModifierName ?isCategory ?routineSignature ?hasCompilerArgument ?* ?modifierErrorMessage] ;
   if modifierErrorMessage != "" then
     error mModifierName : modifierErrorMessage ;
   end if ;
@@ -810,17 +811,20 @@ override method @thisModifierCallInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 :
-#--- Analyze this, as receiver expression
-  @unifiedTypeMapProxy thisTypeProxy ;
-  if [ioVariableMap hasKey !selfMarkName []] then
-    [!?ioVariableMap searchForReadAccess ![@lstring new !selfMarkName [] !here] ?thisTypeProxy ?* ?*] ;
+#--- Analyze "self", as receiver expression
+  @unifiedTypeMapProxy selfTypeProxy ;
+  @string currentObjectCppPointer ;
+  if [inAnalysisContext->mSelfTypeProxy isNull] then
+    error mModifierName: "'self' cannot be used in this context" : currentObjectCppPointer, selfTypeProxy ;
   else
-    error mInstructionLocation: "'self' can be used only in methods, modifiers and readers":thisTypeProxy ;
+    currentObjectCppPointer := inAnalysisContext->mSelfObjectCppPointer ;
+    selfTypeProxy := inAnalysisContext->mSelfTypeProxy ;
   end if ;
 #--- Get modifier signature
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
-  [[thisTypeProxy mModifierMap] searchKey !mModifierName ?routineSignature ?hasCompilerArgument ?* ?*] ;
+  @bool isCategory ;
+  [[selfTypeProxy mModifierMap] searchKey !mModifierName ?isCategory ?routineSignature ?hasCompilerArgument ?* ?*] ;
 #--- Check effective parameters
   @actualParameterListForGeneration actualParameterListForGeneration ;
   analyzeRoutineArguments
@@ -834,7 +838,7 @@ override method @thisModifierCallInstructionAST analyzeSemanticInstruction
   ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@thisModifierCallInstructionForGeneration new
-    !thisTypeProxy
+    !selfTypeProxy
     !mModifierName
     !actualParameterListForGeneration
     !hasCompilerArgument
@@ -852,7 +856,7 @@ function checkModifierImplementationInSuperClasses
     outResult := "" ;
   else
     @methodQualifier qualifier ;
-    [[inSuperClass mModifierMap] searchKey !inModifierName ?* ?* ?qualifier ?*] ;
+    [[inSuperClass mModifierMap] searchKey !inModifierName ?3* ?qualifier ?*] ;
     switch qualifier
     when isAbstract :
       outResult := "" ;
@@ -887,7 +891,8 @@ override method @superModifierCallInstructionAST analyzeSemanticInstruction
 #--- Get modifier signature
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
-  [[superTypeProxy mModifierMap] searchKey !mModifierName ?routineSignature ?hasCompilerArgument ?* ?*] ;
+  @bool isCategory ;
+  [[superTypeProxy mModifierMap] searchKey !mModifierName ?isCategory ?routineSignature ?hasCompilerArgument ?* ?*] ;
 #--- Check the modifier is actually implemented by the super class, or by one of its super classes
   const @string superClassThatImplementsModifier := checkModifierImplementationInSuperClasses [!mModifierName !superTypeProxy] ;
   if superClassThatImplementsModifier == "" then

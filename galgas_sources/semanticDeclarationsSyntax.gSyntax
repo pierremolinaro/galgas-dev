@@ -977,6 +977,119 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#A B S T R A C T    C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
+:
+  $abstract$ ;
+  $modifier$ ;
+  $type_name$ ? @lstring mClassName indexing typeReferenceAbstractCategoryModifier ;
+  $identifier$ ? @lstring mModifierName indexing abstractCategoryModifierDefinition ;
+  @formalParameterListAST mFormalParameterList ;
+  <formal_parameter_list> ? mFormalParameterList ;
+  $;$ ;
+  ioSemanticDeclarations += ![@abstractCategoryModifierAST new
+    !true # Is global
+    !mClassName
+    !mModifierName
+    !mFormalParameterList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# O V E R R I D E    A B S T R A C T    C A T E G O R Y    M O D I F I E R  *
+#                       D E C L A R A T I O N                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
+:
+  $override$ ;
+  $abstract$ ;
+  $modifier$ ;
+  $type_name$ ? @lstring mClassName indexing typeReferenceOverrideAbstractCategoryModifier ;
+  $identifier$ ? @lstring mModifierName indexing overrideAbstractCategoryModifierDefinition ;
+  @formalParameterListAST mFormalParameterList ;
+  <formal_parameter_list> ? mFormalParameterList ;
+  $;$ ;
+  ioSemanticDeclarations += ![@overridingAbstractCategoryModifierAST new
+    !true # Is global
+    !mClassName
+    !mModifierName
+    !mFormalParameterList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
+:
+  $modifier$ ;
+  $type_name$ ? @lstring mClassName indexing typeReferenceCategoryModifier ;
+  $identifier$ ? @lstring mModifierName indexing categoryModifierDefinition ;
+  @formalParameterListAST mFormalParameterList ;
+  <formal_parameter_list> ? mFormalParameterList ;
+  $:$ ;
+  @semanticInstructionListAST mRoutineInstructionList ;
+  <semantic_instruction_list> ? mRoutineInstructionList ;
+  $end$ ;
+  const @location endOfModifierLocation := here ;
+  $modifier$ ;
+  $;$ ;
+  ioSemanticDeclarations += ![@categoryModifierAST new
+    !true # Is global
+    !mClassName
+    !mModifierName
+    !mFormalParameterList
+    !mRoutineInstructionList
+    !endOfModifierLocation
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#O V E R R I D I N G   C A T E G O R Y   M O D I F I E R   D E C L A R A T I O N*
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
+:
+  $override$ ;
+  $modifier$ ;
+  $type_name$ ? @lstring mClassName indexing typeReferenceOverrideCategoryModifierDefinition ;
+  $identifier$ ? @lstring mModifierName indexing overrideCategoryModifierDefinition ;
+  @formalParameterListAST mFormalParameterList ;
+  <formal_parameter_list> ? mFormalParameterList ;
+  $:$ ;
+  @semanticInstructionListAST mRoutineInstructionList ;
+  <semantic_instruction_list> ? mRoutineInstructionList ;
+  $end$ ;
+  const @location endOfModifierLocation := here ;
+  $modifier$ ;
+  $;$ ;
+  ioSemanticDeclarations += ![@overridingCategoryModifierAST new
+    !true # Is global
+    !mClassName
+    !mModifierName
+    !mFormalParameterList
+    !mRoutineInstructionList
+    !endOfModifierLocation
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #     G R A P H                                                             *
 #                                                                           *
 #---------------------------------------------------------------------------*
