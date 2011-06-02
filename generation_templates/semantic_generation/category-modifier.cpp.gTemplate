@@ -1,0 +1,96 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["Category modifier '@" . CLASS_NAME . " " . MODIFIER_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+static TC_UniqueArray <categoryModifierSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%> gCategoryModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% ;
+
+//---------------------------------------------------------------------------*
+
+void enterCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%const PMSInt32 inClassIndex,
+               %!^%categoryModifierSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% inModifier) {
+  gCategoryModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inModifier, NULL COMMA_HERE) ;
+}
+
+//---------------------------------------------------------------------------*
+
+void callCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
+  foreach FORMAL_ARGUMENT_LIST do
+    %,\n%!^
+    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+      %const GALGAS_%![mFormalArgumentType identifierRepresentation]% constin_%![mFormalArgumentName identifierRepresentation]
+    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+      %GALGAS_%![mFormalArgumentType identifierRepresentation]% & io_%![mFormalArgumentName identifierRepresentation]
+    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+      %GALGAS_%![mFormalArgumentType identifierRepresentation]% & out_%![mFormalArgumentName identifierRepresentation]
+    else # argumentIn
+      %GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
+    end if
+  end foreach
+  %,\n%!^%C_Compiler * inCompiler%
+  %\n%!^%COMMA_LOCATION_ARGS) {
+//--- Drop output arguments
+%
+  foreach FORMAL_ARGUMENT_LIST do
+    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+      %  out_%![mFormalArgumentName identifierRepresentation]%.drop () ;\n%
+    end if
+  end foreach
+%//--- Find modifier
+  if (NULL != inObject) {
+    macroValidSharedObject (inObject, cPtr_%![CLASS_NAME identifierRepresentation]%) ;
+    const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
+    const PMSInt32 classIndex = info->mSlotID ;
+    categoryModifierSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% f = NULL ;
+    if (classIndex < gCategoryModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.count ()) {
+      f = gCategoryModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (classIndex COMMA_HERE) ;
+    }
+    if (NULL == f) {
+       const C_galgas_type_descriptor * p = info->mSuperclassDescriptor ;
+       while ((NULL == f) && (NULL != p)) {
+         if (p->mSlotID < gCategoryModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.count ()) {
+           f = gCategoryModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (p->mSlotID COMMA_HERE) ;
+         }
+         p = p->mSuperclassDescriptor ;
+       }
+       gCategoryModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
+    }
+    f (inObject, %
+    foreach FORMAL_ARGUMENT_LIST do
+      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+        %constin_%![mFormalArgumentName identifierRepresentation]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+        %io_%![mFormalArgumentName identifierRepresentation]
+      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+        %out_%![mFormalArgumentName identifierRepresentation]
+      else # argumentIn
+        %in_%![mFormalArgumentName identifierRepresentation]
+      end if
+      %, %
+    end foreach
+    %inCompiler COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+%!MODIFIER_IMPLEMENTATION%
+//---------------------------------------------------------------------------*
+
+static void defineCategoryModifier_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (void) {
+  enterCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%kTypeDescriptor_GALGAS_%![CLASS_NAME identifierRepresentation]%.mSlotID,
+        %!^%categoryModifier_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%) ;
+}
+
+//---------------------------------------------------------------------------*
+
+static void freeCategoryModifier_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (void) {
+  gCategoryModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.free () ;
+}
+
+//---------------------------------------------------------------------------*
+
+C_PrologueEpilogue gModifier_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (%?^%defineCategoryModifier_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%,
+       %!^%freeCategoryModifier_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%) ;
+

@@ -594,6 +594,7 @@ class @localVariableOrConstantDeclarationWithConstructorCallForGeneration extend
 class @assignmentInstructionForGeneration extends @semanticInstructionForGeneration {
   @unifiedTypeMapProxy mTargetType ;
   @string mTargetCppName ;
+  @string mNameForCheckingFormalParameterUsing ;
   @lstringlist mStructAttributeList ;
   @semanticExpressionForGeneration mSourceExpression ;
 }
@@ -621,6 +622,7 @@ class @appendInstructionForGeneration extends @semanticInstructionForGeneration 
   @location mInstructionLocation ;
   @unifiedTypeMapProxy mTargetType ;
   @string mTargetVariableCppName ;
+  @string mNameForCheckingFormalParameterUsing ;
   @lstringlist mStructAttributeList ;
   @semanticExpressionForGeneration mSourceExpression ;
 }
@@ -731,11 +733,11 @@ class @methodCallInstructionForGeneration extends @semanticInstructionForGenerat
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  " T H I S "    M E T H O D    C A L L    I N S T R U C T I O N           *
+#  " S E L F "    M E T H O D    C A L L    I N S T R U C T I O N           *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @thisMethodCallInstructionForGeneration extends @semanticInstructionForGeneration {
+class @selfMethodCallInstructionForGeneration extends @semanticInstructionForGeneration {
   @string mCurrentObjectCppPointer ;
   @location mInstructionLocation ;
   @string mMethodName ;
@@ -770,19 +772,22 @@ class @modifierCallInstructionForGeneration extends @semanticInstructionForGener
   @lstringlist mReceiverStructAttributes ;
   @unifiedTypeMapProxy mReceiverType ;
   @lstring mModifierName ;
+  @bool mIsCategory ;
   @actualParameterListForGeneration mActualParameterList ;
   @bool mHasCompilerArgument ;
 }
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  " T H I S "    M O D I F I E R    C A L L    I N S T R U C T I O N       *
+#  " S E L F "    M O D I F I E R    C A L L    I N S T R U C T I O N       *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @thisModifierCallInstructionForGeneration extends @semanticInstructionForGeneration {
+class @selfModifierCallInstructionForGeneration extends @semanticInstructionForGeneration {
+  @string mCurrentObjectCppPointer ;
   @unifiedTypeMapProxy mReceiverType ;
   @lstring mModifierName ;
+  @bool mIsCategory ;
   @actualParameterListForGeneration mActualParameterList ;
   @bool mHasCompilerArgument ;
 }

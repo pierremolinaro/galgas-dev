@@ -161,36 +161,38 @@ if (SUPPORTED_OPERATORS & doNotGenererateObjectCompare []) == 0 then
 //--------------------------------- Modifiers
 %
 foreach MODIFIER_MAP do
-  if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
-    %  public : VIRTUAL_IN_DEBUG void modifier_%![[lkey string] identifierRepresentation]% (%?^
-    foreach mParameterList do index IDX
-      if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
-      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
-      elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
-      else # argumentIn
-        %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+  if not mIsCategory then
+    if (mErrorMessage == "") & ((mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal])) then
+      %  public : VIRTUAL_IN_DEBUG void modifier_%![[lkey string] identifierRepresentation]% (%?^
+      foreach mParameterList do index IDX
+        if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+          %GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
+        elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+          %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
+        elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+          %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
+        else # argumentIn
+          %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
+        end if
+      between %,\n%!^
+      end foreach
+      if [mParameterList length] == 0 then
+        if mHasCompilerArgument then
+          %C_Compiler * inCompiler\n%
+          !^%COMMA_LOCATION_ARGS%
+        else
+          !^%LOCATION_ARGS%
+        end if  
+      else
+        if mHasCompilerArgument then
+          %,\n%!^%C_Compiler * inCompiler\n%
+          !^%COMMA_LOCATION_ARGS%
+        else
+          %\n%!^%COMMA_LOCATION_ARGS%
+        end if  
       end if
-    between %,\n%!^
-    end foreach
-    if [mParameterList length] == 0 then
-      if mHasCompilerArgument then
-        %C_Compiler * inCompiler\n%
-        !^%COMMA_LOCATION_ARGS%
-      else
-        !^%LOCATION_ARGS%
-      end if  
-    else
-      if mHasCompilerArgument then
-        %,\n%!^%C_Compiler * inCompiler\n%
-        !^%COMMA_LOCATION_ARGS%
-      else
-        %\n%!^%COMMA_LOCATION_ARGS%
-      end if  
+      %) ;\n\n%
     end if
-    %) ;\n\n%
   end if
 end foreach
 %
