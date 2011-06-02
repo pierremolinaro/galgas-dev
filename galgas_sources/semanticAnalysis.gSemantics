@@ -1828,8 +1828,7 @@ override method @overridingCategoryModifierAST performSemanticAnalysis
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mModifierMap] hasKey ![mOverridingCategoryModifierName string]] then
       @methodQualifier qualifier ;
-      @bool isCategory ;
-      [[superType mModifierMap] searchKey !mOverridingCategoryModifierName ?isCategory ?inheritedSignature ?* ?qualifier ?*] ;
+      [[superType mModifierMap] searchKey !mOverridingCategoryModifierName ?* ?inheritedSignature ?* ?qualifier ?*] ;
       if qualifier <= [@methodQualifier isBasicFinal] then
         baseTypeName := [superType key] ;
       end if ;
@@ -1904,8 +1903,7 @@ override method @overridingAbstractCategoryModifierAST performSemanticAnalysis
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mModifierMap] hasKey ![mOverridingCategoryModifierName string]] then
       @methodQualifier qualifier ;
-      @bool isCategory ;
-      [[superType mModifierMap] searchKey !mOverridingCategoryModifierName ?isCategory ?inheritedSignature ?* ?qualifier ?*] ;
+      [[superType mModifierMap] searchKey !mOverridingCategoryModifierName ?* ?inheritedSignature ?* ?qualifier ?*] ;
       if qualifier <= [@methodQualifier isBasicFinal] then
         baseTypeName := [superType key] ;
       end if ;

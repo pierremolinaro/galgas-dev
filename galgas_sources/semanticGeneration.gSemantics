@@ -195,11 +195,102 @@ end function ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+# C A T E G O R Y    M O D I F I E R    I M P L E M E N A T I O N           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+local function generateCategoryModifier
+  ??@string inClassName
+  ??@string inBaseClassName
+  ??@string inMethodName
+  ??@formalParameterListForGeneration inFormalArgumentList
+  ??@semanticInstructionListForGeneration inInstructionList
+  ->@string outGeneratedCode
+:
+  const @bool generateCheckValid := [option galgas_cli_options.generateCheckValidInstructions value] ;
+#--- Build unused variable set
+  @stringset unusedVariableCppNameSet [emptySet] ;
+  unusedVariableCppNameSet += !compilerCppName [] ;
+  unusedVariableCppNameSet += !selfMarkName [] ;
+  foreach inFormalArgumentList do
+    unusedVariableCppNameSet += !mFormalArgumentCppName ;
+  end foreach ;
+#--- Generate body
+  @uint temporaryVariableIndex := 0 ;
+  @string routineBody := "" ;
+  [!?routineBody incIndentation !2] ;
+  foreach inInstructionList do
+    [mInstruction generateInstruction !generateCheckValid !?temporaryVariableIndex !?unusedVariableCppNameSet !?routineBody] ;
+  end foreach ;
+  [!?routineBody decIndentation !2] ;
+#--- Generate header
+  outGeneratedCode := "static void categoryModifier_" . [inClassName identifierRepresentation] . "_" . [inMethodName identifierRepresentation] . " (" ;
+  const @uint colRef := [outGeneratedCode currentColumn] ;
+  if inBaseClassName == "" then
+    outGeneratedCode .= "cPtr_" . [inClassName identifierRepresentation] . " * " ;
+  else
+    outGeneratedCode .= "cPtr_" . [inBaseClassName identifierRepresentation] . " * " ;
+  end if ;
+  const @bool currentObjectIsUnused := [unusedVariableCppNameSet hasKey !selfMarkName []] ;
+  if currentObjectIsUnused then
+    outGeneratedCode .= "/* inObject */" ;
+  else
+    outGeneratedCode .= "inObject" ;
+  end if ;
+#---
+  foreach inFormalArgumentList do
+    outGeneratedCode .= ",\n" ;
+    [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
+    switch mFormalArgumentPassingMode 
+    when argumentConstantIn :
+      outGeneratedCode .= "const GALGAS_" . [mFormalArgumentType identifierRepresentation] . " " ;
+    when argumentInOut :
+      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
+    when argumentOut :
+      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " & " ;
+    when argumentIn :
+      outGeneratedCode .= "GALGAS_" . [mFormalArgumentType identifierRepresentation] . " " ;
+    end switch ;
+    if [unusedVariableCppNameSet hasKey !mFormalArgumentCppName] then
+      outGeneratedCode .= "/* " . mFormalArgumentCppName . " */" ;
+    else
+      outGeneratedCode .= mFormalArgumentCppName ;
+    end if ;
+  end foreach ;
+#--- Compiler argument
+  outGeneratedCode .= ",\n" ;
+  [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
+  outGeneratedCode .= "C_Compiler * " ;
+  if [unusedVariableCppNameSet hasKey !compilerCppName []] then
+    outGeneratedCode .= "/* " . compilerCppName [] . " */" ;
+  else
+    outGeneratedCode .= compilerCppName [] ;
+  end if ;
+  outGeneratedCode .= "\n" ;
+  [!?outGeneratedCode appendSpacesUntilColumn !colRef] ;
+  outGeneratedCode .= "COMMA_UNUSED_LOCATION_ARGS" ;
+  outGeneratedCode .= ") {\n" ;
+#--- Generate routine body
+  if not currentObjectIsUnused then
+    if inBaseClassName == "" then
+      outGeneratedCode .= "  cPtr_" . [inClassName identifierRepresentation] . " * object = inObject ;\n" ;
+    else
+      outGeneratedCode .= "  cPtr_" . [inClassName identifierRepresentation] . " * object = (cPtr_" . [inClassName identifierRepresentation] . " *) inObject ;\n" ;
+    end if ;
+    outGeneratedCode .= "  macroValidSharedObject (object, cPtr_" . [inClassName identifierRepresentation] . ") ;\n" ;
+  end if ;
+  outGeneratedCode .= routineBody ;
+#---
+  outGeneratedCode .= "}" ;
+end function ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 # C A T E G O R Y    M E T H O D    I M P L E M E N A T I O N               *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-function generateCategoryMethod
+local function generateCategoryMethod
   ??@string inClassName
   ??@string inBaseClassName
   ??@string inMethodName
@@ -290,7 +381,7 @@ end function ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-function generateCategoryReader
+local function generateCategoryReader
   ??@string inClassName
   ??@string inBaseClassName
   ??@string inReaderName
@@ -609,6 +700,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
 local filewrapper semanticComponentGenerationTemplate in "../generation_templates/semantic_generation" {
 }{
 }{
+#------------ Category reader
   template abstractCategoryReaderDeclaration "abstract-category-reader.h.gTemplate"
     ?@string CLASS_NAME
     ?@string READER_NAME
@@ -645,6 +737,40 @@ local filewrapper semanticComponentGenerationTemplate in "../generation_template
     ?@string READER_IMPLEMENTATION
   ;
   
+#------------ Category modifier
+  template abstractCategoryModifierDeclaration "abstract-category-modifier.h.gTemplate"
+    ?@string CLASS_NAME
+    ?@string MODIFIER_NAME
+    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  ;
+  
+  template abstractCategoryModifierImplementation "abstract-category-modifier.cpp.gTemplate"
+    ?@string CLASS_NAME
+    ?@string MODIFIER_NAME
+    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  ;
+  
+  template categoryModifierDeclaration "category-modifier.h.gTemplate"
+    ?@string CLASS_NAME
+    ?@string MODIFIER_NAME
+    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  ;
+
+  template categoryModifierImplementation "category-modifier.cpp.gTemplate"
+    ?@string CLASS_NAME
+    ?@string MODIFIER_NAME
+    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?@string MODIFIER_IMPLEMENTATION
+  ;
+
+  template overridingCategoryModifierImplementation "overriding-category-modifier.cpp.gTemplate"
+    ?@string CLASS_NAME
+    ?@string MODIFIER_NAME
+    ?@string MODIFIER_IMPLEMENTATION
+  ;
+  
+
+#------------ Category method
   template abstractCategoryMethodDeclaration "abstract-category-method.h.gTemplate"
     ?@string CLASS_NAME
     ?@string METHOD_NAME
@@ -1056,6 +1182,26 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
+override reader @abstractCategoryModifierForGeneration appendDeclaration1 -> @string outHeader :
+  outHeader := [filewrapper semanticComponentGenerationTemplate.abstractCategoryModifierDeclaration
+    !mTypeName
+    !mAbstractCategoryModifierName
+    !mAbstractCategoryModifierFormalParameterList
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @categoryModifierForGeneration appendDeclaration1 -> @string outHeader :
+  outHeader := [filewrapper semanticComponentGenerationTemplate.categoryModifierDeclaration
+    !mTypeName
+    !mCategoryModifierName
+    !mCategoryModifierFormalParameterList
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @abstractCategoryMethodForGeneration appendDeclaration1 -> @string outHeader :
   outHeader := [filewrapper semanticComponentGenerationTemplate.abstractCategoryMethodDeclaration
     !mTypeName
@@ -1418,7 +1564,6 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @abstractCategoryMethodForGeneration appendSpecificImplementation -> @string outImplementation :
-#  message "@abstractCategoryMethodForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.abstractCategoryMethodImplementation
     !mTypeName
     !mAbstractCategoryMethodName
@@ -1448,7 +1593,6 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @overridingCategoryMethodForGeneration appendSpecificImplementation -> @string outImplementation :
-#  message "@overridingCategoryMethodForGeneration appendSpecificImplementation\n" ;
   const @string methodImplementation := generateCategoryMethod [
     !mTypeName
     !mBaseTypeName
@@ -1459,6 +1603,51 @@ override reader @overridingCategoryMethodForGeneration appendSpecificImplementat
   outImplementation := [filewrapper semanticComponentGenerationTemplate.overridingCategoryMethodImplementation
     !mTypeName
     !mCategoryMethodName
+    !methodImplementation
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @abstractCategoryModifierForGeneration appendSpecificImplementation -> @string outImplementation :
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.abstractCategoryModifierImplementation
+    !mTypeName
+    !mAbstractCategoryModifierName
+    !mAbstractCategoryModifierFormalParameterList
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @categoryModifierForGeneration appendSpecificImplementation -> @string outImplementation :
+  const @string modifierImplementation := generateCategoryModifier [
+    !mTypeName
+    !""
+    !mCategoryModifierName
+    !mCategoryModifierFormalParameterList
+    !mSemanticInstructionListForGeneration
+  ] ;
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryModifierImplementation
+    !mTypeName
+    !mCategoryModifierName
+    !mCategoryModifierFormalParameterList
+    !modifierImplementation
+  ] ; 
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @overridingCategoryModifierForGeneration appendSpecificImplementation -> @string outImplementation :
+  const @string methodImplementation := generateCategoryModifier [
+    !mTypeName
+    !mBaseTypeName
+    !mCategoryModifierName
+    !mCategoryModifierFormalParameterList
+    !mSemanticInstructionListForGeneration
+  ] ;
+  outImplementation := [filewrapper semanticComponentGenerationTemplate.overridingCategoryModifierImplementation
+    !mTypeName
+    !mCategoryModifierName
     !methodImplementation
   ] ; 
 end reader ;

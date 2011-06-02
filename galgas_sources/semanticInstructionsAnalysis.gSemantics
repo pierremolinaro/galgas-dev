@@ -203,10 +203,11 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
 #--- Check target variable
   @unifiedTypeMapProxy targetType ;
   @string targetVariableCppName ;
+  @string nameForCheckingFormalParameterUsing ;
   if [mStructAttributeList length] == 0 then
-    [!?ioVariableMap searchForWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName ?*] ;
+    [!?ioVariableMap searchForWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing] ;
   else
-    [!?ioVariableMap searchForReadWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName ?*] ;
+    [!?ioVariableMap searchForReadWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing] ;
     foreach mStructAttributeList do
       const @attributeMap attributeMap := [targetType mAttributeMap] ;
       [attributeMap searchKey !mValue ?targetType] ;
@@ -218,6 +219,7 @@ override method @assignmentInstructionAST analyzeSemanticInstruction
   ioInstructionListForGeneration += ![@assignmentInstructionForGeneration new
     !targetType
     !targetVariableCppName
+    !nameForCheckingFormalParameterUsing
     !mStructAttributeList
     !expression
   ] ;
@@ -675,7 +677,7 @@ override method @thisMethodCallInstructionAST analyzeSemanticInstruction
     ?actualParameterListForGeneration
   ;
 #--- Generate instruction
-  ioInstructionListForGeneration += ![@thisMethodCallInstructionForGeneration new
+  ioInstructionListForGeneration += ![@selfMethodCallInstructionForGeneration new
     !currentObjectCppPointer
     !mInstructionLocation
     ![mMethodName string]
@@ -799,6 +801,7 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
     !mReceiverStructAttributes
     !receiverType
     !mModifierName
+    !isCategory
     !actualParameterListForGeneration
     !hasCompilerArgument
   ] ;
@@ -837,9 +840,11 @@ override method @thisModifierCallInstructionAST analyzeSemanticInstruction
     ?actualParameterListForGeneration
   ;
 #--- Generate instruction
-  ioInstructionListForGeneration += ![@thisModifierCallInstructionForGeneration new
+  ioInstructionListForGeneration += ![@selfModifierCallInstructionForGeneration new
+    !currentObjectCppPointer
     !selfTypeProxy
     !mModifierName
+    !isCategory
     !actualParameterListForGeneration
     !hasCompilerArgument
   ] ;
@@ -936,7 +941,8 @@ override method @appendInstructionAST analyzeSemanticInstruction
 #--- Check target variable
   @unifiedTypeMapProxy targetType ;
   @string targetVariableCppName ;
-  [!?ioVariableMap searchForReadWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName ?*] ;
+  @string nameForCheckingFormalParameterUsing ;
+  [!?ioVariableMap searchForReadWriteAccess !mTargetVariableName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing] ;
   foreach mStructAttributeList do
     const @attributeMap attributeMap := [targetType mAttributeMap] ;
     [attributeMap searchKey !mValue ?targetType] ;
@@ -954,6 +960,7 @@ override method @appendInstructionAST analyzeSemanticInstruction
     !mInstructionLocation
     !targetType
     !targetVariableCppName
+    !nameForCheckingFormalParameterUsing
     !mStructAttributeList
     !expression
   ] ;

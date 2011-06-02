@@ -659,21 +659,21 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstructionAST outInstruction :
-  $[$ ;
-  $super$ ;
-  const @location instructionLocation := here ;
-  $identifier$ ?@lstring mMethodName ;
-  @actualParameterListAST mActualParameterList ;
-  <actual_parameter_list> ? mActualParameterList ;
-  $]$ ;
-  $;$ ;
-  outInstruction := [@superMethodCallInstructionAST new
-    !instructionLocation
-    !mMethodName
-    !mActualParameterList
-  ] ;
-end rule ;
+#rule <semantic_instruction> !@semanticInstructionAST outInstruction :
+#  $[$ ;
+#  $super$ ;
+#  const @location instructionLocation := here ;
+#  $identifier$ ?@lstring mMethodName ;
+#  @actualParameterListAST mActualParameterList ;
+#  <actual_parameter_list> ? mActualParameterList ;
+#  $]$ ;
+#  $;$ ;
+#  outInstruction := [@superMethodCallInstructionAST new
+#    !instructionLocation
+#    !mMethodName
+#    !mActualParameterList
+#  ] ;
+#end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -736,22 +736,22 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <semantic_instruction> !@semanticInstructionAST outInstruction :
-  $[$ ;
-  const @location instructionLocation := here ;
-  $!?$ ;
-  $super$ ;
-  $identifier$ ?@lstring mModifierName ;
-  @actualParameterListAST mActualParameterList ;
-  <actual_parameter_list> ? mActualParameterList ;
-  $]$ ;
-  $;$ ;
-  outInstruction := [@superModifierCallInstructionAST new
-    !instructionLocation
-    !mModifierName
-    !mActualParameterList
-  ] ;
-end rule ;
+#rule <semantic_instruction> !@semanticInstructionAST outInstruction :
+#  $[$ ;
+#  const @location instructionLocation := here ;
+#  $!?$ ;
+#  $super$ ;
+#  $identifier$ ?@lstring mModifierName ;
+#  @actualParameterListAST mActualParameterList ;
+#  <actual_parameter_list> ? mActualParameterList ;
+#  $]$ ;
+#  $;$ ;
+#  outInstruction := [@superModifierCallInstructionAST new
+#    !instructionLocation
+#    !mModifierName
+#    !mActualParameterList
+#  ] ;
+#end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *

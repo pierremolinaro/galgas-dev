@@ -226,6 +226,7 @@ override method @assignmentInstructionForGeneration generateInstruction
   ioGeneratedCode .= "//-------- @assignmentInstructionForGeneration\n" ;
   @string sourceVar ;
   [mSourceExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
+  [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing] ;
   @string receiverCppName := mTargetCppName ;
   foreach mStructAttributeList do
     receiverCppName .= ".mAttribute_" . [[mValue string] identifierRepresentation] ;
@@ -264,6 +265,7 @@ override method @appendInstructionForGeneration generateInstruction
   ioGeneratedCode .= "//-------- @appendInstructionForGeneration\n" ;
   @string sourceVar ;
   [mSourceExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
+  [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing] ;
   foreach mStructAttributeList do
     ioGeneratedCode .= "(TO DO handle field in @appendInstructionForGeneration)\n" ;
   end foreach ;
@@ -514,13 +516,13 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @thisMethodCallInstructionForGeneration generateInstruction
+override method @selfMethodCallInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "//-------- @thisMethodCallInstructionForGeneration\n" ;
+  ioGeneratedCode .= "//-------- @selfMethodCallInstructionForGeneration\n" ;
 #---
   [!?ioUnusedVariableCppNameSet removeKey !selfMarkName []] ;
   @stringlist parameterCppNameList [emptyList] ;
@@ -562,7 +564,7 @@ override method @thisMethodCallInstructionForGeneration generateInstruction
     end foreach ;
     ioGeneratedCode .= "#endif\n" ;
   end if ;
-  ioGeneratedCode .= "//-------- END @thisMethodCallInstructionForGeneration\n" ;
+  ioGeneratedCode .= "//-------- END @selfMethodCallInstructionForGeneration\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -672,7 +674,11 @@ override method @modifierCallInstructionForGeneration generateInstruction
   end foreach ;
 #--- Generate method call
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName] ;
-  ioGeneratedCode .= receiverCppName . ".modifier_" . [[mModifierName string] identifierRepresentation] . " (" ;
+  if mIsCategory then
+    ioGeneratedCode .= "callCategoryModifier_" . [mModifierName identifierRepresentation] . " ((cPtr_" . [mReceiverType identifierRepresentation] . " *) " . receiverCppName . ".ptr (), " ;
+  else
+    ioGeneratedCode .= receiverCppName . ".modifier_" . [[mModifierName string] identifierRepresentation] . " (" ;
+  end if ;
   foreach parameterCppNameList
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;
@@ -700,13 +706,13 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @thisModifierCallInstructionForGeneration generateInstruction
+override method @selfModifierCallInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "{ //-------- @thisModifierCallInstructionForGeneration\n" ;
+  ioGeneratedCode .= "{ //-------- @selfModifierCallInstructionForGeneration\n" ;
 #--- Parameters
   @stringlist parameterCppNameList [emptyList] ;
   @stringlist jokerParametersToReleaseList [emptyList] ;
@@ -716,8 +722,12 @@ override method @thisModifierCallInstructionForGeneration generateInstruction
     [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
-#--- Generate method call
-  ioGeneratedCode .= "modifier_" . [[mModifierName string] identifierRepresentation] . " (" ;
+#--- Generate modifier call
+  if mIsCategory then
+    ioGeneratedCode .= "callCategoryModifier_" . [mModifierName identifierRepresentation] . " (" . mCurrentObjectCppPointer . ", " ;
+  else
+    ioGeneratedCode .= mCurrentObjectCppPointer . "->modifier_" . [mModifierName identifierRepresentation] . " (" ;
+  end if ;
   foreach parameterCppNameList
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;
@@ -740,7 +750,7 @@ override method @thisModifierCallInstructionForGeneration generateInstruction
     end foreach ;
     ioGeneratedCode .= "#endif\n" ;
   end if ;
-  ioGeneratedCode .= "} //-------- END @thisModifierCallInstructionForGeneration\n" ;
+  ioGeneratedCode .= "} //-------- END @selfModifierCallInstructionForGeneration\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*

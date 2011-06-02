@@ -1,5 +1,16 @@
 semantics testsuite_category_modifiers :
 
+routine testsuite_category_modifiers :
+  message "*************************************** begin of category modifier test\n" ;
+  @TestCategoryModifier v [new !1 !"Hello"] ;
+  @uint u := 2 ;
+  @string s := " World" ;
+  [!?v modifier2 !?u !s] ;
+  log u, v ;
+  @overridingTestCategoryModifier w [new !1 !"" !"" !2] ;
+  [!?w m] ;
+end routine ;
+
 abstract class @abstractTestCategoryModifier {
   @uint mInteger ;
 }
@@ -12,22 +23,27 @@ modifier @TestCategoryModifier modifier1 ?!@uint ioArg :
   mInteger := mInteger + ioArg ;
 end modifier ;
 
+
+class @overridingTestCategoryModifier extends @abstractOverridingTestCategoryModifier {
+  @uint mOtherInteger ;
+}
+
+
 modifier @TestCategoryModifier modifier2 ?!@uint ioArg ??@string inS :
   [!?self modifier1 !?ioArg] ;
   mString .= inS ;
 end modifier ;
 
-routine testsuite_category_modifiers :
-  message "*************************************** begin of category modifier test\n" ;
-  @TestCategoryModifier v [new !1 !"Hello"] ;
-  @uint u := 2 ;
-  @string s := " World" ;
-  [!?v modifier2 !?u !s] ;
-  log u, v ;
-end routine ;
-
 abstract modifier @abstractTestCategoryModifier m ;
 
 override modifier @TestCategoryModifier m : end modifier ;
+
+override modifier @overridingTestCategoryModifier m : end modifier ;
+
+override abstract modifier @abstractOverridingTestCategoryModifier m ;
+
+abstract class @abstractOverridingTestCategoryModifier extends @TestCategoryModifier {
+  @string mOtherString ;
+}
 
 end semantics ;
