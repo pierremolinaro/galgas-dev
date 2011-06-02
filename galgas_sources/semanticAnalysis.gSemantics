@@ -921,7 +921,8 @@ routine analyzeRoutineBody
   ??@analysisContext inAnalysisContext
   ??@formalParameterListAST inRoutineSignatureAST
   ??@localConstantList inLocalConstantList
-  ??@typedAttributeList inTypedAttributeList
+  ??@typedAttributeList inNonMutableTypedAttributeList
+  ??@typedAttributeList inMutableTypedAttributeList
   ??@string inAttributeVariableNamePrefix
   ??@semanticInstructionListAST inInstructionList
   ??@location inEndOfMethodLocation
@@ -937,9 +938,18 @@ routine analyzeRoutineBody
       [!?variableMap insertLocalConstant !mName !mType !mCppName !selfMarkName []] ;
     end if ;
   end foreach ;
-#--- Enter instance attributes
-  foreach inTypedAttributeList do
+#--- Enter non mutable instance attributes
+  foreach inNonMutableTypedAttributeList do
     [!?variableMap insertNonMutableAttribute
+      !mAttributeName
+      !mAttributeTypeProxy
+      !inAttributeVariableNamePrefix . "mAttribute_". [[mAttributeName string] identifierRepresentation]
+      !selfMarkName []
+    ] ;
+  end foreach ;
+#--- Enter mutable instance attributes
+  foreach inMutableTypedAttributeList do
+    [!?variableMap insertMutableAttribute
       !mAttributeName
       !mAttributeTypeProxy
       !inAttributeVariableNamePrefix . "mAttribute_". [[mAttributeName string] identifierRepresentation]
@@ -1037,6 +1047,7 @@ override method @routineDeclarationAST performSemanticAnalysis
     !analysisContext
     !mFormalArgumentList
     ![@localConstantList emptyList]
+    ![@typedAttributeList emptyList]
     ![@typedAttributeList emptyList]
     !""
     !mRoutineInstructionList
@@ -1192,6 +1203,7 @@ override method @classDeclarationAST performSemanticAnalysis
       !mSignature
       ![@localConstantList emptyList]
       !allAttributeList
+      ![@typedAttributeList emptyList]
       !""
       !mInstructionList
       !mEndOfMethodLocation
@@ -1567,6 +1579,7 @@ override method @categoryMethodAST performSemanticAnalysis
     !mCategoryMethodFormalParameterList
     ![@localConstantList emptyList]
     ![selfType mAllTypedAttributeList]
+    ![@typedAttributeList emptyList]
     !"object->"
     !mCategoryMethodInstructionList
     !mEndOfMethodLocation
@@ -1629,6 +1642,7 @@ override method @overridingCategoryMethodAST performSemanticAnalysis
     !mOverridingCategoryMethodFormalParameterList
     ![@localConstantList emptyList]
     ![selfType mAllTypedAttributeList]
+    ![@typedAttributeList emptyList]
     !"object->"
     !mOverridingCategoryMethodInstructionList
     !mEndOfMethodLocation
@@ -1703,6 +1717,215 @@ override method @overridingAbstractCategoryMethodAST performSemanticAnalysis
     checkMethodSignatures
       !formalParameterListForGeneration
       ![mOverridingCategoryMethodName location]
+      !inheritedSignature
+      !inheritedDeclarationLocation
+    ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @abstractCategoryModifierAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+:
+#--- Self type
+  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+#--- Check self type is an abstract class
+  if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
+    error mAbstractCategoryModifierName: "cannot declare a category modifier: '@" . [selfType key] . "' is not a class" ;
+  elsif [selfType mIsConcrete] then
+    error mAbstractCategoryModifierName: "cannot declare an abstract category modifier: '@" . [selfType key] . "' is not an abstract class" ;
+  end if ;
+#--- Compute modifier signature
+  @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
+  foreach mAbstractCategoryModifierFormalParameterList do
+    formalParameterListForGeneration +=
+      !mFormalArgumentPassingMode
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
+      !mFormalArgumentName
+      ![mFormalArgumentName string]
+    ;
+  end foreach ;
+#---
+  ioSemanticDeclarationListForGeneration += ![@abstractCategoryModifierForGeneration new
+    !mIsGlobal
+    ![mTypeName string]
+    ![mAbstractCategoryModifierName string]
+    !formalParameterListForGeneration
+  ]
+  !"~" # So that category are declared at the end of the file
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @categoryModifierAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+:
+#--- Self type
+  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+#--- Check self type is a class
+  if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
+    error mCategoryModifierName: "cannot declare a category modifier: '@" . [selfType key] . "' is not a class" ;
+  end if ;
+#--- Analyze instruction list
+  @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
+  @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
+  const @analysisContext analysisContext [new
+    !inSemanticContext
+    !inPredefinedTypes
+    !selfType
+    !"object"
+  ] ;
+  analyzeRoutineBody
+    !analysisContext
+    !mCategoryModifierFormalParameterList
+    ![@localConstantList emptyList]
+    ![@typedAttributeList emptyList]
+    ![selfType mAllTypedAttributeList]
+    !"object->"
+    !mCategoryModifierInstructionList
+    !mEndOfModifierLocation
+    ?semanticInstructionListForGeneration
+    ?formalParameterListForGeneration
+  ;
+#---
+  ioSemanticDeclarationListForGeneration += ![@categoryModifierForGeneration new
+    !mIsGlobal
+    ![mTypeName string]
+    ![mCategoryModifierName string]
+    !formalParameterListForGeneration
+    ![selfType mAllTypedAttributeList]
+    !semanticInstructionListForGeneration
+  ]
+  !"~" # So that category are declared at the end of the file
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @overridingCategoryModifierAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+:
+#--- Self type
+  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+#--- Check self type is a class
+  if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
+    error mOverridingCategoryModifierName: "cannot declare a category modifier: '@" . [selfType key] . "' is not a class" ;
+  end if ;
+#--- Find base type name
+  @string baseTypeName := "" ;
+  @unifiedTypeMapProxy superType := [selfType mSuperType] ;
+  @formalParameterSignature inheritedSignature [emptyList] ;
+  @location inheritedDeclarationLocation := here ;
+  loop [inSemanticContext->mTypeMap count] + 1 :
+  while (not [superType isNull]) & (baseTypeName == "") do
+    if [[superType mModifierMap] hasKey ![mOverridingCategoryModifierName string]] then
+      @methodQualifier qualifier ;
+      @bool isCategory ;
+      [[superType mModifierMap] searchKey !mOverridingCategoryModifierName ?isCategory ?inheritedSignature ?* ?qualifier ?*] ;
+      if qualifier <= [@methodQualifier isBasicFinal] then
+        baseTypeName := [superType key] ;
+      end if ;
+    end if ;
+    superType := [superType mSuperType] ;
+  end loop ;
+#--- Analyze instruction list
+  @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
+  @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
+  const @analysisContext analysisContext [new
+    !inSemanticContext
+    !inPredefinedTypes
+    !selfType
+    !"object"
+  ] ;
+  analyzeRoutineBody
+    !analysisContext
+    !mOverridingCategoryModifierFormalParameterList
+    ![@localConstantList emptyList]
+    ![@typedAttributeList emptyList]
+    ![selfType mAllTypedAttributeList]
+    !"object->"
+    !mOverridingCategoryModifierInstructionList
+    !mEndOfModifierLocation
+    ?semanticInstructionListForGeneration
+    ?formalParameterListForGeneration
+  ;
+#--- Check Signature
+  if baseTypeName != "" then
+    checkMethodSignatures
+      !formalParameterListForGeneration
+      ![mOverridingCategoryModifierName location]
+      !inheritedSignature
+      !inheritedDeclarationLocation
+    ;
+  end if ;
+#---
+  ioSemanticDeclarationListForGeneration += ![@overridingCategoryModifierForGeneration new
+    !mIsGlobal
+    ![mTypeName string]
+    !baseTypeName
+    ![mOverridingCategoryModifierName string]
+    !formalParameterListForGeneration
+    ![selfType mAllTypedAttributeList]
+    !semanticInstructionListForGeneration
+  ]
+  !"~" # So that category are declared at the end of the file
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @overridingAbstractCategoryModifierAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
+:
+#--- Self type
+  const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+#--- Check type is an abstract class
+  if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
+    error mOverridingCategoryModifierName: "cannot declare a category modifier: '@" . [selfType key] . "' is not a class" ;
+  elsif [selfType mIsConcrete] then
+    error mOverridingCategoryModifierName: "cannot declare an abstract category modifier: '@" . [selfType key] . "' is not an abstract class" ;
+  end if ;
+#--- Find base type name
+  @string baseTypeName := "" ;
+  @unifiedTypeMapProxy superType := [selfType mSuperType] ;
+  @formalParameterSignature inheritedSignature [emptyList] ;
+  @location inheritedDeclarationLocation := here ;
+  loop [inSemanticContext->mTypeMap count] + 1 :
+  while (not [superType isNull]) & (baseTypeName == "") do
+    if [[superType mModifierMap] hasKey ![mOverridingCategoryModifierName string]] then
+      @methodQualifier qualifier ;
+      @bool isCategory ;
+      [[superType mModifierMap] searchKey !mOverridingCategoryModifierName ?isCategory ?inheritedSignature ?* ?qualifier ?*] ;
+      if qualifier <= [@methodQualifier isBasicFinal] then
+        baseTypeName := [superType key] ;
+      end if ;
+    end if ;
+    superType := [superType mSuperType] ;
+  end loop ;
+#--- Analyze formal argument list
+  @variableMap variableMap [emptyMap] ;
+  @formalParameterListForGeneration formalParameterListForGeneration ;
+  buildLocalVariableMapAndSignature
+    !inSemanticContext
+    !mOverridingCategoryModifierFormalParameterList
+    !?variableMap
+    ?formalParameterListForGeneration
+  ;
+#--- Check Signature
+  if baseTypeName != "" then
+    checkMethodSignatures
+      !formalParameterListForGeneration
+      ![mOverridingCategoryModifierName location]
       !inheritedSignature
       !inheritedDeclarationLocation
     ;

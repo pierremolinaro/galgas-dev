@@ -1384,6 +1384,47 @@ class @overridingCategoryMethodForGeneration extends @semanticDeclarationForGene
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+# A B S T R A C T   C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @abstractCategoryModifierForGeneration extends @semanticDeclarationForGeneration {
+  @string mTypeName ;
+  @string mAbstractCategoryModifierName ;
+  @formalParameterListForGeneration mAbstractCategoryModifierFormalParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @categoryModifierForGeneration extends @semanticDeclarationForGeneration {
+  @string mTypeName ;
+  @string mCategoryModifierName ;
+  @formalParameterListForGeneration mCategoryModifierFormalParameterList ;
+  @typedAttributeList mTypedAttributeList ;
+  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+# O V E R R I D I N G    C A T E G O R Y    M O D I F I E R   D E C .       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @overridingCategoryModifierForGeneration extends @semanticDeclarationForGeneration {
+  @string mTypeName ;
+  @string mBaseTypeName ;
+  @string mCategoryModifierName ;
+  @formalParameterListForGeneration mCategoryModifierFormalParameterList ;
+  @typedAttributeList mTypedAttributeList ;
+  @semanticInstructionListForGeneration mSemanticInstructionListForGeneration ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 # A B S T R A C T   C A T E G O R Y    R E A D E R    D E C L A R A T I O N *
 #                                                                           *
 #---------------------------------------------------------------------------*

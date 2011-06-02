@@ -964,6 +964,58 @@ class @overridingAbstractCategoryMethodAST extends @semanticDeclarationAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+# A B S T R A C T   C A T E G O R Y  M O D I F I E R    D E C L A R A T I O N   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @abstractCategoryModifierAST extends @semanticDeclarationAST {
+  @lstring mTypeName ;
+  @lstring mAbstractCategoryModifierName ;
+  @formalParameterListAST mAbstractCategoryModifierFormalParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#        C A T E G O R Y    M O D I F I E R    D E C L A R A T I O N        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @categoryModifierAST extends @semanticDeclarationAST {
+  @lstring mTypeName ;
+  @lstring mCategoryModifierName ;
+  @formalParameterListAST mCategoryModifierFormalParameterList ;
+  @semanticInstructionListAST mCategoryModifierInstructionList ;
+  @location mEndOfModifierLocation ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  O V E R R I D I N G    C A T E G O R Y    M O D I F I E R    D E C L .   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @overridingCategoryModifierAST extends @semanticDeclarationAST {
+  @lstring mTypeName ;
+  @lstring mOverridingCategoryModifierName ;
+  @formalParameterListAST mOverridingCategoryModifierFormalParameterList ;
+  @semanticInstructionListAST mOverridingCategoryModifierInstructionList ;
+  @location mEndOfModifierLocation ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  O V E R R I D I N G    A B S T R A C T    C A T E G O R Y    M O D I F I E R *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @overridingAbstractCategoryModifierAST extends @semanticDeclarationAST {
+  @lstring mTypeName ;
+  @lstring mOverridingCategoryModifierName ;
+  @formalParameterListAST mOverridingCategoryModifierFormalParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 # A B S T R A C T   C A T E G O R Y    R E A D E R    D E C L A R A T I O N *
 #                                                                           *
 #---------------------------------------------------------------------------*

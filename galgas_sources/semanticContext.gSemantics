@@ -168,6 +168,25 @@ map @categoryMethodMapForBuildingContext {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    C A T E G O R Y    M O D I F I E R    M A P                            *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @categoryModifierMapForType {
+  @formalParameterListAST mFormalParameterList ;
+  insert or replace ;
+}
+
+#---------------------------------------------------------------------------*
+
+map @categoryModifierMapForBuildingContext {
+  @categoryModifierMapForType mCategoryModifierMapForType ;
+  insert insertKey error message "internal error" ;
+  search searchKey error message "internal error" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    C A T E G O R Y    R E A D E R    M A P                                *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -197,6 +216,38 @@ abstract reader @semanticDeclarationAST keyRepresentation -> @string outString
 
 #---------------------------------------------------------------------------*
 
+override reader @abstractCategoryModifierAST keyRepresentation
+  ->@string outString
+:
+  outString := "abstract category modifier @" . mTypeName . " " . mAbstractCategoryModifierName ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @categoryModifierAST keyRepresentation
+  ->@string outString
+:
+  outString := "category modifier @" . mTypeName . " " . mCategoryModifierName ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @overridingCategoryModifierAST keyRepresentation
+  ->@string outString
+:
+  outString := "overriding category modifier @" . mTypeName . " " . mOverridingCategoryModifierName ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @overridingAbstractCategoryModifierAST keyRepresentation
+  ->@string outString
+:
+  outString := "overriding category modifier @" . mTypeName . " " . mOverridingCategoryModifierName ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @abstractCategoryMethodAST keyRepresentation
   ->@string outString
 :
@@ -214,6 +265,14 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @overridingCategoryMethodAST keyRepresentation
+  ->@string outString
+:
+  outString := "overriding category method @" . mTypeName . " " . mOverridingCategoryMethodName ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @overridingAbstractCategoryMethodAST keyRepresentation
   ->@string outString
 :
   outString := "overriding category method @" . mTypeName . " " . mOverridingCategoryMethodName ;
@@ -241,6 +300,14 @@ override reader @overridingCategoryReaderAST keyRepresentation
   ->@string outString
 :
   outString := "overriding category reader @" . mTypeName . " " . mOverridingCategoryReaderName ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @overridingAbstractCategoryReaderAST keyRepresentation
+  ->@string outString
+:
+  outString := "overriding category reader @" . mTypeName . " " . mAbstractCategoryReaderName ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -349,22 +416,6 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
-override reader @overridingAbstractCategoryMethodAST keyRepresentation
-  ->@string outString
-:
-  outString := "overriding category method @" . mTypeName . " " . mOverridingCategoryMethodName ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
-override reader @overridingAbstractCategoryReaderAST keyRepresentation
-  ->@string outString
-:
-  outString := "overriding category reader @" . mTypeName . " " . mAbstractCategoryReaderName ;
-end reader ;
-
-#---------------------------------------------------------------------------*
-
 override reader @externFunctionDeclarationAST keyRepresentation
   ->@string outString
 :
@@ -388,6 +439,7 @@ end reader ;
 abstract method @semanticDeclarationAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext
 ;
 
@@ -396,6 +448,7 @@ abstract method @semanticDeclarationAST enterInSemanticContext
 override method @abstractCategoryMethodAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext
 :
 end method;
@@ -405,6 +458,7 @@ end method;
 override method @categoryMethodAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext
 :
 end method;
@@ -414,6 +468,7 @@ end method;
 override method @overridingCategoryMethodAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext
 :
 end method;
@@ -423,6 +478,47 @@ end method;
 override method @overridingAbstractCategoryMethodAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
+  ?!@semanticContext unused ioSemanticContext
+:
+end method;
+
+#---------------------------------------------------------------------------*
+
+override method @abstractCategoryModifierAST enterInSemanticContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
+  ?!@semanticContext unused ioSemanticContext
+:
+end method;
+
+#---------------------------------------------------------------------------*
+
+override method @categoryModifierAST enterInSemanticContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
+  ?!@semanticContext unused ioSemanticContext
+:
+end method;
+
+#---------------------------------------------------------------------------*
+
+override method @overridingCategoryModifierAST enterInSemanticContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
+  ?!@semanticContext unused ioSemanticContext
+:
+end method;
+
+#---------------------------------------------------------------------------*
+
+override method @overridingAbstractCategoryModifierAST enterInSemanticContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext
 :
 end method;
@@ -432,6 +528,7 @@ end method;
 override method @abstractCategoryReaderAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext
 :
 end method;
@@ -441,6 +538,7 @@ end method;
 override method @categoryReaderAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext
 :
 end method;
@@ -450,6 +548,7 @@ end method;
 override method @overridingCategoryReaderAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext
 :
 end method;
@@ -459,6 +558,7 @@ end method;
 override method @overridingAbstractCategoryReaderAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext unused ioSemanticContext
 :
 end method;
@@ -468,6 +568,7 @@ end method;
 override method @predefinedTypeAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #  message "@predefinedTypeAST enterInSemanticContext\n" ;
@@ -520,6 +621,7 @@ end method ;
 override method @mapDeclarationAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #--- string type index
@@ -577,6 +679,7 @@ override method @mapDeclarationAST enterInSemanticContext
     else
       [!?modifierMap insertOrReplace
         !mInsertMethodName
+        !false
         !insertMethodFormalArgumentList
         !true
         ![@methodQualifier isBasic]
@@ -591,6 +694,7 @@ override method @mapDeclarationAST enterInSemanticContext
     else
       [!?modifierMap insertOrReplace
         !mMethodName
+        !false
         !removeMethodFormalArgumentList
         !true
         ![@methodQualifier isBasic]
@@ -632,6 +736,7 @@ override method @mapDeclarationAST enterInSemanticContext
     [mInsertOrReplaceDeclarationListAST first ?insertOrReplaceLocation] ;
     [!?modifierMap insertOrReplace
       ![@lstring new !"insertOrReplace" !insertOrReplaceLocation]
+      !false
       !insertMethodFormalArgumentList
       !false
       ![@methodQualifier isBasic]
@@ -648,6 +753,7 @@ override method @mapDeclarationAST enterInSemanticContext
     accessorFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
     [!?modifierMap insertOrReplace
       !accessorName
+      !false
       !accessorFormalArgumentList
       !true
       ![@methodQualifier isBasic]
@@ -695,6 +801,7 @@ end method ;
 override method @uniqueMapDeclarationAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #--- string type index
@@ -753,6 +860,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     else
       [!?modifierMap insertOrReplace
         !mInsertMethodName
+        !false
         !insertMethodFormalArgumentList
         !true
         ![@methodQualifier isBasic]
@@ -777,6 +885,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     foreach mSearchMethodList do
       [!?modifierMap insertKey
         !mSearchMethodName
+        !false
         !removeMethodFormalArgumentList
         !true
         ![@methodQualifier isBasic]
@@ -790,6 +899,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"location" ?locationTypeIndex] ;
     [!?modifierMap insertKey
       ![@lstring new !"openBranch" !here]
+      !false
       ![@formalParameterSignature emptyList]
       !true
       ![@methodQualifier isInherited]
@@ -797,6 +907,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     ] ;
     [!?modifierMap insertKey
       ![@lstring new !"closeBranch" !here]
+      !false
       ![@formalParameterSignature listWithValue !locationTypeIndex ![@formalArgumentPassingModeAST argumentIn]]
       !true
       ![@methodQualifier isBasic]
@@ -804,6 +915,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     ] ;
     [!?modifierMap insertKey
       ![@lstring new !"closeOverride" !here]
+      !false
       ![@formalParameterSignature listWithValue !locationTypeIndex ![@formalArgumentPassingModeAST argumentIn]]
       !true
       ![@methodQualifier isInherited]
@@ -821,6 +933,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     foreach mMapOverrideBlockListAST do
       [!?modifierMap insertKey
         ![@lstring new !"openOverrideFor" . [mOverrideBlockName stringByCapitalizingFirstCharacter] !here]
+        !false
         ![@formalParameterSignature emptyList]
         !true
         ![@methodQualifier isBasic]
@@ -854,6 +967,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     accessorFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
     [!?modifierMap insertOrReplace
       !accessorName
+      !false
       !accessorFormalArgumentList
       !true
       ![@methodQualifier isBasic]
@@ -901,6 +1015,7 @@ end method ;
 override method @mapProxyDeclarationAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #  message "@mapProxyDeclarationAST enterInSemanticContext\n" ;
@@ -1027,6 +1142,7 @@ end method ;
 override method @graphDeclarationAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #--- string type proxy
@@ -1105,6 +1221,7 @@ override method @graphDeclarationAST enterInSemanticContext
   foreach mInsertModifierList do
     [!?modifierMap insertOrReplace
       !mInsertModifierName
+      !false
       !formalParameterList
       !true # has compiler argument
       ![@methodQualifier isBasic]
@@ -1117,6 +1234,7 @@ override method @graphDeclarationAST enterInSemanticContext
   formalParameterList += !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
   [!?modifierMap insertKey
     ![@lstring new !"addArc" !here]
+    !false
     !formalParameterList
     !false # No compiler argument
     ![@methodQualifier isInherited]
@@ -1127,6 +1245,7 @@ override method @graphDeclarationAST enterInSemanticContext
   formalParameterList += !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
   [!?modifierMap insertKey
     ![@lstring new !"noteNode" !here]
+    !false
     !formalParameterList
     !false # No compiler argument
     ![@methodQualifier isInherited]
@@ -1164,6 +1283,7 @@ end method ;
 override method @enumDeclarationAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #  message "@enumDeclarationAST enterInSemanticContext\n" ;
@@ -1291,6 +1411,7 @@ end routine ;
 override method @filewrapperDeclarationAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #--- Templates
@@ -1365,6 +1486,7 @@ end method ;
 override method @listDeclarationAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #  message "@listDeclarationAST enterInSemanticContext\n" ;
@@ -1424,6 +1546,7 @@ override method @listDeclarationAST enterInSemanticContext
   @modifierMap modifierMap [emptyMap] ;
   [!?modifierMap insertOrReplace
     ![@lstring new !"popFirst" !here]
+    !false
     !modifierOutputFormalArgumentList
     !true
     ![@methodQualifier isBasic]
@@ -1431,6 +1554,7 @@ override method @listDeclarationAST enterInSemanticContext
   ] ;
   [!?modifierMap insertOrReplace
     ![@lstring new !"popLast" !here]
+    !false
     !modifierOutputFormalArgumentList
     !true
     ![@methodQualifier isBasic]
@@ -1438,6 +1562,7 @@ override method @listDeclarationAST enterInSemanticContext
   ] ;
   [!?modifierMap insertOrReplace
     ![@lstring new !"prependValue" !here]
+    !false
     !modifierInputFormalArgumentList
     !false
     ![@methodQualifier isBasic]
@@ -1449,6 +1574,7 @@ override method @listDeclarationAST enterInSemanticContext
     setterFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] ;
     [!?modifierMap insertOrReplace
       ![@lstring new !"set" . [[mAttributeName string] stringByCapitalizingFirstCharacter] . "AtIndex" ![mAttributeName location]]
+      !false
       !setterFormalArgumentList
       !true
       ![@methodQualifier isBasic]
@@ -1510,6 +1636,7 @@ end method ;
 override method @sortedListDeclarationAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #  message "@sortedListDeclarationAST enterInSemanticContext\n" ;
@@ -1549,6 +1676,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
   @modifierMap modifierMap [emptyMap] ;
   [!?modifierMap insertOrReplace
     ![@lstring new !"popGreatest" !here]
+    !false
     !modifierFormalArgumentList
     !true
     ![@methodQualifier isBasic]
@@ -1556,6 +1684,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
   ] ;
   [!?modifierMap insertOrReplace
     ![@lstring new !"popSmallest" !here]
+    !false
     !modifierFormalArgumentList
     !true
     ![@methodQualifier isBasic]
@@ -1617,6 +1746,7 @@ end method ;
 override method @structDeclarationAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #  message "@structDeclarationAST enterInSemanticContext\n" ;
@@ -1694,6 +1824,7 @@ end method ;
 override method @classDeclarationAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
   @unifiedTypeMapProxy uintType ;
@@ -1747,6 +1878,7 @@ override method @classDeclarationAST enterInSemanticContext
     foreach inheritedModifierMap do
       [!?modifierMap insertKey
         !lkey
+        !false
         !mParameterList
         !mHasCompilerArgument
         ![@methodQualifier isInherited]
@@ -1896,6 +2028,27 @@ override method @classDeclarationAST enterInSemanticContext
       ] ;
     end foreach ;
   end if ;
+#------------------------  Category modifiers
+  if [inCategoryModifierMapForBuildingContext hasKey ![mClassTypeName string]] then
+    @categoryModifierMapForType categoryModifierMapForType ;
+    [inCategoryModifierMapForBuildingContext searchKey !mClassTypeName ?categoryModifierMapForType] ;
+    foreach categoryModifierMapForType do
+      @formalParameterSignature formalArgumentList [emptyList] ;
+      foreach mFormalParameterList do
+        @unifiedTypeMapProxy typeIndex ;
+        [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mFormalArgumentTypeName string] ?typeIndex] ;
+        formalArgumentList += !typeIndex !mFormalArgumentPassingMode ;
+      end foreach ;
+      [!?modifierMap insertKey
+        !lkey
+        !true # is a category
+        !formalArgumentList
+        !true
+        ![@methodQualifier isBasic]
+        !"" # No Error message
+      ] ;
+    end foreach ;
+  end if ;
 #--- Typed attribute list
   @typedAttributeList currentClassTypedAttributeList [emptyList] ;
   @typedAttributeList allTypedAttributeList := inheritedTypedAttributeList ;
@@ -1937,6 +2090,7 @@ override method @classDeclarationAST enterInSemanticContext
     if mHasSetter then
       [!?modifierMap insertKey
         ![@lstring new !"set". [[mAttributeName string] stringByCapitalizingFirstCharacter] !here]
+        !false
         ![@formalParameterSignature listWithValue !mAttributeTypeProxy ![@formalArgumentPassingModeAST argumentIn]]
         !false # No compiler argument
         ![@methodQualifier isBasicFinal]
@@ -1976,6 +2130,7 @@ end method ;
 override method @externRoutineDeclarationAST enterInSemanticContext # Handles also routine declaration
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #--- Build signature
@@ -1994,6 +2149,7 @@ end method ;
 override method @externFunctionDeclarationAST enterInSemanticContext # Handles also function declaration
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #--- Build signature
@@ -2015,6 +2171,7 @@ end method ;
 override method @onceFunctionDeclarationAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #--- Result type
@@ -2029,6 +2186,7 @@ end method ;
 override method @listmapDeclarationAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
 #  message "@listmapDeclarationAST enterInSemanticContext: @" . [mListmapTypeName string] . "\n" ;
@@ -2124,6 +2282,7 @@ abstract method @semanticDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
 ;
 
@@ -2133,6 +2292,7 @@ override method @predefinedTypeAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mPredefinedTypeName !here] ;
@@ -2145,6 +2305,7 @@ override method @classDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mClassTypeName ![mClassTypeName location]] ;
@@ -2163,6 +2324,7 @@ override method @listDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mListTypeName ![mListTypeName location]] ;
@@ -2178,6 +2340,7 @@ override method @structDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mStructTypeName ![mStructTypeName location]] ;
@@ -2193,6 +2356,7 @@ override method @enumDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mEnumTypeName ![mEnumTypeName location]] ;
@@ -2205,6 +2369,7 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mSortedListTypeName ![mSortedListTypeName location]] ;
@@ -2220,6 +2385,7 @@ override method @listmapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mListmapTypeName ![mListmapTypeName location]] ;
@@ -2233,6 +2399,7 @@ override method @mapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mMapTypeName ![mMapTypeName location]] ;
@@ -2248,6 +2415,7 @@ override method @uniqueMapDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mMapTypeName ![mMapTypeName location]] ;
@@ -2263,6 +2431,7 @@ override method @mapProxyDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mMapProxyTypeName ![mMapProxyTypeName location]] ;
@@ -2276,6 +2445,7 @@ override method @graphDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"@" . mGraphTypeName ![mGraphTypeName location]] ;
@@ -2289,6 +2459,7 @@ override method @externFunctionDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
 :
   ioCategoryOverrideDefinitionList += !selfcopy ;
@@ -2300,6 +2471,7 @@ override method @onceFunctionDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
 :
   ioCategoryOverrideDefinitionList += !selfcopy ;
@@ -2311,6 +2483,7 @@ override method @externRoutineDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
 :
   ioCategoryOverrideDefinitionList += !selfcopy ;
@@ -2322,6 +2495,7 @@ override method @filewrapperDeclarationAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
 :
   ioCategoryOverrideDefinitionList += !selfcopy ;
@@ -2333,6 +2507,19 @@ override method @overridingCategoryMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
+:
+  ioCategoryOverrideDefinitionList += !selfcopy ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @overridingCategoryModifierAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
 :
   ioCategoryOverrideDefinitionList += !selfcopy ;
@@ -2344,6 +2531,7 @@ override method @overridingAbstractCategoryReaderAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
 :
   ioCategoryOverrideDefinitionList += !selfcopy ;
@@ -2355,6 +2543,19 @@ override method @overridingAbstractCategoryMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
+:
+  ioCategoryOverrideDefinitionList += !selfcopy ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @overridingAbstractCategoryModifierAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
 :
   ioCategoryOverrideDefinitionList += !selfcopy ;
@@ -2366,6 +2567,7 @@ override method @categoryReaderAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"category reader @" . mTypeName . " " . mCategoryReaderName ![mCategoryReaderName location]] ;
@@ -2393,6 +2595,7 @@ override method @categoryMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"category method @" . mTypeName . " " . mCategoryMethodName ![mCategoryMethodName location]] ;
@@ -2415,10 +2618,38 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @categoryModifierAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext ioCategoryModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
+:
+  const @lstring key [new !"category modifier @" . mTypeName . " " . mCategoryModifierName ![mCategoryModifierName location]] ;
+  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
+#---
+  if not [ioCategoryModifierMapForBuildingContext hasKey ![mTypeName string]] then
+    [!?ioCategoryModifierMapForBuildingContext insertKey
+      !mTypeName
+      ![@categoryModifierMapForType emptyMap]
+    ] ;
+  end if ;
+  with !?ioCategoryModifierMapForBuildingContext searchKey !mTypeName do
+    [!?mCategoryModifierMapForType insertOrReplace
+      !mCategoryModifierName
+      !mCategoryModifierFormalParameterList
+    ] ;
+  end with ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @overridingCategoryReaderAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph unused ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST ioCategoryOverrideDefinitionList
 :
   ioCategoryOverrideDefinitionList += !selfcopy ;
@@ -2430,6 +2661,7 @@ override method @abstractCategoryReaderAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"category reader @" . mTypeName . " " . mAbstractCategoryReaderName ![mAbstractCategoryReaderName location]] ;
@@ -2457,6 +2689,7 @@ override method @abstractCategoryMethodAST enterDeclarationInGraph
   ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
   ?!@categoryMethodMapForBuildingContext ioCategoryMethodMapForBuildingContext
   ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
   ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
 :
   const @lstring key [new !"category method @" . mTypeName . " " . mAbstractCategoryMethodName ![mAbstractCategoryMethodName location]] ;
@@ -2473,6 +2706,33 @@ override method @abstractCategoryMethodAST enterDeclarationInGraph
     [!?mCategoryMethodMapForType insertOrReplace
       !mAbstractCategoryMethodName
       !mAbstractCategoryMethodFormalParameterList
+    ] ;
+  end with ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @abstractCategoryModifierAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext ioCategoryModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
+:
+  const @lstring key [new !"category modifier @" . mTypeName . " " . mAbstractCategoryModifierName ![mAbstractCategoryModifierName location]] ;
+  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
+#---
+  if not [ioCategoryModifierMapForBuildingContext hasKey ![mTypeName string]] then
+    [!?ioCategoryModifierMapForBuildingContext insertKey
+      !mTypeName
+      ![@categoryModifierMapForType emptyMap]
+    ] ;
+  end if ;
+  with !?ioCategoryModifierMapForBuildingContext searchKey !mTypeName do
+    [!?mCategoryModifierMapForType insertOrReplace
+      !mAbstractCategoryModifierName
+      !mAbstractCategoryModifierFormalParameterList
     ] ;
   end with ;
 end method ;
@@ -2496,12 +2756,14 @@ routine buildSemanticContext
   @semanticTypePrecedenceGraph semanticTypePrecedenceGraph [emptyGraph] ;
   @categoryMethodMapForBuildingContext categoryMethodMapForBuildingContext [emptyMap] ;
   @categoryReaderMapForBuildingContext categoryReaderMapForBuildingContext  [emptyMap] ;
+  @categoryModifierMapForBuildingContext categoryModifierMapForBuildingContext  [emptyMap] ;
   @semanticDeclarationListAST categoryOverrideDefinitionList [emptyList] ;
   foreach inSemanticDeclarationList do
     [mSemanticDeclaration enterDeclarationInGraph
       !?semanticTypePrecedenceGraph
       !?categoryMethodMapForBuildingContext
       !?categoryReaderMapForBuildingContext
+      !?categoryModifierMapForBuildingContext
       !?categoryOverrideDefinitionList
     ] ;  
   end foreach ;
@@ -2549,18 +2811,13 @@ routine buildSemanticContext
         [mSemanticDeclaration enterInSemanticContext
           !categoryMethodMapForBuildingContext
           !categoryReaderMapForBuildingContext
+          !categoryModifierMapForBuildingContext
           !?outSemanticContext
         ] ;
       end foreach ;
     end if ;
   end if ;
 end routine ;
-
-#---------------------------------------------------------------------------*
-
-#class @c1 extends @c2 { }
-#class @c2 extends @c3 { }
-#class @c3 extends @c1 { }
 
 #---------------------------------------------------------------------------*
 

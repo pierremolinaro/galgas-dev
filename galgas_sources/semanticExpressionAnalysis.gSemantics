@@ -171,15 +171,31 @@ uniquemap @variableMap {
     dropAccess      -> droppedInputFormalArgument warning "the input formal parameter is declared as unused"
   }
 
-#--- Current instance attribute
+#--- Current instance attribute in a method or a reader
   state currentInstanceAttribute {
     readAccess      -> currentInstanceAttribute
-    writeAccess     -> currentInstanceAttribute error "an attribute cannot be written"
-    readWriteAccess -> currentInstanceAttribute error "an attribute cannot be modified"
-    dropAccess      -> currentInstanceAttribute error "an attribute cannot be dropped"
+    writeAccess     -> currentInstanceAttribute error "an attribute cannot be written within a method or a reader"
+    readWriteAccess -> currentInstanceAttribute error "an attribute cannot be modified within a method or a reader"
+    dropAccess      -> currentInstanceAttribute error "an attribute cannot be dropped within a method or a reader"
+  }
+
+#--- Current instance attribute in a modifier
+  state currentInstanceAttributeInModifier {
+    readAccess      -> currentInstanceAttributeInModifier
+    writeAccess     -> currentInstanceAttributeInModifier
+    readWriteAccess -> currentInstanceAttributeInModifier
+    dropAccess      -> currentInstanceDroppedAttributeInModifier
+  }
+
+  state currentInstanceDroppedAttributeInModifier warning "the '%K' attribute is in the dropped state at the end of the modifier" {
+    readAccess      -> currentInstanceDroppedAttributeInModifier error "the attribute cannot be read, it has been dropped"
+    writeAccess     -> currentInstanceAttributeInModifier
+    readWriteAccess -> currentInstanceDroppedAttributeInModifier error "the attribute cannot be read/written, it has been dropped"
+    dropAccess      -> currentInstanceDroppedAttributeInModifier  warning "the attribute is already dropped"
   }
 
 #--- Insert methods 
+  insert insertMutableAttribute state currentInstanceAttributeInModifier error message "redefinition of '%K' attribute (previous declaration was in %L)" ;
   insert insertNonMutableAttribute state currentInstanceAttribute error message "redefinition of '%K' attribute (previous declaration was in %L)" ;
   insert insertUndefinedLocalVariable state undefinedLocalVariable error message "redefinition of '%K' variable (previous declaration was in %L)" ;
   insert insertDefinedLocalVariable state definedLocalVariable error message "redefinition of '%K' variable (previous declaration was in %L)" ;
@@ -201,6 +217,8 @@ uniquemap @variableMap {
 
 #--- 'selectBlock' override definitions
   override selectBlock {
+    currentInstanceAttributeInModifier:currentInstanceDroppedAttributeInModifier -> currentInstanceDroppedAttributeInModifier
+    currentInstanceDroppedAttributeInModifier:currentInstanceAttributeInModifier -> currentInstanceAttributeInModifier
     constantInputFormalArgument:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
     constantInputFormalArgumentDeclaredAsUnused:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
     definedLocalVariable:droppedLocalVariable -> droppedLocalVariable
@@ -228,6 +246,8 @@ uniquemap @variableMap {
     undefinedLocalVariable:droppedLocalVariable -> droppedLocalVariable
     undefinedLocalVariable:usedLocalVariable -> usedLocalVariable
   }{
+    currentInstanceAttributeInModifier:currentInstanceDroppedAttributeInModifier -> currentInstanceAttributeInModifier error "this branch drops the '%K' attribute, while previous ones let it defined"
+    currentInstanceDroppedAttributeInModifier:currentInstanceAttributeInModifier -> currentInstanceAttributeInModifier error "this branch lets the '%K' attribute defined, while previous ones drop it"
     constantInputFormalArgument:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
     constantInputFormalArgumentDeclaredAsUnused:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
     definedLocalVariable:droppedLocalVariable -> definedLocalVariable error "this branch drops the '%K' variable, while previous ones let it defined"
@@ -262,6 +282,8 @@ uniquemap @variableMap {
 
 #--- 'repeatBlock' override definitions
   override repeatBlock {
+    currentInstanceAttributeInModifier:currentInstanceDroppedAttributeInModifier -> currentInstanceAttributeInModifier error "the repeated branch should not drop the '%K' attribute"
+    currentInstanceDroppedAttributeInModifier:currentInstanceAttributeInModifier -> currentInstanceAttributeInModifier
     constantInputFormalArgument:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
     constantInputFormalArgumentDeclaredAsUnused:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
     definedLocalVariable:droppedLocalVariable -> definedLocalVariable error "the repeated branch should not drop the '%K' variable"
@@ -289,6 +311,7 @@ uniquemap @variableMap {
     undefinedLocalVariable:droppedLocalVariable -> droppedLocalVariable
     undefinedLocalVariable:usedLocalVariable -> undefinedLocalVariable error "the repeated branch should not define the '%K' variable"
   }{
+    currentInstanceAttributeInModifier:currentInstanceDroppedAttributeInModifier -> currentInstanceAttributeInModifier
     constantInputFormalArgument:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
     constantInputFormalArgumentDeclaredAsUnused:usedConstantInputFormalArgument -> usedConstantInputFormalArgument
     definedLocalVariable:usedLocalVariable -> usedLocalVariable
@@ -785,7 +808,7 @@ function checkReaderImplementationInSuperClasses
     outResult := "" ;
   else
     @methodQualifier qualifier ;
-    [[inSuperClass mModifierMap] searchKey !inReaderName ?* ?* ?qualifier ?*] ;
+    [[inSuperClass mReaderMap] searchKey !inReaderName ?5* ?qualifier ?*] ;
     switch qualifier
     when isAbstract :
       outResult := "" ;

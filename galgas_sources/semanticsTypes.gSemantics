@@ -86,6 +86,7 @@ list @formalParameterSignature {
 #---------------------------------------------------------------------------*
 
 map @modifierMap {
+  @bool mIsCategory ;
   @formalParameterSignature mParameterList ;
   @bool mHasCompilerArgument ;
   @methodQualifier mQualifier ;
