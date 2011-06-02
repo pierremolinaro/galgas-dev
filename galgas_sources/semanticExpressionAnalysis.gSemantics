@@ -621,7 +621,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
   const @readerMap readerMap := [receiverType mReaderMap] ;
 #--- Search reader
   @unifiedTypeMapProxyList readerFormalArgumentTypeList ;
-  @bool isCategory ;
+  @methodKind kind ;
   @bool hasCompilerArgument ;
   @unifiedTypeMapProxy returnedType ;
   @stringlist fieldList [emptyList] ;
@@ -629,7 +629,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
     readerFormalArgumentTypeList := mArgumentTypeList ;
     hasCompilerArgument := mHasCompilerArgument ;
     returnedType := mReturnedType ;
-    isCategory := mIsCategory ;
+    kind := mKind ;
     if mErrorMessage != "" then
       error mReaderName : mErrorMessage ;
     end if ;
@@ -639,7 +639,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
       readerFormalArgumentTypeList := [@unifiedTypeMapProxyList emptyList] ;
       hasCompilerArgument := true ;
       returnedType := [@unifiedTypeMapProxy null] ;
-      isCategory := true ;
+      kind := [@methodKind definedAsCategory] ;
       foreach [receiverType mCurrentTypedAttributeList] do
         const @unifiedTypeMapProxy attributeType [searchKey !inAnalysisContext->mSemanticContext->mTypeMap ![@lstring new ![mAttributeTypeProxy key] !here]] ;
         const @readerMap aMap := [attributeType mReaderMap] ;
@@ -648,7 +648,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
           readerFormalArgumentTypeList := mArgumentTypeList ;
           hasCompilerArgument := mHasCompilerArgument ;
           returnedType := mReturnedType ;
-          isCategory := mIsCategory ;
+          kind := mKind ;
           fieldList += ![mAttributeName string] ;
           if mErrorMessage != "" then
             error mReaderName : mErrorMessage ;
@@ -659,7 +659,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
         error mReaderName
         : "the '@". [receiverType key] . "' struct type does not define the '" . [mReaderName string]
         . "' reader, and none of its fields defines it"
-        : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory
+        : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
         ;
       elsif matchingReaderCount > 1 then
         @string s := "" ;
@@ -670,13 +670,13 @@ override method @readerCallExpressionAST analyzeSemanticExpression
         error mReaderName
         : "the '@". [receiverType key] . "' struct type does not define the '" . [mReaderName string]
         . "' reader, and several of its fields defines it:" . s . " (exactly one field should define it)"
-        : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory
+        : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
         ;
       end if ;
     elsif [readerMap count] == 0 then
       error mReaderName
       : "the '@". [receiverType key] . "' type does not define any reader"
-      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory
+      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       ;
     else
       @string s := "" ;
@@ -691,7 +691,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
       : "the '@". [receiverType key] . "' type does not define the '" . mReaderName . "' reader; available "
       . if [readerMap count] > 1 then "readers are" else "reader is" end
       . ":" . s
-      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory
+      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       ;
     end if ;
   end with ;
@@ -711,7 +711,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
     outExpression := [@readerCallExpressionForGeneration new
       !returnedType
       ![mReaderName location]
-      !isCategory
+      !kind
       !receiverExpression
       !fieldList
       ![mReaderName string]
@@ -741,19 +741,19 @@ override method @thisReaderCallExpressionAST analyzeSemanticExpression
   const @readerMap readerMap := [thisTypeProxy mReaderMap] ;
 #--- Search reader
   @unifiedTypeMapProxyList readerFormalArgumentTypeList ;
-  @bool isCategory ;
+  @methodKind kind ;
   @bool hasCompilerArgument ;
   @unifiedTypeMapProxy returnedType ;
   with readerMap hasKey ![mReaderName string] do
     readerFormalArgumentTypeList := mArgumentTypeList ;
     hasCompilerArgument := mHasCompilerArgument ;
     returnedType := mReturnedType ;
-    isCategory := mIsCategory ;
+    kind := mKind ;
   else
     if [readerMap count] == 0 then
       error mReaderName
       : "the '@". [thisTypeProxy key] . "' type does not define any reader"
-      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory
+      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       ;
     else
       @string s := "" ;
@@ -768,7 +768,7 @@ override method @thisReaderCallExpressionAST analyzeSemanticExpression
       : "the '@". [thisTypeProxy key] . "' type does not define the '" . mReaderName . "' reader; available "
       . if [readerMap count] > 1 then "readers are" else "reader is" end
       . ":" . s
-      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory
+      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       ;
     end if ;
   end with ;
@@ -789,7 +789,7 @@ override method @thisReaderCallExpressionAST analyzeSemanticExpression
       !returnedType
       ![mReaderName location]
       !currentObjectCppPointer
-      !isCategory
+      !kind
       ![mReaderName string]
       !constructorEffectiveParameterList
       !hasCompilerArgument
@@ -844,7 +844,7 @@ override method @superReaderCallExpressionAST analyzeSemanticExpression
   const @readerMap readerMap := [superTypeProxy mReaderMap] ;
 #--- Search reader
   @unifiedTypeMapProxyList readerFormalArgumentTypeList ;
-  @bool isCategory ;
+  @methodKind kind ;
   @bool hasCompilerArgument ;
   @unifiedTypeMapProxy returnedType ;
   @string superClassThatImplementsReader  ;
@@ -852,7 +852,7 @@ override method @superReaderCallExpressionAST analyzeSemanticExpression
     readerFormalArgumentTypeList := mArgumentTypeList ;
     hasCompilerArgument := mHasCompilerArgument ;
     returnedType := mReturnedType ;
-    isCategory := mIsCategory ;
+    kind := mKind ;
     superClassThatImplementsReader := checkReaderImplementationInSuperClasses [!mReaderName !superTypeProxy] ;
     if superClassThatImplementsReader == "" then
       error mReaderName: "the '" . mReaderName . "' reader is not implemented by super class(es)" ;
@@ -861,7 +861,7 @@ override method @superReaderCallExpressionAST analyzeSemanticExpression
     if [readerMap count] == 0 then
       error mReaderName
       : "the '@". [superTypeProxy key] . "' type does not define any reader"
-      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory, superClassThatImplementsReader
+      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind, superClassThatImplementsReader
       ;
     else
       @string s := "" ;
@@ -876,7 +876,7 @@ override method @superReaderCallExpressionAST analyzeSemanticExpression
       : "the '@". [superTypeProxy key] . "' type does not define the '" . mReaderName . "' reader; available "
       . if [readerMap count] > 1 then "readers are" else "reader is" end
       . ":" . s
-      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory, superClassThatImplementsReader
+      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind, superClassThatImplementsReader
       ;
     end if ;
   end with ;
@@ -896,7 +896,7 @@ override method @superReaderCallExpressionAST analyzeSemanticExpression
     outExpression := [@superReaderCallExpressionForGeneration new
       !returnedType
       ![mReaderName location]
-      !isCategory
+      !kind
       !superClassThatImplementsReader
       ![mReaderName string]
       !constructorEffectiveParameterList
@@ -1009,10 +1009,10 @@ routine checkDiadicOperator
         @unifiedTypeMapProxyList argumentTypeList ;
         @bool hasCompilerArgument ;
         @unifiedTypeMapProxy returnedType ;
-        @bool isCategory ;
+        @methodKind kind ;
         [[inRightType mReaderMap] searchKey
           ![inLeftType lkey]
-          ?isCategory
+          ?kind
           ?argumentTypeList
           ?*
           ?hasCompilerArgument
@@ -1024,7 +1024,7 @@ routine checkDiadicOperator
         @semanticExpressionForGeneration conversionExpression := [@readerCallExpressionForGeneration new
           !inLeftType
           !inErrorLocation
-          !isCategory
+          !kind
           !ioRightExpression
           ![@stringlist emptyList]
           ![inLeftType key]
@@ -1891,7 +1891,7 @@ override method @castInExpressionAST analyzeSemanticExpression
       errorLocationExpression := [@readerCallExpressionForGeneration new
         !inAnalysisContext->mPredefinedTypes->mLocationType
         !mEndOfErrorLocationExpression
-        !false
+        !mKind
         !errorLocationExpression
         ![@stringlist emptyList]
         !"location"

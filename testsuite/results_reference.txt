@@ -41,6 +41,59 @@ LOGGING s: <@string:"d">
 LOGGING comp: <@bool:true>
 *************************************** begin of struct logging
 LOGGING s: <struct @structTest:<@string:"az">, <@uint:34>>
+*************************************** begin of listmap
+LOGGING m: <@myListMap:  (3 objects): 
+|-at 0: key 'a'  (2 objects): 
+| |-at 0
+| | | mString:<@string:"b">
+| | | mInt:<@uint:23>
+| |-at 1
+| | | mString:<@string:"c">
+| | | mInt:<@uint:98>
+|-at 1: key 'c'  (1 object): 
+| |-at 0
+| | | mString:<@string:"f">
+| | | mInt:<@uint:11>
+|-at 2: key 'd'  (1 object): 
+| |-at 0
+| | | mString:<@string:"g">
+| | | mInt:<@uint:37>>>
+LOGGING c: <@uint:3>
+LOGGING s: <@stringset:3 entries 'a' 'c' 'd'>
+LOGGING sl: <list @stringlist (3 objects): 
+|-at 0
+| | mValue:<@string:"a">
+|-at 1
+| | mValue:<@string:"c">
+|-at 2
+| | mValue:<@string:"d">>
+LOGGING aList: <list @aList (2 objects): 
+|-at 0
+| | mString:<@string:"b">
+| | mInt:<@uint:23>
+|-at 1
+| | mString:<@string:"c">
+| | mInt:<@uint:98>>
+--- test += operator listmap
+--- test foreach for listmap
+LOGGING key: <@string:"a">
+LOGGING mList: <list @aList (2 objects): 
+|-at 0
+| | mString:<@string:"b">
+| | mInt:<@uint:23>
+|-at 1
+| | mString:<@string:"c">
+| | mInt:<@uint:98>>
+LOGGING key: <@string:"c">
+LOGGING mList: <list @aList (1 object): 
+|-at 0
+| | mString:<@string:"f">
+| | mInt:<@uint:11>>
+LOGGING key: <@string:"d">
+LOGGING mList: <list @aList (1 object): 
+|-at 0
+| | mString:<@string:"g">
+| | mInt:<@uint:37>>
 *************************************** begin of map
 LOGGING m: <map @aMap (1 object): 
 |-at 0: key 'g' 
@@ -67,7 +120,7 @@ LOGGING m: <map @aMap (1 object):
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (47 types)
+--- Type list (51 types)
   @2stringlist
   @A
   @AA
@@ -75,8 +128,11 @@ LOGGING r: <@uint:5>
   @BB
   @CC
   @TestCategoryMethod
+  @TestCategoryModifier
   @aList
   @aMap
+  @abstractOverridingTestCategoryModifier
+  @abstractTestCategoryModifier
   @application
   @binaryset
   @bool
@@ -103,6 +159,7 @@ LOGGING r: <@uint:5>
   @myListMap
   @object
   @objectlist
+  @overridingTestCategoryModifier
   @sint
   @sint64
   @string
@@ -129,3 +186,6 @@ LOGGING Proxy: : <@monMapProxy regular (key "abc", unsolved)>
 LOGGING [table unsolvedProxyCount]: <@uint:1>
 *************************************** begin of category reader test
 LOGGING s: <@string:"-3-4-4">
+*************************************** begin of category modifier test
+LOGGING u: <@uint:3>
+LOGGING v: <@TestCategoryModifier:[@TestCategoryModifier:<@uint:3>, <@string:"Hello World">]>

@@ -33,7 +33,7 @@ routine enterBaseFinalReaderWithoutArgument
   [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
-    !false
+    ![@methodKind definedAsMember]
     ![@unifiedTypeMapProxyList emptyList]
     !here
     !inHasLexiqueAndLocationArguments
@@ -56,7 +56,7 @@ routine enterInheritedReaderWithoutArgument
   [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
-    !false
+    ![@methodKind definedAsMember]
     ![@unifiedTypeMapProxyList emptyList]
     !here
     !inHasLexiqueAndLocationArguments
@@ -84,7 +84,7 @@ routine enterInheritedReaderWithArgument
   argList += !t ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
-    !false
+    ![@methodKind definedAsMember]
     !argList
     !here
     !inHasLexiqueAndLocationArguments
@@ -107,7 +107,7 @@ routine enterBaseReaderWithoutArgument
   [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
-    !false
+    ![@methodKind definedAsMember]
     ![@unifiedTypeMapProxyList emptyList]
     !here
     !inHasLexiqueAndLocationArguments
@@ -135,7 +135,7 @@ routine enterBaseReaderWithArgument
   argList += !t ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
-    !false
+    ![@methodKind definedAsMember]
     !argList
     !here
     !inHasLexiqueAndLocationArguments
@@ -164,7 +164,7 @@ routine enterBaseReaderWithArgumentAndMessage
   argList += !t ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
-    !false
+    ![@methodKind definedAsMember]
     !argList
     !here
     !inHasLexiqueAndLocationArguments
@@ -192,7 +192,7 @@ routine enterBaseFinalReaderWithArgument
   argList += !t ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
-    !false
+    ![@methodKind definedAsMember]
     !argList
     !here
     !inHasLexiqueAndLocationArguments
@@ -223,7 +223,7 @@ routine enterBaseReaderWith2Arguments
   argList += !t ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
-    !false
+    ![@methodKind definedAsMember]
     !argList
     !here
     !inHasLexiqueAndLocationArguments
@@ -255,7 +255,7 @@ routine enterBaseReaderWith2ArgumentsAndMessage
   argList += !t ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
-    !false
+    ![@methodKind definedAsMember]
     !argList
     !here
     !inHasLexiqueAndLocationArguments
@@ -286,7 +286,7 @@ routine enterBaseFinalReaderWith2Arguments
   argList += !t ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
-    !false
+    ![@methodKind definedAsMember]
     !argList
     !here
     !inHasLexiqueAndLocationArguments
@@ -320,7 +320,7 @@ routine enterBaseReaderWith3Arguments
   argList += !t ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
-    !false
+    ![@methodKind definedAsMember]
     !argList
     !here
     !inHasLexiqueAndLocationArguments
@@ -354,7 +354,7 @@ routine enterBaseFinalReaderWith3Arguments
   argList += !t ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
-    !false
+    ![@methodKind definedAsMember]
     !argList
     !here
     !inHasLexiqueAndLocationArguments

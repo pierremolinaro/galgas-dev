@@ -52,13 +52,20 @@ enum @methodQualifier {
 }
 
 #---------------------------------------------------------------------------*
+
+enum @methodKind {
+  definedAsMember, definedAsCategory
+}{
+}
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #  R E A D E R    M A P                                                     *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 map @readerMap {
-  @bool mIsCategory ;
+  @methodKind mKind ;
   @unifiedTypeMapProxyList mArgumentTypeList ;
   @location mDeclarationLocation ;
   @bool mHasCompilerArgument ;
@@ -86,7 +93,7 @@ list @formalParameterSignature {
 #---------------------------------------------------------------------------*
 
 map @modifierMap {
-  @bool mIsCategory ;
+  @methodKind mKind ;
   @formalParameterSignature mParameterList ;
   @bool mHasCompilerArgument ;
   @methodQualifier mQualifier ;
@@ -103,7 +110,7 @@ map @modifierMap {
 #---------------------------------------------------------------------------*
 
 map @instanceMethodMap {
-  @bool mIsCategory ;
+  @methodKind mKind ;
   @formalParameterSignature mParameterList ;
   @location mDeclarationLocation ;
   @bool mHasCompilerArgument ;

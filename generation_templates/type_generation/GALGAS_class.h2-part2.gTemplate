@@ -17,43 +17,6 @@
   end if
 %) ;
 %
-foreach ABSTRACT_METHOD_LIST do
-  %//--- Abstract method %![mMethodName string]%\n%
-  %  public : virtual void method_%![mMethodName identifierRepresentation]% (%?^
-  foreach mSignature do
-    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %const GALGAS_%![mFormalArgumentType identifierRepresentation]% %
-    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-      %GALGAS_%![mFormalArgumentType identifierRepresentation]% & %
-    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-      %GALGAS_%![mFormalArgumentType identifierRepresentation]% & %
-    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentIn] then
-      %GALGAS_%![mFormalArgumentType identifierRepresentation]% %
-    end if
-    !mFormalArgumentCppName%,\n%!^
-  end foreach
-  %C_Compiler * inCompiler\n%
-  !^%COMMA_LOCATION_ARGS) const = 0 ;\n\n%
-end foreach
-
-foreach CONCRETE_METHOD_LIST do
-  %//--- Concrete method %![mMethodName string]%\n%
-  %  public : virtual void method_%![mMethodName identifierRepresentation]% (%?^
-  foreach mSignature do
-    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-      %const GALGAS_%![mFormalArgumentType identifierRepresentation]% %
-    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-      %GALGAS_%![mFormalArgumentType identifierRepresentation]% & %
-    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-      %GALGAS_%![mFormalArgumentType identifierRepresentation]% & %
-    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentIn] then
-      %GALGAS_%![mFormalArgumentType identifierRepresentation]% %
-    end if
-    !mFormalArgumentCppName%,\n%!^
-  end foreach
-  %C_Compiler * inCompiler\n%
-  !^%COMMA_LOCATION_ARGS) const ;\n\n%
-end foreach
 
 if not IS_ABSTRACT then
 %//--- Description

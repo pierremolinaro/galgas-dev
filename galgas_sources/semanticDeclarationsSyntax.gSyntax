@@ -366,62 +366,6 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <class_abstract_method_declaration>
-  ?!@abstractMethodDefinitionListAST ioAbstractMethodDefinitionList
-:
-  @bool isOverriding ;
-  select
-    isOverriding := false ;
-  or
-    $override$ ;
-    isOverriding := true ;
-  end select ;
-  $abstract$ ;
-  $method$ ;
-  $identifier$ ? @lstring mMethodName ;
-  if not [option galgas_cli_options.noDeprecatedWarning value] then
-    warning mMethodName:"declared a method within a class is deprecated, but is used by Mikaël Briday" ;
-  end if ;
-  @formalParameterListAST mSignature ;
-  <formal_parameter_list> ? mSignature ;
-  $;$ ;
-  ioAbstractMethodDefinitionList += !isOverriding !mMethodName !mSignature ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
-rule <class_method_declaration> ?!@methodDefinitionListAST ioMethodDefinitionList :
-  @bool isOverriding ;
-  select
-    isOverriding := false ;
-  or
-    $override$ ;
-    isOverriding := true ;
-  end select ;
-  $method$ ;
-  $identifier$ ? @lstring mMethodName ;
-  if not [option galgas_cli_options.noDeprecatedWarning value] then
-    warning mMethodName:"declared a method within a class is deprecated, but is used by Mikaël Briday" ;
-  end if ;
-  @formalParameterListAST mSignature ;
-  <formal_parameter_list> ? mSignature ;
-  $:$ ;
-  @semanticInstructionListAST mInstructionList ;
-  <semantic_instruction_list> ? mInstructionList ;
-  ioMethodDefinitionList +=
-    !isOverriding
-    !mMethodName
-    !mSignature
-    !mInstructionList
-    !here
-  ;
-  $end$ ;
-  $method$ ;
-  $;$ ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
@@ -462,15 +406,9 @@ rule <semantic_declaration>
   @string mClassMessage := "" ;
 #--- Class properties
   @attributeInCollectionListAST mAttributeList [emptyList] ;
-  @abstractMethodDefinitionListAST mAbstractMethodList [emptyList] ;
-  @methodDefinitionListAST mMethodList [emptyList] ;
   repeat
   while
     <attribute_declaration> !? mAttributeList ;
-  while
-    <class_abstract_method_declaration> !? mAbstractMethodList ;
-  while
-    <class_method_declaration> !? mMethodList ;
   end repeat ;
   $}$ ;
   foreach classNameList do
@@ -481,8 +419,6 @@ rule <semantic_declaration>
       !mSuperClassName # Empty if no super class
       !classFeatureList
       !mAttributeList
-      !mAbstractMethodList
-      !mMethodList
     ] ;
   end foreach ;
 end rule ;

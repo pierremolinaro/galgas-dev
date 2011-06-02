@@ -1070,7 +1070,7 @@ end method ;
 
 override method @classDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
-  ??@predefinedTypes inPredefinedTypes
+  ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
 #------ Self type
@@ -1080,11 +1080,9 @@ override method @classDeclarationAST performSemanticAnalysis
 # A class without a super class admits the 'generatedInSeparateFile' feature
   @unifiedTypeMapProxy superClassProxy ;
   @typedAttributeList allAttributeList ;
-  @instanceMethodMap inheritedInstanceMethodMap ;
   if [mSuperClassName string] == "" then
     superClassProxy := [@unifiedTypeMapProxy null] ;
     allAttributeList := [@typedAttributeList emptyList] ;
-    inheritedInstanceMethodMap := [@instanceMethodMap emptyMap] ;
     @bool generatedInSeparateFileFeature := false ;
     if [mClassFeatureList length] > 0 then
       foreach mClassFeatureList do
@@ -1101,10 +1099,9 @@ override method @classDeclarationAST performSemanticAnalysis
   else
     superClassProxy := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mSuperClassName] ;
     allAttributeList := [superClassProxy mAllTypedAttributeList] ;
-    inheritedInstanceMethodMap := [superClassProxy mInstanceMethodMap] ;
     if [mClassFeatureList length] > 0 then
       foreach mClassFeatureList do
-        error mValue:"a class that has a super may not have any feature" ;
+        error mValue:"a class that has a super class does not accept any feature" ;
       end foreach ;
     end if ;
   end if ;
@@ -1144,109 +1141,6 @@ override method @classDeclarationAST performSemanticAnalysis
     ;
     [!?attributeMap insertKey !mAttributeName !t] ;
   end foreach ;
-#------ Check a method is defined once within class
-  @declaredMethodMap classMethodMap [emptyMap] ;
-  foreach mAbstractMethodList do
-   [!?classMethodMap insertKey !mMethodName] ;
-  end foreach ;
-  foreach mMethodList do
-   [!?classMethodMap insertKey !mMethodName] ;
-  end foreach ;
-#------ Abstract methods
-  @abstractMethodDefinitionListForGeneration abstractMethodList [emptyList] ;
-  foreach mAbstractMethodList do
-  #--- Check a concrete class does not declare an abstract method
-    if not mIsAbstract then
-      error mMethodName : "a concrete class cannot declare an abstract method" ;
-    end if ;
-  #--- Compute method signature
-    @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
-    foreach mSignature do
-      formalParameterListForGeneration +=
-        !mFormalArgumentPassingMode
-        ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName]
-        !mFormalArgumentName
-        ![mFormalArgumentName string]
-      ;
-    end foreach ;
-  #--- Check overriding status
-    if mIsOverriding then
-      @formalParameterSignature inheritedSignature ;
-      @location inheritedDeclarationLocation ;
-      [inheritedInstanceMethodMap searchInheritedKey !mMethodName ?* ?inheritedSignature ?inheritedDeclarationLocation ?3*] ;
-      checkMethodSignatures
-        !formalParameterListForGeneration
-        ![mMethodName location]
-        !inheritedSignature
-        !inheritedDeclarationLocation
-      ;
-    elsif [inheritedInstanceMethodMap hasKey ![mMethodName string]] then
-      error mMethodName : "this method cannot be declared as abstract, it is already declared in super class" ;
-    end if ;
-    abstractMethodList += !mIsOverriding !mMethodName !formalParameterListForGeneration ;
-  end foreach ;
-#------ Methods
-  @methodDefinitionListForGeneration methodList [emptyList] ;
-  @stringset definedMethodSet [emptySet] ;
-  const @analysisContext analysisContext [new
-    !inSemanticContext
-    !inPredefinedTypes
-    !selfType
-    !"this"
-  ] ;
-  foreach mMethodList do
-  #---
-    @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
-    @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
-    analyzeRoutineBody
-      !analysisContext
-      !mSignature
-      ![@localConstantList emptyList]
-      !allAttributeList
-      ![@typedAttributeList emptyList]
-      !""
-      !mInstructionList
-      !mEndOfMethodLocation
-      ?semanticInstructionListForGeneration
-      ?formalParameterListForGeneration
-    ;
-  #--- Check overriding status
-    if mIsOverriding then
-      @formalParameterSignature inheritedSignature ;
-      @location inheritedDeclarationLocation ;
-      @bool inheritedIsCategory ;
-      [inheritedInstanceMethodMap searchInheritedKey !mMethodName ?inheritedIsCategory ?inheritedSignature ?inheritedDeclarationLocation ?3*] ;
-      checkMethodSignatures
-        !formalParameterListForGeneration
-        ![mMethodName location]
-        !inheritedSignature
-        !inheritedDeclarationLocation
-      ;
-      if inheritedIsCategory then
-        error mMethodName : "this method is declared in class, but overriden method is declared as multi-method" ;
-      end if ;
-    elsif [inheritedInstanceMethodMap hasKey ![mMethodName string]] then
-      error mMethodName : "this method should be declared as overridding, as it is already declared in super class" ;
-    end if ;
-  #---
-    definedMethodSet += ![mMethodName string] ;
-    methodList +=
-      !mIsOverriding
-      !mMethodName
-      !formalParameterListForGeneration
-      !semanticInstructionListForGeneration
-    ;
-  end foreach ;
-#------ Check a concrete class has no abstract method
-  if not mIsAbstract then
-    foreach inheritedInstanceMethodMap do
-      if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isOverridingAbstract]) then
-        if not [definedMethodSet hasKey ![lkey string]] then
-          error lkey : "the '@" . mClassTypeName . "' class is declared concrete, but the '" . lkey . "' method declared in a super class is not implemented" ;
-        end if ;    
-      end if ;
-    end foreach ;
-  end if ;
 #------ Compute sort string (used for sorting generated code)
   @string sortString := [selfType key] ;
   @unifiedTypeMapProxy t := [selfType mSuperType] ;
@@ -1264,9 +1158,6 @@ override method @classDeclarationAST performSemanticAnalysis
     !superClassProxy
     !allAttributeList
     !typedAttributeList
-    !abstractMethodList
-    !methodList
-    ![selfType mInstanceMethodMap]
     ![selfType mGenerateHeaderInSeparateFile]
   ]
   !sortString

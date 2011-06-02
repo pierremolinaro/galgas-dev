@@ -71,7 +71,7 @@ override method @stringsetPredefinedTypeAST getModifierMap
   outModifierMap := [@modifierMap emptyMap] ;
   [!?outModifierMap insertKey
     ![@lstring new !"removeKey" !here]
-    !false
+    ![@methodKind definedAsMember]
     ![@formalParameterSignature listWithValue !stringType ![@formalArgumentPassingModeAST argumentIn]]
     !false # No Compiler argument
     ![@methodQualifier isBasic]

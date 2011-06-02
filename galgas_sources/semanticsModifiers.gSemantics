@@ -35,7 +35,7 @@ routine enterModifierWithInputArgument
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?ioModifierMap insertOrReplace
     ![@lstring new !inModifierName !here]
-    !false
+    ![@methodKind definedAsMember]
     !argList
     !inHasCompilerArgument
     ![@methodQualifier isBasic]
@@ -58,7 +58,7 @@ routine enterModifierWithOutputArgument
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
   [!?ioModifierMap insertOrReplace
     ![@lstring new !inModifierName !here]
-    !false
+    ![@methodKind definedAsMember]
     !argList
     !inHasCompilerArgument
     ![@methodQualifier isBasic]
@@ -84,7 +84,7 @@ routine enterModifierWith2InputArguments
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?ioModifierMap insertOrReplace
     ![@lstring new !inModifierName !here]
-    !false
+    ![@methodKind definedAsMember]
     !argList
     !inHasCompilerArgument
     ![@methodQualifier isBasic]
@@ -101,7 +101,7 @@ routine enterModifierWithoutArgument
 :
   [!?ioModifierMap insertOrReplace
     ![@lstring new !inModifierName !here]
-    !false
+    ![@methodKind definedAsMember]
     ![@formalParameterSignature emptyList]
     !inHasCompilerArgument
     ![@methodQualifier isBasic]

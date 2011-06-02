@@ -70,7 +70,7 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
   const @readerMap readerMap := [receiverType mReaderMap] ;
 #--- Search contructor
   @unifiedTypeMapProxyList readerFormalArgumentTypeList ;
-  @bool isCategory ;
+  @methodKind kind ;
   @bool hasCompilerArgument ;
   @unifiedTypeMapProxy returnedType ;
   @stringlist fieldList [emptyList] ;
@@ -78,24 +78,22 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
     readerFormalArgumentTypeList := mArgumentTypeList ;
     hasCompilerArgument := mHasCompilerArgument ;
     returnedType := mReturnedType ;
-    isCategory := mIsCategory ;
+    kind := mKind ;
   else
     @uint matchingReaderCount := 0 ;
     if [receiverType mTypeKindEnum] == [@typeKindEnum structType] then
       readerFormalArgumentTypeList := [@unifiedTypeMapProxyList emptyList] ;
       hasCompilerArgument := true ;
       returnedType := [@unifiedTypeMapProxy null] ;
-      isCategory := true ;
+      kind := [@methodKind definedAsMember] ;
       foreach [receiverType mCurrentTypedAttributeList] do
-        const @unifiedTypeMapProxy attributeType [searchKey !inAnalysisContext->mSemanticContext->mTypeMap ![@lstring new ![mAttributeTypeProxy key] !here]] ;
-        const @readerMap aMap := [attributeType mReaderMap] ;
-#        const @readerMap aMap := [mAttributeTypeProxy mReaderMap] ; # Bug in GALGAS 1, for GALGAS 2
+        const @readerMap aMap := [mAttributeTypeProxy mReaderMap] ;
         with aMap hasKey ![mReaderName string] do
           matchingReaderCount ++ ;
           readerFormalArgumentTypeList := mArgumentTypeList ;
           hasCompilerArgument := mHasCompilerArgument ;
           returnedType := mReturnedType ;
-          isCategory := mIsCategory ;
+          kind := mKind ;
           fieldList += ![mAttributeName string] ;
         end with ;
       end foreach ;
@@ -103,7 +101,7 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
         error mReaderName
         : "the '@". [receiverType key] . "' struct type does not define the '" . [mReaderName string]
         . "' reader, and none of its fields defines it"
-        : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory
+        : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
         ;
       elsif matchingReaderCount > 1 then
         @string s := "" ;
@@ -114,13 +112,13 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
         error mReaderName
         : "the '@". [receiverType key] . "' struct type does not define the '" . [mReaderName string]
         . "' reader, and several of its fields defines it:" . s . " (exactly one field should define it)"
-        : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory
+        : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
         ;
       end if ;
     elsif [readerMap count] == 0 then
       error mReaderName
       : "the '@". [receiverType key] . "' type does not define any reader"
-      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory
+      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       ;
     else
       @string s := "" ;
@@ -135,7 +133,7 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
       : "the '@". [receiverType key] . "' type does not define the '" . mReaderName . "' reader; available "
       . if [readerMap count] > 1 then "readers are" else "reader is" end
       . ":" . s
-      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, isCategory
+      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       ;
     end if ;
   end with ;
@@ -155,7 +153,7 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
     outExpression := [@readerCallExpressionForGeneration new
       !returnedType
       ![mReaderName location]
-      !isCategory
+      !kind
       !receiverExpression
       !fieldList
       ![mReaderName string]

@@ -99,19 +99,6 @@ if ([ALL_ATTRIBUTE_LIST length] > 0) & not IS_ABSTRACT then
   %}\n\n%
 end if
 
-foreach CONCRETE_METHOD_LIST do
-  %//---------------------------------------------------------------------------*\n\n%
-  !generateProcedure [
-    !"cPtr_" . TYPE_IDENTIFIER . "::method_" . [mMethodName identifierRepresentation]
-    !mSignature
-    !mInstructionList
-    !true # Method is const
-    !"C_Compiler"
-    !true # Generate location Argument
-    !false # Generate 'resetTemplateString'
-  ]
-end foreach
-
 foreach CURRENT_ATTRIBUTE_LIST do
   if mHasGetter then
     %//---------------------------------------------------------------------------*\n\n%
@@ -138,62 +125,6 @@ foreach CURRENT_ATTRIBUTE_LIST do
     %    p->mAttribute_%![mAttributeName identifierRepresentation]% = inValue ;\n%
     %  }\n%
     %}\n\n%
-  end if
-end foreach
-
-foreach INSTANCE_METHOD_MAP do
-  if not mIsCategory then
-    if (mQualifier == [@methodQualifier isAbstract]) | (mQualifier == [@methodQualifier isBasic]) | (mQualifier == [@methodQualifier isBasicFinal]) then
-      %//---------------------------------------------------------------------------*\n\n%
-      %void GALGAS_%!TYPE_IDENTIFIER%::method_%![lkey identifierRepresentation]% (%?^
-      foreach mParameterList do index IDX
-        switch mFormalArgumentPassingMode
-        when argumentConstantIn :
-          %GALGAS_% ![mFormalArgumentType identifierRepresentation] % constinArgument% ![IDX string]
-        when argumentInOut :
-          %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & ioArgument% ![IDX string]
-        when argumentOut :
-          %GALGAS_% ![mFormalArgumentType identifierRepresentation] % & outArgument% ![IDX string]
-        when argumentIn :
-          %GALGAS_% ![mFormalArgumentType identifierRepresentation] % inArgument% ![IDX string]
-        end switch
-      between %,\n%!^
-      end foreach
-      if [mParameterList length] == 0 then
-        if mHasCompilerArgument then
-          %C_Compiler * inCompiler\n%
-          !^%COMMA_LOCATION_ARGS%
-        else
-          !^%LOCATION_ARGS%
-        end if  
-      else
-        if mHasCompilerArgument then
-          %,\n%!^%C_Compiler * inCompiler\n%
-          !^%COMMA_LOCATION_ARGS%
-        else
-          %\n%!^%COMMA_LOCATION_ARGS%
-        end if  
-      end if
-      %) const {\n%
-      %  if (mObjectPtr != NULL) {\n%
-      %    const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
-      %    macroValidSharedObject (p, const cPtr_%!TYPE_IDENTIFIER%) ;\n%
-      %    p->method_%![lkey identifierRepresentation]% (%
-      foreach mParameterList do index IDX
-        if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
-          %constinArgument% ![IDX string]%, %
-        elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
-          %ioArgument% ![IDX string]%, %
-        elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
-          %outArgument% ![IDX string]%, %
-        else # argumentIn
-          %inArgument% ![IDX string]%, %
-        end if
-      end foreach
-      %inCompiler COMMA_THERE) ;\n%
-      %  }\n%
-      %}\n\n%
-    end if
   end if
 end foreach
 

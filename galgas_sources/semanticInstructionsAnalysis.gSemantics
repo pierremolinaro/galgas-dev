@@ -616,9 +616,9 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
 #--- Get type method signature
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
-  @bool isCategory ;
+  @methodKind kind ;
   @string errorMessage ;
-  [[[receiverExpression mType] mInstanceMethodMap] searchKey !mMethodName ?isCategory ?routineSignature ?* ?hasCompilerArgument ?* ?errorMessage] ;
+  [[[receiverExpression mType] mInstanceMethodMap] searchKey !mMethodName ?kind ?routineSignature ?* ?hasCompilerArgument ?* ?errorMessage] ;
   if errorMessage != "" then
     error mMethodName : errorMessage ;
   end if ;
@@ -638,7 +638,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
     !mInstructionLocation
     !receiverExpression
     ![mMethodName string]
-    !isCategory
+    !kind
     !actualParameterListForGeneration
     !hasCompilerArgument
   ] ;
@@ -663,8 +663,8 @@ override method @thisMethodCallInstructionAST analyzeSemanticInstruction
 #--- Get type method signature
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
-  @bool isCategory ;
-  [[selfTypeProxy mInstanceMethodMap] searchKey !mMethodName ?isCategory ?routineSignature ?* ?hasCompilerArgument ?* ?*] ;
+  @methodKind kind ;
+  [[selfTypeProxy mInstanceMethodMap] searchKey !mMethodName ?kind ?routineSignature ?* ?hasCompilerArgument ?* ?*] ;
 #--- Check effective parameters
   @actualParameterListForGeneration actualParameterListForGeneration ;
   analyzeRoutineArguments
@@ -681,7 +681,7 @@ override method @thisMethodCallInstructionAST analyzeSemanticInstruction
     !currentObjectCppPointer
     !mInstructionLocation
     ![mMethodName string]
-    !isCategory
+    !kind
     !actualParameterListForGeneration
     !hasCompilerArgument
   ] ;
@@ -731,8 +731,8 @@ override method @superMethodCallInstructionAST analyzeSemanticInstruction
 #--- Get type method signature
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
-  @bool isCategory ;
-  [[superTypeProxy mInstanceMethodMap] searchKey !mMethodName ?isCategory ?routineSignature ?* ?hasCompilerArgument ?* ?*] ;
+  @methodKind kind ;
+  [[superTypeProxy mInstanceMethodMap] searchKey !mMethodName ?kind ?routineSignature ?* ?hasCompilerArgument ?* ?*] ;
 #--- Check the method is actually implemented by the super class, or by one of its super classes
   const @string superClassThatImplementsMethod := checkMethodImplementationInSuperClasses [!mMethodName !superTypeProxy] ;
   if superClassThatImplementsMethod == "" then
@@ -754,7 +754,7 @@ override method @superMethodCallInstructionAST analyzeSemanticInstruction
     !mInstructionLocation
     !superClassThatImplementsMethod
     ![mMethodName string]
-    !isCategory
+    !kind
     !actualParameterListForGeneration
     !hasCompilerArgument
   ] ;
@@ -779,8 +779,8 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
   @string modifierErrorMessage ;
-  @bool isCategory ;
-  [[receiverType mModifierMap] searchKey !mModifierName ?isCategory ?routineSignature ?hasCompilerArgument ?* ?modifierErrorMessage] ;
+  @methodKind kind ;
+  [[receiverType mModifierMap] searchKey !mModifierName ?kind ?routineSignature ?hasCompilerArgument ?* ?modifierErrorMessage] ;
   if modifierErrorMessage != "" then
     error mModifierName : modifierErrorMessage ;
   end if ;
@@ -801,7 +801,7 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
     !mReceiverStructAttributes
     !receiverType
     !mModifierName
-    !isCategory
+    !kind
     !actualParameterListForGeneration
     !hasCompilerArgument
   ] ;
@@ -826,8 +826,8 @@ override method @thisModifierCallInstructionAST analyzeSemanticInstruction
 #--- Get modifier signature
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
-  @bool isCategory ;
-  [[selfTypeProxy mModifierMap] searchKey !mModifierName ?isCategory ?routineSignature ?hasCompilerArgument ?* ?*] ;
+  @methodKind kind ;
+  [[selfTypeProxy mModifierMap] searchKey !mModifierName ?kind ?routineSignature ?hasCompilerArgument ?* ?*] ;
 #--- Check effective parameters
   @actualParameterListForGeneration actualParameterListForGeneration ;
   analyzeRoutineArguments
@@ -844,7 +844,7 @@ override method @thisModifierCallInstructionAST analyzeSemanticInstruction
     !currentObjectCppPointer
     !selfTypeProxy
     !mModifierName
-    !isCategory
+    !kind
     !actualParameterListForGeneration
     !hasCompilerArgument
   ] ;
@@ -896,8 +896,8 @@ override method @superModifierCallInstructionAST analyzeSemanticInstruction
 #--- Get modifier signature
   @formalParameterSignature routineSignature ;
   @bool hasCompilerArgument ;
-  @bool isCategory ;
-  [[superTypeProxy mModifierMap] searchKey !mModifierName ?isCategory ?routineSignature ?hasCompilerArgument ?* ?*] ;
+  @methodKind kind ;
+  [[superTypeProxy mModifierMap] searchKey !mModifierName ?kind ?routineSignature ?hasCompilerArgument ?* ?*] ;
 #--- Check the modifier is actually implemented by the super class, or by one of its super classes
   const @string superClassThatImplementsModifier := checkModifierImplementationInSuperClasses [!mModifierName !superTypeProxy] ;
   if superClassThatImplementsModifier == "" then
@@ -919,6 +919,7 @@ override method @superModifierCallInstructionAST analyzeSemanticInstruction
     !superTypeProxy
     !superClassThatImplementsModifier
     !mModifierName
+    !kind
     !actualParameterListForGeneration
     !hasCompilerArgument
   ] ;
@@ -1195,7 +1196,7 @@ routine checkExpressionIsBoolean
         outExpression := [@readerCallExpressionForGeneration new
           !boolType
           !inErrorLocation
-          !mIsCategory
+          !mKind
           !inExpression
           ![@stringlist emptyList]
           !"bool"

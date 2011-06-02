@@ -29,7 +29,7 @@ routine enterInstanceMethodWithoutArgument
 :
   [!?ioInstanceMethodMap insertKey
     !inInstanceMethodName
-    !false # is not a category
+    ![@methodKind definedAsMember]
     ![@formalParameterSignature emptyList]
     ![inInstanceMethodName location]
     !inHasCompilerArgument
@@ -53,7 +53,7 @@ routine enterInstanceMethodWithInputArgument
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?ioInstanceMethodMap insertKey
     !inInstanceMethodName
-    !false # is not a category
+    ![@methodKind definedAsMember]
     !argList
     ![inInstanceMethodName location]
     !inHasCompilerArgument
@@ -77,7 +77,7 @@ routine enterInstanceMethodWithOutputArgument
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
   [!?ioInstanceMethodMap insertKey
     !inInstanceMethodName
-    !false # is not a category
+    ![@methodKind definedAsMember]
     !argList
     ![inInstanceMethodName location]
     !inHasCompilerArgument
@@ -102,7 +102,7 @@ override method @dataPredefinedTypeAST getInstanceMethodMap
   argList += !t ![@formalArgumentPassingModeAST argumentOut] ;
   [!?outInstanceMethodMap insertKey
     ![@lstring new !"writeToFileWhenDifferentContents" !here]
-    !false # is not a category
+    ![@methodKind definedAsMember]
     !argList
     !here
     !true
@@ -131,7 +131,7 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
   argList += !t ![@formalArgumentPassingModeAST argumentOut] ;
   [!?outInstanceMethodMap insertKey
     ![@lstring new !"writeToFileWhenDifferentContents" !here]
-    !false # is not a category
+    ![@methodKind definedAsMember]
     !argList
     !here
     !true
@@ -140,7 +140,7 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
   ] ;
   [!?outInstanceMethodMap insertKey
     ![@lstring new !"writeToExecutableFileWhenDifferentContents" !here]
-    !false # is not a category
+    ![@methodKind definedAsMember]
     !argList
     !here
     !true
