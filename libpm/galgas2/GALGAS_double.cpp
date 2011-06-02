@@ -50,7 +50,7 @@ mDoubleValue (inValue) {
 //---------------------------------------------------------------------------*
 
 GALGAS_double GALGAS_double::constructor_pi (UNUSED_LOCATION_ARGS) {
-  return GALGAS_double (M_PI) ;
+  return GALGAS_double (3.14159265358979323846) ;
 }
 
 //---------------------------------------------------------------------------*
