@@ -661,8 +661,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList CURRENT_ATTRIBUTE_LIST
     ?@typedAttributeList ALL_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
-    ?@abstractMethodDefinitionListForGeneration ABSTRACT_METHOD_LIST
-    ?@methodDefinitionListForGeneration CONCRETE_METHOD_LIST
   ;
 
   template classTypeHeader2part2 "GALGAS_class.h2-part2.gTemplate"
@@ -672,8 +670,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList CURRENT_ATTRIBUTE_LIST
     ?@typedAttributeList ALL_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
-    ?@abstractMethodDefinitionListForGeneration ABSTRACT_METHOD_LIST
-    ?@methodDefinitionListForGeneration CONCRETE_METHOD_LIST
   ;
 
   template classTypeSpecificImplementation "GALGAS_class.cpp.gTemplate"
@@ -684,9 +680,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList ALL_ATTRIBUTE_LIST
     ?@typedAttributeList INHERITED_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
-    ?@abstractMethodDefinitionListForGeneration ABSTRACT_METHOD_LIST
-    ?@methodDefinitionListForGeneration CONCRETE_METHOD_LIST
-    ?@instanceMethodMap INSTANCE_METHOD_MAP
   ;
 
 }
@@ -1291,8 +1284,6 @@ override reader @classTypeForGeneration appendDeclaration2
       !mTypedAttributeList
       !mAllTypedAttributeList
       !mIsAbstract
-      !mAbstractMethodList
-      !mMethodList
     ] ;
     const @string part2 := [filewrapper typeGenerationTemplate.classTypeHeader2part2
       ![mTypeProxy key]
@@ -1301,8 +1292,6 @@ override reader @classTypeForGeneration appendDeclaration2
       !mTypedAttributeList
       !mAllTypedAttributeList
       !mIsAbstract
-      !mAbstractMethodList
-      !mMethodList
     ] ;
     const @string headerFileName := "separateHeaderFor_" . [mTypeProxy identifierRepresentation] . ".h" ;
     [@string generateFile
@@ -1323,8 +1312,6 @@ override reader @classTypeForGeneration appendDeclaration2
       !mTypedAttributeList
       !mAllTypedAttributeList
       !mIsAbstract
-      !mAbstractMethodList
-      !mMethodList
     ] ;
     outHeader .= [filewrapper typeGenerationTemplate.classTypeHeader2part2
       ![mTypeProxy key]
@@ -1333,8 +1320,6 @@ override reader @classTypeForGeneration appendDeclaration2
       !mTypedAttributeList
       !mAllTypedAttributeList
       !mIsAbstract
-      !mAbstractMethodList
-      !mMethodList
     ] ;
   end if ;
  end reader ;
@@ -1463,9 +1448,6 @@ override reader @classTypeForGeneration appendSpecificImplementation ->@string o
     !mAllTypedAttributeList
     ![mAllTypedAttributeList subListWithRange !0 ![mAllTypedAttributeList length] - [mTypedAttributeList length]]
     !mIsAbstract
-    !mAbstractMethodList
-    !mMethodList
-    !mInstanceMethodMap
   ] ;
 end reader ;
 

@@ -1216,32 +1216,12 @@ class @mapProxyDeclarationAST extends @semanticDeclarationAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @abstractMethodDefinitionListAST {
-  @bool mIsOverriding ;
-  @lstring mMethodName ;
-  @formalParameterListAST mSignature ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @methodDefinitionListAST {
-  @bool mIsOverriding ;
-  @lstring mMethodName ;
-  @formalParameterListAST mSignature ;
-  @semanticInstructionListAST mInstructionList ;
-  @location mEndOfMethodLocation ;
-}
-
-#---------------------------------------------------------------------------*
-
 class @classDeclarationAST extends @semanticDeclarationAST {
   @bool mIsAbstract ;
   @lstring mClassTypeName ;
   @lstring mSuperClassName ; # Empty if no super class
   @lstringlist mClassFeatureList ;
   @attributeInCollectionListAST mAttributeList ;
-  @abstractMethodDefinitionListAST mAbstractMethodList ;
-  @methodDefinitionListAST mMethodList ;
 }
 
 #---------------------------------------------------------------------------*

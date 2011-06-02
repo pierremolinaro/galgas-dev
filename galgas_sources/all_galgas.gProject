@@ -121,18 +121,18 @@ project all_galgas -> "galgas" :
   grammar   "programSLRgrammar.gGrammar" ;
   semantics "programComponentCompilation.gSemantics" ;
 
+#--- Main program
+  program "galgas_prgm.gProgram" ;
+
 #--- Project component
-  semantics "projectGlobalCheckings.gSemantics" ;
-  semantics "libpmHandling.gSemantics" ;
   semantics "targetGeneration.gSemantics" ;
   semantics "projectMetamodel.gSemantics" ;
   semantics "baseForXcodeProjectGeneration.gSemantics" ;
   semantics "XcodeProjectGeneration.gSemantics" ;
   syntax    "projectModelBuilder.gSyntax" ;
   grammar   "projectLL1grammar.gGrammar" ;
-
-#--- Main program
-  program "galgas_prgm.gProgram" ;
+  semantics "projectGlobalCheckings.gSemantics" ;
+  semantics "libpmHandling.gSemantics" ;
 
 #--- Hand coded sources
   extern "cDecisionTableElement.cpp" ;

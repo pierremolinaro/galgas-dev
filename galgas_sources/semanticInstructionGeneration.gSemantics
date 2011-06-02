@@ -481,11 +481,12 @@ override method @methodCallInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
-  if mIsCategory then
+  switch mKind
+  when definedAsCategory :
     ioGeneratedCode .= "callCategoryMethod_" . [mMethodName identifierRepresentation] . " ((const cPtr_" . [[mReceiverExpression mType] identifierRepresentation] . " *) " . receiverVar . ".ptr (), " ;
-  else
+  when definedAsMember :
     ioGeneratedCode .= receiverVar . ".method_" . [mMethodName identifierRepresentation] . " (" ;
-  end if ;
+  end switch ;
   foreach parameterCppNameList
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;
@@ -534,11 +535,12 @@ override method @selfMethodCallInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
-  if mIsCategory then
+  switch mKind
+  when definedAsCategory :
     ioGeneratedCode .= "callCategoryMethod_" . [mMethodName identifierRepresentation] . " (" . mCurrentObjectCppPointer . ", " ;
-  else
+  when definedAsMember :
     ioGeneratedCode .= mCurrentObjectCppPointer . "->method_" . [mMethodName identifierRepresentation] . " (" ;
-  end if ;
+  end switch ;
   foreach parameterCppNameList
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;
@@ -674,11 +676,12 @@ override method @modifierCallInstructionForGeneration generateInstruction
   end foreach ;
 #--- Generate method call
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName] ;
-  if mIsCategory then
+  switch mKind
+  when definedAsCategory :
     ioGeneratedCode .= "callCategoryModifier_" . [mModifierName identifierRepresentation] . " ((cPtr_" . [mReceiverType identifierRepresentation] . " *) " . receiverCppName . ".ptr (), " ;
-  else
+  when definedAsMember :
     ioGeneratedCode .= receiverCppName . ".modifier_" . [[mModifierName string] identifierRepresentation] . " (" ;
-  end if ;
+  end switch ;
   foreach parameterCppNameList
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;
@@ -723,11 +726,12 @@ override method @selfModifierCallInstructionForGeneration generateInstruction
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate modifier call
-  if mIsCategory then
+  switch mKind
+  when definedAsCategory :
     ioGeneratedCode .= "callCategoryModifier_" . [mModifierName identifierRepresentation] . " (" . mCurrentObjectCppPointer . ", " ;
-  else
+  when definedAsMember :
     ioGeneratedCode .= mCurrentObjectCppPointer . "->modifier_" . [mModifierName identifierRepresentation] . " (" ;
-  end if ;
+  end switch ;
   foreach parameterCppNameList
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;

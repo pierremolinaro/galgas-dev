@@ -108,15 +108,15 @@ SOURCES += programMetamodel.cpp
 SOURCES += programModelBuilder.cpp
 SOURCES += programSLRgrammar.cpp
 SOURCES += programComponentCompilation.cpp
-SOURCES += projectGlobalCheckings.cpp
-SOURCES += libpmHandling.cpp
+SOURCES += galgas_prgm.cpp
 SOURCES += targetGeneration.cpp
 SOURCES += projectMetamodel.cpp
 SOURCES += baseForXcodeProjectGeneration.cpp
 SOURCES += XcodeProjectGeneration.cpp
 SOURCES += projectModelBuilder.cpp
 SOURCES += projectLL1grammar.cpp
-SOURCES += galgas_prgm.cpp
+SOURCES += projectGlobalCheckings.cpp
+SOURCES += libpmHandling.cpp
 
 
 #---------------------------------------------------------------*

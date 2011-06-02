@@ -254,13 +254,14 @@ override method @thisReaderCallExpressionForGeneration generateExpression
     readerArgumentCppNameList += !argumentCppName ;
   end foreach ;
 #--- Generate Reader call
-  if mIsCategory then
+  switch mKind
+  when definedAsCategory :
     [!?ioUnusedVariableCppNameSet removeKey !selfMarkName []] ;
     outCppExpression := "callCategoryReader_" . [mReaderName identifierRepresentation]
        . " (" . mCurrentObjectCppPointer . ", " ;
-  else
+  when definedAsMember :
     outCppExpression :=  "reader_" . [mReaderName identifierRepresentation] . " (" ;
-  end if ;
+  end switch ;
   foreach readerArgumentCppNameList
     do outCppExpression .= mValue ;
     between outCppExpression .= ", " ;
@@ -298,16 +299,17 @@ override method @readerCallExpressionForGeneration generateExpression
     readerArgumentCppNameList += !argumentCppName ;
   end foreach ;
 #--- Generate Reader call
-  if mIsCategory then
+  switch mKind
+  when definedAsCategory :
     outCppExpression := "callCategoryReader_" . [mReaderName identifierRepresentation]
        . " ((const cPtr_" . [[mReceiverExpression mType] identifierRepresentation] . " *) " . receiverCppName . ".ptr (), " ;
-  else
+  when definedAsMember :
     outCppExpression := receiverCppName ;
     foreach mFieldList do
       outCppExpression .= ".mAttribute_" . [mValue identifierRepresentation] ;
     end foreach ;
     outCppExpression .=  ".reader_" . [mReaderName identifierRepresentation] . " (" ;
-  end if ;
+  end switch ;
   foreach readerArgumentCppNameList
     do outCppExpression .= mValue ;
     between outCppExpression .= ", " ;
