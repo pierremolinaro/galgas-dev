@@ -1,9 +1,9 @@
 %!TEX encoding = UTF-8 Unicode
 %!TEX root = ../galgas-book.tex
 
-\definitionSectionType{@uint64}
+\sectionTypePredefiniLabelIndex{uint64}
 
-An \nomType{@uint64} object value is a 64-bit unsigned integer value. You can initialize an \nomType{@uint64} object from a 64-bit unsigned integer constant:\\
+An \nomType{uint64} object value is a 64-bit unsigned integer value. You can initialize an \nomType{uint64} object from a 64-bit unsigned integer constant:\\
 
 \texttt{@uint64 myUnsignedInteger := 123\_456L ;}\newline
 
@@ -15,7 +15,7 @@ Note the 'L' suffix is required for a 64-bit unsigned integer constant.
 {@uint64}
 {1.3.0}
 {@uint64}
-{Returns an \nomType{@uint64} object that the maximum value of the 64-bit unsigned range.}
+{Returns an \nomType{uint64} object that the maximum value of the 64-bit unsigned range.}
 {The returned value is $2^{64}-1$.}
 
 
@@ -24,7 +24,7 @@ Note the 'L' suffix is required for a 64-bit unsigned integer constant.
 {1.6.4}
 {@uint64}
 {@string inBitString}
-{Returns an \nomType{@uint64} object computed from a string containing '0', '1' or 'X' characters, replacing all occurrences of 'X' by '0'.}
+{Returns an \nomType{uint64} object computed from a string containing '0', '1' or 'X' characters, replacing all occurrences of 'X' by '0'.}
 {the inBitString argument should contain only '0', '1' or 'X' characters. A run time exception is raised if an other character appears.
 
 This constructor considers the \emph{inBitString} argument value as a binary encoding of an integer value. First, it internally replaces all 'X's by '0's, and then converts the resulting string into an integer value that is the one returned by this constructor.
@@ -46,7 +46,7 @@ Note that the first character of the \emph{inBitString} argument value correspon
 {1.6.4}
 {@uint64}
 {@string inBitString}
-{Returns an \nomType{@uint64} object computed from a string containing '0', '1' or 'X' characters, replacing all occurrences of '0' by '1' and all occurrences of 'X' by '0'.}
+{Returns an \nomType{uint64} object computed from a string containing '0', '1' or 'X' characters, replacing all occurrences of '0' by '1' and all occurrences of 'X' by '0'.}
 {the \emph{inBitString} argument should contain only '0', '1' and 'X' characters. A run time exception is raised if an other character appears.
 
 This constructor considers the \emph{inBitString} argument value as a binary encoding of an integer value. First, it internally replaces all '0's by '1's and all 'X's by '0's, and then converts the resulting string into an integer value that is the one returned by this constructor.
@@ -65,10 +65,10 @@ Note that the first '0' or '1' character of the \emph{inBitString} argument valu
 {1.6.4}
 {@uint64}
 {@string inBitString}
-{Returns an \nomType{@uint64} object computed from a string containing '0' or '1' characters.}
+{Returns an \nomType{uint64} object computed from a string containing '0' or '1' characters.}
 {the \emph{inBitString} argument should contain only '0' and '1' characters. A run time exception is raised if an other character appears.
 
-This constructor considers the \emph{inBitString} argument value as a binary encoding of an integer value. It returns an \nomType{@uint64} object containing the converted value.
+This constructor considers the \emph{inBitString} argument value as a binary encoding of an integer value. It returns an \nomType{uint64} object containing the converted value.
 
 Note that the first '1' character of the \emph{inBitString} argument value corresponds to the most significant bit of the converted value.}
 
@@ -84,8 +84,8 @@ Note that the first '1' character of the \emph{inBitString} argument value corre
 {@uint64}
 {1.9.8}
 {@double}
-{Returns the receiver's value converted in a \nomType{@double} object.}
-{as a 64-bit integer value can always be converted in a \nomType{@double} value, this reader never fails.}
+{Returns the receiver's value converted in a \nomType{double} object.}
+{as a 64-bit integer value can always be converted in a \nomType{double} value, this reader never fails.}
 
 
 
@@ -94,7 +94,7 @@ Note that the first '1' character of the \emph{inBitString} argument value corre
 {1.5.2}
 {@string}
 {Returns the an hexadecimal string representation of the receiver value, prefixed by the string "0x".}
-{for getting an hexadecimal representation string without "0x" prefix, see \lienReader{@uint64}{xString}.}
+{for getting an hexadecimal representation string without "0x" prefix, see \refReaderPage{uint64}{xString}.}
 
 
 
@@ -104,10 +104,10 @@ Note that the first '1' character of the \emph{inBitString} argument value corre
 {@uint64}
 {1.6.12}
 {@sint}
-{Returns the receiver's value in an \lienSectionType{@sint} (32-bit signed integer) object.}
+{Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object.}
 {an error is raised is receiver's value is greater than $2^{31}-1$.}
 
-This reader is the only way to convert an \lienSectionType{@uint64} object into an \lienSectionType{@sint} object.
+This reader is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{sint} object.
 
 
 
@@ -116,10 +116,10 @@ This reader is the only way to convert an \lienSectionType{@uint64} object into 
 {@uint64}
 {1.6.12}
 {@sint64}
-{Returns the receiver's value in an \lienSectionType{@sint64} (64-bit signed integer) object.}
+{Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object.}
 {an error is raised is receiver's value is greater than $2^{63}-1$.}
 
-This reader is the only way to convert an \lienSectionType{@uint64} object into an \lienSectionType{@sint64} object.
+This reader is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{sint64} object.
 
 
 \readerSansArgument{string}
@@ -127,7 +127,7 @@ This reader is the only way to convert an \lienSectionType{@uint64} object into 
 {1.6.12}
 {@string}
 {Returns a decimal string representation of the receiver's value.}
-{for an hexadecimal string representation of the receiver's value, see \lienReader{@uint64}{hexString} and \lienReader{@uint64}{xString}.}
+{for an hexadecimal string representation of the receiver's value, see \refReaderPage{uint64}{hexString} and \refReaderPage{uint64}{xString}.}
 
 
 
@@ -135,10 +135,10 @@ This reader is the only way to convert an \lienSectionType{@uint64} object into 
 {@uint64}
 {1.6.12}
 {@uint}
-{Returns the receiver's value in an \lienSectionType{@uint} (32-bit unsigned integer) object.}
+{Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object.}
 {an error is raised is receiver's value is greater than $2^{32}-1$.}
 
-This reader is the only way to convert an \lienSectionType{@uint64} object into an \lienSectionType{@uint} object.
+This reader is the only way to convert an \refTypePredefini{uint64} object into an \refTypePredefini{uint} object.
 
 
 \readerDeuxArguments{uintSlice}
@@ -147,10 +147,10 @@ This reader is the only way to convert an \lienSectionType{@uint64} object into 
 {@uint}
 {@uint inStartBit}
 {@uint inBitCount}
-{Returns an \lienSectionType{@uint} value, extracted from a bit slice of the receiver's value.}
+{Returns an \refTypePredefini{uint} value, extracted from a bit slice of the receiver's value.}
 {the receiver's value is right shifted by \emph{inStartBit}, and the resulted value is and'ed with a mask equal to $2^{inBitCount}-1$.}
 
-This reader is the only way to convert an \lienSectionType{@uint} object into an \lienSectionType{@uint64} object.
+This reader is the only way to convert an \refTypePredefini{uint} object into an \refTypePredefini{uint64} object.
 
 
 \exempleDeuxLignes
@@ -161,12 +161,19 @@ This reader is the only way to convert an \lienSectionType{@uint} object into an
 
 
 
+%\defReaderSansArgument{xString}{uint64}
+%{1.9.10}
+%{string}
+%{Returns an hexadecimal string representation of the receiver's value (without any prefix).}
+%{for an decimal string representation of the receiver's value, see the \refReaderPage{uint64}{hexString}; for a decimal string representation of the receiver's value, see the \refReaderPage{uint64}{string}.}
+%{}{}
+
 \readerSansArgument{xString}
 {@uint64}
 {1.9.10}
 {@string}
 {Returns an hexadecimal string representation of the receiver's value (without any prefix).}
-{for an decimal string representation of the receiver's value, see the \lienReader{@uint64}{hexString}; for a decimal string representation of the receiver's value, see the \lienReader{@uint64}{string}.}
+{for an decimal string representation of the receiver's value, see the \refReaderPage{uint64}{hexString}; for a decimal string representation of the receiver's value, see the \refReaderPage{uint64}{string}.}
 
 
 
@@ -175,7 +182,7 @@ This reader is the only way to convert an \lienSectionType{@uint} object into an
 
 \subsection{Incrementation and decrementation}
 
-The \lienSectionType{@uint64} supports incrementation and decrementation instructions.
+The \refTypePredefini{uint64} supports incrementation and decrementation instructions.
 
 \texttt{@uint64 n := ... ; n ++ ; \# Incrementation}
 
@@ -192,7 +199,7 @@ Note that incrementation and decrementation are not available within an expressi
 
 \subsection{Arithmetic Operators}
 
-The \nomType{@uint64} type supports the five arithmetic diadic operators:\newline
+The \nomType{uint64} type supports the five arithmetic diadic operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -208,11 +215,11 @@ $\%$ & Modulo \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{@uint64} objects.\newline
+Theses operators require both arguments to be \nomType{uint64} objects.\newline
 
 A run-time error is raised if the operation leads to a 64-bit unsigned overflow.
 
-The \nomType{@uint64} type supports the following arithmetic unary operator:\newline
+The \nomType{uint64} type supports the following arithmetic unary operator:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -220,7 +227,7 @@ $+$ & No operation \\
 \hline
 \end{tabular}
 
-This operator returns the receiver's value (an  \nomType{@uint64} object).
+This operator returns the receiver's value (an  \nomType{uint64} object).
 
 
 
@@ -228,7 +235,7 @@ This operator returns the receiver's value (an  \nomType{@uint64} object).
 \subsection{Shift Operators}
 
 
-The \nomType{@uint} type supports right and left shift operators:\newline
+The \nomType{uint} type supports right and left shift operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -238,7 +245,7 @@ $>>$ & Right shift \\
 \hline
 \end{tabular}
 
-Theses operators require the left argument to be \nomType{@uint64} object, and  the right argument to be \nomType{@uint} object.\newline
+Theses operators require the left argument to be \nomType{uint64} object, and  the right argument to be \nomType{uint} object.\newline
 
 Note the right shift inserts always a zero bit in the most significant bit location (it is a logical right shift).\newline
 
@@ -249,7 +256,7 @@ The actual amount of the shift is the value of the right-hand operand masked by 
 
 \subsection{Logical Operators}
 
-The \nomType{@uint64} type supports the three bit-wise logical diadic operators:
+The \nomType{uint64} type supports the three bit-wise logical diadic operators:
 
 \begin{tabular}{|c|c|}
 \hline
@@ -261,10 +268,10 @@ $\&$ & Bit-wise and \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{@uint64} objects.\newline
+Theses operators require both arguments to be \nomType{uint64} objects.\newline
 
 
-The \nomType{@uint64} type supports the bit-wise logical unary operator:
+The \nomType{uint64} type supports the bit-wise logical unary operator:
 
 \begin{tabular}{|c|c|}
   \hline
@@ -272,14 +279,14 @@ The \nomType{@uint64} type supports the bit-wise logical unary operator:
   \hline
 \end{tabular}
 
-This operator returns an \nomType{@uint64} object.
+This operator returns an \nomType{uint64} object.
 
 
 
 
 \subsection{Comparison Operators}
 
-The \nomType{@uint64} type supports the six comparison operators:
+The \nomType{uint64} type supports the six comparison operators:
 
 \begin{tabular}{|c|c|}
 \hline
@@ -297,4 +304,4 @@ $>=$  & Greater or Equal \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{@uint64} objects, and return a \nomType{@bool} object.
+Theses operators require both arguments to be \nomType{uint64} objects, and return a \nomType{bool} object.

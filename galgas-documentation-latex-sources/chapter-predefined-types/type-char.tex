@@ -1,9 +1,9 @@
 %!TEX encoding = UTF-8 Unicode
 %!TEX root = ../galgas-book.tex
 
-\definitionSectionType{@char}
+\sectionTypePredefiniLabelIndex{char}
 
-An \nomType{@char} object value is an Unicode character. You can initialize an \nomType{@char} object from a character constant:\\
+An \nomType{char} object value is an Unicode character. You can initialize an \nomType{char} object from a character constant:\\
 
 \texttt{@char myCharacter := \textquotesingle  A\textquotesingle ;}
 
@@ -90,7 +90,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {@char}
 {1.8.3}
 {@char}
-{Returns an \nomType{@char} object corresponding to Unicode replacement character (\texttt{\textquotesingle\textbackslash uFFFD}.}
+{Returns an \nomType{char} object corresponding to Unicode replacement character (\texttt{\textquotesingle\textbackslash uFFFD}.}
 {}
 
 
@@ -104,8 +104,8 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {1.8.3}
 {@char}
 {@uint inValue}
-{Returns an \nomType{@char} object from an Unicode code point.}
-{A run-time error is raised if the \emph{inValue} value does not represent an assigned Unicode value. You can check if an \nomType{@uint} value represents an assigned Unicode value with the \lienReader{@uint}{isUnicodeValueAssigned}.}
+{Returns an \nomType{char} object from an Unicode code point.}
+{A run-time error is raised if the \emph{inValue} value does not represent an assigned Unicode value. You can check if an \nomType{uint} value represents an assigned Unicode value with the \refReaderPage{uint}{isUnicodeValueAssigned}.}
 
 
 
@@ -114,7 +114,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {@char}
 {1.7.2}
 {@bool}
-{Returns an \nomType{@bool} value indicating whether the receiver'value represents an ASCII letter or an ASCII digit.}
+{Returns an \nomType{bool} value indicating whether the receiver'value represents an ASCII letter or an ASCII digit.}
 {returns \motCle{true} if the receiver'value represents an ASCII letter or an ASCII digit (between \texttt{\textquotesingle A\textquotesingle} and \texttt{\textquotesingle Z\textquotesingle}, or between \texttt{\textquotesingle a\textquotesingle} and \texttt{\textquotesingle z\textquotesingle}, or between \texttt{\textquotesingle 0\textquotesingle} and \texttt{\textquotesingle 9\textquotesingle}), and \motCle{false} otherwise.}
 
 
@@ -124,7 +124,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {@char}
 {1.7.2}
 {@bool}
-{Returns an \nomType{@bool} value indicating whether the receiver'value represents an ASCII letter.}
+{Returns an \nomType{bool} value indicating whether the receiver'value represents an ASCII letter.}
 {returns \motCle{true} if the receiver'value represents an ASCII letter (between \texttt{\textquotesingle A\textquotesingle} and \texttt{\textquotesingle Z\textquotesingle}, or between \texttt{\textquotesingle a\textquotesingle} and \texttt{\textquotesingle z\textquotesingle}), and \motCle{false} otherwise.}
 
 
@@ -134,7 +134,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {@char}
 {1.7.2}
 {@bool}
-{Returns an \nomType{@bool} value indicating whether the receiver'value represents an ASCII control character.}
+{Returns an \nomType{bool} value indicating whether the receiver'value represents an ASCII control character.}
 {returns \motCle{true} if the receiver'value represents an ASCII control character (strictly before the \emph{SPACE} character), and \motCle{false} otherwise.}
 
 
@@ -145,7 +145,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {@char}
 {1.7.2}
 {@bool}
-{Returns an \nomType{@bool} value indicating whether the receiver'value represents an ASCII digit.}
+{Returns an \nomType{bool} value indicating whether the receiver'value represents an ASCII digit.}
 {returns \motCle{true} if the receiver'value represents an ASCII digit (between \texttt{\textquotesingle 0\textquotesingle} and \texttt{\textquotesingle 9\textquotesingle}), and \motCle{false} otherwise.}
 
 
@@ -156,7 +156,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {@char}
 {1.7.2}
 {@bool}
-{Returns an \nomType{@bool} value indicating whether the receiver'value represents an ASCII lowercase ASCII letter.}
+{Returns an \nomType{bool} value indicating whether the receiver'value represents an ASCII lowercase ASCII letter.}
 {returns \motCle{true} if the receiver'value represents an ASCII lowercase letter (between \texttt{\textquotesingle a\textquotesingle} and \texttt{\textquotesingle z\textquotesingle}), and \motCle{false} otherwise.}
 
 
@@ -168,7 +168,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {@char}
 {1.8.3}
 {@bool}
-{Returns an \nomType{@bool} value indicating whether the receiver'value represents an Unicode command.}
+{Returns an \nomType{bool} value indicating whether the receiver'value represents an Unicode command.}
 {returns \motCle{true} if the receiver'value represents an Unicode command, and \motCle{false} otherwise.}
 
 
@@ -180,7 +180,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {@char}
 {1.8.3}
 {@bool}
-{Returns an \nomType{@bool} value indicating whether the receiver'value represents an Unicode letter.}
+{Returns an \nomType{bool} value indicating whether the receiver'value represents an Unicode letter.}
 {returns \motCle{true} if the receiver'value represents an Unicode letter, and \motCle{false} otherwise.}
 
 
@@ -192,7 +192,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {@char}
 {1.8.3}
 {@bool}
-{Returns an \nomType{@bool} value indicating whether the receiver'value represents an Unicode mark character.}
+{Returns an \nomType{bool} value indicating whether the receiver'value represents an Unicode mark character.}
 {returns \motCle{true} if the receiver'value represents an Unicode mark character, and \motCle{false} otherwise.}
 
 
@@ -204,7 +204,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {@char}
 {1.8.3}
 {@bool}
-{Returns an \nomType{@bool} value indicating whether the receiver'value represents an Unicode punctuation character.}
+{Returns an \nomType{bool} value indicating whether the receiver'value represents an Unicode punctuation character.}
 {returns \motCle{true} if the receiver'value represents an Unicode punctuation character, and \motCle{false} otherwise.}
 
 
@@ -216,7 +216,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {@char}
 {1.8.3}
 {@bool}
-{Returns an \nomType{@bool} value indicating whether the receiver'value represents an Unicode separator character.}
+{Returns an \nomType{bool} value indicating whether the receiver'value represents an Unicode separator character.}
 {returns \motCle{true} if the receiver'value represents an Unicode separator character, and \motCle{false} otherwise.}
 
 
@@ -228,7 +228,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {@char}
 {1.8.3}
 {@bool}
-{Returns an \nomType{@bool} value indicating whether the receiver'value represents an Unicode symbol character.}
+{Returns an \nomType{bool} value indicating whether the receiver'value represents an Unicode symbol character.}
 {returns \motCle{true} if the receiver'value represents an Unicode symbol character, and \motCle{false} otherwise.}
 
 
@@ -243,7 +243,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {@char}
 {1.7.2}
 {@bool}
-{Returns an \nomType{@bool} value indicating whether the receiver'value represents an ASCII uppercase ASCII letter.}
+{Returns an \nomType{bool} value indicating whether the receiver'value represents an ASCII uppercase ASCII letter.}
 {returns \motCle{true} if the receiver'value represents an ASCII uppercase letter (between \texttt{\textquotesingle A\textquotesingle} and \texttt{\textquotesingle Z\textquotesingle}), and \motCle{false} otherwise.}
 
 
@@ -255,7 +255,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {1.5.5}
 {@string}
 {Returns returns a string representation of the receiver's value.}
-{returns a one character \nomType{@string} object, containing the receiver's value.}
+{returns a one character \nomType{string} object, containing the receiver's value.}
 
 
 
@@ -264,7 +264,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {@char}
 {1.7.7}
 {@uint64}
-{Returns an \nomType{@uint} object representing the Unicode code point of the receiver's value.}
+{Returns an \nomType{uint} object representing the Unicode code point of the receiver's value.}
 {}
 
 
@@ -275,7 +275,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {1.8.3}
 {@string}
 {Returns the unicode name of the receiver's value.}
-{for an decimal string representation of the receiver's value, see the \lienReader{@uint}{hexString}; for a decimal string representation of the receiver's value, see the \lienReader{@uint}{string}.}
+{for an decimal string representation of the receiver's value, see the \refReaderPage{uint}{hexString}; for a decimal string representation of the receiver's value, see the \refReaderPage{uint}{string}.}
 
 \exempleUneLigne
 {}
@@ -317,7 +317,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 
 \subsection{Comparison Operators}
 
-The \nomType{@char} type supports the six comparison operators:\newline
+The \nomType{char} type supports the six comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -335,6 +335,6 @@ $>=$  & Greater or Equal \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{@char} objects, and return a \nomType{@bool} object. Comparison is done by comparing of the Unicode code point's value.
+Theses operators require both arguments to be \nomType{char} objects, and return a \nomType{bool} object. Comparison is done by comparing of the Unicode code point's value.
 
 

@@ -544,6 +544,7 @@ class @foreachInstructionAST extends @semanticInstructionAST {
   @foreachInstructionEnumeratedObjectListAST mEnumeratedObjectList ;
   @lstring mIndexVariableName ;
   @semanticExpressionAST mWhileExpression ;
+  @location mEndOf_while_expression ;
   @semanticInstructionListAST mBeforeInstructionList ;
   @location mEndOf_before_branch ;
   @semanticInstructionListAST mBetweenInstructionList ;

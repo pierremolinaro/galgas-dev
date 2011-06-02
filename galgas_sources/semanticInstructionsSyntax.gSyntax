@@ -505,6 +505,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     $while$ ;
     <expression> ? mWhileExpression ;
   end select ;
+  const @location endof_while_expression := here ;
   @semanticInstructionListAST mBeforeInstructionList ;
   select
     mBeforeInstructionList := [@semanticInstructionListAST emptyList] ;
@@ -542,6 +543,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
     !mEnumeratedObjectList
     !mIndexVariableName
     !mWhileExpression
+    !endof_while_expression
     !mBeforeInstructionList
     !endof_before_branch
     !mBetweenInstructionList

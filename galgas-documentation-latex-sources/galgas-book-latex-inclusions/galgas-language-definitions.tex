@@ -1,11 +1,92 @@
 %!TEX encoding = UTF-8 Unicode
 %!TEX root = ../galgas-book.tex
 
-%---------------------------------------------------------------------*
-%                                                                     *
-% This file is included in galgas-book.tex file                       *
-%                                                                     *
-%---------------------------------------------------------------------*
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   P A R T I C U L A R I S A T I O N   D U    P A Q U E T A G E    « L I S T I N G S »                                 *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\lstdefinelanguage{galgas}{
+%  keywordsprefix=\@,
+  morekeywords=[2]{abstract, after, before, between, block, cast, class, const, default, do, drop, else, elsif, end, enum,
+    error, extends, extern, extract, false, feature, filewrapper, foreach, function, grammar, graph, gui, here, if,
+    import, in, index, indexing, insert, label, lexique, list, listmap, local, log, loop, map, mapproxy, match,
+    message, method, mod, modifier, nonterminal, not, on, once, operator, option, or, override, parse, pragma,
+    prefixedby, project, program, reader, remove, replace, repeat, rewind, root, routine, rule, search, select,
+    self, selfcopy, semantics, send, sortedlist, state, struct, style, super, switch, syntax, tag, template,
+    then, true, uniquemap, unused, warning, when, while, with
+  },
+  comment=[l]\#,
+  string=[b]", string=[d]",
+  style=galgas
+}
+
+\newcommand{\bcolor}[2]{\textbf{\color{#1}#2}}
+
+\ifthenelse{\equal{\sortieEnCouleur}{true}}{
+  \lstdefinestyle{galgas}{
+    basicstyle=\normalsize,
+    frame=l,
+    keywordstyle=\color{red}\textbf,
+    keywordstyle=[2]\color{blue}\textbf,
+    backgroundcolor=\color{yellow!50},
+    identifierstyle=\color{brown},
+    commentstyle=\color{red},
+    stringstyle=\color{gray}
+%    emphstyle=\color{green},
+%    emph={@string,@uint}
+  }
+}{
+  \lstdefinestyle{galgas}{
+    basicstyle=\normalsize,
+    frame=l,
+    keywordstyle=\textbf
+  }
+}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+% A F F I C H A G E    E T    C R O S S   R É F É R E N C E    D E S    T Y P E S    P R É D É F I N I S   G A L G A S  *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+%--- Les deux macros suivantes définissent une section et une sous-section :
+%      - en formattant le titre
+%      - en définissant un label pour cross référence ;
+%      - en définissant une entrée dans l'index
+
+% Exemple d'appel : \sectionTypePredefiniLabelIndex{bool}
+
+\newcommand \sectionTypePredefiniLabelIndex[1] {\section{The \texttt{@#1} Type}\label{type:#1}\index{Type!"@#1}}
+
+\newcommand \subsectionTypePredefiniLabelIndex[1] {\subsection{The \texttt{@#1} Type}\label{type:#1}\index{Type!"@#1}}
+
+
+
+
+%--- Cette macro établit un hyperlien vers un type prédéfini
+% Exemple d'appel : \refTypePredefini{bool} -- affiche --> @bool type (page xx)
+
+\newcommand \refTypePredefini[1] {\hyperref[type:#1]{@#1 type (page \pageref{type:#1})}}
+
+
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%                         A F F I C H A G E    D ' U N    T Y P E    G A L G A S                                        *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+%--- Cette macro affiche simplement le nom du type GALGAS, sans établir de lien
+% Exemple d'appel : \nomType{bool} -- affiche --> @bool type
+\ifthenelse{\equal{\sortieEnCouleur}{true}}{
+  \newcommand\nomType[1]{{\color{brown}@#1} type}
+}{
+  \newcommand\nomType[1]{@#1 type}
+}
+
+
 
 %--- Couleur de fond des définitions
 \ifthenelse{\equal{\sortieEnCouleur}{true}}{
@@ -19,23 +100,11 @@
 %--- Mot clef
 \newcommand \motCle[1] {\texttt{\textbf{#1}}}
 
-%---------------------------------------------------------------------*
-
-%--- Nom de type
-\newcommand \nomType[1] {\texttt{#1}}
-
-%---------------------------------------------------------------------*
-% Section pour la définition des types
-
-\newcommand \definitionSectionType[1] {\section{The \nomType{#1} Type}\label{#1}}
-
-\newcommand \lienSectionType[1] {\hyperref[#1]{#1 type (page \pageref{#1})}}
-
-
-%--- chaine de caracteres 
-\newcommand \literalString[1] {\texttt{"#1"}}
-
-%---------------------------------------------------------------------*
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%                         D É F I N I T I O N   D ' U N   R E A D E R   S A N S   A R G U M E N T                       *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
 
 %--- Définition d'un reader sans argument
 % Exemple d'appel :
@@ -46,14 +115,16 @@
 % {Returns the line of the receiver's value.} % Description
 % {this reader raises a run-time error if ...} % Discussion
 
-\newcommand \readerSansArgument[6] {
-  \subsection{\texttt{#1} Reader}\label{reader #2 #1}\index{#1!"#2 reader}
+%http://compgroups.net/comp.text.tex/Robust-definition-of-a-new-command
+
+\newcommand\readerSansArgument[6] {
+  \subsection{\texttt{#1} Reader}\label{reader:#2:#1}\index{#1!"#2 reader}
   #5
   \newline
   \newline
   \colorbox{\couleurFondAPI}{
     \begin{tabular}{l}
-    \texttt{\textbf{reader} \nomType{#2} #1 -> #4 ;}
+    \texttt{\textbf{reader} #2 #1 -> #4 ;}
     \end{tabular}
   }
   \newline
@@ -68,9 +139,14 @@
   \newline
 }
 
-%---------------------------------------------------------------------*
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%                                     R É F É R E N C E   À   U N   R E A D E R                                         *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
 
-\newcommand \lienReader[2] {\hyperref[reader #1 #2]{#2 reader (page \pageref{reader #1 #2})}}
+% Exemple d'appel : \refReaderPage{bool}{string} -- affiche --> @bool string reader (page xx)
+\newcommand \refReaderPage[2] {\hyperref[reader:#1:#2]{@#1 #2 reader (page \pageref{reader:#1:#2})}}
 
 %---------------------------------------------------------------------*
 
@@ -89,13 +165,13 @@
   \newline
   \newline
   %\begin{lstlisting}[language=galgas]
-%  reader \nomType{#2} #1
+%  reader #2 #1
  %   ?#5
  %   -> #4 ;
   %\end{lstlisting}
   \colorbox{\couleurFondAPI}{
     \begin{tabular}{l}
-      \texttt{\textbf{reader} \nomType{#2} #1}\\
+      \texttt{\textbf{reader} #2 #1}\\
       \texttt{\ \ ?#5}\\
       \texttt{\ \ -> #4 ;}
     \end{tabular}
@@ -130,7 +206,7 @@
   \newline
   \colorbox{\couleurFondAPI}{
     \begin{tabular}{l}
-    \texttt{\textbf{reader} \nomType{#2} #1}\\
+    \texttt{\textbf{reader} #2 #1}\\
     \texttt{\ \ ?#5}\\
     \texttt{\ \ ?#6}\\
     \texttt{\ \ -> #4 ;}
@@ -159,7 +235,7 @@
   \newline
   \colorbox{\couleurFondAPI}{
     \begin{tabular}{l}
-    \texttt{\emph{reader} \nomType{#2} #1}\\
+    \texttt{\emph{reader} #2 #1}\\
     \texttt{\ \ ?#5}\\
     \texttt{\ \ ?#6}\\
     \texttt{\ \ ?#7}\\
@@ -190,7 +266,7 @@
 % {@location} % Nom du type
 % {1.8.2} % Première version GALGAS qui implémente ce constructeur
 % {@uint} % Type renvoyé
-%{Returns an \nomType{@location} that does not points out any location.} % Description
+%{Returns an \nomType{location} that does not points out any location.} % Description
 %{The returned object responds \motCle{true} to the isNowhere reader.} % Discussion
 
 \newcommand \constructeurSansArgument[6] {
@@ -203,7 +279,7 @@
 %  \end{lstlisting}
   \colorbox{\couleurFondAPI}{
     \begin{tabular}{l}
-    \texttt{\textbf{constructor} \nomType{#2} #1 -> #4 ;}
+    \texttt{\textbf{constructor} #2 #1 -> #4 ;}
     \end{tabular}
   }
   \newline
@@ -229,7 +305,7 @@
   \newline
   \colorbox{\couleurFondAPI}{
     \begin{tabular}{l}
-    \texttt{\textbf{constructor} \nomType{#2} #1}\\
+    \texttt{\textbf{constructor} #2 #1}\\
     \texttt{\ \ ?#5}\\
     \texttt{\ \ -> #4 ;}
     \end{tabular}
@@ -257,7 +333,7 @@
   \newline
   \colorbox{\couleurFondAPI}{
     \begin{tabular}{l}
-    \texttt{\textbf{constructor} \nomType{#2} #1}\\
+    \texttt{\textbf{constructor} #2 #1}\\
     \texttt{\ \ ?#5}\\
     \texttt{\ \ ?#6}\\
     \texttt{\ \ -> #4 ;}
@@ -286,7 +362,7 @@
   \newline
   \colorbox{\couleurFondAPI}{
     \begin{tabular}{l}
-    \texttt{\textbf{constructor} \nomType{#2} #1}\\
+    \texttt{\textbf{constructor} #2 #1}\\
     \texttt{\ \ ?#5}\\
     \texttt{\ \ ?#6}\\
     \texttt{\ \ ?#7}\\
@@ -316,7 +392,7 @@
   \newline
   \colorbox{\couleurFondAPI}{
     \begin{tabular}{l}
-    \texttt{\textbf{modifier} \nomType{#2} #1}\\
+    \texttt{\textbf{modifier} #2 #1}\\
     \texttt{\ \ ?#4}\\
     \end{tabular}
   }
