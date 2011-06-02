@@ -1,9 +1,9 @@
 %!TEX encoding = UTF-8 Unicode
 %!TEX root = ../galgas-book.tex
 
-\definitionSectionType{@sint64}
+\sectionTypePredefiniLabelIndex{sint64}
 
-An \nomType{@sint64} object value is a 64-bit signed integer value. You can initialize an \nomType{@sint64} object from an 64-bit signed integer constant:\\
+An \nomType{sint64} object value is a 64-bit signed integer value. You can initialize an \nomType{sint64} object from an 64-bit signed integer constant:\\
 
 \texttt{@sint64 mySignedInteger := 123\_456LS ;}
 
@@ -16,7 +16,7 @@ Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
 {@sint64}
 {1.3.0}
 {@sint64}
-{Returns an \nomType{@sint64} object that the minimum value of the 64-bit signed range.}
+{Returns an \nomType{sint64} object that the minimum value of the 64-bit signed range.}
 {the returned value is $-2^{63}$.}
 
 
@@ -27,7 +27,7 @@ Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
 {@sint64}
 {1.3.0}
 {@sint64}
-{Returns an \nomType{@sint64} object that the maximum value of the 64-bit signed range.}
+{Returns an \nomType{sint64} object that the maximum value of the 64-bit signed range.}
 {the returned value is $2^{63}-1$.}
 
 
@@ -38,8 +38,8 @@ Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
 {@sint64}
 {1.9.8}
 {@double}
-{Returns the receiver's value converted in a \nomType{@double} object.}
-{as a 64-bit integer value can always be converted in a \nomType{@double} value, this reader never fails.}
+{Returns the receiver's value converted in a \nomType{double} object.}
+{as a 64-bit integer value can always be converted in a \nomType{double} value, this reader never fails.}
 
 
 
@@ -48,10 +48,10 @@ Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
 {@sint64}
 {1.3.0}
 {@sint}
-{Returns the receiver's value in an \lienSectionType{@sint} (32-bit signed integer) object.}
+{Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object.}
 {an error is raised is receiver's value is lower than $-2^{31}$ or greater than $2^{31}-1$.}
 
-This reader is the only way to convert an \lienSectionType{@sint64} object into an \lienSectionType{@sint} object.
+This reader is the only way to convert an \refTypePredefini{sint64} object into an \refTypePredefini{sint} object.
 
 
 
@@ -75,10 +75,10 @@ This reader is the only way to convert an \lienSectionType{@sint64} object into 
 {@sint64}
 {1.3.0}
 {@uint}
-{Returns the receiver's value in an \lienSectionType{@uint} (32-bit unsigned integer) object.}
+{Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object.}
 {an error is raised is receiver's value is negative or greater than $2^{32}-1$.}
 
-This reader is the only way to convert an \lienSectionType{@sint64} object into an \lienSectionType{@uint} object.
+This reader is the only way to convert an \refTypePredefini{sint64} object into an \refTypePredefini{uint} object.
 
 
 
@@ -88,10 +88,10 @@ This reader is the only way to convert an \lienSectionType{@sint64} object into 
 {@sint64}
 {1.3.0}
 {@uint64}
-{Returns the receiver's value in an \lienSectionType{@uint64} (64-bit unsigned integer) object.}
+{Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object.}
 {this reader raises a run-time error if the receiver's value is negative.}
 
-This reader is the only way to convert an \lienSectionType{@sint64} object into an \lienSectionType{@uint64} object.
+This reader is the only way to convert an \refTypePredefini{sint64} object into an \refTypePredefini{uint64} object.
 
 
 
@@ -101,7 +101,7 @@ This reader is the only way to convert an \lienSectionType{@sint64} object into 
 
 \subsection{Incrementation and decrementation}
 
-The \lienSectionType{@sint64} supports incrementation and decrementation instructions.
+The \refTypePredefini{sint64} supports incrementation and decrementation instructions.
 
 \texttt{@sint64 n := ... ; n ++ ; \# Incrementation}
 
@@ -118,7 +118,7 @@ Note that incrementation and decrementation are not available within an expressi
 
 \subsection{Arithmetic Operators}
 
-The \nomType{@sint64} type supports the five arithmetic diadic operators:\newline
+The \nomType{sint64} type supports the five arithmetic diadic operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -134,11 +134,11 @@ $\%$ & Modulo \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{@sint64} objects.\newline
+Theses operators require both arguments to be \nomType{sint64} objects.\newline
 
 A run-time error is raised if the operation leads to a 64-bit signed overflow.
 
-The \nomType{@sint} type supports the following arithmetic unary operators:\newline
+The \nomType{sint} type supports the following arithmetic unary operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -148,7 +148,7 @@ $-$ & Negate \\
 \hline
 \end{tabular}
 
-This operator returns the receiver's value (an \nomType{@sint} object). A run-time error is raised if "-" operator is invoked on an object whose value is $-2^{63}$.
+This operator returns the receiver's value (an \nomType{sint} object). A run-time error is raised if "-" operator is invoked on an object whose value is $-2^{63}$.
 
 
 
@@ -158,7 +158,7 @@ This operator returns the receiver's value (an \nomType{@sint} object). A run-ti
 \subsection{Shift Operators}
 
 
-The \nomType{@sint64} type supports right and left shift operators:\newline
+The \nomType{sint64} type supports right and left shift operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -168,7 +168,7 @@ $>>$ & Right shift \\
 \hline
 \end{tabular}
 
-Theses operators require the right argument to be \nomType{@sint64} object, and the left argument to be \nomType{@uint} object.\newline
+Theses operators require the right argument to be \nomType{sint64} object, and the left argument to be \nomType{uint} object.\newline
 
 Note the right shift inserts a zero bit in the most significant bit location if the receiver's value is negative, and a one bit otherwise (it is a arithmetic right shift).\newline
 
@@ -179,7 +179,7 @@ The actual amount of the shift is the value of the right-hand operand masked by 
 
 \subsection{Logical Operators}
 
-The \nomType{@sint64} type supports the three bit-wise logical operators:\newline
+The \nomType{sint64} type supports the three bit-wise logical operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -191,10 +191,10 @@ $\&$ & Bit-wise and \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{@sint64} objects.\newline
+Theses operators require both arguments to be \nomType{sint64} objects.\newline
 
 
-The \nomType{@sint64} type supports the bit-wise logical unary operator:\newline
+The \nomType{sint64} type supports the bit-wise logical unary operator:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -202,7 +202,7 @@ $\sim$ & Bit-wise complementation \\
 \hline
 \end{tabular}
 
-This operator returns an \nomType{@sint64} object.
+This operator returns an \nomType{sint64} object.
 
 
 
@@ -212,7 +212,7 @@ This operator returns an \nomType{@sint64} object.
 
 \subsection{Comparison Operators}
 
-The \nomType{@sint64} type supports the six comparison operators:\newline
+The \nomType{sint64} type supports the six comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -230,6 +230,6 @@ $>=$  & Greater or Equal \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{@sint64} objects, and return a \nomType{@bool} object.
+Theses operators require both arguments to be \nomType{sint64} objects, and return a \nomType{bool} object.
 
 

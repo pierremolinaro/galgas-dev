@@ -1,9 +1,9 @@
 %!TEX encoding = UTF-8 Unicode
 %!TEX root = ../galgas-book.tex
 
-\definitionSectionType{@binaryset}
+\sectionTypePredefiniLabelIndex{binaryset}
 
-The \nomType{@binaryset} type encodes sets, binary relations, boolean mathematical expressions. It is implemented with Binary Decision Diagrams (BDD).
+The \nomType{binaryset} type encodes sets, binary relations, boolean mathematical expressions. It is implemented with Binary Decision Diagrams (BDD).
 
 
 
@@ -13,7 +13,7 @@ The \nomType{@binaryset} type encodes sets, binary relations, boolean mathematic
 {1.6.0}
 {@binaryset}
 {@uint inBitIndex}
-{Returns an \nomType{@binaryset} object whose \emph{inBitIndex} bit is constraint to one.}
+{Returns an \nomType{binaryset} object whose \emph{inBitIndex} bit is constraint to one.}
 {}
 
 \exempleDeuxLignes
@@ -32,7 +32,7 @@ The \nomType{@binaryset} type encodes sets, binary relations, boolean mathematic
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint inRightFirstIndex}
-{Returns an \nomType{@binaryset} object that encodes a equality relation between two variables.}
+{Returns an \nomType{binaryset} object that encodes a equality relation between two variables.}
 {the constructor returns an binary set that encodes the \emph{a~==~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
 
 \exempleDeuxLignes
@@ -51,7 +51,7 @@ The \nomType{@binaryset} type encodes sets, binary relations, boolean mathematic
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint64 inConstant}
-{Returns an \nomType{@binaryset} object that encodes a equality relation between a variable and a constant.}
+{Returns an \nomType{binaryset} object that encodes a equality relation between a variable and a constant.}
 {the constructor returns an binary set that encodes the \emph{a~==~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
 
 \exempleDeuxLignes
@@ -70,7 +70,7 @@ The \nomType{@binaryset} type encodes sets, binary relations, boolean mathematic
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint inRightFirstIndex}
-{Returns an \nomType{@binaryset} object that encodes a greater or equal relation between two variables.}
+{Returns an \nomType{binaryset} object that encodes a greater or equal relation between two variables.}
 {the constructor returns an binary set that encodes the \emph{a~>=~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
 
 \exempleDeuxLignes
@@ -89,7 +89,7 @@ The \nomType{@binaryset} type encodes sets, binary relations, boolean mathematic
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint64 inConstant}
-{Returns an \nomType{@binaryset} object that encodes a greater or equal relation between a variable and a constant.}
+{Returns an \nomType{binaryset} object that encodes a greater or equal relation between a variable and a constant.}
 {the constructor returns an binary set that encodes the \emph{a~>=~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
 
 
@@ -103,7 +103,7 @@ The \nomType{@binaryset} type encodes sets, binary relations, boolean mathematic
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint inRightFirstIndex}
-{Returns an \nomType{@binaryset} object that encodes a lower or equal relation between two variables.}
+{Returns an \nomType{binaryset} object that encodes a lower or equal relation between two variables.}
 {the constructor returns an binary set that encodes the \emph{a~<=~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
 
 \exempleDeuxLignes
@@ -122,7 +122,7 @@ The \nomType{@binaryset} type encodes sets, binary relations, boolean mathematic
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint64 inConstant}
-{Returns an \nomType{@binaryset} object that encodes a lower or equal relation between a variable and a constant.}
+{Returns an \nomType{binaryset} object that encodes a lower or equal relation between a variable and a constant.}
 {the constructor returns an binary set that encodes the \emph{a~<=~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
 
 
@@ -136,7 +136,7 @@ The \nomType{@binaryset} type encodes sets, binary relations, boolean mathematic
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint inRightFirstIndex}
-{Returns an \nomType{@binaryset} object that encodes an inequality relation between two variables.}
+{Returns an \nomType{binaryset} object that encodes an inequality relation between two variables.}
 {the constructor returns an binary set that encodes the \emph{a~!=~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
 
 \exempleDeuxLignes
@@ -155,7 +155,7 @@ The \nomType{@binaryset} type encodes sets, binary relations, boolean mathematic
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint64 inConstant}
-{Returns an \nomType{@binaryset} object that encodes an inequality relation between a variable and a constant.}
+{Returns an \nomType{binaryset} object that encodes an inequality relation between a variable and a constant.}
 {the constructor returns an binary set that encodes the \emph{a~!=~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
 
 
@@ -169,8 +169,8 @@ The \nomType{@binaryset} type encodes sets, binary relations, boolean mathematic
 {1.6.0}
 {@binaryset}
 {@string inPredicateString}
-{Returns the \nomType{@binaryset} object described by the \emph{inPredicateString} argument.}
-{the \emph{inBitString} argument string encodes a predicate string, such as those returned by \lienReader{@binaryset}{predicateStringValue}.}
+{Returns the \nomType{binaryset} object described by the \emph{inPredicateString} argument.}
+{the \emph{inBitString} argument string encodes a predicate string, such as those returned by \refReaderPage{binaryset}{predicateStringValue}.}
 \begin{description}
 \item The \emph{inBitString} argument string characters should have one of the five following values:
 \begin{itemize}
@@ -224,7 +224,7 @@ The \nomType{@binaryset} type encodes sets, binary relations, boolean mathematic
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint inRightFirstIndex}
-{Returns an \nomType{@binaryset} object that encodes a strict greater than relation between two variables.}
+{Returns an \nomType{binaryset} object that encodes a strict greater than relation between two variables.}
 {the constructor returns an binary set that encodes the \emph{a~>~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
 
 \exempleDeuxLignes
@@ -243,7 +243,7 @@ The \nomType{@binaryset} type encodes sets, binary relations, boolean mathematic
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint64 inConstant}
-{Returns an \nomType{@binaryset} object that encodes a strict greater than relation between a variable and a constant.}
+{Returns an \nomType{binaryset} object that encodes a strict greater than relation between a variable and a constant.}
 {the constructor returns an binary set that encodes the \emph{a~>~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
 
 
@@ -257,7 +257,7 @@ The \nomType{@binaryset} type encodes sets, binary relations, boolean mathematic
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint inRightFirstIndex}
-{Returns an \nomType{@binaryset} object that encodes a strict lower than relation between two variables.}
+{Returns an \nomType{binaryset} object that encodes a strict lower than relation between two variables.}
 {the constructor returns an binary set that encodes the \emph{a~<~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
 
 \exempleDeuxLignes
@@ -276,7 +276,7 @@ The \nomType{@binaryset} type encodes sets, binary relations, boolean mathematic
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint64 inConstant}
-{Returns an \nomType{@binaryset} object that encodes a strict lower than relation between a variable and a constant.}
+{Returns an \nomType{binaryset} object that encodes a strict lower than relation between a variable and a constant.}
 {the constructor returns an binary set that encodes the \emph{a~<~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
 
 
@@ -287,7 +287,7 @@ The \nomType{@binaryset} type encodes sets, binary relations, boolean mathematic
 {@binaryset}
 {1.6.0}
 {@binaryset}
-{Returns an empty \nomType{@binaryset} object.}
+{Returns an empty \nomType{binaryset} object.}
 {}
 
 
@@ -298,7 +298,7 @@ The \nomType{@binaryset} type encodes sets, binary relations, boolean mathematic
 {@binaryset}
 {1.6.0}
 {@binaryset}
-{Returns a full \nomType{@binaryset} object.}
+{Returns a full \nomType{binaryset} object.}
 {}
 
 
@@ -341,7 +341,7 @@ This program displays: \texttt{Accessible: 0 1 2 3 4 5}.
 {@binaryset}
 {@uint inFirstIndex}
 {@uint inTranslation}
-{Returns a \nomType{@binaryset} value computed by translating the receiver's value by \emph{inTranslation} bits from index \emph{inFirstIndex}.}
+{Returns a \nomType{binaryset} value computed by translating the receiver's value by \emph{inTranslation} bits from index \emph{inFirstIndex}.}
 {}
 
 
@@ -350,7 +350,7 @@ This program displays: \texttt{Accessible: 0 1 2 3 4 5}.
 {@binaryset}
 {1.6.0}
 {@uint64}
-{Returns in an \nomType{@uint64} value the number of different compressed string values encoded by receiver's value.}
+{Returns in an \nomType{uint64} value the number of different compressed string values encoded by receiver's value.}
 {}
 
 
@@ -379,7 +379,7 @@ This program displays: \texttt{Accessible: 0 1 2 3 4 5}.
 {@bool}
 {@uint inFirstBit}
 {@uint inBitCount}
-{Returns an \nomType{@bool} value indicating whether the receiver'value contains a given value.}
+{Returns an \nomType{bool} value indicating whether the receiver'value contains a given value.}
 {returns \motCle{true} if the receiver's contains a value, and \motCle{false} otherwise; this value is computed from the \emph{inBitCount} first bits of \emph{inValue} value, shifted left by \emph{inFirstBit}.}
 
 
@@ -417,7 +417,7 @@ This program displays: \texttt{Accessible: 0 1 2 3 4 5}.
 
 Note that \texttt{[a equalTo !b]} is equivalent to \texttt{$\sim$ (a $\wedge$ b)}.
 
-This operation returns an \nomType{@binaryset} value; do not confuse with \emph{==} operator that returns an \nomType{@bool} value.
+This operation returns an \nomType{binaryset} value; do not confuse with \emph{==} operator that returns an \nomType{bool} value.
 
 
 
@@ -526,7 +526,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 {@binaryset}
 {1.6.0}
 {@bool}
-{Returns a \nomType{@bool} value that indicates whether the receiver's value is the empty set.}
+{Returns a \nomType{bool} value that indicates whether the receiver's value is the empty set.}
 {returns \motCle{true} if receiver's value is the empty set, and \motCle{false} otherwise.}
 
 
@@ -539,7 +539,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 {@binaryset}
 {1.6.0}
 {@bool}
-{Returns a \nomType{@bool} value that indicates whether the receiver's value is the full set.}
+{Returns a \nomType{bool} value that indicates whether the receiver's value is the full set.}
 {returns \motCle{true} if receiver's value is the full set, and \motCle{false} otherwise.}
 
 
@@ -777,7 +777,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 {1.6.0}
 {@uint64list}
 {@uint64 inBitCount}
-{Returns the list of \nomType{@uint64} values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.}
+{Returns the list of \nomType{uint64} values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.}
 {}
 
 
@@ -792,7 +792,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 {1.6.0}
 {@uint64}
 {@uint inBitCount}
-{Returns in an \nomType{@uint64} object the number of different values encoded by receiver, considering it uses \emph{inBitCount} bits.}
+{Returns in an \nomType{uint64} object the number of different values encoded by receiver, considering it uses \emph{inBitCount} bits.}
 {no overflow test in performed.}
 
 
@@ -805,7 +805,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 \subsection{Logical Operators}
 
-The \nomType{@binaryset} type supports the three logical operators:\newline
+The \nomType{binaryset} type supports the three logical operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -817,10 +817,10 @@ The \nomType{@binaryset} type supports the three logical operators:\newline
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{@binaryset} objects and return an \nomType{@binaryset} object.\newline
+Theses operators require both arguments to be \nomType{binaryset} objects and return an \nomType{binaryset} object.\newline
 
 
-The \nomType{@binaryset} type supports the logical unary operator:\newline
+The \nomType{binaryset} type supports the logical unary operator:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -828,7 +828,7 @@ $\sim$ & Negation, Complementation \\
 \hline
 \end{tabular}
 
-This operator returns an \nomType{@binaryset} object.
+This operator returns an \nomType{binaryset} object.
 
 
 
@@ -838,7 +838,7 @@ This operator returns an \nomType{@binaryset} object.
 
 \subsection{Comparison Operators}
 
-The \nomType{@binaryset} type supports the two comparison operators:\newline
+The \nomType{binaryset} type supports the two comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -848,9 +848,9 @@ $!=$ & Non Equality \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{@binaryset} objects, and return a \nomType{@bool} object. These operations are very fast and are performed in a constant time (integer equality comparison).
+Theses operators require both arguments to be \nomType{binaryset} objects, and return a \nomType{bool} object. These operations are very fast and are performed in a constant time (integer equality comparison).
 
-Do not confuse with \lienReader{@binaryset}{equalTo} and \lienReader{@binaryset}{notEqualTo} that return a  \nomType{@binaryset} object.
+Do not confuse with \refReaderPage{binaryset}{equalTo} and \refReaderPage{binaryset}{notEqualTo} that return a \nomType{binaryset} object.
 
 
 
@@ -860,7 +860,7 @@ Do not confuse with \lienReader{@binaryset}{equalTo} and \lienReader{@binaryset}
 
 \subsection{Shift Operators}
 
-The \nomType{@binaryset} type supports the two shift operators:\newline
+The \nomType{binaryset} type supports the two shift operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline

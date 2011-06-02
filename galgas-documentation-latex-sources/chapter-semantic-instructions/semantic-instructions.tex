@@ -36,12 +36,165 @@ drop variable, ... ;
 \section{Foreach Instruction}
 
 
+\section{If Instruction}
+
+
+\subsection{Syntax}
+
+The \emph{if} instruction has the following syntax:
+{\lstset{emph={expression, instructions, expression2, instructions2, else_instructions}, emphstyle=\emph}
+\begin{lstlisting}[language=galgas]
+if expression then
+  instructions
+elsif expression2 then
+  instructions2
+...
+else
+  else_instructions
+end if ;  
+\end{lstlisting}
+}
+
+More precisely, it contains :
+\begin{itemize}
+\item zero, one or more \emph{elsif} branches ;
+\item zero or one \emph{else} branch.
+\end{itemize}
+
+
+\subsection{Static semantics}
+
+
+No \emph{else} branch is equivalent to an \emph{else} branch without any instruction.
+
+
+The \emph{elsif} branches are just syntactic sugar: it is semantically equivalent to use embedded \emph{if} instructions instead. For example:
+{\lstset{emph={expression, instructions, expression2, instructions2, else_instructions}, emphstyle=\emph}
+\begin{lstlisting}[language=galgas]
+if expression then
+  instructions
+elsif expression2 then
+  instructions2
+else
+  else_instructions
+end if ;  
+\end{lstlisting}
+}
+is equivalent to:
+{\lstset{emph={expression, instructions, expression2, instructions2, else_instructions}, emphstyle=\emph}
+\begin{lstlisting}[language=galgas]
+if expression then
+  instructions
+else
+  if expression2 then
+    instructions2
+  else
+    else_instructions
+  end if ;  
+end if ;  
+\end{lstlisting}
+}
+
+So, for describing \emph{if} instruction static and dynamic semantics, we only need to describe an \emph{if} instruction without any \emph{elsif} branch and with an \emph{else} branch:
+{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
+\begin{lstlisting}[language=galgas]
+if expression then
+  instructions
+else
+  else_instructions
+end if ;
+\end{lstlisting}
+}
+
+The static semantics evaluates the \emph{expression} type, and applies the following rules until success:
+\begin{enumerate}
+\item the \emph{expression} type is \refTypePredefini{bool};
+\item the \emph{expression} type is an \emph{structure} type, it has a attribute named \emph{bool}, whose type is \refTypePredefini{bool};
+\item the \emph{expression} type has a reader without any argument named \emph{bool} that returns a \refTypePredefini{bool} value.
+\end{enumerate}
+
+Most expressions you write fall in the first case.
+
+Applying the second rule enables to use an \refTypePredefini{lbool} expression as an \emph{if} expression. For example:
+{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
+\begin{lstlisting}[language=galgas]
+@lbool var := ... ;
+if var then
+  instructions
+else
+  else_instructions
+end if ;
+\end{lstlisting}
+}
+
+The \emph{var} object belongs to the \refTypePredefini{lbool} type: so first rule fails. But \refTypePredefini{lbool} is a \emph{structure} type, it has a \emph{bool} attribute with the \refTypePredefini{bool} type, so the second rule succeeds. It is semantically equivalent to write:
+{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
+\begin{lstlisting}[language=galgas]
+@lbool var := ... ;
+if var->bool then
+  instructions
+else
+  else_instructions
+end if ;
+\end{lstlisting}
+}
+
+The third rule applies on a \emph{class} type that defines a category reader with argument named \emph{bool} that returns a \refTypePredefini{bool} type. For example, declaring:
+\begin{lstlisting}[language=galgas]
+class @myClass { ... }
+
+reader @myClass bool -> @bool outResult : ... end reader ;
+\end{lstlisting}
+
+enables to write:
+{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
+\begin{lstlisting}[language=galgas]
+@myClass myObject := ... ;
+if myObject then
+  instructions
+else
+  else_instructions
+end if ;
+\end{lstlisting}
+}
+
+It is semantically equivalent to write:
+{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
+\begin{lstlisting}[language=galgas]
+@myClass myObject := ... ;
+if [myObject bool] then
+  instructions
+else
+  else_instructions
+end if ;
+\end{lstlisting}
+}
+
+
+\subsection{Dynamic semantics}
+
+According to the preceding section, we only need to describe the dynamic semantic of an \emph{if} instruction without any \emph{elsif} branch and with an \emph{else} branch:
+{\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
+\begin{lstlisting}[language=galgas]
+if expression then
+  instructions
+else
+  else_instructions
+end if ;  
+\end{lstlisting}
+}
+
+
+
+The \emph{expression} is first computed :
+\begin{itemize}
+\item if the evaluation fails, neither the \emph{if} instructions, neither the \emph{else} instructions are executed;
+\item if the evaluation result is \emph{true}, the \emph{if} instructions are executed ;
+\item if the evaluation result is \emph{false}, the \emph{else} instructions are executed.
+\end{itemize}
 
 
 \section{Grammar Instruction}
-
-\section{If Instruction}
-
 
 \section{Local Variable Declaration Instruction}
 

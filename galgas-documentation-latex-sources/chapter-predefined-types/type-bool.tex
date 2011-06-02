@@ -1,11 +1,11 @@
 %!TEX encoding = UTF-8 Unicode
 %!TEX root = ../galgas-book.tex
 
-\definitionSectionType{@bool}
+\sectionTypePredefiniLabelIndex{bool}
 
-An \nomType{@bool} object has a boolean value. The two keywords \motCle{true} and \motCle{false} belong to the \nomType{@bool} type, and denotes the true and false values.
+An \refTypePredefini{bool} object has a boolean value. The two keywords \motCle{true} and \motCle{false} belong to the \refTypePredefini{bool} type, and denotes the true and false values.
 
-No constructor is defined for the \nomType{@bool} type.
+No constructor is defined for the \refTypePredefini{bool} type.
 
 \readerSansArgument{cString}
 {@bool}
@@ -34,8 +34,8 @@ No constructor is defined for the \nomType{@bool} type.
 {@bool}
 {1.9.4}
 {@sint}
-{Returns the receiver's value in an \lienSectionType{@sint} (32-bit signed integer) object.}
-{returns the \texttt{1S} \nomType{@sint} value if the receiver's value is true, and the \texttt{0S} \nomType{@sint} value otherwise.}
+{Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object.}
+{returns the \texttt{1S} \refTypePredefini{sint} value if the receiver's value is true, and the \texttt{0S} \refTypePredefini{sint} value otherwise.}
 
 
 
@@ -44,8 +44,8 @@ No constructor is defined for the \nomType{@bool} type.
 {@bool}
 {1.9.4}
 {@sint64}
-{Returns the receiver's value in an \lienSectionType{@sint64} (64-bit signed integer) object.}
-{returns the \texttt{1LS} \nomType{@sint64} value if the receiver's value is true, and the \texttt{0LS} \nomType{@sint64} value otherwise.}
+{Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object.}
+{returns the \texttt{1LS} \refTypePredefini{sint64} value if the receiver's value is true, and the \texttt{0LS} \refTypePredefini{sint64} value otherwise.}
 
 
 
@@ -54,8 +54,8 @@ No constructor is defined for the \nomType{@bool} type.
 {@bool}
 {1.9.4}
 {@uint}
-{Returns the receiver's value in an \lienSectionType{@uint} (32-bit unsigned integer) object.}
-{returns the \texttt{1} \nomType{@uint} value if the receiver's value is true, and the \texttt{0} \nomType{@uint} value otherwise.}
+{Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object.}
+{returns the \texttt{1} \refTypePredefini{uint} value if the receiver's value is true, and the \texttt{0} \refTypePredefini{uint} value otherwise.}
 
 
 
@@ -64,15 +64,15 @@ No constructor is defined for the \nomType{@bool} type.
 {@bool}
 {1.9.4}
 {@uint64}
-{Returns the receiver's value in an \lienSectionType{@uint64} (64-bit unsigned integer) object.}
-{returns the \texttt{1L} \nomType{@uint64} value if the receiver's value is true, and the \texttt{0S} \nomType{@uint64} value otherwise.}
+{Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object.}
+{returns the \texttt{1L} \refTypePredefini{uint64} value if the receiver's value is true, and the \texttt{0S} \refTypePredefini{uint64} value otherwise.}
 
 
 
 
 \subsection{Logical Operators}
 
-The \nomType{@bool} type supports the three logical operators:\newline
+The \refTypePredefini{bool} type supports the three logical operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -84,10 +84,10 @@ $\&$ & And \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{@bool} objects and return an \nomType{@bool} object.\newline
+Theses operators require both arguments to be \refTypePredefini{bool} objects and return an \refTypePredefini{bool} object.\newline
 
 
-The \nomType{@uint} type supports the logical unary operator:\newline
+The \refTypePredefini{uint} type supports the logical unary operator:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -95,7 +95,7 @@ The \nomType{@uint} type supports the logical unary operator:\newline
 \hline
 \end{tabular}
 
-This operator returns an \nomType{@bool} object.
+This operator returns an \refTypePredefini{bool} object.
 
 
 
@@ -105,7 +105,7 @@ This operator returns an \nomType{@bool} object.
 
 \subsection{Comparison Operators}
 
-The \nomType{@bool} type supports the six comparison operators:\newline
+The \refTypePredefini{bool} type supports the six comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -123,6 +123,6 @@ $>=$  & Greater or Equal \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{@bool} objects, and return a \nomType{@bool} object.
+Theses operators require both arguments to be \refTypePredefini{bool} objects, and return a \refTypePredefini{bool} object.
 
 

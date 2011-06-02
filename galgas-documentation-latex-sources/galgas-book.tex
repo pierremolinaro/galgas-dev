@@ -141,43 +141,15 @@
 
 \usepackage{listings}
 
-\lstdefinelanguage{galgas}{
-%  keywordsprefix=\@,
-  morekeywords=[2]{abstract, after, before, between, block, cast, class, const, default, do, drop, else, elsif, end, enum,
-    error, extends, extern, extract, false, feature, filewrapper, foreach, function, grammar, graph, gui, here, if,
-    import, in, index, indexing, insert, label, lexique, list, listmap, local, log, loop, map, mapproxy, match,
-    message, method, mod, modifier, nonterminal, not, on, once, operator, option, or, override, parse, pragma,
-    prefixedby, project, program, reader, remove, replace, repeat, rewind, root, routine, rule, search, select,
-    self, selfcopy, semantics, send, sortedlist, state, struct, style, super, switch, syntax, tag, template,
-    then, true, uniquemap, unused, warning, when, while, with
-  },
-  comment=[l]\#,
-  string=[b]", string=[d]",
-  style=galgas
-}
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   I N C L U S I O N    D E S   M A C R O S   D E S T I N É E S   À   L ' É C R I T U R E   
+%                                                                                                                       *
+%                                        D E   C O D E   G A L G A S                                                    *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
 
-\newcommand{\bcolor}[2]{\textbf{\color{#1}#2}}
-
-\ifthenelse{\equal{\sortieEnCouleur}{true}}{
-  \lstdefinestyle{galgas}{
-    basicstyle=\normalsize,
-    frame=l,
-    keywordstyle=\color{red}\textbf,
-    keywordstyle=[2]\color{blue}\textbf,
-    backgroundcolor=\color{yellow!50},
-    identifierstyle=\color{brown},
-    commentstyle=\color{red},
-    stringstyle=\color{gray}
-%    emphstyle=\color{green},
-%    emph={@string,@uint}
-  }
-}{
-  \lstdefinestyle{galgas}{
-    basicstyle=\normalsize,
-    frame=l,
-    keywordstyle=\textbf
-  }
-}
+\input{galgas-book-latex-inclusions/galgas-language-definitions.tex}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -196,11 +168,6 @@
 
 \usepackage{fancyhdr}
 \pagestyle{fancy}
-
-
-%---------------------------------------------------- Include my new commands
-\input{galgas-book-new-commands/galgas-book-new-commands.tex}
-
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -245,7 +212,6 @@
   \hypersetup{linkcolor=black}
 }
 \hypersetup{breaklinks=true}
-%\hypersetup{verbose=true}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -359,6 +325,8 @@
 \input{chapter-user-types/user-types.tex}
 
 \input{chapter-semantic-instructions/semantic-instructions.tex}
+
+\input{chapter-semantic-expressions/semantic-expressions.tex}
 
 \input{chapter-parser-grammar-component/parser-grammar-component.tex}
 

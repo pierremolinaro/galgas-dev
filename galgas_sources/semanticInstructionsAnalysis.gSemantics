@@ -1148,6 +1148,29 @@ routine checkExpressionIsBoolean
   const @unifiedTypeMapProxy boolType := inAnalysisContext->mPredefinedTypes->mBoolType ;
   if expressionType == boolType then
     outExpression := inExpression ;
+  elsif [expressionType mTypeKindEnum] == [@typeKindEnum structType] then
+    if [[expressionType mAttributeMap] hasKey !"bool"] then
+      @unifiedTypeMapProxy attributeType ;
+      [[expressionType mAttributeMap] searchKey ![@lstring new !"bool" !here] ?attributeType] ;
+      if attributeType == boolType then
+        outExpression := [@structFieldAccessExpressionForGeneration new
+          !boolType
+          !inErrorLocation
+          !inExpression
+          !"bool"
+        ] ;
+      else
+        error inErrorLocation
+        : "the '@". [expressionType key] . "' struct type defines an attribute named 'bool', but its type is not '@bool'"
+        : outExpression
+        ;
+      end if ;
+    else
+      error inErrorLocation
+      : "the '@". [expressionType key] . "' struct type does not define an attribute named 'bool'"
+      : outExpression
+      ;
+    end if ;
   else
     with [expressionType mReaderMap] hasKey !"bool" do
       if mReturnedType != boolType then
@@ -1169,32 +1192,9 @@ routine checkExpressionIsBoolean
         ] ;
       end if ;
     else
-      if [expressionType mTypeKindEnum] == [@typeKindEnum structType] then
-        if [[expressionType mAttributeMap] hasKey !"bool"] then
-          @unifiedTypeMapProxy attributeType ;
-          [[expressionType mAttributeMap] searchKey ![@lstring new !"bool" !here] ?attributeType] ;
-          if attributeType == boolType then
-            outExpression := [@structFieldAccessExpressionForGeneration new
-              !boolType
-              !inErrorLocation
-              !inExpression
-              !"bool"
-            ] ;
-          else
-            error inErrorLocation
-            : "the '@". [expressionType key] . "' struct type defines an attribute named 'bool', but its type is not '@bool'"
-            : outExpression
-            ;
-          end if ;
-        else
-          error inErrorLocation
-          : "the '@". [expressionType key] . "' struct type does not define an attribute named 'bool'"
-          : outExpression
-          ;
-        end if ;
-      elsif [[expressionType mReaderMap] count] == 0 then
+      if [[expressionType mReaderMap] count] == 0 then
         error inErrorLocation
-        : "the '@". [expressionType key] . "' type does not define any reader"
+        : "the expression type is not '@bool', but '@". [expressionType key] . "', and this type does not define the 'bool' reader"
         : outExpression
         ;
       else
@@ -1207,7 +1207,7 @@ routine checkExpressionIsBoolean
           s .= " -> @" . [mReturnedType key] ;
         end foreach ;
         error inErrorLocation
-        : "the '@". [expressionType key] . "' type does not define the 'bool' reader; available "
+        : "the expression type is not '@bool', but '@". [expressionType key] . "', and this type does not define the 'bool' reader; available "
         . if [[expressionType mReaderMap] count] > 1 then "readers are" else "reader is" end
         . ":" . s
         : outExpression
@@ -1361,12 +1361,19 @@ override method @foreachInstructionAST analyzeSemanticInstruction
     enumerationList += !enumerationOrder !enumerationExpression !enumeratorCppName ;
   end foreach ;
 #--- While expression
-  @semanticExpressionForGeneration whileExpression ;
+  @semanticExpressionForGeneration uncheckedWhileExpression ;
   [mWhileExpression analyzeSemanticExpression
     !inAnalysisContext
     !?ioVariableMap
-    ?whileExpression
+    ?uncheckedWhileExpression
   ] ;
+  @semanticExpressionForGeneration whileExpression ;
+  checkExpressionIsBoolean
+    !inAnalysisContext
+    !mEndOf_while_expression
+    !uncheckedWhileExpression
+    ?whileExpression
+  ;
 #--- Begin override for analyze foreach instruction list
   [!?ioVariableMap openOverrideForRepeatBlock] ;
 #--- 'before' branch
