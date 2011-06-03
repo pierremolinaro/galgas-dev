@@ -11,7 +11,7 @@ end reader ;
 
 method @TestCategoryMethod method2 !@uint result :
 #  [self method1] ;
-  result := [self reader1] ;
+  result := [selfcopy reader1] ;
 end method ;
 
 

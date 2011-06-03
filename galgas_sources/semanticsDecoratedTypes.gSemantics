@@ -129,19 +129,9 @@ class @readerCallExpressionForGeneration extends @semanticExpressionForGeneratio
 
 #---------------------------------------------------------------------------*
 
-class @thisReaderCallExpressionForGeneration extends @semanticExpressionForGeneration {
+class @selfReaderCallExpressionForGeneration extends @semanticExpressionForGeneration {
   @string mCurrentObjectCppPointer ;
   @methodKind mKind ;
-  @string mReaderName ;
-  @semanticExpressionListForGeneration mExpressions ;
-  @bool mHasCompilerArgument ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @superReaderCallExpressionForGeneration extends @semanticExpressionForGeneration {
-  @methodKind mKind ;
-  @string mSuperClassThatImplementsReader ;
   @string mReaderName ;
   @semanticExpressionListForGeneration mExpressions ;
   @bool mHasCompilerArgument ;
@@ -724,6 +714,7 @@ class @typeMethodInstructionForGeneration extends @semanticInstructionForGenerat
 
 class @methodCallInstructionForGeneration extends @semanticInstructionForGeneration {
   @location mInstructionLocation ;
+  @unifiedTypeMapProxy mReceiverType ;
   @semanticExpressionForGeneration mReceiverExpression ;
   @string mMethodName ;
   @methodKind mKind ;
@@ -738,6 +729,7 @@ class @methodCallInstructionForGeneration extends @semanticInstructionForGenerat
 #---------------------------------------------------------------------------*
 
 class @selfMethodCallInstructionForGeneration extends @semanticInstructionForGeneration {
+  @unifiedTypeMapProxy mReceiverType ;
   @string mCurrentObjectCppPointer ;
   @location mInstructionLocation ;
   @string mMethodName ;
@@ -1446,8 +1438,9 @@ class @abstractCategoryReaderForGeneration extends @semanticDeclarationForGenera
 #---------------------------------------------------------------------------*
 
 class @categoryReaderForGeneration extends @semanticDeclarationForGeneration {
-  @string mTypeName ;
+  @unifiedTypeMapProxy mSelfType ;
   @string mCategoryReaderName ;
+  @bool mImplementedAsFunction ;
   @unifiedTypeMapProxy mResultType ;
   @string mResultVarCppName ;
   @formalInputParameterListForGeneration mCategoryReaderFormalParameterList ;

@@ -933,9 +933,9 @@ routine analyzeRoutineBody
 #--- Declare local constants
   foreach inLocalConstantList do
     if mNoWarningIfUnused then
-      [!?variableMap insertUsedLocalConstant !mName !mType !mCppName !selfMarkName []] ;
+      [!?variableMap insertUsedLocalConstant !mName !mType !mCppName !inAnalysisContext->mSelfObjectCppName] ;
     else
-      [!?variableMap insertLocalConstant !mName !mType !mCppName !selfMarkName []] ;
+      [!?variableMap insertLocalConstant !mName !mType !mCppName !inAnalysisContext->mSelfObjectCppName] ;
     end if ;
   end foreach ;
 #--- Enter non mutable instance attributes
@@ -944,7 +944,7 @@ routine analyzeRoutineBody
       !mAttributeName
       !mAttributeTypeProxy
       !inAttributeVariableNamePrefix . "mAttribute_". [[mAttributeName string] identifierRepresentation]
-      !selfMarkName []
+      !inAnalysisContext->mSelfObjectCppName
     ] ;
   end foreach ;
 #--- Enter mutable instance attributes
@@ -953,7 +953,7 @@ routine analyzeRoutineBody
       !mAttributeName
       !mAttributeTypeProxy
       !inAttributeVariableNamePrefix . "mAttribute_". [[mAttributeName string] identifierRepresentation]
-      !selfMarkName []
+      !inAnalysisContext->mSelfObjectCppName
     ] ;
   end foreach ;
 #--- Enter formal arguments
@@ -1187,7 +1187,7 @@ routine analyzeFunctionBody
       !mAttributeName
       !mAttributeTypeProxy
       !inAttributeVariableNamePrefix . "mAttribute_". [[mAttributeName string] identifierRepresentation]
-      !selfMarkName []
+      !inAnalysisContext->mSelfObjectCppName
     ] ;
   end foreach ;
 #--- Enter formal parameters
@@ -1224,7 +1224,7 @@ routine analyzeFunctionBody
   end foreach ;
 #--- Enter return variable
   outReturnedType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !inResultTypeName] ;
-  outResultVariableCppName := "result_" . [[inResultTypeName string] identifierRepresentation] ;
+  outResultVariableCppName := "result_" . [inReturnVariableName identifierRepresentation] ;
   [!?variableMap insertOutputFormalArgument !inReturnVariableName !outReturnedType !outResultVariableCppName !outResultVariableCppName] ;
 #---  Analyze instruction list
   outSemanticInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
@@ -1869,16 +1869,25 @@ override method @categoryReaderAST performSemanticAnalysis
 
 #--- Self type
   const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+  @string selfObjectName ;
+  @string selfObjectAccessor ;
+  @bool implementedAsFunction ;
 #--- Check self type is a class
-  if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
-    error mCategoryReaderName: "cannot declare a category reader: '@" . [selfType key] . "' is not a class" ;
+  if [selfType mTypeKindEnum] == [@typeKindEnum classType] then
+    selfObjectName := "object" ;
+    selfObjectAccessor := "->" ;
+    implementedAsFunction := false ;
+  else
+    selfObjectName := "inObject" ;
+    selfObjectAccessor := "." ;
+    implementedAsFunction := true ;
   end if ;
 #--- Analyze instruction list
   const @analysisContext analysisContext [new
     !inSemanticContext
     !inPredefinedTypes
     !selfType
-    !"object"
+    !selfObjectName
   ] ;
   @unifiedTypeMapProxy returnType ;
   @string returnVariableCppName ;
@@ -1888,7 +1897,7 @@ override method @categoryReaderAST performSemanticAnalysis
     !analysisContext
     !mCategoryReaderFormalInputParameterList
     ![selfType mAllTypedAttributeList]
-    !"object->"
+    !selfObjectName . selfObjectAccessor
     !mCategoryReaderInstructionList
     !mCategoryReaderReturnedVariableName
     !mCategoryReaderReturnedTypeName
@@ -1901,8 +1910,9 @@ override method @categoryReaderAST performSemanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration += ![@categoryReaderForGeneration new
     !mIsGlobal
-    ![mTypeName string]
+    !selfType
     ![mCategoryReaderName string]
+    !implementedAsFunction
     !returnType
     !returnVariableCppName
     !formalParameterListForGeneration

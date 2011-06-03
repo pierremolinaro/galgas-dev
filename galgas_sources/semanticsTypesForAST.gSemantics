@@ -116,15 +116,7 @@ class @readerCallExpressionAST extends @semanticExpressionAST {
 
 #---------------------------------------------------------------------------*
 
-class @thisReaderCallExpressionAST extends @semanticExpressionAST {
-  @location mLocation ;
-  @lstring mReaderName ;
-  @semanticExpressionListAST mExpressions ;
-}
-
-#---------------------------------------------------------------------------*
-
-class @superReaderCallExpressionAST extends @semanticExpressionAST {
+class @selfReaderCallExpressionAST extends @semanticExpressionAST {
   @location mLocation ;
   @lstring mReaderName ;
   @semanticExpressionListAST mExpressions ;
@@ -584,22 +576,11 @@ class @methodCallInstructionAST extends @semanticInstructionAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  " T H I S "    M E T H O D    C A L L    I N S T R U C T I O N           *
+#  " S E L F "    M E T H O D    C A L L    I N S T R U C T I O N           *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @thisMethodCallInstructionAST extends @semanticInstructionAST {
-  @lstring mMethodName ;
-  @actualParameterListAST mActualParameterList ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  " S U P E R "    M E T H O D    C A L L    I N S T R U C T I O N         *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @superMethodCallInstructionAST extends @semanticInstructionAST {
+class @selfMethodCallInstructionAST extends @semanticInstructionAST {
   @lstring mMethodName ;
   @actualParameterListAST mActualParameterList ;
 }
@@ -619,11 +600,11 @@ class @modifierCallInstructionAST extends @semanticInstructionAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  " T H I S "   M O D I F I E R    C A L L    I N S T R U C T I O N        *
+#  " S E L F "   M O D I F I E R    C A L L    I N S T R U C T I O N        *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @thisModifierCallInstructionAST extends @semanticInstructionAST {
+class @selfModifierCallInstructionAST extends @semanticInstructionAST {
   @lstring mModifierName ;
   @actualParameterListAST mActualParameterList ;
 }

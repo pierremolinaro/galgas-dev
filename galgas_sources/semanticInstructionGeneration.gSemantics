@@ -469,8 +469,9 @@ override method @methodCallInstructionForGeneration generateInstruction
 :
   ioGeneratedCode .= "//-------- @methodCallInstructionForGeneration\n" ;
 #--- Receiver expression
-  @string receiverVar ;
-  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverVar] ;
+  @string receiverCppName ;
+  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverCppName] ;
+  [!?ioUnusedVariableCppNameSet removeKey !receiverCppName] ;
 #---
   @stringlist parameterCppNameList [emptyList] ;
   @stringlist jokerParametersToReleaseList [emptyList] ;
@@ -483,9 +484,13 @@ override method @methodCallInstructionForGeneration generateInstruction
 #--- Generate method call
   switch mKind
   when definedAsCategory :
-    ioGeneratedCode .= "callCategoryMethod_" . [mMethodName identifierRepresentation] . " ((const cPtr_" . [[mReceiverExpression mType] identifierRepresentation] . " *) " . receiverVar . ".ptr (), " ;
+    if [mReceiverType mTypeKindEnum] == [@typeKindEnum classType] then
+      ioGeneratedCode .= "callCategoryMethod_" . [mMethodName identifierRepresentation] . " ((const cPtr_" . [[mReceiverExpression mType] identifierRepresentation] . " *) " . receiverCppName . ".ptr (), " ;
+    else
+      ioGeneratedCode .= "categoryMethod_" . [mMethodName identifierRepresentation] . " (" . receiverCppName . ", " ;
+    end if ;
   when definedAsMember :
-    ioGeneratedCode .= receiverVar . ".method_" . [mMethodName identifierRepresentation] . " (" ;
+    ioGeneratedCode .= receiverCppName . ".method_" . [mMethodName identifierRepresentation] . " (" ;
   end switch ;
   foreach parameterCppNameList
     do ioGeneratedCode .= mValue ;
@@ -525,7 +530,7 @@ override method @selfMethodCallInstructionForGeneration generateInstruction
 :
   ioGeneratedCode .= "//-------- @selfMethodCallInstructionForGeneration\n" ;
 #---
-  [!?ioUnusedVariableCppNameSet removeKey !selfMarkName []] ;
+  [!?ioUnusedVariableCppNameSet removeKey !mCurrentObjectCppPointer] ;
   @stringlist parameterCppNameList [emptyList] ;
   @stringlist jokerParametersToReleaseList [emptyList] ;
   @stringlist inputVariableList [emptyList] ;
@@ -537,7 +542,11 @@ override method @selfMethodCallInstructionForGeneration generateInstruction
 #--- Generate method call
   switch mKind
   when definedAsCategory :
-    ioGeneratedCode .= "callCategoryMethod_" . [mMethodName identifierRepresentation] . " (" . mCurrentObjectCppPointer . ", " ;
+    if [mReceiverType mTypeKindEnum] == [@typeKindEnum classType] then
+      ioGeneratedCode .= "callCategoryMethod_" . [mMethodName identifierRepresentation] . " (" . mCurrentObjectCppPointer . ", " ;
+    else
+      ioGeneratedCode .= "categoryMethod_" . [mMethodName identifierRepresentation] . " (" . mCurrentObjectCppPointer . ", " ;
+    end if ;
   when definedAsMember :
     ioGeneratedCode .= mCurrentObjectCppPointer . "->method_" . [mMethodName identifierRepresentation] . " (" ;
   end switch ;
@@ -678,7 +687,11 @@ override method @modifierCallInstructionForGeneration generateInstruction
   [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName] ;
   switch mKind
   when definedAsCategory :
-    ioGeneratedCode .= "callCategoryModifier_" . [mModifierName identifierRepresentation] . " ((cPtr_" . [mReceiverType identifierRepresentation] . " *) " . receiverCppName . ".ptr (), " ;
+    if [mReceiverType mTypeKindEnum] == [@typeKindEnum classType] then
+      ioGeneratedCode .= "callCategoryModifier_" . [mModifierName identifierRepresentation] . " ((cPtr_" . [mReceiverType identifierRepresentation] . " *) " . receiverCppName . ".ptr (), " ;
+    else
+      ioGeneratedCode .= "categoryModifier_" . [mModifierName identifierRepresentation] . " (" . receiverCppName . ", " ;
+    end if ;
   when definedAsMember :
     ioGeneratedCode .= receiverCppName . ".modifier_" . [[mModifierName string] identifierRepresentation] . " (" ;
   end switch ;
@@ -728,7 +741,11 @@ override method @selfModifierCallInstructionForGeneration generateInstruction
 #--- Generate modifier call
   switch mKind
   when definedAsCategory :
-    ioGeneratedCode .= "callCategoryModifier_" . [mModifierName identifierRepresentation] . " (" . mCurrentObjectCppPointer . ", " ;
+    if [mReceiverType mTypeKindEnum] == [@typeKindEnum classType] then
+      ioGeneratedCode .= "callCategoryModifier_" . [mModifierName identifierRepresentation] . " (" . mCurrentObjectCppPointer . ", " ;
+    else
+      ioGeneratedCode .= "categoryModifier_" . [mModifierName identifierRepresentation] . " (" . mCurrentObjectCppPointer . ", " ;
+    end if ;
   when definedAsMember :
     ioGeneratedCode .= mCurrentObjectCppPointer . "->modifier_" . [mModifierName identifierRepresentation] . " (" ;
   end switch ;

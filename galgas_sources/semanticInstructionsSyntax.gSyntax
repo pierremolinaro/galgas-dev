@@ -646,7 +646,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   <actual_parameter_list> ? mActualParameterList ;
   $]$ ;
   $;$ ;
-  outInstruction := [@thisMethodCallInstructionAST new
+  outInstruction := [@selfMethodCallInstructionAST new
     !instructionLocation
     !mMethodName
     !mActualParameterList
@@ -723,7 +723,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   <actual_parameter_list> ? mActualParameterList ;
   $]$ ;
   $;$ ;
-  outInstruction := [@thisModifierCallInstructionAST new
+  outInstruction := [@selfModifierCallInstructionAST new
     !instructionLocation
     !mModifierName
     !mActualParameterList

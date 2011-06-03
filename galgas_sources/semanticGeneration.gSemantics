@@ -121,7 +121,7 @@ end function ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-function generateFunction
+local function generateFunction
   ??@string inProcedureName
   ??@formalInputParameterListForGeneration inFormalArgumentList
   ??@semanticInstructionListForGeneration inInstructionList
@@ -211,7 +211,7 @@ local function generateCategoryModifier
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   unusedVariableCppNameSet += !compilerCppName [] ;
-  unusedVariableCppNameSet += !selfMarkName [] ;
+  unusedVariableCppNameSet += !"object" ;
   foreach inFormalArgumentList do
     unusedVariableCppNameSet += !mFormalArgumentCppName ;
   end foreach ;
@@ -231,7 +231,7 @@ local function generateCategoryModifier
   else
     outGeneratedCode .= "cPtr_" . [inBaseClassName identifierRepresentation] . " * " ;
   end if ;
-  const @bool currentObjectIsUnused := [unusedVariableCppNameSet hasKey !selfMarkName []] ;
+  const @bool currentObjectIsUnused := [unusedVariableCppNameSet hasKey !"object"] ;
   if currentObjectIsUnused then
     outGeneratedCode .= "/* inObject */" ;
   else
@@ -302,7 +302,7 @@ local function generateCategoryMethod
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   unusedVariableCppNameSet += !compilerCppName [] ;
-  unusedVariableCppNameSet += !selfMarkName [] ;
+  unusedVariableCppNameSet += !"object" ;
   foreach inFormalArgumentList do
     unusedVariableCppNameSet += !mFormalArgumentCppName ;
   end foreach ;
@@ -322,7 +322,7 @@ local function generateCategoryMethod
   else
     outGeneratedCode .= "const cPtr_" . [inBaseClassName identifierRepresentation] . " * " ;
   end if ;
-  const @bool currentObjectIsUnused := [unusedVariableCppNameSet hasKey !selfMarkName []] ;
+  const @bool currentObjectIsUnused := [unusedVariableCppNameSet hasKey !"object"] ;
   if currentObjectIsUnused then
     outGeneratedCode .= "/* inObject */" ;
   else
@@ -397,7 +397,7 @@ local function generateCategoryReader
 #--- Build unused variable set
   @stringset unusedVariableCppNameSet [emptySet] ;
   unusedVariableCppNameSet += !compilerCppName [] ;
-  unusedVariableCppNameSet += !selfMarkName [] ;
+  unusedVariableCppNameSet += !"object" ;
   foreach inFormalArgumentList do
     unusedVariableCppNameSet += !mFormalArgumentCppName ;
   end foreach ;
@@ -418,7 +418,7 @@ local function generateCategoryReader
   else
     outGeneratedCode .= "const cPtr_" . [inBaseClassName identifierRepresentation] . " * " ;
   end if ;
-  const @bool currentObjectIsUnused := [unusedVariableCppNameSet hasKey !selfMarkName []] ;
+  const @bool currentObjectIsUnused := [unusedVariableCppNameSet hasKey !"object"] ;
   if currentObjectIsUnused then
     outGeneratedCode .= "/* inObject */" ;
   else
@@ -805,20 +805,25 @@ local filewrapper semanticComponentGenerationTemplate in "../generation_template
     ?@string FILEWRAPPER_IMPLEMENTATION
   ;
   
-  template routineDeclaration "routine-declaration.h.gTemplate"
-    ?@string ROUTINE_NAME
-    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
-  ;
-
-  template functionDeclaration "function-declaration.h.gTemplate"
-    ?@string FUNCTION_NAME
+#--- Category reader implemented as function
+  template categoryReaderAsFunctionDeclaration "category-reader-as-function-declaration.h.gTemplate"
+    ?@string TYPE_IDENTIFIER
+    ?@string READER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string RETURN_TYPE_IDENTIFIER
   ;
 
-  template routineImplementation "routine-implementation.cpp.gTemplate"
-    ?@string ROUTINE_NAME
-    ?@string ROUTINE_IMPLEMENTATION
+  template categoryReaderAsFunctionImplementation "category-reader-as-function-implementation.cpp.gTemplate"
+    ?@string TYPE_IDENTIFIER
+    ?@string READER_NAME
+    ?@string FUNCTION_IMPLEMENTATION
+  ;
+
+#--- Function
+  template functionDeclaration "function-declaration.h.gTemplate"
+    ?@string FUNCTION_NAME
+    ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
+    ?@string RETURN_TYPE_IDENTIFIER
   ;
 
   template functionImplementation "function-implementation.cpp.gTemplate"
@@ -827,6 +832,18 @@ local filewrapper semanticComponentGenerationTemplate in "../generation_template
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string RETURN_TYPE_IDENTIFIER
   ;
+
+#--- Routine
+  template routineDeclaration "routine-declaration.h.gTemplate"
+    ?@string ROUTINE_NAME
+    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  ;
+
+  template routineImplementation "routine-implementation.cpp.gTemplate"
+    ?@string ROUTINE_NAME
+    ?@string ROUTINE_IMPLEMENTATION
+  ;
+
 
   template onceFunctionImplementation "once-function-implementation.cpp.gTemplate"
     ?@string FUNCTION_NAME
@@ -1227,12 +1244,21 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @categoryReaderForGeneration appendDeclaration1 -> @string outHeader :
-  outHeader := [filewrapper semanticComponentGenerationTemplate.categoryReaderDeclaration
-    !mTypeName
-    !mCategoryReaderName
-    !mCategoryReaderFormalParameterList
-    !mResultType
-  ] ; 
+  if mImplementedAsFunction then
+    outHeader := [filewrapper semanticComponentGenerationTemplate.categoryReaderAsFunctionDeclaration
+      ![mSelfType identifierRepresentation]
+      !mCategoryReaderName
+      !mCategoryReaderFormalParameterList
+      ![mResultType identifierRepresentation]
+    ] ; 
+  else
+    outHeader := [filewrapper semanticComponentGenerationTemplate.categoryReaderDeclaration
+      ![mSelfType identifierRepresentation]
+      !mCategoryReaderName
+      !mCategoryReaderFormalParameterList
+      !mResultType
+    ] ;
+  end if ; 
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -1414,7 +1440,6 @@ override reader @sortedListTypeForGeneration appendSpecificImplementation ->@str
 #---------------------------------------------------------------------------*
 
 override reader @enumTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-#  message "@enumTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.enumTypeSpecificImplementation
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
@@ -1426,7 +1451,6 @@ override reader @enumTypeForGeneration appendSpecificImplementation ->@string ou
 #---------------------------------------------------------------------------*
 
 override reader @mapProxyTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-#  message "@mapProxyTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.mapProxyTypeSpecificImplementation
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
@@ -1439,7 +1463,6 @@ override reader @mapProxyTypeForGeneration appendSpecificImplementation ->@strin
 #---------------------------------------------------------------------------*
 
 override reader @classTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-#  message "@classTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.classTypeSpecificImplementation
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
@@ -1454,7 +1477,6 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @structTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-#  message "@structTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.structTypeSpecificImplementation
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
@@ -1506,7 +1528,6 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @functionImplementationForGeneration appendSpecificImplementation -> @string outImplementation :
-#  message "@functionImplementationForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.functionImplementation
     !mFunctionName
     !generateFunction [
@@ -1556,7 +1577,6 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @categoryMethodForGeneration appendSpecificImplementation -> @string outImplementation :
-#  message "@categoryMethodForGeneration appendSpecificImplementation\n" ;
   const @string methodImplementation := generateCategoryMethod [
     !mTypeName
     !""
@@ -1637,7 +1657,6 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @abstractCategoryReaderForGeneration appendSpecificImplementation -> @string outImplementation :
-#  message "@abstractCategoryReaderForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.abstractCategoryReaderImplementation
     !mTypeName
     !mAbstractCategoryReaderName
@@ -1649,24 +1668,46 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @categoryReaderForGeneration appendSpecificImplementation -> @string outImplementation :
-#  message "@categoryReaderForGeneration appendSpecificImplementation\n" ;
-  const @string categoryReaderCode := generateCategoryReader [
-    !mTypeName
-    !""
-    !mCategoryReaderName
-    !mCategoryReaderFormalParameterList
-    !mSemanticInstructionListForGeneration
-    !"C_Compiler"
-    ![mResultType key]
-    !mResultVarCppName
-  ] ;
-  outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryReaderImplementation
-    !mTypeName
-    !mCategoryReaderName
-    !mCategoryReaderFormalParameterList
-    !mResultType
-    !categoryReaderCode
-  ] ; 
+  if mImplementedAsFunction then
+    @formalInputParameterListForGeneration categoryReaderFormalParameterList := mCategoryReaderFormalParameterList ;
+    [!?categoryReaderFormalParameterList prependValue
+      !mSelfType
+      !"inObject"
+      ![@lstring new !"self" !here]
+      !true      
+    ] ;
+    outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryReaderAsFunctionImplementation
+      ![mSelfType identifierRepresentation]
+      !mCategoryReaderName
+      !generateFunction [
+        !"categoryReader_" . [mCategoryReaderName identifierRepresentation]
+        !categoryReaderFormalParameterList
+        !mSemanticInstructionListForGeneration
+        !"C_Compiler"
+        ![mResultType key]
+        !mResultVarCppName
+        !false # is not static
+      ]
+    ] ; 
+  else
+    const @string categoryReaderCode := generateCategoryReader [
+      ![mSelfType identifierRepresentation]
+      !""
+      !mCategoryReaderName
+      !mCategoryReaderFormalParameterList
+      !mSemanticInstructionListForGeneration
+      !"C_Compiler"
+      ![mResultType key]
+      !mResultVarCppName
+    ] ;
+    outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryReaderImplementation
+      ![mSelfType identifierRepresentation]
+      !mCategoryReaderName
+      !mCategoryReaderFormalParameterList
+      !mResultType
+      !categoryReaderCode
+    ] ;
+  end if ;
 end reader ;
 
 #---------------------------------------------------------------------------*
