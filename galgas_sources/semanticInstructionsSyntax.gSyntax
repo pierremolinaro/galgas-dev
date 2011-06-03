@@ -375,7 +375,27 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   end repeat ;
   $++$ ;
   $;$ ;
-  outInstruction := [@incrementInstructionAST new ![mReceiverName location] !mReceiverName !mStructAttributeList] ;
+  outInstruction := [@incrementInstructionAST new
+    ![mReceiverName location]
+    !mReceiverName
+    !mStructAttributeList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S E L F    I N C R E M E N T    I N S T R U C T I O N                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> !@semanticInstructionAST outInstruction :
+  $self$ ;
+  const @location instructionLocation := here ;
+  $++$ ;
+  $;$ ;
+  outInstruction := [@selfIncrementInstructionAST new
+    !instructionLocation
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -395,7 +415,27 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   end repeat ;
   $--$ ;
   $;$ ;
-  outInstruction := [@decrementInstructionAST new ![mReceiverName location] !mReceiverName !mStructAttributeList] ;
+  outInstruction := [@decrementInstructionAST new
+    ![mReceiverName location]
+    !mReceiverName
+    !mStructAttributeList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S E L F    D E C R E M E N T    I N S T R U C T I O N                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> !@semanticInstructionAST outInstruction :
+  $self$ ;
+  const @location instructionLocation := here ;
+  $--$ ;
+  $;$ ;
+  outInstruction := [@selfDecrementInstructionAST new
+    !instructionLocation
+  ] ;
 end rule ;
 
 #---------------------------------------------------------------------------*
@@ -1123,7 +1163,7 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    A D D    I N S T R U C T I O N    + =                                  *
+#    +=    I N S T R U C T I O N                                            *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -1142,7 +1182,7 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   @semanticExpressionListAST mExpressionList ;
   <output_expression_list> ?mExpressionList ;
   $;$ ;
-  outInstruction := [@addInstructionAST new
+  outInstruction := [@plusEqualInstructionAST new
     !instructionLocation
     !mReceiverName
     !mStructAttributeList
@@ -1152,7 +1192,26 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    A P P E N D    I N S T R U C T I O N    . =                            *
+#    SELF +=    I N S T R U C T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> !@semanticInstructionAST outInstruction :
+  $self$ ;
+  const @location instructionLocation := here ;
+  $+=$ ;
+  @semanticExpressionListAST mExpressionList ;
+  <output_expression_list> ?mExpressionList ;
+  $;$ ;
+  outInstruction := [@selfPlusEqualInstructionAST new
+    !instructionLocation
+    !mExpressionList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    C O N C A T    I N S T R U C T I O N    . =                            *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -1169,10 +1228,29 @@ rule <semantic_instruction> !@semanticInstructionAST outInstruction :
   @semanticExpressionAST mSourceExpression ;
   <expression> ? mSourceExpression ;
   $;$ ;
-  outInstruction := [@appendInstructionAST new
+  outInstruction := [@concatInstructionAST new
     ![mTargetVariableName location]
     !mTargetVariableName
     !mStructAttributeList
+    !mSourceExpression
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S E L F   C O N C A T    I N S T R U C T I O N    SELF .=              *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> !@semanticInstructionAST outInstruction :
+  $self$ ;
+  const @location instructionLocation := here ;
+  $.=$ ;
+  @semanticExpressionAST mSourceExpression ;
+  <expression> ? mSourceExpression ;
+  $;$ ;
+  outInstruction := [@selfConcatInstructionAST new
+    !instructionLocation
     !mSourceExpression
   ] ;
 end rule ;

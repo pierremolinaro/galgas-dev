@@ -86,7 +86,7 @@
 %---------------------------------------------------- Pour utiliser la police "Fourier"
 \usepackage{fouriernc}
 \usepackage[scaled=0.875]{helvet}
-%\usepackage{courier}
+\usepackage{courier}
 
 %---------------------------------------------------- Pour utiliser la police "Beton, euler"
 %\usepackage{beton, euler}
@@ -140,6 +140,21 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 \usepackage{listings}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   T I K Z    -    P G F                                                                                               *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\usepackage{tikz}
+\usetikzlibrary{calc}
+\usepackage{pgfplots}
+\usetikzlibrary{arrows}
+\usetikzlibrary{decorations}
+\usetikzlibrary{decorations.pathmorphing}
+\usetikzlibrary{shapes.callouts}
+\usetikzlibrary{automata}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -229,6 +244,27 @@
 % \refSubsectionPage{label-section} ---> "section x.y page n"   où x.y est le n° de la sub-section
 \newcommand\refSubsectionPage[1]{\hyperref[subsec:#1]{section \ref*{subsec:#1} page \pageref{subsec:#1}}}
 
+%------------------------------------------------------------------------------------------ RÉFÉRENCES À UNE FIGURE
+% La référence au tableau "nom-de-la-figure" est définie par \labelFigure{nom-de-la-figure}
+\newcommand\labelFigure[1]{\label{fig:#1}}
+% Latex autorise deux types d'appel à une référence \ref{fig:nom-de-la-figure} et \pageref{fig:nom-de-la-figure}
+
+% \refFigure{}{nom-de-la-figure}   ---> "figure x.y"   où x.y est le n° de la figure
+% \refFigure{z}{nom-de-la-figure}  ---> "figure x.y.z" où x.y est le n° de la figure
+\newcommand\refFigure[2]{\hyperref[fig:#2]{figure \ref*{fig:#2}{\ifthenelse{\equal{#1}{}}{}{.#1}}}}
+
+% \refFigureSansPrefixe{}{nom-de-la-figure}   ---> "x.y"   où x.y est le n° de la figure
+% \refFigureSansPrefixe{z}{nom-de-la-figure}  ---> "x.y.z" où x.y est le n° de la figure
+\newcommand\refFigureSansPrefixe[2]{\hyperref[fig:#2]{\ref*{fig:#2}{\ifthenelse{\equal{#1}{}}{}{.#1}}}}
+
+% \refFigurePage{}{nom-de-la-figure}   ---> "figure x.y page n"   où x.y est le n° de la figure
+% \refFigurePage{z}{nom-de-la-figure}  ---> "figure x.y.z page n" où x.y est le n° de la figure
+\newcommand\refFigurePage[2]{\hyperref[fig:#2]{figure \ref*{fig:#2}{\ifthenelse{\equal{#1}{}}{}{.#1}} page \pageref{fig:#2}}}
+
+% \refFigurePageSansPrefixe{}{nom-de-la-figure}   ---> "x.y page n"   où x.y est le n° de la figure
+% \refFigurePageSansPrefixe{z}{nom-de-la-figure}  ---> "x.y.z page n" où x.y est le n° de la figure
+\newcommand\refFigurePageSansPrefixe[2]{\hyperref[fig:#2]{\ref*{fig:#2}{\ifthenelse{\equal{#1}{}}{}{.#1}} page \pageref{fig:#2}}}
+
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
 %   S H O W K E Y S    ( P O U R    D É B O G U E R )                                                                   *
@@ -286,7 +322,7 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 \title{\Huge{\textbf{GALGAS Book}}\\~\\ \normalsize{For release GALGAS-CURRENT-VERSION}}
-\author{Pierre Molinaro}
+\author{Jean-Luc Béchennec\\Mikaël Briday\\Pierre Molinaro}
 \date \today 
 
 \maketitle

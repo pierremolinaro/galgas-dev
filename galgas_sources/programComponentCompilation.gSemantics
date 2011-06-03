@@ -244,6 +244,7 @@ routine compileProgramComponentFromAST
     !buildPredefinedTypes [!semanticContext]
     ![@unifiedTypeMapProxy null]
     !""
+    ![@unifiedTypeMapProxy null]
   ] ;
 #--- Analyse 'before' instructions
   compileBeforeClause

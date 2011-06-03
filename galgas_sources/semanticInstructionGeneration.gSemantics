@@ -256,25 +256,26 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @appendInstructionForGeneration generateInstruction
+override method @concatInstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "//-------- @appendInstructionForGeneration\n" ;
+  ioGeneratedCode .= "//-------- @concatInstructionForGeneration\n" ;
   @string sourceVar ;
   [mSourceExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
   [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing] ;
+  @string targetCppName := mTargetVariableCppName ;
   foreach mStructAttributeList do
-    ioGeneratedCode .= "(TO DO handle field in @appendInstructionForGeneration)\n" ;
+    targetCppName .= ".mAttribute_" . mValue ;
   end foreach ;
-  ioGeneratedCode .= mTargetVariableCppName . ".dotAssign_operation (" . sourceVar
+  ioGeneratedCode .= targetCppName . ".dotAssign_operation (" . sourceVar
                   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !mTargetVariableCppName] ;
   if inGenerateCheckValid then
     ioGeneratedCode .= "#ifndef DO_NOT_GENERATE_CHECKINGS\n" ;
-    ioGeneratedCode .= "  " . mTargetVariableCppName . ".checkIsValid (HERE) ;\n" ;
+    ioGeneratedCode .= "  " . targetCppName . ".checkIsValid (HERE) ;\n" ;
     ioGeneratedCode .= "#endif\n" ;
   end if ;
 end method ;
@@ -623,6 +624,7 @@ override method @selfModifierCallInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode
 :
   ioGeneratedCode .= "{ //-------- @selfModifierCallInstructionForGeneration\n" ;
+  [!?ioUnusedVariableCppNameSet removeKey !mSelfCppName] ;
 #--- Parameters
   @stringlist parameterCppNameList [emptyList] ;
   @stringlist jokerParametersToReleaseList [emptyList] ;
@@ -636,12 +638,16 @@ override method @selfModifierCallInstructionForGeneration generateInstruction
   switch mKind
   when definedAsCategory :
     if [mReceiverType mTypeKindEnum] == [@typeKindEnum classType] then
-      ioGeneratedCode .= "callCategoryModifier_" . [mModifierName identifierRepresentation] . " (" . mCurrentObjectCppPointer . ", " ;
+      ioGeneratedCode .= "callCategoryModifier_" . [mModifierName identifierRepresentation] . " (" . mSelfCppName . ", " ;
     else
-      ioGeneratedCode .= "categoryModifier_" . [mModifierName identifierRepresentation] . " (" . mCurrentObjectCppPointer . ", " ;
+      ioGeneratedCode .= "categoryModifier_" . [mModifierName identifierRepresentation] . " (" . mSelfCppName . ", " ;
     end if ;
   when definedAsMember :
-    ioGeneratedCode .= mCurrentObjectCppPointer . "->modifier_" . [mModifierName identifierRepresentation] . " (" ;
+    if [mReceiverType mTypeKindEnum] == [@typeKindEnum classType] then
+      ioGeneratedCode .= mSelfCppName . "->modifier_" . [mModifierName identifierRepresentation] . " (" ;
+    else
+      ioGeneratedCode .= mSelfCppName . ".modifier_" . [mModifierName identifierRepresentation] . " (" ;
+    end if ;
   end switch ;
   foreach parameterCppNameList
     do ioGeneratedCode .= mValue ;
@@ -766,13 +772,13 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @addAssignInstructionForGeneration generateInstruction
+override method @plusEqualnstructionForGeneration generateInstruction
   ??@bool inGenerateCheckValid
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "//-------- @addAssignInstructionForGeneration\n" ;
+  ioGeneratedCode .= "//-------- @plusEqualnstructionForGeneration\n" ;
 #--- Parameters
   @stringlist parameterList [emptyList] ;
   foreach mExpressionList do

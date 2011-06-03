@@ -1084,6 +1084,7 @@ routine semanticAnalysisOfSyntaxComponent
     !inPredefinedTypes
     ![@unifiedTypeMapProxy null]
     !""
+    ![@unifiedTypeMapProxy null]
   ] ;
 #--- Rule list
   @uint selectMethodCount := 0 ;

@@ -19,6 +19,13 @@ routine testsuite_type_categories :
   @string s ;
   [[@lstring new !"Hello" !here] op ?s] ;
   log s ;
+  @lstring ls [new !"Hello" ! here] ;
+  [!?ls appendInt !3] ;
+  log ls ;
+  [!?aList appendSquare!9] ;
+  log aList ;
+  @uint64list aList64 [listWithValue !7L] ;
+  [!?aList64 prependSquare !5L] ;
 end routine ;
 
 #----------- Category readers
@@ -52,5 +59,28 @@ end method ;
 method @lstring op !@string outResult :
   outResult := string . " !" ;
 end method ;
+
+#------------ Category modifiers
+modifier @lstring appendInt ??@uint inValue :
+  string .= [inValue string] ;
+end modifier ;
+
+modifier @uintlist appendSquare ??@uint inValue :
+  self += !inValue * inValue ;
+end modifier ;
+
+modifier @uint64list prependSquare ??@uint64 inValue :
+  [!?self prependValue ![inValue square]] ;
+end modifier ;
+
+modifier @string concatList ??@stringlist inList :
+  foreach inList do
+    self .= mValue ;
+  end foreach ;
+end modifier ;
+
+modifier @uint increment :
+  self ++ ;
+end modifier ;
 
 end semantics ;

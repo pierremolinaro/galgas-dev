@@ -487,15 +487,27 @@ class @assignmentInstructionAST extends @semanticInstructionAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  D O T    A S S I G N M E N T    I N S T R U C T I O N                    *
+#  C O N C A T    I N S T R U C T I O N                                     *
 #                                                                           *
 #  VARIABLE .= EXPRESSION ;                                                 *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @appendInstructionAST extends @semanticInstructionAST {
+class @concatInstructionAST extends @semanticInstructionAST {
   @lstring mTargetVariableName ;
   @lstringlist mStructAttributeList ;
+  @semanticExpressionAST mSourceExpression ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  S E L F    C O N C A T    I N S T R U C T I O N                          *
+#                                                                           *
+#  SELF .= EXPRESSION ;                                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @selfConcatInstructionAST extends @semanticInstructionAST {
   @semanticExpressionAST mSourceExpression ;
 }
 
@@ -680,13 +692,23 @@ class @structuredCastInstructionAST extends @semanticInstructionAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    A D D    I N S T R U C T I O N      + =                                *
+#    + =    I N S T R U C T I O N                                           *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-class @addInstructionAST extends @semanticInstructionAST {
+class @plusEqualInstructionAST extends @semanticInstructionAST {
   @lstring mReceiverName ;
   @lstringlist mStructAttributeList ;
+  @semanticExpressionListAST mExpressions ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    SELF +=    I N S T R U C T I O N                                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @selfPlusEqualInstructionAST extends @semanticInstructionAST {
   @semanticExpressionListAST mExpressions ;
 }
 
@@ -703,6 +725,15 @@ class @incrementInstructionAST extends @semanticInstructionAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    S E L F    I N C R E M E N T    I N S T R U C T I O N                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @selfIncrementInstructionAST extends @semanticInstructionAST {
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    D E C R E M E N T    I N S T R U C T I O N                             *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -710,6 +741,15 @@ class @incrementInstructionAST extends @semanticInstructionAST {
 class @decrementInstructionAST extends @semanticInstructionAST {
   @lstring mReceiverName ;
   @lstringlist mStructAttributeList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    S E L F    D E C R E M E N T    I N S T R U C T I O N                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @selfDecrementInstructionAST extends @semanticInstructionAST {
 }
 
 #---------------------------------------------------------------------------*
