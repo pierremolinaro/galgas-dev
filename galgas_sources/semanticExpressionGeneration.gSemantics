@@ -605,7 +605,7 @@ override method @multiplicationExpressionForGeneration generateExpression
   @string rightTemporaryOperand ;
   [mRightExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?rightTemporaryOperand] ;
 #--- Generate Comparison
-  outCppExpression := leftTemporaryOperand . " .multiply_operation ("
+  outCppExpression := leftTemporaryOperand . ".multiply_operation ("
                   . rightTemporaryOperand . ", " . compilerCppName [] . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;

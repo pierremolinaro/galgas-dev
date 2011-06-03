@@ -196,3 +196,13 @@ LOGGING Hello !: <@string:"Hello !">
 LOGGING v: <@uint64:49>
 LOGGING u: <@uint:10>
 LOGGING s: <@string:"Hello !">
+LOGGING ls: <struct @lstring:<@string:"Hello3">, <@location:nowhere:1:1>>
+LOGGING aList: <list @uintlist (4 objects): 
+|-at 0
+| | mValue:<@uint:1>
+|-at 1
+| | mValue:<@uint:2>
+|-at 2
+| | mValue:<@uint:3>
+|-at 3
+| | mValue:<@uint:4>>

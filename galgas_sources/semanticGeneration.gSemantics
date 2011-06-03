@@ -833,6 +833,20 @@ local filewrapper semanticComponentGenerationTemplate in "../generation_template
   ;
   
 
+#--- Category modifier implemented as function
+  template categoryModifierAsFunctionDeclaration "category-modifier-as-function.h.gTemplate"
+    ?@string TYPE_NAME
+    ?@string MODIFIER_NAME
+    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  ;
+
+  template categoryMmodifierAsFunctionImplementation "category-modifier-as-function.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@string MODIFIER_NAME
+    ?@string MODIFIER_IMPLEMENTATION
+  ;
+  
+
 #--- Function
   template functionDeclaration "function-declaration.h.gTemplate"
     ?@string FUNCTION_NAME
@@ -1217,11 +1231,19 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @categoryModifierForGeneration appendDeclaration1 -> @string outHeader :
-  outHeader := [filewrapper semanticComponentGenerationTemplate.categoryModifierDeclaration
-    !mTypeName
-    !mCategoryModifierName
-    !mCategoryModifierFormalParameterList
-  ] ; 
+  if mImplementedAsFunction then
+    outHeader := [filewrapper semanticComponentGenerationTemplate.categoryModifierAsFunctionDeclaration
+      ![mSelfType key]
+      !mCategoryModifierName
+      !mCategoryModifierFormalParameterList
+    ] ; 
+  else
+    outHeader := [filewrapper semanticComponentGenerationTemplate.categoryModifierDeclaration
+      ![mSelfType key]
+      !mCategoryModifierName
+      !mCategoryModifierFormalParameterList
+    ] ;
+  end if ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -1408,7 +1430,6 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @listmapTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-#  message "@listmapTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.listmapTypeSpecificImplementation
     ![mTypeProxy identifierRepresentation]
     ![mAssociatedListTypeIndex identifierRepresentation]
@@ -1419,7 +1440,6 @@ override reader @listmapTypeForGeneration appendSpecificImplementation ->@string
 #---------------------------------------------------------------------------*
 
 override reader @mapTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-#  message "@mapTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.mapTypeSpecificImplementation
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
@@ -1434,7 +1454,6 @@ override reader @mapTypeForGeneration appendSpecificImplementation ->@string out
 #---------------------------------------------------------------------------*
 
 override reader @uniqueMapTypeForGeneration appendSpecificImplementation ->@string outImplementation :
-#  message "@uniqueMapTypeForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper typeGenerationTemplate.uniqueMapTypeSpecificImplementation
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
@@ -1665,19 +1684,42 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @categoryModifierForGeneration appendSpecificImplementation -> @string outImplementation :
-  const @string modifierImplementation := generateCategoryModifier [
-    !mTypeName
-    !""
-    !mCategoryModifierName
-    !mCategoryModifierFormalParameterList
-    !mSemanticInstructionListForGeneration
-  ] ;
-  outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryModifierImplementation
-    !mTypeName
-    !mCategoryModifierName
-    !mCategoryModifierFormalParameterList
-    !modifierImplementation
-  ] ; 
+  if mImplementedAsFunction then
+    @formalParameterListForGeneration categoryModifierFormalParameterList := mCategoryModifierFormalParameterList ;
+    [!?categoryModifierFormalParameterList prependValue
+      ![@formalArgumentPassingModeAST argumentInOut]
+      !mSelfType
+      ![@lstring new !"self" !here]
+      !"ioObject"
+    ] ;
+    outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryMethodAsFunctionImplementation
+      ![mSelfType key]
+      !mCategoryModifierName
+      !generateProcedure [
+        !"categoryModifier_" . [mCategoryModifierName identifierRepresentation]
+        !categoryModifierFormalParameterList
+        !mSemanticInstructionListForGeneration
+        !false # is not const
+        !"C_Compiler"
+        !true # Generate location Argument
+        !false # Do not generate 'resetTemplateString'
+      ]
+    ] ; 
+  else
+    const @string modifierImplementation := generateCategoryModifier [
+      ![mSelfType key]
+      !""
+      !mCategoryModifierName
+      !mCategoryModifierFormalParameterList
+      !mSemanticInstructionListForGeneration
+    ] ;
+    outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryModifierImplementation
+      ![mSelfType key]
+      !mCategoryModifierName
+      !mCategoryModifierFormalParameterList
+      !modifierImplementation
+    ] ;
+  end if ;
 end reader ;
 
 #---------------------------------------------------------------------------*

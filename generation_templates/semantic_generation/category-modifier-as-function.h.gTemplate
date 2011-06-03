@@ -1,0 +1,22 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["Category modifier '@" . TYPE_NAME . " " . MODIFIER_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+void categoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%GALGAS_%![TYPE_NAME identifierRepresentation]% & ioObject%
+  foreach FORMAL_ARGUMENT_LIST do
+    %,\n%!^
+    if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then
+      %const GALGAS_%![mFormalArgumentType identifierRepresentation]% constin_%![mFormalArgumentName identifierRepresentation]
+    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentInOut] then
+      %GALGAS_%![mFormalArgumentType identifierRepresentation]% & io_%![mFormalArgumentName identifierRepresentation]
+    elsif mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentOut] then
+      %GALGAS_%![mFormalArgumentType identifierRepresentation]% & out_%![mFormalArgumentName identifierRepresentation]
+    else # argumentIn
+      %GALGAS_%![mFormalArgumentType identifierRepresentation]% in_%![mFormalArgumentName identifierRepresentation]
+    end if
+  end foreach
+  %,\n%!^%C_Compiler * inCompiler%
+  %\n%!^%COMMA_LOCATION_ARGS) ;
+

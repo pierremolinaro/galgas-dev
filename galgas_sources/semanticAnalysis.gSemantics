@@ -1042,6 +1042,7 @@ override method @routineDeclarationAST performSemanticAnalysis
     !inPredefinedTypes
     ![@unifiedTypeMapProxy null]
     !""
+    ![@unifiedTypeMapProxy null]
   ] ;
   analyzeRoutineBody
     !analysisContext
@@ -1256,6 +1257,7 @@ override method @functionDeclarationAST performSemanticAnalysis
     !inPredefinedTypes
     ![@unifiedTypeMapProxy null]
     !""
+    ![@unifiedTypeMapProxy null]
   ] ;
   analyzeFunctionBody
     !analysisContext
@@ -1300,6 +1302,7 @@ override method @onceFunctionDeclarationAST performSemanticAnalysis
     !inPredefinedTypes
     ![@unifiedTypeMapProxy null]
     !""
+    ![@unifiedTypeMapProxy null]
   ] ;
   analyzeFunctionBody
     !analysisContext
@@ -1473,6 +1476,7 @@ override method @categoryMethodAST performSemanticAnalysis
     !inPredefinedTypes
     !selfType
     !selfObjectName
+    ![@unifiedTypeMapProxy null]
   ] ;
   analyzeRoutineBody
     !analysisContext
@@ -1537,6 +1541,7 @@ override method @overridingCategoryMethodAST performSemanticAnalysis
     !inPredefinedTypes
     !selfType
     !"object"
+    ![@unifiedTypeMapProxy null]
   ] ;
   analyzeRoutineBody
     !analysisContext
@@ -1669,9 +1674,18 @@ override method @categoryModifierAST performSemanticAnalysis
 :
 #--- Self type
   const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+  @string selfObjectName ;
+  @string selfObjectAccessor ;
+  @bool implementedAsFunction ;
 #--- Check self type is a class
-  if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
-    error mCategoryModifierName: "cannot declare a category modifier: '@" . [selfType key] . "' is not a class" ;
+  if [selfType mTypeKindEnum] == [@typeKindEnum classType] then
+    selfObjectName := "object" ;
+    selfObjectAccessor := "object->" ;
+    implementedAsFunction := false ;
+  else
+    selfObjectName := "ioObject" ;
+    selfObjectAccessor := "ioObject." ;
+    implementedAsFunction := true ;
   end if ;
 #--- Analyze instruction list
   @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
@@ -1680,7 +1694,8 @@ override method @categoryModifierAST performSemanticAnalysis
     !inSemanticContext
     !inPredefinedTypes
     !selfType
-    !"object"
+    !selfObjectName
+    !selfType
   ] ;
   analyzeRoutineBody
     !analysisContext
@@ -1688,7 +1703,7 @@ override method @categoryModifierAST performSemanticAnalysis
     ![@localConstantList emptyList]
     ![@typedAttributeList emptyList]
     ![selfType mAllTypedAttributeList]
-    !"object->"
+    !selfObjectAccessor
     !mCategoryModifierInstructionList
     !mEndOfModifierLocation
     ?semanticInstructionListForGeneration
@@ -1697,8 +1712,9 @@ override method @categoryModifierAST performSemanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration += ![@categoryModifierForGeneration new
     !mIsGlobal
-    ![mTypeName string]
+    !selfType
     ![mCategoryModifierName string]
+    !implementedAsFunction
     !formalParameterListForGeneration
     ![selfType mAllTypedAttributeList]
     !semanticInstructionListForGeneration
@@ -1744,6 +1760,7 @@ override method @overridingCategoryModifierAST performSemanticAnalysis
     !inPredefinedTypes
     !selfType
     !"object"
+    !selfType
   ] ;
   analyzeRoutineBody
     !analysisContext
@@ -1898,6 +1915,7 @@ override method @categoryReaderAST performSemanticAnalysis
     !inPredefinedTypes
     !selfType
     !selfObjectName
+    ![@unifiedTypeMapProxy null]
   ] ;
   @unifiedTypeMapProxy returnType ;
   @string returnVariableCppName ;
@@ -1978,6 +1996,7 @@ override method @overridingCategoryReaderAST performSemanticAnalysis
     !inPredefinedTypes
     !selfType
     !"object"
+    ![@unifiedTypeMapProxy null]
   ] ;
   @unifiedTypeMapProxy returnType ;
   @string returnVariableCppName ;

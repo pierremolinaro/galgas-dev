@@ -371,8 +371,9 @@ struct @predefinedTypes {
 struct @analysisContext {
   @semanticContext mSemanticContext ;
   @predefinedTypes mPredefinedTypes ;
-  @unifiedTypeMapProxy mSelfTypeProxy ; # isNull if outside a method, reader, category
-  @string mSelfObjectCppName ; # "this" in method, reader, "object" in category, "" outside
+  @unifiedTypeMapProxy mSelfCopyTypeProxy ; # isNull if outside a category
+  @string mSelfObjectCppName ;
+  @unifiedTypeMapProxy mSelfTypeProxy ; # isNull if outside a modifier category
 }
 
 #---------------------------------------------------------------------------*
@@ -394,11 +395,11 @@ override method @selfCopyInExpressionAST analyzeSemanticExpression
   ?!@variableMap unused ioVariableMap
   !@semanticExpressionForGeneration outExpression
 :
-  if [inAnalysisContext->mSelfTypeProxy isNull] then
+  if [inAnalysisContext->mSelfCopyTypeProxy isNull] then
     error mSelfLocation: "'selfcopy' cannot be used in this context" : outExpression ;
   else
     const @string selfCppName := inAnalysisContext->mSelfObjectCppName ;
-    outExpression := [@selfCopyInExpressionForGeneration new !inAnalysisContext->mSelfTypeProxy !mSelfLocation !selfCppName] ;
+    outExpression := [@selfCopyInExpressionForGeneration new !inAnalysisContext->mSelfCopyTypeProxy !mSelfLocation !selfCppName] ;
   end if ;
 end method ;
 

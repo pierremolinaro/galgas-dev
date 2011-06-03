@@ -724,11 +724,11 @@ override method @selfModifierCallInstructionAST analyzeSemanticInstruction
 :
 #--- Analyze "self", as receiver expression
   @unifiedTypeMapProxy selfTypeProxy ;
-  @string currentObjectCppPointer ;
+  @string selfObjectCppName ;
   if [inAnalysisContext->mSelfTypeProxy isNull] then
-    error mModifierName: "'self' cannot be used in this context" : currentObjectCppPointer, selfTypeProxy ;
+    error mModifierName: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy ;
   else
-    currentObjectCppPointer := inAnalysisContext->mSelfObjectCppName ;
+    selfObjectCppName := inAnalysisContext->mSelfObjectCppName ;
     selfTypeProxy := inAnalysisContext->mSelfTypeProxy ;
   end if ;
 #--- Get modifier signature
@@ -749,7 +749,7 @@ override method @selfModifierCallInstructionAST analyzeSemanticInstruction
   ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@selfModifierCallInstructionForGeneration new
-    !currentObjectCppPointer
+    !selfObjectCppName
     !selfTypeProxy
     !mModifierName
     !kind
@@ -783,7 +783,7 @@ end function ;
 
 #---------------------------------------------------------------------------*
 
-override method @appendInstructionAST analyzeSemanticInstruction
+override method @concatInstructionAST analyzeSemanticInstruction
   ??@analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
@@ -813,7 +813,7 @@ override method @appendInstructionAST analyzeSemanticInstruction
 #--- Check assignment type compatibility
   checkAssignmentTypes !targetType ![expression mType] !mInstructionLocation ;
 #--- Generate instruction
-  ioInstructionListForGeneration += ![@appendInstructionForGeneration new
+  ioInstructionListForGeneration += ![@concatInstructionForGeneration new
     !mInstructionLocation
     !targetType
     !targetVariableCppName
@@ -825,7 +825,49 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @addInstructionAST analyzeSemanticInstruction # +=
+override method @selfConcatInstructionAST analyzeSemanticInstruction
+  ??@analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+#--- Analyze "self", as receiver expression
+  @unifiedTypeMapProxy selfTypeProxy ;
+  @string selfObjectCppName ;
+  if [inAnalysisContext->mSelfTypeProxy isNull] then
+    error mInstructionLocation: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy ;
+  else
+    selfObjectCppName := inAnalysisContext->mSelfObjectCppName ;
+    selfTypeProxy := inAnalysisContext->mSelfTypeProxy ;
+  end if ;
+#--- Check target variable type support '.=' operator
+  if ([selfTypeProxy mHandledOperatorFlags] & dotAssignOperator []) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" . [selfTypeProxy key] . "' type, but this type does not support the '.=' operator"
+    ;
+  end if ;
+#--- Analyze source expression
+  @semanticExpressionForGeneration expression ;
+  [mSourceExpression analyzeSemanticExpression
+    !inAnalysisContext
+    !?ioVariableMap
+    ?expression
+  ] ;
+#--- Check assignment type compatibility
+  checkAssignmentTypes !selfTypeProxy ![expression mType] !mInstructionLocation ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@concatInstructionForGeneration new
+    !mInstructionLocation
+    !selfTypeProxy
+    !selfObjectCppName
+    !selfObjectCppName
+    ![@lstringlist emptyList]
+    !expression
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @plusEqualInstructionAST analyzeSemanticInstruction # +=
   ??@analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
@@ -864,11 +906,63 @@ override method @addInstructionAST analyzeSemanticInstruction # +=
       effectiveParameterList += !exp ;
     end foreach ;
   #--- Generate instruction
-    ioInstructionListForGeneration += ![@addAssignInstructionForGeneration new
+    ioInstructionListForGeneration += ![@plusEqualnstructionForGeneration new
       !targetVariableCppName
       !targetType
       !mInstructionLocation
       !mStructAttributeList
+      !effectiveParameterList
+    ] ;
+  end if ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @selfPlusEqualInstructionAST analyzeSemanticInstruction
+  ??@analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+#--- Analyze "self", as receiver expression
+  @unifiedTypeMapProxy selfTypeProxy ;
+  @string selfObjectCppName ;
+  if [inAnalysisContext->mSelfTypeProxy isNull] then
+    error mInstructionLocation: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy ;
+  else
+    selfObjectCppName := inAnalysisContext->mSelfObjectCppName ;
+    selfTypeProxy := inAnalysisContext->mSelfTypeProxy ;
+  end if ;
+#--- Check target variable type support '+=' operator
+  const @unifiedTypeMapProxyList addAssignOperatorArguments:= [selfTypeProxy mAddAssignOperatorArguments] ; # Empty list if += operator is not supported
+  if [addAssignOperatorArguments length] == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" . [selfTypeProxy key] . "' type, but this type does not support the '+=' operator"
+    ;
+#--- Analyze source expressions
+  elsif [mExpressions length] != [addAssignOperatorArguments length] then
+    error mInstructionLocation
+    : "calling the '+=' operator on an '@" . [selfTypeProxy key] . "' object requires "
+    . [[addAssignOperatorArguments length] string] . " parameter(s), while this invocation has "
+    . [[mExpressions length] string] . " parameter(s)" 
+    ;
+  else
+    @semanticExpressionListForGeneration effectiveParameterList [emptyList] ;
+    foreach mExpressions, addAssignOperatorArguments do
+      @semanticExpressionForGeneration exp ;
+      [mExpression analyzeSemanticExpression
+        !inAnalysisContext
+        !?ioVariableMap
+        ?exp
+      ] ;
+      checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
+      effectiveParameterList += !exp ;
+    end foreach ;
+  #--- Generate instruction
+    ioInstructionListForGeneration += ![@plusEqualnstructionForGeneration new
+      !selfObjectCppName
+      !selfTypeProxy
+      !mInstructionLocation
+      ![@lstringlist emptyList]
       !effectiveParameterList
     ] ;
   end if ;
@@ -906,6 +1000,37 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @selfIncrementInstructionAST analyzeSemanticInstruction
+  ??@analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+#--- Analyze "self", as receiver expression
+  @unifiedTypeMapProxy selfTypeProxy ;
+  @string selfObjectCppName ;
+  if [inAnalysisContext->mSelfTypeProxy isNull] then
+    error mInstructionLocation: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy ;
+  else
+    selfObjectCppName := inAnalysisContext->mSelfObjectCppName ;
+    selfTypeProxy := inAnalysisContext->mSelfTypeProxy ;
+  end if ;
+#--- Check target type accepts incrementation
+  if ([selfTypeProxy mHandledOperatorFlags] & incDecOperator []) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" . [selfTypeProxy key] . "' type, but this type does not support the '++' operator"
+    ;
+  end if ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@incrementInstructionForGeneration new
+    !mInstructionLocation
+    !selfObjectCppName
+    !selfTypeProxy
+    ![@lstringlist emptyList]
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @decrementInstructionAST analyzeSemanticInstruction
   ??@analysisContext unused inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
@@ -931,6 +1056,37 @@ override method @decrementInstructionAST analyzeSemanticInstruction
     !targetVariableCppName
     !targetType
     !mStructAttributeList
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @selfDecrementInstructionAST analyzeSemanticInstruction
+  ??@analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap unused ioVariableMap
+:
+#--- Analyze "self", as receiver expression
+  @unifiedTypeMapProxy selfTypeProxy ;
+  @string selfObjectCppName ;
+  if [inAnalysisContext->mSelfTypeProxy isNull] then
+    error mInstructionLocation: "'self' can be used only in category modifiers" : selfObjectCppName, selfTypeProxy ;
+  else
+    selfObjectCppName := inAnalysisContext->mSelfObjectCppName ;
+    selfTypeProxy := inAnalysisContext->mSelfTypeProxy ;
+  end if ;
+#--- Check target type accepts incrementation
+  if ([selfTypeProxy mHandledOperatorFlags] & incDecOperator []) == 0 then
+    error mInstructionLocation
+    :"the target object has the '@" . [selfTypeProxy key] . "' type, but this type does not support the '--' operator"
+    ;
+  end if ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@decrementInstructionForGeneration new
+    !mInstructionLocation
+    !selfObjectCppName
+    !selfTypeProxy
+    ![@lstringlist emptyList]
   ] ;
 end method ;
 

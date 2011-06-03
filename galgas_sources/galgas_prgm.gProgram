@@ -330,11 +330,6 @@ indexing with projectLL1grammar
       end if ;
     end switch ;
   end foreach ;
-#---------------------------------- Perform global checkings
-  if [@uint errorCount] == 0 then
-    message "*** Perform global checkings\n" ;
-    performProjectGlobalCheckings !parsedComponentStruct ![projectComponent mEndOfSourceFile] ;
-  end if ;
 #---------------------------------- Compile galgas sources
   if [@uint errorCount] == 0 then
   #--- Lexique components
@@ -408,12 +403,18 @@ indexing with projectLL1grammar
       ;
     end foreach ;
   end if ;
+#---------------------------------- Perform global checkings
+  if [@uint errorCount] == 0 then
+    message "*** Perform global checkings\n" ;
+    performProjectGlobalCheckings !parsedComponentStruct ![projectComponent mEndOfSourceFile] ;
+  end if ;
+#--- Build project files
   buildProject !inSourceFile->string ;
 }
 
 #---------------------------------------------------------------------------*
 
-routine buildProject ??@string inSourceFilePath :
+local routine buildProject ??@string inSourceFilePath :
   const @string buildOption := [option galgas_cli_options.buildOption value] ;
   if ([@uint errorCount] == 0) & (buildOption != "") then
     @stringlist buildList := [buildOption componentsSeparatedByString !","] ;
