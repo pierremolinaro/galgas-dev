@@ -636,6 +636,7 @@ override method @methodCallInstructionAST analyzeSemanticInstruction
 #--- Generate instruction
   ioInstructionListForGeneration += ![@methodCallInstructionForGeneration new
     !mInstructionLocation
+    ![receiverExpression mType]
     !receiverExpression
     ![mMethodName string]
     !kind
@@ -646,7 +647,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @thisMethodCallInstructionAST analyzeSemanticInstruction
+override method @selfMethodCallInstructionAST analyzeSemanticInstruction
   ??@analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
@@ -657,7 +658,7 @@ override method @thisMethodCallInstructionAST analyzeSemanticInstruction
   if [inAnalysisContext->mSelfTypeProxy isNull] then
     error mMethodName: "'self' cannot be used in this context" : currentObjectCppPointer, selfTypeProxy ;
   else
-    currentObjectCppPointer := inAnalysisContext->mSelfObjectCppPointer ;
+    currentObjectCppPointer := inAnalysisContext->mSelfObjectCppName ;
     selfTypeProxy := inAnalysisContext->mSelfTypeProxy ;
   end if ;
 #--- Get type method signature
@@ -678,6 +679,7 @@ override method @thisMethodCallInstructionAST analyzeSemanticInstruction
   ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@selfMethodCallInstructionForGeneration new
+    !selfTypeProxy
     !currentObjectCppPointer
     !mInstructionLocation
     ![mMethodName string]
@@ -709,56 +711,6 @@ function checkMethodImplementationInSuperClasses
     end switch ;
   end if ;
 end function ;
-
-#---------------------------------------------------------------------------*
-
-override method @superMethodCallInstructionAST analyzeSemanticInstruction
-  ??@analysisContext inAnalysisContext
-  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
-  ?!@variableMap ioVariableMap
-:
-#--- Analyze super, as receiver expression
-  @unifiedTypeMapProxy superTypeProxy ;
-  @string currentObjectCppPointer ;
-  if [inAnalysisContext->mSelfTypeProxy isNull] then
-    error mMethodName: "'super' cannot be used in this context" : currentObjectCppPointer, superTypeProxy ;
-  elsif inAnalysisContext->mSelfObjectCppPointer != "this" then
-    error mMethodName: "'super' cannot be used in a category" : currentObjectCppPointer, superTypeProxy ;
-  else
-    currentObjectCppPointer := inAnalysisContext->mSelfObjectCppPointer ;
-    superTypeProxy := [inAnalysisContext->mSelfTypeProxy mSuperType] ;
-  end if ;
-#--- Get type method signature
-  @formalParameterSignature routineSignature ;
-  @bool hasCompilerArgument ;
-  @methodKind kind ;
-  [[superTypeProxy mInstanceMethodMap] searchKey !mMethodName ?kind ?routineSignature ?* ?hasCompilerArgument ?* ?*] ;
-#--- Check the method is actually implemented by the super class, or by one of its super classes
-  const @string superClassThatImplementsMethod := checkMethodImplementationInSuperClasses [!mMethodName !superTypeProxy] ;
-  if superClassThatImplementsMethod == "" then
-    error mMethodName: "the '" . mMethodName . "' method is not implemented by super class(es)" ;
-  end if ;
-#--- Check effective parameters
-  @actualParameterListForGeneration actualParameterListForGeneration ;
-  analyzeRoutineArguments
-    !inAnalysisContext
-    !mMethodName
-    !"'" . mMethodName . "' instance method header"
-    !routineSignature
-    !mActualParameterList
-    !?ioVariableMap
-    ?actualParameterListForGeneration
-  ;
-#--- Generate instruction
-  ioInstructionListForGeneration += ![@superMethodCallInstructionForGeneration new
-    !mInstructionLocation
-    !superClassThatImplementsMethod
-    ![mMethodName string]
-    !kind
-    !actualParameterListForGeneration
-    !hasCompilerArgument
-  ] ;
-end method ;
 
 #---------------------------------------------------------------------------*
 
@@ -809,7 +761,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @thisModifierCallInstructionAST analyzeSemanticInstruction
+override method @selfModifierCallInstructionAST analyzeSemanticInstruction
   ??@analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
@@ -820,7 +772,7 @@ override method @thisModifierCallInstructionAST analyzeSemanticInstruction
   if [inAnalysisContext->mSelfTypeProxy isNull] then
     error mModifierName: "'self' cannot be used in this context" : currentObjectCppPointer, selfTypeProxy ;
   else
-    currentObjectCppPointer := inAnalysisContext->mSelfObjectCppPointer ;
+    currentObjectCppPointer := inAnalysisContext->mSelfObjectCppName ;
     selfTypeProxy := inAnalysisContext->mSelfTypeProxy ;
   end if ;
 #--- Get modifier signature
@@ -882,9 +834,9 @@ override method @superModifierCallInstructionAST analyzeSemanticInstruction
 :
 #--- Analyze super, as receiver expression
   @unifiedTypeMapProxy superTypeProxy ;
-  if [ioVariableMap hasKey !selfMarkName []] then
+  if [ioVariableMap hasKey !"--self--?"] then
     @unifiedTypeMapProxy thisTypeProxy ;
-    [!?ioVariableMap searchForReadAccess ![@lstring new !selfMarkName [] !here] ?thisTypeProxy ?* ?*] ;
+    [!?ioVariableMap searchForReadAccess ![@lstring new !"--self--?" !here] ?thisTypeProxy ?* ?*] ;
     if [[thisTypeProxy mSuperType] isNull] then
       error mInstructionLocation: "'super' cannot be used, current class has no super class":superTypeProxy ;
     else

@@ -15,7 +15,7 @@ end reader ;
 reader @BB otherReader ?@uint inA ??@string inB -> @string outResult
 :
   inA ++ ;
-  outResult := inB . inA . [selfcopy aReader !inA !inB] . [self aReader !inA !inB] ;
+  outResult := inB . inA . [selfcopy aReader !inA !inB] . [selfcopy aReader !inA !inB] ;
 end reader ;
 
 abstract class @CC extends @BB {}

@@ -21,12 +21,6 @@ semantics semanticExpressionAnalysis :
   import "semanticsDecoratedTypes.gSemantics" ;
 
 #---------------------------------------------------------------------------*
-
-once selfMarkName ->@string outCompilerCppName :
-  outCompilerCppName := "-self-" ;
-end once ;
-
-#---------------------------------------------------------------------------*
 #                                                                           *
 #    V A R I A B L E    M A P                                               *
 #                                                                           *
@@ -378,7 +372,7 @@ struct @analysisContext {
   @semanticContext mSemanticContext ;
   @predefinedTypes mPredefinedTypes ;
   @unifiedTypeMapProxy mSelfTypeProxy ; # isNull if outside a method, reader, category
-  @string mSelfObjectCppPointer ; # "this" in method, reader, "object" in category, "" outside
+  @string mSelfObjectCppName ; # "this" in method, reader, "object" in category, "" outside
 }
 
 #---------------------------------------------------------------------------*
@@ -403,7 +397,7 @@ override method @selfCopyInExpressionAST analyzeSemanticExpression
   if [inAnalysisContext->mSelfTypeProxy isNull] then
     error mSelfLocation: "'selfcopy' cannot be used in this context" : outExpression ;
   else
-    const @string selfCppName := inAnalysisContext->mSelfObjectCppPointer ;
+    const @string selfCppName := inAnalysisContext->mSelfObjectCppName ;
     outExpression := [@selfCopyInExpressionForGeneration new !inAnalysisContext->mSelfTypeProxy !mSelfLocation !selfCppName] ;
   end if ;
 end method ;
@@ -723,7 +717,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @thisReaderCallExpressionAST analyzeSemanticExpression
+override method @selfReaderCallExpressionAST analyzeSemanticExpression
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -734,7 +728,7 @@ override method @thisReaderCallExpressionAST analyzeSemanticExpression
   if [inAnalysisContext->mSelfTypeProxy isNull] then
     error mLocation: "'self' cannot be used in this context" : currentObjectCppPointer, thisTypeProxy ;
   else
-    currentObjectCppPointer := inAnalysisContext->mSelfObjectCppPointer ;
+    currentObjectCppPointer := inAnalysisContext->mSelfObjectCppName ;
     thisTypeProxy := inAnalysisContext->mSelfTypeProxy ;
   end if ;
 #--- Get reader map
@@ -785,7 +779,7 @@ override method @thisReaderCallExpressionAST analyzeSemanticExpression
       checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
       constructorEffectiveParameterList += !exp ;
     end foreach ;
-    outExpression := [@thisReaderCallExpressionForGeneration new
+    outExpression := [@selfReaderCallExpressionForGeneration new
       !returnedType
       ![mReaderName location]
       !currentObjectCppPointer
@@ -819,91 +813,6 @@ function checkReaderImplementationInSuperClasses
     end switch ;
   end if ;
 end function ;
-
-#---------------------------------------------------------------------------*
-
-override method @superReaderCallExpressionAST analyzeSemanticExpression
-  ??@analysisContext inAnalysisContext
-  ?!@variableMap ioVariableMap
-  !@semanticExpressionForGeneration outExpression
-:
-#--- Analyze super, as receiver expression
-  @unifiedTypeMapProxy superTypeProxy ;
-  if [ioVariableMap hasKey !selfMarkName []] then
-    @unifiedTypeMapProxy thisTypeProxy ;
-    [!?ioVariableMap searchForReadAccess ![@lstring new !selfMarkName [] !here] ?thisTypeProxy ?* ?*] ;
-    if [[thisTypeProxy mSuperType] isNull] then
-      error mLocation: "'super' cannot be used, current class has no super class":superTypeProxy ;
-    else
-      superTypeProxy := [thisTypeProxy mSuperType] ;
-    end if ;
-  else
-    error mLocation: "'super' can be used only in methods, modifiers and readers":superTypeProxy ;
-  end if ;
-#--- Get reader map
-  const @readerMap readerMap := [superTypeProxy mReaderMap] ;
-#--- Search reader
-  @unifiedTypeMapProxyList readerFormalArgumentTypeList ;
-  @methodKind kind ;
-  @bool hasCompilerArgument ;
-  @unifiedTypeMapProxy returnedType ;
-  @string superClassThatImplementsReader  ;
-  with readerMap hasKey ![mReaderName string] do
-    readerFormalArgumentTypeList := mArgumentTypeList ;
-    hasCompilerArgument := mHasCompilerArgument ;
-    returnedType := mReturnedType ;
-    kind := mKind ;
-    superClassThatImplementsReader := checkReaderImplementationInSuperClasses [!mReaderName !superTypeProxy] ;
-    if superClassThatImplementsReader == "" then
-      error mReaderName: "the '" . mReaderName . "' reader is not implemented by super class(es)" ;
-    end if ;
-  else
-    if [readerMap count] == 0 then
-      error mReaderName
-      : "the '@". [superTypeProxy key] . "' type does not define any reader"
-      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind, superClassThatImplementsReader
-      ;
-    else
-      @string s := "" ;
-      foreach readerMap do
-        s .= "\n  - " . lkey ;
-        foreach mArgumentTypeList do
-          s .= " ?@" . [mType key] ;
-        end foreach ;
-        s .= " -> @" . [mReturnedType key] ;
-      end foreach ;
-      error mReaderName
-      : "the '@". [superTypeProxy key] . "' type does not define the '" . mReaderName . "' reader; available "
-      . if [readerMap count] > 1 then "readers are" else "reader is" end
-      . ":" . s
-      : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind, superClassThatImplementsReader
-      ;
-    end if ;
-  end with ;
-#--- Analysis arguments
-  if [mExpressions length] != [readerFormalArgumentTypeList length] then
-    error mReaderName: "calling the '" . mReaderName . "' reader of '@" . [superTypeProxy key] . "' requires "
-    . [[readerFormalArgumentTypeList length] string] . " parameter(s), while this call has "
-    . [[mExpressions length] string] . " parameter(s)" : outExpression ;
-  else
-    @semanticExpressionListForGeneration constructorEffectiveParameterList [emptyList] ;
-    foreach mExpressions, readerFormalArgumentTypeList do
-      @semanticExpressionForGeneration exp ;
-      [mExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?exp] ;
-      checkAssignmentTypes !mType ![exp mType] !mEndOfExpressionLocation ;
-      constructorEffectiveParameterList += !exp ;
-    end foreach ;
-    outExpression := [@superReaderCallExpressionForGeneration new
-      !returnedType
-      ![mReaderName location]
-      !kind
-      !superClassThatImplementsReader
-      ![mReaderName string]
-      !constructorEffectiveParameterList
-      !hasCompilerArgument
-    ] ;
-  end if ;
-end method ;
 
 #---------------------------------------------------------------------------*
 

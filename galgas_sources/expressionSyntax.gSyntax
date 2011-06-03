@@ -486,8 +486,6 @@ end rule ;
 #                         P R I M A R Y                                        *
 #   description         :   [expression description]                           *
 #   reader call         :   [expression reader !... ]                          *
-#                       :   [this reader !... ]                                *
-#                       :   [super reader !... ]                               *
 #   constructor call    :   [@class method !... ]                              *
 #   option value        :   [option option_component_name.option_name]         *
 #                                                                              *
@@ -506,28 +504,6 @@ rule <primary> !@semanticExpressionAST outExpression :
     @semanticExpressionListAST expressionList ;
     <output_expression_list> ?expressionList ;
     outExpression := [@readerCallExpressionAST new !receiverExpression !readerName !expressionList] ;
-  or
-  #---
-    $self$ ;
-    const @location loc := here ;
-  #--- Get reader name
-    @lstring readerName ;
-    $identifier$ ? readerName ;
-  #--- Actual parameters
-    @semanticExpressionListAST expressionList ;
-    <output_expression_list> ?expressionList ;
-    outExpression := [@thisReaderCallExpressionAST new !loc !readerName !expressionList] ;
-  or
-  #---
-    $super$ ;
-    const @location loc := here ;
-  #--- Get reader name
-    @lstring readerName ;
-    $identifier$ ? readerName ;
-  #--- Actual parameters
-    @semanticExpressionListAST expressionList ;
-    <output_expression_list> ?expressionList ;
-    outExpression := [@superReaderCallExpressionAST new !loc !readerName !expressionList] ;
   or
   #--- Class name
     @lstring className ;

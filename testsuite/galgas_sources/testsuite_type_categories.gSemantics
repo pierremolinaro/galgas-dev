@@ -1,0 +1,26 @@
+semantics testsuite_type_categories :
+
+reader @uint64 square -> @uint64 outResult :
+  outResult := selfcopy * selfcopy ;
+end reader ;
+
+reader @uintlist sum -> @uint outResult :
+  outResult := 0 ;
+  foreach selfcopy do
+    outResult := outResult + mValue ;
+  end foreach ;
+end reader ;
+
+routine testsuite_type_categories :
+  message "*************************************** begin of type category test\n" ;
+  log "Square of 7: " : [7L square] ;
+  @uintlist aList [emptyList] ;
+  aList += !1 ;
+  aList += !2 ;
+  aList += !3 ;
+  aList += !4 ;
+  log "Sum 1 + 2 + 3 + 4: " : [aList sum] ;
+end routine ;
+
+
+end semantics ;

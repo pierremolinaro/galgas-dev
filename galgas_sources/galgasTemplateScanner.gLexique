@@ -131,7 +131,6 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "state",
   "struct",
   "style",
-  "super",
   "switch",
   "syntax", 
   "tag",

@@ -70,7 +70,7 @@ override method @selfCopyInExpressionForGeneration generateExpression
   ioGeneratedCode .= "//--- @selfCopyInExpressionForGeneration\n" ;
   outCppExpression := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "const GALGAS_" . [mType identifierRepresentation] . " " . outCppExpression . " = " . mSelfCppName . " ;\n" ;
-  [!?ioUnusedVariableCppNameSet removeKey !selfMarkName []] ;
+  [!?ioUnusedVariableCppNameSet removeKey !mSelfCppName] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -227,19 +227,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @superReaderCallExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@uint unused ioTemporaryVariableIndex
-  ?!@stringset unused ioUnusedVariableCppNameSet
-  !@string outCppExpression
-:
-  ioGeneratedCode .= "//--- @superReaderCallExpressionForGeneration\n" ;
-  outCppExpression := "{TO DO}" ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
-override method @thisReaderCallExpressionForGeneration generateExpression
+override method @selfReaderCallExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@uint ioTemporaryVariableIndex
   ?!@stringset ioUnusedVariableCppNameSet
@@ -256,7 +244,7 @@ override method @thisReaderCallExpressionForGeneration generateExpression
 #--- Generate Reader call
   switch mKind
   when definedAsCategory :
-    [!?ioUnusedVariableCppNameSet removeKey !selfMarkName []] ;
+    [!?ioUnusedVariableCppNameSet removeKey !mCurrentObjectCppPointer] ;
     outCppExpression := "callCategoryReader_" . [mReaderName identifierRepresentation]
        . " (" . mCurrentObjectCppPointer . ", " ;
   when definedAsMember :
@@ -301,8 +289,13 @@ override method @readerCallExpressionForGeneration generateExpression
 #--- Generate Reader call
   switch mKind
   when definedAsCategory :
-    outCppExpression := "callCategoryReader_" . [mReaderName identifierRepresentation]
-       . " ((const cPtr_" . [[mReceiverExpression mType] identifierRepresentation] . " *) " . receiverCppName . ".ptr (), " ;
+    [!?ioUnusedVariableCppNameSet removeKey !receiverCppName] ;
+    if [[mReceiverExpression mType] mTypeKindEnum] == [@typeKindEnum classType] then
+      outCppExpression := "callCategoryReader_" . [mReaderName identifierRepresentation]
+         . " ((const cPtr_" . [[mReceiverExpression mType] identifierRepresentation] . " *) " . receiverCppName . ".ptr (), " ;
+    else
+      outCppExpression := "categoryReader_" . [mReaderName identifierRepresentation] . " (" . receiverCppName . ", " ;
+    end if ;
   when definedAsMember :
     outCppExpression := receiverCppName ;
     foreach mFieldList do

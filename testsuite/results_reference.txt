@@ -189,3 +189,6 @@ LOGGING s: <@string:"-3-4-4">
 *************************************** begin of category modifier test
 LOGGING u: <@uint:3>
 LOGGING v: <@TestCategoryModifier:[@TestCategoryModifier:<@uint:3>, <@string:"Hello World">]>
+*************************************** begin of type category test
+LOGGING Square of 7: : <@uint64:49>
+LOGGING Sum 1 + 2 + 3 + 4: : <@uint:10>
