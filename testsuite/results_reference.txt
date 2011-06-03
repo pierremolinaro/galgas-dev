@@ -197,7 +197,7 @@ LOGGING v: <@uint64:49>
 LOGGING u: <@uint:10>
 LOGGING s: <@string:"Hello !">
 LOGGING ls: <struct @lstring:<@string:"Hello3">, <@location:nowhere:1:1>>
-LOGGING aList: <list @uintlist (4 objects): 
+LOGGING aList: <list @uintlist (5 objects): 
 |-at 0
 | | mValue:<@uint:1>
 |-at 1
@@ -205,4 +205,6 @@ LOGGING aList: <list @uintlist (4 objects):
 |-at 2
 | | mValue:<@uint:3>
 |-at 3
-| | mValue:<@uint:4>>
+| | mValue:<@uint:4>
+|-at 4
+| | mValue:<@uint:81>>
