@@ -244,8 +244,7 @@ override method @semanticInstructionAST analyzeSyntaxInstruction
   ?!@variableMap ioVariableMap
   ?!@uint unused ioSelectMethodCount
 :
-#  @semanticInstructionAST t := selfcopy ; # Bug in GALGAS 1
-  [self analyzeSemanticInstruction
+  [selfcopy analyzeSemanticInstruction
     !inAnalysisContext
     !?ioInstructionListForGeneration
     !?ioVariableMap

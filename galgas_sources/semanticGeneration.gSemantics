@@ -819,6 +819,20 @@ local filewrapper semanticComponentGenerationTemplate in "../generation_template
     ?@string FUNCTION_IMPLEMENTATION
   ;
 
+#--- Category method implemented as function
+  template categoryMethodAsFunctionDeclaration "category-method-as-function.h.gTemplate"
+    ?@string TYPE_NAME
+    ?@string METHOD_NAME
+    ?@formalParameterListForGeneration FORMAL_ARGUMENT_LIST
+  ;
+
+  template categoryMethodAsFunctionImplementation "category-method-as-function.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@string METHOD_NAME
+    ?@string METHOD_IMPLEMENTATION
+  ;
+  
+
 #--- Function
   template functionDeclaration "function-declaration.h.gTemplate"
     ?@string FUNCTION_NAME
@@ -1223,11 +1237,19 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @categoryMethodForGeneration appendDeclaration1 -> @string outHeader :
-  outHeader := [filewrapper semanticComponentGenerationTemplate.categoryMethodDeclaration
-    !mTypeName
-    !mCategoryMethodName
-    !mCategoryMethodFormalParameterList
-  ] ; 
+  if mImplementedAsFunction then
+    outHeader := [filewrapper semanticComponentGenerationTemplate.categoryMethodAsFunctionDeclaration
+      ![mSelfType key]
+      !mCategoryMethodName
+      !mCategoryMethodFormalParameterList
+    ] ; 
+  else
+    outHeader := [filewrapper semanticComponentGenerationTemplate.categoryMethodDeclaration
+      ![mSelfType key]
+      !mCategoryMethodName
+      !mCategoryMethodFormalParameterList
+    ] ; 
+  end if ;
 end reader ;
 
 #---------------------------------------------------------------------------*
@@ -1510,7 +1532,6 @@ override reader @graphDeclarationForGeneration appendSpecificImplementation ->@s
 #---------------------------------------------------------------------------*
 
 override reader @routineImplementationForGeneration appendSpecificImplementation -> @string outImplementation :
-#  message "@routineImplementationForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.routineImplementation
     !mRoutineName
     !generateProcedure [
@@ -1547,7 +1568,6 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @onceFunctionDeclarationForGeneration appendSpecificImplementation -> @string outImplementation :
-#  message "@onceImplementationForGeneration appendSpecificImplementation\n" ;
   outImplementation := [filewrapper semanticComponentGenerationTemplate.onceFunctionImplementation
     !mFunctionName
     !generateFunction [
@@ -1577,19 +1597,42 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @categoryMethodForGeneration appendSpecificImplementation -> @string outImplementation :
-  const @string methodImplementation := generateCategoryMethod [
-    !mTypeName
-    !""
-    !mCategoryMethodName
-    !mCategoryMethodFormalParameterList
-    !mSemanticInstructionListForGeneration
-  ] ;
-  outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryMethodImplementation
-    !mTypeName
-    !mCategoryMethodName
-    !mCategoryMethodFormalParameterList
-    !methodImplementation
-  ] ; 
+  if mImplementedAsFunction then
+    @formalParameterListForGeneration categoryMethodFormalParameterList := mCategoryMethodFormalParameterList ;
+    [!?categoryMethodFormalParameterList prependValue
+      ![@formalArgumentPassingModeAST argumentConstantIn]
+      !mSelfType
+      ![@lstring new !"self" !here]
+      !"inObject"
+    ] ;
+    outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryMethodAsFunctionImplementation
+      ![mSelfType key]
+      !mCategoryMethodName
+      !generateProcedure [
+        !"categoryMethod_" . [mCategoryMethodName identifierRepresentation]
+        !categoryMethodFormalParameterList
+        !mSemanticInstructionListForGeneration
+        !false # is not const
+        !"C_Compiler"
+        !true # Generate location Argument
+        !false # Do not generate 'resetTemplateString'
+      ]
+    ] ; 
+  else
+    const @string methodImplementation := generateCategoryMethod [
+      ![mSelfType key]
+      !""
+      !mCategoryMethodName
+      !mCategoryMethodFormalParameterList
+      !mSemanticInstructionListForGeneration
+    ] ;
+    outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryMethodImplementation
+      ![mSelfType key]
+      !mCategoryMethodName
+      !mCategoryMethodFormalParameterList
+      !methodImplementation
+    ] ;
+  end if ;
 end reader ;
 
 #---------------------------------------------------------------------------*

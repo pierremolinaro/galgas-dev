@@ -633,50 +633,6 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  " T H I S "    M E T H O D    C A L L    I N S T R U C T I O N           *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <semantic_instruction> !@semanticInstructionAST outInstruction :
-  $[$ ;
-  $self$ ;
-  const @location instructionLocation := here ;
-  $identifier$ ?@lstring mMethodName ;
-  @actualParameterListAST mActualParameterList ;
-  <actual_parameter_list> ? mActualParameterList ;
-  $]$ ;
-  $;$ ;
-  outInstruction := [@selfMethodCallInstructionAST new
-    !instructionLocation
-    !mMethodName
-    !mActualParameterList
-  ] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  " S U P E R "    M E T H O D    C A L L    I N S T R U C T I O N         *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-#rule <semantic_instruction> !@semanticInstructionAST outInstruction :
-#  $[$ ;
-#  $super$ ;
-#  const @location instructionLocation := here ;
-#  $identifier$ ?@lstring mMethodName ;
-#  @actualParameterListAST mActualParameterList ;
-#  <actual_parameter_list> ? mActualParameterList ;
-#  $]$ ;
-#  $;$ ;
-#  outInstruction := [@superMethodCallInstructionAST new
-#    !instructionLocation
-#    !mMethodName
-#    !mActualParameterList
-#  ] ;
-#end rule ;
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #    M O D I F I E R    C A L L    I N S T R U C T I O N                    *
 #                                                                           *
 #---------------------------------------------------------------------------*

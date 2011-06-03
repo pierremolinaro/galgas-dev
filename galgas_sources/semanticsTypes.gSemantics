@@ -71,7 +71,7 @@ map @readerMap {
   @bool mHasCompilerArgument ;
   @unifiedTypeMapProxy mReturnedType ;
   @methodQualifier mQualifier ;
-  @string mErrorMessage ; # If not empty, calling the method raises an error ith this message
+  @string mErrorMessage ; # If not empty, calling the method raises an error with this message
  
   insert insertKey error message "the '%K' reader is already declared" ;
   search searchKey error message "the '%K' reader is not declared" ;

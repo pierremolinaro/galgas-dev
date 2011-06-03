@@ -227,49 +227,6 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @selfReaderCallExpressionForGeneration generateExpression
-  ?!@string ioGeneratedCode
-  ?!@uint ioTemporaryVariableIndex
-  ?!@stringset ioUnusedVariableCppNameSet
-  !@string outCppExpression
-:
-  ioGeneratedCode .= "//--- @thisReaderCallExpressionForGeneration\n" ;
-#--- Reader operands
-  @stringlist readerArgumentCppNameList [emptyList] ;
-  foreach mExpressions do
-    @string argumentCppName ;
-    [mExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?argumentCppName] ;
-    readerArgumentCppNameList += !argumentCppName ;
-  end foreach ;
-#--- Generate Reader call
-  switch mKind
-  when definedAsCategory :
-    [!?ioUnusedVariableCppNameSet removeKey !mCurrentObjectCppPointer] ;
-    outCppExpression := "callCategoryReader_" . [mReaderName identifierRepresentation]
-       . " (" . mCurrentObjectCppPointer . ", " ;
-  when definedAsMember :
-    outCppExpression :=  "reader_" . [mReaderName identifierRepresentation] . " (" ;
-  end switch ;
-  foreach readerArgumentCppNameList
-    do outCppExpression .= mValue ;
-    between outCppExpression .= ", " ;
-  end foreach ;
-  if [readerArgumentCppNameList length] == 0 then
-    if mHasCompilerArgument then
-      [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-      outCppExpression .= compilerCppName [] . " COMMA_" ;
-    end if ;
-  elsif mHasCompilerArgument then
-    [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-    outCppExpression .= ", " . compilerCppName [] . " COMMA_" ;
-  else
-    outCppExpression .= " COMMA_" ;
-  end if ;
-  outCppExpression .= "SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
 override method @readerCallExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@uint ioTemporaryVariableIndex

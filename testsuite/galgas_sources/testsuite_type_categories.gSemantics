@@ -1,5 +1,27 @@
 semantics testsuite_type_categories :
 
+routine testsuite_type_categories :
+  message "*************************************** begin of type category test\n" ;
+  log "Square of 7" : [7L square] ;
+  @uintlist aList [emptyList] ;
+  aList += !1 ;
+  aList += !2 ;
+  aList += !3 ;
+  aList += !4 ;
+  log "Sum 1 + 2 + 3 + 4" : [aList sum] ;
+  log "Hello !" : [[@lstring new !"Hello" !here] op] ;
+  @uint64 v ;
+  [7L square ?v] ;
+  log v ;
+  @uint u ;
+  [aList sum ?u] ;
+  log u ;
+  @string s ;
+  [[@lstring new !"Hello" !here] op ?s] ;
+  log s ;
+end routine ;
+
+#----------- Category readers
 reader @uint64 square -> @uint64 outResult :
   outResult := selfcopy * selfcopy ;
 end reader ;
@@ -11,16 +33,24 @@ reader @uintlist sum -> @uint outResult :
   end foreach ;
 end reader ;
 
-routine testsuite_type_categories :
-  message "*************************************** begin of type category test\n" ;
-  log "Square of 7: " : [7L square] ;
-  @uintlist aList [emptyList] ;
-  aList += !1 ;
-  aList += !2 ;
-  aList += !3 ;
-  aList += !4 ;
-  log "Sum 1 + 2 + 3 + 4: " : [aList sum] ;
-end routine ;
+reader @lstring op -> @string outResult :
+  outResult := string . " !" ;
+end reader ;
 
+#------------ Category methods
+method @uint64 square !@uint64 outResult :
+  outResult := selfcopy * selfcopy ;
+end method ;
+
+method @uintlist sum !@uint outResult :
+  outResult := 0 ;
+  foreach selfcopy do
+    outResult := outResult + mValue ;
+  end foreach ;
+end method ;
+
+method @lstring op !@string outResult :
+  outResult := string . " !" ;
+end method ;
 
 end semantics ;

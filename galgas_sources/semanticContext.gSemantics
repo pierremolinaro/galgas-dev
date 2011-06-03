@@ -155,7 +155,7 @@ struct @semanticContext {
 
 map @categoryMethodMapForType {
   @formalParameterListAST mFormalParameterList ;
-  insert or replace ;
+  insert insertKey error message "the '%K' method has been already declared in %L" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -174,7 +174,7 @@ map @categoryMethodMapForBuildingContext {
 
 map @categoryModifierMapForType {
   @formalParameterListAST mFormalParameterList ;
-  insert or replace ;
+  insert insertKey error message "the '%K' modifier has been already declared in %L" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -194,14 +194,14 @@ map @categoryModifierMapForBuildingContext {
 map @categoryReaderMapForType {
   @lstring mResultTypeName ;
   @formalInputParameterListAST mInputFormalParameterList ;
-  insert or replace ;
+  insert insertKey error message "the '%K' reader has been already declared in %L" ;
 }
 
 #---------------------------------------------------------------------------*
 
 map @categoryReaderMapForBuildingContext {
   @categoryReaderMapForType mCategoryReaderMapForType ;
-  insert insertKey error message "internal error" ;
+  insert insertKey error message "internal error"  ;
   search searchKey error message "internal error" ;
 }
 
@@ -1980,7 +1980,7 @@ override method @structDeclarationAST enterInSemanticContext
     !true # Concrete Type
     ![@unifiedTypeMapProxy null]
     ![@typeKindEnum structType]
-    ![@typedAttributeList emptyList]
+    !typedAttributeList
     !attributeMap
     !typedAttributeList
     !constructorMap
@@ -2674,7 +2674,7 @@ override method @categoryReaderAST enterDeclarationInGraph
     ] ;
   end if ;
   with !?ioCategoryReaderMapForBuildingContext searchKey !mTypeName do
-    [!?mCategoryReaderMapForType insertOrReplace
+    [!?mCategoryReaderMapForType insertKey
       !mCategoryReaderName
       !mCategoryReaderReturnedTypeName
       !mCategoryReaderFormalInputParameterList
@@ -2702,7 +2702,7 @@ override method @categoryMethodAST enterDeclarationInGraph
     ] ;
   end if ;
   with !?ioCategoryMethodMapForBuildingContext searchKey !mTypeName do
-    [!?mCategoryMethodMapForType insertOrReplace
+    [!?mCategoryMethodMapForType insertKey
       !mCategoryMethodName
       !mCategoryMethodFormalParameterList
     ] ;
@@ -2729,7 +2729,7 @@ override method @categoryModifierAST enterDeclarationInGraph
     ] ;
   end if ;
   with !?ioCategoryModifierMapForBuildingContext searchKey !mTypeName do
-    [!?mCategoryModifierMapForType insertOrReplace
+    [!?mCategoryModifierMapForType insertKey
       !mCategoryModifierName
       !mCategoryModifierFormalParameterList
     ] ;
@@ -2768,7 +2768,7 @@ override method @abstractCategoryReaderAST enterDeclarationInGraph
     ] ;
   end if ;
   with !?ioCategoryReaderMapForBuildingContext searchKey !mTypeName do
-    [!?mCategoryReaderMapForType insertOrReplace
+    [!?mCategoryReaderMapForType insertKey
       !mAbstractCategoryReaderName
       !mAbstractCategoryReaderReturnedTypeName
       !mAbstractCategoryReaderFormalInputParameterList
@@ -2796,7 +2796,7 @@ override method @abstractCategoryMethodAST enterDeclarationInGraph
     ] ;
   end if ;
   with !?ioCategoryMethodMapForBuildingContext searchKey !mTypeName do
-    [!?mCategoryMethodMapForType insertOrReplace
+    [!?mCategoryMethodMapForType insertKey
       !mAbstractCategoryMethodName
       !mAbstractCategoryMethodFormalParameterList
     ] ;
@@ -2823,7 +2823,7 @@ override method @abstractCategoryModifierAST enterDeclarationInGraph
     ] ;
   end if ;
   with !?ioCategoryModifierMapForBuildingContext searchKey !mTypeName do
-    [!?mCategoryModifierMapForType insertOrReplace
+    [!?mCategoryModifierMapForType insertKey
       !mAbstractCategoryModifierName
       !mAbstractCategoryModifierFormalParameterList
     ] ;

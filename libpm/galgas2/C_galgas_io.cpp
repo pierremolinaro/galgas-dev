@@ -626,7 +626,7 @@ static const utf32 COCOA_FILE_CREATION_SUCCESS_ID = TO_UNICODE (5) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//    Method called for printing an error (on stderr)                        *
+//    Method called for printing an error                                    *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
@@ -637,17 +637,17 @@ void C_galgas_io::ggs_printError (const C_String & inMessage) {
     co.appendUnicodeCharacter (COCOA_MESSAGE_ID COMMA_HERE) ;
     co.flush () ;
   }else{
-    ce.setForeColor (kRedForeColor) ;
+    co.setForeColor (kRedForeColor) ;
     co.setTextAttribute (kBoldTextAttribute) ;
-    ce << inMessage ;
-    ce.setTextAttribute (kAllAttributesOff) ;
-    ce.flush () ;
+    co << inMessage ;
+    co.setTextAttribute (kAllAttributesOff) ;
+    co.flush () ;
   }
 }
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//    Method called for printing a warning (on stderr)                       *
+//    Method called for printing a warning                                   *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
@@ -668,7 +668,7 @@ void C_galgas_io::ggs_printWarning (const C_String & inMessage) {
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//    Method called for printing a success message (on stdout)               *
+//    Method called for printing a success message                           *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
@@ -706,7 +706,7 @@ void C_galgas_io::ggs_printCreatedFileSuccess (const C_String & inMessage) {
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//    Methods called for printing a message (on stdout)                      *
+//    Methods called for printing a message                                  *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
