@@ -213,6 +213,22 @@
 }
 \hypersetup{breaklinks=true}
 
+%------------------------------------------------------------------------------------------ RÉFÉRENCES À UNE SECTION
+% Au lieu d'écrire \section{titre-section}, on écrit \sectionLabel{titre-section}{label-section}
+\newcommand \sectionLabel[2]{\section{#1}\label{sec:#2}}
+
+
+% \refSectionPage{label-section} ---> "section x.y page n"   où x.y est le n° de la section
+\newcommand\refSectionPage[1]{\hyperref[sec:#1]{section \ref*{sec:#1} page \pageref{sec:#1}}}
+
+%------------------------------------------------------------------------------------------ RÉFÉRENCES À UNE SUB-SECTION
+% Au lieu d'écrire \subsection{titre-section}, on écrit \subsectionLabel{titre-section}{label-section}
+\newcommand \subsectionLabel[2]{\subsection{#1}\label{subsec:#2}}
+
+
+% \refSubsectionPage{label-section} ---> "section x.y page n"   où x.y est le n° de la sub-section
+\newcommand\refSubsectionPage[1]{\hyperref[subsec:#1]{section \ref*{subsec:#1} page \pageref{subsec:#1}}}
+
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
 %   S H O W K E Y S    ( P O U R    D É B O G U E R )                                                                   *

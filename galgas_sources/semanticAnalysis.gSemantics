@@ -1452,9 +1452,18 @@ override method @categoryMethodAST performSemanticAnalysis
 :
 #--- Self type
   const @unifiedTypeMapProxy selfType := [@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mTypeName] ;
+  @string selfObjectName ;
+  @string selfObjectAccessor ;
+  @bool implementedAsFunction ;
 #--- Check self type is a class
-  if [selfType mTypeKindEnum] != [@typeKindEnum classType] then
-    error mCategoryMethodName: "cannot declare a category method: '@" . [selfType key] . "' is not a class" ;
+  if [selfType mTypeKindEnum] == [@typeKindEnum classType] then
+    selfObjectName := "object" ;
+    selfObjectAccessor := "object->" ;
+    implementedAsFunction := false ;
+  else
+    selfObjectName := "inObject" ;
+    selfObjectAccessor := "inObject." ;
+    implementedAsFunction := true ;
   end if ;
 #--- Analyze instruction list
   @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
@@ -1463,7 +1472,7 @@ override method @categoryMethodAST performSemanticAnalysis
     !inSemanticContext
     !inPredefinedTypes
     !selfType
-    !"object"
+    !selfObjectName
   ] ;
   analyzeRoutineBody
     !analysisContext
@@ -1471,7 +1480,7 @@ override method @categoryMethodAST performSemanticAnalysis
     ![@localConstantList emptyList]
     ![selfType mAllTypedAttributeList]
     ![@typedAttributeList emptyList]
-    !"object->"
+    !selfObjectAccessor
     !mCategoryMethodInstructionList
     !mEndOfMethodLocation
     ?semanticInstructionListForGeneration
@@ -1480,8 +1489,9 @@ override method @categoryMethodAST performSemanticAnalysis
 #---
   ioSemanticDeclarationListForGeneration += ![@categoryMethodForGeneration new
     !mIsGlobal
-    ![mTypeName string]
+    !selfType
     ![mCategoryMethodName string]
+    !implementedAsFunction
     !formalParameterListForGeneration
     ![selfType mAllTypedAttributeList]
     !semanticInstructionListForGeneration
@@ -1875,11 +1885,11 @@ override method @categoryReaderAST performSemanticAnalysis
 #--- Check self type is a class
   if [selfType mTypeKindEnum] == [@typeKindEnum classType] then
     selfObjectName := "object" ;
-    selfObjectAccessor := "->" ;
+    selfObjectAccessor := "object->" ;
     implementedAsFunction := false ;
   else
     selfObjectName := "inObject" ;
-    selfObjectAccessor := "." ;
+    selfObjectAccessor := "inObject." ;
     implementedAsFunction := true ;
   end if ;
 #--- Analyze instruction list
@@ -1897,7 +1907,7 @@ override method @categoryReaderAST performSemanticAnalysis
     !analysisContext
     !mCategoryReaderFormalInputParameterList
     ![selfType mAllTypedAttributeList]
-    !selfObjectName . selfObjectAccessor
+    !selfObjectAccessor
     !mCategoryReaderInstructionList
     !mCategoryReaderReturnedVariableName
     !mCategoryReaderReturnedTypeName

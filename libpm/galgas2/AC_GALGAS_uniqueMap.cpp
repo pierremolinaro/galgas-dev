@@ -631,22 +631,18 @@ void cSharedUniqueMapRoot::performInsert (capCollectionElement & inAttributes,
         //--- Existing key
           cMapElement * me = (cMapElement *) matchingEntry->mAttributes.ptr () ;
           macroValidSharedObject (me, cMapElement) ;
-          const GALGAS_lstring lstring_existingKey = me->mAttribute_lkey ;
-        //--- Current key
-          const GALGAS_location currentKey_location = p->mAttribute_lkey.mAttribute_location ;
+          const GALGAS_location lstring_existingKey_location = me->mAttribute_lkey.mAttribute_location ;
         //--- Emit error message
-          inCompiler->semanticErrorWith_K_L_message (lstring_existingKey, inShadowErrorMessage, currentKey_location COMMA_THERE) ;
+          inCompiler->semanticErrorWith_K_L_message (p->mAttribute_lkey, inShadowErrorMessage, lstring_existingKey_location COMMA_THERE) ;
         }
       }
     }else{ // Error, entry already exists
     //--- Existing key
       cMapElement * me = (cMapElement *) matchingEntry->mAttributes.ptr () ;
       macroValidSharedObject (me, cMapElement) ;
-      const GALGAS_lstring lstring_existingKey = me->mAttribute_lkey ;
-    //--- Current key
-      const GALGAS_location currentKey_location = p->mAttribute_lkey.mAttribute_location ;
+      const GALGAS_location lstring_existingKey_location = me->mAttribute_lkey.mAttribute_location ;
     //--- Emit error message
-      inCompiler->semanticErrorWith_K_L_message (lstring_existingKey, inInsertErrorMessage, currentKey_location COMMA_THERE) ;
+      inCompiler->semanticErrorWith_K_L_message (p->mAttribute_lkey, inInsertErrorMessage, lstring_existingKey_location COMMA_THERE) ;
     }
   }
   #ifndef DO_NOT_GENERATE_CHECKINGS

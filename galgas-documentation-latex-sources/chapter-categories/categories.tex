@@ -5,4 +5,134 @@
 \chapter{Categories}\index{Categories}
 %-------------------------------------------------------------
 
-\emph{Categories} are the way for adding \emph{readers}, \emph{methods} and \emph{modifiers} to classes. They are defined outside class definitions.
+\emph{Categories} are the way for adding \emph{readers}, \emph{methods} and \emph{modifiers} to any type. They are defined outside type declarations.
+
+A \emph{category reader} is called in an expression. As expressions have no side-effect, a category reader cannot change current object's value.
+
+A \emph{category method} is called by the \emph{method call instruction} (\refSectionPage{methodCallInstruction}). A category method cannot modify current object's value.
+
+A \emph{category modifier} is called by the \emph{modifier call instruction} (\refSectionPage{modifierCallInstruction}). A category modifier can modify current object's value.
+
+Within the category reader, method and modifier instruction list, the \lstinline[language=galgas]!selfcopy! key word is allowed in any expression. It represents a copy of the current object. Of course, the current is lazily copied only when required.
+
+The \lstinline[language=galgas]!self! key word is just a syntactic tag for representing the current object in the \emph{modifier call instruction} (\refSectionPage{modifierCallInstruction}). It expresses the modifier is called on the current object itself, not on a copy. As category methods and category readers cannot modify the current object, a modifier on the current object cannot be called, so using \lstinline[language=galgas]!self! is not permitted.
+
+
+A declared category reader, method and modifier has a global scope, meaning it is available in the current component, and in any component that includes it directly or indirectly.
+scope.
+
+A type does not accept several category readers with the same name. During compilation of the project file, the project global checking mechanism detects such declarations and issues an error. Consequently, it is forbidden to declare a category reader with the same name than a predefined reader: the compiler issues an error on on a such declaration. The same rules apply on category methods and category modifiers.
+
+However, it is safe to declare for a given type a category reader, a category method and a category modifier with the same name. GALGAS compiler uses different naming spaces for them, and call syntax are different, so there is no ambiguity.
+
+
+\section{Category reader}
+
+A category reader is declared like a function, but its header names a type and a reader name. As a function, it accepts zero, one or more input and constant input formal parameters.
+
+For example, the following code add a reader to the \refTypePredefini{uint64} that computes the square of its value:
+\begin{lstlisting}[language=galgas]
+reader @uint64 square -> @uint64 outResult :
+  outResult := selfcopy * selfcopy ;
+end reader ;
+\end{lstlisting}
+
+This reader is called like a predefined reader:
+\begin{lstlisting}[language=galgas]
+@uint64 v := 7L ;
+log "Square of 7": [v square] ; # LOGGING Square of 7 : <@uint64:49>
+\end{lstlisting}
+
+You can add a category reader to a list :
+\begin{lstlisting}[language=galgas]
+reader @uintlist sum -> @uint outResult :
+  outResult := 0 ;
+  foreach selfcopy do
+    outResult := outResult + mValue ;
+  end foreach ;
+end reader ;
+\end{lstlisting}
+
+For counting the number of element values greater than the value given in argument:
+\begin{lstlisting}[language=galgas]
+reader @uintlist countValuesGreaterThan
+  ??@uint inTestValue -> @uint outResult
+:
+  outResult := 0 ;
+  foreach selfcopy do
+    if mValue > inTestValue then
+      outResult ++ ;
+    end if ;
+  end foreach ;
+end reader ;
+\end{lstlisting}
+
+When used with a struct or class type, current object attributes values can be read by naming the attribute in an expression. For example, the \refTypePredefini{lstring} has an attribute 
+\lstinline[language=galgas]!string! whose type is \nomType{string}. The following reader returns the value of this attribute, appended with the \lstinline[language=galgas]?" !"? string:
+\begin{lstlisting}[language=galgas]
+reader @lstring op -> @string outResult :
+  outResult := string . " !" ;
+end reader ;
+\end{lstlisting}
+
+
+
+
+
+
+
+\section{Category method}
+
+A category method is declared like a routine, but its header names a type and a method name. As a routine, it accepts zero, one or more input, output, input/output constant input formal parameters.
+
+For example, the following code add a method to the \refTypePredefini{uint64} that computes the square of its value:
+\begin{lstlisting}[language=galgas]
+method @uint64 square !@uint64 outResult :
+  outResult := selfcopy * selfcopy ;
+end method ;
+\end{lstlisting}
+
+This reader is called like a predefined method:
+\begin{lstlisting}[language=galgas]
+@uint64 v ;
+[7L square ?v] ;
+log "Square of 7": v ; # LOGGING Square of 7 : <@uint64:49>
+\end{lstlisting}
+
+You can add a category method to a list :
+\begin{lstlisting}[language=galgas]
+method @uintlist sum !@uint outResult :
+  outResult := 0 ;
+  foreach selfcopy do
+    outResult := outResult + mValue ;
+  end foreach ;
+end method ;
+\end{lstlisting}
+
+For counting the number of element values greater than the value given in argument:
+\begin{lstlisting}[language=galgas]
+method @uintlist countValuesGreaterThan
+  ??@uint inTestValue
+  !@uint outResult
+:
+  outResult := 0 ;
+  foreach selfcopy do
+    if mValue > inTestValue then
+      outResult ++ ;
+    end if ;
+  end foreach ;
+end method ;
+\end{lstlisting}
+
+When used with a struct or class type, current object attributes values can be read by naming the attribute in an expression. For example, the \refTypePredefini{lstring} has an attribute 
+\lstinline[language=galgas]!string! whose type is \nomType{string}. The following method returns the value of this attribute, appended with the \lstinline[language=galgas]?" !"? string:
+\begin{lstlisting}[language=galgas]
+method @lstring op !@string outResult :
+  outResult := string . " !" ;
+end method ;
+\end{lstlisting}
+
+
+
+
+

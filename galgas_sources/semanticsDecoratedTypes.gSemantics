@@ -129,16 +129,6 @@ class @readerCallExpressionForGeneration extends @semanticExpressionForGeneratio
 
 #---------------------------------------------------------------------------*
 
-class @selfReaderCallExpressionForGeneration extends @semanticExpressionForGeneration {
-  @string mCurrentObjectCppPointer ;
-  @methodKind mKind ;
-  @string mReaderName ;
-  @semanticExpressionListForGeneration mExpressions ;
-  @bool mHasCompilerArgument ;
-}
-
-#---------------------------------------------------------------------------*
-
 class @optionValueExpressionForGeneration extends @semanticExpressionForGeneration {
   @string mOptionComponentName ;
   @string mOptionEntryName ;
@@ -724,37 +714,6 @@ class @methodCallInstructionForGeneration extends @semanticInstructionForGenerat
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  " S E L F "    M E T H O D    C A L L    I N S T R U C T I O N           *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @selfMethodCallInstructionForGeneration extends @semanticInstructionForGeneration {
-  @unifiedTypeMapProxy mReceiverType ;
-  @string mCurrentObjectCppPointer ;
-  @location mInstructionLocation ;
-  @string mMethodName ;
-  @methodKind mKind ;
-  @actualParameterListForGeneration mActualParameterList ;
-  @bool mHasCompilerArgument ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  " S U P E R "    M E T H O D    C A L L    I N S T R U C T I O N         *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @superMethodCallInstructionForGeneration extends @semanticInstructionForGeneration {
-  @location mInstructionLocation ;
-  @string mSuperClassThatImplementsMethod ;
-  @string mMethodName ;
-  @methodKind mKind ;
-  @actualParameterListForGeneration mActualParameterList ;
-  @bool mHasCompilerArgument ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
 #  M O D I F I E R    C A L L    I N S T R U C T I O N                      *
 #                                                                           *
 #---------------------------------------------------------------------------*
@@ -778,21 +737,6 @@ class @modifierCallInstructionForGeneration extends @semanticInstructionForGener
 class @selfModifierCallInstructionForGeneration extends @semanticInstructionForGeneration {
   @string mCurrentObjectCppPointer ;
   @unifiedTypeMapProxy mReceiverType ;
-  @lstring mModifierName ;
-  @methodKind mKind ;
-  @actualParameterListForGeneration mActualParameterList ;
-  @bool mHasCompilerArgument ;
-}
-
-#---------------------------------------------------------------------------*
-#                                                                           *
-#  " S U P E R "    M O D I F I E R    C A L L    I N S T R U C T I O N     *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-class @superModifierCallInstructionForGeneration extends @semanticInstructionForGeneration {
-  @unifiedTypeMapProxy mReceiverType ;
-  @string mSuperClassThatImplementsModifier ;
   @lstring mModifierName ;
   @methodKind mKind ;
   @actualParameterListForGeneration mActualParameterList ;
@@ -1355,8 +1299,9 @@ class @abstractCategoryMethodForGeneration extends @semanticDeclarationForGenera
 #---------------------------------------------------------------------------*
 
 class @categoryMethodForGeneration extends @semanticDeclarationForGeneration {
-  @string mTypeName ;
+  @unifiedTypeMapProxy mSelfType ;
   @string mCategoryMethodName ;
+  @bool mImplementedAsFunction ;
   @formalParameterListForGeneration mCategoryMethodFormalParameterList ;
   @typedAttributeList mTypedAttributeList ;
   @semanticInstructionListForGeneration mSemanticInstructionListForGeneration ;
