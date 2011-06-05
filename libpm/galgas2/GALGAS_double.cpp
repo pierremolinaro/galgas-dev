@@ -32,6 +32,10 @@
 
 //---------------------------------------------------------------------------*
 
+static const double PI_CONSTANT = 3.14159265358979323846 ;
+
+//---------------------------------------------------------------------------*
+
 GALGAS_double::GALGAS_double (void) :
 mIsValid (false),
 mDoubleValue (0.0) {
@@ -50,7 +54,7 @@ mDoubleValue (inValue) {
 //---------------------------------------------------------------------------*
 
 GALGAS_double GALGAS_double::constructor_pi (UNUSED_LOCATION_ARGS) {
-  return GALGAS_double (3.14159265358979323846) ;
+  return GALGAS_double (PI_CONSTANT) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -59,6 +63,33 @@ GALGAS_double GALGAS_double::reader_cos (UNUSED_LOCATION_ARGS) const {
   GALGAS_double result ;
   if (isValid ()) {
     result = GALGAS_double (cos (mDoubleValue)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_double GALGAS_double::reader_sqrt (C_Compiler * inCompiler
+                                          COMMA_LOCATION_ARGS) const {
+  GALGAS_double result ;
+  if (isValid ()) {
+    if (mDoubleValue < 0.0) {
+      C_String s ;
+      s << "Cannot compute square root of a negative @double" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }else{
+      result = GALGAS_double (sqrt (mDoubleValue)) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_double GALGAS_double::reader_cosDegree (UNUSED_LOCATION_ARGS) const {
+  GALGAS_double result ;
+  if (isValid ()) {
+    result = GALGAS_double (cos (mDoubleValue * PI_CONSTANT / 180.0)) ;
   }
   return result ;
 }
@@ -75,10 +106,30 @@ GALGAS_double GALGAS_double::reader_sin (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------*
 
+GALGAS_double GALGAS_double::reader_sinDegree (UNUSED_LOCATION_ARGS) const {
+  GALGAS_double result ;
+  if (isValid ()) {
+    result = GALGAS_double (sin (mDoubleValue * PI_CONSTANT / 180.0)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
 GALGAS_double GALGAS_double::reader_tan (UNUSED_LOCATION_ARGS) const {
   GALGAS_double result ;
   if (isValid ()) {
     result = GALGAS_double (tan (mDoubleValue)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_double GALGAS_double::reader_tanDegree (UNUSED_LOCATION_ARGS) const {
+  GALGAS_double result ;
+  if (isValid ()) {
+    result = GALGAS_double (tan (mDoubleValue * PI_CONSTANT / 180.0)) ;
   }
   return result ;
 }
@@ -247,6 +298,19 @@ GALGAS_double GALGAS_double::operator_unary_minus (C_Compiler * /* inCompiler */
   GALGAS_double result ;
   if (isValid ()) {
     result = GALGAS_double (- mDoubleValue) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_double GALGAS_double::modulo_operation (const GALGAS_double & inOperand,
+                                               C_Compiler * /* inCompiler */
+                                               COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_double result ;
+  if (isValid () && inOperand.isValid ()) {
+    const PMUInt64 times = (PMUInt64) (mDoubleValue / inOperand.mDoubleValue) ;
+    result = GALGAS_double (mDoubleValue - ((double) times) * inOperand.mDoubleValue) ;
   }
   return result ;
 }

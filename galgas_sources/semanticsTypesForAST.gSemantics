@@ -487,6 +487,16 @@ class @assignmentInstructionAST extends @semanticInstructionAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#  S E L F    A S S I G N M E N T    I N S T R U C T I O N                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @selfAssignmentInstructionAST extends @semanticInstructionAST {
+  @semanticExpressionAST mSourceExpression ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #  C O N C A T    I N S T R U C T I O N                                     *
 #                                                                           *
 #  VARIABLE .= EXPRESSION ;                                                 *

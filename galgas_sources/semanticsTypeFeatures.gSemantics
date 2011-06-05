@@ -175,7 +175,7 @@ override reader @doublePredefinedTypeAST getSupportedOperatorFlags
   ->@uint outFlags
 :
   outFlags := binaryAddOperator [] | binarySubOperator [] | binaryMulOperator [] | binaryDivOperator []
-    | unaryPlusOperator [] | unaryMinusOperator []
+    | unaryPlusOperator [] | unaryMinusOperator [] | binaryModOperator []
     | generateDescriptionReaderUtilityMethod [] | isComparable [] ;
 end reader ;
 

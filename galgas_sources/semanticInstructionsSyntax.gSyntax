@@ -340,6 +340,25 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    S E L F    A S S I G N M E N T    I N S T R U C T I O N                *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction> !@semanticInstructionAST outInstruction :
+  $self$ ;
+  const @location instructionLocation := here ;
+  $:=$ ;
+  @semanticExpressionAST mSourceExpression ;
+  <expression> ? mSourceExpression ;
+  $;$ ;
+  outInstruction := [@selfAssignmentInstructionAST new
+    !instructionLocation
+    !mSourceExpression
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    D R O P    I N S T R U C T I O N                                       *
 #                                                                           *
 #---------------------------------------------------------------------------*
