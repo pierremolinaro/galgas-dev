@@ -189,7 +189,7 @@ appendUnicodeCharacter (const utf32 inUnicodeCharacter COMMA_UNUSED_LOCATION_ARG
 
 void AC_OutputStream::appendDouble (const double inValue) {
   char s [40] = "" ;
-  snprintf (s, 39, "%e", inValue) ;
+  snprintf (s, 39, "%g", inValue) ;
   genericCharArrayOutput (s, (PMSInt32) (strlen (s) & PMUINT32_MAX)) ;
 }
 

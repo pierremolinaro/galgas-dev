@@ -50,17 +50,28 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
     importedComponentFileNameList += !importedComponentFileName ;
     $;$ ;
   end repeat ;
-#--- Prologue
-  $before$ ;
-  ${$ ;
-  @semanticInstructionListAST mPrologueInstructionList [emptyList] ;
-  <semantic_instruction_list> ? mPrologueInstructionList ;
-  const @location endOfPrologue := here ;
-  $}$ ;
 #--- Program rules
   @semanticDeclarationListAST mSemanticDeclarations [emptyList] ;
   @programRuleList mProgramRules [emptyList] ;
+  @prologueEpilogueList prologueList [emptyList] ; # Zero or one is correct
+  @prologueEpilogueList epilogueList [emptyList] ; # zero or one is correct
   repeat
+  while
+    $before$ ;
+    ${$ ;
+    @semanticInstructionListAST prologueInstructionList ;
+    <semantic_instruction_list> ? prologueInstructionList ;
+    const @location endOfPrologue := here ;
+    $}$ ;
+    prologueList += !prologueInstructionList !endOfPrologue ;
+  while
+    $after$ ;
+    ${$ ;
+    @semanticInstructionListAST epilogueInstructionList ;
+    <semantic_instruction_list> ? epilogueInstructionList ;
+    const @location endOfEpilogue := here ;
+    $}$ ;
+    epilogueList += !epilogueInstructionList !endOfEpilogue ;
   while
     $when$ ;
     $.$ ;
@@ -108,13 +119,6 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
   while
     <semantic_declaration> !?mSemanticDeclarations ;
   end repeat ;
-#--- Epilogue
-  $after$ ;
-  ${$ ;
-  @semanticInstructionListAST mEpilogueInstructionList ;
-  <semantic_instruction_list> ? mEpilogueInstructionList ;
-  const @location endOfEpilogue := here ;
-  $}$ ;
 #---
   $end$ ;
   const @location endOfSourceFile := here ;
@@ -124,10 +128,8 @@ rule <program_component_start_symbol> !@programComponentAST outProgramComponentR
     !mProgramName
     !mVersionString
     !importedComponentFileNameList
-    !mPrologueInstructionList
-    !endOfPrologue
-    !mEpilogueInstructionList
-    !endOfEpilogue
+    !prologueList
+    !epilogueList
     !mProgramRules
     !mSemanticDeclarations
     !endOfSourceFile

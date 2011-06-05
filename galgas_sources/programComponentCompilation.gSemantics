@@ -56,19 +56,28 @@ local routine compileBeforeClause
   ??@programComponentAST inProgramComponentAST
   ?!@semanticDeclarationSortedListForGeneration ioDecoratedDeclarationListForGeneration
 :
+#--- Check there is zero or one 'before' declaration
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
-  analyzeRoutineBody
-    !inAnalysisContext
-    ![@formalParameterListAST emptyList] # Routine signature : no argument
-    ![@localConstantList emptyList] # No local constant
-    ![@typedAttributeList emptyList] # No attribute (not a method)
-    ![@typedAttributeList emptyList] # No attribute (not a method)
-    !""
-    ![inProgramComponentAST mPrologueInstructionList]
-    ![inProgramComponentAST mEndOfPrologue]
-    ?semanticInstructionListForGeneration
-    ?*
-  ;
+  if [[inProgramComponentAST mPrologueList] length] > 1 then
+    const @location locationOfSecondItem := [[inProgramComponentAST mPrologueList] mEndOfInstructionListAtIndex !1] ;
+    error locationOfSecondItem: "there are several 'before' declarations" : semanticInstructionListForGeneration ;
+  elsif [[inProgramComponentAST mPrologueList] length] == 0 then
+    semanticInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
+  else
+    analyzeRoutineBody
+      !inAnalysisContext
+      ![@formalParameterListAST emptyList] # Routine signature : no argument
+      ![@localConstantList emptyList] # No local constant
+      ![@typedAttributeList emptyList] # No attribute (not a method)
+      ![@typedAttributeList emptyList] # No attribute (not a method)
+      !""
+      ![[inProgramComponentAST mPrologueList] mInstructionListAtIndex !0]
+      ![[inProgramComponentAST mPrologueList] mEndOfInstructionListAtIndex !0]
+      ?semanticInstructionListForGeneration
+      ?*
+    ;
+  end if ;
+#---
   ioDecoratedDeclarationListForGeneration += ![@routineImplementationForGeneration new
     !true # Is global declaration
     !"before"
@@ -145,19 +154,28 @@ local routine compileAfterClause
   ??@programComponentAST inProgramComponentAST
   ?!@semanticDeclarationSortedListForGeneration ioDecoratedDeclarationListForGeneration
 :
+#--- Check there is zero or one 'before' declaration
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
-  analyzeRoutineBody
-    !inAnalysisContext
-    ![@formalParameterListAST emptyList] # Routine signature : no argument
-    ![@localConstantList emptyList] # No local constant
-    ![@typedAttributeList emptyList] # No attribute (not a method)
-    ![@typedAttributeList emptyList] # No attribute (not a method)
-    !""
-    ![inProgramComponentAST mEpilogueInstructionList]
-    ![inProgramComponentAST mEndOfEpilogue]
-    ?semanticInstructionListForGeneration
-    ?*
-  ;
+  if [[inProgramComponentAST mEpilogueList] length] > 1 then
+    const @location locationOfSecondItem := [[inProgramComponentAST mEpilogueList] mEndOfInstructionListAtIndex !1] ;
+    error locationOfSecondItem: "there are several 'after' declarations" : semanticInstructionListForGeneration ;
+  elsif [[inProgramComponentAST mEpilogueList] length] == 0 then
+    semanticInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
+  else
+    analyzeRoutineBody
+      !inAnalysisContext
+      ![@formalParameterListAST emptyList] # Routine signature : no argument
+      ![@localConstantList emptyList] # No local constant
+      ![@typedAttributeList emptyList] # No attribute (not a method)
+      ![@typedAttributeList emptyList] # No attribute (not a method)
+      !""
+      ![[inProgramComponentAST mEpilogueList] mInstructionListAtIndex !0]
+      ![[inProgramComponentAST mEpilogueList] mEndOfInstructionListAtIndex !0]
+      ?semanticInstructionListForGeneration
+      ?*
+    ;
+  end if ;
+#---
   ioDecoratedDeclarationListForGeneration += ![@routineImplementationForGeneration new
     !true # Is global declaration
     !"after"

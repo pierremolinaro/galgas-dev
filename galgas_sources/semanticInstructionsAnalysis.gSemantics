@@ -227,6 +227,38 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @selfAssignmentInstructionAST analyzeSemanticInstruction
+  ??@analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+#--- Analyze source expression
+  @semanticExpressionForGeneration expression ;
+  [mSourceExpression analyzeSemanticExpression
+    !inAnalysisContext
+    !?ioVariableMap
+    ?expression
+  ] ;
+#--- Analyze "self", as receiver expression
+  if [inAnalysisContext->mSelfTypeProxy isNull] then
+    error mInstructionLocation: "'self' can be used only in category modifiers" ;
+  elsif [inAnalysisContext->mSelfTypeProxy mTypeKindEnum] == [@typeKindEnum classType] then
+    error mInstructionLocation: "'self' assignment is not allowed for class instances" ;
+  end if ;
+#--- Check assignment type compatibility
+  checkAssignmentTypes !inAnalysisContext->mSelfTypeProxy ![expression mType] !mInstructionLocation ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@assignmentInstructionForGeneration new
+    !inAnalysisContext->mSelfTypeProxy
+    !inAnalysisContext->mSelfObjectCppName
+    !inAnalysisContext->mSelfObjectCppName
+    ![@lstringlist emptyList]
+    !expression
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 routine analyzeErrorOrWarningInstruction
   ??@analysisContext inAnalysisContext
   ??@semanticExpressionAST inLocationExpression

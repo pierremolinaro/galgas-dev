@@ -496,6 +496,12 @@ routine performProjectGlobalCheckings
   foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
     semanticDeclarationList .= [mSemanticComponentRoot mSemanticDeclarationList] ;
   end foreach ;
+  foreach [inParsedComponentStruct mParsedSyntaxComponentMap] do
+    semanticDeclarationList .= [mSyntaxComponentRoot mSemanticDeclarationList] ;
+  end foreach ;
+  foreach [inParsedComponentStruct mParsedProgramComponentMap] do
+    semanticDeclarationList .= [mProgramComponentAST mSemanticDeclarationList] ;
+  end foreach ;
 #------ Generate declarations
   @semanticContext semanticContext ;
   buildSemanticContext
@@ -528,23 +534,21 @@ routine performProjectGlobalCheckings
   @genericCategoryMethodListMap categoryModifierListMap [emptyMap] ;
   @genericCategoryMethodListMap overridingCategoryModifierListMap [emptyMap] ;
   @genericCategoryMethodListMap overridingAbstractCategoryModifierListMap [emptyMap] ;
-  foreach [inParsedComponentStruct mParsedSemanticsComponentMap] do
-    foreach [mSemanticComponentRoot mSemanticDeclarationList] do
-      [mSemanticDeclaration buildCategoryListMaps
-        !?abstractCategoryModifierListMap
-        !?categoryModifierListMap
-        !?overridingCategoryModifierListMap
-        !?overridingAbstractCategoryModifierListMap
-        !?abstractCategoryMethodListMap
-        !?categoryMethodListMap
-        !?overridingCategoryMethodListMap
-        !?overridingAbstractCategoryMethodListMap
-        !?abstractCategoryReaderListMap
-        !?categoryReaderListMap
-        !?overridingCategoryReaderListMap
-        !?overridingAbstractCategoryReaderListMap
-      ] ;
-    end foreach ;
+  foreach semanticDeclarationList do
+    [mSemanticDeclaration buildCategoryListMaps
+      !?abstractCategoryModifierListMap
+      !?categoryModifierListMap
+      !?overridingCategoryModifierListMap
+      !?overridingAbstractCategoryModifierListMap
+      !?abstractCategoryMethodListMap
+      !?categoryMethodListMap
+      !?overridingCategoryMethodListMap
+      !?overridingAbstractCategoryMethodListMap
+      !?abstractCategoryReaderListMap
+      !?categoryReaderListMap
+      !?overridingCategoryReaderListMap
+      !?overridingAbstractCategoryReaderListMap
+    ] ;
   end foreach ;
 #------ Check Category
   if [@uint errorCount] == 0 then
