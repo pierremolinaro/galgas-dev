@@ -28,7 +28,7 @@
   \lstdefinestyle{galgas}{
     basicstyle=\ttfamily,
     frame=l,
-    keywordstyle=\color{red}\textbf,
+%    keywordstyle=\color{red}\textbf,
     keywordstyle=[2]\color{blue}\textbf,
     backgroundcolor=\color{yellow!25},
     identifierstyle=\color{brown},
@@ -68,7 +68,7 @@
 %--- Cette macro établit un hyperlien vers un type prédéfini
 % Exemple d'appel : \refTypePredefini{bool} -- affiche --> @bool type (page xx)
 
-\newcommand \refTypePredefini[1] {\hyperref[type:#1]{@#1 type (page \pageref{type:#1})}}
+\newcommand \refTypePredefini[1] {\hyperref[type:#1]{\texttt{@#1} type (page \pageref{type:#1})}}
 
 
 
@@ -81,9 +81,9 @@
 %--- Cette macro affiche simplement le nom du type GALGAS, sans établir de lien
 % Exemple d'appel : \nomType{bool} -- affiche --> @bool type
 \ifthenelse{\equal{\sortieEnCouleur}{true}}{
-  \newcommand\nomType[1]{{\color{brown}@#1} type}
+  \newcommand\nomType[1]{{\color{brown}\texttt{@#1}} type}
 }{
-  \newcommand\nomType[1]{@#1 type}
+  \newcommand\nomType[1]{\texttt{@#1} type}
 }
 
 
