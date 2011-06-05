@@ -28,6 +28,13 @@ Within the category reader, method and modifier instruction list, the \lstinline
 The \lstinline[language=galgas]!self! key word is just a syntactic tag for representing a write or a read/write access to the current object. Using \lstinline[language=galgas]!self! is not allowed in category methods and category readers since they cannot modify the current object. Using \lstinline[language=galgas]!self! in category modifiers is explained in \refSectionPage{categoryModifier}. 
 
 
+A category reader, method and modifier can be declared in:
+\begin{itemize}
+\item a \emph{semantics} component;
+\item a \emph{syntax} component;
+\item a \emph{program} component.
+\end{itemize}
+
 A declared category reader, method and modifier has a global scope, meaning it is available in the current component, and in any component that includes it directly or indirectly.
 
 A type does not accept several category readers with the same name. During compilation of the project file, the project global checking mechanism detects such declarations and issues an error. Consequently, it is forbidden to declare a category reader with the same name than a predefined reader: the compiler issues an error on on a such declaration. The same rules apply on category methods and category modifiers.
@@ -178,6 +185,7 @@ The \lstinline[language=galgas]!self! key word is used as a syntactic tag for de
 \item the \emph{concat instruction} (\refSectionPage{concatInstruction});
 \item the \emph{increment instruction} (\refSectionPage{incrementInstruction});
 \item the \emph{decrement instruction} (\refSectionPage{decrementInstruction});
+\item the \emph{assignment instruction} (\refSectionPage{assignmentInstruction}).
 \end{enumerate}
 
 Example of using \lstinline[language=galgas]!self! in modifier call instruction; this modifier prepends the square of argument value to the \nomType{uint64list} value:
@@ -212,11 +220,29 @@ This construct is valid only for types that handle the \lstinline[language=galga
 
 Example of using \lstinline[language=galgas]!self! in the increment instruction; this modifier increments the receiver's value:
 \begin{lstlisting}[language=galgas]
-modifier @uint :
+modifier @uint increment :
   self ++ ;
 end modifier ;
 \end{lstlisting}
 This construct is valid only for types that handle the \lstinline[language=galgas]!++! operator, such as \refTypePredefini{uint}, \refTypePredefini{uint64}, \refTypePredefini{sint}, \refTypePredefini{sint64}.
+
+
+
+
+
+Example of using \lstinline[language=galgas]!self! in the assignment instruction; this modifier removes all odd values of the receiver:
+\begin{lstlisting}[language=galgas]
+modifier @uintlist removeOddValues :
+  @uintlist listWithEvenValues [emptyList] ;
+  foreach selfcopy do
+    if (mValue & 1) == 0 then
+      listWithEvenValues += !mValue ;
+    end if ;
+  end foreach ;
+  self := listWithEvenValues ;
+end modifier ;
+\end{lstlisting}
+This construct is valid only for types, but class types.
 
 
 
@@ -240,38 +266,40 @@ Additional features are available only for classes; in addition to category read
 \emph{Abstract} category readers, methods, modifiers and \emph{overriding abstract} category readers, methods, modifiers do not contain any instruction list: they act as \emph{prototypes}.
 
 Examples of \emph{abstract} category readers, methods, modifiers declarations :
+{\lstset{emph={readerName, methodName, modifierName}, emphstyle=\emph}
 \begin{lstlisting}[language=galgas]
-abstract reader @aType
+abstract reader @aType readerName
   ?anOtherType aParameter
   -> @resultType outResult
 ;
 
-abstract method @aType
+abstract method @aType methodName
   ?anOtherType aParameter
 ;
 
-abstract modifier @aType
+abstract modifier @aType modifierName
   ?anOtherType aParameter
 ;
 \end{lstlisting}
+}
 
 Examples of \emph{overriding} category readers, methods, modifiers declarations :
-{\lstset{emph={instructions}, emphstyle=\emph}
+{\lstset{emph={instructions, readerName, methodName, modifierName}, emphstyle=\emph}
 \begin{lstlisting}[language=galgas]
-override reader @aType
+override reader @aType readerName
   ?anOtherType aParameter
   -> @resultType outResult
 :
   instructions
 ;
 
-override method @aType
+override method @aType methodName
   ?anOtherType aParameter
 :
   instructions
 ;
 
-override modifier @aType
+override modifier @aType modifierName
   ?anOtherType aParameter
 :
   instructions
@@ -280,21 +308,22 @@ override modifier @aType
 }
 
 Examples of \emph{overriding abstract} category readers, methods, modifiers declarations :
+{\lstset{emph={readerName, methodName, modifierName}, emphstyle=\emph}
 \begin{lstlisting}[language=galgas]
-override abstract reader @aType
+override abstract reader @aType readerName
   ?anOtherType aParameter
   -> @resultType outResult
 ;
 
-override abstract method @aType
+override abstract method @aType methodName
   ?anOtherType aParameter
 ;
 
-override abstract modifier @aType
+override abstract modifier @aType modifierName
   ?anOtherType aParameter
 ;
 \end{lstlisting}
-
+}
 
 
 Neither \emph{abstract} category readers, methods, modifiers, neither \emph{overriding abstract} category readers, methods, modifiers cannot be declared for concrete classes. Any kind of category reader, method, modifier can be declared for abstract classes.
@@ -305,7 +334,7 @@ A category reader, method, modifier that has the same name as a category reader,
 
 An abstract category reader, method, modifier that has the same name as a category reader, method, modifier declared for one of its super classes should be declared as \emph{overriding abstract}.
 
-The following example illustrates how theses rules should be applied. In the \refFigure{}{figureCategoryExample}, four classes are shown. The arrows designates the super class. The \lstinline[language=galgas]!@A! and \lstinline[language=galgas]!@C! classes are abstract. \lstinline[language=galgas]!m1! is a name for any reader, method or modifier.
+The following example illustrates how theses rules should be applied. In the \refFigure{}{figureCategoryExample}, four classes are shown. An arrow links a class to its super class. The \lstinline[language=galgas]!@A! and \lstinline[language=galgas]!@C! classes are abstract. \lstinline[language=galgas]!m1! is a name for any reader, method or modifier.
 
 \begin{figure}[ht]
   \centering
@@ -322,11 +351,11 @@ The following example illustrates how theses rules should be applied. In the \re
      \node at (1.5, 1.5) [right] {\lstinline[language=galgas]!override abstract @C m1!} ;
      \node at (1.5, 0) [right] {\lstinline[language=galgas]!override @D m1!} ;
    \end{tikzpicture}
-  \caption{Exemple simple illustratif de Spice}
+  \caption{inheritance graph and categories}
   \labelFigure{figureCategoryExample}
 \end{figure}
 
-\lstinline[language=galgas]!m1! is declared as \lstinline[language=galgas]!abstract! for the \lstinline[language=galgas]!@A! class. It is allowed since \lstinline[language=galgas]!@A! is abstract. Consequently, the concrete \lstinline[language=galgas]!@B! class should override \lstinline[language=galgas]!m1!. The \lstinline[language=galgas]!@C! class is also abstract, and \lstinline[language=galgas]!m1! can be declared as \lstinline[language=galgas]!abstract! for this class. But as it has been also declared for one of theses super class, it should also declared as \lstinline[language=galgas]!override!. As \lstinline[language=galgas]!@D! is concrete, \lstinline[language=galgas]!m1! should be declared for this class xwith \lstinline[language=galgas]!override! tag.
+\lstinline[language=galgas]!m1! is declared as \lstinline[language=galgas]!abstract! for the \lstinline[language=galgas]!@A! class. It is allowed since \lstinline[language=galgas]!@A! is abstract. Consequently, the concrete \lstinline[language=galgas]!@B! class should override \lstinline[language=galgas]!m1!. The \lstinline[language=galgas]!@C! class is also abstract, and \lstinline[language=galgas]!m1! can be declared as \lstinline[language=galgas]!abstract! for this class. But as it has been also declared for one of theses super class, it should also declared as \lstinline[language=galgas]!override!. As \lstinline[language=galgas]!@D! is concrete, \lstinline[language=galgas]!m1! should be declared for this class with \lstinline[language=galgas]!override! tag.
 
 
 
