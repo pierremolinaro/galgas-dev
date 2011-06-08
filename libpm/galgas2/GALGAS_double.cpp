@@ -136,6 +136,18 @@ GALGAS_double GALGAS_double::reader_tanDegree (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------*
 
+GALGAS_double GALGAS_double::reader_power (const GALGAS_double & inExponant,
+                                           C_Compiler * /* inCompiler */
+                                           COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_double result ;
+  if (isValid () && inExponant.isValid ()) {
+    result = GALGAS_double (pow (mDoubleValue, inExponant.mDoubleValue)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
 GALGAS_uint GALGAS_double::reader_uint (C_Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
   GALGAS_uint result ;
