@@ -251,6 +251,72 @@ The \emph{expression} is first computed :
 \section{Loop Instruction}
 
 
+\subsection{Syntax}
+
+The \emph{loop} instruction has the following syntax:
+{\lstset{emph={expression, instructions_1, instructions_2, variant_expression}, emphstyle=\emph}
+\begin{lstlisting}[language=galgas]
+loop variant_expression :
+  instructions_1
+while expression do
+  instructions_2
+end loop ;  
+\end{lstlisting}
+}
+
+The \emph{instructions\_1} and \emph{instructions\_2} are possibly empty instruction lists.
+
+\subsection{Semantics}
+
+The \emph{variant\_expression} is an \nomType{uint} expression that ensures the loop is not endless: the \emph{variant\_expression} is computed at the beginning of the loop execution, and is decremented by one at the end of every iteration. Il it reaches zero, a run-time error is raised.
+
+The \emph{expression} is an \nomType{bool} expression that expresses repetitive execution.
+
+The \emph{loop} instruction execution is illustrated by the flowchart given in \refFigure{}{loopInstructionFlowchart}.
+
+\begin{figure}[ht]
+  \centering
+  \begin{tikzpicture}[very thick]
+    \node [rounded corners=5pt, shape=rectangle, draw] (start) {\textsc{begin}} ;
+    \node [shape=rectangle, draw] (variant) [below=of start] {$variant := variant\_expression~value$} ;
+    \node [shape=rectangle, draw] (body0) [below=of variant] {$instructions\_1$} ;
+    \node [shape=diamond, draw] (exp) [below=of body0] {$expression$} ;
+    \node [shape=diamond, draw] (variantTest) [below=of exp] {$variant > 0$} ;
+    \node [shape=rectangle, draw] (decTest) [below=of variantTest] {$variant {-}{-}$} ;
+    \node [shape=rectangle, draw] (body1) [below=of decTest] {$instructions\_2$} ;
+    \node [shape=rectangle, draw] (error) [right=of variantTest] {$loop~variant~error$} ;
+    \node [rounded corners=5pt, shape=rectangle, draw] (end) [right=of error] {\textsc{end}} ;
+    
+    \draw [->] (start) -- (variant) ;
+    \draw [->] (variant) -- (body0) ;
+    \draw [->] (body0) -- (exp) ;
+    \draw (exp) to node[right] {$true$} (variantTest) ;
+    \draw (variantTest) to node[right] {$yes$} (decTest) ;
+    \draw (variantTest) to node[above] {$no$} (error) ;
+    \draw [->] (decTest) -- (body1) ;
+    \draw [->, bend left] (exp.east) to node[above] {$false$} (end.north) ;
+    \draw [->] (body1.west) .. controls +(left:5cm) and +(left:5cm) .. (body0.west) ;
+    \draw [->] (error) -- (end) ;
+  \end{tikzpicture}
+  \caption{\emph{loop} instruction flowchart}
+  \labelFigure{loopInstructionFlowchart}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \sectionLabel{Method Call Instruction}{methodCallInstruction}
