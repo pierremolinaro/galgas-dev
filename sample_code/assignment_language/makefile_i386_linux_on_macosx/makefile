@@ -52,7 +52,7 @@ include ../galgas_sources/GALGAS_OUTPUT/file_list.mak
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-include $(LIBPM_PATH)/included_makefiles/x86linux_on_macosx_gcc_tools_32.mak
+include $(LIBPM_DIRECTORY_PATH)/included_makefiles/x86linux_on_macosx_gcc_tools_32.mak
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -60,6 +60,6 @@ include $(LIBPM_PATH)/included_makefiles/x86linux_on_macosx_gcc_tools_32.mak
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-include $(LIBPM_PATH)/included_makefiles/generic_makefile.mak
+include $(LIBPM_DIRECTORY_PATH)/included_makefiles/generic_makefile.mak
 
 #---------------------------------------------------------------------------*
