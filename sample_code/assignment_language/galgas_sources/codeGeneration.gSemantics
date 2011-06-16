@@ -17,7 +17,8 @@ end routine ;
 #---------------------------------------------------------------------------*
 
 local filewrapper cCodeGeneration in "." {
-} {
+}{
+}{
   template cCodeFile "target-file.c.gTemplate"
     ?@instructionListForGeneration INSTRUCTION_LIST
   ;
