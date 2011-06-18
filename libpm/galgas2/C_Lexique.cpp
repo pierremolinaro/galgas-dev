@@ -603,7 +603,7 @@ acceptTerminalForErrorSignaling (const PMSInt16 inTerminal,
       const PMSInt16 reachedTerminal = (PMSInt16) (instruction - 1) ;
       accept = reachedTerminal == inTerminal ;
       #ifdef TRACE_LL1_PARSING
-        m.clear () ;
+        m.removeAllObjects () ;
         appendTerminalMessageToSyntaxErrorMessage (reachedTerminal, m) ;
         co << "reached '"
            << m
@@ -636,7 +636,7 @@ acceptTerminalForErrorSignaling (const PMSInt16 inTerminal,
           while ((inDecisionTable [nonTerminalEntry] >= 0) && ! found) {
             found = inDecisionTable [nonTerminalEntry] == inTerminal ;
             #ifdef TRACE_LL1_PARSING
-              m.clear () ;
+              m.removeAllObjects () ;
               appendTerminalMessageToSyntaxErrorMessage (inDecisionTable [nonTerminalEntry], m) ;
               co << "try '" << m << "' non terminal" << (found ? " (accepted)": "") << "\n" ; co.flush () ;
             #endif
@@ -1012,7 +1012,7 @@ performTopDownParsing (const PMSInt16 inProductions [],
             uniqueTerminalIndex ++ ;
           }
           errorStackCount = stack.count () ;
-          errorStack.clear () ;
+          errorStack.removeAllObjects () ;
           errorProgramCounter = programCounter ;
         }else{ // Error !
           #ifdef TRACE_LL1_PARSING
@@ -1259,7 +1259,7 @@ performBottomUpParsing (const PMSInt16 inActionTable [],
         #ifdef CHECK_NEW_BOTTOM_UP_PARSING_ERROR_HANDLING
           oldErrorStack = stack ;
         #endif
-        poppedErrors.clear () ;
+        poppedErrors.removeAllObjects () ;
         errorSignalingUselessEntryOnTopOfStack = 0 ;
         executionList.addDefaultObjectUsingSwap () ;
       //---

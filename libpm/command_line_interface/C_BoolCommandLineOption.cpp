@@ -149,7 +149,7 @@ printBoolOptions (const PMUInt32 inDisplayLength) {
 
 void C_BoolCommandLineOption::
 getBoolOptionNameList (TC_UniqueArray <C_String> & outArray) {
-  outArray.clear () ;
+  outArray.removeAllObjects () ;
   C_BoolCommandLineOption * p = gFirst ;
   while (p != NULL) {
     outArray.addObject (p->mDomainName) ;

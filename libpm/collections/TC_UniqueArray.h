@@ -8,7 +8,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 1997, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 1997, ..., 2011 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -92,7 +92,7 @@ template <typename TYPE> class TC_UniqueArray {
   public : void makeRoomUsingSwap (const PMSInt32 inNewCapacity) ;
 
 //--- Remove all objects (no deallocation)
-  public : inline void clear (void) { mCount = 0 ; }
+  public : inline void removeAllObjects (void) { mCount = 0 ; }
 
 //--- Get buffer pointer
   public : const TYPE * bufferPointer (void) const { return mArray ; }

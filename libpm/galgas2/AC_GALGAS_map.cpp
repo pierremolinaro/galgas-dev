@@ -82,6 +82,9 @@ class cSharedMapRoot : public C_SharedObject {
   private : VIRTUAL_IN_DEBUG cMapNode * findEntryInMap (const C_String & inKey,
                                                         const cSharedMapRoot * inFirstMap) const ;
 
+  public : void findNearestKey (const C_String & inKey,
+                                TC_UniqueArray <C_String> & ioNearestKeyArray) const ;
+
   protected : VIRTUAL_IN_DEBUG cMapNode * performSearch (const GALGAS_lstring & inKey,
                                                          C_Compiler * inCompiler,
                                                          const char * inSearchErrorMessage
@@ -908,6 +911,41 @@ GALGAS_bool AC_GALGAS_map::reader_hasKey (const GALGAS_string & inKey
 
 //---------------------------------------------------------------------------*
 
+static void findNearestKeyForNode (const C_String & inKey,
+                                   const cMapNode * inCurrentNode,
+                                   PMUInt32 & ioBestDistance,
+                                   TC_UniqueArray <C_String> & ioNearestKeyArray) {
+  if (NULL != inCurrentNode) {
+    macroValidPointer (inCurrentNode) ;
+    const PMUInt32 distance = inCurrentNode->mKey.LevenshteinDistanceFromString (inKey) ;
+    // printf ("inCurrentNode->mKey '%s', distance %u\n", inCurrentNode->mKey.cString (HERE), distance) ;
+    if (ioBestDistance > distance) {
+      ioBestDistance = distance ;
+      ioNearestKeyArray.removeAllObjects () ;
+      ioNearestKeyArray.addObject (inCurrentNode->mKey) ;
+    }else if (ioBestDistance == distance) {
+      ioNearestKeyArray.addObject (inCurrentNode->mKey) ;
+    }
+    findNearestKeyForNode (inKey, inCurrentNode->mInfPtr, ioBestDistance, ioNearestKeyArray) ;
+    findNearestKeyForNode (inKey, inCurrentNode->mSupPtr, ioBestDistance, ioNearestKeyArray) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void cSharedMapRoot::findNearestKey (const C_String & inKey,
+                                     TC_UniqueArray <C_String> & ioNearestKeyArray) const {
+  ioNearestKeyArray.removeAllObjects () ;
+  PMUInt32 bestDistance = PMUINT32_MAX ;
+  const cSharedMapRoot * currentMap = this ;
+  while (NULL != currentMap) {
+    findNearestKeyForNode (inKey, currentMap->mRoot, bestDistance, ioNearestKeyArray) ;
+    currentMap = currentMap->mOverridenMap ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
 cMapNode * cSharedMapRoot::performSearch (const GALGAS_lstring & inKey,
                                           C_Compiler * inCompiler,
                                           const char * inSearchErrorMessage
@@ -917,7 +955,9 @@ cMapNode * cSharedMapRoot::performSearch (const GALGAS_lstring & inKey,
     const C_String key = inKey.mAttribute_string.stringValue () ;
     result = findEntryInMap (key, this) ;
     if (NULL == result) {
-      inCompiler->semanticErrorWith_K_message (inKey, inSearchErrorMessage COMMA_THERE) ;
+      TC_UniqueArray <C_String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      inCompiler->semanticErrorWith_K_message (inKey, nearestKeyArray, inSearchErrorMessage COMMA_THERE) ;
     }
   }
   return result ;
@@ -1042,7 +1082,9 @@ cMapElement * cSharedMapRoot::searchForReadWriteAttribute (const GALGAS_lstring 
       macroValidSharedObject (result, cMapElement) ;
       macroUniqueSharedObject (result) ;
     }else{
-      inCompiler->semanticErrorWith_K_message (inKey, inSearchErrorMessage COMMA_THERE) ;
+      TC_UniqueArray <C_String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      inCompiler->semanticErrorWith_K_message (inKey, nearestKeyArray, inSearchErrorMessage COMMA_THERE) ;
     }
   }
   return result ;

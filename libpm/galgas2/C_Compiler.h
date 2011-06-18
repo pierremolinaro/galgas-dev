@@ -232,6 +232,7 @@ class C_Compiler : public C_SharedObject {
 
 //--- Emit an error message with an error message that contains %K espace sequence
   public : void semanticErrorWith_K_message (const GALGAS_lstring & inKey,
+                                             TC_UniqueArray <C_String> & ioNearestKeyArray,
                                              const char * in_K_ErrorMessage
                                              COMMA_LOCATION_ARGS) ;
 

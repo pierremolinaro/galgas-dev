@@ -290,9 +290,9 @@ The \emph{loop} instruction execution is illustrated by the flowchart given in \
     \draw [->] (start) -- (variant) ;
     \draw [->] (variant) -- (body0) ;
     \draw [->] (body0) -- (exp) ;
-    \draw (exp) to node[right] {$true$} (variantTest) ;
-    \draw (variantTest) to node[right] {$yes$} (decTest) ;
-    \draw (variantTest) to node[above] {$no$} (error) ;
+    \draw [->] (exp) to node[right] {$true$} (variantTest) ;
+    \draw [->] (variantTest) to node[right] {$yes$} (decTest) ;
+    \draw [->] (variantTest) to node[above] {$no$} (error) ;
     \draw [->] (decTest) -- (body1) ;
     \draw [->, bend left] (exp.east) to node[above] {$false$} (end.north) ;
     \draw [->] (body1.west) .. controls +(left:5cm) and +(left:5cm) .. (body0.west) ;
