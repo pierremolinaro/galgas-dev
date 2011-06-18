@@ -29,6 +29,7 @@
 #include "utilities/MF_MemoryControl.h"
 #include "galgas2/C_Compiler.h"
 #include "strings/unicode_string_routines.h"
+#include "collections/TC_UniqueArray.h"
 
 //---------------------------------------------------------------------------*
 
@@ -89,6 +90,9 @@ class cSharedUniqueMapRoot : public C_SharedObject {
 //--------------------------------- Search
   private : VIRTUAL_IN_DEBUG cUniqueMapNode * findEntryInMap (const C_String & inKey,
                                                         const cSharedUniqueMapRoot * inFirstMap) const ;
+
+  public : VIRTUAL_IN_DEBUG void findNearestKey (const C_String & inKey,
+                                                 TC_UniqueArray <C_String> & ioNearestKeyArray) const ;
 
   protected : VIRTUAL_IN_DEBUG cUniqueMapNode * performSearch (const GALGAS_lstring & inKey,
                                                          C_Compiler * inCompiler,
@@ -991,6 +995,49 @@ static C_String buildIssueMessage (const char * inIssueMessage,
 
 //---------------------------------------------------------------------------*
 
+static void findNearestKeyForNode (const C_String & inKey,
+                                   const cUniqueMapNode * inCurrentNode,
+                                   PMUInt32 & ioBestDistance,
+                                   TC_UniqueArray <C_String> & ioNearestKeyArray) {
+  if (NULL != inCurrentNode) {
+    macroValidPointer (inCurrentNode) ;
+    const PMUInt32 distance = inCurrentNode->mKey.LevenshteinDistanceFromString (inKey) ;
+    // printf ("inCurrentNode->mKey '%s', distance %u\n", inCurrentNode->mKey.cString (HERE), distance) ;
+    if (ioBestDistance > distance) {
+      ioBestDistance = distance ;
+      ioNearestKeyArray.removeAllObjects () ;
+      ioNearestKeyArray.addObject (inCurrentNode->mKey) ;
+    }else if (ioBestDistance == distance) {
+      ioNearestKeyArray.addObject (inCurrentNode->mKey) ;
+    }
+    findNearestKeyForNode (inKey, inCurrentNode->mInfPtr, ioBestDistance, ioNearestKeyArray) ;
+    findNearestKeyForNode (inKey, inCurrentNode->mSupPtr, ioBestDistance, ioNearestKeyArray) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void cSharedUniqueMapRoot::findNearestKey (const C_String & inKey,
+                                           TC_UniqueArray <C_String> & ioNearestKeyArray) const {
+  PMUInt32 bestDistance = PMUINT32_MAX ;
+  const cSharedUniqueMapRoot * currentMap = this ;
+  while (NULL != currentMap) {
+    findNearestKeyForNode (inKey, currentMap->mRoot, bestDistance, ioNearestKeyArray) ;
+    currentMap = currentMap->mOverridenMap ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void AC_GALGAS_uniqueMap::findNearestKey (const C_String & inKey,
+                                          TC_UniqueArray <C_String> & ioNearestKeyArray) const {
+  if (isValid ()) {
+    mSharedMap->findNearestKey (inKey, ioNearestKeyArray) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
 cUniqueMapNode * cSharedUniqueMapRoot::performSearch (const GALGAS_lstring & inKey,
                                                       C_Compiler * inCompiler,
                                                       const char * inSearchErrorMessage
@@ -1000,7 +1047,9 @@ cUniqueMapNode * cSharedUniqueMapRoot::performSearch (const GALGAS_lstring & inK
     const C_String key = inKey.mAttribute_string.stringValue () ;
     result = findEntryInMap (key, this) ;
     if (NULL == result) {
-      emitErrorMessageForKey (inKey, inCompiler, inSearchErrorMessage COMMA_THERE) ;
+      TC_UniqueArray <C_String> nearestKeyArray ;
+      findNearestKey (key, nearestKeyArray) ;
+      inCompiler->semanticErrorWith_K_message (inKey, nearestKeyArray, inSearchErrorMessage COMMA_THERE) ;
     }
   }
   return result ;
@@ -2041,7 +2090,9 @@ void AC_GALGAS_uniqueMapProxy::internalMakeRegularProxyBySearchingKey (const AC_
   if (inKey.isValid ()) {
     cUniqueMapNode * node = inMap.searchEntryInMap (inKey.mAttribute_string.stringValue ()) ;
     if (NULL == node) {
-      emitErrorMessageForKey (inKey, inCompiler, inSearchErrorMessage COMMA_THERE) ;
+      TC_UniqueArray <C_String> nearestKeyArray ;
+      inMap.findNearestKey (inKey.mAttribute_string.stringValue (), nearestKeyArray) ;
+      inCompiler->semanticErrorWith_K_message (inKey, nearestKeyArray, inSearchErrorMessage COMMA_THERE) ;
     }
     attachProxyToMapNode (node) ;
   }

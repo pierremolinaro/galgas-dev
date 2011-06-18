@@ -231,6 +231,9 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
 //--------------------------------- Search
   protected : VIRTUAL_IN_DEBUG cUniqueMapNode * searchEntryInMap (const C_String & inKey) const ;
 
+  public : VIRTUAL_IN_DEBUG void findNearestKey (const C_String & inKey,
+                                                 TC_UniqueArray <C_String> & ioNearestKeyArray) const ;
+
   protected : VIRTUAL_IN_DEBUG const cCollectionElement * performSearch (const GALGAS_lstring & inKey,
                                                                          C_Compiler * inCompiler,
                                                                          const char * inSearchErrorMessage

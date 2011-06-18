@@ -231,7 +231,7 @@ void c_LR0_items_set::
 getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
                    const PMSInt32 inSymbol,
                    c_LR0_items_set & out_LR0_item_set) {
-  out_LR0_item_set.mItemsSet.clear () ;
+  out_LR0_item_set.mItemsSet.removeAllObjects () ;
   for (PMSInt32 i=0 ; i<mItemsSet.count () ; i++) {
     const PMSInt32 productionRuleIndex = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
     const cProduction & p = inProductionRules (productionRuleIndex COMMA_HERE) ;
@@ -251,7 +251,7 @@ void c_LR0_items_set::
 getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProductionRules,
                                     TC_UniqueArray <PMSInt32> & outProductionsSet,
                                     bool & outAcceptCondition) {
-  outProductionsSet.clear () ;
+  outProductionsSet.removeAllObjects () ;
   outAcceptCondition = false ;
   for (PMSInt32 i=0 ; i<mItemsSet.count () ; i++) {
     const PMSInt32 productionRuleIndex = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;

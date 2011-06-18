@@ -533,7 +533,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
             << "\n" ;
   }
   generatedZone3 << "} ;\n\n" ;
-  productionRulesTitle.clear () ;
+  productionRulesTitle.removeAllObjects () ;
 
 //--- Generate decision tables indexes
   generatedZone3.appendCppTitleComment ("L L ( 1 )    F I R S T    P R O D U C T I O N    I N D E X E S") ;

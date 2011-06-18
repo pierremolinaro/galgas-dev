@@ -350,6 +350,7 @@ void C_Compiler::emitSemanticError (const GALGAS_location & inErrorLocation,
 //---------------------------------------------------------------------------*
 
 void C_Compiler::semanticErrorWith_K_message (const GALGAS_lstring & inKey,
+                                              TC_UniqueArray <C_String> & ioNearestKeyArray,
                                               const char * in_K_ErrorMessage
                                               COMMA_LOCATION_ARGS) {
   const C_String key = inKey.mAttribute_string.stringValue () ;
@@ -370,6 +371,17 @@ void C_Compiler::semanticErrorWith_K_message (const GALGAS_lstring & inKey,
     }else{
       message.appendUnicodeCharacter (c COMMA_HERE) ;
     }
+  }
+//--- Add nearest keys, if any
+  if (ioNearestKeyArray.count () > 0) {
+    message << " (do you mean '" << ioNearestKeyArray (0 COMMA_HERE) << "'" ;
+    for (PMSInt32 i=2 ; i<ioNearestKeyArray.count () ; i++) {
+      message << ", '" << ioNearestKeyArray (i-1 COMMA_HERE) << "'" ;
+    }
+    if (ioNearestKeyArray.count () > 1) {
+      message << " or '" << ioNearestKeyArray.lastObject (HERE) << "'" ;
+    }
+    message << " ?)" ;
   }
 //--- Emit error message
   const GALGAS_location key_location = inKey.mAttribute_location ;

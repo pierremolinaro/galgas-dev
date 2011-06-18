@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 1997, ..., 2009 Pierre Molinaro.                           *
+//  Copyright (C) 1997, ..., 2011 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -191,6 +191,9 @@ class C_String : public AC_OutputStream {
   public : PMSInt32 compareStringByLength (const C_String & inString) const ;
   public : bool operator == (const C_String & inString) const ;
   public : bool operator != (const C_String & inString) const ;
+
+//--- Distance from an other string
+  public : PMUInt32 LevenshteinDistanceFromString (const C_String & inOtherString) const ;
 
 //--- Get lines array
   public : void getLinesArray (TC_UniqueArray <C_String> & outStringArray) const ;
