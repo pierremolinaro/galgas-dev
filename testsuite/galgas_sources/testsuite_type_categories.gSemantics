@@ -79,8 +79,27 @@ modifier @string concatList ??@stringlist inList :
   end foreach ;
 end modifier ;
 
-modifier @uint increment :
+modifier @uint64 increment :
   self ++ ;
 end modifier ;
+
+#----------------------------------------------------------------------------*
+
+abstract class @toto { }
+class @toto1 extends @toto { }
+abstract class @toto2 extends @toto1 { }
+class @toto3 extends @toto2 { }
+
+#override method @toto1 m : end method ;
+#override method @toto3 m : end method ;
+#override abstract method @toto2 m ;
+#abstract method @toto m ;
+
+override abstract reader @toto2 r -> @uint result ;
+override reader @toto3 r -> @uint result : result := 0 ; end reader ;
+override reader @toto1 r -> @uint result : result := 0 ; end reader ;
+reader @toto1 rr -> @uint result : result := 0 ; end reader ;
+abstract reader @toto r -> @uint result ;
+
 
 end semantics ;

@@ -807,14 +807,14 @@ local filewrapper semanticComponentGenerationTemplate in "../generation_template
   
 #--- Category reader implemented as function
   template categoryReaderAsFunctionDeclaration "category-reader-as-function-declaration.h.gTemplate"
-    ?@string TYPE_IDENTIFIER
+    ?@string TYPE_NAME
     ?@string READER_NAME
     ?@formalInputParameterListForGeneration FORMAL_ARGUMENT_LIST
     ?@string RETURN_TYPE_IDENTIFIER
   ;
 
   template categoryReaderAsFunctionImplementation "category-reader-as-function-implementation.cpp.gTemplate"
-    ?@string TYPE_IDENTIFIER
+    ?@string TYPE_NAME
     ?@string READER_NAME
     ?@string FUNCTION_IMPLEMENTATION
   ;
@@ -1290,14 +1290,14 @@ end reader ;
 override reader @categoryReaderForGeneration appendDeclaration1 -> @string outHeader :
   if mImplementedAsFunction then
     outHeader := [filewrapper semanticComponentGenerationTemplate.categoryReaderAsFunctionDeclaration
-      ![mSelfType identifierRepresentation]
+      ![mSelfType key]
       !mCategoryReaderName
       !mCategoryReaderFormalParameterList
       ![mResultType identifierRepresentation]
     ] ; 
   else
     outHeader := [filewrapper semanticComponentGenerationTemplate.categoryReaderDeclaration
-      ![mSelfType identifierRepresentation]
+      ![mSelfType key]
       !mCategoryReaderName
       !mCategoryReaderFormalParameterList
       !mResultType
@@ -1762,7 +1762,7 @@ override reader @categoryReaderForGeneration appendSpecificImplementation -> @st
       !true      
     ] ;
     outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryReaderAsFunctionImplementation
-      ![mSelfType identifierRepresentation]
+      ![mSelfType key]
       !mCategoryReaderName
       !generateFunction [
         !"categoryReader_" . [mCategoryReaderName identifierRepresentation]
@@ -1776,7 +1776,7 @@ override reader @categoryReaderForGeneration appendSpecificImplementation -> @st
     ] ; 
   else
     const @string categoryReaderCode := generateCategoryReader [
-      ![mSelfType identifierRepresentation]
+      ![mSelfType key]
       !""
       !mCategoryReaderName
       !mCategoryReaderFormalParameterList
@@ -1786,7 +1786,7 @@ override reader @categoryReaderForGeneration appendSpecificImplementation -> @st
       !mResultVarCppName
     ] ;
     outImplementation := [filewrapper semanticComponentGenerationTemplate.categoryReaderImplementation
-      ![mSelfType identifierRepresentation]
+      ![mSelfType key]
       !mCategoryReaderName
       !mCategoryReaderFormalParameterList
       !mResultType
@@ -1798,7 +1798,6 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 override reader @overrideCategoryReaderForGeneration appendSpecificImplementation -> @string outImplementation :
-#  message "@overrideCategoryReaderForGeneration appendSpecificImplementation\n" ;
   const @string categoryReaderCode := generateCategoryReader [
     !mTypeName
     !mBaseTypeName

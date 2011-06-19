@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//%!["Category Reader '@" . TYPE_IDENTIFIER . " " . READER_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
+//%!["Category Reader '@" . TYPE_NAME . " " . READER_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-GALGAS_%!RETURN_TYPE_IDENTIFIER% categoryReader_%![READER_NAME identifierRepresentation]% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inObject%
+GALGAS_%!RETURN_TYPE_IDENTIFIER% categoryReader_%![READER_NAME identifierRepresentation]% (%?^%const GALGAS_%![TYPE_NAME identifierRepresentation]% & inObject%
   foreach FORMAL_ARGUMENT_LIST do index IDX
     %,\n%!^
     if mIsConstant then

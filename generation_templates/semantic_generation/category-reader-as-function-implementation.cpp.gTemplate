@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//%!["Category Reader '@" . TYPE_IDENTIFIER . " " . READER_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
+//%!["Category Reader '@" . TYPE_NAME . " " . READER_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
 //                                                                           *
 //---------------------------------------------------------------------------*
 
