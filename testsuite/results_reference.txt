@@ -120,13 +120,13 @@ LOGGING m: <map @aMap (1 object):
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (51 types)
+--- Type list (55 types)
   @2stringlist
   @A
-  @AA
+  @A_A
   @B
-  @BB
-  @CC
+  @B_B
+  @C_C
   @TestCategoryMethod
   @TestCategoryModifier
   @aList
@@ -166,6 +166,10 @@ LOGGING r: <@uint:5>
   @stringlist
   @stringset
   @structTest
+  @toto
+  @toto1
+  @toto2
+  @toto3
   @type
   @typelist
   @uint

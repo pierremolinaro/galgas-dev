@@ -11,7 +11,7 @@ LIBPM_DIRECTORY_PATH := ../libpm
 
 SOURCES_DIR := ../galgas_sources/GALGAS_OUTPUT
 SOURCES_DIR += ../galgas_sources/GALGAS_OUTPUT/include-files
-SOURCES_DIR += ../hand_coded_sources
+SOURCES_DIR += ../hand_coded_sources/
 
 
 #---------------------------------------------------------------*

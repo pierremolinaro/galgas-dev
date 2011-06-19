@@ -1,30 +1,30 @@
 semantics testsuite_category_readers :
 
-abstract class @AA {}
+abstract class @A_A {}
 
-class @BB extends @AA {}
+class @B_B extends @A_A {}
 
-abstract reader @AA aReader ?@uint inA ??@string inB -> @string outResult ;
+abstract reader @A_A aReader ?@uint inA ??@string inB -> @string outResult ;
 
-override reader @BB aReader ?@uint inA ??@string inB -> @string outResult
+override reader @B_B aReader ?@uint inA ??@string inB -> @string outResult
 :
   inA ++ ;
   outResult := inB . inA ;
 end reader ;
 
-reader @BB otherReader ?@uint inA ??@string inB -> @string outResult
+reader @B_B otherReader ?@uint inA ??@string inB -> @string outResult
 :
   inA ++ ;
   outResult := inB . inA . [selfcopy aReader !inA !inB] . [selfcopy aReader !inA !inB] ;
 end reader ;
 
-abstract class @CC extends @BB {}
+abstract class @C_C extends @B_B {}
 
-override abstract reader @CC aReader ?@uint inA ??@string inB -> @string outResult ;
+override abstract reader @C_C aReader ?@uint inA ??@string inB -> @string outResult ;
 
 routine testsuite_category_readers :
   message "*************************************** begin of category reader test\n" ;
-  @BB b := [@BB new] ;
+  @B_B b := [@B_B new] ;
   @string s := [b otherReader !2 !"-"] ;
   log s ;
 end routine ;
