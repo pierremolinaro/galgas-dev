@@ -56,7 +56,7 @@ GALGAS_data::GALGAS_data (const PMUInt8 * inSourceArray,
                           const PMUInt32 inLength) :
 mIsValid (true),
 mData () {
-  mData.makeRoom (inLength) ;
+  mData.makeRoom ((PMSInt32) inLength) ;
   for (PMUInt32 i=0 ; i<inLength ; i++) {
     mData.addObject (inSourceArray [i]) ;
   }

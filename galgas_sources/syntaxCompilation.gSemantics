@@ -226,24 +226,22 @@ routine compileSyntaxComponentFromAST
             ] ;
           end foreach ;
         #--- Generate "parse" label
-          if mHasParseLabel then
-            @semanticInstructionListForGeneration instructionList ;
-            [mLabelImplementationList first ?* ?* ?* ?* ?instructionList] ;
-            const @string ruleName := "cParser_" . [componentName identifierRepresentation]
-            . "::rule_" . [componentName identifierRepresentation] . "_"
-            . [mNonterminalName identifierRepresentation]
-            . "_i" . [mRuleIndex string] . "_parse" ;
-            implementationString .= "//---------------------------------------------------------------------------*\n\n" ;
-            implementationString .= generateProcedure [
-              !ruleName
-              ![@formalParameterListForGeneration emptyList]
-              !syntaxSignatureOfInstructionList [!"parse" !instructionList]
-              !false
-              !lexiqueCppName
-              !false # Do not generate location Argument
-              !true # Generate 'resetTemplateString'
-            ] ;
-          end if ;
+          @semanticInstructionListForGeneration instructionList ;
+          [mLabelImplementationList first ?* ?* ?* ?* ?instructionList] ;
+          const @string ruleName := "cParser_" . [componentName identifierRepresentation]
+          . "::rule_" . [componentName identifierRepresentation] . "_"
+          . [mNonterminalName identifierRepresentation]
+          . "_i" . [mRuleIndex string] . "_parse" ;
+          implementationString .= "//---------------------------------------------------------------------------*\n\n" ;
+          implementationString .= generateProcedure [
+            !ruleName
+            ![@formalParameterListForGeneration emptyList]
+            !syntaxSignatureOfInstructionList [!"parse" !instructionList]
+            !false
+            !lexiqueCppName
+            !false # Do not generate location Argument
+            !true # Generate 'resetTemplateString'
+          ] ;
         #--- Generate indexing code
           if hasIndexing then
             @semanticInstructionListForGeneration instructionList ;

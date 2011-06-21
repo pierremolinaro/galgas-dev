@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 1996, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 1996, ..., 2011 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -25,6 +25,10 @@
 
 #ifndef GALGAS_IO_CLASS_DEFINED
 #define GALGAS_IO_CLASS_DEFINED
+
+//---------------------------------------------------------------------------*
+
+#include <typeinfo>
 
 //---------------------------------------------------------------------------*
 

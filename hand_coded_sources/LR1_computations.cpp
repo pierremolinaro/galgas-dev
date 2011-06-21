@@ -1292,6 +1292,32 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
     const PMSInt32 pureBNFleftNonterminalIndex = (PMSInt32) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () ;
     const PMSInt32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
     generatedZone3.appendCppTitleComment (C_String ("'") + nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue () + "' non terminal implementation") ;
+  //--- Parse label
+    generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+                 << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+                 << "_parse (C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
+                 << ") {\n"
+                    "  switch (inLexique->nextProductionIndex ()) {\n" ;
+    if (first >= 0) { // first<0 means the non terminal symbol is unuseful
+      MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
+      const PMSInt32 last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
+      MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
+      for (PMSInt32 j=first ; j<=last ; j++) {
+        const PMSInt32 ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
+        generatedZone3 << "  case " << cStringWithSigned (ip) << " :\n    " ;
+        inProductionRules (ip COMMA_HERE).engendrerAppelProduction (0,
+                                                                    inVocabulary,
+                                                                    "parse",
+                                                                    generatedZone3) ;
+        generatedZone3 << "    break ;\n" ;
+      }
+    }
+    generatedZone3 << "  default :\n"
+                      "    inLexique->internalBottomUpParserError (HERE) ;\n"
+                      "    break ;\n"
+                      "  }\n"
+                      "}\n\n" ;
+  //--- Indexing ?
     if (inHasIndexing) {
       generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                    << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()

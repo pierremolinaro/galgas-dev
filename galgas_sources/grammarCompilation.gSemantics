@@ -28,7 +28,6 @@ import "lexiqueCompilation.gSemantics" ;
 
 function transformLabelMap
   ??@nonTerminalLabelListAST inLabels
-  ??@bool inHasParseLabel
   -> @nonterminalSymbolLabelMapForGrammarAnalysis outNonterminalSymbolLabelMapForGrammarAnalysis
 :
   outNonterminalSymbolLabelMapForGrammarAnalysis := [@nonterminalSymbolLabelMapForGrammarAnalysis emptyMap] ;
@@ -42,12 +41,6 @@ function transformLabelMap
       !formalParametersList
     ] ;
   end foreach ;
-  if inHasParseLabel then
-    [!?outNonterminalSymbolLabelMapForGrammarAnalysis insertKey
-      ![@lstring new !"parse" !here] # Label 'parse'
-      ![@signatureForGrammarAnalysis emptyList]
-    ] ;
-  end if ;
 end function ;
 
 
@@ -56,7 +49,6 @@ end function ;
 routine checkLabelMap
   ??@location inNonTerminalLocation
   ??@nonTerminalLabelListAST inLabels
-  ??@bool inHasParseLabel
   ??@location inOriginalNonTerminalLocation
   ??@nonterminalSymbolLabelMapForGrammarAnalysis inNonterminalSymbolLabelMapForGrammarAnalysis
 :
@@ -94,15 +86,6 @@ routine checkLabelMap
       end foreach ;
     end if ;
   end foreach ;
-  if inHasParseLabel then
-    labelStringSet += !"parse" ;
-    if not [inNonterminalSymbolLabelMapForGrammarAnalysis hasKey !"parse"] then
-      error inNonTerminalLocation :
-        "this non terminal is declared with 'parse' label, but declaration at "
-          . [inOriginalNonTerminalLocation locationString]
-          . " does not declare 'parse' label" ;
-    end if ;
-  end if ;
 #---
   foreach inNonterminalSymbolLabelMapForGrammarAnalysis do
     if not [labelStringSet hasKey ![lkey string]] then
@@ -125,7 +108,6 @@ local routine handleNonTerminalDeclarations
       checkLabelMap
         ![mNonterminalName location]
         !mLabels
-        !mHasParseLabel
         ![ioNonTerminalMapForGrammarAnalysis locationForKey ![mNonterminalName string]]
         !mNonterminalSymbolParametersMap
       ;
@@ -133,7 +115,7 @@ local routine handleNonTerminalDeclarations
       [!?ioNonTerminalMapForGrammarAnalysis insertKey
         !mNonterminalName
         ![ioNonTerminalMapForGrammarAnalysis count]
-        !transformLabelMap [!mLabels !mHasParseLabel]
+        !transformLabelMap [!mLabels]
       ] ;
     end with ;  
   end foreach ;
@@ -159,7 +141,7 @@ local routine handleNonTerminalDeclarationsFromRuleList
       [!?ioNonTerminalMapForGrammarAnalysis insertKey
         !mNonterminalName
         ![ioNonTerminalMapForGrammarAnalysis count]
-        !transformLabelMap [!nonTerminalLabelListAST !false]
+        !transformLabelMap [!nonTerminalLabelListAST]
       ] ;
     end with ;  
   end foreach ;
@@ -585,7 +567,6 @@ routine compileGrammarComponentFromAST
   checkLabelMap
     ![[inGrammarComponentRoot mStartSymbolName] location]
     ![inGrammarComponentRoot mStartSymbolLabelList]
-    ![inGrammarComponentRoot mStartSymbolHasParseLabel]
     ![nonTerminalMapForGrammarAnalysis locationForKey ![[inGrammarComponentRoot mStartSymbolName] string]]
     !startSymbolAltMap
   ;

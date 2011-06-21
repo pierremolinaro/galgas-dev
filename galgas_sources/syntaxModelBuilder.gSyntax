@@ -128,7 +128,6 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList :
-  @bool mHasParseLabel := false ;
   $nonterminal$ ;
   $non_terminal_symbol$ ? @lstring mNonterminalName indexing ruleDefinition ;
   @nonTerminalLabelListAST mLabels [emptyList] ;
@@ -142,17 +141,13 @@ rule <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDec
       <nonterminal_label_declaration> !labelName !?mLabels ;
     or
       $parse$ ;
-      if mHasParseLabel then
-        error here: "the 'parse' id already defined for this nonterminal" ;
-      end if ;
-      mHasParseLabel := true ;
+      warning here : "obsolete construction: 'parse' label is from now implicite" ;
     end select ;
   end repeat ;
   $;$ ;
   ioNonterminalDeclarationList +=
     !mNonterminalName
     !mLabels
-    !mHasParseLabel
   ;
 end rule ;
 

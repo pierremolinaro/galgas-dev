@@ -1790,8 +1790,8 @@ bool C_String::writeBinaryData (const TC_UniqueArray <PMUInt8> & inBinaryData) c
 //--- Write binary data
   if (success) {
     const PMUInt8 * dataPtr = inBinaryData.arrayPointer () ;
-    const PMUInt32 length = inBinaryData.count () ;
-    const size_t writtenCount = ::fwrite (dataPtr, 1, length, filePtr) ;
+    const PMUInt32 length = (PMUInt32) inBinaryData.count () ;
+    const size_t writtenCount = (size_t) ::fwrite (dataPtr, 1, length, filePtr) ;
     success = writtenCount == length ;
   }
 //--- Close file

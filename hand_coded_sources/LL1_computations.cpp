@@ -588,6 +588,16 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
   while (nonTerminal.hasCurrentObject ()) {
     generatedZone3.appendCppTitleComment (C_String ("'") + nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue () + "' non terminal implementation") ;
     const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction ((PMSInt32) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () COMMA_HERE) >= 0 ;
+  //--- Parse label
+      generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
+                 << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
+                 << "_parse (C_Lexique_" << inLexiqueName.identifierRepresentation () << " * " << (existeProduction ? "inLexique" : "")
+                 << ") {\n" ; 
+    engendrerAiguillageNonTerminaux (inVocabulary, (PMSInt32) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), 0,
+                                     inPureBNFproductions, generatedZone3,
+                                     "parse") ;
+    generatedZone3 << "}\n\n" ;
+  //--- Indexing ? 
     if (inHasIndexing) {
       generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                    << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()

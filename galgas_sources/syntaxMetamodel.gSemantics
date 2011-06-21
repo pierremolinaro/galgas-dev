@@ -40,7 +40,6 @@ list @nonTerminalLabelListAST {
 list @nonterminalDeclarationListAST {
   @lstring mNonterminalName ;
   @nonTerminalLabelListAST mLabels ;
-  @bool mHasParseLabel ;
 }
 
 #---------------------------------------------------------------------------*
