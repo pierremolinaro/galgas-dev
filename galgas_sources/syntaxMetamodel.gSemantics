@@ -81,7 +81,7 @@ class @nonterminalCallInstruction extends @syntaxInstructionAST {
 class @terminalCheckInstruction extends @syntaxInstructionAST {
   @lstring mTerminalName ;
   @actualInputParameterListAST mActualInputParameterList ;
-  @lstring mIndexingKey ; # Empty string if no index
+  @lstringlist mIndexingKeyList ; # Empty list if no index
 }
 
 #---------------------------------------------------------------------------*

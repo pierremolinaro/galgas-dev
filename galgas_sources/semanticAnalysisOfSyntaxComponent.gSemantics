@@ -411,22 +411,22 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
     end if ;
   end foreach ;
 #---
-  if mIndexingKey->string != "" then
-    if not [inIndexNameSet hasKey !mIndexingKey->string] then
+  foreach mIndexingKeyList do
+    if not [inIndexNameSet hasKey ![mValue string]] then
       @string s := "" ;
       foreach inIndexNameSet do
         s .= "\n  - " . key  ;
       end foreach ;
-      error mIndexingKey : "the '" . mIndexingKey . "' indexing name is not declared by the lexique; available names are:" . s ;
+      error mValue : "the '" . mValue . "' indexing name is not declared by the lexique; available names are:" . s ;
     end if ;
-  end if ;
+  end foreach ;
 #---
   ioInstructionListForGeneration += ![@terminalCheckInstructionForGeneration new
     !mInstructionLocation
     !mTerminalName
     !inLexiqueName
     !terminalCheckAssignementList
-    !mIndexingKey->string
+    !mIndexingKeyList
   ] ;
 end method ;
 
@@ -450,9 +450,9 @@ override method @terminalCheckInstructionForGeneration generateInstruction
                     . " () ;\n" ;
   end foreach ;
 #--- Indexing
-  if mIndexingKey != "" then
-    ioGeneratedCode .= compilerCppName [] . "->enterIndexing (C_Lexique_" . mLexiqueIdentifier . "::kIndexing_" . [mIndexingKey identifierRepresentation] . ") ;\n" ;
-  end if ;
+  foreach mIndexingKeyList do
+    ioGeneratedCode .= compilerCppName [] . "->enterIndexing (C_Lexique_" . mLexiqueIdentifier . "::kIndexing_" . [mValue identifierRepresentation] . ") ;\n" ;
+  end foreach ;
 #--- Check terminal symbol
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .= compilerCppName [] . "->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_"

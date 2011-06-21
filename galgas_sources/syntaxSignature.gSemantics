@@ -70,7 +70,7 @@ override method @terminalCheckInstructionForGeneration appendSyntaxSignature
     !mTerminalName
     !mLexiqueIdentifier
     ![@terminalCheckAssignementList emptyList]
-    !mIndexingKey
+    !mIndexingKeyList
   ] ;
 end method ;
 
