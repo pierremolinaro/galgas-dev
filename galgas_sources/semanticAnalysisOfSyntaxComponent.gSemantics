@@ -37,7 +37,6 @@ map @nonterminalLabelMap {
 
 map @nonterminalMap {
   @nonterminalLabelMap mLabelMap ;
-  @bool mHasParseLabel ;
   insert insertKey error message "the '%K' nonterminal has been already declared in %L" ;
   search searchKey error message "the '%K' nonterminal is not declared" ;
 }
@@ -59,7 +58,6 @@ list @ruleDeclarationList {
   @string mNonterminalName ;
   @uint mRuleIndex ;
   @ruleLabelImplementationList mLabelImplementationList ;
-  @bool mHasParseLabel ;
 }
 
 #---------------------------------------------------------------------------*
@@ -134,19 +132,9 @@ end reader ;
 local routine enterNonterminalNonTerminalInMapAndCheck
   ??@lstring inNonTerminalName
   ??@nonterminalLabelMap inNonterminalLabelMap
-  ??@bool inHasParseLabel
   ?!@nonterminalMap ioNonterminalDeclarationMap 
 :
   with ioNonterminalDeclarationMap hasKey ![inNonTerminalName string] do
-    if mHasParseLabel != inHasParseLabel then
-      error inNonTerminalName
-      : "the '" . inNonTerminalName . "' is redeclared "
-      . if mHasParseLabel then "with" else "without" end
-      . " 'parse' label, but first declaration declares it "
-      . if inHasParseLabel then "with" else "without" end
-      . " 'parse' label"
-      ;
-    end if ;
     const @stringset firstDeclarationLabelSet := [mLabelMap allKeys] ;
     const @stringset reDeclarationLabelSet := [inNonterminalLabelMap allKeys] ;
     const @stringset missingLabelSet := firstDeclarationLabelSet - reDeclarationLabelSet ;
@@ -184,7 +172,7 @@ local routine enterNonterminalNonTerminalInMapAndCheck
       end foreach ;
     end if ;
   else
-    [!?ioNonterminalDeclarationMap insertKey !inNonTerminalName !inNonterminalLabelMap !inHasParseLabel] ;
+    [!?ioNonterminalDeclarationMap insertKey !inNonTerminalName !inNonterminalLabelMap] ;
   end with ;
 end routine ;
 
@@ -209,7 +197,7 @@ local routine buildNonterminalDeclarationsMap
       end foreach ;
       [!?nonterminalLabelMap insertKey !mLabelName !signatureForGeneration !signature !mEndOfArgumentLocation] ;
     end foreach ;
-    enterNonterminalNonTerminalInMapAndCheck !mNonterminalName !nonterminalLabelMap !mHasParseLabel !?outNonterminalDeclarationMap ;
+    enterNonterminalNonTerminalInMapAndCheck !mNonterminalName !nonterminalLabelMap !?outNonterminalDeclarationMap ;
   end foreach ;
 end routine ;
 
@@ -221,7 +209,6 @@ end routine ;
 
 abstract method @syntaxInstructionAST analyzeSyntaxInstruction
   ??@analysisContext inAnalysisContext
-  ??@bool inCurrentRuleHasParseLabel
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -236,7 +223,6 @@ abstract method @syntaxInstructionAST analyzeSyntaxInstruction
 
 override method @semanticInstructionAST analyzeSyntaxInstruction
   ??@analysisContext inAnalysisContext
-  ??@bool unused inCurrentRuleHasParseLabel
   ??@terminalMap unused inTerminalMap
   ??@string unused inLexiqueName
   ??@nonterminalMap unused inNonterminalMap
@@ -257,7 +243,6 @@ end method ;
 
 override method @nonterminalCallInstruction analyzeSyntaxInstruction
   ??@analysisContext inAnalysisContext
-  ??@bool inCurrentRuleHasParseLabel
   ??@terminalMap unused inTerminalMap
   ??@string unused inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -269,23 +254,10 @@ override method @nonterminalCallInstruction analyzeSyntaxInstruction
 :
 #  message "Analyze <" . mNonterminalName . "> " . mLabelName . "\n" ;
   @nonterminalLabelMap labelMap ;
-  @bool hasParseLabel ;
-  [inNonterminalMap searchKey !mNonterminalName ?labelMap ?hasParseLabel] ;
+  [inNonterminalMap searchKey !mNonterminalName ?labelMap] ;
   @formalParameterSignature signature ;
-  if inCurrentRuleHasParseLabel & not hasParseLabel then
-    error mLabelName
-    : "the '<" . mNonterminalName . ">' nonterminal should declare the 'parse' label"
-    : signature
-    ;
-  elsif [mLabelName string] == "parse" then
-    if not hasParseLabel then
-      error mLabelName
-      : "the '<" . mNonterminalName . ">' nonterminal should declare the 'parse' label"
-      : signature
-      ;
-    else
-      signature := [@formalParameterSignature emptyList] ;
-    end if ;
+  if [mLabelName string] == "parse" then
+    signature := [@formalParameterSignature emptyList] ;
   else
     [labelMap searchKey !mLabelName ?* ?signature ?*] ;
   end if ;
@@ -352,7 +324,6 @@ end method ;
 
 override method @terminalCheckInstruction analyzeSyntaxInstruction
   ??@analysisContext inAnalysisContext
-  ??@bool unused inCurrentRuleHasParseLabel
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap unused inNonterminalMap
@@ -472,7 +443,6 @@ end method ;
 
 routine analyzeSyntaxInstructionList
   ??@analysisContext inAnalysisContext
-  ??@bool inCurrentRuleHasParseLabel
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -491,7 +461,6 @@ routine analyzeSyntaxInstructionList
   foreach inSyntaxInstructionListAST do
     [mInstruction analyzeSyntaxInstruction
       !inAnalysisContext
-      !inCurrentRuleHasParseLabel
       !inTerminalMap
       !inLexiqueName
       !inNonterminalMap
@@ -510,7 +479,6 @@ end routine ;
 
 override method @repeatInstruction analyzeSyntaxInstruction
   ??@analysisContext inAnalysisContext
-  ??@bool inCurrentRuleHasParseLabel
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -528,7 +496,6 @@ override method @repeatInstruction analyzeSyntaxInstruction
   @semanticInstructionListForGeneration repeated_instructionList ;
   analyzeSyntaxInstructionList
     !inAnalysisContext
-    !inCurrentRuleHasParseLabel
     !inTerminalMap
     !inLexiqueName
     !inNonterminalMap
@@ -546,7 +513,6 @@ override method @repeatInstruction analyzeSyntaxInstruction
     @semanticInstructionListForGeneration instructionList ;
     analyzeSyntaxInstructionList
       !inAnalysisContext
-      !inCurrentRuleHasParseLabel
       !inTerminalMap
       !inLexiqueName
       !inNonterminalMap
@@ -617,7 +583,6 @@ end method ;
 
 override method @selectInstruction analyzeSyntaxInstruction
   ??@analysisContext inAnalysisContext
-  ??@bool inCurrentRuleHasParseLabel
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -637,7 +602,6 @@ override method @selectInstruction analyzeSyntaxInstruction
     @semanticInstructionListForGeneration instructionList ;
     analyzeSyntaxInstructionList
       !inAnalysisContext
-      !inCurrentRuleHasParseLabel
       !inTerminalMap
       !inLexiqueName
       !inNonterminalMap
@@ -692,7 +656,6 @@ end method ;
 
 override method @parseRewindInstruction analyzeSyntaxInstruction
   ??@analysisContext inAnalysisContext
-  ??@bool inCurrentRuleHasParseLabel
   ??@terminalMap  inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -711,7 +674,6 @@ override method @parseRewindInstruction analyzeSyntaxInstruction
     foreach mSyntaxInstructionList do
       [mInstruction analyzeSyntaxInstruction
         !inAnalysisContext
-        !inCurrentRuleHasParseLabel
         !inTerminalMap
         !inLexiqueName
         !inNonterminalMap
@@ -775,7 +737,6 @@ end method ;
 
 override method @parseLoopInstruction analyzeSyntaxInstruction
   ??@analysisContext inAnalysisContext
-  ??@bool inCurrentRuleHasParseLabel
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -818,7 +779,6 @@ override method @parseLoopInstruction analyzeSyntaxInstruction
   @semanticInstructionListForGeneration instructionList ;
   analyzeSyntaxInstructionList
     !inAnalysisContext
-    !inCurrentRuleHasParseLabel
     !inTerminalMap
     !inLexiqueName
     !inNonterminalMap
@@ -903,7 +863,6 @@ end method ;
 
 override method @parseWhenInstruction analyzeSyntaxInstruction
   ??@analysisContext inAnalysisContext
-  ??@bool inCurrentRuleHasParseLabel
   ??@terminalMap inTerminalMap
   ??@string inLexiqueName
   ??@nonterminalMap inNonterminalMap
@@ -927,7 +886,6 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   @semanticInstructionListForGeneration when_instructionListForGeneration ;
   analyzeSyntaxInstructionList
     !inAnalysisContext
-    !inCurrentRuleHasParseLabel
     !inTerminalMap
     !inLexiqueName
     !inNonterminalMap
@@ -943,7 +901,6 @@ override method @parseWhenInstruction analyzeSyntaxInstruction
   @semanticInstructionListForGeneration else_instructionListForGeneration ;
   analyzeSyntaxInstructionList
     !inAnalysisContext
-    !inCurrentRuleHasParseLabel
     !inTerminalMap
     !inLexiqueName
     !inNonterminalMap
@@ -1012,7 +969,6 @@ end method ;
 
 routine semanticAnalysisOfRuleLabel
   ??@formalParameterListAST inFormalArguments
-  ??@bool inCurrentRuleHasParseLabel
   ??@syntaxInstructionList inSyntaxInstructionList
   ??@analysisContext inAnalysisContext
   ??@terminalMap inTerminalMap
@@ -1044,7 +1000,6 @@ routine semanticAnalysisOfRuleLabel
   foreach inSyntaxInstructionList do
     [mInstruction analyzeSyntaxInstruction
       !inAnalysisContext
-      !inCurrentRuleHasParseLabel
       !inTerminalMap
       !inLexiqueName
       !inNonterminalMap
@@ -1097,11 +1052,11 @@ routine semanticAnalysisOfSyntaxComponent
       end foreach ;
       [!?nonterminalLabelMap insertKey !mLabelName !signatureForGeneration !signature !mEndOfArgumentLocation] ;
     end foreach ;
-    with nonterminalMap hasKey ![mNonterminalName string] do
-      enterNonterminalNonTerminalInMapAndCheck !mNonterminalName !nonterminalLabelMap !mHasParseLabel !?nonterminalMap ;
-    else
-      enterNonterminalNonTerminalInMapAndCheck !mNonterminalName !nonterminalLabelMap !false !?nonterminalMap ;
-    end with ;
+#    with nonterminalMap hasKey ![mNonterminalName string] do
+      enterNonterminalNonTerminalInMapAndCheck !mNonterminalName !nonterminalLabelMap !?nonterminalMap ;
+#    else
+#      enterNonterminalNonTerminalInMapAndCheck !mNonterminalName !nonterminalLabelMap !?nonterminalMap ;
+#    end with ;
   end foreach ;
 #--- Analysis context
   const @analysisContext analysisContext [new
@@ -1118,8 +1073,7 @@ routine semanticAnalysisOfSyntaxComponent
   foreach inRuleList do
     @ruleLabelImplementationList ruleLabelImplementationList [emptyList] ;
     @uint localSelectMethodCount := selectMethodCount ;
-    @bool currentRuleHasParseLabel ;
-    [nonterminalMap searchKey !mNonterminalName ?* ?currentRuleHasParseLabel] ;
+    [nonterminalMap searchKey !mNonterminalName ?*] ;
     foreach mLabelList do
       localSelectMethodCount := selectMethodCount ;
       @formalParameterListForGeneration signatureForGeneration ;
@@ -1127,7 +1081,6 @@ routine semanticAnalysisOfSyntaxComponent
       @semanticInstructionListForGeneration instructionListForGeneration ;
       semanticAnalysisOfRuleLabel
         !mFormalArguments
-        !currentRuleHasParseLabel
         !mSyntaxInstructionList
         !analysisContext
         !inTerminalMap
@@ -1150,13 +1103,11 @@ routine semanticAnalysisOfSyntaxComponent
       ;
     end foreach ;
     selectMethodCount := localSelectMethodCount ;
-    @bool hasParseLabel ;
-    [nonterminalMap searchKey !mNonterminalName ?* ?hasParseLabel] ;
+    [nonterminalMap searchKey !mNonterminalName ?*] ;
     ruleDeclarationList +=
       ![mNonterminalName string]
       !newRuleIndex
       !ruleLabelImplementationList
-      !hasParseLabel
     ;
     newRuleIndex ++ ;
   end foreach ;

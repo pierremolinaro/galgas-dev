@@ -8,7 +8,17 @@ end foreach
 % {
 %
 foreach NON_TERMINAL_MAP do
+  %//------------------------------------- '%![lkey string]%' non terminal\n%
+  #--- Parse
+    %//--- 'parse' label\n%
+    %  public : virtual void nt_%![lkey identifierRepresentation]%_parse (C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
+  #--- indexing ?
+    if HAS_INDEXING then
+      %//--- indexing\n%
+      %  public : virtual void nt_%![lkey identifierRepresentation]%_indexing (C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
+    end if
   foreach mNonterminalSymbolParametersMap prefixedBy label_ do
+  %//----------- '%![label_lkey string]%' label\n%
   #--- Non terminal declaration
     %  public : virtual void nt_%![lkey identifierRepresentation]%_%![label_lkey identifierRepresentation]% (%?^
     foreach label_mFormalParametersList do index IDX
@@ -24,13 +34,9 @@ foreach NON_TERMINAL_MAP do
       %,\n%!^
     end foreach
     %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
-  #--- indexing ?
-    if HAS_INDEXING then
-      %  public : virtual void nt_%![lkey identifierRepresentation]%_indexing (%?^
-      %C_Lexique_%!LEXIQUE_IDENTIFIER% * inCompiler) ;\n\n%
-    end if
   #--- Start symbol ?
     if [[GRAMMAR_COMPONENT_ROOT mStartSymbolName] string] == [lkey string] then
+      %//--- Start symbol\n%
       if HAS_INDEXING then
         %  public : static void performIndexing (%?^%C_Compiler * inCompiler,\n%
         !^%const C_String & inSourceFilePath) ;\n\n%

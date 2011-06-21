@@ -53,7 +53,6 @@ rule <grammar_component_start_symbol>
 #--- Root symbol
   $root$ ;
   $non_terminal_symbol$ ?@lstring  mStartSymbol indexing ruleReference ;
-  @bool startSymbolHasParseLabel := false ;
   @nonTerminalLabelListAST mLabelList [emptyList] ;
   <grammar_start_symbol_label> ![@lstring new !"" !here] !?mLabelList ;
   repeat
@@ -64,10 +63,7 @@ rule <grammar_component_start_symbol>
       <grammar_start_symbol_label> !labelName !?mLabelList ;
     or
       $parse$ ;
-      if startSymbolHasParseLabel then
-        error here : "'parse' label has been already declared" ;
-      end if ;
-      startSymbolHasParseLabel := true ;
+      warning here : "obsolete construction: 'parse' label is from now implicite" ;
     end select ;
   end repeat ;
   $;$ ;
@@ -93,7 +89,6 @@ rule <grammar_component_start_symbol>
     !syntaxComponents
     !mStartSymbol
     !mLabelList
-    !startSymbolHasParseLabel
     !mUnusedNonterminalList
     !here
   ] ;

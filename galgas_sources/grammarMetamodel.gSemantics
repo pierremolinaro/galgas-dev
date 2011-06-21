@@ -29,7 +29,6 @@ struct @grammarComponentAST {
   @lstringlist mSyntaxComponents ;
   @lstring mStartSymbolName ;
   @nonTerminalLabelListAST mStartSymbolLabelList ;
-  @bool mStartSymbolHasParseLabel ;
   @lstringlist mUnusedNonterminalList ;
   @location mEndOfSourceText ;
 }
