@@ -2022,7 +2022,8 @@ override method @classDeclarationAST enterInSemanticContext
   @bool generateHeaderInSeparateFile ;
   if [mSuperClassName string] == "" then
     superClassIndex := [@unifiedTypeMapProxy null] ;
-    readerMap := [@readerMap emptyMap] ;
+#    readerMap := [@readerMap emptyMap] ;
+    commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?readerMap ;
     modifierMap := [@modifierMap emptyMap] ;
     instanceMethodMap := [@instanceMethodMap emptyMap] ;
     inheritedTypedAttributeList := [@typedAttributeList emptyList] ;
@@ -2106,6 +2107,9 @@ override method @classDeclarationAST enterInSemanticContext
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mAttributeTypeName string] ?attributeTypeIndex] ;
     constructorAttributeTypeList += !attributeTypeIndex ;
     [!?attributeMap insertKey !mAttributeName !attributeTypeIndex] ;
+    if [readerMap hasKey ![mAttributeName string]] then
+      error mAttributeName: "'" . mAttributeName . "' is the name of a prefefined or a user defined reader" ;
+    end if ;
   end foreach ;
 #--- Current class Index
   @unifiedTypeMapProxy classIndex ;
