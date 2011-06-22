@@ -532,6 +532,7 @@ end rule ;
 rule <enum_message_declaration> ?!@enumMessageListAST ioEnumMessageList :
   $reader$ ;
   $identifier$ ?@lstring mEnumMessageName ;
+  warning mEnumMessageName : "'enum' reader is obsolete" ;
   $:$ ;
   @enumMessageAssociationListAST mMessageAssociationList [emptyList] ;
   repeat

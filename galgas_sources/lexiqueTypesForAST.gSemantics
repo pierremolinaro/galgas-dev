@@ -343,26 +343,35 @@ class @lexicalLogInstructionAST extends @lexicalInstructionAST {
 enum @lexicalArgumentModeAST {
   lexicalInputMode, lexicalInputOutputMode
 }{
-  reader lexicalFormalModeName :
-    lexicalInputMode       -> "!" ;
-    lexicalInputOutputMode -> "?!" ;
-  end reader ;
-
-  reader cppConstInFormalArgument :
-    lexicalInputMode       -> "const " ;
-    lexicalInputOutputMode -> "" ;
-  end reader ;
-
-  reader cppReferenceInFormalArgument :
-    lexicalInputMode       -> "" ;
-    lexicalInputOutputMode -> " &" ;
-  end reader ;
-
-  reader cocoaPointerInFormalArgument :
-    lexicalInputMode       -> "" ;
-    lexicalInputOutputMode -> " *" ;
-  end reader ;
 }
+
+reader @lexicalArgumentModeAST lexicalFormalModeName -> @string outResult :
+  switch selfcopy
+  when lexicalInputMode       : outResult := "!" ;
+  when lexicalInputOutputMode : outResult := "?!" ;
+  end switch ;
+end reader ;
+
+reader @lexicalArgumentModeAST cppConstInFormalArgument -> @string outResult :
+  switch selfcopy
+  when lexicalInputMode       : outResult := "const " ;
+  when lexicalInputOutputMode : outResult := "" ;
+  end switch ;
+end reader ;
+
+reader @lexicalArgumentModeAST cppReferenceInFormalArgument -> @string outResult :
+  switch selfcopy
+  when lexicalInputMode       : outResult := "" ;
+  when lexicalInputOutputMode : outResult := " &" ;
+  end switch ;
+end reader ;
+
+reader @lexicalArgumentModeAST cocoaPointerInFormalArgument -> @string outResult :
+  switch selfcopy
+  when lexicalInputMode       : outResult := "" ;
+  when lexicalInputOutputMode : outResult := " *" ;
+  end switch ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 
