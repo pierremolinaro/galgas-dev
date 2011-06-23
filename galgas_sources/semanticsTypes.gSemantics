@@ -217,20 +217,25 @@ enum @typeKindEnum {
   graphType,
   predefinedType
 }{
-  reader kind :
-    classType -> "class" ;
-    enumType -> "enumeration" ;
-    listType -> "list" ;
-    sortedListType -> "sorted list" ;
-    mapType -> "map" ;
-    uniqueMapType -> "unique map" ;
-    mapProxyType -> "map proxy" ;
-    listMapType -> "list map" ;
-    structType -> "struct" ;
-    graphType -> "graph" ;
-    predefinedType -> "predefined" ;
-  end reader ;
 }
+
+#---------------------------------------------------------------------------*
+
+reader @typeKindEnum kind -> @string outResult :
+  switch selfcopy
+    when classType : outResult := "class" ;
+    when enumType : outResult := "enumeration" ;
+    when listType : outResult := "list" ;
+    when sortedListType : outResult := "sorted list" ;
+    when mapType : outResult := "map" ;
+    when uniqueMapType : outResult := "unique map" ;
+    when mapProxyType : outResult := "map proxy" ;
+    when listMapType : outResult := "list map" ;
+    when structType : outResult := "struct" ;
+    when graphType : outResult := "graph" ;
+    when predefinedType : outResult := "predefined" ;
+  end switch ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *

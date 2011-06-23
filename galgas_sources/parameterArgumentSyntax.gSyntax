@@ -73,7 +73,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <actual_parameter_list> !@actualParameterListAST outActualParameterList :
+rule <actual_parameter_list>
+  !@actualParameterListAST outActualParameterList
+  ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
+:
   outActualParameterList := [@actualParameterListAST emptyList] ;
   repeat
   while
@@ -128,17 +131,16 @@ rule <actual_parameter_list> !@actualParameterListAST outActualParameterList :
   while
     $?$ ;
     const @location qualifierLocation := here ;
-#    @lstring declarationTypeName ;
-#    select
-#      declarationTypeName := [@lstring new !"" !here] ;
-#    or
-#      $type_name$ ? declarationTypeName ;
-#    end select ;
     @lstring inputActualParameterName ;
-    $identifier$ ?inputActualParameterName ;
+    select
+      $identifier$ ?inputActualParameterName ;
+    or
+      $type_name$ ? @lstring declarationTypeName ;
+      $identifier$ ?inputActualParameterName ;
+      ioLocalVariableDeclarationList += !declarationTypeName !inputActualParameterName ;
+    end select ;
     outActualParameterList += ![@inputActualParameterAST new
       !qualifierLocation
-#      !declarationTypeName
       !inputActualParameterName
     ] ;
   end repeat ;

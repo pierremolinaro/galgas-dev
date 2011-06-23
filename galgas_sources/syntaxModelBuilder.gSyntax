@@ -37,13 +37,22 @@ nonterminal <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList ;
 
 nonterminal <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList ;
 
-nonterminal <semantic_instruction> !@semanticInstructionAST outInstruction ;
+nonterminal <semantic_instruction>
+  !@semanticInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
+;
 
-nonterminal <syntax_instruction> !@syntaxInstructionAST outInstruction ;
+nonterminal <syntax_instruction>
+  !@syntaxInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
+;
 
 nonterminal <formal_parameter_list> !@formalParameterListAST outFormalParameterList ;
 
-nonterminal <actual_parameter_list> !@actualParameterListAST outActualParameterList ;
+nonterminal <actual_parameter_list>
+  !@actualParameterListAST outActualParameterList
+  ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
+;
 
 nonterminal <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
@@ -216,11 +225,19 @@ rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList 
   repeat
   while
     @semanticInstructionAST instruction ;
-    <semantic_instruction> ? instruction ;
+    @localVariableDeclarationListAST localVariableDeclarationList [emptyList] ;
+    <semantic_instruction> ? instruction !?localVariableDeclarationList ;
+    foreach localVariableDeclarationList do
+      outSyntaxInstructionList += ![@localVariableDeclarationAST new ![mTypeName location] !mTypeName !mVariableName] ;
+    end foreach ;
     outSyntaxInstructionList += !instruction ;
   while
     @syntaxInstructionAST instruction ;
-    <syntax_instruction> ? instruction ;
+    @localVariableDeclarationListAST localVariableDeclarationList [emptyList] ;
+    <syntax_instruction> ? instruction !?localVariableDeclarationList ;
+    foreach localVariableDeclarationList do
+      outSyntaxInstructionList += ![@localVariableDeclarationAST new ![mTypeName location] !mTypeName !mVariableName] ;
+    end foreach ;
     outSyntaxInstructionList += !instruction ;
   end repeat ;
 end rule ;
@@ -231,7 +248,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
+:
   $non_terminal_symbol$ ? @lstring mNonterminalName indexing ruleReference ;
   @lstring mLabelName ; # No label : empty string
   select
@@ -243,7 +263,7 @@ rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
     $identifier$ ? mLabelName ;
   end select ;
   @actualParameterListAST mActualParameterList ;
-  <actual_parameter_list> ? mActualParameterList ;
+  <actual_parameter_list> ? mActualParameterList !?ioLocalVariableDeclarationList ;
   $;$ ;
   outInstruction := [@nonterminalCallInstruction new
     ![mNonterminalName location]
@@ -259,7 +279,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
   $terminal$ ? @lstring mTerminalName indexing terminalReference ;
   @actualInputParameterListAST mActualInputParameterList ;
   <actual_input_parameter_list> ? mActualInputParameterList ;
@@ -289,7 +312,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
   $repeat$ ;
   @location mRepeatInstructionLocation := here ;
   @syntaxInstructionList mRepeatedInstructionList ;
@@ -322,7 +348,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
   $select$ ;
   @location mSelectInstructionLocation := here ;
   @listOfSyntaxInstructionList mSelectBranchList [emptyList] ;
@@ -352,7 +381,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
   $parse$ ;
   const @location instructionLocation := here ;
   $do$ ;
@@ -422,7 +454,10 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
   $parse$ ;
   const @location instructionLocation := here ;
   $when$ ;
@@ -457,7 +492,10 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <syntax_instruction> !@syntaxInstructionAST outInstruction :
+rule <syntax_instruction>
+  !@syntaxInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
   $parse$ ;
   const @location instructionLocation := here ;
   $loop$ ;

@@ -26,6 +26,119 @@ import "lexiqueLL1grammar.gGrammar" ;
 import "galgas_cli_options.gOption" ;
 
 #---------------------------------------------------------------------------*
+
+reader @lexicalTypeEnum cppTypeName -> @string outResult :
+  switch selfcopy
+    when lexicalType_string : outResult := "C_String" ;
+    when lexicalType_char   : outResult := "utf32" ;
+    when lexicalType_uint   : outResult := "PMUInt32" ;
+    when lexicalType_uint64 : outResult := "PMUInt64" ;
+    when lexicalType_sint   : outResult := "PMSInt32" ;
+    when lexicalType_sint64 : outResult := "PMSInt64" ;
+    when lexicalType_double : outResult := "double" ;
+  end switch ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+reader @lexicalTypeEnum appendMethodName -> @string outResult :
+  switch selfcopy
+    when lexicalType_string : outResult := "appendCLiteralStringConstant" ;
+    when lexicalType_char   : outResult := "appendUnicodeCharacter" ;
+    when lexicalType_uint   : outResult := "appendUnsigned" ;
+    when lexicalType_uint64 : outResult := "appendUnsigned64" ;
+    when lexicalType_sint   : outResult := "appendSigned" ;
+    when lexicalType_sint64 : outResult := "appendSigned64" ;
+    when lexicalType_double : outResult := "appendDouble" ;
+  end switch ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+reader @lexicalTypeEnum appendArgumentOfMethod -> @string outResult :
+  switch selfcopy
+    when lexicalType_string : outResult := "" ;
+    when lexicalType_char   : outResult := " COMMA_HERE" ;
+    when lexicalType_uint   : outResult := "" ;
+    when lexicalType_uint64 : outResult := "" ;
+    when lexicalType_sint   : outResult := "" ;
+    when lexicalType_sint64 : outResult := "" ;
+    when lexicalType_double : outResult := "" ;
+  end switch ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+reader @lexicalTypeEnum initialization -> @string outResult :
+  switch selfcopy
+    when lexicalType_string : outResult := ".setLengthToZero ()" ;
+    when lexicalType_char   : outResult := " = TO_UNICODE (0)" ;
+    when lexicalType_uint   : outResult := " = 0" ;
+    when lexicalType_uint64 : outResult := " = 0" ;
+    when lexicalType_sint   : outResult := " = 0" ;
+    when lexicalType_sint64 : outResult := " = 0" ;
+    when lexicalType_double : outResult := " = 0.0" ;
+  end switch ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+reader @lexicalTypeEnum cocoaTypeName -> @string outResult :
+  switch selfcopy
+    when lexicalType_string : outResult := "NSMutableString *" ;
+    when lexicalType_char   : outResult := "UInt32" ;
+    when lexicalType_uint   : outResult := "UInt32" ;
+    when lexicalType_uint64 : outResult := "UInt64" ;
+    when lexicalType_sint   : outResult := "SInt32" ;
+    when lexicalType_sint64 : outResult := "SInt64" ;
+    when lexicalType_double : outResult := "double" ;
+  end switch ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+reader @lexicalTypeEnum cocoaInitializationCode -> @string outResult :
+  switch selfcopy
+    when lexicalType_string : outResult := "[[NSMutableString alloc] init]" ;
+    when lexicalType_char   : outResult := "0" ;
+    when lexicalType_uint   : outResult := "0" ;
+    when lexicalType_uint64 : outResult := "0" ;
+    when lexicalType_sint   : outResult := "0" ;
+    when lexicalType_sint64 : outResult := "0" ;
+    when lexicalType_double : outResult := "0.0" ;
+  end switch ;
+end reader ;
+
+
+#---------------------------------------------------------------------------*
+
+reader @lexicalTypeEnum cocoaResetPrefix -> @string outResult :
+  switch selfcopy
+    when lexicalType_string : outResult := "[" ;
+    when lexicalType_char   : outResult := "" ;
+    when lexicalType_uint   : outResult := "" ;
+    when lexicalType_uint64 : outResult := "" ;
+    when lexicalType_sint   : outResult := "" ;
+    when lexicalType_sint64 : outResult := "" ;
+    when lexicalType_double : outResult := "" ;
+  end switch ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+reader @lexicalTypeEnum cocoaReset -> @string outResult :
+  switch selfcopy
+    when lexicalType_string : outResult := " setString:@\"\"]" ;
+    when lexicalType_char   : outResult := " = 0" ;
+    when lexicalType_uint   : outResult := " = 0" ;
+    when lexicalType_uint64 : outResult := " = 0" ;
+    when lexicalType_sint   : outResult := " = 0" ;
+    when lexicalType_sint64 : outResult := " = 0" ;
+    when lexicalType_double : outResult := " = 0.0" ;
+  end switch ;
+end reader ;
+
+#---------------------------------------------------------------------------*
 #                     checkLexicalDefaultAction                             *
 #---------------------------------------------------------------------------*
 

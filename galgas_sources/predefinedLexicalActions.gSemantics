@@ -21,6 +21,20 @@ semantics predefinedLexicalActions :
 import "lexiqueSemantics.gSemantics" ;
 
 #---------------------------------------------------------------------------*
+
+reader @lexicalTypeEnum lexicalTypeBaseName -> @string outResult :
+  switch selfcopy
+    when lexicalType_string : outResult := "string" ;
+    when lexicalType_char   : outResult := "char" ;
+    when lexicalType_uint   : outResult := "uint" ;
+    when lexicalType_uint64 : outResult := "uint64" ;
+    when lexicalType_sint   : outResult := "sint" ;
+    when lexicalType_sint64 : outResult := "sint64" ;
+    when lexicalType_double : outResult := "double" ;
+  end switch ;
+end reader ;
+
+#---------------------------------------------------------------------------*
 #                         buildLexicalRoutineMap                            *
 #---------------------------------------------------------------------------*
 
