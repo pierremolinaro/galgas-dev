@@ -877,7 +877,7 @@ scanner_cocoa_routine_convertDecimalStringIntoUInt64 (BOOL * ioScanningOk,
       if (*outValue > max) {
         * ioScanningOk = NO ;
         ok = false ;
-      }else if ((*outValue == max) && (PMUINT64_MAX % 10)) {
+      }else if ((*outValue == max) && (digit > (PMUINT64_MAX % 10))) {
         * ioScanningOk = NO ;
         ok = false ;
       }else{

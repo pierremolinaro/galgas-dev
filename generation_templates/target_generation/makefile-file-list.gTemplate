@@ -15,7 +15,6 @@ SOURCES_DIR += ../galgas_sources/GALGAS_OUTPUT/include-files
   %SOURCES_DIR += %!key%\n%
 end foreach
 %
-
 #---------------------------------------------------------------*
 #                                                               *
 #     Source files names list (without their actual path)       *

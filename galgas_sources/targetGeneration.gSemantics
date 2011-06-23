@@ -246,10 +246,18 @@ routine updateTargets
       if (extension == "cpp") | (extension == "mm") | (extension == "framework") then
         externSourceSet_tool += ![mFilePath string] ;
         handCodedSourceList += ![mFilePath lastPathComponent] ;
-        handCodedSourceDirectorySet += !"../hand_coded_sources/" . [mFilePath stringByDeletingLastPathComponent] ;
+        if [mFilePath stringByDeletingLastPathComponent] == "" then
+          handCodedSourceDirectorySet += !"../hand_coded_sources" ;
+        else
+          handCodedSourceDirectorySet += !"../hand_coded_sources/" . [mFilePath stringByDeletingLastPathComponent] ;
+        end if ;
       elsif extension == "m" then
         externSourceSet_app += ![mFilePath string] ;
-        handCodedSourceDirectorySet += !"../hand_coded_sources/" . [mFilePath stringByDeletingLastPathComponent] ;
+        if [mFilePath stringByDeletingLastPathComponent] == "" then
+          handCodedSourceDirectorySet += !"../hand_coded_sources" ;
+        else
+          handCodedSourceDirectorySet += !"../hand_coded_sources/" . [mFilePath stringByDeletingLastPathComponent] ;
+        end if ;
       else
         error mFilePath:"unhandled extension" ;
       end if ;

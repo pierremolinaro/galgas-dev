@@ -397,6 +397,18 @@ abstract method @actualParameterAST checkAgainstFormalArgument
 
 #---------------------------------------------------------------------------*
 
+reader @formalArgumentPassingModeAST correspondingEffectiveParameterString -> @string outResult :
+  switch selfcopy
+    when argumentConstantIn : outResult := "!" ;
+    when argumentIn : outResult := "!" ;
+    when argumentOut : outResult := "?" ;
+    when argumentInOut : outResult := "!?" ;
+  end switch ;
+end reader ;
+
+
+#---------------------------------------------------------------------------*
+
 override method @outputActualParameterAST checkAgainstFormalArgument
   ??@analysisContext inAnalysisContext
   ??@unifiedTypeMapProxy inFormalArgumentType

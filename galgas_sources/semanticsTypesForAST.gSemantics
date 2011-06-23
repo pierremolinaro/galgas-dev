@@ -232,48 +232,40 @@ class @filewrapperTemplateInExpressionAST extends @semanticExpressionAST {
 enum @formalArgumentPassingModeAST {
   argumentIn, argumentOut, argumentInOut, argumentConstantIn
 }{
-  reader formalArgumentMessage :
-    argumentConstantIn -> "a constant input (??) formal argument" ;
-    argumentIn -> "an input (?) formal argument" ;
-    argumentOut -> "an output (!) formal argument" ;
-    argumentInOut -> "an input/output (?!) formal argument" ;
-  end reader ;
-
-  reader formalArgumentString :
-    argumentConstantIn -> "'??'" ;
-    argumentIn -> "'?'" ;
-    argumentOut -> "'!'" ;
-    argumentInOut -> "'?!'" ;
-  end reader ;
-
-  reader string :
-    argumentConstantIn -> "??" ;
-    argumentIn -> "?" ;
-    argumentOut -> "!" ;
-    argumentInOut -> "?!" ;
-  end reader ;
-
-  reader correspondingEffectiveParameterString :
-    argumentConstantIn -> "!" ;
-    argumentIn -> "!" ;
-    argumentOut -> "?" ;
-    argumentInOut -> "!?" ;
-  end reader ;
-
-  reader generation1ForFormalParameter :
-    argumentConstantIn -> "const " ;
-    argumentIn -> "" ;
-    argumentOut -> "" ;
-    argumentInOut -> "" ;
-  end reader ;
-
-  reader generation2ForFormalParameter :
-    argumentConstantIn -> "" ;
-    argumentIn -> "" ;
-    argumentOut -> " &" ;
-    argumentInOut -> " &" ;
-  end reader ;
 }
+
+#---------------------------------------------------------------------------*
+
+reader @formalArgumentPassingModeAST string -> @string outResult :
+  switch selfcopy
+    when argumentConstantIn : outResult := "??" ;
+    when argumentIn : outResult := "?" ;
+    when argumentOut : outResult := "!" ;
+    when argumentInOut : outResult := "?!" ;
+  end switch ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+reader @formalArgumentPassingModeAST formalArgumentMessage -> @string outResult :
+  switch selfcopy
+    when argumentConstantIn : outResult := "a constant input (??) formal argument" ;
+    when argumentIn : outResult := "an input (?) formal argument" ;
+    when argumentOut : outResult := "an output (!) formal argument" ;
+    when argumentInOut : outResult := "an input/output (?!) formal argument" ;
+  end switch ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
+reader @formalArgumentPassingModeAST formalArgumentString -> @string outResult :
+  switch selfcopy
+    when argumentConstantIn : outResult := "'??'" ;
+    when argumentIn : outResult := "'?'" ;
+    when argumentOut : outResult := "'!'" ;
+    when argumentInOut : outResult := "'?!'" ;
+  end switch ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
@@ -450,6 +442,13 @@ class @onceFunctionDeclarationAST extends @semanticDeclarationAST {
 #---------------------------------------------------------------------------*
 
 class @localVariableDeclarationAST extends @semanticInstructionAST {
+  @lstring mTypeName ;
+  @lstring mVariableName ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @localVariableDeclarationListAST {
   @lstring mTypeName ;
   @lstring mVariableName ;
 }

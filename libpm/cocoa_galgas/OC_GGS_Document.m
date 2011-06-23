@@ -674,7 +674,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 //---------------------------------------------------------------------------*
 
 - (void) setCurrentWarningConditionnally: (NSUInteger) inNewCurrentWarning {
-  if ((inNewCurrentWarning >= 0) && (inNewCurrentWarning < [mWarningArray count])) {
+  if (inNewCurrentWarning < [mWarningArray count]) {
     [self setCurrentWarning:inNewCurrentWarning] ;
     [self openDocumentForCurrentWarningAndDisplay:NO] ;
   }
@@ -684,7 +684,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 
 - (void) showWarningAtIndex: (NSUInteger) inIndex
          display: (BOOL) inDisplaySourceWindow {
-  if ((inIndex >= 0) && (inIndex < [mWarningArray count])) {
+  if (inIndex < [mWarningArray count]) {
     [self setCurrentWarning:inIndex] ;
     [self openDocumentForCurrentWarningAndDisplay:inDisplaySourceWindow] ;
   }
@@ -713,7 +713,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 //---------------------------------------------------------------------------*
 
 - (BOOL) canGotoCurrentWarning {
-  return ([mWarningArray count] >= 0) && (mCurrentWarning < [mWarningArray count]) && (mCurrentWarning != NSNotFound) ;
+  return (mCurrentWarning < [mWarningArray count]) && (mCurrentWarning != NSNotFound) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -841,7 +841,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 //---------------------------------------------------------------------------*
 
 - (void) setCurrentErrorConditionnally: (NSUInteger) inNewCurrentError {
-  if ((inNewCurrentError >= 0) && (inNewCurrentError < [mErrorArray count])) {
+  if (inNewCurrentError < [mErrorArray count]) {
     [self setCurrentError:inNewCurrentError] ;
     [self openDocumentForCurrentErrorAndDisplay:NO] ;
   }
@@ -851,7 +851,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 
 - (void) showErrorAtIndex: (NSUInteger) inIndex
          display: (BOOL) inDisplaySourceWindow {
-  if ((inIndex >= 0) && (inIndex < [mErrorArray count])) {
+  if (inIndex < [mErrorArray count]) {
     [self setCurrentError:inIndex] ;
     [self openDocumentForCurrentErrorAndDisplay:inDisplaySourceWindow] ;
   }
@@ -880,7 +880,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 //---------------------------------------------------------------------------*
 
 - (BOOL) canGotoCurrentError {
-  return ([mErrorArray count] >= 0) && (mCurrentError < [mErrorArray count]) && (mCurrentError != NSNotFound) ;
+  return (mCurrentError < [mErrorArray count]) && (mCurrentError != NSNotFound) ;
 }
 
 //---------------------------------------------------------------------------*

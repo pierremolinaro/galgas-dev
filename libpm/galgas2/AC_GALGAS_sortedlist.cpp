@@ -597,7 +597,7 @@ static void infBranchDecreased (cSortedListNode * & ioRoot,
 
 //---------------------------------------------------------------------------*
 
-static void getPreviousElement (cSortedListNode * & ioRoot,
+/* static void getPreviousElement (cSortedListNode * & ioRoot,
                                 cSortedListNode * & ioElement,
                                 bool & ioBranchHasBeenRemoved) {
   if (ioRoot->mSupPtr == NULL) {
@@ -608,51 +608,6 @@ static void getPreviousElement (cSortedListNode * & ioRoot,
     getPreviousElement (ioRoot->mSupPtr, ioElement, ioBranchHasBeenRemoved) ;
     if (ioBranchHasBeenRemoved) {
       supBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-/* static void internalRemoveRecursively (cSortedListNode * & ioRoot,
-                                       const C_String & inKeyToRemove,
-                                       bool & outKeyHasBeenRemoved,
-                                       bool & ioBranchHasBeenRemoved) {
-  if (ioRoot != NULL) {
-    const PMSInt32 comparaison = ioRoot->mKey.compare (inKeyToRemove) ;
-    if (comparaison > 0) {
-      internalRemoveRecursively (ioRoot->mInfPtr, inKeyToRemove, outKeyHasBeenRemoved, ioBranchHasBeenRemoved);
-      if (ioBranchHasBeenRemoved) {
-        infBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;
-      }
-    }else if (comparaison < 0) {
-      internalRemoveRecursively (ioRoot->mSupPtr, inKeyToRemove, outKeyHasBeenRemoved, ioBranchHasBeenRemoved);
-      if (ioBranchHasBeenRemoved) {
-        supBranchDecreased (ioRoot, ioBranchHasBeenRemoved);
-      }
-    }else{
-      cSortedListNode * p = ioRoot ;
-      outKeyHasBeenRemoved = true ;
-      if (p->mInfPtr == NULL) {
-        ioRoot = p->mSupPtr;
-        p->mSupPtr = NULL;
-        ioBranchHasBeenRemoved = true;
-      }else if (p->mSupPtr == NULL) {
-        ioRoot = p->mInfPtr;
-        p->mInfPtr = NULL;
-        ioBranchHasBeenRemoved = true;
-      }else{
-        getPreviousElement (p->mInfPtr, ioRoot, ioBranchHasBeenRemoved) ;
-        ioRoot->mSupPtr = p->mSupPtr;
-        p->mSupPtr = NULL;
-        ioRoot->mInfPtr = p->mInfPtr;
-        p->mInfPtr = NULL;
-        ioRoot->mBalance = p->mBalance;
-        p->mBalance = 0;
-        if (ioBranchHasBeenRemoved) {
-          infBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;
-        }
-      }
     }
   }
 } */

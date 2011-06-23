@@ -1300,7 +1300,9 @@ routine generateXcodeProject
   @stringlist pathes [emptyList] ;
   pathes += !"../galgas_sources/GALGAS_OUTPUT" ;
   pathes += !inLIBPMpath ;
-  pathes += !"../hand_coded_sources/**" ;
+  if [inExternSourceNameSet_app count] > 0 then
+    pathes += !"../hand_coded_sources/**" ;
+  end if ;
   @stringlist projectDefaultSettings ;
   enterProjectDefaultSettings
     !pathes
