@@ -1,0 +1,1358 @@
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  GOIL Template parser                                                     *
+#                                                                           *
+#  Copyright (C) 2009, ..., 2009 Pierre Molinaro.                           *
+#                                                                           *
+#  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+#                                                                           *
+#  This program is free software; you can redistribute it and/or modify it  *
+#  under the terms of the GNU General Public License as published by the    *
+#  Free Software Foundation.                                                *
+#                                                                           *
+#  This program is distributed in the hope it will be useful, but WITHOUT   *
+#  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
+#  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+#   more details.                                                           *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+syntax template_parser ("template_scanner.gLexique") :
+
+import "template_invocation.gSemantics";
+
+nonterminal <goil_template_start_symbol>
+  ??@string inPrefix
+  ??@string inPath
+  ??@string inTemplateDirectory
+  ?@TfieldMap inTemplateVariableMap
+  ?!@string ioResultingString
+;
+
+nonterminal <template_instruction>
+  ??@string inPrefix
+  ??@string inPath
+  ??@string inTemplateDirectory
+  ?!@TfieldMap ioTemplateVariableMap
+  ?!@string ioResultingString
+;
+
+nonterminal <sorting_order>
+  !@lsint order
+;
+
+#nonterminal <struct_path>
+#  ?!@lstringlist path
+##;
+
+nonterminal <variable>
+  ??@string inPrefix
+  ??@string inPath
+  ??@string inTemplateDirectory
+  ??@TfieldMap inVariableMap
+  !@TvarPath path
+;
+
+nonterminal <variable_or_here>
+  ??@string inPrefix
+  ??@string inPath
+  ??@string inTemplateDirectory
+  ??@TfieldMap inTemplateVariableMap
+  !@location outWhere
+;
+
+nonterminal <expression>
+  ??@string inPrefix
+  ??@string inPath
+  ??@string inTemplateDirectory
+  ??@TfieldMap inTemplateVariableMap
+  !@Tvalue outExpression
+  !@Ttype outResultType
+;
+
+nonterminal  <template_instruction_list>
+  ??@string inPrefix
+  ??@string inPath
+  ??@string inTemplateDirectory
+  ?!@TfieldMap inTemplateVariableMap
+  ?!@string ioResultingString
+;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ??@string inPrefix
+  ??@string inPath
+  ??@string inTemplateDirectory
+  ?!@TfieldMap ioTemplateVariableMap
+  ?!@string ioResultingString
+:
+  $!$;
+  @Tvalue expression;
+  @Ttype resultType;
+  <expression>
+    !inPrefix
+    !inPath
+    !inTemplateDirectory
+    !ioTemplateVariableMap
+    ?expression
+    ?resultType
+  ;
+  switch resultType 
+  when stringType, enumType:
+    ioResultingString .= [expression mStringValue];
+  when unsignedType:
+    ioResultingString .= [[expression mUnsigned64Value] string];
+  when boolType:
+    if [expression mUnsigned64Value] == 0L then
+      ioResultingString .= "false";
+    else
+      ioResultingString .= "true";
+    end if;
+  when listType :
+    error here : "a list expression cannot be emitted";
+  when mapType :
+    error here : "a map expression cannot be emitted";
+  when structType :
+    error here : "a struct expression cannot be emitted";
+  when unconstructedType:
+    error here: "internal error, unconstructed type found";
+  end switch;    
+end rule;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ??@string inPrefix
+  ??@string inPath
+  ??@string inTemplateDirectory
+  ?!@TfieldMap ioTemplateVariableMap
+  ?!@string unused ioResultingString
+:
+  @bool fileNameOk := true;
+  $write$; $to$;
+  @Tvalue expression;
+  @Ttype expressionType;
+  @TfieldMap templateVariableMap := ioTemplateVariableMap;
+  <expression>
+    !inPrefix
+    !inPath
+    !inTemplateDirectory
+    !ioTemplateVariableMap
+    ?expression
+    ?expressionType
+  ;
+#  message "EXPRESSION '" . [expression mStringValue] . "'\n" ;
+  if [templateVariableMap hasKey !"FILENAME"] then
+    [!?templateVariableMap removeKey !lstringWith[!"FILENAME"] ?* ?*];
+  end if;
+  if [templateVariableMap hasKey !"FILEPATH"] then
+    [!?templateVariableMap removeKey !lstringWith[!"FILEPATH"] ?* ?*];
+  end if;
+  @Tvalue fileName := valueWithString[![[expression mStringValue] lastPathComponent]];
+  @Tvalue nativeFilePath := valueWithString[![[expression mStringValue] nativePathWithUnixPath]];
+  [!?templateVariableMap insertKey !lstringWith[!"FILENAME"] !expressionType !fileName];
+  [!?templateVariableMap insertKey !lstringWith[!"FILEPATH"] !expressionType !nativeFilePath];
+  @location fileNameLocation := here;
+  if expressionType != [@Ttype stringType] then
+    error here: "a file name should be of type string";
+    fileNameOk := false;    
+  end if;
+  $:$;
+  @string writeBlockResult := "";
+  <template_instruction_list>
+    !inPrefix
+    !inPath
+    !inTemplateDirectory
+    !?templateVariableMap
+    !?writeBlockResult
+  ;
+  if fileNameOk & [@uint errorCount] == 0 then
+    [writeBlockResult makeDirectoryAndWriteToFile ![expression mStringValue]];
+  end if;
+  $end$; $write$; 
+end rule;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ??@string inPrefix
+  ??@string inPath
+  ??@string inTemplateDirectory
+  ?!@TfieldMap ioTemplateVariableMap
+  ?!@string ioResultingString
+:
+  @string nextPrefix := inPrefix;
+  $template$;
+  select
+    $if$; $exists$;
+    $identifier$ ? @lstring templateName;
+    @bool found;
+    select
+      $in$; $identifier$ ?@lstring prefix;
+      nextPrefix := fullPrefix[!ioTemplateVariableMap !prefix];
+    or
+    end select;
+    templateInvocation
+      !templateName
+      !nextPrefix
+      !inPath
+      !inTemplateDirectory
+      !false
+      !ioTemplateVariableMap
+      !?ioResultingString
+      ?found
+    ;
+    select
+      $or$;
+      #log found;
+      parse when not found:
+        @TfieldMap templateVariableMap [mapWithMapToOverride !ioTemplateVariableMap];
+        <template_instruction_list>
+          !nextPrefix
+          !inPath
+          !inTemplateDirectory
+          !?templateVariableMap
+          !?ioResultingString
+        ;
+        ioTemplateVariableMap := [templateVariableMap overriddenMap];
+      else
+        <template_instruction_list> parse;
+      end parse;
+      $end$; $template$;
+    or
+    end select;
+  or
+    $identifier$ ? @lstring templateName;
+    select
+      $in$; $identifier$ ?@lstring prefix;
+      nextPrefix := fullPrefix[!ioTemplateVariableMap !prefix];
+    or
+    end select;
+    templateInvocation
+      !templateName
+      !nextPrefix
+      !inPath
+      !inTemplateDirectory
+      !true
+      !ioTemplateVariableMap
+      !?ioResultingString
+      ?*
+    ;
+  end select;
+end rule;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ??@string unused inPrefix
+  ??@string unused inPath
+  ??@string unused inTemplateDirectory
+  ?!@TfieldMap ioTemplateVariableMap
+  ?!@string ioResultingString
+:
+  $?$;
+  $identifier$ ? @lstring columnConstantName;
+  @string value := "";
+  @bool searchEndOfLine := true;
+  @uint idx := [ioResultingString length];
+  loop [ioResultingString length] :
+  while (idx > 0) & searchEndOfLine
+  do
+    searchEndOfLine := [ioResultingString characterAtIndex !idx - 1] != '\n';
+    idx --;
+    if searchEndOfLine then
+      value .= " ";
+    end if;
+  end loop;
+  [!?ioTemplateVariableMap insertKey
+    !columnConstantName
+    ![@Ttype stringType]
+    !valueWithString[!value]
+  ];
+end rule;
+
+#---------------------------------------------------------------------------*
+
+#rule <template_instruction>
+#  ?!@typeVariablesMap ioTemplateVariableMap
+#  ??@EXsemanticContext inSemanticContext
+#  ??@TfieldMap inComponentSemanticsEntitiesMap
+#  ??@M_optionComponents inOptionsComponentsMapForUse
+#  ?!@templateInstructionList ioResultingInstructionList
+#:
+#  $block$;
+#  @Tvalue expression;
+#  @Ttype resultType;
+#  <expression>
+#    !inComponentSemanticsEntitiesMap
+#    !inSemanticContext
+#    !inOptionsComponentsMapForUse
+#    !?ioTemplateVariableMap
+#    ?expression
+#    ?resultType
+#  ;
+#  @typeGalgas_uint x := (cast resultType if >= @typeGalgas_uint else error here);
+#  $:$;
+##--- Instruction list
+#  @templateInstructionList blockInstructionList [emptyList];
+#  enterTemplateString !? blockInstructionList;
+#  repeat
+#  while
+#    <template_instruction>
+#      !?ioTemplateVariableMap
+#      !inSemanticContext
+#      !inComponentSemanticsEntitiesMap
+#      !inOptionsComponentsMapForUse
+#      !?blockInstructionList
+#    ;
+#    enterTemplateString !?blockInstructionList;
+#  end repeat;
+##---
+#  $end$;
+#  $block$;
+#  ioResultingInstructionList += ![@templateBlockInstruction new
+#   !expression
+#   !here
+#   !blockInstructionList
+#  ];
+#end rule;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ??@string inPrefix
+  ??@string inPath
+  ??@string inTemplateDirectory
+  ?!@TfieldMap ioTemplateVariableMap
+  ?!@string ioResultingString
+:
+  $if$;
+  @bool currentCondition := false;
+  repeat
+    parse
+    when not currentCondition :
+      @Tvalue expression;
+      @Ttype expressionType;
+      <expression>
+        !inPrefix
+        !inPath
+        !inTemplateDirectory
+        !ioTemplateVariableMap
+        ?expression
+        ?expressionType
+      ;
+      if expressionType != [@Ttype boolType] then
+        error here:"the operand of the 'not' operator should be boolean";
+      end if;
+      currentCondition := [expression mUnsigned64Value] == 1L;
+      $then$;
+      parse
+      when currentCondition :
+        @TfieldMap templateVariableMap [mapWithMapToOverride !ioTemplateVariableMap];
+        <template_instruction_list>
+          !inPrefix
+          !inPath
+          !inTemplateDirectory
+          !?templateVariableMap
+          !?ioResultingString
+        ;
+        ioTemplateVariableMap := [templateVariableMap overriddenMap];
+      else
+        <template_instruction_list> parse;
+      end parse;
+    else
+      <expression> parse;
+      $then$;
+      <template_instruction_list> parse;
+    end parse;
+  while
+    $elsif$;
+  end repeat;
+#--- else
+  select
+  or
+    $else$;
+    parse
+    when not currentCondition :
+      @TfieldMap templateVariableMap [mapWithMapToOverride !ioTemplateVariableMap];
+      <template_instruction_list>
+        !inPrefix
+        !inPath
+        !inTemplateDirectory
+        !?templateVariableMap
+        !?ioResultingString
+      ;
+      ioTemplateVariableMap := [templateVariableMap overriddenMap];
+    else
+      <template_instruction_list> parse;
+    end parse;
+  end select;
+#---
+  $end$;
+  $if$;
+end rule;
+
+#---------------------------------------------------------------------------*
+
+rule  <template_instruction_list>
+  ??@string inPrefix
+  ??@string inPath
+  ??@string inTemplateDirectory
+  ?!@TfieldMap ioTemplateVariableMap
+  ?!@string ioResultingString
+:
+  ioResultingString .= [@string retrieveAndResetTemplateString];
+  repeat
+  while
+    <template_instruction>
+      !inPrefix
+      !inPath
+      !inTemplateDirectory
+      !?ioTemplateVariableMap
+      !?ioResultingString
+    ;
+    ioResultingString .= [@string retrieveAndResetTemplateString];
+  end repeat;
+end rule;
+
+#---------------------------------------------------------------------------*
+
+rule  <goil_template_start_symbol>
+  ??@string inPrefix
+  ??@string inPath
+  ??@string inTemplateDirectory
+  ?@TfieldMap inTemplateVariableMap
+  ?!@string ioResultingString
+:
+  <template_instruction_list>
+    !inPrefix
+    !inPath
+    !inTemplateDirectory
+    !?inTemplateVariableMap
+    !?ioResultingString
+  ;
+end rule;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ??@string inPrefix
+  ??@string inPath
+  ??@string inTemplateDirectory
+  ?!@TfieldMap ioTemplateVariableMap
+  ?!@string ioResultingString
+:
+  $foreach$; $identifier$ ? @lstring variableName; $in$;
+  @Tvalue enumeratedValue;
+  @Ttype expressionType;
+  <expression>
+    !inPrefix
+    !inPath
+    !inTemplateDirectory
+    !ioTemplateVariableMap
+    ?enumeratedValue
+    ?expressionType
+  ;
+    
+  @uint listLength := 0;
+  @lstringlist keyList;
+  switch expressionType
+  when listType:
+    listLength := [[enumeratedValue mMapListValue] length];
+    keyList := [@lstringlist emptyList];
+  when mapType:
+    listLength := [[enumeratedValue mStructValue] count];
+    keyList := [[enumeratedValue mStructValue] allKeyList];
+  when boolType, enumType, unsignedType, stringType, structType, unconstructedType:
+    error here:"only a list or a map can be enumerated": keyList;
+  end switch;
+
+  @string foreachPrefix;
+  select
+    foreachPrefix := "";
+  or
+    $prefixedby$;
+    $identifier$ ? @lstring prefixString;
+    foreachPrefix := [prefixString string];
+  end select;
+
+#--- before block
+  select
+  or
+    $before$;
+    parse
+    when listLength > 0 :
+      <template_instruction_list>
+        !inPrefix
+        !inPath
+        !inTemplateDirectory
+        !?ioTemplateVariableMap
+        !?ioResultingString
+      ;
+    else
+      <template_instruction_list> parse;
+    end parse;
+  end select;
+#--- Do block
+  $do$;
+  @uint idx := 0;
+  parse loop listLength
+  while idx < listLength do
+    @TfieldMap templateVariableMap [mapWithMapToOverride !ioTemplateVariableMap];
+    @Ttype itemType;
+    @Tvalue itemValue;
+    if expressionType == [@Ttype mapType] then
+      @lstring keyOfItem := [keyList mValueAtIndex !idx];
+      [[enumeratedValue mStructValue] searchKey !keyOfItem ?itemType ?itemValue];
+      addLStringValue !?templateVariableMap !"KEY" !keyOfItem;
+    else
+      const @TfieldMap fieldMap := [[enumeratedValue mMapListValue] mMapAtIndex !idx];
+      itemType := [@Ttype structType];
+      itemValue := [@Tvalue new !0L !"" ![@TfieldMapList emptyList] !fieldMap];
+    end if;
+    @lstring varName := [@lstring new !foreachPrefix . [variableName string] ![variableName location]];
+    [!?templateVariableMap insertKey !varName !itemType !itemValue];
+
+    addUnsignedValue !?templateVariableMap ![@lstring new !foreachPrefix."INDEX" !here] ![idx uint64];
+
+    <template_instruction_list>
+      !inPrefix
+      !inPath
+      !inTemplateDirectory
+      !?templateVariableMap
+      !?ioResultingString
+    ;
+    idx ++;
+    select
+    or
+      $between$;
+      parse 
+      when idx < listLength :
+        <template_instruction_list>
+          !inPrefix
+          !inPath
+          !inTemplateDirectory
+          !?templateVariableMap
+          !?ioResultingString
+        ;
+      else
+        <template_instruction_list> parse;
+      end parse;
+    end select;
+    ioTemplateVariableMap := [templateVariableMap overriddenMap];
+  end parse;
+  @string s := [@string retrieveAndResetTemplateString]; # Value not used
+#--- after block
+  select
+  or
+    $after$;
+    parse
+    when listLength > 0 :
+      <template_instruction_list>
+        !inPrefix
+        !inPath
+        !inTemplateDirectory
+        !?ioTemplateVariableMap
+        !?ioResultingString
+      ;
+    else
+      <template_instruction_list> parse;
+    end parse;
+  end select;
+#---
+  $end$;
+  $foreach$;
+end rule;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ??@string inPrefix
+  ??@string inPath
+  ??@string inTemplateDirectory
+  ?!@TfieldMap ioTemplateVariableMap
+  ?!@string ioResultingString
+:
+  $for$; $identifier$ ? @lstring variableName;
+#  if [ioTemplateVariableMap hasKey ![variableName string]] then
+#    [!?ioTemplateVariableMap removeKey !variableName ?* ?*];
+#  end if;
+  $in$;
+  @TexpressionList enumerationList [emptyList];
+  repeat
+    @Tvalue enumeratedValue;
+    @Ttype expressionType;
+    <expression>
+      !inPrefix
+      !inPath
+      !inTemplateDirectory
+      !ioTemplateVariableMap
+      ?enumeratedValue
+      ?expressionType
+    ;
+    if expressionType != [@Ttype boolType] &
+       expressionType != [@Ttype unsignedType] &
+       expressionType != [@Ttype stringType] then
+       error here:"only a bool, integer or string can be enumerated";
+    end if;
+    enumerationList += !enumeratedValue !expressionType;
+  while
+    $,$;
+  end repeat;
+#--- Do block
+  $do$;
+  @uint idx := 0;
+  parse loop [enumerationList length]
+  while [enumerationList length] > 0 do
+    @TfieldMap templateVariableMap [mapWithMapToOverride !ioTemplateVariableMap];
+    @Tvalue value;
+    @Ttype type;
+    [!?enumerationList popFirst ?value ?type];
+    [!?templateVariableMap insertKey
+      !variableName
+      !type
+      !value];
+      
+#    if [templateVariableMap hasKey !"INDEX"] then
+#      [!?templateVariableMap removeKey ![@lstring new !"INDEX" !here] ?* ?*];
+#    end if;
+    addUnsignedValue !?templateVariableMap ![@lstring new !"INDEX" !here] ![idx uint64];
+      
+    <template_instruction_list>
+      !inPrefix
+      !inPath
+      !inTemplateDirectory
+      !?templateVariableMap
+      !?ioResultingString
+    ;
+    idx ++;
+    select
+    or
+      $between$;
+      parse 
+      when [enumerationList length] > 0 :
+        <template_instruction_list>
+          !inPrefix
+          !inPath
+          !inTemplateDirectory
+          !?templateVariableMap
+          !?ioResultingString
+        ;
+      else
+        <template_instruction_list> parse;
+      end parse;
+    end select;
+    ioTemplateVariableMap := [templateVariableMap overriddenMap];
+  end parse;
+  @string s := [@string retrieveAndResetTemplateString]; # Value not used
+#---
+  $end$;
+  $for$;
+end rule;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ??@string inPrefix
+  ??@string inPath
+  ??@string inTemplateDirectory
+  ?!@TfieldMap ioTemplateVariableMap
+  ?!@string ioResultingString
+:
+  $loop$; $identifier$ ? @lstring variableName;
+  $from$;
+  @Tvalue startValue;
+  @Ttype startType;
+  <expression>
+    !inPrefix
+    !inPath
+    !inTemplateDirectory
+    !ioTemplateVariableMap
+    ?startValue
+    ?startType
+  ;
+  if startType != [@Ttype unsignedType] then
+    error here:"loop start value should be an integer";
+  end if;
+  $to$;
+  @Tvalue endValue;
+  @Ttype endType;
+  <expression>
+    !inPrefix
+    !inPath
+    !inTemplateDirectory
+    !ioTemplateVariableMap
+    ?endValue
+    ?endType
+  ;
+  if endType != [@Ttype unsignedType] then
+    error here:"loop end value should be an integer";
+  end if;
+#--- Before block
+  select
+  or
+    $before$;
+    parse
+    when [endValue mUnsigned64Value] >= [startValue mUnsigned64Value] :
+      <template_instruction_list>
+        !inPrefix
+        !inPath
+        !inTemplateDirectory
+        !?ioTemplateVariableMap
+        !?ioResultingString
+      ;
+    else
+      <template_instruction_list> parse;
+    end parse;
+  end select;
+#--- Do block
+  $do$;
+  @uint start := [[startValue mUnsigned64Value] uint];
+  @uint stop := [[endValue mUnsigned64Value] uint];
+  @uint idx := start;
+  parse loop stop - start + 1
+  while idx <= stop do
+    @TfieldMap templateVariableMap [mapWithMapToOverride !ioTemplateVariableMap];
+#    if [templateVariableMap hasKey ![variableName string]] then
+#      [!?templateVariableMap removeKey !variableName ?* ?*];
+#    end if;
+    addUnsignedValue !?templateVariableMap !variableName ![idx uint64];
+
+    <template_instruction_list>
+      !inPrefix
+      !inPath
+      !inTemplateDirectory
+      !?templateVariableMap
+      !?ioResultingString
+    ;
+    idx ++;
+    select
+    or
+      $between$;
+      parse 
+      when idx <= stop :
+        <template_instruction_list>
+          !inPrefix
+          !inPath
+          !inTemplateDirectory
+          !?templateVariableMap
+          !?ioResultingString
+        ;
+      else
+        <template_instruction_list> parse;
+      end parse;
+    end select;
+    ioTemplateVariableMap := [templateVariableMap overriddenMap];
+  end parse;
+  @string s := [@string retrieveAndResetTemplateString]; # Value not used
+#--- after block
+  select
+  or
+    $after$;
+    parse
+    when stop >= start :
+      <template_instruction_list>
+        !inPrefix
+        !inPath
+        !inTemplateDirectory
+        !?ioTemplateVariableMap
+        !?ioResultingString
+      ;
+    else
+      <template_instruction_list> parse;
+    end parse;
+  end select;
+#---
+  $end$;
+  $loop$;
+end rule;
+
+#---------------------------------------------------------------------------*
+
+#routine setFieldAlongPath
+#  ?@TvarPath path
+#  ?!@Ttype variableType
+#  ?!@Tvalue variableValue
+#  ??@Ttype expressionType
+#  ??@Tvalue enumeratedValue
+#:
+#  if [path length] > 0 then
+#    @lstring pathItem;
+#    @lstring key;
+#    [!?path popFirst ?pathItem ?key];
+#    
+#    @Ttype subType [unconstructedType];
+#    @Tvalue subValue := valueWithVoid[];
+#    
+#    if variableType == [@Ttype structType] then
+#      if [[variableValue mStructValue] hasKey ![pathItem string]] then
+#        [[variableValue mStructValue] searchKey ![pathItem string] ?subType ?subValue];
+#      end if;
+#    end if; 
+#    
+#    @Ttype currentType := subType;
+#    @Tvalue currentValue := subValue;
+#    if [key string] != "" & currentType == [@Ttype mapType] then
+#      if [currentValue hasKey ![key string]] then
+#        [currentValue searchKey !key ?subType ?subValue];
+#      end if;
+#    end if;
+#    
+#    setFieldAlongPath !path !?subType !?subValue !expressionType !enumeratedValue;
+#    
+#    # if key is not empty then the subType / subValue 
+#    # is added to the m
+#    if [key string] != "" then
+#      
+#    
+#    variableType := [@Ttype structType];
+#    @TfieldMap items := [variableValue mStructValue];
+#    if [items hasKey ![pathItem string]] then
+#      [!?items removeKey !pathItem ?* ?*];
+#    end if;
+#    [!?items insertKey
+#      !pathItem
+#      !subType
+#      !subValue
+#    ];
+#    variableValue := valueWithStruct[!items];
+#  else
+#    variableType := expressionType;
+#    variableValue := enumeratedValue;
+#  end if;  
+#end routine;
+
+routine setVariableInPath
+  ?@TvarPath path
+  ?!@TfieldMap ioFieldMap
+  ??@Ttype expressionType
+  ??@Tvalue enumeratedValue
+:
+  # get the name and the key of the variable
+  @lstring varName;
+  @lstring key;
+  [!?path popFirst ?varName ?key];
+  
+  if [ioFieldMap hasKey ![varName string]] then
+    @Ttype fieldType;
+    @Tvalue fieldValue;
+    [ioFieldMap searchKey !varName ?fieldType ?fieldValue];
+    if fieldType == [@Ttype mapType] then
+      # then referenced field is a map
+      if [key string] != "" then
+        # a key has been defined for the map,
+        @TfieldMap items := [fieldValue mStructValue];
+        if [items hasKey ![key string]] then
+          if [path length] == 0 then
+            [!?items setMTypeForKey !expressionType ![key string]];
+            [!?items setMValueForKey !enumeratedValue ![key string]];
+          else
+            @Ttype itemType;
+            @Tvalue itemValue;
+            [items searchKey !key ?itemType ?itemValue];
+            @TfieldMap nextFieldMap := [itemValue mStructValue];
+            setVariableInPath !path !?nextFieldMap !expressionType !enumeratedValue;
+            itemValue->mStructValue := nextFieldMap;
+            itemType := [@Ttype structType];
+            [!?items setMTypeForKey !itemType ![key string]];
+            [!?items setMValueForKey !itemValue ![key string]];
+          end if;
+        else
+          if [path length] == 0 then
+            [!?items insertKey !key !expressionType !enumeratedValue];
+          else
+            @TfieldMap nextFieldMap [emptyMap];
+            setVariableInPath !path !?nextFieldMap !expressionType !enumeratedValue;
+            [!?items insertKey !key ![@Ttype structType] !valueWithStruct[!nextFieldMap]];
+          end if;
+        end if;
+        fieldValue->mStructValue := items;
+        [!?ioFieldMap setMTypeForKey !fieldType ![varName string]];
+        [!?ioFieldMap setMValueForKey !fieldValue ![varName string]];
+      else # no key has been defined, the type is changed to
+        if [path length] == 0 then
+          # the actual type
+          [!?ioFieldMap setMTypeForKey !expressionType ![varName string]];
+          [!?ioFieldMap setMValueForKey !enumeratedValue ![varName string]];
+        else
+          # a struct type
+          @TfieldMap nextFieldMap [emptyMap];
+          setVariableInPath !path !?nextFieldMap !expressionType !enumeratedValue;
+          [!?ioFieldMap setMTypeForKey ![@Ttype structType] ![varName string]];
+          [!?ioFieldMap setMValueForKey !valueWithStruct[!nextFieldMap] ![varName string]];
+        end if;
+      end if;
+    elsif fieldType == [@Ttype structType] then
+      if [path length] == 0 then
+        # the type is changed to the actual type
+        [!?ioFieldMap setMTypeForKey !expressionType ![varName string]];
+        [!?ioFieldMap setMValueForKey !enumeratedValue ![varName string]];
+      else
+        # the existing struct is got
+        @TfieldMap nextFieldMap := [fieldValue mStructValue];
+        setVariableInPath !path !?nextFieldMap !expressionType !enumeratedValue;
+        # and updated
+        fieldValue->mStructValue := nextFieldMap;
+        [!?ioFieldMap setMValueForKey !fieldValue ![varName string]];
+      end if;
+    else
+      if [key string] == "" then
+        if [path length] == 0 then
+          # the type is changed to the actual type
+          [!?ioFieldMap setMTypeForKey !expressionType ![varName string]];
+          [!?ioFieldMap setMValueForKey !enumeratedValue ![varName string]];
+        else
+          @TfieldMap nextFieldMap [emptyMap];
+          setVariableInPath !path !?nextFieldMap !expressionType !enumeratedValue;
+          [!?ioFieldMap setMTypeForKey ![@Ttype structType] ![varName string]];
+          [!?ioFieldMap setMValueForKey !valueWithStruct[!nextFieldMap] ![varName string]];
+        end if;
+      else
+        # create a map
+        @TfieldMap newMap [emptyMap];
+        if [path length] == 0 then
+          [!?newMap insertKey !key !expressionType !enumeratedValue];
+        else
+          @TfieldMap nextFieldMap [emptyMap];
+          setVariableInPath !path !?nextFieldMap !expressionType !enumeratedValue;
+          [!?newMap insertKey !key ![@Ttype structType] !valueWithStruct[!nextFieldMap]];
+        end if;
+        [!?ioFieldMap setMTypeForKey ![@Ttype mapType] ![varName string]];
+        [!?ioFieldMap setMValueForKey !valueWithMap[!newMap] ![varName string]];
+      end if;
+    end if;
+  else
+    # The variable does not exist
+    if [path length] == 0 then
+      if [key string] == "" then
+        [!?ioFieldMap insertKey !varName !expressionType !enumeratedValue];
+      else
+        @TfieldMap newMap [emptyMap];
+        [!?newMap insertKey !key !expressionType !enumeratedValue];
+        [!?ioFieldMap insertKey !varName ![@Ttype mapType] !valueWithMap[!newMap]];
+      end if;
+    else
+      if [key string] == "" then
+        @TfieldMap nextFieldMap [emptyMap];
+        setVariableInPath !path !?nextFieldMap !expressionType !enumeratedValue;
+        [!?ioFieldMap insertKey !varName ![@Ttype structType] !valueWithStruct[!nextFieldMap]];
+      else
+        @TfieldMap newMap [emptyMap];
+        @TfieldMap nextFieldMap [emptyMap];
+        setVariableInPath !path !?nextFieldMap !expressionType !enumeratedValue;
+        [!?newMap insertKey !key ![@Ttype structType] !valueWithStruct[!nextFieldMap]];
+        [!?ioFieldMap insertKey !varName ![@Ttype mapType] !valueWithMap[!newMap]];
+      end if;
+    end if;
+  end if;
+end routine;
+
+#rule <struct_path>
+#  ?!@lstringlist path
+#:
+#  select
+#    $::$; $identifier$ ?@lstring pathElement;
+#    path += !pathElement;
+#    <struct_path> !?path;
+#  or end select;
+#end rule;
+
+rule <template_instruction>
+  ??@string inPrefix
+  ??@string inPath
+  ??@string inTemplateDirectory
+  ?!@TfieldMap ioTemplateVariableMap
+  ?!@string unused ioResultingString
+:
+  @TvarPath path;
+  $let$; <variable> !inPrefix !inPath !inTemplateDirectory !ioTemplateVariableMap ?path;
+  @Tvalue enumeratedValue;
+  @Ttype expressionType;
+  select
+    $:=$;
+    <expression>
+      !inPrefix
+      !inPath
+      !inTemplateDirectory
+      !ioTemplateVariableMap
+      ?enumeratedValue
+      ?expressionType
+    ;
+#    if [ioTemplateVariableMap hasKey ![variableName string]] then
+#      [!?ioTemplateVariableMap setMTypeForKey !expressionType ![variableName string]];
+#      [!?ioTemplateVariableMap setMValueForKey !enumeratedValue ![variableName string]];
+#    else
+#      [!?ioTemplateVariableMap insertKey !variableName !expressionType !enumeratedValue];
+#    end if;
+    setVariableInPath !path !?ioTemplateVariableMap !expressionType !enumeratedValue;
+  or
+    $+=$;
+    <expression>
+      !inPrefix
+      !inPath
+      !inTemplateDirectory
+      !ioTemplateVariableMap
+      ?enumeratedValue
+      ?expressionType
+    ;
+    if expressionType != [@Ttype stringType] then
+      if expressionType != [@Ttype structType] then
+        error here: "string or struct type expected";
+      else
+        # struct type
+        @Tvalue variableValue;
+        @Ttype variableType;
+        @bool found;
+        searchFieldIfExists !path !ioTemplateVariableMap ?variableType ?variableValue ?found;
+        variableValue->mMapListValue += ![enumeratedValue mStructValue];
+        if not found then 
+          variableType := [@Ttype listType];
+        end if;
+        setVariableInPath !path !?ioTemplateVariableMap !variableType !variableValue;
+      end if;
+    else
+      @Tvalue variableValue;
+      @Ttype variableType;
+      @bool found;
+      searchFieldIfExists !path !ioTemplateVariableMap ?variableType ?variableValue ?found;
+      @TfieldMap fieldMap [emptyMap];
+      [!?fieldMap insertKey ![@lstring new !"NAME" !here] !expressionType !enumeratedValue];
+      variableValue->mMapListValue += !fieldMap;
+      if not found then
+        variableType := [@Ttype listType];
+      end if;
+      setVariableInPath !path !?ioTemplateVariableMap !variableType !variableValue;
+    end if;
+  end select;
+end rule;
+
+#---------------------------------------------------------------------------*
+
+rule <variable_or_here>
+  ??@string inPrefix
+  ??@string inPath
+  ??@string inTemplateDirectory
+  ??@TfieldMap inTemplateVariableMap
+  !@location outWhere
+:
+  select
+    $here$;
+    outWhere := here;
+  or
+    @TvarPath path;
+    <variable> !inPrefix !inPath !inTemplateDirectory !inTemplateVariableMap ?path;
+    @Tvalue variableValue;
+    @Ttype variableType;
+    searchField !path !inTemplateVariableMap ?variableType ?variableValue ?outWhere;
+  end select;
+end rule;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ??@string inPrefix
+  ??@string inPath
+  ??@string inTemplateDirectory
+  ?!@TfieldMap ioTemplateVariableMap
+  ?!@string unused ioResultingString
+:
+  $error$;
+  @location where;
+  <variable_or_here> !inPrefix !inPath !inTemplateDirectory !ioTemplateVariableMap ?where;
+  @Tvalue enumeratedValue;
+  @Ttype expressionType;
+  $:$;
+  <expression>
+    !inPrefix
+    !inPath
+    !inTemplateDirectory
+    !ioTemplateVariableMap
+    ?enumeratedValue
+    ?expressionType
+  ;
+  if expressionType != [@Ttype stringType] then
+    error here: "error message should by a string expression";
+  else
+    error where: [enumeratedValue mStringValue];
+  end if;
+end rule;
+
+#---------------------------------------------------------------------------*
+
+rule <template_instruction>
+  ??@string inPrefix
+  ??@string inPath
+  ??@string inTemplateDirectory
+  ?!@TfieldMap ioTemplateVariableMap
+  ?!@string unused ioResultingString
+:
+  $warning$;
+  @location where;
+  <variable_or_here>  !inPrefix !inPath !inTemplateDirectory !ioTemplateVariableMap ?where;
+  @Tvalue enumeratedValue;
+  @Ttype expressionType;
+  $:$;
+  <expression>
+    !inPrefix
+    !inPath
+    !inTemplateDirectory
+    !ioTemplateVariableMap
+    ?enumeratedValue
+    ?expressionType
+  ;
+  if expressionType != [@Ttype stringType] then
+    error here: "error message should by a string expression";
+  else
+    warning where: [enumeratedValue mStringValue];
+  end if;
+end rule;
+
+#---------------------------------------------------------------------------*
+routine printVariable
+  ?@uint indent
+  ??@Ttype variableType
+  ??@Tvalue variableValue
+:
+  indent := indent + 4;
+  @string offset := [@string stringWithSequenceOfCharacters !' ' !indent];
+  switch variableType
+  when boolType:
+    if [variableValue mUnsigned64Value] == 1L then
+      message offset."true\n";
+    else
+      message offset."false\n";
+    end if;
+  when unsignedType:
+    message offset.[variableValue mUnsigned64Value]."\n";
+  when stringType:
+    message offset."\"".[variableValue mStringValue]."\"\n";
+  when enumType:
+    message offset.[variableValue mStringValue]."\n";
+  when listType:
+    foreach [variableValue mMapListValue] index idx do
+      message offset."item at ".idx.":\n";
+      printVariable !indent ![@Ttype structType] ![@Tvalue new !0L !"" ![@TfieldMapList emptyList] !mMap];
+    end foreach;
+  when mapType:
+    foreach [variableValue mStructValue] do
+      message offset.lkey.":\n";
+      printVariable !indent !mType !mValue;
+    end foreach;
+  when structType:
+    foreach [variableValue mStructValue] do
+      message offset.lkey.":\n";
+      printVariable !indent !mType !mValue;
+    end foreach;
+  when unconstructedType:
+    error here: "internal error, unconstrcuted type";
+  end switch;
+end routine;
+
+rule <template_instruction>
+  ??@string unused inPrefix
+  ??@string unused inPath
+  ??@string unused inTemplateDirectory
+  ?!@TfieldMap ioTemplateVariableMap
+  ?!@string unused ioResultingString
+:
+  $display$; $identifier$ ?@lstring variableName;
+  @Ttype variableType;
+  @Tvalue variableValue;
+  [ioTemplateVariableMap searchKey !variableName ?variableType ?variableValue];
+  message [variableName string]." (".[[variableName location] locationString].") : ".[variableType messageGoilTemplateType]."\n";
+  printVariable !0 !variableType !variableValue;
+end rule;
+
+#---------------------------------------------------------------------------*
+
+list @sortingKeyList {
+  @lstring key;
+  @lsint order;
+}
+
+function structCompare
+  ??@TfieldMap s1
+  ??@TfieldMap s2
+  ?@sortingKeyList fieldList
+  ->@sint result
+:
+  if [fieldList length] > 0 then
+    @lstring field;
+    @lsint order;
+    [!?fieldList popFirst ?field ?order];
+    @Ttype s1Type;
+    @Tvalue s1Value;
+    [s1 searchKey !field ?s1Type ?s1Value];
+    @Ttype s2Type;
+    @Tvalue s2Value;
+    [s2 searchKey !field ?s2Type ?s2Value];
+    if s1Type == s2Type & s1Type == [@Ttype unsignedType] then
+#      message "Compare ".s1Value." and ".s2Value." ";
+      if [s1Value mUnsigned64Value] < [s2Value mUnsigned64Value] then
+#        message "<\n";
+        result := -1s * [order sint];
+      else
+        if [s1Value mUnsigned64Value] > [s2Value mUnsigned64Value] then
+#          message ">\n";
+          result := 1s  * [order sint];
+        else
+#          message "=\n";
+          result := structCompare[!s1 !s2 !fieldList];
+        end if;
+      end if;
+    else
+      error field: "unsigned sort key required": result;
+    end if;
+  else
+    result := 0s;
+  end if;
+end function;
+
+routine swap
+  ?!@TfieldMapList t
+  ??@uint index1
+  ??@uint index2
+:
+#  message "SWAP ".index1." and ".index2."\n";
+  @TfieldMap temp := [t mMapAtIndex !index1];
+  [!?t setMMapAtIndex ![t mMapAtIndex !index2] !index1];
+  [!?t setMMapAtIndex !temp !index2];
+end routine;
+
+routine partition
+  ?!@TfieldMapList t
+  ?@uint min
+  ?@uint max
+  ??@sortingKeyList fieldList
+  ?!@uint pivotIndex
+: 
+  @TfieldMap pivot := [t mMapAtIndex !pivotIndex];
+  swap !?t !pivotIndex !max;
+  @uint storeIndex := min;
+  @uint i := min;
+  loop max - min:
+  while i < max do
+    if structCompare[![t mMapAtIndex !i] !pivot !fieldList] == -1s then
+      swap !?t !i !storeIndex;
+      storeIndex++;
+    end if;
+    i++;
+  end loop;
+  swap !?t !storeIndex !max;
+  pivotIndex := storeIndex;
+end routine;
+
+routine quickSort
+  ?!@TfieldMapList t
+  ??@uint min
+  ??@uint max
+  ??@sortingKeyList fieldList
+:
+#  message "SORT from ".min." to ".max."\n";
+  if min < max then
+    @uint pivotIndex := (max + min) / 2;
+#    message "PIVOT = ".pivotIndex."\n";
+    partition !?t !min !max !fieldList !?pivotIndex;
+    quickSort !?t !min !pivotIndex !fieldList;
+    quickSort !?t !pivotIndex+1 !max !fieldList;
+  end if;
+end routine;
+
+rule <sorting_order>
+  !@lsint order
+:
+  select
+    $>$; 
+    order := [@lsint new !-1s !here];
+  or
+    $<$;
+    order := [@lsint new !1s !here];
+  end select;
+end rule;
+
+rule <template_instruction>
+  ??@string unused inPrefix
+  ??@string unused inPath
+  ??@string unused inTemplateDirectory
+  ?!@TfieldMap ioTemplateVariableMap
+  ?!@string unused ioResultingString
+:
+  $sort$; $identifier$ ?@lstring variableName;
+  @Ttype variableType;
+  @Tvalue variableValue;
+  [ioTemplateVariableMap searchKey !variableName ?variableType ?variableValue];
+  $by$;
+  @sortingKeyList keys [emptyList];
+  @lsint firstOrder;
+  $identifier$ ?@lstring firstKey; <sorting_order> ?firstOrder;
+  keys += !firstKey !firstOrder;
+  repeat while
+    @lsint nextOrder;
+    $,$; $identifier$ ?@lstring nextKey; <sorting_order> ?nextOrder;
+    keys += !nextKey !nextOrder;
+  end repeat;
+
+  if variableType == [@Ttype listType] then
+    #log keys;
+    @TfieldMapList variable := [variableValue mMapListValue];
+    quickSort !?variable !0 ![variable length]-1 !keys;
+    variableValue := [@Tvalue new !0L !"" !variable ![@TfieldMap emptyMap]];
+    #log variable;
+    [!?ioTemplateVariableMap setMTypeForKey !variableType ![variableName string]];
+    [!?ioTemplateVariableMap setMValueForKey !variableValue ![variableName string]];
+  else
+    error variableName: "list type expected";
+  end if;
+end rule;
+
+#---------------------------------------------------------------------------*
+
+rule <variable>
+  ??@string inPrefix
+  ??@string inPath
+  ??@string inTemplateDirectory
+  ??@TfieldMap inVariableMap
+  !@TvarPath path
+:
+  path := [@TvarPath emptyList];
+  $identifier$ ?@lstring variableName;
+  @lstring key := emptyLString[];
+  select
+    @Tvalue keyValue;
+    @Ttype keyType;
+    $[$;
+    <expression> !inPrefix !inPath !inTemplateDirectory !inVariableMap ?keyValue ?keyType;
+    switch keyType
+    when stringType:
+      key := [@lstring new ![keyValue mStringValue] !here];
+    when boolType, unsignedType, listType, mapType, structType, enumType, unconstructedType:
+      error here: "map key must be a string": key;
+    end switch;
+    $]$;
+  or end select;
+  path += !variableName !key;
+  repeat
+  while
+    $::$; $identifier$ ?variableName;
+    key := emptyLString[];
+    select
+      @Tvalue keyValue;
+      @Ttype keyType;
+      $[$;
+      <expression> !inPrefix !inPath !inTemplateDirectory !inVariableMap ?keyValue ?keyType;
+      switch keyType
+      when stringType:
+        key := [@lstring new ![keyValue mStringValue] !here];
+      when boolType, unsignedType, listType, mapType, structType, enumType, unconstructedType:
+        error here: "map key must be a string": key;
+      end switch;
+      $]$;
+    or end select;
+    path += !variableName !key;
+  end repeat;
+end rule;
+
+#---------------------------------------------------------------------------*
+
+end syntax;

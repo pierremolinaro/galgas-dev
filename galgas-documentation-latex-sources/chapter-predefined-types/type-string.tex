@@ -22,6 +22,16 @@ Characters strings are written enclosed within quotation marks (") characters, a
 @string s2 := [s rightSubString!3]; # The value of s2 is "def"
 \end{exemple}
 
+\readerDeuxArguments{subString}
+{@string}
+{1.7.8}
+{@string}
+{@uint inStart}
+{@uint inLength}
+{Creates and returns the string built with the \emph{inLength} last characters of the receiver. If the receiver contains less than inLength characters, the receiver’s value is returned.}
+{}
+
+
 %\constructeurSansArgument{emptySet}
 %{@stringset}
 %{1.3.0}
