@@ -525,6 +525,12 @@ routine templateMethodInvocation
       checkInvocationHasNoArgument !inType !inMethodName !inParameterTypeList;
       outResultType := [@Ttype unsignedType];
       outResultValue := valueWithUnsigned [![[[inValue mMapListValue] length] uint64]];
+    elsif [inMethodName string] == "first" then
+      checkInvocationHasNoArgument !inType !inMethodName !inParameterTypeList;
+      outResultType := [@Ttype structType];
+      @TfieldMap firstElement;
+      [[inValue mMapListValue] first ?firstElement];
+      outResultValue := valueWithStruct [!firstElement];
     else
       error inMethodName: "this template method is not defined" : outResultValue, outResultType;
     end if;
