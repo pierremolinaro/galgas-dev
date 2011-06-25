@@ -1351,6 +1351,45 @@ override method @foreachInstructionAST analyzeSemanticInstruction
 #--- Begin override for foreach defined constants
   [!?ioVariableMap openOverrideForSelectBlock] ;
   [!?ioVariableMap openBranch] ;
+#--- 'before' branch
+  [!?ioVariableMap openOverrideForRepeatBlock] ;
+  @semanticInstructionListForGeneration before_instructionList ;
+  analyzeSemanticInstructionList
+    !inAnalysisContext
+    ![@localConstantList emptyList]
+    ![@localInitializedVariableList emptyList]
+    !mBeforeInstructionList
+    !mEndOf_before_branch
+    !?ioVariableMap
+    ?before_instructionList
+  ;
+  [!?ioVariableMap closeOverride !mEndOf_before_branch] ;
+#--- 'between' branch
+  [!?ioVariableMap openOverrideForRepeatBlock] ;
+  @semanticInstructionListForGeneration between_instructionList ;
+  analyzeSemanticInstructionList
+    !inAnalysisContext
+    ![@localConstantList emptyList]
+    ![@localInitializedVariableList emptyList]
+    !mBetweenInstructionList
+    !mEndOf_between_branch
+    !?ioVariableMap
+    ?between_instructionList
+  ;
+  [!?ioVariableMap closeOverride !mEndOf_between_branch] ;
+#--- 'after' branch
+  [!?ioVariableMap openOverrideForRepeatBlock] ;
+  @semanticInstructionListForGeneration after_instructionList ;
+  analyzeSemanticInstructionList
+    !inAnalysisContext
+    ![@localConstantList emptyList]
+    ![@localInitializedVariableList emptyList]
+    !mAfterInstructionList
+    !mEndOf_after_branch
+    !?ioVariableMap
+    ?after_instructionList
+  ;
+  [!?ioVariableMap closeOverride !mEndOf_after_branch] ;
 #--- Analyze enumerated objects
   @foreachInstructionEnumeratedObjectListForGeneration enumerationList [emptyList] ;
   foreach mEnumeratedObjectList do
@@ -1443,20 +1482,8 @@ override method @foreachInstructionAST analyzeSemanticInstruction
     !uncheckedWhileExpression
     ?whileExpression
   ;
-#--- Begin override for analyze foreach instruction list
-  [!?ioVariableMap openOverrideForRepeatBlock] ;
-#--- 'before' branch
-  @semanticInstructionListForGeneration before_instructionList ;
-  analyzeSemanticInstructionList
-    !inAnalysisContext
-    ![@localConstantList emptyList]
-    ![@localInitializedVariableList emptyList]
-    !mBeforeInstructionList
-    !mEndOf_before_branch
-    !?ioVariableMap
-    ?before_instructionList
-  ;
 #--- Handle index
+  [!?ioVariableMap openOverrideForRepeatBlock] ;
   @string indexCppName := "" ;
   @localConstantList indexDeclaration [emptyList] ;
   if [mIndexVariableName string] != "" then
@@ -1478,28 +1505,6 @@ override method @foreachInstructionAST analyzeSemanticInstruction
     !mEndOf_do_branch
     !?ioVariableMap
     ?do_instructionList
-  ;
-#--- 'between' branch
-  @semanticInstructionListForGeneration between_instructionList ;
-  analyzeSemanticInstructionList
-    !inAnalysisContext
-    ![@localConstantList emptyList]
-    ![@localInitializedVariableList emptyList]
-    !mBetweenInstructionList
-    !mEndOf_between_branch
-    !?ioVariableMap
-    ?between_instructionList
-  ;
-#--- 'after' branch
-  @semanticInstructionListForGeneration after_instructionList ;
-  analyzeSemanticInstructionList
-    !inAnalysisContext
-    ![@localConstantList emptyList]
-    ![@localInitializedVariableList emptyList]
-    !mAfterInstructionList
-    !mEndOf_after_branch
-    !?ioVariableMap
-    ?after_instructionList
   ;
 #--- End override
   [!?ioVariableMap closeOverride !mEndOf_foreach_instruction] ;

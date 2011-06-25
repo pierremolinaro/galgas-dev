@@ -25,6 +25,16 @@ Delete Test Done
   between
   do 'b'
   after
+--- begin of foreach instruction test 5
+  before
+  do 'a' (idx: 0)
+  between
+  do 'b' (idx: 1)
+  between
+  do 'c' (idx: 2)
+  between
+  do 'd' (idx: 3)
+  after
 --- begin of foreach instruction test 6
   do 'a' (idx: 0)
   do 'b' (idx: 1)

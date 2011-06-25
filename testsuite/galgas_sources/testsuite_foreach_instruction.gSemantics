@@ -58,13 +58,13 @@ routine testsuite_foreach_instruction :
   foreach strList (@string s)
   index idx
   before
-    message "  before (idx: " . s . ")\n" ;
+    message "  before\n" ;
   do
     message "  do '" . s . "' (idx: " . [idx string] . ")\n" ;
   between
-    message "  between (idx: " . s . ")\n" ;
+    message "  between\n" ;
   after
-    message "  after (idx: " . s . ")\n" ;
+    message "  after\n" ;
   end foreach ;
   message "--- begin of foreach instruction test 6\n" ;
   foreach \up strList (@string s)
