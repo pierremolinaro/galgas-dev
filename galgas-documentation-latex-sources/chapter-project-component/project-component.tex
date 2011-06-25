@@ -4,3 +4,35 @@
 %--------------------------------------------------------------
 \chapter{Project Component}\index{Component!Project}
 %-------------------------------------------------------------
+
+
+\section{Generated Cocoa Application}
+
+When a project component is compiled with a Xcode project target, a \texttt{project\_xcode} directory is created. This directory contains:
+\begin{itemize}
+\item the Xcode project file;
+\item a \texttt{build.command} file ;
+\item an \texttt{Info.plist} file ;
+\item an \texttt{English.lproj} directory ;
+\item an empty \texttt{userResources} directory.
+\end{itemize}
+
+The \texttt{Info.plist}, the \texttt{English.lproj} directory and the \texttt{userResources} directory are used by the Cocoa target of the Xcode project. The \texttt{build.command} file is a command file that builds the Xcode project.
+
+All files you put in the \texttt{userResources} directory are added to the Cocoa target of the Xcode project when the GALGAS Project component is compiled. When the Cocoa target of the Xcode project is compiled, theses files are put in the \texttt{Resources} directory within the application bundle.
+
+Adding files to the \texttt{userResources} directory is the way of customizing the Cocoa Application:
+\begin{itemize}
+\item adding icons to your Application (\refSubsectionPage{addingIconsCocoaApplication});
+\item customizing syntax coloring (\refSubsectionPage{customizingSyntaxColoring}). 
+\end{itemize}
+
+
+
+
+\subsectionLabel{Adding Icons to your Cocoa Application}{addingIconsCocoaApplication}
+
+
+
+
+\subsectionLabel{Customizing Syntax Coloring}{customizingSyntaxColoring}

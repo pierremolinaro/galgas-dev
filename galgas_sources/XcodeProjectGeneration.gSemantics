@@ -377,11 +377,8 @@ end routine ;
 
 local routine build_PROJECT_RESOURCES_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
-  ??@stringlist inIconFiles
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
-  @stringlist fileList := inIconFiles ;
-  fileList += !"Info.plist" ;
 #--- Enter Resources files
   enter_xib_in_group
    !?ioXcodeProjectDescription
@@ -398,7 +395,7 @@ local routine build_PROJECT_RESOURCES_group
 #---
   enter_files_in_group
    !?ioXcodeProjectDescription
-   !fileList
+   ![@stringlist listWithValue !"Info.plist"]
    !?ioFileListForGroup
   ;
 end routine ;
@@ -728,10 +725,10 @@ end routine ;
 local routine build_RESOURCES_for_resources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inProjectName
-  ??@stringlist inIconFiles
+  ??@stringlist inResourceFiles
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
-  @stringlist fileList := inIconFiles ;
+  @stringlist fileList := inResourceFiles ;
   fileList += !inProjectName ;
   fileList += !inProjectName . "_debug" ;
   fileList += !"I_ScrollToEndArrow.gif" ;
@@ -830,7 +827,7 @@ routine generateXcodeProject
   ??@stringset inProgramSourceSet_app
   ??@string inProjectName
   ??@string in_xcodeproj_filePath
-  ??@stringlist inIconFiles
+  ??@stringlist inResourceFiles
   ??@string inReferenceFilePath
   ??@stringlist inArchitectureList
   ??@string inLIBPMpath
@@ -1060,7 +1057,6 @@ routine generateXcodeProject
   @XcodeObjectReferenceList fileListOf_PROJECT_RESOURCES_group [emptyList] ;
   build_PROJECT_RESOURCES_group
     !?XcodeProjectDescription
-    !inIconFiles
     !?fileListOf_PROJECT_RESOURCES_group
   ;
   enter_group
@@ -1068,6 +1064,19 @@ routine generateXcodeProject
     !"Project Resources"
     !""
     !fileListOf_PROJECT_RESOURCES_group
+  ;
+#---------- "User Resources" Group
+  @XcodeObjectReferenceList fileListOf_USER_RESOURCES_group [emptyList] ;
+  enter_files_in_group
+   !?XcodeProjectDescription
+   !inResourceFiles
+   !?fileListOf_USER_RESOURCES_group
+  ;
+  enter_group
+    !?XcodeProjectDescription
+    !"User Resources"
+    !"userResources"
+    !fileListOf_USER_RESOURCES_group
   ;
 #---------- "Frameworks" Group
   @XcodeObjectReferenceList fileListOf_FRAMEWORKS_group [emptyList] ;
@@ -1266,7 +1275,7 @@ routine generateXcodeProject
   build_RESOURCES_for_resources_build_phase
     !?XcodeProjectDescription
     !inProjectName
-    !inIconFiles
+    !inResourceFiles
     !?listForResourcesBuildPhaseOfCocoaApp
   ;
 # HAND CODED SOURCES (only resources to copy)
@@ -1300,7 +1309,7 @@ routine generateXcodeProject
   @stringlist pathes [emptyList] ;
   pathes += !"../galgas_sources/GALGAS_OUTPUT" ;
   pathes += !inLIBPMpath ;
-  if [inExternSourceNameSet_app count] > 0 then
+  if [fileSet count] > 0 then
     pathes += !"../hand_coded_sources/**" ;
   end if ;
   @stringlist projectDefaultSettings ;

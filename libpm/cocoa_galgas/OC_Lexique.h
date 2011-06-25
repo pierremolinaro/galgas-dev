@@ -65,6 +65,7 @@ typedef struct {
   @protected BOOL mLoop ;
   @protected SInt32 mMatchedTemplateDelimiterIndex ; //--- Scanner mode for template scanner
   @protected NSMenu * mMenuForEntryPopUpButton ;
+  @private NSDictionary * mCustomSyntaxColoringDictionary ;
 }
 
 - (void) searchForReplacementPattern:(NSString * *) inReplacementPatternArray ;

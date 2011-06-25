@@ -265,12 +265,16 @@ end foreach%\n  } ;
 //---------------------------------------------------------------------------*
 
 - (NSString *) styleNameForStyleIndex: (SInt32) inIndex {
-  NSString * kStyleArray [%![[[LEXIQUE_COMPONENT_ROOT mLexicalStyleList] length] + 1 string]%] = {
-    @"Default Style"%
+  NSString * result = nil ;
+  if ((inIndex >= 0) && (inIndex < %![[[LEXIQUE_COMPONENT_ROOT mLexicalStyleList] length] + 1 string]%)) {
+    NSString * kStyleArray [%![[[LEXIQUE_COMPONENT_ROOT mLexicalStyleList] length] + 1 string]%] = {
+      @"Default Style"%
 foreach [LEXIQUE_COMPONENT_ROOT mLexicalStyleList] do
-  %,\n    @%![[mComment string] utf8Representation]
-end foreach%\n  } ;
-  return kStyleArray [inIndex] ;
+  %,\n      @%![[mComment string] utf8Representation]
+end foreach%\n    } ;
+    result = kStyleArray [inIndex] ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------*
@@ -280,13 +284,27 @@ end foreach%\n  } ;
 //---------------------------------------------------------------------------*
 
 - (NSString *) styleIdentifierForStyleIndex: (SInt32) inIndex {
-  NSString * kStyleArray [%![[[LEXIQUE_COMPONENT_ROOT mLexicalStyleList] length] + 1 string]%] = {
-    @"%!LEXIQUE_CLASS_NAME%"%
+  NSString * result = nil ;
+  if ((inIndex >= 0) && (inIndex < %![[[LEXIQUE_COMPONENT_ROOT mLexicalStyleList] length] + 1 string]%)) {
+    NSString * kStyleArray [%![[[LEXIQUE_COMPONENT_ROOT mLexicalStyleList] length] + 1 string]%] = {
+      @"%!LEXIQUE_CLASS_NAME%"%
 foreach [LEXIQUE_COMPONENT_ROOT mLexicalStyleList] do
-  %,\n    @"%!LEXIQUE_CLASS_NAME%-%![mName string]%"%
+  %,\n      @"%!LEXIQUE_CLASS_NAME%-%![mName string]%"%
 end foreach
-%\n  } ;
-  return kStyleArray [inIndex] ;
+%\n    } ;
+    result = kStyleArray [inIndex] ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//         L E X I Q U E   I D E N T I F I E R                               *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (NSString *) lexiqueIdentifier {
+  return @"%!LEXIQUE_CLASS_NAME%" ;
 }
 
 //---------------------------------------------------------------------------*
