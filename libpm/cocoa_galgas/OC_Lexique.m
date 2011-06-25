@@ -302,6 +302,99 @@
 
 //---------------------------------------------------------------------------*
 
+- (void) presentCustomSyntaxColoringErrorForKey: (NSString *) inKey
+         forStyle: (NSString *) inStyle
+         path: (NSString *) inPath {
+  NSMutableString * message = [NSMutableString stringWithCapacity:1000] ;
+  [message
+    appendFormat:@"For the '%@' key, there is no '%@' style in the '%@' application bundle resource file",
+    inKey, inStyle, [inPath lastPathComponent]
+  ] ;
+  static NSPoint origin = {20.0F, 20.0F} ;
+  const NSRect r = {origin, {300.0F, 200.0F}} ;
+  origin.x += 20.0F ;
+  origin.y += 20.0F ;
+  NSWindow * window = [[NSWindow alloc] initWithContentRect:r
+    styleMask:NSTitledWindowMask | NSClosableWindowMask
+    backing:NSBackingStoreBuffered
+    defer:YES
+    screen:nil
+  ] ;
+  [window setTitle:@"Custom Style Error"] ;
+  NSView * contentView = [window contentView] ;
+  const NSRect tfRect = NSInsetRect ([contentView bounds], 10.0F, 10.0F) ;
+  NSTextField * tf = [[NSTextField alloc] initWithFrame:tfRect] ;
+  [tf setEditable:NO] ;
+  [tf setSelectable:YES] ;
+  [tf setFont:[NSFont boldSystemFontOfSize:0.0F]] ;
+  [tf setTextColor:[NSColor redColor]] ;
+  [tf setStringValue:message] ;
+  [contentView addSubview:tf] ;
+  NSBeep () ;
+  [window makeKeyAndOrderFront:nil] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) lexiqueIdentifier {
+  return @"" ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSDictionary *) customSyntaxColoringDictionary {
+  if (nil == mCustomSyntaxColoringDictionary) {
+    NSString * pathForCustomDictionary = [[NSBundle mainBundle]
+      pathForResource:[[self lexiqueIdentifier] stringByAppendingString:@"-syntax-coloring-adds"]
+      ofType:@"plist"
+      inDirectory:@""
+    ] ;
+    if (nil == pathForCustomDictionary) {
+      mCustomSyntaxColoringDictionary = [NSDictionary dictionary] ;
+      [mCustomSyntaxColoringDictionary retain] ;
+    }else{
+    //--- Compute style index dictionary
+      NSMutableDictionary * styleIndexDictionary = [NSMutableDictionary new] ;
+      SInt32 currentIndex = 0 ;
+      while (nil != [self styleIdentifierForStyleIndex:currentIndex]) {
+        [styleIndexDictionary setObject:[NSNumber numberWithInt:currentIndex] forKey:[self styleIdentifierForStyleIndex:currentIndex]] ;
+        currentIndex ++ ;
+      }
+   //---
+      NSDictionary * dict = [NSDictionary dictionaryWithContentsOfFile:pathForCustomDictionary] ;
+      NSMutableDictionary * d = [[NSMutableDictionary alloc] initWithCapacity:[[dict allKeys] count]] ;
+      for (NSString * key in [dict allKeys]) {
+        NSString * styleName = [dict objectForKey:key] ;
+        // NSLog (@"styleName %@", styleName) ;
+        NSNumber * styleIndexNumber = [styleIndexDictionary objectForKey:[[self lexiqueIdentifier] stringByAppendingFormat:@"-%@", styleName]] ;
+        if (nil == styleIndexNumber) {
+          [self presentCustomSyntaxColoringErrorForKey:key forStyle:styleName path:pathForCustomDictionary] ;
+        }else{
+          [d setObject:styleIndexNumber forKey:key] ;
+        }
+      }
+      mCustomSyntaxColoringDictionary = d  ;
+    }
+  }
+  return mCustomSyntaxColoringDictionary ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (UInt32) styleIndexForTokenCode: (SInt32) inTokenCode
+           spelling: (NSString *) inSpelling {
+  UInt32 result = 0 ;
+  NSString * customColoringGroupIndex = [[self customSyntaxColoringDictionary] objectForKey:inSpelling] ;
+  if (nil != customColoringGroupIndex) {
+    result = [customColoringGroupIndex intValue] ;
+  }else{
+    result = [self styleIndexForTerminal:inTokenCode] ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (void) tokenizeForSourceString: (NSString *) inSourceString
          tokenArray: (NSMutableArray *) ioStyledRangeArray // Array of OC_Token
          editedRange: (const NSRange *) inEditedRange
@@ -403,10 +496,11 @@
       [token release] ;
       (*outUpperIndexToRedrawInStyleArray) ++ ;
     }else if ((mTokenCode > 0) && ((* outUpperIndexToRedrawInStyleArray) >= (SInt32) [ioStyledRangeArray count])) { // Regular token
+      const NSRange range = {mTokenStartLocation, mCurrentLocation - mTokenStartLocation} ;
       OC_Token * token = [[OC_Token alloc]
         initWithTokenCode:mTokenCode
-        range:NSMakeRange (mTokenStartLocation, mCurrentLocation - mTokenStartLocation)
-        style:[self styleIndexForTerminal:mTokenCode]
+        range:range
+        style:[self styleIndexForTokenCode:mTokenCode spelling:[mSourceString substringWithRange:range]]
         matchedTemplateDelimiterIndex:mMatchedTemplateDelimiterIndex
       ] ;
       #ifdef DEBUG_MESSAGES
@@ -416,7 +510,7 @@
       [token release] ;
       (*outUpperIndexToRedrawInStyleArray) ++ ;
     }else if (mTokenCode > 0) { // Regular token
-      const NSRange range = NSMakeRange (mTokenStartLocation, mCurrentLocation - mTokenStartLocation) ;
+      const NSRange range = {mTokenStartLocation, mCurrentLocation - mTokenStartLocation} ;
       OC_Token * token = [ioStyledRangeArray objectAtIndex:*outUpperIndexToRedrawInStyleArray HERE] ;
       if (NSEqualRanges (range, [token range]) && (mTokenCode == (SInt32) [token tokenCode])) {
         search = NO ;
@@ -424,8 +518,8 @@
       }else{
         token = [[OC_Token alloc]
           initWithTokenCode:mTokenCode
-          range:NSMakeRange (mTokenStartLocation, mCurrentLocation - mTokenStartLocation)
-          style:[self styleIndexForTerminal:mTokenCode]
+          range:range
+          style:[self styleIndexForTokenCode:mTokenCode spelling:[mSourceString substringWithRange:range]]
           matchedTemplateDelimiterIndex:mMatchedTemplateDelimiterIndex
         ] ;
         #ifdef DEBUG_MESSAGES

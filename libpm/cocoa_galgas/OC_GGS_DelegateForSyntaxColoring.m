@@ -42,10 +42,10 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
 
 //---------------------------------------------------------------------------*
 
-#define TAG_MASK                 (0xFF000000)
-#define TAG_FOR_FOREGROUND_COLOR (0x80000000)
-#define TAG_FOR_BACKGROUND_COLOR (0x90000000)
-#define TAG_FOR_FONT_ATTRIBUTE   (0xA0000000)
+#define TAG_MASK                          (0xFF000000)
+#define TAG_FOR_FOREGROUND_COLOR          (0x80000000)
+#define TAG_FOR_BACKGROUND_COLOR          (0x90000000)
+#define TAG_FOR_FONT_ATTRIBUTE            (0xA0000000)
 #define TAG_FOR_TEMPLATE_FOREGROUND_COLOR (0xB0000000)
 #define TAG_FOR_TEMPLATE_BACKGROUND_COLOR (0xC0000000)
 #define TAG_FOR_TEMPLATE_FONT_ATTRIBUTE   (0xD0000000)
@@ -303,13 +303,6 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
       forKeyPath:[NSString stringWithFormat:@"values.%@_%@", GGS_template_font, [tokenizer styleIdentifierForStyleIndex:0]]
     ] ;
   }
-//---
-  [tokenizer release] ;
-  [mUndoManager release] ;
-  [mFontAttributesDictionaryArray release] ;
-  [mTextStorage release] ;
-  [mStyledRangeArray release] ;
-  [mTemplateTextAttributeDictionary release] ;
 //---
   [super dealloc] ;
 }

@@ -21,7 +21,7 @@
 //--------------------------------------------------------------------------*
 
 //--- Only for debugging !!!
-//#define FORCED_GALGAS_VERSION @"1.4.9"
+//#define FORCED_GALGAS_VERSION @"2.2.2"
 
 //--------------------------------------------------------------------------*
 
@@ -37,7 +37,7 @@
 
 - (NSString *) galgasUpdaterArchiveName {
   #ifdef FORCED_GALGAS_VERSION
-    return @"cocoagalgasupdater.app.tar.bz2" ;
+    return @"cocoa_galgas_updater3.app.tar.bz2" ;
   #else
     return @"cocoa_galgas_updater3.app.tar.bz2" ;
   #endif
@@ -175,6 +175,8 @@
   [prefsTabView addTabViewItem:tabViewItem] ;
   NSURL * url = [NSURL URLWithString:@"http://galgas.rts-software.org/download/changeLog.html"] ;
   [[mChangeLogInPreferencePaneWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
+//--- Check for new version  
+  [self checkForNewVersion:nil] ;
 }
 
 //--------------------------------------------------------------------------*
@@ -277,7 +279,7 @@
             informativeTextWithFormat:@"There is no new version at this time."
           ] ;
           [alert
-            beginSheetModalForWindow:nil
+            beginSheetModalForWindow:[mCheckNowButton window]
             modalDelegate:nil
             didEndSelector:NULL
             contextInfo:NULL

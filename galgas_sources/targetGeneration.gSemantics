@@ -264,29 +264,22 @@ routine updateTargets
     when lexiqueSourceFile :
       generatedFileListForMakefile += !cppFile ;
       scannerSourceSet_tool += !baseName ;
-#      scannerSourceSet_app += !baseName ;
     when syntaxSourceFile :
       generatedFileListForMakefile += !cppFile ;
       syntaxSourceSet_tool += !baseName ;
-#      syntaxSourceSet_app += !baseName ;
     when semanticsSourceFile :
       generatedFileListForMakefile += !cppFile ;
       semanticsSourceSet_tool += !baseName ;
-#      semanticsSourceSet_app += !baseName ;
     when grammarSourceFile :
       generatedFileListForMakefile += !cppFile ;
       grammarSourceSet_tool += !baseName ;
-#      grammarSourceSet_app += !baseName ;
     when programSourceFile :
       generatedFileListForMakefile += !cppFile ;
       programSourceSet_tool += !baseName ;
-#      programSourceSet_app += !baseName ;
     when optionSourceFile :
       generatedFileListForMakefile += !cppFile ;
       optionSourceSet_tool += !baseName ;
-#      optionSourceSet_app += !baseName ;
     when guiSourceFile :
-#      guiSourceSet_tool += !baseName ;
       guiSourceSet_app += !baseName ;
     end switch ;
   end foreach ;
@@ -414,8 +407,13 @@ routine updateTargets
     if not [Credits_rtf_path fileExists] then
       [[filewrapper targetGenerationFileWrapper."project_xcode/English.lproj/Credits.rtf"] writeToFile !Credits_rtf_path] ;
     end if ;
-  #--- Enumerate icons
-    const @stringlist iconFiles := [dir regularFilesWithExtensions !false ![@stringlist listWithValue !"icns"]] ;
+  #--- Enumerate icons and plist files
+    const @string userResourceDir := projectDirectory . "/project_xcode/userResources";
+    [userResourceDir makeDirectory] ;
+    @stringlist extensionList [emptyList] ;
+    extensionList += !"plist" ;
+    extensionList += !"icns" ;
+    const @stringlist resourceFiles := [userResourceDir regularFilesWithExtensions !false !extensionList] ;
   #--- Build pathes
     const @string xcodeProjectPath := dir . "/" . inTargetName . ".xcodeproj" ; # Actually a directory
     const @string intermediateFilePath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list_for_xcode_project.txt" ;
@@ -441,7 +439,7 @@ routine updateTargets
       !programSourceSet_app
       !inTargetName # XCode project base name
       !xcodeProjectPath # Full Path of xxx.xcodeproj file
-      !iconFiles
+      !resourceFiles
       !intermediateFilePath
       !architectureList
       !libpmPath
