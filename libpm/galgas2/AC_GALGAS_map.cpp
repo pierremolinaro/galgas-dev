@@ -114,9 +114,9 @@ class cSharedMapRoot : public C_SharedObject {
   protected : VIRTUAL_IN_DEBUG GALGAS_bool reader_hasKey (const GALGAS_string & inKey
                                                           COMMA_LOCATION_ARGS) const ;
 
-  protected : VIRTUAL_IN_DEBUG GALGAS_location reader_locationForKey (const GALGAS_string & inKey,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const ;
+  protected : VIRTUAL_IN_DEBUG GALGAS_location locationForKey (const GALGAS_string & inKey,
+                                                               C_Compiler * inCompiler
+                                                               COMMA_LOCATION_ARGS) const ;
 
   protected : VIRTUAL_IN_DEBUG GALGAS_stringset reader_allKeys (LOCATION_ARGS) const ;
 
@@ -841,9 +841,9 @@ GALGAS_lstringlist AC_GALGAS_map::reader_allKeyList (LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------*
 
-GALGAS_location cSharedMapRoot::reader_locationForKey (const GALGAS_string & inKey,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) const {
+GALGAS_location cSharedMapRoot::locationForKey (const GALGAS_string & inKey,
+                                                C_Compiler * inCompiler
+                                                COMMA_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (inKey.isValid ()) {
     const C_String key = inKey.stringValue () ;
@@ -864,11 +864,11 @@ GALGAS_location cSharedMapRoot::reader_locationForKey (const GALGAS_string & inK
 //---------------------------------------------------------------------------*
 
 GALGAS_location AC_GALGAS_map::reader_locationForKey (const GALGAS_string & inKey,
-                                                   C_Compiler * inCompiler
-                                                   COMMA_LOCATION_ARGS) const {
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) const {
   GALGAS_location result ;
   if (isValid ()) {
-    result = mSharedMap->reader_locationForKey (inKey, inCompiler COMMA_THERE) ;
+    result = mSharedMap->locationForKey (inKey, inCompiler COMMA_THERE) ;
   }
   return result ;
 }
