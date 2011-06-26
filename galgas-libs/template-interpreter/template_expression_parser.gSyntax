@@ -21,7 +21,6 @@ syntax template_expression_parser ("template_scanner.gLexique"):
 
 import "template_invocation.gSemantics";
 import "template_semantics.gSemantics";
-import "systemConfig.gSemantics";
 
 #------------------------------------------------------------------------------*
 #                                                                              *

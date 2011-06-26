@@ -19,10 +19,10 @@
 
 semantics template_invocation :
 #--- Import for GALGAS 2
-import "goil_routines.gSemantics";
+#import "goil_routines.gSemantics";
 import "template_semantics.gSemantics";
 import "template_grammar.gGrammar";
-import "goil_options.gOption";
+#import "goil_options.gOption";
 
 #------------------------------------------------------------------------------*
 
@@ -44,17 +44,17 @@ function fullPrefix
   if stringPrefix == "compiler" then
     @Ttype type;
     @Tvalue value;
-    [vars searchKey !lstringWith[!"COMPILER"] ?type ?value];
+    [vars searchKey ![@lstring new !"COMPILER" !here] ?type ?value];
     stringPrefix .= "/" . [value mStringValue];
   elsif stringPrefix == "linker" then
     @Ttype type;
     @Tvalue value;
-    [vars searchKey !lstringWith[!"LINKER"] ?type ?value];
+    [vars searchKey ![@lstring new !"LINKER" !here] ?type ?value];
     stringPrefix .= "/" . [value mStringValue];
   elsif stringPrefix == "assembler" then
     @Ttype type;
     @Tvalue value;
-    [vars searchKey !lstringWith[!"ASSEMBLER"] ?type ?value];
+    [vars searchKey ![@lstring new !"ASSEMBLER" !here] ?type ?value];
     stringPrefix .= "/" . [value mStringValue];
   end if;
   full := stringPrefix;

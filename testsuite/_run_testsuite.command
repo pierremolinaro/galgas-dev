@@ -1,5 +1,5 @@
 #!/bin/sh
-
+#set -x
 GALGAS_TOOL=`dirname $0`/../makefile_macosx/galgas_debug &&
 cd `dirname $0`/../makefile_macosx && make galgas_debug -j `sysctl -n hw.ncpu` &&
 cd `dirname $0` && $GALGAS_TOOL galgas_sources/all_testsuite.gProject -v --Werror &&
@@ -17,4 +17,4 @@ else
   echo "*************************"
   echo "*        SUCCESS        *"
   echo "*************************"
-fi
+fi || ( echo "*************************" ; echo "*     RUN-TIME-ERROR    *" ; echo "*************************" )

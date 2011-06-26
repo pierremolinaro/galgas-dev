@@ -24,6 +24,8 @@ routine testsuite_map :
   log v ; # Displays 11
   m := [mm overriddenMap] ;
   log m ;
+  @location loc := [m locationForKey !"g"] ;
+  log loc ;
 end routine ;
 
 end semantics ;
