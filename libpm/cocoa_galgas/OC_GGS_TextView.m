@@ -954,6 +954,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     NSMenu * menu = [mDocument indexMenuForToken:token atomicSelection:hasAtomicSelection range:allTokenCharacterRange] ;
     // NSLog (@"%@", menu) ;
  //   [menu setAllowsContextMenuPlugIns:NO] ;
+//    [menu setFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]] ;
     [NSMenu
       popUpContextMenu:menu
       withEvent:inEvent
