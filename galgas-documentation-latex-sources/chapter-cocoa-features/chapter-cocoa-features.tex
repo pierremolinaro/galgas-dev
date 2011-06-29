@@ -1,0 +1,194 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapter{Cocoa Features}
+%-------------------------------------------------------------
+
+
+\section{Generated Cocoa Application}
+
+When a project component is compiled with a Xcode project target, a \texttt{project\_xcode} directory is created. This directory contains:
+\begin{itemize}
+\item the Xcode project file;
+\item a \texttt{build.command} file ;
+\item an \texttt{Info.plist} file ;
+\item an \texttt{English.lproj} directory ;
+\item an empty \texttt{userResources} directory.
+\end{itemize}
+
+The \texttt{Info.plist}, the \texttt{English.lproj} directory and the \texttt{userResources} directory are used by the Cocoa target of the Xcode project. The \texttt{build.command} file is a command file that builds the Xcode project.
+
+All files you put in the \texttt{userResources} directory are added to the Cocoa target of the Xcode project when the GALGAS Project component is compiled. When the Cocoa target of the Xcode project is compiled, theses files are put in the \texttt{Resources} directory within the application bundle.
+
+Adding files to the \texttt{userResources} directory is the way of customizing the Cocoa Application:
+\begin{itemize}
+\item adding icons to your Application (\refSectionPage{addingIconsCocoaApplication});
+\item customizing syntax coloring (\refSectionPage{customizingSyntaxColoring}). 
+\end{itemize}
+
+
+
+
+\sectionLabel{Adding Icons to your Cocoa Application}{addingIconsCocoaApplication}
+
+For setting an icon for your Cocoa application and its documents, proceed as following.
+
+
+
+\texteEncercle{1} Design icons, for example with names \texttt{myApplicationIcon.icns} and \texttt{myDocumentIcon.icns}.
+
+\texteEncercle{2} Put the icons in the \texttt{userResources} directory.
+
+\texteEncercle{3} Compile the GALGAS project: this updates the Xcode project, adding the icons files to its Cocoa target.
+
+\texteEncercle{4} Under Xcode, edit the \texttt{Info.plist} file for assigning icon to the application and to the document (see \url{http://developer.apple.com/library/mac/#documentation/Cocoa/Conceptual/Documents/Concepts/DocTypePList.html}).
+
+
+
+
+
+
+
+
+
+
+
+\sectionLabel{Customizing Syntax Coloring}{customizingSyntaxColoring}
+
+This feature enables to set particular display attributes to a given list of tokens. This list is defined by a plist file located in the \emph{Resources} directory of the application bundle.
+
+\texteEncercle{1} Edit the GALGAS lexique component, and add one (or more) \motCle{style} entries. For example:
+
+\begin{lstlisting}[language=galgas]
+lexique my_lexique :
+  ...
+style mySpecificStyle -> "My Style" ;
+  ...
+end lexique ;
+\end{lstlisting}
+
+This new style's feature can be edited as other styles, by the Preferences setting of your Cocoa application.
+
+
+\texteEncercle{2} Create a plist file with the \emph{Property List Editor} application. This file should be named with the lexique component name, suffixed by \texttt{-syntax-coloring-adds}: so, for the example, the file name is \texttt{my\_lexique-syntax-coloring-adds.plist}. Put this file in the \emph{userResources} directory: so when the GALGAS project document is compiled, this file is added to the Cocoa Target of the Xcode project. 
+
+\texteEncercle{3} Edit the \texttt{my\_lexique-syntax-coloring-adds.plist} with the \emph{Property List Editor} application or Xcode. Add one entry for every custom syntax coloring case: the \emph{key} is the terminal spelling, the \emph{value} has the \emph{String} type, and the specific style name. For example, the \refFigure{}{customSyntaxColoringPropertyList} shows the assignment of the terminal which spelling is \texttt{begin} by the \texttt{mySpecificStyle} style.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=15cm]{chapter-cocoa-features/custom-syntax-coloring-property-list-edition.pdf}
+  \caption{Example of a syntax coloring property list}
+  \labelFigure{customSyntaxColoringPropertyList}
+\end{figure}
+
+If your provides an undefined style name, you will be warned every time you open a document by a beep and a small explanation window.
+
+
+
+
+
+
+\sectionLabel{Indexing your source files}{indexingYourSourceFiles}
+
+You can configure your project for enabling cross-referencing entities with your Cocoa application. This has been done in GALGAS, providing such feature (\refFigure{}{indexingUnderCocoaGALGAS}). The contextual menu is displayed with a \texttt{cmd}-click.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=16cm]{chapter-cocoa-features/indexing-sample.png}
+  \caption{Indexing and cross-referencing in GALGAS Cocoa Application}
+  \labelFigure{indexingUnderCocoaGALGAS}
+\end{figure}
+
+For configuring your project, you will have to modify the lexique component, the syntax component, the grammar component and the program component. This section presents the six configuring steps.
+ \\
+ \\
+\texteEncercle{1} \textbf{Lexique component header.} You need to change the lexique header, adding the « \texttt{indexing in} » declaration :
+
+
+\begin{lstlisting}[language=galgas]
+lexique my_lexique indexing in "INDEXING" :
+  ...
+\end{lstlisting}
+
+The « \texttt{"INDEXING"} » character string defines the name of the directory that will contains the indexing cache files. This directory is relative to the source file.
+ \\
+ \\
+\texteEncercle{2} \textbf{Indexing classes declarations.} Add one or more indexing classes declarations in the lexique component body.
+
+
+\begin{lstlisting}[language=galgas]
+lexique my_lexique indexing in "INDEXING" :
+  ...
+indexing myIndexClass1 : "Awesome objects";
+  ...
+indexing myIndexClass2 : "Smart Kinds";
+  ...
+\end{lstlisting}
+
+Each declaration consists of two parts :
+\begin{itemize}
+\item the index class name (for example \texttt{myIndexClass1}, \texttt{myIndexClass2}) is an identifier that assigns an internal name to the indexing declaration;
+\item the index class title (for example \texttt{"Awesome objects"}, \texttt{"Smart Kinds"}) is a literal string that will be used as title in the Cocoa Application; in the \refFigure{}{indexingUnderCocoaGALGAS}, the titles are \emph{Class Definition}, \emph{Class Reference as Superclass} and \emph{Abstract Category Reader Definition}.
+\end{itemize}
+
+\noindent\texteEncercle{3} \textbf{Grammar component configuration.} Just prefix by « \texttt{indexing} » keyword the grammar header:
+
+\begin{lstlisting}[language=galgas]
+indexing grammar my_grammar ... :
+  ...
+\end{lstlisting}
+
+
+
+\noindent\texteEncercle{4} \textbf{Program component configuration.} Insert the « \texttt{indexing with ...} » declaration after the « \texttt{message ...} » declaration in every program rule concerned by indexing:
+
+\begin{lstlisting}[language=galgas]
+  ...
+when ...
+message ...
+indexing with my_grammar
+??@lstring inSourceFile {
+  ...
+\end{lstlisting}
+
+
+
+
+
+
+\noindent\texteEncercle{5} \textbf{Define indexing entries.} The indexing entries are defined within the rules of syntax components. The \emph{terminal check} instruction is the unique way for definition, by naming an index class name:
+
+\begin{lstlisting}[language=galgas]
+syntax ... ("my_lexique.gLexique") :
+  ...
+rule ... :
+  ...
+  $identifier$ ? ... indexing myIndexClass1 ;
+  ...
+end rule ;
+  ...
+\end{lstlisting}
+
+Any kind of terminal symbol accepts an « \texttt{indexing} » attribute : keywords, delimiters, literal string, integers, identifiers, \dots
+
+Several index class names can be named, using a comma as separator:
+\begin{lstlisting}[language=galgas]
+  ...
+  $identifier$ ? ... indexing myIndexClass1, myIndexClass2 ;
+  ...
+\end{lstlisting}
+
+
+
+
+
+
+\noindent\texteEncercle{6} \textbf{Compile and play.} Now, you can compile and run the Cocoa Application. With a \texttt{cmd}-click on an indexed terminal symbol, the contextual menu is displayed. You can delete the indexing directory at any moment, it will be rebuilt as needed.
+
+
+
+
+
+
+
