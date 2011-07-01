@@ -925,13 +925,15 @@ static void enterDescendingEnumeration (const cStringsetNode * inNode,
 //---------------------------------------------------------------------------*
 
 void GALGAS_stringset::populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
-                                                 const typeEnumerationOrder inOrder) const {
+                                                 const typeEnumerationOrder inEnumerationOrder) const {
   if (isValid ()) {
     inEnumerationArray.setCapacity (mSharedRoot->count ()) ;
-    switch (inOrder) {
-    case kEnumeration_up: enterAscendingEnumeration (mSharedRoot->root (), inEnumerationArray) ; break ;
-    case kEnumeration_down: enterDescendingEnumeration (mSharedRoot->root (), inEnumerationArray) ; break ;
-    case kEnumeration_enterOrder : case kEnumeration_reverseEnterOrder: break ;
+    switch (enumerationOrderValue (inEnumerationOrder)) {
+    case kENUMERATION_UP: enterAscendingEnumeration (mSharedRoot->root (), inEnumerationArray) ; break ;
+    case kENUMERATION_DOWN: enterDescendingEnumeration (mSharedRoot->root (), inEnumerationArray) ; break ;
+    case kENUMERATION_ENTER_ORDER : case kENUMERATION_REVERSE_ENTER_ORDER:
+     MF_Assert (false, "invalid inEnumerationOrder %lld", enumerationOrderValue (inEnumerationOrder), 0) ;
+     break ;
     }
     #ifndef DO_NOT_GENERATE_CHECKINGS
       MF_Assert (mSharedRoot->count () == inEnumerationArray.count (),
