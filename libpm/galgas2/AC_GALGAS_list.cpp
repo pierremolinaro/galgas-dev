@@ -320,19 +320,20 @@ void cSharedList::appendList (const cSharedList * inListToAppend) {
 void cSharedList::populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
                                             const typeEnumerationOrder inEnumerationOrder) const {
   inEnumerationArray.setCapacity (mObjectArray.count ()) ;
-  switch (inEnumerationOrder) {
-  case kEnumeration_up  :
+  switch (enumerationOrderValue (inEnumerationOrder)) {
+  case kENUMERATION_UP  :
     for (PMUInt32 i=0 ; i<mObjectArray.count () ; i++) {
       inEnumerationArray.addObject (mObjectArray.objectAtIndex (i COMMA_HERE)) ;
     }
     break ;
-  case kEnumeration_down :
+  case kENUMERATION_DOWN :
     for (PMUInt32 i=mObjectArray.count () ; i>0 ; i--) {
       inEnumerationArray.addObject (mObjectArray.objectAtIndex (i - 1 COMMA_HERE)) ;
     }
-  case kEnumeration_enterOrder :
-  case kEnumeration_reverseEnterOrder :
-    MF_Assert (false, "invalid inEnumerationOrder %lld", inEnumerationOrder, 0) ;
+    break ;
+  case kENUMERATION_ENTER_ORDER :
+  case kENUMERATION_REVERSE_ENTER_ORDER :
+    MF_Assert (false, "invalid inEnumerationOrder %lld", enumerationOrderValue (inEnumerationOrder), 0) ;
     break ;
   }
 }
@@ -1237,16 +1238,16 @@ void cSharedListMapRoot::populateEnumerationArray (capCollectionElementArray & i
                                                    const typeEnumerationOrder inEnumerationOrder) const {
   // printf ("MAP COUNT %u\n", count ()) ;
   ioEnumerationArray.setCapacity (mCount) ;
-  switch (inEnumerationOrder) {
-  case kEnumeration_up  :
+  switch (enumerationOrderValue (inEnumerationOrder)) {
+  case kENUMERATION_UP  :
     enterAscendingEnumeration (mRoot, ioEnumerationArray) ;
     break ;
-  case kEnumeration_down :
+  case kENUMERATION_DOWN :
     enterDescendingEnumeration (mRoot, ioEnumerationArray) ;
     break ;
-  case kEnumeration_enterOrder :
-  case kEnumeration_reverseEnterOrder :
-    MF_Assert (false, "invalid inEnumerationOrder %lld", inEnumerationOrder, 0) ;
+  case kENUMERATION_ENTER_ORDER :
+  case kENUMERATION_REVERSE_ENTER_ORDER :
+    MF_Assert (false, "invalid inEnumerationOrder %lld", enumerationOrderValue (inEnumerationOrder), 0) ;
     break ;
   }
   MF_Assert (mCount == ioEnumerationArray.count (), "mCount (%lld) != ioEnumerationArray.count () (%lld)", mCount, ioEnumerationArray.count ()) ;

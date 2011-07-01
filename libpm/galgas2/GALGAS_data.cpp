@@ -475,11 +475,11 @@ void cCollectionElement_data::description (C_String & ioString, const PMSInt32 i
 //---------------------------------------------------------------------------*
 
 void GALGAS_data::populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
-                                            const typeEnumerationOrder inOrder) const {
+                                            const typeEnumerationOrder inEnumerationOrder) const {
   const PMUInt32 count = (PMUInt32) mData.count () ;
   inEnumerationArray.setCapacity (count) ;
-  switch (inOrder) {
-  case kEnumeration_up:
+  switch (enumerationOrderValue (inEnumerationOrder)) {
+  case kENUMERATION_UP:
     for (PMUInt32 i=0 ; i<count ; i++) {
       cCollectionElement_data * p = NULL ;
       macroMyNew (p, cCollectionElement_data (GALGAS_uint (mData ((PMSInt32) i COMMA_HERE)) COMMA_HERE)) ;
@@ -489,7 +489,7 @@ void GALGAS_data::populateEnumerationArray (capCollectionElementArray & inEnumer
       inEnumerationArray.addObject (object) ;
     }
     break ;
-  case kEnumeration_down:
+  case kENUMERATION_DOWN:
     for (PMUInt32 i=0 ; i<count ; i++) {
       cCollectionElement_data * p = NULL ;
       macroMyNew (p, cCollectionElement_data (GALGAS_uint (mData ((PMSInt32) (mData.count () - i - 1) COMMA_HERE)) COMMA_HERE)) ;
@@ -499,7 +499,9 @@ void GALGAS_data::populateEnumerationArray (capCollectionElementArray & inEnumer
       inEnumerationArray.addObject (object) ;
     }
     break ;
-  case kEnumeration_enterOrder : case kEnumeration_reverseEnterOrder: break ;
+  case kENUMERATION_ENTER_ORDER : case kENUMERATION_REVERSE_ENTER_ORDER:
+    MF_Assert (false, "invalid inEnumerationOrder %lld", enumerationOrderValue (inEnumerationOrder), 0) ;
+    break ;
   }
 }
 

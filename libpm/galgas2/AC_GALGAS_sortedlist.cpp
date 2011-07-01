@@ -912,8 +912,8 @@ void AC_GALGAS_sortedlist::greatestObjectAttributeList (capSortedListElement & o
 void cSharedSortedListRoot::populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
                                                       const typeEnumerationOrder inEnumerationOrder) const {
   inEnumerationArray.setCapacity (mCount) ;
-  switch (inEnumerationOrder) {
-  case kEnumeration_up  : {
+  switch (enumerationOrderValue (inEnumerationOrder)) {
+  case kENUMERATION_UP : {
     cSortedListNode * p = mFirst ;
     while (p != NULL) {
       capCollectionElement object ;
@@ -922,7 +922,7 @@ void cSharedSortedListRoot::populateEnumerationArray (capCollectionElementArray 
       p = p->mNextPtr ;
     }
   }break ;
-  case kEnumeration_down : {
+  case kENUMERATION_DOWN : {
     cSortedListNode * p = mLast ;
     while (p != NULL) {
       capCollectionElement object ;
@@ -931,9 +931,9 @@ void cSharedSortedListRoot::populateEnumerationArray (capCollectionElementArray 
       p = p->mPreviousPtr ;
     }
   }break ;
-  case kEnumeration_enterOrder :
-  case kEnumeration_reverseEnterOrder :
-    MF_Assert (false, "invalid inEnumerationOrder %lld", inEnumerationOrder, 0) ;
+  case kENUMERATION_ENTER_ORDER :
+  case kENUMERATION_REVERSE_ENTER_ORDER :
+    MF_Assert (false, "invalid inEnumerationOrder %lld", enumerationOrderValue (inEnumerationOrder), 0) ;
     break ;
   }
   MF_Assert (mCount == inEnumerationArray.count (), "mCount %lld != inEnumerationArray.count () %lld", mCount, inEnumerationArray.count ()) ;

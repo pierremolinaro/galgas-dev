@@ -1786,16 +1786,16 @@ void cSharedUniqueMapRoot::populateEnumerationArray (capCollectionElementArray &
                                                      const typeEnumerationOrder inEnumerationOrder) const {
   // printf ("MAP COUNT %u\n", count ()) ;
   ioEnumerationArray.setCapacity (mCount) ;
-  switch (inEnumerationOrder) {
-  case kEnumeration_up  :
+  switch (enumerationOrderValue (inEnumerationOrder)) {
+  case kENUMERATION_UP  :
     enterAscendingEnumeration (mRoot, ioEnumerationArray) ;
     break ;
-  case kEnumeration_down :
+  case kENUMERATION_DOWN :
     enterDescendingEnumeration (mRoot, ioEnumerationArray) ;
     break ;
-  case kEnumeration_enterOrder :
-  case kEnumeration_reverseEnterOrder :
-    MF_Assert (false, "invalid inEnumerationOrder %lld", inEnumerationOrder, 0) ;
+  case kENUMERATION_ENTER_ORDER :
+  case kENUMERATION_REVERSE_ENTER_ORDER :
+    MF_Assert (false, "invalid inEnumerationOrder %lld", enumerationOrderValue (inEnumerationOrder), 0) ;
     break ;
   }
   MF_Assert (mCount == ioEnumerationArray.count (), "mCount (%lld) != ioEnumerationArray.count () (%lld)", mCount, ioEnumerationArray.count ()) ;
