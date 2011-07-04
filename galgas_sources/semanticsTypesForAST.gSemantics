@@ -1271,24 +1271,9 @@ class @sortedListDeclarationAST extends @semanticDeclarationAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @enumMessageAssociationListAST {
-  @lstring mConstantName ;
-  @lstring mMessage ;
-}
-
-#---------------------------------------------------------------------------*
-
-list @enumMessageListAST {
-  @lstring mEnumMessageName ;
-  @enumMessageAssociationListAST mMessageAssociationList ;
-}
-
-#---------------------------------------------------------------------------*
-
 class @enumDeclarationAST extends @semanticDeclarationAST {
   @lstring mEnumTypeName ;
   @lstringlist mConstantList ;
-  @enumMessageListAST mEnumMessageList ;
 }
 
 #---------------------------------------------------------------------------*

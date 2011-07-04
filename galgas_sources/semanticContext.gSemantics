@@ -1442,9 +1442,6 @@ override method @enumDeclarationAST enterInSemanticContext
 #--- readers
   @readerMap readerMap ;
   commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?readerMap  ;
-  foreach mEnumMessageList do
-    enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap ![mEnumMessageName string] !"string" !false ;
-  end foreach ;
 #--- Add Categories
   addCategories
     !inCategoryMethodMapForBuildingContext

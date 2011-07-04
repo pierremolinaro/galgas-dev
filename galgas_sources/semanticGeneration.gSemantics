@@ -578,7 +578,6 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@stringlist CONSTANT_LIST
-    ?@enumMessageListForGeneration ENUM_MESSAGE_LIST
   ;
 
 #---------- MAP PROXY
@@ -1485,7 +1484,6 @@ override reader @enumTypeForGeneration appendSpecificImplementation ->@string ou
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mConstantList
-    !mEnumMessageList
   ] ;
  end reader ;
 

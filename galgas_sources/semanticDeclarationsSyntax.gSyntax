@@ -529,31 +529,6 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-rule <enum_message_declaration> ?!@enumMessageListAST ioEnumMessageList :
-  $reader$ ;
-  $identifier$ ?@lstring mEnumMessageName ;
-  warning mEnumMessageName : "'enum' reader is obsolete" ;
-  $:$ ;
-  @enumMessageAssociationListAST mMessageAssociationList [emptyList] ;
-  repeat
-    $identifier$ ? @lstring mConstantName ;
-    $->$ ;
-    $literal_string$ ? @lstring mMessage ;
-    $;$ ;
-    mMessageAssociationList += !mConstantName !mMessage ;
-  while
-  end repeat ;
-  $end$ ;
-  $reader$ ;
-  $;$ ;
-  ioEnumMessageList +=
-    !mEnumMessageName
-    !mMessageAssociationList
-  ;
-end rule ;
-
-#---------------------------------------------------------------------------*
-
 rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
@@ -569,17 +544,11 @@ rule <semantic_declaration>
   end repeat ;
   $}$ ;
   ${$ ;
-  @enumMessageListAST mEnumMessageList [emptyList] ;
-  repeat
-  while
-    <enum_message_declaration> !? mEnumMessageList ;
-  end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@enumDeclarationAST new
     !true # Is global
     !mEnumTypeName
     !mConstantList
-    !mEnumMessageList
   ] ;
 end rule ;
 

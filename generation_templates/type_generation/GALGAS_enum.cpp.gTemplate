@@ -14,24 +14,6 @@ foreach CONSTANT_LIST do
   %}\n\n%
 end foreach
 
-foreach ENUM_MESSAGE_LIST do
-  %//---------------------------------------------------------------------------*\n\n%
-  %static const char * gEnumNameArrayFor_%!TYPE_IDENTIFIER%_%![mEnumMessageName identifierRepresentation]% [%![[CONSTANT_LIST length] + 1 string]%] = {\n%
-  %  ""%
-  foreach mMessageAssociationList
-     do %,\n  %![mMessage utf8Representation]
-  end foreach
-  %\n} ;\n\n%
-  %//---------------------------------------------------------------------------*\n\n%
-  %GALGAS_string GALGAS_%!TYPE_IDENTIFIER%::reader_%![mEnumMessageName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
-  %  GALGAS_string result ;\n%
-  %  if (isValid ()) {\n%
-  %    result = GALGAS_string (gEnumNameArrayFor_%!TYPE_IDENTIFIER%_%![mEnumMessageName identifierRepresentation]% [mEnum]) ;\n%
-  %  }\n%
-  %  return result ;\n%
-  %}\n\n%
-end foreach
-
 %//---------------------------------------------------------------------------*
 
 static const char * gEnumNameArrayFor_%!TYPE_IDENTIFIER% [%![[CONSTANT_LIST length] + 1 string]%] = {

@@ -1247,26 +1247,8 @@ class @sortedListTypeForGeneration extends @semanticTypeForGeneration {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-sortedlist @enumMessageAssociationSortedListForGeneration {
-  @uint mConstantIndex ;
-  @string mConstantName ;
-  @string mMessage ;
-}{
-  mConstantIndex <
-}
-
-#---------------------------------------------------------------------------*
-
-list @enumMessageListForGeneration {
-  @string mEnumMessageName ;
-  @enumMessageAssociationSortedListForGeneration mMessageAssociationList ;
-}
-
-#---------------------------------------------------------------------------*
-
 class @enumTypeForGeneration extends @semanticTypeForGeneration {
   @stringlist mConstantList ;
-  @enumMessageListForGeneration mEnumMessageList ;
 }
 
 #---------------------------------------------------------------------------*
