@@ -497,8 +497,8 @@ void AC_GALGAS_list::prependAttributeArray (const capCollectionElement & inEleme
 //---------------------------------------------------------------------------*
 
 void AC_GALGAS_list::removeFirstObject (capCollectionElement & outAttributes,
-                                     C_Compiler * inCompiler
-                                     COMMA_LOCATION_ARGS) {
+                                        C_Compiler * inCompiler
+                                        COMMA_LOCATION_ARGS) {
   if (NULL != mSharedList) {
     insulateList (HERE) ;
     mSharedList->removeFirstObject (outAttributes, inCompiler COMMA_THERE) ;
@@ -508,8 +508,8 @@ void AC_GALGAS_list::removeFirstObject (capCollectionElement & outAttributes,
 //---------------------------------------------------------------------------*
 
 void AC_GALGAS_list::removeLastObject (capCollectionElement & outAttributes,
-                                    C_Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) {
+                                       C_Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) {
   if (NULL != mSharedList) {
     insulateList (HERE) ;
     mSharedList->removeLastObject (outAttributes, inCompiler COMMA_THERE) ;
@@ -519,8 +519,8 @@ void AC_GALGAS_list::removeLastObject (capCollectionElement & outAttributes,
 //---------------------------------------------------------------------------*
 
 void AC_GALGAS_list::readFirst (capCollectionElement & outAttributes,
-                             C_Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) const {
+                                C_Compiler * inCompiler
+                                COMMA_LOCATION_ARGS) const {
   if (NULL != mSharedList) {
     mSharedList->readFirst (outAttributes, inCompiler COMMA_THERE) ;
   }
@@ -529,8 +529,8 @@ void AC_GALGAS_list::readFirst (capCollectionElement & outAttributes,
 //---------------------------------------------------------------------------*
 
 void AC_GALGAS_list::readLast (capCollectionElement & outAttributes,
-                            C_Compiler * inCompiler
-                            COMMA_LOCATION_ARGS) const {
+                               C_Compiler * inCompiler
+                               COMMA_LOCATION_ARGS) const {
   if (NULL != mSharedList) {
     mSharedList->readLast (outAttributes, inCompiler COMMA_THERE) ;
   }
@@ -539,10 +539,10 @@ void AC_GALGAS_list::readLast (capCollectionElement & outAttributes,
 //---------------------------------------------------------------------------*
 
 void AC_GALGAS_list::subListWithRange (AC_GALGAS_list & outList,
-                                    const GALGAS_uint & inIndex,
-                                    const GALGAS_uint & inLength,
-                                    C_Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) const {
+                                       const GALGAS_uint & inIndex,
+                                       const GALGAS_uint & inLength,
+                                       C_Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) const {
   if (isValid ()) {
     mSharedList->subListWithRange (outList.mSharedList, inIndex, inLength, inCompiler COMMA_THERE) ;
   }else{
@@ -553,9 +553,9 @@ void AC_GALGAS_list::subListWithRange (AC_GALGAS_list & outList,
 //---------------------------------------------------------------------------*
 
 void AC_GALGAS_list::subListFromIndex (AC_GALGAS_list & outList,
-                                    const GALGAS_uint & inIndex,
-                                    C_Compiler * inCompiler
-                                    COMMA_LOCATION_ARGS) const {
+                                       const GALGAS_uint & inIndex,
+                                       C_Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) const {
   if (isValid ()) {
     mSharedList->subListFromIndex (outList.mSharedList, inIndex, inCompiler COMMA_THERE) ;
   }else{
@@ -575,8 +575,8 @@ void AC_GALGAS_list::appendList (const AC_GALGAS_list & inList) {
 //---------------------------------------------------------------------------*
 
 capCollectionElement AC_GALGAS_list::readObjectAtIndex (const GALGAS_uint & inIndex,
-                                                     C_Compiler * inCompiler
-                                                     COMMA_LOCATION_ARGS) const {
+                                                        C_Compiler * inCompiler
+                                                        COMMA_LOCATION_ARGS) const {
   capCollectionElement result ;
   if (isValid ()) {
     result = mSharedList->readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;
@@ -587,8 +587,8 @@ capCollectionElement AC_GALGAS_list::readObjectAtIndex (const GALGAS_uint & inIn
 //---------------------------------------------------------------------------*
 
 cCollectionElement * AC_GALGAS_list::objectPointerAtIndex (const GALGAS_uint & inIndex,
-                                                        C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) {
+                                                           C_Compiler * inCompiler
+                                                           COMMA_LOCATION_ARGS) {
   cCollectionElement * result = NULL ;
   if (isValid ()) {
     insulateList (HERE) ;
@@ -728,6 +728,8 @@ class cSharedListMapRoot : public C_SharedObject {
 //--------------------------------- Support for enumeration
   public : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & ioEnumerationArray,
                                                            const typeEnumerationOrder inEnumerationOrder) const ;
+//--------------------------------- Comparison
+  public : typeComparisonResult listmapCompare (const cSharedListMapRoot * inOperand) const ;
 } ;
 
 //---------------------------------------------------------------------------*
@@ -856,14 +858,30 @@ GALGAS_stringlist AC_GALGAS_listmap::reader_keyList (LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------*
 
-typeComparisonResult AC_GALGAS_listmap::objectCompare (const AC_GALGAS_listmap & /* inOperand */) const {
- // AC_GALGAS_listmap operand1 = inOperand1 ;
-//  AC_GALGAS_listmap operand2 = inOperand2 ;
-//  PMSInt32 result = ((PMSInt32) operand1.ptr (HERE)->count ()) - ((PMSInt32) operand2.ptr (HERE)->count ()) ;
-  printf ("******************************** LIST MAP COMPARE ! ******************************\n") ;
-  // § non terminé
-  exit (1) ;
-  return kOperandNotValid ;
+typeComparisonResult cSharedListMapRoot::listmapCompare (const cSharedListMapRoot * inOperand) const {
+  typeComparisonResult result = kOperandEqual ;
+  if (count () < inOperand->count ()) {
+    result = kFirstOperandLowerThanSecond ;
+  }else if (count () > inOperand->count ()) {
+    result = kFirstOperandGreaterThanSecond ;
+  }else{
+    capCollectionElementArray array ; populateEnumerationArray (array, kEnumeration_up) ;
+    capCollectionElementArray operandArray ; inOperand->populateEnumerationArray (operandArray, kEnumeration_up) ;
+    for (PMUInt32 i=0 ; (i<array.count ()) && (kOperandEqual == result) ; i++) {
+      result = array.objectAtIndex (i COMMA_HERE).compare (operandArray.objectAtIndex (i COMMA_HERE)) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+typeComparisonResult AC_GALGAS_listmap::objectCompare (const AC_GALGAS_listmap & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    result = mSharedListMap->listmapCompare (inOperand.mSharedListMap) ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------*
