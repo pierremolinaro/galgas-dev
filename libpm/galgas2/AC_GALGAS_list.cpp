@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2008, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 2008, ..., 2011 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -591,6 +591,7 @@ cCollectionElement * AC_GALGAS_list::objectPointerAtIndex (const GALGAS_uint & i
                                                         COMMA_LOCATION_ARGS) {
   cCollectionElement * result = NULL ;
   if (isValid ()) {
+    insulateList (HERE) ;
     result = mSharedList->objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
   }
   return result ;
