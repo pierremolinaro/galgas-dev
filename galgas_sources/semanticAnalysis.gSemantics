@@ -298,40 +298,11 @@ override method @enumDeclarationAST performSemanticAnalysis
     constantList += ![mValue string] ;
     [!?constantMap insertKey !mValue ![constantMap count]] ;
   end foreach ;
-  const @stringset constantSet := [constantMap allKeys] ;
-#--- Messages
-  @enumMessageListForGeneration enumMessageList [emptyList] ;
-  @stringset messageNameSet [emptySet] ;
-  foreach mEnumMessageList do
-    if [messageNameSet hasKey ![mEnumMessageName string]] then
-      error mEnumMessageName : "this message is already declared for this enum type" ;
-    end if ;
-    messageNameSet += ![mEnumMessageName string] ;
-    @enumMessageAssociationSortedListForGeneration enumMessageAssociationSortedListForGeneration [emptySortedList] ;
-    @stringset usedConstantSet [emptySet] ; # For checking no constant is missed
-    foreach mMessageAssociationList do
-      @uint constantIndex ;
-      [constantMap searchKey !mConstantName ?constantIndex] ;
-      usedConstantSet += ![mConstantName string] ;
-      enumMessageAssociationSortedListForGeneration +=
-        !constantIndex
-        ![mConstantName string]
-        ![mMessage string]
-      ;
-    end foreach ;
-    const @stringset missedConstantSet := constantSet - usedConstantSet ;
-    foreach missedConstantSet do
-      error mEnumMessageName : "the '" . mEnumMessageName . "' message definition does not name the '"
-        . key . "' constant" ;
-    end foreach ;
-    enumMessageList += ![mEnumMessageName string] !enumMessageAssociationSortedListForGeneration ;
-  end foreach ;
 #---
   ioSemanticDeclarationListForGeneration += ![@enumTypeForGeneration new
     !mIsGlobal
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mEnumTypeName]
     !constantList
-    !enumMessageList
   ]
   !""
   ;
