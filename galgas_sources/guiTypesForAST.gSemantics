@@ -22,32 +22,32 @@ semantics guiTypesForAST :
 #---------------------------------------------------------------------------*
 
 list @guiSimpleAttributeListAST {
-  @lstring mKey ;
-  @lstring mValue ;
+  @lstring mKey feature nogetter ;
+  @lstring mValue feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @guiCompoundAttributeListAST {
-  @lstring mKey ;
-  @lstring mAttributeName ;
-  @lstring mValue ;
+  @lstring mKey feature nogetter ;
+  @lstring mAttributeName feature nogetter ;
+  @lstring mValue feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @guiLabelListAST {
-  @lstringlist mTerminalList ;
-  @location mLocation ;
+  @lstringlist mTerminalList feature nogetter ;
+  @location mLocation feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @withLexiqueListAST {
-  @lstring mLexiqueFileName ;
-  @guiLabelListAST mLabels ;
-  @guiSimpleAttributeListAST mSimpleAttributes ;
-  @guiCompoundAttributeListAST mCompoundAttributes ;
+  @lstring mLexiqueFileName feature nogetter ;
+  @guiLabelListAST mLabels feature nogetter ;
+  @guiSimpleAttributeListAST mSimpleAttributes feature nogetter ;
+  @guiCompoundAttributeListAST mCompoundAttributes feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*

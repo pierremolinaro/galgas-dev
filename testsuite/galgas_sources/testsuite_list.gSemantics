@@ -3,7 +3,7 @@ semantics testsuite_list :
 extern routine testsuite_hand_coded ;
 
 list @myList {
-  @string mValue ;
+  @string mValue feature setter ;
 }
 
 routine testsuite_list :
@@ -21,6 +21,8 @@ routine testsuite_list :
   log s ;
   s := [strList mValueAtIndex !3] ;
   log s ;
+  [!?strList setMValueAtIndex !"z" !3] ;
+  log strList ;
   message "--- test .= operator on list\n" ;
   strList .= strList ;
   log s ;

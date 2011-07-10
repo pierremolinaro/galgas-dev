@@ -45,6 +45,15 @@ LOGGING s: <@string:"a">
 LOGGING s: <@string:"b">
 LOGGING s: <@string:"c">
 LOGGING s: <@string:"d">
+LOGGING strList: <list @myList (4 objects): 
+|-at 0
+| | mValue:<@string:"a">
+|-at 1
+| | mValue:<@string:"b">
+|-at 2
+| | mValue:<@string:"c">
+|-at 3
+| | mValue:<@string:"z">>
 --- test .= operator on list
 LOGGING s: <@string:"d">
 *************************************** begin of list compare

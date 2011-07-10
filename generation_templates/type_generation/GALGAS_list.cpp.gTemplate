@@ -363,6 +363,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::dotAssign_operation (%?^%const GALGAS_%!TYPE_IDE
 
 %
 foreach ATTRIBUTE_LIST do index IDX
+  if mHasSetter then
   %//---------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]%AtIndex (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inOperand,\n%
   %                                              %!^%GALGAS_uint inIndex,\n%
@@ -374,23 +375,23 @@ foreach ATTRIBUTE_LIST do index IDX
   %    p->mAttribute_%![mAttributeName identifierRepresentation]% = inOperand ;\n%
   %  }\n%
   %}\n\n%
-end foreach
-%
-%
-foreach ATTRIBUTE_LIST do index IDX
-  %//---------------------------------------------------------------------------*\n\n%
-  %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]%AtIndex (%?^%const GALGAS_uint & inIndex,\n%
-  %                                              %!^%C_Compiler * inCompiler\n%
-  %                                              %!^%COMMA_LOCATION_ARGS) const {\n%
-  %  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%
-  %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;\n%
-  %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
-  %  if (NULL != p) {\n%
-  %    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
-  %    result = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-  %  }\n%
-  %  return result ;\n%
-  %}\n\n%
+  end if
+
+  if mHasGetter then
+    %//---------------------------------------------------------------------------*\n\n%
+    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]%AtIndex (%?^%const GALGAS_uint & inIndex,\n%
+    %                                              %!^%C_Compiler * inCompiler\n%
+    %                                              %!^%COMMA_LOCATION_ARGS) const {\n%
+    %  capCollectionElement attributes = readObjectAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%
+    %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;\n%
+    %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
+    %  if (NULL != p) {\n%
+    %    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
+    %    result = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %  }\n%
+    %  return result ;\n%
+    %}\n\n%
+  end if
 end foreach
 %
 

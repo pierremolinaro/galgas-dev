@@ -27,8 +27,8 @@ abstract class @semanticExpressionAST {
 #---------------------------------------------------------------------------*
 
 list @semanticExpressionListAST {
-  @semanticExpressionAST mExpression ;
-  @location mEndOfExpressionLocation ;
+  @semanticExpressionAST mExpression feature nogetter ;
+  @location mEndOfExpressionLocation feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -274,10 +274,10 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 list @formalParameterListAST {
-  @formalArgumentPassingModeAST mFormalArgumentPassingMode ;
-  @lstring mFormalArgumentTypeName ;
-  @lstring mFormalArgumentName ;
-  @bool mIsUnused ;
+  @formalArgumentPassingModeAST mFormalArgumentPassingMode feature nogetter ;
+  @lstring mFormalArgumentTypeName feature nogetter ;
+  @lstring mFormalArgumentName feature nogetter ;
+  @bool mIsUnused feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -287,10 +287,10 @@ list @formalParameterListAST {
 #---------------------------------------------------------------------------*
 
 list @formalInputParameterListAST {
-  @lstring mFormalArgumentTypeName ;
-  @lstring mFormalArgumentName ;
-  @bool mIsUnused ;
-  @bool mIsConstant ;
+  @lstring mFormalArgumentTypeName feature nogetter ;
+  @lstring mFormalArgumentName feature nogetter ;
+  @bool mIsUnused feature nogetter ;
+  @bool mIsConstant feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -332,7 +332,7 @@ class @inputJokerActualParameterAST extends @actualParameterAST {
 #---------------------------------------------------------------------------*
 
 list @actualParameterListAST {
-  @actualParameterAST mActualParameter ;
+  @actualParameterAST mActualParameter feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -342,8 +342,8 @@ list @actualParameterListAST {
 #---------------------------------------------------------------------------*
 
 list @actualInputParameterListAST {
-  @lstring mActualParameterTypeName ; # Empty if no type
-  @lstring mActualParameterName ;
+  @lstring mActualParameterTypeName feature nogetter ; # Empty if no type
+  @lstring mActualParameterName feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -360,7 +360,7 @@ abstract class @semanticInstructionAST extends @syntaxInstructionAST {
 #---------------------------------------------------------------------------*
 
 list @semanticInstructionListAST {
-  @semanticInstructionAST mInstruction ;
+  @semanticInstructionAST mInstruction feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -372,7 +372,7 @@ abstract class @semanticDeclarationAST {
 #---------------------------------------------------------------------------*
 
 list @semanticDeclarationListAST {
-  @semanticDeclarationAST mSemanticDeclaration ;
+  @semanticDeclarationAST mSemanticDeclaration feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -449,8 +449,8 @@ class @localVariableDeclarationAST extends @semanticInstructionAST {
 #---------------------------------------------------------------------------*
 
 list @localVariableDeclarationListAST {
-  @lstring mTypeName ;
-  @lstring mVariableName ;
+  @lstring mTypeName feature nogetter ;
+  @lstring mVariableName feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -527,20 +527,20 @@ class @selfConcatInstructionAST extends @semanticInstructionAST {
 #---------------------------------------------------------------------------*
 
 list @foreachInstructionEnumeratedObjectElementListAST {
-  @lstring mTypeName ; # Empty string if joker
-  @lstring mConstantName ;  # Empty string if joker
+  @lstring mTypeName feature nogetter ; # Empty string if joker
+  @lstring mConstantName feature nogetter ;  # Empty string if joker
 }
 
 #---------------------------------------------------------------------------*
 
 list @foreachInstructionEnumeratedObjectListAST {
-  @lstring mEnumerationOrder ;
-  @semanticExpressionAST mEnumeratedExpression ;
-  @location mEndOfEnumerationExpression ;
-  @foreachInstructionEnumeratedObjectElementListAST mElementList ;
-  @location mEndOfElementList ;
-  @bool mEndsWithEllipsis ;
-  @lstring mPrefix ;
+  @lstring mEnumerationOrder feature nogetter ;
+  @semanticExpressionAST mEnumeratedExpression feature nogetter ;
+  @location mEndOfEnumerationExpression feature nogetter ;
+  @foreachInstructionEnumeratedObjectElementListAST mElementList feature nogetter ;
+  @location mEndOfElementList feature nogetter ;
+  @bool mEndsWithEllipsis feature nogetter ;
+  @lstring mPrefix feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -652,18 +652,18 @@ class @routineCallInstructionAST extends @semanticInstructionAST {
 #---------------------------------------------------------------------------*
 
 list @matchEntryListAST {
-  @bool mIsType ; # true if type, false if enum
-  @lstring mTypeNameOrEnumerationConstantName ;
-  @lstring mLocalConstantName ; # Empty string if no constant
+  @bool mIsType feature nogetter ; # true if type, false if enum
+  @lstring mTypeNameOrEnumerationConstantName feature nogetter ;
+  @lstring mLocalConstantName feature nogetter ; # Empty string if no constant
 }
 
 #---------------------------------------------------------------------------*
 
 list @matchInstructionBranchListAST {
-  @matchEntryListAST mMatchEntryList ;
-  @location mEndOfMatchEntryList ;
-  @semanticInstructionListAST mMatchBranchInstructionList ;
-  @location mEndOf_instructionList ;
+  @matchEntryListAST mMatchEntryList feature nogetter ;
+  @location mEndOfMatchEntryList feature nogetter ;
+  @semanticInstructionListAST mMatchBranchInstructionList feature nogetter ;
+  @location mEndOf_instructionList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -682,12 +682,12 @@ class @matchInstructionAST extends @semanticInstructionAST {
 #---------------------------------------------------------------------------*
 
 list @castInstructionBranchListAST {
-  @bool mUseKindOfClass ;
-  @lstring mTypeName ;
-  @lstring mConstantVarName ; # Empty string if no constant var
-  @bool mConstantVarNameIsUnused ; # true if no constant var
-  @semanticInstructionListAST mInstructionList ;
-  @location mEndOfInstructions ;
+  @bool mUseKindOfClass feature nogetter ;
+  @lstring mTypeName feature nogetter ;
+  @lstring mConstantVarName feature nogetter ; # Empty string if no constant var
+  @bool mConstantVarNameIsUnused feature nogetter ; # true if no constant var
+  @semanticInstructionListAST mInstructionList feature nogetter ;
+  @location mEndOfInstructions feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -796,8 +796,8 @@ class @messageInstructionAST extends @semanticInstructionAST {
 #---------------------------------------------------------------------------*
 
 list @logListAST {
-  @lstring mLogMessage ;
-  @semanticExpressionAST mLogExpression ;
+  @lstring mLogMessage feature nogetter ;
+  @semanticExpressionAST mLogExpression feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -873,9 +873,9 @@ class @readWriteAccessWithInstructionAST extends @semanticInstructionAST {
 #---------------------------------------------------------------------------*
 
 list @switchBranchesAST {
-  @lstringlist mSwitchConstantList ;
-  @semanticInstructionListAST mInstructions ;
-  @location mEndOfBranch ;
+  @lstringlist mSwitchConstantList feature nogetter ;
+  @semanticInstructionListAST mInstructions feature nogetter ;
+  @location mEndOfBranch feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1080,9 +1080,9 @@ class @overridingAbstractCategoryReaderAST extends @semanticDeclarationAST {
 #---------------------------------------------------------------------------*
 
 list @attributeInCollectionListAST {
-  @lstring mAttributeTypeName ;
-  @lstring mAttributeName ;
-  @lstringlist mFeatureList ;
+  @lstring mAttributeTypeName feature nogetter ;
+  @lstring mAttributeName feature nogetter ;
+  @lstringlist mFeatureList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1110,19 +1110,19 @@ enum @mapAutomatonMessageKind {
 #---------------------------------------------------------------------------*
 
 list @mapStateTransitionList {
-  @lstring mActionName ;
-  @lstring mTargetStateName ;
-  @mapAutomatonMessageKind mTransitionMessageKind ;
-  @lstring mTransitionMessage ;
+  @lstring mActionName feature nogetter ;
+  @lstring mTargetStateName feature nogetter ;
+  @mapAutomatonMessageKind mTransitionMessageKind feature nogetter ;
+  @lstring mTransitionMessage feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @mapStateList {
-  @lstring mStateName ;
-  @mapAutomatonMessageKind mStateMessageKind ;
-  @lstring mStateMessage ;
-  @mapStateTransitionList mTransitionList ;
+  @lstring mStateName feature nogetter ;
+  @mapAutomatonMessageKind mStateMessageKind feature nogetter ;
+  @lstring mStateMessage feature nogetter ;
+  @mapStateTransitionList mTransitionList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1132,31 +1132,31 @@ list @mapStateList {
 #---------------------------------------------------------------------------*
 
 list @insertMethodListAST {
-  @lstring mInsertMethodName ;
-  @lstring mErrorMessage ;
-  @lstring mShadowErrorMessage ;
-  @lstring mInitialStateName ;
+  @lstring mInsertMethodName feature nogetter ;
+  @lstring mErrorMessage feature nogetter ;
+  @lstring mShadowErrorMessage feature nogetter ;
+  @lstring mInitialStateName feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @mapSearchMethodListAST {
-  @lstring mSearchMethodName ;
-  @lstring mErrorMessage ;
-  @lstring mActionName ;
+  @lstring mSearchMethodName feature nogetter ;
+  @lstring mErrorMessage feature nogetter ;
+  @lstring mActionName feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @mapRemoveMethodListAST {
-  @lstring mMethodName ;
-  @lstring mErrorMessage ;
+  @lstring mMethodName feature nogetter ;
+  @lstring mErrorMessage feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @insertOrReplaceDeclarationListAST {
-  @location mInsertOrReplaceDeclarationLocation ;
+  @location mInsertOrReplaceDeclarationLocation feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1173,19 +1173,19 @@ class @mapDeclarationAST extends @semanticDeclarationAST {
 #---------------------------------------------------------------------------*
 
 list @mapOverrideBlockDescriptorAST {
-  @lstring mLeftState ;
-  @lstring mRightState ;
-  @lstring mResultingState ;
-  @mapAutomatonMessageKind mMessageKind ;
-  @lstring mTransitionMessage ;
+  @lstring mLeftState feature nogetter ;
+  @lstring mRightState feature nogetter ;
+  @lstring mResultingState feature nogetter ;
+  @mapAutomatonMessageKind mMessageKind feature nogetter ;
+  @lstring mTransitionMessage feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @mapOverrideBlockListAST {
-  @lstring mOverrideBlockName ;
-  @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor1AST ;
-  @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor2AST ;
+  @lstring mOverrideBlockName feature nogetter ;
+  @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor1AST feature nogetter ;
+  @mapOverrideBlockDescriptorAST mMapOverrideBlockDescriptor2AST feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1217,11 +1217,11 @@ class @mapProxyDeclarationAST extends @semanticDeclarationAST {
 #---------------------------------------------------------------------------*
 
 class @classDeclarationAST extends @semanticDeclarationAST {
-  @bool mIsAbstract ;
-  @lstring mClassTypeName ;
-  @lstring mSuperClassName ; # Empty if no super class
-  @lstringlist mClassFeatureList ;
-  @attributeInCollectionListAST mAttributeList ;
+  @bool mIsAbstract feature nogetter ;
+  @lstring mClassTypeName feature nogetter ;
+  @lstring mSuperClassName feature nogetter ; # Empty if no super class
+  @lstringlist mClassFeatureList feature nogetter ;
+  @attributeInCollectionListAST mAttributeList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1231,8 +1231,8 @@ class @classDeclarationAST extends @semanticDeclarationAST {
 #---------------------------------------------------------------------------*
 
 class @listDeclarationAST extends @semanticDeclarationAST {
-  @lstring mListTypeName ;
-  @attributeInCollectionListAST mAttributeList ;
+  @lstring mListTypeName feature nogetter ;
+  @attributeInCollectionListAST mAttributeList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1253,8 +1253,8 @@ class @structDeclarationAST extends @semanticDeclarationAST {
 #---------------------------------------------------------------------------*
 
 list @sortedListSortDescriptorListAST {
-  @lstring mSortedAttributeName ;
-  @bool mAscending ;
+  @lstring mSortedAttributeName feature nogetter ;
+  @bool mAscending feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1283,17 +1283,17 @@ class @enumDeclarationAST extends @semanticDeclarationAST {
 #---------------------------------------------------------------------------*
 
 list @formalTemplateInputParameterListAST {
-  @lstring mFormalArgumentTypeName ;
-  @lstring mFormalArgumentName ;
-  @bool mIsUnused ;
+  @lstring mFormalArgumentTypeName feature nogetter ;
+  @lstring mFormalArgumentName feature nogetter ;
+  @bool mIsUnused feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @filewrapperTemplateListAST {
-  @lstring mFilewrapperTemplateName ;
-  @lstring mFilewrapperTemplatePath ;
-  @formalTemplateInputParameterListAST mFilewrapperTemplateFormalInputParameters ;
+  @lstring mFilewrapperTemplateName feature nogetter ;
+  @lstring mFilewrapperTemplatePath feature nogetter ;
+  @formalTemplateInputParameterListAST mFilewrapperTemplateFormalInputParameters feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1314,8 +1314,8 @@ class @filewrapperDeclarationAST extends @semanticDeclarationAST {
 #---------------------------------------------------------------------------*
 
 list @graphInsertModifierList {
-  @lstring mInsertModifierName ;
-  @lstring mInsertErrorMessage ;
+  @lstring mInsertModifierName feature nogetter ;
+  @lstring mInsertErrorMessage feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*

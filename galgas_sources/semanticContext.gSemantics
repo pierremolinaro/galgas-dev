@@ -1635,14 +1635,20 @@ override method @listDeclarationAST enterInSemanticContext
   ??@categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
-#  message "@listDeclarationAST enterInSemanticContext\n" ;
 #--- Handle attributes
   @typedAttributeList typedAttributeList [emptyList] ;
   foreach mAttributeList do
     @unifiedTypeMapProxy attributeTypeIndex ;
     [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mAttributeTypeName string] ?attributeTypeIndex] ;
     @bool hasGetter := true ;
-    @bool hasSetter := true ;
+    @bool hasSetter := false ;
+    foreach mFeatureList do
+      if mValue->string == "nogetter" then
+        hasGetter := false ;
+      elsif mValue->string == "setter" then
+        hasSetter := true ;
+      end if ;
+    end foreach ;
     typedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter ;
   end foreach ;
 #--- uint type index
@@ -1677,16 +1683,18 @@ override method @listDeclarationAST enterInSemanticContext
   enterBaseReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"subListFromIndex" !"uint" ![mListTypeName string] !true ;
   enterBaseReaderWith2Arguments !?readerMap !?ioSemanticContext->mTypeMap !"subListWithRange" !"uint" !"uint" ![mListTypeName string] !true ;
   foreach typedAttributeList do
-    [!?readerMap insertOrReplace
-      ![@lstring new ![mAttributeName string] . "AtIndex" ![mAttributeName location]]
-      ![@methodKind definedAsMember]
-      ![@unifiedTypeMapProxyList listWithValue !uintType]
-      !here
-      !true
-      !mAttributeTypeProxy
-      ![@methodQualifier isBasic]
-      !"" # No Error message
-    ] ;
+    if mHasGetter then
+      [!?readerMap insertOrReplace
+        ![@lstring new ![mAttributeName string] . "AtIndex" ![mAttributeName location]]
+        ![@methodKind definedAsMember]
+        ![@unifiedTypeMapProxyList listWithValue !uintType]
+        !here
+        !true
+        !mAttributeTypeProxy
+        ![@methodQualifier isBasic]
+        !"" # No Error message
+      ] ;
+    end if ;
   end foreach ;
 #--- Modifiers
   @modifierMap modifierMap [emptyMap] ;
@@ -1715,17 +1723,19 @@ override method @listDeclarationAST enterInSemanticContext
     !"" # No error message
   ] ;
   foreach typedAttributeList do
-    @formalParameterSignature setterFormalArgumentList [emptyList] ;
-    setterFormalArgumentList += !mAttributeTypeProxy ![@formalArgumentPassingModeAST argumentConstantIn] ;
-    setterFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] ;
-    [!?modifierMap insertOrReplace
-      ![@lstring new !"set" . [[mAttributeName string] stringByCapitalizingFirstCharacter] . "AtIndex" ![mAttributeName location]]
-      ![@methodKind definedAsMember]
-      !setterFormalArgumentList
-      !true
-      ![@methodQualifier isBasic]
-      !"" # No error message
-    ] ;
+    if mHasSetter then
+      @formalParameterSignature setterFormalArgumentList [emptyList] ;
+      setterFormalArgumentList += !mAttributeTypeProxy ![@formalArgumentPassingModeAST argumentConstantIn] ;
+      setterFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] ;
+      [!?modifierMap insertOrReplace
+        ![@lstring new !"set" . [[mAttributeName string] stringByCapitalizingFirstCharacter] . "AtIndex" ![mAttributeName location]]
+        ![@methodKind definedAsMember]
+        !setterFormalArgumentList
+        !true
+        ![@methodQualifier isBasic]
+        !"" # No error message
+      ] ;
+    end if ;
   end foreach ;
 #--- Instance methods
   @instanceMethodMap instanceMethodMap [emptyMap] ;

@@ -24,39 +24,39 @@ import "semanticsTypesForAST.gSemantics" ;
 #---------------------------------------------------------------------------*
 
 list @syntaxInstructionList {
-  @syntaxInstructionAST mInstruction ;
+  @syntaxInstructionAST mInstruction feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @nonTerminalLabelListAST {
-  @lstring mLabelName ;
-  @formalParameterListAST mFormalArgumentList ;
-  @location mEndOfArgumentLocation ;
+  @lstring mLabelName feature nogetter ;
+  @formalParameterListAST mFormalArgumentList feature nogetter ;
+  @location mEndOfArgumentLocation feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @nonterminalDeclarationListAST {
-  @lstring mNonterminalName ;
-  @nonTerminalLabelListAST mLabels ;
+  @lstring mNonterminalName feature nogetter ;
+  @nonTerminalLabelListAST mLabels feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @syntaxRuleLabelListAST {
-  @lstring mLabelName ;
-  @formalParameterListAST mFormalArguments ;
-  @location mEndOfArgumentLocation ;
-  @syntaxInstructionList mSyntaxInstructionList ;
-  @location mEndOfInstructionList ;
+  @lstring mLabelName feature nogetter ;
+  @formalParameterListAST mFormalArguments feature nogetter ;
+  @location mEndOfArgumentLocation feature nogetter ;
+  @syntaxInstructionList mSyntaxInstructionList feature nogetter ;
+  @location mEndOfInstructionList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @syntaxRuleListAST {
-  @lstring mNonterminalName ;
-  @syntaxRuleLabelListAST mLabelList ;
+  @lstring mNonterminalName feature nogetter ;
+  @syntaxRuleLabelListAST mLabelList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -90,9 +90,8 @@ class @terminalCheckInstruction extends @syntaxInstructionAST {
 #---------------------------------------------------------------------------*
 
 list @listOfSyntaxInstructionList {
-  @syntaxInstructionList mSyntaxInstructionList ;
-  @location mEndOf_instructions ;
-#  feature "first" ;
+  @syntaxInstructionList mSyntaxInstructionList feature nogetter ;
+  @location mEndOf_instructions feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*

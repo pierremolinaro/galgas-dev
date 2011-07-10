@@ -32,23 +32,23 @@ abstract class @lexicalInstructionAST {
 #---------------------------------------------------------------------------*
 
 list @lexicalInstructionListAST {
-  @lexicalInstructionAST mInstruction ;
+  @lexicalInstructionAST mInstruction feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @metamodelTemplateDelimitorListAST {
-  @lstring mStartString ;
-  @lstringlist mOptionList ;
-  @lstring mEndString ;
+  @lstring mStartString feature nogetter ;
+  @lstringlist mOptionList feature nogetter ;
+  @lstring mEndString feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @templateReplacementListAST {
-  @lstring mMatchString ;
-  @lstring mReplacementString ;
-  @lstring mReplacementFunction ;
+  @lstring mMatchString feature nogetter ;
+  @lstring mReplacementString feature nogetter ;
+  @lstring mReplacementFunction feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -59,7 +59,7 @@ abstract class @abstractLexicalRuleAST {
 #---------------------------------------------------------------------------*
 
 list @lexicalRuleListAST {
-  @abstractLexicalRuleAST mLexicalRule ;
+  @abstractLexicalRuleAST mLexicalRule feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -78,50 +78,50 @@ class @lexicalExplicitRuleAST extends @abstractLexicalRuleAST {
 #---------------------------------------------------------------------------*
 
 list @lexicalMessageDeclarationListAST {
-  @lstring mMessageName ;
-  @lstring mMessageValue ;
+  @lstring mMessageName feature nogetter ;
+  @lstring mMessageValue feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @lexicalAttributeListAST {
-  @lstring mTypeName ;
-  @lstring mName ;
+  @lstring mTypeName feature nogetter ;
+  @lstring mName feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @lexicalStyleListAST {
-  @lstring mName ;
-  @lstring mComment ;
+  @lstring mName feature nogetter ;
+  @lstring mComment feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @terminalDeclarationListAST {
-  @lstring mName ;
-  @lstringlist mSentAttributeList ;
-  @lstring mSyntaxErrorMessage ;
-  @lstring mStyle ; # Empty string if no style
-  @lstringlist mOptionList ;
+  @lstring mName feature nogetter ;
+  @lstringlist mSentAttributeList feature nogetter ;
+  @lstring mSyntaxErrorMessage feature nogetter ;
+  @lstring mStyle feature nogetter ; # Empty string if no style
+  @lstringlist mOptionList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @lexicalListEntryListAST {
-  @lstring mEntrySpelling ;
-  @lstring mTerminalSpelling ;
-  @lstringlist mFeatureList ;
+  @lstring mEntrySpelling feature nogetter ;
+  @lstring mTerminalSpelling feature nogetter ;
+  @lstringlist mFeatureList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @lexicalListDeclarationListAST {
-  @lstring mName ;
-  @lstring mStyle ; # Empty string if no style
-  @lstring mSyntaxErrorMessage ;
-  @lstringlist mSentAttributeList ;
-  @lexicalListEntryListAST mEntryList ;  
+  @lstring mName feature nogetter ;
+  @lstring mStyle feature nogetter ; # Empty string if no style
+  @lstring mSyntaxErrorMessage feature nogetter ;
+  @lstringlist mSentAttributeList feature nogetter ;
+  @lexicalListEntryListAST mEntryList feature nogetter ;  
 }
 
 #---------------------------------------------------------------------------*
@@ -166,8 +166,8 @@ class @lexicalStringNotMatchAST extends @lexicalExpressionAST {
 #---------------------------------------------------------------------------*
 
 list @lexicalSendSearchListAST {
-  @lstring mAttributeName ;
-  @lstring mSearchListName ;
+  @lstring mAttributeName feature nogetter ;
+  @lstring mSearchListName feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -203,8 +203,8 @@ class @lexicalErrorByDefaultAST extends @lexicalSendDefaultActionAST {
 #---------------------------------------------------------------------------*
 
 list @lexicalWhileBranchListAST {
-  @lexicalExpressionAST mWhileExpression ;
-  @lexicalInstructionListAST mWhileInstructionList ;
+  @lexicalExpressionAST mWhileExpression feature nogetter ;
+  @lexicalInstructionListAST mWhileInstructionList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -217,8 +217,8 @@ class @lexicalRepeatInstructionAST extends @lexicalInstructionAST {
 #---------------------------------------------------------------------------*
 
 list @lexicalSelectBranchListAST {
-  @lexicalExpressionAST mSelectExpression ;
-  @lexicalInstructionListAST mSelectInstructionList ;
+  @lexicalExpressionAST mSelectExpression feature nogetter ;
+  @lexicalInstructionListAST mSelectInstructionList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -237,7 +237,7 @@ abstract class @abstractLexicalRoutineActualArgumentAST {
 #---------------------------------------------------------------------------*
 
 list @lexicalRoutineCallActualArgumentListAST {
-  @abstractLexicalRoutineActualArgumentAST mLexicalRoutineActualArgument ;
+  @abstractLexicalRoutineActualArgumentAST mLexicalRoutineActualArgument feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -268,7 +268,7 @@ class @lexicalFormalInputArgumentAST extends @abstractLexicalRoutineActualArgume
 #---------------------------------------------------------------------------*
 
 list @lexicalFunctionCallActualArgumentListAST {
-  @lexicalRoutineOrFunctionFormalInputArgumentAST mLexicalActualInputArgument ;
+  @lexicalRoutineOrFunctionFormalInputArgumentAST mLexicalActualInputArgument feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
@@ -376,39 +376,39 @@ end reader ;
 #---------------------------------------------------------------------------*
 
 list @lexicalExternRoutineFormalArgumentListAST {
-  @lexicalArgumentModeAST mPassingMode ;
-  @lstring mLexicalTypeName ;
-  @lstring mFormalArgumentName ;
+  @lexicalArgumentModeAST mPassingMode feature nogetter ;
+  @lstring mLexicalTypeName feature nogetter ;
+  @lstring mFormalArgumentName feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @externRoutineListAST {
-  @lstring mRoutineName ;
-  @lexicalExternRoutineFormalArgumentListAST mLexicalRoutineFormalArgumentList ;
-  @stringlist mErrorMessageList ;
+  @lstring mRoutineName feature nogetter ;
+  @lexicalExternRoutineFormalArgumentListAST mLexicalRoutineFormalArgumentList feature nogetter ;
+  @stringlist mErrorMessageList feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @lexicalExternFunctionFormalArgumentListAST {
-  @lstring mLexicalTypeName ;
-  @lstring mFormalArgumentName ;
+  @lstring mLexicalTypeName feature nogetter ;
+  @lstring mFormalArgumentName feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @externFunctionListAST {
-  @lstring mFunctionName ;
-  @lexicalExternFunctionFormalArgumentListAST mLexicalFunctionFormalArgumentList ;
-  @lstring mReturnedTypeName ;
+  @lstring mFunctionName feature nogetter ;
+  @lexicalExternFunctionFormalArgumentListAST mLexicalFunctionFormalArgumentList feature nogetter ;
+  @lstring mReturnedTypeName feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @indexingListAST {
-  @lstring mIndexName ;
-  @lstring mIndexComment ;
+  @lstring mIndexName feature nogetter ;
+  @lstring mIndexComment feature nogetter ;
 }
 
 #---------------------------------------------------------------------------*

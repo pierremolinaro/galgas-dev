@@ -8,6 +8,352 @@
 
 \section{List type}
 
+\subsection{List Type Declaration}
+
+A \lstinline[language=galgas]!list! type declaration names all attributes of the list elements:
+
+\begin{lstlisting}[language=galgas]
+list @MyList {
+  @string mFirstAttribute ;
+  @bool mSecondAttribute ;
+}
+\end{lstlisting}
+
+\subsection{Constructors}
+
+\subsubsection{The \lstinline[language=galgas]!emptyList! constructor}
+
+For every list, an \lstinline[language=galgas]!emptyList! constructor is implicitly declared. It returns an empty list:
+
+\begin{lstlisting}[language=galgas]
+@MyList aList := [@MyList emptyList] ;
+\end{lstlisting}
+
+
+\subsubsection{The \lstinline[language=galgas]!listWithValue! constructor}
+
+A list can be constructed directly with one value:
+
+\begin{lstlisting}[language=galgas]
+@MyList aList := [@myList listWithValue !"c" !3] ;
+\end{lstlisting}
+
+
+Using this constructor is equivalent to:
+
+\begin{lstlisting}[language=galgas]
+@MyList aList := [@MyList emptyList] ;
+aList += !"c" !3 ;
+\end{lstlisting}
+
+\subsection{Adding elements}
+
+\subsubsection{The \lstinline[language=galgas]!+=! operator}
+
+The  \lstinline[language=galgas]!+=! operator adds a new element at the end of the list. The right side expressions should correspond to the attributes declared in the \lstinline[language=galgas]!list! declaration:\\
+
+\begin{lstlisting}[language=galgas]
+@MyList aList := ... ;
+@string aString := ... ;
+@bool aBool := ... ;
+aList += !aString !aBool ;''
+\end{lstlisting}
+
+
+\subsubsection{The \lstinline[language=galgas]!.=! operator}
+
+The \lstinline[language=galgas]!.=! operator concats a list at the end of the target list:
+
+\begin{lstlisting}[language=galgas]
+@MyList aList := ... ;
+@MyList secondList := ... ;
+aList .= secondList ;''
+\end{lstlisting}
+
+
+
+\subsubsection{The \lstinline[language=galgas]!prependValue! modifier}
+
+The \lstinline[language=galgas]!prependValue! modifier adds a new element at the begining of the list. The right side expressions should correspond to the attributes declared in the  \lstinline[language=galgas]!list! declaration:
+
+\begin{lstlisting}[language=galgas]
+@MyList aList := ... ;
+@string aString := ... ;
+@bool aBool := ... ;
+[!?aList prependValue !aString !aBool];
+\end{lstlisting}
+
+\subsubsection{The concatenation operator}
+
+The «~\lstinline[language=galgas]!.!~» operator can be used fot concatenating two lists of the same type:
+
+
+\begin{lstlisting}[language=galgas]
+@MyList firstList := ... ;
+@MyList secondList := ... ;
+@MyList thirdList := firstList . secondList ;
+\end{lstlisting}
+
+\subsection{Removing elements}
+
+\subsubsection{The \lstinline[language=galgas]!popFirst! modifier}
+
+
+The \lstinline[language=galgas]!popFirst! modifier removes and returns the first element of the list. The right side expressions should correspond to the attributes declared in the \lstinline[language=galgas]!list! declaration:\\
+
+\begin{lstlisting}[language=galgas]
+@MyList aList := ... ;
+@string aString ;
+@bool aBool ;
+[!?aList popFirst ?aString ?aBool];
+\end{lstlisting}
+
+If the list is empty when \lstinline[language=galgas]!popFirst! modifier is invoked, a run-time error is raised and the input arguments are not valuated.
+
+\subsubsection{The \lstinline[language=galgas]!popLast! modifier}
+
+
+The \lstinline[language=galgas]!popLast! modifier removes and returns the last element of the list. The right side expressions should correspond to the attributes declared in the \lstinline[language=galgas]!list! declaration:
+
+\begin{lstlisting}[language=galgas]
+@MyList aList := ... ;
+@string aString ;
+@bool aBool ;
+[!?aList popLast ?aString ?aBool];
+\end{lstlisting}
+
+If the list is empty when \lstinline[language=galgas]!popLast! is invoked, a run-time error is raised and the input arguments are not valuated.
+
+\subsection{Methods}
+
+\subsubsection{The \lstinline[language=galgas]!first! method}
+
+the \lstinline[language=galgas]!first! method returns the first element of the list. The element is not removed. The right side expressions should correspond to the attributes declared in the \lstinline[language=galgas]!list! declaration:
+
+\begin{lstlisting}[language=galgas]
+@MyList aList := ... ;
+@string aString ;
+@bool aBool ;
+[aList first ?aString ?aBool];
+\end{lstlisting}
+
+If the list is empty when \lstinline[language=galgas]!first! is invoked, a run-time error is raised and the input arguments are not valuated.
+
+\subsubsection{The \lstinline[language=galgas]!last! method}
+
+the \lstinline[language=galgas]!last! method returns the last element of the list. The element is not removed. The right side expressions should correspond to the attributes declared in the \lstinline[language=galgas]!list! declaration:\\
+
+\begin{lstlisting}[language=galgas]
+@MyList aList := ... ;
+@string aString ;
+@bool aBool ;
+[aList last ?aString ?aBool];
+\end{lstlisting}
+
+
+If the list is empty when \lstinline[language=galgas]!last! is invoked, a run-time error is raised and the input arguments are not valuated.
+
+
+
+
+
+
+
+
+\subsection{Readers}
+
+\subsubsection{The \lstinline[language=galgas]!length! reader}
+
+\begin{lstlisting}[language=galgas]
+reader length -> @uint ;
+\end{lstlisting}
+
+The \lstinline[language=galgas]!length! reader returns the number of elements in the receiver's value.
+
+
+
+
+\subsubsection{The \lstinline[language=galgas]!subListFromIndex! reader}
+
+\begin{lstlisting}[language=galgas]
+reader subListFromIndex ?@uint inIndex -> @self
+\end{lstlisting}
+
+This reader returns a new list containing the elements of the receiver from the one at a given index to the end. The  \lstinline[language=galgas]!inIndex! value should be lower or equal to the length of the receiver's value. If \lstinline[language=galgas]!inIndex! is equal to the length of the receiver, the reader returns an empty list.
+
+
+
+
+
+\subsubsection{The \lstinline[language=galgas]!subListWithRange! reader}
+
+\begin{lstlisting}[language=galgas]
+reader subListWithRange
+  ?@uint inStartIndex
+  ?@uint inCount
+  -> @self
+\end{lstlisting}
+
+This reader returns a list containing the elements of the receiver that lie within a given range. The range must not exceed the length of the receiver's value, that is $inStartIndex + inCount \leqslant list\_length$. If \lstinline[language=galgas]!inCount! value is equal to zero, this reader returns an empty list.
+
+
+
+
+
+\subsection{Enumerating a list with a foreach instruction}
+
+The \lstinline[language=galgas]!foreach! instruction can be used for enumerating list objects. By default, lists are enumerated in the insertion order; enumeration in the reverse order is performed using the «~\lstinline[language=galgas]!>!~» qualifier.
+
+There are two ways for accessing element values:
+\begin{itemize}
+\item using the implicitly declared constants that receive the current attribute values;
+\item declare explicitly constants that receive the current attribute values.
+\end{itemize}
+
+Given the list declaration:
+
+\begin{lstlisting}[language=galgas]
+list @MyList {
+  @string mFirstAttribute ;
+  @bool mSecondAttribute ;
+}
+\end{lstlisting}
+
+\subsubsection{Enumeration using the implicitly declared constants}
+
+For every attribute, a constant of the same name is available in the \lstinline[language=galgas]!do! instruction list. Theses constants receive the value of the corresponding attribute of the current element.
+
+\begin{lstlisting}[language=galgas]
+foreach aList do
+  # the mFirstAttribute constant receives the value
+  # of the mFirstAttribute attribute of the current element,
+  # and the mSecondAttribute constant receives the value
+  # of the mSecondAttribute attribute of the current element.
+end foreach ;
+\end{lstlisting}
+
+\subsubsection{Enumeration using the explicitly declared constants}
+
+The \lstinline[language=galgas]!foreach! header declares a sequence of constants, corresponding to the attribute list of the \lstinline[language=galgas]!do! declaration. Theses constants receive the value of the corresponding attribute of the current element.
+
+
+\begin{lstlisting}[language=galgas]
+foreach aList (@string kString @bool kBool) do
+  # the kString constant receives the value
+  # of the mFirstAttribute attribute of the current element,
+  # and the kBool constant receives the value
+  # of the mSecondAttribute attribute of the current element.
+end foreach ;
+\end{lstlisting}
+
+\subsubsection{Enumeration in the reverse order}
+
+In GALGAS 1.7.3 and later, you can enumerate a list in the reverse order using the «~\lstinline[language=galgas]!>!~» qualifier:
+
+\begin{lstlisting}[language=galgas]
+foreach > aList (@string kString @bool kBool) do
+  ...
+end foreach ;
+\end{lstlisting}
+
+
+
+
+\subsection{Direct Access of an element attribute}
+
+In GALGAS 1.7.5 and later, lists can be used as an array. Each element of a list is associated with an \nomType{uint} index, spanning from 0 to element count (value returned by \lstinline[language=galgas]!length! reader) minus one.
+
+The element retrieved with \lstinline[language=galgas]!first! method is at index 0.
+
+The element retrieved with \lstinline[language=galgas]!last! method is at index equal to element count minus one.
+
+\subsubsection{Read Access}
+
+By default and for every attribute, a reader is provided to retrieve the value of this attribute for an element at a given index. For example, for an attribute named \emph{name}, the \emph{nameAtIndex} reader is provided. It accepts one \nomType{uint} argument, the value of the index.
+
+You can disable the default reader generation, by using the «~\lstinline[language=galgas]!feature nogetter!~» qualifier.
+
+For example:
+\begin{lstlisting}[language=galgas]
+list @MyList {
+  @string mFirstAttribute ;
+  @bool mSecondAttribute feature nogetter ;
+}
+...
+@MyList aList := ... ;
+@string s := [aList mFirstAttributeAtIndex !1] ;
+\end{lstlisting}
+
+One reader is available: \lstinline[language=galgas]!mFirstAttributeAtIndex!; the \lstinline[language=galgas]!mSecondAttributeAtIndex! reader is not available.
+
+
+\subsubsection{Write Access}
+
+By default, no modifier is provided for performing a direct write access to an attribute at a given index. You should use the «~\lstinline[language=galgas]!feature setter!~» qualifier for enabling setter generation for a given attribute.
+
+The modifier name is the name of the attribute with the first letter capitalized, prefixed by \emph{set} and suffixed by \emph{AtIndex}: for an attribute named \emph{name}, the modifier is named \emph{setNameAtIndex}. It accepts two arguments, the first one is the new attribute's value, the second one an \nomType{uint} argument, the value of the index.
+
+For example:
+
+\begin{lstlisting}[language=galgas]
+list @MyList {
+  @string mFirstAttribute feature setter ;
+  @bool mSecondAttribute ;
+}
+...
+@string s := ... ;
+[!?aList setMFirstAttributeAtIndex !s !1] ;
+\end{lstlisting}
+
+One modifier is available: \lstinline[language=galgas]!setMFirstAttributeAtIndex!; the \lstinline[language=galgas]!setMSecondAttributeAtIndex! modifier is not available.
+
+\subsubsection{Example of read and write accesses}
+
+\begin{lstlisting}[language=galgas]
+list @myList {
+  @string name ;
+}
+...
+@myList strList [emptyList] ;
+strList += !"a" ;
+strList += !"b" ;
+strList += !"c" ;
+strList += !"d" ;
+@string s := [strList nameAtIndex !0] ;
+log s ; # displays LOGGING s: <@string:"a">
+s := [strList nameAtIndex !1] ;
+log s ; # displays LOGGING s: <@string:"b">
+s := [strList nameAtIndex !2] ;
+log s ; # displays LOGGING s: <@string:"c">
+s := [strList nameAtIndex !3] ;
+log s ; # displays LOGGING s: <@string:"d">
+[!?strList setNameAtIndex !"x" !0] ;
+[!?strList setNameAtIndex !"y" !1] ;
+[!?strList setNameAtIndex !"z" !2] ;
+[!?strList setNameAtIndex !"t" !3] ;
+s := [strList nameAtIndex !0] ;
+log s ; # displays LOGGING s: <@string:"x">
+s := [strList nameAtIndex !1] ;
+log s ; # displays LOGGING s: <@string:"y">
+s := [strList nameAtIndex !2] ;
+log s ; # displays LOGGING s: <@string:"z">
+s := [strList nameAtIndex !3] ;
+log s ; # displays LOGGING s: <@string:"t">
+\end{lstlisting}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 \section{Sorted list type}
 
