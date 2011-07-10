@@ -144,7 +144,22 @@ override method @listDeclarationAST performSemanticAnalysis
   foreach mAttributeList do
     @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
     @bool hasGetter := true ;
-    @bool hasSetter := true ;
+    @bool hasSetter := false ;
+    foreach mFeatureList do
+      if mValue->string == "nogetter" then
+        if not hasGetter then
+          error mValue:"duplicate feature" ;
+        end if ;
+        hasGetter := false ;
+      elsif mValue->string == "setter" then
+        if hasSetter then
+          error mValue:"duplicate feature" ;
+        end if ;
+        hasSetter := true ;
+      else
+        error mValue:"unknown feature; the features available here are: 'nogetter', 'setter'" ;
+      end if ;
+    end foreach ;
     typedAttributeList +=
       !t
       !mAttributeName
