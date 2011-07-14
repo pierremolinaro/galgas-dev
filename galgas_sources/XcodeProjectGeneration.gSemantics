@@ -195,6 +195,7 @@ local routine build_LIBPM_COCOA_GALGAS_group
   append_m_h_files !?fileList !"OC_GGS_DelegateForSyntaxColoring" ;
   append_m_h_files !?fileList !"OC_GGS_BuildResultTextView" ;
   append_m_h_files !?fileList !"OC_GGS_ErrorOrWarningDescriptor" ;
+  append_m_h_files !?fileList !"OC_GGS_searchInFolders" ;
   fileList += !"I_ScrollToEndArrow.gif" ;
   fileList += !"I_Action.tiff" ;
   fileList += !"I_SaveAs.tiff" ;
@@ -778,6 +779,7 @@ local routine build_COCOA_APP_files_for_sources_build_phase
   fileList += !"OC_GGS_DelegateForSyntaxColoring.m" ;
   fileList += !"OC_GGS_BuildResultTextView.m" ;
   fileList += !"OC_GGS_ErrorOrWarningDescriptor.m" ;
+  fileList += !"OC_GGS_searchInFolders.m" ;
   fileList += !"PMArrayControllerDebugCategory.m" ;
   fileList += !"PMArrayDebugCategory.m" ;
   fileList += !"PMDictionaryDebugCategory.m" ;
