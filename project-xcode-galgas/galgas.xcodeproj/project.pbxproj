@@ -846,6 +846,9 @@
 		CFCD023F1066421E00EA0463 /* syntaxSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52580C10268B00B81CF3 /* syntaxSLRgrammar.cpp */; };
 		CFCD02401066422000EA0463 /* grammarMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */; };
 		CFCD02411066422000EA0463 /* grammarModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */; };
+		CFCEEFC113CF24C10074BDE9 /* OC_GGS_searchInFolders.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCEEFC013CF24C10074BDE9 /* OC_GGS_searchInFolders.m */; };
+		CFCEEFC213CF24C10074BDE9 /* OC_GGS_searchInFolders.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCEEFC013CF24C10074BDE9 /* OC_GGS_searchInFolders.m */; };
+		CFCEEFC313CF24C10074BDE9 /* OC_GGS_searchInFolders.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCEEFC013CF24C10074BDE9 /* OC_GGS_searchInFolders.m */; };
 		CFCF63270FFEA33800EF3A10 /* I_Orange14.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCF63250FFEA33800EF3A10 /* I_Orange14.png */; };
 		CFCF63280FFEA33800EF3A10 /* I_Red14.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCF63260FFEA33800EF3A10 /* I_Red14.png */; };
 		CFCF63290FFEA33800EF3A10 /* I_Orange14.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCF63250FFEA33800EF3A10 /* I_Orange14.png */; };
@@ -1708,6 +1711,8 @@
 		CFC92D7C11181F6300ACA25F /* GALGAS_binaryset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_binaryset.cpp; sourceTree = "<group>"; };
 		CFCB125B0D9D74330016BE3F /* galgasTemplateScanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgasTemplateScanner.cpp; sourceTree = "<group>"; };
 		CFCB125C0D9D74330016BE3F /* galgasTemplateScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgasTemplateScanner.h; sourceTree = "<group>"; };
+		CFCEEFBF13CF24C10074BDE9 /* OC_GGS_searchInFolders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_searchInFolders.h; sourceTree = "<group>"; };
+		CFCEEFC013CF24C10074BDE9 /* OC_GGS_searchInFolders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_searchInFolders.m; sourceTree = "<group>"; };
 		CFCF63250FFEA33800EF3A10 /* I_Orange14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = I_Orange14.png; sourceTree = "<group>"; };
 		CFCF63260FFEA33800EF3A10 /* I_Red14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = I_Red14.png; sourceTree = "<group>"; };
 		CFD2223C11085598003C83A5 /* GALGAS_function.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_function.cpp; sourceTree = "<group>"; };
@@ -2132,6 +2137,8 @@
 			children = (
 				CF06F5C51049592F005F03FA /* MainMenu.xib */,
 				CF06F5C71049592F005F03FA /* OC_GGS_Document.xib */,
+				CFCEEFBF13CF24C10074BDE9 /* OC_GGS_searchInFolders.h */,
+				CFCEEFC013CF24C10074BDE9 /* OC_GGS_searchInFolders.m */,
 				CFF213180BA017FB0087BA01 /* NSSplitViewExtensions.h */,
 				CFF213190BA017FB0087BA01 /* NSSplitViewExtensions.m */,
 				CF3CFB2B0FEBEA6C00CE4488 /* PMFontButton.h */,
@@ -3126,6 +3133,7 @@
 				CF94CDB110D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m in Sources */,
 				CFF1293910D9646E00C72453 /* OC_GGS_ErrorOrWarningDescriptor.m in Sources */,
 				CFD94B7A129068CF00864538 /* cocoaGalgas.m in Sources */,
+				CFCEEFC313CF24C10074BDE9 /* OC_GGS_searchInFolders.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3702,6 +3710,7 @@
 				CF94CDB010D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m in Sources */,
 				CFF1293810D9646E00C72453 /* OC_GGS_ErrorOrWarningDescriptor.m in Sources */,
 				CFD94B7B129068CF00864538 /* cocoaGalgas.m in Sources */,
+				CFCEEFC113CF24C10074BDE9 /* OC_GGS_searchInFolders.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4278,6 +4287,7 @@
 				CF94CDB210D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m in Sources */,
 				CFF1293A10D9646E00C72453 /* OC_GGS_ErrorOrWarningDescriptor.m in Sources */,
 				CFD94B7C129068CF00864538 /* cocoaGalgas.m in Sources */,
+				CFCEEFC213CF24C10074BDE9 /* OC_GGS_searchInFolders.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
