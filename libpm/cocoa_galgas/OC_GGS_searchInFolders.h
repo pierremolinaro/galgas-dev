@@ -20,11 +20,35 @@
  @private NSMutableArray * mResultArray ;
  @private IBOutlet NSTreeController * mResultArrayTreeController ;
  @private IBOutlet NSTextField * mResultTextField ;
- @private IBOutlet NSUInteger mMatchCount ;
+ @private NSUInteger mMatchCount ;
+ 
+ @private NSUInteger mExtensionChoice ;
+
+//--- Extension views
+ @private IBOutlet NSView * mSelectedExtensionView ;
+ @private IBOutlet NSView * mApplicationExtensionsView ;
+ @private IBOutlet NSView * mExplicitExtensionsView ;
+ @private IBOutlet NSTextField * mCommaSeparatedExtensionListFromApplicationTextField ;
+
+//--- 
+ @private NSUInteger mFolderChoice ;
+ @private IBOutlet NSView * mSelectedFolderChoiceView ;
+ @private IBOutlet NSView * mFolderFromOpenedSourceFilesView ;
+ @private IBOutlet NSView * mExplicitFolderListView ;
+ @private IBOutlet NSTableView * mFolderFromOpenedSourceFieldTableView ;
+ @private NSMutableArray * mFolderFromOpenedSourceArray ;
+
+//---
+  @private NSUInteger mReplaceCount ;
+ @private IBOutlet NSTextField * mReplacementTextField ;
 }
 
 - (IBAction) addFolderAction: (id) inSender ;
 
 - (IBAction) findAction: (id) inSender ;
+
+- (IBAction) replaceAllAction: (id) inSender ;
+
+- (IBAction) refreshOpenedSourceFileFolderTableViewAction: (id) inSender ;
 
 @end

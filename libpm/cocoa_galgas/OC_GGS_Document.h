@@ -92,7 +92,8 @@
 }
 
 - (void) setSelectionRange: (NSRange) inRange ;
-- (NSString *) currentSourceString ;
+- (NSString *) sourceString ;
+- (void) setSourceString: (NSString *) inString ;
 
 - (IBAction) actionBuild: (id) sender ;
 - (IBAction) stopBuild: (id) sender ;

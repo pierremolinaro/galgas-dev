@@ -2338,9 +2338,16 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 
 //---------------------------------------------------------------------------*
 
-- (NSString *) currentSourceString {
+- (NSString *) sourceString {
   OC_GGS_TextView * textView = [self sourceTextViewInDocumentWindow] ;
   return [textView string] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) setSourceString: (NSString *) inString {
+  OC_GGS_TextView * textView = [self sourceTextViewInDocumentWindow] ;
+  [textView setString:inString] ;
 }
 
 //---------------------------------------------------------------------------*

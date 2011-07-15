@@ -38,8 +38,67 @@
 
 //---------------------------------------------------------------------------*
 
+- (NSArray *) allTypesOfCurrentApplication {
+  NSMutableArray * allTypes = [NSMutableArray new] ;
+  NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary] ;
+  NSArray * allDocumentTypes = [infoDictionary objectForKey:@"CFBundleDocumentTypes"] ;
+  for (NSDictionary * type in allDocumentTypes) {
+    NSArray * a = [type objectForKey:@"CFBundleTypeExtensions"] ;
+    [allTypes addObjectsFromArray:a] ;  
+  }
+  return allTypes ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (void) awakeFromNib {
   [mResultTextField setStringValue:@""] ;
+  [mReplacementTextField setStringValue:@""] ;
+//---
+  NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
+  [self willChangeValueForKey:@"mExtensionChoice"] ;
+  mExtensionChoice = [ud integerForKey:@"extensionChoice"] ;
+  [self didChangeValueForKey:@"mExtensionChoice"] ;
+//---
+  [self willChangeValueForKey:@"mFolderChoice"] ;
+  mFolderChoice = [ud integerForKey:@"folderChoice"] ;
+  [self didChangeValueForKey:@"mFolderChoice"] ;
+//---
+  NSArray * extensionList = [self allTypesOfCurrentApplication] ;
+  NSString * commaSeparatedExtensionListFromApplication = [extensionList componentsJoinedByString:@", "] ;
+  [mCommaSeparatedExtensionListFromApplicationTextField setStringValue:commaSeparatedExtensionListFromApplication] ;
+//--- 
+  NSNotificationCenter * nc = [NSNotificationCenter defaultCenter] ;
+  [nc
+    addObserver:self
+    selector:@selector(refreshOpenedSourceFileFolderTableViewAction:)
+    name:NSWindowDidBecomeKeyNotification
+    object:[mResultTextField window]
+  ] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) refreshOpenedSourceFileFolderTableViewAction: (id) inSender {
+  NSDocumentController * dc = [NSDocumentController sharedDocumentController] ;
+  NSMutableSet * directorySet = [NSMutableSet new] ;
+  for (OC_GGS_Document * document in [dc documents]) {
+    NSString * filePath = [[document fileURL] path] ;
+    [directorySet addObject:[filePath stringByDeletingLastPathComponent]] ;  
+  }
+  // NSLog (@"directorySet %@", directorySet) ;
+//---
+  NSMutableArray * folderFromOpenedSourceArray = [NSMutableArray new] ;
+  for (NSString * path in directorySet) {
+    [folderFromOpenedSourceArray addObject:[NSDictionary
+      dictionaryWithObject:path
+      forKey:@"sourcePath"
+    ]] ;
+  }
+//---
+  [self willChangeValueForKey:@"mFolderFromOpenedSourceArray"] ;
+  mFolderFromOpenedSourceArray = folderFromOpenedSourceArray ;
+  [self didChangeValueForKey:@"mFolderFromOpenedSourceArray"] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -96,10 +155,12 @@
 
 //---------------------------------------------------------------------------*
 
- 
-- (void) applicationWillTerminateAction: (NSNotification *) inNotification {
+ - (void) applicationWillTerminateAction: (NSNotification *) inNotification {
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
   [ud setObject:mSearchPathArray forKey:@"searchPathArray"] ;  
+  //---
+  [ud setInteger:mExtensionChoice forKey:@"extensionChoice"] ;
+  [ud setInteger:mFolderChoice forKey:@"folderChoice"] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -123,7 +184,7 @@
       error:NULL
     ] ;
   }else{
-    fileContents = [document currentSourceString] ;
+    fileContents = [document sourceString] ;
   }
   NSRange searchRange = {0, [fileContents length]} ;
   while (searchRange.length > 0) {
@@ -208,16 +269,33 @@
   [self willChangeValueForKey:@"mResultArray"] ;
   [mResultArray removeAllObjects] ;
   [self didChangeValueForKey:@"mResultArray"] ;
-  NSArray * extensionList = [self extensionList] ;
-  NSLog (@"extensionList %@", extensionList) ;
+  NSArray * extensionList = nil ;
+  switch (mExtensionChoice) {
+  case 0 : extensionList = [self allTypesOfCurrentApplication] ; break ;
+  case 1 : extensionList = [self extensionList] ; break ;
+  default: break ;
+  }
+//  NSLog (@"extensionList %@", extensionList) ;
 //---
-  for (NSDictionary * entry in mSearchPathArray) {
-    const BOOL pathSelected = [[entry objectForKey:@"pathSelected"] boolValue] ;
-    if (pathSelected) {
-      NSString * path = [entry objectForKey:@"path"] ;
-      const BOOL recursive = [[entry objectForKey:@"recursive"] boolValue] ;
-      [self recursiveSearchInDirectory:path recursive:recursive extensionList:extensionList] ;
+  switch (mFolderChoice) {
+  case 0 :
+    for (NSDictionary * entry in mFolderFromOpenedSourceArray) {
+      NSString * path = [entry objectForKey:@"sourcePath"] ;
+      [self recursiveSearchInDirectory:path recursive:YES extensionList:extensionList] ;
     }
+    break ;
+  case 1 :
+    for (NSDictionary * entry in mSearchPathArray) {
+      const BOOL pathSelected = [[entry objectForKey:@"pathSelected"] boolValue] ;
+      if (pathSelected) {
+        NSString * path = [entry objectForKey:@"path"] ;
+        const BOOL recursive = [[entry objectForKey:@"recursive"] boolValue] ;
+        [self recursiveSearchInDirectory:path recursive:recursive extensionList:extensionList] ;
+      }
+    }
+    break ;
+  default:
+    break ;
   }
 //---
   if (0 == mMatchCount) {
@@ -227,19 +305,6 @@
   }else{
     [mResultTextField setStringValue:[NSString stringWithFormat:@"%u matches", mMatchCount]] ;
   }
-}
-
-//---------------------------------------------------------------------------*
-
-- (NSArray *) allTypesOfCurrentApplication {
-  NSMutableArray * allTypes = [NSMutableArray new] ;
-  NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary] ;
-  NSArray * allDocumentTypes = [infoDictionary objectForKey:@"CFBundleDocumentTypes"] ;
-  for (NSDictionary * type in allDocumentTypes) {
-    NSArray * a = [type objectForKey:@"CFBundleTypeExtensions"] ;
-    [allTypes addObjectsFromArray:a] ;  
-  }
-  return allTypes ;
 }
 
 //---------------------------------------------------------------------------*
@@ -272,6 +337,192 @@
     }else{
       [ws openFile:filePath] ;
     }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) extensionChoiceDidChange {
+  NSArray * allSubviews = [[mSelectedExtensionView subviews] copy] ;
+  for (NSView * view in allSubviews) {
+    [view removeFromSuperview] ;
+  }
+  switch (mExtensionChoice) {
+  case 0 : [mSelectedExtensionView addSubview:mApplicationExtensionsView] ; break ;
+  case 1 : [mSelectedExtensionView addSubview:mExplicitExtensionsView] ; break ;
+  default : break ;
+  }
+  for (NSView * view in [mSelectedExtensionView subviews]) {
+    [view setFrame:[mSelectedExtensionView bounds]] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) folderChoiceDidChange {
+  NSArray * allSubviews = [[mSelectedFolderChoiceView subviews] copy] ;
+  for (NSView * view in allSubviews) {
+    [view removeFromSuperview] ;
+  }
+  switch (mFolderChoice) {
+  case 0 : [mSelectedFolderChoiceView addSubview:mFolderFromOpenedSourceFilesView] ; break ;
+  case 1 : [mSelectedFolderChoiceView addSubview:mExplicitFolderListView] ; break ;
+  default : break ;
+  }
+  for (NSView * view in [mSelectedFolderChoiceView subviews]) {
+    [view setFrame:[mSelectedFolderChoiceView bounds]] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) didChangeValueForKey:(NSString *) inKey {
+  [super didChangeValueForKey:inKey] ;
+//---
+  if ([inKey isEqualToString:@"mExtensionChoice"]) {
+    [self extensionChoiceDidChange] ;
+  }else if ([inKey isEqualToString:@"mFolderChoice"]) {
+    [self folderChoiceDidChange] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Replace all
+
+//---------------------------------------------------------------------------*
+
+- (void) replaceInFile: (NSString *) inFileFullPath {
+  NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
+  NSString * searchString = [ud objectForKey:@"stringToFind"] ;
+  // NSLog (@"searchString '%@'", searchString) ;
+  NSString * replacementString = [ud objectForKey:@"replaceString"] ;
+  if (nil == replacementString) {
+    replacementString = @"" ;
+  }
+  NSUInteger searchOptions = NSCaseInsensitiveSearch ;
+  if ([[ud objectForKey:@"caseSensitiveSearch"] boolValue]) {
+    searchOptions = 0 ;
+  }
+//--- Get file contents
+  NSDocumentController * dc = [NSDocumentController sharedDocumentController] ;
+  OC_GGS_Document * document = [dc documentForURL:[NSURL fileURLWithPath:inFileFullPath]] ;
+  NSString * fileContents = nil ;
+  NSStringEncoding usedEncoding ;
+  if (nil == document) {
+    fileContents = [NSString
+      stringWithContentsOfFile:inFileFullPath
+      usedEncoding:& usedEncoding
+      error:NULL
+    ] ;
+  }else{
+    fileContents = [document sourceString] ;
+  }
+//--- Perform find and replace
+  BOOL contentsShouldChange = NO ;
+  NSMutableString * newContents = [NSMutableString new] ;
+  NSRange searchRange = {0, [fileContents length]} ;
+  while (searchRange.length > 0) {
+    const NSRange r = [fileContents rangeOfString:searchString options:searchOptions range:searchRange] ;
+    if (r.length > 0) { // Found
+      mReplaceCount ++ ;
+      contentsShouldChange = YES ;
+      [newContents appendString:[fileContents substringWithRange:NSMakeRange (searchRange.location, r.location - searchRange.location)]] ;
+      [newContents appendString:replacementString] ;
+      // NSLog (@"Found at location %u in file '%@'", r.location, inFileFullPath) ;
+      searchRange.location = r.location + r.length ;
+      searchRange.length = [fileContents length] - searchRange.location ;
+    }else{
+      [newContents appendString:[fileContents substringWithRange:searchRange]] ;
+      searchRange.length = 0 ; // For exiting
+    }
+  }
+//--- Perform replacement
+  if (contentsShouldChange) {
+    if (nil == document) {
+      [newContents
+        writeToFile:inFileFullPath
+        atomically:YES
+        encoding:usedEncoding
+        error:nil
+      ] ;
+    }else{
+      [document setSourceString:newContents] ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) recursiveReplaceInDirectory: (NSString *) inDirectoryFullPath
+         recursive: (BOOL) inRecursive
+         extensionList: (NSArray *) inExtensionList {
+  NSFileManager * fm = [NSFileManager new] ;
+  NSArray * contents = [fm contentsOfDirectoryAtPath:inDirectoryFullPath error:nil] ;
+  if (nil == contents) {
+  
+  }else{
+    for (NSString * subPath in contents) {
+      if ('.' != [subPath characterAtIndex:0]) {
+        NSString * fullPath = [NSString stringWithFormat:@"%@/%@", inDirectoryFullPath, subPath] ;
+        BOOL isDirectory ;
+        if ([fm fileExistsAtPath:fullPath isDirectory: & isDirectory]) {
+          if (isDirectory && inRecursive) {
+            [self recursiveReplaceInDirectory:fullPath recursive:YES extensionList:inExtensionList] ;
+          }else if ((! isDirectory) && [inExtensionList containsObject:[fullPath pathExtension]]) {
+            [self replaceInFile:fullPath] ;
+          }
+        }
+      }
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//   replaceAllAction                                                        *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (void) replaceAllAction: (id) inSender {
+  mReplaceCount = 0 ;
+  [mReplacementTextField setStringValue:@""] ;
+//---
+  NSArray * extensionList = nil ;
+  switch (mExtensionChoice) {
+  case 0 : extensionList = [self allTypesOfCurrentApplication] ; break ;
+  case 1 : extensionList = [self extensionList] ; break ;
+  default: break ;
+  }
+//  NSLog (@"extensionList %@", extensionList) ;
+//---
+  switch (mFolderChoice) {
+  case 0 :
+    for (NSDictionary * entry in mFolderFromOpenedSourceArray) {
+      NSString * path = [entry objectForKey:@"sourcePath"] ;
+      [self recursiveReplaceInDirectory:path recursive:YES extensionList:extensionList] ;
+    }
+    break ;
+  case 1 :
+    for (NSDictionary * entry in mSearchPathArray) {
+      const BOOL pathSelected = [[entry objectForKey:@"pathSelected"] boolValue] ;
+      if (pathSelected) {
+        NSString * path = [entry objectForKey:@"path"] ;
+        const BOOL recursive = [[entry objectForKey:@"recursive"] boolValue] ;
+        [self recursiveReplaceInDirectory:path recursive:recursive extensionList:extensionList] ;
+      }
+    }
+    break ;
+  default:
+    break ;
+  }
+//---
+  if (0 == mReplaceCount) {
+    [mReplacementTextField setStringValue:@"No replacement"] ;
+  }else if (1 == mReplaceCount) {
+    [mReplacementTextField setStringValue:@"1 replacement"] ;
+  }else{
+    [mReplacementTextField setStringValue:[NSString stringWithFormat:@"%u replacements", mReplaceCount]] ;
   }
 }
 
