@@ -1,31 +1,48 @@
-%if [CURRENT_ATTRIBUTE_LIST length] == 0 then
-  %//---------------------------------------------------------------------------*\n\n%
-  %typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {\n%
-  %  return (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;\n%
-  %}\n\n%
-else
-  %//---------------------------------------------------------------------------*\n\n%
-  %typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {\n%
-  if SUPER_TYPE_IDENTIFIER == "" then
-    %  typeComparisonResult result = kOperandEqual ;\n%
-  else
-    %  typeComparisonResult result = %if SUPER_TYPE_IDENTIFIER == "" then %AC_GALGAS_class% else %GALGAS_%!SUPER_TYPE_IDENTIFIER end if%::objectCompare (inOperand) ;\n%
-  end if
-  if [CURRENT_ATTRIBUTE_LIST length] > 0 then
-    %  const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
-    %  macroNullOrValidSharedObject (p, const cPtr_%!TYPE_IDENTIFIER%) ;\n%
-    %  const cPtr_%!TYPE_IDENTIFIER% * q = (const cPtr_%!TYPE_IDENTIFIER% *) inOperand.mObjectPtr ;\n%
-    %  macroNullOrValidSharedObject (q, const cPtr_%!TYPE_IDENTIFIER%) ;\n%
-    foreach CURRENT_ATTRIBUTE_LIST do
-      %  if (kOperandEqual == result) {\n%
-      %    result = p->mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (q->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
-      %  }\n%
-    end foreach
-  end if
-  %  return result ;\n%
-  %}\n\n%
-end if
+//---------------------------------------------------------------------------*
+//   Object comparison                                                       *
+//---------------------------------------------------------------------------*
+
 %
+if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] == 0) then
+%typeComparisonResult cPtr_%!TYPE_IDENTIFIER%::dynamicObjectCompare (const acPtr_class * /* inOperandPtr */) const {
+  return kOperandEqual ;
+}
+
+//---------------------------------------------------------------------------*
+%end if
+
+if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
+%typeComparisonResult cPtr_%!TYPE_IDENTIFIER%::dynamicObjectCompare (const acPtr_class * inOperandPtr) const {
+  typeComparisonResult result = kOperandEqual ;
+  const cPtr_%!TYPE_IDENTIFIER% * p = (const cPtr_%!TYPE_IDENTIFIER% *) inOperandPtr ;
+  macroValidSharedObject (p, const cPtr_%!TYPE_IDENTIFIER%) ;
+% foreach ALL_ATTRIBUTE_LIST do
+    %  if (kOperandEqual == result) {\n%
+    %    result = mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (p->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
+    %  }\n%
+  end foreach
+%  return result ;
+}
+
+//---------------------------------------------------------------------------*
+%end if%
+
+typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    if (mySlot < operandSlot) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mySlot > operandSlot) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = mObjectPtr->dynamicObjectCompare (inOperand.mObjectPtr) ;
+    }
+  }
+  return result ;
+}
+
 //---------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
