@@ -997,7 +997,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       currentLineRange.length = selectedRange.location - currentLineRange.location ;
     }
   //--- Insert string
-    NSMutableString * stringToInsert = [NSMutableString stringWithCapacity:64] ;
+    NSMutableString * stringToInsert = [NSMutableString new] ;
     [stringToInsert appendString:@"\n"] ;
     while ((currentLineRange.length > 0) && ([s characterAtIndex:currentLineRange.location] == ' ')) {
       currentLineRange.location ++ ;

@@ -36,7 +36,7 @@
     [mURL retain] ;
     mDelegate = inDelegate ;
     [mDelegate retain] ;
-    mDownloadedData = [[NSMutableData dataWithCapacity:20000] retain] ;
+    mDownloadedData = [NSMutableData new] ;
     mUserInfo = inUserInfo ;
     [mUserInfo retain] ;
   //--- Start Download

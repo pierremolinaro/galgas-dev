@@ -270,7 +270,7 @@
       }
       if (found) {
         // NSLog (@"[mSourceString length] %u", [mSourceString length]) ;
-        NSMutableString * title = [NSMutableString stringWithCapacity:32] ;
+        NSMutableString * title = [NSMutableString new] ;
         UInt32 k ;
         for (k=0 ; k<=labelLength ; k++) {
           const NSRange range = [[inTokenArray objectAtIndex:i+k HERE] range] ;
@@ -305,7 +305,7 @@
 - (void) presentCustomSyntaxColoringErrorForKey: (NSString *) inKey
          forStyle: (NSString *) inStyle
          path: (NSString *) inPath {
-  NSMutableString * message = [NSMutableString stringWithCapacity:1000] ;
+  NSMutableString * message = [NSMutableString new] ;
   [message
     appendFormat:@"For the '%@' key, there is no '%@' style in the '%@' application bundle resource file",
     inKey, inStyle, [inPath lastPathComponent]
@@ -362,7 +362,7 @@
       }
    //---
       NSDictionary * dict = [NSDictionary dictionaryWithContentsOfFile:pathForCustomDictionary] ;
-      NSMutableDictionary * d = [[NSMutableDictionary alloc] initWithCapacity:[[dict allKeys] count]] ;
+      NSMutableDictionary * d = [NSMutableDictionary new] ;
       for (NSString * key in [dict allKeys]) {
         NSString * styleName = [dict objectForKey:key] ;
         // NSLog (@"styleName %@", styleName) ;

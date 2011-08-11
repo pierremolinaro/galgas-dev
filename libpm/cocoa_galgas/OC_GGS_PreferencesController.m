@@ -47,9 +47,9 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     gCocoaGalgasPreferencesController = self ;
     mToolNameArray = [[NSMutableArray alloc] init] ;
   //--- Get command line option list
-    mBoolOptionArray = [[NSMutableArray arrayWithCapacity:40] retain] ;
-    mUIntOptionArray = [[NSMutableArray arrayWithCapacity:40] retain] ;
-    mStringOptionArray = [[NSMutableArray arrayWithCapacity:40] retain] ;
+    mBoolOptionArray = [NSMutableArray new] ;
+    mUIntOptionArray = [NSMutableArray new] ;
+    mStringOptionArray = [NSMutableArray new] ;
     enterDefaultCommandLineOptions (mBoolOptionArray, mUIntOptionArray, mStringOptionArray) ;
     enterOptions (mBoolOptionArray, mUIntOptionArray, mStringOptionArray) ;
   }
@@ -75,7 +75,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     for (i=0 ; i<itemsCount ; i++) {
       NSMenuItem * item = [menu itemAtIndex: i] ;
       NSString * itemTitle = [item title] ;
-      NSMutableString * newItemTitle = [NSMutableString stringWithCapacity:30] ;
+      NSMutableString * newItemTitle = [NSMutableString new] ;
       [newItemTitle appendString: itemTitle] ;
       if ([itemTitle isEqualToString: @"About"]) {
         [newItemTitle appendString: @" "] ;
@@ -121,7 +121,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 
 - (NSString *) commandLineString {
   NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;
-  NSMutableArray * arguments = [NSMutableArray arrayWithCapacity:0] ;
+  NSMutableArray * arguments = [NSMutableArray new] ;
 //--- Add tool path
   [arguments addObject:[self compilerToolPath]] ;
 //--- Add --cocoa option
@@ -184,7 +184,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   [mCommandLineItemArray release] ;
   mCommandLineItemArray = arguments ;
 //---- Build string for displaying
-  NSMutableString * s = [NSMutableString stringWithCapacity:0] ;
+  NSMutableString * s = [NSMutableString new] ;
   for (i=0 ; i<[arguments count] ; i++) {
     [s appendString:[arguments objectAtIndex:i HERE]] ;
     [s appendString:@" "] ;  
@@ -924,7 +924,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   NSDictionary * bundleDictionary = [[NSBundle mainBundle] localizedInfoDictionary] ;
   NSString * applicationName = [bundleDictionary objectForKey: @"CFBundleName"] ;
   if (applicationName != nil) {
-    NSMutableString * preferencesWindowTitle = [NSMutableString stringWithCapacity:30] ;
+    NSMutableString * preferencesWindowTitle = [NSMutableString new] ;
     [preferencesWindowTitle appendString: applicationName] ;
     [preferencesWindowTitle appendString: @" Preferences"] ;
     [mPreferenceWindow setTitle: preferencesWindowTitle] ;

@@ -1660,8 +1660,7 @@ bool C_String::makeDirectoryIfDoesNotExist (void) const {
 
 //---------------------------------------------------------------------------*
   
-bool C_String::
-binaryDataWithContentOfFile (TC_UniqueArray <unsigned char> & outBinaryData) const {
+bool C_String::binaryDataWithContentOfFile (TC_UniqueArray <unsigned char> & outBinaryData) const {
 //--- Clear result
   outBinaryData.removeAllObjects () ;
 //--- Open file for binary reading
