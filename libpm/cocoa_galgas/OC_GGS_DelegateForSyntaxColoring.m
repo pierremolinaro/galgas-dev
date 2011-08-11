@@ -219,10 +219,10 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
     }
   //---
     // NSLog (@"%p [tokenizer styleCount] %u", tokenizer, [tokenizer styleCount]) ;
-    mFontAttributesDictionaryArray = [NSMutableArray arrayWithCapacity:[tokenizer styleCount]] ;
+    mFontAttributesDictionaryArray = [NSMutableArray new] ;
     [mFontAttributesDictionaryArray retain] ;
     for (i=0 ; i<[tokenizer styleCount] ; i++) {
-      NSMutableDictionary * attributeDictionary = [NSMutableDictionary dictionaryWithCapacity:10] ;
+      NSMutableDictionary * attributeDictionary = [NSMutableDictionary new] ;
     //--- Add foreground color   
       NSString * name = [NSString stringWithFormat:@"%@_%@", GGS_named_color, [tokenizer styleIdentifierForStyleIndex:i]] ;
       NSData * data = [defaults dataForKey:name] ;

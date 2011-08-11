@@ -118,7 +118,7 @@ bool isUnicodeCharacterAssigned (const utf32 inUnicodeCharacter) {
 
 #ifdef __OBJC__
   NSString * unicodeName (const utf32 inUnicodeCharacter) {
-    NSMutableString * result = [NSMutableString stringWithCapacity:20] ;
+    NSMutableString * result = [NSMutableString new] ;
     if (! isUnicodeCharacterAssigned (inUnicodeCharacter)) {
       [result appendFormat:@"invalid unicode character \\U%u", UNICODE_VALUE (inUnicodeCharacter)] ;
     }else{

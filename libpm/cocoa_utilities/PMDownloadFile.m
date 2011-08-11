@@ -57,7 +57,7 @@
   //--- set method POST
     [theRequest setHTTPMethod:@"POST"] ;
   //--- set HTTP body
-    NSMutableString * body = [NSMutableString stringWithCapacity:1000] ;
+    NSMutableString * body = [NSMutableString new] ;
     NSEnumerator * enumerator = [inPOSTDictionary keyEnumerator] ;
     NSString * key ;
     while ((key = [enumerator nextObject])) {

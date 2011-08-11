@@ -67,9 +67,9 @@
       NSLog (@"OC_GGS_Document <init>") ;
     #endif
     mTask = nil ;
-    mWarningArray = [NSMutableArray arrayWithCapacity:100] ;
+    mWarningArray = [NSMutableArray new] ;
     [mWarningArray retain] ;
-    mErrorArray = [NSMutableArray arrayWithCapacity:100] ;
+    mErrorArray = [NSMutableArray new] ;
     [mErrorArray retain] ;
     mBufferedInputFromCompilerString = [[NSMutableString alloc] init] ;
     mBufferedInputData = [[NSMutableData alloc] init] ;
@@ -1733,7 +1733,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
     needsConversionForHTAB = [source rangeOfString:@"\x09"].location != NSNotFound ;
   }
   if (needsConversionForCR || needsConversionForHTAB) {
-    NSMutableString * s = [NSMutableString stringWithCapacity:100] ;
+    NSMutableString * s = [NSMutableString new] ;
     if (needsConversionForCR) {
     //--- Convert CR LF to LF
       NSArray * a = [source componentsSeparatedByString:@"\r\n"] ;
@@ -1846,7 +1846,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
     if (nil != data) {
       const NSUInteger dataLength = [data length] ;
       const unsigned char * bytes = [data bytes] ;
-      NSMutableString * s = [[NSMutableString alloc] initWithCapacity:dataLength] ;
+      NSMutableString * s = [NSMutableString new] ;
       NSUInteger i ;
       for (i=0 ; i<dataLength ; i++) {
         const unsigned char c = bytes [i] ;
@@ -2101,7 +2101,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
       #ifdef DEBUG_MESSAGES
       NSLog (@"OC_GGS_Document <actionBuild:> launch") ;
       #endif
-      NSMutableArray * arguments = [NSMutableArray arrayWithCapacity:[commandLineArray count]+1] ;
+      NSMutableArray * arguments = [NSMutableArray new] ;
       [arguments addObjectsFromArray:[commandLineArray subarrayWithRange:NSMakeRange (1, [commandLineArray count]-1)]] ;
       [arguments addObject:[[self fileName] copy]] ;
    //--- Create task
@@ -2214,7 +2214,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 //---------------------------------------------------------------------------*
 
 - (NSSet *) handledExtensions {
-  NSMutableSet * result = [NSMutableSet setWithCapacity:16] ;
+  NSMutableSet * result = [NSMutableSet new] ;
 //--- Get Info.plist file
   NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary] ;
   // NSLog (@"infoDictionary '%@'", infoDictionary) ;
@@ -2238,7 +2238,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 //--- Command line tool does actually exist ? (First argument is not "?")
   if (! [compilerToolPath isEqualToString:@"?"]) {
   //--- Build argument array
-    NSMutableArray * arguments = [NSMutableArray arrayWithCapacity:2] ;
+    NSMutableArray * arguments = [NSMutableArray new] ;
     [arguments addObject:inSourceFileFullPath] ;
     [arguments addObject:@"--perform-indexing"] ;
   //--- Create task
@@ -2404,12 +2404,12 @@ static NSInteger numericSort (NSString * inOperand1,
     [allReferences addObjectsFromArray:references] ;
   }
 //--- Build dictionary for the given token, organized by Kind
-  NSMutableDictionary * kindDictionary = [NSMutableDictionary dictionaryWithCapacity:100] ;
+  NSMutableDictionary * kindDictionary = [NSMutableDictionary new] ;
   for (NSString * descriptor in allReferences) {
     NSArray * components = [descriptor componentsSeparatedByString:@":"] ;
     NSString * kind = [components objectAtIndex:0] ;
     if ([kindDictionary objectForKey:kind] == NULL) {
-      [kindDictionary setObject:[NSMutableArray arrayWithCapacity:8] forKey:kind] ;
+      [kindDictionary setObject:[NSMutableArray new] forKey:kind] ;
     }
     NSMutableArray * a = [kindDictionary objectForKey:kind] ;
     [a addObject:descriptor] ;

@@ -103,9 +103,9 @@
                        withVersionString: (NSString *) inOtherVersionString {
   NSComparisonResult result = [inVersionString compare:inOtherVersionString] ;
   if (result != NSOrderedSame) {
-    NSMutableArray * components = [NSMutableArray arrayWithCapacity:3] ;
+    NSMutableArray * components = [NSMutableArray new] ;
     [components addObjectsFromArray:[inVersionString componentsSeparatedByString:@"."]] ;
-    NSMutableArray * otherComponents = [NSMutableArray arrayWithCapacity:3] ;
+    NSMutableArray * otherComponents = [NSMutableArray new] ;
     [otherComponents addObjectsFromArray:[inOtherVersionString componentsSeparatedByString:@"."]] ;
     while ([components count] < [otherComponents count]) {
       [components addObject:@"0"] ;
@@ -588,7 +588,7 @@
   //--- Tools
     NSArray * toolNameArray = [gCocoaGalgasPreferencesController toolNameArray] ;
    // NSLog (@"TOOL NAME ARRAY '%@'", toolNameArray) ;
-    NSMutableString * s = [NSMutableString stringWithCapacity:1000] ;
+    NSMutableString * s = [NSMutableString new] ;
     [s appendFormat:@"This installs in the %@ directory the following tools:", installationPath] ;
     unsigned i ;
     for (i=0 ; i<[toolNameArray count] ; i++) {
@@ -728,7 +728,7 @@
   //--- Tools
     NSArray * toolNameArray = [gCocoaGalgasPreferencesController toolNameArray] ;
    // NSLog (@"TOOL NAME ARRAY '%@'", toolNameArray) ;
-    NSMutableString * s = [NSMutableString stringWithCapacity:1000] ;
+    NSMutableString * s = [NSMutableString new] ;
     [s appendFormat:@"This removes from the %@ directory the following tools:", installationPath] ;
     BOOL nothingToRemove = YES ;
     unsigned i ;
