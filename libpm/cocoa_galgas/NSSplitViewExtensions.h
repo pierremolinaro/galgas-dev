@@ -2,7 +2,7 @@
 //                                                                           *
 //  NSSplitViewExtensions.h          This file is part of libpm library      *
 //                                                                           *
-//  Copyright (C) 2007, ..., 2009 Pierre Molinaro.                           *
+//  Copyright (C) 2007, ..., 2011 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -25,7 +25,11 @@
 
 //---------------------------------------------------------------------------*
 
-@interface NSSplitViewExtensions : NSSplitView {
+@interface NSSplitViewExtensions : NSSplitView
+#ifdef MAC_OS_X_VERSION_10_6
+ <NSSplitViewDelegate>
+#endif
+{
   @private NSObject * mBoundObjectFor_fraction ;
   @private NSString * mKeyPathFor_fraction ;
 }

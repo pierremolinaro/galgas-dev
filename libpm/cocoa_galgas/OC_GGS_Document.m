@@ -1398,8 +1398,11 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
   NSString * message = [NSString stringWithFormat:
      @"This file for document at %@ has been modified by an other application."
      " Do you want to keep the %@ version or update from file contents ?",
-     [self fileName], applicationName] ;
-  NSAlert *alert = [NSAlert alertWithMessageText:@"Warning"
+     self.fileURL.path,
+     applicationName
+  ] ;
+  NSAlert *alert = [NSAlert
+    alertWithMessageText:@"Warning"
     defaultButton:[NSString stringWithFormat:@"Keep %@ Version", applicationName]
     alternateButton:@"Update From File Contents"
     otherButton:nil
@@ -1442,7 +1445,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
   #ifdef DEBUG_MESSAGES
     NSLog (@"OC_GGS_Document <windowDidBecomeKey>") ;
   #endif
-  if ([[self fileName] length] > 0) {
+  if (self.fileURL.path.length > 0) {
     NSDate * modificationDateOnFileSystem = [self sourceFileModificationDateInFileSystem] ;
     if ([modificationDateOnFileSystem compare:[self fileModificationDate]] != NSOrderedSame) {
       [self askForUpdatingFromFileSystem] ;
@@ -1533,9 +1536,11 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-- (NSDictionary *) fileAttributesToWriteToFile:(NSString *) fullDocumentPath
+- (NSDictionary *) fileAttributesToWriteToURL:(NSURL *) inDocumentURL
     ofType:(NSString *)documentTypeName
-    saveOperation:(NSSaveOperationType)saveOperationType {
+    forSaveOperation:(NSSaveOperationType)saveOperationType
+    originalContentsURL: (NSURL *) inOriginalURL
+    error: (NSError **) outError {
   #ifdef DEBUG_MESSAGES
     NSLog (@"OC_GGS_Document <fileAttributesToWriteToFile:>") ;
   #endif
@@ -1591,14 +1596,25 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
    // If neither type nor creator code exist, use the default implementation.
   if(!(typeCode || creatorCode))
   {
-      return [super fileAttributesToWriteToFile:fullDocumentPath
-          ofType:documentTypeName saveOperation:saveOperationType];
+      return [super
+        fileAttributesToWriteToURL:inDocumentURL
+        ofType:documentTypeName
+        forSaveOperation:saveOperationType
+        originalContentsURL:inOriginalURL
+        error:outError
+      ];
   }
   
   // Otherwise, add the type and/or creator to the dictionary.
-  newAttributes = [NSMutableDictionary dictionaryWithDictionary:[super
-      fileAttributesToWriteToFile:fullDocumentPath ofType:documentTypeName
-      saveOperation:saveOperationType]];
+  newAttributes = [NSMutableDictionary
+    dictionaryWithDictionary:[super
+      fileAttributesToWriteToURL:inDocumentURL
+      ofType:documentTypeName
+      forSaveOperation:saveOperationType
+      originalContentsURL:inOriginalURL
+      error:outError
+    ]
+  ];
   if(typeCode)
       [newAttributes setObject:typeCode forKey:NSFileHFSTypeCode];
   if(creatorCode)
@@ -1891,14 +1907,16 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-- (BOOL) revertToSavedFromFile: (NSString *) inFileName ofType: (NSString *) inType {
+- (BOOL) revertToContentsOfURL: (NSURL *) inFileURL
+         ofType: (NSString *) inType
+         error: (NSError **) outError {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <revertToSavedFromFile:>") ;
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
 //--- Save current selection
   const NSRange currentSelection = [mUpperTextView selectedRange] ;
 //------------ Perform revert (calls loadDataRepresentation:ofType: for loading file)
-  const BOOL revertDone = [super revertToSavedFromFile:inFileName ofType:inType] ;
+  const BOOL revertDone = [super revertToContentsOfURL:inFileURL ofType:inType error:outError] ;
 //--- 
   if (revertDone) {
     [self awakeFromNib] ;
@@ -2103,7 +2121,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
       #endif
       NSMutableArray * arguments = [NSMutableArray new] ;
       [arguments addObjectsFromArray:[commandLineArray subarrayWithRange:NSMakeRange (1, [commandLineArray count]-1)]] ;
-      [arguments addObject:[[self fileName] copy]] ;
+      [arguments addObject:self.fileURL.path] ;
    //--- Create task
       mTask = [[NSTask alloc] init] ;
       [mTask setLaunchPath:[commandLineArray objectAtIndex:0 HERE]] ;
@@ -2269,7 +2287,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 
 - (NSArray *) buildDictionaryArray {
 //--- Source directory
-  NSString * sourceDirectory  = [[self fileName] stringByDeletingLastPathComponent] ;
+  NSString * sourceDirectory = self.fileURL.path.stringByDeletingLastPathComponent ;
 //--- index directory
   NSString * indexingDirectory = [mTokenizer indexingDirectory] ;
   if (([indexingDirectory length] == 0) || ([indexingDirectory characterAtIndex:0] != '/')) {

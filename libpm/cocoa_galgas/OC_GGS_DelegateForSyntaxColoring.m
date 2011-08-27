@@ -667,7 +667,7 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
   NSRange editedRange = [mTextStorage editedRange] ;
   NSInteger changeInLength = [mTextStorage changeInLength] ;
   OC_GGS_Document * doc = [mDocument currentlyEditedDocumentInBuildWindow] ;
-  NSString * docPath = [doc fileName] ;
+  NSString * docPath = doc.fileURL.path ;
   [mDocument
     editedFilePath:docPath
     editedRange:editedRange

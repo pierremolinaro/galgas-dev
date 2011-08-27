@@ -136,7 +136,7 @@
 //--- Remove temporary dir, if it exists
   NSFileManager * fm = [NSFileManager defaultManager] ;
   if ([fm fileExistsAtPath:[self temporaryDir]]) {
-    [fm removeFileAtPath:[self temporaryDir] handler:nil] ;
+    [fm removeItemAtPath:[self temporaryDir] error:nil] ;
   }
 //--- Add Update Tab view
   NSTabView * prefsTabView = [gCocoaGalgasPreferencesController preferencesTabView] ;
@@ -330,10 +330,15 @@
   //--- Remove temporary dir if it exists
     NSFileManager * fm = [NSFileManager defaultManager] ;
     if ([fm fileExistsAtPath:[self temporaryDir]]) {
-      [fm removeFileAtPath:[self temporaryDir] handler:nil] ;
+      [fm removeItemAtPath:[self temporaryDir] error:nil] ;
     }
   //--- Create temporary dir
-    [fm createDirectoryAtPath:[self temporaryDir] attributes:nil] ;
+    [fm
+      createDirectoryAtPath:[self temporaryDir]
+      withIntermediateDirectories:NO
+      attributes:nil
+      error:nil
+    ] ;
   //--- Start download GALGAS
     [mDownloadTitle setStringValue:[NSString stringWithFormat:@"Downloading GALGAS %@...", lastAvailableVersion]] ;
     [[mCancelButton window] makeKeyAndOrderFront:nil] ;
@@ -360,7 +365,7 @@
 //--- Remove temporary dir if it exists
   NSFileManager * fm = [NSFileManager defaultManager] ;
   if ([fm fileExistsAtPath:[self temporaryDir]]) {
-    [fm removeFileAtPath:[self temporaryDir] handler:nil] ;
+    [fm removeItemAtPath:[self temporaryDir] error:nil] ;
   }
 }
 

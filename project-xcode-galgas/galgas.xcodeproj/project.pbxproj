@@ -2995,6 +2995,7 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 0410;
 				ORGANIZATIONNAME = IRCCyN;
 			};
 			buildConfigurationList = CF0DA6A4085630E800F38E67 /* Build configuration list for PBXProject "galgas" */;
@@ -4525,7 +4526,6 @@
 				INSTALL_PATH = /usr/local/bin;
 				LD_GENERATE_MAP_FILE = NO;
 				LD_OPENMP_FLAGS = "";
-				PREBINDING = NO;
 				SDKROOT = macosx10.5;
 			};
 			name = Default;
@@ -4548,11 +4548,13 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../libpm/galgas2/PP_GalgasPrefix.pch;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_SHADOW = NO;
 				HEADER_SEARCH_PATHS = (
 					../galgas_sources/GALGAS_OUTPUT,
 					../hand_coded_sources,
 					"../libpm/**",
 				);
+				LLVM_LTO = NO;
 				PRODUCT_NAME = galgasI386;
 				SDKROOT = macosx10.6;
 			};
@@ -4604,7 +4606,7 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_CFLAGS = "-Wall";
 				PRODUCT_NAME = cocoaGalgasI386;
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Default;
