@@ -34,7 +34,11 @@
 
 //---------------------------------------------------------------------------*
 
-@interface OC_GGS_Document : NSDocument {
+@interface OC_GGS_Document : NSDocument
+#ifdef MAC_OS_X_VERSION_10_6
+ <NSTextViewDelegate, NSToolbarDelegate, NSWindowDelegate>
+ #endif
+{
 @private OC_GGS_DelegateForSyntaxColoring * mDelegateForSyntaxColoring ;
 @private OC_Lexique * mTokenizer ;
 

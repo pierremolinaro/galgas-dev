@@ -31,7 +31,11 @@
 
 //---------------------------------------------------------------------------*
 
-@interface OC_GGS_DelegateForSyntaxColoring : NSObject {
+@interface OC_GGS_DelegateForSyntaxColoring : NSObject
+#ifdef MAC_OS_X_VERSION_10_6
+ <NSTextViewDelegate>
+#endif
+{
   @private NSMutableArray * mFontAttributesDictionaryArray ; // Array of OC_Token
   @private NSMutableArray * mStyledRangeArray ;
   @private NSTextStorage * mTextStorage ;

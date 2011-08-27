@@ -69,7 +69,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   [super drawRect:inRect] ;
 //--- Frame all warning and error locations
   OC_GGS_Document * doc = [mDocument currentlyEditedDocumentInBuildWindow] ;
-  NSString * docPath = [doc fileName] ;
+  NSString * docPath = doc.fileURL.path ;
   // NSLog (@"docPath '%@'", docPath) ;
   if (nil != docPath) {
     NSString * sourceString = [self string] ;
@@ -603,7 +603,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     // NSLog (@"mDocument %p", mDocument) ;
     NSString * filePath = [sourceString substringWithRange:selection] ;
     if (([filePath length] > 0) && ([filePath characterAtIndex:0] != '/')) {
-      filePath = [NSString stringWithFormat:@"%@/%@", [[mDocument fileName] stringByDeletingLastPathComponent], filePath] ;
+      filePath = [NSString stringWithFormat:@"%@/%@", [mDocument.fileURL.path stringByDeletingLastPathComponent], filePath] ;
     }
     #ifdef DEBUG_MESSAGES
       NSLog (@"filePath '%@'", filePath) ;
@@ -728,7 +728,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     NSString * filePath = [sourceString substringWithRange:selection] ;
     //NSLog (@"subString '%@'", subString) ;
     if (([filePath length] > 0) && ([filePath characterAtIndex:0] != '/')) {
-      filePath = [NSString stringWithFormat:@"%@/%@", [[mDocument fileName] stringByDeletingLastPathComponent], filePath] ;
+      filePath = [NSString stringWithFormat:@"%@/%@", [mDocument.fileURL.path stringByDeletingLastPathComponent], filePath] ;
     }
     //NSLog (@"filePath '%@'", filePath) ;
     NSFileManager * fm = [[NSFileManager alloc] init] ;
