@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2002, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 2002, ..., 2011 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -104,14 +104,16 @@ GALGAS_bool GALGAS_function::constructor_isFunctionDefined (const GALGAS_string 
                                                             COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_bool result ;
   if (inFunctionName.isValid ()) {
+    bool resultValue = false ;
     const C_String functionName = inFunctionName.stringValue () ;
     const C_galgas_function_descriptor * p = C_galgas_function_descriptor::functionListRoot () ;
-    while ((NULL != p) && ! result.isValid ()) {
+    while ((NULL != p) && ! resultValue) {
       if (functionName == p->mFunctionName) {
-        result = GALGAS_bool (true) ;
+        resultValue = true ;
       }
       p = p->mNextFunction ;
     }
+    result = GALGAS_bool (resultValue) ;
   }
   return result ;
 }
