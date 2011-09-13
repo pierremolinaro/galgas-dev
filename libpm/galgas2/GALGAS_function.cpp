@@ -108,9 +108,7 @@ GALGAS_bool GALGAS_function::constructor_isFunctionDefined (const GALGAS_string 
     const C_String functionName = inFunctionName.stringValue () ;
     const C_galgas_function_descriptor * p = C_galgas_function_descriptor::functionListRoot () ;
     while ((NULL != p) && ! resultValue) {
-      if (functionName == p->mFunctionName) {
-        resultValue = true ;
-      }
+      resultValue = functionName == p->mFunctionName ;
       p = p->mNextFunction ;
     }
     result = GALGAS_bool (resultValue) ;

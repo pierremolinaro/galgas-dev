@@ -1993,7 +1993,6 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
     if (status != 0) {
       [self appendMessage: [NSString stringWithFormat: @"Build task has exited with status %d\n", status]] ;
     }
-    [task release] ;
   //--- Notify issues to text views
     NSMutableSet * s = [NSMutableSet new] ;
     for (OC_GGS_ErrorOrWarningDescriptor * descriptor in mErrorArray) {
@@ -2016,7 +2015,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 
 - (void) getDataFromTaskOutput: (NSNotification *) inNotification {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <getDataFromTaskOutput>") ;
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   NSData * d = [[inNotification userInfo] objectForKey:NSFileHandleNotificationDataItem];
   if ([d length] > 0) {

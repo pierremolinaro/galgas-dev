@@ -819,7 +819,8 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
         generatedZone3 << "  if (inSourceString.isValid ()) {\n"
                           "    const C_String sourceString = inSourceString.stringValue () ;\n"
                           "    C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
-                          "    macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, inCompiler->ioParametersPtr (), sourceString, \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
+//                          "    macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, inCompiler->ioParametersPtr (), sourceString, \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
+                          "    macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, inCompiler->ioParametersPtr (), sourceString, \"\" COMMA_HERE)) ;\n"
                           "    scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n" ;
         generatedZone3 << "    const bool ok = scanner->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
                           "                                                    gFirstProductionIndexes, gDecision, gDecisionIndexes, "
