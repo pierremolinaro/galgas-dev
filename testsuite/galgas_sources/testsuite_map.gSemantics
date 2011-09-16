@@ -6,6 +6,11 @@ map @aMap {
   search searchKey error message "the '%K' key is not inserted" ;
 }
 
+map @anOtherMap {
+  insert insertKey error message "the '%K' key is already inserted" ;
+  remove removeKey error message "the '%K' key is not inserted" ;
+}
+
 routine testsuite_map :
   message "*************************************** begin of map\n" ;
   @aMap m [emptyMap] ;
@@ -26,6 +31,35 @@ routine testsuite_map :
   log m ;
   @location loc := [m locationForKey !"g"] ;
   log loc ;
+#---
+  @anOtherMap otherMap [emptyMap] ;
+  [!?otherMap insertKey !["A" nowhere]] ;
+  [!?otherMap insertKey !["B" nowhere]] ;
+  [!?otherMap insertKey !["C" nowhere]] ;
+  [!?otherMap insertKey !["D" nowhere]] ;
+  [!?otherMap insertKey !["E" nowhere]] ;
+  [!?otherMap insertKey !["F" nowhere]] ;
+  [!?otherMap insertKey !["G" nowhere]] ;
+  [!?otherMap insertKey !["H" nowhere]] ;
+  [!?otherMap insertKey !["I" nowhere]] ;
+  [!?otherMap insertKey !["K" nowhere]] ;
+  [!?otherMap insertKey !["L" nowhere]] ;
+  [!?otherMap insertKey !["M" nowhere]] ;
+  [!?otherMap insertKey !["N" nowhere]] ;
+  [!?otherMap insertKey !["O" nowhere]] ;
+  [!?otherMap insertKey !["P" nowhere]] ;
+  [!?otherMap insertKey !["R" nowhere]] ;
+  [!?otherMap insertKey !["S" nowhere]] ;
+  [!?otherMap insertKey !["T" nowhere]] ;
+  [!?otherMap insertKey !["U" nowhere]] ;
+  [!?otherMap insertKey !["V" nowhere]] ;
+  [!?otherMap insertKey !["W" nowhere]] ;
+  [!?otherMap insertKey !["X" nowhere]] ;
+  [!?otherMap insertKey !["Y" nowhere]] ;
+  [!?otherMap insertKey !["Z" nowhere]] ;
+  foreach [otherMap allKeys] do
+    [!?otherMap removeKey ![key nowhere]] ;
+  end foreach ;
 end routine ;
 
 end semantics ;

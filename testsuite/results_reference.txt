@@ -140,7 +140,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (55 types)
+--- Type list (56 types)
   @2stringlist
   @A
   @A_A
@@ -153,6 +153,7 @@ LOGGING r: <@uint:5>
   @aMap
   @abstractOverridingTestCategoryModifier
   @abstractTestCategoryModifier
+  @anOtherMap
   @application
   @binaryset
   @bool
