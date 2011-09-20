@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2008, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 2008, ..., 2011 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -82,8 +82,12 @@ class cSharedMapRoot : public C_SharedObject {
   private : VIRTUAL_IN_DEBUG cMapNode * findEntryInMap (const C_String & inKey,
                                                         const cSharedMapRoot * inFirstMap) const ;
 
-  public : void findNearestKey (const C_String & inKey,
-                                TC_UniqueArray <C_String> & ioNearestKeyArray) const ;
+  private : VIRTUAL_IN_DEBUG cMapNode * findEntryInMapAtLevel (const C_String & inKey,
+                                                               const PMUInt32 inLevel,
+                                                               const cSharedMapRoot * inFirstMap) const ;
+
+  public : VIRTUAL_IN_DEBUG void findNearestKey (const C_String & inKey,
+                                                 TC_UniqueArray <C_String> & ioNearestKeyArray) const ;
 
   protected : VIRTUAL_IN_DEBUG cMapNode * performSearch (const GALGAS_lstring & inKey,
                                                          C_Compiler * inCompiler,
@@ -113,6 +117,12 @@ class cSharedMapRoot : public C_SharedObject {
 //--------------------------------- Readers
   protected : VIRTUAL_IN_DEBUG GALGAS_bool reader_hasKey (const GALGAS_string & inKey
                                                           COMMA_LOCATION_ARGS) const ;
+
+  protected : VIRTUAL_IN_DEBUG GALGAS_uint reader_levels (UNUSED_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_hasKeyAtLevel (const GALGAS_string & inKey,
+                                                              const GALGAS_uint & inLevel
+                                                              COMMA_LOCATION_ARGS) const ;
 
   protected : VIRTUAL_IN_DEBUG GALGAS_location locationForKey (const GALGAS_string & inKey,
                                                                C_Compiler * inCompiler
@@ -359,6 +369,35 @@ void AC_GALGAS_map::description (C_String & ioString,
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Search in map and overridden maps
 #endif
+
+//---------------------------------------------------------------------------*
+
+cMapNode * cSharedMapRoot::findEntryInMapAtLevel (const C_String & inKey,
+                                                  const PMUInt32 inLevel,
+                                                  const cSharedMapRoot * inFirstMap) const {
+  cMapNode * result = NULL ;
+  const cSharedMapRoot * currentMap = inFirstMap ;
+  PMUInt32 level = 0 ;
+  while ((NULL != currentMap) && (NULL == result)) {
+    if (inLevel == level) {
+      cMapNode * currentNode = currentMap->mRoot ;
+      while ((currentNode != NULL) && (NULL == result)) {
+        macroValidPointer (currentNode) ;
+        const PMSInt32 comparaison = currentNode->mKey.compare (inKey) ;
+        if (comparaison > 0) {
+          currentNode = currentNode->mInfPtr ;
+        }else if (comparaison < 0) {
+          currentNode = currentNode->mSupPtr ;
+        }else{ // Found
+          result = currentNode ;
+        }
+      }
+    }
+    level ++ ;
+    currentMap = currentMap->mOverridenMap ;
+  }
+  return result ;
+}
 
 //---------------------------------------------------------------------------*
 
@@ -869,6 +908,66 @@ GALGAS_location AC_GALGAS_map::reader_locationForKey (const GALGAS_string & inKe
   GALGAS_location result ;
   if (isValid ()) {
     result = mSharedMap->locationForKey (inKey, inCompiler COMMA_THERE) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Reader levels
+#endif
+
+//---------------------------------------------------------------------------*
+
+GALGAS_uint cSharedMapRoot::reader_levels (UNUSED_LOCATION_ARGS) const {
+  PMUInt32 levelCount = 0 ;
+  const cSharedMapRoot * currentMap = this ;
+  while (NULL != currentMap) {
+    currentMap = currentMap->mOverridenMap ;
+    levelCount ++ ;
+  }
+  return GALGAS_uint (levelCount) ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_uint AC_GALGAS_map::reader_levels (LOCATION_ARGS) const {
+  GALGAS_uint result ;
+  if (isValid ()) {
+    result = mSharedMap->reader_levels (THERE) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Reader hasKeyAtLevel
+#endif
+
+//---------------------------------------------------------------------------*
+
+GALGAS_bool cSharedMapRoot::reader_hasKeyAtLevel (const GALGAS_string & inKey,
+                                                  const GALGAS_uint & inLevel
+                                                  COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (inKey.isValid () && inLevel.isValid ()) {
+    const C_String key = inKey.stringValue () ;
+    const cMapNode * node = findEntryInMapAtLevel (key, inLevel.uintValue (), this) ;
+    result = GALGAS_bool (NULL != node) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_bool AC_GALGAS_map::reader_hasKeyAtLevel (const GALGAS_string & inKey,
+                                                 const GALGAS_uint & inLevel
+                                                 COMMA_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid ()) {
+    result = mSharedMap->reader_hasKeyAtLevel (inKey, inLevel COMMA_THERE) ;
   }
   return result ;
 }

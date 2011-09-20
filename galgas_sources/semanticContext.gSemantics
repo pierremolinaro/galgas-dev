@@ -744,6 +744,8 @@ override method @mapDeclarationAST enterInSemanticContext
   enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"emptyMap" ![mMapTypeName string] !false ;
   enterConstructorWithArgument !?constructorMap !?ioSemanticContext->mTypeMap !"mapWithMapToOverride" ![mMapTypeName string] ![mMapTypeName string] !false ;
 #--- Readers
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"levels" !"uint" !false ;
+  enterInheritedReaderWith2Arguments !?readerMap !?ioSemanticContext->mTypeMap !"hasKeyAtLevel" !"string" !"uint" !"bool" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeys" !"stringset" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeyList" !"lstringlist" !false ;
   enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"hasKey" !"string" !"bool" !false ;

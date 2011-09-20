@@ -131,8 +131,14 @@ class AC_GALGAS_map : public AC_GALGAS_root {
 
 
 //--------------------------------- Readers
+  public : VIRTUAL_IN_DEBUG GALGAS_uint reader_levels (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG GALGAS_bool reader_hasKey (const GALGAS_string & inKey
                                                        COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG GALGAS_bool reader_hasKeyAtLevel (const GALGAS_string & inKey,
+                                                              const GALGAS_uint & inLevel
+                                                              COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_locationForKey (const GALGAS_string & inKey,
                                                                    C_Compiler * inCompiler
