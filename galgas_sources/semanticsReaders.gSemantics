@@ -96,6 +96,37 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+routine enterInheritedReaderWith2Arguments
+  ?!@readerMap ioReaderMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  ??@string inReaderName
+  ??@string inArgument1TypeName
+  ??@string inArgument2TypeName
+  ??@string inReturnedTypeName
+  ??@bool inHasLexiqueAndLocationArguments
+:
+  @unifiedTypeMapProxy returnedTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
+  @unifiedTypeMapProxyList argList [emptyList] ;
+  @unifiedTypeMapProxy t ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
+  argList += !t ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
+  argList += !t ;
+  [!?ioReaderMap insertOrReplace
+    ![@lstring new !inReaderName !here]
+    ![@methodKind definedAsMember]
+    !argList
+    !here
+    !inHasLexiqueAndLocationArguments
+    !returnedTypeIndex
+    ![@methodQualifier isInherited]
+    !"" # No Error message
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine enterBaseReaderWithoutArgument
   ?!@readerMap ioReaderMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
