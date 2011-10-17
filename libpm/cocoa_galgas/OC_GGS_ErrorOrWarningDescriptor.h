@@ -15,7 +15,7 @@
   @private NSRange mCompileMessageTextRange ;
   @private NSUInteger mIndex ;
   @private NSString * mDocumentPath ;
-  @private NSUInteger mLocation ;
+  @private NSInteger mLocation ;
 }
 
 - (id) initWithRange: (NSRange) inRange
@@ -27,7 +27,7 @@
 
 - (NSUInteger) index ;
 
-- (NSUInteger) locationInSourceString ;
+- (NSInteger) locationInSourceString ;
 
 - (NSString *) documentPath ;
 
