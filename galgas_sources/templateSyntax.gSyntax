@@ -476,8 +476,7 @@ rule <primary>
   or #------------ Constructor call
     $type_name$ ?@lstring typeName ;
     $identifier$ ? @lstring constructorName ;
-    @templateExpressionListAST expressionList ;
-    <output_expression_list> ?expressionList ;
+    <output_expression_list> ?@templateExpressionListAST expressionList ;
     outExpression := [@templateConstructorAST new
       !typeName
       !constructorName

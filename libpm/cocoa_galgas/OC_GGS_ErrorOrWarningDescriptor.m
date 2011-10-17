@@ -24,7 +24,7 @@
     mCompileMessageTextRange = inRange ;
     mIndex = inIndex ;
     mDocumentPath = [inDocumentPath retain] ;
-    mLocation = inLocationInSourceText ;
+    mLocation = (NSInteger) inLocationInSourceText ;
   }
   return self ;
 }
@@ -56,7 +56,7 @@
 
 //---------------------------------------------------------------------------*
 
-- (NSUInteger) locationInSourceString {
+- (NSInteger) locationInSourceString {
   return mLocation ;
 }
 
@@ -65,9 +65,9 @@
 - (void) editedFilePath:(NSString *) inDocPath
          editedRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength {
-  if ([inDocPath isEqualToString:mDocumentPath] && (mLocation >= inEditedRange.location)) {
-    if (mLocation < (inEditedRange.location + inEditedRange.length)) {
-      mLocation = inEditedRange.location ;
+  if ([inDocPath isEqualToString:mDocumentPath] && (mLocation >= (NSInteger) inEditedRange.location)) {
+    if (mLocation < ((NSInteger) (inEditedRange.location + inEditedRange.length))) {
+      mLocation = (NSInteger) inEditedRange.location ;
     }else{
       mLocation += inChangeInLength ;
     }
