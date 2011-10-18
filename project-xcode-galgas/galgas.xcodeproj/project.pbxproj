@@ -1384,6 +1384,9 @@
 		CF4397F60ADFE16D0085F47C /* PMOkButtonForPanel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PMOkButtonForPanel.h; sourceTree = "<group>"; };
 		CF4397F70ADFE16D0085F47C /* PMOkButtonForPanel.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = PMOkButtonForPanel.m; sourceTree = "<group>"; };
 		CF4398030ADFE1900085F47C /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = /System/Library/Frameworks/WebKit.framework; sourceTree = "<absolute>"; };
+		CF443912144E144600E38AA4 /* TC_prime_cache2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_prime_cache2.h; sourceTree = "<group>"; };
+		CF443913144E144600E38AA4 /* TC_prime_cache3.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_prime_cache3.h; sourceTree = "<group>"; };
+		CF443914144E144600E38AA4 /* TC_prime_cache4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_prime_cache4.h; sourceTree = "<group>"; };
 		CF4521A30E01576C00CAE9FC /* lexiqueCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueCompilation.cpp; sourceTree = "<group>"; };
 		CF4521A40E01576C00CAE9FC /* lexiqueCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lexiqueCompilation.h; sourceTree = "<group>"; };
 		CF497DAD114591A600263347 /* optionSyntax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = optionSyntax.cpp; sourceTree = "<group>"; };
@@ -1982,6 +1985,16 @@
 				CF074C9A1000EFF500F45986 /* C_StringCommandLineOption.h */,
 			);
 			path = command_line_interface;
+			sourceTree = "<group>";
+		};
+		CF443911144E144600E38AA4 /* cache */ = {
+			isa = PBXGroup;
+			children = (
+				CF443912144E144600E38AA4 /* TC_prime_cache2.h */,
+				CF443913144E144600E38AA4 /* TC_prime_cache3.h */,
+				CF443914144E144600E38AA4 /* TC_prime_cache4.h */,
+			);
+			path = cache;
 			sourceTree = "<group>";
 		};
 		CF4ED36D10D9256F00B4F6AA /* cocoa_debug */ = {
@@ -2715,6 +2728,7 @@
 		CFF5381C057A545B00854C83 /* libpm */ = {
 			isa = PBXGroup;
 			children = (
+				CF443911144E144600E38AA4 /* cache */,
 				CF4ED36D10D9256F00B4F6AA /* cocoa_debug */,
 				CFB9E4850DF28AC500885084 /* collections */,
 				CFDAE7040AD19F3E00713406 /* cocoa_utilities */,
@@ -4537,14 +4551,14 @@
 		CF6DF18E09E3F23700506859 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				DEAD_CODE_STRIPPING = YES;
 				DEPLOYMENT_LOCATION = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../libpm/galgas2/PP_GalgasPrefix.pch;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_SHADOW = NO;
 				HEADER_SEARCH_PATHS = (
 					../galgas_sources/GALGAS_OUTPUT,
@@ -4554,6 +4568,7 @@
 				LLVM_LTO = NO;
 				PRODUCT_NAME = galgasI386;
 				SDKROOT = macosx10.6;
+				VALID_ARCHS = x86_64;
 			};
 			name = Default;
 		};

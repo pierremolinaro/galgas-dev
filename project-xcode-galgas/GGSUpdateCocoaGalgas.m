@@ -29,12 +29,6 @@
 
 //---------------------------------------------------------------------------*
 
-- (NSString *) libpmArchiveName {
-  return @"libpm-lf.tar.bz2" ;
-}
-
-//---------------------------------------------------------------------------*
-
 - (NSString *) galgasUpdaterArchiveName {
   #ifdef FORCED_GALGAS_VERSION
     return @"cocoa_galgas_updater3.app.tar.bz2" ;
@@ -65,12 +59,6 @@
 
 - (NSString *) galgasHTTPPathForVersion: (NSString *) inVersionString {
   return [NSString stringWithFormat:@"%@/%@/%@", [self serverHTTPPath], inVersionString, [self galgasArchiveName]] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (NSString *) libpmHTTPPathForVersion: (NSString *) inVersionString {
-  return [NSString stringWithFormat:@"%@/%@/%@", [self serverHTTPPath], inVersionString, [self libpmArchiveName]] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -302,7 +290,6 @@
       ] ;
     }
   }
-  [inDownloader release] ;
 }
 
 //--------------------------------------------------------------------------*
@@ -354,7 +341,6 @@
   }else{
     [mCheckNowButton setEnabled:YES] ;
   }
-  [lastAvailableVersion release] ;
 }
 
 //--------------------------------------------------------------------------*
@@ -416,7 +402,6 @@
       ] ;
     }  
   }
-  [inDownloader release] ;
 }
 
 //--------------------------------------------------------------------------*
@@ -433,7 +418,6 @@
   [task launch] ;
   [task waitUntilExit] ;
   int status = [task terminationStatus] ;
-  [task release] ;
   task = nil ;
   if (status == 0) {
     task = [[NSTask alloc] init] ;
@@ -450,7 +434,6 @@
     [task launch] ;
     [task waitUntilExit] ;
     status = [task terminationStatus] ;
-    [task release] ;
     task = nil ;
   }
   return status ;
@@ -494,7 +477,7 @@
         [alert
           beginSheetModalForWindow:nil
           modalDelegate:self
-          didEndSelector:@selector (lauchGalgasUpdaterAlertDidEnd:returnCode:contextInfo:)
+          didEndSelector:@selector (launchGalgasUpdaterAlertDidEnd:returnCode:contextInfo:)
           contextInfo:NULL
         ] ;
       }else{
@@ -515,14 +498,13 @@
       [[mCancelButton window] orderOut:nil] ;
     }  
   }
-  [inDownloader release] ;
 }
 
 //--------------------------------------------------------------------------*
 
-- (void) lauchGalgasUpdaterAlertDidEnd:(NSAlert *) inUnusedAlertlert
+- (void) launchGalgasUpdaterAlertDidEnd:(NSAlert *) inUnusedAlert
          returnCode:(int) inReturnCode
-   contextInfo:(void  *) inContextInfo {
+         contextInfo:(void  *) inContextInfo {
   if (inReturnCode == YES) {
     NSString * galgasUpdaterApp = [[[self temporaryPathForGalgasUpdaterArchive] stringByDeletingPathExtension] stringByDeletingPathExtension] ;
     NSWorkspace * ws = [NSWorkspace sharedWorkspace] ;

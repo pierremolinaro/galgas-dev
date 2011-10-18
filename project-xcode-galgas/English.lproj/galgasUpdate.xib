@@ -2,9 +2,9 @@
 <archive type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="7.10">
 	<data>
 		<int key="IBDocument.SystemTarget">1050</int>
-		<string key="IBDocument.SystemVersion">10F569</string>
-		<string key="IBDocument.InterfaceBuilderVersion">788</string>
-		<string key="IBDocument.AppKitVersion">1038.29</string>
+		<string key="IBDocument.SystemVersion">10K549</string>
+		<string key="IBDocument.InterfaceBuilderVersion">851</string>
+		<string key="IBDocument.AppKitVersion">1038.36</string>
 		<string key="IBDocument.HIToolboxVersion">461.00</string>
 		<object class="NSMutableDictionary" key="IBDocument.PluginVersions">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -15,13 +15,14 @@
 			</object>
 			<object class="NSMutableArray" key="dict.values">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<string>788</string>
-				<string>788</string>
+				<string>851</string>
+				<string>851</string>
 			</object>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.EditedObjectIDs">
 			<bool key="EncodedWithXMLCoder">YES</bool>
 			<integer value="5"/>
+			<integer value="30"/>
 		</object>
 		<object class="NSArray" key="IBDocument.PluginDependencies">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -29,13 +30,8 @@
 			<string>com.apple.WebKitIBPlugin</string>
 		</object>
 		<object class="NSMutableDictionary" key="IBDocument.Metadata">
-			<bool key="EncodedWithXMLCoder">YES</bool>
-			<object class="NSArray" key="dict.sortedKeys" id="0">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-			</object>
-			<object class="NSMutableArray" key="dict.values">
-				<bool key="EncodedWithXMLCoder">YES</bool>
-			</object>
+			<string key="NS.key.0">PluginDependencyRecalculationVersion</string>
+			<integer value="1" key="NS.object.0"/>
 		</object>
 		<object class="NSMutableArray" key="IBDocument.RootObjects" id="685716556">
 			<bool key="EncodedWithXMLCoder">YES</bool>
@@ -268,7 +264,7 @@
 				<string key="NSExtension">NSResponder</string>
 			</object>
 			<object class="NSWindowTemplate" id="333224431">
-				<int key="NSWindowStyleMask">3</int>
+				<int key="NSWindowStyleMask">1</int>
 				<int key="NSWindowBacking">2</int>
 				<string key="NSWindowRect">{{409, 459}, {467, 151}}</string>
 				<int key="NSWTFlags">1886912512</int>
@@ -282,7 +278,7 @@
 				<string key="NSWindowContentMaxSize">{1.79769e+308, 1.79769e+308}</string>
 				<string key="NSWindowContentMinSize">{213, 107}</string>
 				<object class="NSView" key="NSWindowView" id="749559358">
-					<nil key="NSNextResponder"/>
+					<reference key="NSNextResponder"/>
 					<int key="NSvFlags">256</int>
 					<object class="NSMutableArray" key="NSSubviews">
 						<bool key="EncodedWithXMLCoder">YES</bool>
@@ -389,6 +385,7 @@
 						</object>
 					</object>
 					<string key="NSFrameSize">{467, 151}</string>
+					<reference key="NSSuperview"/>
 				</object>
 				<string key="NSScreenRect">{{0, 0}, {1680, 1028}}</string>
 				<string key="NSMinSize">{213, 129}</string>
@@ -853,6 +850,7 @@
 						</object>
 						<string key="NSFrameSize">{611, 552}</string>
 						<reference key="NSSuperview" ref="706456476"/>
+						<reference key="NSNextKeyView"/>
 						<string key="FrameName"/>
 						<string key="GroupName"/>
 						<reference key="Preferences" ref="794004680"/>
@@ -1243,7 +1241,9 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBObjectRecord">
 						<int key="objectID">0</int>
-						<reference key="object" ref="0"/>
+						<object class="NSArray" key="object" id="0">
+							<bool key="EncodedWithXMLCoder">YES</bool>
+						</object>
 						<reference key="children" ref="685716556"/>
 						<nil key="parent"/>
 					</object>
@@ -2104,13 +2104,9 @@
 							<string>checkForNewVersion:</string>
 							<string>performCLIToolInstallation:</string>
 							<string>performCLIToolRemove:</string>
-							<string>resetLIPMpathAction:</string>
-							<string>setLIPMpathAction:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -2123,8 +2119,6 @@
 							<string>checkForNewVersion:</string>
 							<string>performCLIToolInstallation:</string>
 							<string>performCLIToolRemove:</string>
-							<string>resetLIPMpathAction:</string>
-							<string>setLIPMpathAction:</string>
 						</object>
 						<object class="NSMutableArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -2138,14 +2132,6 @@
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">performCLIToolRemove:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">resetLIPMpathAction:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">setLIPMpathAction:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 						</object>
@@ -2164,8 +2150,6 @@
 							<string>mDownloadProgressIndicator</string>
 							<string>mDownloadSubTitle</string>
 							<string>mDownloadTitle</string>
-							<string>mLIBPMStatusTextField</string>
-							<string>mLIBPMpathTextField</string>
 							<string>mNewAvailableVersionPanel</string>
 							<string>mNewVersionTextField</string>
 							<string>mPerformUpdateButton</string>
@@ -2182,8 +2166,6 @@
 							<string>NSButton</string>
 							<string>NSButton</string>
 							<string>NSProgressIndicator</string>
-							<string>NSTextField</string>
-							<string>NSTextField</string>
 							<string>NSTextField</string>
 							<string>NSTextField</string>
 							<string>NSPanel</string>
@@ -2207,8 +2189,6 @@
 							<string>mDownloadProgressIndicator</string>
 							<string>mDownloadSubTitle</string>
 							<string>mDownloadTitle</string>
-							<string>mLIBPMStatusTextField</string>
-							<string>mLIBPMpathTextField</string>
 							<string>mNewAvailableVersionPanel</string>
 							<string>mNewVersionTextField</string>
 							<string>mPerformUpdateButton</string>
@@ -2258,14 +2238,6 @@
 								<string key="candidateClassName">NSTextField</string>
 							</object>
 							<object class="IBToOneOutletInfo">
-								<string key="name">mLIBPMStatusTextField</string>
-								<string key="candidateClassName">NSTextField</string>
-							</object>
-							<object class="IBToOneOutletInfo">
-								<string key="name">mLIBPMpathTextField</string>
-								<string key="candidateClassName">NSTextField</string>
-							</object>
-							<object class="IBToOneOutletInfo">
 								<string key="name">mNewAvailableVersionPanel</string>
 								<string key="candidateClassName">NSPanel</string>
 							</object>
@@ -2305,7 +2277,7 @@
 					<string key="superclassName">NSButton</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">../../libpm/cocoa_utilities/PMCancelButtonForPanel.h</string>
+						<string key="minorKey">../libpm/cocoa_utilities/PMCancelButtonForPanel.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">
@@ -2321,7 +2293,7 @@
 					<string key="superclassName">NSButton</string>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">
 						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">../../libpm/cocoa_utilities/PMOkButtonForPanel.h</string>
+						<string key="minorKey">../libpm/cocoa_utilities/PMOkButtonForPanel.h</string>
 					</object>
 				</object>
 				<object class="IBPartialClassDescription">

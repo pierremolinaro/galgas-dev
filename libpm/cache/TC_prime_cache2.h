@@ -49,22 +49,22 @@ class TC_prime_cache2 {
 
 //--- Cache entry type
   protected : class cCacheEntry {
-    public : PMSInt32 mOperand1 ;
-    public : PMSInt32 mOperand2 ;
+    public : PMSInt mOperand1 ;
+    public : PMSInt mOperand2 ;
     public : RESULT mResult ;
   } ;
 
 //--- Cache read
-  public : inline void getCacheEntry (const PMSInt32 inOperand1,
-                                      const PMSInt32 inOperand2,
+  public : inline void getCacheEntry (const PMSInt inOperand1,
+                                      const PMSInt inOperand2,
                                       bool & outCacheSuccess,
                                       PMSInt32 & outHashCode,
                                       RESULT & outResult) ;
 
 //--- Cache write
-  public : inline void writeCacheEntry (const PMSInt32 inOperand1,
-                                        const PMSInt32 inOperand2,
-                                        const PMSInt32 inHashCode,
+  public : inline void writeCacheEntry (const PMSInt inOperand1,
+                                        const PMSInt inOperand2,
+                                        const PMSInt inHashCode,
                                         const RESULT inResult) ;
 
 //--- Clear all cache entries
@@ -204,12 +204,11 @@ void TC_prime_cache2 <RESULT>::reallocCache (const PMSInt32 inCacheSize) {
 //---------------------------------------------------------------------------*
 
 template <class RESULT>
-void TC_prime_cache2 <RESULT>
-::getCacheEntry (const PMSInt32 inOperand1,
-                 const PMSInt32 inOperand2,
-                 bool & outCacheSuccess,
-                 PMSInt32 & outHashCode,
-                 RESULT & outResult) {
+void TC_prime_cache2 <RESULT>::getCacheEntry (const PMSInt inOperand1,
+                                              const PMSInt inOperand2,
+                                              bool & outCacheSuccess,
+                                              PMSInt32 & outHashCode,
+                                              RESULT & outResult) {
 //--- Compute hash code
   outHashCode = (PMSInt32) (((PMUInt32) ((inOperand2 * mCacheSizeIntegerSquareRoot) + inOperand1)) % ((PMUInt32) mCacheSize)) ;
 //--- Cache success ?
@@ -225,11 +224,10 @@ void TC_prime_cache2 <RESULT>
 //---------------------------------------------------------------------------*
 
 template <class RESULT>
-void TC_prime_cache2 <RESULT>
-::writeCacheEntry (const PMSInt32 inOperand1,
-                   const PMSInt32 inOperand2,
-                   const PMSInt32 inHashCode,
-                   const RESULT inResult) {
+void TC_prime_cache2 <RESULT>::writeCacheEntry (const PMSInt inOperand1,
+                                                const PMSInt inOperand2,
+                                                const PMSInt inHashCode,
+                                                const RESULT inResult) {
 //--- Cache overrides ?
   mCacheOverridesCount += (mCache [inHashCode].mOperand1 != 0) ;
 //--- Write Operands

@@ -300,6 +300,12 @@ routine updateTargets
   availableGenerationFeatures += !"xcode_arch:x86_64" ;
   availableGenerationFeatures += !"xcode_arch:ppc64" ;
   availableGenerationFeatures += !"xcode_arch:ppc" ;
+  availableGenerationFeatures += !"xcode_arch:Leopard-32" ;
+  availableGenerationFeatures += !"xcode_arch:Leopard-64" ;
+  availableGenerationFeatures += !"xcode_arch:SnowLeopard-32" ;
+  availableGenerationFeatures += !"xcode_arch:SnowLeopard-64" ;
+  availableGenerationFeatures += !"xcode_arch:Lion-32" ;
+  availableGenerationFeatures += !"xcode_arch:Lion-64" ;
   @stringset generationFeatures [emptySet] ;
   foreach inTargetFeatureList do
     if [availableGenerationFeatures hasKey ![mValue string]] then
@@ -326,17 +332,46 @@ routine updateTargets
   end if ;
 #--- Check xcode target architectures
   @stringlist architectureList [emptyList] ;
+  @string SDK := "" ;
+  if [generationFeatures hasKey !"xcode_arch:Leopard-32"] then
+    architectureList += !"\"$(ARCHS_STANDARD_32_BIT)\"" ;
+    SDK  := "macosx10.5" ;
+  end if ;
+  if [generationFeatures hasKey !"xcode_arch:Leopard-64"] then
+    architectureList += !"\"$(ARCHS_STANDARD_64_BIT)\"" ;
+    SDK  := "macosx10.5" ;
+  end if ;
+  if [generationFeatures hasKey !"xcode_arch:SnowLeopard-32"] then
+    architectureList += !"\"$(ARCHS_STANDARD_32_BIT)\"" ;
+    SDK  := "macosx10.6" ;
+  end if ;
+  if [generationFeatures hasKey !"xcode_arch:SnowLeopard-64"] then
+    architectureList += !"\"$(ARCHS_STANDARD_64_BIT)\"" ;
+    SDK  := "macosx10.6" ;
+  end if ;
+  if [generationFeatures hasKey !"xcode_arch:Lion-32"] then
+    architectureList += !"\"$(ARCHS_STANDARD_32_BIT)\"" ;
+    SDK  := "macosx10.7" ;
+  end if ;
+  if [generationFeatures hasKey !"xcode_arch:Lion-64"] then
+    architectureList += !"\"$(ARCHS_STANDARD_64_BIT)\"" ;
+    SDK  := "macosx10.7" ;
+  end if ;
   if [generationFeatures hasKey !"xcode_arch:i386"] then
-     architectureList += !"i386" ;
+    architectureList += !"i386" ;
+    SDK  := "macosx10.5" ;
   end if ;
   if [generationFeatures hasKey !"xcode_arch:x86_64"] then
-     architectureList += !"x86_64" ;
+    architectureList += !"x86_64" ;
+    SDK  := "macosx10.5" ;
   end if ;
   if [generationFeatures hasKey !"xcode_arch:ppc64"] then
-     architectureList += !"ppc64" ;
+    architectureList += !"ppc64" ;
+    SDK  := "macosx10.5" ;
   end if ;
   if [generationFeatures hasKey !"xcode_arch:ppc"] then
-     architectureList += !"ppc7400" ; # G4
+    architectureList += !"ppc7400" ; # G4
+    SDK  := "macosx10.5" ;
   end if ;
   if [generationFeatures hasKey !"project_xcode"] & ([architectureList length] == 0) then
     warning inProjectName : "'feature \"xcode_arch:i386\" ;' implicitly added, due to 'project_xcode'" ;
@@ -442,6 +477,7 @@ routine updateTargets
       !resourceFiles
       !intermediateFilePath
       !architectureList
+      !SDK
       !libpmPath
     ;
   end if ;

@@ -1107,6 +1107,7 @@ end routine ;
 routine enterProjectDefaultSettings
   ??@stringlist inHeaderSearchPathList
   ??@stringlist inArchitectureList
+  ??@string inSDK
   !@stringlist outProjectDefaultSettings
 :
 #-------------------------------------------------- Define project default configuration
@@ -1116,12 +1117,18 @@ routine enterProjectDefaultSettings
   end foreach ;
   outProjectDefaultSettings := [@stringlist emptyList] ;
   outProjectDefaultSettings  += !"ALWAYS_SEARCH_USER_PATHS = NO;" ;
-  @string s := "ARCHS = (" ;
-  foreach inArchitectureList do
-    s .= "\n\t\t\t\t\t" . mValue . "," ;
-  end foreach ;
-  s .= "\n\t\t\t\t);" ;
-#  outProjectDefaultSettings  += !"ARCHS = (\n\t\t\t\t\ti386,\n\t\t\t\t\tppc,\n\t\t\t\t);" ;
+  @string s := "ARCHS = " ;
+  if [inArchitectureList length] == 1 then
+    s .= [inArchitectureList mValueAtIndex !0] ;
+  else
+    s .= "(" ;
+    foreach inArchitectureList do
+      s .= "\n\t\t\t\t\t" . mValue . "," ;
+    end foreach ;
+    s .= "\n\t\t\t\t)" ;
+  end if ;
+  s .= ";" ;
+ 
   outProjectDefaultSettings  += !s ;
   outProjectDefaultSettings  += !"GCC_DEBUGGING_SYMBOLS = default;" ;
   outProjectDefaultSettings  += !"GCC_ENABLE_OBJC_GC = required;" ;
@@ -1158,7 +1165,7 @@ routine enterProjectDefaultSettings
   outProjectDefaultSettings  += !"GCC_WARN_UNUSED_VARIABLE = YES;" ;
   outProjectDefaultSettings  += !"HEADER_SEARCH_PATHS = (\n" . pathString . "\t\t\t\t);" ;
   outProjectDefaultSettings  += !"PREBINDING = NO;" ;
-  outProjectDefaultSettings  += !"SDKROOT = /Developer/SDKs/MacOSX10.5.sdk;" ;
+  outProjectDefaultSettings  += !"SDKROOT = " . inSDK . " ;" ; # /Developer/SDKs/MacOSX10.5.sdk;" ;
 end routine ;
 
 #---------------------------------------------------------------------------*

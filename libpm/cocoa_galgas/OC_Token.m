@@ -43,7 +43,11 @@
 
 - (void) translateRange: (NSInteger) inTranslation {
   if ((inTranslation < 0) && (mRange.location < ((NSUInteger) - inTranslation))) {
-    NSLog (@"ERROR in %s : range [%u %u], inTranslation %d", __PRETTY_FUNCTION__, mRange.location, mRange.length, inTranslation) ;
+    NSLog (@"ERROR in %s : range [%llu %llu], inTranslation %lld",
+           __PRETTY_FUNCTION__,
+           (UInt64) mRange.location,
+           (UInt64) mRange.length,
+           (SInt64) inTranslation) ;
   }
   mRange.location += inTranslation ;
 }
