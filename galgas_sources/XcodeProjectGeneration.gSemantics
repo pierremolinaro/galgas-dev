@@ -832,6 +832,7 @@ routine generateXcodeProject
   ??@stringlist inResourceFiles
   ??@string inReferenceFilePath
   ??@stringlist inArchitectureList
+  ??@string inSDK
   ??@string inLIBPMpath
 :
   @XcodeProjectDescription XcodeProjectDescription ;
@@ -1318,6 +1319,7 @@ routine generateXcodeProject
   enterProjectDefaultSettings
     !pathes
     !inArchitectureList
+    !inSDK
     ?projectDefaultSettings
   ;
 
