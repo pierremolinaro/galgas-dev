@@ -279,7 +279,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 //---------------------------------------------------------------------------*
 
 - (void) setTextColorsAndFontForTokenizer: (OC_Lexique *) inTokenizer
-         atIndex: (unsigned) inIndex {
+         atIndex: (NSUInteger) inIndex {
   #define kDefaultColorCount 7
   NSColor * defaultColorArray [kDefaultColorCount] = {
     [NSColor blackColor],
@@ -315,7 +315,8 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
         setObject:[NSArchiver archivedDataWithRootObject:defaultColorArray [defaultColorIndex]]
         forKey:name
       ] ;
-      defaultColorIndex = (defaultColorIndex + 1) % kDefaultColorCount ;
+      // defaultColorIndex = (defaultColorIndex + 1) % kDefaultColorCount ;
+      defaultColorIndex = 1 ;
     }
   //--- By default, font is courier 13
     name = [NSString stringWithFormat:@"%@_%@", GGS_template_font, [inTokenizer styleIdentifierForStyleIndex:0]] ;

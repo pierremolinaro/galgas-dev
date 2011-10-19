@@ -629,34 +629,36 @@
   void supprimerPointeur (const void * inPointer,
                           const enumAllocation natureAllocation COMMA_LOCATION_ARGS) {
     bool h = false ;
-    CelementArbreBinaireEquilibrePointeur * pointeurElementSupprime = (CelementArbreBinaireEquilibrePointeur *) NULL ;
+    CelementArbreBinaireEquilibrePointeur * pointerToDelete = (CelementArbreBinaireEquilibrePointeur *) NULL ;
     suppressionRecursiveDansArbreBinaireEquilibre (gPointersTreeRoot [HashCode (inPointer)],
-                                                   inPointer, pointeurElementSupprime, h);
-    assert_routine (pointeurElementSupprime != NULL, "(" __FILE__ ") Pointer (0x%X) is unknown", (PMSInt) inPointer, 0 COMMA_THERE) ;
-    const PMSInt32 numeroLigneSource = pointeurElementSupprime->champNumeroLigneSource ;
-    const char * nomFichierSource = pointeurElementSupprime->mSourceFileName ;
-    // printf ("------- %p %d\n", pointeurElementSupprime, pointeurElementSupprime->champNatureObjet) ;
-    switch (natureAllocation) {
-    case kAllocatedByMacroMyNew :
-      assert_routine (pointeurElementSupprime->champNatureObjet == kAllocatedByMacroMyNew,
-        "(" __FILE__ ") Appel de 'macroMyDelete' sur un pointeur declare dans '%s' ligne %d qui n'a pas ete alloue par 'macroMyNew'", 
-        (PMSInt) nomFichierSource, numeroLigneSource, IN_SOURCE_FILE, IN_SOURCE_LINE) ; 
-      break ;
-    case kAllocatedByMacroMyNewArray :
-      assert_routine (pointeurElementSupprime->champNatureObjet == kAllocatedByMacroMyNewArray,
-        "(" __FILE__ ") Appel de 'macroMyDeleteArray' sur un pointeur declare dans '%s' ligne %d qui n'a pas ete alloue par 'macroMyNewArray'", 
-        (PMSInt) nomFichierSource, numeroLigneSource, IN_SOURCE_FILE, IN_SOURCE_LINE) ;
-      break ;
-    case kAllocatedByMacroMyNewPODArray :
-      assert_routine (pointeurElementSupprime->champNatureObjet == kAllocatedByMacroMyNewPODArray,
-        "(" __FILE__ ") Appel de 'macroMyDeletePODArray' sur un pointeur declare dans '%s' ligne %d qui n'a pas ete alloue par 'macroMyNewPODArray'", 
-        (PMSInt) nomFichierSource, numeroLigneSource, IN_SOURCE_FILE, IN_SOURCE_LINE) ;
-      break ;
-    default : // Alloue hors macro
-      break ;
+                                                   inPointer, pointerToDelete, h);
+    assert_routine (pointerToDelete != NULL, "(" __FILE__ ") Pointer (0x%X) is unknown", (PMSInt) inPointer, 0 COMMA_THERE) ;
+    if (NULL != pointerToDelete) {
+      const PMSInt32 numeroLigneSource = pointerToDelete->champNumeroLigneSource ;
+      const char * nomFichierSource = pointerToDelete->mSourceFileName ;
+      // printf ("------- %p %d\n", pointerToDelete, pointerToDelete->champNatureObjet) ;
+      switch (natureAllocation) {
+      case kAllocatedByMacroMyNew :
+        assert_routine (pointerToDelete->champNatureObjet == kAllocatedByMacroMyNew,
+          "(" __FILE__ ") Appel de 'macroMyDelete' sur un pointeur declare dans '%s' ligne %d qui n'a pas ete alloue par 'macroMyNew'", 
+          (PMSInt) nomFichierSource, numeroLigneSource, IN_SOURCE_FILE, IN_SOURCE_LINE) ; 
+        break ;
+      case kAllocatedByMacroMyNewArray :
+        assert_routine (pointerToDelete->champNatureObjet == kAllocatedByMacroMyNewArray,
+          "(" __FILE__ ") Appel de 'macroMyDeleteArray' sur un pointeur declare dans '%s' ligne %d qui n'a pas ete alloue par 'macroMyNewArray'", 
+          (PMSInt) nomFichierSource, numeroLigneSource, IN_SOURCE_FILE, IN_SOURCE_LINE) ;
+        break ;
+      case kAllocatedByMacroMyNewPODArray :
+        assert_routine (pointerToDelete->champNatureObjet == kAllocatedByMacroMyNewPODArray,
+          "(" __FILE__ ") Appel de 'macroMyDeletePODArray' sur un pointeur declare dans '%s' ligne %d qui n'a pas ete alloue par 'macroMyNewPODArray'", 
+          (PMSInt) nomFichierSource, numeroLigneSource, IN_SOURCE_FILE, IN_SOURCE_LINE) ;
+        break ;
+      default : // Alloue hors macro
+        break ;
+      }
+      myFreeRoutine (pointerToDelete) ;
+      gPointersCurrentCount -- ;
     }
-    myFreeRoutine (pointeurElementSupprime) ;
-    gPointersCurrentCount -- ;
   }
 #endif
 

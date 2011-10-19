@@ -87,7 +87,7 @@ PMUInt32 hashMapMemoryUsage (void) {
 //---------------------------------------------------------------------*
 
 static void reallocHashMap (const PMUInt32 inNewSize) {
-  if (inNewSize != gCollisionMapSize) {
+  if ((0 < inNewSize) && (inNewSize != gCollisionMapSize)) {
     if (C_BDD::displaysInformationMessages ()) {
       printf ("BDD package info: hash map reallocated to %u %03u %03u (%u MB)\n",
               inNewSize / 1000000, (inNewSize / 1000) % 1000, inNewSize % 1000,
@@ -402,10 +402,12 @@ void C_BDD::markAndSweepUnusedNodes (void) {
   for (PMUInt32 i=0 ; i<gCollisionMapSize ; i++) {
     gCollisionMap [i] = 0 ;
   }
-  for (PMUInt32 nodeIndex=1 ; nodeIndex<=gCurrentNodeCount ; nodeIndex++) {
-    const PMUInt64 hashCode = gNodeArray [nodeIndex] % (PMUInt64) gCollisionMapSize ;
-    gAuxiliaryArray [nodeIndex] = gCollisionMap [hashCode] ;
-    gCollisionMap [hashCode] = nodeIndex ;
+  if (0 < gCollisionMapSize) {
+    for (PMUInt32 nodeIndex=1 ; nodeIndex<=gCurrentNodeCount ; nodeIndex++) {
+      const PMUInt64 hashCode = gNodeArray [nodeIndex] % (PMUInt64) gCollisionMapSize ;
+      gAuxiliaryArray [nodeIndex] = gCollisionMap [hashCode] ;
+      gCollisionMap [hashCode] = nodeIndex ;
+    }
   }
   if (C_BDD::displaysInformationMessages ()) {
     co << "BDD package info: mark and sweep done in " << timer
