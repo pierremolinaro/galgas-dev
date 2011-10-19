@@ -129,33 +129,35 @@ static bool searchInANDOperationCache (const PMUInt32 inOperand1,
 //---------------------------------------------------------------------*
 
 static void reallocANDOperationCache (const PMUInt32 inNewSize) {
-  gANDOperationCacheMapUsedEntryCount = 0 ;
-  PMUInt64 * newCache = NULL ;
-  macroMyNewPODArray (newCache, PMUInt64, inNewSize) ;
-  for (PMUInt32 i=0 ; i<inNewSize ; i++) {
-    newCache [i] = 0 ;
-  }
-  PMUInt32 * newResult = NULL ;
-  macroMyNewPODArray (newResult, PMUInt32, inNewSize) ;
-  for (PMUInt32 i=0 ; i<gANDOperationMapSize ; i++) {
-    if (gANDOperationCacheOperandMap [i] != 0) {
-      const PMUInt64 newIndex = gANDOperationCacheOperandMap [i] % inNewSize ;
-      gANDOperationCacheMapUsedEntryCount += newCache [newIndex] == 0 ;
-      newCache [newIndex] = gANDOperationCacheOperandMap [i] ;
-      newResult [newIndex] = gANDOperationCacheResultMap [i] ;
+  if (0 < inNewSize) {
+    gANDOperationCacheMapUsedEntryCount = 0 ;
+    PMUInt64 * newCache = NULL ;
+    macroMyNewPODArray (newCache, PMUInt64, inNewSize) ;
+    for (PMUInt32 i=0 ; i<inNewSize ; i++) {
+      newCache [i] = 0 ;
     }
-  }
-  macroMyDeletePODArray (gANDOperationCacheOperandMap) ;
-  macroMyDeletePODArray (gANDOperationCacheResultMap) ;
-  gANDOperationCacheOperandMap = newCache ;
-  gANDOperationCacheResultMap = newResult ;
-  gANDOperationMapSize = inNewSize ;
-  if (C_BDD::displaysInformationMessages ()) {
-    printf ("BDD package info: AND cache reallocated to %u %03u %03u (%u MB)\n",
-            gANDOperationMapSize / 1000000,
-            (gANDOperationMapSize / 1000) % 1000,
-            gANDOperationMapSize % 1000,
-            (gANDOperationMapSize * (PMUInt32) (sizeof (PMUInt32) + sizeof (PMUInt64))) / 1000000) ;
+    PMUInt32 * newResult = NULL ;
+    macroMyNewPODArray (newResult, PMUInt32, inNewSize) ;
+    for (PMUInt32 i=0 ; i<gANDOperationMapSize ; i++) {
+      if (gANDOperationCacheOperandMap [i] != 0) {
+        const PMUInt64 newIndex = gANDOperationCacheOperandMap [i] % inNewSize ;
+        gANDOperationCacheMapUsedEntryCount += newCache [newIndex] == 0 ;
+        newCache [newIndex] = gANDOperationCacheOperandMap [i] ;
+        newResult [newIndex] = gANDOperationCacheResultMap [i] ;
+      }
+    }
+    macroMyDeletePODArray (gANDOperationCacheOperandMap) ;
+    macroMyDeletePODArray (gANDOperationCacheResultMap) ;
+    gANDOperationCacheOperandMap = newCache ;
+    gANDOperationCacheResultMap = newResult ;
+    gANDOperationMapSize = inNewSize ;
+    if (C_BDD::displaysInformationMessages ()) {
+      printf ("BDD package info: AND cache reallocated to %u %03u %03u (%u MB)\n",
+              gANDOperationMapSize / 1000000,
+              (gANDOperationMapSize / 1000) % 1000,
+              gANDOperationMapSize % 1000,
+              (gANDOperationMapSize * (PMUInt32) (sizeof (PMUInt32) + sizeof (PMUInt64))) / 1000000) ;
+    }
   }
 }
 

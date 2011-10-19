@@ -133,7 +133,6 @@
 		CF63AD280EE04C0B00220E75 /* projectMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */; };
 		CF63B55310FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */; };
 		CF63B55410FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */; };
-		CF64405F144EFCC000FFF664 /* Info-developer.plist in Resources */ = {isa = PBXBuildFile; fileRef = CF64405E144EFCC000FFF664 /* Info-developer.plist */; };
 		CF64D65910D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF64D65710D550BD00F1F1CF /* semanticsModifiers.cpp */; };
 		CF64D65A10D550BD00F1F1CF /* semanticsModifiers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF64D65710D550BD00F1F1CF /* semanticsModifiers.cpp */; };
 		CF69B28E0A31EFF0002AE337 /* C_ErrorOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */; };
@@ -2057,7 +2056,6 @@
 				CF06F5CB1049592F005F03FA /* MainMenu.xib in Resources */,
 				CF06F5CC1049592F005F03FA /* OC_GGS_Document.xib in Resources */,
 				CF83184C104A7A9200FDF2EC /* galgasUpdate.xib in Resources */,
-				CF64405F144EFCC000FFF664 /* Info-developer.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
