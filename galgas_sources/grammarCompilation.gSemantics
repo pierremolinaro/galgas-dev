@@ -2,7 +2,7 @@
 #                                                                           *
 #  Grammar component compilation                                            *
 #                                                                           *
-#  Copyright (C) 2009, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2009, ..., 2011 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -63,7 +63,7 @@ routine checkLabelMap
         . if [mFormalArgumentList length] > 1 then "s" else "" end
         . " declared here, but declaration at "
         . [[inNonterminalSymbolLabelMapForGrammarAnalysis locationForKey ![mLabelName string]] locationString]
-        . "names " . [[formalParametersList length] string] . "parameter"
+        . " names " . [[formalParametersList length] string] . " parameter"
         . if [formalParametersList length] > 1 then "s" else "" end ;
     else
       foreach mFormalArgumentList, formalParametersList do
@@ -128,16 +128,22 @@ local routine handleNonTerminalDeclarationsFromRuleList
   ??@syntaxRuleListAST inRuleList
 :
   foreach inRuleList do
+    @nonTerminalLabelListAST nonTerminalLabelListAST [emptyList] ;
+    foreach mLabelList do
+      nonTerminalLabelListAST += 
+        !mLabelName
+        !mFormalArguments
+        !mEndOfArgumentLocation
+      ;
+    end foreach ;
     with !?ioNonTerminalMapForGrammarAnalysis hasKey ![mNonterminalName string] do
+      checkLabelMap
+        ![mNonterminalName location]
+        !nonTerminalLabelListAST
+        ![ioNonTerminalMapForGrammarAnalysis locationForKey ![mNonterminalName string]]
+        !mNonterminalSymbolParametersMap
+      ;
     else
-      @nonTerminalLabelListAST nonTerminalLabelListAST [emptyList] ;
-      foreach mLabelList do
-        nonTerminalLabelListAST += 
-          !mLabelName
-          !mFormalArguments
-          !mEndOfArgumentLocation
-        ;
-      end foreach ;
       [!?ioNonTerminalMapForGrammarAnalysis insertKey
         !mNonterminalName
         ![ioNonTerminalMapForGrammarAnalysis count]
