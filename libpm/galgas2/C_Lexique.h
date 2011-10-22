@@ -31,6 +31,7 @@
 #include "galgas2/C_Compiler.h"
 #include "galgas2/cProductionNameDescriptor.h"
 #include "galgas2/cTemplateDelimiter.h"
+#include "galgas2/C_galgas_io.h"
 
 //---------------------------------------------------------------------------*
 
@@ -47,12 +48,10 @@ class C_Lexique : public C_Compiler {
   public : C_Lexique (C_Compiler * inCallerCompiler,
                       const C_String & inDependencyFileExtension,
                       const C_String & inDependencyFilePath,
-                      C_galgas_io * inParametersPtr,
                       const C_String & inSourceFileName
                       COMMA_LOCATION_ARGS) ;
 
   public : C_Lexique (C_Compiler * inCallerCompiler,
-                      C_galgas_io * inParametersPtr,
                       const C_String & inSourceString,
                       const C_String & inStringForError
                       COMMA_LOCATION_ARGS) ;

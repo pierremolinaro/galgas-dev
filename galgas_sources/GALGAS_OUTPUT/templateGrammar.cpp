@@ -4681,7 +4681,7 @@ void cGrammar_templateGrammar::_performSourceFileParsing_ (C_Compiler * inCompil
     }
     if (filePath.fileExists ()) {
       C_Lexique_galgasTemplateScanner * scanner = NULL ;
-      macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, "", "", inCompiler->ioParametersPtr (), filePath COMMA_HERE)) ;
+      macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, "", "", filePath COMMA_HERE)) ;
       // if (scanner->needsCompiling ()) {
         if (scanner->sourceText () != NULL) {
           scanner->mPerformGeneration = inCompiler->mPerformGeneration ;
@@ -4718,7 +4718,7 @@ void cGrammar_templateGrammar::_performSourceStringParsing_ (C_Compiler * inComp
                                 GALGAS_templateInstructionListAST &  parameter_1
                                 COMMA_UNUSED_LOCATION_ARGS) {
   C_Lexique_galgasTemplateScanner * scanner = NULL ;
-  macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, inCompiler->ioParametersPtr (), inSourceString.stringValue (), "" COMMA_HERE)) ;
+  macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, inSourceString.stringValue (), "" COMMA_HERE)) ;
   if (scanner->sourceText () != NULL) {
     scanner->mPerformGeneration = inCompiler->mPerformGeneration ;
     const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,

@@ -1410,7 +1410,7 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
                      << "::performIndexing (C_Compiler * inCompiler,\n"
                         "             const C_String & inSourceFilePath) {\n"
                         "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
-                        "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", inCompiler->ioParametersPtr (), inSourceFilePath COMMA_HERE)) ;\n"
+                        "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", inSourceFilePath COMMA_HERE)) ;\n"
                         "  scanner->enableIndexing () ;\n"
                         "  if (scanner->sourceText () != NULL) {\n"
                         "    scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n"
@@ -1474,7 +1474,7 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
                           "    }\n"
                           "    if (filePath.fileExists ()) {\n"
                           "      C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
-                          "      macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", inCompiler->ioParametersPtr (), filePath COMMA_HERE)) ;\n"
+                          "      macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", filePath COMMA_HERE)) ;\n"
                           "      // if (scanner->needsCompiling ()) {\n"
                           "        if (scanner->sourceText () != NULL) {\n"
                           "          scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n"
@@ -1568,8 +1568,7 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
                           "COMMA_UNUSED_LOCATION_ARGS) {\n" ;
         generatedZone3 << "  C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
                           "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation ()
-//                       << " (inCompiler, inCompiler->ioParametersPtr (), inSourceString.stringValue (), \"Error when parsing dynamic string\" COMMA_HERE)) ;\n"
-                       << " (inCompiler, inCompiler->ioParametersPtr (), inSourceString.stringValue (), \"\" COMMA_HERE)) ;\n"
+                       << " (inCompiler, inSourceString.stringValue (), \"\" COMMA_HERE)) ;\n"
                           "  scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n" ;
         generatedZone3 << "  const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
                           "                                                   gActionTableIndex, gSuccessorTable,\n"

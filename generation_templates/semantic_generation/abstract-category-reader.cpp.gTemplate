@@ -58,8 +58,7 @@ GALGAS_%![RETURN_TYPE identifierRepresentation]% callCategoryReader_%![READER_NA
        gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]%.forceObjectAtIndex (classIndex, f, NULL COMMA_HERE) ;
     }
     if (NULL == f) {
-      printf ("FATAL CATEGORY READER CALL ERROR in \%s, line \%d\\n", __FILE__, __LINE__) ;
-      exit (1) ;
+      fatalError ("FATAL CATEGORY READER CALL ERROR", __FILE__, __LINE__) ;
     }else{
       result = f (inObject, %
       foreach FORMAL_ARGUMENT_LIST do

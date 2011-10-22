@@ -41,10 +41,9 @@ cTokenFor_%!LEXIQUE_IDENTIFIER%::cTokenFor_%!LEXIQUE_IDENTIFIER% (void)%
 C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (C_Compiler * inCallerCompiler,
                 const C_String & inDependencyFileExtension,
                 const C_String & inDependencyFilePath,
-                C_galgas_io * inParametersPtr,
                 const C_String & inSourceFileName
                 COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inParametersPtr, inSourceFileName COMMA_THERE)%
+C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inSourceFileName COMMA_THERE)%
   if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
     %,\nmMatchedTemplateDelimiterIndex (-1)%
   end if
@@ -54,11 +53,10 @@ C_Lexique (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, in
 //---------------------------------------------------------------------------*
 
 C_Lexique_%!LEXIQUE_IDENTIFIER%::C_Lexique_%!LEXIQUE_IDENTIFIER% (C_Compiler * inCallerCompiler,
-                C_galgas_io * inParametersPtr,
                 const C_String & inSourceString,
                 const C_String & inStringForError
                 COMMA_LOCATION_ARGS) :
-C_Lexique (inCallerCompiler, inParametersPtr, inSourceString, inStringForError COMMA_THERE)%
+C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)%
   if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
     %,\nmMatchedTemplateDelimiterIndex (-1)%
   end if

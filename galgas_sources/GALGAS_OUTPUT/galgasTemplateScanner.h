@@ -62,12 +62,10 @@ class C_Lexique_galgasTemplateScanner : public C_Lexique {
   public : C_Lexique_galgasTemplateScanner (C_Compiler * inCallerCompiler,
                        const C_String & inDependencyFileExtension,
                        const C_String & inDependencyFilePath,
-                       C_galgas_io * inParametersPtr,
                        const C_String & inSourceFileName
                        COMMA_LOCATION_ARGS) ;
 
   public : C_Lexique_galgasTemplateScanner (C_Compiler * inCallerCompiler,
-                       C_galgas_io * inParametersPtr,
                        const C_String & inSourceString,
                        const C_String & inStringForError
                        COMMA_LOCATION_ARGS) ;

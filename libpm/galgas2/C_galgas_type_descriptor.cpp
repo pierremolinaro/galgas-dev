@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 2010, ..., 2011 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -24,6 +24,8 @@
 //---------------------------------------------------------------------------*
 
 #include "C_galgas_type_descriptor.h"
+#include "strings/C_String.h"
+#include "galgas2/C_galgas_io.h"
 
 //---------------------------------------------------------------------------*
 
@@ -48,9 +50,8 @@ static PMSInt32 gSlotID = 0 ;
 
 //---------------------------------------------------------------------------*
 
-C_galgas_type_descriptor::
-C_galgas_type_descriptor (const char * inGalgasTypeName,
-                          const C_galgas_type_descriptor * inSuperClassDescriptor) :
+C_galgas_type_descriptor::C_galgas_type_descriptor (const char * inGalgasTypeName,
+                                                    const C_galgas_type_descriptor * inSuperClassDescriptor) :
 mNextType (NULL),
 mPreviousType (NULL),
 mBalance (0),
@@ -108,8 +109,7 @@ void C_galgas_type_descriptor::rotateLeft (C_galgas_type_descriptor * & ioRootPt
 
 //---------------------------------------------------------------------
 
-void C_galgas_type_descriptor::
-rotateRight (C_galgas_type_descriptor * & ioRootPtr) {
+void C_galgas_type_descriptor::rotateRight (C_galgas_type_descriptor * & ioRootPtr) {
   C_galgas_type_descriptor * b = ioRootPtr->mPreviousType ;
   ioRootPtr->mPreviousType = b->mNextType ;
   b->mNextType = ioRootPtr ;
@@ -167,9 +167,9 @@ void C_galgas_type_descriptor::recursiveInsert (C_galgas_type_descriptor * & ioR
       }
     }else{
       ioExtension = false;
-      printf ("**** EXIT: INTERNAL ERROR IN %s, line %d: type '@%s' already defined ****\n",
-              __FILE__, __LINE__, inDescriptor->mGalgasTypeName) ;
-      exit (1) ;
+      C_String errorMessage ;
+      errorMessage << "FATAL ERROR (type '@" << inDescriptor->mGalgasTypeName << "' already defined)" ;
+      fatalError (errorMessage, __FILE__, __LINE__) ;
     }
   }
 }
