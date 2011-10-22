@@ -28,8 +28,11 @@
 
 //---------------------------------------------------------------------------*
 
-#include "galgas2/C_galgas_io.h"
 #include "collections/TC_UniqueArray.h"
+#include "strings/C_String.h"
+#include "utilities/C_SharedObject.h"
+#include "galgas2/C_LocationInSource.h"
+#include "galgas2/C_SourceTextInString.h"
 
 //---------------------------------------------------------------------------*
 
@@ -62,8 +65,7 @@ class C_Compiler : public C_SharedObject {
 //--- Constructor and destructor
   public : C_Compiler (C_Compiler * inCallerCompiler,
                        const C_String & inDependencyFileExtension,
-                       const C_String & inDependencyFilePath,
-                       C_galgas_io * inParametersPtr
+                       const C_String & inDependencyFilePath
                        COMMA_LOCATION_ARGS) ;
   public : virtual ~ C_Compiler (void) ;
 
@@ -84,10 +86,6 @@ class C_Compiler : public C_SharedObject {
   protected : C_LocationInSource mTemplateStringLocation ;
   public : GALGAS_string retrieveAndResetTemplateString (void) ;
   public : void resetTemplateString (void) ;
-
-//--- Galgas io pointer
-  private : C_galgas_io * mIOparametersPtr ;
-  public : C_galgas_io * ioParametersPtr (void) { return mIOparametersPtr ; }
 
 //--- Handling current character and its location
   private : C_SourceTextInString * mSourceTextPtr ;
@@ -131,68 +129,6 @@ class C_Compiler : public C_SharedObject {
     return mCurrentLocation.mColumnNumber ;
   }
 
-//--- Error count
-  public : inline PMSInt32 totalErrorCount (void) const {
-    return mIOparametersPtr->totalErrorCount () ;
-  }
-
-  public : inline PMSInt32 currentFileErrorCount (void) const {
-    return mIOparametersPtr->currentFileErrorCount () ;
-  }
-
-
-//--- Warning count
-  public : inline PMSInt32 totalWarningCount (void) const {
-    return mIOparametersPtr->totalWarningCount () ;
-  }
-
-//--- File generation statistics
-  public : inline PMUInt32 checkedLineCount (void) const {
-     return mIOparametersPtr->checkedLineCount () ;
-  }
-
-  public : inline PMUInt32 preservedLineCount (void) const {
-     return mIOparametersPtr->preservedLineCount () ;
-  }
-
-  public : inline PMUInt32 generatedLineCount (void) const {
-     return mIOparametersPtr->generatedLineCount () ;
-  }
-
-  public : inline PMUInt32 generatedFileCount (void) const {
-     return mIOparametersPtr->generatedFileCount () ;
-  }
-
-//--- Method called for printing an error
-  public : inline void ggs_printError (const C_String & inMessage) {
-    return mIOparametersPtr->ggs_printError (inMessage) ;
-  } 
-
-//--- Method called for printing a warning
-  public : inline void ggs_printWarning (const C_String & inMessage) {
-    return mIOparametersPtr->ggs_printWarning (inMessage) ;
-  } 
-
-//--- Method called for printing a success message
-  public : inline void ggs_printRewriteFileSuccess (const C_String & inMessage) {
-    return mIOparametersPtr->ggs_printRewriteFileSuccess (inMessage) ;
-  } 
-
-  public : inline void ggs_printCreatedFileSuccess (const C_String & inMessage) {
-    return mIOparametersPtr->ggs_printCreatedFileSuccess (inMessage) ;
-  } 
-
-//--- Method called for printing a message
-  public : inline void ggs_printMessage (const C_String & inMessage) {
-    return mIOparametersPtr->ggs_printMessage (inMessage) ;
-  } 
-
-  public : inline void
-  printFileErrorMessage (const C_String & inSourceFileName,
-                         const C_String & inErrorMessage
-                         COMMA_LOCATION_ARGS) {
-    mIOparametersPtr->printFileErrorMessage (inSourceFileName, inErrorMessage COMMA_THERE) ;
-  } 
 
 //--- Init scanner from source file (for Cocoa GALGAS)
   public : void resetAndLoadSourceFromText (C_SourceTextInString * & ioSourceTextPtr) ; 

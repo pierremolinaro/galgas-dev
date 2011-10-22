@@ -27,6 +27,7 @@
 #include "capCollectionElement.h"
 #include "cCollectionElement.h"
 #include "galgas2/C_Compiler.h"
+#include "galgas2/C_galgas_io.h"
 #include "strings/unicode_character_cpp.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 
@@ -285,9 +286,9 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
         }else{
           ok = inFilePath.stringValue ().writeBinaryData (mData) ;
           if (ok && verboseOptionOn && fileAlreadyExists) {
-            inCompiler->ggs_printRewriteFileSuccess (C_String ("Replaced '") + inFilePath.stringValue () + "'.\n") ;
+            ggs_printRewriteFileSuccess (C_String ("Replaced '") + inFilePath.stringValue () + "'.\n") ;
           }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-            inCompiler->ggs_printCreatedFileSuccess (C_String ("Created '") + inFilePath.stringValue () + "'.\n") ;
+            ggs_printCreatedFileSuccess (C_String ("Created '") + inFilePath.stringValue () + "'.\n") ;
           }else if (! ok) {
             C_String message ;
             message << "cannot write '" << inFilePath.stringValue () << "' file" ;
@@ -296,7 +297,7 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
           }
         }
       }else{
-        inCompiler->ggs_printWarning (C_String ("Need to write '") + inFilePath.stringValue () + "'.\n") ;
+        ggs_printWarning (C_String ("Need to write '") + inFilePath.stringValue () + "'.\n") ;
       }
     }
   }
@@ -358,7 +359,7 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
     if (filePath.length () == 0) {
       inCompiler->onTheFlyRunTimeError ("'@data writeToFile' modifier invoked with empty file path argument" COMMA_THERE) ;
     }else if (! inCompiler->mPerformGeneration) {
-      inCompiler->ggs_printWarning (C_String ("Need to write '") + filePath + "'.\n") ;
+      ggs_printWarning (C_String ("Need to write '") + filePath + "'.\n") ;
     }else{
       const bool fileAlreadyExists = filePath.fileExists () ;
       const bool verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
@@ -383,9 +384,9 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
         const PMUInt32 writtenCount = (PMUInt32) (fwrite (mData.bufferPointer (), 1, (PMUInt32) mData.count (), filePtr) & PMUINT32_MAX) ;
         const bool ok = (::fclose (filePtr) == 0) && (writtenCount == (PMUInt32) mData.count ()) ;
         if (ok && verboseOptionOn && fileAlreadyExists) {
-          inCompiler->ggs_printRewriteFileSuccess (C_String ("Replaced '") + filePath + "'.\n") ;
+          ggs_printRewriteFileSuccess (C_String ("Replaced '") + filePath + "'.\n") ;
         }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-          inCompiler->ggs_printCreatedFileSuccess (C_String ("Created '") + filePath + "'.\n") ;
+          ggs_printCreatedFileSuccess (C_String ("Created '") + filePath + "'.\n") ;
         }else if (! ok) {
           C_String message ;
           message << "cannot write '" << filePath << "' file" ;

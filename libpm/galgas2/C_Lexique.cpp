@@ -87,10 +87,9 @@ mDiscardStartString (inOperand.mDiscardStartString) {
 C_Lexique::C_Lexique (C_Compiler * inCallerCompiler,
                       const C_String & inDependencyFileExtension,
                       const C_String & inDependencyFilePath,
-                      C_galgas_io * inParametersPtr,
                       const C_String & inSourceFileName
                       COMMA_LOCATION_ARGS) :
-C_Compiler (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath, inParametersPtr COMMA_THERE),
+C_Compiler (inCallerCompiler, inDependencyFileExtension, inDependencyFilePath COMMA_THERE),
 mIndexingDictionary (NULL),
 mFirstToken (NULL),
 mLastToken (NULL),
@@ -144,11 +143,10 @@ mIndexForSecondPassParsing (0) {
 //---------------------------------------------------------------------------*
 
 C_Lexique::C_Lexique (C_Compiler * inCallerCompiler,
-                      C_galgas_io * inParametersPtr,
                       const C_String & inSourceString,
                       const C_String & inStringForError
                       COMMA_LOCATION_ARGS) :
-C_Compiler (inCallerCompiler, "", "", inParametersPtr COMMA_THERE),
+C_Compiler (inCallerCompiler, "", "" COMMA_THERE),
 mIndexingDictionary (NULL),
 mFirstToken (NULL),
 mLastToken (NULL),
@@ -491,10 +489,10 @@ unknownCharacterLexicalError (LOCATION_ARGS) {
 void C_Lexique::
 lexicalError (const C_String & inLexicalErrorMessage
               COMMA_LOCATION_ARGS) {
-  ioParametersPtr ()->signalLexicalError (sourceText (),
-                                          currentLocationInSource (),
-                                          inLexicalErrorMessage
-                                          COMMA_THERE) ;
+  signalLexicalError (sourceText (),
+                      currentLocationInSource (),
+                      inLexicalErrorMessage
+                      COMMA_THERE) ;
   throw C_lexicalErrorException () ;
 }
 
@@ -504,7 +502,7 @@ void C_Lexique::
 lexicalErrorAtLocation (const C_String & inLexicalErrorMessage,
                         const C_LocationInSource & inErrorLocation
                         COMMA_LOCATION_ARGS) {
-  ioParametersPtr ()->signalLexicalError (sourceText (),
+  signalLexicalError (sourceText (),
                                           inErrorLocation,
                                           inLexicalErrorMessage
                                           COMMA_THERE) ;
@@ -532,11 +530,11 @@ parsingError (const TC_UniqueArray <PMSInt16> & inExpectedTerminalsArray,
 //--- Sort expected token name array
   expectedTokenNames.sortArrayUsingCompareMethod () ;
 //--- Signal error
-  ioParametersPtr ()->signalParsingError (sourceText (),
-                                          mCurrentLocation,
-                                          foundTokenMessage,
-                                          expectedTokenNames
-                                          COMMA_THERE) ;
+  signalParsingError (sourceText (),
+                      mCurrentLocation,
+                      foundTokenMessage,
+                      expectedTokenNames
+                      COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -550,7 +548,7 @@ parsingError (const TC_UniqueArray <PMSInt16> & inExpectedTerminalsArray,
 void C_Lexique::
 lexicalWarning (const C_String & inLexicalWarningMessage
                 COMMA_LOCATION_ARGS) {
-  ioParametersPtr ()->signalLexicalWarning (sourceText (),
+  signalLexicalWarning (sourceText (),
                         mCurrentLocation,
                         inLexicalWarningMessage
                         COMMA_THERE) ;
@@ -1585,7 +1583,7 @@ void C_Lexique::enterProduction (const char * inProductionName,
       message << " tag '" << inTag << "'" ;
     }
     message << "\n" ;
-    ioParametersPtr ()->ggs_printMessage (message) ;
+    ggs_printMessage (message) ;
     mDebugDepthCounter ++ ;
   }
 }
@@ -1613,7 +1611,7 @@ void C_Lexique::didParseTerminal (const char * inTerminalName,
       message << inValue ;
     }
     message << "\n" ;
-    ioParametersPtr ()->ggs_printMessage (message) ;
+    ggs_printMessage (message) ;
   }
 }
 

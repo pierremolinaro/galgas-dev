@@ -100,34 +100,72 @@ const char * max_warning_count_reached_exception::what (void) const throw () {
 
 //---------------------------------------------------------------------------*
 
-static PMSInt32 maxErrors (void) {
+static PMUInt32 mCheckedLines ;
+
+PMUInt32 checkedLineCount (void) { return mCheckedLines ; } ;
+
+void incrementCheckedFileCount (const PMUInt32 inIncrement) {
+  mCheckedLines += inIncrement ;
+}
+
+//---------------------------------------------------------------------------*
+
+static PMUInt32 mGeneratedLines ;
+
+PMUInt32 generatedLineCount (void) { return mGeneratedLines ; } ;
+
+void incrementGeneratedLileCount (const PMUInt32 inIncrement) {
+  mGeneratedLines += inIncrement ;
+}
+
+//---------------------------------------------------------------------------*
+
+static PMUInt32 mPreservedLines ;
+
+PMUInt32 preservedLineCount (void) { return mPreservedLines ; }
+
+void incrementPreservedLileCount (const PMUInt32 inIncrement) {
+  mPreservedLines += inIncrement ;
+}
+
+//---------------------------------------------------------------------------*
+
+static PMUInt32 mGeneratedFileCount ;
+
+PMUInt32 generatedFileCount (void) { return mGeneratedFileCount ; } ;
+
+void incrementGeneratedFileCount (void) {
+  mGeneratedFileCount ++ ;
+}
+
+//---------------------------------------------------------------------------*
+
+PMSInt32 maxErrorCount (void) {
   PMSInt32 result = (PMSInt32) gOption_galgas_5F_cli_5F_options_max_5F_errors.mValue ;
   return (result == 0) ? 100 : result ;
 }
 
 //---------------------------------------------------------------------------*
 
-static PMSInt32 maxWarnings (void) {
+static PMSInt32 mErrorTotalCount ;
+
+PMSInt32 totalErrorCount (void) {
+  return mErrorTotalCount ;
+}
+
+//---------------------------------------------------------------------------*
+
+PMSInt32 maxWarningCount (void) {
   PMSInt32 result = (PMSInt32) gOption_galgas_5F_cli_5F_options_max_5F_warnings.mValue ;
   return (result == 0) ? 100 : result ;
 }
 
 //---------------------------------------------------------------------------*
 
-C_galgas_io::
-C_galgas_io (LOCATION_ARGS) :
-C_SharedObject (THERE),
-mMaxErrorCount (maxErrors ()),
-mMaxWarningCount (maxWarnings ()),
-mDirectoriesToExclude (),
-mErrorTotalCount (0),
-mCurrentFileErrorCount (0),
-mCurrentWarningCount (0),
-mTotalWarningCount (0),
-mCheckedLines (0),
-mGeneratedLines (0),
-mPreservedLines (0),
-mGeneratedFileCount (0) {
+static PMSInt32 mTotalWarningCount ;
+
+PMSInt32 totalWarningCount (void) {
+  return mTotalWarningCount ;
 }
 
 //---------------------------------------------------------------------------*
@@ -136,9 +174,9 @@ mGeneratedFileCount (0) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-C_String C_galgas_io::
+C_String
 errorOrWarningLocationString (const C_LocationInSource & inErrorLocation,
-                              const C_SourceTextInString * inSourceTextPtr) const {
+                              const C_SourceTextInString * inSourceTextPtr) {
   C_String result ;
   if (inSourceTextPtr != NULL) {
     macroValidSharedObject (inSourceTextPtr, const C_SourceTextInString) ;
@@ -152,10 +190,10 @@ errorOrWarningLocationString (const C_LocationInSource & inErrorLocation,
 
 //---------------------------------------------------------------------------*
 
-void C_galgas_io::
+void 
 constructErrorOrWarningLocationMessage (C_String & ioMessage, 
                                         const C_LocationInSource & inErrorLocation,
-                                        const C_SourceTextInString * inSourceTextPtr) const {
+                                        const C_SourceTextInString * inSourceTextPtr) {
   if (inSourceTextPtr != NULL) {
     macroValidSharedObject (inSourceTextPtr, const C_SourceTextInString) ;
     const C_String textLine = inSourceTextPtr->getLineForLocation (inErrorLocation) ;
@@ -178,13 +216,12 @@ constructErrorOrWarningLocationMessage (C_String & ioMessage,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_galgas_io::
+void 
 signalLexicalWarning (const C_SourceTextInString * inSourceTextPtr,
                       const C_LocationInSource & inWarningLocation,
                       const C_String & inLexicalWarningMessage
                       COMMA_LOCATION_ARGS) {
 //--- Increment warning count
-  mCurrentWarningCount ++ ;
   mTotalWarningCount ++ ;
 //--- Construct location warning message
   C_String warningMessage ;
@@ -218,14 +255,13 @@ signalLexicalWarning (const C_SourceTextInString * inSourceTextPtr,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_galgas_io::
+void 
 signalLexicalError (const C_SourceTextInString * inSourceTextPtr,
                     const C_LocationInSource & inErrorLocation,
                     const C_String & inLexicalErrorMessage
                     COMMA_LOCATION_ARGS) {
 //--- Increment error count
   mErrorTotalCount ++ ;
-  mCurrentFileErrorCount ++ ;
 //--- Construct location error message
   C_String errorMessage ;
   constructErrorOrWarningLocationMessage (errorMessage, inErrorLocation, inSourceTextPtr) ;
@@ -258,7 +294,7 @@ signalLexicalError (const C_SourceTextInString * inSourceTextPtr,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_galgas_io::
+void 
 signalParsingError (const C_SourceTextInString * inSourceTextPtr,
                     const C_LocationInSource & inErrorLocation,
                     const C_String & inFoundTokenMessage,
@@ -266,7 +302,6 @@ signalParsingError (const C_SourceTextInString * inSourceTextPtr,
                     COMMA_LOCATION_ARGS) {
 //--- Increment error count
   mErrorTotalCount ++ ;
-  mCurrentFileErrorCount ++ ;
 //--- Construct location error message
   C_String errorMessage ;
   constructErrorOrWarningLocationMessage (errorMessage, inErrorLocation, inSourceTextPtr) ;
@@ -306,15 +341,13 @@ signalParsingError (const C_SourceTextInString * inSourceTextPtr,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_galgas_io::
-signalExtractError (const C_SourceTextInString * inSourceTextPtr,
-                    const C_LocationInSource & inErrorLocation,
-                    const TC_UniqueArray <C_String> & inExpectedClassesErrorStringsArray,
-                    const C_String & inActualFoundClassErrorString
-                    COMMA_LOCATION_ARGS) {
+void signalExtractError (const C_SourceTextInString * inSourceTextPtr,
+                         const C_LocationInSource & inErrorLocation,
+                         const TC_UniqueArray <C_String> & inExpectedClassesErrorStringsArray,
+                         const C_String & inActualFoundClassErrorString
+                         COMMA_LOCATION_ARGS) {
 //--- Increment error count
   mErrorTotalCount ++ ;
-  mCurrentFileErrorCount ++ ;
 //--- Construct location error message
   C_String errorMessage ;
   constructErrorOrWarningLocationMessage (errorMessage, inErrorLocation, inSourceTextPtr) ;
@@ -371,16 +404,14 @@ signalExtractError (const C_SourceTextInString * inSourceTextPtr,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_galgas_io::
-signalCastError (const C_SourceTextInString * inSourceTextPtr,
-                 const C_LocationInSource & inErrorLocation,
-                 const std::type_info * inBaseClass,
-                 const bool inUseKindOfClass,
-                 const C_String & inActualFoundClassErrorString
-                 COMMA_LOCATION_ARGS) {
+void signalCastError (const C_SourceTextInString * inSourceTextPtr,
+                      const C_LocationInSource & inErrorLocation,
+                      const std::type_info * inBaseClass,
+                      const bool inUseKindOfClass,
+                      const C_String & inActualFoundClassErrorString
+                      COMMA_LOCATION_ARGS) {
 //--- Increment error count
   mErrorTotalCount ++ ;
-  mCurrentFileErrorCount ++ ;
 //--- Construct location error message
   C_String errorMessage ;
   constructErrorOrWarningLocationMessage (errorMessage, inErrorLocation, inSourceTextPtr) ;
@@ -463,13 +494,12 @@ signalCastError (const C_SourceTextInString * inSourceTextPtr,
 
 //---------------------------------------------------------------------------*
 
-void C_galgas_io::
+void 
 signalSemanticWarning (const C_SourceTextInString * inSourceTextPtr,
                        const C_LocationInSource & inWarningLocation,
                        const C_String & inWarningMessage
                        COMMA_LOCATION_ARGS) {
 //--- Increment warning count
-  mCurrentWarningCount ++ ;
   mTotalWarningCount ++ ;
 //--- Construct location error message
   C_String warningMessage ;
@@ -499,14 +529,26 @@ signalSemanticWarning (const C_SourceTextInString * inSourceTextPtr,
 
 //---------------------------------------------------------------------------*
 
-void C_galgas_io::
-signalSemanticError (const C_SourceTextInString * inSourceTextPtr,
-                     const C_LocationInSource & inErrorLocation,
-                     const C_String & inErrorMessage
-                     COMMA_LOCATION_ARGS) {
+void fatalError (const C_String & inErrorMessage,
+                 const char * inSourceFile,
+                 const int inSourceLine) {
 //--- Increment error count
   mErrorTotalCount ++ ;
-  mCurrentFileErrorCount ++ ;
+//--- Error message
+  C_String errorMessage ;
+  errorMessage << inErrorMessage << " in file '" << inSourceFile << "', line " << cStringWithSigned (inSourceLine) << "\n" ;
+  ggs_printError (errorMessage) ;
+  throw max_error_count_reached_exception () ;
+}
+
+//---------------------------------------------------------------------------*
+
+void signalSemanticError (const C_SourceTextInString * inSourceTextPtr,
+                                       const C_LocationInSource & inErrorLocation,
+                                       const C_String & inErrorMessage
+                                       COMMA_LOCATION_ARGS) {
+//--- Increment error count
+  mErrorTotalCount ++ ;
 //--- Construct location error message
   C_String errorMessage ;
   constructErrorOrWarningLocationMessage (errorMessage, inErrorLocation, inSourceTextPtr) ;
@@ -535,11 +577,10 @@ signalSemanticError (const C_SourceTextInString * inSourceTextPtr,
 
 //---------------------------------------------------------------------------*
 
-void C_galgas_io::signalRunTimeError (const C_String & inRunTimeErrorMessage
+void signalRunTimeError (const C_String & inRunTimeErrorMessage
                                       COMMA_LOCATION_ARGS) {
 //--- Increment error count
   mErrorTotalCount ++ ;
-  mCurrentFileErrorCount ++ ;
 //--- Construct location error message
   C_String errorMessage ;
   errorMessage << "Run Time Error: " << inRunTimeErrorMessage << "\n" ;
@@ -560,10 +601,9 @@ void C_galgas_io::signalRunTimeError (const C_String & inRunTimeErrorMessage
 
 //---------------------------------------------------------------------------*
 
-void C_galgas_io::signalRunTimeWarning (const C_String & inWarningMessage
+void signalRunTimeWarning (const C_String & inWarningMessage
                                         COMMA_LOCATION_ARGS) {
 //--- Increment warning count
-  mCurrentWarningCount ++ ;
   mTotalWarningCount ++ ;
 //--- Construct location error message
   C_String warningMessage ;
@@ -585,13 +625,11 @@ void C_galgas_io::signalRunTimeWarning (const C_String & inWarningMessage
 
 //---------------------------------------------------------------------------*
 
-void C_galgas_io::
-printFileErrorMessage (const C_String & inSourceFileName,
+void printFileErrorMessage (const C_String & inSourceFileName,
                        const C_String & inErrorMessage
                        COMMA_LOCATION_ARGS) {
 //--- Increment error count
   mErrorTotalCount ++ ;
-  mCurrentFileErrorCount ++ ;
 //--- Print error
   C_String errorMessage ;
   errorMessage << "in file " << inSourceFileName << "\nerror : " << inErrorMessage << "\n" ;
@@ -630,7 +668,7 @@ static const utf32 COCOA_FILE_CREATION_SUCCESS_ID = TO_UNICODE (5) ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_galgas_io::ggs_printError (const C_String & inMessage) {
+void ggs_printError (const C_String & inMessage) {
   if (cocoaOutput ()) {
     co.appendUnicodeCharacter (COCOA_ERROR_ID COMMA_HERE) ;
     co << inMessage ;
@@ -651,7 +689,7 @@ void C_galgas_io::ggs_printError (const C_String & inMessage) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_galgas_io::ggs_printWarning (const C_String & inMessage) {
+void ggs_printWarning (const C_String & inMessage) {
   if (cocoaOutput ()) {
     co.appendUnicodeCharacter (COCOA_WARNING_ID COMMA_HERE) ;
     co << inMessage ;
@@ -672,7 +710,7 @@ void C_galgas_io::ggs_printWarning (const C_String & inMessage) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_galgas_io::ggs_printRewriteFileSuccess (const C_String & inMessage) {
+void ggs_printRewriteFileSuccess (const C_String & inMessage) {
   if (cocoaOutput ()) {
     co.appendUnicodeCharacter (COCOA_REWRITE_SUCCESS_ID COMMA_HERE) ;
     co << inMessage;
@@ -689,7 +727,7 @@ void C_galgas_io::ggs_printRewriteFileSuccess (const C_String & inMessage) {
 
 //---------------------------------------------------------------------------*
 
-void C_galgas_io::ggs_printCreatedFileSuccess (const C_String & inMessage) {
+void ggs_printCreatedFileSuccess (const C_String & inMessage) {
   if (cocoaOutput ()) {
     co.appendUnicodeCharacter (COCOA_FILE_CREATION_SUCCESS_ID COMMA_HERE) ;
     co << inMessage ;
@@ -710,7 +748,7 @@ void C_galgas_io::ggs_printCreatedFileSuccess (const C_String & inMessage) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_galgas_io::ggs_printMessage (const C_String & inMessage) {
+void ggs_printMessage (const C_String & inMessage) {
   co << inMessage ;
   co.flush () ;
 }

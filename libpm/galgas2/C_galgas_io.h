@@ -144,143 +144,110 @@ class C_parsingContext {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class C_galgas_io : public C_SharedObject {
-  public : const PMSInt32 mMaxErrorCount ;
-  public : const PMSInt32 mMaxWarningCount ;
+C_String errorOrWarningLocationString (const C_LocationInSource & inErrorLocation,
+                                       const C_SourceTextInString * inSourceTextPtr) ;
 
-//--- Constructor
-  public : C_galgas_io (LOCATION_ARGS) ;
-
-//--- No Copy
-  private : C_galgas_io (C_galgas_io &) ;
-  private : C_galgas_io & operator = (C_galgas_io &) ;
-
-//--- File Generation : start directory
-  public : TC_UniqueArray <C_String> mDirectoriesToExclude ;
-
-  protected : C_String
-  errorOrWarningLocationString (const C_LocationInSource & inErrorLocation,
-                                const C_SourceTextInString * inSourceTextPtr) const ;
-
-  protected : void
-  constructErrorOrWarningLocationMessage (C_String & ioMessage, 
-                                          const C_LocationInSource & inErrorLocation,
-                                          const C_SourceTextInString * inSourceTextPtr) const ;
+void constructErrorOrWarningLocationMessage (C_String & ioMessage, 
+                                             const C_LocationInSource & inErrorLocation,
+                                             const C_SourceTextInString * inSourceTextPtr) ;
 
 //--- Errors count
-  public : inline PMSInt32 maxErrorCount (void) const {
-    return mMaxErrorCount ;
-  }
+PMSInt32 maxErrorCount (void) ;
 
-  private : PMSInt32 mErrorTotalCount ;
-
-  public : inline PMSInt32 totalErrorCount (void) const {
-    return mErrorTotalCount ;
-  }
-
-  private : PMSInt32 mCurrentFileErrorCount ;
-
-  public : inline PMSInt32 currentFileErrorCount (void) const {
-    return mCurrentFileErrorCount ;
-  }
+PMSInt32 totalErrorCount (void) ;
 
 //--- Warnings count
-  public : inline PMSInt32 maxWarningCount (void) const {
-    return mMaxWarningCount ;
-  }
+PMSInt32 maxWarningCount (void) ;
 
-  private : PMSInt32 mCurrentWarningCount ;
-
-  public : inline PMSInt32 currentFileWarningCount (void) const {
-    return mCurrentWarningCount ;
- }
-
-  private : PMSInt32 mTotalWarningCount ;
-
-  public : inline PMSInt32 totalWarningCount (void) const {
-    return mTotalWarningCount ;
- }
+PMSInt32 totalWarningCount (void) ;
  
 //--- This method is called by a lexique instance for signaling a parsing error
-  public : void signalParsingError (const C_SourceTextInString * inSourceTextPtr,
-                                    const C_LocationInSource & inErrorLocation,
-                                    const C_String & inFoundTokenMessage,
-                                    const TC_UniqueArray <C_String> &
-                                    COMMA_LOCATION_ARGS) ;
+void signalParsingError (const C_SourceTextInString * inSourceTextPtr,
+                         const C_LocationInSource & inErrorLocation,
+                         const C_String & inFoundTokenMessage,
+                         const TC_UniqueArray <C_String> &
+                         COMMA_LOCATION_ARGS) ;
 
-  public : void printFileErrorMessage (const C_String & inSourceFileName,
-                                       const C_String & inErrorMessage
-                                       COMMA_LOCATION_ARGS) ;
+void printFileErrorMessage (const C_String & inSourceFileName,
+                            const C_String & inErrorMessage
+                            COMMA_LOCATION_ARGS) ;
 
 //--- This method is called by a GALGAS_location instance for signaling an extract error
-  public : void
-  signalExtractError (const C_SourceTextInString * inSourceTextPtr,
+void signalExtractError (const C_SourceTextInString * inSourceTextPtr,
+                         const C_LocationInSource & inErrorLocation,
+                         const TC_UniqueArray <C_String> & inExpectedClassesErrorStringsArray,
+                         const C_String & inActualFoundClassErrorString
+                         COMMA_LOCATION_ARGS) ;
+void signalCastError (const C_SourceTextInString * inSourceTextPtr,
                       const C_LocationInSource & inErrorLocation,
-                      const TC_UniqueArray <C_String> & inExpectedClassesErrorStringsArray,
+                      const std::type_info * inBaseClass,
+                      const bool inUseKindOfClass,
                       const C_String & inActualFoundClassErrorString
                       COMMA_LOCATION_ARGS) ;
-  public : void
-  signalCastError (const C_SourceTextInString * inSourceTextPtr,
-                   const C_LocationInSource & inErrorLocation,
-                   const std::type_info * inBaseClass,
-                   const bool inUseKindOfClass,
-                   const C_String & inActualFoundClassErrorString
-                   COMMA_LOCATION_ARGS) ;
 
-  public : void signalLexicalWarning (const C_SourceTextInString * inSourceTextPtr,
-                                      const C_LocationInSource & inWarningLocation,
-                                      const C_String & inLexicalWarningMessage
-                                      COMMA_LOCATION_ARGS) ;
+void signalLexicalWarning (const C_SourceTextInString * inSourceTextPtr,
+                           const C_LocationInSource & inWarningLocation,
+                           const C_String & inLexicalWarningMessage
+                           COMMA_LOCATION_ARGS) ;
 
-  public : void signalLexicalError (const C_SourceTextInString * inSourceTextPtr,
-                                    const C_LocationInSource & inErrorLocation,
-                                    const C_String & inLexicalErrorMessage
-                                    COMMA_LOCATION_ARGS) ;
+void signalLexicalError (const C_SourceTextInString * inSourceTextPtr,
+                         const C_LocationInSource & inErrorLocation,
+                         const C_String & inLexicalErrorMessage
+                         COMMA_LOCATION_ARGS) ;
 
-  public : void signalSemanticWarning (const C_SourceTextInString * inSourceTextPtr,
-                                       const C_LocationInSource & inWarningLocation,
-                                       const C_String & inWarningMessage
-                                       COMMA_LOCATION_ARGS) ;
+void signalSemanticWarning (const C_SourceTextInString * inSourceTextPtr,
+                            const C_LocationInSource & inWarningLocation,
+                            const C_String & inWarningMessage
+                            COMMA_LOCATION_ARGS) ;
 
-  public : void signalSemanticError (const C_SourceTextInString * inSourceTextPtr,
-                                     const C_LocationInSource & inErrorLocation,
-                                     const C_String & inErrorMessage
-                                     COMMA_LOCATION_ARGS) ;
+void signalSemanticError (const C_SourceTextInString * inSourceTextPtr,
+                          const C_LocationInSource & inErrorLocation,
+                          const C_String & inErrorMessage
+                          COMMA_LOCATION_ARGS) ;
 
-  public : void signalRunTimeError (const C_String & inErrorMessage
-                                    COMMA_LOCATION_ARGS) ;
+void signalRunTimeError (const C_String & inErrorMessage
+                         COMMA_LOCATION_ARGS) ;
 
-  public : void signalRunTimeWarning (const C_String & inWarningMessage
-                                      COMMA_LOCATION_ARGS) ;
+void signalRunTimeWarning (const C_String & inWarningMessage
+                           COMMA_LOCATION_ARGS) ;
+
+//--- Fatal error
+void fatalError (const C_String & inErrorMessage,
+                 const char * inSourceFile,
+                 const int inSourceLine) ;
 
 //--- Method called for printing an error
-  public : void ggs_printError (const C_String & inMessage) ;
+void ggs_printError (const C_String & inMessage) ;
 
 //--- Method called for printing a warning
-  public : void ggs_printWarning (const C_String & inMessage) ;
+void ggs_printWarning (const C_String & inMessage) ;
 
 //--- Method called for printing a success message
-  public : void ggs_printRewriteFileSuccess (const C_String & inMessage) ;
-  public : void ggs_printCreatedFileSuccess (const C_String & inMessage) ;
+void ggs_printRewriteFileSuccess (const C_String & inMessage) ;
+void ggs_printCreatedFileSuccess (const C_String & inMessage) ;
 
 //--- Method called for printing a message
-  public : void ggs_printMessage (const C_String & inMessage) ;
+void ggs_printMessage (const C_String & inMessage) ;
 
-//--- Private numbers (for generated code stats)
-  protected : PMUInt32 mCheckedLines ;
-  protected : PMUInt32 mGeneratedLines ;
-  protected : PMUInt32 mPreservedLines ;
-  protected : PMUInt32 mGeneratedFileCount ;
-  public : inline PMUInt32 checkedLineCount (void) const { return mCheckedLines ; } ;
-  public : inline PMUInt32 generatedLineCount (void) const { return mGeneratedLines ; } ;
-  public : inline PMUInt32 preservedLineCount (void) const { return mPreservedLines ; } ;
-  public : inline PMUInt32 generatedFileCount (void) const { return mGeneratedFileCount ; } ;
+//---------------------------------------------------------------------------*
 
-//--- Friend
-  friend class C_Compiler ;
-  friend class C_CompilerEx ;
-} ;
+PMUInt32 checkedLineCount (void) ;
+void incrementCheckedFileCount (const PMUInt32 inIncrement) ;
 
+//---------------------------------------------------------------------------*
+
+PMUInt32 generatedLineCount (void) ;
+void incrementGeneratedLileCount (const PMUInt32 inIncrement) ;
+
+//---------------------------------------------------------------------------*
+
+PMUInt32 preservedLineCount (void) ;
+void incrementPreservedLileCount (const PMUInt32 inIncrement) ;
+
+//---------------------------------------------------------------------------*
+
+PMUInt32 generatedFileCount (void) ;
+void incrementGeneratedFileCount (void) ;
 
 //---------------------------------------------------------------------------*
 

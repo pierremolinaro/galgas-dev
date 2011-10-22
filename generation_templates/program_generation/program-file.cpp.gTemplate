@@ -82,12 +82,9 @@ int mainForLIBPM  (const int argc, const char * argv []) {
                            sourceFilesArray,
                            extensions,
                            helpMessages) ;
-  //--- Build galgas io object
-    C_galgas_io * galgasIOptr = NULL ;
-    macroMyNew (galgasIOptr, C_galgas_io (HERE)) ;
   //--- Common lexique object
     C_Compiler * commonLexique = NULL ;
-    macroMyNew (commonLexique, C_Compiler (NULL, "", "", galgasIOptr COMMA_HERE)) ;
+    macroMyNew (commonLexique, C_Compiler (NULL, "", "" COMMA_HERE)) ;
   //--- Ask Save On Close ? (Carbon and Windows SIOUX Only)
     #ifdef SIOUX_IS_IMPLEMENTED
       SIOUXSettings.asktosaveonclose = gOption_generic_5F_cli_5F_options_options_asktosaveonclose.mValue ;
@@ -143,9 +140,9 @@ int mainForLIBPM  (const int argc, const char * argv []) {
         closeTrace () ;
       }
     //--- Error or warnings ?
-      if (commonLexique->totalErrorCount () > 0) {
+      if (totalErrorCount () > 0) {
         returnCode = 1 ; // Error code
-      }else if (commonLexique->totalWarningCount () > 0) {
+      }else if (totalWarningCount () > 0) {
         if (gOption_galgas_5F_cli_5F_options_treat_5F_warnings_5F_as_5F_error.mValue) {
           returnCode = 1 ; // Error code
           if (verboseOptionOn) {
@@ -156,21 +153,21 @@ int mainForLIBPM  (const int argc, const char * argv []) {
     //--- Epilogue
       routine_after (commonLexique COMMA_HERE) ;
     //--- Display error and warnings count
-      if (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue || (commonLexique->totalWarningCount () > 0) || (commonLexique->totalErrorCount () > 0)) {
-        if (commonLexique->totalWarningCount () == 0) {
+      if (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue || (totalWarningCount () > 0) || (totalErrorCount () > 0)) {
+        if (totalWarningCount () == 0) {
           printf ("No warning") ;
-        }else if (commonLexique->totalWarningCount () == 1) {
+        }else if (totalWarningCount () == 1) {
           printf ("1 warning") ;
         }else{
-          printf ("\%u warnings", commonLexique->totalWarningCount ()) ;
+          printf ("\%u warnings", totalWarningCount ()) ;
         }
         printf (", ") ;
-        if (commonLexique->totalErrorCount () == 0) {
+        if (totalErrorCount () == 0) {
           printf ("no error") ;
-        }else if (commonLexique->totalErrorCount () == 1) {
+        }else if (totalErrorCount () == 1) {
           printf ("1 error") ;
         }else{
-          printf ("\%u errors", commonLexique->totalErrorCount ()) ;
+          printf ("\%u errors", totalErrorCount ()) ;
         }
         printf (".\\n") ;
       }
@@ -180,7 +177,6 @@ int mainForLIBPM  (const int argc, const char * argv []) {
     }catch (...) {
       throw ;
     }
-    macroDetachSharedObject (galgasIOptr) ;
     macroDetachSharedObject (commonLexique) ;
   }
   return returnCode ;

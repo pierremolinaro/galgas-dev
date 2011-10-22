@@ -34,6 +34,7 @@
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "galgas2/C_Compiler.h"
 #include "galgas_cli_options.h"
+#include "galgas2/C_galgas_io.h"
 
 //---------------------------------------------------------------------------*
 
@@ -344,10 +345,10 @@ analyzeGrammar (C_Compiler * inCompiler,
     if (inCompiler->mPerformGeneration) {
       HTMLfileName.deleteFile () ;
       if (verboseOptionOn) {
-        inCompiler->ggs_printRewriteFileSuccess ((C_String ("Deleted '") + HTMLfileName + "'.\n").cString (HERE)) ;
+        ggs_printRewriteFileSuccess ((C_String ("Deleted '") + HTMLfileName + "'.\n").cString (HERE)) ;
       }
     }else{
-      inCompiler->ggs_printWarning ((C_String ("Need to delete '") + HTMLfileName + "'.\n").cString (HERE)) ;
+      ggs_printWarning ((C_String ("Need to delete '") + HTMLfileName + "'.\n").cString (HERE)) ;
     }
   }
 
@@ -660,10 +661,10 @@ analyzeGrammar (C_Compiler * inCompiler,
   if (outputHTMLfile) {
     if (inCompiler->mPerformGeneration) {
       if (verboseOptionOn) {
-        inCompiler->ggs_printCreatedFileSuccess (C_String ("Written '") + HTMLfileName + "'.\n") ;
+        ggs_printCreatedFileSuccess (C_String ("Written '") + HTMLfileName + "'.\n") ;
       }
     }else{
-      inCompiler->ggs_printWarning (C_String ("Need to write '") + HTMLfileName + "'.\n") ;
+      ggs_printWarning (C_String ("Need to write '") + HTMLfileName + "'.\n") ;
     }
   }
   macroMyDelete (HTMLfile) ;
@@ -686,7 +687,7 @@ routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
                                       const GALGAS_bool inHasIndexing,
                                       C_Compiler * inCompiler
                                       COMMA_UNUSED_LOCATION_ARGS) {
-  if (inCompiler->currentFileErrorCount() == 0) {
+  if (totalErrorCount () == 0) {
     #ifdef LOG_GRAMMAR_COMPUTATIONS
       printf ("MARK AND SWEEP BDD NODES\n") ; fflush (stdout) ;
     #endif

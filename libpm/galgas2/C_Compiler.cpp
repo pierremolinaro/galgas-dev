@@ -26,6 +26,7 @@
 #include "command_line_interface/F_Analyze_CLI_Options.h"
 #include "files/C_TextFileWrite.h"
 #include "galgas2/C_Compiler.h"
+#include "galgas2/C_galgas_io.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "galgas2/predefined-types.h"
 #include "utilities/MF_MemoryControl.h"
@@ -67,8 +68,7 @@ const utf32 C_Compiler::kEndOfSourceLexicalErrorMessage [] = {
 
 C_Compiler::C_Compiler (C_Compiler * inCallerCompiler,
                         const C_String & /* inDependencyFileExtension */,
-                        const C_String & /* inDependencyFilePath */,
-                        C_galgas_io * inParametersPtr
+                        const C_String & /* inDependencyFilePath */
                         COMMA_LOCATION_ARGS) :
 C_SharedObject (THERE),
 mCallerCompiler (NULL),
@@ -76,7 +76,6 @@ mSentString (),
 mSentStringIsValid (true),
 mTemplateString (),
 mTemplateStringLocation (),
-mIOparametersPtr (NULL),
 mSourceTextPtr (NULL),
 mCurrentLocation (),
 mLexicalAnalysisOnlyFlag (gOption_galgas_5F_cli_5F_options_lexical_5F_analysis_5F_only.mValue),
@@ -84,7 +83,6 @@ mParseOnlyFlag (gOption_galgas_5F_cli_5F_options_parse_5F_only.mValue),
 mCheckedVariableList (),
 mLogFileRead (gOption_galgas_5F_cli_5F_options_log_5F_file_5F_read.mValue),
 mPerformGeneration (! gOption_galgas_5F_cli_5F_options_do_5F_not_5F_generate_5F_any_5F_file.mValue) {
-  macroAssignSharedObject (mIOparametersPtr, inParametersPtr) ;
   macroAssignSharedObject (mCallerCompiler, inCallerCompiler) ;
   mCurrentLocation.mIndex = 0 ;
   mCurrentLocation.mLineNumber = 1 ;
@@ -94,7 +92,6 @@ mPerformGeneration (! gOption_galgas_5F_cli_5F_options_do_5F_not_5F_generate_5F_
 //---------------------------------------------------------------------------*
 
 C_Compiler::~C_Compiler (void) {
-  macroDetachSharedObject (mIOparametersPtr) ;
   macroDetachSharedObject (mSourceTextPtr) ;
   macroDetachSharedObject (mCallerCompiler) ;
 }
@@ -173,7 +170,7 @@ resetAndLoadSourceFromText (C_SourceTextInString * & ioSourceTextPtr) {
 void C_Compiler::
 onTheFlySemanticError (const C_String & inErrorMessage
                        COMMA_LOCATION_ARGS) {
-  ioParametersPtr ()->signalSemanticError (sourceText (),
+  signalSemanticError (sourceText (),
                        mCurrentLocation,
                        inErrorMessage
                        COMMA_THERE) ;
@@ -190,7 +187,7 @@ onTheFlySemanticError (const C_String & inErrorMessage
 void C_Compiler::
 onTheFlySemanticWarning (const C_String & inWarningMessage
                          COMMA_LOCATION_ARGS) {
-  ioParametersPtr ()->signalSemanticWarning (sourceText (), 
+  signalSemanticWarning (sourceText (), 
                          mCurrentLocation,
                          inWarningMessage
                          COMMA_THERE) ;
@@ -249,7 +246,7 @@ void C_Compiler::printMessage (const GALGAS_string & inMessage
     #ifndef DO_NOT_GENERATE_CHECKINGS
       s << "[Displayed from file '" << IN_SOURCE_FILE << "' at line " << cStringWithSigned (IN_SOURCE_LINE) << "]\n" ;
     #endif
-    mIOparametersPtr->ggs_printMessage (s) ;
+    ggs_printMessage (s) ;
   }
 }
 
@@ -264,7 +261,7 @@ printMessage (const C_String & inMessage
   #ifndef DO_NOT_GENERATE_CHECKINGS
     s << "[Displayed from file '" << IN_SOURCE_FILE << "' at line " << cStringWithSigned (IN_SOURCE_LINE) << "]\n" ;
   #endif
-  mIOparametersPtr->ggs_printMessage (s) ;
+  ggs_printMessage (s) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -321,10 +318,10 @@ void C_Compiler::semanticErrorAtLocation (const GALGAS_location & inErrorLocatio
     if (NULL == inErrorLocation.sourceText ()) {
       onTheFlyRunTimeError (inErrorMessage COMMA_THERE) ;
     }else{
-      mIOparametersPtr->signalSemanticError (inErrorLocation.sourceText (),
-                                             inErrorLocation.startLocation (),
-                                             inErrorMessage
-                                             COMMA_THERE) ;
+      signalSemanticError (inErrorLocation.sourceText (),
+                           inErrorLocation.startLocation (),
+                           inErrorMessage
+                           COMMA_THERE) ;
     }
   }
 }
@@ -339,10 +336,10 @@ void C_Compiler::emitSemanticError (const GALGAS_location & inErrorLocation,
     if (NULL == inErrorLocation.sourceText ()) {
       onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
     }else{
-      mIOparametersPtr->signalSemanticError (inErrorLocation.sourceText (),
-                                             inErrorLocation.endLocation (),
-                                             errorMessage
-                                             COMMA_THERE) ;
+      signalSemanticError (inErrorLocation.sourceText (),
+                           inErrorLocation.endLocation (),
+                           errorMessage
+                           COMMA_THERE) ;
     }
   }
 }
@@ -433,9 +430,9 @@ void C_Compiler::semanticWarningAtLocation (const GALGAS_location & inWarningLoc
                                             COMMA_LOCATION_ARGS) {
   if (inWarningLocation.isValid ()) { // No warning raised if not built
     if (NULL == inWarningLocation.sourceText ()) {
-      mIOparametersPtr->signalRunTimeWarning (inWarningMessage COMMA_THERE) ;
+      signalRunTimeWarning (inWarningMessage COMMA_THERE) ;
     }else{
-      mIOparametersPtr->signalSemanticWarning (inWarningLocation.sourceText (),
+      signalSemanticWarning (inWarningLocation.sourceText (),
                                                inWarningLocation.startLocation (),
                                                inWarningMessage
                                                COMMA_THERE) ;
@@ -451,12 +448,12 @@ void C_Compiler::emitSemanticWarning (const GALGAS_location & inWarningLocation,
   if (inWarningLocation.isValid () && inWarningMessage.isValid ()) {
     const C_String warningMessage = inWarningMessage.stringValue () ;
     if (NULL == inWarningLocation.sourceText ()) {
-      mIOparametersPtr->signalRunTimeWarning (warningMessage COMMA_THERE) ;
+      signalRunTimeWarning (warningMessage COMMA_THERE) ;
     }else{
-      mIOparametersPtr->signalSemanticWarning (inWarningLocation.sourceText (),
-                                               inWarningLocation.endLocation (),
-                                               warningMessage
-                                               COMMA_THERE) ;
+      signalSemanticWarning (inWarningLocation.sourceText (),
+                             inWarningLocation.endLocation (),
+                             warningMessage
+                             COMMA_THERE) ;
     }
   }
 }
@@ -472,8 +469,7 @@ void C_Compiler::emitSemanticWarning (const GALGAS_location & inWarningLocation,
 void C_Compiler::
 onTheFlyRunTimeError (const C_String & inRunTimeErrorMessage
                       COMMA_LOCATION_ARGS) {
-  ioParametersPtr ()->signalRunTimeError (inRunTimeErrorMessage
-                      COMMA_THERE) ;
+  signalRunTimeError (inRunTimeErrorMessage COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -502,8 +498,9 @@ generateFile (const C_String & inLineCommentPrefix,
               const C_String & inGeneratedZone2,
               const C_String & inDefaultUserZone2,
               const C_String & inGeneratedZone3) {
+  const TC_UniqueArray <C_String> directoriesToExclude ;
   generateFileFromPathes (sourceFilePath ().stringByDeletingLastPathComponent (),
-                          ioParametersPtr ()->mDirectoriesToExclude,
+                          directoriesToExclude,
                           inLineCommentPrefix,
                           inFileName,
                           inDefaultUserZone1,
@@ -520,8 +517,9 @@ void C_Compiler::generateFileInGALGAS_OUTPUT (const C_String & inLineCommentPref
                                               const C_String & inGeneratedZone2,
                                               const C_String & inDefaultUserZone2,
                                               const C_String & inGeneratedZone3) {
+  const TC_UniqueArray <C_String> directoriesToExclude ;
   generateFileFromPathes (sourceFilePath ().stringByDeletingLastPathComponent () + "/GALGAS_OUTPUT",
-                          ioParametersPtr ()->mDirectoriesToExclude,
+                          directoriesToExclude,
                           inLineCommentPrefix,
                           inFileName,
                           inDefaultUserZone1,
@@ -541,7 +539,7 @@ generateFileFromPathes (const C_String & inStartPath,
                         const C_String & inGeneratedZone2,
                         const C_String & inDefaultUserZone2,
                         const C_String & inGeneratedZone3) {
-  ioParametersPtr ()->mGeneratedFileCount ++ ;
+  incrementGeneratedFileCount () ;
 //--- Verbose option ?
   const bool verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
 //--- Very Verbose (?)
@@ -564,7 +562,7 @@ generateFileFromPathes (const C_String & inStartPath,
     if (veryVerboseOptionOn) {
       C_String message ;
       message << "File '" << inFileName << "' not found.\n" ;
-      ioParametersPtr ()->ggs_printMessage (message) ;
+      ggs_printMessage (message) ;
     }
   //--- File does not exist : create it
     C_String fileName = startPath ;
@@ -591,10 +589,10 @@ generateFileFromPathes (const C_String & inStartPath,
         << inGeneratedZone2 << kSTART_OF_USER_ZONE_2 << inDefaultUserZone2 << kEND_OF_USER_ZONE_2
         << inGeneratedZone3 ;
       for (PMSInt32 i=0 ; i<inGeneratedZone2.length () ; i++) {
-        ioParametersPtr ()->mGeneratedLines += UNICODE_VALUE (inGeneratedZone2 (i COMMA_HERE)) == '\n' ;
+        incrementGeneratedLileCount (UNICODE_VALUE (inGeneratedZone2 (i COMMA_HERE)) == '\n') ;
       }
       for (PMSInt32 i=0 ; i<inGeneratedZone3.length () ; i++) {
-        ioParametersPtr ()->mGeneratedLines += UNICODE_VALUE (inGeneratedZone3 (i COMMA_HERE)) == '\n' ;
+        incrementGeneratedLileCount (UNICODE_VALUE (inGeneratedZone3 (i COMMA_HERE)) == '\n') ;
       }
       if (verboseOptionOn || veryVerboseOptionOn) {
         ggs_printCreatedFileSuccess (C_String ("Created '") + fileName + "'.\n") ;
@@ -606,7 +604,7 @@ generateFileFromPathes (const C_String & inStartPath,
     if (veryVerboseOptionOn) {
       C_String message ;
       message << "Found '" << fullPathName << "' file.\n" ;
-      ioParametersPtr ()->ggs_printMessage (message) ;
+      ggs_printMessage (message) ;
     }
     C_String firstUserPart ;
     C_String secondUserPart ;
@@ -643,16 +641,16 @@ generateFileFromPathes (const C_String & inStartPath,
       ggs_printError (C_String ("BAD FILE '") + fullPathName + "'.\n") ;
     }else if ((firstGeneratedPart == inGeneratedZone2) && (secondGeneratedPart == inGeneratedZone3)) {
       for (PMSInt32 i=0 ; i<inGeneratedZone2.length () ; i++) {
-        ioParametersPtr ()->mCheckedLines += UNICODE_VALUE (inGeneratedZone2 (i COMMA_HERE)) == '\n' ;
+        incrementCheckedFileCount (UNICODE_VALUE (inGeneratedZone2 (i COMMA_HERE)) == '\n') ;
       }
       for (PMSInt32 i=0 ; i<inGeneratedZone3.length () ; i++) {
-        ioParametersPtr ()->mCheckedLines += UNICODE_VALUE (inGeneratedZone3 (i COMMA_HERE)) == '\n' ;
+        incrementCheckedFileCount (UNICODE_VALUE (inGeneratedZone3 (i COMMA_HERE)) == '\n') ;
       }
       for (PMSInt32 i=0 ; i<firstUserPart.length () ; i++) {
-        ioParametersPtr ()->mPreservedLines += UNICODE_VALUE (firstUserPart (i COMMA_HERE)) == '\n' ;
+        incrementPreservedLileCount (UNICODE_VALUE (firstUserPart (i COMMA_HERE)) == '\n') ;
       }
       for (PMSInt32 i=0 ; i<secondUserPart.length () ; i++) {
-        ioParametersPtr ()->mPreservedLines += UNICODE_VALUE (secondUserPart (i COMMA_HERE)) == '\n' ;
+        incrementPreservedLileCount (UNICODE_VALUE (secondUserPart (i COMMA_HERE)) == '\n') ;
       }
     }else if (mPerformGeneration) {
       bool ok = false ;
@@ -668,16 +666,16 @@ generateFileFromPathes (const C_String & inStartPath,
         << kSTART_OF_USER_ZONE_2 << secondUserPart << kEND_OF_USER_ZONE_2
         << inGeneratedZone3 ;
       for (PMSInt32 i=0 ; i<inGeneratedZone2.length () ; i++) {
-        ioParametersPtr ()->mGeneratedLines += UNICODE_VALUE (inGeneratedZone2 (i COMMA_HERE)) == '\n' ;
+        incrementGeneratedLileCount (UNICODE_VALUE (inGeneratedZone2 (i COMMA_HERE)) == '\n') ;
       }
       for (PMSInt32 i=0 ; i<inGeneratedZone3.length () ; i++) {
-        ioParametersPtr ()->mGeneratedLines += UNICODE_VALUE (inGeneratedZone3 (i COMMA_HERE)) == '\n' ;
+        incrementGeneratedLileCount (UNICODE_VALUE (inGeneratedZone3 (i COMMA_HERE)) == '\n') ;
       }
       for (PMSInt32 i=0 ; i<firstUserPart.length () ; i++) {
-        ioParametersPtr ()->mPreservedLines += UNICODE_VALUE (firstUserPart (i COMMA_HERE)) == '\n' ;
+        incrementGeneratedLileCount (UNICODE_VALUE (firstUserPart (i COMMA_HERE)) == '\n') ;
       }
       for (PMSInt32 i=0 ; i<secondUserPart.length () ; i++) {
-        ioParametersPtr ()->mPreservedLines += UNICODE_VALUE (secondUserPart (i COMMA_HERE)) == '\n' ;
+        incrementGeneratedLileCount (UNICODE_VALUE (secondUserPart (i COMMA_HERE)) == '\n') ;
       }
       if (verboseOptionOn || veryVerboseOptionOn) {
         ggs_printRewriteFileSuccess (C_String ("Replaced '") + fullPathName + "'.\n") ;

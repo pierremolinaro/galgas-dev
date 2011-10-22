@@ -509,8 +509,7 @@ class GALGAS_uint : public AC_GALGAS_root {
                                              COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- GALGAS constructors
-  public : static GALGAS_uint constructor_errorCount (C_Compiler * inCompiler
-                                                      COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_uint constructor_errorCount (LOCATION_ARGS) ;
 
   public : static GALGAS_uint constructor_max (LOCATION_ARGS) ;
 
@@ -519,8 +518,7 @@ class GALGAS_uint : public AC_GALGAS_root {
                                                          C_Compiler * inCompiler
                                                          COMMA_LOCATION_ARGS) ;
 
-  public : static GALGAS_uint constructor_warningCount (C_Compiler * inCompiler
-                                                        COMMA_LOCATION_ARGS) ;
+  public : static GALGAS_uint constructor_warningCount (LOCATION_ARGS) ;
 
 //--------------------------------- << and >> shift operators
 public : VIRTUAL_IN_DEBUG GALGAS_uint left_shift_operation (const GALGAS_uint inShiftOperand

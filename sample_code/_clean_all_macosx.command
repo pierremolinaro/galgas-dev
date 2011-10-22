@@ -1,6 +1,10 @@
 #!/bin/sh
 set -x
 DIR=`dirname $0` &&
+#----------------- Assignment
+${DIR}/assignment_language/makefile_macosx/clean.command &&
+rm -fr ${DIR}/assignment_language/galgas_sources/GALGAS_OUTPUT &&
+cd ${DIR}/assignment_language/project_xcode && rm -fr build
 #----------------- Pascal
 ${DIR}/pascal/makefile_macosx/clean.command &&
 rm -fr ${DIR}/pascal/galgas_sources/GALGAS_OUTPUT &&

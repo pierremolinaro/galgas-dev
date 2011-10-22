@@ -15118,7 +15118,7 @@ void cGrammar_syntaxSLRgrammar::nt_syntax_5F_component_5F_start_5F_symbol_ (GALG
 void cGrammar_syntaxSLRgrammar::performIndexing (C_Compiler * inCompiler,
              const C_String & inSourceFilePath) {
   C_Lexique_galgas_5F_scanner * scanner = NULL ;
-  macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", inCompiler->ioParametersPtr (), inSourceFilePath COMMA_HERE)) ;
+  macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
   scanner->enableIndexing () ;
   if (scanner->sourceText () != NULL) {
     scanner->mPerformGeneration = inCompiler->mPerformGeneration ;
@@ -15152,7 +15152,7 @@ void cGrammar_syntaxSLRgrammar::_performSourceFileParsing_ (C_Compiler * inCompi
     }
     if (filePath.fileExists ()) {
       C_Lexique_galgas_5F_scanner * scanner = NULL ;
-      macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", inCompiler->ioParametersPtr (), filePath COMMA_HERE)) ;
+      macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", filePath COMMA_HERE)) ;
       // if (scanner->needsCompiling ()) {
         if (scanner->sourceText () != NULL) {
           scanner->mPerformGeneration = inCompiler->mPerformGeneration ;
@@ -15189,7 +15189,7 @@ void cGrammar_syntaxSLRgrammar::_performSourceStringParsing_ (C_Compiler * inCom
                                 GALGAS_syntaxComponentAST &  parameter_1
                                 COMMA_UNUSED_LOCATION_ARGS) {
   C_Lexique_galgas_5F_scanner * scanner = NULL ;
-  macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, inCompiler->ioParametersPtr (), inSourceString.stringValue (), "" COMMA_HERE)) ;
+  macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, inSourceString.stringValue (), "" COMMA_HERE)) ;
   if (scanner->sourceText () != NULL) {
     scanner->mPerformGeneration = inCompiler->mPerformGeneration ;
     const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,

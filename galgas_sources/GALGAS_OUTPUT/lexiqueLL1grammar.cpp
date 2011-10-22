@@ -1221,7 +1221,7 @@ void cGrammar_lexiqueLL_31_grammar::nt_lexique_5F_component_5F_start_5F_symbol_ 
 void cGrammar_lexiqueLL_31_grammar::performIndexing (C_Compiler * inCompiler,
              const C_String & inSourceFilePath) {
   C_Lexique_galgas_5F_scanner * scanner = NULL ;
-  macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", inCompiler->ioParametersPtr (), inSourceFilePath COMMA_HERE)) ;
+  macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
   scanner->enableIndexing () ;
   if (scanner->sourceText () != NULL) {
     scanner->mPerformGeneration = inCompiler->mPerformGeneration ;
@@ -1254,7 +1254,7 @@ void cGrammar_lexiqueLL_31_grammar::_performSourceFileParsing_ (C_Compiler * inC
     }
     if (filePath.fileExists ()) {
     C_Lexique_galgas_5F_scanner * scanner = NULL ;
-    macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", inCompiler->ioParametersPtr (), filePath COMMA_HERE)) ;
+    macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", filePath COMMA_HERE)) ;
       if (scanner->sourceText () != NULL) {
         scanner->mPerformGeneration = inCompiler->mPerformGeneration ;
         const bool ok = scanner->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,
@@ -1291,7 +1291,7 @@ void cGrammar_lexiqueLL_31_grammar::_performSourceStringParsing_ (C_Compiler * i
   if (inSourceString.isValid ()) {
     const C_String sourceString = inSourceString.stringValue () ;
     C_Lexique_galgas_5F_scanner * scanner = NULL ;
-    macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, inCompiler->ioParametersPtr (), sourceString, "" COMMA_HERE)) ;
+    macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, sourceString, "" COMMA_HERE)) ;
     scanner->mPerformGeneration = inCompiler->mPerformGeneration ;
     const bool ok = scanner->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,
                                                     gFirstProductionIndexes, gDecision, gDecisionIndexes, 399) ;

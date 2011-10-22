@@ -195,8 +195,8 @@ override method @uintPredefinedTypeAST getConstructorMap
 :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"max" !"uint" !false ;
-  enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"errorCount" !"uint" !true ;
-  enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"warningCount" !"uint" !true ;
+  enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"errorCount" !"uint" !false ;
+  enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"warningCount" !"uint" !false ;
   enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"valueWithMask" !"uint" !"uint" !"uint" !true ;
 end method ;
 

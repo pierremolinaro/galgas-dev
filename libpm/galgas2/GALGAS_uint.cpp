@@ -25,6 +25,7 @@
 
 #include "predefined-types.h"
 #include "galgas2/C_Compiler.h"
+#include "galgas2/C_galgas_io.h"
 #include "strings/unicode_character_cpp.h"
 
 //---------------------------------------------------------------------------*
@@ -56,16 +57,14 @@ GALGAS_uint GALGAS_uint::constructor_max (UNUSED_LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_uint::constructor_errorCount (C_Compiler * inCompiler
-                                                 COMMA_UNUSED_LOCATION_ARGS) {
-  return GALGAS_uint ((PMUInt32) inCompiler->totalErrorCount ()) ;
+GALGAS_uint GALGAS_uint::constructor_errorCount (UNUSED_LOCATION_ARGS) {
+  return GALGAS_uint ((PMUInt32) totalErrorCount ()) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GALGAS_uint GALGAS_uint::constructor_warningCount (C_Compiler * inCompiler
-                                                   COMMA_UNUSED_LOCATION_ARGS) {
-  return GALGAS_uint ((PMUInt32) inCompiler->totalWarningCount ()) ;
+GALGAS_uint GALGAS_uint::constructor_warningCount (UNUSED_LOCATION_ARGS) {
+  return GALGAS_uint ((PMUInt32) totalWarningCount ()) ;
 }
 
 //---------------------------------------------------------------------------*
