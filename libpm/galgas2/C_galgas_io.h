@@ -161,18 +161,12 @@ PMSInt32 maxWarningCount (void) ;
 
 PMSInt32 totalWarningCount (void) ;
  
-//--- This method is called by a lexique instance for signaling a parsing error
 void signalParsingError (const C_SourceTextInString * inSourceTextPtr,
                          const C_LocationInSource & inErrorLocation,
                          const C_String & inFoundTokenMessage,
-                         const TC_UniqueArray <C_String> &
+                         const TC_UniqueArray <C_String> & inAcceptedTokenNames
                          COMMA_LOCATION_ARGS) ;
 
-void printFileErrorMessage (const C_String & inSourceFileName,
-                            const C_String & inErrorMessage
-                            COMMA_LOCATION_ARGS) ;
-
-//--- This method is called by a GALGAS_location instance for signaling an extract error
 void signalExtractError (const C_SourceTextInString * inSourceTextPtr,
                          const C_LocationInSource & inErrorLocation,
                          const TC_UniqueArray <C_String> & inExpectedClassesErrorStringsArray,
@@ -217,17 +211,28 @@ void fatalError (const C_String & inErrorMessage,
                  const int inSourceLine) ;
 
 //--- Method called for printing an error
-void ggs_printError (const C_String & inMessage) ;
+void ggs_printError (const C_SourceTextInString * inSourceTextPtr,
+                     const C_LocationInSource & inErrorLocation,
+                     const C_String & inMessage
+                     COMMA_LOCATION_ARGS) ;
 
 //--- Method called for printing a warning
-void ggs_printWarning (const C_String & inMessage) ;
+void ggs_printWarning (const C_SourceTextInString * inSourceTextPtr,
+                       const C_LocationInSource & inWarningLocation,
+                       const C_String & inMessage
+                       COMMA_LOCATION_ARGS) ;
 
-//--- Method called for printing a success message
-void ggs_printRewriteFileSuccess (const C_String & inMessage) ;
-void ggs_printCreatedFileSuccess (const C_String & inMessage) ;
+//--- Method called for printing a file success message
+void ggs_printFileOperationSuccess (const C_String & inMessage
+                                    COMMA_LOCATION_ARGS) ;
 
 //--- Method called for printing a message
-void ggs_printMessage (const C_String & inMessage) ;
+void ggs_printMessage (const C_String & inMessage
+                       COMMA_LOCATION_ARGS) ;
+
+void writeXMLHeader (void) ;
+
+void writeXMLEpilogue (void) ;
 
 //---------------------------------------------------------------------------*
 

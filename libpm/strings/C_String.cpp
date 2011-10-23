@@ -1370,6 +1370,30 @@ void C_String::setFromCstring (const char * inCstring) {
   setLengthToZero () ;
   *this << inCstring ;
 }
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//   X M L    E S C A P E D    S T R I N G                                   *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+//--- Returns a string where ", ', <, > and & have been replaced by &quot;, &apos;, &lt;, &gt; and &amp;
+C_String C_String::XMLEscapedString (void) const {
+  C_String result ;
+  for (PMSInt32 i=0 ; i<length () ; i++) {
+    const utf32 c = this->operator () (i COMMA_HERE) ;
+    switch (UNICODE_VALUE (c)) {
+    case '"'  : result << "&quot;" ; break ;
+    case '\'' : result << "&apos;" ; break ;
+    case '<'  : result << "&lt;"   ; break ;
+    case '>'  : result << "&gt;"   ; break ;
+    case '&'  : result << "&amp;"  ; break ;
+    default   : result.appendUnicodeCharacter (c COMMA_HERE) ; break;
+    }
+  } 
+  return result ;
+}
+
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED

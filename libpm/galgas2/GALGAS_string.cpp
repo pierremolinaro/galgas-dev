@@ -958,13 +958,13 @@ void GALGAS_string::class_method_deleteFile (GALGAS_string inFilePath,
                                              COMMA_LOCATION_ARGS) {
   if (inFilePath.isValid ()) {
     if (! inCompiler->mPerformGeneration) {
-      ggs_printWarning (C_String ("Need to delete '") + inFilePath.mString + "'.\n") ;
+      ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to delete '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
     }else if (inFilePath.mString.length () == 0) {
       inCompiler->onTheFlyRunTimeError ("cannot perform file delete: file name is an empty string" COMMA_THERE) ;
     }else{
       const char * errorMessage = inFilePath.mString.deleteFile () ;
       if (errorMessage == NULL) {
-        ggs_printRewriteFileSuccess (C_String ("Deleted '") + inFilePath.mString + "'.\n") ;
+        ggs_printFileOperationSuccess (C_String ("Deleted '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
       }else{
         C_String message ;
         message << "cannot perform file delete: " << errorMessage ;
@@ -991,7 +991,7 @@ void GALGAS_string::class_method_removeEmptyDirectory (GALGAS_string inDirectory
                                                        COMMA_LOCATION_ARGS) {
   if (inDirectoryPath.isValid ()) {
     if (! inCompiler->mPerformGeneration) {
-      ggs_printWarning (C_String ("Need to remove directory '") + inDirectoryPath.mString + "'.\n") ;
+      ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to remove directory '") + inDirectoryPath.mString + "'.\n" COMMA_THERE) ;
     }else if (inDirectoryPath.mString.length () == 0) {
       inCompiler->onTheFlyRunTimeError ("cannot perform directory removing: directory path is an empty string" COMMA_THERE) ;
     }else{
@@ -1041,7 +1041,7 @@ void GALGAS_string::class_method_removeDirectoryRecursively (GALGAS_string inDir
                                                              COMMA_LOCATION_ARGS) {
   if (inDirectoryPath.isValid ()) {
     if (! inCompiler->mPerformGeneration) {
-      ggs_printWarning (C_String ("Need to remove directory '") + inDirectoryPath.mString + "'.\n") ;
+      ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to remove directory '") + inDirectoryPath.mString + "'.\n" COMMA_THERE) ;
     }else if (inDirectoryPath.mString.length () == 0) {
       inCompiler->onTheFlyRunTimeError ("cannot perform directory removing: directory path is an empty string" COMMA_THERE) ;
     }else{
@@ -1131,16 +1131,16 @@ void GALGAS_string::method_writeToFile (GALGAS_string inFilePath,
       const bool verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
       const bool ok = mString.writeToFile (inFilePath.mString COMMA_TEACH_TEXT_CREATOR COMMA_THERE) ;
       if (ok && verboseOptionOn && fileAlreadyExists) {
-        ggs_printRewriteFileSuccess (C_String ("Replaced '") + inFilePath.mString + "'.\n") ;
+        ggs_printFileOperationSuccess (C_String ("Replaced '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
       }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-        ggs_printCreatedFileSuccess (C_String ("Created '") + inFilePath.mString + "'.\n") ;
+        ggs_printFileOperationSuccess (C_String ("Created '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
       }else if (! ok) {
         C_String message ;
         message << "cannot write '" << inFilePath.mString << "' file" ;
         inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
       }
     }else{
-      ggs_printWarning (C_String ("Need to write '") + inFilePath.mString + "'.\n") ;
+      ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to write '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
     }
   }
 }
@@ -1172,9 +1172,9 @@ void GALGAS_string::method_writeToFileWhenDifferentContents (GALGAS_string inFil
         }else{
           ok = mString.writeToFile (inFilePath.mString COMMA_TEACH_TEXT_CREATOR COMMA_THERE) ;
           if (ok && verboseOptionOn && fileAlreadyExists) {
-            ggs_printRewriteFileSuccess (C_String ("Replaced '") + inFilePath.mString + "'.\n") ;
+            ggs_printFileOperationSuccess (C_String ("Replaced '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
           }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-            ggs_printCreatedFileSuccess (C_String ("Created '") + inFilePath.mString + "'.\n") ;
+            ggs_printFileOperationSuccess (C_String ("Created '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
           }else if (! ok) {
             C_String message ;
             message << "cannot write '" << inFilePath.mString << "' file" ;
@@ -1183,7 +1183,7 @@ void GALGAS_string::method_writeToFileWhenDifferentContents (GALGAS_string inFil
           }
         }
       }else{
-        ggs_printWarning (C_String ("Need to write '") + inFilePath.mString + "'.\n") ;
+        ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to write '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
       }
     }
   }
@@ -1201,16 +1201,16 @@ void GALGAS_string::method_writeToExecutableFile (GALGAS_string inFilePath,
       const bool verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
       const bool ok = mString.writeToExecutableFile (inFilePath.mString COMMA_TEACH_TEXT_CREATOR COMMA_THERE) ;
       if (ok && verboseOptionOn && fileAlreadyExists) {
-        ggs_printRewriteFileSuccess (C_String ("Replaced '") + inFilePath.mString + "'.\n") ;
+        ggs_printFileOperationSuccess (C_String ("Replaced '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
       }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-        ggs_printCreatedFileSuccess (C_String ("Created '") + inFilePath.mString + "'.\n") ;
+        ggs_printFileOperationSuccess (C_String ("Created '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
       }else if (! ok) {
         C_String message ;
         message << "cannot write '" << inFilePath.mString << "' file" ;
         inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
       }
     }else{
-      ggs_printWarning (C_String ("Need to write '") + inFilePath.mString + "'.\n") ;
+      ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to write '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
     }
   }
 }
@@ -1243,9 +1243,9 @@ void GALGAS_string::method_writeToExecutableFileWhenDifferentContents (GALGAS_st
         }else{
           ok = mString.writeToExecutableFile (inFilePath.mString COMMA_TEACH_TEXT_CREATOR COMMA_THERE) ;
           if (ok && verboseOptionOn && fileAlreadyExists) {
-            ggs_printRewriteFileSuccess (C_String ("Replaced '") + inFilePath.mString + "'.\n") ;
+            ggs_printFileOperationSuccess (C_String ("Replaced '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
           }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-            ggs_printCreatedFileSuccess (C_String ("Created '") + inFilePath.mString + "'.\n") ;
+            ggs_printFileOperationSuccess (C_String ("Created '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
           }else if (! ok) {
             C_String message ;
             message << "cannot write '" << inFilePath.mString << "' file" ;
@@ -1254,7 +1254,7 @@ void GALGAS_string::method_writeToExecutableFileWhenDifferentContents (GALGAS_st
           }
         }
       }else{
-        ggs_printWarning (C_String ("Need to write '") + inFilePath.mString + "'.\n") ;
+        ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to write '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
       }
     }
   }
