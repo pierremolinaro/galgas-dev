@@ -97,6 +97,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
         }
       #endif
     #endif
+    writeXMLHeader () ;
     try{
       routine_before (commonLexique COMMA_HERE) ;
       verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
@@ -154,22 +155,24 @@ int mainForLIBPM  (const int argc, const char * argv []) {
       routine_after (commonLexique COMMA_HERE) ;
     //--- Display error and warnings count
       if (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue || (totalWarningCount () > 0) || (totalErrorCount () > 0)) {
+        C_String message ;
         if (totalWarningCount () == 0) {
-          printf ("No warning") ;
+          message << "No warning" ;
         }else if (totalWarningCount () == 1) {
-          printf ("1 warning") ;
+          message << "1 warning" ;
         }else{
-          printf ("\%u warnings", totalWarningCount ()) ;
+          message << cStringWithUnsigned (totalWarningCount ()) << " warnings" ;
         }
-        printf (", ") ;
+        message << ", " ;
         if (totalErrorCount () == 0) {
-          printf ("no error") ;
+          message << "no error" ;
         }else if (totalErrorCount () == 1) {
-          printf ("1 error") ;
+          message << "1 error" ;
         }else{
-          printf ("\%u errors", totalErrorCount ()) ;
+          message << cStringWithUnsigned (totalErrorCount ()) << " errors" ;
         }
-        printf (".\\n") ;
+        message << ".\\n" ;
+        ggs_printMessage (message COMMA_HERE) ;
       }
     }catch (const M_STD_NAMESPACE exception & e) {
       F_default_display_exception (e) ;
@@ -178,6 +181,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
       throw ;
     }
     macroDetachSharedObject (commonLexique) ;
+    writeXMLEpilogue () ;
   }
   return returnCode ;
 }

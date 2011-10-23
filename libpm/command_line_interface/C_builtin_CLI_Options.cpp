@@ -93,3 +93,11 @@ gOption_generic_5F_cli_5F_options_display_5F_version ("generic_cli_options",
 #endif
 
 //---------------------------------------------------------------------------*
+
+C_BoolCommandLineOption gOption_generic_5F_cli_5F_options_xml ("galgas_cli_options",
+                                         "xml",
+                                         0,
+                                         "xml",
+                                         "output in XML") ;
+
+//---------------------------------------------------------------------------*

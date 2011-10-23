@@ -43,6 +43,10 @@ extern C_BoolCommandLineOption gOption_generic_5F_cli_5F_options_display_5F_vers
 
 //---------------------------------------------------------------------------*
 
+extern C_BoolCommandLineOption gOption_generic_5F_cli_5F_options_xml ;
+
+//---------------------------------------------------------------------------*
+
 #ifdef SIOUX_IS_IMPLEMENTED
   extern C_BoolCommandLineOption gOption_generic_5F_cli_5F_options_options_asktosaveonclose ;
 #endif

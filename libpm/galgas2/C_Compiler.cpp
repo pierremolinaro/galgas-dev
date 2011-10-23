@@ -246,7 +246,7 @@ void C_Compiler::printMessage (const GALGAS_string & inMessage
     #ifndef DO_NOT_GENERATE_CHECKINGS
       s << "[Displayed from file '" << IN_SOURCE_FILE << "' at line " << cStringWithSigned (IN_SOURCE_LINE) << "]\n" ;
     #endif
-    ggs_printMessage (s) ;
+    ggs_printMessage (s COMMA_THERE) ;
   }
 }
 
@@ -261,7 +261,7 @@ printMessage (const C_String & inMessage
   #ifndef DO_NOT_GENERATE_CHECKINGS
     s << "[Displayed from file '" << IN_SOURCE_FILE << "' at line " << cStringWithSigned (IN_SOURCE_LINE) << "]\n" ;
   #endif
-  ggs_printMessage (s) ;
+  ggs_printMessage (s COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -562,7 +562,7 @@ generateFileFromPathes (const C_String & inStartPath,
     if (veryVerboseOptionOn) {
       C_String message ;
       message << "File '" << inFileName << "' not found.\n" ;
-      ggs_printMessage (message) ;
+      ggs_printMessage (message COMMA_HERE) ;
     }
   //--- File does not exist : create it
     C_String fileName = startPath ;
@@ -595,16 +595,16 @@ generateFileFromPathes (const C_String & inStartPath,
         incrementGeneratedLileCount (UNICODE_VALUE (inGeneratedZone3 (i COMMA_HERE)) == '\n') ;
       }
       if (verboseOptionOn || veryVerboseOptionOn) {
-        ggs_printCreatedFileSuccess (C_String ("Created '") + fileName + "'.\n") ;
+        ggs_printFileOperationSuccess (C_String ("Created '") + fileName + "'.\n" COMMA_HERE) ;
       }
     }else{
-      ggs_printWarning (C_String ("Need to create '") + fileName + "'.\n") ;
+      ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to create '") + fileName + "'.\n" COMMA_HERE) ;
     }
   }else{
     if (veryVerboseOptionOn) {
       C_String message ;
       message << "Found '" << fullPathName << "' file.\n" ;
-      ggs_printMessage (message) ;
+      ggs_printMessage (message COMMA_HERE) ;
     }
     C_String firstUserPart ;
     C_String secondUserPart ;
@@ -638,7 +638,7 @@ generateFileFromPathes (const C_String & inStartPath,
       secondGeneratedPart = stringArray (1 COMMA_HERE) ;
     }
     if (! ok) {
-      ggs_printError (C_String ("BAD FILE '") + fullPathName + "'.\n") ;
+      ggs_printError (NULL, C_LocationInSource (), C_String ("BAD FILE '") + fullPathName + "'.\n" COMMA_HERE) ;
     }else if ((firstGeneratedPart == inGeneratedZone2) && (secondGeneratedPart == inGeneratedZone3)) {
       for (PMSInt32 i=0 ; i<inGeneratedZone2.length () ; i++) {
         incrementCheckedFileCount (UNICODE_VALUE (inGeneratedZone2 (i COMMA_HERE)) == '\n') ;
@@ -678,10 +678,10 @@ generateFileFromPathes (const C_String & inStartPath,
         incrementGeneratedLileCount (UNICODE_VALUE (secondUserPart (i COMMA_HERE)) == '\n') ;
       }
       if (verboseOptionOn || veryVerboseOptionOn) {
-        ggs_printRewriteFileSuccess (C_String ("Replaced '") + fullPathName + "'.\n") ;
+        ggs_printFileOperationSuccess (C_String ("Replaced '") + fullPathName + "'.\n" COMMA_HERE) ;
       }
     }else{
-      ggs_printWarning (C_String ("Need to replace '") + fullPathName + "'.\n") ;
+      ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to replace '") + fullPathName + "'.\n" COMMA_HERE) ;
     }
   }
 }

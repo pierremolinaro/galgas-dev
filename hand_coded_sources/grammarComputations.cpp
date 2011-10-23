@@ -345,10 +345,10 @@ analyzeGrammar (C_Compiler * inCompiler,
     if (inCompiler->mPerformGeneration) {
       HTMLfileName.deleteFile () ;
       if (verboseOptionOn) {
-        ggs_printRewriteFileSuccess ((C_String ("Deleted '") + HTMLfileName + "'.\n").cString (HERE)) ;
+        ggs_printFileOperationSuccess ((C_String ("Deleted '") + HTMLfileName + "'.\n").cString (HERE) COMMA_HERE) ;
       }
     }else{
-      ggs_printWarning ((C_String ("Need to delete '") + HTMLfileName + "'.\n").cString (HERE)) ;
+      ggs_printWarning (NULL, C_LocationInSource (), (C_String ("Need to delete '") + HTMLfileName + "'.\n").cString (HERE) COMMA_HERE) ;
     }
   }
 
@@ -661,10 +661,10 @@ analyzeGrammar (C_Compiler * inCompiler,
   if (outputHTMLfile) {
     if (inCompiler->mPerformGeneration) {
       if (verboseOptionOn) {
-        ggs_printCreatedFileSuccess (C_String ("Written '") + HTMLfileName + "'.\n") ;
+        ggs_printFileOperationSuccess (C_String ("Written '") + HTMLfileName + "'.\n" COMMA_HERE) ;
       }
     }else{
-      ggs_printWarning (C_String ("Need to write '") + HTMLfileName + "'.\n") ;
+      ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to write '") + HTMLfileName + "'.\n" COMMA_HERE) ;
     }
   }
   macroMyDelete (HTMLfile) ;

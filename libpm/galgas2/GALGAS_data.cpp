@@ -286,9 +286,9 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
         }else{
           ok = inFilePath.stringValue ().writeBinaryData (mData) ;
           if (ok && verboseOptionOn && fileAlreadyExists) {
-            ggs_printRewriteFileSuccess (C_String ("Replaced '") + inFilePath.stringValue () + "'.\n") ;
+            ggs_printFileOperationSuccess (C_String ("Replaced '") + inFilePath.stringValue () + "'.\n" COMMA_THERE) ;
           }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-            ggs_printCreatedFileSuccess (C_String ("Created '") + inFilePath.stringValue () + "'.\n") ;
+            ggs_printFileOperationSuccess (C_String ("Created '") + inFilePath.stringValue () + "'.\n" COMMA_HERE) ;
           }else if (! ok) {
             C_String message ;
             message << "cannot write '" << inFilePath.stringValue () << "' file" ;
@@ -297,7 +297,7 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
           }
         }
       }else{
-        ggs_printWarning (C_String ("Need to write '") + inFilePath.stringValue () + "'.\n") ;
+        ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to write '") + inFilePath.stringValue () + "'.\n" COMMA_HERE) ;
       }
     }
   }
@@ -359,7 +359,7 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
     if (filePath.length () == 0) {
       inCompiler->onTheFlyRunTimeError ("'@data writeToFile' modifier invoked with empty file path argument" COMMA_THERE) ;
     }else if (! inCompiler->mPerformGeneration) {
-      ggs_printWarning (C_String ("Need to write '") + filePath + "'.\n") ;
+      ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to write '") + filePath + "'.\n" COMMA_HERE) ;
     }else{
       const bool fileAlreadyExists = filePath.fileExists () ;
       const bool verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
@@ -384,9 +384,9 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
         const PMUInt32 writtenCount = (PMUInt32) (fwrite (mData.bufferPointer (), 1, (PMUInt32) mData.count (), filePtr) & PMUINT32_MAX) ;
         const bool ok = (::fclose (filePtr) == 0) && (writtenCount == (PMUInt32) mData.count ()) ;
         if (ok && verboseOptionOn && fileAlreadyExists) {
-          ggs_printRewriteFileSuccess (C_String ("Replaced '") + filePath + "'.\n") ;
+          ggs_printFileOperationSuccess (C_String ("Replaced '") + filePath + "'.\n" COMMA_THERE) ;
         }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
-          ggs_printCreatedFileSuccess (C_String ("Created '") + filePath + "'.\n") ;
+          ggs_printFileOperationSuccess (C_String ("Created '") + filePath + "'.\n" COMMA_THERE) ;
         }else if (! ok) {
           C_String message ;
           message << "cannot write '" << filePath << "' file" ;

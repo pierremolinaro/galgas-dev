@@ -1583,7 +1583,7 @@ void C_Lexique::enterProduction (const char * inProductionName,
       message << " tag '" << inTag << "'" ;
     }
     message << "\n" ;
-    ggs_printMessage (message) ;
+    ggs_printMessage (message COMMA_HERE) ;
     mDebugDepthCounter ++ ;
   }
 }
@@ -1611,7 +1611,7 @@ void C_Lexique::didParseTerminal (const char * inTerminalName,
       message << inValue ;
     }
     message << "\n" ;
-    ggs_printMessage (message) ;
+    ggs_printMessage (message COMMA_HERE) ;
   }
 }
 

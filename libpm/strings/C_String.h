@@ -230,6 +230,9 @@ class C_String : public AC_OutputStream {
   public : C_String operator + (const C_String & inOperand) const ;
   public : C_String operator + (const char * inOperand) const ;
 
+//--- Returns a string where ", ', <, > and & have been replaced by &quot;, &apos;, &lt;, &gt; and &amp;
+  public : C_String XMLEscapedString (void) const ;
+
 //--- Returns an array containing substrings from the receiver that have been divided by separator
   public : void componentsSeparatedByString (const C_String & inSeparator,
                                              TC_UniqueArray <C_String> & outResult) const ;
