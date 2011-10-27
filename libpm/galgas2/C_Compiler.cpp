@@ -491,16 +491,15 @@ onTheFlyRunTimeError (const C_String & inRunTimeErrorMessage
 
 //---------------------------------------------------------------------------*
 
-void C_Compiler::
-generateFile (const C_String & inLineCommentPrefix,
-              const C_String & inFileName,
-              const C_String & inDefaultUserZone1,
-              const C_String & inGeneratedZone2,
-              const C_String & inDefaultUserZone2,
-              const C_String & inGeneratedZone3) {
-  const TC_UniqueArray <C_String> directoriesToExclude ;
+void C_Compiler::generateFile (const C_String & inLineCommentPrefix,
+                               const TC_UniqueArray <C_String> & inDirectoriesToExclude,
+                               const C_String & inFileName,
+                               const C_String & inDefaultUserZone1,
+                               const C_String & inGeneratedZone2,
+                               const C_String & inDefaultUserZone2,
+                               const C_String & inGeneratedZone3) {
   generateFileFromPathes (sourceFilePath ().stringByDeletingLastPathComponent (),
-                          directoriesToExclude,
+                          inDirectoriesToExclude,
                           inLineCommentPrefix,
                           inFileName,
                           inDefaultUserZone1,
