@@ -206,6 +206,7 @@ class C_Compiler : public C_SharedObject {
 
 //--- Generate file in directory
   public : void generateFile (const C_String & inLineCommentPrefix,
+                              const TC_UniqueArray <C_String> & inDirectoriesToExclude,
                               const C_String & inFileName,
                               const C_String & inDefaultUserZone1,
                               const C_String & inGeneratedZone2,
