@@ -919,7 +919,8 @@ override method @plusEqualInstructionAST analyzeSemanticInstruction # +=
 #--- Check target variable
   @unifiedTypeMapProxy targetType ;
   @string targetVariableCppName ;
-  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?*] ;
+  @string nameForCheckingFormalParameterUsing ;
+  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?targetType ?targetVariableCppName ?nameForCheckingFormalParameterUsing] ;
   foreach mStructAttributeList do
     const @attributeMap attributeMap := [targetType mAttributeMap] ;
     [attributeMap searchKey !mValue ?targetType] ;
@@ -953,6 +954,7 @@ override method @plusEqualInstructionAST analyzeSemanticInstruction # +=
     ioInstructionListForGeneration += ![@plusEqualnstructionForGeneration new
       !targetVariableCppName
       !targetType
+      !nameForCheckingFormalParameterUsing
       !mInstructionLocation
       !mStructAttributeList
       !effectiveParameterList
@@ -1005,6 +1007,7 @@ override method @selfPlusEqualInstructionAST analyzeSemanticInstruction
     ioInstructionListForGeneration += ![@plusEqualnstructionForGeneration new
       !selfObjectCppName
       !selfTypeProxy
+      !""
       !mInstructionLocation
       ![@lstringlist emptyList]
       !effectiveParameterList

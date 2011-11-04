@@ -800,6 +800,7 @@ class @structuredCastInstructionForGeneration extends @semanticInstructionForGen
 class @plusEqualnstructionForGeneration extends @semanticInstructionForGeneration {
   @string mReceiverCppName ;
   @unifiedTypeMapProxy mTargetType ;
+  @string mNameForCheckingFormalParameterUsing ;
   @location mInstructionLocation ;
   @lstringlist mStructAttributeList ;
   @semanticExpressionListForGeneration mExpressionList ;

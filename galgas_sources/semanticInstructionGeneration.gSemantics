@@ -787,13 +787,14 @@ override method @plusEqualnstructionForGeneration generateInstruction
     parameterList += !parameter ;  
   end foreach ;
 #--- Receiver
-  [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName] ;
+  [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing] ;
   @string receiverCppName := mReceiverCppName ;
   foreach mStructAttributeList do
     receiverCppName .= ".mAttribute_" . [[mValue string] identifierRepresentation] ;
   end foreach ;
 #--- Call add assign (+=) operator
   ioGeneratedCode .= receiverCppName . ".addAssign_operation (" ;
+  [!?ioUnusedVariableCppNameSet removeKey !receiverCppName] ;
   foreach parameterList
     do ioGeneratedCode .= mValue ;
     between ioGeneratedCode .= ", " ;
