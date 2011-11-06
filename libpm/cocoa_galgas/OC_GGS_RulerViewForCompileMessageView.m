@@ -85,7 +85,7 @@
     OC_GGS_ErrorOrWarningDescriptor * descriptor = [warningArray objectAtIndex:i HERE OFCLASS (OC_GGS_ErrorOrWarningDescriptor)] ;
     const NSRect r = [self rectForDescriptor:descriptor] ;
     if (NSPointInRect (localPoint, r)) {
-      [mDocument showWarningAtIndex:i display:[inEvent clickCount] > 1] ;
+ //     [mDocument showWarningAtIndex:i display:[inEvent clickCount] > 1] ;
       found = YES ;
     }
   }
@@ -94,7 +94,7 @@
     OC_GGS_ErrorOrWarningDescriptor * descriptor = [errorArray objectAtIndex:i HERE OFCLASS (OC_GGS_ErrorOrWarningDescriptor)] ;
     const NSRect r = [self rectForDescriptor:descriptor] ;
     if (NSPointInRect (localPoint, r)) {
-      [mDocument showErrorAtIndex:i display:[inEvent clickCount] > 1] ;
+//      [mDocument showErrorAtIndex:i display:[inEvent clickCount] > 1] ;
       found = YES ;
     }
   }

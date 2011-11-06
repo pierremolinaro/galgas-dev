@@ -68,15 +68,14 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 - (void) drawRect: (NSRect) inRect {
   [super drawRect:inRect] ;
 //--- Frame all warning and error locations
-  OC_GGS_Document * doc = [mDocument currentlyEditedDocumentInBuildWindow] ;
+/*  OC_GGS_Document * doc = [mDocument currentlyEditedDocumentInBuildWindow] ;
   NSString * docPath = doc.fileURL.path ;
   // NSLog (@"docPath '%@'", docPath) ;
   if (nil != docPath) {
     NSString * sourceString = [self string] ;
     NSLayoutManager * lm = [self layoutManager] ;
-    NSUInteger i ;
     NSArray * warningArray = [mDocument warningDescriptorArray] ;
-    for (i=0 ; i<[warningArray count] ; i++) {
+    for (NSUInteger i=0 ; i<[warningArray count] ; i++) {
       OC_GGS_ErrorOrWarningDescriptor * descriptor = [warningArray objectAtIndex:i HERE OFCLASS (OC_GGS_ErrorOrWarningDescriptor)] ;
       // NSLog (@"#%u : [descriptor documentPath] '%@'", i, [descriptor documentPath]) ;
       if (([descriptor documentPath] != nil) && [docPath isEqualToString:[descriptor documentPath]]) {
@@ -94,7 +93,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       }
     }
     NSArray * errorArray = [mDocument errorDescriptorArray] ;
-    for (i=0 ; i<[errorArray count] ; i++) {
+    for (NSUInteger i=0 ; i<[errorArray count] ; i++) {
       OC_GGS_ErrorOrWarningDescriptor * descriptor = [errorArray objectAtIndex:i HERE OFCLASS (OC_GGS_ErrorOrWarningDescriptor)] ;
       // NSLog (@"#%u : [descriptor documentPath] '%@'", i, [descriptor documentPath]) ;
       if (([descriptor documentPath] != nil) && [docPath isEqualToString:[descriptor documentPath]]) {
@@ -111,7 +110,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
         [NSBezierPath strokeRect:r] ;
       }
     }
-  }
+  }*/
 }
 
 //---------------------------------------------------------------------------*

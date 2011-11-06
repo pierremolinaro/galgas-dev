@@ -27,7 +27,6 @@
 
 @class OC_GGS_TextView ;
 @class OC_GGS_DelegateForSyntaxColoring ;
-@class NSSplitViewExtensions ;
 @class OC_Lexique ;
 @class OC_GGS_RulerViewForCompileMessageView ;
 @class OC_GGS_ErrorOrWarningDescriptor ;
@@ -42,15 +41,12 @@
 @private OC_GGS_DelegateForSyntaxColoring * mDelegateForSyntaxColoring ;
 @private OC_Lexique * mTokenizer ;
 
-@private IBOutlet OC_GGS_TextView * mUpperTextView ;
-@private IBOutlet OC_GGS_TextView * mLowerTextView ;
+@private IBOutlet OC_GGS_TextView * mTextView ;
+@private IBOutlet NSScrollView * mTextScrollView ;
 
-@private IBOutlet NSScrollView * mScrollViewForUpperTextView ;
-@private IBOutlet NSScrollView * mScrollViewForLowerTextView ;
+@private IBOutlet NSTextView * mIssueTextView ;
 
-@private IBOutlet NSSplitViewExtensions * mSplitView ;
-
-@private IBOutlet NSWindowController * mBuildWindowController ;
+@private IBOutlet NSSplitView * mIssueSplitView ;
 
 @private IBOutlet NSTextField * mErrorCountMessage ;
 
@@ -58,13 +54,7 @@
 
 @private IBOutlet NSButton * mCurrentLineButton ;
 
-@private IBOutlet NSWindow * mBuildWindow ;
-//@private IBOutlet NSTextField * mGotoLineTextField ;
 
-@private IBOutlet NSTextView * mCompileMessagesTextView ;
-@private IBOutlet NSScrollView * mCompileMessagesScrollView ;
-@private OC_GGS_RulerViewForCompileMessageView * mRulerForCompileMessageTextView ; 
-@private BOOL mScrollToTheEndOfTextDuringBuild ;
 @private NSMutableArray * mWarningArray ; // Array of OC_GGS_ErrorOrWarningDescriptor
 @private NSMutableArray * mErrorArray ; // Array of OC_GGS_ErrorOrWarningDescriptor
 @private NSColor * mBackgroundColorForWarningsAndErrors ;
@@ -74,11 +64,6 @@
 @private NSTextStorage * mDefaultTextStorage ;
 
 @private NSMutableData * mBufferedInputData ;
-@private NSMutableString * mBufferedInputFromCompilerString ;
-@private NSUInteger mBufferedInputFromCompilerIndex ;
-@private unichar mBufferedInputFromCompilerCurrentStyle ;
-
-//@private NSStringEncoding mCocoaSourceStringEncoding ;
 
 @private NSUInteger mCurrentWarning ;
 @private NSUInteger mCurrentError ;
@@ -90,8 +75,6 @@
   @private IBOutlet NSTextField * mSourceEncodingTextField ;
   @private NSStringEncoding mFileEncoding ;
   
-  @private IBOutlet OC_GGS_TextView * mSourceTextViewInBuildWindow ;
-  @private IBOutlet NSScrollView * mSourceScrollViewInBuildWindow ;
   @private OC_GGS_Document * mCurrentlyEditedDocumentInBuildWindow ;
 }
 
@@ -110,53 +93,18 @@
 
 - (BOOL) canTerminateApplication ;
 - (void) selectLine: (NSInteger) inLine forTextView: (NSTextView *) inTextView ;
-- (void) willCloseGalgasDocument: (OC_GGS_Document *) inDocument ;
 
 - (void) selectEntryPopUpForSelectionStart: (NSInteger) inSelectionStart ;
 - (OC_GGS_DelegateForSyntaxColoring *) delegateForSyntaxColoring ;
 - (OC_Lexique *) tokenizer ;
-- (OC_GGS_TextView *) sourceTextViewInDocumentWindow ;
-- (OC_GGS_Document *) currentlyEditedDocumentInBuildWindow ;
 
 //--- Navigation throught warnings
-- (void) showWarningAtIndex: (NSUInteger) inIndex
-         display: (BOOL) inDisplaySourceWindow ;
-
 - (NSUInteger) currentWarning ;
 
-- (IBAction) gotoFirstWarning: (id) inSender ;
-- (IBAction) gotoPreviousWarning: (id) inSender ;
-- (IBAction) gotoCurrentWarning: (id) inSender ;
-- (IBAction) gotoNextWarning: (id) inSender ;
-- (IBAction) gotoLastWarning: (id) inSender ;
-
-- (BOOL) canGotoFirstWarning ;
-- (BOOL) canGotoPreviousWarning ;
-- (BOOL) canGotoCurrentWarning ;
-- (BOOL) canGotoNextWarning ;
-- (BOOL) canGotoLastWarning ;
 
 - (void) addWarningDescriptor: (OC_GGS_ErrorOrWarningDescriptor *) inWarningDescriptor ;
 
-//--- Navigation throught errors
-- (void) showErrorAtIndex: (NSUInteger) inIndex
-         display: (BOOL) inDisplaySourceWindow ;
-
 - (NSUInteger) currentError ;
-
-- (IBAction) gotoFirstError: (id) inSender ;
-- (IBAction) gotoPreviousError: (id) inSender ;
-- (IBAction) gotoCurrentError: (id) inSender ;
-- (IBAction) gotoNextError: (id) inSender ;
-- (IBAction) gotoLastError: (id) inSender ;
-
-- (BOOL) canGotoFirstError ;
-- (BOOL) canGotoPreviousError ;
-- (BOOL) canGotoCurrentError ;
-- (BOOL) canGotoNextError ;
-- (BOOL) canGotoLastError ;
-
-- (void) addErrorDescriptor: (OC_GGS_ErrorOrWarningDescriptor *) inWarningDescriptor ;
 
 - (void) editedFilePath:(NSString *) inDocPath
          editedRange: (NSRange) inEditedRange
