@@ -605,7 +605,7 @@ internalWriteCstringConstant (AC_OutputStream & ioStream,
         const PMSInt32 n = UTF8StringFromUTF32Character (c, buffer) ;
         for (PMSInt32 j=0 ; j<n ; j++) {
           ioStream << "\\x" ;
-          ioStream.appendUnsignedHex2 (buffer [j]) ;
+          ioStream.appendUnsignedHex2 ((PMUInt32) buffer [j]) ;
           ioStream << "\"\""  ;
         }
       }
@@ -763,7 +763,7 @@ C_String cStringWithSigned (const PMSInt64 inValue) {
 
 C_String cStringWithCharacter (const char inValue) {
   C_String result ;
-  result.appendUnicodeCharacter (TO_UNICODE (inValue) COMMA_HERE) ;
+  result.appendUnicodeCharacter (TO_UNICODE ((PMUInt32) inValue) COMMA_HERE) ;
   return result ;
 }
 

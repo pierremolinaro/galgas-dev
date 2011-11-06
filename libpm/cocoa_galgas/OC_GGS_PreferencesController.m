@@ -124,11 +124,10 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   NSMutableArray * arguments = [NSMutableArray new] ;
 //--- Add tool path
   [arguments addObject:[self compilerToolPath]] ;
-//--- Add --cocoa option
- [arguments addObject: @"--cocoa"] ;
+//--- Add --xml option
+ [arguments addObject: @"--xml"] ;
 //--- Add boolean options
-  unsigned i ;
-  for (i=0 ; i<[mBoolOptionArray count] ; i++) {
+  for (NSUInteger i=0 ; i<[mBoolOptionArray count] ; i++) {
     OC_GGS_CommandLineOption * option = [mBoolOptionArray objectAtIndex:i HERE] ;
     const bool optionValue = [defaults integerForKey: [NSString stringWithFormat:@"%@_%@", GGS_bool_build_option, [option identifier]]] != 0 ;
     if (optionValue) {
@@ -144,7 +143,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     }
   }
 //--- Add integer options
-  for (i=0 ; i<[mUIntOptionArray count] ; i++) {
+  for (NSUInteger i=0 ; i<[mUIntOptionArray count] ; i++) {
     OC_GGS_CommandLineOption * option = [mUIntOptionArray objectAtIndex:i HERE] ;
     const NSUInteger optionValue = [defaults integerForKey: [NSString stringWithFormat:@"%@_%@", GGS_uint_build_option, [option identifier]]];
     if (optionValue != 0) {
@@ -160,7 +159,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     }
   }
 //--- Add string options
-  for (i=0 ; i<[mStringOptionArray count] ; i++) {
+  for (NSUInteger i=0 ; i<[mStringOptionArray count] ; i++) {
     OC_GGS_CommandLineOption * option = [mStringOptionArray objectAtIndex:i HERE] ;
     NSString * optionValue = [defaults objectForKey: [NSString stringWithFormat:@"%@_%@", GGS_string_build_option, [option identifier]]];
     if ([optionValue length] > 0) {
@@ -185,7 +184,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   mCommandLineItemArray = arguments ;
 //---- Build string for displaying
   NSMutableString * s = [NSMutableString new] ;
-  for (i=0 ; i<[arguments count] ; i++) {
+  for (NSUInteger i=0 ; i<[arguments count] ; i++) {
     [s appendString:[arguments objectAtIndex:i HERE]] ;
     [s appendString:@" "] ;  
   }
@@ -1412,8 +1411,8 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   NSArray * docArray = [[NSApplication sharedApplication] orderedDocuments] ;
   unsigned d ;
   for (d=0 ; d<[docArray count] ; d++) {
-    OC_GGS_Document * doc = [docArray objectAtIndex:d HERE] ;
-    [doc willCloseGalgasDocument:inDocument] ;
+//    OC_GGS_Document * doc = [docArray objectAtIndex:d HERE] ;
+ //   [doc willCloseGalgasDocument:inDocument] ;
   }
 }
 

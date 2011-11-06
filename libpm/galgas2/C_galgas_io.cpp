@@ -538,15 +538,15 @@ void ggs_printError (const C_SourceTextInString * inSourceTextPtr,
     if (inSourceTextPtr != NULL) {
       macroValidSharedObject (inSourceTextPtr, const C_SourceTextInString) ;
       co << "  file=\"" << inSourceTextPtr->sourceFilePath () << "\"\n"
-            "  line=" << cStringWithUnsigned (inErrorLocation.mLineNumber) << "\n"
-            "  column=" << cStringWithUnsigned (inErrorLocation.mColumnNumber) << "\n"
+            "  line=\"" << cStringWithUnsigned (inErrorLocation.mLineNumber) << "\"\n"
+            "  column=\"" << cStringWithUnsigned (inErrorLocation.mColumnNumber) << "\"\n"
     //     << "  endColumn=" << cStringWithUnsigned (inSourceEndColumn) << "\n"
       ;
     }
     #ifndef DO_NOT_GENERATE_CHECKINGS
       if (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue) {
         co << "  sourceFile=\"" << C_String (IN_SOURCE_FILE).lastPathComponent () << "\"\n"
-           << "  sourceLine=" << cStringWithSigned (IN_SOURCE_LINE) << "\n" ;
+           << "  sourceLine=\"" << cStringWithSigned (IN_SOURCE_LINE) << "\"\n" ;
       }
     #endif
     co << "  message=\"" << inMessage.XMLEscapedString () << "\"\n"
@@ -595,15 +595,15 @@ void ggs_printWarning (const C_SourceTextInString * inSourceTextPtr,
     if (inSourceTextPtr != NULL) {
       macroValidSharedObject (inSourceTextPtr, const C_SourceTextInString) ;
       co << "  file=\"" << inSourceTextPtr->sourceFilePath () << "\"\n"
-            "  line=" << cStringWithUnsigned (inWarningLocation.mLineNumber) << "\n"
-            "  column=" << cStringWithUnsigned (inWarningLocation.mColumnNumber) << "\n"
+            "  line=\"" << cStringWithUnsigned (inWarningLocation.mLineNumber) << "\"\n"
+            "  column=\"" << cStringWithUnsigned (inWarningLocation.mColumnNumber) << "\"\n"
     //     << "  endColumn=" << cStringWithUnsigned (inSourceEndColumn) << "\n"
       ;
     }
     #ifndef DO_NOT_GENERATE_CHECKINGS
       if (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue) {
         co << "  sourceFile=\"" << C_String (IN_SOURCE_FILE).lastPathComponent () << "\"\n"
-           << "  sourceLine=" << cStringWithSigned (IN_SOURCE_LINE) << "\n" ;
+           << "  sourceLine=\"" << cStringWithSigned (IN_SOURCE_LINE) << "\"\n" ;
       }
     #endif
     co << "  message=\"" << inMessage.XMLEscapedString () << "\"\n"
