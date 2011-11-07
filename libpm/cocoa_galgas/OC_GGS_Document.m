@@ -29,8 +29,8 @@
 #import "OC_GGS_DelegateForSyntaxColoring.h"
 #import "F_CocoaWrapperForGalgas.h"
 #import "PMCocoaCallsDebug.h"
-#import "OC_GGS_RulerViewForCompileMessageView.h"
 #import "OC_GGS_ErrorOrWarningDescriptor.h"
+#import "PMIssueDescriptor.h"
 
 //---------------------------------------------------------------------------*
 
@@ -40,14 +40,6 @@
 
 #define MAIN_WINDOW_TOOLBAR  @"GALGAS_MAIN_WINDOW_TOOLBAR"
 #define BUILD_WINDOW_TOOLBAR @"GALGAS_BUILD_WINDOW_TOOLBAR"
-
-//---------------------------------------------------------------------------*
-
-#define COCOA_MESSAGE_ID ('\x1')
-#define COCOA_REWRITE_SUCCESS_ID ('\x2')
-#define COCOA_WARNING_ID ('\x3')
-#define COCOA_ERROR_ID   ('\x4')
-#define COCOA_FILE_CREATION_SUCCESS_ID ('\x5')
 
 //---------------------------------------------------------------------------*
 
@@ -66,11 +58,9 @@
       NSLog (@"OC_GGS_Document <init>") ;
     #endif
     mTask = nil ;
-    mWarningArray = [NSMutableArray new] ;
-    mErrorArray = [NSMutableArray new] ;
+    mIssueArrayController = [NSArrayController new] ;
     mFileEncoding = NSUTF8StringEncoding ;
     mBackgroundColorForWarningsAndErrors = [[NSColor yellowColor] blendedColorWithFraction:0.8f ofColor:[NSColor whiteColor]] ;
-    [mBackgroundColorForWarningsAndErrors retain] ;
   }
   return self;
 }
@@ -251,122 +241,6 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 
 //---------------------------------------------------------------------------*
 
-#pragma mark Warning Navigation
-
-//---------------------------------------------------------------------------*
-
-- (NSArray *) warningDescriptorArray {
-  return mWarningArray ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (BOOL) hasWarning {
- return [mWarningArray count] > 0 ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) setCurrentWarning: (NSUInteger) inNewCurrentWarning {
-  [self willChangeValueForKey:@"currentWarning"] ;
-  mCurrentWarning = inNewCurrentWarning ;
-  [self didChangeValueForKey:@"currentWarning"] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (NSUInteger) currentWarning {
-  return mCurrentWarning ;
-}
-
-//---------------------------------------------------------------------------*
-
-+ (NSSet *) keyPathsForValuesAffectingCanGotoFirstWarning {
-    return [NSSet setWithObjects:@"hasWarning", @"currentWarning", nil];
-}
-
-//---------------------------------------------------------------------------*
-
-+ (NSSet *) keyPathsForValuesAffectingCanGotoPreviousWarning {
-    return [NSSet setWithObjects:@"hasWarning", @"currentWarning", nil];
-}
-
-//---------------------------------------------------------------------------*
-
-+ (NSSet *) keyPathsForValuesAffectingCanGotoCurrentWarning {
-    return [NSSet setWithObjects:@"hasWarning", @"currentWarning", nil];
-}
-
-//---------------------------------------------------------------------------*
-
-+ (NSSet *) keyPathsForValuesAffectingCanGotoNextWarning {
-    return [NSSet setWithObjects:@"hasWarning", @"currentWarning", nil];
-}
-
-//---------------------------------------------------------------------------*
-
-+ (NSSet *) keyPathsForValuesAffectingCanGotoLastWarning {
-    return [NSSet setWithObjects:@"hasWarning", @"currentWarning", nil];
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) removeAllWarnings {
-  [self willChangeValueForKey:@"hasWarning"] ;
-  [mWarningArray removeAllObjects] ;
-  [self didChangeValueForKey:@"hasWarning"] ;
-  [self setCurrentWarning:NSNotFound] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) addWarningDescriptor: (OC_GGS_ErrorOrWarningDescriptor *) inWarningDescriptor {
-  [self willChangeValueForKey:@"hasWarning"] ;
-  [mWarningArray addObject:inWarningDescriptor] ;
-  [self didChangeValueForKey:@"hasWarning"] ;
-}
-
-//---------------------------------------------------------------------------*
-
-#pragma mark Error Navigation
-
-//---------------------------------------------------------------------------*
-
-- (NSArray *) errorDescriptorArray {
-  return mErrorArray ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (BOOL) hasError {
- return [mErrorArray count] > 0 ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) setCurrentError: (NSUInteger) inNewCurrentError {
-  [self willChangeValueForKey:@"currentError"] ;
-  mCurrentError = inNewCurrentError ;
-  [self didChangeValueForKey:@"currentError"] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (NSUInteger) currentError {
-  return mCurrentError ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) removeAllErrors {
-  [self willChangeValueForKey:@"hasError"] ;
-  [mErrorArray removeAllObjects] ;
-  [self didChangeValueForKey:@"hasError"] ;
-  [self setCurrentError:NSNotFound] ;
-}
-
-//---------------------------------------------------------------------------*
-
 #pragma mark Nib relative Actions
 
 //---------------------------------------------------------------------------*
@@ -401,11 +275,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 //--- For lower text view, use text storage of upper text view
   [mTextView setGalgasDocument:self] ;
 
-//--- Define default text storage (that contains "No Editor" text)
-//  mDefaultTextStorage = [mSourceTextViewInBuildWindow textStorage] ;
-  //NSLog (@"mDefaultTextStorage %@", mDefaultTextStorage) ;
- 
-//--- Bind to preference build font
+//--- Bindings
   [mIssueTextView
     bind:@"font"
     toObject:[NSUserDefaultsController sharedUserDefaultsController]
@@ -413,9 +283,25 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
     options:[NSDictionary dictionaryWithObject:NSUnarchiveFromDataTransformerName forKey:NSValueTransformerNameBindingOption]
   ] ;
 
-//--- Initial settings
-  [mErrorCountMessage setStringValue:@""] ;
-  [mWarningCountMessage setStringValue:@""] ;
+//--- Bindings
+  [mIssueArrayController
+    bind:@"contentArray"
+    toObject:self
+    withKeyPath:@"mIssueArray"
+    options:nil
+  ] ;
+  [mIssueTableViewColumn
+    bind:@"value"
+    toObject:mIssueArrayController
+    withKeyPath:@"arrangedObjects.issueMessage"
+    options:nil
+  ] ;
+  [mIssueTableViewColumn
+    bind:@"textColor"
+    toObject:mIssueArrayController
+    withKeyPath:@"arrangedObjects.issueColor"
+    options:nil
+  ] ;
 
 //--- Setting a horizontal scrollbar to text views
   addHorizontalScrollBarToTextView (mTextScrollView) ;
@@ -451,12 +337,10 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
   [tb setAutosavesConfiguration:YES] ;
   [tb setDelegate:self] ;
   [[self windowForSheet] setToolbar:tb] ;
-  [tb release] ;
   tb = [[NSToolbar alloc] initWithIdentifier:BUILD_WINDOW_TOOLBAR] ;
   [tb setAllowsUserCustomization:YES] ;
   [tb setAutosavesConfiguration:YES] ;
   [tb setDelegate:self] ;
-  [tb release] ;
   #ifdef DEBUG_MESSAGES
     NSLog (@"OC_GGS_Document <windowControllerDidLoadNib:> DONE") ;
   #endif
@@ -651,7 +535,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 - (void) editedFilePath:(NSString *) inDocPath
          editedRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength {
-  for (OC_GGS_ErrorOrWarningDescriptor * issue in mWarningArray) {
+/*  for (OC_GGS_ErrorOrWarningDescriptor * issue in mWarningArray) {
     [issue
       editedFilePath:inDocPath
       editedRange:inEditedRange
@@ -664,7 +548,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
       editedRange:inEditedRange
       changeInLength:inChangeInLength
     ] ;  
-  }
+  }*/
 }
 
 //---------------------------------------------------------------------------*
@@ -709,7 +593,6 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
   ] ;
   if (source != nil) {
     [mDelegateForSyntaxColoring setSourceString:source] ;
-    [source release] ;
   }
 //--- 
   [mTextView setSelectedRange:currentSelection] ;
@@ -938,7 +821,6 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
   #endif
   NSDocumentController * dc = [NSDocumentController sharedDocumentController] ;
   [dc removeDocument:self] ;
-  [inAlert release] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1027,9 +909,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
       NSArray * a = [source componentsSeparatedByString:@"\r\n"] ;
       const NSUInteger CRLFcount = [a count] - 1 ;
       if (CRLFcount > 0) {
-        [source release] ;
         source = [a componentsJoinedByString:@"\n"] ;
-        [source retain] ;
         if (CRLFcount == 1) {
           [s appendFormat:@"1 CRLF has been converted to LF."] ;
         }else if (CRLFcount > 1) {
@@ -1040,9 +920,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
       a = [source componentsSeparatedByString:@"\r"] ;
       const NSUInteger CRcount = [a count] - 1 ;
       if (CRcount > 0) {
-        [source release] ;
         source = [a componentsJoinedByString:@"\n"] ;
-        [source retain] ;
         if ([s length] > 0) {
           [s appendString:@"\n"] ;
         }
@@ -1057,9 +935,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
       NSArray * a = [source componentsSeparatedByString:@"\x09"] ;
       const NSUInteger HTABcount = [a count] - 1 ;
       if (HTABcount > 0) {
-        [source release] ;
         source = [a componentsJoinedByString:@" "] ;
-        [source retain] ;
         if ([s length] > 0) {
           [s appendString:@"\n"] ;
         }
@@ -1145,19 +1021,16 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
         }
       }
       source = [s copy] ;
-      [s release] ;
     }
   }
   [self setSourceFileEncoding:fileEncoding] ;
   mTokenizer = tokenizerForExtension ([[inAbsoluteURL absoluteString] pathExtension]) ;
-  [mTokenizer retain] ;
 //--- Delegate for syntax coloring
   if (source != nil) {
     mDelegateForSyntaxColoring = [[OC_GGS_DelegateForSyntaxColoring alloc]
       initWithDocument:self
       withSourceString:source
     ] ;
-    [source release] ;
     [[NSRunLoop currentRunLoop]
       performSelector:@selector (performCharacterConversion)
       target:self
@@ -1216,38 +1089,47 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
   if (nil == error) {
     issues = xmlDoc.rootElement.children ;
   }
+  NSMutableArray * issueArray = [NSMutableArray new] ;
   for (NSXMLNode * node in issues) {
-    // NSLog (@"node %@", node) ;
-    NSLog (@"Name '%@'", node.name) ;
     if (nil == node.name) {
       NSString * message = [node stringValue] ;
-      NSLog (@"  message '%@'", message) ;
+      PMIssueDescriptor * issue = [[PMIssueDescriptor alloc] initWithMessage:message] ;
+      [issueArray addObject:issue] ;
     }else if ([@"message" isEqualToString:node.name]) {
       NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0] stringValue] ;
-      NSLog (@"  message '%@'", message) ;
+      PMIssueDescriptor * issue = [[PMIssueDescriptor alloc] initWithMessage:message] ;
+      [issueArray addObject:issue] ;
     }else if ([@"fileOperation" isEqualToString:node.name]) {
       NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0] stringValue] ;
-      NSLog (@"  message '%@'", message) ;
+      PMIssueDescriptor * issue = [[PMIssueDescriptor alloc] initWithFileOperation:message] ;
+      [issueArray addObject:issue] ;
     }else if ([@"error" isEqualToString:node.name]) {
       NSString * file = [[[node nodesForXPath:@"./@file" error:nil] objectAtIndex:0] stringValue] ;
-      NSLog (@"  file '%@'", file) ;
       NSInteger line = [[[[node nodesForXPath:@"./@line" error:nil] objectAtIndex:0] stringValue] integerValue] ;
-      NSLog (@"  line '%ld'", line) ;
       NSInteger column = [[[[node nodesForXPath:@"./@column" error:nil] objectAtIndex:0] stringValue] integerValue] ;
-      NSLog (@"  column '%ld'", column) ;
       NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0] stringValue] ;
-      NSLog (@"  message '%@'", message) ;
+      PMIssueDescriptor * issue = [[PMIssueDescriptor alloc]
+        initWithErrorMessage:message
+        file:file
+        line:line
+        column:column
+      ] ;
+      [issueArray addObject:issue] ;
     }else if ([@"warning" isEqualToString:node.name]) {
       NSString * file = [[[node nodesForXPath:@"./@file" error:nil] objectAtIndex:0] stringValue] ;
-      NSLog (@"  file '%@'", file) ;
       NSInteger line = [[[[node nodesForXPath:@"./@line" error:nil] objectAtIndex:0] stringValue] integerValue] ;
-      NSLog (@"  line '%ld'", line) ;
       NSInteger column = [[[[node nodesForXPath:@"./@column" error:nil] objectAtIndex:0] stringValue] integerValue] ;
-      NSLog (@"  column '%ld'", column) ;
       NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0] stringValue] ;
-      NSLog (@"  message '%@'", message) ;
+      PMIssueDescriptor * issue = [[PMIssueDescriptor alloc]
+        initWithWarningMessage:message
+        file:file
+        line:line
+        column:column
+      ] ;
+      [issueArray addObject:issue] ;
     }
   }
+  [mIssueArrayController setContent:issueArray] ;
   if (nil != error) {
     [self.windowForSheet presentError:error] ;
   }
@@ -1349,9 +1231,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 
     [mIssueTextView setString:@"Compiling…"] ;
     mBufferedInputData = [NSMutableData new] ;
-
-    [mErrorCountMessage setStringValue:@""] ;
-    [mWarningCountMessage setStringValue:@""] ;
+    [mIssueArrayController setContent:[NSArray array]] ;
 
     NSArray * commandLineArray = [gCocoaGalgasPreferencesController commandLineItemArray] ;
   //--- Command line tool does actually exist ? (First argument is not "?")
@@ -1397,9 +1277,6 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
       [[taskOutput fileHandleForReading] readInBackgroundAndNotify] ;
     //--- Start task
       [mTask launch] ;
-    //--- Delete previous error and warnings
-      [self removeAllWarnings] ;
-      [self removeAllErrors] ;
       [mTextView setNeedsDisplay:YES] ; // For Removing issue rect display
     }
   }

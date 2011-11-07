@@ -33,12 +33,9 @@
   if (self) {
     mDownloadDidEndSelector = inDownloadDidEndSelector ;
     mURL = [NSURL URLWithString:inURLString] ; // mURL is nil is URL string is malformed
-    [mURL retain] ;
     mDelegate = inDelegate ;
-    [mDelegate retain] ;
     mDownloadedData = [NSMutableData new] ;
     mUserInfo = inUserInfo ;
-    [mUserInfo retain] ;
   //--- Start Download
     if (mURL == nil) {
       mDownloadError = [NSError 
@@ -57,18 +54,6 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) dealloc {
-  [mURL release] ;
-  [mDelegate release] ;
-  [mDownloadedData release] ;
-  [mDownloadError release] ;
-  [mUserInfo release] ;
-  [mDownloadConnection release] ;
-  [super dealloc] ;
-}
-
-//---------------------------------------------------------------------------*
-
 //- (void)URL:(NSURL *)sender resourceDataDidBecomeAvailable:(NSData *) inNewBytes {
 - (void)connection: (NSURLConnection *) connection didReceiveData:(NSData *) inNewBytes {
   // NSLog (@"resourceDataDidBecomeAvailable %u bytes", [inNewBytes length]) ;
@@ -81,7 +66,6 @@
 //- (void)URL:(NSURL *)sender resourceDidFailLoadingWithReason:(NSString *) inReason {
   // NSLog (@"resourceDidFailLoadingWithReason '%@'", inReason) ;
   mDownloadError = inError ;
-  [mDownloadError retain] ;
   [self notifyDelegate] ;
 }
 

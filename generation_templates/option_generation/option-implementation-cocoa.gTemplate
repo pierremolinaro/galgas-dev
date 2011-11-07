@@ -21,7 +21,6 @@ foreach BOOL_OPTION_MAP do
   %    defaultValue:@""\n%
   %  ] ;\n%
   %  [ioBoolOptionArray addObject:option] ;\n%
-  %  [option release] ;\n%
 end foreach
 foreach UINT_OPTION_MAP do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
@@ -33,7 +32,6 @@ foreach UINT_OPTION_MAP do
   %    defaultValue:@%![mDefaultValue utf8Representation]%\n%
   %  ] ;\n%
   %  [ioUIntOptionArray addObject:option] ;\n%
-  %  [option release] ;\n%
 end foreach
 foreach STRING_OPTION_MAP do
   %  option = [[OC_GGS_CommandLineOption alloc]\n%
@@ -45,7 +43,6 @@ foreach STRING_OPTION_MAP do
   %    defaultValue:@%![mDefaultValue utf8Representation]%\n%
   %  ] ;\n%
   %  [ioStringOptionArray addObject:option] ;\n%
-  %  [option release] ;\n%
 end foreach
 %}
 

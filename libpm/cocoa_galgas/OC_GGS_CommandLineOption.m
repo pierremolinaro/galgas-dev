@@ -19,23 +19,14 @@
        defaultValue: (NSString *) inDefaultValue {
   self = [super init] ;
   if (self) {
-    mDomainName = [inDomainName retain] ;
-    mIdentifier = [inIdentifier retain] ;
+    mDomainName = inDomainName.copy ;
+    mIdentifier = inIdentifier.copy ;
     mCommandChar = inCommandChar ;
-    mCommandString = [inCommandString retain] ;
-    mComment = [inComment retain] ;
-    mDefaultValue = [inDefaultValue retain] ;
+    mCommandString = inCommandString.copy ;
+    mComment = inComment.copy ;
+    mDefaultValue = inDefaultValue.copy ;
   }
   return self ;
-}
-
-- (void) dealloc {
-  [mDomainName release] ;
-  [mIdentifier release] ;
-  [mCommandString release] ;
-  [mComment release] ;
-  [mDefaultValue release] ;
-  [super dealloc] ;
 }
 
 - (NSString *) identifier {

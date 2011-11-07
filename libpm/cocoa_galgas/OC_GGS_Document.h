@@ -48,15 +48,10 @@
 
 @private IBOutlet NSSplitView * mIssueSplitView ;
 
-@private IBOutlet NSTextField * mErrorCountMessage ;
-
-@private IBOutlet NSTextField * mWarningCountMessage ;
 
 @private IBOutlet NSButton * mCurrentLineButton ;
 
 
-@private NSMutableArray * mWarningArray ; // Array of OC_GGS_ErrorOrWarningDescriptor
-@private NSMutableArray * mErrorArray ; // Array of OC_GGS_ErrorOrWarningDescriptor
 @private NSColor * mBackgroundColorForWarningsAndErrors ;
 
 @private NSTask * mTask ;
@@ -65,8 +60,9 @@
 
 @private NSMutableData * mBufferedInputData ;
 
-@private NSUInteger mCurrentWarning ;
-@private NSUInteger mCurrentError ;
+@private NSMutableArray * mIssueArray ; // Array of PMIssueDescriptor
+@private NSArrayController * mIssueArrayController ;
+@private IBOutlet NSTableColumn * mIssueTableViewColumn ;
 
   @private IBOutlet NSPopUpButton * mEntryListPopUpButton ;
 
@@ -85,10 +81,6 @@
 - (IBAction) actionBuild: (id) sender ;
 - (IBAction) stopBuild: (id) sender ;
 
-- (NSArray *) warningDescriptorArray ;
-- (NSArray *) errorDescriptorArray ;
-
-
 - (void) changeTextRulerVisible: (BOOL) inVisible forRuleThickness: (CGFloat) inThickness ;
 
 - (BOOL) canTerminateApplication ;
@@ -99,12 +91,7 @@
 - (OC_Lexique *) tokenizer ;
 
 //--- Navigation throught warnings
-- (NSUInteger) currentWarning ;
 
-
-- (void) addWarningDescriptor: (OC_GGS_ErrorOrWarningDescriptor *) inWarningDescriptor ;
-
-- (NSUInteger) currentError ;
 
 - (void) editedFilePath:(NSString *) inDocPath
          editedRange: (NSRange) inEditedRange

@@ -252,7 +252,6 @@
 		CF92AD2E12578D6D003F16F7 /* GALGAS_uint_36__34_.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1BCEC010D2BAA400A0D648 /* GALGAS_uint_36__34_.cpp */; };
 		CF92AD2F12578D6E003F16F7 /* GALGAS_uint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5892C10D28A2200B7E541 /* GALGAS_uint.cpp */; };
 		CF92AD3012578D6F003F16F7 /* predefined-types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFB8941110CBFF1006248FD /* predefined-types.cpp */; };
-		CF94CDB010D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94CDAF10D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m */; };
 		CF9950CF0FF14697006E6395 /* OC_Lexique.m in Sources */ = {isa = PBXBuildFile; fileRef = CFECE4650FEFA5270031D087 /* OC_Lexique.m */; };
 		CF9E55FC0FF5372D007692D1 /* OC_Token.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9E55FA0FF5372D007692D1 /* OC_Token.m */; };
 		CF9FB045127A0A0200335160 /* C_galgas_class_inspector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9FB041127A0A0200335160 /* C_galgas_class_inspector.cpp */; };
@@ -395,6 +394,7 @@
 		CFFC0F2011EDC44200C97B85 /* C_BDD-and-operation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFC0F1311EDC44200C97B85 /* C_BDD-and-operation.cpp */; };
 		CFFC0F2111EDC44200C97B85 /* C_BDD-find-or-add.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFC0F1411EDC44200C97B85 /* C_BDD-find-or-add.cpp */; };
 		CFFC0F2211EDC44200C97B85 /* C_BDD-single-operand-ops.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFC0F1611EDC44200C97B85 /* C_BDD-single-operand-ops.cpp */; };
+		CFFCE7BD14686081009DB6D5 /* PMIssueDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFFCE7BC14686081009DB6D5 /* PMIssueDescriptor.m */; };
 		CFFE063411442CC200BE7C52 /* guiTypesForAST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE063011442CC200BE7C52 /* guiTypesForAST.cpp */; };
 		CFFE063511442CC200BE7C52 /* guiTypesForAST.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE063011442CC200BE7C52 /* guiTypesForAST.cpp */; };
 		CFFE064211442ECD00BE7C52 /* guiSyntax.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFE063E11442ECD00BE7C52 /* guiSyntax.cpp */; };
@@ -670,8 +670,6 @@
 		CF8E30230D9EE03700EF3764 /* projectCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = projectCreation.h; sourceTree = "<group>"; };
 		CF8EE1540B93343E006CAFD5 /* C_BDD_Set3.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; name = C_BDD_Set3.cpp; path = bdd/C_BDD_Set3.cpp; sourceTree = "<group>"; };
 		CF8EE1550B93343E006CAFD5 /* C_BDD_Set3.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; name = C_BDD_Set3.h; path = bdd/C_BDD_Set3.h; sourceTree = "<group>"; };
-		CF94CDAE10D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_RulerViewForCompileMessageView.h; sourceTree = "<group>"; };
-		CF94CDAF10D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_RulerViewForCompileMessageView.m; sourceTree = "<group>"; };
 		CF9BDF6B0585C5C900FC7DD7 /* galgasApplication.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = galgasApplication.icns; sourceTree = "<group>"; };
 		CF9BDF6C0585C5C900FC7DD7 /* galgasDocuments.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = galgasDocuments.icns; sourceTree = "<group>"; };
 		CF9E55F90FF5372D007692D1 /* OC_Token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_Token.h; sourceTree = "<group>"; };
@@ -963,6 +961,8 @@
 		CFFC0F1411EDC44200C97B85 /* C_BDD-find-or-add.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "C_BDD-find-or-add.cpp"; path = "bdd/C_BDD-find-or-add.cpp"; sourceTree = "<group>"; };
 		CFFC0F1511EDC44200C97B85 /* C_BDD-node.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "C_BDD-node.h"; path = "bdd/C_BDD-node.h"; sourceTree = "<group>"; };
 		CFFC0F1611EDC44200C97B85 /* C_BDD-single-operand-ops.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = "C_BDD-single-operand-ops.cpp"; path = "bdd/C_BDD-single-operand-ops.cpp"; sourceTree = "<group>"; };
+		CFFCE7BB14686081009DB6D5 /* PMIssueDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMIssueDescriptor.h; sourceTree = "<group>"; };
+		CFFCE7BC14686081009DB6D5 /* PMIssueDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMIssueDescriptor.m; sourceTree = "<group>"; };
 		CFFE063011442CC200BE7C52 /* guiTypesForAST.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guiTypesForAST.cpp; sourceTree = "<group>"; };
 		CFFE063111442CC200BE7C52 /* guiTypesForAST.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = guiTypesForAST.h; sourceTree = "<group>"; };
 		CFFE063E11442ECD00BE7C52 /* guiSyntax.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guiSyntax.cpp; sourceTree = "<group>"; };
@@ -1269,8 +1269,6 @@
 				CF82597408536A130077AEAF /* OC_GGS_Document.m */,
 				CF82597508536A130077AEAF /* OC_GGS_PreferencesController.h */,
 				CF82597608536A130077AEAF /* OC_GGS_PreferencesController.m */,
-				CF94CDAE10D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.h */,
-				CF94CDAF10D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m */,
 				CF82597708536A130077AEAF /* OC_GGS_RulerViewForTextView.h */,
 				CF82597808536A130077AEAF /* OC_GGS_RulerViewForTextView.m */,
 				CF82597908536A130077AEAF /* OC_GGS_TextView.h */,
@@ -1290,6 +1288,8 @@
 				CFC1506A0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif */,
 				CF82596C08536A130077AEAF /* F_CocoaWrapperForGalgas.h */,
 				CF82597B08536A130077AEAF /* PP_CocoaGalgasPrefix.pch */,
+				CFFCE7BB14686081009DB6D5 /* PMIssueDescriptor.h */,
+				CFFCE7BC14686081009DB6D5 /* PMIssueDescriptor.m */,
 			);
 			path = cocoa_galgas;
 			sourceTree = "<group>";
@@ -2447,10 +2447,10 @@
 				CF4ED38710D9256F00B4F6AA /* PMMutableStringDebugCategory.m in Sources */,
 				CF4ED38810D9256F00B4F6AA /* PMPointerArrayDebugCategory.m in Sources */,
 				CF4ED38910D9256F00B4F6AA /* PMSetDebugCategory.m in Sources */,
-				CF94CDB010D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m in Sources */,
 				CFF1293810D9646E00C72453 /* OC_GGS_ErrorOrWarningDescriptor.m in Sources */,
 				CFD94B7B129068CF00864538 /* cocoaGalgas.m in Sources */,
 				CFCEEFC113CF24C10074BDE9 /* OC_GGS_searchInFolders.m in Sources */,
+				CFFCE7BD14686081009DB6D5 /* PMIssueDescriptor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

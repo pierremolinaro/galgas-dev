@@ -105,7 +105,6 @@
   if ([inBindingName isEqualToString:@"fontValue"]) {
     [mBoundObjectFor_fontValue removeObserver:self forKeyPath:mKeyPathFor_fontValue] ;
     mBoundObjectFor_fontValue = nil ;
-    [mKeyPathFor_fontValue release] ;
     mKeyPathFor_fontValue = nil ;
   }else{
     [super unbind:inBindingName] ;

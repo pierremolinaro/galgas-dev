@@ -249,7 +249,7 @@
             lastAvailableVersion
           ] ;
           [mPerformUpdateButton setTitle:s] ;
-          [lastAvailableVersion retain] ;
+          [[NSGarbageCollector defaultCollector] disableCollectorForPointer:lastAvailableVersion] ;
           [NSApp
             beginSheet:mNewAvailableVersionPanel
             modalForWindow:nil
@@ -312,6 +312,7 @@
          returnCode:(int) inReturnCode
    contextInfo:(void  *) inContextInfo {
   NSString * lastAvailableVersion = (NSString *) inContextInfo ;
+  [[NSGarbageCollector defaultCollector] enableCollectorForPointer:lastAvailableVersion] ;
   // NSLog (@"inReturnCode %d", inReturnCode) ;
   if (inReturnCode == YES) {
   //--- Remove temporary dir if it exists

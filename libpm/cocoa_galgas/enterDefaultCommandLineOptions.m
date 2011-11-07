@@ -21,7 +21,6 @@ void enterDefaultCommandLineOptions (NSMutableArray * ioBoolOptionArray,
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
-  [option release] ;
 
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"generic_cli_options"
@@ -32,7 +31,6 @@ void enterDefaultCommandLineOptions (NSMutableArray * ioBoolOptionArray,
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
-  [option release] ;
 
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
@@ -43,7 +41,6 @@ void enterDefaultCommandLineOptions (NSMutableArray * ioBoolOptionArray,
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
-  [option release] ;
 
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
@@ -54,7 +51,6 @@ void enterDefaultCommandLineOptions (NSMutableArray * ioBoolOptionArray,
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
-  [option release] ;
 
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
@@ -65,7 +61,6 @@ void enterDefaultCommandLineOptions (NSMutableArray * ioBoolOptionArray,
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
-  [option release] ;
 
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
@@ -76,7 +71,6 @@ void enterDefaultCommandLineOptions (NSMutableArray * ioBoolOptionArray,
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
-  [option release] ;
 
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
@@ -87,7 +81,6 @@ void enterDefaultCommandLineOptions (NSMutableArray * ioBoolOptionArray,
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
-  [option release] ;
 
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
@@ -98,7 +91,6 @@ void enterDefaultCommandLineOptions (NSMutableArray * ioBoolOptionArray,
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
-  [option release] ;
 
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
@@ -109,7 +101,6 @@ void enterDefaultCommandLineOptions (NSMutableArray * ioBoolOptionArray,
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
-  [option release] ;
 
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
@@ -120,7 +111,6 @@ void enterDefaultCommandLineOptions (NSMutableArray * ioBoolOptionArray,
     defaultValue:@""
   ] ;
   [ioBoolOptionArray addObject:option] ;
-  [option release] ;
 
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
@@ -131,7 +121,6 @@ void enterDefaultCommandLineOptions (NSMutableArray * ioBoolOptionArray,
     defaultValue:@""
   ] ;
   [ioUIntOptionArray addObject:option] ;
-  [option release] ;
 
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
@@ -142,6 +131,4 @@ void enterDefaultCommandLineOptions (NSMutableArray * ioBoolOptionArray,
     defaultValue:@""
   ] ;
   [ioUIntOptionArray addObject:option] ;
-  [option release] ;
-
 }

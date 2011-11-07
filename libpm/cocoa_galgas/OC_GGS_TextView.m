@@ -55,16 +55,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
-- (void) dealloc {
-  mCurrentLineButton = nil ;
-  [mKeyForSelectionInUserDefault release] ;
-  mKeyForSelectionInUserDefault = nil ;
-  [self setDelegate:nil] ;
-  [super dealloc] ;
-}
-
-//---------------------------------------------------------------------------*
-
 - (void) drawRect: (NSRect) inRect {
   [super drawRect:inRect] ;
 //--- Frame all warning and error locations
@@ -411,9 +401,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 //---------------------------------------------------------------------------*
 
 - (void) setKeyForSelectionInUserDefault: (NSString *) inKeyForSelectionInUserDefault {
-  [inKeyForSelectionInUserDefault retain] ;
-  [mKeyForSelectionInUserDefault release] ;
-  mKeyForSelectionInUserDefault = inKeyForSelectionInUserDefault ;
+  mKeyForSelectionInUserDefault = inKeyForSelectionInUserDefault.copy ;
 }
 
 //---------------------------------------------------------------------------*
