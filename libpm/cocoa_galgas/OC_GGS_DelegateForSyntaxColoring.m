@@ -114,8 +114,8 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
   self = [super init] ;
   if (self) {
     NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
-    mDocument = [inDocument retain] ;
-    mUndoManager = [[mDocument undoManager] retain] ;
+    mDocument = inDocument ;
+    mUndoManager = [mDocument undoManager] ;
     mTextStorage = [[NSTextStorage alloc] init] ;
     mStyledRangeArray = [[NSMutableArray alloc] init] ;
     mTemplateTextAttributeDictionary = [[NSMutableDictionary alloc] init] ;
@@ -220,7 +220,6 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
   //---
     // NSLog (@"%p [tokenizer styleCount] %u", tokenizer, [tokenizer styleCount]) ;
     mFontAttributesDictionaryArray = [NSMutableArray new] ;
-    [mFontAttributesDictionaryArray retain] ;
     for (i=0 ; i<[tokenizer styleCount] ; i++) {
       NSMutableDictionary * attributeDictionary = [NSMutableDictionary new] ;
     //--- Add foreground color   

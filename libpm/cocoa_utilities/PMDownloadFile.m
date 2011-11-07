@@ -27,24 +27,17 @@
   if (self) {
     mDownloadDidEndSelector = inDownloadDidEndSelector ;
     mURL = [NSURL URLWithString:inURLString] ;
-    [mURL retain] ;
     mDelegate = inDelegate ;
-    [mDelegate retain] ;
     mDestinationFileName = inDestinationFileName ;
-    [mDestinationFileName retain] ;
     mUserInfo = inUserInfo ;
-    [mUserInfo retain] ;
   //--- Subtitle
     mSubTitle = inSubtitle ;
-    [mSubTitle retain] ;
     [mSubTitle setStringValue:@""] ;
   //--- Progress Indicator
     mProgressIndicator = inProgressIndicator ;
-    [mProgressIndicator retain] ;
     [mProgressIndicator setIndeterminate:YES] ;
   //--- Cancel button
     mCancelButton = inCancelButton ;
-    [mCancelButton retain] ;
     [mCancelButton setTarget:self] ;
     [mCancelButton setAction:@selector (cancelAction:)] ;
     [mCancelButton setEnabled:YES] ;
@@ -91,24 +84,17 @@
   if (self) {
     mDownloadDidEndSelector = inDownloadDidEndSelector ;
     mURL = [NSURL URLWithString:inURLString] ;
-    [mURL retain] ;
     mDelegate = inDelegate ;
-    [mDelegate retain] ;
     mDestinationFileName = inDestinationFileName ;
-    [mDestinationFileName retain] ;
     mUserInfo = inUserInfo ;
-    [mUserInfo retain] ;
   //--- Subtitle
     mSubTitle = inSubtitle ;
-    [mSubTitle retain] ;
     [mSubTitle setStringValue:@""] ;
   //--- Progress Indicator
     mProgressIndicator = inProgressIndicator ;
-    [mProgressIndicator retain] ;
     [mProgressIndicator setIndeterminate:YES] ;
   //--- Cancel button
     mCancelButton = inCancelButton ;
-    [mCancelButton retain] ;
     [mCancelButton setTarget:self] ;
     [mCancelButton setAction:@selector (cancelAction:)] ;
     [mCancelButton setEnabled:YES] ;
@@ -124,21 +110,6 @@
     [mDownload setDestination:inDestinationFileName allowOverwrite:YES];
   }
   return self ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) dealloc {
-  [mURL release] ;
-  [mCancelButton release] ;
-  [mSubTitle release] ;
-  [mProgressIndicator release] ;
-  [mDelegate release] ;
-  [mDownload release] ;
-  [mDownloadError release] ;
-  [mDestinationFileName release] ;
-  [mUserInfo release] ;
-  [super dealloc] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -191,7 +162,6 @@
 - (void) download:(NSURLDownload *)download didFailWithError:(NSError *) inError {
   // NSLog (@"Download failed") ;
   mDownloadError = inError ;
-  [mDownloadError retain] ;
   [self downloadingProcessDidEnd] ;
 }
 

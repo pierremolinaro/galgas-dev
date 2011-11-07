@@ -48,13 +48,6 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) dealloc {
-  [mSourceString release] ;
-  [super dealloc] ;
-}
-
-//---------------------------------------------------------------------------*
-
 - (NSString *) indexingDirectory {
   return @"" ;
 }
@@ -285,7 +278,6 @@
         ] ;
         [item setTag:[[inTokenArray objectAtIndex:i HERE] range].location] ;
         [menu addItem:item] ;
-        [item release] ;
       }
     }
   }
@@ -351,7 +343,6 @@
     ] ;
     if (nil == pathForCustomDictionary) {
       mCustomSyntaxColoringDictionary = [NSDictionary dictionary] ;
-      [mCustomSyntaxColoringDictionary retain] ;
     }else{
     //--- Compute style index dictionary
       NSMutableDictionary * styleIndexDictionary = [NSMutableDictionary new] ;
@@ -407,8 +398,6 @@
     NSLog (@"tokenizeForSourceString:tokenArray:...") ;
   #endif
 //--- Set source string
-  [inSourceString retain] ;
-  [mSourceString release] ;
   mSourceString = inSourceString ;
 //--- Finding lower index in ioStyledRangeArray to redraw
   #ifdef DEBUG_MESSAGES
@@ -493,7 +482,6 @@
         NSLog (@"  error -> insertAtIndex:%u, range %u, %u", * outUpperIndexToRedrawInStyleArray, [token range].location, [token range].length) ;
       #endif
       [ioStyledRangeArray insertObject:token atIndex:* outUpperIndexToRedrawInStyleArray] ;
-      [token release] ;
       (*outUpperIndexToRedrawInStyleArray) ++ ;
     }else if ((mTokenCode > 0) && ((* outUpperIndexToRedrawInStyleArray) >= (SInt32) [ioStyledRangeArray count])) { // Regular token
       const NSRange range = {mTokenStartLocation, mCurrentLocation - mTokenStartLocation} ;
@@ -507,7 +495,6 @@
         NSLog (@"  token -> insertObject:atIndex:%u", * outUpperIndexToRedrawInStyleArray) ;
       #endif
       [ioStyledRangeArray insertObject:token atIndex:* outUpperIndexToRedrawInStyleArray] ;
-      [token release] ;
       (*outUpperIndexToRedrawInStyleArray) ++ ;
     }else if (mTokenCode > 0) { // Regular token
       const NSRange range = {mTokenStartLocation, mCurrentLocation - mTokenStartLocation} ;
@@ -526,7 +513,6 @@
           NSLog (@"  token -> insertObject:atIndex:%u", * outUpperIndexToRedrawInStyleArray) ;
         #endif
         [ioStyledRangeArray insertObject:token atIndex:* outUpperIndexToRedrawInStyleArray] ;
-        [token release] ;
         (*outUpperIndexToRedrawInStyleArray) ++ ;
       }
     }

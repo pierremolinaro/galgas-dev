@@ -179,8 +179,6 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     [arguments insertObject:@"/usr/bin/time" atIndex:0] ;
   }
 //--- Assign command line option array attribute
-  [arguments retain] ;
-  [mCommandLineItemArray release] ;
   mCommandLineItemArray = arguments ;
 //---- Build string for displaying
   NSMutableString * s = [NSMutableString new] ;
@@ -222,7 +220,6 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     options:[NSDictionary dictionaryWithObject:NSUnarchiveFromDataTransformerName forKey:NSValueTransformerNameBindingOption]
   ] ;
   [ioView addSubview:colorWell] ;
-  [colorWell release] ;
   *ioEnclosingRect = NSUnionRect (*ioEnclosingRect, *ioRect) ;
 //--- Add "Font" button
   ioRect->origin.x += 50.0f ;
@@ -238,7 +235,6 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     options:NULL
   ] ;
   [ioView addSubview:cb] ;
-  [cb release] ;
   *ioEnclosingRect = NSUnionRect (*ioEnclosingRect, *ioRect) ;
 //--- Add foreground color well
   ioRect->origin.x += 210.0f ;
@@ -252,7 +248,6 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     options:[NSDictionary dictionaryWithObject:NSUnarchiveFromDataTransformerName forKey:NSValueTransformerNameBindingOption]
   ] ;
   [ioView addSubview:colorWell] ;
-  [colorWell release] ;
   *ioEnclosingRect = NSUnionRect (*ioEnclosingRect, *ioRect) ;
 //--- Add text
   NSTextField * f = [[NSTextField alloc] init] ;
@@ -399,7 +394,6 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   NSTabViewItem * tvi = [[NSTabViewItem alloc] initWithIdentifier:title] ;
   [tvi setLabel:title] ;
   [mLexicalColoringTabView insertTabViewItem:tvi atIndex:inIndex] ;
-  [tvi release] ;
 //--- Duplicate 'SetFont' Button
 //  NSLog (@"ALL NAMES IN PREFERENCES: '%@'", allFontPreferenceNames) ;
   NSButton * setFontButton = [[NSButton alloc] initWithFrame:[mSetFontButton frame]] ;
@@ -601,7 +595,6 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     if (submenu == nil) {
       submenu = [[NSMenu alloc] initWithTitle:@""] ;
       [item setSubmenu:submenu] ;
-      [submenu release] ;
     }
   //---
     NSMutableArray * components = [[NSMutableArray alloc] init] ;
@@ -613,8 +606,6 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
       titleComponents:components
       intoMenu:submenu
     ] ;
-  //---
-    [components release] ;
   }
 }
 
@@ -725,7 +716,6 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     [format setMinimum:[NSDecimalNumber zero]] ;
     [format setAllowsFloats:NO] ;
     [[tx cell] setFormatter:format] ;
-    [format release] ;
 
     r.origin.x = 10.0f ;
     r.size.width = 80.0f ;
@@ -973,7 +963,6 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   [view setFrame:enclosingRect] ;
 //--- Set view to scroll view
   [mCommandLineOptionScrollView setDocumentView:view] ;
-  [view release] ;
 //--- Set initial tab view selection
   /* NSInteger tabViewIndex = [defaults integerForKey:GGS_selected_tab] ;
   if (tabViewIndex >= [mPreferencesTabView numberOfTabViewItems]) {
@@ -1270,7 +1259,6 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   if (status != 0) {
     [self appendMessage: [NSString stringWithFormat: @"Build task failure, code %d\n", status]] ;
   }
-  [mTask release] ;
   mTask = nil ;
 //--- Enable Run button
   [mRunButton setEnabled:YES] ;

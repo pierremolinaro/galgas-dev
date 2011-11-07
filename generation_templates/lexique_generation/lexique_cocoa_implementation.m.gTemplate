@@ -18,17 +18,6 @@
 }
 
 //---------------------------------------------------------------------------*
-
-- (void) dealloc {
-%  foreach LEXICAL_ATTRIBUTE_MAP do
-     if mLexicalType == [@lexicalTypeEnum lexicalType_string] then
-   %  [mLexicalAttribute_%![lkey string]% release] ;\n%
-     end if
-  end foreach
-%  [super dealloc] ;
-}
-
-//---------------------------------------------------------------------------*
 //                                                                           *
 //                 I N D E X I N G    D I R E C T O R Y                      *
 //                                                                           *

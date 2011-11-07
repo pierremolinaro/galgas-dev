@@ -23,17 +23,10 @@
   if (self) {
     mCompileMessageTextRange = inRange ;
     mIndex = inIndex ;
-    mDocumentPath = [inDocumentPath retain] ;
+    mDocumentPath = inDocumentPath ;
     mLocation = (NSInteger) inLocationInSourceText ;
   }
   return self ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) dealloc {
-  [mDocumentPath release] ;
-  [super dealloc] ;
 }
 
 //---------------------------------------------------------------------------*
