@@ -16,14 +16,11 @@
 //---------------------------------------------------------------------------*
 
 - (void) normalizeMessage {
-  while ((mMessage.length > 0) && ([mMessage characterAtIndex:mMessage.length-1] == '\n')) {
+  while ((mMessage.length > 1) && ([mMessage characterAtIndex:mMessage.length-1] == '\n')) {
     mMessage = [mMessage substringToIndex:mMessage.length-2] ;
   }
-  while ((mMessage.length > 1) && ([mMessage characterAtIndex:0] == '\n')) {
+  while ((mMessage.length > 0) && ([mMessage characterAtIndex:0] == '\n')) {
     mMessage = [mMessage substringFromIndex:1] ;
-  }
-  if ((mMessage.length == 1) && ([mMessage characterAtIndex:0] == '\n')) {
-    mMessage = @"" ;
   }
 }
 

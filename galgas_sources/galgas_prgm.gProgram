@@ -222,14 +222,16 @@ indexing with projectLL1grammar
     end if ;  
   end foreach ;
 #--- Update targets
-  updateTargets
-    !inSourceFile
-    ![projectComponent mProjectName]
-    !targetName
-    !libpmPath
-    ![projectComponent mGenerationFeatureList]
-    ![projectComponent mProjectSourceList]
-  ;
+  if 0 == [@uint errorCount] then
+    updateTargets
+      !inSourceFile
+      ![projectComponent mProjectName]
+      !targetName
+      !libpmPath
+      ![projectComponent mGenerationFeatureList]
+      ![projectComponent mProjectSourceList]
+    ;
+  end if ;
 #--- Parse Component struct
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
