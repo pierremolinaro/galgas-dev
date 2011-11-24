@@ -78,7 +78,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
         const NSRect r = NSUnionRect (r1, r2) ;
         // NSLog (@"r {{%f, %f}, {%f, %f}}", r.origin.x, r.origin.y, r.size.width, r.size.height) ;
         [[NSColor orangeColor] setStroke] ;
-        [NSBezierPath setDefaultLineWidth:1.0f] ;
+        [NSBezierPath setDefaultLineWidth:1.0] ;
         [NSBezierPath strokeRect:r] ;
       }
     }
@@ -96,7 +96,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
         const NSRect r = NSUnionRect (r1, r2) ;
         // NSLog (@"r {{%f, %f}, {%f, %f}}", r.origin.x, r.origin.y, r.size.width, r.size.height) ;
         [[NSColor redColor] setStroke] ;
-        [NSBezierPath setDefaultLineWidth:1.0f] ;
+        [NSBezierPath setDefaultLineWidth:1.0] ;
         [NSBezierPath strokeRect:r] ;
       }
     }

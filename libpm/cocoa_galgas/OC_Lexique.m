@@ -302,10 +302,10 @@
     appendFormat:@"For the '%@' key, there is no '%@' style in the '%@' application bundle resource file",
     inKey, inStyle, [inPath lastPathComponent]
   ] ;
-  static NSPoint origin = {20.0F, 20.0F} ;
-  const NSRect r = {origin, {300.0F, 200.0F}} ;
-  origin.x += 20.0F ;
-  origin.y += 20.0F ;
+  static NSPoint origin = {20.0, 20.0} ;
+  const NSRect r = {origin, {300.0, 200.0}} ;
+  origin.x += 20.0 ;
+  origin.y += 20.0 ;
   NSWindow * window = [[NSWindow alloc] initWithContentRect:r
     styleMask:NSTitledWindowMask | NSClosableWindowMask
     backing:NSBackingStoreBuffered
@@ -314,11 +314,11 @@
   ] ;
   [window setTitle:@"Custom Style Error"] ;
   NSView * contentView = [window contentView] ;
-  const NSRect tfRect = NSInsetRect ([contentView bounds], 10.0F, 10.0F) ;
+  const NSRect tfRect = NSInsetRect ([contentView bounds], 10.0, 10.0) ;
   NSTextField * tf = [[NSTextField alloc] initWithFrame:tfRect] ;
   [tf setEditable:NO] ;
   [tf setSelectable:YES] ;
-  [tf setFont:[NSFont boldSystemFontOfSize:0.0F]] ;
+  [tf setFont:[NSFont boldSystemFontOfSize:0.0]] ;
   [tf setTextColor:[NSColor redColor]] ;
   [tf setStringValue:message] ;
   [contentView addSubview:tf] ;

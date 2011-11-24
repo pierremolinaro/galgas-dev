@@ -28,6 +28,7 @@
 
 @class OC_GGS_Document ;
 @class OC_GGS_TextView ;
+@class OC_Lexique ;
 
 //---------------------------------------------------------------------------*
 
@@ -39,6 +40,7 @@
   @private NSMutableArray * mFontAttributesDictionaryArray ; // Array of OC_Token
   @private NSMutableArray * mStyledRangeArray ;
   @private NSTextStorage * mTextStorage ;
+  @private OC_Lexique * mTokenizer ;
   @private OC_GGS_Document * mDocument ;
   @private NSMutableDictionary * mTemplateTextAttributeDictionary ;
   @private NSUndoManager * mUndoManager ;
@@ -48,7 +50,8 @@
 }
 
 - (id) initWithDocument: (OC_GGS_Document *) inDocument
-       withSourceString: (NSString *) inSource ;
+       withSourceString: (NSString *) inSource
+       withTokenizer: (OC_Lexique *) inTokenizer ;
 
 - (void) breakUndoCoalescing ;
 

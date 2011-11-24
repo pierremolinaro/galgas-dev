@@ -369,6 +369,8 @@
 		CFE4FC1B114E4C9000DB2D43 /* semanticGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE4FC17114E4C9000DB2D43 /* semanticGeneration.cpp */; };
 		CFE4FC1C114E4C9000DB2D43 /* semanticGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE4FC17114E4C9000DB2D43 /* semanticGeneration.cpp */; };
 		CFE61D030B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m */; };
+		CFEE63DC147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEE63DB147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.m */; };
+		CFEE63E0147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEE63DF147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m */; };
 		CFEF3A7D12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */; };
 		CFEF3A7E12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */; };
 		CFF1293810D9646E00C72453 /* OC_GGS_ErrorOrWarningDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF1293710D9646E00C72453 /* OC_GGS_ErrorOrWarningDescriptor.m */; };
@@ -928,9 +930,13 @@
 		CFE4FC17114E4C9000DB2D43 /* semanticGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticGeneration.cpp; sourceTree = "<group>"; };
 		CFE4FC18114E4C9000DB2D43 /* semanticGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticGeneration.h; sourceTree = "<group>"; };
 		CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_DelegateForSyntaxColoring.h; sourceTree = "<group>"; };
-		CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_DelegateForSyntaxColoring.m; sourceTree = "<group>"; };
+		CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_DelegateForSyntaxColoring.m; sourceTree = "<group>"; };
 		CFECE4640FEFA5270031D087 /* OC_Lexique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_Lexique.h; sourceTree = "<group>"; };
 		CFECE4650FEFA5270031D087 /* OC_Lexique.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_Lexique.m; sourceTree = "<group>"; };
+		CFEE63DA147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_TextDisplayDescriptor.h; sourceTree = "<group>"; };
+		CFEE63DB147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_TextDisplayDescriptor.m; sourceTree = "<group>"; };
+		CFEE63DE147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_TextSyntaxColoring.h; sourceTree = "<group>"; };
+		CFEE63DF147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_TextSyntaxColoring.m; sourceTree = "<group>"; };
 		CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cIndexingDictionary.cpp; sourceTree = "<group>"; };
 		CFEF3A7A12A04C0F007CA2D8 /* cIndexingDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cIndexingDictionary.h; sourceTree = "<group>"; };
 		CFF1293610D9646E00C72453 /* OC_GGS_ErrorOrWarningDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_ErrorOrWarningDescriptor.h; sourceTree = "<group>"; };
@@ -1290,6 +1296,10 @@
 				CF82597B08536A130077AEAF /* PP_CocoaGalgasPrefix.pch */,
 				CFFCE7BB14686081009DB6D5 /* PMIssueDescriptor.h */,
 				CFFCE7BC14686081009DB6D5 /* PMIssueDescriptor.m */,
+				CFEE63DA147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.h */,
+				CFEE63DB147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.m */,
+				CFEE63DE147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.h */,
+				CFEE63DF147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m */,
 			);
 			path = cocoa_galgas;
 			sourceTree = "<group>";
@@ -2451,6 +2461,8 @@
 				CFD94B7B129068CF00864538 /* cocoaGalgas.m in Sources */,
 				CFCEEFC113CF24C10074BDE9 /* OC_GGS_searchInFolders.m in Sources */,
 				CFFCE7BD14686081009DB6D5 /* PMIssueDescriptor.m in Sources */,
+				CFEE63DC147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.m in Sources */,
+				CFEE63E0147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
