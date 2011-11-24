@@ -39,15 +39,15 @@
     NSLog (@"OC_GGS_RulerViewForTextView <drawHashMarksAndLabelsInRect:>") ;
   #endif
 //--- Draw background
-  [[NSColor colorWithDeviceWhite: 0.9f alpha: 1.0f] setFill] ;
+  [[NSColor colorWithDeviceWhite: 0.9f alpha: 1.0] setFill] ;
   [NSBezierPath fillRect:inRect] ;
 //--- Draw right border
   const NSRect viewBounds = [self bounds] ;
-  const NSPoint p1 = {viewBounds.size.width, 0.0f} ;
+  const NSPoint p1 = {viewBounds.size.width, 0.0} ;
   const NSPoint p2 = {viewBounds.size.width, viewBounds.size.height} ;
   [NSBezierPath strokeLineFromPoint:p1 toPoint:p2] ;
 //--- Set draw text attributes and find point size
-  NSFont * font = [NSFont fontWithName:@"Courier" size:11.0f] ;
+  NSFont * font = [NSFont fontWithName:@"Courier" size:11.0] ;
   NSDictionary * attributes = [NSDictionary dictionaryWithObjectsAndKeys:
     font, NSFontAttributeName,
     [NSColor darkGrayColor], NSForegroundColorAttributeName,
@@ -64,7 +64,7 @@
   // NSLog (@"sourceStringLength %u", sourceStringLength) ;
   NSUInteger idx = 0 ;
   NSUInteger line = 0 ;
-  const CGFloat minYforDrawing = inRect.origin.y - (2.0f * ([font ascender] + [font descender])) ;
+  const CGFloat minYforDrawing = inRect.origin.y - (2.0 * ([font ascender] + [font descender])) ;
   const CGFloat maxYforDrawing = NSMaxY ([self visibleRect]) ;
   BOOL maxYreached = NO ;
   while ((idx < sourceStringLength) && ! maxYreached) {
@@ -72,19 +72,19 @@
   //--- Draw line numbers
     // NSLog (@"%u is valid glyph index: %@", idx, [lm isValidGlyphIndex:idx] ? @"yes" : @"no") ;
     const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:idx effectiveRange:NULL] ;
-    NSPoint p = [self convertPoint:NSMakePoint (0.0f, NSMinY (r)) fromView:textView] ;
+    NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMinY (r)) fromView:textView] ;
     // NSLog (@"%f for line %u (%@)", p.y, line, ((inRect.origin.y - [font ascender])) ? @"yes" : @"no") ;
     if (p.y >= minYforDrawing) { 
       /* [errorImage
-        drawAtPoint:NSMakePoint (0.0f, p.y)
+        drawAtPoint:NSMakePoint (0.0, p.y)
         fromRect:NSZeroRect
         operation:NSCompositeSourceOver
-        fraction:1.0f
+        fraction:1.0
       ] ;
        */
       NSString * str = [NSString stringWithFormat:@"%u", line] ;
       const NSSize strSize = [str sizeWithAttributes:attributes] ;
-      p.x = viewBounds.size.width - 2.0f - strSize.width ;
+      p.x = viewBounds.size.width - 2.0 - strSize.width ;
       [str drawAtPoint:p withAttributes:attributes] ;
       maxYreached = p.y > maxYforDrawing ;
     }

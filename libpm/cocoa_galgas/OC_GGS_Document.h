@@ -30,6 +30,7 @@
 @class OC_Lexique ;
 @class OC_GGS_RulerViewForCompileMessageView ;
 @class OC_GGS_ErrorOrWarningDescriptor ;
+@class OC_GGS_TextSyntaxColoring ;
 
 //---------------------------------------------------------------------------*
 
@@ -51,12 +52,7 @@
 
 @private IBOutlet NSButton * mCurrentLineButton ;
 
-
-@private NSColor * mBackgroundColorForWarningsAndErrors ;
-
 @private NSTask * mTask ;
-
-@private NSTextStorage * mDefaultTextStorage ;
 
 @private NSMutableData * mBufferedInputData ;
 
@@ -70,8 +66,16 @@
 
   @private IBOutlet NSTextField * mSourceEncodingTextField ;
   @private NSStringEncoding mFileEncoding ;
-  
-  @private OC_GGS_Document * mCurrentlyEditedDocumentInBuildWindow ;
+
+//---  
+  @private OC_GGS_TextSyntaxColoring * mSourceTextWithSyntaxColoring ;
+
+//---
+  @private NSMutableArray * mSourceDisplayArray ; // Array of OC_GGS_TextDisplayDescriptor
+  @private NSArrayController * mSourceDisplayArrayController ;
+
+//---
+  @private IBOutlet NSTextView * mSourceTextView ;
 }
 
 - (void) setSelectionRange: (NSRange) inRange ;
@@ -87,6 +91,8 @@
 - (void) selectLine: (NSInteger) inLine forTextView: (NSTextView *) inTextView ;
 
 - (void) selectEntryPopUpForSelectionStart: (NSInteger) inSelectionStart ;
+
+
 - (OC_GGS_DelegateForSyntaxColoring *) delegateForSyntaxColoring ;
 - (OC_Lexique *) tokenizer ;
 

@@ -73,13 +73,13 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
     NSLog (@"OC_GGS_DelegateForSyntaxColoring <computeMaxLineHeight:>") ;
   #endif
   NSFont * font = [mTemplateTextAttributeDictionary objectForKey:NSFontAttributeName] ;
-  CGFloat maxAscender = [font ascender] + 4.0f ;
+  CGFloat maxAscender = [font ascender] + 4.0 ;
   CGFloat maxLeadingMinusDescender = [font leading] - [font descender] ;
   UInt32 i ;
   for (i=0 ; i<[mFontAttributesDictionaryArray count] ; i++) {
     NSDictionary * d = [mFontAttributesDictionaryArray objectAtIndex:i HERE] ;
     font = [d objectForKey:NSFontAttributeName] ;
-    maxAscender = floatMax (maxAscender, [font ascender] + 4.0f) ;
+    maxAscender = floatMax (maxAscender, [font ascender] + 4.0) ;
     maxLeadingMinusDescender = floatMax (maxLeadingMinusDescender, [font leading] - [font descender]) ;
   }
   const BOOL maxLineHeightHasChanged = (mMaxAscender != maxAscender) || (mMaxLeadingMinusDescender != maxLeadingMinusDescender) ;
@@ -110,14 +110,16 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
 //---------------------------------------------------------------------------*
 
 - (id) initWithDocument: (OC_GGS_Document *) inDocument
-       withSourceString: (NSString *) inSource {
+       withSourceString: (NSString *) inSource
+       withTokenizer: (OC_Lexique *) inTokenizer {
   self = [super init] ;
   if (self) {
     NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
     mDocument = inDocument ;
+    mTokenizer = inTokenizer ;
     mUndoManager = [mDocument undoManager] ;
     mTextStorage = [[NSTextStorage alloc] init] ;
-    mStyledRangeArray = [[NSMutableArray alloc] init] ;
+    mStyledRangeArray = [NSMutableArray new] ;
     mTemplateTextAttributeDictionary = [[NSMutableDictionary alloc] init] ;
   //--- Add "Show Invisible Character" preference observer
     [[NSNotificationCenter defaultCenter]
@@ -136,16 +138,15 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
     [self refreshShowInvisibleCharacters] ;
   //--------------------------------------------------- Add foreground color observers
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;
-    OC_Lexique * tokenizer = [mDocument tokenizer] ;
-    if ([tokenizer isTemplateLexique]) {
-      NSString * keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_template_foreground_color, [tokenizer styleIdentifierForStyleIndex:0]] ;
+    if ([mTokenizer isTemplateLexique]) {
+      NSString * keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_template_foreground_color, [mTokenizer styleIdentifierForStyleIndex:0]] ;
       [udc
         addObserver:self
         forKeyPath:keyPath
         options:0
         context:(void *) (TAG_FOR_TEMPLATE_FOREGROUND_COLOR)
       ] ;
-      NSString * name = [NSString stringWithFormat:@"%@_%@", GGS_template_foreground_color, [tokenizer styleIdentifierForStyleIndex:0]] ;
+      NSString * name = [NSString stringWithFormat:@"%@_%@", GGS_template_foreground_color, [mTokenizer styleIdentifierForStyleIndex:0]] ;
       NSData * data = [defaults dataForKey:name] ;
       if (data != nil) {
         NSColor * color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
@@ -155,8 +156,8 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
       }
     }
     NSUInteger i ;
-    for (i=0 ; i<[tokenizer styleCount] ; i++) {
-      NSString * keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_named_color, [tokenizer styleIdentifierForStyleIndex:i]] ;
+    for (i=0 ; i<[mTokenizer styleCount] ; i++) {
+      NSString * keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_named_color, [mTokenizer styleIdentifierForStyleIndex:i]] ;
       [udc
         addObserver:self
         forKeyPath:keyPath
@@ -165,15 +166,15 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
       ] ;
     }
   //--------------------------------------------------- Add background color observers
-    if ([tokenizer isTemplateLexique]) {
-      NSString * keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_template_background_color, [tokenizer styleIdentifierForStyleIndex:0]] ;
+    if ([mTokenizer isTemplateLexique]) {
+      NSString * keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_template_background_color, [mTokenizer styleIdentifierForStyleIndex:0]] ;
       [udc
         addObserver:self
         forKeyPath:keyPath
         options:0
         context:(void *) (TAG_FOR_TEMPLATE_BACKGROUND_COLOR)
       ] ;
-      NSString * name = [NSString stringWithFormat:@"%@_%@", GGS_template_background_color, [tokenizer styleIdentifierForStyleIndex:0]] ;
+      NSString * name = [NSString stringWithFormat:@"%@_%@", GGS_template_background_color, [mTokenizer styleIdentifierForStyleIndex:0]] ;
       NSData * data = [defaults dataForKey:name] ;
       if (data != nil) {
         NSColor * color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
@@ -182,8 +183,8 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
         [mTemplateTextAttributeDictionary setObject:[NSColor blackColor] forKey:NSBackgroundColorAttributeName] ;
       }
     }
-    for (i=0 ; i<[tokenizer styleCount] ; i++) {
-      NSString * keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_named_background_color, [tokenizer styleIdentifierForStyleIndex:i]] ;
+    for (i=0 ; i<[mTokenizer styleCount] ; i++) {
+      NSString * keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_named_background_color, [mTokenizer styleIdentifierForStyleIndex:i]] ;
       [udc
         addObserver:self
         forKeyPath:keyPath
@@ -192,8 +193,8 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
       ] ;
     }
   //--------------------------------------------------- Add font observers
-    if ([tokenizer isTemplateLexique]) {
-      NSString * keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_template_font, [tokenizer styleIdentifierForStyleIndex:0]] ;
+    if ([mTokenizer isTemplateLexique]) {
+      NSString * keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_template_font, [mTokenizer styleIdentifierForStyleIndex:0]] ;
       [udc
         addObserver:self
         forKeyPath:keyPath
@@ -201,15 +202,15 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
         context:(void *) (TAG_FOR_TEMPLATE_FONT_ATTRIBUTE)
       ] ;
     //--- Add font attribute   
-      NSString * name = [NSString stringWithFormat:@"%@_%@", GGS_template_font, [tokenizer styleIdentifierForStyleIndex:0]] ;
+      NSString * name = [NSString stringWithFormat:@"%@_%@", GGS_template_font, [mTokenizer styleIdentifierForStyleIndex:0]] ;
       NSData * data = [defaults dataForKey:name] ;
       if (data != nil) {
         NSFont * font = (NSFont *) [NSUnarchiver unarchiveObjectWithData:data] ;
         [mTemplateTextAttributeDictionary setObject:font forKey:NSFontAttributeName] ;
       }
     }
-    for (i=0 ; i<[tokenizer styleCount] ; i++) {
-      NSString * keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_named_font, [tokenizer styleIdentifierForStyleIndex:i]] ;
+    for (i=0 ; i<[mTokenizer styleCount] ; i++) {
+      NSString * keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_named_font, [mTokenizer styleIdentifierForStyleIndex:i]] ;
       [udc
         addObserver:self
         forKeyPath:keyPath
@@ -218,12 +219,12 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
       ] ;
     }
   //---
-    // NSLog (@"%p [tokenizer styleCount] %u", tokenizer, [tokenizer styleCount]) ;
+    // NSLog (@"%p [mTokenizer styleCount] %u", mTokenizer, [mTokenizer styleCount]) ;
     mFontAttributesDictionaryArray = [NSMutableArray new] ;
-    for (i=0 ; i<[tokenizer styleCount] ; i++) {
+    for (i=0 ; i<[mTokenizer styleCount] ; i++) {
       NSMutableDictionary * attributeDictionary = [NSMutableDictionary new] ;
     //--- Add foreground color   
-      NSString * name = [NSString stringWithFormat:@"%@_%@", GGS_named_color, [tokenizer styleIdentifierForStyleIndex:i]] ;
+      NSString * name = [NSString stringWithFormat:@"%@_%@", GGS_named_color, [mTokenizer styleIdentifierForStyleIndex:i]] ;
       NSData * data = [defaults dataForKey:name] ;
       if (data != nil) {
         NSColor * color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
@@ -232,7 +233,7 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
         [attributeDictionary setObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName] ;
       }
     //--- Add background color   
-      name = [NSString stringWithFormat:@"%@_%@", GGS_named_background_color, [tokenizer styleIdentifierForStyleIndex:i]] ;
+      name = [NSString stringWithFormat:@"%@_%@", GGS_named_background_color, [mTokenizer styleIdentifierForStyleIndex:i]] ;
       data = [defaults dataForKey:name] ;
       if (data != nil) {
         NSColor * color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
@@ -241,7 +242,7 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
         [attributeDictionary setObject:[NSColor blackColor] forKey:NSBackgroundColorAttributeName] ;
       }
     //--- Add font attribute   
-      name = [NSString stringWithFormat:@"%@_%@", GGS_named_font, [tokenizer styleIdentifierForStyleIndex:i]] ;
+      name = [NSString stringWithFormat:@"%@_%@", GGS_named_font, [mTokenizer styleIdentifierForStyleIndex:i]] ;
       data = [defaults dataForKey:name] ;
       if (data != nil) {
         NSFont * font = (NSFont *) [NSUnarchiver unarchiveObjectWithData:data] ;
@@ -271,35 +272,33 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
   ];
 //--- Remove observers
   NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
-  OC_Lexique * tokenizer = [mDocument tokenizer] ;
-  UInt32 i ;
-  for (i=0 ; i<[mFontAttributesDictionaryArray count] ; i++) {
+  for (NSUInteger i=0 ; i<[mFontAttributesDictionaryArray count] ; i++) {
     [udc
       removeObserver:self
-      forKeyPath:[NSString stringWithFormat:@"values.%@_%@", GGS_named_background_color, [tokenizer styleIdentifierForStyleIndex:i]]
+      forKeyPath:[NSString stringWithFormat:@"values.%@_%@", GGS_named_background_color, [mTokenizer styleIdentifierForStyleIndex:i]]
     ] ;
     [udc
       removeObserver:self
-      forKeyPath:[NSString stringWithFormat:@"values.%@_%@", GGS_named_color, [tokenizer styleIdentifierForStyleIndex:i]]
+      forKeyPath:[NSString stringWithFormat:@"values.%@_%@", GGS_named_color, [mTokenizer styleIdentifierForStyleIndex:i]]
     ] ;
     [udc
       removeObserver:self
-      forKeyPath:[NSString stringWithFormat:@"values.%@_%@", GGS_named_font, [tokenizer styleIdentifierForStyleIndex:i]]
+      forKeyPath:[NSString stringWithFormat:@"values.%@_%@", GGS_named_font, [mTokenizer styleIdentifierForStyleIndex:i]]
     ] ;
   }
 //---
-  if ([tokenizer isTemplateLexique]) {
+  if ([mTokenizer isTemplateLexique]) {
     [udc
       removeObserver:self
-      forKeyPath:[NSString stringWithFormat:@"values.%@_%@", GGS_template_background_color, [tokenizer styleIdentifierForStyleIndex:0]]
+      forKeyPath:[NSString stringWithFormat:@"values.%@_%@", GGS_template_background_color, [mTokenizer styleIdentifierForStyleIndex:0]]
     ] ;
     [udc
       removeObserver:self
-      forKeyPath:[NSString stringWithFormat:@"values.%@_%@", GGS_template_foreground_color, [tokenizer styleIdentifierForStyleIndex:0]]
+      forKeyPath:[NSString stringWithFormat:@"values.%@_%@", GGS_template_foreground_color, [mTokenizer styleIdentifierForStyleIndex:0]]
     ] ;
     [udc
       removeObserver:self
-      forKeyPath:[NSString stringWithFormat:@"values.%@_%@", GGS_template_font, [tokenizer styleIdentifierForStyleIndex:0]]
+      forKeyPath:[NSString stringWithFormat:@"values.%@_%@", GGS_template_font, [mTokenizer styleIdentifierForStyleIndex:0]]
     ] ;
   }
 //---
@@ -383,8 +382,7 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
 - (void) myProcessEditing: (NSNotification *) inNotification {
  //  NSLog (@"myProcessEditing") ;
 //--- 
-  OC_Lexique * tokenizer = [mDocument tokenizer] ;
-  if (tokenizer != NULL) {
+  if (mTokenizer != nil) {
     [self refreshRulers] ;
     if ([mTextStorage length] == 0) {
       #ifdef DEBUG_MESSAGES
@@ -402,7 +400,7 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
       NSInteger lastIndexToRedraw = 0 ;
       NSInteger eraseRangeStart = 0 ;
       NSInteger eraseRangeEnd = 0 ;
-      [tokenizer
+      [mTokenizer
         tokenizeForSourceString:theString
         tokenArray:mStyledRangeArray // Array of OC_Token
         editedRange: & editedRange
@@ -479,8 +477,7 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
   #ifdef DEBUG_MESSAGES
     NSLog (@"OC_GGS_DelegateForSyntaxColoring <applyTextAttributeForIndex:%u>", inChangedColorIndex) ;
   #endif
-  OC_Lexique * tokenizer = [mDocument tokenizer] ;
-  if ((tokenizer != NULL) && ([mTextStorage length] > 0)) {
+  if ((mTokenizer != NULL) && ([mTextStorage length] > 0)) {
     [self refreshRulers] ;
   //--- Remove observer so that myProcessEditing will not be called at the end of edition
     [[NSNotificationCenter defaultCenter]
@@ -567,8 +564,7 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
   if ([inKeyPath isEqualToString:@"values.PMShowInvisibleCharacters"]) {
     [self refreshShowInvisibleCharacters] ;
   }else{
-    OC_Lexique * tokenizer = [mDocument tokenizer] ;
-    if (tokenizer != NULL) {
+    if (mTokenizer != NULL) {
       BOOL lineHeightDidChange = NO ;
       NSColor * color = nil ;
       NSMutableDictionary * d = nil ;
@@ -644,8 +640,7 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
 //---------------------------------------------------------------------------*
 
 - (BOOL) selectionByWordSelectsAllCharactersForTokenIndex: (NSUInteger) inTokenIndex {
-  OC_Lexique * tokenizer = [mDocument tokenizer] ;
-  return [tokenizer atomicSelectionForToken:inTokenIndex] ;
+  return [mTokenizer atomicSelectionForToken:inTokenIndex] ;
 }
 
 //---------------------------------------------------------------------------*

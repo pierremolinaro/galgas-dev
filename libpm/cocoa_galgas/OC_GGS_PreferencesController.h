@@ -113,7 +113,6 @@ extern OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 //--- "Run" Window
   @private IBOutlet NSWindow * mRunWindow ;
 
-//  @private IBOutlet NSScrollView * mRunScrollView ;
   @private IBOutlet NSTextView * mRunTextView ;
 
 //--- 'Run' Button
@@ -148,7 +147,7 @@ extern OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 
 - (void) windowDidMove: (NSNotification *) aNotification ;
 
-- (float) ruleThickness ;
+- (double) ruleThickness ;
 
 - (void) cocoaDocumentWillClose: (OC_GGS_Document *) inDocument ;
 

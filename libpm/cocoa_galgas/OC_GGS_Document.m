@@ -31,6 +31,8 @@
 #import "PMCocoaCallsDebug.h"
 #import "OC_GGS_ErrorOrWarningDescriptor.h"
 #import "PMIssueDescriptor.h"
+#import "OC_GGS_TextSyntaxColoring.h"
+#import "OC_GGS_TextDisplayDescriptor.h"
 
 //---------------------------------------------------------------------------*
 
@@ -59,8 +61,10 @@
     #endif
     mTask = nil ;
     mIssueArrayController = [NSArrayController new] ;
+    mIssueArray = [NSMutableArray new] ;
     mFileEncoding = NSUTF8StringEncoding ;
-    mBackgroundColorForWarningsAndErrors = [[NSColor yellowColor] blendedColorWithFraction:0.8f ofColor:[NSColor whiteColor]] ;
+    mSourceDisplayArray = [NSMutableArray new] ; // Array of OC_GGS_TextDisplayDescriptor
+    mSourceDisplayArrayController = [NSArrayController new] ;
   }
   return self;
 }
@@ -75,12 +79,6 @@
 
 - (OC_Lexique *) tokenizer {
   return mTokenizer ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (OC_GGS_Document *) currentlyEditedDocumentInBuildWindow {
-  return mCurrentlyEditedDocumentInBuildWindow ;
 }
 
 //---------------------------------------------------------------------------*
@@ -126,8 +124,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
     ] ;
     [mEntryListPopUpButton setEnabled:NO] ;
   }else{
-    unsigned i ;
-    for (i=0 ; i<n ; i++) {
+    for (NSUInteger i=0 ; i<n ; i++) {
       NSMenuItem * item = [menu itemAtIndex:i] ;
       [item setTarget:self] ;
       [item setAction:@selector (gotoEntry:)] ;
@@ -360,6 +357,19 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
     withKeyPath:@"fileEncodingString"
     options:nil    
   ] ;
+
+  [mSourceTextView
+    bind:@"attributedString" 
+    toObject:mSourceDisplayArrayController
+    withKeyPath:@"selection.mTextSyntaxColoring.mSourceString"
+    options:nil
+  ] ;
+//--- Display the document contents
+  OC_GGS_TextDisplayDescriptor * textDisplayDescriptor = [[OC_GGS_TextDisplayDescriptor alloc]
+    initWithDelegateForSyntaxColoring:mSourceTextWithSyntaxColoring
+  ] ;
+  [mSourceDisplayArrayController addObject:textDisplayDescriptor] ;
+  [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:textDisplayDescriptor]] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1030,6 +1040,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
     mDelegateForSyntaxColoring = [[OC_GGS_DelegateForSyntaxColoring alloc]
       initWithDocument:self
       withSourceString:source
+      withTokenizer:mTokenizer
     ] ;
     [[NSRunLoop currentRunLoop]
       performSelector:@selector (performCharacterConversion)
@@ -1039,6 +1050,11 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
       modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]
     ] ;
   }
+//---
+  mSourceTextWithSyntaxColoring = [[OC_GGS_TextSyntaxColoring alloc]
+    initWithSourceString:source
+  ] ;
+//---
   return source != nil ;
 }
 
@@ -1074,11 +1090,11 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 
 //---------------------------------------------------------------------------*
 
-#pragma mark XML Analysis
+#pragma mark XML Issue Analysis
 
 //---------------------------------------------------------------------------*
 
-- (void) XMLAnalysis {
+- (void) XMLIssueAnalysis {
   NSError * error = nil ;
   NSXMLDocument * xmlDoc = [[NSXMLDocument alloc]
     initWithData:mBufferedInputData
@@ -1174,7 +1190,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
     ] ;
     [mIssueTextView setString:issueText] ;
   //--- Analyze XML document
-    [self XMLAnalysis] ;
+    [self XMLIssueAnalysis] ;
   }
 }
 

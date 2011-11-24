@@ -278,7 +278,7 @@
     f = [NSUnarchiver unarchiveObjectWithData:data] ;
   }
   if (f == nil) {
-    f = [NSFont systemFontOfSize:0.0F] ;
+    f = [NSFont systemFontOfSize:0.0] ;
   }
   [fontManager setSelectedFont:f isMultiple:NO] ;
   [fontManager setAction:@selector (changeFont:)] ;

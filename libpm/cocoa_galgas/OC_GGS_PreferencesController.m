@@ -209,8 +209,8 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
          withSettingTitle: (NSString *) inTitle {
   NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
 //--- Add background color well
-  ioRect->origin.x = 10.0f ;
-  ioRect->size.width = 40.0f ;
+  ioRect->origin.x = 10.0 ;
+  ioRect->size.width = 40.0 ;
   NSColorWell * colorWell = [[NSColorWell alloc] initWithFrame:*ioRect] ;
   [colorWell setAutoresizingMask: NSViewMaxXMargin | NSViewMinYMargin] ;
   [colorWell
@@ -222,8 +222,8 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   [ioView addSubview:colorWell] ;
   *ioEnclosingRect = NSUnionRect (*ioEnclosingRect, *ioRect) ;
 //--- Add "Font" button
-  ioRect->origin.x += 50.0f ;
-  ioRect->size.width = 200.0f ;
+  ioRect->origin.x += 50.0 ;
+  ioRect->size.width = 200.0 ;
   NSButton * cb = [[PMFontButton alloc] initWithFrame:*ioRect] ;
   [cb setButtonType: NSMomentaryLightButton] ;
   [cb setBezelStyle: NSSmallSquareBezelStyle] ;
@@ -237,8 +237,8 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   [ioView addSubview:cb] ;
   *ioEnclosingRect = NSUnionRect (*ioEnclosingRect, *ioRect) ;
 //--- Add foreground color well
-  ioRect->origin.x += 210.0f ;
-  ioRect->size.width = 40.0f ;
+  ioRect->origin.x += 210.0 ;
+  ioRect->size.width = 40.0 ;
   colorWell = [[NSColorWell alloc] initWithFrame:*ioRect] ;
   [colorWell setAutoresizingMask: NSViewMaxXMargin | NSViewMinYMargin] ;
   [colorWell
@@ -262,12 +262,12 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     [f font], NSFontAttributeName,
     nil
   ] ;
-  ioRect->origin.x += 50.0f ;
-  ioRect->size.width = [inTitle sizeWithAttributes:d].width + 30.0f ;
+  ioRect->origin.x += 50.0 ;
+  ioRect->size.width = [inTitle sizeWithAttributes:d].width + 30.0 ;
   [f setFrame: *ioRect] ;
   [ioView addSubview: f] ;
   *ioEnclosingRect = NSUnionRect (*ioEnclosingRect, *ioRect) ;
-  ioRect->origin.y -= 25.0f ;
+  ioRect->origin.y -= 25.0 ;
 }
 
 //---------------------------------------------------------------------------*
@@ -286,12 +286,12 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   } ;
   NSUInteger defaultColorIndex = 0 ;
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
-  NSRect enclosingRect = {{0.0f, 0.0f}, {10.0f, 25.0f}} ;
+  NSRect enclosingRect = {{0.0, 0.0}, {10.0, 25.0}} ;
   NSView * view = [[NSView alloc] initWithFrame:enclosingRect] ;
   [view setAutoresizesSubviews:YES] ;
   NSRect r ;
   r.origin.y = enclosingRect.origin.y ;
-  r.size.height = 20.0f ;
+  r.size.height = 20.0 ;
   NSMutableArray * allFontPreferenceNames = [NSMutableArray new] ;
   if ([inTokenizer isTemplateLexique]) {
   //--- By default, background color is white
@@ -317,7 +317,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     [allFontPreferenceNames addObject:name] ;
     if ([ud objectForKey:name] == nil) {
       [[NSUserDefaults standardUserDefaults]
-        setObject:[NSArchiver archivedDataWithRootObject:[NSFont fontWithName:@"Courier" size:13.0f]]
+        setObject:[NSArchiver archivedDataWithRootObject:[NSFont fontWithName:@"Courier" size:13.0]]
         forKey:name
       ] ;
     }
@@ -371,7 +371,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     [allFontPreferenceNames addObject:name] ;
     if ([ud objectForKey:name] == nil) {
       [[NSUserDefaults standardUserDefaults]
-        setObject:[NSArchiver archivedDataWithRootObject:[NSFont fontWithName:@"Courier" size:13.0f]]
+        setObject:[NSArchiver archivedDataWithRootObject:[NSFont fontWithName:@"Courier" size:13.0]]
         forKey:name
       ] ;
     }
@@ -386,8 +386,8 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
       withSettingTitle:[inTokenizer styleNameForStyleIndex:i]
     ] ;
   }
-  enclosingRect.size.height += 10.0f ;
-  enclosingRect.origin.y -= 10.0f ;
+  enclosingRect.size.height += 10.0 ;
+  enclosingRect.origin.y -= 10.0 ;
   [view setFrame:enclosingRect] ;
 //--- Set view to scroll view
   NSString * title = [inTokenizer tabItemTitle] ;
@@ -531,16 +531,16 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 - (void) build_time_optionInView: (NSView *) inView enclosingRect: (NSRect *) ioRect {
 //--- Create checkbox
   NSRect r  ;
-  r.origin.x = 10.0f ;
-  r.origin.y = ioRect->origin.y - 25.0f ;
-  r.size.height = 20.0f ;
+  r.origin.x = 10.0 ;
+  r.origin.y = ioRect->origin.y - 25.0 ;
+  r.size.height = 20.0 ;
   NSButton * cb = [[NSButton alloc] init] ;
   NSString * title = @"Prefix by 'time' tool" ;
   NSDictionary * d = [NSDictionary dictionaryWithObjectsAndKeys:
     [cb font], NSFontAttributeName,
     nil
   ] ;
-  r.size.width = [title sizeWithAttributes:d].width + 30.0f ;
+  r.size.width = [title sizeWithAttributes:d].width + 30.0 ;
   [cb setTitle:title] ;
   [cb setButtonType: NSSwitchButton] ;
   [cb setAutoresizingMask: NSViewMaxXMargin | NSViewMinYMargin] ;
@@ -658,11 +658,10 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
          enclosingRect: (NSRect *) ioRect {
   NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
   NSRect r  ;
-  r.origin.x = 10.0f ;
+  r.origin.x = 10.0 ;
   r.origin.y = ioRect->origin.y ;
-  r.size.height = 20.0f ;
-  UInt32 i ;
-  for (i=0 ; i<[mBoolOptionArray count] ; i++) {
+  r.size.height = 20.0 ;
+  for (NSUInteger i=0 ; i<[mBoolOptionArray count] ; i++) {
     OC_GGS_CommandLineOption * option = [mBoolOptionArray objectAtIndex:i HERE] ;
     NSButton * cb = [[NSButton alloc] init] ;
     NSString * title = [option title] ;
@@ -670,8 +669,8 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
       [cb font], NSFontAttributeName,
       nil
     ] ;
-    r.size.width = [title sizeWithAttributes:d].width + 30.0f ;
-    r.origin.y -= 25.0f ;
+    r.size.width = [title sizeWithAttributes:d].width + 30.0 ;
+    r.origin.y -= 25.0 ;
     [cb setFrame:r] ;
     [cb setTitle: title] ;
     [cb setButtonType: NSSwitchButton] ;
@@ -701,9 +700,9 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     forKey:NSContinuouslyUpdatesValueBindingOption
   ] ;
   NSRect r;
-  r.origin.x = 10.0f ;
+  r.origin.x = 10.0 ;
   r.origin.y = ioRect->origin.y ;
-  r.size.height = 20.0f ;
+  r.size.height = 20.0 ;
   UInt32 i ;
   for (i=0 ; i<[mUIntOptionArray count] ; i++) {
     OC_GGS_CommandLineOption * option = [mUIntOptionArray objectAtIndex:i HERE] ;
@@ -717,9 +716,9 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     [format setAllowsFloats:NO] ;
     [[tx cell] setFormatter:format] ;
 
-    r.origin.x = 10.0f ;
-    r.size.width = 80.0f ;
-    r.origin.y -= 25.0f ;
+    r.origin.x = 10.0 ;
+    r.size.width = 80.0 ;
+    r.origin.y -= 25.0 ;
     [tx setFrame: r] ;
     [tx setTag: i] ;
     [tx
@@ -739,8 +738,8 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
       [tx font], NSFontAttributeName,
       nil
     ] ;
-    r.size.width = [title sizeWithAttributes:d].width + 30.0f ;
-    r.origin.x = 100.0f ;
+    r.size.width = [title sizeWithAttributes:d].width + 30.0 ;
+    r.origin.x = 100.0 ;
     [tx setFrame: r] ;
     [tx setEditable: NO] ;
     [tx setBordered: NO] ;
@@ -765,10 +764,10 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     forKey:NSContinuouslyUpdatesValueBindingOption
   ] ;
   NSRect r;
-  r.origin.x = 10.0f ;
+  r.origin.x = 10.0 ;
   r.origin.y = ioRect->origin.y ;
-  r.size.width = 240.0f ;
-  r.size.height = 20.0f ;
+  r.size.width = 240.0 ;
+  r.size.height = 20.0 ;
   NSRect viewFrame = [inView frame] ;
   UInt32 i ;
   for (i=0 ; i<[mStringOptionArray count] ; i++) {
@@ -776,9 +775,9 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   //--- Input text field
     NSTextField * tx = [[NSTextField alloc] init] ;
     [tx setAutoresizingMask: NSViewMaxXMargin | NSViewMinYMargin] ;
-    r.origin.y -= 25.0f ;
-    r.origin.x = 10.0f ;
-    r.size.width = 280.0f ;
+    r.origin.y -= 25.0 ;
+    r.origin.x = 10.0 ;
+    r.size.width = 280.0 ;
     [tx setFrame: r] ;
     [tx
       bind:@"value"
@@ -797,8 +796,8 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
       [tx font], NSFontAttributeName,
       nil
     ] ;
-    r.size.width = [title sizeWithAttributes:d].width + 30.0f ;
-    r.origin.x = 300.0f ;
+    r.size.width = [title sizeWithAttributes:d].width + 30.0 ;
+    r.origin.x = 300.0 ;
     [tx setFrame: r] ;
     [tx setEditable: NO] ;
     [tx setBordered: NO] ;
@@ -921,7 +920,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   }
 //--- Get default font, used when there is no preference setting
   if ([defaults stringForKey:GGS_build_text_font] == nil) {
-    NSFont * defaultFont = [NSFont fontWithName:@"Courier-Bold" size:13.0f] ;
+    NSFont * defaultFont = [NSFont fontWithName:@"Courier-Bold" size:13.0] ;
     [defaults setObject:[NSArchiver archivedDataWithRootObject:defaultFont] forKey:GGS_build_text_font] ;
   }
   [mCurrentBuildWindowFontAndSizeSettingsButton
@@ -946,7 +945,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     [defaults setBool:YES forKey:keyForVerboseOption] ;
   }
 //---------- OPTIONS TAB ----------
-  NSRect enclosingRect = {{0.0F, 0.0F}, {5.0F, 5.0F}} ;
+  NSRect enclosingRect = {{0.0, 0.0}, {5.0, 5.0}} ;
   NSView * view = [[NSView alloc] initWithFrame:enclosingRect] ;
   [view setAutoresizesSubviews:YES] ;
   [self populateToolPopupButtonInView:view] ;
@@ -958,8 +957,8 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   [self buildUnsignedIntegerCommandLineOptionsInView:view enclosingRect:&enclosingRect] ;
 //--- Build string command line options
   [self buildStringCommandLineOptionsInView:view enclosingRect:&enclosingRect] ;
-  enclosingRect.size.height += 10.0f ;
-  enclosingRect.origin.y -= 10.0f ;
+  enclosingRect.size.height += 10.0 ;
+  enclosingRect.origin.y -= 10.0 ;
   [view setFrame:enclosingRect] ;
 //--- Set view to scroll view
   [mCommandLineOptionScrollView setDocumentView:view] ;
@@ -1041,8 +1040,8 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-- (float) ruleThickness {
-  return 50.0f ;
+- (double) ruleThickness {
+  return 50.0 ;
 }
 
 //---------------------------------------------------------------------------*
