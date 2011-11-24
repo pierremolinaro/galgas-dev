@@ -64,8 +64,8 @@
   // NSLog (@"sourceStringLength %u", sourceStringLength) ;
   NSUInteger idx = 0 ;
   NSUInteger line = 0 ;
-  const CGFloat minYforDrawing = inRect.origin.y - (2.0 * ([font ascender] + [font descender])) ;
-  const CGFloat maxYforDrawing = NSMaxY ([self visibleRect]) ;
+  const double minYforDrawing = inRect.origin.y - (2.0 * ([font ascender] + [font descender])) ;
+  const double maxYforDrawing = NSMaxY ([self visibleRect]) ;
   BOOL maxYreached = NO ;
   while ((idx < sourceStringLength) && ! maxYreached) {
     line ++ ;

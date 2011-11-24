@@ -20,4 +20,7 @@
 - (OC_GGS_TextDisplayDescriptor *) initWithDelegateForSyntaxColoring: (OC_GGS_TextSyntaxColoring *) inDelegate ;
 
 - (void) setSyntaxColoringDelegate: (OC_GGS_TextSyntaxColoring *) inDelegate ;
+
+- (OC_GGS_TextSyntaxColoring *) textSyntaxColoring ;
+
 @end
