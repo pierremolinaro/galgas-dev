@@ -37,8 +37,8 @@
 
 //---------------------------------------------------------------------------*
 
-static inline CGFloat floatMin (const CGFloat a, const CGFloat b) { return (a < b) ? a : b ; }
-static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > b) ? a : b ; }
+static inline double floatMin (const double a, const double b) { return (a < b) ? a : b ; }
+static inline double floatMax (const double a, const double b) { return (a > b) ? a : b ; }
 
 //---------------------------------------------------------------------------*
 
@@ -73,8 +73,8 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
     NSLog (@"OC_GGS_DelegateForSyntaxColoring <computeMaxLineHeight:>") ;
   #endif
   NSFont * font = [mTemplateTextAttributeDictionary objectForKey:NSFontAttributeName] ;
-  CGFloat maxAscender = [font ascender] + 4.0 ;
-  CGFloat maxLeadingMinusDescender = [font leading] - [font descender] ;
+  double maxAscender = [font ascender] + 4.0 ;
+  double maxLeadingMinusDescender = [font leading] - [font descender] ;
   UInt32 i ;
   for (i=0 ; i<[mFontAttributesDictionaryArray count] ; i++) {
     NSDictionary * d = [mFontAttributesDictionaryArray objectAtIndex:i HERE] ;
@@ -403,7 +403,7 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
       [mTokenizer
         tokenizeForSourceString:theString
         tokenArray:mStyledRangeArray // Array of OC_Token
-        editedRange: & editedRange
+        editedRange:editedRange
         changeInLength: changeInLength
         firstIndexToRedraw: & firstIndexToRedraw
         lastIndexToRedraw: & lastIndexToRedraw
@@ -434,8 +434,7 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
       #ifdef DEBUG_MESSAGES
        NSLog (@"COLORING from %d to %d", firstIndexToRedraw, lastIndexToRedraw) ;
       #endif
-      NSInteger i ;
-      for (i=firstIndexToRedraw ; i<=lastIndexToRedraw ; i++) {
+      for (NSInteger i=firstIndexToRedraw ; i<=lastIndexToRedraw ; i++) {
         OC_Token * token = [mStyledRangeArray objectAtIndex:i HERE] ;
         const NSRange range = [token range] ;
         #ifdef DEBUG_MESSAGES
@@ -493,8 +492,7 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
         setAttributes:[mFontAttributesDictionaryArray objectAtIndex:0 HERE]
         range:allTextRange
       ] ;
-      UInt32 i ;
-      for (i=0 ; i<[mStyledRangeArray count] ; i++) {
+      for (NSUInteger i=0 ; i<[mStyledRangeArray count] ; i++) {
         OC_Token * token = [mStyledRangeArray objectAtIndex:i HERE] ;
         const SInt32 colorIndex = [token style] ;
         const NSRange range = [token range] ;
@@ -513,8 +511,7 @@ static inline CGFloat floatMax (const CGFloat a, const CGFloat b) { return (a > 
         }
       }    
     }else{
-      UInt32 i ;
-      for (i=0 ; i<[mStyledRangeArray count] ; i++) {
+      for (NSUInteger i=0 ; i<[mStyledRangeArray count] ; i++) {
         OC_Token * token = [mStyledRangeArray objectAtIndex:i HERE] ;
         const SInt32 colorIndex = [token style] ;
         if (colorIndex == inChangedColorIndex) {

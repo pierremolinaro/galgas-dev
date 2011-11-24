@@ -193,7 +193,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-- (void) changeTextRulerVisible: (BOOL) inVisible forRuleThickness: (CGFloat) inThickness {
+- (void) changeTextRulerVisible: (BOOL) inVisible forRuleThickness: (double) inThickness {
   #ifdef DEBUG_MESSAGES
     NSLog (@"changeTextRulerVisible") ;
   #endif
@@ -358,11 +358,20 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
     options:nil    
   ] ;
 
-  [mSourceTextView
+/*  [mSourceTextView
     bind:@"attributedString" 
     toObject:mSourceDisplayArrayController
     withKeyPath:@"selection.mTextSyntaxColoring.mSourceString"
-    options:nil
+    options:[NSDictionary dictionaryWithObjectsAndKeys:
+      [NSNumber numberWithBool:YES], NSContinuouslyUpdatesValueBindingOption,
+      nil
+    ]
+  ] ;*/
+  [mSourceDisplayArrayController
+    addObserver:mSourceTextView 
+    forKeyPath:@"selectionIndex"
+    options:0
+    context:NULL
   ] ;
 //--- Display the document contents
   OC_GGS_TextDisplayDescriptor * textDisplayDescriptor = [[OC_GGS_TextDisplayDescriptor alloc]
@@ -1053,6 +1062,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 //---
   mSourceTextWithSyntaxColoring = [[OC_GGS_TextSyntaxColoring alloc]
     initWithSourceString:source
+    tokenizer:tokenizerForExtension ([[inAbsoluteURL absoluteString] pathExtension])
   ] ;
 //---
   return source != nil ;

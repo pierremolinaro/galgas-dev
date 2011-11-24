@@ -29,4 +29,8 @@
   }
 }
 
+- (OC_GGS_TextSyntaxColoring *) textSyntaxColoring {
+  return mTextSyntaxColoring ;
+}
+
 @end

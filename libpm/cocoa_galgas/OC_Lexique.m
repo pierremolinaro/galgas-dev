@@ -388,7 +388,7 @@
 
 - (void) tokenizeForSourceString: (NSString *) inSourceString
          tokenArray: (NSMutableArray *) ioStyledRangeArray // Array of OC_Token
-         editedRange: (const NSRange *) inEditedRange
+         editedRange: (const NSRange) inEditedRange
          changeInLength: (const NSInteger) inChangeInLength
          firstIndexToRedraw: (NSInteger *) outLowerIndexToRedrawInStyleArray // In ioStyledRangeArray
          lastIndexToRedraw: (NSInteger *) outUpperIndexToRedrawInStyleArray // In ioStyledRangeArray
@@ -409,7 +409,7 @@
   while ((*outLowerIndexToRedrawInStyleArray < initialArrayLength) && search) {
     OC_Token * token = [ioStyledRangeArray objectAtIndex:* outLowerIndexToRedrawInStyleArray HERE] ;
     const NSRange range = [token range] ;
-    search = (range.location + range.length) < inEditedRange->location ;
+    search = (range.location + range.length) < inEditedRange.location ;
     *outLowerIndexToRedrawInStyleArray += search ;
   }
 //--- Determine if we are within template string, or outside
@@ -437,7 +437,7 @@
     NSLog (@"  Suppress affected Tokens") ;
   #endif
   search = YES ;
-  const NSUInteger affectedRangeEndLocation = inEditedRange->location + inEditedRange->length - inChangeInLength ;
+  const NSUInteger affectedRangeEndLocation = inEditedRange.location + inEditedRange.length - inChangeInLength ;
   while ((*outLowerIndexToRedrawInStyleArray < (SInt32) [ioStyledRangeArray count]) && search) {
     OC_Token * token = [ioStyledRangeArray objectAtIndex:* outLowerIndexToRedrawInStyleArray HERE] ;
     search = [token range].location < affectedRangeEndLocation ;

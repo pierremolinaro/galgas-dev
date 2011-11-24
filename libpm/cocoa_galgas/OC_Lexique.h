@@ -115,7 +115,7 @@ typedef struct {
 
 - (void) tokenizeForSourceString: (NSString *) inSourceString
          tokenArray: (NSMutableArray *) ioStyledRangeArray // Array of OC_Token
-         editedRange: (const NSRange *) inEditedRange
+         editedRange: (const NSRange) inEditedRange
          changeInLength: (const NSInteger) inChangeInLength
          firstIndexToRedraw: (NSInteger *) outLowerIndexToRedrawInStyleArray
          lastIndexToRedraw: (NSInteger *) outUpperIndexToRedrawInStyleArray

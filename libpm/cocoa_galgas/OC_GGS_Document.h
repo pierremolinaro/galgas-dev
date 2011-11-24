@@ -85,7 +85,7 @@
 - (IBAction) actionBuild: (id) sender ;
 - (IBAction) stopBuild: (id) sender ;
 
-- (void) changeTextRulerVisible: (BOOL) inVisible forRuleThickness: (CGFloat) inThickness ;
+- (void) changeTextRulerVisible: (BOOL) inVisible forRuleThickness: (double) inThickness ;
 
 - (BOOL) canTerminateApplication ;
 - (void) selectLine: (NSInteger) inLine forTextView: (NSTextView *) inTextView ;

@@ -45,8 +45,8 @@
   @private NSMutableDictionary * mTemplateTextAttributeDictionary ;
   @private NSUndoManager * mUndoManager ;
   
-  @private CGFloat mMaxAscender ; // Only mMaxAscender is observable
-  @private CGFloat mMaxLeadingMinusDescender ; // leading - descender (because descender is < 0)
+  @private double mMaxAscender ; // Only mMaxAscender is observable
+  @private double mMaxLeadingMinusDescender ; // leading - descender (because descender is < 0)
 }
 
 - (id) initWithDocument: (OC_GGS_Document *) inDocument
