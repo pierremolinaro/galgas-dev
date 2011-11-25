@@ -30,18 +30,6 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) refreshShowInvisibleCharacters {
-  const BOOL show = [[NSUserDefaults standardUserDefaults] boolForKey:@"PMShowInvisibleCharacters"] ;
-  for (NSLayoutManager * lm in mSourceTextStorage.layoutManagers) {
-    [lm setShowsInvisibleCharacters:show] ;
-    for (NSTextContainer * tc in lm.textContainers) {
-      [tc.textView setNeedsDisplay:YES] ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------*
-
 - (void) refreshRulers {
   for (NSLayoutManager * lm in mSourceTextStorage.layoutManagers) {
     for (NSTextContainer * tc in lm.textContainers) {
@@ -116,16 +104,8 @@
       name: NSTextStorageDidProcessEditingNotification
       object:mSourceTextStorage
     ] ;
-  //--- Add "Show Invisible Character" preference observer
-    NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
-    [udc
-      addObserver:self
-      forKeyPath:@"values.PMShowInvisibleCharacters"
-      options:0
-      context:NULL
-    ] ;
-    [self refreshShowInvisibleCharacters] ;
   //--------------------------------------------------- Add foreground color observers
+    NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;
     if ([mTokenizer isTemplateLexique]) {
       NSString * keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_template_foreground_color, [mTokenizer styleIdentifierForStyleIndex:0]] ;
@@ -371,71 +351,67 @@
          change: (NSDictionary *) inChangeDictionary
          context: (void *) inContext {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_DelegateForSyntaxColoring <observeValueForKeyPath:>") ;
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  if ([inKeyPath isEqualToString:@"values.PMShowInvisibleCharacters"]) {
-    [self refreshShowInvisibleCharacters] ;
-  }else{
-    if (mTokenizer != NULL) {
-      BOOL lineHeightDidChange = NO ;
-      NSColor * color = nil ;
-      NSMutableDictionary * d = nil ;
-      NSData * data = [inObject valueForKeyPath:inKeyPath] ;
-      const NSUInteger tag = ((NSUInteger) inContext) & TAG_MASK ;
-      const NSUInteger idx = ((NSUInteger) inContext) & ~ TAG_MASK ;
-      switch (tag) {
-      case TAG_FOR_FOREGROUND_COLOR:
-        if (data == nil) {
-          color = [NSColor whiteColor] ;
-        }else{
-          color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
-        }
-        d = [mFontAttributesDictionaryArray objectAtIndex:idx HERE] ;
-        [d setObject:color forKey:NSForegroundColorAttributeName] ;
-        [self applyTextAttributeForIndex:idx] ;
-        break;
-      case TAG_FOR_TEMPLATE_FOREGROUND_COLOR:
-        if (data == nil) {
-          color = [NSColor whiteColor] ;
-        }else{
-          color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
-        }
-        [mTemplateTextAttributeDictionary setObject:color forKey:NSForegroundColorAttributeName] ;
-        [self applyTextAttributeForIndex:-2] ;
-        break;
-      case TAG_FOR_BACKGROUND_COLOR:
-        if (data == nil) {
-          color = [NSColor whiteColor] ;
-        }else{
-          color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
-        }
-        d = [mFontAttributesDictionaryArray objectAtIndex:idx HERE] ;
-        [d setObject:color forKey:NSBackgroundColorAttributeName] ;
-        [self applyTextAttributeForIndex:idx] ;
-        break;
-      case TAG_FOR_TEMPLATE_BACKGROUND_COLOR:
-        if (data == nil) {
-          color = [NSColor whiteColor] ;
-        }else{
-          color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
-        }
-        [mTemplateTextAttributeDictionary setObject:color forKey:NSBackgroundColorAttributeName] ;
-        [self applyTextAttributeForIndex:-2] ;
-        break;
-      case TAG_FOR_FONT_ATTRIBUTE:
-        d = [mFontAttributesDictionaryArray objectAtIndex:idx HERE] ;
-        [d setObject:[NSUnarchiver unarchiveObjectWithData:data] forKey:NSFontAttributeName] ;
-        [self computeMaxLineHeight: & lineHeightDidChange] ;
-        [self applyTextAttributeForIndex:lineHeightDidChange ? 0 : idx] ;
-        break;
-      case TAG_FOR_TEMPLATE_FONT_ATTRIBUTE:
-        [mTemplateTextAttributeDictionary setObject:[NSUnarchiver unarchiveObjectWithData:data] forKey:NSFontAttributeName] ;
-        [self computeMaxLineHeight: & lineHeightDidChange] ;
-        [self applyTextAttributeForIndex:lineHeightDidChange ? 0 : -2] ;
-        break;
-      default:
-        break;
+  if (mTokenizer != NULL) {
+    BOOL lineHeightDidChange = NO ;
+    NSColor * color = nil ;
+    NSMutableDictionary * d = nil ;
+    NSData * data = [inObject valueForKeyPath:inKeyPath] ;
+    const NSUInteger tag = ((NSUInteger) inContext) & TAG_MASK ;
+    const NSUInteger idx = ((NSUInteger) inContext) & ~ TAG_MASK ;
+    switch (tag) {
+    case TAG_FOR_FOREGROUND_COLOR:
+      if (data == nil) {
+        color = [NSColor whiteColor] ;
+      }else{
+        color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
       }
+      d = [mFontAttributesDictionaryArray objectAtIndex:idx HERE] ;
+      [d setObject:color forKey:NSForegroundColorAttributeName] ;
+      [self applyTextAttributeForIndex:idx] ;
+      break;
+    case TAG_FOR_TEMPLATE_FOREGROUND_COLOR:
+      if (data == nil) {
+        color = [NSColor whiteColor] ;
+      }else{
+        color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
+      }
+      [mTemplateTextAttributeDictionary setObject:color forKey:NSForegroundColorAttributeName] ;
+      [self applyTextAttributeForIndex:-2] ;
+      break;
+    case TAG_FOR_BACKGROUND_COLOR:
+      if (data == nil) {
+        color = [NSColor whiteColor] ;
+      }else{
+        color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
+      }
+      d = [mFontAttributesDictionaryArray objectAtIndex:idx HERE] ;
+      [d setObject:color forKey:NSBackgroundColorAttributeName] ;
+      [self applyTextAttributeForIndex:idx] ;
+      break;
+    case TAG_FOR_TEMPLATE_BACKGROUND_COLOR:
+      if (data == nil) {
+        color = [NSColor whiteColor] ;
+      }else{
+        color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
+      }
+      [mTemplateTextAttributeDictionary setObject:color forKey:NSBackgroundColorAttributeName] ;
+      [self applyTextAttributeForIndex:-2] ;
+      break;
+    case TAG_FOR_FONT_ATTRIBUTE:
+      d = [mFontAttributesDictionaryArray objectAtIndex:idx HERE] ;
+      [d setObject:[NSUnarchiver unarchiveObjectWithData:data] forKey:NSFontAttributeName] ;
+      [self computeMaxLineHeight: & lineHeightDidChange] ;
+      [self applyTextAttributeForIndex:lineHeightDidChange ? 0 : idx] ;
+      break;
+    case TAG_FOR_TEMPLATE_FONT_ATTRIBUTE:
+      [mTemplateTextAttributeDictionary setObject:[NSUnarchiver unarchiveObjectWithData:data] forKey:NSFontAttributeName] ;
+      [self computeMaxLineHeight: & lineHeightDidChange] ;
+      [self applyTextAttributeForIndex:lineHeightDidChange ? 0 : -2] ;
+      break;
+    default:
+      break;
     }
   }
 }
