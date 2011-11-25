@@ -274,6 +274,7 @@
 		CFA5C5D20DFBEF3500DD782E /* optionCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5CE0DFBEF3500DD782E /* optionCompilation.cpp */; };
 		CFA5C5DE0DFC003F00DD782E /* guiCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */; };
 		CFA5C5E00DFC003F00DD782E /* guiCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */; };
+		CFAD9C69147FA4D300B1B88A /* PMButtonWithRemove.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD9C68147FA4D300B1B88A /* PMButtonWithRemove.m */; };
 		CFAE5AA110021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */; };
 		CFAE5B1C10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */; };
 		CFB6B6DC1160D26100604D8C /* predefinedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6B6D81160D26100604D8C /* predefinedTypes.cpp */; };
@@ -715,6 +716,8 @@
 		CFA5C5CF0DFBEF3500DD782E /* optionCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = optionCompilation.h; sourceTree = "<group>"; };
 		CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guiCompilation.cpp; sourceTree = "<group>"; };
 		CFA5C5DD0DFC003F00DD782E /* guiCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = guiCompilation.h; sourceTree = "<group>"; };
+		CFAD9C67147FA4D300B1B88A /* PMButtonWithRemove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMButtonWithRemove.h; sourceTree = "<group>"; };
+		CFAD9C68147FA4D300B1B88A /* PMButtonWithRemove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMButtonWithRemove.m; sourceTree = "<group>"; };
 		CFAE5A9E10021A400068DEC9 /* OC_GGS_CommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_CommandLineOption.h; sourceTree = "<group>"; };
 		CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_CommandLineOption.m; sourceTree = "<group>"; };
 		CFAE5B1910024AA50068DEC9 /* enterDefaultCommandLineOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = enterDefaultCommandLineOptions.h; sourceTree = "<group>"; };
@@ -1310,6 +1313,8 @@
 				CF923C7C147EBC01005CA78F /* OC_GGS_SourceTextView.m */,
 				CF2ECB51147F78A50018894F /* PMTabBarView.h */,
 				CF2ECB52147F78A50018894F /* PMTabBarView.m */,
+				CFAD9C67147FA4D300B1B88A /* PMButtonWithRemove.h */,
+				CFAD9C68147FA4D300B1B88A /* PMButtonWithRemove.m */,
 			);
 			path = cocoa_galgas;
 			sourceTree = "<group>";
@@ -2475,6 +2480,7 @@
 				CFEE63E0147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m in Sources */,
 				CF923C7D147EBC01005CA78F /* OC_GGS_SourceTextView.m in Sources */,
 				CF2ECB54147F78A50018894F /* PMTabBarView.m in Sources */,
+				CFAD9C69147FA4D300B1B88A /* PMButtonWithRemove.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
