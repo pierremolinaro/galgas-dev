@@ -8,6 +8,7 @@
 //---------------------------------------------------------------------------*
 
 #import "PMTabBarView.h"
+#import "PMButtonWithRemove.h"
 
 //---------------------------------------------------------------------------*
 
@@ -15,33 +16,20 @@
 
 //---------------------------------------------------------------------------*
 
-- (BOOL) isOpaque {
-  return YES ;
-}
-
-//---------------------------------------------------------------------------*
-
 - (void) awakeFromNib {
   NSArray * titles = [NSArray arrayWithObjects:@"First", @"Second", @"Third", nil] ;
+  const NSUInteger sel = 1 ;
   const double width = 150.0 ;
   for (NSUInteger i=0 ; i<titles.count ; i++) {
-    NSButton * button = [[NSButton alloc]
-      initWithFrame:NSMakeRect (width * ((double) i) + 0.5, 0.0, width, self.bounds.size.height)
+    PMButtonWithRemove * button = [[PMButtonWithRemove alloc]
+      initWithFrame:NSMakeRect (width * ((double) i), 0.0, width + 0.5, self.bounds.size.height)
     ] ;
     [button setTitle:[titles objectAtIndex:i]] ;
-    [button setImage:[NSImage imageNamed:NSImageNameStopProgressFreestandingTemplate]] ;
-    [button setImagePosition:NSImageLeft] ;
     [button setBezelStyle:NSSmallSquareBezelStyle] ;
-    [button.cell setImageScaling:NSImageScaleProportionallyUpOrDown] ;
+    [button setButtonType:NSPushOnPushOffButton] ;
+    [button setState:(sel == i) ? NSOnState : NSOffState] ;
     [self addSubview:button] ;
   }
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) drawRect: (NSRect) inRect { //--- Draw Background
-  [[NSColor windowBackgroundColor] setFill] ;
-  NSRectFill (inRect) ;
 }
 
 //---------------------------------------------------------------------------*

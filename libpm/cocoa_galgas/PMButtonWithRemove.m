@@ -1,0 +1,103 @@
+//
+//  PMButtonWithRemove.m
+//  galgas-developer
+//
+//  Created by Pierre Molinaro on 25/11/11.
+//  Copyright (c) 2011 IRCCyN. All rights reserved.
+//
+//---------------------------------------------------------------------------*
+
+#import "PMButtonWithRemove.h"
+
+//---------------------------------------------------------------------------*
+
+@implementation PMButtonWithRemove
+
+//---------------------------------------------------------------------------*
+
+#define IMAGE_SIZE (10.0)
+
+//---------------------------------------------------------------------------*
+
+- (NSRect) trackingRect {
+  const NSRect r = {{4.0, (self.bounds.size.height - IMAGE_SIZE) / 2}, {IMAGE_SIZE, IMAGE_SIZE}} ;
+  return r ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) updateTrackingAreas {
+//--- Remove tracking area
+  if (nil != mTrackingArea) {
+    [self removeTrackingArea:mTrackingArea] ;
+  }
+//--- Add Updated tracking area
+  mTrackingArea = [[NSTrackingArea alloc]
+    initWithRect:[self trackingRect]
+    options:NSTrackingMouseEnteredAndExited | NSTrackingActiveInKeyWindow
+    owner:self
+    userInfo:nil
+  ] ;
+  [self addTrackingArea:mTrackingArea] ;
+//---
+  [super updateTrackingAreas] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) drawRect:(NSRect) inDirtyRect {
+  [super drawRect:inDirtyRect] ;
+  if (mMouseWithin) {
+    const NSRect r = [self trackingRect] ;
+    NSImage * image = [NSImage imageNamed:mMouseDown ? NSImageNameStopProgressFreestandingTemplate : NSImageNameStopProgressTemplate] ;
+    NSImageRep * imageRep = [image
+      bestRepresentationForRect:r
+      context:[NSGraphicsContext currentContext]
+      hints:nil
+    ] ;
+    [imageRep drawInRect:r] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) mouseEntered:(NSEvent *) inEvent {
+  if ([self isEnabled]) {
+    mMouseWithin = YES ; [self setNeedsDisplay:YES] ;
+  }
+  [super mouseEntered:inEvent] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) mouseExited:(NSEvent *) inEvent {
+  mMouseWithin = NO ; [self setNeedsDisplay:YES] ;
+  [super mouseExited:inEvent] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) mouseDown:(NSEvent *) inEvent {
+  mMouseDown = YES ;
+  if (mMouseWithin) {
+    [self setNeedsDisplay:YES] ;
+  }else{
+    [super mouseDown:inEvent] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) mouseUp:(NSEvent *) inEvent {
+  mMouseDown = NO ;
+  if (mMouseWithin) {
+    [self setNeedsDisplay:YES] ;
+    NSBeep () ;
+  }else{
+    [super mouseUp:inEvent] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+@end
