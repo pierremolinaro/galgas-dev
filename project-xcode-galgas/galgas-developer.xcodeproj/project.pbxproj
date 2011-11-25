@@ -54,6 +54,7 @@
 		CF2D3B9E129725F800E93E98 /* AC_GALGAS_graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2D3B99129725F800E93E98 /* AC_GALGAS_graph.cpp */; };
 		CF2DEAA91101C4C400AE8D35 /* semanticsTypeFeatures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2DEAA51101C4C400AE8D35 /* semanticsTypeFeatures.cpp */; };
 		CF2DEAAA1101C4C400AE8D35 /* semanticsTypeFeatures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2DEAA51101C4C400AE8D35 /* semanticsTypeFeatures.cpp */; };
+		CF2ECB54147F78A50018894F /* PMTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2ECB52147F78A50018894F /* PMTabBarView.m */; };
 		CF31B5400DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
 		CF31B5420DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
 		CF333686126B07C1008DA1DE /* AC_GALGAS_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF33366E126B07C1008DA1DE /* AC_GALGAS_class.cpp */; };
@@ -490,6 +491,8 @@
 		CF2D3B9A129725F800E93E98 /* AC_GALGAS_graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AC_GALGAS_graph.h; sourceTree = "<group>"; };
 		CF2DEAA51101C4C400AE8D35 /* semanticsTypeFeatures.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsTypeFeatures.cpp; sourceTree = "<group>"; };
 		CF2DEAA61101C4C400AE8D35 /* semanticsTypeFeatures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsTypeFeatures.h; sourceTree = "<group>"; };
+		CF2ECB51147F78A50018894F /* PMTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTabBarView.h; sourceTree = "<group>"; };
+		CF2ECB52147F78A50018894F /* PMTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTabBarView.m; sourceTree = "<group>"; };
 		CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsCompilation.cpp; sourceTree = "<group>"; };
 		CF31B53B0DFE88C7001C97A7 /* semanticsCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsCompilation.h; sourceTree = "<group>"; };
 		CF33366E126B07C1008DA1DE /* AC_GALGAS_class.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_GALGAS_class.cpp; sourceTree = "<group>"; };
@@ -1305,6 +1308,8 @@
 				CFEE63DF147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m */,
 				CF923C7B147EBC01005CA78F /* OC_GGS_SourceTextView.h */,
 				CF923C7C147EBC01005CA78F /* OC_GGS_SourceTextView.m */,
+				CF2ECB51147F78A50018894F /* PMTabBarView.h */,
+				CF2ECB52147F78A50018894F /* PMTabBarView.m */,
 			);
 			path = cocoa_galgas;
 			sourceTree = "<group>";
@@ -2469,6 +2474,7 @@
 				CFEE63DC147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.m in Sources */,
 				CFEE63E0147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m in Sources */,
 				CF923C7D147EBC01005CA78F /* OC_GGS_SourceTextView.m in Sources */,
+				CF2ECB54147F78A50018894F /* PMTabBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,13 +17,30 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) awakeFromNib {
-  [self setDelegate:self] ;
+- (void) refreshShowInvisibleCharacters {
+  const BOOL show = [[NSUserDefaults standardUserDefaults] boolForKey:@"PMShowInvisibleCharacters"] ;
+  [self.layoutManager setShowsInvisibleCharacters:show] ;
+  [self setNeedsDisplay:YES] ;
 }
 
 //---------------------------------------------------------------------------*
 
-- (NSUndoManager *)undoManagerForTextView:(NSTextView *)aTextView {
+- (void) awakeFromNib {
+  [self setDelegate:self] ;
+//--- Add "Show Invisible Character" preference observer
+  NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
+  [udc
+    addObserver:self
+    forKeyPath:@"values.PMShowInvisibleCharacters"
+    options:0
+    context:NULL
+  ] ;
+  [self refreshShowInvisibleCharacters] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSUndoManager *) undoManagerForTextView:(NSTextView *)aTextView { // Delegate Method
   return mUndoManager ;
 }
 
@@ -33,6 +50,9 @@
          ofObject: (id) inObject
          change:(NSDictionary *) inChange
          context:(void *) inContext {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   if ([inKeyPath isEqualToString:@"selectionIndex"]) {
     NSArray * arrangedObjects = ((NSArrayController *) inObject).arrangedObjects ;
     if (arrangedObjects.count > 0) {
@@ -47,6 +67,8 @@
       [textStorage removeLayoutManager:self.layoutManager] ;
       mUndoManager = nil ;
     }
+  }else if ([inKeyPath isEqualToString:@"values.PMShowInvisibleCharacters"]) {
+    [self refreshShowInvisibleCharacters] ;
   }else{
     [super
       observeValueForKeyPath:inKeyPath
