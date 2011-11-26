@@ -41,11 +41,6 @@
  <NSTextViewDelegate, NSToolbarDelegate, NSWindowDelegate>
  #endif
 {
-@private OC_GGS_DelegateForSyntaxColoring * mDelegateForSyntaxColoring ;
-@private OC_Lexique * mTokenizer ;
-
-@private IBOutlet OC_GGS_TextView * mTextView ;
-@private IBOutlet NSScrollView * mTextScrollView ;
 
 @private IBOutlet NSTextView * mIssueTextView ;
 
@@ -61,8 +56,6 @@
 @private NSMutableArray * mIssueArray ; // Array of PMIssueDescriptor
 @private NSArrayController * mIssueArrayController ;
 @private IBOutlet NSTableColumn * mIssueTableViewColumn ;
-
-  @private IBOutlet NSPopUpButton * mEntryListPopUpButton ;
 
   @private IBOutlet NSPanel * mUpdateFromFileSystemPanel ;
 
@@ -89,23 +82,17 @@
 
 - (IBAction) duplicateSelectedSourceViewAction: (id) inSender ;
 
-- (void) setSelectionRange: (NSRange) inRange ;
-- (NSString *) sourceString ;
-- (void) setSourceString: (NSString *) inString ;
+- (IBAction) actionComment: (id) sender ;
+- (IBAction) actionUncomment: (id) sender ;
 
 - (IBAction) actionBuild: (id) sender ;
 - (IBAction) stopBuild: (id) sender ;
 
-- (void) changeTextRulerVisible: (BOOL) inVisible forRuleThickness: (double) inThickness ;
-
 - (BOOL) canTerminateApplication ;
 - (void) selectLine: (NSInteger) inLine forTextView: (NSTextView *) inTextView ;
 
-- (void) selectEntryPopUpForSelectionStart: (NSInteger) inSelectionStart ;
-
-
-- (OC_GGS_DelegateForSyntaxColoring *) delegateForSyntaxColoring ;
-- (OC_Lexique *) tokenizer ;
+- (NSString *) sourceStringForGlobalSearch ;
+- (void) replaceSourceStringWithString: (NSString *) inString ;
 
 //--- Navigation throught warnings
 
@@ -114,7 +101,4 @@
          editedRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength ;
 
-- (NSMenu *) indexMenuForToken: (NSString *) inToken
-             atomicSelection: (BOOL) inHasAtomicSelection
-             range: (NSRange) allTokenCharactersRange ;
 @end

@@ -1047,7 +1047,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 //---------------------------------------------------------------------------*
 
 - (IBAction) setTextRulerVisible: (id) inSender {
-  const BOOL rulerIsVisible = [inSender state] ;
+/*  const BOOL rulerIsVisible = [inSender state] ;
   const float ruleThickness = [self ruleThickness] ;
 //--- Update opened documents
   NSArray * docArray = [[NSApplication sharedApplication] orderedDocuments] ;
@@ -1058,7 +1058,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     [doc changeTextRulerVisible:rulerIsVisible forRuleThickness:ruleThickness] ;
   }
 //--- Update default setting
-  [[NSUserDefaults standardUserDefaults] setBool:rulerIsVisible forKey:GGS_show_ruler] ;
+  [[NSUserDefaults standardUserDefaults] setBool:rulerIsVisible forKey:GGS_show_ruler] ;*/
 }
 
 //---------------------------------------------------------------------------*

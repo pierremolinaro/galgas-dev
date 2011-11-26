@@ -88,7 +88,8 @@
 //---------------------------------------------------------------------------*
 
 - (OC_GGS_TextSyntaxColoring *) initWithSourceString: (NSString *) inSource
-                                tokenizer: (OC_Lexique *) inTokenizer {
+                                tokenizer: (OC_Lexique *) inTokenizer
+                                sourcePath: (NSString *) inPath {
   self = [super init] ;
   if (self) {
     mTokenizer = inTokenizer ;
@@ -97,6 +98,7 @@
     mStyledRangeArray = [NSMutableArray new] ;
     mTemplateTextAttributeDictionary = [NSMutableDictionary new] ;
     mUndoManager = [NSUndoManager new] ;
+    mSourcePath = inPath.copy ;
   //---
     [[NSNotificationCenter defaultCenter]
       addObserver:self
@@ -270,14 +272,34 @@
 
 //---------------------------------------------------------------------------*
 
+- (void) replaceSourceStringWithString: (NSString *) inString {
+  [mSourceTextStorage beginEditing] ;
+  [mSourceTextStorage replaceCharactersInRange:NSMakeRange (0, mSourceTextStorage.length) withString:inString] ;
+  [mSourceTextStorage endEditing] ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (NSUndoManager *) undoManager {
   return mUndoManager ;
 }
 
 //---------------------------------------------------------------------------*
 
+- (OC_Lexique *) tokenizer {
+  return mTokenizer ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (NSMenu *) menuForEntryPopUpButton {
   return mTokenizer.menuForEntryPopUpButton ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) sourcePath {
+  return mSourcePath ;
 }
 
 //---------------------------------------------------------------------------*
@@ -529,6 +551,396 @@
     // NSLog (@"%@", self.textStorage.string) ;
 }
 
+//---------------------------------------------------------------------------*
+
+- (void) breakUndoCoalescing {
+  for (NSLayoutManager * lm in mSourceTextStorage.layoutManagers) {
+    for (NSTextContainer * tc in lm.textContainers) {
+      [tc.textView breakUndoCoalescing] ;
+    }    
+  }
+}
+
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//           C O M M E N T R A N G E                                         *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (NSRange) commentRange: (NSRange) inSelectedRangeValue {
+  NSAttributedString * blockCommentString = [[[NSAttributedString alloc] initWithString:[mTokenizer blockComment] attributes:nil] autorelease] ;
+  //NSLog (@"selectedRange [%d, %d]", selectedRange.location, selectedRange.length) ;
+  NSMutableAttributedString * mutableSourceString = [self textStorage] ;
+  NSString * sourceString = [mutableSourceString string] ;
+  const NSRange lineRange = [sourceString lineRangeForRange:inSelectedRangeValue] ;
+  //NSLog (@"lineRange [%d, %d]", lineRange.location, lineRange.length) ;
+  NSInteger insertedCharsCount = 0 ;
+  NSRange currentLineRange = [sourceString lineRangeForRange:NSMakeRange (lineRange.location + lineRange.length - 1, 1)] ;
+  do {
+    //NSLog (@"currentLineRange [%d, %d]", currentLineRange.location, currentLineRange.length) ;
+    [mutableSourceString insertAttributedString:blockCommentString atIndex:currentLineRange.location] ;
+    insertedCharsCount += [blockCommentString length] ;
+    if (currentLineRange.location > 0) {
+      currentLineRange = [sourceString lineRangeForRange:NSMakeRange (currentLineRange.location - 1, 1)] ;
+    }
+  }while ((currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location)) ;
+//--- Update selected range
+  const NSRange newSelectedRange = NSMakeRange (inSelectedRangeValue.location, inSelectedRangeValue.length + insertedCharsCount) ;
+//--- Register undo
+  [mUndoManager
+    registerUndoWithTarget:self
+    selector:@selector (uncommentRangeForUndo:)
+    object:[NSValue valueWithRange:newSelectedRange]
+  ] ;
+//---
+  return newSelectedRange ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) commentRangeForUndo: (NSValue *) inRangeValue { // An NSValue of NSRange
+  [self commentRange:inRangeValue.rangeValue] ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//                       U N C O M M E N T R A N G E                         *
+//                                                                           *
+// Cette méthode a plusieurs rôles :                                         *
+//   - supprimer les marques de commentaires des lignes concernées par la    *
+//     sélection, uniquement quand ces le commentaire commence une ligne ;   *
+//   - ajuster la sélection en conséquence ; en effet, dès que la méthode    *
+//     replaceCharactersInRange:withString: est appelée, Cocoa ramène la     *
+//     sélection à un point d'insertion. La sélection est ajustée et         *
+//     maintenue dans la variable finalSelectedRange.                        *
+//                                                                           *
+// Le plus difficile est l'ajustement de la sélection. Pour cela, on calcule:*
+//   - le nombre beforeSelectionCharacterCount de caractères du commentaire  *
+//     supprimé qui sont avant la sélection ; si ce nombre est > 0, on       *
+//     le début de la sélection du min entre ce nombre et le nombre de carac-*
+//     tères du commentaire ;                                                *
+//   - le nombre withinSelectionCharacterCount de caractères du commentaire  *
+//     supprimé qui sont à l'intérieur de la sélection ; si ce nombre est    *
+//     > 0, on le retranche de la longueur de la sélection.                  *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+// #define DEBUG_UNCOMMENTRANGE
+
+//---------------------------------------------------------------------------*
+
+static inline NSInteger imin (const NSInteger a, const NSInteger b) { return a < b ? a : b ; }
+static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a > b ? a : b ; }
+
+//---------------------------------------------------------------------------*
+
+- (NSRange) uncommentRange: (NSRange) initialSelectedRange {
+//--- Block comment string
+  NSString * blockCommentString = [mTokenizer blockComment] ;
+  const NSUInteger blockCommentLength = [blockCommentString length] ;
+//--- Get source string
+  NSMutableAttributedString * mutableSourceString = [self textStorage] ;
+  NSString * sourceString = [mutableSourceString string] ;
+  #ifdef DEBUG_UNCOMMENTRANGE
+    NSLog (@"blockCommentString '%@', text length %u", blockCommentString, [sourceString length]) ;
+    NSLog (@"initialSelectedRange [%d, %d]", initialSelectedRange.location, initialSelectedRange.length) ;
+  #endif
+//--- Final selection range
+  NSRange finalSelectedRange = initialSelectedRange ;
+//--- Get line range that is affected by the operation
+  const NSRange lineRange = [sourceString lineRangeForRange:initialSelectedRange] ;
+  #ifdef DEBUG_UNCOMMENTRANGE
+    NSLog (@"lineRange [%d, %d]", lineRange.location, lineRange.length) ;
+  #endif
+  NSRange currentLineRange = [sourceString lineRangeForRange:NSMakeRange (lineRange.location + lineRange.length - 1, 1)] ;
+  do {
+    #ifdef DEBUG_UNCOMMENTRANGE
+      NSLog (@"currentLineRange [%d, %d]", currentLineRange.location, currentLineRange.length) ;
+    #endif
+    NSString * lineString = [sourceString substringWithRange:currentLineRange] ;
+    if ([lineString compare:blockCommentString options:0 range:NSMakeRange (0, blockCommentLength)] == NSOrderedSame) {
+      [mutableSourceString replaceCharactersInRange:NSMakeRange (currentLineRange.location, blockCommentLength) withString:@""] ;
+    //--- Examen du nombre de caractères à l'intérieur de la sélection
+      const NSInteger withinSelectionCharacterCount = 
+        imin (currentLineRange.location + blockCommentLength, finalSelectedRange.location + finalSelectedRange.length)
+      -
+        imax (currentLineRange.location, finalSelectedRange.location) ;
+      if (withinSelectionCharacterCount > 0) {
+        finalSelectedRange.length -= withinSelectionCharacterCount ;
+      }
+    //--- Examen du nombre de caractères avant la sélection
+      const NSInteger beforeSelectionCharacterCount = finalSelectedRange.location - currentLineRange.location ;
+      if (beforeSelectionCharacterCount > 0) {
+        finalSelectedRange.location -= imin (blockCommentLength, beforeSelectionCharacterCount) ;
+      }
+      #ifdef DEBUG_UNCOMMENTRANGE
+        NSLog (@"withinSelectionCharacterCount %d, beforeSelectionCharacterCount %d", withinSelectionCharacterCount, beforeSelectionCharacterCount) ;
+        NSLog (@"finalSelectedRange [%d, %d]", finalSelectedRange.location, finalSelectedRange.length) ;
+      #endif
+    }
+    if (currentLineRange.location > 0) {
+      currentLineRange = [sourceString lineRangeForRange:NSMakeRange (currentLineRange.location - 1, 1)] ;
+    }
+  }while ((currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location)) ;
+//--- Register undo
+  [mUndoManager 
+    registerUndoWithTarget:self
+    selector:@selector (commentRangeForUndo:)
+    object:[NSValue valueWithRange:finalSelectedRange]
+  ] ;
+//---
+  return finalSelectedRange ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) uncommentRangeForUndo: (NSValue *) inRangeValue { // An NSValue of NSRange
+  [self uncommentRange:inRangeValue.rangeValue] ;
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Source Indexing
+
+//---------------------------------------------------------------------------*
+
+- (NSSet *) handledExtensions {
+  NSMutableSet * result = [NSMutableSet new] ;
+//--- Get Info.plist file
+  NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary] ;
+  // NSLog (@"infoDictionary '%@'", infoDictionary) ;
+  NSArray * allDocumentTypes = [infoDictionary objectForKey:@"CFBundleDocumentTypes"] ;
+  // NSLog (@"allDocumentTypes '%@'", allDocumentTypes) ;
+  for (NSUInteger i=0 ; i<[allDocumentTypes count] ; i++) {
+    NSDictionary * docTypeDict = [allDocumentTypes objectAtIndex:i HERE] ;
+    // NSLog (@"docTypeDict '%@'", docTypeDict) ;
+    NSArray * documentTypeExtensions = [docTypeDict objectForKey:@"CFBundleTypeExtensions"] ;
+    // NSLog (@"documentTypeExtensions '%@'", documentTypeExtensions) ;
+    [result addObjectsFromArray:documentTypeExtensions] ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (BOOL) sourceFile:(NSString *) inFile1
+         newerThanFile: (NSString *) inFile2 {
+  NSFileManager * fm = [[NSFileManager alloc] init] ;
+  NSDictionary * file1_dictionary = [fm attributesOfItemAtPath:inFile1 error:NULL] ;
+  NSDate * file1_modificationDate = [file1_dictionary fileModificationDate] ;
+  NSDictionary * file2_dictionary = [fm attributesOfItemAtPath:inFile2 error:NULL] ;
+  NSDate * file2_modificationDate = [file2_dictionary fileModificationDate] ;
+  return NSOrderedDescending == [file1_modificationDate compare:file2_modificationDate] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) parseSourceFileForBuildingIndexFile: (NSString *) inSourceFileFullPath {
+  NSString * compilerToolPath = [gCocoaGalgasPreferencesController compilerToolPath] ;
+//--- Command line tool does actually exist ? (First argument is not "?")
+  if (! [compilerToolPath isEqualToString:@"?"]) {
+  //--- Build argument array
+    NSMutableArray * arguments = [NSMutableArray new] ;
+    [arguments addObject:inSourceFileFullPath] ;
+    [arguments addObject:@"--perform-indexing"] ;
+  //--- Create task
+    NSTask * task = [[NSTask alloc] init] ;
+    [task setLaunchPath:compilerToolPath] ;
+    [task setArguments:arguments] ;
+    // NSLog (@"'%@' %@", [task launchPath], arguments) ;
+  //--- Start task
+    [task launch] ;
+  //--- Wait the task is completed
+    [task waitUntilExit] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSArray *) buildDictionaryArray {
+//--- Source directory
+  NSString * sourceDirectory = mSourcePath.stringByDeletingLastPathComponent ;
+//--- index directory
+  NSString * indexingDirectory = [mTokenizer indexingDirectory] ;
+  if (([indexingDirectory length] == 0) || ([indexingDirectory characterAtIndex:0] != '/')) {
+    NSMutableString * s = [NSMutableString new] ;
+    [s appendString:sourceDirectory] ;
+    [s appendString:@"/"] ;
+    [s appendString:indexingDirectory] ;
+    indexingDirectory = s ;
+    // NSLog (@"indexingDirectory '%@'", indexingDirectory) ;
+  }
+//--- Handled extensions
+  NSSet * handledExtensions = [self handledExtensions] ;
+//--- All files in source directory
+  NSFileManager * fm = [[NSFileManager alloc] init] ;
+  NSArray * files = [fm contentsOfDirectoryAtPath:sourceDirectory error:NULL] ;
+  NSMutableArray * availableDictionaryPathArray = [NSMutableArray new] ;
+  NSOperationQueue * opq = [NSOperationQueue new] ;
+  for (NSString * filePath in files) {
+    NSString * fullFilePath = [NSString stringWithFormat:@"%@/%@", sourceDirectory, filePath] ;
+    if ([handledExtensions containsObject:[filePath pathExtension]]) {
+    //--- Index file path
+      NSString * indexFileFullPath = [NSString stringWithFormat:@"%@/%@.plist", indexingDirectory, [filePath lastPathComponent]] ;
+    //--- Parse source file ?
+      if (! [fm fileExistsAtPath:indexFileFullPath]) { // Parse source file
+        NSInvocationOperation * op = [[NSInvocationOperation alloc] 
+          initWithTarget:self
+          selector:@selector (parseSourceFileForBuildingIndexFile:)
+          object:fullFilePath
+        ] ;
+        [opq addOperation:op] ;
+        [availableDictionaryPathArray addObject:indexFileFullPath] ;
+      }else if ([self sourceFile:fullFilePath newerThanFile:indexFileFullPath]) {
+        [fm removeItemAtPath:indexFileFullPath error:NULL] ;
+        NSInvocationOperation * op = [[NSInvocationOperation alloc] 
+          initWithTarget:self
+          selector:@selector (parseSourceFileForBuildingIndexFile:)
+          object:fullFilePath
+        ] ;
+        [opq addOperation:op] ;
+        [availableDictionaryPathArray addObject:indexFileFullPath] ;
+      }else{
+        [availableDictionaryPathArray addObject:indexFileFullPath] ;
+      }
+    }
+  }
+//--- Wait operations are completed
+  [opq waitUntilAllOperationsAreFinished] ;
+//--- Parse available dictionaries
+  NSMutableArray * result = [NSMutableArray new] ;
+  for (NSString * fullPath in availableDictionaryPathArray) {
+    NSDictionary * dict = [NSDictionary dictionaryWithContentsOfFile:fullPath] ;
+    if (nil != dict) {
+      [result addObject:dict] ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+static NSInteger numericSort (NSString * inOperand1,
+                              NSString * inOperand2,
+                              void * inUnusedContext) {
+  return [inOperand1 compare:inOperand2 options:NSNumericSearch] ;
+}
+
+//---------------------------------------------------------------------------*
+// Every plist list is a dictionary: the key is the indexed to token; the 
+// associated value is an NSArray of NSString that has the following format:
+//   "kind:line:locationIndex:length:sourceFileFullPath"
+
+//---------------------------------------------------------------------------*
+
+- (NSMenu *) indexMenuForRange: (NSRange) inSelectedRange {
+  NSMenu * menu = [[NSMenu alloc] initWithTitle:@""] ;
+//--- Save all sources
+  [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
+//--- Check if current has atomic selection
+  BOOL hasAtomicSelection = YES ;
+  BOOL found = NO ;
+  NSRange allTokenCharacterRange = {0, 0} ;
+  for (NSUInteger i=0 ; (i<[mStyledRangeArray count]) && ! found ; i++) {
+    OC_Token * token = [mStyledRangeArray objectAtIndex:i HERE] ;
+    allTokenCharacterRange = [token range] ;
+    found = ((allTokenCharacterRange.location + allTokenCharacterRange.length) > inSelectedRange.location)
+         && (allTokenCharacterRange.location <= inSelectedRange.location) ;
+    if (found) {
+      hasAtomicSelection = [mTokenizer atomicSelectionForToken:[token tokenCode]] ;
+    }
+  }
+//---
+  NSString * token = [mSourceTextStorage.string substringWithRange:inSelectedRange] ;
+  // NSLog (@"%@", token) ;
+//---
+  NSArray * dictionaryArray = [self buildDictionaryArray] ;
+//--- Build array of all references of given token
+  NSMutableArray * allReferences = [NSMutableArray new] ;
+  for (NSDictionary * currentIndexDictionary in dictionaryArray) {
+    NSArray * references = [currentIndexDictionary objectForKey:token] ;
+    [allReferences addObjectsFromArray:references] ;
+  }
+//--- Build dictionary for the given token, organized by Kind
+  NSMutableDictionary * kindDictionary = [NSMutableDictionary new] ;
+  for (NSString * descriptor in allReferences) {
+    NSArray * components = [descriptor componentsSeparatedByString:@":"] ;
+    NSString * kind = [components objectAtIndex:0] ;
+    if ([kindDictionary objectForKey:kind] == NULL) {
+      [kindDictionary setObject:[NSMutableArray new] forKey:kind] ;
+    }
+    NSMutableArray * a = [kindDictionary objectForKey:kind] ;
+    [a addObject:descriptor] ;
+  }
+//--- Build Menu
+  if (! hasAtomicSelection) {
+    [menu addItemWithTitle:@"Select all token characters" action:@selector (selectAllTokenCharacters:) keyEquivalent:@""] ;
+    NSMenuItem * item = [menu itemAtIndex:[menu numberOfItems] - 1] ;
+    [item setTarget:self] ;
+    [item setRepresentedObject:[NSValue valueWithRange:inSelectedRange]] ;
+    [menu addItem:[NSMenuItem separatorItem]] ;
+  }
+  if ([kindDictionary count] == 0) {
+    NSString * title = [NSString stringWithFormat:@"No index for '%@'", token] ;
+    [menu addItemWithTitle:title action:nil keyEquivalent:@""] ;
+  }else{
+    NSArray * indexingTitles = [mTokenizer indexingTitles] ;
+    NSArray * allKeys = [[kindDictionary allKeys] sortedArrayUsingFunction:numericSort context:NULL] ;
+    BOOL first = YES ;
+    for (NSString * kindObject in allKeys) {
+      if (first) {
+        first = NO ;
+      }else{
+        [menu addItem:[NSMenuItem separatorItem]] ;
+      }
+      const NSUInteger kind = [kindObject integerValue] ;
+      NSArray * references = [kindDictionary objectForKey:kindObject] ;
+      NSString * title = [NSString
+        stringWithFormat:@"%@ (%d item%@)",
+        [indexingTitles objectAtIndex:kind],
+        [references count],
+        (([references count] > 1) ? @"s" : @"")
+      ] ;
+      [menu addItemWithTitle:title action:nil keyEquivalent:@""] ;
+      for (NSString * descriptor in references) {
+        NSArray * components = [descriptor componentsSeparatedByString:@":"] ;
+        NSString * filePath = [components objectAtIndex:4] ;
+        title = [NSString stringWithFormat:@"%@, line %@", [filePath lastPathComponent], [components objectAtIndex:1]] ;
+        NSMenuItem * item = [menu addItemWithTitle:title action:@selector (indexingMenuAction:) keyEquivalent:@""] ;
+        [item setTarget:self] ;
+        [item setRepresentedObject:descriptor] ;
+      }
+    }
+  }
+//---
+  return menu ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) selectAllTokenCharacters: (id) inSender  {
+//  const NSRange r = [[inSender representedObject] rangeValue] ;
+//  [self setSelectionRange:r] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) indexingMenuAction: (id) inSender {
+  NSString * descriptor = [inSender representedObject] ;
+  // NSLog (@"descriptor '%@'", descriptor) ;
+  NSArray * components = [descriptor componentsSeparatedByString:@":"] ;
+//  const NSUInteger tokenLocation = [[components objectAtIndex:2] integerValue] ;
+//  const NSUInteger tokenLength = [[components objectAtIndex:3] integerValue] ;
+  NSString * filePath = [components objectAtIndex:4] ;
+  // NSLog (@"tokenLocation %u, tokenLength %u, filePath '%@'", tokenLocation, tokenLength, filePath) ;
+  /* OC_GGS_Document * doc = */ [[NSDocumentController sharedDocumentController]
+    openDocumentWithContentsOfURL:[NSURL fileURLWithPath:filePath]
+    display:YES
+    error:NULL
+  ] ;
+//  [doc setSelectionRange:NSMakeRange (tokenLocation, tokenLength)] ;
+}
 
 //---------------------------------------------------------------------------*
 
