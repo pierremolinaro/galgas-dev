@@ -10,6 +10,7 @@
 #import "OC_GGS_TextDisplayDescriptor.h"
 #import "OC_GGS_TextSyntaxColoring.h"
 #import "OC_Lexique.h"
+#import "OC_GGS_Document.h"
 
 //---------------------------------------------------------------------------*
 
@@ -31,13 +32,22 @@
 
 //---------------------------------------------------------------------------*
 
-- (OC_GGS_TextDisplayDescriptor *) initWithDelegateForSyntaxColoring: (OC_GGS_TextSyntaxColoring *) inDelegateForSyntaxColoring {
+- (OC_GGS_TextDisplayDescriptor *) initWithDelegateForSyntaxColoring: (OC_GGS_TextSyntaxColoring *) inDelegateForSyntaxColoring
+                                   document: (OC_GGS_Document *) inDocument  {
   self = [self init] ;
   if (self) {
-    mTextSyntaxColoring = inDelegateForSyntaxColoring ;
+    mDocument = inDocument ;
+    [self setSyntaxColoringDelegate:inDelegateForSyntaxColoring] ;
     mTextView = [[NSTextView alloc] initWithFrame:NSMakeRect (0.0, 0.0, 10.0, 10.0)] ;
     mTextView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
     mTextView.usesFindPanel = YES ;
+    mTextView.grammarCheckingEnabled = NO ;
+    mTextView.allowsUndo = YES ;
+  //---
+    if ([mTextView respondsToSelector:@selector (setUsesFindBar:)]) {
+      [mTextView setValue:[NSNumber numberWithBool:YES] forKey:@"usesFindBar"] ;
+    }
+  //---
     [mTextSyntaxColoring.textStorage addLayoutManager:mTextView.layoutManager] ;
     // NSLog (@"mTextSyntaxColoring.textStorage %p", mTextSyntaxColoring.textStorage) ;
     // NSLog (@"mTextView.layoutManager %p", mTextView.layoutManager) ;
@@ -58,11 +68,9 @@
 
 - (void) setSyntaxColoringDelegate: (OC_GGS_TextSyntaxColoring *) inDelegate {
   if (mTextSyntaxColoring != inDelegate) {
-    OC_GGS_TextSyntaxColoring * temp = mTextSyntaxColoring ;
-    mTextSyntaxColoring = nil ;
-    [temp removeTextDisplayDescriptor:self] ;
+    [mTextSyntaxColoring performSelector:@selector (removeTextDisplayDescriptor:) withObject:self] ;
     mTextSyntaxColoring = inDelegate ;
-    [mTextSyntaxColoring addTextDisplayDescriptor:self] ;
+    [mTextSyntaxColoring performSelector:@selector (addTextDisplayDescriptor:) withObject:self] ;
   }
 }
 
@@ -180,7 +188,7 @@
 
 //---------------------------------------------------------------------------*
 
-- (NSUndoManager *) undoManagerForTextView:(NSTextView *)aTextView { // Delegate Method
+- (NSUndoManager *) undoManagerForTextView: (NSTextView *) inTextView { // Delegate Method
   return mTextSyntaxColoring.undoManager ;
 }
 
@@ -206,6 +214,9 @@
 
 //---------------------------------------------------------------------------*
 
+- (void) noteUndoManagerCheckPointNotification {
+  [mDocument triggerDocumentEditedStatusUpdate] ;
+}
 
 //---------------------------------------------------------------------------*
 

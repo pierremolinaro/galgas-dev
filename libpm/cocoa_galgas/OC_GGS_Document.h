@@ -42,20 +42,20 @@
  #endif
 {
 
-@private IBOutlet NSTextView * mIssueTextView ;
+  @private IBOutlet NSTextView * mIssueTextView ;
 
-@private IBOutlet NSSplitView * mIssueSplitView ;
+  @private IBOutlet NSSplitView * mIssueSplitView ;
 
 
-@private IBOutlet NSButton * mCurrentLineButton ;
+  @private IBOutlet NSButton * mCurrentLineButton ;
 
-@private NSTask * mTask ;
+  @private NSTask * mTask ;
 
-@private NSMutableData * mBufferedInputData ;
+  @private NSMutableData * mBufferedInputData ;
 
-@private NSMutableArray * mIssueArray ; // Array of PMIssueDescriptor
-@private NSArrayController * mIssueArrayController ;
-@private IBOutlet NSTableColumn * mIssueTableViewColumn ;
+  @private NSMutableArray * mIssueArray ; // Array of PMIssueDescriptor
+  @private NSArrayController * mIssueArrayController ;
+  @private IBOutlet NSTableColumn * mIssueTableViewColumn ;
 
   @private IBOutlet NSPanel * mUpdateFromFileSystemPanel ;
 
@@ -89,10 +89,11 @@
 - (IBAction) stopBuild: (id) sender ;
 
 - (BOOL) canTerminateApplication ;
-- (void) selectLine: (NSInteger) inLine forTextView: (NSTextView *) inTextView ;
 
 - (NSString *) sourceStringForGlobalSearch ;
 - (void) replaceSourceStringWithString: (NSString *) inString ;
+
+- (void) triggerDocumentEditedStatusUpdate ;
 
 //--- Navigation throught warnings
 

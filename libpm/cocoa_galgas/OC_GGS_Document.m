@@ -66,6 +66,7 @@
     mFileEncoding = NSUTF8StringEncoding ;
     mSourceDisplayArray = [NSMutableArray new] ; // Array of OC_GGS_TextDisplayDescriptor
     mSourceDisplayArrayController = [NSArrayController new] ;
+    self.undoManager = nil ;
   }
   return self;
 }
@@ -243,6 +244,7 @@
 //--- Display the document contents
   OC_GGS_TextDisplayDescriptor * textDisplayDescriptor = [[OC_GGS_TextDisplayDescriptor alloc]
     initWithDelegateForSyntaxColoring:mSourceTextWithSyntaxColoring
+    document:self
   ] ;
   [mSourceDisplayArrayController addObject:textDisplayDescriptor] ;
   [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:textDisplayDescriptor]] ;
@@ -272,6 +274,7 @@
   OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
   OC_GGS_TextDisplayDescriptor * textDisplayDescriptor = [[OC_GGS_TextDisplayDescriptor alloc]
     initWithDelegateForSyntaxColoring:selectedObject.textSyntaxColoring
+    document:self
   ] ;
   [mSourceDisplayArrayController addObject:textDisplayDescriptor] ;
   [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:textDisplayDescriptor]] ;
@@ -1207,49 +1210,16 @@
 }
 
 //---------------------------------------------------------------------------*
-//                                                                           *
-//        S E L E C T    L I N E    A N D     C O L U M N                    *
-//                                                                           *
-//---------------------------------------------------------------------------*
 
-- (void) selectLine: (NSInteger) inLine forTextView: (NSTextView *) inTextView {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <selectLine:forTextView:>") ;
-  #endif
-  int currentLine = 1 ;
-  NSString * sourceString = [[inTextView textStorage] string] ;
-  NSRange range = [sourceString lineRangeForRange: NSMakeRange (0, 0)] ;
-//  NSUInteger lastStartOfLine = 0 ;
-  while ((currentLine < inLine) && (range.length > 0)) {
-    currentLine ++ ;
- //   lastStartOfLine = range.location ;
-    range = [sourceString lineRangeForRange: NSMakeRange (NSMaxRange (range), 0)] ;
+- (void) triggerDocumentEditedStatusUpdate {
+  BOOL isEdited = NO ;
+  for (NSUInteger i=0 ; (i<mSourceDisplayArray.count) && ! isEdited ; i++) {
+    OC_GGS_TextDisplayDescriptor * textDisplay = [mSourceDisplayArray objectAtIndex:i] ;
+    OC_GGS_TextSyntaxColoring * textSyntaxColoring = textDisplay.textSyntaxColoring ;
+    NSUndoManager * undoManager = textSyntaxColoring.undoManager ;
+    isEdited = undoManager.canUndo ;
   }
-  // NSLog (@"range.length %d", range.length) ;
-  if (range.length > 0) {
-    [inTextView setSelectedRange:range] ;
-    [inTextView scrollRangeToVisible:range] ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-#pragma mark Menu Item Validation
-
-//---------------------------------------------------------------------------*
-//                                                                           *
-//        E R R O R    A N D    W A R N I N G    N A V I G A T I O N         *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-- (BOOL) validateMenuItem:(NSMenuItem *) inItem {
-  BOOL validate ;
-  if ([inItem action] == @selector (revertDocumentToSaved:)) {
-    validate = NO ;
-  }else{
-    validate = [super validateMenuItem:inItem] ;
-  }
-  return validate ;
+  [self.windowForSheet setDocumentEdited:isEdited] ;
 }
 
 //---------------------------------------------------------------------------*

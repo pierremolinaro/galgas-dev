@@ -676,7 +676,7 @@
 		CF8E30230D9EE03700EF3764 /* projectCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = projectCreation.h; sourceTree = "<group>"; };
 		CF8EE1540B93343E006CAFD5 /* C_BDD_Set3.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; name = C_BDD_Set3.cpp; path = bdd/C_BDD_Set3.cpp; sourceTree = "<group>"; };
 		CF8EE1550B93343E006CAFD5 /* C_BDD_Set3.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; name = C_BDD_Set3.h; path = bdd/C_BDD_Set3.h; sourceTree = "<group>"; };
-		CF923C7B147EBC01005CA78F /* OC_GGS_SourceScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = OC_GGS_SourceScrollView.h; sourceTree = "<group>"; };
+		CF923C7B147EBC01005CA78F /* OC_GGS_SourceScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_SourceScrollView.h; sourceTree = "<group>"; };
 		CF923C7C147EBC01005CA78F /* OC_GGS_SourceScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_SourceScrollView.m; sourceTree = "<group>"; };
 		CF9BDF6B0585C5C900FC7DD7 /* galgasApplication.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = galgasApplication.icns; sourceTree = "<group>"; };
 		CF9BDF6C0585C5C900FC7DD7 /* galgasDocuments.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = galgasDocuments.icns; sourceTree = "<group>"; };
