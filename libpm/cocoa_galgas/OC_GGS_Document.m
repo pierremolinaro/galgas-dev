@@ -33,6 +33,7 @@
 #import "PMIssueDescriptor.h"
 #import "OC_GGS_TextSyntaxColoring.h"
 #import "OC_GGS_TextDisplayDescriptor.h"
+#import "PMTabBarView.h"
 
 //---------------------------------------------------------------------------*
 
@@ -57,9 +58,8 @@
   self = [super init];
   if (self) {
     #ifdef DEBUG_MESSAGES
-      NSLog (@"OC_GGS_Document <init>") ;
+      NSLog (@"%s", __PRETTY_FUNCTION__) ;
     #endif
-    mTask = nil ;
     mIssueArrayController = [NSArrayController new] ;
     mIssueArray = [NSMutableArray new] ;
     mFileEncoding = NSUTF8StringEncoding ;
@@ -357,28 +357,37 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
     withKeyPath:@"fileEncodingString"
     options:nil    
   ] ;
-
-/*  [mSourceTextView
-    bind:@"attributedString" 
-    toObject:mSourceDisplayArrayController
-    withKeyPath:@"selection.mTextSyntaxColoring.mSourceString"
-    options:[NSDictionary dictionaryWithObjectsAndKeys:
-      [NSNumber numberWithBool:YES], NSContinuouslyUpdatesValueBindingOption,
-      nil
-    ]
-  ] ;*/
+//---
   [mSourceDisplayArrayController
     addObserver:mSourceTextView 
     forKeyPath:@"selectionIndex"
     options:0
     context:NULL
   ] ;
+//---
+  [mSourceDisplayArrayController
+    addObserver:mTabBarView 
+    forKeyPath:@"selection.sourcePath"
+    options:0
+    context:NULL
+  ] ;
+//---
+  [mSourceDisplayArrayController
+    addObserver:mTabBarView
+    forKeyPath:@"arrangedObjects"
+    options:0
+    context:NULL
+  ] ;
 //--- Display the document contents
   OC_GGS_TextDisplayDescriptor * textDisplayDescriptor = [[OC_GGS_TextDisplayDescriptor alloc]
     initWithDelegateForSyntaxColoring:mSourceTextWithSyntaxColoring
+    sourcePath:self.fileURL.path
   ] ;
   [mSourceDisplayArrayController addObject:textDisplayDescriptor] ;
   [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:textDisplayDescriptor]] ;
+//---
+  [mTabBarView setTarget:self] ;
+  [mTabBarView setRemoveSourceTabAction:@selector (removeSelectedSourceViewAction:)] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -393,6 +402,24 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
   }
   [mIssueTextView unbind:@"fontName"] ;
   [super removeWindowController:inWindowController] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) duplicateSelectedSourceViewAction: (id) inSender {
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
+  OC_GGS_TextDisplayDescriptor * textDisplayDescriptor = [[OC_GGS_TextDisplayDescriptor alloc]
+    initWithDelegateForSyntaxColoring:selectedObject.textSyntaxColoring
+    sourcePath:selectedObject.sourcePath
+  ] ;
+  [mSourceDisplayArrayController addObject:textDisplayDescriptor] ;
+  [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:textDisplayDescriptor]] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) removeSelectedSourceViewAction: (id) inSender {
+  [mSourceDisplayArrayController remove:inSender] ;
 }
 
 //---------------------------------------------------------------------------*

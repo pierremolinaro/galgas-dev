@@ -8,6 +8,12 @@
 
 #import <AppKit/AppKit.h>
 
-@interface PMTabBarView : NSView
+@interface PMTabBarView : NSView {
+  @private NSMutableArray * mButtonArray ;
+  @private SEL mRemoveSourceTabAction ;
+  @private id mTarget ;
+}
 
+- (void) setTarget: (id) inTarget ;
+- (void) setRemoveSourceTabAction: (SEL) inAction ;
 @end

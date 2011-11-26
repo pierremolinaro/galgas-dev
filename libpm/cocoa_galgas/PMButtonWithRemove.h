@@ -11,7 +11,11 @@
 @interface PMButtonWithRemove : NSButton {
   @private BOOL mMouseWithin ;
   @private BOOL mMouseDown ;
+  @private BOOL mDisplayRemoveImage ;
   @private NSTrackingArea * mTrackingArea ;
+  @private SEL mRemoveAction ;
 }
 
+- (void) setDisplayRemoveImage: (BOOL) inDisplay ;
+- (void) setRemoveAction: (SEL) inRemoveAction ;
 @end
