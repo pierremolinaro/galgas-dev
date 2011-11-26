@@ -972,13 +972,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     const NSRange selectedRange = [self selectedRange] ;
     NSString * s = [[self textStorage] string] ;
     NSRange currentLineRange = [s lineRangeForRange:selectedRange] ;
-    /* NSLog (@"currentLineRange: %u, %u", currentLineRange.location, currentLineRange.length) ;
-    NSString * ss = [s substringWithRange:currentLineRange] ;
-    UInt32 i ;
-    for (i=0 ; i<[ss length] ; i++) {
-      const unichar uc = [ss characterAtIndex:i] ;
-      NSLog (@" 0x%02X", uc) ;
-    } */
   //--- Find the number of spaces at the beginning of the line
     if (currentLineRange.length > selectedRange.location - currentLineRange.location) {
       currentLineRange.length = selectedRange.location - currentLineRange.location ;

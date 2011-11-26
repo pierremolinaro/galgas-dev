@@ -32,6 +32,7 @@
 @class OC_GGS_ErrorOrWarningDescriptor ;
 @class OC_GGS_TextSyntaxColoring ;
 @class PMTabBarView ;
+@class OC_GGS_SourceScrollView ;
 
 //---------------------------------------------------------------------------*
 
@@ -76,9 +77,15 @@
   @private NSArrayController * mSourceDisplayArrayController ;
 
 //---
-  @private IBOutlet NSTextView * mSourceTextView ;
+  @private IBOutlet OC_GGS_SourceScrollView * mSourceScrollView ;
   @private IBOutlet PMTabBarView * mTabBarView ;
+
+//--- "Goto Line" sheet
+  @private IBOutlet NSWindow * mGotoWindow ;
+  @private IBOutlet NSTextField * mGotoLineTextField ;
 }
+
+- (IBAction) actionGotoLine: (id) inSender ;
 
 - (IBAction) duplicateSelectedSourceViewAction: (id) inSender ;
 
