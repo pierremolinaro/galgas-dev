@@ -103,34 +103,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   }*/
 }
 
-//---------------------------------------------------------------------------*
-
-- (void) setGalgasDocument: (OC_GGS_Document *) inDocument {
-  //NSLog (@"inDocument %@", inDocument) ;
-
-  mDocument = inDocument ;
-
-  OC_GGS_DelegateForSyntaxColoring * delegateForSyntaxColoring = [mDocument delegateForSyntaxColoring] ;
-  [self setDelegate:delegateForSyntaxColoring] ; // So that undoManagerForTextView: is called
-
-  NSLayoutManager * lm = [self layoutManager] ;
-//  NSLog (@"delegateForSyntaxColoring %@, lm %p", delegateForSyntaxColoring, lm) ;
-  NSTextStorage * textStorage = [lm textStorage] ;
-  [textStorage removeLayoutManager:lm] ;
-  NSTextStorage * ts = [delegateForSyntaxColoring textStorage] ;
-  if (ts != nil) {
-    [ts addLayoutManager:lm] ;
-  }else{
-    [mDefaultTextStorage addLayoutManager:lm] ;
-  }
-
-  [self setEditable:mDocument != nil] ;
-  [self setSelectable:mDocument != nil] ;
-  if (mDocument == nil) {
-    [self setSelectedRange:NSMakeRange (0, 0)] ;
-  }
-//  [self setRulersVisible:mDocument != nil] ;
-}
 
 //---------------------------------------------------------------------------*
 
@@ -146,154 +118,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     ] ;
   }
   return b ;
-}
-
-//---------------------------------------------------------------------------*
-
-#pragma mark Block Comment
-
-//---------------------------------------------------------------------------*
-//                                                                           *
-//           C O M M E N T R A N G E                                         *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-- (void) commentRange: (NSValue *) inRangeValue {
-  const NSRange selectedRange = [inRangeValue rangeValue] ;
-  NSDictionary * attributeDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-    [self font], NSFontAttributeName,
-    nil
-  ] ;
-  OC_Lexique * tokenizer = [mDocument tokenizer] ;
-  NSAttributedString * blockCommentString = [[[NSAttributedString alloc] initWithString:[tokenizer blockComment] attributes:attributeDictionary] autorelease] ;
-  //NSLog (@"selectedRange [%d, %d]", selectedRange.location, selectedRange.length) ;
-  NSMutableAttributedString * mutableSourceString = [self textStorage] ;
-  NSString * sourceString = [mutableSourceString string] ;
-  const NSRange lineRange = [sourceString lineRangeForRange:selectedRange] ;
-  //NSLog (@"lineRange [%d, %d]", lineRange.location, lineRange.length) ;
-  NSInteger insertedCharsCount = 0 ;
-  NSRange currentLineRange = [sourceString lineRangeForRange:NSMakeRange (lineRange.location + lineRange.length - 1, 1)] ;
-  do {
-    //NSLog (@"currentLineRange [%d, %d]", currentLineRange.location, currentLineRange.length) ;
-    [mutableSourceString insertAttributedString:blockCommentString atIndex:currentLineRange.location] ;
-    insertedCharsCount += [blockCommentString length] ;
-    if (currentLineRange.location > 0) {
-      currentLineRange = [sourceString lineRangeForRange:NSMakeRange (currentLineRange.location - 1, 1)] ;
-    }
-  }while ((currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location)) ;
-//--- Update selected range
-  const NSRange newSelectedRange = NSMakeRange (selectedRange.location, selectedRange.length + insertedCharsCount) ;
-  [self setSelectedRange:newSelectedRange] ;
-//--- Register undo
-  NSUndoManager * um = [self undoManager] ;
-  [um 
-    registerUndoWithTarget:self
-    selector:@selector (uncommentRange:)
-    object:[NSValue valueWithRange:newSelectedRange]
-  ] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) commentAction: (id) inSender {
-  const NSRange selectedRange = [self selectedRange] ;
-  [self commentRange:[NSValue valueWithRange:selectedRange]] ;
-}
-
-//---------------------------------------------------------------------------*
-//                                                                           *
-//                       U N C O M M E N T R A N G E                         *
-//                                                                           *
-// Cette méthode a plusieurs rôles :                                         *
-//   - supprimer les marques de commentaires des lignes concernées par la    *
-//     sélection, uniquement quand ces le commentaire commence une ligne ;   *
-//   - ajuster la sélection en conséquence ; en effet, dès que la méthode    *
-//     replaceCharactersInRange:withString: est appelée, Cocoa ramène la     *
-//     sélection à un point d'insertion. La sélection est ajustée et         *
-//     maintenue dans la variable finalSelectedRange.                        *
-//                                                                           *
-// Le plus difficile est l'ajustement de la sélection. Pour cela, on calcule:*
-//   - le nombre beforeSelectionCharacterCount de caractères du commentaire  *
-//     supprimé qui sont avant la sélection ; si ce nombre est > 0, on       *
-//     le début de la sélection du min entre ce nombre et le nombre de carac-*
-//     tères du commentaire ;                                                *
-//   - le nombre withinSelectionCharacterCount de caractères du commentaire  *
-//     supprimé qui sont à l'intérieur de la sélection ; si ce nombre est    *
-//     > 0, on le retranche de la longueur de la sélection.                  *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-// #define DEBUG_UNCOMMENTRANGE
-
-//---------------------------------------------------------------------------*
-
-- (void) uncommentRange: (NSValue *) inRangeValue {
-//--- Get range to be examined
-  const NSRange initialSelectedRange = [inRangeValue rangeValue] ;
-//--- Block comment string
-  OC_Lexique * tokenizer = [mDocument tokenizer] ;
-  NSString * blockCommentString = [tokenizer blockComment] ;
-  const NSUInteger blockCommentLength = [blockCommentString length] ;
-//--- Get source string
-  NSMutableAttributedString * mutableSourceString = [self textStorage] ;
-  NSString * sourceString = [mutableSourceString string] ;
-  #ifdef DEBUG_UNCOMMENTRANGE
-    NSLog (@"blockCommentString '%@', text length %u", blockCommentString, [sourceString length]) ;
-    NSLog (@"initialSelectedRange [%d, %d]", initialSelectedRange.location, initialSelectedRange.length) ;
-  #endif
-//--- Final selection range
-  NSRange finalSelectedRange = initialSelectedRange ;
-//--- Get line range that is affected by the operation
-  const NSRange lineRange = [sourceString lineRangeForRange:initialSelectedRange] ;
-  #ifdef DEBUG_UNCOMMENTRANGE
-    NSLog (@"lineRange [%d, %d]", lineRange.location, lineRange.length) ;
-  #endif
-  NSRange currentLineRange = [sourceString lineRangeForRange:NSMakeRange (lineRange.location + lineRange.length - 1, 1)] ;
-  do {
-    #ifdef DEBUG_UNCOMMENTRANGE
-      NSLog (@"currentLineRange [%d, %d]", currentLineRange.location, currentLineRange.length) ;
-    #endif
-    NSString * lineString = [sourceString substringWithRange:currentLineRange] ;
-    if ([lineString compare:blockCommentString options:0 range:NSMakeRange (0, blockCommentLength)] == NSOrderedSame) {
-      [mutableSourceString replaceCharactersInRange:NSMakeRange (currentLineRange.location, blockCommentLength) withString:@""] ;
-    //--- Examen du nombre de caractères à l'intérieur de la sélection
-      const NSInteger withinSelectionCharacterCount = 
-        imin (currentLineRange.location + blockCommentLength, finalSelectedRange.location + finalSelectedRange.length)
-      -
-        imax (currentLineRange.location, finalSelectedRange.location) ;
-      if (withinSelectionCharacterCount > 0) {
-        finalSelectedRange.length -= withinSelectionCharacterCount ;
-      }
-    //--- Examen du nombre de caractères avant la sélection
-      const NSInteger beforeSelectionCharacterCount = finalSelectedRange.location - currentLineRange.location ;
-      if (beforeSelectionCharacterCount > 0) {
-        finalSelectedRange.location -= imin (blockCommentLength, beforeSelectionCharacterCount) ;
-      }
-      #ifdef DEBUG_UNCOMMENTRANGE
-        NSLog (@"withinSelectionCharacterCount %d, beforeSelectionCharacterCount %d", withinSelectionCharacterCount, beforeSelectionCharacterCount) ;
-        NSLog (@"finalSelectedRange [%d, %d]", finalSelectedRange.location, finalSelectedRange.length) ;
-      #endif
-    }
-    if (currentLineRange.location > 0) {
-      currentLineRange = [sourceString lineRangeForRange:NSMakeRange (currentLineRange.location - 1, 1)] ;
-    }
-  }while ((currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location)) ;
-//--- Update selected range
-  [self setSelectedRange:finalSelectedRange] ;
-//--- Register undo
-  NSUndoManager * um = [self undoManager] ;
-  [um 
-    registerUndoWithTarget:self
-    selector:@selector (commentRange:)
-    object:[NSValue valueWithRange:finalSelectedRange]
-  ] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) uncommentAction: (id) inSender {
-  const NSRange selectedRange = [self selectedRange] ;
-  [self uncommentRange:[NSValue valueWithRange:selectedRange]] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -402,50 +226,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 - (void) setKeyForSelectionInUserDefault: (NSString *) inKeyForSelectionInUserDefault {
   mKeyForSelectionInUserDefault = inKeyForSelectionInUserDefault.copy ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) updateTextLineAndColumnSelectionLocation: (id) inUnusedArgument {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_TextView <updateTextLineAndColumnSelectionLocation> (first responder %@)", ([[self window] firstResponder] == self) ? @"yes" : @"no") ;
-  #endif
-  if ([[self window] firstResponder] == self) {
-    const NSRange newSelection = [self selectedRange] ;
-    // NSLog (@"newSelection: %u, %u", newSelection.location, newSelection.length) ;
-    PMUInt32 line = 1 ;
-    NSUInteger idx = 0 ;
-    NSUInteger lastLineStart = 0 ;
-    const NSUInteger lastScanningIndex = imin (newSelection.location, [[[self textStorage] string] length]) ;
-    NSUInteger contentsEndIndex = 0 ;
-    do{
-      [[[self textStorage] string]
-        getLineStart: & lastLineStart
-        end: & idx
-        contentsEnd:& contentsEndIndex
-        forRange:NSMakeRange (idx, 0)
-      ] ;
-      line += lastScanningIndex > contentsEndIndex ;
-    }while (lastScanningIndex > contentsEndIndex) ;
-    const NSUInteger column = newSelection.location - lastLineStart + 1 ;
-    NSString * s = [NSString stringWithFormat: @"Line %u:%u", line, column] ;
-    [mCurrentLineButton setTitle: s] ;
-    [mGotoLineTextField setIntValue:line] ;
-  //--- Registering in user defaults
-    if (mKeyForSelectionInUserDefault != nil) {
-      NSWindow * docWindow = [self window] ;
-      NSString * key = [NSString stringWithFormat: @"%@:%@", mKeyForSelectionInUserDefault, [docWindow title]] ;
-      NSString * stringForUserDefauls = NSStringFromRange ([self selectedRange]) ;
-      #ifdef DEBUG_MESSAGES
-        NSLog (@"Register '%@' for key '%@' in user defaults", stringForUserDefauls, key) ;
-      #endif
-      [[NSUserDefaults standardUserDefaults] setObject:stringForUserDefauls forKey:key] ;
-    }
-    [mDocument selectEntryPopUpForSelectionStart:newSelection.location] ;
-  }
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_TextView <updateTextLineAndColumnSelectionLocation> DONE") ;
-  #endif
 }
 
 //---------------------------------------------------------------------------*
@@ -740,15 +520,9 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"OC_GGS_TextView <validateMenuItem:>") ;
   #endif
-  OC_Lexique * tokenizer = [mDocument tokenizer] ;
-  NSString * blockCommentString = [tokenizer blockComment] ;
   BOOL validate ;
   // NSLog (@"blockComment () '%@'", blockComment ()) ;
-  if ([inItem action] == @selector (commentAction:)) {
-    validate = [blockCommentString length] > 0 ;
-  }else if ([inItem action] == @selector (uncommentAction:)) {
-    validate = [blockCommentString length] > 0 ;
-  }else if ([inItem action] == @selector (shiftRightAction:)) {
+  if ([inItem action] == @selector (shiftRightAction:)) {
     validate = YES ;
   }else if ([inItem action] == @selector (shiftLeftAction:)) {
     validate = YES ;
@@ -756,19 +530,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     validate = [super validateMenuItem:inItem] ;
   }
   return validate ;
-}
-
-//---------------------------------------------------------------------------*
-
-#pragma mark Text Macros
-
-//---------------------------------------------------------------------------*
-
-- (void) actionInsertTextMacro: (NSMenuItem *) inSender {
-  // NSLog (@"sender %@, tag %d", inSender, [inSender tag]) ;
-  OC_Lexique * tokenizer = [mDocument tokenizer] ;
-  NSString * macroString = [tokenizer textMacroContentAtIndex:[inSender tag]] ;
-  [self insertText:macroString] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -913,7 +674,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
-- (void) mouseDown:(NSEvent *) inEvent {
+/* - (void) mouseDown:(NSEvent *) inEvent {
   if (([inEvent modifierFlags] & NSCommandKeyMask) != 0) {
     const NSPoint local_point = [self convertPoint:[inEvent locationInWindow] fromView:nil] ;
     const NSUInteger characterIndex = [self characterIndexForInsertionAtPoint:local_point] ;
@@ -924,10 +685,9 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     OC_GGS_DelegateForSyntaxColoring * dsc = [mDocument delegateForSyntaxColoring] ;
     NSArray * tokenArray = [dsc tokenArray] ;
     BOOL hasAtomicSelection = YES ;
-    NSUInteger i ;
     BOOL found = NO ;
     NSRange allTokenCharacterRange = {0, 0} ;
-    for (i=0 ; (i<[tokenArray count]) && ! found ; i++) {
+    for (NSUInteger i=0 ; (i<[tokenArray count]) && ! found ; i++) {
       OC_Token * token = [tokenArray objectAtIndex:i HERE] ;
       allTokenCharacterRange = [token range] ;
       found = ((allTokenCharacterRange.location + allTokenCharacterRange.length) > r.location) && (allTokenCharacterRange.location <= r.location) ;
@@ -951,7 +711,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   }else{
     [super mouseDown:inEvent] ;
   }  
-}
+}*/
 
 //---------------------------------------------------------------------------*
 
@@ -996,7 +756,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
-- (NSRange) selectionRangeForProposedRange:(NSRange) inProposedSelRange
+/*- (NSRange) selectionRangeForProposedRange:(NSRange) inProposedSelRange
             granularity: (NSSelectionGranularity) inGranularity {
 
   NSRange result = inProposedSelRange ;
@@ -1031,7 +791,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     result = [super selectionRangeForProposedRange:inProposedSelRange granularity:inGranularity] ;
   }
   return result ;
-}
+}*/
 
 //---------------------------------------------------------------------------*
 

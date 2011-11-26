@@ -13,15 +13,13 @@
 
 @interface OC_GGS_TextDisplayDescriptor : NSObject <NSTextViewDelegate> {
 
-  @private NSString * mSourcePath ;
   @private OC_GGS_TextSyntaxColoring * mTextSyntaxColoring ;
   @private NSTextView * mTextView ;
   @private NSUInteger mTextSelectionStart ;
 
 }
 
-- (OC_GGS_TextDisplayDescriptor *) initWithDelegateForSyntaxColoring: (OC_GGS_TextSyntaxColoring *) inDelegate
-                                   sourcePath : (NSString *) inSourcePath ;
+- (OC_GGS_TextDisplayDescriptor *) initWithDelegateForSyntaxColoring: (OC_GGS_TextSyntaxColoring *) inDelegate ;
 
 - (void) setSyntaxColoringDelegate: (OC_GGS_TextSyntaxColoring *) inDelegate ;
 
@@ -31,12 +29,13 @@
 
 - (NSTextView *) textView ;
 
-- (void) setSourcePath:(NSString *) inSourcePath ;
-
 - (NSMenu *) menuForEntryPopUpButton ;
 
 - (NSUInteger) textSelectionStart ;
 
 - (void) gotoLine: (NSUInteger) inLine ;
+
+- (void) commentSelection ;
+- (void) uncommentSelection ;
 
 @end

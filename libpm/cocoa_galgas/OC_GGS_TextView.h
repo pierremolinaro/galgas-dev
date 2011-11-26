@@ -41,15 +41,11 @@
   @private NSTextStorage * mDefaultTextStorage ;
 }
 
-- (void) setGalgasDocument: (OC_GGS_Document *) inDocument ;
-
 - (void) setCurrentLineButton: (NSButton *) inCurrentLineButton ;
 
 - (void) setKeyForSelectionInUserDefault: (NSString *) inKeyForSelectionInUserDefault ;
 
 - (void) scrollToSelectionDefinedInUserDefaults: (NSString *) inWindowTitle ;
-
-- (void) updateTextLineAndColumnSelectionLocation: (id) inUnusedArgument ;
 @end
 
 //---------------------------------------------------------------------------*

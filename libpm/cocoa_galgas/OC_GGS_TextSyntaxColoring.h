@@ -12,6 +12,7 @@
 @class OC_Lexique ;
 
 @interface OC_GGS_TextSyntaxColoring : NSObject {
+  @private NSString * mSourcePath ;
   @private NSTextStorage * mSourceTextStorage ;
   @private NSMutableSet * mTextDisplayDescriptorSet ; // Set of OC_GGS_TextDisplayDescriptor
   @private OC_Lexique * mTokenizer ;
@@ -29,19 +30,30 @@
 }
 
 - (OC_GGS_TextSyntaxColoring *) initWithSourceString: (NSString *) inSource
-                                tokenizer: (OC_Lexique *) inTokenizer ;
+                                tokenizer: (OC_Lexique *) inTokenizer
+                                sourcePath: (NSString *) inPath ;
 
 - (void) addTextDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor ;
 - (void) removeTextDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor ;
 
 - (NSTextStorage *) textStorage ;
 - (NSUndoManager *) undoManager ;
+- (OC_Lexique *) tokenizer ;
+- (NSString *) sourcePath ;
 
 - (NSString *) sourceString ;
+- (void) replaceSourceStringWithString: (NSString *) inString ;
 
 - (void) updateSyntaxColoringForEditedRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength ;
 
 - (NSMenu *) menuForEntryPopUpButton ;
+
+- (void) breakUndoCoalescing ;
+
+- (NSRange) uncommentRange: (NSRange) initialSelectedRange ;
+- (NSRange) commentRange: (NSRange) initialSelectedRange ;
+
+- (NSMenu *) indexMenuForRange: (NSRange) inRange ;
 
 @end

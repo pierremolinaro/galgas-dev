@@ -651,9 +651,9 @@ static inline double floatMax (const double a, const double b) { return (a > b) 
   #ifdef DEBUG_MESSAGES
     NSLog (@"OC_GGS_TextView <textViewDidChangeSelection:>") ;
   #endif
-  OC_GGS_TextView * textView = [inNotification object] ;
+//  OC_GGS_TextView * textView = [inNotification object] ;
   // NSLog (@"%@", textView) ;
-  [textView updateTextLineAndColumnSelectionLocation:nil] ;
+//  [textView updateTextLineAndColumnSelectionLocation:nil] ;
   
 //  NSRange editedRange = [mTextStorage editedRange] ;
 //  NSInteger changeInLength = [mTextStorage changeInLength] ;

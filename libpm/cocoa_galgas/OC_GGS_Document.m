@@ -72,135 +72,14 @@
 
 //---------------------------------------------------------------------------*
 
-- (OC_GGS_DelegateForSyntaxColoring *) delegateForSyntaxColoring {
-  return mDelegateForSyntaxColoring ;
+- (NSString *) sourceStringForGlobalSearch {
+  return mSourceTextWithSyntaxColoring.sourceString ;
 }
 
 //---------------------------------------------------------------------------*
 
-- (OC_Lexique *) tokenizer {
-  return mTokenizer ;
-}
-
-//---------------------------------------------------------------------------*
-//                                                                           *
-//       A D D    H O R I Z O N T A L    S C R O L L B A R                   *
-//              T O    T E X T    V I E W                                    *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <addHorizontalScrollBarToTextView>") ;
-  #endif
-  NSTextView * textView = [inScrollView documentView] ;
-  const float LargeNumberForText = 1.0e7f ;
-  NSTextContainer * textContainer = [[[textView layoutManager] textContainers] objectAtIndex: 0 HERE] ;
-  [inScrollView setHasHorizontalScroller:YES] ;
-  [textContainer setWidthTracksTextView:YES] ;
-  [inScrollView setAutoresizingMask: (NSViewWidthSizable | NSViewHeightSizable)] ;
-  [[inScrollView contentView] setAutoresizesSubviews:YES];
-  [textContainer setContainerSize: NSMakeSize (LargeNumberForText, LargeNumberForText)] ;
-  [textContainer setWidthTracksTextView: NO] ;
-  [textView setMaxSize: NSMakeSize (LargeNumberForText, LargeNumberForText)] ;
-  [textView setHorizontallyResizable: YES];
-  [textView setAutoresizingMask: NSViewNotSizable] ;
-  [inScrollView setHasHorizontalScroller:YES] ;
-}
-
-//---------------------------------------------------------------------------*
-
-#pragma mark Pop up Button for entries
-
-//---------------------------------------------------------------------------*
-
-- (void) setMenuForPopUpButton {
-  NSMenu * menu = [mTokenizer menuForEntryPopUpButton] ;
-  const NSUInteger n = [menu numberOfItems] ;
-  if (n == 0) {
-    [menu
-      addItemWithTitle:@"No entry"
-      action:NULL
-      keyEquivalent:@""
-    ] ;
-    [mEntryListPopUpButton setEnabled:NO] ;
-  }else{
-    for (NSUInteger i=0 ; i<n ; i++) {
-      NSMenuItem * item = [menu itemAtIndex:i] ;
-      [item setTarget:self] ;
-      [item setAction:@selector (gotoEntry:)] ;
-    }
-    [mEntryListPopUpButton setEnabled:YES] ;
-  }
-  [mEntryListPopUpButton setMenu:menu] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) setBindingsForEntryPopUpButton {
-  [mTokenizer
-    addObserver:self
-    forKeyPath:@"menuForEntryPopUpButton"
-    options:0
-    context:NULL
-  ] ;
-  [self setMenuForPopUpButton] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) selectEntryPopUpForSelectionStart: (NSInteger) inSelectionStart {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <selectEntryPopUpForSelectionStart:%d> POPUP ENABLED:%@", inSelectionStart, [mEntryListPopUpButton isEnabled] ? @"YES" : @"NO") ;
-  #endif
-  NSArray * menuItemArray = [mEntryListPopUpButton itemArray] ;
-  if ([mEntryListPopUpButton isEnabled]) {
-    NSInteger idx = NSNotFound ;
-    NSInteger i ;
-    const NSInteger n = [menuItemArray count] ;
-    for (i=n-1 ; (i>=0) && (idx == NSNotFound) ; i--) {
-      NSMenuItem * item = [menuItemArray objectAtIndex:i HERE] ;
-      const NSInteger startPoint = [item tag] ;
-      if (inSelectionStart >= startPoint) {
-        idx = i ;
-      }
-    }
-    if (idx == NSNotFound) {
-      [mEntryListPopUpButton selectItemAtIndex:0] ;
-    }else{
-      [mEntryListPopUpButton selectItemAtIndex:idx] ;
-    }
-  }
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <selectEntryPopUpForSelectionStart:> DONE") ;
-  #endif
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) gotoEntry: (id) inSender {
-  const NSRange range = {[inSender tag], 0} ;
-  [mTextView setSelectedRange:range] ;
-  [mTextView scrollRangeToVisible:range] ;
-}
-
-//---------------------------------------------------------------------------*
-
-#pragma mark Text Colors, Fonts, Ruler 
-
-//---------------------------------------------------------------------------*
-//                                                                           *
-//       C H A N G E    T E X T    R U L E R    V I S I B I L I T Y          *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-- (void) changeTextRulerVisible: (BOOL) inVisible forRuleThickness: (double) inThickness {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"changeTextRulerVisible") ;
-  #endif
-  [mTextScrollView setRulersVisible:inVisible] ;
-  NSRulerView * verticalRulerView = [mTextScrollView verticalRulerView] ;
-  [verticalRulerView setRuleThickness:inThickness] ;
+- (void) replaceSourceStringWithString: (NSString *) inString {
+  [mSourceTextWithSyntaxColoring replaceSourceStringWithString:inString] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -267,12 +146,6 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 
   NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;
 
-//--- 
-  [mTextView setCurrentLineButton:mCurrentLineButton] ;
-
-//--- For lower text view, use text storage of upper text view
-  [mTextView setGalgasDocument:self] ;
-
 //--- Bindings
   [mIssueTextView
     bind:@"font"
@@ -301,29 +174,6 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
     options:nil
   ] ;
 
-//--- Setting a horizontal scrollbar to text views
-  addHorizontalScrollBarToTextView (mTextScrollView) ;
-
-//--- The text views do not use font panel
-  [mTextView setUsesFontPanel: NO] ;
-
-//--- Rule thickness
-  const float ruleThickness = [gCocoaGalgasPreferencesController ruleThickness] ;
-
-//--- Define vertical ruler for text view in main window
-  [mTextScrollView setHasVerticalRuler: YES];
-
-  //[NSScrollView setRulerViewClass:[OC_GGS_RulerViewForTextView class]] ;
-  OC_GGS_RulerViewForTextView * ruler = [[OC_GGS_RulerViewForTextView alloc] init] ;
-  [mTextScrollView setVerticalRulerView:ruler] ;
-  [ruler setRuleThickness:ruleThickness] ;
-  [mTextScrollView setRulersVisible:[defaults boolForKey:GGS_show_ruler]] ;
-
-//--- NO continuous spell checking (IB fails to set this)
-  [mTextView setContinuousSpellCheckingEnabled: NO] ;
-
-  [mTextView scrollToSelectionDefinedInUserDefaults:[self lastComponentOfFileName]] ;
-
 //--- Set up windows location
   NSString * windowTitle = [self lastComponentOfFileName] ;
   NSString * key = [NSString stringWithFormat: @"frame_for_source:%@", windowTitle] ;
@@ -347,9 +197,6 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 // Note : use [self lastComponentOfFileName] instead of [window title], because window title may not set at this point
   NSString * keyPath = [NSString stringWithFormat:@"values.issue-split-fraction:%@", [self lastComponentOfFileName]] ;
   [mIssueSplitView setAutosaveName:keyPath] ;
-
-//--- Entry PopUp Button
-  [self setBindingsForEntryPopUpButton] ;
 
 //--- Source file encoding
   [mSourceEncodingTextField
@@ -396,7 +243,6 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 //--- Display the document contents
   OC_GGS_TextDisplayDescriptor * textDisplayDescriptor = [[OC_GGS_TextDisplayDescriptor alloc]
     initWithDelegateForSyntaxColoring:mSourceTextWithSyntaxColoring
-    sourcePath:self.fileURL.path
   ] ;
   [mSourceDisplayArrayController addObject:textDisplayDescriptor] ;
   [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:textDisplayDescriptor]] ;
@@ -426,7 +272,6 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
   OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
   OC_GGS_TextDisplayDescriptor * textDisplayDescriptor = [[OC_GGS_TextDisplayDescriptor alloc]
     initWithDelegateForSyntaxColoring:selectedObject.textSyntaxColoring
-    sourcePath:selectedObject.sourcePath
   ] ;
   [mSourceDisplayArrayController addObject:textDisplayDescriptor] ;
   [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:textDisplayDescriptor]] ;
@@ -476,6 +321,20 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
     OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
     [selectedObject gotoLine:selectedLine] ;
   }
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) actionComment: (id) sender {
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
+  [selectedObject commentSelection] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) actionUncomment: (id) sender {
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
+  [selectedObject uncommentSelection] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -603,7 +462,8 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 //---------------------------------------------------------------------------*
 
 - (void) printDocument: (id) sender {
-  [mTextView print:sender] ;
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
+  [selectedObject.textView print:sender] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -685,8 +545,6 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
     didEndSelector:NULL
     contextInfo:NULL
   ] ;
-//--- Save current selections
-  const NSRange currentSelection = [mTextView selectedRange] ;
 //--- Read new content
   NSString * source = [[NSString alloc]
     initWithContentsOfURL:[self fileURL]
@@ -694,11 +552,8 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
     error:nil
   ] ;
   if (source != nil) {
-    [mDelegateForSyntaxColoring setSourceString:source] ;
+//    [mDelegateForSyntaxColoring setSourceString:source] ;
   }
-//--- 
-  [mTextView setSelectedRange:currentSelection] ;
-  [mTextView scrollRangeToVisible:currentSelection] ;
 //---
   [mUpdateFromFileSystemPanel orderOut:self] ;
   [NSApp endSheet:mUpdateFromFileSystemPanel] ;   
@@ -789,7 +644,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
   #ifdef DEBUG_MESSAGES
     NSLog (@"OC_GGS_Document <writeToURL:ofType:error:>") ;
   #endif
-  [mDelegateForSyntaxColoring breakUndoCoalescing] ;
+  [mSourceTextWithSyntaxColoring breakUndoCoalescing] ;
   NSString * string = [mSourceTextWithSyntaxColoring sourceString] ;
   return [string
     writeToURL:inAbsoluteURL
@@ -992,7 +847,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
     NSLog (@"OC_GGS_Document <performCharacterConversion>") ;
   #endif
 //--- Get source string
-  NSString * source = [mDelegateForSyntaxColoring sourceString] ;
+  NSString * source = [mSourceTextWithSyntaxColoring sourceString] ;
 //--- Search for "\r" ?
   BOOL needsConversionForCR = NO ;
   if ([[NSUserDefaults standardUserDefaults] boolForKey:@"PMConvert_CRLF_And_CR_To_LF_AtStartUp"]) {
@@ -1050,7 +905,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
     }
   //--- Display sheet if conversion done
     if ([s length] > 0) {
-      [mDelegateForSyntaxColoring setSourceString:source] ;
+      [mSourceTextWithSyntaxColoring replaceSourceStringWithString:source] ;
       NSAlert * alert = [NSAlert 
         alertWithMessageText:@"Source String Conversion"
         defaultButton:@"Ok"
@@ -1125,14 +980,8 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
     }
   }
   [self setSourceFileEncoding:fileEncoding] ;
-  mTokenizer = tokenizerForExtension ([[inAbsoluteURL absoluteString] pathExtension]) ;
 //--- Delegate for syntax coloring
   if (source != nil) {
-    mDelegateForSyntaxColoring = [[OC_GGS_DelegateForSyntaxColoring alloc]
-      initWithDocument:self
-      withSourceString:source
-      withTokenizer:mTokenizer
-    ] ;
     [[NSRunLoop currentRunLoop]
       performSelector:@selector (performCharacterConversion)
       target:self
@@ -1145,39 +994,10 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
   mSourceTextWithSyntaxColoring = [[OC_GGS_TextSyntaxColoring alloc]
     initWithSourceString:source
     tokenizer:tokenizerForExtension ([[inAbsoluteURL absoluteString] pathExtension])
+    sourcePath:self.fileURL.path
   ] ;
 //---
   return source != nil ;
-}
-
-//---------------------------------------------------------------------------*
-
-#pragma mark Document Revert
-
-//---------------------------------------------------------------------------*
-//                                                                           *
-//    R E A D    F R O M    F I L E                                          *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-- (BOOL) revertToContentsOfURL: (NSURL *) inFileURL
-         ofType: (NSString *) inType
-         error: (NSError **) outError {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-//--- Save current selection
-  const NSRange currentSelection = [mTextView selectedRange] ;
-//------------ Perform revert (calls loadDataRepresentation:ofType: for loading file)
-  const BOOL revertDone = [super revertToContentsOfURL:inFileURL ofType:inType error:outError] ;
-//--- 
-  if (revertDone) {
-    [self awakeFromNib] ;
-    [mTextView setSelectedRange:currentSelection] ;
-    [mTextView scrollRangeToVisible:currentSelection] ;
-  }
-//---
-  return revertDone ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1251,12 +1071,6 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 //                                                                           *
 //    C O M P I L E                                                          *
 //                                                                           *
-//---------------------------------------------------------------------------*
-
-- (void) notifyIssues {
-   [mTextView setNeedsDisplay:YES] ;
- }
-
 //---------------------------------------------------------------------------*
 
 - (void) terminateTask {
@@ -1385,7 +1199,6 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
       [[taskOutput fileHandleForReading] readInBackgroundAndNotify] ;
     //--- Start task
       [mTask launch] ;
-      [mTextView setNeedsDisplay:YES] ; // For Removing issue rect display
     }
   }
   #ifdef DEBUG_MESSAGES
@@ -1437,278 +1250,6 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
     validate = [super validateMenuItem:inItem] ;
   }
   return validate ;
-}
-
-//---------------------------------------------------------------------------*
-
-#pragma mark Observe Value For Key Path
-
-//---------------------------------------------------------------------------*
-
-- (void) observeValueForKeyPath: (NSString *) inKeyPath
-         ofObject: (id) inObject
-         change: (NSDictionary *) inChangeDictionary
-         context: (void *) inContext {
-  if ((inObject == mTokenizer) && [inKeyPath isEqualToString:@"menuForEntryPopUpButton"]) {
-    [self setMenuForPopUpButton] ;
-  }else{
-    [super
-      observeValueForKeyPath:inKeyPath
-      ofObject:inObject
-      change:inChangeDictionary
-      context:inContext
-    ] ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-#pragma mark Index Menu
-
-//---------------------------------------------------------------------------*
-
-- (NSSet *) handledExtensions {
-  NSMutableSet * result = [NSMutableSet new] ;
-//--- Get Info.plist file
-  NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary] ;
-  // NSLog (@"infoDictionary '%@'", infoDictionary) ;
-  NSArray * allDocumentTypes = [infoDictionary objectForKey:@"CFBundleDocumentTypes"] ;
-  // NSLog (@"allDocumentTypes '%@'", allDocumentTypes) ;
-  unsigned i ;
-  for (i=0 ; i<[allDocumentTypes count] ; i++) {
-    NSDictionary * docTypeDict = [allDocumentTypes objectAtIndex:i HERE] ;
-    // NSLog (@"docTypeDict '%@'", docTypeDict) ;
-    NSArray * documentTypeExtensions = [docTypeDict objectForKey:@"CFBundleTypeExtensions"] ;
-    // NSLog (@"documentTypeExtensions '%@'", documentTypeExtensions) ;
-    [result addObjectsFromArray:documentTypeExtensions] ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) parseSourceFileForBuildingIndexFile: (NSString *) inSourceFileFullPath {
-  NSString * compilerToolPath = [gCocoaGalgasPreferencesController compilerToolPath] ;
-//--- Command line tool does actually exist ? (First argument is not "?")
-  if (! [compilerToolPath isEqualToString:@"?"]) {
-  //--- Build argument array
-    NSMutableArray * arguments = [NSMutableArray new] ;
-    [arguments addObject:inSourceFileFullPath] ;
-    [arguments addObject:@"--perform-indexing"] ;
-  //--- Create task
-    NSTask * task = [[NSTask alloc] init] ;
-    [task setLaunchPath:compilerToolPath] ;
-    [task setArguments:arguments] ;
-    // NSLog (@"'%@' %@", [task launchPath], arguments) ;
-  //--- Start task
-    [task launch] ;
-  //--- Wait the task is completed
-    [task waitUntilExit] ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-- (BOOL) sourceFile:(NSString *) inFile1
-         newerThanFile: (NSString *) inFile2 {
-  NSFileManager * fm = [[NSFileManager alloc] init] ;
-  NSDictionary * file1_dictionary = [fm attributesOfItemAtPath:inFile1 error:NULL] ;
-  NSDate * file1_modificationDate = [file1_dictionary fileModificationDate] ;
-  NSDictionary * file2_dictionary = [fm attributesOfItemAtPath:inFile2 error:NULL] ;
-  NSDate * file2_modificationDate = [file2_dictionary fileModificationDate] ;
-  return NSOrderedDescending == [file1_modificationDate compare:file2_modificationDate] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (NSArray *) buildDictionaryArray {
-//--- Source directory
-  NSString * sourceDirectory = self.fileURL.path.stringByDeletingLastPathComponent ;
-//--- index directory
-  NSString * indexingDirectory = [mTokenizer indexingDirectory] ;
-  if (([indexingDirectory length] == 0) || ([indexingDirectory characterAtIndex:0] != '/')) {
-    NSMutableString * s = [NSMutableString new] ;
-    [s appendString:sourceDirectory] ;
-    [s appendString:@"/"] ;
-    [s appendString:indexingDirectory] ;
-    indexingDirectory = s ;
-    // NSLog (@"indexingDirectory '%@'", indexingDirectory) ;
-  }
-//--- Handled extensions
-  NSSet * handledExtensions = [self handledExtensions] ;
-//--- All files in source directory
-  NSFileManager * fm = [[NSFileManager alloc] init] ;
-  NSArray * files = [fm contentsOfDirectoryAtPath:sourceDirectory error:NULL] ;
-  NSMutableArray * availableDictionaryPathArray = [NSMutableArray new] ;
-  NSOperationQueue * opq = [NSOperationQueue new] ;
-  for (NSString * filePath in files) {
-    NSString * fullFilePath = [NSString stringWithFormat:@"%@/%@", sourceDirectory, filePath] ;
-    if ([handledExtensions containsObject:[filePath pathExtension]]) {
-    //--- Index file path
-      NSString * indexFileFullPath = [NSString stringWithFormat:@"%@/%@.plist", indexingDirectory, [filePath lastPathComponent]] ;
-    //--- Parse source file ?
-      if (! [fm fileExistsAtPath:indexFileFullPath]) { // Parse source file
-        NSInvocationOperation * op = [[NSInvocationOperation alloc] 
-          initWithTarget:self
-          selector:@selector (parseSourceFileForBuildingIndexFile:)
-          object:fullFilePath
-        ] ;
-        [opq addOperation:op] ;
-        [availableDictionaryPathArray addObject:indexFileFullPath] ;
-      }else if ([self sourceFile:fullFilePath newerThanFile:indexFileFullPath]) {
-        [fm removeItemAtPath:indexFileFullPath error:NULL] ;
-        NSInvocationOperation * op = [[NSInvocationOperation alloc] 
-          initWithTarget:self
-          selector:@selector (parseSourceFileForBuildingIndexFile:)
-          object:fullFilePath
-        ] ;
-        [opq addOperation:op] ;
-        [availableDictionaryPathArray addObject:indexFileFullPath] ;
-      }else{
-        [availableDictionaryPathArray addObject:indexFileFullPath] ;
-      }
-    }
-  }
-//--- Wait operations are completed
-  [opq waitUntilAllOperationsAreFinished] ;
-//--- Parse available dictionaries
-  NSMutableArray * result = [NSMutableArray new] ;
-  for (NSString * fullPath in availableDictionaryPathArray) {
-    NSDictionary * dict = [NSDictionary dictionaryWithContentsOfFile:fullPath] ;
-    if (nil != dict) {
-      [result addObject:dict] ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) setSelectionRange: (NSRange) inRange {
-  [mTextView setSelectedRange:inRange] ;
-  [mTextView scrollRangeToVisible:inRange] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (NSString *) sourceString {
-  return [mTextView string] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) setSourceString: (NSString *) inString {
-  [mTextView setString:inString] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) indexingMenuAction: (id) inSender {
-  NSString * descriptor = [inSender representedObject] ;
-  // NSLog (@"descriptor '%@'", descriptor) ;
-  NSArray * components = [descriptor componentsSeparatedByString:@":"] ;
-  const NSUInteger tokenLocation = [[components objectAtIndex:2] integerValue] ;
-  const NSUInteger tokenLength = [[components objectAtIndex:3] integerValue] ;
-  NSString * filePath = [components objectAtIndex:4] ;
-  // NSLog (@"tokenLocation %u, tokenLength %u, filePath '%@'", tokenLocation, tokenLength, filePath) ;
-  OC_GGS_Document * doc = [[NSDocumentController sharedDocumentController]
-    openDocumentWithContentsOfURL:[NSURL fileURLWithPath:filePath]
-    display:YES
-    error:NULL
-  ] ;
-  [doc setSelectionRange:NSMakeRange (tokenLocation, tokenLength)] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) selectAllTokenCharacters: (id) inSender  {
-  const NSRange r = [[inSender representedObject] rangeValue] ;
-  [self setSelectionRange:r] ;
-}
-
-//---------------------------------------------------------------------------*
-
-static NSInteger numericSort (NSString * inOperand1,
-                              NSString * inOperand2,
-                              void * inUnusedContext) {
-  return [inOperand1 compare:inOperand2 options:NSNumericSearch] ;
-}
-
-//---------------------------------------------------------------------------*
-// Every plist list is a dictionary: the key is the indexed to token; the 
-// associated value is an NSArray of NSString that has the following format:
-//   "kind:line:locationIndex:length:sourceFileFullPath"
-
-//---------------------------------------------------------------------------*
-
-- (NSMenu *) indexMenuForToken: (NSString *) inToken
-             atomicSelection: (BOOL) inHasAtomicSelection
-             range: (NSRange) allTokenCharactersRange {
-//--- Save all sources
-  [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
-//---
-  NSArray * dictionaryArray = [self buildDictionaryArray] ;
-//--- Build array of all references of given token
-  NSMutableArray * allReferences = [NSMutableArray new] ;
-  for (NSDictionary * currentIndexDictionary in dictionaryArray) {
-    NSArray * references = [currentIndexDictionary objectForKey:inToken] ;
-    [allReferences addObjectsFromArray:references] ;
-  }
-//--- Build dictionary for the given token, organized by Kind
-  NSMutableDictionary * kindDictionary = [NSMutableDictionary new] ;
-  for (NSString * descriptor in allReferences) {
-    NSArray * components = [descriptor componentsSeparatedByString:@":"] ;
-    NSString * kind = [components objectAtIndex:0] ;
-    if ([kindDictionary objectForKey:kind] == NULL) {
-      [kindDictionary setObject:[NSMutableArray new] forKey:kind] ;
-    }
-    NSMutableArray * a = [kindDictionary objectForKey:kind] ;
-    [a addObject:descriptor] ;
-  }
-//--- Build Menu
-  NSMenu * menu = [[NSMenu alloc] initWithTitle:@""] ;
-  if (! inHasAtomicSelection) {
-    [menu addItemWithTitle:@"Select all token characters" action:@selector (selectAllTokenCharacters:) keyEquivalent:@""] ;
-    NSMenuItem * item = [menu itemAtIndex:[menu numberOfItems] - 1] ;
-    [item setTarget:self] ;
-    [item setRepresentedObject:[NSValue valueWithRange:allTokenCharactersRange]] ;
-    [menu addItem:[NSMenuItem separatorItem]] ;
-  }
-  if ([kindDictionary count] == 0) {
-    NSString * title = [NSString stringWithFormat:@"No index for '%@'", inToken] ;
-    [menu addItemWithTitle:title action:nil keyEquivalent:@""] ;
-  }else{
-    NSArray * indexingTitles = [mTokenizer indexingTitles] ;
-    NSArray * allKeys = [[kindDictionary allKeys] sortedArrayUsingFunction:numericSort context:NULL] ;
-    BOOL first = YES ;
-    for (NSString * kindObject in allKeys) {
-      if (first) {
-        first = NO ;
-      }else{
-        [menu addItem:[NSMenuItem separatorItem]] ;
-      }
-      const NSUInteger kind = [kindObject integerValue] ;
-      NSArray * references = [kindDictionary objectForKey:kindObject] ;
-      NSString * title = [NSString
-        stringWithFormat:@"%@ (%d item%@)",
-        [indexingTitles objectAtIndex:kind],
-        [references count],
-        (([references count] > 1) ? @"s" : @"")
-      ] ;
-      [menu addItemWithTitle:title action:nil keyEquivalent:@""] ;
-      for (NSString * descriptor in references) {
-        NSArray * components = [descriptor componentsSeparatedByString:@":"] ;
-        NSString * filePath = [components objectAtIndex:4] ;
-        title = [NSString stringWithFormat:@"%@, line %@", [filePath lastPathComponent], [components objectAtIndex:1]] ;
-        [menu addItemWithTitle:title action:@selector (indexingMenuAction:) keyEquivalent:@""] ;
-        NSMenuItem * item = [menu itemAtIndex:[menu numberOfItems] - 1] ;
-        [item setTarget:self] ;
-        [item setRepresentedObject:descriptor] ;
-      }
-    }
-  }
-//---
-  return menu ;
 }
 
 //---------------------------------------------------------------------------*

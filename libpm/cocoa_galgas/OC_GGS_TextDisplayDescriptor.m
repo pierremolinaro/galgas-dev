@@ -9,6 +9,7 @@
 
 #import "OC_GGS_TextDisplayDescriptor.h"
 #import "OC_GGS_TextSyntaxColoring.h"
+#import "OC_Lexique.h"
 
 //---------------------------------------------------------------------------*
 
@@ -24,32 +25,16 @@
 
 //---------------------------------------------------------------------------*
 
-- (NSUndoManager *) undoManagerForTextView:(NSTextView *)aTextView { // Delegate Method
-  return mTextSyntaxColoring.undoManager ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) textViewDidChangeSelection:(NSNotification *) inNotification { // Delegate Method
-  [self willChangeValueForKey:@"textSelectionStart"] ;
-  mTextSelectionStart = mTextView.selectedRange.location ;
-  [self  didChangeValueForKey:@"textSelectionStart"] ;
-}
-
-//---------------------------------------------------------------------------*
-
 - (NSUInteger) textSelectionStart {
   return mTextSelectionStart ;
 }
 
 //---------------------------------------------------------------------------*
 
-- (OC_GGS_TextDisplayDescriptor *) initWithDelegateForSyntaxColoring: (OC_GGS_TextSyntaxColoring *) inDelegateForSyntaxColoring
-                                   sourcePath : (NSString *) inSourcePath {
+- (OC_GGS_TextDisplayDescriptor *) initWithDelegateForSyntaxColoring: (OC_GGS_TextSyntaxColoring *) inDelegateForSyntaxColoring {
   self = [self init] ;
   if (self) {
     mTextSyntaxColoring = inDelegateForSyntaxColoring ;
-    mSourcePath = inSourcePath.copy ;
     mTextView = [[NSTextView alloc] initWithFrame:NSMakeRect (0.0, 0.0, 10.0, 10.0)] ;
     mTextView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
     mTextView.usesFindPanel = YES ;
@@ -102,13 +87,7 @@
 //---------------------------------------------------------------------------*
 
 - (NSString *) sourcePath {
-  return mSourcePath ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) setSourcePath:(NSString *) inSourcePath {
-  mSourcePath = inSourcePath.copy ;
+  return mTextSyntaxColoring.sourcePath ;
 }
 
 //---------------------------------------------------------------------------*
@@ -164,6 +143,69 @@
   [mTextView setSelectedRange:range] ;
   [mTextView scrollRangeToVisible:range] ;
 }
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Block Comment
+
+//---------------------------------------------------------------------------*
+
+- (void) commentSelection {
+  const NSRange newRange = [mTextSyntaxColoring commentRange:mTextView.selectedRange] ;
+  mTextView.selectedRange = newRange ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) uncommentSelection {
+  const NSRange newRange = [mTextSyntaxColoring uncommentRange:mTextView.selectedRange] ;
+  mTextView.selectedRange = newRange ;
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Text Macros
+
+//---------------------------------------------------------------------------*
+
+- (void) actionInsertTextMacro: (NSMenuItem *) inSender {
+  // NSLog (@"sender %@, tag %d", inSender, [inSender tag]) ;
+  NSString * macroString = [mTextSyntaxColoring.tokenizer textMacroContentAtIndex:[inSender tag]] ;
+  [mTextView insertText:macroString] ;
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark NSTextView delegate methods
+
+//---------------------------------------------------------------------------*
+
+- (NSUndoManager *) undoManagerForTextView:(NSTextView *)aTextView { // Delegate Method
+  return mTextSyntaxColoring.undoManager ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) textViewDidChangeSelection:(NSNotification *) inNotification { // Delegate Method
+  [self willChangeValueForKey:@"textSelectionStart"] ;
+  mTextSelectionStart = mTextView.selectedRange.location ;
+  [self  didChangeValueForKey:@"textSelectionStart"] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSMenu *) textView:(NSTextView *)view
+             menu:(NSMenu *)menu
+             forEvent:(NSEvent *)event
+             atIndex:(NSUInteger) inCharacterIndex { // Delegate Method
+  const NSRange selectedRange = {inCharacterIndex, 0} ;
+  const NSRange r = [mTextView selectionRangeForProposedRange:selectedRange granularity:NSSelectByWord] ;
+  [mTextView setSelectedRange:r] ;
+  return [mTextSyntaxColoring indexMenuForRange:r] ;
+}
+
+//---------------------------------------------------------------------------*
+
 
 //---------------------------------------------------------------------------*
 
