@@ -945,9 +945,18 @@ static NSInteger numericSort (NSString * inOperand1,
 //---------------------------------------------------------------------------*
 
 - (void) undoManagerCheckPointNotification: (NSNotification *) inNotification {
+  [self willChangeValueForKey:@"isDirty"] ;
+  mIsDirty = mUndoManager.canUndo ;
+  [self didChangeValueForKey:@"isDirty"] ;
   for (OC_GGS_TextDisplayDescriptor * textDisplayDescriptor in mTextDisplayDescriptorSet) {
     [textDisplayDescriptor noteUndoManagerCheckPointNotification] ;
   }
+}
+
+//---------------------------------------------------------------------------*
+
+- (BOOL) isDirty {
+  return mIsDirty ;
 }
 
 //---------------------------------------------------------------------------*
