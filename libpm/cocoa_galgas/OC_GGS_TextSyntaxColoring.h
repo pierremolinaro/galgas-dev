@@ -33,9 +33,6 @@
                                 tokenizer: (OC_Lexique *) inTokenizer
                                 sourcePath: (NSString *) inPath ;
 
-- (void) addTextDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor ;
-- (void) removeTextDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor ;
-
 - (NSTextStorage *) textStorage ;
 - (NSUndoManager *) undoManager ;
 - (OC_Lexique *) tokenizer ;

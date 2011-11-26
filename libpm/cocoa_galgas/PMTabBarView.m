@@ -42,7 +42,7 @@
   mButtonArray = [NSMutableArray new] ;
   const NSUInteger selectionIndex = inArrayController.selectionIndex ;
   const double width = 150.0 ;
-  double X = - 0.5 ;
+  double X = 0.0 ;
   NSUInteger idx = 0 ;
   NSArray * arrangedObjects = inArrayController.arrangedObjects ;
   for (OC_GGS_TextDisplayDescriptor * displayDescriptor in arrangedObjects) {
@@ -61,7 +61,7 @@
     button.action = @selector (changeTabAction:) ;
     button.removeAction = @selector (removeTabAction:) ;
     [button sizeToFit] ;
-    X = NSMaxX (button.frame) - 0.5 ;
+    X = NSMaxX (button.frame) + 2.0 ;
     [self addSubview:button] ;
     idx ++ ;
   }

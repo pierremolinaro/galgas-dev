@@ -102,6 +102,13 @@
   //---
     [[NSNotificationCenter defaultCenter]
       addObserver:self
+      selector:@selector (undoManagerCheckPointNotification:)
+      name:NSUndoManagerCheckpointNotification
+      object:mUndoManager
+    ] ;
+  //---
+    [[NSNotificationCenter defaultCenter]
+      addObserver:self
       selector:@selector(myProcessEditing:)
       name: NSTextStorageDidProcessEditingNotification
       object:mSourceTextStorage
@@ -242,20 +249,13 @@
 //---------------------------------------------------------------------------*
 
 - (void) addTextDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor {
-  if (! [mTextDisplayDescriptorSet containsObject:inDisplayDescriptor]) {
-    [mTextDisplayDescriptorSet addObject:inDisplayDescriptor] ;
-    [inDisplayDescriptor setSyntaxColoringDelegate:self] ;
-  }
+  [mTextDisplayDescriptorSet addObject:inDisplayDescriptor] ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) removeTextDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor {
-  if ([mTextDisplayDescriptorSet containsObject:inDisplayDescriptor]) {
-    [mTextDisplayDescriptorSet removeObject:inDisplayDescriptor] ;
-    [inDisplayDescriptor setSyntaxColoringDelegate:nil] ;
-  }
-
+  [mTextDisplayDescriptorSet removeObject:inDisplayDescriptor] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -940,6 +940,14 @@ static NSInteger numericSort (NSString * inOperand1,
     error:NULL
   ] ;
 //  [doc setSelectionRange:NSMakeRange (tokenLocation, tokenLength)] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) undoManagerCheckPointNotification: (NSNotification *) inNotification {
+  for (OC_GGS_TextDisplayDescriptor * textDisplayDescriptor in mTextDisplayDescriptorSet) {
+    [textDisplayDescriptor noteUndoManagerCheckPointNotification] ;
+  }
 }
 
 //---------------------------------------------------------------------------*
