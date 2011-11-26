@@ -34,6 +34,7 @@
 #import "OC_GGS_TextSyntaxColoring.h"
 #import "OC_GGS_TextDisplayDescriptor.h"
 #import "PMTabBarView.h"
+#import "OC_GGS_SourceScrollView.h"
 
 //---------------------------------------------------------------------------*
 
@@ -359,8 +360,22 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
   ] ;
 //---
   [mSourceDisplayArrayController
-    addObserver:mSourceTextView 
+    addObserver:mSourceScrollView 
     forKeyPath:@"selectionIndex"
+    options:0
+    context:NULL
+  ] ;
+//---
+  [mSourceDisplayArrayController
+    addObserver:mSourceScrollView 
+    forKeyPath:@"selection.textSelectionStart"
+    options:0
+    context:NULL
+  ] ;
+//---
+  [mSourceDisplayArrayController
+    addObserver:mSourceScrollView 
+    forKeyPath:@"selection.mTextSyntaxColoring.mTokenizer.menuForEntryPopUpButton"
     options:0
     context:NULL
   ] ;
@@ -387,6 +402,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
   [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:textDisplayDescriptor]] ;
 //---
   [mTabBarView setTarget:self] ;
+  [mTabBarView setChangeSourceTabAction:@selector (changeSelectedSourceViewAction:)] ;
   [mTabBarView setRemoveSourceTabAction:@selector (removeSelectedSourceViewAction:)] ;
 }
 
@@ -418,8 +434,48 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
 
 //---------------------------------------------------------------------------*
 
+#pragma mark Actions
+
+//---------------------------------------------------------------------------*
+
 - (IBAction) removeSelectedSourceViewAction: (id) inSender {
   [mSourceDisplayArrayController remove:inSender] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) changeSelectedSourceViewAction: (NSButton *) inSender {
+  [mSourceDisplayArrayController setSelectionIndex:inSender.tag] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) actionGotoLine: (id) inSender {
+  [NSApp
+    beginSheet:mGotoWindow
+    modalForWindow:self.windowForSheet
+    modalDelegate: self
+    didEndSelector: @selector (sheetDidEnd:returnCode:contextInfo:)
+    contextInfo: nil
+  ] ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//        S H E E T    D I D    E N D    ( G O T O    L I N E )              *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (void) sheetDidEnd: (NSWindow *) inSheet
+         returnCode: (int) inReturnCode
+         contextInfo: (void *) inContextInfo {
+  if (inReturnCode == 1) {
+  //--- Get selected line
+    const NSUInteger selectedLine = [mGotoLineTextField integerValue] ;
+  //--- Goto selected line
+    OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
+    [selectedObject gotoLine:selectedLine] ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -734,7 +790,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
     NSLog (@"OC_GGS_Document <writeToURL:ofType:error:>") ;
   #endif
   [mDelegateForSyntaxColoring breakUndoCoalescing] ;
-  NSString * string = [mDelegateForSyntaxColoring sourceString] ;
+  NSString * string = [mSourceTextWithSyntaxColoring sourceString] ;
   return [string
     writeToURL:inAbsoluteURL
     atomically:YES
@@ -1057,8 +1113,7 @@ static void addHorizontalScrollBarToTextView (NSScrollView * inScrollView) {
       const NSUInteger dataLength = [data length] ;
       const unsigned char * bytes = [data bytes] ;
       NSMutableString * s = [NSMutableString new] ;
-      NSUInteger i ;
-      for (i=0 ; i<dataLength ; i++) {
+      for (NSUInteger i=0 ; i<dataLength ; i++) {
         const unsigned char c = bytes [i] ;
         if ((c == 0x0A) || (c == 0x0D) || (c == 0x09) || ((c >= ' ') && (c <= 0x7E))) {
           [s appendFormat:@"%c", c] ;

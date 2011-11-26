@@ -104,6 +104,13 @@
       name: NSTextStorageDidProcessEditingNotification
       object:mSourceTextStorage
     ] ;
+  //---
+    [mTokenizer
+      addObserver:self
+      forKeyPath:@"menuForEntryPopUpButton"
+      options:0
+      context:NULL
+    ] ;
   //--------------------------------------------------- Add foreground color observers
     NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
     NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;
@@ -220,7 +227,7 @@
       [mFontAttributesDictionaryArray addObject:attributeDictionary] ;
     }
   //--- Max line height
- //   [self computeMaxLineHeight:NULL] ;
+    [self computeMaxLineHeight:NULL] ;
   //--- Enter source string
     [mSourceTextStorage beginEditing] ;
     // NSLog (@"LINE %d, inSource '%@'", __LINE__, inSource) ;
@@ -257,8 +264,20 @@
 
 //---------------------------------------------------------------------------*
 
+- (NSString *) sourceString {
+  return mSourceTextStorage.string ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (NSUndoManager *) undoManager {
   return mUndoManager ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSMenu *) menuForEntryPopUpButton {
+  return mTokenizer.menuForEntryPopUpButton ;
 }
 
 //---------------------------------------------------------------------------*
@@ -353,7 +372,10 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  if (mTokenizer != NULL) {
+  if ([inKeyPath isEqualToString:@"menuForEntryPopUpButton"]) {
+    [self willChangeValueForKey:@"menuForEntryPopUpButton"] ;
+    [self  didChangeValueForKey:@"menuForEntryPopUpButton"] ;
+  }else if (mTokenizer != NULL) {
     BOOL lineHeightDidChange = NO ;
     NSColor * color = nil ;
     NSMutableDictionary * d = nil ;

@@ -217,7 +217,7 @@
 		CF8E302E0D9EE03700EF3764 /* projectCreation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8E30220D9EE03700EF3764 /* projectCreation.cpp */; };
 		CF8EE1560B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8EE1540B93343E006CAFD5 /* C_BDD_Set3.cpp */; };
 		CF8EE15E0B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8EE1540B93343E006CAFD5 /* C_BDD_Set3.cpp */; };
-		CF923C7D147EBC01005CA78F /* OC_GGS_SourceTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF923C7C147EBC01005CA78F /* OC_GGS_SourceTextView.m */; };
+		CF923C7D147EBC01005CA78F /* OC_GGS_SourceScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF923C7C147EBC01005CA78F /* OC_GGS_SourceScrollView.m */; };
 		CF92AD0612578D3F003F16F7 /* cCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337CB111C3FAAF007E7736 /* cCollectionElement.cpp */; };
 		CF92AD0712578D40003F16F7 /* capCollectionElementArray.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF337C9611C3F8C7007E7736 /* capCollectionElementArray.cpp */; };
 		CF92AD0812578D40003F16F7 /* GALGAS_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF24DF09114C29F300ACF6DE /* GALGAS_object.cpp */; };
@@ -290,7 +290,6 @@
 		CFBC4D0C1152370D006CAD14 /* projectGlobalCheckings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBC4D071152370D006CAD14 /* projectGlobalCheckings.cpp */; };
 		CFBC4D1311523723006CAD14 /* semanticContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBC4D0F11523723006CAD14 /* semanticContext.cpp */; };
 		CFBC4D1411523723006CAD14 /* semanticContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBC4D0F11523723006CAD14 /* semanticContext.cpp */; };
-		CFBC766B0AC694C200443ACA /* OC_GGS_BuildResultTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.m */; };
 		CFC07E0F11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */; };
 		CFC07E1011A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */; };
 		CFC1506C0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFC1506A0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif */; };
@@ -677,8 +676,8 @@
 		CF8E30230D9EE03700EF3764 /* projectCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = projectCreation.h; sourceTree = "<group>"; };
 		CF8EE1540B93343E006CAFD5 /* C_BDD_Set3.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; name = C_BDD_Set3.cpp; path = bdd/C_BDD_Set3.cpp; sourceTree = "<group>"; };
 		CF8EE1550B93343E006CAFD5 /* C_BDD_Set3.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; name = C_BDD_Set3.h; path = bdd/C_BDD_Set3.h; sourceTree = "<group>"; };
-		CF923C7B147EBC01005CA78F /* OC_GGS_SourceTextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_SourceTextView.h; sourceTree = "<group>"; };
-		CF923C7C147EBC01005CA78F /* OC_GGS_SourceTextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_SourceTextView.m; sourceTree = "<group>"; };
+		CF923C7B147EBC01005CA78F /* OC_GGS_SourceScrollView.h */ = {isa = PBXFileReference; fileEncoding = 4; path = OC_GGS_SourceScrollView.h; sourceTree = "<group>"; };
+		CF923C7C147EBC01005CA78F /* OC_GGS_SourceScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_SourceScrollView.m; sourceTree = "<group>"; };
 		CF9BDF6B0585C5C900FC7DD7 /* galgasApplication.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = galgasApplication.icns; sourceTree = "<group>"; };
 		CF9BDF6C0585C5C900FC7DD7 /* galgasDocuments.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = galgasDocuments.icns; sourceTree = "<group>"; };
 		CF9E55F90FF5372D007692D1 /* OC_Token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_Token.h; sourceTree = "<group>"; };
@@ -746,8 +745,6 @@
 		CFBC4D081152370D006CAD14 /* projectGlobalCheckings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = projectGlobalCheckings.h; sourceTree = "<group>"; };
 		CFBC4D0F11523723006CAD14 /* semanticContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticContext.cpp; sourceTree = "<group>"; };
 		CFBC4D1011523723006CAD14 /* semanticContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticContext.h; sourceTree = "<group>"; };
-		CFBC76680AC694C200443ACA /* OC_GGS_BuildResultTextView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildResultTextView.h; sourceTree = "<group>"; };
-		CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_BuildResultTextView.m; sourceTree = "<group>"; };
 		CFBDAC42137BD12F008FB334 /* grammar-zone2.h.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "grammar-zone2.h.gTemplate"; sourceTree = "<group>"; };
 		CFBDAC43137BD12F008FB334 /* grammar-zone3.h.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "grammar-zone3.h.gTemplate"; sourceTree = "<group>"; };
 		CFBDAC45137BD12F008FB334 /* gui-implementation.m.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "gui-implementation.m.gTemplate"; sourceTree = "<group>"; };
@@ -1290,8 +1287,6 @@
 				CF82597A08536A130077AEAF /* OC_GGS_TextView.m */,
 				CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */,
 				CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m */,
-				CFBC76680AC694C200443ACA /* OC_GGS_BuildResultTextView.h */,
-				CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.m */,
 				CFF1293610D9646E00C72453 /* OC_GGS_ErrorOrWarningDescriptor.h */,
 				CFF1293710D9646E00C72453 /* OC_GGS_ErrorOrWarningDescriptor.m */,
 				CF82596D08536A130077AEAF /* I_Action.tiff */,
@@ -1309,8 +1304,8 @@
 				CFEE63DB147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.m */,
 				CFEE63DE147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.h */,
 				CFEE63DF147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m */,
-				CF923C7B147EBC01005CA78F /* OC_GGS_SourceTextView.h */,
-				CF923C7C147EBC01005CA78F /* OC_GGS_SourceTextView.m */,
+				CF923C7B147EBC01005CA78F /* OC_GGS_SourceScrollView.h */,
+				CF923C7C147EBC01005CA78F /* OC_GGS_SourceScrollView.m */,
 				CF2ECB51147F78A50018894F /* PMTabBarView.h */,
 				CF2ECB52147F78A50018894F /* PMTabBarView.m */,
 				CFAD9C67147FA4D300B1B88A /* PMButtonWithRemove.h */,
@@ -2449,7 +2444,6 @@
 				CF6DF24309E3F3A700506859 /* OC_GGS_PreferencesController.m in Sources */,
 				CF6DF24409E3F3A700506859 /* OC_GGS_RulerViewForTextView.m in Sources */,
 				CF6DF24509E3F3A700506859 /* OC_GGS_TextView.m in Sources */,
-				CFBC766B0AC694C200443ACA /* OC_GGS_BuildResultTextView.m in Sources */,
 				CFDAE70A0AD19F3E00713406 /* PMDownloadData.m in Sources */,
 				CFDAE70C0AD19F3E00713406 /* PMDownloadFile.m in Sources */,
 				CF4397FD0ADFE16D0085F47C /* PMCancelButtonForPanel.m in Sources */,
@@ -2478,7 +2472,7 @@
 				CFFCE7BD14686081009DB6D5 /* PMIssueDescriptor.m in Sources */,
 				CFEE63DC147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.m in Sources */,
 				CFEE63E0147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m in Sources */,
-				CF923C7D147EBC01005CA78F /* OC_GGS_SourceTextView.m in Sources */,
+				CF923C7D147EBC01005CA78F /* OC_GGS_SourceScrollView.m in Sources */,
 				CF2ECB54147F78A50018894F /* PMTabBarView.m in Sources */,
 				CFAD9C69147FA4D300B1B88A /* PMButtonWithRemove.m in Sources */,
 			);

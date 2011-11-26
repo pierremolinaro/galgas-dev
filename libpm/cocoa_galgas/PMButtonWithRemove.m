@@ -118,4 +118,13 @@
 
 //---------------------------------------------------------------------------*
 
+- (void) sizeToFit {
+  NSRect frame = self.frame ;
+  [super sizeToFit] ;
+  frame.size.width = self.frame.size.width + IMAGE_SIZE * 3.0 ;
+  self.frame = frame ;
+}
+
+//---------------------------------------------------------------------------*
+
 @end

@@ -37,7 +37,11 @@
 - (NSTextStorage *) textStorage ;
 - (NSUndoManager *) undoManager ;
 
+- (NSString *) sourceString ;
+
 - (void) updateSyntaxColoringForEditedRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength ;
+
+- (NSMenu *) menuForEntryPopUpButton ;
 
 @end
