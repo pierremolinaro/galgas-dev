@@ -8,6 +8,7 @@
 //---------------------------------------------------------------------------*
 
 #import "PMTabBarView.h"
+#import "OC_GGS_TextDisplayDescriptor.h"
 #import "PMButtonWithRemove.h"
 
 //---------------------------------------------------------------------------*
@@ -16,67 +17,80 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) awakeFromNib {
-  NSArray * titles = [NSArray arrayWithObjects:@"First", @"Second", @"Third", nil] ;
-  const NSUInteger sel = 1 ;
+- (void) setTarget: (id) inTarget {
+  mTarget = inTarget ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) setRemoveSourceTabAction: (SEL) inAction {
+  mRemoveSourceTabAction = inAction ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) buildTabBarWithArrayController: (NSArrayController *) inArrayController {
+  for (NSView * subView in self.subviews.copy) {
+    [subView removeFromSuperview] ;
+  }
+  mButtonArray = [NSMutableArray new] ;
+  const NSUInteger selectionIndex = inArrayController.selectionIndex ;
   const double width = 150.0 ;
-  for (NSUInteger i=0 ; i<titles.count ; i++) {
+  NSUInteger idx = 0 ;
+  NSArray * arrangedObjects = inArrayController.arrangedObjects ;
+  for (OC_GGS_TextDisplayDescriptor * displayDescriptor in arrangedObjects) {
     PMButtonWithRemove * button = [[PMButtonWithRemove alloc]
-      initWithFrame:NSMakeRect (width * ((double) i), 0.0, width + 0.5, self.bounds.size.height)
+      initWithFrame:NSMakeRect (width * ((double) idx), 0.0, width + 0.5, self.bounds.size.height)
     ] ;
-    [button setTitle:[titles objectAtIndex:i]] ;
+    [mButtonArray addObject:button] ;
+    [button setTitle:displayDescriptor.sourcePath.lastPathComponent] ;
+    [button setToolTip:displayDescriptor.sourcePath] ;
     [button setBezelStyle:NSSmallSquareBezelStyle] ;
     [button setButtonType:NSPushOnPushOffButton] ;
-    [button setState:(sel == i) ? NSOnState : NSOffState] ;
+    [button setState:(selectionIndex == idx) ? NSOnState : NSOffState] ;
+    [button setDisplayRemoveImage:arrangedObjects.count > 1] ;
+    button.target = self ;
+    button.action = @selector (changeTabAction:) ;
+    button.removeAction = @selector (removeTabAction:) ;
     [self addSubview:button] ;
+    idx ++ ;
   }
 }
 
 //---------------------------------------------------------------------------*
 
-- (void) drawRectEX: (NSRect) inRect {
-  NSArray * titles = [NSArray arrayWithObjects:@"First", @"Second", @"Third", nil] ;
-  const NSUInteger sel = 1 ;
-//--- Draw Background
-  [[NSColor windowBackgroundColor] setFill] ;
-  NSRectFill (inRect) ;
-//--- bottom line
-  [[NSColor windowFrameColor] setStroke] ;
-  NSBezierPath * bp = [NSBezierPath bezierPath] ;
-  [bp moveToPoint:NSMakePoint (0.0, 0.5)] ;
-  [bp lineToPoint:NSMakePoint (self.bounds.size.width, 0.5)] ;
-  [bp setLineWidth:1.0] ;
-  [bp stroke] ;
-//--- Draw tabs
-  const double width = 150.0 ;
-  const double offsetX = 20.0 ;
-  const double offsetY = 5.0 ;
-  NSDictionary * attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-    [NSFont systemFontOfSize:[NSFont smallSystemFontSize]], NSFontAttributeName,
-    nil
-  ] ;
-  NSDictionary * attributesWhenSelected = [NSDictionary dictionaryWithObjectsAndKeys:
-    [NSFont systemFontOfSize:[NSFont smallSystemFontSize]], NSFontAttributeName,
-    [NSColor selectedControlTextColor], NSForegroundColorAttributeName,
-    nil
-  ] ;
-  for (NSUInteger i=0 ; i<titles.count ; i++) {
-    if (i == sel) {
-      const NSRect r = {{width * ((double) i), 0.0}, {width, self.bounds.size.height}} ;
-      [[NSColor windowFrameColor] setFill] ;
-      NSRectFill (r) ;
-    }
-    NSString * title = [titles objectAtIndex:i] ;
-    [title
-      drawAtPoint:NSMakePoint (offsetX + width * ((double) i), offsetY)
-      withAttributes:(i == sel) ? attributesWhenSelected : attributes
+- (void) changeTabAction: (PMButtonWithRemove *) inSender {
+  for (PMButtonWithRemove * button in mButtonArray) {
+    [button setState:(button == inSender) ? NSOnState : NSOffState] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) removeTabAction: (PMButtonWithRemove *) inSender {
+  [mTarget performSelector:mRemoveSourceTabAction withObject:self] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) observeValueForKeyPath:(NSString *) inKeyPath
+         ofObject: (id) inObject
+         change:(NSDictionary *) inChange
+         context:(void *) inContext {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s, keyPath '%@'", __PRETTY_FUNCTION__, inKeyPath) ;
+  #endif
+  if ([inKeyPath isEqualToString:@"selection.sourcePath"]) {
+
+  }else if ([inKeyPath isEqualToString:@"arrangedObjects"]) {
+    [self buildTabBarWithArrayController:inObject] ;
+  }else{
+    [super
+      observeValueForKeyPath:inKeyPath
+      ofObject:inObject
+      change:inChange
+      context:inContext
     ] ;
-    [bp removeAllPoints] ;
-    const double verticalLineX = 0.5 + width * ((double) (i+1)) ;
-    [bp moveToPoint:NSMakePoint (verticalLineX, 0.0)] ;
-    [bp lineToPoint:NSMakePoint (verticalLineX, self.bounds.size.height)] ;
-    [[NSColor windowFrameColor] setStroke] ;
-    [bp stroke] ;
   }
 }
 

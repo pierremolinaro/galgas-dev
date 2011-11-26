@@ -15,6 +15,18 @@
 
 //---------------------------------------------------------------------------*
 
+- (void) setDisplayRemoveImage: (BOOL) inDisplay {
+  mDisplayRemoveImage = inDisplay ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) setRemoveAction: (SEL) inRemoveAction {
+  mRemoveAction = inRemoveAction ;
+}
+
+//---------------------------------------------------------------------------*
+
 #define IMAGE_SIZE (10.0)
 
 //---------------------------------------------------------------------------*
@@ -32,13 +44,15 @@
     [self removeTrackingArea:mTrackingArea] ;
   }
 //--- Add Updated tracking area
-  mTrackingArea = [[NSTrackingArea alloc]
-    initWithRect:[self trackingRect]
-    options:NSTrackingMouseEnteredAndExited | NSTrackingActiveInKeyWindow
-    owner:self
-    userInfo:nil
-  ] ;
-  [self addTrackingArea:mTrackingArea] ;
+  if (mDisplayRemoveImage) {
+    mTrackingArea = [[NSTrackingArea alloc]
+      initWithRect:[self trackingRect]
+      options:NSTrackingMouseEnteredAndExited | NSTrackingActiveInKeyWindow
+      owner:self
+      userInfo:nil
+    ] ;
+    [self addTrackingArea:mTrackingArea] ;
+  }
 //---
   [super updateTrackingAreas] ;
 }
@@ -62,8 +76,9 @@
 //---------------------------------------------------------------------------*
 
 - (void) mouseEntered:(NSEvent *) inEvent {
-  if ([self isEnabled]) {
-    mMouseWithin = YES ; [self setNeedsDisplay:YES] ;
+  if (self.isEnabled) {
+    mMouseWithin = YES ;
+    [self setNeedsDisplay:YES] ;
   }
   [super mouseEntered:inEvent] ;
 }
@@ -71,7 +86,10 @@
 //---------------------------------------------------------------------------*
 
 - (void) mouseExited:(NSEvent *) inEvent {
-  mMouseWithin = NO ; [self setNeedsDisplay:YES] ;
+  if (self.isEnabled) {
+    mMouseWithin = NO ;
+    [self setNeedsDisplay:YES] ;
+  }
   [super mouseExited:inEvent] ;
 }
 
@@ -92,7 +110,7 @@
   mMouseDown = NO ;
   if (mMouseWithin) {
     [self setNeedsDisplay:YES] ;
-    NSBeep () ;
+    [self.target performSelector:mRemoveAction withObject:self] ;
   }else{
     [super mouseUp:inEvent] ;
   }

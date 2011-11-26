@@ -31,6 +31,7 @@
 @class OC_GGS_RulerViewForCompileMessageView ;
 @class OC_GGS_ErrorOrWarningDescriptor ;
 @class OC_GGS_TextSyntaxColoring ;
+@class PMTabBarView ;
 
 //---------------------------------------------------------------------------*
 
@@ -76,7 +77,10 @@
 
 //---
   @private IBOutlet NSTextView * mSourceTextView ;
+  @private IBOutlet PMTabBarView * mTabBarView ;
 }
+
+- (IBAction) duplicateSelectedSourceViewAction: (id) inSender ;
 
 - (void) setSelectionRange: (NSRange) inRange ;
 - (NSString *) sourceString ;

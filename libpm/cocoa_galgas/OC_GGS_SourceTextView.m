@@ -28,8 +28,7 @@
 - (void) awakeFromNib {
   [self setDelegate:self] ;
 //--- Add "Show Invisible Character" preference observer
-  NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
-  [udc
+  [[NSUserDefaultsController sharedUserDefaultsController]
     addObserver:self
     forKeyPath:@"values.PMShowInvisibleCharacters"
     options:0

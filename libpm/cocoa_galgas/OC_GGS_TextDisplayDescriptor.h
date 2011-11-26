@@ -13,14 +13,20 @@
 
 @interface OC_GGS_TextDisplayDescriptor : NSObject {
 
+  @private NSString * mSourcePath ;
   @private OC_GGS_TextSyntaxColoring * mTextSyntaxColoring ;
 
 }
 
-- (OC_GGS_TextDisplayDescriptor *) initWithDelegateForSyntaxColoring: (OC_GGS_TextSyntaxColoring *) inDelegate ;
+- (OC_GGS_TextDisplayDescriptor *) initWithDelegateForSyntaxColoring: (OC_GGS_TextSyntaxColoring *) inDelegate
+                                   sourcePath : (NSString *) inSourcePath ;
 
 - (void) setSyntaxColoringDelegate: (OC_GGS_TextSyntaxColoring *) inDelegate ;
 
 - (OC_GGS_TextSyntaxColoring *) textSyntaxColoring ;
+
+- (NSString *) sourcePath ;
+
+- (void) setSourcePath:(NSString *) inSourcePath ;
 
 @end
