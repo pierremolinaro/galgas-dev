@@ -10,6 +10,7 @@
 
 @interface PMTabBarView : NSView {
   @private NSMutableArray * mButtonArray ;
+  @private NSArray * mObservedArray ;
   @private SEL mChangeSourceTabAction ;
   @private SEL mRemoveSourceTabAction ;
   @private id mTarget ;

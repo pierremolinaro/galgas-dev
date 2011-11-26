@@ -16,6 +16,7 @@
   @private NSTextStorage * mSourceTextStorage ;
   @private NSMutableSet * mTextDisplayDescriptorSet ; // Set of OC_GGS_TextDisplayDescriptor
   @private OC_Lexique * mTokenizer ;
+  @private BOOL mIsDirty ;
 
   @private double mMaxAscender ; // Only mMaxAscender is observable
   @private double mMaxLeadingMinusDescender ; // leading - descender (because descender is < 0)
@@ -37,6 +38,8 @@
 - (NSUndoManager *) undoManager ;
 - (OC_Lexique *) tokenizer ;
 - (NSString *) sourcePath ;
+
+- (BOOL) isDirty ;
 
 - (NSString *) sourceString ;
 - (void) replaceSourceStringWithString: (NSString *) inString ;

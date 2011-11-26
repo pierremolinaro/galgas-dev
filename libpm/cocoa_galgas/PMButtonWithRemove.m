@@ -38,6 +38,17 @@
 
 //---------------------------------------------------------------------------*
 
+#define DIRTY_SIZE (4.0)
+
+//---------------------------------------------------------------------------*
+
+- (NSRect) dirtyRect {
+  const NSRect r = {{NSMaxX (self.bounds) - DIRTY_SIZE * 2.0, DIRTY_SIZE}, {DIRTY_SIZE, DIRTY_SIZE}} ;
+  return r ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (void) updateTrackingAreas {
 //--- Remove tracking area
   if (nil != mTrackingArea) {
@@ -70,6 +81,11 @@
       hints:nil
     ] ;
     [imageRep drawInRect:r] ;
+  }
+  if (mIsDirty) {
+    [[NSColor blackColor] setFill] ;
+    NSBezierPath * bp = [NSBezierPath bezierPathWithOvalInRect:[self dirtyRect]] ;
+    [bp fill] ;
   }
 }
 
@@ -123,6 +139,15 @@
   [super sizeToFit] ;
   frame.size.width = self.frame.size.width + IMAGE_SIZE * 3.0 ;
   self.frame = frame ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) setIsDirty: (BOOL) inFlag {
+  if (mIsDirty != inFlag) {
+    mIsDirty = inFlag ;
+    [self setNeedsDisplay] ;
+  }
 }
 
 //---------------------------------------------------------------------------*

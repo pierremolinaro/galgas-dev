@@ -12,10 +12,13 @@
   @private BOOL mMouseWithin ;
   @private BOOL mMouseDown ;
   @private BOOL mDisplayRemoveImage ;
+  @private BOOL mIsDirty ;
   @private NSTrackingArea * mTrackingArea ;
   @private SEL mRemoveAction ;
 }
 
 - (void) setDisplayRemoveImage: (BOOL) inDisplay ;
 - (void) setRemoveAction: (SEL) inRemoveAction ;
+
+- (void) setIsDirty: (BOOL) inFlag ;
 @end
