@@ -1332,6 +1332,7 @@
     const NSUInteger sel = mSourceDisplayArrayController.selectionIndex ;
     OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel] ;
     object.scrollView.frame = mSourceHostView.bounds ;
+    // NSLog (@"object.scrollView %d", object.scrollView.autoresizesSubviews) ;
     [mSourceHostView addSubview:object.scrollView] ;
     [mSourceHostView.window makeFirstResponder:object.textView] ;
   }else if ([inKeyPath isEqualToString:@"selection.textSelectionStart"]) {
