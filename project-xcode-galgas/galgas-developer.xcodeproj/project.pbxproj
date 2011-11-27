@@ -256,6 +256,8 @@
 		CF92AD3012578D6F003F16F7 /* predefined-types.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFB8941110CBFF1006248FD /* predefined-types.cpp */; };
 		CF9950CF0FF14697006E6395 /* OC_Lexique.m in Sources */ = {isa = PBXBuildFile; fileRef = CFECE4650FEFA5270031D087 /* OC_Lexique.m */; };
 		CF9BA5FE14824EEB009DF1C8 /* OC_GGS_TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BA5FD14824EEB009DF1C8 /* OC_GGS_TextView.m */; };
+		CF9BA6021482733F009DF1C8 /* OC_GGS_Scroller.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BA6011482733F009DF1C8 /* OC_GGS_Scroller.m */; };
+		CF9BA60514827E3B009DF1C8 /* PMErrorOrWarningDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BA60414827E3A009DF1C8 /* PMErrorOrWarningDescriptor.m */; };
 		CF9E55FC0FF5372D007692D1 /* OC_Token.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9E55FA0FF5372D007692D1 /* OC_Token.m */; };
 		CF9FB045127A0A0200335160 /* C_galgas_class_inspector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9FB041127A0A0200335160 /* C_galgas_class_inspector.cpp */; };
 		CF9FB046127A0A0200335160 /* C_galgas_class_inspector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9FB041127A0A0200335160 /* C_galgas_class_inspector.cpp */; };
@@ -681,6 +683,10 @@
 		CF923C7C147EBC01005CA78F /* OC_GGS_SourceScrollView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_SourceScrollView.m; sourceTree = "<group>"; };
 		CF9BA5FC14824EEB009DF1C8 /* OC_GGS_TextView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_TextView.h; sourceTree = "<group>"; };
 		CF9BA5FD14824EEB009DF1C8 /* OC_GGS_TextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_TextView.m; sourceTree = "<group>"; };
+		CF9BA6001482733F009DF1C8 /* OC_GGS_Scroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_Scroller.h; sourceTree = "<group>"; };
+		CF9BA6011482733F009DF1C8 /* OC_GGS_Scroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_Scroller.m; sourceTree = "<group>"; };
+		CF9BA60314827E3A009DF1C8 /* PMErrorOrWarningDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMErrorOrWarningDescriptor.h; sourceTree = "<group>"; };
+		CF9BA60414827E3A009DF1C8 /* PMErrorOrWarningDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMErrorOrWarningDescriptor.m; sourceTree = "<group>"; };
 		CF9BDF6B0585C5C900FC7DD7 /* galgasApplication.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = galgasApplication.icns; sourceTree = "<group>"; };
 		CF9BDF6C0585C5C900FC7DD7 /* galgasDocuments.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = galgasDocuments.icns; sourceTree = "<group>"; };
 		CF9E55F90FF5372D007692D1 /* OC_Token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_Token.h; sourceTree = "<group>"; };
@@ -1284,8 +1290,6 @@
 				CF82597408536A130077AEAF /* OC_GGS_Document.m */,
 				CF82597508536A130077AEAF /* OC_GGS_PreferencesController.h */,
 				CF82597608536A130077AEAF /* OC_GGS_PreferencesController.m */,
-				CF82597708536A130077AEAF /* OC_GGS_RulerViewForTextView.h */,
-				CF82597808536A130077AEAF /* OC_GGS_RulerViewForTextView.m */,
 				CF82597908536A130077AEAF /* OC_GGS_TextViewEx.h */,
 				CF82597A08536A130077AEAF /* OC_GGS_TextViewEx.m */,
 				CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */,
@@ -1315,6 +1319,12 @@
 				CFAD9C68147FA4D300B1B88A /* PMButtonWithRemove.m */,
 				CF9BA5FC14824EEB009DF1C8 /* OC_GGS_TextView.h */,
 				CF9BA5FD14824EEB009DF1C8 /* OC_GGS_TextView.m */,
+				CF82597708536A130077AEAF /* OC_GGS_RulerViewForTextView.h */,
+				CF82597808536A130077AEAF /* OC_GGS_RulerViewForTextView.m */,
+				CF9BA6001482733F009DF1C8 /* OC_GGS_Scroller.h */,
+				CF9BA6011482733F009DF1C8 /* OC_GGS_Scroller.m */,
+				CF9BA60314827E3A009DF1C8 /* PMErrorOrWarningDescriptor.h */,
+				CF9BA60414827E3A009DF1C8 /* PMErrorOrWarningDescriptor.m */,
 			);
 			path = cocoa_galgas;
 			sourceTree = "<group>";
@@ -2481,6 +2491,8 @@
 				CF2ECB54147F78A50018894F /* PMTabBarView.m in Sources */,
 				CFAD9C69147FA4D300B1B88A /* PMButtonWithRemove.m in Sources */,
 				CF9BA5FE14824EEB009DF1C8 /* OC_GGS_TextView.m in Sources */,
+				CF9BA6021482733F009DF1C8 /* OC_GGS_Scroller.m in Sources */,
+				CF9BA60514827E3B009DF1C8 /* PMErrorOrWarningDescriptor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

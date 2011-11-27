@@ -104,6 +104,18 @@
 
 //---------------------------------------------------------------------------*
 
+- (BOOL) errorOrWarningKind {
+  return (kErrorIssue == mIssueKind) || (kWarningIssue == mIssueKind) ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (BOOL) errorKind {
+  return kErrorIssue == mIssueKind ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (NSInteger) issueLine {
   return mLine ;
 }

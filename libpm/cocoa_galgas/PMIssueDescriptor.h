@@ -49,6 +49,10 @@ typedef enum {
 
 - (enumIssueKind) issueKind ;
 
+- (BOOL) errorKind ;
+
+- (BOOL) errorOrWarningKind ;
+
 - (NSInteger) issueLine ;
 
 - (NSInteger) issueColumn ;
