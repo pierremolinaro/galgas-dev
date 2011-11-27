@@ -3,7 +3,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2001, ..., 2009 Pierre Molinaro.                           *
+//  Copyright (C) 2001, ..., 2011 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -23,6 +23,8 @@
 //---------------------------------------------------------------------------*
 
 #import "OC_GGS_RulerViewForTextView.h"
+#import "OC_GGS_TextView.h"
+#import "PMIssueDescriptor.h"
 
 //---------------------------------------------------------------------------*
 
@@ -54,16 +56,17 @@
     nil
   ] ;
 //--- Images
-//  NSImage * errorImage = [NSImage imageNamed:@"I_Red14"] ;
+  NSImage * errorImage = [NSImage imageNamed:NSImageNameStatusUnavailable] ;
+  NSImage * warningImage = [NSImage imageNamed:NSImageNameStatusPartiallyAvailable] ;
 //--- Note: ruler view and text view are both flipped
-  NSScrollView * scrollView = [self scrollView] ;
-  NSTextView * textView = [scrollView documentView] ;
-  NSLayoutManager * lm = [textView layoutManager] ;
-  NSString * sourceString = [textView string] ;
-  const NSUInteger sourceStringLength = [sourceString length] ;
+  OC_GGS_TextView * textView = [self.scrollView documentView] ;
+  NSArray * issueArray = textView.issueArray ;
+  NSLayoutManager * lm = textView.layoutManager ;
+  NSString * sourceString = textView.string ;
+  const NSUInteger sourceStringLength = sourceString.length ;
   // NSLog (@"sourceStringLength %u", sourceStringLength) ;
   NSUInteger idx = 0 ;
-  NSUInteger line = 0 ;
+  NSInteger line = 0 ;
   const double minYforDrawing = inRect.origin.y - (2.0 * ([font ascender] + [font descender])) ;
   const double maxYforDrawing = NSMaxY ([self visibleRect]) ;
   BOOL maxYreached = NO ;
@@ -75,27 +78,40 @@
     NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMinY (r)) fromView:textView] ;
     // NSLog (@"%f for line %u (%@)", p.y, line, ((inRect.origin.y - [font ascender])) ? @"yes" : @"no") ;
     if (p.y >= minYforDrawing) { 
-      /* [errorImage
-        drawAtPoint:NSMakePoint (0.0, p.y)
-        fromRect:NSZeroRect
-        operation:NSCompositeSourceOver
-        fraction:1.0
-      ] ;
-       */
-      NSString * str = [NSString stringWithFormat:@"%u", line] ;
+    //--- Draw line number
+      NSString * str = [NSString stringWithFormat:@"%ld", line] ;
       const NSSize strSize = [str sizeWithAttributes:attributes] ;
       p.x = viewBounds.size.width - 2.0 - strSize.width ;
       [str drawAtPoint:p withAttributes:attributes] ;
       maxYreached = p.y > maxYforDrawing ;
+    //--- Error or warning at this line ?
+      BOOL hasError = NO ;
+      BOOL hasWarning = NO ;
+      for (NSUInteger i=0 ; (i<issueArray.count) && ! hasError ; i++) {
+        PMIssueDescriptor * issue = [issueArray objectAtIndex:i] ;
+        if (issue.issueLine == line) {
+          const enumIssueKind issueKind = issue.issueKind ;
+          hasError = issueKind == kErrorIssue ;
+          if (issueKind == kWarningIssue) {
+            hasWarning = YES ;
+          }
+        }
+      }
+      if (hasError || hasWarning) {
+        const NSRect rImage = {{0.0, p.y}, {16.0, 16.0}} ;
+        NSImageRep * imageRep = [hasError ? errorImage : warningImage
+          bestRepresentationForRect:rImage
+          context:[NSGraphicsContext currentContext]
+          hints:nil
+        ] ;
+        [imageRep drawInRect:rImage] ;
+      }
     }
   //---
     const NSRange lineRange = [sourceString lineRangeForRange:NSMakeRange (idx, 1)] ;
     // NSLog (@"New line range: [%u, %u] for idx %u", lineRange.location, lineRange.length, idx) ;
     idx = lineRange.location + lineRange.length ;
   }
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_RulerViewForTextView <drawHashMarksAndLabelsInRect:> DONE") ;
-  #endif
 }
 
 //---------------------------------------------------------------------------*

@@ -98,6 +98,24 @@
 
 //---------------------------------------------------------------------------*
 
+- (enumIssueKind) issueKind {
+  return mIssueKind ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSInteger) issueLine {
+  return mLine ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSInteger) issueColumn {
+  return mColumn ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (NSColor *) issueColor {
   NSColor * color = [NSColor blackColor] ;
   switch (mIssueKind) {

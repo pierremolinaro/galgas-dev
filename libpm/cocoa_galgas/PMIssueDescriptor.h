@@ -47,6 +47,12 @@ typedef enum {
 
 - (NSString *) issuePath ;
 
+- (enumIssueKind) issueKind ;
+
+- (NSInteger) issueLine ;
+
+- (NSInteger) issueColumn ;
+
 @end
 
 //---------------------------------------------------------------------------*

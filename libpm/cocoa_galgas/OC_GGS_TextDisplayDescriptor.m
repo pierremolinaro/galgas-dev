@@ -11,6 +11,7 @@
 #import "OC_GGS_TextSyntaxColoring.h"
 #import "OC_Lexique.h"
 #import "OC_GGS_Document.h"
+#import "OC_GGS_TextView.h"
 
 //---------------------------------------------------------------------------*
 
@@ -38,7 +39,7 @@
   if (self) {
     mDocument = inDocument ;
     [self setSyntaxColoringDelegate:inDelegateForSyntaxColoring] ;
-    mTextView = [[NSTextView alloc] initWithFrame:NSMakeRect (0.0, 0.0, 10.0, 10.0)] ;
+    mTextView = [[OC_GGS_TextView alloc] initWithFrame:NSMakeRect (0.0, 0.0, 10.0, 10.0)] ;
     mTextView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
     mTextView.usesFindPanel = YES ;
     mTextView.grammarCheckingEnabled = NO ;
@@ -225,7 +226,7 @@
 //---------------------------------------------------------------------------*
 
 - (void) setIssueArray: (NSArray *) inIssueArray {
-
+  [mTextView setIssueArray:inIssueArray] ;
 }
 
 //---------------------------------------------------------------------------*

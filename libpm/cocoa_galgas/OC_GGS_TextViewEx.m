@@ -41,7 +41,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
-@implementation OC_GGS_TextView
+@implementation OC_GGS_TextViewEx
 
 //---------------------------------------------------------------------------*
 

@@ -29,7 +29,7 @@
 
 //---------------------------------------------------------------------------*
 
-@interface OC_GGS_TextView : NSTextView {
+@interface OC_GGS_TextViewEx : NSTextView {
   @private IBOutlet NSWindow * mGotoWindow ;
   @private IBOutlet NSTextField * mGotoLineTextField ;
   @private IBOutlet NSButton * mGotoLineSelectButton ;
