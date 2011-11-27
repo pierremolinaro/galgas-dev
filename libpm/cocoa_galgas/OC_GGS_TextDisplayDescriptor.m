@@ -58,7 +58,7 @@
     // NSLog (@"mTextView.layoutManager %p", mTextView.layoutManager) ;
     [mTextView setDelegate:self] ;
   //---
-    mScrollView = [[NSScrollView alloc] initWithFrame:NSMakeRect (0.0, 0.0, 10.0, 10.0)] ;
+    mScrollView = [[NSScrollView alloc] initWithFrame:NSMakeRect (0.0, 0.0, 100.0, 100.0)] ;
     mScrollView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
     [mScrollView setHasVerticalScroller:YES] ;
     [mScrollView setVerticalRulerView:[OC_GGS_RulerViewForTextView new]] ;
