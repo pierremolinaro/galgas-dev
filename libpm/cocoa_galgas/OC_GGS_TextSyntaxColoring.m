@@ -14,6 +14,7 @@
 #import "PMCocoaCallsDebug.h"
 #import "OC_GGS_PreferencesController.h"
 #import "PMIssueDescriptor.h"
+#import "PMErrorOrWarningDescriptor.h"
 
 //---------------------------------------------------------------------------*
 
@@ -388,6 +389,78 @@
 
 //---------------------------------------------------------------------------*
 
+#pragma mark Error and Warning Display
+
+//---------------------------------------------------------------------------*
+
+- (NSRange) rangeForLine: (NSInteger) inLineNumber {
+  NSRange range = {0, 0} ;
+  for (NSInteger i=1 ; i<=inLineNumber ; i++) {
+    range.location += range.length ;
+    range.length = 0 ;
+    NSUInteger startIndex ;
+    NSUInteger lineEndIndex ;
+    [mSourceTextStorage.string
+      getLineStart:& startIndex
+      end:& lineEndIndex
+      contentsEnd:NULL
+      forRange:range
+    ] ;
+    range = NSMakeRange (startIndex, lineEndIndex - startIndex) ;
+ //   NSLog (@"line %d: range [%u, %u]", i, range.location, range.length) ;
+  }
+  return range ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) handleIssuesWithController: (NSArrayController *) inIssueArrayController {
+  NSArray * issueArray = inIssueArrayController.arrangedObjects ;
+  NSMutableArray * filteredArray = [NSMutableArray new] ;
+  for (PMIssueDescriptor * issue in issueArray) {
+    if ([issue.issuePath isEqualToString:mSourcePath]) {
+      const NSRange lineRange = [self rangeForLine:issue.issueLine] ;
+      [filteredArray
+        addObject:[[PMErrorOrWarningDescriptor alloc]
+          initWithMessage:issue.issueMessage
+          location:lineRange.location + issue.issueColumn - 1
+          isError:YES
+        ]
+      ] ;
+      // NSLog (@"%c", [mSourceTextStorage.string characterAtIndex:lineRange.location + issue.issueColumn - 1]) ;
+    }
+  }
+//---
+  mIssueArray = filteredArray ;
+//---
+  for (OC_GGS_TextDisplayDescriptor * textDisplay in mTextDisplayDescriptorSet) {
+    [textDisplay setIssueArray:mIssueArray] ; 
+  }
+}  
+
+//---------------------------------------------------------------------------*
+
+- (void) updateIssuesForEditedRange: (NSRange) inEditedRange
+         changeInLength: (NSInteger) inChangeInLength {
+  // NSLog (@"inEditedRange %lu:%lu, inChangeInLength %ld", inEditedRange.location, inEditedRange.length, inChangeInLength) ;
+  const NSRange previousRange = {inEditedRange.location, inEditedRange.length - inChangeInLength} ;
+  NSMutableArray * newIssueArray = [NSMutableArray new] ;
+  for (PMErrorOrWarningDescriptor * issue in mIssueArray) {
+    if (! [issue isInRange:previousRange]) {
+      [issue updateLocationForEditedRange:previousRange changeInLength:inChangeInLength] ;
+      [newIssueArray addObject:issue] ;
+    }
+  }
+//---
+  mIssueArray = newIssueArray ;
+//---
+  for (OC_GGS_TextDisplayDescriptor * textDisplay in mTextDisplayDescriptorSet) {
+    [textDisplay setIssueArray:mIssueArray] ; 
+  }
+}
+
+//---------------------------------------------------------------------------*
+
 #pragma mark Syntax Coloring
 
 //---------------------------------------------------------------------------*
@@ -474,6 +547,7 @@
   const NSInteger changeInLength = mSourceTextStorage.changeInLength ;
     // NSLog (@"editedRange [%lu, %lu], changeInLength %ld", editedRange.location, editedRange.length, changeInLength) ;
   [self updateSyntaxColoringForEditedRange:editedRange changeInLength:changeInLength] ;
+  [self updateIssuesForEditedRange:editedRange changeInLength:changeInLength] ;
     // NSLog (@"%@", self.textStorage.string) ;
 }
 
@@ -891,26 +965,6 @@ static NSInteger numericSort (NSString * inOperand1,
   [mUndoManager removeAllActions] ;
   [self undoManagerCheckPointNotification:nil] ;
 }
-
-//---------------------------------------------------------------------------*
-
-#pragma mark Error and Warning Display
-
-//---------------------------------------------------------------------------*
-
-- (void) handleIssuesWithController: (NSArrayController *) inIssueArrayController {
-  NSArray * issueArray = inIssueArrayController.arrangedObjects ;
-  NSMutableArray * filteredArray = [NSMutableArray new] ;
-  for (PMIssueDescriptor * issue in issueArray) {
-    if ([issue.issuePath isEqualToString:mSourcePath]) {
-      [filteredArray addObject:issue] ;
-    }
-  }
-//---
-  for (OC_GGS_TextDisplayDescriptor * textDisplay in mTextDisplayDescriptorSet) {
-    [textDisplay setIssueArray:filteredArray] ; 
-  }
-}  
 
 //---------------------------------------------------------------------------*
 

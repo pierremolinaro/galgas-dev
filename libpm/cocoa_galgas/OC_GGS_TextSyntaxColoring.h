@@ -17,6 +17,7 @@
   @private NSMutableSet * mTextDisplayDescriptorSet ; // Set of OC_GGS_TextDisplayDescriptor
   @private OC_Lexique * mTokenizer ;
   @private BOOL mIsDirty ;
+  @private NSArray * mIssueArray ;
 
   @private double mMaxAscender ; // Only mMaxAscender is observable
   @private double mMaxLeadingMinusDescender ; // leading - descender (because descender is < 0)

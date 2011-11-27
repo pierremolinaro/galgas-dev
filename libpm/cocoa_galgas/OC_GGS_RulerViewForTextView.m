@@ -24,7 +24,7 @@
 
 #import "OC_GGS_RulerViewForTextView.h"
 #import "OC_GGS_TextView.h"
-#import "PMIssueDescriptor.h"
+#import "PMErrorOrWarningDescriptor.h"
 
 //---------------------------------------------------------------------------*
 
@@ -37,9 +37,6 @@
 //---------------------------------------------------------------------------*
 
 - (void) drawHashMarksAndLabelsInRect: (NSRect) inRect {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_RulerViewForTextView <drawHashMarksAndLabelsInRect:>") ;
-  #endif
 //--- Draw background
   [[NSColor windowBackgroundColor] setFill] ;
   [NSBezierPath fillRect:inRect] ;
@@ -60,7 +57,7 @@
   NSImage * warningImage = [NSImage imageNamed:NSImageNameStatusPartiallyAvailable] ;
 //--- Note: ruler view and text view are both flipped
   OC_GGS_TextView * textView = [self.scrollView documentView] ;
-  NSArray * issueArray = textView.issueArray ;
+  NSArray * issueArray = textView.issueArray ; // Array of PMErrorOrWarningDescriptor
   NSLayoutManager * lm = textView.layoutManager ;
   NSString * sourceString = textView.string ;
   const NSUInteger sourceStringLength = sourceString.length ;
@@ -77,6 +74,7 @@
     const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:idx effectiveRange:NULL] ;
     NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMinY (r)) fromView:textView] ;
     // NSLog (@"%f for line %u (%@)", p.y, line, ((inRect.origin.y - [font ascender])) ? @"yes" : @"no") ;
+    const NSRange lineRange = [sourceString lineRangeForRange:NSMakeRange (idx, 1)] ;
     if (p.y >= minYforDrawing) { 
     //--- Draw line number
       NSString * str = [NSString stringWithFormat:@"%ld", line] ;
@@ -88,11 +86,10 @@
       BOOL hasError = NO ;
       BOOL hasWarning = NO ;
       for (NSUInteger i=0 ; (i<issueArray.count) && ! hasError ; i++) {
-        PMIssueDescriptor * issue = [issueArray objectAtIndex:i] ;
-        if (issue.issueLine == line) {
-          const enumIssueKind issueKind = issue.issueKind ;
-          hasError = issueKind == kErrorIssue ;
-          if (issueKind == kWarningIssue) {
+        PMErrorOrWarningDescriptor * issue = [issueArray objectAtIndex:i] ;
+        if ([issue isInRange:lineRange]) {
+          hasError = issue.isError ;
+          if (! issue.isError) {
             hasWarning = YES ;
           }
         }
@@ -108,7 +105,6 @@
       }
     }
   //---
-    const NSRange lineRange = [sourceString lineRangeForRange:NSMakeRange (idx, 1)] ;
     // NSLog (@"New line range: [%u, %u] for idx %u", lineRange.location, lineRange.length, idx) ;
     idx = lineRange.location + lineRange.length ;
   }
