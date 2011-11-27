@@ -425,6 +425,7 @@
           initWithMessage:issue.issueMessage
           location:lineRange.location + issue.issueColumn - 1
           isError:YES
+          originalIssue:issue
         ]
       ] ;
       // NSLog (@"%c", [mSourceTextStorage.string characterAtIndex:lineRange.location + issue.issueColumn - 1]) ;
@@ -447,7 +448,7 @@
   NSMutableArray * newIssueArray = [NSMutableArray new] ;
   for (PMErrorOrWarningDescriptor * issue in mIssueArray) {
     if (! [issue isInRange:previousRange]) {
-      [issue updateLocationForEditedRange:previousRange changeInLength:inChangeInLength] ;
+      [issue updateLocationForPreviousRange:previousRange changeInLength:inChangeInLength] ;
       [newIssueArray addObject:issue] ;
     }
   }

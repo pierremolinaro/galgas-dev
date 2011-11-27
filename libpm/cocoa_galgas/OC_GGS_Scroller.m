@@ -73,4 +73,18 @@
 
 //---------------------------------------------------------------------------*
 
+- (void) setDoubleValue: (double) inValue {
+  [super setDoubleValue:inValue] ;
+  [self setNeedsDisplay] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) setKnobProportion: (double) inValue {
+  [super setKnobProportion:inValue] ;
+  [self setNeedsDisplay] ;
+}
+
+//---------------------------------------------------------------------------*
+
 @end

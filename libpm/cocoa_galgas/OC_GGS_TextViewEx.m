@@ -28,7 +28,6 @@
 #import "OC_Token.h"
 #import "OC_Lexique.h"
 #import "PMCocoaCallsDebug.h"
-#import "OC_GGS_ErrorOrWarningDescriptor.h"
 
 //---------------------------------------------------------------------------*
 

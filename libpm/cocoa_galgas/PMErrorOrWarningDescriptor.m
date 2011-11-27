@@ -12,12 +12,14 @@
 
 - (PMErrorOrWarningDescriptor *) initWithMessage: (NSString *) inMessage
                                  location: (NSUInteger) inLocation
-                                 isError: (BOOL) inIsError {
+                                 isError: (BOOL) inIsError
+                                 originalIssue: (PMIssueDescriptor *) inOriginalIssue {
   self = [self init] ;
   if (self) {
     mMessage = inMessage.copy ;
     mLocation = inLocation ;
     mIsError = inIsError ;
+    mOriginalIssue = inOriginalIssue ;
   }
   return self ;
 }
@@ -34,7 +36,11 @@
   return mLocation ;
 }
 
-- (void) updateLocationForEditedRange: (NSRange) inEditedRange
+- (PMIssueDescriptor *) originalIssue {
+  return mOriginalIssue ;
+}
+
+- (void) updateLocationForPreviousRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength {
   if (mLocation >= (inEditedRange.location + inEditedRange.length)) {
     mLocation += inChangeInLength ;

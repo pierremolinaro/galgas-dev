@@ -8,15 +8,19 @@
 
 #import <Foundation/Foundation.h>
 
+@class PMIssueDescriptor ;
+
 @interface PMErrorOrWarningDescriptor : NSObject {
   @private BOOL mIsError ;
   @private NSString * mMessage ;
   @private NSUInteger mLocation ;
+  @private PMIssueDescriptor * mOriginalIssue ;
 }
 
 - (PMErrorOrWarningDescriptor *) initWithMessage: (NSString *) inMessage
                                  location: (NSUInteger) inLocation
-                                 isError: (BOOL) inIsError ;
+                                 isError: (BOOL) inIsError
+                                 originalIssue: (PMIssueDescriptor *) inOriginalIssue ;
 
 - (BOOL) isInRange: (NSRange) inRange ;
 
@@ -24,7 +28,8 @@
 
 - (NSUInteger) location ;
 
-- (void) updateLocationForEditedRange: (NSRange) inEditedRange
+- (void) updateLocationForPreviousRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength ;
 
+- (PMIssueDescriptor *) originalIssue ;
 @end

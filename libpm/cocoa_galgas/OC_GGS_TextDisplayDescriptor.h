@@ -11,6 +11,7 @@
 @class OC_GGS_TextSyntaxColoring ;
 @class OC_GGS_Document ;
 @class OC_GGS_TextView ;
+@class PMIssueDescriptor ;
 
 @interface OC_GGS_TextDisplayDescriptor : NSObject <NSTextViewDelegate> {
 
@@ -18,6 +19,7 @@
   @private OC_GGS_TextView * mTextView ;
   @private NSUInteger mTextSelectionStart ;
   @private OC_GGS_Document * mDocument ;
+  @private NSArray * mIssueArray ;
 
 }
 
@@ -45,4 +47,5 @@
 
 - (void) setIssueArray: (NSArray *) inIssueArray ; 
 
+- (BOOL) makeVisibleIssue: (PMIssueDescriptor *) inIssue ;
 @end

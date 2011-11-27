@@ -21,7 +21,7 @@ project all_galgas -> "galgas" :
   feature libpmAtPath : "../libpm" ;
 #--- Targets
   feature "makefile_macosx" ;
-  feature "makefile_unix" ;
+  fe ature "makefile_unix" ;
   feature "makefile_i386_linux_on_macosx" ;
   feature "makefile_x86_64_linux_on_macosx" ;
   feature "makefile_mingw_on_macosx" ;
