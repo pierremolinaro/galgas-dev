@@ -56,4 +56,6 @@
 
 - (NSMenu *) indexMenuForRange: (NSRange) inRange ;
 
+- (void) documentHasBeenSaved ;
+
 @end

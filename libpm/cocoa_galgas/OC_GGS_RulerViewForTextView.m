@@ -39,7 +39,7 @@
     NSLog (@"OC_GGS_RulerViewForTextView <drawHashMarksAndLabelsInRect:>") ;
   #endif
 //--- Draw background
-  [[NSColor colorWithDeviceWhite: 0.9f alpha: 1.0] setFill] ;
+  [[NSColor windowBackgroundColor] setFill] ;
   [NSBezierPath fillRect:inRect] ;
 //--- Draw right border
   const NSRect viewBounds = [self bounds] ;

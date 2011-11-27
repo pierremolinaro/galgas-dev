@@ -1388,6 +1388,7 @@ C_String C_String::XMLEscapedString (void) const {
     case '<'  : result << "&lt;"   ; break ;
     case '>'  : result << "&gt;"   ; break ;
     case '&'  : result << "&amp;"  ; break ;
+    case '\n' : result << "&#10;" ; break ;
     default   : result.appendUnicodeCharacter (c COMMA_HERE) ; break;
     }
   } 
