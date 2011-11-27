@@ -12,6 +12,7 @@
 #import "OC_Lexique.h"
 #import "OC_GGS_Document.h"
 #import "OC_GGS_TextView.h"
+#import "PMErrorOrWarningDescriptor.h"
 
 //---------------------------------------------------------------------------*
 
@@ -226,7 +227,23 @@
 //---------------------------------------------------------------------------*
 
 - (void) setIssueArray: (NSArray *) inIssueArray {
+  mIssueArray = inIssueArray ;
   [mTextView setIssueArray:inIssueArray] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (BOOL) makeVisibleIssue: (PMIssueDescriptor *) inOriginalIssue {
+  BOOL found = NO ;
+  for (NSUInteger i=0 ; (i<mIssueArray.count) && ! found ; i++) {
+    PMErrorOrWarningDescriptor * issue = [mIssueArray objectAtIndex:i] ;
+    found = issue.originalIssue == inOriginalIssue ;
+    if (found) {
+      [mTextView scrollRangeToVisible:NSMakeRange (issue.location, 0)] ;
+    }
+  }
+//---
+  return found ;
 }
 
 //---------------------------------------------------------------------------*

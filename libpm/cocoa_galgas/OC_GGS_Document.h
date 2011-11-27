@@ -54,6 +54,7 @@
   @private NSMutableData * mBufferedInputData ;
 
   @private NSArrayController * mIssueArrayController ;  // Of PMIssueDescriptor
+  @private IBOutlet NSTableView * mIssueTableView ;
   @private IBOutlet NSTableColumn * mIssueTableViewColumn ;
 
   @private IBOutlet NSPanel * mUpdateFromFileSystemPanel ;

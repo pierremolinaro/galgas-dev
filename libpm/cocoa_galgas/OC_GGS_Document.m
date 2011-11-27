@@ -28,7 +28,6 @@
 #import "OC_GGS_DelegateForSyntaxColoring.h"
 #import "F_CocoaWrapperForGalgas.h"
 #import "PMCocoaCallsDebug.h"
-#import "OC_GGS_ErrorOrWarningDescriptor.h"
 #import "PMIssueDescriptor.h"
 #import "OC_GGS_TextSyntaxColoring.h"
 #import "OC_GGS_TextDisplayDescriptor.h"
@@ -165,7 +164,9 @@
     withKeyPath:@"arrangedObjects.issueColor"
     options:nil
   ] ;
-
+//--- Handle clic on issue table view
+  mIssueTableView.target = self ;
+  mIssueTableView.action = @selector(clicOnIssueTableView:) ;
 //--- Set up windows location
   NSString * windowTitle = [self lastComponentOfFileName] ;
   NSString * key = [NSString stringWithFormat: @"frame_for_source:%@", windowTitle] ;
@@ -1225,6 +1226,23 @@
     isEdited = undoManager.canUndo ;
   }
   [self updateChangeCount:isEdited ? NSChangeDone : NSChangeCleared] ;
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Click on issue table view
+
+//---------------------------------------------------------------------------*
+
+- (void) clicOnIssueTableView: (id) inSender {
+  const NSInteger clickedRow = mIssueTableView.clickedRow ;
+  NSArray * arrangedObjects = mIssueArrayController.arrangedObjects ;
+  if ((clickedRow >= 0) && (clickedRow < (NSInteger) arrangedObjects.count)) {
+    PMIssueDescriptor * issue = [arrangedObjects objectAtIndex:clickedRow] ;
+    NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
+    OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex] ;
+    [textDisplay makeVisibleIssue:issue] ;
+  }
 }
 
 //---------------------------------------------------------------------------*
