@@ -32,7 +32,6 @@
 #import "OC_GGS_TextSyntaxColoring.h"
 #import "OC_GGS_TextDisplayDescriptor.h"
 #import "PMTabBarView.h"
-#import "OC_GGS_SourceScrollView.h"
 
 //---------------------------------------------------------------------------*
 
@@ -200,21 +199,21 @@
   ] ;
 //---
   [mSourceDisplayArrayController
-    addObserver:mSourceScrollView 
+    addObserver:self 
     forKeyPath:@"selectionIndex"
     options:0
     context:NULL
   ] ;
 //---
   [mSourceDisplayArrayController
-    addObserver:mSourceScrollView 
+    addObserver:self 
     forKeyPath:@"selection.textSelectionStart"
     options:0
     context:NULL
   ] ;
 //---
   [mSourceDisplayArrayController
-    addObserver:mSourceScrollView 
+    addObserver:self 
     forKeyPath:@"selection.mTextSyntaxColoring.mTokenizer.menuForEntryPopUpButton"
     options:0
     context:NULL
@@ -1242,6 +1241,103 @@
     NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
     OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex] ;
     [textDisplay makeVisibleIssue:issue] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Entry Pop up
+
+//---------------------------------------------------------------------------*
+
+- (void) populatePopUpButton {
+  NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
+  OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex] ;
+  NSMenu * menu = [textDisplay menuForEntryPopUpButton] ;
+  const NSUInteger n = [menu numberOfItems] ;
+  if (n == 0) {
+    [menu
+      addItemWithTitle:@"No entry"
+      action:NULL
+      keyEquivalent:@""
+    ] ;
+    [mEntryListPopUpButton setEnabled:NO] ;
+  }else{
+    for (NSUInteger i=0 ; i<n ; i++) {
+      NSMenuItem * item = [menu itemAtIndex:i] ;
+      [item setTarget:self] ;
+      [item setAction:@selector (gotoEntry:)] ;
+    }
+    [mEntryListPopUpButton setEnabled:YES] ;
+  }
+  [mEntryListPopUpButton setMenu:menu] ;
+  //NSLog (@"mEntryListPopUpButton %@", mEntryListPopUpButton) ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) gotoEntry: (id) inSender {
+  const NSRange range = {[inSender tag], 0} ;
+  NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
+  OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex] ;
+  NSTextView * textView = textDisplay.textView ;
+  [textView setSelectedRange:range] ;
+  [textView scrollRangeToVisible:range] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) selectEntryPopUp {
+  NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
+  OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex] ;
+  const NSUInteger selectionStart = textDisplay.textSelectionStart ;
+  NSArray * menuItemArray = [mEntryListPopUpButton itemArray] ;
+  if ([mEntryListPopUpButton isEnabled]) {
+    NSInteger idx = NSNotFound ;
+    NSInteger i ;
+    const NSInteger n = [menuItemArray count] ;
+    for (i=n-1 ; (i>=0) && (idx == NSNotFound) ; i--) {
+      NSMenuItem * item = [menuItemArray objectAtIndex:i] ;
+      const NSUInteger startPoint = [item tag] ;
+      if (selectionStart >= startPoint) {
+        idx = i ;
+      }
+    }
+    if (idx == NSNotFound) {
+      [mEntryListPopUpButton selectItemAtIndex:0] ;
+    }else{
+      [mEntryListPopUpButton selectItemAtIndex:idx] ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark observeValueForKeyPath
+
+//---------------------------------------------------------------------------*
+
+- (void) observeValueForKeyPath:(NSString *) inKeyPath
+         ofObject: (id) inObject
+         change:(NSDictionary *) inChange
+         context:(void *) inContext {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  if ([inKeyPath isEqualToString:@"selectionIndex"]) {
+    for (NSView * subview in mSourceHostView.subviews.copy) {
+      [subview removeFromSuperview] ;
+    }
+    NSArray * arrangedObjects = mSourceDisplayArrayController.arrangedObjects ;
+    const NSUInteger sel = mSourceDisplayArrayController.selectionIndex ;
+    OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel] ;
+    object.scrollView.frame = mSourceHostView.bounds ;
+    [mSourceHostView addSubview:object.scrollView] ;
+    [mSourceHostView.window makeFirstResponder:object.textView] ;
+  }else if ([inKeyPath isEqualToString:@"selection.textSelectionStart"]) {
+    [self selectEntryPopUp] ;
+  }else if ([inKeyPath isEqualToString:@"selection.mTextSyntaxColoring.mTokenizer.menuForEntryPopUpButton"]) {
+    [self populatePopUpButton] ;
   }
 }
 

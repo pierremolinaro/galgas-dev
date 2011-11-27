@@ -13,6 +13,9 @@
 #import "OC_GGS_Document.h"
 #import "OC_GGS_TextView.h"
 #import "PMErrorOrWarningDescriptor.h"
+#import "OC_GGS_RulerViewForTextView.h"
+#import "OC_GGS_PreferencesController.h"
+#import "OC_GGS_Scroller.h"
 
 //---------------------------------------------------------------------------*
 
@@ -54,6 +57,16 @@
     // NSLog (@"mTextSyntaxColoring.textStorage %p", mTextSyntaxColoring.textStorage) ;
     // NSLog (@"mTextView.layoutManager %p", mTextView.layoutManager) ;
     [mTextView setDelegate:self] ;
+  //---
+    mScrollView = [[NSScrollView alloc] initWithFrame:NSMakeRect (0.0, 0.0, 10.0, 10.0)] ;
+    mScrollView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
+    [mScrollView setHasVerticalScroller:YES] ;
+    [mScrollView setVerticalRulerView:[OC_GGS_RulerViewForTextView new]] ;
+    [mScrollView.verticalRulerView setRuleThickness:gCocoaGalgasPreferencesController.ruleThickness] ;
+    [mScrollView setRulersVisible:[[NSUserDefaults standardUserDefaults] boolForKey:GGS_show_ruler]] ;
+    [mScrollView setHasVerticalRuler:YES] ;
+    mScrollView.documentView = mTextView ;
+    [mScrollView setVerticalScroller:[OC_GGS_Scroller new]] ;
   //--- Add "Show Invisible Character" preference observer
     [[NSUserDefaultsController sharedUserDefaultsController]
       addObserver:self
@@ -92,6 +105,12 @@
 
 - (NSTextView *) textView {
   return mTextView ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSScrollView *) scrollView {
+  return mScrollView ;
 }
 
 //---------------------------------------------------------------------------*

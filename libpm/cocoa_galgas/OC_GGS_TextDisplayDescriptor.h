@@ -17,6 +17,7 @@
 
   @private OC_GGS_TextSyntaxColoring * mTextSyntaxColoring ;
   @private OC_GGS_TextView * mTextView ;
+  @private NSScrollView * mScrollView ;
   @private NSUInteger mTextSelectionStart ;
   @private OC_GGS_Document * mDocument ;
   @private NSArray * mIssueArray ;
@@ -33,6 +34,8 @@
 - (NSString *) sourcePath ;
 
 - (NSTextView *) textView ;
+
+- (NSScrollView *) scrollView ;
 
 - (NSMenu *) menuForEntryPopUpButton ;
 

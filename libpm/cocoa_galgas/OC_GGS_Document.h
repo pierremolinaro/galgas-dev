@@ -47,6 +47,10 @@
   @private IBOutlet NSSplitView * mIssueSplitView ;
 
 
+  @private IBOutlet NSView * mSourceHostView ;
+
+  @private IBOutlet NSPopUpButton * mEntryListPopUpButton ;
+  
   @private IBOutlet NSButton * mCurrentLineButton ;
 
   @private NSTask * mTask ;
@@ -69,7 +73,6 @@
   @private NSArrayController * mSourceDisplayArrayController ;
 
 //---
-  @private IBOutlet OC_GGS_SourceScrollView * mSourceScrollView ;
   @private IBOutlet PMTabBarView * mTabBarView ;
 
 //--- "Goto Line" sheet
