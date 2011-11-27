@@ -10,11 +10,12 @@
 
 @class OC_GGS_TextSyntaxColoring ;
 @class OC_GGS_Document ;
+@class OC_GGS_TextView ;
 
 @interface OC_GGS_TextDisplayDescriptor : NSObject <NSTextViewDelegate> {
 
   @private OC_GGS_TextSyntaxColoring * mTextSyntaxColoring ;
-  @private NSTextView * mTextView ;
+  @private OC_GGS_TextView * mTextView ;
   @private NSUInteger mTextSelectionStart ;
   @private OC_GGS_Document * mDocument ;
 
