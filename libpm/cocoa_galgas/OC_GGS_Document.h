@@ -53,8 +53,7 @@
 
   @private NSMutableData * mBufferedInputData ;
 
-  @private NSMutableArray * mIssueArray ; // Array of PMIssueDescriptor
-  @private NSArrayController * mIssueArrayController ;
+  @private NSArrayController * mIssueArrayController ;  // Of PMIssueDescriptor
   @private IBOutlet NSTableColumn * mIssueTableViewColumn ;
 
   @private IBOutlet NSPanel * mUpdateFromFileSystemPanel ;
@@ -66,7 +65,6 @@
   @private OC_GGS_TextSyntaxColoring * mSourceTextWithSyntaxColoring ;
 
 //---
-  @private NSMutableArray * mSourceDisplayArray ; // Array of OC_GGS_TextDisplayDescriptor
   @private NSArrayController * mSourceDisplayArrayController ;
 
 //---

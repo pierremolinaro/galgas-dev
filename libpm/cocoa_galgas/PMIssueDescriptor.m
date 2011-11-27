@@ -17,7 +17,7 @@
 
 - (void) normalizeMessage {
   while ((mMessage.length > 1) && ([mMessage characterAtIndex:mMessage.length-1] == '\n')) {
-    mMessage = [mMessage substringToIndex:mMessage.length-2] ;
+    mMessage = [mMessage substringToIndex:mMessage.length-1] ;
   }
   while ((mMessage.length > 0) && ([mMessage characterAtIndex:0] == '\n')) {
     mMessage = [mMessage substringFromIndex:1] ;
@@ -88,6 +88,12 @@
 
 - (NSString *) issueMessage {
   return mMessage ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) issuePath {
+  return mFilePath ;
 }
 
 //---------------------------------------------------------------------------*

@@ -24,7 +24,6 @@
 #import "OC_GGS_Document.h"
 #import "OC_GGS_PreferencesController.h"
 #import "OC_GGS_RulerViewForTextView.h"
-#import "OC_GGS_TextView.h"
 #import "OC_Lexique.h"
 #import "OC_GGS_DelegateForSyntaxColoring.h"
 #import "F_CocoaWrapperForGalgas.h"
@@ -62,9 +61,7 @@
       NSLog (@"%s", __PRETTY_FUNCTION__) ;
     #endif
     mIssueArrayController = [NSArrayController new] ;
-    mIssueArray = [NSMutableArray new] ;
     mFileEncoding = NSUTF8StringEncoding ;
-    mSourceDisplayArray = [NSMutableArray new] ; // Array of OC_GGS_TextDisplayDescriptor
     mSourceDisplayArrayController = [NSArrayController new] ;
     self.undoManager = nil ;
   }
@@ -156,12 +153,6 @@
   ] ;
 
 //--- Bindings
-  [mIssueArrayController
-    bind:@"contentArray"
-    toObject:self
-    withKeyPath:@"mIssueArray"
-    options:nil
-  ] ;
   [mIssueTableViewColumn
     bind:@"value"
     toObject:mIssueArrayController
@@ -649,12 +640,18 @@
   #endif
   [mSourceTextWithSyntaxColoring breakUndoCoalescing] ;
   NSString * string = [mSourceTextWithSyntaxColoring sourceString] ;
-  return [string
+  const BOOL ok = [string
     writeToURL:inAbsoluteURL
     atomically:YES
     encoding:NSUTF8StringEncoding
     error:outError
   ] ;
+//---
+  if (ok) {
+    [mSourceTextWithSyntaxColoring documentHasBeenSaved] ;
+  }
+//---
+  return ok ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1000,6 +997,13 @@
     sourcePath:self.fileURL.path
   ] ;
 //---
+  [mIssueArrayController
+    addObserver:mSourceTextWithSyntaxColoring 
+    forKeyPath:@"arrangedObjects"
+    options:0
+    context:NULL
+  ] ;
+//---
   return source != nil ;
 }
 
@@ -1213,13 +1217,14 @@
 
 - (void) triggerDocumentEditedStatusUpdate {
   BOOL isEdited = NO ;
-  for (NSUInteger i=0 ; (i<mSourceDisplayArray.count) && ! isEdited ; i++) {
-    OC_GGS_TextDisplayDescriptor * textDisplay = [mSourceDisplayArray objectAtIndex:i] ;
+  NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
+  for (NSUInteger i=0 ; (i<sourceDisplayArray.count) && ! isEdited ; i++) {
+    OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:i] ;
     OC_GGS_TextSyntaxColoring * textSyntaxColoring = textDisplay.textSyntaxColoring ;
     NSUndoManager * undoManager = textSyntaxColoring.undoManager ;
     isEdited = undoManager.canUndo ;
   }
-  [self.windowForSheet setDocumentEdited:isEdited] ;
+  [self updateChangeCount:isEdited ? NSChangeDone : NSChangeCleared] ;
 }
 
 //---------------------------------------------------------------------------*

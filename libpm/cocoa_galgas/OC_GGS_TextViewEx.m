@@ -21,7 +21,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#import "OC_GGS_TextView.h"
+#import "OC_GGS_TextViewEX.h"
 #import "OC_GGS_Document.h"
 #include "F_CocoaWrapperForGalgas.h"
 #import "OC_GGS_DelegateForSyntaxColoring.h"

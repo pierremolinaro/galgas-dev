@@ -13,6 +13,7 @@
 #import "OC_Token.h"
 #import "PMCocoaCallsDebug.h"
 #import "OC_GGS_PreferencesController.h"
+#import "PMIssueDescriptor.h"
 
 //---------------------------------------------------------------------------*
 
@@ -382,81 +383,6 @@
     #ifdef DEBUG_MESSAGES
       NSLog (@"OC_GGS_DelegateForSyntaxColoring <applyTextAttributeForIndex:> DONE") ;
     #endif
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) observeValueForKeyPath: (NSString *) inKeyPath
-         ofObject: (id) inObject
-         change: (NSDictionary *) inChangeDictionary
-         context: (void *) inContext {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  if ([inKeyPath isEqualToString:@"menuForEntryPopUpButton"]) {
-    [self willChangeValueForKey:@"menuForEntryPopUpButton"] ;
-    [self  didChangeValueForKey:@"menuForEntryPopUpButton"] ;
-  }else if (mTokenizer != NULL) {
-    BOOL lineHeightDidChange = NO ;
-    NSColor * color = nil ;
-    NSMutableDictionary * d = nil ;
-    NSData * data = [inObject valueForKeyPath:inKeyPath] ;
-    const NSUInteger tag = ((NSUInteger) inContext) & TAG_MASK ;
-    const NSUInteger idx = ((NSUInteger) inContext) & ~ TAG_MASK ;
-    switch (tag) {
-    case TAG_FOR_FOREGROUND_COLOR:
-      if (data == nil) {
-        color = [NSColor whiteColor] ;
-      }else{
-        color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
-      }
-      d = [mFontAttributesDictionaryArray objectAtIndex:idx HERE] ;
-      [d setObject:color forKey:NSForegroundColorAttributeName] ;
-      [self applyTextAttributeForIndex:idx] ;
-      break;
-    case TAG_FOR_TEMPLATE_FOREGROUND_COLOR:
-      if (data == nil) {
-        color = [NSColor whiteColor] ;
-      }else{
-        color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
-      }
-      [mTemplateTextAttributeDictionary setObject:color forKey:NSForegroundColorAttributeName] ;
-      [self applyTextAttributeForIndex:-2] ;
-      break;
-    case TAG_FOR_BACKGROUND_COLOR:
-      if (data == nil) {
-        color = [NSColor whiteColor] ;
-      }else{
-        color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
-      }
-      d = [mFontAttributesDictionaryArray objectAtIndex:idx HERE] ;
-      [d setObject:color forKey:NSBackgroundColorAttributeName] ;
-      [self applyTextAttributeForIndex:idx] ;
-      break;
-    case TAG_FOR_TEMPLATE_BACKGROUND_COLOR:
-      if (data == nil) {
-        color = [NSColor whiteColor] ;
-      }else{
-        color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
-      }
-      [mTemplateTextAttributeDictionary setObject:color forKey:NSBackgroundColorAttributeName] ;
-      [self applyTextAttributeForIndex:-2] ;
-      break;
-    case TAG_FOR_FONT_ATTRIBUTE:
-      d = [mFontAttributesDictionaryArray objectAtIndex:idx HERE] ;
-      [d setObject:[NSUnarchiver unarchiveObjectWithData:data] forKey:NSFontAttributeName] ;
-      [self computeMaxLineHeight: & lineHeightDidChange] ;
-      [self applyTextAttributeForIndex:lineHeightDidChange ? 0 : idx] ;
-      break;
-    case TAG_FOR_TEMPLATE_FONT_ATTRIBUTE:
-      [mTemplateTextAttributeDictionary setObject:[NSUnarchiver unarchiveObjectWithData:data] forKey:NSFontAttributeName] ;
-      [self computeMaxLineHeight: & lineHeightDidChange] ;
-      [self applyTextAttributeForIndex:lineHeightDidChange ? 0 : -2] ;
-      break;
-    default:
-      break;
-    }
   }
 }
 
@@ -957,6 +883,114 @@ static NSInteger numericSort (NSString * inOperand1,
 
 - (BOOL) isDirty {
   return mIsDirty ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) documentHasBeenSaved {
+  [mUndoManager removeAllActions] ;
+  [self undoManagerCheckPointNotification:nil] ;
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Error and Warning Display
+
+//---------------------------------------------------------------------------*
+
+- (void) handleIssuesWithController: (NSArrayController *) inIssueArrayController {
+  NSArray * issueArray = inIssueArrayController.arrangedObjects ;
+  NSMutableArray * filteredArray = [NSMutableArray new] ;
+  for (PMIssueDescriptor * issue in issueArray) {
+    if ([issue.issuePath isEqualToString:mSourcePath]) {
+      [filteredArray addObject:issue] ;
+    }
+  }
+//---
+  for (OC_GGS_TextDisplayDescriptor * textDisplay in mTextDisplayDescriptorSet) {
+    [textDisplay setIssueArray:filteredArray] ; 
+  }
+}  
+
+//---------------------------------------------------------------------------*
+
+#pragma mark observeValueForKeyPath
+
+//---------------------------------------------------------------------------*
+
+- (void) observeValueForKeyPath: (NSString *) inKeyPath
+         ofObject: (id) inObject
+         change: (NSDictionary *) inChangeDictionary
+         context: (void *) inContext {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s, inKeyPath '%@'", __PRETTY_FUNCTION__, inKeyPath) ;
+  #endif
+  if ([inKeyPath isEqualToString:@"arrangedObjects"]) {
+    [self handleIssuesWithController:inObject] ;  
+  }else if ([inKeyPath isEqualToString:@"menuForEntryPopUpButton"]) {
+    [self willChangeValueForKey:@"menuForEntryPopUpButton"] ;
+    [self  didChangeValueForKey:@"menuForEntryPopUpButton"] ;
+  }else if (mTokenizer != NULL) {
+    BOOL lineHeightDidChange = NO ;
+    NSColor * color = nil ;
+    NSMutableDictionary * d = nil ;
+    NSData * data = [inObject valueForKeyPath:inKeyPath] ;
+    const NSUInteger tag = ((NSUInteger) inContext) & TAG_MASK ;
+    const NSUInteger idx = ((NSUInteger) inContext) & ~ TAG_MASK ;
+    switch (tag) {
+    case TAG_FOR_FOREGROUND_COLOR:
+      if (data == nil) {
+        color = [NSColor whiteColor] ;
+      }else{
+        color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
+      }
+      d = [mFontAttributesDictionaryArray objectAtIndex:idx HERE] ;
+      [d setObject:color forKey:NSForegroundColorAttributeName] ;
+      [self applyTextAttributeForIndex:idx] ;
+      break;
+    case TAG_FOR_TEMPLATE_FOREGROUND_COLOR:
+      if (data == nil) {
+        color = [NSColor whiteColor] ;
+      }else{
+        color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
+      }
+      [mTemplateTextAttributeDictionary setObject:color forKey:NSForegroundColorAttributeName] ;
+      [self applyTextAttributeForIndex:-2] ;
+      break;
+    case TAG_FOR_BACKGROUND_COLOR:
+      if (data == nil) {
+        color = [NSColor whiteColor] ;
+      }else{
+        color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
+      }
+      d = [mFontAttributesDictionaryArray objectAtIndex:idx HERE] ;
+      [d setObject:color forKey:NSBackgroundColorAttributeName] ;
+      [self applyTextAttributeForIndex:idx] ;
+      break;
+    case TAG_FOR_TEMPLATE_BACKGROUND_COLOR:
+      if (data == nil) {
+        color = [NSColor whiteColor] ;
+      }else{
+        color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
+      }
+      [mTemplateTextAttributeDictionary setObject:color forKey:NSBackgroundColorAttributeName] ;
+      [self applyTextAttributeForIndex:-2] ;
+      break;
+    case TAG_FOR_FONT_ATTRIBUTE:
+      d = [mFontAttributesDictionaryArray objectAtIndex:idx HERE] ;
+      [d setObject:[NSUnarchiver unarchiveObjectWithData:data] forKey:NSFontAttributeName] ;
+      [self computeMaxLineHeight: & lineHeightDidChange] ;
+      [self applyTextAttributeForIndex:lineHeightDidChange ? 0 : idx] ;
+      break;
+    case TAG_FOR_TEMPLATE_FONT_ATTRIBUTE:
+      [mTemplateTextAttributeDictionary setObject:[NSUnarchiver unarchiveObjectWithData:data] forKey:NSFontAttributeName] ;
+      [self computeMaxLineHeight: & lineHeightDidChange] ;
+      [self applyTextAttributeForIndex:lineHeightDidChange ? 0 : -2] ;
+      break;
+    default:
+      break;
+    }
+  }
 }
 
 //---------------------------------------------------------------------------*

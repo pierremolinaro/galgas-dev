@@ -42,4 +42,6 @@
 
 - (void) noteUndoManagerCheckPointNotification ;
 
+- (void) setIssueArray: (NSArray *) inIssueArray ; 
+
 @end

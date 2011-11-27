@@ -45,6 +45,8 @@ typedef enum {
 
 - (NSString *) issueMessage ;
 
+- (NSString *) issuePath ;
+
 @end
 
 //---------------------------------------------------------------------------*
