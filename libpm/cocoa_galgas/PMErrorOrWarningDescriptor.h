@@ -26,6 +26,8 @@
 
 - (BOOL) isError ;
 
+- (NSString *) message ;
+
 - (NSUInteger) location ;
 
 - (void) updateLocationForPreviousRange: (NSRange) inEditedRange

@@ -11,6 +11,7 @@
 #import "OC_GGS_TextDisplayDescriptor.h"
 #import "PMButtonWithRemove.h"
 #import "OC_GGS_TextSyntaxColoring.h"
+#import "PMCocoaCallsDebug.h"
 
 //---------------------------------------------------------------------------*
 
@@ -103,7 +104,7 @@
 
 - (void) dirtyStateDidChange: (OC_GGS_TextDisplayDescriptor *) inObservedObject {
   const NSUInteger idx = [mObservedArray indexOfObject:inObservedObject] ;
-  PMButtonWithRemove * button = [mButtonArray objectAtIndex:idx] ;
+  PMButtonWithRemove * button = [mButtonArray objectAtIndex:idx HERE] ;
   OC_GGS_TextSyntaxColoring * textSyntaxColoring = inObservedObject.textSyntaxColoring ;
   [button setIsDirty:textSyntaxColoring.isDirty] ;
 }

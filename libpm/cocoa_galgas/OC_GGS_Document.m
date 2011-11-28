@@ -262,7 +262,7 @@
 //---------------------------------------------------------------------------*
 
 - (IBAction) duplicateSelectedSourceViewAction: (id) inSender {
-  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
   OC_GGS_TextDisplayDescriptor * textDisplayDescriptor = [[OC_GGS_TextDisplayDescriptor alloc]
     initWithDelegateForSyntaxColoring:selectedObject.textSyntaxColoring
     document:self
@@ -312,7 +312,7 @@
   //--- Get selected line
     const NSUInteger selectedLine = [mGotoLineTextField integerValue] ;
   //--- Goto selected line
-    OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
+    OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
     [selectedObject gotoLine:selectedLine] ;
   }
 }
@@ -320,14 +320,14 @@
 //---------------------------------------------------------------------------*
 
 - (IBAction) actionComment: (id) sender {
-  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
   [selectedObject commentSelection] ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (IBAction) actionUncomment: (id) sender {
-  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
   [selectedObject uncommentSelection] ;
 }
 
@@ -456,7 +456,7 @@
 //---------------------------------------------------------------------------*
 
 - (void) printDocument: (id) sender {
-  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
   [selectedObject.textView print:sender] ;
 }
 
@@ -1031,18 +1031,21 @@
       PMIssueDescriptor * issue = [[PMIssueDescriptor alloc] initWithMessage:message] ;
       [issueArray addObject:issue] ;
     }else if ([@"message" isEqualToString:node.name]) {
-      NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0] stringValue] ;
+      NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
       PMIssueDescriptor * issue = [[PMIssueDescriptor alloc] initWithMessage:message] ;
       [issueArray addObject:issue] ;
     }else if ([@"fileOperation" isEqualToString:node.name]) {
-      NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0] stringValue] ;
+      NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
       PMIssueDescriptor * issue = [[PMIssueDescriptor alloc] initWithFileOperation:message] ;
       [issueArray addObject:issue] ;
     }else if ([@"error" isEqualToString:node.name]) {
-      NSString * file = [[[node nodesForXPath:@"./@file" error:nil] objectAtIndex:0] stringValue] ;
-      NSInteger line = [[[[node nodesForXPath:@"./@line" error:nil] objectAtIndex:0] stringValue] integerValue] ;
-      NSInteger column = [[[[node nodesForXPath:@"./@column" error:nil] objectAtIndex:0] stringValue] integerValue] ;
-      NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0] stringValue] ;
+      NSArray * a = [node nodesForXPath:@"./@file" error:nil] ;
+      NSString * file = (a.count == 1) ? [[a objectAtIndex:0 HERE] stringValue] : @"" ;
+      a = [node nodesForXPath:@"./@line" error:nil] ;
+      NSInteger line = (a.count == 1) ? [[[a objectAtIndex:0 HERE] stringValue] integerValue] : 0 ;
+      a = [node nodesForXPath:@"./@column" error:nil] ;
+      NSInteger column = (a.count == 1) ? [[[a objectAtIndex:0 HERE] stringValue] integerValue] : 0 ;
+      NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
       PMIssueDescriptor * issue = [[PMIssueDescriptor alloc]
         initWithErrorMessage:message
         file:file
@@ -1051,10 +1054,10 @@
       ] ;
       [issueArray addObject:issue] ;
     }else if ([@"warning" isEqualToString:node.name]) {
-      NSString * file = [[[node nodesForXPath:@"./@file" error:nil] objectAtIndex:0] stringValue] ;
-      NSInteger line = [[[[node nodesForXPath:@"./@line" error:nil] objectAtIndex:0] stringValue] integerValue] ;
-      NSInteger column = [[[[node nodesForXPath:@"./@column" error:nil] objectAtIndex:0] stringValue] integerValue] ;
-      NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0] stringValue] ;
+      NSString * file = [[[node nodesForXPath:@"./@file" error:nil] objectAtIndex:0 HERE] stringValue] ;
+      NSInteger line = [[[[node nodesForXPath:@"./@line" error:nil] objectAtIndex:0 HERE] stringValue] integerValue] ;
+      NSInteger column = [[[[node nodesForXPath:@"./@column" error:nil] objectAtIndex:0 HERE] stringValue] integerValue] ;
+      NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
       PMIssueDescriptor * issue = [[PMIssueDescriptor alloc]
         initWithWarningMessage:message
         file:file
@@ -1219,7 +1222,7 @@
   BOOL isEdited = NO ;
   NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
   for (NSUInteger i=0 ; (i<sourceDisplayArray.count) && ! isEdited ; i++) {
-    OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:i] ;
+    OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:i HERE] ;
     OC_GGS_TextSyntaxColoring * textSyntaxColoring = textDisplay.textSyntaxColoring ;
     NSUndoManager * undoManager = textSyntaxColoring.undoManager ;
     isEdited = undoManager.canUndo ;
@@ -1237,9 +1240,9 @@
   const NSInteger clickedRow = mIssueTableView.clickedRow ;
   NSArray * arrangedObjects = mIssueArrayController.arrangedObjects ;
   if ((clickedRow >= 0) && (clickedRow < (NSInteger) arrangedObjects.count)) {
-    PMIssueDescriptor * issue = [arrangedObjects objectAtIndex:clickedRow] ;
+    PMIssueDescriptor * issue = [arrangedObjects objectAtIndex:clickedRow HERE] ;
     NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
-    OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex] ;
+    OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
     [textDisplay makeVisibleIssue:issue] ;
   }
 }
@@ -1252,7 +1255,7 @@
 
 - (void) populatePopUpButton {
   NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
-  OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex] ;
+  OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
   NSMenu * menu = [textDisplay menuForEntryPopUpButton] ;
   const NSUInteger n = [menu numberOfItems] ;
   if (n == 0) {
@@ -1279,7 +1282,7 @@
 - (void) gotoEntry: (id) inSender {
   const NSRange range = {[inSender tag], 0} ;
   NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
-  OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex] ;
+  OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
   NSTextView * textView = textDisplay.textView ;
   [textView setSelectedRange:range] ;
   [textView scrollRangeToVisible:range] ;
@@ -1289,7 +1292,7 @@
 
 - (void) selectEntryPopUp {
   NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
-  OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex] ;
+  OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
   const NSUInteger selectionStart = textDisplay.textSelectionStart ;
   NSArray * menuItemArray = [mEntryListPopUpButton itemArray] ;
   if ([mEntryListPopUpButton isEnabled]) {
@@ -1297,7 +1300,7 @@
     NSInteger i ;
     const NSInteger n = [menuItemArray count] ;
     for (i=n-1 ; (i>=0) && (idx == NSNotFound) ; i--) {
-      NSMenuItem * item = [menuItemArray objectAtIndex:i] ;
+      NSMenuItem * item = [menuItemArray objectAtIndex:i HERE] ;
       const NSUInteger startPoint = [item tag] ;
       if (selectionStart >= startPoint) {
         idx = i ;
@@ -1330,7 +1333,7 @@
     }
     NSArray * arrangedObjects = mSourceDisplayArrayController.arrangedObjects ;
     const NSUInteger sel = mSourceDisplayArrayController.selectionIndex ;
-    OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel] ;
+    OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel HERE] ;
     object.scrollView.frame = mSourceHostView.bounds ;
     // NSLog (@"object.scrollView %d", object.scrollView.autoresizesSubviews) ;
     [mSourceHostView addSubview:object.scrollView] ;

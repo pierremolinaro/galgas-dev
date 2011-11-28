@@ -12,11 +12,13 @@
 @class OC_GGS_Document ;
 @class OC_GGS_TextView ;
 @class PMIssueDescriptor ;
+@class OC_GGS_RulerViewForTextView ;
 
 @interface OC_GGS_TextDisplayDescriptor : NSObject <NSTextViewDelegate> {
 
   @private OC_GGS_TextSyntaxColoring * mTextSyntaxColoring ;
   @private OC_GGS_TextView * mTextView ;
+  @private OC_GGS_RulerViewForTextView * mRulerView ;
   @private NSScrollView * mScrollView ;
   @private NSUInteger mTextSelectionStart ;
   @private OC_GGS_Document * mDocument ;

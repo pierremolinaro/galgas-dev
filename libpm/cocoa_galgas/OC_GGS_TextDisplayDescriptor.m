@@ -61,7 +61,8 @@
     mScrollView = [[NSScrollView alloc] initWithFrame:NSMakeRect (0.0, 0.0, 100.0, 100.0)] ;
     mScrollView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
     [mScrollView setHasVerticalScroller:YES] ;
-    [mScrollView setVerticalRulerView:[OC_GGS_RulerViewForTextView new]] ;
+    mRulerView = [OC_GGS_RulerViewForTextView new] ;
+    [mScrollView setVerticalRulerView:mRulerView] ;
     [mScrollView.verticalRulerView setRuleThickness:gCocoaGalgasPreferencesController.ruleThickness] ;
     [mScrollView setRulersVisible:[[NSUserDefaults standardUserDefaults] boolForKey:GGS_show_ruler]] ;
     [mScrollView setHasVerticalRuler:YES] ;
@@ -75,6 +76,8 @@
       context:NULL
     ] ;
     [self refreshShowInvisibleCharacters] ;
+    [self setIssueArray:inDelegateForSyntaxColoring.issueArray] ;
+
   }
   return self ;
 }
@@ -219,6 +222,7 @@
   [self willChangeValueForKey:@"textSelectionStart"] ;
   mTextSelectionStart = mTextView.selectedRange.location ;
   [self  didChangeValueForKey:@"textSelectionStart"] ;
+  [mRulerView setNeedsDisplay:YES] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -259,6 +263,8 @@
     found = issue.originalIssue == inOriginalIssue ;
     if (found) {
       [mTextView scrollRangeToVisible:NSMakeRange (issue.location, 0)] ;
+      [mTextView setSelectedRange:NSMakeRange (issue.location, 0)] ;
+      [mTextView.window makeFirstResponder:mTextView] ;
     }
   }
 //---

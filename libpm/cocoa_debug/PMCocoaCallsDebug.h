@@ -7,6 +7,10 @@
 
 //---------------------------------------------------------------------------*
 
+#define PM_COCOA_DEBUG
+
+//---------------------------------------------------------------------------*
+
 #ifdef PM_COCOA_DEBUG
   #define HERE                  atFile:__FILE__  atLine:__LINE__
   #define COLON_HERE            :__FILE__  atLine:__LINE__

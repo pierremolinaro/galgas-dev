@@ -25,6 +25,7 @@
 #import "OC_GGS_RulerViewForTextView.h"
 #import "OC_GGS_TextView.h"
 #import "PMErrorOrWarningDescriptor.h"
+#import "PMCocoaCallsDebug.h"
 
 //---------------------------------------------------------------------------*
 
@@ -52,6 +53,12 @@
     [NSColor darkGrayColor], NSForegroundColorAttributeName,
     nil
   ] ;
+  NSDictionary * attributesForSelection = [NSDictionary dictionaryWithObjectsAndKeys:
+    font, NSFontAttributeName,
+    [NSColor blackColor], NSForegroundColorAttributeName,
+    [NSColor selectedControlColor], NSBackgroundColorAttributeName,
+    nil
+  ] ;
 //--- Images
   NSImage * errorImage = [NSImage imageNamed:NSImageNameStatusUnavailable] ;
   NSImage * warningImage = [NSImage imageNamed:NSImageNameStatusPartiallyAvailable] ;
@@ -59,6 +66,7 @@
   OC_GGS_TextView * textView = [self.scrollView documentView] ;
   NSArray * issueArray = textView.issueArray ; // Array of PMErrorOrWarningDescriptor
   NSLayoutManager * lm = textView.layoutManager ;
+  const NSRange selectedRange = textView.selectedRange ;
   NSString * sourceString = textView.string ;
   const NSUInteger sourceStringLength = sourceString.length ;
   // NSLog (@"sourceStringLength %u", sourceStringLength) ;
@@ -75,18 +83,19 @@
     NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMinY (r)) fromView:textView] ;
     // NSLog (@"%f for line %u (%@)", p.y, line, ((inRect.origin.y - [font ascender])) ? @"yes" : @"no") ;
     const NSRange lineRange = [sourceString lineRangeForRange:NSMakeRange (idx, 1)] ;
-    if (p.y >= minYforDrawing) { 
+    if (p.y >= minYforDrawing) {
+      const BOOL intersect = NSLocationInRange (selectedRange.location, lineRange) ;
     //--- Draw line number
       NSString * str = [NSString stringWithFormat:@"%ld", line] ;
-      const NSSize strSize = [str sizeWithAttributes:attributes] ;
+      const NSSize strSize = [str sizeWithAttributes:intersect ? attributesForSelection : attributes] ;
       p.x = viewBounds.size.width - 2.0 - strSize.width ;
-      [str drawAtPoint:p withAttributes:attributes] ;
+      [str drawAtPoint:p withAttributes:intersect ? attributesForSelection : attributes] ;
       maxYreached = p.y > maxYforDrawing ;
     //--- Error or warning at this line ?
       BOOL hasError = NO ;
       BOOL hasWarning = NO ;
       for (NSUInteger i=0 ; (i<issueArray.count) && ! hasError ; i++) {
-        PMErrorOrWarningDescriptor * issue = [issueArray objectAtIndex:i] ;
+        PMErrorOrWarningDescriptor * issue = [issueArray objectAtIndex:i HERE] ;
         if ([issue isInRange:lineRange]) {
           hasError = issue.isError ;
           if (! issue.isError) {
@@ -108,6 +117,12 @@
     // NSLog (@"New line range: [%u, %u] for idx %u", lineRange.location, lineRange.length, idx) ;
     idx = lineRange.location + lineRange.length ;
   }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) mouseDown: (NSEvent *) inEvent {
+  NSBeep () ;
 }
 
 //---------------------------------------------------------------------------*

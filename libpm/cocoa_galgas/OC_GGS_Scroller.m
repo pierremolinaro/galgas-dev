@@ -10,6 +10,7 @@
 #import "OC_GGS_Scroller.h"
 #import "OC_GGS_TextView.h"
 #import "PMErrorOrWarningDescriptor.h"
+#import "PMCocoaCallsDebug.h"
 
 //---------------------------------------------------------------------------*
 
@@ -39,7 +40,7 @@
     BOOL hasError = NO ;
     BOOL hasWarning = NO ;
     for (NSUInteger i=0 ; (i<issueArray.count) && ! hasError ; i++) {
-      PMErrorOrWarningDescriptor * issue = [issueArray objectAtIndex:i] ;
+      PMErrorOrWarningDescriptor * issue = [issueArray objectAtIndex:i HERE] ;
       if ([issue isInRange:lineRange]) {
         hasError = issue.isError ;
         if (! issue.isError) {
