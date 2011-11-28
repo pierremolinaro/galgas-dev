@@ -26,6 +26,8 @@
 #import "OC_GGS_TextView.h"
 #import "PMErrorOrWarningDescriptor.h"
 #import "PMCocoaCallsDebug.h"
+#import "PMIssueInRuler.h"
+#import "OC_GGS_Document.h"
 
 //---------------------------------------------------------------------------*
 
@@ -37,7 +39,18 @@
 
 //---------------------------------------------------------------------------*
 
+- (OC_GGS_RulerViewForTextView *) initWithDocument: (OC_GGS_Document *) inDocument {
+  self = [self init] ;
+  if (self) {
+    mDocument = inDocument ;
+  }
+  return self ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (void) drawHashMarksAndLabelsInRect: (NSRect) inRect {
+  NSMutableArray * issues = [NSMutableArray new] ;
 //--- Draw background
   [[NSColor windowBackgroundColor] setFill] ;
   [NSBezierPath fillRect:inRect] ;
@@ -94,11 +107,14 @@
     //--- Error or warning at this line ?
       BOOL hasError = NO ;
       BOOL hasWarning = NO ;
-      for (NSUInteger i=0 ; (i<issueArray.count) && ! hasError ; i++) {
+      NSMutableString * allMessages = [NSMutableString stringWithCapacity:100] ;
+      for (NSUInteger i=0 ; (i<issueArray.count) ; i++) {
         PMErrorOrWarningDescriptor * issue = [issueArray objectAtIndex:i HERE] ;
         if ([issue isInRange:lineRange]) {
-          hasError = issue.isError ;
-          if (! issue.isError) {
+          [allMessages appendFormat:issue.message] ;
+          if (issue.isError) {
+            hasError = YES ;
+          }else{
             hasWarning = YES ;
           }
         }
@@ -111,18 +127,37 @@
           hints:nil
         ] ;
         [imageRep drawInRect:rImage] ;
+        [issues addObject:
+          [[PMIssueInRuler alloc]
+            initWithRect:rImage
+            message:allMessages
+          ]
+        ] ;
       }
     }
   //---
     // NSLog (@"New line range: [%u, %u] for idx %u", lineRange.location, lineRange.length, idx) ;
     idx = lineRange.location + lineRange.length ;
   }
+//---
+  mIssues = issues ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) mouseDown: (NSEvent *) inEvent {
-  NSBeep () ;
+  const NSPoint localPoint = [self convertPoint:[inEvent locationInWindow] fromView:nil] ;
+  PMIssueInRuler * foundIssue = nil ;
+  for (NSUInteger i=0 ; (i<mIssues.count) && (nil == foundIssue) ; i++) {
+    PMIssueInRuler * issue = [mIssues objectAtIndex:i] ;
+    if (NSPointInRect (localPoint, issue.rect)) {
+      foundIssue = issue ;
+    }
+  }
+//---
+  if (nil != foundIssue) {
+    [mDocument displayIssueDetailedMessage:foundIssue.message] ;
+  }
 }
 
 //---------------------------------------------------------------------------*

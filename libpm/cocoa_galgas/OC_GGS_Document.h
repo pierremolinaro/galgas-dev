@@ -78,6 +78,10 @@
 //--- "Goto Line" sheet
   @private IBOutlet NSWindow * mGotoWindow ;
   @private IBOutlet NSTextField * mGotoLineTextField ;
+
+//--- Detailled issue message
+  @private IBOutlet NSTextView * mDetailedIssueTextView ;
+  @private IBOutlet NSSplitView * mDetailedIssueSplitView ;
 }
 
 - (IBAction) actionGotoLine: (id) inSender ;
@@ -103,5 +107,7 @@
 - (void) editedFilePath:(NSString *) inDocPath
          editedRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength ;
+
+- (void) displayIssueDetailedMessage: (NSString *) inDetailledMessage ;
 
 @end
