@@ -61,7 +61,7 @@
     mScrollView = [[NSScrollView alloc] initWithFrame:NSMakeRect (0.0, 0.0, 100.0, 100.0)] ;
     mScrollView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
     [mScrollView setHasVerticalScroller:YES] ;
-    mRulerView = [OC_GGS_RulerViewForTextView new] ;
+    mRulerView = [[OC_GGS_RulerViewForTextView alloc] initWithDocument:inDocument] ;
     [mScrollView setVerticalRulerView:mRulerView] ;
     [mScrollView.verticalRulerView setRuleThickness:gCocoaGalgasPreferencesController.ruleThickness] ;
     [mScrollView setRulersVisible:[[NSUserDefaults standardUserDefaults] boolForKey:GGS_show_ruler]] ;

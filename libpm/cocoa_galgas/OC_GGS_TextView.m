@@ -55,12 +55,6 @@
 
 - (void) drawRect: (NSRect) inRect {
   [super drawRect:inRect] ;
-//  NSFont * font = [NSFont fontWithName:@"Courier" size:11.0] ;
-//  NSDictionary * attributes = [NSDictionary dictionaryWithObjectsAndKeys:
-//    font, NSFontAttributeName,
-//    [NSColor darkGrayColor], NSForegroundColorAttributeName,
-//    nil
-//  ] ;
 //--- Draw issues
   NSBezierPath * errorHiliteBezierPath = [NSBezierPath bezierPath] ;
   NSBezierPath * errorBulletBezierPath = [NSBezierPath bezierPath] ;
@@ -77,10 +71,6 @@
     // NSLog (@"p: %g, %g", p.x, p.y) ;
     const NSRect r = {{(p1.x + p2.x) / 2.0 - BULLET_SIZE / 2.0, lineRect.origin.y + lineRect.size.height - BULLET_SIZE / 2.0}, {BULLET_SIZE, BULLET_SIZE}} ;
     [issue.isError ? errorBulletBezierPath : warningBulletBezierPath appendBezierPathWithOvalInRect:r] ;
-  //--- Print Message in line
-    // NSString * firstLine = [[issue.message componentsSeparatedByString:@"\n"] objectAtIndex:0 HERE] ;
-    // const NSSize s = [firstLine sizeWithAttributes:attributes] ;
-    // [firstLine drawAtPoint:NSMakePoint (lineRect.size.width - s.width, lineRect.origin.y) withAttributes:attributes] ;
   }
 //--- Draw warning hilite
   [[self warningHiliteColor] setFill] ;

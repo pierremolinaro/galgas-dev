@@ -243,6 +243,8 @@
   [mTabBarView setTarget:self] ;
   [mTabBarView setChangeSourceTabAction:@selector (changeSelectedSourceViewAction:)] ;
   [mTabBarView setRemoveSourceTabAction:@selector (removeSelectedSourceViewAction:)] ;
+//---
+  [self displayIssueDetailedMessage:nil] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1147,24 +1149,11 @@
     NSLog (@"OC_GGS_Document <actionBuild:>") ;
   #endif
   if (mTask == nil) {
-  //--- Save all documents
-    #ifdef DEBUG_MESSAGES
-      NSLog (@"OC_GGS_Document <actionBuild:> save all documents") ;
-    #endif
     [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
-  //--- Reset range array
-    #ifdef DEBUG_MESSAGES
-      NSLog (@"OC_GGS_Document <actionBuild:> reset range array") ;
-    #endif
-  //--- Reset buffered input
-    #ifdef DEBUG_MESSAGES
-      NSLog (@"OC_GGS_Document <actionBuild:> reset buffered input") ;
-    #endif
-
+    [self displayIssueDetailedMessage:nil] ;
     [mIssueTextView setString:@"Compiling…"] ;
     mBufferedInputData = [NSMutableData new] ;
     [mIssueArrayController setContent:[NSArray array]] ;
-
     NSArray * commandLineArray = [gCocoaGalgasPreferencesController commandLineItemArray] ;
   //--- Command line tool does actually exist ? (First argument is not "?")
     if ([[commandLineArray objectAtIndex:0 HERE] isEqualToString:@"?"]) {
@@ -1342,6 +1331,33 @@
     [self selectEntryPopUp] ;
   }else if ([inKeyPath isEqualToString:@"selection.mTextSyntaxColoring.mTokenizer.menuForEntryPopUpButton"]) {
     [self populatePopUpButton] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) displayIssueDetailedMessage: (NSString *) inDetailledMessage {
+  NSTextStorage * textStorage = mDetailedIssueTextView.textStorage ;
+  if (nil == inDetailledMessage) {
+    [textStorage beginEditing] ;
+    [textStorage replaceCharactersInRange:NSMakeRange (0, [textStorage length]) withString:@""] ;
+    [textStorage endEditing] ;
+    [mDetailedIssueSplitView
+      setPosition:mDetailedIssueSplitView.bounds.size.height
+      ofDividerAtIndex:0
+    ] ;
+  }else{
+    [textStorage beginEditing] ;
+    [textStorage replaceCharactersInRange:NSMakeRange (0, [textStorage length]) withString:inDetailledMessage] ;
+    [mDetailedIssueTextView setFont:[NSFont fontWithName:@"Courier" size:13.0]] ;
+    [textStorage endEditing] ;
+    const NSRect r = [mDetailedIssueTextView.layoutManager lineFragmentUsedRectForGlyphAtIndex:inDetailledMessage.length - 1 effectiveRange:NULL] ;
+   // NSLog (@"r %g %g %g %g", r.origin.x, r.origin.y, r.size.width, r.size.height) ;
+    // NSLog (@"mDetailedIssueTextView.textContainerInset.height %g", mDetailedIssueTextView.textContainerInset.height) ;
+    [mDetailedIssueSplitView
+      setPosition:mDetailedIssueSplitView.bounds.size.height - mDetailedIssueSplitView.dividerThickness - NSMaxY (r) - 8.0
+      ofDividerAtIndex:0
+    ] ;
   }
 }
 
