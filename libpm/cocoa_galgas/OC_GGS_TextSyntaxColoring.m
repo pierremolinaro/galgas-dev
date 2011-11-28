@@ -424,7 +424,7 @@
         addObject:[[PMErrorOrWarningDescriptor alloc]
           initWithMessage:issue.issueMessage
           location:lineRange.location + issue.issueColumn - 1
-          isError:YES
+          isError:issue.errorKind
           originalIssue:issue
         ]
       ] ;
@@ -899,14 +899,14 @@ static NSInteger numericSort (NSString * inOperand1,
       NSArray * references = [kindDictionary objectForKey:kindObject] ;
       NSString * title = [NSString
         stringWithFormat:@"%@ (%d item%@)",
-        [indexingTitles objectAtIndex:kind],
+        [indexingTitles objectAtIndex:kind HERE],
         [references count],
         (([references count] > 1) ? @"s" : @"")
       ] ;
       [menu addItemWithTitle:title action:nil keyEquivalent:@""] ;
       for (NSString * descriptor in references) {
         NSArray * components = [descriptor componentsSeparatedByString:@":"] ;
-        NSString * filePath = [components objectAtIndex:4] ;
+        NSString * filePath = [components objectAtIndex:4 HERE] ;
         title = [NSString stringWithFormat:@"%@, line %@", [filePath lastPathComponent], [components objectAtIndex:1]] ;
         NSMenuItem * item = [menu addItemWithTitle:title action:@selector (indexingMenuAction:) keyEquivalent:@""] ;
         [item setTarget:self] ;
@@ -965,6 +965,12 @@ static NSInteger numericSort (NSString * inOperand1,
 - (void) documentHasBeenSaved {
   [mUndoManager removeAllActions] ;
   [self undoManagerCheckPointNotification:nil] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSArray *) issueArray {
+  return mIssueArray.copy ;
 }
 
 //---------------------------------------------------------------------------*

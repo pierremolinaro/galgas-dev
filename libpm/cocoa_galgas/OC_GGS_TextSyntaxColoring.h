@@ -39,6 +39,7 @@
 - (NSUndoManager *) undoManager ;
 - (OC_Lexique *) tokenizer ;
 - (NSString *) sourcePath ;
+- (NSArray *) issueArray ;
 
 - (BOOL) isDirty ;
 

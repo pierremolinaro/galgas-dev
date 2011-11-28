@@ -19,18 +19,18 @@
 
 //---------------------------------------------------------------------------*
 
-- (id) objectAtIndex: (unsigned) inIndex LOCATION_ARGS {
+- (id) objectAtIndex: (NSUInteger) inIndex LOCATION_ARGS {
   if (! [self isKindOfClass:[NSArray class]]) {
     NSLog (@"objectAtIndex: receiver is not an instance of NSArray in:%s:%d", IN_SOURCE_FILE, IN_SOURCE_LINE) ;
   }else if (inIndex >= [self count]) {
-    NSLog (@"objectAtIndex: index (%u) >= object count (%u) in:%s:%d", inIndex, [self count], IN_SOURCE_FILE, IN_SOURCE_LINE) ;  
+    NSLog (@"objectAtIndex: index (%lu) >= object count (%lu) in:%s:%d", inIndex, [self count], IN_SOURCE_FILE, IN_SOURCE_LINE) ;  
   }
   return [self objectAtIndex:inIndex] ;
 }
 
 //---------------------------------------------------------------------------*
 
-- (id) objectAtIndex: (unsigned) inIndex LOCATION_ARGS OF_CLASS_ARG {
+- (id) objectAtIndex: (NSUInteger) inIndex LOCATION_ARGS OF_CLASS_ARG {
   id result = [self objectAtIndex:inIndex THERE] ;
   if (! [result isKindOfClass:inClass]) {
     NSLog (@"objectAtIndex: receiver is an instance of %@ class (instead of %@ class) in:%s:%d",

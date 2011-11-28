@@ -8,6 +8,7 @@
 
 #import "OC_GGS_searchInFolders.h"
 #import "OC_GGS_Document.h"
+#import "PMCocoaCallsDebug.h"
 
 //---------------------------------------------------------------------------*
 

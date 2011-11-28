@@ -28,6 +28,10 @@
   return (mLocation >= inRange.location) && (mLocation < (inRange.location + inRange.length)) ;
 }
 
+- (NSString *) message {
+  return mMessage ;
+}
+
 - (BOOL) isError {
   return mIsError ;
 }

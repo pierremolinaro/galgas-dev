@@ -22,7 +22,7 @@
   if (! [self isKindOfClass:[NSPointerArray class]]) {
     NSLog (@"pointerAtIndex: receiver is not an instance of NSPointerArray in:%s:%d", IN_SOURCE_FILE, IN_SOURCE_LINE) ;
   }else if (inIndex >= [self count]) {
-    NSLog (@"pointerAtIndex: index (%u) >= object count (%u) in:%s:%d", inIndex, [self count], IN_SOURCE_FILE, IN_SOURCE_LINE) ;  
+    NSLog (@"pointerAtIndex: index (%lu) >= object count (%lu) in:%s:%d", inIndex, [self count], IN_SOURCE_FILE, IN_SOURCE_LINE) ;  
   }
   return [self pointerAtIndex:inIndex] ;
 }

@@ -12,6 +12,7 @@
 #import "PMDownloadData.h"
 #import "PMDownloadFile.h"
 #import "OC_GGS_PreferencesController.h"
+#import "PMCocoaCallsDebug.h"
 
 //--------------------------------------------------------------------------*
 
@@ -104,8 +105,8 @@
     unsigned i ;
     result = NSOrderedSame ;
     for (i=0 ; (i<[components count]) && (result == NSOrderedSame) ; i++) {
-      const int version = [[components objectAtIndex:i] intValue] ;
-      const int otherVersion = [[otherComponents objectAtIndex:i] intValue] ;
+      const int version = [[components objectAtIndex:i HERE] intValue] ;
+      const int otherVersion = [[otherComponents objectAtIndex:i HERE] intValue] ;
       //NSLog (@"FOR i=%u: version: %d, otherversion:%d", i, version, otherVersion) ;
       if (version < otherVersion) {
         result = NSOrderedAscending ;
@@ -580,7 +581,7 @@
     [s appendFormat:@"This installs in the %@ directory the following tools:", installationPath] ;
     unsigned i ;
     for (i=0 ; i<[toolNameArray count] ; i++) {
-      [s appendFormat:@"\n  - %@", [toolNameArray objectAtIndex:i]] ;
+      [s appendFormat:@"\n  - %@", [toolNameArray objectAtIndex:i HERE]] ;
     }
     NSAlert * alert = [NSAlert
       alertWithMessageText:@"Perform command line tools installation ?"
@@ -644,7 +645,7 @@
 //--- Installing tools
   unsigned i ;
   for (i=0 ; (i<[toolNameArray count]) && (myStatus == 0) ; i++) {
-    NSString * toolSourcePath = [resourcePath stringByAppendingString:[toolNameArray objectAtIndex:i]] ;
+    NSString * toolSourcePath = [resourcePath stringByAppendingString:[toolNameArray objectAtIndex:i HERE]] ;
     const char * copyArgs [] = {[toolSourcePath cStringUsingEncoding:NSUTF8StringEncoding], [installationPath cStringUsingEncoding:NSUTF8StringEncoding], NULL} ;
     myStatus = [self
       privilegedOperation:authorizationRef
@@ -721,7 +722,7 @@
     BOOL nothingToRemove = YES ;
     unsigned i ;
     for (i=0 ; i<[toolNameArray count] ; i++) {
-      NSString * toolName = [toolNameArray objectAtIndex:i] ;
+      NSString * toolName = [toolNameArray objectAtIndex:i HERE] ;
       if ([fm fileExistsAtPath:[NSString stringWithFormat:@"%@/%@", installationPath, toolName]]) {
         [s appendFormat:@"\n  - %@", toolName] ;
         nothingToRemove = NO ;
@@ -793,7 +794,7 @@
 //--- Installing tools
   unsigned i ;
   for (i=0 ; (i<[toolNameArray count]) && (myStatus == 0) ; i++) {
-    NSString * toolPath = [NSString stringWithFormat:@"%@/%@", installationPath, [toolNameArray objectAtIndex:i]] ;
+    NSString * toolPath = [NSString stringWithFormat:@"%@/%@", installationPath, [toolNameArray objectAtIndex:i HERE]] ;
     const char * copyArgs [] = {[toolPath cStringUsingEncoding:NSUTF8StringEncoding], NULL} ;
     myStatus = [self
       privilegedOperation:authorizationRef
