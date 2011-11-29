@@ -171,20 +171,6 @@
   NSString * key = [NSString stringWithFormat: @"frame_for_source:%@", windowTitle] ;
   [[self windowForSheet] setFrameFromString: [defaults objectForKey: key]] ;
 
-//--- Add toolbars
-  NSToolbar * tb = [[NSToolbar alloc] initWithIdentifier:MAIN_WINDOW_TOOLBAR] ;
-  [tb setAllowsUserCustomization:YES] ;
-  [tb setAutosavesConfiguration:YES] ;
-  [tb setDelegate:self] ;
-  [[self windowForSheet] setToolbar:tb] ;
-  tb = [[NSToolbar alloc] initWithIdentifier:BUILD_WINDOW_TOOLBAR] ;
-  [tb setAllowsUserCustomization:YES] ;
-  [tb setAutosavesConfiguration:YES] ;
-  [tb setDelegate:self] ;
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <windowControllerDidLoadNib:> DONE") ;
-  #endif
-
 //--- Add Split view binding
 // Note : use [self lastComponentOfFileName] instead of [window title], because window title may not set at this point
   NSString * keyPath = [NSString stringWithFormat:@"values.issue-split-fraction:%@", [self lastComponentOfFileName]] ;
@@ -245,6 +231,10 @@
   [mTabBarView setRemoveSourceTabAction:@selector (removeSelectedSourceViewAction:)] ;
 //---
   [self displayIssueDetailedMessage:nil] ;
+
+//---
+  [mBuildProgressIndicator setHidden:YES] ;
+  [mStopBuildButton setEnabled:NO] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -331,120 +321,6 @@
 - (IBAction) actionUncomment: (id) sender {
   OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
   [selectedObject uncommentSelection] ;
-}
-
-//---------------------------------------------------------------------------*
-
-#pragma mark Toolbar
-
-//---------------------------------------------------------------------------*
-//                                                                           *
-//       T O O L B A R                                                       *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-- (NSArray *) toolbarAllowedItemIdentifiers: (NSToolbar *) inToolbar {
-  NSArray * itemArray = nil ;
-  if ([[inToolbar identifier] isEqualToString:MAIN_WINDOW_TOOLBAR]) {
-    itemArray = [NSArray arrayWithObjects:
-      NSToolbarSeparatorItemIdentifier,
-      NSToolbarFlexibleSpaceItemIdentifier,
-      NSToolbarSpaceItemIdentifier,
-      NSToolbarPrintItemIdentifier,
-      @"build_button",
-      @"stop_build_button",
-      @"show_build_window_button",
-      @"goto_button",
-      nil] ;
-  }else if ([[inToolbar identifier] isEqualToString:BUILD_WINDOW_TOOLBAR]) {
-    itemArray = [NSArray arrayWithObjects:
-      NSToolbarSeparatorItemIdentifier,
-      NSToolbarFlexibleSpaceItemIdentifier,
-      NSToolbarSpaceItemIdentifier,
-      NSToolbarPrintItemIdentifier,
-      @"stop_build_button",
-      @"saveas_button",
-      @"goto_endoftext_button",
-      nil] ;
-  }
-  return itemArray ;
-}
-
-//--------------------------------------------------------------------------*
-
-- (NSArray *) toolbarDefaultItemIdentifiers: (NSToolbar *) inToolbar {
-  NSArray * itemArray = nil ;
-  if ([[inToolbar identifier] isEqualToString:MAIN_WINDOW_TOOLBAR]) {
-    itemArray = [NSArray arrayWithObjects:
-      @"build_button",
-      @"stop_build_button",
-      NSToolbarSeparatorItemIdentifier,
-      @"goto_button",
-      NSToolbarSpaceItemIdentifier,
-      nil] ;
-  }
-  return itemArray ;
-}
-
-//--------------------------------------------------------------------------*
-
-- (NSToolbarItem *) toolbar:(NSToolbar *)toolbar
-                    itemForItemIdentifier:(NSString *) inItemIdentifier
-                    willBeInsertedIntoToolbar:(BOOL) inFlag {
-  NSToolbarItem * tbi = nil ;
-  if ([inItemIdentifier isEqualToString:@"build_button"]) {
-    tbi = [[[NSToolbarItem alloc] initWithItemIdentifier:inItemIdentifier] autorelease] ;
-    [tbi setLabel:@"Build"] ;
-    [tbi setPaletteLabel:@"Build"] ;
-    [tbi setToolTip:@""] ;
-    [tbi setImage:[NSImage imageNamed:@"I_Action"]] ;
-    [tbi setTarget:self] ;
-    [tbi setAction:@selector (actionBuild:)] ;
-  }else if ([inItemIdentifier isEqualToString:@"saveas_button"]) {
-    tbi = [[[NSToolbarItem alloc] initWithItemIdentifier:inItemIdentifier] autorelease] ;
-    [tbi setLabel:@"Save Text As..."] ;
-    [tbi setPaletteLabel:@"Save Text As..."] ;
-    [tbi setToolTip:@""] ;
-    [tbi setImage:[NSImage imageNamed:@"I_SaveAs"]] ;
-    [tbi setTarget:self] ;
-    [tbi setAction:@selector (saveBuildWindowTextInFile:)] ;
-  }else if ([inItemIdentifier isEqualToString:@"stop_build_button"]) {
-    tbi = [[[NSToolbarItem alloc] initWithItemIdentifier:inItemIdentifier] autorelease] ;
-    [tbi setLabel:@"Stop Build"] ;
-    [tbi setPaletteLabel:@"Stop Build"] ;
-    [tbi setToolTip:@""] ;
-    [tbi setImage:[NSImage imageNamed:@"I_Stop"]] ;
-    [tbi setTarget:self] ;
-    [tbi setAction:@selector (stopBuild:)] ;
-  }else if ([inItemIdentifier isEqualToString:@"goto_button"]) {
-    tbi = [[[NSToolbarItem alloc] initWithItemIdentifier:inItemIdentifier] autorelease] ;
-    [tbi setLabel:@"Goto Line"] ;
-    [tbi setPaletteLabel:@"Goto Line"] ;
-    [tbi setToolTip:@""] ;
-    [tbi setView:mCurrentLineButton] ;
-    [tbi setMinSize:[mCurrentLineButton bounds].size] ;
-    [tbi setMaxSize:[mCurrentLineButton bounds].size] ;
-    [tbi setEnabled:YES] ;
-    [tbi setTarget:nil] ;
-    [tbi setAction:@selector (actionGotoLine:)] ;
-  }
-  return tbi ;
-}
-
-//--------------------------------------------------------------------------*
-
--(BOOL) validateToolbarItem: (NSToolbarItem*) inToolbarItem {
-  BOOL validate = NO ;
-  if ([[inToolbarItem itemIdentifier] isEqualToString:@"build_button"]) {
-    validate = mTask == nil ;
-  }else if ([[inToolbarItem itemIdentifier] isEqualToString:@"stop_build_button"]) {
-    validate = mTask != nil ;
-  }else if ([[inToolbarItem itemIdentifier] isEqualToString:@"saveas_button"]) {
-    validate = YES ;
-  }else if ([[inToolbarItem itemIdentifier] isEqualToString:@"goto_endoftext_button"]) {
-    validate = YES ;
-  }
-  return validate ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1109,6 +985,11 @@
     [mIssueTextView setString:issueText] ;
   //--- Analyze XML document
     [self XMLIssueAnalysis] ;
+  //---
+    [mBuildProgressIndicator stopAnimation:nil] ;
+    [mBuildProgressIndicator setHidden:YES] ;
+    [mStopBuildButton setEnabled:NO] ;
+    [mStartBuildButton setHidden:NO] ;
   }
 }
 
@@ -1150,6 +1031,10 @@
   #endif
   if (mTask == nil) {
     [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
+    [mBuildProgressIndicator startAnimation:nil] ;
+    [mBuildProgressIndicator setHidden:NO] ;
+    [mStopBuildButton setEnabled:YES] ;
+    [mStartBuildButton setHidden:YES] ;
     [self displayIssueDetailedMessage:nil] ;
     [mIssueTextView setString:@"Compiling…"] ;
     mBufferedInputData = [NSMutableData new] ;
