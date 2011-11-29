@@ -367,7 +367,6 @@
 		CFE26D280C1327B90066ACB3 /* programSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D180C1327B90066ACB3 /* programSLRgrammar.cpp */; };
 		CFE4FC1B114E4C9000DB2D43 /* semanticGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE4FC17114E4C9000DB2D43 /* semanticGeneration.cpp */; };
 		CFE4FC1C114E4C9000DB2D43 /* semanticGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE4FC17114E4C9000DB2D43 /* semanticGeneration.cpp */; };
-		CFE61D030B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m */; };
 		CFEE63DC147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEE63DB147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.m */; };
 		CFEE63E0147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEE63DF147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m */; };
 		CFEF3A7D12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */; };
@@ -931,8 +930,6 @@
 		CFE26D190C1327B90066ACB3 /* programSLRgrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = programSLRgrammar.h; sourceTree = "<group>"; };
 		CFE4FC17114E4C9000DB2D43 /* semanticGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticGeneration.cpp; sourceTree = "<group>"; };
 		CFE4FC18114E4C9000DB2D43 /* semanticGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticGeneration.h; sourceTree = "<group>"; };
-		CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_DelegateForSyntaxColoring.h; sourceTree = "<group>"; };
-		CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_DelegateForSyntaxColoring.m; sourceTree = "<group>"; };
 		CFECE4640FEFA5270031D087 /* OC_Lexique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_Lexique.h; sourceTree = "<group>"; };
 		CFECE4650FEFA5270031D087 /* OC_Lexique.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_Lexique.m; sourceTree = "<group>"; };
 		CFEE63DA147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_TextDisplayDescriptor.h; sourceTree = "<group>"; };
@@ -1277,8 +1274,6 @@
 				CF82597608536A130077AEAF /* OC_GGS_PreferencesController.m */,
 				CF82597908536A130077AEAF /* OC_GGS_TextViewEx.h */,
 				CF82597A08536A130077AEAF /* OC_GGS_TextViewEx.m */,
-				CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */,
-				CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m */,
 				CF82596F08536A130077AEAF /* I_Stop.tiff */,
 				CF82596C08536A130077AEAF /* F_CocoaWrapperForGalgas.h */,
 				CF82597B08536A130077AEAF /* PP_CocoaGalgasPrefix.pch */,
@@ -2434,7 +2429,6 @@
 				CFDAE70C0AD19F3E00713406 /* PMDownloadFile.m in Sources */,
 				CF4397FD0ADFE16D0085F47C /* PMCancelButtonForPanel.m in Sources */,
 				CF4397FF0ADFE16D0085F47C /* PMOkButtonForPanel.m in Sources */,
-				CFE61D030B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m in Sources */,
 				CF8D51990E46334400CFF259 /* GGSUpdateCocoaGalgas.m in Sources */,
 				CFE167840E8E7A2B00AFDAFC /* main.m in Sources */,
 				CF3CFB2D0FEBEA6C00CE4488 /* PMFontButton.m in Sources */,

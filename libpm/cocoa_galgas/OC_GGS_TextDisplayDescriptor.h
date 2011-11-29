@@ -47,6 +47,8 @@
 
 - (void) commentSelection ;
 - (void) uncommentSelection ;
+- (void) shiftLeftAction ;
+- (void) shiftRightAction ;
 
 - (void) noteUndoManagerCheckPointNotification ;
 

@@ -92,6 +92,8 @@
 
 - (IBAction) actionComment: (id) sender ;
 - (IBAction) actionUncomment: (id) sender ;
+- (IBAction) actionShiftLeft: (id) sender  ;
+- (IBAction) actionShiftRight: (id) sender ;
 
 - (IBAction) actionBuild: (id) sender ;
 - (IBAction) stopBuild: (id) sender ;
