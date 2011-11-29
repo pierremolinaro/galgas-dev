@@ -49,6 +49,11 @@
 
 //---------------------------------------------------------------------------*
 
+static NSUInteger imax (NSUInteger a, NSUInteger b) { return (a > b) ? a : b ; }
+static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
+
+//---------------------------------------------------------------------------*
+
 - (void) drawHashMarksAndLabelsInRect: (NSRect) inRect {
   NSMutableArray * issues = [NSMutableArray new] ;
 //--- Draw background
@@ -97,7 +102,11 @@
     // NSLog (@"%f for line %u (%@)", p.y, line, ((inRect.origin.y - [font ascender])) ? @"yes" : @"no") ;
     const NSRange lineRange = [sourceString lineRangeForRange:NSMakeRange (idx, 1)] ;
     if (p.y >= minYforDrawing) {
-      const BOOL intersect = NSLocationInRange (selectedRange.location, lineRange) ;
+      const BOOL intersect =
+        imax (selectedRange.location, lineRange.location)
+          <=
+        imin (selectedRange.location + selectedRange.length, lineRange.location + lineRange.length)
+      ; 
     //--- Draw line number
       NSString * str = [NSString stringWithFormat:@"%ld", line] ;
       const NSSize strSize = [str sizeWithAttributes:intersect ? attributesForSelection : attributes] ;
