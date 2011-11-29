@@ -2,7 +2,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2003, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 2003, ..., 2011 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -25,93 +25,23 @@
 
 //---------------------------------------------------------------------------*
 
-@class OC_GGS_TextView ;
-@class OC_GGS_DelegateForSyntaxColoring ;
-@class OC_Lexique ;
-@class OC_GGS_RulerViewForCompileMessageView ;
-@class OC_GGS_ErrorOrWarningDescriptor ;
 @class OC_GGS_TextSyntaxColoring ;
-@class PMTabBarView ;
-@class OC_GGS_SourceScrollView ;
 
 //---------------------------------------------------------------------------*
 
-@interface OC_GGS_Document : NSDocument <NSTextViewDelegate, NSWindowDelegate> {
+@interface OC_GGS_Document : NSDocument {
 
-  @private IBOutlet NSTextView * mIssueTextView ;
-
-  @private IBOutlet NSSplitView * mIssueSplitView ;
-
-
-  @private IBOutlet NSView * mSourceHostView ;
-
-  @private IBOutlet NSPopUpButton * mEntryListPopUpButton ;
-  
-  @private IBOutlet NSButton * mCurrentLineButton ;
-
-  @private NSTask * mTask ;
-
-  @private NSMutableData * mBufferedInputData ;
-
-  @private NSArrayController * mIssueArrayController ;  // Of PMIssueDescriptor
-  @private IBOutlet NSTableView * mIssueTableView ;
-  @private IBOutlet NSTableColumn * mIssueTableViewColumn ;
-
-  @private IBOutlet NSPanel * mUpdateFromFileSystemPanel ;
-
-  @private IBOutlet NSTextField * mSourceEncodingTextField ;
-  @private NSStringEncoding mFileEncoding ;
-
-//---  
+  @private NSMutableArray * mDocumentInterfaceArray ; // Array Of OC_GGS_DocumentInterface
   @private OC_GGS_TextSyntaxColoring * mSourceTextWithSyntaxColoring ;
-
-//---
-  @private NSArrayController * mSourceDisplayArrayController ;
-
-//---
-  @private IBOutlet PMTabBarView * mTabBarView ;
-
-//--- "Goto Line" sheet
-  @private IBOutlet NSWindow * mGotoWindow ;
-  @private IBOutlet NSTextField * mGotoLineTextField ;
-
-//--- Detailled issue message
-  @private IBOutlet NSTextView * mDetailedIssueTextView ;
-  @private IBOutlet NSSplitView * mDetailedIssueSplitView ;
-
-//--- Build, stop button
-  @private IBOutlet NSButton * mStartBuildButton ;
-  @private IBOutlet NSProgressIndicator * mBuildProgressIndicator ;
-  @private IBOutlet NSButton * mStopBuildButton ;
-
+  @private NSStringEncoding mFileEncoding ;
 }
-
-- (IBAction) actionGotoLine: (id) inSender ;
-
-- (IBAction) duplicateSelectedSourceViewAction: (id) inSender ;
-
-- (IBAction) actionComment: (id) sender ;
-- (IBAction) actionUncomment: (id) sender ;
-- (IBAction) actionShiftLeft: (id) sender  ;
-- (IBAction) actionShiftRight: (id) sender ;
-
-- (IBAction) actionBuild: (id) sender ;
-- (IBAction) stopBuild: (id) sender ;
 
 - (BOOL) canTerminateApplication ;
 
 - (NSString *) sourceStringForGlobalSearch ;
 - (void) replaceSourceStringWithString: (NSString *) inString ;
 
-- (void) triggerDocumentEditedStatusUpdate ;
+- (OC_GGS_TextSyntaxColoring *) sourceTextWithSyntaxColoring ;
 
-//--- Navigation throught warnings
-
-
-- (void) editedFilePath:(NSString *) inDocPath
-         editedRange: (NSRange) inEditedRange
-         changeInLength: (NSInteger) inChangeInLength ;
-
-- (void) displayIssueDetailedMessage: (NSString *) inDetailledMessage ;
-
+- (NSWindow *) addInterfaceWindow ;
 @end

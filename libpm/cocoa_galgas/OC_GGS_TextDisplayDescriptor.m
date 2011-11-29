@@ -10,7 +10,7 @@
 #import "OC_GGS_TextDisplayDescriptor.h"
 #import "OC_GGS_TextSyntaxColoring.h"
 #import "OC_Lexique.h"
-#import "OC_GGS_Document.h"
+#import "OC_GGS_DocumentInterface.h"
 #import "OC_GGS_TextView.h"
 #import "PMErrorOrWarningDescriptor.h"
 #import "OC_GGS_RulerViewForTextView.h"
@@ -43,10 +43,10 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 //---------------------------------------------------------------------------*
 
 - (OC_GGS_TextDisplayDescriptor *) initWithDelegateForSyntaxColoring: (OC_GGS_TextSyntaxColoring *) inDelegateForSyntaxColoring
-                                   document: (OC_GGS_Document *) inDocument  {
+                                   documentInterface: (OC_GGS_DocumentInterface *) inDocumentInterface  {
   self = [self init] ;
   if (self) {
-    mDocument = inDocument ;
+    mDocumentInterface = inDocumentInterface ;
     [self setSyntaxColoringDelegate:inDelegateForSyntaxColoring] ;
     mTextView = [[OC_GGS_TextView alloc] initWithFrame:NSMakeRect (0.0, 0.0, 10.0, 10.0)] ;
     mTextView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
@@ -66,7 +66,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     mScrollView = [[NSScrollView alloc] initWithFrame:NSMakeRect (0.0, 0.0, 100.0, 100.0)] ;
     mScrollView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
     [mScrollView setHasVerticalScroller:YES] ;
-    mRulerView = [[OC_GGS_RulerViewForTextView alloc] initWithDocument:inDocument] ;
+    mRulerView = [[OC_GGS_RulerViewForTextView alloc] initWithDocumentInterface:inDocumentInterface] ;
     [mScrollView setVerticalRulerView:mRulerView] ;
     [mScrollView.verticalRulerView setRuleThickness:gCocoaGalgasPreferencesController.ruleThickness] ;
     [mScrollView setRulersVisible:[[NSUserDefaults standardUserDefaults] boolForKey:GGS_show_ruler]] ;
@@ -379,7 +379,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 //---------------------------------------------------------------------------*
 
 - (void) noteUndoManagerCheckPointNotification {
-  [mDocument triggerDocumentEditedStatusUpdate] ;
+  [mDocumentInterface triggerDocumentEditedStatusUpdate] ;
 }
 
 //---------------------------------------------------------------------------*
