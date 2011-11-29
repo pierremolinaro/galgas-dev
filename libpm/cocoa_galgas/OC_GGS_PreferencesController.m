@@ -29,7 +29,7 @@
 #import "enterDefaultCommandLineOptions.h"
 #import "OC_Lexique.h"
 #import "PMCocoaCallsDebug.h"
-#include "F_CocoaWrapperForGalgas.h"
+#import "F_CocoaWrapperForGalgas.h"
 
 //---------------------------------------------------------------------------*
 
@@ -1143,20 +1143,13 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   [mNewDocumentTypePopUpButton removeAllItems] ;
 //--- Get Info.plist file
   NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary] ;
-  // NSLog (@"infoDictionary '%@'", infoDictionary) ;
   NSArray * allDocumentTypes = [infoDictionary objectForKey:@"CFBundleDocumentTypes"] ;
-  // NSLog (@"allDocumentTypes '%@'", allDocumentTypes) ;
-  unsigned i ;
-  for (i=0 ; i<[allDocumentTypes count] ; i++) {
+  for (NSUInteger i=0 ; i<[allDocumentTypes count] ; i++) {
     NSDictionary * docTypeDict = [allDocumentTypes objectAtIndex:i HERE] ;
-    // NSLog (@"docTypeDict '%@'", docTypeDict) ;
     NSArray * documentTypeExtensions = [docTypeDict objectForKey:@"CFBundleTypeExtensions"] ;
-    // NSLog (@"documentTypeExtensions '%@'", documentTypeExtensions) ;
     NSString * documentTypeRole = [docTypeDict objectForKey:@"CFBundleTypeRole"] ;
-    // NSLog (@"documentTypeRole '%@'", documentTypeRole) ;
     if ([documentTypeRole isEqualToString:@"Editor"] && ([documentTypeExtensions count] > 0)) {
       NSString * documentTypeName = [docTypeDict objectForKey:@"CFBundleTypeName"] ;
-      // NSLog (@"documentTypeName '%@'", documentTypeName) ;
       [mNewDocumentTypePopUpButton addItemWithTitle:documentTypeName] ;
       NSMenuItem * item = [mNewDocumentTypePopUpButton lastItem] ;
       [item setTarget:self] ;
@@ -1178,12 +1171,25 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     NSError * error = nil ;
     if ([[NSData data] writeToFile:path options:NSAtomicWrite error:& error]) {
       NSDocumentController * dc = [NSDocumentController sharedDocumentController] ;
-      [dc openDocumentWithContentsOfURL:[NSURL fileURLWithPath:path] display:YES error:nil] ;
+      OC_GGS_Document * doc = [dc openDocumentWithContentsOfURL:[NSURL fileURLWithPath:path] display:NO error:nil] ;
+      [doc addInterfaceWindow] ;
     }else{
       [NSApp presentError:error] ;
     }
   }
 }
+
+//---------------------------------------------------------------------------*
+
+/* - (void) myOpenDocument: (id) inSender {
+  NSOpenPanel * savePanel = [NSOpenPanel savePanel] ;
+  savePanel.canChooseDirectories = NO ;
+  savePanel.allowedFileTypes = allowedTypes ;
+//---
+  NSDocumentController * dc = [NSDocumentController sharedDocumentController] ;
+  OC_GGS_Document * doc = [dc openDocumentWithContentsOfURL:[NSURL fileURLWithPath:path] display:YES error:nil] ;
+  [doc addInterfaceWindow] ;
+}*/
 
 //---------------------------------------------------------------------------*
 
