@@ -192,10 +192,7 @@
 		CF6DF22A09E3F3A700506859 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 089C165FFE840EACC02AAC07 /* InfoPlist.strings */; };
 		CF6DF22B09E3F3A700506859 /* galgasApplication.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF9BDF6B0585C5C900FC7DD7 /* galgasApplication.icns */; };
 		CF6DF22C09E3F3A700506859 /* galgasDocuments.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF9BDF6C0585C5C900FC7DD7 /* galgasDocuments.icns */; };
-		CF6DF22E09E3F3A700506859 /* I_Action.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF82596D08536A130077AEAF /* I_Action.tiff */; };
-		CF6DF22F09E3F3A700506859 /* I_SaveAs.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF82596E08536A130077AEAF /* I_SaveAs.tiff */; };
 		CF6DF23009E3F3A700506859 /* I_Stop.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF82596F08536A130077AEAF /* I_Stop.tiff */; };
-		CF6DF23109E3F3A700506859 /* I_Window.png in Resources */ = {isa = PBXBuildFile; fileRef = CF82597008536A130077AEAF /* I_Window.png */; };
 		CF6DF24109E3F3A700506859 /* OC_GGS_BuildWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597208536A130077AEAF /* OC_GGS_BuildWindowController.m */; };
 		CF6DF24209E3F3A700506859 /* OC_GGS_Document.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597408536A130077AEAF /* OC_GGS_Document.m */; };
 		CF6DF24309E3F3A700506859 /* OC_GGS_PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597608536A130077AEAF /* OC_GGS_PreferencesController.m */; };
@@ -295,7 +292,6 @@
 		CFBC4D1411523723006CAD14 /* semanticContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBC4D0F11523723006CAD14 /* semanticContext.cpp */; };
 		CFC07E0F11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */; };
 		CFC07E1011A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */; };
-		CFC1506C0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFC1506A0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif */; };
 		CFC153050FF6A76700A61DE8 /* guiGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */; };
 		CFC153060FF6A76700A61DE8 /* guiGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */; };
 		CFC3A1C0119059210021E9A1 /* semanticExpressionAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC3A1BC119059210021E9A1 /* semanticExpressionAnalysis.cpp */; };
@@ -309,8 +305,6 @@
 		CFCB12850D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB125B0D9D74330016BE3F /* galgasTemplateScanner.cpp */; };
 		CFCB12970D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB125B0D9D74330016BE3F /* galgasTemplateScanner.cpp */; };
 		CFCEEFC113CF24C10074BDE9 /* OC_GGS_searchInFolders.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCEEFC013CF24C10074BDE9 /* OC_GGS_searchInFolders.m */; };
-		CFCF63270FFEA33800EF3A10 /* I_Orange14.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCF63250FFEA33800EF3A10 /* I_Orange14.png */; };
-		CFCF63280FFEA33800EF3A10 /* I_Red14.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCF63260FFEA33800EF3A10 /* I_Red14.png */; };
 		CFD2EA850FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */; };
 		CFD2EA860FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */; };
 		CFD396F0110E1EAF001549E6 /* cpp-allocation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD396EF110E1EAF001549E6 /* cpp-allocation.cpp */; };
@@ -622,10 +616,7 @@
 		CF7FD6AB0FF13CFB001EA1B7 /* unicode_character_m.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unicode_character_m.h; sourceTree = "<group>"; };
 		CF7FD6AC0FF13CFB001EA1B7 /* unicode_character_m.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = unicode_character_m.m; sourceTree = "<group>"; };
 		CF82596C08536A130077AEAF /* F_CocoaWrapperForGalgas.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = F_CocoaWrapperForGalgas.h; sourceTree = "<group>"; };
-		CF82596D08536A130077AEAF /* I_Action.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = I_Action.tiff; sourceTree = "<group>"; };
-		CF82596E08536A130077AEAF /* I_SaveAs.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = I_SaveAs.tiff; sourceTree = "<group>"; };
 		CF82596F08536A130077AEAF /* I_Stop.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = I_Stop.tiff; sourceTree = "<group>"; };
-		CF82597008536A130077AEAF /* I_Window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = I_Window.png; sourceTree = "<group>"; };
 		CF82597108536A130077AEAF /* OC_GGS_BuildWindowController.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildWindowController.h; sourceTree = "<group>"; };
 		CF82597208536A130077AEAF /* OC_GGS_BuildWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_BuildWindowController.m; sourceTree = "<group>"; };
 		CF82597308536A130077AEAF /* OC_GGS_Document.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_Document.h; sourceTree = "<group>"; };
@@ -852,7 +843,6 @@
 		CFBDACEB137BD130008FB334 /* unified-class-body-for-type.h.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "unified-class-body-for-type.h.gTemplate"; sourceTree = "<group>"; };
 		CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticAnalysisOfSyntaxComponent.cpp; sourceTree = "<group>"; };
 		CFC07E0C11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticAnalysisOfSyntaxComponent.h; sourceTree = "<group>"; };
-		CFC1506A0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = I_ScrollToEndArrow.gif; sourceTree = "<group>"; };
 		CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guiGrammar.cpp; sourceTree = "<group>"; };
 		CFC153020FF6A76700A61DE8 /* guiGrammar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = guiGrammar.h; sourceTree = "<group>"; };
 		CFC3A1BC119059210021E9A1 /* semanticExpressionAnalysis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticExpressionAnalysis.cpp; sourceTree = "<group>"; };
@@ -869,8 +859,6 @@
 		CFCB125C0D9D74330016BE3F /* galgasTemplateScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgasTemplateScanner.h; sourceTree = "<group>"; };
 		CFCEEFBF13CF24C10074BDE9 /* OC_GGS_searchInFolders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_searchInFolders.h; sourceTree = "<group>"; };
 		CFCEEFC013CF24C10074BDE9 /* OC_GGS_searchInFolders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_searchInFolders.m; sourceTree = "<group>"; };
-		CFCF63250FFEA33800EF3A10 /* I_Orange14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = I_Orange14.png; sourceTree = "<group>"; };
-		CFCF63260FFEA33800EF3A10 /* I_Red14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = I_Red14.png; sourceTree = "<group>"; };
 		CFD2223C11085598003C83A5 /* GALGAS_function.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_function.cpp; sourceTree = "<group>"; };
 		CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = predefinedLexicalActions.cpp; sourceTree = "<group>"; };
 		CFD2EA820FD45D080085EC05 /* predefinedLexicalActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = predefinedLexicalActions.h; sourceTree = "<group>"; };
@@ -1291,13 +1279,7 @@
 				CF82597A08536A130077AEAF /* OC_GGS_TextViewEx.m */,
 				CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */,
 				CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m */,
-				CF82596D08536A130077AEAF /* I_Action.tiff */,
-				CF82596E08536A130077AEAF /* I_SaveAs.tiff */,
 				CF82596F08536A130077AEAF /* I_Stop.tiff */,
-				CF82597008536A130077AEAF /* I_Window.png */,
-				CFCF63250FFEA33800EF3A10 /* I_Orange14.png */,
-				CFCF63260FFEA33800EF3A10 /* I_Red14.png */,
-				CFC1506A0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif */,
 				CF82596C08536A130077AEAF /* F_CocoaWrapperForGalgas.h */,
 				CF82597B08536A130077AEAF /* PP_CocoaGalgasPrefix.pch */,
 				CFFCE7BB14686081009DB6D5 /* PMIssueDescriptor.h */,
@@ -2071,13 +2053,7 @@
 				CF6DF22C09E3F3A700506859 /* galgasDocuments.icns in Resources */,
 				CFD818FA0D8D9D1B00DEAD27 /* galgas-developer in Resources */,
 				CFD818FB0D8D9D1B00DEAD27 /* galgas-developer-debug in Resources */,
-				CF6DF22E09E3F3A700506859 /* I_Action.tiff in Resources */,
-				CF6DF22F09E3F3A700506859 /* I_SaveAs.tiff in Resources */,
 				CF6DF23009E3F3A700506859 /* I_Stop.tiff in Resources */,
-				CF6DF23109E3F3A700506859 /* I_Window.png in Resources */,
-				CFC1506C0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif in Resources */,
-				CFCF63270FFEA33800EF3A10 /* I_Orange14.png in Resources */,
-				CFCF63280FFEA33800EF3A10 /* I_Red14.png in Resources */,
 				CF06F5CB1049592F005F03FA /* MainMenu.xib in Resources */,
 				CF06F5CC1049592F005F03FA /* OC_GGS_Document.xib in Resources */,
 				CF83184C104A7A9200FDF2EC /* galgasUpdate.xib in Resources */,

@@ -36,11 +36,7 @@
 
 //---------------------------------------------------------------------------*
 
-@interface OC_GGS_Document : NSDocument
-#ifdef MAC_OS_X_VERSION_10_6
- <NSTextViewDelegate, NSToolbarDelegate, NSWindowDelegate>
- #endif
-{
+@interface OC_GGS_Document : NSDocument <NSTextViewDelegate, NSWindowDelegate> {
 
   @private IBOutlet NSTextView * mIssueTextView ;
 
@@ -82,6 +78,12 @@
 //--- Detailled issue message
   @private IBOutlet NSTextView * mDetailedIssueTextView ;
   @private IBOutlet NSSplitView * mDetailedIssueSplitView ;
+
+//--- Build, stop button
+  @private IBOutlet NSButton * mStartBuildButton ;
+  @private IBOutlet NSProgressIndicator * mBuildProgressIndicator ;
+  @private IBOutlet NSButton * mStopBuildButton ;
+
 }
 
 - (IBAction) actionGotoLine: (id) inSender ;
