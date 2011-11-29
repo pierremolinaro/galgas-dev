@@ -19,6 +19,11 @@
 
 //---------------------------------------------------------------------------*
 
+static inline NSInteger imin (const NSInteger a, const NSInteger b) { return a < b ? a : b ; }
+static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a > b ? a : b ; }
+
+//---------------------------------------------------------------------------*
+
 @implementation OC_GGS_TextDisplayDescriptor
 
 //---------------------------------------------------------------------------*
@@ -192,6 +197,140 @@
 - (void) uncommentSelection {
   const NSRange newRange = [mTextSyntaxColoring uncommentRange:mTextView.selectedRange] ;
   mTextView.selectedRange = newRange ;
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Indentation
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) shiftLeftString {
+  const NSUInteger spaceCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"PMShiftLeftInsertedSpaceCount"] ;
+  //NSLog (@"spaceCount %u", spaceCount) ;
+  NSMutableString * s = [[[NSMutableString alloc] init] autorelease] ;
+  NSUInteger i ;
+  for (i=0 ; i<spaceCount ; i++) {
+    [s appendString:@" "] ;
+  }
+  return s ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSAttributedString *) shiftLeftAttributedString {
+  NSDictionary * attributeDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+    [mTextView font], NSFontAttributeName,
+    nil
+  ] ;
+  return [[[NSAttributedString alloc] initWithString:[self shiftLeftString] attributes:attributeDictionary] autorelease] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) shiftRightRange: (NSValue *) inRangeValue {
+  NSAttributedString * spaceString = [self shiftLeftAttributedString] ;
+  const NSRange selectedRange = [inRangeValue rangeValue] ;
+  //NSLog (@"selectedRange [%d, %d]", selectedRange.location, selectedRange.length) ;
+  NSMutableAttributedString * mutableSourceString = [mTextView textStorage] ;
+  NSString * sourceString = [mutableSourceString string] ;
+  const NSRange lineRange = [sourceString lineRangeForRange:selectedRange] ;
+  //NSLog (@"lineRange [%d, %d]", lineRange.location, lineRange.length) ;
+  NSInteger insertedCharsCount = 0 ;
+  NSRange currentLineRange = [sourceString lineRangeForRange:NSMakeRange (lineRange.location + lineRange.length - 1, 1)] ;
+  do {
+    //NSLog (@"currentLineRange [%d, %d]", currentLineRange.location, currentLineRange.length) ;
+    [mutableSourceString insertAttributedString:spaceString atIndex:currentLineRange.location] ;
+    insertedCharsCount += [spaceString length] ;
+    if (currentLineRange.location > 0) {
+      currentLineRange = [sourceString lineRangeForRange:NSMakeRange (currentLineRange.location - 1, 1)] ;
+    }
+  }while ((currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location)) ;
+//--- Update selected range
+  const NSRange newSelectedRange = NSMakeRange (selectedRange.location, selectedRange.length + insertedCharsCount) ;
+  [mTextView setSelectedRange:newSelectedRange] ;
+//--- Register undo
+  [mTextSyntaxColoring.undoManager 
+    registerUndoWithTarget:self
+    selector:@selector (shiftLeftRange:)
+    object:[NSValue valueWithRange:newSelectedRange]
+  ] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) shiftRightAction {
+  const NSRange selectedRange = [mTextView selectedRange] ;
+  [self shiftRightRange:[NSValue valueWithRange:selectedRange]] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) shiftLeftRange: (NSValue *) inRangeValue {
+//--- Get range to be examined
+  const NSRange initialSelectedRange = [inRangeValue rangeValue] ;
+//--- Block comment string
+  NSString * spaceString = [self shiftLeftString] ;
+  const NSUInteger twoSpaceLength = [spaceString length] ;
+//--- Get source string
+  NSMutableAttributedString * mutableSourceString = [mTextView textStorage] ;
+  NSString * sourceString = [mutableSourceString string] ;
+  #ifdef DEBUG_UNCOMMENTRANGE
+    NSLog (@"spaceString '%@', text length %u", spaceString, [sourceString length]) ;
+    NSLog (@"initialSelectedRange [%d, %d]", initialSelectedRange.location, initialSelectedRange.length) ;
+  #endif
+//--- Final selection range
+  NSRange finalSelectedRange = initialSelectedRange ;
+//--- Get line range that is affected by the operation
+  const NSRange lineRange = [sourceString lineRangeForRange:initialSelectedRange] ;
+  #ifdef DEBUG_UNCOMMENTRANGE
+    NSLog (@"lineRange [%d, %d]", lineRange.location, lineRange.length) ;
+  #endif
+  NSRange currentLineRange = [sourceString lineRangeForRange:NSMakeRange (lineRange.location + lineRange.length - 1, 1)] ;
+  do {
+    #ifdef DEBUG_UNCOMMENTRANGE
+      NSLog (@"currentLineRange [%d, %d]", currentLineRange.location, currentLineRange.length) ;
+    #endif
+    NSString * lineString = [sourceString substringWithRange:currentLineRange] ;
+    if ([lineString compare:spaceString options:0 range:NSMakeRange (0, twoSpaceLength)] == NSOrderedSame) {
+      [mutableSourceString replaceCharactersInRange:NSMakeRange (currentLineRange.location, twoSpaceLength) withString:@""] ;
+    //--- Examen du nombre de caractères à l'intérieur de la sélection
+      const NSInteger withinSelectionCharacterCount = 
+        imin (currentLineRange.location + twoSpaceLength, finalSelectedRange.location + finalSelectedRange.length)
+      -
+        imax (currentLineRange.location, finalSelectedRange.location) ;
+      if (withinSelectionCharacterCount > 0) {
+        finalSelectedRange.length -= withinSelectionCharacterCount ;
+      }
+    //--- Examen du nombre de caractères avant la sélection
+      const NSInteger beforeSelectionCharacterCount = finalSelectedRange.location - currentLineRange.location ;
+      if (beforeSelectionCharacterCount > 0) {
+        finalSelectedRange.location -= imin (twoSpaceLength, beforeSelectionCharacterCount) ;
+      }
+      #ifdef DEBUG_UNCOMMENTRANGE
+        NSLog (@"withinSelectionCharacterCount %d, beforeSelectionCharacterCount %d", withinSelectionCharacterCount, beforeSelectionCharacterCount) ;
+        NSLog (@"finalSelectedRange [%d, %d]", finalSelectedRange.location, finalSelectedRange.length) ;
+      #endif
+    }
+    if (currentLineRange.location > 0) {
+      currentLineRange = [sourceString lineRangeForRange:NSMakeRange (currentLineRange.location - 1, 1)] ;
+    }
+  }while ((currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location)) ;
+//--- Update selected range
+  [mTextView setSelectedRange:finalSelectedRange] ;
+//--- Register undo
+  [mTextSyntaxColoring.undoManager 
+    registerUndoWithTarget:self
+    selector:@selector (shiftRightRange:)
+    object:[NSValue valueWithRange:finalSelectedRange]
+  ] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) shiftLeftAction {
+  const NSRange selectedRange = [mTextView selectedRange] ;
+  [self shiftLeftRange:[NSValue valueWithRange:selectedRange]] ;
 }
 
 //---------------------------------------------------------------------------*

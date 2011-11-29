@@ -25,7 +25,6 @@
 #import "OC_GGS_PreferencesController.h"
 #import "OC_GGS_RulerViewForTextView.h"
 #import "OC_Lexique.h"
-#import "OC_GGS_DelegateForSyntaxColoring.h"
 #import "F_CocoaWrapperForGalgas.h"
 #import "PMCocoaCallsDebug.h"
 #import "PMIssueDescriptor.h"
@@ -321,6 +320,20 @@
 - (IBAction) actionUncomment: (id) sender {
   OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
   [selectedObject uncommentSelection] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) actionShiftLeft: (id) sender {
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
+  [selectedObject shiftLeftAction] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) actionShiftRight: (id) sender {
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
+  [selectedObject shiftRightAction] ;
 }
 
 //---------------------------------------------------------------------------*
