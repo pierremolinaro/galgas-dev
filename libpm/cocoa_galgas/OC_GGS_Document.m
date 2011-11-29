@@ -38,11 +38,6 @@
 
 //---------------------------------------------------------------------------*
 
-#define MAIN_WINDOW_TOOLBAR  @"GALGAS_MAIN_WINDOW_TOOLBAR"
-#define BUILD_WINDOW_TOOLBAR @"GALGAS_BUILD_WINDOW_TOOLBAR"
-
-//---------------------------------------------------------------------------*
-
 @implementation OC_GGS_Document
 
 //---------------------------------------------------------------------------*
@@ -52,7 +47,7 @@
 //---------------------------------------------------------------------------*
 
 - (id) init {
-  self = [super init];
+  self = [super init] ;
   if (self) {
     #ifdef DEBUG_MESSAGES
       NSLog (@"%s", __PRETTY_FUNCTION__) ;
@@ -75,40 +70,6 @@
 
 - (void) replaceSourceStringWithString: (NSString *) inString {
   [mSourceTextWithSyntaxColoring replaceSourceStringWithString:inString] ;
-}
-
-//---------------------------------------------------------------------------*
-
-#pragma mark Build message text view
-
-//---------------------------------------------------------------------------*
-
-- (NSFont *) currentBuildTextViewFont {
-  NSData * d = [[NSUserDefaults standardUserDefaults] objectForKey:GGS_build_text_font] ;
-  return [NSUnarchiver unarchiveObjectWithData:d] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) appendMessage: (NSString *) inMessage {
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) appendError: (NSString *) inMessage {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <appendError:> with '%@'", inMessage) ;
-  #endif
-  [self appendMessage:@"\n"] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) appendWarning: (NSString *) inMessage {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <appendWarning:> with '%@'", inMessage) ;
-  #endif
-  [self appendMessage:@"\n"] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -252,6 +213,10 @@
 
 //---------------------------------------------------------------------------*
 
+#pragma mark Actions
+
+//---------------------------------------------------------------------------*
+
 - (IBAction) duplicateSelectedSourceViewAction: (id) inSender {
   OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
   OC_GGS_TextDisplayDescriptor * textDisplayDescriptor = [[OC_GGS_TextDisplayDescriptor alloc]
@@ -261,10 +226,6 @@
   [mSourceDisplayArrayController addObject:textDisplayDescriptor] ;
   [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:textDisplayDescriptor]] ;
 }
-
-//---------------------------------------------------------------------------*
-
-#pragma mark Actions
 
 //---------------------------------------------------------------------------*
 
@@ -988,7 +949,7 @@
     [center removeObserver:self name:NSTaskDidTerminateNotification object:task] ;
     const int status = [task terminationStatus];
     if (status != 0) {
-      [self appendMessage: [NSString stringWithFormat: @"Build task has exited with status %d\n", status]] ;
+//      [self appendMessage: [NSString stringWithFormat: @"Build task has exited with status %d\n", status]] ;
     }
   //--- Translate input data into text
     NSString * issueText = [[NSString alloc]
@@ -1075,14 +1036,10 @@
       [arguments addObjectsFromArray:[commandLineArray subarrayWithRange:NSMakeRange (1, [commandLineArray count]-1)]] ;
       [arguments addObject:self.fileURL.path] ;
    //--- Create task
-      mTask = [[NSTask alloc] init] ;
+      mTask = [NSTask new] ;
       [mTask setLaunchPath:[commandLineArray objectAtIndex:0 HERE]] ;
       [mTask setArguments:arguments] ;
       // NSLog (@"'%@' %@", [mTask launchPath], arguments) ;
-    //--- Set priority
-      // const int priority = getpriority (PRIO_PROCESS, [mTask processIdentifier]) ;
-      // setpriority (PRIO_PROCESS, [mTask processIdentifier], priority + 20) ;
-      // NSLog (@"priority %d -> %d", priority, getpriority (PRIO_PROCESS, [mTask processIdentifier])) ;
     //--- Set standard output notification
       NSPipe * taskOutput = [NSPipe pipe] ;
       [mTask setStandardOutput:taskOutput] ;
