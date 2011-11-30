@@ -3,7 +3,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2003, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 2003, ..., 2011 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -173,10 +173,6 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
         }
       }
     }
-  }
-//--- Add 'time' option
-  if (mTimeOptionOn) {
-    [arguments insertObject:@"/usr/bin/time" atIndex:0] ;
   }
 //--- Assign command line option array attribute
   mCommandLineItemArray = arguments ;
@@ -511,57 +507,6 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 
 //---------------------------------------------------------------------------*
 
-#pragma mark time Option
-
-//---------------------------------------------------------------------------*
-//                                                                           *
-//   "    T I M E    "    O P T I O N                                        *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-- (void) timeOptionDidChange: (id) inSender {
-//  NSLog (@"%d", [inSender state]) ;
-  mTimeOptionOn = [inSender state] != 0 ;
-  [self willChangeValueForKey:@"commandLineString"] ;
-  [self  didChangeValueForKey:@"commandLineString"] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) build_time_optionInView: (NSView *) inView enclosingRect: (NSRect *) ioRect {
-//--- Create checkbox
-  NSRect r  ;
-  r.origin.x = 10.0 ;
-  r.origin.y = ioRect->origin.y - 25.0 ;
-  r.size.height = 20.0 ;
-  NSButton * cb = [[NSButton alloc] init] ;
-  NSString * title = @"Prefix by 'time' tool" ;
-  NSDictionary * d = [NSDictionary dictionaryWithObjectsAndKeys:
-    [cb font], NSFontAttributeName,
-    nil
-  ] ;
-  r.size.width = [title sizeWithAttributes:d].width + 30.0 ;
-  [cb setTitle:title] ;
-  [cb setButtonType: NSSwitchButton] ;
-  [cb setAutoresizingMask: NSViewMaxXMargin | NSViewMinYMargin] ;
-  [cb setFrame: r] ;
-  [cb setTarget: self] ;
-  [cb setAction: @selector (timeOptionDidChange:)] ;
-  [inView addSubview:cb] ;
-//--- Bind to user defaults controller
-  NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
-  [cb
-    bind:@"value"
-    toObject:udc
-    withKeyPath:[NSString stringWithFormat:@"values.%@", GGS_prefix_by_time_tool]
-    options:nil
-  ] ;
-  [self timeOptionDidChange:cb] ;
-  *ioRect = NSUnionRect (*ioRect, r) ;
-}
-
-//---------------------------------------------------------------------------*
-
 #pragma mark Build Text Macros Menu
 
 //---------------------------------------------------------------------------*
@@ -860,31 +805,9 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
   NSNotificationCenter  * nc = [NSNotificationCenter defaultCenter] ;
   [nc addObserver:self selector:@selector(preferencesDidChange:) name:NSUserDefaultsDidChangeNotification object:ud] ;
-//--- Copy old style preferences
-  NSString * prefString = [ud objectForKey:@"useTimeOption"] ;
-  if (prefString != nil) {
-    [ud setObject:prefString forKey:GGS_prefix_by_time_tool] ;
-  }
-  prefString = [ud objectForKey:@"defaultEncodingForNewFile"] ;
-  if (prefString != nil) {
-    [ud setObject:prefString forKey:GGS_default_encoding_for_new_file] ;
-  }
-  prefString = [ud objectForKey:@"defaultEncodingForExistingFile"] ;
-  if (prefString != nil) {
-    [ud setObject:prefString forKey:GGS_default_encoding_for_existing_file] ;
-  }
-  prefString = [ud objectForKey:@"operationOnOpeningFileWithUndecidableEncoding"] ;
-  if (prefString != nil) {
-    [ud setObject:prefString forKey:GGS_operation_on_opening_file_with_undecidable_encoding] ;
-  }
-  prefString = [ud objectForKey:@"tool_selection_preference"] ;
-  if (prefString != nil) {
-    [ud setObject:prefString forKey:GGS_tool_selection_preference] ;
-  }
 //--- Load tool nibs ?
   NSArray * nibArray = nibsAndClasses () ;
-  unsigned i ;
-  for (i=0 ; i<[nibArray count] ; i++) {
+  for (NSUInteger i=0 ; i<[nibArray count] ; i++) {
     NSArray * entry = [nibArray objectAtIndex:i HERE] ;
     NSString * nibName = [entry objectAtIndex:0 HERE] ;
     Class mainClass = [entry objectAtIndex:1 HERE] ;
@@ -949,8 +872,6 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   NSView * view = [[NSView alloc] initWithFrame:enclosingRect] ;
   [view setAutoresizesSubviews:YES] ;
   [self populateToolPopupButtonInView:view] ;
-//--- Add "time" option
-  [self build_time_optionInView:view enclosingRect:&enclosingRect] ;
 //--- Build boolean command line options
   [self buildBooleanCommandLineOptionsInView:view enclosingRect:&enclosingRect] ;
 //--- Build unsigned integer command line options

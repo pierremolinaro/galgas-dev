@@ -38,7 +38,6 @@
 #define GGS_uint_build_option                @"GGS_uint_build_option"
 #define GGS_string_build_option              @"GGS_string_build_option"
 #define GGS_preference_window_frame          @"GGS_preference_window_frame"
-#define GGS_prefix_by_time_tool      @"GGS_prefix_by_time_tool"
 #define GGS_default_encoding_for_new_file @"GGS_default_encoding_for_new_file"
 #define GGS_default_encoding_for_existing_file @"GGS_default_encoding_for_existing_file"
 #define GGS_operation_on_opening_file_with_undecidable_encoding @"GGS_operation_on_opening_file_with_undecidable_encoding"
@@ -120,9 +119,6 @@ extern OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 
 //--- Task for 'Run' command
   @private NSTask * mTask ;
-
-//--- "time" option
-  @private bool mTimeOptionOn ;
 
 //--- Command line option
   @private NSMutableArray * mBoolOptionArray ;

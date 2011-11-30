@@ -60,4 +60,5 @@
 
 - (void) documentHasBeenSaved ;
 
+- (void) setIssueArray: (NSArray *) inIssueArray ;
 @end

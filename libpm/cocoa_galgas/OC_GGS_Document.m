@@ -105,9 +105,6 @@
   [super windowControllerDidLoadNib: inWindowController];
 //--- Tell to window controller that closing the source text window closes the document
   [inWindowController setShouldCloseDocument: YES] ;
-
-  NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;
-
 //--- Bindings
   [mIssueTextView
     bind:@"font"
@@ -135,7 +132,7 @@
 //--- Set up windows location
   NSString * windowTitle = [self lastComponentOfFileName] ;
   NSString * key = [NSString stringWithFormat: @"frame_for_source:%@", windowTitle] ;
-  [[self windowForSheet] setFrameFromString: [defaults objectForKey: key]] ;
+  [[self windowForSheet] setFrameAutosaveName:key] ;
 
 //--- Add Split view binding
 // Note : use [self lastComponentOfFileName] instead of [window title], because window title may not set at this point
@@ -203,7 +200,6 @@
   [mTabBarView setRemoveSourceTabAction:@selector (removeSelectedSourceViewAction:)] ;
 //---
   [self displayIssueDetailedMessage:nil] ;
-
 //---
   [mBuildProgressIndicator setHidden:YES] ;
   [mStopBuildButton setEnabled:NO] ;
@@ -324,31 +320,6 @@
   [selectedObject.textView print:sender] ;
 }
 
-//---------------------------------------------------------------------------*
-//                                                                           *
-//       D O C U M E N T    W I N D O W    D I D    M O V E                  *
-//                     N O T I F I C A T I O N                               *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-- (void) windowDidMove: (NSNotification *) aNotification {
-  NSString * windowTitle = [self lastComponentOfFileName] ;
-  NSWindow * docWindow = [aNotification object] ;
-  NSString * s = [docWindow stringWithSavedFrame] ;
-  NSString * key = [NSString stringWithFormat: @"frame_for_source:%@", windowTitle] ;
-  [[NSUserDefaults standardUserDefaults] setObject: s forKey: key] ;
-}
-
-//---------------------------------------------------------------------------*
-//                                                                           *
-//       D O C U M E N T    W I N D O W    D I D    R E S I Z E              *
-//                     N O T I F I C A T I O N                               *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-- (void) windowDidResize: (NSNotification *) aNotification {
-  [self windowDidMove: aNotification] ; 
-}
 //---------------------------------------------------------------------------*
 
 #pragma mark Tracking File Document changes
@@ -478,7 +449,7 @@
          ofType: (NSString *) inTypeName
          error: (NSError **) outError {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <writeToURL:ofType:error:>") ;
+    NSLog (@"%s, URL %@", __PRETTY_FUNCTION__, inAbsoluteURL) ;
   #endif
   [mSourceTextWithSyntaxColoring breakUndoCoalescing] ;
   NSString * string = [mSourceTextWithSyntaxColoring sourceString] ;
@@ -910,6 +881,15 @@
     }
   }
   [mIssueArrayController setContent:issueArray] ;
+//--- Send issues to concerned text source coloring objects
+  NSMutableSet * sourceTextColoringSet = [NSMutableSet new] ;
+  for (OC_GGS_TextDisplayDescriptor * tds in mSourceDisplayArrayController.arrangedObjects) {
+    [sourceTextColoringSet addObject:tds.textSyntaxColoring] ;
+  }
+  for (OC_GGS_TextSyntaxColoring * tsc in sourceTextColoringSet) {
+    [tsc setIssueArray:issueArray] ;
+  }
+//---
   if (nil != error) {
     [self.windowForSheet presentError:error] ;
   }
@@ -1070,8 +1050,58 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) findOrOpenDocumentWithPath: (NSString *) inDocumentPath {
+- (OC_GGS_TextSyntaxColoring *) findOrAddDocumentWithPath: (NSString *) inPath {
+  OC_GGS_TextSyntaxColoring * result = nil ;
+  NSString * currentSourceDir = mSourceTextWithSyntaxColoring.sourcePath.stringByDeletingLastPathComponent ;
+  NSString * requestedAbsolutePath = inPath.isAbsolutePath
+    ? inPath
+    : [currentSourceDir stringByAppendingPathComponent:inPath]
+  ;
+//--- Search in opened documents
+  NSArray * documents = [[NSDocumentController sharedDocumentController] documents] ;
+  for (NSUInteger i=0 ; (i<documents.count) && (nil == result) ; i++) {
+    OC_GGS_Document * doc = [documents objectAtIndex:i] ;
+    if ([requestedAbsolutePath isEqualToString:doc.fileURL.path]) {
+      result = doc.textSyntaxColoring ;
+    }
+  }
+//--- if not found, open a new document
+  if (nil == result) {
+    OC_GGS_Document * doc = [[NSDocumentController sharedDocumentController]
+      openDocumentWithContentsOfURL:[NSURL fileURLWithPath:requestedAbsolutePath]
+      display:YES
+      error:nil
+    ] ;
+    result = doc.textSyntaxColoring ;
+  }
+//---  
+  return result ;
+}
 
+//---------------------------------------------------------------------------*
+
+- (OC_GGS_TextDisplayDescriptor *) findOrAddNewTabForFile: (NSString *) inDocumentPath {
+  NSArray * sourceDisplayDescriptorArray = mSourceDisplayArrayController.arrangedObjects ;
+  OC_GGS_TextSyntaxColoring * newTextSyntaxColoring = [self findOrAddDocumentWithPath:inDocumentPath] ;
+  OC_GGS_TextDisplayDescriptor * foundSourceText = nil ;
+  if (nil != newTextSyntaxColoring) { // Find a text display descriptor
+    for (NSUInteger i=0 ; (i<sourceDisplayDescriptorArray.count) && (nil == foundSourceText) ; i++) {
+      OC_GGS_TextDisplayDescriptor * std = [sourceDisplayDescriptorArray objectAtIndex:i HERE] ;
+      if (std.textSyntaxColoring == newTextSyntaxColoring) {
+        foundSourceText = std ;
+      }
+    }
+    if (nil == foundSourceText) { // Create a tab
+      foundSourceText = [[OC_GGS_TextDisplayDescriptor alloc]
+        initWithDelegateForSyntaxColoring:newTextSyntaxColoring
+        document:self
+      ] ;
+      [mSourceDisplayArrayController addObject:foundSourceText] ;
+    }
+
+    [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:foundSourceText]] ;
+  }
+  return foundSourceText ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1085,7 +1115,8 @@
     OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
     const BOOL ok = [textDisplay makeVisibleIssue:issue] ;
     if (! ok) { // Current tab view does not correspond: open a new tab
-    
+      textDisplay = [self findOrAddNewTabForFile:issue.issuePath] ;
+      [textDisplay makeVisibleIssue:issue] ;
     }
   }
 }
@@ -1224,36 +1255,6 @@
 
 //---------------------------------------------------------------------------*
 
-- (OC_GGS_TextSyntaxColoring *) findOrAddDocumentWithRelativePath: (NSString *) inPath {
-  OC_GGS_TextSyntaxColoring * result = nil ;
-  NSString * currentSourceDir = mSourceTextWithSyntaxColoring.sourcePath.stringByDeletingLastPathComponent ;
-  NSString * requestedAbsolutePath = inPath.isAbsolutePath
-    ? inPath
-    : [currentSourceDir stringByAppendingPathComponent:inPath]
-  ;
-//--- Search in opened documents
-  NSArray * documents = [[NSDocumentController sharedDocumentController] documents] ;
-  for (NSUInteger i=0 ; (i<documents.count) && (nil == result) ; i++) {
-    OC_GGS_Document * doc = [documents objectAtIndex:i] ;
-    if ([requestedAbsolutePath isEqualToString:doc.fileURL.path]) {
-      result = doc.textSyntaxColoring ;
-    }
-  }
-//--- if not found, open a new document
-  if (nil == result) {
-    OC_GGS_Document * doc = [[NSDocumentController sharedDocumentController]
-      openDocumentWithContentsOfURL:[NSURL fileURLWithPath:requestedAbsolutePath]
-      display:NO
-      error:nil
-    ] ;
-    result = doc.textSyntaxColoring ;
-  }
-//---  
-  return result ;
-}
-
-//---------------------------------------------------------------------------*
-
 - (void) actionOpenQuickly: (id) sender {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
@@ -1310,24 +1311,7 @@
   [currentSourceText.textView setSelectedRange:selection] ;
 //---
   NSString * selectedString = [sourceString substringWithRange:selection] ;
-  OC_GGS_TextSyntaxColoring * newTextSyntaxColoring = [self findOrAddDocumentWithRelativePath:selectedString] ;
-  if (nil != newTextSyntaxColoring) { // Find a text display descriptor
-    OC_GGS_TextDisplayDescriptor * foundSourceText = nil ;
-    for (NSUInteger i=0 ; (i<sourceDisplayDescriptorArray.count) && (nil == foundSourceText) ; i++) {
-      OC_GGS_TextDisplayDescriptor * std = [sourceDisplayDescriptorArray objectAtIndex:i HERE] ;
-      if (std.textSyntaxColoring == newTextSyntaxColoring) {
-        foundSourceText = std ;
-      }
-    }
-    if (nil == foundSourceText) { // Create a tab
-      foundSourceText = [[OC_GGS_TextDisplayDescriptor alloc]
-        initWithDelegateForSyntaxColoring:newTextSyntaxColoring
-        document:self
-      ] ;
-      [mSourceDisplayArrayController addObject:foundSourceText] ;
-    }
-    [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:foundSourceText]] ;
-  }
+  [self findOrAddNewTabForFile:selectedString] ;
 }
 
 //---------------------------------------------------------------------------*
