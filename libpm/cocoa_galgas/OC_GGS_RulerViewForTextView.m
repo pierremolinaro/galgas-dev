@@ -27,7 +27,7 @@
 #import "PMErrorOrWarningDescriptor.h"
 #import "PMCocoaCallsDebug.h"
 #import "PMIssueInRuler.h"
-#import "OC_GGS_DocumentInterface.h"
+#import "OC_GGS_Document.h"
 
 //---------------------------------------------------------------------------*
 
@@ -39,10 +39,10 @@
 
 //---------------------------------------------------------------------------*
 
-- (OC_GGS_RulerViewForTextView *) initWithDocumentInterface: (OC_GGS_DocumentInterface *) inDocumentInterface {
+- (OC_GGS_RulerViewForTextView *) initWithDocument: (OC_GGS_Document *) inDocument {
   self = [self init] ;
   if (self) {
-    mDocumentInterface = inDocumentInterface ;
+    mDocument = inDocument ;
   }
   return self ;
 }
@@ -165,7 +165,7 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
   }
 //---
   if (nil != foundIssue) {
-    [mDocumentInterface displayIssueDetailedMessage:foundIssue.message] ;
+    [mDocument displayIssueDetailedMessage:foundIssue.message] ;
   }
 }
 

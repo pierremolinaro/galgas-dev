@@ -40,6 +40,12 @@
   @private NSString * mKeyForSelectionInUserDefault ;
   @private NSTextStorage * mDefaultTextStorage ;
 }
+
+- (void) setCurrentLineButton: (NSButton *) inCurrentLineButton ;
+
+- (void) setKeyForSelectionInUserDefault: (NSString *) inKeyForSelectionInUserDefault ;
+
+- (void) scrollToSelectionDefinedInUserDefaults: (NSString *) inWindowTitle ;
 @end
 
 //---------------------------------------------------------------------------*

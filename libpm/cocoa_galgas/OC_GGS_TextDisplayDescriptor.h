@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 
 @class OC_GGS_TextSyntaxColoring ;
-@class OC_GGS_DocumentInterface ;
+@class OC_GGS_Document ;
 @class OC_GGS_TextView ;
 @class PMIssueDescriptor ;
 @class OC_GGS_RulerViewForTextView ;
@@ -21,13 +21,13 @@
   @private OC_GGS_RulerViewForTextView * mRulerView ;
   @private NSScrollView * mScrollView ;
   @private NSUInteger mTextSelectionStart ;
-  @private OC_GGS_DocumentInterface * mDocumentInterface ;
+  @private OC_GGS_Document * mDocument ;
   @private NSArray * mIssueArray ;
 
 }
 
 - (OC_GGS_TextDisplayDescriptor *) initWithDelegateForSyntaxColoring: (OC_GGS_TextSyntaxColoring *) inDelegate
-                                   documentInterface: (OC_GGS_DocumentInterface *) inDocument ;
+                                   document: (OC_GGS_Document *) inDocument ;
 
 - (void) setSyntaxColoringDelegate: (OC_GGS_TextSyntaxColoring *) inDelegate ;
 

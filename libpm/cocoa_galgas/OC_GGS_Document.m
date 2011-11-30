@@ -22,10 +22,15 @@
 //---------------------------------------------------------------------------*
 
 #import "OC_GGS_Document.h"
-#import "PMCocoaCallsDebug.h"
-#import "OC_GGS_TextSyntaxColoring.h"
-#import "OC_GGS_DocumentInterface.h"
+#import "OC_GGS_PreferencesController.h"
+#import "OC_GGS_RulerViewForTextView.h"
+#import "OC_Lexique.h"
 #import "F_CocoaWrapperForGalgas.h"
+#import "PMCocoaCallsDebug.h"
+#import "PMIssueDescriptor.h"
+#import "OC_GGS_TextSyntaxColoring.h"
+#import "OC_GGS_TextDisplayDescriptor.h"
+#import "PMTabBarView.h"
 
 //---------------------------------------------------------------------------*
 
@@ -34,10 +39,6 @@
 //---------------------------------------------------------------------------*
 
 @implementation OC_GGS_Document
-
-+ (NSArray *)restorableStateKeyPaths {
-  return [NSArray arrayWithObjects:@"mDocumentInterfaceArray", @"mSourceTextWithSyntaxColoring", nil] ;
-}
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -51,8 +52,9 @@
     #ifdef DEBUG_MESSAGES
       NSLog (@"%s", __PRETTY_FUNCTION__) ;
     #endif
-    mDocumentInterfaceArray = [NSMutableArray new] ;
+    mIssueArrayController = [NSArrayController new] ;
     mFileEncoding = NSUTF8StringEncoding ;
+    mSourceDisplayArrayController = [NSArrayController new] ;
     self.undoManager = nil ;
   }
   return self;
@@ -69,6 +71,398 @@
 - (void) replaceSourceStringWithString: (NSString *) inString {
   [mSourceTextWithSyntaxColoring replaceSourceStringWithString:inString] ;
 }
+
+//---------------------------------------------------------------------------*
+
+- (OC_GGS_TextSyntaxColoring *) textSyntaxColoring {
+  return mSourceTextWithSyntaxColoring ;
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Nib relative Actions
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//       W I N D O W    N I B    N A M E                                     *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (NSString *) windowNibName {
+  return @"OC_GGS_Document" ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//       W I N D O W    C O N T R O L L E R    D I D    L O A D    N I B     *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (void) windowControllerDidLoadNib: (NSWindowController *) inWindowController {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"OC_GGS_Document <windowControllerDidLoadNib:>") ;
+  #endif
+  [super windowControllerDidLoadNib: inWindowController];
+//--- Tell to window controller that closing the source text window closes the document
+  [inWindowController setShouldCloseDocument: YES] ;
+
+  NSUserDefaults * defaults = [NSUserDefaults standardUserDefaults] ;
+
+//--- Bindings
+  [mIssueTextView
+    bind:@"font"
+    toObject:[NSUserDefaultsController sharedUserDefaultsController]
+    withKeyPath:[NSString stringWithFormat:@"values.%@", GGS_build_text_font]
+    options:[NSDictionary dictionaryWithObject:NSUnarchiveFromDataTransformerName forKey:NSValueTransformerNameBindingOption]
+  ] ;
+
+//--- Bindings
+  [mIssueTableViewColumn
+    bind:@"value"
+    toObject:mIssueArrayController
+    withKeyPath:@"arrangedObjects.issueMessage"
+    options:nil
+  ] ;
+  [mIssueTableViewColumn
+    bind:@"textColor"
+    toObject:mIssueArrayController
+    withKeyPath:@"arrangedObjects.issueColor"
+    options:nil
+  ] ;
+//--- Handle clic on issue table view
+  mIssueTableView.target = self ;
+  mIssueTableView.action = @selector(clicOnIssueTableView:) ;
+//--- Set up windows location
+  NSString * windowTitle = [self lastComponentOfFileName] ;
+  NSString * key = [NSString stringWithFormat: @"frame_for_source:%@", windowTitle] ;
+  [[self windowForSheet] setFrameFromString: [defaults objectForKey: key]] ;
+
+//--- Add Split view binding
+// Note : use [self lastComponentOfFileName] instead of [window title], because window title may not set at this point
+  NSString * keyPath = [NSString stringWithFormat:@"values.issue-split-fraction:%@", [self lastComponentOfFileName]] ;
+  [mIssueSplitView setAutosaveName:keyPath] ;
+
+//--- Source file encoding
+  [mSourceEncodingTextField
+    bind:@"value"
+    toObject:self
+    withKeyPath:@"fileEncodingString"
+    options:nil    
+  ] ;
+//---
+  [mSourceDisplayArrayController
+    addObserver:self 
+    forKeyPath:@"selectionIndex"
+    options:0
+    context:NULL
+  ] ;
+  [mSourceDisplayArrayController
+    addObserver:mTabBarView 
+    forKeyPath:@"selectionIndex"
+    options:0
+    context:NULL
+  ] ;
+//---
+  [mSourceDisplayArrayController
+    addObserver:self 
+    forKeyPath:@"selection.textSelectionStart"
+    options:0
+    context:NULL
+  ] ;
+//---
+  [mSourceDisplayArrayController
+    addObserver:self 
+    forKeyPath:@"selection.mTextSyntaxColoring.mTokenizer.menuForEntryPopUpButton"
+    options:0
+    context:NULL
+  ] ;
+//---
+  [mSourceDisplayArrayController
+    addObserver:mTabBarView 
+    forKeyPath:@"selection.sourcePath"
+    options:0
+    context:NULL
+  ] ;
+//---
+  [mSourceDisplayArrayController
+    addObserver:mTabBarView
+    forKeyPath:@"arrangedObjects"
+    options:0
+    context:NULL
+  ] ;
+//--- Display the document contents
+  OC_GGS_TextDisplayDescriptor * textDisplayDescriptor = [[OC_GGS_TextDisplayDescriptor alloc]
+    initWithDelegateForSyntaxColoring:mSourceTextWithSyntaxColoring
+    document:self
+  ] ;
+  [mSourceDisplayArrayController addObject:textDisplayDescriptor] ;
+  [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:textDisplayDescriptor]] ;
+//---
+  [mTabBarView setTarget:self] ;
+  [mTabBarView setChangeSourceTabAction:@selector (changeSelectedSourceViewAction:)] ;
+  [mTabBarView setRemoveSourceTabAction:@selector (removeSelectedSourceViewAction:)] ;
+//---
+  [self displayIssueDetailedMessage:nil] ;
+
+//---
+  [mBuildProgressIndicator setHidden:YES] ;
+  [mStopBuildButton setEnabled:NO] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) removeWindowController:(NSWindowController *) inWindowController {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"OC_GGS_Document <removeWindowController:>") ;
+  #endif
+  if ([inWindowController shouldCloseDocument]) {
+    //NSLog (@"removeWindowController") ;
+    [gCocoaGalgasPreferencesController cocoaDocumentWillClose:self] ;
+  }
+  [mIssueTextView unbind:@"fontName"] ;
+  [super removeWindowController:inWindowController] ;
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Actions
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) duplicateSelectedSourceViewAction: (id) inSender {
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
+  OC_GGS_TextDisplayDescriptor * textDisplayDescriptor = [[OC_GGS_TextDisplayDescriptor alloc]
+    initWithDelegateForSyntaxColoring:selectedObject.textSyntaxColoring
+    document:self
+  ] ;
+  [mSourceDisplayArrayController addObject:textDisplayDescriptor] ;
+  [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:textDisplayDescriptor]] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) removeSelectedSourceViewAction: (id) inSender {
+  [mSourceDisplayArrayController remove:inSender] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) changeSelectedSourceViewAction: (NSButton *) inSender {
+  [mSourceDisplayArrayController setSelectionIndex:inSender.tag] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) actionGotoLine: (id) inSender {
+  [NSApp
+    beginSheet:mGotoWindow
+    modalForWindow:self.windowForSheet
+    modalDelegate: self
+    didEndSelector: @selector (sheetDidEnd:returnCode:contextInfo:)
+    contextInfo: nil
+  ] ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//        S H E E T    D I D    E N D    ( G O T O    L I N E )              *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (void) sheetDidEnd: (NSWindow *) inSheet
+         returnCode: (int) inReturnCode
+         contextInfo: (void *) inContextInfo {
+  if (inReturnCode == 1) {
+  //--- Get selected line
+    const NSUInteger selectedLine = [mGotoLineTextField integerValue] ;
+  //--- Goto selected line
+    OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
+    [selectedObject gotoLine:selectedLine] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) actionComment: (id) sender {
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
+  [selectedObject commentSelection] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) actionUncomment: (id) sender {
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
+  [selectedObject uncommentSelection] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) actionShiftLeft: (id) sender {
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
+  [selectedObject shiftLeftAction] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) actionShiftRight: (id) sender {
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
+  [selectedObject shiftRightAction] ;
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Document Actions
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//    P R I N T                                                              *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (void) printDocument: (id) sender {
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
+  [selectedObject.textView print:sender] ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//       D O C U M E N T    W I N D O W    D I D    M O V E                  *
+//                     N O T I F I C A T I O N                               *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (void) windowDidMove: (NSNotification *) aNotification {
+  NSString * windowTitle = [self lastComponentOfFileName] ;
+  NSWindow * docWindow = [aNotification object] ;
+  NSString * s = [docWindow stringWithSavedFrame] ;
+  NSString * key = [NSString stringWithFormat: @"frame_for_source:%@", windowTitle] ;
+  [[NSUserDefaults standardUserDefaults] setObject: s forKey: key] ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//       D O C U M E N T    W I N D O W    D I D    R E S I Z E              *
+//                     N O T I F I C A T I O N                               *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (void) windowDidResize: (NSNotification *) aNotification {
+  [self windowDidMove: aNotification] ; 
+}
+//---------------------------------------------------------------------------*
+
+#pragma mark Tracking File Document changes
+
+//---------------------------------------------------------------------------*
+
+- (NSDate *) sourceFileModificationDateInFileSystem {
+  NSURL * fileURL = [self fileURL] ;
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"OC_GGS_Document <sourceFileModificationDateInFileSystem> for file URL '%@'", [self fileURL]) ;
+  #endif
+  NSDate * date = [NSDate date] ;
+  if ([fileURL isFileURL]) {
+    NSDictionary * fileAttributes = [[[NSFileManager alloc] init] attributesOfItemAtPath:[fileURL path] error:NULL] ;
+    date = [fileAttributes objectForKey:NSFileModificationDate] ;
+  }
+  return date ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) updateFromFileSystem: (id) inUnusedArgument {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"OC_GGS_Document <updateFromFileSystem>") ;
+  #endif
+  [NSApp
+    beginSheet:mUpdateFromFileSystemPanel
+    modalForWindow:[self windowForSheet]
+    modalDelegate:nil
+    didEndSelector:NULL
+    contextInfo:NULL
+  ] ;
+//--- Read new content
+  NSString * source = [[NSString alloc]
+    initWithContentsOfURL:[self fileURL]
+    encoding:NSUTF8StringEncoding
+    error:nil
+  ] ;
+  if (source != nil) {
+//    [mDelegateForSyntaxColoring setSourceString:source] ;
+  }
+//---
+  [mUpdateFromFileSystemPanel orderOut:self] ;
+  [NSApp endSheet:mUpdateFromFileSystemPanel] ;   
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) askForUpdatingFromFileSystem {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"OC_GGS_Document <askForUpdatingFromFileSystem>") ;
+  #endif
+//--- Get application name
+  NSDictionary * bundleDictionary = [[NSBundle mainBundle] localizedInfoDictionary] ;
+  NSString * applicationName = [bundleDictionary objectForKey: @"CFBundleName"] ;
+//--- Build Alert
+  NSString * message = [NSString stringWithFormat:
+     @"This file for document at %@ has been modified by an other application."
+     " Do you want to keep the %@ version or update from file contents ?",
+     self.fileURL.path,
+     applicationName
+  ] ;
+  NSAlert *alert = [NSAlert
+    alertWithMessageText:@"Warning"
+    defaultButton:[NSString stringWithFormat:@"Keep %@ Version", applicationName]
+    alternateButton:@"Update From File Contents"
+    otherButton:nil
+    informativeTextWithFormat:message
+  ] ;
+//--- Display alert as window sheet
+  [alert
+    beginSheetModalForWindow:[self windowForSheet]
+    modalDelegate:self
+    didEndSelector:@selector (askForUpdatingFromFileSystemAlertEnding:returnCode:contextInfo:)
+    contextInfo:NULL
+  ] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) askForUpdatingFromFileSystemAlertEnding:(NSAlert *) inAlert
+         returnCode:(int) returnCode
+         contextInfo:(void *) contextInfo {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"OC_GGS_Document <askForUpdatingFromFileSystemAlertEnding:returnCode:contextInfo:>") ;
+  #endif
+//  NSLog (@"returnCode %d", returnCode) ;
+  if (returnCode == NSAlertAlternateReturn) { // Revert button
+    [[NSRunLoop currentRunLoop]
+      performSelector: @selector (updateFromFileSystem:)
+      target:self
+      argument:nil
+      order:0
+      modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]
+    ] ;
+  }
+//--- Set new file modification date
+  [self setFileModificationDate:[self sourceFileModificationDateInFileSystem]] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) windowDidBecomeKey: (NSNotification *) inNotification {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"OC_GGS_Document <windowDidBecomeKey>") ;
+  #endif
+  if (self.fileURL.path.length > 0) {
+    NSDate * modificationDateOnFileSystem = [self sourceFileModificationDateInFileSystem] ;
+    if ([modificationDateOnFileSystem compare:[self fileModificationDate]] != NSOrderedSame) {
+      [self askForUpdatingFromFileSystem] ;
+    }
+  }
+}
+
 
 //---------------------------------------------------------------------------*
 
@@ -192,6 +586,96 @@
   if(creatorCode)
       [newAttributes setObject:creatorCode forKey:NSFileHFSCreatorCode];
   return newAttributes;
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Document Close
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//       D I S P L A Y    A     S H E E T    B E F O R E    C L O S I N G    *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (void) displaySheetBeforeClosing: (NSAlert *) inAlert {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"OC_GGS_Document <displaySheetBeforeClosing:>") ;
+  #endif
+  [inAlert
+    beginSheetModalForWindow:[self windowForSheet]
+    modalDelegate:self
+    didEndSelector:@selector (closeDocumentOnAlertEnding:returnCode:contextInfo:)
+    contextInfo:NULL
+  ] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) closeDocumentOnAlertEnding:(NSAlert *) inAlert
+         returnCode:(int)returnCode
+         contextInfo:(void *)contextInfo{
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"OC_GGS_Document <closeDocumentOnAlertEnding:>") ;
+  #endif
+  NSDocumentController * dc = [NSDocumentController sharedDocumentController] ;
+  [dc removeDocument:self] ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//       D O C U M E N T    W I N D O W    D I D    R E S I Z E              *
+//                     N O T I F I C A T I O N                               *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (BOOL) shouldCloseDocument {
+  return YES ;
+} 
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Document Encoding Display
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) fileEncodingString {
+  NSString * s = @"Lossy ASCII encoding" ;
+  switch (mFileEncoding) {
+  case NSASCIIStringEncoding : s = @"ASCII" ; break ;
+  case NSNEXTSTEPStringEncoding : s = @"Next Step" ; break ;
+  case NSJapaneseEUCStringEncoding : s = @"Japanese EUC" ; break ;
+  case NSUTF8StringEncoding : s = @"UTF-8" ; break ;
+  case NSISOLatin1StringEncoding : s = @"ISO Latin 1" ; break ;
+  case NSSymbolStringEncoding : s = @"Symbol" ; break ;
+  case NSNonLossyASCIIStringEncoding : s = @"Non Lossy ASCII" ; break ;
+  case NSShiftJISStringEncoding : s = @"Shift JIS" ; break ;
+  case NSISOLatin2StringEncoding : s = @"ISO Latin 2" ; break ;
+  case NSUTF16StringEncoding : s = @"UTF-16" ; break ;
+  case NSWindowsCP1251StringEncoding : s = @"Windows CP 1251" ; break ;
+  case NSWindowsCP1252StringEncoding : s = @"Windows CP 1252" ; break ;
+  case NSWindowsCP1253StringEncoding : s = @"Windows CP 1253" ; break ;
+  case NSWindowsCP1254StringEncoding : s = @"Windows CP 1254" ; break ;
+  case NSWindowsCP1250StringEncoding : s = @"Windows CP 1250" ; break ;
+  case NSISO2022JPStringEncoding : s = @"ISO 2022" ; break ;
+  case NSMacOSRomanStringEncoding : s = @"Mac OS Roman" ; break ;
+  case NSUTF16BigEndianStringEncoding : s = @"UTF-16BE" ; break ;
+  case NSUTF16LittleEndianStringEncoding : s = @"UTF_16LE" ; break ;
+  case NSUTF32StringEncoding : s = @"UTF-32" ; break ;
+  case NSUTF32BigEndianStringEncoding : s = @"UTF-32BE" ; break ;
+  case NSUTF32LittleEndianStringEncoding : s = @"UTF-32LE" ; break ;
+  default: break ;
+  }
+  return s ;
+}
+
+
+//---------------------------------------------------------------------------*
+
+- (void) setSourceFileEncoding: (NSStringEncoding) inFileEncoding {
+  [self willChangeValueForKey:@"fileEncodingString"] ;
+  mFileEncoding = inFileEncoding ;
+  [self didChangeValueForKey:@"fileEncodingString"] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -337,7 +821,7 @@
       source = [s copy] ;
     }
   }
-  mFileEncoding = fileEncoding ;
+  [self setSourceFileEncoding:fileEncoding] ;
 //--- Delegate for syntax coloring
   if (source != nil) {
     [[NSRunLoop currentRunLoop]
@@ -355,42 +839,495 @@
     sourcePath:self.fileURL.path
   ] ;
 //---
+  [mIssueArrayController
+    addObserver:mSourceTextWithSyntaxColoring 
+    forKeyPath:@"arrangedObjects"
+    options:0
+    context:NULL
+  ] ;
+//---
   return source != nil ;
 }
 
 //---------------------------------------------------------------------------*
 
-- (void) showWindows {
-  NSWindow * window = [self addInterfaceWindow] ;
-  [self setWindow:window] ;
-  [super showWindows] ;
-}
+#pragma mark XML Issue Analysis
 
 //---------------------------------------------------------------------------*
 
-- (NSWindow *) addInterfaceWindow {
-  OC_GGS_DocumentInterface * newInterface = [[OC_GGS_DocumentInterface alloc] initWithDocument:self] ;
-  [mDocumentInterfaceArray addObject:newInterface] ;
-//--- Load NIB
-  const BOOL ok = [NSBundle loadNibNamed:@"OC_GGS_DocumentInterface" owner:newInterface] ;
-//---
-  if (!ok) {
-    NSBeep () ;
+- (void) XMLIssueAnalysis {
+  NSError * error = nil ;
+  NSXMLDocument * xmlDoc = [[NSXMLDocument alloc]
+    initWithData:mBufferedInputData
+    options:0
+    error:& error
+  ] ;
+  NSArray * issues = nil ;
+  if (nil == error) {
+    issues = xmlDoc.rootElement.children ;
   }
-//---
-  return newInterface.window ;
+  NSMutableArray * issueArray = [NSMutableArray new] ;
+  for (NSXMLNode * node in issues) {
+    if (nil == node.name) {
+      NSString * message = [node stringValue] ;
+      PMIssueDescriptor * issue = [[PMIssueDescriptor alloc] initWithMessage:message] ;
+      [issueArray addObject:issue] ;
+    }else if ([@"message" isEqualToString:node.name]) {
+      NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
+      PMIssueDescriptor * issue = [[PMIssueDescriptor alloc] initWithMessage:message] ;
+      [issueArray addObject:issue] ;
+    }else if ([@"fileOperation" isEqualToString:node.name]) {
+      NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
+      PMIssueDescriptor * issue = [[PMIssueDescriptor alloc] initWithFileOperation:message] ;
+      [issueArray addObject:issue] ;
+    }else if ([@"error" isEqualToString:node.name]) {
+      NSArray * a = [node nodesForXPath:@"./@file" error:nil] ;
+      NSString * file = (a.count == 1) ? [[a objectAtIndex:0 HERE] stringValue] : @"" ;
+      a = [node nodesForXPath:@"./@line" error:nil] ;
+      NSInteger line = (a.count == 1) ? [[[a objectAtIndex:0 HERE] stringValue] integerValue] : 0 ;
+      a = [node nodesForXPath:@"./@column" error:nil] ;
+      NSInteger column = (a.count == 1) ? [[[a objectAtIndex:0 HERE] stringValue] integerValue] : 0 ;
+      NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
+      PMIssueDescriptor * issue = [[PMIssueDescriptor alloc]
+        initWithErrorMessage:message
+        file:file
+        line:line
+        column:column
+      ] ;
+      [issueArray addObject:issue] ;
+    }else if ([@"warning" isEqualToString:node.name]) {
+      NSString * file = [[[node nodesForXPath:@"./@file" error:nil] objectAtIndex:0 HERE] stringValue] ;
+      NSInteger line = [[[[node nodesForXPath:@"./@line" error:nil] objectAtIndex:0 HERE] stringValue] integerValue] ;
+      NSInteger column = [[[[node nodesForXPath:@"./@column" error:nil] objectAtIndex:0 HERE] stringValue] integerValue] ;
+      NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
+      PMIssueDescriptor * issue = [[PMIssueDescriptor alloc]
+        initWithWarningMessage:message
+        file:file
+        line:line
+        column:column
+      ] ;
+      [issueArray addObject:issue] ;
+    }
+  }
+  [mIssueArrayController setContent:issueArray] ;
+  if (nil != error) {
+    [self.windowForSheet presentError:error] ;
+  }
 }
 
 //---------------------------------------------------------------------------*
 
-- (OC_GGS_TextSyntaxColoring *) sourceTextWithSyntaxColoring {
-  return mSourceTextWithSyntaxColoring ;
+#pragma mark Build
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//    C O M P I L E                                                          *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (void) terminateTask {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"OC_GGS_Document <terminateTask>") ;
+  #endif
+  if (mTask != nil) {
+    NSTask * task = mTask ;
+    mTask = nil ;
+    [task terminate] ;
+    [task waitUntilExit] ;
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter] ;
+    [center removeObserver:self name:NSFileHandleReadCompletionNotification object: [[task standardOutput] fileHandleForReading]] ;
+    [center removeObserver:self name:NSTaskDidTerminateNotification object:task] ;
+    const int status = [task terminationStatus];
+    if (status != 0) {
+//      [self appendMessage: [NSString stringWithFormat: @"Build task has exited with status %d\n", status]] ;
+    }
+  //--- Translate input data into text
+    NSString * issueText = [[NSString alloc]
+      initWithData:mBufferedInputData
+      encoding:NSUTF8StringEncoding
+    ] ;
+    [mIssueTextView setString:issueText] ;
+  //--- Analyze XML document
+    [self XMLIssueAnalysis] ;
+  //---
+    [mBuildProgressIndicator stopAnimation:nil] ;
+    [mBuildProgressIndicator setHidden:YES] ;
+    [mStopBuildButton setEnabled:NO] ;
+    [mStartBuildButton setHidden:NO] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) getDataFromTaskOutput: (NSNotification *) inNotification {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  NSData * d = [[inNotification userInfo] objectForKey:NSFileHandleNotificationDataItem];
+  if ([d length] > 0) {
+    [mBufferedInputData appendData:d] ;
+    [[inNotification object] readInBackgroundAndNotify] ;
+  }else{
+    [self terminateTask] ;
+    [NSApp requestUserAttention:NSInformationalRequest] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) stopBuild: (id) sender {
+  if (mTask != nil) {
+    [self terminateTask] ;
+  }
 }
 
 //---------------------------------------------------------------------------*
 
 - (BOOL) canTerminateApplication {
-  return YES ;
+  return mTask == nil ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) actionBuild: (id) inUnusedSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"OC_GGS_Document <actionBuild:>") ;
+  #endif
+  if (mTask == nil) {
+    [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
+    [mBuildProgressIndicator startAnimation:nil] ;
+    [mBuildProgressIndicator setHidden:NO] ;
+    [mStopBuildButton setEnabled:YES] ;
+    [mStartBuildButton setHidden:YES] ;
+    [self displayIssueDetailedMessage:nil] ;
+    [mIssueTextView setString:@"Compiling…"] ;
+    mBufferedInputData = [NSMutableData new] ;
+    [mIssueArrayController setContent:[NSArray array]] ;
+    NSArray * commandLineArray = [gCocoaGalgasPreferencesController commandLineItemArray] ;
+  //--- Command line tool does actually exist ? (First argument is not "?")
+    if ([[commandLineArray objectAtIndex:0 HERE] isEqualToString:@"?"]) {
+      NSAlert * alert = [NSAlert alertWithMessageText:@"Error: cannot compile"
+        defaultButton: nil
+        alternateButton: nil
+        otherButton: nil
+        informativeTextWithFormat:@"Compilation must be performed by an embedded Command line Tool; no command line Tool are currently embedded by application."
+      ] ;
+      [alert
+        beginSheetModalForWindow:[self windowForSheet]
+        modalDelegate:nil
+        didEndSelector:0
+        contextInfo:NULL
+      ] ;
+    }else{
+      #ifdef DEBUG_MESSAGES
+      NSLog (@"OC_GGS_Document <actionBuild:> launch") ;
+      #endif
+      NSMutableArray * arguments = [NSMutableArray new] ;
+      [arguments addObjectsFromArray:[commandLineArray subarrayWithRange:NSMakeRange (1, [commandLineArray count]-1)]] ;
+      [arguments addObject:self.fileURL.path] ;
+   //--- Create task
+      mTask = [NSTask new] ;
+      [mTask setLaunchPath:[commandLineArray objectAtIndex:0 HERE]] ;
+      [mTask setArguments:arguments] ;
+      // NSLog (@"'%@' %@", [mTask launchPath], arguments) ;
+    //--- Set standard output notification
+      NSPipe * taskOutput = [NSPipe pipe] ;
+      [mTask setStandardOutput:taskOutput] ;
+      [mTask setStandardError:taskOutput] ;
+      [[NSNotificationCenter defaultCenter]
+        addObserver:self
+        selector:@selector (getDataFromTaskOutput:)
+        name:NSFileHandleReadCompletionNotification
+        object:[taskOutput fileHandleForReading]
+      ] ;
+      [[taskOutput fileHandleForReading] readInBackgroundAndNotify] ;
+    //--- Start task
+      [mTask launch] ;
+    }
+  }
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"OC_GGS_Document <actionBuild:> DONE ----------") ;
+  #endif
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) triggerDocumentEditedStatusUpdate {
+  BOOL isEdited = NO ;
+  NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
+  for (NSUInteger i=0 ; (i<sourceDisplayArray.count) && ! isEdited ; i++) {
+    OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:i HERE] ;
+    OC_GGS_TextSyntaxColoring * textSyntaxColoring = textDisplay.textSyntaxColoring ;
+    NSUndoManager * undoManager = textSyntaxColoring.undoManager ;
+    isEdited = undoManager.canUndo ;
+  }
+  [self updateChangeCount:isEdited ? NSChangeDone : NSChangeCleared] ;
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Click on issue table view
+
+//---------------------------------------------------------------------------*
+
+- (void) findOrOpenDocumentWithPath: (NSString *) inDocumentPath {
+
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) clicOnIssueTableView: (id) inSender {
+  const NSInteger clickedRow = mIssueTableView.clickedRow ;
+  NSArray * arrangedObjects = mIssueArrayController.arrangedObjects ;
+  if ((clickedRow >= 0) && (clickedRow < (NSInteger) arrangedObjects.count)) {
+    PMIssueDescriptor * issue = [arrangedObjects objectAtIndex:clickedRow HERE] ;
+    NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
+    OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
+    const BOOL ok = [textDisplay makeVisibleIssue:issue] ;
+    if (! ok) { // Current tab view does not correspond: open a new tab
+    
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Entry Pop up
+
+//---------------------------------------------------------------------------*
+
+- (void) populatePopUpButton {
+  NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
+  OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
+  NSMenu * menu = [textDisplay menuForEntryPopUpButton] ;
+  const NSUInteger n = [menu numberOfItems] ;
+  if (n == 0) {
+    [menu
+      addItemWithTitle:@"No entry"
+      action:NULL
+      keyEquivalent:@""
+    ] ;
+    [mEntryListPopUpButton setEnabled:NO] ;
+  }else{
+    for (NSUInteger i=0 ; i<n ; i++) {
+      NSMenuItem * item = [menu itemAtIndex:i] ;
+      [item setTarget:self] ;
+      [item setAction:@selector (gotoEntry:)] ;
+    }
+    [mEntryListPopUpButton setEnabled:YES] ;
+  }
+  [mEntryListPopUpButton setMenu:menu] ;
+  //NSLog (@"mEntryListPopUpButton %@", mEntryListPopUpButton) ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) gotoEntry: (id) inSender {
+  const NSRange range = {[inSender tag], 0} ;
+  NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
+  OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
+  NSTextView * textView = textDisplay.textView ;
+  [textView setSelectedRange:range] ;
+  [textView scrollRangeToVisible:range] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) selectEntryPopUp {
+  NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
+  OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
+  const NSUInteger selectionStart = textDisplay.textSelectionStart ;
+  NSArray * menuItemArray = [mEntryListPopUpButton itemArray] ;
+  if ([mEntryListPopUpButton isEnabled]) {
+    NSInteger idx = NSNotFound ;
+    NSInteger i ;
+    const NSInteger n = [menuItemArray count] ;
+    for (i=n-1 ; (i>=0) && (idx == NSNotFound) ; i--) {
+      NSMenuItem * item = [menuItemArray objectAtIndex:i HERE] ;
+      const NSUInteger startPoint = [item tag] ;
+      if (selectionStart >= startPoint) {
+        idx = i ;
+      }
+    }
+    if (idx == NSNotFound) {
+      [mEntryListPopUpButton selectItemAtIndex:0] ;
+    }else{
+      [mEntryListPopUpButton selectItemAtIndex:idx] ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark observeValueForKeyPath
+
+//---------------------------------------------------------------------------*
+
+- (void) observeValueForKeyPath:(NSString *) inKeyPath
+         ofObject: (id) inObject
+         change:(NSDictionary *) inChange
+         context:(void *) inContext {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  if ([inKeyPath isEqualToString:@"selectionIndex"]) {
+    for (NSView * subview in mSourceHostView.subviews.copy) {
+      [subview removeFromSuperview] ;
+    }
+    NSArray * arrangedObjects = mSourceDisplayArrayController.arrangedObjects ;
+    const NSUInteger sel = mSourceDisplayArrayController.selectionIndex ;
+    OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel HERE] ;
+    object.scrollView.frame = mSourceHostView.bounds ;
+    // NSLog (@"object.scrollView %d", object.scrollView.autoresizesSubviews) ;
+    [mSourceHostView addSubview:object.scrollView] ;
+    [mSourceHostView.window makeFirstResponder:object.textView] ;
+  }else if ([inKeyPath isEqualToString:@"selection.textSelectionStart"]) {
+    [self selectEntryPopUp] ;
+  }else if ([inKeyPath isEqualToString:@"selection.mTextSyntaxColoring.mTokenizer.menuForEntryPopUpButton"]) {
+    [self populatePopUpButton] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) displayIssueDetailedMessage: (NSString *) inDetailledMessage {
+  NSTextStorage * textStorage = mDetailedIssueTextView.textStorage ;
+  if (nil == inDetailledMessage) {
+    [textStorage beginEditing] ;
+    [textStorage replaceCharactersInRange:NSMakeRange (0, [textStorage length]) withString:@""] ;
+    [textStorage endEditing] ;
+    [mDetailedIssueSplitView
+      setPosition:mDetailedIssueSplitView.bounds.size.height
+      ofDividerAtIndex:0
+    ] ;
+  }else{
+    [textStorage beginEditing] ;
+    [textStorage replaceCharactersInRange:NSMakeRange (0, [textStorage length]) withString:inDetailledMessage] ;
+    [mDetailedIssueTextView setFont:[NSFont fontWithName:@"Courier" size:13.0]] ;
+    [textStorage endEditing] ;
+    const NSRect r = [mDetailedIssueTextView.layoutManager
+      lineFragmentUsedRectForGlyphAtIndex:inDetailledMessage.length - 1
+      effectiveRange:NULL
+    ] ;
+   // NSLog (@"r %g %g %g %g", r.origin.x, r.origin.y, r.size.width, r.size.height) ;
+    // NSLog (@"mDetailedIssueTextView.textContainerInset.height %g", mDetailedIssueTextView.textContainerInset.height) ;
+    [mDetailedIssueSplitView
+      setPosition:mDetailedIssueSplitView.bounds.size.height - mDetailedIssueSplitView.dividerThickness - NSMaxY (r) - 8.0
+      ofDividerAtIndex:0
+    ] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Open Quickly
+
+//---------------------------------------------------------------------------*
+
+- (OC_GGS_TextSyntaxColoring *) findOrAddDocumentWithRelativePath: (NSString *) inPath {
+  OC_GGS_TextSyntaxColoring * result = nil ;
+  NSString * currentSourceDir = mSourceTextWithSyntaxColoring.sourcePath.stringByDeletingLastPathComponent ;
+  NSString * requestedAbsolutePath = inPath.isAbsolutePath
+    ? inPath
+    : [currentSourceDir stringByAppendingPathComponent:inPath]
+  ;
+//--- Search in opened documents
+  NSArray * documents = [[NSDocumentController sharedDocumentController] documents] ;
+  for (NSUInteger i=0 ; (i<documents.count) && (nil == result) ; i++) {
+    OC_GGS_Document * doc = [documents objectAtIndex:i] ;
+    if ([requestedAbsolutePath isEqualToString:doc.fileURL.path]) {
+      result = doc.textSyntaxColoring ;
+    }
+  }
+//--- if not found, open a new document
+  if (nil == result) {
+    OC_GGS_Document * doc = [[NSDocumentController sharedDocumentController]
+      openDocumentWithContentsOfURL:[NSURL fileURLWithPath:requestedAbsolutePath]
+      display:NO
+      error:nil
+    ] ;
+    result = doc.textSyntaxColoring ;
+  }
+//---  
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) actionOpenQuickly: (id) sender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  NSArray * sourceDisplayDescriptorArray = mSourceDisplayArrayController.arrangedObjects ;
+  const NSUInteger sel = mSourceDisplayArrayController.selectionIndex ;
+  OC_GGS_TextDisplayDescriptor * currentSourceText = [sourceDisplayDescriptorArray objectAtIndex:sel HERE] ;
+  OC_GGS_TextSyntaxColoring * textSyntaxColoring = currentSourceText.textSyntaxColoring ;
+//--- Get source string
+  NSString * sourceString = textSyntaxColoring.sourceString ;
+  const NSUInteger length = sourceString.length ;
+//--- Get selection
+  NSRange selection = currentSourceText.textView.selectedRange ;
+//--- A selection is available ?
+  BOOL ok = (selection.location != NSNotFound) ;
+  if (ok && (selection.length > 1) && ([sourceString characterAtIndex:selection.location] == '\"')) {
+    selection.location ++ ;
+    selection.length -- ;
+  }
+  if (ok && (selection.length > 1) && ([sourceString characterAtIndex:selection.location + selection.length - 1] == '\"')) {
+    selection.length -- ;
+  }
+//--- Check there is end of line within the selection
+  if (ok) {
+    for (NSUInteger i=selection.location ; (i<(selection.location + selection.length)) && ok ; i++) {
+      const unichar c = [sourceString characterAtIndex:i] ;
+      ok = (c != '\n') & (c != '\r') ;
+    }
+  }
+//--- If ok, extend selection until a '\r', '\n' or a '"'.
+  if (ok) {
+    NSUInteger idx = selection.location + selection.length ;
+    while ((idx < length)
+        && ([sourceString characterAtIndex:idx] != '\r')
+        && ([sourceString characterAtIndex:idx] != '\n')
+        && ([sourceString characterAtIndex:idx] != '\"')) {
+      idx ++ ;
+      selection.length ++ ;
+    }
+  }
+//--- If ok, advance selection until a '\r', '\n' or a '"'
+  if (ok && (selection.location > 0)) {
+    NSUInteger idx = selection.location - 1 ;
+    while ((idx > 0)
+        && ([sourceString characterAtIndex:idx] != '\r')
+        && ([sourceString characterAtIndex:idx] != '\n')
+        && ([sourceString characterAtIndex:idx] != '\"')) {
+      idx -- ;
+      selection.location -- ;
+      selection.length ++ ;
+    }
+  }
+//--- Display selection
+  [currentSourceText.textView setSelectedRange:selection] ;
+//---
+  NSString * selectedString = [sourceString substringWithRange:selection] ;
+  OC_GGS_TextSyntaxColoring * newTextSyntaxColoring = [self findOrAddDocumentWithRelativePath:selectedString] ;
+  if (nil != newTextSyntaxColoring) { // Find a text display descriptor
+    OC_GGS_TextDisplayDescriptor * foundSourceText = nil ;
+    for (NSUInteger i=0 ; (i<sourceDisplayDescriptorArray.count) && (nil == foundSourceText) ; i++) {
+      OC_GGS_TextDisplayDescriptor * std = [sourceDisplayDescriptorArray objectAtIndex:i HERE] ;
+      if (std.textSyntaxColoring == newTextSyntaxColoring) {
+        foundSourceText = std ;
+      }
+    }
+    if (nil == foundSourceText) { // Create a tab
+      foundSourceText = [[OC_GGS_TextDisplayDescriptor alloc]
+        initWithDelegateForSyntaxColoring:newTextSyntaxColoring
+        document:self
+      ] ;
+      [mSourceDisplayArrayController addObject:foundSourceText] ;
+    }
+    [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:foundSourceText]] ;
+  }
 }
 
 //---------------------------------------------------------------------------*

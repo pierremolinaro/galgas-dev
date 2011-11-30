@@ -53,6 +53,175 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
+- (void) drawRect: (NSRect) inRect {
+  [super drawRect:inRect] ;
+//--- Frame all warning and error locations
+/*  OC_GGS_Document * doc = [mDocument currentlyEditedDocumentInBuildWindow] ;
+  NSString * docPath = doc.fileURL.path ;
+  // NSLog (@"docPath '%@'", docPath) ;
+  if (nil != docPath) {
+    NSString * sourceString = [self string] ;
+    NSLayoutManager * lm = [self layoutManager] ;
+    NSArray * warningArray = [mDocument warningDescriptorArray] ;
+    for (NSUInteger i=0 ; i<[warningArray count] ; i++) {
+      OC_GGS_ErrorOrWarningDescriptor * descriptor = [warningArray objectAtIndex:i HERE OFCLASS (OC_GGS_ErrorOrWarningDescriptor)] ;
+      // NSLog (@"#%u : [descriptor documentPath] '%@'", i, [descriptor documentPath]) ;
+      if (([descriptor documentPath] != nil) && [docPath isEqualToString:[descriptor documentPath]]) {
+        const NSRange lineRange = [sourceString lineRangeForRange:NSMakeRange ([descriptor locationInSourceString], 1)] ;
+        // NSLog (@"lineRange [%u, %u]", lineRange.location, lineRange.length) ;
+        const NSRect r1 = [lm lineFragmentUsedRectForGlyphAtIndex:lineRange.location effectiveRange:NULL] ;
+        // NSLog (@"r1 {{%f, %f}, {%f, %f}}", r1.origin.x, r1.origin.y, r1.size.width, r1.size.height) ;
+        const NSRect r2 = [lm lineFragmentUsedRectForGlyphAtIndex:lineRange.location + lineRange.length - 1 effectiveRange:NULL] ;
+        // NSLog (@"r2 {{%f, %f}, {%f, %f}}", r2.origin.x, r2.origin.y, r2.size.width, r2.size.height) ;
+        const NSRect r = NSUnionRect (r1, r2) ;
+        // NSLog (@"r {{%f, %f}, {%f, %f}}", r.origin.x, r.origin.y, r.size.width, r.size.height) ;
+        [[NSColor orangeColor] setStroke] ;
+        [NSBezierPath setDefaultLineWidth:1.0] ;
+        [NSBezierPath strokeRect:r] ;
+      }
+    }
+    NSArray * errorArray = [mDocument errorDescriptorArray] ;
+    for (NSUInteger i=0 ; i<[errorArray count] ; i++) {
+      OC_GGS_ErrorOrWarningDescriptor * descriptor = [errorArray objectAtIndex:i HERE OFCLASS (OC_GGS_ErrorOrWarningDescriptor)] ;
+      // NSLog (@"#%u : [descriptor documentPath] '%@'", i, [descriptor documentPath]) ;
+      if (([descriptor documentPath] != nil) && [docPath isEqualToString:[descriptor documentPath]]) {
+        const NSRange lineRange = [sourceString lineRangeForRange:NSMakeRange ([descriptor locationInSourceString], 1)] ;
+        // NSLog (@"lineRange [%u, %u]", lineRange.location, lineRange.length) ;
+        const NSRect r1 = [lm lineFragmentUsedRectForGlyphAtIndex:lineRange.location effectiveRange:NULL] ;
+        // NSLog (@"r1 {{%f, %f}, {%f, %f}}", r1.origin.x, r1.origin.y, r1.size.width, r1.size.height) ;
+        const NSRect r2 = [lm lineFragmentUsedRectForGlyphAtIndex:lineRange.location + lineRange.length - 1 effectiveRange:NULL] ;
+        // NSLog (@"r2 {{%f, %f}, {%f, %f}}", r2.origin.x, r2.origin.y, r2.size.width, r2.size.height) ;
+        const NSRect r = NSUnionRect (r1, r2) ;
+        // NSLog (@"r {{%f, %f}, {%f, %f}}", r.origin.x, r.origin.y, r.size.width, r.size.height) ;
+        [[NSColor redColor] setStroke] ;
+        [NSBezierPath setDefaultLineWidth:1.0] ;
+        [NSBezierPath strokeRect:r] ;
+      }
+    }
+  }*/
+}
+
+
+//---------------------------------------------------------------------------*
+
+- (BOOL) becomeFirstResponder {
+  const BOOL b = [super becomeFirstResponder] ;
+  if (b) {
+    [[NSRunLoop currentRunLoop]
+      performSelector:@selector (updateTextLineAndColumnSelectionLocation:)
+      target:self
+      argument:nil
+      order:0
+      modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]
+    ] ;
+  }
+  return b ;
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Goto Line
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//        S H O W    G O T O    L I N E   S H E E T                          *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (IBAction) actionGotoLine: (id) inSender {
+  [mGotoLineSelectButton setAction:@selector (gotoLineSelectButtonAction:)] ;
+  [mGotoLineSelectButton setTarget:self] ;
+
+  [mGotoLineCancelButton setAction:@selector (gotoLineCancelButtonAction:)] ;
+  [mGotoLineCancelButton setTarget:self] ;
+
+  [NSApp
+    beginSheet: mGotoWindow
+    modalForWindow: [self window]
+    modalDelegate: self
+    didEndSelector: @selector (sheetDidEnd:returnCode:contextInfo:)
+    contextInfo: nil
+  ] ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//        G O T O    L I N E   S E L E C T    A C T I O N                    *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (IBAction) gotoLineSelectButtonAction: (id) inSender {
+  [mGotoWindow orderOut: inSender] ;
+  [NSApp endSheet: mGotoWindow returnCode: 1] ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//        G O T O    L I N E   C A N C E L    A C T I O N                    *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (IBAction) gotoLineCancelButtonAction: (id) inSender {
+  [mGotoWindow orderOut: inSender] ;
+  [NSApp endSheet: mGotoWindow returnCode: 0] ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//        G O T O    L I N E    A N D     C O L U M N                        *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (void) gotoLine: (int) inLine
+         column: (int) inColumn {
+//--- Find index
+  NSInteger currentLine = 0 ;
+  NSString * sourceString = [[self textStorage] string] ;
+  NSRange range = [sourceString lineRangeForRange: NSMakeRange (0, 0)] ;
+  NSUInteger lastStartOfLine = 0 ;
+  while ((currentLine < inLine) && (range.length > 0)) {
+    currentLine ++ ;
+    lastStartOfLine = range.location ;
+    range = [sourceString lineRangeForRange: NSMakeRange (NSMaxRange (range), 0)] ;
+  }
+//--- Change selected range
+  if (range.length > 0) {
+    range.location = lastStartOfLine ;
+    range.length = 0 ;
+  }
+  [self setSelectedRange:range] ;
+  [self scrollRangeToVisible:range] ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//        S H E E T    D I D    E N D    ( G O T O    L I N E )              *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (void) sheetDidEnd: (NSWindow *) inSheet
+         returnCode: (int) inReturnCode
+         contextInfo: (void *) inContextInfo {
+  if (inReturnCode == 1) {
+  //--- Get selected line
+    const int selectedLine = [mGotoLineTextField intValue] ;
+  //--- Goto selected line
+    [self gotoLine:selectedLine column:1] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Goto Line Button in Toolbar
+
+//---------------------------------------------------------------------------*
+
+- (void) setCurrentLineButton: (NSButton *) inCurrentLineButton {
+  mCurrentLineButton = inCurrentLineButton ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (void) setKeyForSelectionInUserDefault: (NSString *) inKeyForSelectionInUserDefault {
   mKeyForSelectionInUserDefault = inKeyForSelectionInUserDefault.copy ;
 }

@@ -26,16 +26,16 @@
 
 //---------------------------------------------------------------------------*
 
-@class OC_GGS_DocumentInterface ;
+@class OC_GGS_Document ;
 
 //---------------------------------------------------------------------------*
 
 @interface OC_GGS_RulerViewForTextView : NSRulerView {
   @private NSArray * mIssues ; // Array of PMIssueInRuler
-  @private OC_GGS_DocumentInterface * __weak mDocumentInterface ;
+  @private OC_GGS_Document * __weak mDocument ;
 }
 
-- (OC_GGS_RulerViewForTextView *) initWithDocumentInterface: (OC_GGS_DocumentInterface *) inDocumentInterface ;
+- (OC_GGS_RulerViewForTextView *) initWithDocument: (OC_GGS_Document *) inDocument ;
 
 @end
 
