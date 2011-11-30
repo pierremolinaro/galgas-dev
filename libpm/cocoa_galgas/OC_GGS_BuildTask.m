@@ -140,7 +140,7 @@ static OC_GGS_BuildTask * gSharedBuildTask ;
 
 - (void) terminateTask {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <terminateTask>") ;
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   if (mTask != nil) {
     NSTask * task = mTask ;
@@ -247,9 +247,6 @@ static OC_GGS_BuildTask * gSharedBuildTask ;
       [mTask launch] ;
     }
   }
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <actionBuild:> DONE ----------") ;
-  #endif
 }
 
 @end
