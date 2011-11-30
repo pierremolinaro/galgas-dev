@@ -414,10 +414,9 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) handleIssuesWithController: (NSArrayController *) inIssueArrayController {
-  NSArray * issueArray = inIssueArrayController.arrangedObjects ;
+- (void) setIssueArray: (NSArray *) inIssueArray {
   NSMutableArray * filteredArray = [NSMutableArray new] ;
-  for (PMIssueDescriptor * issue in issueArray) {
+  for (PMIssueDescriptor * issue in inIssueArray) {
     if ([issue.issuePath isEqualToString:mSourcePath]) {
       const NSRange lineRange = [self rangeForLine:issue.issueLine] ;
       [filteredArray
@@ -986,9 +985,7 @@ static NSInteger numericSort (NSString * inOperand1,
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s, inKeyPath '%@'", __PRETTY_FUNCTION__, inKeyPath) ;
   #endif
-  if ([inKeyPath isEqualToString:@"arrangedObjects"]) {
-    [self handleIssuesWithController:inObject] ;  
-  }else if ([inKeyPath isEqualToString:@"menuForEntryPopUpButton"]) {
+  if ([inKeyPath isEqualToString:@"menuForEntryPopUpButton"]) {
     [self willChangeValueForKey:@"menuForEntryPopUpButton"] ;
     [self  didChangeValueForKey:@"menuForEntryPopUpButton"] ;
   }else if (mTokenizer != NULL) {
