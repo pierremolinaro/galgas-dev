@@ -31,6 +31,7 @@
 #import "OC_GGS_TextSyntaxColoring.h"
 #import "OC_GGS_TextDisplayDescriptor.h"
 #import "PMTabBarView.h"
+#import "OC_GGS_BuildTask.h"
 
 //---------------------------------------------------------------------------*
 
@@ -52,7 +53,6 @@
     #ifdef DEBUG_MESSAGES
       NSLog (@"%s", __PRETTY_FUNCTION__) ;
     #endif
-    mIssueArrayController = [NSArrayController new] ;
     mFileEncoding = NSUTF8StringEncoding ;
     mSourceDisplayArrayController = [NSArrayController new] ;
     self.undoManager = nil ;
@@ -116,13 +116,13 @@
 //--- Bindings
   [mIssueTableViewColumn
     bind:@"value"
-    toObject:mIssueArrayController
+    toObject:[[OC_GGS_BuildTask sharedBuildTask] issueArrayController]
     withKeyPath:@"arrangedObjects.issueMessage"
     options:nil
   ] ;
   [mIssueTableViewColumn
     bind:@"textColor"
-    toObject:mIssueArrayController
+    toObject:[[OC_GGS_BuildTask sharedBuildTask] issueArrayController]
     withKeyPath:@"arrangedObjects.issueColor"
     options:nil
   ] ;
@@ -201,22 +201,25 @@
 //---
   [self displayIssueDetailedMessage:nil] ;
 //---
-  [mBuildProgressIndicator setHidden:YES] ;
-  [mStopBuildButton setEnabled:NO] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) removeWindowController:(NSWindowController *) inWindowController {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <removeWindowController:>") ;
-  #endif
-  if ([inWindowController shouldCloseDocument]) {
-    //NSLog (@"removeWindowController") ;
-    [gCocoaGalgasPreferencesController cocoaDocumentWillClose:self] ;
-  }
-  [mIssueTextView unbind:@"fontName"] ;
-  [super removeWindowController:inWindowController] ;
+  [mBuildProgressIndicator startAnimation:nil] ;
+  [mStartBuildButton
+    bind:@"hidden"
+    toObject:[OC_GGS_BuildTask sharedBuildTask]
+    withKeyPath:@"buildTaskIsRunning"
+    options:nil    
+  ] ;
+  [mBuildProgressIndicator
+    bind:@"hidden"
+    toObject:[OC_GGS_BuildTask sharedBuildTask]
+    withKeyPath:@"buildTaskIsNotRunning"
+    options:nil    
+  ] ;
+  [mStopBuildButton
+    bind:@"enabled"
+    toObject:[OC_GGS_BuildTask sharedBuildTask]
+    withKeyPath:@"buildTaskIsRunning"
+    options:nil    
+  ] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -810,7 +813,7 @@
     sourcePath:self.fileURL.path
   ] ;
 //---
-  [mIssueArrayController
+  [[[OC_GGS_BuildTask sharedBuildTask] issueArrayController]
     addObserver:mSourceTextWithSyntaxColoring 
     forKeyPath:@"arrangedObjects"
     options:0
@@ -818,81 +821,6 @@
   ] ;
 //---
   return source != nil ;
-}
-
-//---------------------------------------------------------------------------*
-
-#pragma mark XML Issue Analysis
-
-//---------------------------------------------------------------------------*
-
-- (void) XMLIssueAnalysis {
-  NSError * error = nil ;
-  NSXMLDocument * xmlDoc = [[NSXMLDocument alloc]
-    initWithData:mBufferedInputData
-    options:0
-    error:& error
-  ] ;
-  NSArray * issues = nil ;
-  if (nil == error) {
-    issues = xmlDoc.rootElement.children ;
-  }
-  NSMutableArray * issueArray = [NSMutableArray new] ;
-  for (NSXMLNode * node in issues) {
-    if (nil == node.name) {
-      NSString * message = [node stringValue] ;
-      PMIssueDescriptor * issue = [[PMIssueDescriptor alloc] initWithMessage:message] ;
-      [issueArray addObject:issue] ;
-    }else if ([@"message" isEqualToString:node.name]) {
-      NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
-      PMIssueDescriptor * issue = [[PMIssueDescriptor alloc] initWithMessage:message] ;
-      [issueArray addObject:issue] ;
-    }else if ([@"fileOperation" isEqualToString:node.name]) {
-      NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
-      PMIssueDescriptor * issue = [[PMIssueDescriptor alloc] initWithFileOperation:message] ;
-      [issueArray addObject:issue] ;
-    }else if ([@"error" isEqualToString:node.name]) {
-      NSArray * a = [node nodesForXPath:@"./@file" error:nil] ;
-      NSString * file = (a.count == 1) ? [[a objectAtIndex:0 HERE] stringValue] : @"" ;
-      a = [node nodesForXPath:@"./@line" error:nil] ;
-      NSInteger line = (a.count == 1) ? [[[a objectAtIndex:0 HERE] stringValue] integerValue] : 0 ;
-      a = [node nodesForXPath:@"./@column" error:nil] ;
-      NSInteger column = (a.count == 1) ? [[[a objectAtIndex:0 HERE] stringValue] integerValue] : 0 ;
-      NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
-      PMIssueDescriptor * issue = [[PMIssueDescriptor alloc]
-        initWithErrorMessage:message
-        file:file
-        line:line
-        column:column
-      ] ;
-      [issueArray addObject:issue] ;
-    }else if ([@"warning" isEqualToString:node.name]) {
-      NSString * file = [[[node nodesForXPath:@"./@file" error:nil] objectAtIndex:0 HERE] stringValue] ;
-      NSInteger line = [[[[node nodesForXPath:@"./@line" error:nil] objectAtIndex:0 HERE] stringValue] integerValue] ;
-      NSInteger column = [[[[node nodesForXPath:@"./@column" error:nil] objectAtIndex:0 HERE] stringValue] integerValue] ;
-      NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
-      PMIssueDescriptor * issue = [[PMIssueDescriptor alloc]
-        initWithWarningMessage:message
-        file:file
-        line:line
-        column:column
-      ] ;
-      [issueArray addObject:issue] ;
-    }
-  }
-  [mIssueArrayController setContent:issueArray] ;
-//--- Send issues to concerned text source coloring objects
-  NSMutableSet * sourceTextColoringSet = [NSMutableSet new] ;
-  for (OC_GGS_TextDisplayDescriptor * tds in mSourceDisplayArrayController.arrangedObjects) {
-    [sourceTextColoringSet addObject:tds.textSyntaxColoring] ;
-  }
-  for (OC_GGS_TextSyntaxColoring * tsc in sourceTextColoringSet) {
-    [tsc setIssueArray:issueArray] ;
-  }
-//---
-  if (nil != error) {
-    [self.windowForSheet presentError:error] ;
-  }
 }
 
 //---------------------------------------------------------------------------*
@@ -905,129 +833,14 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-- (void) terminateTask {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <terminateTask>") ;
-  #endif
-  if (mTask != nil) {
-    NSTask * task = mTask ;
-    mTask = nil ;
-    [task terminate] ;
-    [task waitUntilExit] ;
-    NSNotificationCenter * center = [NSNotificationCenter defaultCenter] ;
-    [center removeObserver:self name:NSFileHandleReadCompletionNotification object: [[task standardOutput] fileHandleForReading]] ;
-    [center removeObserver:self name:NSTaskDidTerminateNotification object:task] ;
-    const int status = [task terminationStatus];
-    if (status != 0) {
-//      [self appendMessage: [NSString stringWithFormat: @"Build task has exited with status %d\n", status]] ;
-    }
-  //--- Translate input data into text
-    NSString * issueText = [[NSString alloc]
-      initWithData:mBufferedInputData
-      encoding:NSUTF8StringEncoding
-    ] ;
-    [mIssueTextView setString:issueText] ;
-  //--- Analyze XML document
-    [self XMLIssueAnalysis] ;
-  //---
-    [mBuildProgressIndicator stopAnimation:nil] ;
-    [mBuildProgressIndicator setHidden:YES] ;
-    [mStopBuildButton setEnabled:NO] ;
-    [mStartBuildButton setHidden:NO] ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) getDataFromTaskOutput: (NSNotification *) inNotification {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  NSData * d = [[inNotification userInfo] objectForKey:NSFileHandleNotificationDataItem];
-  if ([d length] > 0) {
-    [mBufferedInputData appendData:d] ;
-    [[inNotification object] readInBackgroundAndNotify] ;
-  }else{
-    [self terminateTask] ;
-    [NSApp requestUserAttention:NSInformationalRequest] ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
 - (IBAction) stopBuild: (id) sender {
-  if (mTask != nil) {
-    [self terminateTask] ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-- (BOOL) canTerminateApplication {
-  return mTask == nil ;
+  [[OC_GGS_BuildTask sharedBuildTask] stopBuild] ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (IBAction) actionBuild: (id) inUnusedSender {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <actionBuild:>") ;
-  #endif
-  if (mTask == nil) {
-    [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
-    [mBuildProgressIndicator startAnimation:nil] ;
-    [mBuildProgressIndicator setHidden:NO] ;
-    [mStopBuildButton setEnabled:YES] ;
-    [mStartBuildButton setHidden:YES] ;
-    [self displayIssueDetailedMessage:nil] ;
-    [mIssueTextView setString:@"Compiling…"] ;
-    mBufferedInputData = [NSMutableData new] ;
-    [mIssueArrayController setContent:[NSArray array]] ;
-    NSArray * commandLineArray = [gCocoaGalgasPreferencesController commandLineItemArray] ;
-  //--- Command line tool does actually exist ? (First argument is not "?")
-    if ([[commandLineArray objectAtIndex:0 HERE] isEqualToString:@"?"]) {
-      NSAlert * alert = [NSAlert alertWithMessageText:@"Error: cannot compile"
-        defaultButton: nil
-        alternateButton: nil
-        otherButton: nil
-        informativeTextWithFormat:@"Compilation must be performed by an embedded Command line Tool; no command line Tool are currently embedded by application."
-      ] ;
-      [alert
-        beginSheetModalForWindow:[self windowForSheet]
-        modalDelegate:nil
-        didEndSelector:0
-        contextInfo:NULL
-      ] ;
-    }else{
-      #ifdef DEBUG_MESSAGES
-      NSLog (@"OC_GGS_Document <actionBuild:> launch") ;
-      #endif
-      NSMutableArray * arguments = [NSMutableArray new] ;
-      [arguments addObjectsFromArray:[commandLineArray subarrayWithRange:NSMakeRange (1, [commandLineArray count]-1)]] ;
-      [arguments addObject:self.fileURL.path] ;
-   //--- Create task
-      mTask = [NSTask new] ;
-      [mTask setLaunchPath:[commandLineArray objectAtIndex:0 HERE]] ;
-      [mTask setArguments:arguments] ;
-      // NSLog (@"'%@' %@", [mTask launchPath], arguments) ;
-    //--- Set standard output notification
-      NSPipe * taskOutput = [NSPipe pipe] ;
-      [mTask setStandardOutput:taskOutput] ;
-      [mTask setStandardError:taskOutput] ;
-      [[NSNotificationCenter defaultCenter]
-        addObserver:self
-        selector:@selector (getDataFromTaskOutput:)
-        name:NSFileHandleReadCompletionNotification
-        object:[taskOutput fileHandleForReading]
-      ] ;
-      [[taskOutput fileHandleForReading] readInBackgroundAndNotify] ;
-    //--- Start task
-      [mTask launch] ;
-    }
-  }
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <actionBuild:> DONE ----------") ;
-  #endif
+  [[OC_GGS_BuildTask sharedBuildTask] buildDocument:self] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1108,7 +921,7 @@
 
 - (void) clicOnIssueTableView: (id) inSender {
   const NSInteger clickedRow = mIssueTableView.clickedRow ;
-  NSArray * arrangedObjects = mIssueArrayController.arrangedObjects ;
+  NSArray * arrangedObjects = [OC_GGS_BuildTask sharedBuildTask].issueArrayController.arrangedObjects ;
   if ((clickedRow >= 0) && (clickedRow < (NSInteger) arrangedObjects.count)) {
     PMIssueDescriptor * issue = [arrangedObjects objectAtIndex:clickedRow HERE] ;
     NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;

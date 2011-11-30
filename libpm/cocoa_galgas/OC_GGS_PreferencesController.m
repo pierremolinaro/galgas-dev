@@ -29,7 +29,8 @@
 #import "enterDefaultCommandLineOptions.h"
 #import "OC_Lexique.h"
 #import "PMCocoaCallsDebug.h"
-#include "F_CocoaWrapperForGalgas.h"
+#import "F_CocoaWrapperForGalgas.h"
+#import "OC_GGS_BuildTask.h"
 
 //---------------------------------------------------------------------------*
 
@@ -883,11 +884,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   [view setFrame:enclosingRect] ;
 //--- Set view to scroll view
   [mCommandLineOptionScrollView setDocumentView:view] ;
-//--- Set initial tab view selection
-  /* NSInteger tabViewIndex = [defaults integerForKey:GGS_selected_tab] ;
-  if (tabViewIndex >= [mPreferencesTabView numberOfTabViewItems]) {
-    tabViewIndex = [mPreferencesTabView numberOfTabViewItems] - 1 ;
-  } */
+//---
   [mPreferencesTabView
     bind:@"selectedIndex"
     toObject:udc
@@ -1296,14 +1293,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 //---------------------------------------------------------------------------*
 
 - (NSApplicationTerminateReply) applicationShouldTerminate:(NSApplication *)sender {
-//--- Ask opened documents
-  BOOL canTerminateApplication = YES ;
-  NSArray * docArray = [[NSApplication sharedApplication] orderedDocuments] ;
-  unsigned d ;
-  for (d=0 ; (d<[docArray count]) && canTerminateApplication ; d++) {
-    OC_GGS_Document * doc = [docArray objectAtIndex: d HERE] ;
-    canTerminateApplication = [doc canTerminateApplication] ;
-  }
+  BOOL canTerminateApplication = ! [OC_GGS_BuildTask sharedBuildTask].buildTaskIsRunning ;
   if (! canTerminateApplication) {
     const NSInteger response = NSRunAlertPanel (@"Application cannot terminate while some tasks are running.",
                                     @"You can cancel termination, or force tasks to terminate.",
@@ -1311,17 +1301,6 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     canTerminateApplication = response == NSAlertAlternateReturn ;
   }
   return canTerminateApplication ? NSTerminateNow : NSTerminateCancel ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) cocoaDocumentWillClose: (OC_GGS_Document *) inDocument {
-  NSArray * docArray = [[NSApplication sharedApplication] orderedDocuments] ;
-  unsigned d ;
-  for (d=0 ; d<[docArray count] ; d++) {
-//    OC_GGS_Document * doc = [docArray objectAtIndex:d HERE] ;
- //   [doc willCloseGalgasDocument:inDocument] ;
-  }
 }
 
 //---------------------------------------------------------------------------*

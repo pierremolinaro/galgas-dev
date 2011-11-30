@@ -254,9 +254,9 @@ indexing with projectLL1grammar
       ![inSourceFile stringByDeletingLastPathComponent] . "/" . [mFilePath string]
       ![mFilePath location]
     ] ;
-    if mSourceKind != [@sourceFileKind externSourceFile] then
-      message "  - '" . mFilePath . "'\n" ;
-    end if ;
+#    if mSourceKind != [@sourceFileKind externSourceFile] then
+#      message "  - '" . mFilePath . "'\n" ;
+#    end if ;
     switch mSourceKind
     when externSourceFile :
     when guiSourceFile :

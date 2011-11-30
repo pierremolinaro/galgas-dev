@@ -15,6 +15,7 @@
 #import "OC_GGS_PreferencesController.h"
 #import "PMIssueDescriptor.h"
 #import "PMErrorOrWarningDescriptor.h"
+#import "OC_GGS_BuildTask.h"
 
 //---------------------------------------------------------------------------*
 
@@ -244,6 +245,8 @@
     // NSLog (@"LINE %d, inSource '%@'", __LINE__, inSource) ;
     [mSourceTextStorage replaceCharactersInRange:NSMakeRange (0, mSourceTextStorage.length) withString:inSource] ;
     [mSourceTextStorage endEditing] ;
+  //---
+    [self setIssueArray:[OC_GGS_BuildTask sharedBuildTask].issueArrayController.arrangedObjects] ;
   }
   return self ;
 }

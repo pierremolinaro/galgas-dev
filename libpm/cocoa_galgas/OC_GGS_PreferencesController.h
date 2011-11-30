@@ -145,8 +145,6 @@ extern OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 
 - (double) ruleThickness ;
 
-- (void) cocoaDocumentWillClose: (OC_GGS_Document *) inDocument ;
-
 - (NSTabView *) preferencesTabView ;
 
 - (NSArray *) toolNameArray ;
