@@ -106,14 +106,6 @@
 //--- Tell to window controller that closing the source text window closes the document
   [inWindowController setShouldCloseDocument: YES] ;
 //--- Bindings
-  [mIssueTextView
-    bind:@"font"
-    toObject:[NSUserDefaultsController sharedUserDefaultsController]
-    withKeyPath:[NSString stringWithFormat:@"values.%@", GGS_build_text_font]
-    options:[NSDictionary dictionaryWithObject:NSUnarchiveFromDataTransformerName forKey:NSValueTransformerNameBindingOption]
-  ] ;
-
-//--- Bindings
   [mIssueTableViewColumn
     bind:@"value"
     toObject:[[OC_GGS_BuildTask sharedBuildTask] issueArrayController]
@@ -130,14 +122,13 @@
   mIssueTableView.target = self ;
   mIssueTableView.action = @selector(clicOnIssueTableView:) ;
 //--- Set up windows location
-  NSString * windowTitle = [self lastComponentOfFileName] ;
-  NSString * key = [NSString stringWithFormat: @"frame_for_source:%@", windowTitle] ;
-  [[self windowForSheet] setFrameAutosaveName:key] ;
+  NSString * key = [NSString stringWithFormat: @"frame_for_source:%@", self.lastComponentOfFileName] ;
+  [self.windowForSheet setFrameAutosaveName:key] ;
 
 //--- Add Split view binding
 // Note : use [self lastComponentOfFileName] instead of [window title], because window title may not set at this point
-  NSString * keyPath = [NSString stringWithFormat:@"values.issue-split-fraction:%@", [self lastComponentOfFileName]] ;
-  [mIssueSplitView setAutosaveName:keyPath] ;
+  key = [NSString stringWithFormat:@"values.issue-split-fraction:%@", self.lastComponentOfFileName] ;
+  [mIssueSplitView setAutosaveName:key] ;
 
 //--- Source file encoding
   [mSourceEncodingTextField
@@ -885,6 +876,7 @@
       display:YES
       error:nil
     ] ;
+    [doc.windowForSheet orderBack:nil] ;
     result = doc.textSyntaxColoring ;
   }
 //---  
@@ -926,6 +918,7 @@
     PMIssueDescriptor * issue = [arrangedObjects objectAtIndex:clickedRow HERE] ;
     NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
     OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
+    [self displayIssueDetailedMessage:issue.issueMessage] ;
     const BOOL ok = [textDisplay makeVisibleIssue:issue] ;
     if (! ok) { // Current tab view does not correspond: open a new tab
       textDisplay = [self findOrAddNewTabForFile:issue.issuePath] ;
@@ -1055,8 +1048,12 @@
     ] ;
    // NSLog (@"r %g %g %g %g", r.origin.x, r.origin.y, r.size.width, r.size.height) ;
     // NSLog (@"mDetailedIssueTextView.textContainerInset.height %g", mDetailedIssueTextView.textContainerInset.height) ;
+    double position = mDetailedIssueSplitView.bounds.size.height - mDetailedIssueSplitView.dividerThickness - NSMaxY (r) - 8.0 ;
+    if (position < 50.0) {
+      position = 50.0 ;
+    }
     [mDetailedIssueSplitView
-      setPosition:mDetailedIssueSplitView.bounds.size.height - mDetailedIssueSplitView.dividerThickness - NSMaxY (r) - 8.0
+      setPosition:position
       ofDividerAtIndex:0
     ] ;
   }

@@ -38,8 +38,6 @@
 
 @interface OC_GGS_Document : NSDocument <NSTextViewDelegate, NSWindowDelegate> {
 
-  @private IBOutlet NSTextView * mIssueTextView ;
-
   @private IBOutlet NSSplitView * mIssueSplitView ;
 
 
