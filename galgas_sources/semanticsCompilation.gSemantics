@@ -288,7 +288,7 @@ routine buildGrammarComponentMapForSemanticAnalysis
   ?!@semanticContext ioSemanticContext
 :
 #--- Perform semantic analysis of grammar components
-  foreach iGrammarComponentASTList do
+  foreach inGrammarComponentASTList do
   #--- Analyze start symbol labels
     @grammarLabelMap grammarLabelMap [emptyMap] ;
     foreach [mGrammarComponentAST mStartSymbolLabelList] do

@@ -49,11 +49,6 @@
   
   @private IBOutlet NSButton * mCurrentLineButton ;
 
-  @private NSTask * mTask ;
-
-  @private NSMutableData * mBufferedInputData ;
-
-  @private NSArrayController * mIssueArrayController ;  // Of PMIssueDescriptor
   @private IBOutlet NSTableView * mIssueTableView ;
   @private IBOutlet NSTableColumn * mIssueTableViewColumn ;
 
@@ -97,8 +92,6 @@
 
 - (IBAction) actionBuild: (id) sender ;
 - (IBAction) stopBuild: (id) sender ;
-
-- (BOOL) canTerminateApplication ;
 
 - (NSString *) sourceStringForGlobalSearch ;
 - (void) replaceSourceStringWithString: (NSString *) inString ;
