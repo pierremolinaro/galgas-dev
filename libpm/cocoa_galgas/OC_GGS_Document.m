@@ -103,6 +103,7 @@
     NSLog (@"OC_GGS_Document <windowControllerDidLoadNib:>") ;
   #endif
   [super windowControllerDidLoadNib: inWindowController];
+
 //--- Tell to window controller that closing the source text window closes the document
   [inWindowController setShouldCloseDocument: YES] ;
 //--- Bindings
