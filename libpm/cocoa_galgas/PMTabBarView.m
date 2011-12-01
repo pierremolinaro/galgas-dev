@@ -73,7 +73,7 @@
     [button setBezelStyle:NSSmallSquareBezelStyle] ;
     [button setButtonType:NSPushOnPushOffButton] ;
     [button setState:(selectionIndex == idx) ? NSOnState : NSOffState] ;
-    [button setDisplayRemoveImage:mObservedArray.count > 1] ;
+    [button setDisplayRemoveImage:idx > 0] ;
     button.tag = idx ;
     button.target = self ;
     button.action = @selector (changeTabAction:) ;
