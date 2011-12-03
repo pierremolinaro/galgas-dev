@@ -10,10 +10,7 @@ project all_%!PROJECT_NAME% -> %![PROJECT_NAME utf8Representation]%:
   feature "makefile_mingw_on_macosx" ;
   feature "makefile_msys_on_win32" ;
   feature "project_xcode" ;
-  feature "xcode_arch:i386" ;
-  feature "xcode_arch:x86_64" ;
-  feature "xcode_arch:ppc" ;
-  feature "xcode_arch:ppc64" ;
+  feature "xcode_arch:SnowLeopard-64" ;
 
 #--- Source files (relative path from 'galgas_sources' directory)
   lexique "%!PROJECT_NAME%_lexique.gLexique" ;
