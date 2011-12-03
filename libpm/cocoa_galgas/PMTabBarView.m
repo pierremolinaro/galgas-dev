@@ -122,9 +122,11 @@
 
   }else if ([inKeyPath isEqualToString:@"selectionIndex"]) {
     const NSUInteger selectionIndex = ((NSArrayController *) inObject).selectionIndex ;
-    PMButtonWithRemove * newSelection = [mButtonArray objectAtIndex:selectionIndex] ;
-    for (PMButtonWithRemove * button in mButtonArray) {
-      [button setState:(button == newSelection) ? NSOnState : NSOffState] ;
+    if (selectionIndex != NSNotFound) {
+      PMButtonWithRemove * newSelection = [mButtonArray objectAtIndex:selectionIndex HERE] ;
+      for (PMButtonWithRemove * button in mButtonArray) {
+        [button setState:(button == newSelection) ? NSOnState : NSOffState] ;
+      }
     }
   }else if ([inKeyPath isEqualToString:@"mTextSyntaxColoring.isDirty"]) {
     [self dirtyStateDidChange:inObject] ;

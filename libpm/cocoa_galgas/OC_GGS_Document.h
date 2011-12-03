@@ -36,10 +36,9 @@
 
 //---------------------------------------------------------------------------*
 
-@interface OC_GGS_Document : NSDocument <NSTextViewDelegate, NSWindowDelegate> {
+@interface OC_GGS_Document : NSDocument <NSTextViewDelegate, NSSplitViewDelegate, NSWindowDelegate> {
 
   @private IBOutlet NSSplitView * mIssueSplitView ;
-
 
   @private IBOutlet NSView * mSourceHostView ;
 
@@ -57,8 +56,6 @@
 
 //---  
   @private OC_GGS_TextSyntaxColoring * mSourceTextWithSyntaxColoring ;
-
-//---
   @private NSArrayController * mSourceDisplayArrayController ;
 
 //---
@@ -76,8 +73,12 @@
   @private IBOutlet NSButton * mStartBuildButton ;
   @private IBOutlet NSProgressIndicator * mBuildProgressIndicator ;
   @private IBOutlet NSButton * mStopBuildButton ;
-
+  @private IBOutlet NSTextField * mErrorCountTextField ;
+  @private IBOutlet NSTextField * mWarningCountTextField ;
 }
+
+- (IBAction) collapseDetailledMessageAction: (id) inSender ;
+- (IBAction) collapseIssuesAction: (id) inSender ;
 
 - (IBAction) actionGotoLine: (id) inSender ;
 

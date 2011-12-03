@@ -73,7 +73,7 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) setKnobProportion: (double) inValue {
+- (void) setKnobProportion: (CGFloat) inValue {
   [super setKnobProportion:inValue] ;
   [self setNeedsDisplay] ;
 }

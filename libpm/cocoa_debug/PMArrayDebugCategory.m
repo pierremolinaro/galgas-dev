@@ -11,7 +11,7 @@
 //---------------------------------------------------------------------------*
 
 + (id) arrayWithObject: (id) anObject LOCATION_ARGS {
-  if (anObject == nil) {
+  if (nil == anObject) {
     NSLog (@"arrayWithObject: argument is nil in:%s:%d", IN_SOURCE_FILE, IN_SOURCE_LINE) ;
   }
   return [NSArray arrayWithObject:anObject] ; // DO NOT ADD HERE !!!
@@ -23,7 +23,7 @@
   if (! [self isKindOfClass:[NSArray class]]) {
     NSLog (@"objectAtIndex: receiver is not an instance of NSArray in:%s:%d", IN_SOURCE_FILE, IN_SOURCE_LINE) ;
   }else if (inIndex >= [self count]) {
-    NSLog (@"objectAtIndex: index (%lu) >= object count (%lu) in:%s:%d", inIndex, [self count], IN_SOURCE_FILE, IN_SOURCE_LINE) ;  
+    NSLog (@"objectAtIndex: index (%lu) >= object count (%lu) in:%s:%d", (unsigned long) inIndex, (unsigned long) self.count, IN_SOURCE_FILE, IN_SOURCE_LINE) ;  
   }
   return [self objectAtIndex:inIndex] ;
 }

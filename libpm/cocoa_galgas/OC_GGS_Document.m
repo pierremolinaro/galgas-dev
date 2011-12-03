@@ -100,7 +100,7 @@
 
 - (void) windowControllerDidLoadNib: (NSWindowController *) inWindowController {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <windowControllerDidLoadNib:>") ;
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   [super windowControllerDidLoadNib: inWindowController];
 
@@ -130,7 +130,8 @@
 // Note : use [self lastComponentOfFileName] instead of [window title], because window title may not set at this point
   key = [NSString stringWithFormat:@"values.issue-split-fraction:%@", self.lastComponentOfFileName] ;
   [mIssueSplitView setAutosaveName:key] ;
-
+//---
+  [mDetailedIssueSplitView setDelegate:self] ;
 //--- Source file encoding
   [mSourceEncodingTextField
     bind:@"value"
@@ -212,6 +213,58 @@
     withKeyPath:@"buildTaskIsRunning"
     options:nil    
   ] ;
+  [mStopBuildButton
+    bind:@"hidden"
+    toObject:[OC_GGS_BuildTask sharedBuildTask]
+    withKeyPath:@"buildTaskIsNotRunning"
+    options:nil    
+  ] ;
+  [mErrorCountTextField
+    bind:@"hidden"
+    toObject:[OC_GGS_BuildTask sharedBuildTask]
+    withKeyPath:@"buildTaskIsRunning"
+    options:nil    
+  ] ;
+  [mErrorCountTextField
+    bind:@"value"
+    toObject:[OC_GGS_BuildTask sharedBuildTask]
+    withKeyPath:@"errorCountString"
+    options:nil    
+  ] ;
+  [mWarningCountTextField
+    bind:@"hidden"
+    toObject:[OC_GGS_BuildTask sharedBuildTask]
+    withKeyPath:@"buildTaskIsRunning"
+    options:nil    
+  ] ;
+  [mWarningCountTextField
+    bind:@"value"
+    toObject:[OC_GGS_BuildTask sharedBuildTask]
+    withKeyPath:@"warningCountString"
+    options:nil    
+  ] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) willCloseDocument: (OC_GGS_Document *) inDocument {
+  NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
+  for (OC_GGS_TextDisplayDescriptor * tdd in sourceDisplayArray.copy) {
+    if (tdd.textSyntaxColoring == inDocument.textSyntaxColoring) {
+      tdd.syntaxColoringDelegate = nil ;
+      [mSourceDisplayArrayController removeObject:tdd] ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) removeWindowController:(NSWindowController *) inWindowController {
+  [super removeWindowController:inWindowController] ;
+//---
+  for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
+    [doc willCloseDocument:self] ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -252,6 +305,18 @@
     didEndSelector: @selector (sheetDidEnd:returnCode:contextInfo:)
     contextInfo: nil
   ] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) collapseDetailledMessageAction: (id) inSender {
+  [mDetailedIssueSplitView setPosition:mDetailedIssueSplitView.bounds.size.height ofDividerAtIndex:0] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) collapseIssuesAction: (id) inSender {
+  [mIssueSplitView setPosition:0.0 ofDividerAtIndex:0] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -324,7 +389,7 @@
 - (NSDate *) sourceFileModificationDateInFileSystem {
   NSURL * fileURL = [self fileURL] ;
   #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <sourceFileModificationDateInFileSystem> for file URL '%@'", [self fileURL]) ;
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   NSDate * date = [NSDate date] ;
   if ([fileURL isFileURL]) {
@@ -338,7 +403,7 @@
 
 - (void) updateFromFileSystem: (id) inUnusedArgument {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <updateFromFileSystem>") ;
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   [NSApp
     beginSheet:mUpdateFromFileSystemPanel
@@ -365,7 +430,7 @@
 
 - (void) askForUpdatingFromFileSystem {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <askForUpdatingFromFileSystem>") ;
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
 //--- Get application name
   NSDictionary * bundleDictionary = [[NSBundle mainBundle] localizedInfoDictionary] ;
@@ -399,7 +464,7 @@
          returnCode:(int) returnCode
          contextInfo:(void *) contextInfo {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <askForUpdatingFromFileSystemAlertEnding:returnCode:contextInfo:>") ;
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
 //  NSLog (@"returnCode %d", returnCode) ;
   if (returnCode == NSAlertAlternateReturn) { // Revert button
@@ -419,7 +484,7 @@
 
 - (void) windowDidBecomeKey: (NSNotification *) inNotification {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <windowDidBecomeKey>") ;
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   if (self.fileURL.path.length > 0) {
     NSDate * modificationDateOnFileSystem = [self sourceFileModificationDateInFileSystem] ;
@@ -474,7 +539,7 @@
     originalContentsURL: (NSURL *) inOriginalURL
     error: (NSError **) outError {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <fileAttributesToWriteToFile:>") ;
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
     
   NSDictionary *infoPlist = [[NSBundle mainBundle] infoDictionary];
@@ -566,7 +631,7 @@
 
 - (void) displaySheetBeforeClosing: (NSAlert *) inAlert {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <displaySheetBeforeClosing:>") ;
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   [inAlert
     beginSheetModalForWindow:[self windowForSheet]
@@ -582,7 +647,7 @@
          returnCode:(int)returnCode
          contextInfo:(void *)contextInfo{
   #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <closeDocumentOnAlertEnding:>") ;
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   NSDocumentController * dc = [NSDocumentController sharedDocumentController] ;
   [dc removeDocument:self] ;
@@ -652,7 +717,7 @@
 
 - (void) performCharacterConversion {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <performCharacterConversion>") ;
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
 //--- Get source string
   NSString * source = [mSourceTextWithSyntaxColoring sourceString] ;
@@ -729,9 +794,6 @@
       ] ;
     }
   }
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <decodeLoadedDataWithStringEncoding> DONE") ;
-  #endif
 }
 
 //---------------------------------------------------------------------------*
@@ -744,7 +806,7 @@
          ofType:(NSString *) inTypeName
          error:(NSError **)outError {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"OC_GGS_Document <readFromURL:'%@' ofType:>", inAbsoluteURL) ;
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
 //--- Try UTF8
   NSStringEncoding fileEncoding = mFileEncoding ;
@@ -865,7 +927,7 @@
 //--- Search in opened documents
   NSArray * documents = [[NSDocumentController sharedDocumentController] documents] ;
   for (NSUInteger i=0 ; (i<documents.count) && (nil == result) ; i++) {
-    OC_GGS_Document * doc = [documents objectAtIndex:i] ;
+    OC_GGS_Document * doc = [documents objectAtIndex:i HERE] ;
     if ([requestedAbsolutePath isEqualToString:doc.fileURL.path]) {
       result = doc.textSyntaxColoring ;
     }
@@ -935,27 +997,29 @@
 //---------------------------------------------------------------------------*
 
 - (void) populatePopUpButton {
-  NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
-  OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
-  NSMenu * menu = [textDisplay menuForEntryPopUpButton] ;
-  const NSUInteger n = [menu numberOfItems] ;
-  if (n == 0) {
-    [menu
-      addItemWithTitle:@"No entry"
-      action:NULL
-      keyEquivalent:@""
-    ] ;
-    [mEntryListPopUpButton setEnabled:NO] ;
-  }else{
-    for (NSUInteger i=0 ; i<n ; i++) {
-      NSMenuItem * item = [menu itemAtIndex:i] ;
-      [item setTarget:self] ;
-      [item setAction:@selector (gotoEntry:)] ;
+  if (mSourceDisplayArrayController.selectionIndex != NSNotFound) {
+    NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
+    OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
+    NSMenu * menu = [textDisplay menuForEntryPopUpButton] ;
+    const NSUInteger n = [menu numberOfItems] ;
+    if (n == 0) {
+      [menu
+        addItemWithTitle:@"No entry"
+        action:NULL
+        keyEquivalent:@""
+      ] ;
+      [mEntryListPopUpButton setEnabled:NO] ;
+    }else{
+      for (NSUInteger i=0 ; i<n ; i++) {
+        NSMenuItem * item = [menu itemAtIndex:i] ;
+        [item setTarget:self] ;
+        [item setAction:@selector (gotoEntry:)] ;
+      }
+      [mEntryListPopUpButton setEnabled:YES] ;
     }
-    [mEntryListPopUpButton setEnabled:YES] ;
+    [mEntryListPopUpButton setMenu:menu] ;
+    //NSLog (@"mEntryListPopUpButton %@", mEntryListPopUpButton) ;
   }
-  [mEntryListPopUpButton setMenu:menu] ;
-  //NSLog (@"mEntryListPopUpButton %@", mEntryListPopUpButton) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -972,25 +1036,27 @@
 //---------------------------------------------------------------------------*
 
 - (void) selectEntryPopUp {
-  NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
-  OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
-  const NSUInteger selectionStart = textDisplay.textSelectionStart ;
-  NSArray * menuItemArray = [mEntryListPopUpButton itemArray] ;
-  if ([mEntryListPopUpButton isEnabled]) {
-    NSInteger idx = NSNotFound ;
-    NSInteger i ;
-    const NSInteger n = [menuItemArray count] ;
-    for (i=n-1 ; (i>=0) && (idx == NSNotFound) ; i--) {
-      NSMenuItem * item = [menuItemArray objectAtIndex:i HERE] ;
-      const NSUInteger startPoint = [item tag] ;
-      if (selectionStart >= startPoint) {
-        idx = i ;
+  if (mSourceDisplayArrayController.selectionIndex != NSNotFound) {
+    NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
+    OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
+    const NSUInteger selectionStart = textDisplay.textSelectionStart ;
+    NSArray * menuItemArray = [mEntryListPopUpButton itemArray] ;
+    if ([mEntryListPopUpButton isEnabled]) {
+      NSInteger idx = NSNotFound ;
+      NSInteger i ;
+      const NSInteger n = [menuItemArray count] ;
+      for (i=n-1 ; (i>=0) && (idx == NSNotFound) ; i--) {
+        NSMenuItem * item = [menuItemArray objectAtIndex:i HERE] ;
+        const NSUInteger startPoint = [item tag] ;
+        if (selectionStart >= startPoint) {
+          idx = i ;
+        }
       }
-    }
-    if (idx == NSNotFound) {
-      [mEntryListPopUpButton selectItemAtIndex:0] ;
-    }else{
-      [mEntryListPopUpButton selectItemAtIndex:idx] ;
+      if (idx == NSNotFound) {
+        [mEntryListPopUpButton selectItemAtIndex:0] ;
+      }else{
+        [mEntryListPopUpButton selectItemAtIndex:idx] ;
+      }
     }
   }
 }
@@ -1014,11 +1080,13 @@
     }
     NSArray * arrangedObjects = mSourceDisplayArrayController.arrangedObjects ;
     const NSUInteger sel = mSourceDisplayArrayController.selectionIndex ;
-    OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel HERE] ;
-    object.scrollView.frame = mSourceHostView.bounds ;
-    // NSLog (@"object.scrollView %d", object.scrollView.autoresizesSubviews) ;
-    [mSourceHostView addSubview:object.scrollView] ;
-    [mSourceHostView.window makeFirstResponder:object.textView] ;
+    if (sel != NSNotFound) {
+      OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel HERE] ;
+      object.scrollView.frame = mSourceHostView.bounds ;
+      // NSLog (@"object.scrollView %d", object.scrollView.autoresizesSubviews) ;
+      [mSourceHostView addSubview:object.scrollView] ;
+      [mSourceHostView.window makeFirstResponder:object.textView] ;
+    }
   }else if ([inKeyPath isEqualToString:@"selection.textSelectionStart"]) {
     [self selectEntryPopUp] ;
   }else if ([inKeyPath isEqualToString:@"selection.mTextSyntaxColoring.mTokenizer.menuForEntryPopUpButton"]) {
@@ -1049,15 +1117,20 @@
     ] ;
    // NSLog (@"r %g %g %g %g", r.origin.x, r.origin.y, r.size.width, r.size.height) ;
     // NSLog (@"mDetailedIssueTextView.textContainerInset.height %g", mDetailedIssueTextView.textContainerInset.height) ;
-    double position = mDetailedIssueSplitView.bounds.size.height - mDetailedIssueSplitView.dividerThickness - NSMaxY (r) - 8.0 ;
-    if (position < 50.0) {
-      position = 50.0 ;
-    }
+    const double position = mDetailedIssueSplitView.bounds.size.height - mDetailedIssueSplitView.dividerThickness - NSMaxY (r) - 8.0 ;
     [mDetailedIssueSplitView
       setPosition:position
       ofDividerAtIndex:0
     ] ;
   }
+}
+
+//---------------------------------------------------------------------------*
+
+- (CGFloat) splitView:(NSSplitView *)splitView
+            constrainMinCoordinate:(CGFloat)proposedMin
+            ofSubviewAt:(NSInteger) inDividerIndex {
+  return 40.0 ;
 }
 
 //---------------------------------------------------------------------------*

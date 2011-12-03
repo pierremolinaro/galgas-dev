@@ -14,6 +14,8 @@
   @private NSMutableData * mBufferedInputData ;
   @private NSArrayController * mIssueArrayController ;
   @private NSTask * mTask ;
+  @private NSUInteger mErrorCount ;
+  @private NSUInteger mWarningCount ;
 }
 
 - (BOOL) buildTaskIsRunning ;
@@ -27,5 +29,7 @@
 
 - (void) stopBuild ;
 
+- (NSString *) errorCountString ;
 
+- (NSString *) warningCountString ;
 @end
