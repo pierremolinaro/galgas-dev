@@ -1,4 +1,0 @@
-Installation notes with CodeWarrior (MAC OS, Windows) :-------------------------------------------------------
-
-This project needs compiling and linking with LIB PM library.This library can be download at http://galgas.rts-software.org/download/ and must be located in the same directory than galgas directory.
-

@@ -198,10 +198,7 @@
 		CF7FD6A10FF13C1C001EA1B7 /* unicode_character_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7FD69D0FF13C1C001EA1B7 /* unicode_character_cpp.cpp */; };
 		CF7FD6A20FF13C1C001EA1B7 /* unicode_character_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7FD69D0FF13C1C001EA1B7 /* unicode_character_cpp.cpp */; };
 		CF7FD6AD0FF13CFB001EA1B7 /* unicode_character_m.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7FD6AC0FF13CFB001EA1B7 /* unicode_character_m.m */; };
-		CF82597D08536A130077AEAF /* I_Action.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF82596D08536A130077AEAF /* I_Action.tiff */; };
-		CF82597E08536A130077AEAF /* I_SaveAs.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF82596E08536A130077AEAF /* I_SaveAs.tiff */; };
 		CF82597F08536A130077AEAF /* I_Stop.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF82596F08536A130077AEAF /* I_Stop.tiff */; };
-		CF82598008536A130077AEAF /* I_Window.png in Resources */ = {isa = PBXBuildFile; fileRef = CF82597008536A130077AEAF /* I_Window.png */; };
 		CF82598208536A130077AEAF /* OC_GGS_BuildWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597208536A130077AEAF /* OC_GGS_BuildWindowController.m */; };
 		CF82598408536A130077AEAF /* OC_GGS_Document.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597408536A130077AEAF /* OC_GGS_Document.m */; };
 		CF82598608536A130077AEAF /* OC_GGS_PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597608536A130077AEAF /* OC_GGS_PreferencesController.m */; };
@@ -237,7 +234,6 @@
 		CF8E30260D9EE03700EF3764 /* projectCreation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8E30220D9EE03700EF3764 /* projectCreation.cpp */; };
 		CF8EE15A0B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8EE1540B93343E006CAFD5 /* C_BDD_Set3.cpp */; };
 		CF8EE1600B93343E006CAFD5 /* C_BDD_Set3.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8EE1540B93343E006CAFD5 /* C_BDD_Set3.cpp */; };
-		CF94CDB110D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF94CDAF10D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m */; };
 		CF976F0B0AD9954600D81E5D /* galgas in Resources */ = {isa = PBXBuildFile; fileRef = CFF98D73058CCD4700176BCE /* galgas */; };
 		CF976F0D0AD9954B00D81E5D /* galgas-debug in Resources */ = {isa = PBXBuildFile; fileRef = CF7A1403058CEFE2007126C1 /* galgas-debug */; };
 		CF9BDF6D0585C5C900FC7DD7 /* galgasApplication.icns in Resources */ = {isa = PBXBuildFile; fileRef = CF9BDF6B0585C5C900FC7DD7 /* galgasApplication.icns */; };
@@ -268,6 +264,16 @@
 		CFA4E80F1274BD5D00C9AF35 /* templateGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA4E80C1274BD5D00C9AF35 /* templateGrammar.cpp */; };
 		CFA59E4D128EADA4000CD98B /* AC_GALGAS_uniqueMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA59E4B128EADA4000CD98B /* AC_GALGAS_uniqueMap.cpp */; };
 		CFA59E4E128EADA4000CD98B /* AC_GALGAS_uniqueMap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA59E4B128EADA4000CD98B /* AC_GALGAS_uniqueMap.cpp */; };
+		CFAD1354148A4C8400ECA963 /* OC_GGS_BuildTask.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD1341148A4C8400ECA963 /* OC_GGS_BuildTask.m */; };
+		CFAD1355148A4C8400ECA963 /* OC_GGS_Scroller.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD1343148A4C8400ECA963 /* OC_GGS_Scroller.m */; };
+		CFAD1356148A4C8400ECA963 /* OC_GGS_TextDisplayDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD1345148A4C8400ECA963 /* OC_GGS_TextDisplayDescriptor.m */; };
+		CFAD1357148A4C8400ECA963 /* OC_GGS_TextSyntaxColoring.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD1347148A4C8400ECA963 /* OC_GGS_TextSyntaxColoring.m */; };
+		CFAD1358148A4C8400ECA963 /* OC_GGS_TextViewEx.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD1349148A4C8400ECA963 /* OC_GGS_TextViewEx.m */; };
+		CFAD1359148A4C8400ECA963 /* PMButtonWithRemove.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD134B148A4C8400ECA963 /* PMButtonWithRemove.m */; };
+		CFAD135A148A4C8400ECA963 /* PMErrorOrWarningDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD134D148A4C8400ECA963 /* PMErrorOrWarningDescriptor.m */; };
+		CFAD135B148A4C8400ECA963 /* PMIssueDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD134F148A4C8400ECA963 /* PMIssueDescriptor.m */; };
+		CFAD135C148A4C8400ECA963 /* PMIssueInRuler.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD1351148A4C8400ECA963 /* PMIssueInRuler.m */; };
+		CFAD135D148A4C8400ECA963 /* PMTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD1353148A4C8400ECA963 /* PMTabBarView.m */; };
 		CFAE5AA010021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */; };
 		CFAE5B1B10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */; };
 		CFB6B6DA1160D26100604D8C /* predefinedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6B6D81160D26100604D8C /* predefinedTypes.cpp */; };
@@ -280,10 +286,8 @@
 		CFBC4D0A1152370D006CAD14 /* projectGlobalCheckings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBC4D071152370D006CAD14 /* projectGlobalCheckings.cpp */; };
 		CFBC4D1111523723006CAD14 /* semanticContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBC4D0F11523723006CAD14 /* semanticContext.cpp */; };
 		CFBC4D1211523723006CAD14 /* semanticContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBC4D0F11523723006CAD14 /* semanticContext.cpp */; };
-		CFBC766D0AC694C200443ACA /* OC_GGS_BuildResultTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.m */; };
 		CFC07E0D11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */; };
 		CFC07E0E11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */; };
-		CFC1506B0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif in Resources */ = {isa = PBXBuildFile; fileRef = CFC1506A0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif */; };
 		CFC153030FF6A76700A61DE8 /* guiGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */; };
 		CFC153040FF6A76700A61DE8 /* guiGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */; };
 		CFC3A1BE119059210021E9A1 /* semanticExpressionAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC3A1BC119059210021E9A1 /* semanticExpressionAnalysis.cpp */; };
@@ -313,8 +317,6 @@
 		CFCD02401066422000EA0463 /* grammarMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */; };
 		CFCD02411066422000EA0463 /* grammarModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */; };
 		CFCEEFC313CF24C10074BDE9 /* OC_GGS_searchInFolders.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCEEFC013CF24C10074BDE9 /* OC_GGS_searchInFolders.m */; };
-		CFCF63290FFEA33800EF3A10 /* I_Orange14.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCF63250FFEA33800EF3A10 /* I_Orange14.png */; };
-		CFCF632A0FFEA33800EF3A10 /* I_Red14.png in Resources */ = {isa = PBXBuildFile; fileRef = CFCF63260FFEA33800EF3A10 /* I_Red14.png */; };
 		CFD2EA830FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */; };
 		CFD2EA840FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */; };
 		CFD2EA970FD45F990085EC05 /* lexiqueSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */; };
@@ -369,12 +371,9 @@
 		CFE167830E8E7A2B00AFDAFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE167820E8E7A2B00AFDAFC /* main.m */; };
 		CFE4FC19114E4C9000DB2D43 /* semanticGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE4FC17114E4C9000DB2D43 /* semanticGeneration.cpp */; };
 		CFE4FC1A114E4C9000DB2D43 /* semanticGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE4FC17114E4C9000DB2D43 /* semanticGeneration.cpp */; };
-		CFE61D040B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m */; };
 		CFECE4670FEFA5270031D087 /* OC_Lexique.m in Sources */ = {isa = PBXBuildFile; fileRef = CFECE4650FEFA5270031D087 /* OC_Lexique.m */; };
 		CFEF3A7B12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */; };
 		CFEF3A7C12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */; };
-		CFF1293910D9646E00C72453 /* OC_GGS_ErrorOrWarningDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF1293710D9646E00C72453 /* OC_GGS_ErrorOrWarningDescriptor.m */; };
-		CFF2131B0BA017FB0087BA01 /* NSSplitViewExtensions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF213190BA017FB0087BA01 /* NSSplitViewExtensions.m */; };
 		CFF253EF07B0CA1E001265A1 /* galgas_scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF253ED07B0CA1E001265A1 /* galgas_scanner.cpp */; };
 		CFF253F107B0CA1E001265A1 /* galgas_scanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF253ED07B0CA1E001265A1 /* galgas_scanner.cpp */; };
 		CFF8BEFE126614D9001B7E61 /* cPtr_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8BEFC126614D9001B7E61 /* cPtr_object.cpp */; };
@@ -612,10 +611,7 @@
 		CF7FD6AB0FF13CFB001EA1B7 /* unicode_character_m.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = unicode_character_m.h; sourceTree = "<group>"; };
 		CF7FD6AC0FF13CFB001EA1B7 /* unicode_character_m.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = unicode_character_m.m; sourceTree = "<group>"; };
 		CF82596C08536A130077AEAF /* F_CocoaWrapperForGalgas.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = F_CocoaWrapperForGalgas.h; sourceTree = "<group>"; };
-		CF82596D08536A130077AEAF /* I_Action.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = I_Action.tiff; sourceTree = "<group>"; };
-		CF82596E08536A130077AEAF /* I_SaveAs.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = I_SaveAs.tiff; sourceTree = "<group>"; };
 		CF82596F08536A130077AEAF /* I_Stop.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = I_Stop.tiff; sourceTree = "<group>"; };
-		CF82597008536A130077AEAF /* I_Window.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = I_Window.png; sourceTree = "<group>"; };
 		CF82597108536A130077AEAF /* OC_GGS_BuildWindowController.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildWindowController.h; sourceTree = "<group>"; };
 		CF82597208536A130077AEAF /* OC_GGS_BuildWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_BuildWindowController.m; sourceTree = "<group>"; };
 		CF82597308536A130077AEAF /* OC_GGS_Document.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_Document.h; sourceTree = "<group>"; };
@@ -668,8 +664,6 @@
 		CF8E30230D9EE03700EF3764 /* projectCreation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = projectCreation.h; sourceTree = "<group>"; };
 		CF8EE1540B93343E006CAFD5 /* C_BDD_Set3.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; name = C_BDD_Set3.cpp; path = bdd/C_BDD_Set3.cpp; sourceTree = "<group>"; };
 		CF8EE1550B93343E006CAFD5 /* C_BDD_Set3.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; name = C_BDD_Set3.h; path = bdd/C_BDD_Set3.h; sourceTree = "<group>"; };
-		CF94CDAE10D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_RulerViewForCompileMessageView.h; sourceTree = "<group>"; };
-		CF94CDAF10D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_RulerViewForCompileMessageView.m; sourceTree = "<group>"; };
 		CF9BDF6B0585C5C900FC7DD7 /* galgasApplication.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = galgasApplication.icns; sourceTree = "<group>"; };
 		CF9BDF6C0585C5C900FC7DD7 /* galgasDocuments.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = galgasDocuments.icns; sourceTree = "<group>"; };
 		CF9E55F90FF5372D007692D1 /* OC_Token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_Token.h; sourceTree = "<group>"; };
@@ -707,6 +701,26 @@
 		CFA5C5CF0DFBEF3500DD782E /* optionCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = optionCompilation.h; sourceTree = "<group>"; };
 		CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guiCompilation.cpp; sourceTree = "<group>"; };
 		CFA5C5DD0DFC003F00DD782E /* guiCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = guiCompilation.h; sourceTree = "<group>"; };
+		CFAD1340148A4C8400ECA963 /* OC_GGS_BuildTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildTask.h; sourceTree = "<group>"; };
+		CFAD1341148A4C8400ECA963 /* OC_GGS_BuildTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_BuildTask.m; sourceTree = "<group>"; };
+		CFAD1342148A4C8400ECA963 /* OC_GGS_Scroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_Scroller.h; sourceTree = "<group>"; };
+		CFAD1343148A4C8400ECA963 /* OC_GGS_Scroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_Scroller.m; sourceTree = "<group>"; };
+		CFAD1344148A4C8400ECA963 /* OC_GGS_TextDisplayDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_TextDisplayDescriptor.h; sourceTree = "<group>"; };
+		CFAD1345148A4C8400ECA963 /* OC_GGS_TextDisplayDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_TextDisplayDescriptor.m; sourceTree = "<group>"; };
+		CFAD1346148A4C8400ECA963 /* OC_GGS_TextSyntaxColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_TextSyntaxColoring.h; sourceTree = "<group>"; };
+		CFAD1347148A4C8400ECA963 /* OC_GGS_TextSyntaxColoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_TextSyntaxColoring.m; sourceTree = "<group>"; };
+		CFAD1348148A4C8400ECA963 /* OC_GGS_TextViewEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_TextViewEx.h; sourceTree = "<group>"; };
+		CFAD1349148A4C8400ECA963 /* OC_GGS_TextViewEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_TextViewEx.m; sourceTree = "<group>"; };
+		CFAD134A148A4C8400ECA963 /* PMButtonWithRemove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMButtonWithRemove.h; sourceTree = "<group>"; };
+		CFAD134B148A4C8400ECA963 /* PMButtonWithRemove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMButtonWithRemove.m; sourceTree = "<group>"; };
+		CFAD134C148A4C8400ECA963 /* PMErrorOrWarningDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMErrorOrWarningDescriptor.h; sourceTree = "<group>"; };
+		CFAD134D148A4C8400ECA963 /* PMErrorOrWarningDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMErrorOrWarningDescriptor.m; sourceTree = "<group>"; };
+		CFAD134E148A4C8400ECA963 /* PMIssueDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMIssueDescriptor.h; sourceTree = "<group>"; };
+		CFAD134F148A4C8400ECA963 /* PMIssueDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMIssueDescriptor.m; sourceTree = "<group>"; };
+		CFAD1350148A4C8400ECA963 /* PMIssueInRuler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMIssueInRuler.h; sourceTree = "<group>"; };
+		CFAD1351148A4C8400ECA963 /* PMIssueInRuler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMIssueInRuler.m; sourceTree = "<group>"; };
+		CFAD1352148A4C8400ECA963 /* PMTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMTabBarView.h; sourceTree = "<group>"; };
+		CFAD1353148A4C8400ECA963 /* PMTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMTabBarView.m; sourceTree = "<group>"; };
 		CFAE5A9E10021A400068DEC9 /* OC_GGS_CommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_CommandLineOption.h; sourceTree = "<group>"; };
 		CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_CommandLineOption.m; sourceTree = "<group>"; };
 		CFAE5B1910024AA50068DEC9 /* enterDefaultCommandLineOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = enterDefaultCommandLineOptions.h; sourceTree = "<group>"; };
@@ -735,8 +749,6 @@
 		CFBC4D081152370D006CAD14 /* projectGlobalCheckings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = projectGlobalCheckings.h; sourceTree = "<group>"; };
 		CFBC4D0F11523723006CAD14 /* semanticContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticContext.cpp; sourceTree = "<group>"; };
 		CFBC4D1011523723006CAD14 /* semanticContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticContext.h; sourceTree = "<group>"; };
-		CFBC76680AC694C200443ACA /* OC_GGS_BuildResultTextView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildResultTextView.h; sourceTree = "<group>"; };
-		CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_BuildResultTextView.m; sourceTree = "<group>"; };
 		CFBDAC42137BD12F008FB334 /* grammar-zone2.h.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "grammar-zone2.h.gTemplate"; sourceTree = "<group>"; };
 		CFBDAC43137BD12F008FB334 /* grammar-zone3.h.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "grammar-zone3.h.gTemplate"; sourceTree = "<group>"; };
 		CFBDAC45137BD12F008FB334 /* gui-implementation.m.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "gui-implementation.m.gTemplate"; sourceTree = "<group>"; };
@@ -836,7 +848,6 @@
 		CFBDACEB137BD130008FB334 /* unified-class-body-for-type.h.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "unified-class-body-for-type.h.gTemplate"; sourceTree = "<group>"; };
 		CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticAnalysisOfSyntaxComponent.cpp; sourceTree = "<group>"; };
 		CFC07E0C11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticAnalysisOfSyntaxComponent.h; sourceTree = "<group>"; };
-		CFC1506A0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = I_ScrollToEndArrow.gif; sourceTree = "<group>"; };
 		CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guiGrammar.cpp; sourceTree = "<group>"; };
 		CFC153020FF6A76700A61DE8 /* guiGrammar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = guiGrammar.h; sourceTree = "<group>"; };
 		CFC30F92058A225E003D0386 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = SOURCE_ROOT; };
@@ -854,8 +865,6 @@
 		CFCB125C0D9D74330016BE3F /* galgasTemplateScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgasTemplateScanner.h; sourceTree = "<group>"; };
 		CFCEEFBF13CF24C10074BDE9 /* OC_GGS_searchInFolders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_searchInFolders.h; sourceTree = "<group>"; };
 		CFCEEFC013CF24C10074BDE9 /* OC_GGS_searchInFolders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_searchInFolders.m; sourceTree = "<group>"; };
-		CFCF63250FFEA33800EF3A10 /* I_Orange14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = I_Orange14.png; sourceTree = "<group>"; };
-		CFCF63260FFEA33800EF3A10 /* I_Red14.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = I_Red14.png; sourceTree = "<group>"; };
 		CFD2223C11085598003C83A5 /* GALGAS_function.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_function.cpp; sourceTree = "<group>"; };
 		CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = predefinedLexicalActions.cpp; sourceTree = "<group>"; };
 		CFD2EA820FD45D080085EC05 /* predefinedLexicalActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = predefinedLexicalActions.h; sourceTree = "<group>"; };
@@ -928,18 +937,12 @@
 		CFE26D190C1327B90066ACB3 /* programSLRgrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = programSLRgrammar.h; sourceTree = "<group>"; };
 		CFE4FC17114E4C9000DB2D43 /* semanticGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticGeneration.cpp; sourceTree = "<group>"; };
 		CFE4FC18114E4C9000DB2D43 /* semanticGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticGeneration.h; sourceTree = "<group>"; };
-		CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_DelegateForSyntaxColoring.h; sourceTree = "<group>"; };
-		CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_DelegateForSyntaxColoring.m; sourceTree = "<group>"; };
 		CFECE4640FEFA5270031D087 /* OC_Lexique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_Lexique.h; sourceTree = "<group>"; };
 		CFECE4650FEFA5270031D087 /* OC_Lexique.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_Lexique.m; sourceTree = "<group>"; };
 		CFEDB1A809E434C700701490 /* InfoPPC.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InfoPPC.plist; sourceTree = SOURCE_ROOT; };
 		CFEDF5160C2D17F00038713A /* InfoI386.plist */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = text.plist.xml; path = InfoI386.plist; sourceTree = "<group>"; };
 		CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cIndexingDictionary.cpp; sourceTree = "<group>"; };
 		CFEF3A7A12A04C0F007CA2D8 /* cIndexingDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cIndexingDictionary.h; sourceTree = "<group>"; };
-		CFF1293610D9646E00C72453 /* OC_GGS_ErrorOrWarningDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_ErrorOrWarningDescriptor.h; sourceTree = "<group>"; };
-		CFF1293710D9646E00C72453 /* OC_GGS_ErrorOrWarningDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_ErrorOrWarningDescriptor.m; sourceTree = "<group>"; };
-		CFF213180BA017FB0087BA01 /* NSSplitViewExtensions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NSSplitViewExtensions.h; sourceTree = "<group>"; };
-		CFF213190BA017FB0087BA01 /* NSSplitViewExtensions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NSSplitViewExtensions.m; sourceTree = "<group>"; };
 		CFF253ED07B0CA1E001265A1 /* galgas_scanner.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = galgas_scanner.cpp; sourceTree = "<group>"; };
 		CFF253EE07B0CA1E001265A1 /* galgas_scanner.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = galgas_scanner.h; sourceTree = "<group>"; };
 		CFF8BEFC126614D9001B7E61 /* cPtr_object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cPtr_object.cpp; sourceTree = "<group>"; };
@@ -1255,12 +1258,30 @@
 		CFAD482E0591BCF700BF8381 /* cocoa_galgas */ = {
 			isa = PBXGroup;
 			children = (
+				CFAD1340148A4C8400ECA963 /* OC_GGS_BuildTask.h */,
+				CFAD1341148A4C8400ECA963 /* OC_GGS_BuildTask.m */,
+				CFAD1342148A4C8400ECA963 /* OC_GGS_Scroller.h */,
+				CFAD1343148A4C8400ECA963 /* OC_GGS_Scroller.m */,
+				CFAD1344148A4C8400ECA963 /* OC_GGS_TextDisplayDescriptor.h */,
+				CFAD1345148A4C8400ECA963 /* OC_GGS_TextDisplayDescriptor.m */,
+				CFAD1346148A4C8400ECA963 /* OC_GGS_TextSyntaxColoring.h */,
+				CFAD1347148A4C8400ECA963 /* OC_GGS_TextSyntaxColoring.m */,
+				CFAD1348148A4C8400ECA963 /* OC_GGS_TextViewEx.h */,
+				CFAD1349148A4C8400ECA963 /* OC_GGS_TextViewEx.m */,
+				CFAD134A148A4C8400ECA963 /* PMButtonWithRemove.h */,
+				CFAD134B148A4C8400ECA963 /* PMButtonWithRemove.m */,
+				CFAD134C148A4C8400ECA963 /* PMErrorOrWarningDescriptor.h */,
+				CFAD134D148A4C8400ECA963 /* PMErrorOrWarningDescriptor.m */,
+				CFAD134E148A4C8400ECA963 /* PMIssueDescriptor.h */,
+				CFAD134F148A4C8400ECA963 /* PMIssueDescriptor.m */,
+				CFAD1350148A4C8400ECA963 /* PMIssueInRuler.h */,
+				CFAD1351148A4C8400ECA963 /* PMIssueInRuler.m */,
+				CFAD1352148A4C8400ECA963 /* PMTabBarView.h */,
+				CFAD1353148A4C8400ECA963 /* PMTabBarView.m */,
 				CF06F5C51049592F005F03FA /* MainMenu.xib */,
 				CF06F5C71049592F005F03FA /* OC_GGS_Document.xib */,
 				CFCEEFBF13CF24C10074BDE9 /* OC_GGS_searchInFolders.h */,
 				CFCEEFC013CF24C10074BDE9 /* OC_GGS_searchInFolders.m */,
-				CFF213180BA017FB0087BA01 /* NSSplitViewExtensions.h */,
-				CFF213190BA017FB0087BA01 /* NSSplitViewExtensions.m */,
 				CF3CFB2B0FEBEA6C00CE4488 /* PMFontButton.h */,
 				CF3CFB2C0FEBEA6C00CE4488 /* PMFontButton.m */,
 				CF9E55F90FF5372D007692D1 /* OC_Token.h */,
@@ -1277,25 +1298,11 @@
 				CF82597408536A130077AEAF /* OC_GGS_Document.m */,
 				CF82597508536A130077AEAF /* OC_GGS_PreferencesController.h */,
 				CF82597608536A130077AEAF /* OC_GGS_PreferencesController.m */,
-				CF94CDAE10D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.h */,
-				CF94CDAF10D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m */,
 				CF82597708536A130077AEAF /* OC_GGS_RulerViewForTextView.h */,
 				CF82597808536A130077AEAF /* OC_GGS_RulerViewForTextView.m */,
 				CF82597908536A130077AEAF /* OC_GGS_TextView.h */,
 				CF82597A08536A130077AEAF /* OC_GGS_TextView.m */,
-				CFE61CF60B9F5546007E41C2 /* OC_GGS_DelegateForSyntaxColoring.h */,
-				CFE61D020B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m */,
-				CFBC76680AC694C200443ACA /* OC_GGS_BuildResultTextView.h */,
-				CFBC76690AC694C200443ACA /* OC_GGS_BuildResultTextView.m */,
-				CFF1293610D9646E00C72453 /* OC_GGS_ErrorOrWarningDescriptor.h */,
-				CFF1293710D9646E00C72453 /* OC_GGS_ErrorOrWarningDescriptor.m */,
-				CF82596D08536A130077AEAF /* I_Action.tiff */,
-				CF82596E08536A130077AEAF /* I_SaveAs.tiff */,
 				CF82596F08536A130077AEAF /* I_Stop.tiff */,
-				CF82597008536A130077AEAF /* I_Window.png */,
-				CFCF63250FFEA33800EF3A10 /* I_Orange14.png */,
-				CFCF63260FFEA33800EF3A10 /* I_Red14.png */,
-				CFC1506A0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif */,
 				CF82596C08536A130077AEAF /* F_CocoaWrapperForGalgas.h */,
 				CF82597B08536A130077AEAF /* PP_CocoaGalgasPrefix.pch */,
 			);
@@ -2046,15 +2053,9 @@
 				8D15AC2C0486D014006FF6A4 /* Credits.rtf in Resources */,
 				8D15AC2F0486D014006FF6A4 /* InfoPlist.strings in Resources */,
 				CF9BDF6D0585C5C900FC7DD7 /* galgasApplication.icns in Resources */,
-				CF82597D08536A130077AEAF /* I_Action.tiff in Resources */,
-				CF82597E08536A130077AEAF /* I_SaveAs.tiff in Resources */,
 				CF82597F08536A130077AEAF /* I_Stop.tiff in Resources */,
-				CF82598008536A130077AEAF /* I_Window.png in Resources */,
 				CF976F0B0AD9954600D81E5D /* galgas in Resources */,
 				CF976F0D0AD9954B00D81E5D /* galgas-debug in Resources */,
-				CFC1506B0FF62F5800A61DE8 /* I_ScrollToEndArrow.gif in Resources */,
-				CFCF63290FFEA33800EF3A10 /* I_Orange14.png in Resources */,
-				CFCF632A0FFEA33800EF3A10 /* I_Red14.png in Resources */,
 				CF06F5CD1049592F005F03FA /* MainMenu.xib in Resources */,
 				CF06F5CE1049592F005F03FA /* OC_GGS_Document.xib in Resources */,
 				CF83184E104A7A9200FDF2EC /* galgasUpdate.xib in Resources */,
@@ -2073,13 +2074,10 @@
 				CF82598608536A130077AEAF /* OC_GGS_PreferencesController.m in Sources */,
 				CF82598808536A130077AEAF /* OC_GGS_RulerViewForTextView.m in Sources */,
 				CF82598A08536A130077AEAF /* OC_GGS_TextView.m in Sources */,
-				CFBC766D0AC694C200443ACA /* OC_GGS_BuildResultTextView.m in Sources */,
 				CFDAE70E0AD19F3E00713406 /* PMDownloadData.m in Sources */,
 				CFDAE7100AD19F3E00713406 /* PMDownloadFile.m in Sources */,
 				CF4397F90ADFE16D0085F47C /* PMCancelButtonForPanel.m in Sources */,
 				CF4397FB0ADFE16D0085F47C /* PMOkButtonForPanel.m in Sources */,
-				CFE61D040B9F5630007E41C2 /* OC_GGS_DelegateForSyntaxColoring.m in Sources */,
-				CFF2131B0BA017FB0087BA01 /* NSSplitViewExtensions.m in Sources */,
 				CF8D51970E46334400CFF259 /* GGSUpdateCocoaGalgas.m in Sources */,
 				CFE167830E8E7A2B00AFDAFC /* main.m in Sources */,
 				CF3CFB2E0FEBEA6C00CE4488 /* PMFontButton.m in Sources */,
@@ -2097,10 +2095,18 @@
 				CF4ED39010D9256F00B4F6AA /* PMMutableStringDebugCategory.m in Sources */,
 				CF4ED39110D9256F00B4F6AA /* PMPointerArrayDebugCategory.m in Sources */,
 				CF4ED39210D9256F00B4F6AA /* PMSetDebugCategory.m in Sources */,
-				CF94CDB110D9347F0028DAF7 /* OC_GGS_RulerViewForCompileMessageView.m in Sources */,
-				CFF1293910D9646E00C72453 /* OC_GGS_ErrorOrWarningDescriptor.m in Sources */,
 				CFD94B7A129068CF00864538 /* cocoaGalgas.m in Sources */,
 				CFCEEFC313CF24C10074BDE9 /* OC_GGS_searchInFolders.m in Sources */,
+				CFAD1354148A4C8400ECA963 /* OC_GGS_BuildTask.m in Sources */,
+				CFAD1355148A4C8400ECA963 /* OC_GGS_Scroller.m in Sources */,
+				CFAD1356148A4C8400ECA963 /* OC_GGS_TextDisplayDescriptor.m in Sources */,
+				CFAD1357148A4C8400ECA963 /* OC_GGS_TextSyntaxColoring.m in Sources */,
+				CFAD1358148A4C8400ECA963 /* OC_GGS_TextViewEx.m in Sources */,
+				CFAD1359148A4C8400ECA963 /* PMButtonWithRemove.m in Sources */,
+				CFAD135A148A4C8400ECA963 /* PMErrorOrWarningDescriptor.m in Sources */,
+				CFAD135B148A4C8400ECA963 /* PMIssueDescriptor.m in Sources */,
+				CFAD135C148A4C8400ECA963 /* PMIssueInRuler.m in Sources */,
+				CFAD135D148A4C8400ECA963 /* PMTabBarView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2524,18 +2530,12 @@
 		CF0DA691085630E800F38E67 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					ppc7400,
-					x86_64,
-					i386,
-				);
 				DEPLOYMENT_LOCATION = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../libpm/galgas2/PP_GalgasPrefix.pch;
-				GCC_VERSION = 4.0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				HEADER_SEARCH_PATHS = (
 					../galgas_sources/GALGAS_OUTPUT,
@@ -2545,23 +2545,18 @@
 				INSTALL_PATH = "$(HOME)/bin";
 				LD_OPENMP_FLAGS = "";
 				PRODUCT_NAME = galgas;
-				SDKROOT = macosx10.4;
 			};
 			name = Default;
 		};
 		CF0DA694085630E800F38E67 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					i386,
-					x86_64,
-					ppc7400,
-				);
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = NO;
 				GCC_PREFIX_HEADER = "";
-				GCC_VERSION = 4.0;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = NO;
 				GCC_WARN_UNINITIALIZED_AUTOS = NO;
 				HEADER_SEARCH_PATHS = (
@@ -2574,18 +2569,13 @@
 				OTHER_CFLAGS = "";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = "galgas-debug";
-				SDKROOT = macosx10.4;
+				SDKROOT = macosx10.6;
 			};
 			name = Default;
 		};
 		CF0DA6A3085630E800F38E67 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ARCHS = (
-					x86_64,
-					i386,
-					ppc7400,
-				);
 				DEPLOYMENT_LOCATION = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_ENABLE_TRIGRAPHS = NO;
@@ -2594,10 +2584,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch;
 				GCC_SHORT_ENUMS = YES;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
 				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
 				GCC_WARN_PROTOTYPE_CONVERSION = NO;
 				GCC_WARN_SHADOW = YES;
+				GCC_WARN_UNUSED_PARAMETER = NO;
 				HEADER_SEARCH_PATHS = (
 					../galgas_sources/GALGAS_OUTPUT,
 					../hand_coded_sources,
@@ -2607,7 +2597,6 @@
 				INSTALL_PATH = "$(HOME)/Applications";
 				OTHER_CFLAGS = "-Wall";
 				PRODUCT_NAME = cocoaGalgas;
-				SDKROOT = macosx10.5;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Default;
@@ -2616,7 +2605,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				DEAD_CODE_STRIPPING = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_ENABLE_OBJC_GC = required;
@@ -2624,7 +2613,6 @@
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_THREADSAFE_STATICS = NO;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
-				GCC_TREAT_NONCONFORMANT_CODE_ERRORS_AS_WARNINGS = YES;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -2633,14 +2621,12 @@
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;
-				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;
 				GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;
 				GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;
 				GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;
 				GCC_WARN_MISSING_PARENTHESES = YES;
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				GCC_WARN_PEDANTIC = NO;
-				GCC_WARN_PROTOTYPE_CONVERSION = YES;
 				GCC_WARN_SHADOW = NO;
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
