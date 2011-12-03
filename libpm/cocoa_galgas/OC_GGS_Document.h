@@ -101,4 +101,5 @@
 
 - (void) displayIssueDetailedMessage: (NSString *) inDetailledMessage ;
 
+- (void) triggerLiveCompilation ;
 @end

@@ -900,6 +900,7 @@
 //---------------------------------------------------------------------------*
 
 - (void) triggerDocumentEditedStatusUpdate {
+  // NSLog (@"%s", __PRETTY_FUNCTION__) ;
   BOOL isEdited = NO ;
   NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
   for (NSUInteger i=0 ; (i<sourceDisplayArray.count) && ! isEdited ; i++) {
@@ -909,6 +910,21 @@
     isEdited = undoManager.canUndo ;
   }
   [self updateChangeCount:isEdited ? NSChangeDone : NSChangeCleared] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) triggerLiveCompilation {
+  // NSLog (@"PMLiveCompilation %d", [[NSUserDefaults standardUserDefaults] boolForKey:@"PMLiveCompilation"]) ;
+  if ([[NSUserDefaults standardUserDefaults] boolForKey:@"PMLiveCompilation"]) {
+    [[NSRunLoop currentRunLoop]
+      performSelector:@selector (abortAndBuildDocument:)
+      target:[OC_GGS_BuildTask sharedBuildTask]
+      argument:self
+      order:0
+      modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]
+    ] ;
+  }
 }
 
 //---------------------------------------------------------------------------*
