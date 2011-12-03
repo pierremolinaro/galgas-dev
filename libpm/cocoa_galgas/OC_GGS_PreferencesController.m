@@ -801,7 +801,6 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 
 - (void) awakeFromNib {
   // NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
 //--- Add observer to user defaults changes
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
   NSNotificationCenter  * nc = [NSNotificationCenter defaultCenter] ;
@@ -849,7 +848,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   }
   [mCurrentBuildWindowFontAndSizeSettingsButton
     bind:@"fontValue"
-    toObject:udc
+    toObject:[NSUserDefaultsController sharedUserDefaultsController]
     withKeyPath:[NSString stringWithFormat:@"values.%@", GGS_build_text_font]
     options:NULL
   ] ;
@@ -887,7 +886,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 //---
   [mPreferencesTabView
     bind:@"selectedIndex"
-    toObject:udc
+    toObject:[NSUserDefaultsController sharedUserDefaultsController]
     withKeyPath:@"values.GGS_selected_tab"
     options:nil
   ] ;
@@ -903,7 +902,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   }
   [mConvert_CRLF_And_CR_To_LF_AtStartUpButton
     bind:@"value"
-    toObject:udc
+    toObject:[NSUserDefaultsController sharedUserDefaultsController]
     withKeyPath:@"values.PMConvert_CRLF_And_CR_To_LF_AtStartUp"
     options:NULL
   ] ;
@@ -913,14 +912,14 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   }
   [mConvert_HTAB_To_SPACE_AtStartUpButton
     bind:@"value"
-    toObject:udc
+    toObject:[NSUserDefaultsController sharedUserDefaultsController]
     withKeyPath:@"values.PMConvert_HTAB_To_SPACE_AtStartUp"
     options:NULL
   ] ;
 //--- Show Invisible Characters Checkbox
  [mShowInvisibleCharactersCheckBox
     bind:@"value"
-    toObject:udc
+    toObject:[NSUserDefaultsController sharedUserDefaultsController]
     withKeyPath:@"values.PMShowInvisibleCharacters"
     options:NULL
   ] ;
@@ -930,6 +929,13 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   [self willChangeValueForKey:@"commandLineString"] ;
   [self  didChangeValueForKey:@"commandLineString"] ;
   [mCommandLineOptionTextView setEditable:NO] ;
+//---
+  [mLiveCompilationCheckBox
+    bind:@"value"
+    toObject:[NSUserDefaultsController sharedUserDefaultsController]
+    withKeyPath:@"values.PMLiveCompilation"
+    options:NULL
+  ] ;
 //---  
   [self updateSourceTextPreferenceCount] ;
 }

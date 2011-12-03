@@ -362,6 +362,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   mTextSelectionStart = mTextView.selectedRange.location ;
   [self  didChangeValueForKey:@"textSelectionStart"] ;
   [mRulerView setNeedsDisplay:YES] ;
+  [mDocument triggerLiveCompilation] ;
 }
 
 //---------------------------------------------------------------------------*

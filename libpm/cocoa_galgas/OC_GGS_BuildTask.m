@@ -16,6 +16,10 @@
 
 //---------------------------------------------------------------------------*
 
+//#define DEBUG_MESSAGES
+
+//---------------------------------------------------------------------------*
+
 static OC_GGS_BuildTask * gSharedBuildTask ;
 
 //---------------------------------------------------------------------------*
@@ -194,40 +198,61 @@ static OC_GGS_BuildTask * gSharedBuildTask ;
     [self didChangeValueForKey:@"buildTaskIsRunning"] ;
     [task terminate] ;
     [task waitUntilExit] ;
-    NSNotificationCenter * center = [NSNotificationCenter defaultCenter] ;
-    [center removeObserver:self name:NSFileHandleReadCompletionNotification object: [[task standardOutput] fileHandleForReading]] ;
-    [center removeObserver:self name:NSTaskDidTerminateNotification object:task] ;
     const int status = [task terminationStatus];
     if (status != 0) {
 //      [self appendMessage: [NSString stringWithFormat: @"Build task has exited with status %d\n", status]] ;
     }
 
-  //--- Analyze XML document
-    [self XMLIssueAnalysis] ;
   }
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) getDataFromTaskOutput: (NSNotification *) inNotification {
+  NSData * data = [inNotification.userInfo objectForKey:NSFileHandleNotificationDataItem];
   #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+    NSLog (@"%s (%lu bytes)", __PRETTY_FUNCTION__, (unsigned long) data.length) ;
   #endif
-  NSData * d = [[inNotification userInfo] objectForKey:NSFileHandleNotificationDataItem];
-  if ([d length] > 0) {
-    [mBufferedInputData appendData:d] ;
-    [[inNotification object] readInBackgroundAndNotify] ;
+  if (data.length > 0) {
+    [mBufferedInputData appendData:data] ;
+    [inNotification.object readInBackgroundAndNotify] ;
   }else{
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter] ;
+    [center removeObserver:self name:NSFileHandleReadCompletionNotification object: [[mTask standardOutput] fileHandleForReading]] ;
+    [center removeObserver:self name:NSTaskDidTerminateNotification object:mTask] ;
     [self terminateTask] ;
-    [NSApp requestUserAttention:NSInformationalRequest] ;
+    if (! mAbortRequested) {
+      [self XMLIssueAnalysis] ;
+      [NSApp requestUserAttention:NSInformationalRequest] ;
+    }
+    mAbortRequested = NO ;
+    if (nil != mDocumentToBuild) {
+      [self buildDocument:mDocumentToBuild] ;
+      mDocumentToBuild = nil ;
+    }
   }
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) stopBuild {
-  if (mTask != nil) {
+  if (nil != mTask) {
+    mAbortRequested = YES ;
     [self terminateTask] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) abortAndBuildDocument: (OC_GGS_Document *) inDocument {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s:%@", __PRETTY_FUNCTION__, inDocument) ;
+  #endif
+  if (nil == mTask) {
+    [self buildDocument:inDocument] ;
+  }else{
+    mDocumentToBuild = inDocument ;
+    [self stopBuild] ;
   }
 }
 

@@ -59,11 +59,7 @@ extern OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 
 //---------------------------------------------------------------------------*
 
-@interface OC_GGS_PreferencesController : NSObject
-#ifdef MAC_OS_X_VERSION_10_6
- <NSWindowDelegate>
-#endif
-{
+@interface OC_GGS_PreferencesController : NSObject <NSWindowDelegate> {
 //--- Text Macros Menu
   @private IBOutlet NSMenu * mTextMacroMenu ;
 
@@ -74,13 +70,16 @@ extern OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   @private IBOutlet NSPopUpButton * mToolPopUpButton ;
   @private NSMutableArray * mToolNameArray ;
 
+//--- "Live Compilation" checkbox
+  @private IBOutlet NSButton * mLiveCompilationCheckBox ;
+
 //--- "Show ruler" checkbox
   @private IBOutlet NSButton * mShowRuleCheckBox ;
   @private IBOutlet NSButton * mConvert_CRLF_And_CR_To_LF_AtStartUpButton ;
   @private IBOutlet NSButton * mConvert_HTAB_To_SPACE_AtStartUpButton ;
   @private IBOutlet NSButton * mShowInvisibleCharactersCheckBox ;
 
-//--- "Show ruler" checkbox
+//---
   @private IBOutlet NSTextField * mShiftLeftInsertedSpaceTextField ;
 
 //--- Preference Window
