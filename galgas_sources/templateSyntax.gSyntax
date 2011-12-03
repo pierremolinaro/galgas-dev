@@ -28,7 +28,7 @@ import "templateTypesForAST.gSemantics" ;
 #------------------------------------------------------------------------------*
 
 rule <expression>
-  !@templateExpressionAST outExpression
+  !@templateExpressionAST unused outExpression
 :
   <concatenation_term> ?outExpression ;
   repeat

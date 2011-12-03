@@ -180,28 +180,26 @@ local routine build_LIBPM_COCOA_GALGAS_group
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
+  append_m_h_files !?fileList !"OC_GGS_searchInFolders" ;
   append_m_h_files !?fileList !"PMFontButton" ;
   append_m_h_files !?fileList !"OC_Token" ;
   append_m_h_files !?fileList !"OC_Lexique" ;
-  append_m_h_files !?fileList !"OC_GGS_BuildWindowController" ;
   append_m_h_files !?fileList !"OC_GGS_CommandLineOption" ;
   append_m_h_files !?fileList !"enterDefaultCommandLineOptions" ;
   append_m_h_files !?fileList !"OC_GGS_Document" ;
   append_m_h_files !?fileList !"OC_GGS_PreferencesController" ;
   append_m_h_files !?fileList !"PMIssueDescriptor" ;
-  append_m_h_files !?fileList !"OC_GGS_RulerViewForTextView" ;
+  append_m_h_files !?fileList !"OC_GGS_TextDisplayDescriptor" ;
+  append_m_h_files !?fileList !"OC_GGS_TextSyntaxColoring" ;
+  append_m_h_files !?fileList !"PMTabBarView" ;
+  append_m_h_files !?fileList !"PMButtonWithRemove" ;
   append_m_h_files !?fileList !"OC_GGS_TextView" ;
-  append_m_h_files !?fileList !"OC_GGS_DelegateForSyntaxColoring" ;
-  append_m_h_files !?fileList !"OC_GGS_BuildResultTextView" ;
-  append_m_h_files !?fileList !"OC_GGS_ErrorOrWarningDescriptor" ;
-  append_m_h_files !?fileList !"OC_GGS_searchInFolders" ;
-  fileList += !"I_ScrollToEndArrow.gif" ;
-  fileList += !"I_Action.tiff" ;
-  fileList += !"I_SaveAs.tiff" ;
+  append_m_h_files !?fileList !"OC_GGS_RulerViewForTextView" ;
+  append_m_h_files !?fileList !"OC_GGS_Scroller" ;
+  append_m_h_files !?fileList !"PMErrorOrWarningDescriptor" ;
+  append_m_h_files !?fileList !"PMIssueInRuler" ;
+  append_m_h_files !?fileList !"OC_GGS_BuildTask" ;
   fileList += !"I_Stop.tiff" ;
-  fileList += !"I_Window.png" ;
-  fileList += !"I_Orange14.png" ;
-  fileList += !"I_Red14.png" ;
   fileList += !"F_CocoaWrapperForGalgas.h" ;
   fileList += !"PP_CocoaGalgasPrefix.pch" ;
 #--- Enter Resource files
@@ -259,6 +257,8 @@ local routine build_LIBPM_COCOA_UTILITIES_group
 :
   @stringlist fileList [emptyList] ;
   fileList += !"main.m" ;
+  fileList += !"PMCancelButtonForPanel.m" ;
+  fileList += !"PMOkButtonForPanel.m" ;
 #---
   enter_files_in_group
    !?ioXcodeProjectDescription
@@ -731,13 +731,7 @@ local routine build_RESOURCES_for_resources_build_phase
   @stringlist fileList := inResourceFiles ;
   fileList += !inProjectName ;
   fileList += !inProjectName . "_debug" ;
-  fileList += !"I_ScrollToEndArrow.gif" ;
-  fileList += !"I_Action.tiff" ;
-  fileList += !"I_SaveAs.tiff" ;
   fileList += !"I_Stop.tiff" ;
-  fileList += !"I_Window.png" ;
-  fileList += !"I_Orange14.png" ;
-  fileList += !"I_Red14.png" ;
   fileList += !"MainMenu.xib" ;
   fileList += !"OC_GGS_Document.xib" ;
   fileList += !"InfoPlist.strings" ;
@@ -762,22 +756,28 @@ local routine build_COCOA_APP_files_for_sources_build_phase
 :
   @stringlist fileList [emptyList] ;
   fileList += !"main.m" ;
+  fileList += !"PMCancelButtonForPanel.m" ;
+  fileList += !"PMOkButtonForPanel.m" ;
+  fileList += !"unicode_character_m.m" ;
+  fileList += !"OC_GGS_searchInFolders.m" ;
   fileList += !"PMFontButton.m" ;
   fileList += !"OC_Token.m" ;
   fileList += !"OC_Lexique.m" ;
-  fileList += !"unicode_character_m.m" ;
-  fileList += !"OC_GGS_BuildWindowController.m" ;
   fileList += !"OC_GGS_CommandLineOption.m" ;
   fileList += !"enterDefaultCommandLineOptions.m" ;
   fileList += !"OC_GGS_Document.m" ;
   fileList += !"OC_GGS_PreferencesController.m" ;
-  fileList += !"OC_GGS_RulerViewForTextView.m" ;
   fileList += !"PMIssueDescriptor.m" ;
+  fileList += !"OC_GGS_TextDisplayDescriptor.m" ;
+  fileList += !"OC_GGS_TextSyntaxColoring.m" ;
+  fileList += !"PMTabBarView.m" ;
+  fileList += !"PMButtonWithRemove.m" ;
   fileList += !"OC_GGS_TextView.m" ;
-  fileList += !"OC_GGS_DelegateForSyntaxColoring.m" ;
-  fileList += !"OC_GGS_BuildResultTextView.m" ;
-  fileList += !"OC_GGS_ErrorOrWarningDescriptor.m" ;
-  fileList += !"OC_GGS_searchInFolders.m" ;
+  fileList += !"OC_GGS_RulerViewForTextView.m" ;
+  fileList += !"OC_GGS_Scroller.m" ;
+  fileList += !"PMErrorOrWarningDescriptor.m" ;
+  fileList += !"PMIssueInRuler.m" ;
+  fileList += !"OC_GGS_BuildTask.m" ;
   fileList += !"PMArrayControllerDebugCategory.m" ;
   fileList += !"PMArrayDebugCategory.m" ;
   fileList += !"PMDictionaryDebugCategory.m" ;

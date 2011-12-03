@@ -62,6 +62,42 @@ static OC_GGS_BuildTask * gSharedBuildTask ;
 
 //---------------------------------------------------------------------------*
 
+- (void) setWarningCount: (NSUInteger) inCount {
+  [self willChangeValueForKey:@"warningCountString"] ;
+  mWarningCount = inCount ;
+  [self didChangeValueForKey:@"warningCountString"] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) warningCountString {
+  NSString * result = @"" ;
+  if (mWarningCount > 0) {
+    result = [NSString stringWithFormat:@"%lu", mWarningCount] ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) setErrorCount: (NSUInteger) inCount {
+  [self willChangeValueForKey:@"errorCountString"] ;
+  mErrorCount = inCount ;
+  [self didChangeValueForKey:@"errorCountString"] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) errorCountString {
+  NSString * result = @"" ;
+  if (mErrorCount > 0) {
+    result = [NSString stringWithFormat:@"%lu", mErrorCount] ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (void) XMLIssueAnalysis {
   NSError * error = nil ;
   NSXMLDocument * xmlDoc = [[NSXMLDocument alloc]
@@ -75,6 +111,8 @@ static OC_GGS_BuildTask * gSharedBuildTask ;
     issues = xmlDoc.rootElement.children ;
   }
   NSMutableArray * issueArray = [NSMutableArray new] ;
+  NSUInteger errorCount = 0 ;
+  NSUInteger warningCount = 0 ;
   for (NSXMLNode * node in issues) {
     if (nil == node.name) {
       NSString * message = [node stringValue] ;
@@ -89,6 +127,7 @@ static OC_GGS_BuildTask * gSharedBuildTask ;
       PMIssueDescriptor * issue = [[PMIssueDescriptor alloc] initWithFileOperation:message] ;
       [issueArray addObject:issue] ;
     }else if ([@"error" isEqualToString:node.name]) {
+      errorCount ++ ;
       NSArray * a = [node nodesForXPath:@"./@file" error:nil] ;
       NSString * file = (a.count == 1) ? [[a objectAtIndex:0 HERE] stringValue] : @"" ;
       a = [node nodesForXPath:@"./@line" error:nil] ;
@@ -104,6 +143,7 @@ static OC_GGS_BuildTask * gSharedBuildTask ;
       ] ;
       [issueArray addObject:issue] ;
     }else if ([@"warning" isEqualToString:node.name]) {
+      warningCount ++ ;
       NSString * file = [[[node nodesForXPath:@"./@file" error:nil] objectAtIndex:0 HERE] stringValue] ;
       NSInteger line = [[[[node nodesForXPath:@"./@line" error:nil] objectAtIndex:0 HERE] stringValue] integerValue] ;
       NSInteger column = [[[[node nodesForXPath:@"./@column" error:nil] objectAtIndex:0 HERE] stringValue] integerValue] ;
@@ -126,6 +166,9 @@ static OC_GGS_BuildTask * gSharedBuildTask ;
   if (nil != error) {
     [NSApp presentError:error] ;
   }
+//---
+  [self setErrorCount:errorCount] ;
+  [self setWarningCount:warningCount] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -217,9 +260,6 @@ static OC_GGS_BuildTask * gSharedBuildTask ;
         contextInfo:NULL
       ] ;
     }else{
-      #ifdef DEBUG_MESSAGES
-      NSLog (@"OC_GGS_Document <actionBuild:> launch") ;
-      #endif
       NSMutableArray * arguments = [NSMutableArray new] ;
       [arguments addObjectsFromArray:[commandLineArray subarrayWithRange:NSMakeRange (1, [commandLineArray count]-1)]] ;
       [arguments addObject:inDocument.fileURL.path] ;
@@ -231,6 +271,8 @@ static OC_GGS_BuildTask * gSharedBuildTask ;
       [self didChangeValueForKey:@"buildTaskIsRunning"] ;
       [mTask setLaunchPath:[commandLineArray objectAtIndex:0 HERE]] ;
       [mTask setArguments:arguments] ;
+      [self setWarningCount:0] ;
+      [self setErrorCount:0] ;
       // NSLog (@"'%@' %@", [mTask launchPath], arguments) ;
     //--- Set standard output notification
       NSPipe * taskOutput = [NSPipe pipe] ;
@@ -242,11 +284,13 @@ static OC_GGS_BuildTask * gSharedBuildTask ;
         name:NSFileHandleReadCompletionNotification
         object:[taskOutput fileHandleForReading]
       ] ;
-      [[taskOutput fileHandleForReading] readInBackgroundAndNotify] ;
+      [taskOutput.fileHandleForReading readInBackgroundAndNotify] ;
     //--- Start task
       [mTask launch] ;
     }
   }
 }
+
+//---------------------------------------------------------------------------*
 
 @end
