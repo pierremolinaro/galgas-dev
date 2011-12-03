@@ -7,7 +7,7 @@ rm -f galgas-book-color.pdf &&
 rm -fr $BUILD_DIR &&
 mkdir $BUILD_DIR &&
 #--- First pass
-pdflatex --file-line-error -output-directory=$BUILD_DIR galgas-book.tex &&
+/usr/texbin/pdflatex --file-line-error -output-directory=$BUILD_DIR galgas-book.tex &&
 touch $BUILD_DIR/ref.idx &&
 touch $BUILD_DIR/ref.lof &&
 touch $BUILD_DIR/ref.lot &&
@@ -22,8 +22,8 @@ do
   cp $BUILD_DIR/galgas-book.lof $BUILD_DIR/ref.lof &&
   cp $BUILD_DIR/galgas-book.lot $BUILD_DIR/ref.lot &&
   cp $BUILD_DIR/galgas-book.toc $BUILD_DIR/ref.toc &&
-  makeindex -s galgas-book-latex-inclusions/style-indexes.ist $BUILD_DIR/galgas-book.idx &&
-  pdflatex --file-line-error -output-directory=$BUILD_DIR galgas-book.tex &&
+  /usr/texbin/makeindex -s galgas-book-latex-inclusions/style-indexes.ist $BUILD_DIR/galgas-book.idx &&
+  /usr/texbin/pdflatex --file-line-error -output-directory=$BUILD_DIR galgas-book.tex &&
   iteration=$((iteration+=1))
 done &&
 cp $BUILD_DIR/galgas-book.pdf galgas-book-color.pdf &&
