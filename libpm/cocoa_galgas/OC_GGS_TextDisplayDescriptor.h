@@ -33,7 +33,7 @@
 
 - (OC_GGS_TextSyntaxColoring *) textSyntaxColoring ;
 
-- (NSString *) sourcePath ;
+- (NSURL *) sourceURL ;
 
 - (NSTextView *) textView ;
 

@@ -1299,7 +1299,12 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 //---------------------------------------------------------------------------*
 
 - (NSApplicationTerminateReply) applicationShouldTerminate:(NSApplication *)sender {
-  BOOL canTerminateApplication = ! [OC_GGS_BuildTask sharedBuildTask].buildTaskIsRunning ;
+  BOOL canTerminateApplication = YES ;
+  for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
+    if (doc.buildTaskIsRunning) {
+      canTerminateApplication = NO ;
+    }
+  }
   if (! canTerminateApplication) {
     const NSInteger response = NSRunAlertPanel (@"Application cannot terminate while some tasks are running.",
                                     @"You can cancel termination, or force tasks to terminate.",

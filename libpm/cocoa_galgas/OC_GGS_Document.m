@@ -56,6 +56,7 @@
     mFileEncoding = NSUTF8StringEncoding ;
     mSourceDisplayArrayController = [NSArrayController new] ;
     self.undoManager = nil ;
+    mBuildTask = [OC_GGS_BuildTask new] ;
   }
   return self;
 }
@@ -109,13 +110,13 @@
 //--- Bindings
   [mIssueTableViewColumn
     bind:@"value"
-    toObject:[[OC_GGS_BuildTask sharedBuildTask] issueArrayController]
+    toObject:mBuildTask.issueArrayController
     withKeyPath:@"arrangedObjects.issueMessage"
     options:nil
   ] ;
   [mIssueTableViewColumn
     bind:@"textColor"
-    toObject:[[OC_GGS_BuildTask sharedBuildTask] issueArrayController]
+    toObject:mBuildTask.issueArrayController
     withKeyPath:@"arrangedObjects.issueColor"
     options:nil
   ] ;
@@ -197,49 +198,49 @@
   [mBuildProgressIndicator startAnimation:nil] ;
   [mStartBuildButton
     bind:@"hidden"
-    toObject:[OC_GGS_BuildTask sharedBuildTask]
+    toObject:mBuildTask
     withKeyPath:@"buildTaskIsRunning"
     options:nil    
   ] ;
   [mBuildProgressIndicator
     bind:@"hidden"
-    toObject:[OC_GGS_BuildTask sharedBuildTask]
+    toObject:mBuildTask
     withKeyPath:@"buildTaskIsNotRunning"
     options:nil    
   ] ;
   [mStopBuildButton
     bind:@"enabled"
-    toObject:[OC_GGS_BuildTask sharedBuildTask]
+    toObject:mBuildTask
     withKeyPath:@"buildTaskIsRunning"
     options:nil    
   ] ;
   [mStopBuildButton
     bind:@"hidden"
-    toObject:[OC_GGS_BuildTask sharedBuildTask]
+    toObject:mBuildTask
     withKeyPath:@"buildTaskIsNotRunning"
     options:nil    
   ] ;
   [mErrorCountTextField
     bind:@"hidden"
-    toObject:[OC_GGS_BuildTask sharedBuildTask]
+    toObject:mBuildTask
     withKeyPath:@"buildTaskIsRunning"
     options:nil    
   ] ;
   [mErrorCountTextField
     bind:@"value"
-    toObject:[OC_GGS_BuildTask sharedBuildTask]
+    toObject:mBuildTask
     withKeyPath:@"errorCountString"
     options:nil    
   ] ;
   [mWarningCountTextField
     bind:@"hidden"
-    toObject:[OC_GGS_BuildTask sharedBuildTask]
+    toObject:mBuildTask
     withKeyPath:@"buildTaskIsRunning"
     options:nil    
   ] ;
   [mWarningCountTextField
     bind:@"value"
-    toObject:[OC_GGS_BuildTask sharedBuildTask]
+    toObject:mBuildTask
     withKeyPath:@"warningCountString"
     options:nil    
   ] ;
@@ -863,11 +864,12 @@
 //---
   mSourceTextWithSyntaxColoring = [[OC_GGS_TextSyntaxColoring alloc]
     initWithSourceString:source
-    tokenizer:tokenizerForExtension ([[inAbsoluteURL absoluteString] pathExtension])
-    sourcePath:self.fileURL.path
+    tokenizer:tokenizerForExtension (inAbsoluteURL.absoluteString.pathExtension)
+    sourceURL:self.fileURL
+    issueArray:mBuildTask.issueArrayController.arrangedObjects
   ] ;
 //---
-  [[[OC_GGS_BuildTask sharedBuildTask] issueArrayController]
+  [mBuildTask.issueArrayController
     addObserver:mSourceTextWithSyntaxColoring 
     forKeyPath:@"arrangedObjects"
     options:0
@@ -888,13 +890,19 @@
 //---------------------------------------------------------------------------*
 
 - (IBAction) stopBuild: (id) sender {
-  [[OC_GGS_BuildTask sharedBuildTask] stopBuild] ;
+  [mBuildTask stopBuild] ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (IBAction) actionBuild: (id) inUnusedSender {
-  [[OC_GGS_BuildTask sharedBuildTask] buildDocument:self] ;
+  [mBuildTask buildDocument:self] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (BOOL) buildTaskIsRunning {
+  return mBuildTask.buildTaskIsRunning ;
 }
 
 //---------------------------------------------------------------------------*
@@ -919,7 +927,7 @@
   if ([[NSUserDefaults standardUserDefaults] boolForKey:@"PMLiveCompilation"]) {
     [[NSRunLoop currentRunLoop]
       performSelector:@selector (abortAndBuildDocument:)
-      target:[OC_GGS_BuildTask sharedBuildTask]
+      target:mBuildTask
       argument:self
       order:0
       modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]
@@ -935,7 +943,7 @@
 
 - (OC_GGS_TextSyntaxColoring *) findOrAddDocumentWithPath: (NSString *) inPath {
   OC_GGS_TextSyntaxColoring * result = nil ;
-  NSString * currentSourceDir = mSourceTextWithSyntaxColoring.sourcePath.stringByDeletingLastPathComponent ;
+  NSString * currentSourceDir = mSourceTextWithSyntaxColoring.sourceURL.path.stringByDeletingLastPathComponent ;
   NSString * requestedAbsolutePath = inPath.isAbsolutePath
     ? inPath
     : [currentSourceDir stringByAppendingPathComponent:inPath]
@@ -992,7 +1000,7 @@
 
 - (void) clicOnIssueTableView: (id) inSender {
   const NSInteger clickedRow = mIssueTableView.clickedRow ;
-  NSArray * arrangedObjects = [OC_GGS_BuildTask sharedBuildTask].issueArrayController.arrangedObjects ;
+  NSArray * arrangedObjects = mBuildTask.issueArrayController.arrangedObjects ;
   if ((clickedRow >= 0) && (clickedRow < (NSInteger) arrangedObjects.count)) {
     PMIssueDescriptor * issue = [arrangedObjects objectAtIndex:clickedRow HERE] ;
     NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
@@ -1000,7 +1008,7 @@
     [self displayIssueDetailedMessage:issue.issueMessage] ;
     const BOOL ok = [textDisplay makeVisibleIssue:issue] ;
     if (! ok) { // Current tab view does not correspond: open a new tab
-      textDisplay = [self findOrAddNewTabForFile:issue.issuePath] ;
+      textDisplay = [self findOrAddNewTabForFile:issue.issueURL.path] ;
       [textDisplay makeVisibleIssue:issue] ;
     }
   }

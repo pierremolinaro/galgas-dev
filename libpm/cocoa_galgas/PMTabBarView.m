@@ -68,8 +68,8 @@
       initWithFrame:NSMakeRect (X, 0.0, width + 0.5, self.bounds.size.height)
     ] ;
     [mButtonArray addObject:button] ;
-    [button setTitle:displayDescriptor.sourcePath.lastPathComponent] ;
-    [button setToolTip:displayDescriptor.sourcePath] ;
+    [button setTitle:displayDescriptor.sourceURL.lastPathComponent] ;
+    [button setToolTip:displayDescriptor.sourceURL.absoluteString] ;
     [button setBezelStyle:NSSmallSquareBezelStyle] ;
     [button setButtonType:NSPushOnPushOffButton] ;
     [button setState:(selectionIndex == idx) ? NSOnState : NSOffState] ;

@@ -20,20 +20,7 @@
 
 //---------------------------------------------------------------------------*
 
-static OC_GGS_BuildTask * gSharedBuildTask ;
-
-//---------------------------------------------------------------------------*
-
 @implementation OC_GGS_BuildTask 
-
-//---------------------------------------------------------------------------*
-
-+ (OC_GGS_BuildTask *) sharedBuildTask {
-  if (nil == gSharedBuildTask) {
-    gSharedBuildTask = [OC_GGS_BuildTask new] ;
-  }
-  return gSharedBuildTask ;
-}
 
 //---------------------------------------------------------------------------*
 
@@ -41,7 +28,6 @@ static OC_GGS_BuildTask * gSharedBuildTask ;
   self = [super init] ;
   if (self) {
     mIssueArrayController = [NSArrayController new] ;
-    gSharedBuildTask = self ;
   }
   return self ;
 }
@@ -103,76 +89,78 @@ static OC_GGS_BuildTask * gSharedBuildTask ;
 //---------------------------------------------------------------------------*
 
 - (void) XMLIssueAnalysis {
-  NSError * error = nil ;
-  NSXMLDocument * xmlDoc = [[NSXMLDocument alloc]
-    initWithData:mBufferedInputData
-    options:0
-    error:& error
-  ] ;
-  mBufferedInputData = nil ;
-  NSArray * issues = nil ;
-  if (nil == error) {
-    issues = xmlDoc.rootElement.children ;
-  }
-  NSMutableArray * issueArray = [NSMutableArray new] ;
-  NSUInteger errorCount = 0 ;
-  NSUInteger warningCount = 0 ;
-  for (NSXMLNode * node in issues) {
-    if (nil == node.name) {
-      NSString * message = [node stringValue] ;
-      PMIssueDescriptor * issue = [[PMIssueDescriptor alloc] initWithMessage:message] ;
-      [issueArray addObject:issue] ;
-    }else if ([@"message" isEqualToString:node.name]) {
-      NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
-      PMIssueDescriptor * issue = [[PMIssueDescriptor alloc] initWithMessage:message] ;
-      [issueArray addObject:issue] ;
-    }else if ([@"fileOperation" isEqualToString:node.name]) {
-      NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
-      PMIssueDescriptor * issue = [[PMIssueDescriptor alloc] initWithFileOperation:message] ;
-      [issueArray addObject:issue] ;
-    }else if ([@"error" isEqualToString:node.name]) {
-      errorCount ++ ;
-      NSArray * a = [node nodesForXPath:@"./@file" error:nil] ;
-      NSString * file = (a.count == 1) ? [[a objectAtIndex:0 HERE] stringValue] : @"" ;
-      a = [node nodesForXPath:@"./@line" error:nil] ;
-      NSInteger line = (a.count == 1) ? [[[a objectAtIndex:0 HERE] stringValue] integerValue] : 0 ;
-      a = [node nodesForXPath:@"./@column" error:nil] ;
-      NSInteger column = (a.count == 1) ? [[[a objectAtIndex:0 HERE] stringValue] integerValue] : 0 ;
-      NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
-      PMIssueDescriptor * issue = [[PMIssueDescriptor alloc]
-        initWithErrorMessage:message
-        file:file
-        line:line
-        column:column
-      ] ;
-      [issueArray addObject:issue] ;
-    }else if ([@"warning" isEqualToString:node.name]) {
-      warningCount ++ ;
-      NSString * file = [[[node nodesForXPath:@"./@file" error:nil] objectAtIndex:0 HERE] stringValue] ;
-      NSInteger line = [[[[node nodesForXPath:@"./@line" error:nil] objectAtIndex:0 HERE] stringValue] integerValue] ;
-      NSInteger column = [[[[node nodesForXPath:@"./@column" error:nil] objectAtIndex:0 HERE] stringValue] integerValue] ;
-      NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
-      PMIssueDescriptor * issue = [[PMIssueDescriptor alloc]
-        initWithWarningMessage:message
-        file:file
-        line:line
-        column:column
-      ] ;
-      [issueArray addObject:issue] ;
+  if (mBufferedInputData.length > 0) {
+    NSError * error = nil ;
+    NSXMLDocument * xmlDoc = [[NSXMLDocument alloc]
+      initWithData:mBufferedInputData
+      options:0
+      error:& error
+    ] ;
+    mBufferedInputData = nil ;
+    NSArray * issues = nil ;
+    if (nil == error) {
+      issues = xmlDoc.rootElement.children ;
     }
+    NSMutableArray * issueArray = [NSMutableArray new] ;
+    NSUInteger errorCount = 0 ;
+    NSUInteger warningCount = 0 ;
+    for (NSXMLNode * node in issues) {
+      if (nil == node.name) {
+        NSString * message = [node stringValue] ;
+        PMIssueDescriptor * issue = [[PMIssueDescriptor alloc] initWithMessage:message] ;
+        [issueArray addObject:issue] ;
+      }else if ([@"message" isEqualToString:node.name]) {
+        NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
+        PMIssueDescriptor * issue = [[PMIssueDescriptor alloc] initWithMessage:message] ;
+        [issueArray addObject:issue] ;
+      }else if ([@"fileOperation" isEqualToString:node.name]) {
+        NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
+        PMIssueDescriptor * issue = [[PMIssueDescriptor alloc] initWithFileOperation:message] ;
+        [issueArray addObject:issue] ;
+      }else if ([@"error" isEqualToString:node.name]) {
+        errorCount ++ ;
+        NSArray * a = [node nodesForXPath:@"./@file" error:nil] ;
+        NSString * file = (a.count == 1) ? [[a objectAtIndex:0 HERE] stringValue] : @"" ;
+        a = [node nodesForXPath:@"./@line" error:nil] ;
+        NSInteger line = (a.count == 1) ? [[[a objectAtIndex:0 HERE] stringValue] integerValue] : 0 ;
+        a = [node nodesForXPath:@"./@column" error:nil] ;
+        NSInteger column = (a.count == 1) ? [[[a objectAtIndex:0 HERE] stringValue] integerValue] : 0 ;
+        NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
+        PMIssueDescriptor * issue = [[PMIssueDescriptor alloc]
+          initWithErrorMessage:message
+          URL:[NSURL fileURLWithPath:file]
+          line:line
+          column:column
+        ] ;
+        [issueArray addObject:issue] ;
+      }else if ([@"warning" isEqualToString:node.name]) {
+        warningCount ++ ;
+        NSString * file = [[[node nodesForXPath:@"./@file" error:nil] objectAtIndex:0 HERE] stringValue] ;
+        NSInteger line = [[[[node nodesForXPath:@"./@line" error:nil] objectAtIndex:0 HERE] stringValue] integerValue] ;
+        NSInteger column = [[[[node nodesForXPath:@"./@column" error:nil] objectAtIndex:0 HERE] stringValue] integerValue] ;
+        NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
+        PMIssueDescriptor * issue = [[PMIssueDescriptor alloc]
+          initWithWarningMessage:message
+          URL:[NSURL fileURLWithPath:file]
+          line:line
+          column:column
+        ] ;
+        [issueArray addObject:issue] ;
+      }
+    }
+    [mIssueArrayController setContent:issueArray] ;
+  //--- Send issues to concerned text source coloring objects
+    for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
+      [doc.textSyntaxColoring setIssueArray:issueArray] ;
+    }
+  //---
+    if (nil != error) {
+      [NSApp presentError:error] ;
+    }
+  //---
+    [self setErrorCount:errorCount] ;
+    [self setWarningCount:warningCount] ;
   }
-  [mIssueArrayController setContent:issueArray] ;
-//--- Send issues to concerned text source coloring objects
-  for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
-    [doc.textSyntaxColoring setIssueArray:issueArray] ;
-  }
-//---
-  if (nil != error) {
-    [NSApp presentError:error] ;
-  }
-//---
-  [self setErrorCount:errorCount] ;
-  [self setWarningCount:warningCount] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -264,9 +252,7 @@ static OC_GGS_BuildTask * gSharedBuildTask ;
   #endif
   if (mTask == nil) {
     [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
-    for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
-      [doc displayIssueDetailedMessage:nil] ;
-    }
+    [inDocument displayIssueDetailedMessage:nil] ;
     mBufferedInputData = [NSMutableData new] ;
     [mIssueArrayController setContent:[NSArray array]] ;
     NSArray * commandLineArray = [gCocoaGalgasPreferencesController commandLineItemArray] ;
