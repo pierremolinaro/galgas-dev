@@ -51,14 +51,14 @@
 //---------------------------------------------------------------------------*
 
 - (PMIssueDescriptor *) initWithErrorMessage: (NSString *) inMessage
-                        file: (NSString *) inFilePath
+                        URL: (NSURL *) inURL
                         line: (NSInteger) inLine
                         column: (NSInteger) inColumn {
   self = [self init] ;
   if (self) {
     mIssueKind = kErrorIssue ;
     mMessage = inMessage.copy ;
-    mFilePath = inFilePath.copy ;
+    mURL = inURL.copy ;
     mLine = inLine ;
     mColumn = inColumn ;
     [self normalizeMessage] ;
@@ -69,14 +69,14 @@
 //---------------------------------------------------------------------------*
 
 - (PMIssueDescriptor *) initWithWarningMessage: (NSString *) inMessage
-                        file: (NSString *) inFilePath
+                        URL: (NSURL *) inURL
                         line: (NSInteger) inLine
                         column: (NSInteger) inColumn {
   self = [self init] ;
   if (self) {
     mIssueKind = kWarningIssue ;
     mMessage = inMessage.copy ;
-    mFilePath = inFilePath.copy ;
+    mURL = inURL.copy ;
     mLine = inLine ;
     mColumn = inColumn ;
     [self normalizeMessage] ;
@@ -92,8 +92,8 @@
 
 //---------------------------------------------------------------------------*
 
-- (NSString *) issuePath {
-  return mFilePath ;
+- (NSURL *) issueURL {
+  return mURL ;
 }
 
 //---------------------------------------------------------------------------*

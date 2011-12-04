@@ -33,6 +33,7 @@
 @class OC_GGS_TextSyntaxColoring ;
 @class PMTabBarView ;
 @class OC_GGS_SourceScrollView ;
+@class OC_GGS_BuildTask ;
 
 //---------------------------------------------------------------------------*
 
@@ -54,6 +55,7 @@
   @private IBOutlet NSTextField * mSourceEncodingTextField ;
   @private NSStringEncoding mFileEncoding ;
 
+  @private OC_GGS_BuildTask * mBuildTask ;
 //---  
   @private OC_GGS_TextSyntaxColoring * mSourceTextWithSyntaxColoring ;
   @private NSArrayController * mSourceDisplayArrayController ;
@@ -102,4 +104,6 @@
 - (void) displayIssueDetailedMessage: (NSString *) inDetailledMessage ;
 
 - (void) triggerLiveCompilation ;
+
+- (BOOL) buildTaskIsRunning ;
 @end

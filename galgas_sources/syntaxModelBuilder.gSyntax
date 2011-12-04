@@ -291,7 +291,7 @@ rule <syntax_instruction>
   or
     $indexing$ ;
     repeat
-      $identifier$ ?@lstring indexName ;
+      $identifier$ ?@lstring indexName indexing indexingNameReference ;
       indexNameList += !indexName ;
     while
       $,$ ;

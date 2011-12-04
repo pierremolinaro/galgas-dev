@@ -70,6 +70,9 @@ indexing optionComponentReference : "Option Component Reference" ;
 indexing grammarComponentDefinition : "Grammar Component Definition" ;
 indexing grammarComponentReference : "Grammar Component Reference" ;
 
+indexing indexingNameDefinition : "Indexing Name Definition" ;
+indexing indexingNameReference : "Indexing Name Reference" ;
+
 #--- Scanner attributes
 @string identifierString ;
 @uint uint32value ;

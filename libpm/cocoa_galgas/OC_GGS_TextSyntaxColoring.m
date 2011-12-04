@@ -92,7 +92,8 @@
 
 - (OC_GGS_TextSyntaxColoring *) initWithSourceString: (NSString *) inSource
                                 tokenizer: (OC_Lexique *) inTokenizer
-                                sourcePath: (NSString *) inPath {
+                                sourceURL: (NSURL *) inSourceURL
+                                issueArray: (NSArray *) inIssueArray {
   self = [super init] ;
   if (self) {
     mTokenizer = inTokenizer ;
@@ -101,7 +102,7 @@
     mStyledRangeArray = [NSMutableArray new] ;
     mTemplateTextAttributeDictionary = [NSMutableDictionary new] ;
     mUndoManager = [NSUndoManager new] ;
-    mSourcePath = inPath.copy ;
+    mSourceURL = inSourceURL.copy ;
   //---
     [[NSNotificationCenter defaultCenter]
       addObserver:self
@@ -246,7 +247,7 @@
     [mSourceTextStorage replaceCharactersInRange:NSMakeRange (0, mSourceTextStorage.length) withString:inSource] ;
     [mSourceTextStorage endEditing] ;
   //---
-    [self setIssueArray:[OC_GGS_BuildTask sharedBuildTask].issueArrayController.arrangedObjects] ;
+    [self setIssueArray:inIssueArray] ;
   }
   return self ;
 }
@@ -303,8 +304,8 @@
 
 //---------------------------------------------------------------------------*
 
-- (NSString *) sourcePath {
-  return mSourcePath ;
+- (NSURL *) sourceURL {
+  return mSourceURL ;
 }
 
 //---------------------------------------------------------------------------*
@@ -420,7 +421,7 @@
 - (void) setIssueArray: (NSArray *) inIssueArray {
   NSMutableArray * filteredArray = [NSMutableArray new] ;
   for (PMIssueDescriptor * issue in inIssueArray) {
-    if ([issue.issuePath isEqualToString:mSourcePath]) {
+    if ([issue.issueURL isEqual:mSourceURL]) {
       const NSRange lineRange = [self rangeForLine:issue.issueLine] ;
       [filteredArray
         addObject:[[PMErrorOrWarningDescriptor alloc]
@@ -763,7 +764,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 - (NSArray *) buildDictionaryArray {
 //--- Source directory
-  NSString * sourceDirectory = mSourcePath.stringByDeletingLastPathComponent ;
+  NSString * sourceDirectory = mSourceURL.path.stringByDeletingLastPathComponent ;
 //--- index directory
   NSString * indexingDirectory = [mTokenizer indexingDirectory] ;
   if (([indexingDirectory length] == 0) || ([indexingDirectory characterAtIndex:0] != '/')) {

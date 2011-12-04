@@ -23,7 +23,7 @@ typedef enum {
 @interface PMIssueDescriptor : NSObject {
   @private enumIssueKind mIssueKind ;
   @private NSString * mMessage ;
-  @private NSString * mFilePath ;
+  @private NSURL * mURL ;
   @private NSInteger mLine ;
   @private NSInteger mColumn ;
 
@@ -34,18 +34,18 @@ typedef enum {
 - (PMIssueDescriptor *) initWithFileOperation: (NSString *) inMessage ;
 
 - (PMIssueDescriptor *) initWithErrorMessage: (NSString *) inMessage
-                        file: (NSString *) inFilePath
+                        URL: (NSURL *) inURL
                         line: (NSInteger) inLine
                         column: (NSInteger) inColumn ;
 
 - (PMIssueDescriptor *) initWithWarningMessage: (NSString *) inMessage
-                        file: (NSString *) inFilePath
+                        URL: (NSURL *) inURL
                         line: (NSInteger) inLine
                         column: (NSInteger) inColumn ;
 
 - (NSString *) issueMessage ;
 
-- (NSString *) issuePath ;
+- (NSURL *) issueURL ;
 
 - (enumIssueKind) issueKind ;
 

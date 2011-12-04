@@ -83,7 +83,7 @@ rule <lexique_component_start_symbol> !@lexiqueComponentAST outLexiqueComponentR
     <lexical_message_declaration> !? lexicalMessageDeclarationList ;
   while
     $indexing$ ;
-    $identifier$ ?@lstring indexName ;
+    $identifier$ ?@lstring indexName indexing indexingNameDefinition ;
     $:$ ;
     $literal_string$ ?@lstring indexComment ;
     indexingListAST += !indexName !indexComment ;

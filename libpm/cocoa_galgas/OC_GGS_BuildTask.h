@@ -23,8 +23,6 @@
 - (BOOL) buildTaskIsRunning ;
 - (BOOL) buildTaskIsNotRunning ;
 
-+ (OC_GGS_BuildTask *) sharedBuildTask ;
-
 - (NSArrayController *) issueArrayController ;
 
 - (void) buildDocument: (OC_GGS_Document *) inDocument ;

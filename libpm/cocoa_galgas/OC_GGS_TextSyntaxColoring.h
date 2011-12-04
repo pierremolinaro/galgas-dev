@@ -12,7 +12,7 @@
 @class OC_Lexique ;
 
 @interface OC_GGS_TextSyntaxColoring : NSObject {
-  @private NSString * mSourcePath ;
+  @private NSURL * mSourceURL ;
   @private NSTextStorage * mSourceTextStorage ;
   @private NSMutableSet * mTextDisplayDescriptorSet ; // Set of OC_GGS_TextDisplayDescriptor
   @private OC_Lexique * mTokenizer ;
@@ -33,12 +33,13 @@
 
 - (OC_GGS_TextSyntaxColoring *) initWithSourceString: (NSString *) inSource
                                 tokenizer: (OC_Lexique *) inTokenizer
-                                sourcePath: (NSString *) inPath ;
+                                sourceURL: (NSURL *) inSourceURL
+                                issueArray: (NSArray *) inIssueArray ;
 
 - (NSTextStorage *) textStorage ;
 - (NSUndoManager *) undoManager ;
 - (OC_Lexique *) tokenizer ;
-- (NSString *) sourcePath ;
+- (NSURL *) sourceURL ;
 - (NSArray *) issueArray ;
 
 - (BOOL) isDirty ;

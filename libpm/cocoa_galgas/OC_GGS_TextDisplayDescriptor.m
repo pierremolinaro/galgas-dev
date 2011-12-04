@@ -82,7 +82,13 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     ] ;
     [self refreshShowInvisibleCharacters] ;
     [self setIssueArray:inDelegateForSyntaxColoring.issueArray] ;
-
+  //---
+    [[NSNotificationCenter defaultCenter]
+      addObserver:self
+      selector:@selector(myProcessEditing:)
+      name: NSTextStorageDidProcessEditingNotification
+      object:mTextSyntaxColoring.textStorage
+    ] ;
   }
   return self ;
 }
@@ -123,8 +129,8 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
-- (NSString *) sourcePath {
-  return mTextSyntaxColoring.sourcePath ;
+- (NSURL *) sourceURL {
+  return mTextSyntaxColoring.sourceURL ;
 }
 
 //---------------------------------------------------------------------------*
@@ -362,7 +368,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   mTextSelectionStart = mTextView.selectedRange.location ;
   [self  didChangeValueForKey:@"textSelectionStart"] ;
   [mRulerView setNeedsDisplay:YES] ;
-  [mDocument triggerLiveCompilation] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -381,6 +386,12 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 - (void) noteUndoManagerCheckPointNotification {
   [mDocument triggerDocumentEditedStatusUpdate] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) myProcessEditing: (NSNotification *) inNotification {
+  [mDocument triggerLiveCompilation] ;
 }
 
 //---------------------------------------------------------------------------*
