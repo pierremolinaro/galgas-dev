@@ -377,6 +377,10 @@ class C_String : public AC_OutputStream {
     private : void checkString (LOCATION_ARGS) const ;
   #endif
 
+  public : static bool parseUTF8 (const PMUInt8 * inCString,
+                                  const PMSInt32 inLength,
+                                  C_String & outString) ;
+
 //---------------- Private attributes -------------
   private : class cEmbeddedString * mEmbeddedString ;
 } ;

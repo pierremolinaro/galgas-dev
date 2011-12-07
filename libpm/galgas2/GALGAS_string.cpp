@@ -526,6 +526,38 @@ GALGAS_sint GALGAS_string::reader_system (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------*
 
+GALGAS_string GALGAS_string::reader_popen (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid ()) {
+    FILE * f = popen (mString.cString (HERE), "r") ;
+    TC_UniqueArray <PMUInt8> response ;
+    bool loop = true ;
+    while (loop) {
+      const size_t kBufferSize = 1000 ;
+      PMUInt8 buffer [kBufferSize] ;
+      const size_t readLength = fread (buffer, 1, kBufferSize-1, f) ;
+      // const char * readBuffer = fgets (buffer, kBufferSize-1, f) ;
+      // loop = readBuffer != buffer ;
+      loop = readLength > 0 ;
+      for (PMUInt32 i=0 ; i<readLength ; i++) {
+        response.addObject (buffer [i]) ;
+      }
+     // C_String s ;
+     // C_String::parseUTF8 ((const PMUInt8 *) buffer, (PMSInt32) readLength, s) ;
+     
+       buffer [readLength] = 0 ;
+      printf ("buffer '%s'\n", buffer) ;
+    }
+    pclose (f) ;
+    C_String s ;
+    C_String::parseUTF8 (response.bufferPointer (), response.count (), s) ;
+    result = GALGAS_string (s) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
 static void
 recursiveSearchForRegularFiles (const C_String & inUnixStartPath,
                                 const bool inRecursiveSearch,

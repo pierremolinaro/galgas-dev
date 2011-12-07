@@ -18,6 +18,7 @@ project all_testsuite -> "testsuite" :
   semantics "testsuite_category_methods.gSemantics" ;
   semantics "testsuite_category_modifiers.gSemantics" ;
   semantics "testsuite_type_categories.gSemantics" ;
+  semantics "testsuite_strings.gSemantics" ;
 
   program "testsuite_program.gProgram" ;
 
