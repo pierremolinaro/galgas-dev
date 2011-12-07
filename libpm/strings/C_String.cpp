@@ -352,18 +352,32 @@ PMSInt32 C_String::length (void) const {
 
 //---------------------------------------------------------------------------*
 
-const char * C_String::cString (LOCATION_ARGS) const {
+const char * C_String::cString (UNUSED_LOCATION_ARGS) const {
   const char * result = "" ;
   if (NULL != mEmbeddedString) {
     macroValidSharedObject (mEmbeddedString, cEmbeddedString) ;
-    if (mEmbeddedString->mEncodedCString == NULL) {
-      macroMyNewPODArray (mEmbeddedString->mEncodedCString, char, mEmbeddedString->mLength + 1) ;
+    if (NULL == mEmbeddedString->mEncodedCString) {
+      PMUInt32 allocatedSize = mEmbeddedString->mLength + 1 ;
+      macroMyReallocPODArray (mEmbeddedString->mEncodedCString, char, allocatedSize) ;
+      PMUInt32 idx = 0 ;
       for (PMSInt32 i=0 ; i<mEmbeddedString->mLength ; i++) {
-        const utf32 c = mEmbeddedString->mString [i] ;
-        MF_AssertThere (UNICODE_VALUE (c) < 127, "TO_UNICODE CHARACTER c (%lu) >= 127", (PMSInt32) UNICODE_VALUE (c), 0) ;
-        mEmbeddedString->mEncodedCString [i] = (char) (UNICODE_VALUE (c) & 255) ;
+        char buffer [5] ;
+        const PMSInt32 n = UTF8StringFromUTF32Character (mEmbeddedString->mString [i], buffer) ;
+        for (PMSInt32 j=0 ; j<n ; j++) {
+          if (allocatedSize == idx) {
+            allocatedSize *= 2 ;
+            macroMyReallocPODArray (mEmbeddedString->mEncodedCString, char, allocatedSize) ;
+          }
+          mEmbeddedString->mEncodedCString [idx] = buffer [j] ;
+          idx ++ ;
+        }
       }
-      mEmbeddedString->mEncodedCString [mEmbeddedString->mLength] = '\0' ;
+    //---
+      if (allocatedSize == idx) {
+        allocatedSize *= 2 ;
+        macroMyReallocPODArray (mEmbeddedString->mEncodedCString, char, allocatedSize) ;
+      }
+      mEmbeddedString->mEncodedCString [idx] = '\0' ;
     }
     result = mEmbeddedString->mEncodedCString ;
   }

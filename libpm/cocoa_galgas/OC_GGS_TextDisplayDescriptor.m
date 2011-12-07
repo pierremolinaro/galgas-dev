@@ -49,6 +49,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     mDocument = inDocument ;
     [self setSyntaxColoringDelegate:inDelegateForSyntaxColoring] ;
     mTextView = [[OC_GGS_TextView alloc] initWithFrame:NSMakeRect (0.0, 0.0, 10.0, 10.0)] ;
+    [mTextView setDisplayDescriptor:self] ;
     mTextView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
     mTextView.usesFindPanel = YES ;
     mTextView.grammarCheckingEnabled = NO ;
@@ -372,7 +373,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
-- (NSMenu *) textView:(NSTextView *)view
+/*- (NSMenu *) textView:(NSTextView *)view
              menu:(NSMenu *)menu
              forEvent:(NSEvent *)event
              atIndex:(NSUInteger) inCharacterIndex { // Delegate Method
@@ -380,7 +381,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   const NSRange r = [mTextView selectionRangeForProposedRange:selectedRange granularity:NSSelectByWord] ;
   [mTextView setSelectedRange:r] ;
   return [mTextSyntaxColoring indexMenuForRange:r] ;
-}
+}*/
 
 //---------------------------------------------------------------------------*
 

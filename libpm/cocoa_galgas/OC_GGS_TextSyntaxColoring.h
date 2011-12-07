@@ -26,7 +26,7 @@
   @private NSUndoManager * mUndoManager ;
   
 //--- Attributes for syntax coloring
-  @private NSMutableArray * mStyledRangeArray ;
+  @private NSMutableArray * mTokenArray ;
   @private NSMutableArray * mFontAttributesDictionaryArray ; // Array of OC_Token
   @private NSMutableDictionary * mTemplateTextAttributeDictionary ;
 }
@@ -41,6 +41,9 @@
 - (OC_Lexique *) tokenizer ;
 - (NSURL *) sourceURL ;
 - (NSArray *) issueArray ;
+
+- (NSArray *) tokenArray ;
+- (BOOL) selectionByWordSelectsAllCharactersForTokenIndex: (NSUInteger) inTokenIndex ;
 
 - (BOOL) isDirty ;
 

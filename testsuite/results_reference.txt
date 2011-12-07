@@ -233,3 +233,7 @@ LOGGING aList: <list @uintlist (5 objects):
 | | mValue:<@uint:4>
 |-at 4
 | | mValue:<@uint:81>>
+*************************************** begin of string test
+LOGGING command: <@string:"echo accentué">
+LOGGING result: <@string:"accentué
+">

@@ -173,25 +173,15 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-- (void) terminateTask {
+- (void) notifyTaskCompleted {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  if (mTask != nil) {
-    NSTask * task = mTask ;
-    [self willChangeValueForKey:@"buildTaskIsRunning"] ;
-    [self willChangeValueForKey:@"buildTaskIsNotRunning"] ;
-    mTask = nil ;
-    [self didChangeValueForKey:@"buildTaskIsNotRunning"] ;
-    [self didChangeValueForKey:@"buildTaskIsRunning"] ;
-    [task terminate] ;
-    [task waitUntilExit] ;
-    const int status = [task terminationStatus];
-    if (status != 0) {
-//      [self appendMessage: [NSString stringWithFormat: @"Build task has exited with status %d\n", status]] ;
-    }
-
-  }
+  [self willChangeValueForKey:@"buildTaskIsRunning"] ;
+  [self willChangeValueForKey:@"buildTaskIsNotRunning"] ;
+  mTask = nil ;
+  [self didChangeValueForKey:@"buildTaskIsNotRunning"] ;
+  [self didChangeValueForKey:@"buildTaskIsRunning"] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -208,7 +198,7 @@
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter] ;
     [center removeObserver:self name:NSFileHandleReadCompletionNotification object: [[mTask standardOutput] fileHandleForReading]] ;
     [center removeObserver:self name:NSTaskDidTerminateNotification object:mTask] ;
-    [self terminateTask] ;
+    [self notifyTaskCompleted] ;
     if (! mAbortRequested) {
       [self XMLIssueAnalysis] ;
       [NSApp requestUserAttention:NSInformationalRequest] ;
@@ -224,9 +214,12 @@
 //---------------------------------------------------------------------------*
 
 - (void) stopBuild {
-  if (nil != mTask) {
+  if ((nil != mTask) && ! mAbortRequested) {
     mAbortRequested = YES ;
-    [self terminateTask] ;
+    mDocumentToBuild = nil ;
+    [mTask terminate] ;
+    [mTask waitUntilExit] ;
+    [self notifyTaskCompleted] ;
   }
 }
 
@@ -240,7 +233,11 @@
     [self buildDocument:inDocument] ;
   }else{
     mDocumentToBuild = inDocument ;
-    [self stopBuild] ;
+    if (! mAbortRequested) {
+      mAbortRequested = YES ;
+      [mTask terminate] ;
+      [mTask waitUntilExit] ;
+    }
   }
 }
 

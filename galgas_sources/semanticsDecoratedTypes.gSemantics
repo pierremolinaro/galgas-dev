@@ -864,7 +864,7 @@ class @messageInstructionForGeneration extends @semanticInstructionForGeneration
 #---------------------------------------------------------------------------*
 
 class @logInstructionForGeneration extends @semanticInstructionForGeneration {
-  @string mLogMessage ;
+  @lstring mLogMessage ;
   @semanticExpressionForGeneration mLogExpression ;
 }
 

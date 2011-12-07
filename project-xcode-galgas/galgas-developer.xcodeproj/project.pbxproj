@@ -195,7 +195,6 @@
 		CF6DF24209E3F3A700506859 /* OC_GGS_Document.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597408536A130077AEAF /* OC_GGS_Document.m */; };
 		CF6DF24309E3F3A700506859 /* OC_GGS_PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597608536A130077AEAF /* OC_GGS_PreferencesController.m */; };
 		CF6DF24409E3F3A700506859 /* OC_GGS_RulerViewForTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597808536A130077AEAF /* OC_GGS_RulerViewForTextView.m */; };
-		CF6DF24509E3F3A700506859 /* OC_GGS_TextViewEx.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597A08536A130077AEAF /* OC_GGS_TextViewEx.m */; };
 		CF6DF25209E3F3A700506859 /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1058C7A7FEA54F5311CA2CBB /* Cocoa.framework */; };
 		CF702741137C53D600FA7C3E /* C_ColoredConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF70273E137C53D600FA7C3E /* C_ColoredConsole.cpp */; };
 		CF702742137C53D600FA7C3E /* C_ColoredConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF70273E137C53D600FA7C3E /* C_ColoredConsole.cpp */; };
@@ -621,8 +620,6 @@
 		CF82597608536A130077AEAF /* OC_GGS_PreferencesController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_PreferencesController.m; sourceTree = "<group>"; };
 		CF82597708536A130077AEAF /* OC_GGS_RulerViewForTextView.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_RulerViewForTextView.h; sourceTree = "<group>"; };
 		CF82597808536A130077AEAF /* OC_GGS_RulerViewForTextView.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_RulerViewForTextView.m; sourceTree = "<group>"; };
-		CF82597908536A130077AEAF /* OC_GGS_TextViewEx.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_TextViewEx.h; sourceTree = "<group>"; };
-		CF82597A08536A130077AEAF /* OC_GGS_TextViewEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_TextViewEx.m; sourceTree = "<group>"; };
 		CF82597B08536A130077AEAF /* PP_CocoaGalgasPrefix.pch */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PP_CocoaGalgasPrefix.pch; sourceTree = "<group>"; };
 		CF82599808536A5B0077AEAF /* F_Analyze_CLI_Options.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = F_Analyze_CLI_Options.cpp; sourceTree = "<group>"; };
 		CF82599908536A5B0077AEAF /* F_Analyze_CLI_Options.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = F_Analyze_CLI_Options.h; sourceTree = "<group>"; };
@@ -1270,8 +1267,6 @@
 				CF82597408536A130077AEAF /* OC_GGS_Document.m */,
 				CF82597508536A130077AEAF /* OC_GGS_PreferencesController.h */,
 				CF82597608536A130077AEAF /* OC_GGS_PreferencesController.m */,
-				CF82597908536A130077AEAF /* OC_GGS_TextViewEx.h */,
-				CF82597A08536A130077AEAF /* OC_GGS_TextViewEx.m */,
 				CF82596F08536A130077AEAF /* I_Stop.tiff */,
 				CFFCE7BB14686081009DB6D5 /* PMIssueDescriptor.h */,
 				CFFCE7BC14686081009DB6D5 /* PMIssueDescriptor.m */,
@@ -2423,7 +2418,6 @@
 				CF6DF24209E3F3A700506859 /* OC_GGS_Document.m in Sources */,
 				CF6DF24309E3F3A700506859 /* OC_GGS_PreferencesController.m in Sources */,
 				CF6DF24409E3F3A700506859 /* OC_GGS_RulerViewForTextView.m in Sources */,
-				CF6DF24509E3F3A700506859 /* OC_GGS_TextViewEx.m in Sources */,
 				CFDAE70A0AD19F3E00713406 /* PMDownloadData.m in Sources */,
 				CFDAE70C0AD19F3E00713406 /* PMDownloadFile.m in Sources */,
 				CF4397FD0ADFE16D0085F47C /* PMCancelButtonForPanel.m in Sources */,
@@ -2524,6 +2518,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO;
 				DEAD_CODE_STRIPPING = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;

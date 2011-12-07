@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 2010, ..., 2011 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -31,11 +31,11 @@
 
 //---------------------------------------------------------------------------*
 
-void AC_GALGAS_root::log (const char * inMessage) const {
+void AC_GALGAS_root::log (const char * inMessage COMMA_LOCATION_ARGS) const {
   printf ("LOGGING %s: ", inMessage) ;
   C_String s ;
   description (s, 0) ;
-  printf ("%s\n", s.cString (HERE)) ;
+  printf ("%s\n", s.cString (THERE)) ;
 }
 
 //---------------------------------------------------------------------------*

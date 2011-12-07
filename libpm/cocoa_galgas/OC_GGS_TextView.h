@@ -11,9 +11,16 @@
 
 //---------------------------------------------------------------------------*
 
+@class OC_GGS_TextDisplayDescriptor ;
+
+//---------------------------------------------------------------------------*
+
 @interface OC_GGS_TextView : NSTextView {
   @private NSArray * mIssueArray ;
+  @private __weak OC_GGS_TextDisplayDescriptor * mDisplayDescriptor ;
 }
+
+- (void) setDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor ;
 
 - (void) setIssueArray: (NSArray *) inIssueArray ;
 

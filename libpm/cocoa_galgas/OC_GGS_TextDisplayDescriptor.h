@@ -5,14 +5,19 @@
 //  Created by Pierre Molinaro on 24/11/11.
 //  Copyright (c) 2011 IRCCyN. All rights reserved.
 //
+//---------------------------------------------------------------------------*
 
 #import <Foundation/Foundation.h>
+
+//---------------------------------------------------------------------------*
 
 @class OC_GGS_TextSyntaxColoring ;
 @class OC_GGS_Document ;
 @class OC_GGS_TextView ;
 @class PMIssueDescriptor ;
 @class OC_GGS_RulerViewForTextView ;
+
+//---------------------------------------------------------------------------*
 
 @interface OC_GGS_TextDisplayDescriptor : NSObject <NSTextViewDelegate> {
 
@@ -55,4 +60,7 @@
 - (void) setIssueArray: (NSArray *) inIssueArray ; 
 
 - (BOOL) makeVisibleIssue: (PMIssueDescriptor *) inIssue ;
+
 @end
+
+//---------------------------------------------------------------------------*

@@ -1202,7 +1202,7 @@ override method @logInstructionForGeneration generateInstruction
   ioGeneratedCode .= "//-------- @logInstructionForGeneration\n" ;
   @string logVar ;
   [mLogExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?logVar] ;
-  ioGeneratedCode .= logVar . ".log (" . [mLogMessage utf8Representation] . ") ;\n" ;
+  ioGeneratedCode .= logVar . ".log (" . [mLogMessage utf8Representation] . " COMMA_SOURCE_FILE_AT_LINE (" . [[[mLogMessage location] line] string] . ")) ;\n" ;
 end method ;
 
 #---------------------------------------------------------------------------*
