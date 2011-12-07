@@ -2269,9 +2269,9 @@ static bool parseWithEncoding (const PMUInt8 * inCString,
 
 //---------------------------------------------------------------------------*
   
-static bool parseUTF8 (const PMUInt8 * inCString,
-                       const PMSInt32 inLength,
-                       C_String & outString) {
+bool C_String::parseUTF8 (const PMUInt8 * inCString,
+                          const PMSInt32 inLength,
+                          C_String & outString) {
   bool ok = true ;
   if (inLength > 0) {
     const PMUInt8 * sourcePointer = inCString ;
@@ -2488,7 +2488,7 @@ searchBOMandParse (const PMUInt8 * inCString,
     #endif
 //--- UTF-8 BOM ?
   }else if ((inLength >= 3) && (inCString [0] == 0xEF) && (inCString [1] == 0xBB) && (inCString [2] == 0x3F)) {
-    ok = parseUTF8 (inCString + 3, inLength - 3, outResultString) ;
+    ok = C_String::parseUTF8 (inCString + 3, inLength - 3, outResultString) ;
     outTextFileEncoding = kUTF_8_FileEncoding ;
     #ifdef PRINT_SNIFF_ENCODING
       printf ("found UTF-8 BOM **\n") ;
@@ -2519,7 +2519,7 @@ sniffUTFEncodingAndParse (const PMUInt8 * inCString,
                           PMTextFileEncoding & outTextFileEncoding,
                           C_String & outResultString) {
 //--- Try UTF-8
-  bool ok = parseUTF8 (inCString, inLength, outResultString) ;
+  bool ok = C_String::parseUTF8 (inCString, inLength, outResultString) ;
   if (ok) {
     outTextFileEncoding = kUTF_8_FileEncoding ;
     #ifdef PRINT_SNIFF_ENCODING
@@ -2630,7 +2630,7 @@ searchForEncodingTagAndParse (const PMUInt8 * inCString,
 //--- Search for Tag
   bool tagFound = false ;
   if (strstr (firstLine, "UTF-8") != NULL) {
-    ok = parseUTF8 (inCString, inLength, outResultString) ;
+    ok = C_String::parseUTF8 (inCString, inLength, outResultString) ;
     outTextFileEncoding = kUTF_8_FileEncoding ;
     tagFound = true ;
     #ifdef PRINT_SNIFF_ENCODING
