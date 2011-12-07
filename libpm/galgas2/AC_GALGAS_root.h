@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//  AC_GALGAS_root : root type for all GALGAS types (on debug mode only)       *
+//  AC_GALGAS_root : root type for all GALGAS types (on debug mode only)     *
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 2010, ..., 2011 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -69,7 +69,7 @@ class AC_GALGAS_root {
   public : virtual const C_galgas_type_descriptor * dynamicTypeDescriptor (void) const ;
 
 //--- Log instruction
-  public : VIRTUAL_IN_DEBUG void log (const char * inMessage) const ;
+  public : VIRTUAL_IN_DEBUG void log (const char * inMessage COMMA_LOCATION_ARGS) const ;
 
   public : virtual void description (C_String & ioString,
                                      const PMSInt32 inIndentation) const = 0 ;

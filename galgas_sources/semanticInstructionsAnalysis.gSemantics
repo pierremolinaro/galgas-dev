@@ -1181,7 +1181,7 @@ override method @logInstructionAST analyzeSemanticInstruction
     ] ;
   #--- Generate instruction
     ioInstructionListForGeneration += ![@logInstructionForGeneration new
-      ![mLogMessage string]
+      !mLogMessage
       !expression
     ] ;  
   end foreach ;

@@ -99,7 +99,7 @@
     mTokenizer = inTokenizer ;
     mTextDisplayDescriptorSet = [NSMutableSet new] ;
     mSourceTextStorage = [NSTextStorage new] ;
-    mStyledRangeArray = [NSMutableArray new] ;
+    mTokenArray = [NSMutableArray new] ;
     mTemplateTextAttributeDictionary = [NSMutableDictionary new] ;
     mUndoManager = [NSUndoManager new] ;
     mSourceURL = inSourceURL.copy ;
@@ -310,6 +310,18 @@
 
 //---------------------------------------------------------------------------*
 
+- (NSArray *) tokenArray {
+  return mTokenArray ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (BOOL) selectionByWordSelectsAllCharactersForTokenIndex: (NSUInteger) inTokenIndex {
+  return [mTokenizer atomicSelectionForToken:inTokenIndex] ;
+}
+
+//---------------------------------------------------------------------------*
+
 #pragma mark Text attribute did change
 
 //---------------------------------------------------------------------------*
@@ -334,8 +346,8 @@
         setAttributes:[mFontAttributesDictionaryArray objectAtIndex:0 HERE]
         range:allTextRange
       ] ;
-      for (NSUInteger i=0 ; i<[mStyledRangeArray count] ; i++) {
-        OC_Token * token = [mStyledRangeArray objectAtIndex:i HERE] ;
+      for (NSUInteger i=0 ; i<[mTokenArray count] ; i++) {
+        OC_Token * token = [mTokenArray objectAtIndex:i HERE] ;
         const SInt32 colorIndex = [token style] ;
         const NSRange range = [token range] ;
         if (colorIndex == -2) {
@@ -353,8 +365,8 @@
         }
       }    
     }else{
-      for (NSUInteger i=0 ; i<[mStyledRangeArray count] ; i++) {
-        OC_Token * token = [mStyledRangeArray objectAtIndex:i HERE] ;
+      for (NSUInteger i=0 ; i<[mTokenArray count] ; i++) {
+        OC_Token * token = [mTokenArray objectAtIndex:i HERE] ;
         const SInt32 colorIndex = [token style] ;
         if (colorIndex == inChangedColorIndex) {
           const NSRange range = [token range] ;
@@ -481,7 +493,7 @@
   NSInteger eraseRangeEnd = 0 ;
   [mTokenizer
     tokenizeForSourceString:mSourceTextStorage.string
-    tokenArray:mStyledRangeArray // Array of OC_Token
+    tokenArray:mTokenArray // Array of OC_Token
     editedRange:inEditedRange
     changeInLength:inChangeInLength
     firstIndexToRedraw: & firstIndexToRedraw
@@ -514,7 +526,7 @@
    NSLog (@"COLORING from %ld to %ld", firstIndexToRedraw, lastIndexToRedraw) ;
   #endif
   for (NSInteger i=firstIndexToRedraw ; i<=lastIndexToRedraw ; i++) {
-    OC_Token * token = [mStyledRangeArray objectAtIndex:i HERE] ;
+    OC_Token * token = [mTokenArray objectAtIndex:i HERE] ;
     const NSRange range = [token range] ;
     #ifdef DEBUG_MESSAGES
       NSLog (@"PERFORM COLORING '%@' range [%lu, %lu] [mSourceTextStorage length] %lu", [mSourceTextStorage.string substringWithRange:range], range.location, range.length, mSourceTextStorage.string.length) ;
@@ -846,8 +858,8 @@ static NSInteger numericSort (NSString * inOperand1,
   BOOL hasAtomicSelection = YES ;
   BOOL found = NO ;
   NSRange allTokenCharacterRange = {0, 0} ;
-  for (NSUInteger i=0 ; (i<[mStyledRangeArray count]) && ! found ; i++) {
-    OC_Token * token = [mStyledRangeArray objectAtIndex:i HERE] ;
+  for (NSUInteger i=0 ; (i<[mTokenArray count]) && ! found ; i++) {
+    OC_Token * token = [mTokenArray objectAtIndex:i HERE] ;
     allTokenCharacterRange = [token range] ;
     found = ((allTokenCharacterRange.location + allTokenCharacterRange.length) > inSelectedRange.location)
          && (allTokenCharacterRange.location <= inSelectedRange.location) ;

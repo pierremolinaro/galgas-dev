@@ -2,7 +2,7 @@ semantics testsuite_strings :
 
 routine testsuite_strings :
   message "*************************************** begin of string test\n" ;
-  const @string command := "ls -la" ;
+  const @string command := "echo accentué" ;
   log command ;
   const @string result := [command popen] ;
   log result ;

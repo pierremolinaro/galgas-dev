@@ -10,10 +10,19 @@
 #import "OC_GGS_TextView.h"
 #import "PMErrorOrWarningDescriptor.h"
 #import "PMCocoaCallsDebug.h"
+#import "OC_GGS_TextSyntaxColoring.h"
+#import "OC_GGS_TextDisplayDescriptor.h"
+#import "OC_Token.h"
 
 //---------------------------------------------------------------------------*
 
 @implementation OC_GGS_TextView
+
+//---------------------------------------------------------------------------*
+
+- (void) setDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor {
+  mDisplayDescriptor = inDisplayDescriptor ;
+}
 
 //---------------------------------------------------------------------------*
 
@@ -84,6 +93,111 @@
 //--- Draw error bullets
   [[NSColor redColor] setFill] ;
   [errorBulletBezierPath fill] ;
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Key Down
+
+//---------------------------------------------------------------------------*
+
+- (void) keyDown:(NSEvent *) inEvent {
+  NSString * keys = [inEvent characters];
+  if ([keys isEqualToString:@"\x09"]) { // A Tab Character ?
+    const NSRange selectedRange = [self selectedRange] ;
+    if ((selectedRange.location & 1) !=0) {
+      [self insertText:@"  "] ; // Odd location: insert 2 spaces
+    }else{
+      [self insertText:@" "] ; // Even location: insert 1 space
+    }
+  }else if ([keys isEqualToString:@"\x0D"]) { // A Carriage Return Character ?
+    const NSRange selectedRange = [self selectedRange] ;
+    NSString * s = [[self textStorage] string] ;
+    NSRange currentLineRange = [s lineRangeForRange:selectedRange] ;
+  //--- Find the number of spaces at the beginning of the line
+    if (currentLineRange.length > selectedRange.location - currentLineRange.location) {
+      currentLineRange.length = selectedRange.location - currentLineRange.location ;
+    }
+  //--- Insert string
+    NSMutableString * stringToInsert = [NSMutableString new] ;
+    [stringToInsert appendString:@"\n"] ;
+    while ((currentLineRange.length > 0) && ([s characterAtIndex:currentLineRange.location] == ' ')) {
+      currentLineRange.location ++ ;
+      currentLineRange.length -- ;
+      [stringToInsert appendString:@" "] ;
+    }
+    [self insertText:stringToInsert] ;
+  }else{
+    [super keyDown:inEvent] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Token selection
+
+//---------------------------------------------------------------------------*
+
+- (NSRange) selectionRangeForProposedRange:(NSRange) inProposedSelRange
+            granularity: (NSSelectionGranularity) inGranularity {
+
+  NSRange result = inProposedSelRange ;
+  if ((inGranularity == NSSelectByWord) && (inProposedSelRange.length == 0)) {
+    // NSLog (@"inProposedSelRange: [%u, %u], granularity: %d", inProposedSelRange.location, inProposedSelRange.length, inGranularity) ;
+    OC_GGS_TextSyntaxColoring * dsc = [mDisplayDescriptor textSyntaxColoring] ;
+    NSArray * tokenArray = [dsc tokenArray] ;
+    BOOL found = NO ;
+    for (NSUInteger i=0 ; (i<[tokenArray count]) && ! found ; i++) {
+      OC_Token * token = [tokenArray objectAtIndex:i HERE] ;
+      const NSRange range = [token range] ;
+      found = ((range.location + range.length) > inProposedSelRange.location) && (range.location <= inProposedSelRange.location) ;
+      if (found) {
+        if ([dsc selectionByWordSelectsAllCharactersForTokenIndex:[token tokenCode]]) {
+          result = range ;
+        }else{
+          const NSUInteger modifierFlags = [[NSApp currentEvent] modifierFlags] ;
+          const BOOL altAndCmdOn = ((modifierFlags & NSCommandKeyMask) != 0) && ((modifierFlags & NSAlternateKeyMask) != 0) ;
+          if (altAndCmdOn) {
+            result = range ;
+          }else{
+            result = [super selectionRangeForProposedRange:inProposedSelRange granularity:inGranularity] ;
+          }
+        }
+      }
+    }
+    if (! found) {
+      result = [super selectionRangeForProposedRange:inProposedSelRange granularity:inGranularity] ;
+    }
+  }else{
+    result = [super selectionRangeForProposedRange:inProposedSelRange granularity:inGranularity] ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark mouse Down (for source indexing)
+
+//---------------------------------------------------------------------------*
+
+- (void) mouseDown:(NSEvent *) inEvent {
+  if ((inEvent.modifierFlags & NSCommandKeyMask) != 0) {
+    const NSPoint local_point = [self convertPoint:[inEvent locationInWindow] fromView:nil] ;
+    const NSUInteger characterIndex = [self characterIndexForInsertionAtPoint:local_point] ;
+    const NSRange selectedRange = {characterIndex, 0} ;
+    const NSRange r = [self selectionRangeForProposedRange:selectedRange granularity:NSSelectByWord] ;
+    [self setSelectedRange:r] ;
+    OC_GGS_TextSyntaxColoring * dsc = [mDisplayDescriptor textSyntaxColoring] ;
+    NSMenu * menu = [dsc indexMenuForRange:r] ;
+    [NSMenu
+      popUpContextMenu:menu
+      withEvent:inEvent
+      forView:self
+      withFont:[NSFont systemFontOfSize:[NSFont smallSystemFontSize]]
+    ] ;
+  }else{
+    [super mouseDown:inEvent] ;
+  }
 }
 
 //---------------------------------------------------------------------------*

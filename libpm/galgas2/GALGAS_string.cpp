@@ -545,8 +545,8 @@ GALGAS_string GALGAS_string::reader_popen (UNUSED_LOCATION_ARGS) const {
      // C_String s ;
      // C_String::parseUTF8 ((const PMUInt8 *) buffer, (PMSInt32) readLength, s) ;
      
-       buffer [readLength] = 0 ;
-      printf ("buffer '%s'\n", buffer) ;
+     //  buffer [readLength] = 0 ;
+     // printf ("buffer '%s'\n", buffer) ;
     }
     pclose (f) ;
     C_String s ;
