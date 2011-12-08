@@ -458,7 +458,7 @@ override method @stringPredefinedTypeAST getReaderMap
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"reversedString" !"string" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"currentColumn" !"uint" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"system" !"sint" !false ;
-  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"popen" !"string" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"popen" !"string" !true ;
   enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"characterAtIndex" !"uint" !"char" !true ;
   enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"stringByRemovingCharacterAtIndex" !"uint" !"string" !true ;
   enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"rightSubString" !"uint" !"string" !false ;
