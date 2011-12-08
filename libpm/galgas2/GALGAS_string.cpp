@@ -526,38 +526,6 @@ GALGAS_sint GALGAS_string::reader_system (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------*
 
-GALGAS_string GALGAS_string::reader_popen (UNUSED_LOCATION_ARGS) const {
-  GALGAS_string result ;
-  if (isValid ()) {
-    FILE * f = popen (mString.cString (HERE), "r") ;
-    TC_UniqueArray <PMUInt8> response ;
-    bool loop = true ;
-    while (loop) {
-      const size_t kBufferSize = 1000 ;
-      PMUInt8 buffer [kBufferSize] ;
-      const size_t readLength = fread (buffer, 1, kBufferSize-1, f) ;
-      // const char * readBuffer = fgets (buffer, kBufferSize-1, f) ;
-      // loop = readBuffer != buffer ;
-      loop = readLength > 0 ;
-      for (PMUInt32 i=0 ; i<readLength ; i++) {
-        response.addObject (buffer [i]) ;
-      }
-     // C_String s ;
-     // C_String::parseUTF8 ((const PMUInt8 *) buffer, (PMSInt32) readLength, s) ;
-     
-     //  buffer [readLength] = 0 ;
-     // printf ("buffer '%s'\n", buffer) ;
-    }
-    pclose (f) ;
-    C_String s ;
-    C_String::parseUTF8 (response.bufferPointer (), response.count (), s) ;
-    result = GALGAS_string (s) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------*
-
 static void
 recursiveSearchForRegularFiles (const C_String & inUnixStartPath,
                                 const bool inRecursiveSearch,
@@ -1519,5 +1487,127 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
     }
   }
 }
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Reader popen
+#endif
+
+//---------------------------------------------------------------------------*
+
+// http://msdn.microsoft.com/en-us/library/ms682499%28VS.85%29.aspx
+
+#ifdef COMPILE_FOR_WIN32
+
+  #include <windows.h> 
+
+static bool CreateChildProcess (HANDLE g_hChildStd_OUT_Wr,
+                                const char * /* inCommandLine */) {
+// Create a child process that uses the previously created pipes for STDIN and STDOUT.
+   TCHAR szCmdline [] = TEXT ("echo hello") ;
+   PROCESS_INFORMATION piProcInfo; 
+   STARTUPINFO siStartInfo;
+ 
+// Set up members of the PROCESS_INFORMATION structure. 
+ 
+   ZeroMemory( &piProcInfo, sizeof(PROCESS_INFORMATION) );
+ 
+// Set up members of the STARTUPINFO structure. 
+// This structure specifies the STDIN and STDOUT handles for redirection.
+ 
+   ZeroMemory( &siStartInfo, sizeof(STARTUPINFO) );
+   siStartInfo.cb = sizeof(STARTUPINFO); 
+   siStartInfo.hStdError = g_hChildStd_OUT_Wr;
+   siStartInfo.hStdOutput =g_hChildStd_OUT_Wr;
+   siStartInfo.hStdInput = NULL ;
+   siStartInfo.dwFlags |= STARTF_USESTDHANDLES;
+ 
+// Create the child process. 
+    
+   bool bSuccess = CreateProcess (NULL, 
+      szCmdline,     // command line 
+      NULL,          // process security attributes 
+      NULL,          // primary thread security attributes 
+      TRUE,          // handles are inherited 
+      0,             // creation flags 
+      NULL,          // use parent's environment 
+      NULL,          // use parent's current directory 
+      &siStartInfo,  // STARTUPINFO pointer 
+      &piProcInfo);  // receives PROCESS_INFORMATION 
+   
+   // If an error occurs, exit the application. 
+   if (bSuccess ) {
+      // Close handles to the child process and its primary thread.
+      // Some applications might keep these handles to monitor the status
+      // of the child process, for example. 
+
+      CloseHandle (piProcInfo.hProcess) ;
+      CloseHandle (piProcInfo.hThread) ;
+   }
+   return bSuccess ;
+}
+
+  GALGAS_string GALGAS_string::reader_popen (UNUSED_LOCATION_ARGS) const {
+    GALGAS_string result ;
+    if (isValid ()) {
+    // Create a pipe for the child process's STDIN. 
+      HANDLE g_hChildStd_OUT_Wr = NULL ;
+      HANDLE g_hChildStd_OUT_Rd = NULL ;
+      SECURITY_ATTRIBUTES saAttr ; 
+      bool ok = CreatePipe (& g_hChildStd_OUT_Wr, & g_hChildStd_OUT_Rd, & saAttr, 0) ;
+      if (ok) {
+        ok = SetHandleInformation (g_hChildStd_OUT_Wr, HANDLE_FLAG_INHERIT, 0) ;
+      }
+      if (ok) {
+      ok = CreateChildProcess (g_hChildStd_OUT_Wr, mString.cString (HERE)) ;
+      }
+      TC_UniqueArray <PMUInt8> response ;
+      bool loop = ok ;
+      while (loop) {
+        const size_t kBufferSize = 1000 ;
+        PMUInt8 buffer [kBufferSize] ;
+        DWORD readLength = 0 ;
+        loop = ReadFile (g_hChildStd_OUT_Rd, buffer, kBufferSize, & readLength, NULL) ;
+        for (size_t i=0 ; i<readLength ; i++) {
+          response.addObject (buffer [i]) ;
+        }
+      }
+      CloseHandle (g_hChildStd_OUT_Wr) ;
+      CloseHandle (g_hChildStd_OUT_Rd) ;
+      C_String s ;
+      C_String::parseUTF8 (response.bufferPointer (), response.count (), s) ;
+      result = GALGAS_string (s) ;
+    }
+    return result ;
+  }
+#endif
+
+//---------------------------------------------------------------------------*
+
+#ifndef COMPILE_FOR_WIN32
+  GALGAS_string GALGAS_string::reader_popen (UNUSED_LOCATION_ARGS) const {
+    GALGAS_string result ;
+    if (isValid ()) {
+      FILE * f = popen (mString.cString (HERE), "r") ;
+      TC_UniqueArray <PMUInt8> response ;
+      bool loop = true ;
+      while (loop) {
+        const size_t kBufferSize = 1000 ;
+        PMUInt8 buffer [kBufferSize] ;
+        const size_t readLength = fread (buffer, 1, kBufferSize-1, f) ;
+        loop = readLength > 0 ;
+        for (size_t i=0 ; i<readLength ; i++) {
+          response.addObject (buffer [i]) ;
+        }
+      }
+      pclose (f) ;
+      C_String s ;
+      C_String::parseUTF8 (response.bufferPointer (), response.count (), s) ;
+      result = GALGAS_string (s) ;
+    }
+    return result ;
+  }
+#endif
 
 //---------------------------------------------------------------------------*
