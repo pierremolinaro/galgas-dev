@@ -268,7 +268,6 @@
 		CFAD1355148A4C8400ECA963 /* OC_GGS_Scroller.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD1343148A4C8400ECA963 /* OC_GGS_Scroller.m */; };
 		CFAD1356148A4C8400ECA963 /* OC_GGS_TextDisplayDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD1345148A4C8400ECA963 /* OC_GGS_TextDisplayDescriptor.m */; };
 		CFAD1357148A4C8400ECA963 /* OC_GGS_TextSyntaxColoring.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD1347148A4C8400ECA963 /* OC_GGS_TextSyntaxColoring.m */; };
-		CFAD1358148A4C8400ECA963 /* OC_GGS_TextViewEx.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD1349148A4C8400ECA963 /* OC_GGS_TextViewEx.m */; };
 		CFAD1359148A4C8400ECA963 /* PMButtonWithRemove.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD134B148A4C8400ECA963 /* PMButtonWithRemove.m */; };
 		CFAD135A148A4C8400ECA963 /* PMErrorOrWarningDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD134D148A4C8400ECA963 /* PMErrorOrWarningDescriptor.m */; };
 		CFAD135B148A4C8400ECA963 /* PMIssueDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD134F148A4C8400ECA963 /* PMIssueDescriptor.m */; };
@@ -709,8 +708,6 @@
 		CFAD1345148A4C8400ECA963 /* OC_GGS_TextDisplayDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_TextDisplayDescriptor.m; sourceTree = "<group>"; };
 		CFAD1346148A4C8400ECA963 /* OC_GGS_TextSyntaxColoring.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_TextSyntaxColoring.h; sourceTree = "<group>"; };
 		CFAD1347148A4C8400ECA963 /* OC_GGS_TextSyntaxColoring.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_TextSyntaxColoring.m; sourceTree = "<group>"; };
-		CFAD1348148A4C8400ECA963 /* OC_GGS_TextViewEx.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_TextViewEx.h; sourceTree = "<group>"; };
-		CFAD1349148A4C8400ECA963 /* OC_GGS_TextViewEx.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_TextViewEx.m; sourceTree = "<group>"; };
 		CFAD134A148A4C8400ECA963 /* PMButtonWithRemove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMButtonWithRemove.h; sourceTree = "<group>"; };
 		CFAD134B148A4C8400ECA963 /* PMButtonWithRemove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMButtonWithRemove.m; sourceTree = "<group>"; };
 		CFAD134C148A4C8400ECA963 /* PMErrorOrWarningDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMErrorOrWarningDescriptor.h; sourceTree = "<group>"; };
@@ -1266,8 +1263,6 @@
 				CFAD1345148A4C8400ECA963 /* OC_GGS_TextDisplayDescriptor.m */,
 				CFAD1346148A4C8400ECA963 /* OC_GGS_TextSyntaxColoring.h */,
 				CFAD1347148A4C8400ECA963 /* OC_GGS_TextSyntaxColoring.m */,
-				CFAD1348148A4C8400ECA963 /* OC_GGS_TextViewEx.h */,
-				CFAD1349148A4C8400ECA963 /* OC_GGS_TextViewEx.m */,
 				CFAD134A148A4C8400ECA963 /* PMButtonWithRemove.h */,
 				CFAD134B148A4C8400ECA963 /* PMButtonWithRemove.m */,
 				CFAD134C148A4C8400ECA963 /* PMErrorOrWarningDescriptor.h */,
@@ -2101,7 +2096,6 @@
 				CFAD1355148A4C8400ECA963 /* OC_GGS_Scroller.m in Sources */,
 				CFAD1356148A4C8400ECA963 /* OC_GGS_TextDisplayDescriptor.m in Sources */,
 				CFAD1357148A4C8400ECA963 /* OC_GGS_TextSyntaxColoring.m in Sources */,
-				CFAD1358148A4C8400ECA963 /* OC_GGS_TextViewEx.m in Sources */,
 				CFAD1359148A4C8400ECA963 /* PMButtonWithRemove.m in Sources */,
 				CFAD135A148A4C8400ECA963 /* PMErrorOrWarningDescriptor.m in Sources */,
 				CFAD135B148A4C8400ECA963 /* PMIssueDescriptor.m in Sources */,
@@ -2584,8 +2578,6 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch;
 				GCC_SHORT_ENUMS = YES;
-				GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = NO;
-				GCC_WARN_PROTOTYPE_CONVERSION = NO;
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				HEADER_SEARCH_PATHS = (
