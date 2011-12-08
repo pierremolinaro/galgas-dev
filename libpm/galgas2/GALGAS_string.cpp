@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 1996, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 1996, ..., 2011 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -36,6 +36,7 @@
 #include <dirent.h>
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -526,11 +527,10 @@ GALGAS_sint GALGAS_string::reader_system (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------*
 
-static void
-recursiveSearchForRegularFiles (const C_String & inUnixStartPath,
-                                const bool inRecursiveSearch,
-                                const C_String & inRelativePath,
-                                GALGAS_stringlist & ioResult) {
+static void recursiveSearchForRegularFiles (const C_String & inUnixStartPath,
+                                            const bool inRecursiveSearch,
+                                            const C_String & inRelativePath,
+                                            GALGAS_stringlist & ioResult) {
   const C_String nativeStartPath = inUnixStartPath.nativePathWithUnixPath () ;
   DIR * dir = ::opendir (nativeStartPath.cString (HERE)) ;
   if (dir != NULL) {
@@ -1499,85 +1499,119 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
 // http://msdn.microsoft.com/en-us/library/ms682499%28VS.85%29.aspx
 
 #ifdef COMPILE_FOR_WIN32
-
   #include <windows.h> 
+#endif
 
-static bool CreateChildProcess (HANDLE g_hChildStd_OUT_Wr,
-                                const char * /* inCommandLine */) {
-// Create a child process that uses the previously created pipes for STDIN and STDOUT.
-   TCHAR szCmdline [] = TEXT ("echo hello") ;
-   PROCESS_INFORMATION piProcInfo; 
-   STARTUPINFO siStartInfo;
- 
-// Set up members of the PROCESS_INFORMATION structure. 
- 
-   ZeroMemory( &piProcInfo, sizeof(PROCESS_INFORMATION) );
- 
-// Set up members of the STARTUPINFO structure. 
-// This structure specifies the STDIN and STDOUT handles for redirection.
- 
-   ZeroMemory( &siStartInfo, sizeof(STARTUPINFO) );
-   siStartInfo.cb = sizeof(STARTUPINFO); 
-   siStartInfo.hStdError = g_hChildStd_OUT_Wr;
-   siStartInfo.hStdOutput =g_hChildStd_OUT_Wr;
-   siStartInfo.hStdInput = NULL ;
-   siStartInfo.dwFlags |= STARTF_USESTDHANDLES;
- 
-// Create the child process. 
-    
-   bool bSuccess = CreateProcess (NULL, 
-      szCmdline,     // command line 
-      NULL,          // process security attributes 
-      NULL,          // primary thread security attributes 
-      TRUE,          // handles are inherited 
-      0,             // creation flags 
-      NULL,          // use parent's environment 
-      NULL,          // use parent's current directory 
-      &siStartInfo,  // STARTUPINFO pointer 
-      &piProcInfo);  // receives PROCESS_INFORMATION 
-   
-   // If an error occurs, exit the application. 
-   if (bSuccess ) {
-      // Close handles to the child process and its primary thread.
-      // Some applications might keep these handles to monitor the status
-      // of the child process, for example. 
+//---------------------------------------------------------------------------*
 
-      CloseHandle (piProcInfo.hProcess) ;
-      CloseHandle (piProcInfo.hThread) ;
-   }
-   return bSuccess ;
-}
+#ifdef COMPILE_FOR_WIN32
+  static bool CreateChildProcess (HANDLE g_hChildStd_OUT_Wr,
+                                  HANDLE g_hChildStd_IN_Rd,
+                                  const char * /* inCommandLine */) {
+  //--- Create a child process that uses the previously created pipes for STDIN and STDOUT.
+     TCHAR szCmdline [] = TEXT ("child") ;
+  //--- Set up members of the PROCESS_INFORMATION structure. 
+     PROCESS_INFORMATION piProcInfo ; 
+     ZeroMemory (& piProcInfo, sizeof (PROCESS_INFORMATION)) ;
+  //--- Set up members of the STARTUPINFO structure. 
+     STARTUPINFO siStartInfo ;
+     ZeroMemory (& siStartInfo, sizeof (STARTUPINFO)) ;
+     siStartInfo.cb = sizeof (STARTUPINFO) ; 
+     siStartInfo.hStdError = g_hChildStd_OUT_Wr ;
+     siStartInfo.hStdOutput = g_hChildStd_OUT_Wr ;
+     siStartInfo.hStdInput = g_hChildStd_IN_Rd ;
+     siStartInfo.dwFlags |= STARTF_USESTDHANDLES ;
+  //-- Create the child process. 
+     const bool bSuccess = 0 != CreateProcess (
+       NULL, 
+       szCmdline,     // command line 
+       NULL,          // process security attributes 
+       NULL,          // primary thread security attributes 
+       TRUE,          // handles are inherited 
+       0,             // creation flags 
+       NULL,          // use parent's environment 
+       NULL,          // use parent's current directory 
+       & siStartInfo, // STARTUPINFO pointer 
+       & piProcInfo   // receives PROCESS_INFORMATION 
+     ) ;
+     if (bSuccess) {
+     // Close handles to the child process and its primary thread.
+     // Some applications might keep these handles to monitor the status
+     // of the child process, for example. 
+       CloseHandle (piProcInfo.hProcess) ;
+       CloseHandle (piProcInfo.hThread) ;
+     }
+   //---
+     return bSuccess ;
+  }
+#endif
 
-  GALGAS_string GALGAS_string::reader_popen (UNUSED_LOCATION_ARGS) const {
+//---------------------------------------------------------------------------*
+
+#ifdef COMPILE_FOR_WIN32
+  GALGAS_string GALGAS_string::reader_popen (C_Compiler * inCompiler
+                                             COMMA_LOCATION_ARGS) const {
     GALGAS_string result ;
     if (isValid ()) {
     // Create a pipe for the child process's STDIN. 
       HANDLE g_hChildStd_OUT_Wr = NULL ;
       HANDLE g_hChildStd_OUT_Rd = NULL ;
-      SECURITY_ATTRIBUTES saAttr ; 
-      bool ok = CreatePipe (& g_hChildStd_OUT_Wr, & g_hChildStd_OUT_Rd, & saAttr, 0) ;
-      if (ok) {
-        ok = SetHandleInformation (g_hChildStd_OUT_Wr, HANDLE_FLAG_INHERIT, 0) ;
+      HANDLE g_hChildStd_IN_Wr = NULL ;
+      HANDLE g_hChildStd_IN_Rd = NULL ;
+      SECURITY_ATTRIBUTES saAttr ;
+      saAttr.nLength = sizeof (SECURITY_ATTRIBUTES) ; 
+      saAttr.bInheritHandle = TRUE ; 
+      saAttr.lpSecurityDescriptor = NULL ; 
+      C_String errorMessage ; 
+      bool ok = 0 != CreatePipe (& g_hChildStd_OUT_Rd, & g_hChildStd_OUT_Wr, & saAttr, 0) ;
+      if (! ok) {
+        errorMessage << "@string popen: 'CreatePipe' error" ;
+      }else{
+        ok = SetHandleInformation (g_hChildStd_OUT_Rd, HANDLE_FLAG_INHERIT, 0) ;
+        if (! ok) {
+          errorMessage << "@string popen: 'SetHandleInformation' error" ;
+        }      
       }
       if (ok) {
-      ok = CreateChildProcess (g_hChildStd_OUT_Wr, mString.cString (HERE)) ;
+        ok = CreatePipe (& g_hChildStd_IN_Rd, & g_hChildStd_IN_Wr, & saAttr, 0) ;
+        if (! ok) {
+          errorMessage << "@string popen: 'CreatePipe (2)' error" ;
+        }      
       }
-      TC_UniqueArray <PMUInt8> response ;
-      bool loop = ok ;
-      while (loop) {
-        const size_t kBufferSize = 1000 ;
-        PMUInt8 buffer [kBufferSize] ;
-        DWORD readLength = 0 ;
-        loop = ReadFile (g_hChildStd_OUT_Rd, buffer, kBufferSize, & readLength, NULL) ;
-        for (size_t i=0 ; i<readLength ; i++) {
-          response.addObject (buffer [i]) ;
+      if (ok) {
+        ok = SetHandleInformation (g_hChildStd_IN_Wr, HANDLE_FLAG_INHERIT, 0) ;
+        if (! ok) {
+          errorMessage << "@string popen: 'SetHandleInformation (2)' error" ;
+        }      
+      }
+      if (ok) {
+        ok = CreateChildProcess (g_hChildStd_OUT_Wr, g_hChildStd_IN_Rd, mString.cString (HERE)) ;
+        if (! ok) {
+          errorMessage << "@string popen: 'CreateChildProcess' error" ;
+        }      
+      }
+      if (! ok) {
+        inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
+      }else{
+        TC_UniqueArray <PMUInt8> response ;
+        bool loop = true ;
+        while (loop) {
+          const size_t kBufferSize = 1000 ;
+          PMUInt8 buffer [kBufferSize] ;
+          DWORD readLength = 0 ;
+          loop = ReadFile (g_hChildStd_OUT_Rd, buffer, kBufferSize, & readLength, NULL) ;
+          for (size_t i=0 ; i<readLength ; i++) {
+            response.addObject (buffer [i]) ;
+          }
         }
+        C_String s ;
+        C_String::parseUTF8 (response.bufferPointer (), response.count (), s) ;
+        result = GALGAS_string (s) ;
       }
+      CloseHandle (g_hChildStd_IN_Wr) ;
+      CloseHandle (g_hChildStd_IN_Rd) ;
       CloseHandle (g_hChildStd_OUT_Wr) ;
       CloseHandle (g_hChildStd_OUT_Rd) ;
-      C_String s ;
-      C_String::parseUTF8 (response.bufferPointer (), response.count (), s) ;
-      result = GALGAS_string (s) ;
     }
     return result ;
   }
@@ -1586,7 +1620,8 @@ static bool CreateChildProcess (HANDLE g_hChildStd_OUT_Wr,
 //---------------------------------------------------------------------------*
 
 #ifndef COMPILE_FOR_WIN32
-  GALGAS_string GALGAS_string::reader_popen (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string GALGAS_string::reader_popen (C_Compiler * /* inCompiler */
+                                             COMMA_UNUSED_LOCATION_ARGS) const {
     GALGAS_string result ;
     if (isValid ()) {
       FILE * f = popen (mString.cString (HERE), "r") ;
