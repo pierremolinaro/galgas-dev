@@ -10,12 +10,14 @@
 
 @class OC_GGS_TextDisplayDescriptor ;
 @class OC_Lexique ;
+@class OC_GGS_Document ;
 
 @interface OC_GGS_TextSyntaxColoring : NSObject {
   @private NSURL * mSourceURL ;
   @private NSTextStorage * mSourceTextStorage ;
   @private NSMutableSet * mTextDisplayDescriptorSet ; // Set of OC_GGS_TextDisplayDescriptor
   @private OC_Lexique * mTokenizer ;
+  @private OC_GGS_Document * mDocument ;
   @private BOOL mIsDirty ;
   @private NSArray * mIssueArray ;
 
@@ -33,7 +35,7 @@
 
 - (OC_GGS_TextSyntaxColoring *) initWithSourceString: (NSString *) inSource
                                 tokenizer: (OC_Lexique *) inTokenizer
-                                sourceURL: (NSURL *) inSourceURL
+                                document: (OC_GGS_Document *) inDocument
                                 issueArray: (NSArray *) inIssueArray ;
 
 - (NSTextStorage *) textStorage ;
@@ -41,6 +43,8 @@
 - (OC_Lexique *) tokenizer ;
 - (NSURL *) sourceURL ;
 - (NSArray *) issueArray ;
+
+- (NSArray *) buildIndexingDictionaryArray ;
 
 - (NSArray *) tokenArray ;
 - (BOOL) selectionByWordSelectsAllCharactersForTokenIndex: (NSUInteger) inTokenIndex ;
@@ -60,9 +64,10 @@
 - (NSRange) uncommentRange: (NSRange) initialSelectedRange ;
 - (NSRange) commentRange: (NSRange) initialSelectedRange ;
 
-- (NSMenu *) indexMenuForRange: (NSRange) inRange ;
-
 - (void) documentHasBeenSaved ;
 
 - (void) setIssueArray: (NSArray *) inIssueArray ;
+
+- (NSMenu *) indexMenuForRange: (NSRange) inSelectedRange
+             textDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inTextDisplayDescriptor ;
 @end

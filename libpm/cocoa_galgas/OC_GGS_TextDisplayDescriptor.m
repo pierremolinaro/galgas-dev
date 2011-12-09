@@ -136,6 +136,12 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
+- (OC_GGS_Document *) document {
+  return mDocument ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (void) observeValueForKeyPath:(NSString *) inKeyPath
          ofObject: (id) inObject
          change:(NSDictionary *) inChange
@@ -373,18 +379,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
-/*- (NSMenu *) textView:(NSTextView *)view
-             menu:(NSMenu *)menu
-             forEvent:(NSEvent *)event
-             atIndex:(NSUInteger) inCharacterIndex { // Delegate Method
-  const NSRange selectedRange = {inCharacterIndex, 0} ;
-  const NSRange r = [mTextView selectionRangeForProposedRange:selectedRange granularity:NSSelectByWord] ;
-  [mTextView setSelectedRange:r] ;
-  return [mTextSyntaxColoring indexMenuForRange:r] ;
-}*/
-
-//---------------------------------------------------------------------------*
-
 - (void) noteUndoManagerCheckPointNotification {
   [mDocument triggerDocumentEditedStatusUpdate] ;
 }
@@ -414,13 +408,19 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     PMErrorOrWarningDescriptor * issue = [mIssueArray objectAtIndex:i] ;
     found = issue.originalIssue == inOriginalIssue ;
     if (found) {
-      [mTextView scrollRangeToVisible:NSMakeRange (issue.location, 0)] ;
-      [mTextView setSelectedRange:NSMakeRange (issue.location, 0)] ;
-      [mTextView.window makeFirstResponder:mTextView] ;
+      [self setSelectionRangeAndMakeItVisible:NSMakeRange (issue.location, 0)] ;
     }
   }
 //---
   return found ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) setSelectionRangeAndMakeItVisible: (NSRange) inRange {
+  [mTextView scrollRangeToVisible:inRange] ;
+  [mTextView setSelectedRange:inRange] ;
+  [mTextView.window makeFirstResponder:mTextView] ;
 }
 
 //---------------------------------------------------------------------------*

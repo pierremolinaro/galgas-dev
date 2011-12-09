@@ -16,6 +16,7 @@
 #import "PMIssueDescriptor.h"
 #import "PMErrorOrWarningDescriptor.h"
 #import "OC_GGS_BuildTask.h"
+#import "OC_GGS_Document.h"
 
 //---------------------------------------------------------------------------*
 
@@ -92,17 +93,18 @@
 
 - (OC_GGS_TextSyntaxColoring *) initWithSourceString: (NSString *) inSource
                                 tokenizer: (OC_Lexique *) inTokenizer
-                                sourceURL: (NSURL *) inSourceURL
+                                document: (OC_GGS_Document *) inDocument
                                 issueArray: (NSArray *) inIssueArray {
   self = [super init] ;
   if (self) {
     mTokenizer = inTokenizer ;
+    mDocument = inDocument ;
     mTextDisplayDescriptorSet = [NSMutableSet new] ;
     mSourceTextStorage = [NSTextStorage new] ;
     mTokenArray = [NSMutableArray new] ;
     mTemplateTextAttributeDictionary = [NSMutableDictionary new] ;
     mUndoManager = [NSUndoManager new] ;
-    mSourceURL = inSourceURL.copy ;
+    mSourceURL = inDocument.fileURL.copy ;
   //---
     [[NSNotificationCenter defaultCenter]
       addObserver:self
@@ -717,249 +719,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
-#pragma mark Source Indexing
-
-//---------------------------------------------------------------------------*
-
-- (NSSet *) handledExtensions {
-  NSMutableSet * result = [NSMutableSet new] ;
-//--- Get Info.plist file
-  NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary] ;
-  // NSLog (@"infoDictionary '%@'", infoDictionary) ;
-  NSArray * allDocumentTypes = [infoDictionary objectForKey:@"CFBundleDocumentTypes"] ;
-  // NSLog (@"allDocumentTypes '%@'", allDocumentTypes) ;
-  for (NSUInteger i=0 ; i<[allDocumentTypes count] ; i++) {
-    NSDictionary * docTypeDict = [allDocumentTypes objectAtIndex:i HERE] ;
-    // NSLog (@"docTypeDict '%@'", docTypeDict) ;
-    NSArray * documentTypeExtensions = [docTypeDict objectForKey:@"CFBundleTypeExtensions"] ;
-    // NSLog (@"documentTypeExtensions '%@'", documentTypeExtensions) ;
-    [result addObjectsFromArray:documentTypeExtensions] ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (BOOL) sourceFile:(NSString *) inFile1
-         newerThanFile: (NSString *) inFile2 {
-  NSFileManager * fm = [[NSFileManager alloc] init] ;
-  NSDictionary * file1_dictionary = [fm attributesOfItemAtPath:inFile1 error:NULL] ;
-  NSDate * file1_modificationDate = [file1_dictionary fileModificationDate] ;
-  NSDictionary * file2_dictionary = [fm attributesOfItemAtPath:inFile2 error:NULL] ;
-  NSDate * file2_modificationDate = [file2_dictionary fileModificationDate] ;
-  return NSOrderedDescending == [file1_modificationDate compare:file2_modificationDate] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) parseSourceFileForBuildingIndexFile: (NSString *) inSourceFileFullPath {
-  NSString * compilerToolPath = [gCocoaGalgasPreferencesController compilerToolPath] ;
-//--- Command line tool does actually exist ? (First argument is not "?")
-  if (! [compilerToolPath isEqualToString:@"?"]) {
-  //--- Build argument array
-    NSMutableArray * arguments = [NSMutableArray new] ;
-    [arguments addObject:inSourceFileFullPath] ;
-    [arguments addObject:@"--perform-indexing"] ;
-  //--- Create task
-    NSTask * task = [[NSTask alloc] init] ;
-    [task setLaunchPath:compilerToolPath] ;
-    [task setArguments:arguments] ;
-    // NSLog (@"'%@' %@", [task launchPath], arguments) ;
-  //--- Start task
-    [task launch] ;
-  //--- Wait the task is completed
-    [task waitUntilExit] ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-- (NSArray *) buildDictionaryArray {
-//--- Source directory
-  NSString * sourceDirectory = mSourceURL.path.stringByDeletingLastPathComponent ;
-//--- index directory
-  NSString * indexingDirectory = [mTokenizer indexingDirectory] ;
-  if (([indexingDirectory length] == 0) || ([indexingDirectory characterAtIndex:0] != '/')) {
-    NSMutableString * s = [NSMutableString new] ;
-    [s appendString:sourceDirectory] ;
-    [s appendString:@"/"] ;
-    [s appendString:indexingDirectory] ;
-    indexingDirectory = s ;
-    // NSLog (@"indexingDirectory '%@'", indexingDirectory) ;
-  }
-//--- Handled extensions
-  NSSet * handledExtensions = [self handledExtensions] ;
-//--- All files in source directory
-  NSFileManager * fm = [[NSFileManager alloc] init] ;
-  NSArray * files = [fm contentsOfDirectoryAtPath:sourceDirectory error:NULL] ;
-  NSMutableArray * availableDictionaryPathArray = [NSMutableArray new] ;
-  NSOperationQueue * opq = [NSOperationQueue new] ;
-  for (NSString * filePath in files) {
-    NSString * fullFilePath = [NSString stringWithFormat:@"%@/%@", sourceDirectory, filePath] ;
-    if ([handledExtensions containsObject:[filePath pathExtension]]) {
-    //--- Index file path
-      NSString * indexFileFullPath = [NSString stringWithFormat:@"%@/%@.plist", indexingDirectory, [filePath lastPathComponent]] ;
-    //--- Parse source file ?
-      if (! [fm fileExistsAtPath:indexFileFullPath]) { // Parse source file
-        NSInvocationOperation * op = [[NSInvocationOperation alloc] 
-          initWithTarget:self
-          selector:@selector (parseSourceFileForBuildingIndexFile:)
-          object:fullFilePath
-        ] ;
-        [opq addOperation:op] ;
-        [availableDictionaryPathArray addObject:indexFileFullPath] ;
-      }else if ([self sourceFile:fullFilePath newerThanFile:indexFileFullPath]) {
-        [fm removeItemAtPath:indexFileFullPath error:NULL] ;
-        NSInvocationOperation * op = [[NSInvocationOperation alloc] 
-          initWithTarget:self
-          selector:@selector (parseSourceFileForBuildingIndexFile:)
-          object:fullFilePath
-        ] ;
-        [opq addOperation:op] ;
-        [availableDictionaryPathArray addObject:indexFileFullPath] ;
-      }else{
-        [availableDictionaryPathArray addObject:indexFileFullPath] ;
-      }
-    }
-  }
-//--- Wait operations are completed
-  [opq waitUntilAllOperationsAreFinished] ;
-//--- Parse available dictionaries
-  NSMutableArray * result = [NSMutableArray new] ;
-  for (NSString * fullPath in availableDictionaryPathArray) {
-    NSDictionary * dict = [NSDictionary dictionaryWithContentsOfFile:fullPath] ;
-    if (nil != dict) {
-      [result addObject:dict] ;
-    }
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------*
-
-static NSInteger numericSort (NSString * inOperand1,
-                              NSString * inOperand2,
-                              void * inUnusedContext) {
-  return [inOperand1 compare:inOperand2 options:NSNumericSearch] ;
-}
-
-//---------------------------------------------------------------------------*
-// Every plist list is a dictionary: the key is the indexed to token; the 
-// associated value is an NSArray of NSString that has the following format:
-//   "kind:line:locationIndex:length:sourceFileFullPath"
-
-//---------------------------------------------------------------------------*
-
-- (NSMenu *) indexMenuForRange: (NSRange) inSelectedRange {
-  NSMenu * menu = [[NSMenu alloc] initWithTitle:@""] ;
-//--- Save all sources
-  [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
-//--- Check if current has atomic selection
-  BOOL hasAtomicSelection = YES ;
-  BOOL found = NO ;
-  NSRange allTokenCharacterRange = {0, 0} ;
-  for (NSUInteger i=0 ; (i<[mTokenArray count]) && ! found ; i++) {
-    OC_Token * token = [mTokenArray objectAtIndex:i HERE] ;
-    allTokenCharacterRange = [token range] ;
-    found = ((allTokenCharacterRange.location + allTokenCharacterRange.length) > inSelectedRange.location)
-         && (allTokenCharacterRange.location <= inSelectedRange.location) ;
-    if (found) {
-      hasAtomicSelection = [mTokenizer atomicSelectionForToken:[token tokenCode]] ;
-    }
-  }
-//---
-  NSString * token = [mSourceTextStorage.string substringWithRange:inSelectedRange] ;
-  // NSLog (@"%@", token) ;
-//---
-  NSArray * dictionaryArray = [self buildDictionaryArray] ;
-//--- Build array of all references of given token
-  NSMutableArray * allReferences = [NSMutableArray new] ;
-  for (NSDictionary * currentIndexDictionary in dictionaryArray) {
-    NSArray * references = [currentIndexDictionary objectForKey:token] ;
-    [allReferences addObjectsFromArray:references] ;
-  }
-//--- Build dictionary for the given token, organized by Kind
-  NSMutableDictionary * kindDictionary = [NSMutableDictionary new] ;
-  for (NSString * descriptor in allReferences) {
-    NSArray * components = [descriptor componentsSeparatedByString:@":"] ;
-    NSString * kind = [components objectAtIndex:0] ;
-    if ([kindDictionary objectForKey:kind] == NULL) {
-      [kindDictionary setObject:[NSMutableArray new] forKey:kind] ;
-    }
-    NSMutableArray * a = [kindDictionary objectForKey:kind] ;
-    [a addObject:descriptor] ;
-  }
-//--- Build Menu
-  if (! hasAtomicSelection) {
-    [menu addItemWithTitle:@"Select all token characters" action:@selector (selectAllTokenCharacters:) keyEquivalent:@""] ;
-    NSMenuItem * item = [menu itemAtIndex:[menu numberOfItems] - 1] ;
-    [item setTarget:self] ;
-    [item setRepresentedObject:[NSValue valueWithRange:inSelectedRange]] ;
-    [menu addItem:[NSMenuItem separatorItem]] ;
-  }
-  if ([kindDictionary count] == 0) {
-    NSString * title = [NSString stringWithFormat:@"No index for '%@'", token] ;
-    [menu addItemWithTitle:title action:nil keyEquivalent:@""] ;
-  }else{
-    NSArray * indexingTitles = [mTokenizer indexingTitles] ;
-    NSArray * allKeys = [[kindDictionary allKeys] sortedArrayUsingFunction:numericSort context:NULL] ;
-    BOOL first = YES ;
-    for (NSString * kindObject in allKeys) {
-      if (first) {
-        first = NO ;
-      }else{
-        [menu addItem:[NSMenuItem separatorItem]] ;
-      }
-      const NSUInteger kind = [kindObject integerValue] ;
-      NSArray * references = [kindDictionary objectForKey:kindObject] ;
-      NSString * title = [NSString
-        stringWithFormat:@"%@ (%d item%@)",
-        [indexingTitles objectAtIndex:kind HERE],
-        [references count],
-        (([references count] > 1) ? @"s" : @"")
-      ] ;
-      [menu addItemWithTitle:title action:nil keyEquivalent:@""] ;
-      for (NSString * descriptor in references) {
-        NSArray * components = [descriptor componentsSeparatedByString:@":"] ;
-        NSString * filePath = [components objectAtIndex:4 HERE] ;
-        title = [NSString stringWithFormat:@"%@, line %@", [filePath lastPathComponent], [components objectAtIndex:1]] ;
-        NSMenuItem * item = [menu addItemWithTitle:title action:@selector (indexingMenuAction:) keyEquivalent:@""] ;
-        [item setTarget:self] ;
-        [item setRepresentedObject:descriptor] ;
-      }
-    }
-  }
-//---
-  return menu ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) selectAllTokenCharacters: (id) inSender  {
-//  const NSRange r = [[inSender representedObject] rangeValue] ;
-//  [self setSelectionRange:r] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) indexingMenuAction: (id) inSender {
-  NSString * descriptor = [inSender representedObject] ;
-  // NSLog (@"descriptor '%@'", descriptor) ;
-  NSArray * components = [descriptor componentsSeparatedByString:@":"] ;
-//  const NSUInteger tokenLocation = [[components objectAtIndex:2] integerValue] ;
-//  const NSUInteger tokenLength = [[components objectAtIndex:3] integerValue] ;
-  NSString * filePath = [components objectAtIndex:4] ;
-  // NSLog (@"tokenLocation %u, tokenLength %u, filePath '%@'", tokenLocation, tokenLength, filePath) ;
-  /* OC_GGS_Document * doc = */ [[NSDocumentController sharedDocumentController]
-    openDocumentWithContentsOfURL:[NSURL fileURLWithPath:filePath]
-    display:YES
-    error:NULL
-  ] ;
-//  [doc setSelectionRange:NSMakeRange (tokenLocation, tokenLength)] ;
-}
-
-//---------------------------------------------------------------------------*
-
 - (void) undoManagerCheckPointNotification: (NSNotification *) inNotification {
   [self willChangeValueForKey:@"isDirty"] ;
   mIsDirty = mUndoManager.canUndo ;
@@ -1065,6 +824,225 @@ static NSInteger numericSort (NSString * inOperand1,
       break;
     }
   }
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Source Indexing
+
+//---------------------------------------------------------------------------*
+
+- (NSSet *) handledExtensions {
+  NSMutableSet * result = [NSMutableSet new] ;
+//--- Get Info.plist file
+  NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary] ;
+  // NSLog (@"infoDictionary '%@'", infoDictionary) ;
+  NSArray * allDocumentTypes = [infoDictionary objectForKey:@"CFBundleDocumentTypes"] ;
+  // NSLog (@"allDocumentTypes '%@'", allDocumentTypes) ;
+  for (NSUInteger i=0 ; i<[allDocumentTypes count] ; i++) {
+    NSDictionary * docTypeDict = [allDocumentTypes objectAtIndex:i HERE] ;
+    // NSLog (@"docTypeDict '%@'", docTypeDict) ;
+    NSArray * documentTypeExtensions = [docTypeDict objectForKey:@"CFBundleTypeExtensions"] ;
+    // NSLog (@"documentTypeExtensions '%@'", documentTypeExtensions) ;
+    [result addObjectsFromArray:documentTypeExtensions] ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (BOOL) sourceFile:(NSString *) inFile1
+         newerThanFile: (NSString *) inFile2 {
+  NSFileManager * fm = [[NSFileManager alloc] init] ;
+  NSDictionary * file1_dictionary = [fm attributesOfItemAtPath:inFile1 error:NULL] ;
+  NSDate * file1_modificationDate = [file1_dictionary fileModificationDate] ;
+  NSDictionary * file2_dictionary = [fm attributesOfItemAtPath:inFile2 error:NULL] ;
+  NSDate * file2_modificationDate = [file2_dictionary fileModificationDate] ;
+  return NSOrderedDescending == [file1_modificationDate compare:file2_modificationDate] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) parseSourceFileForBuildingIndexFile: (NSString *) inSourceFileFullPath {
+  NSString * compilerToolPath = [gCocoaGalgasPreferencesController compilerToolPath] ;
+//--- Command line tool does actually exist ? (First argument is not "?")
+  if (! [compilerToolPath isEqualToString:@"?"]) {
+  //--- Build argument array
+    NSMutableArray * arguments = [NSMutableArray new] ;
+    [arguments addObject:inSourceFileFullPath] ;
+    [arguments addObject:@"--perform-indexing"] ;
+  //--- Create task
+    NSTask * task = [[NSTask alloc] init] ;
+    [task setLaunchPath:compilerToolPath] ;
+    [task setArguments:arguments] ;
+    // NSLog (@"'%@' %@", [task launchPath], arguments) ;
+  //--- Start task
+    [task launch] ;
+  //--- Wait the task is completed
+    [task waitUntilExit] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSArray *) buildIndexingDictionaryArray {
+//--- Source directory
+  NSString * sourceDirectory = mSourceURL.path.stringByDeletingLastPathComponent ;
+//--- index directory
+  NSString * indexingDirectory = [mTokenizer indexingDirectory] ;
+  if (([indexingDirectory length] == 0) || ([indexingDirectory characterAtIndex:0] != '/')) {
+    NSMutableString * s = [NSMutableString new] ;
+    [s appendString:sourceDirectory] ;
+    [s appendString:@"/"] ;
+    [s appendString:indexingDirectory] ;
+    indexingDirectory = s ;
+    // NSLog (@"indexingDirectory '%@'", indexingDirectory) ;
+  }
+//--- Handled extensions
+  NSSet * handledExtensions = [self handledExtensions] ;
+//--- All files in source directory
+  NSFileManager * fm = [[NSFileManager alloc] init] ;
+  NSArray * files = [fm contentsOfDirectoryAtPath:sourceDirectory error:NULL] ;
+  NSMutableArray * availableDictionaryPathArray = [NSMutableArray new] ;
+  NSOperationQueue * opq = [NSOperationQueue new] ;
+  for (NSString * filePath in files) {
+    NSString * fullFilePath = [NSString stringWithFormat:@"%@/%@", sourceDirectory, filePath] ;
+    if ([handledExtensions containsObject:[filePath pathExtension]]) {
+    //--- Index file path
+      NSString * indexFileFullPath = [NSString stringWithFormat:@"%@/%@.plist", indexingDirectory, [filePath lastPathComponent]] ;
+    //--- Parse source file ?
+      if (! [fm fileExistsAtPath:indexFileFullPath]) { // Parse source file
+        NSInvocationOperation * op = [[NSInvocationOperation alloc] 
+          initWithTarget:self
+          selector:@selector (parseSourceFileForBuildingIndexFile:)
+          object:fullFilePath
+        ] ;
+        [opq addOperation:op] ;
+        [availableDictionaryPathArray addObject:indexFileFullPath] ;
+      }else if ([self sourceFile:fullFilePath newerThanFile:indexFileFullPath]) {
+        [fm removeItemAtPath:indexFileFullPath error:NULL] ;
+        NSInvocationOperation * op = [[NSInvocationOperation alloc] 
+          initWithTarget:self
+          selector:@selector (parseSourceFileForBuildingIndexFile:)
+          object:fullFilePath
+        ] ;
+        [opq addOperation:op] ;
+        [availableDictionaryPathArray addObject:indexFileFullPath] ;
+      }else{
+        [availableDictionaryPathArray addObject:indexFileFullPath] ;
+      }
+    }
+  }
+//--- Wait operations are completed
+  [opq waitUntilAllOperationsAreFinished] ;
+//--- Parse available dictionaries
+  NSMutableArray * result = [NSMutableArray new] ;
+  for (NSString * fullPath in availableDictionaryPathArray) {
+    NSDictionary * dict = [NSDictionary dictionaryWithContentsOfFile:fullPath] ;
+    if (nil != dict) {
+      [result addObject:dict] ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+static NSInteger numericSort (NSString * inOperand1,
+                              NSString * inOperand2,
+                              void * inUnusedContext) {
+  return [inOperand1 compare:inOperand2 options:NSNumericSearch] ;
+}
+
+//---------------------------------------------------------------------------*
+// Every plist list is a dictionary: the key is the indexed to token; the 
+// associated value is an NSArray of NSString that has the following format:
+//   "kind:line:locationIndex:length:sourceFileFullPath"
+
+//---------------------------------------------------------------------------*
+
+- (NSMenu *) indexMenuForRange: (NSRange) inSelectedRange
+             textDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inTextDisplayDescriptor {
+  NSMenu * menu = [[NSMenu alloc] initWithTitle:@""] ;
+//--- Save all sources
+  [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
+//--- Check if current has atomic selection
+  BOOL hasAtomicSelection = YES ;
+  BOOL found = NO ;
+  NSRange allTokenCharacterRange = {0, 0} ;
+  for (NSUInteger i=0 ; (i<[mTokenArray count]) && ! found ; i++) {
+    OC_Token * token = [mTokenArray objectAtIndex:i HERE] ;
+    allTokenCharacterRange = [token range] ;
+    found = ((allTokenCharacterRange.location + allTokenCharacterRange.length) > inSelectedRange.location)
+         && (allTokenCharacterRange.location <= inSelectedRange.location) ;
+    if (found) {
+      hasAtomicSelection = [mTokenizer atomicSelectionForToken:[token tokenCode]] ;
+    }
+  }
+//---
+  NSString * token = [mSourceTextStorage.string substringWithRange:inSelectedRange] ;
+  // NSLog (@"%@", token) ;
+//---
+  NSArray * dictionaryArray = [self buildIndexingDictionaryArray] ;
+//--- Build array of all references of given token
+  NSMutableArray * allReferences = [NSMutableArray new] ;
+  for (NSDictionary * currentIndexDictionary in dictionaryArray) {
+    NSArray * references = [currentIndexDictionary objectForKey:token] ;
+    [allReferences addObjectsFromArray:references] ;
+  }
+//--- Build dictionary for the given token, organized by Kind
+  NSMutableDictionary * kindDictionary = [NSMutableDictionary new] ;
+  for (NSString * descriptor in allReferences) {
+    NSArray * components = [descriptor componentsSeparatedByString:@":"] ;
+    NSString * kind = [components objectAtIndex:0] ;
+    if ([kindDictionary objectForKey:kind] == NULL) {
+      [kindDictionary setObject:[NSMutableArray new] forKey:kind] ;
+    }
+    NSMutableArray * a = [kindDictionary objectForKey:kind] ;
+    [a addObject:descriptor] ;
+  }
+//--- Build Menu
+  if (! hasAtomicSelection) {
+    [menu addItemWithTitle:@"Select all token characters" action:@selector (selectAllTokenCharacters:) keyEquivalent:@""] ;
+    NSMenuItem * item = [menu itemAtIndex:[menu numberOfItems] - 1] ;
+    [item setTarget:inTextDisplayDescriptor.textView] ;
+    [item setRepresentedObject:[NSValue valueWithRange:inSelectedRange]] ;
+    [menu addItem:[NSMenuItem separatorItem]] ;
+  }
+  if ([kindDictionary count] == 0) {
+    NSString * title = [NSString stringWithFormat:@"No index for '%@'", token] ;
+    [menu addItemWithTitle:title action:nil keyEquivalent:@""] ;
+  }else{
+    NSArray * indexingTitles = [mTokenizer indexingTitles] ;
+    NSArray * allKeys = [[kindDictionary allKeys] sortedArrayUsingFunction:numericSort context:NULL] ;
+    BOOL first = YES ;
+    for (NSString * kindObject in allKeys) {
+      if (first) {
+        first = NO ;
+      }else{
+        [menu addItem:[NSMenuItem separatorItem]] ;
+      }
+      const NSUInteger kind = [kindObject integerValue] ;
+      NSArray * references = [kindDictionary objectForKey:kindObject] ;
+      NSString * title = [NSString
+        stringWithFormat:@"%@ (%d item%@)",
+        [indexingTitles objectAtIndex:kind HERE],
+        [references count],
+        (([references count] > 1) ? @"s" : @"")
+      ] ;
+      [menu addItemWithTitle:title action:nil keyEquivalent:@""] ;
+      for (NSString * descriptor in references) {
+        NSArray * components = [descriptor componentsSeparatedByString:@":"] ;
+        NSString * filePath = [components objectAtIndex:4 HERE] ;
+        title = [NSString stringWithFormat:@"%@, line %@", filePath.lastPathComponent, [components objectAtIndex:1]] ;
+        NSMenuItem * item = [menu addItemWithTitle:title action:@selector (indexingMenuAction:) keyEquivalent:@""] ;
+        [item setTarget:inTextDisplayDescriptor.textView] ;
+        [item setRepresentedObject:descriptor] ;
+      }
+    }
+  }
+//---
+  return menu ;
 }
 
 //---------------------------------------------------------------------------*

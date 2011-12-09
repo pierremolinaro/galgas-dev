@@ -34,6 +34,7 @@
 @class PMTabBarView ;
 @class OC_GGS_SourceScrollView ;
 @class OC_GGS_BuildTask ;
+@class OC_GGS_TextDisplayDescriptor ;
 
 //---------------------------------------------------------------------------*
 
@@ -78,6 +79,8 @@
   @private IBOutlet NSTextField * mErrorCountTextField ;
   @private IBOutlet NSTextField * mWarningCountTextField ;
 }
+
+- (OC_GGS_TextDisplayDescriptor *) findOrAddNewTabForFile: (NSString *) inDocumentPath ;
 
 - (IBAction) collapseDetailledMessageAction: (id) inSender ;
 - (IBAction) collapseIssuesAction: (id) inSender ;
