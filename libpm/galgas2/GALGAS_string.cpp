@@ -967,7 +967,7 @@ void GALGAS_string::class_method_deleteFile (GALGAS_string inFilePath,
         ggs_printFileOperationSuccess (C_String ("Deleted '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
       }else{
         C_String message ;
-        message << "cannot perform file delete: " << errorMessage ;
+        message << "cannot perform delete '" << inFilePath.mString << "' file: " << errorMessage ;
         inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
       }
     }

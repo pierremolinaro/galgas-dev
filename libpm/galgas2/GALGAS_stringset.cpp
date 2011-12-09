@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2005, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 2005, ..., 2011 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -641,29 +641,6 @@ GALGAS_stringset & GALGAS_stringset::operator = (const GALGAS_stringset & inSour
 
 //---------------------------------------------------------------------------*
 
-GALGAS_stringset GALGAS_stringset::constructor_emptySet (LOCATION_ARGS) {
-  GALGAS_stringset result ;
-  macroMyNew (result.mSharedRoot, cSharedStringsetRoot (THERE)) ;
-  return result ;
-}
-
-//---------------------------------------------------------------------------*
-
-GALGAS_stringset GALGAS_stringset::constructor_setWithString (const GALGAS_string & inString
-                                                              COMMA_LOCATION_ARGS) {
-  GALGAS_stringset result ;
-  if (inString.isValid ()) {
-    result = constructor_emptySet (THERE) ;
-    result.addAssign_operation (inString COMMA_HERE) ;
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      result.checkStringset (HERE) ;
-    #endif
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------*
-
 void GALGAS_stringset::description (C_String & ioString,
                                     const PMSInt32 /* inIndentation */) const {
   ioString << "<@stringset:" ;
@@ -992,6 +969,54 @@ typeComparisonResult GALGAS_stringset::objectCompare (const GALGAS_stringset & i
     }else{
       result = kOperandEqual ;
     }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Constructors
+#endif
+
+//---------------------------------------------------------------------------*
+
+GALGAS_stringset GALGAS_stringset::constructor_emptySet (LOCATION_ARGS) {
+  GALGAS_stringset result ;
+  macroMyNew (result.mSharedRoot, cSharedStringsetRoot (THERE)) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_stringset GALGAS_stringset::constructor_setWithString (const GALGAS_string & inString
+                                                              COMMA_LOCATION_ARGS) {
+  GALGAS_stringset result ;
+  if (inString.isValid ()) {
+    result = constructor_emptySet (THERE) ;
+    result.addAssign_operation (inString COMMA_HERE) ;
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      result.checkStringset (HERE) ;
+    #endif
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_stringset GALGAS_stringset::constructor_setWithStringList (const GALGAS_stringlist & inStringList
+                                                                  COMMA_LOCATION_ARGS) {
+  GALGAS_stringset result ;
+  if (inStringList.isValid ()) {
+    result = constructor_emptySet (THERE) ;
+    cEnumerator_stringlist enumerator (inStringList, kEnumeration_up) ;
+    while (enumerator.hasCurrentObject ()) {
+      result.addAssign_operation (enumerator.current_mValue (THERE) COMMA_THERE) ;
+      enumerator.gotoNextObject () ;
+    }
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      result.checkStringset (HERE) ;
+    #endif
   }
   return result ;
 }
