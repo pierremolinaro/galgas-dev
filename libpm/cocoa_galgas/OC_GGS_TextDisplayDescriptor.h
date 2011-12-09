@@ -44,6 +44,8 @@
 
 - (NSScrollView *) scrollView ;
 
+- (OC_GGS_Document *) document ;
+
 - (NSMenu *) menuForEntryPopUpButton ;
 
 - (NSUInteger) textSelectionStart ;
@@ -61,6 +63,7 @@
 
 - (BOOL) makeVisibleIssue: (PMIssueDescriptor *) inIssue ;
 
+- (void) setSelectionRangeAndMakeItVisible: (NSRange) inRange ;
 @end
 
 //---------------------------------------------------------------------------*

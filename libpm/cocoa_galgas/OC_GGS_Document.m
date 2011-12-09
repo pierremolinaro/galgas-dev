@@ -865,7 +865,7 @@
   mSourceTextWithSyntaxColoring = [[OC_GGS_TextSyntaxColoring alloc]
     initWithSourceString:source
     tokenizer:tokenizerForExtension (inAbsoluteURL.absoluteString.pathExtension)
-    sourceURL:self.fileURL
+    document:self
     issueArray:mBuildTask.issueArrayController.arrangedObjects
   ] ;
 //---
@@ -945,7 +945,7 @@
   OC_GGS_TextSyntaxColoring * result = nil ;
   NSString * currentSourceDir = mSourceTextWithSyntaxColoring.sourceURL.path.stringByDeletingLastPathComponent ;
   NSString * requestedAbsolutePath = inPath.isAbsolutePath
-    ? inPath
+    ? inPath.copy
     : [currentSourceDir stringByAppendingPathComponent:inPath]
   ;
 //--- Search in opened documents
@@ -973,10 +973,10 @@
 //---------------------------------------------------------------------------*
 
 - (OC_GGS_TextDisplayDescriptor *) findOrAddNewTabForFile: (NSString *) inDocumentPath {
-  NSArray * sourceDisplayDescriptorArray = mSourceDisplayArrayController.arrangedObjects ;
   OC_GGS_TextSyntaxColoring * newTextSyntaxColoring = [self findOrAddDocumentWithPath:inDocumentPath] ;
   OC_GGS_TextDisplayDescriptor * foundSourceText = nil ;
   if (nil != newTextSyntaxColoring) { // Find a text display descriptor
+    NSArray * sourceDisplayDescriptorArray = mSourceDisplayArrayController.arrangedObjects ;
     for (NSUInteger i=0 ; (i<sourceDisplayDescriptorArray.count) && (nil == foundSourceText) ; i++) {
       OC_GGS_TextDisplayDescriptor * std = [sourceDisplayDescriptorArray objectAtIndex:i HERE] ;
       if (std.textSyntaxColoring == newTextSyntaxColoring) {
@@ -990,7 +990,6 @@
       ] ;
       [mSourceDisplayArrayController addObject:foundSourceText] ;
     }
-
     [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:foundSourceText]] ;
   }
   return foundSourceText ;
