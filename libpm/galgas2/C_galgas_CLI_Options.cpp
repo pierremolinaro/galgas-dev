@@ -28,6 +28,7 @@
 //---------------------------------------------------------------------------*
 
 #include "galgas2/C_galgas_CLI_Options.h"
+#include "streams/C_TCPSocketOut.h"
 
 //---------------------------------------------------------------------------*
 
@@ -52,24 +53,6 @@ C_BoolCommandLineOption gOption_galgas_5F_cli_5F_options_noteFileAccess ("galgas
                                          0,
                                          "note-file-access",
                                          "Print a message for every file access") ;
-
-//---------------------------------------------------------------------------*
-
-C_BoolCommandLineOption
-gOption_galgas_5F_cli_5F_options_lexical_5F_analysis_5F_only ("galgas_cli_options",
-                                                              "lexical_analysis_only",
-                                                              '\0',
-                                                              "lexical-analysis-only",
-                                                              "Perform only lexical analysis on input files") ;
-
-//---------------------------------------------------------------------------*
-
-C_BoolCommandLineOption
-gOption_galgas_5F_cli_5F_options_parse_5F_only ("galgas_cli_options",
-                                                "parse_only",
-                                                '\0',
-                                                "parse-only",
-                                                "Parse only input files") ;
 
 //---------------------------------------------------------------------------*
 
@@ -126,5 +109,99 @@ gOption_galgas_5F_cli_5F_options_max_5F_warnings ("galgas_cli_options",
                                                 "max-warnings",
                                                 "Stop after the given number of warnings has been reached",
                                                 100) ;
+
+//---------------------------------------------------------------------------*
+
+C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_mode ("galgas_cli_options",
+                                         "mode",
+                                         0,
+                                         "mode",
+                                         "'lexical', 'syntax' or 'indexing'",
+                                         "") ;
+
+//---------------------------------------------------------------------------*
+
+static PMUInt32 gMode ;
+static PMUInt32 gContextHelpLocation ;
+static C_TCPSocketOut gOutputSocket ;
+static C_String gCurrentlyCompiledBaseFilePath ;
+
+//---------------------------------------------------------------------------*
+
+void setExecutionMode (C_String & outErrorMessage) {
+  const C_String mode = gOption_galgas_5F_cli_5F_options_mode.mValue ;
+  if (mode == "lexical-only") {
+    gMode = 1 ;
+  }else if (mode == "syntax-only") {
+    gMode = 2 ;
+  }else if (mode == "indexing") {
+    gMode = 3 ;
+  }else{
+    TC_UniqueArray <C_String> array ;
+    mode.componentsSeparatedByString (":", array) ;
+    if ((array.count() == 2) && (array (0 COMMA_HERE) == "context-help")) {
+      gMode = 4 ;
+      gContextHelpLocation = array (1 COMMA_HERE).unsignedIntegerValue () ;
+      gOutputSocket.connect (47893, "localhost") ;
+    }else if (mode.length () > 0) {
+      outErrorMessage << "** Fatal Error: invalid '--mode=" << mode << "' parameter; it should be:\n"
+        "  --mode=                default mode: perform compilation;\n"
+        "  --mode=lexical-only    perform only lexical analysis;\n"
+        "  --mode=syntax-only     perform only syntax analysis;\n"
+        "  --mode=context-help:n  perform context help at source location n;\n"
+        "  --mode=indexing        outputs indexing files." ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+bool executionModeIsLexicalAnalysisOnly (void) {
+  return gMode == 1 ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool executionModeIsSyntaxAnalysisOnly (void) {
+  return gMode == 2 ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool executionModeIsIndexing (void) {
+  return gMode == 3 ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool executionModeIsContextHelp (void) {
+  return gMode == 4 ;
+}
+
+//---------------------------------------------------------------------------*
+
+PMUInt32 contextHelpLocation (void) {
+  return gContextHelpLocation ;
+}
+
+//---------------------------------------------------------------------------*
+
+void sendToTCPSocket (const C_String & inString) {
+  gOutputSocket << inString ;
+}
+
+//---------------------------------------------------------------------------*
+
+void setCurrentCompiledFilePath (const C_String & inPath) {
+  gCurrentlyCompiledBaseFilePath = inPath ;
+  // gOutputSocket << "BASE: " << inPath << "\n" ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool isCurrentCompiledFilePath (const C_String & inPath) {
+  // gOutputSocket << "COMPARE: " << inPath << "\n" ;
+  return gCurrentlyCompiledBaseFilePath == inPath ;
+}
 
 //---------------------------------------------------------------------------*

@@ -30,6 +30,7 @@
 #include "galgas2/C_Compiler.h"
 #include "strings/unicode_string_routines.h"
 #include "collections/TC_UniqueArray.h"
+#include "galgas2/C_galgas_CLI_Options.h"
 
 //---------------------------------------------------------------------------*
 
@@ -1088,6 +1089,16 @@ const cCollectionElement * AC_GALGAS_uniqueMap::performSearch (const GALGAS_lstr
   const cCollectionElement * result = NULL ;
   if (isValid () && inKey.isValid ()) {
     cUniqueMapNode * node = mSharedMap->performSearch (inKey, inCompiler, inSearchErrorMessage COMMA_THERE) ;
+  //--- Contextual help
+    if ((NULL != node) && executionModeIsContextHelp () && isCurrentCompiledFilePath (inKey.mAttribute_location.startLocation ().sourceFilePath ())) {
+      const PMUInt32 startLocationInSource = inKey.mAttribute_location.startLocation ().index () ;
+      const PMUInt32 endLocationInSource = inKey.mAttribute_location.endLocation ().index () ;
+      if ((contextHelpLocation () >= startLocationInSource) && (contextHelpLocation () <= endLocationInSource)) {
+        C_String s ;
+        node->mAttributes.description (s, 0) ;
+        sendToTCPSocket (s) ;
+      }
+    }
     if (NULL != node) {
       result = node->mAttributes.ptr () ;
     //--- Perform transition
@@ -1101,7 +1112,7 @@ const cCollectionElement * AC_GALGAS_uniqueMap::performSearch (const GALGAS_lstr
         if (variableName == inKey.reader_string (HERE).stringValue ()) {
           printf ("[traceVariableState '%s' at line %d : %s |- %s -> %s]\n",
                   variableName.cString (HERE),
-                  inKey.reader_location (HERE).startLocation ().mLineNumber,
+                  inKey.reader_location (HERE).startLocation ().lineNumber (),
                   inAutomatonStateNames [node->mCurrentState],
                   inAutomatonActionNames [inActionIndex],
                   inAutomatonStateNames [transition.mTargetStateIndex]) ;

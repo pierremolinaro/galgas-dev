@@ -425,4 +425,94 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
+#pragma mark Contextual Help
+
+//---------------------------------------------------------------------------*
+
+- (void) performContextualHelp: (NSMenuItem *) inSender {
+  NSString * compilerToolPath = [gCocoaGalgasPreferencesController compilerToolPath] ;
+  if (! [compilerToolPath isEqualToString:@"?"]) {
+    mTask = [NSTask new] ;
+  //---
+    [mTask setLaunchPath:compilerToolPath] ;
+  //---
+    NSMutableArray * arguments = [NSMutableArray new] ;
+    NSArray * commandLineArray = [gCocoaGalgasPreferencesController commandLineItemArray] ;
+    [arguments addObjectsFromArray:[commandLineArray subarrayWithRange:NSMakeRange (1, commandLineArray.count-1)]] ;
+    [arguments addObject:mTextSyntaxColoring.sourceURL.path] ;
+    NSRange r = [[inSender representedObject] rangeValue] ;
+    [arguments addObject:[NSString stringWithFormat:@"--mode=context-help:%lu", r.location]] ;
+    [mTask setArguments:arguments] ;
+    // NSLog (@"'%@' %@", [mTask launchPath], arguments) ;
+  //--- Set standard output notification
+    NSPipe * taskOutput = [NSPipe pipe] ;
+    [mTask setStandardOutput:taskOutput] ;
+    [mTask setStandardError:taskOutput] ;
+  //--- http://www.cocoadev.com/index.pl?NSSocketPort
+    mReceiveSocket = [[NSSocketPort alloc] initWithTCPPort:47893] ;
+    // NSLog (@"mReceiveSocket %p %d", mReceiveSocket, mReceiveSocket.socket) ;
+    mReceiveSocketHandle = [[NSFileHandle alloc]
+      initWithFileDescriptor:mReceiveSocket.socket
+      closeOnDealloc: YES
+    ];
+    // NSLog (@"mReceiveSocketHandle %p", mReceiveSocketHandle) ;
+    [[NSNotificationCenter defaultCenter]
+      addObserver:self
+      selector:@selector (newConnection:) 
+      name:NSFileHandleConnectionAcceptedNotification
+      object:mReceiveSocketHandle
+    ] ;
+    [mReceiveSocketHandle acceptConnectionInBackgroundAndNotify] ;
+  //--- Start task
+    mBufferedInputData = [NSMutableData new] ;
+    [mTask launch] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) newConnection:(NSNotification *) inNotification {
+  // NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  mRemoteSocketHandle = [inNotification.userInfo
+     objectForKey:NSFileHandleNotificationFileHandleItem
+  ] ;
+  // NSLog (@"mRemoteSocketHandle %p", mRemoteSocketHandle) ;
+  [[NSNotificationCenter defaultCenter]
+    addObserver:self
+    selector:@selector (getDataFromConnection:) 
+    name:NSFileHandleReadCompletionNotification
+    object:mRemoteSocketHandle
+  ] ;
+  [mRemoteSocketHandle readInBackgroundAndNotify] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) getDataFromConnection: (NSNotification *) inNotification {
+  NSData * data = [inNotification.userInfo objectForKey:NSFileHandleNotificationDataItem];
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s (%lu bytes)", __PRETTY_FUNCTION__, (unsigned long) data.length) ;
+  #endif
+  if (data.length > 0) {
+    [mBufferedInputData appendData:data] ;
+    [inNotification.object readInBackgroundAndNotify] ;
+  }else{
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter] ;
+    [center removeObserver:self name:NSFileHandleConnectionAcceptedNotification object:mReceiveSocketHandle] ;
+    [center removeObserver:self name:NSFileHandleReadCompletionNotification object:mRemoteSocketHandle] ;
+    mReceiveSocket = nil ;
+    mReceiveSocketHandle = nil ;
+    mRemoteSocketHandle = nil ;
+    [mTask terminate] ;
+    [mTask waitUntilExit] ;
+    mTask = nil ;
+  //---
+    NSString * message = [[NSString alloc] initWithData:mBufferedInputData encoding:NSUTF8StringEncoding] ;
+    mBufferedInputData = nil ;
+    [mDocument setContextualHelpMessage:message] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
 @end

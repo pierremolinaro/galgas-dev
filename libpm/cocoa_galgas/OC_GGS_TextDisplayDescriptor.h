@@ -19,7 +19,7 @@
 
 //---------------------------------------------------------------------------*
 
-@interface OC_GGS_TextDisplayDescriptor : NSObject <NSTextViewDelegate> {
+@interface OC_GGS_TextDisplayDescriptor : NSObject <NSTextViewDelegate, NSPortDelegate> {
 
   @private OC_GGS_TextSyntaxColoring * mTextSyntaxColoring ;
   @private OC_GGS_TextView * mTextView ;
@@ -28,7 +28,11 @@
   @private NSUInteger mTextSelectionStart ;
   @private OC_GGS_Document * mDocument ;
   @private NSArray * mIssueArray ;
-
+  @private NSMutableData * mBufferedInputData ;
+  @private NSTask * mTask ;
+  @private NSSocketPort * mReceiveSocket ;
+  @private NSFileHandle * mReceiveSocketHandle ;
+  @private NSFileHandle * mRemoteSocketHandle ;
 }
 
 - (OC_GGS_TextDisplayDescriptor *) initWithDelegateForSyntaxColoring: (OC_GGS_TextSyntaxColoring *) inDelegate

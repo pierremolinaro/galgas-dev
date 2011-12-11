@@ -182,8 +182,8 @@ errorOrWarningLocationString (const C_LocationInSource & inErrorLocation,
     macroValidSharedObject (inSourceTextPtr, const C_SourceTextInString) ;
     const C_String textLine = inSourceTextPtr->getLineForLocation (inErrorLocation) ;
     result << inSourceTextPtr->sourceFilePath ()
-           << ":" << cStringWithSigned (inErrorLocation.mLineNumber)
-           << ":" << cStringWithSigned (inErrorLocation.mColumnNumber) << ": " ;
+           << ":" << cStringWithSigned (inErrorLocation.lineNumber ())
+           << ":" << cStringWithSigned (inErrorLocation.columnNumber ()) << ": " ;
   }
   return result ;
 }
@@ -201,7 +201,7 @@ void constructErrorOrWarningLocationMessage (C_String & ioMessage,
     if (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue) {
       ioMessage << "\n" << textLine << "\n" ;
     //--- Point out column error
-      for (PMSInt32 i=1 ; i<inErrorLocation.mColumnNumber ; i++) {
+      for (PMSInt32 i=1 ; i<inErrorLocation.columnNumber () ; i++) {
         ioMessage << "-" ;
       }
       ioMessage << "^\n" ;
@@ -538,8 +538,8 @@ void ggs_printError (const C_SourceTextInString * inSourceTextPtr,
     if (inSourceTextPtr != NULL) {
       macroValidSharedObject (inSourceTextPtr, const C_SourceTextInString) ;
       co << "  file=\"" << inSourceTextPtr->sourceFilePath () << "\"\n"
-            "  line=\"" << cStringWithUnsigned (inErrorLocation.mLineNumber) << "\"\n"
-            "  column=\"" << cStringWithUnsigned (inErrorLocation.mColumnNumber) << "\"\n"
+            "  line=\"" << cStringWithUnsigned (inErrorLocation.lineNumber ()) << "\"\n"
+            "  column=\"" << cStringWithUnsigned (inErrorLocation.columnNumber ()) << "\"\n"
     //     << "  endColumn=" << cStringWithUnsigned (inSourceEndColumn) << "\n"
       ;
     }
@@ -595,8 +595,8 @@ void ggs_printWarning (const C_SourceTextInString * inSourceTextPtr,
     if (inSourceTextPtr != NULL) {
       macroValidSharedObject (inSourceTextPtr, const C_SourceTextInString) ;
       co << "  file=\"" << inSourceTextPtr->sourceFilePath () << "\"\n"
-            "  line=\"" << cStringWithUnsigned (inWarningLocation.mLineNumber) << "\"\n"
-            "  column=\"" << cStringWithUnsigned (inWarningLocation.mColumnNumber) << "\"\n"
+            "  line=\"" << cStringWithUnsigned (inWarningLocation.lineNumber ()) << "\"\n"
+            "  column=\"" << cStringWithUnsigned (inWarningLocation.columnNumber ()) << "\"\n"
     //     << "  endColumn=" << cStringWithUnsigned (inSourceEndColumn) << "\n"
       ;
     }

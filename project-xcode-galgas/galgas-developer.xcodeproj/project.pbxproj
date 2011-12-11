@@ -373,6 +373,8 @@
 		CFF8BF01126614D9001B7E61 /* cPtr_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8BEFC126614D9001B7E61 /* cPtr_object.cpp */; };
 		CFF991AA110B6CA40055EE27 /* C_SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* C_SharedObject.cpp */; };
 		CFF991AB110B6CA40055EE27 /* C_SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* C_SharedObject.cpp */; };
+		CFF9DEDC1494D60A00BCEEB4 /* C_TCPSocketOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9DEDA1494D60A00BCEEB4 /* C_TCPSocketOut.cpp */; };
+		CFF9DEDD1494D60A00BCEEB4 /* C_TCPSocketOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF9DEDA1494D60A00BCEEB4 /* C_TCPSocketOut.cpp */; };
 		CFFA4049118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA4045118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp */; };
 		CFFA404A118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA4045118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp */; };
 		CFFA527E0C10268B00B81CF3 /* syntaxMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFFA52540C10268B00B81CF3 /* syntaxMetamodel.cpp */; };
@@ -941,6 +943,8 @@
 		CFF98D7C058CCDE200176BCE /* galgas.1 */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = text.man; path = galgas.1; sourceTree = "<group>"; };
 		CFF991A8110B6CA40055EE27 /* C_SharedObject.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_SharedObject.cpp; sourceTree = "<group>"; };
 		CFF991A9110B6CA40055EE27 /* C_SharedObject.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_SharedObject.h; sourceTree = "<group>"; };
+		CFF9DEDA1494D60A00BCEEB4 /* C_TCPSocketOut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_TCPSocketOut.cpp; sourceTree = "<group>"; };
+		CFF9DEDB1494D60A00BCEEB4 /* C_TCPSocketOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_TCPSocketOut.h; sourceTree = "<group>"; };
 		CFF9E2911310429D0012D41A /* C_ColoredConsole.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_ColoredConsole.h; sourceTree = "<group>"; };
 		CFFA4045118CAEC300E56DE2 /* semanticInstructionsAnalysis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticInstructionsAnalysis.cpp; sourceTree = "<group>"; };
 		CFFA4046118CAEC300E56DE2 /* semanticInstructionsAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticInstructionsAnalysis.h; sourceTree = "<group>"; };
@@ -1786,12 +1790,12 @@
 				CFD94AB31290635400864538 /* follow_by_empty_computation.h */,
 				CFD94AB41290635400864538 /* FOLLOW_computations.cpp */,
 				CFD94AB51290635400864538 /* FOLLOW_computations.h */,
+				CFD94ABA1290635400864538 /* printOriginalGrammar.cpp */,
+				CFD94ABB1290635400864538 /* printOriginalGrammar.h */,
 				CFD94AB61290635400864538 /* LL1_computations.cpp */,
 				CFD94AB71290635400864538 /* LL1_computations.h */,
 				CFD94AB81290635400864538 /* LR1_computations.cpp */,
 				CFD94AB91290635400864538 /* LR1_computations.h */,
-				CFD94ABA1290635400864538 /* printOriginalGrammar.cpp */,
-				CFD94ABB1290635400864538 /* printOriginalGrammar.h */,
 				CFD94ABC1290635400864538 /* SLR_computations.cpp */,
 				CFD94ABD1290635400864538 /* SLR_computations.h */,
 				CFD94ABE1290635400864538 /* useful_symbols_computations.cpp */,
@@ -1901,6 +1905,8 @@
 				CF825A2F08536B150077AEAF /* C_ConsoleOut.h */,
 				CF70273E137C53D600FA7C3E /* C_ColoredConsole.cpp */,
 				CFF9E2911310429D0012D41A /* C_ColoredConsole.h */,
+				CFF9DEDA1494D60A00BCEEB4 /* C_TCPSocketOut.cpp */,
+				CFF9DEDB1494D60A00BCEEB4 /* C_TCPSocketOut.h */,
 			);
 			path = streams;
 			sourceTree = "<group>";
@@ -2229,6 +2235,7 @@
 				CF5610A5137B32C30007E1BC /* typeComparisonResult.cpp in Sources */,
 				CFC80673137C3FB80028907B /* libpmHandling.cpp in Sources */,
 				CF702741137C53D600FA7C3E /* C_ColoredConsole.cpp in Sources */,
+				CFF9DEDC1494D60A00BCEEB4 /* C_TCPSocketOut.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2408,6 +2415,7 @@
 				CF5610A6137B32C30007E1BC /* typeComparisonResult.cpp in Sources */,
 				CFC80674137C3FB80028907B /* libpmHandling.cpp in Sources */,
 				CF702742137C53D600FA7C3E /* C_ColoredConsole.cpp in Sources */,
+				CFF9DEDD1494D60A00BCEEB4 /* C_TCPSocketOut.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2518,9 +2526,11 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
+				CLANG_CXX_LANGUAGE_STANDARD = "c++98";
 				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO;
+				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
+				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				DEAD_CODE_STRIPPING = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_ENABLE_OBJC_GC = required;
@@ -2528,6 +2538,7 @@
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_THREADSAFE_STATICS = NO;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
+				GCC_TREAT_INCOMPATIBLE_POINTER_TYPE_WARNINGS_AS_ERRORS = YES;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -2544,7 +2555,9 @@
 				GCC_WARN_PEDANTIC = NO;
 				GCC_WARN_SHADOW = NO;
 				GCC_WARN_SIGN_COMPARE = YES;
+				GCC_WARN_STRICT_SELECTOR_MATCH = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNKNOWN_PRAGMAS = YES;
 				GCC_WARN_UNUSED_FUNCTION = YES;
