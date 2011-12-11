@@ -870,7 +870,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   //--- Build argument array
     NSMutableArray * arguments = [NSMutableArray new] ;
     [arguments addObject:inSourceFileFullPath] ;
-    [arguments addObject:@"--perform-indexing"] ;
+    [arguments addObject:@"--mode=indexing"] ;
   //--- Create task
     NSTask * task = [[NSTask alloc] init] ;
     [task setLaunchPath:compilerToolPath] ;
@@ -886,61 +886,64 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 //---------------------------------------------------------------------------*
 
 - (NSArray *) buildIndexingDictionaryArray {
+  NSMutableArray * result = nil ;
 //--- Source directory
   NSString * sourceDirectory = mSourceURL.path.stringByDeletingLastPathComponent ;
 //--- index directory
   NSString * indexingDirectory = [mTokenizer indexingDirectory] ;
-  if (([indexingDirectory length] == 0) || ([indexingDirectory characterAtIndex:0] != '/')) {
-    NSMutableString * s = [NSMutableString new] ;
-    [s appendString:sourceDirectory] ;
-    [s appendString:@"/"] ;
-    [s appendString:indexingDirectory] ;
-    indexingDirectory = s ;
-    // NSLog (@"indexingDirectory '%@'", indexingDirectory) ;
-  }
-//--- Handled extensions
-  NSSet * handledExtensions = [self handledExtensions] ;
-//--- All files in source directory
-  NSFileManager * fm = [[NSFileManager alloc] init] ;
-  NSArray * files = [fm contentsOfDirectoryAtPath:sourceDirectory error:NULL] ;
-  NSMutableArray * availableDictionaryPathArray = [NSMutableArray new] ;
-  NSOperationQueue * opq = [NSOperationQueue new] ;
-  for (NSString * filePath in files) {
-    NSString * fullFilePath = [NSString stringWithFormat:@"%@/%@", sourceDirectory, filePath] ;
-    if ([handledExtensions containsObject:[filePath pathExtension]]) {
-    //--- Index file path
-      NSString * indexFileFullPath = [NSString stringWithFormat:@"%@/%@.plist", indexingDirectory, [filePath lastPathComponent]] ;
-    //--- Parse source file ?
-      if (! [fm fileExistsAtPath:indexFileFullPath]) { // Parse source file
-        NSInvocationOperation * op = [[NSInvocationOperation alloc] 
-          initWithTarget:self
-          selector:@selector (parseSourceFileForBuildingIndexFile:)
-          object:fullFilePath
-        ] ;
-        [opq addOperation:op] ;
-        [availableDictionaryPathArray addObject:indexFileFullPath] ;
-      }else if ([self sourceFile:fullFilePath newerThanFile:indexFileFullPath]) {
-        [fm removeItemAtPath:indexFileFullPath error:NULL] ;
-        NSInvocationOperation * op = [[NSInvocationOperation alloc] 
-          initWithTarget:self
-          selector:@selector (parseSourceFileForBuildingIndexFile:)
-          object:fullFilePath
-        ] ;
-        [opq addOperation:op] ;
-        [availableDictionaryPathArray addObject:indexFileFullPath] ;
-      }else{
-        [availableDictionaryPathArray addObject:indexFileFullPath] ;
+  if (indexingDirectory.length > 0) {
+    if ([indexingDirectory characterAtIndex:0] != '/') {
+      NSMutableString * s = [NSMutableString new] ;
+      [s appendString:sourceDirectory] ;
+      [s appendString:@"/"] ;
+      [s appendString:indexingDirectory] ;
+      indexingDirectory = s ;
+      // NSLog (@"indexingDirectory '%@'", indexingDirectory) ;
+    }
+  //--- Handled extensions
+    NSSet * handledExtensions = [self handledExtensions] ;
+  //--- All files in source directory
+    NSFileManager * fm = [[NSFileManager alloc] init] ;
+    NSArray * files = [fm contentsOfDirectoryAtPath:sourceDirectory error:NULL] ;
+    NSMutableArray * availableDictionaryPathArray = [NSMutableArray new] ;
+    NSOperationQueue * opq = [NSOperationQueue new] ;
+    for (NSString * filePath in files) {
+      NSString * fullFilePath = [NSString stringWithFormat:@"%@/%@", sourceDirectory, filePath] ;
+      if ([handledExtensions containsObject:[filePath pathExtension]]) {
+      //--- Index file path
+        NSString * indexFileFullPath = [NSString stringWithFormat:@"%@/%@.plist", indexingDirectory, [filePath lastPathComponent]] ;
+      //--- Parse source file ?
+        if (! [fm fileExistsAtPath:indexFileFullPath]) { // Parse source file
+          NSInvocationOperation * op = [[NSInvocationOperation alloc] 
+            initWithTarget:self
+            selector:@selector (parseSourceFileForBuildingIndexFile:)
+            object:fullFilePath
+          ] ;
+          [opq addOperation:op] ;
+          [availableDictionaryPathArray addObject:indexFileFullPath] ;
+        }else if ([self sourceFile:fullFilePath newerThanFile:indexFileFullPath]) {
+          [fm removeItemAtPath:indexFileFullPath error:NULL] ;
+          NSInvocationOperation * op = [[NSInvocationOperation alloc] 
+            initWithTarget:self
+            selector:@selector (parseSourceFileForBuildingIndexFile:)
+            object:fullFilePath
+          ] ;
+          [opq addOperation:op] ;
+          [availableDictionaryPathArray addObject:indexFileFullPath] ;
+        }else{
+          [availableDictionaryPathArray addObject:indexFileFullPath] ;
+        }
       }
     }
-  }
-//--- Wait operations are completed
-  [opq waitUntilAllOperationsAreFinished] ;
-//--- Parse available dictionaries
-  NSMutableArray * result = [NSMutableArray new] ;
-  for (NSString * fullPath in availableDictionaryPathArray) {
-    NSDictionary * dict = [NSDictionary dictionaryWithContentsOfFile:fullPath] ;
-    if (nil != dict) {
-      [result addObject:dict] ;
+  //--- Wait operations are completed
+    [opq waitUntilAllOperationsAreFinished] ;
+  //--- Parse available dictionaries
+    result = [NSMutableArray new] ;
+    for (NSString * fullPath in availableDictionaryPathArray) {
+      NSDictionary * dict = [NSDictionary dictionaryWithContentsOfFile:fullPath] ;
+      if (nil != dict) {
+        [result addObject:dict] ;
+      }
     }
   }
   return result ;
@@ -1003,12 +1006,18 @@ static NSInteger numericSort (NSString * inOperand1,
   }
 //--- Build Menu
   if (! hasAtomicSelection) {
-    [menu addItemWithTitle:@"Select all token characters" action:@selector (selectAllTokenCharacters:) keyEquivalent:@""] ;
-    NSMenuItem * item = [menu itemAtIndex:[menu numberOfItems] - 1] ;
+    NSMenuItem * item = [menu addItemWithTitle:@"Select all token characters" action:@selector (selectAllTokenCharacters:) keyEquivalent:@""] ;
     [item setTarget:inTextDisplayDescriptor.textView] ;
     [item setRepresentedObject:[NSValue valueWithRange:inSelectedRange]] ;
-    [menu addItem:[NSMenuItem separatorItem]] ;
   }
+//--- Contextual Help
+  {
+    NSMenuItem * item = [menu addItemWithTitle:@"Contextual Help" action:@selector (performContextualHelp:) keyEquivalent:@""] ;
+    [item setTarget:inTextDisplayDescriptor] ;
+    [item setRepresentedObject:[NSValue valueWithRange:inSelectedRange]] ;
+  }
+//---
+  [menu addItem:[NSMenuItem separatorItem]] ;
   if ([kindDictionary count] == 0) {
     NSString * title = [NSString stringWithFormat:@"No index for '%@'", token] ;
     [menu addItemWithTitle:title action:nil keyEquivalent:@""] ;

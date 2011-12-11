@@ -78,12 +78,16 @@
   @private IBOutlet NSButton * mStopBuildButton ;
   @private IBOutlet NSTextField * mErrorCountTextField ;
   @private IBOutlet NSTextField * mWarningCountTextField ;
+
+//--- Contextual help message
+  @private IBOutlet NSTextView * mContextualHelpTextView ;
 }
 
 - (OC_GGS_TextDisplayDescriptor *) findOrAddNewTabForFile: (NSString *) inDocumentPath ;
 
 - (IBAction) collapseDetailledMessageAction: (id) inSender ;
 - (IBAction) collapseIssuesAction: (id) inSender ;
+- (IBAction) collapseContextualHelpAction: (id) inSender ;
 
 - (IBAction) actionGotoLine: (id) inSender ;
 
@@ -109,4 +113,7 @@
 - (void) triggerLiveCompilation ;
 
 - (BOOL) buildTaskIsRunning ;
+
+- (void) setContextualHelpMessage: (NSString *) inMessage ;
+
 @end

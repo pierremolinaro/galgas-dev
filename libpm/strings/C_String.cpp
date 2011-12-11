@@ -995,6 +995,22 @@ reversedString (void) const {
 
 //---------------------------------------------------------------------------*
 
+PMUInt32 C_String::unsignedIntegerValue (void) const {
+  PMUInt32 result = 0 ;
+  bool ok = true ;
+  for (PMSInt32 i=0 ; (i < length ()) && ok ; i++) {
+    const PMUInt32 c = UNICODE_VALUE (this->operator () (i COMMA_HERE)) ;
+    ok = (c >= '0') && (c <= '9') ;
+    if (ok) {
+      result *= 10 ;
+      result += c - '0' ;
+    }
+  }  
+  return result ;  
+}
+
+//---------------------------------------------------------------------------*
+
 PMUInt32 C_String::currentColumn (void) const {
   PMUInt32 result = 0 ;
   bool found = false ;

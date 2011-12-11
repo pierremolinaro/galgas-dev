@@ -197,8 +197,8 @@ buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
     }
     cProduction p ;
     p.mSourceFileName = inSyntaxComponentName ;
-    p.aLigneDefinition = mAttribute_mStartLocation.startLocation ().mLineNumber ;
-    p.aColonneDefinition = mAttribute_mStartLocation.startLocation ().mColumnNumber ;
+    p.aLigneDefinition = mAttribute_mStartLocation.startLocation ().lineNumber () ;
+    p.aColonneDefinition = mAttribute_mStartLocation.startLocation ().columnNumber () ;
     const PMSInt32 idx = ((PMSInt32) mAttribute_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
     p.aNumeroNonTerminalGauche = idx ;
     swap (p.aDerivation, derivation) ;
@@ -247,8 +247,8 @@ buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
 //--- Insert empty production <T>=.
   { cProduction p ;
     p.mSourceFileName = inSyntaxComponentName ;
-    p.aLigneDefinition = mAttribute_mStartLocation.startLocation ().mLineNumber ;
-    p.aColonneDefinition = mAttribute_mStartLocation.startLocation ().mColumnNumber ;
+    p.aLigneDefinition = mAttribute_mStartLocation.startLocation ().lineNumber () ;
+    p.aColonneDefinition = mAttribute_mStartLocation.startLocation ().columnNumber () ;
     const PMSInt32 idx = ((PMSInt32) mAttribute_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
     p.aNumeroNonTerminalGauche = idx ;
     ioProductions.insertByExchange (p) ;
@@ -282,8 +282,8 @@ buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
     derivation.addObject ((PMSInt16) idx) ;
     cProduction p ;
     p.mSourceFileName = inSyntaxComponentName ;
-    p.aLigneDefinition = mAttribute_mStartLocation.startLocation ().mLineNumber ;
-    p.aColonneDefinition = mAttribute_mStartLocation.startLocation ().mColumnNumber ;
+    p.aLigneDefinition = mAttribute_mStartLocation.startLocation ().lineNumber () ;
+    p.aColonneDefinition = mAttribute_mStartLocation.startLocation ().columnNumber () ;
     p.aNumeroNonTerminalGauche = idx ;
     swap (p.aDerivation, derivation) ;
     ioProductions.insertByExchange (p) ;
@@ -370,8 +370,8 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
       }
       cProduction p ;
       p.mSourceFileName = currentComponent.current_mSyntaxComponentName (HERE).mAttribute_string.stringValue () ;
-      p.aLigneDefinition = currentRule.current_mLeftNonterminalSymbol (HERE).mAttribute_location.startLocation ().mLineNumber ;
-      p.aColonneDefinition = currentRule.current_mLeftNonterminalSymbol (HERE).mAttribute_location.startLocation ().mColumnNumber ;
+      p.aLigneDefinition = currentRule.current_mLeftNonterminalSymbol (HERE).mAttribute_location.startLocation ().lineNumber () ;
+      p.aColonneDefinition = currentRule.current_mLeftNonterminalSymbol (HERE).mAttribute_location.startLocation ().columnNumber () ;
       p.mProductionIndex = currentRule.current_mProductionIndex (HERE).uintValue () ;
       p.aNumeroNonTerminalGauche = terminalSymbolsCount
                                  + (PMSInt32) currentRule.current_mLeftNonterminalSymbolIndex (HERE).uintValue () ;

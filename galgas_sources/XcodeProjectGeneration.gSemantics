@@ -501,6 +501,7 @@ local routine build_LIBPM_STREAMS_group
   append_cpp_h_files !?fileList !"AC_OutputStream" ;
   append_cpp_h_files !?fileList !"C_ConsoleOut" ;
   append_cpp_h_files !?fileList !"C_ColoredConsole" ;
+  append_cpp_h_files !?fileList !"C_TCPSocketOut" ;
 #---
   enter_files_in_group
    !?ioXcodeProjectDescription
@@ -520,6 +521,7 @@ local routine build_LIBPM_STREAMS_files_for_sources_build_phase
   fileList += !"C_ColoredConsole.cpp" ;
   fileList += !"C_ErrorOut.cpp" ;
   fileList += !"C_ConsoleOut.cpp" ;
+  fileList += !"C_TCPSocketOut.cpp" ;
 #---
   enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription

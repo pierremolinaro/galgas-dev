@@ -321,6 +321,12 @@
 }
 
 //---------------------------------------------------------------------------*
+
+- (void) collapseContextualHelpAction: (id) inSender {
+  [mIssueSplitView setPosition:mIssueSplitView.bounds.size.width ofDividerAtIndex:1] ;
+}
+
+//---------------------------------------------------------------------------*
 //                                                                           *
 //        S H E E T    D I D    E N D    ( G O T O    L I N E )              *
 //                                                                           *
@@ -1219,6 +1225,25 @@
 //---
   NSString * selectedString = [sourceString substringWithRange:selection] ;
   [self findOrAddNewTabForFile:selectedString] ;
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Contextual Help Message
+
+//---------------------------------------------------------------------------*
+
+- (void) setContextualHelpMessage: (NSString *) inMessage {
+  NSTextStorage * textStorage = mContextualHelpTextView.textStorage ;
+  [textStorage beginEditing] ;
+  [textStorage replaceCharactersInRange:NSMakeRange (0, [textStorage length]) withString:inMessage] ;
+  [mContextualHelpTextView setFont:[NSFont fontWithName:@"Courier" size:13.0]] ;
+  [textStorage endEditing] ;
+//---
+  [mIssueSplitView
+    setPosition:mIssueSplitView.bounds.size.width - 200.0
+    ofDividerAtIndex:1
+  ] ;
 }
 
 //---------------------------------------------------------------------------*

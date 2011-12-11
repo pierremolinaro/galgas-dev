@@ -154,7 +154,7 @@ void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
                  << "'" ;
       inHTMLfile.outputRawData ("<br>") ;
       inHTMLfile << "line "
-                 << cStringWithSigned (currentRule.current_mLeftNonterminalSymbol (HERE).mAttribute_location.startLocation ().mLineNumber) ;
+                 << cStringWithSigned (currentRule.current_mLeftNonterminalSymbol (HERE).mAttribute_location.startLocation ().lineNumber ()) ;
       inHTMLfile.outputRawData ("</td><td><code>") ;
       printInstructionsListForGrammar (currentRule.current_mInstructionList (HERE),
                                        inHTMLfile) ;

@@ -78,15 +78,10 @@ mTemplateString (),
 mTemplateStringLocation (),
 mSourceTextPtr (NULL),
 mCurrentLocation (),
-mLexicalAnalysisOnlyFlag (gOption_galgas_5F_cli_5F_options_lexical_5F_analysis_5F_only.mValue),
-mParseOnlyFlag (gOption_galgas_5F_cli_5F_options_parse_5F_only.mValue),
 mCheckedVariableList (),
 mLogFileRead (gOption_galgas_5F_cli_5F_options_log_5F_file_5F_read.mValue),
 mPerformGeneration (! gOption_galgas_5F_cli_5F_options_do_5F_not_5F_generate_5F_any_5F_file.mValue) {
   macroAssignSharedObject (mCallerCompiler, inCallerCompiler) ;
-  mCurrentLocation.mIndex = 0 ;
-  mCurrentLocation.mLineNumber = 1 ;
-  mCurrentLocation.mColumnNumber = 1 ;
 }
 
 //---------------------------------------------------------------------------*
@@ -150,13 +145,10 @@ void C_Compiler::resetTemplateString (void) {
 
 //---------------------------------------------------------------------------*
 
-void C_Compiler::
-resetAndLoadSourceFromText (C_SourceTextInString * & ioSourceTextPtr) {
+void C_Compiler::resetAndLoadSourceFromText (C_SourceTextInString * & ioSourceTextPtr) {
   macroAssignSharedObject (mSourceTextPtr, ioSourceTextPtr) ;
   macroValidSharedObject (mSourceTextPtr, C_SourceTextInString) ;
-  mCurrentLocation.mIndex = 0 ;
-  mCurrentLocation.mLineNumber = 1 ;
-  mCurrentLocation.mColumnNumber = 1 ;
+  mCurrentLocation.resetWithSourceText (mSourceTextPtr) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -652,7 +644,7 @@ generateFileFromPathes (const C_String & inStartPath,
         incrementPreservedLileCount (UNICODE_VALUE (secondUserPart (i COMMA_HERE)) == '\n') ;
       }
     }else if (mPerformGeneration) {
-      bool ok = false ;
+      ok = false ;
       C_TextFileWrite f (fullPathName COMMA_CODE_WARRIOR_CREATOR, ok) ;
       if (! ok) {
         C_String message ;

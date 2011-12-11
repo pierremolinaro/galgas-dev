@@ -107,28 +107,22 @@ class C_Compiler : public C_SharedObject {
 //--- Syntax error message for 'end of source':
   protected : static const utf32 kEndOfSourceLexicalErrorMessage [] ;
 
-//--- Lexical analysis only only ?
-  public : const bool mLexicalAnalysisOnlyFlag ;
-
-//--- Parse only ?
-  public : const bool mParseOnlyFlag ;
-
+//--- Location in source
   public : inline C_LocationInSource currentLocationInSource (void) const {
     return mCurrentLocation ;
   }
 
   public : inline PMSInt32 location (void) const {
-    return mCurrentLocation.mIndex ;
+    return mCurrentLocation.index () ;
   }
 
   public : inline PMSInt32 lineNumber (void) const {
-    return mCurrentLocation.mLineNumber ;
+    return mCurrentLocation.lineNumber () ;
   }
 
   public : inline PMSInt32 columnNumber (void) const {
-    return mCurrentLocation.mColumnNumber ;
+    return mCurrentLocation.columnNumber () ;
   }
-
 
 //--- Init scanner from source file (for Cocoa GALGAS)
   public : void resetAndLoadSourceFromText (C_SourceTextInString * & ioSourceTextPtr) ; 

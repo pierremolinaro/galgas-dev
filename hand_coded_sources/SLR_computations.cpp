@@ -654,7 +654,8 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
 //--- Generate header file inclusion -----------------------------------------
   C_String generatedZone2 ; generatedZone2.setCapacity (200000) ;
   generatedZone2.appendCppHyphenLineComment () ;
-  generatedZone2 << "#include \"utilities/MF_MemoryControl.h\"\n\n" ;
+  generatedZone2 << "#include \"utilities/MF_MemoryControl.h\"\n" ;
+  generatedZone2 << "#include \"galgas2/C_galgas_CLI_Options.h\"\n\n" ;
   generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n\n" ;
 
@@ -1006,7 +1007,7 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
                           "          const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
                           "                                                           gActionTableIndex, gSuccessorTable,\n"
                           "                                                           gProductionsTable) ;\n"
-                          "          if (ok && ! scanner->mParseOnlyFlag) {\n"
+                          "          if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"
                           "            cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
                           "            " ;
         generatedZone3 << "grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
@@ -1100,7 +1101,7 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
         generatedZone3 << "    const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
                           "                                                     gActionTableIndex, gSuccessorTable,\n"
                           "                                                     gProductionsTable) ;\n"
-                          "    if (ok && ! scanner->mParseOnlyFlag) {\n"
+                          "    if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"
                           "      cGrammar_" << inTargetFileName.identifierRepresentation () << " _grammar ;\n"
                           "      " ;
         generatedZone3 << "_grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()

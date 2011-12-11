@@ -277,6 +277,9 @@ class C_String : public AC_OutputStream {
 //--- Return reversed string
   public : C_String reversedString (void) const ;
 
+//--- Return unsigned integer value
+  public : PMUInt32 unsignedIntegerValue (void) const ;
+
 //--- Get current column index (starting from 0)
   public : static C_String stringWithRepeatedCharacter (const utf32 inRepeatedCharacter, const PMUInt32 inCount) ;
 
