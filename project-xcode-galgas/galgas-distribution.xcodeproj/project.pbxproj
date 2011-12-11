@@ -199,7 +199,6 @@
 		CF7FD6A20FF13C1C001EA1B7 /* unicode_character_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7FD69D0FF13C1C001EA1B7 /* unicode_character_cpp.cpp */; };
 		CF7FD6AD0FF13CFB001EA1B7 /* unicode_character_m.m in Sources */ = {isa = PBXBuildFile; fileRef = CF7FD6AC0FF13CFB001EA1B7 /* unicode_character_m.m */; };
 		CF82597F08536A130077AEAF /* I_Stop.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CF82596F08536A130077AEAF /* I_Stop.tiff */; };
-		CF82598208536A130077AEAF /* OC_GGS_BuildWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597208536A130077AEAF /* OC_GGS_BuildWindowController.m */; };
 		CF82598408536A130077AEAF /* OC_GGS_Document.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597408536A130077AEAF /* OC_GGS_Document.m */; };
 		CF82598608536A130077AEAF /* OC_GGS_PreferencesController.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597608536A130077AEAF /* OC_GGS_PreferencesController.m */; };
 		CF82598808536A130077AEAF /* OC_GGS_RulerViewForTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF82597808536A130077AEAF /* OC_GGS_RulerViewForTextView.m */; };
@@ -316,6 +315,8 @@
 		CFCD02401066422000EA0463 /* grammarMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD306F0C11C9440089A9F3 /* grammarMetamodel.cpp */; };
 		CFCD02411066422000EA0463 /* grammarModelBuilder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */; };
 		CFCEEFC313CF24C10074BDE9 /* OC_GGS_searchInFolders.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCEEFC013CF24C10074BDE9 /* OC_GGS_searchInFolders.m */; };
+		CFD2567D1494FC2E00E63CAA /* C_TCPSocketOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD2567B1494FC2E00E63CAA /* C_TCPSocketOut.cpp */; };
+		CFD2567E1494FC2E00E63CAA /* C_TCPSocketOut.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD2567B1494FC2E00E63CAA /* C_TCPSocketOut.cpp */; };
 		CFD2EA830FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */; };
 		CFD2EA840FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */; };
 		CFD2EA970FD45F990085EC05 /* lexiqueSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB3F50BBFB97A00E6FABE /* lexiqueSemantics.cpp */; };
@@ -611,8 +612,6 @@
 		CF7FD6AC0FF13CFB001EA1B7 /* unicode_character_m.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = unicode_character_m.m; sourceTree = "<group>"; };
 		CF82596C08536A130077AEAF /* F_CocoaWrapperForGalgas.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = F_CocoaWrapperForGalgas.h; sourceTree = "<group>"; };
 		CF82596F08536A130077AEAF /* I_Stop.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = I_Stop.tiff; sourceTree = "<group>"; };
-		CF82597108536A130077AEAF /* OC_GGS_BuildWindowController.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildWindowController.h; sourceTree = "<group>"; };
-		CF82597208536A130077AEAF /* OC_GGS_BuildWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_BuildWindowController.m; sourceTree = "<group>"; };
 		CF82597308536A130077AEAF /* OC_GGS_Document.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_Document.h; sourceTree = "<group>"; };
 		CF82597408536A130077AEAF /* OC_GGS_Document.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_Document.m; sourceTree = "<group>"; };
 		CF82597508536A130077AEAF /* OC_GGS_PreferencesController.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = OC_GGS_PreferencesController.h; sourceTree = "<group>"; };
@@ -863,6 +862,8 @@
 		CFCEEFBF13CF24C10074BDE9 /* OC_GGS_searchInFolders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_searchInFolders.h; sourceTree = "<group>"; };
 		CFCEEFC013CF24C10074BDE9 /* OC_GGS_searchInFolders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_searchInFolders.m; sourceTree = "<group>"; };
 		CFD2223C11085598003C83A5 /* GALGAS_function.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_function.cpp; sourceTree = "<group>"; };
+		CFD2567B1494FC2E00E63CAA /* C_TCPSocketOut.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_TCPSocketOut.cpp; sourceTree = "<group>"; };
+		CFD2567C1494FC2E00E63CAA /* C_TCPSocketOut.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_TCPSocketOut.h; sourceTree = "<group>"; };
 		CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = predefinedLexicalActions.cpp; sourceTree = "<group>"; };
 		CFD2EA820FD45D080085EC05 /* predefinedLexicalActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = predefinedLexicalActions.h; sourceTree = "<group>"; };
 		CFD396EF110E1EAF001549E6 /* cpp-allocation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = "cpp-allocation.cpp"; sourceTree = "<group>"; };
@@ -1283,8 +1284,6 @@
 				CF9E55FA0FF5372D007692D1 /* OC_Token.m */,
 				CFECE4640FEFA5270031D087 /* OC_Lexique.h */,
 				CFECE4650FEFA5270031D087 /* OC_Lexique.m */,
-				CF82597108536A130077AEAF /* OC_GGS_BuildWindowController.h */,
-				CF82597208536A130077AEAF /* OC_GGS_BuildWindowController.m */,
 				CFAE5A9E10021A400068DEC9 /* OC_GGS_CommandLineOption.h */,
 				CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */,
 				CFAE5B1910024AA50068DEC9 /* enterDefaultCommandLineOptions.h */,
@@ -1901,6 +1900,8 @@
 		CFF53851057A54FB00854C83 /* streams */ = {
 			isa = PBXGroup;
 			children = (
+				CFD2567B1494FC2E00E63CAA /* C_TCPSocketOut.cpp */,
+				CFD2567C1494FC2E00E63CAA /* C_TCPSocketOut.h */,
 				CF69B2800A31EFF0002AE337 /* C_ErrorOut.cpp */,
 				CF69B2810A31EFF0002AE337 /* C_ErrorOut.h */,
 				CF825A2C08536B150077AEAF /* AC_OutputStream.cpp */,
@@ -2064,7 +2065,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CF82598208536A130077AEAF /* OC_GGS_BuildWindowController.m in Sources */,
 				CF82598408536A130077AEAF /* OC_GGS_Document.m in Sources */,
 				CF82598608536A130077AEAF /* OC_GGS_PreferencesController.m in Sources */,
 				CF82598808536A130077AEAF /* OC_GGS_RulerViewForTextView.m in Sources */,
@@ -2280,6 +2280,7 @@
 				CF5610A4137B32C30007E1BC /* typeComparisonResult.cpp in Sources */,
 				CFC80672137C3FB80028907B /* libpmHandling.cpp in Sources */,
 				CF702740137C53D600FA7C3E /* C_ColoredConsole.cpp in Sources */,
+				CFD2567D1494FC2E00E63CAA /* C_TCPSocketOut.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2459,6 +2460,7 @@
 				CF5610A7137B32C30007E1BC /* typeComparisonResult.cpp in Sources */,
 				CFC80675137C3FB80028907B /* libpmHandling.cpp in Sources */,
 				CF702743137C53D600FA7C3E /* C_ColoredConsole.cpp in Sources */,
+				CFD2567E1494FC2E00E63CAA /* C_TCPSocketOut.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
