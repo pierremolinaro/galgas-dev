@@ -153,6 +153,7 @@ SOURCES += AC_OutputStream.cpp
 SOURCES += C_ColoredConsole.cpp
 SOURCES += C_ConsoleOut.cpp
 SOURCES += C_ErrorOut.cpp
+SOURCES += C_TCPSocketOut.cpp
 
 #--- Strings
 SOURCES += unicode_character_cpp.cpp

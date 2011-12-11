@@ -29,13 +29,18 @@
 
 //---------------------------------------------------------------------------*
 
-#include <stdio.h>
-#include <strings.h>
-#include <sys/types.h>
-#include <netinet/in.h>
-#include <sys/socket.h>
-#include <arpa/inet.h>
-#include <netdb.h>
+#ifdef COMPILE_FOR_WIN32
+  #include <winsock.h>
+#else
+  #include <stdio.h>
+  #include <string.h>
+  #include <sys/types.h>
+  #include <netinet/in.h>
+  #include <sys/socket.h>
+  #include <arpa/inet.h>
+  #include <netdb.h>
+  #include <unistd.h>
+#endif
 
 //---------------------------------------------------------------------------*
 
@@ -51,10 +56,14 @@ bool C_TCPSocketOut::connect (const PMUInt16 inServerPort,
 //---
   if (ok) {
     struct sockaddr_in their_addr ;
-    memset (& their_addr, 0, sizeof (their_addr)) ;
-    their_addr.sin_len = sizeof(their_addr) ;
+    memset (& their_addr, '\0', sizeof (their_addr)) ;
+  //  their_addr.sin_len = sizeof(their_addr) ;
     their_addr.sin_family = AF_INET ;
-    their_addr.sin_port = htons (inServerPort) ;
+    #ifdef UNIX_TOOL
+      their_addr.sin_port = (inServerPort) ; // BUG in GLIBC
+    #else
+      their_addr.sin_port = htons (inServerPort) ;
+    #endif
     struct hostent * he = gethostbyname (inHostName.cString (HERE)) ;
     their_addr.sin_addr = * ((struct in_addr *) he->h_addr) ;
     memset (& (their_addr.sin_zero), '\0', 8) ;  // zero the rest of the struct
