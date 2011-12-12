@@ -73,11 +73,11 @@ class cSharedMapRoot : public C_SharedObject {
   protected : VIRTUAL_IN_DEBUG void performInsertOrReplace (const capCollectionElement & inAttributes) ;
 
 //--------------------------------- Insert
-  protected : VIRTUAL_IN_DEBUG void performInsert (const capCollectionElement & inAttributes,
-                                                   C_Compiler * inCompiler,
-                                                   const char * inInsertErrorMessage,
-                                                   const char * inShadowErrorMessage
-                                                   COMMA_LOCATION_ARGS) ;
+  protected : VIRTUAL_IN_DEBUG cMapNode * performInsert (const capCollectionElement & inAttributes,
+                                                         C_Compiler * inCompiler,
+                                                         const char * inInsertErrorMessage,
+                                                         const char * inShadowErrorMessage
+                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Search
   private : VIRTUAL_IN_DEBUG cMapNode * findEntryInMap (const C_String & inKey,
@@ -714,11 +714,12 @@ static cMapNode * internalInsert (cMapNode * & ioRootPtr,
 
 //---------------------------------------------------------------------------*
 
-void cSharedMapRoot::performInsert (const capCollectionElement & inAttributes,
-                                    C_Compiler * inCompiler,
-                                    const char * inInsertErrorMessage,
-                                    const char * inShadowErrorMessage
-                                    COMMA_LOCATION_ARGS) {
+cMapNode * cSharedMapRoot::performInsert (const capCollectionElement & inAttributes,
+                                          C_Compiler * inCompiler,
+                                          const char * inInsertErrorMessage,
+                                          const char * inShadowErrorMessage
+                                          COMMA_LOCATION_ARGS) {
+  cMapNode * result = NULL ;
   macroUniqueSharedObject (this) ;
 //--- If all attributes are built, perform insertion
   if (inAttributes.isValid ()) {
@@ -730,6 +731,7 @@ void cSharedMapRoot::performInsert (const capCollectionElement & inAttributes,
     bool entryAlreadyExists = false ;
     cMapNode * matchingEntry = internalInsert (mRoot, key, inAttributes, entryAlreadyExists, extension) ;
     if (! entryAlreadyExists) {
+      result = matchingEntry ;
       mCount ++ ;
       const C_String shadowErrorMessage (inShadowErrorMessage) ;
       const PMSInt32 shadowErrorMessageLength = shadowErrorMessage.length () ;
@@ -756,6 +758,8 @@ void cSharedMapRoot::performInsert (const capCollectionElement & inAttributes,
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkMap (HERE) ;
   #endif
+//---
+  return result ;
 }
 
 //---------------------------------------------------------------------------*
@@ -768,7 +772,22 @@ void AC_GALGAS_map::performInsert (const capCollectionElement & inAttributes,
 //--- If all attributes are built, perform insertion
   if (isValid ()) {
     insulate (HERE) ;
-    mSharedMap->performInsert (inAttributes, inCompiler, inInsertErrorMessage, inShadowErrorMessage COMMA_THERE) ;
+    cMapNode * node = mSharedMap->performInsert (inAttributes, inCompiler, inInsertErrorMessage, inShadowErrorMessage COMMA_THERE) ;
+  //--- Contextual help
+    if ((NULL != node) && executionModeIsContextHelp ()) {
+      cMapElement * p = (cMapElement *) inAttributes.ptr () ;
+      macroValidSharedObject (p, cMapElement) ;
+      const GALGAS_lstring key = p->mAttribute_lkey ;
+      if (isCurrentCompiledFilePath (key.mAttribute_location.startLocation ().sourceFilePath ())) {
+        const PMUInt32 startLocationInSource = key.mAttribute_location.startLocation ().index () ;
+        const PMUInt32 endLocationInSource = key.mAttribute_location.endLocation ().index () ;
+        if ((contextHelpLocation () >= startLocationInSource) && (contextHelpLocation () <= endLocationInSource)) {
+          C_String s ;
+          node->mAttributes.description (s, 0) ;
+          sendToTCPSocket (s) ;
+        }
+      }
+    }
   }
 }
 

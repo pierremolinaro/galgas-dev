@@ -50,6 +50,27 @@ mSocket (-1) {
 
 //---------------------------------------------------------------------------*
 
+#ifdef __LITTLE_ENDIAN__
+  static inline PMUInt16 hostToNetworkShort (const PMUInt16 inValue) {
+    union {PMUInt16 vs ; PMUInt8 vb [2] ; } u ;
+    u.vs = inValue ;
+    PMUInt8 v = u.vb [0] ;
+    u.vb [0] = u.vb [1] ;
+    u.vb [1] = v ;
+    return u.vs ;
+  }
+#endif
+
+//---------------------------------------------------------------------------*
+
+#ifdef __BIG_ENDIAN__
+  static inline PMUInt16 hostToNetworkShort (const PMUInt16 inValue) {
+    return inValue ;
+  }
+#endif
+
+//---------------------------------------------------------------------------*
+
 bool C_TCPSocketOut::connect (const PMUInt16 inServerPort,
                               const C_String & inHostName) {
   bool ok = mSocket == -1 ;
@@ -57,13 +78,8 @@ bool C_TCPSocketOut::connect (const PMUInt16 inServerPort,
   if (ok) {
     struct sockaddr_in their_addr ;
     memset (& their_addr, '\0', sizeof (their_addr)) ;
-  //  their_addr.sin_len = sizeof(their_addr) ;
     their_addr.sin_family = AF_INET ;
-    #ifdef UNIX_TOOL
-      their_addr.sin_port = (inServerPort) ; // BUG in GLIBC
-    #else
-      their_addr.sin_port = htons (inServerPort) ;
-    #endif
+    their_addr.sin_port = hostToNetworkShort (inServerPort) ;
     struct hostent * he = gethostbyname (inHostName.cString (HERE)) ;
     their_addr.sin_addr = * ((struct in_addr *) he->h_addr) ;
     memset (& (their_addr.sin_zero), '\0', 8) ;  // zero the rest of the struct
