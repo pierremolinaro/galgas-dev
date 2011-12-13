@@ -49,25 +49,32 @@ mSocket (-1) {
 }
 
 //---------------------------------------------------------------------------*
+// http://gcc.gnu.org/onlinedocs/cpp/Common-Predefined-Macros.html
 
-#ifdef __LITTLE_ENDIAN__
-  static inline PMUInt16 hostToNetworkShort (const PMUInt16 inValue) {
-    union {PMUInt16 vs ; PMUInt8 vb [2] ; } u ;
-    u.vs = inValue ;
-    PMUInt8 v = u.vb [0] ;
-    u.vb [0] = u.vb [1] ;
-    u.vb [1] = v ;
-    return u.vs ;
-  }
+#ifdef __linux
+  #if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
+    static inline PMUInt16 hostToNetworkShort (const PMUInt16 inValue) {
+      union {PMUInt16 vs ; PMUInt8 vb [2] ; } u ;
+      u.vs = inValue ;
+      PMUInt8 v = u.vb [0] ;
+      u.vb [0] = u.vb [1] ;
+      u.vb [1] = v ;
+      return u.vs ;
+    }
+  #endif
 #endif
 
 //---------------------------------------------------------------------------*
 
-#ifdef __BIG_ENDIAN__
-  static inline PMUInt16 hostToNetworkShort (const PMUInt16 inValue) {
-    return inValue ;
-  }
+/*
+#ifdef __linux
+  #if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
+    static inline PMUInt16 hostToNetworkShort (const PMUInt16 inValue) {
+      return inValue ;
+    }
+  #endif
 #endif
+*/
 
 //---------------------------------------------------------------------------*
 
@@ -79,7 +86,11 @@ bool C_TCPSocketOut::connect (const PMUInt16 inServerPort,
     struct sockaddr_in their_addr ;
     memset (& their_addr, '\0', sizeof (their_addr)) ;
     their_addr.sin_family = AF_INET ;
-    their_addr.sin_port = hostToNetworkShort (inServerPort) ;
+    #ifdef __linux
+      their_addr.sin_port = hostToNetworkShort (inServerPort) ; // BUG in GLIBC 2.12
+    #else
+      their_addr.sin_port = htons (inServerPort) ;
+    #endif
     struct hostent * he = gethostbyname (inHostName.cString (HERE)) ;
     their_addr.sin_addr = * ((struct in_addr *) he->h_addr) ;
     memset (& (their_addr.sin_zero), '\0', 8) ;  // zero the rest of the struct
