@@ -30,7 +30,9 @@
 //---------------------------------------------------------------------------*
 
 #ifdef COMPILE_FOR_WIN32
-  #include <winsock.h>
+  #include <winsock2.h>
+  #include <ws2tcpip.h>
+  #include <stdio.h>
 #else
   #include <stdio.h>
   #include <string.h>
@@ -49,58 +51,24 @@ mSocket (-1) {
 }
 
 //---------------------------------------------------------------------------*
-// http://gcc.gnu.org/onlinedocs/cpp/Common-Predefined-Macros.html
-
-#ifdef __linux
-  #if __BYTE_ORDER__ == __ORDER_LITTLE_ENDIAN__
-    static inline PMUInt16 hostToNetworkShort (const PMUInt16 inValue) {
-      union {PMUInt16 vs ; PMUInt8 vb [2] ; } u ;
-      u.vs = inValue ;
-      PMUInt8 v = u.vb [0] ;
-      u.vb [0] = u.vb [1] ;
-      u.vb [1] = v ;
-      return u.vs ;
-    }
-  #endif
-#endif
-
-//---------------------------------------------------------------------------*
-
-/*
-#ifdef __linux
-  #if __BYTE_ORDER__ == __ORDER_BIG_ENDIAN__
-    static inline PMUInt16 hostToNetworkShort (const PMUInt16 inValue) {
-      return inValue ;
-    }
-  #endif
-#endif
-*/
-
-//---------------------------------------------------------------------------*
 
 bool C_TCPSocketOut::connect (const PMUInt16 inServerPort,
                               const C_String & inHostName) {
   bool ok = mSocket == -1 ;
 //---
   if (ok) {
-    struct sockaddr_in their_addr ;
-    memset (& their_addr, '\0', sizeof (their_addr)) ;
-    their_addr.sin_family = AF_INET ;
-    #ifdef __linux
-      their_addr.sin_port = hostToNetworkShort (inServerPort) ; // BUG in GLIBC 2.12
-    #else
-      their_addr.sin_port = htons (inServerPort) ;
-    #endif
-    struct hostent * he = gethostbyname (inHostName.cString (HERE)) ;
-    their_addr.sin_addr = * ((struct in_addr *) he->h_addr) ;
-    memset (& (their_addr.sin_zero), '\0', 8) ;  // zero the rest of the struct
+    struct addrinfo hints, *res;
   //---
-    mSocket = socket (AF_INET, SOCK_STREAM, 0) ;
-    if (mSocket < 0) {
-      printf ("SOCKET CREATION ERROR\n") ;
-      perror ("socket") ;
-    }
-    ok = ::connect (mSocket, (struct sockaddr *) & their_addr, sizeof (struct sockaddr)) != -1 ;
+    memset (& hints, 0, sizeof (hints)) ;
+    hints.ai_family = AF_INET ;
+    hints.ai_socktype = SOCK_STREAM ;
+    char portString [10] ;
+    sprintf (portString, "%hu", inServerPort) ;
+    getaddrinfo (inHostName.cString (HERE), portString, & hints, & res) ;
+  //---
+    mSocket = socket (res->ai_family, res->ai_socktype, res->ai_protocol) ;
+  //---
+    ok = ::connect (mSocket, res->ai_addr, res->ai_addrlen) != -1 ;
   //---
     if (! ok) {
       printf ("SOCKET CONNECTION ERROR\n") ;

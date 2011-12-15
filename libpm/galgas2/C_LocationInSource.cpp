@@ -110,3 +110,9 @@ C_String C_LocationInSource::sourceFilePath (void) const {
 }
 
 //---------------------------------------------------------------------------*
+
+C_LocationInSource::~C_LocationInSource (void) {
+  macroDetachSharedObject (mSourceText) ;
+}
+
+//---------------------------------------------------------------------------*

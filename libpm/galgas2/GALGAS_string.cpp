@@ -1630,7 +1630,7 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
       while (loop) {
         const size_t kBufferSize = 1000 ;
         PMUInt8 buffer [kBufferSize] ;
-        const size_t readLength = fread (buffer, 1, kBufferSize-1, f) ;
+        const size_t readLength = fread (buffer, 1, kBufferSize, f) ;
         loop = readLength > 0 ;
         for (size_t i=0 ; i<readLength ; i++) {
           response.addObject (buffer [i]) ;
@@ -1638,6 +1638,7 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
       }
       pclose (f) ;
       C_String s ;
+      response.addObject ('\0') ;
       C_String::parseUTF8 (response.bufferPointer (), response.count (), s) ;
       result = GALGAS_string (s) ;
     }

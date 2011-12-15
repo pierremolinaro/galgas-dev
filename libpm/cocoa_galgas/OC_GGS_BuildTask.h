@@ -16,8 +16,6 @@
   @private NSTask * mTask ;
   @private NSUInteger mErrorCount ;
   @private NSUInteger mWarningCount ;
-  @private BOOL mAbortRequested ;
-  @private OC_GGS_Document * mDocumentToBuild ;
 }
 
 - (BOOL) buildTaskIsRunning ;

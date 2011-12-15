@@ -196,29 +196,20 @@
     [inNotification.object readInBackgroundAndNotify] ;
   }else{
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter] ;
-    [center removeObserver:self name:NSFileHandleReadCompletionNotification object: [[mTask standardOutput] fileHandleForReading]] ;
-    [center removeObserver:self name:NSTaskDidTerminateNotification object:mTask] ;
+    [center removeObserver:self name:NSFileHandleReadCompletionNotification object:[mTask.standardOutput fileHandleForReading]] ;
     [self notifyTaskCompleted] ;
-    if (! mAbortRequested) {
-      [self XMLIssueAnalysis] ;
-      [NSApp requestUserAttention:NSInformationalRequest] ;
-    }
-    mAbortRequested = NO ;
-    if (nil != mDocumentToBuild) {
-      [self buildDocument:mDocumentToBuild] ;
-      mDocumentToBuild = nil ;
-    }
+    [self XMLIssueAnalysis] ;
+    [NSApp requestUserAttention:NSInformationalRequest] ;
   }
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) stopBuild {
-  if ((nil != mTask) && ! mAbortRequested) {
-    mAbortRequested = YES ;
-    mDocumentToBuild = nil ;
+  if (nil != mTask) {
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter] ;
+    [center removeObserver:self name:NSFileHandleReadCompletionNotification object:[mTask.standardOutput fileHandleForReading]] ;
     [mTask terminate] ;
-    [mTask waitUntilExit] ;
     [self notifyTaskCompleted] ;
   }
 }
@@ -229,16 +220,8 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s:%@", __PRETTY_FUNCTION__, inDocument) ;
   #endif
-  if (nil == mTask) {
-    [self buildDocument:inDocument] ;
-  }else{
-    mDocumentToBuild = inDocument ;
-    if (! mAbortRequested) {
-      mAbortRequested = YES ;
-      [mTask terminate] ;
-      [mTask waitUntilExit] ;
-    }
-  }
+  [self stopBuild] ;
+  [self buildDocument:inDocument] ;
 }
 
 //---------------------------------------------------------------------------*

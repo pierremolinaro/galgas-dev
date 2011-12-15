@@ -72,14 +72,9 @@ setBoolOptionForCommandChar (const char inCommandChar,
 
 //---------------------------------------------------------------------------*
 
-void C_BoolCommandLineOption::
-setBoolOptionForCommandString (const char * inCommandString,
-                               bool & outFound,
-                               bool & outCocoaOutput) {
-  outFound = strcmp (inCommandString, "cocoa") == 0 ;
-  if (outFound) {
-    outCocoaOutput = true ;
-  }
+void C_BoolCommandLineOption::setBoolOptionForCommandString (const char * inCommandString,
+                                                             bool & outFound) {
+  outFound = false ;
   C_BoolCommandLineOption * p = gFirst ;
   while ((p != NULL) && ! outFound) {
     if (strcmp (p->mCommandString, inCommandString) == 0) {
