@@ -29,6 +29,7 @@
 
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "streams/C_TCPSocketOut.h"
+#include "utilities/C_PrologueEpilogue.h"
 
 //---------------------------------------------------------------------------*
 
@@ -139,17 +140,18 @@ void setExecutionMode (C_String & outErrorMessage) {
   }else{
     TC_UniqueArray <C_String> array ;
     mode.componentsSeparatedByString (":", array) ;
-    if ((array.count() == 2) && (array (0 COMMA_HERE) == "context-help")) {
+    if ((array.count() == 3) && (array (0 COMMA_HERE) == "context-help")) {
       gMode = 4 ;
-      gContextHelpLocation = array (1 COMMA_HERE).unsignedIntegerValue () ;
-      gOutputSocket.connect (47893, "localhost") ;
+      const PMUInt16 portNumber = (PMUInt16) array (1 COMMA_HERE).unsignedIntegerValue () ;
+      gContextHelpLocation = array (2 COMMA_HERE).unsignedIntegerValue () ;
+      gOutputSocket.connect (portNumber, "localhost") ;
     }else if (mode.length () > 0) {
       outErrorMessage << "** Fatal Error: invalid '--mode=" << mode << "' parameter; it should be:\n"
-        "  --mode=                default mode: perform compilation;\n"
-        "  --mode=lexical-only    perform only lexical analysis;\n"
-        "  --mode=syntax-only     perform only syntax analysis;\n"
-        "  --mode=context-help:n  perform context help at source location n;\n"
-        "  --mode=indexing        outputs indexing files." ;
+        "  --mode=                 default mode: perform compilation;\n"
+        "  --mode=lexical-only     perform only lexical analysis;\n"
+        "  --mode=syntax-only      perform only syntax analysis;\n"
+        "  --mode=context-help:p:n perform context help at source location n, connect to TCP port n for sending results;\n"
+        "  --mode=indexing         outputs indexing files." ;
     }
   }
 }
@@ -205,3 +207,14 @@ bool isCurrentCompiledFilePath (const C_String & inPath) {
 }
 
 //---------------------------------------------------------------------------*
+
+static void epilogueAction (void) {
+  gCurrentlyCompiledBaseFilePath.releaseString () ;
+}
+
+//---------------------------------------------------------------------------*
+
+C_PrologueEpilogue prologueEpilogue (NULL, epilogueAction) ;
+
+//---------------------------------------------------------------------------*
+

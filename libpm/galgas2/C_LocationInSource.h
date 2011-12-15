@@ -48,6 +48,7 @@ class C_LocationInSource {
 
 //---  
   public : C_LocationInSource (void) ;
+  public : virtual ~C_LocationInSource (void) ;
 
   public : C_LocationInSource (const C_LocationInSource & inObject) ;
 

@@ -362,12 +362,38 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 #pragma mark Contextual Help
 
+#include <netdb.h>
+#include <netinet/in.h>
 //---------------------------------------------------------------------------*
 
 - (void) performContextualHelpAtLocation: (NSUInteger) inLocation {
   [mDocument setContextualHelpMessage:@"Searching…"] ;
+//---
+  if (nil != mTask) {
+    NSNotificationCenter * center = [NSNotificationCenter defaultCenter] ;
+    if (nil != mReceiveSocketHandle) {
+      [center removeObserver:self name:NSFileHandleConnectionAcceptedNotification object:mReceiveSocketHandle] ;
+    }
+    if (nil != mRemoteSocketHandle) {
+      [center removeObserver:self name:NSFileHandleReadCompletionNotification object:mRemoteSocketHandle] ;
+    }
+    mReceiveSocket = nil ;
+    mReceiveSocketHandle = nil ;
+    mRemoteSocketHandle = nil ;
+    [mTask terminate] ;
+    mTask = nil ;
+  }
+//---
   NSString * compilerToolPath = [gCocoaGalgasPreferencesController compilerToolPath] ;
   if (! [compilerToolPath isEqualToString:@"?"]) {
+    mReceiveSocket = [[NSSocketPort alloc] initWithTCPPort:0] ; // A port number will be attributed
+    struct sockaddr_in socketStruct ;
+    socklen_t length = sizeof (socketStruct) ;
+    getsockname (mReceiveSocket.socket, (struct sockaddr *) & socketStruct, & length) ;
+    const PMUInt16 actualPort = ntohs (socketStruct.sin_port) ;
+    // NSLog (@"actualPort %hu\n", actualPort) ;
+    // NSLog (@"mReceiveSocket %p %d", mReceiveSocket, mReceiveSocket.socket) ;
+  //---
     mTask = [NSTask new] ;
   //---
     [mTask setLaunchPath:compilerToolPath] ;
@@ -376,7 +402,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     NSArray * commandLineArray = [gCocoaGalgasPreferencesController commandLineItemArray] ;
     [arguments addObjectsFromArray:[commandLineArray subarrayWithRange:NSMakeRange (1, commandLineArray.count-1)]] ;
     [arguments addObject:mTextSyntaxColoring.sourceURL.path] ;
-    [arguments addObject:[NSString stringWithFormat:@"--mode=context-help:%lu", inLocation]] ;
+    [arguments addObject:[NSString stringWithFormat:@"--mode=context-help:%hu:%lu", actualPort, inLocation]] ;
     [mTask setArguments:arguments] ;
     // NSLog (@"'%@' %@", [mTask launchPath], arguments) ;
   //--- Set standard output notification
@@ -384,8 +410,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     [mTask setStandardOutput:taskOutput] ;
     [mTask setStandardError:taskOutput] ;
   //--- http://www.cocoadev.com/index.pl?NSSocketPort
-    mReceiveSocket = [[NSSocketPort alloc] initWithTCPPort:47893] ;
-    // NSLog (@"mReceiveSocket %p %d", mReceiveSocket, mReceiveSocket.socket) ;
     mReceiveSocketHandle = [[NSFileHandle alloc]
       initWithFileDescriptor:mReceiveSocket.socket
       closeOnDealloc: YES
@@ -473,7 +497,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   [self  didChangeValueForKey:@"textSelectionStart"] ;
   [mRulerView setNeedsDisplay:YES] ;
   if (! [mDocument isContextualHelpTextViewCollapsed]) {
-    NSBeep () ;
     [self performContextualHelpAtLocation:mTextSelectionStart] ;
   }
 }

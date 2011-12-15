@@ -55,8 +55,7 @@ class C_BoolCommandLineOption : public C_CommandLineOption {
   public : static void setBoolOptionForCommandChar (const char inCommandChar,
                                                     bool & outFound) ;
   public : static void setBoolOptionForCommandString (const char * inCommandString,
-                                                      bool & outFound,
-                                                      bool & outCocoaOutput) ;
+                                                      bool & outFound) ;
   public : static void printUsageOfBoolOptions (void) ;
   public : static void printBoolOptions (const PMUInt32 inDisplayLength) ;
 
