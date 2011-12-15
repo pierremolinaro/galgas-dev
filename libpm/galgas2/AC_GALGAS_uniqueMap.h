@@ -136,9 +136,6 @@ class AC_GALGAS_uniqueMapProxy : public AC_GALGAS_root {
   protected : AC_GALGAS_uniqueMapProxy (const AC_GALGAS_uniqueMapProxy & inSource) ;
   protected : AC_GALGAS_uniqueMapProxy & operator = (const AC_GALGAS_uniqueMapProxy & inSource) ;
 
-//--------------------------------- Introspection
-//  public : VIRTUAL_IN_DEBUG const C_galgas_type_descriptor * typeDescriptor (void) const ;
-
 //--------------------------------- Attachment management
   private : VIRTUAL_IN_DEBUG void attachProxyToMapNode (cUniqueMapNode * inMapNode) ;
 
@@ -221,6 +218,7 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
   protected : VIRTUAL_IN_DEBUG void performInsert (capCollectionElement & inAttributes,
                                                    C_Compiler * inCompiler,
                                                    const PMUInt32 inInitialState,
+                                                   const char * inInitialStateName,
                                                    const char * inInsertErrorMessage,
                                                    const char * inShadowErrorMessage
                                                    COMMA_LOCATION_ARGS) ;

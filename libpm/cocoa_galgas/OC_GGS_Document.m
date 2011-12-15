@@ -1240,10 +1240,16 @@
   [mContextualHelpTextView setFont:[NSFont fontWithName:@"Courier" size:13.0]] ;
   [textStorage endEditing] ;
 //---
-  [mIssueSplitView
+/*  [mIssueSplitView
     setPosition:mIssueSplitView.bounds.size.width - 200.0
     ofDividerAtIndex:1
-  ] ;
+  ] ;*/
+}
+
+//---------------------------------------------------------------------------*
+
+- (BOOL) isContextualHelpTextViewCollapsed {
+  return [mIssueSplitView isSubviewCollapsed:mContextualHelpScrollView] ;
 }
 
 //---------------------------------------------------------------------------*

@@ -91,23 +91,6 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCAT
 }
 
 //---------------------------------------------------------------------------*
-
-/*GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_mapWithMapToOverride (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inMapToOverride
-                                                   %!^%COMMA_LOCATION_ARGS) {
-  GALGAS_%!TYPE_IDENTIFIER% result ;
-  result.makeNewEmptyMap (inMapToOverride COMMA_THERE) ;
-  return result ;
-}*/
-
-//---------------------------------------------------------------------------*
-
-/*GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_overriddenMap (UNUSED_LOCATION_ARGS) const {
-  GALGAS_%!TYPE_IDENTIFIER% result ;
-  overridenMap (result) ;
-  return result ;
-}*/
-
-//---------------------------------------------------------------------------*
 //  Map automaton states                                                     *
 //---------------------------------------------------------------------------*
 
@@ -126,11 +109,11 @@ end foreach
 //---------------------------------------------------------------------------*
 
 %
-foreach MAP_AUTOMATON_STATE_MAP
+foreach [MAP_AUTOMATON_STATE_MAP allKeyList]
 before
   %static const char * kMapStateNames_%!TYPE_IDENTIFIER% [%![[MAP_AUTOMATON_STATE_MAP count] string]%] = {\n%
 do
-  %  %![lkey utf8Representation]
+  %  %![mValue->string utf8Representation]
 between
   %,\n%
 after
@@ -329,9 +312,21 @@ end foreach
     %const char * kInsertErrorMessage = %![mErrorMessage utf8Representation]% ;\n%
     %const char * kShadowErrorMessage = %![mShadowErrorMessage utf8Representation]% ;\n%
     if [mInitialStateName string] == "" then
-      %performInsert (attributes, inCompiler, 0, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;\n%
+      %performInsert (attributes,
+                      inCompiler,
+                      0,
+                      NULL,
+                      kInsertErrorMessage,
+                      kShadowErrorMessage
+                      COMMA_THERE) ;\n%
     else
-      %performInsert (attributes, inCompiler, kMapState_%!TYPE_IDENTIFIER%_%![mInitialStateName identifierRepresentation]%, kInsertErrorMessage, kShadowErrorMessage COMMA_THERE) ;\n%
+      %performInsert (attributes,
+                      inCompiler,
+                      kMapState_%!TYPE_IDENTIFIER%_%![mInitialStateName identifierRepresentation]%,
+                      kMapStateNames_%!TYPE_IDENTIFIER% [kMapState_%!TYPE_IDENTIFIER%_%![mInitialStateName identifierRepresentation]%],
+                      kInsertErrorMessage,
+                      kShadowErrorMessage
+                      COMMA_THERE) ;\n%
     end if
   end block
   %}\n\n%

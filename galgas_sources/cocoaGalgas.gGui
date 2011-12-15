@@ -47,9 +47,11 @@ with lexique "galgas_scanner.gLexique" {
   label $once$, $identifier$ ;
   label $filewrapper$, $identifier$, $in$ ;
   label $abstract$, $method$, $type_name$, $identifier$ ;
-  label $abstract$, $reader$, $type_name$, $identifier$ ;
   label $override$, $method$, $type_name$, $identifier$ ;
+  label $method$, $type_name$, $identifier$ ;
+  label $abstract$, $reader$, $type_name$, $identifier$ ;
   label $override$, $reader$, $type_name$, $identifier$ ;
+  label $reader$, $type_name$, $identifier$ ;
   label $when$, $.$, $literal_string$ ;
   
   textMacro "Types/Class" :

@@ -81,12 +81,12 @@ class cSharedUniqueMapRoot : public C_SharedObject {
                                                                                     COMMA_LOCATION_ARGS) const ;
 
 //--------------------------------- Insert
-  protected : VIRTUAL_IN_DEBUG void performInsert (capCollectionElement & inAttributes,
-                                                   C_Compiler * inCompiler,
-                                                   const PMUInt32 inInitialState,
-                                                   const char * inInsertErrorMessage,
-                                                   const char * inShadowErrorMessage
-                                                   COMMA_LOCATION_ARGS) ;
+  protected : VIRTUAL_IN_DEBUG cUniqueMapNode * performInsert (capCollectionElement & inAttributes,
+                                                               C_Compiler * inCompiler,
+                                                               const PMUInt32 inInitialState,
+                                                               const char * inInsertErrorMessage,
+                                                               const char * inShadowErrorMessage
+                                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Search
   private : VIRTUAL_IN_DEBUG cUniqueMapNode * findEntryInMap (const C_String & inKey,
@@ -393,7 +393,7 @@ static void internalDescription (cUniqueMapNode * inNode,
     ioString << "\n" ;
     ioString.writeStringMultiple ("| ", inIndentation) ;
     ioString << "|-at " << cStringWithUnsigned (ioIdx)
-             << ": key '" << inNode->mKey << "' " ;
+             << ": key '" << inNode->mKey << "', state " << cStringWithUnsigned (inNode->mCurrentState) ;
     inNode->mAttributes.description (ioString, inIndentation + 1) ;
     ioIdx ++ ;
     internalDescription (inNode->mSupPtr, ioString, inIndentation, ioIdx) ;
@@ -610,12 +610,13 @@ static cUniqueMapNode * internalInsert (cUniqueMapNode * & ioRootPtr,
 
 //---------------------------------------------------------------------------*
 
-void cSharedUniqueMapRoot::performInsert (capCollectionElement & inAttributes,
-                                          C_Compiler * inCompiler,
-                                          const PMUInt32 inInitialState,
-                                          const char * inInsertErrorMessage,
-                                          const char * inShadowErrorMessage
-                                          COMMA_LOCATION_ARGS) {
+cUniqueMapNode * cSharedUniqueMapRoot::performInsert (capCollectionElement & inAttributes,
+                                                      C_Compiler * inCompiler,
+                                                      const PMUInt32 inInitialState,
+                                                      const char * inInsertErrorMessage,
+                                                      const char * inShadowErrorMessage
+                                                      COMMA_LOCATION_ARGS) {
+  cUniqueMapNode * result = NULL ;
 //--- If all attributes are built, perform insertion
   if (inAttributes.isValid ()) {
     cMapElement * p = (cMapElement *) inAttributes.ptr () ;
@@ -626,6 +627,7 @@ void cSharedUniqueMapRoot::performInsert (capCollectionElement & inAttributes,
     bool entryAlreadyExists = false ;
     cUniqueMapNode * matchingEntry = internalInsert (mRoot, key, inInitialState, inAttributes, entryAlreadyExists, extension) ;
     if (! entryAlreadyExists) {
+      result = matchingEntry ;
       mKeyListInEntryOrder.addAssign_operation (p->mAttribute_lkey COMMA_HERE) ;
       mCount ++ ;
       const C_String shadowErrorMessage (inShadowErrorMessage) ;
@@ -653,19 +655,40 @@ void cSharedUniqueMapRoot::performInsert (capCollectionElement & inAttributes,
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkMap (HERE) ;
   #endif
+//---
+  return result ;
 }
 
 //---------------------------------------------------------------------------*
 
 void AC_GALGAS_uniqueMap::performInsert (capCollectionElement & inAttributes,
-                                   C_Compiler * inCompiler,
-                                   const PMUInt32 inInitialState,
-                                   const char * inInsertErrorMessage,
-                                   const char * inShadowErrorMessage
-                                   COMMA_LOCATION_ARGS) {
+                                         C_Compiler * inCompiler,
+                                         const PMUInt32 inInitialState,
+                                         const char * inInitialStateName,
+                                         const char * inInsertErrorMessage,
+                                         const char * inShadowErrorMessage
+                                         COMMA_LOCATION_ARGS) {
 //--- If all attributes are built, perform insertion
   if (isValid ()) {
-    mSharedMap->performInsert (inAttributes, inCompiler, inInitialState, inInsertErrorMessage, inShadowErrorMessage COMMA_THERE) ;
+    cUniqueMapNode *  node = mSharedMap->performInsert (inAttributes, inCompiler, inInitialState, inInsertErrorMessage, inShadowErrorMessage COMMA_THERE) ;
+  //--- Contextual help
+    if ((NULL != node) && executionModeIsContextHelp ()) {
+      cMapElement * p = (cMapElement *) inAttributes.ptr () ;
+      macroValidSharedObject (p, cMapElement) ;
+      const GALGAS_lstring key = p->mAttribute_lkey ;
+      if (isCurrentCompiledFilePath (key.mAttribute_location.startLocation ().sourceFilePath ())) {
+        const PMUInt32 startLocationInSource = key.mAttribute_location.startLocation ().index () ;
+        const PMUInt32 endLocationInSource = key.mAttribute_location.endLocation ().index () ;
+        if ((contextHelpLocation () >= startLocationInSource) && (contextHelpLocation () <= endLocationInSource)) {
+          C_String s ;
+          node->mAttributes.description (s, 0) ;
+          if (NULL != inInitialStateName) {
+            s << "\n""State " << inInitialStateName ;
+          }
+          sendToTCPSocket (s) ;
+        }
+      }
+    }
   }
 }
 
@@ -1096,6 +1119,7 @@ const cCollectionElement * AC_GALGAS_uniqueMap::performSearch (const GALGAS_lstr
       if ((contextHelpLocation () >= startLocationInSource) && (contextHelpLocation () <= endLocationInSource)) {
         C_String s ;
         node->mAttributes.description (s, 0) ;
+        s << "\n""State: " << inAutomatonStateNames [node->mCurrentState] ;
         sendToTCPSocket (s) ;
       }
     }
