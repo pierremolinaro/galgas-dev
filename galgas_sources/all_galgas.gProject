@@ -34,7 +34,7 @@ project all_galgas -> "galgas" :
   lexique "galgas_scanner.gLexique" ;
 
 #--- Cocoa Interface
-  gui       "cocoaGalgas.gGui" ;
+  gui      "cocoaGalgas.gGui" ;
 
 #--- Project Creation
   semantics "projectCreation.gSemantics" ;

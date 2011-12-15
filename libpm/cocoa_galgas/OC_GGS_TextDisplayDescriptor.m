@@ -360,76 +360,12 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
-#pragma mark NSTextView delegate methods
-
-//---------------------------------------------------------------------------*
-
-- (NSUndoManager *) undoManagerForTextView: (NSTextView *) inTextView { // Delegate Method
-  return mTextSyntaxColoring.undoManager ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) textViewDidChangeSelection:(NSNotification *) inNotification { // Delegate Method
-  [self willChangeValueForKey:@"textSelectionStart"] ;
-  mTextSelectionStart = mTextView.selectedRange.location ;
-  [self  didChangeValueForKey:@"textSelectionStart"] ;
-  [mRulerView setNeedsDisplay:YES] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) noteUndoManagerCheckPointNotification {
-  [mDocument triggerDocumentEditedStatusUpdate] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) myProcessEditing: (NSNotification *) inNotification {
-  [mDocument triggerLiveCompilation] ;
-}
-
-//---------------------------------------------------------------------------*
-
-#pragma mark Displaying issues
-
-//---------------------------------------------------------------------------*
-
-- (void) setIssueArray: (NSArray *) inIssueArray {
-  mIssueArray = inIssueArray ;
-  [mTextView setIssueArray:inIssueArray] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (BOOL) makeVisibleIssue: (PMIssueDescriptor *) inOriginalIssue {
-  BOOL found = NO ;
-  for (NSUInteger i=0 ; (i<mIssueArray.count) && ! found ; i++) {
-    PMErrorOrWarningDescriptor * issue = [mIssueArray objectAtIndex:i] ;
-    found = issue.originalIssue == inOriginalIssue ;
-    if (found) {
-      [self setSelectionRangeAndMakeItVisible:NSMakeRange (issue.location, 0)] ;
-    }
-  }
-//---
-  return found ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) setSelectionRangeAndMakeItVisible: (NSRange) inRange {
-  [mTextView scrollRangeToVisible:inRange] ;
-  [mTextView setSelectedRange:inRange] ;
-  [mTextView.window makeFirstResponder:mTextView] ;
-}
-
-//---------------------------------------------------------------------------*
-
 #pragma mark Contextual Help
 
 //---------------------------------------------------------------------------*
 
-- (void) performContextualHelp: (NSMenuItem *) inSender {
+- (void) performContextualHelpAtLocation: (NSUInteger) inLocation {
+  [mDocument setContextualHelpMessage:@"Searching…"] ;
   NSString * compilerToolPath = [gCocoaGalgasPreferencesController compilerToolPath] ;
   if (! [compilerToolPath isEqualToString:@"?"]) {
     mTask = [NSTask new] ;
@@ -440,8 +376,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     NSArray * commandLineArray = [gCocoaGalgasPreferencesController commandLineItemArray] ;
     [arguments addObjectsFromArray:[commandLineArray subarrayWithRange:NSMakeRange (1, commandLineArray.count-1)]] ;
     [arguments addObject:mTextSyntaxColoring.sourceURL.path] ;
-    NSRange r = [[inSender representedObject] rangeValue] ;
-    [arguments addObject:[NSString stringWithFormat:@"--mode=context-help:%lu", r.location]] ;
+    [arguments addObject:[NSString stringWithFormat:@"--mode=context-help:%lu", inLocation]] ;
     [mTask setArguments:arguments] ;
     // NSLog (@"'%@' %@", [mTask launchPath], arguments) ;
   //--- Set standard output notification
@@ -511,6 +446,82 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     mBufferedInputData = nil ;
     [mDocument setContextualHelpMessage:message] ;
   }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) performContextualHelp: (NSMenuItem *) inSender {
+  const NSRange r = [[inSender representedObject] rangeValue] ;
+  [self performContextualHelpAtLocation:r.location] ;
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark NSTextView delegate methods
+
+//---------------------------------------------------------------------------*
+
+- (NSUndoManager *) undoManagerForTextView: (NSTextView *) inTextView { // Delegate Method
+  return mTextSyntaxColoring.undoManager ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) textViewDidChangeSelection:(NSNotification *) inNotification { // Delegate Method
+  [self willChangeValueForKey:@"textSelectionStart"] ;
+  mTextSelectionStart = mTextView.selectedRange.location ;
+  [self  didChangeValueForKey:@"textSelectionStart"] ;
+  [mRulerView setNeedsDisplay:YES] ;
+  if (! [mDocument isContextualHelpTextViewCollapsed]) {
+    NSBeep () ;
+    [self performContextualHelpAtLocation:mTextSelectionStart] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) noteUndoManagerCheckPointNotification {
+  [mDocument triggerDocumentEditedStatusUpdate] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) myProcessEditing: (NSNotification *) inNotification {
+  [mDocument triggerLiveCompilation] ;
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Displaying issues
+
+//---------------------------------------------------------------------------*
+
+- (void) setIssueArray: (NSArray *) inIssueArray {
+  mIssueArray = inIssueArray ;
+  [mTextView setIssueArray:inIssueArray] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (BOOL) makeVisibleIssue: (PMIssueDescriptor *) inOriginalIssue {
+  BOOL found = NO ;
+  for (NSUInteger i=0 ; (i<mIssueArray.count) && ! found ; i++) {
+    PMErrorOrWarningDescriptor * issue = [mIssueArray objectAtIndex:i] ;
+    found = issue.originalIssue == inOriginalIssue ;
+    if (found) {
+      [self setSelectionRangeAndMakeItVisible:NSMakeRange (issue.location, 0)] ;
+    }
+  }
+//---
+  return found ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) setSelectionRangeAndMakeItVisible: (NSRange) inRange {
+  [mTextView scrollRangeToVisible:inRange] ;
+  [mTextView setSelectedRange:inRange] ;
+  [mTextView.window makeFirstResponder:mTextView] ;
 }
 
 //---------------------------------------------------------------------------*

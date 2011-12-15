@@ -81,6 +81,7 @@
 
 //--- Contextual help message
   @private IBOutlet NSTextView * mContextualHelpTextView ;
+  @private IBOutlet NSScrollView * mContextualHelpScrollView ;
 }
 
 - (OC_GGS_TextDisplayDescriptor *) findOrAddNewTabForFile: (NSString *) inDocumentPath ;
@@ -115,5 +116,6 @@
 - (BOOL) buildTaskIsRunning ;
 
 - (void) setContextualHelpMessage: (NSString *) inMessage ;
+- (BOOL) isContextualHelpTextViewCollapsed ;
 
 @end
