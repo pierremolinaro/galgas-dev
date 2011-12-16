@@ -123,7 +123,8 @@ C_StringCommandLineOption gOption_galgas_5F_cli_5F_options_mode ("galgas_cli_opt
 //---------------------------------------------------------------------------*
 
 static PMUInt32 gMode ;
-static PMUInt32 gContextHelpLocation ;
+static PMUInt32 gContextHelpStartLocation ;
+static PMUInt32 gContextHelpEndLocation ;
 static C_TCPSocketOut gOutputSocket ;
 static C_String gCurrentlyCompiledBaseFilePath ;
 
@@ -140,10 +141,11 @@ void setExecutionMode (C_String & outErrorMessage) {
   }else{
     TC_UniqueArray <C_String> array ;
     mode.componentsSeparatedByString (":", array) ;
-    if ((array.count() == 3) && (array (0 COMMA_HERE) == "context-help")) {
+    if ((array.count() == 4) && (array (0 COMMA_HERE) == "context-help")) {
       gMode = 4 ;
       const PMUInt16 portNumber = (PMUInt16) array (1 COMMA_HERE).unsignedIntegerValue () ;
-      gContextHelpLocation = array (2 COMMA_HERE).unsignedIntegerValue () ;
+      gContextHelpStartLocation = array (2 COMMA_HERE).unsignedIntegerValue () ;
+      gContextHelpEndLocation = gContextHelpStartLocation + array (3 COMMA_HERE).unsignedIntegerValue () ;
       gOutputSocket.connect (portNumber, "localhost") ;
     }else if (mode.length () > 0) {
       outErrorMessage << "** Fatal Error: invalid '--mode=" << mode << "' parameter; it should be:\n"
@@ -182,8 +184,14 @@ bool executionModeIsContextHelp (void) {
 
 //---------------------------------------------------------------------------*
 
-PMUInt32 contextHelpLocation (void) {
-  return gContextHelpLocation ;
+PMUInt32 contextHelpStartLocation (void) {
+  return gContextHelpStartLocation ;
+}
+
+//---------------------------------------------------------------------------*
+
+PMUInt32 contextHelpEndLocation (void) {
+  return gContextHelpEndLocation ;
 }
 
 //---------------------------------------------------------------------------*

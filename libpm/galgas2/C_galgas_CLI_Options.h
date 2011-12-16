@@ -92,7 +92,9 @@ bool executionModeIsIndexing (void) ;
 
 bool executionModeIsContextHelp (void) ;
 
-PMUInt32 contextHelpLocation (void) ;
+PMUInt32 contextHelpStartLocation (void) ;
+
+PMUInt32 contextHelpEndLocation (void) ;
 
 void setCurrentCompiledFilePath (const C_String & inPath) ;
 
