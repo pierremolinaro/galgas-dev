@@ -366,8 +366,8 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 #include <netinet/in.h>
 //---------------------------------------------------------------------------*
 
-- (void) performContextualHelpAtLocation: (NSUInteger) inLocation {
-  [mDocument setContextualHelpMessage:@"Searching…"] ;
+- (void) performContextualHelpAtRange: (NSRange) inRange {
+  [mDocument setContextualHelpMessage:@"Looking for Help…"] ;
 //---
   if (nil != mTask) {
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter] ;
@@ -402,7 +402,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     NSArray * commandLineArray = [gCocoaGalgasPreferencesController commandLineItemArray] ;
     [arguments addObjectsFromArray:[commandLineArray subarrayWithRange:NSMakeRange (1, commandLineArray.count-1)]] ;
     [arguments addObject:mTextSyntaxColoring.sourceURL.path] ;
-    [arguments addObject:[NSString stringWithFormat:@"--mode=context-help:%hu:%lu", actualPort, inLocation]] ;
+    [arguments addObject:[NSString stringWithFormat:@"--mode=context-help:%hu:%lu:%lu", actualPort, inRange.location, inRange.length]] ;
     [mTask setArguments:arguments] ;
     // NSLog (@"'%@' %@", [mTask launchPath], arguments) ;
   //--- Set standard output notification
@@ -476,7 +476,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 - (void) performContextualHelp: (NSMenuItem *) inSender {
   const NSRange r = [[inSender representedObject] rangeValue] ;
-  [self performContextualHelpAtLocation:r.location] ;
+  [self performContextualHelpAtRange:r] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -497,7 +497,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   [self  didChangeValueForKey:@"textSelectionStart"] ;
   [mRulerView setNeedsDisplay:YES] ;
   if (! [mDocument isContextualHelpTextViewCollapsed]) {
-    [self performContextualHelpAtLocation:mTextSelectionStart] ;
+    [self performContextualHelpAtRange:mTextView.selectedRange] ;
   }
 }
 

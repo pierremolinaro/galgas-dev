@@ -679,7 +679,7 @@ void AC_GALGAS_uniqueMap::performInsert (capCollectionElement & inAttributes,
       if (isCurrentCompiledFilePath (key.mAttribute_location.startLocation ().sourceFilePath ())) {
         const PMUInt32 startLocationInSource = key.mAttribute_location.startLocation ().index () ;
         const PMUInt32 endLocationInSource = key.mAttribute_location.endLocation ().index () ;
-        if ((contextHelpLocation () >= startLocationInSource) && (contextHelpLocation () <= endLocationInSource)) {
+        if ((contextHelpStartLocation () >= startLocationInSource) && (contextHelpEndLocation () <= endLocationInSource)) {
           C_String s ;
           node->mAttributes.description (s, 0) ;
           if (NULL != inInitialStateName) {
@@ -1116,7 +1116,7 @@ const cCollectionElement * AC_GALGAS_uniqueMap::performSearch (const GALGAS_lstr
     if ((NULL != node) && executionModeIsContextHelp () && isCurrentCompiledFilePath (inKey.mAttribute_location.startLocation ().sourceFilePath ())) {
       const PMUInt32 startLocationInSource = inKey.mAttribute_location.startLocation ().index () ;
       const PMUInt32 endLocationInSource = inKey.mAttribute_location.endLocation ().index () ;
-      if ((contextHelpLocation () >= startLocationInSource) && (contextHelpLocation () <= endLocationInSource)) {
+      if ((contextHelpStartLocation () >= startLocationInSource) && (contextHelpEndLocation () <= endLocationInSource)) {
         C_String s ;
         node->mAttributes.description (s, 0) ;
         s << "\n""State: " << inAutomatonStateNames [node->mCurrentState] ;
