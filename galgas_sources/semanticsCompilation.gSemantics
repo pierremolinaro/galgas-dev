@@ -203,6 +203,18 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+routine buildLexiqueComponentMapForSemanticAnalysis
+  ??@parsedComponentStruct inParsedComponentStruct
+  !@lexiqueComponentMapForSemanticAnalysis outLexiqueComponentMapForSemanticAnalysis
+:
+  outLexiqueComponentMapForSemanticAnalysis := [@lexiqueComponentMapForSemanticAnalysis emptyMap] ;
+  foreach inParsedComponentStruct->mParsedLexiqueComponentMap do
+    [!?outLexiqueComponentMapForSemanticAnalysis insertKey !lkey] ;
+  end foreach ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine buildOptionComponentMapForSemanticAnalysis
   ??@lstringlist inOptionComponentFileNameList
   ?!@parsedComponentStruct ioParsedComponentStruct
@@ -374,12 +386,12 @@ routine compileSemanticsComponentAST
   @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes := semanticDeclarationList ;
   appendPredefinedTypesASTs !?semanticDeclarationListWithPredefinedTypes ;
 #------ Build semantic context
-  @semanticContext semanticContext ;
+#  @semanticContext semanticContext ;
   buildSemanticContext
     ![inSourceFile string]
     !semanticDeclarationListWithPredefinedTypes
     ![inSemanticsComponentRoot mEndOfSourceFile]
-    ?semanticContext
+    ?@semanticContext semanticContext
   ;
 #------ Build option component map for analysis
   buildOptionComponentMapForSemanticAnalysis
@@ -387,6 +399,12 @@ routine compileSemanticsComponentAST
     !?ioParsedComponentStruct
     !?semanticContext->mOptionComponentMapForSemanticAnalysis
   ;
+#--- Build lexique component map for semantic analysis
+  buildLexiqueComponentMapForSemanticAnalysis
+    !ioParsedComponentStruct
+    ?@lexiqueComponentMapForSemanticAnalysis lexiqueMap
+  ;
+  semanticContext->mLexiqueComponentMapForSemanticAnalysis := lexiqueMap ;
 #------ Perform semantic analysis of grammar components
   buildGrammarComponentMapForSemanticAnalysis
     !grammarComponentASTList

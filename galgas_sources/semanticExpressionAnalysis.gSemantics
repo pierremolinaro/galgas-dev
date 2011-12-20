@@ -1880,4 +1880,28 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @lexiqueIntrospectionExpressionAST analyzeSemanticExpression
+  ??@analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+:
+#--- Check  lexique is declared
+  [inAnalysisContext->mSemanticContext->mLexiqueComponentMapForSemanticAnalysis searchKey
+    !mLexiqueComponentName
+  ] ;
+#--- Check reader name
+  if mLexiqueReaderName->string != "symbols" then
+    error mLexiqueReaderName:"unknown reader" ;
+  end if ;
+#---
+  outExpression := [@lexiqueIntrospectionForGeneration new
+    ![@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !["stringlist" nowhere]]
+    !mLexiqueComponentName->location
+    !mLexiqueComponentName->string
+    !mLexiqueReaderName->string
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 end semantics ;

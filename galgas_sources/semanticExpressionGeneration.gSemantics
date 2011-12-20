@@ -901,4 +901,19 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @lexiqueIntrospectionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppExpression
+:
+#---
+  outCppExpression := "C_Lexique_" . [mLexiqueComponentName identifierRepresentation] . "::"
+  . [mLexiqueReaderName identifierRepresentation]
+  . "(SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+end method ;
+
+
+#---------------------------------------------------------------------------*
+
 end semantics ;

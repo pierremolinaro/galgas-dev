@@ -50,6 +50,8 @@ before {
   end if ;
 #--- Generate predefined files
   generatePredefinedTypeFiles ![option galgas_cli_options.generatePredefinedTypes value] ;
+  
+#  const @stringlist ter := [lexique galgas_scanner:symbols] ; log ter ;
 }
 
 #---------------------------------------------------------------------------*

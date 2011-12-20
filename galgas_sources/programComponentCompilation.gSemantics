@@ -248,6 +248,12 @@ routine compileProgramComponentFromAST
     !?ioParsedComponentStruct
     !?semanticContext->mOptionComponentMapForSemanticAnalysis
   ;
+#--- Build lexique component map for semantic analysis
+  buildLexiqueComponentMapForSemanticAnalysis
+    !ioParsedComponentStruct
+    ?@lexiqueComponentMapForSemanticAnalysis lexiqueMap
+  ;
+  semanticContext->mLexiqueComponentMapForSemanticAnalysis := lexiqueMap ;
 #------ Semantic Analysis
   @semanticDeclarationSortedListForGeneration decoratedDeclarationListForGeneration ;
   performSemanticAnalysis

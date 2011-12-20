@@ -381,3 +381,18 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDEN
     %}\n\n%
   end foreach
 %//---------------------------------------------------------------------------*
+//                                                                           *
+//                         I N T R O S P E C T I O N                         *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+GALGAS_stringlist C_Lexique_%!LEXIQUE_IDENTIFIER%::symbols (LOCATION_ARGS) {
+  GALGAS_stringlist result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+%foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList]
+  do %  result.addAssign_operation (GALGAS_string (%![mTerminalName utf8Representation]%) COMMA_THERE) ;\n%
+  end foreach
+%  return result ;
+}
+
+//---------------------------------------------------------------------------*
+

@@ -79,6 +79,9 @@ class C_Lexique_%!LEXIQUE_IDENTIFIER% : public C_Lexique {
                        const C_String & inStringForError
                        COMMA_LOCATION_ARGS) ;
 
+//--- Instrospection
+  public : static GALGAS_stringlist symbols (LOCATION_ARGS) ;
+
 //--- Declaring a protected virtual destructor enables the compiler to raise
 //    an error if a direct delete is performed; only the static method
 //    C_SharedObject::detachPointer may invoke delete.
