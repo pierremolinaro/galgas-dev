@@ -1509,7 +1509,8 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
                                   HANDLE g_hChildStd_IN_Rd,
                                   const char * /* inCommandLine */) {
   //--- Create a child process that uses the previously created pipes for STDIN and STDOUT.
-     TCHAR szCmdline [] = TEXT ("child") ;
+     TCHAR szCmdline [] = TEXT ("dir") ;
+     TCHAR application [] = TEXT ("c:\\windows\\system32\\command.com") ;
   //--- Set up members of the PROCESS_INFORMATION structure. 
      PROCESS_INFORMATION piProcInfo ; 
      ZeroMemory (& piProcInfo, sizeof (PROCESS_INFORMATION)) ;
@@ -1523,7 +1524,7 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
      siStartInfo.dwFlags |= STARTF_USESTDHANDLES ;
   //-- Create the child process. 
      const bool bSuccess = 0 != CreateProcess (
-       NULL, 
+       application,   // Application 
        szCmdline,     // command line 
        NULL,          // process security attributes 
        NULL,          // primary thread security attributes 
@@ -1540,6 +1541,9 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
      // of the child process, for example. 
        CloseHandle (piProcInfo.hProcess) ;
        CloseHandle (piProcInfo.hThread) ;
+     }else{ // CreateProcess Error
+       DWORD error = GetLastError () ;
+       printf ("'CreateProcess' error: %ld\n", error) ;
      }
    //---
      return bSuccess ;
@@ -1600,6 +1604,7 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
           PMUInt8 buffer [kBufferSize] ;
           DWORD readLength = 0 ;
           loop = ReadFile (g_hChildStd_OUT_Rd, buffer, kBufferSize, & readLength, NULL) ;
+          loop = readLength > 0 ;
           for (size_t i=0 ; i<readLength ; i++) {
             response.addObject (buffer [i]) ;
           }

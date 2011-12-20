@@ -126,6 +126,12 @@ routine compileSyntaxComponentFromAST
     !?ioParsedComponentStruct
     !?semanticContext->mOptionComponentMapForSemanticAnalysis
   ;
+#--- Build lexique component map for semantic analysis
+  buildLexiqueComponentMapForSemanticAnalysis
+    !ioParsedComponentStruct
+    ?@lexiqueComponentMapForSemanticAnalysis lexiqueMap
+  ;
+  semanticContext->mLexiqueComponentMapForSemanticAnalysis := lexiqueMap ;
 #--- Parse lexique component
   const @lstring lexiqueFilePath [new
     ![[inSyntaxComponentRoot mImportedLexiqueFilePath] absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]]

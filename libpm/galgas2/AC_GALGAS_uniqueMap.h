@@ -299,7 +299,7 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
 
 //--------------------------------- Internal methods for inserting proxy
   protected : VIRTUAL_IN_DEBUG cUniqueMapNode * performInsertProxy (const C_String & inKey
-                                                              COMMA_LOCATION_ARGS) ;
+                                                                    COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Check Map Automatons state
   public : VIRTUAL_IN_DEBUG void checkAutomatonStates (const GALGAS_location & inErrorLocation,
@@ -309,17 +309,17 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
 
 //--------------------------------- Open override for block
   public : VIRTUAL_IN_DEBUG void openOverride (const cBranchOverrideTransformationDescriptor inBranchBehaviourArray [],
-                                                const PMUInt32 inBranchBehaviourSize,
-                                                const cBranchOverrideCompatibilityDescriptor inBranchCombinationArray [],
-                                                const PMUInt32 inBranchCombinationSize,
-                                                const char * inBlockName,
-                                                C_Compiler * inCompiler
-                                                COMMA_LOCATION_ARGS) ;
+                                               const PMUInt32 inBranchBehaviourSize,
+                                               const cBranchOverrideCompatibilityDescriptor inBranchCombinationArray [],
+                                               const PMUInt32 inBranchCombinationSize,
+                                               const char * inBlockName,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Close override for block
   public : VIRTUAL_IN_DEBUG void modifier_closeOverride (const GALGAS_location & inErrorLocation,
-                                                       C_Compiler * inCompiler
-                                                       COMMA_LOCATION_ARGS) ;
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
 
 //--------------------------------- Branch Handling
   public : VIRTUAL_IN_DEBUG void modifier_openBranch (C_Compiler * inCompiler

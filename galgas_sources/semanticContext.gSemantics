@@ -127,8 +127,19 @@ map @optionComponentMapForSemanticAnalysis {
   @commandLineOptionMap mBoolOptionMap ;
   @commandLineOptionMap mUIntOptionMap ;
   @commandLineOptionMap mStringOptionMap ;
-  insert insertKey error message "redefintion of the '%K' option component: it has been already declared in %L" ;
+  insert insertKey error message "redefinition of the '%K' option component: it has been already declared in %L" ;
   search searchKey error message "the '%K' option component is not imported" ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  O P T I O N   M A P                                                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+map @lexiqueComponentMapForSemanticAnalysis {
+  insert insertKey error message "redefinition of the '%K' lexique component: it has been already declared in %L" ;
+  search searchKey error message "the '%K' lexique component is not imported" ;
 }
 
 #---------------------------------------------------------------------------*
@@ -145,6 +156,7 @@ struct @semanticContext {
   @filewrapperMap mFilewrapperMap ;
   @grammarMap mGrammarMap ;
   @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis ;
+  @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2925,6 +2937,7 @@ routine buildSemanticContext
         ![@filewrapperMap emptyMap]
         ![@grammarMap emptyMap]
         ![@optionComponentMapForSemanticAnalysis emptyMap]
+        ![@lexiqueComponentMapForSemanticAnalysis emptyMap]
       ] ;
     #--- Loop throught all declarations
       foreach sortedSemanticDeclarationListAST do

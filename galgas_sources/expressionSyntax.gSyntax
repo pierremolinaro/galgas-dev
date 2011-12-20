@@ -534,6 +534,12 @@ rule <primary> !@semanticExpressionAST outExpression :
       outExpression := [@optionExpressionAST new !optionComponentName !optionName !readerName] ;
     end select ;
   or
+    $lexique$ ;
+    $identifier$ ?@lstring lexiqueName ;
+    $:$ ;
+    $identifier$ ?@lstring readerName ;
+    outExpression := [@lexiqueIntrospectionExpressionAST new !lexiqueName !readerName] ;
+  or
     $filewrapper$ ;
     $identifier$ ?@lstring filewrapperName indexing filewrapperReference ;
     select

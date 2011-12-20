@@ -367,6 +367,13 @@ class @filewrapperTemplateInExpressionForGeneration extends @semanticExpressionF
 }
 
 #---------------------------------------------------------------------------*
+
+class @lexiqueIntrospectionForGeneration extends @semanticExpressionForGeneration {
+  @string mLexiqueComponentName ;
+  @string mLexiqueReaderName ;
+}
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #  F O R M A L    P A R A M E T E R    L I S T                              *
 #                                                                           *

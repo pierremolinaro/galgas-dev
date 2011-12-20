@@ -124,6 +124,13 @@ class @optionExpressionAST extends @semanticExpressionAST {
 
 #---------------------------------------------------------------------------*
 
+class @lexiqueIntrospectionExpressionAST extends @semanticExpressionAST {
+  @lstring mLexiqueComponentName ;
+  @lstring mLexiqueReaderName ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @concatExpressionAST,
       @orExpressionAST,
       @xorExpressionAST,
