@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2011 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -31,6 +31,7 @@
 
 #include <string.h>
 #include <ctype.h>
+#include <signal.h>
 
 #ifdef TARGET_API_MAC_CARBON
   #include <unix.h>
@@ -84,6 +85,12 @@
 
 //---------------------------------------------------------------------------*
 
+#ifndef COMPILE_FOR_WIN32
+  static PMUInt32 g_SIGTERM_balance_count = 0 ;
+#endif
+
+//---------------------------------------------------------------------------*
+
 C_TextFileWrite::C_TextFileWrite (const C_String & inFileName
                                   COMMA_MAC_OS_CREATOR_FORMAL_ARGUMENT,
                                   bool & outOk) :
@@ -106,7 +113,17 @@ mBufferLength (0) {
       mFilePtr = ::fopen (inFileName.cString (HERE), "wt") ;
     #endif
   //--- Open Ok ?
-    outOk = mFilePtr != NULL;
+    outOk = mFilePtr != NULL ;
+  //
+    #ifndef COMPILE_FOR_WIN32
+      if (0 == g_SIGTERM_balance_count) {
+        sigset_t s ;
+        sigemptyset (& s) ;
+        sigaddset (& s, SIGTERM) ;
+        sigprocmask (SIG_BLOCK, & s, NULL) ;
+      }
+      g_SIGTERM_balance_count ++ ;
+    #endif
   }
 }
 
@@ -141,15 +158,24 @@ C_TextFileWrite::~C_TextFileWrite (void) {
     ::fclose (mFilePtr) ; // Flushes the file, then closes it
     mFilePtr = (FILE *) NULL ;
   }
+//---
+  #ifndef COMPILE_FOR_WIN32
+    g_SIGTERM_balance_count -- ;
+    if (0 == g_SIGTERM_balance_count) {
+      sigset_t s ;
+      sigemptyset (& s) ;
+      sigaddset (& s, SIGTERM) ;
+      sigprocmask (SIG_UNBLOCK, & s, NULL) ;
+    }
+  #endif
 }
 
 //---------------------------------------------------------------------------*
 //                  Write a character string into the file                   *
 //---------------------------------------------------------------------------*
 
-void C_TextFileWrite::
-performActualCharArrayOutput (const char * inCharArray,
-                              const PMSInt32 inArrayCount) {
+void C_TextFileWrite::performActualCharArrayOutput (const char * inCharArray,
+                                                    const PMSInt32 inArrayCount) {
   if ((mFilePtr != NULL) && (inArrayCount > 0)) {
     if ((mBufferLength + inArrayCount) < kFileBufferSize) {
       ::memcpy (& mBuffer [mBufferLength], inCharArray, (size_t) inArrayCount) ;
@@ -166,9 +192,8 @@ performActualCharArrayOutput (const char * inCharArray,
 
 //---------------------------------------------------------------------------*
 
-void C_TextFileWrite::
-performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                 const PMSInt32 inArrayCount) {
+void C_TextFileWrite::performActualUnicodeArrayOutput (const utf32 * inCharArray,
+                                                       const PMSInt32 inArrayCount) {
   if ((mFilePtr != NULL) && (inArrayCount > 0)) {
     for (PMSInt32 i=0 ; i<inArrayCount ; i++) {
       char buffer [5] ;

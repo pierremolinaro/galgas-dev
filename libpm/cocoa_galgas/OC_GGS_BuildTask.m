@@ -187,19 +187,22 @@
 //---------------------------------------------------------------------------*
 
 - (void) getDataFromTaskOutput: (NSNotification *) inNotification {
-  NSData * data = [inNotification.userInfo objectForKey:NSFileHandleNotificationDataItem];
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s (%lu bytes)", __PRETTY_FUNCTION__, (unsigned long) data.length) ;
-  #endif
-  if (data.length > 0) {
-    [mBufferedInputData appendData:data] ;
-    [inNotification.object readInBackgroundAndNotify] ;
-  }else{
-    NSNotificationCenter * center = [NSNotificationCenter defaultCenter] ;
-    [center removeObserver:self name:NSFileHandleReadCompletionNotification object:[mTask.standardOutput fileHandleForReading]] ;
-    [self notifyTaskCompleted] ;
-    [self XMLIssueAnalysis] ;
-    [NSApp requestUserAttention:NSInformationalRequest] ;
+  if (inNotification.object == [mTask.standardOutput fileHandleForReading]) {
+    NSData * data = [inNotification.userInfo objectForKey:NSFileHandleNotificationDataItem];
+    #ifdef DEBUG_MESSAGES
+      NSLog (@"%s (%lu bytes)", __PRETTY_FUNCTION__, (unsigned long) data.length) ;
+    #endif
+    if (data.length > 0) {
+      [mBufferedInputData appendData:data] ;
+      [inNotification.object readInBackgroundAndNotify] ;
+    // }else if (nil != mBufferedInputData) {
+    }else{
+      NSNotificationCenter * center = [NSNotificationCenter defaultCenter] ;
+      [center removeObserver:self name:NSFileHandleReadCompletionNotification object:[mTask.standardOutput fileHandleForReading]] ;
+      [self notifyTaskCompleted] ;
+      [self XMLIssueAnalysis] ;
+      [NSApp requestUserAttention:NSInformationalRequest] ;
+    }
   }
 }
 
@@ -207,21 +210,13 @@
 
 - (void) stopBuild {
   if (nil != mTask) {
+    mBufferedInputData = nil ;
     NSNotificationCenter * center = [NSNotificationCenter defaultCenter] ;
     [center removeObserver:self name:NSFileHandleReadCompletionNotification object:[mTask.standardOutput fileHandleForReading]] ;
     [mTask terminate] ;
+    [mTask waitUntilExit] ;
     [self notifyTaskCompleted] ;
   }
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) abortAndBuildDocument: (OC_GGS_Document *) inDocument {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s:%@", __PRETTY_FUNCTION__, inDocument) ;
-  #endif
-  [self stopBuild] ;
-  [self buildDocument:inDocument] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -230,55 +225,55 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  if (mTask == nil) {
-    [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
-    [inDocument displayIssueDetailedMessage:nil] ;
-    mBufferedInputData = [NSMutableData new] ;
-    [mIssueArrayController setContent:[NSArray array]] ;
-    NSArray * commandLineArray = [gCocoaGalgasPreferencesController commandLineItemArray] ;
-  //--- Command line tool does actually exist ? (First argument is not "?")
-    if ([[commandLineArray objectAtIndex:0 HERE] isEqualToString:@"?"]) {
-      NSAlert * alert = [NSAlert alertWithMessageText:@"Error: cannot compile"
-        defaultButton: nil
-        alternateButton: nil
-        otherButton: nil
-        informativeTextWithFormat:@"Compilation must be performed by an embedded Command line Tool; no command line Tool are currently embedded by application."
-      ] ;
-      [alert
-        beginSheetModalForWindow:inDocument.windowForSheet
-        modalDelegate:nil
-        didEndSelector:0
-        contextInfo:NULL
-      ] ;
-    }else{
-      NSMutableArray * arguments = [NSMutableArray new] ;
-      [arguments addObjectsFromArray:[commandLineArray subarrayWithRange:NSMakeRange (1, [commandLineArray count]-1)]] ;
-      [arguments addObject:inDocument.fileURL.path] ;
-   //--- Create task
-      [self willChangeValueForKey:@"buildTaskIsRunning"] ;
-      [self willChangeValueForKey:@"buildTaskIsNotRunning"] ;
-      mTask = [NSTask new] ;
-      [self didChangeValueForKey:@"buildTaskIsNotRunning"] ;
-      [self didChangeValueForKey:@"buildTaskIsRunning"] ;
-      [mTask setLaunchPath:[commandLineArray objectAtIndex:0 HERE]] ;
-      [mTask setArguments:arguments] ;
-      [self setWarningCount:0] ;
-      [self setErrorCount:0] ;
-      // NSLog (@"'%@' %@", [mTask launchPath], arguments) ;
-    //--- Set standard output notification
-      NSPipe * taskOutput = [NSPipe pipe] ;
-      [mTask setStandardOutput:taskOutput] ;
-      [mTask setStandardError:taskOutput] ;
-      [[NSNotificationCenter defaultCenter]
-        addObserver:self
-        selector:@selector (getDataFromTaskOutput:)
-        name:NSFileHandleReadCompletionNotification
-        object:[taskOutput fileHandleForReading]
-      ] ;
-      [taskOutput.fileHandleForReading readInBackgroundAndNotify] ;
-    //--- Start task
-      [mTask launch] ;
-    }
+  [self stopBuild] ;
+//---
+  [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
+  [inDocument displayIssueDetailedMessage:nil] ;
+  mBufferedInputData = [NSMutableData new] ;
+  [mIssueArrayController setContent:[NSArray array]] ;
+  NSArray * commandLineArray = [gCocoaGalgasPreferencesController commandLineItemArray] ;
+//--- Command line tool does actually exist ? (First argument is not "?")
+  if ([[commandLineArray objectAtIndex:0 HERE] isEqualToString:@"?"]) {
+    NSAlert * alert = [NSAlert alertWithMessageText:@"Error: cannot compile"
+      defaultButton: nil
+      alternateButton: nil
+      otherButton: nil
+      informativeTextWithFormat:@"Compilation must be performed by an embedded Command line Tool; no command line Tool are currently embedded by application."
+    ] ;
+    [alert
+      beginSheetModalForWindow:inDocument.windowForSheet
+      modalDelegate:nil
+      didEndSelector:0
+      contextInfo:NULL
+    ] ;
+  }else{
+    NSMutableArray * arguments = [NSMutableArray new] ;
+    [arguments addObjectsFromArray:[commandLineArray subarrayWithRange:NSMakeRange (1, [commandLineArray count]-1)]] ;
+    [arguments addObject:inDocument.fileURL.path] ;
+ //--- Create task
+    [self willChangeValueForKey:@"buildTaskIsRunning"] ;
+    [self willChangeValueForKey:@"buildTaskIsNotRunning"] ;
+    mTask = [NSTask new] ;
+    [self didChangeValueForKey:@"buildTaskIsNotRunning"] ;
+    [self didChangeValueForKey:@"buildTaskIsRunning"] ;
+    [mTask setLaunchPath:[commandLineArray objectAtIndex:0 HERE]] ;
+    [mTask setArguments:arguments] ;
+    [self setWarningCount:0] ;
+    [self setErrorCount:0] ;
+    // NSLog (@"'%@' %@", [mTask launchPath], arguments) ;
+  //--- Set standard output notification
+    NSPipe * taskOutput = [NSPipe pipe] ;
+    [mTask setStandardOutput:taskOutput] ;
+    [mTask setStandardError:taskOutput] ;
+    [[NSNotificationCenter defaultCenter]
+      addObserver:self
+      selector:@selector (getDataFromTaskOutput:)
+      name:NSFileHandleReadCompletionNotification
+      object:[taskOutput fileHandleForReading]
+    ] ;
+    [taskOutput.fileHandleForReading readInBackgroundAndNotify] ;
+  //--- Start task
+    [mTask launch] ;
   }
 }
 

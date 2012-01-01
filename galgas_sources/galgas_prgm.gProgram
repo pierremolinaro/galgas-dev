@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS main program definition                                           *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2011 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -414,6 +414,19 @@ indexing with projectLL1grammar
   end if ;
 #--- Build project files
   buildProject !inSourceFile->string ;
+}
+
+#----------------------------------------------------------------------------*
+#                                                                            *
+#          Template                                                          *
+#                                                                            *
+#----------------------------------------------------------------------------*
+
+when . "gTemplate"
+message "a GALGAS Template source file"
+indexing with projectLL1grammar
+??@lstring inSourceFile {
+  grammar templateGrammar in inSourceFile ?* ;
 }
 
 #---------------------------------------------------------------------------*
