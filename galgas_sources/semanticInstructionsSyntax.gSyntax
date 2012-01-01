@@ -1546,27 +1546,5 @@ rule <semantic_instruction>
 end rule ;
 
 #---------------------------------------------------------------------------*
-#                                                                           *
-#     P R A G M A                                                           *
-#                                                                           *
-#---------------------------------------------------------------------------*
-
-rule <semantic_instruction>
-  !@semanticInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
-:
-  $pragma$ ;
-  const @location instructionLocation := here ;
-  $identifier$ ? @lstring pragmaName ;
-  $literal_string$ ? @lstring pragmaArgument ;
-  $;$ ;
-  outInstruction := [@pragmaInstructionAST new
-    !instructionLocation
-    !pragmaName
-    !pragmaArgument
-  ] ;
-end rule ;
-
-#---------------------------------------------------------------------------*
 
 end syntax ;

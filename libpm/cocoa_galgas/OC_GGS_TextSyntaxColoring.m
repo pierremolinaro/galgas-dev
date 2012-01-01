@@ -587,9 +587,11 @@
 //---------------------------------------------------------------------------*
 
 - (NSRange) commentRange: (NSRange) inSelectedRangeValue {
+  [self.textStorage beginEditing] ;
+//---
   NSAttributedString * blockCommentString = [[[NSAttributedString alloc] initWithString:[mTokenizer blockComment] attributes:nil] autorelease] ;
   //NSLog (@"selectedRange [%d, %d]", selectedRange.location, selectedRange.length) ;
-  NSMutableAttributedString * mutableSourceString = [self textStorage] ;
+  NSMutableAttributedString * mutableSourceString = self.textStorage ;
   NSString * sourceString = [mutableSourceString string] ;
   const NSRange lineRange = [sourceString lineRangeForRange:inSelectedRangeValue] ;
   //NSLog (@"lineRange [%d, %d]", lineRange.location, lineRange.length) ;
@@ -603,6 +605,8 @@
       currentLineRange = [sourceString lineRangeForRange:NSMakeRange (currentLineRange.location - 1, 1)] ;
     }
   }while ((currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location)) ;
+//---
+  [self.textStorage endEditing] ;
 //--- Update selected range
   const NSRange newSelectedRange = NSMakeRange (inSelectedRangeValue.location, inSelectedRangeValue.length + insertedCharsCount) ;
 //--- Register undo
@@ -654,6 +658,8 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 //---------------------------------------------------------------------------*
 
 - (NSRange) uncommentRange: (NSRange) initialSelectedRange {
+//---
+  [self.textStorage beginEditing] ;
 //--- Block comment string
   NSString * blockCommentString = [mTokenizer blockComment] ;
   const NSUInteger blockCommentLength = [blockCommentString length] ;
@@ -701,6 +707,8 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       currentLineRange = [sourceString lineRangeForRange:NSMakeRange (currentLineRange.location - 1, 1)] ;
     }
   }while ((currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location)) ;
+//---
+  [self.textStorage endEditing] ;
 //--- Register undo
   [mUndoManager 
     registerUndoWithTarget:self
@@ -1008,12 +1016,6 @@ static NSInteger numericSort (NSString * inOperand1,
   if (! hasAtomicSelection) {
     NSMenuItem * item = [menu addItemWithTitle:@"Select all token characters" action:@selector (selectAllTokenCharacters:) keyEquivalent:@""] ;
     [item setTarget:inTextDisplayDescriptor.textView] ;
-    [item setRepresentedObject:[NSValue valueWithRange:inSelectedRange]] ;
-  }
-//--- Contextual Help
-  {
-    NSMenuItem * item = [menu addItemWithTitle:@"Contextual Help" action:@selector (performContextualHelp:) keyEquivalent:@""] ;
-    [item setTarget:inTextDisplayDescriptor] ;
     [item setRepresentedObject:[NSValue valueWithRange:inSelectedRange]] ;
   }
 //---

@@ -275,8 +275,6 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
 
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_allKeyList (LOCATION_ARGS) const ;
 
-  public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_allKeyListInEntryOrder (LOCATION_ARGS) const ;
-
   public : VIRTUAL_IN_DEBUG GALGAS_uint reader_count (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG GALGAS_uint reader_unsolvedProxyCount (LOCATION_ARGS) const ;

@@ -127,8 +127,6 @@
 		CF585E5B10A5FBF100A5A69A /* grammarSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF585E5610A5FBF100A5A69A /* grammarSemantics.cpp */; };
 		CF5DF68F114D36E900B96CB0 /* semanticAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5DF68B114D36E900B96CB0 /* semanticAnalysis.cpp */; };
 		CF5DF690114D36E900B96CB0 /* semanticAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5DF68B114D36E900B96CB0 /* semanticAnalysis.cpp */; };
-		CF610F6E1349C9DE00E34A91 /* enterPragma.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF610F6B1349C9DE00E34A91 /* enterPragma.cpp */; };
-		CF610F6F1349C9DE00E34A91 /* enterPragma.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF610F6B1349C9DE00E34A91 /* enterPragma.cpp */; };
 		CF63AD270EE04C0B00220E75 /* projectMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */; };
 		CF63AD280EE04C0B00220E75 /* projectMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */; };
 		CF63B55310FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */; };
@@ -582,7 +580,6 @@
 		CF585E5710A5FBF100A5A69A /* grammarSemantics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grammarSemantics.h; sourceTree = "<group>"; };
 		CF5DF68B114D36E900B96CB0 /* semanticAnalysis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticAnalysis.cpp; sourceTree = "<group>"; };
 		CF5DF68C114D36E900B96CB0 /* semanticAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticAnalysis.h; sourceTree = "<group>"; };
-		CF610F6B1349C9DE00E34A91 /* enterPragma.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = enterPragma.cpp; sourceTree = "<group>"; };
 		CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = projectMetamodel.cpp; sourceTree = "<group>"; };
 		CF63AD240EE04C0A00220E75 /* projectMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = projectMetamodel.h; sourceTree = "<group>"; };
 		CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_PrologueEpilogue.cpp; sourceTree = "<group>"; };
@@ -1650,7 +1647,6 @@
 		CFF53737057A4E9400854C83 /* Hand Coded Sources */ = {
 			isa = PBXGroup;
 			children = (
-				CF610F6B1349C9DE00E34A91 /* enterPragma.cpp */,
 				CFF537C7057A524B00854C83 /* Grammar Component */,
 			);
 			fileEncoding = 5;
@@ -2231,7 +2227,6 @@
 				CFD94B671290677400864538 /* grammarComputations.cpp in Sources */,
 				CF2D3B9D129725F800E93E98 /* AC_GALGAS_graph.cpp in Sources */,
 				CFEF3A7D12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */,
-				CF610F6E1349C9DE00E34A91 /* enterPragma.cpp in Sources */,
 				CF5610A5137B32C30007E1BC /* typeComparisonResult.cpp in Sources */,
 				CFC80673137C3FB80028907B /* libpmHandling.cpp in Sources */,
 				CF702741137C53D600FA7C3E /* C_ColoredConsole.cpp in Sources */,
@@ -2411,7 +2406,6 @@
 				CFD94B681290677400864538 /* grammarComputations.cpp in Sources */,
 				CF2D3B9E129725F800E93E98 /* AC_GALGAS_graph.cpp in Sources */,
 				CFEF3A7E12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */,
-				CF610F6F1349C9DE00E34A91 /* enterPragma.cpp in Sources */,
 				CF5610A6137B32C30007E1BC /* typeComparisonResult.cpp in Sources */,
 				CFC80674137C3FB80028907B /* libpmHandling.cpp in Sources */,
 				CF702742137C53D600FA7C3E /* C_ColoredConsole.cpp in Sources */,

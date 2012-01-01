@@ -24,7 +24,6 @@
 - (NSArrayController *) issueArrayController ;
 
 - (void) buildDocument: (OC_GGS_Document *) inDocument ;
-- (void) abortAndBuildDocument: (OC_GGS_Document *) inDocument ;
 
 - (void) stopBuild ;
 

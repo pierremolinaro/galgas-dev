@@ -2030,23 +2030,6 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-extern routine enterPragma
-  ??@lstring inPragmaName
-  ??@lstring inPragmaArgument
-;
-
-#---------------------------------------------------------------------------*
-
-override method @pragmaInstructionAST analyzeSemanticInstruction
-  ??@analysisContext unused inAnalysisContext
-  ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-  ?!@variableMap unused ioVariableMap
-:
-  enterPragma !mPragmaName !mPragmaArgument ;
-end method ;
-
-#---------------------------------------------------------------------------*
-
 override method @matchInstructionAST analyzeSemanticInstruction
   ??@analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration

@@ -24,7 +24,6 @@
 //---------------------------------------------------------------------------*
 
 #include "galgas2/C_galgas_io.h"
-#include "files/C_TextFileWrite.h"
 #include "streams/C_ConsoleOut.h"
 #include "streams/C_ErrorOut.h"
 #include "collections/TC_LinkedList.h"

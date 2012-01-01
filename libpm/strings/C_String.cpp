@@ -1767,7 +1767,7 @@ bool C_String::binaryDataWithContentOfFile (TC_UniqueArray <unsigned char> & out
 }
 
 //---------------------------------------------------------------------------*
-  
+
 bool C_String::writeToFile (const C_String & inFilePath
                             COMMA_MAC_OS_CREATOR_FORMAL_ARGUMENT
                             COMMA_UNUSED_LOCATION_ARGS) const {
@@ -1858,10 +1858,9 @@ bool C_String::writeBinaryData (const TC_UniqueArray <PMUInt8> & inBinaryData) c
 
 //---------------------------------------------------------------------------*
   
-bool C_String::
-writeToExecutableFile (const C_String & inFilePath
-                       COMMA_MAC_OS_CREATOR_FORMAL_ARGUMENT
-                       COMMA_UNUSED_LOCATION_ARGS) const {
+bool C_String::writeToExecutableFile (const C_String & inFilePath
+                                      COMMA_MAC_OS_CREATOR_FORMAL_ARGUMENT
+                                      COMMA_UNUSED_LOCATION_ARGS) const {
   bool success = false ;
   inFilePath.stringByDeletingLastPathComponent().makeDirectoryIfDoesNotExist () ;
   C_TextFileWrite file (inFilePath COMMA_MAC_OS_CREATOR_FORMAL_ARGUMENT_NAME, success) ;

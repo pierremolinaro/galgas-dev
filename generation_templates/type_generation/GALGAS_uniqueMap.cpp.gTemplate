@@ -109,11 +109,11 @@ end foreach
 //---------------------------------------------------------------------------*
 
 %
-foreach [MAP_AUTOMATON_STATE_MAP allKeyList]
+foreach MAP_AUTOMATON_STATE_MAP_ORDERED_LIST
 before
-  %static const char * kMapStateNames_%!TYPE_IDENTIFIER% [%![[MAP_AUTOMATON_STATE_MAP count] string]%] = {\n%
+  %static const char * kMapStateNames_%!TYPE_IDENTIFIER% [%![[MAP_AUTOMATON_STATE_MAP_ORDERED_LIST length] string]%] = {\n%
 do
-  %  %![mValue->string utf8Representation]
+  %  %![mKey utf8Representation]
 between
   %,\n%
 after

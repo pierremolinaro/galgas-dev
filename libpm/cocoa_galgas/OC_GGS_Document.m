@@ -244,6 +244,13 @@
     withKeyPath:@"warningCountString"
     options:nil    
   ] ;
+//---
+  [mLiveCompilationCheckbox
+    bind:@"value"
+    toObject:[NSUserDefaultsController sharedUserDefaultsController]
+    withKeyPath:@"values.PMLiveCompilation"
+    options:NULL
+  ] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -932,7 +939,7 @@
   // NSLog (@"PMLiveCompilation %d", [[NSUserDefaults standardUserDefaults] boolForKey:@"PMLiveCompilation"]) ;
   if ([[NSUserDefaults standardUserDefaults] boolForKey:@"PMLiveCompilation"]) {
     [[NSRunLoop currentRunLoop]
-      performSelector:@selector (abortAndBuildDocument:)
+      performSelector:@selector (buildDocument:)
       target:mBuildTask
       argument:self
       order:0

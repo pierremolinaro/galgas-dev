@@ -473,6 +473,15 @@ local function generateCategoryReader
 end function ;
 
 #---------------------------------------------------------------------------*
+
+sortedlist @keySortedList {
+  @string mKey ;
+  @uint mOrder ;
+}{
+  mOrder <
+}
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #           G E N E R A T I O N    F I L E W R A P P E R S                  *
 #                                                                           *
@@ -642,6 +651,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@mapAutomatonActionMap MAP_AUTOMATON_ACTION_MAP
     ?@mapStateSortedList MAP_AUTOMATON_DEFINITION_SORTEDLIST
     ?@mapOverrideList MAP_OVERRIDE_LIST
+    ?@keySortedList MAP_AUTOMATON_STATE_MAP_ORDERED_LIST
   ;
 
 #---------- Class
@@ -1453,6 +1463,10 @@ override reader @mapTypeForGeneration appendSpecificImplementation ->@string out
 #---------------------------------------------------------------------------*
 
 override reader @uniqueMapTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+  @keySortedList keySortedList [emptySortedList] ;
+  foreach mMapAutomatonStateMap do
+    keySortedList += !lkey->string !mStateIndex ;
+  end foreach ;
   outImplementation := [filewrapper typeGenerationTemplate.uniqueMapTypeSpecificImplementation
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
@@ -1463,6 +1477,7 @@ override reader @uniqueMapTypeForGeneration appendSpecificImplementation ->@stri
     !mMapAutomatonActionMap
     !mMapStateSortedList
     !mMapOverrideList
+    !keySortedList
   ] ;
  end reader ;
 

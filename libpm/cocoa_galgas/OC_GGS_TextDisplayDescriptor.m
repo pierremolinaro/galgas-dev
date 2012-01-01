@@ -1,4 +1,4 @@
-//
+  //
 //  OC_GGS_TextDisplayDescriptor.m
 //  galgas-developer
 //
@@ -16,6 +16,11 @@
 #import "OC_GGS_RulerViewForTextView.h"
 #import "OC_GGS_PreferencesController.h"
 #import "OC_GGS_Scroller.h"
+
+//---------------------------------------------------------------------------*
+
+#include <netdb.h>
+#include <netinet/in.h>
 
 //---------------------------------------------------------------------------*
 
@@ -365,8 +370,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 #pragma mark Contextual Help
 
-#include <netdb.h>
-#include <netinet/in.h>
 //---------------------------------------------------------------------------*
 
 - (void) performContextualHelpAtRange: (NSRange) inRange {
@@ -384,6 +387,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     mReceiveSocketHandle = nil ;
     mRemoteSocketHandle = nil ;
     [mTask terminate] ;
+    [mTask waitUntilExit] ;
     mTask = nil ;
   }
 //---
@@ -451,35 +455,30 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 //---------------------------------------------------------------------------*
 
 - (void) getDataFromConnection: (NSNotification *) inNotification {
-  NSData * data = [inNotification.userInfo objectForKey:NSFileHandleNotificationDataItem];
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s (%lu bytes)", __PRETTY_FUNCTION__, (unsigned long) data.length) ;
-  #endif
-  if (data.length > 0) {
-    [mBufferedInputData appendData:data] ;
-    [inNotification.object readInBackgroundAndNotify] ;
-  }else{
-    NSNotificationCenter * center = [NSNotificationCenter defaultCenter] ;
-    [center removeObserver:self name:NSFileHandleConnectionAcceptedNotification object:mReceiveSocketHandle] ;
-    [center removeObserver:self name:NSFileHandleReadCompletionNotification object:mRemoteSocketHandle] ;
-    mReceiveSocket = nil ;
-    mReceiveSocketHandle = nil ;
-    mRemoteSocketHandle = nil ;
-    [mTask terminate] ;
-    [mTask waitUntilExit] ;
-    mTask = nil ;
-  //---
-    NSString * message = [[NSString alloc] initWithData:mBufferedInputData encoding:NSUTF8StringEncoding] ;
-    mBufferedInputData = nil ;
-    [mDocument setContextualHelpMessage:message] ;
+  if (inNotification.object == mRemoteSocketHandle) {
+    NSData * data = [inNotification.userInfo objectForKey:NSFileHandleNotificationDataItem];
+    #ifdef DEBUG_MESSAGES
+      NSLog (@"%s (%lu bytes)", __PRETTY_FUNCTION__, (unsigned long) data.length) ;
+    #endif
+    if (data.length > 0) {
+      [mBufferedInputData appendData:data] ;
+      [inNotification.object readInBackgroundAndNotify] ;
+    }else{
+      NSNotificationCenter * center = [NSNotificationCenter defaultCenter] ;
+      [center removeObserver:self name:NSFileHandleConnectionAcceptedNotification object:mReceiveSocketHandle] ;
+      [center removeObserver:self name:NSFileHandleReadCompletionNotification object:mRemoteSocketHandle] ;
+      mReceiveSocket = nil ;
+      mReceiveSocketHandle = nil ;
+      mRemoteSocketHandle = nil ;
+      [mTask terminate] ;
+      [mTask waitUntilExit] ;
+      mTask = nil ;
+    //---
+      NSString * message = [[NSString alloc] initWithData:mBufferedInputData encoding:NSUTF8StringEncoding] ;
+      mBufferedInputData = nil ;
+      [mDocument setContextualHelpMessage:message] ;
+    }
   }
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) performContextualHelp: (NSMenuItem *) inSender {
-  const NSRange r = [[inSender representedObject] rangeValue] ;
-  [self performContextualHelpAtRange:r] ;
 }
 
 //---------------------------------------------------------------------------*

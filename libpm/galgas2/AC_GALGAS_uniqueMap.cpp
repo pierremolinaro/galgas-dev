@@ -46,7 +46,6 @@ class cSharedUniqueMapRoot : public C_SharedObject {
 //--------------------------------- Attributes
   private : cUniqueMapNode * mRoot ;
   private : PMUInt32 mCount ;
-  private : GALGAS_lstringlist mKeyListInEntryOrder ;
   protected : cSharedUniqueMapRoot * mOverridenMap ;
 //--- For automaton and block overrides
   public : const cBranchOverrideTransformationDescriptor * mBranchBehaviourArray ;
@@ -124,8 +123,6 @@ class cSharedUniqueMapRoot : public C_SharedObject {
   protected : VIRTUAL_IN_DEBUG GALGAS_stringset reader_allKeys (LOCATION_ARGS) const ;
 
   protected : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_allKeyList (LOCATION_ARGS) const ;
-
-  protected : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_allKeyListInEntryOrder (LOCATION_ARGS) const ;
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -250,7 +247,6 @@ cSharedUniqueMapRoot::cSharedUniqueMapRoot (LOCATION_ARGS) :
 C_SharedObject (THERE),
 mRoot (NULL),
 mCount (0),
-mKeyListInEntryOrder (),
 mOverridenMap (NULL),
 mBranchBehaviourArray (NULL),
 mBranchBehaviourArraySize (0),
@@ -260,7 +256,6 @@ mOverrideName (NULL),
 mBeginBranchCount (0),
 mEndBranchCount (0),
 mStateArrayLevel (0) {
-  mKeyListInEntryOrder = GALGAS_lstringlist::constructor_emptyList (HERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -628,7 +623,6 @@ cUniqueMapNode * cSharedUniqueMapRoot::performInsert (capCollectionElement & inA
     cUniqueMapNode * matchingEntry = internalInsert (mRoot, key, inInitialState, inAttributes, entryAlreadyExists, extension) ;
     if (! entryAlreadyExists) {
       result = matchingEntry ;
-      mKeyListInEntryOrder.addAssign_operation (p->mAttribute_lkey COMMA_HERE) ;
       mCount ++ ;
       const C_String shadowErrorMessage (inShadowErrorMessage) ;
       const PMSInt32 shadowErrorMessageLength = shadowErrorMessage.length () ;
@@ -789,28 +783,6 @@ GALGAS_lstringlist AC_GALGAS_uniqueMap::reader_allKeyList (LOCATION_ARGS) const 
   GALGAS_lstringlist result ;
   if (isValid ()) {
     result = mSharedMap->reader_allKeyList (THERE) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Reader allKeyListInEntryOrder
-#endif
-
-//---------------------------------------------------------------------------*
-
-GALGAS_lstringlist cSharedUniqueMapRoot::reader_allKeyListInEntryOrder (UNUSED_LOCATION_ARGS) const {
-  return mKeyListInEntryOrder ;
-}
-
-//---------------------------------------------------------------------------*
-
-GALGAS_lstringlist AC_GALGAS_uniqueMap::reader_allKeyListInEntryOrder (LOCATION_ARGS) const {
-  GALGAS_lstringlist result ;
-  if (isValid ()) {
-    result = mSharedMap->reader_allKeyListInEntryOrder (THERE) ;
   }
   return result ;
 }
@@ -1112,17 +1084,6 @@ const cCollectionElement * AC_GALGAS_uniqueMap::performSearch (const GALGAS_lstr
   const cCollectionElement * result = NULL ;
   if (isValid () && inKey.isValid ()) {
     cUniqueMapNode * node = mSharedMap->performSearch (inKey, inCompiler, inSearchErrorMessage COMMA_THERE) ;
-  //--- Contextual help
-    if ((NULL != node) && executionModeIsContextHelp () && isCurrentCompiledFilePath (inKey.mAttribute_location.startLocation ().sourceFilePath ())) {
-      const PMUInt32 startLocationInSource = inKey.mAttribute_location.startLocation ().index () ;
-      const PMUInt32 endLocationInSource = inKey.mAttribute_location.endLocation ().index () ;
-      if ((contextHelpStartLocation () >= startLocationInSource) && (contextHelpEndLocation () <= endLocationInSource)) {
-        C_String s ;
-        node->mAttributes.description (s, 0) ;
-        s << "\n""State: " << inAutomatonStateNames [node->mCurrentState] ;
-        sendToTCPSocket (s) ;
-      }
-    }
     if (NULL != node) {
       result = node->mAttributes.ptr () ;
     //--- Perform transition
@@ -1160,6 +1121,17 @@ const cCollectionElement * AC_GALGAS_uniqueMap::performSearch (const GALGAS_lstr
         const C_String errorMessage = buildIssueMessage (transition.mIssueMessage, inKey.mAttribute_string.stringValue ()) ;
         inCompiler->semanticErrorAtLocation (loc, errorMessage COMMA_THERE) ;
         } break ;
+      }
+    }
+  //--- Contextual help
+    if ((NULL != node) && executionModeIsContextHelp () && isCurrentCompiledFilePath (inKey.mAttribute_location.startLocation ().sourceFilePath ())) {
+      const PMUInt32 startLocationInSource = inKey.mAttribute_location.startLocation ().index () ;
+      const PMUInt32 endLocationInSource = inKey.mAttribute_location.endLocation ().index () ;
+      if ((contextHelpStartLocation () >= startLocationInSource) && (contextHelpEndLocation () <= endLocationInSource)) {
+        C_String s ;
+        node->mAttributes.description (s, 0) ;
+        s << "\n""State: " << inAutomatonStateNames [node->mCurrentState] ;
+        sendToTCPSocket (s) ;
       }
     }
   }
@@ -2130,6 +2102,18 @@ void AC_GALGAS_uniqueMapProxy::internalMakeRegularProxyBySearchingKey (const AC_
       inCompiler->semanticErrorWith_K_message (inKey, nearestKeyArray, inSearchErrorMessage COMMA_THERE) ;
     }
     attachProxyToMapNode (node) ;
+  //--- Contextual help
+    if ((NULL != node) && executionModeIsContextHelp ()) {
+      if (isCurrentCompiledFilePath (inKey.mAttribute_location.startLocation ().sourceFilePath ())) {
+        const PMUInt32 startLocationInSource = inKey.mAttribute_location.startLocation ().index () ;
+        const PMUInt32 endLocationInSource = inKey.mAttribute_location.endLocation ().index () ;
+        if ((contextHelpStartLocation () >= startLocationInSource) && (contextHelpEndLocation () <= endLocationInSource)) {
+          C_String s ;
+          node->mAttributes.description (s, 0) ;
+          sendToTCPSocket (s) ;
+        }
+      }
+    }
   }
 }
 

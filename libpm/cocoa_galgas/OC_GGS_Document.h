@@ -73,6 +73,7 @@
   @private IBOutlet NSSplitView * mDetailedIssueSplitView ;
 
 //--- Build, stop button
+  @private IBOutlet NSButton * mLiveCompilationCheckbox ;
   @private IBOutlet NSButton * mStartBuildButton ;
   @private IBOutlet NSProgressIndicator * mBuildProgressIndicator ;
   @private IBOutlet NSButton * mStopBuildButton ;
