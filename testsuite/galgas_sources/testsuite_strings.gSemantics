@@ -4,7 +4,9 @@ routine testsuite_strings :
   message "*************************************** begin of string test\n" ;
   const @string command := "echo accentué" ;
   log command ;
-  const @string result := [command popen] ;
+  @string result := [command popen] ;
+  log result ;
+  result := ["echo tototrestreslong" popen] ;
   log result ;
 end routine ;
 
