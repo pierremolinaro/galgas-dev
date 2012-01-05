@@ -531,17 +531,16 @@ void C_String::performActualCharArrayOutput (const char * inCharArray,
   #endif
   if (inArrayCount != 0) {
     insulateEmbeddedString (length () + inArrayCount + 1) ;
-    const PMUInt8 * p = (const PMUInt8 *) inCharArray ;
-    const PMUInt8 * pMax = p + inArrayCount ;
+    PMSInt32 idx = 0 ;
     PMSInt32 newLength = mEmbeddedString->mLength ;
-    while (p != pMax) {
-      if ((* p) < 0x80) {
-        mEmbeddedString->mString [newLength] = TO_UNICODE (* p) ;
-        p ++ ;
+    bool ok = true ;
+    while ((idx < inArrayCount) && ok) {
+      if ((inCharArray [idx] & 0x80) == 0) { // ASCII
+        mEmbeddedString->mString [newLength] = TO_UNICODE (inCharArray [idx]) ;
+        idx ++ ;
         newLength ++ ;
       }else{
-        bool ok = true ;
-        const utf32 unicodeChar = utf32CharacterForPointer (p, pMax, ok) ;
+        const utf32 unicodeChar = utf32CharacterForPointer ((const PMUInt8 *) inCharArray, idx, inArrayCount, ok) ;
         mEmbeddedString->mString [newLength] = unicodeChar ;
         newLength ++ ;
       }
@@ -2302,45 +2301,43 @@ bool C_String::parseUTF8 (const PMUInt8 * inCString,
                           const PMSInt32 inLength,
                           C_String & outString) {
   bool ok = true ;
-  if (inLength > 0) {
-    const PMUInt8 * sourcePointer = inCString ;
-    bool foundCR = false ;
-    const PMUInt8 * endOfArrayPtr = inCString + inLength ;
-    while (((* sourcePointer) != 0) && ok) {
-      const PMUInt8 c = * sourcePointer ;
-      if (c == 0x0A) { // LF
-        if (! foundCR) {
-          outString.appendUnicodeCharacter (TO_UNICODE ('\n') COMMA_HERE) ;
-        }
-        foundCR = false ;
-        sourcePointer ++ ;
-      }else if (c == 0x0D) { // CR
+  PMSInt32 idx = 0 ;
+  bool foundCR = false ;
+  while ((idx < inLength) && ok) {
+    const PMUInt8 c = inCString [idx] ;
+    if (c == 0x00) { // NUL
+      idx = inLength ; // For exiting loop
+    }else if (c == 0x0A) { // LF
+      if (! foundCR) {
         outString.appendUnicodeCharacter (TO_UNICODE ('\n') COMMA_HERE) ;
-        foundCR = true ;
-        sourcePointer ++ ;
-      }else if ((c & 0x80) == 0) { // ASCII Character
-        outString.appendUnicodeCharacter (TO_UNICODE (c) COMMA_HERE) ;
-        foundCR = false ;
-        sourcePointer ++ ;
-      }else{
-        const utf32 uc = utf32CharacterForPointer (sourcePointer, endOfArrayPtr, ok) ;
-        outString.appendUnicodeCharacter (uc COMMA_HERE) ;
-        foundCR = false ;
       }
-    }
-    if (foundCR) {
+      foundCR = false ;
+      idx ++ ;
+    }else if (c == 0x0D) { // CR
       outString.appendUnicodeCharacter (TO_UNICODE ('\n') COMMA_HERE) ;
+      foundCR = true ;
+      idx ++ ;
+    }else if ((c & 0x80) == 0) { // ASCII Character
+      outString.appendUnicodeCharacter (TO_UNICODE (c) COMMA_HERE) ;
+      foundCR = false ;
+      idx ++ ;
+    }else{
+      const utf32 uc = utf32CharacterForPointer (inCString, idx, inLength, ok) ;
+      outString.appendUnicodeCharacter (uc COMMA_HERE) ;
+      foundCR = false ;
     }
+  }
+  if (foundCR) {
+    outString.appendUnicodeCharacter (TO_UNICODE ('\n') COMMA_HERE) ;
   }
   return ok ;
 }
 
 //---------------------------------------------------------------------------*
   
-static void
-parseASCIIWithReplacementCharacter (const PMUInt8 * inCString,
-                                    const PMSInt32 inLength,
-                                    C_String & outString) {
+static void parseASCIIWithReplacementCharacter (const PMUInt8 * inCString,
+                                                const PMSInt32 inLength,
+                                                C_String & outString) {
   const PMUInt8 * sourcePointer = inCString ;
   bool foundCR = false ;
   PMSInt32 index = 0 ;
