@@ -2527,6 +2527,7 @@
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
 				DEAD_CODE_STRIPPING = YES;
 				GCC_C_LANGUAGE_STANDARD = c99;
+				GCC_ENABLE_ASM_KEYWORD = NO;
 				GCC_ENABLE_OBJC_GC = required;
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_OPTIMIZATION_LEVEL = 2;
@@ -2604,7 +2605,6 @@
 					../hand_coded_sources,
 					"../libpm/**",
 				);
-				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "galgas-developer-debug";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 			};

@@ -33,6 +33,13 @@
 
 //---------------------------------------------------------------------------*
 
+GALGAS_char GALGAS_char::constructor_new (const GALGAS_char & inValue
+                                          COMMA_UNUSED_LOCATION_ARGS) {
+  return inValue ;
+}
+
+//---------------------------------------------------------------------------*
+
 GALGAS_char::GALGAS_char (void) :
 AC_GALGAS_root (),
 mIsValid (false),

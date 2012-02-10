@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2012 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
@@ -539,10 +539,10 @@ static void parcoursBDDinterneParNoeud (const PMUInt32 inValue,
   if ((node != 0) && ! isNodeMarkedThenMark (inValue COMMA_HERE)) {
     parcoursBDDinterneParNoeud (extractElse (node), inTraversing) ;
     parcoursBDDinterneParNoeud (extractThen (node), inTraversing) ;
-    inTraversing.action (inValue & ~1,
+    inTraversing.action (inValue & ~1U,
                          extractVar (node COMMA_HERE),
                          extractElse (node),
-                         extractThen (node) & ~1,
+                         extractThen (node) & ~1U,
                          extractThen (node) & 1) ;
   }
 }

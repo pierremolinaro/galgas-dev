@@ -34,6 +34,13 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+GALGAS_uint GALGAS_uint::constructor_new (const GALGAS_uint & inValue
+                                          COMMA_UNUSED_LOCATION_ARGS) {
+  return inValue ;
+}
+
+//---------------------------------------------------------------------------*
+
 GALGAS_uint::GALGAS_uint (void) :
 mIsValid (false),
 mUIntValue (0) {
