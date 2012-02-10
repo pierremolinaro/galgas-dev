@@ -601,6 +601,10 @@ override method @doublePredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"cos" !"double" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"sin" !"double" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"tan" !"double" !false ;
+  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"log10" !"double" !true ;
+  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"log2" !"double" !true ;
+  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"logn" !"double" !true ;
+  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"exp" !"double" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"cosDegree" !"double" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"sinDegree" !"double" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"tanDegree" !"double" !false ;
