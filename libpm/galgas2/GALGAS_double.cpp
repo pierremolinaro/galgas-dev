@@ -36,6 +36,13 @@ static const double PI_CONSTANT = 3.14159265358979323846 ;
 
 //---------------------------------------------------------------------------*
 
+GALGAS_double GALGAS_double::constructor_new (const GALGAS_double & inValue
+                                              COMMA_UNUSED_LOCATION_ARGS) {
+  return inValue ;
+}
+
+//---------------------------------------------------------------------------*
+
 GALGAS_double::GALGAS_double (void) :
 mIsValid (false),
 mDoubleValue (0.0) {

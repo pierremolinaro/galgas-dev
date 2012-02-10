@@ -1,8 +1,8 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  semantics definitions for semantics component                            *
+#  Type constructors                             *
 #                                                                           *
-#  Copyright (C) 2009, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2009, ..., 2012 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -178,6 +178,16 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @boolPredefinedTypeAST getConstructorMap
+  ?!@unifiedTypeMap ioUnifiedTypeMap
+  !@constructorMap outMap
+:
+  outMap := [@constructorMap emptyMap] ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"new" !"bool" !"bool" !false ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @charPredefinedTypeAST getConstructorMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@constructorMap outMap
@@ -185,6 +195,7 @@ override method @charPredefinedTypeAST getConstructorMap
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"replacementCharacter" !"char" !false ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"unicodeCharacterWithUnsigned" !"uint" !"char" !false ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"new" !"char" !"char" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -198,6 +209,7 @@ override method @uintPredefinedTypeAST getConstructorMap
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"errorCount" !"uint" !false ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"warningCount" !"uint" !false ;
   enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"valueWithMask" !"uint" !"uint" !"uint" !true ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"new" !"uint" !"uint" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -209,6 +221,7 @@ override method @sintPredefinedTypeAST getConstructorMap
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"max" !"sint" !false ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"min" !"sint" !false ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"new" !"sint" !"sint" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -222,6 +235,7 @@ override method @uint64PredefinedTypeAST getConstructorMap
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"uint64MaskWithCompressedBitString" !"string" !"uint64" !true ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"uint64BaseValueWithCompressedBitString" !"string"  !"uint64" !true ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"uint64WithBitString" !"string"  !"uint64" !true ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"new" !"uint64"  !"uint64" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -233,6 +247,7 @@ override method @sint64PredefinedTypeAST getConstructorMap
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"max" !"sint64" !false ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"min" !"sint64" !false ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"new" !"sint64" !"sint64" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -314,6 +329,7 @@ override method @doublePredefinedTypeAST getConstructorMap
 :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"pi" !"double" !false ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"new" !"double" !"double" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*

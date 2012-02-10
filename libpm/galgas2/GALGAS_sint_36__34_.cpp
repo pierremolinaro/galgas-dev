@@ -33,6 +33,13 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+GALGAS_sint_36__34_ GALGAS_sint_36__34_::constructor_new (const GALGAS_sint_36__34_ & inValue
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
+  return inValue ;
+}
+
+//---------------------------------------------------------------------------*
+
 GALGAS_sint_36__34_::GALGAS_sint_36__34_ (void) :
 mIsValid (false),
 mSInt64Value (0) {

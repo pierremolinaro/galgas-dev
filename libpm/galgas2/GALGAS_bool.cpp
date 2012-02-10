@@ -39,6 +39,13 @@ mBoolValue (false) {
 
 //---------------------------------------------------------------------------*
 
+GALGAS_bool GALGAS_bool::constructor_new (const GALGAS_bool & inValue
+                                          COMMA_UNUSED_LOCATION_ARGS) {
+  return inValue ;
+}
+
+//---------------------------------------------------------------------------*
+
 GALGAS_bool::GALGAS_bool (const bool inValue) :
 mIsValid (true),
 mBoolValue (inValue) {
