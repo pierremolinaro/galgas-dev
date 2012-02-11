@@ -2,7 +2,7 @@
 //                                                                           *
 //  This file handles all computations performed on grammars                 *
 //                                                                           *
-//  Copyright (C) 1999, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 1999, ..., 2012 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -26,6 +26,7 @@
 
 #include "files/C_HTML_FileWrite.h"
 #include "files/C_TextFileWrite.h"
+#include "files/C_FileManager.h"
 #include "bdd/C_BDD_Descriptor.h"
 #include "bdd/C_BDD_Set1.h"
 #include "bdd/C_BDD_Set2.h"
@@ -309,7 +310,7 @@ analyzeGrammar (C_Compiler * inCompiler,
 //--- If 'HTMLfileName' is the empty string, no file is created
 
 //--- Create output HTML file
-  inOutputDirectoryForHTMLFile.makeDirectoryIfDoesNotExist () ;
+  C_FileManager::makeDirectoryIfDoesNotExist (inOutputDirectoryForHTMLFile) ;
   const C_String HTMLfileName = inOutputDirectoryForHTMLFile + "/" + inTargetFileName.mAttribute_string.stringValue () + ".html" ;
   C_HTML_FileWrite * HTMLfile = NULL ;
   if (outputHTMLfile && inCompiler->mPerformGeneration) {
@@ -319,8 +320,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     macroMyNew (HTMLfile, C_HTML_FileWrite (HTMLfileName,
                                             s,
                                             "", // No css file
-                                            k_default_style // Style definition
-                                            COMMA_SAFARI_CREATOR,
+                                            k_default_style, // Style definition
                                             ok)) ;
     if (! ok) {
       C_String message ;
@@ -343,7 +343,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                              ) ;
   }else if ((! outputHTMLfile) && HTMLfileName.fileExists ()) { // Delete HTML file
     if (inCompiler->mPerformGeneration) {
-      HTMLfileName.deleteFile () ;
+      C_FileManager::deleteFile (HTMLfileName) ;
       if (verboseOptionOn) {
         ggs_printFileOperationSuccess ((C_String ("Deleted '") + HTMLfileName + "'.\n").cString (HERE) COMMA_HERE) ;
       }

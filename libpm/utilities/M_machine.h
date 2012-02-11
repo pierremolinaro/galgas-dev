@@ -34,7 +34,6 @@
 //                                                                           *
 //                  P L A T F O R M   D E T E C T I O N                      *
 //                                                                           *
-// * TARGET_API_MAC_CARBON is defined when compiling for Apple Mac OS Carbon *
 // * WIN32 is defined when compiling for Microsoft Windows                   *
 // * __APPLE__is defined, but __NEXT_RUNTIME__ is not when compiling for     *
 //   Mac OS X Darwin (command line tools)                                    * 
@@ -45,10 +44,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#ifdef TARGET_API_MAC_CARBON
-  //--- Compile for Mac OS Carbon
-  #define MACHINE_IS_DEFINED
-#elif defined (__MINGW32__)
+#ifdef __MINGW32__
   //--- Compile for Win32
   #define COMPILE_FOR_WIN32
   #define MACHINE_IS_DEFINED
