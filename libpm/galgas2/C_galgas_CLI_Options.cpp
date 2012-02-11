@@ -147,15 +147,26 @@ void setExecutionMode (C_String & outErrorMessage) {
       gContextHelpStartLocation = array (2 COMMA_HERE).unsignedIntegerValue () ;
       gContextHelpEndLocation = gContextHelpStartLocation + array (3 COMMA_HERE).unsignedIntegerValue () ;
       gOutputSocket.connect (portNumber, "localhost") ;
+    }else if ((array.count() == 3) && (array (0 COMMA_HERE) == "xml-issues-on-port")) {
+      gMode = 0 ;
+      const PMUInt16 portNumber = (PMUInt16) array (1 COMMA_HERE).unsignedIntegerValue () ;
+      gOutputSocket.connect (portNumber, "localhost") ;
     }else if (mode.length () > 0) {
       outErrorMessage << "** Fatal Error: invalid '--mode=" << mode << "' parameter; it should be:\n"
-        "  --mode=                 default mode: perform compilation;\n"
-        "  --mode=lexical-only     perform only lexical analysis;\n"
-        "  --mode=syntax-only      perform only syntax analysis;\n"
-        "  --mode=context-help:p:n perform context help at source location n, connect to TCP port n for sending results;\n"
-        "  --mode=indexing         outputs indexing files." ;
+        "  --mode=                     default mode: perform compilation;\n"
+        "  --mode=xml-issues-on-port:p perform compilation, output issues as XML data on TCP port p;\n"
+        "  --mode=lexical-only         perform only lexical analysis;\n"
+        "  --mode=syntax-only          perform only syntax analysis;\n"
+        "  --mode=context-help:p:n     perform context help at source location n, output context help data on TCP port p;\n"
+        "  --mode=indexing             output indexing files." ;
     }
   }
+}
+
+//---------------------------------------------------------------------------*
+
+bool executionModeIsNormal (void) {
+  return gMode == 0 ;
 }
 
 //---------------------------------------------------------------------------*

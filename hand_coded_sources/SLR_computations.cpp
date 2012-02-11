@@ -941,7 +941,6 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
                         "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", inSourceFilePath COMMA_HERE)) ;\n"
                         "  scanner->enableIndexing () ;\n"
                         "  if (scanner->sourceText () != NULL) {\n"
-                        "    scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n"
                         "    const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
                         "                                                     gActionTableIndex, gSuccessorTable,\n"
                         "                                                     gProductionsTable) ;\n"
@@ -1003,7 +1002,6 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
                           "      C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
                           "      macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", filePath COMMA_HERE)) ;\n"
                           "      if (scanner->sourceText () != NULL) {\n"
-                          "        scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n"
                           "        const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
                           "                                                         gActionTableIndex, gSuccessorTable,\n"
                           "                                                         gProductionsTable) ;\n"
@@ -1096,8 +1094,7 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
                           "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation ()
                        << " (inCompiler, inSourceString.stringValue (), \"\" COMMA_HERE)) ;\n"
                           "  if (scanner->sourceText () != NULL) {\n"
-                          "    scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n" ;
-        generatedZone3 << "    const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
+                          "    const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,\n"
                           "                                                     gActionTableIndex, gSuccessorTable,\n"
                           "                                                     gProductionsTable) ;\n"
                           "    if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"

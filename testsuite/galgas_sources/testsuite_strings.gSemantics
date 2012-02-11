@@ -6,8 +6,6 @@ routine testsuite_strings :
   log command ;
   @string result := [command popen] ;
   log result ;
-  result := ["echo tototrestreslong" popen] ;
-  log result ;
 end routine ;
 
 

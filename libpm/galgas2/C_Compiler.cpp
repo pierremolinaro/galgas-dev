@@ -57,6 +57,18 @@ const utf32 C_Compiler::kEndOfSourceLexicalErrorMessage [] = {
 
 //---------------------------------------------------------------------------*
 
+bool C_Compiler::performGeneration (void) {
+  return (! gOption_galgas_5F_cli_5F_options_do_5F_not_5F_generate_5F_any_5F_file.mValue) && executionModeIsNormal () ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool C_Compiler::performLogFileRead (void) {
+  return gOption_galgas_5F_cli_5F_options_log_5F_file_5F_read.mValue ;
+}
+
+//---------------------------------------------------------------------------*
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark ========= Constructor and destructor
 #endif
@@ -79,9 +91,7 @@ mTemplateString (),
 mTemplateStringLocation (),
 mSourceTextPtr (NULL),
 mCurrentLocation (),
-mCheckedVariableList (),
-mLogFileRead (gOption_galgas_5F_cli_5F_options_log_5F_file_5F_read.mValue),
-mPerformGeneration (! gOption_galgas_5F_cli_5F_options_do_5F_not_5F_generate_5F_any_5F_file.mValue) {
+mCheckedVariableList () {
   macroAssignSharedObject (mCallerCompiler, inCallerCompiler) ;
 }
 
@@ -245,9 +255,8 @@ void C_Compiler::printMessage (const GALGAS_string & inMessage
 
 //---------------------------------------------------------------------------*
 
-void C_Compiler::
-printMessage (const C_String & inMessage
-              COMMA_LOCATION_ARGS) {
+void C_Compiler::printMessage (const C_String & inMessage
+                               COMMA_LOCATION_ARGS) {
   C_String s ;
   s << inMessage ;
 //--- Add source location information
@@ -260,14 +269,13 @@ printMessage (const C_String & inMessage
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Check And Generate File
+  #pragma mark ========= Log File Read
 #endif
 
 //---------------------------------------------------------------------------*
 
-void C_Compiler::
-logFileRead (const C_String & inFilePath) {
-  if (mLogFileRead) {
+void C_Compiler::logFileRead (const C_String & inFilePath) {
+  if (performLogFileRead ()) {
     printf ("Reading '%s' file.\n", inFilePath.cString (HERE)) ;
   }
 }
@@ -275,7 +283,7 @@ logFileRead (const C_String & inFilePath) {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= GALGAS 2 loop variant run time error
+  #pragma mark ========= Loop variant run time error
 #endif
 
 //---------------------------------------------------------------------------*
@@ -569,7 +577,7 @@ generateFileFromPathes (const C_String & inStartPath,
       printMessage (s COMMA_HERE) ;
     }
     C_FileManager::makeDirectoryIfDoesNotExist (directory) ;
-    if (mPerformGeneration) {
+    if (performGeneration ()) {
       bool ok = false ;
       C_TextFileWrite f (fileName, ok) ;
       if (! ok) {
@@ -644,7 +652,7 @@ generateFileFromPathes (const C_String & inStartPath,
       for (PMSInt32 i=0 ; i<secondUserPart.length () ; i++) {
         incrementPreservedLileCount (UNICODE_VALUE (secondUserPart (i COMMA_HERE)) == '\n') ;
       }
-    }else if (mPerformGeneration) {
+    }else if (performGeneration ()) {
       ok = false ;
       C_TextFileWrite f (fullPathName, ok) ;
       if (! ok) {

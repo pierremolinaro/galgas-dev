@@ -664,7 +664,6 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
                         "  macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", inSourceFilePath COMMA_HERE)) ;\n"
                         "  scanner->enableIndexing () ;\n"
                         "  if (scanner->sourceText () != NULL) {\n"
-                        "    scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n"
                         "    const bool ok = scanner->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
                         "                                                    gFirstProductionIndexes, gDecision, gDecisionIndexes, "
                        << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
@@ -727,7 +726,6 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
                           "    C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
                           "    macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", filePath COMMA_HERE)) ;\n"
                           "    if (scanner->sourceText () != NULL) {\n"
-                          "      scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n"
                           "      const bool ok = scanner->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
                           "                                                      gFirstProductionIndexes, gDecision, gDecisionIndexes, "
                        << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
@@ -821,8 +819,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
                           "    const C_String sourceString = inSourceString.stringValue () ;\n"
                           "    C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
                           "    macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, sourceString, \"\" COMMA_HERE)) ;\n"
-                          "    scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n" ;
-        generatedZone3 << "    const bool ok = scanner->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
+                          "    const bool ok = scanner->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
                           "                                                    gFirstProductionIndexes, gDecision, gDecisionIndexes, "
                        << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
                        << ") ;\n"

@@ -84,6 +84,8 @@ extern C_StringCommandLineOption gOption_generic_5F_cli_5F_options_mode ;
 
 void setExecutionMode (C_String & outErrorMessage) ;
 
+bool executionModeIsNormal (void) ;
+
 bool executionModeIsLexicalAnalysisOnly (void) ;
 
 bool executionModeIsSyntaxAnalysisOnly (void) ;

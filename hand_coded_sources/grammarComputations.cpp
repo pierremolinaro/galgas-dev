@@ -313,7 +313,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   C_FileManager::makeDirectoryIfDoesNotExist (inOutputDirectoryForHTMLFile) ;
   const C_String HTMLfileName = inOutputDirectoryForHTMLFile + "/" + inTargetFileName.mAttribute_string.stringValue () + ".html" ;
   C_HTML_FileWrite * HTMLfile = NULL ;
-  if (outputHTMLfile && inCompiler->mPerformGeneration) {
+  if (outputHTMLfile && inCompiler->performGeneration ()) {
     C_String s ;
     s << "'" << inTargetFileName.mAttribute_string.stringValue () << "' grammar" ;
     bool ok = false ;
@@ -342,7 +342,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                              "<p><a class=\"header_link\" href=\"#grammar\">Grammar analysis</a></p>"
                              ) ;
   }else if ((! outputHTMLfile) && C_FileManager::fileExistsAtPath (HTMLfileName)) { // Delete HTML file
-    if (inCompiler->mPerformGeneration) {
+    if (C_Compiler::performGeneration ()) {
       C_FileManager::deleteFile (HTMLfileName) ;
       if (verboseOptionOn) {
         ggs_printFileOperationSuccess ((C_String ("Deleted '") + HTMLfileName + "'.\n").cString (HERE) COMMA_HERE) ;
@@ -659,7 +659,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     HTMLfile->appendCppTitleComment ("OK (no error, no warning)", "title") ;
   }
   if (outputHTMLfile) {
-    if (inCompiler->mPerformGeneration) {
+    if (C_Compiler::performGeneration ()) {
       if (verboseOptionOn) {
         ggs_printFileOperationSuccess (C_String ("Written '") + HTMLfileName + "'.\n" COMMA_HERE) ;
       }

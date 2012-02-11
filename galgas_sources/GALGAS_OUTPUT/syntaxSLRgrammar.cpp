@@ -15001,7 +15001,6 @@ void cGrammar_syntaxSLRgrammar::performIndexing (C_Compiler * inCompiler,
   macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
   scanner->enableIndexing () ;
   if (scanner->sourceText () != NULL) {
-    scanner->mPerformGeneration = inCompiler->mPerformGeneration ;
     const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,
                                                      gActionTableIndex, gSuccessorTable,
                                                      gProductionsTable) ;
@@ -15034,7 +15033,6 @@ void cGrammar_syntaxSLRgrammar::_performSourceFileParsing_ (C_Compiler * inCompi
       C_Lexique_galgas_5F_scanner * scanner = NULL ;
       macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", filePath COMMA_HERE)) ;
       if (scanner->sourceText () != NULL) {
-        scanner->mPerformGeneration = inCompiler->mPerformGeneration ;
         const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,
                                                          gActionTableIndex, gSuccessorTable,
                                                          gProductionsTable) ;
@@ -15069,7 +15067,6 @@ void cGrammar_syntaxSLRgrammar::_performSourceStringParsing_ (C_Compiler * inCom
   C_Lexique_galgas_5F_scanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, inSourceString.stringValue (), "" COMMA_HERE)) ;
   if (scanner->sourceText () != NULL) {
-    scanner->mPerformGeneration = inCompiler->mPerformGeneration ;
     const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,
                                                      gActionTableIndex, gSuccessorTable,
                                                      gProductionsTable) ;

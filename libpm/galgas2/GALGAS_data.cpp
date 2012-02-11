@@ -254,7 +254,7 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
     }
     outFileWritten = GALGAS_bool (needToWrite) ;
     if (needToWrite) {
-      if (inCompiler->mPerformGeneration) {
+      if (C_Compiler::performGeneration ()) {
         const bool verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
         bool ok = C_FileManager::makeDirectoryIfDoesNotExist (inFilePath.stringValue ().stringByDeletingLastPathComponent ()) ;
         if (! ok) {
@@ -284,31 +284,6 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
 
 //---------------------------------------------------------------------------*
 
-#ifdef COMPILE_FOR_WIN32
-  static C_String unixPath2winPath (const C_String & inWinFileName) {
-    C_String winFileName ;
-      const PMSInt32 fileLength = inWinFileName.length () ;
-      PMSInt32 firstChar = 0 ;
-      if ((fileLength > 3)
-       && (UNICODE_VALUE (inWinFileName (0 COMMA_HERE)) == '/')
-       && isalpha ((int) UNICODE_VALUE (inWinFileName (1 COMMA_HERE)))
-       && (UNICODE_VALUE (inWinFileName (2 COMMA_HERE)) == '/')) {
-        winFileName.appendUnicodeCharacter (inWinFileName (1 COMMA_HERE) COMMA_HERE) ;
-        winFileName << ":\\" ;
-        firstChar = 3 ;
-      }
-      for (PMSInt32 i=firstChar ; i<fileLength ; i++) {
-        const utf32 c = (UNICODE_VALUE (inWinFileName (i COMMA_HERE)) == '/')
-          ? TO_UNICODE ('\\')
-          : inWinFileName (i COMMA_HERE) ;
-        winFileName.appendUnicodeCharacter (c COMMA_HERE) ;
-      }
-    return winFileName ;
-  }
-#endif
-
-//---------------------------------------------------------------------------*
-
 void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
                                       C_Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) const {
@@ -316,22 +291,13 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
     const C_String filePath = inFilePath.stringValue () ;
     if (filePath.length () == 0) {
       inCompiler->onTheFlyRunTimeError ("'@data writeToFile' modifier invoked with empty file path argument" COMMA_THERE) ;
-    }else if (! inCompiler->mPerformGeneration) {
+    }else if (! C_Compiler::performGeneration ()) {
       ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to write '") + filePath + "'.\n" COMMA_HERE) ;
     }else{
       const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (filePath) ;
       const bool verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
       C_FileManager::makeDirectoryIfDoesNotExist (filePath.stringByDeletingLastPathComponent()) ;
-      FILE * filePtr = NULL ;
-//--- If 'inFileName' is the empty string, do not create the file
-//    so that 'mFilePtr' remains equal to NULL
-    //--- Open file in "w" mode
-    //--- Mac OS : fix creator and type
-      #ifdef COMPILE_FOR_WIN32
-        filePtr = ::fopen (unixPath2winPath (filePath).cString (HERE), "w") ;
-      #else
-        filePtr = ::fopen (filePath.cString (HERE), "w") ;
-      #endif
+      FILE * filePtr = C_FileManager::openBinaryFileForWriting (filePath) ;
       if (filePtr == NULL) {
         C_String s ;
         s << "'@data writeToFile' : cannot open '" << filePath << "' file in write mode" ;

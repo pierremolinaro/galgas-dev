@@ -191,12 +191,12 @@ class C_Compiler : public C_SharedObject {
                              COMMA_LOCATION_ARGS) ;
 
 //--- File read logging
-  public : bool mLogFileRead ; // false by default
+  public : static bool performLogFileRead (void) ;
   
   public : void logFileRead (const C_String & inFilePath) ;
   
-//--- Attributes for file generation
-  public : bool mPerformGeneration ;
+//--- File generation
+  public : static bool performGeneration (void) ;
 
 //--- Generate file in directory
   public : void generateFile (const C_String & inLineCommentPrefix,
