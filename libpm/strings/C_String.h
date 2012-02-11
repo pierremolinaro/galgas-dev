@@ -32,6 +32,7 @@
 #include "collections/TC_Array.h"
 #include "utilities/M_machine.h"
 #include "streams/C_ConsoleOut.h"
+#include "utilities/C_Data.h"
 #include "utilities/TF_Swap.h"
 #include "time/C_DateTime.h"
 
@@ -263,52 +264,17 @@ class C_String : public AC_OutputStream {
 //--- Get current column index (starting from 0)
   public : static C_String stringWithRepeatedCharacter (const utf32 inRepeatedCharacter, const PMUInt32 inCount) ;
 
-//--- Conversion to and from native path
-  public : C_String unixPathWithNativePath (void) const ;
-  public : C_String nativePathWithUnixPath (void) const ;
-
 //--- Standardizing Path
 //    - first, convert Windows Path to Unix Path (on windows only)
 //    - Reduce empty components and references to the current directory (that is, the sequences "//" and "/./") to single path separators
   public : C_String stringByStandardizingPath (void) const ;
 
-//--- Current directory (returns always an Unux path)
-  public : static C_String currentDirectory (void) ;
-  
-  public : C_DateTime fileModificationTime (void) const ;
-
-  public : bool fileExists (void) const ;
-
-  public : bool binaryDataWithContentOfFile (TC_UniqueArray <PMUInt8> & outBinaryData) const ;
-
-  public : PMSInt32 filePosixPermissions (void) const ;
-
-  public : PMSInt32 setFilePosixPermissions (const PMSInt32 inNewFilePosixPermissions) const ;
-
-
-//--- Testing for absolute path (not empty and begins with '/')
-  public : bool isAbsolutePath (void) const ;
-
-//--- If receiver is an absolute path, returns it
-//    Otherwise, prepend current directory
-  public : C_String absolutePathFromCurrentDirectory (void) const ;
-
-//--- If receiver is an absolute path, returns it
-//    Otherwise, prepend path argument
-//    if path argument it self is relative, current directory is prepended
-  public : C_String absolutePathFromPath (const C_String & inPath) const ;
-
-//--- Return the relative path of the receiver from inPath 
-  public : C_String relativePathFromPath (const C_String & inPath) const ;
-
 //---------------- Virtual output stream methods --------------
-  protected : virtual void
-  performActualCharArrayOutput (const char * inCharArray,
-                                const PMSInt32 inArrayCount) ;
+  protected : virtual void performActualCharArrayOutput (const char * inCharArray,
+                                                         const PMSInt32 inArrayCount) ;
 
-  protected : virtual void
-  performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                   const PMSInt32 inArrayCount) ;
+  protected : virtual void performActualUnicodeArrayOutput (const utf32 * inCharArray,
+                                                            const PMSInt32 inArrayCount) ;
 
 //--- Private (internal) methods
   private : void insulateEmbeddedString (const PMSInt32 inNewCapacity) ;
@@ -317,8 +283,8 @@ class C_String : public AC_OutputStream {
     private : void checkString (LOCATION_ARGS) const ;
   #endif
 
-  public : static bool parseUTF8 (const PMUInt8 * inCString,
-                                  const PMSInt32 inLength,
+  public : static bool parseUTF8 (const C_Data & inDataString,
+                                  const PMSInt32 inOffset,
                                   C_String & outString) ;
 
 //---------------- Private attributes -------------

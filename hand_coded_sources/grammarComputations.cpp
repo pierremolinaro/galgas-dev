@@ -341,7 +341,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                              "<p><a class=\"header_link\" href=\"#follow_by_empty\">Follow by empty</a></p>"
                              "<p><a class=\"header_link\" href=\"#grammar\">Grammar analysis</a></p>"
                              ) ;
-  }else if ((! outputHTMLfile) && HTMLfileName.fileExists ()) { // Delete HTML file
+  }else if ((! outputHTMLfile) && C_FileManager::fileExistsAtPath (HTMLfileName)) { // Delete HTML file
     if (inCompiler->mPerformGeneration) {
       C_FileManager::deleteFile (HTMLfileName) ;
       if (verboseOptionOn) {

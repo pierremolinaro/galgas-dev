@@ -30,6 +30,7 @@
 //---------------------------------------------------------------------------*
 
 #include "strings/C_String.h"
+#include "utilities/C_Data.h"
 
 //---------------------------------------------------------------------------*
 
@@ -38,16 +39,23 @@ class C_FileManager {
   public : static C_String unixPathWithNativePath (const C_String & inFilePath) ;
   public : static C_String nativePathWithUnixPath (const C_String & inFilePath) ;
 
+//--- File exists
+  public : static bool fileExistsAtPath (const C_String & inFilePath) ;
+
 //--- Open text file
   public : static FILE * openTextFileForReading (const C_String & inFilePath) ;
 
   public : static FILE * openTextFileForWriting (const C_String & inFilePath) ;
 
+//--- Open binary file
+  public : static FILE * openBinaryFileForReading (const C_String & inFilePath) ;
+
+  public : static FILE * openBinaryFileForWriting (const C_String & inFilePath) ;
+
 
 //--- Read binary file at once
   public : static bool binaryDataWithContentOfFile (const C_String & inFilePath,
-                                                    PMUInt8 * & outBinaryData,
-                                                    PMSInt32 & outFileSize) ;
+                                                    C_Data & outBinaryData) ;
 
 //--- Read text file at once
   public : static C_String stringWithContentOfFile (const C_String & inFilePath) ;
@@ -63,7 +71,7 @@ class C_FileManager {
                                                     const C_String & inFilePath) ;
 
 //--- Write string to file
-  public : static bool writeBinaryDataToFile (const TC_UniqueArray <PMUInt8> & inBinaryData,
+  public : static bool writeBinaryDataToFile (const C_Data & inBinaryData,
                                               const C_String & inFilePath) ;
 
 //--- Delete file (returns an empty string on success, or a string describing the error)
@@ -104,7 +112,14 @@ class C_FileManager {
   public : static C_String stringWithSymbolicLinkContents (const C_String & inLinkPath,
                                                            bool & outOk) ;
 
+//--- File permissions
+  public : static PMSInt32 filePosixPermissions (const C_String & inFilePath) ;
 
+  public : static PMSInt32 setFilePosixPermissions (const C_String & inFilePath,
+                                                    const PMSInt32 inNewFilePosixPermissions) ;
+
+//--- File modification time
+  public : static C_DateTime fileModificationTime (const C_String & inFilePath) ;
 } ;
 
 //---------------------------------------------------------------------------*

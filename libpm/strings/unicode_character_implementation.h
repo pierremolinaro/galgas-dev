@@ -575,12 +575,12 @@ PMSInt32 UTF8StringFromUTF32Character (const utf32 inUnicodeChar, char outSequen
 //---------------------------------------------------------------------------*
 
 #ifdef __cplusplus
-  utf32 utf32CharacterForPointer (const PMUInt8 * inBasePointer,
+  utf32 utf32CharacterForPointer (const PMUInt8 * inDataString,
                                   PMSInt32 & ioIndex,
                                   const PMSInt32 inLength,
                                   bool & ioOK) {
     PMUInt32 result = 0 ;
-    PMUInt32 c = inBasePointer [ioIndex] ;
+    PMUInt32 c = inDataString [ioIndex] ;
     ioIndex ++ ;
     ioOK = true ;
     if ((c & 0x80) == 0) {
@@ -588,7 +588,7 @@ PMSInt32 UTF8StringFromUTF32Character (const utf32 inUnicodeChar, char outSequen
     }else if ((c & 0xE0) == 0xC0) {
       result = c & 0x1F ;
       result <<= 6 ;
-      c = inBasePointer [ioIndex] ;
+      c = inDataString [ioIndex] ;
       ioOK = ((c & 0xC0) == 0x80) && (ioIndex < inLength) ;
       if (ioOK) {
         ioIndex ++ ;
@@ -597,12 +597,12 @@ PMSInt32 UTF8StringFromUTF32Character (const utf32 inUnicodeChar, char outSequen
     }else if ((c & 0xF0) == 0xE0) {
       result = c & 0x0F ;
       result <<= 12 ;
-      c = inBasePointer [ioIndex] ;
+      c = inDataString [ioIndex] ;
       ioOK = ((c & 0xC0) == 0x80) && (ioIndex < inLength) ;
       if (ioOK) {
         ioIndex ++ ;
         result |= (c & 0x3F) << 6 ;
-        c = inBasePointer [ioIndex] ;
+        c = inDataString [ioIndex] ;
         if (ioOK) {
           ioOK &= ((c & 0xC0) == 0x80) && (ioIndex < inLength) ;
           ioIndex ++ ;
@@ -611,17 +611,17 @@ PMSInt32 UTF8StringFromUTF32Character (const utf32 inUnicodeChar, char outSequen
       }
     }else if ((c & 0xF8) == 0xF0) {
       result = (c & 0x07) << 18 ;
-      c = inBasePointer [ioIndex] ;
+      c = inDataString [ioIndex] ;
       ioOK = ((c & 0xC0) == 0x80) && (ioIndex < inLength) ;
       if (ioOK) {
         ioIndex ++ ;
         result |= (c & 0x3F) << 12 ;
-        c = inBasePointer [ioIndex] ;
+        c = inDataString [ioIndex] ;
         ioOK = ((c & 0xC0) == 0x80) && (ioIndex < inLength) ;
         if (ioOK) {
           ioIndex ++ ;
           result |= (c & 0x3F) << 6 ;
-          c = inBasePointer [ioIndex] ;
+          c = inDataString [ioIndex] ;
           ioOK = ((c & 0xC0) == 0x80) && (ioIndex < inLength) ;
           if (ioOK) {
             ioIndex ++ ;

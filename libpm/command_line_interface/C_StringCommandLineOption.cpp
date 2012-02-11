@@ -189,7 +189,7 @@ C_PrologueEpilogue gReleaseString (NULL, C_StringCommandLineOption::releaseStrin
 
 void C_StringCommandLineOption::
 getStringOptionNameList (TC_UniqueArray <C_String> & outArray) {
-  outArray.removeAllObjects () ;
+  outArray.setCountToZero () ;
   C_StringCommandLineOption * p = gFirst ;
   while (p != NULL) {
     outArray.addObject (p->mDomainName) ;

@@ -1001,7 +1001,7 @@ static void findNearestKeyForNode (const C_String & inKey,
     // printf ("inCurrentNode->mKey '%s', distance %u\n", inCurrentNode->mKey.cString (HERE), distance) ;
     if (ioBestDistance > distance) {
       ioBestDistance = distance ;
-      ioNearestKeyArray.removeAllObjects () ;
+      ioNearestKeyArray.setCountToZero () ;
       ioNearestKeyArray.addObject (inCurrentNode->mKey) ;
     }else if (ioBestDistance == distance) {
       ioNearestKeyArray.addObject (inCurrentNode->mKey) ;
