@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2009, ..., 2011 Pierre Molinaro.                           *
+//  Copyright (C) 2009, ..., 2012 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -23,13 +23,14 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#include "predefined-types.h"
-#include "capCollectionElement.h"
-#include "cCollectionElement.h"
+#include "galgas2/predefined-types.h"
+#include "galgas2/capCollectionElement.h"
+#include "galgas2/cCollectionElement.h"
 #include "galgas2/C_Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "strings/unicode_character_cpp.h"
 #include "galgas2/C_galgas_CLI_Options.h"
+#include "files/C_FileManager.h"
 
 //---------------------------------------------------------------------------*
 
@@ -277,14 +278,14 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
     if (needToWrite) {
       if (inCompiler->mPerformGeneration) {
         const bool verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
-        bool ok = inFilePath.stringValue ().stringByDeletingLastPathComponent ().makeDirectoryIfDoesNotExist () ;
+        bool ok = C_FileManager::makeDirectoryIfDoesNotExist (inFilePath.stringValue ().stringByDeletingLastPathComponent ()) ;
         if (! ok) {
           C_String message ;
           message << "cannot create '" << inFilePath.stringValue () << "' directory" ;
           inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
           outFileWritten.drop () ;
         }else{
-          ok = inFilePath.stringValue ().writeBinaryData (mData) ;
+          ok = C_FileManager::writeBinaryDataToFile (mData, inFilePath.stringValue ()) ;
           if (ok && verboseOptionOn && fileAlreadyExists) {
             ggs_printFileOperationSuccess (C_String ("Replaced '") + inFilePath.stringValue () + "'.\n" COMMA_THERE) ;
           }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
@@ -302,27 +303,6 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
     }
   }
 }
-
-//---------------------------------------------------------------------------*
-
-#ifdef TARGET_API_MAC_CARBON
-  static C_String unixPath2macOSpath (const C_String & inPath) {
-    C_String macOSpath ;
-    const PMSInt32 length = inPath.length () ;
-    if (length > 0) {
-    //--- Replace '/' by ':'
-      for (PMSInt32 i=0 ; i<length ; i++) {
-        const utf32 c = inPath (i COMMA_HERE) ;
-        macOSpath.appendUnicodeCharacter ((UNICODE_VALUE (c) == '/') ? TO_UNICODE (':') : c COMMA_HERE) ;
-      }
-    //--- if first character is ':', following char must be 'Volumes:' : suppress them
-      if ((UNICODE_VALUE (macOSpath (0 COMMA_HERE)) == ':') && (macOSpath.length () > 9)) {
-        macOSpath.suppress (0, 9 COMMA_HERE) ;
-      }
-    }
-    return macOSpath ;
-  }
-#endif
 
 //---------------------------------------------------------------------------*
 
@@ -363,15 +343,13 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
     }else{
       const bool fileAlreadyExists = filePath.fileExists () ;
       const bool verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
-      filePath.stringByDeletingLastPathComponent().makeDirectoryIfDoesNotExist () ;
+      C_FileManager::makeDirectoryIfDoesNotExist (filePath.stringByDeletingLastPathComponent()) ;
       FILE * filePtr = NULL ;
 //--- If 'inFileName' is the empty string, do not create the file
 //    so that 'mFilePtr' remains equal to NULL
     //--- Open file in "w" mode
     //--- Mac OS : fix creator and type
-      #ifdef TARGET_API_MAC_CARBON
-        filePtr = ::fopen (unixPath2macOSpath (filePath).cString (HERE), "w") ;
-      #elif defined (COMPILE_FOR_WIN32)
+      #ifdef COMPILE_FOR_WIN32
         filePtr = ::fopen (unixPath2winPath (filePath).cString (HERE), "w") ;
       #else
         filePtr = ::fopen (filePath.cString (HERE), "w") ;

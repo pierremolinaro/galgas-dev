@@ -31,6 +31,7 @@
 #include "strings/unicode_string_routines.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "galgas2/cIndexingDictionary.h"
+#include "files/C_FileManager.h"
 
 //---------------------------------------------------------------------------*
 
@@ -118,7 +119,7 @@ mIndexForSecondPassParsing (0) {
     logFileRead (inSourceFileName) ;
     bool ok = false ;
     PMTextFileEncoding textFileEncoding ;
-    const C_String sourceString = C_String::stringWithContentOfFile (inSourceFileName, textFileEncoding, ok) ;
+    const C_String sourceString = C_FileManager::stringWithContentOfFile (inSourceFileName, textFileEncoding, ok) ;
     if (ok) {
       C_SourceTextInString * sourceTextPtr = NULL ;    
       macroMyNew (sourceTextPtr, C_SourceTextInString (sourceString,

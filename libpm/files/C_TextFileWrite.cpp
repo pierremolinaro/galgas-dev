@@ -26,62 +26,13 @@
 #include "files/C_TextFileWrite.h"
 #include "time/C_DateTime.h"
 #include "strings/unicode_character_cpp.h"
+#include "files/C_FileManager.h"
 
 //---------------------------------------------------------------------------*
 
 #include <string.h>
 #include <ctype.h>
 #include <signal.h>
-
-#ifdef TARGET_API_MAC_CARBON
-  #include <unix.h>
-#endif
-
-//---------------------------------------------------------------------------*
-
-#ifdef TARGET_API_MAC_CARBON
-  static C_String unixPath2macOSpath (const C_String & inPath) {
-    C_String macOSpath ;
-    const PMSInt32 length = inPath.length () ;
-    if (length > 0) {
-    //--- Replace '/' by ':'
-      for (PMSInt32 i=0 ; i<length ; i++) {
-        const utf32 c = inPath (i COMMA_HERE) ;
-        macOSpath.appendUnicodeCharacter ((UNICODE_VALUE (c) == '/') ? TO_UNICODE (':') : c COMMA_HERE) ;
-      }
-    //--- if first character is ':', following char must be 'Volumes:' : suppress them
-      if ((UNICODE_VALUE (macOSpath (0 COMMA_HERE)) == ':') && (macOSpath.length () > 9)) {
-        macOSpath.suppress (0, 9 COMMA_HERE) ;
-      }
-    }
-    return macOSpath ;
-  }
-#endif
-
-//---------------------------------------------------------------------------*
-
-#ifdef COMPILE_FOR_WIN32
-  static C_String unixPath2winPath (const C_String & inWinFileName) {
-    C_String winFileName ;
-      const PMSInt32 fileLength = inWinFileName.length () ;
-      PMSInt32 firstChar = 0 ;
-      if ((fileLength > 3)
-       && (UNICODE_VALUE (inWinFileName (0 COMMA_HERE)) == '/')
-       && isalpha ((int) UNICODE_VALUE (inWinFileName (1 COMMA_HERE)))
-       && (UNICODE_VALUE (inWinFileName (2 COMMA_HERE)) == '/')) {
-        winFileName.appendUnicodeCharacter (inWinFileName (1 COMMA_HERE) COMMA_HERE) ;
-        winFileName << ":\\" ;
-        firstChar = 3 ;
-      }
-      for (PMSInt32 i=firstChar ; i<fileLength ; i++) {
-        const utf32 c = (UNICODE_VALUE (inWinFileName (i COMMA_HERE)) == '/')
-          ? TO_UNICODE ('\\')
-          : inWinFileName (i COMMA_HERE) ;
-        winFileName.appendUnicodeCharacter (c COMMA_HERE) ;
-      }
-    return winFileName ;
-  }
-#endif
 
 //---------------------------------------------------------------------------*
 
@@ -91,8 +42,7 @@
 
 //---------------------------------------------------------------------------*
 
-C_TextFileWrite::C_TextFileWrite (const C_String & inFileName
-                                  COMMA_MAC_OS_CREATOR_FORMAL_ARGUMENT,
+C_TextFileWrite::C_TextFileWrite (const C_String & inFileName,
                                   bool & outOk) :
 mFileName (inFileName),
 mFilePtr((FILE *) NULL),
@@ -102,16 +52,7 @@ mBufferLength (0) {
 //    so that 'mFilePtr' remains equal to NULL
   if (inFileName.length () > 0) {
   //--- Open file in "wt" mode
-  //--- Mac OS : fix creator and type
-    #ifdef TARGET_API_MAC_CARBON
-      _fcreator = MAC_OS_CREATOR_FORMAL_ARGUMENT_NAME ;
-      _ftype = 'TEXT' ;
-      mFilePtr = ::fopen (unixPath2macOSpath (inFileName).cString (HERE), "wt") ;
-    #elif defined (COMPILE_FOR_WIN32)
-      mFilePtr = ::fopen (unixPath2winPath (inFileName).cString (HERE), "wt") ;
-    #else
-      mFilePtr = ::fopen (inFileName.cString (HERE), "wt") ;
-    #endif
+    mFilePtr = C_FileManager::openTextFileForWriting (inFileName) ;
   //--- Open Ok ?
     outOk = mFilePtr != NULL ;
   //

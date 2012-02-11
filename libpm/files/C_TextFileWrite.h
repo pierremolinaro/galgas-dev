@@ -47,8 +47,7 @@ class C_TextFileWrite : public AC_OutputStream {
 //    outSuccessfullyOpened is returned true is inFileName is empty or if file is successfully opened
 //    outSuccessfullyOpened is returned false is inFileName is not empty and file cannot be successfully opened
 //    The destructor will close the file (is successfully opened)
-  public : C_TextFileWrite (const C_String & inFileName
-                            COMMA_MAC_OS_CREATOR_FORMAL_ARGUMENT,
+  public : C_TextFileWrite (const C_String & inFileName,
                             bool & outSuccessfullyOpened) ;
 
 //--- Destructor closes the file

@@ -56,26 +56,6 @@
 
 //---------------------------------------------------------------------------*
 
-#ifdef TARGET_API_MAC_CARBON
-  #define MAC_OS_CREATOR_FORMAL_ARGUMENT_NAME       inCreator
-  #define COMMA_MAC_OS_CREATOR_FORMAL_ARGUMENT_NAME , MAC_OS_CREATOR_FORMAL_ARGUMENT_NAME
-  #define MAC_OS_CREATOR_FORMAL_ARGUMENT            const PMSInt32 MAC_OS_CREATOR_FORMAL_ARGUMENT_NAME
-  #define COMMA_MAC_OS_CREATOR_FORMAL_ARGUMENT      , MAC_OS_CREATOR_FORMAL_ARGUMENT
-  #define COMMA_CODE_WARRIOR_CREATOR                , 'CWIE'
-  #define COMMA_TEACH_TEXT_CREATOR                  , 'ttxt'
-  #define COMMA_SAFARI_CREATOR                      , 'sfri'
-#else
-  #define MAC_OS_CREATOR_FORMAL_ARGUMENT_NAME
-  #define COMMA_MAC_OS_CREATOR_FORMAL_ARGUMENT_NAME
-  #define MAC_OS_CREATOR_FORMAL_ARGUMENT
-  #define COMMA_MAC_OS_CREATOR_FORMAL_ARGUMENT
-  #define COMMA_CODE_WARRIOR_CREATOR
-  #define COMMA_TEACH_TEXT_CREATOR
-  #define COMMA_SAFARI_CREATOR
-#endif
-
-//---------------------------------------------------------------------------*
-
 typedef enum {
   kUTF_8_FileEncoding,
   kUTF_16BE_FileEncoding,
@@ -295,29 +275,9 @@ class C_String : public AC_OutputStream {
 //--- Current directory (returns always an Unux path)
   public : static C_String currentDirectory (void) ;
   
-  public : bool makeDirectoryIfDoesNotExist (void) const ;
-
-  public : static C_String stringWithContentOfFile (const C_String & inFilePath) ;
-
-  public : static C_String stringWithContentOfFile (const C_String & inFilePath,
-                                                    PMTextFileEncoding & outTextFileEncoding,
-                                                    bool & outOK) ;
-
-  public : bool writeToFile (const C_String & inFilePath
-                             COMMA_MAC_OS_CREATOR_FORMAL_ARGUMENT
-                             COMMA_LOCATION_ARGS) const ;
-
-  public : bool writeToExecutableFile (const C_String & inFilePath
-                                       COMMA_MAC_OS_CREATOR_FORMAL_ARGUMENT
-                                       COMMA_LOCATION_ARGS) const ;
-
-  public : bool writeBinaryData (const TC_UniqueArray <PMUInt8> & inBinaryData) const ;
-
   public : C_DateTime fileModificationTime (void) const ;
 
   public : bool fileExists (void) const ;
-
-  public : bool directoryExists (void) const ;
 
   public : bool binaryDataWithContentOfFile (TC_UniqueArray <PMUInt8> & outBinaryData) const ;
 
@@ -340,29 +300,6 @@ class C_String : public AC_OutputStream {
 
 //--- Return the relative path of the receiver from inPath 
   public : C_String relativePathFromPath (const C_String & inPath) const ;
-
-//--- Find file in directory
-  public : C_String findFileInDirectory (const C_String & inFileName,
-                                         const TC_UniqueArray <C_String> & inDirectoriesToExclude) const ;
-
-//--- Find all files in directory and subdirectories that respond to a given extension
-//    Initial directory is got from receiver value. If it is not a directory, this method does nothing.
-//    Found files are appended to outFoundFilePathes.
-  public : void findAllFilesInDirectoryFromExtension (const C_String & inExtension,
-                                                      TC_UniqueArray <C_String> & outFoundFilePathes) const ;
-
-//--- Delete file (returns NULL on success, or a string describing the error)
-  public : const char * deleteFile (void) const ;
-  
-//--- Remove directory (returns NULL on success, or a string describing the error)
-  public : const char * removeDirectory (void) const ;
-
-//---------------- Symbolic links --------------
-  public : bool isSymbolicLink (void) const ;
-
-  public : C_String stringWithSymbolicLinkContents (bool & outOk) const ;
-
-  public : bool makeSymbolicLinkWithPath (const C_String & inPath) const ;
 
 //---------------- Virtual output stream methods --------------
   protected : virtual void

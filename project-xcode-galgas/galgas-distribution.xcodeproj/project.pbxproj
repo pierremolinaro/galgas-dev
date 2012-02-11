@@ -105,6 +105,8 @@
 		CF3D9FD21257733E0037D473 /* capSortedListElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC31257733E0037D473 /* capSortedListElement.cpp */; };
 		CF3D9FD31257733E0037D473 /* cGenericAbstractEnumerator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC51257733E0037D473 /* cGenericAbstractEnumerator.cpp */; };
 		CF3D9FD41257733E0037D473 /* cSortedListElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC71257733E0037D473 /* cSortedListElement.cpp */; };
+		CF3FDE0514E66E2F0040331C /* C_FileManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3FDE0314E66E2F0040331C /* C_FileManager.cpp */; };
+		CF3FDE0614E66E2F0040331C /* C_FileManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3FDE0314E66E2F0040331C /* C_FileManager.cpp */; };
 		CF4397F90ADFE16D0085F47C /* PMCancelButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4397F50ADFE16D0085F47C /* PMCancelButtonForPanel.m */; };
 		CF4397FB0ADFE16D0085F47C /* PMOkButtonForPanel.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4397F70ADFE16D0085F47C /* PMOkButtonForPanel.m */; };
 		CF4398040ADFE1900085F47C /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CF4398030ADFE1900085F47C /* WebKit.framework */; };
@@ -517,6 +519,8 @@
 		CF3D9FC71257733E0037D473 /* cSortedListElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cSortedListElement.cpp; sourceTree = "<group>"; };
 		CF3D9FC81257733E0037D473 /* cSortedListElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cSortedListElement.h; sourceTree = "<group>"; };
 		CF3D9FC91257733E0037D473 /* typeComparisonResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = typeComparisonResult.h; sourceTree = "<group>"; };
+		CF3FDE0314E66E2F0040331C /* C_FileManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_FileManager.cpp; sourceTree = "<group>"; };
+		CF3FDE0414E66E2F0040331C /* C_FileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_FileManager.h; sourceTree = "<group>"; };
 		CF4397F40ADFE16D0085F47C /* PMCancelButtonForPanel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PMCancelButtonForPanel.h; sourceTree = "<group>"; };
 		CF4397F50ADFE16D0085F47C /* PMCancelButtonForPanel.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = PMCancelButtonForPanel.m; sourceTree = "<group>"; };
 		CF4397F60ADFE16D0085F47C /* PMOkButtonForPanel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PMOkButtonForPanel.h; sourceTree = "<group>"; };
@@ -1913,6 +1917,8 @@
 		CFF538CC057A559D00854C83 /* files */ = {
 			isa = PBXGroup;
 			children = (
+				CF3FDE0314E66E2F0040331C /* C_FileManager.cpp */,
+				CF3FDE0414E66E2F0040331C /* C_FileManager.h */,
 				CF8259D808536A7E0077AEAF /* C_HTML_FileWrite.cpp */,
 				CF8259D908536A7E0077AEAF /* C_HTML_FileWrite.h */,
 				CF8259DA08536A7E0077AEAF /* C_TextFileWrite.cpp */,
@@ -2276,6 +2282,7 @@
 				CFC80672137C3FB80028907B /* libpmHandling.cpp in Sources */,
 				CF702740137C53D600FA7C3E /* C_ColoredConsole.cpp in Sources */,
 				CFD2567D1494FC2E00E63CAA /* C_TCPSocketOut.cpp in Sources */,
+				CF3FDE0514E66E2F0040331C /* C_FileManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2455,6 +2462,7 @@
 				CFC80675137C3FB80028907B /* libpmHandling.cpp in Sources */,
 				CF702743137C53D600FA7C3E /* C_ColoredConsole.cpp in Sources */,
 				CFD2567E1494FC2E00E63CAA /* C_TCPSocketOut.cpp in Sources */,
+				CF3FDE0614E66E2F0040331C /* C_FileManager.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

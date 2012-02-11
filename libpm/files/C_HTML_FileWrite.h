@@ -46,8 +46,7 @@ class C_HTML_FileWrite : public C_TextFileWrite {
   public : C_HTML_FileWrite (const C_String & inFileName,
                              const C_String & inWindowTitle,
                              const C_String & inCSSFileName,
-                             const C_String & inCSSContents
-                             COMMA_MAC_OS_CREATOR_FORMAL_ARGUMENT,
+                             const C_String & inCSSContents,
                              bool & outOk) ;
 
 //--- Destructor

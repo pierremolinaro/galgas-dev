@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2009, ..., 2011 Pierre Molinaro.                           *
+//  Copyright (C) 2009, ..., 2012 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -25,6 +25,7 @@
 
 #include "command_line_interface/F_Analyze_CLI_Options.h"
 #include "files/C_TextFileWrite.h"
+#include "files/C_FileManager.h"
 #include "galgas2/C_Compiler.h"
 #include "galgas2/C_galgas_io.h"
 #include "galgas2/C_galgas_CLI_Options.h"
@@ -548,7 +549,7 @@ generateFileFromPathes (const C_String & inStartPath,
    ? sourceFilePath ().stringByDeletingLastPathComponent ()
    : inStartPath ;
 //--- Search file in directory
-  const C_String fullPathName = startPath.findFileInDirectory (inFileName, inDirectoriesToExclude) ;
+  const C_String fullPathName = C_FileManager::findFileInDirectory (startPath, inFileName, inDirectoriesToExclude) ;
   if (fullPathName.length () == 0) {
     if (veryVerboseOptionOn) {
       C_String message ;
@@ -567,10 +568,10 @@ generateFileFromPathes (const C_String & inStartPath,
       s << "- Note file access: create '" << directory << "' directory if does not exist\n" ;
       printMessage (s COMMA_HERE) ;
     }
-    directory.makeDirectoryIfDoesNotExist () ;
+    C_FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (mPerformGeneration) {
       bool ok = false ;
-      C_TextFileWrite f (fileName COMMA_CODE_WARRIOR_CREATOR, ok) ;
+      C_TextFileWrite f (fileName, ok) ;
       if (! ok) {
         C_String message ;
         message << "Cannot open '" << fileName << "' file in write mode." ;
@@ -603,7 +604,7 @@ generateFileFromPathes (const C_String & inStartPath,
     C_String secondGeneratedPart ;
     logFileRead (fullPathName) ;
 //    addDependancyOutputFilePath (fullPathName) ;
-    C_String s = C_String::stringWithContentOfFile (fullPathName) ;
+    C_String s = C_FileManager::stringWithContentOfFile (fullPathName) ;
     TC_UniqueArray <C_String> stringArray ;
     s.componentsSeparatedByString (kSTART_OF_USER_ZONE_1, stringArray) ;
     bool ok = stringArray.count () == 2 ;
@@ -645,7 +646,7 @@ generateFileFromPathes (const C_String & inStartPath,
       }
     }else if (mPerformGeneration) {
       ok = false ;
-      C_TextFileWrite f (fullPathName COMMA_CODE_WARRIOR_CREATOR, ok) ;
+      C_TextFileWrite f (fullPathName, ok) ;
       if (! ok) {
         C_String message ;
         message << "Cannot open '" << fullPathName << "' file in write mode." ;
@@ -725,7 +726,7 @@ void enableTraceWithPath (const C_String & inFilePath) {
   gTraceIndex = 0 ;
   bool ok = false ;
   const C_String path = inFilePath + ".trace.txt" ;
-  macroMyNew (gTraceFile, C_TextFileWrite (path COMMA_TEACH_TEXT_CREATOR, ok)) ;
+  macroMyNew (gTraceFile, C_TextFileWrite (path, ok)) ;
   if (! ok) {
     printf ("**** Error: cannot create trace file at path: '%s'.\n", path.cString (HERE)) ;
     macroMyDelete (gTraceFile) ;

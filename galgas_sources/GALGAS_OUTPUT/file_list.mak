@@ -146,6 +146,7 @@ SOURCES += C_BDD_Descriptor.cpp
 #--- Files
 SOURCES += C_TextFileWrite.cpp
 SOURCES += C_HTML_FileWrite.cpp
+SOURCES += C_FileManager.cpp
 
 #--- Streams
 SOURCES += AC_OutputStream.cpp
