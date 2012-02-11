@@ -245,7 +245,6 @@ void cGrammar_projectLL_31_grammar::performIndexing (C_Compiler * inCompiler,
   macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", inSourceFilePath COMMA_HERE)) ;
   scanner->enableIndexing () ;
   if (scanner->sourceText () != NULL) {
-    scanner->mPerformGeneration = inCompiler->mPerformGeneration ;
     const bool ok = scanner->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,
                                                     gFirstProductionIndexes, gDecision, gDecisionIndexes, 43) ;
     if (ok) {
@@ -277,7 +276,6 @@ void cGrammar_projectLL_31_grammar::_performSourceFileParsing_ (C_Compiler * inC
     C_Lexique_galgas_5F_scanner * scanner = NULL ;
     macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, "", "", filePath COMMA_HERE)) ;
     if (scanner->sourceText () != NULL) {
-      scanner->mPerformGeneration = inCompiler->mPerformGeneration ;
       const bool ok = scanner->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,
                                                       gFirstProductionIndexes, gDecision, gDecisionIndexes, 43) ;
       if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {
@@ -312,7 +310,6 @@ void cGrammar_projectLL_31_grammar::_performSourceStringParsing_ (C_Compiler * i
     const C_String sourceString = inSourceString.stringValue () ;
     C_Lexique_galgas_5F_scanner * scanner = NULL ;
     macroMyNew (scanner, C_Lexique_galgas_5F_scanner (inCompiler, sourceString, "" COMMA_HERE)) ;
-    scanner->mPerformGeneration = inCompiler->mPerformGeneration ;
     const bool ok = scanner->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,
                                                     gFirstProductionIndexes, gDecision, gDecisionIndexes, 43) ;
     if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {

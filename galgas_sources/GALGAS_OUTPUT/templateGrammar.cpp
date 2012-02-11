@@ -4686,7 +4686,6 @@ void cGrammar_templateGrammar::_performSourceFileParsing_ (C_Compiler * inCompil
       C_Lexique_galgasTemplateScanner * scanner = NULL ;
       macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, "", "", filePath COMMA_HERE)) ;
       if (scanner->sourceText () != NULL) {
-        scanner->mPerformGeneration = inCompiler->mPerformGeneration ;
         const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,
                                                          gActionTableIndex, gSuccessorTable,
                                                          gProductionsTable) ;
@@ -4721,7 +4720,6 @@ void cGrammar_templateGrammar::_performSourceStringParsing_ (C_Compiler * inComp
   C_Lexique_galgasTemplateScanner * scanner = NULL ;
   macroMyNew (scanner, C_Lexique_galgasTemplateScanner (inCompiler, inSourceString.stringValue (), "" COMMA_HERE)) ;
   if (scanner->sourceText () != NULL) {
-    scanner->mPerformGeneration = inCompiler->mPerformGeneration ;
     const bool ok = scanner->performBottomUpParsing (gActionTable, gNonTerminalNames,
                                                      gActionTableIndex, gSuccessorTable,
                                                      gProductionsTable) ;

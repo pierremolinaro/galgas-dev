@@ -958,7 +958,7 @@ void GALGAS_string::class_method_deleteFile (GALGAS_string inFilePath,
                                              C_Compiler * inCompiler
                                              COMMA_LOCATION_ARGS) {
   if (inFilePath.isValid ()) {
-    if (! inCompiler->mPerformGeneration) {
+    if (! C_Compiler::performGeneration ()) {
       ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to delete '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
     }else if (inFilePath.mString.length () == 0) {
       inCompiler->onTheFlyRunTimeError ("cannot perform file delete: file name is an empty string" COMMA_THERE) ;
@@ -991,7 +991,7 @@ void GALGAS_string::class_method_removeEmptyDirectory (GALGAS_string inDirectory
                                                        C_Compiler * inCompiler
                                                        COMMA_LOCATION_ARGS) {
   if (inDirectoryPath.isValid ()) {
-    if (! inCompiler->mPerformGeneration) {
+    if (! C_Compiler::performGeneration ()) {
       ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to remove directory '") + inDirectoryPath.mString + "'.\n" COMMA_THERE) ;
     }else if (inDirectoryPath.mString.length () == 0) {
       inCompiler->onTheFlyRunTimeError ("cannot perform directory removing: directory path is an empty string" COMMA_THERE) ;
@@ -1040,7 +1040,7 @@ void GALGAS_string::class_method_removeDirectoryRecursively (GALGAS_string inDir
                                                              C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) {
   if (inDirectoryPath.isValid ()) {
-    if (! inCompiler->mPerformGeneration) {
+    if (! C_Compiler::performGeneration ()) {
       ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to remove directory '") + inDirectoryPath.mString + "'.\n" COMMA_THERE) ;
     }else if (inDirectoryPath.mString.length () == 0) {
       inCompiler->onTheFlyRunTimeError ("cannot perform directory removing: directory path is an empty string" COMMA_THERE) ;
@@ -1125,7 +1125,7 @@ void GALGAS_string::method_writeToFile (GALGAS_string inFilePath,
                                         C_Compiler * inCompiler
                                         COMMA_LOCATION_ARGS) const {
   if (inFilePath.isValid ()) {
-    if (inCompiler->mPerformGeneration) {
+    if (C_Compiler::performGeneration ()) {
       const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (inFilePath.mString) ;
       const bool verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
       const bool ok = C_FileManager::writeStringToFile (mString, inFilePath.mString) ;
@@ -1160,7 +1160,7 @@ void GALGAS_string::method_writeToFileWhenDifferentContents (GALGAS_string inFil
     }
     outFileWritten = GALGAS_bool (needToWrite) ;
     if (needToWrite) {
-      if (inCompiler->mPerformGeneration) {
+      if (C_Compiler::performGeneration ()) {
         const bool verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
         bool ok = C_FileManager::makeDirectoryIfDoesNotExist (inFilePath.mString.stringByDeletingLastPathComponent ()) ;
         if (! ok) {
@@ -1196,7 +1196,7 @@ void GALGAS_string::method_writeToExecutableFile (GALGAS_string inFilePath,
   if (inFilePath.isValid ()) {
  //   inCompiler->addDependancyOutputFilePath (inFilePath.mString) ;
     const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (inFilePath.mString) ;
-    if (inCompiler->mPerformGeneration) {
+    if (C_Compiler::performGeneration ()) {
       const bool verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
       const bool ok = C_FileManager::writeStringToExecutableFile (mString, inFilePath.mString) ;
       if (ok && verboseOptionOn && fileAlreadyExists) {
@@ -1231,7 +1231,7 @@ void GALGAS_string::method_writeToExecutableFileWhenDifferentContents (GALGAS_st
     }
     outFileWritten = GALGAS_bool (needToWrite) ;
     if (needToWrite) {
-      if (inCompiler->mPerformGeneration) {
+      if (C_Compiler::performGeneration ()) {
         const bool verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
         bool ok = C_FileManager::makeDirectoryIfDoesNotExist (inFilePath.mString.stringByDeletingLastPathComponent ()) ;
         if (! ok) {
