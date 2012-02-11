@@ -164,8 +164,8 @@ cEmbeddedString::~cEmbeddedString (void) {
                       "mString [mLength] == %ld != '\\0'",
                       (PMSInt32) UNICODE_VALUE (mString [mLength]), '\0' COMMA_THERE) ;
       if (mEncodedCString != NULL) {
- //       macroValidPointer (mEncodedCString) ; §
-        for (PMSInt32 i=0 ; i<= mLength ; i++) {
+        macroValidPointer (mEncodedCString) ;
+        for (PMSInt32 i=0 ; i<=mLength ; i++) {
           assert_routine (UNICODE_VALUE (mString [i]) == (unsigned) mEncodedCString [i],
                           "mString [i] (%ld) != mEncodedCString [i] (%ld)",
                           UNICODE_VALUE (mString [i]), (unsigned) mEncodedCString [i] COMMA_THERE) ;
@@ -711,10 +711,9 @@ bool C_String::containsString (const C_String & inSearchedString) const {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_String::
-componentsSeparatedByString (const C_String & inSeparatorString,
-                             TC_UniqueArray <C_String> & outResult) const {
-  outResult.removeAllObjects () ;
+void C_String::componentsSeparatedByString (const C_String & inSeparatorString,
+                                            TC_UniqueArray <C_String> & outResult) const {
+  outResult.setCountToZero () ;
   const utf32 * sourcePtr = utf32String (HERE) ;
   if (sourcePtr == NULL) {
     outResult.addObject (C_String ()) ;
@@ -1421,349 +1420,6 @@ C_String C_String::XMLEscapedString (void) const {
 
 //---------------------------------------------------------------------------*
 
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Converting into Unix Path
-#endif
-
-//---------------------------------------------------------------------------*
-//                                                                           *
-//   Converting into Unix Path                                               *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-//--- On Unix: do nothing
-#ifdef UNIX_TOOL
-  C_String C_String::
-  unixPathWithNativePath (void) const {
-    return *this ;
-  }
-#endif
-
-//---------------------------------------------------------------------------*
-
-//--- On Windows: translate
-#ifdef COMPILE_FOR_WIN32
-  C_String C_String::
-  unixPathWithNativePath (void) const {
-    C_String result ;
-    const PMSInt32 pathLength = length () ;
-    PMSInt32 firstChar = 0 ;
-    if ((pathLength > 3)
-     && isalpha ((int) UNICODE_VALUE (this->operator () (0 COMMA_HERE)))
-     && (UNICODE_VALUE (this->operator () (1 COMMA_HERE)) == ':')
-     && (UNICODE_VALUE (this->operator () (2 COMMA_HERE)) == '\\')) {
-      result << "/" ;
-      result.appendUnicodeCharacter (this->operator () (0 COMMA_HERE) COMMA_HERE) ;
-      result << "/" ;
-      firstChar = 3 ;
-    }
-    for (PMSInt32 i=firstChar ; i<pathLength ; i++) {
-      const utf32 c = this->operator () (i COMMA_HERE) ;
-      if (UNICODE_VALUE (c) == '\\') {
-        result << "/" ;
-      }else{
-        result.appendUnicodeCharacter (c COMMA_HERE) ;
-      }
-    }
-    return result ;
-  }
-#endif
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Converting into Native Path
-#endif
-
-//---------------------------------------------------------------------------*
-//                                                                           *
-//   Converting into Native Path                                             *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-//--- On Unix: do nothing
-#ifdef UNIX_TOOL
-  C_String C_String::
-  nativePathWithUnixPath (void) const {
-    return *this ;
-  }
-#endif
-
-//---------------------------------------------------------------------------*
-
-//--- On Windows: convert
-#ifdef COMPILE_FOR_WIN32
-  C_String C_String::
-  nativePathWithUnixPath (void) const {
-    C_String winPath ;
-      const PMSInt32 fileLength = length () ;
-      PMSInt32 firstChar = 0 ;
-      if ((fileLength > 3)
-       && (UNICODE_VALUE (this->operator () (0 COMMA_HERE)) == '/')
-       && isalpha ((int) UNICODE_VALUE (this->operator () (1 COMMA_HERE)))
-       && (UNICODE_VALUE (this->operator () (2 COMMA_HERE)) == '/')) {
-        winPath.appendUnicodeCharacter (this->operator () (1 COMMA_HERE) COMMA_HERE) ;
-        winPath << ":\\" ;
-        firstChar = 3 ;
-      }
-      for (PMSInt32 i=firstChar ; i<fileLength ; i++) {
-        const utf32 c = this->operator () (i COMMA_HERE) ;
-        winPath.appendUnicodeCharacter ((UNICODE_VALUE (c) == '/') ? TO_UNICODE ('\\') : c COMMA_HERE) ;
-      }
-    return winPath ;
-  }
-#endif
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark File handling
-#endif
-
-//---------------------------------------------------------------------------*
-//                                                                           *
-//   M E T H O D S    F O R    F I L E    H A N D L I N G                    *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-  C_String C_String::currentDirectory (void) {
-    char * cwd = getcwd (NULL, 0) ;
-    #ifdef COMPILE_FOR_WIN32
-      const PMSInt32 fileLength = (PMSInt32) strlen (cwd) ;
-      PMSInt32 firstChar = 0 ;
-      if ((fileLength > 3)
-       && isalpha (cwd [0])
-       && (cwd [1] == ':')
-       && (cwd [2] == '\\')) {
-        cwd [1] = cwd [0] ;
-        cwd [0] = '/' ;
-        cwd [2] = '/' ;
-        firstChar = 3 ;
-      }
-      for (PMSInt32 i=firstChar ; i<fileLength ; i++) {
-        if (cwd [i] == '\\') {
-          cwd [i] = '/' ;
-        }
-      }
-    #endif
-    const C_String result (cwd) ;
-    ::free (cwd) ;
-    return result ;
-  }
-
-//---------------------------------------------------------------------------*
-//                                                                           *
-//   isAbsolutePath                                                          *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-bool C_String::
-isAbsolutePath (void) const {
-  return (length () > 0) && (UNICODE_VALUE (this->operator () (0 COMMA_HERE)) == '/') ;
-}
-
-//---------------------------------------------------------------------------*
-
-C_String C_String::
-absolutePathFromCurrentDirectory (void) const {
-  const PMSInt32 stringLength = length () ;
-  C_String result ;
-  if ((stringLength > 0) && (UNICODE_VALUE (this->operator () (0 COMMA_HERE)) == '/')) {
-    result = *this ;
-  }else{
-    result = C_String::currentDirectory () + "/" + *this ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------*
-//--- If receiver is an absolute path, returns it
-//    Otherwise, prepend path argument
-//    if path argument it self is relative, current directory is prepended
-
-C_String C_String::
-absolutePathFromPath (const C_String & inPath) const {
-  const PMSInt32 stringLength = length () ;
-  C_String result ;
-  if ((stringLength > 0) && (UNICODE_VALUE (this->operator () (0 COMMA_HERE)) == '/')) {
-    result = *this ;
-  }else{
-    result = inPath.absolutePathFromCurrentDirectory () ;
-    if (UNICODE_VALUE (result.lastCharacter (HERE)) != '/') {
-      result.appendUnicodeCharacter (TO_UNICODE ('/') COMMA_HERE) ;
-    }
-    result.appendString (*this) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------*
-
-C_String C_String::
-relativePathFromPath (const C_String & inPath) const {
-  TC_UniqueArray <C_String> absoluteReferencePathComponents ;
-  inPath.stringByStandardizingPath ().absolutePathFromCurrentDirectory ().componentsSeparatedByString("/", absoluteReferencePathComponents) ;
-  TC_UniqueArray <C_String> absoluteReceiverPathComponents ;
-  stringByStandardizingPath ().absolutePathFromCurrentDirectory ().componentsSeparatedByString("/", absoluteReceiverPathComponents) ;
-  C_String result ;
-  PMSInt32 idx = 0 ;
-  while ((idx < absoluteReferencePathComponents.count ())
-      && (idx < absoluteReceiverPathComponents.count ())
-      && (absoluteReferencePathComponents (idx COMMA_HERE) == absoluteReceiverPathComponents (idx COMMA_HERE))) {
-    idx ++ ;
-  }
-  for (PMSInt32 i=idx ; i<absoluteReferencePathComponents.count () ; i++) {
-    result << "../" ;
-  }
-  for (PMSInt32 i=idx ; i<absoluteReceiverPathComponents.count () ; i++) {
-    if (i > idx) {
-      result << "/" ;
-    }
-    result << absoluteReceiverPathComponents (i COMMA_HERE) ;
-  }
-  return result ;
-}
-
-//---------------------------------------------------------------------------*
-  
-bool C_String::binaryDataWithContentOfFile (TC_UniqueArray <unsigned char> & outBinaryData) const {
-//--- Clear result
-  outBinaryData.removeAllObjects () ;
-//--- Open file for binary reading
-  const C_String nativePath = nativePathWithUnixPath () ;
-  FILE * inputFile = ::fopen (nativePath.cString (HERE), "rb") ;
-  bool ok = inputFile != NULL ;
-//--- Go to the end of the file
-  if (ok) {
-    ok = ::fseek (inputFile, 0, 2) == 0 ;
-  }
-
-//--- Get file size
-  PMSInt32 fileSize = 0 ;
-  if (ok) {
-    fileSize = (PMSInt32) (ftell (inputFile) & PMUINT32_MAX) ;
-    ok = fileSize != -1 ;
-  }
-
-//--- Rewind file
-  if (ok) {
-    ok = ::fseek (inputFile, 0L, 0) == 0 ;
-  }
-
-//--- Read file
-  if (ok) {
-  //--- Set allocated size for the result
-    outBinaryData.makeRoom (fileSize) ;
-  //--- Read file
-    unsigned char * data = NULL ;
-    macroMyNewPODArray (data, unsigned char, fileSize) ;
-    const PMSInt32 sizeRead = (PMSInt32) (fread (data, 1, (PMUInt32) fileSize, inputFile) & PMUINT32_MAX) ;
-    ok = sizeRead == fileSize ;
-  //--- Enter in result
-    if (ok) {
-      for (PMSInt32 i=0 ; i<fileSize ; i++) {
-        outBinaryData.addObject (data [i]) ;
-      }
-    }
-    macroMyDeletePODArray (data) ;
-  }
-//--- Close file
-  if (inputFile != NULL) {
-    const PMSInt32 result = ::fclose (inputFile) ;
-    if (ok) {
-      ok = result == 0 ;
-    }
-  }
-  return ok ;
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef COMPILE_FOR_WIN32
-  static C_String unixPath2winPath (const C_String & inWinFileName) {
-    C_String winFileName ;
-      const PMSInt32 fileLength = inWinFileName.length () ;
-      PMSInt32 firstChar = 0 ;
-      if ((fileLength > 3)
-       && (UNICODE_VALUE (inWinFileName (0 COMMA_HERE)) == '/')
-       && isalpha ((int) UNICODE_VALUE (inWinFileName (1 COMMA_HERE)))
-       && (UNICODE_VALUE (inWinFileName (2 COMMA_HERE)) == '/')) {
-        winFileName.appendUnicodeCharacter (inWinFileName (1 COMMA_HERE) COMMA_HERE) ;
-        winFileName << ":\\" ;
-        firstChar = 3 ;
-      }
-      for (PMSInt32 i=firstChar ; i<fileLength ; i++) {
-        const utf32 c = (UNICODE_VALUE (inWinFileName (i COMMA_HERE)) == '/')
-          ? TO_UNICODE ('\\')
-          : inWinFileName (i COMMA_HERE) ;
-        winFileName.appendUnicodeCharacter (c COMMA_HERE) ;
-      }
-    return winFileName ;
-  }
-#endif
-
-//---------------------------------------------------------------------------*
-
-C_DateTime C_String::fileModificationTime (void) const {
-  const C_String nativePath = nativePathWithUnixPath () ;
-//--- Get file properties
-  time_t modificationTime = 0 ;
-  if (nativePath.length () > 0) {
-    struct stat fileProperties ;
-    const int err = ::stat (nativePath.cString (HERE), & fileProperties) ;
-    if ((err == 0) && ((fileProperties.st_mode & S_IFREG) != 0)) {
-      modificationTime = fileProperties.st_mtime ;
-    }
-  }
-//--- Return modification date
-  return C_DateTime (modificationTime)  ;
-}
-
-//---------------------------------------------------------------------------*
-
-bool C_String::fileExists (void) const {
-  const C_String nativePath = nativePathWithUnixPath () ;
-//--- Get file properties
-  bool exists = nativePath.length () > 0 ;
-  if (exists) {
-    struct stat fileProperties ;
-    const int err = ::stat (nativePath.cString (HERE), & fileProperties) ;
-    exists = (err == 0) && ((fileProperties.st_mode & S_IFREG) != 0) ;
-  }
- //--- Return result
-  return exists ;
-}
-
-//---------------------------------------------------------------------------*
-
-PMSInt32 C_String::
-filePosixPermissions (void) const {
-  const C_String nativePath = nativePathWithUnixPath () ;
-//--- Get file properties
-  PMSInt32 permissions = -1 ;
-  struct stat fileProperties ;
-  const int err = ::stat (nativePath.cString (HERE), & fileProperties) ;
-  if (err == 0) {
-    permissions = ((PMSInt32) fileProperties.st_mode) & 0xFFF ;
-  }
- //--- Return result
-  return permissions ;
-}
-
-//---------------------------------------------------------------------------*
-
-PMSInt32 C_String::
-setFilePosixPermissions (const PMSInt32 inNewFilePosixPermissions) const {
-  PMSInt32 newMode = -1 ; // Error Code
-  if ((inNewFilePosixPermissions & 0xFFFFF000) == 0) {
-    const C_String nativePath = nativePathWithUnixPath () ;
-    newMode = ::chmod (nativePath.cString (HERE), (PMUInt16) (inNewFilePosixPermissions & PMUINT16_MAX)) ;
-  }
-  return newMode ;
-}
-
-//---------------------------------------------------------------------------*
-
 C_String C_String::stringByStandardizingPath (void) const {
   #ifdef COMPILE_FOR_WIN32
     C_String path = stringByReplacingCharacterByString (TO_UNICODE ('\\'), "/") ;
@@ -1845,16 +1501,16 @@ C_String C_String::stringByStandardizingPath (void) const {
 
 //---------------------------------------------------------------------------*
   
-bool C_String::parseUTF8 (const PMUInt8 * inCString,
-                          const PMSInt32 inLength,
+bool C_String::parseUTF8 (const C_Data & inDataString,
+                          const PMSInt32 inOffset,
                           C_String & outString) {
   bool ok = true ;
-  PMSInt32 idx = 0 ;
+  PMSInt32 idx = inOffset ;
   bool foundCR = false ;
-  while ((idx < inLength) && ok) {
-    const PMUInt8 c = inCString [idx] ;
+  while ((idx < inDataString.length ()) && ok) {
+    const PMUInt8 c = inDataString (idx COMMA_HERE) ;
     if (c == 0x00) { // NUL
-      idx = inLength ; // For exiting loop
+      idx = inDataString.length () ; // For exiting loop
     }else if (c == 0x0A) { // LF
       if (! foundCR) {
         outString.appendUnicodeCharacter (TO_UNICODE ('\n') COMMA_HERE) ;
@@ -1870,7 +1526,7 @@ bool C_String::parseUTF8 (const PMUInt8 * inCString,
       foundCR = false ;
       idx ++ ;
     }else{
-      const utf32 uc = utf32CharacterForPointer (inCString, idx, inLength, ok) ;
+      const utf32 uc = utf32CharacterForPointer (inDataString.dataPointer (), idx, inDataString.length (), ok) ;
       outString.appendUnicodeCharacter (uc COMMA_HERE) ;
       foundCR = false ;
     }

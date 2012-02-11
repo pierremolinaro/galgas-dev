@@ -457,6 +457,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
   generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#include \"utilities/MF_MemoryControl.h\"\n" ;
   generatedZone2 << "#include \"galgas2/C_galgas_CLI_Options.h\"\n\n" ;
+  generatedZone2 << "#include \"files/C_FileManager.h\"\n\n" ;
   generatedZone2.appendCppHyphenLineComment () ;
   generatedZone2 << "#include \"" << inTargetFileName << ".h\"\n\n" ;
 
@@ -534,7 +535,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
             << "\n" ;
   }
   generatedZone3 << "} ;\n\n" ;
-  productionRulesTitle.removeAllObjects () ;
+  productionRulesTitle.setCountToZero () ;
 
 //--- Generate decision tables indexes
   generatedZone3.appendCppTitleComment ("L L ( 1 )    F I R S T    P R O D U C T I O N    I N D E X E S") ;
@@ -719,20 +720,20 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
         generatedZone3 << "  if (inFilePath.isValid ()) {\n"
                           "    const GALGAS_string filePathAsString = inFilePath.reader_string (HERE) ;\n"
                           "    C_String filePath = filePathAsString.stringValue () ;\n"
-                          "    if (! filePath.isAbsolutePath ()) {\n"
+                          "    if (! C_FileManager::isAbsolutePath (filePath)) {\n"
                           "      filePath = inCompiler->sourceFilePath ().stringByDeletingLastPathComponent ().stringByAppendingPathComponent (filePath) ;\n"
                           "    }\n"
-                          "    if (filePath.fileExists ()) {\n"
+                          "    if (C_FileManager::fileExistsAtPath (filePath)) {\n"
                           "    C_Lexique_" << inLexiqueName.identifierRepresentation () << " * scanner = NULL ;\n"
                           "    macroMyNew (scanner, C_Lexique_" << inLexiqueName.identifierRepresentation () << " (inCompiler, \"\", \"\", filePath COMMA_HERE)) ;\n"
-                          "      if (scanner->sourceText () != NULL) {\n"
-                          "        scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n"
-                          "        const bool ok = scanner->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
-                          "                                                        gFirstProductionIndexes, gDecision, gDecisionIndexes, "
+                          "    if (scanner->sourceText () != NULL) {\n"
+                          "      scanner->mPerformGeneration = inCompiler->mPerformGeneration ;\n"
+                          "      const bool ok = scanner->performTopDownParsing (gProductions, gProductionNames, gProductionIndexes,\n"
+                          "                                                      gFirstProductionIndexes, gDecision, gDecisionIndexes, "
                        << cStringWithSigned (productionRulesIndex (productionRulesIndex.count () - 1 COMMA_HERE))
                        << ") ;\n"
-                          "        if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"
-                          "          cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
+                          "      if (ok && ! executionModeIsSyntaxAnalysisOnly ()) {\n"
+                          "        cGrammar_" << inTargetFileName.identifierRepresentation () << " grammar ;\n"
                           "          " ;
         generatedZone3 << "grammar.nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                        << "_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
@@ -745,23 +746,22 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
           numeroParametre ++ ;
         }
         generatedZone3 << "scanner) ;\n"
-                          "        }\n"
-                          "      }else{\n"
-                          "        C_String message ;\n"
-                          "        message << \"the '\" << filePath << \"' file exists, but cannot be read\" ;\n"
-                          "        const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
-                          "        inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n" ;
+                          "      }\n"
+                          "    }else{\n"
+                          "      C_String message ;\n"
+                          "      message << \"the '\" << filePath << \"' file exists, but cannot be read\" ;\n"
+                          "      const GALGAS_location errorLocation (inFilePath.reader_location (THERE)) ;\n"
+                          "      inCompiler->semanticErrorAtLocation (errorLocation, message COMMA_THERE) ;\n" ;
         parametre.rewind () ;
         numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           if (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue () == GALGAS_formalArgumentPassingModeAST::kEnum_argumentOut) {
-            generatedZone3 << "        parameter_" << cStringWithSigned (numeroParametre) << ".drop () ;\n" ;
+            generatedZone3 << "      parameter_" << cStringWithSigned (numeroParametre) << ".drop () ;\n" ;
           }
           parametre.gotoNextObject () ;
           numeroParametre ++ ;
         }
-        generatedZone3 << "      }\n"
-                          "    // }\n"
+        generatedZone3 << "    }\n"
                           "    macroDetachSharedObject (scanner) ;\n"
                           "  }else{\n"
                           "    C_String message ;\n"

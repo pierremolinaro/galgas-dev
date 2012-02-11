@@ -183,7 +183,7 @@ void C_UIntCommandLineOption::printUIntOptions (const PMUInt32 inDisplayLength) 
 //---------------------------------------------------------------------------*
 
 void C_UIntCommandLineOption::getUIntOptionNameList (TC_UniqueArray <C_String> & outArray) {
-  outArray.removeAllObjects () ;
+  outArray.setCountToZero () ;
   C_UIntCommandLineOption * p = gFirst ;
   while (p != NULL) {
     outArray.addObject (p->mDomainName) ;

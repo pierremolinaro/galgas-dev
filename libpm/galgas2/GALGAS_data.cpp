@@ -47,28 +47,15 @@ mData () {
 
 //---------------------------------------------------------------------------*
 
-GALGAS_data::GALGAS_data (const TC_Array <PMUInt8> & inOperand_mData) :
+GALGAS_data::GALGAS_data (const C_Data & inData) :
 mIsValid (true),
-mData (inOperand_mData) {
-}
-
-//---------------------------------------------------------------------------*
-
-GALGAS_data::GALGAS_data (const PMUInt8 * inSourceArray,
-                          const PMUInt32 inLength) :
-mIsValid (true),
-mData () {
-  mData.makeRoom ((PMSInt32) inLength) ;
-  for (PMUInt32 i=0 ; i<inLength ; i++) {
-    mData.addObject (inSourceArray [i]) ;
-  }
+mData (inData) {
 }
 
 //---------------------------------------------------------------------------*
 
 GALGAS_data GALGAS_data::constructor_emptyData (UNUSED_LOCATION_ARGS) {
-  TC_Array <PMUInt8> t ;
-  return GALGAS_data (t) ;
+  return GALGAS_data (C_Data ()) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -78,10 +65,11 @@ GALGAS_data GALGAS_data::constructor_dataWithContentsOfFile (const GALGAS_string
                                                              COMMA_LOCATION_ARGS) {
   GALGAS_data result ;
   if (inFilePath.isValid()){
-    TC_Array <PMUInt8> t ;
-    const bool ok = inFilePath.stringValue ().binaryDataWithContentOfFile (t) ;
+    C_Data binaryData ;
+    const bool ok = C_FileManager::binaryDataWithContentOfFile (inFilePath.stringValue (), binaryData) ;
     if (ok) {
-      result = GALGAS_data (t) ;
+      
+      result = GALGAS_data (binaryData) ;
     }else{
       C_String s ;
       s << "cannot read binary file at path '" << inFilePath.stringValue () << "'" ;
@@ -93,20 +81,10 @@ GALGAS_data GALGAS_data::constructor_dataWithContentsOfFile (const GALGAS_string
 
 //---------------------------------------------------------------------------*
 
-static PMSInt32 compareData (const TC_Array <PMUInt8> & inData1, const TC_Array <PMUInt8> & inData2) {
-  PMSInt32 result = inData1.count () - inData2.count () ;
-  for (PMSInt32 i=0 ; (i<inData1.count ()) && (result == 0) ; i++) {
-    result = ((PMSInt32) inData1 (i COMMA_HERE)) - ((PMSInt32) inData2 (i COMMA_HERE)) ;  
-  }  
-  return result ;
-}
-
-//---------------------------------------------------------------------------*
-
 typeComparisonResult GALGAS_data::objectCompare (const GALGAS_data & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 r = compareData (mData, inOperand.mData) ;
+    const PMSInt32 r = mData.compareWithData (inOperand.mData) ;
     if (r < 0) {
       result = kFirstOperandLowerThanSecond ;
     }else if (r > 0) {
@@ -124,7 +102,7 @@ void GALGAS_data::description (C_String & ioString,
                                const PMSInt32 /* inIndentation */) const {
   ioString << "<@data:" ;
   if (isValid ()) {
-    ioString << "length=" << cStringWithSigned (mData.count ()) ;
+    ioString << "length=" << cStringWithSigned (mData.length ()) ;
   }else{
     ioString << "not built" ;
   }
@@ -136,7 +114,7 @@ void GALGAS_data::description (C_String & ioString,
 GALGAS_uint GALGAS_data::reader_length (UNUSED_LOCATION_ARGS) const {
   GALGAS_uint result ;
   if (isValid ()) {
-    result = GALGAS_uint ((PMUInt32) mData.count ()) ;
+    result = GALGAS_uint ((PMUInt32) mData.length ()) ;
   }
   return result ;
 }
@@ -147,7 +125,7 @@ GALGAS_string GALGAS_data::reader_cStringRepresentation (UNUSED_LOCATION_ARGS) c
   GALGAS_string result ;
   if (isValid ()) {
     C_String s (cStringWithUnsigned (mData (0 COMMA_HERE))) ;
-    for (PMSInt32 i=1 ; i<mData.count () ; i++) {
+    for (PMSInt32 i=1 ; i<mData.length () ; i++) {
       s << ", " << cStringWithUnsigned (mData (i COMMA_HERE)) ;
       if ((i % 16) == 0) {
         s << "\n" ;
@@ -168,7 +146,7 @@ void GALGAS_data::modifier_appendByte (GALGAS_uint inArgument0,
       inCompiler->onTheFlyRunTimeError ("'@data appendByte' modifier invoked with value greater than 255" COMMA_THERE) ;
     }else{
       const PMUInt8 byte = (PMUInt8) (inArgument0.uintValue () & PMUINT8_MAX) ;
-      mData.addObject (byte) ;
+      mData.appendByte (byte) ;
     }
   }
 }
@@ -183,8 +161,8 @@ void GALGAS_data::modifier_appendShortBE (GALGAS_uint inArgument0,
       inCompiler->onTheFlyRunTimeError ("'@data appendShortBE' modifier invoked with value greater than 0xFFFF" COMMA_THERE) ;
     }else{
       const PMUInt32 value = inArgument0.uintValue () & 0xFFFFU ;
-      mData.addObject ((PMUInt8) ((value >> 8) & PMUINT8_MAX)) ;
-      mData.addObject ((PMUInt8) (value & 255)) ;
+      mData.appendByte ((PMUInt8) ((value >> 8) & PMUINT8_MAX)) ;
+      mData.appendByte ((PMUInt8) (value & 255)) ;
     }
   }
 }
@@ -199,8 +177,8 @@ void GALGAS_data::modifier_appendShortLE (GALGAS_uint inArgument0,
       inCompiler->onTheFlyRunTimeError ("'@data appendShortLE' modifier invoked with value greater than 0xFFFF" COMMA_THERE) ;
     }else{
       const PMUInt32 value = inArgument0.uintValue () & 0xFFFFU ;
-      mData.addObject ((PMUInt8) (value & 255)) ;
-      mData.addObject ((PMUInt8) ((value >> 8) & PMUINT8_MAX)) ;
+      mData.appendByte ((PMUInt8) (value & 255)) ;
+      mData.appendByte ((PMUInt8) ((value >> 8) & PMUINT8_MAX)) ;
     }
   }
 }
@@ -211,10 +189,10 @@ void GALGAS_data::modifier_appendUIntBE (GALGAS_uint inArgument0
                                          COMMA_UNUSED_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
     const PMUInt32 value = inArgument0.uintValue () ;
-    mData.addObject ((PMUInt8) (value >> 24)) ;
-    mData.addObject ((PMUInt8) ((value >> 16) & 255)) ;
-    mData.addObject ((PMUInt8) ((value >> 8) & 255)) ;
-    mData.addObject ((PMUInt8) (value & 255)) ;
+    mData.appendByte ((PMUInt8) (value >> 24)) ;
+    mData.appendByte ((PMUInt8) ((value >> 16) & 255)) ;
+    mData.appendByte ((PMUInt8) ((value >> 8) & 255)) ;
+    mData.appendByte ((PMUInt8) (value & 255)) ;
   }
 }
 
@@ -224,10 +202,10 @@ void GALGAS_data::modifier_appendUIntLE (GALGAS_uint inArgument0
                                          COMMA_UNUSED_LOCATION_ARGS) {
   if (inArgument0.isValid ()) {
     const PMUInt32 value = inArgument0.uintValue () ;
-    mData.addObject ((PMUInt8) (value & 255)) ;
-    mData.addObject ((PMUInt8) ((value >> 8) & 255)) ;
-    mData.addObject ((PMUInt8) ((value >> 16) & 255)) ;
-    mData.addObject ((PMUInt8) (value >> 24)) ;
+    mData.appendByte ((PMUInt8) (value & 255)) ;
+    mData.appendByte ((PMUInt8) ((value >> 8) & 255)) ;
+    mData.appendByte ((PMUInt8) ((value >> 16) & 255)) ;
+    mData.appendByte ((PMUInt8) (value >> 24)) ;
   }
 }
 
@@ -242,10 +220,10 @@ void GALGAS_data::modifier_appendUTF_38_String (GALGAS_string inString
       char sequence [5] ;
       const PMSInt32 n = UTF8StringFromUTF32Character (c, sequence) ;
       for (PMSInt32 j=0 ; j<n ; j++) {
-        mData.addObject ((PMUInt8) sequence [j]) ;
+        mData.appendByte ((PMUInt8) sequence [j]) ;
       }
     }
-    mData.addObject (0) ;
+    mData.appendByte (0) ;
   }
 }
 
@@ -254,7 +232,7 @@ void GALGAS_data::modifier_appendUTF_38_String (GALGAS_string inString
 void GALGAS_data::modifier_appendData (GALGAS_data inData
                                        COMMA_UNUSED_LOCATION_ARGS) {
   if (inData.isValid ()) {
-    mData.addObjectsFromArray (inData.mData) ;
+    mData.appendData (inData.mData) ;
   }
 }
 
@@ -267,11 +245,11 @@ void GALGAS_data::method_writeToFileWhenDifferentContents (GALGAS_string inFileP
   outFileWritten.drop () ;
   if (inFilePath.isValid ()) {
     bool needToWrite = true ;
-    const bool fileAlreadyExists = inFilePath.stringValue ().fileExists () ;
+    const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (inFilePath.stringValue ()) ;
     if (fileAlreadyExists) {
       inCompiler->logFileRead (inFilePath.stringValue ()) ;
-      TC_UniqueArray <PMUInt8> binaryData ;
-      inFilePath.stringValue ().binaryDataWithContentOfFile (binaryData) ;
+      C_Data binaryData ;
+      C_FileManager::binaryDataWithContentOfFile (inFilePath.stringValue (), binaryData) ;
       needToWrite = mData != binaryData ;
     }
     outFileWritten = GALGAS_bool (needToWrite) ;
@@ -341,7 +319,7 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
     }else if (! inCompiler->mPerformGeneration) {
       ggs_printWarning (NULL, C_LocationInSource (), C_String ("Need to write '") + filePath + "'.\n" COMMA_HERE) ;
     }else{
-      const bool fileAlreadyExists = filePath.fileExists () ;
+      const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (filePath) ;
       const bool verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
       C_FileManager::makeDirectoryIfDoesNotExist (filePath.stringByDeletingLastPathComponent()) ;
       FILE * filePtr = NULL ;
@@ -359,8 +337,8 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
         s << "'@data writeToFile' : cannot open '" << filePath << "' file in write mode" ;
         inCompiler->onTheFlyRunTimeError (s.cString (HERE) COMMA_THERE) ;
       }else{
-        const PMUInt32 writtenCount = (PMUInt32) (fwrite (mData.bufferPointer (), 1, (PMUInt32) mData.count (), filePtr) & PMUINT32_MAX) ;
-        const bool ok = (::fclose (filePtr) == 0) && (writtenCount == (PMUInt32) mData.count ()) ;
+        const PMUInt32 writtenCount = (PMUInt32) (fwrite (mData.dataPointer (), 1, (PMUInt32) mData.length (), filePtr) & PMUINT32_MAX) ;
+        const bool ok = (::fclose (filePtr) == 0) && (writtenCount == (PMUInt32) mData.length ()) ;
         if (ok && verboseOptionOn && fileAlreadyExists) {
           ggs_printFileOperationSuccess (C_String ("Replaced '") + filePath + "'.\n" COMMA_THERE) ;
         }else if (ok && verboseOptionOn && ! fileAlreadyExists) {
@@ -455,7 +433,7 @@ void cCollectionElement_data::description (C_String & ioString, const PMSInt32 i
 
 void GALGAS_data::populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
                                             const typeEnumerationOrder inEnumerationOrder) const {
-  const PMUInt32 count = (PMUInt32) mData.count () ;
+  const PMUInt32 count = (PMUInt32) mData.length () ;
   inEnumerationArray.setCapacity (count) ;
   switch (enumerationOrderValue (inEnumerationOrder)) {
   case kENUMERATION_UP:
@@ -471,7 +449,7 @@ void GALGAS_data::populateEnumerationArray (capCollectionElementArray & inEnumer
   case kENUMERATION_DOWN:
     for (PMUInt32 i=0 ; i<count ; i++) {
       cCollectionElement_data * p = NULL ;
-      macroMyNew (p, cCollectionElement_data (GALGAS_uint (mData ((PMSInt32) (mData.count () - i - 1) COMMA_HERE)) COMMA_HERE)) ;
+      macroMyNew (p, cCollectionElement_data (GALGAS_uint (mData ((PMSInt32) (mData.length () - i - 1) COMMA_HERE)) COMMA_HERE)) ;
       capCollectionElement object ;
       object.setPointer (p) ;
       macroDetachSharedObject (p) ;

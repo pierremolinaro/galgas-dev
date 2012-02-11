@@ -2289,20 +2289,18 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_binaryset ;
 class GALGAS_data : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private : bool mIsValid ;
-  private : TC_Array <PMUInt8> mData ;
+  private : C_Data mData ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
   public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }
-  public : inline TC_Array <PMUInt8> dataValue (void) const { return mData ; }
+  public : inline C_Data dataValue (void) const { return mData ; }
 
 //--------------------------------- Default constructor
   public : GALGAS_data (void) ;
 
 //--------------------------------- Native constructors
-  public : GALGAS_data (const TC_Array <PMUInt8> & inValue) ;
-  public : GALGAS_data (const PMUInt8 * inArray,
-                        const PMUInt32 inLength) ;
+  public : GALGAS_data (const C_Data & inData) ;
 
 //-- Start of generic part --*
 

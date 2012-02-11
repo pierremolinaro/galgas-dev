@@ -102,7 +102,8 @@ PMSInt32 UTF8StringFromUTF32Character (const utf32 inUnicodeChar, char outSequen
 
 //--- inEndOfStringPtr points just beyond the last available byte
 #ifdef __cplusplus
-  utf32 utf32CharacterForPointer (const PMUInt8 * inBasePointer,
+  class C_Data ;
+  utf32 utf32CharacterForPointer (const PMUInt8 * inDataString,
                                   PMSInt32 & ioIndex,
                                   const PMSInt32 inLength,
                                   bool & ioOK) ;

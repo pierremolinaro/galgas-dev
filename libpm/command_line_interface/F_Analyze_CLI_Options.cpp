@@ -31,6 +31,7 @@
 #include "command_line_interface/C_builtin_CLI_Options.h"
 #include "streams/C_ConsoleOut.h"
 #include "command_line_interface/mainForLIBPM.h"
+#include "files/C_FileManager.h"
 
 //---------------------------------------------------------------------------*
 
@@ -280,7 +281,7 @@ static void analyze_one_option (const char * inCommand,
       #else
         fileName = inCommand ;
       #endif
-      outSourceFileArray.addObject (fileName.absolutePathFromPath ("")) ;
+      outSourceFileArray.addObject (C_FileManager::absolutePathFromPath (fileName, "")) ;
       found = true ;
     }
   }
