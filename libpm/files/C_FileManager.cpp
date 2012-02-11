@@ -202,7 +202,7 @@ bool C_FileManager::binaryDataWithContentOfFile (const C_String & inFilePath,
 //--- Read file
   if (ok) {
     PMUInt8 * binaryData = NULL ;
-    macroMyNewPODArray (binaryData, PMUInt8, fileSize) ;
+    macroMyNewArray (binaryData, PMUInt8, fileSize) ;
     const PMSInt32 sizeRead = (PMSInt32) (fread (binaryData, 1, (PMUInt32) fileSize, inputFile) & PMUINT32_MAX) ;
     ok = sizeRead == fileSize ;
     if (ok) {
