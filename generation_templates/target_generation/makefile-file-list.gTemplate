@@ -90,6 +90,7 @@ SOURCES += C_DateTime.cpp
 SOURCES += F_main.cpp
 SOURCES += C_PrologueEpilogue.cpp
 SOURCES += C_SharedObject.cpp
+SOURCES += C_Data.cpp
 SOURCES += F_DisplayException.cpp
 SOURCES += MF_Assert.cpp
 SOURCES += F_GetPrime.cpp

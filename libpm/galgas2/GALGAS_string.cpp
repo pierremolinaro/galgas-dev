@@ -1596,7 +1596,7 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
       if (! ok) {
         inCompiler->onTheFlyRunTimeError (errorMessage COMMA_THERE) ;
       }else{
-        TC_UniqueArray <PMUInt8> response ;
+        C_Data response ;
         bool loop = true ;
         while (loop) {
           const size_t kBufferSize = 1000 ;
@@ -1604,12 +1604,10 @@ void GALGAS_string::method_makeSymbolicLinkWithPath (GALGAS_string inPath,
           DWORD readLength = 0 ;
           loop = ReadFile (g_hChildStd_OUT_Rd, buffer, kBufferSize, & readLength, NULL) ;
           loop = readLength > 0 ;
-          for (size_t i=0 ; i<readLength ; i++) {
-            response.addObject (buffer [i]) ;
-          }
+          response.appendDataFromPointer (buffer, readLength) ;
         }
         C_String s ;
-        C_String::parseUTF8 (response.bufferPointer (), response.count (), s) ;
+        C_String::parseUTF8 (response, 0, s) ;
         result = GALGAS_string (s) ;
       }
       CloseHandle (g_hChildStd_IN_Wr) ;

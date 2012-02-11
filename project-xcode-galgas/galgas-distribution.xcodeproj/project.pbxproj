@@ -193,6 +193,8 @@
 		CF6CEC5A1278CBD500E8F785 /* scanner_actions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF6CEC571278CBD500E8F785 /* scanner_actions.cpp */; };
 		CF702740137C53D600FA7C3E /* C_ColoredConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF70273E137C53D600FA7C3E /* C_ColoredConsole.cpp */; };
 		CF702743137C53D600FA7C3E /* C_ColoredConsole.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF70273E137C53D600FA7C3E /* C_ColoredConsole.cpp */; };
+		CF78D0BF14E70AED0020D786 /* C_Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF78D0BD14E70AED0020D786 /* C_Data.cpp */; };
+		CF78D0C014E70AED0020D786 /* C_Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF78D0BD14E70AED0020D786 /* C_Data.cpp */; };
 		CF7B55751146AEE90068C5E6 /* semanticsDecoratedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B55711146AEE90068C5E6 /* semanticsDecoratedTypes.cpp */; };
 		CF7B55771146AEE90068C5E6 /* semanticsDecoratedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7B55711146AEE90068C5E6 /* semanticsDecoratedTypes.cpp */; };
 		CF7FD6A10FF13C1C001EA1B7 /* unicode_character_cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF7FD69D0FF13C1C001EA1B7 /* unicode_character_cpp.cpp */; };
@@ -602,6 +604,8 @@
 		CF6CEC571278CBD500E8F785 /* scanner_actions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scanner_actions.cpp; sourceTree = "<group>"; };
 		CF6CEC581278CBD500E8F785 /* scanner_actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanner_actions.h; sourceTree = "<group>"; };
 		CF70273E137C53D600FA7C3E /* C_ColoredConsole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_ColoredConsole.cpp; sourceTree = "<group>"; };
+		CF78D0BD14E70AED0020D786 /* C_Data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_Data.cpp; sourceTree = "<group>"; };
+		CF78D0BE14E70AED0020D786 /* C_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_Data.h; sourceTree = "<group>"; };
 		CF7A1403058CEFE2007126C1 /* galgas-debug */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "galgas-debug"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CF7B55711146AEE90068C5E6 /* semanticsDecoratedTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsDecoratedTypes.cpp; sourceTree = "<group>"; };
 		CF7B55721146AEE90068C5E6 /* semanticsDecoratedTypes.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsDecoratedTypes.h; sourceTree = "<group>"; };
@@ -1859,6 +1863,8 @@
 		CFF5381F057A549B00854C83 /* utilities */ = {
 			isa = PBXGroup;
 			children = (
+				CF78D0BD14E70AED0020D786 /* C_Data.cpp */,
+				CF78D0BE14E70AED0020D786 /* C_Data.h */,
 				CFF991A8110B6CA40055EE27 /* C_SharedObject.cpp */,
 				CFF991A9110B6CA40055EE27 /* C_SharedObject.h */,
 				CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */,
@@ -2283,6 +2289,7 @@
 				CF702740137C53D600FA7C3E /* C_ColoredConsole.cpp in Sources */,
 				CFD2567D1494FC2E00E63CAA /* C_TCPSocketOut.cpp in Sources */,
 				CF3FDE0514E66E2F0040331C /* C_FileManager.cpp in Sources */,
+				CF78D0BF14E70AED0020D786 /* C_Data.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2463,6 +2470,7 @@
 				CF702743137C53D600FA7C3E /* C_ColoredConsole.cpp in Sources */,
 				CFD2567E1494FC2E00E63CAA /* C_TCPSocketOut.cpp in Sources */,
 				CF3FDE0614E66E2F0040331C /* C_FileManager.cpp in Sources */,
+				CF78D0C014E70AED0020D786 /* C_Data.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
