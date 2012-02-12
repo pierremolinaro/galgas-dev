@@ -316,13 +316,11 @@ analyzeGrammar (C_Compiler * inCompiler,
   if (outputHTMLfile && inCompiler->performGeneration ()) {
     C_String s ;
     s << "'" << inTargetFileName.mAttribute_string.stringValue () << "' grammar" ;
-    bool ok = false ;
     macroMyNew (HTMLfile, C_HTML_FileWrite (HTMLfileName,
                                             s,
                                             "", // No css file
-                                            k_default_style, // Style definition
-                                            ok)) ;
-    if (! ok) {
+                                            k_default_style)) ; // Style definition
+    if (! HTMLfile->isOpened ()) {
       C_String message ;
       message << "Cannot open '" << HTMLfileName << "' file in write mode." ;
       inCompiler->onTheFlySemanticError (message COMMA_HERE) ;

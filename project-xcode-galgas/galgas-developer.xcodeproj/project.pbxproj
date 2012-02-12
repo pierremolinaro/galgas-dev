@@ -39,6 +39,12 @@
 		CF0EA32910654C9A00679ABC /* syntaxCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0EA32410654C9A00679ABC /* syntaxCompilation.cpp */; };
 		CF1109E310D4F09C00E1B8FC /* semanticsReaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1109E110D4F09C00E1B8FC /* semanticsReaders.cpp */; };
 		CF1109E410D4F09C00E1B8FC /* semanticsReaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1109E110D4F09C00E1B8FC /* semanticsReaders.cpp */; };
+		CF1C0C8F14E844C200F79BD0 /* AC_FileHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1C0C8E14E844C200F79BD0 /* AC_FileHandle.cpp */; };
+		CF1C0C9014E844C200F79BD0 /* AC_FileHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1C0C8E14E844C200F79BD0 /* AC_FileHandle.cpp */; };
+		CF1C0C9414E8477100F79BD0 /* AC_FileHandleForWriting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1C0C9314E8477100F79BD0 /* AC_FileHandleForWriting.cpp */; };
+		CF1C0C9514E8477100F79BD0 /* AC_FileHandleForWriting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1C0C9314E8477100F79BD0 /* AC_FileHandleForWriting.cpp */; };
+		CF1C0C9914E8502300F79BD0 /* C_BinaryFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1C0C9714E8502300F79BD0 /* C_BinaryFileWrite.cpp */; };
+		CF1C0C9A14E8502300F79BD0 /* C_BinaryFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1C0C9714E8502300F79BD0 /* C_BinaryFileWrite.cpp */; };
 		CF22211A11AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF22211611AEE9EF000CEDFF /* syntaxSignature.cpp */; };
 		CF22211B11AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF22211611AEE9EF000CEDFF /* syntaxSignature.cpp */; };
 		CF2382A7124D10EF00A57965 /* C_galgas_type_descriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2382A3124D10EF00A57965 /* C_galgas_type_descriptor.cpp */; };
@@ -472,6 +478,12 @@
 		CF1BCEA410D2B68000A0D648 /* GALGAS_sint_36__34_.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_sint_36__34_.cpp; sourceTree = "<group>"; };
 		CF1BCEC010D2BAA400A0D648 /* GALGAS_uint_36__34_.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_uint_36__34_.cpp; sourceTree = "<group>"; };
 		CF1BCEE210D2C1A300A0D648 /* GALGAS_string.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_string.cpp; sourceTree = "<group>"; };
+		CF1C0C8E14E844C200F79BD0 /* AC_FileHandle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_FileHandle.cpp; sourceTree = "<group>"; };
+		CF1C0C9214E846E200F79BD0 /* AC_FileHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AC_FileHandle.h; sourceTree = "<group>"; };
+		CF1C0C9314E8477100F79BD0 /* AC_FileHandleForWriting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_FileHandleForWriting.cpp; sourceTree = "<group>"; };
+		CF1C0C9614E84A6C00F79BD0 /* AC_FileHandleForWriting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AC_FileHandleForWriting.h; sourceTree = "<group>"; };
+		CF1C0C9714E8502300F79BD0 /* C_BinaryFileWrite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_BinaryFileWrite.cpp; sourceTree = "<group>"; };
+		CF1C0C9814E8502300F79BD0 /* C_BinaryFileWrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_BinaryFileWrite.h; sourceTree = "<group>"; };
 		CF1F0914115164FD00FAFD22 /* GALGAS_stringset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_stringset.cpp; sourceTree = "<group>"; };
 		CF22211611AEE9EF000CEDFF /* syntaxSignature.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = syntaxSignature.cpp; sourceTree = "<group>"; };
 		CF22211711AEE9EF000CEDFF /* syntaxSignature.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = syntaxSignature.h; sourceTree = "<group>"; };
@@ -1922,10 +1934,16 @@
 			children = (
 				CF2A85F114E5BDB100C52116 /* C_FileManager.cpp */,
 				CF3FDDFB14E66BD40040331C /* C_FileManager.h */,
-				CF8259D808536A7E0077AEAF /* C_HTML_FileWrite.cpp */,
-				CF8259D908536A7E0077AEAF /* C_HTML_FileWrite.h */,
+				CF1C0C8E14E844C200F79BD0 /* AC_FileHandle.cpp */,
+				CF1C0C9214E846E200F79BD0 /* AC_FileHandle.h */,
+				CF1C0C9314E8477100F79BD0 /* AC_FileHandleForWriting.cpp */,
+				CF1C0C9614E84A6C00F79BD0 /* AC_FileHandleForWriting.h */,
+				CF1C0C9714E8502300F79BD0 /* C_BinaryFileWrite.cpp */,
+				CF1C0C9814E8502300F79BD0 /* C_BinaryFileWrite.h */,
 				CF8259DA08536A7E0077AEAF /* C_TextFileWrite.cpp */,
 				CF8259DB08536A7E0077AEAF /* C_TextFileWrite.h */,
+				CF8259D808536A7E0077AEAF /* C_HTML_FileWrite.cpp */,
+				CF8259D908536A7E0077AEAF /* C_HTML_FileWrite.h */,
 			);
 			path = files;
 			sourceTree = "<group>";
@@ -2245,6 +2263,9 @@
 				CFF9DEDC1494D60A00BCEEB4 /* C_TCPSocketOut.cpp in Sources */,
 				CF2A85F214E5BDB100C52116 /* C_FileManager.cpp in Sources */,
 				CF3FDE2114E6CD4E0040331C /* C_Data.cpp in Sources */,
+				CF1C0C8F14E844C200F79BD0 /* AC_FileHandle.cpp in Sources */,
+				CF1C0C9414E8477100F79BD0 /* AC_FileHandleForWriting.cpp in Sources */,
+				CF1C0C9914E8502300F79BD0 /* C_BinaryFileWrite.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2426,6 +2447,9 @@
 				CFF9DEDD1494D60A00BCEEB4 /* C_TCPSocketOut.cpp in Sources */,
 				CF2A85F314E5BDB100C52116 /* C_FileManager.cpp in Sources */,
 				CF3FDE2214E6CD4E0040331C /* C_Data.cpp in Sources */,
+				CF1C0C9014E844C200F79BD0 /* AC_FileHandle.cpp in Sources */,
+				CF1C0C9514E8477100F79BD0 /* AC_FileHandleForWriting.cpp in Sources */,
+				CF1C0C9A14E8502300F79BD0 /* C_BinaryFileWrite.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

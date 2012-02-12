@@ -26,6 +26,7 @@
 
 #include "files/C_FileManager.h"
 #include "files/C_TextFileWrite.h"
+#include "files/C_BinaryFileWrite.h"
 #include "strings/unicode_character_base.h"
 
 //---------------------------------------------------------------------------*
@@ -145,12 +146,6 @@ FILE * C_FileManager::openTextFileForReading (const C_String & inFilePath) {
 
 //---------------------------------------------------------------------------*
 
-FILE * C_FileManager::openTextFileForWriting (const C_String & inFilePath) {
-  return ::fopen (nativePathWithUnixPath (inFilePath).cString (HERE), "wt") ;
-}
-
-//---------------------------------------------------------------------------*
-
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Open Binary File
 #endif
@@ -159,12 +154,6 @@ FILE * C_FileManager::openTextFileForWriting (const C_String & inFilePath) {
 
 FILE * C_FileManager::openBinaryFileForReading (const C_String & inFilePath) {
   return ::fopen (nativePathWithUnixPath (inFilePath).cString (HERE), "rb") ;
-}
-
-//---------------------------------------------------------------------------*
-
-FILE * C_FileManager::openBinaryFileForWriting (const C_String & inFilePath) {
-  return ::fopen (nativePathWithUnixPath (inFilePath).cString (HERE), "wb") ;
 }
 
 //---------------------------------------------------------------------------*
@@ -644,9 +633,9 @@ C_String C_FileManager::stringWithContentOfFile (const C_String & inFilePath) {
 
 bool C_FileManager::writeStringToFile (const C_String & inString,
                                        const C_String & inFilePath) {
-  bool success = false ;
   C_FileManager::makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent ()) ;
-  C_TextFileWrite file (inFilePath, success) ;
+  C_TextFileWrite file (inFilePath) ;
+  bool success = file.isOpened () ;
   file << inString ;
   if (success) {
     success = file.close () ;
@@ -658,10 +647,10 @@ bool C_FileManager::writeStringToFile (const C_String & inString,
   
 bool C_FileManager::writeStringToExecutableFile (const C_String & inString,
                                                  const C_String & inFilePath) {
-  bool success = false ;
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;
-  C_TextFileWrite file (inFilePath, success) ;
+  C_TextFileWrite file (inFilePath) ;
   file << inString ;
+  bool success = file.isOpened () ;
   if (success) {
     success = file.close () ;
     #ifndef COMPILE_FOR_WIN32
@@ -680,19 +669,12 @@ bool C_FileManager::writeBinaryDataToFile (const C_Data & inBinaryData,
                                            const C_String & inFilePath) {
   makeDirectoryIfDoesNotExist (inFilePath.stringByDeletingLastPathComponent()) ;
 //---
-  FILE * filePtr = openBinaryFileForWriting (inFilePath.cString (HERE)) ;
-//--- Open Ok ?
-  bool success = filePtr != NULL ;
-//--- Write binary data
-  if (success) {
-    const PMUInt8 * dataPtr = inBinaryData.dataPointer () ;
-    const PMUInt32 length = (PMUInt32) inBinaryData.length () ;
-    const size_t writtenCount = (size_t) ::fwrite (dataPtr, 1, length, filePtr) ;
-    success = writtenCount == length ;
-  }
+  C_BinaryFileWrite binaryFile (inFilePath) ;
+  bool success = binaryFile.isOpened () ;
+  binaryFile.appendData (inBinaryData) ;
 //--- Close file
-  if (NULL != filePtr) {
-    ::fclose (filePtr) ;
+  if (success) {
+    success = binaryFile.close () ;
   }
 //---
   return success ;

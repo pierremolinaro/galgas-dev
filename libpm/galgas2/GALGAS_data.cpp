@@ -30,7 +30,7 @@
 #include "galgas2/C_galgas_io.h"
 #include "strings/unicode_character_cpp.h"
 #include "galgas2/C_galgas_CLI_Options.h"
-#include "files/C_FileManager.h"
+#include "files/C_BinaryFileWrite.h"
 
 //---------------------------------------------------------------------------*
 
@@ -297,14 +297,14 @@ void GALGAS_data::method_writeToFile (GALGAS_string inFilePath,
       const bool fileAlreadyExists = C_FileManager::fileExistsAtPath (filePath) ;
       const bool verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
       C_FileManager::makeDirectoryIfDoesNotExist (filePath.stringByDeletingLastPathComponent()) ;
-      FILE * filePtr = C_FileManager::openBinaryFileForWriting (filePath) ;
-      if (filePtr == NULL) {
+      C_BinaryFileWrite binaryFile (filePath) ;
+      if (! binaryFile.isOpened ()) {
         C_String s ;
         s << "'@data writeToFile' : cannot open '" << filePath << "' file in write mode" ;
         inCompiler->onTheFlyRunTimeError (s.cString (HERE) COMMA_THERE) ;
       }else{
-        const PMUInt32 writtenCount = (PMUInt32) (fwrite (mData.dataPointer (), 1, (PMUInt32) mData.length (), filePtr) & PMUINT32_MAX) ;
-        const bool ok = (::fclose (filePtr) == 0) && (writtenCount == (PMUInt32) mData.length ()) ;
+        binaryFile.appendData (mData) ;
+        const bool ok = binaryFile.close () ;
         if (ok && verboseOptionOn && fileAlreadyExists) {
           ggs_printFileOperationSuccess (C_String ("Replaced '") + filePath + "'.\n" COMMA_THERE) ;
         }else if (ok && verboseOptionOn && ! fileAlreadyExists) {

@@ -42,16 +42,10 @@ class C_FileManager {
 //--- File exists
   public : static bool fileExistsAtPath (const C_String & inFilePath) ;
 
-//--- Open text file
+//--- Open file for reading
   public : static FILE * openTextFileForReading (const C_String & inFilePath) ;
 
-  public : static FILE * openTextFileForWriting (const C_String & inFilePath) ;
-
-//--- Open binary file
   public : static FILE * openBinaryFileForReading (const C_String & inFilePath) ;
-
-  public : static FILE * openBinaryFileForWriting (const C_String & inFilePath) ;
-
 
 //--- Read binary file at once
   public : static bool binaryDataWithContentOfFile (const C_String & inFilePath,

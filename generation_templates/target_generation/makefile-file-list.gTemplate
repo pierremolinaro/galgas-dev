@@ -65,9 +65,12 @@ SOURCES += C_BDD_Set3.cpp
 SOURCES += C_BDD_Descriptor.cpp
 
 #--- Files
+SOURCES += C_FileManager.cpp
+SOURCES += AC_FileHandleForWriting.cpp
+SOURCES += AC_FileHandle.cpp
 SOURCES += C_TextFileWrite.cpp
 SOURCES += C_HTML_FileWrite.cpp
-SOURCES += C_FileManager.cpp
+SOURCES += C_BinaryFileWrite.cpp
 
 #--- Streams
 SOURCES += AC_OutputStream.cpp
