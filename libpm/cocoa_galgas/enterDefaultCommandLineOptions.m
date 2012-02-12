@@ -54,6 +54,16 @@ void enterDefaultCommandLineOptions (NSMutableArray * ioBoolOptionArray,
 
   option = [[OC_GGS_CommandLineOption alloc]
     initWithDomainName:@"galgas_cli_options"
+    identifier:@"xml"
+    commandChar:'\0'
+    commandString:@"xml"
+    comment:@"Enable XML output"
+    defaultValue:@""
+  ] ;
+  [ioBoolOptionArray addObject:option] ;
+
+  option = [[OC_GGS_CommandLineOption alloc]
+    initWithDomainName:@"galgas_cli_options"
     identifier:@"do_not_generate_any_file"
     commandChar:'\0'
     commandString:@"no-file-generation"

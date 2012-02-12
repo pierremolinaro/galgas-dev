@@ -147,10 +147,11 @@ void setExecutionMode (C_String & outErrorMessage) {
       gContextHelpStartLocation = array (2 COMMA_HERE).unsignedIntegerValue () ;
       gContextHelpEndLocation = gContextHelpStartLocation + array (3 COMMA_HERE).unsignedIntegerValue () ;
       gOutputSocket.connect (portNumber, "localhost") ;
-    }else if ((array.count() == 3) && (array (0 COMMA_HERE) == "xml-issues-on-port")) {
+    }else if ((array.count() == 2) && (array (0 COMMA_HERE) == "xml-issues-on-port")) {
       gMode = 0 ;
       const PMUInt16 portNumber = (PMUInt16) array (1 COMMA_HERE).unsignedIntegerValue () ;
       gOutputSocket.connect (portNumber, "localhost") ;
+      sendToTCPSocket ("<?xml version=\"1.0\"?>\n" "<galgas>\n") ;
     }else if (mode.length () > 0) {
       outErrorMessage << "** Fatal Error: invalid '--mode=" << mode << "' parameter; it should be:\n"
         "  --mode=                     default mode: perform compilation;\n"
@@ -228,6 +229,9 @@ bool isCurrentCompiledFilePath (const C_String & inPath) {
 //---------------------------------------------------------------------------*
 
 static void epilogueAction (void) {
+  if (executionModeIsNormal ()) {
+    sendToTCPSocket ("</galgas>\n") ;
+  }
   gCurrentlyCompiledBaseFilePath.releaseString () ;
 }
 

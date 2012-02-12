@@ -16,6 +16,11 @@
   @private NSTask * mTask ;
   @private NSUInteger mErrorCount ;
   @private NSUInteger mWarningCount ;
+
+  @private NSSocketPort * mReceiveSocket ;
+  @private NSFileHandle * mReceiveSocketHandle ;
+  @private NSFileHandle * mRemoteSocketHandle ;
+  @private NSMutableData * mSocketBufferedInputData ;
 }
 
 - (BOOL) buildTaskIsRunning ;
