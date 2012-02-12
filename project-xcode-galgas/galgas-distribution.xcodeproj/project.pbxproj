@@ -48,6 +48,12 @@
 		CF0EA32710654C9A00679ABC /* syntaxCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0EA32410654C9A00679ABC /* syntaxCompilation.cpp */; };
 		CF1109E710D4F09C00E1B8FC /* semanticsReaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1109E110D4F09C00E1B8FC /* semanticsReaders.cpp */; };
 		CF1109E810D4F09C00E1B8FC /* semanticsReaders.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1109E110D4F09C00E1B8FC /* semanticsReaders.cpp */; };
+		CF1794B514E8593E00A36CB4 /* AC_FileHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1794AF14E8593E00A36CB4 /* AC_FileHandle.cpp */; };
+		CF1794B614E8593E00A36CB4 /* AC_FileHandle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1794AF14E8593E00A36CB4 /* AC_FileHandle.cpp */; };
+		CF1794B714E8593E00A36CB4 /* AC_FileHandleForWriting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1794B114E8593E00A36CB4 /* AC_FileHandleForWriting.cpp */; };
+		CF1794B814E8593E00A36CB4 /* AC_FileHandleForWriting.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1794B114E8593E00A36CB4 /* AC_FileHandleForWriting.cpp */; };
+		CF1794B914E8593E00A36CB4 /* C_BinaryFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1794B314E8593E00A36CB4 /* C_BinaryFileWrite.cpp */; };
+		CF1794BA14E8593E00A36CB4 /* C_BinaryFileWrite.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1794B314E8593E00A36CB4 /* C_BinaryFileWrite.cpp */; };
 		CF1F0915115164FD00FAFD22 /* GALGAS_stringset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1F0914115164FD00FAFD22 /* GALGAS_stringset.cpp */; };
 		CF1F0916115164FD00FAFD22 /* GALGAS_stringset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1F0914115164FD00FAFD22 /* GALGAS_stringset.cpp */; };
 		CF22211811AEE9EF000CEDFF /* syntaxSignature.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF22211611AEE9EF000CEDFF /* syntaxSignature.cpp */; };
@@ -470,6 +476,12 @@
 		CF0EA32F10654CF500679ABC /* galgasTemplateScanner-cocoa.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "galgasTemplateScanner-cocoa.m"; sourceTree = "<group>"; };
 		CF1109E110D4F09C00E1B8FC /* semanticsReaders.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsReaders.cpp; sourceTree = "<group>"; };
 		CF1109E210D4F09C00E1B8FC /* semanticsReaders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsReaders.h; sourceTree = "<group>"; };
+		CF1794AF14E8593E00A36CB4 /* AC_FileHandle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_FileHandle.cpp; sourceTree = "<group>"; };
+		CF1794B014E8593E00A36CB4 /* AC_FileHandle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AC_FileHandle.h; sourceTree = "<group>"; };
+		CF1794B114E8593E00A36CB4 /* AC_FileHandleForWriting.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = AC_FileHandleForWriting.cpp; sourceTree = "<group>"; };
+		CF1794B214E8593E00A36CB4 /* AC_FileHandleForWriting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AC_FileHandleForWriting.h; sourceTree = "<group>"; };
+		CF1794B314E8593E00A36CB4 /* C_BinaryFileWrite.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_BinaryFileWrite.cpp; sourceTree = "<group>"; };
+		CF1794B414E8593E00A36CB4 /* C_BinaryFileWrite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_BinaryFileWrite.h; sourceTree = "<group>"; };
 		CF1BCEA410D2B68000A0D648 /* GALGAS_sint_36__34_.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_sint_36__34_.cpp; sourceTree = "<group>"; };
 		CF1BCEC010D2BAA400A0D648 /* GALGAS_uint_36__34_.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_uint_36__34_.cpp; sourceTree = "<group>"; };
 		CF1BCEE210D2C1A300A0D648 /* GALGAS_string.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_string.cpp; sourceTree = "<group>"; };
@@ -1923,6 +1935,12 @@
 		CFF538CC057A559D00854C83 /* files */ = {
 			isa = PBXGroup;
 			children = (
+				CF1794AF14E8593E00A36CB4 /* AC_FileHandle.cpp */,
+				CF1794B014E8593E00A36CB4 /* AC_FileHandle.h */,
+				CF1794B114E8593E00A36CB4 /* AC_FileHandleForWriting.cpp */,
+				CF1794B214E8593E00A36CB4 /* AC_FileHandleForWriting.h */,
+				CF1794B314E8593E00A36CB4 /* C_BinaryFileWrite.cpp */,
+				CF1794B414E8593E00A36CB4 /* C_BinaryFileWrite.h */,
 				CF3FDE0314E66E2F0040331C /* C_FileManager.cpp */,
 				CF3FDE0414E66E2F0040331C /* C_FileManager.h */,
 				CF8259D808536A7E0077AEAF /* C_HTML_FileWrite.cpp */,
@@ -2290,6 +2308,9 @@
 				CFD2567D1494FC2E00E63CAA /* C_TCPSocketOut.cpp in Sources */,
 				CF3FDE0514E66E2F0040331C /* C_FileManager.cpp in Sources */,
 				CF78D0BF14E70AED0020D786 /* C_Data.cpp in Sources */,
+				CF1794B514E8593E00A36CB4 /* AC_FileHandle.cpp in Sources */,
+				CF1794B714E8593E00A36CB4 /* AC_FileHandleForWriting.cpp in Sources */,
+				CF1794B914E8593E00A36CB4 /* C_BinaryFileWrite.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2471,6 +2492,9 @@
 				CFD2567E1494FC2E00E63CAA /* C_TCPSocketOut.cpp in Sources */,
 				CF3FDE0614E66E2F0040331C /* C_FileManager.cpp in Sources */,
 				CF78D0C014E70AED0020D786 /* C_Data.cpp in Sources */,
+				CF1794B614E8593E00A36CB4 /* AC_FileHandle.cpp in Sources */,
+				CF1794B814E8593E00A36CB4 /* AC_FileHandleForWriting.cpp in Sources */,
+				CF1794BA14E8593E00A36CB4 /* C_BinaryFileWrite.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
