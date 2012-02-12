@@ -86,8 +86,14 @@ bool C_TCPSocketOut::connect (const PMUInt16 inServerPort,
 void C_TCPSocketOut::performActualCharArrayOutput (const char * inCharArray,
                                                    const PMSInt32 inArrayCount) {
   if ((mSocket >=0) && (inArrayCount > 0)) {
-    ssize_t numbytes = send (mSocket, inCharArray, inArrayCount, 0) ;
-    if (numbytes < 0) {
+    ssize_t sentByteCount = 0 ;
+    bool ok = true ;
+    while (ok && (sentByteCount < inArrayCount)) {
+      ssize_t numbytes = send (mSocket, & inCharArray [sentByteCount], inArrayCount - sentByteCount, 0) ;
+      sentByteCount += numbytes ;
+      ok = numbytes >= 0 ;
+    }
+    if (! ok) {
       printf ("SOCKET SEND ERROR\n") ;
       perror ("send") ;
     }
@@ -109,6 +115,7 @@ void C_TCPSocketOut::performActualUnicodeArrayOutput (const utf32 * inCharArray,
 
 C_TCPSocketOut::~C_TCPSocketOut (void) {
   if (mSocket >=0) {
+    // printf ("CLOSE SOCKET\n") ;
     close (mSocket) ;
   }
 }

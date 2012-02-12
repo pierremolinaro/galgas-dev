@@ -16,9 +16,11 @@
   @private NSUInteger mErrorCount ;
   @private NSUInteger mWarningCount ;
 
-  @private NSSocketPort * mReceiveSocket ;
-  @private NSFileHandle * mReceiveSocketHandle ;
+  @private NSSocketPort * mConnectionSocket ;
+  @private NSFileHandle * mConnectionSocketHandle ;
   @private NSFileHandle * mRemoteSocketHandle ;
+  
+  @private BOOL mTerminateOnConnection ;
 }
 
 - (BOOL) buildTaskIsRunning ;

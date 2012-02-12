@@ -210,19 +210,18 @@ PMUInt32 contextHelpEndLocation (void) {
 
 void sendToTCPSocket (const C_String & inString) {
   gOutputSocket << inString ;
+  // co << "SEND SOCKET '" << inString << "'\n" ;
 }
 
 //---------------------------------------------------------------------------*
 
 void setCurrentCompiledFilePath (const C_String & inPath) {
   gCurrentlyCompiledBaseFilePath = inPath ;
-  // gOutputSocket << "BASE: " << inPath << "\n" ;
 }
 
 //---------------------------------------------------------------------------*
 
 bool isCurrentCompiledFilePath (const C_String & inPath) {
-  // gOutputSocket << "COMPARE: " << inPath << "\n" ;
   return gCurrentlyCompiledBaseFilePath == inPath ;
 }
 

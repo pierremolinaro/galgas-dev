@@ -132,6 +132,18 @@ map @optionComponentMapForSemanticAnalysis {
 }
 
 #---------------------------------------------------------------------------*
+
+map @optionMapForSemanticAnalysis {
+  @unifiedTypeMapProxy mOptionType ;
+  @char mOptionChar ;
+  @string mOptionString ;
+  @string mComment ;
+  @string mDefaultValue ;
+  insert insertKey error message "the '%K' command line option has been already declared in %L" ;
+  search searchKey error message "the '%K' command line option is not declared" ;
+}
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #  O P T I O N   M A P                                                      *
 #                                                                           *
@@ -157,6 +169,7 @@ struct @semanticContext {
   @grammarMap mGrammarMap ;
   @optionComponentMapForSemanticAnalysis mOptionComponentMapForSemanticAnalysis ;
   @lexiqueComponentMapForSemanticAnalysis mLexiqueComponentMapForSemanticAnalysis ;
+  @optionMapForSemanticAnalysis mOptionMap ;
 }
 
 #---------------------------------------------------------------------------*
@@ -2937,6 +2950,7 @@ routine buildSemanticContext
         ![@grammarMap emptyMap]
         ![@optionComponentMapForSemanticAnalysis emptyMap]
         ![@lexiqueComponentMapForSemanticAnalysis emptyMap]
+        ![@optionMapForSemanticAnalysis emptyMap]
       ] ;
     #--- Loop throught all declarations
       foreach sortedSemanticDeclarationListAST do
