@@ -1260,6 +1260,7 @@
 			children = (
 				CFFE6C8E14861DFB00FD9FF8 /* OC_GGS_Document.xib */,
 				CF06F5C51049592F005F03FA /* MainMenu.xib */,
+				CF82596F08536A130077AEAF /* I_Stop.tiff */,
 				CFCEEFBF13CF24C10074BDE9 /* OC_GGS_searchInFolders.h */,
 				CFCEEFC013CF24C10074BDE9 /* OC_GGS_searchInFolders.m */,
 				CF3CFB2B0FEBEA6C00CE4488 /* PMFontButton.h */,
@@ -1276,7 +1277,6 @@
 				CF82597408536A130077AEAF /* OC_GGS_Document.m */,
 				CF82597508536A130077AEAF /* OC_GGS_PreferencesController.h */,
 				CF82597608536A130077AEAF /* OC_GGS_PreferencesController.m */,
-				CF82596F08536A130077AEAF /* I_Stop.tiff */,
 				CFFCE7BB14686081009DB6D5 /* PMIssueDescriptor.h */,
 				CFFCE7BC14686081009DB6D5 /* PMIssueDescriptor.m */,
 				CFEE63DA147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.h */,

@@ -204,8 +204,17 @@
       NSNotificationCenter * center = [NSNotificationCenter defaultCenter] ;
       [center removeObserver:self name:NSFileHandleReadCompletionNotification object:[mTask.standardOutput fileHandleForReading]] ;
       [self notifyTaskCompleted] ;
-/// Buffered DAta
-      [NSApp requestUserAttention:NSInformationalRequest] ;
+      if (nil != mBufferedInputData) {
+        NSString * message = [[NSString alloc] initWithData:mBufferedInputData encoding:NSUTF8StringEncoding] ;
+        for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
+          [doc setRawOutputString:message] ;
+        }
+        [NSApp requestUserAttention:NSInformationalRequest] ;
+      }else{
+        for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
+          [doc setRawOutputString:@""] ;
+        }
+      }
     }
   }
 }
@@ -237,6 +246,9 @@
   [inDocument displayIssueDetailedMessage:nil] ;
   mBufferedInputData = [NSMutableData new] ;
   mSocketBufferedInputData = [NSMutableData new] ;
+  for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
+    [doc setRawOutputString:@"Compiling…"] ;
+  }
   [mIssueArrayController setContent:[NSArray array]] ;
   NSArray * commandLineArray = [gCocoaGalgasPreferencesController commandLineItemArray] ;
 //--- Command line tool does actually exist ? (First argument is not "?")
@@ -343,7 +355,6 @@
       mRemoteSocketHandle = nil ;
     //---
       if (nil != mSocketBufferedInputData) {
-  //      NSString * message = [[NSString alloc] initWithData:mSocketBufferedInputData encoding:NSUTF8StringEncoding] ;
         [self XMLIssueAnalysis:mSocketBufferedInputData] ;
         mSocketBufferedInputData = nil ;
       }
