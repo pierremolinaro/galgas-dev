@@ -251,6 +251,13 @@
     withKeyPath:@"values.PMLiveCompilation"
     options:NULL
   ] ;
+//---
+  [mRawOutputTextView
+    bind:@"value"
+    toObject:self
+    withKeyPath:@"mRawOutputString"
+    options:NULL
+  ] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1257,6 +1264,18 @@
 
 - (BOOL) isContextualHelpTextViewCollapsed {
   return [mIssueSplitView isSubviewCollapsed:mContextualHelpScrollView] ;
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Raw Output String
+
+//---------------------------------------------------------------------------*
+
+- (void) setRawOutputString: (NSString *) inString {
+  [self willChangeValueForKey:@"mRawOutputString"] ;
+  mRawOutputString = inString.copy ;
+  [self didChangeValueForKey:@"mRawOutputString"] ;
 }
 
 //---------------------------------------------------------------------------*
