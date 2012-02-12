@@ -41,7 +41,7 @@ filewrapper semanticFileGenerationTemplate in "../generation_templates/semantic_
     ?@stringlist IMPORTED_COMPONENT_LIST
   ;
 }
-
+                            
 #---------------------------------------------------------------------------*
 #                                                                           *
 #    C O M P I L E    S E M A N T I C S   C O M P O N E N T                 *
@@ -219,6 +219,7 @@ routine buildOptionComponentMapForSemanticAnalysis
   ??@lstringlist inOptionComponentFileNameList
   ?!@parsedComponentStruct ioParsedComponentStruct
   ?!@optionComponentMapForSemanticAnalysis ioOptionComponentMapForSemanticAnalysis
+#  ?!@optionMapForSemanticAnalysis ioOptionMap
 :
   foreach inOptionComponentFileNameList do
     @lstring optionComponentName ;
@@ -392,6 +393,7 @@ routine compileSemanticsComponentAST
     !optionComponentFileNameList
     !?ioParsedComponentStruct
     !?semanticContext->mOptionComponentMapForSemanticAnalysis
+#    !?semanticContext->mOptionMap
   ;
 #--- Build lexique component map for semantic analysis
   buildLexiqueComponentMapForSemanticAnalysis

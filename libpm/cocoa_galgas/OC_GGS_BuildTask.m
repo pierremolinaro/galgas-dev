@@ -21,7 +21,7 @@
 
 //---------------------------------------------------------------------------*
 
-//#define DEBUG_MESSAGES
+#define DEBUG_MESSAGES
 
 //---------------------------------------------------------------------------*
 
@@ -152,6 +152,7 @@
         [issueArray addObject:issue] ;
       }
     }
+    //NSLog (@"issueArray %lu", issueArray.count) ;
     [mIssueArrayController setContent:issueArray] ;
   //--- Send issues to concerned text source coloring objects
     for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
@@ -204,9 +205,17 @@
       name:NSTaskDidTerminateNotification
       object:mTask
     ] ;
+    [[NSNotificationCenter defaultCenter]
+      removeObserver:self
+      name:NSFileHandleConnectionAcceptedNotification
+      object:mConnectionSocketHandle
+    ] ;
+  //---
+    [mConnectionSocket invalidate] ; mConnectionSocket = nil ;
+    [mConnectionSocketHandle closeFile] ; mConnectionSocketHandle = nil ;
+    [mRemoteSocketHandle closeFile] ; mRemoteSocketHandle = nil ;
   //---
     [mTask terminate] ;
-    [mTask waitUntilExit] ;
   //---    
     [self willChangeValueForKey:@"buildTaskIsRunning"] ;
     [self willChangeValueForKey:@"buildTaskIsNotRunning"] ;
@@ -215,12 +224,14 @@
     [self didChangeValueForKey:@"buildTaskIsRunning"] ;
   //---
     [self sendTaskOutputString:@"Build has been aborted"] ;
+  //---
+    mTerminateOnConnection = NO ;
   }
 }
 
 //---------------------------------------------------------------------------*
 
-- (void) buildTaskDidTerminateNotification:(NSNotification *) inNotification {
+- (void) buildTaskDidTerminate {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
@@ -239,21 +250,37 @@
   NSMutableData * socketData = [NSMutableData new] ;
   loop = YES ;
   while (loop) {
+   // [mRemoteSocketHandle readInBackgroundAndNotify] ;
     NSData * data = [mRemoteSocketHandle availableData] ;
-    [outputData appendData:data] ;
+    [socketData appendData:data] ;
     loop = data.length > 0 ;
   }
+  // NSLog (@"socketData %lu", socketData.length) ;
   [self XMLIssueAnalysis:socketData] ;
 //---
-  mReceiveSocket = nil ;
-  mReceiveSocketHandle = nil ;
-  mRemoteSocketHandle = nil ;
+  [mConnectionSocket invalidate] ; mConnectionSocket = nil ;
+  [mConnectionSocketHandle closeFile] ; mConnectionSocketHandle = nil ;
+  [mRemoteSocketHandle closeFile] ; mRemoteSocketHandle = nil ;
 //---    
   [self willChangeValueForKey:@"buildTaskIsRunning"] ;
   [self willChangeValueForKey:@"buildTaskIsNotRunning"] ;
   mTask = nil ;
   [self didChangeValueForKey:@"buildTaskIsNotRunning"] ;
   [self didChangeValueForKey:@"buildTaskIsRunning"] ;
+  mTerminateOnConnection = NO ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) buildTaskDidTerminateNotification:(NSNotification *) inNotification {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  if (nil != mRemoteSocketHandle) {
+    [self buildTaskDidTerminate] ;
+  }else{
+    mTerminateOnConnection = YES ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -285,13 +312,13 @@
     ] ;
   }else{
   //--- Issue receiver socket
-    mReceiveSocket = [[NSSocketPort alloc] initWithTCPPort:0] ; // A port number will be attributed
+    mConnectionSocket = [[NSSocketPort alloc] initWithTCPPort:0] ; // A port number will be attributed
     struct sockaddr_in socketStruct ;
     socklen_t length = sizeof (socketStruct) ;
-    getsockname (mReceiveSocket.socket, (struct sockaddr *) & socketStruct, & length) ;
+    getsockname (mConnectionSocket.socket, (struct sockaddr *) & socketStruct, & length) ;
     const UInt16 actualPort = ntohs (socketStruct.sin_port) ;
     // NSLog (@"actualPort %hu\n", actualPort) ;
-    // NSLog (@"mReceiveSocket %p %d", mReceiveSocket, mReceiveSocket.socket) ;
+    // NSLog (@"mConnectionSocket %p %d", mConnectionSocket, mConnectionSocket.socket) ;
     NSMutableArray * arguments = [NSMutableArray new] ;
     [arguments addObjectsFromArray:[commandLineArray subarrayWithRange:NSMakeRange (1, [commandLineArray count]-1)]] ;
     [arguments addObject:inDocument.fileURL.path] ;
@@ -308,6 +335,23 @@
     [self setWarningCount:0] ;
     [self setErrorCount:0] ;
     // NSLog (@"'%@' %@", [mTask launchPath], arguments) ;
+  //--- Set standard output notification
+    NSPipe * taskOutput = [NSPipe pipe] ;
+    [mTask setStandardOutput:taskOutput] ;
+    [mTask setStandardError:taskOutput] ;
+  //--- http://www.cocoadev.com/index.pl?NSSocketPort
+    mConnectionSocketHandle = [[NSFileHandle alloc]
+      initWithFileDescriptor:mConnectionSocket.socket
+      closeOnDealloc:NO
+    ];
+    // NSLog (@"mConnectionSocketHandle %p", mConnectionSocketHandle) ;
+    [[NSNotificationCenter defaultCenter]
+      addObserver:self
+      selector:@selector (newSocketConnection:) 
+      name:NSFileHandleConnectionAcceptedNotification
+      object:mConnectionSocketHandle
+    ] ;
+    [mConnectionSocketHandle acceptConnectionInBackgroundAndNotify] ;
   //--- Set Termination notification
     [[NSNotificationCenter defaultCenter]
       addObserver:self
@@ -315,23 +359,8 @@
       name:NSTaskDidTerminateNotification
       object:mTask
     ] ;
-  //--- Set standard output notification
-    NSPipe * taskOutput = [NSPipe pipe] ;
-    [mTask setStandardOutput:taskOutput] ;
-    [mTask setStandardError:taskOutput] ;
-  //--- http://www.cocoadev.com/index.pl?NSSocketPort
-    mReceiveSocketHandle = [[NSFileHandle alloc]
-      initWithFileDescriptor:mReceiveSocket.socket
-      closeOnDealloc: YES
-    ];
-    // NSLog (@"mReceiveSocketHandle %p", mReceiveSocketHandle) ;
-    [[NSNotificationCenter defaultCenter]
-      addObserver:self
-      selector:@selector (newSocketConnection:) 
-      name:NSFileHandleConnectionAcceptedNotification
-      object:mReceiveSocketHandle
-    ] ;
-    [mReceiveSocketHandle acceptConnectionInBackgroundAndNotify] ;
+  //---
+    mTerminateOnConnection = NO ;
   //--- Start task
     [mTask launch] ;
   }
@@ -340,10 +369,15 @@
 //---------------------------------------------------------------------------*
 
 - (void) newSocketConnection:(NSNotification *) inNotification {
-  // NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   mRemoteSocketHandle = [inNotification.userInfo
      objectForKey:NSFileHandleNotificationFileHandleItem
   ] ;
+  if (mTerminateOnConnection) {
+    [self buildTaskDidTerminate] ;
+  }
 }
 
 //---------------------------------------------------------------------------*

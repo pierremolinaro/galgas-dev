@@ -387,7 +387,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     mReceiveSocketHandle = nil ;
     mRemoteSocketHandle = nil ;
     [mTask terminate] ;
-    [mTask waitUntilExit] ;
+ //   [mTask waitUntilExit] ;
     mTask = nil ;
   }
 //---
