@@ -540,7 +540,9 @@ void ggs_printError (const C_SourceTextInString * inSourceTextPtr,
   #endif
   XMLstring << "  message=\"" << inMessage.XMLEscapedString () << "\"\n"
                "/>\n" ;
-  sendToTCPSocket (XMLstring) ;
+  if (executionModeIsNormal ()) {
+    sendToTCPSocket (XMLstring) ;
+  }
 //---
   if (gOption_generic_5F_cli_5F_options_xml.mValue) {
     co << XMLstring ;
@@ -596,7 +598,9 @@ void ggs_printWarning (const C_SourceTextInString * inSourceTextPtr,
   #endif
   XMLstring << "  message=\"" << inMessage.XMLEscapedString () << "\"\n"
                "/>\n" ;
-  sendToTCPSocket (XMLstring) ;
+  if (executionModeIsNormal ()) {
+    sendToTCPSocket (XMLstring) ;
+  }
 //---
   if (gOption_generic_5F_cli_5F_options_xml.mValue) {
     co << XMLstring ;
@@ -642,7 +646,9 @@ void ggs_printFileOperationSuccess (const C_String & inMessage
   #endif
   XMLstring << "  message=\"" << inMessage.XMLEscapedString () << "\"\n"
                "/>\n" ;
-  sendToTCPSocket (XMLstring) ;
+  if (executionModeIsNormal ()) {
+    sendToTCPSocket (XMLstring) ;
+  }
 //---
   if (gOption_generic_5F_cli_5F_options_xml.mValue) {
     co << XMLstring ;
@@ -674,7 +680,9 @@ void ggs_printMessage (const C_String & inMessage
   #endif
   XMLstring << "  message=\"" << inMessage.XMLEscapedString () << "\"\n"
                "/>\n" ;
-  sendToTCPSocket (XMLstring) ;
+  if (executionModeIsNormal ()) {
+    sendToTCPSocket (XMLstring) ;
+  }
 //---
   if (gOption_generic_5F_cli_5F_options_xml.mValue) {
     co << XMLstring ;
