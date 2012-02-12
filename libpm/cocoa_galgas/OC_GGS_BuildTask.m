@@ -177,10 +177,78 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-- (void) notifyTaskCompleted {
+- (void) sendTaskOutputString: (NSString *) inString {
+  NSDictionary * d = [NSDictionary dictionaryWithObjectsAndKeys:
+    [NSFont fontWithName:@"Courier" size:13.0], NSFontAttributeName,
+    nil
+  ] ;
+    NSAttributedString * attributedString = [[NSAttributedString alloc]
+      initWithString:inString
+      attributes:d
+    ] ;
+    for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
+      [doc setRawOutputString:attributedString] ;
+    }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) abortBuild {
+  if (nil != mTask) {
+    #ifdef DEBUG_MESSAGES
+      NSLog (@"%s", __PRETTY_FUNCTION__) ;
+    #endif
+  //---
+    [[NSNotificationCenter defaultCenter]
+      removeObserver:self
+      name:NSTaskDidTerminateNotification
+      object:mTask
+    ] ;
+  //---
+    [mTask terminate] ;
+    [mTask waitUntilExit] ;
+  //---    
+    [self willChangeValueForKey:@"buildTaskIsRunning"] ;
+    [self willChangeValueForKey:@"buildTaskIsNotRunning"] ;
+    mTask = nil ;
+    [self didChangeValueForKey:@"buildTaskIsNotRunning"] ;
+    [self didChangeValueForKey:@"buildTaskIsRunning"] ;
+  //---
+    [self sendTaskOutputString:@"Build has been aborted"] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) buildTaskDidTerminateNotification:(NSNotification *) inNotification {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
+//--- Standard and error output
+  NSMutableData * outputData = [NSMutableData new] ;
+  BOOL loop = YES ;
+  while (loop) {
+    NSData * data = [[mTask.standardOutput fileHandleForReading] availableData] ;
+    [outputData appendData:data] ;
+    loop = data.length > 0 ;
+  }
+ // NSLog (@"outputData %lu", outputData.length) ;
+  NSString * message = [[NSString alloc] initWithData:outputData encoding:NSUTF8StringEncoding] ;
+  [self sendTaskOutputString:message] ;
+//--- Socket Data
+  NSMutableData * socketData = [NSMutableData new] ;
+  loop = YES ;
+  while (loop) {
+    NSData * data = [mRemoteSocketHandle availableData] ;
+    [outputData appendData:data] ;
+    loop = data.length > 0 ;
+  }
+  [self XMLIssueAnalysis:socketData] ;
+//---
+  mReceiveSocket = nil ;
+  mReceiveSocketHandle = nil ;
+  mRemoteSocketHandle = nil ;
+//---    
   [self willChangeValueForKey:@"buildTaskIsRunning"] ;
   [self willChangeValueForKey:@"buildTaskIsNotRunning"] ;
   mTask = nil ;
@@ -190,65 +258,15 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) getDataFromTaskOutput: (NSNotification *) inNotification {
-  if (inNotification.object == [mTask.standardOutput fileHandleForReading]) {
-    NSData * data = [inNotification.userInfo objectForKey:NSFileHandleNotificationDataItem];
-    #ifdef DEBUG_MESSAGES
-      NSLog (@"%s (%lu bytes)", __PRETTY_FUNCTION__, (unsigned long) data.length) ;
-    #endif
-    if (data.length > 0) {
-      [mBufferedInputData appendData:data] ;
-      [inNotification.object readInBackgroundAndNotify] ;
-    // }else if (nil != mBufferedInputData) {
-    }else{
-      NSNotificationCenter * center = [NSNotificationCenter defaultCenter] ;
-      [center removeObserver:self name:NSFileHandleReadCompletionNotification object:[mTask.standardOutput fileHandleForReading]] ;
-      [self notifyTaskCompleted] ;
-      if (nil != mBufferedInputData) {
-        NSString * message = [[NSString alloc] initWithData:mBufferedInputData encoding:NSUTF8StringEncoding] ;
-        for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
-          [doc setRawOutputString:message] ;
-        }
-        [NSApp requestUserAttention:NSInformationalRequest] ;
-      }else{
-        for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
-          [doc setRawOutputString:@""] ;
-        }
-      }
-    }
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) stopBuild {
-  if (nil != mTask) {
-    NSNotificationCenter * center = [NSNotificationCenter defaultCenter] ;
-    mBufferedInputData = nil ;
-    mSocketBufferedInputData = nil ;
-    [center removeObserver:self name:NSFileHandleReadCompletionNotification object:[mTask.standardOutput fileHandleForReading]] ;
-    [center removeObserver:self name:NSFileHandleReadCompletionNotification object:mRemoteSocketHandle] ;
-    [mTask terminate] ;
-    [mTask waitUntilExit] ;
-    [self notifyTaskCompleted] ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
 - (void) buildDocument: (OC_GGS_Document *) inDocument {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  [self stopBuild] ;
+  [self abortBuild] ;
 //---
+  [self sendTaskOutputString:@"Compiling…"] ;
   [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
   [inDocument displayIssueDetailedMessage:nil] ;
-  mBufferedInputData = [NSMutableData new] ;
-  mSocketBufferedInputData = [NSMutableData new] ;
-  for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
-    [doc setRawOutputString:@"Compiling…"] ;
-  }
   [mIssueArrayController setContent:[NSArray array]] ;
   NSArray * commandLineArray = [gCocoaGalgasPreferencesController commandLineItemArray] ;
 //--- Command line tool does actually exist ? (First argument is not "?")
@@ -278,6 +296,7 @@
     [arguments addObjectsFromArray:[commandLineArray subarrayWithRange:NSMakeRange (1, [commandLineArray count]-1)]] ;
     [arguments addObject:inDocument.fileURL.path] ;
     [arguments addObject:[NSString stringWithFormat:@"--mode=xml-issues-on-port:%hu", actualPort]] ;
+    [arguments addObject:@"--no-color"] ;
  //--- Create task
     [self willChangeValueForKey:@"buildTaskIsRunning"] ;
     [self willChangeValueForKey:@"buildTaskIsNotRunning"] ;
@@ -289,17 +308,17 @@
     [self setWarningCount:0] ;
     [self setErrorCount:0] ;
     // NSLog (@"'%@' %@", [mTask launchPath], arguments) ;
+  //--- Set Termination notification
+    [[NSNotificationCenter defaultCenter]
+      addObserver:self
+      selector: @selector (buildTaskDidTerminateNotification:)
+      name:NSTaskDidTerminateNotification
+      object:mTask
+    ] ;
   //--- Set standard output notification
     NSPipe * taskOutput = [NSPipe pipe] ;
     [mTask setStandardOutput:taskOutput] ;
     [mTask setStandardError:taskOutput] ;
-    [[NSNotificationCenter defaultCenter]
-      addObserver:self
-      selector:@selector (getDataFromTaskOutput:)
-      name:NSFileHandleReadCompletionNotification
-      object:[taskOutput fileHandleForReading]
-    ] ;
-    [taskOutput.fileHandleForReading readInBackgroundAndNotify] ;
   //--- http://www.cocoadev.com/index.pl?NSSocketPort
     mReceiveSocketHandle = [[NSFileHandle alloc]
       initWithFileDescriptor:mReceiveSocket.socket
@@ -325,41 +344,6 @@
   mRemoteSocketHandle = [inNotification.userInfo
      objectForKey:NSFileHandleNotificationFileHandleItem
   ] ;
-  // NSLog (@"mRemoteSocketHandle %p", mRemoteSocketHandle) ;
-  [[NSNotificationCenter defaultCenter]
-    addObserver:self
-    selector:@selector (getDataFromSocketConnection:) 
-    name:NSFileHandleReadCompletionNotification
-    object:mRemoteSocketHandle
-  ] ;
-  [mRemoteSocketHandle readInBackgroundAndNotify] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) getDataFromSocketConnection: (NSNotification *) inNotification {
-  if (inNotification.object == mRemoteSocketHandle) {
-    NSData * data = [inNotification.userInfo objectForKey:NSFileHandleNotificationDataItem];
-    #ifdef DEBUG_MESSAGES
-      NSLog (@"%s (%lu bytes)", __PRETTY_FUNCTION__, (unsigned long) data.length) ;
-    #endif
-    if (data.length > 0) {
-      [mSocketBufferedInputData appendData:data] ;
-      [inNotification.object readInBackgroundAndNotify] ;
-    }else{
-      NSNotificationCenter * center = [NSNotificationCenter defaultCenter] ;
-      [center removeObserver:self name:NSFileHandleConnectionAcceptedNotification object:mReceiveSocketHandle] ;
-      [center removeObserver:self name:NSFileHandleReadCompletionNotification object:mRemoteSocketHandle] ;
-      mReceiveSocket = nil ;
-      mReceiveSocketHandle = nil ;
-      mRemoteSocketHandle = nil ;
-    //---
-      if (nil != mSocketBufferedInputData) {
-        [self XMLIssueAnalysis:mSocketBufferedInputData] ;
-        mSocketBufferedInputData = nil ;
-      }
-    }
-  }
 }
 
 //---------------------------------------------------------------------------*

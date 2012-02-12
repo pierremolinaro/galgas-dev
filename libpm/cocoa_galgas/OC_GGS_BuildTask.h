@@ -11,7 +11,6 @@
 @class OC_GGS_Document ;
 
 @interface OC_GGS_BuildTask : NSObject {
-  @private NSMutableData * mBufferedInputData ;
   @private NSArrayController * mIssueArrayController ;
   @private NSTask * mTask ;
   @private NSUInteger mErrorCount ;
@@ -20,7 +19,6 @@
   @private NSSocketPort * mReceiveSocket ;
   @private NSFileHandle * mReceiveSocketHandle ;
   @private NSFileHandle * mRemoteSocketHandle ;
-  @private NSMutableData * mSocketBufferedInputData ;
 }
 
 - (BOOL) buildTaskIsRunning ;
@@ -30,7 +28,7 @@
 
 - (void) buildDocument: (OC_GGS_Document *) inDocument ;
 
-- (void) stopBuild ;
+- (void) abortBuild ;
 
 - (NSString *) errorCountString ;
 
