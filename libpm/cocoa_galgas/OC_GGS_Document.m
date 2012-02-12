@@ -253,7 +253,7 @@
   ] ;
 //---
   [mRawOutputTextView
-    bind:@"value"
+    bind:@"data"
     toObject:self
     withKeyPath:@"mRawOutputString"
     options:NULL
@@ -910,7 +910,7 @@
 //---------------------------------------------------------------------------*
 
 - (IBAction) stopBuild: (id) sender {
-  [mBuildTask stopBuild] ;
+  [mBuildTask abortBuild] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1272,9 +1272,12 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) setRawOutputString: (NSString *) inString {
+- (void) setRawOutputString: (NSAttributedString *) inString {
   [self willChangeValueForKey:@"mRawOutputString"] ;
-  mRawOutputString = inString.copy ;
+  mRawOutputString = [inString
+    RTFDFromRange:NSMakeRange (0, inString.length)
+    documentAttributes:nil
+  ] ;
   [self didChangeValueForKey:@"mRawOutputString"] ;
 }
 

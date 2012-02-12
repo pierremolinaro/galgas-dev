@@ -49,7 +49,7 @@
   @private IBOutlet NSButton * mCurrentLineButton ;
 
   @private IBOutlet NSTextView * mRawOutputTextView ;
-  @private NSString * mRawOutputString ;
+  @private NSData * mRawOutputString ;
 
   @private IBOutlet NSTableView * mIssueTableView ;
   @private IBOutlet NSTableColumn * mIssueTableViewColumn ;
@@ -122,5 +122,5 @@
 - (void) setContextualHelpMessage: (NSString *) inMessage ;
 - (BOOL) isContextualHelpTextViewCollapsed ;
 
-- (void) setRawOutputString: (NSString *) inString ;
+- (void) setRawOutputString: (NSAttributedString *) inString ;
 @end

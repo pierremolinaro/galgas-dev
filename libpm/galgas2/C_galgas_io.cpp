@@ -680,9 +680,9 @@ void ggs_printMessage (const C_String & inMessage
   #endif
   XMLstring << "  message=\"" << inMessage.XMLEscapedString () << "\"\n"
                "/>\n" ;
-  if (executionModeIsNormal ()) {
-    sendToTCPSocket (XMLstring) ;
-  }
+//  if (executionModeIsNormal ()) {
+//    sendToTCPSocket (XMLstring) ;
+//  }
 //---
   if (gOption_generic_5F_cli_5F_options_xml.mValue) {
     co << XMLstring ;

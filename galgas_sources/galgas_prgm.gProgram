@@ -245,7 +245,6 @@ indexing with projectLL1grammar
     ![@parsedGuiComponentMap emptyMap]
   ] ;
 #---------------------------------- Parse sources
-  message "*** Parsing\n" ;
   foreach [projectComponent mProjectSourceList] do
     const @string extension := [mFilePath pathExtension] ;
     const @lstring componentName [new
@@ -256,13 +255,13 @@ indexing with projectLL1grammar
       ![inSourceFile stringByDeletingLastPathComponent] . "/" . [mFilePath string]
       ![mFilePath location]
     ] ;
-#    if mSourceKind != [@sourceFileKind externSourceFile] then
-#      message "  - '" . mFilePath . "'\n" ;
-#    end if ;
     switch mSourceKind
     when externSourceFile :
     when guiSourceFile :
       if extension == "gGui" then
+#        if [option galgas_cli_options.verbose_output value] then
+          message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
+ #       end if ;
         @guiComponentAST guiComponentRoot ;
         grammar guiGrammar in fullFilePath ?guiComponentRoot ;
         [!?parsedComponentStruct->mParsedGuiComponentMap insertKey !componentName !fullFilePath !guiComponentRoot] ;
@@ -271,6 +270,7 @@ indexing with projectLL1grammar
       end if ;
     when lexiqueSourceFile :
       if extension == "gLexique" then
+        message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         @lexiqueComponentAST lexiqueComponentRoot ;
         grammar lexiqueLL1grammar in fullFilePath ?lexiqueComponentRoot ;
         [!?parsedComponentStruct->mParsedLexiqueComponentMap insertKey !componentName !lexiqueComponentRoot] ;
@@ -279,6 +279,7 @@ indexing with projectLL1grammar
       end if ;
     when optionSourceFile :
       if extension == "gOption" then
+        message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         @optionComponentAST optionComponentAST ;
         grammar optionLL1grammar in fullFilePath ?optionComponentAST ;
       #--- Semantic Analysis of option component
@@ -302,6 +303,7 @@ indexing with projectLL1grammar
       end if ;
     when semanticsSourceFile :
       if extension == "gSemantics" then
+        message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         @semanticsComponentAST semanticsComponentRoot ;
         grammar semanticsSLRgrammar in fullFilePath ?semanticsComponentRoot ;
         [!?parsedComponentStruct->mParsedSemanticsComponentMap insertKey !componentName !fullFilePath !semanticsComponentRoot] ;
@@ -310,6 +312,7 @@ indexing with projectLL1grammar
       end if ;
     when syntaxSourceFile :
       if extension == "gSyntax" then
+        message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         @syntaxComponentAST syntaxComponentRoot ;
         grammar syntaxSLRgrammar in fullFilePath ?syntaxComponentRoot ;
         [!?parsedComponentStruct->mParsedSyntaxComponentMap insertKey !componentName !fullFilePath !syntaxComponentRoot] ;
@@ -318,6 +321,7 @@ indexing with projectLL1grammar
       end if ;
     when grammarSourceFile :
       if extension == "gGrammar" then
+        message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         @grammarComponentAST grammarComponentRoot ;
         grammar grammarLL1grammar in fullFilePath ?grammarComponentRoot ;
         [!?parsedComponentStruct->mParsedGrammarComponentMap insertKey !componentName !fullFilePath !grammarComponentRoot] ;
@@ -326,6 +330,7 @@ indexing with projectLL1grammar
       end if ;
     when programSourceFile :
       if extension == "gProgram" then
+        message "*** Parse '" . [fullFilePath lastPathComponent] . "'\n" ;
         @programComponentAST programComponentAST ;
         grammar programSLRgrammar in fullFilePath ?programComponentAST ;
         [!?parsedComponentStruct->mParsedProgramComponentMap insertKey !componentName !fullFilePath !programComponentAST] ;
@@ -338,7 +343,7 @@ indexing with projectLL1grammar
   if [@uint errorCount] == 0 then
   #--- Lexique components
     foreach parsedComponentStruct->mParsedLexiqueComponentMap do
-#      message "*** Compiling '" . lkey . ".gLexique'\n" ;
+      message "*** Compiling '" . lkey . ".gLexique'\n" ;
       compileLexiqueComponentFromAST
         !lkey->string
         !outputDirectory
@@ -347,7 +352,7 @@ indexing with projectLL1grammar
     end foreach ;
   #--- GUI components
     foreach parsedComponentStruct->mParsedGuiComponentMap do
-#      message "*** Compiling '" . lkey . ".gGui'\n" ;
+      message "*** Compiling '" . lkey . ".gGui'\n" ;
       compileGuiComponentFromAST
         !mSourceFullFilePath
         !outputDirectory
@@ -357,7 +362,7 @@ indexing with projectLL1grammar
     end foreach ;
   #--- Option components
     foreach parsedComponentStruct->mParsedOptionComponentMap do
-#      message "*** Compiling '" . lkey . ".gOption'\n" ;
+      message "*** Compiling '" . lkey . ".gOption'\n" ;
       compileOptionComponentAST
         !outputDirectory
         !lkey
@@ -368,7 +373,7 @@ indexing with projectLL1grammar
     end foreach ;
   #--- Semantic components
     foreach parsedComponentStruct->mParsedSemanticsComponentMap do
-#      message "*** Compiling '" . lkey . ".gSemantics'\n" ;
+      message "*** Compiling '" . lkey . ".gSemantics'\n" ;
       compileSemanticsComponentAST
         !mSourceFullFilePath
         !outputDirectory
@@ -378,7 +383,7 @@ indexing with projectLL1grammar
     end foreach ;
   #--- Syntax components
     foreach parsedComponentStruct->mParsedSyntaxComponentMap do
-#      message "*** Compiling '" . lkey . ".gSyntax'\n" ;
+      message "*** Compiling '" . lkey . ".gSyntax'\n" ;
       compileSyntaxComponentFromAST
         !mSourceFullFilePath
         !outputDirectory
@@ -388,7 +393,7 @@ indexing with projectLL1grammar
     end foreach ;
   #--- Grammar components
     foreach parsedComponentStruct->mParsedGrammarComponentMap do
-#      message "*** Compiling '" . lkey . ".gGrammar'\n" ;
+      message "*** Compiling '" . lkey . ".gGrammar'\n" ;
       compileGrammarComponentFromAST
         !mSourceFullFilePath
         !outputDirectory
@@ -398,7 +403,7 @@ indexing with projectLL1grammar
     end foreach ;
   #--- Program components
     foreach parsedComponentStruct->mParsedProgramComponentMap do
-#      message "*** Compiling '" . lkey . ".gProgram'\n" ;
+      message "*** Compiling '" . lkey . ".gProgram'\n" ;
       compileProgramComponentFromAST
         !mSourceFullFilePath
         !outputDirectory
