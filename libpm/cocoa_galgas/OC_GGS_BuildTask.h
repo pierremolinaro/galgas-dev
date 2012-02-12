@@ -19,7 +19,6 @@
   @private NSSocketPort * mConnectionSocket ;
   @private NSFileHandle * mConnectionSocketHandle ;
   @private NSFileHandle * mRemoteSocketHandle ;
-  
   @private BOOL mTerminateOnConnection ;
 }
 

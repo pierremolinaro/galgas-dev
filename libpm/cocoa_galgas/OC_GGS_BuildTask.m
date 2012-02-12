@@ -250,7 +250,6 @@
   NSMutableData * socketData = [NSMutableData new] ;
   loop = YES ;
   while (loop) {
-   // [mRemoteSocketHandle readInBackgroundAndNotify] ;
     NSData * data = [mRemoteSocketHandle availableData] ;
     [socketData appendData:data] ;
     loop = data.length > 0 ;
@@ -267,6 +266,7 @@
   mTask = nil ;
   [self didChangeValueForKey:@"buildTaskIsNotRunning"] ;
   [self didChangeValueForKey:@"buildTaskIsRunning"] ;
+//---
   mTerminateOnConnection = NO ;
 }
 
@@ -372,11 +372,13 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  mRemoteSocketHandle = [inNotification.userInfo
-     objectForKey:NSFileHandleNotificationFileHandleItem
-  ] ;
-  if (mTerminateOnConnection) {
-    [self buildTaskDidTerminate] ;
+  if (inNotification.object == mConnectionSocketHandle) {
+    mRemoteSocketHandle = [inNotification.userInfo
+       objectForKey:NSFileHandleNotificationFileHandleItem
+    ] ;
+    if (mTerminateOnConnection) {
+      [self buildTaskDidTerminate] ;
+    }
   }
 }
 

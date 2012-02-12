@@ -578,8 +578,8 @@ generateFileFromPathes (const C_String & inStartPath,
     }
     C_FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (performGeneration ()) {
-      bool ok = false ;
-      C_TextFileWrite f (fileName, ok) ;
+      C_TextFileWrite f (fileName) ;
+      bool ok = f.isOpened () ;
       if (! ok) {
         C_String message ;
         message << "Cannot open '" << fileName << "' file in write mode." ;
@@ -653,8 +653,8 @@ generateFileFromPathes (const C_String & inStartPath,
         incrementPreservedLileCount (UNICODE_VALUE (secondUserPart (i COMMA_HERE)) == '\n') ;
       }
     }else if (performGeneration ()) {
-      ok = false ;
-      C_TextFileWrite f (fullPathName, ok) ;
+      C_TextFileWrite f (fullPathName) ;
+      ok = f.isOpened () ;
       if (! ok) {
         C_String message ;
         message << "Cannot open '" << fullPathName << "' file in write mode." ;
@@ -732,10 +732,9 @@ static PMUInt32 gTraceIndex ;
 
 void enableTraceWithPath (const C_String & inFilePath) {
   gTraceIndex = 0 ;
-  bool ok = false ;
   const C_String path = inFilePath + ".trace.txt" ;
-  macroMyNew (gTraceFile, C_TextFileWrite (path, ok)) ;
-  if (! ok) {
+  macroMyNew (gTraceFile, C_TextFileWrite (path)) ;
+  if (! gTraceFile->isOpened ()) {
     printf ("**** Error: cannot create trace file at path: '%s'.\n", path.cString (HERE)) ;
     macroMyDelete (gTraceFile) ;
   }

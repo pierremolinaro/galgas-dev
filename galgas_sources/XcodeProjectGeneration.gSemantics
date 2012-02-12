@@ -274,9 +274,12 @@ local routine build_LIBPM_FILES_group
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
-  append_cpp_h_files !?fileList !"C_HTML_FileWrite" ;
-  append_cpp_h_files !?fileList !"C_TextFileWrite" ;
   append_cpp_h_files !?fileList !"C_FileManager" ;
+  append_cpp_h_files !?fileList !"AC_FileHandle" ;
+  append_cpp_h_files !?fileList !"AC_FileHandleForWriting" ;
+  append_cpp_h_files !?fileList !"C_TextFileWrite" ;
+  append_cpp_h_files !?fileList !"C_HTML_FileWrite" ;
+  append_cpp_h_files !?fileList !"C_BinaryFileWrite" ;
 #---
   enter_files_in_group
    !?ioXcodeProjectDescription
@@ -292,9 +295,12 @@ local routine build_LIBPM_FILES_files_for_sources_build_phase
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
   @stringlist fileList [emptyList] ;
-  fileList += !"C_HTML_FileWrite.cpp" ;
-  fileList += !"C_TextFileWrite.cpp" ;
   fileList += !"C_FileManager.cpp" ;
+  fileList += !"AC_FileHandle.cpp" ;
+  fileList += !"AC_FileHandleForWriting.cpp" ;
+  fileList += !"C_TextFileWrite.cpp" ;
+  fileList += !"C_HTML_FileWrite.cpp" ;
+  fileList += !"C_BinaryFileWrite.cpp" ;
 #---
   enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription

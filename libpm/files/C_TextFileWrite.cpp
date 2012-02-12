@@ -32,40 +32,12 @@
 
 #include <string.h>
 #include <ctype.h>
-#include <signal.h>
 
 //---------------------------------------------------------------------------*
 
-#ifndef COMPILE_FOR_WIN32
-  static PMUInt32 g_SIGTERM_balance_count = 0 ;
-#endif
-
-//---------------------------------------------------------------------------*
-
-C_TextFileWrite::C_TextFileWrite (const C_String & inFileName,
-                                  bool & outOk) :
-mFileName (inFileName),
-mFilePtr((FILE *) NULL),
+C_TextFileWrite::C_TextFileWrite (const C_String & inFileName) :
+AC_FileHandleForWriting (inFileName, "wt"),
 mBufferLength (0) {
-  outOk = true ;
-//--- If 'inFileName' is the empty string, do not create the file
-//    so that 'mFilePtr' remains equal to NULL
-  if (inFileName.length () > 0) {
-  //--- Open file in "wt" mode
-    mFilePtr = C_FileManager::openTextFileForWriting (inFileName) ;
-  //--- Open Ok ?
-    outOk = mFilePtr != NULL ;
-  //
-    #ifndef COMPILE_FOR_WIN32
-      if (0 == g_SIGTERM_balance_count) {
-        sigset_t s ;
-        sigemptyset (& s) ;
-        sigaddset (& s, SIGTERM) ;
-        sigprocmask (SIG_BLOCK, & s, NULL) ;
-      }
-      g_SIGTERM_balance_count ++ ;
-    #endif
-  }
 }
 
 //---------------------------------------------------------------------------*
@@ -80,7 +52,7 @@ bool C_TextFileWrite::close (void) {
       mBufferLength = 0 ;
     }
     ok = ::fclose (mFilePtr) == 0 ; // Flushes the file, then closes it
-    mFilePtr = (FILE *) NULL ;
+    mFilePtr = NULL ;
   }
   return ok ;
 }
@@ -91,24 +63,10 @@ bool C_TextFileWrite::close (void) {
 //---------------------------------------------------------------------------*
 
 C_TextFileWrite::~C_TextFileWrite (void) {
-  if (mFilePtr != NULL) {
-    if (mBufferLength > 0) {
-      ::fprintf (mFilePtr, "%.*s", (int) mBufferLength, mBuffer) ;
-      mBufferLength = 0 ;
-    }
-    ::fclose (mFilePtr) ; // Flushes the file, then closes it
-    mFilePtr = (FILE *) NULL ;
+  if ((mFilePtr != NULL) && (mBufferLength > 0)) {
+    ::fprintf (mFilePtr, "%.*s", (int) mBufferLength, mBuffer) ;
+    mBufferLength = 0 ;
   }
-//---
-  #ifndef COMPILE_FOR_WIN32
-    g_SIGTERM_balance_count -- ;
-    if (0 == g_SIGTERM_balance_count) {
-      sigset_t s ;
-      sigemptyset (& s) ;
-      sigaddset (& s, SIGTERM) ;
-      sigprocmask (SIG_UNBLOCK, & s, NULL) ;
-    }
-  #endif
 }
 
 //---------------------------------------------------------------------------*

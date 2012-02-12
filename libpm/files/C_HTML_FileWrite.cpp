@@ -37,9 +37,8 @@
 C_HTML_FileWrite::C_HTML_FileWrite (const C_String & inFileName,
                                     const C_String & inWindowTitle,
                                     const C_String & inCSSFileName,
-                                    const C_String & inCSSContents,
-                                    bool & outOk) :
-C_TextFileWrite (inFileName, outOk) {
+                                    const C_String & inCSSContents) :
+C_TextFileWrite (inFileName) {
   outputRawData ("<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.01//EN\" \"http://www.w3.org/TR/html4/strict.dtd\">\n"
                  "<html>"
                  "<head>\n"
