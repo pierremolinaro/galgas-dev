@@ -31,7 +31,7 @@
 #import "OC_GGS_TextSyntaxColoring.h"
 #import "OC_GGS_TextDisplayDescriptor.h"
 #import "PMTabBarView.h"
-#import "OC_GGS_BuildTask.h"
+#import "OC_GGS_BuildTaskProxy.h"
 
 //---------------------------------------------------------------------------*
 
@@ -56,7 +56,7 @@
     mFileEncoding = NSUTF8StringEncoding ;
     mSourceDisplayArrayController = [NSArrayController new] ;
     self.undoManager = nil ;
-    mBuildTask = [OC_GGS_BuildTask new] ;
+    mBuildTask = [OC_GGS_BuildTaskProxy new] ;
   }
   return self;
 }

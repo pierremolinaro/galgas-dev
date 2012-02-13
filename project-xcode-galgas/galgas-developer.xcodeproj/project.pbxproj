@@ -80,6 +80,8 @@
 		CF333818126B3919008DA1DE /* GALGAS_filewrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF33377D126B2F15008DA1DE /* GALGAS_filewrapper.cpp */; };
 		CF34D4BB11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF34D4B711ABD1EA0020730A /* programComponentCompilation.cpp */; };
 		CF34D4BC11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF34D4B711ABD1EA0020730A /* programComponentCompilation.cpp */; };
+		CF3C17A514E97BD40016A381 /* OC_GGS_BuildTaskProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3C17A414E97BD40016A381 /* OC_GGS_BuildTaskProxy.m */; };
+		CF3C17A814E97CCC0016A381 /* OC_GGS_BuildTask.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3C17A714E97CCC0016A381 /* OC_GGS_BuildTask.m */; };
 		CF3CFB2D0FEBEA6C00CE4488 /* PMFontButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3CFB2C0FEBEA6C00CE4488 /* PMFontButton.m */; };
 		CF3D9FD61257733E0037D473 /* capCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC11257733E0037D473 /* capCollectionElement.cpp */; };
 		CF3D9FD71257733E0037D473 /* capSortedListElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC31257733E0037D473 /* capSortedListElement.cpp */; };
@@ -281,7 +283,6 @@
 		CFAD9C69147FA4D300B1B88A /* PMButtonWithRemove.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD9C68147FA4D300B1B88A /* PMButtonWithRemove.m */; };
 		CFAE5AA110021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */; };
 		CFAE5B1C10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */; };
-		CFB12AAC148671AD004FB225 /* OC_GGS_BuildTask.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB12AAB148671AD004FB225 /* OC_GGS_BuildTask.m */; };
 		CFB697DF1483D47900BCAE41 /* PMIssueInRuler.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB697DE1483D47900BCAE41 /* PMIssueInRuler.m */; };
 		CFB6B6DC1160D26100604D8C /* predefinedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6B6D81160D26100604D8C /* predefinedTypes.cpp */; };
 		CFB6B6DD1160D26100604D8C /* predefinedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6B6D81160D26100604D8C /* predefinedTypes.cpp */; };
@@ -524,6 +525,10 @@
 		CF337CB211C3FAAF007E7736 /* cCollectionElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cCollectionElement.h; sourceTree = "<group>"; };
 		CF34D4B711ABD1EA0020730A /* programComponentCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = programComponentCompilation.cpp; sourceTree = "<group>"; };
 		CF34D4B811ABD1EA0020730A /* programComponentCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = programComponentCompilation.h; sourceTree = "<group>"; };
+		CF3C17A314E97BD40016A381 /* OC_GGS_BuildTaskProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildTaskProxy.h; sourceTree = "<group>"; };
+		CF3C17A414E97BD40016A381 /* OC_GGS_BuildTaskProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_BuildTaskProxy.m; sourceTree = "<group>"; };
+		CF3C17A614E97CCC0016A381 /* OC_GGS_BuildTask.h */ = {isa = PBXFileReference; fileEncoding = 4; path = OC_GGS_BuildTask.h; sourceTree = "<group>"; };
+		CF3C17A714E97CCC0016A381 /* OC_GGS_BuildTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_BuildTask.m; sourceTree = "<group>"; };
 		CF3CFB2B0FEBEA6C00CE4488 /* PMFontButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMFontButton.h; sourceTree = "<group>"; };
 		CF3CFB2C0FEBEA6C00CE4488 /* PMFontButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMFontButton.m; sourceTree = "<group>"; };
 		CF3D9FC11257733E0037D473 /* capCollectionElement.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = capCollectionElement.cpp; sourceTree = "<group>"; };
@@ -730,8 +735,6 @@
 		CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_CommandLineOption.m; sourceTree = "<group>"; };
 		CFAE5B1910024AA50068DEC9 /* enterDefaultCommandLineOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = enterDefaultCommandLineOptions.h; sourceTree = "<group>"; };
 		CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = enterDefaultCommandLineOptions.m; sourceTree = "<group>"; };
-		CFB12AAA148671AD004FB225 /* OC_GGS_BuildTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildTask.h; sourceTree = "<group>"; };
-		CFB12AAB148671AD004FB225 /* OC_GGS_BuildTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_BuildTask.m; sourceTree = "<group>"; };
 		CFB697DD1483D47900BCAE41 /* PMIssueInRuler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMIssueInRuler.h; sourceTree = "<group>"; };
 		CFB697DE1483D47900BCAE41 /* PMIssueInRuler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMIssueInRuler.m; sourceTree = "<group>"; };
 		CFB6B6D81160D26100604D8C /* predefinedTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = predefinedTypes.cpp; sourceTree = "<group>"; };
@@ -1309,8 +1312,10 @@
 				CF9BA60414827E3A009DF1C8 /* PMErrorOrWarningDescriptor.m */,
 				CFB697DD1483D47900BCAE41 /* PMIssueInRuler.h */,
 				CFB697DE1483D47900BCAE41 /* PMIssueInRuler.m */,
-				CFB12AAA148671AD004FB225 /* OC_GGS_BuildTask.h */,
-				CFB12AAB148671AD004FB225 /* OC_GGS_BuildTask.m */,
+				CF3C17A314E97BD40016A381 /* OC_GGS_BuildTaskProxy.h */,
+				CF3C17A414E97BD40016A381 /* OC_GGS_BuildTaskProxy.m */,
+				CF3C17A614E97CCC0016A381 /* OC_GGS_BuildTask.h */,
+				CF3C17A714E97CCC0016A381 /* OC_GGS_BuildTask.m */,
 				CF82596C08536A130077AEAF /* F_CocoaWrapperForGalgas.h */,
 				CF82597B08536A130077AEAF /* PP_CocoaGalgasPrefix.pch */,
 			);
@@ -2492,7 +2497,8 @@
 				CF9BA6021482733F009DF1C8 /* OC_GGS_Scroller.m in Sources */,
 				CF9BA60514827E3B009DF1C8 /* PMErrorOrWarningDescriptor.m in Sources */,
 				CFB697DF1483D47900BCAE41 /* PMIssueInRuler.m in Sources */,
-				CFB12AAC148671AD004FB225 /* OC_GGS_BuildTask.m in Sources */,
+				CF3C17A514E97BD40016A381 /* OC_GGS_BuildTaskProxy.m in Sources */,
+				CF3C17A814E97CCC0016A381 /* OC_GGS_BuildTask.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
