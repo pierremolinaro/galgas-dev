@@ -15,7 +15,7 @@
 #import "OC_GGS_PreferencesController.h"
 #import "PMIssueDescriptor.h"
 #import "PMErrorOrWarningDescriptor.h"
-#import "OC_GGS_BuildTask.h"
+#import "OC_GGS_BuildTaskProxy.h"
 #import "OC_GGS_Document.h"
 
 //---------------------------------------------------------------------------*

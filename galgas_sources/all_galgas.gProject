@@ -20,7 +20,7 @@
 project all_galgas -> "galgas" :
   feature libpmAtPath : "../libpm" ;
 #--- Targets
-  feature "makefile_macosx" ;
+  feature "makefile_macosx" ;                                                                     
   feature "makefile_unix" ;
   feature "makefile_i386_linux_on_macosx" ;
   feature "makefile_x86_64_linux_on_macosx" ;
@@ -31,7 +31,7 @@ project all_galgas -> "galgas" :
   option "galgas_cli_options.gOption" ;
 
 #--- Common Scanner
-  lexique "galgas_scanner.gLexique" ;
+  lexique "galgas_scanner.gLexique" ; 
 
 #--- Cocoa Interface
   gui      "cocoaGalgas.gGui" ;
