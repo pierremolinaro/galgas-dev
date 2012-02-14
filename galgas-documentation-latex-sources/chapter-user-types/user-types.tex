@@ -128,7 +128,7 @@ If the list is empty when \lstinline[language=galgas]!popLast! is invoked, a run
 
 \subsubsection{The \lstinline[language=galgas]!first! method}
 
-the \lstinline[language=galgas]!first! method returns the first element of the list. The element is not removed. The right side expressions should correspond to the attributes declared in the \lstinline[language=galgas]!list! declaration:
+The \lstinline[language=galgas]!first! method returns the first element of the list. The element is not removed. The right side expressions should correspond to the attributes declared in the \lstinline[language=galgas]!list! declaration:
 
 \begin{lstlisting}[language=galgas]
 @MyList aList := ... ;
@@ -141,7 +141,7 @@ If the list is empty when \lstinline[language=galgas]!first! is invoked, a run-t
 
 \subsubsection{The \lstinline[language=galgas]!last! method}
 
-the \lstinline[language=galgas]!last! method returns the last element of the list. The element is not removed. The right side expressions should correspond to the attributes declared in the \lstinline[language=galgas]!list! declaration:\\
+The \lstinline[language=galgas]!last! method returns the last element of the list. The element is not removed. The right side expressions should correspond to the attributes declared in the \lstinline[language=galgas]!list! declaration:\\
 
 \begin{lstlisting}[language=galgas]
 @MyList aList := ... ;
@@ -375,7 +375,192 @@ log s ; # displays LOGGING s: <@string:"t">
 
 \section{Graph type}
 
+\newpage
+\section{Array type}
 
+Le type \emph{array} est en projet, et pourra être implémenté dans la prochaine version de GALGAS. Il permet de réaliser des tableaux de dimensions et de types fixés à la compilation.
+
+\subsection{Déclaration d'un type tableau}
+
+La déclaration d'un type tableau contient les informations suivantes :
+\begin{itemize}
+  \item le type \lstinline[language=galgas]!@TypeElement! qui cite le type de l'élément de tableau ;
+  \item la dimension du tableau, qui doit être un nombre entier strictement positif ;
+  \item le type \lstinline[language=galgas]!@TypeTableau! qui est le nom donné au type de tableau.
+\end{itemize}
+
+La déclaration d'un type tableau a la syntaxe suivante :
+\begin{lstlisting}[language=galgas]
+array @TypeTableau : @TypeElement [dimension] ;
+\end{lstlisting}
+
+Par exemple :
+\begin{lstlisting}[language=galgas]
+array @monTableau : @string [3] ;
+\end{lstlisting}
+
+
+\subsection{Constructeur d'un type tableau}
+
+Le seul constructeur d'un type tableau est le constructeur \lstinline[language=galgas]!new!. Il a pour but de fixer les dimensions initiales du tableau (il pourra ensuite être redimensionné). Il comporte \lstinline[language=galgas]!dimension! arguments de type \lstinline[language=galgas]!@uint!, qui fixent l'amplitude initiale de chaque axe.
+Par exemple :
+\begin{lstlisting}[language=galgas]
+  @monTableau t [new !2 !3 !4] ;
+\end{lstlisting}
+
+Cette déclaration crée un tableau à $2*3*4$ éléments. Ces éléments sont par défaut \emph{invalides}, c'est à dire que leur lecture par le reader \lstinline[language=galgas]!valueAtIndex! déclenche une \emph{run-time error}. Pour être valide, un élément doit avoir été initialisé par un appel au modifier \lstinline[language=galgas]!setValueAtIndex!.
+
+Il est valide d'affecter la valeur $0$ à un ou plusieurs axes. Le tableau ne contient alors aucun élément.
+
+
+\subsection{Accès à un élément}
+
+L'accès à la valeur d'un élément s'effectue par le reader \lstinline[language=galgas]!valueAtIndex!. La modification de la valeur d'un élément est réalisée par le modifier \lstinline[language=galgas]!setValueAtIndex! ou le modifier \lstinline[language=galgas]!forceValueAtIndex!.
+
+\subsubsection{Le reader \lstinline[language=galgas]!valueAtIndex!}
+
+Ce reader comporte \lstinline[language=galgas]!dimension! arguments de type \lstinline[language=galgas]!@uint!, qui précisent l'indice relatif à chaque axe. Les indices sont comptés à partir de zéro (comme en C).
+
+Par exemple :
+\begin{lstlisting}[language=galgas]
+  @string s := [t valueAtIndex !1 !2 !2] ;
+\end{lstlisting}
+
+
+Une \emph{run-time error} est déclenchée si un indice dépasse sa borne correspondante, et la valeur retournée est \emph{invalide}. Si les indices ont des valeurs correctes, l'élément est retourné ; si cet élément est invalide, une \emph{run-time error} est déclenchée, et une valeur \emph{invalide} est retournée.
+
+
+
+
+
+
+\subsubsection{Le modifier \lstinline[language=galgas]!setValueAtIndex!}
+
+Ce modifier comporte (\lstinline[language=galgas]!dimension!+1) arguments :
+\begin{itemize}
+  \item le premier argument est type \lstinline[language=galgas]!@TypeElement!, et contient la valeur à écrire ;
+  \item les \lstinline[language=galgas]!dimension! suivants arguments sont de type \lstinline[language=galgas]!@uint! et précisent l'indice relatif à chaque axe.
+\end{itemize} 
+  
+Les indices sont comptés à partir de zéro (comme en C). Une \emph{run-time error} est déclenchée si un indice dépasse sa borne correspondante, et le tableau est alors non modifié.
+
+Par exemple :
+\begin{lstlisting}[language=galgas]
+  @string s := ... ;
+  [!?t setValueAtIndex !s !1 !2 !2] ;
+\end{lstlisting}
+
+
+
+
+
+\subsubsection{Le modifier \lstinline[language=galgas]!forceValueAtIndex!}
+
+Ce modifier comporte (\lstinline[language=galgas]!dimension!+1) arguments :
+\begin{itemize}
+  \item le premier argument est type \lstinline[language=galgas]!@TypeElement!, et contient la valeur à écrire ;
+  \item les \lstinline[language=galgas]!dimension! suivants arguments sont de type \lstinline[language=galgas]!@uint! et précisent l'indice relatif à chaque axe.
+\end{itemize} 
+  
+Les indices sont comptés à partir de zéro (comme en C). Contrairement au modifier \lstinline[language=galgas]!setValueAtIndex!, aucune \emph{run-time error} n'est déclenchée si un indice dépasse sa borne correspondante : le tableau est d'abord agrandi, ce qui ajoute des éléments invalides, puis l'élément désigné par les indices est affecté.
+
+Par exemple :
+\begin{lstlisting}[language=galgas]
+  @string s := ... ;
+  [!?t forceValueAtIndex !s !5 !4 !4] ;
+\end{lstlisting}
+
+
+
+
+
+\subsection{Validité d'un élément}
+
+Le reader \lstinline[language=galgas]!isValueValidAtIndex! permet de savoir si un élément est valide ou non, c'est à dire si sa lecture déclenchera une \emph{run-time error}. Le modifier \lstinline[language=galgas]!invalidateValueAtIndex! invalide un élément.
+
+\subsubsection{Le reader \lstinline[language=galgas]!isValueValidAtIndex!}
+
+Ce reader comporte \lstinline[language=galgas]!dimension! arguments de type \lstinline[language=galgas]!@uint!, qui précisent l'indice relatif à chaque axe. Les indices sont comptés à partir de zéro (comme en C). Une \emph{run-time error} est déclenchée si un indice dépasse sa borne correspondante, et la valeur retournée est \emph{invalide}. Il renvoie une valeur de type \lstinline[language=galgas]!@bool!, suivant que l'élément est valide ou non.
+
+Par exemple :
+\begin{lstlisting}[language=galgas]
+  @bool b := [t isValueValidAtIndex !1 !2 !2] ;
+\end{lstlisting}
+
+
+\subsubsection{Le modifier \lstinline[language=galgas]!invalidateValueAtIndex!}
+
+Ce modifier comporte \lstinline[language=galgas]!dimension! arguments de type \lstinline[language=galgas]!@uint!, qui précisent l'indice relatif à chaque axe. Les indices sont comptés à partir de zéro (comme en C). Une \emph{run-time error} est déclenchée si un indice dépasse sa borne correspondante. Il invalide l'élément correspondant, c'est dire qu'un appel au reader \lstinline[language=galgas]!valueAtIndex! pour lire cet élément déclenchera une \emph{run-time error}.
+
+Par exemple :
+\begin{lstlisting}[language=galgas]
+  [!?t invalidateValueAtIndex !1 !2 !2] ;
+\end{lstlisting}
+
+
+
+
+
+\subsection{Contrôle des tailles des axes}
+
+Le reader \lstinline[language=galgas]!axisCount! renvoie la dimension d'un tableau, c'est à dire le nombre de ces axes, le reader \lstinline[language=galgas]!sizeForAxis! renvoie la taille allouée à un axe particulier. Les modifiers \lstinline[language=galgas]!setSizeForAxis! et \lstinline[language=galgas]!setSize! permettent de modifier la taille d'un tableau.
+
+
+
+\subsubsection{Le reader \lstinline[language=galgas]!axisCount!}
+
+Ce reader sans argument renvoie un \lstinline[language=galgas]!@uint! qui contient le nombre d'axes d'un tableau. Comme ce nombre est fixé statiquement par la déclaration de type, la valeur retournée est toujours la même, pour toutes les objets d'un même type tableau.
+
+
+Par exemple, pour la déclaration :
+\begin{lstlisting}[language=galgas]
+array @monTableau : @string [3] ;
+\end{lstlisting}
+Pour tous les objets de type \lstinline[language=galgas]!@monTableau!, l'appel au reader \lstinline[language=galgas]!axisCount! renvoie la valeur \lstinline[language=galgas]!3!.
+
+
+\subsubsection{Le reader \lstinline[language=galgas]!sizeForAxis!}
+
+Ce reader présente un argument de type \lstinline[language=galgas]!@uint! qui est l'indice de l'axe interrogé. Les axes sont numérotés à partir de zéro, c'est à dire que le premier axe a l'indice $0$, le deuxième l'indice $1$, \dots Une \emph{run-time error} est déclenchée si la valeur de l'argument est supérieure ou égale à la dimension du tableau, et la valeur renvoyée est invalide. Sinon, il renvoie un \lstinline[language=galgas]!@uint! qui contient la taille attribuée à l'axe correspondant.
+
+
+
+
+\subsubsection{Le modifier \lstinline[language=galgas]!setSizeForAxis!}
+
+Ce modifier permet de changer la taille d'un axe sans changer les tailles attribuées aux autres axes. Il présente deux arguments de type \lstinline[language=galgas]!@uint! :
+\begin{itemize}
+  \item le premier est la nouvelle taille ;
+  \item le second est l'indice de l'axe concerné.
+\end{itemize}
+
+Les axes sont numérotés à partir de zéro, c'est à dire que le premier axe a l'indice $0$, le deuxième l'indice $1$, \dots Une \emph{run-time error} est déclenchée si la valeur de l'argument est supérieure ou égale à la dimension du tableau, et le tableau n'est pas modifié.
+ 
+Diminuer la taille d'un axe fait disparaître des éléments, qui sont alors perdus. Si la nouvelle taille est zéro, le tableau est vidé de tous ses éléments.
+
+Augmenter la taille fait apparaître de nouveaux éléments, qui sont invalides par défaut. Il faudra alors explicitement les initialiser individuellement par un appel au modifier \lstinline[language=galgas]!setValueAtIndex!.
+
+
+
+
+\subsubsection{Le modifier \lstinline[language=galgas]!setSize!}
+
+Ce modifier permet de changer les tailles de tous les axes. Il présente \lstinline[language=galgas]!@uint! arguments de type \lstinline[language=galgas]!@uint! qui contiennent les nouvelles tailles de chaque axe.
+
+Diminuer la taille d'un axe fait disparaître des éléments, qui sont alors perdus. Si une des nouvelles tailles est zéro, le tableau est vidé de tous ses éléments.
+
+Augmenter une taille fait apparaître de nouveaux éléments, qui sont invalides par défaut. Il faudra alors explicitement les initialiser individuellement par un appel au modifier \lstinline[language=galgas]!setValueAtIndex!.
+
+
+\subsection{Comparaison}
+
+Un type tableau implémente les opérateurs \lstinline[language=galgas]!=! et \lstinline[language=galgas]+!=+. L'égalité de deux tableaux est testé comme suit :
+\begin{itemize}
+  \item les tailles de chaque axe doivent être identiques ;
+  \item les éléments doivent être identiques.
+\end {itemize}
+
+\newpage
 \section{Predefined user types}
 
 \subsectionTypePredefiniLabelIndex{lbool}
