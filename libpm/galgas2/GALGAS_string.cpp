@@ -964,7 +964,7 @@ void GALGAS_string::class_method_deleteFile (GALGAS_string inFilePath,
       inCompiler->onTheFlyRunTimeError ("cannot perform file delete: file name is an empty string" COMMA_THERE) ;
     }else{
       const C_String errorMessage = C_FileManager::deleteFile (inFilePath.mString) ;
-      if (errorMessage.length () > 0) {
+      if (errorMessage.length () == 0) {
         ggs_printFileOperationSuccess (C_String ("Deleted '") + inFilePath.mString + "'.\n" COMMA_THERE) ;
       }else{
         C_String message ;
