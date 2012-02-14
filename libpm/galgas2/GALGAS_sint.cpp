@@ -28,13 +28,6 @@
 
 //---------------------------------------------------------------------------*
 
-GALGAS_sint GALGAS_sint::constructor_new (const GALGAS_sint & inValue
-                                          COMMA_UNUSED_LOCATION_ARGS) {
-  return inValue ;
-}
-
-//---------------------------------------------------------------------------*
-
 GALGAS_sint::GALGAS_sint (void) :
 mIsValid (false),
 mSIntValue (0) {

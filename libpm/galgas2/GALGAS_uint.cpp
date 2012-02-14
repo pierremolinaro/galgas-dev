@@ -29,17 +29,6 @@
 #include "strings/unicode_character_cpp.h"
 
 //---------------------------------------------------------------------------*
-//                                                                           *
-//       Constructors                                                        *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-GALGAS_uint GALGAS_uint::constructor_new (const GALGAS_uint & inValue
-                                          COMMA_UNUSED_LOCATION_ARGS) {
-  return inValue ;
-}
-
-//---------------------------------------------------------------------------*
 
 GALGAS_uint::GALGAS_uint (void) :
 mIsValid (false),
