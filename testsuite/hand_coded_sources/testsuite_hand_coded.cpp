@@ -2,6 +2,9 @@
 #include "testsuite_list.h"
 #include "testsuite_functions.h"
 #include "galgas2/predefined-types.h"
+#include "galgas2/C_Compiler.h"
+#include "utilities/MF_MemoryControl.h"
+#include "testsuite_array.h"
 
 //---------------------------------------------------------------------------*
 
@@ -43,11 +46,10 @@ void routine_testsuite_5F_hand_5F_coded (C_Compiler * /* inCompiler */
 
 //---------------------------------------------------------------------------*
 
-GALGAS_uint
-function_externTestFunction (GALGAS_uint inArg1,
-                             const GALGAS_uint & inArg2,
-                             C_Compiler * inCompiler
-                             COMMA_LOCATION_ARGS) {
+GALGAS_uint function_externTestFunction (GALGAS_uint inArg1,
+                                         const GALGAS_uint & inArg2,
+                                         C_Compiler * inCompiler
+                                         COMMA_LOCATION_ARGS) {
   return inArg1.add_operation (inArg2, inCompiler COMMA_THERE) ;
 }
 

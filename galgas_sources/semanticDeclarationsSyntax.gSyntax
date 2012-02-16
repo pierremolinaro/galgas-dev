@@ -2,7 +2,7 @@
 #                                                                           *
 #  semantic declaracration model builder                                    *
 #                                                                           *
-#  Copyright (C) 2009, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2009, ..., 2012 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -77,6 +77,32 @@ rule <semantic_declaration>
     !true # Is global
     !mListmapTypeName
     !mAssociatedListTypeName
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    A R R A Y    D E C L A R A T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
+:
+  $array$ ;
+#--- Map type name
+  $type_name$ ? @lstring arrayTypeName indexing arrayTypeDefinition ;
+  $:$ ;
+  $type_name$ ? @lstring elementListTypeName indexing arrayElementTypeReference ;
+  $[$ ;
+  $unsigned_literal_integer$ ? @luint dimension ;
+  $]$ ;
+  $;$ ;
+  ioSemanticDeclarations += ![@arrayDeclarationAST new
+    !true # Is global
+    !arrayTypeName
+    !elementListTypeName
+    !dimension
   ] ;
 end rule ;
 

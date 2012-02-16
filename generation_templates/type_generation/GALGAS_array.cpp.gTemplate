@@ -1,0 +1,463 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["@" . TYPE_NAME . " array" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class cPtr_%!TYPE_IDENTIFIER% : public C_SharedObject {
+  private : GALGAS_%!ELEMENT_TYPE_IDENTIFIER% * mObjectArray ;
+%foreach DIMENSION_LIST do
+%  private : PMUInt32 mSize%!mValue% ;
+% end foreach
+%
+//--- Constructor
+  public : cPtr_%!TYPE_IDENTIFIER% (%?^
+foreach DIMENSION_LIST
+  do !^%const PMUInt32 inSize%!mValue
+  between %,\n%
+end foreach
+%
+   %!^%COMMA_LOCATION_ARGS) ;
+
+  public : cPtr_%!TYPE_IDENTIFIER% (%?^%const cPtr_%!TYPE_IDENTIFIER% * inPointer
+      %!^%COMMA_LOCATION_ARGS) ;
+
+//--- Destructor
+  public : virtual ~ cPtr_%!TYPE_IDENTIFIER% (void) ;
+
+//--- No copy
+  private : cPtr_%!TYPE_IDENTIFIER% (const cPtr_%!TYPE_IDENTIFIER% &) ;
+  private : cPtr_%!TYPE_IDENTIFIER% & operator = (const cPtr_%!TYPE_IDENTIFIER% &) ;
+
+//--- 
+%foreach DIMENSION_LIST do
+%  public : inline PMUInt32 size%!mValue% (void) const { return mSize%!mValue% ; }
+% end foreach
+%
+
+  public : VIRTUAL_IN_DEBUG GALGAS_%!ELEMENT_TYPE_IDENTIFIER% objectAtAbsoluteIndex (const PMSInt32 inIndex) const ;
+
+  public : VIRTUAL_IN_DEBUG void setObjectAtAbsoluteIndex (const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inObject,
+                                                           const PMSInt32 inIndex) ;
+
+//--- 
+  public : VIRTUAL_IN_DEBUG PMSInt32 indexForIndexes (%
+foreach DIMENSION_LIST
+ before ?^
+ do !^%const PMUInt32 inSize%!mValue%,\n%
+ end foreach
+% %?^%C_Compiler * inCompiler
+  %?^%COMMA_LOCATION_ARGS) const ;
+
+//--- 
+  public : VIRTUAL_IN_DEBUG void setSize (%
+foreach DIMENSION_LIST
+ do %const PMUInt32 inSize%!mValue
+ between %,\n                                                      %
+ end foreach
+%                                          COMMA_LOCATION_ARGS) ;
+} ;
+
+//---------------------------------------------------------------------------*
+
+cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%
+foreach DIMENSION_LIST
+ do %const PMUInt32 inSize%!mValue
+ between %,\n                                                      %
+ end foreach
+%    %!^%COMMA_LOCATION_ARGS) :
+C_SharedObject (THERE),
+mObjectArray (NULL),
+% foreach DIMENSION_LIST
+  do %mSize%!mValue% (inSize%!mValue%)%
+  between %,\n%
+  end foreach % {
+  macroMyNewArray (mObjectArray, GALGAS_%!ELEMENT_TYPE_IDENTIFIER%, inSize0 * inSize1 * inSize2) ;
+}
+
+//---------------------------------------------------------------------------*
+
+cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^%const cPtr_%!TYPE_IDENTIFIER% * inPointer
+    %!^%COMMA_LOCATION_ARGS) :
+C_SharedObject (THERE),
+mObjectArray (NULL),
+% foreach DIMENSION_LIST
+  do %mSize%!mValue% (inPointer->size%!mValue% ())%
+  between %,\n%
+  end foreach % {
+  const PMUInt32 size = % foreach DIMENSION_LIST do %mSize%!mValue between % * % end foreach % ;
+  macroMyNewArray (mObjectArray, GALGAS_%!ELEMENT_TYPE_IDENTIFIER%, size) ;
+  for (PMUInt32 i=0 ; i<size ; i++) {
+    mObjectArray [i] = inPointer->mObjectArray [i] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+static inline PMUInt32 computeIndex (const PMUInt32 inIndex0,
+                                     const PMUInt32 inIndex1,
+                                     const PMUInt32 inIndex2,
+                                     const PMUInt32 inSize1,
+                                     const PMUInt32 inSize2) {
+  PMUInt32 idx = inIndex0 ;
+  idx *= inSize1 ;
+  idx += inIndex1 ;
+  idx *= inSize2 ;
+  idx += inIndex2 ;
+  return idx ;
+}
+
+//---------------------------------------------------------------------------*
+
+PMSInt32 cPtr_%!TYPE_IDENTIFIER%::indexForIndexes (%?^
+foreach DIMENSION_LIST
+ do !^%const PMUInt32 inIndex%!mValue%,\n%
+end foreach
+%  %!^%C_Compiler * inCompiler
+   %!^%COMMA_LOCATION_ARGS) const {
+  PMSInt32 result = -1 ;
+  %
+foreach DIMENSION_LIST
+do
+%if (inIndex%!mValue% >= size%!mValue% ()) {
+    C_String s ;
+    s << "array index %!mValue% : " << cStringWithUnsigned (inIndex%!mValue%) << " >= size " << cStringWithUnsigned (size%!mValue% ()) ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;\n%
+between %  }else %
+end foreach
+%  }else{
+    result = (PMSInt32) computeIndex (%foreach DIMENSION_LIST do %inIndex%!mValue%, % end foreach % size1 (), size2 ()) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!ELEMENT_TYPE_IDENTIFIER% cPtr_%!TYPE_IDENTIFIER%::objectAtAbsoluteIndex (const PMSInt32 inIndex) const {
+  return mObjectArray [inIndex] ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_%!TYPE_IDENTIFIER%::setObjectAtAbsoluteIndex (%?^%const GALGAS_%!ELEMENT_TYPE_IDENTIFIER% & inObject,
+       %!^%const PMSInt32 inIndex) {
+  mObjectArray [inIndex] = inObject ;
+}
+
+//---------------------------------------------------------------------------*
+
+cPtr_%!TYPE_IDENTIFIER%::~ cPtr_%!TYPE_IDENTIFIER% (void) {
+  macroMyDeleteArray (mObjectArray) ;
+}
+
+//---------------------------------------------------------------------------*
+
+void cPtr_%!TYPE_IDENTIFIER%::setSize (%
+foreach DIMENSION_LIST
+do %const PMUInt32 inSize%!mValue
+between %,\n                                                      %
+end foreach
+%      %!^%COMMA_LOCATION_ARGS) {
+  GALGAS_%!ELEMENT_TYPE_IDENTIFIER% * p = NULL ;
+  macroMyNewArrayThere (p, GALGAS_%!ELEMENT_TYPE_IDENTIFIER%, inSize0 * inSize1 * inSize2) ;
+%
+foreach DIMENSION_LIST
+do %PMUInt32 min%!mValue% = uimin32 (size%!mValue% (), inSize%!mValue%) ;\n%
+end foreach
+%  for (PMUInt32 i0 = 0 ; i0<min0 ; i0++) {
+    for (PMUInt32 i1 = 0 ; i1<min1 ; i1++) {
+      for (PMUInt32 i2 = 0 ; i2<min2 ; i2++) {
+        const PMUInt32 idxSource = computeIndex (i0, i1, i2, size1 (), size2 ()) ;
+        const PMUInt32 idxTarget = computeIndex (i0, i1, i2, inSize1, inSize2) ;
+        p [idxTarget] = mObjectArray [idxSource] ;
+      }
+    }
+  }
+%
+foreach DIMENSION_LIST
+do %  mSize%!mValue% = inSize%!mValue% ;\n%
+end foreach
+%  macroMyDeleteArray (mObjectArray) ;
+  mObjectArray = p ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER%::~ GALGAS_%!TYPE_IDENTIFIER% (void) {
+  macroDetachSharedObject (mSharedObject) ;
+}
+
+//---------------------------------------------------------------------------*
+
+void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
+  macroDetachSharedObject (mSharedObject) ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSourceObject) :
+AC_GALGAS_root (),
+mSharedObject (NULL) {
+  macroAssignSharedObject (mSharedObject, inSourceObject.mSharedObject) ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER% & GALGAS_%!TYPE_IDENTIFIER%::operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSourceObject) {
+  if (this != & inSourceObject) {
+    macroAssignSharedObject (mSharedObject, inSourceObject.mSharedObject) ;
+  }
+  return *this ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
+foreach DIMENSION_LIST
+ do !^%const GALGAS_uint & inSize%!mValue
+ between %,\n%
+ end foreach
+%
+ %!^%COMMA_LOCATION_ARGS) {
+  GALGAS_%!TYPE_IDENTIFIER% result ;
+  if (inSize0.isValid () && inSize1.isValid () && inSize2.isValid ()) {
+    macroMyNew (result.mSharedObject, cPtr_%!TYPE_IDENTIFIER% (inSize0.uintValue(), inSize1.uintValue(), inSize2.uintValue() COMMA_THERE)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
+       %!^%const PMSInt32 /* inIndentation */) const {
+  ioString << "<@ptrint:" ;
+  if (NULL == mSharedObject) {
+    ioString << "NULL" ;
+  }else{
+    macroValidSharedObject (mSharedObject, cPtr_%!TYPE_IDENTIFIER%) ;
+    ioString << "array ["
+             << cStringWithUnsigned (mSharedObject->size0 ())
+             << ", " << cStringWithUnsigned (mSharedObject->size1 ())
+             << ", " << cStringWithUnsigned (mSharedObject->size2 ())
+             << "] of @uint" ;
+  }
+  ioString << ">" ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::reader_axisCount (UNUSED_LOCATION_ARGS) const {
+  return GALGAS_uint (%![DIMENSION string]%) ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::reader_sizeForAxis (%?^%const GALGAS_uint & inAxisIndex,
+               %!^%C_Compiler * inCompiler
+               %!^%COMMA_LOCATION_ARGS) const {
+  GALGAS_uint result ;
+  if (isValid () && inAxisIndex.isValid ()) {
+    const PMUInt32 axisIndex = inAxisIndex.uintValue () ;
+    if (axisIndex >= %![DIMENSION string]%) {
+      C_String s ;
+      s << "reader @ptrint sizeForAxis: argument >= dimension" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }else if (0 == axisIndex) {
+      result = GALGAS_uint (mSharedObject->size0 ()) ;
+    }else if (1 == axisIndex) {
+      result = GALGAS_uint (mSharedObject->size1 ()) ;
+    }else if (2 == axisIndex) {
+      result = GALGAS_uint (mSharedObject->size2 ()) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_%!TYPE_IDENTIFIER%::reader_isValueValidAtIndex (%?^
+foreach DIMENSION_LIST
+ do !^%const GALGAS_uint & inIndex%!mValue%,\n%
+ end foreach
+%  %!^%C_Compiler * inCompiler
+   %!^%COMMA_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid () && inIndex0.isValid () && inIndex1.isValid () && inIndex2.isValid ()) {
+    macroValidSharedObject (mSharedObject, cPtr_%!TYPE_IDENTIFIER%) ;
+    const PMSInt32 idx = mSharedObject->indexForIndexes (inIndex0.uintValue (),
+                                                         inIndex1.uintValue (),
+                                                         inIndex2.uintValue (),
+                                                         inCompiler
+                                                         COMMA_THERE) ;
+    if (idx >= 0) {
+      result = GALGAS_bool (mSharedObject->objectAtAbsoluteIndex (idx).isValid ()) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!ELEMENT_TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_valueAtIndex (%?^
+foreach DIMENSION_LIST
+ do !^%const GALGAS_uint & inIndex%!mValue%,\n%
+ end foreach
+%  %!^%C_Compiler * inCompiler
+   %!^%COMMA_LOCATION_ARGS) const {
+  GALGAS_%!ELEMENT_TYPE_IDENTIFIER% result ;
+  if (isValid () && inIndex0.isValid () && inIndex1.isValid () && inIndex2.isValid ()) {
+    macroValidSharedObject (mSharedObject, cPtr_%!TYPE_IDENTIFIER%) ;
+    const PMSInt32 idx = mSharedObject->indexForIndexes (inIndex0.uintValue (),
+                                                         inIndex1.uintValue (),
+                                                         inIndex2.uintValue (),
+                                                         inCompiler
+                                                         COMMA_THERE) ;
+    if (idx >= 0) {
+      result = mSharedObject->objectAtAbsoluteIndex (idx) ;
+      if (! result.isValid ()) {
+        C_String s ;
+        s << "reader @ptrint valueAtIndex: object at index ("
+          << cStringWithUnsigned (inIndex0.uintValue ())
+          << ", " << cStringWithUnsigned (inIndex1.uintValue ())
+          << ", " << cStringWithUnsigned (inIndex2.uintValue ())
+          << ") is invalid" ;
+        inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+      }
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+void GALGAS_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {
+  if (isValid () && (mSharedObject->retainCount () > 1)) {
+    cPtr_%!TYPE_IDENTIFIER% * p = NULL ;
+    macroMyNew (p, cPtr_%!TYPE_IDENTIFIER% (mSharedObject COMMA_THERE)) ;
+    macroAssignSharedObject (mSharedObject, p) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void GALGAS_%!TYPE_IDENTIFIER%::modifier_setValueAtIndex (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
+%
+foreach DIMENSION_LIST
+ do !^%GALGAS_uint inIndex%!mValue%,\n%
+ end foreach
+%       %!^%C_Compiler * inCompiler
+       %!^%COMMA_LOCATION_ARGS) {
+  if (isValid () && inValue.isValid () && inIndex0.isValid () && inIndex1.isValid () && inIndex2.isValid ()) {
+    insulate (THERE) ;
+    macroValidSharedObject (mSharedObject, cPtr_%!TYPE_IDENTIFIER%) ;
+    const PMSInt32 idx = mSharedObject->indexForIndexes (inIndex0.uintValue (),
+                                                         inIndex1.uintValue (),
+                                                         inIndex2.uintValue (),
+                                                         inCompiler
+                                                         COMMA_THERE) ;
+    if (idx >= 0) {
+      mSharedObject->setObjectAtAbsoluteIndex (inValue, idx) ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void GALGAS_%!TYPE_IDENTIFIER%::modifier_forceValueAtIndex (%?^%GALGAS_%!ELEMENT_TYPE_IDENTIFIER% inValue,
+%foreach DIMENSION_LIST
+ do !^%const GALGAS_uint inIndex%!mValue%,\n%
+ end foreach
+% %!^%C_Compiler * inCompiler
+  %!^%COMMA_LOCATION_ARGS) {
+  if (isValid () && inValue.isValid () && inIndex0.isValid () && inIndex1.isValid () && inIndex2.isValid ()) {
+    insulate (THERE) ;
+    macroValidSharedObject (mSharedObject, cPtr_%!TYPE_IDENTIFIER%) ;
+  //--- Resize ?
+    const bool resize = (inIndex0.uintValue () >= mSharedObject->size0 ())
+      || (inIndex1.uintValue () >= mSharedObject->size1 ())
+      || (inIndex2.uintValue () >= mSharedObject->size2 ()) ;
+    if (resize) {
+      const PMUInt32 newSize0 = uimax32 (mSharedObject->size0 (), inIndex0.uintValue () + 1) ;
+      const PMUInt32 newSize1 = uimax32 (mSharedObject->size1 (), inIndex1.uintValue () + 1) ;
+      const PMUInt32 newSize2 = uimax32 (mSharedObject->size2 (), inIndex2.uintValue () + 1) ;
+      mSharedObject->setSize (newSize0, newSize1, newSize2 COMMA_THERE) ;
+    }
+  //---
+    const PMSInt32 idx = mSharedObject->indexForIndexes (inIndex0.uintValue (),
+                                                         inIndex1.uintValue (),
+                                                         inIndex2.uintValue (),
+                                                         inCompiler
+                                                         COMMA_THERE) ;
+    if (idx >= 0) {
+      mSharedObject->setObjectAtAbsoluteIndex (inValue, idx) ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void GALGAS_%!TYPE_IDENTIFIER%::modifier_setSizeForAxis (%?^%GALGAS_uint inNewSize,
+        %!^%GALGAS_uint inAxisIndex,
+        %!^%C_Compiler * inCompiler
+        %!^%COMMA_LOCATION_ARGS) {
+  if (isValid () && inNewSize.isValid () && inAxisIndex.isValid ()) {
+    insulate (THERE) ;
+    macroValidSharedObject (mSharedObject, cPtr_%!TYPE_IDENTIFIER%) ;
+  //--- 
+    const PMUInt32 axisIndex = inAxisIndex.uintValue () ;
+    if (axisIndex >= %![DIMENSION string]%) {
+      C_String s ;
+      s << "modifier @ptrint setSizeForAxis: axis index ("
+        << cStringWithUnsigned (axisIndex) << ") >= dimension (%![DIMENSION string]%)" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }else{
+      const PMUInt32 newSize0 = (0 == axisIndex) ? inNewSize.uintValue () : mSharedObject->size0 () ;
+      const PMUInt32 newSize1 = (1 == axisIndex) ? inNewSize.uintValue () : mSharedObject->size1 () ;
+      const PMUInt32 newSize2 = (2 == axisIndex) ? inNewSize.uintValue () : mSharedObject->size2 () ;
+      mSharedObject->setSize (newSize0, newSize1, newSize2 COMMA_THERE) ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void GALGAS_%!TYPE_IDENTIFIER%::modifier_invalidateValueAtIndex (%
+foreach DIMENSION_LIST
+ before ?^
+ do !^%GALGAS_uint inIndex%!mValue%,\n%
+ end foreach
+%        %!^%C_Compiler * inCompiler
+        %!^%COMMA_LOCATION_ARGS) {
+  if (isValid () && inIndex0.isValid () && inIndex1.isValid () && inIndex2.isValid ()) {
+    insulate (THERE) ;
+    macroValidSharedObject (mSharedObject, cPtr_%!TYPE_IDENTIFIER%) ;
+    const PMSInt32 idx = mSharedObject->indexForIndexes (inIndex0.uintValue (),
+                                                         inIndex1.uintValue (),
+                                                         inIndex2.uintValue (),
+                                                         inCompiler
+                                                         COMMA_THERE) ;
+    if (idx >= 0) {
+      mSharedObject->setObjectAtAbsoluteIndex (GALGAS_%!ELEMENT_TYPE_IDENTIFIER% (), idx) ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void GALGAS_%!TYPE_IDENTIFIER%::modifier_setSize (%?^%GALGAS_uint inNewSize0,
+        %!^%GALGAS_uint inNewSize1,
+        %!^%GALGAS_uint inNewSize2,
+        %!^%C_Compiler * /* inCompiler */
+        %!^%COMMA_LOCATION_ARGS) {
+  if (isValid () && inNewSize0.isValid () && inNewSize1.isValid () && inNewSize2.isValid ()) {
+    insulate (THERE) ;
+    macroValidSharedObject (mSharedObject, cPtr_%!TYPE_IDENTIFIER%) ;
+    mSharedObject->setSize (inNewSize0.uintValue (),
+                            inNewSize1.uintValue (),
+                            inNewSize2.uintValue ()
+                            COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+

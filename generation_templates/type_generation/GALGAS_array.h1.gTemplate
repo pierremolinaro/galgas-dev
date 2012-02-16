@@ -1,0 +1,41 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["@" . TYPE_NAME . " array" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class cPtr_%!TYPE_IDENTIFIER% ;
+
+//---------------------------------------------------------------------------*
+
+class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
+//--------------------------------- Default constructor
+  public : inline GALGAS_%!TYPE_IDENTIFIER% (void) :
+  mSharedObject (NULL) {
+  }
+
+//--------------------------------- Virtual destructor
+  public : virtual ~ GALGAS_%!TYPE_IDENTIFIER% (void) ;
+
+//--- Handle copy
+  public : GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inObject) ;
+  public : GALGAS_%!TYPE_IDENTIFIER% & operator = (const GALGAS_%!TYPE_IDENTIFIER% & inObject) ;
+
+//--- Insulate
+  private : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;
+
+//--- isValid
+  public : VIRTUAL_IN_DEBUG inline bool isValid (void) const {
+    return NULL != mSharedObject ;
+  }
+
+//--- Drop
+  public : VIRTUAL_IN_DEBUG void drop (void) ;
+
+//--- Private attribute
+  private : cPtr_%!TYPE_IDENTIFIER% * mSharedObject ;
+
+//--- Drop
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+                                              const PMSInt32 inIndentation) const ;
+

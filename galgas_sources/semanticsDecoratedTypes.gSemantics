@@ -2,7 +2,7 @@
 #                                                                           *
 #  metamodel that defines expression                                        *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2012 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -1142,6 +1142,17 @@ class @uniqueMapTypeForGeneration extends @semanticTypeForGeneration {
   @mapAutomatonActionMap mMapAutomatonActionMap ;
   @mapStateSortedList mMapStateSortedList ;
   @mapOverrideList mMapOverrideList ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    A R R A Y    D E C L A R A T I O N                                     *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @arrayTypeForGeneration extends @semanticTypeForGeneration {
+  @unifiedTypeMapProxy mElementTypeProxy ;
+  @uint mDimension ;
 }
 
 #---------------------------------------------------------------------------*

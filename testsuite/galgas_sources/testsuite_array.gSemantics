@@ -1,0 +1,14 @@
+semantics testsuite_array :
+
+array @stringArray : @string [3] ;
+
+routine testsuite_array :
+  message "*************************************** begin of array test\n" ;
+  @stringArray p [new !2 !3 !4] ;
+  [!?p setValueAtIndex !"Hello" !0 !1 !2] ;
+  log p ;
+  log "" : [p valueAtIndex !0 !1 !2] ;
+end routine ;
+
+
+end semantics ;
