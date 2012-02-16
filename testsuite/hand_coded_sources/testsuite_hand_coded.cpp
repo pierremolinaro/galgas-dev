@@ -53,4 +53,5 @@ GALGAS_uint function_externTestFunction (GALGAS_uint inArg1,
   return inArg1.add_operation (inArg2, inCompiler COMMA_THERE) ;
 }
 
+
 //---------------------------------------------------------------------------*

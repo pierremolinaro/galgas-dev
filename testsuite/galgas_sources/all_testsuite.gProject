@@ -2,7 +2,7 @@ project all_testsuite -> "testsuite" :
   feature "makefile_macosx" ;
   feature "makefile_mingw_on_macosx" ;
   feature "project_xcode" ;
-  feature "xcode_arch:i386" ;
+  feature "xcode_arch:SnowLeopard-32" ;
 
   lexique "testsuite_lexique.gLexique" ;
   syntax "testsuite_syntax.gSyntax" ;

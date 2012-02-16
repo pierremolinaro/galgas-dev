@@ -2,12 +2,18 @@ semantics testsuite_array :
 
 array @stringArray : @string [3] ;
 
+array @charArray : @char [2] ;
+
 routine testsuite_array :
   message "*************************************** begin of array test\n" ;
   @stringArray p [new !2 !3 !4] ;
   [!?p setValueAtIndex !"Hello" !0 !1 !2] ;
   log p ;
   log "" : [p valueAtIndex !0 !1 !2] ;
+  @charArray pp [new !4 !3] ;
+  [!?pp setValueAtIndex !'?' !2 !1] ;
+  log pp ;
+  log "" : [[pp valueAtIndex !2 !1] string] ;
 end routine ;
 
 
