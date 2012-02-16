@@ -41,8 +41,6 @@
   //---
     mProxy = inProxy ;
     mTaskIndex = inIndex ;
-    mStandardBufferedInputData = [NSMutableData new] ;
-    mSocketBufferedInputData = [NSMutableData new] ;
   //---
     NSArray * commandLineArray = [gCocoaGalgasPreferencesController commandLineItemArray] ;
   //--- Command line tool does actually exist ? (First argument is not "?")
@@ -67,7 +65,6 @@
       getsockname (mConnectionSocket.socket, (struct sockaddr *) & socketStruct, & length) ;
       const UInt16 actualPort = ntohs (socketStruct.sin_port) ;
       // NSLog (@"actualPort %hu", actualPort) ;
-      // NSLog (@"actualPort %hu\n", actualPort) ;
       // NSLog (@"mConnectionSocket %p %d", mConnectionSocket, mConnectionSocket.socket) ;
       NSMutableArray * arguments = [NSMutableArray new] ;
       [arguments addObjectsFromArray:[commandLineArray subarrayWithRange:NSMakeRange (1, [commandLineArray count]-1)]] ;
@@ -83,13 +80,6 @@
       mPipe = [NSPipe pipe] ;
       [mTask setStandardOutput:mPipe] ;
       [mTask setStandardError:mPipe] ;
-      [[NSNotificationCenter defaultCenter]
-        addObserver:self
-        selector:@selector (getDataFromTaskOutput:)
-        name:NSFileHandleReadCompletionNotification
-        object:[mPipe fileHandleForReading]
-      ] ;
-      [mPipe.fileHandleForReading readInBackgroundAndNotify] ;
     //--- http://www.cocoadev.com/index.pl?NSSocketPort
       mConnectionSocketHandle = [[NSFileHandle alloc]
         initWithFileDescriptor:mConnectionSocket.socket
@@ -119,22 +109,6 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) getDataFromTaskOutput: (NSNotification *) inNotification {
-  NSData * data = [inNotification.userInfo objectForKey:NSFileHandleNotificationDataItem];
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s (%lu bytes)", __PRETTY_FUNCTION__, (unsigned long) data.length) ;
-  #endif
-  if (data.length > 0) {
-    [mStandardBufferedInputData appendData:data] ;
-    [inNotification.object readInBackgroundAndNotify] ;
-  }else{
-    [mProxy noteStandardOutputData:mStandardBufferedInputData] ;
-    mStandardBufferedInputCompleted = YES ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
 - (void) newSocketConnection:(NSNotification *) inNotification {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
@@ -143,37 +117,21 @@
   mRemoteSocketHandle = [inNotification.userInfo
     objectForKey:NSFileHandleNotificationFileHandleItem
   ] ;
-//---
-  [[NSNotificationCenter defaultCenter]
-    addObserver:self
-    selector:@selector (getDataFromSocketConnection:) 
-    name:NSFileHandleReadCompletionNotification
-    object:mRemoteSocketHandle
-  ] ;
-//---
-  [mRemoteSocketHandle readInBackgroundAndNotify] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) getDataFromSocketConnection: (NSNotification *) inNotification {
-  NSData * data = [inNotification.userInfo objectForKey:NSFileHandleNotificationDataItem];
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s (%lu bytes)", __PRETTY_FUNCTION__, (unsigned long) data.length) ;
-  #endif
-  if (data.length > 0) {
-    [mSocketBufferedInputData appendData:data] ;
-    [inNotification.object readInBackgroundAndNotify] ;
-  }else{
-    [mProxy noteSocketData:mSocketBufferedInputData] ;
-    mSocketBufferedInputCompleted = YES ;
-  }
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) taskDidTerminate: (NSNotification *) inNotification {
-  [mProxy noteBuildTaskTermination:self] ;
+  if (nil != mProxy) {
+    NSData * data = [mPipe.fileHandleForReading readDataToEndOfFile] ;
+    [mProxy noteStandardOutputData:data] ;
+    if (nil != mRemoteSocketHandle) {
+      data = [mRemoteSocketHandle readDataToEndOfFile] ;
+      [mProxy noteSocketData:data] ;
+    }
+    [mProxy noteBuildTaskTermination:self] ;
+  }
+  mTaskCompleted = YES ;
 }
 
 //---------------------------------------------------------------------------*
@@ -186,17 +144,13 @@
 //---------------------------------------------------------------------------*
 
 - (NSString *) runningStatus {
-  return [NSString stringWithFormat:@" %d%d%d%d:%lu", mStandardBufferedInputCompleted, ! [mTask isRunning], nil != mRemoteSocketHandle, mSocketBufferedInputCompleted, mTaskIndex] ;
+  return [NSString stringWithFormat:@" %d:%lu", ! [mTask isRunning], mTaskIndex] ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (BOOL) isCompleted {
-  BOOL completed = mStandardBufferedInputCompleted && ! [mTask isRunning] ;
-  if (completed && (nil != mRemoteSocketHandle)) {
-    completed = mSocketBufferedInputCompleted ;
-  }
-  return completed ;
+  return mTaskCompleted ;
 }
 
 //---------------------------------------------------------------------------*

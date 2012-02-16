@@ -16,6 +16,7 @@
 @class OC_GGS_TextView ;
 @class PMIssueDescriptor ;
 @class OC_GGS_RulerViewForTextView ;
+@class OC_GGS_ContextualHelpTask ;
 
 //---------------------------------------------------------------------------*
 
@@ -28,11 +29,9 @@
   @private NSUInteger mTextSelectionStart ;
   @private OC_GGS_Document * mDocument ;
   @private NSArray * mIssueArray ;
-  @private NSMutableData * mBufferedInputData ;
-  @private NSTask * mTask ;
-  @private NSSocketPort * mReceiveSocket ;
-  @private NSFileHandle * mReceiveSocketHandle ;
-  @private NSFileHandle * mRemoteSocketHandle ;
+  @private OC_GGS_ContextualHelpTask * mContextualHelpTask ;
+  @private NSMutableSet * mPreviousBuildTasks ;
+  @private NSUInteger mTaskIndex ;
 }
 
 - (OC_GGS_TextDisplayDescriptor *) initWithDelegateForSyntaxColoring: (OC_GGS_TextSyntaxColoring *) inDelegate
@@ -68,6 +67,10 @@
 - (BOOL) makeVisibleIssue: (PMIssueDescriptor *) inIssue ;
 
 - (void) setSelectionRangeAndMakeItVisible: (NSRange) inRange ;
+
+- (void) noteBuildTaskTermination: (OC_GGS_ContextualHelpTask *) inBuildTask ;
+
+- (void) noteSocketData: (NSData *) inData ;
 @end
 
 //---------------------------------------------------------------------------*

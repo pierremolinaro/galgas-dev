@@ -21,11 +21,7 @@
   @private NSFileHandle * mConnectionSocketHandle ;
   @private NSFileHandle * mRemoteSocketHandle ;
   
-  @private NSMutableData * mStandardBufferedInputData ;
-  @private NSMutableData * mSocketBufferedInputData ;
-  
-  @private BOOL mStandardBufferedInputCompleted ;
-  @private BOOL mSocketBufferedInputCompleted ;
+  @private BOOL mTaskCompleted ;
 }
 
 - (id) initWithDocument: (OC_GGS_Document *) inDocument

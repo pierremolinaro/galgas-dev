@@ -140,7 +140,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (57 types)
+--- Type list (58 types)
   @2stringlist
   @A
   @A_A
@@ -158,6 +158,7 @@ LOGGING r: <@uint:5>
   @binaryset
   @bool
   @char
+  @charArray
   @data
   @double
   @filewrapper
@@ -241,3 +242,5 @@ LOGGING result: <@string:"accentué
 *************************************** begin of array test
 LOGGING p: <@ptrint:array [2, 3, 4] of @uint>
 LOGGING : <@string:"Hello">
+LOGGING pp: <@ptrint:array [4, 3] of @uint>
+LOGGING : <@string:"?">

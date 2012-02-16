@@ -139,6 +139,7 @@
 		CF585E5B10A5FBF100A5A69A /* grammarSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF585E5610A5FBF100A5A69A /* grammarSemantics.cpp */; };
 		CF5DF68F114D36E900B96CB0 /* semanticAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5DF68B114D36E900B96CB0 /* semanticAnalysis.cpp */; };
 		CF5DF690114D36E900B96CB0 /* semanticAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5DF68B114D36E900B96CB0 /* semanticAnalysis.cpp */; };
+		CF5F4C2914EAEE0600CDFAF0 /* OC_GGS_ContextualHelpTask.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5F4C2814EAEE0600CDFAF0 /* OC_GGS_ContextualHelpTask.m */; };
 		CF63AD270EE04C0B00220E75 /* projectMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */; };
 		CF63AD280EE04C0B00220E75 /* projectMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */; };
 		CF63B55310FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */; };
@@ -605,6 +606,8 @@
 		CF585E5710A5FBF100A5A69A /* grammarSemantics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grammarSemantics.h; sourceTree = "<group>"; };
 		CF5DF68B114D36E900B96CB0 /* semanticAnalysis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticAnalysis.cpp; sourceTree = "<group>"; };
 		CF5DF68C114D36E900B96CB0 /* semanticAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticAnalysis.h; sourceTree = "<group>"; };
+		CF5F4C2714EAEE0600CDFAF0 /* OC_GGS_ContextualHelpTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_ContextualHelpTask.h; sourceTree = "<group>"; };
+		CF5F4C2814EAEE0600CDFAF0 /* OC_GGS_ContextualHelpTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_ContextualHelpTask.m; sourceTree = "<group>"; };
 		CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = projectMetamodel.cpp; sourceTree = "<group>"; };
 		CF63AD240EE04C0A00220E75 /* projectMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = projectMetamodel.h; sourceTree = "<group>"; };
 		CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_PrologueEpilogue.cpp; sourceTree = "<group>"; };
@@ -1296,6 +1299,8 @@
 				CFFCE7BC14686081009DB6D5 /* PMIssueDescriptor.m */,
 				CFEE63DA147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.h */,
 				CFEE63DB147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.m */,
+				CF5F4C2714EAEE0600CDFAF0 /* OC_GGS_ContextualHelpTask.h */,
+				CF5F4C2814EAEE0600CDFAF0 /* OC_GGS_ContextualHelpTask.m */,
 				CFEE63DE147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.h */,
 				CFEE63DF147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m */,
 				CF2ECB51147F78A50018894F /* PMTabBarView.h */,
@@ -2499,6 +2504,7 @@
 				CFB697DF1483D47900BCAE41 /* PMIssueInRuler.m in Sources */,
 				CF3C17A514E97BD40016A381 /* OC_GGS_BuildTaskProxy.m in Sources */,
 				CF3C17A814E97CCC0016A381 /* OC_GGS_BuildTask.m in Sources */,
+				CF5F4C2914EAEE0600CDFAF0 /* OC_GGS_ContextualHelpTask.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
