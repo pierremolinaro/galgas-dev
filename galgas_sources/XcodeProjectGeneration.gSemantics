@@ -199,6 +199,7 @@ local routine build_LIBPM_COCOA_GALGAS_group
   append_m_h_files !?fileList !"PMErrorOrWarningDescriptor" ;
   append_m_h_files !?fileList !"PMIssueInRuler" ;
   append_m_h_files !?fileList !"OC_GGS_BuildTask" ;
+  append_m_h_files !?fileList !"OC_GGS_BuildTaskProxy" ;
   fileList += !"I_Stop.tiff" ;
   fileList += !"F_CocoaWrapperForGalgas.h" ;
   fileList += !"PP_CocoaGalgasPrefix.pch" ;
@@ -790,6 +791,7 @@ local routine build_COCOA_APP_files_for_sources_build_phase
   fileList += !"PMErrorOrWarningDescriptor.m" ;
   fileList += !"PMIssueInRuler.m" ;
   fileList += !"OC_GGS_BuildTask.m" ;
+  fileList += !"OC_GGS_BuildTaskProxy.m" ;
   fileList += !"PMArrayControllerDebugCategory.m" ;
   fileList += !"PMArrayDebugCategory.m" ;
   fileList += !"PMDictionaryDebugCategory.m" ;

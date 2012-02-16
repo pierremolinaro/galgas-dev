@@ -27,6 +27,8 @@ indexing listmapDefinition : "Listmap Definition" ;
 indexing mapDefinition : "Map Definition" ;
 indexing uniquemapDefinition : "Unique Map Definition" ;
 indexing mapProxyDefinition : "Map Proxy Definition" ;
+indexing arrayTypeDefinition : "Array Definition" ;
+indexing arrayElementTypeReference : "Reference as array element" ;
 indexing filewrapperDefinition : "Filewrapper Definition" ;
 indexing filewrapperReference : "Filewrapper Reference" ;
 indexing graphDefinition : "Graph Definition" ;

@@ -409,6 +409,14 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
+override reader @arrayDeclarationAST keyRepresentation
+  ->@string outString
+:
+  outString := "array @" . mArrayTypeName ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @listmapDeclarationAST keyRepresentation
   ->@string outString
 :
@@ -2316,6 +2324,151 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @arrayDeclarationAST enterInSemanticContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
+  ?!@semanticContext ioSemanticContext
+:
+#---
+  if [mDimension uint] == 0 then
+    error mDimension: "the dimension of an array should be > 0" ;
+  end if ;
+#--- array type
+  @unifiedTypeMapProxy arrayTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mArrayTypeName string] ?arrayTypeIndex] ;
+#--- element type
+  @unifiedTypeMapProxy elementTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mElementTypeName string] ?elementTypeIndex] ;
+#---
+  @constructorMap constructorMap [emptyMap] ;
+  @readerMap readerMap [emptyMap] ;
+  @modifierMap modifierMap [emptyMap] ;
+  @instanceMethodMap instanceMethodMap [emptyMap] ;
+#--- 
+  @unifiedTypeMapProxy boolType ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"bool" ?boolType] ;
+#--- 
+  @unifiedTypeMapProxy uintType ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !"uint" ?uintType] ;
+#---
+  @unifiedTypeMapProxyList uintArgs [emptyList] ;
+  @uint idx := 0 ;
+  loop [mDimension uint] : while idx < [mDimension uint] do
+    uintArgs += !uintType ;
+    idx ++ ;
+  end loop ;
+#--- Constructor
+  [!?constructorMap insertKey
+    ![@lstring new !"new" !here]
+    !uintArgs
+    !false
+    !arrayTypeIndex
+  ] ;
+#--- Readers
+  enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"axisCount" !"uint" !false ;
+  enterBaseReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"sizeForAxis" !"uint" !"uint" !true ;
+  [!?readerMap insertOrReplace
+    ![@lstring new !"isValueValidAtIndex" !here]
+    ![@methodKind definedAsMember]
+    !uintArgs
+    !here
+    !true
+    !boolType
+    ![@methodQualifier isBasicFinal]
+    !"" # No Error message
+  ] ;
+  [!?readerMap insertOrReplace
+    ![@lstring new !"valueAtIndex" !here]
+    ![@methodKind definedAsMember]
+    !uintArgs
+    !here
+    !true
+    !elementTypeIndex
+    ![@methodQualifier isBasicFinal]
+    !"" # No Error message
+  ] ;
+#--- Modifiers
+  @formalParameterSignature modifierFormalArgumentList [emptyList] ;
+  modifierFormalArgumentList += !elementTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  idx := 0 ;
+  loop [mDimension uint] : while idx < [mDimension uint] do
+    modifierFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    idx ++ ;
+  end loop ;
+  [!?modifierMap insertKey
+    !["setValueAtIndex" nowhere]
+    ![@methodKind definedAsMember]
+    !modifierFormalArgumentList
+    !true
+    ![@methodQualifier isBasicFinal]
+    !""
+  ] ;
+  [!?modifierMap insertKey
+    !["forceValueAtIndex" nowhere]
+    ![@methodKind definedAsMember]
+    !modifierFormalArgumentList
+    !true
+    ![@methodQualifier isBasicFinal]
+    !""
+  ] ;
+  [!?modifierFormalArgumentList popFirst ?* ?*] ;
+  [!?modifierMap insertKey
+    !["invalidateValueAtIndex" nowhere]
+    ![@methodKind definedAsMember]
+    !modifierFormalArgumentList
+    !true
+    ![@methodQualifier isBasicFinal]
+    !""
+  ] ;
+  [!?modifierMap insertKey
+    !["setSize" nowhere]
+    ![@methodKind definedAsMember]
+    !modifierFormalArgumentList
+    !true
+    ![@methodQualifier isBasicFinal]
+    !""
+  ] ;
+  modifierFormalArgumentList := [@formalParameterSignature emptyList] ;
+  modifierFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  modifierFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  [!?modifierMap insertKey
+    !["setSizeForAxis" nowhere]
+    ![@methodKind definedAsMember]
+    !modifierFormalArgumentList
+    !true
+    ![@methodQualifier isBasicFinal]
+    !""
+  ] ;
+#--- Enter in semantic context
+  [!?ioSemanticContext->mTypeMap insertKey
+    !mArrayTypeName
+    !true # Concrete Type
+    ![@unifiedTypeMapProxy null]
+    ![@typeKindEnum listMapType]
+    ![@typedAttributeList emptyList]
+    ![@attributeMap emptyMap]
+    ![@typedAttributeList emptyList]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    !instanceMethodMap
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+    ![@stringlist emptyList]
+    !doNotGenererateObjectCompare []
+    ![@unifiedTypeMapProxyList emptyList] # addAssignOperatorDescription
+    ![@stringset emptySet]
+    ![@lstringlist emptyList]
+    ![@mapSearchMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
+    ![@withAccessorMap emptyMap]
+    !false # Do not generate header in separate file
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @listmapDeclarationAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
@@ -2521,6 +2674,20 @@ override method @sortedListDeclarationAST enterDeclarationInGraph
   foreach mAttributeList do
     [!?ioSemanticTypePrecedenceGraph noteNode ![@lstring new !"@" . mAttributeTypeName ![mAttributeTypeName location]]] ;
   end foreach ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @arrayDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
+:
+  const @lstring key [new !"@" . mArrayTypeName ![mArrayTypeName location]] ;
+  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
+  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mElementTypeName ![mElementTypeName location]]] ;
 end method ;
 
 #---------------------------------------------------------------------------*

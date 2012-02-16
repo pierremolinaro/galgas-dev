@@ -527,7 +527,7 @@
 		CF34D4B811ABD1EA0020730A /* programComponentCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = programComponentCompilation.h; sourceTree = "<group>"; };
 		CF3C17A314E97BD40016A381 /* OC_GGS_BuildTaskProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildTaskProxy.h; sourceTree = "<group>"; };
 		CF3C17A414E97BD40016A381 /* OC_GGS_BuildTaskProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_BuildTaskProxy.m; sourceTree = "<group>"; };
-		CF3C17A614E97CCC0016A381 /* OC_GGS_BuildTask.h */ = {isa = PBXFileReference; fileEncoding = 4; path = OC_GGS_BuildTask.h; sourceTree = "<group>"; };
+		CF3C17A614E97CCC0016A381 /* OC_GGS_BuildTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildTask.h; sourceTree = "<group>"; };
 		CF3C17A714E97CCC0016A381 /* OC_GGS_BuildTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_BuildTask.m; sourceTree = "<group>"; };
 		CF3CFB2B0FEBEA6C00CE4488 /* PMFontButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMFontButton.h; sourceTree = "<group>"; };
 		CF3CFB2C0FEBEA6C00CE4488 /* PMFontButton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMFontButton.m; sourceTree = "<group>"; };

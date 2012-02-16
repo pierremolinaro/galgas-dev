@@ -325,6 +325,24 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @arrayDeclarationAST performSemanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+:
+#---
+  ioSemanticDeclarationListForGeneration += ![@arrayTypeForGeneration new
+    !true
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mArrayTypeName]
+    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mElementTypeName]
+    ![mDimension uint]
+  ]
+  !""
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @listmapDeclarationAST performSemanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes

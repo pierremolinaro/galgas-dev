@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 1997, ..., 2009 Pierre Molinaro.                           *
+//  Copyright (C) 1997, ..., 2012 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -151,6 +151,22 @@
   #define PMSINT_MIN (PMSINT32_MIN)
   #define PMSINT_MAX (PMSINT32_MAX)
 #endif
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//             M I N ,    M A X    F U N C T I O N S                         *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+static inline PMUInt32 uimin32 (const PMUInt32 inA, const PMUInt32 inB) {
+  return (inA < inB) ? inA : inB ;
+}
+
+//---------------------------------------------------------------------------*
+
+static inline PMUInt32 uimax32 (const PMUInt32 inA, const PMUInt32 inB) {
+  return (inA > inB) ? inA : inB ;
+}
 
 //---------------------------------------------------------------------------*
 //                                                                           *

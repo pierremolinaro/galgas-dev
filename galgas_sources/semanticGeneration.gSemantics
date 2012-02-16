@@ -2,7 +2,7 @@
 #                                                                           *
 #  Generate predefined types                                                *
 #                                                                           *
-#  Copyright (C) 2010, ..., 2011 Pierre Molinaro.                           *
+#  Copyright (C) 2010, ..., 2012 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -538,6 +538,22 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@graphInsertModifierList INSERT_MODIFIER_LIST
   ;
 
+#---------- Array
+  template arrayTypeHeader1 "GALGAS_array.h1.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string ELEMENT_TYPE_IDENTIFIER
+    ?@uint DIMENSION
+  ;
+
+  template arrayTypeSpecificImplementation "GALGAS_array.cpp.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string ELEMENT_TYPE_IDENTIFIER
+    ?@uint DIMENSION
+    ?@stringlist DIMENSION_LIST
+  ;
+
 #---------- LIST MAP
   template listmapTypeHeader1 "GALGAS_listmap.h1.gTemplate"
     ?@string TYPE_NAME
@@ -997,6 +1013,31 @@ override reader @mapTypeForGeneration appendDeclaration1 ->@string outHeader :
 
 #---------------------------------------------------------------------------*
 
+override reader @arrayTypeForGeneration appendDeclaration1 ->@string outHeader :
+  outHeader := [filewrapper typeGenerationTemplate.arrayTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mElementTypeProxy identifierRepresentation]
+    !mDimension
+  ] ;
+  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mWithAccessorMap]
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @uniqueMapTypeForGeneration appendDeclaration1 ->@string outHeader :
   outHeader := [filewrapper typeGenerationTemplate.uniqueMapTypeHeader1
     ![mTypeProxy key]
@@ -1435,6 +1476,24 @@ end reader ;
 reader @semanticDeclarationForGeneration appendSpecificImplementation ->@string outImplementation :
   outImplementation := "" ;
 end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @arrayTypeForGeneration appendSpecificImplementation ->@string outImplementation :
+  @stringlist suffixList [emptyList] ;
+  @uint idx := 0 ;
+  loop mDimension : while idx < mDimension do
+    suffixList += ![idx string] ;
+    idx ++ ;
+  end loop ;
+  outImplementation := [filewrapper typeGenerationTemplate.arrayTypeSpecificImplementation
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mElementTypeProxy identifierRepresentation]
+    !mDimension
+    !suffixList
+  ] ;
+ end reader ;
 
 #---------------------------------------------------------------------------*
 

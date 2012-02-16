@@ -140,7 +140,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (56 types)
+--- Type list (57 types)
   @2stringlist
   @A
   @A_A
@@ -184,6 +184,7 @@ LOGGING r: <@uint:5>
   @sint
   @sint64
   @string
+  @stringArray
   @stringlist
   @stringset
   @structTest
@@ -237,3 +238,6 @@ LOGGING aList: <list @uintlist (5 objects):
 LOGGING command: <@string:"echo accentué">
 LOGGING result: <@string:"accentué
 ">
+*************************************** begin of array test
+LOGGING p: <@ptrint:array [2, 3, 4] of @uint>
+LOGGING : <@string:"Hello">

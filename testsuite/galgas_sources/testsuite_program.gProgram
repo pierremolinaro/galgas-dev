@@ -11,6 +11,7 @@ import "testsuite_category_readers.gSemantics" ;
 import "testsuite_category_modifiers.gSemantics" ;
 import "testsuite_type_categories.gSemantics" ;
 import "testsuite_strings.gSemantics" ;
+import "testsuite_array.gSemantics" ;
 
 import "testsuite_grammar.gGrammar" ;
 
@@ -29,6 +30,7 @@ before {
   testsuite_category_modifiers ;
   testsuite_type_categories ;
   testsuite_strings ;
+  testsuite_array ;
 }
 
 #--- 'when' clauses
