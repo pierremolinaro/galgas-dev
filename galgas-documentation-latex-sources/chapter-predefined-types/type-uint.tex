@@ -74,6 +74,16 @@ Note that a 32-bit unsigned integer constant is characterized by no suffix.
 
 
 
+\readerUnArgument{isInRange}
+{@uint}
+{2.3.0}
+{@bool}
+{@range}
+{Returns an \nomType{range} value indicating whether the receiver'value belongs to a range.}
+{for a receiver's value equal to $v$ and a range of length $length$ starting at $start$, it returns \motCle{true} if $((v \geqslant start)~and~(v<(start+length)))$, and \motCle{false} otherwise.}
+
+
+
 \readerSansArgument{isUnicodeValueAssigned}
 {@uint}
 {1.8.3}

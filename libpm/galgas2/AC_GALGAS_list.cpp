@@ -239,7 +239,7 @@ void cSharedList::subListWithRange (cSharedList * & ioSharedList,
                                     COMMA_LOCATION_ARGS) const {
   bool ok = true ;
   if (inRange.isValid ()) {
-    const PMUInt32 idx = inRange.mAttribute_location.uintValue () ;
+    const PMUInt32 idx = inRange.mAttribute_start.uintValue () ;
     const PMUInt32 length = inRange.mAttribute_length.uintValue () ;
     if ((idx + length) > mObjectArray.count ()) {
       C_String s ;

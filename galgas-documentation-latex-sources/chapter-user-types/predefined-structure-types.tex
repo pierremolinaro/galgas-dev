@@ -1,0 +1,139 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapter{Predefined structure types}
+%-------------------------------------------------------------
+
+The following types are predefined, as particular structure types.
+
+\sectionTypePredefiniLabelIndex{lbool}
+
+The \nomType{lbool} is predefined as:
+\begin{lstlisting}[language=galgas]
+struct @lbool {
+  @bool bool ;
+  @location location ;
+}
+\end{lstlisting}
+
+
+
+
+\sectionTypePredefiniLabelIndex{lchar}
+
+The \nomType{lchar} is predefined as:
+\begin{lstlisting}[language=galgas]
+struct @lchar {
+  @char char ;
+  @location location ;
+}
+\end{lstlisting}
+
+
+
+
+
+
+
+\sectionTypePredefiniLabelIndex{ldouble}
+
+The \nomType{ldouble} is predefined as:
+\begin{lstlisting}[language=galgas]
+struct @ldouble {
+  @double double ;
+  @location location ;
+}
+\end{lstlisting}
+
+
+
+
+
+
+
+\sectionTypePredefiniLabelIndex{lsint}
+
+The \nomType{lsint} is predefined as:
+\begin{lstlisting}[language=galgas]
+struct @lsint {
+  @sint sint ;
+  @location location ;
+}
+\end{lstlisting}
+
+
+
+
+
+
+
+
+\sectionTypePredefiniLabelIndex{lsint64}
+
+The \nomType{lsint64} is predefined as:
+\begin{lstlisting}[language=galgas]
+struct @lsint64 {
+  @sint64 sint64 ;
+  @location location ;
+}
+\end{lstlisting}
+
+
+
+
+
+
+
+\sectionTypePredefiniLabelIndex{lstring}
+
+The \nomType{lstring} is predefined as:
+\begin{lstlisting}[language=galgas]
+struct @lstring {
+  @string string ;
+  @location location ;
+}
+\end{lstlisting}
+
+
+
+
+
+
+
+\sectionTypePredefiniLabelIndex{luint}
+
+The \nomType{luint} is predefined as:
+\begin{lstlisting}[language=galgas]
+struct @luint {
+  @uint uint ;
+  @location location ;
+}
+\end{lstlisting}
+
+
+
+
+
+\sectionTypePredefiniLabelIndex{luint64}
+
+The \nomType{luint64} is predefined as:
+\begin{lstlisting}[language=galgas]
+struct @luint64 {
+  @uint64 uint64 ;
+  @location location ;
+}
+\end{lstlisting}
+
+
+\sectionTypePredefiniLabelIndex{range}
+
+The \nomType{range} is equivalent to the declaration:
+\begin{lstlisting}[language=galgas]
+struct @range {
+  @uint start ;
+  @uint length ;
+}
+\end{lstlisting}
+
+

@@ -91,7 +91,7 @@ local routine appendStructASTForRangeType
 :
   @lstringlist featureList [emptyList] ;
   @attributeInCollectionListAST attributeList [emptyList] ;
-  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"location" !here] !featureList ;
+  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"start" !here] !featureList ;
   attributeList += ![@lstring new !"uint" !here] ![@lstring new !"length" !here] !featureList ;
   ioDeclarationListASTs += ![@structDeclarationAST new
     !true # Is global
