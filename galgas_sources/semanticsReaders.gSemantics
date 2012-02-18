@@ -540,6 +540,7 @@ override method @uintPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"hexString" !"string" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"xString" !"string" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"isUnicodeValueAssigned" !"bool" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"isInRange" !"range" !"bool" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*

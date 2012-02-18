@@ -162,6 +162,19 @@ typeComparisonResult GALGAS_uint::objectCompare (const GALGAS_uint & inOperand) 
 
 //---------------------------------------------------------------------------*
 
+GALGAS_bool GALGAS_uint::reader_isInRange (const GALGAS_range & inRange
+                                           COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid () && inRange.isValid ()) {
+    const PMUInt32 start = inRange.mAttribute_start.uintValue () ;
+    const PMUInt32 end = start + inRange.mAttribute_length.uintValue () ;
+    result = GALGAS_bool ((mUIntValue >= start) && (mUIntValue < end)) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
 GALGAS_sint GALGAS_uint::reader_sint (C_Compiler * inCompiler
                                       COMMA_LOCATION_ARGS) const {
   GALGAS_sint result ;
