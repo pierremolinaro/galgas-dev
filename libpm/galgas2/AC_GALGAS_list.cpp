@@ -49,23 +49,22 @@ class cSharedList : public C_SharedObject {
                                              const typeEnumerationOrder inEnumerationOrder) const ;
 
   protected : void readFirst (capCollectionElement & outObjectAttributeArray,
-                           C_Compiler * inCompiler
-                           COMMA_LOCATION_ARGS) ;
+                              C_Compiler * inCompiler
+                              COMMA_LOCATION_ARGS) ;
 
   protected : void readLast (capCollectionElement & outObjectAttributeArray,
-                          C_Compiler * inCompiler
-                          COMMA_LOCATION_ARGS) ;
+                             C_Compiler * inCompiler
+                             COMMA_LOCATION_ARGS) ;
 
   protected : void subListWithRange (cSharedList * & ioSharedList,
-                                  const GALGAS_uint & inIndex,
-                                  const GALGAS_uint & inLength,
-                                  C_Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) const ;
+                                     const GALGAS_range & inRange,
+                                     C_Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) const ;
  
   protected : void subListFromIndex (cSharedList * & ioSharedList,
-                                  const GALGAS_uint & inIndex,
-                                  C_Compiler * inCompiler
-                                  COMMA_LOCATION_ARGS) const ;
+                                     const GALGAS_uint & inIndex,
+                                     C_Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) const ;
 
   protected : void prependAttributeArray (const capCollectionElement & inAttributeArray) ;
 
@@ -235,14 +234,13 @@ void cSharedList::readLast (capCollectionElement & outObjectAttributeArray,
 //---------------------------------------------------------------------------*
 
 void cSharedList::subListWithRange (cSharedList * & ioSharedList,
-                                    const GALGAS_uint & inIndex,
-                                    const GALGAS_uint & inLength,
+                                    const GALGAS_range & inRange,
                                     C_Compiler * inCompiler
                                     COMMA_LOCATION_ARGS) const {
   bool ok = true ;
-  if (inIndex.isValid () && inLength.isValid ()) {
-    const PMUInt32 idx = inIndex.uintValue () ;
-    const PMUInt32 length = inLength.uintValue () ;
+  if (inRange.isValid ()) {
+    const PMUInt32 idx = inRange.mAttribute_location.uintValue () ;
+    const PMUInt32 length = inRange.mAttribute_length.uintValue () ;
     if ((idx + length) > mObjectArray.count ()) {
       C_String s ;
       s << "Cannot get a sub list of range ["
@@ -464,6 +462,16 @@ GALGAS_uint AC_GALGAS_list::reader_length (UNUSED_LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------*
 
+GALGAS_range AC_GALGAS_list::reader_range (UNUSED_LOCATION_ARGS) const {
+  GALGAS_range result ;
+  if (isValid ()) {
+    result = GALGAS_range (GALGAS_uint (0), GALGAS_uint (mSharedList->count ())) ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
 void AC_GALGAS_list::drop (void) {
   macroDetachSharedObject (mSharedList) ;
 }
@@ -539,12 +547,11 @@ void AC_GALGAS_list::readLast (capCollectionElement & outAttributes,
 //---------------------------------------------------------------------------*
 
 void AC_GALGAS_list::subListWithRange (AC_GALGAS_list & outList,
-                                       const GALGAS_uint & inIndex,
-                                       const GALGAS_uint & inLength,
+                                       const GALGAS_range & inRange,
                                        C_Compiler * inCompiler
                                        COMMA_LOCATION_ARGS) const {
   if (isValid ()) {
-    mSharedList->subListWithRange (outList.mSharedList, inIndex, inLength, inCompiler COMMA_THERE) ;
+    mSharedList->subListWithRange (outList.mSharedList, inRange, inCompiler COMMA_THERE) ;
   }else{
     outList.drop () ;
   }

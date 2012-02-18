@@ -432,6 +432,7 @@ override method @stringPredefinedTypeAST getReaderMap
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"nowhere" !"lstring" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"doesEnvironmentVariableExist" !"bool" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"length" !"uint" !false ;
+  enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"range" !"range" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"identifierRepresentation" !"string" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"HTMLRepresentation" !"string" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"utf8Representation" !"string" !false ;

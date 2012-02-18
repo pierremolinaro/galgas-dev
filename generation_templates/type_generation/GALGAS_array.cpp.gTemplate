@@ -264,6 +264,27 @@ GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::reader_axisCount (UNUSED_LOCATION_ARGS) c
 
 //---------------------------------------------------------------------------*
 
+GALGAS_range GALGAS_%!TYPE_IDENTIFIER%::reader_rangeForAxis (%?^%const GALGAS_uint & inAxisIndex,
+               %!^%C_Compiler * inCompiler
+               %!^%COMMA_LOCATION_ARGS) const {
+  GALGAS_range result ;
+  if (isValid () && inAxisIndex.isValid ()) {
+    const PMUInt32 axisIndex = inAxisIndex.uintValue () ;
+    if (axisIndex >= %![DIMENSION string]%) {
+      C_String s ;
+      s << "reader @ptrint sizeForAxis: argument >= dimension" ;
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+% foreach DIMENSION_LIST do
+%    }else if (%!mValue% == axisIndex) {\n%
+%      result = GALGAS_range (GALGAS_uint (0), GALGAS_uint (mSharedObject->size%!mValue% ())) ;\n%
+end foreach
+%    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
 GALGAS_uint GALGAS_%!TYPE_IDENTIFIER%::reader_sizeForAxis (%?^%const GALGAS_uint & inAxisIndex,
                %!^%C_Compiler * inCompiler
                %!^%COMMA_LOCATION_ARGS) const {

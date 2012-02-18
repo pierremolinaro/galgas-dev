@@ -64,6 +64,8 @@ rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsLis
   outInstructionsList := [@semanticInstructionListAST emptyList] ;
   repeat
   while
+    $;$ ;
+  while
     @semanticInstructionAST instruction ;
     @localVariableDeclarationListAST localVariableDeclarationList [emptyList] ;
     <semantic_instruction> ? instruction !?localVariableDeclarationList ;
@@ -80,7 +82,7 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-nonterminal  <local_declaration> !@bool outIsGlobal ;
+nonterminal <local_declaration> !@bool outIsGlobal ;
 
 rule <local_declaration> !@bool outIsGlobal :
   select
@@ -545,7 +547,7 @@ rule <foreach_enumerated_object>
       if n == 0 then
         error count: "this value should be > 0" ;
       end if ;
-      loop n :
+      loop n
       while n > 0 do
         mElementList += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
         n -- ;
@@ -992,10 +994,6 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#nonterminal <match_entry> ?!@matchEntryListAST ioMatchEntryList ;
-
-#---------------------------------------------------------------------------*
-
 rule <match_entry> ?!@matchEntryListAST ioMatchEntryList :
   $identifier$ ? @lstring enumerationConstantName ;
   ioMatchEntryList +=
@@ -1115,10 +1113,6 @@ end rule ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-#nonterminal <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstructionBranchList ;
-
-#---------------------------------------------------------------------------*
-
 rule <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstructionBranchList :
   $when$ ;
   @bool mUseKindOfClass ;
@@ -1155,10 +1149,6 @@ rule <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstruction
     !here
   ;
 end rule ;
-
-#---------------------------------------------------------------------------*
-
-#nonterminal <cast_else_or_default> !@semanticInstructionListAST outElseOrDefault ;
 
 #---------------------------------------------------------------------------*
 
@@ -1347,9 +1337,15 @@ rule <semantic_instruction>
   @semanticExpressionAST mVariantExpression ;
   <expression> ? mVariantExpression ;
   const @location mEndOfVariantExpression := here ;
-  $:$ ;
+#---
   @semanticInstructionListAST mFirstInstructions ;
-  <semantic_instruction_list> ? mFirstInstructions ;
+  select
+    $:$ ;
+    <semantic_instruction_list> ? mFirstInstructions ;
+  or
+    mFirstInstructions := [@semanticInstructionListAST emptyList] ;
+  end select ;
+#---
   const @location mEndOfFirstInstructions := here ;
   $while$ ;
   @semanticExpressionAST mLoopExpression ;
