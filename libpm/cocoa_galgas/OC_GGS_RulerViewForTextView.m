@@ -98,7 +98,7 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
   //--- Draw line numbers
     // NSLog (@"%u is valid glyph index: %@", idx, [lm isValidGlyphIndex:idx] ? @"yes" : @"no") ;
     const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:idx effectiveRange:NULL] ;
-    NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMinY (r)) fromView:textView] ;
+    NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMaxY (r)) fromView:textView] ;
     // NSLog (@"%f for line %u (%@)", p.y, line, ((inRect.origin.y - [font ascender])) ? @"yes" : @"no") ;
     const NSRange lineRange = [sourceString lineRangeForRange:NSMakeRange (idx, 1)] ;
     if (p.y >= minYforDrawing) {
@@ -111,6 +111,7 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
       NSString * str = [NSString stringWithFormat:@"%ld", line] ;
       const NSSize strSize = [str sizeWithAttributes:intersect ? attributesForSelection : attributes] ;
       p.x = viewBounds.size.width - 2.0 - strSize.width ;
+      p.y -= strSize.height ;
       [str drawAtPoint:p withAttributes:intersect ? attributesForSelection : attributes] ;
       maxYreached = p.y > maxYforDrawing ;
     //--- Error or warning at this line ?

@@ -890,6 +890,7 @@ rule <semantic_instruction>
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $with$ ;
+  warning here : "obsolete" ;
   const @location instructionLocation := here ;
   $!?$ ;
   $identifier$ ?@lstring mTargetObjectName ;
@@ -947,6 +948,7 @@ rule <semantic_instruction>
   ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
 :
   $with$ ;
+  warning here : "obsolete" ;
   const @location instructionLocation := here ;
   @semanticExpressionAST receiverExpression ;
   <expression> ? receiverExpression ;

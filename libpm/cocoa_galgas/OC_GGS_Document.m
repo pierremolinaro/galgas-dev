@@ -2,7 +2,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2003, ..., 2011 Pierre Molinaro.                           *
+//  Copyright (C) 2003, ..., 2012 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -35,7 +35,7 @@
 
 //---------------------------------------------------------------------------*
 
-//#define DEBUG_MESSAGES
+#define DEBUG_MESSAGES
 
 //---------------------------------------------------------------------------*
 
@@ -64,18 +64,27 @@
 //---------------------------------------------------------------------------*
 
 - (NSString *) sourceStringForGlobalSearch {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   return mSourceTextWithSyntaxColoring.sourceString ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) replaceSourceStringWithString: (NSString *) inString {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   [mSourceTextWithSyntaxColoring replaceSourceStringWithString:inString] ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (OC_GGS_TextSyntaxColoring *) textSyntaxColoring {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   return mSourceTextWithSyntaxColoring ;
 }
 
@@ -90,6 +99,9 @@
 //---------------------------------------------------------------------------*
 
 - (NSString *) windowNibName {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   return @"OC_GGS_Document" ;
 }
 
@@ -263,6 +275,9 @@
 //---------------------------------------------------------------------------*
 
 - (void) willCloseDocument: (OC_GGS_Document *) inDocument {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
   for (OC_GGS_TextDisplayDescriptor * tdd in sourceDisplayArray.copy) {
     if (tdd.textSyntaxColoring == inDocument.textSyntaxColoring) {
@@ -275,6 +290,9 @@
 //---------------------------------------------------------------------------*
 
 - (void) removeWindowController:(NSWindowController *) inWindowController {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   [super removeWindowController:inWindowController] ;
 //---
   for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
@@ -289,6 +307,9 @@
 //---------------------------------------------------------------------------*
 
 - (IBAction) duplicateSelectedSourceViewAction: (id) inSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
   OC_GGS_TextDisplayDescriptor * textDisplayDescriptor = [[OC_GGS_TextDisplayDescriptor alloc]
     initWithDelegateForSyntaxColoring:selectedObject.textSyntaxColoring
@@ -301,18 +322,27 @@
 //---------------------------------------------------------------------------*
 
 - (IBAction) removeSelectedSourceViewAction: (id) inSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   [mSourceDisplayArrayController remove:inSender] ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (IBAction) changeSelectedSourceViewAction: (NSButton *) inSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   [mSourceDisplayArrayController setSelectionIndex:inSender.tag] ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (IBAction) actionGotoLine: (id) inSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   [NSApp
     beginSheet:mGotoWindow
     modalForWindow:self.windowForSheet
@@ -325,18 +355,27 @@
 //---------------------------------------------------------------------------*
 
 - (void) collapseDetailledMessageAction: (id) inSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   [mDetailedIssueSplitView setPosition:mDetailedIssueSplitView.bounds.size.height ofDividerAtIndex:0] ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) collapseIssuesAction: (id) inSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   [mIssueSplitView setPosition:0.0 ofDividerAtIndex:0] ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) collapseContextualHelpAction: (id) inSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   [mIssueSplitView setPosition:mIssueSplitView.bounds.size.width ofDividerAtIndex:1] ;
 }
 
@@ -349,6 +388,9 @@
 - (void) sheetDidEnd: (NSWindow *) inSheet
          returnCode: (int) inReturnCode
          contextInfo: (void *) inContextInfo {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   if (inReturnCode == 1) {
   //--- Get selected line
     const NSUInteger selectedLine = [mGotoLineTextField integerValue] ;
@@ -361,6 +403,9 @@
 //---------------------------------------------------------------------------*
 
 - (IBAction) actionComment: (id) sender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
   [selectedObject commentSelection] ;
 }
@@ -368,6 +413,9 @@
 //---------------------------------------------------------------------------*
 
 - (IBAction) actionUncomment: (id) sender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
   [selectedObject uncommentSelection] ;
 }
@@ -375,6 +423,9 @@
 //---------------------------------------------------------------------------*
 
 - (IBAction) actionShiftLeft: (id) sender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
   [selectedObject shiftLeftAction] ;
 }
@@ -382,6 +433,9 @@
 //---------------------------------------------------------------------------*
 
 - (IBAction) actionShiftRight: (id) sender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
   [selectedObject shiftRightAction] ;
 }
@@ -397,6 +451,9 @@
 //---------------------------------------------------------------------------*
 
 - (void) printDocument: (id) sender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
   [selectedObject.textView print:sender] ;
 }
@@ -692,6 +749,9 @@
 //---------------------------------------------------------------------------*
 
 - (NSString *) fileEncodingString {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   NSString * s = @"Lossy ASCII encoding" ;
   switch (mFileEncoding) {
   case NSASCIIStringEncoding : s = @"ASCII" ; break ;
@@ -725,6 +785,9 @@
 //---------------------------------------------------------------------------*
 
 - (void) setSourceFileEncoding: (NSStringEncoding) inFileEncoding {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   [self willChangeValueForKey:@"fileEncodingString"] ;
   mFileEncoding = inFileEncoding ;
   [self didChangeValueForKey:@"fileEncodingString"] ;
@@ -910,25 +973,36 @@
 //---------------------------------------------------------------------------*
 
 - (IBAction) stopBuild: (id) sender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   [mBuildTask abortBuild] ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (IBAction) actionBuild: (id) inUnusedSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   [mBuildTask buildDocument:self] ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (BOOL) buildTaskIsRunning {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   return mBuildTask.buildTaskIsRunning ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) triggerDocumentEditedStatusUpdate {
-  // NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   BOOL isEdited = NO ;
   NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
   for (NSUInteger i=0 ; (i<sourceDisplayArray.count) && ! isEdited ; i++) {
@@ -943,7 +1017,9 @@
 //---------------------------------------------------------------------------*
 
 - (void) triggerLiveCompilation {
-  // NSLog (@"PMLiveCompilation %d", [[NSUserDefaults standardUserDefaults] boolForKey:@"PMLiveCompilation"]) ;
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   if ([[NSUserDefaults standardUserDefaults] boolForKey:@"PMLiveCompilation"]) {
     [[NSRunLoop currentRunLoop]
       performSelector:@selector (buildDocument:)
@@ -962,6 +1038,9 @@
 //---------------------------------------------------------------------------*
 
 - (OC_GGS_TextSyntaxColoring *) findOrAddDocumentWithPath: (NSString *) inPath {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   OC_GGS_TextSyntaxColoring * result = nil ;
   NSString * currentSourceDir = mSourceTextWithSyntaxColoring.sourceURL.path.stringByDeletingLastPathComponent ;
   NSString * requestedAbsolutePath = inPath.isAbsolutePath
@@ -984,6 +1063,8 @@
       error:nil
     ] ;
     [doc.windowForSheet orderBack:nil] ;
+    // NSLog (@"mBuildTask.issueArrayController.content %@", mBuildTask.issueArrayController.content) ;
+    [doc.textSyntaxColoring setIssueArray:mBuildTask.issueArrayController.content] ;
     result = doc.textSyntaxColoring ;
   }
 //---  
@@ -993,6 +1074,9 @@
 //---------------------------------------------------------------------------*
 
 - (OC_GGS_TextDisplayDescriptor *) findOrAddNewTabForFile: (NSString *) inDocumentPath {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   OC_GGS_TextSyntaxColoring * newTextSyntaxColoring = [self findOrAddDocumentWithPath:inDocumentPath] ;
   OC_GGS_TextDisplayDescriptor * foundSourceText = nil ;
   if (nil != newTextSyntaxColoring) { // Find a text display descriptor
@@ -1018,6 +1102,9 @@
 //---------------------------------------------------------------------------*
 
 - (void) clicOnIssueTableView: (id) inSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   const NSInteger clickedRow = mIssueTableView.clickedRow ;
   NSArray * arrangedObjects = mBuildTask.issueArrayController.arrangedObjects ;
   if ((clickedRow >= 0) && (clickedRow < (NSInteger) arrangedObjects.count)) {
@@ -1040,6 +1127,9 @@
 //---------------------------------------------------------------------------*
 
 - (void) populatePopUpButton {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   if (mSourceDisplayArrayController.selectionIndex != NSNotFound) {
     NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
     OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
@@ -1068,6 +1158,9 @@
 //---------------------------------------------------------------------------*
 
 - (void) gotoEntry: (id) inSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   const NSRange range = {[inSender tag], 0} ;
   NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
   OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
@@ -1079,6 +1172,9 @@
 //---------------------------------------------------------------------------*
 
 - (void) selectEntryPopUp {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   if (mSourceDisplayArrayController.selectionIndex != NSNotFound) {
     NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
     OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
@@ -1140,6 +1236,9 @@
 //---------------------------------------------------------------------------*
 
 - (void) displayIssueDetailedMessage: (NSString *) inDetailledMessage {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   NSTextStorage * textStorage = mDetailedIssueTextView.textStorage ;
   if (nil == inDetailledMessage) {
     [textStorage beginEditing] ;
@@ -1248,6 +1347,9 @@
 //---------------------------------------------------------------------------*
 
 - (void) setContextualHelpMessage: (NSString *) inMessage {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   NSTextStorage * textStorage = mContextualHelpTextView.textStorage ;
   [textStorage beginEditing] ;
   [textStorage replaceCharactersInRange:NSMakeRange (0, [textStorage length]) withString:inMessage] ;
@@ -1263,6 +1365,9 @@
 //---------------------------------------------------------------------------*
 
 - (BOOL) isContextualHelpTextViewCollapsed {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   return [mIssueSplitView isSubviewCollapsed:mContextualHelpScrollView] ;
 }
 
@@ -1273,6 +1378,9 @@
 //---------------------------------------------------------------------------*
 
 - (void) setRawOutputString: (NSAttributedString *) inString {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   [self willChangeValueForKey:@"mRawOutputString"] ;
   mRawOutputString = [inString
     RTFDFromRange:NSMakeRange (0, inString.length)
