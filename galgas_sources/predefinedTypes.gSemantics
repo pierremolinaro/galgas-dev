@@ -86,6 +86,22 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+local routine appendStructASTForRangeType
+  ?!@semanticDeclarationListAST ioDeclarationListASTs
+:
+  @lstringlist featureList [emptyList] ;
+  @attributeInCollectionListAST attributeList [emptyList] ;
+  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"location" !here] !featureList ;
+  attributeList += ![@lstring new !"uint" !here] ![@lstring new !"length" !here] !featureList ;
+  ioDeclarationListASTs += ![@structDeclarationAST new
+    !true # Is global
+    ![@lstring new !"range" !here]
+    !attributeList
+  ] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
 routine appendPredefinedTypesASTs
   ?!@semanticDeclarationListAST ioDeclarationListASTs
 :
@@ -127,6 +143,7 @@ routine appendPredefinedTypesASTs
 
   appendPredefined2StringListTypeAST !?ioDeclarationListASTs ;
 
+  appendStructASTForRangeType !?ioDeclarationListASTs ;
 #--- Enumeration predefined type (used only for testing type generation)
 #  @lstringlist constantList [emptyList] ;
 #  constantList += ![@lstring new !"zero" !here] ;
