@@ -1,7 +1,7 @@
 %!TEX encoding = UTF-8 Unicode
 %!TEX root = ../galgas-book.tex
 
-\sectionTypePredefiniLabelIndex{uint}
+\chapitreTypePredefiniLabelIndex{uint}
 
 An \nomType{uint} object value is a 32-bit unsigned integer value. You can initialize an \nomType{uint} object from an unsigned integer constant:\\
 
@@ -9,6 +9,7 @@ An \nomType{uint} object value is a 32-bit unsigned integer value. You can initi
 
 Note that a 32-bit unsigned integer constant is characterized by no suffix.
 
+\section{Constructors}
 
 \constructeurSansArgument{errorCount}
 {@uint}
@@ -54,7 +55,7 @@ Note that a 32-bit unsigned integer constant is characterized by no suffix.
 {Returns an \nomType{uint} object that contains the number of warnings.}
 {The returned value is the cumulative count of warnings from the beginning of execution.}
 
-
+\section{Readers}
 
 \readerSansArgument{double}
 {@uint}
@@ -189,7 +190,7 @@ This reader is the only way to convert an \refTypePredefini{uint} object into an
 
 
 
-\subsection{Incrementation and decrementation}
+\section{Incrementation and decrementation}
 
 The \refTypePredefini{uint} supports incrementation and decrementation instructions.
 
@@ -206,7 +207,7 @@ Note that incrementation and decrementation are not available within an expressi
 
 
 
-\subsection{Arithmetic Operators}
+\section{Arithmetic Operators}
 
 The \nomType{uint} type supports the five arithmetic diadic operators:\newline
 
@@ -243,7 +244,7 @@ This operator returns the receiver's value (an  \nomType{uint} object).
 
 
 
-\subsection{Shift Operators}
+\section{Shift Operators}
 
 
 The \nomType{uint} type supports right and left shift operators:\newline
@@ -265,7 +266,7 @@ The actual amount of the shift is the value of the right-hand operand masked by 
 
 
 
-\subsection{Logical Operators}
+\section{Logical Operators}
 
 The \nomType{uint} type supports the three bit-wise logical operators:\newline
 
@@ -298,7 +299,7 @@ This operator returns an \nomType{uint} object.
 
 
 
-\subsection{Comparison Operators}
+\section{Comparison Operators}
 
 The \nomType{uint} type supports the six comparison operators:\newline
 

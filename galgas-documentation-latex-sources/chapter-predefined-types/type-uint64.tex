@@ -1,7 +1,7 @@
 %!TEX encoding = UTF-8 Unicode
 %!TEX root = ../galgas-book.tex
 
-\sectionTypePredefiniLabelIndex{uint64}
+\chapitreTypePredefiniLabelIndex{uint64}
 
 An \nomType{uint64} object value is a 64-bit unsigned integer value. You can initialize an \nomType{uint64} object from a 64-bit unsigned integer constant:\\
 
@@ -9,7 +9,7 @@ An \nomType{uint64} object value is a 64-bit unsigned integer value. You can ini
 
 Note the 'L' suffix is required for a 64-bit unsigned integer constant.
 
-
+\section{Constructeurs}
 
 \constructeurSansArgument{max}
 {@uint64}
@@ -78,7 +78,7 @@ Note that the first '1' character of the \emph{inBitString} argument value corre
 {log v ; \# Displays <@uint64:5> ;}
 
 
-
+\section{Readers}
 
 \readerSansArgument{double}
 {@uint64}
@@ -180,7 +180,7 @@ This reader is the only way to convert an \refTypePredefini{uint} object into an
 
 
 
-\subsection{Incrementation and decrementation}
+\section{Incrementation and decrementation}
 
 The \refTypePredefini{uint64} supports incrementation and decrementation instructions.
 
@@ -197,7 +197,7 @@ Note that incrementation and decrementation are not available within an expressi
 
 
 
-\subsection{Arithmetic Operators}
+\section{Arithmetic Operators}
 
 The \nomType{uint64} type supports the five arithmetic diadic operators:\newline
 
@@ -232,7 +232,7 @@ This operator returns the receiver's value (an  \nomType{uint64} object).
 
 
 
-\subsection{Shift Operators}
+\section{Shift Operators}
 
 
 The \nomType{uint} type supports right and left shift operators:\newline
@@ -254,7 +254,7 @@ The actual amount of the shift is the value of the right-hand operand masked by 
 
 
 
-\subsection{Logical Operators}
+\section{Logical Operators}
 
 The \nomType{uint64} type supports the three bit-wise logical diadic operators:
 
@@ -284,7 +284,7 @@ This operator returns an \nomType{uint64} object.
 
 
 
-\subsection{Comparison Operators}
+\section{Comparison Operators}
 
 The \nomType{uint64} type supports the six comparison operators:
 
