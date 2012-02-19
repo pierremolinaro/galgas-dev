@@ -1,15 +1,17 @@
 %!TEX encoding = UTF-8 Unicode
 %!TEX root = ../galgas-book.tex
 
-\sectionTypePredefiniLabelIndex{location}
+\chapitreTypePredefiniLabelIndex{location}
 
 An \nomType{location} object value is a location in a source file. Objects of this type are useful for pointing out an error or a warning location.
 
-\subsection{The \motCle{here} Keyword}
+\section{The \motCle{here} Keyword}
 
 The \motCle{here} keyword indicates the current parsing location is the current source file. Assigning an \nomType{location} object from the \motCle{here} keyword is a way for initializing an \nomType{location} object:\newline
 
 \texttt{@location currentLocation := here ;}
+
+\section{Constructor}
 
 \constructeurSansArgument{nowhere}
 {@location}
@@ -18,6 +20,7 @@ The \motCle{here} keyword indicates the current parsing location is the current 
 {Returns an \nomType{location} that does not points out any location.}
 {The returned object responds \motCle{true} to the \refReaderPage{location}{isNowhere}.}
 
+\section{Readers}
 
 \readerSansArgument{column}
 {@location}

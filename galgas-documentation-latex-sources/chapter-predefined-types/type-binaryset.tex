@@ -1,12 +1,12 @@
 %!TEX encoding = UTF-8 Unicode
 %!TEX root = ../galgas-book.tex
 
-\sectionTypePredefiniLabelIndex{binaryset}
+\chapitreTypePredefiniLabelIndex{binaryset}
 
 The \nomType{binaryset} type encodes sets, binary relations, boolean mathematical expressions. It is implemented with Binary Decision Diagrams (BDD).
 
 
-
+\section{Constructors}
 
 \constructeurUnArgument{binarySetWithBit}
 {@binaryset}
@@ -302,7 +302,7 @@ The \nomType{binaryset} type encodes sets, binary relations, boolean mathematica
 {}
 
 
-
+\section{Readers}
 
 
 
@@ -803,7 +803,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 %-------------------------------
 
-\subsection{Logical Operators}
+\section{Logical Operators}
 
 The \nomType{binaryset} type supports the three logical operators:\newline
 
@@ -836,7 +836,7 @@ This operator returns an \nomType{binaryset} object.
 
 
 
-\subsection{Comparison Operators}
+\section{Comparison Operators}
 
 The \nomType{binaryset} type supports the two comparison operators:\newline
 
@@ -858,7 +858,7 @@ Do not confuse with \refReaderPage{binaryset}{equalTo} and \refReaderPage{binary
 
 
 
-\subsection{Shift Operators}
+\section{Shift Operators}
 
 The \nomType{binaryset} type supports the two shift operators:\newline
 
