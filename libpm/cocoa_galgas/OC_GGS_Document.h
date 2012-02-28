@@ -38,7 +38,11 @@
 
 //---------------------------------------------------------------------------*
 
-@interface OC_GGS_Document : NSDocument <NSTextViewDelegate, NSSplitViewDelegate, NSWindowDelegate> {
+@interface OC_GGS_Document : NSDocument
+#if MAC_OS_X_VERSION_MIN_REQUIRED > MAC_OS_X_VERSION_10_5
+  <NSTextViewDelegate, NSSplitViewDelegate, NSWindowDelegate>
+#endif
+{
 
   @private IBOutlet NSSplitView * mIssueSplitView ;
 

@@ -63,7 +63,11 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     mTextView.allowsUndo = YES ;
     mTextView.automaticQuoteSubstitutionEnabled = NO ;
     mTextView.smartInsertDeleteEnabled = NO ;
-    mTextView.automaticTextReplacementEnabled = NO ;
+    if ([mTextView respondsToSelector:@selector(setAutomaticTextReplacementEnabled:)]) {
+      // NSLog (@"AVANT %d", mTextView.isAutomaticTextReplacementEnabled) ;
+      [mTextView setValue:[NSNumber numberWithBool:NO] forKey:@"automaticTextReplacementEnabled"] ;
+      // NSLog (@"APRES %d", mTextView.isAutomaticTextReplacementEnabled) ;
+    }
   //---
     if ([mTextView respondsToSelector:@selector (setUsesFindBar:)]) {
       [mTextView setValue:[NSNumber numberWithBool:YES] forKey:@"usesFindBar"] ;
