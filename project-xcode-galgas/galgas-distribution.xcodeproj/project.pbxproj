@@ -2611,7 +2611,6 @@
 				OTHER_CFLAGS = "";
 				OTHER_REZFLAGS = "";
 				PRODUCT_NAME = "galgas-debug";
-				SDKROOT = macosx10.6;
 			};
 			name = Default;
 		};
@@ -2625,7 +2624,7 @@
 				GCC_OPTIMIZATION_LEVEL = 2;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../libpm/cocoa_galgas/PP_CocoaGalgasPrefix.pch;
-				GCC_SHORT_ENUMS = YES;
+				GCC_SHORT_ENUMS = NO;
 				GCC_WARN_SHADOW = YES;
 				GCC_WARN_UNUSED_PARAMETER = NO;
 				HEADER_SEARCH_PATHS = (
@@ -2685,7 +2684,7 @@
 				INSTALL_PATH = /usr/local/bin;
 				LD_GENERATE_MAP_FILE = NO;
 				LD_OPENMP_FLAGS = "";
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.5;
 			};
 			name = Default;
 		};
