@@ -78,8 +78,8 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
     nil
   ] ;
 //--- Images
-  NSImage * errorImage = [NSImage imageNamed:NSImageNameStatusUnavailable] ;
-  NSImage * warningImage = [NSImage imageNamed:NSImageNameStatusPartiallyAvailable] ;
+  NSImage * errorImage = [NSImage imageNamed:@"I_Error"] ;
+  NSImage * warningImage = [NSImage imageNamed:@"I_Warning"] ;
 //--- Note: ruler view and text view are both flipped
   OC_GGS_TextView * textView = [self.scrollView documentView] ;
   NSArray * issueArray = textView.issueArray ; // Array of PMErrorOrWarningDescriptor
@@ -130,13 +130,13 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
         }
       }
       if (hasError || hasWarning) {
-        const NSRect rImage = {{0.0, p.y}, {16.0, 16.0}} ;
-        NSImageRep * imageRep = [hasError ? errorImage : warningImage
-          bestRepresentationForRect:rImage
-          context:[NSGraphicsContext currentContext]
-          hints:nil
+        const NSRect rImage = {{0.0, p.y}, {16.0, 12.0}} ;
+        [hasError ? errorImage : warningImage
+          drawAtPoint:rImage.origin
+          fromRect:NSZeroRect
+          operation:NSCompositeSourceOver
+          fraction:1.0
         ] ;
-        [imageRep drawInRect:rImage] ;
         [issues addObject:
           [[PMIssueInRuler alloc]
             initWithRect:rImage

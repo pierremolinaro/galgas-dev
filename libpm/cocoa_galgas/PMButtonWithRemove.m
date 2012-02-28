@@ -75,12 +75,12 @@
   if (mMouseWithin) {
     const NSRect r = [self trackingRect] ;
     NSImage * image = [NSImage imageNamed:mMouseDown ? NSImageNameStopProgressFreestandingTemplate : NSImageNameStopProgressTemplate] ;
-    NSImageRep * imageRep = [image
-      bestRepresentationForRect:r
-      context:[NSGraphicsContext currentContext]
-      hints:nil
+    [image
+      drawAtPoint:r.origin
+      fromRect:NSZeroRect
+      operation:NSCompositeSourceOver
+      fraction:1.0
     ] ;
-    [imageRep drawInRect:r] ;
   }
   if (mIsDirty) {
     [[NSColor blackColor] setFill] ;

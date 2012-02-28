@@ -1159,12 +1159,14 @@
 
 - (void) gotoEntry: (id) inSender {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+    NSLog (@"%s, TAG %ld", __PRETTY_FUNCTION__, [inSender tag]) ;
   #endif
   const NSRange range = {[inSender tag], 0} ;
   NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
   OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
+  NSLog (@"textDisplay %@", textDisplay) ;
   NSTextView * textView = textDisplay.textView ;
+  NSLog (@"textView %@", textView) ;
   [textView setSelectedRange:range] ;
   [textView scrollRangeToVisible:range] ;
 }
