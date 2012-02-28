@@ -659,6 +659,113 @@ end rule ;
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    ( N E W )    F O R E A C H    I N S T R U C T I O N                    *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <new_foreach_enumerated_object>
+  ?!@foreachNewInstructionEnumeratedObjectListAST ioForeachInstructionEnumeratedObjectList
+:
+  @lstring enumerationOrder ;
+  select
+    enumerationOrder := [@lstring new !"" !here] ; # Default order
+  or
+    $variant$ ? enumerationOrder ;
+  end select ;
+  $identifier$ ? @lstring enumerationName ;
+  $in$ ;
+  @semanticExpressionAST mEnumeratedExpression ;
+  <expression> ? mEnumeratedExpression ;
+  const @location endOfEnumerationExpression := here ;
+  ioForeachInstructionEnumeratedObjectList +=
+    !enumerationOrder
+    !enumerationName
+    !mEnumeratedExpression
+    !endOfEnumerationExpression
+  ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+
+rule <semantic_instruction>
+  !@semanticInstructionAST outInstruction
+  ?!@localVariableDeclarationListAST unused ioLocalVariableDeclarationList
+:
+  $for$ ;
+  const @location instructionLocation := here ;
+  @foreachNewInstructionEnumeratedObjectListAST mEnumeratedObjectList [emptyList] ;
+  repeat
+    <new_foreach_enumerated_object> !?mEnumeratedObjectList ;
+  while
+    $,$ ;
+  end repeat ;
+  @semanticExpressionAST mWhileExpression ;
+  select
+    mWhileExpression := [@trueExpressionAST new !here] ;
+  or
+    $while$ ;
+    <expression> ? mWhileExpression ;
+  end select ;
+  const @location endof_while_expression := here ;
+  @semanticInstructionListAST mBeforeInstructionList ;
+  select
+    mBeforeInstructionList := [@semanticInstructionListAST emptyList] ;
+  or
+    $before$ ;
+    <semantic_instruction_list> ? mBeforeInstructionList ;
+  end select ;
+  const @location endof_before_branch := here ;
+  $do$ ;
+  @lstring indexVariableName ;
+  select
+    indexVariableName := [@lstring new !"" !here] ;
+  or
+    $index$ ;
+    $identifier$ ? indexVariableName ;
+  end select ;
+  @semanticInstructionListAST mDoInstructionList ;
+  <semantic_instruction_list> ? mDoInstructionList ;
+  const @location endof_do_branch := here ;
+  @semanticInstructionListAST mBetweenInstructionList ;
+  select
+    mBetweenInstructionList := [@semanticInstructionListAST emptyList] ;
+  or
+    $between$ ;
+    <semantic_instruction_list> ? mBetweenInstructionList ;
+  end select ;
+  const @location endof_between_branch := here ;
+  @semanticInstructionListAST mAfterInstructionList ;
+  select
+    mAfterInstructionList := [@semanticInstructionListAST emptyList] ;
+  or
+    $after$ ;
+    <semantic_instruction_list> ? mAfterInstructionList ;
+  end select ;
+  const @location endof_after_branch := here ;
+  $end$ ;
+  const @location endof_foreach_instruction := here ;
+  $for$ ;
+  $;$ ;
+  outInstruction := [@foreachNewInstructionAST new
+    !instructionLocation
+    !mEnumeratedObjectList
+    !indexVariableName
+    !mWhileExpression
+    !endof_while_expression
+    !mBeforeInstructionList
+    !endof_before_branch
+    !mBetweenInstructionList
+    !endof_between_branch
+    !mDoInstructionList
+    !endof_do_branch
+    !mAfterInstructionList
+    !endof_after_branch
+    !endof_foreach_instruction
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 #    I F    I N S T R U C T I O N                                           *
 #                                                                           *
 #---------------------------------------------------------------------------*

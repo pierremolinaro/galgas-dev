@@ -1346,6 +1346,15 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @foreachNewInstructionAST analyzeSemanticInstruction
+  ??@analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @foreachInstructionAST analyzeSemanticInstruction
   ??@analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration

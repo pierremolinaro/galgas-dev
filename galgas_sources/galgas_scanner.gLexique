@@ -126,6 +126,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "false",
   "feature",
   "filewrapper",
+  "for",
   "foreach",
   "function",
   "grammar",

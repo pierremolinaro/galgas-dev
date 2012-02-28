@@ -2,7 +2,7 @@
 #                                                                           *
 #  metamodel that defines expression                                        *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2012 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -529,7 +529,7 @@ class @selfConcatInstructionAST extends @semanticInstructionAST {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  F O R E A C H    I N S T R U C T I O N                                   *
+#  ( O L D )    F O R E A C H    I N S T R U C T I O N                      *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -554,6 +554,37 @@ list @foreachInstructionEnumeratedObjectListAST {
 
 class @foreachInstructionAST extends @semanticInstructionAST {
   @foreachInstructionEnumeratedObjectListAST mEnumeratedObjectList ;
+  @lstring mIndexVariableName ;
+  @semanticExpressionAST mWhileExpression ;
+  @location mEndOf_while_expression ;
+  @semanticInstructionListAST mBeforeInstructionList ;
+  @location mEndOf_before_branch ;
+  @semanticInstructionListAST mBetweenInstructionList ;
+  @location mEndOf_between_branch ;
+  @semanticInstructionListAST mDoInstructionList ;
+  @location mEndOf_do_branch ;
+  @semanticInstructionListAST mAfterInstructionList ;
+  @location mEndOf_after_branch ;
+  @location mEndOf_foreach_instruction ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#  F O R E A C H    I N S T R U C T I O N                                   *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+list @foreachNewInstructionEnumeratedObjectListAST {
+  @lstring mEnumerationOrder feature nogetter ;
+  @lstring mEnumerationVariable feature nogetter ;
+  @semanticExpressionAST mEnumeratedExpression feature nogetter ;
+  @location mEndOfEnumerationExpression feature nogetter ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @foreachNewInstructionAST extends @semanticInstructionAST {
+  @foreachNewInstructionEnumeratedObjectListAST mEnumeratedObjectList ;
   @lstring mIndexVariableName ;
   @semanticExpressionAST mWhileExpression ;
   @location mEndOf_while_expression ;
