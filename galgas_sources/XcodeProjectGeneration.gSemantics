@@ -202,8 +202,6 @@ local routine build_LIBPM_COCOA_GALGAS_group
   append_m_h_files !?fileList !"OC_GGS_BuildTask" ;
   append_m_h_files !?fileList !"OC_GGS_BuildTaskProxy" ;
   fileList += !"I_Stop.tiff" ;
-  fileList += !"I_Error.png" ;
-  fileList += !"I_Warning.png" ;
   fileList += !"F_CocoaWrapperForGalgas.h" ;
   fileList += !"PP_CocoaGalgasPrefix.pch" ;
 #--- Enter Resource files
@@ -748,8 +746,6 @@ local routine build_RESOURCES_for_resources_build_phase
   fileList += !inProjectName ;
   fileList += !inProjectName . "_debug" ;
   fileList += !"I_Stop.tiff" ;
-  fileList += !"I_Error.png" ;
-  fileList += !"I_Warning.png" ;
   fileList += !"MainMenu.xib" ;
   fileList += !"OC_GGS_Document.xib" ;
   fileList += !"InfoPlist.strings" ;
