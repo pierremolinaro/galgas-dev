@@ -78,8 +78,8 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
     nil
   ] ;
 //--- Images
-  NSImage * errorImage = [NSImage imageNamed:@"I_Error"] ;
-  NSImage * warningImage = [NSImage imageNamed:@"I_Warning"] ;
+  NSImage * errorImage = [NSImage imageNamed:NSImageNameStatusUnavailable] ;
+  NSImage * warningImage = [NSImage imageNamed:NSImageNameStatusPartiallyAvailable] ;
 //--- Note: ruler view and text view are both flipped
   OC_GGS_TextView * textView = [self.scrollView documentView] ;
   NSArray * issueArray = textView.issueArray ; // Array of PMErrorOrWarningDescriptor

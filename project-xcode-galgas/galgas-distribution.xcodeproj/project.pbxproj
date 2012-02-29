@@ -2684,7 +2684,7 @@
 				INSTALL_PATH = /usr/local/bin;
 				LD_GENERATE_MAP_FILE = NO;
 				LD_OPENMP_FLAGS = "";
-				SDKROOT = macosx10.5;
+				SDKROOT = macosx10.6;
 			};
 			name = Default;
 		};
