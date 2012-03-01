@@ -522,50 +522,46 @@ void ggs_printError (const C_SourceTextInString * inSourceTextPtr,
                      const C_String & inMessage
                      COMMA_LOCATION_ARGS) {
 //--- XML message
-  C_String XMLstring ;
-  XMLstring << "<error\n" ;
-  if (inSourceTextPtr != NULL) {
-    macroValidSharedObject (inSourceTextPtr, const C_SourceTextInString) ;
-    XMLstring << "  file=\"" << inSourceTextPtr->sourceFilePath () << "\"\n"
-                 "  line=\"" << cStringWithUnsigned (inErrorLocation.lineNumber ()) << "\"\n"
-                 "  column=\"" << cStringWithUnsigned (inErrorLocation.columnNumber ()) << "\"\n"
-  //     << "  endColumn=" << cStringWithUnsigned (inSourceEndColumn) << "\n"
-    ;
-  }
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    if (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue) {
-      XMLstring << "  sourceFile=\"" << C_String (IN_SOURCE_FILE).lastPathComponent () << "\"\n"
-                   "  sourceLine=\"" << cStringWithSigned (IN_SOURCE_LINE) << "\"\n" ;
-    }
-  #endif
-  XMLstring << "  message=\"" << inMessage.XMLEscapedString () << "\"\n"
-               "/>\n" ;
   if (executionModeIsNormal ()) {
+    C_String XMLstring ;
+    XMLstring << "<error\n" ;
+    if (inSourceTextPtr != NULL) {
+      macroValidSharedObject (inSourceTextPtr, const C_SourceTextInString) ;
+      XMLstring << "  file=\"" << inSourceTextPtr->sourceFilePath () << "\"\n"
+                   "  line=\"" << cStringWithUnsigned (inErrorLocation.lineNumber ()) << "\"\n"
+                   "  column=\"" << cStringWithUnsigned (inErrorLocation.columnNumber ()) << "\"\n"
+    //     << "  endColumn=" << cStringWithUnsigned (inSourceEndColumn) << "\n"
+      ;
+    }
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      if (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue) {
+        XMLstring << "  sourceFile=\"" << C_String (IN_SOURCE_FILE).lastPathComponent () << "\"\n"
+                     "  sourceLine=\"" << cStringWithSigned (IN_SOURCE_LINE) << "\"\n" ;
+      }
+    #endif
+    XMLstring << "  message=\"" << inMessage.XMLEscapedString () << "\"\n"
+                 "/>\n" ;
     sendToTCPSocket (XMLstring) ;
   }
 //---
-  if (gOption_generic_5F_cli_5F_options_xml.mValue) {
-    co << XMLstring ;
-  }else{
-    C_String errorMessage ;
-    constructErrorOrWarningLocationMessage (errorMessage, inErrorLocation, inSourceTextPtr) ;
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      if (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue) {
-        errorMessage << "[Raised from file '" << C_String (IN_SOURCE_FILE).lastPathComponent ()
-                     << "' at line " << cStringWithSigned (IN_SOURCE_LINE) << "]\n" ;
-      }
-    #endif
-    errorMessage << inMessage ;
-  //--- Append source string
-    if (inSourceTextPtr != NULL) {
-      macroValidSharedObject (inSourceTextPtr, const C_SourceTextInString) ;
-      inSourceTextPtr->appendSourceContents (errorMessage) ;
+  C_String errorMessage ;
+  constructErrorOrWarningLocationMessage (errorMessage, inErrorLocation, inSourceTextPtr) ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    if (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue) {
+      errorMessage << "[Raised from file '" << C_String (IN_SOURCE_FILE).lastPathComponent ()
+                   << "' at line " << cStringWithSigned (IN_SOURCE_LINE) << "]\n" ;
     }
-    co.setForeColor (kRedForeColor) ;
-    co.setTextAttribute (kBoldTextAttribute) ;
-    co << errorMessage ;
-    co.setTextAttribute (kAllAttributesOff) ;
+  #endif
+  errorMessage << inMessage ;
+//--- Append source string
+  if (inSourceTextPtr != NULL) {
+    macroValidSharedObject (inSourceTextPtr, const C_SourceTextInString) ;
+    inSourceTextPtr->appendSourceContents (errorMessage) ;
   }
+  co.setForeColor (kRedForeColor) ;
+  co.setTextAttribute (kBoldTextAttribute) ;
+  co << errorMessage ;
+  co.setTextAttribute (kAllAttributesOff) ;
   co.flush () ;
 }
 
@@ -580,50 +576,46 @@ void ggs_printWarning (const C_SourceTextInString * inSourceTextPtr,
                        const C_String & inMessage
                        COMMA_LOCATION_ARGS) {
 //--- XML message
-  C_String XMLstring ;
-  XMLstring << "<warning\n" ;
-  if (inSourceTextPtr != NULL) {
-    macroValidSharedObject (inSourceTextPtr, const C_SourceTextInString) ;
-    XMLstring << "  file=\"" << inSourceTextPtr->sourceFilePath () << "\"\n"
-                 "  line=\"" << cStringWithUnsigned (inWarningLocation.lineNumber ()) << "\"\n"
-                 "  column=\"" << cStringWithUnsigned (inWarningLocation.columnNumber ()) << "\"\n"
-  //     << "  endColumn=" << cStringWithUnsigned (inSourceEndColumn) << "\n"
-    ;
-  }
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    if (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue) {
-      XMLstring << "  sourceFile=\"" << C_String (IN_SOURCE_FILE).lastPathComponent () << "\"\n"
-                   "  sourceLine=\"" << cStringWithSigned (IN_SOURCE_LINE) << "\"\n" ;
-    }
-  #endif
-  XMLstring << "  message=\"" << inMessage.XMLEscapedString () << "\"\n"
-               "/>\n" ;
   if (executionModeIsNormal ()) {
+    C_String XMLstring ;
+    XMLstring << "<warning\n" ;
+    if (inSourceTextPtr != NULL) {
+      macroValidSharedObject (inSourceTextPtr, const C_SourceTextInString) ;
+      XMLstring << "  file=\"" << inSourceTextPtr->sourceFilePath () << "\"\n"
+                   "  line=\"" << cStringWithUnsigned (inWarningLocation.lineNumber ()) << "\"\n"
+                   "  column=\"" << cStringWithUnsigned (inWarningLocation.columnNumber ()) << "\"\n"
+    //     << "  endColumn=" << cStringWithUnsigned (inSourceEndColumn) << "\n"
+      ;
+    }
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      if (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue) {
+        XMLstring << "  sourceFile=\"" << C_String (IN_SOURCE_FILE).lastPathComponent () << "\"\n"
+                     "  sourceLine=\"" << cStringWithSigned (IN_SOURCE_LINE) << "\"\n" ;
+      }
+    #endif
+    XMLstring << "  message=\"" << inMessage.XMLEscapedString () << "\"\n"
+                 "/>\n" ;
     sendToTCPSocket (XMLstring) ;
   }
 //---
-  if (gOption_generic_5F_cli_5F_options_xml.mValue) {
-    co << XMLstring ;
-  }else{
-    C_String warningMessage ;
-    constructErrorOrWarningLocationMessage (warningMessage, inWarningLocation, inSourceTextPtr) ;
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      if (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue) {
-        warningMessage << "[Raised from file '" << C_String (IN_SOURCE_FILE).lastPathComponent ()
-                       << "' at line " << cStringWithSigned (IN_SOURCE_LINE) << "]\n" ;
-      }
-    #endif
-    warningMessage << inMessage ;
-  //--- Append source string
-    if (inSourceTextPtr != NULL) {
-      macroValidSharedObject (inSourceTextPtr, const C_SourceTextInString) ;
-      inSourceTextPtr->appendSourceContents (warningMessage) ;
+  C_String warningMessage ;
+  constructErrorOrWarningLocationMessage (warningMessage, inWarningLocation, inSourceTextPtr) ;
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    if (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue) {
+      warningMessage << "[Raised from file '" << C_String (IN_SOURCE_FILE).lastPathComponent ()
+                     << "' at line " << cStringWithSigned (IN_SOURCE_LINE) << "]\n" ;
     }
-    co.setForeColor (kYellowForeColor) ;
-    co.setTextAttribute (kBoldTextAttribute) ;
-    co << warningMessage ;
-    co.setTextAttribute (kAllAttributesOff) ;
+  #endif
+  warningMessage << inMessage ;
+//--- Append source string
+  if (inSourceTextPtr != NULL) {
+    macroValidSharedObject (inSourceTextPtr, const C_SourceTextInString) ;
+    inSourceTextPtr->appendSourceContents (warningMessage) ;
   }
+  co.setForeColor (kYellowForeColor) ;
+  co.setTextAttribute (kBoldTextAttribute) ;
+  co << warningMessage ;
+  co.setTextAttribute (kAllAttributesOff) ;
   co.flush () ;
 }
 
@@ -636,28 +628,24 @@ void ggs_printWarning (const C_SourceTextInString * inSourceTextPtr,
 void ggs_printFileOperationSuccess (const C_String & inMessage
                                     COMMA_LOCATION_ARGS) {
 //--- XML message
-  C_String XMLstring ;
-  XMLstring << "<fileOperation\n" ;
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    if (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue) {
-      XMLstring << "  sourceFile=\"" << C_String (IN_SOURCE_FILE).lastPathComponent () << "\"\n"
-                   "  sourceLine=" << cStringWithSigned (IN_SOURCE_LINE) << "\n" ;
-    }
-  #endif
-  XMLstring << "  message=\"" << inMessage.XMLEscapedString () << "\"\n"
-               "/>\n" ;
   if (executionModeIsNormal ()) {
+    C_String XMLstring ;
+    XMLstring << "<fileOperation\n" ;
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      if (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue) {
+        XMLstring << "  sourceFile=\"" << C_String (IN_SOURCE_FILE).lastPathComponent () << "\"\n"
+                     "  sourceLine=" << cStringWithSigned (IN_SOURCE_LINE) << "\n" ;
+      }
+    #endif
+    XMLstring << "  message=\"" << inMessage.XMLEscapedString () << "\"\n"
+                 "/>\n" ;
     sendToTCPSocket (XMLstring) ;
   }
 //---
-  if (gOption_generic_5F_cli_5F_options_xml.mValue) {
-    co << XMLstring ;
-  }else{
-    co.setForeColor (kBlueForeColor) ;
-    co.setTextAttribute (kBoldTextAttribute) ;
-    co << inMessage ;
-    co.setTextAttribute (kAllAttributesOff) ;
-  }
+  co.setForeColor (kBlueForeColor) ;
+  co.setTextAttribute (kBoldTextAttribute) ;
+  co << inMessage ;
+  co.setTextAttribute (kAllAttributesOff) ;
   co.flush () ;
 }
 
@@ -669,44 +657,15 @@ void ggs_printFileOperationSuccess (const C_String & inMessage
 
 void ggs_printMessage (const C_String & inMessage
                        COMMA_LOCATION_ARGS) {
-//--- XML message
-  C_String XMLstring ;
-  XMLstring << "<message\n" ;
+  C_String message = inMessage ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     if (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue) {
-      XMLstring << "  sourceFile=\"" << C_String (IN_SOURCE_FILE).lastPathComponent () << "\"\n"
-                   "  sourceLine=" << cStringWithSigned (IN_SOURCE_LINE) << "\n" ;
+      message << "[Raised from file '" << C_String (IN_SOURCE_FILE).lastPathComponent ()
+              << "' at line " << cStringWithSigned (IN_SOURCE_LINE) << "]\n" ;
     }
   #endif
-  XMLstring << "  message=\"" << inMessage.XMLEscapedString () << "\"\n"
-               "/>\n" ;
-//  if (executionModeIsNormal ()) {
-//    sendToTCPSocket (XMLstring) ;
-//  }
-//---
-  if (gOption_generic_5F_cli_5F_options_xml.mValue) {
-    co << XMLstring ;
-  }else{
-    co << inMessage ;
-  }
+  co << message ;
   co.flush () ;
-}
-
-//---------------------------------------------------------------------------*
-
-void writeXMLHeader (void) {
-  if (gOption_generic_5F_cli_5F_options_xml.mValue) {
-    co << "<?xml version=\"1.0\"?>\n"
-          "<galgas>\n" ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-void writeXMLEpilogue (void) {
-  if (gOption_generic_5F_cli_5F_options_xml.mValue) {
-    co << "</galgas>\n" ;
-  }
 }
 
 //---------------------------------------------------------------------------*

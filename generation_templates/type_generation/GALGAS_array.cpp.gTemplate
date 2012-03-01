@@ -46,8 +46,8 @@ foreach DIMENSION_LIST
  before ?^
  do !^%const PMUInt32 inSize%!mValue%,\n%
  end foreach
-% %?^%C_Compiler * inCompiler
-  %?^%COMMA_LOCATION_ARGS) const ;
+% %!^%C_Compiler * inCompiler
+  %!^%COMMA_LOCATION_ARGS) const ;
 
 //--- 
   public : VIRTUAL_IN_DEBUG void setSize (%?^

@@ -2,14 +2,6 @@
 //                                                                           *
 //  GALGAS Command Line Interface Options                                    *
 //                                                                           *
-// -l, --lexical-analysis-only: Perform only lexical analysis on input files *
-// -p, --parse-only: Parse only input files                                  *
-// -v, --verbose: Verbose Output                                             *
-// -r, --log-file-read: Log every file read                                  *
-// -n, --no-file-generation: Do not generate any file                        *
-// -W, --Werror: Treat warnings as errors                                    *
-// --note-file-access: Print a message for every file access                 *
-//                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
 //  Copyright (C) 2006, ..., 2011 Pierre Molinaro.                           *

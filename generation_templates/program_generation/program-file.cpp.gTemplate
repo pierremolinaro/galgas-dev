@@ -90,7 +90,6 @@ int mainForLIBPM  (const int argc, const char * argv []) {
         }
       #endif
     #endif
-    writeXMLHeader () ;
     try{
       routine_before (commonLexique COMMA_HERE) ;
       verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
@@ -175,7 +174,6 @@ int mainForLIBPM  (const int argc, const char * argv []) {
       throw ;
     }
     macroDetachSharedObject (commonLexique) ;
-    writeXMLEpilogue () ;
   }
   return returnCode ;
 }
