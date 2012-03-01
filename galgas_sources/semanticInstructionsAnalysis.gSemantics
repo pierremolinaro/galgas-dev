@@ -1351,6 +1351,137 @@ override method @foreachNewInstructionAST analyzeSemanticInstruction
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
 :
+#--- Begin override for foreach defined constants
+  [!?ioVariableMap openOverrideForSelectBlock] ;
+  [!?ioVariableMap openBranch] ;
+#--- 'before' branch
+  [!?ioVariableMap openOverrideForRepeatBlock] ;
+  @semanticInstructionListForGeneration before_instructionList ;
+  analyzeSemanticInstructionList
+    !inAnalysisContext
+    ![@localConstantList emptyList]
+    ![@localInitializedVariableList emptyList]
+    !mBeforeInstructionList
+    !mEndOf_before_branch
+    !?ioVariableMap
+    ?before_instructionList
+  ;
+  [!?ioVariableMap closeOverride !mEndOf_before_branch] ;
+#--- 'between' branch
+  [!?ioVariableMap openOverrideForRepeatBlock] ;
+  @semanticInstructionListForGeneration between_instructionList ;
+  analyzeSemanticInstructionList
+    !inAnalysisContext
+    ![@localConstantList emptyList]
+    ![@localInitializedVariableList emptyList]
+    !mBetweenInstructionList
+    !mEndOf_between_branch
+    !?ioVariableMap
+    ?between_instructionList
+  ;
+  [!?ioVariableMap closeOverride !mEndOf_between_branch] ;
+#--- 'after' branch
+  [!?ioVariableMap openOverrideForRepeatBlock] ;
+  @semanticInstructionListForGeneration after_instructionList ;
+  analyzeSemanticInstructionList
+    !inAnalysisContext
+    ![@localConstantList emptyList]
+    ![@localInitializedVariableList emptyList]
+    !mAfterInstructionList
+    !mEndOf_after_branch
+    !?ioVariableMap
+    ?after_instructionList
+  ;
+  [!?ioVariableMap closeOverride !mEndOf_after_branch] ;
+#--- Analyze enumerated objects
+  @foreachInstructionEnumeratedObjectListForGeneration enumerationList [emptyList] ;
+  foreach mEnumeratedObjectList do
+  #--- Enumeration expression
+    @semanticExpressionForGeneration enumerationExpression ;
+    [mEnumeratedExpression analyzeSemanticExpression
+      !inAnalysisContext
+      !?ioVariableMap
+      ?enumerationExpression
+    ] ;
+  #--- Check object can be enumerated
+    @string enumerationOrder := [mEnumerationOrder string] ;
+    const @string enumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
+    const @enumerationDescriptorList enumerationDescriptorList := [[enumerationExpression mType] mEnumerationDescriptor] ;
+    if [enumerationDescriptorList length] == 0 then
+      error mEndOfEnumerationExpression : "an '@" . [[enumerationExpression mType] key] . "' object cannot be enumerated" ;
+    else
+  #--- Check enumeration variant
+      if enumerationOrder == "" then
+        enumerationOrder := [[[enumerationExpression mType] mEnumeratorVariants] mValueAtIndex !0] ;
+      else
+        @bool found := false ;
+        @string s := "" ;
+        foreach [[enumerationExpression mType] mEnumeratorVariants] while not found do
+          found := enumerationOrder == mValue ;
+          s .= "\n  \\" . mValue ;
+        end foreach ;
+        if not found then
+          error mEnumerationOrder: "unknown enumeration specifier; available ones are :" . s ;
+        end if ;
+      end if ;
+    end if ;
+  #---
+    enumerationList += !enumerationOrder !enumerationExpression !enumeratorCppName ;
+  end foreach ;
+#--- While expression
+  @semanticExpressionForGeneration uncheckedWhileExpression ;
+  [mWhileExpression analyzeSemanticExpression
+    !inAnalysisContext
+    !?ioVariableMap
+    ?uncheckedWhileExpression
+  ] ;
+  @semanticExpressionForGeneration whileExpression ;
+  checkExpressionIsBoolean
+    !inAnalysisContext
+    !mEndOf_while_expression
+    !uncheckedWhileExpression
+    ?whileExpression
+  ;
+#--- Handle index
+  [!?ioVariableMap openOverrideForRepeatBlock] ;
+  @string indexCppName := "" ;
+  @localConstantList indexDeclaration [emptyList] ;
+  if [mIndexVariableName string] != "" then
+    indexCppName := "index_" . [[mInstructionLocation locationIndex] string] ;
+    indexDeclaration +=
+      !inAnalysisContext->mPredefinedTypes->mUIntType
+      !mIndexVariableName
+      !false # Warns if unused
+      !indexCppName
+    ;
+  end if ;
+#--- 'do' branch
+  @semanticInstructionListForGeneration do_instructionList ;
+  analyzeSemanticInstructionList
+    !inAnalysisContext
+    !indexDeclaration
+    ![@localInitializedVariableList emptyList]
+    !mDoInstructionList
+    !mEndOf_do_branch
+    !?ioVariableMap
+    ?do_instructionList
+  ;
+#--- End override
+  [!?ioVariableMap closeOverride !mEndOf_foreach_instruction] ;
+#--- End override for foreach defined constants
+  [!?ioVariableMap closeBranch !mEndOf_foreach_instruction] ;
+  [!?ioVariableMap closeOverride !mEndOf_foreach_instruction] ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@foreachInstructionForGeneration new
+    !mInstructionLocation
+    !enumerationList
+    !indexCppName
+    !whileExpression
+    !before_instructionList
+    !between_instructionList
+    !do_instructionList
+    !after_instructionList
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*

@@ -15,17 +15,6 @@ GALGAS_%!TYPE_IDENTIFIER%::~ GALGAS_%!TYPE_IDENTIFIER% (void) {
 
 //---------------------------------------------------------------------------*
 
-/* GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) :
-%
-foreach ATTRIBUTE_LIST do
-  %//mAttribute_%![mAttributeName identifierRepresentation]% (inSource.mAttribute_%![mAttributeName identifierRepresentation]%)%
-  between %,\n%!^
-end foreach
-% {
-} */
-
-//---------------------------------------------------------------------------*
-
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
 foreach ATTRIBUTE_LIST
   do index IDX %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inOperand%![IDX string]
@@ -74,7 +63,7 @@ end foreach
 
 //---------------------------------------------------------------------------*
 
-typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
+typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
 %foreach ATTRIBUTE_LIST do
   %  if (result == kOperandEqual) {\n%

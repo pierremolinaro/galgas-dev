@@ -81,7 +81,7 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
   NSImage * errorImage = [NSImage imageNamed:NSImageNameStatusUnavailable] ;
   NSImage * warningImage = [NSImage imageNamed:NSImageNameStatusPartiallyAvailable] ;
 //--- Note: ruler view and text view are both flipped
-  OC_GGS_TextView * textView = [self.scrollView documentView] ;
+  OC_GGS_TextView * textView = self.scrollView.documentView ;
   NSArray * issueArray = textView.issueArray ; // Array of PMErrorOrWarningDescriptor
   NSLayoutManager * lm = textView.layoutManager ;
   const NSRange selectedRange = textView.selectedRange ;
