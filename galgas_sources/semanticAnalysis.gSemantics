@@ -100,7 +100,7 @@ end routine ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-abstract method @semanticDeclarationAST performSemanticAnalysis
+abstract method @semanticDeclarationAST semanticAnalysis
   ??@semanticContext unused inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
@@ -108,7 +108,7 @@ abstract method @semanticDeclarationAST performSemanticAnalysis
 
 #---------------------------------------------------------------------------*
 
-override method @predefinedTypeAST performSemanticAnalysis
+override method @predefinedTypeAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -134,7 +134,7 @@ map @attributeIndexMap {
 
 #---------------------------------------------------------------------------*
 
-override method @listDeclarationAST performSemanticAnalysis
+override method @listDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -169,19 +169,29 @@ override method @listDeclarationAST performSemanticAnalysis
     [!?attributeMap insertKey !mAttributeName !t] ;
   end foreach ;
 #---
-  ioSemanticDeclarationListForGeneration += ![@listTypeForGeneration new
-    !mIsGlobal
-    ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListTypeName]
-    !typedAttributeList
-  ]
+#  const @lstring elementTypeName [new !mListTypeName->string . ":element" !mListTypeName->location] ;
+#  ioSemanticDeclarationListForGeneration +=
+#    ![@structTypeForGeneration new
+#      !mIsGlobal
+#      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !elementTypeName]
+#      !typedAttributeList
+#    ]
+#  !""
+#  ;
+#---
+  ioSemanticDeclarationListForGeneration +=
+    ![@listTypeForGeneration new
+      !mIsGlobal
+      ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mListTypeName]
+      !typedAttributeList
+    ]
   !""
   ;
-
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @sortedListDeclarationAST performSemanticAnalysis
+override method @sortedListDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -227,7 +237,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @structDeclarationAST performSemanticAnalysis
+override method @structDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -254,13 +264,13 @@ override method @structDeclarationAST performSemanticAnalysis
     ![@unifiedTypeMapProxy searchKey !inSemanticContext->mTypeMap !mStructTypeName]
     !typedAttributeList
   ]
-  !""
+  !"~"
   ;
 end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @graphDeclarationAST performSemanticAnalysis
+override method @graphDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -301,7 +311,7 @@ map @constantIndexMap {
 
 #---------------------------------------------------------------------------*
 
-override method @enumDeclarationAST performSemanticAnalysis
+override method @enumDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -325,7 +335,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @arrayDeclarationAST performSemanticAnalysis
+override method @arrayDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -343,7 +353,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @listmapDeclarationAST performSemanticAnalysis
+override method @listmapDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -419,7 +429,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-override method @mapDeclarationAST performSemanticAnalysis
+override method @mapDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -496,7 +506,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @uniqueMapDeclarationAST performSemanticAnalysis
+override method @uniqueMapDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -850,7 +860,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @mapProxyDeclarationAST performSemanticAnalysis
+override method @mapProxyDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -982,7 +992,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-override method @externFunctionDeclarationAST performSemanticAnalysis
+override method @externFunctionDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1008,7 +1018,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @externRoutineDeclarationAST performSemanticAnalysis
+override method @externRoutineDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1033,7 +1043,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @routineDeclarationAST performSemanticAnalysis
+override method @routineDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1073,7 +1083,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @classDeclarationAST performSemanticAnalysis
+override method @classDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1246,7 +1256,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-override method @functionDeclarationAST performSemanticAnalysis
+override method @functionDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1292,7 +1302,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @onceFunctionDeclarationAST performSemanticAnalysis
+override method @onceFunctionDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1340,7 +1350,7 @@ end method ;
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-override method @filewrapperDeclarationAST performSemanticAnalysis
+override method @filewrapperDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1416,7 +1426,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @abstractCategoryMethodAST performSemanticAnalysis
+override method @abstractCategoryMethodAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1452,7 +1462,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @categoryMethodAST performSemanticAnalysis
+override method @categoryMethodAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1510,7 +1520,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @overridingCategoryMethodAST performSemanticAnalysis
+override method @overridingCategoryMethodAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1584,7 +1594,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @overridingAbstractCategoryMethodAST performSemanticAnalysis
+override method @overridingAbstractCategoryMethodAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
@@ -1635,7 +1645,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @abstractCategoryModifierAST performSemanticAnalysis
+override method @abstractCategoryModifierAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1671,7 +1681,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @categoryModifierAST performSemanticAnalysis
+override method @categoryModifierAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1729,7 +1739,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @overridingCategoryModifierAST performSemanticAnalysis
+override method @overridingCategoryModifierAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1803,7 +1813,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @overridingAbstractCategoryModifierAST performSemanticAnalysis
+override method @overridingAbstractCategoryModifierAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
@@ -1854,7 +1864,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @abstractCategoryReaderAST performSemanticAnalysis
+override method @abstractCategoryReaderAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1892,7 +1902,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @categoryReaderAST performSemanticAnalysis
+override method @categoryReaderAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -1957,7 +1967,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @overridingCategoryReaderAST performSemanticAnalysis
+override method @overridingCategoryReaderAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
@@ -2049,7 +2059,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @overridingAbstractCategoryReaderAST performSemanticAnalysis
+override method @overridingAbstractCategoryReaderAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration unused ioSemanticDeclarationListForGeneration
@@ -2163,12 +2173,17 @@ routine performSemanticAnalysis
     end foreach ;
     error inEndOfSource:s ;
   end if ;  
+#------ Create associated type (@TYPE:element) for lists, maps, ...
+  @semanticDeclarationListAST semanticDeclarationList := inDeclarationList ;
+  foreach inDeclarationList do
+    [mSemanticDeclaration addAssociatedElement !?semanticDeclarationList] ;
+  end foreach ;
 #---
   outDecoratedDeclarationListForGeneration := [@semanticDeclarationSortedListForGeneration emptySortedList] ;
   if [@uint errorCount] == 0 then
     const @predefinedTypes predefinedTypes := buildPredefinedTypes [!inSemanticContext] ;
-    foreach inDeclarationList do
-      [mSemanticDeclaration performSemanticAnalysis
+    foreach semanticDeclarationList do
+      [mSemanticDeclaration semanticAnalysis
         !inSemanticContext
         !predefinedTypes
         !?outDecoratedDeclarationListForGeneration

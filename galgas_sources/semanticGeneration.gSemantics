@@ -1094,6 +1094,26 @@ override reader @structTypeForGeneration appendDeclaration1 ->@string outHeader 
 #---------------------------------------------------------------------------*
 
 override reader @listTypeForGeneration appendDeclaration1 ->@string outHeader :
+#  outHeader := [filewrapper typeGenerationTemplate.structTypeHeader1
+#    ![mTypeProxy key]. ":element"
+#    ![mTypeProxy identifierRepresentation]
+#    !mTypedAttributeList
+#  ] ;
+#  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+#    ![mTypeProxy key]
+#    ![mTypeProxy identifierRepresentation]
+#    ![mTypeProxy mIsConcrete]
+#    ![mTypeProxy mConstructorMap]
+#    ![mTypeProxy mReaderMap]
+#    ![mTypeProxy mModifierMap]
+#    ![mTypeProxy mInstanceMethodMap]
+#    ![mTypeProxy mClassMethodMap]
+#    ![mTypeProxy mEnumerationDescriptor]
+#    ![mTypeProxy mHandledOperatorFlags]
+#    ![mTypeProxy mAddAssignOperatorArguments]
+#    ![mTypeProxy mWithAccessorMap]
+#    ![mTypeProxy mTypeForEnumeratedElement]
+#  ] ;
   outHeader := [filewrapper typeGenerationTemplate.listTypeHeader1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
@@ -1114,7 +1134,7 @@ override reader @listTypeForGeneration appendDeclaration1 ->@string outHeader :
     ![mTypeProxy mWithAccessorMap]
     ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
- end reader ;
+end reader ;
 
 #---------------------------------------------------------------------------*
 

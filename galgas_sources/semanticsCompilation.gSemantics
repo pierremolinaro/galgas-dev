@@ -381,7 +381,6 @@ routine compileSemanticsComponentAST
   @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes := semanticDeclarationList ;
   appendPredefinedTypesASTs !?semanticDeclarationListWithPredefinedTypes ;
 #------ Build semantic context
-#  @semanticContext semanticContext ;
   buildSemanticContext
     ![inSourceFile string]
     !semanticDeclarationListWithPredefinedTypes
