@@ -117,6 +117,8 @@
 
 - (OC_GGS_TextSyntaxColoring *) textSyntaxColoring ;
 
+- (NSPopUpButton *) entryListPopUpButton ;
+
 - (void) displayIssueDetailedMessage: (NSString *) inDetailledMessage ;
 
 - (void) triggerLiveCompilation ;

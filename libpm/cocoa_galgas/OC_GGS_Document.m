@@ -1126,80 +1126,8 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) populatePopUpButton {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  if (mSourceDisplayArrayController.selectionIndex != NSNotFound) {
-    NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
-    OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
-    NSMenu * menu = [textDisplay menuForEntryPopUpButton] ;
-    const NSUInteger n = [menu numberOfItems] ;
-    if (n == 0) {
-      [menu
-        addItemWithTitle:@"No entry"
-        action:NULL
-        keyEquivalent:@""
-      ] ;
-      [mEntryListPopUpButton setEnabled:NO] ;
-    }else{
-      for (NSUInteger i=0 ; i<n ; i++) {
-        NSMenuItem * item = [menu itemAtIndex:i] ;
-        [item setTarget:self] ;
-        [item setAction:@selector (gotoEntry:)] ;
-      }
-      [mEntryListPopUpButton setEnabled:YES] ;
-    }
-    [mEntryListPopUpButton setMenu:menu] ;
-    //NSLog (@"mEntryListPopUpButton %@", mEntryListPopUpButton) ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) gotoEntry: (id) inSender {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s, TAG %ld", __PRETTY_FUNCTION__, [inSender tag]) ;
-  #endif
-  const NSRange range = {[inSender tag], 0} ;
-  NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
-  OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
-  NSLog (@"textDisplay %@", textDisplay) ;
-  NSTextView * textView = textDisplay.textView ;
-  NSLog (@"textView %@", textView) ;
-  [textView setSelectedRange:range] ;
-  [textView scrollRangeToVisible:range] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) selectEntryPopUp {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s, %d", __PRETTY_FUNCTION__, mSourceDisplayArrayController.selectionIndex != NSNotFound) ;
-  #endif
-  if (mSourceDisplayArrayController.selectionIndex != NSNotFound) {
-    NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
-    OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
-    const NSUInteger selectionStart = textDisplay.textSelectionStart ;
-    NSArray * menuItemArray = [mEntryListPopUpButton itemArray] ;
-    if ([mEntryListPopUpButton isEnabled]) {
-      NSInteger idx = NSNotFound ;
-      NSInteger i ;
-      const NSInteger n = [menuItemArray count] ;
-      for (i=n-1 ; (i>=0) && (idx == NSNotFound) ; i--) {
-        NSMenuItem * item = [menuItemArray objectAtIndex:i HERE] ;
-        const NSUInteger startPoint = [item tag] ;
-        if (selectionStart >= startPoint) {
-          idx = i ;
-        }
-      }
-      if (idx == NSNotFound) {
-        [mEntryListPopUpButton selectItemAtIndex:0] ;
-      }else{
-        [mEntryListPopUpButton selectItemAtIndex:idx] ;
-      }
-    }
-  }
+- (NSPopUpButton *) entryListPopUpButton {
+  return mEntryListPopUpButton ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1229,9 +1157,19 @@
       [mSourceHostView.window makeFirstResponder:object.textView] ;
     }
   }else if ([inKeyPath isEqualToString:@"selection.textSelectionStart"]) {
-    [self selectEntryPopUp] ;
+    const NSUInteger sel = mSourceDisplayArrayController.selectionIndex ;
+    if (sel != NSNotFound) {
+      NSArray * arrangedObjects = mSourceDisplayArrayController.arrangedObjects ;
+      OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel HERE] ;
+      [object selectEntryPopUp] ;
+    }
   }else if ([inKeyPath isEqualToString:@"selection.mTextSyntaxColoring.mTokenizer.menuForEntryPopUpButton"]) {
-    [self populatePopUpButton] ;
+    const NSUInteger sel = mSourceDisplayArrayController.selectionIndex ;
+    if (sel != NSNotFound) {
+      NSArray * arrangedObjects = mSourceDisplayArrayController.arrangedObjects ;
+      OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel HERE] ;
+      [object populatePopUpButton] ;
+    }
   }
 }
 
