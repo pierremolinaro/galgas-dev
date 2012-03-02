@@ -574,7 +574,7 @@ class @foreachInstructionAST extends @semanticInstructionAST {
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-list @foreachNewInstructionEnumeratedObjectListAST {
+list @forInstructionEnumeratedObjectListAST {
   @lstring mEnumerationOrder feature nogetter ;
   @lstring mEnumerationVariable feature nogetter ;
   @semanticExpressionAST mEnumeratedExpression feature nogetter ;
@@ -583,8 +583,8 @@ list @foreachNewInstructionEnumeratedObjectListAST {
 
 #---------------------------------------------------------------------------*
 
-class @foreachNewInstructionAST extends @semanticInstructionAST {
-  @foreachNewInstructionEnumeratedObjectListAST mEnumeratedObjectList ;
+class @forInstructionAST extends @semanticInstructionAST {
+  @forInstructionEnumeratedObjectListAST mEnumeratedObjectList ;
   @lstring mIndexVariableName ;
   @semanticExpressionAST mWhileExpression ;
   @location mEndOf_while_expression ;
@@ -1283,6 +1283,7 @@ class @listDeclarationAST extends @semanticDeclarationAST {
 class @structDeclarationAST extends @semanticDeclarationAST {
   @lstring mStructTypeName ;
   @attributeInCollectionListAST mAttributeList ;
+  @string mEnumeratedElementTypeName ; # Empty string if not enumerable
 }
 
 #---------------------------------------------------------------------------*

@@ -37,6 +37,7 @@ with lexique "galgas_scanner.gLexique" {
   label $before$, ${$ ;
   label $after$, ${$ ;
   label $map$, $type_name$ ;
+  label $uniquemap$, $type_name$ ;
   label $list$, $type_name$ ;
   label $sortedlist$, $type_name$ ;
   label $enum$, $type_name$ ;

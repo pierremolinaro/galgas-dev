@@ -1175,7 +1175,7 @@
 
 - (void) selectEntryPopUp {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+    NSLog (@"%s, %d", __PRETTY_FUNCTION__, mSourceDisplayArrayController.selectionIndex != NSNotFound) ;
   #endif
   if (mSourceDisplayArrayController.selectionIndex != NSNotFound) {
     NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;

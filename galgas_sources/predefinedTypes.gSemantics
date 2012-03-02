@@ -2,7 +2,7 @@
 #                                                                           *
 #  Generate predefined types                                                *
 #                                                                           *
-#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2010, ..., 2012 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -81,6 +81,7 @@ local routine appendStructASTForTypeWithLocation
     !true # Is global
     ![@lstring new !"l" . inElementTypeName !here]
     !attributeList
+    !"" # Not enumerable
   ] ;
 end routine ;
 
@@ -97,6 +98,7 @@ local routine appendStructASTForRangeType
     !true # Is global
     ![@lstring new !"range" !here]
     !attributeList
+    !"uint" # Enumerable
   ] ;
 end routine ;
 

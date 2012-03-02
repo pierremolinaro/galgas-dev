@@ -2,7 +2,7 @@
 #                                                                           *
 #  semantics definitions for semantics component                            *
 #                                                                           *
-#  Copyright (C) 1997, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 1997, ..., 2012 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -306,6 +306,7 @@ uniquemap @unifiedTypeMap {
   @mapSearchMethodListAST mMapProxySearchConstructorList ; # For a map proxy, the list of search methods of the associated map
   @withAccessorMap mWithAccessorMap ; # Method for with accessor
   @bool mGenerateHeaderInSeparateFile ; # Significant only for classes
+  @unifiedTypeMapProxy mTypeForEnumeratedElement ;
 
   insert insertKey error message "the '@%K' type has been already declared in %L" ;
   search searchKey error message "the '@%K' type is not declared" ;

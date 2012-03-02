@@ -740,6 +740,7 @@ override method @predefinedTypeAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
+    ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
   ] ;
 end method ;
 
@@ -947,6 +948,7 @@ override method @mapDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     !withAccessorMap
     !false # Do not generate header in separate file
+    ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
   ] ;
 end method ;
 
@@ -1171,6 +1173,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     !withAccessorMap
     !false # Do not generate header in separate file
+    ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
   ] ;
 end method ;
 
@@ -1195,7 +1198,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ?mapTypedAttributeList
     ?11*
     ?searchMethodList
-    ?3*
+    ?4*
   ] ;
   if typeKindEnum != [@typeKindEnum uniqueMapType] then
     error mAssociatedMapTypeName : "the @" . mAssociatedMapTypeName . " should be an unique map type" ;
@@ -1309,6 +1312,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     !searchMethodList
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
+    ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
   ] ;
 end method ;
 
@@ -1461,6 +1465,7 @@ override method @graphDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
+    ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
   ] ;
 end method ;
 
@@ -1525,6 +1530,7 @@ override method @enumDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
+    ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
   ] ;
 end method ;
 
@@ -1844,6 +1850,7 @@ override method @listDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
+    ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
   ] ;
 end method ;
 
@@ -1965,6 +1972,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
+    ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
   ] ;
 end method ;
 
@@ -2030,6 +2038,17 @@ override method @structDeclarationAST enterInSemanticContext
     !?modifierMap
     !?instanceMethodMap
   ;
+#--- Enumeration by "for" instruction
+  @unifiedTypeMapProxy enumeratedType ;
+  if mEnumeratedElementTypeName == "" then
+    enumeratedType := [@unifiedTypeMapProxy null] ;
+  else
+   [@unifiedTypeMapProxy makeRegularProxy
+     !?ioSemanticContext->mTypeMap
+     !mEnumeratedElementTypeName
+     ?enumeratedType
+    ] ;
+  end if ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mStructTypeName
@@ -2054,6 +2073,7 @@ override method @structDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
+    !enumeratedType # Type for enumerated element for "for" instruction
   ] ;
 end method ;
 
@@ -2108,6 +2128,7 @@ override method @classDeclarationAST enterInSemanticContext
       ?inheritedMethodMap
       ?10*
       ?generateHeaderInSeparateFile
+      ?*
     ] ;
   #---
     if typeKindEnum != [@typeKindEnum classType] then
@@ -2264,6 +2285,7 @@ override method @classDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
     !generateHeaderInSeparateFile
+    ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
   ] ;
 end method ;
 
@@ -2466,6 +2488,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
+    ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
   ] ;
 end method ;
 
@@ -2486,7 +2509,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     ?2*
     ?typeKindEnum
     ?listTypedAttributeList
-    ?17*
+    ?18*
   ] ;
   if typeKindEnum != [@typeKindEnum listType] then
     error mAssociatedListTypeName : "the '@" . mAssociatedListTypeName . "' type should be a list type" ;
@@ -2562,6 +2585,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
+    ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
   ] ;
 end method ;
 
