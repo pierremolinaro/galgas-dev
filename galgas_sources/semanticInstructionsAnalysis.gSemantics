@@ -2,7 +2,7 @@
 #                                                                           *
 #  metamodel that defines expression                                        *
 #                                                                           *
-#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2010, ..., 2012 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -1346,7 +1346,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @foreachNewInstructionAST analyzeSemanticInstruction
+override method @forInstructionAST analyzeSemanticInstruction
   ??@analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
   ?!@variableMap ioVariableMap
@@ -1406,8 +1406,8 @@ override method @foreachNewInstructionAST analyzeSemanticInstruction
   #--- Check object can be enumerated
     @string enumerationOrder := [mEnumerationOrder string] ;
     const @string enumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
-    const @enumerationDescriptorList enumerationDescriptorList := [[enumerationExpression mType] mEnumerationDescriptor] ;
-    if [enumerationDescriptorList length] == 0 then
+    const @unifiedTypeMapProxy enumeratedElementType := [[enumerationExpression mType] mTypeForEnumeratedElement] ;
+    if [enumeratedElementType isNull] then
       error mEndOfEnumerationExpression : "an '@" . [[enumerationExpression mType] key] . "' object cannot be enumerated" ;
     else
   #--- Check enumeration variant

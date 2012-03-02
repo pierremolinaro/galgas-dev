@@ -664,7 +664,7 @@ end rule ;
 #---------------------------------------------------------------------------*
 
 rule <new_foreach_enumerated_object>
-  ?!@foreachNewInstructionEnumeratedObjectListAST ioForeachInstructionEnumeratedObjectList
+  ?!@forInstructionEnumeratedObjectListAST ioForeachInstructionEnumeratedObjectList
 :
   @lstring enumerationOrder ;
   select
@@ -693,7 +693,7 @@ rule <semantic_instruction>
 :
   $for$ ;
   const @location instructionLocation := here ;
-  @foreachNewInstructionEnumeratedObjectListAST mEnumeratedObjectList [emptyList] ;
+  @forInstructionEnumeratedObjectListAST mEnumeratedObjectList [emptyList] ;
   repeat
     <new_foreach_enumerated_object> !?mEnumeratedObjectList ;
   while
@@ -746,7 +746,7 @@ rule <semantic_instruction>
   const @location endof_foreach_instruction := here ;
   $for$ ;
   $;$ ;
-  outInstruction := [@foreachNewInstructionAST new
+  outInstruction := [@forInstructionAST new
     !instructionLocation
     !mEnumeratedObjectList
     !indexVariableName

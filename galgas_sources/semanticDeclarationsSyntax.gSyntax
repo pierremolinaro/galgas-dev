@@ -472,6 +472,7 @@ rule <semantic_declaration>
     !true # Is global
     !mListTypeName
     !mAttributeList
+    !""
   ] ;
 end rule ;
 

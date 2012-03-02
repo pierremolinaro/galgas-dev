@@ -14,6 +14,14 @@ routine testsuite_array :
   [!?pp setValueAtIndex !'?' !2 !1] ;
   log pp ;
   log "" : [[pp valueAtIndex !2 !1] string] ;
+  for i in [p rangeForAxis !0] do
+    message "i = " . i . " :\n" ;
+    for j in [p rangeForAxis !1] do
+      for k in [p rangeForAxis !2] do
+  
+      end for ;
+    end for ;
+  end for ;
 end routine ;
 
 
