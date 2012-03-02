@@ -76,7 +76,7 @@
     const NSRect r = [self trackingRect] ;
     NSImage * image = [NSImage imageNamed:mMouseDown ? NSImageNameStopProgressFreestandingTemplate : NSImageNameStopProgressTemplate] ;
     [image
-      drawAtPoint:r.origin
+      drawInRect:r
       fromRect:NSZeroRect
       operation:NSCompositeSourceOver
       fraction:1.0

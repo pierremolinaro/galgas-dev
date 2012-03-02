@@ -59,6 +59,10 @@
 
 - (void) gotoLine: (NSUInteger) inLine ;
 
+- (void) selectEntryPopUp ;
+
+- (void) populatePopUpButton ;
+
 - (void) commentSelection ;
 - (void) uncommentSelection ;
 - (void) shiftLeftAction ;
