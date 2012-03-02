@@ -1,5 +1,6 @@
 program testsuite_program "version 1.0.0":
 import "testsuite_foreach_instruction.gSemantics" ;
+import "testsuite_for_instruction.gSemantics" ;
 import "testsuite_list.gSemantics" ;
 import "testsuite_struct.gSemantics" ;
 import "testsuite_listmap.gSemantics" ;
@@ -11,6 +12,7 @@ import "testsuite_category_readers.gSemantics" ;
 import "testsuite_category_modifiers.gSemantics" ;
 import "testsuite_type_categories.gSemantics" ;
 import "testsuite_strings.gSemantics" ;
+import "testsuite_range.gSemantics" ;
 import "testsuite_array.gSemantics" ;
 
 import "testsuite_grammar.gGrammar" ;
@@ -19,6 +21,7 @@ import "testsuite_grammar.gGrammar" ;
 before {
   testsuite_hand_coded ;
   testsuite_foreach_instruction ;
+  testsuite_for_instruction ;
   testsuite_list ;
   testsuite_struct ;
   testsuite_listmap ;
@@ -30,6 +33,7 @@ before {
   testsuite_category_modifiers ;
   testsuite_type_categories ;
   testsuite_strings ;
+  testsuite_range ;
   testsuite_array ;
 }
 

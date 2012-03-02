@@ -331,10 +331,14 @@ class cEnumerator_%!TYPE_IDENTIFIER% : public cGenericAbstractEnumerator {
      %!^%const typeEnumerationOrder inOrder) ;
 
 //--- Current element access\n%
-    foreach ENUMERATION_DESCRIPTOR_LIST do
+  foreach ENUMERATION_DESCRIPTOR_LIST do
 %  public : GALGAS_%![mEnumeratedType identifierRepresentation]% current_%![mEnumerationName identifierRepresentation]% (LOCATION_ARGS) const ;\n%
-    end foreach%} ;
-%
+  end foreach
+  if not [ENUMERATED_OBJECT_TYPE isNull] then
+%//--- Current element access\n%
+%  public : GALGAS_%![ENUMERATED_OBJECT_TYPE identifierRepresentation]% current (LOCATION_ARGS) const ;\n%
+  end if
+%} ;\n%
 end if
 %
 //---------------------------------------------------------------------------*

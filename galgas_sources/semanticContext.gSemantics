@@ -702,9 +702,17 @@ override method @predefinedTypeAST enterInSemanticContext
   [t getAddAssignArgumentList !?ioSemanticContext->mTypeMap ?addAssignArgumentList] ;
   @enumerationDescriptorList enumerationList ;
   @stringlist enumerationVariants ;
-  [t getEnumerationList !?ioSemanticContext->mTypeMap ?enumerationList ?enumerationVariants] ;
+  @string enumeratedTypeName ;
+  [t getEnumerationList !?ioSemanticContext->mTypeMap ?enumerationList ?enumerationVariants ?enumeratedTypeName] ;
   @unifiedTypeMapProxy selfTypeProxy ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mPredefinedTypeName ?selfTypeProxy] ;
+#--- Enumeration
+  @unifiedTypeMapProxy enumeratedTypeProxy ;
+  if enumeratedTypeName == "" then
+    enumeratedTypeProxy := [@unifiedTypeMapProxy null] ;
+  else
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !enumeratedTypeName ?enumeratedTypeProxy] ;
+  end if ;
 #--- Add Categories
   addCategories
     !inCategoryMethodMapForBuildingContext
@@ -740,7 +748,7 @@ override method @predefinedTypeAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
-    ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
+    !enumeratedTypeProxy
   ] ;
 end method ;
 

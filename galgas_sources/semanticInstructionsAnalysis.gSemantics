@@ -1410,7 +1410,7 @@ override method @forInstructionAST analyzeSemanticInstruction
     if [enumeratedElementType isNull] then
       error mEndOfEnumerationExpression : "an '@" . [[enumerationExpression mType] key] . "' object cannot be enumerated" ;
     else
-      localConstantListForDoBranch += !enumeratedElementType !mEnumerationVariable !enumeratorCppName . ".current ()" ;
+      localConstantListForDoBranch += !enumeratedElementType !mEnumerationVariable !enumeratorCppName . ".current (HERE)" ;
     end if ;
   #---
     enumerationList +=

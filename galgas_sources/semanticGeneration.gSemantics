@@ -503,6 +503,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@uint SUPPORTED_OPERATORS
     ?@unifiedTypeMapProxyList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@withAccessorMap WITH_ACCESSOR_MAP
+    ?@unifiedTypeMapProxy ENUMERATED_OBJECT_TYPE
   ;
 
   template genericTypeImplementation "generic-type.cpp.gTemplate"
@@ -983,6 +984,7 @@ override reader @classTypeForGeneration appendDeclaration1 ->@string outHeader :
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
     ![mTypeProxy mWithAccessorMap]
+    ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
  end reader ;
 
@@ -1008,6 +1010,7 @@ override reader @mapTypeForGeneration appendDeclaration1 ->@string outHeader :
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
     ![mTypeProxy mWithAccessorMap]
+    ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
  end reader ;
 
@@ -1033,6 +1036,7 @@ override reader @arrayTypeForGeneration appendDeclaration1 ->@string outHeader :
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
     ![mTypeProxy mWithAccessorMap]
+    ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
  end reader ;
 
@@ -1058,6 +1062,7 @@ override reader @uniqueMapTypeForGeneration appendDeclaration1 ->@string outHead
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
     ![mTypeProxy mWithAccessorMap]
+    ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
  end reader ;
 
@@ -1082,6 +1087,7 @@ override reader @structTypeForGeneration appendDeclaration1 ->@string outHeader 
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
     ![mTypeProxy mWithAccessorMap]
+    ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
  end reader ;
 
@@ -1106,6 +1112,7 @@ override reader @listTypeForGeneration appendDeclaration1 ->@string outHeader :
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
     ![mTypeProxy mWithAccessorMap]
+    ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
  end reader ;
 
@@ -1129,6 +1136,7 @@ override reader @graphDeclarationForGeneration appendDeclaration1 ->@string outH
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
     ![mTypeProxy mWithAccessorMap]
+    ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
  end reader ;
 
@@ -1152,6 +1160,7 @@ override reader @listmapTypeForGeneration appendDeclaration1 ->@string outHeader
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
     ![mTypeProxy mWithAccessorMap]
+    ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
  end reader ;
 
@@ -1176,6 +1185,7 @@ override reader @sortedListTypeForGeneration appendDeclaration1 ->@string outHea
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
     ![mTypeProxy mWithAccessorMap]
+    ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
  end reader ;
 
@@ -1200,6 +1210,7 @@ override reader @enumTypeForGeneration appendDeclaration1 ->@string outHeader :
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
     ![mTypeProxy mWithAccessorMap]
+    ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
  end reader ;
 
@@ -1223,6 +1234,7 @@ override reader @mapProxyTypeForGeneration appendDeclaration1 -> @string outHead
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
     ![mTypeProxy mWithAccessorMap]
+    ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
 end reader ;
 

@@ -40,6 +40,98 @@ Delete Test Done
   do 'b' (idx: 1)
   do 'c' (idx: 2)
   do 'd' (idx: 3)
+--- begin of foreach instruction test 7
+  do 'A' (idx: 0)
+  do 'B' (idx: 1)
+  do 'C' (idx: 2)
+  do 'D' (idx: 3)
+  do 'E' (idx: 4)
+  do 'F' (idx: 5)
+  do 'G' (idx: 6)
+  do 'H' (idx: 7)
+--- begin of foreach instruction test 8
+  do 'H' (idx: 0)
+  do 'G' (idx: 1)
+  do 'F' (idx: 2)
+  do 'E' (idx: 3)
+  do 'D' (idx: 4)
+  do 'C' (idx: 5)
+  do 'B' (idx: 6)
+  do 'A' (idx: 7)
+--- begin of foreach instruction test 9
+  do '1' (idx: 0)
+  do '2' (idx: 1)
+  do '3' (idx: 2)
+  do '4' (idx: 3)
+  do '5' (idx: 4)
+  do '6' (idx: 5)
+  do '7' (idx: 6)
+  do '8' (idx: 7)
+*************************************** begin of for instruction test 1
+  before
+  do 'a'
+  between
+  do 'b'
+  between
+  do 'c'
+  between
+  do 'd'
+  after
+--- begin of for instruction test 2
+--- begin of for instruction test 3
+  before
+  do 'a', n: 0
+  between
+  do 'b', n: 1
+  after
+--- begin of for instruction test 4
+  before
+  do 'a'
+  between
+  do 'b'
+  after
+--- begin of for instruction test 5
+  before
+  do 'a' (idx: 0)
+  between
+  do 'b' (idx: 1)
+  between
+  do 'c' (idx: 2)
+  between
+  do 'd' (idx: 3)
+  after
+--- begin of for instruction test 6
+  do 'a' (idx: 0)
+  do 'b' (idx: 1)
+  do 'c' (idx: 2)
+  do 'd' (idx: 3)
+--- begin of for instruction test 7
+  do 'A' (idx: 0)
+  do 'B' (idx: 1)
+  do 'C' (idx: 2)
+  do 'D' (idx: 3)
+  do 'E' (idx: 4)
+  do 'F' (idx: 5)
+  do 'G' (idx: 6)
+  do 'H' (idx: 7)
+--- begin of for instruction test 8
+  do 'H' (idx: 0)
+  do 'G' (idx: 1)
+  do 'F' (idx: 2)
+  do 'E' (idx: 3)
+  do 'D' (idx: 4)
+  do 'C' (idx: 5)
+  do 'B' (idx: 6)
+  do 'A' (idx: 7)
+--- begin of for instruction test 9
+  do '1' (idx: 0)
+  do '2' (idx: 1)
+  do '3' (idx: 2)
+  do '4' (idx: 3)
+  do '5' (idx: 4)
+  do '6' (idx: 5)
+  do '7' (idx: 6)
+  do '8' (idx: 7)
 *************************************** begin of list direct access
 LOGGING s: <@string:"a">
 LOGGING s: <@string:"b">
@@ -240,8 +332,43 @@ LOGGING aList: <list @uintlist (5 objects):
 LOGGING command: <@string:"echo accentué">
 LOGGING result: <@string:"accentué
 ">
+*************************************** begin of range test
+LOGGING s: <@string:"Range [4, 3] enumeration: 4 5 6">
+LOGGING s: <@string:"Range [4, 3] reverse enumeration: 6 5 4">
 *************************************** begin of array test
 LOGGING p: <@ptrint:array [2, 3, 4] of @uint>
 LOGGING : <@string:"Hello">
 LOGGING pp: <@ptrint:array [4, 3] of @uint>
 LOGGING : <@string:"?">
+i = 0
+  j = 0
+    k = 0
+    k = 1
+    k = 2
+    k = 3
+  j = 1
+    k = 0
+    k = 1
+    k = 2
+    k = 3
+  j = 2
+    k = 0
+    k = 1
+    k = 2
+    k = 3
+i = 1
+  j = 0
+    k = 0
+    k = 1
+    k = 2
+    k = 3
+  j = 1
+    k = 0
+    k = 1
+    k = 2
+    k = 3
+  j = 2
+    k = 0
+    k = 1
+    k = 2
+    k = 3

@@ -322,6 +322,7 @@ override reader @primitiveTypeForGeneration appendPrimitiveTypeDeclaration -> @s
     ![mTypeProxy mHandledOperatorFlags]
     ![mTypeProxy mAddAssignOperatorArguments]
     ![mTypeProxy mWithAccessorMap]
+    ![mTypeProxy mTypeForEnumeratedElement]
   ] ;
 end reader ;
 
