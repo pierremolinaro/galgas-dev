@@ -445,3 +445,11 @@ GALGAS_uint cEnumerator_data::current_data (LOCATION_ARGS) const {
 }
 
 //---------------------------------------------------------------------------*
+
+GALGAS_uint cEnumerator_data::current (LOCATION_ARGS) const {
+  const cCollectionElement_data * p = (const cCollectionElement_data *) (currentObjectPtr (THERE)) ;
+  macroValidSharedObject (p, const cCollectionElement_data) ;
+  return p->attribute_data () ;
+}
+
+//---------------------------------------------------------------------------*

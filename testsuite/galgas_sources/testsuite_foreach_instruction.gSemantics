@@ -72,6 +72,42 @@ routine testsuite_foreach_instruction :
   do
     message "  do '" . s . "' (idx: " . [idx string] . ")\n" ;
   end foreach ;
+  message "--- begin of foreach instruction test 7\n" ;
+  @stringset set [emptySet] ;
+  set += !"A" ;
+  set += !"B" ;
+  set += !"C" ;
+  set += !"D" ;
+  set += !"E" ;
+  set += !"F" ;
+  set += !"G" ;
+  set += !"H" ;
+  foreach \up set
+  index idx
+  do
+    message "  do '" . key . "' (idx: " . [idx string] . ")\n" ;
+  end foreach ;
+  message "--- begin of foreach instruction test 8\n" ;
+  foreach \down set
+  index idx
+  do
+    message "  do '" . key . "' (idx: " . [idx string] . ")\n" ;
+  end foreach ;
+  message "--- begin of foreach instruction test 9\n" ;
+  @data myData [emptyData] ;
+  [!?myData appendByte !1] ;
+  [!?myData appendByte !2] ;
+  [!?myData appendByte !3] ;
+  [!?myData appendByte !4] ;
+  [!?myData appendByte !5] ;
+  [!?myData appendByte !6] ;
+  [!?myData appendByte !7] ;
+  [!?myData appendByte !8] ;
+  foreach \up myData
+  index idx
+  do
+    message "  do '" . data . "' (idx: " . [idx string] . ")\n" ;
+  end foreach ;
 end routine ;
 
 end semantics ;

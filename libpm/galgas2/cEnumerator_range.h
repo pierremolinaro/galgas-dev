@@ -54,7 +54,7 @@ class cEnumerator_range {
   public : void gotoNextObject (void) ;
 
 //--- Current element access
-  public : GALGAS_uint current (void) const ;
+  public : GALGAS_uint current (LOCATION_ARGS) const ;
 
 //---- Attributes
   private : const bool mIsValid ;

@@ -937,6 +937,14 @@ GALGAS_string cEnumerator_stringset::current_key (LOCATION_ARGS) const {
 }
 
 //---------------------------------------------------------------------------*
+
+GALGAS_string cEnumerator_stringset::current (LOCATION_ARGS) const {
+  const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, const cCollectionElement_stringset) ;
+  return p->attribute_key () ;
+}
+
+//---------------------------------------------------------------------------*
 //                                                                           *
 //    C O M P A R I S O N                                                    *
 //                                                                           *

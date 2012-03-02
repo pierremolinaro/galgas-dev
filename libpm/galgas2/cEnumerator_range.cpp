@@ -73,7 +73,7 @@ void cEnumerator_range::gotoNextObject (void) {
 
 //---------------------------------------------------------------------------*
 
-GALGAS_uint cEnumerator_range::current (void) const {
+GALGAS_uint cEnumerator_range::current (UNUSED_LOCATION_ARGS) const {
   return GALGAS_uint (mIsValid, (PMUInt32) (mCurrent + mAscending - 1)) ;
 }
 

@@ -30,6 +30,7 @@ override method @stringsetPredefinedTypeAST getEnumerationList
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@enumerationDescriptorList outEnumerationList
   !@stringlist outEnumerationVariant
+  !@string outEnumeratedType
 :
   @unifiedTypeMapProxy stringTypeIndex ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"string" ?stringTypeIndex] ;
@@ -38,6 +39,7 @@ override method @stringsetPredefinedTypeAST getEnumerationList
   outEnumerationVariant := [@stringlist emptyList] ;
   outEnumerationVariant += !"up" ;
   outEnumerationVariant += !"down" ;
+  outEnumeratedType := "string" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -46,6 +48,7 @@ override method @dataPredefinedTypeAST getEnumerationList
   ?!@unifiedTypeMap ioUnifiedTypeMap
   !@enumerationDescriptorList outEnumerationList
   !@stringlist outEnumerationVariant
+  !@string outEnumeratedType
 :
   @unifiedTypeMapProxy uintTypeIndex ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"uint" ?uintTypeIndex] ;
@@ -54,6 +57,7 @@ override method @dataPredefinedTypeAST getEnumerationList
   outEnumerationVariant := [@stringlist emptyList] ;
   outEnumerationVariant += !"up" ;
   outEnumerationVariant += !"down" ;
+  outEnumeratedType := "uint" ;
 end method ;
 
 #---------------------------------------------------------------------------*

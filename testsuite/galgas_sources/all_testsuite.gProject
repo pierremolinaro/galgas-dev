@@ -8,6 +8,7 @@ project all_testsuite -> "testsuite" :
   syntax "testsuite_syntax.gSyntax" ;
   grammar "testsuite_grammar.gGrammar" ;
   semantics "testsuite_foreach_instruction.gSemantics" ;
+  semantics "testsuite_for_instruction.gSemantics" ;
   semantics "testsuite_list.gSemantics" ;
   semantics "testsuite_struct.gSemantics" ;
   semantics "testsuite_listmap.gSemantics" ;
@@ -20,6 +21,7 @@ project all_testsuite -> "testsuite" :
   semantics "testsuite_category_modifiers.gSemantics" ;
   semantics "testsuite_type_categories.gSemantics" ;
   semantics "testsuite_strings.gSemantics" ;
+  semantics "testsuite_range.gSemantics" ;
   semantics "testsuite_array.gSemantics" ;
 
   program "testsuite_program.gProgram" ;
