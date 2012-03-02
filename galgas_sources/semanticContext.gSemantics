@@ -3083,6 +3083,34 @@ override method @abstractCategoryModifierAST enterDeclarationInGraph
 end method ;
 
 #---------------------------------------------------------------------------*
+
+method @semanticDeclarationAST addAssociatedElement
+  ?!@semanticDeclarationListAST unused ioSemanticDeclarationList
+:
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @listDeclarationAST addAssociatedElement
+  ?!@semanticDeclarationListAST ioSemanticDeclarationList
+:
+  @attributeInCollectionListAST structAttributeList [emptyList] ;
+  foreach mAttributeList do
+    structAttributeList +=
+      !mAttributeTypeName
+      !mAttributeName
+      ![@lstringlist emptyList]
+    ;
+  end foreach ;
+  ioSemanticDeclarationList += ![@structDeclarationAST new
+    !true
+    ![@lstring new !mListTypeName->string . ":element" !mListTypeName->location]
+    !structAttributeList
+    !""
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #    B U I L D    S E M A N T I C    C O N T E X T                          *
 #                                                                           *
@@ -3094,6 +3122,11 @@ routine buildSemanticContext
   ??@location inEndOfSourceFile
   !@semanticContext outSemanticContext
 :
+#------ Create associated type (@TYPE:element) for lists, maps, ...
+  @semanticDeclarationListAST semanticDeclarationList := inSemanticDeclarationList ;
+  foreach inSemanticDeclarationList do
+    [mSemanticDeclaration addAssociatedElement !?semanticDeclarationList] ;
+  end foreach ;
 #------ Build ordered types list, so that
 #  - a class appears after its super class
 #  - a map index appears after its associated map
@@ -3103,7 +3136,7 @@ routine buildSemanticContext
   @categoryReaderMapForBuildingContext categoryReaderMapForBuildingContext  [emptyMap] ;
   @categoryModifierMapForBuildingContext categoryModifierMapForBuildingContext  [emptyMap] ;
   @semanticDeclarationListAST categoryOverrideDefinitionList [emptyList] ;
-  foreach inSemanticDeclarationList do
+  foreach semanticDeclarationList do
     [mSemanticDeclaration enterDeclarationInGraph
       !?semanticTypePrecedenceGraph
       !?categoryMethodMapForBuildingContext
