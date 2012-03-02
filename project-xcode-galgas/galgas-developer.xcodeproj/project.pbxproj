@@ -375,6 +375,8 @@
 		CFE26D280C1327B90066ACB3 /* programSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE26D180C1327B90066ACB3 /* programSLRgrammar.cpp */; };
 		CFE4FC1B114E4C9000DB2D43 /* semanticGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE4FC17114E4C9000DB2D43 /* semanticGeneration.cpp */; };
 		CFE4FC1C114E4C9000DB2D43 /* semanticGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE4FC17114E4C9000DB2D43 /* semanticGeneration.cpp */; };
+		CFE71EC515010F3500EAD989 /* cEnumerator_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE71EC415010F3500EAD989 /* cEnumerator_range.cpp */; };
+		CFE71EC615010F3500EAD989 /* cEnumerator_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE71EC415010F3500EAD989 /* cEnumerator_range.cpp */; };
 		CFEE63DC147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEE63DB147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.m */; };
 		CFEE63E0147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEE63DF147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m */; };
 		CFEF3A7D12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */; };
@@ -951,6 +953,8 @@
 		CFE26D190C1327B90066ACB3 /* programSLRgrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = programSLRgrammar.h; sourceTree = "<group>"; };
 		CFE4FC17114E4C9000DB2D43 /* semanticGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticGeneration.cpp; sourceTree = "<group>"; };
 		CFE4FC18114E4C9000DB2D43 /* semanticGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticGeneration.h; sourceTree = "<group>"; };
+		CFE71EC415010F3500EAD989 /* cEnumerator_range.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cEnumerator_range.cpp; sourceTree = "<group>"; };
+		CFE71EC8150112BF00EAD989 /* cEnumerator_range.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cEnumerator_range.h; sourceTree = "<group>"; };
 		CFECE4640FEFA5270031D087 /* OC_Lexique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_Lexique.h; sourceTree = "<group>"; };
 		CFECE4650FEFA5270031D087 /* OC_Lexique.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_Lexique.m; sourceTree = "<group>"; };
 		CFEE63DA147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_TextDisplayDescriptor.h; sourceTree = "<group>"; };
@@ -1239,6 +1243,8 @@
 				CF3D9FC41257733E0037D473 /* capSortedListElement.h */,
 				CF3D9FC51257733E0037D473 /* cGenericAbstractEnumerator.cpp */,
 				CF3D9FC61257733E0037D473 /* cGenericAbstractEnumerator.h */,
+				CFE71EC8150112BF00EAD989 /* cEnumerator_range.h */,
+				CFE71EC415010F3500EAD989 /* cEnumerator_range.cpp */,
 				CF3D9FC71257733E0037D473 /* cSortedListElement.cpp */,
 				CF3D9FC81257733E0037D473 /* cSortedListElement.h */,
 				CF2382CF124D126000A57965 /* C_galgas_function_descriptor.cpp */,
@@ -2276,6 +2282,7 @@
 				CF1C0C8F14E844C200F79BD0 /* AC_FileHandle.cpp in Sources */,
 				CF1C0C9414E8477100F79BD0 /* AC_FileHandleForWriting.cpp in Sources */,
 				CF1C0C9914E8502300F79BD0 /* C_BinaryFileWrite.cpp in Sources */,
+				CFE71EC515010F3500EAD989 /* cEnumerator_range.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2460,6 +2467,7 @@
 				CF1C0C9014E844C200F79BD0 /* AC_FileHandle.cpp in Sources */,
 				CF1C0C9514E8477100F79BD0 /* AC_FileHandleForWriting.cpp in Sources */,
 				CF1C0C9A14E8502300F79BD0 /* C_BinaryFileWrite.cpp in Sources */,
+				CFE71EC615010F3500EAD989 /* cEnumerator_range.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

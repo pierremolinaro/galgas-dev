@@ -14,6 +14,17 @@ routine testsuite_array :
   [!?pp setValueAtIndex !'?' !2 !1] ;
   log pp ;
   log "" : [[pp valueAtIndex !2 !1] string] ;
+#--- Range enumeration
+  @string s := "Range enumeration:" ;
+  for i in [@range new !4 ! 3] do
+    s.= " " . i ;
+  end for ;
+  log s ;
+  s := "Range reverse enumeration:" ;
+  for i in reverse [@range new !4 ! 3] do
+    s.= " " . i ;
+  end for ;
+  log s ;
   for i in [p rangeForAxis !0] do
     message "i = " . i . " :\n" ;
     for j in [p rangeForAxis !1] do

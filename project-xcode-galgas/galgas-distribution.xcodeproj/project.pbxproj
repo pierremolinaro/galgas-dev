@@ -381,6 +381,8 @@
 		CFE167830E8E7A2B00AFDAFC /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CFE167820E8E7A2B00AFDAFC /* main.m */; };
 		CFE4FC19114E4C9000DB2D43 /* semanticGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE4FC17114E4C9000DB2D43 /* semanticGeneration.cpp */; };
 		CFE4FC1A114E4C9000DB2D43 /* semanticGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE4FC17114E4C9000DB2D43 /* semanticGeneration.cpp */; };
+		CFE71ED615011E0C00EAD989 /* cEnumerator_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE71ED415011E0C00EAD989 /* cEnumerator_range.cpp */; };
+		CFE71ED715011E0C00EAD989 /* cEnumerator_range.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFE71ED415011E0C00EAD989 /* cEnumerator_range.cpp */; };
 		CFECE4670FEFA5270031D087 /* OC_Lexique.m in Sources */ = {isa = PBXBuildFile; fileRef = CFECE4650FEFA5270031D087 /* OC_Lexique.m */; };
 		CFEF3A7B12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */; };
 		CFEF3A7C12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */; };
@@ -958,6 +960,8 @@
 		CFE26D190C1327B90066ACB3 /* programSLRgrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = programSLRgrammar.h; sourceTree = "<group>"; };
 		CFE4FC17114E4C9000DB2D43 /* semanticGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticGeneration.cpp; sourceTree = "<group>"; };
 		CFE4FC18114E4C9000DB2D43 /* semanticGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticGeneration.h; sourceTree = "<group>"; };
+		CFE71ED415011E0C00EAD989 /* cEnumerator_range.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cEnumerator_range.cpp; sourceTree = "<group>"; };
+		CFE71ED515011E0C00EAD989 /* cEnumerator_range.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cEnumerator_range.h; sourceTree = "<group>"; };
 		CFECE4640FEFA5270031D087 /* OC_Lexique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_Lexique.h; sourceTree = "<group>"; };
 		CFECE4650FEFA5270031D087 /* OC_Lexique.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_Lexique.m; sourceTree = "<group>"; };
 		CFEDB1A809E434C700701490 /* InfoPPC.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = InfoPPC.plist; sourceTree = SOURCE_ROOT; };
@@ -1242,6 +1246,8 @@
 				CF3D9FC41257733E0037D473 /* capSortedListElement.h */,
 				CF3D9FC51257733E0037D473 /* cGenericAbstractEnumerator.cpp */,
 				CF3D9FC61257733E0037D473 /* cGenericAbstractEnumerator.h */,
+				CFE71ED415011E0C00EAD989 /* cEnumerator_range.cpp */,
+				CFE71ED515011E0C00EAD989 /* cEnumerator_range.h */,
 				CF3D9FC71257733E0037D473 /* cSortedListElement.cpp */,
 				CF3D9FC81257733E0037D473 /* cSortedListElement.h */,
 				CF2382CF124D126000A57965 /* C_galgas_function_descriptor.cpp */,
@@ -2323,6 +2329,7 @@
 				CF1794B514E8593E00A36CB4 /* AC_FileHandle.cpp in Sources */,
 				CF1794B714E8593E00A36CB4 /* AC_FileHandleForWriting.cpp in Sources */,
 				CF1794B914E8593E00A36CB4 /* C_BinaryFileWrite.cpp in Sources */,
+				CFE71ED615011E0C00EAD989 /* cEnumerator_range.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2507,6 +2514,7 @@
 				CF1794B614E8593E00A36CB4 /* AC_FileHandle.cpp in Sources */,
 				CF1794B814E8593E00A36CB4 /* AC_FileHandleForWriting.cpp in Sources */,
 				CF1794BA14E8593E00A36CB4 /* C_BinaryFileWrite.cpp in Sources */,
+				CFE71ED715011E0C00EAD989 /* cEnumerator_range.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
