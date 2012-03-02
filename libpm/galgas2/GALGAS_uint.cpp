@@ -47,6 +47,16 @@ mUIntValue (inValue) {
 
 //---------------------------------------------------------------------------*
 
+GALGAS_uint::GALGAS_uint (const bool inValid, const PMUInt32 inValue) :
+mIsValid (inValid),
+mUIntValue (inValue) {
+  if (traceIsEnabled ()) {
+    appendTrace ("uint", inValid, cStringWithUnsigned (inValue)) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
 GALGAS_uint GALGAS_uint::constructor_max (UNUSED_LOCATION_ARGS) {
   return GALGAS_uint (PMUINT32_MAX) ;
 }

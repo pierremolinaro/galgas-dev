@@ -666,22 +666,22 @@ end rule ;
 rule <new_foreach_enumerated_object>
   ?!@forInstructionEnumeratedObjectListAST ioForeachInstructionEnumeratedObjectList
 :
-  @lstring enumerationOrder ;
-  select
-    enumerationOrder := [@lstring new !"" !here] ; # Default order
-  or
-    $variant$ ? enumerationOrder ;
-  end select ;
-  $identifier$ ? @lstring enumerationName ;
+  $identifier$ ? @lstring enumerationVariable ;
   $in$ ;
-  @semanticExpressionAST mEnumeratedExpression ;
-  <expression> ? mEnumeratedExpression ;
-  const @location endOfEnumerationExpression := here ;
+  @bool ascending ;
+  select
+    ascending := true ;
+  or
+    $reverse$ ;
+    ascending := false ;
+  end select ;
+  @semanticExpressionAST enumeratedExpression ;
+  <expression> ? enumeratedExpression ;
   ioForeachInstructionEnumeratedObjectList +=
-    !enumerationOrder
-    !enumerationName
-    !mEnumeratedExpression
-    !endOfEnumerationExpression
+    !ascending
+    !enumerationVariable
+    !enumeratedExpression
+    !here
   ;
 end rule ;
 

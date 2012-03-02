@@ -130,9 +130,9 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
         }
       }
       if (hasError || hasWarning) {
-        const NSRect rImage = {{0.0, p.y}, {16.0, 12.0}} ;
+        const NSRect rImage = {{0.0, p.y}, {16.0, 16.0}} ;
         [hasError ? errorImage : warningImage
-          drawAtPoint:rImage.origin
+          drawInRect:rImage
           fromRect:NSZeroRect
           operation:NSCompositeSourceOver
           fraction:1.0

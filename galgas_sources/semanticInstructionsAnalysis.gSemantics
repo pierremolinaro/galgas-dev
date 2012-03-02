@@ -1394,6 +1394,7 @@ override method @forInstructionAST analyzeSemanticInstruction
   ;
   [!?ioVariableMap closeOverride !mEndOf_after_branch] ;
 #--- Analyze enumerated objects
+  @localInitializedVariableList localConstantListForDoBranch [emptyList] ;
   @foreachInstructionEnumeratedObjectListForGeneration enumerationList [emptyList] ;
   foreach mEnumeratedObjectList do
   #--- Enumeration expression
@@ -1404,29 +1405,19 @@ override method @forInstructionAST analyzeSemanticInstruction
       ?enumerationExpression
     ] ;
   #--- Check object can be enumerated
-    @string enumerationOrder := [mEnumerationOrder string] ;
     const @string enumeratorCppName := "enumerator_" . [[mEndOfEnumerationExpression locationIndex] string] ;
     const @unifiedTypeMapProxy enumeratedElementType := [[enumerationExpression mType] mTypeForEnumeratedElement] ;
     if [enumeratedElementType isNull] then
       error mEndOfEnumerationExpression : "an '@" . [[enumerationExpression mType] key] . "' object cannot be enumerated" ;
     else
-  #--- Check enumeration variant
-      if enumerationOrder == "" then
-        enumerationOrder := [[[enumerationExpression mType] mEnumeratorVariants] mValueAtIndex !0] ;
-      else
-        @bool found := false ;
-        @string s := "" ;
-        foreach [[enumerationExpression mType] mEnumeratorVariants] while not found do
-          found := enumerationOrder == mValue ;
-          s .= "\n  \\" . mValue ;
-        end foreach ;
-        if not found then
-          error mEnumerationOrder: "unknown enumeration specifier; available ones are :" . s ;
-        end if ;
-      end if ;
+      localConstantListForDoBranch += !enumeratedElementType !mEnumerationVariable !enumeratorCppName . ".current ()" ;
     end if ;
   #---
-    enumerationList += !enumerationOrder !enumerationExpression !enumeratorCppName ;
+    enumerationList +=
+      !if mAscending then "up" else "down" end
+      !enumerationExpression
+      !enumeratorCppName
+    ;
   end foreach ;
 #--- While expression
   @semanticExpressionForGeneration uncheckedWhileExpression ;
@@ -1460,7 +1451,7 @@ override method @forInstructionAST analyzeSemanticInstruction
   analyzeSemanticInstructionList
     !inAnalysisContext
     !indexDeclaration
-    ![@localInitializedVariableList emptyList]
+    !localConstantListForDoBranch
     !mDoInstructionList
     !mEndOf_do_branch
     !?ioVariableMap

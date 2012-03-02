@@ -575,7 +575,7 @@ class @foreachInstructionAST extends @semanticInstructionAST {
 #---------------------------------------------------------------------------*
 
 list @forInstructionEnumeratedObjectListAST {
-  @lstring mEnumerationOrder feature nogetter ;
+  @bool mAscending feature nogetter ;
   @lstring mEnumerationVariable feature nogetter ;
   @semanticExpressionAST mEnumeratedExpression feature nogetter ;
   @location mEndOfEnumerationExpression feature nogetter ;

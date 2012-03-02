@@ -169,6 +169,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "remove",
   "replace",
   "repeat",
+  "reverse",
   "rewind",
   "root",
   "routine",

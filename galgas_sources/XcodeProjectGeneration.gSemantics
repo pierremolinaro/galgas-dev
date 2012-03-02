@@ -88,6 +88,8 @@ local routine getGALGAS_2_source_file_list
   out_fileList += !"C_galgas_CLI_Options.h" ;
   out_fileList += !"cGenericAbstractEnumerator.cpp" ;
   out_fileList += !"cGenericAbstractEnumerator.h" ;
+  out_fileList += !"cEnumerator_range.cpp" ;
+  out_fileList += !"cEnumerator_range.h" ;
   out_fileList += !"capSortedListElement.cpp" ;
   out_fileList += !"capSortedListElement.h" ;
   out_fileList += !"capCollectionElement.cpp" ;
