@@ -232,8 +232,9 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (59 types)
+--- Type list (70 types)
   @2stringlist
+  @2stringlist:element
   @A
   @A_A
   @B
@@ -242,6 +243,7 @@ LOGGING r: <@uint:5>
   @TestCategoryMethod
   @TestCategoryModifier
   @aList
+  @aList:element
   @aMap
   @abstractOverridingTestCategoryModifier
   @abstractTestCategoryModifier
@@ -256,6 +258,7 @@ LOGGING r: <@uint:5>
   @filewrapper
   @function
   @functionlist
+  @functionlist:element
   @lbool
   @lchar
   @ldouble
@@ -264,15 +267,19 @@ LOGGING r: <@uint:5>
   @lsint64
   @lstring
   @lstringlist
+  @lstringlist:element
   @luint
   @luint64
   @luintlist
+  @luintlist:element
   @maTable
   @monMapProxy
   @myList
+  @myList:element
   @myListMap
   @object
   @objectlist
+  @objectlist:element
   @overridingTestCategoryModifier
   @range
   @sint
@@ -280,6 +287,7 @@ LOGGING r: <@uint:5>
   @string
   @stringArray
   @stringlist
+  @stringlist:element
   @stringset
   @structTest
   @toto
@@ -288,10 +296,13 @@ LOGGING r: <@uint:5>
   @toto3
   @type
   @typelist
+  @typelist:element
   @uint
   @uint64
   @uint64list
+  @uint64list:element
   @uintlist
+  @uintlist:element
 --- Function list (1 function)
 LOGGING mValue: <@function:functionTest [?@uint ?@uint] -> @uint>
 <@function:functionTest [?@uint ?@uint] -> @uint>  functionTest [?@uint ?@uint] -> @uint
