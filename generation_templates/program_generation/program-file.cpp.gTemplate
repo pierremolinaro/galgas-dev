@@ -171,6 +171,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
       F_default_display_exception (e) ;
       returnCode = 1 ; // Error code
     }catch (...) {
+      printf ("**** Unknow exception ****\\n") ;
       throw ;
     }
     macroDetachSharedObject (commonLexique) ;
