@@ -41,6 +41,8 @@
   //---
     mProxy = inProxy ;
     mTaskIndex = inIndex ;
+    mOutputBufferedData = [NSMutableData new] ;
+    mSocketBufferedData = [NSMutableData new] ;
   //---
     NSArray * commandLineArray = [gCocoaGalgasPreferencesController commandLineItemArray] ;
   //--- Command line tool does actually exist ? (First argument is not "?")
@@ -80,6 +82,14 @@
       mPipe = [NSPipe pipe] ;
       [mTask setStandardOutput:mPipe] ;
       [mTask setStandardError:mPipe] ;
+    //---
+      [[NSNotificationCenter defaultCenter]
+        addObserver:self
+        selector:@selector (getDataFromTaskOutput:)
+        name:NSFileHandleReadCompletionNotification
+        object:[mPipe fileHandleForReading]
+      ] ;
+      [mPipe.fileHandleForReading readInBackgroundAndNotify] ;
     //--- http://www.cocoadev.com/index.pl?NSSocketPort
       mConnectionSocketHandle = [[NSFileHandle alloc]
         initWithFileDescriptor:mConnectionSocket.socket
@@ -117,20 +127,52 @@
   mRemoteSocketHandle = [inNotification.userInfo
     objectForKey:NSFileHandleNotificationFileHandleItem
   ] ;
+//---
+  [[NSNotificationCenter defaultCenter]
+    addObserver:self
+    selector:@selector (getDataFromTaskSocket:)
+    name:NSFileHandleReadCompletionNotification
+    object:mRemoteSocketHandle
+  ] ;
+  [mRemoteSocketHandle readInBackgroundAndNotify] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) getDataFromTaskOutput: (NSNotification *) inNotification {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  NSData * d = [[inNotification userInfo] objectForKey:NSFileHandleNotificationDataItem];
+  if ([d length] > 0) {
+    [mOutputBufferedData appendData:d] ;
+    [[inNotification object] readInBackgroundAndNotify] ;
+  }else{
+    [mProxy noteStandardOutputData:mOutputBufferedData] ;
+    mOutputBufferedDataHasBeenTransmitted = YES ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) getDataFromTaskSocket: (NSNotification *) inNotification {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  NSData * d = [[inNotification userInfo] objectForKey:NSFileHandleNotificationDataItem];
+  if ([d length] > 0) {
+    [mSocketBufferedData appendData:d] ;
+    [[inNotification object] readInBackgroundAndNotify] ;
+  }else{
+    [mProxy noteSocketData:mSocketBufferedData] ;
+    mSocketBufferedDataHasBeenTransmitted = YES ;
+  }
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) taskDidTerminate: (NSNotification *) inNotification {
-  if (nil != mProxy) {
-    NSData * data = [mPipe.fileHandleForReading readDataToEndOfFile] ;
-    [mProxy noteStandardOutputData:data] ;
-    if (nil != mRemoteSocketHandle) {
-      data = [mRemoteSocketHandle readDataToEndOfFile] ;
-      [mProxy noteSocketData:data] ;
-    }
-    [mProxy noteBuildTaskTermination:self] ;
-  }
+  [mProxy noteBuildTaskTermination:self] ;
   mTaskCompleted = YES ;
 }
 
@@ -150,7 +192,7 @@
 //---------------------------------------------------------------------------*
 
 - (BOOL) isCompleted {
-  return mTaskCompleted ;
+  return mTaskCompleted && mOutputBufferedDataHasBeenTransmitted && mSocketBufferedDataHasBeenTransmitted ;
 }
 
 //---------------------------------------------------------------------------*
