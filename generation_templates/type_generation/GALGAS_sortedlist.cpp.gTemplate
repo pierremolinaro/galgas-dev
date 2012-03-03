@@ -5,12 +5,8 @@
 //---------------------------------------------------------------------------*
 
 class cSortedListElement_%!TYPE_IDENTIFIER% : public cSortedListElement {
-//--- List attributes
-%
-    foreach ATTRIBUTE_LIST
-      do %  public : GALGAS_%![mAttributeTypeProxy identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-    end foreach
-%
+  public : GALGAS_%!TYPE_IDENTIFIER%_3A_element mObject ;
+
 //--- Constructor
   public : cSortedListElement_%!TYPE_IDENTIFIER% (%?^
   foreach ATTRIBUTE_LIST
@@ -45,22 +41,19 @@ cSortedListElement_%!TYPE_IDENTIFIER%::cSortedListElement_%!TYPE_IDENTIFIER% (%?
   end foreach
 %\n%
 !^%COMMA_LOCATION_ARGS) :
-cSortedListElement (THERE)%
+cSortedListElement (THERE),
+mObject (%
 foreach ATTRIBUTE_LIST
-  do %,\n%  %mAttribute_%![mAttributeName identifierRepresentation]% (in_%![mAttributeName identifierRepresentation]%)%
+  do %in_%![mAttributeName identifierRepresentation]
+  between %, %
 end foreach
-% {
+%) {
 }
 
 //---------------------------------------------------------------------------*
 
 bool cSortedListElement_%!TYPE_IDENTIFIER%::isValid (void) const {
-  return %
-    foreach ATTRIBUTE_LIST
-      do %mAttribute_%![mAttributeName identifierRepresentation]%.isValid ()%
-      between % && %
-    end foreach
-  % ;
+  return mObject.isValid () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -69,7 +62,7 @@ cSortedListElement * cSortedListElement_%!TYPE_IDENTIFIER%::copy (void) {
   cSortedListElement * result = NULL ;
   macroMyNew (result, cSortedListElement_%!TYPE_IDENTIFIER% (%
     foreach ATTRIBUTE_LIST
-      do %mAttribute_%![mAttributeName identifierRepresentation]
+      do %mObject.mAttribute_%![mAttributeName identifierRepresentation]
       between %, %
     end foreach
   % COMMA_HERE)) ;
@@ -84,25 +77,16 @@ void cSortedListElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, co
     %  ioString << "\\n" ;\n%
     %  ioString.writeStringMultiple ("| ", inIndentation) ;\n%
     %  ioString << %![mAttributeName utf8Representation]% ":" ;\n%
-    %  mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
+    %  mObject.mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
   end foreach
 %}
 
 //---------------------------------------------------------------------------*
 
 typeComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
-  typeComparisonResult result = kOperandNotValid ;
-  if (NULL != inOperand) {
-    result = kOperandEqual ;
-    cSortedListElement_%!TYPE_IDENTIFIER% * operand = (cSortedListElement_%!TYPE_IDENTIFIER% *) inOperand ;
-    macroValidSharedObject (operand, cSortedListElement_%!TYPE_IDENTIFIER%) ;
-%  foreach ATTRIBUTE_LIST do
-     %    if (kOperandEqual == result) {\n%
-     %      result = mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (operand->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
-     %    }\n%
-   end foreach
-%  }
-  return result ;
+  cSortedListElement_%!TYPE_IDENTIFIER% * operand = (cSortedListElement_%!TYPE_IDENTIFIER% *) inOperand ;
+  macroValidSharedObject (operand, cSortedListElement_%!TYPE_IDENTIFIER%) ;
+  return mObject.objectCompare (operand->mObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -121,9 +105,9 @@ typeComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compareForSorting (c
     %  if (result == kOperandEqual) {\n%
     %    result = %
     if mAscendingOrder then
-      %mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (operand->mAttribute_%![mAttributeName identifierRepresentation]%)%
+      %mObject.mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (operand->mObject.mAttribute_%![mAttributeName identifierRepresentation]%)%
     else
-      %operand->mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (mAttribute_%![mAttributeName identifierRepresentation]%)%
+      %operand->mObject.mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (mObject.mAttribute_%![mAttributeName identifierRepresentation]%)%
     end if
     % ;\n%
     %  }\n%
@@ -228,7 +212,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popSmallest (%?^
     macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end foreach
 %  }
 }
@@ -253,7 +237,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popGreatest (%?^
     macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end foreach
 %  }
 }
@@ -278,7 +262,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_smallest (%?^
     macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end foreach
 %  }
 }
@@ -303,7 +287,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_greatest (%?^
     macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end foreach
 %  }
 }
@@ -316,12 +300,20 @@ cGenericAbstractEnumerator () {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
 
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER%_3A_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+  const cSortedListElement_%!TYPE_IDENTIFIER% * p = (const cSortedListElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, const cSortedListElement_%!TYPE_IDENTIFIER%) ;
+  return p->mObject ;
+}
+
 %foreach ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------*\n\n%
   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cSortedListElement_%!TYPE_IDENTIFIER% * p = (const cSortedListElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
   %  macroValidSharedObject (p, const cSortedListElement_%!TYPE_IDENTIFIER%) ;\n%
-  %  return p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  %  return p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%
 end foreach
 %

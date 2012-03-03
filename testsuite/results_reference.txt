@@ -150,6 +150,11 @@ LOGGING strList: <list @myList (4 objects):
 LOGGING s: <@string:"d">
 *************************************** begin of list compare
 LOGGING comp: <@bool:true>
+*************************************** begin of sorted list test
+  index 0 : d
+  index 1 : c
+  index 2 : b
+  index 3 : a
 *************************************** begin of struct logging
 LOGGING s: <struct @structTest:<@string:"az">, <@uint:34>>
 *************************************** begin of listmap
@@ -232,7 +237,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (70 types)
+--- Type list (72 types)
   @2stringlist
   @2stringlist:element
   @A
@@ -277,6 +282,8 @@ LOGGING r: <@uint:5>
   @myList
   @myList:element
   @myListMap
+  @mySortedList
+  @mySortedList:element
   @object
   @objectlist
   @objectlist:element

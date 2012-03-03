@@ -1959,6 +1959,9 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !?modifierMap
     !?instanceMethodMap
   ;
+#--- Element type index
+  @unifiedTypeMapProxy enumeratedTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mSortedListTypeName->string . ":element" ?enumeratedTypeIndex] ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mSortedListTypeName
@@ -1983,7 +1986,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
-    ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
+    !enumeratedTypeIndex # Type for enumerated element for "for" instruction
   ] ;
 end method ;
 
@@ -3108,6 +3111,27 @@ override method @listDeclarationAST addAssociatedElement
   ioSemanticDeclarationList += ![@structDeclarationAST new
     !true
     ![@lstring new !mListTypeName->string . ":element" !mListTypeName->location]
+    !structAttributeList
+    !""
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @sortedListDeclarationAST addAssociatedElement
+  ?!@semanticDeclarationListAST ioSemanticDeclarationList
+:
+  @attributeInCollectionListAST structAttributeList [emptyList] ;
+  foreach mAttributeList do
+    structAttributeList +=
+      !mAttributeTypeName
+      !mAttributeName
+      ![@lstringlist emptyList]
+    ;
+  end foreach ;
+  ioSemanticDeclarationList += ![@structDeclarationAST new
+    !true
+    ![@lstring new !mSortedListTypeName->string . ":element" !mSortedListTypeName->location]
     !structAttributeList
     !""
   ] ;

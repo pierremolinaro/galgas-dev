@@ -2,6 +2,7 @@ program testsuite_program "version 1.0.0":
 import "testsuite_foreach_instruction.gSemantics" ;
 import "testsuite_for_instruction.gSemantics" ;
 import "testsuite_list.gSemantics" ;
+import "testsuite_sortedlist.gSemantics" ;
 import "testsuite_struct.gSemantics" ;
 import "testsuite_listmap.gSemantics" ;
 import "testsuite_map.gSemantics" ;
@@ -23,6 +24,7 @@ before {
   testsuite_foreach_instruction ;
   testsuite_for_instruction ;
   testsuite_list ;
+  testsuite_sortedlist ;
   testsuite_struct ;
   testsuite_listmap ;
   testsuite_map ;
