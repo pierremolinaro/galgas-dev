@@ -192,21 +192,21 @@ LOGGING aList: <list @aList (2 objects):
 | | mInt:<@uint:98>>
 --- test += operator listmap
 --- test foreach for listmap
-LOGGING key: <@string:"a">
-LOGGING mList: <list @aList (2 objects): 
+LOGGING key: : <@string:"a">
+LOGGING list: : <list @aList (2 objects): 
 |-at 0
 | | mString:<@string:"b">
 | | mInt:<@uint:23>
 |-at 1
 | | mString:<@string:"c">
 | | mInt:<@uint:98>>
-LOGGING key: <@string:"c">
-LOGGING mList: <list @aList (1 object): 
+LOGGING key: : <@string:"c">
+LOGGING list: : <list @aList (1 object): 
 |-at 0
 | | mString:<@string:"f">
 | | mInt:<@uint:11>>
-LOGGING key: <@string:"d">
-LOGGING mList: <list @aList (1 object): 
+LOGGING key: : <@string:"d">
+LOGGING list: : <list @aList (1 object): 
 |-at 0
 | | mString:<@string:"g">
 | | mInt:<@uint:37>>
@@ -237,7 +237,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (72 types)
+--- Type list (73 types)
   @2stringlist
   @2stringlist:element
   @A
@@ -282,6 +282,7 @@ LOGGING r: <@uint:5>
   @myList
   @myList:element
   @myListMap
+  @myListMap:element
   @mySortedList
   @mySortedList:element
   @object
