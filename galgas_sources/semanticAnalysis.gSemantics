@@ -237,6 +237,13 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+local once forbiddenKeysForStruct -> @stringset outResult :
+  outResult := [@stringset emptySet] ;
+  outResult += !"object" ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
 override method @structDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes unused inPredefinedTypes
@@ -257,6 +264,14 @@ override method @structDeclarationAST semanticAnalysis
       !hasSetter
       !hasGetter
     ;
+    if [forbiddenKeysForStruct [] hasKey !mAttributeName->string] then
+      @string m := "an attribute cannot be named:"  ;
+      for s in forbiddenKeysForStruct [] do
+        m.= " " . s ;
+      end for ;
+      m .= "; theses names are reserved" ;
+      error mAttributeName: m ;
+    end if ;
     [!?attributeMap insertKey !mAttributeName !t] ;
   end foreach ;
   ioSemanticDeclarationListForGeneration += ![@structTypeForGeneration new
@@ -429,6 +444,14 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+local once forbiddenKeysForMap -> @stringset outResult :
+  outResult := [@stringset emptySet] ;
+  outResult += !"lkey" ;
+  outResult += !"object" ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
 override method @mapDeclarationAST semanticAnalysis
   ??@semanticContext inSemanticContext
   ??@predefinedTypes inPredefinedTypes
@@ -447,6 +470,14 @@ override method @mapDeclarationAST semanticAnalysis
       !hasSetter
       !hasGetter
     ;
+    if [forbiddenKeysForMap [] hasKey !mAttributeName->string] then
+      @string m := "an attribute cannot be named:"  ;
+      for s in forbiddenKeysForMap [] do
+        m.= " " . s ;
+      end for ;
+      m .= "; theses names are reserved" ;
+      error mAttributeName: m ;
+    end if ;
     [!?attributeMap insertKey !mAttributeName !t] ;
   end foreach ;
 #--- Enter insert modifiers
