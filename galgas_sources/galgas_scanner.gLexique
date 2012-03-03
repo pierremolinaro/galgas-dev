@@ -322,6 +322,14 @@ rule '@' :
       enterCharacterIntoString !?tokenString !* ;
     while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
     end repeat ;
+    select
+    when ':' :
+      repeat
+        enterCharacterIntoString !?tokenString !* ;
+      while 'a'->'z' | 'A'->'Z' | '_' | '0'->'9' :
+    end repeat ;
+    default
+    end select ;
   default
     error incorrectTypeNameError ;
   end select ;

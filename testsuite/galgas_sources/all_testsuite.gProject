@@ -9,6 +9,7 @@ project all_testsuite -> "testsuite" :
   grammar "testsuite_grammar.gGrammar" ;
   semantics "testsuite_foreach_instruction.gSemantics" ;
   semantics "testsuite_for_instruction.gSemantics" ;
+  semantics "testsuite_sortedlist.gSemantics" ;
   semantics "testsuite_list.gSemantics" ;
   semantics "testsuite_struct.gSemantics" ;
   semantics "testsuite_listmap.gSemantics" ;
