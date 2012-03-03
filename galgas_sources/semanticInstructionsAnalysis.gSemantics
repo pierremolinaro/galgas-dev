@@ -1420,6 +1420,13 @@ override method @forInstructionAST analyzeSemanticInstruction
     ;
   end foreach ;
 #--- While expression
+  [!?ioVariableMap openOverrideForRepeatBlock] ;
+  [!?ioVariableMap openBranch] ;
+#--- Declare local constants
+  foreach localConstantListForDoBranch do
+   [!?ioVariableMap insertUsedLocalConstant !mName !mType !mCppName !mCppName] ;
+  end foreach ;
+#---
   @semanticExpressionForGeneration uncheckedWhileExpression ;
   [mWhileExpression analyzeSemanticExpression
     !inAnalysisContext
@@ -1433,6 +1440,9 @@ override method @forInstructionAST analyzeSemanticInstruction
     !uncheckedWhileExpression
     ?whileExpression
   ;
+#---
+  [!?ioVariableMap closeBranch !mEndOf_while_expression] ;
+  [!?ioVariableMap closeOverride !mEndOf_while_expression] ;
 #--- Handle index
   [!?ioVariableMap openOverrideForRepeatBlock] ;
   @string indexCppName := "" ;
