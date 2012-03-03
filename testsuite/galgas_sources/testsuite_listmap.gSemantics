@@ -37,10 +37,10 @@ routine testsuite_listmap :
 #  @myListMap mm := m . m2 ;
 #  log mm ;
   message "--- test foreach for listmap\n" ;
-  foreach m do
-    log key ;
-    log mList ;
-  end foreach ;
+  for e in m do
+    log "key: " : e->key ;
+    log "list: " : e->mList ;
+  end for ;
 end routine ;
 
 end semantics ;
