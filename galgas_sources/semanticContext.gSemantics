@@ -932,6 +932,9 @@ override method @mapDeclarationAST enterInSemanticContext
     !?modifierMap
     !?instanceMethodMap
   ;
+#--- current map type index
+  @unifiedTypeMapProxy enumeratorTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mMapTypeName->string . ":element" ?enumeratorTypeIndex] ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mMapTypeName
@@ -956,7 +959,7 @@ override method @mapDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     !withAccessorMap
     !false # Do not generate header in separate file
-    ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
+    !enumeratorTypeIndex # Type for enumerated element for "for" instruction
   ] ;
 end method ;
 
@@ -3096,6 +3099,32 @@ end method ;
 method @semanticDeclarationAST addAssociatedElement
   ?!@semanticDeclarationListAST unused ioSemanticDeclarationList
 :
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @mapDeclarationAST addAssociatedElement
+  ?!@semanticDeclarationListAST ioSemanticDeclarationList
+:
+  @attributeInCollectionListAST structAttributeList [emptyList] ;
+  structAttributeList +=
+    !["lstring" nowhere]
+    !["lkey" nowhere]
+    ![@lstringlist emptyList]
+  ;
+  foreach mAttributeList do
+    structAttributeList +=
+      !mAttributeTypeName
+      !mAttributeName
+      ![@lstringlist emptyList]
+    ;
+  end foreach ;
+  ioSemanticDeclarationList += ![@structDeclarationAST new
+    !true
+    ![@lstring new !mMapTypeName->string . ":element" !mMapTypeName->location]
+    !structAttributeList
+    !""
+  ] ;
 end method ;
 
 #---------------------------------------------------------------------------*
