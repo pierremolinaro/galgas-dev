@@ -1834,6 +1834,9 @@ override method @listDeclarationAST enterInSemanticContext
     !?modifierMap
     !?instanceMethodMap
   ;
+#--- Element type index
+  @unifiedTypeMapProxy enumeratedTypeIndex ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mListTypeName->string . ":element" ?enumeratedTypeIndex] ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mListTypeName
@@ -1858,7 +1861,7 @@ override method @listDeclarationAST enterInSemanticContext
     ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
-    ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
+    !enumeratedTypeIndex # Type for enumerated element for "for" instruction
   ] ;
 end method ;
 

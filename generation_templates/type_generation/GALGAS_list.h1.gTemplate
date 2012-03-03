@@ -4,10 +4,6 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-class cCollectionElement_%!TYPE_IDENTIFIER%  ;
-
-//---------------------------------------------------------------------------*
-
 class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_list {
 //--------------------------------- Default constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;

@@ -5,12 +5,8 @@
 //---------------------------------------------------------------------------*
 
 class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
-//--- List attributes
-%
-    foreach ATTRIBUTE_LIST
-      do %  public : GALGAS_%![mAttributeTypeProxy identifierRepresentation]% mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
-    end foreach
-%
+  public : GALGAS_%!TYPE_IDENTIFIER%_3A_element mObject ;
+
 //--- Constructor
   public : cCollectionElement_%!TYPE_IDENTIFIER% (%?^
   foreach ATTRIBUTE_LIST
@@ -42,22 +38,19 @@ cCollectionElement_%!TYPE_IDENTIFIER%::cCollectionElement_%!TYPE_IDENTIFIER% (%?
   end foreach
 %\n%
 !^%COMMA_LOCATION_ARGS) :
-cCollectionElement (THERE)%
+cCollectionElement (THERE),
+mObject (%
 foreach ATTRIBUTE_LIST
-  do %,\n%  %mAttribute_%![mAttributeName identifierRepresentation]% (in_%![mAttributeName identifierRepresentation]%)%
+  do %in_%![mAttributeName identifierRepresentation]
+  between %, %
 end foreach
-% {
+%) {
 }
 
 //---------------------------------------------------------------------------*
 
 bool cCollectionElement_%!TYPE_IDENTIFIER%::isValid (void) const {
-  return %
-    foreach ATTRIBUTE_LIST
-      do %mAttribute_%![mAttributeName identifierRepresentation]%.isValid ()%
-      between % && %
-    end foreach
-  % ;
+  return mObject.isValid () ;
 }
 
 //---------------------------------------------------------------------------*
@@ -66,7 +59,7 @@ cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
   cCollectionElement * result = NULL ;
   macroMyNew (result, cCollectionElement_%!TYPE_IDENTIFIER% (%
     foreach ATTRIBUTE_LIST
-      do %mAttribute_%![mAttributeName identifierRepresentation]
+      do %mObject.mAttribute_%![mAttributeName identifierRepresentation]
       between %, %
     end foreach
   % COMMA_HERE)) ;
@@ -81,7 +74,7 @@ void cCollectionElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, co
     %  ioString << "\\n" ;\n%
     %  ioString.writeStringMultiple ("| ", inIndentation) ;\n%
     %  ioString << %![mAttributeName utf8Representation]% ":" ;\n%
-    %  mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
+    %  mObject.mAttribute_%![mAttributeName identifierRepresentation]%.description (ioString, inIndentation) ;\n%
   end foreach
 %}
 
@@ -89,13 +82,8 @@ void cCollectionElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, co
 
 typeComparisonResult cCollectionElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
   cCollectionElement_%!TYPE_IDENTIFIER% * operand = (cCollectionElement_%!TYPE_IDENTIFIER% *) inOperand ;
-  typeComparisonResult result = kOperandEqual ;
-%  foreach ATTRIBUTE_LIST do
-     %  if (kOperandEqual == result) {\n%
-     %    result = mAttribute_%![mAttributeName identifierRepresentation]%.objectCompare (operand->mAttribute_%![mAttributeName identifierRepresentation]%) ;\n%
-     %  }\n%
-   end foreach
-%  return result ;
+  macroValidSharedObject (operand, cCollectionElement_%!TYPE_IDENTIFIER%) ;
+  return mObject.objectCompare (operand->mObject) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -157,7 +145,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::makeAttributesFromObjects (%?^%capCollectionElem
 %\n%
 !^%COMMA_LOCATION_ARGS) {
   cCollectionElement_%!TYPE_IDENTIFIER% * p = NULL ;
-  macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
+  macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%?^
   foreach ATTRIBUTE_LIST
     do %in_%![mAttributeName identifierRepresentation]
     between %,\n%!^
@@ -241,7 +229,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popFirst (%?^
     macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end foreach
 %  }
 }
@@ -266,7 +254,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popLast (%?^
     macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end foreach
 %  }
 }
@@ -291,7 +279,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_first (%?^
     macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end foreach
 %  }
 }
@@ -316,7 +304,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_last (%?^
     macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
-    %    outOperand%![IDX string] % = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   end foreach
 %  }
 }
@@ -371,7 +359,7 @@ foreach ATTRIBUTE_LIST do index IDX
   %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%
   %  if (NULL != p) {\n%
   %    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
-  %    p->mAttribute_%![mAttributeName identifierRepresentation]% = inOperand ;\n%
+  %    p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% = inOperand ;\n%
   %  }\n%
   %}\n\n%
   end if
@@ -386,7 +374,7 @@ foreach ATTRIBUTE_LIST do index IDX
     %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
     %  if (NULL != p) {\n%
     %    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
-    %    result = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %    result = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
     %  }\n%
     %  return result ;\n%
     %}\n\n%
@@ -402,12 +390,21 @@ cGenericAbstractEnumerator () {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
 
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER%_3A_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
+  const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
+  macroValidSharedObject (p, const cCollectionElement_%!TYPE_IDENTIFIER%) ;
+  return p->mObject ;
+}
+
+
 %foreach ATTRIBUTE_LIST do index IDX
   %//---------------------------------------------------------------------------*\n\n%
   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
   %  macroValidSharedObject (p, const cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
-  %  return p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  %  return p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%
 end foreach
 %
