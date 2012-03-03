@@ -20,6 +20,8 @@
   @private NSSocketPort * mConnectionSocket ;
   @private NSFileHandle * mConnectionSocketHandle ;
   @private NSFileHandle * mRemoteSocketHandle ;
+  @private NSMutableData * mSocketBufferedData ;  
+  @private BOOL mSocketBufferedDataHasBeenTransmitted ;
   
   @private BOOL mTaskCompleted ;
 }
