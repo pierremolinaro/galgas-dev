@@ -42,6 +42,7 @@
   //---
     mProxy = inProxy ;
     mTaskIndex = inIndex ;
+    mSocketBufferedData = [NSMutableData new] ;
   //---
     NSArray * commandLineArray = [gCocoaGalgasPreferencesController commandLineItemArray] ;
   //--- Command line tool does actually exist ? (First argument is not "?")
@@ -117,15 +118,35 @@
   mRemoteSocketHandle = [inNotification.userInfo
     objectForKey:NSFileHandleNotificationFileHandleItem
   ] ;
+//---
+  [[NSNotificationCenter defaultCenter]
+    addObserver:self
+    selector:@selector (getDataFromTaskSocket:)
+    name:NSFileHandleReadCompletionNotification
+    object:mRemoteSocketHandle
+  ] ;
+  [mRemoteSocketHandle readInBackgroundAndNotify] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) getDataFromTaskSocket: (NSNotification *) inNotification {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  NSData * d = [[inNotification userInfo] objectForKey:NSFileHandleNotificationDataItem];
+  if ([d length] > 0) {
+    [mSocketBufferedData appendData:d] ;
+    [[inNotification object] readInBackgroundAndNotify] ;
+  }else{
+    [mProxy noteSocketData:mSocketBufferedData] ;
+    mSocketBufferedDataHasBeenTransmitted = YES ;
+  }
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) taskDidTerminate: (NSNotification *) inNotification {
-  if ((nil != mProxy) && (nil != mRemoteSocketHandle)) {
-    NSData * data = [mRemoteSocketHandle readDataToEndOfFile] ;
-    [mProxy noteSocketData:data] ;
-  }
   [mProxy noteBuildTaskTermination:self] ;
   mTaskCompleted = YES ;
 }
@@ -146,7 +167,7 @@
 //---------------------------------------------------------------------------*
 
 - (BOOL) isCompleted {
-  return mTaskCompleted ;
+  return mTaskCompleted && mSocketBufferedDataHasBeenTransmitted ;
 }
 
 //---------------------------------------------------------------------------*
