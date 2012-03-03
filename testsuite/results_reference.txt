@@ -233,6 +233,56 @@ LOGGING m: <map @aMap (1 object):
 |-at 0: key 'g' 
 | | value:<@uint:56>>
 LOGGING loc: <@location:nowhere:1:1>
+  key 'A', value: 1
+  key 'B', value: 2
+  key 'C', value: 3
+  key 'D', value: 4
+  key 'E', value: 5
+  key 'F', value: 6
+  key 'G', value: 7
+  key 'H', value: 8
+  key 'I', value: 9
+  key 'K', value: 10
+  key 'L', value: 11
+  key 'M', value: 12
+  key 'N', value: 13
+  key 'O', value: 14
+  key 'P', value: 15
+  key 'R', value: 16
+  key 'S', value: 17
+  key 'T', value: 18
+  key 'U', value: 19
+  key 'V', value: 20
+  key 'W', value: 21
+  key 'X', value: 22
+  key 'Y', value: 23
+  key 'Z', value: 24
+  key 'a', value: 25
+  key 'b', value: 26
+  key 'c', value: 27
+  key 'd', value: 28
+  key 'e', value: 29
+  key 'f', value: 30
+  key 'g', value: 31
+  key 'h', value: 32
+  key 'i', value: 33
+  key 'j', value: 34
+  key 'k', value: 35
+  key 'l', value: 36
+  key 'm', value: 37
+  key 'n', value: 38
+  key 'o', value: 39
+  key 'p', value: 40
+  key 'q', value: 41
+  key 'r', value: 42
+  key 's', value: 43
+  key 't', value: 44
+  key 'u', value: 45
+  key 'v', value: 46
+  key 'w', value: 47
+  key 'x', value: 48
+  key 'y', value: 49
+  key 'z', value: 50
 *************************************** begin of function test
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
@@ -250,9 +300,9 @@ LOGGING r: <@uint:5>
   @aList
   @aList:element
   @aMap
+  @aMap:element
   @abstractOverridingTestCategoryModifier
   @abstractTestCategoryModifier
-  @anOtherMap
   @application
   @binaryset
   @bool
