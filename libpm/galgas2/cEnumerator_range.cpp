@@ -37,7 +37,7 @@ mCurrent (0) {
   if (mAscending) {
     mCurrent = mStart ;
   }else{
-    mCurrent = mStart + mLength ;
+    mCurrent = mStart + mLength - 1 ;
   }
 }
 
@@ -55,7 +55,7 @@ bool cEnumerator_range::hasCurrentObject (void) const {
     if (mAscending) {
       ok = mCurrent < (mStart + mLength) ;
     }else{
-      ok = mCurrent > mStart ;
+      ok = mCurrent >= mStart ;
     }
   }
   return ok ;
@@ -74,7 +74,7 @@ void cEnumerator_range::gotoNextObject (void) {
 //---------------------------------------------------------------------------*
 
 GALGAS_uint cEnumerator_range::current (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_uint (mIsValid, (PMUInt32) (mCurrent + mAscending - 1)) ;
+  return GALGAS_uint (hasCurrentObject (), (PMUInt32) (mCurrent)) ;
 }
 
 //---------------------------------------------------------------------------*
