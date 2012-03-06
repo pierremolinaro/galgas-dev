@@ -42,7 +42,7 @@
 //---------------------------------------------------------------------------*
 
 - (void) purgePreviousBuildTasks {
-  const NSUInteger n = mPreviousBuildTasks.count ;
+  // const NSUInteger n = mPreviousBuildTasks.count ;
   NSMutableString * s = [NSMutableString new] ;
   NSArray * allTasks = [mPreviousBuildTasks allObjects] ;
   [mPreviousBuildTasks removeAllObjects] ;
@@ -52,7 +52,7 @@
       [s appendString:[[allTasks objectAtIndex:idx] runningStatus]] ;
     }  
   }
-  NSLog (@"BUILD TASKS : %lu -> %lu%@", n, mPreviousBuildTasks.count, s) ;
+  // NSLog (@"BUILD TASKS : %lu -> %lu%@", n, mPreviousBuildTasks.count, s) ;
 }
 
 //---------------------------------------------------------------------------*

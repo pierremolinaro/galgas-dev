@@ -239,6 +239,7 @@ end method ;
 
 local once forbiddenKeysForStruct -> @stringset outResult :
   outResult := [@stringset emptySet] ;
+  outResult += !"description" ;
   outResult += !"object" ;
 end once ;
 
@@ -447,6 +448,7 @@ end routine ;
 local once forbiddenKeysForMap -> @stringset outResult :
   outResult := [@stringset emptySet] ;
   outResult += !"lkey" ;
+  outResult += !"description" ;
   outResult += !"object" ;
 end once ;
 
