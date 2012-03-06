@@ -155,20 +155,20 @@ cEmbeddedString::~cEmbeddedString (void) {
   void cEmbeddedString::checkEmbeddedString (LOCATION_ARGS) const {
     MF_Assert (retainCount () >= 1, "retainCount () == %lld < 1", retainCount (), 0) ;
     if (mCapacity == 0) {
-      assert_routine (UNICODE_VALUE (mString [0]) == '\0', "mString [0] (%lld) != '\\0'",
-                      (PMSInt32) UNICODE_VALUE (mString [0]), '\0' COMMA_THERE) ;
-      assert_routine (mLength == 0, "mLength (%ld) != 0", mLength, 0 COMMA_THERE) ;
+      MF_AssertThere (UNICODE_VALUE (mString [0]) == '\0', "mString [0] (%lld) != '\\0'",
+                      (PMSInt32) UNICODE_VALUE (mString [0]), '\0') ;
+      MF_AssertThere (mLength == 0, "mLength (%ld) != 0", mLength, 0) ;
     }else{
-      assert_routine (mLength <= mCapacity, "mLength (%ld) > mCapacity (%ld)", mLength, mCapacity COMMA_THERE) ;
-      assert_routine (UNICODE_VALUE (mString [mLength]) == '\0',
+      MF_AssertThere (mLength <= mCapacity, "mLength (%ld) > mCapacity (%ld)", mLength, mCapacity) ;
+      MF_AssertThere (UNICODE_VALUE (mString [mLength]) == '\0',
                       "mString [mLength] == %ld != '\\0'",
-                      (PMSInt32) UNICODE_VALUE (mString [mLength]), '\0' COMMA_THERE) ;
+                      (PMSInt32) UNICODE_VALUE (mString [mLength]), '\0') ;
       if (mEncodedCString != NULL) {
         macroValidPointer (mEncodedCString) ;
         for (PMSInt32 i=0 ; i<=mLength ; i++) {
-          assert_routine (UNICODE_VALUE (mString [i]) == (unsigned) mEncodedCString [i],
+          MF_AssertThere (UNICODE_VALUE (mString [i]) == (unsigned) mEncodedCString [i],
                           "mString [i] (%ld) != mEncodedCString [i] (%ld)",
-                          UNICODE_VALUE (mString [i]), (unsigned) mEncodedCString [i] COMMA_THERE) ;
+                          UNICODE_VALUE (mString [i]), (unsigned) mEncodedCString [i]) ;
         }
       }
     }

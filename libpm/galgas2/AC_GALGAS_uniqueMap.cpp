@@ -26,7 +26,7 @@
 #include "predefined-types.h"
 #include "capCollectionElement.h"
 #include "C_galgas_type_descriptor.h"
-#include "utilities/MF_MemoryControl.h"
+#include "utilities/MF_Assert.h"
 #include "galgas2/C_Compiler.h"
 #include "strings/unicode_string_routines.h"
 #include "collections/TC_UniqueArray.h"
@@ -1802,7 +1802,7 @@ void cSharedUniqueMapRoot::populateEnumerationArray (capCollectionElementArray &
     break ;
   case kENUMERATION_ENTER_ORDER :
   case kENUMERATION_REVERSE_ENTER_ORDER :
-    MF_Assert (false, "invalid inEnumerationOrder %lld", enumerationOrderValue (inEnumerationOrder), 0) ;
+    MF_RunTimeError ("invalid inEnumerationOrder %lld", enumerationOrderValue (inEnumerationOrder), 0) ;
     break ;
   }
   MF_Assert (mCount == ioEnumerationArray.count (), "mCount (%lld) != ioEnumerationArray.count () (%lld)", mCount, ioEnumerationArray.count ()) ;
