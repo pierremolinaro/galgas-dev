@@ -418,7 +418,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  const NSUInteger n = mPreviousBuildTasks.count ;
+  // const NSUInteger n = mPreviousBuildTasks.count ;
   NSMutableString * s = [NSMutableString new] ;
   NSArray * allTasks = [mPreviousBuildTasks allObjects] ;
   [mPreviousBuildTasks removeAllObjects] ;
@@ -428,7 +428,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       [s appendString:[[allTasks objectAtIndex:idx] runningStatus]] ;
     }  
   }
-  NSLog (@"CONTEXT TASKS : %lu -> %lu%@", n, mPreviousBuildTasks.count, s) ;
+  // NSLog (@"CONTEXT TASKS : %lu -> %lu%@", n, mPreviousBuildTasks.count, s) ;
 }
 
 //---------------------------------------------------------------------------*

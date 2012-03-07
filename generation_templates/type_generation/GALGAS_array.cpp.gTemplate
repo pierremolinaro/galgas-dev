@@ -29,6 +29,9 @@ end foreach
   private : cPtr_%!TYPE_IDENTIFIER% (const cPtr_%!TYPE_IDENTIFIER% &) ;
   private : cPtr_%!TYPE_IDENTIFIER% & operator = (const cPtr_%!TYPE_IDENTIFIER% &) ;
 
+//--- Comparison
+  public : VIRTUAL_IN_DEBUG typeComparisonResult objectCompare (const cPtr_%!TYPE_IDENTIFIER% * inOperand) const ;
+
 //--- 
 %foreach DIMENSION_LIST do
 %  public : inline PMUInt32 size%!mValue% (void) const { return mSize%!mValue% ; }
@@ -497,5 +500,42 @@ end foreach
 %
                             COMMA_THERE) ;
   }
+}
+
+//---------------------------------------------------------------------------*
+
+typeComparisonResult cPtr_%!TYPE_IDENTIFIER%::objectCompare (const cPtr_%!TYPE_IDENTIFIER% * inOperand) const {
+  typeComparisonResult result =  kOperandEqual ;
+% foreach DIMENSION_LIST do
+ %  if (kOperandEqual == result) {
+    if (mSize%!mValue% < inOperand->mSize%!mValue%) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mSize%!mValue% > inOperand->mSize%!mValue%) {
+      result = kFirstOperandGreaterThanSecond ;
+    }
+  }
+% end foreach
+%  for (PMUInt32 i=0 ; (i<(%foreach DIMENSION_LIST do%mSize%!mValue between %*% end foreach%)) && (result == kOperandEqual) ; i++) {
+    GALGAS_%!ELEMENT_TYPE_IDENTIFIER% * ptrObject1 = & (mObjectArray [i]) ;
+    GALGAS_%!ELEMENT_TYPE_IDENTIFIER% * ptrObject2 = & (inOperand->mObjectArray [i]) ;
+    if ((! ptrObject1->isValid ()) && ptrObject2->isValid ()) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (ptrObject1->isValid () && ! ptrObject2->isValid ()) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else if (ptrObject1->isValid () && ptrObject2->isValid ()) {
+      result = ptrObject1->objectCompare (* ptrObject2) ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
+  typeComparisonResult result = (isValid () && inOperand.isValid ()) ? kOperandEqual : kOperandNotValid ;
+  if (kOperandEqual == result) {
+    result = mSharedObject->objectCompare (inOperand.mSharedObject) ;
+  }
+  return result ;
 }
 

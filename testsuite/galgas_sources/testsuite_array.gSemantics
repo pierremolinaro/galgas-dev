@@ -4,6 +4,10 @@ array @stringArray : @string [3] ;
 
 array @charArray : @char [2] ;
 
+struct @myStruct {
+  @stringArray mStringArray ;
+}
+
 routine testsuite_array :
   message "*************************************** begin of array test\n" ;
   @stringArray p [new !2 !3 !4] ;

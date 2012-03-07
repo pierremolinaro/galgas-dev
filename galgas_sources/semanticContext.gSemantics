@@ -2497,7 +2497,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
     ![@stringlist emptyList]
-    !doNotGenererateObjectCompare []
+    !0
     ![@unifiedTypeMapProxyList emptyList] # addAssignOperatorDescription
     ![@stringset emptySet]
     ![@lstringlist emptyList]
