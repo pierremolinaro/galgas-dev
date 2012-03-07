@@ -287,7 +287,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (73 types)
+--- Type list (74 types)
   @2stringlist
   @2stringlist:element
   @A
@@ -335,6 +335,7 @@ LOGGING r: <@uint:5>
   @myListMap:element
   @mySortedList
   @mySortedList:element
+  @myStruct
   @object
   @objectlist
   @objectlist:element

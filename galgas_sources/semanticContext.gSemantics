@@ -754,6 +754,12 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+once elementTypeNameSuffix ->@string outResult :
+  outResult := ".element" ;
+end once ;
+
+#---------------------------------------------------------------------------*
+
 override method @mapDeclarationAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
@@ -934,7 +940,7 @@ override method @mapDeclarationAST enterInSemanticContext
   ;
 #--- current map type index
   @unifiedTypeMapProxy enumeratorTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mMapTypeName->string . ":element" ?enumeratorTypeIndex] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mMapTypeName->string . elementTypeNameSuffix [] ?enumeratorTypeIndex] ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mMapTypeName
@@ -1839,7 +1845,7 @@ override method @listDeclarationAST enterInSemanticContext
   ;
 #--- Element type index
   @unifiedTypeMapProxy enumeratedTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mListTypeName->string . ":element" ?enumeratedTypeIndex] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mListTypeName->string . elementTypeNameSuffix [] ?enumeratedTypeIndex] ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mListTypeName
@@ -1964,7 +1970,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
   ;
 #--- Element type index
   @unifiedTypeMapProxy enumeratedTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mSortedListTypeName->string . ":element" ?enumeratedTypeIndex] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mSortedListTypeName->string . elementTypeNameSuffix [] ?enumeratedTypeIndex] ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mSortedListTypeName
@@ -2580,7 +2586,7 @@ override method @listmapDeclarationAST enterInSemanticContext
   ;
 #--- Element type index
   @unifiedTypeMapProxy enumeratedTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mListmapTypeName->string . ":element" ?enumeratedTypeIndex] ;
+  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mListmapTypeName->string . elementTypeNameSuffix [] ?enumeratedTypeIndex] ;
 #--- Enter type in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mListmapTypeName
@@ -3121,7 +3127,7 @@ override method @mapDeclarationAST addAssociatedElement
   end foreach ;
   ioSemanticDeclarationList += ![@structDeclarationAST new
     !true
-    ![@lstring new !mMapTypeName->string . ":element" !mMapTypeName->location]
+    ![@lstring new !mMapTypeName->string . elementTypeNameSuffix [] !mMapTypeName->location]
     !structAttributeList
     !""
   ] ;
@@ -3142,7 +3148,7 @@ override method @listDeclarationAST addAssociatedElement
   end foreach ;
   ioSemanticDeclarationList += ![@structDeclarationAST new
     !true
-    ![@lstring new !mListTypeName->string . ":element" !mListTypeName->location]
+    ![@lstring new !mListTypeName->string . elementTypeNameSuffix [] !mListTypeName->location]
     !structAttributeList
     !""
   ] ;
@@ -3163,7 +3169,7 @@ override method @sortedListDeclarationAST addAssociatedElement
   end foreach ;
   ioSemanticDeclarationList += ![@structDeclarationAST new
     !true
-    ![@lstring new !mSortedListTypeName->string . ":element" !mSortedListTypeName->location]
+    ![@lstring new !mSortedListTypeName->string . elementTypeNameSuffix [] !mSortedListTypeName->location]
     !structAttributeList
     !""
   ] ;
@@ -3188,7 +3194,7 @@ override method @listmapDeclarationAST addAssociatedElement
 #---
   ioSemanticDeclarationList += ![@structDeclarationAST new
     !true
-    ![@lstring new !mListmapTypeName->string . ":element" !mListmapTypeName->location]
+    ![@lstring new !mListmapTypeName->string . elementTypeNameSuffix [] !mListmapTypeName->location]
     !structAttributeList
     !""
   ] ;
@@ -3206,7 +3212,7 @@ routine buildSemanticContext
   ??@location inEndOfSourceFile
   !@semanticContext outSemanticContext
 :
-#------ Create associated type (@TYPE:element) for lists, maps, ...
+#------ Create associated type (@TYPE.element) for lists, maps, ...
   @semanticDeclarationListAST semanticDeclarationList := inSemanticDeclarationList ;
   foreach inSemanticDeclarationList do
     [mSemanticDeclaration addAssociatedElement !?semanticDeclarationList] ;
