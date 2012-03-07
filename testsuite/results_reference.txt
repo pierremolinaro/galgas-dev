@@ -289,7 +289,7 @@ LOGGING r: <@uint:5>
 *************************************** begin of introspection test
 --- Type list (74 types)
   @2stringlist
-  @2stringlist:element
+  @2stringlist.element
   @A
   @A_A
   @B
@@ -298,9 +298,9 @@ LOGGING r: <@uint:5>
   @TestCategoryMethod
   @TestCategoryModifier
   @aList
-  @aList:element
+  @aList.element
   @aMap
-  @aMap:element
+  @aMap.element
   @abstractOverridingTestCategoryModifier
   @abstractTestCategoryModifier
   @application
@@ -313,7 +313,7 @@ LOGGING r: <@uint:5>
   @filewrapper
   @function
   @functionlist
-  @functionlist:element
+  @functionlist.element
   @lbool
   @lchar
   @ldouble
@@ -322,23 +322,23 @@ LOGGING r: <@uint:5>
   @lsint64
   @lstring
   @lstringlist
-  @lstringlist:element
+  @lstringlist.element
   @luint
   @luint64
   @luintlist
-  @luintlist:element
+  @luintlist.element
   @maTable
   @monMapProxy
   @myList
-  @myList:element
+  @myList.element
   @myListMap
-  @myListMap:element
+  @myListMap.element
   @mySortedList
-  @mySortedList:element
+  @mySortedList.element
   @myStruct
   @object
   @objectlist
-  @objectlist:element
+  @objectlist.element
   @overridingTestCategoryModifier
   @range
   @sint
@@ -346,7 +346,7 @@ LOGGING r: <@uint:5>
   @string
   @stringArray
   @stringlist
-  @stringlist:element
+  @stringlist.element
   @stringset
   @structTest
   @toto
@@ -355,13 +355,13 @@ LOGGING r: <@uint:5>
   @toto3
   @type
   @typelist
-  @typelist:element
+  @typelist.element
   @uint
   @uint64
   @uint64list
-  @uint64list:element
+  @uint64list.element
   @uintlist
-  @uintlist:element
+  @uintlist.element
 --- Function list (1 function)
 LOGGING mValue: <@function:functionTest [?@uint ?@uint] -> @uint>
 <@function:functionTest [?@uint ?@uint] -> @uint>  functionTest [?@uint ?@uint] -> @uint
