@@ -30,8 +30,8 @@ else
     LINKING_MESSAGE := 32-Bit Linking for Mac OS X Tiger
   else
     ifeq ($(SNOW_LEOPARD_SDK), directory)
-      COMPILER_TOOL := gcc-4.0 -m32 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.6.sdk
-      LINKER_TOOL := g++-4.0 -m32 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.6.sdk -mmacosx-version-min=10.4
+      COMPILER_TOOL := gcc -m32 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.6.sdk
+      LINKER_TOOL := g++ -m32 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.6.sdk -mmacosx-version-min=10.4
       COMPILATION_MESSAGE := 32-Bit Compiling for Mac OS X Snow Leopard
       LINKING_MESSAGE := 32-Bit Linking for Mac OS X Snow Leopard
     else

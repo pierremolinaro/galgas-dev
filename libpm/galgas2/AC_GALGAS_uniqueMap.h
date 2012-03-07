@@ -181,7 +181,7 @@ class AC_GALGAS_uniqueMapProxy : public AC_GALGAS_root {
                                               const PMSInt32 inIndentation) const ;
 
 //--------------------------------- Comparison
-  public : VIRTUAL_IN_DEBUG typeComparisonResult objectCompare (const AC_GALGAS_uniqueMapProxy & inOperand) const ;
+  public : typeComparisonResult objectCompare (const AC_GALGAS_uniqueMapProxy & inOperand) const ;
 
 } ;
 
@@ -289,7 +289,7 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
                                               const PMSInt32 inIndentation) const ;
 
 //--------------------------------- Comparison
-  public : VIRTUAL_IN_DEBUG typeComparisonResult objectCompare (const AC_GALGAS_uniqueMap & inOperand) const ;
+  public : typeComparisonResult objectCompare (const AC_GALGAS_uniqueMap & inOperand) const ;
 
 //--------------------------------- Internal methods for enumeration
   protected : VIRTUAL_IN_DEBUG void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,

@@ -20,8 +20,8 @@ ifeq ($(LEOPARD_SDK), directory)
   LINKING_MESSAGE := 64-Bit Linking (Leopard)
 else
   ifeq ($(SNOW_LEOPARD_SDK), directory)
-    COMPILER_TOOL := gcc-4.0 -m64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.6.sdk
-    LINKER_TOOL := g++-4.0 -m64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.6.sdk -mmacosx-version-min=10.5
+    COMPILER_TOOL := gcc -m64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.6.sdk
+    LINKER_TOOL := g++ -m64 -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.6.sdk -mmacosx-version-min=10.5
     STRIP_TOOL    := strip -A -n -r -u
     COMPILATION_MESSAGE := 64-Bit Compiling for Mac OS X Snow Leopard
     LINKING_MESSAGE := 64-Bit Linking for Mac OS X Snow Leopard

@@ -85,7 +85,7 @@ class AC_GALGAS_list : public AC_GALGAS_root {
                                                               const typeEnumerationOrder inEnumerationOrder) const ;
 
 //--------------------------------- Comparison
-  public : VIRTUAL_IN_DEBUG typeComparisonResult objectCompare (const AC_GALGAS_list & inOperand) const ;
+  public : typeComparisonResult objectCompare (const AC_GALGAS_list & inOperand) const ;
 
 //--- Readers
   public : VIRTUAL_IN_DEBUG GALGAS_uint reader_length (LOCATION_ARGS) const ;
@@ -232,7 +232,7 @@ class AC_GALGAS_listmap : public AC_GALGAS_root {
                                                      const typeEnumerationOrder inEnumerationOrder) const ;
 
 //--------------------------------- Comparison
-  public : VIRTUAL_IN_DEBUG typeComparisonResult objectCompare (const AC_GALGAS_listmap & inOperand) const ;
+  public : typeComparisonResult objectCompare (const AC_GALGAS_listmap & inOperand) const ;
 
 //--------------------------------- Insulate
   private : VIRTUAL_IN_DEBUG void insulateListMap (LOCATION_ARGS) ;
