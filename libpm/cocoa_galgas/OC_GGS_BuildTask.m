@@ -72,7 +72,7 @@
       [arguments addObjectsFromArray:[commandLineArray subarrayWithRange:NSMakeRange (1, [commandLineArray count]-1)]] ;
       [arguments addObject:inDocument.fileURL.path] ;
       [arguments addObject:[NSString stringWithFormat:@"--mode=xml-issues-on-port:%hu", actualPort]] ;
-      [arguments addObject:@"--no-color"] ;
+  //    [arguments addObject:@"--no-color"] ;
    //--- Create task
       mTask = [NSTask new] ;
       [mTask setLaunchPath:[commandLineArray objectAtIndex:0 HERE]] ;

@@ -275,7 +275,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                 const GALGAS_lstring & inGrammarClass,
                 const GALGAS_uint & inOriginalGrammarStartSymbol,
                 const C_String & inLexiqueName,
-                const GALGAS_location & errorLocation,
+                const GALGAS_location & inErrorLocation,
                 const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
                 const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList,
                 const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
@@ -456,6 +456,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   C_BDD_Set1 usefulSymbols (vocabularyDescriptor) ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     useful_symbols_computations (inCompiler,
+                                 inErrorLocation,
                                  inUnusedNonTerminalSymbolsForGrammar,
                                  pureBNFproductions,
                                  bddBitCount,
@@ -630,7 +631,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                       " turn on '--output-html-grammar-file' option in order to get an output file for debugging" ;
 
     }
-    inCompiler->semanticErrorAtLocation (errorLocation, errorMessage COMMA_HERE) ;
+    inCompiler->semanticErrorAtLocation (inErrorLocation, errorMessage COMMA_HERE) ;
   }else if (warningFlag) {
     C_String s ;
     s << "OK ; no error, but warning(s) step(s)" ;
@@ -652,7 +653,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     }else{
       warningMessage << "turn on '-H' command line option, and see generated '" << inTargetFileName.mAttribute_string.stringValue () << ".html' file" ;
     }
-    inCompiler->semanticWarningAtLocation (errorLocation, warningMessage COMMA_HERE) ;
+    inCompiler->semanticWarningAtLocation (inErrorLocation, warningMessage COMMA_HERE) ;
   }else if (HTMLfile != NULL) {
     HTMLfile->appendCppTitleComment ("OK (no error, no warning)", "title") ;
   }

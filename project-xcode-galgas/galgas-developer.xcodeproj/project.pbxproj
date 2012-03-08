@@ -381,6 +381,7 @@
 		CFEE63E0147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m in Sources */ = {isa = PBXBuildFile; fileRef = CFEE63DF147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m */; };
 		CFEF3A7D12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */; };
 		CFEF3A7E12A04C0F007CA2D8 /* cIndexingDictionary.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFEF3A7912A04C0F007CA2D8 /* cIndexingDictionary.cpp */; };
+		CFF5BCCC150932C700BF010F /* PMStringDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CFF5BCCB150932C700BF010F /* PMStringDebugCategory.m */; };
 		CFF8BF00126614D9001B7E61 /* cPtr_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8BEFC126614D9001B7E61 /* cPtr_object.cpp */; };
 		CFF8BF01126614D9001B7E61 /* cPtr_object.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF8BEFC126614D9001B7E61 /* cPtr_object.cpp */; };
 		CFF991AA110B6CA40055EE27 /* C_SharedObject.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFF991A8110B6CA40055EE27 /* C_SharedObject.cpp */; };
@@ -965,6 +966,8 @@
 		CFEF3A7A12A04C0F007CA2D8 /* cIndexingDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cIndexingDictionary.h; sourceTree = "<group>"; };
 		CFF253ED07B0CA1E001265A1 /* galgas_scanner.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = galgas_scanner.cpp; sourceTree = "<group>"; };
 		CFF253EE07B0CA1E001265A1 /* galgas_scanner.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = galgas_scanner.h; sourceTree = "<group>"; };
+		CFF5BCCA150932C700BF010F /* PMStringDebugCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMStringDebugCategory.h; sourceTree = "<group>"; };
+		CFF5BCCB150932C700BF010F /* PMStringDebugCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMStringDebugCategory.m; sourceTree = "<group>"; };
 		CFF8BEFC126614D9001B7E61 /* cPtr_object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = cPtr_object.cpp; sourceTree = "<group>"; };
 		CFF8BEFD126614D9001B7E61 /* cPtr_object.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cPtr_object.h; sourceTree = "<group>"; };
 		CFF98D7C058CCDE200176BCE /* galgas.1 */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = text.man; path = galgas.1; sourceTree = "<group>"; };
@@ -1149,6 +1152,8 @@
 				CF4ED37C10D9256F00B4F6AA /* PMMutableStringDebugCategory.m */,
 				CF4ED37D10D9256F00B4F6AA /* PMPointerArrayDebugCategory.h */,
 				CF4ED37E10D9256F00B4F6AA /* PMPointerArrayDebugCategory.m */,
+				CFF5BCCA150932C700BF010F /* PMStringDebugCategory.h */,
+				CFF5BCCB150932C700BF010F /* PMStringDebugCategory.m */,
 				CF4ED37F10D9256F00B4F6AA /* PMSetDebugCategory.h */,
 				CF4ED38010D9256F00B4F6AA /* PMSetDebugCategory.m */,
 			);
@@ -2513,6 +2518,7 @@
 				CF3C17A514E97BD40016A381 /* OC_GGS_BuildTaskProxy.m in Sources */,
 				CF3C17A814E97CCC0016A381 /* OC_GGS_BuildTask.m in Sources */,
 				CF5F4C2914EAEE0600CDFAF0 /* OC_GGS_ContextualHelpTask.m in Sources */,
+				CFF5BCCC150932C700BF010F /* PMStringDebugCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

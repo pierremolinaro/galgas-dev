@@ -171,10 +171,22 @@
         [issueArray addObject:issue] ;
       }else if ([@"warning" isEqualToString:node.name]) {
         warningCount ++ ;
-        NSString * file = [[[node nodesForXPath:@"./@file" error:nil] objectAtIndex:0 HERE] stringValue] ;
-        NSInteger line = [[[[node nodesForXPath:@"./@line" error:nil] objectAtIndex:0 HERE] stringValue] integerValue] ;
-        NSInteger column = [[[[node nodesForXPath:@"./@column" error:nil] objectAtIndex:0 HERE] stringValue] integerValue] ;
-        NSString * message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
+        NSString * file = @"" ;
+        if ([node nodesForXPath:@"./@file" error:nil].count > 0) {
+          file = [[[node nodesForXPath:@"./@file" error:nil] objectAtIndex:0 HERE] stringValue] ;
+        }
+        NSInteger line = 0 ;
+        if ([node nodesForXPath:@"./@line" error:nil].count > 0) {
+          line = [[[[node nodesForXPath:@"./@line" error:nil] objectAtIndex:0 HERE] stringValue] integerValue] ;
+        }
+        NSInteger column = 0 ;
+        if ([node nodesForXPath:@"./@column" error:nil].count > 0) {
+          column = [[[[node nodesForXPath:@"./@column" error:nil] objectAtIndex:0 HERE] stringValue] integerValue] ;
+        }
+        NSString * message = @"" ;
+        if ([node nodesForXPath:@"./@message" error:nil].count > 0) {
+          message = [[[node nodesForXPath:@"./@message" error:nil] objectAtIndex:0 HERE] stringValue] ;
+        }
         PMIssueDescriptor * issue = [[PMIssueDescriptor alloc]
           initWithWarningMessage:message
           URL:[NSURL fileURLWithPath:file]
@@ -210,18 +222,25 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+- (void) sendTaskOutputAttributedString: (NSAttributedString *) inAttributedString {
+  for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
+    [doc setRawOutputString:inAttributedString] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
 - (void) sendTaskOutputString: (NSString *) inString {
   NSDictionary * d = [NSDictionary dictionaryWithObjectsAndKeys:
     [NSFont fontWithName:@"Courier" size:13.0], NSFontAttributeName,
+    [NSColor orangeColor], NSForegroundColorAttributeName,
     nil
   ] ;
-  NSAttributedString * attributedString = [[NSAttributedString alloc]
+  NSAttributedString * as = [[NSAttributedString alloc]
     initWithString:inString
     attributes:d
   ] ;
-  for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
-    [doc setRawOutputString:attributedString] ;
-  }
+  [self sendTaskOutputAttributedString:as] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -249,7 +268,66 @@
 
 - (void) noteStandardOutputData: (NSData *) inData {
   NSString * message = [[NSString alloc] initWithData:inData encoding:NSUTF8StringEncoding] ;
-  [self sendTaskOutputString:message] ;
+  NSArray * messageArray = [message componentsSeparatedByString:[NSString stringWithFormat:@"%c", 0x1B]] ;
+//  NSLog (@"%lu", messageArray.count) ;
+//--- Enter first part (without any attribute)
+  NSDictionary * defaultDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+    [NSFont fontWithName:@"Courier" size:13.0], NSFontAttributeName,
+    nil
+  ] ;
+  NSMutableAttributedString * attributedString = [NSMutableAttributedString new] ;
+  [attributedString
+    appendAttributedString:[[NSAttributedString alloc]
+      initWithString:[messageArray objectAtIndex:0 HERE]
+      attributes:defaultDictionary
+    ]
+  ] ;
+//--- Send other components
+  NSMutableDictionary * componentAttributeDictionary = defaultDictionary.mutableCopy ;
+  for (NSUInteger i=1 ; i<messageArray.count ; i++) {
+    NSString * component = [messageArray objectAtIndex:i HERE] ;
+    NSUInteger idx = 0 ;
+    while ((idx < component.length) && ([component characterAtIndex:idx HERE] == '[')) {
+      idx ++ ;
+      NSUInteger code = 0 ;
+      while ((idx < component.length) && isdigit ([component characterAtIndex:idx HERE])) {
+        code *= 10 ;
+        code += [component characterAtIndex:idx HERE] - '0' ;
+        idx ++ ;
+      }
+      if ((idx < component.length) && ([component characterAtIndex:idx HERE] == 'm')) {
+        idx ++ ;
+      }
+      switch (code) {
+      case 0 : componentAttributeDictionary = defaultDictionary.mutableCopy ; break ;
+      case 30 : [componentAttributeDictionary setValue:[NSColor blackColor] forKey:NSForegroundColorAttributeName] ; break ;
+      case 31 : [componentAttributeDictionary setValue:[NSColor redColor] forKey:NSForegroundColorAttributeName] ; break ;
+      case 32 : [componentAttributeDictionary setValue:[NSColor greenColor] forKey:NSForegroundColorAttributeName] ; break ;
+      case 33 : [componentAttributeDictionary setValue:[NSColor orangeColor] forKey:NSForegroundColorAttributeName] ; break ;
+      case 34 : [componentAttributeDictionary setValue:[NSColor blueColor] forKey:NSForegroundColorAttributeName] ; break ;
+      case 35 : [componentAttributeDictionary setValue:[NSColor magentaColor] forKey:NSForegroundColorAttributeName] ; break ;
+      case 36 : [componentAttributeDictionary setValue:[NSColor cyanColor] forKey:NSForegroundColorAttributeName] ; break ;
+      case 37 : [componentAttributeDictionary setValue:[NSColor whiteColor] forKey:NSForegroundColorAttributeName] ; break ;
+      case 40 : [componentAttributeDictionary setValue:[NSColor whiteColor] forKey:NSBackgroundColorAttributeName] ; break ;
+      case 41 : [componentAttributeDictionary setValue:[NSColor redColor] forKey:NSBackgroundColorAttributeName] ; break ;
+      case 42 : [componentAttributeDictionary setValue:[NSColor greenColor] forKey:NSBackgroundColorAttributeName] ; break ;
+      case 43 : [componentAttributeDictionary setValue:[NSColor orangeColor] forKey:NSBackgroundColorAttributeName] ; break ;
+      case 44 : [componentAttributeDictionary setValue:[NSColor blueColor] forKey:NSBackgroundColorAttributeName] ; break ;
+      case 45 : [componentAttributeDictionary setValue:[NSColor magentaColor] forKey:NSBackgroundColorAttributeName] ; break ;
+      case 46 : [componentAttributeDictionary setValue:[NSColor cyanColor] forKey:NSBackgroundColorAttributeName] ; break ;
+      case 47 : [componentAttributeDictionary setValue:[NSColor whiteColor] forKey:NSBackgroundColorAttributeName] ; break ;
+      default: break ;
+      }
+    }
+    [attributedString
+      appendAttributedString:[[NSAttributedString alloc]
+        initWithString:[component substringFromIndex:idx]
+        attributes:componentAttributeDictionary
+      ]
+    ] ;
+  }
+//---
+  [self sendTaskOutputAttributedString:attributedString] ;
 }
 
 //---------------------------------------------------------------------------*

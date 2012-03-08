@@ -34,16 +34,16 @@ class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis ;
 
 //---------------------------------------------------------------------------*
 
-void
-useful_symbols_computations (C_Compiler * inCompiler,
-                             const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
-                             const cPureBNFproductionsList & inPureBNFproductions,
-                             const PMUInt16 inBDDBitCount,
-                             const cVocabulary & inVocabulary,
-                             C_HTML_FileWrite * inHTMLfile,
-                             C_BDD_Set1 & outUsefulSymbols,
-                             bool & outWarningFlag,
-                             const bool inVerboseOptionOn) ;
+void useful_symbols_computations (C_Compiler * inCompiler,
+                                  const GALGAS_location & inErrorLocation,
+                                  const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
+                                  const cPureBNFproductionsList & inPureBNFproductions,
+                                  const PMUInt16 inBDDBitCount,
+                                  const cVocabulary & inVocabulary,
+                                  C_HTML_FileWrite * inHTMLfile,
+                                  C_BDD_Set1 & outUsefulSymbols,
+                                  bool & outWarningFlag,
+                                  const bool inVerboseOptionOn) ;
 
 //---------------------------------------------------------------------------*
 

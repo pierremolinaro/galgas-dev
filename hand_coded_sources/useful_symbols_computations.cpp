@@ -94,15 +94,15 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
 
 //---------------------------------------------------------------------------*
 
-static bool
-displayUnusefulSymbols (C_Compiler * inCompiler,
-                        const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
-                        const C_BDD_Set1 & inUsefulSymbols,
-                        const PMUInt16 inBDDBitCount,
-                        C_HTML_FileWrite * inHTMLfile,
-                        const cVocabulary & inVocabulary,
-                        const PMSInt32 inIterationCount,
-                        const bool inVerboseOptionOn) {
+static bool displayUnusefulSymbols (C_Compiler * inCompiler,
+                                    const GALGAS_location & inErrorLocation,
+                                    const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
+                                    const C_BDD_Set1 & inUsefulSymbols,
+                                    const PMUInt16 inBDDBitCount,
+                                    C_HTML_FileWrite * inHTMLfile,
+                                    const cVocabulary & inVocabulary,
+                                    const PMSInt32 inIterationCount,
+                                    const bool inVerboseOptionOn) {
   TC_UniqueArray <PMUInt32> unusedNonTerminalArray ;
   cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis currentNT (inUnusedNonTerminalSymbolsForGrammar, kEnumeration_up) ;
   while (currentNT.hasCurrentObject ()) {
@@ -206,7 +206,7 @@ displayUnusefulSymbols (C_Compiler * inCompiler,
         inVocabulary.printInFile (warningMessage, symbol COMMA_HERE) ;
       }
     }
-    inCompiler->onTheFlySemanticWarning (warningMessage COMMA_HERE) ;
+    inCompiler->semanticWarningAtLocation (inErrorLocation, warningMessage COMMA_HERE) ;
   }
   
 //--- Check if there are nonterminal symbols declared as unused and actually used
@@ -237,7 +237,7 @@ displayUnusefulSymbols (C_Compiler * inCompiler,
         inVocabulary.printInFile (warningMessage, symbol COMMA_HERE) ;
       }
     }
-    inCompiler->onTheFlySemanticWarning (warningMessage COMMA_HERE) ;
+    inCompiler->semanticWarningAtLocation (inErrorLocation, warningMessage COMMA_HERE) ;
   }
 //---
   return warning ;
@@ -245,16 +245,16 @@ displayUnusefulSymbols (C_Compiler * inCompiler,
 
 //---------------------------------------------------------------------------*
 
-void
-useful_symbols_computations (C_Compiler * inCompiler,
-                             const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
-                             const cPureBNFproductionsList & inPureBNFproductions,
-                             const PMUInt16 inBDDBitCount,
-                             const cVocabulary & inVocabulary,
-                             C_HTML_FileWrite * inHTMLfile,
-                             C_BDD_Set1 & outUsefulSymbols,
-                             bool & outWarningFlag,
-                             const bool inVerboseOptionOn) {
+void useful_symbols_computations (C_Compiler * inCompiler,
+                                  const GALGAS_location & inErrorLocation,
+                                  const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
+                                  const cPureBNFproductionsList & inPureBNFproductions,
+                                  const PMUInt16 inBDDBitCount,
+                                  const cVocabulary & inVocabulary,
+                                  C_HTML_FileWrite * inHTMLfile,
+                                  C_BDD_Set1 & outUsefulSymbols,
+                                  bool & outWarningFlag,
+                                  const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
     co << "  Searching for useful nonterminal symbols... " ;
@@ -271,6 +271,7 @@ useful_symbols_computations (C_Compiler * inCompiler,
                         (PMUInt16) inVocabulary.getStartSymbol (),
                         iterationsCount) ;
   const bool warning = displayUnusefulSymbols (inCompiler,
+                                               inErrorLocation,
                                                inUnusedNonTerminalSymbolsForGrammar,
                                                outUsefulSymbols,
                                                inBDDBitCount,
