@@ -242,6 +242,7 @@ local routine build_LIBPM_COCOA_DEBUG_group
   append_m_h_files !?fileList !"PMMutableArrayDebugCategory" ;
   append_m_h_files !?fileList !"PMMutableDictionaryDebugCategory" ;
   append_m_h_files !?fileList !"PMMutableSetDebugCategory" ;
+  append_m_h_files !?fileList !"PMStringDebugCategory" ;
   append_m_h_files !?fileList !"PMMutableStringDebugCategory" ;
   append_m_h_files !?fileList !"PMPointerArrayDebugCategory" ;
   append_m_h_files !?fileList !"PMSetDebugCategory" ;
