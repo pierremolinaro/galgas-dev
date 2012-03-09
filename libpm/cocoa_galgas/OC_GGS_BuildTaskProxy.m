@@ -30,11 +30,12 @@
 
 //---------------------------------------------------------------------------*
 
-- (id) init {
+- (OC_GGS_BuildTaskProxy *) initWithDocument: (OC_GGS_Document *) inDocument {
   self = [super init] ;
   if (self) {
     mIssueArrayController = [NSArrayController new] ;
     mPreviousBuildTasks = [NSMutableSet new] ;
+    mDocument = inDocument ;
   }
   return self ;
 }
@@ -199,9 +200,7 @@
     //NSLog (@"issueArray %lu", issueArray.count) ;
     [mIssueArrayController setContent:issueArray] ;
   //--- Send issues to concerned text source coloring objects
-    for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
-      [doc.textSyntaxColoring setIssueArray:issueArray] ;
-    }
+    [mDocument.textSyntaxColoring setIssueArray:issueArray] ;
   //---
     if (nil != error) {
       [NSApp presentError:error] ;
@@ -222,14 +221,6 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-- (void) sendTaskOutputAttributedString: (NSAttributedString *) inAttributedString {
-  for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
-    [doc setRawOutputString:inAttributedString] ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
 - (void) sendTaskOutputString: (NSString *) inString {
   NSDictionary * d = [NSDictionary dictionaryWithObjectsAndKeys:
     [NSFont fontWithName:@"Courier" size:13.0], NSFontAttributeName,
@@ -240,7 +231,7 @@
     initWithString:inString
     attributes:d
   ] ;
-  [self sendTaskOutputAttributedString:as] ;
+  [mDocument setRawOutputString:as] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -327,7 +318,7 @@
     ] ;
   }
 //---
-  [self sendTaskOutputAttributedString:attributedString] ;
+  [mDocument setRawOutputString:attributedString] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -338,7 +329,7 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) buildDocument: (OC_GGS_Document *) inDocument {
+- (void) build {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
@@ -350,13 +341,13 @@
 //---
   [self sendTaskOutputString:@"Compiling…"] ;
   [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
-  [inDocument displayIssueDetailedMessage:nil] ;
+  [mDocument displayIssueDetailedMessage:nil] ;
   [mIssueArrayController setContent:[NSArray array]] ;
 //--- Create task
   [self willChangeValueForKey:@"buildTaskIsRunning"] ;
   [self willChangeValueForKey:@"buildTaskIsNotRunning"] ;
   mBuildTask = [[OC_GGS_BuildTask alloc]
-    initWithDocument:inDocument
+    initWithDocument:mDocument
     proxy:self
     index:mTaskIndex
   ] ;

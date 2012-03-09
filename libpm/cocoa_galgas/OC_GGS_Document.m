@@ -56,7 +56,7 @@
     mFileEncoding = NSUTF8StringEncoding ;
     mSourceDisplayArrayController = [NSArrayController new] ;
     self.undoManager = nil ;
-    mBuildTask = [OC_GGS_BuildTaskProxy new] ;
+    mBuildTask = [[OC_GGS_BuildTaskProxy alloc] initWithDocument:self] ;
   }
   return self;
 }
@@ -270,6 +270,18 @@
     withKeyPath:@"mRawOutputString"
     options:NULL
   ] ;
+  [mRawOutputTextView
+    bind:@"editable"
+    toObject:self
+    withKeyPath:@"no"
+    options:NULL
+  ] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (BOOL) no {
+  return NO ;
 }
 
 //---------------------------------------------------------------------------*
@@ -985,7 +997,7 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  [mBuildTask buildDocument:self] ;
+  [mBuildTask build] ;
 }
 
 //---------------------------------------------------------------------------*
