@@ -146,7 +146,7 @@
   NSData * d = [[inNotification userInfo] objectForKey:NSFileHandleNotificationDataItem];
   if ([d length] > 0) {
     [mOutputBufferedData appendData:d] ;
-    [[inNotification object] readInBackgroundAndNotify] ;
+    [inNotification.object readInBackgroundAndNotify] ;
   }else{
     [mProxy noteStandardOutputData:mOutputBufferedData] ;
     mOutputBufferedDataHasBeenTransmitted = YES ;
@@ -162,7 +162,7 @@
   NSData * d = [[inNotification userInfo] objectForKey:NSFileHandleNotificationDataItem];
   if ([d length] > 0) {
     [mSocketBufferedData appendData:d] ;
-    [[inNotification object] readInBackgroundAndNotify] ;
+    [inNotification.object readInBackgroundAndNotify] ;
   }else{
     [mProxy noteSocketData:mSocketBufferedData] ;
     mSocketBufferedDataHasBeenTransmitted = YES ;

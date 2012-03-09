@@ -177,7 +177,7 @@
 																					<int key="NSTCFlags">1</int>
 																				</object>
 																				<object class="NSTextViewSharedData" key="NSSharedData">
-																					<int key="NSFlags">1073744133</int>
+																					<int key="NSFlags">1140852997</int>
 																					<int key="NSTextCheckingTypes">0</int>
 																					<nil key="NSMarkedAttributes"/>
 																					<object class="NSColor" key="NSBackgroundColor" id="639047132">
@@ -241,13 +241,7 @@
 																						</object>
 																					</object>
 																					<nil key="NSDefaultParagraphStyle"/>
-																					<object class="NSTextFinder" key="NSTextFinder">
-																						<reference key="NSTextFinderClient" ref="907794601"/>
-																						<reference key="NSFindBarContainer" ref="500567519"/>
-																						<int key="NSTextFinderStyle">2</int>
-																						<bool key="NSIncrementalSearchingEnabled">YES</bool>
-																						<bool key="NSIncrementalSearchingShouldDimContentView">YES</bool>
-																					</object>
+																					<nil key="NSTextFinder"/>
 																					<int key="NSPreferredTextFinderStyle">2</int>
 																				</object>
 																				<int key="NSTVFlags">6</int>
@@ -274,9 +268,7 @@
 																						<integer value="5"/>
 																						<object class="NSURL">
 																							<nil key="NS.base"/>
-																							<object class="NSMutableString" key="NS.relative">
-																								<characters key="NS.bytes">file://localhost/Applications/Xcode.app/Contents/SharedFrameworks/DVTKit.framework/Resources/DVTIbeamCursor.tiff</characters>
-																							</object>
+																							<string key="NS.relative">file://localhost/Applications/Xcode.app/Contents/SharedFrameworks/DVTKit.framework/Resources/DVTIbeamCursor.tiff</string>
 																						</object>
 																					</object>
 																				</object>
@@ -987,7 +979,7 @@
 															<string key="NSFrameSize">{41, 28}</string>
 															<reference key="NSSuperview" ref="551937642"/>
 															<reference key="NSWindow"/>
-															<reference key="NSNextKeyView" ref="505799980"/>
+															<reference key="NSNextKeyView" ref="297672555"/>
 															<string key="NSReuseIdentifierKey">_NS:1480</string>
 															<object class="NSTextContainer" key="NSTextContainer" id="232942777">
 																<object class="NSLayoutManager" key="NSLayoutManager">
@@ -1115,7 +1107,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 											<string key="NSFrame">{{675, 0}, {58, 197}}</string>
 											<reference key="NSSuperview" ref="12684899"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView" ref="297672555"/>
+											<reference key="NSNextKeyView" ref="551937642"/>
 											<string key="NSReuseIdentifierKey">_NS:940</string>
 											<int key="NSsFlags">133138</int>
 											<reference key="NSVScroller" ref="505799980"/>
@@ -1146,7 +1138,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 													<string key="NSFrameSize">{716, 14}</string>
 													<reference key="NSSuperview" ref="87542055"/>
 													<reference key="NSWindow"/>
-													<reference key="NSNextKeyView" ref="972484065"/>
+													<reference key="NSNextKeyView" ref="678299274"/>
 													<string key="NSReuseIdentifierKey">_NS:1480</string>
 													<object class="NSTextContainer" key="NSTextContainer" id="598662762">
 														<object class="NSLayoutManager" key="NSLayoutManager">
@@ -1249,7 +1241,6 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 											<string key="NSFrame">{{717, 1}, {15, 194}}</string>
 											<reference key="NSSuperview" ref="897589200"/>
 											<reference key="NSWindow"/>
-											<reference key="NSNextKeyView"/>
 											<string key="NSReuseIdentifierKey">_NS:1494</string>
 											<reference key="NSTarget" ref="897589200"/>
 											<string key="NSAction">_doScroller:</string>
@@ -1274,7 +1265,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 									<string key="NSFrame">{{0, 207}, {733, 196}}</string>
 									<reference key="NSSuperview" ref="826723250"/>
 									<reference key="NSWindow"/>
-									<reference key="NSNextKeyView" ref="678299274"/>
+									<reference key="NSNextKeyView" ref="87542055"/>
 									<string key="NSReuseIdentifierKey">_NS:940</string>
 									<int key="NSsFlags">133138</int>
 									<reference key="NSVScroller" ref="972484065"/>
@@ -2780,73 +2771,6 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<bool key="EncodedWithXMLCoder">YES</bool>
-				<object class="IBPartialClassDescription">
-					<string key="className">NSDocument</string>
-					<object class="NSMutableDictionary" key="actions">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>printDocument:</string>
-							<string>revertDocumentToSaved:</string>
-							<string>runPageLayout:</string>
-							<string>saveDocument:</string>
-							<string>saveDocumentAs:</string>
-							<string>saveDocumentTo:</string>
-						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-							<string>id</string>
-						</object>
-					</object>
-					<object class="NSMutableDictionary" key="actionInfosByName">
-						<bool key="EncodedWithXMLCoder">YES</bool>
-						<object class="NSArray" key="dict.sortedKeys">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<string>printDocument:</string>
-							<string>revertDocumentToSaved:</string>
-							<string>runPageLayout:</string>
-							<string>saveDocument:</string>
-							<string>saveDocumentAs:</string>
-							<string>saveDocumentTo:</string>
-						</object>
-						<object class="NSArray" key="dict.values">
-							<bool key="EncodedWithXMLCoder">YES</bool>
-							<object class="IBActionInfo">
-								<string key="name">printDocument:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">revertDocumentToSaved:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">runPageLayout:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">saveDocument:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">saveDocumentAs:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-							<object class="IBActionInfo">
-								<string key="name">saveDocumentTo:</string>
-								<string key="candidateClassName">id</string>
-							</object>
-						</object>
-					</object>
-					<object class="IBClassDescriptionSource" key="sourceIdentifier">
-						<string key="majorKey">IBProjectSource</string>
-						<string key="minorKey">./Classes/NSDocument.h</string>
-					</object>
-				</object>
 				<object class="IBPartialClassDescription">
 					<string key="className">OC_GGS_Document</string>
 					<string key="superclassName">NSDocument</string>

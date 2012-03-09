@@ -238,6 +238,7 @@
 		CF82F11010BEDAB200F40B32 /* C_CommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF82F10E10BEDAB200F40B32 /* C_CommandLineOption.cpp */; };
 		CF82F11110BEDAB200F40B32 /* C_CommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF82F10E10BEDAB200F40B32 /* C_CommandLineOption.cpp */; };
 		CF83184E104A7A9200FDF2EC /* galgasUpdate.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF83184A104A7A9200FDF2EC /* galgasUpdate.xib */; };
+		CF832FB4150A52B4004B4339 /* PMStringDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF832FB3150A52B4004B4339 /* PMStringDebugCategory.m */; };
 		CF8D51970E46334400CFF259 /* GGSUpdateCocoaGalgas.m in Sources */ = {isa = PBXBuildFile; fileRef = CF8D51950E46334400CFF259 /* GGSUpdateCocoaGalgas.m */; };
 		CF8E30240D9EE03700EF3764 /* projectCreation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8E30220D9EE03700EF3764 /* projectCreation.cpp */; };
 		CF8E30260D9EE03700EF3764 /* projectCreation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF8E30220D9EE03700EF3764 /* projectCreation.cpp */; };
@@ -677,6 +678,8 @@
 		CF82F10E10BEDAB200F40B32 /* C_CommandLineOption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_CommandLineOption.cpp; sourceTree = "<group>"; };
 		CF82F10F10BEDAB200F40B32 /* C_CommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_CommandLineOption.h; sourceTree = "<group>"; };
 		CF83184B104A7A9200FDF2EC /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/galgasUpdate.xib; sourceTree = "<group>"; };
+		CF832FB2150A52B4004B4339 /* PMStringDebugCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMStringDebugCategory.h; sourceTree = "<group>"; };
+		CF832FB3150A52B4004B4339 /* PMStringDebugCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMStringDebugCategory.m; sourceTree = "<group>"; };
 		CF8A320F1278D21600E3EDC9 /* C_Compiler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_Compiler.h; sourceTree = "<group>"; };
 		CF8A32101278D21600E3EDC9 /* C_Lexique.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_Lexique.h; sourceTree = "<group>"; };
 		CF8A32111278D21600E3EDC9 /* cProductionNameDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cProductionNameDescriptor.h; sourceTree = "<group>"; };
@@ -1148,6 +1151,8 @@
 				CF4ED37810D9256F00B4F6AA /* PMMutableDictionaryDebugCategory.m */,
 				CF4ED37910D9256F00B4F6AA /* PMMutableSetDebugCategory.h */,
 				CF4ED37A10D9256F00B4F6AA /* PMMutableSetDebugCategory.m */,
+				CF832FB2150A52B4004B4339 /* PMStringDebugCategory.h */,
+				CF832FB3150A52B4004B4339 /* PMStringDebugCategory.m */,
 				CF4ED37B10D9256F00B4F6AA /* PMMutableStringDebugCategory.h */,
 				CF4ED37C10D9256F00B4F6AA /* PMMutableStringDebugCategory.m */,
 				CF4ED37D10D9256F00B4F6AA /* PMPointerArrayDebugCategory.h */,
@@ -2145,6 +2150,7 @@
 				CFAD135D148A4C8400ECA963 /* PMTabBarView.m in Sources */,
 				CF5F4C1E14EAEDA600CDFAF0 /* OC_GGS_BuildTaskProxy.m in Sources */,
 				CF5F4C1F14EAEDA600CDFAF0 /* OC_GGS_ContextualHelpTask.m in Sources */,
+				CF832FB4150A52B4004B4339 /* PMStringDebugCategory.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
