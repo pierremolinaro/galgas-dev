@@ -1034,9 +1034,9 @@
   #endif
   if ([[NSUserDefaults standardUserDefaults] boolForKey:@"PMLiveCompilation"]) {
     [[NSRunLoop currentRunLoop]
-      performSelector:@selector (buildDocument:)
+      performSelector:@selector (build)
       target:mBuildTask
-      argument:self
+      argument:nil
       order:0
       modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]
     ] ;

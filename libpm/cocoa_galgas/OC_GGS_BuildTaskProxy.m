@@ -45,12 +45,12 @@
 - (void) purgePreviousBuildTasks {
   // const NSUInteger n = mPreviousBuildTasks.count ;
   NSMutableString * s = [NSMutableString new] ;
-  NSArray * allTasks = [mPreviousBuildTasks allObjects] ;
+  NSArray * allTasks = mPreviousBuildTasks.allObjects.copy ;
   [mPreviousBuildTasks removeAllObjects] ;
-  for (NSUInteger idx = 0 ; idx < allTasks.count ; idx ++) {
-    if (! [[allTasks objectAtIndex:idx] isCompleted]) {
-      [mPreviousBuildTasks addObject:[allTasks objectAtIndex:idx]] ;
-      [s appendString:[[allTasks objectAtIndex:idx] runningStatus]] ;
+  for (OC_GGS_BuildTask * task in allTasks) {
+    if (! task.isCompleted) {
+      [mPreviousBuildTasks addObject:task] ;
+      [s appendString:task.runningStatus] ;
     }  
   }
   // NSLog (@"BUILD TASKS : %lu -> %lu%@", n, mPreviousBuildTasks.count, s) ;
@@ -291,22 +291,22 @@
       }
       switch (code) {
       case 0 : componentAttributeDictionary = defaultDictionary.mutableCopy ; break ;
-      case 30 : [componentAttributeDictionary setValue:[NSColor blackColor] forKey:NSForegroundColorAttributeName] ; break ;
-      case 31 : [componentAttributeDictionary setValue:[NSColor redColor] forKey:NSForegroundColorAttributeName] ; break ;
-      case 32 : [componentAttributeDictionary setValue:[NSColor greenColor] forKey:NSForegroundColorAttributeName] ; break ;
-      case 33 : [componentAttributeDictionary setValue:[NSColor orangeColor] forKey:NSForegroundColorAttributeName] ; break ;
-      case 34 : [componentAttributeDictionary setValue:[NSColor blueColor] forKey:NSForegroundColorAttributeName] ; break ;
+      case 30 : [componentAttributeDictionary setValue:[NSColor blackColor]   forKey:NSForegroundColorAttributeName] ; break ;
+      case 31 : [componentAttributeDictionary setValue:[NSColor redColor]     forKey:NSForegroundColorAttributeName] ; break ;
+      case 32 : [componentAttributeDictionary setValue:[NSColor greenColor]   forKey:NSForegroundColorAttributeName] ; break ;
+      case 33 : [componentAttributeDictionary setValue:[NSColor orangeColor]  forKey:NSForegroundColorAttributeName] ; break ;
+      case 34 : [componentAttributeDictionary setValue:[NSColor blueColor]    forKey:NSForegroundColorAttributeName] ; break ;
       case 35 : [componentAttributeDictionary setValue:[NSColor magentaColor] forKey:NSForegroundColorAttributeName] ; break ;
-      case 36 : [componentAttributeDictionary setValue:[NSColor cyanColor] forKey:NSForegroundColorAttributeName] ; break ;
-      case 37 : [componentAttributeDictionary setValue:[NSColor whiteColor] forKey:NSForegroundColorAttributeName] ; break ;
-      case 40 : [componentAttributeDictionary setValue:[NSColor whiteColor] forKey:NSBackgroundColorAttributeName] ; break ;
-      case 41 : [componentAttributeDictionary setValue:[NSColor redColor] forKey:NSBackgroundColorAttributeName] ; break ;
-      case 42 : [componentAttributeDictionary setValue:[NSColor greenColor] forKey:NSBackgroundColorAttributeName] ; break ;
-      case 43 : [componentAttributeDictionary setValue:[NSColor orangeColor] forKey:NSBackgroundColorAttributeName] ; break ;
-      case 44 : [componentAttributeDictionary setValue:[NSColor blueColor] forKey:NSBackgroundColorAttributeName] ; break ;
+      case 36 : [componentAttributeDictionary setValue:[NSColor cyanColor]    forKey:NSForegroundColorAttributeName] ; break ;
+      case 37 : [componentAttributeDictionary setValue:[NSColor whiteColor]   forKey:NSForegroundColorAttributeName] ; break ;
+      case 40 : [componentAttributeDictionary setValue:[NSColor whiteColor]   forKey:NSBackgroundColorAttributeName] ; break ;
+      case 41 : [componentAttributeDictionary setValue:[NSColor redColor]     forKey:NSBackgroundColorAttributeName] ; break ;
+      case 42 : [componentAttributeDictionary setValue:[NSColor greenColor]   forKey:NSBackgroundColorAttributeName] ; break ;
+      case 43 : [componentAttributeDictionary setValue:[NSColor orangeColor]  forKey:NSBackgroundColorAttributeName] ; break ;
+      case 44 : [componentAttributeDictionary setValue:[NSColor blueColor]    forKey:NSBackgroundColorAttributeName] ; break ;
       case 45 : [componentAttributeDictionary setValue:[NSColor magentaColor] forKey:NSBackgroundColorAttributeName] ; break ;
-      case 46 : [componentAttributeDictionary setValue:[NSColor cyanColor] forKey:NSBackgroundColorAttributeName] ; break ;
-      case 47 : [componentAttributeDictionary setValue:[NSColor whiteColor] forKey:NSBackgroundColorAttributeName] ; break ;
+      case 46 : [componentAttributeDictionary setValue:[NSColor cyanColor]    forKey:NSBackgroundColorAttributeName] ; break ;
+      case 47 : [componentAttributeDictionary setValue:[NSColor whiteColor]   forKey:NSBackgroundColorAttributeName] ; break ;
       default: break ;
       }
     }
