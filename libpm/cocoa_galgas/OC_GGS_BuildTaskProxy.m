@@ -278,15 +278,15 @@
   for (NSUInteger i=1 ; i<messageArray.count ; i++) {
     NSString * component = [messageArray objectAtIndex:i HERE] ;
     NSUInteger idx = 0 ;
-    while ((idx < component.length) && ([component characterAtIndex:idx HERE] == '[')) {
+    while ((idx < component.length) && ([component characterAtIndex:idx] == '[')) {
       idx ++ ;
       NSUInteger code = 0 ;
-      while ((idx < component.length) && isdigit ([component characterAtIndex:idx HERE])) {
+      while ((idx < component.length) && isdigit ([component characterAtIndex:idx])) {
         code *= 10 ;
-        code += [component characterAtIndex:idx HERE] - '0' ;
+        code += [component characterAtIndex:idx] - '0' ;
         idx ++ ;
       }
-      if ((idx < component.length) && ([component characterAtIndex:idx HERE] == 'm')) {
+      if ((idx < component.length) && ([component characterAtIndex:idx] == 'm')) {
         idx ++ ;
       }
       switch (code) {
