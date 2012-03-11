@@ -445,7 +445,7 @@
           originalIssue:issue
         ]
       ] ;
-      // NSLog (@"%c", [mSourceTextStorage.string characterAtIndex:lineRange.location + issue.issueColumn - 1]) ;
+      // NSLog (@"%c", [mSourceTextStorage.string characterAtIndex:lineRange.location + issue.issueColumn - 1 HERE]) ;
     }
   }
 //---

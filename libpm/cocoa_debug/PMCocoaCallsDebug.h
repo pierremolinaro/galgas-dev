@@ -61,7 +61,6 @@
 
 //---------------------------------------------------------------------------*
 
-#import "PMStringDebugCategory.h"
 #import "PMArrayDebugCategory.h"
 #import "PMMutableArrayDebugCategory.h"
 #import "PMArrayControllerDebugCategory.h"
