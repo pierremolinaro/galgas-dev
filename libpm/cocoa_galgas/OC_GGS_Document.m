@@ -454,6 +454,17 @@
 
 //---------------------------------------------------------------------------*
 
+- (BOOL) validateMenuItem:(NSMenuItem *) item {
+  BOOL result = YES ;
+  if ((item.action == @selector (actionComment:)) || (item.action == @selector (actionUncomment:))) {
+    OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
+    result = selectedObject.textSyntaxColoring.tokenizer.blockComment.length > 0 ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
 #pragma mark Document Actions
 
 //---------------------------------------------------------------------------*
