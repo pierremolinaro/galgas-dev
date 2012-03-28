@@ -660,7 +660,7 @@ void ggs_printMessage (const C_String & inMessage
   C_String message = inMessage ;
   #ifndef DO_NOT_GENERATE_CHECKINGS
     if (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue) {
-      message << "[Raised from file '" << C_String (IN_SOURCE_FILE).lastPathComponent ()
+      message << "[Displayed from file '" << C_String (IN_SOURCE_FILE).lastPathComponent ()
               << "' at line " << cStringWithSigned (IN_SOURCE_LINE) << "]\n" ;
     }
   #endif

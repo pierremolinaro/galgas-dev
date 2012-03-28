@@ -39,6 +39,7 @@ mFilePath (inFilePath) {
 AC_FileHandle::~AC_FileHandle (void) {
   if (NULL != mFilePtr) {
     fclose (mFilePtr) ;
+    mFilePtr = NULL ;
   }
 }
 

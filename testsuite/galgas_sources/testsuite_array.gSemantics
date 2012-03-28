@@ -17,6 +17,7 @@ routine testsuite_array :
   @charArray pp [new !4 !3] ;
   [!?pp setValueAtIndex !'?' !2 !1] ;
   log pp ;
+  @uint v := 0 ;
   log "" : [[pp valueAtIndex !2 !1] string] ;
   for i in [p rangeForAxis !0] do
     message "i = " . i . "\n" ;
@@ -24,6 +25,17 @@ routine testsuite_array :
       message "  j = " . j . "\n" ;
       for k in [p rangeForAxis !2] do
         message "    k = " . k . "\n" ;
+        [!?p setValueAtIndex ![v string] !i !j !k] ;
+      end for ;
+    end for ;
+  end for ;
+  v := 0 ;
+  for i in [p rangeForAxis !0] do
+    for j in [p rangeForAxis !1] do
+      for k in [p rangeForAxis !2] do
+        if [v string] != [p valueAtIndex !i !j !k] then
+          message "Error for i=" . i . ", j=" . j . ", k= " . k . ": expected: " . v . ", found:" . [p valueAtIndex !i !j !k] . "\n" ;
+        end if ;
       end for ;
     end for ;
   end for ;
