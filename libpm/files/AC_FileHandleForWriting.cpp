@@ -56,6 +56,7 @@ AC_FileHandle (inFilePath, inMode) {
 AC_FileHandleForWriting::~ AC_FileHandleForWriting (void) {
   if (NULL != mFilePtr) {
     fclose (mFilePtr) ;
+    mFilePtr = NULL ;
   }
 //---
   #ifndef COMPILE_FOR_WIN32

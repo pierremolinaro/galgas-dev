@@ -245,10 +245,6 @@ void C_Compiler::printMessage (const GALGAS_string & inMessage
   if (inMessage.isValid ()) {
     C_String s ;
     s << inMessage.stringValue () ;
-  //--- Add source location information
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      s << "[Displayed from file '" << IN_SOURCE_FILE << "' at line " << cStringWithSigned (IN_SOURCE_LINE) << "]\n" ;
-    #endif
     ggs_printMessage (s COMMA_THERE) ;
   }
 }
@@ -259,10 +255,6 @@ void C_Compiler::printMessage (const C_String & inMessage
                                COMMA_LOCATION_ARGS) {
   C_String s ;
   s << inMessage ;
-//--- Add source location information
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    s << "[Displayed from file '" << IN_SOURCE_FILE << "' at line " << cStringWithSigned (IN_SOURCE_LINE) << "]\n" ;
-  #endif
   ggs_printMessage (s COMMA_THERE) ;
 }
 

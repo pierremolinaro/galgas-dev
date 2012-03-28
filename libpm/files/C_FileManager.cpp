@@ -201,6 +201,7 @@ bool C_FileManager::binaryDataWithContentOfFile (const C_String & inFilePath,
 //--- Close file
   if (inputFile != NULL) {
     const PMSInt32 result = ::fclose (inputFile) ;
+    inputFile = NULL ;
     if (ok) {
       ok = result == 0 ;
     }
