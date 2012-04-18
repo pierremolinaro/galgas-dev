@@ -42,7 +42,9 @@
 - (NSUndoManager *) undoManager ;
 - (OC_Lexique *) tokenizer ;
 - (NSURL *) sourceURL ;
-- (NSArray *) issueArray ;
+//- (NSArray *) issueArray ;
+
+- (NSRange) rangeForLine: (NSInteger) inLineNumber ;
 
 - (NSArray *) buildIndexingDictionaryArray ;
 
@@ -66,7 +68,7 @@
 
 - (void) documentHasBeenSaved ;
 
-- (void) setIssueArray: (NSArray *) inIssueArray ;
+//- (void) setIssueArray: (NSArray *) inIssueArray ;
 
 - (NSMenu *) indexMenuForRange: (NSRange) inSelectedRange
              textDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inTextDisplayDescriptor ;

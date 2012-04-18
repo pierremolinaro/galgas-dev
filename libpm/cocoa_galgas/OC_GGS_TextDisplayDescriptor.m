@@ -18,6 +18,7 @@
 #import "OC_GGS_Scroller.h"
 #import "OC_GGS_ContextualHelpTask.h"
 #import "PMCocoaCallsDebug.h"
+#import "PMIssueDescriptor.h"
 
 //---------------------------------------------------------------------------*
 
@@ -107,7 +108,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       context:NULL
     ] ;
     [self refreshShowInvisibleCharacters] ;
-    [self setIssueArray:inDelegateForSyntaxColoring.issueArray] ;
   //---
     [[NSNotificationCenter defaultCenter]
       addObserver:self
@@ -124,6 +124,8 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     if (NSMaxRange (selectionRange) <= sourceTextLength) {
       [self setSelectionRangeAndMakeItVisible:selectionRange] ;
     }
+  //--- Set issues
+    [self setTextDisplayIssueArray:mDocument.documentIssueArray] ;
   }
   return self ;
 }
@@ -626,12 +628,28 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
-- (void) setIssueArray: (NSArray *) inIssueArray {
+- (void) setTextDisplayIssueArray: (NSArray *) inIssueArray {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+    NSLog (@"%s, '%@', enter %lu issues", __PRETTY_FUNCTION__, mTextSyntaxColoring.sourceURL, inIssueArray.count) ;
   #endif
-  mIssueArray = inIssueArray ;
-  [mTextView setIssueArray:inIssueArray] ;
+  NSMutableArray * filteredArray = [NSMutableArray new] ;
+  for (PMIssueDescriptor * issue in inIssueArray) {
+    // NSLog (@"  TEST with '%@' : %@", issue.issueURL, [issue.issueURL isEqual:mTextSyntaxColoring.sourceURL] ? @"yes" : @"no") ;
+    if ([issue.issueURL isEqual:mTextSyntaxColoring.sourceURL]) {
+      const NSRange lineRange = [mTextSyntaxColoring rangeForLine:issue.issueLine] ;
+      [filteredArray
+        addObject:[[PMErrorOrWarningDescriptor alloc]
+          initWithMessage:issue.issueMessage
+          location:lineRange.location + issue.issueColumn - 1
+          isError:issue.errorKind
+          originalIssue:issue
+        ]
+      ] ;
+      // NSLog (@"%c", [mSourceTextStorage.string characterAtIndex:lineRange.location + issue.issueColumn - 1 HERE]) ;
+    }
+  }
+  mIssueArray = filteredArray ;
+  [mTextView setIssueArray:filteredArray] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -640,6 +658,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
+  // NSLog (@"mIssueArray %lu", mIssueArray.count) ;
   BOOL found = NO ;
   for (NSUInteger i=0 ; (i<mIssueArray.count) && ! found ; i++) {
     PMErrorOrWarningDescriptor * issue = [mIssueArray objectAtIndex:i] ;

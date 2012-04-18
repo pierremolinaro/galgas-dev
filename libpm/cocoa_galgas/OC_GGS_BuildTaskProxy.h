@@ -12,7 +12,6 @@
 @class OC_GGS_BuildTask ;
 
 @interface OC_GGS_BuildTaskProxy : NSObject {
-  @private NSArrayController * mIssueArrayController ;
   @private OC_GGS_BuildTask * mBuildTask ;
   @private NSMutableSet * mPreviousBuildTasks ;
 
@@ -26,8 +25,6 @@
 
 - (BOOL) buildTaskIsRunning ;
 - (BOOL) buildTaskIsNotRunning ;
-
-- (NSArrayController *) issueArrayController ;
 
 - (void) build ;
 
