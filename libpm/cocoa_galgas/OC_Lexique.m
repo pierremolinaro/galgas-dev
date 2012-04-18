@@ -234,7 +234,7 @@
 //---------------------------------------------------------------------------*
 
 - (void) buildPopupMenuItemArrayWithStyleArray:(NSArray *) inTokenArray {
-  NSMenu * menu = [[[NSMenu alloc] initWithTitle:@""]  autorelease] ;
+  NSMenu * menu = [[NSMenu alloc] initWithTitle:@""] ;
   const UInt16 ** popUpListData = [self popupListData] ;
   if (NULL != popUpListData) {
     const NSUInteger tokenCount = [inTokenArray count] ;
