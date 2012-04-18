@@ -70,7 +70,7 @@
 
 - (void) noteUndoManagerCheckPointNotification ;
 
-- (void) setIssueArray: (NSArray *) inIssueArray ; 
+- (void) setTextDisplayIssueArray: (NSArray *) inIssueArray ; 
 
 - (BOOL) makeVisibleIssue: (PMIssueDescriptor *) inIssue ;
 

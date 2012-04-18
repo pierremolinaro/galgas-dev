@@ -55,6 +55,7 @@
     #endif
     mFileEncoding = NSUTF8StringEncoding ;
     mSourceDisplayArrayController = [NSArrayController new] ;
+    mIssueArrayController = [NSArrayController new] ;
     self.undoManager = nil ;
     mBuildTask = [[OC_GGS_BuildTaskProxy alloc] initWithDocument:self] ;
   }
@@ -123,15 +124,21 @@
 //--- Tell to window controller that closing the source text window closes the document
   [inWindowController setShouldCloseDocument: YES] ;
 //--- Bindings
+  [mIssueArrayController
+    bind:@"content"
+    toObject:self
+    withKeyPath:@"mIssueArray"
+    options:nil
+  ] ;
   [mIssueTableViewColumn
     bind:@"value"
-    toObject:mBuildTask.issueArrayController
+    toObject:mIssueArrayController
     withKeyPath:@"arrangedObjects.issueMessage"
     options:nil
   ] ;
   [mIssueTableViewColumn
     bind:@"textColor"
-    toObject:mBuildTask.issueArrayController
+    toObject:mIssueArrayController
     withKeyPath:@"arrangedObjects.issueColor"
     options:nil
   ] ;
@@ -987,10 +994,10 @@
     initWithSourceString:source
     tokenizer:tokenizerForExtension (inAbsoluteURL.absoluteString.pathExtension)
     document:self
-    issueArray:mBuildTask.issueArrayController.arrangedObjects
+    issueArray:mIssueArrayController.arrangedObjects
   ] ;
 //---
-  [mBuildTask.issueArrayController
+  [mIssueArrayController
     addObserver:mSourceTextWithSyntaxColoring 
     forKeyPath:@"arrangedObjects"
     options:0
@@ -1023,6 +1030,7 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
+  [self setDocumentIssueArray:[NSArray array]] ;
   [mBuildTask build] ;
 }
 
@@ -1102,7 +1110,6 @@
     ] ;
     [doc.windowForSheet orderBack:nil] ;
     // NSLog (@"mBuildTask.issueArrayController.content %@", mBuildTask.issueArrayController.content) ;
-    [doc.textSyntaxColoring setIssueArray:mBuildTask.issueArrayController.content] ;
     result = doc.textSyntaxColoring ;
   }
 //---  
@@ -1156,7 +1163,7 @@
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   const NSInteger clickedRow = mIssueTableView.clickedRow ;
-  NSArray * arrangedObjects = mBuildTask.issueArrayController.arrangedObjects ;
+  NSArray * arrangedObjects = mIssueArrayController.arrangedObjects ;
   if ((clickedRow >= 0) && (clickedRow < (NSInteger) arrangedObjects.count)) {
     PMIssueDescriptor * issue = [arrangedObjects objectAtIndex:clickedRow HERE] ;
     NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
@@ -1381,6 +1388,26 @@
     documentAttributes:nil
   ] ;
   [self didChangeValueForKey:@"mRawOutputString"] ;
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Issue Array
+
+//---------------------------------------------------------------------------*
+
+- (void) setDocumentIssueArray: (NSArray *) issueArray {
+  [mIssueArrayController setContent:issueArray.copy] ;
+  NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
+  for (OC_GGS_TextDisplayDescriptor * tdd in sourceDisplayArray) {
+    [tdd setTextDisplayIssueArray:issueArray.copy] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSArray *) documentIssueArray {
+  return mIssueArrayController.arrangedObjects ;
 }
 
 //---------------------------------------------------------------------------*

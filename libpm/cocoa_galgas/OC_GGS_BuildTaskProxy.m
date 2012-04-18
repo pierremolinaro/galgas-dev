@@ -33,7 +33,6 @@
 - (OC_GGS_BuildTaskProxy *) initWithDocument: (OC_GGS_Document *) inDocument {
   self = [super init] ;
   if (self) {
-    mIssueArrayController = [NSArrayController new] ;
     mPreviousBuildTasks = [NSMutableSet new] ;
     mDocument = inDocument ;
   }
@@ -80,12 +79,6 @@
 
 - (BOOL) buildTaskIsNotRunning {
   return nil == mBuildTask ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (NSArrayController *) issueArrayController {
-  return mIssueArrayController ;
 }
 
 //---------------------------------------------------------------------------*
@@ -198,9 +191,8 @@
       }
     }
     //NSLog (@"issueArray %lu", issueArray.count) ;
-    [mIssueArrayController setContent:issueArray] ;
   //--- Send issues to concerned text source coloring objects
-    [mDocument.textSyntaxColoring setIssueArray:issueArray] ;
+    [mDocument setDocumentIssueArray:issueArray] ;
   //---
     if (nil != error) {
       [NSApp presentError:error] ;
@@ -342,7 +334,6 @@
   [self sendTaskOutputString:@"Compiling…"] ;
   [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
   [mDocument displayIssueDetailedMessage:nil] ;
-  [mIssueArrayController setContent:[NSArray array]] ;
 //--- Create task
   [self willChangeValueForKey:@"buildTaskIsRunning"] ;
   [self willChangeValueForKey:@"buildTaskIsNotRunning"] ;

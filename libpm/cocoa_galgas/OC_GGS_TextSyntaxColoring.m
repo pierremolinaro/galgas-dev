@@ -452,7 +452,7 @@
   mIssueArray = filteredArray ;
 //---
   for (OC_GGS_TextDisplayDescriptor * textDisplay in mTextDisplayDescriptorSet) {
-    [textDisplay setIssueArray:mIssueArray] ; 
+    [textDisplay setTextDisplayIssueArray:mIssueArray] ; 
   }
 }  
 
@@ -473,7 +473,7 @@
   mIssueArray = newIssueArray ;
 //---
   for (OC_GGS_TextDisplayDescriptor * textDisplay in mTextDisplayDescriptorSet) {
-    [textDisplay setIssueArray:mIssueArray] ; 
+    [textDisplay setTextDisplayIssueArray:mIssueArray] ; 
   }
 }
 
