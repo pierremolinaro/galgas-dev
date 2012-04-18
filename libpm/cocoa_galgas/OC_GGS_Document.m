@@ -116,7 +116,10 @@
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   [super windowControllerDidLoadNib: inWindowController];
-
+//--- Record selected tab
+  NSString * key = [NSString stringWithFormat:@"SELECTED-TAB:%@", self.fileURL.path] ;
+  const NSUInteger selection = [[NSUserDefaults standardUserDefaults] integerForKey:key] ;
+  // NSLog (@"READ %@ -> %lu", key, selection) ;
 //--- Tell to window controller that closing the source text window closes the document
   [inWindowController setShouldCloseDocument: YES] ;
 //--- Bindings
@@ -136,7 +139,7 @@
   mIssueTableView.target = self ;
   mIssueTableView.action = @selector(clicOnIssueTableView:) ;
 //--- Set up windows location
-  NSString * key = [NSString stringWithFormat: @"frame_for_source:%@", self.lastComponentOfFileName] ;
+  key = [NSString stringWithFormat: @"frame_for_source:%@", self.lastComponentOfFileName] ;
   [self.windowForSheet setFrameAutosaveName:key] ;
 
 //--- Add Split view binding
@@ -276,6 +279,18 @@
     withKeyPath:@"no"
     options:NULL
   ] ;
+//--- Open tabs
+  key = [NSString stringWithFormat:@"TABS:%@", self.fileURL.path] ;
+  NSArray * tabFiles = [[NSUserDefaults standardUserDefaults] objectForKey:key] ;
+  // NSLog (@"prefs '%@' -> %@", key, tabFiles) ;
+  for (NSString * fileAbsolutePath in tabFiles) {
+    [self findOrAddNewTabForFile:fileAbsolutePath] ;
+  }
+//--- Set selected tab
+  NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
+  if ((selection != NSNotFound) && (selection < sourceDisplayArray.count)) {
+    [mSourceDisplayArrayController setSelectionIndex:selection] ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -1116,6 +1131,18 @@
         document:self
       ] ;
       [mSourceDisplayArrayController addObject:foundSourceText] ;
+    //--- Update users preferences
+      NSMutableArray * tabFiles = [NSMutableArray new] ;
+      for (OC_GGS_TextDisplayDescriptor * source in mSourceDisplayArrayController.arrangedObjects) {
+        [tabFiles addObject:source.sourceURL.path] ;
+      }
+      [tabFiles removeObjectAtIndex:0] ; 
+      NSString * key = [NSString stringWithFormat:@"TABS:%@", self.fileURL.path] ;
+      [[NSUserDefaults standardUserDefaults]
+        setObject:tabFiles
+        forKey:key
+      ] ;
+      // NSLog (@"prefs '%@' -> %@", key, tabFiles) ;
     }
     [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:foundSourceText]] ;
   }
@@ -1172,6 +1199,9 @@
     }
     NSArray * arrangedObjects = mSourceDisplayArrayController.arrangedObjects ;
     const NSUInteger sel = mSourceDisplayArrayController.selectionIndex ;
+    NSString * key = [NSString stringWithFormat:@"SELECTED-TAB:%@", self.fileURL.path] ;
+    [[NSUserDefaults standardUserDefaults] setInteger:sel forKey:key] ;
+    // NSLog (@"WRITE %@ -> %lu", key, sel) ;
     if (sel != NSNotFound) {
       OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel HERE] ;
       object.scrollView.frame = mSourceHostView.bounds ;
@@ -1192,6 +1222,7 @@
       NSArray * arrangedObjects = mSourceDisplayArrayController.arrangedObjects ;
       OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel HERE] ;
       [object populatePopUpButton] ;
+      [object selectEntryPopUp] ;
     }
   }
 }

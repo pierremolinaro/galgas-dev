@@ -26,6 +26,10 @@
 
 //---------------------------------------------------------------------------*
 
+//#define DEBUG_MESSAGES
+
+//---------------------------------------------------------------------------*
+
 static inline NSInteger imin (const NSInteger a, const NSInteger b) { return a < b ? a : b ; }
 static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a > b ? a : b ; }
 
@@ -111,6 +115,15 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       name: NSTextStorageDidProcessEditingNotification
       object:mTextSyntaxColoring.textStorage
     ] ;
+  //--- Set selection
+    NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocument.fileURL.path, mTextSyntaxColoring.sourceURL.path] ;
+    NSString * selectionRangeString = [[NSUserDefaults standardUserDefaults] objectForKey:key] ;
+    // NSLog (@"READ '%@' -> %@", key, selectionRangeString) ;
+    const NSRange selectionRange = NSRangeFromString (selectionRangeString) ;
+    const NSUInteger sourceTextLength = mTextSyntaxColoring.textStorage.length ;
+    if (NSMaxRange (selectionRange) <= sourceTextLength) {
+      [self setSelectionRangeAndMakeItVisible:selectionRange] ;
+    }
   }
   return self ;
 }
@@ -491,6 +504,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #endif
   NSMenu * menu = [self menuForEntryPopUpButton] ;
   NSPopUpButton * entryListPopUpButton = [self.document entryListPopUpButton] ;
+  [entryListPopUpButton setAutoenablesItems:NO] ;
 
   const NSUInteger n = [menu numberOfItems] ;
   if (n == 0) {
@@ -499,6 +513,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       action:NULL
       keyEquivalent:@""
     ] ;
+    [[menu itemAtIndex:0] setEnabled:NO] ;
     [entryListPopUpButton setEnabled:NO] ;
   }else{
     for (NSUInteger i=0 ; i<n ; i++) {
@@ -509,7 +524,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     [entryListPopUpButton setEnabled:YES] ;
   }
   [entryListPopUpButton setMenu:menu] ;
-  //NSLog (@"mEntryListPopUpButton %@", mEntryListPopUpButton) ;
+  // NSLog (@"entryListPopUpButton %@", entryListPopUpButton) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -574,10 +589,17 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   mTextSelectionStart = mTextView.selectedRange.location ;
   [self  didChangeValueForKey:@"textSelectionStart"] ;
   [mRulerView setNeedsDisplay:YES] ;
-//  [self populatePopUpButton] ;
+  [self populatePopUpButton] ;
   if (! [mDocument isContextualHelpTextViewCollapsed]) {
     [self performContextualHelpAtRange:mTextView.selectedRange] ;
   }
+//---
+  NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocument.fileURL.path, mTextSyntaxColoring.sourceURL.path] ;
+  [[NSUserDefaults standardUserDefaults]
+    setObject:NSStringFromRange (mTextView.selectedRange)
+    forKey:key
+  ] ;
+  // NSLog (@"WRITE '%@' -> %@", key, NSStringFromRange (mTextView.selectedRange)) ;
 }
 
 //---------------------------------------------------------------------------*
