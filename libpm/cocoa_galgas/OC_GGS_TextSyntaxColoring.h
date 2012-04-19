@@ -43,7 +43,7 @@
 - (NSUndoManager *) undoManager ;
 - (OC_Lexique *) tokenizer ;
 - (OC_GGS_Document *) document ;
-
+- (NSUInteger) textDisplayDescriptorCount ;
 - (NSRange) rangeForLine: (NSInteger) inLineNumber ;
 
 - (NSArray *) buildIndexingDictionaryArray ;

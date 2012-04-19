@@ -65,6 +65,34 @@
 
 //---------------------------------------------------------------------------*
 
+- (void) makeWindowControllers {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  const BOOL isHidden = [[NSUserDefaults standardUserDefaults]
+    boolForKey:[NSString stringWithFormat:@"HIDDEN:%@", self.fileURL.path]
+  ] ;
+  if (! isHidden) {
+    [super makeWindowControllers] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+/*- (void) showWindows {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  const BOOL isHidden = [[NSUserDefaults standardUserDefaults]
+    boolForKey:[NSString stringWithFormat:@"HIDDEN:%@", self.fileURL.path]
+  ] ;
+  if (! isHidden) {
+    [super showWindows] ;
+  }
+}*/
+
+//---------------------------------------------------------------------------*
+
 - (NSString *) sourceStringForGlobalSearch {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
@@ -647,7 +675,6 @@
     [super saveDocument:nil] ;
   }else{
     NSArray * sourceDisplayArray = mSourceDisplayArrayController.selectedObjects ;
-    
     if (sourceDisplayArray.count == 1) {
       OC_GGS_TextDisplayDescriptor * selectedObject = [sourceDisplayArray objectAtIndex:0] ;
       OC_GGS_Document * doc = selectedObject.textSyntaxColoring.document ;
@@ -781,45 +808,27 @@
 #pragma mark Document Close
 
 //---------------------------------------------------------------------------*
-//                                                                           *
-//       D I S P L A Y    A     S H E E T    B E F O R E    C L O S I N G    *
-//                                                                           *
-//---------------------------------------------------------------------------*
 
-- (void) displaySheetBeforeClosing: (NSAlert *) inAlert {
+- (void) canCloseDocumentWithDelegate:(id) inDelegate
+         shouldCloseSelector:(SEL) inShouldCloseSelector
+         contextInfo:(void *) inContextInfo {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  [inAlert
-    beginSheetModalForWindow:[self windowForSheet]
-    modalDelegate:self
-    didEndSelector:@selector (closeDocumentOnAlertEnding:returnCode:contextInfo:)
-    contextInfo:NULL
+  [[NSUserDefaults standardUserDefaults]
+    setBool:mSourceTextWithSyntaxColoring.textDisplayDescriptorCount > 1
+    forKey:[NSString stringWithFormat:@"HIDDEN:%@", self.fileURL.path]
   ] ;
+  if (mSourceTextWithSyntaxColoring.textDisplayDescriptorCount > 1) {
+    [self.windowForSheet orderOut:nil] ;
+  }else{
+    [super
+      canCloseDocumentWithDelegate:inDelegate
+      shouldCloseSelector:inShouldCloseSelector
+      contextInfo:inContextInfo
+    ] ;
+  }
 }
-
-//---------------------------------------------------------------------------*
-
-- (void) closeDocumentOnAlertEnding:(NSAlert *) inAlert
-         returnCode:(int)returnCode
-         contextInfo:(void *)contextInfo{
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  NSDocumentController * dc = [NSDocumentController sharedDocumentController] ;
-  [dc removeDocument:self] ;
-}
-
-//---------------------------------------------------------------------------*
-//                                                                           *
-//       D O C U M E N T    W I N D O W    D I D    R E S I Z E              *
-//                     N O T I F I C A T I O N                               *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-- (BOOL) shouldCloseDocument {
-  return YES ;
-} 
 
 //---------------------------------------------------------------------------*
 
