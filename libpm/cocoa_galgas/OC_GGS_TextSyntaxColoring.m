@@ -98,6 +98,12 @@
 
 //---------------------------------------------------------------------------*
 
+- (NSUInteger) textDisplayDescriptorCount {
+  return mTextDisplayDescriptorSet.count ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (OC_GGS_TextSyntaxColoring *) initWithSourceString: (NSString *) inSource
                                 tokenizer: (OC_Lexique *) inTokenizer
                                 document: (OC_GGS_Document *) inDocument
