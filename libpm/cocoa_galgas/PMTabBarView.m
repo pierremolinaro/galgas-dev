@@ -97,7 +97,10 @@
 //---------------------------------------------------------------------------*
 
 - (void) removeTabAction: (PMButtonWithRemove *) inSender {
-  [mTarget performSelector:mRemoveSourceTabAction withObject:inSender] ;
+  [mTarget
+    performSelector:mRemoveSourceTabAction
+    withObject:[mObservedArray objectAtIndex:inSender.tag HERE]
+  ] ;
 }
 
 //---------------------------------------------------------------------------*

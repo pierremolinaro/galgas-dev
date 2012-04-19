@@ -57,6 +57,7 @@
     mSourceDisplayArrayController = [NSArrayController new] ;
     mIssueArrayController = [NSArrayController new] ;
     self.undoManager = nil ;
+    self.hasUndoManager = NO ;
     mBuildTask = [[OC_GGS_BuildTaskProxy alloc] initWithDocument:self] ;
   }
   return self;
@@ -355,11 +356,22 @@
 
 //---------------------------------------------------------------------------*
 
-- (IBAction) removeSelectedSourceViewAction: (id) inSender {
+- (IBAction) removeSelectedSourceViewAction: (OC_GGS_TextDisplayDescriptor *) inTextDisplayDescriptor {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  [mSourceDisplayArrayController remove:inSender] ;
+  [mSourceDisplayArrayController removeObject:inTextDisplayDescriptor] ;
+//--- Update users preferences
+  NSMutableArray * tabFiles = [NSMutableArray new] ;
+  for (OC_GGS_TextDisplayDescriptor * source in mSourceDisplayArrayController.arrangedObjects) {
+    [tabFiles addObject:source.sourceURL.path] ;
+  }
+  [tabFiles removeObjectAtIndex:0] ; 
+  NSString * key = [NSString stringWithFormat:@"TABS:%@", self.fileURL.path] ;
+  [[NSUserDefaults standardUserDefaults]
+    setObject:tabFiles
+    forKey:key
+  ] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -483,6 +495,12 @@
     result = selectedObject.textSyntaxColoring.tokenizer.blockComment.length > 0 ;
   }
   return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) saveAllDocuments: (id) inSender {
+  [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1054,8 +1072,7 @@
   for (NSUInteger i=0 ; (i<sourceDisplayArray.count) && ! isEdited ; i++) {
     OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:i HERE] ;
     OC_GGS_TextSyntaxColoring * textSyntaxColoring = textDisplay.textSyntaxColoring ;
-    NSUndoManager * undoManager = textSyntaxColoring.undoManager ;
-    isEdited = undoManager.canUndo ;
+    isEdited = textSyntaxColoring.isDirty ;
   }
   [self updateChangeCount:isEdited ? NSChangeDone : NSChangeCleared] ;
 }
