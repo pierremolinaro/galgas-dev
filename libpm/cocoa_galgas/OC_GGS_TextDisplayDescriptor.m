@@ -116,7 +116,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       object:mTextSyntaxColoring.textStorage
     ] ;
   //--- Set selection
-    NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocument.fileURL.path, mTextSyntaxColoring.sourceURL.path] ;
+    NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocument.fileURL.path, mTextSyntaxColoring.document.fileURL.path] ;
     NSString * selectionRangeString = [[NSUserDefaults standardUserDefaults] objectForKey:key] ;
     // NSLog (@"READ '%@' -> %@", key, selectionRangeString) ;
     const NSRange selectionRange = NSRangeFromString (selectionRangeString) ;
@@ -170,7 +170,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 //---------------------------------------------------------------------------*
 
 - (NSURL *) sourceURL {
-  return mTextSyntaxColoring.sourceURL ;
+  return mTextSyntaxColoring.document.fileURL ;
 }
 
 //---------------------------------------------------------------------------*
@@ -596,7 +596,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     [self performContextualHelpAtRange:mTextView.selectedRange] ;
   }
 //---
-  NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocument.fileURL.path, mTextSyntaxColoring.sourceURL.path] ;
+  NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocument.fileURL.path, mTextSyntaxColoring.document.fileURL.path] ;
   [[NSUserDefaults standardUserDefaults]
     setObject:NSStringFromRange (mTextView.selectedRange)
     forKey:key
@@ -635,7 +635,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   NSMutableArray * filteredArray = [NSMutableArray new] ;
   for (PMIssueDescriptor * issue in inIssueArray) {
     // NSLog (@"  TEST with '%@' : %@", issue.issueURL, [issue.issueURL isEqual:mTextSyntaxColoring.sourceURL] ? @"yes" : @"no") ;
-    if ([issue.issueURL isEqual:mTextSyntaxColoring.sourceURL]) {
+    if ([issue.issueURL isEqual:mTextSyntaxColoring.document.fileURL]) {
       const NSRange lineRange = [mTextSyntaxColoring rangeForLine:issue.issueLine] ;
       [filteredArray
         addObject:[[PMErrorOrWarningDescriptor alloc]
