@@ -13,7 +13,6 @@
 @class OC_GGS_Document ;
 
 @interface OC_GGS_TextSyntaxColoring : NSObject {
-  @private NSURL * mSourceURL ;
   @private NSTextStorage * mSourceTextStorage ;
   @private NSMutableSet * mTextDisplayDescriptorSet ; // Set of OC_GGS_TextDisplayDescriptor
   @private OC_Lexique * mTokenizer ;
@@ -43,8 +42,7 @@
 - (NSTextStorage *) textStorage ;
 - (NSUndoManager *) undoManager ;
 - (OC_Lexique *) tokenizer ;
-- (NSURL *) sourceURL ;
-//- (NSArray *) issueArray ;
+- (OC_GGS_Document *) document ;
 
 - (NSRange) rangeForLine: (NSInteger) inLineNumber ;
 
@@ -69,8 +67,6 @@
 - (NSRange) commentRange: (NSRange) initialSelectedRange ;
 
 - (void) documentHasBeenSaved ;
-
-//- (void) setIssueArray: (NSArray *) inIssueArray ;
 
 - (NSMenu *) indexMenuForRange: (NSRange) inSelectedRange
              textDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inTextDisplayDescriptor ;

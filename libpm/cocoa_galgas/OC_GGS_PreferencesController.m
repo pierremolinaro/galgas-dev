@@ -1067,8 +1067,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   // NSLog (@"infoDictionary '%@'", infoDictionary) ;
   NSArray * allDocumentTypes = [infoDictionary objectForKey:@"CFBundleDocumentTypes"] ;
   // NSLog (@"allDocumentTypes '%@'", allDocumentTypes) ;
-  unsigned i ;
-  for (i=0 ; i<[allDocumentTypes count] ; i++) {
+  for (NSUInteger i=0 ; i<[allDocumentTypes count] ; i++) {
     NSDictionary * docTypeDict = [allDocumentTypes objectAtIndex:i HERE] ;
     // NSLog (@"docTypeDict '%@'", docTypeDict) ;
     NSArray * documentTypeExtensions = [docTypeDict objectForKey:@"CFBundleTypeExtensions"] ;

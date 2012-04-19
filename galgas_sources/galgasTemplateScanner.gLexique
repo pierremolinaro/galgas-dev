@@ -34,7 +34,7 @@ replace "\\\\" -> "\\" ;
 @char charValue ;
 @string tokenString ;
 
-  style keywordsStyle -> "Keywords" ;
+style keywordsStyle -> "Keywords" ;
 style delimitersStyle -> "Delimiters" ;
 style nonTerminalStyle -> "Non Terminal Symbols" ;
 style variantStyle -> "Variant Symbols" ;

@@ -641,6 +641,22 @@
 #pragma mark Document Save
 
 //---------------------------------------------------------------------------*
+
+- (void) saveDocument:(id) inSender {
+  if (nil == inSender) {
+    [super saveDocument:nil] ;
+  }else{
+    NSArray * sourceDisplayArray = mSourceDisplayArrayController.selectedObjects ;
+    
+    if (sourceDisplayArray.count == 1) {
+      OC_GGS_TextDisplayDescriptor * selectedObject = [sourceDisplayArray objectAtIndex:0] ;
+      OC_GGS_Document * doc = selectedObject.textSyntaxColoring.document ;
+      [doc saveDocument:nil] ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
 //                                                                           *
 //    W R I T E    T O    F I L E                                            *
 //                                                                           *
@@ -1105,7 +1121,7 @@
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   OC_GGS_TextSyntaxColoring * result = nil ;
-  NSString * currentSourceDir = mSourceTextWithSyntaxColoring.sourceURL.path.stringByDeletingLastPathComponent ;
+  NSString * currentSourceDir = mSourceTextWithSyntaxColoring.document.fileURL.path.stringByDeletingLastPathComponent ;
   NSString * requestedAbsolutePath = inPath.isAbsolutePath
     ? inPath.copy
     : [currentSourceDir stringByAppendingPathComponent:inPath]
