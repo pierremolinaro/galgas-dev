@@ -728,8 +728,13 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 //---------------------------------------------------------------------------*
 
 - (void) undoManagerCheckPointNotification: (NSNotification *) inNotification {
+  NSArray * undoStack = [mUndoManager valueForKey:@"_undoStack"] ;
+  //NSArray * redoStack = [mUndoManager valueForKey:@"_redoStack"] ;
+  //NSLog (@"undoManagerCheckPointNotification: undoStack %lu, redoStack %lu", undoStack.count, redoStack.count) ;
+//---
   [self willChangeValueForKey:@"isDirty"] ;
-  mIsDirty = mUndoManager.canUndo ;
+//  mIsDirty = mUndoManager.canUndo || mUndoManager.canRedo ;
+  mIsDirty = (mSavePointUndoStackCount != undoStack.count) ;
   [self didChangeValueForKey:@"isDirty"] ;
   for (OC_GGS_TextDisplayDescriptor * textDisplayDescriptor in mTextDisplayDescriptorSet) {
     [textDisplayDescriptor noteUndoManagerCheckPointNotification] ;
@@ -745,7 +750,11 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 //---------------------------------------------------------------------------*
 
 - (void) documentHasBeenSaved {
-  [mUndoManager removeAllActions] ;
+//  [mUndoManager removeAllActions] ;
+  NSArray * undoStack = [mUndoManager valueForKey:@"_undoStack"] ;
+  // NSArray * redoStack = [mUndoManager valueForKey:@"_redoStack"] ;
+  mSavePointUndoStackCount = undoStack.count ;
+  // NSLog (@"documentHasBeenSaved: undoStack %lu, redoStack %lu", mSavePointUndoStackCount, mSavePointRedoStackCount) ;
   [self undoManagerCheckPointNotification:nil] ;
 }
 

@@ -45,7 +45,7 @@
 {
 
   @private NSArrayController * mIssueArrayController ;
-  @private NSArray * mIssueArray ;
+  @private NSArray * mIssueArray ; // Bound to 'content' of mIssueArrayController
   
   @private IBOutlet NSSplitView * mIssueSplitView ;
 
