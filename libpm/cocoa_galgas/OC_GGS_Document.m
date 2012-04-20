@@ -41,6 +41,8 @@
 
 @implementation OC_GGS_Document
 
+@synthesize mIssueArray ;
+
 //---------------------------------------------------------------------------*
 //                                                                           *
 //       I N I T                                                             *
