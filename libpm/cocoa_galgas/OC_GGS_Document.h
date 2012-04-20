@@ -45,7 +45,7 @@
 {
 
   @private NSArrayController * mIssueArrayController ;
-  @private NSArray * mIssueArray ; // Bound to 'content' of mIssueArrayController
+//  @private NSArray * mIssueArray ; // Bound to 'content' of mIssueArrayController
   
   @private IBOutlet NSSplitView * mIssueSplitView ;
 
@@ -94,6 +94,8 @@
   @private IBOutlet NSTextView * mContextualHelpTextView ;
   @private IBOutlet NSScrollView * mContextualHelpScrollView ;
 }
+
+@property(assign, atomic) NSArray * mIssueArray ;
 
 - (void) setDocumentIssueArray: (NSArray *) issueArray ;
 - (NSArray *) documentIssueArray ;
