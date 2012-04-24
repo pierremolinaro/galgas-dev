@@ -2,6 +2,8 @@ semantics testsuite_array :
 
 array @stringArray : @string [3] ;
 
+array @trucArray : @string [3] ;
+
 array @charArray : @char [2] ;
 
 struct @myStruct {
