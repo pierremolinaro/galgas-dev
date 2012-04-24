@@ -54,6 +54,20 @@
 
 //---------------------------------------------------------------------------*
 //                                                                           *
+//                        C O C O A   O U T P U T                            *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+static bool gCocoaOutput = false ;
+
+//---------------------------------------------------------------------------*
+
+bool cocoaOutput (void) {
+  return gCocoaOutput ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
 //                       V E R S I O N    S T R I N G                        *
 //                                                                           *
 //---------------------------------------------------------------------------*
@@ -220,7 +234,7 @@ static void option_beginning_with_double_minus_sign (const char * inCommand,
   outFound = false ;
   bool correctFormat = true ;
 //--- Look for a boolean argument
-  C_BoolCommandLineOption::setBoolOptionForCommandString (& inCommand [2], outFound) ;
+  C_BoolCommandLineOption::setBoolOptionForCommandString (& inCommand [2], outFound, gCocoaOutput) ;
 //--- If not found, look for a Uint option
   if (! outFound) {
     C_UIntCommandLineOption::setUIntOptionForCommandString (& inCommand [2], outFound, correctFormat) ;
