@@ -727,6 +727,7 @@ class @methodCallInstructionForGeneration extends @semanticInstructionForGenerat
 
 class @modifierCallInstructionForGeneration extends @semanticInstructionForGeneration {
   @string mReceiverCppName ;
+  @string mReceiverBaseName ;
   @lstringlist mReceiverStructAttributes ;
   @unifiedTypeMapProxy mReceiverType ;
   @lstring mModifierName ;
