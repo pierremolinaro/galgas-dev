@@ -517,7 +517,7 @@ static const utf32 COCOA_MESSAGE_ID = TO_UNICODE (1) ;
 static const utf32 COCOA_REWRITE_SUCCESS_ID = TO_UNICODE (2) ;
 static const utf32 COCOA_WARNING_ID = TO_UNICODE (3) ;
 static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
-static const utf32 COCOA_FILE_CREATION_SUCCESS_ID = TO_UNICODE (5) ;
+//static const utf32 COCOA_FILE_CREATION_SUCCESS_ID = TO_UNICODE (5) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
