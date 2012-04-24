@@ -98,7 +98,7 @@ mObjectArray (NULL),
 
 //---------------------------------------------------------------------------*
 
-static inline PMUInt32 computeIndex (%?^
+static inline PMUInt32 %!TYPE_IDENTIFIER%_computeIndex (%?^
 foreach DIMENSION_LIST
  do !^%const PMUInt32 inIndex%!mValue%,\n%
  end foreach
@@ -136,7 +136,7 @@ do
 between %  }else %
 end foreach
 %  }else{
-    result = (PMSInt32) computeIndex (%foreach DIMENSION_LIST do %inIndex%!mValue%, % end foreach foreach [DIMENSION_LIST subListFromIndex !1] do %size%!mValue% ()% between %, % end foreach %) ;
+    result = (PMSInt32) %!TYPE_IDENTIFIER%_computeIndex (%foreach DIMENSION_LIST do %inIndex%!mValue%, % end foreach foreach [DIMENSION_LIST subListFromIndex !1] do %size%!mValue% ()% between %, % end foreach %) ;
   }
   return result ;
 }
@@ -177,8 +177,8 @@ end foreach
 foreach DIMENSION_LIST
 do %  for (PMUInt32 i%!mValue%=0 ; i%!mValue%<min%!mValue% ; i%!mValue%++) {\n%
 end foreach
-%        const PMUInt32 idxSource = computeIndex (%foreach DIMENSION_LIST do %i%!mValue%, % end foreach foreach [DIMENSION_LIST subListFromIndex !1] do %size%!mValue% ()% between %, % end foreach %) ;
-        const PMUInt32 idxTarget = computeIndex (%foreach DIMENSION_LIST do %i%!mValue%, % end foreach foreach [DIMENSION_LIST subListFromIndex !1] do %inSize%!mValue between %, % end foreach %) ;
+%        const PMUInt32 idxSource = %!TYPE_IDENTIFIER%_computeIndex (%foreach DIMENSION_LIST do %i%!mValue%, % end foreach foreach [DIMENSION_LIST subListFromIndex !1] do %size%!mValue% ()% between %, % end foreach %) ;
+        const PMUInt32 idxTarget = %!TYPE_IDENTIFIER%_computeIndex (%foreach DIMENSION_LIST do %i%!mValue%, % end foreach foreach [DIMENSION_LIST subListFromIndex !1] do %inSize%!mValue between %, % end foreach %) ;
         p [idxTarget] = mObjectArray [idxSource] ;
 %
 foreach DIMENSION_LIST
