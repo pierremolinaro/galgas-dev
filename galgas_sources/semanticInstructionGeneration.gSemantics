@@ -227,6 +227,7 @@ override method @assignmentInstructionForGeneration generateInstruction
   @string sourceVar ;
   [mSourceExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
   [!?ioUnusedVariableCppNameSet removeKey !mNameForCheckingFormalParameterUsing] ;
+#---
   @string receiverCppName := mTargetCppName ;
   foreach mStructAttributeList do
     receiverCppName .= ".mAttribute_" . [[mValue string] identifierRepresentation] ;
@@ -569,17 +570,25 @@ override method @modifierCallInstructionForGeneration generateInstruction
   foreach mReceiverStructAttributes do
     receiverCppName .= ".mAttribute_" . [[mValue string] identifierRepresentation] ;
   end foreach ;
+  [!?ioUnusedVariableCppNameSet removeKey !mReceiverBaseName] ;
+#  ioGeneratedCode .= "  //Receiver '" . mReceiverBaseName . "'\n" ;
 #--- Parameters
   @stringlist parameterCppNameList [emptyList] ;
   @stringlist jokerParametersToReleaseList [emptyList] ;
   @stringlist inputVariableList [emptyList] ;
   foreach mActualParameterList do
     @string parameterCppName ;
-    [mActualParameter generateActualParameter !?ioTemporaryVariableIndex !?ioGeneratedCode !?jokerParametersToReleaseList !?inputVariableList !?ioUnusedVariableCppNameSet ?parameterCppName] ;
+    [mActualParameter generateActualParameter
+      !?ioTemporaryVariableIndex
+      !?ioGeneratedCode
+      !?jokerParametersToReleaseList
+      !?inputVariableList
+      !?ioUnusedVariableCppNameSet
+      ?parameterCppName
+    ] ;
     parameterCppNameList += !parameterCppName ;
   end foreach ;
 #--- Generate method call
-  [!?ioUnusedVariableCppNameSet removeKey !mReceiverCppName] ;
   switch mKind
   when definedAsCategory :
     if [mReceiverType mTypeKindEnum] == [@typeKindEnum classType] then

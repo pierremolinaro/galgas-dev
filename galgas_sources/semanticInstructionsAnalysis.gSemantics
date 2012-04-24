@@ -722,7 +722,8 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
 #--- Check receiver object
   @unifiedTypeMapProxy receiverType ;
   @string receiverVariableCppName ;
-  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?receiverType ?receiverVariableCppName ?*] ;
+  @string receiverVariableBaseName ;
+  [!?ioVariableMap searchForReadWriteAccess !mReceiverName ?receiverType ?receiverVariableCppName ?receiverVariableBaseName] ;
   foreach mReceiverStructAttributes do
     const @attributeMap attributeMap := [receiverType mAttributeMap] ;
     [attributeMap searchKey !mValue ?receiverType] ;
@@ -750,6 +751,7 @@ override method @modifierCallInstructionAST analyzeSemanticInstruction
 #--- Generate instruction
   ioInstructionListForGeneration += ![@modifierCallInstructionForGeneration new
     !receiverVariableCppName
+    !receiverVariableBaseName
     !mReceiverStructAttributes
     !receiverType
     !mModifierName

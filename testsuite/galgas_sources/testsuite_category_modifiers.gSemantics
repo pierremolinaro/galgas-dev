@@ -19,6 +19,11 @@ class @TestCategoryModifier extends @abstractTestCategoryModifier {
   @string mString ;
 }
 
+modifier @TestCategoryModifier modifier3 ??@uint inArg :
+  [!?mString appendSpacesUntilColumn!inArg] ;
+end modifier ;
+
+
 modifier @TestCategoryModifier modifier1 ?!@uint ioArg :
   mInteger := mInteger + ioArg ;
   ioArg ++ ;
