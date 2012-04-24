@@ -2,17 +2,17 @@
 #                                                                           *
 #  Project Creation                                                         *
 #                                                                           *
-#  Copyright (C) 2008, ..., 2008 Pierre Molinaro.                          *
+#  Copyright (C) 2008, ..., 2008 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
 #  under the terms of the GNU General Public License as published by the    *
-#  Free Software Foundation.                                               *
+#  Free Software Foundation.                                                *
 #                                                                           *
 #  This program is distributed in the hope it will be useful, but WITHOUT   *
 #  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-#  FITNESS FOR A PARTICULAR PURPOSE.See the GNU General Public License for *
-#   more details.                                                          *
+#  FITNESS FOR A PARTICULAR PURPOSE.See the GNU General Public License for  *
+#   more details.                                                           *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -28,7 +28,6 @@ filewrapper projectCreationFileWrapper in "../generation_templates/project_creat
 }{
 }{
 #--- Project
-#  template build_bat "galgas_sources/build.bat.txt" ?@string PROJECT_NAME ;
   template PROJECT_project "all_PROJECT.gProject.gTemplate" ?@string PROJECT_NAME ;
   template PROJECT_cocoa "PROJECT_cocoa.gGui.gTemplate" ?@string PROJECT_NAME ;
   template PROJECT_grammar "PROJECT_grammar.gGrammar.gTemplate" ?@string PROJECT_NAME ;
@@ -56,7 +55,6 @@ routine performProjectCreation ??@string inProjectPath :
   [[filewrapper projectCreationFileWrapper.PROJECT_program !projectName] writeToFile !galgas_sources_DIR ."/" .projectName ."_program.gProgram"] ;
   [[filewrapper projectCreationFileWrapper.PROJECT_semantics !projectName] writeToFile !galgas_sources_DIR ."/" .projectName ."_semantics.gSemantics"] ;
   [[filewrapper projectCreationFileWrapper.PROJECT_syntax !projectName] writeToFile !galgas_sources_DIR ."/" .projectName ."_syntax.gSyntax"] ;
-#  [[filewrapper projectCreationFileWrapper.build_bat !projectName] writeToFile !galgas_sources_DIR ."/build.bat"] ;
 #--- hand_coded_sources
   const @string hand_coded_sources_DIR := inProjectPath ."/hand_coded_sources" ;
   [hand_coded_sources_DIR makeDirectory] ;

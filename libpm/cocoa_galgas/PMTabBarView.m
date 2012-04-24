@@ -69,7 +69,10 @@
     ] ;
     [mButtonArray addObject:button] ;
     [button setTitle:displayDescriptor.sourceURL.path.lastPathComponent] ;
-    [button setToolTip:displayDescriptor.sourceURL.absoluteString] ;
+    [button setToolTip:displayDescriptor.sourceURL.path] ;
+    if (idx > 0) {
+      [button setFilePathForDragOperation:displayDescriptor.sourceURL.path] ;
+    }
     [button setBezelStyle:NSSmallSquareBezelStyle] ;
     [button setButtonType:NSPushOnPushOffButton] ;
     [button setState:(selectionIndex == idx) ? NSOnState : NSOffState] ;
