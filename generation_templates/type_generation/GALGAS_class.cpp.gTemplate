@@ -128,6 +128,10 @@ foreach CURRENT_ATTRIBUTE_LIST do
     %  }\n%
     %  return result ;\n%
     %}\n\n%
+    %//---------------------------------------------------------------------------*\n\n%
+    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cPtr_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
+    %  return mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+    %}\n\n%
   end if
 end foreach
 
@@ -141,6 +145,11 @@ foreach CURRENT_ATTRIBUTE_LIST do
     %    macroValidSharedObject (p, cPtr_%!TYPE_IDENTIFIER%) ;\n%
     %    p->mAttribute_%![mAttributeName identifierRepresentation]% = inValue ;\n%
     %  }\n%
+    %}\n\n%
+    %//---------------------------------------------------------------------------*\n\n%
+    %void cPtr_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inValue\n%
+                          !^%COMMA_UNUSED_LOCATION_ARGS) {\n%
+    %  mAttribute_%![mAttributeName identifierRepresentation]% = inValue ;\n%
     %}\n\n%
   end if
 end foreach

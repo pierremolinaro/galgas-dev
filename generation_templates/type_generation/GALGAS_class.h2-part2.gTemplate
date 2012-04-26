@@ -17,7 +17,16 @@
   end if
 %) ;
 
+//--- Attribute accessors
 %
+  foreach CURRENT_ATTRIBUTE_LIST do
+    if mHasGetter then
+      %  public : VIRTUAL_IN_DEBUG GALGAS_%![mAttributeTypeProxy identifierRepresentation]% reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const ;\n%
+    end if
+    if mHasSetter then
+      %  public : VIRTUAL_IN_DEBUG void modifier_set%![[mAttributeName identifierRepresentation] stringByCapitalizingFirstCharacter]% (GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inValue COMMA_LOCATION_ARGS) ;\n%
+    end if
+  end foreach
 
 if IS_ABSTRACT then
 %//--- Description

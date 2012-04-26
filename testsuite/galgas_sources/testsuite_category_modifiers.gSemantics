@@ -52,4 +52,15 @@ abstract class @abstractOverridingTestCategoryModifier extends @TestCategoryModi
   @string mOtherString ;
 }
 
+class @adjMat{
+   @uint dim;
+   @stringlist nodes feature setter;
+}
+
+modifier @adjMat addNode 
+:
+   @stringlist tmp [emptyList] ;
+   [!?self setNodes !tmp];
+end modifier;
+
 end semantics ;
