@@ -287,7 +287,8 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (76 types)
+--- Type list (77 types)
+  @1charArray
   @2stringlist
   @2stringlist.element
   @A
@@ -444,3 +445,5 @@ i = 1
     k = 1
     k = 2
     k = 3
+LOGGING : <@string:"0">
+LOGGING : <@string:"Ciao">

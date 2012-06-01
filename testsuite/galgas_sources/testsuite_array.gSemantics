@@ -6,6 +6,8 @@ array @trucArray : @string [3] ;
 
 array @charArray : @char [2] ;
 
+array @1charArray : @char [1] ;
+
 struct @myStruct {
   @stringArray mStringArray ;
 }
@@ -41,6 +43,11 @@ routine testsuite_array :
       end for ;
     end for ;
   end for ;
+#--- Copy
+  @stringArray p2 := p ;
+  [!?p2 setValueAtIndex !"Ciao" !0 !1 !2] ;
+  log "" : [p valueAtIndex !0 !1 !2] ;
+  log "" : [p2 valueAtIndex !0 !1 !2] ;
 end routine ;
 
 
