@@ -139,8 +139,9 @@ foreach CURRENT_ATTRIBUTE_LIST do
   if mHasSetter then
     %//---------------------------------------------------------------------------*\n\n%
     %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inValue\n%
-                          !^%COMMA_UNUSED_LOCATION_ARGS) {\n%
+                          !^%COMMA_LOCATION_ARGS) {\n%
     %  if (NULL != mObjectPtr) {\n%
+    %    insulate (THERE) ;\n%
     %    cPtr_%!TYPE_IDENTIFIER% * p = (cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ;\n%
     %    macroValidSharedObject (p, cPtr_%!TYPE_IDENTIFIER%) ;\n%
     %    p->mAttribute_%![mAttributeName identifierRepresentation]% = inValue ;\n%
