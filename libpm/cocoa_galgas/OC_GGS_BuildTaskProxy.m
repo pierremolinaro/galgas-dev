@@ -194,9 +194,9 @@
   //--- Send issues to concerned text source coloring objects
     [mDocument setDocumentIssueArray:issueArray] ;
   //---
-    if (nil != error) {
-      [NSApp presentError:error] ;
-    }
+  //  if (nil != error) {
+  //    [NSApp presentError:error] ;
+  //  }
   //---
     [self setErrorCount:errorCount] ;
     [self setWarningCount:warningCount] ;
