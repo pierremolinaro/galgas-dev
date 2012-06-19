@@ -592,7 +592,11 @@ override method @modifierCallInstructionForGeneration generateInstruction
   switch mKind
   when definedAsCategory :
     if [mReceiverType mTypeKindEnum] == [@typeKindEnum classType] then
-      ioGeneratedCode .= "callCategoryModifier_" . [mModifierName identifierRepresentation] . " ((cPtr_" . [mReceiverType identifierRepresentation] . " *) " . receiverCppName . ".ptr (), " ;
+      if ([[mReceiverType mAllTypedAttributeList] length] > 0) & [mReceiverType mIsConcrete] then
+        ioGeneratedCode .= receiverCppName . ".insulate (HERE) ;\n" ;
+      end if ;
+      ioGeneratedCode .= "callCategoryModifier_" . [mModifierName identifierRepresentation]
+                      . " ((cPtr_" . [mReceiverType identifierRepresentation] . " *) " . receiverCppName . ".ptr (), " ;
     else
       ioGeneratedCode .= "categoryModifier_" . [mModifierName identifierRepresentation] . " (" . receiverCppName . ", " ;
     end if ;

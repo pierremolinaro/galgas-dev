@@ -21,7 +21,7 @@ class GALGAS_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %A
 
 %if ([ALL_ATTRIBUTE_LIST length] > 0) & not IS_ABSTRACT then
 %//--- Insulate\n%
-%  private : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;\n%
+%  public : VIRTUAL_IN_DEBUG void insulate (LOCATION_ARGS) ;\n%
 end if
 %
 
