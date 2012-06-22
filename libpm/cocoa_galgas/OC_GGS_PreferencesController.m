@@ -1054,7 +1054,8 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   NSString * extension = [documentTypeExtensions objectAtIndex:0 HERE] ;
   // NSLog (@"extension '%@'", extension) ;
   NSSavePanel * savePanel = [inSender representedObject] ;
-  [savePanel setRequiredFileType:extension] ;
+//  [savePanel setRequiredFileType:extension] ;
+  [savePanel setAllowedFileTypes:[NSArray arrayWithObject:extension]] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1090,10 +1091,11 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   [savePanel setCanSelectHiddenExtension:YES] ;
   [savePanel setAccessoryView:mNewDocumentAccessoryView] ;
   [self changeNewDocumentTypeAction:[mNewDocumentTypePopUpButton itemAtIndex:0]] ;
-  const NSInteger result = [savePanel runModalForDirectory:nil file:nil] ;
+//  const NSInteger result = [savePanel runModalForDirectory:nil file:nil] ;
+  const NSInteger result = [savePanel runModal] ;
   // NSLog (@"result %d", result) ;
   if (result == NSOKButton) {
-    NSString * path = [savePanel filename] ;
+    NSString * path = savePanel.URL.path ;
     // NSLog (@"path '%@'", path) ;
     NSError * error = nil ;
     if ([[NSData data] writeToFile:path options:NSAtomicWrite error:& error]) {
