@@ -105,12 +105,31 @@
 
 //---------------------------------------------------------------------------*
 
-- (IBAction) addFolderAction: (id) inSender {
+- (IBAction) addFolderAction: (NSButton *) inSender {
   NSOpenPanel * openPanel = [NSOpenPanel openPanel] ;
   [openPanel setCanChooseFiles:NO] ;
   [openPanel setCanChooseDirectories:YES] ;
   [openPanel setAllowsMultipleSelection:YES] ;
   [openPanel
+    beginSheetModalForWindow:inSender.window
+    completionHandler: ^ void (NSInteger inReturnCode) {
+      if (NSOKButton == inReturnCode) {
+        NSArray * resultArray = [openPanel URLs] ;
+        for (NSURL * url in resultArray) {
+          if ([url isFileURL]) {
+            NSMutableDictionary * d = [NSMutableDictionary new] ;
+            [d setObject:[NSNumber numberWithBool:YES] forKey:@"pathSelected"] ;
+            [d setObject:[NSNumber numberWithBool:YES] forKey:@"recursive"] ;
+            [d setObject:[url path] forKey:@"path"] ;
+            [self willChangeValueForKey:@"mSearchPathArray"] ;
+            [mSearchPathArray addObject:d] ;
+            [self didChangeValueForKey:@"mSearchPathArray"] ;
+          }
+        }
+      }
+    }
+  ] ;
+/*  [openPanel
     beginSheetForDirectory:nil
     file:nil
     types:nil
@@ -118,12 +137,12 @@
     modalDelegate:self
     didEndSelector:@selector(openPanelDidEnd:returnCode:contextInfo:)
     contextInfo:NULL
-  ] ;
+  ] ;*/
 }
 
 //---------------------------------------------------------------------------*
 
-- (void) openPanelDidEnd: (NSOpenPanel *) inPanel
+/*- (void) openPanelDidEnd: (NSOpenPanel *) inPanel
          returnCode: (int) inReturnCode
          contextInfo: (void  *) inContextInfo {
   if (NSOKButton == inReturnCode) {
@@ -140,7 +159,7 @@
       }
     }
   }
-}
+}*/
 
 //---------------------------------------------------------------------------*
 
