@@ -1152,7 +1152,7 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
 //--- Generate file
   TC_UniqueArray <C_String> directoriesToExclude ;
   directoriesToExclude.addObject ("DEPENDENCIES") ;
-  inCompiler->generateFileFromPathes (inOutputDirectoryForCppFiles,
+  inCompiler->generateFileWithPatternFromPathes (inOutputDirectoryForCppFiles,
                                     directoriesToExclude,
                                     "//",
                                     inTargetFileName + ".cpp",

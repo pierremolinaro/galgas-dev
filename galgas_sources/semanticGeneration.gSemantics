@@ -1446,7 +1446,7 @@ override reader @classTypeForGeneration appendDeclaration2
       !mIsAbstract
     ] ;
     const @string headerFileName := "separateHeaderFor_" . [mTypeProxy identifierRepresentation] . ".h" ;
-    [@string generateFile
+    [@string generateFileWithPattern
       !inOutputDirectory
       !headerFileName
       !"//"

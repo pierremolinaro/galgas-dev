@@ -1341,7 +1341,7 @@ void routine_compileGrammarComponentFromAST (const GALGAS_lstring constinArgumen
     //-------- @localVariableOrConstantDeclarationWithSourceExpressionForGeneration
     GALGAS_string var_zone_33_ = GALGAS_string (filewrapperTemplate_grammarGenerationTemplate_grammarZone_33_Header (inCompiler, var_lexiqueComponentName.reader_identifierRepresentation (SOURCE_FILE_AT_LINE (612)), constinArgument_inGrammarComponentRoot, var_nonTerminalMapForGrammarAnalysis, var_nonTerminalToAddList, var_hasIndexing COMMA_SOURCE_FILE_AT_LINE (611))) ;
     { //-------- @typeMethodInstructionForGeneration
-    GALGAS_string::class_method_generateFile (constinArgument_inOutputDirectoryForCppFiles, constinArgument_inGrammarComponentRoot.reader_mGrammarName (SOURCE_FILE_AT_LINE (620)).reader_string (SOURCE_FILE_AT_LINE (620)).operator_concat (GALGAS_string (".h") COMMA_SOURCE_FILE_AT_LINE (620)), GALGAS_string ("//"), GALGAS_string ("\n"
+    GALGAS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectoryForCppFiles, constinArgument_inGrammarComponentRoot.reader_mGrammarName (SOURCE_FILE_AT_LINE (620)).reader_string (SOURCE_FILE_AT_LINE (620)).operator_concat (GALGAS_string (".h") COMMA_SOURCE_FILE_AT_LINE (620)), GALGAS_string ("//"), GALGAS_string ("\n"
       "\n"), var_zone_32_, GALGAS_string ("\n"
       "\n"), var_zone_33_, inCompiler COMMA_SOURCE_FILE_AT_LINE (618)) ;
     } //-------- @routineCallInstructionForGeneration

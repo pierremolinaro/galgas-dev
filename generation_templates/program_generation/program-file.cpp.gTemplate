@@ -5,7 +5,6 @@
 #include "utilities/cpp-allocation.h"
 #include "utilities/C_PrologueEpilogue.h"
 #include "command_line_interface/mainForLIBPM.h"
-#include "command_line_interface/F_Analyze_CLI_Options.h"
 #include "command_line_interface/C_builtin_CLI_Options.h"
 
 //---------------------------------------------------------------------------*
@@ -30,8 +29,36 @@
 //---------------------------------------------------------------------------*
 
 void print_tool_help_message (void) {
-  co << "GALGAS archive revision NUMERO_REVISION_GALGAS\\n" ;
+  co << "Compiled with GALGAS revision NUMERO_REVISION_GALGAS\\n" ;
 }
+
+//---------------------------------------------------------------------------*
+
+const char * kSourceFileExtensions [] = {
+%
+foreach PROGRAM_RULE_LIST do
+  %  %![mSourceFileExtension utf8Representation]%,\n%
+end foreach
+%  NULL
+} ;    
+
+//---------------------------------------------------------------------------*
+
+const char * kSourceFileHelpMessages [] = {
+%
+foreach PROGRAM_RULE_LIST do
+  %  %![mSourceFileHelp utf8Representation]%,\n%
+end foreach
+%  NULL
+} ;    
+
+//---------------------------------------------------------------------------*
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  const char * kVersionString = "version " %![VERSION utf8Representation]% " [debug]" ;
+#else
+  const char * kVersionString = "version " %![VERSION utf8Representation]% ;
+#endif
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -39,35 +66,9 @@ void print_tool_help_message (void) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-int mainForLIBPM  (const int argc, const char * argv []) {
+int mainForLIBPM (const TC_UniqueArray <C_String> & inSourceArray) {
   bool verboseOptionOn = true ;
   PMSInt16 returnCode = 0 ; // No error
-//--- Input/output parameters
-  const char * extensions [] = {
-%
-  foreach PROGRAM_RULE_LIST do
-    %    %![mSourceFileExtension utf8Representation]%,\n%
-  end foreach
-%    NULL
-  } ;    
-  const char * helpMessages [] = {
-%
-  foreach PROGRAM_RULE_LIST do
-    %    %![mSourceFileHelp utf8Representation]%,\n%
-  end foreach
-%    NULL
-  } ;    
-  TC_UniqueArray <C_String> sourceFilesArray ;
-//--- Analyze Command Line Options
-  F_Analyze_CLI_Options (argc, argv,
-    #ifndef DO_NOT_GENERATE_CHECKINGS
-      "version " %![VERSION utf8Representation]% " [debug]",
-    #else
-      "version " %![VERSION utf8Representation]%,
-    #endif
-                         sourceFilesArray,
-                         extensions,
-                         helpMessages) ;
 //--- Set Execution mode
   C_String executionModeOptionErrorMessage ;
   setExecutionMode (executionModeOptionErrorMessage) ;
@@ -93,13 +94,13 @@ int mainForLIBPM  (const int argc, const char * argv []) {
     try{
       routine_before (commonLexique COMMA_HERE) ;
       verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
-      for (PMSInt32 i=0 ; i<sourceFilesArray.count () ; i++) {
-        setCurrentCompiledFilePath (sourceFilesArray (i COMMA_HERE)) ;
+      for (PMSInt32 i=0 ; i<inSourceArray.count () ; i++) {
+        setCurrentCompiledFilePath (inSourceArray (i COMMA_HERE)) ;
         if (gOption_galgas_5F_cli_5F_options_trace.mValue) {
-          enableTraceWithPath (sourceFilesArray (i COMMA_HERE)) ;
+          enableTraceWithPath (inSourceArray (i COMMA_HERE)) ;
         }
-        const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
-        const GALGAS_string sfp = GALGAS_string (sourceFilesArray (i COMMA_HERE)) ;
+        const C_String fileExtension = inSourceArray (i COMMA_HERE).pathExtension () ;
+        const GALGAS_string sfp = GALGAS_string (inSourceArray (i COMMA_HERE)) ;
         const GALGAS_location location = commonLexique->here () ;
         const GALGAS_lstring sourceFilePath (sfp, location) ;
         PMSInt16 r = 0 ;
@@ -114,7 +115,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
               %          }\n%
               else
               %          if (executionModeIsIndexing ()) {\n%
-              %            cGrammar_%![mIndexingGrammar identifierRepresentation]%::performIndexing (commonLexique, sourceFilesArray (i COMMA_HERE)) ;\n%
+              %            cGrammar_%![mIndexingGrammar identifierRepresentation]%::performIndexing (commonLexique, inSourceArray (i COMMA_HERE)) ;\n%
               %          }else{\n%
               %            routine_%!["programRule_" . [IDX string] identifierRepresentation]% (sourceFilePath, commonLexique COMMA_HERE) ;\n%
               %          }\n%
@@ -125,7 +126,7 @@ int mainForLIBPM  (const int argc, const char * argv []) {
           between %        }else %
           end foreach
 %        }else{
-          printf ("*** Error: unhandled extension for file '\%s' ***\\n", sourceFilesArray (i COMMA_HERE).cString (HERE)) ;
+          printf ("*** Error: unhandled extension for file '\%s' ***\\n", inSourceArray (i COMMA_HERE).cString (HERE)) ;
           r = 1 ;
         }
         if (r != 0) {

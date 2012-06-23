@@ -1069,13 +1069,34 @@ void GALGAS_string::class_method_removeDirectoryRecursively (GALGAS_string inDir
 
 void GALGAS_string::class_method_generateFile (GALGAS_string inStartPath,
                                                GALGAS_string inFileName,
-                                               GALGAS_string inLineCommentPrefix,
-                                               GALGAS_string inDefaultUserZone1,
-                                               GALGAS_string inGeneratedZone2,
-                                               GALGAS_string inDefaultUserZone2,
-                                               GALGAS_string inGeneratedZone3,
+                                               GALGAS_string inContents,
                                                C_Compiler * inCompiler
                                                COMMA_UNUSED_LOCATION_ARGS) {
+  const bool built = (inStartPath.isValid ())
+    && (inFileName.isValid ())
+    && (inContents.isValid ())
+  ;
+  if (built) {
+    TC_UniqueArray <C_String> directoriesToExclude ;
+    inCompiler->generateFileFromPathes (inStartPath.mString,
+                                        directoriesToExclude,
+                                        inFileName.mString,
+                                        inContents.mString) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void GALGAS_string::
+class_method_generateFileWithPattern (GALGAS_string inStartPath,
+                                      GALGAS_string inFileName,
+                                      GALGAS_string inLineCommentPrefix,
+                                      GALGAS_string inDefaultUserZone1,
+                                      GALGAS_string inGeneratedZone2,
+                                      GALGAS_string inDefaultUserZone2,
+                                      GALGAS_string inGeneratedZone3,
+                                      C_Compiler * inCompiler
+                                      COMMA_UNUSED_LOCATION_ARGS) {
   const bool built = (inStartPath.isValid ())
     && (inFileName.isValid ())
     && (inLineCommentPrefix.isValid ())
@@ -1086,7 +1107,7 @@ void GALGAS_string::class_method_generateFile (GALGAS_string inStartPath,
   ;
   if (built) {
     TC_UniqueArray <C_String> directoriesToExclude ;
-    inCompiler->generateFileFromPathes (inStartPath.mString,
+    inCompiler->generateFileWithPatternFromPathes (inStartPath.mString,
                                         directoriesToExclude,
                                         inLineCommentPrefix.mString,
                                         inFileName.mString,

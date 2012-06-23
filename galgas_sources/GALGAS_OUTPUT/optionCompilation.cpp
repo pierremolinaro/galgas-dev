@@ -728,7 +728,7 @@ void routine_compileOptionComponentAST (const GALGAS_string constinArgument_inOu
   const enumGalgasBool test_0 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE_AT_LINE (173)).objectCompare (GALGAS_uint ((PMUInt32) 0U))).boolEnum () ;
   if (kBoolTrue == test_0) {
     { //-------- @typeMethodInstructionForGeneration
-    GALGAS_string::class_method_generateFile (constinArgument_inOutputDirectory, constinArgument_inOptionComponentName.reader_string (SOURCE_FILE_AT_LINE (176)).operator_concat (GALGAS_string (".h") COMMA_SOURCE_FILE_AT_LINE (176)), GALGAS_string ("//"), GALGAS_string ("\n"
+    GALGAS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, constinArgument_inOptionComponentName.reader_string (SOURCE_FILE_AT_LINE (176)).operator_concat (GALGAS_string (".h") COMMA_SOURCE_FILE_AT_LINE (176)), GALGAS_string ("//"), GALGAS_string ("\n"
       "\n"), GALGAS_string (filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_32_ (inCompiler, constinArgument_inOptionComponentName.reader_string (SOURCE_FILE_AT_LINE (180)) COMMA_SOURCE_FILE_AT_LINE (179))), GALGAS_string ("\n"
       "\n"), GALGAS_string (filewrapperTemplate_optionGenerationTemplates_optionHeaderZone_33_ (inCompiler, constinArgument_inOptionComponentName.reader_string (SOURCE_FILE_AT_LINE (184)), constinArgument_boolOptionMap, constinArgument_uintOptionMap, constinArgument_stringOptionMap COMMA_SOURCE_FILE_AT_LINE (183))), inCompiler COMMA_SOURCE_FILE_AT_LINE (174)) ;
     } //-------- @routineCallInstructionForGeneration
@@ -737,7 +737,7 @@ void routine_compileOptionComponentAST (const GALGAS_string constinArgument_inOu
   const enumGalgasBool test_1 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE_AT_LINE (192)).objectCompare (GALGAS_uint ((PMUInt32) 0U))).boolEnum () ;
   if (kBoolTrue == test_1) {
     { //-------- @typeMethodInstructionForGeneration
-    GALGAS_string::class_method_generateFile (constinArgument_inOutputDirectory, constinArgument_inOptionComponentName.reader_string (SOURCE_FILE_AT_LINE (195)).operator_concat (GALGAS_string (".cpp") COMMA_SOURCE_FILE_AT_LINE (195)), GALGAS_string ("//"), GALGAS_string ("\n"
+    GALGAS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, constinArgument_inOptionComponentName.reader_string (SOURCE_FILE_AT_LINE (195)).operator_concat (GALGAS_string (".cpp") COMMA_SOURCE_FILE_AT_LINE (195)), GALGAS_string ("//"), GALGAS_string ("\n"
       "\n"), GALGAS_string (filewrapperTemplate_optionGenerationTemplates_optionImplementation (inCompiler, constinArgument_inOptionComponentName.reader_string (SOURCE_FILE_AT_LINE (199)), constinArgument_boolOptionMap, constinArgument_uintOptionMap, constinArgument_stringOptionMap COMMA_SOURCE_FILE_AT_LINE (198))), GALGAS_string ("\n"
       "\n"), GALGAS_string ("\n"
       "\n"), inCompiler COMMA_SOURCE_FILE_AT_LINE (193)) ;
@@ -747,7 +747,7 @@ void routine_compileOptionComponentAST (const GALGAS_string constinArgument_inOu
   const enumGalgasBool test_2 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE_AT_LINE (209)).objectCompare (GALGAS_uint ((PMUInt32) 0U))).boolEnum () ;
   if (kBoolTrue == test_2) {
     { //-------- @typeMethodInstructionForGeneration
-    GALGAS_string::class_method_generateFile (constinArgument_inOutputDirectory, constinArgument_inOptionComponentName.reader_string (SOURCE_FILE_AT_LINE (212)).operator_concat (GALGAS_string ("-cocoa.h") COMMA_SOURCE_FILE_AT_LINE (212)), GALGAS_string ("//"), GALGAS_string ("\n"
+    GALGAS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, constinArgument_inOptionComponentName.reader_string (SOURCE_FILE_AT_LINE (212)).operator_concat (GALGAS_string ("-cocoa.h") COMMA_SOURCE_FILE_AT_LINE (212)), GALGAS_string ("//"), GALGAS_string ("\n"
       "\n"), GALGAS_string (filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_32_ (inCompiler, constinArgument_inOptionComponentName.reader_string (SOURCE_FILE_AT_LINE (216)) COMMA_SOURCE_FILE_AT_LINE (215))), GALGAS_string ("\n"
       "\n"), GALGAS_string (filewrapperTemplate_optionGenerationTemplates_optionHeaderCocoaZone_33_ (inCompiler, constinArgument_inOptionComponentName.reader_string (SOURCE_FILE_AT_LINE (220)) COMMA_SOURCE_FILE_AT_LINE (219))), inCompiler COMMA_SOURCE_FILE_AT_LINE (210)) ;
     } //-------- @routineCallInstructionForGeneration
@@ -756,7 +756,7 @@ void routine_compileOptionComponentAST (const GALGAS_string constinArgument_inOu
   const enumGalgasBool test_3 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE_AT_LINE (225)).objectCompare (GALGAS_uint ((PMUInt32) 0U))).boolEnum () ;
   if (kBoolTrue == test_3) {
     { //-------- @typeMethodInstructionForGeneration
-    GALGAS_string::class_method_generateFile (constinArgument_inOutputDirectory, constinArgument_inOptionComponentName.reader_string (SOURCE_FILE_AT_LINE (228)).operator_concat (GALGAS_string ("-cocoa.m") COMMA_SOURCE_FILE_AT_LINE (228)), GALGAS_string ("//"), GALGAS_string ("\n"
+    GALGAS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, constinArgument_inOptionComponentName.reader_string (SOURCE_FILE_AT_LINE (228)).operator_concat (GALGAS_string ("-cocoa.m") COMMA_SOURCE_FILE_AT_LINE (228)), GALGAS_string ("//"), GALGAS_string ("\n"
       "\n"), GALGAS_string (filewrapperTemplate_optionGenerationTemplates_optionImplementationCocoa (inCompiler, constinArgument_inOptionComponentName.reader_string (SOURCE_FILE_AT_LINE (232)), constinArgument_boolOptionMap, constinArgument_uintOptionMap, constinArgument_stringOptionMap COMMA_SOURCE_FILE_AT_LINE (231))), GALGAS_string ("\n"
       "\n"), GALGAS_string ("\n"
       "\n"), inCompiler COMMA_SOURCE_FILE_AT_LINE (226)) ;

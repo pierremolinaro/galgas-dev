@@ -615,7 +615,7 @@ routine compileGrammarComponentFromAST
       !nonTerminalToAddList
       !hasIndexing
     ] ;
-    [@string generateFile
+    [@string generateFileWithPattern
       !inOutputDirectoryForCppFiles
       ![[inGrammarComponentRoot mGrammarName] string] . ".h"
       !"//"

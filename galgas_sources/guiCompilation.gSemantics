@@ -244,7 +244,7 @@ routine compileGuiComponentFromAST
   end foreach ;
 #--- Generation
   if [@uint errorCount] == 0 then
-    [@string generateFile
+    [@string generateFileWithPattern
       !inOutputDirectory
       ![componentName string] . ".m"
       !"//"

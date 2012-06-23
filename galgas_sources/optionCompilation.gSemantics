@@ -171,7 +171,7 @@ routine compileOptionComponentAST
 :
 #--- Generate header
   if [@uint errorCount] == 0 then
-    [@string generateFile
+    [@string generateFileWithPattern
       !inOutputDirectory
       ![inOptionComponentName string] . ".h"
       !"//"
@@ -190,7 +190,7 @@ routine compileOptionComponentAST
   end if ;
 #--- Generate Implementation
   if [@uint errorCount] == 0 then
-    [@string generateFile
+    [@string generateFileWithPattern
       !inOutputDirectory
       ![inOptionComponentName string] . ".cpp"
       !"//"
@@ -207,7 +207,7 @@ routine compileOptionComponentAST
  end if ;
 #--- Generate Cocoa header
   if [@uint errorCount] == 0 then
-    [@string generateFile
+    [@string generateFileWithPattern
       !inOutputDirectory
       ![inOptionComponentName string] . "-cocoa.h"
       !"//"
@@ -223,7 +223,7 @@ routine compileOptionComponentAST
   end if ;
 #--- Generate Cocoa Implementation
   if [@uint errorCount] == 0 then
-    [@string generateFile
+    [@string generateFileWithPattern
       !inOutputDirectory
       ![inOptionComponentName string] . "-cocoa.m"
       !"//"

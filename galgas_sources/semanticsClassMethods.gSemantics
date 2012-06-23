@@ -2,7 +2,7 @@
 #                                                                           *
 #  semantics definitions for semantics component                            *
 #                                                                           *
-#  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2010, ..., 2012 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -56,12 +56,17 @@ override method @stringPredefinedTypeAST getClassMethodMap
   argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
   argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
   argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  [!?outClassMethodMap insertOrReplace
+    ![@lstring new !"generateFile" !here]
+    !argList
+    !true
+  ] ;
   argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
   argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
   argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
   argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?outClassMethodMap insertOrReplace
-    ![@lstring new !"generateFile" !here]
+    ![@lstring new !"generateFileWithPattern" !here]
     !argList
     !true
   ] ;

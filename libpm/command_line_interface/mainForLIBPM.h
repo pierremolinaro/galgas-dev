@@ -28,11 +28,21 @@
 
 //---------------------------------------------------------------------------*
 
-int mainForLIBPM (const int argc, const char * argv []) ;
+#include "collections/TC_UniqueArray.h"
+
+//---------------------------------------------------------------------------*
+
+int mainForLIBPM (const TC_UniqueArray <C_String> & inSourceArray) ;
 
 //---------------------------------------------------------------------------*
 
 void print_tool_help_message (void) ;
+
+//---------------------------------------------------------------------------*
+
+extern const char * kSourceFileExtensions [] ;
+extern const char * kSourceFileHelpMessages [] ;
+extern const char * kVersionString ;
 
 //---------------------------------------------------------------------------*
 

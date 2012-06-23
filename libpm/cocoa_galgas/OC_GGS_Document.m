@@ -67,29 +67,16 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) makeWindowControllers {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  const BOOL isHidden = [[NSUserDefaults standardUserDefaults]
-    boolForKey:[NSString stringWithFormat:@"HIDDEN:%@", self.fileURL.path]
-  ] ;
-  if (! isHidden) {
-    [super makeWindowControllers] ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
 /*- (void) showWindows {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
+  [super showWindows] ;
   const BOOL isHidden = [[NSUserDefaults standardUserDefaults]
     boolForKey:[NSString stringWithFormat:@"HIDDEN:%@", self.fileURL.path]
   ] ;
-  if (! isHidden) {
-    [super showWindows] ;
+  if (isHidden) {
+    [self.windowForSheet performMiniaturize:nil] ;
   }
 }*/
 
@@ -1152,7 +1139,7 @@
       display:YES
       error:nil
     ] ;
-    [doc.windowForSheet orderBack:nil] ;
+    [doc.windowForSheet performMiniaturize:nil] ;
     // NSLog (@"mBuildTask.issueArrayController.content %@", mBuildTask.issueArrayController.content) ;
     result = doc.textSyntaxColoring ;
   }
