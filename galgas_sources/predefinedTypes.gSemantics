@@ -371,7 +371,7 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
         generatedCode .= [mDeclaration appendDeclaration2 !inDirectory] ;
       end foreach ;
       if [@uint errorCount] == 0 then
-        [@string generateFile
+        [@string generateFileWithPattern
           !inDirectory
           !"predefined-types.h"
           !"//"
@@ -388,7 +388,7 @@ routine generatePredefinedTypeFiles ??@string inDirectory :
         generatedCode .= [mDeclaration appendSpecificImplementation] ;
       end foreach ;
       if [@uint errorCount] == 0 then
-        [@string generateFile
+        [@string generateFileWithPattern
           !inDirectory
           !"predefined-types.cpp"
           !"//"

@@ -2607,7 +2607,7 @@ void routine_compileLexiqueComponentFromAST (const GALGAS_string constinArgument
   const enumGalgasBool test_28 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE_AT_LINE (1068)).objectCompare (GALGAS_uint ((PMUInt32) 0U))).boolEnum () ;
   if (kBoolTrue == test_28) {
     { //-------- @typeMethodInstructionForGeneration
-    GALGAS_string::class_method_generateFile (constinArgument_inOutputDirectory, var_lexiqueClassName.operator_concat (GALGAS_string (".h") COMMA_SOURCE_FILE_AT_LINE (1071)), GALGAS_string ("//"), GALGAS_string ("\n"
+    GALGAS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, var_lexiqueClassName.operator_concat (GALGAS_string (".h") COMMA_SOURCE_FILE_AT_LINE (1071)), GALGAS_string ("//"), GALGAS_string ("\n"
       "\n"), GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_newHeaderZone_32_ (inCompiler, var_lexiqueClassName.reader_identifierRepresentation (SOURCE_FILE_AT_LINE (1075)), var_lexiqueAnalysisContext, constinArgument_inLexiqueComponentRoot COMMA_SOURCE_FILE_AT_LINE (1074))), GALGAS_string ("\n"
       "\n"), GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_newHeaderZone_33_ (inCompiler, var_lexiqueClassName.reader_identifierRepresentation (SOURCE_FILE_AT_LINE (1081)), constinArgument_inLexiqueComponentRoot.reader_mLexicalListDeclarationList (SOURCE_FILE_AT_LINE (1082)), var_lexiqueAnalysisContext, constinArgument_inLexiqueComponentRoot.reader_mIndexingListAST (SOURCE_FILE_AT_LINE (1084)) COMMA_SOURCE_FILE_AT_LINE (1080))), inCompiler COMMA_SOURCE_FILE_AT_LINE (1069)) ;
     } //-------- @routineCallInstructionForGeneration
@@ -2616,7 +2616,7 @@ void routine_compileLexiqueComponentFromAST (const GALGAS_string constinArgument
   const enumGalgasBool test_29 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE_AT_LINE (1089)).objectCompare (GALGAS_uint ((PMUInt32) 0U))).boolEnum () ;
   if (kBoolTrue == test_29) {
     { //-------- @typeMethodInstructionForGeneration
-    GALGAS_string::class_method_generateFile (constinArgument_inOutputDirectory, var_lexiqueClassName.operator_concat (GALGAS_string (".cpp") COMMA_SOURCE_FILE_AT_LINE (1092)), GALGAS_string ("//"), GALGAS_string ("\n"
+    GALGAS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, var_lexiqueClassName.operator_concat (GALGAS_string (".cpp") COMMA_SOURCE_FILE_AT_LINE (1092)), GALGAS_string ("//"), GALGAS_string ("\n"
       "\n"), GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_newImplementationZone_32_ (inCompiler, var_lexiqueClassName.reader_identifierRepresentation (SOURCE_FILE_AT_LINE (1096)), var_lexiqueAnalysisContext.reader_mLexicalAttributeMap (SOURCE_FILE_AT_LINE (1097)), var_lexiqueAnalysisContext.reader_mLexicalMessageMap (SOURCE_FILE_AT_LINE (1098)), var_lexiqueAnalysisContext.reader_mTerminalList (SOURCE_FILE_AT_LINE (1099)), var_lexiqueAnalysisContext.reader_mLexicalTokenListMap (SOURCE_FILE_AT_LINE (1100)), var_lexiqueAnalysisContext.reader_mUnicodeStringToGenerate (SOURCE_FILE_AT_LINE (1101)), constinArgument_inLexiqueComponentRoot.reader_mLexicalRuleList (SOURCE_FILE_AT_LINE (1102)), var_lexiqueAnalysisContext, constinArgument_inLexiqueComponentRoot COMMA_SOURCE_FILE_AT_LINE (1095))), GALGAS_string ("\n"
       "\n"), GALGAS_string ("\n"
       "\n"), inCompiler COMMA_SOURCE_FILE_AT_LINE (1090)) ;
@@ -2626,7 +2626,7 @@ void routine_compileLexiqueComponentFromAST (const GALGAS_string constinArgument
   const enumGalgasBool test_30 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE_AT_LINE (1111)).objectCompare (GALGAS_uint ((PMUInt32) 0U))).boolEnum () ;
   if (kBoolTrue == test_30) {
     { //-------- @typeMethodInstructionForGeneration
-    GALGAS_string::class_method_generateFile (constinArgument_inOutputDirectory, var_lexiqueClassName.operator_concat (GALGAS_string ("-cocoa.h") COMMA_SOURCE_FILE_AT_LINE (1114)), GALGAS_string ("//"), GALGAS_string ("\n"
+    GALGAS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, var_lexiqueClassName.operator_concat (GALGAS_string ("-cocoa.h") COMMA_SOURCE_FILE_AT_LINE (1114)), GALGAS_string ("//"), GALGAS_string ("\n"
       "\n"), GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_cocoaHeaderZone_32_ (inCompiler, var_lexiqueClassName, var_lexiqueAnalysisContext COMMA_SOURCE_FILE_AT_LINE (1117))), GALGAS_string ("\n"
       "\n"), GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_cocoaHeaderZone_33_ (inCompiler, var_lexiqueClassName, var_lexiqueAnalysisContext COMMA_SOURCE_FILE_AT_LINE (1122))), inCompiler COMMA_SOURCE_FILE_AT_LINE (1112)) ;
     } //-------- @routineCallInstructionForGeneration
@@ -2635,7 +2635,7 @@ void routine_compileLexiqueComponentFromAST (const GALGAS_string constinArgument
   const enumGalgasBool test_31 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE_AT_LINE (1129)).objectCompare (GALGAS_uint ((PMUInt32) 0U))).boolEnum () ;
   if (kBoolTrue == test_31) {
     { //-------- @typeMethodInstructionForGeneration
-    GALGAS_string::class_method_generateFile (constinArgument_inOutputDirectory, var_lexiqueClassName.operator_concat (GALGAS_string ("-cocoa.m") COMMA_SOURCE_FILE_AT_LINE (1132)), GALGAS_string ("//"), GALGAS_string ("\n"
+    GALGAS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, var_lexiqueClassName.operator_concat (GALGAS_string ("-cocoa.m") COMMA_SOURCE_FILE_AT_LINE (1132)), GALGAS_string ("//"), GALGAS_string ("\n"
       "\n"), GALGAS_string (filewrapperTemplate_lexiqueGenerationTemplates_cocoaImplementationZone_32_ (inCompiler, var_lexiqueClassName, var_lexiqueAnalysisContext.reader_mLexicalAttributeMap (SOURCE_FILE_AT_LINE (1137)), var_lexiqueAnalysisContext.reader_mLexicalMessageMap (SOURCE_FILE_AT_LINE (1138)), var_lexiqueAnalysisContext.reader_mTerminalList (SOURCE_FILE_AT_LINE (1139)), var_lexiqueAnalysisContext.reader_mUnicodeStringToGenerate (SOURCE_FILE_AT_LINE (1140)), constinArgument_inLexiqueComponentRoot.reader_mLexicalRuleList (SOURCE_FILE_AT_LINE (1141)), var_lexiqueAnalysisContext, constinArgument_inLexiqueComponentRoot COMMA_SOURCE_FILE_AT_LINE (1135))), GALGAS_string ("\n"
       "\n"), GALGAS_string ("\n"
       "\n"), inCompiler COMMA_SOURCE_FILE_AT_LINE (1130)) ;

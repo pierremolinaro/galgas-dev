@@ -2683,7 +2683,7 @@ void routine_compileGuiComponentFromAST (const GALGAS_lstring constinArgument_in
   const enumGalgasBool test_26 = GALGAS_bool (kIsEqual, GALGAS_uint::constructor_errorCount (SOURCE_FILE_AT_LINE (246)).objectCompare (GALGAS_uint ((PMUInt32) 0U))).boolEnum () ;
   if (kBoolTrue == test_26) {
     { //-------- @typeMethodInstructionForGeneration
-    GALGAS_string::class_method_generateFile (constinArgument_inOutputDirectory, var_componentName.reader_string (SOURCE_FILE_AT_LINE (249)).operator_concat (GALGAS_string (".m") COMMA_SOURCE_FILE_AT_LINE (249)), GALGAS_string ("//"), GALGAS_string ("\n"
+    GALGAS_string::class_method_generateFileWithPattern (constinArgument_inOutputDirectory, var_componentName.reader_string (SOURCE_FILE_AT_LINE (249)).operator_concat (GALGAS_string (".m") COMMA_SOURCE_FILE_AT_LINE (249)), GALGAS_string ("//"), GALGAS_string ("\n"
       "\n"), GALGAS_string (filewrapperTemplate_guiGenerationTemplates_gui_5F_implementation (inCompiler, var_context COMMA_SOURCE_FILE_AT_LINE (252))), GALGAS_string ("\n"
       "\n"), GALGAS_string ("\n"
       "\n"), inCompiler COMMA_SOURCE_FILE_AT_LINE (247)) ;

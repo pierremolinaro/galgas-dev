@@ -434,7 +434,7 @@ routine compileSemanticsComponentAST
         headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory] ;
       end if ;
     end foreach ;
-    [@string generateFile
+    [@string generateFileWithPattern
       !inOutputDirectory
       ![componentName string] . ".h"
       !"//"
@@ -464,7 +464,7 @@ routine compileSemanticsComponentAST
       implementationString .= [mDeclaration appendSpecificImplementation] ;
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
     end foreach ;
-    [@string generateFile
+    [@string generateFileWithPattern
       !inOutputDirectory
       ![componentName string] . ".cpp"
       !"//"

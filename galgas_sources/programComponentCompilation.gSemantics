@@ -304,7 +304,7 @@ routine compileProgramComponentFromAST
     foreach decoratedDeclarationListForGeneration do
       headerString .= [mDeclaration appendDeclaration2 !inOutputDirectory] ;
     end foreach ;
-    [@string generateFile
+    [@string generateFileWithPattern
       !inOutputDirectory
       ![componentName string] . ".h"
       !"//"
@@ -327,7 +327,7 @@ routine compileProgramComponentFromAST
       implementationString .= [mDeclaration appendTypeGenericImplementation] ;
       implementationString .= [mDeclaration appendSpecificImplementation] ;
     end foreach ;
-    [@string generateFile
+    [@string generateFileWithPattern
       !inOutputDirectory
       ![componentName string] . ".cpp"
       !"//"

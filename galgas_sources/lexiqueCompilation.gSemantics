@@ -1066,7 +1066,7 @@ routine compileLexiqueComponentFromAST
   @string lexiqueClassName := [componentName string] ;
 #--- Generate header file
   if [@uint errorCount] == 0 then
-    [@string generateFile
+    [@string generateFileWithPattern
       !inOutputDirectory
       !lexiqueClassName . ".h"
       !"//"
@@ -1087,7 +1087,7 @@ routine compileLexiqueComponentFromAST
   end if ;
 #--- Generate implementation file
   if [@uint errorCount] == 0 then
-    [@string generateFile
+    [@string generateFileWithPattern
       !inOutputDirectory
       !lexiqueClassName . ".cpp"
       !"//"
@@ -1109,7 +1109,7 @@ routine compileLexiqueComponentFromAST
   end if ;
 #--- Generate cocoa header file
   if [@uint errorCount] == 0 then
-    [@string generateFile
+    [@string generateFileWithPattern
       !inOutputDirectory
       !lexiqueClassName . "-cocoa.h"
       !"//"
@@ -1127,7 +1127,7 @@ routine compileLexiqueComponentFromAST
   end if ;
 #--- Generate Cocoa implementation file
   if [@uint errorCount] == 0 then
-    [@string generateFile
+    [@string generateFileWithPattern
       !inOutputDirectory
       !lexiqueClassName . "-cocoa.m"
       !"//"
