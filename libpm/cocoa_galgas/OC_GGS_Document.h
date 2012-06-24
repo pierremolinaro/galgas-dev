@@ -96,6 +96,7 @@
 }
 
 @property(assign, atomic) NSArray * mIssueArray ;
+@property(assign, atomic) NSArray * mDisplayDescriptorArray ;
 
 - (void) setDocumentIssueArray: (NSArray *) issueArray ;
 - (NSArray *) documentIssueArray ;
