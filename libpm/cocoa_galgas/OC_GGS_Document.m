@@ -41,7 +41,10 @@
 
 @implementation OC_GGS_Document
 
+//---------------------------------------------------------------------------*
+
 @synthesize mIssueArray ;
+@synthesize mDisplayDescriptorArray ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -57,6 +60,7 @@
     #endif
     mFileEncoding = NSUTF8StringEncoding ;
     mSourceDisplayArrayController = [NSArrayController new] ;
+    mDisplayDescriptorArray = [NSArray new] ;
     mIssueArrayController = [NSArrayController new] ;
     self.undoManager = nil ;
     self.hasUndoManager = NO ;
@@ -64,21 +68,6 @@
   }
   return self;
 }
-
-//---------------------------------------------------------------------------*
-
-/*- (void) showWindows {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  [super showWindows] ;
-  const BOOL isHidden = [[NSUserDefaults standardUserDefaults]
-    boolForKey:[NSString stringWithFormat:@"HIDDEN:%@", self.fileURL.path]
-  ] ;
-  if (isHidden) {
-    [self.windowForSheet performMiniaturize:nil] ;
-  }
-}*/
 
 //---------------------------------------------------------------------------*
 
@@ -181,6 +170,12 @@
     options:nil    
   ] ;
 //---
+  [mSourceDisplayArrayController
+    bind:@"contentArray"
+    toObject:self
+    withKeyPath:@"mDisplayDescriptorArray"
+    options:nil
+  ] ;
   [mSourceDisplayArrayController
     addObserver:self 
     forKeyPath:@"selectionIndex"
@@ -354,6 +349,29 @@
 
 //---------------------------------------------------------------------------*
 
+#pragma mark Document Close
+
+//---------------------------------------------------------------------------*
+
+- (void) canCloseDocumentWithDelegate:(id) inDelegate
+         shouldCloseSelector:(SEL) inShouldCloseSelector
+         contextInfo:(void *) inContextInfo {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s textDisplayDescriptorCount %lu", __PRETTY_FUNCTION__, mSourceTextWithSyntaxColoring.textDisplayDescriptorCount) ;
+  #endif
+  if (mSourceTextWithSyntaxColoring.textDisplayDescriptorCount > 1) {
+    [self.windowForSheet miniaturize:nil] ;
+  }else{
+    [super
+      canCloseDocumentWithDelegate:inDelegate
+      shouldCloseSelector:inShouldCloseSelector
+      contextInfo:inContextInfo
+    ] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
 #pragma mark Actions
 
 //---------------------------------------------------------------------------*
@@ -377,7 +395,15 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
+  OC_GGS_Document * doc = inTextDisplayDescriptor.textSyntaxColoring.document ;
+  // NSLog (@"%@", doc.fileURL) ; 
+//---
+  [inTextDisplayDescriptor setSyntaxColoringDelegate:nil] ;
   [mSourceDisplayArrayController removeObject:inTextDisplayDescriptor] ;
+//---
+  if ((doc.textSyntaxColoring.textDisplayDescriptorCount == 1) && doc.windowForSheet.isMiniaturized) {
+    [doc.windowForSheet performClose:nil] ;
+  }
 //--- Update users preferences
   NSMutableArray * tabFiles = [NSMutableArray new] ;
   for (OC_GGS_TextDisplayDescriptor * source in mSourceDisplayArrayController.arrangedObjects) {
@@ -794,33 +820,6 @@
 
 //---------------------------------------------------------------------------*
 
-#pragma mark Document Close
-
-//---------------------------------------------------------------------------*
-
-- (void) canCloseDocumentWithDelegate:(id) inDelegate
-         shouldCloseSelector:(SEL) inShouldCloseSelector
-         contextInfo:(void *) inContextInfo {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  [[NSUserDefaults standardUserDefaults]
-    setBool:mSourceTextWithSyntaxColoring.textDisplayDescriptorCount > 1
-    forKey:[NSString stringWithFormat:@"HIDDEN:%@", self.fileURL.path]
-  ] ;
-  if (mSourceTextWithSyntaxColoring.textDisplayDescriptorCount > 1) {
-    [self.windowForSheet orderOut:nil] ;
-  }else{
-    [super
-      canCloseDocumentWithDelegate:inDelegate
-      shouldCloseSelector:inShouldCloseSelector
-      contextInfo:inContextInfo
-    ] ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
 #pragma mark Document Encoding Display
 
 //---------------------------------------------------------------------------*
@@ -1139,7 +1138,16 @@
       display:YES
       error:nil
     ] ;
-    [doc.windowForSheet performMiniaturize:nil] ;
+    [doc.windowForSheet orderBack:nil] ;
+    [doc.windowForSheet display] ;
+ //   [doc.windowForSheet miniaturize:nil] ;
+    [[NSRunLoop currentRunLoop]
+      performSelector:@selector (miniaturize:)
+      target:doc.windowForSheet
+      argument:nil
+      order:NSUIntegerMax
+      modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]
+    ] ;
     // NSLog (@"mBuildTask.issueArrayController.content %@", mBuildTask.issueArrayController.content) ;
     result = doc.textSyntaxColoring ;
   }
