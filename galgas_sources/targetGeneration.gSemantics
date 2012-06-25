@@ -45,6 +45,7 @@ local filewrapper targetGenerationFileWrapper in "../generation_templates/target
     ?@stringlist HAND_CODED_SOURCE_FILE_LIST
     ?@stringlist MAKEFILE_FILE_LIST
     ?@string LIBPM_DIRECTORY_PATH
+    ?@string MULTI_THREADING_ENABLED
   ;
 }
 
@@ -306,13 +307,22 @@ routine updateTargets
   availableGenerationFeatures += !"xcode_arch:SnowLeopard-64" ;
   availableGenerationFeatures += !"xcode_arch:Lion-32" ;
   availableGenerationFeatures += !"xcode_arch:Lion-64" ;
+  availableGenerationFeatures += !"multi-threading" ;
   @stringset generationFeatures [emptySet] ;
+  @bool multiThreadingEnabled := false ;
   foreach inTargetFeatureList do
     if [availableGenerationFeatures hasKey ![mValue string]] then
       if [generationFeatures hasKey ![mValue string]] then
         error mValue: "duplicate '" . mValue . "' feature" ;
       end if ;
-      generationFeatures += ![mValue string] ;
+      if mValue->string == "multi-threading" then
+        if multiThreadingEnabled then
+          error mValue: "duplicate '" . mValue . "' feature" ;
+        end if ;
+        multiThreadingEnabled := true ;
+      else
+        generationFeatures += ![mValue string] ;
+      end if ;
     else
       @string s := "" ;
       foreach availableGenerationFeatures do
@@ -414,6 +424,7 @@ routine updateTargets
     !handCodedSourceList
     !generatedFileListForMakefile
     !libpmPath
+    !if multiThreadingEnabled then "1" else "0" end
   ] ;
   const @string fileListPath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list.mak" ;
   [newFileListContents writeToFileWhenDifferentContents !fileListPath ?*] ;
@@ -479,6 +490,7 @@ routine updateTargets
       !architectureList
       !SDK
       !libpmPath
+      !multiThreadingEnabled
     ;
   end if ;
 end routine ;

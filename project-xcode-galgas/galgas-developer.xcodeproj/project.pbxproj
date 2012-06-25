@@ -740,6 +740,7 @@
 		CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_CommandLineOption.m; sourceTree = "<group>"; };
 		CFAE5B1910024AA50068DEC9 /* enterDefaultCommandLineOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = enterDefaultCommandLineOptions.h; sourceTree = "<group>"; };
 		CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = enterDefaultCommandLineOptions.m; sourceTree = "<group>"; };
+		CFAED8501598842900E485C7 /* M_Threads.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M_Threads.h; sourceTree = "<group>"; };
 		CFB697DD1483D47900BCAE41 /* PMIssueInRuler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMIssueInRuler.h; sourceTree = "<group>"; };
 		CFB697DE1483D47900BCAE41 /* PMIssueInRuler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMIssueInRuler.m; sourceTree = "<group>"; };
 		CFB6B6D81160D26100604D8C /* predefinedTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = predefinedTypes.cpp; sourceTree = "<group>"; };
@@ -1888,6 +1889,7 @@
 		CFF5381F057A549B00854C83 /* utilities */ = {
 			isa = PBXGroup;
 			children = (
+				CFAED8501598842900E485C7 /* M_Threads.h */,
 				CF3FDE2014E6CD4E0040331C /* C_Data.cpp */,
 				CF3FDE2314E6D3CD0040331C /* C_Data.h */,
 				CFF991A8110B6CA40055EE27 /* C_SharedObject.cpp */,
@@ -2592,6 +2594,7 @@
 				GCC_ENABLE_OBJC_GC = required;
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_OPTIMIZATION_LEVEL = s;
+				GCC_PREPROCESSOR_DEFINITIONS = "LIBPM_MULTI_THREADING=1";
 				GCC_STRICT_ALIASING = NO;
 				GCC_THREADSAFE_STATICS = NO;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
@@ -2631,7 +2634,7 @@
 				INSTALL_PATH = /usr/local/bin;
 				LD_GENERATE_MAP_FILE = NO;
 				LLVM_LTO = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx10.7;
 				SYMROOT = "build-developer";
 			};
 			name = Default;
@@ -2678,6 +2681,7 @@
 		CF6DF25409E3F3A700506859 /* Default */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_CXX_LIBRARY = "libc++";
 				DEPLOYMENT_LOCATION = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
 				GCC_ENABLE_TRIGRAPHS = NO;
@@ -2698,6 +2702,7 @@
 				INFOPLIST_FILE = "Info-developer.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = cocoaGalgasDeveloper;
+				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Default;
