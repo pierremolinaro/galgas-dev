@@ -168,6 +168,7 @@ int main (int argc, const char * argv []) {
                              kSourceFileExtensions,
                              kSourceFileHelpMessages) ;
       returnCode = mainForLIBPM (sourceFilesArray) ;
+      sourceFilesArray.free () ;
       C_PrologueEpilogue::runEpilogueActions () ;
       C_BDD::freeBDDStataStructures () ;
       #ifndef DO_NOT_GENERATE_CHECKINGS

@@ -233,4 +233,14 @@ SOURCES += GALGAS_uint_36__34_.cpp
 SOURCES += predefined-types.cpp
 SOURCES += scanner_actions.cpp
 
+
+#---------------------------------------------------------------*
+#                                                               *
+#     Command line options                                      *
+#                                                               *
+#---------------------------------------------------------------*
+
+USER_COMMAND_LINE_OPTIONS :=
+USER_COMMAND_LINE_OPTIONS += -DLIBPM_MULTI_THREADING=1
+
 #---------------------------------------------------------------*

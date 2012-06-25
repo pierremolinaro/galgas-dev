@@ -18,6 +18,7 @@
 #---------------------------------------------------------------------------*
 
 project all_galgas -> "galgas" :
+  feature "multi-threading" ;
   feature libpmAtPath : "../libpm" ;
 #--- Targets
   feature "makefile_macosx" ;                                                                     
