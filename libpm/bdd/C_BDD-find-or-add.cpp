@@ -250,7 +250,7 @@ static const PMSInt32 kInitialCollisionMapPowerOfTwoSize = 20 ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-macroDeclareMutex (semaphore)
+macroDeclareStaticMutex (semaphore)
 
 //---------------------------------------------------------------------------*
 
