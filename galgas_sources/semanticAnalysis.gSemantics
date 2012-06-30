@@ -319,6 +319,25 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @externTypeDeclarationAST semanticAnalysis
+  ??@semanticContext inSemanticContext
+  ??@predefinedTypes unused inPredefinedTypes
+  ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
+:
+  const @unifiedTypeMapProxy externTypeProxy [searchKey !inSemanticContext->mTypeMap !mExternTypeName] ;
+#---
+  ioSemanticDeclarationListForGeneration += ![@externTypeDeclarationForGeneration new
+    !true # Is Global
+    !externTypeProxy
+    !mExternTypeName->string
+    !mCppClassCode
+  ]
+  !""
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 map @constantIndexMap {
   @uint mIndex ;
   insert insertKey error message "the '%K' constant is already declared" ;

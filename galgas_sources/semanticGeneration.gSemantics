@@ -526,6 +526,14 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList ATTRIBUTE_LIST
   ;
 
+#---------- Extern Type
+  template externTypeHeader1 "GALGAS_extern_type.h1.gTemplate"
+    ?@string TYPE_NAME
+    ?@string TYPE_IDENTIFIER
+    ?@string CODE
+  ;
+
+
 #---------- Graph
   template graphTypeHeader1 "GALGAS_graph.h1.gTemplate"
     ?@string TYPE_NAME
@@ -1142,6 +1150,31 @@ override reader @graphDeclarationForGeneration appendDeclaration1 ->@string outH
   outHeader := [filewrapper typeGenerationTemplate.graphTypeHeader1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
+  ] ;
+  outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    ![mTypeProxy mIsConcrete]
+    ![mTypeProxy mConstructorMap]
+    ![mTypeProxy mReaderMap]
+    ![mTypeProxy mModifierMap]
+    ![mTypeProxy mInstanceMethodMap]
+    ![mTypeProxy mClassMethodMap]
+    ![mTypeProxy mEnumerationDescriptor]
+    ![mTypeProxy mHandledOperatorFlags]
+    ![mTypeProxy mAddAssignOperatorArguments]
+    ![mTypeProxy mWithAccessorMap]
+    ![mTypeProxy mTypeForEnumeratedElement]
+  ] ;
+ end reader ;
+
+#---------------------------------------------------------------------------*
+
+override reader @externTypeDeclarationForGeneration appendDeclaration1 ->@string outHeader :
+  outHeader := [filewrapper typeGenerationTemplate.externTypeHeader1
+    ![mTypeProxy key]
+    ![mTypeProxy identifierRepresentation]
+    !mCppClassCode
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]

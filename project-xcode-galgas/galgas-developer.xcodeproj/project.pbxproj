@@ -2583,7 +2583,6 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "c++0x";
-				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_IMPLICIT_SIGN_CONVERSION = NO;
 				CLANG_WARN_OBJC_IMPLICIT_ATOMIC_PROPERTIES = YES;
 				CLANG_WARN_SUSPICIOUS_IMPLICIT_CONVERSION = YES;
@@ -2634,7 +2633,7 @@
 				INSTALL_PATH = /usr/local/bin;
 				LD_GENERATE_MAP_FILE = NO;
 				LLVM_LTO = NO;
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx10.6;
 				SYMROOT = "build-developer";
 			};
 			name = Default;
@@ -2702,7 +2701,6 @@
 				INFOPLIST_FILE = "Info-developer.plist";
 				INSTALL_PATH = "$(HOME)/Applications";
 				PRODUCT_NAME = cocoaGalgasDeveloper;
-				SDKROOT = macosx10.6;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Default;

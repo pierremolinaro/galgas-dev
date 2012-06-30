@@ -1328,5 +1328,75 @@ rule <semantic_declaration>
 end rule ;
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#     E X T E R N    T Y P E    D E C L A R A T I O N                       *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+rule <semantic_declaration>
+ ?!@semanticDeclarationListAST ioSemanticDeclarations
+:
+  $extern$ ;
+  $type_name$ ? @lstring externTypeName ;
+  ${$ ;
+    @string cppClassCode := "" ;
+    repeat
+    while
+      $literal_string$ ? @lstring cppClassCodeElement ;
+      cppClassCode .= cppClassCodeElement->string ;
+    end repeat ;
+  $}$ ;
+  ${$ ;
+  @externTypeConstructorList externTypeConstructorList [emptyList] ;
+  @externTypeReaderList externTypeReaderList [emptyList] ;
+  repeat
+  while
+    $constructor$ ;
+    $identifier$ ? @lstring constructorName ;
+    @lstringlist argumentTypeList [emptyList] ;
+    repeat
+    while
+      $??$ ;
+      $type_name$ ? @lstring argumentTypeName ;
+      argumentTypeList += !argumentTypeName ;
+    end repeat ;
+    $->$ ;
+    $type_name$ ? @lstring resultTypeName ;
+    $;$ ;
+    externTypeConstructorList +=
+      !constructorName
+      !resultTypeName
+      !argumentTypeList
+    ;
+  while
+    $reader$ ;
+    $identifier$ ? @lstring readerName ;
+    @lstringlist argumentTypeList [emptyList] ;
+    repeat
+    while
+      $??$ ;
+      $type_name$ ? @lstring argumentTypeName ;
+      argumentTypeList += !argumentTypeName ;
+    end repeat ;
+    $->$ ;
+    $type_name$ ? @lstring resultTypeName ;
+    $;$ ;
+    externTypeReaderList +=
+      !readerName
+      !resultTypeName
+      !argumentTypeList
+    ;
+  end repeat ;
+  $}$ ;
+  ioSemanticDeclarations += ![@externTypeDeclarationAST new
+    !true # Is global
+    !externTypeName
+    !cppClassCode
+    !externTypeConstructorList
+    !externTypeReaderList
+  ] ;
+end rule ;
+
+#---------------------------------------------------------------------------*
 
 end syntax ;

@@ -441,6 +441,14 @@ end reader ;
 
 #---------------------------------------------------------------------------*
 
+override reader @externTypeDeclarationAST keyRepresentation
+  ->@string outString
+:
+  outString := "extern @" . mExternTypeName ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override reader @onceFunctionDeclarationAST keyRepresentation
   ->@string outString
 :
@@ -1327,6 +1335,90 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ![@lstringlist emptyList]
     ![@mapSearchMethodListAST emptyList]
     !searchMethodList
+    ![@withAccessorMap emptyMap]
+    !false # Do not generate header in separate file
+    ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @externTypeDeclarationAST enterInSemanticContext
+  ??@categoryMethodMapForBuildingContext unused inCategoryMethodMapForBuildingContext
+  ??@categoryReaderMapForBuildingContext unused inCategoryReaderMapForBuildingContext
+  ??@categoryModifierMapForBuildingContext unused inCategoryModifierMapForBuildingContext
+  ?!@semanticContext ioSemanticContext
+:
+#---
+  @readerMap readerMap [emptyMap] ;
+  @constructorMap constructorMap [emptyMap] ;
+  @modifierMap modifierMap [emptyMap] ;
+  @instanceMethodMap instanceMethodMap [emptyMap] ;
+  @classMethodMap classMethodMap [emptyMap] ;
+#--- Constructors
+  foreach mExternTypeConstructorList do
+    @unifiedTypeMapProxy returnedTypeProxy ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mResultTypeName->string ?returnedTypeProxy] ;
+  #---
+    @unifiedTypeMapProxyList arguments [emptyList] ;
+    foreach mArgumentTypeNameList do
+      @unifiedTypeMapProxy argumentTypeProxy ;
+      [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mValue->string ?argumentTypeProxy] ;
+      arguments += !argumentTypeProxy ;
+    end foreach ;
+  #---
+    [!?constructorMap insertKey
+      !mConstructorName
+      !arguments
+      !true #inHasLexiqueAndLocationArguments
+      !returnedTypeProxy
+    ] ;
+  end foreach ;
+#--- Readers
+  foreach mExternTypeReaderList do
+    @unifiedTypeMapProxy returnedTypeProxy ;
+    [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mResultTypeName->string ?returnedTypeProxy] ;
+  #---
+    @unifiedTypeMapProxyList arguments [emptyList] ;
+    foreach mArgumentTypeNameList do
+      @unifiedTypeMapProxy argumentTypeProxy ;
+      [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mValue->string ?argumentTypeProxy] ;
+      arguments += !argumentTypeProxy ;
+    end foreach ;
+  #---
+    [!?readerMap insertOrReplace
+      !mReaderName
+      ![@methodKind definedAsMember]
+      !arguments
+      !here
+      !true #inHasLexiqueAndLocationArguments
+      !returnedTypeProxy
+      ![@methodQualifier isBasicFinal]
+      !"" # No Error message
+    ] ;
+  end foreach ;
+#--- Enter type in type map
+  [!?ioSemanticContext->mTypeMap insertKey
+    !mExternTypeName
+    !true # Concrete Type
+    ![@unifiedTypeMapProxy null]
+    ![@typeKindEnum graphType]
+    ![@typedAttributeList emptyList]
+    ![@attributeMap emptyMap]
+    ![@typedAttributeList emptyList]
+    !constructorMap
+    !readerMap
+    !modifierMap
+    !instanceMethodMap
+    ![@classMethodMap emptyMap]
+    ![@enumerationDescriptorList emptyList]
+    ![@stringlist emptyList]
+    !doNotGenererateObjectCompare []
+    ![@unifiedTypeMapProxyList emptyList]
+    ![@stringset emptySet]
+    ![@lstringlist emptyList]
+    ![@mapSearchMethodListAST emptyList]
+    ![@mapSearchMethodListAST emptyList]
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
@@ -2814,6 +2906,19 @@ override method @graphDeclarationAST enterDeclarationInGraph
   const @lstring key [new !"@" . mGraphTypeName ![mGraphTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mAssociatedListTypeName ![mAssociatedListTypeName location]]] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @externTypeDeclarationAST enterDeclarationInGraph
+  ?!@semanticTypePrecedenceGraph ioSemanticTypePrecedenceGraph
+  ?!@categoryMethodMapForBuildingContext unused ioCategoryMethodMapForBuildingContext
+  ?!@categoryReaderMapForBuildingContext unused ioCategoryReaderMapForBuildingContext
+  ?!@categoryModifierMapForBuildingContext unused ioCategoryModifierMapForBuildingContext
+  ?!@semanticDeclarationListAST unused ioCategoryOverrideDefinitionList
+:
+  const @lstring key [new !"@" . mExternTypeName ![mExternTypeName location]] ;
+  [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
 end method ;
 
 #---------------------------------------------------------------------------*

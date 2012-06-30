@@ -287,7 +287,7 @@ LOGGING loc: <@location:nowhere:1:1>
 LOGGING r: <@uint:5>
 LOGGING r: <@uint:5>
 *************************************** begin of introspection test
---- Type list (77 types)
+--- Type list (78 types)
   @1charArray
   @2stringlist
   @2stringlist.element
@@ -310,6 +310,7 @@ LOGGING r: <@uint:5>
   @bool
   @char
   @charArray
+  @complex
   @data
   @double
   @filewrapper
@@ -447,3 +448,7 @@ i = 1
     k = 3
 LOGGING : <@string:"0">
 LOGGING : <@string:"Ciao">
+*************************************** begin of extern type test
+LOGGING complex: <@complex:1, -1>
+LOGGING real: <@double:1>
+LOGGING imaginary: <@double:-1>
