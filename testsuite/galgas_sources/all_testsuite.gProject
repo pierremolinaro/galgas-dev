@@ -25,6 +25,9 @@ project all_testsuite -> "testsuite" :
   semantics "testsuite_range.gSemantics" ;
   semantics "testsuite_array.gSemantics" ;
 
+  semantics "testsuite_extern_type.gSemantics" ;
+  extern "extern_type_implementation.cpp" ;
+
   program "testsuite_program.gProgram" ;
 
   extern "testsuite_hand_coded.cpp" ;

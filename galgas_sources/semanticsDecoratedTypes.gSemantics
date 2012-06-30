@@ -1284,6 +1284,17 @@ class @graphDeclarationForGeneration extends @semanticTypeForGeneration {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
+#    E X T E R N    T Y P E    D E C L A R A T I O N                        *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @externTypeDeclarationForGeneration extends @semanticTypeForGeneration {
+  @string mExternTypeName ;
+  @string mCppClassCode ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
 # A B S T R A C T   C A T E G O R Y    M E T H O D    D E C L A R A T I O N *
 #                                                                           *
 #---------------------------------------------------------------------------*

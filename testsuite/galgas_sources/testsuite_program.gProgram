@@ -15,6 +15,7 @@ import "testsuite_type_categories.gSemantics" ;
 import "testsuite_strings.gSemantics" ;
 import "testsuite_range.gSemantics" ;
 import "testsuite_array.gSemantics" ;
+import "testsuite_extern_type.gSemantics" ;
 
 import "testsuite_grammar.gGrammar" ;
 
@@ -37,6 +38,7 @@ before {
   testsuite_strings ;
   testsuite_range ;
   testsuite_array ;
+  testsuite_extern_type ;
 }
 
 #--- 'when' clauses

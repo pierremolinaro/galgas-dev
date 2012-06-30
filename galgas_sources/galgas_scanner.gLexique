@@ -112,6 +112,7 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "cast",
   "class",
   "const",
+  "constructor",
   "default",
   "do",
   "drop",

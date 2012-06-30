@@ -241,6 +241,6 @@ SOURCES += scanner_actions.cpp
 #---------------------------------------------------------------*
 
 USER_COMMAND_LINE_OPTIONS :=
-USER_COMMAND_LINE_OPTIONS += -DLIBPM_MULTI_THREADING=1
+USER_COMMAND_LINE_OPTIONS += -DLIBPM_MULTI_THREADING=0
 
 #---------------------------------------------------------------*

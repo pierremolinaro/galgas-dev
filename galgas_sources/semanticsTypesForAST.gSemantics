@@ -1376,5 +1376,34 @@ class @semanticsComponentAST {
 }
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#     E X T E R N     T Y P E                                               *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @externTypeDeclarationAST extends @semanticDeclarationAST {
+  @lstring mExternTypeName ;
+  @string mCppClassCode ;
+  @externTypeConstructorList mExternTypeConstructorList ;
+  @externTypeReaderList mExternTypeReaderList ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @externTypeConstructorList {
+  @lstring mConstructorName ;
+  @lstring mResultTypeName ;
+  @lstringlist mArgumentTypeNameList ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @externTypeReaderList {
+  @lstring mReaderName ;
+  @lstring mResultTypeName ;
+  @lstringlist mArgumentTypeNameList ;
+}
+
+#---------------------------------------------------------------------------*
 
 end semantics ;

@@ -1,0 +1,21 @@
+//---------------------------------------------------------------------------*
+//                                                                           *
+//%!["@" . TYPE_NAME . " extern type" stringByLeftAndRightPadding !75 !' ']%*
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
+//--------------------------------- Default constructor
+  public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
+
+//---
+  public : virtual bool isValid (void) const ;
+  public : virtual void drop (void) ;
+
+//--- For log instruction
+  public : virtual void description (C_String & ioString,
+                                     const PMSInt32 inIndentation) const ;
+
+//--- Code (from declaration)
+%!CODE%
+

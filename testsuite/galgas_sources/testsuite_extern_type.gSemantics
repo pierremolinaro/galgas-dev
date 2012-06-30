@@ -1,0 +1,27 @@
+semantics testsuite_extern_type :
+
+#---------------------------------------------------------------------------*
+
+extern @complex {
+  "  private : bool mIsValid ;\n"
+  "  private : double mReal ;\n"
+  "  private : double mImaginary ;\n"
+}{
+  constructor new ??@double ??@double -> @complex ;
+  reader real ->@double ;
+  reader imaginary ->@double ;
+}
+
+#---------------------------------------------------------------------------*
+
+routine testsuite_extern_type :
+  message "*************************************** begin of extern type test\n" ;
+  @complex complex [new !1.0 !-1.0] ;
+  log complex ;
+  log "real" : [complex real] ;
+  log "imaginary" : [complex imaginary] ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+end semantics ;
