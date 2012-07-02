@@ -1386,13 +1386,58 @@ override method @externTypeDeclarationAST enterInSemanticContext
       arguments += !argumentTypeProxy ;
     end foreach ;
   #---
-    [!?readerMap insertOrReplace
+    [!?readerMap insertKey
       !mReaderName
       ![@methodKind definedAsMember]
       !arguments
       !here
       !true #inHasLexiqueAndLocationArguments
       !returnedTypeProxy
+      ![@methodQualifier isBasicFinal]
+      !"" # No Error message
+    ] ;
+  end foreach ;
+#--- Modifiers
+  foreach mExternTypeModifierList do
+    @formalParameterSignature routineSignature [emptyList] ;
+    foreach mFormalParameterList do
+      @unifiedTypeMapProxy parameterTypeIndex ;
+      [@unifiedTypeMapProxy makeRegularProxy
+        !?ioSemanticContext->mTypeMap
+        ![mFormalArgumentTypeName string]
+        ?parameterTypeIndex
+      ] ;
+      routineSignature += !parameterTypeIndex !mFormalArgumentPassingMode ;
+    end foreach ;
+  #---
+    [!?modifierMap insertKey
+      !mModifierName
+      ![@methodKind definedAsMember]
+      !routineSignature
+      !true #inHasLexiqueAndLocationArguments
+      ![@methodQualifier isBasicFinal]
+      !"" # No Error message
+    ] ;
+  end foreach ;
+#--- Methods
+  foreach mExternTypeMethodList do
+    @formalParameterSignature routineSignature [emptyList] ;
+    foreach mFormalParameterList do
+      @unifiedTypeMapProxy parameterTypeIndex ;
+      [@unifiedTypeMapProxy makeRegularProxy
+        !?ioSemanticContext->mTypeMap
+        ![mFormalArgumentTypeName string]
+        ?parameterTypeIndex
+      ] ;
+      routineSignature += !parameterTypeIndex !mFormalArgumentPassingMode ;
+    end foreach ;
+  #---
+    [!?instanceMethodMap insertKey
+      !mMethodName
+      ![@methodKind definedAsMember]
+      !routineSignature
+      !mDeclarationLocation
+      !true #inHasLexiqueAndLocationArguments
       ![@methodQualifier isBasicFinal]
       !"" # No Error message
     ] ;

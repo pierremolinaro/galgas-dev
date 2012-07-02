@@ -1349,6 +1349,8 @@ rule <semantic_declaration>
   ${$ ;
   @externTypeConstructorList externTypeConstructorList [emptyList] ;
   @externTypeReaderList externTypeReaderList [emptyList] ;
+  @externTypeModifierList externTypeModifierList [emptyList] ;
+  @externTypeMethodList externTypeMethodList [emptyList] ;
   repeat
   while
     $constructor$ ;
@@ -1386,6 +1388,25 @@ rule <semantic_declaration>
       !resultTypeName
       !argumentTypeList
     ;
+  while
+    $modifier$ ;
+    $identifier$ ? @lstring modifierName ;
+    <formal_parameter_list> ?@formalParameterListAST formalParameterList ;
+    $;$ ;
+    externTypeModifierList +=
+      !modifierName
+      !formalParameterList
+    ;
+  while
+    $method$ ;
+    $identifier$ ? @lstring methodName ;
+    <formal_parameter_list> ?@formalParameterListAST formalParameterList ;
+    externTypeMethodList +=
+      !methodName
+      !formalParameterList
+      !here
+    ;
+    $;$ ;
   end repeat ;
   $}$ ;
   ioSemanticDeclarations += ![@externTypeDeclarationAST new
@@ -1394,6 +1415,8 @@ rule <semantic_declaration>
     !cppClassCode
     !externTypeConstructorList
     !externTypeReaderList
+    !externTypeModifierList
+    !externTypeMethodList
   ] ;
 end rule ;
 
