@@ -1386,6 +1386,8 @@ class @externTypeDeclarationAST extends @semanticDeclarationAST {
   @string mCppClassCode ;
   @externTypeConstructorList mExternTypeConstructorList ;
   @externTypeReaderList mExternTypeReaderList ;
+  @externTypeModifierList mExternTypeModifierList ;
+  @externTypeMethodList mExternTypeMethodList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1402,6 +1404,21 @@ list @externTypeReaderList {
   @lstring mReaderName ;
   @lstring mResultTypeName ;
   @lstringlist mArgumentTypeNameList ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @externTypeModifierList {
+  @lstring mModifierName ;
+  @formalParameterListAST mFormalParameterList ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @externTypeMethodList {
+  @lstring mMethodName ;
+  @formalParameterListAST mFormalParameterList ;
+  @location mDeclarationLocation ;
 }
 
 #---------------------------------------------------------------------------*
