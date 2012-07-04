@@ -530,6 +530,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
   template externTypeHeader1 "GALGAS_extern_type.h1.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
+    ?@string PRE_DECLARATION
     ?@string CODE
   ;
 
@@ -1174,6 +1175,7 @@ override reader @externTypeDeclarationForGeneration appendDeclaration1 ->@string
   outHeader := [filewrapper typeGenerationTemplate.externTypeHeader1
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
+    !mCppPreDeclarationCode
     !mCppClassCode
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType

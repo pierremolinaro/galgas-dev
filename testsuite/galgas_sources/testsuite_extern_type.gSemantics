@@ -3,6 +3,8 @@ semantics testsuite_extern_type :
 #---------------------------------------------------------------------------*
 
 extern @complex {
+  "// No Predeclaration\n"
+}{
   "  private : bool mIsValid ;\n"
   "  private : double mReal ;\n"
   "  private : double mImaginary ;\n"
