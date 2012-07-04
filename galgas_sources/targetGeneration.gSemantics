@@ -234,16 +234,16 @@ routine updateTargets
   @stringset handCodedSourceDirectorySet [emptySet] ;
   foreach inProjectSourceList do
     const @string baseName := [[[mFilePath string] lastPathComponent] stringByDeletingPathExtension] ;
+    const @string extension := [mFilePath pathExtension] ;
     const @string cppFile := baseName . ".cpp" ;
   #--- Check base name is unique
-    if [sourceFileSet hasKey !baseName] then
+    if [sourceFileSet hasKey !baseName] & (extension != "h") then
       error mFilePath: "there is already a file with '" . baseName . "' as base name in the project" ;
     end if ;
     sourceFileSet += !baseName ;
   #---
     switch mSourceKind
     when externSourceFile :
-      const @string extension := [mFilePath pathExtension] ;
       if (extension == "cpp") | (extension == "mm") | (extension == "framework") then
         externSourceSet_tool += ![mFilePath string] ;
         handCodedSourceList += ![mFilePath lastPathComponent] ;
@@ -254,6 +254,13 @@ routine updateTargets
         end if ;
       elsif extension == "m" then
         externSourceSet_app += ![mFilePath string] ;
+        if [mFilePath stringByDeletingLastPathComponent] == "" then
+          handCodedSourceDirectorySet += !"../hand_coded_sources" ;
+        else
+          handCodedSourceDirectorySet += !"../hand_coded_sources/" . [mFilePath stringByDeletingLastPathComponent] ;
+        end if ;
+      elsif extension == "h" then
+        externSourceSet_tool += ![mFilePath string] ;
         if [mFilePath stringByDeletingLastPathComponent] == "" then
           handCodedSourceDirectorySet += !"../hand_coded_sources" ;
         else

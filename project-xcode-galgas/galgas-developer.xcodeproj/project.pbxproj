@@ -2671,7 +2671,7 @@
 					"../libpm/**",
 				);
 				LD_OPENMP_FLAGS = "";
-				OTHER_LDFLAGS = "-lgmalloc";
+				OTHER_LDFLAGS = "";
 				PRODUCT_NAME = "galgas-developer-debug";
 				RUN_CLANG_STATIC_ANALYZER = NO;
 			};
