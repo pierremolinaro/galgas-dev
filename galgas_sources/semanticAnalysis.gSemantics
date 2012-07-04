@@ -330,6 +330,7 @@ override method @externTypeDeclarationAST semanticAnalysis
     !true # Is Global
     !externTypeProxy
     !mExternTypeName->string
+    !mCppPreDeclarationCode
     !mCppClassCode
   ]
   !""

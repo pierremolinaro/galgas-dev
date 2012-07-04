@@ -1339,6 +1339,14 @@ rule <semantic_declaration>
   $extern$ ;
   $type_name$ ? @lstring externTypeName ;
   ${$ ;
+    @string cppPredeclarationCode := "" ;
+    repeat
+    while
+      $literal_string$ ? @lstring cppPredeclarationCodeElement ;
+      cppPredeclarationCode .= cppPredeclarationCodeElement->string ;
+    end repeat ;
+  $}$ ;
+  ${$ ;
     @string cppClassCode := "" ;
     repeat
     while
@@ -1412,6 +1420,7 @@ rule <semantic_declaration>
   ioSemanticDeclarations += ![@externTypeDeclarationAST new
     !true # Is global
     !externTypeName
+    !cppPredeclarationCode
     !cppClassCode
     !externTypeConstructorList
     !externTypeReaderList

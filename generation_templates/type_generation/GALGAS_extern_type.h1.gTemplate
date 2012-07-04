@@ -4,6 +4,10 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
+%!PRE_DECLARATION%
+
+//---------------------------------------------------------------------------*
+
 class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;

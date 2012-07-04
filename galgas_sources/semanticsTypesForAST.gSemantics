@@ -1383,6 +1383,7 @@ class @semanticsComponentAST {
 
 class @externTypeDeclarationAST extends @semanticDeclarationAST {
   @lstring mExternTypeName ;
+  @string mCppPreDeclarationCode ;
   @string mCppClassCode ;
   @externTypeConstructorList mExternTypeConstructorList ;
   @externTypeReaderList mExternTypeReaderList ;

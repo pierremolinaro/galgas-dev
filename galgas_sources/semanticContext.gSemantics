@@ -1458,7 +1458,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     ![@classMethodMap emptyMap]
     ![@enumerationDescriptorList emptyList]
     ![@stringlist emptyList]
-    !doNotGenererateObjectCompare []
+    !0
     ![@unifiedTypeMapProxyList emptyList]
     ![@stringset emptySet]
     ![@lstringlist emptyList]
