@@ -1698,10 +1698,9 @@ printBDD (const TC_UniqueArray <C_String> & inVariablesNames,
 
 //---------------------------------------------------------------------*
 
-void C_BDD::
-printBDDwithoutHeader (const TC_UniqueArray <C_String> & inVariablesNames,
-                       const PMSInt32 inVariablesCount,
-                       const PMSInt32 inLeadingSpacesCount) const {
+void C_BDD::printBDDwithoutHeader (const TC_UniqueArray <C_String> & inVariablesNames,
+                                   const PMSInt32 inVariablesCount,
+                                   const PMSInt32 inLeadingSpacesCount) const {
 //--- Compute header size
   TC_UniqueArray <PMSInt32> nameLengthArray (inVariablesCount COMMA_HERE) ;
   for (PMSInt32 i=0 ; i<inVariablesCount ; i++) {
@@ -1732,6 +1731,96 @@ printBDDwithoutHeader (const TC_UniqueArray <C_String> & inVariablesNames,
     }else{
       TC_UniqueArray <char> displayString (inVariablesCount, 'X' COMMA_HERE) ;
       internalPrintBDD (mBDDvalue, displayString, nameLengthArray, (PMUInt16) ((inVariablesCount - 1) & PMUINT16_MAX), inLeadingSpacesCount) ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------*
+
+static void
+printBDDlineWithSeparator (const TC_UniqueArray <C_String> & inSeparatorArray,
+                           const TC_UniqueArray <char> & inValueArray) {
+  for (PMSInt32 i=0 ; i<inSeparatorArray.count () ; i++) {
+    printf ("%s%c", inSeparatorArray (i COMMA_HERE).cString(HERE), inValueArray (i COMMA_HERE)) ;
+  }
+  printf ("\n") ;
+}
+
+//---------------------------------------------------------------------*
+
+static void
+internalPrintBDDWithSeparator (const PMUInt32 inValue,
+                               TC_UniqueArray <char> & inDisplayString,
+                               const TC_UniqueArray <C_String> & inSeparatorArray,
+                               PMUInt16 inVariableIndex) {
+  const PMUInt64 node = nodeForRoot (inValue COMMA_HERE) ;
+  const PMUInt32 complement = inValue & 1 ;
+  if (node == 0) {
+    if (complement == 1) {
+      printBDDlineWithSeparator (inSeparatorArray, inDisplayString) ;
+    }
+  }else{
+    const PMUInt16 var = extractVar (node COMMA_HERE) ;
+    while (inVariableIndex > var) {
+      inDisplayString (inVariableIndex COMMA_HERE) = 'X' ;
+      inVariableIndex -- ;
+    }
+  //--- Branche Zero
+    const PMUInt32 branche0 = (extractElse (node)) ^ complement ;
+    if (branche0 != 0) {
+      inDisplayString (var COMMA_HERE) = '0' ;
+      if (branche0 == 1) {
+        for (PMUInt16 i=0 ; i<var ; i++) {
+          inDisplayString (i COMMA_HERE) = 'X' ;
+        }
+        printBDDlineWithSeparator (inSeparatorArray, inDisplayString) ;
+      }else{
+        internalPrintBDDWithSeparator (branche0, inDisplayString, inSeparatorArray, (PMUInt16) (inVariableIndex - 1)) ;
+      }
+    }
+  //--- Branche 1
+    const PMUInt32 branche1 = extractThen (node) ^ complement ;
+    if (branche1 != 0) {
+      inDisplayString (var COMMA_HERE) = '1' ;
+      if (branche1 == 1) {
+        for (PMUInt16 i=0 ; i<var ; i++) {
+          inDisplayString (i COMMA_HERE) = 'X' ;
+        }
+        printBDDlineWithSeparator (inSeparatorArray, inDisplayString) ;
+      }else{
+        internalPrintBDDWithSeparator (branche1, inDisplayString, inSeparatorArray, (PMUInt16) (inVariableIndex - 1)) ;
+      }
+    }
+  }
+}
+
+//---------------------------------------------------------------------*
+
+void C_BDD::printBDDwithSeparator (const TC_UniqueArray <C_String> & inSeparatorArray) const {
+  const PMUInt16 variablesCount = (PMUInt16) inSeparatorArray.count () ;
+//--- Print BDD
+  if (mBDDvalue == 1) {
+    TC_UniqueArray <char> displayString (variablesCount, 'X' COMMA_HERE) ;
+    printBDDlineWithSeparator (inSeparatorArray, displayString) ;
+  }else if (mBDDvalue != 0) {
+    const PMUInt64 node = nodeForRoot (mBDDvalue COMMA_HERE) ;
+    const PMUInt16 var = extractVar (node COMMA_HERE) ;
+    if (var >= variablesCount) {
+      co << "** ERROR in "
+         << __FILE__
+         << " at line %"
+         << cStringWithSigned (__LINE__)
+         << ": BDD variable ("
+         << cStringWithUnsigned (var)
+         << ") is greater than variable count ("
+         << cStringWithSigned (variablesCount)
+         << ") **\n" ;
+    }else{
+      TC_UniqueArray <char> displayString (variablesCount, 'X' COMMA_HERE) ;
+      internalPrintBDDWithSeparator (mBDDvalue,
+                                     displayString,
+                                     inSeparatorArray,
+                                     (PMUInt16) ((variablesCount - 1) & PMUINT16_MAX)) ;
     }
   }
 }

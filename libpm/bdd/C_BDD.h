@@ -225,6 +225,8 @@ class C_BDD {
 
 
 //--- Printing
+  public : void printBDDwithSeparator (const TC_UniqueArray <C_String> & inSeparatorArray) const ;
+
   public : void printBDD (const TC_UniqueArray <C_String> & inVariablesNames,
                           const PMSInt32 inLeadingSpacesCount) const ;
 
