@@ -136,6 +136,10 @@ class C_BDD {
 //--- Get BDD values count
   public : PMUInt64 valueCount (const PMUInt16 inBDDvariablesCount) const ;
 
+  public : PMUInt64 valueCountUsingCache (const PMUInt16 inBDDvariablesCount,
+                                    TC_UniqueArray <PMUInt64> & ioDirectCacheArray,
+                                    TC_UniqueArray <PMUInt64> & ioComplementCacheArray) const ;
+
 //--- Return highest bit index + 1 
   public : PMUInt16 significantVariableCount (void) const ;
 
