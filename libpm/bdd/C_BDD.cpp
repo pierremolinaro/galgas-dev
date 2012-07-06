@@ -853,12 +853,11 @@ C_BDD C_BDD::BDDWithPredicateString (const C_String & inPredicateStringValue
 
 //---------------------------------------------------------------------*
 
-static void
-nombreValeursInterne (const PMUInt32 inValue,
-                      const PMUInt16 inBDDvariablesCount,
-                      PMUInt64 & nombreDirect,
-                      PMUInt64 & nombreComplement
-                      COMMA_LOCATION_ARGS) {
+static void nombreValeursInterne (const PMUInt32 inValue,
+                                  const PMUInt16 inBDDvariablesCount,
+                                  PMUInt64 & nombreDirect,
+                                  PMUInt64 & nombreComplement
+                                  COMMA_LOCATION_ARGS) {
   const PMUInt64 node = nodeForRoot (inValue COMMA_THERE) ;
   if (node == 0) {
     nombreDirect = 0 ;
@@ -891,6 +890,58 @@ PMUInt64 C_BDD::valueCount (const PMUInt16 inBDDvariablesCount) const {
   PMUInt64 nombreDirect = 0 ;
   PMUInt64 nombreComplement = 0 ;
   nombreValeursInterne (mBDDvalue, inBDDvariablesCount, nombreDirect, nombreComplement COMMA_HERE) ;
+  return nombreDirect ;
+}
+
+//---------------------------------------------------------------------*
+
+static void internalValueCountUsingCache (const PMUInt32 inValue,
+                                  const PMUInt16 inBDDvariablesCount,
+                                  PMUInt64 & nombreDirect,
+                                  PMUInt64 & nombreComplement,
+                                  TC_UniqueArray <PMUInt64> & ioDirectCacheArray,
+                                  TC_UniqueArray <PMUInt64> & ioComplementCacheArray
+                                  COMMA_LOCATION_ARGS) {
+  const PMUInt64 node = nodeForRoot (inValue COMMA_THERE) ;
+  if (node == 0) {
+    nombreDirect = 0 ;
+    nombreComplement = 1 ;
+    for (PMSInt32 i=0 ; i<inBDDvariablesCount ; i++) {
+      nombreComplement += nombreComplement ;
+    }
+  }else if ((ioDirectCacheArray.count () > (PMSInt32) (inValue / 2))
+    && (((ioDirectCacheArray (inValue / 2 COMMA_HERE) != 0) || (ioComplementCacheArray (inValue / 2 COMMA_HERE) != 0)))) {
+    nombreDirect = ioDirectCacheArray (inValue / 2 COMMA_HERE) ;
+    nombreComplement = ioComplementCacheArray (inValue / 2 COMMA_HERE) ;
+  }else{
+    const PMUInt16 var = extractVar (node COMMA_HERE) ;
+    PMUInt64 nd0, nc0, nd1, nc1 ;
+    internalValueCountUsingCache (extractElse (node), var, nd0, nc0, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
+    internalValueCountUsingCache (extractThen (node), var, nd1, nc1, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
+    nombreDirect = nd0 + nd1 ;
+    nombreComplement = nc0 + nc1 ;
+    for (PMUInt16 i=(PMUInt16) (var+1) ; i<inBDDvariablesCount ; i++) {
+      nombreDirect += nombreDirect ;
+      nombreComplement += nombreComplement ;
+    }
+    ioDirectCacheArray.forceObjectAtIndex (inValue / 2, nombreDirect, 0 COMMA_HERE) ;
+    ioComplementCacheArray.forceObjectAtIndex (inValue / 2, nombreComplement, 0 COMMA_HERE) ;
+  }
+  if ((inValue & 1) != 0) {
+    const PMUInt64 tempo = nombreDirect ;
+    nombreDirect = nombreComplement ;
+    nombreComplement = tempo ;
+  }
+}
+
+//---------------------------------------------------------------------*
+
+PMUInt64 C_BDD::valueCountUsingCache (const PMUInt16 inBDDvariablesCount,
+                                    TC_UniqueArray <PMUInt64> & ioDirectCacheArray,
+                                    TC_UniqueArray <PMUInt64> & ioComplementCacheArray) const {
+  PMUInt64 nombreDirect = 0 ;
+  PMUInt64 nombreComplement = 0 ;
+  internalValueCountUsingCache (mBDDvalue, inBDDvariablesCount, nombreDirect, nombreComplement, ioDirectCacheArray, ioComplementCacheArray COMMA_HERE) ;
   return nombreDirect ;
 }
 
