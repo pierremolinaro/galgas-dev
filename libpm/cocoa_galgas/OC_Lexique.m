@@ -227,7 +227,7 @@
 
 //---------------------------------------------------------------------------*
 
-- (UInt32) styleIndexForTerminal: (SInt32) inTerminal {
+- (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal {
   return 0 ;
 }
 
@@ -272,7 +272,7 @@
           action:NULL
           keyEquivalent:@""
         ] ;
-        [item setTag:[[inTokenArray objectAtIndex:tokenIndex HERE] range].location] ;
+        [item setTag:(NSInteger) [[inTokenArray objectAtIndex:tokenIndex HERE] range].location] ;
         [menu addItem:item] ;
         tokenIndex += labelLength - 1 ;
       }
@@ -369,12 +369,12 @@
 
 //---------------------------------------------------------------------------*
 
-- (UInt32) styleIndexForTokenCode: (SInt32) inTokenCode
+- (NSUInteger) styleIndexForTokenCode: (NSInteger) inTokenCode
            spelling: (NSString *) inSpelling {
-  UInt32 result = 0 ;
+  NSUInteger result = 0 ;
   NSString * customColoringGroupIndex = [[self customSyntaxColoringDictionary] objectForKey:inSpelling] ;
   if (nil != customColoringGroupIndex) {
-    result = [customColoringGroupIndex intValue] ;
+    result = (NSUInteger) [customColoringGroupIndex integerValue] ;
   }else{
     result = [self styleIndexForTerminal:inTokenCode] ;
   }
@@ -400,11 +400,11 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"  Finding lower index in ioStyledRangeArray to redraw") ;
   #endif
-  const NSInteger initialArrayLength = [ioStyledRangeArray count] ;
+  const NSUInteger initialArrayLength = [ioStyledRangeArray count] ;
   * outLowerIndexToRedrawInStyleArray = 0 ;
   BOOL search = YES ;
-  while ((*outLowerIndexToRedrawInStyleArray < initialArrayLength) && search) {
-    OC_Token * token = [ioStyledRangeArray objectAtIndex:* outLowerIndexToRedrawInStyleArray HERE] ;
+  while ((((NSUInteger) *outLowerIndexToRedrawInStyleArray) < initialArrayLength) && search) {
+    OC_Token * token = [ioStyledRangeArray objectAtIndex:(NSUInteger) * outLowerIndexToRedrawInStyleArray HERE] ;
     const NSRange range = [token range] ;
     search = (range.location + range.length) < inEditedRange.location ;
     *outLowerIndexToRedrawInStyleArray += search ;
@@ -413,13 +413,13 @@
   if (*outLowerIndexToRedrawInStyleArray > 2) {
     *outLowerIndexToRedrawInStyleArray -= 2 ;
     if ([self isTemplateLexique]) {
-      while (((*outLowerIndexToRedrawInStyleArray) > 0) && ([[ioStyledRangeArray objectAtIndex:(* outLowerIndexToRedrawInStyleArray) HERE] matchedTemplateDelimiterIndex] < 0)) {
+      while (((*outLowerIndexToRedrawInStyleArray) > 0) && ([[ioStyledRangeArray objectAtIndex:((NSUInteger) * outLowerIndexToRedrawInStyleArray) HERE] matchedTemplateDelimiterIndex] < 0)) {
         (*outLowerIndexToRedrawInStyleArray) -- ;
       }
     }
-    mCurrentLocation = [[ioStyledRangeArray objectAtIndex:* outLowerIndexToRedrawInStyleArray HERE] range].location ;
+    mCurrentLocation = [[ioStyledRangeArray objectAtIndex:(NSUInteger) * outLowerIndexToRedrawInStyleArray HERE] range].location ;
     if ((* outLowerIndexToRedrawInStyleArray) > 0) {
-      mMatchedTemplateDelimiterIndex = [[ioStyledRangeArray objectAtIndex:(* outLowerIndexToRedrawInStyleArray) HERE] matchedTemplateDelimiterIndex] ;
+      mMatchedTemplateDelimiterIndex = [[ioStyledRangeArray objectAtIndex:((NSUInteger) * outLowerIndexToRedrawInStyleArray) HERE] matchedTemplateDelimiterIndex] ;
     }else{
       mMatchedTemplateDelimiterIndex = -1 ; // Within Template string
     }
@@ -428,18 +428,18 @@
     mCurrentLocation = 0 ;
     mMatchedTemplateDelimiterIndex = -1 ;
   }
-  *outEraseRangeStart = mCurrentLocation ;
+  *outEraseRangeStart = (NSInteger) mCurrentLocation ;
 //--- Suppress affected Tokens
   #ifdef DEBUG_MESSAGES
     NSLog (@"  Suppress affected Tokens") ;
   #endif
   search = YES ;
-  const NSUInteger affectedRangeEndLocation = inEditedRange.location + inEditedRange.length - inChangeInLength ;
+  const NSUInteger affectedRangeEndLocation = inEditedRange.location + inEditedRange.length - (NSUInteger) inChangeInLength ;
   while ((*outLowerIndexToRedrawInStyleArray < (SInt32) [ioStyledRangeArray count]) && search) {
-    OC_Token * token = [ioStyledRangeArray objectAtIndex:* outLowerIndexToRedrawInStyleArray HERE] ;
+    OC_Token * token = [ioStyledRangeArray objectAtIndex:(NSUInteger) * outLowerIndexToRedrawInStyleArray HERE] ;
     search = [token range].location < affectedRangeEndLocation ;
     if (search) {
-      [ioStyledRangeArray removeObjectAtIndex:* outLowerIndexToRedrawInStyleArray] ;
+      [ioStyledRangeArray removeObjectAtIndex:(NSUInteger) * outLowerIndexToRedrawInStyleArray] ;
     }
   }
 //--- Translate range for items beyond affected range
@@ -478,54 +478,54 @@
       #ifdef DEBUG_MESSAGES
         NSLog (@"  error -> insertAtIndex:%u, range %u, %u", * outUpperIndexToRedrawInStyleArray, [token range].location, [token range].length) ;
       #endif
-      [ioStyledRangeArray insertObject:token atIndex:* outUpperIndexToRedrawInStyleArray] ;
+      [ioStyledRangeArray insertObject:token atIndex:(NSUInteger) * outUpperIndexToRedrawInStyleArray] ;
       (*outUpperIndexToRedrawInStyleArray) ++ ;
     }else if ((mTokenCode > 0) && ((* outUpperIndexToRedrawInStyleArray) >= (SInt32) [ioStyledRangeArray count])) { // Regular token
       const NSRange range = {mTokenStartLocation, mCurrentLocation - mTokenStartLocation} ;
       OC_Token * token = [[OC_Token alloc]
-        initWithTokenCode:mTokenCode
+        initWithTokenCode:(NSUInteger) mTokenCode
         range:range
-        style:[self styleIndexForTokenCode:mTokenCode spelling:[mSourceString substringWithRange:range]]
+        style:(NSInteger) [self styleIndexForTokenCode:mTokenCode spelling:[mSourceString substringWithRange:range]]
         matchedTemplateDelimiterIndex:mMatchedTemplateDelimiterIndex
       ] ;
       #ifdef DEBUG_MESSAGES
         NSLog (@"  token -> insertObject:atIndex:%u", * outUpperIndexToRedrawInStyleArray) ;
       #endif
-      [ioStyledRangeArray insertObject:token atIndex:* outUpperIndexToRedrawInStyleArray] ;
+      [ioStyledRangeArray insertObject:token atIndex:(NSUInteger) * outUpperIndexToRedrawInStyleArray] ;
       (*outUpperIndexToRedrawInStyleArray) ++ ;
     }else if (mTokenCode > 0) { // Regular token
       const NSRange range = {mTokenStartLocation, mCurrentLocation - mTokenStartLocation} ;
-      OC_Token * token = [ioStyledRangeArray objectAtIndex:*outUpperIndexToRedrawInStyleArray HERE] ;
+      OC_Token * token = [ioStyledRangeArray objectAtIndex:(NSUInteger) *outUpperIndexToRedrawInStyleArray HERE] ;
       if (NSEqualRanges (range, [token range]) && (mTokenCode == (SInt32) [token tokenCode])) {
         search = NO ;
         (*outUpperIndexToRedrawInStyleArray) ++ ;
       }else{
         token = [[OC_Token alloc]
-          initWithTokenCode:mTokenCode
+          initWithTokenCode:(NSUInteger) mTokenCode
           range:range
-          style:[self styleIndexForTokenCode:mTokenCode spelling:[mSourceString substringWithRange:range]]
+          style:(NSInteger) [self styleIndexForTokenCode:mTokenCode spelling:[mSourceString substringWithRange:range]]
           matchedTemplateDelimiterIndex:mMatchedTemplateDelimiterIndex
         ] ;
         #ifdef DEBUG_MESSAGES
           NSLog (@"  token -> insertObject:atIndex:%u", * outUpperIndexToRedrawInStyleArray) ;
         #endif
-        [ioStyledRangeArray insertObject:token atIndex:* outUpperIndexToRedrawInStyleArray] ;
+        [ioStyledRangeArray insertObject:token atIndex:(NSUInteger) * outUpperIndexToRedrawInStyleArray] ;
         (*outUpperIndexToRedrawInStyleArray) ++ ;
       }
     }
   //--- Delete style items before current location
     BOOL removeStyle = YES ;
     while (((*outUpperIndexToRedrawInStyleArray) < (SInt32) [ioStyledRangeArray count]) && removeStyle) {
-      OC_Token * token = [ioStyledRangeArray objectAtIndex:* outUpperIndexToRedrawInStyleArray HERE] ;
+      OC_Token * token = [ioStyledRangeArray objectAtIndex:(NSUInteger) * outUpperIndexToRedrawInStyleArray HERE] ;
       removeStyle = [token range].location < mCurrentLocation ;
       if (removeStyle) {
-        [ioStyledRangeArray removeObjectAtIndex:* outUpperIndexToRedrawInStyleArray] ;
+        [ioStyledRangeArray removeObjectAtIndex:(NSUInteger) * outUpperIndexToRedrawInStyleArray] ;
       }
     }
   //---
   }
 //---
-  *outEraseRangeEnd = mCurrentLocation ;
+  *outEraseRangeEnd = (NSInteger) mCurrentLocation ;
   (*outUpperIndexToRedrawInStyleArray) -- ;
 //--- Display token list
   #ifdef DEBUG_MESSAGES
@@ -562,7 +562,7 @@
 
 //---------------------------------------------------------------------------*
 
-- (UInt32) styleCount {
+- (NSUInteger) styleCount {
   return 0 ;
 }
 
@@ -574,13 +574,13 @@
 
 //---------------------------------------------------------------------------*
 
-- (NSString *) styleNameForStyleIndex: (const SInt32) inIndex {
+- (NSString *) styleNameForStyleIndex: (const NSInteger) inIndex {
   return @"" ;
 }
 
 //---------------------------------------------------------------------------*
 
-- (UInt32) textMacroCount {
+- (NSUInteger) textMacroCount {
   return 0 ;
 }
 
@@ -614,11 +614,11 @@
 
 //---------------------------------------------------------------------------*
 
-SInt32 searchStringInTable (NSString * inSearchedString,
-                            const C_cocoa_lexique_table_entry * inTable,
-                            const UInt32 inTableSize) {
-  SInt32 result = 0 ;
-  UInt32 idx = inTableSize ;
+NSInteger searchStringInTable (NSString * inSearchedString,
+                               const C_cocoa_lexique_table_entry * inTable,
+                               const NSUInteger inTableSize) {
+  NSInteger result = 0 ;
+  NSUInteger idx = inTableSize ;
   while ((idx > 0) && (result == 0)) {
     idx -- ;
     if ([inSearchedString isEqualToString:inTable [idx].mEntry]) {

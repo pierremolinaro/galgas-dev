@@ -86,7 +86,7 @@ end foreach
   %}\n\n%
   %- (NSString *) blockComment ;\n\n%
   %- (const UInt16 * *) popupListData ;\n\n%
-  %- (UInt32) textMacroCount ;\n\n%
+  %- (NSUInteger) textMacroCount ;\n\n%
   %- (NSString *) textMacroTitleAtIndex: (const UInt32) inIndex ;\n\n%
   %- (NSString *) textMacroContentAtIndex: (const UInt32) inIndex ;\n\n%
   %- (NSString *) tabItemTitle ;\n\n%
@@ -102,7 +102,7 @@ end foreach
   %  return gPopUpData_%![mLexiqueClassName identifierRepresentation]% ;\n%
   %}\n\n%
   %//---------------------------------------------------------------------------*\n\n%
-  %- (UInt32) textMacroCount {\n%
+  %- (NSUInteger) textMacroCount {\n%
   %  return %![[mTextMacroList length] string]% ;\n%
   %}\n\n%
   %//---------------------------------------------------------------------------*\n\n%

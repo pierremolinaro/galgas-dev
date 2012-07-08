@@ -112,7 +112,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   if (indexOfSelectedItem >= 0) {
     NSBundle * mb = [NSBundle mainBundle] ;
     NSString * rp = [mb resourcePath] ;
-    result = [rp stringByAppendingPathComponent:[mToolNameArray objectAtIndex:indexOfSelectedItem HERE]] ;
+    result = [rp stringByAppendingPathComponent:[mToolNameArray objectAtIndex:(NSUInteger) indexOfSelectedItem HERE]] ;
   }
   return result ;
 }
@@ -143,7 +143,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 //--- Add integer options
   for (NSUInteger i=0 ; i<[mUIntOptionArray count] ; i++) {
     OC_GGS_CommandLineOption * option = [mUIntOptionArray objectAtIndex:i HERE] ;
-    const NSUInteger optionValue = [defaults integerForKey: [NSString stringWithFormat:@"%@_%@", GGS_uint_build_option, [option identifier]]];
+    const NSUInteger optionValue = (NSUInteger) [defaults integerForKey: [NSString stringWithFormat:@"%@_%@", GGS_uint_build_option, [option identifier]]];
     if (optionValue != 0) {
       const char c = [option commandChar] ;
       if (c != '\0') {
@@ -325,8 +325,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
       withSettingTitle:@"Template String"
     ] ;
   }
-  UInt32 i ;
-  for (i=0; i<[inTokenizer styleCount] ; i++) {
+  for (NSUInteger i=0; i<[inTokenizer styleCount] ; i++) {
   //--- By default, find an old style foreground color
     NSString * name = [NSString stringWithFormat:@"%@_%@", GGS_named_color, [inTokenizer styleIdentifierForStyleIndex:i]] ;
     // NSLog (@"name '%@'", name) ;
@@ -377,7 +376,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
       withBackgroundColorBindingPath:[NSString stringWithFormat:@"values.%@_%@", GGS_named_background_color, [inTokenizer styleIdentifierForStyleIndex:i]]
       withFontBindingPath:[NSString stringWithFormat:@"values.%@_%@", GGS_named_font, [inTokenizer styleIdentifierForStyleIndex:i]]
       withForegroundColorBindingPath:[NSString stringWithFormat:@"values.%@_%@", GGS_named_color, [inTokenizer styleIdentifierForStyleIndex:i]]
-      withSettingTitle:[inTokenizer styleNameForStyleIndex:i]
+      withSettingTitle:[inTokenizer styleNameForStyleIndex: i]
     ] ;
   }
   enclosingRect.size.height += 10.0 ;
@@ -387,7 +386,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   NSString * title = [inTokenizer tabItemTitle] ;
   NSTabViewItem * tvi = [[NSTabViewItem alloc] initWithIdentifier:title] ;
   [tvi setLabel:title] ;
-  [mLexicalColoringTabView insertTabViewItem:tvi atIndex:inIndex] ;
+  [mLexicalColoringTabView insertTabViewItem:tvi atIndex: (NSInteger) inIndex] ;
 //--- Duplicate 'SetFont' Button
 //  NSLog (@"ALL NAMES IN PREFERENCES: '%@'", allFontPreferenceNames) ;
   NSButton * setFontButton = [[NSButton alloc] initWithFrame:[mSetFontButton frame]] ;
@@ -407,7 +406,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   [setFontButton setAction:@selector (setFontAction:)] ;
   [[tvi view] addSubview:setFontButton] ;
 //--- IMPORTANT: the following instruction performs actual sizing of tvi view.
-  [mLexicalColoringTabView selectTabViewItemAtIndex:inIndex] ;
+  [mLexicalColoringTabView selectTabViewItemAtIndex:(NSInteger) inIndex] ;
   NSScrollView * sc = [[NSScrollView alloc] initWithFrame:[mLexicalColoringScrollView frame]] ;
   [sc setHasHorizontalScroller:YES] ;
   [sc setHasVerticalScroller:YES] ;
@@ -499,7 +498,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     [self setTextColorsAndFontForTokenizer:tokenizer atIndex:t] ;
   }
 //--- Remove tabview item Model
-  [mLexicalColoringTabView removeTabViewItem:[mLexicalColoringTabView tabViewItemAtIndex:[tokenizerArray count]]] ;
+  [mLexicalColoringTabView removeTabViewItem:[mLexicalColoringTabView tabViewItemAtIndex:(NSInteger) [tokenizerArray count]]] ;
   mLexicalColoringScrollView = nil ;
 }
 
@@ -509,7 +508,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 
 //---------------------------------------------------------------------------*
 
-- (void) insertTextMacroWithIndex: (int) inIndex
+- (void) insertTextMacroWithIndex: (NSUInteger) inIndex
          titleComponents: (NSArray *) inTitleComponents
          intoMenu: (NSMenu *) inMenu {
  // NSLog (@"[inTitleComponents count] %u, inMenu %@", [inTitleComponents count], inMenu) ;
@@ -520,7 +519,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
       keyEquivalent:@""
     ] ;
     NSMenuItem * item = [inMenu itemAtIndex:[inMenu numberOfItems] - 1] ;
-    [item setTag:inIndex] ;
+    [item setTag:(NSInteger) inIndex] ;
   }else{
   //--- Find or Add menu item
     NSInteger idx = [inMenu indexOfItemWithTitle:[inTitleComponents objectAtIndex:0 HERE]] ;
@@ -561,9 +560,8 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 - (void) buildTextMacroMenu {
   // NSLog (@"mTextMacroMenu %@", mTextMacroMenu) ;
   NSArray * tokenizerArray = tokenizers () ;
-  UInt32 macroCount = 0 ;
-  UInt32 i ;
-  for (i=0 ; i<[tokenizerArray count] ; i++) {
+  NSUInteger macroCount = 0 ;
+  for (NSUInteger i=0 ; i<[tokenizerArray count] ; i++) {
     OC_Lexique * tokenizer = [tokenizerArray objectAtIndex:i HERE] ;
     macroCount += [tokenizer textMacroCount] ;
   }
@@ -571,10 +569,9 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     NSMenu * mainMenu = [NSApp mainMenu] ;
     [mainMenu removeItemAtIndex:[mainMenu indexOfItemWithSubmenu:mTextMacroMenu]];
   }else{
-    for (i=0 ; i<[tokenizerArray count] ; i++) {
+    for (NSUInteger i=0 ; i<[tokenizerArray count] ; i++) {
       OC_Lexique * tokenizer = [tokenizerArray objectAtIndex:i HERE] ;
-      UInt32 j ;
-      for (j=0 ; j<[tokenizer textMacroCount] ; j++) {
+      for (NSUInteger j=0 ; j<[tokenizer textMacroCount] ; j++) {
         NSString * title = [tokenizer textMacroTitleAtIndex:j] ;
         NSArray * components = [title componentsSeparatedByString:@"/"] ;
         [self
@@ -1049,7 +1046,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   // NSLog (@"infoDictionary '%@'", infoDictionary) ;
   NSArray * allDocumentTypes = [infoDictionary objectForKey:@"CFBundleDocumentTypes"] ;
   // NSLog (@"allDocumentTypes '%@'", allDocumentTypes) ;
-  NSDictionary * docTypeDict = [allDocumentTypes objectAtIndex:[inSender tag] HERE] ;
+  NSDictionary * docTypeDict = [allDocumentTypes objectAtIndex: (NSUInteger) [inSender tag] HERE] ;
   NSArray * documentTypeExtensions = [docTypeDict objectForKey:@"CFBundleTypeExtensions"] ;
   NSString * extension = [documentTypeExtensions objectAtIndex:0 HERE] ;
   // NSLog (@"extension '%@'", extension) ;
@@ -1082,7 +1079,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
       NSMenuItem * item = [mNewDocumentTypePopUpButton lastItem] ;
       [item setTarget:self] ;
       [item setAction:@selector (changeNewDocumentTypeAction:)] ;
-      [item setTag:i] ;
+      [item setTag:(NSInteger) i] ;
       [item setRepresentedObject:savePanel] ;
     }
   }

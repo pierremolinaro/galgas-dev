@@ -267,7 +267,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 //---------------------------------------------------------------------------*
 
 - (NSString *) shiftLeftString {
-  const NSUInteger spaceCount = [[NSUserDefaults standardUserDefaults] integerForKey:@"PMShiftLeftInsertedSpaceCount"] ;
+  const NSUInteger spaceCount = (NSUInteger) [[NSUserDefaults standardUserDefaults] integerForKey:@"PMShiftLeftInsertedSpaceCount"] ;
   //NSLog (@"spaceCount %u", spaceCount) ;
   NSMutableString * s = [[[NSMutableString alloc] init] autorelease] ;
   NSUInteger i ;
@@ -314,7 +314,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     }
   }while ((currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location)) ;
 //--- Update selected range
-  const NSRange newSelectedRange = NSMakeRange (selectedRange.location, selectedRange.length + insertedCharsCount) ;
+  const NSRange newSelectedRange = NSMakeRange (selectedRange.location, selectedRange.length + (NSUInteger) insertedCharsCount) ;
   [mTextView setSelectedRange:newSelectedRange] ;
 //--- Register undo
   [mTextSyntaxColoring.undoManager 

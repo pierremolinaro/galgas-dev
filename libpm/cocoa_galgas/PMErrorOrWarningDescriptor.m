@@ -47,7 +47,7 @@
 - (void) updateLocationForPreviousRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength {
   if (mLocation >= (inEditedRange.location + inEditedRange.length)) {
-    mLocation += inChangeInLength ;
+    mLocation += (NSUInteger) inChangeInLength ;
   }
 }
 

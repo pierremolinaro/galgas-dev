@@ -11,10 +11,10 @@
 
 @implementation OC_Token
 
-- (id) initWithTokenCode: (UInt32) inTokenCode
+- (id) initWithTokenCode: (NSUInteger) inTokenCode
        range: (NSRange) inRange
-       style: (SInt32) inStyle
-       matchedTemplateDelimiterIndex: (SInt32) inMatchedTemplateDelimiterIndex {
+       style: (NSInteger) inStyle
+       matchedTemplateDelimiterIndex: (NSInteger) inMatchedTemplateDelimiterIndex {
   self = [super init] ;
   if (self) {
     mTokenCode = inTokenCode ;
@@ -33,11 +33,11 @@
   return mRange ;
 }
 
-- (SInt32) style {
+- (NSInteger) style {
   return mStyle ;
 }
 
-- (SInt32) matchedTemplateDelimiterIndex {
+- (NSInteger) matchedTemplateDelimiterIndex {
   return mMatchedTemplateDelimiterIndex ;
 }
 
@@ -49,7 +49,7 @@
            (UInt64) mRange.length,
            (SInt64) inTranslation) ;
   }
-  mRange.location += inTranslation ;
+  mRange.location += (NSUInteger) inTranslation ;
 }
 
 @end

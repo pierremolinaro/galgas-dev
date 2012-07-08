@@ -57,13 +57,13 @@ typedef struct {
 
 @interface OC_Lexique : NSObject {
   @protected NSString * mSourceString ;
-  @protected SInt32 mTokenCode ;
+  @protected NSInteger mTokenCode ;
   @protected utf32 mPreviousChar ; 
   @protected utf32 mCurrentChar ; 
   @protected NSUInteger mTokenStartLocation ;
   @protected NSUInteger mCurrentLocation ;
   @protected BOOL mLoop ;
-  @protected SInt32 mMatchedTemplateDelimiterIndex ; //--- Scanner mode for template scanner
+  @protected NSInteger mMatchedTemplateDelimiterIndex ; //--- Scanner mode for template scanner
   @protected NSMenu * mMenuForEntryPopUpButton ;
   @private NSDictionary * mCustomSyntaxColoringDictionary ;
 }
@@ -91,13 +91,13 @@ typedef struct {
 
 - (NSString *) blockComment ;
 
-- (UInt32) styleCount ;
+- (NSUInteger) styleCount ;
 
 - (NSString *) styleIdentifierForStyleIndex: (const NSInteger) inIndex ;
 
-- (NSString *) styleNameForStyleIndex: (const SInt32) inIndex ;
+- (NSString *) styleNameForStyleIndex: (const NSInteger) inIndex ;
 
-- (UInt32) textMacroCount ;
+- (NSUInteger) textMacroCount ;
 
 - (NSString *) textMacroTitleAtIndex: (const NSUInteger) inIndex ;
 
@@ -111,7 +111,7 @@ typedef struct {
 
 - (void) parseLexicalTokenForLexicalColoring ;
 
-- (UInt32) styleIndexForTerminal: (SInt32) inTerminal ;
+- (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal ;
 
 - (void) tokenizeForSourceString: (NSString *) inSourceString
          tokenArray: (NSMutableArray *) ioTokenArray // Array of OC_Token
@@ -140,9 +140,9 @@ typedef struct {
 
 //---------------------------------------------------------------------------*
 
-SInt32 searchStringInTable (NSString * inSearchedString,
-                            const C_cocoa_lexique_table_entry * inTable,
-                            const UInt32 inTableSize) ;
+NSInteger searchStringInTable (NSString * inSearchedString,
+                               const C_cocoa_lexique_table_entry * inTable,
+                               const NSUInteger inTableSize) ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *

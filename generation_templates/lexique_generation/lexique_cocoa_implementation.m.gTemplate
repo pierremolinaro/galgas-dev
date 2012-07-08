@@ -105,7 +105,7 @@
         between %,\n%
         end foreach
       %\n} ;\n\n%
-      %static SInt32 search_into_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%![tokenList_lkey string]% (NSString * inSearchedString) {\n%
+      %static NSUInteger search_into_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%![tokenList_lkey string]% (NSString * inSearchedString) {\n%
       %  return searchStringInTable (inSearchedString, ktable_for_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%![tokenList_lkey string]%, %![[tokenList_mExplicitTokenListMap count] string]%) ;\n%
       %}\n\n%
     end if
@@ -195,7 +195,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-- (UInt32) terminalVocabularyCount {
+- (NSUInteger) terminalVocabularyCount {
   return %![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string]% ;
 }
 
@@ -205,7 +205,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-- (UInt32) styleCount {
+- (NSUInteger) styleCount {
   return %![[[LEXIQUE_COMPONENT_ROOT mLexicalStyleList] length] + 1 string]% ;
 }
 
@@ -225,8 +225,8 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-- (UInt32) styleIndexForTerminal: (SInt32) inTerminal {
-  static const UInt32 kTerminalSymbolStyles [%![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] + 1 string]%] = {0%
+- (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal {
+  static const NSUInteger kTerminalSymbolStyles [%![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] + 1 string]%] = {0%
 foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList] do
   %,\n    %![mStyleIndex string]% /* %!LEXIQUE_CLASS_NAME%_1_%![[mTerminalName string] identifierRepresentation]% */%
 end foreach%\n  } ;
@@ -253,7 +253,7 @@ end foreach%\n  } ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-- (NSString *) styleNameForStyleIndex: (SInt32) inIndex {
+- (NSString *) styleNameForStyleIndex: (NSInteger) inIndex {
   NSString * result = nil ;
   if ((inIndex >= 0) && (inIndex < %![[[LEXIQUE_COMPONENT_ROOT mLexicalStyleList] length] + 1 string]%)) {
     NSString * kStyleArray [%![[[LEXIQUE_COMPONENT_ROOT mLexicalStyleList] length] + 1 string]%] = {
@@ -272,7 +272,7 @@ end foreach%\n    } ;
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-- (NSString *) styleIdentifierForStyleIndex: (SInt32) inIndex {
+- (NSString *) styleIdentifierForStyleIndex: (NSInteger) inIndex {
   NSString * result = nil ;
   if ((inIndex >= 0) && (inIndex < %![[[LEXIQUE_COMPONENT_ROOT mLexicalStyleList] length] + 1 string]%)) {
     NSString * kStyleArray [%![[[LEXIQUE_COMPONENT_ROOT mLexicalStyleList] length] + 1 string]%] = {
