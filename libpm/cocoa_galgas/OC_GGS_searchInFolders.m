@@ -59,11 +59,11 @@
 //---
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
   [self willChangeValueForKey:@"mExtensionChoice"] ;
-  mExtensionChoice = [ud integerForKey:@"extensionChoice"] ;
+  mExtensionChoice = (NSUInteger) [ud integerForKey:@"extensionChoice"] ;
   [self didChangeValueForKey:@"mExtensionChoice"] ;
 //---
   [self willChangeValueForKey:@"mFolderChoice"] ;
-  mFolderChoice = [ud integerForKey:@"folderChoice"] ;
+  mFolderChoice = (NSUInteger) [ud integerForKey:@"folderChoice"] ;
   [self didChangeValueForKey:@"mFolderChoice"] ;
 //---
   NSArray * extensionList = [self allTypesOfCurrentApplication] ;
@@ -180,8 +180,8 @@
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
   [ud setObject:mSearchPathArray forKey:@"searchPathArray"] ;  
   //---
-  [ud setInteger:mExtensionChoice forKey:@"extensionChoice"] ;
-  [ud setInteger:mFolderChoice forKey:@"folderChoice"] ;
+  [ud setInteger:(NSInteger) mExtensionChoice forKey:@"extensionChoice"] ;
+  [ud setInteger:(NSInteger) mFolderChoice forKey:@"folderChoice"] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -231,7 +231,7 @@
   if ([foundEntries count] > 0) {
     [self willChangeValueForKey:@"mResultArray"] ;
     [mResultArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-      [NSNumber numberWithInteger:[foundEntries count]], @"countString",
+      [NSNumber numberWithUnsignedInteger:[foundEntries count]], @"countString",
       [NSNumber numberWithBool:YES], @"boldDisplay",
       foundEntries, @"children",
       inFileFullPath, @"foundItem",

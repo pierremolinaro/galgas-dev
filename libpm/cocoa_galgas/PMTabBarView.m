@@ -102,7 +102,7 @@
 - (void) removeTabAction: (PMButtonWithRemove *) inSender {
   [mTarget
     performSelector:mRemoveSourceTabAction
-    withObject:[mObservedArray objectAtIndex:inSender.tag HERE]
+    withObject:[mObservedArray objectAtIndex:(NSUInteger) inSender.tag HERE]
   ] ;
 }
 

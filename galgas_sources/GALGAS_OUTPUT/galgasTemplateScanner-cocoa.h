@@ -207,17 +207,17 @@ enum {galgasTemplateScanner_1_,
 //--- END OF USER ZONE 2
 
 
-- (UInt32) terminalVocabularyCount ;
+- (NSUInteger) terminalVocabularyCount ;
 
-- (UInt32) styleIndexForTerminal: (SInt32) inTerminal ;
+- (NSUInteger) styleIndexForTerminal: (NSInteger) inTerminal ;
 
 - (void) parseLexicalTokenForLexicalColoring ;
 
-- (UInt32) styleCount ;
+- (NSUInteger) styleCount ;
 
-- (NSString *) styleNameForStyleIndex: (SInt32) inIndex ;
+- (NSString *) styleNameForStyleIndex: (NSInteger) inIndex ;
 
-- (NSString *) styleIdentifierForStyleIndex: (SInt32) inIndex ;
+- (NSString *) styleIdentifierForStyleIndex: (NSInteger) inIndex ;
 
 - (NSString *) indexingDirectory ;
 

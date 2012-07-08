@@ -126,7 +126,7 @@
   [super windowControllerDidLoadNib: inWindowController];
 //--- Record selected tab
   NSString * key = [NSString stringWithFormat:@"SELECTED-TAB:%@", self.fileURL.path] ;
-  const NSUInteger selection = [[NSUserDefaults standardUserDefaults] integerForKey:key] ;
+  const NSUInteger selection = (NSUInteger) [[NSUserDefaults standardUserDefaults] integerForKey:key] ;
   // NSLog (@"READ %@ -> %lu", key, selection) ;
 //--- Tell to window controller that closing the source text window closes the document
   [inWindowController setShouldCloseDocument: YES] ;
@@ -423,7 +423,7 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  [mSourceDisplayArrayController setSelectionIndex:inSender.tag] ;
+  [mSourceDisplayArrayController setSelectionIndex:(NSUInteger) inSender.tag] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -482,7 +482,7 @@
   #endif
   if (inReturnCode == 1) {
   //--- Get selected line
-    const NSUInteger selectedLine = [mGotoLineTextField integerValue] ;
+    const NSUInteger selectedLine = (NSUInteger) [mGotoLineTextField integerValue] ;
   //--- Goto selected line
     OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
     [selectedObject gotoLine:selectedLine] ;
@@ -764,9 +764,9 @@
   documentTypes = [infoPlist objectForKey:@"CFBundleDocumentTypes"];
   if(documentTypes)
   {
-      NSInteger i, count = [documentTypes count];
+      const NSUInteger count = [documentTypes count];
       
-      for(i = 0; i < count; i++)
+      for(NSUInteger i = 0; i < count; i++)
       {
           NSString *type = [[documentTypes objectAtIndex:i HERE]
               objectForKey:@"CFBundleTypeName"];
@@ -1204,7 +1204,7 @@
   const NSInteger clickedRow = mIssueTableView.clickedRow ;
   NSArray * arrangedObjects = mIssueArrayController.arrangedObjects ;
   if ((clickedRow >= 0) && (clickedRow < (NSInteger) arrangedObjects.count)) {
-    PMIssueDescriptor * issue = [arrangedObjects objectAtIndex:clickedRow HERE] ;
+    PMIssueDescriptor * issue = [arrangedObjects objectAtIndex:(NSUInteger) clickedRow HERE] ;
     NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
     OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:mSourceDisplayArrayController.selectionIndex HERE] ;
     [self displayIssueDetailedMessage:issue.issueMessage] ;
@@ -1246,7 +1246,7 @@
     NSArray * arrangedObjects = mSourceDisplayArrayController.arrangedObjects ;
     const NSUInteger sel = mSourceDisplayArrayController.selectionIndex ;
     NSString * key = [NSString stringWithFormat:@"SELECTED-TAB:%@", self.fileURL.path] ;
-    [[NSUserDefaults standardUserDefaults] setInteger:sel forKey:key] ;
+    [[NSUserDefaults standardUserDefaults] setInteger:(NSInteger) sel forKey:key] ;
     // NSLog (@"WRITE %@ -> %lu", key, sel) ;
     if (sel != NSNotFound) {
       OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel HERE] ;

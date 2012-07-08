@@ -398,7 +398,7 @@
       ] ;
       for (NSUInteger i=0 ; i<[mTokenArray count] ; i++) {
         OC_Token * token = [mTokenArray objectAtIndex:i HERE] ;
-        const SInt32 colorIndex = [token style] ;
+        const NSInteger colorIndex = [token style] ;
         const NSRange range = [token range] ;
         if (colorIndex == -2) {
           [mSourceTextStorage
@@ -417,7 +417,7 @@
     }else{
       for (NSUInteger i=0 ; i<[mTokenArray count] ; i++) {
         OC_Token * token = [mTokenArray objectAtIndex:i HERE] ;
-        const SInt32 colorIndex = [token style] ;
+        const NSInteger colorIndex = [token style] ;
         if (colorIndex == inChangedColorIndex) {
           const NSRange range = [token range] ;
           #ifdef DEBUG_MESSAGES
@@ -591,7 +591,7 @@
       #ifdef DEBUG_MESSAGES
         NSLog (@"PERFORM COLORING '%@' range [%lu, %lu] [mSourceTextStorage length] %lu", [mSourceTextStorage.string substringWithRange:range], range.location, range.length, mSourceTextStorage.string.length) ;
       #endif
-      const int style = [token style] ;
+      const NSInteger style = [token style] ;
       if (style == -1) { // Error
         [mSourceTextStorage
           addAttribute:NSForegroundColorAttributeName

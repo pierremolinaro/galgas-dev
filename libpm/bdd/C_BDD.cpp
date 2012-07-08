@@ -822,10 +822,10 @@ C_BDD C_BDD::BDDWithPredicateString (const C_String & inPredicateStringValue
       for (PMSInt32 i=s.length () - 1 ; i>=0 ; i--) {
         const utf32 c = s (i COMMA_HERE) ;
         if (UNICODE_VALUE (c) == '0') {
-          v &= C_BDD ((PMUInt16) (bitIndex & PMUINT16_MAX), false) ;
+          v &= C_BDD ((PMUInt16) (((PMUInt16) bitIndex) & PMUINT16_MAX), false) ;
           bitIndex ++ ;
         }else if (UNICODE_VALUE (c) == '1') {
-          v &= C_BDD ((PMUInt16) (bitIndex & PMUINT16_MAX), true) ;
+          v &= C_BDD ((PMUInt16) (((PMUInt16) bitIndex) & PMUINT16_MAX), true) ;
           bitIndex ++ ;
         }else if (UNICODE_VALUE (c) == 'X') {
           bitIndex ++ ;
@@ -1247,7 +1247,7 @@ updateRelation (const PMUInt16 inRelationBitNeededCount [],
     PMSInt32 newIdx = 0 ;
     for (PMSInt32 i=0 ; i<inRelationCardinality ; i++) {
       for (PMSInt32 j=0 ; j<* (inRelationBitCurrentCount [i]) ; j++) {
-        translationVector [idx] = (PMUInt16) ((newIdx + j) & PMUINT16_MAX) ;
+        translationVector [idx] = (PMUInt16) (((PMUInt16)(newIdx + j)) & PMUINT16_MAX) ;
         idx ++ ;
       }
       newIdx += inRelationBitNeededCount [i] ;
@@ -1781,7 +1781,7 @@ void C_BDD::printBDDwithoutHeader (const TC_UniqueArray <C_String> & inVariables
          << ") **\n" ;
     }else{
       TC_UniqueArray <char> displayString (inVariablesCount, 'X' COMMA_HERE) ;
-      internalPrintBDD (mBDDvalue, displayString, nameLengthArray, (PMUInt16) ((inVariablesCount - 1) & PMUINT16_MAX), inLeadingSpacesCount) ;
+      internalPrintBDD (mBDDvalue, displayString, nameLengthArray, (PMUInt16) ((((PMUInt16) inVariablesCount) - 1) & PMUINT16_MAX), inLeadingSpacesCount) ;
     }
   }
 }
@@ -2177,7 +2177,7 @@ C_BDD C_BDD::buildBDDFromValueList (PMUInt64 ioValueList [],
         C_BDD accumulatorBDD ; accumulatorBDD.setToTrue () ;
         mask = 1ULL ;
         for (PMSInt32 idx=0 ; idx<=firstDifferentBit ; idx++) {
-          accumulatorBDD = (C_BDD ((PMUInt16) (idx & PMUINT16_MAX), (referenceValue & mask) != 0) & accumulatorBDD) | accumulatorArray [idx] ;
+          accumulatorBDD = (C_BDD ((PMUInt16) (((PMUInt16) idx) & PMUINT16_MAX), (referenceValue & mask) != 0) & accumulatorBDD) | accumulatorArray [idx] ;
           accumulatorArray [idx].setToFalse () ;
           mask <<= 1 ;
         }
@@ -2191,7 +2191,7 @@ C_BDD C_BDD::buildBDDFromValueList (PMUInt64 ioValueList [],
     result.setToTrue () ;
     PMUInt64 mask = 1ULL ;
     for (PMSInt32 idx=0 ; idx<inBitCount ; idx++) {
-      result = (C_BDD ((PMUInt16) (idx & PMUINT16_MAX), (referenceValue & mask) != 0) & result) | accumulatorArray [idx] ;
+      result = (C_BDD ((PMUInt16) (((PMUInt16) idx) & PMUINT16_MAX), (referenceValue & mask) != 0) & result) | accumulatorArray [idx] ;
       mask <<= 1 ;
     }
     macroMyDeleteArray (accumulatorArray) ;

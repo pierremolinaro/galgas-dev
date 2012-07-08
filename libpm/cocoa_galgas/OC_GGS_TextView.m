@@ -193,8 +193,8 @@
   NSString * descriptor = [inSender representedObject] ;
   // NSLog (@"descriptor '%@'", descriptor) ;
   NSArray * components = [descriptor componentsSeparatedByString:@":"] ;
-  const NSUInteger tokenLocation = [[components objectAtIndex:2] integerValue] ;
-  const NSUInteger tokenLength = [[components objectAtIndex:3] integerValue] ;
+  const NSUInteger tokenLocation = (NSUInteger) [[components objectAtIndex:2] integerValue] ;
+  const NSUInteger tokenLength = (NSUInteger) [[components objectAtIndex:3] integerValue] ;
   NSString * filePath = [components objectAtIndex:4] ;
   OC_GGS_TextDisplayDescriptor * tdd = [mDisplayDescriptor.document findOrAddNewTabForFile:filePath] ;
   [tdd setSelectionRangeAndMakeItVisible:NSMakeRange (tokenLocation, tokenLength)] ;
