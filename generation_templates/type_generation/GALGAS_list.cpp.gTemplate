@@ -227,6 +227,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popFirst (%?^
   end foreach
 %  }else{
     macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
+    macroUniqueSharedObject (p) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
     %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
@@ -252,6 +253,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popLast (%?^
   end foreach
 %  }else{
     macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
+    macroUniqueSharedObject (p) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
     %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
@@ -359,6 +361,7 @@ foreach ATTRIBUTE_LIST do index IDX
   %  cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;\n%
   %  if (NULL != p) {\n%
   %    macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
+  %    macroUniqueSharedObject (p) ;\n%
   %    p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% = inOperand ;\n%
   %  }\n%
   %}\n\n%
