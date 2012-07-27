@@ -324,7 +324,7 @@
   }else if (1 == mMatchCount) {
     [mResultTextField setStringValue:@"1 match"] ;
   }else{
-    [mResultTextField setStringValue:[NSString stringWithFormat:@"%u matches", mMatchCount]] ;
+    [mResultTextField setStringValue:[NSString stringWithFormat:@"%lu matches", mMatchCount]] ;
   }
 }
 
@@ -545,7 +545,7 @@
   }else if (1 == mReplaceCount) {
     [mReplacementTextField setStringValue:@"1 replacement"] ;
   }else{
-    [mReplacementTextField setStringValue:[NSString stringWithFormat:@"%u replacements", mReplaceCount]] ;
+    [mReplacementTextField setStringValue:[NSString stringWithFormat:@"%lu replacements", mReplaceCount]] ;
   }
 }
 

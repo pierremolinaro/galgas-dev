@@ -903,7 +903,7 @@
         if (CRLFcount == 1) {
           [s appendFormat:@"1 CRLF has been converted to LF."] ;
         }else if (CRLFcount > 1) {
-          [s appendFormat:@"%u CRLF have been converted to LF.", CRLFcount] ;
+          [s appendFormat:@"%lu CRLF have been converted to LF.", CRLFcount] ;
         }
       }
     //--- Convert CR to LF
@@ -917,7 +917,7 @@
         if (CRcount == 1) {
           [s appendFormat:@"1 CR has been converted to LF."] ;
         }else if (CRcount > 1) {
-          [s appendFormat:@"%u CR have been converted to LF.", CRcount] ;
+          [s appendFormat:@"%lu CR have been converted to LF.", CRcount] ;
         }
       }
     }
@@ -932,7 +932,7 @@
         if (HTABcount == 1) {
           [s appendFormat:@"1 HTAB has been converted to SPACE."] ;
         }else if (HTABcount > 1) {
-          [s appendFormat:@"%u HTAB have been converted to SPACE.", HTABcount] ;
+          [s appendFormat:@"%lu HTAB have been converted to SPACE.", HTABcount] ;
         }
       }
     }
@@ -1003,7 +1003,7 @@
         if ((c == 0x0A) || (c == 0x0D) || (c == 0x09) || ((c >= ' ') && (c <= 0x7E))) {
           [s appendFormat:@"%c", c] ;
         }else{
-          [s appendFormat:@"%C", 0xFFFD] ; // Replacement character
+          [s appendFormat:@"%C", (uint16_t) 0xFFFD] ; // Replacement character
         }
       }
       source = [s copy] ;

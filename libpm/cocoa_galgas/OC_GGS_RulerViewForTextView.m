@@ -121,7 +121,7 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
       for (NSUInteger i=0 ; (i<issueArray.count) ; i++) {
         PMErrorOrWarningDescriptor * issue = [issueArray objectAtIndex:i HERE] ;
         if ([issue isInRange:lineRange]) {
-          [allMessages appendFormat:issue.message] ;
+          [allMessages appendString:issue.message] ;
           if (issue.isError) {
             hasError = YES ;
           }else{
