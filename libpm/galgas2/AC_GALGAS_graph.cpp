@@ -1,10 +1,10 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//  AC_GALGAS_graph : Base class for GALGAS list                              *
+//  AC_GALGAS_graph : Base class for GALGAS graph                            *
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2008, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 2008, ..., 2012 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -76,6 +76,7 @@ class cSharedGraph : public C_SharedObject {
   private : PMUInt32 mAllNodeCount ;
   private : PMUInt32 mDefinedNodeCount ;
   private : TC_UniqueArray <tArcStruct> mArcArray ;
+  private : TC_UniqueArray <cGraphNode *> mNodeArray ;
 
 //--- Count
   public : inline PMUInt32 definedNodeCount (void) const { return mDefinedNodeCount ; }
@@ -115,6 +116,10 @@ class cSharedGraph : public C_SharedObject {
                                          GALGAS_lstringlist & outSortedNodeKeyList,
                                          cSharedList * & outUnsortedList,
                                          GALGAS_lstringlist & outUnsortedNodeKeyList) const ;
+
+  public : C_String reader_graphviz (void) const ;
+
+  public : void reader_arcs (GALGAS__32_stringlist & ioList) const ;
 
 //--- No copy
   private : cSharedGraph (const cSharedGraph &) ;
@@ -379,6 +384,7 @@ cGraphNode * cSharedGraph::internalInsert (cGraphNode * & ioRootPtr,
   cGraphNode * matchingEntry = NULL ;
   if (ioRootPtr == NULL) {
     macroMyNew (ioRootPtr, cGraphNode (inKey, mAllNodeCount)) ;
+    mNodeArray.addObject (ioRootPtr) ;
     ioExtension = true ;
     mAllNodeCount ++ ;
     matchingEntry = ioRootPtr ;
@@ -513,6 +519,66 @@ void AC_GALGAS_graph::modifier_addArc (const GALGAS_lstring & inSourceNodeKey,
                           inTargetNodeKey.mAttribute_string.stringValue (),
                           inTargetNodeKey.mAttribute_location) ;
   }
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Output graphviz text
+#endif
+
+//---------------------------------------------------------------------------*
+
+C_String cSharedGraph::reader_graphviz (void) const {
+  C_String s ;
+  s << "digraph G {\n" ;
+  for (PMSInt32 i=0 ; i<mArcArray.count () ; i++) {
+    const tArcStruct arc = mArcArray (i COMMA_HERE) ;
+    s << "  \"" << mNodeArray (arc.mSourceNodeID COMMA_HERE)->mKey
+      << "\" -> \"" << mNodeArray (arc.mTargetNodeID COMMA_HERE)->mKey
+      << "\" ;\n" ;
+  }  
+  s << "}\n" ;
+  return s ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_string AC_GALGAS_graph::reader_graphviz (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid ()) {
+    result = GALGAS_string (mSharedGraph->reader_graphviz ()) ;
+  }
+  return result ;
+}
+
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Output arc list
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cSharedGraph::reader_arcs (GALGAS__32_stringlist & ioList) const {
+  for (PMSInt32 i=0 ; i<mArcArray.count () ; i++) {
+    const tArcStruct arc = mArcArray (i COMMA_HERE) ;
+    ioList.addAssign_operation (mNodeArray (arc.mSourceNodeID COMMA_HERE)->mKey,
+                                mNodeArray (arc.mTargetNodeID COMMA_HERE)->mKey
+                                COMMA_HERE) ;
+  }  
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS__32_stringlist AC_GALGAS_graph::reader_arcs (LOCATION_ARGS) const {
+  GALGAS__32_stringlist result ;
+  if (isValid ()) {
+    result = GALGAS__32_stringlist::constructor_emptyList (THERE) ;
+    mSharedGraph->reader_arcs (result) ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------*

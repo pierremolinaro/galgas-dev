@@ -1538,6 +1538,22 @@ override method @graphDeclarationAST enterInSemanticContext
     !"lstringlist"
     !false # No compiler argument
   ;
+#--- Reader 'graphviz'
+  enterInheritedReaderWithoutArgument
+    !?readerMap
+    !?ioSemanticContext->mTypeMap
+    !"graphviz"
+    !"string"
+    !false # No compiler argument
+  ;
+#--- Reader 'arcs'
+  enterInheritedReaderWithoutArgument
+    !?readerMap
+    !?ioSemanticContext->mTypeMap
+    !"arcs"
+    !"2stringlist"
+    !false # No compiler argument
+  ;
 #--- Constructor 'emptyGraph'
   [!?constructorMap insertKey
     ![@lstring new !"emptyGraph" !here]

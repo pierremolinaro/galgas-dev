@@ -688,7 +688,7 @@ void
 scanner_cocoa_routine_enterCharacterIntoString (BOOL * ioScanningOk, 
                                                 NSMutableString * ioString,
                                                 const utf32 inChar) {
-  [ioString appendFormat:@"%C", inChar] ;
+  [ioString appendFormat:@"%C", (uint16_t) inChar] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1312,7 +1312,7 @@ scanner_cocoa_routine_codePointToUnicode (BOOL * ioScanningOk,
       }
     }
     if (isUnicodeCharacterAssigned (TO_UNICODE (code))) {
-      [ioTemplateString appendFormat:@"%C", code] ;
+      [ioTemplateString appendFormat:@"%C", (uint16_t) code] ;
     }else{
       * ioScanningOk = NO ;
     }
