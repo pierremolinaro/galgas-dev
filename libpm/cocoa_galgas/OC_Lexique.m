@@ -458,7 +458,7 @@
   mPreviousChar = (mCurrentLocation == 0) ? '\0' : [mSourceString characterAtIndex:mCurrentLocation - 1] ;
   while (search) {
     #ifdef DEBUG_MESSAGES
-      NSLog (@"  parseLexicalTokenForLexicalColoring from %d, character '%C', mMatchedTemplateDelimiterIndex %d",
+      NSLog (@"  parseLexicalTokenForLexicalColoring from %lu, character '%C', mMatchedTemplateDelimiterIndex %ld",
               mCurrentLocation,
               (mCurrentChar == '\n') ? 0x21B5 : mCurrentChar,
               mMatchedTemplateDelimiterIndex) ;
@@ -466,7 +466,7 @@
     [self parseLexicalTokenForLexicalColoring] ;
      search = (mTokenStartLocation < mCurrentLocation) && (mCurrentLocation < [mSourceString length]) ;
     #ifdef DEBUG_MESSAGES
-      NSLog (@"  parseLexicalTokenForLexicalColoring DONE, mCurrentLocation %d, mTokenStartLocation %d", mCurrentLocation, mTokenStartLocation) ;
+      NSLog (@"  parseLexicalTokenForLexicalColoring DONE, mCurrentLocation %lu, mTokenStartLocation %lu", mCurrentLocation, mTokenStartLocation) ;
     #endif
     if (mTokenCode < 0) { // Error or template
       OC_Token * token = [[OC_Token alloc]
@@ -476,7 +476,7 @@
         matchedTemplateDelimiterIndex:-1
       ] ;
       #ifdef DEBUG_MESSAGES
-        NSLog (@"  error -> insertAtIndex:%u, range %u, %u", * outUpperIndexToRedrawInStyleArray, [token range].location, [token range].length) ;
+        NSLog (@"  error -> insertAtIndex:%ld, range %lu, %lu", * outUpperIndexToRedrawInStyleArray, [token range].location, [token range].length) ;
       #endif
       [ioStyledRangeArray insertObject:token atIndex:(NSUInteger) * outUpperIndexToRedrawInStyleArray] ;
       (*outUpperIndexToRedrawInStyleArray) ++ ;
@@ -489,7 +489,7 @@
         matchedTemplateDelimiterIndex:mMatchedTemplateDelimiterIndex
       ] ;
       #ifdef DEBUG_MESSAGES
-        NSLog (@"  token -> insertObject:atIndex:%u", * outUpperIndexToRedrawInStyleArray) ;
+        NSLog (@"  token -> insertObject:atIndex:%ld", * outUpperIndexToRedrawInStyleArray) ;
       #endif
       [ioStyledRangeArray insertObject:token atIndex:(NSUInteger) * outUpperIndexToRedrawInStyleArray] ;
       (*outUpperIndexToRedrawInStyleArray) ++ ;
@@ -507,7 +507,7 @@
           matchedTemplateDelimiterIndex:mMatchedTemplateDelimiterIndex
         ] ;
         #ifdef DEBUG_MESSAGES
-          NSLog (@"  token -> insertObject:atIndex:%u", * outUpperIndexToRedrawInStyleArray) ;
+          NSLog (@"  token -> insertObject:atIndex:%ld", * outUpperIndexToRedrawInStyleArray) ;
         #endif
         [ioStyledRangeArray insertObject:token atIndex:(NSUInteger) * outUpperIndexToRedrawInStyleArray] ;
         (*outUpperIndexToRedrawInStyleArray) ++ ;
@@ -529,12 +529,12 @@
   (*outUpperIndexToRedrawInStyleArray) -- ;
 //--- Display token list
   #ifdef DEBUG_MESSAGES
-    NSLog (@"New token list (%u elements):", [ioStyledRangeArray count]) ;
+    NSLog (@"New token list (%lu elements):", [ioStyledRangeArray count]) ;
     for (i=0 ; i<[ioStyledRangeArray count] ; i++) {
       OC_Token * token = [ioStyledRangeArray objectAtIndex:i HERE] ;
       NSString * s = [mSourceString substringWithRange:[token range]] ;
       s = [s stringByReplacingOccurrencesOfString:@"\n" withString:@"\u21B5"] ;
-      NSLog (@"  #%d: token %d '%@', range [%u, %u], style %d, delimitor %d", i, [token tokenCode], s, [token range].location, [token range].length, [token style], [token matchedTemplateDelimiterIndex]) ;
+      NSLog (@"  #%lu: token %lu '%@', range [%lu, %lu], style %ld, delimitor %ld", i, [token tokenCode], s, [token range].location, [token range].length, [token style], [token matchedTemplateDelimiterIndex]) ;
     }
   #endif
 //--- Build popup menu

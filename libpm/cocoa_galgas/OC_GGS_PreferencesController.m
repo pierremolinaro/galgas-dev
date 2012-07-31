@@ -1296,7 +1296,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 - (NSApplicationTerminateReply) applicationShouldTerminate:(NSApplication *)sender {
   BOOL canTerminateApplication = YES ;
   for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
-    if (doc.buildTaskIsRunning) {
+    if (doc.mBuildTaskIsRunning) {
       canTerminateApplication = NO ;
     }
   }

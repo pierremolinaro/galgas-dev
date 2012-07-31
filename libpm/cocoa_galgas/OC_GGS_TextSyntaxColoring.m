@@ -15,8 +15,7 @@
 #import "OC_GGS_PreferencesController.h"
 #import "PMIssueDescriptor.h"
 #import "PMErrorOrWarningDescriptor.h"
-#import "OC_GGS_BuildTaskProxy.h"
-#import "OC_GGS_Document.h"
+#import "OC_GGS_DocumentData.h"
 
 //---------------------------------------------------------------------------*
 
@@ -106,7 +105,7 @@
 
 - (OC_GGS_TextSyntaxColoring *) initWithSourceString: (NSString *) inSource
                                 tokenizer: (OC_Lexique *) inTokenizer
-                                document: (OC_GGS_Document *) inDocument
+                                documentData: (OC_GGS_DocumentData *) inDocumentData
                                 issueArray: (NSArray *) inIssueArray {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
@@ -114,7 +113,7 @@
   self = [super init] ;
   if (self) {
     mTokenizer = inTokenizer ;
-    mDocument = inDocument ;
+    mDocumentData = inDocumentData ;
     mTextDisplayDescriptorSet = [NSMutableSet new] ;
     mSourceTextStorage = [NSTextStorage new] ;
     mTokenArray = [NSMutableArray new] ;
@@ -271,11 +270,11 @@
 
 //---------------------------------------------------------------------------*
 
-- (OC_GGS_Document *) document {
+- (OC_GGS_DocumentData *) documentData {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  return mDocument ;
+  return mDocumentData ;
 }
 
 //---------------------------------------------------------------------------*
@@ -489,7 +488,7 @@
   #endif
   NSMutableArray * filteredArray = [NSMutableArray new] ;
   for (PMIssueDescriptor * issue in inIssueArray) {
-    if ([issue.issueURL isEqual:mDocument.fileURL]) {
+    if ([issue.issueURL isEqual:mDocumentData.fileURL]) {
       const NSRange lineRange = [self rangeForLine:issue.issueLine] ;
       [filteredArray
         addObject:[[PMErrorOrWarningDescriptor alloc]
@@ -1002,7 +1001,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #endif
   NSMutableArray * result = nil ;
 //--- Source directory
-  NSString * sourceDirectory = mDocument.fileURL.path.stringByDeletingLastPathComponent ;
+  NSString * sourceDirectory = mDocumentData.fileURL.path.stringByDeletingLastPathComponent ;
 //--- index directory
   NSString * indexingDirectory = [mTokenizer indexingDirectory] ;
   if (indexingDirectory.length > 0) {

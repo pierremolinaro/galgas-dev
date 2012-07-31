@@ -9,6 +9,7 @@
 
 #import "PMTabBarView.h"
 #import "OC_GGS_TextDisplayDescriptor.h"
+#import "OC_GGS_DocumentData.h"
 #import "PMButtonWithRemove.h"
 #import "OC_GGS_TextSyntaxColoring.h"
 #import "PMCocoaCallsDebug.h"
@@ -42,7 +43,7 @@
   [mObservedArray
     removeObserver:self
     fromObjectsAtIndexes:[[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange (0, mObservedArray.count)]
-    forKeyPath:@"mTextSyntaxColoring.isDirty"
+    forKeyPath:@"documentData.textSyntaxColoring.isDirty"
   ] ;
 //--- Add Observed for current collection
   NSArray * arrangedObjects = inArrayController.arrangedObjects ;
@@ -50,7 +51,7 @@
   [mObservedArray
     addObserver:self
     toObjectsAtIndexes:[[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange (0, mObservedArray.count)]
-    forKeyPath:@"mTextSyntaxColoring.isDirty"
+    forKeyPath:@"documentData.textSyntaxColoring.isDirty"
     options:0
     context:NULL
   ] ;
@@ -111,7 +112,7 @@
 - (void) dirtyStateDidChange: (OC_GGS_TextDisplayDescriptor *) inObservedObject {
   const NSUInteger idx = [mObservedArray indexOfObject:inObservedObject] ;
   PMButtonWithRemove * button = [mButtonArray objectAtIndex:idx HERE] ;
-  OC_GGS_TextSyntaxColoring * textSyntaxColoring = inObservedObject.textSyntaxColoring ;
+  OC_GGS_TextSyntaxColoring * textSyntaxColoring = inObservedObject.documentData.textSyntaxColoring ;
   [button setIsDirty:textSyntaxColoring.isDirty] ;
 }
 
@@ -134,7 +135,7 @@
         [button setState:(button == newSelection) ? NSOnState : NSOffState] ;
       }
     }
-  }else if ([inKeyPath isEqualToString:@"mTextSyntaxColoring.isDirty"]) {
+  }else if ([inKeyPath isEqualToString:@"documentData.textSyntaxColoring.isDirty"]) {
     [self dirtyStateDidChange:inObject] ;
   }else if ([inKeyPath isEqualToString:@"arrangedObjects"]) {
     [self buildTabBarWithArrayController:inObject] ;

@@ -189,6 +189,7 @@ local routine build_LIBPM_COCOA_GALGAS_group
   append_m_h_files !?fileList !"OC_GGS_CommandLineOption" ;
   append_m_h_files !?fileList !"enterDefaultCommandLineOptions" ;
   append_m_h_files !?fileList !"OC_GGS_Document" ;
+  append_m_h_files !?fileList !"OC_GGS_DocumentData" ;
   append_m_h_files !?fileList !"OC_GGS_PreferencesController" ;
   append_m_h_files !?fileList !"PMIssueDescriptor" ;
   append_m_h_files !?fileList !"OC_GGS_TextDisplayDescriptor" ;
@@ -201,7 +202,6 @@ local routine build_LIBPM_COCOA_GALGAS_group
   append_m_h_files !?fileList !"PMErrorOrWarningDescriptor" ;
   append_m_h_files !?fileList !"PMIssueInRuler" ;
   append_m_h_files !?fileList !"OC_GGS_BuildTask" ;
-  append_m_h_files !?fileList !"OC_GGS_BuildTaskProxy" ;
   fileList += !"I_Stop.tiff" ;
   fileList += !"F_CocoaWrapperForGalgas.h" ;
   fileList += !"PP_CocoaGalgasPrefix.pch" ;
@@ -783,6 +783,7 @@ local routine build_COCOA_APP_files_for_sources_build_phase
   fileList += !"OC_GGS_CommandLineOption.m" ;
   fileList += !"enterDefaultCommandLineOptions.m" ;
   fileList += !"OC_GGS_Document.m" ;
+  fileList += !"OC_GGS_DocumentData.m" ;
   fileList += !"OC_GGS_PreferencesController.m" ;
   fileList += !"PMIssueDescriptor.m" ;
   fileList += !"OC_GGS_TextDisplayDescriptor.m" ;
@@ -795,7 +796,6 @@ local routine build_COCOA_APP_files_for_sources_build_phase
   fileList += !"PMErrorOrWarningDescriptor.m" ;
   fileList += !"PMIssueInRuler.m" ;
   fileList += !"OC_GGS_BuildTask.m" ;
-  fileList += !"OC_GGS_BuildTaskProxy.m" ;
   fileList += !"PMArrayControllerDebugCategory.m" ;
   fileList += !"PMArrayDebugCategory.m" ;
   fileList += !"PMDictionaryDebugCategory.m" ;
