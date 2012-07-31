@@ -16,7 +16,6 @@
 #import "OC_GGS_RulerViewForTextView.h"
 #import "OC_GGS_PreferencesController.h"
 #import "OC_GGS_Scroller.h"
-#import "OC_GGS_ContextualHelpTask.h"
 #import "PMCocoaCallsDebug.h"
 #import "PMIssueDescriptor.h"
 
@@ -108,13 +107,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       context:NULL
     ] ;
     [self refreshShowInvisibleCharacters] ;
-  //---
-    [[NSNotificationCenter defaultCenter]
-      addObserver:self
-      selector:@selector(myProcessEditing:)
-      name: NSTextStorageDidProcessEditingNotification
-      object:mTextSyntaxColoring.textStorage
-    ] ;
   //--- Set selection
     NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocument.fileURL.path, mTextSyntaxColoring.document.fileURL.path] ;
     NSString * selectionRangeString = [[NSUserDefaults standardUserDefaults] objectForKey:key] ;
@@ -425,77 +417,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
-#pragma mark Contextual Help
-
-//---------------------------------------------------------------------------*
-
-- (void) purgePreviousContextualHelpTasks {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  // const NSUInteger n = mPreviousBuildTasks.count ;
-  NSMutableString * s = [NSMutableString new] ;
-  NSArray * allTasks = [mPreviousBuildTasks allObjects] ;
-  [mPreviousBuildTasks removeAllObjects] ;
-  for (NSUInteger idx = 0 ; idx < allTasks.count ; idx ++) {
-    if (! [[allTasks objectAtIndex:idx] isCompleted]) {
-      [mPreviousBuildTasks addObject:[allTasks objectAtIndex:idx]] ;
-      [s appendString:[[allTasks objectAtIndex:idx] runningStatus]] ;
-    }  
-  }
-  // NSLog (@"CONTEXT TASKS : %lu -> %lu%@", n, mPreviousBuildTasks.count, s) ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) performContextualHelpAtRange: (NSRange) inRange {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  [mDocument setContextualHelpMessage:@"Looking for Help…"] ;
-//---
-  if (nil != mContextualHelpTask) {
-    [mContextualHelpTask terminate] ;
-    [mPreviousBuildTasks addObject:mContextualHelpTask] ;
-    mContextualHelpTask = nil ;
-  }
-  [self purgePreviousContextualHelpTasks] ;
-//---
-  mContextualHelpTask = [[OC_GGS_ContextualHelpTask alloc]
-    initWithDocument:mDocument
-    range:inRange
-    proxy:self
-    index:mTaskIndex
-  ] ;
-  mTaskIndex ++ ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) noteBuildTaskTermination: (OC_GGS_ContextualHelpTask *) inBuildTask {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  if (mContextualHelpTask == inBuildTask) {
-    mContextualHelpTask = nil ;
-  }else{
-    [mPreviousBuildTasks addObject:inBuildTask] ;
-  }
-  [self purgePreviousContextualHelpTasks] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) noteSocketData: (NSData *) inData {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  NSString * message = [[NSString alloc] initWithData:inData encoding:NSUTF8StringEncoding] ;
-  [mDocument setContextualHelpMessage:message] ;
-}
-
-//---------------------------------------------------------------------------*
-
 #pragma mark Entry Pop up
 
 //---------------------------------------------------------------------------*
@@ -592,9 +513,9 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   [self  didChangeValueForKey:@"textSelectionStart"] ;
   [mRulerView setNeedsDisplay:YES] ;
   [self populatePopUpButton] ;
-  if (! [mDocument isContextualHelpTextViewCollapsed]) {
+/*  if (! [mDocument isContextualHelpTextViewCollapsed]) {
     [self performContextualHelpAtRange:mTextView.selectedRange] ;
-  }
+  }*/
 //---
   NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocument.fileURL.path, mTextSyntaxColoring.document.fileURL.path] ;
   [[NSUserDefaults standardUserDefaults]
@@ -611,15 +532,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   [mDocument triggerDocumentEditedStatusUpdate] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) myProcessEditing: (NSNotification *) inNotification {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  [mDocument triggerLiveCompilation] ;
 }
 
 //---------------------------------------------------------------------------*

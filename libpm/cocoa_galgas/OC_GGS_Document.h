@@ -83,16 +83,11 @@
   @private IBOutlet NSSplitView * mDetailedIssueSplitView ;
 
 //--- Build, stop button
-  @private IBOutlet NSButton * mLiveCompilationCheckbox ;
   @private IBOutlet NSButton * mStartBuildButton ;
   @private IBOutlet NSProgressIndicator * mBuildProgressIndicator ;
   @private IBOutlet NSButton * mStopBuildButton ;
   @private IBOutlet NSTextField * mErrorCountTextField ;
   @private IBOutlet NSTextField * mWarningCountTextField ;
-
-//--- Contextual help message
-  @private IBOutlet NSTextView * mContextualHelpTextView ;
-  @private IBOutlet NSScrollView * mContextualHelpScrollView ;
 }
 
 @property(assign, atomic) NSArray * mIssueArray ;
@@ -130,12 +125,7 @@
 
 - (void) displayIssueDetailedMessage: (NSString *) inDetailledMessage ;
 
-- (void) triggerLiveCompilation ;
-
 - (BOOL) buildTaskIsRunning ;
-
-- (void) setContextualHelpMessage: (NSString *) inMessage ;
-- (BOOL) isContextualHelpTextViewCollapsed ;
 
 - (void) setRawOutputString: (NSAttributedString *) inString ;
 @end
