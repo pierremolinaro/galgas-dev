@@ -280,13 +280,6 @@
     options:nil    
   ] ;
 //---
-  [mLiveCompilationCheckbox
-    bind:@"value"
-    toObject:[NSUserDefaultsController sharedUserDefaultsController]
-    withKeyPath:@"values.PMLiveCompilation"
-    options:NULL
-  ] ;
-//---
   [mRawOutputTextView
     bind:@"data"
     toObject:self
@@ -1378,37 +1371,6 @@
 //---
   NSString * selectedString = [sourceString substringWithRange:selection] ;
   [self findOrAddNewTabForFile:selectedString] ;
-}
-
-//---------------------------------------------------------------------------*
-
-#pragma mark Contextual Help Message
-
-//---------------------------------------------------------------------------*
-
-- (void) setContextualHelpMessage: (NSString *) inMessage {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  NSTextStorage * textStorage = mContextualHelpTextView.textStorage ;
-  [textStorage beginEditing] ;
-  [textStorage replaceCharactersInRange:NSMakeRange (0, [textStorage length]) withString:inMessage] ;
-  [mContextualHelpTextView setFont:[NSFont fontWithName:@"Courier" size:13.0]] ;
-  [textStorage endEditing] ;
-//---
-/*  [mIssueSplitView
-    setPosition:mIssueSplitView.bounds.size.width - 200.0
-    ofDividerAtIndex:1
-  ] ;*/
-}
-
-//---------------------------------------------------------------------------*
-
-- (BOOL) isContextualHelpTextViewCollapsed {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  return [mIssueSplitView isSubviewCollapsed:mContextualHelpScrollView] ;
 }
 
 //---------------------------------------------------------------------------*

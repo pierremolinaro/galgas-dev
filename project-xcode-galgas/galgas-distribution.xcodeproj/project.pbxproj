@@ -178,7 +178,6 @@
 		CF5DF86F114D7EA300B96CB0 /* GALGAS_uint_36__34_.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF1BCEC010D2BAA400A0D648 /* GALGAS_uint_36__34_.cpp */; };
 		CF5DF870114D7EA400B96CB0 /* GALGAS_uint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5892C10D28A2200B7E541 /* GALGAS_uint.cpp */; };
 		CF5F4C1E14EAEDA600CDFAF0 /* OC_GGS_BuildTaskProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5F4C1B14EAEDA600CDFAF0 /* OC_GGS_BuildTaskProxy.m */; };
-		CF5F4C1F14EAEDA600CDFAF0 /* OC_GGS_ContextualHelpTask.m in Sources */ = {isa = PBXBuildFile; fileRef = CF5F4C1D14EAEDA600CDFAF0 /* OC_GGS_ContextualHelpTask.m */; };
 		CF63AD250EE04C0B00220E75 /* projectMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */; };
 		CF63AD260EE04C0B00220E75 /* projectMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */; };
 		CF63B55110FC6A5E00B5E41F /* C_PrologueEpilogue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */; };
@@ -603,8 +602,6 @@
 		CF5DF68C114D36E900B96CB0 /* semanticAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticAnalysis.h; sourceTree = "<group>"; };
 		CF5F4C1A14EAEDA600CDFAF0 /* OC_GGS_BuildTaskProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildTaskProxy.h; sourceTree = "<group>"; };
 		CF5F4C1B14EAEDA600CDFAF0 /* OC_GGS_BuildTaskProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_BuildTaskProxy.m; sourceTree = "<group>"; };
-		CF5F4C1C14EAEDA600CDFAF0 /* OC_GGS_ContextualHelpTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_ContextualHelpTask.h; sourceTree = "<group>"; };
-		CF5F4C1D14EAEDA600CDFAF0 /* OC_GGS_ContextualHelpTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_ContextualHelpTask.m; sourceTree = "<group>"; };
 		CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = projectMetamodel.cpp; sourceTree = "<group>"; };
 		CF63AD240EE04C0A00220E75 /* projectMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = projectMetamodel.h; sourceTree = "<group>"; };
 		CF63B54F10FC6A5E00B5E41F /* C_PrologueEpilogue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_PrologueEpilogue.cpp; sourceTree = "<group>"; };
@@ -1287,8 +1284,6 @@
 			children = (
 				CF5F4C1A14EAEDA600CDFAF0 /* OC_GGS_BuildTaskProxy.h */,
 				CF5F4C1B14EAEDA600CDFAF0 /* OC_GGS_BuildTaskProxy.m */,
-				CF5F4C1C14EAEDA600CDFAF0 /* OC_GGS_ContextualHelpTask.h */,
-				CF5F4C1D14EAEDA600CDFAF0 /* OC_GGS_ContextualHelpTask.m */,
 				CFAD1340148A4C8400ECA963 /* OC_GGS_BuildTask.h */,
 				CFAD1341148A4C8400ECA963 /* OC_GGS_BuildTask.m */,
 				CFAD1342148A4C8400ECA963 /* OC_GGS_Scroller.h */,
@@ -2144,7 +2139,6 @@
 				CFAD135C148A4C8400ECA963 /* PMIssueInRuler.m in Sources */,
 				CFAD135D148A4C8400ECA963 /* PMTabBarView.m in Sources */,
 				CF5F4C1E14EAEDA600CDFAF0 /* OC_GGS_BuildTaskProxy.m in Sources */,
-				CF5F4C1F14EAEDA600CDFAF0 /* OC_GGS_ContextualHelpTask.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
