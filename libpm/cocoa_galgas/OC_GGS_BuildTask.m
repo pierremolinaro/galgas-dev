@@ -8,7 +8,6 @@
 //---------------------------------------------------------------------------*
 
 #import "OC_GGS_BuildTask.h"
-#import "OC_GGS_BuildTaskProxy.h"
 #import "PMIssueDescriptor.h"
 #import "PMCocoaCallsDebug.h"
 #import "OC_GGS_TextDisplayDescriptor.h"
@@ -30,19 +29,14 @@
 
 //---------------------------------------------------------------------------*
 
-- (OC_GGS_BuildTask *) initWithDocument: (OC_GGS_Document *) inDocument
-                       proxy : (OC_GGS_BuildTaskProxy *) inProxy
-                       index: (NSUInteger) inIndex {
+- (OC_GGS_BuildTask *) initWithDocument: (OC_GGS_Document *) inDocument {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   self = [super init] ;
   if (self) {
   //---
-    mProxy = inProxy ;
-    mTaskIndex = inIndex ;
-    mOutputBufferedData = [NSMutableData new] ;
-    mSocketBufferedData = [NSMutableData new] ;
+    mDocument = inDocument ;
   //---
     NSArray * commandLineArray = [gCocoaGalgasPreferencesController commandLineItemArray] ;
   //--- Command line tool does actually exist ? (First argument is not "?")
@@ -61,18 +55,18 @@
       ] ;
     }else{
     //--- Issue receiver socket
-      mConnectionSocket = [[NSSocketPort alloc] initWithTCPPort:0] ; // A port number will be attributed
-      struct sockaddr_in socketStruct ;
-      socklen_t length = sizeof (socketStruct) ;
-      getsockname (mConnectionSocket.socket, (struct sockaddr *) & socketStruct, & length) ;
-      const UInt16 actualPort = ntohs (socketStruct.sin_port) ;
+    //  mConnectionSocket = [[NSSocketPort alloc] initWithTCPPort:0] ; // A port number will be attributed
+    //  struct sockaddr_in socketStruct ;
+    //  socklen_t length = sizeof (socketStruct) ;
+    //  getsockname (mConnectionSocket.socket, (struct sockaddr *) & socketStruct, & length) ;
+    //  const UInt16 actualPort = ntohs (socketStruct.sin_port) ;
       // NSLog (@"actualPort %hu", actualPort) ;
       // NSLog (@"mConnectionSocket %p %d", mConnectionSocket, mConnectionSocket.socket) ;
       NSMutableArray * arguments = [NSMutableArray new] ;
       [arguments addObjectsFromArray:[commandLineArray subarrayWithRange:NSMakeRange (1, [commandLineArray count]-1)]] ;
       [arguments addObject:inDocument.fileURL.path] ;
-      [arguments addObject:[NSString stringWithFormat:@"--mode=xml-issues-on-port:%hu", actualPort]] ;
-  //    [arguments addObject:@"--no-color"] ;
+//      [arguments addObject:[NSString stringWithFormat:@"--mode=xml-issues-on-port:%hu", actualPort]] ;
+      [arguments addObject:@"--cocoa"] ;
    //--- Create task
       mTask = [NSTask new] ;
       [mTask setLaunchPath:[commandLineArray objectAtIndex:0 HERE]] ;
@@ -90,19 +84,6 @@
         object:[mPipe fileHandleForReading]
       ] ;
       [mPipe.fileHandleForReading readInBackgroundAndNotify] ;
-    //--- http://www.cocoadev.com/index.pl?NSSocketPort
-      mConnectionSocketHandle = [[NSFileHandle alloc]
-        initWithFileDescriptor:mConnectionSocket.socket
-        closeOnDealloc:YES
-      ] ;
-      // NSLog (@"mConnectionSocketHandle %p", mConnectionSocketHandle) ;
-      [[NSNotificationCenter defaultCenter]
-        addObserver:self
-        selector:@selector (newSocketConnection:) 
-        name:NSFileHandleConnectionAcceptedNotification
-        object:mConnectionSocketHandle
-      ] ;
-      [mConnectionSocketHandle acceptConnectionInBackgroundAndNotify] ;
     //---
       [[NSNotificationCenter defaultCenter]
         addObserver:self
@@ -119,80 +100,37 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) newSocketConnection:(NSNotification *) inNotification {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-//---
-  mRemoteSocketHandle = [inNotification.userInfo
-    objectForKey:NSFileHandleNotificationFileHandleItem
-  ] ;
-//---
-  [[NSNotificationCenter defaultCenter]
-    addObserver:self
-    selector:@selector (getDataFromTaskSocket:)
-    name:NSFileHandleReadCompletionNotification
-    object:mRemoteSocketHandle
-  ] ;
-  [mRemoteSocketHandle readInBackgroundAndNotify] ;
-}
-
-//---------------------------------------------------------------------------*
-
 - (void) getDataFromTaskOutput: (NSNotification *) inNotification {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSData * d = [[inNotification userInfo] objectForKey:NSFileHandleNotificationDataItem];
-  if ([d length] > 0) {
-    [mOutputBufferedData appendData:d] ;
+  NSData * data = [[inNotification userInfo] objectForKey:NSFileHandleNotificationDataItem];
+  if ([data length] > 0) {
+    [mDocument appendBuildOutputData:data] ;
     [inNotification.object readInBackgroundAndNotify] ;
   }else{
-    [mProxy noteStandardOutputData:mOutputBufferedData] ;
     mOutputBufferedDataHasBeenTransmitted = YES ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) getDataFromTaskSocket: (NSNotification *) inNotification {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  NSData * d = [[inNotification userInfo] objectForKey:NSFileHandleNotificationDataItem];
-  if ([d length] > 0) {
-    [mSocketBufferedData appendData:d] ;
-    [inNotification.object readInBackgroundAndNotify] ;
-  }else{
-    [mProxy noteSocketData:mSocketBufferedData] ;
-    mSocketBufferedDataHasBeenTransmitted = YES ;
+    mDocument.mBuildTaskIsRunning = NO ;
+    [mDocument buildCompleted] ;
   }
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) taskDidTerminate: (NSNotification *) inNotification {
-  [mProxy noteBuildTaskTermination:self] ;
   mTaskCompleted = YES ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) terminate {
-  mProxy = nil ;
   [mTask terminate] ;
 }
 
 //---------------------------------------------------------------------------*
 
-- (NSString *) runningStatus {
-  return [NSString stringWithFormat:@" %d:%lu", ! [mTask isRunning], mTaskIndex] ;
-}
-
-//---------------------------------------------------------------------------*
-
 - (BOOL) isCompleted {
-  return mTaskCompleted && mOutputBufferedDataHasBeenTransmitted && mSocketBufferedDataHasBeenTransmitted ;
+  return mTaskCompleted && mOutputBufferedDataHasBeenTransmitted ;
 }
 
 //---------------------------------------------------------------------------*

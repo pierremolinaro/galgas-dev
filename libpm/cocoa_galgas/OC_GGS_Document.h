@@ -33,8 +33,9 @@
 @class OC_GGS_TextSyntaxColoring ;
 @class PMTabBarView ;
 @class OC_GGS_SourceScrollView ;
-@class OC_GGS_BuildTaskProxy ;
+@class OC_GGS_BuildTask ;
 @class OC_GGS_TextDisplayDescriptor ;
+@class OC_GGS_DocumentData ;
 
 //---------------------------------------------------------------------------*
 
@@ -56,20 +57,17 @@
   @private IBOutlet NSButton * mCurrentLineButton ;
 
   @private IBOutlet NSTextView * mRawOutputTextView ;
-  @private NSData * mRawOutputString ;
-
-  @private IBOutlet NSTableView * mIssueTableView ;
-  @private IBOutlet NSTableColumn * mIssueTableViewColumn ;
 
   @private IBOutlet NSPanel * mUpdateFromFileSystemPanel ;
 
   @private IBOutlet NSTextField * mSourceEncodingTextField ;
   @private NSStringEncoding mFileEncoding ;
 
-  @private OC_GGS_BuildTaskProxy * mBuildTask ;
+  @private OC_GGS_BuildTask * mBuildTask ;
+  @private NSMutableData * mBufferedOutputData ;
 //---  
-  @private OC_GGS_TextSyntaxColoring * mSourceTextWithSyntaxColoring ;
   @private NSArrayController * mSourceDisplayArrayController ;
+  @private OC_GGS_DocumentData * mDocumentData ;
 
 //---
   @private IBOutlet PMTabBarView * mTabBarView ;
@@ -92,6 +90,9 @@
 
 @property(assign, atomic) NSArray * mIssueArray ;
 @property(assign, atomic) NSArray * mDisplayDescriptorArray ;
+@property(assign, atomic) BOOL mBuildTaskIsRunning ;
+@property(copy, atomic) NSString * mErrorCountString ;
+@property(copy, atomic) NSString * mWarningCountString ;
 
 - (void) setDocumentIssueArray: (NSArray *) issueArray ;
 - (NSArray *) documentIssueArray ;
@@ -119,13 +120,12 @@
 
 - (void) triggerDocumentEditedStatusUpdate ;
 
-- (OC_GGS_TextSyntaxColoring *) textSyntaxColoring ;
+//- (OC_GGS_TextSyntaxColoring *) textSyntaxColoring ;
 
 - (NSPopUpButton *) entryListPopUpButton ;
 
 - (void) displayIssueDetailedMessage: (NSString *) inDetailledMessage ;
 
-- (BOOL) buildTaskIsRunning ;
-
-- (void) setRawOutputString: (NSAttributedString *) inString ;
+- (void) appendBuildOutputData: (NSData *) inData ;
+- (void) buildCompleted ;
 @end

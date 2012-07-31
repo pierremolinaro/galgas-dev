@@ -13,6 +13,7 @@
 #import "OC_GGS_TextSyntaxColoring.h"
 #import "OC_GGS_TextDisplayDescriptor.h"
 #import "OC_Token.h"
+#import "OC_GGS_DocumentData.h"
 #import "OC_GGS_Document.h"
 #import "OC_GGS_PreferencesController.h"
 
@@ -146,7 +147,7 @@
   NSRange result = inProposedSelRange ;
   if ((inGranularity == NSSelectByWord) && (inProposedSelRange.length == 0)) {
     // NSLog (@"inProposedSelRange: [%u, %u], granularity: %d", inProposedSelRange.location, inProposedSelRange.length, inGranularity) ;
-    OC_GGS_TextSyntaxColoring * dsc = [mDisplayDescriptor textSyntaxColoring] ;
+    OC_GGS_TextSyntaxColoring * dsc = mDisplayDescriptor.documentData.textSyntaxColoring ;
     NSArray * tokenArray = [dsc tokenArray] ;
     BOOL found = NO ;
     for (NSUInteger i=0 ; (i<[tokenArray count]) && ! found ; i++) {
@@ -196,7 +197,7 @@
   const NSUInteger tokenLocation = (NSUInteger) [[components objectAtIndex:2] integerValue] ;
   const NSUInteger tokenLength = (NSUInteger) [[components objectAtIndex:3] integerValue] ;
   NSString * filePath = [components objectAtIndex:4] ;
-  OC_GGS_TextDisplayDescriptor * tdd = [mDisplayDescriptor.document findOrAddNewTabForFile:filePath] ;
+  OC_GGS_TextDisplayDescriptor * tdd = [mDisplayDescriptor.documentUsedForDisplaying findOrAddNewTabForFile:filePath] ;
   [tdd setSelectionRangeAndMakeItVisible:NSMakeRange (tokenLocation, tokenLength)] ;
 }
 
@@ -213,7 +214,7 @@
     const NSRange selectedRange = {characterIndex, 0} ;
     const NSRange r = [self selectionRangeForProposedRange:selectedRange granularity:NSSelectByWord] ;
     [self setSelectedRange:r] ;
-    OC_GGS_TextSyntaxColoring * dsc = [mDisplayDescriptor textSyntaxColoring] ;
+    OC_GGS_TextSyntaxColoring * dsc = mDisplayDescriptor.documentData.textSyntaxColoring ;
     NSMenu * menu = [dsc indexMenuForRange:r textDisplayDescriptor:mDisplayDescriptor] ;
     [NSMenu
       popUpContextMenu:menu

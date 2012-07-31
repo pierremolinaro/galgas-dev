@@ -12,6 +12,7 @@
 //---------------------------------------------------------------------------*
 
 @class OC_GGS_TextSyntaxColoring ;
+@class OC_GGS_DocumentData ;
 @class OC_GGS_Document ;
 @class OC_GGS_TextView ;
 @class PMIssueDescriptor ;
@@ -25,32 +26,32 @@
 #endif
 {
 
-  @private OC_GGS_TextSyntaxColoring * mTextSyntaxColoring ;
   @private OC_GGS_TextView * mTextView ;
+  @private NSPopUpButton * mEntryListPopUpButton ;
   @private OC_GGS_RulerViewForTextView * mRulerView ;
   @private NSScrollView * mScrollView ;
+  @private NSView * mEnclosingView ;
   @private NSUInteger mTextSelectionStart ;
-  @private OC_GGS_Document * mDocument ;
+  @private OC_GGS_DocumentData * mDocumentData ;
+  @private OC_GGS_Document * mDocumentUsedForDisplaying ;
   @private NSArray * mIssueArray ;
   @private NSMutableSet * mPreviousBuildTasks ;
 }
 
-- (OC_GGS_TextDisplayDescriptor *) initWithDelegateForSyntaxColoring: (OC_GGS_TextSyntaxColoring *) inDelegate
-                                   document: (OC_GGS_Document *) inDocument ;
+- (OC_GGS_TextDisplayDescriptor *) initWithDocumentData: (OC_GGS_DocumentData *) inDocumentData
+                                   displayDocument: (OC_GGS_Document *) inDocumentUsedForDisplaying ;
 
-- (void) setSyntaxColoringDelegate: (OC_GGS_TextSyntaxColoring *) inDelegate ;
+- (OC_GGS_DocumentData *) documentData ;
 
-- (OC_GGS_TextSyntaxColoring *) textSyntaxColoring ;
+- (OC_GGS_Document *) documentUsedForDisplaying ;
+
+- (void) detachFromSyntaxColoringObject ;
 
 - (NSURL *) sourceURL ;
 
 - (NSTextView *) textView ;
 
-- (NSScrollView *) scrollView ;
-
-- (OC_GGS_Document *) document ;
-
-- (NSMenu *) menuForEntryPopUpButton ;
+- (NSView *) enclosingView ;
 
 - (NSUInteger) textSelectionStart ;
 

@@ -10,13 +10,13 @@
 
 @class OC_GGS_TextDisplayDescriptor ;
 @class OC_Lexique ;
-@class OC_GGS_Document ;
+@class OC_GGS_DocumentData ;
 
 @interface OC_GGS_TextSyntaxColoring : NSObject {
   @private NSTextStorage * mSourceTextStorage ;
   @private NSMutableSet * mTextDisplayDescriptorSet ; // Set of OC_GGS_TextDisplayDescriptor
   @private OC_Lexique * mTokenizer ;
-  @private OC_GGS_Document * mDocument ;
+  @private OC_GGS_DocumentData * mDocumentData ;
   @private BOOL mIsDirty ;
   @private NSArray * mIssueArray ;
 
@@ -36,13 +36,13 @@
 
 - (OC_GGS_TextSyntaxColoring *) initWithSourceString: (NSString *) inSource
                                 tokenizer: (OC_Lexique *) inTokenizer
-                                document: (OC_GGS_Document *) inDocument
+                                documentData: (OC_GGS_DocumentData *) inDocument
                                 issueArray: (NSArray *) inIssueArray ;
 
 - (NSTextStorage *) textStorage ;
 - (NSUndoManager *) undoManager ;
 - (OC_Lexique *) tokenizer ;
-- (OC_GGS_Document *) document ;
+- (OC_GGS_DocumentData *) documentData ;
 - (NSUInteger) textDisplayDescriptorCount ;
 - (NSRange) rangeForLine: (NSInteger) inLineNumber ;
 

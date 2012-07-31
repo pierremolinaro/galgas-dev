@@ -80,7 +80,6 @@
 		CF333818126B3919008DA1DE /* GALGAS_filewrapper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF33377D126B2F15008DA1DE /* GALGAS_filewrapper.cpp */; };
 		CF34D4BB11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF34D4B711ABD1EA0020730A /* programComponentCompilation.cpp */; };
 		CF34D4BC11ABD1EA0020730A /* programComponentCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF34D4B711ABD1EA0020730A /* programComponentCompilation.cpp */; };
-		CF3C17A514E97BD40016A381 /* OC_GGS_BuildTaskProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3C17A414E97BD40016A381 /* OC_GGS_BuildTaskProxy.m */; };
 		CF3C17A814E97CCC0016A381 /* OC_GGS_BuildTask.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3C17A714E97CCC0016A381 /* OC_GGS_BuildTask.m */; };
 		CF3CFB2D0FEBEA6C00CE4488 /* PMFontButton.m in Sources */ = {isa = PBXBuildFile; fileRef = CF3CFB2C0FEBEA6C00CE4488 /* PMFontButton.m */; };
 		CF3D9FD61257733E0037D473 /* capCollectionElement.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF3D9FC11257733E0037D473 /* capCollectionElement.cpp */; };
@@ -137,6 +136,7 @@
 		CF571A2B1275F0B800AAB8BF /* templateCodeGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF571A261275F0B800AAB8BF /* templateCodeGeneration.cpp */; };
 		CF585E5A10A5FBF100A5A69A /* grammarSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF585E5610A5FBF100A5A69A /* grammarSemantics.cpp */; };
 		CF585E5B10A5FBF100A5A69A /* grammarSemantics.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF585E5610A5FBF100A5A69A /* grammarSemantics.cpp */; };
+		CF59565C15C81988000E6B8B /* OC_GGS_DocumentData.m in Sources */ = {isa = PBXBuildFile; fileRef = CF59565B15C81988000E6B8B /* OC_GGS_DocumentData.m */; };
 		CF5DF68F114D36E900B96CB0 /* semanticAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5DF68B114D36E900B96CB0 /* semanticAnalysis.cpp */; };
 		CF5DF690114D36E900B96CB0 /* semanticAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5DF68B114D36E900B96CB0 /* semanticAnalysis.cpp */; };
 		CF63AD270EE04C0B00220E75 /* projectMetamodel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */; };
@@ -527,8 +527,6 @@
 		CF337CB211C3FAAF007E7736 /* cCollectionElement.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cCollectionElement.h; sourceTree = "<group>"; };
 		CF34D4B711ABD1EA0020730A /* programComponentCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = programComponentCompilation.cpp; sourceTree = "<group>"; };
 		CF34D4B811ABD1EA0020730A /* programComponentCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = programComponentCompilation.h; sourceTree = "<group>"; };
-		CF3C17A314E97BD40016A381 /* OC_GGS_BuildTaskProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildTaskProxy.h; sourceTree = "<group>"; };
-		CF3C17A414E97BD40016A381 /* OC_GGS_BuildTaskProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_BuildTaskProxy.m; sourceTree = "<group>"; };
 		CF3C17A614E97CCC0016A381 /* OC_GGS_BuildTask.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_BuildTask.h; sourceTree = "<group>"; };
 		CF3C17A714E97CCC0016A381 /* OC_GGS_BuildTask.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_BuildTask.m; sourceTree = "<group>"; };
 		CF3CFB2B0FEBEA6C00CE4488 /* PMFontButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMFontButton.h; sourceTree = "<group>"; };
@@ -605,6 +603,8 @@
 		CF571A271275F0B800AAB8BF /* templateCodeGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = templateCodeGeneration.h; sourceTree = "<group>"; };
 		CF585E5610A5FBF100A5A69A /* grammarSemantics.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = grammarSemantics.cpp; sourceTree = "<group>"; };
 		CF585E5710A5FBF100A5A69A /* grammarSemantics.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = grammarSemantics.h; sourceTree = "<group>"; };
+		CF59565A15C81988000E6B8B /* OC_GGS_DocumentData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_DocumentData.h; sourceTree = "<group>"; };
+		CF59565B15C81988000E6B8B /* OC_GGS_DocumentData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_DocumentData.m; sourceTree = "<group>"; };
 		CF5DF68B114D36E900B96CB0 /* semanticAnalysis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticAnalysis.cpp; sourceTree = "<group>"; };
 		CF5DF68C114D36E900B96CB0 /* semanticAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticAnalysis.h; sourceTree = "<group>"; };
 		CF63AD230EE04C0900220E75 /* projectMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = projectMetamodel.cpp; sourceTree = "<group>"; };
@@ -1295,6 +1295,8 @@
 				CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */,
 				CFAE5B1910024AA50068DEC9 /* enterDefaultCommandLineOptions.h */,
 				CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */,
+				CF59565A15C81988000E6B8B /* OC_GGS_DocumentData.h */,
+				CF59565B15C81988000E6B8B /* OC_GGS_DocumentData.m */,
 				CF82597308536A130077AEAF /* OC_GGS_Document.h */,
 				CF82597408536A130077AEAF /* OC_GGS_Document.m */,
 				CF82597508536A130077AEAF /* OC_GGS_PreferencesController.h */,
@@ -1319,8 +1321,6 @@
 				CF9BA60414827E3A009DF1C8 /* PMErrorOrWarningDescriptor.m */,
 				CFB697DD1483D47900BCAE41 /* PMIssueInRuler.h */,
 				CFB697DE1483D47900BCAE41 /* PMIssueInRuler.m */,
-				CF3C17A314E97BD40016A381 /* OC_GGS_BuildTaskProxy.h */,
-				CF3C17A414E97BD40016A381 /* OC_GGS_BuildTaskProxy.m */,
 				CF3C17A614E97CCC0016A381 /* OC_GGS_BuildTask.h */,
 				CF3C17A714E97CCC0016A381 /* OC_GGS_BuildTask.m */,
 				CF82596C08536A130077AEAF /* F_CocoaWrapperForGalgas.h */,
@@ -2507,8 +2507,8 @@
 				CF9BA6021482733F009DF1C8 /* OC_GGS_Scroller.m in Sources */,
 				CF9BA60514827E3B009DF1C8 /* PMErrorOrWarningDescriptor.m in Sources */,
 				CFB697DF1483D47900BCAE41 /* PMIssueInRuler.m in Sources */,
-				CF3C17A514E97BD40016A381 /* OC_GGS_BuildTaskProxy.m in Sources */,
 				CF3C17A814E97CCC0016A381 /* OC_GGS_BuildTask.m in Sources */,
+				CF59565C15C81988000E6B8B /* OC_GGS_DocumentData.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
