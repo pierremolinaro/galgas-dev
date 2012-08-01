@@ -57,9 +57,9 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) finalize {
+- (void) FINALIZE_OR_DEALLOC {
   noteObjectDeallocation (self) ;
-  [super finalize] ;
+  macroSuperFinalize ;
 }
 
 //---------------------------------------------------------------------------*
@@ -68,7 +68,7 @@
   self = [self init] ;
   if (self) {
     mDocument = inDocument ;
-    [mDocument retain] ;
+     ;
   }
   return self ;
 }
@@ -81,7 +81,7 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
 //---------------------------------------------------------------------------*
 
 - (void) drawHashMarksAndLabelsInRect: (NSRect) inRect {
-  NSMutableArray * issues = [[NSMutableArray new] autorelease] ;
+  NSMutableArray * issues = [NSMutableArray new] ;
 //--- Draw background
   [[NSColor windowBackgroundColor] setFill] ;
   [NSBezierPath fillRect:inRect] ;

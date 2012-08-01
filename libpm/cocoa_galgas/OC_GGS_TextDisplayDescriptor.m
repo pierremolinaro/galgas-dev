@@ -41,7 +41,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 //---------------------------------------------------------------------------*
 
 @synthesize documentData ;
-@synthesize documentUsedForDisplaying ;
 
 //---------------------------------------------------------------------------*
 
@@ -72,9 +71,11 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     noteObjectAllocation (self) ;
     mPreviousBuildTasks = [NSMutableSet new] ;
     documentData = inDocumentData ;
-    documentUsedForDisplaying = inDocumentUsedForDisplaying ;
-    mTextView = [[OC_GGS_TextView alloc] initWithFrame:NSMakeRect (0.0, 0.0, 10.0, 10.0)] ;
-    [mTextView setDisplayDescriptor:self] ;
+    mTextView = [[OC_GGS_TextView alloc]
+      initWithFrame:NSMakeRect (0.0, 0.0, 10.0, 10.0)
+      documentUsedForDisplaying:inDocumentUsedForDisplaying
+      displayDescriptor:self
+    ] ;
     mTextView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
     mTextView.usesFindPanel = YES ;
     mTextView.grammarCheckingEnabled = NO ;
@@ -91,9 +92,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       [mTextView setValue:[NSNumber numberWithBool:YES] forKey:@"usesFindBar"] ;
     }
   //---
-    [inDocumentData.textSyntaxColoring.textStorage addLayoutManager:mTextView.layoutManager] ;
-    // NSLog (@"mTextSyntaxColoring.textStorage %p", mTextSyntaxColoring.textStorage) ;
-    // NSLog (@"mTextView.layoutManager %p", mTextView.layoutManager) ;
+    [mTextView.layoutManager replaceTextStorage:documentData.textSyntaxColoring.textStorage] ;
     [mTextView setDelegate:self] ;
   //---
     mScrollView = [[NSScrollView alloc] initWithFrame:NSMakeRect (0.0, 0.0, 100.0, 76.0)] ;
@@ -106,7 +105,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     [mScrollView setRulersVisible:[[NSUserDefaults standardUserDefaults] boolForKey:GGS_show_ruler]] ;
     [mScrollView setHasVerticalRuler:YES] ;
     mScrollView.documentView = mTextView ;
-    [mScrollView setVerticalScroller:[[OC_GGS_Scroller new] autorelease]] ;
+    [mScrollView setVerticalScroller:[OC_GGS_Scroller new]] ;
   //--- Pop up Button
     mEntryListPopUpButton = [[NSPopUpButton alloc] initWithFrame:NSMakeRect (5.0, 78.0, 90.0, 22.0)] ;
     mEntryListPopUpButton.autoresizingMask = NSViewWidthSizable | NSViewMinYMargin ;
@@ -141,17 +140,32 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
-- (void) finalize {
+- (void) FINALIZE_OR_DEALLOC {
   noteObjectDeallocation (self) ;
-  [super finalize] ;
+  macroSuperFinalize ;
 }
 
 //---------------------------------------------------------------------------*
 
-- (void) detach {
-  documentData = nil ;
-  documentUsedForDisplaying = nil ;
+- (void) detachTextDisplayDescriptor {
+  [[NSUserDefaultsController sharedUserDefaultsController]
+    removeObserver:self
+    forKeyPath:@"values.PMShowInvisibleCharacters"
+  ] ;
+  [mTextView.layoutManager replaceTextStorage:[NSTextStorage new]] ;
+  [mTextView setDelegate:nil] ;
+  [mTextView detachTextView] ;
   [mRulerView detachFromCocoaDocument] ;
+  for (NSView * subview in mEnclosingView.subviews.copy) {
+    [subview removeFromSuperview] ;
+  }
+//---
+  documentData = nil ;
+  mEnclosingView = nil ;
+  mTextView = nil ;
+  mEntryListPopUpButton = nil ;
+  mRulerView = nil ;
+  mScrollView = nil ;
 }
 
 //---------------------------------------------------------------------------*
@@ -262,7 +276,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 - (NSString *) shiftLeftString {
   const NSUInteger spaceCount = (NSUInteger) [[NSUserDefaults standardUserDefaults] integerForKey:@"PMShiftLeftInsertedSpaceCount"] ;
   //NSLog (@"spaceCount %u", spaceCount) ;
-  NSMutableString * s = [[[NSMutableString alloc] init] autorelease] ;
+  NSMutableString * s = [[NSMutableString alloc] init] ;
   NSUInteger i ;
   for (i=0 ; i<spaceCount ; i++) {
     [s appendString:@" "] ;
@@ -280,7 +294,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     [mTextView font], NSFontAttributeName,
     nil
   ] ;
-  return [[[NSAttributedString alloc] initWithString:[self shiftLeftString] attributes:attributeDictionary] autorelease] ;
+  return [[NSAttributedString alloc] initWithString:[self shiftLeftString] attributes:attributeDictionary] ;
 }
 
 //---------------------------------------------------------------------------*

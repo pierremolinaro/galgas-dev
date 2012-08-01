@@ -36,13 +36,12 @@
   @private NSMutableSet * mPreviousBuildTasks ;
 }
 
-@property (retain, atomic, readonly) OC_GGS_DocumentData * documentData ;
-@property (retain, atomic, readonly) OC_GGS_Document * documentUsedForDisplaying ;
+@property (strong, atomic, readonly) OC_GGS_DocumentData * documentData ;
 
 - (OC_GGS_TextDisplayDescriptor *) initWithDocumentData: (OC_GGS_DocumentData *) inDocumentData
                                    displayDocument: (OC_GGS_Document *) inDocumentUsedForDisplaying ;
 
-- (void) detach ;
+- (void) detachTextDisplayDescriptor ;
 
 - (NSURL *) sourceURL ;
 

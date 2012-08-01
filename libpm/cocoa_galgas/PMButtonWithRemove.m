@@ -8,6 +8,7 @@
 //---------------------------------------------------------------------------*
 
 #import "PMButtonWithRemove.h"
+#import "PMTabBarView.h"
 
 //---------------------------------------------------------------------------*
 
@@ -17,12 +18,6 @@
 
 - (void) setDisplayRemoveImage: (BOOL) inDisplay {
   mDisplayRemoveImage = inDisplay ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) setRemoveAction: (SEL) inRemoveAction {
-  mRemoveAction = inRemoveAction ;
 }
 
 //---------------------------------------------------------------------------*
@@ -152,11 +147,11 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) mouseUp:(NSEvent *) inEvent {
+- (void) mouseUp: (NSEvent *) inEvent {
   mMouseDown = NO ;
   if (mMouseWithin) {
     [self setNeedsDisplay:YES] ;
-    [self.target performSelector:mRemoveAction withObject:self] ;
+    [self.target removeTabAction:self] ;
   }else{
     [super mouseUp:inEvent] ;
   }

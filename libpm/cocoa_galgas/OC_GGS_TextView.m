@@ -24,7 +24,6 @@
 
 //---------------------------------------------------------------------------*
 
-@synthesize displayDescriptor ;
 @synthesize issueArray ;
 
 //---------------------------------------------------------------------------*
@@ -33,22 +32,33 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-- (id) initWithFrame: (NSRect) inFrame {
+- (id) initWithFrame: (NSRect) inFrame
+       documentUsedForDisplaying: (OC_GGS_Document *) inDocumentUsedForDisplaying
+       displayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor {
   self = [super initWithFrame:inFrame] ;
   if (self) {
     #ifdef DEBUG_MESSAGES
       NSLog (@"%s", __PRETTY_FUNCTION__) ;
     #endif
     noteObjectAllocation (self) ;
+    mDocumentUsedForDisplaying = inDocumentUsedForDisplaying ;
+    mDisplayDescriptor = inDisplayDescriptor ;
   }
   return self;
 }
 
 //---------------------------------------------------------------------------*
 
-- (void) finalize {
+- (void) FINALIZE_OR_DEALLOC {
   noteObjectDeallocation (self) ;
-  [super finalize] ;
+  macroSuperFinalize ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) detachTextView {
+  mDocumentUsedForDisplaying = nil ;
+  mDisplayDescriptor = nil ;
 }
 
 //---------------------------------------------------------------------------*
@@ -165,7 +175,7 @@
   NSRange result = inProposedSelRange ;
   if ((inGranularity == NSSelectByWord) && (inProposedSelRange.length == 0)) {
     // NSLog (@"inProposedSelRange: [%u, %u], granularity: %d", inProposedSelRange.location, inProposedSelRange.length, inGranularity) ;
-    OC_GGS_TextSyntaxColoring * dsc = displayDescriptor.documentData.textSyntaxColoring ;
+    OC_GGS_TextSyntaxColoring * dsc = mDisplayDescriptor.documentData.textSyntaxColoring ;
     NSArray * tokenArray = [dsc tokenArray] ;
     BOOL found = NO ;
     for (NSUInteger i=0 ; (i<[tokenArray count]) && ! found ; i++) {
@@ -203,7 +213,7 @@
 
 - (void) selectAllTokenCharacters: (id) inSender  {
   const NSRange r = [[inSender representedObject] rangeValue] ;
-  [displayDescriptor setSelectionRangeAndMakeItVisible:r] ;
+  [mDisplayDescriptor setSelectionRangeAndMakeItVisible:r] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -215,7 +225,7 @@
   const NSUInteger tokenLocation = (NSUInteger) [[components objectAtIndex:2] integerValue] ;
   const NSUInteger tokenLength = (NSUInteger) [[components objectAtIndex:3] integerValue] ;
   NSString * filePath = [components objectAtIndex:4] ;
-  OC_GGS_TextDisplayDescriptor * tdd = [displayDescriptor.documentUsedForDisplaying findOrAddNewTabForFile:filePath] ;
+  OC_GGS_TextDisplayDescriptor * tdd = [mDocumentUsedForDisplaying findOrAddNewTabForFile:filePath] ;
   [tdd setSelectionRangeAndMakeItVisible:NSMakeRange (tokenLocation, tokenLength)] ;
 }
 
@@ -232,8 +242,8 @@
     const NSRange selectedRange = {characterIndex, 0} ;
     const NSRange r = [self selectionRangeForProposedRange:selectedRange granularity:NSSelectByWord] ;
     [self setSelectedRange:r] ;
-    OC_GGS_TextSyntaxColoring * dsc = displayDescriptor.documentData.textSyntaxColoring ;
-    NSMenu * menu = [dsc indexMenuForRange:r textDisplayDescriptor:displayDescriptor] ;
+    OC_GGS_TextSyntaxColoring * dsc = mDisplayDescriptor.documentData.textSyntaxColoring ;
+    NSMenu * menu = [dsc indexMenuForRange:r textDisplayDescriptor:mDisplayDescriptor] ;
     [NSMenu
       popUpContextMenu:menu
       withEvent:inEvent

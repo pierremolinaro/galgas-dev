@@ -26,39 +26,37 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) setRemoveSourceTabAction: (SEL) inAction {
-  mRemoveSourceTabAction = inAction ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) setChangeSourceTabAction: (SEL) inAction {
-  mChangeSourceTabAction = inAction ;
+- (void) detach {
+  [mObservedArray
+    removeObserver:self
+    fromObjectsAtIndexes:[[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange (0, mObservedArray.count)]
+    forKeyPath:@"documentData.textSyntaxColoring.isDirty"
+  ] ;
+  mObservedArray = nil ;
+  mTarget = nil ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) buildTabBarWithArrayController: (NSArrayController *) inArrayController {
 //--- Remove observer from previous collection
-  NSIndexSet * indexSet = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange (0, mObservedArray.count)] ;
   [mObservedArray
     removeObserver:self
-    fromObjectsAtIndexes:indexSet
+    fromObjectsAtIndexes:[[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange (0, mObservedArray.count)]
     forKeyPath:@"documentData.textSyntaxColoring.isDirty"
   ] ;
 //--- Add Observed for current collection
   NSArray * arrangedObjects = inArrayController.arrangedObjects ;
   mObservedArray = arrangedObjects.copy ;
-  indexSet = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange (0, mObservedArray.count)] ;
   [mObservedArray
     addObserver:self
-    toObjectsAtIndexes:indexSet
+    toObjectsAtIndexes: [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange (0, mObservedArray.count)]
     forKeyPath:@"documentData.textSyntaxColoring.isDirty"
     options:0
     context:NULL
   ] ;
 //---
-  for (NSView * subView in [self.subviews.copy autorelease]) {
+  for (NSView * subView in self.subviews.copy) {
     [subView removeFromSuperview] ;
   }
   mButtonArray = [NSMutableArray new] ;
@@ -83,7 +81,6 @@
     button.tag = idx ;
     button.target = self ;
     button.action = @selector (changeTabAction:) ;
-    button.removeAction = @selector (removeTabAction:) ;
     [button sizeToFit] ;
     X = NSMaxX (button.frame) + 2.0 ;
     [self addSubview:button] ;
@@ -97,16 +94,13 @@
   for (PMButtonWithRemove * button in mButtonArray) {
     [button setState:(button == inSender) ? NSOnState : NSOffState] ;
   }
-  [mTarget performSelector:mChangeSourceTabAction withObject:inSender] ;
+  [mTarget changeSelectedSourceViewAction:inSender] ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) removeTabAction: (PMButtonWithRemove *) inSender {
-  [mTarget
-    performSelector:mRemoveSourceTabAction
-    withObject:[mObservedArray objectAtIndex:(NSUInteger) inSender.tag HERE]
-  ] ;
+  [mTarget removeSelectedTabAction:[mObservedArray objectAtIndex:(NSUInteger) inSender.tag HERE]] ;
 }
 
 //---------------------------------------------------------------------------*

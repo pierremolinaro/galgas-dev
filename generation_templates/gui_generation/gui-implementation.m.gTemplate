@@ -141,7 +141,7 @@ OC_Lexique * tokenizerForExtension (const NSString * inExtension) {
 foreach [GUI_CONTEXT mExtensionMap]
   before %  if%
   do % ([inExtension isEqualToString:@%![lkey utf8Representation]%]) {\n%
-     %    result = [[[OC_Tokenizer_%!mLexiqueName% alloc] init] autorelease] ;\n%
+     %    result = [OC_Tokenizer_%!mLexiqueName% new] ;\n%
   between %  }else if%
   after %  }\n%
 end foreach
@@ -153,7 +153,7 @@ end foreach
 NSArray * tokenizers (void) {
   return [NSArray arrayWithObjects:
 %foreach [GUI_CONTEXT mWithLexiqueList] do
-  %    [[[OC_Tokenizer_%!mLexiqueClassName% alloc] init] autorelease],\n%
+  %    [OC_Tokenizer_%!mLexiqueClassName% new],\n%
 end foreach
 %    nil
   ] ;

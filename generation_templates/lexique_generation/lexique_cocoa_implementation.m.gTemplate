@@ -1,9 +1,20 @@
 
 #import "%!LEXIQUE_CLASS_NAME%-cocoa.h"
+#import "PMDebug.h"
 
 //---------------------------------------------------------------------------*
 
 @implementation OC_Lexique_%!LEXIQUE_CLASS_NAME%
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//                           Template Replacments                            *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+%if [[LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] length] > 0 then
+%static NSArray * kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% ; // Of NSString \n%
+end if%
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -18,7 +29,9 @@ end if%
 
 - (id) init {
   self = [super init] ;
-  if (self) {\n%
+  if (self) {
+    noteObjectAllocation (self) ;
+%
   foreach LEXICAL_ATTRIBUTE_MAP do
     %    mLexicalAttribute_%![lkey string]% = % ![mLexicalType cocoaInitializationCode] % ;\n%
   end foreach
@@ -41,7 +54,24 @@ end if%
   %    ] ;\n%
   %  }\n%
   end if
+  if [[LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] length] > 0 then
+  %  if (nil == kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n\n%
+  %    kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
+  foreach [LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] do
+    %      @%![mMatchString utf8Representation]%, %
+  end foreach
+  %      nil\n%
+  %    ] ;\n%
+  %  }\n%
+  end if
 %  return self ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) FINALIZE_OR_DEALLOC {
+  noteObjectDeallocation (self) ;
+  macroSuperFinalize ;
 }
 
 //---------------------------------------------------------------------------*
@@ -72,19 +102,6 @@ end if%
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//                           Template Replacments                            *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-% foreach [LEXIQUE_COMPONENT_ROOT mTemplateReplacementList]
-    before %static NSString * kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [%![[[LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] length] + 1 string]%] = {\n  %
-    do %@%![mMatchString utf8Representation]%, %
-    after %nil\n} ;%
-  end foreach
-%
-
-//---------------------------------------------------------------------------*
-//                                                                           *
 //            Terminal Symbols as end of script in template mark             *
 //                                                                           *
 //---------------------------------------------------------------------------*
@@ -107,7 +124,7 @@ end if%
       %//---------------------------------------------------------------------------*\n\n%
       %static const C_cocoa_lexique_table_entry ktable_for_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%![tokenList_lkey string]% [%![[tokenList_mExplicitTokenListMap count] string]%] = {\n%
         foreach tokenList_mTokenSortedList
-        do %  {@%![mName utf8Representation]%, %!LEXIQUE_CLASS_NAME%_1_%![mTerminalName identifierRepresentation]%}%
+        do %  {%![mName utf8Representation]%, %!LEXIQUE_CLASS_NAME%_1_%![mTerminalName identifierRepresentation]%}%
         between %,\n%
         end foreach
       %\n} ;\n\n%

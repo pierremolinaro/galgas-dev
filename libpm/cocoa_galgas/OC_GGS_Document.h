@@ -21,7 +21,7 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#import <Cocoa/Cocoa.h>
+#import "PMTabBarView.h"
 
 //---------------------------------------------------------------------------*
 
@@ -40,11 +40,11 @@
 
 //---------------------------------------------------------------------------*
 
-@interface OC_GGS_Document : NSDocument
+@interface OC_GGS_Document : NSDocument <PMTabBarViewDelegateProtocol
 #if MAC_OS_X_VERSION_MIN_REQUIRED > MAC_OS_X_VERSION_10_5
-  <NSTextViewDelegate, NSSplitViewDelegate, NSWindowDelegate>
+  , NSTextViewDelegate, NSSplitViewDelegate, NSWindowDelegate
 #endif
-{
+> {
   @private IBOutlet NSSplitView * mIssueSplitView ;
 
   @private IBOutlet NSView * mSourceHostView ;
@@ -56,9 +56,6 @@
   @private IBOutlet NSTextView * mRawOutputTextView ;
 
   @private IBOutlet NSPanel * mUpdateFromFileSystemPanel ;
-
-  @private IBOutlet NSTextField * mSourceEncodingTextField ;
-  @private NSStringEncoding mFileEncoding ;
 
   @private OC_GGS_BuildTask * mBuildTask ;
   @private NSMutableData * mBufferedOutputData ;
@@ -89,10 +86,10 @@
   @private OC_GGS_RulerViewForBuildOutput * mRulerViewForBuildOutput ;
 }
 
-@property(retain, atomic) NSMutableArray * mIssueArray ;
-@property(assign, atomic) NSArray * mDisplayDescriptorArray ;
+@property(strong, atomic) NSMutableArray * mIssueArray ;
+@property(strong, atomic) NSArray * mDisplayDescriptorArray ;
 @property(assign, atomic) BOOL mBuildTaskIsRunning ;
-@property(retain, atomic, readonly) OC_GGS_DocumentData * mDocumentData  ;
+@property(strong, atomic, readonly) OC_GGS_DocumentData * mDocumentData  ;
 
 - (OC_GGS_TextDisplayDescriptor *) findOrAddNewTabForFile: (NSString *) inDocumentPath ;
 

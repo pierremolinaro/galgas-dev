@@ -10,9 +10,9 @@
 #import "OC_GGS_BuildTask.h"
 #import "PMIssueDescriptor.h"
 #import "PMCocoaCallsDebug.h"
-#import "OC_GGS_TextDisplayDescriptor.h"
 #import "OC_GGS_Document.h"
 #import "OC_GGS_PreferencesController.h"
+#import "PMDebug.h"
 
 //---------------------------------------------------------------------------*
 
@@ -35,6 +35,7 @@
   #endif
   self = [super init] ;
   if (self) {
+    noteObjectAllocation (self) ;
   //---
     mDocument = inDocument ;
   //---
@@ -96,6 +97,13 @@
     }
   }
   return self ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) dealloc {
+  noteObjectDeallocation (self) ;
+  macroSuperFinalize ;
 }
 
 //---------------------------------------------------------------------------*
