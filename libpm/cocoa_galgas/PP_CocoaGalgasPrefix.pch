@@ -9,3 +9,19 @@
 //#define DEBUG_MESSAGES
 
 //---------------------------------------------------------------------------*
+
+#ifndef NS_AUTOMATED_REFCOUNT_UNAVAILABLE
+  #define macroSuperFinalize [super finalize]
+#else
+  #define macroSuperFinalize
+#endif
+
+//---------------------------------------------------------------------------*
+
+#ifndef NS_AUTOMATED_REFCOUNT_UNAVAILABLE
+  #define FINALIZE_OR_DEALLOC finalize
+#else
+  #define FINALIZE_OR_DEALLOC dealloc
+#endif
+
+//---------------------------------------------------------------------------*

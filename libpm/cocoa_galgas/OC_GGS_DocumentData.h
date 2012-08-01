@@ -18,14 +18,13 @@
 //---------------------------------------------------------------------------*
 
 @interface OC_GGS_DocumentData : NSObject {
-  @private NSMutableArray * mDisplayDescriptorArray ;
 
 //--- Document encoding
   @private NSStringEncoding mFileEncoding ;
 }
 
-@property (retain, atomic, readonly) OC_GGS_Document * document ; // May be nil
-@property (retain, atomic, readonly) OC_GGS_TextSyntaxColoring * textSyntaxColoring ;
+@property (strong, atomic, readonly) OC_GGS_Document * document ; // May be nil
+@property (strong, atomic, readonly) OC_GGS_TextSyntaxColoring * textSyntaxColoring ;
 @property (copy, atomic, readonly) NSURL * fileURL ;
 
 + (void) saveAllDocuments ;

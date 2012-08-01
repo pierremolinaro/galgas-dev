@@ -176,7 +176,6 @@ static NSMutableDictionary * gDocumentDataDictionary ;
     noteObjectAllocation (self) ;
     fileURL = inDocumentURL ;
     mFileEncoding = NSUTF8StringEncoding ;
-    mDisplayDescriptorArray = [NSMutableArray new] ;
     [self readDocumentFromFile] ;
   }
   return self ;
@@ -184,9 +183,9 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 
 //---------------------------------------------------------------------------*
 
-- (void) finalize {
+- (void) FINALIZE_OR_DEALLOC {
   noteObjectDeallocation (self) ;
-  [super finalize] ;
+  macroSuperFinalize ;
 }
 
 //---------------------------------------------------------------------------*
@@ -226,9 +225,8 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 - (OC_GGS_TextDisplayDescriptor *) newSourceDisplayDescriptorForDocument: (OC_GGS_Document *) inDocumentUsedForDisplaying {
   OC_GGS_TextDisplayDescriptor * tdd = [[OC_GGS_TextDisplayDescriptor alloc]
     initWithDocumentData:self
-    displayDocument:inDocumentUsedForDisplaying
+    displayDocument:nil //inDocumentUsedForDisplaying
   ] ;
-  [mDisplayDescriptorArray addObject:tdd] ;
   return tdd ;
 }
 

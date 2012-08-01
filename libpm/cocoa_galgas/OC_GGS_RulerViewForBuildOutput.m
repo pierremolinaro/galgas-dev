@@ -34,9 +34,9 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) finalize {
+- (void) FINALIZE_OR_DEALLOC {
   noteObjectDeallocation (self) ;
-  [super finalize] ;
+  macroSuperFinalize ;
 }
 
 //---------------------------------------------------------------------------*

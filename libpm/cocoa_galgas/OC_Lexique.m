@@ -27,7 +27,6 @@
 #import "OC_Token.h"
 #import "unicode_character_m.h"
 #import "PMCocoaCallsDebug.h"
-#import "PMDebug.h"
 
 //---------------------------------------------------------------------------*
 
@@ -64,17 +63,9 @@
 - (id) init {
   self = [super init] ;
   if (self) {
-    noteObjectAllocation (self) ;
     mMatchedTemplateDelimiterIndex = -1 ;
   }
   return self ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) finalize {
-  noteObjectDeallocation (self) ;
-  [super finalize] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -106,11 +97,11 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) searchForReplacementPattern:(NSString * *) inReplacementPatternArray {
+- (void) searchForReplacementPattern:(NSArray *) inReplacementPatternArray {
   BOOL found = NO ;
   NSUInteger idx = 0 ;
-  while ((inReplacementPatternArray [idx] != nil) && ! found) {
-    NSString * s = inReplacementPatternArray [idx] ;
+  while ((idx < inReplacementPatternArray.count) && ! found) {
+    NSString * s = [inReplacementPatternArray objectAtIndex:idx] ;
     BOOL stringMatch = YES ;
     NSUInteger i ;
     const NSUInteger sLength = [s length] ;
@@ -648,11 +639,12 @@
 NSInteger searchStringInTable (NSString * inSearchedString,
                                const C_cocoa_lexique_table_entry * inTable,
                                const NSUInteger inTableSize) {
+  const char * cString = [inSearchedString cStringUsingEncoding:NSUTF8StringEncoding] ;
   NSInteger result = 0 ;
   NSUInteger idx = inTableSize ;
   while ((idx > 0) && (result == 0)) {
     idx -- ;
-    if ([inSearchedString isEqualToString:inTable [idx].mEntry]) {
+    if (strcmp (cString, inTable [idx].mEntry) == 0) {
       result = inTable [idx].mTokenCode ;
     }
   }

@@ -59,9 +59,9 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) finalize {
+- (void) FINALIZE_OR_DEALLOC {
   noteObjectDeallocation (self) ;
-  [super finalize] ;
+  macroSuperFinalize ;
 }
 
 //---------------------------------------------------------------------------*
@@ -107,7 +107,7 @@
     mMaxAscender = maxAscender ;
     mMaxLeadingMinusDescender = maxLeadingMinusDescender ;
   //--- Set new value to default settings
-    NSMutableParagraphStyle * paragraghStyle = [[[NSMutableParagraphStyle alloc] init] autorelease] ;
+    NSMutableParagraphStyle * paragraghStyle = [[NSMutableParagraphStyle alloc] init] ;
     [paragraghStyle setMaximumLineHeight:mMaxAscender + mMaxLeadingMinusDescender] ;
     [paragraghStyle setMinimumLineHeight:mMaxAscender + mMaxLeadingMinusDescender] ;
     if ([mFontAttributesDictionaryArray count] > 0) {
@@ -125,12 +125,6 @@
 
 //---------------------------------------------------------------------------*
 
-- (NSUInteger) textDisplayDescriptorCount {
-  return mTextDisplayDescriptorSet.count ;
-}
-
-//---------------------------------------------------------------------------*
-
 - (OC_GGS_TextSyntaxColoring *) initWithSourceString: (NSString *) inSource
                                 tokenizer: (OC_Lexique *) inTokenizer
                                 documentData: (OC_GGS_DocumentData *) inDocumentData
@@ -142,7 +136,6 @@
   if (self) {
     mTokenizer = inTokenizer ;
     documentData = inDocumentData ;
-    mTextDisplayDescriptorSet = [NSMutableSet new] ;
     mSourceTextStorage = [NSTextStorage new] ;
     mTokenArray = [NSMutableArray new] ;
     mTemplateTextAttributeDictionary = [NSMutableDictionary new] ;
@@ -254,7 +247,7 @@
     // NSLog (@"%p [mTokenizer styleCount] %u", mTokenizer, [mTokenizer styleCount]) ;
     mFontAttributesDictionaryArray = [NSMutableArray new] ;
     for (NSUInteger i=0 ; i<[mTokenizer styleCount] ; i++) {
-      NSMutableDictionary * attributeDictionary = [[NSMutableDictionary new] autorelease] ;
+      NSMutableDictionary * attributeDictionary = [NSMutableDictionary new] ;
     //--- Add foreground color   
       NSString * name = [NSString stringWithFormat:@"%@_%@", GGS_named_color, [mTokenizer styleIdentifierForStyleIndex:i]] ;
       NSData * data = [defaults dataForKey:name] ;
@@ -294,24 +287,6 @@
     [self setIssueArray:inIssueArray] ;
   }
   return self ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) addTextDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  [mTextDisplayDescriptorSet addObject:inDisplayDescriptor] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) removeTextDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  [mTextDisplayDescriptorSet removeObject:inDisplayDescriptor] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -547,9 +522,9 @@
 //---
   mIssueArray = newIssueArray ;
 //---
-  for (OC_GGS_TextDisplayDescriptor * textDisplay in mTextDisplayDescriptorSet) {
+/*  for (OC_GGS_TextDisplayDescriptor * textDisplay in mTextDisplayDescriptorSet) {
     [textDisplay setTextDisplayIssueArray:mIssueArray] ; 
-  }
+  }*/
 }
 
 //---------------------------------------------------------------------------*
@@ -672,7 +647,7 @@
   #endif
   [self.textStorage beginEditing] ;
 //---
-  NSAttributedString * blockCommentString = [[[NSAttributedString alloc] initWithString:[mTokenizer blockComment] attributes:nil] autorelease] ;
+  NSAttributedString * blockCommentString = [[NSAttributedString alloc] initWithString:[mTokenizer blockComment] attributes:nil] ;
   //NSLog (@"selectedRange [%d, %d]", selectedRange.location, selectedRange.length) ;
   NSMutableAttributedString * mutableSourceString = self.textStorage ;
   NSString * sourceString = [mutableSourceString string] ;
@@ -831,9 +806,9 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 //  mIsDirty = mUndoManager.canUndo || mUndoManager.canRedo ;
   mIsDirty = (mSavePointUndoStackCount != undoStack.count) ;
   [self didChangeValueForKey:@"isDirty"] ;
-  for (OC_GGS_TextDisplayDescriptor * textDisplayDescriptor in mTextDisplayDescriptorSet) {
+/*  for (OC_GGS_TextDisplayDescriptor * textDisplayDescriptor in mTextDisplayDescriptorSet) {
     [textDisplayDescriptor noteUndoManagerCheckPointNotification] ;
-  }
+  } */
 }
 
 //---------------------------------------------------------------------------*
@@ -864,7 +839,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  return [mIssueArray.copy autorelease] ;
+  return mIssueArray.copy ;
 }
 
 //---------------------------------------------------------------------------*
@@ -956,7 +931,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSMutableSet * result = [[NSMutableSet new] autorelease] ;
+  NSMutableSet * result = [NSMutableSet new] ;
 //--- Get Info.plist file
   NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary] ;
   // NSLog (@"infoDictionary '%@'", infoDictionary) ;
@@ -979,7 +954,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSFileManager * fm = [[NSFileManager new] autorelease] ;
+  NSFileManager * fm = [NSFileManager new] ;
   NSDictionary * file1_dictionary = [fm attributesOfItemAtPath:inFile1 error:NULL] ;
   NSDate * file1_modificationDate = [file1_dictionary fileModificationDate] ;
   NSDictionary * file2_dictionary = [fm attributesOfItemAtPath:inFile2 error:NULL] ;
@@ -1025,7 +1000,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   NSString * indexingDirectory = [mTokenizer indexingDirectory] ;
   if (indexingDirectory.length > 0) {
     if ([indexingDirectory characterAtIndex:0] != '/') {
-      NSMutableString * s = [[NSMutableString new] autorelease] ;
+      NSMutableString * s = [NSMutableString new] ;
       [s appendString:sourceDirectory] ;
       [s appendString:@"/"] ;
       [s appendString:indexingDirectory] ;
@@ -1070,7 +1045,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   //--- Wait operations are completed
     [opq waitUntilAllOperationsAreFinished] ;
   //--- Parse available dictionaries
-    result = [[NSMutableArray new] autorelease] ;
+    result = [NSMutableArray new] ;
     for (NSString * fullPath in availableDictionaryPathArray) {
       NSDictionary * dict = [NSDictionary dictionaryWithContentsOfFile:fullPath] ;
       if (nil != dict) {
@@ -1101,7 +1076,7 @@ static NSInteger numericSort (NSString * inOperand1,
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSMenu * menu = [[[NSMenu alloc] initWithTitle:@""] autorelease] ;
+  NSMenu * menu = [[NSMenu alloc] initWithTitle:@""] ;
 //--- Save all sources
   [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
 //--- Check if current has atomic selection
@@ -1133,7 +1108,7 @@ static NSInteger numericSort (NSString * inOperand1,
     NSArray * components = [descriptor componentsSeparatedByString:@":"] ;
     NSString * kind = [components objectAtIndex:0] ;
     if ([kindDictionary objectForKey:kind] == NULL) {
-      [kindDictionary setObject:[[NSMutableArray new] autorelease] forKey:kind] ;
+      [kindDictionary setObject:[NSMutableArray new] forKey:kind] ;
     }
     NSMutableArray * a = [kindDictionary objectForKey:kind] ;
     [a addObject:descriptor] ;

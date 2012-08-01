@@ -175,7 +175,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 //--- Assign command line option array attribute
   mCommandLineItemArray = arguments ;
 //---- Build string for displaying
-  NSMutableString * s = [[NSMutableString new] autorelease] ;
+  NSMutableString * s = [NSMutableString new] ;
   for (NSUInteger i=0 ; i<[arguments count] ; i++) {
     [s appendString:[arguments objectAtIndex:i HERE]] ;
     [s appendString:@" "] ;  
@@ -416,8 +416,8 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   [sc setDrawsBackground:YES] ;
   [sc setAutoresizesSubviews:YES] ;
   [sc setAutoresizingMask:[mLexicalColoringScrollView autoresizingMask]] ;
-  [[tvi view] addSubview:[sc autorelease]] ;
-  [sc setDocumentView:[view autorelease]] ;
+  [[tvi view] addSubview:sc] ;
+  [sc setDocumentView:view] ;
   // NSRect fff = [[tvi view] frame] ;
   // NSLog (@"%f %f %f %f", fff.origin.x, fff.origin.y, fff.size.width, fff.size.height) ;
 }
@@ -539,7 +539,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
       [item setSubmenu:submenu] ;
     }
   //---
-    NSMutableArray * components = [[NSMutableArray new] autorelease] ;
+    NSMutableArray * components = [NSMutableArray new] ;
     [components addObjectsFromArray:inTitleComponents] ;
     [components removeObjectAtIndex:0] ;
   //---
@@ -759,7 +759,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 //--- Populate
   [mToolPopUpButton removeAllItems] ;
   NSString * resourcePath = [[NSBundle mainBundle] resourcePath] ;
-  NSFileManager * fm = [[NSFileManager new] autorelease] ;
+  NSFileManager * fm = [NSFileManager new] ;
   NSDirectoryEnumerator * dirEnum = [fm enumeratorAtPath:resourcePath];
   NSString * file = [dirEnum nextObject] ;
   while (file != nil) {
@@ -804,7 +804,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     NSArray * entry = [nibArray objectAtIndex:i HERE] ;
     NSString * nibName = [entry objectAtIndex:0 HERE] ;
     Class mainClass = [entry objectAtIndex:1 HERE] ;
-    id owner = [[mainClass new] autorelease] ;
+    id owner = [mainClass new] ;
     [NSBundle loadNibNamed:nibName owner:owner] ;
   }
 //--- Get default settings
@@ -1134,12 +1134,11 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     NSArray * commandLineArray = [self commandLineItemArray] ;
   //--- Command line tool does actually exist ? (First argument is not "?")
     if ([[commandLineArray objectAtIndex:0 HERE] isEqualToString:@"?"]) {
-      NSString * s = @"Compilation must be performed by an embedded Command line Tool; no command line Tool are currently embedded by application." ;
       NSAlert *alert = [NSAlert alertWithMessageText:@"Error: Cannot Run"
         defaultButton: nil
         alternateButton: nil
         otherButton: nil
-        informativeTextWithFormat:s
+        informativeTextWithFormat:@"Compilation must be performed by an embedded Command line Tool; no command line Tool are currently embedded by application."
       ] ;
       [alert beginSheetModalForWindow:mPreferenceWindow modalDelegate:nil didEndSelector:0 contextInfo:NULL] ;
     }else{
@@ -1366,7 +1365,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   NSBundle * mb = [NSBundle mainBundle] ;
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
   NSDictionary * dictionaryRepresentation = [ud persistentDomainForName:[mb bundleIdentifier]] ;
-  NSArray * allKeys = [[[dictionaryRepresentation allKeys] copy] autorelease] ;
+  NSArray * allKeys = [[dictionaryRepresentation allKeys] copy] ;
   const NSRange rangeGGS = {0, 4} ;
   const NSRange rangeNS = {0, 2} ;
   for (NSUInteger i=0 ; i<[allKeys count] ; i++) {

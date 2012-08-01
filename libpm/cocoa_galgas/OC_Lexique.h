@@ -33,8 +33,8 @@
 
 @interface OC_GGS_TemplateDelimiter : NSObject
 
-@property (assign, nonatomic, readonly) NSString * startString ;
-@property (assign, nonatomic, readonly) NSString * endString ;
+@property (strong, nonatomic, readonly) NSString * startString ;
+@property (strong, nonatomic, readonly) NSString * endString ;
 @property (assign, nonatomic, readonly) BOOL discardStartString ;
 
 - (id) initWithStartString: (NSString *) inStartString
@@ -73,7 +73,7 @@ typedef struct {
   @private NSDictionary * mCustomSyntaxColoringDictionary ;
 }
 
-- (void) searchForReplacementPattern:(NSString * *) inReplacementPatternArray ;
+- (void) searchForReplacementPattern:(NSArray *) inReplacementPatternArray ;
 
 - (void) advance ;
 
@@ -138,7 +138,7 @@ typedef struct {
 //---------------------------------------------------------------------------*
 
 typedef struct {
-  NSString * mEntry ;
+  const char * mEntry ;
   UInt32 mTokenCode ;
 } C_cocoa_lexique_table_entry ;
 

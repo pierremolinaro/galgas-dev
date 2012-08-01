@@ -128,7 +128,7 @@
   }
 //--- Add Update Tab view
   NSTabView * prefsTabView = [gCocoaGalgasPreferencesController preferencesTabView] ;
-  NSTabViewItem * tabViewItem = [[[NSTabViewItem alloc] init] autorelease] ;
+  NSTabViewItem * tabViewItem = [[NSTabViewItem alloc] init] ;
   [tabViewItem setView:mUpdateView] ;
   [tabViewItem setLabel:@"Update"] ;
   [prefsTabView addTabViewItem:tabViewItem] ;
@@ -157,7 +157,7 @@
   ] ;
 //----------------------------------------- Change Log Tab Item
 //--- Add 'ChangeLog' tab item
-  tabViewItem = [[[NSTabViewItem alloc] init] autorelease] ;
+  tabViewItem = [[NSTabViewItem alloc] init] ;
   [tabViewItem setView:mViewForChangeLogInPreferencePane] ;
   [tabViewItem setLabel:@"Change Log"] ;
   [prefsTabView addTabViewItem:tabViewItem] ;
@@ -417,7 +417,7 @@
     inArchivePath,
     nil
   ] ;
-  NSTask * task = [[NSTask alloc] init] ;
+  NSTask * task = [NSTask new] ;
   [task setLaunchPath:@"/usr/bin/bzip2"] ;
   [task setArguments:arguments] ;
   [task launch] ;
