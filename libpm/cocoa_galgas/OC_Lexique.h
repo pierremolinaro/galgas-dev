@@ -27,15 +27,20 @@
 
 //---------------------------------------------------------------------------*
 //                                                                           *
-//  T E M P L A T E    D E L I M I T E R S     S T R U C T                   *
+//  T E M P L A T E    D E L I M I T E R     C L A S S                       *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-typedef struct {
-  NSString * mStartString ;
-  NSString * mEndString ;
-  const BOOL mDiscardStartString ;
-} templateDelimiterStructForCocoa ;
+@interface OC_GGS_TemplateDelimiter : NSObject
+
+@property (assign, nonatomic, readonly) NSString * startString ;
+@property (assign, nonatomic, readonly) NSString * endString ;
+@property (assign, nonatomic, readonly) BOOL discardStartString ;
+
+- (id) initWithStartString: (NSString *) inStartString
+       endString: (NSString *) inEndString
+       discardStartString: (BOOL) inDiscardStartString ;
+@end
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -86,8 +91,7 @@ typedef struct {
 
 - (void) restoreScanningPoint: (scanningPointStructForCocoa *) inScanningPoint ;
 
-- (SInt32) findTemplateDelimiterIndex: (const templateDelimiterStructForCocoa *)  inTemplateDelimiterList
-           listLength: (SInt32) inLength ;
+- (SInt32) findTemplateDelimiterIndex: (NSArray *)  inTemplateDelimiterArray ; // Array of OC_GGS_TemplateDelimiter
 
 - (NSString *) blockComment ;
 

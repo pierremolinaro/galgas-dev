@@ -102,9 +102,8 @@
     while ([components count] > [otherComponents count]) {
       [otherComponents addObject:@"0"] ;
     }
-    unsigned i ;
     result = NSOrderedSame ;
-    for (i=0 ; (i<[components count]) && (result == NSOrderedSame) ; i++) {
+    for (NSUInteger i=0 ; (i<[components count]) && (result == NSOrderedSame) ; i++) {
       const int version = [[components objectAtIndex:i HERE] intValue] ;
       const int otherVersion = [[otherComponents objectAtIndex:i HERE] intValue] ;
       //NSLog (@"FOR i=%u: version: %d, otherversion:%d", i, version, otherVersion) ;
@@ -181,7 +180,7 @@
 - (IBAction) checkForNewVersion: (id) inSender {
   mSearchForUpdatesInBackground = inSender == nil ;
   [mCheckNowButton setEnabled:NO] ;
-  [[PMDownloadData alloc]
+  mDownloadData = [[PMDownloadData alloc]
     initDownloadWithURLString:[self lastReleaseHTTPPath]
     delegate:self
     downloadDidEndSelector:@selector (downloadAllAvailableGalgasVersion:)
@@ -250,13 +249,15 @@
             lastAvailableVersion
           ] ;
           [mPerformUpdateButton setTitle:s] ;
-          [[NSGarbageCollector defaultCollector] disableCollectorForPointer:lastAvailableVersion] ;
+          #ifndef NS_AUTOMATED_REFCOUNT_UNAVAILABLE
+            [[NSGarbageCollector defaultCollector] disableCollectorForPointer:lastAvailableVersion] ;
+          #endif
           [NSApp
             beginSheet:mNewAvailableVersionPanel
             modalForWindow:nil
             modalDelegate:self
             didEndSelector:@selector (newVersionIsAvailableAlertDidEnd:returnCode:contextInfo:)
-            contextInfo:lastAvailableVersion
+            contextInfo:(__bridge void *) lastAvailableVersion
           ] ;
           [mCheckNowButton setEnabled:NO] ;
         }else if (! mSearchForUpdatesInBackground) {
@@ -312,8 +313,10 @@
 - (void) newVersionIsAvailableAlertDidEnd:(NSWindow *) inUnusedWindow
          returnCode:(int) inReturnCode
    contextInfo:(void  *) inContextInfo {
-  NSString * lastAvailableVersion = (NSString *) inContextInfo ;
-  [[NSGarbageCollector defaultCollector] enableCollectorForPointer:lastAvailableVersion] ;
+  NSString * lastAvailableVersion = (__bridge NSString *) inContextInfo ;
+  #ifndef NS_AUTOMATED_REFCOUNT_UNAVAILABLE
+    [[NSGarbageCollector defaultCollector] enableCollectorForPointer:lastAvailableVersion] ;
+  #endif
   // NSLog (@"inReturnCode %d", inReturnCode) ;
   if (inReturnCode == YES) {
   //--- Remove temporary dir if it exists
@@ -331,7 +334,7 @@
   //--- Start download GALGAS
     [mDownloadTitle setStringValue:[NSString stringWithFormat:@"Downloading GALGAS %@...", lastAvailableVersion]] ;
     [[mCancelButton window] makeKeyAndOrderFront:nil] ;
-    [[PMDownloadFile alloc] initWithURLString:[self galgasHTTPPathForVersion:lastAvailableVersion]
+    mDownloadFile = [[PMDownloadFile alloc] initWithURLString:[self galgasHTTPPathForVersion:lastAvailableVersion]
        destinationFileName:[self temporaryPathForGALGASArchive]
        downloadDelegate:self
        downloadDidEndSelector:@selector (downloadNewVersionOfGALGASDidEnd:)
@@ -393,7 +396,7 @@
     //--- Start download cocoa galgas updater
       NSString * lastAvailableVersion = [inDownloader userInfo] ;
       [mDownloadTitle setStringValue:[NSString stringWithFormat:@"Downloading Cocoa Galgas Updater..."]] ;
-      [[PMDownloadFile alloc] initWithURLString:[self galgasUpdaterHTTPPath]
+      mDownloadFile = [[PMDownloadFile alloc] initWithURLString:[self galgasUpdaterHTTPPath]
          destinationFileName:[self temporaryPathForGalgasUpdaterArchive]
          downloadDelegate:self
          downloadDidEndSelector:@selector (downloadGalgasUpdaterDidEnd:)
@@ -720,8 +723,7 @@
     NSMutableString * s = [NSMutableString new] ;
     [s appendFormat:@"This removes from the %@ directory the following tools:", installationPath] ;
     BOOL nothingToRemove = YES ;
-    unsigned i ;
-    for (i=0 ; i<[toolNameArray count] ; i++) {
+    for (NSUInteger i=0 ; i<[toolNameArray count] ; i++) {
       NSString * toolName = [toolNameArray objectAtIndex:i HERE] ;
       if ([fm fileExistsAtPath:[NSString stringWithFormat:@"%@/%@", installationPath, toolName]]) {
         [s appendFormat:@"\n  - %@", toolName] ;

@@ -32,7 +32,7 @@
 
 @interface OC_GGS_RulerViewForTextView : NSRulerView {
   @private NSArray * mIssues ; // Array of PMIssueInRuler
-  @private OC_GGS_Document * __weak mDocument ;
+  @private OC_GGS_Document * mDocument ;
 }
 
 - (OC_GGS_RulerViewForTextView *) initWithDocument: (OC_GGS_Document *) inDocument ;

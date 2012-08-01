@@ -35,7 +35,7 @@
     NSLog (@"pointerAtIndex: receiver is an instance of %@ class (instead of %@ class) in:%s:%d",
           [[result class] className], [inClass className], IN_SOURCE_FILE, IN_SOURCE_LINE) ;
   }
-  return result ;
+  return (__bridge void *)(result) ;
 }
 
 //---------------------------------------------------------------------------*

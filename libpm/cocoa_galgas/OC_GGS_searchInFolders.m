@@ -41,7 +41,7 @@
 //---------------------------------------------------------------------------*
 
 - (NSArray *) allTypesOfCurrentApplication {
-  NSMutableArray * allTypes = [NSMutableArray new] ;
+  NSMutableArray * allTypes = [[NSMutableArray new] autorelease] ;
   NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary] ;
   NSArray * allDocumentTypes = [infoDictionary objectForKey:@"CFBundleDocumentTypes"] ;
   for (NSDictionary * type in allDocumentTypes) {
@@ -83,7 +83,7 @@
 
 - (void) refreshOpenedSourceFileFolderTableViewAction: (id) inSender {
   NSDocumentController * dc = [NSDocumentController sharedDocumentController] ;
-  NSMutableSet * directorySet = [NSMutableSet new] ;
+  NSMutableSet * directorySet = [[NSMutableSet new] autorelease] ;
   for (OC_GGS_Document * document in [dc documents]) {
     NSString * filePath = [[document fileURL] path] ;
     [directorySet addObject:[filePath stringByDeletingLastPathComponent]] ;  
@@ -274,7 +274,7 @@
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
   NSString * extensionListString = [ud objectForKey:@"explicitExtensionList"] ;
   NSArray * elements = [extensionListString componentsSeparatedByString:@","] ;
-  NSMutableArray * result = [NSMutableArray new] ;
+  NSMutableArray * result = [[NSMutableArray new] autorelease] ;
   for (NSString * ext in elements) {
     [result addObject:[ext stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]]] ;
   }
@@ -366,7 +366,7 @@
 //---------------------------------------------------------------------------*
 
 - (void) extensionChoiceDidChange {
-  NSArray * allSubviews = [[mSelectedExtensionView subviews] copy] ;
+  NSArray * allSubviews = [mSelectedExtensionView.subviews.copy autorelease] ;
   for (NSView * view in allSubviews) {
     [view removeFromSuperview] ;
   }
@@ -383,7 +383,7 @@
 //---------------------------------------------------------------------------*
 
 - (void) folderChoiceDidChange {
-  NSArray * allSubviews = [[mSelectedFolderChoiceView subviews] copy] ;
+  NSArray * allSubviews = [mSelectedExtensionView.subviews.copy autorelease] ;
   for (NSView * view in allSubviews) {
     [view removeFromSuperview] ;
   }

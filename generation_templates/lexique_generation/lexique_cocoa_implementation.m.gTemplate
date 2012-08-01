@@ -6,6 +6,15 @@
 @implementation OC_Lexique_%!LEXIQUE_CLASS_NAME%
 
 //---------------------------------------------------------------------------*
+//                                                                           *
+//                           Template Delimiters                             *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+%if [[LEXIQUE_ANALYSIS_CONTEXT mTemplateDelimitorList] length] > 0 then
+%static NSArray * kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% ;\n%
+end if%
+//---------------------------------------------------------------------------*
 
 - (id) init {
   self = [super init] ;
@@ -14,7 +23,25 @@
     %    mLexicalAttribute_%![lkey string]% = % ![mLexicalType cocoaInitializationCode] % ;\n%
   end foreach
 %  }
-  return self ;
+% if [[LEXIQUE_ANALYSIS_CONTEXT mTemplateDelimitorList] length] > 0 then
+%  if (nil == kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%) {\n%
+%    kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% = [NSArray arrayWithObjects:\n%
+  foreach [LEXIQUE_ANALYSIS_CONTEXT mTemplateDelimitorList] do
+  %      [[OC_GGS_TemplateDelimiter alloc] initWithStartString:@%![mStartString utf8Representation]% endString:%
+      if [mEndString length] == 0 then
+        %nil%
+      else
+        %@%![mEndString utf8Representation]
+      end if
+      % discardStartString:%
+      ![not mPreservesStartDelimiter ocString]
+      %],\n%
+  end foreach
+  %      nil\n%
+  %    ] ;\n%
+  %  }\n%
+  end if
+%  return self ;
 }
 
 //---------------------------------------------------------------------------*
@@ -43,27 +70,6 @@
   ] ;
 }
 
-//---------------------------------------------------------------------------*
-//                                                                           *
-//                           Template Delimiters                             *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-% foreach [LEXIQUE_ANALYSIS_CONTEXT mTemplateDelimitorList]
-    before %static const templateDelimiterStructForCocoa kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [%![[[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] string]%] = {\n%
-    do %  {@%![mStartString utf8Representation]%, %
-      if [mEndString length] == 0 then
-        %nil,%
-      else
-        %@%![mEndString utf8Representation]%,%
-      end if
-      % %
-      ![not mPreservesStartDelimiter ocString]
-      %}%
-    between %,\n%
-    after %\n} ;\n%
-  end foreach
-%
 //---------------------------------------------------------------------------*
 //                                                                           *
 //                           Template Replacments                            *
@@ -125,8 +131,8 @@
     mTokenStartLocation = mCurrentLocation ;
 %
   if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
-%    if ((mMatchedTemplateDelimiterIndex >= 0) && ([kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [mMatchedTemplateDelimiterIndex].mStartString length] > 0)) {
-      const BOOL foundEndDelimitor = [self testForInputString:kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [mMatchedTemplateDelimiterIndex].mEndString advance:YES] ;
+%    if ((mMatchedTemplateDelimiterIndex >= 0) && ([[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:mMatchedTemplateDelimiterIndex] startString].length > 0)) {
+      const BOOL foundEndDelimitor = [self testForInputString:[[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:mMatchedTemplateDelimiterIndex] endString] advance:YES] ;
       if (foundEndDelimitor) {
         mMatchedTemplateDelimiterIndex = -1 ;
       }
@@ -135,7 +141,7 @@
       %if [[LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] length] > 0 then%
       [self searchForReplacementPattern:kTemplateReplacementArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%] ;
       %end if%
-      mMatchedTemplateDelimiterIndex = [self findTemplateDelimiterIndex:kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% listLength:%![[[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] string]%] ;
+      mMatchedTemplateDelimiterIndex = [self findTemplateDelimiterIndex:kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]%] ;
       if (mMatchedTemplateDelimiterIndex < 0) {
         [self advance] ;
         mTokenCode = -2 ;

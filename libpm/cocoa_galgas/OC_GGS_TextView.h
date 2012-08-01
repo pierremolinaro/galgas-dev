@@ -15,16 +15,10 @@
 
 //---------------------------------------------------------------------------*
 
-@interface OC_GGS_TextView : NSTextView {
-  @private NSArray * mIssueArray ;
-  @private __weak OC_GGS_TextDisplayDescriptor * mDisplayDescriptor ;
-}
+@interface OC_GGS_TextView : NSTextView
 
-- (void) setDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor ;
-
-- (void) setIssueArray: (NSArray *) inIssueArray ;
-
-- (NSArray *) issueArray ;
+@property (retain, atomic) OC_GGS_TextDisplayDescriptor * displayDescriptor ;
+@property (retain, nonatomic, setter=setIssueArray:) NSArray * issueArray ;
 
 @end
 

@@ -40,6 +40,11 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
+@synthesize documentData ;
+@synthesize documentUsedForDisplaying ;
+
+//---------------------------------------------------------------------------*
+
 - (void) refreshShowInvisibleCharacters {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
@@ -66,8 +71,8 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   if (self) {
     noteObjectAllocation (self) ;
     mPreviousBuildTasks = [NSMutableSet new] ;
-    mDocumentData = inDocumentData ;
-    mDocumentUsedForDisplaying = inDocumentUsedForDisplaying ;
+    documentData = inDocumentData ;
+    documentUsedForDisplaying = inDocumentUsedForDisplaying ;
     mTextView = [[OC_GGS_TextView alloc] initWithFrame:NSMakeRect (0.0, 0.0, 10.0, 10.0)] ;
     [mTextView setDisplayDescriptor:self] ;
     mTextView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
@@ -101,7 +106,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     [mScrollView setRulersVisible:[[NSUserDefaults standardUserDefaults] boolForKey:GGS_show_ruler]] ;
     [mScrollView setHasVerticalRuler:YES] ;
     mScrollView.documentView = mTextView ;
-    [mScrollView setVerticalScroller:[OC_GGS_Scroller new]] ;
+    [mScrollView setVerticalScroller:[[OC_GGS_Scroller new] autorelease]] ;
   //--- Pop up Button
     mEntryListPopUpButton = [[NSPopUpButton alloc] initWithFrame:NSMakeRect (5.0, 78.0, 90.0, 22.0)] ;
     mEntryListPopUpButton.autoresizingMask = NSViewWidthSizable | NSViewMinYMargin ;
@@ -143,21 +148,9 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
-- (OC_GGS_DocumentData *) documentData {
-  return mDocumentData ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (OC_GGS_Document *) documentUsedForDisplaying {
-  return mDocumentUsedForDisplaying ;
-}
-
-//---------------------------------------------------------------------------*
-
 - (void) detach {
-  mDocumentData = nil ;
-  mDocumentUsedForDisplaying = nil ;
+  documentData = nil ;
+  documentUsedForDisplaying = nil ;
   [mRulerView detachFromCocoaDocument] ;
 }
 
@@ -176,7 +169,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 //---------------------------------------------------------------------------*
 
 - (NSURL *) sourceURL {
-  return mDocumentData.fileURL ;
+  return documentData.fileURL ;
 }
 
 //---------------------------------------------------------------------------*
@@ -246,7 +239,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  const NSRange newRange = [mDocumentData.textSyntaxColoring commentRange:mTextView.selectedRange] ;
+  const NSRange newRange = [documentData.textSyntaxColoring commentRange:mTextView.selectedRange] ;
   mTextView.selectedRange = newRange ;
 }
 
@@ -256,7 +249,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  const NSRange newRange = [mDocumentData.textSyntaxColoring uncommentRange:mTextView.selectedRange] ;
+  const NSRange newRange = [documentData.textSyntaxColoring uncommentRange:mTextView.selectedRange] ;
   mTextView.selectedRange = newRange ;
 }
 
@@ -317,7 +310,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   const NSRange newSelectedRange = NSMakeRange (selectedRange.location, selectedRange.length + (NSUInteger) insertedCharsCount) ;
   [mTextView setSelectedRange:newSelectedRange] ;
 //--- Register undo
-  [mDocumentData.textSyntaxColoring.undoManager 
+  [documentData.textSyntaxColoring.undoManager
     registerUndoWithTarget:self
     selector:@selector (shiftLeftRange:)
     object:[NSValue valueWithRange:newSelectedRange]
@@ -392,7 +385,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 //--- Update selected range
   [mTextView setSelectedRange:finalSelectedRange] ;
 //--- Register undo
-  [mDocumentData.textSyntaxColoring.undoManager 
+  [documentData.textSyntaxColoring.undoManager
     registerUndoWithTarget:self
     selector:@selector (shiftRightRange:)
     object:[NSValue valueWithRange:finalSelectedRange]
@@ -419,7 +412,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSString * macroString = [mDocumentData.textSyntaxColoring.tokenizer textMacroContentAtIndex:[inSender tag]] ;
+  NSString * macroString = [documentData.textSyntaxColoring.tokenizer textMacroContentAtIndex:[inSender tag]] ;
   [mTextView insertText:macroString] ;
 }
 
@@ -433,7 +426,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSMenu * menu = mDocumentData.textSyntaxColoring.menuForEntryPopUpButton ;
+  NSMenu * menu = documentData.textSyntaxColoring.menuForEntryPopUpButton ;
   [mEntryListPopUpButton setAutoenablesItems:NO] ;
 
   const NSUInteger n = [menu numberOfItems] ;
@@ -505,7 +498,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  return mDocumentData.textSyntaxColoring.undoManager ;
+  return documentData.textSyntaxColoring.undoManager ;
 }
 
 //---------------------------------------------------------------------------*
@@ -523,7 +516,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     [self performContextualHelpAtRange:mTextView.selectedRange] ;
   }*/
 //---
-/*  NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocumentData.fileURL.path, mDocumentData.textSyntaxColoring.document.fileURL.path] ;
+/*  NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", documentData.fileURL.path, documentData.textSyntaxColoring.document.fileURL.path] ;
   [[NSUserDefaults standardUserDefaults]
     setObject:NSStringFromRange (mTextView.selectedRange)
     forKey:key
@@ -537,7 +530,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-//  [mDocumentData triggerDocumentEditedStatusUpdate] ;
+//  [documentData triggerDocumentEditedStatusUpdate] ;
 }
 
 //---------------------------------------------------------------------------*

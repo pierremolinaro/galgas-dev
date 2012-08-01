@@ -89,9 +89,10 @@
   @private OC_GGS_RulerViewForBuildOutput * mRulerViewForBuildOutput ;
 }
 
-@property(assign, atomic) NSMutableArray * mIssueArray ;
+@property(retain, atomic) NSMutableArray * mIssueArray ;
 @property(assign, atomic) NSArray * mDisplayDescriptorArray ;
 @property(assign, atomic) BOOL mBuildTaskIsRunning ;
+@property(retain, atomic, readonly) OC_GGS_DocumentData * mDocumentData  ;
 
 - (OC_GGS_TextDisplayDescriptor *) findOrAddNewTabForFile: (NSString *) inDocumentPath ;
 

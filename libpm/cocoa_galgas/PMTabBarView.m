@@ -40,23 +40,25 @@
 
 - (void) buildTabBarWithArrayController: (NSArrayController *) inArrayController {
 //--- Remove observer from previous collection
+  NSIndexSet * indexSet = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange (0, mObservedArray.count)] ;
   [mObservedArray
     removeObserver:self
-    fromObjectsAtIndexes:[[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange (0, mObservedArray.count)]
+    fromObjectsAtIndexes:indexSet
     forKeyPath:@"documentData.textSyntaxColoring.isDirty"
   ] ;
 //--- Add Observed for current collection
   NSArray * arrangedObjects = inArrayController.arrangedObjects ;
   mObservedArray = arrangedObjects.copy ;
+  indexSet = [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange (0, mObservedArray.count)] ;
   [mObservedArray
     addObserver:self
-    toObjectsAtIndexes:[[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange (0, mObservedArray.count)]
+    toObjectsAtIndexes:indexSet
     forKeyPath:@"documentData.textSyntaxColoring.isDirty"
     options:0
     context:NULL
   ] ;
 //---
-  for (NSView * subView in self.subviews.copy) {
+  for (NSView * subView in [self.subviews.copy autorelease]) {
     [subView removeFromSuperview] ;
   }
   mButtonArray = [NSMutableArray new] ;
