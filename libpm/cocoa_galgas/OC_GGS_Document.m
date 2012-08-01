@@ -49,6 +49,7 @@
 @synthesize mIssueArray ;
 @synthesize mDisplayDescriptorArray ;
 @synthesize mBuildTaskIsRunning ;
+@synthesize mDocumentData ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -65,7 +66,7 @@
     noteObjectAllocation (self) ;
     mFileEncoding = NSUTF8StringEncoding ;
     mSourceDisplayArrayController = [NSArrayController new] ;
-    mDisplayDescriptorArray = [NSArray new] ;
+    self.mDisplayDescriptorArray = [[NSMutableArray new] autorelease] ;
     self.undoManager = nil ;
     self.hasUndoManager = NO ;
   }
@@ -502,7 +503,8 @@
   #endif
   NSDate * date = [NSDate date] ;
   if ([fileURL isFileURL]) {
-    NSDictionary * fileAttributes = [[[NSFileManager alloc] init] attributesOfItemAtPath:[fileURL path] error:NULL] ;
+    NSFileManager * fm = [NSFileManager new] ;
+    NSDictionary * fileAttributes = [fm attributesOfItemAtPath:[fileURL path] error:NULL] ;
     date = [fileAttributes objectForKey:NSFileModificationDate] ;
   }
   return date ;
@@ -545,18 +547,15 @@
   NSDictionary * bundleDictionary = [[NSBundle mainBundle] localizedInfoDictionary] ;
   NSString * applicationName = [bundleDictionary objectForKey: @"CFBundleName"] ;
 //--- Build Alert
-  NSString * message = [NSString stringWithFormat:
-     @"This file for document at %@ has been modified by an other application."
-     " Do you want to keep the %@ version or update from file contents ?",
-     self.fileURL.path,
-     applicationName
-  ] ;
   NSAlert *alert = [NSAlert
     alertWithMessageText:@"Warning"
     defaultButton:[NSString stringWithFormat:@"Keep %@ Version", applicationName]
     alternateButton:@"Update From File Contents"
     otherButton:nil
-    informativeTextWithFormat:message
+    informativeTextWithFormat:@"This file for document at %@ has been modified by an other application."
+      " Do you want to keep the %@ version or update from file contents ?",
+      self.fileURL.path,
+      applicationName
   ] ;
 //--- Display alert as window sheet
   [alert
@@ -851,14 +850,11 @@
     [NSColor orangeColor], NSForegroundColorAttributeName,
     nil
   ] ;
-  NSMutableAttributedString * attributedString = [NSMutableAttributedString new] ;
-  [attributedString
-    appendAttributedString:[[NSAttributedString alloc]
-      initWithString:@"Compiling…\n"
-      attributes:defaultDictionary
-    ]
+  NSAttributedString * attributedString = [[NSAttributedString alloc]
+    initWithString:@"Compiling…\n"
+    attributes:defaultDictionary
   ] ;
-  [mRawOutputTextView.textStorage setAttributedString:attributedString] ; 
+  [mRawOutputTextView.textStorage setAttributedString:attributedString] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -866,7 +862,10 @@
 - (void) enterIssue: (NSString *) inIssueMessage
          isError: (BOOL) inIsError
          locationInOutputData: (NSInteger) inLocationInOutputData {
-  NSLog (@"inIssueMessage '%@'", inIssueMessage) ;
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+//  NSLog (@"inIssueMessage '%@'", inIssueMessage) ;
   NSArray * components = [inIssueMessage componentsSeparatedByString:@"\n"] ;
   NSString * issuePath = nil ;
   NSInteger issueLine = 0 ;
@@ -875,16 +874,16 @@
     NSArray * issueLocationArray = [[components objectAtIndex:0] componentsSeparatedByString:@":"] ;
     if (issueLocationArray.count > 3) {
       issuePath = [issueLocationArray objectAtIndex:0] ;
-      NSLog (@"issuePath '%@'", issuePath) ;
+      // NSLog (@"issuePath '%@'", issuePath) ;
       issueLine = [[issueLocationArray objectAtIndex:1] integerValue] ;
-      NSLog (@"issueLine '%ld'", issueLine) ;
+      // NSLog (@"issueLine '%ld'", issueLine) ;
       issueColumn = [[issueLocationArray objectAtIndex:2] integerValue] ;
-      NSLog (@"issueColumn '%ld'", issueColumn) ;
+      // NSLog (@"issueColumn '%ld'", issueColumn) ;
     }
   }
   PMIssueDescriptor * issue = [[PMIssueDescriptor alloc]
     initWithMessage:inIssueMessage
-    URL:[NSURL fileURLWithPath:issuePath]
+    URL:(nil == issuePath) ? nil : [NSURL fileURLWithPath:issuePath]
     line:issueLine
     column:issueColumn
     isError:inIsError
@@ -914,20 +913,19 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 //---------------------------------------------------------------------------*
 
 - (void) enterOutputData: (NSData *) inData {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s, inData %@", __PRETTY_FUNCTION__, inData) ;
+  #endif
   NSString * message = [[NSString alloc] initWithData:inData encoding:NSUTF8StringEncoding] ;
   NSArray * messageArray = [message componentsSeparatedByString:[NSString stringWithFormat:@"%c", 0x1B]] ;
-//  NSLog (@"%lu", messageArray.count) ;
 //--- Default attributes dictionary
   NSDictionary * defaultDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
     [NSFont fontWithName:@"Courier" size:13.0], NSFontAttributeName,
     nil
   ] ;
-  NSMutableAttributedString * outputAttributedString = [NSMutableAttributedString new] ;
-  [outputAttributedString
-    appendAttributedString:[[NSAttributedString alloc]
-      initWithString:[messageArray objectAtIndex:0 HERE]
-      attributes:defaultDictionary
-    ]
+  NSMutableAttributedString * outputAttributedString = [[NSMutableAttributedString alloc]
+    initWithString:[messageArray objectAtIndex:0 HERE]
+    attributes:defaultDictionary
   ] ;
 //--- Send other components
   NSMutableDictionary * componentAttributeDictionary = defaultDictionary.mutableCopy ;
@@ -946,7 +944,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
         idx ++ ;
       }
       switch (code) {
-      case 0 : componentAttributeDictionary = defaultDictionary.mutableCopy ; break ;
+      case 0 :  componentAttributeDictionary = defaultDictionary.mutableCopy ; break ;
       case 30 : [componentAttributeDictionary setValue:[NSColor blackColor]   forKey:NSForegroundColorAttributeName] ; break ;
       case 31 : [componentAttributeDictionary setValue:[NSColor redColor]     forKey:NSForegroundColorAttributeName] ; break ;
       case 32 : [componentAttributeDictionary setValue:[NSColor greenColor]   forKey:NSForegroundColorAttributeName] ; break ;
@@ -983,12 +981,11 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
           locationInOutputData:mRawOutputTextView.textStorage.length + outputAttributedString.length
         ] ;
       }
-      [outputAttributedString
-        appendAttributedString:[[NSAttributedString alloc]
-          initWithString:s
-          attributes:componentAttributeDictionary
-        ]
+      NSAttributedString * as = [[NSAttributedString alloc]
+        initWithString:s
+        attributes:componentAttributeDictionary
       ] ;
+      [outputAttributedString appendAttributedString:as] ;
     }
   }
   [mRawOutputTextView.textStorage appendAttributedString:outputAttributedString] ;
@@ -1011,19 +1008,19 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     [NSColor orangeColor], NSForegroundColorAttributeName,
     nil
   ] ;
-  NSMutableAttributedString * attributedString = [NSMutableAttributedString new] ;
-  [attributedString
-    appendAttributedString:[[NSAttributedString alloc]
-      initWithString:@"Done.\n"
-      attributes:defaultDictionary
-    ]
+  NSAttributedString * attributedString = [[NSAttributedString alloc]
+    initWithString:@"Done.\n"
+    attributes:defaultDictionary
   ] ;
-  [mRawOutputTextView.textStorage appendAttributedString:attributedString] ; 
+  [mRawOutputTextView.textStorage appendAttributedString:attributedString] ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) appendBuildOutputData: (NSData *) inData {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   [mBufferedOutputData appendData:inData] ;
 //--- Split input data, be detecting 2 consecutives COCOA_MESSAGE_ID characters
   BOOL ok = YES ;
@@ -1078,7 +1075,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   NSString * requestedAbsolutePath = inPath.isAbsolutePath
-    ? inPath.copy
+    ? [inPath.copy autorelease]
     : [self.fileURL.path.stringByDeletingLastPathComponent stringByAppendingPathComponent:inPath]
   ;
   return [OC_GGS_DocumentData
@@ -1151,7 +1148,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     NSLog (@"%s, keyPath: %@", __PRETTY_FUNCTION__, inKeyPath) ;
   #endif
   if ([inKeyPath isEqualToString:@"selectionIndex"]) {
-    for (NSView * subview in mSourceHostView.subviews.copy) {
+    for (NSView * subview in [mSourceHostView.subviews.copy autorelease]) {
       [subview removeFromSuperview] ;
     }
     NSArray * arrangedObjects = mSourceDisplayArrayController.arrangedObjects ;

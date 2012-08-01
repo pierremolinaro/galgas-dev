@@ -16,7 +16,6 @@
   @private NSTextStorage * mSourceTextStorage ;
   @private NSMutableSet * mTextDisplayDescriptorSet ; // Set of OC_GGS_TextDisplayDescriptor
   @private OC_Lexique * mTokenizer ;
-  @private OC_GGS_DocumentData * mDocumentData ;
   @private BOOL mIsDirty ;
   @private NSArray * mIssueArray ;
 
@@ -33,6 +32,8 @@
   @private NSMutableArray * mFontAttributesDictionaryArray ; // Array of OC_Token
   @private NSMutableDictionary * mTemplateTextAttributeDictionary ;
 }
+
+@property (retain, atomic, readonly) OC_GGS_DocumentData * documentData ;
 
 - (OC_GGS_TextSyntaxColoring *) initWithSourceString: (NSString *) inSource
                                 tokenizer: (OC_Lexique *) inTokenizer

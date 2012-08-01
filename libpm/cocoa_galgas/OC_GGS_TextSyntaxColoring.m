@@ -37,6 +37,10 @@
 @implementation OC_GGS_TextSyntaxColoring
 
 //---------------------------------------------------------------------------*
+
+@synthesize documentData ;
+
+//---------------------------------------------------------------------------*
 //                                                                           *
 //       I N I T                                                             *
 //                                                                           *
@@ -137,7 +141,7 @@
   self = [super init] ;
   if (self) {
     mTokenizer = inTokenizer ;
-    mDocumentData = inDocumentData ;
+    documentData = inDocumentData ;
     mTextDisplayDescriptorSet = [NSMutableSet new] ;
     mSourceTextStorage = [NSTextStorage new] ;
     mTokenArray = [NSMutableArray new] ;
@@ -250,7 +254,7 @@
     // NSLog (@"%p [mTokenizer styleCount] %u", mTokenizer, [mTokenizer styleCount]) ;
     mFontAttributesDictionaryArray = [NSMutableArray new] ;
     for (NSUInteger i=0 ; i<[mTokenizer styleCount] ; i++) {
-      NSMutableDictionary * attributeDictionary = [NSMutableDictionary new] ;
+      NSMutableDictionary * attributeDictionary = [[NSMutableDictionary new] autorelease] ;
     //--- Add foreground color   
       NSString * name = [NSString stringWithFormat:@"%@_%@", GGS_named_color, [mTokenizer styleIdentifierForStyleIndex:i]] ;
       NSData * data = [defaults dataForKey:name] ;
@@ -290,15 +294,6 @@
     [self setIssueArray:inIssueArray] ;
   }
   return self ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (OC_GGS_DocumentData *) documentData {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  return mDocumentData ;
 }
 
 //---------------------------------------------------------------------------*
@@ -512,7 +507,7 @@
   #endif
 /*  NSMutableArray * filteredArray = [NSMutableArray new] ;
   for (PMIssueDescriptor * issue in inIssueArray) {
-    if ([issue.issueURL isEqual:mDocumentData.fileURL]) {
+    if ([issue.issueURL isEqual:documentData.fileURL]) {
       const NSRange lineRange = [self rangeForLine:issue.issueLine] ;
       [filteredArray
         addObject:[[PMErrorOrWarningDescriptor alloc]
@@ -869,7 +864,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  return mIssueArray.copy ;
+  return [mIssueArray.copy autorelease] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -961,7 +956,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSMutableSet * result = [NSMutableSet new] ;
+  NSMutableSet * result = [[NSMutableSet new] autorelease] ;
 //--- Get Info.plist file
   NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary] ;
   // NSLog (@"infoDictionary '%@'", infoDictionary) ;
@@ -984,7 +979,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSFileManager * fm = [[NSFileManager alloc] init] ;
+  NSFileManager * fm = [[NSFileManager new] autorelease] ;
   NSDictionary * file1_dictionary = [fm attributesOfItemAtPath:inFile1 error:NULL] ;
   NSDate * file1_modificationDate = [file1_dictionary fileModificationDate] ;
   NSDictionary * file2_dictionary = [fm attributesOfItemAtPath:inFile2 error:NULL] ;
@@ -1025,12 +1020,12 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #endif
   NSMutableArray * result = nil ;
 //--- Source directory
-  NSString * sourceDirectory = mDocumentData.fileURL.path.stringByDeletingLastPathComponent ;
+  NSString * sourceDirectory = documentData.fileURL.path.stringByDeletingLastPathComponent ;
 //--- index directory
   NSString * indexingDirectory = [mTokenizer indexingDirectory] ;
   if (indexingDirectory.length > 0) {
     if ([indexingDirectory characterAtIndex:0] != '/') {
-      NSMutableString * s = [NSMutableString new] ;
+      NSMutableString * s = [[NSMutableString new] autorelease] ;
       [s appendString:sourceDirectory] ;
       [s appendString:@"/"] ;
       [s appendString:indexingDirectory] ;
@@ -1075,7 +1070,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   //--- Wait operations are completed
     [opq waitUntilAllOperationsAreFinished] ;
   //--- Parse available dictionaries
-    result = [NSMutableArray new] ;
+    result = [[NSMutableArray new] autorelease] ;
     for (NSString * fullPath in availableDictionaryPathArray) {
       NSDictionary * dict = [NSDictionary dictionaryWithContentsOfFile:fullPath] ;
       if (nil != dict) {
@@ -1106,7 +1101,7 @@ static NSInteger numericSort (NSString * inOperand1,
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSMenu * menu = [[NSMenu alloc] initWithTitle:@""] ;
+  NSMenu * menu = [[[NSMenu alloc] initWithTitle:@""] autorelease] ;
 //--- Save all sources
   [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
 //--- Check if current has atomic selection
@@ -1138,7 +1133,7 @@ static NSInteger numericSort (NSString * inOperand1,
     NSArray * components = [descriptor componentsSeparatedByString:@":"] ;
     NSString * kind = [components objectAtIndex:0] ;
     if ([kindDictionary objectForKey:kind] == NULL) {
-      [kindDictionary setObject:[NSMutableArray new] forKey:kind] ;
+      [kindDictionary setObject:[[NSMutableArray new] autorelease] forKey:kind] ;
     }
     NSMutableArray * a = [kindDictionary objectForKey:kind] ;
     [a addObject:descriptor] ;

@@ -32,18 +32,15 @@
   @private NSScrollView * mScrollView ;
   @private NSView * mEnclosingView ;
   @private NSUInteger mTextSelectionStart ;
-  @private OC_GGS_DocumentData * mDocumentData ;
-  @private OC_GGS_Document * mDocumentUsedForDisplaying ;
   @private NSArray * mIssueArray ;
   @private NSMutableSet * mPreviousBuildTasks ;
 }
 
+@property (retain, atomic, readonly) OC_GGS_DocumentData * documentData ;
+@property (retain, atomic, readonly) OC_GGS_Document * documentUsedForDisplaying ;
+
 - (OC_GGS_TextDisplayDescriptor *) initWithDocumentData: (OC_GGS_DocumentData *) inDocumentData
                                    displayDocument: (OC_GGS_Document *) inDocumentUsedForDisplaying ;
-
-- (OC_GGS_DocumentData *) documentData ;
-
-- (OC_GGS_Document *) documentUsedForDisplaying ;
 
 - (void) detach ;
 

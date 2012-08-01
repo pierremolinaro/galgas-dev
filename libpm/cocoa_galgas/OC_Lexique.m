@@ -31,6 +31,28 @@
 
 //---------------------------------------------------------------------------*
 
+@implementation OC_GGS_TemplateDelimiter
+
+@synthesize startString ;
+@synthesize endString ;
+@synthesize discardStartString ;
+
+- (id) initWithStartString: (NSString *) inStartString
+       endString: (NSString *) inEndString
+       discardStartString: (BOOL) inDiscardStartString {
+  self = [super init] ;
+  if (self) {
+    startString = inStartString ;
+    endString = inEndString ;
+    discardStartString = inDiscardStartString ;
+  }
+  return self ;
+}
+
+@end
+
+//---------------------------------------------------------------------------*
+
 //#define DEBUG_MESSAGES
 
 //---------------------------------------------------------------------------*
@@ -203,15 +225,15 @@
 
 //---------------------------------------------------------------------------*
 
-- (SInt32) findTemplateDelimiterIndex: (const templateDelimiterStructForCocoa *)  inTemplateDelimiterList
-           listLength: (SInt32) inLength {
+- (SInt32) findTemplateDelimiterIndex: (NSArray *) inTemplateDelimiterArray { // Array of OC_GGS_TemplateDelimiter
   SInt32 templateIndex = 0 ;
   BOOL found = NO ;
   
-  while ((templateIndex < inLength) && ! found) {
+  while ((templateIndex < (SInt32) inTemplateDelimiterArray.count) && ! found) {
+    OC_GGS_TemplateDelimiter * td = [inTemplateDelimiterArray objectAtIndex:templateIndex] ;
     found = [self
-      testForInputString:inTemplateDelimiterList [templateIndex].mStartString
-      advance:inTemplateDelimiterList [templateIndex].mDiscardStartString
+      testForInputString:td.startString
+      advance:td.discardStartString
     ] ;
     templateIndex ++ ;
   }

@@ -18,14 +18,15 @@
 //---------------------------------------------------------------------------*
 
 @interface OC_GGS_DocumentData : NSObject {
-  @protected NSURL * mDocumentURL ;
-  @private OC_GGS_TextSyntaxColoring * mSourceTextWithSyntaxColoring ;
   @private NSMutableArray * mDisplayDescriptorArray ;
-  @private OC_GGS_Document * mDocument ; // May be nil
 
 //--- Document encoding
   @private NSStringEncoding mFileEncoding ;
 }
+
+@property (retain, atomic, readonly) OC_GGS_Document * document ; // May be nil
+@property (retain, atomic, readonly) OC_GGS_TextSyntaxColoring * textSyntaxColoring ;
+@property (copy, atomic, readonly) NSURL * fileURL ;
 
 + (void) saveAllDocuments ;
 
@@ -34,17 +35,11 @@
 
 - (OC_GGS_TextDisplayDescriptor *) newSourceDisplayDescriptorForDocument: (OC_GGS_Document *) inDocumentUsedForDisplaying ;
 
-- (OC_GGS_TextSyntaxColoring *) textSyntaxColoring ;
-
-- (OC_GGS_Document *) document ;
-
 - (void) detachFromCocoaDocument ;
 
 - (NSString *) sourceString ;
 
 - (void) replaceSourceStringWithString: (NSString *) inString ;
-
-- (NSURL *) fileURL ;
 
 - (BOOL) performSaveToURL: (NSURL *) inAbsoluteURL ;
 @end

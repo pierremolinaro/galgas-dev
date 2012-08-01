@@ -12,6 +12,8 @@
 //--------------------------------------------------------------------------*
 
 @class WebView ;
+@class PMDownloadData ;
+@class PMDownloadFile ;
 
 //--------------------------------------------------------------------------*
 
@@ -41,6 +43,9 @@
 
 //---  
   @private BOOL mSearchForUpdatesInBackground ;
+  
+  @private PMDownloadData * mDownloadData ;
+  @private PMDownloadFile * mDownloadFile ;
 }
 
 - (IBAction) checkForNewVersion: (id) inSender ;

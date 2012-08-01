@@ -72,8 +72,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     NSMenu * menu = [NSApp mainMenu] ;
     menu = [[menu itemAtIndex: 0] submenu] ;
     const NSInteger itemsCount = [menu numberOfItems] ;
-    NSInteger i ;
-    for (i=0 ; i<itemsCount ; i++) {
+    for (NSInteger i=0 ; i<itemsCount ; i++) {
       NSMenuItem * item = [menu itemAtIndex: i] ;
       NSString * itemTitle = [item title] ;
       NSMutableString * newItemTitle = [NSMutableString new] ;
@@ -176,7 +175,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 //--- Assign command line option array attribute
   mCommandLineItemArray = arguments ;
 //---- Build string for displaying
-  NSMutableString * s = [NSMutableString new] ;
+  NSMutableString * s = [[NSMutableString new] autorelease] ;
   for (NSUInteger i=0 ; i<[arguments count] ; i++) {
     [s appendString:[arguments objectAtIndex:i HERE]] ;
     [s appendString:@" "] ;  
@@ -540,7 +539,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
       [item setSubmenu:submenu] ;
     }
   //---
-    NSMutableArray * components = [[NSMutableArray alloc] init] ;
+    NSMutableArray * components = [[NSMutableArray new] autorelease] ;
     [components addObjectsFromArray:inTitleComponents] ;
     [components removeObjectAtIndex:0] ;
   //---
@@ -656,7 +655,6 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     [format setMinimum:[NSDecimalNumber zero]] ;
     [format setAllowsFloats:NO] ;
     [[tx cell] setFormatter:format] ;
-
     r.origin.x = 10.0 ;
     r.size.width = 80.0 ;
     r.origin.y -= 25.0 ;
@@ -761,7 +759,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 //--- Populate
   [mToolPopUpButton removeAllItems] ;
   NSString * resourcePath = [[NSBundle mainBundle] resourcePath] ;
-  NSFileManager * fm = [[NSFileManager alloc] init] ;
+  NSFileManager * fm = [[NSFileManager new] autorelease] ;
   NSDirectoryEnumerator * dirEnum = [fm enumeratorAtPath:resourcePath];
   NSString * file = [dirEnum nextObject] ;
   while (file != nil) {
@@ -806,7 +804,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     NSArray * entry = [nibArray objectAtIndex:i HERE] ;
     NSString * nibName = [entry objectAtIndex:0 HERE] ;
     Class mainClass = [entry objectAtIndex:1 HERE] ;
-    id owner = [[mainClass alloc] init] ;
+    id owner = [[mainClass new] autorelease] ;
     [NSBundle loadNibNamed:nibName owner:owner] ;
   }
 //--- Get default settings
@@ -834,7 +832,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     NSMutableString * preferencesWindowTitle = [NSMutableString new] ;
     [preferencesWindowTitle appendString: applicationName] ;
     [preferencesWindowTitle appendString: @" Preferences"] ;
-    [mPreferenceWindow setTitle: preferencesWindowTitle] ;
+    [mPreferenceWindow setTitle:preferencesWindowTitle] ;
   }
 //--- Get default font, used when there is no preference setting
   if ([defaults stringForKey:GGS_build_text_font] == nil) {
@@ -1118,6 +1116,9 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 //---------------------------------------------------------------------------*
 
 - (void) appendMessage: (NSString *) inMessage {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   NSTextStorage * ts = [mRunTextView textStorage] ;
   NSRange endOfText = {[ts length], 0} ;
   [mRunTextView replaceCharactersInRange: endOfText withString: inMessage] ;
@@ -1192,6 +1193,9 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 //---------------------------------------------------------------------------*
 
 - (void) appendSuccess: (NSString *) inMessage {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
 //--- Append message
   NSTextStorage * ts = [mRunTextView textStorage] ;
   NSRange endOfText = {[ts length], 0} ;
@@ -1207,6 +1211,9 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 //---------------------------------------------------------------------------*
 
 - (void) appendError: (NSString *) inMessage {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   NSString * message = [inMessage stringByAppendingString:@"\n"] ;
 //--- Append message
   NSTextStorage * ts = [mRunTextView textStorage] ;
@@ -1223,6 +1230,9 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 //---------------------------------------------------------------------------*
 
 - (void) appendWarning: (NSString *) inMessage {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   NSString * message = [inMessage stringByAppendingString:@"\n"] ;
 //--- Append message
   NSTextStorage * ts = [mRunTextView textStorage] ;
@@ -1356,11 +1366,10 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   NSBundle * mb = [NSBundle mainBundle] ;
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
   NSDictionary * dictionaryRepresentation = [ud persistentDomainForName:[mb bundleIdentifier]] ;
-  NSArray * allKeys = [[dictionaryRepresentation allKeys] copy] ;
+  NSArray * allKeys = [[[dictionaryRepresentation allKeys] copy] autorelease] ;
   const NSRange rangeGGS = {0, 4} ;
   const NSRange rangeNS = {0, 2} ;
-  unsigned i ;
-  for (i=0 ; i<[allKeys count] ; i++) {
+  for (NSUInteger i=0 ; i<[allKeys count] ; i++) {
     NSString * key = [allKeys objectAtIndex:i HERE] ;
     if (([key compare:@"GGS_" options:NSLiteralSearch range:rangeGGS] != NSOrderedSame) &&
         ([key compare:@"NS" options:NSLiteralSearch range:rangeNS] != NSOrderedSame)) {

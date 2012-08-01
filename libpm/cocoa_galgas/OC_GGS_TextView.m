@@ -22,6 +22,10 @@
 
 @implementation OC_GGS_TextView
 
+//---------------------------------------------------------------------------*
+
+@synthesize displayDescriptor ;
+@synthesize issueArray ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -49,14 +53,8 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) setDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor {
-  mDisplayDescriptor = inDisplayDescriptor ;
-}
-
-//---------------------------------------------------------------------------*
-
 - (void) setIssueArray: (NSArray *) inIssueArray {
-  mIssueArray = inIssueArray.copy ;
+  issueArray = inIssueArray.copy ;
 //--- Tell ruler to refresh
   NSScrollView * scrollView = (NSScrollView *) self.superview.superview ;
   // NSLog (@"scrollView %@", scrollView) ;
@@ -65,12 +63,6 @@
   [ruler setNeedsDisplay:YES] ;
   [self setNeedsDisplay:YES] ;
   [scrollView.verticalScroller setNeedsDisplay:YES] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (NSArray *) issueArray {
-  return mIssueArray ;
 }
 
 //---------------------------------------------------------------------------*
@@ -98,7 +90,7 @@
   NSBezierPath * errorBulletBezierPath = [NSBezierPath bezierPath] ;
   NSBezierPath * warningHiliteBezierPath = [NSBezierPath bezierPath] ;
   NSBezierPath * warningBulletBezierPath = [NSBezierPath bezierPath] ;
-  for (PMErrorOrWarningDescriptor * issue in mIssueArray) {
+  for (PMErrorOrWarningDescriptor * issue in issueArray) {
     // NSLog (@"lineRange [%u, %u]", lineRange.location, lineRange.length) ;
     NSRect lineRect = [self.layoutManager lineFragmentUsedRectForGlyphAtIndex:issue.location effectiveRange:NULL] ;
     lineRect.size.width = self.visibleRect.size.width ;
@@ -173,7 +165,7 @@
   NSRange result = inProposedSelRange ;
   if ((inGranularity == NSSelectByWord) && (inProposedSelRange.length == 0)) {
     // NSLog (@"inProposedSelRange: [%u, %u], granularity: %d", inProposedSelRange.location, inProposedSelRange.length, inGranularity) ;
-    OC_GGS_TextSyntaxColoring * dsc = mDisplayDescriptor.documentData.textSyntaxColoring ;
+    OC_GGS_TextSyntaxColoring * dsc = displayDescriptor.documentData.textSyntaxColoring ;
     NSArray * tokenArray = [dsc tokenArray] ;
     BOOL found = NO ;
     for (NSUInteger i=0 ; (i<[tokenArray count]) && ! found ; i++) {
@@ -211,7 +203,7 @@
 
 - (void) selectAllTokenCharacters: (id) inSender  {
   const NSRange r = [[inSender representedObject] rangeValue] ;
-  [mDisplayDescriptor setSelectionRangeAndMakeItVisible:r] ;
+  [displayDescriptor setSelectionRangeAndMakeItVisible:r] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -223,7 +215,7 @@
   const NSUInteger tokenLocation = (NSUInteger) [[components objectAtIndex:2] integerValue] ;
   const NSUInteger tokenLength = (NSUInteger) [[components objectAtIndex:3] integerValue] ;
   NSString * filePath = [components objectAtIndex:4] ;
-  OC_GGS_TextDisplayDescriptor * tdd = [mDisplayDescriptor.documentUsedForDisplaying findOrAddNewTabForFile:filePath] ;
+  OC_GGS_TextDisplayDescriptor * tdd = [displayDescriptor.documentUsedForDisplaying findOrAddNewTabForFile:filePath] ;
   [tdd setSelectionRangeAndMakeItVisible:NSMakeRange (tokenLocation, tokenLength)] ;
 }
 
@@ -240,8 +232,8 @@
     const NSRange selectedRange = {characterIndex, 0} ;
     const NSRange r = [self selectionRangeForProposedRange:selectedRange granularity:NSSelectByWord] ;
     [self setSelectedRange:r] ;
-    OC_GGS_TextSyntaxColoring * dsc = mDisplayDescriptor.documentData.textSyntaxColoring ;
-    NSMenu * menu = [dsc indexMenuForRange:r textDisplayDescriptor:mDisplayDescriptor] ;
+    OC_GGS_TextSyntaxColoring * dsc = displayDescriptor.documentData.textSyntaxColoring ;
+    NSMenu * menu = [dsc indexMenuForRange:r textDisplayDescriptor:displayDescriptor] ;
     [NSMenu
       popUpContextMenu:menu
       withEvent:inEvent

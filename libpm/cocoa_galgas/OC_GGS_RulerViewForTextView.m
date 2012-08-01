@@ -68,6 +68,7 @@
   self = [self init] ;
   if (self) {
     mDocument = inDocument ;
+    [mDocument retain] ;
   }
   return self ;
 }
@@ -80,7 +81,7 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
 //---------------------------------------------------------------------------*
 
 - (void) drawHashMarksAndLabelsInRect: (NSRect) inRect {
-  NSMutableArray * issues = [NSMutableArray new] ;
+  NSMutableArray * issues = [[NSMutableArray new] autorelease] ;
 //--- Draw background
   [[NSColor windowBackgroundColor] setFill] ;
   [NSBezierPath fillRect:inRect] ;
@@ -162,12 +163,11 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
           operation:NSCompositeSourceOver
           fraction:1.0
         ] ;
-        [issues addObject:
-          [[PMIssueInRuler alloc]
-            initWithRect:rImage
-            message:allMessages
-          ]
+        PMIssueInRuler * issueInRuler = [[PMIssueInRuler alloc]
+          initWithRect:rImage
+          message:allMessages
         ] ;
+        [issues addObject:issueInRuler] ;
       }
     }
   //---
