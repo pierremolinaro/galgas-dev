@@ -700,9 +700,9 @@
 								<bool key="EncodedWithXMLCoder">YES</bool>
 								<object class="NSMenuItem" id="554481785">
 									<reference key="NSMenu" ref="805293887"/>
-									<string key="NSTitle">Show Run Window</string>
-									<string key="NSKeyEquiv"/>
-									<int key="NSKeyEquivModMask">1048576</int>
+									<string key="NSTitle">Show Allocation Stats</string>
+									<string key="NSKeyEquiv">,</string>
+									<int key="NSKeyEquivModMask">1572864</int>
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="950411432"/>
 									<reference key="NSMixedImage" ref="850908681"/>
@@ -4023,6 +4023,14 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
+						<string key="label">showAllocationWindow:</string>
+						<reference key="source" ref="642695013"/>
+						<reference key="destination" ref="554481785"/>
+					</object>
+					<int key="connectionID">1493</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
 						<string key="label">makeKeyAndOrderFront:</string>
 						<reference key="source" ref="570298310"/>
 						<reference key="destination" ref="785603281"/>
@@ -6896,7 +6904,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">1492</int>
+			<int key="maxID">1493</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<object class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -7114,6 +7122,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>mBuildProgressIndicator</string>
 							<string>mCurrentLineButton</string>
+							<string>mDetailedIssueScrollView</string>
 							<string>mDetailedIssueSplitView</string>
 							<string>mDetailedIssueTextView</string>
 							<string>mEntryListPopUpButton</string>
@@ -7134,6 +7143,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>NSProgressIndicator</string>
 							<string>NSButton</string>
+							<string>NSScrollView</string>
 							<string>NSSplitView</string>
 							<string>NSTextView</string>
 							<string>NSPopUpButton</string>
@@ -7157,6 +7167,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<string>mBuildProgressIndicator</string>
 							<string>mCurrentLineButton</string>
+							<string>mDetailedIssueScrollView</string>
 							<string>mDetailedIssueSplitView</string>
 							<string>mDetailedIssueTextView</string>
 							<string>mEntryListPopUpButton</string>
@@ -7182,6 +7193,10 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<object class="IBToOneOutletInfo">
 								<string key="name">mCurrentLineButton</string>
 								<string key="candidateClassName">NSButton</string>
+							</object>
+							<object class="IBToOneOutletInfo">
+								<string key="name">mDetailedIssueScrollView</string>
+								<string key="candidateClassName">NSScrollView</string>
 							</object>
 							<object class="IBToOneOutletInfo">
 								<string key="name">mDetailedIssueSplitView</string>
@@ -7260,9 +7275,11 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<string>clearSourceDocumentPreferencesEntries:</string>
 							<string>runActionFromPreferences:</string>
 							<string>setTextRulerVisible:</string>
+							<string>showAllocationWindow:</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
+							<string>id</string>
 							<string>id</string>
 							<string>id</string>
 							<string>id</string>
@@ -7275,6 +7292,7 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							<string>clearSourceDocumentPreferencesEntries:</string>
 							<string>runActionFromPreferences:</string>
 							<string>setTextRulerVisible:</string>
+							<string>showAllocationWindow:</string>
 						</object>
 						<object class="NSArray" key="dict.values">
 							<bool key="EncodedWithXMLCoder">YES</bool>
@@ -7288,6 +7306,10 @@ AAMAAAABAAEAAAFTAAMAAAAEAAAFwgAAAAAACAAIAAgACAABAAEAAQABA</bytes>
 							</object>
 							<object class="IBActionInfo">
 								<string key="name">setTextRulerVisible:</string>
+								<string key="candidateClassName">id</string>
+							</object>
+							<object class="IBActionInfo">
+								<string key="name">showAllocationWindow:</string>
 								<string key="candidateClassName">id</string>
 							</object>
 						</object>

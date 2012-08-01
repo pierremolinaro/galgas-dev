@@ -27,59 +27,20 @@
 
 //---------------------------------------------------------------------------*
 
-- (PMIssueDescriptor *) initWithMessage : (NSString *) inMessage {
-  self = [self init] ;
-  if (self) {
-    mIssueKind = kMessageIssue ;
-    mMessage = inMessage.copy ;
-    [self normalizeMessage] ;
-  }
-  return self ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (PMIssueDescriptor *) initWithFileOperation: (NSString *) inMessage {
-  self = [self init] ;
-  if (self) {
-    mIssueKind = kFileOperationIssue ;
-    mMessage = inMessage.copy ;
-    [self normalizeMessage] ;
-  }
-  return self ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (PMIssueDescriptor *) initWithErrorMessage: (NSString *) inMessage
+- (PMIssueDescriptor *) initWithMessage: (NSString *) inMessage
                         URL: (NSURL *) inURL
                         line: (NSInteger) inLine
-                        column: (NSInteger) inColumn {
+                        column: (NSInteger) inColumn
+                        isError: (BOOL) inIsError
+                        locationInOutputData: (NSInteger) inLocationInOutputData {
   self = [self init] ;
   if (self) {
-    mIssueKind = kErrorIssue ;
     mMessage = inMessage.copy ;
     mURL = inURL.copy ;
     mLine = inLine ;
     mColumn = inColumn ;
-    [self normalizeMessage] ;
-  }
-  return self ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (PMIssueDescriptor *) initWithWarningMessage: (NSString *) inMessage
-                        URL: (NSURL *) inURL
-                        line: (NSInteger) inLine
-                        column: (NSInteger) inColumn {
-  self = [self init] ;
-  if (self) {
-    mIssueKind = kWarningIssue ;
-    mMessage = inMessage.copy ;
-    mURL = inURL.copy ;
-    mLine = inLine ;
-    mColumn = inColumn ;
+    mIsError = inIsError ;
+    mLocationInOutputData = inLocationInOutputData ;
     [self normalizeMessage] ;
   }
   return self ;
@@ -99,20 +60,8 @@
 
 //---------------------------------------------------------------------------*
 
-- (enumIssueKind) issueKind {
-  return mIssueKind ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (BOOL) errorOrWarningKind {
-  return (kErrorIssue == mIssueKind) || (kWarningIssue == mIssueKind) ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (BOOL) errorKind {
-  return kErrorIssue == mIssueKind ;
+- (BOOL) isError {
+  return mIsError ;
 }
 
 //---------------------------------------------------------------------------*
@@ -129,15 +78,14 @@
 
 //---------------------------------------------------------------------------*
 
+- (NSInteger) locationInOutputData {
+  return mLocationInOutputData ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (NSColor *) issueColor {
-  NSColor * color = [NSColor blackColor] ;
-  switch (mIssueKind) {
-  case kErrorIssue : color = [NSColor redColor] ; break ;
-  case kWarningIssue : color = [NSColor orangeColor] ; break ;
-  case kFileOperationIssue : color = [NSColor blueColor] ; break ;
-  default : break ;
-  }
-  return color ;
+  return mIsError ? [NSColor redColor] : [NSColor orangeColor] ;
 }
 
 //---------------------------------------------------------------------------*

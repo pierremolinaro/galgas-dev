@@ -30,6 +30,7 @@
 #import "OC_Lexique.h"
 #import "PMCocoaCallsDebug.h"
 #import "F_CocoaWrapperForGalgas.h"
+#import "PMDebug.h"
 
 //---------------------------------------------------------------------------*
 
@@ -1102,6 +1103,12 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
       [NSApp presentError:error] ;
     }
   }
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) showAllocationWindow: (id) inSender {
+  showAllocationStatsWindow () ;
 }
 
 //---------------------------------------------------------------------------*

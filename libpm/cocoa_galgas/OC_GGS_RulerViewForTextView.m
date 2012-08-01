@@ -28,6 +28,7 @@
 #import "PMCocoaCallsDebug.h"
 #import "PMIssueInRuler.h"
 #import "OC_GGS_Document.h"
+#import "PMDebug.h"
 
 //---------------------------------------------------------------------------*
 
@@ -36,6 +37,30 @@
 //---------------------------------------------------------------------------*
 
 @implementation OC_GGS_RulerViewForTextView
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//       I N I T                                                             *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (id) init {
+  self = [super init] ;
+  if (self) {
+    #ifdef DEBUG_MESSAGES
+      NSLog (@"%s", __PRETTY_FUNCTION__) ;
+    #endif
+    noteObjectAllocation (self) ;
+  }
+  return self;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) finalize {
+  noteObjectDeallocation (self) ;
+  [super finalize] ;
+}
 
 //---------------------------------------------------------------------------*
 
@@ -168,6 +193,12 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
   if (nil != foundIssue) {
     [mDocument displayIssueDetailedMessage:foundIssue.message] ;
   }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) detachFromCocoaDocument {
+  mDocument = nil ;
 }
 
 //---------------------------------------------------------------------------*

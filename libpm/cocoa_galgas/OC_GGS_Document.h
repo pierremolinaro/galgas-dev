@@ -36,6 +36,7 @@
 @class OC_GGS_BuildTask ;
 @class OC_GGS_TextDisplayDescriptor ;
 @class OC_GGS_DocumentData ;
+@class OC_GGS_RulerViewForBuildOutput ;
 
 //---------------------------------------------------------------------------*
 
@@ -44,10 +45,6 @@
   <NSTextViewDelegate, NSSplitViewDelegate, NSWindowDelegate>
 #endif
 {
-
-  @private NSArrayController * mIssueArrayController ;
-//  @private NSArray * mIssueArray ; // Bound to 'content' of mIssueArrayController
-  
   @private IBOutlet NSSplitView * mIssueSplitView ;
 
   @private IBOutlet NSView * mSourceHostView ;
@@ -78,24 +75,23 @@
 
 //--- Detailled issue message
   @private IBOutlet NSTextView * mDetailedIssueTextView ;
+  @private IBOutlet NSScrollView * mDetailedIssueScrollView ;
   @private IBOutlet NSSplitView * mDetailedIssueSplitView ;
 
 //--- Build, stop button
   @private IBOutlet NSButton * mStartBuildButton ;
   @private IBOutlet NSProgressIndicator * mBuildProgressIndicator ;
   @private IBOutlet NSButton * mStopBuildButton ;
+  @private NSUInteger mErrorCount ;
   @private IBOutlet NSTextField * mErrorCountTextField ;
+  @private NSUInteger mWarningCount ;
   @private IBOutlet NSTextField * mWarningCountTextField ;
+  @private OC_GGS_RulerViewForBuildOutput * mRulerViewForBuildOutput ;
 }
 
-@property(assign, atomic) NSArray * mIssueArray ;
+@property(assign, atomic) NSMutableArray * mIssueArray ;
 @property(assign, atomic) NSArray * mDisplayDescriptorArray ;
 @property(assign, atomic) BOOL mBuildTaskIsRunning ;
-@property(copy, atomic) NSString * mErrorCountString ;
-@property(copy, atomic) NSString * mWarningCountString ;
-
-- (void) setDocumentIssueArray: (NSArray *) issueArray ;
-- (NSArray *) documentIssueArray ;
 
 - (OC_GGS_TextDisplayDescriptor *) findOrAddNewTabForFile: (NSString *) inDocumentPath ;
 

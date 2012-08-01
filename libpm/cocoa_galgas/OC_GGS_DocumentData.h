@@ -38,6 +38,8 @@
 
 - (OC_GGS_Document *) document ;
 
+- (void) detachFromCocoaDocument ;
+
 - (NSString *) sourceString ;
 
 - (void) replaceSourceStringWithString: (NSString *) inString ;

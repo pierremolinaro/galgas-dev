@@ -5,11 +5,16 @@
 //  Created by Pierre Molinaro on 26/06/09.
 //  Copyright 2009 __MyCompanyName__. All rights reserved.
 //
+//---------------------------------------------------------------------------*
 
 #import "OC_Token.h"
+#import "PMDebug.h"
 
+//---------------------------------------------------------------------------*
 
 @implementation OC_Token
+
+//---------------------------------------------------------------------------*
 
 - (id) initWithTokenCode: (NSUInteger) inTokenCode
        range: (NSRange) inRange
@@ -17,6 +22,7 @@
        matchedTemplateDelimiterIndex: (NSInteger) inMatchedTemplateDelimiterIndex {
   self = [super init] ;
   if (self) {
+    noteObjectAllocation (self) ;
     mTokenCode = inTokenCode ;
     mRange = inRange ;
     mStyle = inStyle ;
@@ -25,21 +31,38 @@
   return self ;
 }
 
+//---------------------------------------------------------------------------*
+
+- (void) finalize {
+  noteObjectDeallocation (self) ;
+  [super finalize] ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (NSUInteger) tokenCode {
   return mTokenCode ;
 }
+
+//---------------------------------------------------------------------------*
 
 - (NSRange) range {
   return mRange ;
 }
 
+//---------------------------------------------------------------------------*
+
 - (NSInteger) style {
   return mStyle ;
 }
 
+//---------------------------------------------------------------------------*
+
 - (NSInteger) matchedTemplateDelimiterIndex {
   return mMatchedTemplateDelimiterIndex ;
 }
+
+//---------------------------------------------------------------------------*
 
 - (void) translateRange: (NSInteger) inTranslation {
   if ((inTranslation < 0) && (mRange.location < ((NSUInteger) - inTranslation))) {
@@ -51,5 +74,7 @@
   }
   mRange.location += (NSUInteger) inTranslation ;
 }
+
+//---------------------------------------------------------------------------*
 
 @end

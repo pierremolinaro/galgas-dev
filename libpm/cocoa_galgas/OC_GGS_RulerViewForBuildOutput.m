@@ -1,0 +1,83 @@
+//
+//  OC_GGS_RulerViewForBuildOutput.m
+//  galgas-developer
+//
+//  Created by Pierre Molinaro on 31/07/12.
+//  Copyright (c) 2012 IRCCyN. All rights reserved.
+//
+//---------------------------------------------------------------------------*
+
+#import "OC_GGS_RulerViewForBuildOutput.h"
+#import "PMIssueDescriptor.h"
+#import "PMDebug.h"
+
+//---------------------------------------------------------------------------*
+
+@implementation OC_GGS_RulerViewForBuildOutput
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//       I N I T                                                             *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (id) init {
+  self = [super init] ;
+  if (self) {
+    #ifdef DEBUG_MESSAGES
+      NSLog (@"%s", __PRETTY_FUNCTION__) ;
+    #endif
+    noteObjectAllocation (self) ;
+  }
+  return self;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) finalize {
+  noteObjectDeallocation (self) ;
+  [super finalize] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) setIssueArray: (NSArray *) inIssueArray {
+  mIssueArray = inIssueArray.copy ;
+  [self setNeedsDisplay:YES] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) drawHashMarksAndLabelsInRect: (NSRect) inRect {
+//--- Draw background
+  [[NSColor windowBackgroundColor] setFill] ;
+  [NSBezierPath fillRect:inRect] ;
+//--- Draw right border
+  const NSRect viewBounds = [self bounds] ;
+  const NSPoint p1 = {viewBounds.size.width, 0.0} ;
+  const NSPoint p2 = {viewBounds.size.width, viewBounds.size.height} ;
+  [NSBezierPath strokeLineFromPoint:p1 toPoint:p2] ;
+//--- Images
+  NSImage * errorImage = [NSImage imageNamed:NSImageNameStatusUnavailable] ;
+  NSImage * warningImage = [NSImage imageNamed:NSImageNameStatusPartiallyAvailable] ;
+//--- Note: ruler view and text view are both flipped
+  NSTextView * textView = self.scrollView.documentView ;
+  NSLayoutManager * lm = textView.layoutManager ;
+  
+//--- Display bullets
+  for (PMIssueDescriptor * issue in mIssueArray) {
+    const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:issue.locationInOutputData effectiveRange:NULL] ;
+    NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMaxY (r)) fromView:textView] ;
+    const NSRect rImage = {{4.0, p.y}, {16.0, 16.0}} ;
+    [issue.isError ? errorImage : warningImage
+      drawInRect:rImage
+      fromRect:NSZeroRect
+      operation:NSCompositeSourceOver
+      fraction:1.0
+    ] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+@end

@@ -16,6 +16,7 @@
 #import "PMIssueDescriptor.h"
 #import "PMErrorOrWarningDescriptor.h"
 #import "OC_GGS_DocumentData.h"
+#import "PMDebug.h"
 
 //---------------------------------------------------------------------------*
 
@@ -34,6 +35,30 @@
 //---------------------------------------------------------------------------*
 
 @implementation OC_GGS_TextSyntaxColoring
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//       I N I T                                                             *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (id) init {
+  self = [super init] ;
+  if (self) {
+    #ifdef DEBUG_MESSAGES
+      NSLog (@"%s", __PRETTY_FUNCTION__) ;
+    #endif
+    noteObjectAllocation (self) ;
+  }
+  return self;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) finalize {
+  noteObjectDeallocation (self) ;
+  [super finalize] ;
+}
 
 //---------------------------------------------------------------------------*
 
@@ -63,8 +88,7 @@
   NSFont * font = [mTemplateTextAttributeDictionary objectForKey:NSFontAttributeName] ;
   double maxAscender = [font ascender] + 4.0 ;
   double maxLeadingMinusDescender = [font leading] - [font descender] ;
-  UInt32 i ;
-  for (i=0 ; i<[mFontAttributesDictionaryArray count] ; i++) {
+  for (NSUInteger i=0 ; i<[mFontAttributesDictionaryArray count] ; i++) {
     NSDictionary * d = [mFontAttributesDictionaryArray objectAtIndex:i HERE] ;
     font = [d objectForKey:NSFontAttributeName] ;
     maxAscender = fmax (maxAscender, [font ascender] + 4.0) ;
@@ -486,7 +510,7 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSMutableArray * filteredArray = [NSMutableArray new] ;
+/*  NSMutableArray * filteredArray = [NSMutableArray new] ;
   for (PMIssueDescriptor * issue in inIssueArray) {
     if ([issue.issueURL isEqual:mDocumentData.fileURL]) {
       const NSRange lineRange = [self rangeForLine:issue.issueLine] ;
@@ -506,7 +530,7 @@
 //---
   for (OC_GGS_TextDisplayDescriptor * textDisplay in mTextDisplayDescriptorSet) {
     [textDisplay setTextDisplayIssueArray:mIssueArray] ; 
-  }
+  }*/
 }  
 
 //---------------------------------------------------------------------------*

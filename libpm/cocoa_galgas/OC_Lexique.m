@@ -27,6 +27,7 @@
 #import "OC_Token.h"
 #import "unicode_character_m.h"
 #import "PMCocoaCallsDebug.h"
+#import "PMDebug.h"
 
 //---------------------------------------------------------------------------*
 
@@ -41,9 +42,17 @@
 - (id) init {
   self = [super init] ;
   if (self) {
+    noteObjectAllocation (self) ;
     mMatchedTemplateDelimiterIndex = -1 ;
   }
   return self ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) finalize {
+  noteObjectDeallocation (self) ;
+  [super finalize] ;
 }
 
 //---------------------------------------------------------------------------*

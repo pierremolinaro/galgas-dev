@@ -11,6 +11,7 @@
 #import "OC_GGS_TextSyntaxColoring.h"
 #import "OC_GGS_TextDisplayDescriptor.h"
 #import "F_CocoaWrapperForGalgas.h"
+#import "PMDebug.h"
 
 //---------------------------------------------------------------------------*
 
@@ -165,6 +166,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 - (OC_GGS_DocumentData *) initWithDataFromURL: (NSURL *) inDocumentURL {
   self = [super init] ;
   if (self) {
+    noteObjectAllocation (self) ;
     mDocumentURL = inDocumentURL.copy ;
     mFileEncoding = NSUTF8StringEncoding ;
     mDisplayDescriptorArray = [NSMutableArray new] ;
@@ -175,10 +177,23 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 
 //---------------------------------------------------------------------------*
 
+- (void) finalize {
+  noteObjectDeallocation (self) ;
+  [super finalize] ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (void) setCocoaDocument: (OC_GGS_Document *) inDocument {
   if (nil != inDocument) {
     mDocument = inDocument ;
   }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) detachFromCocoaDocument {
+  mDocument = nil ;
 }
 
 //---------------------------------------------------------------------------*
