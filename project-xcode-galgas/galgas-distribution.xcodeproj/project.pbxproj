@@ -150,6 +150,9 @@
 		CF51CA5B0FEABD010031BFFE /* lexiqueCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4521A30E01576C00CAE9FC /* lexiqueCompilation.cpp */; };
 		CF51CA5E0FEABD070031BFFE /* lexiqueLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0CB81C0BC0192C00E6FABE /* lexiqueLL1grammar.cpp */; };
 		CF51CA5F0FEABD080031BFFE /* lexiqueCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF4521A30E01576C00CAE9FC /* lexiqueCompilation.cpp */; };
+		CF51F03215C92B8400387A48 /* OC_GGS_RulerViewForBuildOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = CF51F02F15C92B8400387A48 /* OC_GGS_RulerViewForBuildOutput.m */; };
+		CF51F03315C92B8400387A48 /* PMDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = CF51F03115C92B8400387A48 /* PMDebug.m */; };
+		CF51F03715C92B8C00387A48 /* PMDebug.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF51F03515C92B8C00387A48 /* PMDebug.xib */; };
 		CF5610A4137B32C30007E1BC /* typeComparisonResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5610A2137B32C30007E1BC /* typeComparisonResult.cpp */; };
 		CF5610A7137B32C30007E1BC /* typeComparisonResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5610A2137B32C30007E1BC /* typeComparisonResult.cpp */; };
 		CF5719C41275901A00AAB8BF /* templateAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5719C01275901A00AAB8BF /* templateAnalysis.cpp */; };
@@ -591,6 +594,11 @@
 		CF4ED37E10D9256F00B4F6AA /* PMPointerArrayDebugCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMPointerArrayDebugCategory.m; sourceTree = "<group>"; };
 		CF4ED37F10D9256F00B4F6AA /* PMSetDebugCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSetDebugCategory.h; sourceTree = "<group>"; };
 		CF4ED38010D9256F00B4F6AA /* PMSetDebugCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMSetDebugCategory.m; sourceTree = "<group>"; };
+		CF51F02E15C92B8400387A48 /* OC_GGS_RulerViewForBuildOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_RulerViewForBuildOutput.h; sourceTree = "<group>"; };
+		CF51F02F15C92B8400387A48 /* OC_GGS_RulerViewForBuildOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_RulerViewForBuildOutput.m; sourceTree = "<group>"; };
+		CF51F03015C92B8400387A48 /* PMDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMDebug.h; sourceTree = "<group>"; };
+		CF51F03115C92B8400387A48 /* PMDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMDebug.m; sourceTree = "<group>"; };
+		CF51F03615C92B8C00387A48 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/PMDebug.xib; sourceTree = "<group>"; };
 		CF5610A2137B32C30007E1BC /* typeComparisonResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = typeComparisonResult.cpp; sourceTree = "<group>"; };
 		CF5719C01275901A00AAB8BF /* templateAnalysis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = templateAnalysis.cpp; sourceTree = "<group>"; };
 		CF5719C11275901A00AAB8BF /* templateAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = templateAnalysis.h; sourceTree = "<group>"; };
@@ -1282,6 +1290,11 @@
 		CFAD482E0591BCF700BF8381 /* cocoa_galgas */ = {
 			isa = PBXGroup;
 			children = (
+				CF51F03515C92B8C00387A48 /* PMDebug.xib */,
+				CF51F02E15C92B8400387A48 /* OC_GGS_RulerViewForBuildOutput.h */,
+				CF51F02F15C92B8400387A48 /* OC_GGS_RulerViewForBuildOutput.m */,
+				CF51F03015C92B8400387A48 /* PMDebug.h */,
+				CF51F03115C92B8400387A48 /* PMDebug.m */,
 				CF2510C315C8702D00594C07 /* OC_GGS_DocumentData.h */,
 				CF2510C415C8702D00594C07 /* OC_GGS_DocumentData.m */,
 				CFAD1340148A4C8400ECA963 /* OC_GGS_BuildTask.h */,
@@ -2092,6 +2105,7 @@
 				CF06F5CD1049592F005F03FA /* MainMenu.xib in Resources */,
 				CF06F5CE1049592F005F03FA /* OC_GGS_Document.xib in Resources */,
 				CF83184E104A7A9200FDF2EC /* galgasUpdate.xib in Resources */,
+				CF51F03715C92B8C00387A48 /* PMDebug.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2139,6 +2153,8 @@
 				CFAD135C148A4C8400ECA963 /* PMIssueInRuler.m in Sources */,
 				CFAD135D148A4C8400ECA963 /* PMTabBarView.m in Sources */,
 				CF2510C515C8702D00594C07 /* OC_GGS_DocumentData.m in Sources */,
+				CF51F03215C92B8400387A48 /* OC_GGS_RulerViewForBuildOutput.m in Sources */,
+				CF51F03315C92B8400387A48 /* PMDebug.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2558,6 +2574,14 @@
 				CF06F5C81049592F005F03FA /* English */,
 			);
 			name = OC_GGS_Document.xib;
+			sourceTree = "<group>";
+		};
+		CF51F03515C92B8C00387A48 /* PMDebug.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF51F03615C92B8C00387A48 /* English */,
+			);
+			name = PMDebug.xib;
 			sourceTree = "<group>";
 		};
 		CF83184A104A7A9200FDF2EC /* galgasUpdate.xib */ = {

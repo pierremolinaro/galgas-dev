@@ -18,6 +18,7 @@
 #import "OC_GGS_Scroller.h"
 #import "PMCocoaCallsDebug.h"
 #import "PMIssueDescriptor.h"
+#import "PMDebug.h"
 
 //---------------------------------------------------------------------------*
 
@@ -63,6 +64,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #endif
   self = [self init] ;
   if (self) {
+    noteObjectAllocation (self) ;
     mPreviousBuildTasks = [NSMutableSet new] ;
     mDocumentData = inDocumentData ;
     mDocumentUsedForDisplaying = inDocumentUsedForDisplaying ;
@@ -134,6 +136,13 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
+- (void) finalize {
+  noteObjectDeallocation (self) ;
+  [super finalize] ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (OC_GGS_DocumentData *) documentData {
   return mDocumentData ;
 }
@@ -146,8 +155,10 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
-- (void) detachFromSyntaxColoringObject {
+- (void) detach {
   mDocumentData = nil ;
+  mDocumentUsedForDisplaying = nil ;
+  [mRulerView detachFromCocoaDocument] ;
 }
 
 //---------------------------------------------------------------------------*

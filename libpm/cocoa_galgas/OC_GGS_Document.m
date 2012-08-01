@@ -33,6 +33,8 @@
 #import "PMTabBarView.h"
 #import "OC_GGS_BuildTask.h"
 #import "OC_GGS_DocumentData.h"
+#import "OC_GGS_RulerViewForBuildOutput.h"
+#import "PMDebug.h"
 
 //---------------------------------------------------------------------------*
 
@@ -47,8 +49,6 @@
 @synthesize mIssueArray ;
 @synthesize mDisplayDescriptorArray ;
 @synthesize mBuildTaskIsRunning ;
-@synthesize mErrorCountString ;
-@synthesize mWarningCountString ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -62,14 +62,21 @@
     #ifdef DEBUG_MESSAGES
       NSLog (@"%s", __PRETTY_FUNCTION__) ;
     #endif
+    noteObjectAllocation (self) ;
     mFileEncoding = NSUTF8StringEncoding ;
     mSourceDisplayArrayController = [NSArrayController new] ;
     mDisplayDescriptorArray = [NSArray new] ;
-    mIssueArrayController = [NSArrayController new] ;
     self.undoManager = nil ;
     self.hasUndoManager = NO ;
   }
   return self;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) finalize {
+  noteObjectDeallocation (self) ;
+  [super finalize] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -133,13 +140,6 @@
   // NSLog (@"READ %@ -> %lu", key, selection) ;
 //--- Tell to window controller that closing the source text window closes the document
   [inWindowController setShouldCloseDocument: YES] ;
-//--- Bindings
-  [mIssueArrayController
-    bind:@"content"
-    toObject:self
-    withKeyPath:@"mIssueArray"
-    options:nil
-  ] ;
 //--- Set up windows location
   key = [NSString stringWithFormat: @"frame_for_source:%@", self.lastComponentOfFileName] ;
   [self.windowForSheet setFrameAutosaveName:key] ;
@@ -204,6 +204,9 @@
     options:0
     context:NULL
   ] ;
+//---
+  mWarningCountTextField.stringValue = @"" ;
+  mErrorCountTextField.stringValue = @"" ;
 //--- Display the document contents
   OC_GGS_TextDisplayDescriptor * textDisplayDescriptor = [mDocumentData newSourceDisplayDescriptorForDocument:self] ;
   [mSourceDisplayArrayController addObject:textDisplayDescriptor] ;
@@ -212,6 +215,12 @@
   [mTabBarView setTarget:self] ;
   [mTabBarView setChangeSourceTabAction:@selector (changeSelectedSourceViewAction:)] ;
   [mTabBarView setRemoveSourceTabAction:@selector (removeSelectedSourceViewAction:)] ;
+//---
+  mRulerViewForBuildOutput = [[OC_GGS_RulerViewForBuildOutput alloc] init] ;
+  [mDetailedIssueScrollView setVerticalRulerView:mRulerViewForBuildOutput] ;
+  [mDetailedIssueScrollView setHasVerticalRuler:YES] ;
+  [mDetailedIssueScrollView.verticalRulerView setRuleThickness:12.0] ;
+  [mDetailedIssueScrollView setRulersVisible:YES] ;
 //---
   [self displayIssueDetailedMessage:nil] ;
 //---
@@ -244,30 +253,6 @@
     toObject:self
     withKeyPath:@"mBuildTaskIsRunning"
     options:negateTransformer    
-  ] ;
-  [mErrorCountTextField
-    bind:@"hidden"
-    toObject:self
-    withKeyPath:@"mBuildTaskIsRunning"
-    options:nil    
-  ] ;
-  [mErrorCountTextField
-    bind:@"value"
-    toObject:self
-    withKeyPath:@"mErrorCountString"
-    options:nil    
-  ] ;
-  [mWarningCountTextField
-    bind:@"hidden"
-    toObject:self
-    withKeyPath:@"mBuildTaskIsRunning"
-    options:nil    
-  ] ;
-  [mWarningCountTextField
-    bind:@"value"
-    toObject:self
-    withKeyPath:@"mWarningCountString"
-    options:nil    
   ] ;
 //--- Open tabs
   key = [NSString stringWithFormat:@"TABS:%@", self.fileURL.path] ;
@@ -306,9 +291,11 @@
   #endif
   [super removeWindowController:inWindowController] ;
 //---
+  [mDocumentData detachFromCocoaDocument] ;
+//---
   NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
   for (OC_GGS_TextDisplayDescriptor * tdd in sourceDisplayArray) {
-    [tdd detachFromSyntaxColoringObject] ;
+    [tdd detach] ;
   }
 }
 
@@ -848,8 +835,14 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  [self setDocumentIssueArray:[NSArray array]] ;
+  [self saveAllDocuments:nil] ;
   mBufferedOutputData = [NSMutableData new] ;
+  mWarningCountTextField.stringValue = @"" ;
+  mWarningCount = 0 ;
+  mErrorCountTextField.stringValue = @"" ;
+  mErrorCount = 0 ;
+  mIssueArray = [NSMutableArray new] ;
+  [mRulerViewForBuildOutput setIssueArray:mIssueArray] ;
   mBuildTask = [[OC_GGS_BuildTask alloc] initWithDocument:self] ;
   self.mBuildTaskIsRunning = YES ;
 //---
@@ -870,10 +863,53 @@
 
 //---------------------------------------------------------------------------*
 
+- (void) enterIssue: (NSString *) inIssueMessage
+         isError: (BOOL) inIsError
+         locationInOutputData: (NSInteger) inLocationInOutputData {
+  NSLog (@"inIssueMessage '%@'", inIssueMessage) ;
+  NSArray * components = [inIssueMessage componentsSeparatedByString:@"\n"] ;
+  NSString * issuePath = nil ;
+  NSInteger issueLine = 0 ;
+  NSInteger issueColumn = 0 ;
+  if (components.count > 1) {
+    NSArray * issueLocationArray = [[components objectAtIndex:0] componentsSeparatedByString:@":"] ;
+    if (issueLocationArray.count > 3) {
+      issuePath = [issueLocationArray objectAtIndex:0] ;
+      NSLog (@"issuePath '%@'", issuePath) ;
+      issueLine = [[issueLocationArray objectAtIndex:1] integerValue] ;
+      NSLog (@"issueLine '%ld'", issueLine) ;
+      issueColumn = [[issueLocationArray objectAtIndex:2] integerValue] ;
+      NSLog (@"issueColumn '%ld'", issueColumn) ;
+    }
+  }
+  PMIssueDescriptor * issue = [[PMIssueDescriptor alloc]
+    initWithMessage:inIssueMessage
+    URL:[NSURL fileURLWithPath:issuePath]
+    line:issueLine
+    column:issueColumn
+    isError:inIsError
+    locationInOutputData:inLocationInOutputData
+  ] ;
+  [mIssueArray addObject:issue] ;
+  [mRulerViewForBuildOutput setIssueArray:mIssueArray] ;
+//  NSString * issueInformation = [components lastObject] ;
+//  NSLog (@"issueInformation '%@'", issueInformation) ;
+//---
+  if (inIsError) {
+    mErrorCount ++ ;
+    mErrorCountTextField.stringValue = [NSString stringWithFormat:@"%lu", mErrorCount] ;
+  }else{
+    mWarningCount ++ ;
+    mWarningCountTextField.stringValue = [NSString stringWithFormat:@"%lu", mWarningCount] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
 static const utf32 COCOA_MESSAGE_ID = TO_UNICODE (1) ;
 //static const utf32 COCOA_REWRITE_SUCCESS_ID = TO_UNICODE (2) ;
-//static const utf32 COCOA_WARNING_ID = TO_UNICODE (3) ;
-//static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
+static const utf32 COCOA_WARNING_ID = TO_UNICODE (3) ;
+static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 
 //---------------------------------------------------------------------------*
 
@@ -930,15 +966,33 @@ static const utf32 COCOA_MESSAGE_ID = TO_UNICODE (1) ;
       default: break ;
       }
     }
-    [outputAttributedString
-      appendAttributedString:[[NSAttributedString alloc]
-        initWithString:[component substringFromIndex:idx]
-        attributes:componentAttributeDictionary
-      ]
-    ] ;
+    NSString * s = [component substringFromIndex:idx] ;
+    if (s.length > 0) {
+      if ([s characterAtIndex:0] == COCOA_WARNING_ID) {
+        s = [s substringFromIndex:1] ;
+        [self
+          enterIssue:s
+          isError:NO
+          locationInOutputData:mRawOutputTextView.textStorage.length + outputAttributedString.length
+        ] ;
+      }else if ([s characterAtIndex:0] == COCOA_ERROR_ID) {
+        s = [s substringFromIndex:1] ;
+        [self
+          enterIssue:s
+          isError:YES
+          locationInOutputData:mRawOutputTextView.textStorage.length + outputAttributedString.length
+        ] ;
+      }
+      [outputAttributedString
+        appendAttributedString:[[NSAttributedString alloc]
+          initWithString:s
+          attributes:componentAttributeDictionary
+        ]
+      ] ;
+    }
   }
   [mRawOutputTextView.textStorage appendAttributedString:outputAttributedString] ;
-  [mRawOutputTextView scrollRangeToVisible:NSMakeRange(mRawOutputTextView.textStorage.length, 0)] ;
+  [mRawOutputTextView scrollRangeToVisible:NSMakeRange (mRawOutputTextView.textStorage.length, 0)] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1235,26 +1289,6 @@ static const utf32 COCOA_MESSAGE_ID = TO_UNICODE (1) ;
 //---
   NSString * selectedString = [sourceString substringWithRange:selection] ;
   [self findOrAddNewTabForFile:selectedString] ;
-}
-
-//---------------------------------------------------------------------------*
-
-#pragma mark Issue Array
-
-//---------------------------------------------------------------------------*
-
-- (void) setDocumentIssueArray: (NSArray *) issueArray {
-  [mIssueArrayController setContent:issueArray.copy] ;
-  NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
-  for (OC_GGS_TextDisplayDescriptor * tdd in sourceDisplayArray) {
-    [tdd setTextDisplayIssueArray:issueArray.copy] ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-- (NSArray *) documentIssueArray {
-  return mIssueArrayController.arrangedObjects ;
 }
 
 //---------------------------------------------------------------------------*

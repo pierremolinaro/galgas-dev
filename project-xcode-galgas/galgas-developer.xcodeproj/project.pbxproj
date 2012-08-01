@@ -126,6 +126,8 @@
 		CF4ED38710D9256F00B4F6AA /* PMMutableStringDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37C10D9256F00B4F6AA /* PMMutableStringDebugCategory.m */; };
 		CF4ED38810D9256F00B4F6AA /* PMPointerArrayDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED37E10D9256F00B4F6AA /* PMPointerArrayDebugCategory.m */; };
 		CF4ED38910D9256F00B4F6AA /* PMSetDebugCategory.m in Sources */ = {isa = PBXBuildFile; fileRef = CF4ED38010D9256F00B4F6AA /* PMSetDebugCategory.m */; };
+		CF51F02315C9200E00387A48 /* PMDebug.xib in Resources */ = {isa = PBXBuildFile; fileRef = CF51F02115C9200E00387A48 /* PMDebug.xib */; };
+		CF51F02715C9201800387A48 /* PMDebug.m in Sources */ = {isa = PBXBuildFile; fileRef = CF51F02615C9201800387A48 /* PMDebug.m */; };
 		CF5610A5137B32C30007E1BC /* typeComparisonResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5610A2137B32C30007E1BC /* typeComparisonResult.cpp */; };
 		CF5610A6137B32C30007E1BC /* typeComparisonResult.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5610A2137B32C30007E1BC /* typeComparisonResult.cpp */; };
 		CF5719C81275901A00AAB8BF /* templateAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF5719C01275901A00AAB8BF /* templateAnalysis.cpp */; };
@@ -261,6 +263,7 @@
 		CF9BA5FE14824EEB009DF1C8 /* OC_GGS_TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BA5FD14824EEB009DF1C8 /* OC_GGS_TextView.m */; };
 		CF9BA6021482733F009DF1C8 /* OC_GGS_Scroller.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BA6011482733F009DF1C8 /* OC_GGS_Scroller.m */; };
 		CF9BA60514827E3B009DF1C8 /* PMErrorOrWarningDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BA60414827E3A009DF1C8 /* PMErrorOrWarningDescriptor.m */; };
+		CF9DE67E15C8766700D44EE3 /* OC_GGS_RulerViewForBuildOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9DE67D15C8766600D44EE3 /* OC_GGS_RulerViewForBuildOutput.m */; };
 		CF9E55FC0FF5372D007692D1 /* OC_Token.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9E55FA0FF5372D007692D1 /* OC_Token.m */; };
 		CF9FB045127A0A0200335160 /* C_galgas_class_inspector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9FB041127A0A0200335160 /* C_galgas_class_inspector.cpp */; };
 		CF9FB046127A0A0200335160 /* C_galgas_class_inspector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9FB041127A0A0200335160 /* C_galgas_class_inspector.cpp */; };
@@ -594,6 +597,9 @@
 		CF4ED37E10D9256F00B4F6AA /* PMPointerArrayDebugCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMPointerArrayDebugCategory.m; sourceTree = "<group>"; };
 		CF4ED37F10D9256F00B4F6AA /* PMSetDebugCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSetDebugCategory.h; sourceTree = "<group>"; };
 		CF4ED38010D9256F00B4F6AA /* PMSetDebugCategory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMSetDebugCategory.m; sourceTree = "<group>"; };
+		CF51F02215C9200E00387A48 /* English */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = English; path = English.lproj/PMDebug.xib; sourceTree = "<group>"; };
+		CF51F02515C9201800387A48 /* PMDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMDebug.h; sourceTree = "<group>"; };
+		CF51F02615C9201800387A48 /* PMDebug.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMDebug.m; sourceTree = "<group>"; };
 		CF5610A2137B32C30007E1BC /* typeComparisonResult.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = typeComparisonResult.cpp; sourceTree = "<group>"; };
 		CF5719C01275901A00AAB8BF /* templateAnalysis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = templateAnalysis.cpp; sourceTree = "<group>"; };
 		CF5719C11275901A00AAB8BF /* templateAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = templateAnalysis.h; sourceTree = "<group>"; };
@@ -696,6 +702,8 @@
 		CF9BA60414827E3A009DF1C8 /* PMErrorOrWarningDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMErrorOrWarningDescriptor.m; sourceTree = "<group>"; };
 		CF9BDF6B0585C5C900FC7DD7 /* galgasApplication.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = galgasApplication.icns; sourceTree = "<group>"; };
 		CF9BDF6C0585C5C900FC7DD7 /* galgasDocuments.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = galgasDocuments.icns; sourceTree = "<group>"; };
+		CF9DE67C15C8766600D44EE3 /* OC_GGS_RulerViewForBuildOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_RulerViewForBuildOutput.h; sourceTree = "<group>"; };
+		CF9DE67D15C8766600D44EE3 /* OC_GGS_RulerViewForBuildOutput.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_RulerViewForBuildOutput.m; sourceTree = "<group>"; };
 		CF9E55F90FF5372D007692D1 /* OC_Token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_Token.h; sourceTree = "<group>"; };
 		CF9E55FA0FF5372D007692D1 /* OC_Token.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_Token.m; sourceTree = "<group>"; };
 		CF9F4E14092A70FF0055C8C3 /* C_builtin_CLI_Options.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_builtin_CLI_Options.h; sourceTree = "<group>"; };
@@ -1280,6 +1288,9 @@
 		CFAD482E0591BCF700BF8381 /* cocoa_galgas */ = {
 			isa = PBXGroup;
 			children = (
+				CF51F02515C9201800387A48 /* PMDebug.h */,
+				CF51F02615C9201800387A48 /* PMDebug.m */,
+				CF51F02115C9200E00387A48 /* PMDebug.xib */,
 				CFFE6C8E14861DFB00FD9FF8 /* OC_GGS_Document.xib */,
 				CF06F5C51049592F005F03FA /* MainMenu.xib */,
 				CF82596F08536A130077AEAF /* I_Stop.tiff */,
@@ -1303,6 +1314,8 @@
 				CF82597608536A130077AEAF /* OC_GGS_PreferencesController.m */,
 				CFFCE7BB14686081009DB6D5 /* PMIssueDescriptor.h */,
 				CFFCE7BC14686081009DB6D5 /* PMIssueDescriptor.m */,
+				CF9DE67C15C8766600D44EE3 /* OC_GGS_RulerViewForBuildOutput.h */,
+				CF9DE67D15C8766600D44EE3 /* OC_GGS_RulerViewForBuildOutput.m */,
 				CFEE63DA147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.h */,
 				CFEE63DB147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.m */,
 				CFEE63DE147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.h */,
@@ -2092,6 +2105,7 @@
 				CF06F5CB1049592F005F03FA /* MainMenu.xib in Resources */,
 				CF83184C104A7A9200FDF2EC /* galgasUpdate.xib in Resources */,
 				CFFE6C9014861DFB00FD9FF8 /* OC_GGS_Document.xib in Resources */,
+				CF51F02315C9200E00387A48 /* PMDebug.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2509,6 +2523,8 @@
 				CFB697DF1483D47900BCAE41 /* PMIssueInRuler.m in Sources */,
 				CF3C17A814E97CCC0016A381 /* OC_GGS_BuildTask.m in Sources */,
 				CF59565C15C81988000E6B8B /* OC_GGS_DocumentData.m in Sources */,
+				CF9DE67E15C8766700D44EE3 /* OC_GGS_RulerViewForBuildOutput.m in Sources */,
+				CF51F02715C9201800387A48 /* PMDebug.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2550,6 +2566,14 @@
 				CF06F5C61049592F005F03FA /* English */,
 			);
 			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+		CF51F02115C9200E00387A48 /* PMDebug.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CF51F02215C9200E00387A48 /* English */,
+			);
+			name = PMDebug.xib;
 			sourceTree = "<group>";
 		};
 		CF83184A104A7A9200FDF2EC /* galgasUpdate.xib */ = {

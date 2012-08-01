@@ -45,7 +45,7 @@
 
 - (OC_GGS_Document *) documentUsedForDisplaying ;
 
-- (void) detachFromSyntaxColoringObject ;
+- (void) detach ;
 
 - (NSURL *) sourceURL ;
 

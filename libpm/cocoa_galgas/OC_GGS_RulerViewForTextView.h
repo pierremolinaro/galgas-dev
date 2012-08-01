@@ -37,6 +37,8 @@
 
 - (OC_GGS_RulerViewForTextView *) initWithDocument: (OC_GGS_Document *) inDocument ;
 
+- (void) detachFromCocoaDocument ;
+
 @end
 
 //---------------------------------------------------------------------------*

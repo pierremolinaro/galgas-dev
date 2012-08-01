@@ -183,6 +183,7 @@ local routine build_LIBPM_COCOA_GALGAS_group
 :
   @stringlist fileList [emptyList] ;
   append_m_h_files !?fileList !"OC_GGS_searchInFolders" ;
+  append_m_h_files !?fileList !"PMDebug" ;
   append_m_h_files !?fileList !"PMFontButton" ;
   append_m_h_files !?fileList !"OC_Token" ;
   append_m_h_files !?fileList !"OC_Lexique" ;
@@ -211,6 +212,13 @@ local routine build_LIBPM_COCOA_GALGAS_group
    !"English.lproj"
    !"MainMenu.xib"
    !?ioFileListForGroup
+  ;
+  enter_xib_in_group
+   !?ioXcodeProjectDescription
+   !"English.lproj"
+   !"PMDebug.xib"
+   !?ioFileListForGroup
+  ;
   ;
   enter_xib_in_group
    !?ioXcodeProjectDescription
@@ -749,6 +757,7 @@ local routine build_RESOURCES_for_resources_build_phase
   fileList += !inProjectName ;
   fileList += !inProjectName . "_debug" ;
   fileList += !"I_Stop.tiff" ;
+  fileList += !"PMDebug.xib" ;
   fileList += !"MainMenu.xib" ;
   fileList += !"OC_GGS_Document.xib" ;
   fileList += !"InfoPlist.strings" ;
@@ -773,6 +782,7 @@ local routine build_COCOA_APP_files_for_sources_build_phase
 :
   @stringlist fileList [emptyList] ;
   fileList += !"main.m" ;
+  fileList += !"PMDebug.m" ;
   fileList += !"PMCancelButtonForPanel.m" ;
   fileList += !"PMOkButtonForPanel.m" ;
   fileList += !"unicode_character_m.m" ;

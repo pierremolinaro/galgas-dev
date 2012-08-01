@@ -16,10 +16,36 @@
 #import "OC_GGS_DocumentData.h"
 #import "OC_GGS_Document.h"
 #import "OC_GGS_PreferencesController.h"
+#import "PMDebug.h"
 
 //---------------------------------------------------------------------------*
 
 @implementation OC_GGS_TextView
+
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//       I N I T                                                             *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (id) initWithFrame: (NSRect) inFrame {
+  self = [super initWithFrame:inFrame] ;
+  if (self) {
+    #ifdef DEBUG_MESSAGES
+      NSLog (@"%s", __PRETTY_FUNCTION__) ;
+    #endif
+    noteObjectAllocation (self) ;
+  }
+  return self;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) finalize {
+  noteObjectDeallocation (self) ;
+  [super finalize] ;
+}
 
 //---------------------------------------------------------------------------*
 
