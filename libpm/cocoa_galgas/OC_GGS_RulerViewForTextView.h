@@ -28,7 +28,7 @@
 
 @interface OC_GGS_RulerViewForTextView : NSRulerView {
   @private NSArray * mIssueArray ; // Array of PMErrorOrWarningDescriptor
-  @private NSArray * mBulletArray ; // Array of PMIssueInRuler
+  @private NSMutableArray * mBulletArray ; // Of PMIssueInRuler
 }
 
 - (OC_GGS_RulerViewForTextView *) init ;

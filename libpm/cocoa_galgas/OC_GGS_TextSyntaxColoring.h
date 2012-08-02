@@ -16,7 +16,8 @@
   @private NSMutableSet * mTextDisplayDescriptorSet ; // Of OC_GGS_TextDisplayDescriptor
   @private NSTextStorage * mSourceTextStorage ;
   @private OC_Lexique * mTokenizer ;
-  @private NSArray * mIssueArray ;
+  @private NSMutableArray * mIssueArray ; // Of PMErrorOrWarningDescriptor
+  
 
   @private double mMaxAscender ; // Only mMaxAscender is observable
   @private double mMaxLeadingMinusDescender ; // leading - descender (because descender is < 0)
@@ -73,6 +74,8 @@
 
 - (NSMenu *) indexMenuForRange: (NSRange) inSelectedRange
              textDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inTextDisplayDescriptor ;
+
+- (NSUInteger) displayDescriptorCount ;
 
 //--- RESERVED to OC_GGS_TextDisplayDescriptor
 - (void) addDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor ;

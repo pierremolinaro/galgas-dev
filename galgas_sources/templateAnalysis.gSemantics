@@ -1276,7 +1276,7 @@ abstract method @templateInstructionAST templateInstructionAnalysis
 #---------------------------------------------------------------------------*
 
 routine templateInstructionListAnalysis
-  ??@templateAnalysisContext unused inAnalysisContext
+  ??@templateAnalysisContext inAnalysisContext
   ??@templateInstructionListAST inInstructionList
   ?!@templateInstructionListForGeneration ioInstructionList
 :
