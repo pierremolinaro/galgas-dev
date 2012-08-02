@@ -18,7 +18,7 @@
 //---------------------------------------------------------------------------*
 
 @interface OC_GGS_DocumentData : NSObject {
-
+  @private NSMutableArray * mIssueArray ; // Of PMErrorOrWarningDescriptor
 //--- Document encoding
   @private NSStringEncoding mFileEncoding ;
 }
@@ -29,18 +29,20 @@
 
 + (void) saveAllDocuments ;
 
++ (void) cocoaDocumentWillClose ;
+
 + (OC_GGS_DocumentData *) findOrAddDataForDocumentURL: (NSURL *) inDocumentURL
                           forCocoaDocument: (OC_GGS_Document *) inDocument ;
 
 - (OC_GGS_TextDisplayDescriptor *) newSourceDisplayDescriptorForDocument: (OC_GGS_Document *) inDocumentUsedForDisplaying ;
-
-- (void) detachFromCocoaDocument ;
 
 - (NSString *) sourceString ;
 
 - (void) replaceSourceStringWithString: (NSString *) inString ;
 
 - (BOOL) performSaveToURL: (NSURL *) inAbsoluteURL ;
+
++ (void) broadcastIssueArray: (NSArray *) inIssueArray ;
 @end
 
 //---------------------------------------------------------------------------*

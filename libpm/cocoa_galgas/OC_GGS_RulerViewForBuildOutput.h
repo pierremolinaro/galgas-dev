@@ -11,11 +11,20 @@
 
 //---------------------------------------------------------------------------*
 
+@class OC_GGS_Document ;
+
+//---------------------------------------------------------------------------*
+
 @interface OC_GGS_RulerViewForBuildOutput : NSRulerView {
   @private NSArray * mIssueArray ;
+  @private OC_GGS_Document * mDocument ;
 }
 
+- (id) initWithDocument: (OC_GGS_Document *) inDocument ;
+
 - (void) setIssueArray: (NSArray *) inIssueArray ;
+
+- (void) detach ;
 @end
 
 //---------------------------------------------------------------------------*

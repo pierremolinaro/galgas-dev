@@ -5,44 +5,62 @@
 //  Created by Pierre Molinaro on 27/11/11.
 //  Copyright (c) 2011 IRCCyN. All rights reserved.
 //
+//---------------------------------------------------------------------------*
 
 #import "PMErrorOrWarningDescriptor.h"
+#import "PMDebug.h"
+
+//---------------------------------------------------------------------------*
 
 @implementation PMErrorOrWarningDescriptor
 
+//---------------------------------------------------------------------------*
+
 - (PMErrorOrWarningDescriptor *) initWithMessage: (NSString *) inMessage
                                  location: (NSUInteger) inLocation
-                                 isError: (BOOL) inIsError
-                                 originalIssue: (PMIssueDescriptor *) inOriginalIssue {
+                                 isError: (BOOL) inIsError {
   self = [self init] ;
   if (self) {
+    noteObjectAllocation (self) ;
     mMessage = inMessage.copy ;
     mLocation = inLocation ;
     mIsError = inIsError ;
-    mOriginalIssue = inOriginalIssue ;
   }
   return self ;
 }
 
-- (BOOL) isInRange: (NSRange) inRange {
-  return (mLocation >= inRange.location) && (mLocation < (inRange.location + inRange.length)) ;
+//---------------------------------------------------------------------------*
+
+- (void) FINALIZE_OR_DEALLOC {
+  noteObjectDeallocation (self) ;
+  macroSuperFinalize ;
 }
+
+//---------------------------------------------------------------------------*
+
+- (BOOL) isInRange: (NSRange) inRange {
+  return NSLocationInRange (mLocation, inRange) ;
+}
+
+//---------------------------------------------------------------------------*
 
 - (NSString *) message {
   return mMessage ;
 }
 
+//---------------------------------------------------------------------------*
+
 - (BOOL) isError {
   return mIsError ;
 }
+
+//---------------------------------------------------------------------------*
 
 - (NSUInteger) location {
   return mLocation ;
 }
 
-- (PMIssueDescriptor *) originalIssue {
-  return mOriginalIssue ;
-}
+//---------------------------------------------------------------------------*
 
 - (void) updateLocationForPreviousRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength {
@@ -50,5 +68,7 @@
     mLocation += (NSUInteger) inChangeInLength ;
   }
 }
+
+//---------------------------------------------------------------------------*
 
 @end

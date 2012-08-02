@@ -9,9 +9,9 @@
 
 #import "OC_GGS_Scroller.h"
 #import "OC_GGS_TextView.h"
-#import "PMErrorOrWarningDescriptor.h"
 #import "PMCocoaCallsDebug.h"
 #import "PMDebug.h"
+#import "PMErrorOrWarningDescriptor.h"
 
 //---------------------------------------------------------------------------*
 
@@ -43,6 +43,13 @@
 
 //---------------------------------------------------------------------------*
 
+- (void) setIssueArray: (NSArray *) inIssueArray {
+  mIssueArray = inIssueArray.copy ;
+  [self setNeedsDisplay:YES] ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (void) drawRect:(NSRect) inRect {
   [super drawRect:inRect] ;
 //---
@@ -54,7 +61,6 @@
   const NSRect textBounds = textView.bounds ;
 //  NSLog (@"textBounds %g, %g, %g, %g", textBounds.origin.x, textBounds.origin.y, textBounds.size.width, textBounds.size.height) ;
   // NSLog (@"textView %@", textView) ;
-  NSArray * issueArray = textView.issueArray ;
   NSLayoutManager * lm = textView.layoutManager ;
   NSString * sourceString = textView.string ;
   const NSUInteger sourceStringLength = sourceString.length ;
@@ -64,8 +70,8 @@
   //--- Error or warning at this line ?
     BOOL hasError = NO ;
     BOOL hasWarning = NO ;
-    for (NSUInteger i=0 ; (i<issueArray.count) && ! hasError ; i++) {
-      PMErrorOrWarningDescriptor * issue = [issueArray objectAtIndex:i HERE] ;
+    for (NSUInteger i=0 ; (i<mIssueArray.count) && ! hasError ; i++) {
+      PMErrorOrWarningDescriptor * issue = [mIssueArray objectAtIndex:i HERE] ;
       if ([issue isInRange:lineRange]) {
         hasError = issue.isError ;
         if (! issue.isError) {

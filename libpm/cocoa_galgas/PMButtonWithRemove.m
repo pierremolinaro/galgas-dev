@@ -9,10 +9,35 @@
 
 #import "PMButtonWithRemove.h"
 #import "PMTabBarView.h"
+#import "PMDebug.h"
 
 //---------------------------------------------------------------------------*
 
 @implementation PMButtonWithRemove
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//       I N I T                                                             *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (id) initWithFrame: (NSRect) inFrame {
+  self = [super initWithFrame:inFrame] ;
+  if (self) {
+    #ifdef DEBUG_MESSAGES
+      NSLog (@"%s", __PRETTY_FUNCTION__) ;
+    #endif
+    noteObjectAllocation (self) ;
+  }
+  return self;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) FINALIZE_OR_DEALLOC {
+  noteObjectDeallocation (self) ;
+  macroSuperFinalize ;
+}
 
 //---------------------------------------------------------------------------*
 

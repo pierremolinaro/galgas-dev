@@ -119,6 +119,12 @@ void showAllocationStatsWindow (void) {
     withKeyPath:@"mDisplayFilter"
     options:nil
   ] ;
+  #ifndef NS_AUTOMATED_REFCOUNT_UNAVAILABLE
+    mCollectExhaustivelyButton.target = self ;
+    mCollectExhaustivelyButton.action = @selector (collectExhaustively:) ;
+  #else
+    mCollectExhaustivelyButton.hidden = YES ;
+  #endif
 }
 
 //----------------------------------------------------------------------------*
@@ -153,9 +159,42 @@ void showAllocationStatsWindow (void) {
       order:NSUIntegerMax
       modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]
     ] ;
+    #ifndef NS_AUTOMATED_REFCOUNT_UNAVAILABLE
+      mRefreshTimer = [NSTimer
+        timerWithTimeInterval:1.0
+        target:self
+        selector:@selector (refreshTimerDidFire:)
+        userInfo:nil
+        repeats:NO
+      ] ;
+      [[NSRunLoop currentRunLoop]
+        addTimer:mRefreshTimer
+        forMode:NSDefaultRunLoopMode
+      ] ;
+    #endif
   }
 }
 
+//----------------------------------------------------------------------------*
+//    collectExhaustively:                                                    *
+//----------------------------------------------------------------------------*
+
+#ifndef NS_AUTOMATED_REFCOUNT_UNAVAILABLE
+  - (void) collectExhaustively: (id) inSender {
+    [[NSGarbageCollector defaultCollector] collectExhaustively] ;
+  }
+#endif
+
+//----------------------------------------------------------------------------*
+//    refreshTimerDidFire:                                                    *
+//----------------------------------------------------------------------------*
+
+#ifndef NS_AUTOMATED_REFCOUNT_UNAVAILABLE
+  - (void) refreshTimerDidFire: (NSTimer *) inTimer {
+    mRefreshTimer = nil ;
+    [[NSGarbageCollector defaultCollector] collectExhaustively] ;
+  }
+#endif
 
 //----------------------------------------------------------------------------*
 //    didChangeValueForKey:                                                   *

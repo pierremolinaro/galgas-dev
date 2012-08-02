@@ -14,7 +14,6 @@
 #import "PMCocoaCallsDebug.h"
 #import "OC_GGS_PreferencesController.h"
 #import "PMIssueDescriptor.h"
-#import "PMErrorOrWarningDescriptor.h"
 #import "OC_GGS_DocumentData.h"
 #import "PMDebug.h"
 
@@ -39,23 +38,7 @@
 //---------------------------------------------------------------------------*
 
 @synthesize documentData ;
-
-//---------------------------------------------------------------------------*
-//                                                                           *
-//       I N I T                                                             *
-//                                                                           *
-//---------------------------------------------------------------------------*
-
-- (id) init {
-  self = [super init] ;
-  if (self) {
-    #ifdef DEBUG_MESSAGES
-      NSLog (@"%s", __PRETTY_FUNCTION__) ;
-    #endif
-    noteObjectAllocation (self) ;
-  }
-  return self;
-}
+@synthesize isDirty ;
 
 //---------------------------------------------------------------------------*
 
@@ -134,12 +117,14 @@
   #endif
   self = [super init] ;
   if (self) {
+    noteObjectAllocation (self) ;
     mTokenizer = inTokenizer ;
     documentData = inDocumentData ;
     mSourceTextStorage = [NSTextStorage new] ;
     mTokenArray = [NSMutableArray new] ;
     mTemplateTextAttributeDictionary = [NSMutableDictionary new] ;
     mUndoManager = [NSUndoManager new] ;
+    mTextDisplayDescriptorSet = [NSMutableSet new] ;
   //---
     [[NSNotificationCenter defaultCenter]
       addObserver:self
@@ -150,16 +135,9 @@
   //---
     [[NSNotificationCenter defaultCenter]
       addObserver:self
-      selector:@selector(myProcessEditing:)
+      selector:@selector(textStorageDidProcessEditingNotification:)
       name: NSTextStorageDidProcessEditingNotification
       object:mSourceTextStorage
-    ] ;
-  //---
-    [mTokenizer
-      addObserver:self
-      forKeyPath:@"menuForEntryPopUpButton"
-      options:0
-      context:NULL
     ] ;
   //--------------------------------------------------- Add foreground color observers
     NSUserDefaultsController * udc = [NSUserDefaultsController sharedUserDefaultsController] ;
@@ -291,6 +269,31 @@
 
 //---------------------------------------------------------------------------*
 
+- (void) detach {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  [[NSNotificationCenter defaultCenter]
+    removeObserver:self
+    name:NSUndoManagerCheckpointNotification
+    object:mUndoManager
+  ] ;
+//---
+  [[NSNotificationCenter defaultCenter]
+    removeObserver:self
+    name: NSTextStorageDidProcessEditingNotification
+    object:mSourceTextStorage
+  ] ;
+//---
+//  NSLog (@"%s:observationInfo %@", __PRETTY_FUNCTION__, (id) self.observationInfo) ;
+  documentData = nil ;
+  [mTokenizer detach] ;
+  mTokenizer = nil ;
+}
+
+
+//---------------------------------------------------------------------------*
+
 - (NSTextStorage *) textStorage {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
@@ -338,15 +341,6 @@
 
 //---------------------------------------------------------------------------*
 
-- (NSMenu *) menuForEntryPopUpButton {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  return mTokenizer.menuForEntryPopUpButton ;
-}
-
-//---------------------------------------------------------------------------*
-
 - (NSArray *) tokenArray {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
@@ -375,7 +369,7 @@
   #endif
   if ((mTokenizer != NULL) && ([mSourceTextStorage length] > 0)) {
     [self refreshRulers] ;
-  //--- Remove observer so that myProcessEditing will not be called at the end of edition
+  //--- Remove observer so that textStorageDidProcessEditingNotification will not be called at the end of edition
     [[NSNotificationCenter defaultCenter]
       removeObserver:self
       name: NSTextStorageDidProcessEditingNotification
@@ -436,7 +430,7 @@
   //--- Resinstall observer
     [[NSNotificationCenter defaultCenter]
       addObserver:self
-      selector:@selector(myProcessEditing:)
+      selector:@selector(textStorageDidProcessEditingNotification:)
       name: NSTextStorageDidProcessEditingNotification
       object:mSourceTextStorage
     ] ;
@@ -476,35 +470,6 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) setIssueArray: (NSArray *) inIssueArray {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-/*  NSMutableArray * filteredArray = [NSMutableArray new] ;
-  for (PMIssueDescriptor * issue in inIssueArray) {
-    if ([issue.issueURL isEqual:documentData.fileURL]) {
-      const NSRange lineRange = [self rangeForLine:issue.issueLine] ;
-      [filteredArray
-        addObject:[[PMErrorOrWarningDescriptor alloc]
-          initWithMessage:issue.issueMessage
-          location:lineRange.location + issue.issueColumn - 1
-          isError:issue.errorKind
-          originalIssue:issue
-        ]
-      ] ;
-      // NSLog (@"%c", [mSourceTextStorage.string characterAtIndex:lineRange.location + issue.issueColumn - 1 HERE]) ;
-    }
-  }
-//---
-  mIssueArray = filteredArray ;
-//---
-  for (OC_GGS_TextDisplayDescriptor * textDisplay in mTextDisplayDescriptorSet) {
-    [textDisplay setTextDisplayIssueArray:mIssueArray] ; 
-  }*/
-}  
-
-//---------------------------------------------------------------------------*
-
 - (void) updateIssuesForEditedRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength {
   #ifdef DEBUG_MESSAGES
@@ -513,8 +478,8 @@
   // NSLog (@"inEditedRange %lu:%lu, inChangeInLength %ld", inEditedRange.location, inEditedRange.length, inChangeInLength) ;
   const NSRange previousRange = {inEditedRange.location, inEditedRange.length - inChangeInLength} ;
   NSMutableArray * newIssueArray = [NSMutableArray new] ;
-  for (PMErrorOrWarningDescriptor * issue in mIssueArray) {
-    if (! [issue isInRange:previousRange]) {
+  for (PMIssueDescriptor * issue in mIssueArray) {
+    if (! NSLocationInRange(issue.locationInOutputData, previousRange)) {
       [issue updateLocationForPreviousRange:previousRange changeInLength:inChangeInLength] ;
       [newIssueArray addObject:issue] ;
     }
@@ -522,9 +487,19 @@
 //---
   mIssueArray = newIssueArray ;
 //---
-/*  for (OC_GGS_TextDisplayDescriptor * textDisplay in mTextDisplayDescriptorSet) {
+  for (OC_GGS_TextDisplayDescriptor * textDisplay in mTextDisplayDescriptorSet) {
     [textDisplay setTextDisplayIssueArray:mIssueArray] ; 
-  }*/
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) setIssueArray: (NSArray *) inIssueArray {
+  mIssueArray = inIssueArray.copy ;
+  // NSLog (@"mIssueArray %@", mIssueArray) ;
+  for (OC_GGS_TextDisplayDescriptor * textDisplay in mTextDisplayDescriptorSet) {
+    [textDisplay setTextDisplayIssueArray:mIssueArray] ; 
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -612,16 +587,42 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) myProcessEditing: (NSNotification *) inNotification {
+- (void) textStorageDidProcessEditingNotification: (NSNotification *) inNotification {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   const NSRange editedRange = mSourceTextStorage.editedRange ;
   const NSInteger changeInLength = mSourceTextStorage.changeInLength ;
-    // NSLog (@"editedRange [%lu, %lu], changeInLength %ld", editedRange.location, editedRange.length, changeInLength) ;
   [self updateSyntaxColoringForEditedRange:editedRange changeInLength:changeInLength] ;
   [self updateIssuesForEditedRange:editedRange changeInLength:changeInLength] ;
-    // NSLog (@"%@", self.textStorage.string) ;
+//---
+  NSMenu * menu = mTokenizer.menuForEntryPopUpButton ;
+  for (OC_GGS_TextDisplayDescriptor * tdd in mTextDisplayDescriptorSet) {
+    [tdd populatePopUpButtonWithMenu:menu] ;
+  }
+//--- If there is no enabled timer, create one
+  if (nil == mTimerForAutosaving) {
+    mTimerForAutosaving = [NSTimer
+      timerWithTimeInterval:5.0
+      target:self
+      selector:@selector (autosaveTimerDidFire:)
+      userInfo:nil
+      repeats:NO
+    ] ;
+    [[NSRunLoop currentRunLoop]
+      addTimer:mTimerForAutosaving
+      forMode:NSDefaultRunLoopMode
+    ] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) autosaveTimerDidFire: (NSTimer *) inTimer {
+  mTimerForAutosaving = nil ;
+  if (isDirty) {
+    [documentData performSaveToURL:nil] ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -633,7 +634,6 @@
     }    
   }
 }
-
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -802,22 +802,10 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   //NSArray * redoStack = [mUndoManager valueForKey:@"_redoStack"] ;
   //NSLog (@"undoManagerCheckPointNotification: undoStack %lu, redoStack %lu", undoStack.count, redoStack.count) ;
 //---
-  [self willChangeValueForKey:@"isDirty"] ;
-//  mIsDirty = mUndoManager.canUndo || mUndoManager.canRedo ;
-  mIsDirty = (mSavePointUndoStackCount != undoStack.count) ;
-  [self didChangeValueForKey:@"isDirty"] ;
-/*  for (OC_GGS_TextDisplayDescriptor * textDisplayDescriptor in mTextDisplayDescriptorSet) {
-    [textDisplayDescriptor noteUndoManagerCheckPointNotification] ;
-  } */
-}
-
-//---------------------------------------------------------------------------*
-
-- (BOOL) isDirty {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  return mIsDirty ;
+  isDirty = (mSavePointUndoStackCount != undoStack.count) ;
+  for (OC_GGS_TextDisplayDescriptor * textDisplayDescriptor in mTextDisplayDescriptorSet) {
+    textDisplayDescriptor.isDirty = isDirty ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -855,10 +843,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s, inKeyPath '%@'", __PRETTY_FUNCTION__, inKeyPath) ;
   #endif
-  if ([inKeyPath isEqualToString:@"menuForEntryPopUpButton"]) {
-    [self willChangeValueForKey:@"menuForEntryPopUpButton"] ;
-    [self  didChangeValueForKey:@"menuForEntryPopUpButton"] ;
-  }else if (mTokenizer != NULL) {
+  if (mTokenizer != NULL) {
     BOOL lineHeightDidChange = NO ;
     NSColor * color = nil ;
     NSMutableDictionary * d = nil ;
@@ -1155,6 +1140,20 @@ static NSInteger numericSort (NSString * inOperand1,
   }
 //---
   return menu ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) addDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor {
+  [mTextDisplayDescriptorSet addObject:inDisplayDescriptor] ;
+  NSMenu * menu = mTokenizer.menuForEntryPopUpButton ;
+  [inDisplayDescriptor populatePopUpButtonWithMenu:menu] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) removeDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor {
+  [mTextDisplayDescriptorSet removeObject:inDisplayDescriptor] ;
 }
 
 //---------------------------------------------------------------------------*

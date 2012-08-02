@@ -278,7 +278,6 @@
 									<string key="NSFrame">{{0, 279}, {521, 11}}</string>
 									<reference key="NSSuperview" ref="694864762"/>
 									<reference key="NSWindow"/>
-									<reference key="NSNextKeyView"/>
 									<int key="NSsFlags">257</int>
 									<reference key="NSTarget" ref="694864762"/>
 									<string key="NSAction">_doScroller:</string>
@@ -462,10 +461,10 @@
 						<object class="NSButton" id="477594254">
 							<reference key="NSNextResponder" ref="211121235"/>
 							<int key="NSvFlags">268</int>
-							<string key="NSFrame">{{19, 333}, {225, 18}}</string>
+							<string key="NSFrame">{{19, 333}, {122, 18}}</string>
 							<reference key="NSSuperview" ref="211121235"/>
 							<reference key="NSWindow"/>
-							<reference key="NSNextKeyView" ref="203767798"/>
+							<reference key="NSNextKeyView" ref="1055264527"/>
 							<string key="NSReuseIdentifierKey">_NS:9</string>
 							<bool key="NSEnabled">YES</bool>
 							<object class="NSButtonCell" key="NSCell" id="255990638">
@@ -579,6 +578,30 @@
 								<reference key="NSTextColor" ref="175780943"/>
 							</object>
 						</object>
+						<object class="NSButton" id="1055264527">
+							<reference key="NSNextResponder" ref="211121235"/>
+							<int key="NSvFlags">268</int>
+							<string key="NSFrame">{{142, 326}, {105, 28}}</string>
+							<reference key="NSSuperview" ref="211121235"/>
+							<reference key="NSWindow"/>
+							<reference key="NSNextKeyView" ref="203767798"/>
+							<string key="NSReuseIdentifierKey">_NS:9</string>
+							<bool key="NSEnabled">YES</bool>
+							<object class="NSButtonCell" key="NSCell" id="242914037">
+								<int key="NSCellFlags">67239424</int>
+								<int key="NSCellFlags2">134348800</int>
+								<string key="NSContents">Collect</string>
+								<reference key="NSSupport" ref="26"/>
+								<string key="NSCellIdentifier">_NS:9</string>
+								<reference key="NSControlView" ref="1055264527"/>
+								<int key="NSButtonFlags">-2038284033</int>
+								<int key="NSButtonFlags2">129</int>
+								<string key="NSAlternateContents"/>
+								<string key="NSKeyEquivalent"/>
+								<int key="NSPeriodicDelay">200</int>
+								<int key="NSPeriodicInterval">25</int>
+							</object>
+						</object>
 					</array>
 					<string key="NSFrameSize">{532, 360}</string>
 					<reference key="NSSuperview"/>
@@ -659,6 +682,14 @@
 					<int key="connectionID">187</int>
 				</object>
 				<object class="IBConnectionRecord">
+					<object class="IBOutletConnection" key="connection">
+						<string key="label">mCollectExhaustivelyButton</string>
+						<reference key="source" ref="1001"/>
+						<reference key="destination" ref="1055264527"/>
+					</object>
+					<int key="connectionID">209</int>
+				</object>
+				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
 						<string key="label">makeKeyAndOrderFront:</string>
 						<reference key="source" ref="488945732"/>
@@ -727,6 +758,7 @@
 							<reference ref="336406046"/>
 							<reference ref="300812263"/>
 							<reference ref="203767798"/>
+							<reference ref="1055264527"/>
 						</array>
 						<reference key="parent" ref="488945732"/>
 					</object>
@@ -934,6 +966,19 @@
 						<reference key="object" ref="920445510"/>
 						<reference key="parent" ref="316229116"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">207</int>
+						<reference key="object" ref="1055264527"/>
+						<array class="NSMutableArray" key="children">
+							<reference ref="242914037"/>
+						</array>
+						<reference key="parent" ref="211121235"/>
+					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">208</int>
+						<reference key="object" ref="242914037"/>
+						<reference key="parent" ref="1055264527"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -961,6 +1006,8 @@
 				<boolean value="YES" key="178.IBNumberFormatterLocalizesFormatMetadataKey"/>
 				<string key="178.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="18.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="207.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="208.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="23.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="24.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="25.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -990,7 +1037,7 @@
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">206</int>
+			<int key="maxID">209</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -1000,6 +1047,7 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="mAllocationStatsWindow">NSWindow</string>
 						<string key="mAllocationStatsWindowVisibleAtLaunchCheckbox">NSButton</string>
+						<string key="mCollectExhaustivelyButton">NSButton</string>
 						<string key="mCurrentlyAllocatedObjectCountTextField">NSTextField</string>
 						<string key="mDebugMenu">NSMenu</string>
 						<string key="mDisplayFilterPopUpButton">NSPopUpButton</string>
@@ -1013,6 +1061,10 @@
 						</object>
 						<object class="IBToOneOutletInfo" key="mAllocationStatsWindowVisibleAtLaunchCheckbox">
 							<string key="name">mAllocationStatsWindowVisibleAtLaunchCheckbox</string>
+							<string key="candidateClassName">NSButton</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="mCollectExhaustivelyButton">
+							<string key="name">mCollectExhaustivelyButton</string>
 							<string key="candidateClassName">NSButton</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="mCurrentlyAllocatedObjectCountTextField">

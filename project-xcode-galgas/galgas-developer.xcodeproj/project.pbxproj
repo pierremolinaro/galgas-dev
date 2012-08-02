@@ -262,7 +262,6 @@
 		CF9950CF0FF14697006E6395 /* OC_Lexique.m in Sources */ = {isa = PBXBuildFile; fileRef = CFECE4650FEFA5270031D087 /* OC_Lexique.m */; };
 		CF9BA5FE14824EEB009DF1C8 /* OC_GGS_TextView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BA5FD14824EEB009DF1C8 /* OC_GGS_TextView.m */; };
 		CF9BA6021482733F009DF1C8 /* OC_GGS_Scroller.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BA6011482733F009DF1C8 /* OC_GGS_Scroller.m */; };
-		CF9BA60514827E3B009DF1C8 /* PMErrorOrWarningDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9BA60414827E3A009DF1C8 /* PMErrorOrWarningDescriptor.m */; };
 		CF9DE67E15C8766700D44EE3 /* OC_GGS_RulerViewForBuildOutput.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9DE67D15C8766600D44EE3 /* OC_GGS_RulerViewForBuildOutput.m */; };
 		CF9E55FC0FF5372D007692D1 /* OC_Token.m in Sources */ = {isa = PBXBuildFile; fileRef = CF9E55FA0FF5372D007692D1 /* OC_Token.m */; };
 		CF9FB045127A0A0200335160 /* C_galgas_class_inspector.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF9FB041127A0A0200335160 /* C_galgas_class_inspector.cpp */; };
@@ -293,6 +292,7 @@
 		CFB6E59A12788349000F1772 /* GALGAS_application.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6E59612788349000F1772 /* GALGAS_application.cpp */; };
 		CFB76EEB0E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB76EE50E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp */; };
 		CFB76EED0E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB76EE50E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp */; };
+		CFB7DF0715CAA898007EED0A /* PMErrorOrWarningDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB7DF0615CAA898007EED0A /* PMErrorOrWarningDescriptor.m */; };
 		CFB7E4B8127F2F7F005B9851 /* Carbon.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CFB7E4B7127F2F7F005B9851 /* Carbon.framework */; };
 		CFB8222D0BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */; };
 		CFB822310BC2D8DE009B1920 /* semanticsSLRgrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */; };
@@ -698,8 +698,6 @@
 		CF9BA5FD14824EEB009DF1C8 /* OC_GGS_TextView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_TextView.m; sourceTree = "<group>"; };
 		CF9BA6001482733F009DF1C8 /* OC_GGS_Scroller.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_Scroller.h; sourceTree = "<group>"; };
 		CF9BA6011482733F009DF1C8 /* OC_GGS_Scroller.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = OC_GGS_Scroller.m; sourceTree = "<group>"; };
-		CF9BA60314827E3A009DF1C8 /* PMErrorOrWarningDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMErrorOrWarningDescriptor.h; sourceTree = "<group>"; };
-		CF9BA60414827E3A009DF1C8 /* PMErrorOrWarningDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMErrorOrWarningDescriptor.m; sourceTree = "<group>"; };
 		CF9BDF6B0585C5C900FC7DD7 /* galgasApplication.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = galgasApplication.icns; sourceTree = "<group>"; };
 		CF9BDF6C0585C5C900FC7DD7 /* galgasDocuments.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = galgasDocuments.icns; sourceTree = "<group>"; };
 		CF9DE67C15C8766600D44EE3 /* OC_GGS_RulerViewForBuildOutput.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OC_GGS_RulerViewForBuildOutput.h; sourceTree = "<group>"; };
@@ -753,6 +751,8 @@
 		CFB6E59612788349000F1772 /* GALGAS_application.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GALGAS_application.cpp; sourceTree = "<group>"; };
 		CFB76EE50E8D7DA300F826A9 /* baseForXcodeProjectGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = baseForXcodeProjectGeneration.cpp; sourceTree = "<group>"; };
 		CFB76EE60E8D7DA300F826A9 /* baseForXcodeProjectGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = baseForXcodeProjectGeneration.h; sourceTree = "<group>"; };
+		CFB7DF0515CAA898007EED0A /* PMErrorOrWarningDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMErrorOrWarningDescriptor.h; sourceTree = "<group>"; };
+		CFB7DF0615CAA898007EED0A /* PMErrorOrWarningDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMErrorOrWarningDescriptor.m; sourceTree = "<group>"; };
 		CFB7E4B7127F2F7F005B9851 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsSLRgrammar.cpp; sourceTree = "<group>"; };
 		CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semanticsSLRgrammar.h; sourceTree = "<group>"; };
@@ -1330,10 +1330,10 @@
 				CF82597808536A130077AEAF /* OC_GGS_RulerViewForTextView.m */,
 				CF9BA6001482733F009DF1C8 /* OC_GGS_Scroller.h */,
 				CF9BA6011482733F009DF1C8 /* OC_GGS_Scroller.m */,
-				CF9BA60314827E3A009DF1C8 /* PMErrorOrWarningDescriptor.h */,
-				CF9BA60414827E3A009DF1C8 /* PMErrorOrWarningDescriptor.m */,
 				CFB697DD1483D47900BCAE41 /* PMIssueInRuler.h */,
 				CFB697DE1483D47900BCAE41 /* PMIssueInRuler.m */,
+				CFB7DF0515CAA898007EED0A /* PMErrorOrWarningDescriptor.h */,
+				CFB7DF0615CAA898007EED0A /* PMErrorOrWarningDescriptor.m */,
 				CF3C17A614E97CCC0016A381 /* OC_GGS_BuildTask.h */,
 				CF3C17A714E97CCC0016A381 /* OC_GGS_BuildTask.m */,
 				CF82596C08536A130077AEAF /* F_CocoaWrapperForGalgas.h */,
@@ -2519,12 +2519,12 @@
 				CFAD9C69147FA4D300B1B88A /* PMButtonWithRemove.m in Sources */,
 				CF9BA5FE14824EEB009DF1C8 /* OC_GGS_TextView.m in Sources */,
 				CF9BA6021482733F009DF1C8 /* OC_GGS_Scroller.m in Sources */,
-				CF9BA60514827E3B009DF1C8 /* PMErrorOrWarningDescriptor.m in Sources */,
 				CFB697DF1483D47900BCAE41 /* PMIssueInRuler.m in Sources */,
 				CF3C17A814E97CCC0016A381 /* OC_GGS_BuildTask.m in Sources */,
 				CF59565C15C81988000E6B8B /* OC_GGS_DocumentData.m in Sources */,
 				CF9DE67E15C8766700D44EE3 /* OC_GGS_RulerViewForBuildOutput.m in Sources */,
 				CF51F02715C9201800387A48 /* PMDebug.m in Sources */,
+				CFB7DF0715CAA898007EED0A /* PMErrorOrWarningDescriptor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

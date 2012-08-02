@@ -8,6 +8,9 @@
 
 #import <AppKit/AppKit.h>
 
-@interface OC_GGS_Scroller : NSScroller
+@interface OC_GGS_Scroller : NSScroller {
+   @private NSArray * mIssueArray ; // Of PMErrorOrWarningDescriptor
+}
 
+- (void) setIssueArray: (NSArray *) inIssueArray ;
 @end

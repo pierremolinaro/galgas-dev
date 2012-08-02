@@ -13,9 +13,9 @@
 @class OC_GGS_DocumentData ;
 
 @interface OC_GGS_TextSyntaxColoring : NSObject {
+  @private NSMutableSet * mTextDisplayDescriptorSet ; // Of OC_GGS_TextDisplayDescriptor
   @private NSTextStorage * mSourceTextStorage ;
   @private OC_Lexique * mTokenizer ;
-  @private BOOL mIsDirty ;
   @private NSArray * mIssueArray ;
 
   @private double mMaxAscender ; // Only mMaxAscender is observable
@@ -30,14 +30,22 @@
   @private NSMutableArray * mTokenArray ;
   @private NSMutableArray * mFontAttributesDictionaryArray ; // Array of OC_Token
   @private NSMutableDictionary * mTemplateTextAttributeDictionary ;
+  
+//--- Timer for autosaving
+  @private NSTimer * mTimerForAutosaving ;
 }
 
+@property (atomic, readonly) BOOL isDirty ;
 @property (strong, atomic, readonly) OC_GGS_DocumentData * documentData ;
 
 - (OC_GGS_TextSyntaxColoring *) initWithSourceString: (NSString *) inSource
                                 tokenizer: (OC_Lexique *) inTokenizer
                                 documentData: (OC_GGS_DocumentData *) inDocument
                                 issueArray: (NSArray *) inIssueArray ;
+
+- (void) detach ;
+
+- (void) setIssueArray: (NSArray *) inIssueArray ;
 
 - (NSTextStorage *) textStorage ;
 - (NSUndoManager *) undoManager ;
@@ -50,15 +58,11 @@
 - (NSArray *) tokenArray ;
 - (BOOL) selectionByWordSelectsAllCharactersForTokenIndex: (NSUInteger) inTokenIndex ;
 
-- (BOOL) isDirty ;
-
 - (NSString *) sourceString ;
 - (void) replaceSourceStringWithString: (NSString *) inString ;
 
 - (void) updateSyntaxColoringForEditedRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength ;
-
-- (NSMenu *) menuForEntryPopUpButton ;
 
 - (void) breakUndoCoalescing ;
 
@@ -69,4 +73,8 @@
 
 - (NSMenu *) indexMenuForRange: (NSRange) inSelectedRange
              textDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inTextDisplayDescriptor ;
+
+//--- RESERVED to OC_GGS_TextDisplayDescriptor
+- (void) addDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor ;
+- (void) removeDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor ;
 @end

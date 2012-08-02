@@ -13,7 +13,7 @@ enum @lexicalTypeEnum {
 #---------------------------------------------------------------------------*
 
 list @lexicalTypeList {
-  @lexicalTypeEnum mLexicalType ;
+  @lexicalTypeEnum mLexicalType ; 
 }
 
 #---------------------------------------------------------------------------*

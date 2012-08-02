@@ -40,6 +40,8 @@
 
 - (NSInteger) locationInOutputData ;
 
+- (void) updateLocationForPreviousRange: (NSRange) inEditedRange
+         changeInLength: (NSInteger) inChangeInLength ;
 @end
 
 //---------------------------------------------------------------------------*
