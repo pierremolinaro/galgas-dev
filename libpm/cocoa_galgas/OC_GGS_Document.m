@@ -34,6 +34,8 @@
 #import "OC_GGS_BuildTask.h"
 #import "OC_GGS_DocumentData.h"
 #import "OC_GGS_RulerViewForBuildOutput.h"
+#import "OC_GGS_Scroller.h"
+#import "PMErrorOrWarningDescriptor.h"
 #import "PMDebug.h"
 
 //---------------------------------------------------------------------------*
@@ -178,13 +180,6 @@
   ] ;
 //---
   [mSourceDisplayArrayController
-    addObserver:self 
-    forKeyPath:@"selection.documentData.textSyntaxColoring.mTokenizer.menuForEntryPopUpButton"
-    options:0
-    context:NULL
-  ] ;
-//---
-  [mSourceDisplayArrayController
     addObserver:mTabBarView 
     forKeyPath:@"selection.sourcePath"
     options:0
@@ -230,6 +225,8 @@
 //---
   mWarningCountTextField.stringValue = @"" ;
   mErrorCountTextField.stringValue = @"" ;
+//---
+  [mOutputScrollView setVerticalScroller:[OC_GGS_Scroller new]] ;
 //--- Display the document contents
   OC_GGS_TextDisplayDescriptor * textDisplayDescriptor = [mDocumentData newSourceDisplayDescriptorForDocument:self] ;
   if (nil != textDisplayDescriptor) {
@@ -238,13 +235,11 @@
   //---
     [mTabBarView setTarget:self] ;
   //---
-    mRulerViewForBuildOutput = [OC_GGS_RulerViewForBuildOutput new] ;
-    [mDetailedIssueScrollView setVerticalRulerView:mRulerViewForBuildOutput] ;
-    [mDetailedIssueScrollView setHasVerticalRuler:YES] ;
-    [mDetailedIssueScrollView.verticalRulerView setRuleThickness:12.0] ;
-    [mDetailedIssueScrollView setRulersVisible:YES] ;
-  //---
-    [self displayIssueDetailedMessage:nil] ;
+    mRulerViewForBuildOutput = [[OC_GGS_RulerViewForBuildOutput alloc] initWithDocument:self] ;
+    [mOutputScrollView setVerticalRulerView:mRulerViewForBuildOutput] ;
+    [mOutputScrollView setHasVerticalRuler:YES] ;
+    [mOutputScrollView.verticalRulerView setRuleThickness:12.0] ;
+    [mOutputScrollView setRulersVisible:YES] ;
   }
 //--- Open tabs
   key = [NSString stringWithFormat:@"TABS:%@", self.fileURL.path] ;
@@ -272,6 +267,7 @@
     [tdd detachTextDisplayDescriptor] ;
   }
 //---
+  [mRulerViewForBuildOutput detach] ;
   [mTabBarView detach] ;
   [mDetailedIssueSplitView setDelegate:nil] ;
   for (NSView * subview in mSourceHostView.subviews.copy) {
@@ -293,11 +289,6 @@
   [mSourceDisplayArrayController
     removeObserver:self 
     forKeyPath:@"selection.textSelectionStart"
-  ] ;
-//---
-  [mSourceDisplayArrayController
-    removeObserver:self 
-    forKeyPath:@"selection.documentData.textSyntaxColoring.mTokenizer.menuForEntryPopUpButton"
   ] ;
 //---
   [mSourceDisplayArrayController
@@ -326,7 +317,7 @@
   mSourceDisplayArrayController = nil ;
   mDisplayDescriptorArray = nil ;
 //--- Last call
-  [mDocumentData detachFromCocoaDocument] ;
+  [OC_GGS_DocumentData cocoaDocumentWillClose] ;
 //---
   [super removeWindowController:inWindowController] ;
 }
@@ -369,6 +360,9 @@
     setObject:tabFiles
     forKey:key
   ] ;
+//---
+  [inTextDisplayDescriptor detachTextDisplayDescriptor] ;
+  [OC_GGS_DocumentData cocoaDocumentWillClose] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -411,15 +405,6 @@
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   [mIssueSplitView setPosition:0.0 ofDividerAtIndex:0] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) collapseContextualHelpAction: (id) inSender {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  [mIssueSplitView setPosition:mIssueSplitView.bounds.size.width ofDividerAtIndex:1] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -498,6 +483,14 @@
 
 - (IBAction) saveAllDocuments: (id) inSender {
   [OC_GGS_DocumentData saveAllDocuments] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) displaySourceWithURL: (NSURL *) inURL
+         atLine: (NSUInteger) inLine {
+  OC_GGS_TextDisplayDescriptor * tdd = [self findOrAddNewTabForFile:inURL.path] ;
+  [tdd.textView setSelectedRange:NSMakeRange (inLine, 0)] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -819,6 +812,11 @@
   mErrorCount = 0 ;
   mIssueArray = [NSMutableArray new] ;
   [mRulerViewForBuildOutput setIssueArray:mIssueArray] ;
+  mIssueInScrollerArray = [NSMutableArray new] ; // Of PMErrorOrWarningDescriptor
+  OC_GGS_Scroller * scroller = (OC_GGS_Scroller *) mOutputScrollView.verticalScroller ;
+  [scroller setIssueArray:mIssueInScrollerArray] ;
+//---
+  [OC_GGS_DocumentData broadcastIssueArray:nil] ;
   mBuildTask = [[OC_GGS_BuildTask alloc] initWithDocument:self] ;
   self.mBuildTaskIsRunning = YES ;
 //---
@@ -831,7 +829,7 @@
     initWithString:@"Compiling…\n"
     attributes:defaultDictionary
   ] ;
-  [mRawOutputTextView.textStorage setAttributedString:attributedString] ;
+  [mOutputTextView.textStorage setAttributedString:attributedString] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -868,8 +866,15 @@
   ] ;
   [mIssueArray addObject:issue] ;
   [mRulerViewForBuildOutput setIssueArray:mIssueArray] ;
-//  NSString * issueInformation = [components lastObject] ;
-//  NSLog (@"issueInformation '%@'", issueInformation) ;
+//---
+  PMErrorOrWarningDescriptor * errorOrWarning = [[PMErrorOrWarningDescriptor alloc]
+    initWithMessage:inIssueMessage
+    location:inLocationInOutputData
+    isError:inIsError
+  ] ;
+  [mIssueInScrollerArray addObject:errorOrWarning] ; // Of PMErrorOrWarningDescriptor
+  OC_GGS_Scroller * scroller = (OC_GGS_Scroller *) mOutputScrollView.verticalScroller ;
+  [scroller setIssueArray:mIssueInScrollerArray] ;
 //---
   if (inIsError) {
     mErrorCount ++ ;
@@ -948,14 +953,14 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
         [self
           enterIssue:s
           isError:NO
-          locationInOutputData:mRawOutputTextView.textStorage.length + outputAttributedString.length
+          locationInOutputData:mOutputTextView.textStorage.length + outputAttributedString.length
         ] ;
       }else if ([s characterAtIndex:0] == COCOA_ERROR_ID) {
         s = [s substringFromIndex:1] ;
         [self
           enterIssue:s
           isError:YES
-          locationInOutputData:mRawOutputTextView.textStorage.length + outputAttributedString.length
+          locationInOutputData:mOutputTextView.textStorage.length + outputAttributedString.length
         ] ;
       }
       NSAttributedString * as = [[NSAttributedString alloc]
@@ -965,8 +970,8 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
       [outputAttributedString appendAttributedString:as] ;
     }
   }
-  [mRawOutputTextView.textStorage appendAttributedString:outputAttributedString] ;
-  [mRawOutputTextView scrollRangeToVisible:NSMakeRange (mRawOutputTextView.textStorage.length, 0)] ;
+  [mOutputTextView.textStorage appendAttributedString:outputAttributedString] ;
+  [mOutputTextView scrollRangeToVisible:NSMakeRange (mOutputTextView.textStorage.length, 0)] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -980,6 +985,8 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   [self enterOutputData:mBufferedOutputData] ;
   mBufferedOutputData = nil ;
 //---
+  [OC_GGS_DocumentData broadcastIssueArray:mIssueArray] ;
+//---
   NSDictionary * defaultDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
     [NSFont fontWithName:@"Courier" size:13.0], NSFontAttributeName,
     [NSColor orangeColor], NSForegroundColorAttributeName,
@@ -989,7 +996,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     initWithString:@"Done.\n"
     attributes:defaultDictionary
   ] ;
-  [mRawOutputTextView.textStorage appendAttributedString:attributedString] ;
+  [mOutputTextView.textStorage appendAttributedString:attributedString] ;
 //---
   mBuildTask = nil ;
 }
@@ -1149,48 +1156,6 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
       OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel HERE] ;
       [object selectEntryPopUp] ;
     }
-  }else if ([inKeyPath isEqualToString:@"selection.documentData.textSyntaxColoring.mTokenizer.menuForEntryPopUpButton"]) {
-    const NSUInteger sel = mSourceDisplayArrayController.selectionIndex ;
-    if (sel != NSNotFound) {
-      NSArray * arrangedObjects = mSourceDisplayArrayController.arrangedObjects ;
-      OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel HERE] ;
-      [object populatePopUpButton] ;
-      [object selectEntryPopUp] ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) displayIssueDetailedMessage: (NSString *) inDetailledMessage {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  NSTextStorage * textStorage = mDetailedIssueTextView.textStorage ;
-  if (nil == inDetailledMessage) {
-    [textStorage beginEditing] ;
-    [textStorage replaceCharactersInRange:NSMakeRange (0, [textStorage length]) withString:@""] ;
-    [textStorage endEditing] ;
-    [mDetailedIssueSplitView
-      setPosition:mDetailedIssueSplitView.bounds.size.height
-      ofDividerAtIndex:0
-    ] ;
-  }else{
-    [textStorage beginEditing] ;
-    [textStorage replaceCharactersInRange:NSMakeRange (0, [textStorage length]) withString:inDetailledMessage] ;
-    [mDetailedIssueTextView setFont:[NSFont fontWithName:@"Courier" size:13.0]] ;
-    [textStorage endEditing] ;
-    const NSRect r = [mDetailedIssueTextView.layoutManager
-      lineFragmentUsedRectForGlyphAtIndex:inDetailledMessage.length - 1
-      effectiveRange:NULL
-    ] ;
-   // NSLog (@"r %g %g %g %g", r.origin.x, r.origin.y, r.size.width, r.size.height) ;
-    // NSLog (@"mDetailedIssueTextView.textContainerInset.height %g", mDetailedIssueTextView.textContainerInset.height) ;
-    const double position = mDetailedIssueSplitView.bounds.size.height - mDetailedIssueSplitView.dividerThickness - NSMaxY (r) - 8.0 ;
-    [mDetailedIssueSplitView
-      setPosition:position
-      ofDividerAtIndex:0
-    ] ;
   }
 }
 
@@ -1261,7 +1226,6 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     }
   }
 //--- Display selection
-  [currentSourceText.textView setSelectedRange:selection] ;
 //---
   NSString * selectedString = [sourceString substringWithRange:selection] ;
   [self findOrAddNewTabForFile:selectedString] ;

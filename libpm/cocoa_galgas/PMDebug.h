@@ -12,6 +12,7 @@ void noteObjectDeallocation (NSObject * inObject) ;
 
 @interface PMDebug : NSObject <NSTableViewDataSource> {
   @private IBOutlet NSButton * mAllocationStatsWindowVisibleAtLaunchCheckbox ;
+  @private IBOutlet NSButton * mCollectExhaustivelyButton ;
   @private IBOutlet NSPopUpButton * mDisplayFilterPopUpButton ;
   @private IBOutlet NSMenu * mDebugMenu ;
   @private IBOutlet NSWindow * mAllocationStatsWindow ;
@@ -25,6 +26,9 @@ void noteObjectDeallocation (NSObject * inObject) ;
   @private NSUInteger mLiveAllocatedObjectCount ;
   @private NSUInteger mLiveTotalObjectCount ;
   @private NSArray * mAllocationStatsDataSource ;
+  #ifndef NS_AUTOMATED_REFCOUNT_UNAVAILABLE
+    @private NSTimer * mRefreshTimer ;
+  #endif
 }
 
 @property (atomic) BOOL mAllocationStatsWindowVisibleAtLaunch ;

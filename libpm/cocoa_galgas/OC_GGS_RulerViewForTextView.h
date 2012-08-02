@@ -26,18 +26,14 @@
 
 //---------------------------------------------------------------------------*
 
-@class OC_GGS_Document ;
-
-//---------------------------------------------------------------------------*
-
 @interface OC_GGS_RulerViewForTextView : NSRulerView {
-  @private NSArray * mIssues ; // Array of PMIssueInRuler
-  @private OC_GGS_Document * mDocument ;
+  @private NSArray * mIssueArray ; // Array of PMErrorOrWarningDescriptor
+  @private NSArray * mBulletArray ; // Array of PMIssueInRuler
 }
 
-- (OC_GGS_RulerViewForTextView *) initWithDocument: (OC_GGS_Document *) inDocument ;
+- (OC_GGS_RulerViewForTextView *) init ;
 
-- (void) detachFromCocoaDocument ;
+- (void) setIssueArray: (NSArray *) inIssueArray ;
 
 @end
 

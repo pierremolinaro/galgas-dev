@@ -53,7 +53,9 @@
   
   @private IBOutlet NSButton * mCurrentLineButton ;
 
-  @private IBOutlet NSTextView * mRawOutputTextView ;
+  @private IBOutlet NSTextView * mOutputTextView ;
+  @private IBOutlet NSScrollView * mOutputScrollView ;
+  @private NSMutableArray * mIssueInScrollerArray ; // Of PMErrorOrWarningDescriptor
 
   @private IBOutlet NSPanel * mUpdateFromFileSystemPanel ;
 
@@ -71,8 +73,6 @@
   @private IBOutlet NSTextField * mGotoLineTextField ;
 
 //--- Detailled issue message
-  @private IBOutlet NSTextView * mDetailedIssueTextView ;
-  @private IBOutlet NSScrollView * mDetailedIssueScrollView ;
   @private IBOutlet NSSplitView * mDetailedIssueSplitView ;
 
 //--- Build, stop button
@@ -95,7 +95,6 @@
 
 - (IBAction) collapseDetailledMessageAction: (id) inSender ;
 - (IBAction) collapseIssuesAction: (id) inSender ;
-- (IBAction) collapseContextualHelpAction: (id) inSender ;
 
 - (IBAction) actionGotoLine: (id) inSender ;
 
@@ -114,11 +113,10 @@
 
 - (void) triggerDocumentEditedStatusUpdate ;
 
-//- (OC_GGS_TextSyntaxColoring *) textSyntaxColoring ;
+- (void) displaySourceWithURL: (NSURL *) inURL
+         atLine: (NSUInteger) inLine ;
 
 - (NSPopUpButton *) entryListPopUpButton ;
-
-- (void) displayIssueDetailedMessage: (NSString *) inDetailledMessage ;
 
 - (void) appendBuildOutputData: (NSData *) inData ;
 - (void) buildCompleted ;

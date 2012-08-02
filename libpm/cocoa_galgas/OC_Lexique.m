@@ -60,12 +60,22 @@
 
 //---------------------------------------------------------------------------*
 
+@synthesize menuForEntryPopUpButton ;
+
+//---------------------------------------------------------------------------*
+
 - (id) init {
   self = [super init] ;
   if (self) {
     mMatchedTemplateDelimiterIndex = -1 ;
   }
   return self ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) detach {
+
 }
 
 //---------------------------------------------------------------------------*
@@ -300,15 +310,7 @@
       }
     }
   }
-  [self willChangeValueForKey:@"menuForEntryPopUpButton"] ;
-  mMenuForEntryPopUpButton = menu ;
-  [self didChangeValueForKey:@"menuForEntryPopUpButton"] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (NSMenu *) menuForEntryPopUpButton {
-  return mMenuForEntryPopUpButton ;
+  menuForEntryPopUpButton = menu ;
 }
 
 //---------------------------------------------------------------------------*

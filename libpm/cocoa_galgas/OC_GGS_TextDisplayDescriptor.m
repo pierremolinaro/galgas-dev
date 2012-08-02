@@ -11,8 +11,8 @@
 #import "OC_GGS_TextSyntaxColoring.h"
 #import "OC_Lexique.h"
 #import "OC_GGS_DocumentData.h"
+#import "OC_GGS_Document.h"
 #import "OC_GGS_TextView.h"
-#import "PMErrorOrWarningDescriptor.h"
 #import "OC_GGS_RulerViewForTextView.h"
 #import "OC_GGS_PreferencesController.h"
 #import "OC_GGS_Scroller.h"
@@ -41,6 +41,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 //---------------------------------------------------------------------------*
 
 @synthesize documentData ;
+@synthesize isDirty ;
 
 //---------------------------------------------------------------------------*
 
@@ -69,8 +70,8 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   self = [self init] ;
   if (self) {
     noteObjectAllocation (self) ;
-    mPreviousBuildTasks = [NSMutableSet new] ;
     documentData = inDocumentData ;
+    mDocumentUsedForDisplaying = inDocumentUsedForDisplaying ;
     mTextView = [[OC_GGS_TextView alloc]
       initWithFrame:NSMakeRect (0.0, 0.0, 10.0, 10.0)
       documentUsedForDisplaying:inDocumentUsedForDisplaying
@@ -99,7 +100,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     mScrollView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
     [mScrollView setHasVerticalScroller:YES] ;
     mScrollView.borderType = NSBezelBorder ;
-    mRulerView = [[OC_GGS_RulerViewForTextView alloc] initWithDocument:nil] ;
+    mRulerView = [OC_GGS_RulerViewForTextView new] ;
     [mScrollView setVerticalRulerView:mRulerView] ;
     [mScrollView.verticalRulerView setRuleThickness:gCocoaGalgasPreferencesController.ruleThickness] ;
     [mScrollView setRulersVisible:[[NSUserDefaults standardUserDefaults] boolForKey:GGS_show_ruler]] ;
@@ -123,15 +124,16 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       context:NULL
     ] ;
     [self refreshShowInvisibleCharacters] ;
+    [documentData.textSyntaxColoring addDisplayDescriptor:self] ;
   //--- Set selection
-/* §    NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", inDocumentData.fileURL.path, mTextSyntaxColoring.document.fileURL.path] ;
+    NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocumentUsedForDisplaying.fileURL.path, documentData.fileURL.path] ;
     NSString * selectionRangeString = [[NSUserDefaults standardUserDefaults] objectForKey:key] ;
     // NSLog (@"READ '%@' -> %@", key, selectionRangeString) ;
     const NSRange selectionRange = NSRangeFromString (selectionRangeString) ;
-    const NSUInteger sourceTextLength = mTextSyntaxColoring.textStorage.length ;
+    const NSUInteger sourceTextLength = documentData.textSyntaxColoring.textStorage.length ;
     if (NSMaxRange (selectionRange) <= sourceTextLength) {
       [self setSelectionRangeAndMakeItVisible:selectionRange] ;
-    } */
+    } 
   //--- Set issues
 //    [self setTextDisplayIssueArray:mDocument.documentIssueArray] ;
   }
@@ -155,12 +157,13 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   [mTextView.layoutManager replaceTextStorage:[NSTextStorage new]] ;
   [mTextView setDelegate:nil] ;
   [mTextView detachTextView] ;
-  [mRulerView detachFromCocoaDocument] ;
   for (NSView * subview in mEnclosingView.subviews.copy) {
     [subview removeFromSuperview] ;
   }
+  [documentData.textSyntaxColoring removeDisplayDescriptor:self] ;
 //---
   documentData = nil ;
+  mDocumentUsedForDisplaying = nil ;
   mEnclosingView = nil ;
   mTextView = nil ;
   mEntryListPopUpButton = nil ;
@@ -436,11 +439,11 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
-- (void) populatePopUpButton {
+- (void) populatePopUpButtonWithMenu: (NSMenu *) inMenu {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSMenu * menu = documentData.textSyntaxColoring.menuForEntryPopUpButton ;
+  NSMenu * menu = inMenu.copy ;
   [mEntryListPopUpButton setAutoenablesItems:NO] ;
 
   const NSUInteger n = [menu numberOfItems] ;
@@ -525,26 +528,16 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   mTextSelectionStart = mTextView.selectedRange.location ;
   [self  didChangeValueForKey:@"textSelectionStart"] ;
   [mRulerView setNeedsDisplay:YES] ;
-  [self populatePopUpButton] ;
+//  [self populatePopUpButton] ;
 /*  if (! [mDocument isContextualHelpTextViewCollapsed]) {
     [self performContextualHelpAtRange:mTextView.selectedRange] ;
   }*/
 //---
-/*  NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", documentData.fileURL.path, documentData.textSyntaxColoring.document.fileURL.path] ;
+  NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocumentUsedForDisplaying.fileURL.path, documentData.fileURL.path] ;
   [[NSUserDefaults standardUserDefaults]
     setObject:NSStringFromRange (mTextView.selectedRange)
     forKey:key
-  ] ; */
-  // NSLog (@"WRITE '%@' -> %@", key, NSStringFromRange (mTextView.selectedRange)) ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) noteUndoManagerCheckPointNotification {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-//  [documentData triggerDocumentEditedStatusUpdate] ;
+  ] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -557,43 +550,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s, '%@', enter %lu issues", __PRETTY_FUNCTION__, self.documentData.fileURL, inIssueArray.count) ;
   #endif
-/*  NSMutableArray * filteredArray = [NSMutableArray new] ;
-  for (PMIssueDescriptor * issue in inIssueArray) {
-    // NSLog (@"  TEST with '%@' : %@", issue.issueURL, [issue.issueURL isEqual:mTextSyntaxColoring.sourceURL] ? @"yes" : @"no") ;
-    if ([issue.issueURL isEqual:mTextSyntaxColoring.document.fileURL]) {
-      const NSRange lineRange = [mTextSyntaxColoring rangeForLine:issue.issueLine] ;
-      [filteredArray
-        addObject:[[PMErrorOrWarningDescriptor alloc]
-          initWithMessage:issue.issueMessage
-          location:lineRange.location + issue.issueColumn - 1
-          isError:issue.errorKind
-          originalIssue:issue
-        ]
-      ] ;
-      // NSLog (@"%c", [mSourceTextStorage.string characterAtIndex:lineRange.location + issue.issueColumn - 1 HERE]) ;
-    }
-  }
-  mIssueArray = filteredArray ;
-  [mTextView setIssueArray:filteredArray] ;*/
-}
-
-//---------------------------------------------------------------------------*
-
-- (BOOL) makeVisibleIssue: (PMIssueDescriptor *) inOriginalIssue {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  // NSLog (@"mIssueArray %lu", mIssueArray.count) ;
-  BOOL found = NO ;
-  for (NSUInteger i=0 ; (i<mIssueArray.count) && ! found ; i++) {
-    PMErrorOrWarningDescriptor * issue = [mIssueArray objectAtIndex:i] ;
-    found = issue.originalIssue == inOriginalIssue ;
-    if (found) {
-      [self setSelectionRangeAndMakeItVisible:NSMakeRange (issue.location, 0)] ;
-    }
-  }
-//---
-  return found ;
+  [mTextView setIssueArray:inIssueArray] ;
 }
 
 //---------------------------------------------------------------------------*

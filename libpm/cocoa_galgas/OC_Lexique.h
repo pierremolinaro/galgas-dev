@@ -69,9 +69,12 @@ typedef struct {
   @protected NSUInteger mCurrentLocation ;
   @protected BOOL mLoop ;
   @protected NSInteger mMatchedTemplateDelimiterIndex ; //--- Scanner mode for template scanner
-  @protected NSMenu * mMenuForEntryPopUpButton ;
   @private NSDictionary * mCustomSyntaxColoringDictionary ;
 }
+
+@property (retain, atomic, readonly) NSMenu * menuForEntryPopUpButton ;
+
+- (void) detach ;
 
 - (void) searchForReplacementPattern:(NSArray *) inReplacementPatternArray ;
 
@@ -125,8 +128,6 @@ typedef struct {
          lastIndexToRedraw: (NSInteger *) outUpperIndexToRedrawInStyleArray
          eraseRangeStart: (NSInteger *) outEraseRangeStart
          eraseRangeEnd: (NSInteger *) outEraseRangeEnd ;
-
-- (NSMenu *) menuForEntryPopUpButton ;
 
 - (NSString *) indexingDirectory ;
 

@@ -13,6 +13,8 @@
 #import "OC_GGS_TextDisplayDescriptor.h"
 #import "F_CocoaWrapperForGalgas.h"
 #import "PMDebug.h"
+#import "PMIssueDescriptor.h"
+#import "PMErrorOrWarningDescriptor.h"
 
 //---------------------------------------------------------------------------*
 
@@ -200,6 +202,20 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 
 - (void) detachFromCocoaDocument {
   document = nil ;
+  [textSyntaxColoring detach] ;
+  textSyntaxColoring = nil ;
+}
+
+//---------------------------------------------------------------------------*
+
++ (void) cocoaDocumentWillClose {
+  [OC_GGS_DocumentData saveAllDocuments] ;
+  for (OC_GGS_DocumentData * documentData in gDocumentDataDictionary.allValues.copy) {
+    if (documentData.textSyntaxColoring.textStorage.layoutManagers.count == 0) {
+      [documentData detachFromCocoaDocument] ;
+      [gDocumentDataDictionary removeObjectForKey:documentData.fileURL] ;
+    }
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -272,10 +288,12 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 //---------------------------------------------------------------------------*
 
 - (void) save {
-  if (nil == document) {
-    [self performSaveToURL:nil] ;
-  }else{
-    [document saveDocument:nil] ;
+  if (textSyntaxColoring.isDirty) {
+    if (nil == document) {
+      [self performSaveToURL:nil] ;
+    }else{
+      [document saveDocument:nil] ;
+    }
   }
 }
 
@@ -284,6 +302,50 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 + (void) saveAllDocuments {
   for (OC_GGS_DocumentData * documentData in gDocumentDataDictionary.allValues) {
     [documentData save] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+//    broadcastIssueArray:                                                   *
+//---------------------------------------------------------------------------*
+
+- (void) broadcastIssueArray: (NSArray *) inIssueArray {
+  mIssueArray = [NSMutableArray new] ;
+  for (PMIssueDescriptor * issue in inIssueArray) {
+   //  NSLog (@"issue.issueURL %@, fileURL %@", issue.issueURL, fileURL) ;
+    if ([issue.issueURL isEqualTo:fileURL]) {
+    //--- Find error location in source string
+      NSString * sourceString = textSyntaxColoring.sourceString ;
+      const NSUInteger sourceStringLength = sourceString.length ;
+      NSInteger lineIndex = 0 ;
+      NSUInteger idx = 0 ;
+      BOOL found = NO ;
+      while ((idx < sourceStringLength) && ! found) {
+        lineIndex ++ ;
+        if (issue.issueLine == lineIndex) {
+          found = YES ;
+        }else{
+          const NSRange lineRange = [sourceString lineRangeForRange:NSMakeRange (idx, 1)] ;
+          idx = lineRange.location + lineRange.length ;
+        }
+      }
+    //---
+      PMErrorOrWarningDescriptor * errorOrWarning = [[PMErrorOrWarningDescriptor alloc]
+        initWithMessage:issue.issueMessage
+        location:idx + issue.issueColumn - 1
+        isError:issue.isError
+      ] ;
+      [mIssueArray addObject:errorOrWarning] ;
+    }
+  }
+  [textSyntaxColoring setIssueArray:mIssueArray] ;
+}
+
+//---------------------------------------------------------------------------*
+
++ (void) broadcastIssueArray: (NSArray *) inIssueArray {
+  for (OC_GGS_DocumentData * documentData in gDocumentDataDictionary.allValues) {
+    [documentData broadcastIssueArray:inIssueArray] ;
   }
 }
 

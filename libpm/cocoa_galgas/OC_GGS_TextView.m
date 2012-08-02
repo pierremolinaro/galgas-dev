@@ -8,23 +8,21 @@
 //---------------------------------------------------------------------------*
 
 #import "OC_GGS_TextView.h"
-#import "PMErrorOrWarningDescriptor.h"
+#import "OC_GGS_TextDisplayDescriptor.h"
+#import "OC_GGS_RulerViewForTextView.h"
 #import "PMCocoaCallsDebug.h"
 #import "OC_GGS_TextSyntaxColoring.h"
-#import "OC_GGS_TextDisplayDescriptor.h"
+#import "PMErrorOrWarningDescriptor.h"
 #import "OC_Token.h"
 #import "OC_GGS_DocumentData.h"
 #import "OC_GGS_Document.h"
 #import "OC_GGS_PreferencesController.h"
+#import "OC_GGS_Scroller.h"
 #import "PMDebug.h"
 
 //---------------------------------------------------------------------------*
 
 @implementation OC_GGS_TextView
-
-//---------------------------------------------------------------------------*
-
-@synthesize issueArray ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -64,15 +62,16 @@
 //---------------------------------------------------------------------------*
 
 - (void) setIssueArray: (NSArray *) inIssueArray {
-  issueArray = inIssueArray.copy ;
 //--- Tell ruler to refresh
   NSScrollView * scrollView = (NSScrollView *) self.superview.superview ;
-  // NSLog (@"scrollView %@", scrollView) ;
-  NSRulerView * ruler = scrollView.verticalRulerView ;
-  // NSLog (@"ruler %@", ruler) ;
-  [ruler setNeedsDisplay:YES] ;
+  OC_GGS_RulerViewForTextView * ruler = (OC_GGS_RulerViewForTextView *) scrollView.verticalRulerView ;
+  [ruler setIssueArray:inIssueArray] ;
+//---
+  OC_GGS_Scroller * scroller = (OC_GGS_Scroller *) scrollView.verticalScroller ;
+  [scroller setIssueArray:inIssueArray] ;
+//---
+  mIssueArray = inIssueArray.copy ;
   [self setNeedsDisplay:YES] ;
-  [scrollView.verticalScroller setNeedsDisplay:YES] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -100,7 +99,7 @@
   NSBezierPath * errorBulletBezierPath = [NSBezierPath bezierPath] ;
   NSBezierPath * warningHiliteBezierPath = [NSBezierPath bezierPath] ;
   NSBezierPath * warningBulletBezierPath = [NSBezierPath bezierPath] ;
-  for (PMErrorOrWarningDescriptor * issue in issueArray) {
+  for (PMErrorOrWarningDescriptor * issue in mIssueArray) {
     // NSLog (@"lineRange [%u, %u]", lineRange.location, lineRange.length) ;
     NSRect lineRect = [self.layoutManager lineFragmentUsedRectForGlyphAtIndex:issue.location effectiveRange:NULL] ;
     lineRect.size.width = self.visibleRect.size.width ;

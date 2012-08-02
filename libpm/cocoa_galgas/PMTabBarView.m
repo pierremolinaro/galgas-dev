@@ -13,10 +13,35 @@
 #import "PMButtonWithRemove.h"
 #import "OC_GGS_TextSyntaxColoring.h"
 #import "PMCocoaCallsDebug.h"
+#import "PMDebug.h"
 
 //---------------------------------------------------------------------------*
 
 @implementation PMTabBarView
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//       I N I T                                                             *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+- (id) initWithFrame: (NSRect) inFrame {
+  self = [super initWithFrame:inFrame] ;
+  if (self) {
+    #ifdef DEBUG_MESSAGES
+      NSLog (@"%s", __PRETTY_FUNCTION__) ;
+    #endif
+    noteObjectAllocation (self) ;
+  }
+  return self;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) FINALIZE_OR_DEALLOC {
+  noteObjectDeallocation (self) ;
+  macroSuperFinalize ;
+}
 
 //---------------------------------------------------------------------------*
 
@@ -30,7 +55,7 @@
   [mObservedArray
     removeObserver:self
     fromObjectsAtIndexes:[[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange (0, mObservedArray.count)]
-    forKeyPath:@"documentData.textSyntaxColoring.isDirty"
+    forKeyPath:@"isDirty"
   ] ;
   mObservedArray = nil ;
   mTarget = nil ;
@@ -43,7 +68,7 @@
   [mObservedArray
     removeObserver:self
     fromObjectsAtIndexes:[[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange (0, mObservedArray.count)]
-    forKeyPath:@"documentData.textSyntaxColoring.isDirty"
+    forKeyPath:@"isDirty"
   ] ;
 //--- Add Observed for current collection
   NSArray * arrangedObjects = inArrayController.arrangedObjects ;
@@ -51,7 +76,7 @@
   [mObservedArray
     addObserver:self
     toObjectsAtIndexes: [[NSIndexSet alloc] initWithIndexesInRange:NSMakeRange (0, mObservedArray.count)]
-    forKeyPath:@"documentData.textSyntaxColoring.isDirty"
+    forKeyPath:@"isDirty"
     options:0
     context:NULL
   ] ;
@@ -131,7 +156,7 @@
         [button setState:(button == newSelection) ? NSOnState : NSOffState] ;
       }
     }
-  }else if ([inKeyPath isEqualToString:@"documentData.textSyntaxColoring.isDirty"]) {
+  }else if ([inKeyPath isEqualToString:@"isDirty"]) {
     [self dirtyStateDidChange:inObject] ;
   }else if ([inKeyPath isEqualToString:@"arrangedObjects"]) {
     [self buildTabBarWithArrayController:inObject] ;

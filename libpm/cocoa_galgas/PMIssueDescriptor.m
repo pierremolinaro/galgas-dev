@@ -9,6 +9,7 @@
 
 #import "PMIssueDescriptor.h"
 #import "PMCocoaCallsDebug.h"
+#import "PMDebug.h"
 
 //---------------------------------------------------------------------------*
 
@@ -35,6 +36,7 @@
                         locationInOutputData: (NSInteger) inLocationInOutputData {
   self = [self init] ;
   if (self) {
+    noteObjectAllocation (self) ;
     mMessage = inMessage.copy ;
     mURL = inURL.copy ;
     mLine = inLine ;
@@ -44,6 +46,13 @@
     [self normalizeMessage] ;
   }
   return self ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) FINALIZE_OR_DEALLOC {
+  noteObjectDeallocation (self) ;
+  macroSuperFinalize ;
 }
 
 //---------------------------------------------------------------------------*
@@ -88,6 +97,14 @@
   return mIsError ? [NSColor redColor] : [NSColor orangeColor] ;
 }
 
+//---------------------------------------------------------------------------*
+
+- (void) updateLocationForPreviousRange: (NSRange) inEditedRange
+         changeInLength: (NSInteger) inChangeInLength {
+  if (((NSUInteger) mLocationInOutputData) >= (inEditedRange.location + inEditedRange.length)) {
+    mLocationInOutputData += (NSUInteger) inChangeInLength ;
+  }
+}
 //---------------------------------------------------------------------------*
 
 @end

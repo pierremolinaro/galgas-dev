@@ -9,6 +9,7 @@
 
 #import "OC_GGS_RulerViewForBuildOutput.h"
 #import "PMIssueDescriptor.h"
+#import "OC_GGS_Document.h"
 #import "PMDebug.h"
 
 //---------------------------------------------------------------------------*
@@ -21,13 +22,14 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-- (id) init {
+- (id) initWithDocument: (OC_GGS_Document *) inDocument {
   self = [super init] ;
   if (self) {
     #ifdef DEBUG_MESSAGES
       NSLog (@"%s", __PRETTY_FUNCTION__) ;
     #endif
     noteObjectAllocation (self) ;
+    mDocument = inDocument ;
   }
   return self;
 }
@@ -63,11 +65,10 @@
 //--- Note: ruler view and text view are both flipped
   NSTextView * textView = self.scrollView.documentView ;
   NSLayoutManager * lm = textView.layoutManager ;
-  
 //--- Display bullets
   for (PMIssueDescriptor * issue in mIssueArray) {
     const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:issue.locationInOutputData effectiveRange:NULL] ;
-    NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMaxY (r)) fromView:textView] ;
+    const NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMidY (r) - 8.0) fromView:textView] ;
     const NSRect rImage = {{4.0, p.y}, {16.0, 16.0}} ;
     [issue.isError ? errorImage : warningImage
       drawInRect:rImage
@@ -76,6 +77,35 @@
       fraction:1.0
     ] ;
   }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) mouseDown: (NSEvent *) inMouseDownEvent {
+//--- Note: ruler view and text view are both flipped
+  NSTextView * textView = self.scrollView.documentView ;
+  NSLayoutManager * lm = textView.layoutManager ;
+  const NSPoint locationInView = [self convertPoint:inMouseDownEvent.locationInWindow fromView:nil] ;
+  BOOL found = NO ;
+  for (NSUInteger i=0 ; (i<mIssueArray.count) && ! found ; i++) {
+    PMIssueDescriptor * issue = [mIssueArray objectAtIndex:i] ;
+    const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:issue.locationInOutputData effectiveRange:NULL] ;
+    const NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMidY (r) - 8.0) fromView:textView] ;
+    const NSRect rImage = {{4.0, p.y}, {16.0, 16.0}} ;
+    if (NSPointInRect (locationInView, rImage)) {
+      found = YES ;
+      [mDocument
+        displaySourceWithURL:issue.issueURL
+        atLine:issue.issueLine
+      ] ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) detach {
+  mDocument = nil ;
 }
 
 //---------------------------------------------------------------------------*

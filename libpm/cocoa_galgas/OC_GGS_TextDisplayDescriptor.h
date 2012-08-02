@@ -32,11 +32,11 @@
   @private NSScrollView * mScrollView ;
   @private NSView * mEnclosingView ;
   @private NSUInteger mTextSelectionStart ;
-  @private NSArray * mIssueArray ;
-  @private NSMutableSet * mPreviousBuildTasks ;
+  @private OC_GGS_Document * mDocumentUsedForDisplaying ;
 }
 
 @property (strong, atomic, readonly) OC_GGS_DocumentData * documentData ;
+@property (atomic) BOOL isDirty ;
 
 - (OC_GGS_TextDisplayDescriptor *) initWithDocumentData: (OC_GGS_DocumentData *) inDocumentData
                                    displayDocument: (OC_GGS_Document *) inDocumentUsedForDisplaying ;
@@ -55,18 +55,14 @@
 
 - (void) selectEntryPopUp ;
 
-- (void) populatePopUpButton ;
+- (void) populatePopUpButtonWithMenu: (NSMenu *) inMenu ;
 
 - (void) commentSelection ;
 - (void) uncommentSelection ;
 - (void) shiftLeftAction ;
 - (void) shiftRightAction ;
 
-- (void) noteUndoManagerCheckPointNotification ;
-
 - (void) setTextDisplayIssueArray: (NSArray *) inIssueArray ; 
-
-- (BOOL) makeVisibleIssue: (PMIssueDescriptor *) inIssue ;
 
 - (void) setSelectionRangeAndMakeItVisible: (NSRange) inRange ;
 @end
