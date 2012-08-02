@@ -59,9 +59,14 @@
 
 - (void) setIssueArray: (NSArray *) inIssueArray {
   mIssueArray = inIssueArray.copy ;
+  [self setNeedsDisplay:YES] ;
+}
+/*
+  NSLog (@"inIssueArray %@", inIssueArray) ;
 //--- Note: ruler view and text view are both flipped
   OC_GGS_TextView * textView = self.scrollView.documentView ;
   NSLayoutManager * lm = textView.layoutManager ;
+  NSLog (@"lm %p", lm) ;
 //---
   NSMutableArray * bulletArray = [NSMutableArray new] ;
   NSString * sourceString = textView.string ;
@@ -75,7 +80,7 @@
     BOOL hasError = NO ;
     BOOL hasWarning = NO ;
     NSMutableString * allMessages = [NSMutableString stringWithCapacity:100] ;
-    for (PMErrorOrWarningDescriptor * issue in mIssueArray) {
+    for (PMErrorOrWarningDescriptor * issue in inIssueArray) {
       if ([issue isInRange:lineRange]) {
         [allMessages appendString:issue.message] ;
         if (issue.isError) {
@@ -89,6 +94,7 @@
       const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:idx effectiveRange:NULL] ;
       const NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMidY (r) - 8.0) fromView:textView] ;
       const NSRect rImage = {{0.0, p.y}, {16.0, 16.0}} ;
+      NSLog (@"ADD %p", lm) ;
       PMIssueInRuler * issueInRuler = [[PMIssueInRuler alloc]
         initWithRect:rImage
         message:allMessages
@@ -102,7 +108,7 @@
   mBulletArray = bulletArray ;
   [self setNeedsDisplay:YES] ;
 }
-
+*/
 //---------------------------------------------------------------------------*
 
 static NSUInteger imax (NSUInteger a, NSUInteger b) { return (a > b) ? a : b ; }
@@ -144,6 +150,7 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
   const double minYforDrawing = inRect.origin.y - (2.0 * ([font ascender] + [font descender])) ;
   const double maxYforDrawing = NSMaxY ([self visibleRect]) ;
   BOOL maxYreached = NO ;
+  mBulletArray = [NSMutableArray new] ;
   while ((idx < sourceStringLength) && ! maxYreached) {
     lineIndex ++ ;
   //--- Draw line numbers
@@ -165,6 +172,29 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
       p.y -= strSize.height ;
       [str drawAtPoint:p withAttributes:intersect ? attributesForSelection : attributes] ;
       maxYreached = p.y > maxYforDrawing ;
+    //--- Error or warning at this line ?
+      BOOL hasError = NO ;
+      BOOL hasWarning = NO ;
+      NSMutableString * allMessages = [NSMutableString stringWithCapacity:100] ;
+      for (PMErrorOrWarningDescriptor * issue in mIssueArray) {
+        if ([issue isInRange:lineRange]) {
+          [allMessages appendString:issue.message] ;
+          if (issue.isError) {
+            hasError = YES ;
+          }else{
+            hasWarning = YES ;
+          }
+        }
+      }
+      if (hasError || hasWarning) {
+        const NSRect rImage = {{0.0, p.y}, {16.0, 16.0}} ;
+        PMIssueInRuler * issueInRuler = [[PMIssueInRuler alloc]
+          initWithRect:rImage
+          message:allMessages
+          isError:hasError
+        ] ;
+        [mBulletArray addObject:issueInRuler] ;
+      }
     }
     idx = lineRange.location + lineRange.length ;
   }

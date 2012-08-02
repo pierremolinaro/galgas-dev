@@ -13,7 +13,7 @@
 #import "OC_Token.h"
 #import "PMCocoaCallsDebug.h"
 #import "OC_GGS_PreferencesController.h"
-#import "PMIssueDescriptor.h"
+#import "PMErrorOrWarningDescriptor.h"
 #import "OC_GGS_DocumentData.h"
 #import "PMDebug.h"
 
@@ -477,15 +477,11 @@
   #endif
   // NSLog (@"inEditedRange %lu:%lu, inChangeInLength %ld", inEditedRange.location, inEditedRange.length, inChangeInLength) ;
   const NSRange previousRange = {inEditedRange.location, inEditedRange.length - inChangeInLength} ;
-  NSMutableArray * newIssueArray = [NSMutableArray new] ;
-  for (PMIssueDescriptor * issue in mIssueArray) {
-    if (! NSLocationInRange(issue.locationInOutputData, previousRange)) {
+  for (PMErrorOrWarningDescriptor * issue in mIssueArray) {
+    if (! NSLocationInRange (issue.location, previousRange)) {
       [issue updateLocationForPreviousRange:previousRange changeInLength:inChangeInLength] ;
-      [newIssueArray addObject:issue] ;
     }
   }
-//---
-  mIssueArray = newIssueArray ;
 //---
   for (OC_GGS_TextDisplayDescriptor * textDisplay in mTextDisplayDescriptorSet) {
     [textDisplay setTextDisplayIssueArray:mIssueArray] ; 
@@ -495,7 +491,7 @@
 //---------------------------------------------------------------------------*
 
 - (void) setIssueArray: (NSArray *) inIssueArray {
-  mIssueArray = inIssueArray.copy ;
+  mIssueArray = inIssueArray.mutableCopy ;
   // NSLog (@"mIssueArray %@", mIssueArray) ;
   for (OC_GGS_TextDisplayDescriptor * textDisplay in mTextDisplayDescriptorSet) {
     [textDisplay setTextDisplayIssueArray:mIssueArray] ; 
@@ -823,15 +819,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
-- (NSArray *) issueArray {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  return mIssueArray.copy ;
-}
-
-//---------------------------------------------------------------------------*
-
 #pragma mark observeValueForKeyPath
 
 //---------------------------------------------------------------------------*
@@ -1146,14 +1133,23 @@ static NSInteger numericSort (NSString * inOperand1,
 
 - (void) addDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor {
   [mTextDisplayDescriptorSet addObject:inDisplayDescriptor] ;
+//  NSLog (@"AFTER INSERT mTextDisplayDescriptorSet %@", mTextDisplayDescriptorSet) ;
   NSMenu * menu = mTokenizer.menuForEntryPopUpButton ;
   [inDisplayDescriptor populatePopUpButtonWithMenu:menu] ;
+  [inDisplayDescriptor setTextDisplayIssueArray:mIssueArray] ; 
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) removeDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor {
   [mTextDisplayDescriptorSet removeObject:inDisplayDescriptor] ;
+//  NSLog (@"AFTER REMOVE mTextDisplayDescriptorSet %@", mTextDisplayDescriptorSet) ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSUInteger) displayDescriptorCount {
+  return mTextDisplayDescriptorSet.count ;
 }
 
 //---------------------------------------------------------------------------*

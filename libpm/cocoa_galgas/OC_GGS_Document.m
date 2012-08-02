@@ -151,8 +151,6 @@
   key = [NSString stringWithFormat:@"values.issue-split-fraction:%@", self.lastComponentOfFileName] ;
   [mIssueSplitView setAutosaveName:key] ;
 //---
-  [mDetailedIssueSplitView setDelegate:self] ;
-//---
   [mSourceDisplayArrayController
     bind:@"contentArray"
     toObject:self
@@ -223,8 +221,8 @@
     options:negateTransformer    
   ] ;
 //---
-  mWarningCountTextField.stringValue = @"" ;
-  mErrorCountTextField.stringValue = @"" ;
+  mWarningCountTextField.stringValue = @"0" ;
+  mErrorCountTextField.stringValue = @"0" ;
 //---
   [mOutputScrollView setVerticalScroller:[OC_GGS_Scroller new]] ;
 //--- Display the document contents
@@ -269,7 +267,6 @@
 //---
   [mRulerViewForBuildOutput detach] ;
   [mTabBarView detach] ;
-  [mDetailedIssueSplitView setDelegate:nil] ;
   for (NSView * subview in mSourceHostView.subviews.copy) {
     [subview removeFromSuperview] ;
   }
@@ -391,15 +388,6 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) collapseDetailledMessageAction: (id) inSender {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  [mDetailedIssueSplitView setPosition:mDetailedIssueSplitView.bounds.size.height ofDividerAtIndex:0] ;
-}
-
-//---------------------------------------------------------------------------*
-
 - (void) collapseIssuesAction: (id) inSender {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
@@ -490,7 +478,8 @@
 - (void) displaySourceWithURL: (NSURL *) inURL
          atLine: (NSUInteger) inLine {
   OC_GGS_TextDisplayDescriptor * tdd = [self findOrAddNewTabForFile:inURL.path] ;
-  [tdd.textView setSelectedRange:NSMakeRange (inLine, 0)] ;
+  const NSRange r = {[tdd.documentData locationForLineInSource:inLine], 0} ;
+  [tdd setSelectionRangeAndMakeItVisible:r] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -560,7 +549,7 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) askForUpdatingFromFileSystem {
+/*- (void) askForUpdatingFromFileSystem {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
@@ -622,7 +611,7 @@
     }
   }
 }
-
+*/
 
 //---------------------------------------------------------------------------*
 
@@ -806,9 +795,9 @@
   #endif
   [self saveAllDocuments:nil] ;
   mBufferedOutputData = [NSMutableData new] ;
-  mWarningCountTextField.stringValue = @"" ;
+  mWarningCountTextField.stringValue = @"0" ;
   mWarningCount = 0 ;
-  mErrorCountTextField.stringValue = @"" ;
+  mErrorCountTextField.stringValue = @"0" ;
   mErrorCount = 0 ;
   mIssueArray = [NSMutableArray new] ;
   [mRulerViewForBuildOutput setIssueArray:mIssueArray] ;
@@ -1074,7 +1063,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 
 - (OC_GGS_TextDisplayDescriptor *) findOrAddNewTabForFile: (NSString *) inDocumentPath {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+    NSLog (@"%s, inDocumentPath: %@", __PRETTY_FUNCTION__, inDocumentPath) ;
   #endif
   OC_GGS_DocumentData * documentData = [self findOrAddDocumentWithPath:inDocumentPath] ;
   OC_GGS_TextDisplayDescriptor * foundSourceText = nil ;
@@ -1108,16 +1097,6 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:foundSourceText]] ;
   }
   return foundSourceText ;
-}
-
-//---------------------------------------------------------------------------*
-
-#pragma mark Entry Pop up
-
-//---------------------------------------------------------------------------*
-
-- (NSPopUpButton *) entryListPopUpButton {
-  return mEntryListPopUpButton ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1173,7 +1152,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 
 //---------------------------------------------------------------------------*
 
-- (void) actionOpenQuickly: (id) sender {
+- (NSString *) fileNameFromSelection {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
@@ -1225,10 +1204,33 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
       selection.length ++ ;
     }
   }
-//--- Display selection
 //---
-  NSString * selectedString = [sourceString substringWithRange:selection] ;
-  [self findOrAddNewTabForFile:selectedString] ;
+  NSString * relativePath = [sourceString substringWithRange:selection] ;
+  return [self.fileURL.path.stringByDeletingLastPathComponent stringByAppendingPathComponent:relativePath] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) actionOpenFromSelectionInNewWindow: (id) sender {
+  NSString * newDocumentPath = [self fileNameFromSelection] ;
+  NSError * error = nil ;
+  NSDocument * doc = [[NSDocumentController sharedDocumentController]
+    openDocumentWithContentsOfURL:[NSURL fileURLWithPath:newDocumentPath]
+    display:YES
+    error:& error
+  ] ;
+  if (nil == doc) {
+    [self.windowForSheet presentError:error] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) actionOpenQuickly: (id) sender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  [self findOrAddNewTabForFile:[self fileNameFromSelection]] ;
 }
 
 //---------------------------------------------------------------------------*

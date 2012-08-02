@@ -48,11 +48,7 @@
   @private IBOutlet NSSplitView * mIssueSplitView ;
 
   @private IBOutlet NSView * mSourceHostView ;
-
-  @private IBOutlet NSPopUpButton * mEntryListPopUpButton ;
   
-  @private IBOutlet NSButton * mCurrentLineButton ;
-
   @private IBOutlet NSTextView * mOutputTextView ;
   @private IBOutlet NSScrollView * mOutputScrollView ;
   @private NSMutableArray * mIssueInScrollerArray ; // Of PMErrorOrWarningDescriptor
@@ -72,9 +68,6 @@
   @private IBOutlet NSWindow * mGotoWindow ;
   @private IBOutlet NSTextField * mGotoLineTextField ;
 
-//--- Detailled issue message
-  @private IBOutlet NSSplitView * mDetailedIssueSplitView ;
-
 //--- Build, stop button
   @private IBOutlet NSButton * mStartBuildButton ;
   @private IBOutlet NSProgressIndicator * mBuildProgressIndicator ;
@@ -93,7 +86,6 @@
 
 - (OC_GGS_TextDisplayDescriptor *) findOrAddNewTabForFile: (NSString *) inDocumentPath ;
 
-- (IBAction) collapseDetailledMessageAction: (id) inSender ;
 - (IBAction) collapseIssuesAction: (id) inSender ;
 
 - (IBAction) actionGotoLine: (id) inSender ;
@@ -115,8 +107,6 @@
 
 - (void) displaySourceWithURL: (NSURL *) inURL
          atLine: (NSUInteger) inLine ;
-
-- (NSPopUpButton *) entryListPopUpButton ;
 
 - (void) appendBuildOutputData: (NSData *) inData ;
 - (void) buildCompleted ;

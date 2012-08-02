@@ -105,8 +105,8 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     [mScrollView.verticalRulerView setRuleThickness:gCocoaGalgasPreferencesController.ruleThickness] ;
     [mScrollView setRulersVisible:[[NSUserDefaults standardUserDefaults] boolForKey:GGS_show_ruler]] ;
     [mScrollView setHasVerticalRuler:YES] ;
-    mScrollView.documentView = mTextView ;
     [mScrollView setVerticalScroller:[OC_GGS_Scroller new]] ;
+    mScrollView.documentView = mTextView ;
   //--- Pop up Button
     mEntryListPopUpButton = [[NSPopUpButton alloc] initWithFrame:NSMakeRect (5.0, 78.0, 90.0, 22.0)] ;
     mEntryListPopUpButton.autoresizingMask = NSViewWidthSizable | NSViewMinYMargin ;
@@ -124,7 +124,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       context:NULL
     ] ;
     [self refreshShowInvisibleCharacters] ;
-    [documentData.textSyntaxColoring addDisplayDescriptor:self] ;
   //--- Set selection
     NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocumentUsedForDisplaying.fileURL.path, documentData.fileURL.path] ;
     NSString * selectionRangeString = [[NSUserDefaults standardUserDefaults] objectForKey:key] ;
@@ -134,8 +133,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     if (NSMaxRange (selectionRange) <= sourceTextLength) {
       [self setSelectionRangeAndMakeItVisible:selectionRange] ;
     } 
-  //--- Set issues
-//    [self setTextDisplayIssueArray:mDocument.documentIssueArray] ;
+    [documentData.textSyntaxColoring addDisplayDescriptor:self] ;
   }
   return self ;
 }
@@ -154,7 +152,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     removeObserver:self
     forKeyPath:@"values.PMShowInvisibleCharacters"
   ] ;
-  [mTextView.layoutManager replaceTextStorage:[NSTextStorage new]] ;
+  [documentData.textSyntaxColoring.textStorage removeLayoutManager:mTextView.layoutManager] ;
   [mTextView setDelegate:nil] ;
   [mTextView detachTextView] ;
   for (NSView * subview in mEnclosingView.subviews.copy) {
@@ -200,9 +198,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #endif
   if ([inKeyPath isEqualToString:@"values.PMShowInvisibleCharacters"]) {
     [self refreshShowInvisibleCharacters] ;
-  }else if ([inKeyPath isEqualToString:@"menuForEntryPopUpButton"]) {
-    [self willChangeValueForKey:@"menuForEntryPopUpButton"] ;
-    [self  didChangeValueForKey:@"menuForEntryPopUpButton"] ;
   }else{
     [super
       observeValueForKeyPath:inKeyPath
