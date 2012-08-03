@@ -294,15 +294,6 @@
 
 //---------------------------------------------------------------------------*
 
-- (NSTextStorage *) textStorage {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  return mSourceTextStorage ;
-}
-
-//---------------------------------------------------------------------------*
-
 - (NSString *) sourceString {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
@@ -641,11 +632,11 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  [self.textStorage beginEditing] ;
+  [mSourceTextStorage beginEditing] ;
 //---
   NSAttributedString * blockCommentString = [[NSAttributedString alloc] initWithString:[mTokenizer blockComment] attributes:nil] ;
   //NSLog (@"selectedRange [%d, %d]", selectedRange.location, selectedRange.length) ;
-  NSMutableAttributedString * mutableSourceString = self.textStorage ;
+  NSMutableAttributedString * mutableSourceString = mSourceTextStorage ;
   NSString * sourceString = [mutableSourceString string] ;
   const NSRange lineRange = [sourceString lineRangeForRange:inSelectedRangeValue] ;
   //NSLog (@"lineRange [%d, %d]", lineRange.location, lineRange.length) ;
@@ -660,7 +651,7 @@
     }
   }while ((currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location)) ;
 //---
-  [self.textStorage endEditing] ;
+  [mSourceTextStorage endEditing] ;
 //--- Update selected range
   const NSRange newSelectedRange = NSMakeRange (inSelectedRangeValue.location, inSelectedRangeValue.length + insertedCharsCount) ;
 //--- Register undo
@@ -719,12 +710,12 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
 //---
-  [self.textStorage beginEditing] ;
+  [mSourceTextStorage beginEditing] ;
 //--- Block comment string
   NSString * blockCommentString = [mTokenizer blockComment] ;
   const NSUInteger blockCommentLength = [blockCommentString length] ;
 //--- Get source string
-  NSMutableAttributedString * mutableSourceString = [self textStorage] ;
+  NSMutableAttributedString * mutableSourceString = mSourceTextStorage ;
   NSString * sourceString = [mutableSourceString string] ;
   #ifdef DEBUG_UNCOMMENTRANGE
     NSLog (@"blockCommentString '%@', text length %u", blockCommentString, [sourceString length]) ;
@@ -768,7 +759,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     }
   }while ((currentLineRange.location > 0) && (currentLineRange.location >= lineRange.location)) ;
 //---
-  [self.textStorage endEditing] ;
+  [mSourceTextStorage endEditing] ;
 //--- Register undo
   [mUndoManager 
     registerUndoWithTarget:self
@@ -1133,6 +1124,7 @@ static NSInteger numericSort (NSString * inOperand1,
 
 - (void) addDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor {
   [mTextDisplayDescriptorSet addObject:inDisplayDescriptor] ;
+  [inDisplayDescriptor.textView.layoutManager replaceTextStorage:mSourceTextStorage] ;
 //  NSLog (@"AFTER INSERT mTextDisplayDescriptorSet %@", mTextDisplayDescriptorSet) ;
   NSMenu * menu = mTokenizer.menuForEntryPopUpButton ;
   [inDisplayDescriptor populatePopUpButtonWithMenu:menu] ;
@@ -1143,6 +1135,7 @@ static NSInteger numericSort (NSString * inOperand1,
 
 - (void) removeDisplayDescriptor: (OC_GGS_TextDisplayDescriptor *) inDisplayDescriptor {
   [mTextDisplayDescriptorSet removeObject:inDisplayDescriptor] ;
+  [mSourceTextStorage removeLayoutManager:inDisplayDescriptor.textView.layoutManager] ;
 //  NSLog (@"AFTER REMOVE mTextDisplayDescriptorSet %@", mTextDisplayDescriptorSet) ;
 }
 

@@ -48,7 +48,6 @@
 
 - (void) setIssueArray: (NSArray *) inIssueArray ;
 
-- (NSTextStorage *) textStorage ;
 - (NSUndoManager *) undoManager ;
 - (OC_Lexique *) tokenizer ;
 
