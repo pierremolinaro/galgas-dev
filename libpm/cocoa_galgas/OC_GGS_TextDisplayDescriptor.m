@@ -93,7 +93,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       [mTextView setValue:[NSNumber numberWithBool:YES] forKey:@"usesFindBar"] ;
     }
   //---
-    [mTextView.layoutManager replaceTextStorage:documentData.textSyntaxColoring.textStorage] ;
     [mTextView setDelegate:self] ;
   //---
     mScrollView = [[NSScrollView alloc] initWithFrame:NSMakeRect (0.0, 0.0, 100.0, 76.0)] ;
@@ -124,16 +123,16 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       context:NULL
     ] ;
     [self refreshShowInvisibleCharacters] ;
+    [documentData.textSyntaxColoring addDisplayDescriptor:self] ;
   //--- Set selection
     NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocumentUsedForDisplaying.fileURL.path, documentData.fileURL.path] ;
     NSString * selectionRangeString = [[NSUserDefaults standardUserDefaults] objectForKey:key] ;
     // NSLog (@"READ '%@' -> %@", key, selectionRangeString) ;
     const NSRange selectionRange = NSRangeFromString (selectionRangeString) ;
-    const NSUInteger sourceTextLength = documentData.textSyntaxColoring.textStorage.length ;
+    const NSUInteger sourceTextLength = documentData.sourceString.length ;
     if (NSMaxRange (selectionRange) <= sourceTextLength) {
       [self setSelectionRangeAndMakeItVisible:selectionRange] ;
     } 
-    [documentData.textSyntaxColoring addDisplayDescriptor:self] ;
   }
   return self ;
 }
@@ -152,7 +151,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     removeObserver:self
     forKeyPath:@"values.PMShowInvisibleCharacters"
   ] ;
-  [documentData.textSyntaxColoring.textStorage removeLayoutManager:mTextView.layoutManager] ;
   [mTextView setDelegate:nil] ;
   [mTextView detachTextView] ;
   for (NSView * subview in mEnclosingView.subviews.copy) {
