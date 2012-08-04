@@ -16,7 +16,6 @@
 #import "OC_GGS_RulerViewForTextView.h"
 #import "OC_GGS_PreferencesController.h"
 #import "OC_GGS_Scroller.h"
-#import "PMCocoaCallsDebug.h"
 #import "PMIssueDescriptor.h"
 #import "PMDebug.h"
 
@@ -79,9 +78,9 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     ] ;
     mTextView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
     mTextView.usesFindPanel = YES ;
-    mTextView.grammarCheckingEnabled = NO ;
+    [mTextView setGrammarCheckingEnabled:NO] ;
     mTextView.allowsUndo = YES ;
-    mTextView.automaticQuoteSubstitutionEnabled = NO ;
+    [mTextView setAutomaticQuoteSubstitutionEnabled:NO] ;
     mTextView.smartInsertDeleteEnabled = NO ;
     if ([mTextView respondsToSelector:@selector(setAutomaticTextReplacementEnabled:)]) {
       // NSLog (@"AVANT %d", mTextView.isAutomaticTextReplacementEnabled) ;
@@ -124,17 +123,29 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     ] ;
     [self refreshShowInvisibleCharacters] ;
     [documentData.textSyntaxColoring addDisplayDescriptor:self] ;
-  //--- Set selection
-    NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocumentUsedForDisplaying.fileURL.path, documentData.fileURL.path] ;
-    NSString * selectionRangeString = [[NSUserDefaults standardUserDefaults] objectForKey:key] ;
-    // NSLog (@"READ '%@' -> %@", key, selectionRangeString) ;
-    const NSRange selectionRange = NSRangeFromString (selectionRangeString) ;
-    const NSUInteger sourceTextLength = documentData.sourceString.length ;
-    if (NSMaxRange (selectionRange) <= sourceTextLength) {
-      [self setSelectionRangeAndMakeItVisible:selectionRange] ;
-    } 
+   //--- Set selection
+    [[NSRunLoop mainRunLoop]
+      performSelector: @selector (setSelectionAndScrollToVisibleAfterInit)
+      target:self
+      argument:nil
+      order:0
+      modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]
+    ] ;
   }
   return self ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) setSelectionAndScrollToVisibleAfterInit {
+  NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocumentUsedForDisplaying.fileURL.path, documentData.fileURL.path] ;
+  NSString * selectionRangeString = [[NSUserDefaults standardUserDefaults] objectForKey:key] ;
+  // NSLog (@"READ '%@' -> %@", key, selectionRangeString) ;
+  const NSRange selectionRange = NSRangeFromString (selectionRangeString) ;
+  const NSUInteger sourceTextLength = documentData.sourceString.length ;
+  if (NSMaxRange (selectionRange) <= sourceTextLength) {
+    [self setSelectionRangeAndMakeItVisible:selectionRange] ;
+  } 
 }
 
 //---------------------------------------------------------------------------*
@@ -484,7 +495,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     NSInteger i ;
     const NSInteger n = [menuItemArray count] ;
     for (i=n-1 ; (i>=0) && (idx == NSNotFound) ; i--) {
-      NSMenuItem * item = [menuItemArray objectAtIndex:i HERE] ;
+      NSMenuItem * item = [menuItemArray objectAtIndex:i] ;
       const NSUInteger startPoint = [item tag] ;
       if (selectionStart >= startPoint) {
         idx = i ;

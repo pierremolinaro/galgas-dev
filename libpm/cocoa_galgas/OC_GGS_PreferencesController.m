@@ -28,7 +28,6 @@
 #import "OC_GGS_CommandLineOption.h"
 #import "enterDefaultCommandLineOptions.h"
 #import "OC_Lexique.h"
-#import "PMCocoaCallsDebug.h"
 #import "F_CocoaWrapperForGalgas.h"
 #import "PMDebug.h"
 
@@ -112,7 +111,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   if (indexOfSelectedItem >= 0) {
     NSBundle * mb = [NSBundle mainBundle] ;
     NSString * rp = [mb resourcePath] ;
-    result = [rp stringByAppendingPathComponent:[mToolNameArray objectAtIndex:(NSUInteger) indexOfSelectedItem HERE]] ;
+    result = [rp stringByAppendingPathComponent:[mToolNameArray objectAtIndex:(NSUInteger) indexOfSelectedItem]] ;
   }
   return result ;
 }
@@ -126,7 +125,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   [arguments addObject:[self compilerToolPath]] ;
 //--- Add boolean options
   for (NSUInteger i=0 ; i<[mBoolOptionArray count] ; i++) {
-    OC_GGS_CommandLineOption * option = [mBoolOptionArray objectAtIndex:i HERE] ;
+    OC_GGS_CommandLineOption * option = [mBoolOptionArray objectAtIndex:i] ;
     const bool optionValue = [defaults integerForKey: [NSString stringWithFormat:@"%@_%@", GGS_bool_build_option, [option identifier]]] != 0 ;
     if (optionValue) {
       const char c = [option commandChar] ;
@@ -142,7 +141,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   }
 //--- Add integer options
   for (NSUInteger i=0 ; i<[mUIntOptionArray count] ; i++) {
-    OC_GGS_CommandLineOption * option = [mUIntOptionArray objectAtIndex:i HERE] ;
+    OC_GGS_CommandLineOption * option = [mUIntOptionArray objectAtIndex:i] ;
     const NSUInteger optionValue = (NSUInteger) [defaults integerForKey: [NSString stringWithFormat:@"%@_%@", GGS_uint_build_option, [option identifier]]];
     if (optionValue != 0) {
       const char c = [option commandChar] ;
@@ -158,7 +157,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   }
 //--- Add string options
   for (NSUInteger i=0 ; i<[mStringOptionArray count] ; i++) {
-    OC_GGS_CommandLineOption * option = [mStringOptionArray objectAtIndex:i HERE] ;
+    OC_GGS_CommandLineOption * option = [mStringOptionArray objectAtIndex:i] ;
     NSString * optionValue = [defaults objectForKey: [NSString stringWithFormat:@"%@_%@", GGS_string_build_option, [option identifier]]];
     if ([optionValue length] > 0) {
       const char c = [option commandChar] ;
@@ -177,7 +176,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 //---- Build string for displaying
   NSMutableString * s = [NSMutableString new] ;
   for (NSUInteger i=0 ; i<[arguments count] ; i++) {
-    [s appendString:[arguments objectAtIndex:i HERE]] ;
+    [s appendString:[arguments objectAtIndex:i]] ;
     [s appendString:@" "] ;  
   }
 //---
@@ -333,7 +332,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     //--- Not found
       NSArray * splitName = [[inTokenizer styleIdentifierForStyleIndex:i] componentsSeparatedByString:@"-"] ;
       if ([splitName count] == 2) {
-        NSString * oldName = [NSString stringWithFormat:@"%@_%@", GGS_named_color, [splitName objectAtIndex:1 HERE]] ;
+        NSString * oldName = [NSString stringWithFormat:@"%@_%@", GGS_named_color, [splitName objectAtIndex:1]] ;
         if ([ud objectForKey:oldName] != nil) {
           [[NSUserDefaults standardUserDefaults]
             setObject:[ud objectForKey:oldName]
@@ -494,7 +493,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   NSArray * tokenizerArray = tokenizers () ;
   unsigned t ;
   for (t=0 ; t<[tokenizerArray count] ; t++) {
-    OC_Lexique * tokenizer = [tokenizerArray objectAtIndex:t HERE] ;
+    OC_Lexique * tokenizer = [tokenizerArray objectAtIndex:t] ;
     [self setTextColorsAndFontForTokenizer:tokenizer atIndex:t] ;
   }
 //--- Remove tabview item Model
@@ -522,11 +521,11 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     [item setTag:(NSInteger) inIndex] ;
   }else{
   //--- Find or Add menu item
-    NSInteger idx = [inMenu indexOfItemWithTitle:[inTitleComponents objectAtIndex:0 HERE]] ;
+    NSInteger idx = [inMenu indexOfItemWithTitle:[inTitleComponents objectAtIndex:0]] ;
     if (idx < 0) {
       idx = [inMenu numberOfItems] ;
       [inMenu
-        addItemWithTitle:[inTitleComponents objectAtIndex:0 HERE]
+        addItemWithTitle:[inTitleComponents objectAtIndex:0]
         action:NULL
         keyEquivalent:@""
       ] ;
@@ -562,7 +561,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   NSArray * tokenizerArray = tokenizers () ;
   NSUInteger macroCount = 0 ;
   for (NSUInteger i=0 ; i<[tokenizerArray count] ; i++) {
-    OC_Lexique * tokenizer = [tokenizerArray objectAtIndex:i HERE] ;
+    OC_Lexique * tokenizer = [tokenizerArray objectAtIndex:i] ;
     macroCount += [tokenizer textMacroCount] ;
   }
   if (macroCount == 0) {
@@ -570,7 +569,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
     [mainMenu removeItemAtIndex:[mainMenu indexOfItemWithSubmenu:mTextMacroMenu]];
   }else{
     for (NSUInteger i=0 ; i<[tokenizerArray count] ; i++) {
-      OC_Lexique * tokenizer = [tokenizerArray objectAtIndex:i HERE] ;
+      OC_Lexique * tokenizer = [tokenizerArray objectAtIndex:i] ;
       for (NSUInteger j=0 ; j<[tokenizer textMacroCount] ; j++) {
         NSString * title = [tokenizer textMacroTitleAtIndex:j] ;
         NSArray * components = [title componentsSeparatedByString:@"/"] ;
@@ -602,7 +601,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   r.origin.y = ioRect->origin.y ;
   r.size.height = 20.0 ;
   for (NSUInteger i=0 ; i<[mBoolOptionArray count] ; i++) {
-    OC_GGS_CommandLineOption * option = [mBoolOptionArray objectAtIndex:i HERE] ;
+    OC_GGS_CommandLineOption * option = [mBoolOptionArray objectAtIndex:i] ;
     NSButton * cb = [[NSButton alloc] init] ;
     NSString * title = [option title] ;
     NSDictionary * d = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -645,7 +644,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   r.size.height = 20.0 ;
   UInt32 i ;
   for (i=0 ; i<[mUIntOptionArray count] ; i++) {
-    OC_GGS_CommandLineOption * option = [mUIntOptionArray objectAtIndex:i HERE] ;
+    OC_GGS_CommandLineOption * option = [mUIntOptionArray objectAtIndex:i] ;
   //--- Input text field
     NSTextField * tx = [[NSTextField alloc] init] ;
     [tx setAutoresizingMask: NSViewMaxXMargin | NSViewMinYMargin] ;
@@ -710,7 +709,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   NSRect viewFrame = [inView frame] ;
   UInt32 i ;
   for (i=0 ; i<[mStringOptionArray count] ; i++) {
-    OC_GGS_CommandLineOption * option = [mStringOptionArray objectAtIndex:i HERE] ;
+    OC_GGS_CommandLineOption * option = [mStringOptionArray objectAtIndex:i] ;
   //--- Input text field
     NSTextField * tx = [[NSTextField alloc] init] ;
     [tx setAutoresizingMask: NSViewMaxXMargin | NSViewMinYMargin] ;
@@ -801,9 +800,9 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 //--- Load tool nibs ?
   NSArray * nibArray = nibsAndClasses () ;
   for (NSUInteger i=0 ; i<[nibArray count] ; i++) {
-    NSArray * entry = [nibArray objectAtIndex:i HERE] ;
-    NSString * nibName = [entry objectAtIndex:0 HERE] ;
-    Class mainClass = [entry objectAtIndex:1 HERE] ;
+    NSArray * entry = [nibArray objectAtIndex:i] ;
+    NSString * nibName = [entry objectAtIndex:0] ;
+    Class mainClass = [entry objectAtIndex:1] ;
     id owner = [mainClass new] ;
     [NSBundle loadNibNamed:nibName owner:owner] ;
   }
@@ -971,7 +970,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
 //  printf ("%u %u\n", [docArray count], rulerIsVisible) ;
   unsigned d ;
   for (d=0 ; d<[docArray count] ; d++) {
-    OC_GGS_Document * doc = [docArray objectAtIndex: d HERE] ;
+    OC_GGS_Document * doc = [docArray objectAtIndex: d] ;
     [doc changeTextRulerVisible:rulerIsVisible forRuleThickness:ruleThickness] ;
   }
 //--- Update default setting
@@ -1045,9 +1044,9 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   // NSLog (@"infoDictionary '%@'", infoDictionary) ;
   NSArray * allDocumentTypes = [infoDictionary objectForKey:@"CFBundleDocumentTypes"] ;
   // NSLog (@"allDocumentTypes '%@'", allDocumentTypes) ;
-  NSDictionary * docTypeDict = [allDocumentTypes objectAtIndex: (NSUInteger) [inSender tag] HERE] ;
+  NSDictionary * docTypeDict = [allDocumentTypes objectAtIndex: (NSUInteger) [inSender tag]] ;
   NSArray * documentTypeExtensions = [docTypeDict objectForKey:@"CFBundleTypeExtensions"] ;
-  NSString * extension = [documentTypeExtensions objectAtIndex:0 HERE] ;
+  NSString * extension = [documentTypeExtensions objectAtIndex:0] ;
   // NSLog (@"extension '%@'", extension) ;
   NSSavePanel * savePanel = [inSender representedObject] ;
 //  [savePanel setRequiredFileType:extension] ;
@@ -1065,7 +1064,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   NSArray * allDocumentTypes = [infoDictionary objectForKey:@"CFBundleDocumentTypes"] ;
   // NSLog (@"allDocumentTypes '%@'", allDocumentTypes) ;
   for (NSUInteger i=0 ; i<[allDocumentTypes count] ; i++) {
-    NSDictionary * docTypeDict = [allDocumentTypes objectAtIndex:i HERE] ;
+    NSDictionary * docTypeDict = [allDocumentTypes objectAtIndex:i] ;
     // NSLog (@"docTypeDict '%@'", docTypeDict) ;
     NSArray * documentTypeExtensions = [docTypeDict objectForKey:@"CFBundleTypeExtensions"] ;
     // NSLog (@"documentTypeExtensions '%@'", documentTypeExtensions) ;
@@ -1133,7 +1132,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   //--- Get line command array
     NSArray * commandLineArray = [self commandLineItemArray] ;
   //--- Command line tool does actually exist ? (First argument is not "?")
-    if ([[commandLineArray objectAtIndex:0 HERE] isEqualToString:@"?"]) {
+    if ([[commandLineArray objectAtIndex:0] isEqualToString:@"?"]) {
       NSAlert *alert = [NSAlert alertWithMessageText:@"Error: Cannot Run"
         defaultButton: nil
         alternateButton: nil
@@ -1152,7 +1151,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
       [mRunWindow makeKeyAndOrderFront:self] ;
     //--- Create task
       mTask = [[NSTask alloc] init] ;
-      [mTask setLaunchPath:[commandLineArray objectAtIndex:0 HERE]] ;
+      [mTask setLaunchPath:[commandLineArray objectAtIndex:0]] ;
       [mTask setArguments:[commandLineArray subarrayWithRange:NSMakeRange (1, [commandLineArray count]-1)]] ;
     //--- Set standard output notification
       NSNotificationCenter * center = [NSNotificationCenter defaultCenter] ;
@@ -1343,7 +1342,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   const NSRange rangeNS = {0, 2} ;
   unsigned i ;
   for (i=0 ; i<[allKeys count] ; i++) {
-    NSString * key = [allKeys objectAtIndex:i HERE] ;
+    NSString * key = [allKeys objectAtIndex:i] ;
     if (([key compare:@"GGS_" options:NSLiteralSearch range:rangeGGS] != NSOrderedSame) &&
         ([key compare:@"NS" options:NSLiteralSearch range:rangeNS] != NSOrderedSame)) {
       n ++ ;
@@ -1369,7 +1368,7 @@ OC_GGS_PreferencesController * gCocoaGalgasPreferencesController ;
   const NSRange rangeGGS = {0, 4} ;
   const NSRange rangeNS = {0, 2} ;
   for (NSUInteger i=0 ; i<[allKeys count] ; i++) {
-    NSString * key = [allKeys objectAtIndex:i HERE] ;
+    NSString * key = [allKeys objectAtIndex:i] ;
     if (([key compare:@"GGS_" options:NSLiteralSearch range:rangeGGS] != NSOrderedSame) &&
         ([key compare:@"NS" options:NSLiteralSearch range:rangeNS] != NSOrderedSame)) {
       [ud setObject:nil forKey:key] ;

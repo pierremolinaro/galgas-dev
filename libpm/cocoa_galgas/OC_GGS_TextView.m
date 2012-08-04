@@ -10,7 +10,6 @@
 #import "OC_GGS_TextView.h"
 #import "OC_GGS_TextDisplayDescriptor.h"
 #import "OC_GGS_RulerViewForTextView.h"
-#import "PMCocoaCallsDebug.h"
 #import "OC_GGS_TextSyntaxColoring.h"
 #import "PMErrorOrWarningDescriptor.h"
 #import "OC_Token.h"
@@ -178,7 +177,7 @@
     NSArray * tokenArray = [dsc tokenArray] ;
     BOOL found = NO ;
     for (NSUInteger i=0 ; (i<[tokenArray count]) && ! found ; i++) {
-      OC_Token * token = [tokenArray objectAtIndex:i HERE] ;
+      OC_Token * token = [tokenArray objectAtIndex:i] ;
       const NSRange range = [token range] ;
       found = ((range.location + range.length) > inProposedSelRange.location) && (range.location <= inProposedSelRange.location) ;
       if (found) {

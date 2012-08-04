@@ -12,7 +12,6 @@
 #import "OC_GGS_DocumentData.h"
 #import "PMButtonWithRemove.h"
 #import "OC_GGS_TextSyntaxColoring.h"
-#import "PMCocoaCallsDebug.h"
 #import "PMDebug.h"
 
 //---------------------------------------------------------------------------*
@@ -125,14 +124,14 @@
 //---------------------------------------------------------------------------*
 
 - (void) removeTabAction: (PMButtonWithRemove *) inSender {
-  [mTarget removeSelectedTabAction:[mObservedArray objectAtIndex:(NSUInteger) inSender.tag HERE]] ;
+  [mTarget removeSelectedTabAction:[mObservedArray objectAtIndex:(NSUInteger) inSender.tag]] ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) dirtyStateDidChange: (OC_GGS_TextDisplayDescriptor *) inObservedObject {
   const NSUInteger idx = [mObservedArray indexOfObject:inObservedObject] ;
-  PMButtonWithRemove * button = [mButtonArray objectAtIndex:idx HERE] ;
+  PMButtonWithRemove * button = [mButtonArray objectAtIndex:idx] ;
   OC_GGS_TextSyntaxColoring * textSyntaxColoring = inObservedObject.documentData.textSyntaxColoring ;
   [button setIsDirty:textSyntaxColoring.isDirty] ;
 }
@@ -151,7 +150,7 @@
   }else if ([inKeyPath isEqualToString:@"selectionIndex"]) {
     const NSUInteger selectionIndex = ((NSArrayController *) inObject).selectionIndex ;
     if (selectionIndex != NSNotFound) {
-      PMButtonWithRemove * newSelection = [mButtonArray objectAtIndex:selectionIndex HERE] ;
+      PMButtonWithRemove * newSelection = [mButtonArray objectAtIndex:selectionIndex] ;
       for (PMButtonWithRemove * button in mButtonArray) {
         [button setState:(button == newSelection) ? NSOnState : NSOffState] ;
       }

@@ -26,7 +26,6 @@
 #import "OC_GGS_RulerViewForTextView.h"
 #import "OC_Lexique.h"
 #import "F_CocoaWrapperForGalgas.h"
-#import "PMCocoaCallsDebug.h"
 #import "PMIssueDescriptor.h"
 #import "OC_GGS_TextSyntaxColoring.h"
 #import "OC_GGS_TextDisplayDescriptor.h"
@@ -48,10 +47,7 @@
 
 //---------------------------------------------------------------------------*
 
-@synthesize mIssueArray ;
-@synthesize mDisplayDescriptorArray ;
 @synthesize mBuildTaskIsRunning ;
-@synthesize mDocumentData ;
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -329,7 +325,7 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
   OC_GGS_TextDisplayDescriptor * textDisplayDescriptor = [[OC_GGS_TextDisplayDescriptor alloc]
     initWithDocumentData:selectedObject.documentData
     displayDocument:self
@@ -411,7 +407,7 @@
   //--- Get selected line
     const NSUInteger selectedLine = (NSUInteger) [mGotoLineTextField integerValue] ;
   //--- Goto selected line
-    OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
+    OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
     [selectedObject gotoLine:selectedLine] ;
   }
 }
@@ -422,7 +418,7 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
   [selectedObject commentSelection] ;
 }
 
@@ -432,7 +428,7 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
   [selectedObject uncommentSelection] ;
 }
 
@@ -442,7 +438,7 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
   [selectedObject shiftLeftAction] ;
 }
 
@@ -452,7 +448,7 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
   [selectedObject shiftRightAction] ;
 }
 
@@ -461,7 +457,7 @@
 - (BOOL) validateMenuItem:(NSMenuItem *) item {
   BOOL result = YES ;
   if ((item.action == @selector (actionComment:)) || (item.action == @selector (actionUncomment:))) {
-    OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
+    OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
     result = selectedObject.documentData.textSyntaxColoring.tokenizer.blockComment.length > 0 ;
   }
   return result ;
@@ -496,7 +492,7 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
   [selectedObject.textView print:sender] ;
 }
 
@@ -586,7 +582,7 @@
   #endif
 //  NSLog (@"returnCode %d", returnCode) ;
   if (returnCode == NSAlertAlternateReturn) { // Revert button
-    [[NSRunLoop currentRunLoop]
+    [[NSRunLoop mainRunLoop]
       performSelector: @selector (updateFromFileSystem:)
       target:self
       argument:nil
@@ -628,7 +624,7 @@
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
 //---
-  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0 HERE] ;
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
   if (selectedObject.documentData == mDocumentData) {
     [super saveDocument:inSender] ;
   }else{
@@ -694,16 +690,16 @@
       
       for(NSUInteger i = 0; i < count; i++)
       {
-          NSString *type = [[documentTypes objectAtIndex:i HERE]
+          NSString *type = [[documentTypes objectAtIndex:i]
               objectForKey:@"CFBundleTypeName"];
           if(type && [type isEqualToString:documentTypeName])
           {
-              NSArray *typeCodeStrings = [[documentTypes objectAtIndex:i HERE]
+              NSArray *typeCodeStrings = [[documentTypes objectAtIndex:i]
                   objectForKey:@"CFBundleTypeOSTypes"];
               if(typeCodeStrings)
               {
                  NSString *firstTypeCodeString = [typeCodeStrings
-                      objectAtIndex:0 HERE];
+                      objectAtIndex:0];
                   if (firstTypeCodeString)
                   {
                       typeCode = [NSNumber                            numberWithUnsignedLong:
@@ -895,13 +891,13 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     nil
   ] ;
   NSMutableAttributedString * outputAttributedString = [[NSMutableAttributedString alloc]
-    initWithString:[messageArray objectAtIndex:0 HERE]
+    initWithString:[messageArray objectAtIndex:0]
     attributes:defaultDictionary
   ] ;
 //--- Send other components
   NSMutableDictionary * componentAttributeDictionary = defaultDictionary.mutableCopy ;
   for (NSUInteger i=1 ; i<messageArray.count ; i++) {
-    NSString * component = [messageArray objectAtIndex:i HERE] ;
+    NSString * component = [messageArray objectAtIndex:i] ;
     NSUInteger idx = 0 ;
     while ((idx < component.length) && ([component characterAtIndex:idx] == '[')) {
       idx ++ ;
@@ -982,7 +978,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     nil
   ] ;
   NSAttributedString * attributedString = [[NSAttributedString alloc]
-    initWithString:@"Done.\n"
+    initWithString:(nil == mBuildTask) ? @"Aborted.\n" : @"Done.\n"
     attributes:defaultDictionary
   ] ;
   [mOutputTextView.textStorage appendAttributedString:attributedString] ;
@@ -1032,7 +1028,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   BOOL isEdited = NO ;
   NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
   for (NSUInteger i=0 ; (i<sourceDisplayArray.count) && ! isEdited ; i++) {
-    OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:i HERE] ;
+    OC_GGS_TextDisplayDescriptor * textDisplay = [sourceDisplayArray objectAtIndex:i] ;
     OC_GGS_TextSyntaxColoring * textSyntaxColoring = textDisplay.documentData.textSyntaxColoring ;
     isEdited = textSyntaxColoring.isDirty ;
   }
@@ -1070,7 +1066,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   if (nil != documentData) { // Find a text display descriptor
     NSArray * sourceDisplayDescriptorArray = mSourceDisplayArrayController.arrangedObjects ;
     for (NSUInteger i=0 ; (i<sourceDisplayDescriptorArray.count) && (nil == foundSourceText) ; i++) {
-      OC_GGS_TextDisplayDescriptor * std = [sourceDisplayDescriptorArray objectAtIndex:i HERE] ;
+      OC_GGS_TextDisplayDescriptor * std = [sourceDisplayDescriptorArray objectAtIndex:i] ;
       if (std.documentData == documentData) {
         foundSourceText = std ;
       }
@@ -1122,7 +1118,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     [[NSUserDefaults standardUserDefaults] setInteger:(NSInteger) sel forKey:key] ;
     // NSLog (@"WRITE %@ -> %lu", key, sel) ;
     if (sel != NSNotFound) {
-      OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel HERE] ;
+      OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel] ;
       object.enclosingView.frame = mSourceHostView.bounds ;
       // NSLog (@"object.scrollView %d", object.scrollView.autoresizesSubviews) ;
       [mSourceHostView addSubview:object.enclosingView] ;
@@ -1132,7 +1128,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     const NSUInteger sel = mSourceDisplayArrayController.selectionIndex ;
     if (sel != NSNotFound) {
       NSArray * arrangedObjects = mSourceDisplayArrayController.arrangedObjects ;
-      OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel HERE] ;
+      OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel] ;
       [object selectEntryPopUp] ;
     }
   }
@@ -1158,7 +1154,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   #endif
   NSArray * sourceDisplayDescriptorArray = mSourceDisplayArrayController.arrangedObjects ;
   const NSUInteger sel = mSourceDisplayArrayController.selectionIndex ;
-  OC_GGS_TextDisplayDescriptor * currentSourceText = [sourceDisplayDescriptorArray objectAtIndex:sel HERE] ;
+  OC_GGS_TextDisplayDescriptor * currentSourceText = [sourceDisplayDescriptorArray objectAtIndex:sel] ;
   OC_GGS_TextSyntaxColoring * textSyntaxColoring = currentSourceText.documentData.textSyntaxColoring ;
 //--- Get source string
   NSString * sourceString = textSyntaxColoring.sourceString ;

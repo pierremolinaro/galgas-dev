@@ -25,7 +25,6 @@
 #import "OC_GGS_RulerViewForTextView.h"
 #import "OC_GGS_TextView.h"
 #import "PMErrorOrWarningDescriptor.h"
-#import "PMCocoaCallsDebug.h"
 #import "PMIssueInRuler.h"
 #import "OC_GGS_Document.h"
 #import "PMDebug.h"
