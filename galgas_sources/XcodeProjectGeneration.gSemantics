@@ -859,10 +859,10 @@ routine generateXcodeProject
   ??@string in_xcodeproj_filePath
   ??@stringlist inResourceFiles
   ??@string inReferenceFilePath
-  ??@stringlist inArchitectureList
   ??@string inSDK
   ??@string inLIBPMpath
   ??@bool inMultiThreadingEnabled
+  ??@bool inUsesARC
 :
   @XcodeProjectDescription XcodeProjectDescription ;
   initXcodeProjectDescription ?XcodeProjectDescription ;
@@ -1353,9 +1353,9 @@ routine generateXcodeProject
   @stringlist projectDefaultSettings ;
   enterProjectDefaultSettings
     !pathes
-    !inArchitectureList
     !inSDK
     ?projectDefaultSettings
+    !inUsesARC
   ;
 
 #-------------------------------------------------- Build Project file

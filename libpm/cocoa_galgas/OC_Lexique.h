@@ -33,9 +33,9 @@
 
 @interface OC_GGS_TemplateDelimiter : NSObject
 
-@property (strong, nonatomic, readonly) NSString * startString ;
-@property (strong, nonatomic, readonly) NSString * endString ;
-@property (assign, nonatomic, readonly) BOOL discardStartString ;
+@property (assign, readonly PROPERTY_COMMA_ATOMIC) NSString * startString ;
+@property (assign, readonly PROPERTY_COMMA_ATOMIC) NSString * endString ;
+@property (assign, readonly PROPERTY_COMMA_ATOMIC) BOOL discardStartString ;
 
 - (id) initWithStartString: (NSString *) inStartString
        endString: (NSString *) inEndString
@@ -72,7 +72,7 @@ typedef struct {
   @private NSDictionary * mCustomSyntaxColoringDictionary ;
 }
 
-@property (retain, atomic, readonly) NSMenu * menuForEntryPopUpButton ;
+@property (retain, readonly PROPERTY_COMMA_ATOMIC) NSMenu * menuForEntryPopUpButton ;
 
 - (void) detach ;
 

@@ -11,7 +11,6 @@
 #import "OC_GGS_TextDisplayDescriptor.h"
 #import "OC_Lexique.h"
 #import "OC_Token.h"
-#import "PMCocoaCallsDebug.h"
 #import "OC_GGS_PreferencesController.h"
 #import "PMErrorOrWarningDescriptor.h"
 #import "OC_GGS_DocumentData.h"
@@ -76,7 +75,7 @@
   double maxAscender = [font ascender] + 4.0 ;
   double maxLeadingMinusDescender = [font leading] - [font descender] ;
   for (NSUInteger i=0 ; i<[mFontAttributesDictionaryArray count] ; i++) {
-    NSDictionary * d = [mFontAttributesDictionaryArray objectAtIndex:i HERE] ;
+    NSDictionary * d = [mFontAttributesDictionaryArray objectAtIndex:i] ;
     font = [d objectForKey:NSFontAttributeName] ;
     maxAscender = fmax (maxAscender, [font ascender] + 4.0) ;
     maxLeadingMinusDescender = fmax (maxLeadingMinusDescender, [font leading] - [font descender]) ;
@@ -94,7 +93,7 @@
     [paragraghStyle setMaximumLineHeight:mMaxAscender + mMaxLeadingMinusDescender] ;
     [paragraghStyle setMinimumLineHeight:mMaxAscender + mMaxLeadingMinusDescender] ;
     if ([mFontAttributesDictionaryArray count] > 0) {
-      NSMutableDictionary * d = [mFontAttributesDictionaryArray objectAtIndex:0 HERE] ;
+      NSMutableDictionary * d = [mFontAttributesDictionaryArray objectAtIndex:0] ;
       [d setObject:paragraghStyle forKey:NSParagraphStyleAttributeName] ;
     }
   }
@@ -371,11 +370,11 @@
     if (inChangedColorIndex == 0) {
       const NSRange allTextRange = {0, [mSourceTextStorage length]} ;
       [mSourceTextStorage
-        setAttributes:[mFontAttributesDictionaryArray objectAtIndex:0 HERE]
+        setAttributes:[mFontAttributesDictionaryArray objectAtIndex:0]
         range:allTextRange
       ] ;
       for (NSUInteger i=0 ; i<[mTokenArray count] ; i++) {
-        OC_Token * token = [mTokenArray objectAtIndex:i HERE] ;
+        OC_Token * token = [mTokenArray objectAtIndex:i] ;
         const NSInteger colorIndex = [token style] ;
         const NSRange range = [token range] ;
         if (colorIndex == -2) {
@@ -387,14 +386,14 @@
         
         }else if (colorIndex > 0) {
           [mSourceTextStorage
-            addAttributes:[mFontAttributesDictionaryArray objectAtIndex:colorIndex HERE]
+            addAttributes:[mFontAttributesDictionaryArray objectAtIndex:colorIndex]
             range:range
           ] ;
         }
       }    
     }else{
       for (NSUInteger i=0 ; i<[mTokenArray count] ; i++) {
-        OC_Token * token = [mTokenArray objectAtIndex:i HERE] ;
+        OC_Token * token = [mTokenArray objectAtIndex:i] ;
         const NSInteger colorIndex = [token style] ;
         if (colorIndex == inChangedColorIndex) {
           const NSRange range = [token range] ;
@@ -410,7 +409,7 @@
           
           }else if (colorIndex > 0) {
             [mSourceTextStorage
-              addAttributes:[mFontAttributesDictionaryArray objectAtIndex:colorIndex HERE]
+              addAttributes:[mFontAttributesDictionaryArray objectAtIndex:colorIndex]
               range:range
             ] ;
           }
@@ -529,7 +528,7 @@
         NSLog (@"PERFORM REMOVE ATTRIBUTE range [%lu, %lu] text length %lu", eraseRange.location, eraseRange.length, textLength) ;
       #endif
       [mSourceTextStorage
-        setAttributes:[mFontAttributesDictionaryArray objectAtIndex:0 HERE]
+        setAttributes:[mFontAttributesDictionaryArray objectAtIndex:0]
         range:eraseRange
       ] ;
       #ifdef DEBUG_MESSAGES
@@ -541,7 +540,7 @@
      NSLog (@"COLORING from %ld to %ld", firstIndexToRedraw, lastIndexToRedraw) ;
     #endif
     for (NSInteger i=firstIndexToRedraw ; i<=lastIndexToRedraw ; i++) {
-      OC_Token * token = [mTokenArray objectAtIndex:i HERE] ;
+      OC_Token * token = [mTokenArray objectAtIndex:i] ;
       const NSRange range = [token range] ;
       #ifdef DEBUG_MESSAGES
         NSLog (@"PERFORM COLORING '%@' range [%lu, %lu] [mSourceTextStorage length] %lu", [mSourceTextStorage.string substringWithRange:range], range.location, range.length, mSourceTextStorage.string.length) ;
@@ -560,7 +559,7 @@
         ] ;
       }else if (style > 0) {
         [mSourceTextStorage
-          addAttributes:[mFontAttributesDictionaryArray objectAtIndex:style HERE]
+          addAttributes:[mFontAttributesDictionaryArray objectAtIndex:style]
           range:range
         ] ;
       }
@@ -596,7 +595,7 @@
       userInfo:nil
       repeats:NO
     ] ;
-    [[NSRunLoop currentRunLoop]
+    [[NSRunLoop mainRunLoop]
       addTimer:mTimerForAutosaving
       forMode:NSDefaultRunLoopMode
     ] ;
@@ -607,9 +606,7 @@
 
 - (void) autosaveTimerDidFire: (NSTimer *) inTimer {
   mTimerForAutosaving = nil ;
-  if (isDirty) {
-    [documentData performSaveToURL:nil] ;
-  }
+  [documentData save] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -835,7 +832,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       }else{
         color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
       }
-      d = [mFontAttributesDictionaryArray objectAtIndex:idx HERE] ;
+      d = [mFontAttributesDictionaryArray objectAtIndex:idx] ;
       [d setObject:color forKey:NSForegroundColorAttributeName] ;
       [self applyTextAttributeForIndex:idx] ;
       break;
@@ -854,7 +851,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       }else{
         color = (NSColor *) [NSUnarchiver unarchiveObjectWithData:data] ;
       }
-      d = [mFontAttributesDictionaryArray objectAtIndex:idx HERE] ;
+      d = [mFontAttributesDictionaryArray objectAtIndex:idx] ;
       [d setObject:color forKey:NSBackgroundColorAttributeName] ;
       [self applyTextAttributeForIndex:idx] ;
       break;
@@ -868,7 +865,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       [self applyTextAttributeForIndex:-2] ;
       break;
     case TAG_FOR_FONT_ATTRIBUTE:
-      d = [mFontAttributesDictionaryArray objectAtIndex:idx HERE] ;
+      d = [mFontAttributesDictionaryArray objectAtIndex:idx] ;
       [d setObject:[NSUnarchiver unarchiveObjectWithData:data] forKey:NSFontAttributeName] ;
       [self computeMaxLineHeight: & lineHeightDidChange] ;
       [self applyTextAttributeForIndex:lineHeightDidChange ? 0 : idx] ;
@@ -901,7 +898,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   NSArray * allDocumentTypes = [infoDictionary objectForKey:@"CFBundleDocumentTypes"] ;
   // NSLog (@"allDocumentTypes '%@'", allDocumentTypes) ;
   for (NSUInteger i=0 ; i<[allDocumentTypes count] ; i++) {
-    NSDictionary * docTypeDict = [allDocumentTypes objectAtIndex:i HERE] ;
+    NSDictionary * docTypeDict = [allDocumentTypes objectAtIndex:i] ;
     // NSLog (@"docTypeDict '%@'", docTypeDict) ;
     NSArray * documentTypeExtensions = [docTypeDict objectForKey:@"CFBundleTypeExtensions"] ;
     // NSLog (@"documentTypeExtensions '%@'", documentTypeExtensions) ;
@@ -1046,7 +1043,7 @@ static NSInteger numericSort (NSString * inOperand1,
   BOOL hasAtomicSelection = YES ;
   BOOL found = NO ;
   for (NSUInteger i=0 ; (i<[mTokenArray count]) && ! found ; i++) {
-    OC_Token * token = [mTokenArray objectAtIndex:i HERE] ;
+    OC_Token * token = [mTokenArray objectAtIndex:i] ;
     const NSRange allTokenCharacterRange = [token range] ;
     found = ((allTokenCharacterRange.location + allTokenCharacterRange.length) > inSelectedRange.location)
          && (allTokenCharacterRange.location <= inSelectedRange.location) ;
@@ -1101,14 +1098,14 @@ static NSInteger numericSort (NSString * inOperand1,
       NSArray * references = [kindDictionary objectForKey:kindObject] ;
       NSString * title = [NSString
         stringWithFormat:@"%@ (%ld item%@)",
-        [indexingTitles objectAtIndex:kind HERE],
+        [indexingTitles objectAtIndex:kind],
         [references count],
         (([references count] > 1) ? @"s" : @"")
       ] ;
       [menu addItemWithTitle:title action:nil keyEquivalent:@""] ;
       for (NSString * descriptor in references) {
         NSArray * components = [descriptor componentsSeparatedByString:@":"] ;
-        NSString * filePath = [components objectAtIndex:4 HERE] ;
+        NSString * filePath = [components objectAtIndex:4] ;
         title = [NSString stringWithFormat:@"%@, line %@", filePath.lastPathComponent, [components objectAtIndex:1]] ;
         NSMenuItem * item = [menu addItemWithTitle:title action:@selector (indexingMenuAction:) keyEquivalent:@""] ;
         [item setTarget:inTextDisplayDescriptor.textView] ;

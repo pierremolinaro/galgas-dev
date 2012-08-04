@@ -27,7 +27,6 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 //---------------------------------------------------------------------------*
 
 @synthesize document ;
-@synthesize textSyntaxColoring ;
 @synthesize fileURL ;
 
 //---------------------------------------------------------------------------*
@@ -35,7 +34,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 //---------------------------------------------------------------------------*
 
 - (NSUInteger) locationForLineInSource: (NSInteger) inLine {
-   NSString * sourceString = textSyntaxColoring.sourceString ;
+   NSString * sourceString = mTextSyntaxColoring.sourceString ;
   const NSUInteger sourceStringLength = sourceString.length ;
   NSInteger lineIndex = 0 ;
   NSUInteger idx = 0 ;
@@ -69,7 +68,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
       [mIssueArray addObject:errorOrWarning] ;
     }
   }
-  [textSyntaxColoring setIssueArray:mIssueArray] ;
+  [mTextSyntaxColoring setIssueArray:mIssueArray] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -94,7 +93,7 @@ static NSArray * gIssueArray ;
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
 //--- Get source string
-  NSString * source = [textSyntaxColoring sourceString] ;
+  NSString * source = [mTextSyntaxColoring sourceString] ;
 //--- Search for "\r" ?
   BOOL needsConversionForCR = NO ;
   if ([[NSUserDefaults standardUserDefaults] boolForKey:@"PMConvert_CRLF_And_CR_To_LF_AtStartUp"]) {
@@ -152,7 +151,7 @@ static NSArray * gIssueArray ;
     }
   //--- Display sheet if conversion done
     if ([s length] > 0) {
-      [textSyntaxColoring replaceSourceStringWithString:source] ;
+      [mTextSyntaxColoring replaceSourceStringWithString:source] ;
       NSAlert * alert = [NSAlert 
         alertWithMessageText:@"Source String Conversion"
         defaultButton:@"Ok"
@@ -209,7 +208,7 @@ static NSArray * gIssueArray ;
     }
   }
 //--- Delegate for syntax coloring
-  textSyntaxColoring = [[OC_GGS_TextSyntaxColoring alloc]
+  mTextSyntaxColoring = [[OC_GGS_TextSyntaxColoring alloc]
     initWithSourceString:source
     tokenizer:tokenizerForExtension (fileURL.absoluteString.pathExtension)
     documentData:self
@@ -217,7 +216,7 @@ static NSArray * gIssueArray ;
   ] ;
 //---
   if (source != nil) {
-    [[NSRunLoop currentRunLoop]
+    [[NSRunLoop mainRunLoop]
       performSelector:@selector (performCharacterConversion)
       target:self
       argument:nil
@@ -259,8 +258,8 @@ static NSArray * gIssueArray ;
 
 - (void) detachFromCocoaDocument {
   document = nil ;
-  [textSyntaxColoring detach] ;
-  textSyntaxColoring = nil ;
+  [mTextSyntaxColoring detach] ;
+  mTextSyntaxColoring = nil ;
 }
 
 //---------------------------------------------------------------------------*
@@ -268,7 +267,7 @@ static NSArray * gIssueArray ;
 + (void) cocoaDocumentWillClose {
   [OC_GGS_DocumentData saveAllDocuments] ;
   for (OC_GGS_DocumentData * documentData in gDocumentDataDictionary.allValues.copy) {
-    // NSLog (@"%lu for %@", documentData.textSyntaxColoring.displayDescriptorCount, documentData.fileURL) ;
+    // NSLog (@"%lu for %@", documentData.mTextSyntaxColoring.displayDescriptorCount, documentData.fileURL) ;
     if (documentData.textSyntaxColoring.displayDescriptorCount == 0) {
       [documentData detachFromCocoaDocument] ;
       [gDocumentDataDictionary removeObjectForKey:documentData.fileURL] ;
@@ -312,26 +311,26 @@ static NSArray * gIssueArray ;
 //---------------------------------------------------------------------------*
 
 - (NSString *) sourceString {
-  return textSyntaxColoring.sourceString ;
+  return mTextSyntaxColoring.sourceString ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (OC_GGS_TextSyntaxColoring *) textSyntaxColoring {
-  return textSyntaxColoring ;
+  return mTextSyntaxColoring ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) replaceSourceStringWithString: (NSString *) inString {
-  [textSyntaxColoring replaceSourceStringWithString:inString] ;
+  [mTextSyntaxColoring replaceSourceStringWithString:inString] ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (BOOL) performSaveToURL: (NSURL *) inAbsoluteURL {
-  [textSyntaxColoring breakUndoCoalescing] ;
-  NSString * string = [textSyntaxColoring sourceString] ;
+  [mTextSyntaxColoring breakUndoCoalescing] ;
+  NSString * string = mTextSyntaxColoring.sourceString ;
   NSError * error = nil ;
   const BOOL ok = [string
     writeToURL:(inAbsoluteURL == nil) ? fileURL : inAbsoluteURL
@@ -341,7 +340,7 @@ static NSArray * gIssueArray ;
   ] ;
 //---
   if (ok) {
-    [textSyntaxColoring documentHasBeenSaved] ;
+    [mTextSyntaxColoring documentHasBeenSaved] ;
   }else{
     [NSApp presentError:error] ;
   }
@@ -351,7 +350,7 @@ static NSArray * gIssueArray ;
 //---------------------------------------------------------------------------*
 
 - (void) save {
-  if (textSyntaxColoring.isDirty) {
+  if (mTextSyntaxColoring.isDirty) {
     if (nil == document) {
       [self performSaveToURL:nil] ;
     }else{

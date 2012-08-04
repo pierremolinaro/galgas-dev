@@ -190,7 +190,7 @@ end routine ;
 
 routine updateTargets
   ??@lstring inProjectSourceFilePath
-  ??@lstring inProjectName
+  ??@lstring unused inProjectName
   ??@string inTargetName
   ??@string inLIBPMpath
   ??@lstringlist inTargetFeatureList
@@ -294,39 +294,52 @@ routine updateTargets
 #--- Parse features
   message "*** Updating targets\n" ;
   @stringset availableGenerationFeatures [emptySet] ;
-  availableGenerationFeatures += !"makefile_macosx_intel" ;
-  availableGenerationFeatures += !"makefile_macosx_ppc" ;
-  availableGenerationFeatures += !"makefile_macosx_universal" ;
   availableGenerationFeatures += !"makefile_macosx" ;
   availableGenerationFeatures += !"makefile_unix" ;
   availableGenerationFeatures += !"makefile_i386_linux_on_macosx" ;
   availableGenerationFeatures += !"makefile_x86_64_linux_on_macosx" ;
   availableGenerationFeatures += !"makefile_mingw_on_macosx" ;
   availableGenerationFeatures += !"makefile_msys_on_win32" ;
-  availableGenerationFeatures += !"project_xcode" ;
-  availableGenerationFeatures += !"xcode_arch:i386" ;
-  availableGenerationFeatures += !"xcode_arch:x86_64" ;
-  availableGenerationFeatures += !"xcode_arch:ppc64" ;
-  availableGenerationFeatures += !"xcode_arch:ppc" ;
-  availableGenerationFeatures += !"xcode_arch:Leopard-32" ;
-  availableGenerationFeatures += !"xcode_arch:Leopard-64" ;
-  availableGenerationFeatures += !"xcode_arch:SnowLeopard-32" ;
-  availableGenerationFeatures += !"xcode_arch:SnowLeopard-64" ;
-  availableGenerationFeatures += !"xcode_arch:Lion-32" ;
-  availableGenerationFeatures += !"xcode_arch:Lion-64" ;
-  availableGenerationFeatures += !"multi-threading" ;
+  availableGenerationFeatures += !"SnowLeopard" ;
+  availableGenerationFeatures += !"Lion" ;
+  availableGenerationFeatures += !"MountainLion" ;
+#  availableGenerationFeatures += !"multi-threading" ;
   @stringset generationFeatures [emptySet] ;
   @bool multiThreadingEnabled := false ;
+#--- Check xcode target architectures
+  @string SDK := "" ;
+  @bool usesARC := false ;
   foreach inTargetFeatureList do
     if [availableGenerationFeatures hasKey ![mValue string]] then
       if [generationFeatures hasKey ![mValue string]] then
         error mValue: "duplicate '" . mValue . "' feature" ;
       end if ;
+    #--- Multi-threading
       if mValue->string == "multi-threading" then
         if multiThreadingEnabled then
           error mValue: "duplicate '" . mValue . "' feature" ;
         end if ;
         multiThreadingEnabled := true ;
+    #--- SnowLeopard
+      elsif mValue->string == "SnowLeopard" then
+        if (SDK != "") then
+          error mValue: "the \"SnowLeopard\", \"Lion\" and \"MountainLion\" are exclusive" ;
+        end if ;
+        SDK := "macosx10.6" ;
+    #--- Lion
+      elsif mValue->string == "Lion" then
+        if (SDK != "") then
+          error mValue: "the \"SnowLeopard\", \"Lion\" and \"MountainLion\" are exclusive" ;
+        end if ;
+        SDK := "macosx10.7" ;
+        usesARC := true ;
+    #--- Mountain Lion
+      elsif mValue->string == "MountainLion" then
+        if (SDK != "") then
+          error mValue: "the \"SnowLeopard\", \"Lion\" and \"MountainLion\" are exclusive" ;
+        end if ;
+        SDK := "macosx10.8" ;
+        usesARC := true ;
       else
         generationFeatures += ![mValue string] ;
       end if ;
@@ -338,75 +351,7 @@ routine updateTargets
       error mValue: "unknown '" . mValue . "' feature; avalaible features are:" . s ;
     end if ;
   end foreach ;
-#--- Special case for 'makefile_macosx_universal'
-  if [generationFeatures hasKey !"makefile_macosx_universal"] & not [generationFeatures hasKey !"makefile_macosx_ppc"] then
-    warning inProjectName : "'feature \"makefile_macosx_ppc\" ;' implicitly added, due to 'feature makefile_macosx_universal'" ;
-    generationFeatures += !"makefile_macosx_ppc" ;
-  end if ;
-  if [generationFeatures hasKey !"makefile_macosx_universal"] & not [generationFeatures hasKey !"makefile_macosx_intel"] then
-    warning inProjectName : "'feature \"makefile_macosx_intel\" ;' implicitly added, due to 'feature makefile_macosx_universal'" ;
-    generationFeatures += !"makefile_macosx_intel" ;
-  end if ;
-#--- Check xcode target architectures
-  @stringlist architectureList [emptyList] ;
-  @string SDK := "" ;
-  if [generationFeatures hasKey !"xcode_arch:Leopard-32"] then
-    architectureList += !"\"$(ARCHS_STANDARD_32_BIT)\"" ;
-    SDK  := "macosx10.5" ;
-  end if ;
-  if [generationFeatures hasKey !"xcode_arch:Leopard-64"] then
-    architectureList += !"\"$(ARCHS_STANDARD_64_BIT)\"" ;
-    SDK  := "macosx10.5" ;
-  end if ;
-  if [generationFeatures hasKey !"xcode_arch:SnowLeopard-32"] then
-    architectureList += !"\"$(ARCHS_STANDARD_32_BIT)\"" ;
-    SDK  := "macosx10.6" ;
-  end if ;
-  if [generationFeatures hasKey !"xcode_arch:SnowLeopard-64"] then
-    architectureList += !"\"$(ARCHS_STANDARD_64_BIT)\"" ;
-    SDK  := "macosx10.6" ;
-  end if ;
-  if [generationFeatures hasKey !"xcode_arch:Lion-32"] then
-    architectureList += !"\"$(ARCHS_STANDARD_32_BIT)\"" ;
-    SDK  := "macosx10.7" ;
-  end if ;
-  if [generationFeatures hasKey !"xcode_arch:Lion-64"] then
-    architectureList += !"\"$(ARCHS_STANDARD_64_BIT)\"" ;
-    SDK  := "macosx10.7" ;
-  end if ;
-  if [generationFeatures hasKey !"xcode_arch:i386"] then
-    architectureList += !"i386" ;
-    SDK  := "macosx10.5" ;
-  end if ;
-  if [generationFeatures hasKey !"xcode_arch:x86_64"] then
-    architectureList += !"x86_64" ;
-    SDK  := "macosx10.5" ;
-  end if ;
-  if [generationFeatures hasKey !"xcode_arch:ppc64"] then
-    architectureList += !"ppc64" ;
-    SDK  := "macosx10.5" ;
-  end if ;
-  if [generationFeatures hasKey !"xcode_arch:ppc"] then
-    architectureList += !"ppc7400" ; # G4
-    SDK  := "macosx10.5" ;
-  end if ;
-  if [generationFeatures hasKey !"project_xcode"] & ([architectureList length] == 0) then
-    warning inProjectName : "'feature \"xcode_arch:i386\" ;' implicitly added, due to 'project_xcode'" ;
-    architectureList += !"i386" ;
-  end if ;
-  if ([architectureList length] > 0) & not [generationFeatures hasKey !"project_xcode"] then
-    error inProjectName : "'a 'xcode_arch:...' feature requires the 'project_xcode' feature" ;
-  end if ;
-#--- Generate projects
-  if [generationFeatures hasKey !"makefile_macosx_ppc"] then
-    generateMakefilePPCMacOSXTarget !projectDirectory !inTargetName ;
-  end if ;
-  if [generationFeatures hasKey !"makefile_macosx_intel"] then
-    generateMakefileIntelMacOSXTarget !projectDirectory !inTargetName ;
-  end if ;
-  if [generationFeatures hasKey !"makefile_macosx_universal"] then
-    generateMakefileUniversalMacOSXTarget !projectDirectory !inTargetName ;
-  end if ;
+#--- Generation
   if [generationFeatures hasKey !"makefile_macosx"] then
     generateMakefileMacOSXTarget !projectDirectory !inTargetName ;
   end if ;
@@ -438,7 +383,7 @@ routine updateTargets
   const @string previousFileListPath := [inProjectSourceFilePath stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/file_list.mke" ;
   [@string deleteFileIfExists !previousFileListPath] ;
 #---------------------- update Xcode project
-  if [generationFeatures hasKey !"project_xcode"] then
+  if SDK != "" then
     const @string dir := projectDirectory . "/project_xcode";
     [dir makeDirectory] ;
 
@@ -494,10 +439,10 @@ routine updateTargets
       !xcodeProjectPath # Full Path of xxx.xcodeproj file
       !resourceFiles
       !intermediateFilePath
-      !architectureList
       !SDK
       !libpmPath
       !multiThreadingEnabled
+      !usesARC
     ;
   end if ;
 end routine ;

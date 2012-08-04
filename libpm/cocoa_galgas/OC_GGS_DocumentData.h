@@ -19,13 +19,13 @@
 
 @interface OC_GGS_DocumentData : NSObject {
   @private NSMutableArray * mIssueArray ; // Of PMErrorOrWarningDescriptor
+  @private OC_GGS_TextSyntaxColoring * mTextSyntaxColoring ;
 //--- Document encoding
   @private NSStringEncoding mFileEncoding ;
 }
 
-@property (strong, atomic, readonly) OC_GGS_Document * document ; // May be nil
-@property (strong, atomic, readonly) OC_GGS_TextSyntaxColoring * textSyntaxColoring ;
-@property (copy, atomic, readonly) NSURL * fileURL ;
+@property (assign, readonly PROPERTY_COMMA_ATOMIC) OC_GGS_Document * document ; // May be nil
+@property (copy, readonly PROPERTY_COMMA_ATOMIC) NSURL * fileURL ;
 
 + (void) saveAllDocuments ;
 
@@ -38,6 +38,8 @@
 
 - (NSString *) sourceString ;
 
+- (OC_GGS_TextSyntaxColoring *) textSyntaxColoring ;
+
 - (void) replaceSourceStringWithString: (NSString *) inString ;
 
 - (BOOL) performSaveToURL: (NSURL *) inAbsoluteURL ;
@@ -45,6 +47,9 @@
 - (NSUInteger) locationForLineInSource: (NSInteger) inLine ;
 
 + (void) broadcastIssueArray: (NSArray *) inIssueArray ;
+
+- (void) save ;
+
 @end
 
 //---------------------------------------------------------------------------*

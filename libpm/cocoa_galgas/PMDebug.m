@@ -66,10 +66,11 @@ void showAllocationStatsWindow (void) {
   if (self) {
     mAllocatedObjectCountByClass = [NSCountedSet new] ;
     mTotalAllocatedObjectCountByClass = [NSCountedSet new] ;
+    mLock = [NSLock new] ;
   //---
     [[NSNotificationCenter defaultCenter]
       addObserver:self
-      selector:@selector(applicationWillTerminateAction:)
+      selector:@selector (applicationWillTerminateAction:)
       name:NSApplicationWillTerminateNotification
       object:nil
     ] ;
@@ -119,7 +120,7 @@ void showAllocationStatsWindow (void) {
     withKeyPath:@"mDisplayFilter"
     options:nil
   ] ;
-  #ifndef NS_AUTOMATED_REFCOUNT_UNAVAILABLE
+  #if ! __has_feature(objc_arc)
     mCollectExhaustivelyButton.target = self ;
     mCollectExhaustivelyButton.action = @selector (collectExhaustively:) ;
   #else
@@ -150,16 +151,17 @@ void showAllocationStatsWindow (void) {
 //----------------------------------------------------------------------------*
 
 - (void) triggerRefreshAllocationStatsDisplay {
-  if (! mRefreshStatsHasTriggered) {
-    mRefreshStatsHasTriggered = YES ;
-    [[NSRunLoop currentRunLoop]
+  // NSLog (@"%s %d", __PRETTY_FUNCTION__, mRefreshStatsHasBeenTriggered) ;
+  if (! mRefreshStatsHasBeenTriggered) {
+    mRefreshStatsHasBeenTriggered = YES ;
+    [[NSRunLoop mainRunLoop]
       performSelector:@selector (refreshAllocationStats)
       target:self
       argument:nil
-      order:NSUIntegerMax
+      order:0
       modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]
     ] ;
-    #ifndef NS_AUTOMATED_REFCOUNT_UNAVAILABLE
+    #if ! __has_feature(objc_arc)
       mRefreshTimer = [NSTimer
         timerWithTimeInterval:1.0
         target:self
@@ -167,7 +169,7 @@ void showAllocationStatsWindow (void) {
         userInfo:nil
         repeats:NO
       ] ;
-      [[NSRunLoop currentRunLoop]
+      [[NSRunLoop mainRunLoop]
         addTimer:mRefreshTimer
         forMode:NSDefaultRunLoopMode
       ] ;
@@ -176,22 +178,22 @@ void showAllocationStatsWindow (void) {
 }
 
 //----------------------------------------------------------------------------*
-//    collectExhaustively:                                                    *
+//    refreshTimerDidFire:                                                    *
 //----------------------------------------------------------------------------*
 
-#ifndef NS_AUTOMATED_REFCOUNT_UNAVAILABLE
-  - (void) collectExhaustively: (id) inSender {
+#if ! __has_feature(objc_arc)
+  - (void) refreshTimerDidFire: (NSTimer *) inTimer {
+    mRefreshTimer = nil ;
     [[NSGarbageCollector defaultCollector] collectExhaustively] ;
   }
 #endif
 
 //----------------------------------------------------------------------------*
-//    refreshTimerDidFire:                                                    *
+//    collectExhaustively:                                                    *
 //----------------------------------------------------------------------------*
 
-#ifndef NS_AUTOMATED_REFCOUNT_UNAVAILABLE
-  - (void) refreshTimerDidFire: (NSTimer *) inTimer {
-    mRefreshTimer = nil ;
+#if ! __has_feature(objc_arc)
+  - (void) collectExhaustively: (id) inSender {
     [[NSGarbageCollector defaultCollector] collectExhaustively] ;
   }
 #endif
@@ -212,13 +214,15 @@ void showAllocationStatsWindow (void) {
 //----------------------------------------------------------------------------*
 
 - (void) pmNoteObjectAllocation: (NSObject *) inObject {
-  mLiveAllocatedObjectCount ++ ;
-  mLiveTotalObjectCount ++ ;
-  NSString * objectClassName = inObject.className ;
-  //NSLog (@"objectClassName %@", objectClassName) ;
-  [mAllocatedObjectCountByClass addObject:objectClassName] ;
-  [mTotalAllocatedObjectCountByClass addObject:objectClassName] ;
-  [self triggerRefreshAllocationStatsDisplay] ;
+  [mLock lock] ;
+    mLiveAllocatedObjectCount ++ ;
+    mLiveTotalObjectCount ++ ;
+    NSString * objectClassName = inObject.className ;
+    //NSLog (@"objectClassName %@", objectClassName) ;
+    [mAllocatedObjectCountByClass addObject:objectClassName] ;
+    [mTotalAllocatedObjectCountByClass addObject:objectClassName] ;
+    [self triggerRefreshAllocationStatsDisplay] ;
+  [mLock unlock] ;
 }
 
 //----------------------------------------------------------------------------*
@@ -226,39 +230,44 @@ void showAllocationStatsWindow (void) {
 //----------------------------------------------------------------------------*
 
 - (void) pmNoteObjectDeallocation: (NSObject *) inObject {
-  mLiveAllocatedObjectCount -- ;
-  NSString * objectClassName = inObject.className ;
-  // NSLog (@"DEALLOC objectClassName %@", objectClassName) ;
-  [mAllocatedObjectCountByClass removeObject:objectClassName] ;
-  [self triggerRefreshAllocationStatsDisplay] ;
+  [mLock lock] ;
+    mLiveAllocatedObjectCount -- ;
+    NSString * objectClassName = inObject.className ;
+    // NSLog (@"DEALLOC objectClassName %@", objectClassName) ;
+    [mAllocatedObjectCountByClass removeObject:objectClassName] ;
+    [self triggerRefreshAllocationStatsDisplay] ;
+  [mLock unlock] ;
 }
 
 //----------------------------------------------------------------------------*
-//    refreshAllocationStats                                                  *
+//    refreshAllocationStats:                                                 *
 //----------------------------------------------------------------------------*
 
 - (void) refreshAllocationStats {
-  mRefreshStatsHasTriggered = NO ;
-//---
-  self.mAllocatedObjectCount = mLiveAllocatedObjectCount ;
-  self.mTotalAllocatedObjectCount = mLiveTotalObjectCount ;
-//---
-  NSMutableArray * array = [NSMutableArray new] ;
-  for (NSString * className in [mTotalAllocatedObjectCountByClass.allObjects sortedArrayUsingSelector:@selector(compare:)]) {
-    const NSUInteger currentlyAllocated = [mAllocatedObjectCountByClass countForObject:className] ;
-    if ((currentlyAllocated != 0) || (self.mDisplayFilter == 0)) {
-      [array addObject: [NSDictionary
-        dictionaryWithObjectsAndKeys:
-          className, @"classname",
-          [NSNumber numberWithUnsignedInteger:[mTotalAllocatedObjectCountByClass countForObject:className]], @"allCount",
-          [NSNumber numberWithUnsignedInteger:currentlyAllocated], @"live",
-          nil
-        ]
-      ] ;
+  [mLock lock] ;
+    // NSLog (@"%s", __PRETTY_FUNCTION__) ;
+    mRefreshStatsHasBeenTriggered = NO ;
+  //---
+    self.mAllocatedObjectCount = mLiveAllocatedObjectCount ;
+    self.mTotalAllocatedObjectCount = mLiveTotalObjectCount ;
+  //---
+    NSMutableArray * array = [NSMutableArray new] ;
+    for (NSString * className in [mTotalAllocatedObjectCountByClass.allObjects sortedArrayUsingSelector:@selector(compare:)]) {
+      const NSUInteger currentlyAllocated = [mAllocatedObjectCountByClass countForObject:className] ;
+      if ((currentlyAllocated != 0) || (self.mDisplayFilter == 0)) {
+        [array addObject: [NSDictionary
+          dictionaryWithObjectsAndKeys:
+            className, @"classname",
+            [NSNumber numberWithUnsignedInteger:[mTotalAllocatedObjectCountByClass countForObject:className]], @"allCount",
+            [NSNumber numberWithUnsignedInteger:currentlyAllocated], @"live",
+            nil
+          ]
+        ] ;
+      }
     }
-  }
-//---
-  mAllocationStatsDataSource = array ;
+  //---
+    mAllocationStatsDataSource = array ;
+  [mLock unlock] ;
   [mStatsTableView setDataSource:self] ;
   [mStatsTableView reloadData] ;
 }

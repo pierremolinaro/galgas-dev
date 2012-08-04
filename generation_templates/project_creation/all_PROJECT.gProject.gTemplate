@@ -1,16 +1,12 @@
 project all_%!PROJECT_NAME% -> %![PROJECT_NAME utf8Representation]%:
 #--- Targets
   feature "makefile_macosx" ;
-  feature "makefile_macosx_intel" ;
-  feature "makefile_macosx_ppc" ;
-  feature "makefile_macosx_universal" ;
   feature "makefile_unix" ;
   feature "makefile_i386_linux_on_macosx" ;
   feature "makefile_x86_64_linux_on_macosx" ;
   feature "makefile_mingw_on_macosx" ;
   feature "makefile_msys_on_win32" ;
-  feature "project_xcode" ;
-  feature "xcode_arch:SnowLeopard-64" ;
+  feature "SnowLeopard" ;
 
 #--- Source files (relative path from 'galgas_sources' directory)
   lexique "%!PROJECT_NAME%_lexique.gLexique" ;

@@ -3,9 +3,9 @@ import "%!PROJECT_NAME%_options.gOption" ;
 import "%!PROJECT_NAME%_semantics.gSemantics" ;
 
 rule <start_symbol> :
-  # ADD YOUR SYNTAX INSTRUCTIONS HERE
+  # ADD YOUR SYNTAX INSTRUCTIONS
 end rule ;
 
-# ADD OTHER RULES HERE
+# ADD OTHER RULES
 
 end syntax ;

@@ -12,7 +12,6 @@
 #import "PMDownloadData.h"
 #import "PMDownloadFile.h"
 #import "OC_GGS_PreferencesController.h"
-#import "PMCocoaCallsDebug.h"
 
 //--------------------------------------------------------------------------*
 
@@ -104,8 +103,8 @@
     }
     result = NSOrderedSame ;
     for (NSUInteger i=0 ; (i<[components count]) && (result == NSOrderedSame) ; i++) {
-      const int version = [[components objectAtIndex:i HERE] intValue] ;
-      const int otherVersion = [[otherComponents objectAtIndex:i HERE] intValue] ;
+      const int version = [[components objectAtIndex:i] intValue] ;
+      const int otherVersion = [[otherComponents objectAtIndex:i] intValue] ;
       //NSLog (@"FOR i=%u: version: %d, otherversion:%d", i, version, otherVersion) ;
       if (version < otherVersion) {
         result = NSOrderedAscending ;
@@ -249,7 +248,7 @@
             lastAvailableVersion
           ] ;
           [mPerformUpdateButton setTitle:s] ;
-          #ifndef NS_AUTOMATED_REFCOUNT_UNAVAILABLE
+          #if ! __has_feature(objc_arc)
             [[NSGarbageCollector defaultCollector] disableCollectorForPointer:lastAvailableVersion] ;
           #endif
           [NSApp
@@ -257,7 +256,7 @@
             modalForWindow:nil
             modalDelegate:self
             didEndSelector:@selector (newVersionIsAvailableAlertDidEnd:returnCode:contextInfo:)
-            contextInfo:(__bridge void *) lastAvailableVersion
+            contextInfo:(ARC_BRIDGE void *) lastAvailableVersion
           ] ;
           [mCheckNowButton setEnabled:NO] ;
         }else if (! mSearchForUpdatesInBackground) {
@@ -313,8 +312,8 @@
 - (void) newVersionIsAvailableAlertDidEnd:(NSWindow *) inUnusedWindow
          returnCode:(int) inReturnCode
    contextInfo:(void  *) inContextInfo {
-  NSString * lastAvailableVersion = (__bridge NSString *) inContextInfo ;
-  #ifndef NS_AUTOMATED_REFCOUNT_UNAVAILABLE
+  NSString * lastAvailableVersion = (ARC_BRIDGE NSString *) inContextInfo ;
+  #if ! __has_feature(objc_arc)
     [[NSGarbageCollector defaultCollector] enableCollectorForPointer:lastAvailableVersion] ;
   #endif
   // NSLog (@"inReturnCode %d", inReturnCode) ;
@@ -584,7 +583,7 @@
     [s appendFormat:@"This installs in the %@ directory the following tools:", installationPath] ;
     unsigned i ;
     for (i=0 ; i<[toolNameArray count] ; i++) {
-      [s appendFormat:@"\n  - %@", [toolNameArray objectAtIndex:i HERE]] ;
+      [s appendFormat:@"\n  - %@", [toolNameArray objectAtIndex:i]] ;
     }
     NSAlert * alert = [NSAlert
       alertWithMessageText:@"Perform command line tools installation ?"
@@ -608,7 +607,7 @@
          returnCode:(int) inReturnCode
          contextInfo:(void *) inContextInfo {
   if (inReturnCode == YES) {
-    [[NSRunLoop currentRunLoop]
+    [[NSRunLoop mainRunLoop]
       performSelector:@selector (install:)
       target:self
       argument:nil
@@ -648,7 +647,7 @@
 //--- Installing tools
   unsigned i ;
   for (i=0 ; (i<[toolNameArray count]) && (myStatus == 0) ; i++) {
-    NSString * toolSourcePath = [resourcePath stringByAppendingString:[toolNameArray objectAtIndex:i HERE]] ;
+    NSString * toolSourcePath = [resourcePath stringByAppendingString:[toolNameArray objectAtIndex:i]] ;
     const char * copyArgs [] = {[toolSourcePath cStringUsingEncoding:NSUTF8StringEncoding], [installationPath cStringUsingEncoding:NSUTF8StringEncoding], NULL} ;
     myStatus = [self
       privilegedOperation:authorizationRef
@@ -724,7 +723,7 @@
     [s appendFormat:@"This removes from the %@ directory the following tools:", installationPath] ;
     BOOL nothingToRemove = YES ;
     for (NSUInteger i=0 ; i<[toolNameArray count] ; i++) {
-      NSString * toolName = [toolNameArray objectAtIndex:i HERE] ;
+      NSString * toolName = [toolNameArray objectAtIndex:i] ;
       if ([fm fileExistsAtPath:[NSString stringWithFormat:@"%@/%@", installationPath, toolName]]) {
         [s appendFormat:@"\n  - %@", toolName] ;
         nothingToRemove = NO ;
@@ -768,7 +767,7 @@
          returnCode:(int) inReturnCode
          contextInfo:(void *) inContextInfo {
   if (inReturnCode == YES) {
-    [[NSRunLoop currentRunLoop]
+    [[NSRunLoop mainRunLoop]
       performSelector:@selector (remove:)
       target:self
       argument:nil
@@ -796,7 +795,7 @@
 //--- Installing tools
   unsigned i ;
   for (i=0 ; (i<[toolNameArray count]) && (myStatus == 0) ; i++) {
-    NSString * toolPath = [NSString stringWithFormat:@"%@/%@", installationPath, [toolNameArray objectAtIndex:i HERE]] ;
+    NSString * toolPath = [NSString stringWithFormat:@"%@/%@", installationPath, [toolNameArray objectAtIndex:i]] ;
     const char * copyArgs [] = {[toolPath cStringUsingEncoding:NSUTF8StringEncoding], NULL} ;
     myStatus = [self
       privilegedOperation:authorizationRef

@@ -1106,9 +1106,9 @@ end routine ;
 
 routine enterProjectDefaultSettings
   ??@stringlist inHeaderSearchPathList
-  ??@stringlist inArchitectureList
   ??@string inSDK
   !@stringlist outProjectDefaultSettings
+  ??@bool inUsesARC
 :
 #-------------------------------------------------- Define project default configuration
   @string pathString := "" ;
@@ -1116,56 +1116,48 @@ routine enterProjectDefaultSettings
   do pathString .= "\t\t\t\t\t\"" . mValue . "\",\n" ;
   end foreach ;
   outProjectDefaultSettings := [@stringlist emptyList] ;
-  outProjectDefaultSettings  += !"ALWAYS_SEARCH_USER_PATHS = NO;" ;
-  @string s := "ARCHS = " ;
-  if [inArchitectureList length] == 1 then
-    s .= [inArchitectureList mValueAtIndex !0] ;
+  outProjectDefaultSettings += !"ALWAYS_SEARCH_USER_PATHS = NO;" ;
+  outProjectDefaultSettings += !"ARCHS = \"$(ARCHS_STANDARD_64_BIT)\";" ;
+  outProjectDefaultSettings += !"GCC_DEBUGGING_SYMBOLS = default;" ;
+  if inUsesARC then
+    outProjectDefaultSettings  += !"CLANG_ENABLE_OBJC_ARC = YES;" ;
   else
-    s .= "(" ;
-    foreach inArchitectureList do
-      s .= "\n\t\t\t\t\t" . mValue . "," ;
-    end foreach ;
-    s .= "\n\t\t\t\t)" ;
+    outProjectDefaultSettings  += !"GCC_ENABLE_OBJC_GC = required;" ;
   end if ;
-  s .= ";" ;
- 
-  outProjectDefaultSettings  += !s ;
-  outProjectDefaultSettings  += !"GCC_DEBUGGING_SYMBOLS = default;" ;
-  outProjectDefaultSettings  += !"GCC_ENABLE_OBJC_GC = required;" ;
-  outProjectDefaultSettings  += !"GCC_GENERATE_DEBUGGING_SYMBOLS = NO;" ;
-  outProjectDefaultSettings  += !"GCC_PRECOMPILE_PREFIX_HEADER = YES;" ;
-  outProjectDefaultSettings  += !"GCC_THREADSAFE_STATICS = NO;" ;
-  outProjectDefaultSettings  += !"GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;" ;
-  outProjectDefaultSettings  += !"GCC_TREAT_NONCONFORMANT_CODE_ERRORS_AS_WARNINGS = YES;" ;
-  outProjectDefaultSettings  += !"GCC_TREAT_WARNINGS_AS_ERRORS = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_64_TO_32_BIT_CONVERSION = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_ABOUT_MISSING_NEWLINE = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_ABOUT_RETURN_TYPE = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_INHIBIT_ALL_WARNINGS = NO;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_MISSING_PARENTHESES = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_PEDANTIC = NO;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_PROTOTYPE_CONVERSION = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_SHADOW = NO;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_SIGN_COMPARE = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_UNINITIALIZED_AUTOS = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_UNKNOWN_PRAGMAS = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_UNUSED_FUNCTION = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_UNUSED_LABEL = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_UNUSED_PARAMETER = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_UNUSED_VALUE = YES;" ;
-  outProjectDefaultSettings  += !"GCC_WARN_UNUSED_VARIABLE = YES;" ;
-  outProjectDefaultSettings  += !"HEADER_SEARCH_PATHS = (\n" . pathString . "\t\t\t\t);" ;
-  outProjectDefaultSettings  += !"PREBINDING = NO;" ;
-  outProjectDefaultSettings  += !"SDKROOT = " . inSDK . " ;" ; # /Developer/SDKs/MacOSX10.5.sdk;" ;
+  outProjectDefaultSettings += !"GCC_GENERATE_DEBUGGING_SYMBOLS = NO;" ;
+  outProjectDefaultSettings += !"GCC_PRECOMPILE_PREFIX_HEADER = YES;" ;
+  outProjectDefaultSettings += !"GCC_THREADSAFE_STATICS = NO;" ;
+  outProjectDefaultSettings += !"GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;" ;
+  outProjectDefaultSettings += !"GCC_TREAT_NONCONFORMANT_CODE_ERRORS_AS_WARNINGS = YES;" ;
+  outProjectDefaultSettings += !"GCC_TREAT_WARNINGS_AS_ERRORS = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_64_TO_32_BIT_CONVERSION = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_ABOUT_MISSING_NEWLINE = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_ABOUT_RETURN_TYPE = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_INHIBIT_ALL_WARNINGS = NO;" ;
+  outProjectDefaultSettings += !"GCC_WARN_INITIALIZER_NOT_FULLY_BRACKETED = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_MISSING_PARENTHESES = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_PEDANTIC = NO;" ;
+  outProjectDefaultSettings += !"GCC_WARN_PROTOTYPE_CONVERSION = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_SHADOW = NO;" ;
+  outProjectDefaultSettings += !"GCC_WARN_SIGN_COMPARE = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_UNINITIALIZED_AUTOS = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_UNKNOWN_PRAGMAS = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_UNUSED_FUNCTION = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_UNUSED_LABEL = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_UNUSED_PARAMETER = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_UNUSED_VALUE = YES;" ;
+  outProjectDefaultSettings += !"GCC_WARN_UNUSED_VARIABLE = YES;" ;
+  outProjectDefaultSettings += !"HEADER_SEARCH_PATHS = (\n" . pathString . "\t\t\t\t);" ;
+  outProjectDefaultSettings += !"PREBINDING = NO;" ;
+  outProjectDefaultSettings += !"SDKROOT = " . inSDK . " ;" ;
 end routine ;
 
 #---------------------------------------------------------------------------*

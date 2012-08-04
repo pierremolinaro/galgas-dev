@@ -60,7 +60,7 @@
 //---  
   @private NSArrayController * mSourceDisplayArrayController ;
   @private OC_GGS_DocumentData * mDocumentData ;
-
+  @private NSArray * mDisplayDescriptorArray ;
 //---
   @private IBOutlet PMTabBarView * mTabBarView ;
 
@@ -77,12 +77,10 @@
   @private NSUInteger mWarningCount ;
   @private IBOutlet NSTextField * mWarningCountTextField ;
   @private OC_GGS_RulerViewForBuildOutput * mRulerViewForBuildOutput ;
+  @private NSMutableArray * mIssueArray ;
 }
 
-@property(strong, atomic) NSMutableArray * mIssueArray ;
-@property(strong, atomic) NSArray * mDisplayDescriptorArray ;
-@property(assign, atomic) BOOL mBuildTaskIsRunning ;
-@property(strong, atomic, readonly) OC_GGS_DocumentData * mDocumentData  ;
+@property (assign PROPERTY_COMMA_ATOMIC) BOOL mBuildTaskIsRunning ;
 
 - (OC_GGS_TextDisplayDescriptor *) findOrAddNewTabForFile: (NSString *) inDocumentPath ;
 

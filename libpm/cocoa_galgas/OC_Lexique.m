@@ -26,7 +26,6 @@
 #import "OC_Lexique.h"
 #import "OC_Token.h"
 #import "unicode_character_m.h"
-#import "PMCocoaCallsDebug.h"
 
 //---------------------------------------------------------------------------*
 
@@ -271,7 +270,7 @@
   if (NULL != popUpListData) {
     const NSUInteger tokenCount = [inTokenArray count] ;
     for (NSUInteger tokenIndex=0 ; tokenIndex<tokenCount ; tokenIndex++) {
-      OC_Token * token = [inTokenArray objectAtIndex:tokenIndex HERE] ;
+      OC_Token * token = [inTokenArray objectAtIndex:tokenIndex] ;
       const NSUInteger terminal = [token tokenCode] ;
       // printf ("terminal %u\n", terminal) ;
       BOOL found = NO ;
@@ -285,7 +284,7 @@
           labelLength = 0 ;
           while ((*p != 0) && found) {
             labelLength ++ ;
-            found = ((tokenIndex+labelLength) < tokenCount) && ([[inTokenArray objectAtIndex:tokenIndex+labelLength HERE] tokenCode] == *p) ;
+            found = ((tokenIndex+labelLength) < tokenCount) && ([[inTokenArray objectAtIndex:tokenIndex+labelLength] tokenCode] == *p) ;
             p ++ ;
           }
         }
@@ -295,7 +294,7 @@
       if (found) {
         NSMutableString * title = [NSMutableString new] ;
         for (NSUInteger k=0 ; k<=labelLength ; k++) {
-          const NSRange range = [[inTokenArray objectAtIndex:tokenIndex+k HERE] range] ;
+          const NSRange range = [[inTokenArray objectAtIndex:tokenIndex+k] range] ;
           [title appendString:@" "] ;
           [title appendString:[mSourceString substringWithRange:range]] ;
         }
@@ -304,7 +303,7 @@
           action:NULL
           keyEquivalent:@""
         ] ;
-        [item setTag:(NSInteger) [[inTokenArray objectAtIndex:tokenIndex HERE] range].location] ;
+        [item setTag:(NSInteger) [[inTokenArray objectAtIndex:tokenIndex] range].location] ;
         [menu addItem:item] ;
         tokenIndex += labelLength - 1 ;
       }
@@ -428,7 +427,7 @@
   * outLowerIndexToRedrawInStyleArray = 0 ;
   BOOL search = YES ;
   while ((((NSUInteger) *outLowerIndexToRedrawInStyleArray) < initialArrayLength) && search) {
-    OC_Token * token = [ioStyledRangeArray objectAtIndex:(NSUInteger) * outLowerIndexToRedrawInStyleArray HERE] ;
+    OC_Token * token = [ioStyledRangeArray objectAtIndex:(NSUInteger) * outLowerIndexToRedrawInStyleArray] ;
     const NSRange range = [token range] ;
     search = (range.location + range.length) < inEditedRange.location ;
     *outLowerIndexToRedrawInStyleArray += search ;
@@ -437,13 +436,13 @@
   if (*outLowerIndexToRedrawInStyleArray > 2) {
     *outLowerIndexToRedrawInStyleArray -= 2 ;
     if ([self isTemplateLexique]) {
-      while (((*outLowerIndexToRedrawInStyleArray) > 0) && ([[ioStyledRangeArray objectAtIndex:((NSUInteger) * outLowerIndexToRedrawInStyleArray) HERE] matchedTemplateDelimiterIndex] < 0)) {
+      while (((*outLowerIndexToRedrawInStyleArray) > 0) && ([[ioStyledRangeArray objectAtIndex:((NSUInteger) * outLowerIndexToRedrawInStyleArray)] matchedTemplateDelimiterIndex] < 0)) {
         (*outLowerIndexToRedrawInStyleArray) -- ;
       }
     }
-    mCurrentLocation = [[ioStyledRangeArray objectAtIndex:(NSUInteger) * outLowerIndexToRedrawInStyleArray HERE] range].location ;
+    mCurrentLocation = [[ioStyledRangeArray objectAtIndex:(NSUInteger) * outLowerIndexToRedrawInStyleArray] range].location ;
     if ((* outLowerIndexToRedrawInStyleArray) > 0) {
-      mMatchedTemplateDelimiterIndex = [[ioStyledRangeArray objectAtIndex:((NSUInteger) * outLowerIndexToRedrawInStyleArray) HERE] matchedTemplateDelimiterIndex] ;
+      mMatchedTemplateDelimiterIndex = [[ioStyledRangeArray objectAtIndex:((NSUInteger) * outLowerIndexToRedrawInStyleArray)] matchedTemplateDelimiterIndex] ;
     }else{
       mMatchedTemplateDelimiterIndex = -1 ; // Within Template string
     }
@@ -460,7 +459,7 @@
   search = YES ;
   const NSUInteger affectedRangeEndLocation = inEditedRange.location + inEditedRange.length - (NSUInteger) inChangeInLength ;
   while ((*outLowerIndexToRedrawInStyleArray < (SInt32) [ioStyledRangeArray count]) && search) {
-    OC_Token * token = [ioStyledRangeArray objectAtIndex:(NSUInteger) * outLowerIndexToRedrawInStyleArray HERE] ;
+    OC_Token * token = [ioStyledRangeArray objectAtIndex:(NSUInteger) * outLowerIndexToRedrawInStyleArray] ;
     search = [token range].location < affectedRangeEndLocation ;
     if (search) {
       [ioStyledRangeArray removeObjectAtIndex:(NSUInteger) * outLowerIndexToRedrawInStyleArray] ;
@@ -472,7 +471,7 @@
   #endif
   NSUInteger i ;
   for (i=((NSUInteger) *outLowerIndexToRedrawInStyleArray) ; i<[ioStyledRangeArray count] ; i++) {
-    OC_Token * token = [ioStyledRangeArray objectAtIndex:i HERE] ;
+    OC_Token * token = [ioStyledRangeArray objectAtIndex:i] ;
     [token translateRange:inChangeInLength] ;
   }
 //--- Parse 
@@ -519,7 +518,7 @@
       (*outUpperIndexToRedrawInStyleArray) ++ ;
     }else if (mTokenCode > 0) { // Regular token
       const NSRange range = {mTokenStartLocation, mCurrentLocation - mTokenStartLocation} ;
-      OC_Token * token = [ioStyledRangeArray objectAtIndex:(NSUInteger) *outUpperIndexToRedrawInStyleArray HERE] ;
+      OC_Token * token = [ioStyledRangeArray objectAtIndex:(NSUInteger) *outUpperIndexToRedrawInStyleArray] ;
       if (NSEqualRanges (range, [token range]) && (mTokenCode == (SInt32) [token tokenCode])) {
         search = NO ;
         (*outUpperIndexToRedrawInStyleArray) ++ ;
@@ -540,7 +539,7 @@
   //--- Delete style items before current location
     BOOL removeStyle = YES ;
     while (((*outUpperIndexToRedrawInStyleArray) < (SInt32) [ioStyledRangeArray count]) && removeStyle) {
-      OC_Token * token = [ioStyledRangeArray objectAtIndex:(NSUInteger) * outUpperIndexToRedrawInStyleArray HERE] ;
+      OC_Token * token = [ioStyledRangeArray objectAtIndex:(NSUInteger) * outUpperIndexToRedrawInStyleArray] ;
       removeStyle = [token range].location < mCurrentLocation ;
       if (removeStyle) {
         [ioStyledRangeArray removeObjectAtIndex:(NSUInteger) * outUpperIndexToRedrawInStyleArray] ;
@@ -555,7 +554,7 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"New token list (%lu elements):", [ioStyledRangeArray count]) ;
     for (i=0 ; i<[ioStyledRangeArray count] ; i++) {
-      OC_Token * token = [ioStyledRangeArray objectAtIndex:i HERE] ;
+      OC_Token * token = [ioStyledRangeArray objectAtIndex:i] ;
       NSString * s = [mSourceString substringWithRange:[token range]] ;
       s = [s stringByReplacingOccurrencesOfString:@"\n" withString:@"\u21B5"] ;
       NSLog (@"  #%lu: token %lu '%@', range [%lu, %lu], style %ld, delimitor %ld", i, [token tokenCode], s, [token range].location, [token range].length, [token style], [token matchedTemplateDelimiterIndex]) ;

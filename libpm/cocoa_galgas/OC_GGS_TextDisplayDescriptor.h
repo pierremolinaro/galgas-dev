@@ -35,8 +35,8 @@
   @private OC_GGS_Document * mDocumentUsedForDisplaying ;
 }
 
-@property (strong, atomic, readonly) OC_GGS_DocumentData * documentData ;
-@property (atomic) BOOL isDirty ;
+@property (assign, readonly PROPERTY_COMMA_ATOMIC) OC_GGS_DocumentData * documentData ;
+@property PROPERTY_ATOMIC BOOL isDirty ;
 
 - (OC_GGS_TextDisplayDescriptor *) initWithDocumentData: (OC_GGS_DocumentData *) inDocumentData
                                    displayDocument: (OC_GGS_Document *) inDocumentUsedForDisplaying ;
