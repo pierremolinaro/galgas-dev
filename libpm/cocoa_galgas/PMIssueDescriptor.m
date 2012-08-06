@@ -9,6 +9,7 @@
 
 #import "PMIssueDescriptor.h"
 #import "PMDebug.h"
+#import "OC_GGS_RulerViewForBuildOutput.h"
 
 //---------------------------------------------------------------------------*
 
@@ -32,7 +33,8 @@
                         line: (NSInteger) inLine
                         column: (NSInteger) inColumn
                         isError: (BOOL) inIsError
-                        locationInOutputData: (NSInteger) inLocationInOutputData {
+                        locationInOutputData: (NSInteger) inLocationInOutputData
+                        buildOutputRuler: (OC_GGS_RulerViewForBuildOutput *) inRuler {
   self = [self init] ;
   if (self) {
     noteObjectAllocation (self) ;
@@ -42,6 +44,8 @@
     mColumn = inColumn ;
     mIsError = inIsError ;
     mLocationInOutputData = inLocationInOutputData ;
+    mLocationInSourceStringStatus = kLocationInSourceStringNotSolved ;
+    mBuildOutputRuler = inRuler ;
     [self normalizeMessage] ;
   }
   return self ;
@@ -92,18 +96,41 @@
 
 //---------------------------------------------------------------------------*
 
-- (NSColor *) issueColor {
-  return mIsError ? [NSColor redColor] : [NSColor orangeColor] ;
+- (enumLocationInSourceStringStatus) locationInSourceStringStatus {
+  return mLocationInSourceStringStatus ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSUInteger) locationInSourceString {
+  return mLocationInSourceString ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) setLocationInSourceString: (NSUInteger) inLocationInSourceString {
+  mLocationInSourceString = inLocationInSourceString ;
+  mLocationInSourceStringStatus = kLocationInSourceStringSolved ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) updateLocationForPreviousRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength {
-  if (((NSUInteger) mLocationInOutputData) >= (inEditedRange.location + inEditedRange.length)) {
-    mLocationInOutputData += (NSUInteger) inChangeInLength ;
+  if (((NSUInteger) mLocationInSourceString) >= (inEditedRange.location + inEditedRange.length)) {
+    mLocationInSourceString += (NSUInteger) inChangeInLength ;
+  }else if (((NSUInteger) mLocationInSourceString) >= inEditedRange.location) {
+    mLocationInSourceStringStatus = kLocationInSourceStringInvalid ;
+    [mBuildOutputRuler setNeedsDisplay:YES] ;
   }
 }
+
+//---------------------------------------------------------------------------*
+
+- (void) detach {
+  mBuildOutputRuler = nil ;
+}
+
 //---------------------------------------------------------------------------*
 
 @end

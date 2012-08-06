@@ -18,7 +18,7 @@
 //---------------------------------------------------------------------------*
 
 @interface OC_GGS_DocumentData : NSObject {
-  @private NSMutableArray * mIssueArray ; // Of PMErrorOrWarningDescriptor
+  @private NSMutableArray * mIssueArray ; // Of PMIssueDescriptor
   @private OC_GGS_TextSyntaxColoring * mTextSyntaxColoring ;
 //--- Document encoding
   @private NSStringEncoding mFileEncoding ;

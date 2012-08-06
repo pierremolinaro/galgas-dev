@@ -12,7 +12,7 @@
 #import "OC_Lexique.h"
 #import "OC_Token.h"
 #import "OC_GGS_PreferencesController.h"
-#import "PMErrorOrWarningDescriptor.h"
+#import "PMIssueDescriptor.h"
 #import "OC_GGS_DocumentData.h"
 #import "PMDebug.h"
 
@@ -467,10 +467,8 @@
   #endif
   // NSLog (@"inEditedRange %lu:%lu, inChangeInLength %ld", inEditedRange.location, inEditedRange.length, inChangeInLength) ;
   const NSRange previousRange = {inEditedRange.location, inEditedRange.length - inChangeInLength} ;
-  for (PMErrorOrWarningDescriptor * issue in mIssueArray) {
-    if (! NSLocationInRange (issue.location, previousRange)) {
-      [issue updateLocationForPreviousRange:previousRange changeInLength:inChangeInLength] ;
-    }
+  for (PMIssueDescriptor * issue in mIssueArray) {
+    [issue updateLocationForPreviousRange:previousRange changeInLength:inChangeInLength] ;
   }
 //---
   for (OC_GGS_TextDisplayDescriptor * textDisplay in mTextDisplayDescriptorSet) {

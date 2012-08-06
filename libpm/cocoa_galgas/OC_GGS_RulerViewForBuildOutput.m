@@ -67,15 +67,17 @@
   NSLayoutManager * lm = textView.layoutManager ;
 //--- Display bullets
   for (PMIssueDescriptor * issue in mIssueArray) {
-    const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:issue.locationInOutputData effectiveRange:NULL] ;
-    const NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMidY (r) - 8.0) fromView:textView] ;
-    const NSRect rImage = {{4.0, p.y}, {16.0, 16.0}} ;
-    [issue.isError ? errorImage : warningImage
-      drawInRect:rImage
-      fromRect:NSZeroRect
-      operation:NSCompositeSourceOver
-      fraction:1.0
-    ] ;
+    if (issue.locationInSourceStringStatus != kLocationInSourceStringInvalid) {
+      const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:issue.locationInOutputData effectiveRange:NULL] ;
+      const NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMidY (r) - 8.0) fromView:textView] ;
+      const NSRect rImage = {{4.0, p.y}, {16.0, 16.0}} ;
+      [issue.isError ? errorImage : warningImage
+        drawInRect:rImage
+        fromRect:NSZeroRect
+        operation:NSCompositeSourceOver
+        fraction:1.0
+      ] ;
+    }
   }
 }
 
@@ -89,15 +91,17 @@
   BOOL found = NO ;
   for (NSUInteger i=0 ; (i<mIssueArray.count) && ! found ; i++) {
     PMIssueDescriptor * issue = [mIssueArray objectAtIndex:i] ;
-    const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:issue.locationInOutputData effectiveRange:NULL] ;
-    const NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMidY (r) - 8.0) fromView:textView] ;
-    const NSRect rImage = {{4.0, p.y}, {16.0, 16.0}} ;
-    if (NSPointInRect (locationInView, rImage)) {
-      found = YES ;
-      [mDocument
-        displaySourceWithURL:issue.issueURL
-        atLine:issue.issueLine
-      ] ;
+    if (issue.locationInSourceStringStatus != kLocationInSourceStringInvalid) {
+      const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:issue.locationInOutputData effectiveRange:NULL] ;
+      const NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMidY (r) - 8.0) fromView:textView] ;
+      const NSRect rImage = {{4.0, p.y}, {16.0, 16.0}} ;
+      if (NSPointInRect (locationInView, rImage)) {
+        found = YES ;
+        [mDocument
+          displaySourceWithURL:issue.issueURL
+          atLine:issue.issueLine
+        ] ;
+      }
     }
   }
 }

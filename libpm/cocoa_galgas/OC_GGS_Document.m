@@ -34,7 +34,6 @@
 #import "OC_GGS_DocumentData.h"
 #import "OC_GGS_RulerViewForBuildOutput.h"
 #import "OC_GGS_Scroller.h"
-#import "PMErrorOrWarningDescriptor.h"
 #import "PMDebug.h"
 
 //---------------------------------------------------------------------------*
@@ -259,6 +258,10 @@
   NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
   for (OC_GGS_TextDisplayDescriptor * tdd in sourceDisplayArray) {
     [tdd detachTextDisplayDescriptor] ;
+  }
+//---
+  for (PMIssueDescriptor * issue in mIssueArray) {
+    [issue detach] ;
   }
 //---
   [mRulerViewForBuildOutput detach] ;
@@ -797,9 +800,8 @@
   mErrorCount = 0 ;
   mIssueArray = [NSMutableArray new] ;
   [mRulerViewForBuildOutput setIssueArray:mIssueArray] ;
-  mIssueInScrollerArray = [NSMutableArray new] ; // Of PMErrorOrWarningDescriptor
   OC_GGS_Scroller * scroller = (OC_GGS_Scroller *) mOutputScrollView.verticalScroller ;
-  [scroller setIssueArray:mIssueInScrollerArray] ;
+  [scroller setIssueArray:mIssueArray] ;
 //---
   [OC_GGS_DocumentData broadcastIssueArray:nil] ;
   mBuildTask = [[OC_GGS_BuildTask alloc] initWithDocument:self] ;
@@ -848,18 +850,13 @@
     column:issueColumn
     isError:inIsError
     locationInOutputData:inLocationInOutputData
+    buildOutputRuler:mRulerViewForBuildOutput
   ] ;
   [mIssueArray addObject:issue] ;
   [mRulerViewForBuildOutput setIssueArray:mIssueArray] ;
 //---
-  PMErrorOrWarningDescriptor * errorOrWarning = [[PMErrorOrWarningDescriptor alloc]
-    initWithMessage:inIssueMessage
-    location:inLocationInOutputData
-    isError:inIsError
-  ] ;
-  [mIssueInScrollerArray addObject:errorOrWarning] ; // Of PMErrorOrWarningDescriptor
   OC_GGS_Scroller * scroller = (OC_GGS_Scroller *) mOutputScrollView.verticalScroller ;
-  [scroller setIssueArray:mIssueInScrollerArray] ;
+  [scroller setIssueArray:mIssueArray] ;
 //---
   if (inIsError) {
     mErrorCount ++ ;

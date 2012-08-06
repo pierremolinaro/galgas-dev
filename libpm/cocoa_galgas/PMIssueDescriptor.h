@@ -11,6 +11,18 @@
 
 //---------------------------------------------------------------------------*
 
+@class OC_GGS_RulerViewForBuildOutput ;
+
+//---------------------------------------------------------------------------*
+
+typedef enum {
+ kLocationInSourceStringNotSolved,
+ kLocationInSourceStringSolved,
+ kLocationInSourceStringInvalid
+} enumLocationInSourceStringStatus ;
+
+//---------------------------------------------------------------------------*
+
 @interface PMIssueDescriptor : NSObject {
   @private BOOL mIsError ;
   @private NSString * mMessage ;
@@ -18,7 +30,9 @@
   @private NSInteger mLine ;
   @private NSInteger mColumn ;
   @private NSInteger mLocationInOutputData ;
-
+  @private NSInteger mLocationInSourceString ;
+  @private enumLocationInSourceStringStatus mLocationInSourceStringStatus ;
+  @private OC_GGS_RulerViewForBuildOutput * mBuildOutputRuler ;
 }
 
 - (PMIssueDescriptor *) initWithMessage: (NSString *) inMessage
@@ -26,7 +40,10 @@
                         line: (NSInteger) inLine
                         column: (NSInteger) inColumn
                         isError: (BOOL) inIsError
-                        locationInOutputData: (NSInteger) inLocationInOutputData ;
+                        locationInOutputData: (NSInteger) inLocationInOutputData
+                        buildOutputRuler: (OC_GGS_RulerViewForBuildOutput *) inRuler ;
+
+- (void) detach ;
 
 - (NSString *) issueMessage ;
 
@@ -39,6 +56,11 @@
 - (NSInteger) issueColumn ;
 
 - (NSInteger) locationInOutputData ;
+
+- (enumLocationInSourceStringStatus) locationInSourceStringStatus ;
+
+- (NSUInteger) locationInSourceString ;
+- (void) setLocationInSourceString: (NSUInteger) inLocationInSourceString ;
 
 - (void) updateLocationForPreviousRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength ;

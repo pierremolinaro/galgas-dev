@@ -14,7 +14,6 @@
 #import "F_CocoaWrapperForGalgas.h"
 #import "PMDebug.h"
 #import "PMIssueDescriptor.h"
-#import "PMErrorOrWarningDescriptor.h"
 
 //---------------------------------------------------------------------------*
 
@@ -60,12 +59,8 @@ static NSMutableDictionary * gDocumentDataDictionary ;
   for (PMIssueDescriptor * issue in inIssueArray) {
    //  NSLog (@"issue.issueURL %@, fileURL %@", issue.issueURL, fileURL) ;
     if ([issue.issueURL isEqualTo:fileURL]) {
-      PMErrorOrWarningDescriptor * errorOrWarning = [[PMErrorOrWarningDescriptor alloc]
-        initWithMessage:issue.issueMessage
-        location:[self locationForLineInSource:issue.issueLine] + issue.issueColumn - 1
-        isError:issue.isError
-      ] ;
-      [mIssueArray addObject:errorOrWarning] ;
+      [issue setLocationInSourceString:[self locationForLineInSource:issue.issueLine] + issue.issueColumn - 1] ;
+      [mIssueArray addObject:issue] ;
     }
   }
   [mTextSyntaxColoring setIssueArray:mIssueArray] ;

@@ -51,7 +51,6 @@
   
   @private IBOutlet NSTextView * mOutputTextView ;
   @private IBOutlet NSScrollView * mOutputScrollView ;
-  @private NSMutableArray * mIssueInScrollerArray ; // Of PMErrorOrWarningDescriptor
 
   @private IBOutlet NSPanel * mUpdateFromFileSystemPanel ;
 
