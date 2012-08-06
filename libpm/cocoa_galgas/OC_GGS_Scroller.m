@@ -10,7 +10,7 @@
 #import "OC_GGS_Scroller.h"
 #import "OC_GGS_TextView.h"
 #import "PMDebug.h"
-#import "PMErrorOrWarningDescriptor.h"
+#import "PMIssueDescriptor.h"
 
 //---------------------------------------------------------------------------*
 
@@ -38,6 +38,12 @@
 - (void) FINALIZE_OR_DEALLOC {
   noteObjectDeallocation (self) ;
   macroSuperFinalize ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) setIsSourceTextViewScroller: (BOOL) inIsSourceTextViewScroller {
+  mIsSourceTextViewScroller = inIsSourceTextViewScroller ;
 }
 
 //---------------------------------------------------------------------------*
@@ -70,8 +76,15 @@
     BOOL hasError = NO ;
     BOOL hasWarning = NO ;
     for (NSUInteger i=0 ; (i<mIssueArray.count) && ! hasError ; i++) {
-      PMErrorOrWarningDescriptor * issue = [mIssueArray objectAtIndex:i] ;
-      if ([issue isInRange:lineRange]) {
+      PMIssueDescriptor * issue = [mIssueArray objectAtIndex:i] ;
+      if (! mIsSourceTextViewScroller) {
+        if (NSLocationInRange (issue.locationInOutputData, lineRange)) {
+          hasError = issue.isError ;
+          if (! issue.isError) {
+            hasWarning = YES ;
+          }
+        }
+      }else if (NSLocationInRange (issue.locationInSourceString, lineRange) && (issue.locationInSourceStringStatus == kLocationInSourceStringSolved)) {
         hasError = issue.isError ;
         if (! issue.isError) {
           hasWarning = YES ;

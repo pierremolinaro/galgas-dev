@@ -103,7 +103,9 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     [mScrollView.verticalRulerView setRuleThickness:gCocoaGalgasPreferencesController.ruleThickness] ;
     [mScrollView setRulersVisible:[[NSUserDefaults standardUserDefaults] boolForKey:GGS_show_ruler]] ;
     [mScrollView setHasVerticalRuler:YES] ;
-    [mScrollView setVerticalScroller:[OC_GGS_Scroller new]] ;
+    OC_GGS_Scroller * scroller = [OC_GGS_Scroller new] ;
+    [scroller setIsSourceTextViewScroller:YES] ;
+    [mScrollView setVerticalScroller:scroller] ;
     mScrollView.documentView = mTextView ;
   //--- Pop up Button
     mEntryListPopUpButton = [[NSPopUpButton alloc] initWithFrame:NSMakeRect (5.0, 78.0, 90.0, 22.0)] ;

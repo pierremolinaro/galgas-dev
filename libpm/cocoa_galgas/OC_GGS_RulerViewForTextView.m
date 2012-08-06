@@ -24,7 +24,7 @@
 
 #import "OC_GGS_RulerViewForTextView.h"
 #import "OC_GGS_TextView.h"
-#import "PMErrorOrWarningDescriptor.h"
+#import "PMIssueDescriptor.h"
 #import "PMIssueInRuler.h"
 #import "OC_GGS_Document.h"
 #import "PMDebug.h"
@@ -175,9 +175,9 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
       BOOL hasError = NO ;
       BOOL hasWarning = NO ;
       NSMutableString * allMessages = [NSMutableString stringWithCapacity:100] ;
-      for (PMErrorOrWarningDescriptor * issue in mIssueArray) {
-        if ([issue isInRange:lineRange]) {
-          [allMessages appendString:issue.message] ;
+      for (PMIssueDescriptor * issue in mIssueArray) {
+        if (NSLocationInRange (issue.locationInSourceString, lineRange) && (issue.locationInSourceStringStatus == kLocationInSourceStringSolved)) {
+          [allMessages appendString:issue.issueMessage] ;
           if (issue.isError) {
             hasError = YES ;
           }else{

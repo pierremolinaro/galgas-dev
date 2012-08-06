@@ -11,7 +11,7 @@
 #import "OC_GGS_TextDisplayDescriptor.h"
 #import "OC_GGS_RulerViewForTextView.h"
 #import "OC_GGS_TextSyntaxColoring.h"
-#import "PMErrorOrWarningDescriptor.h"
+#import "PMIssueDescriptor.h"
 #import "OC_Token.h"
 #import "OC_GGS_DocumentData.h"
 #import "OC_GGS_Document.h"
@@ -98,17 +98,19 @@
   NSBezierPath * errorBulletBezierPath = [NSBezierPath bezierPath] ;
   NSBezierPath * warningHiliteBezierPath = [NSBezierPath bezierPath] ;
   NSBezierPath * warningBulletBezierPath = [NSBezierPath bezierPath] ;
-  for (PMErrorOrWarningDescriptor * issue in mIssueArray) {
-    // NSLog (@"lineRange [%u, %u]", lineRange.location, lineRange.length) ;
-    NSRect lineRect = [self.layoutManager lineFragmentUsedRectForGlyphAtIndex:issue.location effectiveRange:NULL] ;
-    lineRect.size.width = self.visibleRect.size.width ;
-    // NSLog (@"r1 {{%g, %g}, {%g, %g}}", r1.origin.x, r1.origin.y, r1.size.width, r1.size.height) ;
-    [issue.isError ? errorHiliteBezierPath : warningHiliteBezierPath appendBezierPathWithRect:lineRect] ;
-    const NSPoint p1 = [self.layoutManager locationForGlyphAtIndex:issue.location] ;
-    const NSPoint p2 = [self.layoutManager locationForGlyphAtIndex:issue.location + 1] ;
-    // NSLog (@"p: %g, %g", p.x, p.y) ;
-    const NSRect r = {{(p1.x + p2.x) / 2.0 - BULLET_SIZE / 2.0, lineRect.origin.y + lineRect.size.height - BULLET_SIZE / 2.0}, {BULLET_SIZE, BULLET_SIZE}} ;
-    [issue.isError ? errorBulletBezierPath : warningBulletBezierPath appendBezierPathWithOvalInRect:r] ;
+  for (PMIssueDescriptor * issue in mIssueArray) {
+    if (issue.locationInSourceStringStatus == kLocationInSourceStringSolved) {
+      // NSLog (@"lineRange [%u, %u]", lineRange.location, lineRange.length) ;
+      NSRect lineRect = [self.layoutManager lineFragmentUsedRectForGlyphAtIndex:issue.locationInSourceString effectiveRange:NULL] ;
+      lineRect.size.width = self.visibleRect.size.width ;
+      // NSLog (@"r1 {{%g, %g}, {%g, %g}}", r1.origin.x, r1.origin.y, r1.size.width, r1.size.height) ;
+      [issue.isError ? errorHiliteBezierPath : warningHiliteBezierPath appendBezierPathWithRect:lineRect] ;
+      const NSPoint p1 = [self.layoutManager locationForGlyphAtIndex:issue.locationInSourceString] ;
+      const NSPoint p2 = [self.layoutManager locationForGlyphAtIndex:issue.locationInSourceString + 1] ;
+      // NSLog (@"p: %g, %g", p.x, p.y) ;
+      const NSRect r = {{(p1.x + p2.x) / 2.0 - BULLET_SIZE / 2.0, lineRect.origin.y + lineRect.size.height - BULLET_SIZE / 2.0}, {BULLET_SIZE, BULLET_SIZE}} ;
+      [issue.isError ? errorBulletBezierPath : warningBulletBezierPath appendBezierPathWithOvalInRect:r] ;
+    }
   }
 //--- Draw warning hilite
   [[self warningHiliteColor] setFill] ;

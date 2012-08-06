@@ -10,7 +10,9 @@
 
 @interface OC_GGS_Scroller : NSScroller {
    @private NSArray * mIssueArray ; // Of PMErrorOrWarningDescriptor
+   @private BOOL mIsSourceTextViewScroller ;
 }
 
 - (void) setIssueArray: (NSArray *) inIssueArray ;
+- (void) setIsSourceTextViewScroller: (BOOL) inIsSourceTextViewScroller ;
 @end
