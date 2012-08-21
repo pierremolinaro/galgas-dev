@@ -251,20 +251,26 @@ static NSArray * gIssueArray ;
 
 //---------------------------------------------------------------------------*
 
-- (void) detachFromCocoaDocument {
-  document = nil ;
+- (void) detach {
   [mTextSyntaxColoring detach] ;
   mTextSyntaxColoring = nil ;
 }
 
 //---------------------------------------------------------------------------*
 
-+ (void) cocoaDocumentWillClose {
+- (void) detachFromCocoaDocument {
+  document = nil ;
+}
+
+//---------------------------------------------------------------------------*
+
++ (void) cocoaDocumentWillClose: (OC_GGS_DocumentData *) inDocumentData {
   [OC_GGS_DocumentData saveAllDocuments] ;
+  [inDocumentData detachFromCocoaDocument] ;
   for (OC_GGS_DocumentData * documentData in gDocumentDataDictionary.allValues.copy) {
-    // NSLog (@"%lu for %@", documentData.mTextSyntaxColoring.displayDescriptorCount, documentData.fileURL) ;
+    // NSLog (@"%lu for %@", documentData.textSyntaxColoring.displayDescriptorCount, documentData.fileURL) ;
     if (documentData.textSyntaxColoring.displayDescriptorCount == 0) {
-      [documentData detachFromCocoaDocument] ;
+      [documentData detach] ;
       [gDocumentDataDictionary removeObjectForKey:documentData.fileURL] ;
     }
   }
