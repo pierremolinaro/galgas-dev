@@ -29,7 +29,7 @@
 
 + (void) saveAllDocuments ;
 
-+ (void) cocoaDocumentWillClose ;
++ (void) cocoaDocumentWillClose: (OC_GGS_DocumentData *) inDocumentData ;
 
 + (OC_GGS_DocumentData *) findOrAddDataForDocumentURL: (NSURL *) inDocumentURL
                           forCocoaDocument: (OC_GGS_Document *) inDocument ;

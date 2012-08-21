@@ -313,7 +313,7 @@
   mSourceDisplayArrayController = nil ;
   mDisplayDescriptorArray = nil ;
 //--- Last call
-  [OC_GGS_DocumentData cocoaDocumentWillClose] ;
+  [OC_GGS_DocumentData cocoaDocumentWillClose:mDocumentData] ;
 //---
   [super removeWindowController:inWindowController] ;
 }
@@ -358,7 +358,7 @@
   ] ;
 //---
   [inTextDisplayDescriptor detachTextDisplayDescriptor] ;
-  [OC_GGS_DocumentData cocoaDocumentWillClose] ;
+  [OC_GGS_DocumentData cocoaDocumentWillClose:nil] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -980,7 +980,28 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   ] ;
   [mOutputTextView.textStorage appendAttributedString:attributedString] ;
 //---
+  [[NSRunLoop mainRunLoop]
+    performSelector:@selector (pmReleaseBuildTask)
+    target:self
+    argument:nil
+    order:0
+    modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]
+  ] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) pmReleaseBuildTask {
   mBuildTask = nil ;
+//---
+  [NSApp requestUserAttention:NSInformationalRequest] ;
+//---
+  if (mErrorCount > 40) {
+    NSString * thePhrase = [NSString stringWithFormat:@"\"Oh! %@ makes %lu errors\"", NSFullUserName (), mErrorCount] ;
+    NSSpeechSynthesizer * speech = [[NSSpeechSynthesizer alloc] initWithVoice:nil] ;
+    [speech startSpeakingString:thePhrase] ;
+  }
+  
 }
 
 //---------------------------------------------------------------------------*
