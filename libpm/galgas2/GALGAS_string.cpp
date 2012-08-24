@@ -26,7 +26,7 @@
 #include "predefined-types.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "galgas2/C_Compiler.h"
-#include "command_line_interface/mainForLIBPM.h"
+#include "command_line_interface/F_mainForLIBPM.h"
 #include "command_line_interface/F_Analyze_CLI_Options.h"
 #include "strings/unicode_character_cpp.h"
 #include "galgas2/C_galgas_io.h"

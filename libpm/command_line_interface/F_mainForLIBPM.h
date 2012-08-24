@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2002, ..., 2011 Pierre Molinaro.                           *
+//  Copyright (C) 2002, ..., 2012 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -32,17 +32,7 @@
 
 //---------------------------------------------------------------------------*
 
-int mainForLIBPM (const TC_UniqueArray <C_String> & inSourceArray) ;
-
-//---------------------------------------------------------------------------*
-
-void print_tool_help_message (void) ;
-
-//---------------------------------------------------------------------------*
-
-extern const char * kSourceFileExtensions [] ;
-extern const char * kSourceFileHelpMessages [] ;
-extern const char * kVersionString ;
+int mainForLIBPM (int argc, const char * argv []) ;
 
 //---------------------------------------------------------------------------*
 

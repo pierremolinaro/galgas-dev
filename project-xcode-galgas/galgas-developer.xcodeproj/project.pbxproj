@@ -346,8 +346,8 @@
 		CFD94B671290677400864538 /* grammarComputations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD94B641290677400864538 /* grammarComputations.cpp */; };
 		CFD94B681290677400864538 /* grammarComputations.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD94B641290677400864538 /* grammarComputations.cpp */; };
 		CFD94B7B129068CF00864538 /* cocoaGalgas.m in Sources */ = {isa = PBXBuildFile; fileRef = CFD94B79129068CF00864538 /* cocoaGalgas.m */; };
-		CFDACD081003D0B60096A8E5 /* F_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDACD051003D0B60096A8E5 /* F_main.cpp */; };
-		CFDACD091003D0B60096A8E5 /* F_main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDACD051003D0B60096A8E5 /* F_main.cpp */; };
+		CFDACD081003D0B60096A8E5 /* F_mainForLIBPM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDACD051003D0B60096A8E5 /* F_mainForLIBPM.cpp */; };
+		CFDACD091003D0B60096A8E5 /* F_mainForLIBPM.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDACD051003D0B60096A8E5 /* F_mainForLIBPM.cpp */; };
 		CFDAE70A0AD19F3E00713406 /* PMDownloadData.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7060AD19F3E00713406 /* PMDownloadData.m */; };
 		CFDAE70C0AD19F3E00713406 /* PMDownloadFile.m in Sources */ = {isa = PBXBuildFile; fileRef = CFDAE7080AD19F3E00713406 /* PMDownloadFile.m */; };
 		CFDC56BD0C186FBB00DF8818 /* projectLL1grammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFDC56A10C186FBB00DF8818 /* projectLL1grammar.cpp */; };
@@ -626,7 +626,7 @@
 		CF82597B08536A130077AEAF /* PP_CocoaGalgasPrefix.pch */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PP_CocoaGalgasPrefix.pch; sourceTree = "<group>"; };
 		CF82599808536A5B0077AEAF /* F_Analyze_CLI_Options.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = F_Analyze_CLI_Options.cpp; sourceTree = "<group>"; };
 		CF82599908536A5B0077AEAF /* F_Analyze_CLI_Options.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = F_Analyze_CLI_Options.h; sourceTree = "<group>"; };
-		CF82599B08536A5B0077AEAF /* mainForLIBPM.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = mainForLIBPM.h; sourceTree = "<group>"; };
+		CF82599B08536A5B0077AEAF /* F_mainForLIBPM.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = F_mainForLIBPM.h; sourceTree = "<group>"; };
 		CF8259D808536A7E0077AEAF /* C_HTML_FileWrite.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_HTML_FileWrite.cpp; sourceTree = "<group>"; };
 		CF8259D908536A7E0077AEAF /* C_HTML_FileWrite.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = C_HTML_FileWrite.h; sourceTree = "<group>"; };
 		CF8259DA08536A7E0077AEAF /* C_TextFileWrite.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = C_TextFileWrite.cpp; sourceTree = "<group>"; };
@@ -905,7 +905,7 @@
 		CFD94D0A12906E8100864538 /* separateHeaderFor_repeatInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = separateHeaderFor_repeatInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
 		CFD94D0B12906E8100864538 /* separateHeaderFor_selectInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = separateHeaderFor_selectInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
 		CFD94D0C12906E8100864538 /* separateHeaderFor_terminalInstructionForGrammarAnalysis.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = separateHeaderFor_terminalInstructionForGrammarAnalysis.h; sourceTree = "<group>"; };
-		CFDACD051003D0B60096A8E5 /* F_main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = F_main.cpp; sourceTree = "<group>"; };
+		CFDACD051003D0B60096A8E5 /* F_mainForLIBPM.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = F_mainForLIBPM.cpp; sourceTree = "<group>"; };
 		CFDAE7050AD19F3E00713406 /* PMDownloadData.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PMDownloadData.h; sourceTree = "<group>"; };
 		CFDAE7060AD19F3E00713406 /* PMDownloadData.m */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.objc; path = PMDownloadData.m; sourceTree = "<group>"; };
 		CFDAE7070AD19F3E00713406 /* PMDownloadFile.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = PMDownloadFile.h; sourceTree = "<group>"; };
@@ -1076,12 +1076,12 @@
 		CF31E0ED0598DF5400814123 /* command_line_interface */ = {
 			isa = PBXGroup;
 			children = (
-				CFDACD051003D0B60096A8E5 /* F_main.cpp */,
+				CFDACD051003D0B60096A8E5 /* F_mainForLIBPM.cpp */,
+				CF82599B08536A5B0077AEAF /* F_mainForLIBPM.h */,
 				CF9F4E21092A71C60055C8C3 /* C_builtin_CLI_Options.cpp */,
 				CF9F4E14092A70FF0055C8C3 /* C_builtin_CLI_Options.h */,
 				CF82599808536A5B0077AEAF /* F_Analyze_CLI_Options.cpp */,
 				CF82599908536A5B0077AEAF /* F_Analyze_CLI_Options.h */,
-				CF82599B08536A5B0077AEAF /* mainForLIBPM.h */,
 				CF82F10E10BEDAB200F40B32 /* C_CommandLineOption.cpp */,
 				CF82F10F10BEDAB200F40B32 /* C_CommandLineOption.h */,
 				CF074BC31000BB6E00F45986 /* C_BoolCommandLineOption.cpp */,
@@ -2112,7 +2112,7 @@
 				CF074BC81000BB6E00F45986 /* C_BoolCommandLineOption.cpp in Sources */,
 				CF074C361000E29F00F45986 /* C_UIntCommandLineOption.cpp in Sources */,
 				CF074CA31000EFF500F45986 /* C_StringCommandLineOption.cpp in Sources */,
-				CFDACD081003D0B60096A8E5 /* F_main.cpp in Sources */,
+				CFDACD081003D0B60096A8E5 /* F_mainForLIBPM.cpp in Sources */,
 				CF0EA2FC1065320F00679ABC /* grammarCompilation.cpp in Sources */,
 				CF0EA32810654C9A00679ABC /* syntaxCompilation.cpp in Sources */,
 				CF585E5A10A5FBF100A5A69A /* grammarSemantics.cpp in Sources */,
@@ -2297,7 +2297,7 @@
 				CF074BC71000BB6E00F45986 /* C_BoolCommandLineOption.cpp in Sources */,
 				CF074C341000E29F00F45986 /* C_UIntCommandLineOption.cpp in Sources */,
 				CF074CA11000EFF500F45986 /* C_StringCommandLineOption.cpp in Sources */,
-				CFDACD091003D0B60096A8E5 /* F_main.cpp in Sources */,
+				CFDACD091003D0B60096A8E5 /* F_mainForLIBPM.cpp in Sources */,
 				CF0EA2FD1065320F00679ABC /* grammarCompilation.cpp in Sources */,
 				CF0EA32910654C9A00679ABC /* syntaxCompilation.cpp in Sources */,
 				CF585E5B10A5FBF100A5A69A /* grammarSemantics.cpp in Sources */,

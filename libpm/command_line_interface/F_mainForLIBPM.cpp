@@ -24,7 +24,7 @@
 //---------------------------------------------------------------------------*
 
 #include "bdd/C_BDD.h"
-#include "command_line_interface/mainForLIBPM.h"
+#include "command_line_interface/F_mainForLIBPM.h"
 #include "utilities/MF_MemoryControl.h"
 #include "utilities/F_DisplayException.h"
 #include "streams/C_ConsoleOut.h"
@@ -158,17 +158,8 @@ int main (int argc, const char * argv []) {
 //---
   if (returnCode == 0) {
     try{
-    //--- Call 'mainForLIBPM' routine
       C_PrologueEpilogue::runPrologueActions () ;
-    //--- Analyze Command Line Options
-      TC_UniqueArray <C_String> sourceFilesArray ;
-      F_Analyze_CLI_Options (argc, argv,
-                             kVersionString,
-                             sourceFilesArray,
-                             kSourceFileExtensions,
-                             kSourceFileHelpMessages) ;
-      returnCode = mainForLIBPM (sourceFilesArray) ;
-      sourceFilesArray.free () ;
+      returnCode = mainForLIBPM (argc, argv) ;
       C_PrologueEpilogue::runEpilogueActions () ;
       C_BDD::freeBDDStataStructures () ;
       #ifndef DO_NOT_GENERATE_CHECKINGS
