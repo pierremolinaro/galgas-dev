@@ -90,7 +90,7 @@ SOURCES += C_Timer.cpp
 SOURCES += C_DateTime.cpp
 
 #--- Utilities
-SOURCES += F_main.cpp
+SOURCES += F_mainForLIBPM.cpp
 SOURCES += C_PrologueEpilogue.cpp
 SOURCES += C_SharedObject.cpp
 SOURCES += C_Data.cpp

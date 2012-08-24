@@ -308,8 +308,7 @@ local routine build_LIBPM_COMMAND_LINE_INTERFACE_group
   append_cpp_h_files !?fileList !"C_StringCommandLineOption" ;
   append_cpp_h_files !?fileList !"C_builtin_CLI_Options" ;
   append_cpp_h_files !?fileList !"F_Analyze_CLI_Options" ;
-  fileList += !"F_main.cpp" ;
-  fileList += !"mainForLIBPM.h" ;
+  append_cpp_h_files !?fileList !"F_mainForLIBPM" ;
 #---
   enter_files_in_group
    !?ioXcodeProjectDescription
@@ -331,7 +330,7 @@ local routine build_LIBPM_COMMAND_LINE_INTERFACE_files_for_sources_build_phase
   fileList += !"C_UIntCommandLineOption.cpp" ;
   fileList += !"C_StringCommandLineOption.cpp" ;
   fileList += !"F_Analyze_CLI_Options.cpp" ;
-  fileList += !"F_main.cpp" ;
+  fileList += !"F_mainForLIBPM.cpp" ;
 #---
   enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription
