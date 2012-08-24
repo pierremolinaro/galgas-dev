@@ -3,8 +3,7 @@ project all_LL1_expression -> "LL1_expression" :
   feature "makefile_macosx" ;
   feature "makefile_unix" ;
   feature "makefile_msys_on_win32" ;
-  feature "project_xcode" ;
-  feature "xcode_arch:i386" ;
+  feature "SnowLeopard" ;
 #--- Sources
   lexique "LL1_expression_lexique.gLexique" ;
   option "LL1_expression_options.gOption" ;

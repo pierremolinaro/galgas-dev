@@ -4,8 +4,7 @@ project all_assignment_language -> "asl":
   feature "makefile_unix" ;
   feature "makefile_i386_linux_on_macosx" ;
   feature "makefile_mingw_on_macosx" ;
-  feature "project_xcode" ;
-  feature "xcode_arch:i386" ;
+  feature "SnowLeopard" ;
 
 #--- Source files (relative path from 'galgas_sources' directory)
   lexique "assignment_language_lexique.gLexique" ;
