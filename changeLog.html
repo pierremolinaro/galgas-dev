@@ -18,6 +18,16 @@
  <body>
   <div style="font:Verdana; font-size:small;">
    <p><strong>GALGAS ChangeLog</strong></p>
+   <p>2.4.0</p>
+   <ul>
+     <li>New Xcode target : "MountainLion";</li>
+     <li>Targets "xcode_arch:Leopard-32", "xcode_arch:Leopard-64", "xcode_arch:SnowLeopard-32" and "xcode_arch:Lion-32" have been deleted;</li>
+     <li>ppc and universal binaries generation is no more available;</li>
+     <li>So, the available Xcode targets are: "SnowLeopard", "Lion" and "MountainLion";</li>
+     <li>targets "Lion" and "MountainLion" generate a Cocoa target that uses ARC (Automatic Reference Counting);</li>
+     <li>Bug Fix: auto saving does not display the alert message "Document has been saved by an other application";</li>
+     <li>Bug Fix: aborting a compilation does not crash any more on ARC binaries;</li>
+   </ul>
    <p>2.3.9</p>
    <ul>
      <li>Bug Fix: auto saving does not display the alert message "Document has been saved by an other application";</li>

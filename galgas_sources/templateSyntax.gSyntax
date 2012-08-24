@@ -507,7 +507,7 @@ rule <primary>
       $.$ ;
       $identifier$ ?@lstring optionName ;
       $identifier$ ?@lstring readerName ;
-      outExpression := [@templateOptionAccessAST new ![@lstring new !"galgas_cli_options" !here] !optionName !readerName] ;
+      outExpression := [@templateOptionAccessAST new ![@lstring new !"galgas_builtin_options" !here] !optionName !readerName] ;
     or
       $identifier$ ?@lstring optionComponentName ;
       $.$ ;

@@ -998,7 +998,8 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 //---
   [NSApp requestUserAttention:NSInformationalRequest] ;
 //---
-  if (mErrorCount > 40) {
+  if ((! mHasSpoken) && (mErrorCount > 40)) {
+    mHasSpoken = YES ;
     NSString * thePhrase = [NSString stringWithFormat:@"\"Oh! %@ makes %lu errors\"", NSFullUserName (), mErrorCount] ;
     NSSpeechSynthesizer * speech = [[NSSpeechSynthesizer alloc] initWithVoice:nil] ;
     [speech startSpeakingString:thePhrase] ;
