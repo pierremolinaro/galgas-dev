@@ -55,6 +55,7 @@
   @private IBOutlet NSPanel * mUpdateFromFileSystemPanel ;
 
   @private OC_GGS_BuildTask * mBuildTask ;
+  @private BOOL mBuildTaskHasBeenAborted ;
   @private NSMutableData * mBufferedOutputData ;
 //---  
   @private NSArrayController * mSourceDisplayArrayController ;
