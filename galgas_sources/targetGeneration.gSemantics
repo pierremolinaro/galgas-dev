@@ -226,7 +226,9 @@ routine updateTargets
     end switch ;
   end foreach ;
 #--- Parse features
-  message "*** Updating targets\n" ;
+  if [@application verboseOption] then
+    message "*** Updating targets\n" ;
+  end if ;
   @stringset availableGenerationFeatures [emptySet] ;
   availableGenerationFeatures += !"makefile_macosx" ;
   availableGenerationFeatures += !"makefile_unix" ;
