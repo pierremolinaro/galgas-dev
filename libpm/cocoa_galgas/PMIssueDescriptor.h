@@ -29,7 +29,7 @@ typedef enum {
   @private NSURL * mURL ;
   @private NSInteger mLine ;
   @private NSInteger mColumn ;
-  @private NSInteger mLocationInOutputData ;
+  @private NSRange mRangeInOutputData ;
   @private NSInteger mLocationInSourceString ;
   @private enumLocationInSourceStringStatus mLocationInSourceStringStatus ;
   @private OC_GGS_RulerViewForBuildOutput * mBuildOutputRuler ;
@@ -40,7 +40,7 @@ typedef enum {
                         line: (NSInteger) inLine
                         column: (NSInteger) inColumn
                         isError: (BOOL) inIsError
-                        locationInOutputData: (NSInteger) inLocationInOutputData
+                        rangeInOutputData: (NSRange) inRangeInOutputData
                         buildOutputRuler: (OC_GGS_RulerViewForBuildOutput *) inRuler ;
 
 - (void) detach ;
@@ -64,6 +64,8 @@ typedef enum {
 
 - (void) updateLocationForPreviousRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength ;
+
+- (void) scrollAndSelectErrorMessage ;
 @end
 
 //---------------------------------------------------------------------------*

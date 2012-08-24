@@ -16,7 +16,7 @@
   @private NSMutableSet * mTextDisplayDescriptorSet ; // Of OC_GGS_TextDisplayDescriptor
   @private NSTextStorage * mSourceTextStorage ;
   @private OC_Lexique * mTokenizer ;
-  @private NSMutableArray * mIssueArray ; // Of PMErrorOrWarningDescriptor
+  @private NSMutableArray * mIssueArray ; // Of PMIssueDescriptor
   
 
   @private double mMaxAscender ; // Only mMaxAscender is observable

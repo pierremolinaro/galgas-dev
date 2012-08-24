@@ -33,7 +33,7 @@
                         line: (NSInteger) inLine
                         column: (NSInteger) inColumn
                         isError: (BOOL) inIsError
-                        locationInOutputData: (NSInteger) inLocationInOutputData
+                        rangeInOutputData: (NSRange) inRangeInOutputData
                         buildOutputRuler: (OC_GGS_RulerViewForBuildOutput *) inRuler {
   self = [self init] ;
   if (self) {
@@ -43,7 +43,7 @@
     mLine = inLine ;
     mColumn = inColumn ;
     mIsError = inIsError ;
-    mLocationInOutputData = inLocationInOutputData ;
+    mRangeInOutputData = inRangeInOutputData ;
     mLocationInSourceStringStatus = kLocationInSourceStringNotSolved ;
     mBuildOutputRuler = inRuler ;
     [self normalizeMessage] ;
@@ -91,7 +91,7 @@
 //---------------------------------------------------------------------------*
 
 - (NSInteger) locationInOutputData {
-  return mLocationInOutputData ;
+  return mRangeInOutputData.location ;
 }
 
 //---------------------------------------------------------------------------*
@@ -129,6 +129,14 @@
 
 - (void) detach {
   mBuildOutputRuler = nil ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) scrollAndSelectErrorMessage {
+  NSTextView * errorMessageTextView = mBuildOutputRuler.scrollView.documentView ;
+  [errorMessageTextView setSelectedRange:mRangeInOutputData] ;
+  [errorMessageTextView scrollRangeToVisible:mRangeInOutputData] ;
 }
 
 //---------------------------------------------------------------------------*

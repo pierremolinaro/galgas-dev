@@ -9,7 +9,7 @@
 #import <AppKit/AppKit.h>
 
 @interface OC_GGS_Scroller : NSScroller {
-   @private NSArray * mIssueArray ; // Of PMErrorOrWarningDescriptor
+   @private NSArray * mIssueArray ; // Of PMIssueDescriptor
    @private BOOL mIsSourceTextViewScroller ;
 }
 

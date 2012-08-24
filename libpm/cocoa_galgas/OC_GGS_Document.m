@@ -823,7 +823,7 @@
 
 - (void) enterIssue: (NSString *) inIssueMessage
          isError: (BOOL) inIsError
-         locationInOutputData: (NSInteger) inLocationInOutputData {
+         locationInOutputData: (NSRange) inRangeInOutputData {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
@@ -849,7 +849,7 @@
     line:issueLine
     column:issueColumn
     isError:inIsError
-    locationInOutputData:inLocationInOutputData
+    rangeInOutputData:inRangeInOutputData
     buildOutputRuler:mRulerViewForBuildOutput
   ] ;
   [mIssueArray addObject:issue] ;
@@ -930,19 +930,20 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     }
     NSString * s = [component substringFromIndex:idx] ;
     if (s.length > 0) {
+      const NSRange r = {mOutputTextView.textStorage.length + outputAttributedString.length, s.length - 1} ;
       if ([s characterAtIndex:0] == COCOA_WARNING_ID) {
         s = [s substringFromIndex:1] ;
         [self
           enterIssue:s
           isError:NO
-          locationInOutputData:mOutputTextView.textStorage.length + outputAttributedString.length
+          locationInOutputData:r
         ] ;
       }else if ([s characterAtIndex:0] == COCOA_ERROR_ID) {
         s = [s substringFromIndex:1] ;
         [self
           enterIssue:s
           isError:YES
-          locationInOutputData:mOutputTextView.textStorage.length + outputAttributedString.length
+          locationInOutputData:r
         ] ;
       }
       NSAttributedString * as = [[NSAttributedString alloc]

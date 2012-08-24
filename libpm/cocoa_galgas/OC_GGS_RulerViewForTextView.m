@@ -60,54 +60,7 @@
   mIssueArray = inIssueArray.copy ;
   [self setNeedsDisplay:YES] ;
 }
-/*
-  NSLog (@"inIssueArray %@", inIssueArray) ;
-//--- Note: ruler view and text view are both flipped
-  OC_GGS_TextView * textView = self.scrollView.documentView ;
-  NSLayoutManager * lm = textView.layoutManager ;
-  NSLog (@"lm %p", lm) ;
-//---
-  NSMutableArray * bulletArray = [NSMutableArray new] ;
-  NSString * sourceString = textView.string ;
-  const NSUInteger sourceStringLength = sourceString.length ;
-  NSUInteger idx = 0 ;
-  NSUInteger lineIndex = 0 ;
-  while (idx < sourceStringLength) {
-    lineIndex ++ ;
-    const NSRange lineRange = [sourceString lineRangeForRange:NSMakeRange (idx, 1)] ;
-  //--- Error or warning at this line ?
-    BOOL hasError = NO ;
-    BOOL hasWarning = NO ;
-    NSMutableString * allMessages = [NSMutableString stringWithCapacity:100] ;
-    for (PMErrorOrWarningDescriptor * issue in inIssueArray) {
-      if ([issue isInRange:lineRange]) {
-        [allMessages appendString:issue.message] ;
-        if (issue.isError) {
-          hasError = YES ;
-        }else{
-          hasWarning = YES ;
-        }
-      }
-    }
-    if (hasError || hasWarning) {
-      const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:idx effectiveRange:NULL] ;
-      const NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMidY (r) - 8.0) fromView:textView] ;
-      const NSRect rImage = {{0.0, p.y}, {16.0, 16.0}} ;
-      NSLog (@"ADD %p", lm) ;
-      PMIssueInRuler * issueInRuler = [[PMIssueInRuler alloc]
-        initWithRect:rImage
-        message:allMessages
-        isError:hasError
-      ] ;
-      [bulletArray addObject:issueInRuler] ;
-    }
-    idx = lineRange.location + lineRange.length ;
-  }
-//---
-  mBulletArray = bulletArray ;
-  [self setNeedsDisplay:YES] ;
-}
-*/
+
 //---------------------------------------------------------------------------*
 
 static NSUInteger imax (NSUInteger a, NSUInteger b) { return (a > b) ? a : b ; }
@@ -208,6 +161,28 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
       operation:NSCompositeSourceOver
       fraction:1.0
     ] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) mouseDown: (NSEvent *) inMouseDownEvent {
+//--- Note: ruler view and text view are both flipped
+  NSTextView * textView = self.scrollView.documentView ;
+  NSLayoutManager * lm = textView.layoutManager ;
+  const NSPoint locationInView = [self convertPoint:inMouseDownEvent.locationInWindow fromView:nil] ;
+  BOOL found = NO ;
+  for (NSUInteger i=0 ; (i<mIssueArray.count) && ! found ; i++) {
+    PMIssueDescriptor * issue = [mIssueArray objectAtIndex:i] ;
+    if (issue.locationInSourceStringStatus != kLocationInSourceStringInvalid) {
+      const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:issue.locationInSourceString effectiveRange:NULL] ;
+      const NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMidY (r) - 8.0) fromView:textView] ;
+      const NSRect rImage = {{4.0, p.y}, {16.0, 16.0}} ;
+      if (NSPointInRect (locationInView, rImage)) {
+        found = YES ;
+        [issue scrollAndSelectErrorMessage] ;
+      }
+    }
   }
 }
 
