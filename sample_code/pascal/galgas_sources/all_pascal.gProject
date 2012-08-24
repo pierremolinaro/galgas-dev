@@ -8,8 +8,7 @@ project all_pascal -> "pascal":
 #  feature "makefile_i386_linux_on_macosx" ;
 #  feature "makefile_mingw_on_macosx" ;
 #  feature "makefile_msys_on_win32" ;
-  feature "project_xcode" ;
-  feature "xcode_arch:i386" ;
+  feature "SnowLeopard" ;
 #  feature "xcode_arch:x86_64" ;
 #  feature "xcode_arch:ppc" ;
 #  feature "xcode_arch:ppc64" ;

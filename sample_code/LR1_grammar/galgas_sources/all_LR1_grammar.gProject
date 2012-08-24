@@ -3,8 +3,7 @@ project all_LR1_grammar -> "LR1_grammar":
   feature "makefile_macosx" ;
   feature "makefile_unix" ;
   feature "makefile_msys_on_win32" ;
-  feature "project_xcode" ;
-  feature "xcode_arch:i386" ;
+  feature "SnowLeopard" ;
 #--- Sources
   lexique "LR1_grammar_lexique.gLexique" ;
   option "LR1_grammar_options.gOption" ;

@@ -3,141 +3,141 @@ Delete Test Done
 Insertion Test Done
 Delete Test Done
 *************************************** begin of foreach instruction test 1
-  before
-  do 'a'
-  between
-  do 'b'
-  between
-  do 'c'
-  between
-  do 'd'
-  after
---- begin of foreach instruction test 2
---- begin of foreach instruction test 3
-  before
-  do 'a', n: 0
-  between
-  do 'b', n: 1
-  after
---- begin of foreach instruction test 4
-  before
-  do 'a'
-  between
-  do 'b'
-  after
---- begin of foreach instruction test 5
-  before
-  do 'a' (idx: 0)
-  between
-  do 'b' (idx: 1)
-  between
-  do 'c' (idx: 2)
-  between
-  do 'd' (idx: 3)
-  after
---- begin of foreach instruction test 6
-  do 'a' (idx: 0)
-  do 'b' (idx: 1)
-  do 'c' (idx: 2)
-  do 'd' (idx: 3)
---- begin of foreach instruction test 7
-  do 'A' (idx: 0)
-  do 'B' (idx: 1)
-  do 'C' (idx: 2)
-  do 'D' (idx: 3)
-  do 'E' (idx: 4)
-  do 'F' (idx: 5)
-  do 'G' (idx: 6)
-  do 'H' (idx: 7)
---- begin of foreach instruction test 8
-  do 'H' (idx: 0)
-  do 'G' (idx: 1)
-  do 'F' (idx: 2)
-  do 'E' (idx: 3)
-  do 'D' (idx: 4)
-  do 'C' (idx: 5)
-  do 'B' (idx: 6)
-  do 'A' (idx: 7)
---- begin of foreach instruction test 9
-  do '1' (idx: 0)
-  do '2' (idx: 1)
-  do '3' (idx: 2)
-  do '4' (idx: 3)
-  do '5' (idx: 4)
-  do '6' (idx: 5)
-  do '7' (idx: 6)
-  do '8' (idx: 7)
-*************************************** begin of for instruction test 1
-  before
-  do 'a'
-  between
-  do 'b'
-  between
-  do 'c'
-  between
-  do 'd'
-  after
---- begin of for instruction test 2
---- begin of for instruction test 3
-  before
-  do 'a', n: 0
-  between
-  do 'b', n: 1
-  after
---- begin of for instruction test 4
-  before
-  do 'a'
-  between
-  do 'b'
-  after
---- begin of for instruction test 5
-  before
-  do 'a' (idx: 0)
-  between
-  do 'b' (idx: 1)
-  between
-  do 'c' (idx: 2)
-  between
-  do 'd' (idx: 3)
-  after
---- begin of for instruction test 6
-  do 'a' (idx: 0)
-  do 'b' (idx: 1)
-  do 'c' (idx: 2)
-  do 'd' (idx: 3)
---- begin of for instruction test 7
-  do 'A' (idx: 0)
-  do 'B' (idx: 1)
-  do 'C' (idx: 2)
-  do 'D' (idx: 3)
-  do 'E' (idx: 4)
-  do 'F' (idx: 5)
-  do 'G' (idx: 6)
-  do 'H' (idx: 7)
---- begin of for instruction test 8
-  do 'H' (idx: 0)
-  do 'G' (idx: 1)
-  do 'F' (idx: 2)
-  do 'E' (idx: 3)
-  do 'D' (idx: 4)
-  do 'C' (idx: 5)
-  do 'B' (idx: 6)
-  do 'A' (idx: 7)
---- begin of for instruction test 9
-  do '1' (idx: 0)
-  do '2' (idx: 1)
-  do '3' (idx: 2)
-  do '4' (idx: 3)
-  do '5' (idx: 4)
-  do '6' (idx: 5)
-  do '7' (idx: 6)
-  do '8' (idx: 7)
-*************************************** begin of list direct access
-LOGGING s: <@string:"a">
-LOGGING s: <@string:"b">
-LOGGING s: <@string:"c">
-LOGGING s: <@string:"d">
-LOGGING strList: <list @myList (4 objects): 
+  before
+  do 'a'
+  between
+  do 'b'
+  between
+  do 'c'
+  between
+  do 'd'
+  after
+--- begin of foreach instruction test 2
+--- begin of foreach instruction test 3
+  before
+  do 'a', n: 0
+  between
+  do 'b', n: 1
+  after
+--- begin of foreach instruction test 4
+  before
+  do 'a'
+  between
+  do 'b'
+  after
+--- begin of foreach instruction test 5
+  before
+  do 'a' (idx: 0)
+  between
+  do 'b' (idx: 1)
+  between
+  do 'c' (idx: 2)
+  between
+  do 'd' (idx: 3)
+  after
+--- begin of foreach instruction test 6
+  do 'a' (idx: 0)
+  do 'b' (idx: 1)
+  do 'c' (idx: 2)
+  do 'd' (idx: 3)
+--- begin of foreach instruction test 7
+  do 'A' (idx: 0)
+  do 'B' (idx: 1)
+  do 'C' (idx: 2)
+  do 'D' (idx: 3)
+  do 'E' (idx: 4)
+  do 'F' (idx: 5)
+  do 'G' (idx: 6)
+  do 'H' (idx: 7)
+--- begin of foreach instruction test 8
+  do 'H' (idx: 0)
+  do 'G' (idx: 1)
+  do 'F' (idx: 2)
+  do 'E' (idx: 3)
+  do 'D' (idx: 4)
+  do 'C' (idx: 5)
+  do 'B' (idx: 6)
+  do 'A' (idx: 7)
+--- begin of foreach instruction test 9
+  do '1' (idx: 0)
+  do '2' (idx: 1)
+  do '3' (idx: 2)
+  do '4' (idx: 3)
+  do '5' (idx: 4)
+  do '6' (idx: 5)
+  do '7' (idx: 6)
+  do '8' (idx: 7)
+*************************************** begin of for instruction test 1
+  before
+  do 'a'
+  between
+  do 'b'
+  between
+  do 'c'
+  between
+  do 'd'
+  after
+--- begin of for instruction test 2
+--- begin of for instruction test 3
+  before
+  do 'a', n: 0
+  between
+  do 'b', n: 1
+  after
+--- begin of for instruction test 4
+  before
+  do 'a'
+  between
+  do 'b'
+  after
+--- begin of for instruction test 5
+  before
+  do 'a' (idx: 0)
+  between
+  do 'b' (idx: 1)
+  between
+  do 'c' (idx: 2)
+  between
+  do 'd' (idx: 3)
+  after
+--- begin of for instruction test 6
+  do 'a' (idx: 0)
+  do 'b' (idx: 1)
+  do 'c' (idx: 2)
+  do 'd' (idx: 3)
+--- begin of for instruction test 7
+  do 'A' (idx: 0)
+  do 'B' (idx: 1)
+  do 'C' (idx: 2)
+  do 'D' (idx: 3)
+  do 'E' (idx: 4)
+  do 'F' (idx: 5)
+  do 'G' (idx: 6)
+  do 'H' (idx: 7)
+--- begin of for instruction test 8
+  do 'H' (idx: 0)
+  do 'G' (idx: 1)
+  do 'F' (idx: 2)
+  do 'E' (idx: 3)
+  do 'D' (idx: 4)
+  do 'C' (idx: 5)
+  do 'B' (idx: 6)
+  do 'A' (idx: 7)
+--- begin of for instruction test 9
+  do '1' (idx: 0)
+  do '2' (idx: 1)
+  do '3' (idx: 2)
+  do '4' (idx: 3)
+  do '5' (idx: 4)
+  do '6' (idx: 5)
+  do '7' (idx: 6)
+  do '8' (idx: 7)
+*************************************** begin of list direct access
+LOGGING s: <@string:"a">
+LOGGING s: <@string:"b">
+LOGGING s: <@string:"c">
+LOGGING s: <@string:"d">
+LOGGING strList: <list @myList (4 objects): 
 |-at 0
 | | mValue:<@string:"a">
 |-at 1
@@ -146,19 +146,19 @@ LOGGING strList: <list @myList (4 objects):
 | | mValue:<@string:"c">
 |-at 3
 | | mValue:<@string:"z">>
---- test .= operator on list
-LOGGING s: <@string:"d">
-*************************************** begin of list compare
-LOGGING comp: <@bool:true>
-*************************************** begin of sorted list test
-  index 0 : d
-  index 1 : c
-  index 2 : b
-  index 3 : a
-*************************************** begin of struct logging
-LOGGING s: <struct @structTest:<@string:"az">, <@uint:34>>
-*************************************** begin of listmap
-LOGGING m: <@myListMap:  (3 objects): 
+--- test .= operator on list
+LOGGING s: <@string:"d">
+*************************************** begin of list compare
+LOGGING comp: <@bool:true>
+*************************************** begin of sorted list test
+  index 0 : d
+  index 1 : c
+  index 2 : b
+  index 3 : a
+*************************************** begin of struct logging
+LOGGING s: <struct @structTest:<@string:"az">, <@uint:34>>
+*************************************** begin of listmap
+LOGGING m: <@myListMap:  (3 objects): 
 |-at 0: key 'a'  (2 objects): 
 | |-at 0
 | | | mString:<@string:"b">
@@ -174,224 +174,224 @@ LOGGING m: <@myListMap:  (3 objects):
 | |-at 0
 | | | mString:<@string:"g">
 | | | mInt:<@uint:37>>>
-LOGGING c: <@uint:3>
-LOGGING s: <@stringset:3 entries 'a' 'c' 'd'>
-LOGGING sl: <list @stringlist (3 objects): 
+LOGGING c: <@uint:3>
+LOGGING s: <@stringset:3 entries 'a' 'c' 'd'>
+LOGGING sl: <list @stringlist (3 objects): 
 |-at 0
 | | mValue:<@string:"a">
 |-at 1
 | | mValue:<@string:"c">
 |-at 2
 | | mValue:<@string:"d">>
-LOGGING aList: <list @aList (2 objects): 
+LOGGING aList: <list @aList (2 objects): 
 |-at 0
 | | mString:<@string:"b">
 | | mInt:<@uint:23>
 |-at 1
 | | mString:<@string:"c">
 | | mInt:<@uint:98>>
---- test += operator listmap
---- test foreach for listmap
-LOGGING key: : <@string:"a">
-LOGGING list: : <list @aList (2 objects): 
+--- test += operator listmap
+--- test foreach for listmap
+LOGGING key: : <@string:"a">
+LOGGING list: : <list @aList (2 objects): 
 |-at 0
 | | mString:<@string:"b">
 | | mInt:<@uint:23>
 |-at 1
 | | mString:<@string:"c">
 | | mInt:<@uint:98>>
-LOGGING key: : <@string:"c">
-LOGGING list: : <list @aList (1 object): 
+LOGGING key: : <@string:"c">
+LOGGING list: : <list @aList (1 object): 
 |-at 0
 | | mString:<@string:"f">
 | | mInt:<@uint:11>>
-LOGGING key: : <@string:"d">
-LOGGING list: : <list @aList (1 object): 
+LOGGING key: : <@string:"d">
+LOGGING list: : <list @aList (1 object): 
 |-at 0
 | | mString:<@string:"g">
 | | mInt:<@uint:37>>
-*************************************** begin of map
-LOGGING m: <map @aMap (1 object): 
+*************************************** begin of map
+LOGGING m: <map @aMap (1 object): 
 |-at 0: key 'g' 
 | | value:<@uint:37>>
-LOGGING m: <map @aMap (1 object): 
+LOGGING m: <map @aMap (1 object): 
 |-at 0: key 'g' 
 | | value:<@uint:56>>
-LOGGING mm: <map @aMap (0 object): 
+LOGGING mm: <map @aMap (0 object): 
 | override #1 (1 object): 
 |-at 0: key 'g' 
 | | value:<@uint:56>>
-LOGGING v: <@uint:56>
-LOGGING mm: <map @aMap (1 object): 
+LOGGING v: <@uint:56>
+LOGGING mm: <map @aMap (1 object): 
 |-at 0: key 'g' 
 | | value:<@uint:11>
 | override #1 (1 object): 
 |-at 0: key 'g' 
 | | value:<@uint:56>>
-LOGGING v: <@uint:11>
-LOGGING m: <map @aMap (1 object): 
+LOGGING v: <@uint:11>
+LOGGING m: <map @aMap (1 object): 
 |-at 0: key 'g' 
 | | value:<@uint:56>>
-LOGGING loc: <@location:nowhere:1:1>
-  key 'A', value: 1
-  key 'B', value: 2
-  key 'C', value: 3
-  key 'D', value: 4
-  key 'E', value: 5
-  key 'F', value: 6
-  key 'G', value: 7
-  key 'H', value: 8
-  key 'I', value: 9
-  key 'K', value: 10
-  key 'L', value: 11
-  key 'M', value: 12
-  key 'N', value: 13
-  key 'O', value: 14
-  key 'P', value: 15
-  key 'R', value: 16
-  key 'S', value: 17
-  key 'T', value: 18
-  key 'U', value: 19
-  key 'V', value: 20
-  key 'W', value: 21
-  key 'X', value: 22
-  key 'Y', value: 23
-  key 'Z', value: 24
-  key 'a', value: 25
-  key 'b', value: 26
-  key 'c', value: 27
-  key 'd', value: 28
-  key 'e', value: 29
-  key 'f', value: 30
-  key 'g', value: 31
-  key 'h', value: 32
-  key 'i', value: 33
-  key 'j', value: 34
-  key 'k', value: 35
-  key 'l', value: 36
-  key 'm', value: 37
-  key 'n', value: 38
-  key 'o', value: 39
-  key 'p', value: 40
-  key 'q', value: 41
-  key 'r', value: 42
-  key 's', value: 43
-  key 't', value: 44
-  key 'u', value: 45
-  key 'v', value: 46
-  key 'w', value: 47
-  key 'x', value: 48
-  key 'y', value: 49
-  key 'z', value: 50
-*************************************** begin of function test
-LOGGING r: <@uint:5>
-LOGGING r: <@uint:5>
-*************************************** begin of introspection test
---- Type list (78 types)
-  @1charArray
-  @2stringlist
-  @2stringlist.element
-  @A
-  @A_A
-  @B
-  @B_B
-  @C_C
-  @TestCategoryMethod
-  @TestCategoryModifier
-  @aList
-  @aList.element
-  @aMap
-  @aMap.element
-  @abstractOverridingTestCategoryModifier
-  @abstractTestCategoryModifier
-  @adjMat
-  @application
-  @binaryset
-  @bool
-  @char
-  @charArray
-  @complex
-  @data
-  @double
-  @filewrapper
-  @function
-  @functionlist
-  @functionlist.element
-  @lbool
-  @lchar
-  @ldouble
-  @location
-  @lsint
-  @lsint64
-  @lstring
-  @lstringlist
-  @lstringlist.element
-  @luint
-  @luint64
-  @luintlist
-  @luintlist.element
-  @maTable
-  @monMapProxy
-  @myList
-  @myList.element
-  @myListMap
-  @myListMap.element
-  @mySortedList
-  @mySortedList.element
-  @myStruct
-  @object
-  @objectlist
-  @objectlist.element
-  @overridingTestCategoryModifier
-  @range
-  @sint
-  @sint64
-  @string
-  @stringArray
-  @stringlist
-  @stringlist.element
-  @stringset
-  @structTest
-  @toto
-  @toto1
-  @toto2
-  @toto3
-  @trucArray
-  @type
-  @typelist
-  @typelist.element
-  @uint
-  @uint64
-  @uint64list
-  @uint64list.element
-  @uintlist
-  @uintlist.element
---- Function list (1 function)
-LOGGING mValue: <@function:functionTest [?@uint ?@uint] -> @uint>
-<@function:functionTest [?@uint ?@uint] -> @uint>  functionTest [?@uint ?@uint] -> @uint
-Function 'foo' exists:false
-Function 'functionTest' exists:true
-LOGGING object: 
-LOGGING y: <@uint:2>
-LOGGING result: 
-*************************************** begin of maproxy test
-LOGGING [table count]: <@uint:0>
-LOGGING Proxy: : <@monMapProxy regular (key "abc", unsolved)>
-LOGGING [table unsolvedProxyCount]: <@uint:1>
-*************************************** begin of category reader test
-LOGGING s: <@string:"-3-4-4">
-*************************************** begin of category modifier test
-LOGGING u: <@uint:3>
-LOGGING v: <@TestCategoryModifier:[@TestCategoryModifier:<@uint:3>, <@string:"Hello World">]>
-*************************************** begin of type category test
-LOGGING Square of 7: <@uint64:49>
-LOGGING Sum 1 + 2 + 3 + 4: <@uint:10>
-LOGGING Hello !: <@string:"Hello !">
-LOGGING v: <@uint64:49>
-LOGGING u: <@uint:10>
-LOGGING s: <@string:"Hello !">
-LOGGING ls: <struct @lstring:<@string:"Hello3">, <@location:nowhere:1:1>>
-LOGGING aList: <list @uintlist (5 objects): 
+LOGGING loc: <@location:nowhere:1:1>
+  key 'A', value: 1
+  key 'B', value: 2
+  key 'C', value: 3
+  key 'D', value: 4
+  key 'E', value: 5
+  key 'F', value: 6
+  key 'G', value: 7
+  key 'H', value: 8
+  key 'I', value: 9
+  key 'K', value: 10
+  key 'L', value: 11
+  key 'M', value: 12
+  key 'N', value: 13
+  key 'O', value: 14
+  key 'P', value: 15
+  key 'R', value: 16
+  key 'S', value: 17
+  key 'T', value: 18
+  key 'U', value: 19
+  key 'V', value: 20
+  key 'W', value: 21
+  key 'X', value: 22
+  key 'Y', value: 23
+  key 'Z', value: 24
+  key 'a', value: 25
+  key 'b', value: 26
+  key 'c', value: 27
+  key 'd', value: 28
+  key 'e', value: 29
+  key 'f', value: 30
+  key 'g', value: 31
+  key 'h', value: 32
+  key 'i', value: 33
+  key 'j', value: 34
+  key 'k', value: 35
+  key 'l', value: 36
+  key 'm', value: 37
+  key 'n', value: 38
+  key 'o', value: 39
+  key 'p', value: 40
+  key 'q', value: 41
+  key 'r', value: 42
+  key 's', value: 43
+  key 't', value: 44
+  key 'u', value: 45
+  key 'v', value: 46
+  key 'w', value: 47
+  key 'x', value: 48
+  key 'y', value: 49
+  key 'z', value: 50
+*************************************** begin of function test
+LOGGING r: <@uint:5>
+LOGGING r: <@uint:5>
+*************************************** begin of introspection test
+--- Type list (78 types)
+  @1charArray
+  @2stringlist
+  @2stringlist.element
+  @A
+  @A_A
+  @B
+  @B_B
+  @C_C
+  @TestCategoryMethod
+  @TestCategoryModifier
+  @aList
+  @aList.element
+  @aMap
+  @aMap.element
+  @abstractOverridingTestCategoryModifier
+  @abstractTestCategoryModifier
+  @adjMat
+  @application
+  @binaryset
+  @bool
+  @char
+  @charArray
+  @complex
+  @data
+  @double
+  @filewrapper
+  @function
+  @functionlist
+  @functionlist.element
+  @lbool
+  @lchar
+  @ldouble
+  @location
+  @lsint
+  @lsint64
+  @lstring
+  @lstringlist
+  @lstringlist.element
+  @luint
+  @luint64
+  @luintlist
+  @luintlist.element
+  @maTable
+  @monMapProxy
+  @myList
+  @myList.element
+  @myListMap
+  @myListMap.element
+  @mySortedList
+  @mySortedList.element
+  @myStruct
+  @object
+  @objectlist
+  @objectlist.element
+  @overridingTestCategoryModifier
+  @range
+  @sint
+  @sint64
+  @string
+  @stringArray
+  @stringlist
+  @stringlist.element
+  @stringset
+  @structTest
+  @toto
+  @toto1
+  @toto2
+  @toto3
+  @trucArray
+  @type
+  @typelist
+  @typelist.element
+  @uint
+  @uint64
+  @uint64list
+  @uint64list.element
+  @uintlist
+  @uintlist.element
+--- Function list (1 function)
+LOGGING mValue: <@function:functionTest [?@uint ?@uint] -> @uint>
+<@function:functionTest [?@uint ?@uint] -> @uint>  functionTest [?@uint ?@uint] -> @uint
+Function 'foo' exists:false
+Function 'functionTest' exists:true
+LOGGING object: 
+LOGGING y: <@uint:2>
+LOGGING result: 
+*************************************** begin of maproxy test
+LOGGING [table count]: <@uint:0>
+LOGGING Proxy: : <@monMapProxy regular (key "abc", unsolved)>
+LOGGING [table unsolvedProxyCount]: <@uint:1>
+*************************************** begin of category reader test
+LOGGING s: <@string:"-3-4-4">
+*************************************** begin of category modifier test
+LOGGING u: <@uint:3>
+LOGGING v: <@TestCategoryModifier:[@TestCategoryModifier:<@uint:3>, <@string:"Hello World">]>
+*************************************** begin of type category test
+LOGGING Square of 7: <@uint64:49>
+LOGGING Sum 1 + 2 + 3 + 4: <@uint:10>
+LOGGING Hello !: <@string:"Hello !">
+LOGGING v: <@uint64:49>
+LOGGING u: <@uint:10>
+LOGGING s: <@string:"Hello !">
+LOGGING ls: <struct @lstring:<@string:"Hello3">, <@location:nowhere:1:1>>
+LOGGING aList: <list @uintlist (5 objects): 
 |-at 0
 | | mValue:<@uint:1>
 |-at 1
@@ -402,53 +402,54 @@ LOGGING aList: <list @uintlist (5 objects):
 | | mValue:<@uint:4>
 |-at 4
 | | mValue:<@uint:81>>
-*************************************** begin of string test
-LOGGING command: <@string:"echo accentué">
-LOGGING result: <@string:"accentué
+*************************************** begin of string test
+LOGGING command: <@string:"echo accentué">
+LOGGING result: <@string:"accentué
 ">
-*************************************** begin of range test
-LOGGING s: <@string:"Range [4, 3] enumeration: 4 5 6">
-LOGGING s: <@string:"Range [4, 3] reverse enumeration: 6 5 4">
-*************************************** begin of array test
-LOGGING p: <@ptrint:array [2, 3, 4] of @uint>
-LOGGING : <@string:"Hello">
-LOGGING pp: <@ptrint:array [4, 3] of @uint>
-LOGGING : <@string:"?">
-i = 0
-  j = 0
-    k = 0
-    k = 1
-    k = 2
-    k = 3
-  j = 1
-    k = 0
-    k = 1
-    k = 2
-    k = 3
-  j = 2
-    k = 0
-    k = 1
-    k = 2
-    k = 3
-i = 1
-  j = 0
-    k = 0
-    k = 1
-    k = 2
-    k = 3
-  j = 1
-    k = 0
-    k = 1
-    k = 2
-    k = 3
-  j = 2
-    k = 0
-    k = 1
-    k = 2
-    k = 3
-LOGGING : <@string:"0">
-LOGGING : <@string:"Ciao">
-*************************************** begin of extern type test
-LOGGING complex: <@complex:1, -1>
-LOGGING real: <@double:1>
-LOGGING imaginary: <@double:-1>
+*************************************** begin of range test
+LOGGING s: <@string:"Range [4, 3] enumeration: 4 5 6">
+LOGGING s: <@string:"Range [4, 3] reverse enumeration: 6 5 4">
+*************************************** begin of array test
+LOGGING p: <@ptrint:array [2, 3, 4] of @uint>
+LOGGING : <@string:"Hello">
+LOGGING pp: <@ptrint:array [4, 3] of @uint>
+LOGGING : <@string:"?">
+i = 0
+  j = 0
+    k = 0
+    k = 1
+    k = 2
+    k = 3
+  j = 1
+    k = 0
+    k = 1
+    k = 2
+    k = 3
+  j = 2
+    k = 0
+    k = 1
+    k = 2
+    k = 3
+i = 1
+  j = 0
+    k = 0
+    k = 1
+    k = 2
+    k = 3
+  j = 1
+    k = 0
+    k = 1
+    k = 2
+    k = 3
+  j = 2
+    k = 0
+    k = 1
+    k = 2
+    k = 3
+LOGGING : <@string:"0">
+LOGGING : <@string:"Ciao">
+*************************************** begin of extern type test
+LOGGING complex: <@complex:1, -1>
+LOGGING real: <@double:1>
+LOGGING imaginary: <@double:-1>
+

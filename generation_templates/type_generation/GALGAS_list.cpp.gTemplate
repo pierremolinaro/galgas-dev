@@ -227,7 +227,6 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popFirst (%?^
   end foreach
 %  }else{
     macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
-    macroUniqueSharedObject (p) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
     %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%

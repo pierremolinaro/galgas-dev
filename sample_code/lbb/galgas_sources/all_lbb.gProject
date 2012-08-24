@@ -3,8 +3,7 @@ project all_lbb -> "lbb":
   feature "makefile_macosx" ;
   feature "makefile_unix" ;
   feature "makefile_msys_on_win32" ;
-  feature "project_xcode" ;
-  feature "xcode_arch:i386" ;
+  feature "SnowLeopard" ;
 
 #--- Source files (relative path from 'galgas_sources' directory)
   lexique "lbb_lexique.gLexique" ;

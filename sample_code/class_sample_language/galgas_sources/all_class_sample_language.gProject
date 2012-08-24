@@ -3,8 +3,7 @@ project all_class_sample_language -> "class_sample_language" :
   feature "makefile_macosx" ;
   feature "makefile_unix" ;
   feature "makefile_msys_on_win32" ;
-  feature "project_xcode" ;
-  feature "xcode_arch:i386" ;
+  feature "SnowLeopard" ;
 #--- Sources
   lexique "class_sample_language_lexique.gLexique" ;
   semantics "class_sample_language_semantics.gSemantics" ;

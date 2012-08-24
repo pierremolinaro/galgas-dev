@@ -3,8 +3,7 @@ project all_dangling_else_solution -> "all_dangling_else_solution" :
   feature "makefile_macosx" ;
   feature "makefile_unix" ;
   feature "makefile_msys_on_win32" ;
-  feature "project_xcode" ;
-  feature "xcode_arch:i386" ;
+  feature "SnowLeopard" ;
 #--- Sources
   lexique "dangling_else_solution_lexique.gLexique" ;
   option "dangling_else_solution_options.gOption" ;
