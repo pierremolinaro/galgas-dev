@@ -19,7 +19,7 @@
 @interface OC_GGS_TextView : NSTextView {
    @private OC_GGS_Document * mDocumentUsedForDisplaying ;
    @private OC_GGS_TextDisplayDescriptor * mDisplayDescriptor ;
-   @private NSArray * mIssueArray ; // Of PMErrorOrWarningDescriptor
+   @private NSArray * mIssueArray ; // Of PMIssueDescriptor
 }
 
 - (id) initWithFrame:(NSRect)frameRect
