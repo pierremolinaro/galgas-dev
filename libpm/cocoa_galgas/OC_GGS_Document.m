@@ -782,8 +782,8 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
+  mBuildTaskHasBeenAborted = YES ;
   [mBuildTask terminate] ;
-  mBuildTask = nil ;
 }
 
 //---------------------------------------------------------------------------*
@@ -798,6 +798,7 @@
   mWarningCount = 0 ;
   mErrorCountTextField.stringValue = @"0" ;
   mErrorCount = 0 ;
+  mBuildTaskHasBeenAborted = NO ;
   mIssueArray = [NSMutableArray new] ;
   [mRulerViewForBuildOutput setIssueArray:mIssueArray] ;
   OC_GGS_Scroller * scroller = (OC_GGS_Scroller *) mOutputScrollView.verticalScroller ;
@@ -976,7 +977,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     nil
   ] ;
   NSAttributedString * attributedString = [[NSAttributedString alloc]
-    initWithString:(nil == mBuildTask) ? @"Aborted.\n" : @"Done.\n"
+    initWithString:mBuildTaskHasBeenAborted ? @"Aborted.\n" : @"Done.\n"
     attributes:defaultDictionary
   ] ;
   [mOutputTextView.textStorage appendAttributedString:attributedString] ;
