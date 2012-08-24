@@ -58,13 +58,13 @@ const utf32 C_Compiler::kEndOfSourceLexicalErrorMessage [] = {
 //---------------------------------------------------------------------------*
 
 bool C_Compiler::performGeneration (void) {
-  return (! gOption_galgas_5F_cli_5F_options_do_5F_not_5F_generate_5F_any_5F_file.mValue) && executionModeIsNormal () ;
+  return (! gOption_galgas_5F_builtin_5F_options_do_5F_not_5F_generate_5F_any_5F_file.mValue) && executionModeIsNormal () ;
 }
 
 //---------------------------------------------------------------------------*
 
 bool C_Compiler::performLogFileRead (void) {
-  return gOption_galgas_5F_cli_5F_options_log_5F_file_5F_read.mValue ;
+  return gOption_galgas_5F_builtin_5F_options_log_5F_file_5F_read.mValue ;
 }
 
 //---------------------------------------------------------------------------*
@@ -533,7 +533,7 @@ generateFileWithPatternFromPathes (const C_String & inStartPath,
                                    const C_String & inGeneratedZone3) {
   incrementGeneratedFileCount () ;
 //--- Verbose option ?
-  const bool verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
+  const bool verboseOptionOn = gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ;
 //--- Very Verbose (?)
   const bool veryVerboseOptionOn = false ;
 //--- User zones
@@ -563,7 +563,7 @@ generateFileWithPatternFromPathes (const C_String & inStartPath,
     //printf ("inFileName '%s'\n", inFileName.cString (HERE)) ;
     //printf ("fileName '%s'\n", fileName.cString (HERE)) ;
     const C_String directory = fileName.stringByDeletingLastPathComponent () ;
-    if (gOption_galgas_5F_cli_5F_options_noteFileAccess.mValue) {
+    if (gOption_galgas_5F_builtin_5F_options_noteFileAccess.mValue) {
       C_String s ;
       s << "- Note file access: create '" << directory << "' directory if does not exist\n" ;
       printMessage (s COMMA_HERE) ;
@@ -688,7 +688,7 @@ generateFileFromPathes (const C_String & inStartPath,
                         const C_String & inContents) {
   incrementGeneratedFileCount () ;
 //--- Verbose option ?
-  const bool verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
+  const bool verboseOptionOn = gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ;
 //--- Very Verbose (?)
   const bool veryVerboseOptionOn = false ;
 //--- Start path : by default, use source file directory
@@ -710,7 +710,7 @@ generateFileFromPathes (const C_String & inStartPath,
     //printf ("inFileName '%s'\n", inFileName.cString (HERE)) ;
     //printf ("fileName '%s'\n", fileName.cString (HERE)) ;
     const C_String directory = fileName.stringByDeletingLastPathComponent () ;
-    if (gOption_galgas_5F_cli_5F_options_noteFileAccess.mValue) {
+    if (gOption_galgas_5F_builtin_5F_options_noteFileAccess.mValue) {
       C_String s ;
       s << "- Note file access: create '" << directory << "' directory if does not exist\n" ;
       printMessage (s COMMA_HERE) ;

@@ -525,7 +525,7 @@ rule <primary> !@semanticExpressionAST outExpression :
       $.$ ;
       $identifier$ ?@lstring optionName ;
       $identifier$ ?@lstring readerName ;
-      outExpression := [@optionExpressionAST new ![@lstring new !"galgas_cli_options" !here] !optionName !readerName] ;
+      outExpression := [@optionExpressionAST new ![@lstring new !"galgas_builtin_options" !here] !optionName !readerName] ;
     or
       $identifier$ ?@lstring optionComponentName indexing optionComponentReference ;
       $.$ ;

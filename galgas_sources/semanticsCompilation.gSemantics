@@ -242,7 +242,7 @@ routine buildOptionComponentMapForSemanticAnalysis
     ] ;
   end foreach ;
 #--- Add predefined option component
-  if not [ioOptionComponentMapForSemanticAnalysis hasKey !"galgas_cli_options"] then
+  if not [ioOptionComponentMapForSemanticAnalysis hasKey !"galgas_builtin_options"] then
     @2stringlist optionNameList := [@application boolOptionNameList] ;
     @commandLineOptionMap boolOptionMap [emptyMap] ;
     foreach optionNameList do
@@ -280,7 +280,7 @@ routine buildOptionComponentMapForSemanticAnalysis
     end foreach ;
   #---
     [!?ioOptionComponentMapForSemanticAnalysis insertKey
-      ![@lstring new !"galgas_cli_options" !here]
+      ![@lstring new !"galgas_builtin_options" !here]
       !boolOptionMap
       !uintOptionMap
       !stringOptionMap

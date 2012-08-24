@@ -91,10 +91,10 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
     macroMyNew (commonLexique, C_Compiler (NULL, "", "" COMMA_HERE)) ;
     try{
       routine_before (commonLexique COMMA_HERE) ;
-      verboseOptionOn = gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue ;
+      verboseOptionOn = gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ;
       for (PMSInt32 i=0 ; i<sourceFilesArray.count () ; i++) {
         setCurrentCompiledFilePath (sourceFilesArray (i COMMA_HERE)) ;
-        if (gOption_galgas_5F_cli_5F_options_trace.mValue) {
+        if (gOption_galgas_5F_builtin_5F_options_trace.mValue) {
           enableTraceWithPath (sourceFilesArray (i COMMA_HERE)) ;
         }
         const C_String fileExtension = sourceFilesArray (i COMMA_HERE).pathExtension () ;
@@ -136,7 +136,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
       if (totalErrorCount () > 0) {
         returnCode = 1 ; // Error code
       }else if (totalWarningCount () > 0) {
-        if (gOption_galgas_5F_cli_5F_options_treat_5F_warnings_5F_as_5F_error.mValue) {
+        if (gOption_galgas_5F_builtin_5F_options_treat_5F_warnings_5F_as_5F_error.mValue) {
           returnCode = 1 ; // Error code
           if (verboseOptionOn) {
             printf ("** Note: warnings are treated as errors. **\\n") ;
@@ -146,7 +146,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
     //--- Epilogue
       routine_after (commonLexique COMMA_HERE) ;
     //--- Display error and warnings count
-      if (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue || (totalWarningCount () > 0) || (totalErrorCount () > 0)) {
+      if (gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue || (totalWarningCount () > 0) || (totalErrorCount () > 0)) {
         C_String message ;
         if (totalWarningCount () == 0) {
           message << "No warning" ;

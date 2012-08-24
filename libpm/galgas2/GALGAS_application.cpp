@@ -27,7 +27,6 @@
 #include "command_line_interface/C_BoolCommandLineOption.h"
 #include "command_line_interface/C_UIntCommandLineOption.h"
 #include "command_line_interface/C_StringCommandLineOption.h"
-#include "galgas2/C_galgas_CLI_Options.h"
 
 //---------------------------------------------------------------------------*
 //                                                                           *
@@ -79,12 +78,6 @@ GALGAS__32_stringlist GALGAS_application::constructor_boolOptionNameList (LOCATI
     result.addAssign_operation (GALGAS_string (array (i COMMA_THERE)), GALGAS_string (array (i+1 COMMA_THERE)) COMMA_THERE) ;
   }
   return result ;
-}
-
-//---------------------------------------------------------------------------*
-
-GALGAS_bool GALGAS_application::constructor_verboseOption (UNUSED_LOCATION_ARGS) {
-  return GALGAS_bool (gOption_galgas_5F_cli_5F_options_verbose_5F_output.mValue) ;
 }
 
 //---------------------------------------------------------------------------*

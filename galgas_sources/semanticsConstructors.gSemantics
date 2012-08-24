@@ -159,7 +159,6 @@ override method @applicationPredefinedTypeAST getConstructorMap
   !@constructorMap outMap
 :
   outMap := [@constructorMap emptyMap] ;
-  enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"verboseOption" !"bool" !false ;
 #--- Constructors for "bool" options
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"boolOptionNameList" !"2stringlist" !false ;
   enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"boolOptionInvocationLetter" !"string" !"string" !"char" !false ;

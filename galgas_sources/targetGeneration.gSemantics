@@ -226,7 +226,7 @@ routine updateTargets
     end switch ;
   end foreach ;
 #--- Parse features
-  if [@application verboseOption] then
+  if [option .verbose_output value] then
     message "*** Updating targets\n" ;
   end if ;
   @stringset availableGenerationFeatures [emptySet] ;
