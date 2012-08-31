@@ -896,7 +896,8 @@ override method @filewrapperStaticPathInExpressionForGeneration generateExpressi
   !@string outCppExpression
 :
 #---
-  outCppExpression := "GALGAS_string (gWrapperFileContent_" . [mFilewrapperFileIndex string] . "_" . [mFilewrapperName identifierRepresentation] . ")" ;
+  outCppExpression := if mIsTextFile then "GALGAS_string" else "GALGAS_data" end ;
+  outCppExpression .= " (gWrapperFileContent_" . [mFilewrapperFileIndex string] . "_" . [mFilewrapperName identifierRepresentation] . ")" ;
 end method ;
 
 #---------------------------------------------------------------------------*

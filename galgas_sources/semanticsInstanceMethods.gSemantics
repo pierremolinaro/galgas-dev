@@ -94,6 +94,7 @@ override method @dataPredefinedTypeAST getInstanceMethodMap
 :
   outInstanceMethodMap := [@instanceMethodMap emptyMap] ;
   enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" ![@lstring new !"writeToFile" !here] !true ;
+  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" ![@lstring new !"writeToExecutableFile" !here] !true ;
   @formalParameterSignature argList [emptyList] ;
   @unifiedTypeMapProxy t ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"string" ?t] ;

@@ -356,6 +356,7 @@ class @filewrapperInExpressionForGeneration extends @semanticExpressionForGenera
 class @filewrapperStaticPathInExpressionForGeneration extends @semanticExpressionForGeneration {
   @string mFilewrapperName ;
   @uint mFilewrapperFileIndex ;
+  @bool mIsTextFile ;
 }
 
 #---------------------------------------------------------------------------*

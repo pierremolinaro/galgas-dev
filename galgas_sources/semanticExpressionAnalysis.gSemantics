@@ -1840,7 +1840,14 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
 #--- Get filewrapper features
   @wrapperFileMap filewrapperFileMap ;
   @wrapperDirectoryMap filewrapperDirectoryMap ;
-  [inAnalysisContext->mSemanticContext->mFilewrapperMap searchKey !mFilewrapperName ?* ?* ?filewrapperFileMap ?filewrapperDirectoryMap ?*] ;
+  [inAnalysisContext->mSemanticContext->mFilewrapperMap searchKey
+    !mFilewrapperName
+    ?*
+    ?*
+    ?filewrapperFileMap
+    ?filewrapperDirectoryMap
+    ?*
+  ] ;
 #--- Search for file
   @string builtPath := "" ;
   loop [filewrapperDirectoryMap count] + 1
@@ -1861,20 +1868,25 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
     end if ;
   end loop ;
   @uint fileIndex ;
+  @bool isTextFile ;
   if [filewrapperFileMap hasKey !fileName] then
-    [filewrapperFileMap searchKey ![@lstring new !fileName !here] ?3* ?fileIndex] ;
+    [filewrapperFileMap searchKey ![@lstring new !fileName !here] ?* ?isTextFile ?* ?fileIndex] ;
   else
     error mFilewrapperPath
     : "the '" . fileName . "' file does not exist in the '" . builtPath . "' directory of '" . mFilewrapperName . "' filewrapper"
-    : fileIndex
+    : fileIndex, isTextFile
     ;
   end if ;
 #---
   outExpression := [@filewrapperStaticPathInExpressionForGeneration new
-    !inAnalysisContext->mPredefinedTypes->mStringType
+    !if isTextFile
+      then inAnalysisContext->mPredefinedTypes->mStringType
+      else [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap ![@lstring new !"data" !here]]
+     end
     ![mFilewrapperName location]
     ![mFilewrapperName string]
     !fileIndex
+    !isTextFile
   ] ;
 end method ;
 
