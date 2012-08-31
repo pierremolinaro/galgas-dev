@@ -50,8 +50,10 @@ before {
   end if ;
 #--- Generate predefined files
   generatePredefinedTypeFiles ![option galgas_cli_options.generatePredefinedTypes value] ;
-  
-#  const @stringlist ter := [lexique galgas_scanner:symbols] ; log ter ;
+#--- Extract LIBPM
+  if [option galgas_cli_options.extractLIBPMOption value] != "" then
+    updateLIBPMatPath ![option galgas_cli_options.extractLIBPMOption value] ;
+  end if ;  
 }
 
 #---------------------------------------------------------------------------*
