@@ -750,6 +750,8 @@ routine enter_file_in_group
     enter_framework_file_in_group !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup ;
   elsif extension == "icns" then
     enter_icns_file_in_group !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup ;
+  elsif extension == "xib" then
+    enter_xib_file_in_group !?ioXcodeProjectDescription !"." !inFileName !?ioFileListForGroup ;
   else
     error here : "cannot enter '" . inFileName . "' file : unknown extension" ;
   end if ;
@@ -769,7 +771,7 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
-routine enter_xib_in_group
+routine enter_xib_file_in_group
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string in_lproj_dir
   ??@string in_xib_fileName
@@ -886,62 +888,6 @@ routine enter_files_for_frameworks_build_phase
     ioBuildPhaseList += !build_file ;
   end foreach ;
 end routine ;
-
-#---------------------------------------------------------------------------*
-
-#routine add_shell_script_target
-#  ?!@XcodeProjectDescription ioXcodeProjectDescription
-##  ??@string inProductFileName
-#  ??@string inTargetName
-#  ?@stringlist inTargetSettings
-#  ??@string inShell
-#  ??@string inScript
-#  ??@stringlist inInputFileList
-#  ??@stringlist inOutputFileList
-#  ??@stringlist inDirectDependencyList
-#  !@string outTargetKey
-#:
-#  @Xcode_PBXFileReference_CompiledMachOExecutable toolFileReference [new !inProductFileName] ;
-#  @lstring projectNameKey [new !inProductFileName !here] ;
-#  [!?ioXcodeProjectDescription->mFileReferenceMap insertKey !projectNameKey !toolFileReference] ;
-#
-#  ioXcodeProjectDescription->mProductGroupChildrenList  += ![toolFileReference PBXFileReferenceKey] !inTargetName ;
-##--- Source Build Phase
-#  @Xcode_PBXSourcesBuildPhase compileSourcesBuildPhase [new
-#    !"Sources"
-#    !inSourcesToCompileKeyList
-#  ] ;
-#  @stringlist buildPhases [listWithValue ![compileSourcesBuildPhase PBXSourcesBuildPhaseKey]] ;
-##--- Define Frameworks Build Phase
-#  if [inFrameworkKeyList length] > 0 then
-#    @Xcode_PBXFrameworksBuildPhase frameworksBuildPhase [new
-#      !"Frameworks"
-#      !inFrameworkKeyList
-#    ] ;
-#    ioXcodeProjectDescription->mPBXFrameworksBuildPhase_list += !frameworksBuildPhase ;
-#    buildPhases += ![frameworksBuildPhase PBXFrameworksBuildPhaseKey] ;
-#  end if ;
-#
-#  ioXcodeProjectDescription->mPBXSourcesBuildPhase_list += ! compileSourcesBuildPhase ;
-#  if inPrecompiledHeaderPath != "" then
-#    inTargetSettings  += !"GCC_PRECOMPILE_PREFIX_HEADER = YES;" ;
-#    inTargetSettings  += !"GCC_PREFIX_HEADER = \"" . inPrecompiledHeaderPath . "\";" ;
-#  end if ;
-#  inTargetSettings += !"PRODUCT_NAME = \"" . inProductFileName . "\";" ;
-#  @Xcode_XCBuildConfiguration toolTargetBuildConfiguration [new !inTargetSettings] ;
-#  ioXcodeProjectDescription->mBuildConfigurationList += !toolTargetBuildConfiguration ;
-#  outTargetKey := [[[[@uint sequenceNumber] string] md5] rightSubString!24] ;
-#  ioXcodeProjectDescription->mTargetList +=
-#    !outTargetKey
-#    !inTargetName
-#    !toolTargetBuildConfiguration
-#    !"$(HOME)/bin"
-#    !inProductFileName
-#    !toolFileReference
-#    !buildPhases
-#    !inDirectDependencyList
-#  ;
-#end routine ;
 
 #---------------------------------------------------------------------------*
 
@@ -1118,7 +1064,6 @@ routine enterProjectDefaultSettings
   outProjectDefaultSettings := [@stringlist emptyList] ;
   outProjectDefaultSettings += !"ALWAYS_SEARCH_USER_PATHS = NO;" ;
   outProjectDefaultSettings += !"ARCHS = \"$(ARCHS_STANDARD_64_BIT)\";" ;
-  outProjectDefaultSettings += !"GCC_DEBUGGING_SYMBOLS = default;" ;
   if inUsesARC then
     outProjectDefaultSettings  += !"CLANG_ENABLE_OBJC_ARC = YES;" ;
   else
@@ -1128,7 +1073,6 @@ routine enterProjectDefaultSettings
   outProjectDefaultSettings += !"GCC_PRECOMPILE_PREFIX_HEADER = YES;" ;
   outProjectDefaultSettings += !"GCC_THREADSAFE_STATICS = NO;" ;
   outProjectDefaultSettings += !"GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;" ;
-  outProjectDefaultSettings += !"GCC_TREAT_NONCONFORMANT_CODE_ERRORS_AS_WARNINGS = YES;" ;
   outProjectDefaultSettings += !"GCC_TREAT_WARNINGS_AS_ERRORS = YES;" ;
   outProjectDefaultSettings += !"GCC_WARN_64_TO_32_BIT_CONVERSION = YES;" ;
   outProjectDefaultSettings += !"GCC_WARN_ABOUT_INVALID_OFFSETOF_MACRO = YES;" ;
@@ -1136,7 +1080,6 @@ routine enterProjectDefaultSettings
   outProjectDefaultSettings += !"GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;" ;
   outProjectDefaultSettings += !"GCC_WARN_ABOUT_RETURN_TYPE = YES;" ;
   outProjectDefaultSettings += !"GCC_WARN_CHECK_SWITCH_STATEMENTS = YES;" ;
-  outProjectDefaultSettings += !"GCC_WARN_EFFECTIVE_CPLUSPLUS_VIOLATIONS = YES;" ;
   outProjectDefaultSettings += !"GCC_WARN_FOUR_CHARACTER_CONSTANTS = YES;" ;
   outProjectDefaultSettings += !"GCC_WARN_HIDDEN_VIRTUAL_FUNCTIONS = YES;" ;
   outProjectDefaultSettings += !"GCC_WARN_INHIBIT_ALL_WARNINGS = NO;" ;
@@ -1144,7 +1087,6 @@ routine enterProjectDefaultSettings
   outProjectDefaultSettings += !"GCC_WARN_MISSING_PARENTHESES = YES;" ;
   outProjectDefaultSettings += !"GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;" ;
   outProjectDefaultSettings += !"GCC_WARN_PEDANTIC = NO;" ;
-  outProjectDefaultSettings += !"GCC_WARN_PROTOTYPE_CONVERSION = YES;" ;
   outProjectDefaultSettings += !"GCC_WARN_SHADOW = NO;" ;
   outProjectDefaultSettings += !"GCC_WARN_SIGN_COMPARE = YES;" ;
   outProjectDefaultSettings += !"GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;" ;
@@ -1156,7 +1098,6 @@ routine enterProjectDefaultSettings
   outProjectDefaultSettings += !"GCC_WARN_UNUSED_VALUE = YES;" ;
   outProjectDefaultSettings += !"GCC_WARN_UNUSED_VARIABLE = YES;" ;
   outProjectDefaultSettings += !"HEADER_SEARCH_PATHS = (\n" . pathString . "\t\t\t\t);" ;
-  outProjectDefaultSettings += !"PREBINDING = NO;" ;
   outProjectDefaultSettings += !"SDKROOT = " . inSDK . " ;" ;
 end routine ;
 

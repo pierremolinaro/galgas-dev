@@ -19,7 +19,7 @@
 gui cocoaGalgas "cocoa" :
 with option "galgas_cli_options.gOption" ;
 
-nibAndMainClass : "galgasUpdate.GGSUpdateCocoaGalgas" ;
+nibAndMainClass : "GGSUpdateCocoaGalgas" ;
 
 #--------------------------------------------------------------------------------*
 

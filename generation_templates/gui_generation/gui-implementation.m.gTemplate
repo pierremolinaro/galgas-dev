@@ -5,7 +5,7 @@
   %#import "%!mLexiqueClassName%-cocoa.m"\n%
 end foreach
 foreach [GUI_CONTEXT mNibAndClassList] do
-  %#import "%!mClassName%.h"\n%
+  %#import "%!mValue%.h"\n%
 end foreach%
 #ifdef USER_DEFAULT_COLORS_DEFINED
   #import "user_default_colors.h"
@@ -24,7 +24,7 @@ end foreach%
 NSArray * nibsAndClasses (void) {
   return [NSArray arrayWithObjects:
 %foreach [GUI_CONTEXT mNibAndClassList] do
-  %    [NSArray arrayWithObjects:@"%!mNibName%", [%!mClassName% class], nil],\n%
+  %    [NSArray arrayWithObjects:@"%!mValue%", [%!mValue% class], nil],\n%
 end foreach%    nil
   ] ;
 }

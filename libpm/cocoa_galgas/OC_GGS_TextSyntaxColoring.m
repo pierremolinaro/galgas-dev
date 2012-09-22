@@ -11,7 +11,7 @@
 #import "OC_GGS_TextDisplayDescriptor.h"
 #import "OC_Lexique.h"
 #import "OC_Token.h"
-#import "OC_GGS_PreferencesController.h"
+#import "OC_GGS_ApplicationDelegate.h"
 #import "PMIssueDescriptor.h"
 #import "OC_GGS_DocumentData.h"
 #import "PMDebug.h"
@@ -211,7 +211,7 @@
         [mTemplateTextAttributeDictionary setObject:font forKey:NSFontAttributeName] ;
       }
     }
-    for (NSUInteger i=0 ; i<[mTokenizer styleCount] ; i++) {
+    for (NSUInteger i=0 ; i<mTokenizer.styleCount ; i++) {
       NSString * keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_named_font, [mTokenizer styleIdentifierForStyleIndex:i]] ;
       [udc
         addObserver:self
@@ -257,7 +257,7 @@
     [self computeMaxLineHeight:NULL] ;
   //--- Enter source string
     [mSourceTextStorage beginEditing] ;
-    // NSLog (@"LINE %d, inSource '%@'", __LINE__, inSource) ;
+   // NSLog (@"mSourceTextStorage.length %lu, inSource '%@'", mSourceTextStorage.length, inSource) ;
     [mSourceTextStorage replaceCharactersInRange:NSMakeRange (0, mSourceTextStorage.length) withString:inSource] ;
     [mSourceTextStorage endEditing] ;
   //---
@@ -500,7 +500,7 @@
       NSLog (@"%s, edited range [%lu, %lu], changeInLength %ld", __PRETTY_FUNCTION__, inEditedRange.location, inEditedRange.length, inChangeInLength) ;
     #endif
     NSInteger firstIndexToRedraw = 0 ;
-    NSInteger lastIndexToRedraw = 0 ;
+    NSInteger lastIndexToRedraw = -1 ;
     NSInteger eraseRangeStart = 0 ;
     NSInteger eraseRangeEnd = 0 ;
     [mTokenizer

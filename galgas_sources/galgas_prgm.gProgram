@@ -210,32 +210,14 @@ indexing with projectLL1grammar
   if targetName == "" then
     error [projectComponent mTargetName]: "the target name should not be empty" ;
   end if ;
-#--- Check qualified features
-  @string libpmPath := "" ; # By default, LIBPM is handled by GALGAS
+#--- Build qualiied feature map
+  @projectQualifiedFeatureMap projectQualifiedFeatureMap [emptyMap] ;
   foreach projectComponent->mQualifiedFeatureList do
-    if mFeatureName->string == "libpmAtPath" then
-      if libpmPath != "" then
-        error mFeatureName:"the libpm path is already defined" ;    
-      elsif mFeatureValue->string == "" then
-        error mFeatureValue:"the libpm path should not be empty" ;    
-      else
-        libpmPath := mFeatureValue->string ; # [mFeatureValue absolutePathFromPath ![inSourceFile stringByDeletingLastPathComponent]] ;
-      end if ;    
-    else
-      error mFeatureName:"only 'libpmAtPath' is allowed here" ;    
-    end if ;  
+    [!?projectQualifiedFeatureMap insertKey
+      !mFeatureName
+      !mFeatureValue
+    ] ;
   end foreach ;
-#--- Update targets
-  if 0 == [@uint errorCount] then
-    updateTargets
-      !inSourceFile
-      ![projectComponent mProjectName]
-      !targetName
-      !libpmPath
-      ![projectComponent mGenerationFeatureList]
-      ![projectComponent mProjectSourceList]
-    ;
-  end if ;
 #--- Parse Component struct
   @parsedComponentStruct parsedComponentStruct [new
     ![@parsedSemanticsComponentMap emptyMap]
@@ -354,6 +336,7 @@ indexing with projectLL1grammar
     end switch ;
   end foreach ;
 #---------------------------------- Compile galgas sources
+  @stringset handledExtensionSet [emptySet] ;
   if [@uint errorCount] == 0 then
   #--- Lexique components
     foreach parsedComponentStruct->mParsedLexiqueComponentMap do
@@ -429,6 +412,9 @@ indexing with projectLL1grammar
     end foreach ;
   #--- Program components
     foreach parsedComponentStruct->mParsedProgramComponentMap do
+      foreach mProgramComponentAST->mProgramRules do
+        handledExtensionSet += !mSourceFileExtension->string ;
+      end foreach ;
       if [option .verbose_output value] then
         message "*** Compiling '" . lkey . ".gProgram'\n" ;
       end if ;
@@ -446,6 +432,18 @@ indexing with projectLL1grammar
       message "*** Perform global checkings\n" ;
     end if ;
     performProjectGlobalCheckings !parsedComponentStruct ![projectComponent mEndOfSourceFile] ;
+  end if ;
+#--- Update targets
+  if 0 == [@uint errorCount] then
+    updateTargets
+      !inSourceFile
+      ![projectComponent mProjectName]
+      !targetName
+      !projectQualifiedFeatureMap
+      ![projectComponent mGenerationFeatureList]
+      ![projectComponent mProjectSourceList]
+      !handledExtensionSet
+    ;
   end if ;
 #--- Build project files
   buildProject !inSourceFile->string ;
