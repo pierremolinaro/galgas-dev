@@ -10,7 +10,7 @@
 #import "OC_GGS_BuildTask.h"
 #import "PMIssueDescriptor.h"
 #import "OC_GGS_Document.h"
-#import "OC_GGS_PreferencesController.h"
+#import "OC_GGS_ApplicationDelegate.h"
 #import "PMDebug.h"
 
 //---------------------------------------------------------------------------*

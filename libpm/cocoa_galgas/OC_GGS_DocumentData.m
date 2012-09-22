@@ -289,11 +289,14 @@ static NSArray * gIssueArray ;
   }
   OC_GGS_DocumentData * documentData = [gDocumentDataDictionary objectForKey:inDocumentURL] ;
   if (nil == documentData) {
-    documentData = [[OC_GGS_DocumentData alloc]
-      initWithDataFromURL:inDocumentURL
-    ] ;
-    [documentData setIssueArray:gIssueArray] ;
-    [gDocumentDataDictionary setObject:documentData forKey:inDocumentURL] ;
+    NSFileManager * fm = [NSFileManager new] ;
+    if ([fm isReadableFileAtPath:inDocumentURL.path]) {
+      documentData = [[OC_GGS_DocumentData alloc]
+        initWithDataFromURL:inDocumentURL
+      ] ;
+      [documentData setIssueArray:gIssueArray] ;
+      [gDocumentDataDictionary setObject:documentData forKey:inDocumentURL] ;
+    }
   }
   [documentData setCocoaDocument:inDocument] ;
   return documentData ;

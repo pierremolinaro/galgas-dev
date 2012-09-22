@@ -7,6 +7,20 @@ semantics targetGeneration :
 
 #---------------------------------------------------------------------------*
 
+local filewrapper applicationUpdateFileWrapper in "../generation_templates/cocoa_application_update/application" {
+}{
+}{
+ template application_update_header "PMApplicationUpdate.h.gTemplate" ;
+ template application_update_implementation "PMApplicationUpdate.m.gTemplate" ;
+ template application_update_nib "PMApplicationUpdate.xib.gTemplate" ;
+ template download_data_header "PMDownloadData.h.gTemplate" ;
+ template download_data_implementation "PMDownloadData.m.gTemplate" ;
+ template download_file_header "PMDownloadFile.h.gTemplate" ;
+ template download_file_implementation "PMDownloadFile.m.gTemplate" ;
+ template compatibility_header "PMSnowLeopardLionCompatibility.h.gTemplate" ;
+}
+
+#---------------------------------------------------------------------------*
 
 local filewrapper targetGenerationFileWrapper in "../generation_templates/target_generation" {
  "bat", "command", "rtf"
@@ -24,7 +38,11 @@ local filewrapper targetGenerationFileWrapper in "../generation_templates/target
 
   template makefile_msys_on_win32_makefile "makefile_msys_on_win32/makefile" ?@string PROJECT_NAME ;
 
-  template makefile_info_plist "project_xcode/Info.plist" ?@string PROJECT_NAME ;
+  template makefile_info_plist "project_xcode/Info.plist.txt"
+    ?@string PROJECT_NAME
+    ?@string APPLICATION_BUNDLE_BASE
+    ?@stringset HANDLED_EXTENSION_SET
+  ;
 
   template makefile_build_xcode "project_xcode/build.command" ;
 
@@ -124,25 +142,30 @@ end routine ;
 
 routine updateTargets
   ??@lstring inProjectSourceFilePath
-  ??@lstring unused inProjectName
+  ??@lstring inProjectName
   ??@string inTargetName
-  ??@string inLIBPMpath
+  ??@projectQualifiedFeatureMap inProjectQualifiedFeatureMap
   ??@lstringlist inTargetFeatureList
   ??@projectSourceList inProjectSourceList
+  ??@stringset inHandledExtensionSet
 :
   const @string projectDirectory := [[inProjectSourceFilePath stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] ;
 #--- Update LIBPM
   @string libpmPath ;
-  if inLIBPMpath == "" then
+  with inProjectQualifiedFeatureMap hasKey !"libpmAtPath" do
+    if mFeatureValue->string == "" then
+      error mFeatureValue:"the libpm path should not be empty" : libpmPath ;
+    else
+      libpmPath := mFeatureValue->string ;
+    end if ;
+  else
     updateLIBPMatPath ![inProjectSourceFilePath stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/libpm" ;
     libpmPath := "../galgas_sources/GALGAS_OUTPUT/libpm" ;
     const @string libpmAbsolutePath := [libpmPath absolutePathFromPath ![inProjectSourceFilePath stringByDeletingLastPathComponent]] ;
     if not [libpmAbsolutePath directoryExists] then
       error [@location nowhere]:"the '" . libpmAbsolutePath . "'  LIBPM directory does not exists" ;
     end if ;
-  else
-    libpmPath := inLIBPMpath ;
-  end if ;
+  end with ;
 #--- Check target names, file base name uniqueness, and build target file list
   @stringset externSourceSet_tool [emptySet] ;
   @stringset guiSourceSet_tool [emptySet] ;
@@ -284,9 +307,13 @@ routine updateTargets
       foreach availableGenerationFeatures do
         s .= "\n  - '" . key . "'" ;
       end foreach ;
-      error mValue: "unknown '" . mValue . "' feature; avalaible features are:" . s ;
+      error mValue: "unknown '" . mValue . "' feature; available features are:" . s ;
     end if ;
   end foreach ;
+#--- Check Cocoa features
+  if (SDK != "") & not [inProjectQualifiedFeatureMap hasKey !"applicationBundleBase"] then
+    warning inProjectName: "For a Cocoa project, the \"applicationBundleBase\" feature should be set; for example: feature \"applicationBundleBase\" : \"fr.what\" ;" ;
+  end if ;
 #--- Generation
   if [generationFeatures hasKey !"makefile_macosx"] then
     generateMakefileMacOSXTarget !projectDirectory !inTargetName ;
@@ -325,11 +352,20 @@ routine updateTargets
 
     const @string icon_help_file_path := dir ."/adding-icons-to-your-application.rtf" ;
     [[filewrapper targetGenerationFileWrapper."project_xcode/adding-icons-to-your-application.rtf"] writeToFileWhenDifferentContents !icon_help_file_path ?*] ;
-
-    if not [dir ."/Info.plist" fileExists] then
-      [[filewrapper targetGenerationFileWrapper.makefile_info_plist !inTargetName] writeToFile !dir ."/Info.plist"] ;
-    end if ;
-
+  #--- Info.plist
+    @string applicationBundleBase ;
+    with inProjectQualifiedFeatureMap hasKey !"applicationBundleBase" do
+      applicationBundleBase := mFeatureValue->string ;
+    else
+      applicationBundleBase := "fr.irccyn" ;
+    end with ;
+    @string InfoPlistContents := [filewrapper targetGenerationFileWrapper.makefile_info_plist
+      !inTargetName
+      !applicationBundleBase
+      !inHandledExtensionSet
+    ] ;
+    [InfoPlistContents writeToFileWhenDifferentContents !dir ."/Info.plist" ?*] ;
+  #--- Build.command
     if not [dir ."/build.command" fileExists] then
       [[filewrapper targetGenerationFileWrapper.makefile_build_xcode] writeToExecutableFile !dir ."/build.command"] ;
     end if ;
@@ -341,11 +377,23 @@ routine updateTargets
     if not [Credits_rtf_path fileExists] then
       [[filewrapper targetGenerationFileWrapper."project_xcode/English.lproj/Credits.rtf"] writeToFile !Credits_rtf_path] ;
     end if ;
-  #--- Enumerate icons and plist files
+  #--- Application update files
+    if [inProjectQualifiedFeatureMap hasKey !"repositoryURL"] then
+      const @string applicationUpdateDir := projectDirectory . "/project_xcode/cocoa-application-update/application";
+      [applicationUpdateDir makeDirectory] ;
+      [[filewrapper applicationUpdateFileWrapper.application_update_header ] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMApplicationUpdate.h" ?*] ;
+      [[filewrapper applicationUpdateFileWrapper.application_update_implementation ] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMApplicationUpdate.m" ?*] ;
+      [[filewrapper applicationUpdateFileWrapper.application_update_nib ] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMApplicationUpdate.xib" ?*] ;
+      [[filewrapper applicationUpdateFileWrapper.download_data_header] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMDownloadData.h" ?*] ;
+      [[filewrapper applicationUpdateFileWrapper.download_data_implementation] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMDownloadData.m" ?*] ;
+      [[filewrapper applicationUpdateFileWrapper.download_file_header] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMDownloadFile.h" ?*] ;
+      [[filewrapper applicationUpdateFileWrapper.download_file_implementation] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMDownloadFile.m" ?*] ;
+      [[filewrapper applicationUpdateFileWrapper.compatibility_header] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMSnowLeopardLionCompatibility.h" ?*] ;
+    end if ;
+  #--- Enumerate icons files in "userResources" directory
     const @string userResourceDir := projectDirectory . "/project_xcode/userResources";
     [userResourceDir makeDirectory] ;
     @stringlist extensionList [emptyList] ;
-    extensionList += !"plist" ;
     extensionList += !"icns" ;
     const @stringlist resourceFiles := [userResourceDir regularFilesWithExtensions !false !extensionList] ;
   #--- Build pathes
@@ -379,6 +427,7 @@ routine updateTargets
       !libpmPath
       !multiThreadingEnabled
       !usesARC
+      !inProjectQualifiedFeatureMap
     ;
   end if ;
 end routine ;

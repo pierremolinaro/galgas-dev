@@ -8,10 +8,10 @@
 //--------------------------------------------------------------------------*
 
 #import "GGSUpdateCocoaGalgas.h"
-#import "OC_GGS_PreferencesController.h"
+#import "OC_GGS_ApplicationDelegate.h"
 #import "PMDownloadData.h"
 #import "PMDownloadFile.h"
-#import "OC_GGS_PreferencesController.h"
+#import "OC_GGS_ApplicationDelegate.h"
 
 //--------------------------------------------------------------------------*
 
@@ -350,7 +350,7 @@
 //--------------------------------------------------------------------------*
 
 - (void) downloadHasBeenCancelled {
-  [[mCancelButton window] orderOut:nil] ;
+  [mCancelButton.window orderOut:nil] ;
   [mCheckNowButton setEnabled:YES] ;
 //--- Remove temporary dir if it exists
   NSFileManager * fm = [NSFileManager defaultManager] ;
@@ -499,7 +499,7 @@
           contextInfo:NULL
         ] ;
       }
-      [[mCancelButton window] orderOut:nil] ;
+      [mCancelButton.window orderOut:nil] ;
     }  
   }
 }

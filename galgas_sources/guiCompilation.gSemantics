@@ -43,13 +43,6 @@ map @extensionMap {
 
 #---------------------------------------------------------------------------*
 
-list @nibAndClassList {
-  @string mNibName ;
-  @string mClassName ;
-}
-
-#---------------------------------------------------------------------------*
-
 list @textMacroList {
   @string mKey ;
   @string mContents ;
@@ -72,7 +65,7 @@ struct @guiAnalysisContext {
   @guiCommandLineOptionList mBoolOptionList ;
   @guiCommandLineOptionList mUIntOptionList ;
   @guiCommandLineOptionList mStringOptionList ;
-  @nibAndClassList mNibAndClassList ;
+  @stringlist mNibAndClassList ;
   @extensionMap mExtensionMap ;
   @importedLexiqueList mWithLexiqueList ;
 }
@@ -114,7 +107,7 @@ routine compileGuiComponentFromAST
     ![@guiCommandLineOptionList emptyList] # Bool options
     ![@guiCommandLineOptionList emptyList] # UInt options
     ![@guiCommandLineOptionList emptyList] # string options
-    ![@nibAndClassList emptyList]
+    ![@stringlist emptyList]
     ![@extensionMap emptyMap]
     ![@importedLexiqueList emptyList]
   ] ;
@@ -139,15 +132,9 @@ routine compileGuiComponentFromAST
     if [mKey string] != "nibAndMainClass" then
       warning mKey:"the '" . mKey . "' key is invalid and has no effect" ;
     else
-      @stringlist x := [[mValue string] componentsSeparatedByString !"."] ;
-      if [x length] != 2 then
-        error mValue:"the string string should conform to \"nib_name.nib_main_class\"" ;
-      else
-        context->mNibAndClassList +=
-          ![x mValueAtIndex !0]
-          ![x mValueAtIndex !1]
-        ;
-      end if ;
+      foreach [mValue->string componentsSeparatedByString !"."] do
+        context->mNibAndClassList += !mValue ;
+      end foreach ;
     end if ;
   end foreach ;
 #--- 'with lexique' construct analysis

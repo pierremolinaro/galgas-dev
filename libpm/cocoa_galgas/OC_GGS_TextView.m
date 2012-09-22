@@ -15,7 +15,7 @@
 #import "OC_Token.h"
 #import "OC_GGS_DocumentData.h"
 #import "OC_GGS_Document.h"
-#import "OC_GGS_PreferencesController.h"
+#import "OC_GGS_ApplicationDelegate.h"
 #import "OC_GGS_Scroller.h"
 #import "PMDebug.h"
 

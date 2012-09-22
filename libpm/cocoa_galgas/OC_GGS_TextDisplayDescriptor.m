@@ -14,7 +14,7 @@
 #import "OC_GGS_Document.h"
 #import "OC_GGS_TextView.h"
 #import "OC_GGS_RulerViewForTextView.h"
-#import "OC_GGS_PreferencesController.h"
+#import "OC_GGS_ApplicationDelegate.h"
 #import "OC_GGS_Scroller.h"
 #import "PMIssueDescriptor.h"
 #import "PMDebug.h"

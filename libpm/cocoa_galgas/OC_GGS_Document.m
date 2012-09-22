@@ -22,7 +22,7 @@
 //---------------------------------------------------------------------------*
 
 #import "OC_GGS_Document.h"
-#import "OC_GGS_PreferencesController.h"
+#import "OC_GGS_ApplicationDelegate.h"
 #import "OC_GGS_RulerViewForTextView.h"
 #import "OC_Lexique.h"
 #import "F_CocoaWrapperForGalgas.h"
@@ -476,9 +476,11 @@
 
 - (void) displaySourceWithURL: (NSURL *) inURL
          atLine: (NSUInteger) inLine {
-  OC_GGS_TextDisplayDescriptor * tdd = [self findOrAddNewTabForFile:inURL.path] ;
-  const NSRange r = {[tdd.documentData locationForLineInSource:inLine], 0} ;
-  [tdd setSelectionRangeAndMakeItVisible:r] ;
+  if (nil != inURL) {
+    OC_GGS_TextDisplayDescriptor * tdd = [self findOrAddNewTabForFile:inURL.path] ;
+    const NSRange r = {[tdd.documentData locationForLineInSource:inLine], 0} ;
+    [tdd setSelectionRangeAndMakeItVisible:r] ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -998,13 +1000,12 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 //---
   [NSApp requestUserAttention:NSInformationalRequest] ;
 //---
-  if ((! mHasSpoken) && (mErrorCount > 40)) {
+/*  if ((! mHasSpoken) && (mErrorCount > 40)) {
     mHasSpoken = YES ;
-    NSString * thePhrase = [NSString stringWithFormat:@"\"Oh! %@ makes %lu errors\"", NSFullUserName (), mErrorCount] ;
+    NSString * thePhrase = [NSString stringWithFormat:@"\"Oh! %@ made %lu errors\"", NSFullUserName (), mErrorCount] ;
     NSSpeechSynthesizer * speech = [[NSSpeechSynthesizer alloc] initWithVoice:nil] ;
     [speech startSpeakingString:thePhrase] ;
-  }
-  
+  }*/
 }
 
 //---------------------------------------------------------------------------*
