@@ -1,0 +1,52 @@
+//
+//  PMApplicationUpdate.h
+//  galgas
+//
+//  Created by Pierre MOLINARO on 02/10/06.
+//  Copyright 2006 __MyCompanyName__. All rights reserved.
+//
+//--------------------------------------------------------------------------*
+
+#import <Cocoa/Cocoa.h>
+
+//--------------------------------------------------------------------------*
+
+@class WebView ;
+@class PMDownloadData ;
+@class PMDownloadFile ;
+
+//--------------------------------------------------------------------------*
+
+@interface PMApplicationUpdate : NSObject {
+//--- In New Available Panel
+  @private IBOutlet NSPanel * mNewAvailableVersionPanel ;
+  @private IBOutlet NSButton * mCheckUpdateAtStartUpCheckBox2 ;
+  @private IBOutlet NSButton * mPerformUpdateButton ;
+  @private IBOutlet NSTextField * mNewVersionTextField ;
+  @private IBOutlet WebView * mChangeLogWebView ;
+  @private IBOutlet NSView * mViewForChangeLogInPreferencePane ;
+  @private IBOutlet WebView * mChangeLogInPreferencePaneWebView ;
+
+  @private IBOutlet NSButton * mCheckUpdateAtStartUpCheckBox ;
+  
+  @private IBOutlet NSButton * mCheckNowButton ;
+  
+  @private IBOutlet NSTextField * mDownloadTitle ;
+  @private IBOutlet NSProgressIndicator * mDownloadProgressIndicator ;
+  @private IBOutlet NSTextField * mDownloadSubTitle ;
+  @private IBOutlet NSButton * mCancelButton ;
+
+  @private NSString * mLastAvailableVersion ;
+  @private BOOL mSearchForUpdatesInBackground ;
+  
+  @private PMDownloadData * mDownloadData ;
+  @private PMDownloadFile * mDownloadFile ;
+}
+
+- (IBAction) checkForNewVersion: (id) inSender ;
+
++ (void) instanciateSingleton ;
+
+@end
+
+//--------------------------------------------------------------------------*

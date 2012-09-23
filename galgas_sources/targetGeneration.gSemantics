@@ -7,6 +7,30 @@ semantics targetGeneration :
 
 #---------------------------------------------------------------------------*
 
+local filewrapper updaterApplicationFileWrapper in "../generation_templates/cocoa_application_update/updater-application" {
+}{
+}{
+ template credits "Credits.rtf" ;
+ template info_plist_strings "InfoPlist.strings" ;
+ template main_menu_xib "MainMenu.xib.txt"
+   ?@string TARGET_NAME
+  ;
+ template application_delegate_header "PMUpdaterAppDelegate.h.gTemplate" ;
+ template application_delegate_implementation "PMUpdaterAppDelegate.m.gTemplate"
+   ?@string BUNDLE_BASE_NAME
+   ?@string TARGET_NAME
+  ;
+ template info_plist "updater-app-Info.plist.txt"
+   ?@string BUNDLE_BASE_NAME
+   ?@string TARGET_NAME
+   ?@string CODE_SIGNING_IDENTITY
+ ;
+ template main "updater-app-main.m.gTemplate" ;
+ template prefix "updater-app-Prefix.pch.gTemplate" ;
+}
+
+#---------------------------------------------------------------------------*
+
 local filewrapper updaterToolFileWrapper in "../generation_templates/cocoa_application_update/updater-tool" {
 }{
 }{
@@ -20,7 +44,7 @@ local filewrapper updaterToolFileWrapper in "../generation_templates/cocoa_appli
  template updater_tool_info_plist "updater-tool-Info.plist.txt"
    ?@string BUNDLE_BASE_NAME
    ?@string TARGET_NAME
-   ?@string CODE_SIGN
+   ?@string CODE_SIGNING_IDENTITY
  ;
  template updater_tool_launchd_plist "updater-tool-Launchd.plist.txt"
    ?@string BUNDLE_BASE_NAME
@@ -457,6 +481,28 @@ routine updateTargets
         !updaterToolDir . "/updater-tool-main.m"
         ?*
       ] ;
+    #--- Updater application
+      const @string updaterApplicationDir := projectDirectory . "/project_xcode/cocoa-application-update/updater-application";
+      [updaterApplicationDir makeDirectory] ;
+      [[filewrapper updaterApplicationFileWrapper.credits] writeToFileWhenDifferentContents !updaterApplicationDir . "/English.lproj/Credits.rtf" ?*] ;
+      [[filewrapper updaterApplicationFileWrapper.info_plist_strings] writeToFileWhenDifferentContents !updaterApplicationDir . "/English.lproj/InfoPlist.strings" ?*] ;
+      [[filewrapper updaterApplicationFileWrapper.main_menu_xib !inTargetName] writeToFileWhenDifferentContents !updaterApplicationDir . "/English.lproj/MainMenu.xib" ?*] ;
+      [[filewrapper updaterApplicationFileWrapper.application_delegate_header] writeToFileWhenDifferentContents !updaterApplicationDir . "/PMUpdaterAppDelegate.h" ?*] ;
+      [[filewrapper updaterApplicationFileWrapper.application_delegate_implementation
+         !applicationBundleBase
+         !inTargetName
+       ]
+       writeToFileWhenDifferentContents !updaterApplicationDir . "/PMUpdaterAppDelegate.m" ?*
+      ] ;
+      [[filewrapper updaterApplicationFileWrapper.info_plist
+         !applicationBundleBase
+         !inTargetName
+         !codeSignIdentity
+       ]
+       writeToFileWhenDifferentContents !updaterApplicationDir . "/updater-app-Info.plist" ?*
+      ] ;
+      [[filewrapper updaterApplicationFileWrapper.main] writeToFileWhenDifferentContents !updaterApplicationDir . "/updater-app-main.m" ?*] ;
+      [[filewrapper updaterApplicationFileWrapper.prefix] writeToFileWhenDifferentContents !updaterApplicationDir . "/updater-app-Prefix.pch" ?*] ;
     end with ;
   #--- Enumerate icons files in "userResources" directory
     const @string userResourceDir := projectDirectory . "/project_xcode/userResources";

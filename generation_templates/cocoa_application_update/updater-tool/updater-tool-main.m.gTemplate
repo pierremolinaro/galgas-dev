@@ -1,0 +1,104 @@
+//
+//  main.c
+//  CanariInstallerHelperTool
+//
+//  Created by Pierre Molinaro on 27/06/12.
+//  Copyright (c) 2012 ECN / IRCCyN. All rights reserved.
+//
+//-----------------------------------------------------------------------------*
+
+#import "PMUpdaterServerObject.h"
+
+//-----------------------------------------------------------------------------*
+
+#import <launch.h>
+
+//-----------------------------------------------------------------------------*
+
+#ifdef DEBUG_WITH_SYSLOG
+  #import <syslog.h>
+#endif
+
+//-----------------------------------------------------------------------------*
+
+int main (int argc, const char * argv[]) {
+  @autoreleasepool {
+    #ifdef DEBUG_WITH_SYSLOG
+      syslog (LOG_NOTICE, "Updater Helper Tool launched (pid: \%d)", getpid ());
+    #endif
+  //-1---
+    launch_data_t req = launch_data_new_string (LAUNCH_KEY_CHECKIN) ;
+    Boolean ok = NULL != req ;
+    #ifdef DEBUG_WITH_SYSLOG
+      syslog (LOG_NOTICE, "HelperTool req: \%s", ok ? "ok" : "failed") ;
+    #endif
+  //-2---
+    launch_data_t resp = NULL ;
+    if (ok) {
+      resp = launch_msg (req) ;
+      ok = NULL != resp ;
+      #ifdef DEBUG_WITH_SYSLOG
+        syslog (LOG_NOTICE, "HelperTool resp: \%s", ok ? "ok" : "failed");
+      #endif
+    }
+  //-3---
+    launch_data_t machData = NULL ;
+    if (ok) {
+      machData = launch_data_dict_lookup (resp, LAUNCH_JOBKEY_MACHSERVICES);
+      ok = NULL != machData ;
+      #ifdef DEBUG_WITH_SYSLOG
+        syslog (LOG_NOTICE, "HelperTool machData: \%s", ok ? "ok" : "failed") ;
+      #endif
+    }
+  //-4---
+    launch_data_t machPortData = NULL ;
+    if (ok) {
+      machPortData = launch_data_dict_lookup (machData, "%!BUNDLE_BASE_NAME%.%!TARGET_NAME%.updaterTool.mach") ;
+      ok = NULL != machPortData ;
+      #ifdef DEBUG_WITH_SYSLOG
+        syslog (LOG_NOTICE, "HelperTool machPortData: \%s", ok ? "ok" : "failed") ;
+      #endif
+    }
+  //-5---
+    NSConnection * connection = nil ;
+    if (ok) {
+      mach_port_t mp = launch_data_get_machport (machPortData) ;
+      NSMachPort * rp = [[NSMachPort alloc] initWithMachPort:mp] ;
+      connection = [NSConnection connectionWithReceivePort:rp sendPort:nil] ;
+      [connection retain] ;
+      [rp release] ;
+      rp = nil ;
+      ok = nil != connection ;
+      #ifdef DEBUG_WITH_SYSLOG
+        syslog (LOG_NOTICE, "HelperTool connection: \%s", ok ? "ok" : "failed") ;
+      #endif
+    }
+  //-6---
+    if (NULL != req) {
+      launch_data_free (req) ; req = NULL ;
+    }
+    if (NULL != resp) {
+      launch_data_free (resp) ; resp = NULL ;
+    }
+  //-7---
+    if (ok) {
+      PMUpdaterServerObject * serverObject = [PMUpdaterServerObject new] ;
+      [connection setRootObject:serverObject] ;
+      while (! serverObject.shouldExit) {
+        [[NSRunLoop currentRunLoop] runMode:NSDefaultRunLoopMode beforeDate:[NSDate distantFuture]] ;
+      }
+      [serverObject release] ;
+    }
+  //-8---
+    [connection invalidate] ;
+    [connection release] ;
+    connection = nil ;
+  }
+//---
+  #ifdef DEBUG_WITH_SYSLOG
+    syslog (LOG_NOTICE, "Helper Tool terminates") ;
+  #endif
+  return 0 ;
+}
+
+//-----------------------------------------------------------------------------*
