@@ -1,0 +1,62 @@
+//
+//  PMUpdaterServerObject.m
+//
+//  Created by Pierre Molinaro on 29/07/12.
+//  Copyright (c) 2012 IRCCyN. All rights reserved.
+//
+//-----------------------------------------------------------------------------*
+
+#import "PMUpdaterServerObject.h"
+
+//-----------------------------------------------------------------------------*
+
+#ifdef DEBUG_WITH_SYSLOG
+  #import <syslog.h>
+#endif
+
+#import <CommonCrypto/CommonDigest.h>
+
+//-----------------------------------------------------------------------------*
+
+@implementation PMUpdaterServerObject
+
+//-----------------------------------------------------------------------------*
+
+- (NSError *) performInstallationWithApplicationPath: (NSString *) inApplicationPath
+              temporaryFilePath: (NSString *) inTemporaryFilePath {
+  mTemporaryFilePath = inTemporaryFilePath ;
+  mCocoaApplicationPath = inApplicationPath ;
+  #ifdef DEBUG_WITH_SYSLOG
+    syslog (LOG_NOTICE, "Application Temporary path \%s", mTemporaryFilePath.UTF8String) ;
+    syslog (LOG_NOTICE, "Original Application path \%s", mCocoaApplicationPath.UTF8String) ;
+  #endif
+//--- Remove Canari Application
+  NSFileManager * fm = [NSFileManager new] ;
+  NSError * error = nil ;
+  BOOL ok = [fm removeItemAtPath:mCocoaApplicationPath error:& error] ;
+//--- Install new version
+  if (ok) {
+    ok = [fm
+      copyItemAtPath:mTemporaryFilePath
+      toPath:mCocoaApplicationPath
+      error:& error
+    ] ;
+  }
+//---
+  [fm release] ; fm = nil ;
+  mTerminateHelperTool = YES ;
+//---
+  return ok ? nil : error ;
+}
+
+//-----------------------------------------------------------------------------*
+
+- (BOOL) shouldExit {
+  return mTerminateHelperTool ;
+}
+
+//-----------------------------------------------------------------------------*
+
+@end
+
+//-----------------------------------------------------------------------------*

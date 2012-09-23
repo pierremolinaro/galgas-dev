@@ -1,0 +1,28 @@
+//
+//  PMUpdaterServerObject.h
+//
+//  Created by Pierre Molinaro on 29/07/12.
+//  Copyright (c) 2012 IRCCyN. All rights reserved.
+//
+//-----------------------------------------------------------------------------*
+
+#import "PMUpdaterServerProtocol.h"
+
+//-----------------------------------------------------------------------------*
+
+//#define DEBUG_WITH_SYSLOG
+
+//-----------------------------------------------------------------------------*
+
+@interface PMUpdaterServerObject : NSObject <PMUpdaterServerProtocol> {
+  @protected BOOL mTerminateHelperTool ;
+  @protected pid_t mUpdaterToolPID ;
+  @protected NSString * mTemporaryFilePath ; // Temporary location of uncompressed new application
+  @protected NSString * mCocoaApplicationPath ;
+}
+
+- (BOOL) shouldExit ;
+
+@end
+
+//-----------------------------------------------------------------------------*

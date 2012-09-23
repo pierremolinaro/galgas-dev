@@ -1,0 +1,270 @@
+//
+//  PMUpdaterAppDelegate.m
+//
+//  Created by Pierre Molinaro on 30/07/12.
+//  Copyright (c) 2012 IRCCyN. All rights reserved.
+//
+//---------------------------------------------------------------------------*
+
+#import "PMUpdaterAppDelegate.h"
+#import "PMUpdaterServerProtocol.h"
+
+//---------------------------------------------------------------------------*
+
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <ServiceManagement/ServiceManagement.h>
+
+//---------------------------------------------------------------------------*
+
+//#define DEBUG_UPDATER
+
+//---------------------------------------------------------------------------*
+
+static NSConnection * installAndLaunchHelperToolWithIdentifier (NSString * inToolIdentifier) {
+  #ifdef EASY_BINDINGS_DEBUG
+    NSLog (@"\%s", __PRETTY_FUNCTION__) ;
+  #endif
+//-1--- Check if tool already installed
+  BOOL helperIsAlreadyInstalled = NO;
+  CFDictionaryRef existingJob = SMJobCopyDictionary (kSMDomainSystemLaunchd, (CFStringRef) inToolIdentifier);
+  #ifdef LOGGING_SMJOBBLESS
+    NSLog (@"Helper Tool already installed: \%@", NULL != existingJob ? @"yes" : @"no") ;
+  #endif
+  if (NULL != existingJob) {
+    helperIsAlreadyInstalled = YES;
+    CFRelease (existingJob) ; existingJob = NULL ;
+  }
+//-2--- Create Authorization Item and Right
+ AuthorizationItem authItems [2] = {
+    {kSMRightBlessPrivilegedHelper, 0, NULL, 0},
+    {kSMRightModifySystemDaemons, 0, NULL, 0} // Needed by SMJobRemove
+  } ;
+  AuthorizationRights authRights = {(helperIsAlreadyInstalled ? 2 : 1), authItems} ;
+  const AuthorizationFlags flags =
+   kAuthorizationFlagDefaults
+ | kAuthorizationFlagInteractionAllowed
+// | kAuthorizationFlagPreAuthorize
+ | kAuthorizationFlagExtendRights
+  ;
+//-3--- Obtain the right to install privileged helper tools.
+ AuthorizationRef authRef = NULL ;
+ const OSStatus status = AuthorizationCreate (& authRights, kAuthorizationEmptyEnvironment, flags, & authRef) ;
+  Boolean ok = errAuthorizationSuccess == status ;
+  #ifdef LOGGING_SMJOBBLESS
+    NSLog (@"AuthorizationRef creation: \%@", ok ? @"ok" : @"failed") ;
+  #endif
+//-4--- Remove Helper Tool
+  if (ok && helperIsAlreadyInstalled) {
+    NSError * error = nil ;
+    const Boolean removed = SMJobRemove (kSMDomainSystemLaunchd, (CFStringRef) inToolIdentifier, authRef, YES, (CFErrorRef *) & error) ;
+    #ifdef LOGGING_SMJOBBLESS
+      NSLog (@"SMJobRemove: \%@", removed ? @"removed" : @"error") ;
+    #endif
+    if (!removed) {
+      [NSApp presentError:error] ;
+    }
+    error = nil ;
+  }
+//-5--- Install Helper Tool
+  if (ok) {
+    NSError * error = nil ;
+  ok = SMJobBless (kSMDomainSystemLaunchd, (CFStringRef) inToolIdentifier, authRef, (CFErrorRef *) & error) ;
+    #ifdef LOGGING_SMJOBBLESS
+      NSLog (@"SMJobBless: \%@", ok ? @"ok" : @"failed") ;
+    #endif
+    if (!ok) {
+      [NSApp presentError:error] ;
+    }
+    error = nil ;
+ }
+//-6--- Free Authorization
+  if (NULL != authRef) {
+    AuthorizationFree (authRef, kAuthorizationFlagDefaults) ;
+    authRef = NULL ;
+  }
+//-7--- Run and connect
+  NSConnection * connection = nil ;
+  if (ok) {
+    connection = [NSConnection
+      connectionWithRegisteredName:[inToolIdentifier stringByAppendingString:@".mach"]
+      host:nil
+    ] ;
+    #ifdef LOGGING_SMJOBBLESS
+      ok = nil != connection ;
+      if (ok) {
+        NSLog (@"Helper Tool is launched") ;
+        NSDistantObject * rootProxy = [connection rootProxy] ;
+        NSLog (@"rootProxy \%@", rootProxy) ;
+      }else{
+        NSLog (@"No Connection") ;
+      }
+    #endif
+  }
+//-8---
+  return connection ;
+}
+
+//---------------------------------------------------------------------------*
+
+@implementation PMUpdaterAppDelegate
+
+//---------------------------------------------------------------------------*
+
+- (void) installAndTerminates {
+//--- Dismiss waiting alert
+  if (nil != mCocoaApplicationIsStillRunningAlert) {
+    [mCocoaApplicationIsStillRunningAlert.window orderOut:nil] ;
+    [NSApp endSheet:mCocoaApplicationIsStillRunningAlert.window] ;
+    mCocoaApplicationIsStillRunningAlert = nil ;
+  }
+//--- Get application current path : the temporary directory
+  NSString * myDirectory = [[NSBundle mainBundle].bundlePath stringByDeletingLastPathComponent] ;
+  #ifdef DEBUG_UPDATER
+    NSLog (@"myDirectory \%@", myDirectory) ;
+  #endif
+//---
+  [NSApp activateIgnoringOtherApps:YES] ;
+  NSConnection * updaterToolConnection = installAndLaunchHelperToolWithIdentifier (@"%!BUNDLE_BASE_NAME%.%!TARGET_NAME%.updaterTool") ;
+  BOOL ok = nil != updaterToolConnection ;
+  id <PMUpdaterServerProtocol> updaterToolObjectProxy = nil ;
+  if (ok) {
+    updaterToolObjectProxy = (id <PMUpdaterServerProtocol>) updaterToolConnection.rootProxy ;
+    #ifdef DEBUG_UPDATER
+      NSLog (@"Installer Object Proxy: \%@", updaterToolObjectProxy) ;
+    #endif
+    NSError * error = [updaterToolObjectProxy
+      performInstallationWithApplicationPath:mCocoaApplicationPath
+      temporaryFilePath:[NSString stringWithFormat:@"\%@/Cocoa%![TARGET_NAME stringByCapitalizingFirstCharacter]%.app", myDirectory]
+    ] ;
+    ok = nil == error ;
+    if (! ok) {
+      [NSApp presentError:error] ;
+    }
+  //---
+    if (ok) {
+      NSAlert * alert = [NSAlert
+        alertWithMessageText:@"Done"
+        defaultButton:@"Launch %![TARGET_NAME stringByCapitalizingFirstCharacter]%"
+        alternateButton:@"Ok"
+        otherButton:nil
+        informativeTextWithFormat:@"\%@", @"The new version of %![TARGET_NAME stringByCapitalizingFirstCharacter]% has been successfully installed"
+      ] ;
+      [alert setIcon:[NSImage imageNamed:@"updater_application_icns"]] ;
+      [NSApp activateIgnoringOtherApps:YES] ;
+      const NSInteger response = [alert runModal] ;
+      if (NSAlertDefaultReturn == response) {
+      //--- Launch Application
+        NSTask * task = [NSTask new] ;
+        [task setLaunchPath:@"/usr/bin/open"] ;
+        [task setArguments:[NSArray arrayWithObject:mCocoaApplicationPath]] ;
+        [task launch] ;
+        [task release] ;
+      }
+    }
+    #ifdef DEBUG_UPDATER
+      NSLog (@"is quitting") ;
+    #endif
+  //--- Self terminate
+    [NSApp terminate:nil] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (BOOL) applicationIsStillRunning {
+  NSWorkspace * ws = [NSWorkspace sharedWorkspace] ;
+  NSArray * runningApplications = ws.runningApplications.copy ;
+//NSLog (@"runningApplications \%@", runningApplications) ;
+  BOOL stillRunning = NO ;
+  for (NSUInteger i=0 ; (i<runningApplications.count) && ! stillRunning ; i++) {
+    NSRunningApplication * ra = [runningApplications objectAtIndex:i] ;
+    if (ra.executableURL.isFileURL) {
+      NSString * applicationPath = ra.executableURL.path ;
+      // NSLog (@"applicationPath '\%@'", applicationPath) ;
+      stillRunning = [applicationPath isEqualToString:mCocoaApplicationPath] ;
+    }
+  }
+  [runningApplications release] ; runningApplications = nil ;
+  return stillRunning ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) waitForApplicationTermination: (NSTimer *) inTimer {
+  mWaitingTimeInSeconds ++ ;
+  if (self.applicationIsStillRunning) {
+  [NSTimer
+      scheduledTimerWithTimeInterval:1.0
+      target:self selector:@selector(waitForApplicationTermination:)
+      userInfo:nil
+      repeats:NO]
+    ;
+    if ((nil != inTimer) && (nil == mCocoaApplicationIsStillRunningAlert)) {
+      mCocoaApplicationIsStillRunningAlert = [NSAlert
+        alertWithMessageText:@"Waiting for %![TARGET_NAME stringByCapitalizingFirstCharacter]% termination"
+        defaultButton:@"Cancel Installation"
+        alternateButton:nil
+        otherButton:nil
+        informativeTextWithFormat:@"\%@", @"%![TARGET_NAME stringByCapitalizingFirstCharacter]% is still runnning."
+      ] ;
+      [mCocoaApplicationIsStillRunningAlert setIcon:[NSImage imageNamed:@"updater_application_icns"]] ;
+      NSButton * defaultButton = [mCocoaApplicationIsStillRunningAlert.buttons objectAtIndex:0] ;
+      defaultButton.target = self ;
+      defaultButton.action = @selector (terminateApplicationWitoutInstalling:) ;
+      [mCocoaApplicationIsStillRunningAlert
+        beginSheetModalForWindow:nil
+        modalDelegate:nil
+        didEndSelector:NULL
+        contextInfo:NULL
+      ] ;
+    }else if (nil != mCocoaApplicationIsStillRunningAlert) {
+      [mCocoaApplicationIsStillRunningAlert
+        setInformativeText:[NSString stringWithFormat:@"%![TARGET_NAME stringByCapitalizingFirstCharacter]% is still runnning (\%lu s).", mWaitingTimeInSeconds]
+      ] ;
+    }
+  }else{
+    [self installAndTerminates] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) terminateApplicationWitoutInstalling: (id) inUnusedSender {
+//--- Dismiss waiting alert
+  [mCocoaApplicationIsStillRunningAlert.window orderOut:nil] ;
+  [NSApp endSheet:mCocoaApplicationIsStillRunningAlert.window] ;
+//---
+  [NSApp terminate:nil] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) applicationDidFinishLaunching: (NSNotification *) aNotification {
+//--- Get application current path : the temporary directory
+  NSString * myDirectory = [[NSBundle mainBundle].bundlePath stringByDeletingLastPathComponent] ;
+  #ifdef DEBUG_UPDATER
+    NSLog (@"myDirectory \%@", myDirectory) ;
+  #endif
+//--- Read file that contains the Application path
+  NSError * error = nil ;
+  mCocoaApplicationPath = [NSString
+    stringWithContentsOfFile:[NSString stringWithFormat:@"\%@/application_path.txt", myDirectory]
+    encoding:NSUTF8StringEncoding
+    error:&error
+  ] ;
+  #ifdef DEBUG_UPDATER
+    NSLog (@"Application Path \%@", mCocoaApplicationPath) ;
+  #endif
+  BOOL ok = nil == error ;
+  if (! ok) {
+    [NSApp presentError:error] ;
+  }else{
+    [self waitForApplicationTermination:nil] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+@end
+
+//---------------------------------------------------------------------------*

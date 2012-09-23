@@ -1,0 +1,513 @@
+//
+//  PMApplicationUpdate.m
+//  galgas
+//
+//  Created by Pierre MOLINARO on 02/10/06.
+//  Copyright 2006 __MyCompanyName__. All rights reserved.
+//
+//--------------------------------------------------------------------------*
+
+#import "PMApplicationUpdate.h"
+#import "OC_GGS_ApplicationDelegate.h"
+#import "PMDownloadData.h"
+#import "PMDownloadFile.h"
+
+//--------------------------------------------------------------------------*
+
+#import <WebKit/WebKit.h>
+#import <Security/Security.h>
+#import <SystemConfiguration/SystemConfiguration.h>
+#import <ServiceManagement/ServiceManagement.h>
+
+//--------------------------------------------------------------------------*
+
+//--- Only for debugging !!!
+#define FORCED_APPLICATION_VERSION @"0.0.0"
+
+//--------------------------------------------------------------------------*
+
+static PMApplicationUpdate * gApplicationUpdate ;
+
+//--------------------------------------------------------------------------*
+
+@implementation PMApplicationUpdate
+
+//--------------------------------------------------------------------------*
+
++ (void) instanciateSingleton {
+  gApplicationUpdate = [PMApplicationUpdate new] ;
+  const BOOL ok = [NSBundle loadNibNamed:@"PMApplicationUpdate" owner:gApplicationUpdate] ;
+  if (! ok) {
+    NSAlert * alert = [NSAlert
+      alertWithMessageText:@"Cannot load PMApplicationUpdate.xib."
+      defaultButton:@"Ok"
+      alternateButton:nil
+      otherButton:nil
+      informativeTextWithFormat:@""
+    ] ;
+    [alert
+      beginSheetModalForWindow:nil
+      modalDelegate:nil
+      didEndSelector:NULL
+      contextInfo:NULL
+    ] ;
+  }
+}
+
+//--------------------------------------------------------------------------*
+
+#pragma mark Pathes & URLs
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) applicationArchiveName {
+  return @"Cocoa%![PROJECT_NAME stringByCapitalizingFirstCharacter]%.app.tar.bz2" ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) serverHTTPPath {
+  return @"%!REPOSITORY_URL%" ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) lastReleaseHTTPPath {
+  return [self.serverHTTPPath stringByAppendingString:@"/lastRelease.php"] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) galgasHTTPPathForVersion: (NSString *) inVersionString {
+  return [NSString stringWithFormat:@"\%@/\%@/\%@", self.serverHTTPPath, inVersionString, self.applicationArchiveName] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) temporaryDir {
+  return @"/tmp/TEMPORARY_DIR_FOR_%![PROJECT_NAME uppercaseString]%" ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSString *) temporaryPathForGALGASArchive {
+  return [NSString stringWithFormat:@"\%@/\%@", self.temporaryDir, self.applicationArchiveName] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSComparisonResult) compareVersionString: (NSString *) inVersionString
+                       withVersionString: (NSString *) inOtherVersionString {
+  NSComparisonResult result = [inVersionString compare:inOtherVersionString] ;
+  if (result != NSOrderedSame) {
+    NSMutableArray * components = [NSMutableArray new] ;
+    [components addObjectsFromArray:[inVersionString componentsSeparatedByString:@"."]] ;
+    NSMutableArray * otherComponents = [NSMutableArray new] ;
+    [otherComponents addObjectsFromArray:[inOtherVersionString componentsSeparatedByString:@"."]] ;
+    while ([components count] < [otherComponents count]) {
+      [components addObject:@"0"] ;
+    }
+    while ([components count] > [otherComponents count]) {
+      [otherComponents addObject:@"0"] ;
+    }
+    result = NSOrderedSame ;
+    for (NSUInteger i=0 ; (i<[components count]) && (result == NSOrderedSame) ; i++) {
+      const int version = [[components objectAtIndex:i] intValue] ;
+      const int otherVersion = [[otherComponents objectAtIndex:i] intValue] ;
+      if (version < otherVersion) {
+        result = NSOrderedAscending ;
+      }else if (version > otherVersion) {
+        result = NSOrderedDescending ;
+      }
+    }
+  }
+  return result ;
+}
+
+//--------------------------------------------------------------------------*
+
+#pragma mark awakeFromNib
+
+//--------------------------------------------------------------------------*
+
+- (void) awakeFromNib {
+  NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
+//--- Remove temporary dir, if it exists
+  NSFileManager * fm = [NSFileManager defaultManager] ;
+  if ([fm fileExistsAtPath:self.temporaryDir]) {
+    [fm removeItemAtPath:self.temporaryDir error:nil] ;
+  }
+//--- Add bindings
+  [mCheckUpdateAtStartUpCheckBox
+    bind:@"value"
+    toObject:ud
+    withKeyPath:@"GGS_check_update_at_start_up"
+    options:nil
+  ] ;
+  [mCheckUpdateAtStartUpCheckBox2
+    bind:@"value"
+    toObject:ud
+    withKeyPath:@"GGS_check_update_at_start_up"
+    options:nil
+  ] ;
+//----------------------------------------- Change Log Tab Item
+//--- Add 'Update' tab item
+  NSTabView * prefsTabView = [gCocoaGalgasPreferencesController preferencesTabView] ;
+  NSTabViewItem * tabViewItem = [NSTabViewItem new] ;
+  [tabViewItem setView:mViewForChangeLogInPreferencePane] ;
+  [tabViewItem setLabel:@"Update"] ;
+  [prefsTabView addTabViewItem:tabViewItem] ;
+//--- Get Last Version
+  [self checkForNewVersion:nil] ;
+}
+
+//--------------------------------------------------------------------------*
+//                                                                          *
+//            Check for new version                                         *
+//                                                                          *
+//--------------------------------------------------------------------------*
+
+- (IBAction) checkForNewVersion: (id) inSender {
+  mSearchForUpdatesInBackground = nil == inSender ;
+  [mCheckNowButton setEnabled:NO] ;
+  mDownloadData = [[PMDownloadData alloc]
+    initDownloadWithURLString:self.lastReleaseHTTPPath
+    delegate:self
+    downloadDidEndSelector:@selector (lastVersionStringIsAvailable:)
+    userInfo:nil
+  ] ;
+}
+
+//--------------------------------------------------------------------------*
+
+- (void) lastVersionStringIsAvailable: (PMDownloadData *) inDownloader {
+  [mCheckNowButton setEnabled:YES] ;
+  NSError * error = [inDownloader downloadError] ;
+  if (error != nil) {
+    if (! mSearchForUpdatesInBackground) {
+      NSAlert * alert = [NSAlert
+        alertWithMessageText:@"Cannot connect to the server."
+        defaultButton:@"Ok"
+        alternateButton:nil
+        otherButton:nil
+        informativeTextWithFormat:@"Reason: '\%@'.", [error localizedDescription]
+      ] ;
+      [alert
+        beginSheetModalForWindow:nil
+        modalDelegate:nil
+        didEndSelector:NULL
+        contextInfo:NULL
+      ] ;
+    }
+  }else{
+  //--- Update changeLog Web View
+    mLastAvailableVersion = [[NSString alloc] initWithData:inDownloader.downloadedData encoding:NSASCIIStringEncoding] ;
+    NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"\%@/\%@/changeLog.html", self.serverHTTPPath, mLastAvailableVersion]] ;
+    [mChangeLogInPreferencePaneWebView.mainFrame loadRequest:[NSURLRequest requestWithURL:url]];
+    NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
+    if ([ud boolForKey:@"GGS_check_update_at_start_up"]) {
+      [self checkForUpdating] ;
+    }
+  }
+}
+
+//--------------------------------------------------------------------------*
+
+#pragma mark Check for new version
+
+//--------------------------------------------------------------------------*
+
+- (void) checkForUpdating {
+//--- Check Response
+  NSScanner * scanner = [NSScanner scannerWithString:mLastAvailableVersion] ;
+  const BOOL versionOk = [scanner scanInt:NULL]
+               && [scanner scanString:@"." intoString:NULL]
+               && [scanner scanInt:NULL]
+               && [scanner scanString:@"." intoString:NULL]
+               && [scanner scanInt:NULL]
+               && [scanner isAtEnd] ;
+  if (versionOk) {
+  //--- Get Galgas Current version
+    #ifdef FORCED_APPLICATION_VERSION
+      NSString * galgasVersion = FORCED_APPLICATION_VERSION ;
+      NSLog (@"Forced GALGAS version: \%@", galgasVersion) ;
+      NSLog (@"Last Available version: \%@", mLastAvailableVersion) ;
+    #else
+      NSBundle * mainBundle = [NSBundle mainBundle] ;
+      NSDictionary * infoDictionary = [mainBundle infoDictionary] ;
+      NSString * galgasVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"] ;
+    // NSLog (@"galgasVersion '\%@'", galgasVersion) ;
+    #endif
+    const NSComparisonResult r = [self compareVersionString:galgasVersion withVersionString:mLastAvailableVersion] ;
+    if (r == NSOrderedAscending) {
+    //--- Display change log in Web View
+      NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"\%@/\%@/changeLog.html", self.serverHTTPPath, mLastAvailableVersion]] ;
+      [[mChangeLogWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
+      NSString * s = [NSString stringWithFormat:
+        @"Current version is \%@; the \%@ version can be downloaded.",
+        galgasVersion,
+        mLastAvailableVersion
+      ] ;
+      [mNewVersionTextField setStringValue:s] ;
+      s = [NSString stringWithFormat:
+        @"Install and Launch Version \%@",
+        mLastAvailableVersion
+      ] ;
+      [mPerformUpdateButton setTitle:s] ;
+      [NSApp
+        beginSheet:mNewAvailableVersionPanel
+        modalForWindow:nil
+        modalDelegate:self
+        didEndSelector:@selector (newVersionIsAvailableAlertDidEnd:returnCode:contextInfo:)
+        contextInfo:nil
+      ] ;
+      [mCheckNowButton setEnabled:NO] ;
+    }else if (! mSearchForUpdatesInBackground) {
+      NSAlert * alert = [NSAlert
+        alertWithMessageText:@"GALGAS is up to date."
+        defaultButton:@"Ok"
+        alternateButton:nil
+        otherButton:nil
+        informativeTextWithFormat:@"There is no new version at this time."
+      ] ;
+      [alert
+        beginSheetModalForWindow:[mCheckNowButton window]
+        modalDelegate:nil
+        didEndSelector:NULL
+        contextInfo:NULL
+      ] ;
+    }
+  }else if (! mSearchForUpdatesInBackground) {
+    NSAlert * alert = [NSAlert
+      alertWithMessageText:@"Cannot get last release number."
+      defaultButton:@"Ok"
+      alternateButton:nil
+      otherButton:nil
+      informativeTextWithFormat:@"The server answered in an incomprehensible way: '\%@'.", mLastAvailableVersion
+    ] ;
+    [alert
+      beginSheetModalForWindow:nil
+      modalDelegate:nil
+      didEndSelector:NULL
+      contextInfo:NULL
+    ] ;
+  }
+}
+
+//--------------------------------------------------------------------------*
+
+- (void) newVersionIsAvailableAlertDidEnd:(NSWindow *) inUnusedWindow
+         returnCode:(int) inReturnCode
+         contextInfo:(void  *) inContextInfo {
+  // NSLog (@"inReturnCode \%d", inReturnCode) ;
+  if (inReturnCode == YES) {
+  //--- Remove temporary dir if it exists
+    NSFileManager * fm = [NSFileManager defaultManager] ;
+    if ([fm fileExistsAtPath:self.temporaryDir]) {
+      [fm removeItemAtPath:self.temporaryDir error:nil] ;
+    }
+  //--- Create temporary dir
+    [fm
+      createDirectoryAtPath:self.temporaryDir
+      withIntermediateDirectories:NO
+      attributes:nil
+      error:nil
+    ] ;
+  //--- Start download GALGAS
+    [mDownloadTitle setStringValue:[NSString stringWithFormat:@"Downloading GALGAS \%@...", mLastAvailableVersion]] ;
+    [[mCancelButton window] makeKeyAndOrderFront:nil] ;
+    mDownloadFile = [[PMDownloadFile alloc] initWithURLString:[self galgasHTTPPathForVersion:mLastAvailableVersion]
+       destinationFileName:[self temporaryPathForGALGASArchive]
+       downloadDelegate:self
+       downloadDidEndSelector:@selector (downloadNewVersionOfGALGASDidEnd:)
+       cancelButton:mCancelButton
+       subtitle:mDownloadSubTitle
+       progressIndicator:mDownloadProgressIndicator
+       userInfo:mLastAvailableVersion
+    ] ;
+  }else{
+    [mCheckNowButton setEnabled:YES] ;
+  }
+}
+
+//--------------------------------------------------------------------------*
+
+- (void) downloadHasBeenCancelled {
+  [mCancelButton.window orderOut:nil] ;
+  [mCheckNowButton setEnabled:YES] ;
+//--- Remove temporary dir if it exists
+  NSFileManager * fm = [NSFileManager defaultManager] ;
+  if ([fm fileExistsAtPath:self.temporaryDir]) {
+    [fm removeItemAtPath:self.temporaryDir error:nil] ;
+  }
+}
+
+//--------------------------------------------------------------------------*
+
+- (void) downloadDidFinishOnError: (NSError *) inError {
+//--- Note : presentError is not available on 10.3.9 and earlier
+ // NSString * domain = [inError domain] ;
+  NSDictionary * userInfo = [inError userInfo] ;
+  //NSLog (@"userInfo \%@", userInfo) ;
+  NSAlert * alert = [NSAlert
+    alertWithMessageText:@"Download error."
+    defaultButton:@"Ok"
+    alternateButton:nil
+    otherButton:nil
+    informativeTextWithFormat:@"The following error occurs: \%@.", [userInfo objectForKey:@"NSLocalizedDescription"]
+  ] ;
+  [alert
+     beginSheetModalForWindow:nil
+     modalDelegate:nil
+     didEndSelector:NULL
+     contextInfo:NULL
+  ] ;
+  [self downloadHasBeenCancelled] ;
+}
+
+//--------------------------------------------------------------------------*
+
+- (int) uncompressArchive: (NSString *) inArchivePath {
+  NSArray * arguments = [NSArray arrayWithObjects:
+    @"-d",
+    inArchivePath,
+    nil
+  ] ;
+  NSTask * task = [NSTask new] ;
+  [task setLaunchPath:@"/usr/bin/bzip2"] ;
+  [task setArguments:arguments] ;
+  [task launch] ;
+  [task waitUntilExit] ;
+  int status = [task terminationStatus] ;
+  task = nil ;
+  if (status == 0) {
+    task = [[NSTask alloc] init] ;
+    [task setLaunchPath:@"/usr/bin/tar"] ;
+    arguments = [NSArray arrayWithObjects:
+      @"-x",
+      @"-C",
+      self.temporaryDir,
+      @"-f",
+      [inArchivePath stringByDeletingPathExtension],
+      nil
+    ] ;
+    [task setArguments:arguments] ;
+    [task launch] ;
+    [task waitUntilExit] ;
+    status = [task terminationStatus] ;
+    task = nil ;
+  }
+  return status ;
+}
+
+//--------------------------------------------------------------------------*
+
+- (void) downloadNewVersionOfGALGASDidEnd: (PMDownloadFile *) inDownloader {
+  [mCancelButton.window orderOut:nil] ;
+  if ([inDownloader downloadHasBeenCancelled]) {
+    [self downloadHasBeenCancelled] ;
+  }else{
+    NSError * downloadError = [inDownloader downloadError] ;
+    if (downloadError != NULL) {
+      [self downloadDidFinishOnError:downloadError] ;
+    }else{
+      [mDownloadTitle setStringValue:[NSString stringWithFormat:@"Uncompressing archive..."]] ;
+      [mDownloadProgressIndicator setIndeterminate:YES] ;
+      [mDownloadProgressIndicator startAnimation:nil] ;
+    //--- Uncompressing Archives
+      [mDownloadSubTitle setStringValue:@""] ;
+      [mCancelButton.window displayIfNeeded] ;
+      int status = [self uncompressArchive:self.temporaryPathForGALGASArchive] ;
+      if (status == 0) {
+        NSString * filePath = [NSString stringWithFormat:@"\%@/application_path.txt", self.temporaryDir] ;
+        NSString * applicationPath = [NSBundle mainBundle].bundlePath ;
+        status = ! [applicationPath writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:NULL] ;
+      }
+      [mCancelButton.window orderOut:nil] ;
+      if (status == 0) {
+        NSAlert * alert = [NSAlert
+          alertWithMessageText:@"Ready to Install the new version."
+          defaultButton:@"Install and Launch"
+          alternateButton:@"Cancel"
+          otherButton:nil
+          informativeTextWithFormat:@""
+        ] ;
+        [alert
+          beginSheetModalForWindow:nil
+          modalDelegate:self
+          didEndSelector:@selector (performInstallAlertDidEnd:returnCode:contextInfo:)
+          contextInfo:NULL
+        ] ;
+      }else{
+        NSAlert * alert = [NSAlert
+          alertWithMessageText:@"Cannot uncompress archive."
+          defaultButton:@"Ok"
+          alternateButton:nil
+          otherButton:nil
+          informativeTextWithFormat:@"An error occurs during uncompressing (code \%d).", status
+        ] ;
+        [alert
+          beginSheetModalForWindow:nil
+          modalDelegate:nil
+          didEndSelector:NULL
+          contextInfo:NULL
+        ] ;
+      }
+    }  
+  }
+}
+
+//--------------------------------------------------------------------------*
+
+- (void) performInstallAlertDidEnd:(NSAlert *) inUnusedAlert
+         returnCode:(int) inReturnCode
+         contextInfo:(void  *) inContextInfo {
+  if (inReturnCode == YES) {
+    [mCheckNowButton setEnabled:YES] ;
+  //-------------- Copy
+    NSString * updaterAppPath = [NSString stringWithFormat:@"\%@/%!BUNDLE_BASE_NAME%.%!PROJECT_NAME%.updaterApp.app", [NSBundle mainBundle].resourcePath] ;
+    // NSLog (@"updaterAppPath \%@", updaterAppPath) ;
+    NSString * updaterAppCopyPath = [NSString stringWithFormat:@"\%@/%!BUNDLE_BASE_NAME%.%!PROJECT_NAME%.updaterApp.app", self.temporaryDir] ;
+    // NSLog (@"updaterAppCopyPath \%@", updaterAppCopyPath) ;
+    NSFileManager * fm = [NSFileManager new] ;
+    NSError * error = nil ;
+    BOOL ok = [fm
+      copyItemAtPath:updaterAppPath
+      toPath:updaterAppCopyPath
+      error:& error
+    ] ;
+    if (! ok) {
+      [NSApp presentError:error] ;
+    }
+  //-------------- Launch UpdaterApp copy
+    if (ok) {
+      error = nil ;
+      NSRunningApplication * runningApp = [[NSWorkspace sharedWorkspace]
+        launchApplicationAtURL:[NSURL fileURLWithPath:updaterAppCopyPath]
+        options:NSWorkspaceLaunchAsync
+        configuration:nil
+        error:& error
+      ] ;
+      if (nil == runningApp) {
+        ok = false ;
+        [NSApp presentError:error] ;
+      }
+    }
+  //-------------- Application self terminates
+    if (ok) {
+      [[NSRunLoop currentRunLoop]
+        performSelector: @selector (terminate:)
+        target:NSApp
+        argument:nil
+        order:NSUIntegerMax
+        modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]
+      ] ;
+    }
+  }else{
+    [self downloadHasBeenCancelled] ;
+  }
+}
+
+//--------------------------------------------------------------------------*
+
+@end
