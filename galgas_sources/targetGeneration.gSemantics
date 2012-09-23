@@ -7,11 +7,38 @@ semantics targetGeneration :
 
 #---------------------------------------------------------------------------*
 
+local filewrapper updaterToolFileWrapper in "../generation_templates/cocoa_application_update/updater-tool" {
+}{
+}{
+ template updater_object_protocol "PMUpdaterServerProtocol.h.gTemplate" ;
+ template updater_object_header "PMUpdaterServerObject.h.gTemplate" ;
+ template updater_object_implementation "PMUpdaterServerObject.m.gTemplate";
+ template updater_object_main "updater-tool-main.m.gTemplate"
+   ?@string BUNDLE_BASE_NAME
+   ?@string TARGET_NAME
+ ;
+ template updater_tool_info_plist "updater-tool-Info.plist.txt"
+   ?@string BUNDLE_BASE_NAME
+   ?@string TARGET_NAME
+   ?@string CODE_SIGN
+ ;
+ template updater_tool_launchd_plist "updater-tool-Launchd.plist.txt"
+   ?@string BUNDLE_BASE_NAME
+   ?@string TARGET_NAME
+ ;
+}
+
+#---------------------------------------------------------------------------*
+
 local filewrapper applicationUpdateFileWrapper in "../generation_templates/cocoa_application_update/application" {
 }{
 }{
  template application_update_header "PMApplicationUpdate.h.gTemplate" ;
- template application_update_implementation "PMApplicationUpdate.m.gTemplate" ;
+ template application_update_implementation "PMApplicationUpdate.m.gTemplate"
+   ?@string PROJECT_NAME
+   ?@string REPOSITORY_URL
+   ?@string BUNDLE_BASE_NAME
+  ;
  template application_update_nib "PMApplicationUpdate.xib.gTemplate" ;
  template download_data_header "PMDownloadData.h.gTemplate" ;
  template download_data_implementation "PMDownloadData.m.gTemplate" ;
@@ -378,18 +405,59 @@ routine updateTargets
       [[filewrapper targetGenerationFileWrapper."project_xcode/English.lproj/Credits.rtf"] writeToFile !Credits_rtf_path] ;
     end if ;
   #--- Application update files
-    if [inProjectQualifiedFeatureMap hasKey !"repositoryURL"] then
+    with inProjectQualifiedFeatureMap hasKey !"repositoryURL" do
       const @string applicationUpdateDir := projectDirectory . "/project_xcode/cocoa-application-update/application";
       [applicationUpdateDir makeDirectory] ;
       [[filewrapper applicationUpdateFileWrapper.application_update_header ] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMApplicationUpdate.h" ?*] ;
-      [[filewrapper applicationUpdateFileWrapper.application_update_implementation ] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMApplicationUpdate.m" ?*] ;
-      [[filewrapper applicationUpdateFileWrapper.application_update_nib ] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMApplicationUpdate.xib" ?*] ;
+      [[filewrapper applicationUpdateFileWrapper.application_update_implementation
+         !inTargetName
+         !mFeatureValue->string # Repository URL
+         !applicationBundleBase
+       ] writeToFileWhenDifferentContents
+        !applicationUpdateDir . "/PMApplicationUpdate.m"
+        ?*
+      ] ;
+      [[filewrapper applicationUpdateFileWrapper.application_update_nib ] writeToFileWhenDifferentContents !applicationUpdateDir . "/English.lproj/PMApplicationUpdate.xib" ?*] ;
       [[filewrapper applicationUpdateFileWrapper.download_data_header] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMDownloadData.h" ?*] ;
       [[filewrapper applicationUpdateFileWrapper.download_data_implementation] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMDownloadData.m" ?*] ;
       [[filewrapper applicationUpdateFileWrapper.download_file_header] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMDownloadFile.h" ?*] ;
       [[filewrapper applicationUpdateFileWrapper.download_file_implementation] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMDownloadFile.m" ?*] ;
       [[filewrapper applicationUpdateFileWrapper.compatibility_header] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMSnowLeopardLionCompatibility.h" ?*] ;
-    end if ;
+    #--- Updater tool
+      @string codeSignIdentity ;
+      with inProjectQualifiedFeatureMap hasKey !"codeSigning" do
+        codeSignIdentity := mFeatureValue->string ;
+      else
+        codeSignIdentity := "" ;
+      end with ;
+      const @string updaterToolDir := projectDirectory . "/project_xcode/cocoa-application-update/updater-tool";
+      [updaterToolDir makeDirectory] ;
+      [[filewrapper updaterToolFileWrapper.updater_object_protocol] writeToFileWhenDifferentContents !updaterToolDir . "/PMUpdaterServerProtocol.h" ?*] ;
+      [[filewrapper updaterToolFileWrapper.updater_object_header] writeToFileWhenDifferentContents !updaterToolDir . "/PMUpdaterServerObject.h" ?*] ;
+      [[filewrapper updaterToolFileWrapper.updater_object_implementation] writeToFileWhenDifferentContents !updaterToolDir . "/PMUpdaterServerObject.m" ?*] ;
+      [[filewrapper updaterToolFileWrapper.updater_tool_info_plist
+         !applicationBundleBase
+         !inTargetName
+         !codeSignIdentity
+       ] writeToFileWhenDifferentContents
+        !updaterToolDir . "/updater-tool-Info.plist"
+        ?*
+      ] ;
+      [[filewrapper updaterToolFileWrapper.updater_tool_launchd_plist
+         !applicationBundleBase
+         !inTargetName
+       ] writeToFileWhenDifferentContents
+        !updaterToolDir . "/updater-tool-Launchd.plist"
+        ?*
+      ] ;
+      [[filewrapper updaterToolFileWrapper.updater_object_main
+         !applicationBundleBase
+         !inTargetName
+       ] writeToFileWhenDifferentContents
+        !updaterToolDir . "/updater-tool-main.m"
+        ?*
+      ] ;
+    end with ;
   #--- Enumerate icons files in "userResources" directory
     const @string userResourceDir := projectDirectory . "/project_xcode/userResources";
     [userResourceDir makeDirectory] ;

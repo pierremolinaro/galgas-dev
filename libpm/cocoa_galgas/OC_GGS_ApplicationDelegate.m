@@ -3,7 +3,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2003, ..., 2011 Pierre Molinaro.                           *
+//  Copyright (C) 2003, ..., 2012 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -30,6 +30,10 @@
 #import "OC_Lexique.h"
 #import "F_CocoaWrapperForGalgas.h"
 #import "PMDebug.h"
+
+#ifdef PM_HANDLE_UPDATE
+  #import "PMApplicationUpdate.h"
+#endif
 
 //---------------------------------------------------------------------------*
 
@@ -928,8 +932,12 @@ OC_GGS_ApplicationDelegate * gCocoaGalgasPreferencesController ;
     withKeyPath:@"values.PMLiveCompilation"
     options:NULL
   ] ;
-//---  
+//---
   [self updateSourceTextPreferenceCount] ;
+//---  
+  #ifdef PM_HANDLE_UPDATE
+    [PMApplicationUpdate instanciateSingleton] ;
+  #endif
 }
 
 //---------------------------------------------------------------------------*

@@ -675,10 +675,15 @@ local routine build_FRAMEWORKS_group
   ?!@XcodeObjectReferenceList ioFileListForGroup
   ??@stringset inExternSourceForTool
   ??@stringset inExternSourceForApp
+  ??@bool inHandleUpdateFromInternet
 :
   @stringset fileSet [emptySet] ;
   fileSet += !"AppKit.framework" ;
   fileSet += !"Cocoa.framework" ;
+  if inHandleUpdateFromInternet then
+    fileSet += !"WebKit.framework" ;
+    fileSet += !"Foundation.framework" ;
+  end if ;
   foreach inExternSourceForTool do
     if [key pathExtension] == "framework" then
       fileSet += !key ;
@@ -724,6 +729,7 @@ local routine build_RESOURCES_for_resources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
   ??@string inProjectName
   ??@stringlist inResourceFiles
+  ??@bool inAddApplicationUpdateXib
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
   @stringlist fileList := inResourceFiles ;
@@ -733,6 +739,9 @@ local routine build_RESOURCES_for_resources_build_phase
   fileList += !"PMDebug.xib" ;
   fileList += !"MainMenu.xib" ;
   fileList += !"OC_GGS_Document.xib" ;
+  if inAddApplicationUpdateXib then
+    fileList += !"PMApplicationUpdate.xib" ;
+  end if ;
   fileList += !"InfoPlist.strings" ;
   fileList += !"Credits.rtf" ;
 #---
@@ -783,7 +792,6 @@ local routine build_COCOA_APP_files_for_sources_build_phase
 #---------- "Application Update" Files
   if inImplementsUpdate then
     fileList += !"PMApplicationUpdate.m" ;
-    fileList += !"PMApplicationUpdate.xib" ;
     fileList += !"PMDownloadData.m" ;
     fileList += !"PMDownloadFile.m" ;
   end if ;
@@ -843,6 +851,15 @@ routine generateXcodeProject
   ??@bool inUsesARC
   ??@projectQualifiedFeatureMap inProjectQualifiedFeatureMap
 :
+  const @bool handleUpdateFromInternet := [inProjectQualifiedFeatureMap hasKey !"repositoryURL"] ;
+#---
+  @string bundleBaseName ;
+  with inProjectQualifiedFeatureMap hasKey !"applicationBundleBase" do
+    bundleBaseName := mFeatureValue->string ;
+  else
+    bundleBaseName := "" ;
+  end with ;
+#---
   @XcodeProjectDescription XcodeProjectDescription ;
   initXcodeProjectDescription ?XcodeProjectDescription ;
 #-------------------------------------------------- Build source lists
@@ -1083,6 +1100,7 @@ routine generateXcodeProject
     !?fileListOf_FRAMEWORKS_group
     !inExternSourceNameSet_tool
     !inExternSourceNameSet_app
+    !handleUpdateFromInternet
   ;
 #---
   enter_group
@@ -1092,11 +1110,17 @@ routine generateXcodeProject
     !fileListOf_FRAMEWORKS_group
   ;
 #---------- "Application Update" Group
-  if [inProjectQualifiedFeatureMap hasKey !"repositoryURL"] then
+  if handleUpdateFromInternet then
+  #--- Application update group
     @XcodeObjectReferenceList fileListOf_APPLICATION_UPDATE_group [emptyList] ;
     enter_file_in_group !?XcodeProjectDescription !"PMApplicationUpdate.h" !?fileListOf_APPLICATION_UPDATE_group ;
     enter_file_in_group !?XcodeProjectDescription !"PMApplicationUpdate.m" !?fileListOf_APPLICATION_UPDATE_group ;
-    enter_file_in_group !?XcodeProjectDescription !"PMApplicationUpdate.xib" !?fileListOf_APPLICATION_UPDATE_group ;
+    enter_xib_file_in_group
+     !?XcodeProjectDescription
+     !"English.lproj"
+     !"PMApplicationUpdate.xib"
+     !?fileListOf_APPLICATION_UPDATE_group
+    ;
     enter_file_in_group !?XcodeProjectDescription !"PMDownloadData.h" !?fileListOf_APPLICATION_UPDATE_group ;
     enter_file_in_group !?XcodeProjectDescription !"PMDownloadData.m" !?fileListOf_APPLICATION_UPDATE_group ;
     enter_file_in_group !?XcodeProjectDescription !"PMDownloadFile.h" !?fileListOf_APPLICATION_UPDATE_group ;
@@ -1108,6 +1132,56 @@ routine generateXcodeProject
       !"cocoa-application-update/application"
       !fileListOf_APPLICATION_UPDATE_group
     ;
+  #--- Updater tool group
+    @XcodeObjectReferenceList fileListOf_UPDATER_TOOL_group [emptyList] ;
+    enter_file_in_group !?XcodeProjectDescription !"PMUpdaterServerObject.h" !?fileListOf_UPDATER_TOOL_group ;
+    enter_file_in_group !?XcodeProjectDescription !"PMUpdaterServerObject.m" !?fileListOf_UPDATER_TOOL_group ;
+    enter_file_in_group !?XcodeProjectDescription !"PMUpdaterServerProtocol.h" !?fileListOf_UPDATER_TOOL_group ;
+    enter_file_in_group !?XcodeProjectDescription !"updater-tool-Info.plist" !?fileListOf_UPDATER_TOOL_group ;
+    enter_file_in_group !?XcodeProjectDescription !"updater-tool-Launchd.plist" !?fileListOf_UPDATER_TOOL_group ;
+    enter_file_in_group !?XcodeProjectDescription !"updater-tool-main.m" !?fileListOf_UPDATER_TOOL_group ;
+    enter_group
+      !?XcodeProjectDescription
+      !"Updater Tool"
+      !"cocoa-application-update/updater-tool"
+      !fileListOf_UPDATER_TOOL_group
+    ;
+  end if ;
+#--- Direct Dependancies
+  @stringlist CocoaApplicationDependencyList [emptyList] ;
+#-------------------------------------------------- Build "updater-tool" target
+  if handleUpdateFromInternet then
+  #--- Build Phase
+    @Xcode_PBXBuildFile_list listForSourceBuildPhaseOfUpdaterTool [emptyList] ;
+    enter_file_for_sources_build_phase !?XcodeProjectDescription !"PMUpdaterServerObject.m" !?listForSourceBuildPhaseOfUpdaterTool ;
+    enter_file_for_sources_build_phase !?XcodeProjectDescription !"updater-tool-main.m" !?listForSourceBuildPhaseOfUpdaterTool ;
+  #--- Frameworks
+    @Xcode_PBXBuildFile_list frameworkList [emptyList] ;
+    enter_files_for_frameworks_build_phase
+      !?XcodeProjectDescription
+      ![@stringlist listWithValue !"Foundation.framework"]
+      !?frameworkList
+    ;
+  #--- Target settings
+    @stringlist updaterToolTargetSettings [emptyList] ;
+    updaterToolTargetSettings += !"GCC_OPTIMIZATION_LEVEL = 2;" ;
+    updaterToolTargetSettings += !"GCC_ENABLE_OBJC_GC = Unsupported;" ;
+    updaterToolTargetSettings += !"GCC_WARN_UNUSED_PARAMETER = NO ;" ;
+    updaterToolTargetSettings += !"OTHER_LDFLAGS = \"-sectcreate __TEXT __info_plist sources/updater-tool/updater-tool-Info.plist -sectcreate __TEXT __launchd_plist sources/updater-tool/updater-tool-Launchd.plist\" ;" ;
+  #---
+    @string updaterToolTargetKey ;
+    add_tool_target
+      !?XcodeProjectDescription
+      !bundleBaseName . "." . inProjectName . ".updaterTool"
+      !bundleBaseName . "." . inProjectName . ".updaterTool"
+      !updaterToolTargetSettings
+      !"" # Precompiled header
+      !listForSourceBuildPhaseOfUpdaterTool
+      !frameworkList
+      ![@stringlist emptyList] # No Dependency
+      ?updaterToolTargetKey
+    ;
+    CocoaApplicationDependencyList += !updaterToolTargetKey ;
   end if ;
 #-------------------------------------------------- Build "tool" target
   @Xcode_PBXBuildFile_list listForSourceBuildPhaseOfTool [emptyList] ;
@@ -1254,10 +1328,8 @@ routine generateXcodeProject
   debugToolTargetSettings += !"GCC_GENERATE_DEBUGGING_SYMBOLS = YES;" ;
   debugToolTargetSettings += !"GCC_OPTIMIZATION_LEVEL = 0;" ;
   debugToolTargetSettings += !"GCC_WARN_UNINITIALIZED_AUTOS = NO;" ;
-  debugToolTargetSettings += !"GCC_WARN_UNINITIALIZED_AUTOS = NO;" ;
   debugToolTargetSettings += !"GCC_PREPROCESSOR_DEFINITIONS = "
   "\"LIBPM_MULTI_THREADING=" . if inMultiThreadingEnabled then "1" else "0" end . "\";" ;
-
 #---
   @string toolDebugTargetKey ;
   add_tool_target
@@ -1280,7 +1352,7 @@ routine generateXcodeProject
     !inScannerSourceNameSet_app
     !inOptionSourceNameSet_app
     !inExternSourceNameSet_app
-    ![inProjectQualifiedFeatureMap hasKey !"repositoryURL"]
+    !handleUpdateFromInternet
     !?listForSourceBuildPhaseOfCocoaApp
   ;
 #--- Frameworks Build Phase
@@ -1288,6 +1360,9 @@ routine generateXcodeProject
   fileSet := inExternSourceNameSet_app ;
   fileSet += !"AppKit.framework" ;
   fileSet += !"Cocoa.framework" ;
+  if handleUpdateFromInternet then
+    fileSet += !"WebKit.framework" ;
+  end if ;
   build_FRAMEWORKS_for_frameworks_build_phase
     !?XcodeProjectDescription
     !fileSet
@@ -1299,6 +1374,7 @@ routine generateXcodeProject
     !?XcodeProjectDescription
     !inProjectName
     !inResourceFiles
+    !handleUpdateFromInternet
     !?listForResourcesBuildPhaseOfCocoaApp
   ;
 # HAND CODED SOURCES (only resources to copy)
@@ -1308,12 +1384,14 @@ routine generateXcodeProject
     !?listForResourcesBuildPhaseOfCocoaApp
   ;
 #--- Direct Dependancies
-  @stringlist directDependencyList [emptyList] ;
-  directDependencyList += !toolTargetKey ;
-  directDependencyList += !toolDebugTargetKey ;
+  CocoaApplicationDependencyList += !toolTargetKey ;
+  CocoaApplicationDependencyList += !toolDebugTargetKey ;
 #--- Target settings
   @stringlist cocoaAppTargetSettings [emptyList] ;
   cocoaAppTargetSettings  += !"GCC_OPTIMIZATION_LEVEL = 2;" ;
+  if handleUpdateFromInternet then
+    cocoaAppTargetSettings += !"GCC_PREPROCESSOR_DEFINITIONS = \"PM_HANDLE_UPDATE\";" ;
+  end if ;
 #---
   add_app_target
     !?XcodeProjectDescription
@@ -1325,7 +1403,7 @@ routine generateXcodeProject
     !listForSourceBuildPhaseOfCocoaApp
     !listForFrameworksBuildPhaseOfCocoaApp
     !listForResourcesBuildPhaseOfCocoaApp
-    !directDependencyList
+    !CocoaApplicationDependencyList
     ?*
   ;
 #-------------------------------------------------- Define project default configuration
