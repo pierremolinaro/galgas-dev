@@ -750,8 +750,6 @@ routine enter_file_in_group
     enter_framework_file_in_group !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup ;
   elsif extension == "icns" then
     enter_icns_file_in_group !?ioXcodeProjectDescription !inFileName !?ioFileListForGroup ;
-  elsif extension == "xib" then
-    enter_xib_file_in_group !?ioXcodeProjectDescription !"." !inFileName !?ioFileListForGroup ;
   else
     error here : "cannot enter '" . inFileName . "' file : unknown extension" ;
   end if ;
