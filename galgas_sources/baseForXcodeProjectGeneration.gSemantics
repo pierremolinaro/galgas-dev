@@ -323,7 +323,7 @@ list @Xcode_PBXSourcesBuildPhase_list {
 
 #---------------------------------------------------------------------------*
 #                                                                           *
-#    PBXSourcesBuildPhase                                                   *
+#    PBXResourcesBuildPhase                                                 *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
@@ -337,6 +337,26 @@ class @Xcode_PBXResourcesBuildPhase {
 
 list @Xcode_PBXResourcesBuildPhase_list {
   @Xcode_PBXResourcesBuildPhase mBuildPhase ;
+}
+
+#---------------------------------------------------------------------------*
+#                                                                           *
+#    PBXCopyBuildPhase                                                      *
+#                                                                           *
+#---------------------------------------------------------------------------*
+
+class @Xcode_PBXCopyBuildPhase {
+  @uint mSequenceNumber ;
+  @string mNameForComment  ;
+  @uint mDestinationSubfolder ;
+  @string mDestinationPath ;
+  @Xcode_PBXBuildFile_list mFileReferenceList  ;
+}
+
+#---------------------------------------------------------------------------*
+
+list @Xcode_PBXCopyBuildPhase_list {
+  @Xcode_PBXCopyBuildPhase mBuildPhase ;
 }
 
 #---------------------------------------------------------------------------*
@@ -473,6 +493,7 @@ struct @XcodeProjectDescription {
   @Xcode_PBXSourcesBuildPhase_list mPBXSourcesBuildPhase_list ;
   @Xcode_PBXFrameworksBuildPhase_list mPBXFrameworksBuildPhase_list ;
   @Xcode_PBXResourcesBuildPhase_list mPBXResourcesBuildPhase_list ;
+  @Xcode_PBXCopyBuildPhase_list mPBXCopyBuildPhase_list ;
   @Xcode_targetDependencyDescription_list mDependencyList ;
   @Xcode_PBXVariantGroup_list mPBXVariantGroup_list ;
   @uint mSequenceNumber ;
@@ -492,6 +513,7 @@ routine initXcodeProjectDescription !@XcodeProjectDescription outDescription :
     ![@Xcode_PBXSourcesBuildPhase_list emptyList]
     ![@Xcode_PBXFrameworksBuildPhase_list emptyList]
     ![@Xcode_PBXResourcesBuildPhase_list emptyList]
+    ![@Xcode_PBXCopyBuildPhase_list emptyList]
     ![@Xcode_targetDependencyDescription_list emptyList]
     ![@Xcode_PBXVariantGroup_list emptyList]
     !0
@@ -967,6 +989,7 @@ routine add_app_target
   ??@Xcode_PBXBuildFile_list inFrameworksToCompileList
   ??@Xcode_PBXBuildFile_list inResourcesToCompileList
   ??@stringlist inDirectDependencyList
+  ??@string inFileToCopyInWrapperLaunchServices
   !@string outTargetKey
 :
   @stringlist buildPhases [emptyList] ;
@@ -1004,6 +1027,25 @@ routine add_app_target
   ioXcodeProjectDescription->mSequenceNumber ++ ;
   ioXcodeProjectDescription->mPBXFrameworksBuildPhase_list += !frameworksBuildPhase ;
   buildPhases += !getPBXFileReferenceKey [![frameworksBuildPhase mSequenceNumber]] ;
+#--- Copy build phase in Launch Services
+  if inFileToCopyInWrapperLaunchServices != "" then
+    @Xcode_PBXFileReference_abstract ref ;
+    [[ioXcodeProjectDescription mFileReferenceMap] searchKey ![inFileToCopyInWrapperLaunchServices nowhere] ?ref] ;
+   #--
+    @Xcode_PBXBuildFile build_file [new ![ioXcodeProjectDescription mSequenceNumber] !ref] ;
+    ioXcodeProjectDescription->mSequenceNumber ++ ;
+    ioXcodeProjectDescription->mAllBuildFileList += !build_file ;
+    @Xcode_PBXCopyBuildPhase copyBuildPhase [new
+      ![ioXcodeProjectDescription mSequenceNumber]
+      !""
+      !1 # Wrapper
+      !"Contents/Library/LaunchServices"
+      ![@Xcode_PBXBuildFile_list listWithValue !build_file]
+    ] ;
+    ioXcodeProjectDescription->mSequenceNumber ++ ;
+    ioXcodeProjectDescription->mPBXCopyBuildPhase_list += !copyBuildPhase ;
+    buildPhases += !getPBXFileReferenceKey [![copyBuildPhase mSequenceNumber]] ;
+  end if ;
 #--- Define Target Settings
   if inPrecompiledHeaderPath != "" then
     inTargetSettings  += !"GCC_PRECOMPILE_PREFIX_HEADER = YES;" ;
@@ -1243,6 +1285,25 @@ routine buildXcodeProjectString
     . "\t\t\trunOnlyForDeploymentPostprocessing = 0;\n"
     . "\t\t};\n" ;
   after outString .= "/* End PBXSourcesBuildPhase section */\n" ;
+  end foreach ;
+#--- PBXCopyBuildPhase section
+  foreach [inXcodeProjectDescription mPBXCopyBuildPhase_list]
+  before outString .= "/* Begin PBXCopyFilesBuildPhase section */\n" ;
+  do
+    outString .= "\t\t" . getPBXFileReferenceKey [![mBuildPhase mSequenceNumber]]
+    . " /* Copy Files */ = {\n"
+    . "\t\t\tisa = PBXCopyFilesBuildPhase;\n"
+    . "\t\t\tbuildActionMask = 2147483647;\n"
+    . "\t\t\tdstPath = \"" . [mBuildPhase mDestinationPath] . "\";\n"
+    . "\t\t\tdstSubfolderSpec = " . [mBuildPhase mDestinationSubfolder] . ";\n"
+    . "\t\t\tfiles = (\n" ;
+    foreach [mBuildPhase mFileReferenceList] do
+      outString .= "\t\t\t\t" . getPBXFileReferenceKey [![mFile mSequenceNumber]] . " ,\n" ;
+    end foreach ;
+    outString .=  "\t\t\t);\n"
+    . "\t\t\trunOnlyForDeploymentPostprocessing = 0;\n"
+    . "\t\t};\n" ;
+  after outString .= "/* End PBXCopyFilesBuildPhase section */\n" ;
   end foreach ;
 #--- PBXTargetDependency section
   foreach [inXcodeProjectDescription mDependencyList]

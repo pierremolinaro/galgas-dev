@@ -10,9 +10,9 @@ semantics targetGeneration :
 local filewrapper updaterApplicationFileWrapper in "../generation_templates/cocoa_application_update/updater-application" {
 }{
 }{
- template credits "Credits.rtf" ;
- template info_plist_strings "InfoPlist.strings" ;
- template main_menu_xib "MainMenu.xib.txt"
+ template credits "UpdaterAppCredits.rtf" ;
+ template info_plist_strings "UpdaterAppInfoPlist.strings" ;
+ template main_menu_xib "UpdaterAppMainMenu.xib"
    ?@string TARGET_NAME
   ;
  template application_delegate_header "PMUpdaterAppDelegate.h.gTemplate" ;
@@ -484,9 +484,9 @@ routine updateTargets
     #--- Updater application
       const @string updaterApplicationDir := projectDirectory . "/project_xcode/cocoa-application-update/updater-application";
       [updaterApplicationDir makeDirectory] ;
-      [[filewrapper updaterApplicationFileWrapper.credits] writeToFileWhenDifferentContents !updaterApplicationDir . "/English.lproj/Credits.rtf" ?*] ;
-      [[filewrapper updaterApplicationFileWrapper.info_plist_strings] writeToFileWhenDifferentContents !updaterApplicationDir . "/English.lproj/InfoPlist.strings" ?*] ;
-      [[filewrapper updaterApplicationFileWrapper.main_menu_xib !inTargetName] writeToFileWhenDifferentContents !updaterApplicationDir . "/English.lproj/MainMenu.xib" ?*] ;
+      [[filewrapper updaterApplicationFileWrapper.credits] writeToFileWhenDifferentContents !updaterApplicationDir . "/English.lproj/UpdaterAppCredits.rtf" ?*] ;
+      [[filewrapper updaterApplicationFileWrapper.info_plist_strings] writeToFileWhenDifferentContents !updaterApplicationDir . "/English.lproj/UpdaterAppInfoPlist.strings" ?*] ;
+      [[filewrapper updaterApplicationFileWrapper.main_menu_xib !inTargetName] writeToFileWhenDifferentContents !updaterApplicationDir . "/English.lproj/UpdaterAppMainMenu.xib" ?*] ;
       [[filewrapper updaterApplicationFileWrapper.application_delegate_header] writeToFileWhenDifferentContents !updaterApplicationDir . "/PMUpdaterAppDelegate.h" ?*] ;
       [[filewrapper updaterApplicationFileWrapper.application_delegate_implementation
          !applicationBundleBase

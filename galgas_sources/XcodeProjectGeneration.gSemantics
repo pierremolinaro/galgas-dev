@@ -683,6 +683,8 @@ local routine build_FRAMEWORKS_group
   if inHandleUpdateFromInternet then
     fileSet += !"WebKit.framework" ;
     fileSet += !"Foundation.framework" ;
+    fileSet += !"Security.framework" ;
+    fileSet += !"ServiceManagement.framework" ;
   end if ;
   foreach inExternSourceForTool do
     if [key pathExtension] == "framework" then
@@ -727,12 +729,14 @@ end routine ;
 
 local routine build_RESOURCES_for_resources_build_phase
   ?!@XcodeProjectDescription ioXcodeProjectDescription
+  ??@string inBundleBaseName
   ??@string inProjectName
   ??@stringlist inResourceFiles
   ??@bool inAddApplicationUpdateXib
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
   @stringlist fileList := inResourceFiles ;
+  fileList += !inBundleBaseName . "." . inProjectName . ".updaterApp" ;
   fileList += !inProjectName ;
   fileList += !inProjectName . "_debug" ;
   fileList += !"I_Stop.tiff" ;
@@ -1146,9 +1150,39 @@ routine generateXcodeProject
       !"cocoa-application-update/updater-tool"
       !fileListOf_UPDATER_TOOL_group
     ;
+  #--- Updater Application group
+    @XcodeObjectReferenceList fileListOf_UPDATER_APP_group [emptyList] ;
+    enter_file_in_group !?XcodeProjectDescription !"PMUpdaterAppDelegate.h" !?fileListOf_UPDATER_APP_group ;
+    enter_file_in_group !?XcodeProjectDescription !"PMUpdaterAppDelegate.m" !?fileListOf_UPDATER_APP_group ;
+    enter_file_in_group !?XcodeProjectDescription !"updater-app-main.m" !?fileListOf_UPDATER_APP_group ;
+    enter_file_in_group !?XcodeProjectDescription !"updater-app-Prefix.pch" !?fileListOf_UPDATER_APP_group ;
+    enter_xib_file_in_group
+     !?XcodeProjectDescription
+     !"English.lproj"
+     !"UpdaterAppCredits.rtf"
+     !?fileListOf_UPDATER_APP_group
+    ;
+    enter_xib_file_in_group
+     !?XcodeProjectDescription
+     !"English.lproj"
+     !"UpdaterAppInfoPlist.strings"
+     !?fileListOf_UPDATER_APP_group
+    ;
+    enter_xib_file_in_group
+     !?XcodeProjectDescription
+     !"English.lproj"
+     !"UpdaterAppMainMenu.xib"
+     !?fileListOf_UPDATER_APP_group
+    ;
+    enter_group
+      !?XcodeProjectDescription
+      !"Updater Application"
+      !"cocoa-application-update/updater-application"
+      !fileListOf_UPDATER_APP_group
+    ;
   end if ;
 #--- Direct Dependancies
-  @stringlist CocoaApplicationDependencyList [emptyList] ;
+  @stringlist updaterApplicationDependencyList [emptyList] ;
 #-------------------------------------------------- Build "updater-tool" target
   if handleUpdateFromInternet then
   #--- Build Phase
@@ -1167,6 +1201,7 @@ routine generateXcodeProject
     updaterToolTargetSettings += !"GCC_OPTIMIZATION_LEVEL = 2;" ;
     updaterToolTargetSettings += !"GCC_ENABLE_OBJC_GC = Unsupported;" ;
     updaterToolTargetSettings += !"GCC_WARN_UNUSED_PARAMETER = NO ;" ;
+    updaterToolTargetSettings += !"COPY_PHASE_STRIP = NO ;" ;
     updaterToolTargetSettings += !"OTHER_LDFLAGS = \"-sectcreate __TEXT __info_plist sources/updater-tool/updater-tool-Info.plist -sectcreate __TEXT __launchd_plist sources/updater-tool/updater-tool-Launchd.plist\" ;" ;
   #---
     @string updaterToolTargetKey ;
@@ -1181,7 +1216,57 @@ routine generateXcodeProject
       ![@stringlist emptyList] # No Dependency
       ?updaterToolTargetKey
     ;
-    CocoaApplicationDependencyList += !updaterToolTargetKey ;
+    updaterApplicationDependencyList += !updaterToolTargetKey ;
+  end if ;
+#-------------------------------------------------- Build "updater-application" target
+  @stringlist CocoaApplicationDependencyList [emptyList] ;
+  if handleUpdateFromInternet then
+  #--- Target settings
+    @stringlist updaterAppTargetSettings [emptyList] ;
+    updaterAppTargetSettings += !"GCC_OPTIMIZATION_LEVEL = 2;" ;
+  #--- Frameworks
+    @Xcode_PBXBuildFile_list frameworkList [emptyList] ;
+    @stringlist theList [emptyList] ;
+    theList += !"Cocoa.framework" ;
+    theList += !"Security.framework" ;
+    theList += !"ServiceManagement.framework" ;
+    enter_files_for_frameworks_build_phase
+      !?XcodeProjectDescription
+      !theList
+      !?frameworkList
+    ;
+  #--- Build Phase
+    @Xcode_PBXBuildFile_list listForSourceBuildPhaseOfUpdaterApp [emptyList] ;
+    enter_file_for_sources_build_phase !?XcodeProjectDescription !"PMUpdaterAppDelegate.m" !?listForSourceBuildPhaseOfUpdaterApp ;
+    enter_file_for_sources_build_phase !?XcodeProjectDescription !"updater-app-main.m" !?listForSourceBuildPhaseOfUpdaterApp ;
+  #--- Resource Build Phase
+    @Xcode_PBXBuildFile_list listForResourcesBuildPhaseOfUpdaterApp [emptyList] ;
+    @stringlist fileList [emptyList] ;
+    fileList += !"UpdaterAppMainMenu.xib" ;
+    fileList += !"UpdaterAppInfoPlist.strings" ;
+    fileList += !"UpdaterAppCredits.rtf" ;
+    enter_files_for_frameworks_build_phase
+     !?XcodeProjectDescription
+     !fileList
+     !?listForResourcesBuildPhaseOfUpdaterApp
+    ;
+  #---
+    @string updaterAppTargetKey ;
+    add_app_target
+      !?XcodeProjectDescription
+      !bundleBaseName . "." . inProjectName . ".updaterApp"
+      !bundleBaseName . "." . inProjectName . ".updaterApp"
+      !updaterAppTargetSettings
+      !"cocoa-application-update/updater-application/updater-app-Prefix.pch" # Precompiled header (empty string if none)
+      !"cocoa-application-update/updater-application/updater-app-Info.plist" # Info.plist file (empty string if none)
+      !listForSourceBuildPhaseOfUpdaterApp
+      !frameworkList
+      !listForResourcesBuildPhaseOfUpdaterApp
+      !updaterApplicationDependencyList
+      !bundleBaseName . "." . inProjectName . ".updaterTool" # Copy to wrapper, Lauch Services
+      ?updaterAppTargetKey
+    ;
+    CocoaApplicationDependencyList += !updaterAppTargetKey ;
   end if ;
 #-------------------------------------------------- Build "tool" target
   @Xcode_PBXBuildFile_list listForSourceBuildPhaseOfTool [emptyList] ;
@@ -1372,6 +1457,7 @@ routine generateXcodeProject
   @Xcode_PBXBuildFile_list listForResourcesBuildPhaseOfCocoaApp [emptyList] ;
   build_RESOURCES_for_resources_build_phase
     !?XcodeProjectDescription
+    !bundleBaseName
     !inProjectName
     !inResourceFiles
     !handleUpdateFromInternet
@@ -1404,6 +1490,7 @@ routine generateXcodeProject
     !listForFrameworksBuildPhaseOfCocoaApp
     !listForResourcesBuildPhaseOfCocoaApp
     !CocoaApplicationDependencyList
+    !"" # No copy build phase in Wrapper
     ?*
   ;
 #-------------------------------------------------- Define project default configuration

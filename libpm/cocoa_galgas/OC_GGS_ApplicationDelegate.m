@@ -926,13 +926,6 @@ OC_GGS_ApplicationDelegate * gCocoaGalgasPreferencesController ;
   [self  didChangeValueForKey:@"commandLineString"] ;
   [mCommandLineOptionTextView setEditable:NO] ;
 //---
-  [mLiveCompilationCheckBox
-    bind:@"value"
-    toObject:[NSUserDefaultsController sharedUserDefaultsController]
-    withKeyPath:@"values.PMLiveCompilation"
-    options:NULL
-  ] ;
-//---
   [self updateSourceTextPreferenceCount] ;
 //---  
   #ifdef PM_HANDLE_UPDATE
