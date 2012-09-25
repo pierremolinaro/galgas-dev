@@ -200,6 +200,12 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 //---------------------------------------------------------------------------*
 
+- (NSString *) title {
+  return documentData.fileURL.lastPathComponent ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (void) observeValueForKeyPath:(NSString *) inKeyPath
          ofObject: (id) inObject
          change:(NSDictionary *) inChange

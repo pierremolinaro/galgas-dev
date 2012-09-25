@@ -53,6 +53,7 @@
   @private IBOutlet NSScrollView * mOutputScrollView ;
 
   @private IBOutlet NSPanel * mUpdateFromFileSystemPanel ;
+  @private IBOutlet NSPopUpButton * mTabPopUpButton ;
 
   @private OC_GGS_BuildTask * mBuildTask ;
   @private BOOL mBuildTaskHasBeenAborted ;

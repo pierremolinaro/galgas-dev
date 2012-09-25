@@ -45,6 +45,8 @@
 
 - (NSURL *) sourceURL ;
 
+- (NSString *) title ;
+
 - (NSTextView *) textView ;
 
 - (NSView *) enclosingView ;
