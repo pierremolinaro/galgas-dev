@@ -74,9 +74,6 @@ extern OC_GGS_ApplicationDelegate * gCocoaGalgasPreferencesController ;
   @private IBOutlet NSPopUpButton * mToolPopUpButton ;
   @private NSMutableArray * mToolNameArray ;
 
-//--- "Live Compilation" checkbox
-  @private IBOutlet NSButton * mLiveCompilationCheckBox ;
-
 //--- "Show ruler" checkbox
   @private IBOutlet NSButton * mShowRuleCheckBox ;
   @private IBOutlet NSButton * mConvert_CRLF_And_CR_To_LF_AtStartUpButton ;
