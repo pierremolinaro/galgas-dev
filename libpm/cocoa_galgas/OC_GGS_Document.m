@@ -177,6 +177,20 @@
     context:NULL
   ] ;
 //---
+  [mTabPopUpButton
+    bind:@"contentValues"
+    toObject:mSourceDisplayArrayController
+    withKeyPath:@"arrangedObjects.title"
+    options:nil    
+  ] ;
+//---
+  [mTabPopUpButton
+    bind:@"selectedIndex"
+    toObject:mSourceDisplayArrayController
+    withKeyPath:@"selectionIndex"
+    options:nil    
+  ] ;
+//---
   [mBuildProgressIndicator startAnimation:nil] ;
   NSDictionary * negateTransformer = [NSDictionary
     dictionaryWithObject:NSNegateBooleanTransformerName 
@@ -286,6 +300,14 @@
   [mSourceDisplayArrayController
     removeObserver:mTabBarView
     forKeyPath:@"arrangedObjects"
+  ] ;
+//---
+  [mTabPopUpButton
+    unbind:@"selectedIndex"
+  ] ;
+//---
+  [mTabPopUpButton
+    unbind:@"contentValues"
   ] ;
 //---
   [mStartBuildButton
