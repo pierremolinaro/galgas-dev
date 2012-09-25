@@ -1,9 +1,7 @@
 //
 //  PMApplicationUpdate.m
-//  galgas
 //
 //  Created by Pierre MOLINARO on 02/10/06.
-//  Copyright 2006 __MyCompanyName__. All rights reserved.
 //
 //--------------------------------------------------------------------------*
 
@@ -22,7 +20,7 @@
 //--------------------------------------------------------------------------*
 
 //--- Only for debugging !!!
-#define FORCED_APPLICATION_VERSION @"0.0.0"
+//#define FORCED_APPLICATION_VERSION @"0.0.0"
 
 //--------------------------------------------------------------------------*
 
@@ -264,7 +262,7 @@ static PMApplicationUpdate * gApplicationUpdate ;
       [mCheckNowButton setEnabled:NO] ;
     }else if (! mSearchForUpdatesInBackground) {
       NSAlert * alert = [NSAlert
-        alertWithMessageText:@"GALGAS is up to date."
+        alertWithMessageText:@"%![PROJECT_NAME stringByCapitalizingFirstCharacter]% is up to date."
         defaultButton:@"Ok"
         alternateButton:nil
         otherButton:nil
@@ -314,7 +312,7 @@ static PMApplicationUpdate * gApplicationUpdate ;
       error:nil
     ] ;
   //--- Start download GALGAS
-    [mDownloadTitle setStringValue:[NSString stringWithFormat:@"Downloading GALGAS \%@...", mLastAvailableVersion]] ;
+    [mDownloadTitle setStringValue:[NSString stringWithFormat:@"Downloading %![PROJECT_NAME stringByCapitalizingFirstCharacter]% \%@...", mLastAvailableVersion]] ;
     [[mCancelButton window] makeKeyAndOrderFront:nil] ;
     mDownloadFile = [[PMDownloadFile alloc] initWithURLString:[self galgasHTTPPathForVersion:mLastAvailableVersion]
        destinationFileName:[self temporaryPathForGALGASArchive]

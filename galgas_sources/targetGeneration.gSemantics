@@ -63,7 +63,9 @@ local filewrapper applicationUpdateFileWrapper in "../generation_templates/cocoa
    ?@string REPOSITORY_URL
    ?@string BUNDLE_BASE_NAME
   ;
- template application_update_nib "PMApplicationUpdate.xib.gTemplate" ;
+ template application_update_nib "PMApplicationUpdate.xib.gTemplate"
+   ?@string PROJECT_NAME
+ ;
  template download_data_header "PMDownloadData.h.gTemplate" ;
  template download_data_implementation "PMDownloadData.m.gTemplate" ;
  template download_file_header "PMDownloadFile.h.gTemplate" ;
@@ -363,7 +365,7 @@ routine updateTargets
   end foreach ;
 #--- Check Cocoa features
   if (SDK != "") & not [inProjectQualifiedFeatureMap hasKey !"applicationBundleBase"] then
-    warning inProjectName: "For a Cocoa project, the \"applicationBundleBase\" feature should be set; for example: feature \"applicationBundleBase\" : \"fr.what\" ;" ;
+    warning inProjectName: "For a Cocoa project, the \"applicationBundleBase\" feature should be set; for example: 'feature applicationBundleBase : \"fr.what\" ;'" ;
   end if ;
 #--- Generation
   if [generationFeatures hasKey !"makefile_macosx"] then
@@ -441,7 +443,7 @@ routine updateTargets
         !applicationUpdateDir . "/PMApplicationUpdate.m"
         ?*
       ] ;
-      [[filewrapper applicationUpdateFileWrapper.application_update_nib ] writeToFileWhenDifferentContents !applicationUpdateDir . "/English.lproj/PMApplicationUpdate.xib" ?*] ;
+      [[filewrapper applicationUpdateFileWrapper.application_update_nib !inTargetName] writeToFileWhenDifferentContents !applicationUpdateDir . "/English.lproj/PMApplicationUpdate.xib" ?*] ;
       [[filewrapper applicationUpdateFileWrapper.download_data_header] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMDownloadData.h" ?*] ;
       [[filewrapper applicationUpdateFileWrapper.download_data_implementation] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMDownloadData.m" ?*] ;
       [[filewrapper applicationUpdateFileWrapper.download_file_header] writeToFileWhenDifferentContents !applicationUpdateDir . "/PMDownloadFile.h" ?*] ;
