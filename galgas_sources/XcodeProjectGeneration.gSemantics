@@ -736,7 +736,6 @@ local routine build_RESOURCES_for_resources_build_phase
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
   @stringlist fileList := inResourceFiles ;
-  fileList += !inBundleBaseName . "." . inProjectName . ".updaterApp" ;
   fileList += !inProjectName ;
   fileList += !inProjectName . "_debug" ;
   fileList += !"I_Stop.tiff" ;
@@ -744,6 +743,7 @@ local routine build_RESOURCES_for_resources_build_phase
   fileList += !"MainMenu.xib" ;
   fileList += !"OC_GGS_Document.xib" ;
   if inAddApplicationUpdateXib then
+    fileList += !inBundleBaseName . "." . inProjectName . ".updaterApp" ;
     fileList += !"PMApplicationUpdate.xib" ;
   end if ;
   fileList += !"InfoPlist.strings" ;
@@ -1201,7 +1201,6 @@ routine generateXcodeProject
     updaterToolTargetSettings += !"GCC_OPTIMIZATION_LEVEL = 2;" ;
     updaterToolTargetSettings += !"GCC_ENABLE_OBJC_GC = Unsupported;" ;
     updaterToolTargetSettings += !"GCC_WARN_UNUSED_PARAMETER = NO ;" ;
-    updaterToolTargetSettings += !"COPY_PHASE_STRIP = NO ;" ;
     updaterToolTargetSettings += !"OTHER_LDFLAGS = \"-sectcreate __TEXT __info_plist sources/updater-tool/updater-tool-Info.plist -sectcreate __TEXT __launchd_plist sources/updater-tool/updater-tool-Launchd.plist\" ;" ;
   #---
     @string updaterToolTargetKey ;
@@ -1263,7 +1262,7 @@ routine generateXcodeProject
       !frameworkList
       !listForResourcesBuildPhaseOfUpdaterApp
       !updaterApplicationDependencyList
-      !bundleBaseName . "." . inProjectName . ".updaterTool" # Copy to wrapper, Lauch Services
+      !bundleBaseName . "." . inProjectName . ".updaterTool" # Copy to wrapper, Launch Services
       ?updaterAppTargetKey
     ;
     CocoaApplicationDependencyList += !updaterAppTargetKey ;
@@ -1508,6 +1507,7 @@ routine generateXcodeProject
     ?projectDefaultSettings
     !inUsesARC
   ;
+  projectDefaultSettings += !"COPY_PHASE_STRIP = NO ;" ;
 #--- Code Signing ?
   with inProjectQualifiedFeatureMap hasKey !"codeSigning" do
     projectDefaultSettings += !"CODE_SIGN_IDENTITY = \"" . mFeatureValue . "\";" ;

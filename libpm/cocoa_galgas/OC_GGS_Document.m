@@ -96,15 +96,6 @@
 
 //---------------------------------------------------------------------------*
 
-/*- (OC_GGS_TextSyntaxColoring *) textSyntaxColoring {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  return mSourceTextWithSyntaxColoring ;
-}*/
-
-//---------------------------------------------------------------------------*
-
 #pragma mark Nib relative Actions
 
 //---------------------------------------------------------------------------*
@@ -469,13 +460,43 @@
 //---------------------------------------------------------------------------*
 
 - (IBAction) saveAllDocuments: (id) inSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   [OC_GGS_DocumentData saveAllDocuments] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) actionCloseTab: (id) inSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  if ([mSourceDisplayArrayController.arrangedObjects count] > 1) {
+    OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
+    [self removeSelectedTabAction:selectedObject] ;
+  }else{
+    [self.windowForSheet performClose:inSender] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (BOOL)windowShouldClose:(id)sender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  [OC_GGS_DocumentData saveAllDocuments] ;
+  return YES ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) displaySourceWithURL: (NSURL *) inURL
          atLine: (NSUInteger) inLine {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   if (nil != inURL) {
     OC_GGS_TextDisplayDescriptor * tdd = [self findOrAddNewTabForFile:inURL.path] ;
     const NSRange r = {[tdd.documentData locationForLineInSource:inLine], 0} ;
