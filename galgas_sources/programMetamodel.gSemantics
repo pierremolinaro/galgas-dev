@@ -43,7 +43,6 @@ list @programRuleList {
 
 struct @programComponentAST {
   @lstring mProgramComponentName ;
-  @lstring mVersionString ;
   @lstringlist mImportedComponentFileNameList ;
   @prologueEpilogueList mPrologueList ; # Zero or one is correct
   @prologueEpilogueList mEpilogueList ; # zero or one is correct

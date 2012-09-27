@@ -108,6 +108,10 @@ local filewrapper targetGenerationFileWrapper in "../generation_templates/target
     ?@string LIBPM_DIRECTORY_PATH
     ?@string MULTI_THREADING_ENABLED
   ;
+
+  template project_header "project.h.gTemplate"
+    ?@string VERSION_STRING
+  ;
 }
 
 #---------------------------------------------------------------------------*
@@ -195,6 +199,7 @@ end routine ;
 
 routine updateTargets
   ??@lstring inProjectSourceFilePath
+  ??@string inProjectVersionString
   ??@lstring inProjectName
   ??@string inTargetName
   ??@projectQualifiedFeatureMap inProjectQualifiedFeatureMap
@@ -203,6 +208,11 @@ routine updateTargets
   ??@stringset inHandledExtensionSet
 :
   const @string projectDirectory := [[inProjectSourceFilePath stringByDeletingLastPathComponent] stringByDeletingLastPathComponent] ;
+#--- Update project header
+  [[filewrapper targetGenerationFileWrapper.project_header !inProjectVersionString] writeToFileWhenDifferentContents
+    ![inProjectSourceFilePath stringByDeletingLastPathComponent] . "/GALGAS_OUTPUT/project_header.h"
+    ?*
+  ] ;
 #--- Update LIBPM
   @string libpmPath ;
   with inProjectQualifiedFeatureMap hasKey !"libpmAtPath" do
