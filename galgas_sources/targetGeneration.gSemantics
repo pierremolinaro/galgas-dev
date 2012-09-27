@@ -94,6 +94,7 @@ local filewrapper targetGenerationFileWrapper in "../generation_templates/target
   template makefile_info_plist "project_xcode/Info.plist.txt"
     ?@string PROJECT_NAME
     ?@string APPLICATION_BUNDLE_BASE
+    ?@string VERSION_STRING
     ?@stringset HANDLED_EXTENSION_SET
   ;
 
@@ -425,6 +426,7 @@ routine updateTargets
     @string InfoPlistContents := [filewrapper targetGenerationFileWrapper.makefile_info_plist
       !inTargetName
       !applicationBundleBase
+      !inProjectVersionString
       !inHandledExtensionSet
     ] ;
     [InfoPlistContents writeToFileWhenDifferentContents !dir ."/Info.plist" ?*] ;

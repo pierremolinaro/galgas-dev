@@ -1,4 +1,4 @@
-project all_%!PROJECT_NAME% -> %![PROJECT_NAME utf8Representation]%:
+project all_%!PROJECT_NAME% (0:0:1) -> %![PROJECT_NAME utf8Representation]%:
 #--- Targets
   feature "makefile_macosx" ;
   feature "makefile_unix" ;
@@ -7,6 +7,7 @@ project all_%!PROJECT_NAME% -> %![PROJECT_NAME utf8Representation]%:
   feature "makefile_mingw_on_macosx" ;
   feature "makefile_msys_on_win32" ;
   feature "SnowLeopard" ;
+  feature applicationBundleBase : "fr.what" ;
 
 #--- Source files (relative path from 'galgas_sources' directory)
   lexique "%!PROJECT_NAME%_lexique.gLexique" ;
