@@ -28,6 +28,9 @@ list @qualifiedFeatureList {
 
 struct @projectComponentAST {
   @projectSourceList mProjectSourceList ;
+  @luint mMajorVersion ;
+  @luint mMinorVersion ;
+  @luint mRevisionVersion ;
   @lstringlist mGenerationFeatureList ;
   @qualifiedFeatureList mQualifiedFeatureList ;
   @lstring mProjectName ;

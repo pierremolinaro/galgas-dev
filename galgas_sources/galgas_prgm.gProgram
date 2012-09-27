@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS main program definition                                           *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2011 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2012 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-program galgas_prgm "version GALGAS_BETA_VERSION" :
+program galgas_prgm :
   import "lexiqueSemantics.gSemantics" ;
   import "projectGlobalCheckings.gSemantics" ;
   import "projectCreation.gSemantics" ;
@@ -197,22 +197,22 @@ indexing with projectLL1grammar
 ??@lstring inSourceFile {
   const @string outputDirectory := outputDirectory [!inSourceFile] ;
 #--- Parse metamodel component
-  @projectComponentAST projectComponent ;
-  grammar projectLL1grammar in inSourceFile ?projectComponent ;
+  @projectComponentAST projectComponentAST ;
+  grammar projectLL1grammar in inSourceFile ?projectComponentAST ;
 #--- Check project name
-  if [[projectComponent mProjectName] string] != [[inSourceFile lastPathComponent] stringByDeletingPathExtension] then
-    error [projectComponent mProjectName] 
-    :"the project name ('" . [projectComponent mProjectName] . "') should be the same as the source file base name ('"
+  if [[projectComponentAST mProjectName] string] != [[inSourceFile lastPathComponent] stringByDeletingPathExtension] then
+    error [projectComponentAST mProjectName] 
+    :"the project name ('" . [projectComponentAST mProjectName] . "') should be the same as the source file base name ('"
     . [[inSourceFile lastPathComponent] stringByDeletingPathExtension] . "')" ;
   end if ;
 #--- Check target name
-  const @string targetName := [[projectComponent mTargetName] string] ;
+  const @string targetName := [[projectComponentAST mTargetName] string] ;
   if targetName == "" then
-    error [projectComponent mTargetName]: "the target name should not be empty" ;
+    error [projectComponentAST mTargetName]: "the target name should not be empty" ;
   end if ;
 #--- Build qualiied feature map
   @projectQualifiedFeatureMap projectQualifiedFeatureMap [emptyMap] ;
-  foreach projectComponent->mQualifiedFeatureList do
+  foreach projectComponentAST->mQualifiedFeatureList do
     [!?projectQualifiedFeatureMap insertKey
       !mFeatureName
       !mFeatureValue
@@ -229,7 +229,7 @@ indexing with projectLL1grammar
     ![@parsedGuiComponentMap emptyMap]
   ] ;
 #---------------------------------- Parse sources
-  foreach [projectComponent mProjectSourceList] do
+  foreach [projectComponentAST mProjectSourceList] do
     const @string extension := [mFilePath pathExtension] ;
     const @lstring componentName [new
       ![[mFilePath lastPathComponent] stringByDeletingPathExtension]
@@ -431,17 +431,18 @@ indexing with projectLL1grammar
     if [option .verbose_output value] then
       message "*** Perform global checkings\n" ;
     end if ;
-    performProjectGlobalCheckings !parsedComponentStruct ![projectComponent mEndOfSourceFile] ;
+    performProjectGlobalCheckings !parsedComponentStruct ![projectComponentAST mEndOfSourceFile] ;
   end if ;
 #--- Update targets
   if 0 == [@uint errorCount] then
     updateTargets
       !inSourceFile
-      ![projectComponent mProjectName]
+      ![projectComponentAST->mMajorVersion->uint string] . "." . projectComponentAST->mMinorVersion->uint . "." . projectComponentAST->mRevisionVersion->uint
+      ![projectComponentAST mProjectName]
       !targetName
       !projectQualifiedFeatureMap
-      ![projectComponent mGenerationFeatureList]
-      ![projectComponent mProjectSourceList]
+      ![projectComponentAST mGenerationFeatureList]
+      ![projectComponentAST mProjectSourceList]
       !handledExtensionSet
     ;
   end if ;

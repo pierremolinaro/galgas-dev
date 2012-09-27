@@ -39,7 +39,6 @@ local filewrapper programFileGenerationTemplate in "../generation_templates/prog
     ?@string COMPONENT_NAME
     ?@stringlist IMPORTED_COMPONENT_LIST
     ?@programRuleList PROGRAM_RULE_LIST
-    ?@string VERSION
     ?@bool HAS_INDEXING
   ;
 
@@ -320,7 +319,6 @@ routine compileProgramComponentFromAST
       ![componentName string]
       !implementationIncludeList
       ![inProgramComponentAST mProgramRules]
-      ![[inProgramComponentAST mVersionString] string]
       !hasIndexing
     ] ;
     foreach decoratedDeclarationListForGeneration do
