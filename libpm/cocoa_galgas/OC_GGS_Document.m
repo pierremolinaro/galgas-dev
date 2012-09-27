@@ -260,6 +260,8 @@
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
 //---
+  [OC_GGS_DocumentData saveAllDocuments] ;
+//---
   NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
   for (OC_GGS_TextDisplayDescriptor * tdd in sourceDisplayArray) {
     [tdd detachTextDisplayDescriptor] ;
@@ -500,16 +502,6 @@
   }else{
     [self.windowForSheet performClose:inSender] ;
   }
-}
-
-//---------------------------------------------------------------------------*
-
-- (BOOL)windowShouldClose:(id)sender {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  [OC_GGS_DocumentData saveAllDocuments] ;
-  return YES ;
 }
 
 //---------------------------------------------------------------------------*

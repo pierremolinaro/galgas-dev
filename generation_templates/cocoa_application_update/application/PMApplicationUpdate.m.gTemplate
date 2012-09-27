@@ -76,7 +76,7 @@ static PMApplicationUpdate * gApplicationUpdate ;
 
 //---------------------------------------------------------------------------*
 
-- (NSString *) galgasHTTPPathForVersion: (NSString *) inVersionString {
+- (NSString *) HTTPPathForVersion: (NSString *) inVersionString {
   return [NSString stringWithFormat:@"\%@/\%@/\%@", self.serverHTTPPath, inVersionString, self.applicationArchiveName] ;
 }
 
@@ -88,7 +88,7 @@ static PMApplicationUpdate * gApplicationUpdate ;
 
 //---------------------------------------------------------------------------*
 
-- (NSString *) temporaryPathForGALGASArchive {
+- (NSString *) temporaryPathForApplicationArchive {
   return [NSString stringWithFormat:@"\%@/\%@", self.temporaryDir, self.applicationArchiveName] ;
 }
 
@@ -225,25 +225,25 @@ static PMApplicationUpdate * gApplicationUpdate ;
                && [scanner scanInt:NULL]
                && [scanner isAtEnd] ;
   if (versionOk) {
-  //--- Get Galgas Current version
+  //--- Get Application Current version
     #ifdef FORCED_APPLICATION_VERSION
-      NSString * galgasVersion = FORCED_APPLICATION_VERSION ;
-      NSLog (@"Forced GALGAS version: \%@", galgasVersion) ;
+      NSString * applicationVersion = FORCED_APPLICATION_VERSION ;
+      NSLog (@"Forced Application version: \%@", applicationVersion) ;
       NSLog (@"Last Available version: \%@", mLastAvailableVersion) ;
     #else
       NSBundle * mainBundle = [NSBundle mainBundle] ;
       NSDictionary * infoDictionary = [mainBundle infoDictionary] ;
-      NSString * galgasVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"] ;
-    // NSLog (@"galgasVersion '\%@'", galgasVersion) ;
+      NSString * applicationVersion = [infoDictionary objectForKey:@"CFBundleShortVersionString"] ;
+    // NSLog (@"applicationVersion '\%@'", applicationVersion) ;
     #endif
-    const NSComparisonResult r = [self compareVersionString:galgasVersion withVersionString:mLastAvailableVersion] ;
+    const NSComparisonResult r = [self compareVersionString:applicationVersion withVersionString:mLastAvailableVersion] ;
     if (r == NSOrderedAscending) {
     //--- Display change log in Web View
       NSURL * url = [NSURL URLWithString:[NSString stringWithFormat:@"\%@/\%@/changeLog.html", self.serverHTTPPath, mLastAvailableVersion]] ;
       [[mChangeLogWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
       NSString * s = [NSString stringWithFormat:
         @"Current version is \%@; the \%@ version can be downloaded.",
-        galgasVersion,
+        applicationVersion,
         mLastAvailableVersion
       ] ;
       [mNewVersionTextField setStringValue:s] ;
@@ -311,11 +311,11 @@ static PMApplicationUpdate * gApplicationUpdate ;
       attributes:nil
       error:nil
     ] ;
-  //--- Start download GALGAS
+  //--- Start download Application
     [mDownloadTitle setStringValue:[NSString stringWithFormat:@"Downloading %![PROJECT_NAME stringByCapitalizingFirstCharacter]% \%@...", mLastAvailableVersion]] ;
     [[mCancelButton window] makeKeyAndOrderFront:nil] ;
-    mDownloadFile = [[PMDownloadFile alloc] initWithURLString:[self galgasHTTPPathForVersion:mLastAvailableVersion]
-       destinationFileName:[self temporaryPathForGALGASArchive]
+    mDownloadFile = [[PMDownloadFile alloc] initWithURLString:[self HTTPPathForVersion:mLastAvailableVersion]
+       destinationFileName:[self temporaryPathForApplicationArchive]
        downloadDelegate:self
        downloadDidEndSelector:@selector (downloadNewVersionOfGALGASDidEnd:)
        cancelButton:mCancelButton
@@ -415,7 +415,7 @@ static PMApplicationUpdate * gApplicationUpdate ;
     //--- Uncompressing Archives
       [mDownloadSubTitle setStringValue:@""] ;
       [mCancelButton.window displayIfNeeded] ;
-      int status = [self uncompressArchive:self.temporaryPathForGALGASArchive] ;
+      int status = [self uncompressArchive:self.temporaryPathForApplicationArchive] ;
       if (status == 0) {
         NSString * filePath = [NSString stringWithFormat:@"\%@/application_path.txt", self.temporaryDir] ;
         NSString * applicationPath = [NSBundle mainBundle].bundlePath ;
