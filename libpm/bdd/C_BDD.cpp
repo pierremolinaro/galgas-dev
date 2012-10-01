@@ -461,11 +461,74 @@ significantVariableCount (void) const {
  
 //---------------------------------------------------------------------*
 
-static bool
-recursiveContainsValue (const PMUInt32 inBDD,
-                        const PMUInt64 inValue,
-                        const PMUInt16 inFirstBit,
-                        const PMUInt16 inLastBitPlusOne) {
+static bool recursiveContainsValue64 (const PMUInt32 inBDD,
+                                      const PMUInt64 inValue,
+                                      const PMUInt16 inFirstBit,
+                                      const PMUInt16 inLastBitPlusOne) {
+  bool result ;
+  const PMUInt64 node = nodeForRoot (inBDD COMMA_HERE) ;
+  const PMUInt32 complement = inBDD & 1 ;
+  if (node == 0) {
+    result = complement != 0 ;
+    #ifdef DEBUG_CONTAINS_VALUE
+      printf ("result %s\n", result ? "YES" : "NO") ;
+    #endif
+  }else{
+    const PMUInt16 var = extractVar (node COMMA_HERE) ;
+    if (var >= inLastBitPlusOne) {
+      #ifdef DEBUG_CONTAINS_VALUE
+        printf ("var %u\n", var) ;
+      #endif
+      result = recursiveContainsValue64 (extractThen (node) ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
+      #ifdef DEBUG_CONTAINS_VALUE
+        printf ("var %u branch THEN returns %s\n", var, result ? "YES" : "NO") ;
+      #endif
+      if (! result) {
+        result = recursiveContainsValue64 (extractElse (node) ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
+        #ifdef DEBUG_CONTAINS_VALUE
+          printf ("var %u branch ELSE returns %s\n", var, result ? "YES" : "NO") ;
+        #endif
+      }
+    }else if (var < inFirstBit) {
+      #ifdef DEBUG_CONTAINS_VALUE
+        printf ("var %u -> true\n", var) ;
+      #endif
+      result = true ;
+    }else{
+      const bool bitValue = ((inValue >> (var - inFirstBit)) & 1) != 0 ;
+      #ifdef DEBUG_CONTAINS_VALUE
+        printf ("var %u, bitvalue %s\n", var, bitValue ? "YES" : "NO") ;
+      #endif
+      if (bitValue) {
+        result = recursiveContainsValue64 (extractThen (node) ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
+      }else{
+        result = recursiveContainsValue64 (extractElse (node) ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
+      }
+      #ifdef DEBUG_CONTAINS_VALUE
+        printf ("var %u, bitvalue %s returns %s\n", var, bitValue ? "YES" : "NO", result ? "YES" : "NO") ;
+      #endif
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------*
+
+bool C_BDD::containsValue64 (const PMUInt64 inValue,
+                             const PMUInt16 inFirstBit,
+                             const PMUInt16 inBitCount) const {
+  return recursiveContainsValue64 (mBDDvalue,
+                                   inValue,
+                                   inFirstBit,
+                                   (PMUInt16) (inFirstBit + inBitCount)) ;
+}
+
+//---------------------------------------------------------------------*
+
+static bool recursiveContainsValue (const PMUInt32 inBDD,
+                                    const TC_Array <bool> & inValue,
+                                    const PMUInt16 inFirstBit,
+                                    const PMUInt16 inLastBitPlusOne) {
   bool result ;
   const PMUInt64 node = nodeForRoot (inBDD COMMA_HERE) ;
   const PMUInt32 complement = inBDD & 1 ;
@@ -496,7 +559,7 @@ recursiveContainsValue (const PMUInt32 inBDD,
       #endif
       result = true ;
     }else{
-      const bool bitValue = ((inValue >> (var - inFirstBit)) & 1) != 0 ;
+      const bool bitValue = inValue (var - inFirstBit COMMA_HERE) ;
       #ifdef DEBUG_CONTAINS_VALUE
         printf ("var %u, bitvalue %s\n", var, bitValue ? "YES" : "NO") ;
       #endif
@@ -515,10 +578,9 @@ recursiveContainsValue (const PMUInt32 inBDD,
 
 //---------------------------------------------------------------------*
 
-bool C_BDD::
-containsValue (const PMUInt64 inValue,
-               const PMUInt16 inFirstBit,
-               const PMUInt16 inBitCount) const {
+bool C_BDD::containsValue (const TC_Array <bool> & inValue,
+                           const PMUInt16 inFirstBit,
+                           const PMUInt16 inBitCount) const {
   return recursiveContainsValue (mBDDvalue,
                                  inValue,
                                  inFirstBit,
@@ -607,10 +669,58 @@ void C_BDD::traverseBDDvalues (C_bdd_value_traversing & inTraversing,
 
 //---------------------------------------------------------------------*
 
-class C_build_values_array : public C_bdd_value_traversing {
+class C_build_values64_array : public C_bdd_value_traversing {
   private : TC_UniqueArray <PMUInt64> * mPtr ;
 
-  public : inline C_build_values_array (TC_UniqueArray <PMUInt64> * inPtr) :
+  public : inline C_build_values64_array (TC_UniqueArray <PMUInt64> * inPtr) :
+  mPtr (inPtr) {
+  }
+
+//--- No copy
+  private : C_build_values64_array (const C_build_values64_array &) ;
+  private : C_build_values64_array & operator = (const C_build_values64_array &) ;
+
+//--- Virtual method called for every value
+  public : virtual void action (const bool tableauDesValeurs [],
+                                const PMUInt16 inBDDvariablesCount) ;
+} ;
+
+//---------------------------------------------------------------------*
+
+void C_build_values64_array::action (const bool tableauDesValeurs [],
+                                   const PMUInt16 inBDDvariablesCount) {
+  PMUInt64 value = 0 ;
+  for (PMUInt16 i=1 ; i<=inBDDvariablesCount ; i++) {
+    value = (value << 1) | tableauDesValeurs [inBDDvariablesCount - i] ;
+  }
+  mPtr->addObject (value) ;
+}
+
+//---------------------------------------------------------------------*
+
+void C_BDD::buildValue64Array (TC_UniqueArray <PMUInt64> & outValuesArray,
+                               const PMUInt16 inBDDvariablesCount) const {
+  MF_Assert(inBDDvariablesCount < 64, "inBDDvariablesCount == %ld >= 64", (PMSInt64) inBDDvariablesCount, 0) ;
+  outValuesArray.setCountToZero () ;
+  C_build_values64_array builder (& outValuesArray) ;
+  bool * tableauDesValeurs = NULL ;
+  macroMyNewArray (tableauDesValeurs, bool, inBDDvariablesCount) ;
+  parcoursBDDinterneParValeur (mBDDvalue, builder, tableauDesValeurs, inBDDvariablesCount, inBDDvariablesCount) ;
+  macroMyDeleteArray (tableauDesValeurs) ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Build an array of bool array values
+#endif
+
+//---------------------------------------------------------------------*
+
+class C_build_values_array : public C_bdd_value_traversing {
+  private : TC_UniqueArray <TC_Array <bool> > * mPtr ;
+
+  public : inline C_build_values_array (TC_UniqueArray <TC_Array <bool> > * inPtr) :
   mPtr (inPtr) {
   }
 
@@ -625,20 +735,19 @@ class C_build_values_array : public C_bdd_value_traversing {
 
 //---------------------------------------------------------------------*
 
-void C_build_values_array::
-action (const bool tableauDesValeurs [],
-        const PMUInt16 inBDDvariablesCount) {
-  PMUInt64 value = 0 ;
-  for (PMUInt16 i=1 ; i<=inBDDvariablesCount ; i++) {
-    value = (value << 1) | tableauDesValeurs [inBDDvariablesCount - i] ;
+void C_build_values_array::action (const bool tableauDesValeurs [],
+                                   const PMUInt16 inBDDvariablesCount) {
+  TC_Array <bool> value ;
+  for (PMUInt32 i=0 ; i<inBDDvariablesCount ; i++) {
+    value.addObject (tableauDesValeurs [i]) ;
   }
   mPtr->addObject (value) ;
 }
 
 //---------------------------------------------------------------------*
 
-void C_BDD::buildValueArray (TC_UniqueArray <PMUInt64> & outValuesArray,
-                              const PMUInt16 inBDDvariablesCount) const {
+void C_BDD::buildValueArray (TC_UniqueArray <TC_Array <bool> > & outValuesArray,
+                             const PMUInt16 inBDDvariablesCount) const {
   outValuesArray.setCountToZero () ;
   C_build_values_array builder (& outValuesArray) ;
   bool * tableauDesValeurs = NULL ;
