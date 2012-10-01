@@ -29,6 +29,7 @@
 
 #include "utilities/M_machine.h"
 #include "collections/TC_UniqueArray.h"
+#include "collections/TC_Array.h"
 
 //---------------------------------------------------------------------------*
 
@@ -158,10 +159,13 @@ class C_BDD {
   public : PMUInt32 getBDDnodesCount (void) const ;
 
 //--- Test if a BDD does contain a value
-  public : bool
-  containsValue (const PMUInt64 inValue,
-                 const PMUInt16 inFirstBit,
-                 const PMUInt16 inBitCount) const ;
+  public : bool containsValue64 (const PMUInt64 inValue,
+                                 const PMUInt16 inFirstBit,
+                                 const PMUInt16 inBitCount) const ;
+
+  public : bool containsValue (const TC_Array <bool> & inValue,
+                               const PMUInt16 inFirstBit,
+                               const PMUInt16 inBitCount) const ;
 
 //------------------------ Updating a relation
   public : C_BDD
@@ -277,7 +281,10 @@ class C_BDD {
   public :  void checkBDDIsWellFormed (LOCATION_ARGS) ;
 
 //--- Traversing BDD : build an array containing all values
-  public : void buildValueArray (TC_UniqueArray <PMUInt64> & outValuesArray,
+  public : void buildValue64Array (TC_UniqueArray <PMUInt64> & outValuesArray,
+                                   const PMUInt16 inBDDvariablesCount) const ;
+
+  public : void buildValueArray (TC_UniqueArray <TC_Array <bool> > & outValuesArray,
                                   const PMUInt16 inBDDvariablesCount) const ;
 
   public : void buildLittleEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray,
