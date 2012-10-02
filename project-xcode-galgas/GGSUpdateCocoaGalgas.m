@@ -126,7 +126,7 @@
     [fm removeItemAtPath:[self temporaryDir] error:nil] ;
   }
 //--- Add Update Tab view
-  NSTabView * prefsTabView = [gCocoaGalgasPreferencesController preferencesTabView] ;
+  NSTabView * prefsTabView = [gCocoaApplicationDelegate preferencesTabView] ;
   NSTabViewItem * tabViewItem = [[NSTabViewItem alloc] init] ;
   [tabViewItem setView:mUpdateView] ;
   [tabViewItem setLabel:@"Update"] ;
@@ -577,7 +577,7 @@
     ] ;
   }else{
   //--- Tools
-    NSArray * toolNameArray = [gCocoaGalgasPreferencesController toolNameArray] ;
+    NSArray * toolNameArray = [gCocoaApplicationDelegate toolNameArray] ;
    // NSLog (@"TOOL NAME ARRAY '%@'", toolNameArray) ;
     NSMutableString * s = [NSMutableString new] ;
     [s appendFormat:@"This installs in the %@ directory the following tools:", installationPath] ;
@@ -630,7 +630,7 @@
 //--- Resource Path
   NSString * resourcePath = [bundlePath stringByAppendingString:@"/Contents/Resources/"] ;
 //--- Tools
-  NSArray * toolNameArray = [gCocoaGalgasPreferencesController toolNameArray] ;
+  NSArray * toolNameArray = [gCocoaApplicationDelegate toolNameArray] ;
 //--- Create an empty Authorization
   const AuthorizationFlags myFlags = kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed |kAuthorizationFlagExtendRights ; 
   AuthorizationRef authorizationRef = 0 ;
@@ -717,7 +717,7 @@
   }else{
     NSFileManager * fm = [NSFileManager defaultManager] ;
   //--- Tools
-    NSArray * toolNameArray = [gCocoaGalgasPreferencesController toolNameArray] ;
+    NSArray * toolNameArray = [gCocoaApplicationDelegate toolNameArray] ;
    // NSLog (@"TOOL NAME ARRAY '%@'", toolNameArray) ;
     NSMutableString * s = [NSMutableString new] ;
     [s appendFormat:@"This removes from the %@ directory the following tools:", installationPath] ;
@@ -786,7 +786,7 @@
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
   NSString * installationPath = [ud objectForKey:@"GGS_cli_installation_path"] ;
 //--- Tools
-  NSArray * toolNameArray = [gCocoaGalgasPreferencesController toolNameArray] ;
+  NSArray * toolNameArray = [gCocoaApplicationDelegate toolNameArray] ;
 //--- Create an empty Authorization
   const AuthorizationFlags myFlags = kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed |kAuthorizationFlagExtendRights ; 
   AuthorizationRef authorizationRef = 0 ;

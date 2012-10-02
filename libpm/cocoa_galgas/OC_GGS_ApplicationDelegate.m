@@ -37,7 +37,7 @@
 
 //---------------------------------------------------------------------------*
 
-OC_GGS_ApplicationDelegate * gCocoaGalgasPreferencesController ;
+OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //---------------------------------------------------------------------------*
 
@@ -48,7 +48,7 @@ OC_GGS_ApplicationDelegate * gCocoaGalgasPreferencesController ;
 - (id) init {
   self = [super init] ;
   if (self) {
-    gCocoaGalgasPreferencesController = self ;
+    gCocoaApplicationDelegate = self ;
     mToolNameArray = [NSMutableArray new] ;
   //--- Get command line option list
     mBoolOptionArray = [NSMutableArray new] ;

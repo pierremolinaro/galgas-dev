@@ -38,7 +38,7 @@
   //---
     mDocument = inDocument ;
   //---
-    NSArray * commandLineArray = [gCocoaGalgasPreferencesController commandLineItemArray] ;
+    NSArray * commandLineArray = [gCocoaApplicationDelegate commandLineItemArray] ;
   //--- Command line tool does actually exist ? (First argument is not "?")
     if ([[commandLineArray objectAtIndex:0] isEqualToString:@"?"]) {
       NSAlert * alert = [NSAlert alertWithMessageText:@"Error: cannot compile"
