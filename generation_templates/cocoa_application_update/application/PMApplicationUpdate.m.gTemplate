@@ -150,7 +150,7 @@ static PMApplicationUpdate * gApplicationUpdate ;
   ] ;
 //----------------------------------------- Change Log Tab Item
 //--- Add 'Update' tab item
-  NSTabView * prefsTabView = [gCocoaGalgasPreferencesController preferencesTabView] ;
+  NSTabView * prefsTabView = [gCocoaApplicationDelegate preferencesTabView] ;
   NSTabViewItem * tabViewItem = [NSTabViewItem new] ;
   [tabViewItem setView:mViewForChangeLogInPreferencePane] ;
   [tabViewItem setLabel:@"Update"] ;
@@ -317,7 +317,7 @@ static PMApplicationUpdate * gApplicationUpdate ;
     mDownloadFile = [[PMDownloadFile alloc] initWithURLString:[self HTTPPathForVersion:mLastAvailableVersion]
        destinationFileName:[self temporaryPathForApplicationArchive]
        downloadDelegate:self
-       downloadDidEndSelector:@selector (downloadNewVersionOfGALGASDidEnd:)
+       downloadDidEndSelector:@selector (downloadNewVersionOfApplicationDidEnd:)
        cancelButton:mCancelButton
        subtitle:mDownloadSubTitle
        progressIndicator:mDownloadProgressIndicator
@@ -400,7 +400,7 @@ static PMApplicationUpdate * gApplicationUpdate ;
 
 //--------------------------------------------------------------------------*
 
-- (void) downloadNewVersionOfGALGASDidEnd: (PMDownloadFile *) inDownloader {
+- (void) downloadNewVersionOfApplicationDidEnd: (PMDownloadFile *) inDownloader {
   [mCancelButton.window orderOut:nil] ;
   if ([inDownloader downloadHasBeenCancelled]) {
     [self downloadHasBeenCancelled] ;

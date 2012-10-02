@@ -55,7 +55,7 @@
 
 //---------------------------------------------------------------------------*
 
-extern OC_GGS_ApplicationDelegate * gCocoaGalgasPreferencesController ;
+extern OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //---------------------------------------------------------------------------*
 

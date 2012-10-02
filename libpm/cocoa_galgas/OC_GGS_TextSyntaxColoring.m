@@ -926,7 +926,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSString * compilerToolPath = [gCocoaGalgasPreferencesController compilerToolPath] ;
+  NSString * compilerToolPath = [gCocoaApplicationDelegate compilerToolPath] ;
 //--- Command line tool does actually exist ? (First argument is not "?")
   if (! [compilerToolPath isEqualToString:@"?"]) {
   //--- Build argument array

@@ -100,7 +100,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     mScrollView.borderType = NSBezelBorder ;
     mRulerView = [OC_GGS_RulerViewForTextView new] ;
     [mScrollView setVerticalRulerView:mRulerView] ;
-    [mScrollView.verticalRulerView setRuleThickness:gCocoaGalgasPreferencesController.ruleThickness] ;
+    [mScrollView.verticalRulerView setRuleThickness:gCocoaApplicationDelegate.ruleThickness] ;
     [mScrollView setRulersVisible:[[NSUserDefaults standardUserDefaults] boolForKey:GGS_show_ruler]] ;
     [mScrollView setHasVerticalRuler:YES] ;
     OC_GGS_Scroller * scroller = [OC_GGS_Scroller new] ;
