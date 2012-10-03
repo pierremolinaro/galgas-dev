@@ -1201,7 +1201,7 @@ routine generateXcodeProject
     updaterToolTargetSettings += !"GCC_OPTIMIZATION_LEVEL = 2;" ;
     updaterToolTargetSettings += !"GCC_ENABLE_OBJC_GC = Unsupported;" ;
     updaterToolTargetSettings += !"GCC_WARN_UNUSED_PARAMETER = NO ;" ;
-    updaterToolTargetSettings += !"OTHER_LDFLAGS = \"-sectcreate __TEXT __info_plist sources/updater-tool/updater-tool-Info.plist -sectcreate __TEXT __launchd_plist sources/updater-tool/updater-tool-Launchd.plist\" ;" ;
+    updaterToolTargetSettings += !"OTHER_LDFLAGS = \"-sectcreate __TEXT __info_plist cocoa-application-update/updater-tool/updater-tool-Info.plist -sectcreate __TEXT __launchd_plist cocoa-application-update/updater-tool/updater-tool-Launchd.plist\" ;" ;
   #---
     @string updaterToolTargetKey ;
     add_tool_target
