@@ -168,6 +168,10 @@ template <typename TYPE> class TC_UniqueArray {
                                                     const PMSInt32 inIndex
                                                     COMMA_LOCATION_ARGS) ;
 
+//--- Find Object (uses == operator for comparing objects)
+//    Returns -1 if not found
+  public : PMSInt32 indexOfFirstObjectEqualTo (const TYPE & inValue) const ;
+
 //--- Remove last object(s)
   public : void removeLastObject (LOCATION_ARGS) ;
   public : void removeLastObjects (const PMSInt32 inCount COMMA_LOCATION_ARGS) ;
@@ -223,7 +227,7 @@ template <typename TYPE> class TC_UniqueArray {
 //  inSortFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
   public : void
   reverseSortArrayUsingFunction (PMSInt32 (* inSortFunction) (const TYPE & inOperand1,
-                                                            const TYPE & inOperand2)) ;
+                                                              const TYPE & inOperand2)) ;
 
 //--- Array access (with index checking)
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -826,6 +830,24 @@ removeObjectsAtIndex (const PMSInt32 inCount, const PMSInt32 inStartingIndex COM
     }
     mCount -= inCount ;
   }
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//   Search Objects                                                          *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+template <typename TYPE>
+PMSInt32 TC_UniqueArray <TYPE>::
+indexOfFirstObjectEqualTo (const TYPE & inValue) const {
+   PMSInt32 result = -1 ;
+   for (PMSInt32 i=0 ; (i<mCount) && (result < 0) ; i++) {
+     if (mArray [i] == inValue) {
+       result = i ;
+     }
+   }
+   return result ;
 }
 
 //---------------------------------------------------------------------------*
