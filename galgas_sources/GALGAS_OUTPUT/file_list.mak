@@ -179,6 +179,7 @@ SOURCES += F_GetPrime.cpp
 SOURCES += MF_MemoryControl.cpp
 SOURCES += cpp-allocation.cpp
 SOURCES += basic-allocation.cpp
+SOURCES += C_BigUInt.cpp
 
 #---------------------------------------------------------------*
 #    G A L G A S    2                                           *
