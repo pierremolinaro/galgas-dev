@@ -35,7 +35,7 @@ mValueArray () {
 C_BigUInt::C_BigUInt (const PMUInt64 inValue) :
 mValueArray () {
   if (0 != inValue) {
-    mValueArray.addObject (inValue & PMUINT32_MAX) ;
+    mValueArray.addObject ((PMUInt32) (inValue & PMUINT32_MAX)) ;
     if ((inValue >> 32) != 0) {
       mValueArray.addObject ((PMUInt32) (inValue >> 32)) ;
     }
@@ -88,16 +88,16 @@ void C_BigUInt::operator += (const C_BigUInt & inValue) {
   PMUInt64 accumulator = 0 ;
   for (PMSInt32 i=0 ; i<inValue.mValueArray.count () ; i++) {
     accumulator += ((PMUInt64) mValueArray (i COMMA_HERE)) + ((PMUInt64) inValue.mValueArray (i COMMA_HERE)) ;
-    mValueArray (i COMMA_HERE) = accumulator & PMUINT32_MAX ;
+    mValueArray (i COMMA_HERE) = (PMUInt32) (accumulator & PMUINT32_MAX) ;
     accumulator >>= 32 ;
   }
   for (PMSInt32 i=inValue.mValueArray.count () ; (i<mValueArray.count ()) && (0 != accumulator) ; i++) {
     accumulator += ((PMUInt64) mValueArray (i COMMA_HERE)) ;
-    mValueArray (i COMMA_HERE) = accumulator & PMUINT32_MAX ;
+    mValueArray (i COMMA_HERE) = (PMUInt32) (accumulator & PMUINT32_MAX) ;
     accumulator >>= 32 ;
   }
   if (0 != accumulator) {
-    mValueArray.addObject (accumulator & PMUINT32_MAX) ;
+    mValueArray.addObject ((PMUInt32) (accumulator & PMUINT32_MAX)) ;
   }
 }
 
