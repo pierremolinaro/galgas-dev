@@ -98,9 +98,9 @@
 
 - (void) drawRect:(NSRect) inDirtyRect {
   [super drawRect:inDirtyRect] ;
-  if (mMouseWithin) {
+  if (mDisplayRemoveImage) {
     const NSRect r = [self trackingRect] ;
-    NSImage * image = [NSImage imageNamed:mMouseDown ? NSImageNameStopProgressFreestandingTemplate : NSImageNameStopProgressTemplate] ;
+    NSImage * image = [NSImage imageNamed:mMouseWithin ? NSImageNameStopProgressFreestandingTemplate : NSImageNameStopProgressTemplate] ;
     [image
       drawInRect:r
       fromRect:NSZeroRect
