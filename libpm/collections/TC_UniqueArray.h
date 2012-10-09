@@ -841,13 +841,13 @@ removeObjectsAtIndex (const PMSInt32 inCount, const PMSInt32 inStartingIndex COM
 template <typename TYPE>
 PMSInt32 TC_UniqueArray <TYPE>::
 indexOfFirstObjectEqualTo (const TYPE & inValue) const {
-   PMSInt32 result = -1 ;
-   for (PMSInt32 i=0 ; (i<mCount) && (result < 0) ; i++) {
-     if (mArray [i] == inValue) {
-       result = i ;
-     }
-   }
-   return result ;
+  PMSInt32 result = -1 ;
+  for (PMSInt32 i=0 ; (i<mCount) && (result < 0) ; i++) {
+    if (mArray [i] == inValue) {
+      result = i ;
+    }
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------*

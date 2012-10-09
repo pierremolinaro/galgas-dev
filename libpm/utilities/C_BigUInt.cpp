@@ -49,6 +49,12 @@ C_BigUInt::~C_BigUInt (void) {
 
 //---------------------------------------------------------------------------*
 
+bool C_BigUInt::isZero (void) const {
+  return mValueArray.count () == 0 ;
+}
+
+//---------------------------------------------------------------------------*
+
 bool C_BigUInt::valueAtBitIndex (const PMUInt32 inIndex) const {
   bool result = false ;
   if (inIndex < (mValueArray.count () * 32U)) {
@@ -123,6 +129,74 @@ bool C_BigUInt::operator == (const C_BigUInt & inValue) const {
 
 bool C_BigUInt::operator != (const C_BigUInt & inValue) const {
   return ! (*this == inValue) ;
+}
+
+//---------------------------------------------------------------------------*
+
+bool C_BigUInt::greaterThan (const PMUInt32 inOperand) const {
+  return
+    (mValueArray.count () > 1)
+  ||
+    ((mValueArray.count () == 1) && (mValueArray.lastObject (HERE) > inOperand))
+  ;
+}
+
+//---------------------------------------------------------------------------*
+
+void C_BigUInt::multiplyBy (const PMUInt32 inMultiplicand) {
+  PMUInt64 carry = 0 ;
+  for (PMSInt32 i=0 ; i<mValueArray.count () ; i++) {
+     carry += ((PMUInt64) inMultiplicand) * ((PMUInt64) mValueArray (i COMMA_HERE)) ;
+     mValueArray (i COMMA_HERE) = (PMUInt32) (carry & PMUINT32_MAX) ;
+     carry >>= 32 ;
+  }
+  if (0 != carry) {
+    mValueArray.addObject ((PMUInt32) carry) ;
+  }
+  printf ("-->") ;
+  for (PMSInt32 i=mValueArray.count () - 1 ; i>=0 ; i--) {
+    printf (" %03u", mValueArray (i COMMA_HERE)) ;
+  }
+  printf ("\n") ;
+}
+
+//---------------------------------------------------------------------------*
+
+void C_BigUInt::divideBy (const PMUInt32 inDivisor,
+                          PMUInt32 & outRemainder) {
+  PMUInt64 remainder = 0 ;
+  for (PMSInt32 i=mValueArray.count () - 1 ; i>=0 ; i--) {
+     remainder <<= 32 ;
+     remainder += (PMUInt64) mValueArray (i COMMA_HERE) ;
+     mValueArray (i COMMA_HERE) = (PMUInt32) ((remainder / inDivisor) & PMUINT32_MAX) ;
+     remainder %= inDivisor ;
+  }
+  normalize () ;
+  outRemainder = (PMUInt32) (remainder) ;
+}
+
+//---------------------------------------------------------------------------*
+
+C_String C_BigUInt::decimalString (void) const {
+  C_String result ;
+  if (isZero()) {
+    result << "0" ;
+  }else{
+    C_BigUInt value = *this ;
+    TC_UniqueArray <PMUInt32> values ;
+    while (! value.isZero ()) {
+      PMUInt32 remainder = 0 ;
+      value.divideBy (1000, remainder) ;
+      values.addObject (remainder) ;
+    }
+    result = cStringWithUnsigned (values.lastObject (HERE)) ;
+    for (PMSInt32 i=values.count () - 2 ; i>=0 ; i--) {
+      char s [8] ;
+      sprintf (s, " %03u", values (i COMMA_HERE)) ;
+      result << s ;
+    }
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------*

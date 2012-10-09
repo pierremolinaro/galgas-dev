@@ -29,6 +29,7 @@
 //---------------------------------------------------------------------------*
 
 #include "collections/TC_Array.h"
+#include "strings/C_String.h"
 
 //---------------------------------------------------------------------------*
 
@@ -40,17 +41,31 @@ class C_BigUInt {
 //--- Destructor
   public : virtual ~ C_BigUInt (void) ;
 
+//--- Is Zero
+  public : bool isZero (void) const ;
+
 //--- Comparison
   public : bool operator == (const C_BigUInt & inValue) const ;
   public : bool operator != (const C_BigUInt & inValue) const ;
+  public : bool greaterThan (const PMUInt32 inOperand) const ;
 
 //--- Addition
   public : void operator += (const C_BigUInt & inValue) ;
   public : C_BigUInt operator + (const C_BigUInt & inValue) const ;
 
+//--- Multiplication
+  public : void multiplyBy (const PMUInt32 inMultiplicand) ;
+
+//--- Division
+  public : void divideBy (const PMUInt32 inDivisor,
+                          PMUInt32 & outRemainder) ;
+
 //--- Bit access
   public : bool valueAtBitIndex (const PMUInt32 inIndex) const ;
   public : void setValueAtBitIndex (const bool inValue, const PMUInt32 inIndex) ;
+
+//--- Value as string
+  public : C_String decimalString (void) const ;
 
 //--- Internal method
   private : void normalize (void) ;

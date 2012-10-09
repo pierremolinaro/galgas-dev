@@ -28,6 +28,7 @@
 //---------------------------------------------------------------------------*
 
 #include "utilities/M_machine.h"
+#include "utilities/C_BigUInt.h"
 #include "collections/TC_UniqueArray.h"
 #include "collections/TC_Array.h"
 
@@ -137,9 +138,13 @@ class C_BDD {
 //--- Get BDD values count
   public : PMUInt64 valueCount (const PMUInt16 inBDDvariablesCount) const ;
 
-  public : PMUInt64 valueCountUsingCache (const PMUInt16 inBDDvariablesCount,
-                                    TC_UniqueArray <PMUInt64> & ioDirectCacheArray,
-                                    TC_UniqueArray <PMUInt64> & ioComplementCacheArray) const ;
+  public : C_BigUInt valueCountUsingCache (const PMUInt16 inBDDvariablesCount,
+                                          TC_UniqueArray <C_BigUInt> & ioDirectCacheArray,
+                                          TC_UniqueArray <C_BigUInt> & ioComplementCacheArray) const ;
+
+  public : PMUInt64 valueCount64UsingCache (const PMUInt16 inBDDvariablesCount,
+                                            TC_UniqueArray <PMUInt64> & ioDirectCacheArray,
+                                            TC_UniqueArray <PMUInt64> & ioComplementCacheArray) const ;
 
 //--- Return highest bit index + 1 
   public : PMUInt16 significantVariableCount (void) const ;
@@ -168,19 +173,17 @@ class C_BDD {
                                const PMUInt16 inBitCount) const ;
 
 //------------------------ Updating a relation
-  public : C_BDD
-  updateRelation (const PMUInt16 inRelationBitNeededCount [], 
-                  PMUInt16 * inRelationBitCurrentCount [], 
-                  const PMSInt32 inRelationCardinality) const ;
+  public : C_BDD updateRelation (const PMUInt16 inRelationBitNeededCount [], 
+                                 PMUInt16 * inRelationBitCurrentCount [], 
+                                 const PMSInt32 inRelationCardinality) const ;
 
 //--- Translate BDD bits
   public : C_BDD translate (const PMUInt16 inBDDvariablesCount,
                             const PMUInt16 inTranslation) const ;
 
-  public : void
-  getBoolArray (TC_UniqueArray <bool> & outArray,
-                const PMUInt32 inMaxValues,
-                const PMUInt16 inBitSize) const ;
+  public : void getBoolArray (TC_UniqueArray <bool> & outArray,
+                              const PMUInt32 inMaxValues,
+                              const PMUInt16 inBitSize) const ;
 
 //---- Substituing variables
   public : C_BDD substitution (const PMUInt16 inSubstitutionArray [],
