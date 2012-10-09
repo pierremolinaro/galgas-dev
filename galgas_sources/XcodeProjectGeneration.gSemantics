@@ -441,6 +441,7 @@ local routine build_LIBPM_UTILITIES_group
   fileList += !"M_Threads.h" ;
   append_cpp_h_files !?fileList !"C_SharedObject" ;
   append_cpp_h_files !?fileList !"C_Data" ;
+  append_cpp_h_files !?fileList !"C_BigUInt" ;
   append_cpp_h_files !?fileList !"md5" ;
   append_cpp_h_files !?fileList !"F_GetPrime" ;
   append_cpp_h_files !?fileList !"F_DisplayException" ;
@@ -470,6 +471,7 @@ local routine build_LIBPM_UTILITIES_files_for_sources_build_phase
   @stringlist fileList [emptyList] ;
   fileList += !"C_SharedObject.cpp" ;
   fileList += !"C_Data.cpp" ;
+  fileList += !"C_BigUInt.cpp" ;
   fileList += !"C_PrologueEpilogue.cpp" ;
   fileList += !"md5.cpp" ;
   fileList += !"F_GetPrime.cpp" ;

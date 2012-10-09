@@ -892,6 +892,7 @@ LL1_computations (C_Compiler * inCompiler,
                   bool & outOk,
                   const bool inVerboseOptionOn,
                   const bool inHasIndexing) {
+
 //--- Console display
   if (inVerboseOptionOn) {
     co << "  Checking LL(1) condition... " ;
