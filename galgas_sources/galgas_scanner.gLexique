@@ -25,6 +25,7 @@ indexing listDefinition : "List Definition" ;
 indexing sortedListDefinition : "Sorted List Definition" ;
 indexing listmapDefinition : "Listmap Definition" ;
 indexing mapDefinition : "Map Definition" ;
+indexing externTypeDefinition : "Extern Type Definition" ;
 indexing uniquemapDefinition : "Unique Map Definition" ;
 indexing mapProxyDefinition : "Map Proxy Definition" ;
 indexing arrayTypeDefinition : "Array Definition" ;
