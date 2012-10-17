@@ -62,6 +62,13 @@
 
 //---------------------------------------------------------------------------*
 
+/*- (void) drawRect: (NSRect) inDirtyRect {
+  [[NSColor yellowColor] setFill] ;
+  NSRectFill (inDirtyRect) ;
+}*/
+
+//---------------------------------------------------------------------------*
+
 - (void) buildTabBarWithArrayController: (NSArrayController *) inArrayController {
 //--- Remove observer from previous collection
   [mObservedArray
@@ -110,6 +117,10 @@
     [self addSubview:button] ;
     idx ++ ;
   }
+//---
+  NSRect r = self.frame ;
+  r.size.width = X ;
+  self.frame = r ;
 }
 
 //---------------------------------------------------------------------------*
