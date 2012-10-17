@@ -1337,7 +1337,7 @@ rule <semantic_declaration>
  ?!@semanticDeclarationListAST ioSemanticDeclarations
 :
   $extern$ ;
-  $type_name$ ? @lstring externTypeName ;
+  $type_name$ ? @lstring externTypeName indexing externTypeDefinition ;
   ${$ ;
     @string cppPredeclarationCode := "" ;
     repeat
