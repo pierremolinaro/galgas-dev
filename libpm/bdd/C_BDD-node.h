@@ -57,7 +57,7 @@ static inline PMUInt64 makeNode (const PMUInt16 inBoolVar,
   /* if ((inELSEbranch >> 1) >> 0) {
       nodeForRoot (inELSEbranch COMMA_HERE) ;
     } */
-  MF_AssertThere (inBoolVar < 256, "inBoolVar (0x%llx) < 256", inBoolVar, 0) ;
+  MF_AssertThere (inBoolVar < 256, "inBoolVar (%llu) < 256", inBoolVar, 0) ;
   PMUInt64 node = inBoolVar ;
   node <<= (BDD_SPACE_BIT_COUNT + 1) ;
   node |= inTHENbranch ;
