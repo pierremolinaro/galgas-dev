@@ -333,7 +333,7 @@ GALGAS_string GALGAS_string::reader_reversedString (UNUSED_LOCATION_ARGS) const 
 //---------------------------------------------------------------------------*
 
 GALGAS_string GALGAS_string::reader_stringByTrimmingWhiteSpaces (UNUSED_LOCATION_ARGS) const {
-  return GALGAS_string (mString.stringByTrimmingWhiteSpaces ()) ;
+  return GALGAS_string (mString.stringByTrimmingSeparators ()) ;
 }
 
 //---------------------------------------------------------------------------*

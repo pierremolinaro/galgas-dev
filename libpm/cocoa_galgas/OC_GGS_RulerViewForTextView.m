@@ -106,7 +106,7 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
   while ((idx < sourceStringLength) && ! maxYreached) {
     lineIndex ++ ;
   //--- Draw line numbers
-    // NSLog (@"%u is valid glyph index: %@", idx, [lm isValidGlyphIndex:idx] ? @"yes" : @"no") ;
+    // NSLog (@"%lu is valid glyph index: %@", idx, [lm isValidGlyphIndex:idx] ? @"yes" : @"no") ;
     const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:idx effectiveRange:NULL] ;
     NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMaxY (r)) fromView:textView] ;
     // NSLog (@"%f for line %u (%@)", p.y, line, ((inRect.origin.y - [font ascender])) ? @"yes" : @"no") ;
@@ -127,7 +127,7 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
     //--- Error or warning at this line ?
       BOOL hasError = NO ;
       BOOL hasWarning = NO ;
-      NSMutableString * allMessages = [NSMutableString stringWithCapacity:100] ;
+      NSMutableString * allMessages = [NSMutableString new] ;
       for (PMIssueDescriptor * issue in mIssueArray) {
         if (NSLocationInRange (issue.locationInSourceString, lineRange) && (issue.locationInSourceStringStatus == kLocationInSourceStringSolved)) {
           [allMessages appendString:issue.issueMessage] ;
