@@ -625,7 +625,7 @@ suppress (const PMSInt32 inLocation,
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-void C_String::getLinesArray (TC_UniqueArray <C_String> & outStringArray) const {
+void C_String::linesArray (TC_UniqueArray <C_String> & outStringArray) const {
   const PMSInt32 currentStringLength = length () ;
   if (currentStringLength > 0) {
     PMSInt32 index = outStringArray.count () ;
@@ -683,6 +683,38 @@ void C_String::getLinesArray (TC_UniqueArray <C_String> & outStringArray) const 
         break ;     
       }
     }  
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void C_String::lineAndColumnFromIndex (const PMSInt32 inIndex,
+                                       PMSInt32 & outLineNumber,
+                                       PMSInt32 & outColumnNumber,
+                                       C_String & outLineContents) const {
+  const PMSInt32 receiverLength = length () ;
+  if (inIndex < receiverLength) {
+    const utf32 * ptr = utf32String (HERE) ;
+    outLineNumber = 0 ;
+    outColumnNumber = 0 ;
+    PMSInt32 startOfLineIndex = 0 ;
+    PMSInt32 idx = 0 ;
+    bool parseLine = true ;
+    while ((idx < receiverLength) && parseLine) {
+      while ((idx < receiverLength) && parseLine) {
+        parseLine = UNICODE_VALUE (ptr [idx]) != '\n' ;
+        idx += parseLine ;
+      }
+      if (idx < inIndex) {
+        parseLine = true ;
+        idx ++ ; // Pass '\n'
+        startOfLineIndex = idx ;
+        outLineNumber ++ ;
+      }
+    }
+  //---
+    outColumnNumber = inIndex - startOfLineIndex ;
+    outLineContents = subString (startOfLineIndex, idx - startOfLineIndex) ;
   }
 }
 
@@ -929,8 +961,7 @@ lowercaseString (void) const {
 
 //---------------------------------------------------------------------------*
 
-C_String C_String::
-stringByTrimmingWhiteSpaces (void) const {
+C_String C_String::stringByTrimmingSeparators (void) const {
   C_String s ;
   const PMSInt32 receiver_length = length () ;
   s.setCapacity (receiver_length) ;
