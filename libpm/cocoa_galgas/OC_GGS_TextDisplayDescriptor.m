@@ -80,6 +80,8 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     mTextView.usesFindPanel = YES ;
     [mTextView setGrammarCheckingEnabled:NO] ;
     mTextView.allowsUndo = YES ;
+    [mTextView useAllLigatures:nil] ;
+    [mTextView setAlignment:NSNaturalTextAlignment] ;
     [mTextView setAutomaticQuoteSubstitutionEnabled:NO] ;
     mTextView.smartInsertDeleteEnabled = NO ;
     if ([mTextView respondsToSelector:@selector(setAutomaticTextReplacementEnabled:)]) {
