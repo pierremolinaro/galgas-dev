@@ -136,13 +136,13 @@ class C_BDD {
                                                const PMUInt16 inBitCount) ;
 
 //--- Get BDD values count
-  public : PMUInt64 valueCount (const PMUInt16 inBDDvariablesCount) const ;
+  public : PMUInt64 valueCount (const PMUInt16 inVariableCount) const ;
 
-  public : C_BigUInt valueCountUsingCache (const PMUInt16 inBDDvariablesCount,
+  public : C_BigUInt valueCountUsingCache (const PMUInt16 inVariableCount,
                                           TC_UniqueArray <C_BigUInt> & ioDirectCacheArray,
                                           TC_UniqueArray <C_BigUInt> & ioComplementCacheArray) const ;
 
-  public : PMUInt64 valueCount64UsingCache (const PMUInt16 inBDDvariablesCount,
+  public : PMUInt64 valueCount64UsingCache (const PMUInt16 inVariableCount,
                                             TC_UniqueArray <PMUInt64> & ioDirectCacheArray,
                                             TC_UniqueArray <PMUInt64> & ioComplementCacheArray) const ;
 
@@ -151,14 +151,14 @@ class C_BDD {
 
 //--- Get nth BDD value
   public : C_BDD getNthBDD (const PMUInt64 inNthBDDvalue,
-                            const PMUInt16 inBDDvariablesCount) const ;
+                            const PMUInt16 inVariableCount) const ;
 
 //--- Get BDD range in 'inOperand' BDD
   public : PMUInt64 getBDDrange (const C_BDD & inOperand,
-                               const PMUInt16 inBDDvariablesCount) const ;
+                               const PMUInt16 inVariableCount) const ;
 
 //--- Get BDD absolute value
-  public : PMUInt64 getBDDabsoluteValue (const PMUInt16 inBDDvariablesCount) const ;
+  public : PMUInt64 getBDDabsoluteValue (const PMUInt16 inVariableCount) const ;
   
 //--- Get BDD nodes count
   public : PMUInt32 getBDDnodesCount (void) const ;
@@ -178,7 +178,7 @@ class C_BDD {
                                  const PMSInt32 inRelationCardinality) const ;
 
 //--- Translate BDD bits
-  public : C_BDD translate (const PMUInt16 inBDDvariablesCount,
+  public : C_BDD translate (const PMUInt16 inVariableCount,
                             const PMUInt16 inTranslation) const ;
 
   public : void getBoolArray (TC_UniqueArray <bool> & outArray,
@@ -187,7 +187,7 @@ class C_BDD {
 
 //---- Substituing variables
   public : C_BDD substitution (const PMUInt16 inSubstitutionArray [],
-                               const PMUInt16 inBDDvariablesCount
+                               const PMUInt16 inVariableCount
                                COMMA_LOCATION_ARGS) const ;
 
   public : C_BDD exchangeVariables (const PMUInt16 var1, const PMUInt16 var2) const ;
@@ -242,19 +242,19 @@ class C_BDD {
                           const PMSInt32 inLeadingSpacesCount) const ;
 
   public : void printBDD (const TC_UniqueArray <C_String> & inVariablesNames,
-                          const PMSInt32 inVariablesCount,
+                          const PMSInt32 inVariableCount,
                           const PMSInt32 inLeadingSpacesCount) const ;
 
   public : void printBDDHeader (const TC_UniqueArray <C_String> & inVariablesNames,
-                                const PMSInt32 inVariablesCount,
+                                const PMSInt32 inVariableCount,
                                 const PMSInt32 inLeadingSpacesCount) const ;
 
   public : void printBDDwithoutHeader (const TC_UniqueArray <C_String> & inVariablesNames,
-                                       const PMSInt32 inVariablesCount,
+                                       const PMSInt32 inVariableCount,
                                        const PMSInt32 inLeadingSpacesCount) const ;
 
   public : void printBDD (AC_OutputStream & inStream,
-                          const PMUInt16 inBDDvariablesCount,
+                          const PMUInt16 inVariableCount,
                           const C_Display_BDD & inVariablesNames) const ;
 
   public : void printBDDnodes (AC_OutputStream & inStream,
@@ -264,14 +264,14 @@ class C_BDD {
                                                              COMMA_LOCATION_ARGS) const ;
 
   public : void buildCompressedLittleEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray,
-                                                             const PMUInt16 inBDDvariablesCount
+                                                             const PMUInt16 inVariableCount
                                                              COMMA_LOCATION_ARGS) const ;
 
   public : void buildCompressedBigEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray
                                                           COMMA_LOCATION_ARGS) const ;
 
   public : void buildCompressedBigEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray,
-                                                          const PMUInt16 inBDDvariablesCount
+                                                          const PMUInt16 inVariableCount
                                                           COMMA_LOCATION_ARGS) const ;
 
 //--- Mark all nodes 
@@ -285,16 +285,16 @@ class C_BDD {
 
 //--- Traversing BDD : build an array containing all values
   public : void buildValue64Array (TC_UniqueArray <PMUInt64> & outValuesArray,
-                                   const PMUInt16 inBDDvariablesCount) const ;
+                                   const PMUInt16 inVariableCount) const ;
 
   public : void buildValueArray (TC_UniqueArray <TC_Array <bool> > & outValuesArray,
-                                  const PMUInt16 inBDDvariablesCount) const ;
+                                  const PMUInt16 inVariableCount) const ;
 
   public : void buildLittleEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray,
-                                                   const PMUInt16 inBDDvariablesCount) const ;
+                                                   const PMUInt16 inVariableCount) const ;
 
   public : void buildBigEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray,
-                                                const PMUInt16 inBDDvariablesCount) const ;
+                                                const PMUInt16 inVariableCount) const ;
 
   public : C_String queryStringValue (LOCATION_ARGS) const ;
 
@@ -304,7 +304,7 @@ class C_BDD {
 
 //--- Traversing BBD (call C_bdd_value_traversing::action method for every value) 
   public : void traverseBDDvalues (C_bdd_value_traversing & inTraversing,
-                                   const PMUInt16 inBDDvariablesCount) const ;
+                                   const PMUInt16 inVariableCount) const ;
 
 //--- Traversing BBD (call C_bdd_node_traversing::action method for every node) 
   public : void traversBDDnodes (C_bdd_node_traversing & inTraversing) const ;
@@ -365,7 +365,7 @@ class C_bdd_value_traversing {
 
 //--- Virtual method called for every value
   public : virtual void action (const bool tableauDesValeurs [],
-                                const PMUInt16 inBDDvariablesCount) = 0 ;
+                                const PMUInt16 inVariableCount) = 0 ;
   
 //--- No instance copy
   private : C_bdd_value_traversing (const C_bdd_value_traversing &) ;
