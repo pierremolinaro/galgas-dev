@@ -12,11 +12,8 @@
 //---------------------------------------------------------------------------*
 
 @interface PMButtonWithRemove : NSButton {
-  @private BOOL mMouseWithin ;
-  @private BOOL mMouseDown ;
   @private BOOL mDisplayRemoveImage ;
   @private BOOL mIsDirty ;
-  @private NSTrackingArea * mTrackingArea ;
   @private NSString * mFilePath ;
 }
 
