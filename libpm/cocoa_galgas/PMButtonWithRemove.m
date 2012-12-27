@@ -57,7 +57,7 @@
 
 //---------------------------------------------------------------------------*
 
-- (NSRect) trackingRect {
+- (NSRect) removeImageRect {
   const NSRect r = {{4.0, (self.bounds.size.height - IMAGE_SIZE) / 2}, {IMAGE_SIZE, IMAGE_SIZE}} ;
   return r ;
 }
@@ -68,30 +68,9 @@
 
 //---------------------------------------------------------------------------*
 
-- (NSRect) dirtyRect {
+- (NSRect) dirtyBulletRect {
   const NSRect r = {{NSMaxX (self.bounds) - DIRTY_SIZE * 2.0, DIRTY_SIZE}, {DIRTY_SIZE, DIRTY_SIZE}} ;
   return r ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) updateTrackingAreas {
-//--- Remove tracking area
-  if (nil != mTrackingArea) {
-    [self removeTrackingArea:mTrackingArea] ;
-  }
-//--- Add Updated tracking area
-  if (mDisplayRemoveImage) {
-    mTrackingArea = [[NSTrackingArea alloc]
-      initWithRect:[self trackingRect]
-      options:NSTrackingMouseEnteredAndExited | NSTrackingActiveInKeyWindow
-      owner:self
-      userInfo:nil
-    ] ;
-    [self addTrackingArea:mTrackingArea] ;
-  }
-//---
-  [super updateTrackingAreas] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -99,10 +78,9 @@
 - (void) drawRect:(NSRect) inDirtyRect {
   [super drawRect:inDirtyRect] ;
   if (mDisplayRemoveImage) {
-    const NSRect r = [self trackingRect] ;
-    NSImage * image = [NSImage imageNamed:mMouseWithin ? NSImageNameStopProgressFreestandingTemplate : NSImageNameStopProgressTemplate] ;
+    NSImage * image = [NSImage imageNamed:NSImageNameStopProgressFreestandingTemplate] ;
     [image
-      drawInRect:r
+      drawInRect:self.removeImageRect
       fromRect:NSZeroRect
       operation:NSCompositeSourceOver
       fraction:1.0
@@ -110,71 +88,33 @@
   }
   if (mIsDirty) {
     [[NSColor blackColor] setFill] ;
-    NSBezierPath * bp = [NSBezierPath bezierPathWithOvalInRect:[self dirtyRect]] ;
+    NSBezierPath * bp = [NSBezierPath bezierPathWithOvalInRect:self.dirtyBulletRect] ;
     [bp fill] ;
   }
 }
 
 //---------------------------------------------------------------------------*
 
-- (void) mouseEntered:(NSEvent *) inEvent {
-  if (self.isEnabled) {
-    mMouseWithin = YES ;
-    [self setNeedsDisplay:YES] ;
-  }
-  [super mouseEntered:inEvent] ;
-}
+//--- http://www.cocoabuilder.com/archive/cocoa/141135-nsbutton-up-and-down.html
+// Subclassing NSButton and overriding mouseDown: and mouseUp: _should_
+// work. The only "gotcha" is this: If you want the normal button
+// behavior on mouseDown, you need to call
+//    [super mouseDown:sender];
+// in your mouseDown. However - that will "eat" the mouseUp: call
+// because NSButton implements mouseDown with something like
+// nextEventMatchingMask. mouseDown actually blocks until the button is
+// released, so you can make your mouseDown: look like this to know when
+// the button is released:
 
-//---------------------------------------------------------------------------*
-
-- (void) mouseExited:(NSEvent *) inEvent {
-  if (self.isEnabled) {
-    mMouseWithin = NO ;
-    [self setNeedsDisplay:YES] ;
-  }
-  [super mouseExited:inEvent] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) mouseDown:(NSEvent *) inEvent {
-  if ((inEvent.modifierFlags & NSAlternateKeyMask) == 0) {
-    mMouseDown = YES ;
-    if (mMouseWithin) {
-      [self setNeedsDisplay:YES] ;
-    }else{
-      [super mouseDown:inEvent] ;
-    }
-  }else if (mFilePath.length > 0) {
-/*    NSString * dragTypeUTI = @"fr.ec-nantes.fr.COCOA" ;
-    NSPasteboard * pboard = [NSPasteboard pasteboardWithName:NSDragPboard] ;
-    [pboard declareTypes:[NSArray arrayWithObject:dragTypeUTI] owner:self] ;
-    [pboard setData:[mFilePath dataUsingEncoding:NSUTF8StringEncoding] forType:dragTypeUTI] ;
-    NSData * imageData = [self dataWithPDFInsideRect:self.bounds] ;
-    NSImage * image = [[NSImage alloc] initWithData:imageData] ;
-    [self
-       dragImage:image
-       at:NSMakePoint (0.0, self.bounds.size.height)
-       offset:NSMakeSize (0.0, 0.0) // Ignored
-       event:inEvent
-       pasteboard:pboard
-       source:self
-       slideBack:YES
-    ] ;*/
-/*    [self
-       dragFile:mFilePath
-       fromRect:self.bounds
-       slideBack:YES
-       event:inEvent
-    ] ;*/
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-- (void) mouseUp: (NSEvent *) inEvent {
-  mMouseDown = NO ;
-  if (mMouseWithin) {
+- (void)mouseDown: (NSEvent *) inEvent {
+// this blocks until the button is released
+  [super mouseDown:inEvent];
+// we know the button was released, so we can send this
+  const NSPoint pointInWindow = [self.window convertScreenToBase:NSEvent.mouseLocation] ;
+  const NSPoint p = [self convertPoint:pointInWindow fromView:nil] ;
+  // NSLog (@"p [%g, %g]", p.x, p.y) ;
+  // NSLog (@"self.removeImageRect [%g, %g] -> [%g, %g]", self.removeImageRect.origin.x, self.removeImageRect.origin.y, self.removeImageRect.size.width, self.removeImageRect.size.height) ;
+  if (NSPointInRect (p, self.removeImageRect)) {
     [self setNeedsDisplay:YES] ;
     [self.target removeTabAction:self] ;
   }else{
