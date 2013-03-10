@@ -79,11 +79,18 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     mTextView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
     mTextView.usesFindPanel = YES ;
     [mTextView setGrammarCheckingEnabled:NO] ;
+    [mTextView setContinuousSpellCheckingEnabled:NO] ;
     mTextView.allowsUndo = YES ;
     [mTextView useAllLigatures:nil] ;
     [mTextView setAlignment:NSNaturalTextAlignment] ;
     [mTextView setAutomaticQuoteSubstitutionEnabled:NO] ;
     mTextView.smartInsertDeleteEnabled = NO ;
+    [mTextView setAutomaticDashSubstitutionEnabled:NO] ;
+    // [mTextView setRichText:YES] ;
+    [mTextView.layoutManager setAllowsNonContiguousLayout:YES] ;
+    [mTextView.layoutManager setUsesFontLeading:YES] ;
+    // [[mTextView layoutManager] setTypesetterBehavior:NSTypesetterBehavior_10_2_WithCompatibility];
+    // [[mTextView textContainer] setLineFragmentPadding:0.0];
     if ([mTextView respondsToSelector:@selector(setAutomaticTextReplacementEnabled:)]) {
       // NSLog (@"AVANT %d", mTextView.isAutomaticTextReplacementEnabled) ;
       [mTextView setValue:[NSNumber numberWithBool:NO] forKey:@"automaticTextReplacementEnabled"] ;
