@@ -106,7 +106,7 @@
       // NSLog (@"r1 {{%g, %g}, {%g, %g}}", r1.origin.x, r1.origin.y, r1.size.width, r1.size.height) ;
       [issue.isError ? errorHiliteBezierPath : warningHiliteBezierPath appendBezierPathWithRect:lineRect] ;
       const NSPoint p1 = [self.layoutManager locationForGlyphAtIndex:issue.locationInSourceString] ;
-      const NSRect r = {{p1.x - BULLET_SIZE / 2.0, lineRect.origin.y + lineRect.size.height - BULLET_SIZE / 2.0}, {BULLET_SIZE, BULLET_SIZE}} ;
+      const NSRect r = {{p1.x - BULLET_SIZE / 2.0, lineRect.origin.y + lineRect.size.height - BULLET_SIZE}, {BULLET_SIZE, BULLET_SIZE}} ;
       [issue.isError ? errorBulletBezierPath : warningBulletBezierPath appendBezierPathWithOvalInRect:r] ;
     }
   }
