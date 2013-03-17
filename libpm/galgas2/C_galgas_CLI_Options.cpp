@@ -117,7 +117,7 @@ C_StringCommandLineOption gOption_galgas_5F_builtin_5F_options_mode ("galgas_cli
                                          "mode",
                                          0,
                                          "mode",
-                                         "'lexical', 'syntax' or 'indexing'",
+                                         "'lexical-only' or 'syntax-only'",
                                          "") ;
 
 //---------------------------------------------------------------------------*
@@ -159,7 +159,7 @@ void setExecutionMode (C_String & outErrorMessage) {
         "  --mode=lexical-only         perform only lexical analysis;\n"
         "  --mode=syntax-only          perform only syntax analysis;\n"
         "  --mode=context-help:p:n     perform context help at source location n, output context help data on TCP port p;\n"
-        "  --mode=indexing             output indexing files." ;
+        "  --mode=indexing             output indexing files.\n" ;
     }
   }
 }
