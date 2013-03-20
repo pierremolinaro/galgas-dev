@@ -1338,14 +1338,15 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //  NSLog (@"[ud persistentDomainNames] %@", [ud persistentDomainNames]) ;
   NSDictionary * dictionaryRepresentation = [ud persistentDomainForName:[mb bundleIdentifier]] ;
   NSArray * allKeys = [dictionaryRepresentation allKeys] ;
-  unsigned n = 0 ;
+  NSUInteger n = 0 ;
   const NSRange rangeGGS = {0, 4} ;
   const NSRange rangeNS = {0, 2} ;
-  unsigned i ;
-  for (i=0 ; i<[allKeys count] ; i++) {
+  for (NSUInteger i=0 ; i<allKeys.count ; i++) {
     NSString * key = [allKeys objectAtIndex:i] ;
     if (([key compare:@"GGS_" options:NSLiteralSearch range:rangeGGS] != NSOrderedSame) &&
-        ([key compare:@"NS" options:NSLiteralSearch range:rangeNS] != NSOrderedSame)) {
+        ([key compare:@"NS" options:NSLiteralSearch range:rangeNS] != NSOrderedSame) &&
+        (! [key isEqualToString:@"PMConvert_CRLF_And_CR_To_LF_AtStartUp"]) &&
+        (! [key isEqualToString:@"PMConvert_HTAB_To_SPACE_AtStartUp"])) {
       n ++ ;
       // NSLog (@"key '%@'", key) ;
     }
@@ -1354,7 +1355,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   if (n == 1) {
     s = @"1 source document preferences entry." ;
   }else if (n > 1) {
-    s = [NSString stringWithFormat:@"%u source document preferences entries.", n] ;
+    s = [NSString stringWithFormat:@"%lu source document preferences entries.", n] ;
   }
   [mSourcePreferenceStatsTextField setStringValue:s] ;
 }
@@ -1368,10 +1369,12 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   NSArray * allKeys = [[dictionaryRepresentation allKeys] copy] ;
   const NSRange rangeGGS = {0, 4} ;
   const NSRange rangeNS = {0, 2} ;
-  for (NSUInteger i=0 ; i<[allKeys count] ; i++) {
+  for (NSUInteger i=0 ; i<allKeys.count ; i++) {
     NSString * key = [allKeys objectAtIndex:i] ;
     if (([key compare:@"GGS_" options:NSLiteralSearch range:rangeGGS] != NSOrderedSame) &&
-        ([key compare:@"NS" options:NSLiteralSearch range:rangeNS] != NSOrderedSame)) {
+        ([key compare:@"NS" options:NSLiteralSearch range:rangeNS] != NSOrderedSame) &&
+        (! [key isEqualToString:@"PMConvert_CRLF_And_CR_To_LF_AtStartUp"]) &&
+        (! [key isEqualToString:@"PMConvert_HTAB_To_SPACE_AtStartUp"])) {
       [ud setObject:nil forKey:key] ;
     }
   }
