@@ -4,7 +4,7 @@
 #                                                               *
 #---------------------------------------------------------------*
 
-UNIX_COMPILER_PREFIX := /usr/local/gcc-4.5.2-for-linux64/bin/x86_64-pc-linux
+UNIX_COMPILER_PREFIX := /usr/local/gcc-4.7.2-for-linux64/bin/x86_64-pc-linux
 COMPILER_TOOL := $(UNIX_COMPILER_PREFIX)-gcc
 LINKER_TOOL   := $(UNIX_COMPILER_PREFIX)-g++ -static-libgcc
 STRIP_TOOL    := $(UNIX_COMPILER_PREFIX)-strip --strip-all
