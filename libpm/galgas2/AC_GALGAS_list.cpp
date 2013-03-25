@@ -495,14 +495,18 @@ void AC_GALGAS_list::insulateList (LOCATION_ARGS) {
 
 void AC_GALGAS_list::addObject (const capCollectionElement & inElementToAdd) {
   insulateList (HERE) ;
-  mSharedList->addObject (inElementToAdd) ;
+  if (NULL != mSharedList) {
+    mSharedList->addObject (inElementToAdd) ;
+  }
 }
 
 //---------------------------------------------------------------------------*
 
 void AC_GALGAS_list::prependAttributeArray (const capCollectionElement & inElementToPrepend) {
   insulateList (HERE) ;
-  mSharedList->prependAttributeArray (inElementToPrepend) ;
+  if (NULL != mSharedList) {
+    mSharedList->prependAttributeArray (inElementToPrepend) ;
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -602,7 +606,9 @@ cCollectionElement * AC_GALGAS_list::objectPointerAtIndex (const GALGAS_uint & i
   cCollectionElement * result = NULL ;
   if (isValid ()) {
     insulateList (HERE) ;
-    result = mSharedList->objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+    if (NULL != mSharedList) {
+      result = mSharedList->objectPointerAtIndex (inIndex, inCompiler COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -1134,7 +1140,9 @@ void AC_GALGAS_listmap::addObjectInListMap (const GALGAS_string & inKey,
                                             capCollectionElement & inAttributeArray) {
   if (isValid () && inKey.isValid ()) {
     insulateListMap (HERE) ;
-    mSharedListMap->addObjectInListMap (inKey.stringValue (), inAttributeArray) ;
+    if (NULL != mSharedListMap) {
+      mSharedListMap->addObjectInListMap (inKey.stringValue (), inAttributeArray) ;
+    }
   }
 }
 

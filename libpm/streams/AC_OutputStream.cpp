@@ -742,6 +742,20 @@ C_String cStringWithUnsigned (const PMUInt64 inValue) {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark cHexStringWithUnsigned
+#endif
+
+//---------------------------------------------------------------------------*
+
+C_String cHexStringWithUnsigned (const PMUInt64 inValue) {
+  C_String result = "0x" ;
+  result.appendUnsigned64inHex (inValue) ;
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark cStringWithSigned
 #endif
 

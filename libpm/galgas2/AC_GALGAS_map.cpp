@@ -595,7 +595,9 @@ void cSharedMapRoot::performInsertOrReplace (const capCollectionElement & inAttr
 void AC_GALGAS_map::performInsertOrReplace (const capCollectionElement & inAttributes) {
   if (isValid ()) {
     insulate (HERE) ;
-    mSharedMap->performInsertOrReplace (inAttributes) ;
+    if (NULL != mSharedMap) {
+      mSharedMap->performInsertOrReplace (inAttributes) ;
+    }
   }
 }
 
@@ -774,7 +776,9 @@ void AC_GALGAS_map::performInsert (const capCollectionElement & inAttributes,
 //--- If all attributes are built, perform insertion
   if (isValid ()) {
     insulate (HERE) ;
-    cMapNode * node = mSharedMap->performInsert (inAttributes, inCompiler, inInsertErrorMessage, inShadowErrorMessage COMMA_THERE) ;
+    cMapNode * node = (NULL == mSharedMap)
+      ? NULL
+      : mSharedMap->performInsert (inAttributes, inCompiler, inInsertErrorMessage, inShadowErrorMessage COMMA_THERE) ;
   //--- Contextual help
     if ((NULL != node) && executionModeIsContextHelp ()) {
       cMapElement * p = (cMapElement *) inAttributes.ptr () ;
@@ -1186,7 +1190,9 @@ cMapElement * AC_GALGAS_map::searchForReadWriteAttribute (const GALGAS_string & 
   cMapElement * result = NULL ;
   if (isValid ()) {
     insulate (THERE) ;
-    result = (cMapElement *) mSharedMap->searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+    if (NULL != mSharedMap) {
+      result = (cMapElement *) mSharedMap->searchForReadWriteAttribute (inKey, inCompiler COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -1231,7 +1237,9 @@ cMapElement * AC_GALGAS_map::searchForReadWriteAttribute (const GALGAS_lstring &
   cMapElement * result = NULL ;
   if (isValid ()) {
     insulate (THERE) ;
-    result = mSharedMap->searchForReadWriteAttribute (inKey, inCompiler, inSearchErrorMessage COMMA_THERE) ;
+    if (NULL != mSharedMap) {
+      result = mSharedMap->searchForReadWriteAttribute (inKey, inCompiler, inSearchErrorMessage COMMA_THERE) ;
+    }
   }
   return result ;
 }
@@ -1417,7 +1425,9 @@ void AC_GALGAS_map::performRemove (GALGAS_lstring & inKey,
                                    COMMA_LOCATION_ARGS) {
   if (isValid ()) {
     insulate (THERE) ;
-    mSharedMap->performRemove (inKey, outResult, inCompiler, inRemoveErrorMessage COMMA_THERE) ;
+    if (NULL != mSharedMap) {
+      mSharedMap->performRemove (inKey, outResult, inCompiler, inRemoveErrorMessage COMMA_THERE) ;
+    }
   }
 }
 

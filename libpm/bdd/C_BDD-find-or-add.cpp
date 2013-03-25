@@ -622,16 +622,12 @@ void C_BDD::printBDDpackageOperationsSummary (AC_OutputStream & inStream) {
     }
   }  
   for (PMSInt32 i=0 ; i<entrySizeArray.count () ; i++) {
-    if (entrySizeArray (i COMMA_HERE) > 0) {
+    if ((entrySizeArray (i COMMA_HERE) > 0) && (gCollisionMapSize > 0)) {
       inStream << "  " << cStringWithUnsigned (entrySizeArray (i COMMA_HERE))
                << " entries of size " << cStringWithSigned (i) 
                << " (" << cStringWithUnsigned ((100UL * entrySizeArray (i COMMA_HERE)) / gCollisionMapSize) << "%)\n" ;
     }
   }  
-//---
-//  gAndOperationCache.printStatistics (inStream, "AND") ;
-//  gForAllOperationCache.printStatistics (inStream, "FOR ALL") ;
-//  gITEoperationCache.printStatistics (inStream, "ITE") ;
 }
 
 //---------------------------------------------------------------------------*
