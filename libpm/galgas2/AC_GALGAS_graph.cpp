@@ -469,7 +469,9 @@ void AC_GALGAS_graph::internalAddNode (const GALGAS_lstring & inKey,
                                        COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid () && inAttributes.isValid ()) {
     insulateGraph (THERE) ;
-    mSharedGraph->internalAddNode (inKey, inErrorMessage, inAttributes, inCompiler COMMA_THERE) ;
+    if (NULL != mSharedGraph) {
+      mSharedGraph->internalAddNode (inKey, inErrorMessage, inAttributes, inCompiler COMMA_THERE) ;
+    }
   }
 }
 
@@ -485,8 +487,13 @@ void AC_GALGAS_graph::modifier_noteNode (const GALGAS_lstring & inKey
                                          COMMA_LOCATION_ARGS) {
   if (isValid () && inKey.isValid ()) {
     insulateGraph (THERE) ;
-    cGraphNode * node = mSharedGraph->findOrAddNodeForKey (inKey.mAttribute_string.stringValue ()) ;
-    node->mReferenceLocationArray.addObject (inKey.mAttribute_location) ;
+    cGraphNode * node = (NULL == mSharedGraph)
+      ? NULL
+      : mSharedGraph->findOrAddNodeForKey (inKey.mAttribute_string.stringValue ())
+    ;
+    if (NULL != node) {
+      node->mReferenceLocationArray.addObject (inKey.mAttribute_location) ;
+    }
   }
 }
 
@@ -515,9 +522,11 @@ void AC_GALGAS_graph::modifier_addArc (const GALGAS_lstring & inSourceNodeKey,
                                        COMMA_UNUSED_LOCATION_ARGS) {
   if (isValid () && inSourceNodeKey.isValid () && inTargetNodeKey.isValid ()) {
     insulateGraph (HERE) ;
-    mSharedGraph->addArc (inSourceNodeKey.mAttribute_string.stringValue (),
-                          inTargetNodeKey.mAttribute_string.stringValue (),
-                          inTargetNodeKey.mAttribute_location) ;
+    if (NULL != mSharedGraph) {
+      mSharedGraph->addArc (inSourceNodeKey.mAttribute_string.stringValue (),
+                            inTargetNodeKey.mAttribute_string.stringValue (),
+                            inTargetNodeKey.mAttribute_location) ;
+    }
   }
 }
 

@@ -164,6 +164,10 @@ C_String cStringWithUnsigned (const PMUInt64 inValue) ;
 
 //---------------------------------------------------------------------------*
 
+C_String cHexStringWithUnsigned (const PMUInt64 inValue) ;
+
+//---------------------------------------------------------------------------*
+
 C_String cStringWithSigned (const PMSInt64 inValue) ;
 
 //---------------------------------------------------------------------------*

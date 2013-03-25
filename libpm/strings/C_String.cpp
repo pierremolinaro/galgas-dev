@@ -566,12 +566,14 @@ setUnicodeCharacterAtIndex (const utf32 inCharacter,
   #endif
   macroValidPointerThere (mEmbeddedString) ;
   MF_AssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
-  MF_AssertThere ((PMUInt32) inIndex < mEmbeddedString->mLength,
-                  "inIndex (%ld) >= string length (%ld)",
-                  inIndex, mEmbeddedString->mLength) ;
-  insulateEmbeddedString (mEmbeddedString->mCapacity) ;
-  mEmbeddedString->mString [inIndex] = inCharacter ;
-  macroUniqueSharedObject (mEmbeddedString) ;
+  if (NULL != mEmbeddedString) {
+    MF_AssertThere ((PMUInt32) inIndex < mEmbeddedString->mLength,
+                    "inIndex (%ld) >= string length (%ld)",
+                    inIndex, mEmbeddedString->mLength) ;
+    insulateEmbeddedString (mEmbeddedString->mCapacity) ;
+    mEmbeddedString->mString [inIndex] = inCharacter ;
+    macroUniqueSharedObject (mEmbeddedString) ;
+  }
 }
 
 //---------------------------------------------------------------------------*
