@@ -143,12 +143,18 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       modes:[NSArray arrayWithObject:NSDefaultRunLoopMode]
     ] ;
   }
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s:DONE", __PRETTY_FUNCTION__) ;
+  #endif
   return self ;
 }
 
 //---------------------------------------------------------------------------*
 
 - (void) setSelectionAndScrollToVisibleAfterInit {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
   NSString * key = [NSString stringWithFormat:@"SELECTION:%@:%@", mDocumentUsedForDisplaying.fileURL.path, documentData.fileURL.path] ;
   NSString * selectionRangeString = [[NSUserDefaults standardUserDefaults] objectForKey:key] ;
   // NSLog (@"READ '%@' -> %@", key, selectionRangeString) ;
@@ -157,6 +163,9 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   if (NSMaxRange (selectionRange) <= sourceTextLength) {
     [self setSelectionRangeAndMakeItVisible:selectionRange] ;
   } 
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s:DONE", __PRETTY_FUNCTION__) ;
+  #endif
 }
 
 //---------------------------------------------------------------------------*
@@ -578,11 +587,14 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
 
 - (void) setSelectionRangeAndMakeItVisible: (NSRange) inRange {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+    NSLog (@"%s [%lu, %lu]", __PRETTY_FUNCTION__, inRange.location, inRange.length) ;
   #endif
-  [mTextView scrollRangeToVisible:inRange] ;
   [mTextView setSelectedRange:inRange] ;
+  [mTextView scrollRangeToVisible:inRange] ;
   [mTextView.window makeFirstResponder:mTextView] ;
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s:DONE", __PRETTY_FUNCTION__) ;
+  #endif
 }
 
 //---------------------------------------------------------------------------*

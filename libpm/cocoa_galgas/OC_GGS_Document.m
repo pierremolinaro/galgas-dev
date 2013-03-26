@@ -251,6 +251,9 @@
   if ((selection != NSNotFound) && (selection < sourceDisplayArray.count)) {
     [mSourceDisplayArrayController setSelectionIndex:selection] ;
   }
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s: DONE", __PRETTY_FUNCTION__) ;
+  #endif
 }
 
 //---------------------------------------------------------------------------*
