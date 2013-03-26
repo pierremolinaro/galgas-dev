@@ -3,7 +3,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2001, ..., 2011 Pierre Molinaro.                           *
+//  Copyright (C) 2001, ..., 2013 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -69,6 +69,9 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
 //---------------------------------------------------------------------------*
 
 - (void) drawHashMarksAndLabelsInRect: (NSRect) inRect {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
 //--- Draw background
   [[NSColor windowBackgroundColor] setFill] ;
   [NSBezierPath fillRect:inRect] ;
@@ -91,6 +94,9 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
     nil
   ] ;
 //--- Note: ruler view and text view are both flipped
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s:DRAW LINE NUMBERS", __PRETTY_FUNCTION__) ;
+  #endif
   OC_GGS_TextView * textView = self.scrollView.documentView ;
   NSLayoutManager * lm = textView.layoutManager ;
   const NSRange selectedRange = textView.selectedRange ;
@@ -100,15 +106,15 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
   NSUInteger idx = 0 ;
   NSInteger lineIndex = 0 ;
   const double minYforDrawing = inRect.origin.y - (2.0 * ([font ascender] + [font descender])) ;
-  const double maxYforDrawing = NSMaxY ([self visibleRect]) ;
+//  const double maxYforDrawing = NSMaxY (self.visibleRect) ;
   BOOL maxYreached = NO ;
   mBulletArray = [NSMutableArray new] ;
   while ((idx < sourceStringLength) && ! maxYreached) {
     lineIndex ++ ;
   //--- Draw line numbers
     // NSLog (@"%lu is valid glyph index: %@", idx, [lm isValidGlyphIndex:idx] ? @"yes" : @"no") ;
-    const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:idx effectiveRange:NULL] ;
-    NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMaxY (r)) fromView:textView] ;
+     const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:idx effectiveRange:NULL] ;
+     NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMaxY (r)) fromView:textView] ;
     // NSLog (@"%f for line %u (%@)", p.y, line, ((inRect.origin.y - [font ascender])) ? @"yes" : @"no") ;
     const NSRange lineRange = [sourceString lineRangeForRange:NSMakeRange (idx, 1)] ;
     if (p.y >= minYforDrawing) {
@@ -122,8 +128,8 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
       const NSSize strSize = [str sizeWithAttributes:intersect ? attributesForSelection : attributes] ;
       p.x = viewBounds.size.width - 2.0 - strSize.width ;
       p.y -= strSize.height ;
+// ???????      maxYreached = p.y > maxYforDrawing ;
       [str drawAtPoint:p withAttributes:intersect ? attributesForSelection : attributes] ;
-      maxYreached = p.y > maxYforDrawing ;
     //--- Error or warning at this line ?
       BOOL hasError = NO ;
       BOOL hasWarning = NO ;
@@ -154,6 +160,9 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
   NSImage * errorImage = [NSImage imageNamed:NSImageNameStatusUnavailable] ;
   NSImage * warningImage = [NSImage imageNamed:NSImageNameStatusPartiallyAvailable] ;
 //---
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s:DISPLAY UNTIL LINE %ld", __PRETTY_FUNCTION__, lineIndex) ;
+  #endif
   for (PMIssueInRuler * bullet in mBulletArray) {
     [bullet.isError ? errorImage : warningImage
       drawInRect:bullet.rect
@@ -162,6 +171,9 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
       fraction:1.0
     ] ;
   }
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s:DONE", __PRETTY_FUNCTION__) ;
+  #endif
 }
 
 //---------------------------------------------------------------------------*
