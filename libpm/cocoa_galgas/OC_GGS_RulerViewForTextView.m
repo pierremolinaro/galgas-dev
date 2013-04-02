@@ -128,7 +128,7 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
       const NSSize strSize = [str sizeWithAttributes:intersect ? attributesForSelection : attributes] ;
       p.x = viewBounds.size.width - 2.0 - strSize.width ;
       p.y -= strSize.height ;
-// ???????      maxYreached = p.y > maxYforDrawing ;
+// ???????   maxYreached = (p.y > maxYforDrawing) ;
       [str drawAtPoint:p withAttributes:intersect ? attributesForSelection : attributes] ;
     //--- Error or warning at this line ?
       BOOL hasError = NO ;
