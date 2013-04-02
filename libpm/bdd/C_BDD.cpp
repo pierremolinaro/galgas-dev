@@ -979,8 +979,14 @@ static void nombreValeursInterne (const PMUInt32 inValue,
     PMUInt64 nd0, nc0, nd1, nc1 ;
     nombreValeursInterne (extractElse (node), var, nd0, nc0 COMMA_THERE) ;
     nombreValeursInterne (extractThen (node), var, nd1, nc1 COMMA_THERE) ;
-    nombreDirect = (nd0 + nd1) << (inVariableCount - var - 1) ;
-    nombreComplement = (nc0 + nc1) << (inVariableCount - var - 1) ;
+//    nombreDirect = (nd0 + nd1) << (inVariableCount - var - 1) ;
+//    nombreComplement = (nc0 + nc1) << (inVariableCount - var - 1) ;
+    nombreDirect = nd0 + nd1 ;
+    nombreComplement = nc0 + nc1 ;
+    for (PMUInt16 i=(PMUInt16) (var+1) ; i<inVariableCount ; i++) {
+      nombreDirect += nombreDirect ;
+      nombreComplement += nombreComplement ;
+    }
   }
   if ((inValue & 1) != 0) {
     const PMUInt64 tempo = nombreDirect ;
