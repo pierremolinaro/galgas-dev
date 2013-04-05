@@ -37,67 +37,27 @@
 //---------------------------------------------------------------------*
 
 class cBDDnode {
-  public : PMUInt32 mTHENbranch ;
-  public : PMUInt32 mELSEbranch ;
+  public : union {
+    struct {PMUInt32 mTHENbranch ; PMUInt32 mELSEbranch ; } ;
+    PMUInt64 mBranches ;
+  } ;
   public : PMUInt32 mVariableIndex ;
   public : PMUInt32 mAuxiliary ;
-  
-/*  public : inline cBDDnode (const PMUInt32 inVariableIndex,
-                            const PMUInt32 inTHENbranch,
-                            const PMUInt32 inELSEbranch) :
-  mTHENbranch (inTHENbranch),
-  mELSEbranch (inELSEbranch),
-  mVariableIndex (inVariableIndex),
-  mAuxiliary (0) {
-  }
-  public : inline cBDDnode (const cBDDnode & inNode) :
-  mTHENbranch (inNode.mTHENbranch),
-  mELSEbranch (inNode.mELSEbranch),
-  mVariableIndex (inNode.mVariableIndex),
-  mAuxiliary (inNode.mAuxiliary) {
-  }*/
 } ;
 
-//---------------------------------------------------------------------*
-//                                                                     *
-//            Declaration de la classe 'cBDDnode'                      *
-//               definissant un element d'un BDD                       *
-//                                                                     *
-//---------------------------------------------------------------------*
-
-/*static inline cBDDnode makeNode (const PMUInt32 inBoolVar,
-                                 const PMUInt32 inTHENbranch,
-                                 const PMUInt32 inELSEbranch
-                                 COMMA_UNUSED_LOCATION_ARGS) {
-  return cBDDnode (inBoolVar, inTHENbranch, inELSEbranch) ;
-}*/
-
-//---------------------------------------------------------------------------*
-
-static inline PMUInt32 extractVar (const cBDDnode inNode COMMA_UNUSED_LOCATION_ARGS) {
-  return inNode.mVariableIndex ;
-}
-
-//---------------------------------------------------------------------------*
-
-static inline PMUInt32 extractThen (const cBDDnode inNode) {
-  return inNode.mTHENbranch ;
-}
-
-//---------------------------------------------------------------------------*
-
-static inline PMUInt32 extractElse (const cBDDnode inNode) {
-  return inNode.mELSEbranch ;
-}
-
 //---------------------------------------------------------------------------*
 //                                                                           *
-//  BDD objects unique table                                                 *
+//  Utilities                                                                *
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-cBDDnode nodeForRoot (const PMUInt32 inRoot
-                      COMMA_LOCATION_ARGS) ;
+extern cBDDnode * gNodeArray ;
+
+inline PMUInt32 nodeIndexForRoot (const PMUInt32 inRoot
+                                  COMMA_LOCATION_ARGS) {
+  MF_AssertThere ((inRoot >> 1) <= C_BDD::getExistingNodesCount (), "nodeIndex (%lld) should be <= current node count (%lld)", inRoot >> 1, C_BDD::getExistingNodesCount ()) ;
+  return inRoot >> 1 ;
+}
 
 bool isNodeMarkedThenMark (const PMUInt32 inValue COMMA_LOCATION_ARGS) ;
 

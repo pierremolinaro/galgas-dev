@@ -256,25 +256,25 @@ PMUInt32 internalANDoperation (const PMUInt32 opf,
 //--- Effectuer le calcul
   }else if (! searchInANDOperationCache (f, g, result)) {
   //--- Faire l'operation
-    const cBDDnode nodeF = nodeForRoot (f COMMA_HERE) ;
-    const cBDDnode nodeG = nodeForRoot (g COMMA_HERE) ;
+    const PMUInt32 nodeF = nodeIndexForRoot (f COMMA_HERE) ;
+    const PMUInt32 nodeG = nodeIndexForRoot (g COMMA_HERE) ;
     const PMUInt32 compF = f & 1 ;
     const PMUInt32 compG = g & 1 ;
-    const PMUInt32 varF = extractVar (nodeF COMMA_HERE) ;
-    const PMUInt32 varG = extractVar (nodeG COMMA_HERE) ;
+    const PMUInt32 varF = gNodeArray [nodeF].mVariableIndex ;
+    const PMUInt32 varG = gNodeArray [nodeG].mVariableIndex ;
   //--- Compute
     if (varF < varG) {
       result = find_or_add (varG,
-                            internalANDoperation (f, extractElse (nodeG) ^ compG),
-                            internalANDoperation (f, extractThen (nodeG) ^ compG) COMMA_HERE) ;
+                            internalANDoperation (f, gNodeArray [nodeG].mELSEbranch ^ compG),
+                            internalANDoperation (f, gNodeArray [nodeG].mTHENbranch ^ compG) COMMA_HERE) ;
     }else if (varF == varG) {
       result = find_or_add (varF,
-                            internalANDoperation (extractElse (nodeF) ^ compF, extractElse (nodeG) ^ compG),
-                            internalANDoperation (extractThen (nodeF) ^ compF, extractThen (nodeG) ^ compG) COMMA_HERE) ;
+                            internalANDoperation (gNodeArray [nodeF].mELSEbranch ^ compF, gNodeArray [nodeG].mELSEbranch ^ compG),
+                            internalANDoperation (gNodeArray [nodeF].mTHENbranch ^ compF, gNodeArray [nodeG].mTHENbranch ^ compG) COMMA_HERE) ;
     }else{ // varF > varG
       result = find_or_add (varF,
-                            internalANDoperation (extractElse (nodeF) ^ compF, g),
-                            internalANDoperation (extractThen (nodeF) ^ compF, g) COMMA_HERE) ;
+                            internalANDoperation (gNodeArray [nodeF].mELSEbranch ^ compF, g),
+                            internalANDoperation (gNodeArray [nodeF].mTHENbranch ^ compF, g) COMMA_HERE) ;
     }
   //--- Insert result into cache
     enterInANDOperationCache (f, g, result) ;
