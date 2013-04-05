@@ -2,7 +2,7 @@
 #                                                                           *
 #  semantics definitions for semantics component                            *
 #                                                                           *
-#  Copyright (C) 2009, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2009, ..., 2013 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -637,14 +637,14 @@ override method @binarysetPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"isEmpty" !"bool" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"significantVariableCount" !"uint" !false ;
   enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"ITE" !"binaryset" !"binaryset" !"binaryset" !false ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"forAllOnBitIndex" !"uint" !"binaryset" !true ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"forAllOnBitIndexAndBeyond" !"uint" !"binaryset" !true ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"existOnBitIndex" !"uint" !"binaryset" !true ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"existOnBitIndexAndBeyond" !"uint" !"binaryset" !true ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"forAllOnBitIndex" !"uint" !"binaryset" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"forAllOnBitIndexAndBeyond" !"uint" !"binaryset" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"existOnBitIndex" !"uint" !"binaryset" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"existOnBitIndexAndBeyond" !"uint" !"binaryset" !false ;
   enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"valueCount" !"uint" !"uint64" !true  ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"compressedValueCount" !"uint64" !false ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"uint64ValueList" !"uint" !"uint64list" !true ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"stringValueList" !"uint" !"stringlist" !true ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"uint64ValueList" !"uint" !"uint64list" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"stringValueList" !"uint" !"stringlist" !false ;
   enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringValueListWithNameList" !"uint" !"stringlist" !"stringlist" !true ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"predicateStringValue" !"string" !false ;
   enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"compressedStringValueList" !"uint" !"stringlist" !true ;

@@ -59,17 +59,13 @@ GALGAS_binaryset GALGAS_binaryset::constructor_fullBinarySet (UNUSED_LOCATION_AR
 //---------------------------------------------------------------------------*
 
 GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithBit (const GALGAS_uint & inBitIndex,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) {
+                                                                 C_Compiler * /* inCompiler */
+                                                                 COMMA_UNUSED_LOCATION_ARGS) {
   GALGAS_binaryset result ;
   if (inBitIndex.isValid ()) {
     const PMUInt32 bitIndex = inBitIndex.uintValue () ;
-    if (bitIndex > 32766) {
-      inCompiler->onTheFlyRunTimeError ("bit index greater than 32766" COMMA_THERE) ;
-    }else{
-      const C_BDD bdd (bitIndex, true) ;
-      result = GALGAS_binaryset (bdd) ;
-    }
+    const C_BDD bdd (bitIndex, true) ;
+    result = GALGAS_binaryset (bdd) ;
   }
   return result ;
 }
@@ -141,10 +137,10 @@ static GALGAS_binaryset binarySetWithComparison (C_Compiler * inCompiler,
   if ((inLeftFirstIndex.isValid ()) && (inBitCount.isValid ()) && (inRightFirstIndex.isValid ())) {
     const PMUInt64 maxLeft = ((PMUInt64) inLeftFirstIndex.uintValue ()) + inBitCount.uintValue () ;
     const PMUInt64 maxRight = ((PMUInt64) inRightFirstIndex.uintValue ()) + inBitCount.uintValue () ;
-    if (maxLeft > 32766) {
-      inCompiler->onTheFlyRunTimeError ("left operand upper bit is greater than 32766" COMMA_THERE) ;
-    }else if (maxRight > 32766) {
-      inCompiler->onTheFlyRunTimeError ("right operand upper bit is greater than 32766" COMMA_THERE) ;
+    if (maxLeft > PMUINT32_MAX) {
+      inCompiler->onTheFlyRunTimeError ("left operand upper bit is greater than 2**31-1" COMMA_THERE) ;
+    }else if (maxRight > PMUINT32_MAX) {
+      inCompiler->onTheFlyRunTimeError ("right operand upper bit is greater than 2**31-1" COMMA_THERE) ;
     }else {
       result = GALGAS_binaryset (C_BDD::varCompareVar (inLeftFirstIndex.uintValue (),
                                  inBitCount.uintValue (),
@@ -256,8 +252,8 @@ static GALGAS_binaryset binarySetWithComparisonWithConstant (C_Compiler * inComp
   GALGAS_binaryset result ;
   if ((inBitIndex.isValid ()) && (inBitCount.isValid ()) && (inConstant.isValid ())) {
     const PMUInt64 maxLeft = ((PMUInt64) inBitIndex.uintValue ()) + inBitCount.uintValue () ;
-    if (maxLeft > 32766) {
-      inCompiler->onTheFlyRunTimeError ("left operand upper bit is greater than 32766" COMMA_THERE) ;
+    if (maxLeft > PMUINT32_MAX) {
+      inCompiler->onTheFlyRunTimeError ("left operand upper bit is greater than 2**31-1" COMMA_THERE) ;
     }else {
       result = GALGAS_binaryset (C_BDD::varCompareConst (inBitIndex.uintValue (),
                                  inBitCount.uintValue (),
@@ -544,14 +540,12 @@ GALGAS_uint GALGAS_binaryset::reader_significantVariableCount (UNUSED_LOCATION_A
 //---------------------------------------------------------------------------*
 
 GALGAS_uint_36__34_ GALGAS_binaryset::reader_valueCount (const GALGAS_uint & inVariableCount,
-                                                           C_Compiler * inCompiler
-                                                           COMMA_LOCATION_ARGS) const {
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_uint_36__34_ result ;
   if (inVariableCount.isValid ()) {
     if (mBDD.significantVariableCount () > inVariableCount.uintValue ()) {
       inCompiler->onTheFlyRunTimeError ("needed variable count is greater than variable count argument" COMMA_THERE) ;
-    }else if (inVariableCount.uintValue () > (((PMSInt32) PMUINT16_MAX) + 1)) {
-      inCompiler->onTheFlyRunTimeError ("variable count argument is greater than 32767" COMMA_THERE) ;
     }else{
       result = GALGAS_uint_36__34_ (mBDD.valueCount (inVariableCount.uintValue ())) ;
     }
@@ -569,21 +563,16 @@ GALGAS_uint_36__34_ GALGAS_binaryset::reader_compressedValueCount (UNUSED_LOCATI
 
 //---------------------------------------------------------------------------*
 
-GALGAS_uint_36__34_list GALGAS_binaryset::reader_uint_36__34_ValueList (const GALGAS_uint & inVariableCount,
-                                                                        C_Compiler * inCompiler
+GALGAS_uint_36__34_list GALGAS_binaryset::reader_uint_36__34_ValueList (const GALGAS_uint & inVariableCount
                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_uint_36__34_list result ;
   if (inVariableCount.isValid ()) {
-    if (inVariableCount.uintValue () > (((PMSInt32) PMUINT16_MAX) + 1)) {
-      inCompiler->onTheFlyRunTimeError ("variable count argument is greater than 32767" COMMA_THERE) ;
-    }else{
-      TC_UniqueArray <PMUInt64> valuesArray ;
-      mBDD.buildValue64Array (valuesArray, inVariableCount.uintValue ()) ;
-      result = GALGAS_uint_36__34_list::constructor_emptyList (THERE) ;
-      for (PMSInt32 i=0 ; i<valuesArray.count () ; i++) {
-        const PMUInt64 v = valuesArray (i COMMA_HERE) ;
-        result.addAssign_operation (GALGAS_uint_36__34_ (v) COMMA_HERE) ;
-      }
+    TC_UniqueArray <PMUInt64> valuesArray ;
+    mBDD.buildValue64Array (valuesArray, inVariableCount.uintValue ()) ;
+    result = GALGAS_uint_36__34_list::constructor_emptyList (THERE) ;
+    for (PMSInt32 i=0 ; i<valuesArray.count () ; i++) {
+      const PMUInt64 v = valuesArray (i COMMA_HERE) ;
+      result.addAssign_operation (GALGAS_uint_36__34_ (v) COMMA_HERE) ;
     }
   }
   return result ;
@@ -597,17 +586,13 @@ GALGAS_stringlist GALGAS_binaryset::reader_stringValueListWithNameList (const GA
                                                                         COMMA_LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if ((inVariableCount.isValid ()) && (inStringList.isValid ())) {
-    if (inVariableCount.uintValue () > (((PMSInt32) PMUINT16_MAX) + 1)) {
-      inCompiler->onTheFlyRunTimeError ("variable count argument is greater than 32767" COMMA_THERE) ;
-    }else{
-      TC_UniqueArray <PMUInt64> valuesArray ;
-      mBDD.buildValue64Array (valuesArray, inVariableCount.uintValue ()) ;
-      result = GALGAS_stringlist::constructor_emptyList (THERE) ;
-      for (PMSInt32 i=0 ; i<valuesArray.count () ; i++) {
-        const PMUInt32 v = (PMUInt32) (valuesArray (i COMMA_HERE) & PMUINT32_MAX) ;
-        GALGAS_uint object = GALGAS_uint (v) ;
-        result.addAssign_operation (inStringList.reader_mValueAtIndex (object, inCompiler COMMA_HERE) COMMA_HERE) ;
-      }
+    TC_UniqueArray <PMUInt64> valuesArray ;
+    mBDD.buildValue64Array (valuesArray, inVariableCount.uintValue ()) ;
+    result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+    for (PMSInt32 i=0 ; i<valuesArray.count () ; i++) {
+      const PMUInt32 v = (PMUInt32) (valuesArray (i COMMA_HERE) & PMUINT32_MAX) ;
+      GALGAS_uint object = GALGAS_uint (v) ;
+      result.addAssign_operation (inStringList.reader_mValueAtIndex (object, inCompiler COMMA_HERE) COMMA_HERE) ;
     }
   }
   return result ;
@@ -620,25 +605,21 @@ GALGAS_stringlist GALGAS_binaryset::reader_compressedStringValueList (const GALG
                                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (inVariableCount.isValid ()) {
-    if (inVariableCount.uintValue () > (((PMSInt32) PMUINT16_MAX) + 1)) {
-      inCompiler->onTheFlyRunTimeError ("variable count argument is greater than 32767" COMMA_THERE) ;
+    const PMUInt32 variableCount = inVariableCount.uintValue () ;
+    const PMUInt32 actualVariableCount = mBDD.significantVariableCount () ;
+    if (actualVariableCount > variableCount) {
+      C_String message ;
+      message << "variable count argument (" << cStringWithSigned (variableCount)
+              << ") is lower than actual variable count ("
+              << cStringWithSigned (actualVariableCount) << "); it should be greater or equal" ;
+      inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
     }else{
-      const PMUInt32 variableCount = inVariableCount.uintValue () ;
-      const PMUInt32 actualVariableCount = mBDD.significantVariableCount () ;
-      if (actualVariableCount > variableCount) {
-        C_String message ;
-        message << "variable count argument (" << cStringWithSigned (variableCount)
-                << ") is lower than actual variable count ("
-                << cStringWithSigned (actualVariableCount) << "); it should be greater or equal" ;
-        inCompiler->onTheFlyRunTimeError (message COMMA_THERE) ;
-      }else{
-        TC_UniqueArray <C_String> valuesArray ;
-        mBDD.buildCompressedBigEndianStringValueArray (valuesArray, variableCount COMMA_THERE) ;
-        result = GALGAS_stringlist::constructor_emptyList (THERE) ;
-        for (PMSInt32 i=0 ; i<valuesArray.count () ; i++) {
-          const C_String v = valuesArray (i COMMA_HERE) ;
-          result.addAssign_operation (GALGAS_string (v) COMMA_HERE) ;
-        }
+      TC_UniqueArray <C_String> valuesArray ;
+      mBDD.buildCompressedBigEndianStringValueArray (valuesArray, variableCount COMMA_THERE) ;
+      result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+      for (PMSInt32 i=0 ; i<valuesArray.count () ; i++) {
+        const C_String v = valuesArray (i COMMA_HERE) ;
+        result.addAssign_operation (GALGAS_string (v) COMMA_HERE) ;
       }
     }
   }
@@ -647,21 +628,16 @@ GALGAS_stringlist GALGAS_binaryset::reader_compressedStringValueList (const GALG
 
 //---------------------------------------------------------------------------*
 
-GALGAS_stringlist GALGAS_binaryset::reader_stringValueList (const GALGAS_uint & inVariableCount,
-                                                            C_Compiler * inCompiler
+GALGAS_stringlist GALGAS_binaryset::reader_stringValueList (const GALGAS_uint & inVariableCount
                                                             COMMA_LOCATION_ARGS) const {
   GALGAS_stringlist result ;
   if (inVariableCount.isValid ()) {
-    if (inVariableCount.uintValue () > (((PMSInt32) PMUINT16_MAX) + 1)) {
-      inCompiler->onTheFlyRunTimeError ("variable count argument is greater than 32767" COMMA_THERE) ;
-    }else{
-      TC_UniqueArray <C_String> valuesArray ;
-      mBDD.buildBigEndianStringValueArray (valuesArray, inVariableCount.uintValue ()) ;
-      result = GALGAS_stringlist::constructor_emptyList (THERE) ;
-      for (PMSInt32 i=0 ; i<valuesArray.count () ; i++) {
-        const C_String v = valuesArray (i COMMA_HERE) ;
-        result.addAssign_operation (GALGAS_string (v) COMMA_HERE) ;
-      }
+    TC_UniqueArray <C_String> valuesArray ;
+    mBDD.buildBigEndianStringValueArray (valuesArray, inVariableCount.uintValue ()) ;
+    result = GALGAS_stringlist::constructor_emptyList (THERE) ;
+    for (PMSInt32 i=0 ; i<valuesArray.count () ; i++) {
+      const C_String v = valuesArray (i COMMA_HERE) ;
+      result.addAssign_operation (GALGAS_string (v) COMMA_HERE) ;
     }
   }
   return result ;
@@ -675,13 +651,10 @@ GALGAS_string GALGAS_binaryset::reader_predicateStringValue (LOCATION_ARGS) cons
 
 //---------------------------------------------------------------------------*
 
-GALGAS_binaryset GALGAS_binaryset::reader_forAllOnBitIndex (const GALGAS_uint & inVariableIndex,
-                                                              C_Compiler * inCompiler
-                                                              COMMA_LOCATION_ARGS) const {
+GALGAS_binaryset GALGAS_binaryset::reader_forAllOnBitIndex (const GALGAS_uint & inVariableIndex
+                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
-  if (inVariableIndex.uintValue () > 32766) {
-    inCompiler->onTheFlyRunTimeError ("index argument is greater than 32766" COMMA_THERE) ;
-  }else{
+  if (isValid()) {
     result = GALGAS_binaryset (mBDD.forallOnBitNumber (inVariableIndex.uintValue ())) ;
   }
   return result ;
@@ -689,13 +662,10 @@ GALGAS_binaryset GALGAS_binaryset::reader_forAllOnBitIndex (const GALGAS_uint & 
 
 //---------------------------------------------------------------------------*
 
-GALGAS_binaryset GALGAS_binaryset::reader_forAllOnBitIndexAndBeyond (const GALGAS_uint & inVariableIndex,
-                                                                       C_Compiler * inCompiler
-                                                                       COMMA_LOCATION_ARGS) const {
+GALGAS_binaryset GALGAS_binaryset::reader_forAllOnBitIndexAndBeyond (const GALGAS_uint & inVariableIndex
+                                                                     COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
-  if (inVariableIndex.uintValue () > 32766) {
-    inCompiler->onTheFlyRunTimeError ("index argument is greater than 32766" COMMA_THERE) ;
-  }else{
+  if (isValid ()) {
     result = GALGAS_binaryset (mBDD.forallOnBitsAfterNumber (inVariableIndex.uintValue ())) ;
   }
   return result ;
@@ -703,13 +673,10 @@ GALGAS_binaryset GALGAS_binaryset::reader_forAllOnBitIndexAndBeyond (const GALGA
 
 //---------------------------------------------------------------------------*
 
-GALGAS_binaryset GALGAS_binaryset::reader_existOnBitIndex (const GALGAS_uint & inVariableIndex,
-                                                             C_Compiler * inCompiler
-                                                             COMMA_LOCATION_ARGS)const  {
+GALGAS_binaryset GALGAS_binaryset::reader_existOnBitIndex (const GALGAS_uint & inVariableIndex
+                                                           COMMA_UNUSED_LOCATION_ARGS)const  {
   GALGAS_binaryset result ;
-  if (inVariableIndex.uintValue () > 32766) {
-    inCompiler->onTheFlyRunTimeError ("index argument is greater than 32766" COMMA_THERE) ;
-  }else{
+  if (isValid ()) {
     result = GALGAS_binaryset (mBDD.existsOnBitNumber (inVariableIndex.uintValue ())) ;
   }
   return result ;
@@ -717,16 +684,11 @@ GALGAS_binaryset GALGAS_binaryset::reader_existOnBitIndex (const GALGAS_uint & i
 
 //---------------------------------------------------------------------------*
 
-GALGAS_binaryset GALGAS_binaryset::reader_existOnBitIndexAndBeyond (const GALGAS_uint & inVariableIndex,
-                                                                      C_Compiler * inCompiler
-                                                                      COMMA_LOCATION_ARGS) const {
+GALGAS_binaryset GALGAS_binaryset::reader_existOnBitIndexAndBeyond (const GALGAS_uint & inVariableIndex
+                                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if (inVariableIndex.isValid ()) {
-    if (inVariableIndex.uintValue () > 32766) {
-      inCompiler->onTheFlyRunTimeError ("index argument is greater than 32766" COMMA_THERE) ;
-    }else{
-      result = GALGAS_binaryset (mBDD.existsOnBitsAfterNumber (inVariableIndex.uintValue ())) ;
-    }
+    result = GALGAS_binaryset (mBDD.existsOnBitsAfterNumber (inVariableIndex.uintValue ())) ;
   }
   return result ;
 }
