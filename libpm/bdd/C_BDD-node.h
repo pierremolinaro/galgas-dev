@@ -37,25 +37,25 @@
 //---------------------------------------------------------------------*
 
 class cBDDnode {
-  public : PMUInt32 mVariableIndex ;
   public : PMUInt32 mTHENbranch ;
   public : PMUInt32 mELSEbranch ;
-  public : PMUInt32 mSpare ;
+  public : PMUInt32 mVariableIndex ;
+  public : PMUInt32 mAuxiliary ;
   
-  public : inline cBDDnode (const PMUInt32 inVariableIndex,
+/*  public : inline cBDDnode (const PMUInt32 inVariableIndex,
                             const PMUInt32 inTHENbranch,
                             const PMUInt32 inELSEbranch) :
-  mVariableIndex (inVariableIndex),
   mTHENbranch (inTHENbranch),
   mELSEbranch (inELSEbranch),
-  mSpare (0) {
+  mVariableIndex (inVariableIndex),
+  mAuxiliary (0) {
   }
-  public : inline cBDDnode (const cBDDnode & inNode)  :
-  mVariableIndex (inNode.mVariableIndex),
+  public : inline cBDDnode (const cBDDnode & inNode) :
   mTHENbranch (inNode.mTHENbranch),
   mELSEbranch (inNode.mELSEbranch),
-  mSpare (inNode.mSpare) {
-  }
+  mVariableIndex (inNode.mVariableIndex),
+  mAuxiliary (inNode.mAuxiliary) {
+  }*/
 } ;
 
 //---------------------------------------------------------------------*
@@ -65,12 +65,12 @@ class cBDDnode {
 //                                                                     *
 //---------------------------------------------------------------------*
 
-static inline cBDDnode makeNode (const PMUInt32 inBoolVar,
+/*static inline cBDDnode makeNode (const PMUInt32 inBoolVar,
                                  const PMUInt32 inTHENbranch,
                                  const PMUInt32 inELSEbranch
                                  COMMA_UNUSED_LOCATION_ARGS) {
   return cBDDnode (inBoolVar, inTHENbranch, inELSEbranch) ;
-}
+}*/
 
 //---------------------------------------------------------------------------*
 

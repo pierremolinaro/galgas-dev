@@ -50,7 +50,6 @@ PMUInt32 C_BDD::getBDDnodeSize (void) {
 
 static PMUInt32 gNodeArraySize = 0 ;
 static cBDDnode * gNodeArray = NULL ;
-static PMUInt32 * gAuxiliaryArray = NULL ;
 static PMUInt64 * gMarkTable = NULL ;
 static PMUInt32 gCurrentNodeCount = 0 ;
 
@@ -112,7 +111,7 @@ static void reallocHashMap (const PMUInt32 inNewSize) {
     }
     for (PMUInt32 nodeIndex=1 ; nodeIndex<=gCurrentNodeCount ; nodeIndex++) {
       const PMUInt64 hashCode = nodeHashCode (gNodeArray [nodeIndex]) ;
-      gAuxiliaryArray [nodeIndex] = gCollisionMap [hashCode] ;
+      gNodeArray [nodeIndex].mAuxiliary = gCollisionMap [hashCode] ;
       gCollisionMap [hashCode] = nodeIndex ;
     }
   }
@@ -136,7 +135,6 @@ static PMUInt32 addNewNode (const cBDDnode inNode) {
               (newSize * (PMUInt32) sizeof (PMUInt64)) / 1000000) ;
     }
     macroMyReallocPODArray (gNodeArray, cBDDnode, newSize) ;
-    macroMyReallocPODArray (gAuxiliaryArray, PMUInt32, newSize) ;
     macroMyReallocPODArray (gMarkTable, PMUInt64, newSize >> 6) ;
     gNodeArraySize = newSize ;
     gNodeArray [0].mELSEbranch = 0 ;
@@ -175,7 +173,7 @@ static PMUInt32 addNewNode (const cBDDnode inNode) {
   gNodeArray [gCurrentNodeCount] = inNode ;
 //--- Enter in hash map
   const PMUInt64 hashCode = nodeHashCode (inNode) ;
-  gAuxiliaryArray [gCurrentNodeCount] = gCollisionMap [hashCode] ;
+  gNodeArray [gCurrentNodeCount].mAuxiliary = gCollisionMap [hashCode] ;
   gCollisionMap [hashCode] = gCurrentNodeCount ;
 //---
   return gCurrentNodeCount ;
@@ -196,7 +194,7 @@ cBDDnode nodeForRoot (const PMUInt32 inRoot
 void C_BDD::unmarkAllExistingBDDnodes (void) {
   MF_Assert ((gNodeArraySize % 64) == 0, "gNodeArraySize (%lld) is not a multiple of 64", gNodeArraySize, 0) ;
   for (PMUInt32 i=0 ; i<(gNodeArraySize >> 6) ; i++) {
-    gMarkTable [i] = 0ULL ;
+    gMarkTable [i] = 0 ;
   }
 }
 
@@ -270,7 +268,7 @@ macroDeclareStaticMutex (semaphore)
 PMUInt32 find_or_add (const PMUInt32 inBoolVar,
                       const PMUInt32 inELSEbranch,
                       const PMUInt32 inTHENbranch
-                      COMMA_LOCATION_ARGS) {
+                      COMMA_UNUSED_LOCATION_ARGS) {
   PMUInt32 result = inELSEbranch ;
   if (inELSEbranch != inTHENbranch) {
     macroMutexLock (semaphore) ;
@@ -280,7 +278,7 @@ PMUInt32 find_or_add (const PMUInt32 inBoolVar,
       const PMUInt32 complement = inELSEbranch & 1 ;
       const PMUInt32 c1 = inTHENbranch ^ complement ;
       const PMUInt32 c0 = inELSEbranch ^ complement ;
-      const cBDDnode candidateNode = makeNode (inBoolVar, c1, c0 COMMA_THERE) ;
+      const cBDDnode candidateNode = {c1, c0, inBoolVar, 0} ;
       // printf ("candidateNode %llu gCollisionMapSize %u\n", candidateNode, gCollisionMapSize) ;
       const PMUInt64 hashCode = nodeHashCode (candidateNode) ;
       PMUInt32 nodeIndex = gCollisionMap [hashCode] ;
@@ -288,7 +286,7 @@ PMUInt32 find_or_add (const PMUInt32 inBoolVar,
          && ((gNodeArray [nodeIndex].mVariableIndex != candidateNode.mVariableIndex)
           || (gNodeArray [nodeIndex].mTHENbranch != candidateNode.mTHENbranch)
           || (gNodeArray [nodeIndex].mELSEbranch != candidateNode.mELSEbranch))) {
-        nodeIndex = gAuxiliaryArray [nodeIndex] ;
+        nodeIndex = gNodeArray [nodeIndex].mAuxiliary ;
       }
       if (0 == nodeIndex) {
         nodeIndex = addNewNode (candidateNode) ;
@@ -369,7 +367,7 @@ void C_BDD::markAndSweepUnusedNodes (void) {
 //--- Parcourir la table des elements BDD et recycler ceux qui sont inutilises
   PMUInt32 unchangedNodeCount = 0 ;
   if (gNodeArraySize > 0) {
-    gAuxiliaryArray [0] = 0 ;
+    gNodeArray [0].mAuxiliary = 0 ;
     if (gMarkTable [0] == ~ 1LLU) {
       unchangedNodeCount = 63 ;
       for (PMUInt32 i=1 ; (i<(gNodeArraySize >> 6)) && (gMarkTable [i] == ~ 0LLU) ; i++) {
@@ -379,7 +377,7 @@ void C_BDD::markAndSweepUnusedNodes (void) {
   }
   // printf ("********************************************** %u nodes inchanges\n", unchangedNodeCount) ;
   for (PMUInt32 i=1 ; i<=unchangedNodeCount ; i++) {
-    gAuxiliaryArray [i] = i ;
+    gNodeArray [i].mAuxiliary = i ;
   }
   PMUInt32 newNodeCount = unchangedNodeCount ;
   for (PMUInt32 nodeIndex=unchangedNodeCount+1 ; nodeIndex<=gCurrentNodeCount ; nodeIndex++) {
@@ -390,12 +388,13 @@ void C_BDD::markAndSweepUnusedNodes (void) {
       const PMUInt32 elseBranch = extractElse (node) ;
       MF_Assert ((thenBranch >> 1) < nodeIndex, "(thenBranch [%lld] >> 1) < nodeIndex [%lld]", (thenBranch >> 1), nodeIndex) ;
       MF_Assert ((elseBranch >> 1) < nodeIndex, "(elseBranch [%lld] >> 1) < nodeIndex [%lld]", (elseBranch >> 1), nodeIndex) ;
-      const PMUInt32 newThenBranch = (gAuxiliaryArray [thenBranch >> 1] << 1) | (thenBranch & 1) ;
-      const PMUInt32 newElseBranch = (gAuxiliaryArray [elseBranch >> 1] << 1) | (elseBranch & 1) ;
-      const cBDDnode newNode = makeNode (var, newThenBranch, newElseBranch COMMA_HERE) ;
+      const PMUInt32 newThenBranch = (gNodeArray [thenBranch >> 1].mAuxiliary << 1) | (thenBranch & 1) ;
+      const PMUInt32 newElseBranch = (gNodeArray [elseBranch >> 1].mAuxiliary << 1) | (elseBranch & 1) ;
       newNodeCount ++ ;
-      gNodeArray [newNodeCount] = newNode ;
-      gAuxiliaryArray [nodeIndex] = newNodeCount ;
+      gNodeArray [newNodeCount].mTHENbranch = newThenBranch ;
+      gNodeArray [newNodeCount].mELSEbranch = newElseBranch ;
+      gNodeArray [newNodeCount].mVariableIndex = var ;
+      gNodeArray [nodeIndex].mAuxiliary = newNodeCount ;
      // MF_Assert (node == newNode, "node [%lld] == newNode [%lld]", node, newNode) ;
       //if (newNodeCount < 10) {
       //  printf ("index %4u -> %4u, node %16llX -> %16llX\n", nodeIndex, newNodeCount, node, newNode) ;
@@ -408,8 +407,8 @@ void C_BDD::markAndSweepUnusedNodes (void) {
   p = gBDDinstancesListRoot.mPtrToNextBDD ;
   while (p != & gBDDinstancesListRoot) {
     const PMUInt32 previousValue = p->mBDDvalue ;
-    MF_Assert ((gAuxiliaryArray [previousValue >> 1]) <= (previousValue >> 1), "(elseBranch [%lld] >> 1) <= nodeIndex [%lld]", (gAuxiliaryArray [previousValue >> 1]), previousValue >> 1) ;
-    p->mBDDvalue = (gAuxiliaryArray [previousValue >> 1] << 1) | (previousValue & 1) ;
+    MF_Assert ((gNodeArray [previousValue >> 1].mAuxiliary) <= (previousValue >> 1), "(elseBranch [%lld] >> 1) <= nodeIndex [%lld]", (gNodeArray [previousValue >> 1].mAuxiliary), previousValue >> 1) ;
+    p->mBDDvalue = (gNodeArray [previousValue >> 1].mAuxiliary << 1) | (previousValue & 1) ;
     // printf ("root %X -> %X\n", previousValue, p->mBDDvalue) ;
    // MF_Assert (previousValue == p->mBDDvalue, "(previousValue [%lld] >> 1) == p->mBDDvalue [%lld]", previousValue, p->mBDDvalue) ;
     p = p->mPtrToNextBDD ;
@@ -427,7 +426,7 @@ void C_BDD::markAndSweepUnusedNodes (void) {
   if (0 < gCollisionMapSize) {
     for (PMUInt32 nodeIndex=1 ; nodeIndex<=gCurrentNodeCount ; nodeIndex++) {
       const PMUInt64 hashCode = nodeHashCode (gNodeArray [nodeIndex]) ;
-      gAuxiliaryArray [nodeIndex] = gCollisionMap [hashCode] ;
+      gNodeArray [nodeIndex].mAuxiliary = gCollisionMap [hashCode] ;
       gCollisionMap [hashCode] = nodeIndex ;
     }
   }
@@ -629,7 +628,7 @@ void C_BDD::printBDDpackageOperationsSummary (AC_OutputStream & inStream) {
     PMUInt32 nodeIndex = gCollisionMap [i] ;
     while (0 != nodeIndex) {
       length ++ ;
-      nodeIndex = gAuxiliaryArray [nodeIndex] ;
+      nodeIndex = gNodeArray [nodeIndex].mAuxiliary ;
     }
     if (entrySizeArray.count () > length) {
       entrySizeArray (length COMMA_HERE) ++ ;
@@ -654,7 +653,6 @@ void C_BDD::freeBDDStataStructures (void) {
   C_BDD::markAndSweepUnusedNodes () ;
   if (0 == gCurrentNodeCount) {
     macroMyDeletePODArray (gCollisionMap) ;
-    macroMyDeletePODArray (gAuxiliaryArray) ;
     macroMyDeletePODArray (gMarkTable) ;
     macroMyDeletePODArray (gNodeArray) ;
   }else{
