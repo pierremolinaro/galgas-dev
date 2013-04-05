@@ -46,7 +46,7 @@ class cAffichagePremiersProduction : public C_bdd_value_traversing {
 
 //--- Methode virtelle appelee pour chaque valeur
   public : virtual void action (const bool tableauDesValeurs [],
-                                const PMUInt16 nombreVariables) ;
+                                const PMUInt32 nombreVariables) ;
 } ;
   
 //---------------------------------------------------------------------------*
@@ -60,7 +60,7 @@ mVocabulary (inVocabulary) {
 //---------------------------------------------------------------------------*
 
 void cAffichagePremiersProduction::action (const bool tableauDesValeurs [],
-                                           const PMUInt16 nombreVariables) {
+                                           const PMUInt32 nombreVariables) {
   PMSInt32 element = 0L ;
   for (PMSInt32 i=nombreVariables - 1 ; i>=0 ; i--) {
     element = (element << 1) + tableauDesValeurs [i] ;
@@ -224,7 +224,7 @@ class cEcrireNonTerminal : public C_bdd_value_traversing {
 
 //--- Methode virtuelle appelee pour chaque valeur
   public : virtual void action (const bool tableauDesValeurs [],
-                                const PMUInt16 nombreVariables) ;
+                                const PMUInt32 nombreVariables) ;
 } ;
   
 //---------------------------------------------------------------------------*
@@ -242,7 +242,7 @@ aIndice (0) {
 //---------------------------------------------------------------------------*
 
 void cEcrireNonTerminal::action (const bool tableauDesValeurs [],
-                                 const PMUInt16 nombreVariables) {
+                                 const PMUInt32 nombreVariables) {
   PMSInt32 element = 0L ;
   for (PMSInt32 i=nombreVariables - 1 ; i>=0 ; i--) {
     element = (element << 1) + tableauDesValeurs [i] ;

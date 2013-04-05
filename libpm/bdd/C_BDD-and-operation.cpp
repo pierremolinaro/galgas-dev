@@ -256,12 +256,12 @@ PMUInt32 internalANDoperation (const PMUInt32 opf,
 //--- Effectuer le calcul
   }else if (! searchInANDOperationCache (f, g, result)) {
   //--- Faire l'operation
-    const PMUInt64 nodeF = nodeForRoot (f COMMA_HERE) ;
-    const PMUInt64 nodeG = nodeForRoot (g COMMA_HERE) ;
+    const cBDDnode nodeF = nodeForRoot (f COMMA_HERE) ;
+    const cBDDnode nodeG = nodeForRoot (g COMMA_HERE) ;
     const PMUInt32 compF = f & 1 ;
     const PMUInt32 compG = g & 1 ;
-    const PMUInt16 varF = extractVar (nodeF COMMA_HERE) ;
-    const PMUInt16 varG = extractVar (nodeG COMMA_HERE) ;
+    const PMUInt32 varF = extractVar (nodeF COMMA_HERE) ;
+    const PMUInt32 varG = extractVar (nodeG COMMA_HERE) ;
   //--- Compute
     if (varF < varG) {
       result = find_or_add (varG,
