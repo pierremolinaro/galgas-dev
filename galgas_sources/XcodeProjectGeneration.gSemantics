@@ -451,6 +451,7 @@ local routine build_LIBPM_UTILITIES_group
   append_cpp_h_files !?fileList !"MF_MemoryControl" ;
   append_cpp_h_files !?fileList !"C_PrologueEpilogue" ;
   fileList += !"M_SourceLocation.h" ;
+  fileList += !"M_machine.h" ;
   fileList += !"TF_inf.h" ;
   fileList += !"TF_sup.h" ;
   fileList += !"TF_Swap.h" ;

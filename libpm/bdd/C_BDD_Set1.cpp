@@ -170,7 +170,7 @@ class cBuildArrayForSet1 : public C_bdd_value_traversing {
 
 //--- Methode virtuelle appelee pour chaque valeur
   public : virtual void action (const bool inValuesArray [],
-                                const PMUInt16 inBDDbitsSize) ;
+                                const PMUInt32 inBDDbitsSize) ;
 } ;
   
 //---------------------------------------------------------------------------*
@@ -184,7 +184,7 @@ mArray (outArray) {
 
 void cBuildArrayForSet1::
 action (const bool inValuesArray [],
-        const PMUInt16 inBDDbitsSize) {
+        const PMUInt32 inBDDbitsSize) {
   PMSInt32 element = 0L ;
   for (PMSInt32 i=inBDDbitsSize - 1 ; i>=0 ; i--) {
     element = (element << 1) + inValuesArray [i] ;
