@@ -326,7 +326,7 @@ routine updateTargets
   availableGenerationFeatures += !"SnowLeopard" ;
   availableGenerationFeatures += !"Lion" ;
   availableGenerationFeatures += !"MountainLion" ;
-#  availableGenerationFeatures += !"multi-threading" ;
+  availableGenerationFeatures += !"multi-threading" ;
   @stringset generationFeatures [emptySet] ;
   @bool multiThreadingEnabled := false ;
 #--- Check xcode target architectures

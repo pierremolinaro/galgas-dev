@@ -46,9 +46,9 @@ reader @lexicalTypeEnum appendMethodName -> @string outResult :
     when lexicalType_string : outResult := "appendCLiteralStringConstant" ;
     when lexicalType_char   : outResult := "appendUnicodeCharacter" ;
     when lexicalType_uint   : outResult := "appendUnsigned" ;
-    when lexicalType_uint64 : outResult := "appendUnsigned64" ;
+    when lexicalType_uint64 : outResult := "appendUnsigned" ;
     when lexicalType_sint   : outResult := "appendSigned" ;
-    when lexicalType_sint64 : outResult := "appendSigned64" ;
+    when lexicalType_sint64 : outResult := "appendSigned" ;
     when lexicalType_double : outResult := "appendDouble" ;
   end switch ;
 end reader ;

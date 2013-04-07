@@ -39,7 +39,7 @@
 //---------------------------------------------------------------------*
 
 PMUInt32 C_BDD::getBDDnodeSize (void) {
-  return sizeof (cBDDnode) ;
+  return (PMUInt32) sizeof (cBDDnode) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -130,7 +130,7 @@ static PMUInt32 addNewNode (const cBDDnode inNode) {
     }else  if (C_BDD::displaysInformationMessages ()) {
       printf ("BDD package info: node map reallocated to %u %03u %03u (%u MB)\n",
               newSize / 1000000, (newSize / 1000) % 1000, newSize % 1000,
-              (newSize * (PMUInt32) sizeof (PMUInt64)) / 1000000) ;
+              (newSize * (PMUInt32) sizeof (cBDDnode)) / 1000000) ;
     }
     macroMyReallocPODArray (gNodeArray, cBDDnode, newSize) ;
     macroMyReallocPODArray (gMarkTable, PMUInt64, newSize >> 6) ;
@@ -473,26 +473,34 @@ mPtrToNextBDD (NULL) {
   initLinks () ;
 }
 
+//---------------------------------------------------------------------------*
+
+macroDeclareStaticMutex (semaphoreLink)
+
 //---------------------------------------------------------------------*
 
 void C_BDD::initLinks (void) {
   mPtrToPreviousBDD = this ;
   mPtrToNextBDD = this ;
-  C_BDD * suivantRacine = gBDDinstancesListRoot.mPtrToNextBDD ;
-  mPtrToPreviousBDD = & gBDDinstancesListRoot ;
-  suivantRacine->mPtrToPreviousBDD = this ;
-  mPtrToNextBDD = suivantRacine ;
-  gBDDinstancesListRoot.mPtrToNextBDD = this ;
+  macroMutexLock (semaphoreLink) ;
+    C_BDD * suivantRacine = gBDDinstancesListRoot.mPtrToNextBDD ;
+    mPtrToPreviousBDD = & gBDDinstancesListRoot ;
+    suivantRacine->mPtrToPreviousBDD = this ;
+    mPtrToNextBDD = suivantRacine ;
+    gBDDinstancesListRoot.mPtrToNextBDD = this ;
+  macroMutexUnlock (semaphoreLink) ;
 }
 
 //---------------------------------------------------------------------*
 
 C_BDD::~C_BDD (void) {
   mBDDvalue = 0 ;
-  C_BDD * suivant = mPtrToNextBDD ;
-  C_BDD * precedent = mPtrToPreviousBDD ;
-  precedent->mPtrToNextBDD = suivant ;
-  suivant->mPtrToPreviousBDD = precedent ;
+  macroMutexLock (semaphoreLink) ;
+    C_BDD * suivant = mPtrToNextBDD ;
+    C_BDD * precedent = mPtrToPreviousBDD ;
+    precedent->mPtrToNextBDD = suivant ;
+    suivant->mPtrToPreviousBDD = precedent ;
+  macroMutexUnlock (semaphoreLink) ;
 }
 
 //---------------------------------------------------------------------*
