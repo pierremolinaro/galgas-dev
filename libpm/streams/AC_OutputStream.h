@@ -60,22 +60,18 @@ class AC_OutputStream {
   public : void appendUnicodeCharacter (const utf32 inUnicodeCharacter COMMA_LOCATION_ARGS) ;
 
 //--- Appending PMUInt32
-  public : void appendUnsignedWithZeroFill (const PMUInt32 inValue, const PMUInt32 inWidth) ;
-  public : void appendUnsigned (const PMUInt32 inValue) ;
   public : void appendUnsignedHex  (const PMUInt32 inValue) ;
   public : void appendUnsignedHex2 (const PMUInt32 inValue) ;
   public : void appendUnsignedHex4 (const PMUInt32 inValue) ;
   public : void appendUnsignedHex8 (const PMUInt32 inValue) ;
 
 //--- Appending PMUInt64
-  public : void appendUnsigned64 (const PMUInt64 inValue) ;
-  public : void appendUnsigned64inHex (const PMUInt64 inValue) ;
-
-//--- Appending PMSInt32
-  public : void appendSigned (const PMSInt32 inValue) ;
+  public : void appendUnsignedWithZeroFill (const PMUInt64 inValue, const PMUInt32 inWidth) ;
+  public : void appendUnsigned (const PMUInt64 inValue) ;
+  public : void appendUnsignedHex16 (const PMUInt64 inValue) ;
 
 //--- Appending Sint64
-  public : void appendSigned64 (const PMSInt64 inValue) ;
+  public : void appendSigned (const PMSInt64 inValue) ;
 
 //--- Appending Double
   public : void appendDouble (const double inValue) ;

@@ -129,7 +129,7 @@ GALGAS_double GALGAS_sint_36__34_::reader_double (UNUSED_LOCATION_ARGS) const {
 
 GALGAS_string GALGAS_sint_36__34_::reader_string (UNUSED_LOCATION_ARGS) const {
   C_String s ;
-  s.appendSigned64 (mSInt64Value) ;
+  s.appendSigned (mSInt64Value) ;
   return GALGAS_string (s) ;
 }
 
@@ -138,7 +138,7 @@ GALGAS_string GALGAS_sint_36__34_::reader_string (UNUSED_LOCATION_ARGS) const {
 void GALGAS_sint_36__34_::description (C_String & ioString,
                                        const PMSInt32 /* inIndentation */) const {
   ioString << "<@sint64:" ;
-  ioString.appendSigned64 (mSInt64Value) ;
+  ioString.appendSigned (mSInt64Value) ;
   ioString << ">" ;
 }
 
