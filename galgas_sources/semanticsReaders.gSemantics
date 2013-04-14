@@ -536,6 +536,7 @@ override method @uintPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"uint64" !"uint64" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"lsbIndex" !"uint" !true ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"significantBitCount" !"uint" !false ;
+  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"oneBitCount" !"uint" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"string" !"string" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"hexString" !"string" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"xString" !"string" !false ;
