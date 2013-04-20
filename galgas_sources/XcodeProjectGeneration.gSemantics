@@ -637,7 +637,7 @@ local routine build_HAND_CODED_source_files_for_sources_cocoa_build_phase
   @stringlist fileList [emptyList] ;
   foreach inExternSourceNameSet do
     @string extension := [key pathExtension] ;
-    if (extension == "cpp") | (extension == "c") | (extension == "m") | (extension == "mm") then
+    if (extension == "cpp") | (extension == "c") | (extension == "m") | (extension == "mm") | (extension == "xib") then
       fileList += !key ;
     end if ;
   end foreach ;
@@ -659,7 +659,7 @@ local routine build_HAND_CODED_SOURCES_group
   @stringlist fileList [emptyList] ;
   foreach inExternSourceNameSet do
     @string extension := [key pathExtension] ;
-    if (extension == "cpp") | (extension == "c") | (extension == "h") | (extension == "m") | (extension == "mm") then
+    if (extension == "cpp") | (extension == "c") | (extension == "h") | (extension == "m") | (extension == "mm") | (extension == "xib") then
       fileList += !key ;
     end if ;
   end foreach ;
