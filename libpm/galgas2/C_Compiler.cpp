@@ -243,9 +243,7 @@ void C_Compiler::extractObjectError (const GALGAS_location & inErrorLocation,
 void C_Compiler::printMessage (const GALGAS_string & inMessage
                                COMMA_LOCATION_ARGS) {
   if (inMessage.isValid ()) {
-    C_String s ;
-    s << inMessage.stringValue () ;
-    ggs_printMessage (s COMMA_THERE) ;
+    ggs_printMessage (inMessage.stringValue () COMMA_THERE) ;
   }
 }
 
