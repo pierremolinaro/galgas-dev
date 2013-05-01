@@ -706,8 +706,10 @@ void ggs_printMessage (const C_String & inMessage
     }
   #endif
   co << message ;
+  if (cocoaOutput ()) {
     co.appendUnicodeCharacter (COCOA_MESSAGE_ID COMMA_HERE) ;
     co.appendUnicodeCharacter (COCOA_MESSAGE_ID COMMA_HERE) ;
+  }
   co.flush () ;
 }
 
