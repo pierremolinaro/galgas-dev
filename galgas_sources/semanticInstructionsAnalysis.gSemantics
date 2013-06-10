@@ -95,19 +95,16 @@ override method @localVariableOrConstantDeclarationWithConstructorCallAST analyz
   ?!@variableMap ioVariableMap
 :
 #--- Analyze constructor call
-  @unifiedTypeMapProxy returnedType ;
-  @semanticExpressionListForGeneration constructorEffectiveParameterList ;
-  @bool hasCompilerArgument ;
   analyzeConstructorInvocation
     !inAnalysisContext
     !?ioVariableMap
     !mTypeName
     !mConstructorName
     !mConstructorExpressions
-    ?returnedType
+    ?@unifiedTypeMapProxy returnedType
     ?*
-    ?constructorEffectiveParameterList
-    ?hasCompilerArgument
+    ?@semanticExpressionListForGeneration constructorEffectiveParameterList
+    ?@bool hasCompilerArgument
   ;
 #--- Check variable type
   const @unifiedTypeMapProxy targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
