@@ -69,9 +69,9 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
 //---------------------------------------------------------------------------*
 
 - (void) drawHashMarksAndLabelsInRect: (NSRect) inRect {
- // #ifdef DEBUG_MESSAGES
+  #ifdef DEBUG_MESSAGES
     NSLog (@"%s %p", __PRETTY_FUNCTION__, self) ;
-//  #endif
+  #endif
 //--- Draw background
   [[NSColor windowBackgroundColor] setFill] ;
   [NSBezierPath fillRect:inRect] ;
@@ -94,67 +94,77 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
     nil
   ] ;
 //--- Note: ruler view and text view are both flipped
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s:DRAW LINE NUMBERS", __PRETTY_FUNCTION__) ;
-  #endif
   OC_GGS_TextView * textView = self.scrollView.documentView ;
   NSLayoutManager * lm = textView.layoutManager ;
   const NSRange selectedRange = textView.selectedRange ;
   NSString * sourceString = textView.string ;
   const NSUInteger sourceStringLength = sourceString.length ;
-  // NSLog (@"sourceStringLength %u", sourceStringLength) ;
+//---
+  const NSUInteger firstCharacterIndex = [lm
+    characterIndexForPoint:textView.visibleRect.origin
+    inTextContainer:textView.textContainer
+    fractionOfDistanceBetweenInsertionPoints:NULL
+  ] ;
+  // printf ("firstCharacterIndex %lu\n", firstCharacterIndex) ;
+//--- Find first line number to draw
   NSUInteger idx = 0 ;
   NSInteger lineIndex = 0 ;
-  const double minYforDrawing = inRect.origin.y - (2.0 * ([font ascender] + [font descender])) ;
+  BOOL found = NO ;
+  while ((idx < sourceStringLength) && ! found) {
+    lineIndex ++ ;
+    const NSRange lineRange = [sourceString lineRangeForRange:NSMakeRange (idx, 1)] ;
+    found = (lineRange.location + lineRange.length) > firstCharacterIndex ;
+    if ( ! found) {
+      idx = lineRange.location + lineRange.length ;
+    }
+  }
+  // printf ("--> %ld(%ld)\n", lineIndex, idx) ;
+//---
   const double maxYforDrawing = NSMaxY (self.visibleRect) ;
   BOOL maxYreached = NO ;
   NSMutableArray * bulletArray = [NSMutableArray new] ;
   while ((idx < sourceStringLength) && ! maxYreached) {
     lineIndex ++ ;
-    printf (" %ld", lineIndex) ;
     // NSLog (@"%lu is valid glyph index: %@", idx, [lm isValidGlyphIndex:idx] ? @"yes" : @"no") ;
  //   const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:idx effectiveRange:NULL] ;
     const NSRect r = [lm lineFragmentRectForGlyphAtIndex:idx effectiveRange:NULL] ;
     NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMaxY (r)) fromView:textView] ;
     // NSLog (@"%f for line %u (%@)", p.y, line, ((inRect.origin.y - [font ascender])) ? @"yes" : @"no") ;
     const NSRange lineRange = [sourceString lineRangeForRange:NSMakeRange (idx, 1)] ;
-    if (p.y >= minYforDrawing) {
-      printf ("*") ;
-      const BOOL intersect =
-        imax (selectedRange.location, lineRange.location)
-          <=
-        imin (selectedRange.location + selectedRange.length, lineRange.location + lineRange.length)
-      ; 
-    //--- Draw line number
-      NSString * str = [NSString stringWithFormat:@"%ld", lineIndex] ;
-      const NSSize strSize = [str sizeWithAttributes:intersect ? attributesForSelection : attributes] ;
-      p.x = viewBounds.size.width - 2.0 - strSize.width ;
-      p.y -= strSize.height ;
-      maxYreached = (p.y > maxYforDrawing) ;
-      [str drawAtPoint:p withAttributes:intersect ? attributesForSelection : attributes] ;
-    //--- Error or warning at this line ?
-      BOOL hasError = NO ;
-      BOOL hasWarning = NO ;
-      NSMutableString * allMessages = [NSMutableString new] ;
-      for (PMIssueDescriptor * issue in mIssueArray) {
-        if (NSLocationInRange (issue.locationInSourceString, lineRange) && (issue.locationInSourceStringStatus == kLocationInSourceStringSolved)) {
-          [allMessages appendString:issue.issueMessage] ;
-          if (issue.isError) {
-            hasError = YES ;
-          }else{
-            hasWarning = YES ;
-          }
+    const BOOL intersect =
+      imax (selectedRange.location, lineRange.location)
+        <=
+      imin (selectedRange.location + selectedRange.length, lineRange.location + lineRange.length)
+    ; 
+  //--- Draw line number
+    NSString * str = [NSString stringWithFormat:@"%ld", lineIndex] ;
+    const NSSize strSize = [str sizeWithAttributes:intersect ? attributesForSelection : attributes] ;
+    p.x = viewBounds.size.width - 2.0 - strSize.width ;
+    p.y -= strSize.height ;
+    maxYreached = (p.y > maxYforDrawing) ;
+    [str drawAtPoint:p withAttributes:intersect ? attributesForSelection : attributes] ;
+  //--- Error or warning at this line ?
+    BOOL hasError = NO ;
+    BOOL hasWarning = NO ;
+    NSMutableString * allMessages = [NSMutableString new] ;
+    for (PMIssueDescriptor * issue in mIssueArray) {
+      if (NSLocationInRange (issue.locationInSourceString, lineRange) && (issue.locationInSourceStringStatus == kLocationInSourceStringSolved)) {
+        [allMessages appendString:issue.issueMessage] ;
+        if (issue.isError) {
+          hasError = YES ;
+        }else{
+          hasWarning = YES ;
         }
       }
-      if (hasError || hasWarning) {
-        const NSRect rImage = {{0.0, p.y}, {16.0, 16.0}} ;
-        PMIssueInRuler * issueInRuler = [[PMIssueInRuler alloc]
-          initWithRect:rImage
-          message:allMessages
-          isError:hasError
-        ] ;
-        [bulletArray addObject:issueInRuler] ;
-      }
+    }
+    if (hasError || hasWarning) {
+      const NSRect rImage = {{0.0, p.y}, {16.0, 16.0}} ;
+      PMIssueInRuler * issueInRuler = [[PMIssueInRuler alloc]
+        initWithRect:rImage
+        message:allMessages
+        isError:hasError
+      ] ;
+      [bulletArray addObject:issueInRuler] ;
     }
     idx = lineRange.location + lineRange.length ;
   }
@@ -174,9 +184,9 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
       fraction:1.0
     ] ;
   }
- // #ifdef DEBUG_MESSAGES
+  #ifdef DEBUG_MESSAGES
     NSLog (@"%s:DONE", __PRETTY_FUNCTION__) ;
-//  #endif
+  #endif
 }
 
 //---------------------------------------------------------------------------*
