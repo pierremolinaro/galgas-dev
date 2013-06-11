@@ -124,7 +124,6 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
   while ((idx < sourceStringLength) && ! maxYreached) {
     lineIndex ++ ;
     const NSRect r = [lm lineFragmentRectForGlyphAtIndex:idx effectiveRange:NULL] ;
-    NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMaxY (r)) fromView:textView] ;
     const NSRange lineRange = [sourceString lineRangeForRange:NSMakeRange (idx, 1)] ;
     const BOOL intersect =
       imax (selectedRange.location, lineRange.location)
@@ -134,6 +133,7 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
   //--- Draw line number
     NSString * str = [NSString stringWithFormat:@"%ld", lineIndex] ;
     const NSSize strSize = [str sizeWithAttributes:intersect ? attributesForSelection : attributes] ;
+    NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMaxY (r)) fromView:textView] ;
     p.x = viewBounds.size.width - 2.0 - strSize.width ;
     p.y -= strSize.height ;
     maxYreached = (p.y > maxYforDrawing) ;
