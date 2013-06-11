@@ -39,19 +39,19 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) FINALIZE_OR_DEALLOC {
-  noteObjectDeallocation (self) ;
-  macroSuperFinalize ;
-}
-
-//---------------------------------------------------------------------------*
-
 - (OC_GGS_RulerViewForTextView *) init {
   self = [super init] ;
   if (self) {
     noteObjectAllocation (self) ;
   }
   return self ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) FINALIZE_OR_DEALLOC {
+  noteObjectDeallocation (self) ;
+  macroSuperFinalize ;
 }
 
 //---------------------------------------------------------------------------*
@@ -105,7 +105,6 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
     inTextContainer:textView.textContainer
     fractionOfDistanceBetweenInsertionPoints:NULL
   ] ;
-  // printf ("firstCharacterIndex %lu\n", firstCharacterIndex) ;
 //--- Find first line number to draw
   NSUInteger idx = 0 ;
   NSInteger lineIndex = 0 ;
@@ -118,18 +117,14 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
       idx = lineRange.location + lineRange.length ;
     }
   }
-  // printf ("--> %ld(%ld)\n", lineIndex, idx) ;
 //---
   const double maxYforDrawing = NSMaxY (self.visibleRect) ;
   BOOL maxYreached = NO ;
   NSMutableArray * bulletArray = [NSMutableArray new] ;
   while ((idx < sourceStringLength) && ! maxYreached) {
     lineIndex ++ ;
-    // NSLog (@"%lu is valid glyph index: %@", idx, [lm isValidGlyphIndex:idx] ? @"yes" : @"no") ;
- //   const NSRect r = [lm lineFragmentUsedRectForGlyphAtIndex:idx effectiveRange:NULL] ;
     const NSRect r = [lm lineFragmentRectForGlyphAtIndex:idx effectiveRange:NULL] ;
     NSPoint p = [self convertPoint:NSMakePoint (0.0, NSMaxY (r)) fromView:textView] ;
-    // NSLog (@"%f for line %u (%@)", p.y, line, ((inRect.origin.y - [font ascender])) ? @"yes" : @"no") ;
     const NSRange lineRange = [sourceString lineRangeForRange:NSMakeRange (idx, 1)] ;
     const BOOL intersect =
       imax (selectedRange.location, lineRange.location)
@@ -168,7 +163,6 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
     }
     idx = lineRange.location + lineRange.length ;
   }
-  printf ("\n") ;
 //--- Images
   NSImage * errorImage = [NSImage imageNamed:NSImageNameStatusUnavailable] ;
   NSImage * warningImage = [NSImage imageNamed:NSImageNameStatusPartiallyAvailable] ;
