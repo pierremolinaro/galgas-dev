@@ -848,13 +848,16 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     withKeyPath:[NSString stringWithFormat:@"values.%@", GGS_build_text_font]
     options:NULL
   ] ;
-//--- Set show ruler checkbox
-  if ([defaults objectForKey:GGS_show_ruler] == nil) {
-    [mShowRuleCheckBox setState:YES] ;
-    [defaults setBool:YES forKey:GGS_show_ruler] ;
-  }else{
-    [mShowRuleCheckBox setState:[defaults boolForKey:GGS_show_ruler]] ;
+//--- 'Enable Completion' checkbox
+  if ([defaults objectForKey:GGS_enable_completion] == nil) {
+    [defaults setBool:YES forKey:GGS_enable_completion] ;
   }
+  [mEnableCompletionCheckBox
+    bind:@"value"
+    toObject:[NSUserDefaultsController sharedUserDefaultsController]
+    withKeyPath:@"values." GGS_enable_completion
+    options:nil
+  ] ;
 //--- Build text color user interface
   [self setTextColorsPreferences] ;
 //--- Check "Verbose" option if not defined

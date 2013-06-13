@@ -23,6 +23,32 @@
 
 //#define DEBUG_MESSAGES
 
+@interface PMPopUpButtonForCompletion : NSPopUpButton {
+  @private NSTextView * mTextView ;
+}
+
+- (void) setTextView : (NSTextView *) inTextView ;
+@end
+
+@implementation PMPopUpButtonForCompletion
+
+- (void) setTextView : (NSTextView *) inTextView {
+  mTextView = inTextView ;
+}
+
+- (void) keyDown:(NSEvent *) inEvent {
+  NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  NSString * keys = inEvent.characters ;
+//  NSLog (@"%d", [keys characterAtIndex:0]) ;
+  if ([keys isEqualToString:@"\x1B"]) { // A Esc Character ?
+    [super keyDown:inEvent] ;
+  }else{
+    NSBeep () ;
+  }
+}
+
+@end
+
 //---------------------------------------------------------------------------*
 
 @implementation OC_GGS_TextView
@@ -135,35 +161,55 @@
 //---------------------------------------------------------------------------*
 
 - (void) keyDown:(NSEvent *) inEvent {
-  NSString * keys = [inEvent characters];
-  if ([keys isEqualToString:@"\x09"]) { // A Tab Character ?
-    const NSRange selectedRange = [self selectedRange] ;
-    if ((selectedRange.location & 1) !=0) {
-      [self insertText:@"  "] ; // Odd location: insert 2 spaces
-    }else{
-      [self insertText:@" "] ; // Even location: insert 1 space
-    }
-  }else if ([keys isEqualToString:@"\x0D"]) { // A Carriage Return Character ?
-    const NSRange selectedRange = [self selectedRange] ;
-    NSString * s = [[self textStorage] string] ;
-    NSRange currentLineRange = [s lineRangeForRange:selectedRange] ;
-  //--- Find the number of spaces at the beginning of the line
-    if (currentLineRange.length > selectedRange.location - currentLineRange.location) {
-      currentLineRange.length = selectedRange.location - currentLineRange.location ;
-    }
-  //--- Insert string
-    NSMutableString * stringToInsert = [NSMutableString new] ;
-    [stringToInsert appendString:@"\n"] ;
-    while ((currentLineRange.length > 0) && ([s characterAtIndex:currentLineRange.location] == ' ')) {
-      currentLineRange.location ++ ;
-      currentLineRange.length -- ;
-      [stringToInsert appendString:@" "] ;
-    }
-    [self insertText:stringToInsert] ;
-  }else{
+  NSString * keys = inEvent.characters ;
+  const unichar c = [keys characterAtIndex:0] ;
+  NSLog (@"%d", c) ;
+  switch (c) {
+  case 9 : // A Tab Character ?
+    { const NSRange selectedRange = self.selectedRange ;
+      if ((selectedRange.location & 1) !=0) {
+        [self insertText:@"  "] ; // Odd location: insert 2 spaces
+      }else{
+        [self insertText:@" "] ; // Even location: insert 1 space
+      }
+    }break ;
+  case 13 : // A Carriage Return Character ?
+    { const NSRange selectedRange = [self selectedRange] ;
+      NSString * s = self.textStorage.string ;
+      NSRange currentLineRange = [s lineRangeForRange:selectedRange] ;
+    //--- Find the number of spaces at the beginning of the line
+      if (currentLineRange.length > selectedRange.location - currentLineRange.location) {
+        currentLineRange.length = selectedRange.location - currentLineRange.location ;
+      }
+    //--- Insert string
+      NSMutableString * stringToInsert = [NSMutableString new] ;
+      [stringToInsert appendString:@"\n"] ;
+      while ((currentLineRange.length > 0) && ([s characterAtIndex:currentLineRange.location] == ' ')) {
+        currentLineRange.location ++ ;
+        currentLineRange.length -- ;
+        [stringToInsert appendString:@" "] ;
+      }
+      [self insertText:stringToInsert] ;
+    }break ;
+  case 127 : // A Back Character ?
+  case 63232 : // Up arrow
+  case 63233 : // Down arrow
+  case 63234 : // Left arrow
+  case 63235 : // Right arrow
+  case 63272 : // Suppr
+  case 63273 : // Home
+  case 63275 : // Goto end
+  case 63276 : // Page Up
+  case 63277 : // Page Down
+    [super keyDown:inEvent] ;
+    break ;
+  default:
     [super keyDown:inEvent] ;
   //--- Perform completion
-    [self complete:nil] ;
+     if ([[NSUserDefaults standardUserDefaults] boolForKey:GGS_enable_completion]) {
+       [self myComplete] ;
+       // [self complete:nil] ;
+    }
   }
 }
 
@@ -265,8 +311,93 @@
 
 //---------------------------------------------------------------------------*
 
-- (NSArray *) completionsForPartialWordRange:(NSRange) inCharRange
-              indexOfSelectedItem:(NSInteger *) outIndex {
+- (void) myComplete {
+  const NSRange selectedRange = self.selectedRange ;
+  if (selectedRange.length == 0) {
+    NSArray * tokenArray = mDisplayDescriptor.documentData.textSyntaxColoring.tokenArray ;
+    NSRange charRange = {0, 0} ;
+    for (OC_Token * token in tokenArray) {
+      const NSRange tokenRange = token.range ;
+      if ((tokenRange.location < selectedRange.location)
+       && ((tokenRange.location + tokenRange.length) == selectedRange.location)) {
+        charRange = tokenRange ;
+      }
+    }
+  //---
+    NSMutableSet * completionSet = [NSMutableSet new] ;
+    if (charRange.length > 0) {
+      mCompletedItemLength = charRange.length ;
+      NSString * sourceString = self.string ;
+      NSString * stringToComplete = [sourceString substringWithRange:charRange] ;
+      const NSRange compareRange = {0, stringToComplete.length} ;
+      for (OC_Token * token in tokenArray) {
+        NSString * s = [sourceString substringWithRange:token.range] ;
+        if (s.length > stringToComplete.length) {
+          if ([s compare:stringToComplete options:NSLiteralSearch range:compareRange] == NSOrderedSame) {
+            [completionSet addObject:s] ;
+          }
+        }
+      }
+    //---
+      NSMenu * menu = [[NSMenu alloc] initWithTitle:@""] ;
+      for (NSString * proposal in [completionSet.allObjects sortedArrayUsingSelector:@selector (compare:)]) {
+        [menu
+          addItemWithTitle:proposal
+          action:@selector(insertProposal:)
+          keyEquivalent:@""
+        ] ;
+        NSMenuItem * item = menu.itemArray.lastObject ;
+        [item setTarget:self] ;
+        [item setEnabled:YES] ;
+      }
+      mCompletionPopUp = [[PMPopUpButtonForCompletion alloc]
+        initWithFrame:NSMakeRect (0.0, 0.0, 10.0, 10.0)
+        pullsDown:YES
+      ] ;
+      [mCompletionPopUp setMenu:menu] ;
+      [mCompletionPopUp setTextView:self] ;
+      const NSRect r = [self.layoutManager lineFragmentUsedRectForGlyphAtIndex:selectedRange.location effectiveRange:NULL] ;
+      
+      NSPopUpButtonCell * cell = mCompletionPopUp.cell ;
+      [cell performClickWithFrame:NSMakeRect (NSMaxX (r), NSMaxY (r), 0.0, 0.0) inView:self];
+ /*     
+      [self lockFocus] ;
+      [mCompletionPopUp drawWithFrame:NSMakeRect (NSMaxX (r), NSMaxY (r), 50.0, 50.0) inView:self] ;
+      [self.window flushWindow] ;
+      NSDate *limit = [NSDate dateWithTimeIntervalSinceNow: 2.0];
+      [[NSRunLoop currentRunLoop] runUntilDate: limit];
+      [self unlockFocus] ;
+ */     
+  //    [mCompletionPopUp attachPopUpWithFrame:NSMakeRect (NSMaxX (r), NSMaxY (r), 0.0, 0.0) inView:self];
+   //   NSLog (@"%@", mCompletionPopUp.controlView) ;
+   //   NSBeep () ;
+    //  [self.window makeFirstResponder:self] ;
+ //     [mCompletionPopUp performClickWithFrame:NSMakeRect (NSMaxX (r), NSMaxY (r), 0.0, 0.0) inView:self];
+//      NSLog (@"%@", mCompletionPopUp.controlView) ;
+   /*   [self lockFocus] ;
+      [mCompletionPopUp highlight:YES withFrame:NSMakeRect (NSMaxX (r), NSMaxY (r), 0.0, 0.0) inView:self];
+      [self.window flushWindow] ;
+      NSDate *limit = [NSDate dateWithTimeIntervalSinceNow: 10.0];
+      [[NSRunLoop currentRunLoop] runUntilDate: limit];
+      [mCompletionPopUp highlight:NO withFrame:NSMakeRect (NSMaxX (r), NSMaxY (r), 0.0, 0.0) inView:self];
+      [self.window flushWindow] ;
+      [self unlockFocus] ;*/
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) insertProposal: (NSMenuItem *) inMenuItem {
+  NSString * s = [inMenuItem.title substringFromIndex:mCompletedItemLength] ;
+ // NSLog (@"%@", s) ;
+  [self insertText:s] ;
+}
+
+//---------------------------------------------------------------------------*
+
+/*- (NSArray *) completionsForPartialWordRange: (NSRange) inCharRange
+              indexOfSelectedItem: (NSInteger *) outIndex {
   * outIndex = -1 ;
   NSArray * tokenArray = mDisplayDescriptor.documentData.textSyntaxColoring.tokenArray ;
   NSRange charRange = inCharRange ;
@@ -292,8 +423,17 @@
       }
     }
   }
-  return completionSet.allObjects ;
-}
+  return [completionSet.allObjects sortedArrayUsingSelector:@selector (compare:)] ;
+}*/
+
+//---------------------------------------------------------------------------*
+
+/*- (void) didChangeText {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  [super didChangeText] ;
+}*/
 
 //---------------------------------------------------------------------------*
 
