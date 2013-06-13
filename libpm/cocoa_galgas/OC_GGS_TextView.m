@@ -162,6 +162,8 @@
     [self insertText:stringToInsert] ;
   }else{
     [super keyDown:inEvent] ;
+  //--- Perform completion
+    [self complete:nil] ;
   }
 }
 
@@ -173,7 +175,7 @@
 
 - (NSRange) selectionRangeForProposedRange:(NSRange) inProposedSelRange
             granularity: (NSSelectionGranularity) inGranularity {
-
+  // NSLog (@"%s", __PRETTY_FUNCTION__) ;
   NSRange result = inProposedSelRange ;
   if ((inGranularity == NSSelectByWord) && (inProposedSelRange.length == 0)) {
     // NSLog (@"inProposedSelRange: [%u, %u], granularity: %d", inProposedSelRange.location, inProposedSelRange.length, inGranularity) ;
@@ -255,6 +257,42 @@
   }else{
     [super mouseDown:inEvent] ;
   }
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Autocompletion
+
+//---------------------------------------------------------------------------*
+
+- (NSArray *) completionsForPartialWordRange:(NSRange) inCharRange
+              indexOfSelectedItem:(NSInteger *) outIndex {
+  * outIndex = -1 ;
+  NSArray * tokenArray = mDisplayDescriptor.documentData.textSyntaxColoring.tokenArray ;
+  NSRange charRange = inCharRange ;
+  for (OC_Token * token in tokenArray) {
+    const NSRange tokenRange = token.range ;
+    if ((tokenRange.location < inCharRange.location)
+     && ((tokenRange.location + tokenRange.length) == (inCharRange.location + inCharRange.length))) {
+      charRange = tokenRange ;
+    }
+  }
+
+  NSMutableSet * completionSet = [NSMutableSet new] ;
+  if (charRange.length > 0) {
+    NSString * sourceString = self.string ;
+    NSString * stringToComplete = [sourceString substringWithRange:charRange] ;
+    const NSRange compareRange = {0, stringToComplete.length} ;
+    for (OC_Token * token in tokenArray) {
+      NSString * s = [sourceString substringWithRange:token.range] ;
+      if (s.length > stringToComplete.length) {
+        if ([s compare:stringToComplete options:NSLiteralSearch range:compareRange] == NSOrderedSame) {
+          [completionSet addObject:s] ;
+        }
+      }
+    }
+  }
+  return completionSet.allObjects ;
 }
 
 //---------------------------------------------------------------------------*
