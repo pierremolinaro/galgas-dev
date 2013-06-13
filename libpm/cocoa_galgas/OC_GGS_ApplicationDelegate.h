@@ -28,7 +28,7 @@
 
 #define GGS_selected_tab                     @"GGS_selected_tab"
 #define GGS_show_ruler                       @"GGS_show_ruler"
-#define GGS_show_ruler                       @"GGS_show_ruler"
+#define GGS_enable_completion                @"GGS_enable_completion"
 #define GGS_build_text_font                  @"GGS_build_window_text_font"
 #define GGS_indexed_color                    @"GGS_colors"
 #define GGS_named_color                      @"GGS_color_for_style"
@@ -75,7 +75,7 @@ extern OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   @private NSMutableArray * mToolNameArray ;
 
 //--- "Show ruler" checkbox
-  @private IBOutlet NSButton * mShowRuleCheckBox ;
+  @private IBOutlet NSButton * mEnableCompletionCheckBox ;
   @private IBOutlet NSButton * mConvert_CRLF_And_CR_To_LF_AtStartUpButton ;
   @private IBOutlet NSButton * mConvert_HTAB_To_SPACE_AtStartUpButton ;
   @private IBOutlet NSButton * mShowInvisibleCharactersCheckBox ;
