@@ -1,9 +1,10 @@
-project all_LR1_grammar -> "LR1_grammar":
+project all_LR1_grammar (1:0:0) -> "LR1_grammar":
 #--- Targets
   feature "makefile_macosx" ;
   feature "makefile_unix" ;
   feature "makefile_msys_on_win32" ;
   feature "SnowLeopard" ;
+  feature applicationBundleBase : "fr.what" ;
 #--- Sources
   lexique "LR1_grammar_lexique.gLexique" ;
   option "LR1_grammar_options.gOption" ;

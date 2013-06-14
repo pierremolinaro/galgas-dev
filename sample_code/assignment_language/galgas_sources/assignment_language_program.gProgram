@@ -1,4 +1,4 @@
-program assignment_language_program "version 1.0.0":
+program assignment_language_program :
   import "typesForAST.gSemantics" ;
   import "decoratedAST.gSemantics" ;
   import "assignment_language_grammar.gGrammar" ;

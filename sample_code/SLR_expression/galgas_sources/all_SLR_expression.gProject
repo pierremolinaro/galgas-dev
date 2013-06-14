@@ -1,9 +1,10 @@
-project all_SLR_expression -> "SLR_expression" :
+project all_SLR_expression (1:0:0) -> "SLR_expression" :
 #--- Targets
   feature "makefile_macosx" ;
   feature "makefile_unix" ;
   feature "makefile_msys_on_win32" ;
   feature "SnowLeopard" ;
+  feature applicationBundleBase : "fr.what" ;
 #--- Sources
   lexique "SLR_expression_lexique.gLexique" ;
   option "SLR_expression_options.gOption" ;

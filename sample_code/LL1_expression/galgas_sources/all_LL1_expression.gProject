@@ -1,9 +1,10 @@
-project all_LL1_expression -> "LL1_expression" :
+project all_LL1_expression (1:0:0) -> "LL1_expression" :
 #--- Targets
   feature "makefile_macosx" ;
   feature "makefile_unix" ;
   feature "makefile_msys_on_win32" ;
   feature "SnowLeopard" ;
+  feature applicationBundleBase : "fr.what" ;
 #--- Sources
   lexique "LL1_expression_lexique.gLexique" ;
   option "LL1_expression_options.gOption" ;

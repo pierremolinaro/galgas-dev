@@ -1,4 +1,4 @@
-program dangling_else_solution_program "version 1.0.0":
+program dangling_else_solution_program :
 import "dangling_else_solution_grammar.gGrammar" ;
 
 before {

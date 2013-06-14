@@ -1,4 +1,4 @@
-project all_pascal -> "pascal":
+project all_pascal (1:0:0) -> "pascal":
 #--- Targets
   feature "makefile_macosx" ;
 #  feature "makefile_macosx_intel" ;
@@ -9,6 +9,7 @@ project all_pascal -> "pascal":
 #  feature "makefile_mingw_on_macosx" ;
 #  feature "makefile_msys_on_win32" ;
   feature "SnowLeopard" ;
+  feature applicationBundleBase : "fr.what" ;
 #  feature "xcode_arch:x86_64" ;
 #  feature "xcode_arch:ppc" ;
 #  feature "xcode_arch:ppc64" ;

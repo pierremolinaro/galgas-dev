@@ -1,4 +1,4 @@
-program xml_parsing_program "version 1.0.0":
+program xml_parsing_program :
 import "xml_parsing_semantics.gSemantics" ;
 import "xml_types.gSemantics" ;
 import "xml_parsing_options.gOption" ;
