@@ -310,21 +310,32 @@
 - (NSArray *) completionsForPartialWordRange: (NSRange) inCharRange
               indexOfSelectedItem: (NSInteger *) outIndex {
   * outIndex = -1 ;
-  NSArray * tokenArray = mDisplayDescriptor.documentData.textSyntaxColoring.tokenArray ;
   NSMutableSet * completionSet = [NSMutableSet new] ;
-  if (inCharRange.length > 0) {
-    NSString * sourceString = self.string ;
-    NSString * stringToComplete = [sourceString substringWithRange:inCharRange] ;
-    const NSRange compareRange = {0, stringToComplete.length} ;
-    for (OC_Token * token in tokenArray) {
-      NSString * s = [sourceString substringWithRange:token.range] ;
-      if (s.length > stringToComplete.length) {
-        if ([s compare:stringToComplete options:NSLiteralSearch range:compareRange] == NSOrderedSame) {
-          [completionSet addObject:s] ;
+//--- Completions from current file tokens
+  NSArray * tokenArray = mDisplayDescriptor.documentData.textSyntaxColoring.tokenArray ;
+  NSString * sourceString = self.string ;
+  NSString * stringToComplete = [sourceString substringWithRange:inCharRange] ;
+  const NSRange compareRange = {0, stringToComplete.length} ;
+  for (OC_Token * token in tokenArray) {
+    NSString * s = [sourceString substringWithRange:token.range] ;
+    if (s.length > stringToComplete.length) {
+      if ([s compare:stringToComplete options:NSLiteralSearch range:compareRange] == NSOrderedSame) {
+        [completionSet addObject:s] ;
+      }
+    }
+  }
+//---
+  NSArray * dictionaryArray = mDisplayDescriptor.documentData.textSyntaxColoring.buildIndexingDictionaryArray ;
+  for (NSDictionary * dict in dictionaryArray) {
+    for (NSString * key in dict.allKeys) {
+      if (key.length > stringToComplete.length) {
+        if ([key compare:stringToComplete options:NSLiteralSearch range:compareRange] == NSOrderedSame) {
+          [completionSet addObject:key] ;
         }
       }
     }
   }
+//---
   return [completionSet.allObjects sortedArrayUsingSelector:@selector (compare:)] ;
 }
 
