@@ -84,8 +84,6 @@ bool executionModeIsSyntaxAnalysisOnly (void) ;
 
 bool executionModeIsIndexing (void) ;
 
-bool executionModeIsContextHelp (void) ;
-
 PMUInt32 contextHelpStartLocation (void) ;
 
 PMUInt32 contextHelpEndLocation (void) ;
@@ -93,8 +91,6 @@ PMUInt32 contextHelpEndLocation (void) ;
 void setCurrentCompiledFilePath (const C_String & inPath) ;
 
 bool isCurrentCompiledFilePath (const C_String & inPath) ;
-
-void sendToTCPSocket (const C_String & inString) ;
 
 //---------------------------------------------------------------------------*
 
