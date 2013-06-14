@@ -926,7 +926,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSString * compilerToolPath = [gCocoaApplicationDelegate compilerToolPath] ;
+  NSString * compilerToolPath = gCocoaApplicationDelegate.compilerToolPath ;
 //--- Command line tool does actually exist ? (First argument is not "?")
   if (! [compilerToolPath isEqualToString:@"?"]) {
   //--- Build argument array
@@ -934,7 +934,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     [arguments addObject:inSourceFileFullPath] ;
     [arguments addObject:@"--mode=indexing"] ;
   //--- Create task
-    NSTask * task = [[NSTask alloc] init] ;
+    NSTask * task = [NSTask new] ;
     [task setLaunchPath:compilerToolPath] ;
     [task setArguments:arguments] ;
     // NSLog (@"'%@' %@", [task launchPath], arguments) ;
@@ -952,6 +952,8 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   NSMutableArray * result = nil ;
+//--- Save all sources
+  [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
 //--- Source directory
   NSString * sourceDirectory = documentData.fileURL.path.stringByDeletingLastPathComponent ;
 //--- index directory
@@ -1034,9 +1036,6 @@ static NSInteger numericSort (NSString * inOperand1,
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSMenu * menu = [[NSMenu alloc] initWithTitle:@""] ;
-//--- Save all sources
-  [[NSDocumentController sharedDocumentController] saveAllDocuments:self] ;
 //--- Check if current has atomic selection
   BOOL hasAtomicSelection = YES ;
   BOOL found = NO ;
@@ -1053,7 +1052,7 @@ static NSInteger numericSort (NSString * inOperand1,
   NSString * token = [mSourceTextStorage.string substringWithRange:inSelectedRange] ;
   // NSLog (@"%@", token) ;
 //---
-  NSArray * dictionaryArray = [self buildIndexingDictionaryArray] ;
+  NSArray * dictionaryArray = self.buildIndexingDictionaryArray ;
 //--- Build array of all references of given token
   NSMutableArray * allReferences = [NSMutableArray new] ;
   for (NSDictionary * currentIndexDictionary in dictionaryArray) {
@@ -1072,6 +1071,7 @@ static NSInteger numericSort (NSString * inOperand1,
     [a addObject:descriptor] ;
   }
 //--- Build Menu
+  NSMenu * menu = [[NSMenu alloc] initWithTitle:@""] ;
   if (! hasAtomicSelection) {
     NSMenuItem * item = [menu addItemWithTitle:@"Select all token characters" action:@selector (selectAllTokenCharacters:) keyEquivalent:@""] ;
     [item setTarget:inTextDisplayDescriptor.textView] ;
