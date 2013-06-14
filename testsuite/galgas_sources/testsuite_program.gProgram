@@ -1,4 +1,4 @@
-program testsuite_program "version 1.0.0":
+program testsuite_program :
 import "testsuite_foreach_instruction.gSemantics" ;
 import "testsuite_for_instruction.gSemantics" ;
 import "testsuite_list.gSemantics" ;

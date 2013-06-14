@@ -1,8 +1,8 @@
-project all_testsuite -> "testsuite" :
+project all_testsuite (1:0:0) -> "testsuite" :
   feature "makefile_macosx" ;
   feature "makefile_mingw_on_macosx" ;
   feature "SnowLeopard" ;
-
+  feature applicationBundleBase : "fr.what" ;
   lexique "testsuite_lexique.gLexique" ;
   syntax "testsuite_syntax.gSyntax" ;
   grammar "testsuite_grammar.gGrammar" ;
