@@ -45,7 +45,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 //---------------------------------------------------------------------------*
 
-- (id) init {
+- (instancetype) init {
   self = [super init] ;
   if (self) {
     gCocoaApplicationDelegate = self ;
