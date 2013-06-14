@@ -315,7 +315,7 @@ end rule ;
 
 $type_name$ ! tokenString error message "a type name (@...)" style typeNameStyle ;
 
-#message incorrectTypeNameError : "in a type name, a letter should follow the '@' character" ;
+message incorrectTypeNameError : "in a type name, a letter, a digit or the underscore character should follow the '@' character" ;
 
 rule '@' :
   select
@@ -333,7 +333,7 @@ rule '@' :
     default
     end select ;
   default
-#    error incorrectTypeNameError ;
+    error incorrectTypeNameError ;
   end select ;
   send $type_name$ ; 
 end rule ;

@@ -23,32 +23,6 @@
 
 //#define DEBUG_MESSAGES
 
-@interface PMPopUpButtonForCompletion : NSPopUpButton {
-  @private NSTextView * mTextView ;
-}
-
-- (void) setTextView : (NSTextView *) inTextView ;
-@end
-
-@implementation PMPopUpButtonForCompletion
-
-- (void) setTextView : (NSTextView *) inTextView {
-  mTextView = inTextView ;
-}
-
-- (void) keyDown:(NSEvent *) inEvent {
-  NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  NSString * keys = inEvent.characters ;
-//  NSLog (@"%d", [keys characterAtIndex:0]) ;
-  if ([keys isEqualToString:@"\x1B"]) { // A Esc Character ?
-    [super keyDown:inEvent] ;
-  }else{
-    NSBeep () ;
-  }
-}
-
-@end
-
 //---------------------------------------------------------------------------*
 
 @implementation OC_GGS_TextView
@@ -160,10 +134,10 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) keyDown:(NSEvent *) inEvent {
+- (void) keyDown: (NSEvent *) inEvent {
   NSString * keys = inEvent.characters ;
   const unichar c = [keys characterAtIndex:0] ;
-  NSLog (@"%d", c) ;
+  // NSLog (@"%d", c) ;
   switch (c) {
   case 9 : // A Tab Character ?
     { const NSRange selectedRange = self.selectedRange ;
@@ -207,8 +181,7 @@
     [super keyDown:inEvent] ;
   //--- Perform completion
      if ([[NSUserDefaults standardUserDefaults] boolForKey:GGS_enable_completion]) {
-       [self myComplete] ;
-       // [self complete:nil] ;
+       [self complete:nil] ;
     }
   }
 }
@@ -311,11 +284,15 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) myComplete {
+// http://www.cocoabuilder.com/archive/cocoa/97892-can-select-nstextview-completion-when-partial-word-length-2.html
+
+//---------------------------------------------------------------------------*
+
+- (NSRange) rangeForUserCompletion {
+  NSRange charRange = {NSNotFound, 0} ;
   const NSRange selectedRange = self.selectedRange ;
   if (selectedRange.length == 0) {
     NSArray * tokenArray = mDisplayDescriptor.documentData.textSyntaxColoring.tokenArray ;
-    NSRange charRange = {0, 0} ;
     for (OC_Token * token in tokenArray) {
       const NSRange tokenRange = token.range ;
       if ((tokenRange.location < selectedRange.location)
@@ -323,96 +300,21 @@
         charRange = tokenRange ;
       }
     }
-  //---
-    NSMutableSet * completionSet = [NSMutableSet new] ;
-    if (charRange.length > 0) {
-      mCompletedItemLength = charRange.length ;
-      NSString * sourceString = self.string ;
-      NSString * stringToComplete = [sourceString substringWithRange:charRange] ;
-      const NSRange compareRange = {0, stringToComplete.length} ;
-      for (OC_Token * token in tokenArray) {
-        NSString * s = [sourceString substringWithRange:token.range] ;
-        if (s.length > stringToComplete.length) {
-          if ([s compare:stringToComplete options:NSLiteralSearch range:compareRange] == NSOrderedSame) {
-            [completionSet addObject:s] ;
-          }
-        }
-      }
-    //---
-      NSMenu * menu = [[NSMenu alloc] initWithTitle:@""] ;
-      for (NSString * proposal in [completionSet.allObjects sortedArrayUsingSelector:@selector (compare:)]) {
-        [menu
-          addItemWithTitle:proposal
-          action:@selector(insertProposal:)
-          keyEquivalent:@""
-        ] ;
-        NSMenuItem * item = menu.itemArray.lastObject ;
-        [item setTarget:self] ;
-        [item setEnabled:YES] ;
-      }
-      mCompletionPopUp = [[PMPopUpButtonForCompletion alloc]
-        initWithFrame:NSMakeRect (0.0, 0.0, 10.0, 10.0)
-        pullsDown:YES
-      ] ;
-      [mCompletionPopUp setMenu:menu] ;
-      [mCompletionPopUp setTextView:self] ;
-      const NSRect r = [self.layoutManager lineFragmentUsedRectForGlyphAtIndex:selectedRange.location effectiveRange:NULL] ;
-      
-      NSPopUpButtonCell * cell = mCompletionPopUp.cell ;
-      [cell performClickWithFrame:NSMakeRect (NSMaxX (r), NSMaxY (r), 0.0, 0.0) inView:self];
- /*     
-      [self lockFocus] ;
-      [mCompletionPopUp drawWithFrame:NSMakeRect (NSMaxX (r), NSMaxY (r), 50.0, 50.0) inView:self] ;
-      [self.window flushWindow] ;
-      NSDate *limit = [NSDate dateWithTimeIntervalSinceNow: 2.0];
-      [[NSRunLoop currentRunLoop] runUntilDate: limit];
-      [self unlockFocus] ;
- */     
-  //    [mCompletionPopUp attachPopUpWithFrame:NSMakeRect (NSMaxX (r), NSMaxY (r), 0.0, 0.0) inView:self];
-   //   NSLog (@"%@", mCompletionPopUp.controlView) ;
-   //   NSBeep () ;
-    //  [self.window makeFirstResponder:self] ;
- //     [mCompletionPopUp performClickWithFrame:NSMakeRect (NSMaxX (r), NSMaxY (r), 0.0, 0.0) inView:self];
-//      NSLog (@"%@", mCompletionPopUp.controlView) ;
-   /*   [self lockFocus] ;
-      [mCompletionPopUp highlight:YES withFrame:NSMakeRect (NSMaxX (r), NSMaxY (r), 0.0, 0.0) inView:self];
-      [self.window flushWindow] ;
-      NSDate *limit = [NSDate dateWithTimeIntervalSinceNow: 10.0];
-      [[NSRunLoop currentRunLoop] runUntilDate: limit];
-      [mCompletionPopUp highlight:NO withFrame:NSMakeRect (NSMaxX (r), NSMaxY (r), 0.0, 0.0) inView:self];
-      [self.window flushWindow] ;
-      [self unlockFocus] ;*/
-    }
   }
+  // NSLog (@"charRange [%ld, %ld]", charRange.location, charRange.length) ;
+  return charRange ;
 }
 
 //---------------------------------------------------------------------------*
 
-- (void) insertProposal: (NSMenuItem *) inMenuItem {
-  NSString * s = [inMenuItem.title substringFromIndex:mCompletedItemLength] ;
- // NSLog (@"%@", s) ;
-  [self insertText:s] ;
-}
-
-//---------------------------------------------------------------------------*
-
-/*- (NSArray *) completionsForPartialWordRange: (NSRange) inCharRange
+- (NSArray *) completionsForPartialWordRange: (NSRange) inCharRange
               indexOfSelectedItem: (NSInteger *) outIndex {
   * outIndex = -1 ;
   NSArray * tokenArray = mDisplayDescriptor.documentData.textSyntaxColoring.tokenArray ;
-  NSRange charRange = inCharRange ;
-  for (OC_Token * token in tokenArray) {
-    const NSRange tokenRange = token.range ;
-    if ((tokenRange.location < inCharRange.location)
-     && ((tokenRange.location + tokenRange.length) == (inCharRange.location + inCharRange.length))) {
-      charRange = tokenRange ;
-    }
-  }
-
   NSMutableSet * completionSet = [NSMutableSet new] ;
-  if (charRange.length > 0) {
+  if (inCharRange.length > 0) {
     NSString * sourceString = self.string ;
-    NSString * stringToComplete = [sourceString substringWithRange:charRange] ;
+    NSString * stringToComplete = [sourceString substringWithRange:inCharRange] ;
     const NSRange compareRange = {0, stringToComplete.length} ;
     for (OC_Token * token in tokenArray) {
       NSString * s = [sourceString substringWithRange:token.range] ;
@@ -424,16 +326,7 @@
     }
   }
   return [completionSet.allObjects sortedArrayUsingSelector:@selector (compare:)] ;
-}*/
-
-//---------------------------------------------------------------------------*
-
-/*- (void) didChangeText {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  [super didChangeText] ;
-}*/
+}
 
 //---------------------------------------------------------------------------*
 

@@ -13,7 +13,6 @@
 
 @class OC_GGS_TextDisplayDescriptor ;
 @class OC_GGS_Document ;
-@class PMPopUpButtonForCompletion ;
 
 //---------------------------------------------------------------------------*
 
@@ -21,8 +20,6 @@
    @private OC_GGS_Document * mDocumentUsedForDisplaying ;
    @private OC_GGS_TextDisplayDescriptor * mDisplayDescriptor ;
    @private NSArray * mIssueArray ; // Of PMIssueDescriptor
-   @private PMPopUpButtonForCompletion * mCompletionPopUp ;
-   @private NSInteger mCompletedItemLength ;
 }
 
 - (id) initWithFrame:(NSRect)frameRect

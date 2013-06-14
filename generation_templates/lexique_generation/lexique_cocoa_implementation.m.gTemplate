@@ -203,11 +203,11 @@ end if%
       mTokenCode = %!LEXIQUE_CLASS_NAME%_1_ ; // Empty string code
     }else{ // Unknown input character
       scanningOk = NO ;
+      [self advance] ;
     }
   //--- Error ?
     if (! scanningOk) {
       mTokenCode = -1 ;
-      [self advance] ;
     }%end if%
   }
 }

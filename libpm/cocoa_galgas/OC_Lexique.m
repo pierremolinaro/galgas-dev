@@ -393,7 +393,7 @@
 //---------------------------------------------------------------------------*
 
 - (NSUInteger) styleIndexForTokenCode: (NSInteger) inTokenCode
-           spelling: (NSString *) inSpelling {
+               spelling: (NSString *) inSpelling {
   NSUInteger result = 0 ;
   NSString * customColoringGroupIndex = [[self customSyntaxColoringDictionary] objectForKey:inSpelling] ;
   if (nil != customColoringGroupIndex) {
@@ -487,17 +487,19 @@
               mMatchedTemplateDelimiterIndex) ;
     #endif
     [self parseLexicalTokenForLexicalColoring] ;
-     search = (mTokenStartLocation < mCurrentLocation) && (mCurrentLocation < [mSourceString length]) ;
+    search = (mTokenStartLocation < mCurrentLocation) && (mCurrentLocation < [mSourceString length]) ;
     #ifdef DEBUG_MESSAGES
       NSLog (@"  parseLexicalTokenForLexicalColoring DONE, mCurrentLocation %lu, mTokenStartLocation %lu", mCurrentLocation, mTokenStartLocation) ;
     #endif
     if (mTokenCode < 0) { // Error or template
+      const NSRange range = {mTokenStartLocation, mCurrentLocation - mTokenStartLocation} ;
       OC_Token * token = [[OC_Token alloc]
         initWithTokenCode:0 // No token
-        range:NSMakeRange (mTokenStartLocation, mCurrentLocation - mTokenStartLocation)
+        range:range
         style:mTokenCode // 'Error' (-1) or 'template' (-2) style
         matchedTemplateDelimiterIndex:-1
       ] ;
+      // NSLog (@"range [%ld, %ld] --> '%@'", range.location, range.length, [mSourceString substringWithRange:range]) ;
       #ifdef DEBUG_MESSAGES
         NSLog (@"  error -> insertAtIndex:%ld, range %lu, %lu", * outUpperIndexToRedrawInStyleArray, [token range].location, [token range].length) ;
       #endif
