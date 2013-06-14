@@ -776,24 +776,9 @@ void AC_GALGAS_map::performInsert (const capCollectionElement & inAttributes,
 //--- If all attributes are built, perform insertion
   if (isValid ()) {
     insulate (HERE) ;
-    cMapNode * node = (NULL == mSharedMap)
+    /* cMapNode * node = (NULL == mSharedMap)
       ? NULL
-      : mSharedMap->performInsert (inAttributes, inCompiler, inInsertErrorMessage, inShadowErrorMessage COMMA_THERE) ;
-  //--- Contextual help
-    if ((NULL != node) && executionModeIsContextHelp ()) {
-      cMapElement * p = (cMapElement *) inAttributes.ptr () ;
-      macroValidSharedObject (p, cMapElement) ;
-      const GALGAS_lstring key = p->mAttribute_lkey ;
-      if (isCurrentCompiledFilePath (key.mAttribute_location.startLocation ().sourceFilePath ())) {
-        const PMUInt32 startLocationInSource = key.mAttribute_location.startLocation ().index () ;
-        const PMUInt32 endLocationInSource = key.mAttribute_location.endLocation ().index () ;
-        if ((contextHelpStartLocation () >= startLocationInSource) && (contextHelpEndLocation () <= endLocationInSource)) {
-          C_String s ;
-          node->mAttributes.description (s, 0) ;
-          sendToTCPSocket (s) ;
-        }
-      }
-    }
+      : */ mSharedMap->performInsert (inAttributes, inCompiler, inInsertErrorMessage, inShadowErrorMessage COMMA_THERE) ;
   }
 }
 
@@ -1097,17 +1082,6 @@ const cCollectionElement * AC_GALGAS_map::performSearch (const GALGAS_lstring & 
   const cCollectionElement * result = NULL ;
   if (isValid () && inKey.isValid ()) {
     const cMapNode * node = mSharedMap->performSearch (inKey, inCompiler, inSearchErrorMessage COMMA_THERE) ;
-  //--- Contextual help
-    if ((NULL != node) && executionModeIsContextHelp () && isCurrentCompiledFilePath (inKey.mAttribute_location.startLocation ().sourceFilePath ())) {
-      const PMUInt32 startLocationInSource = inKey.mAttribute_location.startLocation ().index () ;
-      const PMUInt32 endLocationInSource = inKey.mAttribute_location.endLocation ().index () ;
-      if ((contextHelpStartLocation () >= startLocationInSource) && (contextHelpEndLocation () <= endLocationInSource)) {
-        C_String s ;
-        node->mAttributes.description (s, 0) ;
-        sendToTCPSocket (s) ;
-      }
-    }
-  //---
     if (NULL != node) {
       result = node->mAttributes.ptr () ;
     }
