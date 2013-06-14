@@ -1,9 +1,10 @@
-project all_xml_parsing -> "xml_parsing" :
+project all_xml_parsing (1:0:0) -> "xml_parsing" :
 #--- Targets
   feature "makefile_macosx" ;
   feature "makefile_unix" ;
   feature "makefile_msys_on_win32" ;
   feature "SnowLeopard" ;
+  feature applicationBundleBase : "fr.what" ;
 #--- Sources
   semantics "xml_types.gSemantics" ;
   lexique "xml_parsing_lexique.gLexique" ;

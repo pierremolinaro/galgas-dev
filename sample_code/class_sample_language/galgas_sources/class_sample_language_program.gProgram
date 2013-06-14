@@ -1,4 +1,4 @@
-program class_sample_language_program "version 1.0.0":
+program class_sample_language_program :
 import "class_sample_language_grammar.gGrammar" ;
 import "class_sample_language_semantics.gSemantics" ;
 

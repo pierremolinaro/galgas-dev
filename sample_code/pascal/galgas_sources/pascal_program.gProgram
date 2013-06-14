@@ -1,4 +1,4 @@
-program pascal_program "version 1.0.0":
+program pascal_program :
 import "pascal_AST.gSemantics" ;
 import "pascal_grammar.gGrammar" ;
 

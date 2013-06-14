@@ -1,9 +1,10 @@
-project all_class_sample_language -> "class_sample_language" :
+project all_class_sample_language (1:0:0) -> "class_sample_language" :
 #--- Targets
   feature "makefile_macosx" ;
   feature "makefile_unix" ;
   feature "makefile_msys_on_win32" ;
   feature "SnowLeopard" ;
+  feature applicationBundleBase : "fr.what" ;
 #--- Sources
   lexique "class_sample_language_lexique.gLexique" ;
   semantics "class_sample_language_semantics.gSemantics" ;

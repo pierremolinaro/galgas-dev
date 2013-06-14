@@ -1,9 +1,10 @@
-project all_dangling_else_solution -> "all_dangling_else_solution" :
+project all_dangling_else_solution (1:0:0) -> "all_dangling_else_solution" :
 #--- Targets
   feature "makefile_macosx" ;
   feature "makefile_unix" ;
   feature "makefile_msys_on_win32" ;
   feature "SnowLeopard" ;
+  feature applicationBundleBase : "fr.what" ;
 #--- Sources
   lexique "dangling_else_solution_lexique.gLexique" ;
   option "dangling_else_solution_options.gOption" ;

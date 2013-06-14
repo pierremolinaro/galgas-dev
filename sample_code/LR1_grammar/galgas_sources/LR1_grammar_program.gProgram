@@ -1,4 +1,4 @@
-program LR1_grammar_program "version 1.0.0":
+program LR1_grammar_program :
 import "LR1_grammar_grammar.gGrammar" ;
 
 before {

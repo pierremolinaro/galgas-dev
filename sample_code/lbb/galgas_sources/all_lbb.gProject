@@ -1,9 +1,10 @@
-project all_lbb -> "lbb":
+project all_lbb (1:0:0) -> "lbb":
 #--- Targets
   feature "makefile_macosx" ;
   feature "makefile_unix" ;
   feature "makefile_msys_on_win32" ;
   feature "SnowLeopard" ;
+  feature applicationBundleBase : "fr.what" ;
 
 #--- Source files (relative path from 'galgas_sources' directory)
   lexique "lbb_lexique.gLexique" ;

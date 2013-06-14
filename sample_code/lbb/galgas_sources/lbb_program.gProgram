@@ -1,4 +1,4 @@
-program lbb_program "version 1.0.0":
+program lbb_program :
 import "lbb_semantics.gSemantics" ;
 import "lbb_grammar.gGrammar" ;
 
