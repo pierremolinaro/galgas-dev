@@ -63,7 +63,7 @@
 
 //---------------------------------------------------------------------------*
 
-- (id) init {
+- (instancetype) init {
   self = [super init] ;
   if (self) {
     mMatchedTemplateDelimiterIndex = -1 ;

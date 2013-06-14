@@ -27,7 +27,7 @@ end if%
 end if%
 //---------------------------------------------------------------------------*
 
-- (id) init {
+- (instancetype) init {
   self = [super init] ;
   if (self) {
     noteObjectAllocation (self) ;
