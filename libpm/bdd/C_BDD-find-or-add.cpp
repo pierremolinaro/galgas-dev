@@ -322,8 +322,8 @@ PMUInt32 C_BDD::getBDDinstancesCount (void) {
 //------------------------------------------------------------------------*
 
 static void recursiveMarkBDDNodes (const PMUInt32 inValue) {
-  if (! isNodeMarkedThenMark (inValue COMMA_HERE)) {
-    const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+  if ((nodeIndex > 0) && ! isNodeMarkedThenMark (inValue COMMA_HERE)) {
     if (gNodeArray [nodeIndex].mBranches != 0) {
       recursiveMarkBDDNodes (gNodeArray [nodeIndex].mTHENbranch) ;
       recursiveMarkBDDNodes (gNodeArray [nodeIndex].mELSEbranch) ;
