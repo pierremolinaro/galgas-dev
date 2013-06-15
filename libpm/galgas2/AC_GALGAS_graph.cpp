@@ -63,10 +63,43 @@ cGraphNode::~ cGraphNode (void) {
 
 //---------------------------------------------------------------------------*
 
-typedef struct {
-  PMUInt32 mSourceNodeID ;
-  PMUInt32 mTargetNodeID ;
-} tArcStruct ;
+class cArcStruct {
+//--- Defaut constructor
+  public : cArcStruct (void) ;
+  public : cArcStruct (const PMUInt32 inSourceNodeID, const PMUInt32 inTargetNodeID) ;
+
+//--- Equality test
+  public : bool operator == (const cArcStruct & inOperand) const ;
+
+//--- Accessors
+  public : inline PMUInt32 sourceNodeID (void) const {return mSourceNodeID ; }
+  public : inline PMUInt32 targetNodeID (void) const {return mTargetNodeID ; }
+  
+//--- Private attributes
+  private : PMUInt32 mSourceNodeID ;
+  private : PMUInt32 mTargetNodeID ;
+} ;
+
+//---------------------------------------------------------------------------*
+
+cArcStruct::cArcStruct (void) :
+mSourceNodeID (0),
+mTargetNodeID (0) {
+}
+
+//---------------------------------------------------------------------------*
+
+cArcStruct::cArcStruct (const PMUInt32 inSourceNodeID,
+                        const PMUInt32 inTargetNodeID) :
+mSourceNodeID (inSourceNodeID),
+mTargetNodeID (inTargetNodeID) {
+}
+
+//---------------------------------------------------------------------------*
+
+bool cArcStruct::operator == (const cArcStruct & inOperand) const {
+  return (mSourceNodeID == inOperand.mSourceNodeID) && (mTargetNodeID == inOperand.mTargetNodeID) ;
+}
 
 //---------------------------------------------------------------------------*
 
@@ -75,7 +108,7 @@ class cSharedGraph : public C_SharedObject {
   private : cGraphNode * mRoot ;
   public : inline const cGraphNode * root (void) const { return mRoot ; }
   private : PMUInt32 mAllNodeCount ;
-  private : TC_UniqueArray <tArcStruct> mArcArray ;
+  private : TC_UniqueArray <cArcStruct> mArcArray ;
   private : TC_UniqueArray <cGraphNode *> mNodeArray ;
 
 //--- Count
@@ -511,8 +544,8 @@ void cSharedGraph::addArc (const C_String & inSourceNodeKey,
   cGraphNode * sourceNode = findOrAddNodeForKey (inSourceNodeKey) ;
   cGraphNode * targetNode = findOrAddNodeForKey (inTargetNodeKey) ;
   targetNode->mReferenceLocationArray.addObject (inTargetNodeLocation) ;
-  const tArcStruct arc = {sourceNode->mNodeID, targetNode->mNodeID} ;
-  mArcArray.addObject (arc) ;
+  const cArcStruct arc (sourceNode->mNodeID, targetNode->mNodeID) ;
+  mArcArray.addObjectIfUnique (arc) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -542,9 +575,9 @@ C_String cSharedGraph::reader_graphviz (void) const {
   C_String s ;
   s << "digraph G {\n" ;
   for (PMSInt32 i=0 ; i<mArcArray.count () ; i++) {
-    const tArcStruct arc = mArcArray (i COMMA_HERE) ;
-    s << "  \"" << mNodeArray (arc.mSourceNodeID COMMA_HERE)->mKey
-      << "\" -> \"" << mNodeArray (arc.mTargetNodeID COMMA_HERE)->mKey
+    const cArcStruct arc = mArcArray (i COMMA_HERE) ;
+    s << "  \"" << mNodeArray (arc.sourceNodeID () COMMA_HERE)->mKey
+      << "\" -> \"" << mNodeArray (arc.targetNodeID () COMMA_HERE)->mKey
       << "\" ;\n" ;
   }  
   s << "}\n" ;
@@ -572,9 +605,9 @@ GALGAS_string AC_GALGAS_graph::reader_graphviz (UNUSED_LOCATION_ARGS) const {
 
 void cSharedGraph::reader_arcs (GALGAS__32_stringlist & ioList) const {
   for (PMSInt32 i=0 ; i<mArcArray.count () ; i++) {
-    const tArcStruct arc = mArcArray (i COMMA_HERE) ;
-    ioList.addAssign_operation (mNodeArray (arc.mSourceNodeID COMMA_HERE)->mKey,
-                                mNodeArray (arc.mTargetNodeID COMMA_HERE)->mKey
+    const cArcStruct arc = mArcArray (i COMMA_HERE) ;
+    ioList.addAssign_operation (mNodeArray (arc.sourceNodeID () COMMA_HERE)->mKey,
+                                mNodeArray (arc.targetNodeID () COMMA_HERE)->mKey
                                 COMMA_HERE) ;
   }  
 }
@@ -705,9 +738,9 @@ void cSharedGraph::internalTopologicalSort (cSharedList * & outSortedList,
   enterNodes (mRoot, array) ;
 //--- Enter arcs
   for (PMSInt32 i=0 ; i<mArcArray.count () ; i++) {
-    const PMUInt32 sourceNodeID = mArcArray (i COMMA_HERE).mSourceNodeID ;
+    const PMUInt32 sourceNodeID = mArcArray (i COMMA_HERE).sourceNodeID () ;
     cTopologicalSortEntry & source = array ((PMSInt32) sourceNodeID COMMA_HERE) ;
-    cTopologicalSortEntry & target = array ((PMSInt32) mArcArray (i COMMA_HERE).mTargetNodeID COMMA_HERE) ;
+    cTopologicalSortEntry & target = array ((PMSInt32) mArcArray (i COMMA_HERE).targetNodeID () COMMA_HERE) ;
     source.mDependencyCount ++ ;
     target.mDependenceArray.addObject (sourceNodeID) ;
   }

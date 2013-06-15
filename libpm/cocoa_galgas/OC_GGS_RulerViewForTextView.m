@@ -111,9 +111,9 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
   BOOL found = NO ;
   while ((idx < sourceStringLength) && ! found) {
     lineIndex ++ ;
-    const NSRange lineRange = [sourceString lineRangeForRange:NSMakeRange (idx, 1)] ;
+    const NSRange lineRange = [sourceString lineRangeForRange:NSMakeRange (idx, 0)] ;
     found = (lineRange.location + lineRange.length) > firstCharacterIndex ;
-    if ( ! found) {
+    if (! found) {
       idx = lineRange.location + lineRange.length ;
     }
   }
@@ -122,13 +122,15 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
   BOOL maxYreached = NO ;
   NSMutableArray * bulletArray = [NSMutableArray new] ;
   while ((idx < sourceStringLength) && ! maxYreached) {
-    lineIndex ++ ;
     const NSRect r = [lm lineFragmentRectForGlyphAtIndex:idx effectiveRange:NULL] ;
-    const NSRange lineRange = [sourceString lineRangeForRange:NSMakeRange (idx, 1)] ;
+    NSUInteger startIndex = 0 ;
+    NSUInteger lineEndIndex = 0 ;
+    NSUInteger contentsEndIndex = 0 ;
+    [sourceString getLineStart:&startIndex end:&lineEndIndex contentsEnd:&contentsEndIndex forRange:NSMakeRange (idx, 0)] ;
     const BOOL intersect =
-      imax (selectedRange.location, lineRange.location)
+      imax (selectedRange.location, startIndex)
         <=
-      imin (selectedRange.location + selectedRange.length, lineRange.location + lineRange.length)
+      imin (selectedRange.location + selectedRange.length, contentsEndIndex)
     ; 
   //--- Draw line number
     NSString * str = [NSString stringWithFormat:@"%ld", lineIndex] ;
@@ -142,6 +144,7 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
     BOOL hasError = NO ;
     BOOL hasWarning = NO ;
     NSMutableString * allMessages = [NSMutableString new] ;
+    const NSRange lineRange = NSMakeRange (startIndex, lineEndIndex - startIndex) ;
     for (PMIssueDescriptor * issue in mIssueArray) {
       if (NSLocationInRange (issue.locationInSourceString, lineRange) && (issue.locationInSourceStringStatus == kLocationInSourceStringSolved)) {
         [allMessages appendString:issue.issueMessage] ;
@@ -161,7 +164,8 @@ static NSUInteger imin (NSUInteger a, NSUInteger b) { return (a < b) ? a : b ; }
       ] ;
       [bulletArray addObject:issueInRuler] ;
     }
-    idx = lineRange.location + lineRange.length ;
+    idx = lineEndIndex ;
+    lineIndex ++ ;
   }
 //--- Images
   NSImage * errorImage = [NSImage imageNamed:NSImageNameStatusUnavailable] ;
