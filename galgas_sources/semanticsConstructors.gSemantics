@@ -246,6 +246,7 @@ override method @stringsetPredefinedTypeAST getConstructorMap
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"emptySet" !"stringset" !false ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"setWithString" !"string" !"stringset" !false ;
   enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"setWithStringList" !"stringlist" !"stringset" !false ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"setWithLStringList" !"lstringlist" !"stringset" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*
