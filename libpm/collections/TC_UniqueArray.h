@@ -137,7 +137,7 @@ template <typename TYPE> class TC_UniqueArray {
 //--- Add objects at the end of the array
   public : void addObject (const TYPE & inValue) ; // inValue is copied
   public : void addObjectIfUnique (const TYPE & inValue) ; // Test is based on == operator, and inValue is copied
-  public : void addObjectInOrderedArray (const TYPE & inValue) ; // Test is based on == operator, and inValue is copied
+  public : void addObjectInOrderedArray (const TYPE & inValue) ; // Test is based on 'compare' method, and inValue is copied
   public : void addObjectUsingSwap (TYPE & ioValue) ;
   public : void addDefaultObjectUsingSwap (void) ;
   public : void addObjects (const PMSInt32 inCount, const TYPE & inValue) ; // inValue is copied

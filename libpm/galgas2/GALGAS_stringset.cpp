@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2005, ..., 2011 Pierre Molinaro.                           *
+//  Copyright (C) 2005, ..., 2013 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -1030,6 +1030,25 @@ GALGAS_stringset GALGAS_stringset::constructor_setWithStringList (const GALGAS_s
     cEnumerator_stringlist enumerator (inStringList, kEnumeration_up) ;
     while (enumerator.hasCurrentObject ()) {
       result.addAssign_operation (enumerator.current_mValue (THERE) COMMA_THERE) ;
+      enumerator.gotoNextObject () ;
+    }
+    #ifndef DO_NOT_GENERATE_CHECKINGS
+      result.checkStringset (HERE) ;
+    #endif
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_stringset GALGAS_stringset::constructor_setWithLStringList (const GALGAS_lstringlist & inStringList
+                                                                   COMMA_LOCATION_ARGS) {
+  GALGAS_stringset result ;
+  if (inStringList.isValid ()) {
+    result = constructor_emptySet (THERE) ;
+    cEnumerator_lstringlist enumerator (inStringList, kEnumeration_up) ;
+    while (enumerator.hasCurrentObject ()) {
+      result.addAssign_operation (enumerator.current_mValue (THERE).reader_string(THERE) COMMA_THERE) ;
       enumerator.gotoNextObject () ;
     }
     #ifndef DO_NOT_GENERATE_CHECKINGS
