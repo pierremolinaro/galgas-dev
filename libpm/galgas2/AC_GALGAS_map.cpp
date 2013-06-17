@@ -776,9 +776,10 @@ void AC_GALGAS_map::performInsert (const capCollectionElement & inAttributes,
 //--- If all attributes are built, perform insertion
   if (isValid ()) {
     insulate (HERE) ;
-    /* cMapNode * node = (NULL == mSharedMap)
-      ? NULL
-      : */ mSharedMap->performInsert (inAttributes, inCompiler, inInsertErrorMessage, inShadowErrorMessage COMMA_THERE) ;
+    /* cMapNode * node = (NULL == mSharedMap) ? NULL : */
+    if (NULL != mSharedMap) {
+      mSharedMap->performInsert (inAttributes, inCompiler, inInsertErrorMessage, inShadowErrorMessage COMMA_THERE) ;
+    }
   }
 }
 
