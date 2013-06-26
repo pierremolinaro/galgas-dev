@@ -136,52 +136,56 @@
 
 - (void) keyDown: (NSEvent *) inEvent {
   NSString * keys = inEvent.characters ;
-  const unichar c = [keys characterAtIndex:0] ;
-  // NSLog (@"%d", c) ;
-  switch (c) {
-  case 9 : // A Tab Character ?
-    { const NSRange selectedRange = self.selectedRange ;
-      if ((selectedRange.location & 1) !=0) {
-        [self insertText:@"  "] ; // Odd location: insert 2 spaces
-      }else{
-        [self insertText:@" "] ; // Even location: insert 1 space
-      }
-    }break ;
-  case 13 : // A Carriage Return Character ?
-    { const NSRange selectedRange = [self selectedRange] ;
-      NSString * s = self.textStorage.string ;
-      NSRange currentLineRange = [s lineRangeForRange:selectedRange] ;
-    //--- Find the number of spaces at the beginning of the line
-      if (currentLineRange.length > selectedRange.location - currentLineRange.location) {
-        currentLineRange.length = selectedRange.location - currentLineRange.location ;
-      }
-    //--- Insert string
-      NSMutableString * stringToInsert = [NSMutableString new] ;
-      [stringToInsert appendString:@"\n"] ;
-      while ((currentLineRange.length > 0) && ([s characterAtIndex:currentLineRange.location] == ' ')) {
-        currentLineRange.location ++ ;
-        currentLineRange.length -- ;
-        [stringToInsert appendString:@" "] ;
-      }
-      [self insertText:stringToInsert] ;
-    }break ;
-  case 127 : // A Back Character ?
-  case 63232 : // Up arrow
-  case 63233 : // Down arrow
-  case 63234 : // Left arrow
-  case 63235 : // Right arrow
-  case 63272 : // Suppr
-  case 63273 : // Home
-  case 63275 : // Goto end
-  case 63276 : // Page Up
-  case 63277 : // Page Down
+  if (keys.length == 0) {
     [super keyDown:inEvent] ;
-    break ;
-  default:
-    [super keyDown:inEvent] ;
-  //--- Perform completion
-     if ([[NSUserDefaults standardUserDefaults] boolForKey:GGS_enable_completion]) {
-       [self complete:nil] ;
+  }else{
+    const unichar c = [keys characterAtIndex:0] ;
+    // NSLog (@"%d", c) ;
+    switch (c) {
+    case 9 : // A Tab Character ?
+      { const NSRange selectedRange = self.selectedRange ;
+        if ((selectedRange.location & 1) !=0) {
+          [self insertText:@"  "] ; // Odd location: insert 2 spaces
+        }else{
+          [self insertText:@" "] ; // Even location: insert 1 space
+        }
+      }break ;
+    case 13 : // A Carriage Return Character ?
+      { const NSRange selectedRange = [self selectedRange] ;
+        NSString * s = self.textStorage.string ;
+        NSRange currentLineRange = [s lineRangeForRange:selectedRange] ;
+      //--- Find the number of spaces at the beginning of the line
+        if (currentLineRange.length > selectedRange.location - currentLineRange.location) {
+          currentLineRange.length = selectedRange.location - currentLineRange.location ;
+        }
+      //--- Insert string
+        NSMutableString * stringToInsert = [NSMutableString new] ;
+        [stringToInsert appendString:@"\n"] ;
+        while ((currentLineRange.length > 0) && ([s characterAtIndex:currentLineRange.location] == ' ')) {
+          currentLineRange.location ++ ;
+          currentLineRange.length -- ;
+          [stringToInsert appendString:@" "] ;
+        }
+        [self insertText:stringToInsert] ;
+      }break ;
+    case 127 : // A Back Character ?
+    case 63232 : // Up arrow
+    case 63233 : // Down arrow
+    case 63234 : // Left arrow
+    case 63235 : // Right arrow
+    case 63272 : // Suppr
+    case 63273 : // Home
+    case 63275 : // Goto end
+    case 63276 : // Page Up
+    case 63277 : // Page Down
+      [super keyDown:inEvent] ;
+      break ;
+    default:
+      [super keyDown:inEvent] ;
+    //--- Perform completion
+       if ([[NSUserDefaults standardUserDefaults] boolForKey:GGS_enable_completion]) {
+         [self complete:nil] ;
+      }
     }
   }
 }
