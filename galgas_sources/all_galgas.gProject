@@ -2,7 +2,7 @@
 #                                                                           *
 #  Compile all galgas sources                                               *
 #                                                                           *
-#  Copyright (C) 1997, ..., 2012 Pierre Molinaro.                           *
+#  Copyright (C) 1997, ..., 2013 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-project all_galgas (2:4:5) -> "galgas" :
+project all_galgas (2:4:6) -> "galgas" :
 #  feature "multi-threading" ;
   feature libpmAtPath : "../libpm" ;
 #--- Targets
