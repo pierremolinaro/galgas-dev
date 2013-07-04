@@ -78,7 +78,6 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       displayDescriptor:self
     ] ;
     mTextView.autoresizingMask = NSViewWidthSizable | NSViewHeightSizable ;
-    mTextView.usesFindPanel = YES ;
     [mTextView setGrammarCheckingEnabled:NO] ;
     [mTextView setContinuousSpellCheckingEnabled:NO] ;
     mTextView.allowsUndo = YES ;
@@ -87,19 +86,16 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     [mTextView setAutomaticQuoteSubstitutionEnabled:NO] ;
     mTextView.smartInsertDeleteEnabled = NO ;
     [mTextView setAutomaticDashSubstitutionEnabled:NO] ;
-    // [mTextView setRichText:YES] ;
     [mTextView.layoutManager setAllowsNonContiguousLayout:YES] ;
     [mTextView.layoutManager setUsesFontLeading:YES] ;
-    // [[mTextView layoutManager] setTypesetterBehavior:NSTypesetterBehavior_10_2_WithCompatibility];
-    // [[mTextView textContainer] setLineFragmentPadding:0.0];
     if ([mTextView respondsToSelector:@selector(setAutomaticTextReplacementEnabled:)]) {
-      // NSLog (@"AVANT %d", mTextView.isAutomaticTextReplacementEnabled) ;
       [mTextView setValue:[NSNumber numberWithBool:NO] forKey:@"automaticTextReplacementEnabled"] ;
-      // NSLog (@"APRES %d", mTextView.isAutomaticTextReplacementEnabled) ;
     }
   //---
     if ([mTextView respondsToSelector:@selector (setUsesFindBar:)]) {
       [mTextView setValue:[NSNumber numberWithBool:YES] forKey:@"usesFindBar"] ;
+    }else{
+      mTextView.usesFindPanel = YES ;
     }
   //---
     [mTextView setDelegate:self] ;

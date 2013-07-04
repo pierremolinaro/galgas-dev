@@ -307,7 +307,7 @@ The \nomType{binaryset} type encodes sets, binary relations, boolean mathematica
 
 
 \readerSansArgument{accessibleStates}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@binaryset}
 {Returns the set of accessible states from an initial state set.}
@@ -336,7 +336,7 @@ This program displays: \texttt{Accessible: 0 1 2 3 4 5}.
 
 
 \readerDeuxArguments{binarySetByTranslatingFromIndex}
-{@binaryset}
+{binaryset}
 {1.6.3}
 {@binaryset}
 {@uint inFirstIndex}
@@ -347,7 +347,7 @@ This program displays: \texttt{Accessible: 0 1 2 3 4 5}.
 
 
 \readerSansArgument{compressedValueCount}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@uint64}
 {Returns in an \nomType{uint64} value the number of different compressed string values encoded by receiver's value.}
@@ -357,7 +357,7 @@ This program displays: \texttt{Accessible: 0 1 2 3 4 5}.
 
 
 \readerUnArgument{compressedStringValueList}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@stringlist}
 {@uint inBitCount}
@@ -374,7 +374,7 @@ This program displays: \texttt{Accessible: 0 1 2 3 4 5}.
 
 
 \readerDeuxArguments{containsValue}
-{@binaryset}
+{binaryset}
 {1.6.4}
 {@bool}
 {@uint inFirstBit}
@@ -408,7 +408,7 @@ This program displays: \texttt{Accessible: 0 1 2 3 4 5}.
 
 
 \readerUnArgument{equalTo}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@binaryset}
 {@binaryset inOperand}
@@ -426,7 +426,7 @@ This operation returns an \nomType{binaryset} value; do not confuse with \emph{=
 
 
 \readerUnArgument{existOnBitIndex}
-{@binaryset}
+{binaryset}
 {1.6.3}
 {@binaryset}
 {@uint inBitIndex}
@@ -440,7 +440,7 @@ This operation returns an \nomType{binaryset} value; do not confuse with \emph{=
 
 
 \readerDeuxArguments{existsOnBitRange}
-{@binaryset}
+{binaryset}
 {1.6.3}
 {@binaryset}
 {@uint inFirstBitIndex}
@@ -463,7 +463,7 @@ This operation returns an \nomType{binaryset} value; do not confuse with \emph{=
 
 
 \readerUnArgument{existOnBitIndexAndBeyond}
-{@binaryset}
+{binaryset}
 {1.6.3}
 {@binaryset}
 {@uint inBitIndex}
@@ -477,7 +477,7 @@ This operation returns an \nomType{binaryset} value; do not confuse with \emph{=
 
 
 \readerUnArgument{forAllOnBitIndex}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@binaryset}
 {@uint inBitIndex}
@@ -491,7 +491,7 @@ This operation returns an \nomType{binaryset} value; do not confuse with \emph{=
 
 
 \readerUnArgument{forAllOnBitIndexAndBeyond}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@binaryset}
 {@uint inBitIndex}
@@ -506,7 +506,7 @@ This operation returns an \nomType{binaryset} value; do not confuse with \emph{=
 
 
 \readerUnArgument{greaterOrEqualTo}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@binaryset}
 {@binaryset inOperand}
@@ -523,7 +523,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 \readerSansArgument{isEmpty}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@bool}
 {Returns a \nomType{bool} value that indicates whether the receiver's value is the empty set.}
@@ -536,7 +536,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 \readerSansArgument{isFull}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@bool}
 {Returns a \nomType{bool} value that indicates whether the receiver's value is the full set.}
@@ -549,7 +549,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 \readerDeuxArguments{ITE}
-{@binaryset}
+{binaryset}
 {1.6.3}
 {@binaryset}
 {@binaryset inThenOperand}
@@ -564,7 +564,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 \readerUnArgument{lowerOrEqualTo}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@binaryset}
 {@binaryset inOperand}
@@ -578,7 +578,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 \readerUnArgument{notEqualTo}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@binaryset}
 {@binaryset inOperand}
@@ -592,7 +592,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 \readerSansArgument{predicateStringValue}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@string}
 {Returns a string representation of the receiver's value.}
@@ -605,7 +605,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 \readerUnArgument{strictGreaterThan}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@binaryset}
 {@binaryset inOperand}
@@ -619,7 +619,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 \readerUnArgument{strictLowerThan}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@binaryset}
 {@binaryset inOperand}
@@ -633,7 +633,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 \readerUnArgument{stringValueList}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@stringlist}
 {@uint inBitCount}
@@ -647,7 +647,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 \readerDeuxArguments{stringValueListWithNameList}
-{@binaryset}
+{binaryset}
 {1.9.3}
 {@stringlist}
 {@uint inBitCount}
@@ -662,7 +662,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 \readerTroisArguments{swap132}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@binaryset}
 {@uint inBitCount1}
@@ -678,7 +678,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 \readerDeuxArguments{swap21}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@binaryset}
 {@uint inBitCount1}
@@ -693,7 +693,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 \readerTroisArguments{swap213}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@binaryset}
 {@uint inBitCount1}
@@ -709,7 +709,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 \readerTroisArguments{swap231}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@binaryset}
 {@uint inBitCount1}
@@ -725,7 +725,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 \readerTroisArguments{swap312}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@binaryset}
 {@uint inBitCount1}
@@ -741,7 +741,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 \readerTroisArguments{swap321}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@binaryset}
 {@uint inBitCount1}
@@ -758,7 +758,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 \readerUnArgument{transitiveClosure}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@binaryset}
 {@uint inBitCount}
@@ -773,7 +773,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 \readerUnArgument{uint64ValueList}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@uint64list}
 {@uint64 inBitCount}
@@ -788,7 +788,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 
 \readerUnArgument{valueCount}
-{@binaryset}
+{binaryset}
 {1.6.0}
 {@uint64}
 {@uint inBitCount}
