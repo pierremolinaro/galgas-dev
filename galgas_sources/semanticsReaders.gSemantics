@@ -613,6 +613,7 @@ override method @doublePredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"tanDegree" !"double" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"sqrt" !"double" !true ;
   enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"power" !"double" !"double" !true ;
+  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"binaryImage" !"uint64" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*

@@ -11,8 +11,16 @@ Note that a \nomType{double} constant is characterized by the occurrence of the 
 
 \section{Constructor}
 
-\constructeurSansArgument{pi}
+\constructeurUnArgument{doubleWithBinaryImage}
+{double}
+{2.4.7}
 {@double}
+{@uint64 inImage}
+{Returns a double object from the binary image of the argument}
+{}
+
+\constructeurSansArgument{pi}
+{double}
 {2.1.1}
 {@double}
 {Returns an approximation of the $\pi$ constant value (3.14159265358979323846264338327950288).}
@@ -20,8 +28,18 @@ Note that a \nomType{double} constant is characterized by the occurrence of the 
 
 \section{Readers}
 
+\readerSansArgument{binaryImage}
+{double}
+{2.4.7}
+{@uint64}
+{Returns the binary image of the value of receiver's value.}
+{}
+
+
+
+
 \readerSansArgument{cos}
-{@double}
+{double}
 {2.1.1}
 {@double}
 {Returns the \emph{cosine} value of receiver's value, expressed in radian.}
@@ -31,7 +49,7 @@ Note that a \nomType{double} constant is characterized by the occurrence of the 
 
 
 \readerSansArgument{sin}
-{@double}
+{double}
 {2.1.1}
 {@double}
 {Returns the \emph{sine} value of receiver's value, expressed in radian.}
@@ -41,7 +59,7 @@ Note that a \nomType{double} constant is characterized by the occurrence of the 
 
 
 \readerSansArgument{sint}
-{@double}
+{double}
 {1.9.9}
 {@sint}
 {Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object.}
@@ -50,7 +68,7 @@ Note that a \nomType{double} constant is characterized by the occurrence of the 
 
 
 \readerSansArgument{sint64}
-{@double}
+{double}
 {1.9.9}
 {@sint64}
 {Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object.}
@@ -60,7 +78,7 @@ Note that a \nomType{double} constant is characterized by the occurrence of the 
 
 
 \readerSansArgument{string}
-{@double}
+{double}
 {1.7.7}
 {@string}
 {Returns a decimal string representation of the receiver's value.}
@@ -70,7 +88,7 @@ Note that a \nomType{double} constant is characterized by the occurrence of the 
 
 
 \readerSansArgument{tan}
-{@double}
+{double}
 {2.1.1}
 {@double}
 {Returns the \emph{tangent} value of receiver's value, expressed in radian.}
@@ -83,7 +101,7 @@ Note that a \nomType{double} constant is characterized by the occurrence of the 
 
 
 \readerSansArgument{uint}
-{@double}
+{double}
 {1.9.9}
 {@uint}
 {Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object.}
@@ -94,7 +112,7 @@ Note that a \nomType{double} constant is characterized by the occurrence of the 
 
 
 \readerSansArgument{uint64}
-{@double}
+{double}
 {1.9.9}
 {@uint64}
 {Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object.}

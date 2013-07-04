@@ -162,7 +162,7 @@
 % {this reader raises a run-time error if ...} % Discussion
 
 \newcommand \readerUnArgument[7] {
-  \subsection{\texttt{#1} Reader}\label{reader #2 #1}\index{#1!"#2 reader}
+  \subsection{\texttt{#1} Reader}\label{reader:#2:#1}\index{#1!"@#2 reader}
   #6
   \newline
   \newline
@@ -173,7 +173,7 @@
   %\end{lstlisting}
   \colorbox{\couleurFondAPI}{
     \begin{tabular}{l}
-      \texttt{\textbf{reader} #2 #1}\\
+      \texttt{\textbf{reader} @#2 #1}\\
       \texttt{\ \ ?#5}\\
       \texttt{\ \ -> #4 ;}
     \end{tabular}
@@ -202,13 +202,13 @@
 % {this reader raises a run-time error if ...} % Discussion
 
 \newcommand \readerDeuxArguments[8] {
-  \subsection{\texttt{#1} Reader}\label{reader #2 #1}\index{#1!"#2 reader}
+  \subsection{\texttt{#1} Reader}\label{reader:#2:#1}\index{#1!"@#2 reader}
   #7
   \newline
   \newline
   \colorbox{\couleurFondAPI}{
     \begin{tabular}{l}
-    \texttt{\textbf{reader} #2 #1}\\
+    \texttt{\textbf{reader} @#2 #1}\\
     \texttt{\ \ ?#5}\\
     \texttt{\ \ ?#6}\\
     \texttt{\ \ -> #4 ;}
@@ -231,13 +231,13 @@
 %--- Définition d'un reader à 3 arguments
 
 \newcommand \readerTroisArguments[9] {
-  \subsection{\texttt{#1} Reader}\label{reader #2 #1}\index{#1!"#2 reader}
+  \subsection{\texttt{#1} Reader}\label{reader:#2:#1}\index{#1!"@#2 reader}
   #8
   \newline
   \newline
   \colorbox{\couleurFondAPI}{
     \begin{tabular}{l}
-    \texttt{\emph{reader} #2 #1}\\
+    \texttt{\emph{reader} @#2 #1}\\
     \texttt{\ \ ?#5}\\
     \texttt{\ \ ?#6}\\
     \texttt{\ \ ?#7}\\

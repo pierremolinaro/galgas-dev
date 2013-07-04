@@ -316,6 +316,7 @@ override method @doublePredefinedTypeAST getConstructorMap
 :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"pi" !"double" !false ;
+  enterConstructorWithArgument    !?outMap !?ioUnifiedTypeMap !"doubleWithBinaryImage" !"uint64" !"double" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*
