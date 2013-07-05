@@ -52,6 +52,12 @@ mString () {
 
 //---------------------------------------------------------------------------*
 
+GALGAS_string GALGAS_string::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_string ("") ;
+}
+
+//---------------------------------------------------------------------------*
+
 GALGAS_string::GALGAS_string (const C_String & inString) :
 mIsValid (true),
 mString (inString) {

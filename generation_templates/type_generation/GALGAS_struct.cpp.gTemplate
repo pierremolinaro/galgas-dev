@@ -23,10 +23,23 @@ end foreach%) :\n%
 foreach ATTRIBUTE_LIST do index IDX
   %mAttribute_%![mAttributeName identifierRepresentation]% (inOperand%![IDX string]%)%
   between %,\n%
-end foreach% {
+end foreach
+% {
 }
 
-//---------------------------------------------------------------------------*
+%if HAS_DEFAULT_CONSTRUCTOR then
+%//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_%!TYPE_IDENTIFIER% (%?^
+foreach ATTRIBUTE_LIST do
+   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]%::constructor_%![[mAttributeTypeProxy mDefaultConstructorName] identifierRepresentation]% (HERE)%
+  between %,\n%!^
+end foreach%) ;
+}
+
+%end if
+%//---------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
 foreach ATTRIBUTE_LIST

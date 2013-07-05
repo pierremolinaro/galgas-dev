@@ -15,7 +15,13 @@ end foreach%
   public : VIRTUAL_IN_DEBUG bool isValid (void) const ;
   public : VIRTUAL_IN_DEBUG void drop (void) ;
 
-//--------------------------------- Default constructor
+%if HAS_DEFAULT_CONSTRUCTOR then
+%//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_%!TYPE_IDENTIFIER% constructor_default (LOCATION_ARGS) ;
+
+%
+end if
+%//--------------------------------- Default constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
 //--------------------------------- Virtual destructor (in debug mode)

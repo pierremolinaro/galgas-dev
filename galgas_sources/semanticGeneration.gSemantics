@@ -518,12 +518,14 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
+    ?@bool HAS_DEFAULT_CONSTRUCTOR
   ;
 
   template structTypeSpecificImplementation "GALGAS_struct.cpp.gTemplate"
     ?@string TYPE_NAME
     ?@string TYPE_IDENTIFIER
     ?@typedAttributeList ATTRIBUTE_LIST
+    ?@bool HAS_DEFAULT_CONSTRUCTOR
   ;
 
 #---------- Extern Type
@@ -687,6 +689,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@string SUPER_TYPE_IDENTIFIER
     ?@typedAttributeList ALL_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
+    ?@bool HAS_DEFAULT_CONSTRUCTOR
   ;
 
   template classTypeHeader2part1 "GALGAS_class.h2-part1.gTemplate"
@@ -715,6 +718,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@typedAttributeList ALL_ATTRIBUTE_LIST
     ?@typedAttributeList INHERITED_ATTRIBUTE_LIST
     ?@bool IS_ABSTRACT
+    ?@bool HAS_DEFAULT_CONSTRUCTOR
   ;
 
 }
@@ -979,6 +983,7 @@ override reader @classTypeForGeneration appendDeclaration1 ->@string outHeader :
     !if [mSuperClass isNull] then "" else [mSuperClass identifierRepresentation] end
     !mAllTypedAttributeList
     !mIsAbstract
+    ![mTypeProxy mDefaultConstructorName] != ""
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]
@@ -1082,6 +1087,7 @@ override reader @structTypeForGeneration appendDeclaration1 ->@string outHeader 
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
+    ![mTypeProxy mDefaultConstructorName] != ""
   ] ;
   outHeader .= [filewrapper typeGenerationTemplate.unifiedClassBodyForType
     ![mTypeProxy key]
@@ -1651,6 +1657,7 @@ override reader @classTypeForGeneration appendSpecificImplementation ->@string o
     !mAllTypedAttributeList
     ![mAllTypedAttributeList subListWithRange ![@range new !0 ![mAllTypedAttributeList length] - [mTypedAttributeList length]]]
     !mIsAbstract
+    ![mTypeProxy mDefaultConstructorName] != ""
   ] ;
 end reader ;
 
@@ -1661,6 +1668,7 @@ override reader @structTypeForGeneration appendSpecificImplementation ->@string 
     ![mTypeProxy key]
     ![mTypeProxy identifierRepresentation]
     !mTypedAttributeList
+    ![mTypeProxy mDefaultConstructorName] != ""
   ] ;
  end reader ;
 

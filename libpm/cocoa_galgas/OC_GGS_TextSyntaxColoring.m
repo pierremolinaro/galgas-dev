@@ -1,4 +1,4 @@
-//
+ //
 //  OC_GGS_TextSyntaxColoring.m
 //  galgas-developer
 //

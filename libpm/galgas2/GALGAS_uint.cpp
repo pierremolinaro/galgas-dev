@@ -37,6 +37,12 @@ mUIntValue (0) {
 
 //---------------------------------------------------------------------------*
 
+GALGAS_uint GALGAS_uint::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_uint (0) ;
+}
+
+//---------------------------------------------------------------------------*
+
 GALGAS_uint::GALGAS_uint (const PMUInt32 inValue) :
 mIsValid (true),
 mUIntValue (inValue) {

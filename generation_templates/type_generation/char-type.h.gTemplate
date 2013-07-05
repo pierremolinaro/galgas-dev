@@ -17,6 +17,9 @@ class GALGAS_char : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public : GALGAS_char (void) ;
 
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_char constructor_default (LOCATION_ARGS) ;
+
 //--------------------------------- Native constructor
   public : GALGAS_char (const utf32 inValue) ;
 
