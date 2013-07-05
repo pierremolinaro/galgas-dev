@@ -12,7 +12,13 @@ class GALGAS_%!TYPE_IDENTIFIER% : public %if SUPER_TYPE_IDENTIFIER == "" then %A
 //--- Constructor
   public : GALGAS_%!TYPE_IDENTIFIER% (void) ;
 
-//---
+%if HAS_DEFAULT_CONSTRUCTOR & not IS_ABSTRACT then
+%//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_%!TYPE_IDENTIFIER% constructor_default (LOCATION_ARGS) ;
+
+%
+end if
+%//---
   public : inline const cPtr_%!TYPE_IDENTIFIER% * ptr (void) const { return (const cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ; }
   public : inline cPtr_%!TYPE_IDENTIFIER% * ptr (void) { return (cPtr_%!TYPE_IDENTIFIER% *) mObjectPtr ; }
 

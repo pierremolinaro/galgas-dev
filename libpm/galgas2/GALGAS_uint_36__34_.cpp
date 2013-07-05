@@ -44,6 +44,12 @@ mUInt64Value (inValue) {
 
 //---------------------------------------------------------------------------*
 
+GALGAS_uint_36__34_ GALGAS_uint_36__34_::constructor_default (UNUSED_LOCATION_ARGS) {
+  return GALGAS_uint_36__34_ (0) ;
+}
+
+//---------------------------------------------------------------------------*
+
 GALGAS_uint_36__34_::GALGAS_uint_36__34_ (void) :
 mIsValid (false),
 mUInt64Value (0) {

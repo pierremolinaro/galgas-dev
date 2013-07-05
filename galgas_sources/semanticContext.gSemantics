@@ -688,32 +688,51 @@ end method;
 
 #---------------------------------------------------------------------------*
 
+reader @predefinedTypeKindEnum defaultConstructorName
+  -> @string outName
+:
+  switch selfcopy
+  when predefined_bool, predefined_char,
+       predefined_double, predefined_sint, predefined_sint64,
+       predefined_string, predefined_uint, predefined_uint64
+    : outName := "default" ;
+  when predefined_binaryset : outName := "emptyBinarySet" ;
+  when predefined_stringset : outName := "emptySet" ;
+  when predefined_type : outName := "" ;
+  when predefined_application : outName := "" ;
+  when predefined_data : outName := "emptyData" ;
+  when predefined_location : outName := "nowhere" ;
+  when predefined_function : outName := "" ;
+  when predefined_object : outName := "" ;
+  when predefined_filewrapper : outName := "" ;
+  end switch ;
+end reader ;
+
+#---------------------------------------------------------------------------*
+
 override method @predefinedTypeAST enterInSemanticContext
   ??@categoryMethodMapForBuildingContext inCategoryMethodMapForBuildingContext
   ??@categoryReaderMapForBuildingContext inCategoryReaderMapForBuildingContext
   ??@categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
-#  message "@predefinedTypeAST enterInSemanticContext\n" ;
-  @constructorMap constructorMap ;
-  @readerMap readerMap ;
-  @modifierMap modifierMap ;
-  @instanceMethodMap instanceMethodMap ;
-  @classMethodMap classMethodMap ;
-  const @predefinedTypeAST t := selfcopy ; # Bug in GALGAS 1
-  [t getConstructorMap !?ioSemanticContext->mTypeMap ?constructorMap] ;
-  [t getReaderMap !?ioSemanticContext->mTypeMap ?readerMap] ;
-  [t getModifierMap !?ioSemanticContext->mTypeMap ?modifierMap] ;
-  [t getInstanceMethodMap !?ioSemanticContext->mTypeMap ?instanceMethodMap] ;
-  [t getClassMethodMap !?ioSemanticContext->mTypeMap ?classMethodMap] ;
-  @unifiedTypeMapProxyList addAssignArgumentList ;
-  [t getAddAssignArgumentList !?ioSemanticContext->mTypeMap ?addAssignArgumentList] ;
-  @enumerationDescriptorList enumerationList ;
-  @stringlist enumerationVariants ;
-  @string enumeratedTypeName ;
-  [t getEnumerationList !?ioSemanticContext->mTypeMap ?enumerationList ?enumerationVariants ?enumeratedTypeName] ;
-  @unifiedTypeMapProxy selfTypeProxy ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mPredefinedTypeName ?selfTypeProxy] ;
+  [selfcopy getConstructorMap !?ioSemanticContext->mTypeMap ?@constructorMap constructorMap] ;
+  [selfcopy getReaderMap !?ioSemanticContext->mTypeMap ?@readerMap readerMap] ;
+  [selfcopy getModifierMap !?ioSemanticContext->mTypeMap ?@modifierMap modifierMap] ;
+  [selfcopy getInstanceMethodMap !?ioSemanticContext->mTypeMap ?@instanceMethodMap instanceMethodMap] ;
+  [selfcopy getClassMethodMap !?ioSemanticContext->mTypeMap ?@classMethodMap classMethodMap] ;
+  [selfcopy getAddAssignArgumentList !?ioSemanticContext->mTypeMap ?@unifiedTypeMapProxyList addAssignArgumentList] ;
+  [selfcopy getEnumerationList
+    !?ioSemanticContext->mTypeMap
+    ?@enumerationDescriptorList enumerationList
+    ?@stringlist enumerationVariants
+    ?@string enumeratedTypeName
+  ] ;
+  [@unifiedTypeMapProxy makeRegularProxy
+    !?ioSemanticContext->mTypeMap
+    !mPredefinedTypeName
+    ?@unifiedTypeMapProxy selfTypeProxy
+  ] ;
 #--- Enumeration
   @unifiedTypeMapProxy enumeratedTypeProxy ;
   if enumeratedTypeName == "" then
@@ -748,7 +767,7 @@ override method @predefinedTypeAST enterInSemanticContext
     !classMethodMap
     !enumerationList
     !enumerationVariants
-    ![t getSupportedOperatorFlags]
+    ![selfcopy getSupportedOperatorFlags]
     !addAssignArgumentList
     ![@stringset emptySet]
     ![@lstringlist emptyList]
@@ -757,6 +776,7 @@ override method @predefinedTypeAST enterInSemanticContext
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     !enumeratedTypeProxy
+    ![mKind defaultConstructorName]
   ] ;
 end method ;
 
@@ -947,8 +967,11 @@ override method @mapDeclarationAST enterInSemanticContext
     !?instanceMethodMap
   ;
 #--- current map type index
-  @unifiedTypeMapProxy enumeratorTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mMapTypeName->string . elementTypeNameSuffix [] ?enumeratorTypeIndex] ;
+  [@unifiedTypeMapProxy makeRegularProxy
+    !?ioSemanticContext->mTypeMap
+    !mMapTypeName->string . elementTypeNameSuffix []
+    ?@unifiedTypeMapProxy enumeratorTypeIndex
+  ] ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mMapTypeName
@@ -974,6 +997,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !withAccessorMap
     !false # Do not generate header in separate file
     !enumeratorTypeIndex # Type for enumerated element for "for" instruction
+    !"emptyMap"
   ] ;
 end method ;
 
@@ -1199,6 +1223,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     !withAccessorMap
     !false # Do not generate header in separate file
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
+    !"emptyMap"
   ] ;
 end method ;
 
@@ -1212,18 +1237,15 @@ override method @mapProxyDeclarationAST enterInSemanticContext
 :
 #  message "@mapProxyDeclarationAST enterInSemanticContext\n" ;
 #--- Check associated map is really a map
-  @typedAttributeList mapTypedAttributeList ;
-  @typeKindEnum typeKindEnum ;
-  @mapSearchMethodListAST searchMethodList ;
   [ioSemanticContext->mTypeMap searchKey
     !mAssociatedMapTypeName
     ?2*
-    ?typeKindEnum
+    ?@typeKindEnum typeKindEnum
     ?2*
-    ?mapTypedAttributeList
+    ?@typedAttributeList mapTypedAttributeList
     ?11*
-    ?searchMethodList
-    ?4*
+    ?@mapSearchMethodListAST searchMethodList
+    ?5*
   ] ;
   if typeKindEnum != [@typeKindEnum uniqueMapType] then
     error mAssociatedMapTypeName : "the @" . mAssociatedMapTypeName . " should be an unique map type" ;
@@ -1338,6 +1360,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
+    !"null" # Default constructor
   ] ;
 end method ;
 
@@ -1467,6 +1490,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
+    !"default" # Default constructor
   ] ;
 end method ;
 
@@ -1636,6 +1660,7 @@ override method @graphDeclarationAST enterInSemanticContext
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
+    !"emptyGraph" # Default constructor
   ] ;
 end method ;
 
@@ -1701,6 +1726,7 @@ override method @enumDeclarationAST enterInSemanticContext
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
+    ![mConstantList mValueAtIndex !0]->string # Default constructor
   ] ;
 end method ;
 
@@ -1997,8 +2023,11 @@ override method @listDeclarationAST enterInSemanticContext
     !?instanceMethodMap
   ;
 #--- Element type index
-  @unifiedTypeMapProxy enumeratedTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap !mListTypeName->string . elementTypeNameSuffix [] ?enumeratedTypeIndex] ;
+  [@unifiedTypeMapProxy makeRegularProxy
+    !?ioSemanticContext->mTypeMap
+    !mListTypeName->string . elementTypeNameSuffix []
+    ?@unifiedTypeMapProxy enumeratedTypeIndex
+  ] ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mListTypeName
@@ -2024,6 +2053,7 @@ override method @listDeclarationAST enterInSemanticContext
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     !enumeratedTypeIndex # Type for enumerated element for "for" instruction
+    !"emptyList" # Default constructor
   ] ;
 end method ;
 
@@ -2149,6 +2179,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     !enumeratedTypeIndex # Type for enumerated element for "for" instruction
+    !"emptySortedList" # Default constructor
   ] ;
 end method ;
 
@@ -2160,7 +2191,6 @@ override method @structDeclarationAST enterInSemanticContext
   ??@categoryModifierMapForBuildingContext inCategoryModifierMapForBuildingContext
   ?!@semanticContext ioSemanticContext
 :
-#  message "@structDeclarationAST enterInSemanticContext\n" ;
 #--- Struct type index
   @unifiedTypeMapProxy structTypeIndex ;
   [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mStructTypeName string] ?structTypeIndex] ;
@@ -2225,6 +2255,13 @@ override method @structDeclarationAST enterInSemanticContext
      ?enumeratedType
     ] ;
   end if ;
+#--- Generate a "default" constructor ?
+  @string defaultConstructorName := "default" ;
+  foreach typedAttributeList while defaultConstructorName != "" do
+    if ([mAttributeTypeProxy mDefaultConstructorName] == "") | not [mAttributeTypeProxy mIsConcrete] then
+      defaultConstructorName := "" ;
+    end if ;
+  end foreach ;  
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mStructTypeName
@@ -2250,6 +2287,7 @@ override method @structDeclarationAST enterInSemanticContext
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     !enumeratedType # Type for enumerated element for "for" instruction
+    !defaultConstructorName # Default constructor
   ] ;
 end method ;
 
@@ -2274,7 +2312,6 @@ override method @classDeclarationAST enterInSemanticContext
   @bool generateHeaderInSeparateFile ;
   if [mSuperClassName string] == "" then
     superClassIndex := [@unifiedTypeMapProxy null] ;
-#    readerMap := [@readerMap emptyMap] ;
     commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?readerMap ;
     modifierMap := [@modifierMap emptyMap] ;
     instanceMethodMap := [@instanceMethodMap emptyMap] ;
@@ -2304,7 +2341,7 @@ override method @classDeclarationAST enterInSemanticContext
       ?inheritedMethodMap
       ?10*
       ?generateHeaderInSeparateFile
-      ?*
+      ?2*
     ] ;
   #---
     if typeKindEnum != [@typeKindEnum classType] then
@@ -2365,8 +2402,11 @@ override method @classDeclarationAST enterInSemanticContext
     end if ;
   end foreach ;
 #--- Current class Index
-  @unifiedTypeMapProxy classIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioSemanticContext->mTypeMap ![mClassTypeName string] ?classIndex] ;
+  [@unifiedTypeMapProxy makeRegularProxy
+     !?ioSemanticContext->mTypeMap
+     ![mClassTypeName string]
+     ?@unifiedTypeMapProxy classIndex
+  ] ;
 #--- Constructor
   @constructorMap constructorMap [emptyMap] ;
   if not mIsAbstract then
@@ -2437,6 +2477,26 @@ override method @classDeclarationAST enterInSemanticContext
     !?modifierMap
     !?instanceMethodMap
   ;
+#--- Generate a "default" constructor ?
+  @string defaultConstructorName ;
+  if [superClassIndex isNull] then
+    defaultConstructorName := "default" ;
+  else
+    defaultConstructorName := [superClassIndex mDefaultConstructorName] ;
+  end if ;
+  foreach currentClassTypedAttributeList while defaultConstructorName != "" do
+    if ([mAttributeTypeProxy mDefaultConstructorName] == "") | not [mAttributeTypeProxy mIsConcrete] then
+      defaultConstructorName := "" ;
+    end if ;
+  end foreach ;
+  if "templateInstructionExpressionForGeneration" == mClassTypeName->string then
+    message "\ndefaultConstructorName '" . defaultConstructorName . "' " . [currentClassTypedAttributeList length] . "\n" ;
+    log currentClassTypedAttributeList ;
+    foreach currentClassTypedAttributeList do
+      message "attribute '" . [mAttributeTypeProxy lkey] . "'\n" ;
+    end foreach ;
+    message "\n" ;
+  end if ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mClassTypeName
@@ -2462,6 +2522,7 @@ override method @classDeclarationAST enterInSemanticContext
     ![@withAccessorMap emptyMap]
     !generateHeaderInSeparateFile
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
+    !defaultConstructorName # Default constructor
   ] ;
 end method ;
 
@@ -2665,6 +2726,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
+    !"new" # Default constructor
   ] ;
 end method ;
 
@@ -2678,14 +2740,12 @@ override method @listmapDeclarationAST enterInSemanticContext
 :
 #  message "@listmapDeclarationAST enterInSemanticContext: @" . [mListmapTypeName string] . "\n" ;
 #--- Check associated map is really a list
-  @typedAttributeList listTypedAttributeList ;
-  @typeKindEnum typeKindEnum ;
   [ioSemanticContext->mTypeMap searchKey
     !mAssociatedListTypeName
     ?2*
-    ?typeKindEnum
-    ?listTypedAttributeList
-    ?18*
+    ?@typeKindEnum typeKindEnum
+    ?@typedAttributeList listTypedAttributeList
+    ?19*
   ] ;
   if typeKindEnum != [@typeKindEnum listType] then
     error mAssociatedListTypeName : "the '@" . mAssociatedListTypeName . "' type should be a list type" ;
@@ -2765,6 +2825,7 @@ override method @listmapDeclarationAST enterInSemanticContext
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     !enumeratedTypeIndex # Type for enumerated element for "for" instruction
+    !"emptyMap" # Default constructor
   ] ;
 end method ;
 
@@ -3407,14 +3468,11 @@ routine buildSemanticContext
     end foreach ;
     error inEndOfSourceFile : "semantic analysis not performed, due to undefined type error(s)" : outSemanticContext ;
   else
-    @semanticDeclarationListAST sortedSemanticDeclarationListAST ;
-    @semanticDeclarationListAST unsortedSemanticDeclarationListAST ;
-    @lstringlist unsortedNodeKeyList ;
     [semanticTypePrecedenceGraph topologicalSort
-      ?sortedSemanticDeclarationListAST
+      ?@semanticDeclarationListAST sortedSemanticDeclarationListAST
       ?*
-      ?unsortedSemanticDeclarationListAST
-      ?unsortedNodeKeyList
+      ?@semanticDeclarationListAST unsortedSemanticDeclarationListAST
+      ?@lstringlist unsortedNodeKeyList
     ] ;
   #    @string s := "--- Sorted declarations:\n" ;
   #    foreach sortedSemanticDeclarationListAST do

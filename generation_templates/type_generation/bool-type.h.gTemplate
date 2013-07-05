@@ -25,6 +25,9 @@ class GALGAS_bool : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public : GALGAS_bool (void) ;
 
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_bool constructor_default (LOCATION_ARGS) ;
+
 //--------------------------------- Native constructor
   public : GALGAS_bool (const bool inValue) ;
 

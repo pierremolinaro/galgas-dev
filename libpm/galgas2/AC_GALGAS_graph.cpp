@@ -69,6 +69,9 @@ class cArcStruct {
   public : cArcStruct (const PMUInt32 inSourceNodeID, const PMUInt32 inTargetNodeID) ;
 
 //--- Equality test
+  public : bool operator == (const cArcStruct & inOperand) const ;
+
+//--- Comparet
   public : PMSInt32 compare (const cArcStruct & inOperand) const ;
 
 //--- Accessors
@@ -93,6 +96,12 @@ cArcStruct::cArcStruct (const PMUInt32 inSourceNodeID,
                         const PMUInt32 inTargetNodeID) :
 mSourceNodeID (inSourceNodeID),
 mTargetNodeID (inTargetNodeID) {
+}
+
+//---------------------------------------------------------------------------*
+
+bool cArcStruct::operator == (const cArcStruct & inOperand) const {
+  return (mSourceNodeID == inOperand.mSourceNodeID) && (mTargetNodeID == inOperand.mTargetNodeID) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -555,7 +564,8 @@ void cSharedGraph::addArc (const C_String & inSourceNodeKey,
   cGraphNode * targetNode = findOrAddNodeForKey (inTargetNodeKey) ;
   targetNode->mReferenceLocationArray.addObject (inTargetNodeLocation) ;
   const cArcStruct arc (sourceNode->mNodeID, targetNode->mNodeID) ;
-  mArcArray.addObjectInOrderedArray (arc) ;
+ // mArcArray.addObjectInOrderedArray (arc) ;
+  mArcArray.addObjectIfUnique (arc) ;
 }
 
 //---------------------------------------------------------------------------*

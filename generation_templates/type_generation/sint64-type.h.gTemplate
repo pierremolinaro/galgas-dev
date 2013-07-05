@@ -17,6 +17,9 @@ class GALGAS_sint_36__34_ : public AC_GALGAS_root {
 //--------------------------------- Default constructor
   public : GALGAS_sint_36__34_ (void) ;
 
+//--------------------------------- Default GALGAS constructor
+  public : static GALGAS_sint_36__34_ constructor_default (LOCATION_ARGS) ;
+
 //--------------------------------- Native constructor
   public : GALGAS_sint_36__34_ (const PMSInt64 inValue) ;
 
