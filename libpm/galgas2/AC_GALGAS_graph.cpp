@@ -564,8 +564,8 @@ void cSharedGraph::addArc (const C_String & inSourceNodeKey,
   cGraphNode * targetNode = findOrAddNodeForKey (inTargetNodeKey) ;
   targetNode->mReferenceLocationArray.addObject (inTargetNodeLocation) ;
   const cArcStruct arc (sourceNode->mNodeID, targetNode->mNodeID) ;
- // mArcArray.addObjectInOrderedArray (arc) ;
-  mArcArray.addObjectIfUnique (arc) ;
+  mArcArray.addObjectInOrderedArray (arc) ;
+//  mArcArray.addObjectIfUnique (arc) ;
 }
 
 //---------------------------------------------------------------------------*
