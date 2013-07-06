@@ -487,6 +487,7 @@ end rule ;
 #   description         :   [expression description]                           *
 #   reader call         :   [expression reader !... ]                          *
 #   constructor call    :   [@class method !... ]                              *
+#   default constructor :   [@class default]                                   *
 #   option value        :   [option option_component_name.option_name]         *
 #                                                                              *
 #------------------------------------------------------------------------------*
@@ -506,19 +507,20 @@ rule <primary> !@semanticExpressionAST outExpression :
     outExpression := [@readerCallExpressionAST new !receiverExpression !readerName !expressionList] ;
   or
   #--- Class name
-    @lstring className ;
-    $type_name$ ?className indexing typeReferenceInConstructor ;
+    $type_name$ ?@lstring className indexing typeReferenceInConstructor ;
   #--- Constructor name
-    @lstring constructorName ;
-    $identifier$ ? constructorName ;
+    $identifier$ ?@lstring constructorName ;
   #--- Actual arguments
-    @semanticExpressionListAST expressionList ;
-    <output_expression_list> ?expressionList ;
+    <output_expression_list> ?@semanticExpressionListAST expressionList ;
     outExpression := [@constructorExpressionAST new
       !className
       !constructorName
       !expressionList
     ] ;
+  or
+    $type_name$ ?@lstring className indexing typeReferenceInConstructor ;
+    $default$ ;
+    outExpression := [@defaultConstructorExpressionAST new !className] ;
   or
     $option$ ;
     select

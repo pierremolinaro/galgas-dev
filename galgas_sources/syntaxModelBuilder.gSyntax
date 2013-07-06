@@ -29,21 +29,8 @@ import "syntaxMetamodel.gSemantics" ;
 
 nonterminal <expression> !@semanticExpressionAST outExpression ;
 
-nonterminal <syntax_component_start_symbol> !@syntaxComponentAST outSyntaxComponentRoot ;
-
-nonterminal <nonterminal_declaration> ?!@nonterminalDeclarationListAST ioNonterminalDeclarationList ;
-
-nonterminal <syntax_rule_declaration> ?!@syntaxRuleListAST ioRuleList ;
-
-nonterminal <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList ;
-
 nonterminal <semantic_instruction>
   !@semanticInstructionAST outInstruction
-  ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
-;
-
-nonterminal <syntax_instruction>
-  !@syntaxInstructionAST outInstruction
   ?!@localVariableDeclarationListAST ioLocalVariableDeclarationList
 ;
 

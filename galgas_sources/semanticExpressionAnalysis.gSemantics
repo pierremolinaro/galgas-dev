@@ -570,6 +570,27 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+override method @defaultConstructorExpressionAST analyzeSemanticExpression
+  ??@analysisContext inAnalysisContext
+  ?!@variableMap unused ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+:
+  const @unifiedTypeMapProxy type [searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
+#--- Check type accepts default constructor
+  if not [type mIsConcrete] then
+    error mTypeName: "an abstract class does not support the default constructor" ;
+  elsif [type mDefaultConstructorName] == "" then
+    error mTypeName: "this class does not support the default constructor" ;
+  end if ;
+#---
+  outExpression := [@defaultConstructorExpressionForGeneration new
+    !type
+    !mTypeName->location
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @constructorExpressionAST analyzeSemanticExpression
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap

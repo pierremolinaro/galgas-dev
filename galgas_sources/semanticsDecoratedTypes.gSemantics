@@ -109,6 +109,11 @@ class @literalSInt64ExpressionForGeneration extends @semanticExpressionForGenera
 
 #---------------------------------------------------------------------------*
 
+class @defaultConstructorExpressionForGeneration extends @semanticExpressionForGeneration {
+}
+
+#---------------------------------------------------------------------------*
+
 class @constructorExpressionForGeneration extends @semanticExpressionForGeneration {
   @unifiedTypeMapProxy mConstructorType ;
   @string mConstructorName ;
@@ -559,6 +564,15 @@ class @localVariableOrConstantDeclarationWithSourceExpressionForGeneration exten
   @bool mIsConstant ;
   @string mCppVariableName ;
   @semanticExpressionForGeneration mSourceExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @localVariableOrConstantDeclarationWithDefaultConstructorForGeneration extends @semanticInstructionForGeneration {
+  @location mInstructionLocation ;
+  @unifiedTypeMapProxy mTargetType ;
+  @bool mIsConstant ;
+  @string mTargetVariableCppName ;
 }
 
 #---------------------------------------------------------------------------*

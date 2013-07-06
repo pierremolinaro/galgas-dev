@@ -2489,14 +2489,6 @@ override method @classDeclarationAST enterInSemanticContext
       defaultConstructorName := "" ;
     end if ;
   end foreach ;
-#  if "templateInstructionExpressionForGeneration" == mClassTypeName->string then
-#    message "\ndefaultConstructorName '" . defaultConstructorName . "' " . [currentClassTypedAttributeList length] . "\n" ;
-#    log currentClassTypedAttributeList ;
-#    foreach currentClassTypedAttributeList do
-#      message "attribute '" . [mAttributeTypeProxy lkey] . "'\n" ;
-#    end foreach ;
-#    message "\n" ;
-#  end if ;
 #--- Enter in type map
   [!?ioSemanticContext->mTypeMap insertKey
     !mClassTypeName

@@ -89,6 +89,40 @@ end routine ;
 
 #---------------------------------------------------------------------------*
 
+override method @localVariableOrConstantDeclarationWithDefaultConstructorAST analyzeSemanticInstruction
+  ??@analysisContext inAnalysisContext
+  ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
+  ?!@variableMap ioVariableMap
+:
+#--- Check variable type
+  const @unifiedTypeMapProxy targetType := [@unifiedTypeMapProxy searchKey
+    !inAnalysisContext->mSemanticContext->mTypeMap
+    !mTypeName
+  ] ;
+#--- Check type accepts default constructor
+  if not [targetType mIsConcrete] then
+    error mTypeName: "an abstract class does not support the default constructor" ;
+  elsif [targetType mDefaultConstructorName] == "" then
+    error mTypeName: "this class does not support the default constructor" ;
+  end if ;
+#--- Declare variable (or constant)
+  const @string targetVariableCppName := "var_" . [mVariableName identifierRepresentation] ;
+  if mIsConstant then
+    [!?ioVariableMap insertLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName] ;
+  else
+    [!?ioVariableMap insertDefinedLocalVariable !mVariableName !targetType !targetVariableCppName !targetVariableCppName] ;
+  end if ;
+#--- Generate instruction
+  ioInstructionListForGeneration += ![@localVariableOrConstantDeclarationWithDefaultConstructorForGeneration new
+    !mInstructionLocation
+    !targetType
+    !mIsConstant
+    !targetVariableCppName
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @localVariableOrConstantDeclarationWithConstructorCallAST analyzeSemanticInstruction
   ??@analysisContext inAnalysisContext
   ?!@semanticInstructionListForGeneration ioInstructionListForGeneration
