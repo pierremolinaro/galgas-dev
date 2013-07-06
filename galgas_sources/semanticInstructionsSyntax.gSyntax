@@ -269,18 +269,28 @@ rule <semantic_instruction>
     ] ;
   or
     $[$ ;
-    @lstring constructorName ;
-    $identifier$ ? constructorName ;
-    @semanticExpressionListAST expressionList ;
-    <output_expression_list> ?expressionList ;
-    outInstruction := [@localVariableOrConstantDeclarationWithConstructorCallAST new
-      ![typeName location]
-      !false # Is not Constant
-      !typeName
-      !variableName
-      !constructorName
-      !expressionList
-    ] ;
+    select
+      @lstring constructorName ;
+      $identifier$ ? constructorName ;
+      @semanticExpressionListAST expressionList ;
+      <output_expression_list> ?expressionList ;
+      outInstruction := [@localVariableOrConstantDeclarationWithConstructorCallAST new
+        ![typeName location]
+        !false # Is not Constant
+        !typeName
+        !variableName
+        !constructorName
+        !expressionList
+      ] ;
+    or
+      $default$ ;
+      outInstruction := [@localVariableOrConstantDeclarationWithDefaultConstructorAST new
+        ![typeName location]
+        !false # Is not Constant
+        !typeName
+        !variableName
+      ] ;
+    end select ;
     $]$ ;
   end select ;
   $;$ ;
@@ -311,19 +321,28 @@ rule <semantic_instruction>
       !sourceExpression
     ] ;
   or
-    $[$ ;
-    @lstring constructorName ;
-    $identifier$ ? constructorName ;
-    @semanticExpressionListAST expressionList ;
-    <output_expression_list> ?expressionList ;
-    outInstruction := [@localVariableOrConstantDeclarationWithConstructorCallAST new
-      ![typeName location]
-      !true # is constant
-      !typeName
-      !variableName
-      !constructorName
-      !expressionList
-    ] ;
+    select$[$ ;
+      @lstring constructorName ;
+      $identifier$ ? constructorName ;
+      @semanticExpressionListAST expressionList ;
+      <output_expression_list> ?expressionList ;
+      outInstruction := [@localVariableOrConstantDeclarationWithConstructorCallAST new
+        ![typeName location]
+        !true # is constant
+        !typeName
+        !variableName
+        !constructorName
+        !expressionList
+      ] ;
+    or
+      $default$ ;
+      outInstruction := [@localVariableOrConstantDeclarationWithDefaultConstructorAST new
+        ![typeName location]
+        !true # Is Constant
+        !typeName
+        !variableName
+      ] ;
+    end select ;
     $]$ ;
   end select ;
   $;$ ;

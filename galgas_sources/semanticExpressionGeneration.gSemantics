@@ -190,6 +190,22 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
+override method @defaultConstructorExpressionForGeneration generateExpression
+  ?!@string unused ioGeneratedCode
+  ?!@uint unused ioTemporaryVariableIndex
+  ?!@stringset unused ioUnusedVariableCppNameSet
+  !@string outCppExpression
+:
+  outCppExpression :=
+    "GALGAS_"  . [mType identifierRepresentation]
+  . "::constructor_"
+  . [[mType mDefaultConstructorName] identifierRepresentation]
+  . " (SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))"
+  ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
 override method @constructorExpressionForGeneration generateExpression
   ?!@string ioGeneratedCode
   ?!@uint ioTemporaryVariableIndex

@@ -108,6 +108,12 @@ class @constructorExpressionAST extends @semanticExpressionAST {
 
 #---------------------------------------------------------------------------*
 
+class @defaultConstructorExpressionAST extends @semanticExpressionAST {
+  @lstring mTypeName ;
+}
+
+#---------------------------------------------------------------------------*
+
 class @readerCallExpressionAST extends @semanticExpressionAST {
   @semanticExpressionAST mReceiver ;
   @lstring mReaderName ;
@@ -468,6 +474,14 @@ class @localVariableOrConstantDeclarationWithConstructorCallAST extends @semanti
   @lstring mVariableName ;
   @lstring mConstructorName ;
   @semanticExpressionListAST mConstructorExpressions ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @localVariableOrConstantDeclarationWithDefaultConstructorAST extends @semanticInstructionAST {
+  @bool mIsConstant ;
+  @lstring mTypeName ;
+  @lstring mVariableName ;
 }
 
 #---------------------------------------------------------------------------*
