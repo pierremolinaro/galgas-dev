@@ -13,9 +13,9 @@ Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
 
 
 \constructeurSansArgument{min}
-{@sint64}
+{sint64}
 {1.3.0}
-{@sint64}
+{sint64}
 {Returns an \nomType{sint64} object that the minimum value of the 64-bit signed range.}
 {the returned value is $-2^{63}$.}
 
@@ -24,9 +24,9 @@ Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
 
 
 \constructeurSansArgument{max}
-{@sint64}
+{sint64}
 {1.3.0}
-{@sint64}
+{sint64}
 {Returns an \nomType{sint64} object that the maximum value of the 64-bit signed range.}
 {the returned value is $2^{63}-1$.}
 
@@ -37,7 +37,7 @@ Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
 \readerSansArgument{double}
 {sint64}
 {1.9.8}
-{@double}
+{double}
 {Returns the receiver's value converted in a \nomType{double} object.}
 {as a 64-bit integer value can always be converted in a \nomType{double} value, this reader never fails.}
 
@@ -47,7 +47,7 @@ Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
 \readerSansArgument{sint}
 {sint64}
 {1.3.0}
-{@sint}
+{sint}
 {Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object.}
 {an error is raised is receiver's value is lower than $-2^{31}$ or greater than $2^{31}-1$.}
 
@@ -60,7 +60,7 @@ This reader is the only way to convert an \refTypePredefini{sint64} object into 
 \readerSansArgument{string}
 {sint64}
 {1.6.12}
-{@string}
+{string}
 {Returns a decimal string representation of the receiver's value.}
 {this reader never fails.}
 
@@ -74,7 +74,7 @@ This reader is the only way to convert an \refTypePredefini{sint64} object into 
 \readerSansArgument{uint}
 {sint64}
 {1.3.0}
-{@uint}
+{uint}
 {Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object.}
 {an error is raised is receiver's value is negative or greater than $2^{32}-1$.}
 
@@ -87,7 +87,7 @@ This reader is the only way to convert an \refTypePredefini{sint64} object into 
 \readerSansArgument{uint64}
 {sint64}
 {1.3.0}
-{@uint64}
+{uint64}
 {Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object.}
 {this reader raises a run-time error if the receiver's value is negative.}
 
