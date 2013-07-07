@@ -13,9 +13,9 @@ Note that a 32-bit signed integer constant is characterized by the 'S' suffix.
 \section{Constructors}
 
 \constructeurSansArgument{min}
-{@sint}
+{sint}
 {1.3.0}
-{@sint}
+{sint}
 {Returns an \nomType{sint} object that the minimum value of the 32-bit signed range.}
 {the returned value is $-2^{31}$.}
 
@@ -24,9 +24,9 @@ Note that a 32-bit signed integer constant is characterized by the 'S' suffix.
 
 
 \constructeurSansArgument{max}
-{@sint}
+{sint}
 {1.3.0}
-{@sint}
+{sint}
 {Returns an \nomType{sint} object that the maximum value of the 32-bit signed range.}
 {the returned value is $2^{31}-1$.}
 
@@ -37,7 +37,7 @@ Note that a 32-bit signed integer constant is characterized by the 'S' suffix.
 \readerSansArgument{double}
 {sint}
 {1.9.8}
-{@double}
+{double}
 {Returns the receiver's value converted in a \nomType{double} object.}
 {as a 32-bit integer value can always be converted in a \nomType{double} value, this reader never fails.}
 
@@ -48,7 +48,7 @@ Note that a 32-bit signed integer constant is characterized by the 'S' suffix.
 \readerSansArgument{sint64}
 {sint}
 {1.6.12}
-{@sint64}
+{sint64}
 {Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object.}
 {as a 32-bit signed value can always be converted in a 64-bit signed value, this reader never fails.}
 
@@ -61,7 +61,7 @@ This reader is the only way to convert an \refTypePredefini{sint} object into an
 \readerSansArgument{string}
 {sint}
 {1.6.12}
-{@string}
+{string}
 {Returns a decimal string representation of the receiver's value.}
 {for an hexadecimal string representation of the receiver's value, see \refReaderPage{uint}{hexString} and \refReaderPage{uint}{xString}.}
 
@@ -74,7 +74,7 @@ This reader is the only way to convert an \refTypePredefini{sint} object into an
 \readerSansArgument{uint}
 {sint}
 {1.3.0}
-{@uint}
+{uint}
 {Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object.}
 {an error is raised is receiver's value is negative.}
 
@@ -86,7 +86,7 @@ This reader is the only way to convert an \refTypePredefini{sint} object into an
 \readerSansArgument{uint64}
 {sint}
 {1.3.0}
-{@uint64}
+{uint64}
 {Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object.}
 {an error is raised is receiver's value is negative.}
 

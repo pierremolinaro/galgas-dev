@@ -10,12 +10,12 @@
 \lstdefinelanguage{galgas}{
 %  keywordsprefix=\@,
   morekeywords=[2]{abstract, after, array, before, between, block, cast, class, const, default, do, drop, else, elsif, end, enum,
-    error, extends, extern, extract, false, feature, filewrapper, foreach, function, grammar, graph, gui, here, if,
-    import, in, index, indexing, insert, label, lexique, list, listmap, local, log, loop, map, mapproxy, match,
+    error, extends, extern, false, feature, filewrapper, foreach, function, grammar, graph, gui, here, if,
+    import, in, index, indexing, insert, is, label, lexique, list, listmap, local, log, loop, map, mapproxy, match,
     message, method, mod, modifier, nonterminal, not, on, once, operator, option, or, override, parse, pragma,
     prefixedby, project, program, reader, remove, replace, repeat, rewind, root, routine, rule, search, select,
     self, selfcopy, semantics, send, sortedlist, state, struct, style, switch, syntax, tag, template,
-    then, true, uniquemap, unused, warning, when, while, with
+    then, to, true, uniquemap, unused, warning, when, while, with
   },
   comment=[l]\#,
   string=[b]", string=[d]",
@@ -26,10 +26,10 @@
 
 \ifthenelse{\equal{\sortieEnCouleur}{true}}{
   \lstdefinestyle{galgas}{
-    basicstyle=\ttfamily,
-    frame=l,
+    basicstyle=\ttfamily\small,
 %    keywordstyle=\color{red}\textbf,
-    keywordstyle=[2]\color{blue}\sffamily\textbf,
+%    frame=l,
+    keywordstyle=[2]\color{blue},
     backgroundcolor=\color{green!20},
     identifierstyle=\color{brown},
     commentstyle=\color{red},
@@ -38,7 +38,7 @@
 }{
   \lstdefinestyle{galgas}{
     basicstyle=\ttfamily,
-    frame=l,
+%    frame=l,
     keywordstyle=\sffamily\textbf
   }
 }
@@ -155,9 +155,9 @@
 %--- Définition d'un reader à 1 argument
 % Exemple d'appel :
 % \readerSansArgument{line} % Nom du reader
-% {@location} % Nom du type
+% {location} % Nom du type
 % {1.8.2} % Première version GALGAS qui implémente ce reader
-% {@uint} % Type renvoyé
+% {uint} % Type renvoyé
 % {Returns the line of the receiver's value.} % Description
 % {this reader raises a run-time error if ...} % Discussion
 
@@ -166,16 +166,11 @@
   #6
   \newline
   \newline
-  %\begin{lstlisting}[language=galgas]
-%  reader #2 #1
- %   ?#5
- %   -> #4 ;
-  %\end{lstlisting}
   \colorbox{\couleurFondAPI}{
     \begin{tabular}{l}
       \texttt{\textbf{reader} @#2 #1}\\
       \texttt{\ \ ?#5}\\
-      \texttt{\ \ -> #4 ;}
+      \texttt{\ \ -> @#4 ;}
     \end{tabular}
   }
   \newline
@@ -195,9 +190,9 @@
 %--- Définition d'un reader à 2 arguments
 % Exemple d'appel :
 % \readerSansArgument{line} % Nom du reader
-% {@location} % Nom du type
+% {location} % Nom du type
 % {1.8.2} % Première version GALGAS qui implémente ce reader
-% {@uint} % Type renvoyé
+% {uint} % Type renvoyé
 % {Returns the line of the receiver's value.} % Description
 % {this reader raises a run-time error if ...} % Discussion
 
@@ -211,7 +206,7 @@
     \texttt{\textbf{reader} @#2 #1}\\
     \texttt{\ \ ?#5}\\
     \texttt{\ \ ?#6}\\
-    \texttt{\ \ -> #4 ;}
+    \texttt{\ \ -> @#4 ;}
     \end{tabular}
   }
   \newline
@@ -241,7 +236,7 @@
     \texttt{\ \ ?#5}\\
     \texttt{\ \ ?#6}\\
     \texttt{\ \ ?#7}\\
-    \texttt{\ \ -> #4 ;}
+    \texttt{\ \ -> @#4 ;}
     \end{tabular}
   }
   \newline
@@ -258,30 +253,27 @@
 
 %---------------------------------------------------------------------*
 
-\newcommand \lienConstructeur[2] {\hyperref[constructor #1 #2]{#2 constructor (page \pageref{constructor #1 #2})}}
+\newcommand \lienConstructeur[2] {\hyperref[constructor:#1:#2]{#2 constructor (page \pageref{constructor:#1:#2})}}
 
 %---------------------------------------------------------------------*
 
 %--- Définition d'un constructeur sans argument
 % Exemple d'appel :
 % \constructeurSansArgument{nowhere} % Nom du constructeur
-% {@location} % Nom du type
+% {location} % Nom du type
 % {1.8.2} % Première version GALGAS qui implémente ce constructeur
-% {@uint} % Type renvoyé
+% {uint} % Type renvoyé
 %{Returns an \nomType{location} that does not points out any location.} % Description
 %{The returned object responds \motCle{true} to the isNowhere reader.} % Discussion
 
 \newcommand \constructeurSansArgument[6] {
-  \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}\index{#1!"#2 constructor}
+  \subsection{\texttt{#1} Constructor}\label{constructor:#2:#1}\index{#1!"@#2 constructor}
   #5
   \newline
   \newline
-%  \begin{lstlisting}
-%    toto
-%  \end{lstlisting}
   \colorbox{\couleurFondAPI}{
     \begin{tabular}{l}
-    \texttt{\textbf{constructor} #2 #1 -> #4 ;}
+    \texttt{\textbf{constructor} @#2 #1 -> #4 ;}
     \end{tabular}
   }
   \newline
@@ -301,13 +293,13 @@
 %--- Définition d'un constructeur avec 1 argument
 
 \newcommand \constructeurUnArgument[7] {
-  \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}\index{#1!"#2 constructor}
+  \subsection{\texttt{#1} Constructor}\label{constructor:#2:#1}\index{#1!"#2 constructor}
   #6
   \newline
   \newline
   \colorbox{\couleurFondAPI}{
     \begin{tabular}{l}
-    \texttt{\textbf{constructor} #2 #1}\\
+    \texttt{\textbf{constructor} @#2 #1}\\
     \texttt{\ \ ?#5}\\
     \texttt{\ \ -> #4 ;}
     \end{tabular}
@@ -329,13 +321,13 @@
 %--- Définition d'un constructeur avec 2 arguments
 
 \newcommand \constructeurDeuxArguments[8] {
-  \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}\index{#1!"#2 constructor}
+  \subsection{\texttt{#1} Constructor}\label{constructor:#2:#1}\index{#1!"@#2 constructor}
   #7
   \newline
   \newline
   \colorbox{\couleurFondAPI}{
     \begin{tabular}{l}
-    \texttt{\textbf{constructor} #2 #1}\\
+    \texttt{\textbf{constructor} @#2 #1}\\
     \texttt{\ \ ?#5}\\
     \texttt{\ \ ?#6}\\
     \texttt{\ \ -> #4 ;}
@@ -358,13 +350,13 @@
 %--- Définition d'un constructeur avec 3 arguments
 
 \newcommand \constructeurTroisArguments[9] {
-  \subsection{\texttt{#1} Constructor}\label{constructor #2 #1}\index{#1!"#2 constructor}
+  \subsection{\texttt{#1} Constructor}\label{constructor:#2:#1}\index{#1!"@#2 constructor}
   #8
   \newline
   \newline
   \colorbox{\couleurFondAPI}{
     \begin{tabular}{l}
-    \texttt{\textbf{constructor} #2 #1}\\
+    \texttt{\textbf{constructor} @#2 #1}\\
     \texttt{\ \ ?#5}\\
     \texttt{\ \ ?#6}\\
     \texttt{\ \ ?#7}\\
@@ -388,13 +380,13 @@
 %--- Définition d'un modifier à 1 argument
 
 \newcommand \modifierUnArgument[6] {
-  \subsection{\texttt{#1} Modifier}\label{modifier #2 #1}\index{#1!"#2 modifier}
+  \subsection{\texttt{#1} Modifier}\label{modifier:#2:#1}\index{#1!"@#2 modifier}
   #5
   \newline
   \newline
   \colorbox{\couleurFondAPI}{
     \begin{tabular}{l}
-    \texttt{\textbf{modifier} #2 #1}\\
+    \texttt{\textbf{modifier} @#2 #1}\\
     \texttt{\ \ ?#4}\\
     \end{tabular}
   }
@@ -412,7 +404,7 @@
 
 %---------------------------------------------------------------------*
 
-%--- Exemple un ligne
+%--- Exemple une ligne
 
 \newcommand \exempleUneLigne[2] {
   \noindent

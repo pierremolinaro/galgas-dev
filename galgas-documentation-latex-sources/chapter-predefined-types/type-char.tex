@@ -87,9 +87,9 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 
 
 \constructeurSansArgument{replacementCharacter}
-{@char}
+{char}
 {1.8.3}
-{@char}
+{char}
 {Returns an \nomType{char} object corresponding to Unicode replacement character (\texttt{\textquotesingle\textbackslash uFFFD}.}
 {}
 
@@ -100,9 +100,9 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 
 
 \constructeurUnArgument{unicodeCharacterWithUnsigned}
-{@char}
+{char}
 {1.8.3}
-{@char}
+{char}
 {@uint inValue}
 {Returns an \nomType{char} object from an Unicode code point.}
 {A run-time error is raised if the \emph{inValue} value does not represent an assigned Unicode value. You can check if an \nomType{uint} value represents an assigned Unicode value with the \refReaderPage{uint}{isUnicodeValueAssigned}.}
@@ -288,7 +288,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 \readerSansArgument{unicodeToLower}
 {char}
 {1.8.3}
-{@char}
+{char}
 {Returns the lowercase character corresponding to the receiver's value.}
 {if the receiver's value is an Unicode uppercase character, this reader returns the corresponding lowercase character. Otherwise, it returns the receiver's value.}
 
@@ -303,7 +303,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 \readerSansArgument{unicodeToUpper}
 {char}
 {1.8.3}
-{@char}
+{char}
 {Returns the uppercase character corresponding to the receiver's value.}
 {if the receiver's value is an Unicode lowercase character, this reader returns the corresponding uppercase character. Otherwise, it returns the receiver's value.}
 

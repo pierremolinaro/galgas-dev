@@ -2,5 +2,109 @@
 %!TEX root = ../galgas-book.tex
 
 %--------------------------------------------------------------
-\chapter{Class Type}
-%-------------------------------------------------------------
+\chapter{le type \texttt{class}}
+
+\section{Conversions entre objets de classes différentes}
+
+\subsection{Affectation polymorphique}
+
+GALGAS accepte l'affectation polymorphique. Par exemple, en déclarant les classes :
+
+\begin{lstlisting}[language=galgas]
+class @A { ... }
+class @B extends @A { ... }
+\end{lstlisting}
+ 
+Et les variables :
+
+\begin{lstlisting}[language=galgas]
+@A a := ... ;
+@B b := ... ;
+\end{lstlisting}
+
+L'affectation polymorphique est « \lstinline[language=galgas]{a := b ;} ». Elle est autorisée aussi lors de l'affectation d'une expression effective à un paramètre formel dans une instruction d'appel (de routine, de fonction, de méthode, ...)
+
+L'affectation polymorphique inverse (qui consisterait à écrire « \lstinline[language=galgas]{b := a ;} ») est logiquement refusée par le compilateur.
+
+Il y a trois constructions qui permettent d'effectuer cette opération :
+\begin{itemize}
+  \item l'expression de conversion polymorphique inverse ;
+  \item l'expression de test ;
+  \item l'instruction \lstinline[language=galgas]{cast}.
+\end{itemize}
+
+\subsection{L'expression de conversion polymorphique inverse}
+
+L'expression de conversion polymorphique inverse a la syntaxe suivante (les parenthèses sont obligatoires) :
+
+\begin{lstlisting}[language=galgas]
+(expression to @T error position_erreur : message_erreur)
+\end{lstlisting}
+
+Si le type dynamique de l'\lstinline[language=galgas]{expression} est \lstinline[language=galgas]{@T} ou une de ses classes héritières, l'expression de conversion polymorphique renvoie un objet de type \lstinline[language=galgas]{@T} contenant la valeur de \lstinline[language=galgas]{expression}. Dans le cas contraire, l'instruction d'erreur est exécutée, et la valeur renvoyée est non construite.
+
+L'exécution échoue donc avec émission de message d'erreur si la conversion n'est pas possible. 
+
+\subsection{L'expression de test}
+
+L'expression de test a la syntaxe suivante (les parenthèses sont obligatoires) :
+
+\begin{lstlisting}[language=galgas]
+(expression is @T)
+\end{lstlisting}
+
+Si le type dynamique de l' \lstinline[language=galgas]{expression} est \lstinline[language=galgas]{@T} ou une de ses classes héritières, l'expression de conversion polymorphique renvoie un objet de type \lstinline[language=galgas]{@bool} contenant la valeur \lstinline[language=galgas]{true}. Dans le cas contraire, la valeur renvoyée est \lstinline[language=galgas]{false}.
+
+Alliée à la construction précédente, elle permet de lancer une conversion uniquement si elle est possible :
+
+\begin{lstlisting}[language=galgas]
+if (expression is @T) then
+  @T var := (expression to @T error position_erreur : "erreur interne") ;
+  ...
+elsif (expression is @T2) then
+  @T2 var := (expression to @T2 error position_erreur : "erreur interne") ;
+  ...
+else
+  message "conversion impossible" ;
+end if ;
+\end{lstlisting}
+
+\subsection{L'instruction \texttt{cast}}
+
+L'instruction \texttt{cast} permet simplement d'exprimer de manière plus élégante une série de test de conversion. Sa syntaxe est :
+
+\begin{lstlisting}[language=galgas]
+cast expression
+when @T1 variable :
+  ...
+when @T2 variable :
+  ...
+else
+  ...
+end cast ;
+\end{lstlisting}
+
+Syntaxiquement, l'instruction accepte une ou plusieurs branches \lstinline[language=galgas]{when}, et zéro ou une branche \lstinline[language=galgas]{else}.
+
+Lors de l'exécution, le type dynamique de \lstinline[language=galgas]{expression} est comparé successivement aux types (\lstinline[language=galgas]{@T}) des branches \lstinline[language=galgas]{when} ; dès que ce type dynamique est de la classe \lstinline[language=galgas]{@T} ou de l'une de ses classes héritières, \lstinline[language=galgas]{variable} prend la valeur de \lstinline[language=galgas]{expression} et les instructions de la branche correspondante sont exécutées.
+
+Si toutes les comparaisons échouent, la branche {else} est exécutée (si elle existe).
+
+
+Ainsi, l'instruction \lstinline[language=galgas]{if} de la section précédente s'écrit :
+
+
+\begin{lstlisting}[language=galgas]
+cast expression
+when @T var :
+  ...
+when @T2 var
+  ...
+else
+  message "conversion impossible"
+end if ;
+\end{lstlisting}
+
+Note : si la variable \lstinline[language=galgas]{var} n'est pas utilisée dans la branche correspondante, une alerte est émise. Pour la supprimer, ne pas mentionner la variable en écrivant « \lstinline[language=galgas]{when @T :} ».
+
+
