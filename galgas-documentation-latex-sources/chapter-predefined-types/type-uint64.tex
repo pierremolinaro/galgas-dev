@@ -3,7 +3,7 @@
 
 \chapitreTypePredefiniLabelIndex{uint64}
 
-An \nomType{uint64} object value is a 64-bit unsigned integer value. You can initialize an \nomType{uint64} object from a 64-bit unsigned integer constant:\\
+An \galgas{@uint64} object value is a 64-bit unsigned integer value. You can initialize an \galgas{@uint64} object from a 64-bit unsigned integer constant:\\
 
 \texttt{@uint64 myUnsignedInteger := 123\_456L ;}\newline
 
@@ -15,7 +15,7 @@ Note the 'L' suffix is required for a 64-bit unsigned integer constant.
 {uint64}
 {1.3.0}
 {uint64}
-{Returns an \nomType{uint64} object that the maximum value of the 64-bit unsigned range.}
+{Returns an \galgas{@uint64} object that the maximum value of the 64-bit unsigned range.}
 {The returned value is $2^{64}-1$.}
 
 
@@ -24,7 +24,7 @@ Note the 'L' suffix is required for a 64-bit unsigned integer constant.
 {1.6.4}
 {uint64}
 {@string inBitString}
-{Returns an \nomType{uint64} object computed from a string containing '0', '1' or 'X' characters, replacing all occurrences of 'X' by '0'.}
+{Returns an \galgas{@uint64} object computed from a string containing '0', '1' or 'X' characters, replacing all occurrences of 'X' by '0'.}
 {the inBitString argument should contain only '0', '1' or 'X' characters. A run time exception is raised if an other character appears.
 
 This constructor considers the \emph{inBitString} argument value as a binary encoding of an integer value. First, it internally replaces all 'X's by '0's, and then converts the resulting string into an integer value that is the one returned by this constructor.
@@ -32,10 +32,11 @@ This constructor considers the \emph{inBitString} argument value as a binary enc
 Note that the first character of the \emph{inBitString} argument value corresponds to the most significant bit of the converted value.}
 
 
-\exempleDeuxLignes
-{}
-{@uint64 v [uint64BaseValueWithCompressedBitString !"01XX10"] ;}
-{log v ; \# Displays <@uint64:18> ;}
+\textbf{Exemple :}
+\begin{galgascode}
+@uint64 v [uint64BaseValueWithCompressedBitString !"01XX10"] ;
+log v ; # Displays <@uint64:18> ;
+\end{galgascode}
 
 
 
@@ -46,17 +47,18 @@ Note that the first character of the \emph{inBitString} argument value correspon
 {1.6.4}
 {uint64}
 {@string inBitString}
-{Returns an \nomType{uint64} object computed from a string containing '0', '1' or 'X' characters, replacing all occurrences of '0' by '1' and all occurrences of 'X' by '0'.}
+{Returns an \galgas{@uint64} object computed from a string containing '0', '1' or 'X' characters, replacing all occurrences of '0' by '1' and all occurrences of 'X' by '0'.}
 {the \emph{inBitString} argument should contain only '0', '1' and 'X' characters. A run time exception is raised if an other character appears.
 
 This constructor considers the \emph{inBitString} argument value as a binary encoding of an integer value. First, it internally replaces all '0's by '1's and all 'X's by '0's, and then converts the resulting string into an integer value that is the one returned by this constructor.
 
 Note that the first '0' or '1' character of the \emph{inBitString} argument value corresponds to the most significant Bit of the converted value.}
 
-\exempleDeuxLignes
-{}
-{@uint64 v [uint64MaskWithCompressedBitString !"01XX10"] ;}
-{log v ; \# Displays <@uint64:51> ;}
+\textbf{Exemple :}
+\begin{galgascode}
+@uint64 v [uint64MaskWithCompressedBitString !"01XX10"] ;
+log v ; \# Displays <@uint64:51> ;
+\end{galgascode}
 
 
 
@@ -65,17 +67,18 @@ Note that the first '0' or '1' character of the \emph{inBitString} argument valu
 {1.6.4}
 {uint64}
 {@string inBitString}
-{Returns an \nomType{uint64} object computed from a string containing '0' or '1' characters.}
+{Returns an \galgas{@uint64} object computed from a string containing '0' or '1' characters.}
 {the \emph{inBitString} argument should contain only '0' and '1' characters. A run time exception is raised if an other character appears.
 
-This constructor considers the \emph{inBitString} argument value as a binary encoding of an integer value. It returns an \nomType{uint64} object containing the converted value.
+This constructor considers the \emph{inBitString} argument value as a binary encoding of an integer value. It returns an \galgas{@uint64} object containing the converted value.
 
 Note that the first '1' character of the \emph{inBitString} argument value corresponds to the most significant bit of the converted value.}
 
-\exempleDeuxLignes
-{}
-{@uint64 v [uint64WithBitString !"0101"]] ;}
-{log v ; \# Displays <@uint64:5> ;}
+\textbf{Exemple :}
+\begin{galgascode}
+@uint64 v [uint64WithBitString !"0101"]] ;
+log v ; # Displays <@uint64:5> ;
+\end{galgascode}
 
 
 \section{Readers}
@@ -84,8 +87,8 @@ Note that the first '1' character of the \emph{inBitString} argument value corre
 {uint64}
 {1.9.8}
 {double}
-{Returns the receiver's value converted in a \nomType{double} object.}
-{as a 64-bit integer value can always be converted in a \nomType{double} value, this reader never fails.}
+{Returns the receiver's value converted in a \galgas{@double} object.}
+{as a 64-bit integer value can always be converted in a \galgas{@double} value, this reader never fails.}
 
 
 
@@ -150,13 +153,12 @@ This reader is the only way to convert an \refTypePredefini{uint64} object into 
 {Returns an \refTypePredefini{uint} value, extracted from a bit slice of the receiver's value.}
 {the receiver's value is right shifted by \emph{inStartBit}, and the resulted value is and'ed with a mask equal to $2^{inBitCount}-1$.}
 
-This reader is the only way to convert an \refTypePredefini{uint} object into an \refTypePredefini{uint64} object.
 
-
-\exempleDeuxLignes
-{}
-{@uint64 v := 0x1234\_5678\_9ABC\_DEF0L ;}
-{@uint result := [v uintSlice !4 !5] ; \# The result value is 0x8\_9ABC}
+\textbf{Exemple :}
+\begin{galgascode}
+@uint64 v := 0x1234_5678_9ABC_DEF0L ;
+@uint result := [v uintSlice !4 !5] ; # The result value is 0x8_9ABC
+\end{galgascode}
 
 
 
@@ -199,7 +201,7 @@ Note that incrementation and decrementation are not available within an expressi
 
 \section{Arithmetic Operators}
 
-The \nomType{uint64} type supports the five arithmetic diadic operators:\newline
+The \galgas{@uint64} type supports the five arithmetic diadic operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -215,11 +217,11 @@ $\%$ & Modulo \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{uint64} objects.\newline
+Theses operators require both arguments to be \galgas{@uint64} objects.\newline
 
 A run-time error is raised if the operation leads to a 64-bit unsigned overflow.
 
-The \nomType{uint64} type supports the following arithmetic unary operator:\newline
+The \galgas{@uint64} type supports the following arithmetic unary operator:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -227,7 +229,7 @@ $+$ & No operation \\
 \hline
 \end{tabular}
 
-This operator returns the receiver's value (an  \nomType{uint64} object).
+This operator returns the receiver's value (an  \galgas{@uint64} object).
 
 
 
@@ -235,7 +237,7 @@ This operator returns the receiver's value (an  \nomType{uint64} object).
 \section{Shift Operators}
 
 
-The \nomType{uint} type supports right and left shift operators:\newline
+The \galgas{@uint} type supports right and left shift operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -245,7 +247,7 @@ $>>$ & Right shift \\
 \hline
 \end{tabular}
 
-Theses operators require the left argument to be \nomType{uint64} object, and  the right argument to be \nomType{uint} object.\newline
+Theses operators require the left argument to be \galgas{@uint64} object, and  the right argument to be \galgas{@uint} object.\newline
 
 Note the right shift inserts always a zero bit in the most significant bit location (it is a logical right shift).\newline
 
@@ -256,7 +258,7 @@ The actual amount of the shift is the value of the right-hand operand masked by 
 
 \section{Logical Operators}
 
-The \nomType{uint64} type supports the three bit-wise logical diadic operators:
+The \galgas{@uint64} type supports the three bit-wise logical diadic operators:
 
 \begin{tabular}{|c|c|}
 \hline
@@ -268,10 +270,10 @@ $\&$ & Bit-wise and \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{uint64} objects.\newline
+Theses operators require both arguments to be \galgas{@uint64} objects.\newline
 
 
-The \nomType{uint64} type supports the bit-wise logical unary operator:
+The \galgas{@uint64} type supports the bit-wise logical unary operator:
 
 \begin{tabular}{|c|c|}
   \hline
@@ -279,14 +281,14 @@ The \nomType{uint64} type supports the bit-wise logical unary operator:
   \hline
 \end{tabular}
 
-This operator returns an \nomType{uint64} object.
+This operator returns an \galgas{@uint64} object.
 
 
 
 
 \section{Comparison Operators}
 
-The \nomType{uint64} type supports the six comparison operators:
+The \galgas{@uint64} type supports the six comparison operators:
 
 \begin{tabular}{|c|c|}
 \hline
@@ -304,4 +306,4 @@ $>=$  & Greater or Equal \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{uint64} objects, and return a \nomType{bool} object.
+Theses operators require both arguments to be \galgas{@uint64} objects, and return a \galgas{@bool} object.

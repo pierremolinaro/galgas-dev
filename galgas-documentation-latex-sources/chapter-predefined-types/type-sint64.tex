@@ -3,7 +3,7 @@
 
 \chapitreTypePredefiniLabelIndex{sint64}
 
-An \nomType{sint64} object value is a 64-bit signed integer value. You can initialize an \nomType{sint64} object from an 64-bit signed integer constant:\\
+An \galgas{@sint64} object value is a 64-bit signed integer value. You can initialize an \galgas{@sint64} object from an 64-bit signed integer constant:\\
 
 \texttt{@sint64 mySignedInteger := 123\_456LS ;}
 
@@ -16,7 +16,7 @@ Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
 {sint64}
 {1.3.0}
 {sint64}
-{Returns an \nomType{sint64} object that the minimum value of the 64-bit signed range.}
+{Returns an \galgas{@sint64} object that the minimum value of the 64-bit signed range.}
 {the returned value is $-2^{63}$.}
 
 
@@ -27,7 +27,7 @@ Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
 {sint64}
 {1.3.0}
 {sint64}
-{Returns an \nomType{sint64} object that the maximum value of the 64-bit signed range.}
+{Returns an \galgas{@sint64} object that the maximum value of the 64-bit signed range.}
 {the returned value is $2^{63}-1$.}
 
 
@@ -38,8 +38,8 @@ Note that a 64-bit signed integer constant is characterized by the 'LS' suffix.
 {sint64}
 {1.9.8}
 {double}
-{Returns the receiver's value converted in a \nomType{double} object.}
-{as a 64-bit integer value can always be converted in a \nomType{double} value, this reader never fails.}
+{Returns the receiver's value converted in a \galgas{@double} object.}
+{as a 64-bit integer value can always be converted in a \galgas{@double} value, this reader never fails.}
 
 
 
@@ -118,7 +118,7 @@ Note that incrementation and decrementation are not available within an expressi
 
 \section{Arithmetic Operators}
 
-The \nomType{sint64} type supports the five arithmetic diadic operators:\newline
+The \galgas{@sint64} type supports the five arithmetic diadic operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -134,11 +134,11 @@ $\%$ & Modulo \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{sint64} objects.\newline
+Theses operators require both arguments to be \galgas{@sint64} objects.\newline
 
 A run-time error is raised if the operation leads to a 64-bit signed overflow.
 
-The \nomType{sint} type supports the following arithmetic unary operators:\newline
+The \galgas{@sint} type supports the following arithmetic unary operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -148,7 +148,7 @@ $-$ & Negate \\
 \hline
 \end{tabular}
 
-This operator returns the receiver's value (an \nomType{sint} object). A run-time error is raised if "-" operator is invoked on an object whose value is $-2^{63}$.
+This operator returns the receiver's value (an \galgas{@sint} object). A run-time error is raised if "-" operator is invoked on an object whose value is $-2^{63}$.
 
 
 
@@ -158,7 +158,7 @@ This operator returns the receiver's value (an \nomType{sint} object). A run-tim
 \section{Shift Operators}
 
 
-The \nomType{sint64} type supports right and left shift operators:\newline
+The \galgas{@sint64} type supports right and left shift operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -168,7 +168,7 @@ $>>$ & Right shift \\
 \hline
 \end{tabular}
 
-Theses operators require the right argument to be \nomType{sint64} object, and the left argument to be \nomType{uint} object.\newline
+Theses operators require the right argument to be \galgas{@sint64} object, and the left argument to be \galgas{@uint} object.\newline
 
 Note the right shift inserts a zero bit in the most significant bit location if the receiver's value is negative, and a one bit otherwise (it is a arithmetic right shift).\newline
 
@@ -179,7 +179,7 @@ The actual amount of the shift is the value of the right-hand operand masked by 
 
 \section{Logical Operators}
 
-The \nomType{sint64} type supports the three bit-wise logical operators:\newline
+The \galgas{@sint64} type supports the three bit-wise logical operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -191,10 +191,10 @@ $\&$ & Bit-wise and \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{sint64} objects.\newline
+Theses operators require both arguments to be \galgas{@sint64} objects.\newline
 
 
-The \nomType{sint64} type supports the bit-wise logical unary operator:\newline
+The \galgas{@sint64} type supports the bit-wise logical unary operator:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -202,7 +202,7 @@ $\sim$ & Bit-wise complementation \\
 \hline
 \end{tabular}
 
-This operator returns an \nomType{sint64} object.
+This operator returns an \galgas{@sint64} object.
 
 
 
@@ -212,7 +212,7 @@ This operator returns an \nomType{sint64} object.
 
 \section{Comparison Operators}
 
-The \nomType{sint64} type supports the six comparison operators:\newline
+The \galgas{@sint64} type supports the six comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -230,6 +230,6 @@ $>=$  & Greater or Equal \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{sint64} objects, and return a \nomType{bool} object.
+Theses operators require both arguments to be \galgas{@sint64} objects, and return a \galgas{@bool} object.
 
 

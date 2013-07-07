@@ -3,11 +3,11 @@
 
 \chapitreTypePredefiniLabelIndex{location}
 
-An \nomType{location} object value is a location in a source file. Objects of this type are useful for pointing out an error or a warning location.
+An \galgas{@location} object value is a location in a source file. Objects of this type are useful for pointing out an error or a warning location.
 
-\section{The \motCle{here} Keyword}
+\section{The \texttt{here} Keyword}
 
-The \motCle{here} keyword indicates the current parsing location is the current source file. Assigning an \nomType{location} object from the \motCle{here} keyword is a way for initializing an \nomType{location} object:\newline
+The \galgas{here} keyword indicates the current parsing location is the current source file. Assigning an \galgas{@location} object from the \galgas{here} keyword is a way for initializing an \galgas{@location} object:\newline
 
 \texttt{@location currentLocation := here ;}
 
@@ -17,8 +17,8 @@ The \motCle{here} keyword indicates the current parsing location is the current 
 {location}
 {2.1.2}
 {location}
-{Returns an \nomType{location} that does not points out any location.}
-{The returned object responds \motCle{true} to the \refReaderPage{location}{isNowhere}.}
+{Returns an \galgas{@location} that does not points out any location.}
+{The returned object responds \galgas{true} to the \refReaderPage{location}{isNowhere}.}
 
 \section{Readers}
 
@@ -26,37 +26,37 @@ The \motCle{here} keyword indicates the current parsing location is the current 
 {location}
 {1.8.2}
 {uint}
-{Returns an \nomType{uint} value containing the column of the receiver's value.}
-{this reader raises a run-time error if the receiver's value responds \motCle{true} to the \refReaderPage{location}{isNowhere}.}
+{Returns an \galgas{@uint} value containing the column of the receiver's value.}
+{this reader raises a run-time error if the receiver's value responds \galgas{true} to the \refReaderPage{location}{isNowhere}.}
 
 
 \readerSansArgument{isNowhere}
 {location}
 {2.1.2}
 {bool}
-{Returns an \nomType{bool} value indicating whether the receiver'value points out a source location or does not.}
-{this reader returns \motCle{true} if the receiver's value does not point out an actual location in a text source (i.e. it has been constructed using the nowhere constructor), and \motCle{false} if the receiver's value points out an actual location in a text source (i.e. it has been constructed using the \motCle{here} keyword.}
+{Returns an \galgas{@bool} value indicating whether the receiver'value points out a source location or does not.}
+{this reader returns \galgas{true} if the receiver's value does not point out an actual location in a text source (i.e. it has been constructed using the nowhere constructor), and \galgas{false} if the receiver's value points out an actual location in a text source (i.e. it has been constructed using the \galgas{here} keyword.}
 
 
 \readerSansArgument{line}
 {location}
 {1.8.2}
 {uint}
-{Returns an \nomType{uint} value containing the line of the receiver's value.}
-{this reader raises a run-time error if the receiver's value responds \motCle{true} to the \refReaderPage{location}{isNowhere}.}
+{Returns an \galgas{@uint} value containing the line of the receiver's value.}
+{this reader raises a run-time error if the receiver's value responds \galgas{true} to the \refReaderPage{location}{isNowhere}.}
 
 
 \readerSansArgument{locationIndex}
 {location}
 {1.8.2}
 {uint}
-{Returns an \nomType{uint} value containing the the offset from the the beginning of the source of the location defined by receiver's value.}
-{this reader raises a run-time error if the receiver's value responds \motCle{true} to the \refReaderPage{location}{isNowhere}.}
+{Returns an \galgas{@uint} value containing the the offset from the the beginning of the source of the location defined by receiver's value.}
+{this reader raises a run-time error if the receiver's value responds \galgas{true} to the \refReaderPage{location}{isNowhere}.}
 
 
 \readerSansArgument{locationString}
 {location}
 {1.8.2}
 {string}
-{returns an \nomType{string} object that contains a string representation of the location defined by receiver's value.}
-{this reader raises a run-time error if the receiver's value responds \motCle{true} to the \refReaderPage{location}{isNowhere}.}
+{returns an \galgas{@string} object that contains a string representation of the location defined by receiver's value.}
+{this reader raises a run-time error if the receiver's value responds \galgas{true} to the \refReaderPage{location}{isNowhere}.}

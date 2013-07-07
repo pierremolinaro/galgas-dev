@@ -3,7 +3,7 @@
 
 \chapitreTypePredefiniLabelIndex{string}
 
-A \nomType{string} object value is an Unicode character string value. The @string type defines several constructors, readers constant methods and modifiers, described below.
+A \galgas{@string} object value is an Unicode character string value. The @string type defines several constructors, readers constant methods and modifiers, described below.
 
 \paragraph{Literal String Constants.}
 
@@ -19,10 +19,10 @@ Characters strings are written enclosed within quotation marks (") characters, a
 {Creates and returns the string built with the \emph{inLength} last characters of the receiver. If the receiver contains less than inLength characters, the receiver’s value is returned.}
 {}
 
-\begin{exemple}
+\begin{galgascode}
 @string s := "abcdef";
 @string s2 := [s rightSubString!3]; # The value of s2 is "def"
-\end{exemple}
+\end{galgascode}
 
 \readerDeuxArguments{subString}
 {string}
@@ -38,7 +38,7 @@ Characters strings are written enclosed within quotation marks (") characters, a
 %{@stringset}
 %{1.3.0}
 %{@stringset}
-%{Creates and returns an empty \nomType{stringset} object.}
+%{Creates and returns an empty \galgas{@stringset} object.}
 %{}
 %
 %\constructeurUnArgument{setWithString}
@@ -46,7 +46,7 @@ Characters strings are written enclosed within quotation marks (") characters, a
 %{1.3.0}
 %{@stringset}
 %{@string inString}
-%{Creates and returns an \nomType{stringset} object that contains the value of the \emph{inString} argument object.}
+%{Creates and returns an \galgas{@stringset} object that contains the value of the \emph{inString} argument object.}
 %{}
 %
 %
@@ -142,10 +142,10 @@ Characters strings are written enclosed within quotation marks (") characters, a
 %
 %
 %
-%\subsection{Enumerating \nomType{stringset} objects}
+%\subsection{Enumerating \galgas{@stringset} objects}
 %
 %
-%The \motCle{foreach} instruction can be used for enumerating \nomType{stringset} values; enumeration is performed in the ascending order, or in the reverse alphabetical order using the '>' qualifier.
+%The \motCle{foreach} instruction can be used for enumerating \galgas{@stringset} values; enumeration is performed in the ascending order, or in the reverse alphabetical order using the '>' qualifier.
 %
 %\texttt{@stringset s := ... ;}\newline
 %\textbf{foreach} \texttt {s} \textbf {do}\newline
@@ -160,7 +160,7 @@ Characters strings are written enclosed within quotation marks (") characters, a
 %
 %\subsection{Comparison Operators}
 %
-%The \nomType{stringset} type supports the six comparison operators:\newline
+%The \galgas{@stringset} type supports the six comparison operators:\newline
 %
 %\begin{tabular}{|c|c|}
 %\hline
@@ -178,6 +178,6 @@ Characters strings are written enclosed within quotation marks (") characters, a
 %\hline
 %\end{tabular}
 %
-%Theses operators require both arguments to be \nomType{stringset} objects, and return a \nomType{stringset} object.
+%Theses operators require both arguments to be \galgas{@stringset} objects, and return a \galgas{@stringset} object.
 %
 %

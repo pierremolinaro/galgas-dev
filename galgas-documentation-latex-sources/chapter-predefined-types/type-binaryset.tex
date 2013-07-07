@@ -3,7 +3,7 @@
 
 \chapitreTypePredefiniLabelIndex{binaryset}
 
-The \nomType{binaryset} type encodes sets, binary relations, boolean mathematical expressions. It is implemented with Binary Decision Diagrams (BDD).
+The \galgas{@binaryset} type encodes sets, binary relations, boolean mathematical expressions. It is implemented with Binary Decision Diagrams (BDD).
 
 
 \section{Constructors}
@@ -13,13 +13,19 @@ The \nomType{binaryset} type encodes sets, binary relations, boolean mathematica
 {1.6.0}
 {binaryset}
 {@uint inBitIndex}
-{Returns an \nomType{binaryset} object whose \emph{inBitIndex} bit is constraint to one.}
+{Returns an \galgas{@binaryset} object whose \emph{inBitIndex} bit is constraint to one.}
 {}
 
-\exempleDeuxLignes
-{}
-{@binaryset s [binarySetWithBit !2] ;}
-{log s ; \# displays <@binaryset: 1XX>}
+\begin{lstlisting}[language=galgas]
+  constructor toto
+\end{lstlisting}
+
+
+\textbf{Exemple :}
+\begin{galgascode}
+@binaryset s [binarySetWithBit !2] ;
+log s ; # displays <@binaryset: 1XX>
+\end{galgascode}
 
 
 
@@ -32,13 +38,14 @@ The \nomType{binaryset} type encodes sets, binary relations, boolean mathematica
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint inRightFirstIndex}
-{Returns an \nomType{binaryset} object that encodes a equality relation between two variables.}
+{Returns an \galgas{@binaryset} object that encodes a equality relation between two variables.}
 {the constructor returns an binary set that encodes the \emph{a~==~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
 
-\exempleDeuxLignes
-{}
-{@binaryset s [binarySetWithEqualComparison !0 !2 !3] ;}
-{log s; \# displays <@binaryset:~00x00, 01X01, 10X10, 11X11>}
+\textbf{Exemple :}
+\begin{galgascode}
+@binaryset s [binarySetWithEqualComparison !0 !2 !3] ;
+log s; # displays <@binaryset: 00x00, 01X01, 10X10, 11X11>
+\end{galgascode}
 
 
 
@@ -51,13 +58,14 @@ The \nomType{binaryset} type encodes sets, binary relations, boolean mathematica
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint64 inConstant}
-{Returns an \nomType{binaryset} object that encodes a equality relation between a variable and a constant.}
+{Returns an \galgas{@binaryset} object that encodes a equality relation between a variable and a constant.}
 {the constructor returns an binary set that encodes the \emph{a~==~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
 
-\exempleDeuxLignes
-{}
-{@binaryset s [binarySetWithEqualToConstant !0 !6 !23L] ;}
-{log s; \# displays <@binaryset:~10111>}
+\textbf{Exemple :}
+\begin{galgascode}
+@binaryset s [binarySetWithEqualToConstant !0 !6 !23L] ;
+log s; # displays <@binaryset: 10111>
+\end{galgascode}
 
 
 
@@ -70,13 +78,14 @@ The \nomType{binaryset} type encodes sets, binary relations, boolean mathematica
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint inRightFirstIndex}
-{Returns an \nomType{binaryset} object that encodes a greater or equal relation between two variables.}
+{Returns an \galgas{@binaryset} object that encodes a greater or equal relation between two variables.}
 {the constructor returns an binary set that encodes the \emph{a~>=~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
 
-\exempleDeuxLignes
-{}
-{@binaryset s [binarySetWithGreaterOrEqualComparison !0 !2 !3] ;}
-{log s; \# displays <@binaryset:~00XXX, 01X01, 01X1X, 10X1X, 11X11>}
+\textbf{Exemple :}
+\begin{galgascode}
+@binaryset s [binarySetWithGreaterOrEqualComparison !0 !2 !3] ;
+log s; # displays <@binaryset: 00XXX, 01X01, 01X1X, 10X1X, 11X11>
+\end{galgascode}
 
 
 
@@ -89,7 +98,7 @@ The \nomType{binaryset} type encodes sets, binary relations, boolean mathematica
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint64 inConstant}
-{Returns an \nomType{binaryset} object that encodes a greater or equal relation between a variable and a constant.}
+{Returns an \galgas{@binaryset} object that encodes a greater or equal relation between a variable and a constant.}
 {the constructor returns an binary set that encodes the \emph{a~>=~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
 
 
@@ -103,13 +112,14 @@ The \nomType{binaryset} type encodes sets, binary relations, boolean mathematica
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint inRightFirstIndex}
-{Returns an \nomType{binaryset} object that encodes a lower or equal relation between two variables.}
+{Returns an \galgas{@binaryset} object that encodes a lower or equal relation between two variables.}
 {the constructor returns an binary set that encodes the \emph{a~<=~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
 
-\exempleDeuxLignes
-{}
-{@binaryset s [binarySetWithLowerOrEqualComparison !0 !2 !3] ;}
-{log s; \# displays <@binaryset:~00X00, 01X0X, 10X0X, 10X10, 11XXX>}
+\textbf{Exemple :}
+\begin{galgascode}
+@binaryset s [binarySetWithLowerOrEqualComparison !0 !2 !3] ;
+log s; # displays <@binaryset: 00X00, 01X0X, 10X0X, 10X10, 11XXX>
+\end{galgascode}
 
 
 
@@ -122,7 +132,7 @@ The \nomType{binaryset} type encodes sets, binary relations, boolean mathematica
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint64 inConstant}
-{Returns an \nomType{binaryset} object that encodes a lower or equal relation between a variable and a constant.}
+{Returns an \galgas{@binaryset} object that encodes a lower or equal relation between a variable and a constant.}
 {the constructor returns an binary set that encodes the \emph{a~<=~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
 
 
@@ -136,13 +146,14 @@ The \nomType{binaryset} type encodes sets, binary relations, boolean mathematica
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint inRightFirstIndex}
-{Returns an \nomType{binaryset} object that encodes an inequality relation between two variables.}
+{Returns an \galgas{@binaryset} object that encodes an inequality relation between two variables.}
 {the constructor returns an binary set that encodes the \emph{a~!=~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
 
-\exempleDeuxLignes
-{}
-{@binaryset s [binarySetWithNotEqualComparison !0 !2 !3] ;}
-{log s; \# displays <@binaryset:~00X01, 00X1X, 01X00, 01X1X, 10X0X, 10X11, 11X0X, 11X10>}
+\textbf{Exemple :}
+\begin{galgascode}
+@binaryset s [binarySetWithNotEqualComparison !0 !2 !3] ;
+log s; # displays <@binaryset: 00X01, 00X1X, 01X00, 01X1X, 10X0X, 10X11, 11X0X, 11X10>
+\end{galgascode}
 
 
 
@@ -155,7 +166,7 @@ The \nomType{binaryset} type encodes sets, binary relations, boolean mathematica
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint64 inConstant}
-{Returns an \nomType{binaryset} object that encodes an inequality relation between a variable and a constant.}
+{Returns an \galgas{@binaryset} object that encodes an inequality relation between a variable and a constant.}
 {the constructor returns an binary set that encodes the \emph{a~!=~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
 
 
@@ -169,7 +180,7 @@ The \nomType{binaryset} type encodes sets, binary relations, boolean mathematica
 {1.6.0}
 {binaryset}
 {@string inPredicateString}
-{Returns the \nomType{binaryset} object described by the \emph{inPredicateString} argument.}
+{Returns the \galgas{@binaryset} object described by the \emph{inPredicateString} argument.}
 {the \emph{inBitString} argument string encodes a predicate string, such as those returned by \refReaderPage{binaryset}{predicateStringValue}.}
 \begin{description}
 \item The \emph{inBitString} argument string characters should have one of the five following values:
@@ -183,35 +194,41 @@ The \nomType{binaryset} type encodes sets, binary relations, boolean mathematica
 \end{description}
 
 
-\exempleDeuxLignes
-{An empty predicate string (or a string containing only spaces) provides an empty binary set:}
-{@binaryset s [binarySetWithPredicateString !\textquotedbl~\textquotedbl] ;}
-{@bool b := [s isEmptySet]; \# b is true}
+\textbf{Exemple :}
+\begin{galgascode}
+An empty predicate string (or a string containing only spaces) provides an empty binary set:
+@binaryset s [binarySetWithPredicateString !" "] ;
+@bool b := [s isEmptySet]; # b is true
+\end{galgascode}
 
 
-\exempleDeuxLignes
-{A predicate string containing only \texttt{\textquotesingle X\textquotesingle} characters (at least one) provides an full binary set:}
-{@binaryset s [binarySetWithPredicateString !\textquotedbl X X\textquotedbl] ; \# Spaces are non significant}
-{@bool b := [s isFullSet]; \# b is true}
+\begin{galgascode}
+A predicate string containing only 'X' characters (at least one) provides an full binary set:
+@binaryset s [binarySetWithPredicateString !" X X"] ; # Spaces are non significant
+@bool b := [s isFullSet]; # b is true
+\end{galgascode}
 
 
-\exempleDeuxLignes
-{You can use the boolean '\textbar' operator for providing an or'ed values:}
-{@binaryset s [binarySetWithPredicateString !\textquotedbl 1100\textquotedbl] ; \# 12 in decimal}
-{log s; \# Displays <@binaryset:~1100>}
+\begin{galgascode}
+A predicate string can encode a binary value (MSB first):
+@binaryset s [binarySetWithPredicateString !"1100"] ; # 12 in decimal
+log s; # Displays <@binaryset: 1100>
+\end{galgascode}
 
 
-\exempleDeuxLignes
-{A predicate string can encode a binary value (MSB first):}
-{@binaryset s [binarySetWithPredicateString !\textquotedbl 1100\textbar 1101\textquotedbl] ;}
-{log s; \# Displays <@binaryset:~110X>}
+\begin{galgascode}
+You can use the boolean '|' operator for providing an or'ed values:
+@binaryset s [binarySetWithPredicateString !" 1100 | 1101"] ;
+log s; # Displays <@binaryset: 110X>
+\end{galgascode}
 
 
 
-\exempleDeuxLignes
-{You can use you can use don't care bits and '\textbar' operator together:}
-{@binaryset s [binarySetWithPredicateString !\textquotedbl 11X00X0\textbar 111XXX\textquotedbl] ;}
-{log s; \# Displays <@binaryset:~1100X0, 111XXX>}
+\begin{galgascode}
+You can use you can use don't care bits and '|' operator together:
+@binaryset s [binarySetWithPredicateString !"11X00X0 | 111XXX"] ;
+log s; # Displays <@binaryset: 1100X0, 111XXX>
+\end{galgascode}
 
 
 
@@ -224,13 +241,14 @@ The \nomType{binaryset} type encodes sets, binary relations, boolean mathematica
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint inRightFirstIndex}
-{Returns an \nomType{binaryset} object that encodes a strict greater than relation between two variables.}
+{Returns an \galgas{@binaryset} object that encodes a strict greater than relation between two variables.}
 {the constructor returns an binary set that encodes the \emph{a~>~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
 
-\exempleDeuxLignes
-{}
-{@binaryset s [binarySetWithStrictGreaterComparison !0 !2 !3] ;}
-{log s; \# displays <@binaryset:~00X01, 00X1X, 01X1X, 10X11>}
+\textbf{Exemple :}
+\begin{galgascode}
+@binaryset s [binarySetWithStrictGreaterComparison !0 !2 !3] ;
+log s; # displays <@binaryset: 00X01, 00X1X, 01X1X, 10X11>
+\end{galgascode}
 
 
 
@@ -243,7 +261,7 @@ The \nomType{binaryset} type encodes sets, binary relations, boolean mathematica
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint64 inConstant}
-{Returns an \nomType{binaryset} object that encodes a strict greater than relation between a variable and a constant.}
+{Returns an \galgas{@binaryset} object that encodes a strict greater than relation between a variable and a constant.}
 {the constructor returns an binary set that encodes the \emph{a~>~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
 
 
@@ -257,13 +275,14 @@ The \nomType{binaryset} type encodes sets, binary relations, boolean mathematica
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint inRightFirstIndex}
-{Returns an \nomType{binaryset} object that encodes a strict lower than relation between two variables.}
+{Returns an \galgas{@binaryset} object that encodes a strict lower than relation between two variables.}
 {the constructor returns an binary set that encodes the \emph{a~<~b} relation, where \emph{a} is encoded from bit index \emph{inLeftFirstIndex} to bit index \emph{inLeftFirstIndex  + inBitCount - 1}, and \emph{b} is encoded from bit index \emph{inRightFirstIndex} to \emph{inRightFirstIndex + inBitCount - 1}.}
 
-\exempleDeuxLignes
-{}
-{@binaryset s [binarySetWithStrictLowerComparison !0 !2 !3] ;}
-{log s; \# displays <@binaryset:~01X00, 10X0X, 11X0X, 11X10>}
+\textbf{Exemple :}
+\begin{galgascode}
+@binaryset s [binarySetWithStrictLowerComparison !0 !2 !3] ;
+log s; # displays <@binaryset: 01X00, 10X0X, 11X0X, 11X10>
+\end{galgascode}
 
 
 
@@ -276,7 +295,7 @@ The \nomType{binaryset} type encodes sets, binary relations, boolean mathematica
 {@uint inLeftFirstIndex}
 {@uint inBitCount}
 {@uint64 inConstant}
-{Returns an \nomType{binaryset} object that encodes a strict lower than relation between a variable and a constant.}
+{Returns an \galgas{@binaryset} object that encodes a strict lower than relation between a variable and a constant.}
 {the constructor returns an binary set that encodes the \emph{a~<~cst} relation, where \emph {a} is encoded from bit index \emph{inBitIndex} to bit index \emph{inBitIndex  + inBitCount - 1}, and \emph{cst} is defined by the \emph{inConstant} argument.}
 
 
@@ -287,7 +306,7 @@ The \nomType{binaryset} type encodes sets, binary relations, boolean mathematica
 {binaryset}
 {1.6.0}
 {binaryset}
-{Returns an empty \nomType{binaryset} object.}
+{Returns an empty \galgas{@binaryset} object.}
 {}
 
 
@@ -298,7 +317,7 @@ The \nomType{binaryset} type encodes sets, binary relations, boolean mathematica
 {binaryset}
 {1.6.0}
 {binaryset}
-{Returns a full \nomType{binaryset} object.}
+{Returns a full \galgas{@binaryset} object.}
 {}
 
 
@@ -313,21 +332,22 @@ The \nomType{binaryset} type encodes sets, binary relations, boolean mathematica
 {Returns the set of accessible states from an initial state set.}
 {computes the set of accessible states from the \emph{inInitialStateSet} state set using the accessibility relation encoded by the receiver.}
 
-\exempleUneLigne
-{}
-{@binaryset graph [binarySetWithPredicateString !\textquotedbl 0001 0000\textquotedbl] ; \# Edge 0 -> 1}
-\texttt{graph := graph | [@binaryset binarySetWithPredicateString !\textquotedbl 0010 0001\textquotedbl] ; \# Edge 1 -> 2}\\
-\texttt{graph := graph | [@binaryset binarySetWithPredicateString !\textquotedbl 0011 0010\textquotedbl] ; \# Edge 2 -> 3}\\
-\texttt{graph := graph | [@binaryset binarySetWithPredicateString !\textquotedbl 0100 0011\textquotedbl] ; \# Edge 3 -> 4}\\
-\texttt{graph := graph | [@binaryset binarySetWithPredicateString !\textquotedbl 0101 0100\textquotedbl] ; \# Edge 4 -> 5}\\
-\texttt{@binaryset initialState [binarySetWithPredicateString !\textquotedbl 0000\textquotedbl] ; \# 0 is the initial state}\\
-\texttt{@binaryset accessibleStates := [graph accessibleStates !initialState !4] ;}\\
-\texttt{message \textquotedbl Accessible:\textquotedbl ;}\\
-\texttt{@uint64list valueList := [accessibleStates uint64ValueList !4] ;}\\
-\texttt{\motCle{foreach} valueList do}\\
-\texttt{message \textquotedbl~\textquotedbl~. [mValue string] ;}\\
-\texttt{end foreach ;}\\
-\texttt{message \textquotedbl\textbackslash n\textquotedbl ;}\\
+\textbf{Exemple :}
+\begin{galgascode}
+@binaryset graph [binarySetWithPredicateString !"0001 0000"] ; # Edge 0 -> 1
+graph := graph | [@binaryset binarySetWithPredicateString !"0010 0001"] ; # Edge 1 -> 2
+graph := graph | [@binaryset binarySetWithPredicateString !"0011 0010"] ; # Edge 2 -> 3
+graph := graph | [@binaryset binarySetWithPredicateString !"0100 0011"] ; # Edge 3 -> 4
+graph := graph | [@binaryset binarySetWithPredicateString !"0101 0100"] ; # Edge 4 -> 5
+@binaryset initialState [binarySetWithPredicateString !"0000"] ; # 0 is the initial state
+@binaryset accessibleStates := [graph accessibleStates !initialState !4] ;
+message " Accessible:" ;
+@uint64list valueList := [accessibleStates uint64ValueList !4] ;
+foreach valueList do
+  message " " . [mValue string] ;
+end foreach ;
+message "\n" ;
+\end{galgascode}
 
 
 This program displays: \texttt{Accessible: 0 1 2 3 4 5}.
@@ -341,7 +361,7 @@ This program displays: \texttt{Accessible: 0 1 2 3 4 5}.
 {binaryset}
 {@uint inFirstIndex}
 {@uint inTranslation}
-{Returns a \nomType{binaryset} value computed by translating the receiver's value by \emph{inTranslation} bits from index \emph{inFirstIndex}.}
+{Returns a \galgas{@binaryset} value computed by translating the receiver's value by \emph{inTranslation} bits from index \emph{inFirstIndex}.}
 {}
 
 
@@ -350,7 +370,7 @@ This program displays: \texttt{Accessible: 0 1 2 3 4 5}.
 {binaryset}
 {1.6.0}
 {@uint64}
-{Returns in an \nomType{uint64} value the number of different compressed string values encoded by receiver's value.}
+{Returns in an \galgas{@uint64} value the number of different compressed string values encoded by receiver's value.}
 {}
 
 
@@ -379,26 +399,27 @@ This program displays: \texttt{Accessible: 0 1 2 3 4 5}.
 {bool}
 {@uint inFirstBit}
 {@uint inBitCount}
-{Returns an \nomType{bool} value indicating whether the receiver'value contains a given value.}
-{returns \motCle{true} if the receiver's contains a value, and \motCle{false} otherwise; this value is computed from the \emph{inBitCount} first bits of \emph{inValue} value, shifted left by \emph{inFirstBit}.}
+{Returns an \galgas{@bool} value indicating whether the receiver'value contains a given value.}
+{returns \galgas{true} if the receiver's contains a value, and \galgas{false} otherwise; this value is computed from the \emph{inBitCount} first bits of \emph{inValue} value, shifted left by \emph{inFirstBit}.}
 
 
-\exempleUneLigne
-{}
-{@binaryset s [binarySetWithPredicateString !\textquotedbl 0 00XX X111\textbar 1 1111 1111\textquotedbl] ;}
-\texttt{log s ; \# Displays <@binaryset:~000XXX111, 111111111>}\\
-\texttt{@bool b := [s containsValue !127L !0 !7] ;}\\
-\texttt{log b ; \# Displays <@bool:true>}\\
-\texttt{b := [s containsValue !31L !1 !7] ;}\\
-\texttt{log b ; \# Displays <@bool:true>}\\
-\texttt{b := [s containsValue !63L !1 !8] ;}\\
-\texttt{log b ; \# Displays <@bool:false>}\\
-\texttt{b := [s containsValue !7L !0 !9] ;}\\
-\texttt{log b ; \# Displays <@bool:true>}\\
-\texttt{b := [s containsValue !7L !0 !10] ;}\\
-\texttt{log b ; \# Displays <@bool:true>}\\
-\texttt{b := [s containsValue !32767L !1 !12] ;}\\
-\texttt{log b ; \# Displays <@bool:true>}\\
+\textbf{Exemple :}
+\begin{galgascode}
+@binaryset s [binarySetWithPredicateString !"0 00XX X111\textbar 1 1111 1111"] ;
+log s ; \# Displays <@binaryset: 000XXX111, 111111111>
+@bool b := [s containsValue !127L !0 !7] ;
+log b ; \# Displays <@bool:true>
+b := [s containsValue !31L !1 !7] ;
+log b ; \# Displays <@bool:true>
+b := [s containsValue !63L !1 !8] ;
+log b ; \# Displays <@bool:false>
+b := [s containsValue !7L !0 !9] ;
+log b ; \# Displays <@bool:true>
+b := [s containsValue !7L !0 !10] ;
+log b ; \# Displays <@bool:true>
+b := [s containsValue !32767L !1 !12] ;
+log b ; \# Displays <@bool:true>
+\end{galgascode}
 
 
 
@@ -417,7 +438,7 @@ This program displays: \texttt{Accessible: 0 1 2 3 4 5}.
 
 Note that \texttt{[a equalTo !b]} is equivalent to \texttt{$\sim$ (a $\wedge$ b)}.
 
-This operation returns an \nomType{binaryset} value; do not confuse with \emph{==} operator that returns an \nomType{bool} value.
+This operation returns an \galgas{@binaryset} value; do not confuse with \emph{==} operator that returns an \galgas{@bool} value.
 
 
 
@@ -449,12 +470,13 @@ This operation returns an \nomType{binaryset} value; do not confuse with \emph{=
 {}
 
 
-\exempleUneLigne
-{}
-{@binaryset s [binarySetWithPredicateString !\textquotedbl 01110010\textquotedbl] ;}
-\texttt{log s ; \# Displays <@binaryset:~01110010>}\\
-\texttt{@binaryset ss := [s existsOnBitRange !2 !3] ;}\\
-\texttt{log s ; \# Displays <@binaryset:~011XXX10>}\\
+\textbf{Exemple :}
+\begin{galgascode}
+@binaryset s [binarySetWithPredicateString !"01110010"] ;
+log s ; # Displays <@binaryset: 01110010>
+@binaryset ss := [s existsOnBitRange !2 !3] ;
+log s ; # Displays <@binaryset: 011XXX10>
+\end{galgascode}
 
 
 
@@ -526,8 +548,8 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 {binaryset}
 {1.6.0}
 {bool}
-{Returns a \nomType{bool} value that indicates whether the receiver's value is the empty set.}
-{returns \motCle{true} if receiver's value is the empty set, and \motCle{false} otherwise.}
+{Returns a \galgas{@bool} value that indicates whether the receiver's value is the empty set.}
+{returns \galgas{true} if receiver's value is the empty set, and \galgas{false} otherwise.}
 
 
 
@@ -539,8 +561,8 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 {binaryset}
 {1.6.0}
 {bool}
-{Returns a \nomType{bool} value that indicates whether the receiver's value is the full set.}
-{returns \motCle{true} if receiver's value is the full set, and \motCle{false} otherwise.}
+{Returns a \galgas{@bool} value that indicates whether the receiver's value is the full set.}
+{returns \galgas{true} if receiver's value is the full set, and \galgas{false} otherwise.}
 
 
 
@@ -777,7 +799,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 {1.6.0}
 {@uint64list}
 {@uint64 inBitCount}
-{Returns the list of \nomType{uint64} values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.}
+{Returns the list of \galgas{@uint64} values corresponding to receiver's value, considering it uses \emph{inBitCount} bits.}
 {}
 
 
@@ -792,7 +814,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 {1.6.0}
 {@uint64}
 {@uint inBitCount}
-{Returns in an \nomType{uint64} object the number of different values encoded by receiver, considering it uses \emph{inBitCount} bits.}
+{Returns in an \galgas{@uint64} object the number of different values encoded by receiver, considering it uses \emph{inBitCount} bits.}
 {no overflow test in performed.}
 
 
@@ -805,7 +827,7 @@ Note that \texttt{[a greaterOrEqualTo !b]} is equivalent to \texttt{(a \textbar 
 
 \section{Logical Operators}
 
-The \nomType{binaryset} type supports the three logical operators:\newline
+The \galgas{@binaryset} type supports the three logical operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -817,10 +839,10 @@ The \nomType{binaryset} type supports the three logical operators:\newline
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{binaryset} objects and return an \nomType{binaryset} object.\newline
+Theses operators require both arguments to be \galgas{@binaryset} objects and return an \galgas{@binaryset} object.\newline
 
 
-The \nomType{binaryset} type supports the logical unary operator:\newline
+The \galgas{@binaryset} type supports the logical unary operator:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -828,7 +850,7 @@ $\sim$ & Negation, Complementation \\
 \hline
 \end{tabular}
 
-This operator returns an \nomType{binaryset} object.
+This operator returns an \galgas{@binaryset} object.
 
 
 
@@ -838,7 +860,7 @@ This operator returns an \nomType{binaryset} object.
 
 \section{Comparison Operators}
 
-The \nomType{binaryset} type supports the two comparison operators:\newline
+The \galgas{@binaryset} type supports the two comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -848,9 +870,9 @@ $!=$ & Non Equality \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{binaryset} objects, and return a \nomType{bool} object. These operations are very fast and are performed in a constant time (integer equality comparison).
+Theses operators require both arguments to be \galgas{@binaryset} objects, and return a \galgas{@bool} object. These operations are very fast and are performed in a constant time (integer equality comparison).
 
-Do not confuse with \refReaderPage{binaryset}{equalTo} and \refReaderPage{binaryset}{notEqualTo} that return a \nomType{binaryset} object.
+Do not confuse with \refReaderPage{binaryset}{equalTo} and \refReaderPage{binaryset}{notEqualTo} that return a \galgas{@binaryset} object.
 
 
 
@@ -860,7 +882,7 @@ Do not confuse with \refReaderPage{binaryset}{equalTo} and \refReaderPage{binary
 
 \section{Shift Operators}
 
-The \nomType{binaryset} type supports the two shift operators:\newline
+The \galgas{@binaryset} type supports the two shift operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -870,10 +892,11 @@ $>>$ & Right Shift \\
 \hline
 \end{tabular}
 
-\exempleUneLigne
-{}
-{@binaryset b [binarySetWithPredicateString !\textquotedbl 1010\textquotedbl] ;}
-\texttt{log b ; \# displays: <@binaryset:~1010>}\\
-\texttt{@binaryset bb := b $<<$ 3 ;}\\
-\texttt{log bb ; \# displays: <@binaryset:~1010XXX>}\\
+\textbf{Exemple :}
+\begin{galgascode}
+@binaryset b [binarySetWithPredicateString !"1010"] ;
+log b ; # displays: <@binaryset: 1010>
+@binaryset bb := b << 3 ;
+log bb ; # displays: <@binaryset: 1010XXX>
+\end{galgascode}
 

@@ -3,18 +3,24 @@
 
 \chapitreTypePredefiniLabelIndex{char}
 
-An \nomType{char} object value is an Unicode character. You can initialize an \nomType{char} object from a character constant:\\
+An \galgas{@char} object value is an Unicode character. You can initialize an \galgas{@char} object from a character constant:
 
-\texttt{@char myCharacter := \textquotesingle  A\textquotesingle ;}
+\begin{galgascode}
+@char myCharacter := 'A' ;
+\end{galgascode}
+
 
 You have several ways for writing a literal character constant. In any case, it should define an assigned Unicode character. A compile-time error is raised if it does not.
 
 
-A literal character constant is a single character or an escape sequence enclosed by single quotes ('\textquotesingle').
+A literal character constant is a single character or an escape sequence enclosed by single quotes (\galgas{'}).
 
 For an ASCII printable character:\\
 
-\texttt{@char myCharacter := \textquotesingle a\textquotesingle ;}\\
+\begin{galgascode}
+@char myCharacter := 'a' ;
+\end{galgascode}
+
 
 If you want to get ASCII source text file, any character that does not correspond to an ASCII printable character should be expressed with an escape sequence.
 
@@ -90,7 +96,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {char}
 {1.8.3}
 {char}
-{Returns an \nomType{char} object corresponding to Unicode replacement character (\texttt{\textquotesingle\textbackslash uFFFD}.}
+{Returns an \galgas{@char} object corresponding to Unicode replacement character (\texttt{\textquotesingle\textbackslash uFFFD}.}
 {}
 
 
@@ -104,8 +110,8 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {1.8.3}
 {char}
 {@uint inValue}
-{Returns an \nomType{char} object from an Unicode code point.}
-{A run-time error is raised if the \emph{inValue} value does not represent an assigned Unicode value. You can check if an \nomType{uint} value represents an assigned Unicode value with the \refReaderPage{uint}{isUnicodeValueAssigned}.}
+{Returns an \galgas{@char} object from an Unicode code point.}
+{A run-time error is raised if the \emph{inValue} value does not represent an assigned Unicode value. You can check if an \galgas{@uint} value represents an assigned Unicode value with the \refReaderPage{uint}{isUnicodeValueAssigned}.}
 
 
 \section{Readers}
@@ -114,9 +120,9 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 \readerSansArgument{isalnum}
 {char}
 {1.7.2}
-{@bool}
-{Returns an \nomType{bool} value indicating whether the receiver'value represents an ASCII letter or an ASCII digit.}
-{returns \motCle{true} if the receiver'value represents an ASCII letter or an ASCII digit (between \texttt{\textquotesingle A\textquotesingle} and \texttt{\textquotesingle Z\textquotesingle}, or between \texttt{\textquotesingle a\textquotesingle} and \texttt{\textquotesingle z\textquotesingle}, or between \texttt{\textquotesingle 0\textquotesingle} and \texttt{\textquotesingle 9\textquotesingle}), and \motCle{false} otherwise.}
+{bool}
+{Returns an \galgas{@bool} value indicating whether the receiver'value represents an ASCII letter or an ASCII digit.}
+{returns \galgas{true} if the receiver'value represents an ASCII letter or an ASCII digit (between \texttt{\textquotesingle A\textquotesingle} and \texttt{\textquotesingle Z\textquotesingle}, or between \texttt{\textquotesingle a\textquotesingle} and \texttt{\textquotesingle z\textquotesingle}, or between \texttt{\textquotesingle 0\textquotesingle} and \texttt{\textquotesingle 9\textquotesingle}), and \galgas{false} otherwise.}
 
 
 
@@ -124,9 +130,9 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 \readerSansArgument{isalpha}
 {char}
 {1.7.2}
-{@bool}
-{Returns an \nomType{bool} value indicating whether the receiver'value represents an ASCII letter.}
-{returns \motCle{true} if the receiver'value represents an ASCII letter (between \texttt{\textquotesingle A\textquotesingle} and \texttt{\textquotesingle Z\textquotesingle}, or between \texttt{\textquotesingle a\textquotesingle} and \texttt{\textquotesingle z\textquotesingle}), and \motCle{false} otherwise.}
+{bool}
+{Returns an \galgas{@bool} value indicating whether the receiver'value represents an ASCII letter.}
+{returns \galgas{true} if the receiver'value represents an ASCII letter (between \texttt{\textquotesingle A\textquotesingle} and \texttt{\textquotesingle Z\textquotesingle}, or between \texttt{\textquotesingle a\textquotesingle} and \texttt{\textquotesingle z\textquotesingle}), and \galgas{false} otherwise.}
 
 
 
@@ -134,9 +140,9 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 \readerSansArgument{iscntrl}
 {char}
 {1.7.2}
-{@bool}
-{Returns an \nomType{bool} value indicating whether the receiver'value represents an ASCII control character.}
-{returns \motCle{true} if the receiver'value represents an ASCII control character (strictly before the \emph{SPACE} character), and \motCle{false} otherwise.}
+{bool}
+{Returns an \galgas{@bool} value indicating whether the receiver'value represents an ASCII control character.}
+{returns \galgas{true} if the receiver'value represents an ASCII control character (strictly before the \emph{SPACE} character), and \galgas{false} otherwise.}
 
 
 
@@ -145,9 +151,9 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 \readerSansArgument{isdigit}
 {char}
 {1.7.2}
-{@bool}
-{Returns an \nomType{bool} value indicating whether the receiver'value represents an ASCII digit.}
-{returns \motCle{true} if the receiver'value represents an ASCII digit (between \texttt{\textquotesingle 0\textquotesingle} and \texttt{\textquotesingle 9\textquotesingle}), and \motCle{false} otherwise.}
+{bool}
+{Returns an \galgas{@bool} value indicating whether the receiver'value represents an ASCII digit.}
+{returns \galgas{true} if the receiver'value represents an ASCII digit (between \texttt{\textquotesingle 0\textquotesingle} and \texttt{\textquotesingle 9\textquotesingle}), and \galgas{false} otherwise.}
 
 
 
@@ -156,9 +162,9 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 \readerSansArgument{islower}
 {char}
 {1.7.2}
-{@bool}
-{Returns an \nomType{bool} value indicating whether the receiver'value represents an ASCII lowercase ASCII letter.}
-{returns \motCle{true} if the receiver'value represents an ASCII lowercase letter (between \texttt{\textquotesingle a\textquotesingle} and \texttt{\textquotesingle z\textquotesingle}), and \motCle{false} otherwise.}
+{bool}
+{Returns an \galgas{@bool} value indicating whether the receiver'value represents an ASCII lowercase ASCII letter.}
+{returns \galgas{true} if the receiver'value represents an ASCII lowercase letter (between \texttt{\textquotesingle a\textquotesingle} and \texttt{\textquotesingle z\textquotesingle}), and \galgas{false} otherwise.}
 
 
 
@@ -168,9 +174,9 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 \readerSansArgument{isUnicodeCommand}
 {char}
 {1.8.3}
-{@bool}
-{Returns an \nomType{bool} value indicating whether the receiver'value represents an Unicode command.}
-{returns \motCle{true} if the receiver'value represents an Unicode command, and \motCle{false} otherwise.}
+{bool}
+{Returns an \galgas{@bool} value indicating whether the receiver'value represents an Unicode command.}
+{returns \galgas{true} if the receiver'value represents an Unicode command, and \galgas{false} otherwise.}
 
 
 
@@ -180,9 +186,9 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 \readerSansArgument{isUnicodeLetter}
 {char}
 {1.8.3}
-{@bool}
-{Returns an \nomType{bool} value indicating whether the receiver'value represents an Unicode letter.}
-{returns \motCle{true} if the receiver'value represents an Unicode letter, and \motCle{false} otherwise.}
+{bool}
+{Returns an \galgas{@bool} value indicating whether the receiver'value represents an Unicode letter.}
+{returns \galgas{true} if the receiver'value represents an Unicode letter, and \galgas{false} otherwise.}
 
 
 
@@ -193,8 +199,8 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {char}
 {1.8.3}
 {@bool}
-{Returns an \nomType{bool} value indicating whether the receiver'value represents an Unicode mark character.}
-{returns \motCle{true} if the receiver'value represents an Unicode mark character, and \motCle{false} otherwise.}
+{Returns an \galgas{@bool} value indicating whether the receiver'value represents an Unicode mark character.}
+{returns \galgas{true} if the receiver'value represents an Unicode mark character, and \galgas{false} otherwise.}
 
 
 
@@ -204,9 +210,9 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 \readerSansArgument{isUnicodePunctuation}
 {char}
 {1.8.3}
-{@bool}
-{Returns an \nomType{bool} value indicating whether the receiver'value represents an Unicode punctuation character.}
-{returns \motCle{true} if the receiver'value represents an Unicode punctuation character, and \motCle{false} otherwise.}
+{bool}
+{Returns an \galgas{@bool} value indicating whether the receiver'value represents an Unicode punctuation character.}
+{returns \galgas{true} if the receiver'value represents an Unicode punctuation character, and \galgas{false} otherwise.}
 
 
 
@@ -216,9 +222,9 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 \readerSansArgument{isUnicodeSeparator}
 {char}
 {1.8.3}
-{@bool}
-{Returns an \nomType{bool} value indicating whether the receiver'value represents an Unicode separator character.}
-{returns \motCle{true} if the receiver'value represents an Unicode separator character, and \motCle{false} otherwise.}
+{bool}
+{Returns an \galgas{@bool} value indicating whether the receiver'value represents an Unicode separator character.}
+{returns \galgas{true} if the receiver'value represents an Unicode separator character, and \galgas{false} otherwise.}
 
 
 
@@ -228,9 +234,9 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 \readerSansArgument{isUnicodeSymbol}
 {char}
 {1.8.3}
-{@bool}
-{Returns an \nomType{bool} value indicating whether the receiver'value represents an Unicode symbol character.}
-{returns \motCle{true} if the receiver'value represents an Unicode symbol character, and \motCle{false} otherwise.}
+{bool}
+{Returns an \galgas{@bool} value indicating whether the receiver'value represents an Unicode symbol character.}
+{returns \galgas{true} if the receiver'value represents an Unicode symbol character, and \galgas{false} otherwise.}
 
 
 
@@ -243,9 +249,9 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 \readerSansArgument{isupper}
 {char}
 {1.7.2}
-{@bool}
-{Returns an \nomType{bool} value indicating whether the receiver'value represents an ASCII uppercase ASCII letter.}
-{returns \motCle{true} if the receiver'value represents an ASCII uppercase letter (between \texttt{\textquotesingle A\textquotesingle} and \texttt{\textquotesingle Z\textquotesingle}), and \motCle{false} otherwise.}
+{bool}
+{Returns an \galgas{@bool} value indicating whether the receiver'value represents an ASCII uppercase ASCII letter.}
+{returns \galgas{true} if the receiver'value represents an ASCII uppercase letter (between \texttt{\textquotesingle A\textquotesingle} and \texttt{\textquotesingle Z\textquotesingle}), and \galgas{false} otherwise.}
 
 
 
@@ -254,9 +260,9 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 \readerSansArgument{string}
 {char}
 {1.5.5}
-{@string}
+{string}
 {Returns returns a string representation of the receiver's value.}
-{returns a one character \nomType{string} object, containing the receiver's value.}
+{returns a one character \galgas{@string} object, containing the receiver's value.}
 
 
 
@@ -264,8 +270,8 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 \readerSansArgument{uint}
 {char}
 {1.7.7}
-{@uint64}
-{Returns an \nomType{uint} object representing the Unicode code point of the receiver's value.}
+{uint64}
+{Returns an \galgas{@uint} object representing the Unicode code point of the receiver's value.}
 {}
 
 
@@ -274,13 +280,14 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 \readerSansArgument{unicodeName}
 {char}
 {1.8.3}
-{@string}
+{string}
 {Returns the unicode name of the receiver's value.}
 {for an decimal string representation of the receiver's value, see the \refReaderPage{uint}{hexString}; for a decimal string representation of the receiver's value, see the \refReaderPage{uint}{string}.}
 
-\exempleUneLigne
-{}
-{[\textquotesingle \AE \textquotesingle unicodeName] returns \textquotedbl LATIN CAPITAL LETTER AE \textquotedbl}
+\textbf{Exemple :}
+\begin{galgascode}
+['\AE' unicodeName] # returns "LATIN CAPITAL LETTER AE"
+\end{galgascode}
 
 
 
@@ -292,10 +299,11 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {Returns the lowercase character corresponding to the receiver's value.}
 {if the receiver's value is an Unicode uppercase character, this reader returns the corresponding lowercase character. Otherwise, it returns the receiver's value.}
 
-\exempleDeuxLignes
-{}
-{[\textquotesingle\AE\textquotesingle unicodeToLower] returns \textquotesingle\ae \textquotesingle}
-{[\textquotesingle\ae\textquotesingle unicodeToLower] returns \textquotesingle\ae \textquotesingle}
+\textbf{Exemple :}
+\begin{galgascode}
+['\AE' unicodeToLower] returns '\ae '
+['\ae' unicodeToLower] returns '\ae '
+\end{galgascode}
 
 
 
@@ -307,10 +315,11 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 {Returns the uppercase character corresponding to the receiver's value.}
 {if the receiver's value is an Unicode lowercase character, this reader returns the corresponding uppercase character. Otherwise, it returns the receiver's value.}
 
-\exempleDeuxLignes
-{}
-{[\textquotesingle\AE\textquotesingle unicodeToUpper] returns \textquotesingle\AE\textquotesingle}
-{[\textquotesingle\ae\textquotesingle unicodeToUpper] returns \textquotesingle\AE\textquotesingle}
+\textbf{Exemple :}
+\begin{galgascode}
+['\AE' unicodeToUpper] returns '\AE'}
+['\ae' unicodeToUpper] returns '\AE'}
+\end{galgascode}
 
 
 
@@ -318,7 +327,7 @@ Any point code beyond \textbackslash U0010FFFF is invalid and not assigned.
 
 \section{Comparison Operators}
 
-The \nomType{char} type supports the six comparison operators:\newline
+The \galgas{@char} type supports the six comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -336,6 +345,6 @@ $>=$  & Greater or Equal \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{char} objects, and return a \nomType{bool} object. Comparison is done by comparing of the Unicode code point's value.
+Theses operators require both arguments to be \galgas{@char} objects, and return a \galgas{@bool} object. Comparison is done by comparing of the Unicode code point's value.
 
 
