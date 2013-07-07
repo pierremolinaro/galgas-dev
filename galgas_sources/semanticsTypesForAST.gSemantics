@@ -209,10 +209,19 @@ class @literalTypeInExpressionAST extends @semanticExpressionAST {
 class @castInExpressionAST extends @semanticExpressionAST {
   @semanticExpressionAST mReceiverExpression ;
   @location mEndOfReceiverExpression ;
-  @bool mUseKindOfClass ;
   @lstring mTypeName ;
   @semanticExpressionAST mErrorLocationExpression ;
   @location mEndOfErrorLocationExpression ;
+  @semanticExpressionAST mErrorMessageExpression ;
+  @location mEndOfErrorMessageExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @testDynamicClassInExpressionAST extends @semanticExpressionAST {
+  @semanticExpressionAST mReceiverExpression ;
+  @location mEndOfReceiverExpression ;
+  @lstring mTypeName ;
 }
 
 #---------------------------------------------------------------------------*
@@ -734,12 +743,11 @@ class @matchInstructionAST extends @semanticInstructionAST {
 #---------------------------------------------------------------------------*
 
 list @castInstructionBranchListAST {
-  @bool mUseKindOfClass feature nogetter ;
-  @lstring mTypeName feature nogetter ;
-  @lstring mConstantVarName feature nogetter ; # Empty string if no constant var
-  @bool mConstantVarNameIsUnused feature nogetter ; # true if no constant var
-  @semanticInstructionListAST mInstructionList feature nogetter ;
-  @location mEndOfInstructions feature nogetter ;
+  @lstring mTypeName ;
+  @lstring mConstantVarName ; # Empty string if no constant var
+  @semanticInstructionListAST mInstructionList ;
+  @bool mStrictTypeEquality ;
+  @location mEndOfInstructions ;
 }
 
 #---------------------------------------------------------------------------*
@@ -848,8 +856,8 @@ class @messageInstructionAST extends @semanticInstructionAST {
 #---------------------------------------------------------------------------*
 
 list @logListAST {
-  @lstring mLogMessage feature nogetter ;
-  @semanticExpressionAST mLogExpression feature nogetter ;
+  @lstring mLogMessage ;
+  @semanticExpressionAST mLogExpression ;
 }
 
 #---------------------------------------------------------------------------*
@@ -925,9 +933,9 @@ class @readWriteAccessWithInstructionAST extends @semanticInstructionAST {
 #---------------------------------------------------------------------------*
 
 list @switchBranchesAST {
-  @lstringlist mSwitchConstantList feature nogetter ;
-  @semanticInstructionListAST mInstructions feature nogetter ;
-  @location mEndOfBranch feature nogetter ;
+  @lstringlist mSwitchConstantList ;
+  @semanticInstructionListAST mInstructions ;
+  @location mEndOfBranch ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1121,9 +1129,9 @@ class @overridingAbstractCategoryReaderAST extends @semanticDeclarationAST {
 #---------------------------------------------------------------------------*
 
 list @attributeInCollectionListAST {
-  @lstring mAttributeTypeName feature nogetter ;
-  @lstring mAttributeName feature nogetter ;
-  @lstringlist mFeatureList feature nogetter ;
+  @lstring mAttributeTypeName ;
+  @lstring mAttributeName ;
+  @lstringlist mFeatureList ;
 }
 
 #---------------------------------------------------------------------------*

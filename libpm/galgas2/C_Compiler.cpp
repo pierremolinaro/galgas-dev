@@ -199,42 +199,6 @@ onTheFlySemanticWarning (const C_String & inWarningMessage
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Emit an error for on a cast expression failure
-#endif
-
-//---------------------------------------------------------------------------*
-
-void C_Compiler::castInExpressionErrorAtLocation (const GALGAS_location & inErrorLocation
-                                                  COMMA_LOCATION_ARGS) {
-  C_String errorMessage ;
-  errorMessage << "Run-time cast in expression error\n" ;
-  semanticErrorAtLocation (inErrorLocation, errorMessage COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= Emit an error for on a cast expression failure
-#endif
-
-//---------------------------------------------------------------------------*
-
-void C_Compiler::extractObjectError (const GALGAS_location & inErrorLocation,
-                                     const char * inTargetTypeName,
-                                     const C_galgas_type_descriptor * inSourceStaticType
-                                     COMMA_LOCATION_ARGS) {
-  C_String errorMessage ;
-  errorMessage << "Run-time error: cannot extract an @"
-               << inTargetTypeName
-              << " object from an embedded object of type @"
-              << inSourceStaticType->mGalgasTypeName
-              << " \n" ;
-  semanticErrorAtLocation (inErrorLocation, errorMessage COMMA_THERE) ;
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark ========= Print Message
 #endif
 

@@ -63,7 +63,7 @@ else
                                              !^%const GALGAS_location & inErrorLocation\n%
                                              !^%COMMA_LOCATION_ARGS) {\n%
   foreach FORMAL_ARGUMENT_LIST do index IDX
-    %  const GALGAS_%![mFormalArgumentType identifierRepresentation]% operand%![IDX string]% = GALGAS_%![mFormalArgumentType identifierRepresentation]%::extractObject (inEffectiveParameterArray.objectAtIndex (%![IDX string]% COMMA_HERE), inCompiler, inErrorLocation COMMA_THERE) ;\n%
+    %  const GALGAS_%![mFormalArgumentType identifierRepresentation]% operand%![IDX string]% = GALGAS_%![mFormalArgumentType identifierRepresentation]%::extractObject (inEffectiveParameterArray.objectAtIndex (%![IDX string]% COMMA_HERE), inCompiler, inErrorLocation, GALGAS_string ("internal error" COMMA_THERE) ;\n%
   end foreach
   %  return function_%![FUNCTION_NAME identifierRepresentation]% (%
   foreach FORMAL_ARGUMENT_LIST do index IDX

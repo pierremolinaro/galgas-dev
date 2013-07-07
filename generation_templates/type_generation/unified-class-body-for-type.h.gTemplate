@@ -6,7 +6,8 @@
 //--------------------------------- Object extraction
   public : static GALGAS_%!TYPE_IDENTIFIER% extractObject (%?^%const GALGAS_object & inObject,
                %!^%C_Compiler * inCompiler,
-               %!^%const GALGAS_location & inErrorLocation
+               %!^%const GALGAS_location & inErrorLocation,
+               %!^%const GALGAS_string & inErrorMessage
                %!^%COMMA_LOCATION_ARGS) ;
 
 %

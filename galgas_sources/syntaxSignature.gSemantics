@@ -176,8 +176,8 @@ function compareSyntaxSignature
   end foreach ;
   if outOk & ([inReferenceSignature length] < [inTestedSignature length]) then
     @semanticInstructionForGeneration instruction := [inTestedSignature mInstructionAtIndex ![inReferenceSignature length]] ;
-    cast instruction:
-    when >= @syntaxInstructionForGeneration si do
+    cast instruction
+    when >= @syntaxInstructionForGeneration si :
       error [si mInstructionLocation]
       :"syntax signature error, exceeding instruction; this branch has more syntax instructions than reference branch"
       ;
@@ -189,8 +189,8 @@ function compareSyntaxSignature
     :"syntax signature error, missing instruction; this branch has less syntax instructions than reference branch"
     ;
     @semanticInstructionForGeneration instruction := [inReferenceSignature mInstructionAtIndex ![inTestedSignature length]] ;
-    cast instruction:
-    when >= @syntaxInstructionForGeneration si do
+    cast instruction
+    when >= @syntaxInstructionForGeneration si :
       error [si mInstructionLocation]
       :"this is the syntax instruction in reference branch that corresponds to the first missing instruction"
       ;
@@ -206,15 +206,15 @@ override reader @terminalCheckInstructionForGeneration compareSyntaxInstruction
   ??@semanticInstructionForGeneration inTestedInstruction
   ->@bool outOk
 :
-  cast inTestedInstruction:
-  when == @terminalCheckInstructionForGeneration si do
+  cast inTestedInstruction
+  when >= @terminalCheckInstructionForGeneration si :
     outOk := [mTerminalName string] == [[si mTerminalName] string] ;
     if not outOk then
       error [si mInstructionLocation]
       :"syntax signature error; the expected syntax instruction here is the '$" . mTerminalName . "$' terminal check"
       ;
     end if ;
-  when >= @syntaxInstructionForGeneration si do
+  when >= @syntaxInstructionForGeneration si :
     error [si mInstructionLocation]
       :"syntax signature error; the expected syntax instruction here is the '$" . mTerminalName . "$' terminal check"
       ;
@@ -236,15 +236,15 @@ override reader @nonterminalInstructionForGeneration compareSyntaxInstruction
   ??@semanticInstructionForGeneration inTestedInstruction
   ->@bool outOk
 :
-  cast inTestedInstruction:
-  when == @nonterminalInstructionForGeneration si do
+  cast inTestedInstruction
+  when >= @nonterminalInstructionForGeneration si :
     outOk := mNonterminalName == [si mNonterminalName] ;
     if not outOk then
       error [si mInstructionLocation]
       :"syntax signature error; the expected syntax instruction here is the '<" . mNonterminalName . ">' nonterminal invocation"
       ;
     end if ;
-  when >= @syntaxInstructionForGeneration si do
+  when >= @syntaxInstructionForGeneration si :
     error [si mInstructionLocation]
       :"syntax signature error; the expected syntax instruction here is the '<" . mNonterminalName . ">' nonterminal invocation"
       ;
@@ -266,8 +266,8 @@ override reader @repeatInstructionForGeneration compareSyntaxInstruction
   ??@semanticInstructionForGeneration inTestedInstruction
   ->@bool outOk
 :
-  cast inTestedInstruction:
-  when == @repeatInstructionForGeneration si do
+  cast inTestedInstruction
+  when >= @repeatInstructionForGeneration si :
     outOk := compareSyntaxSignature [!m_repeated_instructionList ![si m_repeated_instructionList] ![si mEndOfRepeatedInstructions]] ;
     if outOk & ([mListOfSemanticInstructionListForGeneration length] != [[si mListOfSemanticInstructionListForGeneration] length]) then
       error [si mInstructionLocation]
@@ -281,7 +281,7 @@ override reader @repeatInstructionForGeneration compareSyntaxInstruction
     foreach mListOfSemanticInstructionListForGeneration prefixedby ref_, [si mListOfSemanticInstructionListForGeneration] prefixedby test_ while outOk do
       outOk := compareSyntaxSignature [!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList] ;    
     end foreach ;
-  when >= @syntaxInstructionForGeneration si do
+  when >= @syntaxInstructionForGeneration si :
     error [si mInstructionLocation]
       :"syntax signature error; the expected syntax instruction here is a 'repeat' instruction"
       ;
@@ -303,8 +303,8 @@ override reader @selectInstructionForGeneration compareSyntaxInstruction
   ??@semanticInstructionForGeneration inTestedInstruction
   ->@bool outOk
 :
-  cast inTestedInstruction:
-  when == @selectInstructionForGeneration si do
+  cast inTestedInstruction
+  when >= @selectInstructionForGeneration si :
     outOk := true ;
     if outOk & ([mListOfSemanticInstructionListForGeneration length] != [[si mListOfSemanticInstructionListForGeneration] length]) then
       error [si mInstructionLocation]
@@ -318,7 +318,7 @@ override reader @selectInstructionForGeneration compareSyntaxInstruction
     foreach mListOfSemanticInstructionListForGeneration prefixedby ref_, [si mListOfSemanticInstructionListForGeneration] prefixedby test_ while outOk do
       outOk := compareSyntaxSignature [!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList] ;    
     end foreach ;
-  when >= @syntaxInstructionForGeneration si do
+  when >= @syntaxInstructionForGeneration si :
     error [si mInstructionLocation]
       :"syntax signature error; the expected syntax instruction here is a 'select' instruction"
       ;

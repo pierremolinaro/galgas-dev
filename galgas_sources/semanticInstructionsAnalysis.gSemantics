@@ -1810,7 +1810,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
       localConstantList +=
         !type
         !mConstantVarName
-        !mConstantVarNameIsUnused # Warns if not used ?
+        !true # Warns if unused
         !localConstantName
       ;
     else
@@ -1827,7 +1827,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
       !?ioVariableMap
       ?instructionList
     ;
-    castBranchList += !mUseKindOfClass !type !localConstantName !instructionList ;
+    castBranchList += !mStrictTypeEquality !type !localConstantName !instructionList ;
   end foreach ;
 #--- else or default branch
   @semanticInstructionListForGeneration else_instructionList ;
