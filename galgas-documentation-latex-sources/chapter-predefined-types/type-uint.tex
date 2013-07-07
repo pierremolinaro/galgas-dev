@@ -3,9 +3,11 @@
 
 \chapitreTypePredefiniLabelIndex{uint}
 
-An \nomType{uint} object value is a 32-bit unsigned integer value. You can initialize an \nomType{uint} object from an unsigned integer constant:\\
+An \galgas{@uint} object value is a 32-bit unsigned integer value. You can initialize an \galgas{@uint} object from an unsigned integer constant:\\
 
-\texttt{@uint myUnsignedInteger := 123\_456 ;}
+\begin{galgascode}
+@uint myUnsignedInteger := 123_456 ;
+\end{galgascode}
 
 Note that a 32-bit unsigned integer constant is characterized by no suffix.
 
@@ -15,18 +17,19 @@ Note that a 32-bit unsigned integer constant is characterized by no suffix.
 {uint}
 {1.4.9}
 {uint}
-{Returns an \nomType{uint} object that contains the number of errors.}
+{Returns an \galgas{@uint} object that contains the number of errors.}
 {The returned value is the cumulative count of errors from the beginning of execution.}
 
-\exempleUneLigne
-{}
-{@uint x := [@uint errorCount] ;}
+\textbf{Exemple :}
+\begin{galgascode}
+@uint x := [@uint errorCount] ;
+\end{galgascode}
 
 \constructeurSansArgument{max}
 {uint}
 {1.3.0}
 {uint}
-{Returns an \nomType{uint} object that the maximum value of the 32-bit unsigned range.}
+{Returns an \galgas{@uint} object that the maximum value of the 32-bit unsigned range.}
 {The returned value is $2^{32}-1$ (4294967295).}
 
 
@@ -36,14 +39,15 @@ Note that a 32-bit unsigned integer constant is characterized by no suffix.
 {uint}
 {@uint inLowerIndex}
 {@uint inUpperIndex}
-{Returns an \nomType{uint} object with bits from \emph{inLowerIndex} to \emph{inUpperIndex} equal to 1.}
+{Returns an \galgas{@uint} object with bits from \emph{inLowerIndex} to \emph{inUpperIndex} equal to 1.}
 {a run-time error is raised if \emph{inLowerIndex $>$ inUpperIndex} or if \emph{inUpperIndex $>$ 31}.}
 
 
-\exempleUneLigne
-{}
-{@uint x := [@uint valueWithMask !2 !4] ; \# x is equal to 28 (11100 in binary)}
 
+\textbf{Exemple :}
+\begin{galgascode}
+@uint x := [@uint valueWithMask !2 !4] ; # x is equal to 28 (11100 in binary)
+\end{galgascode}
 
 
 
@@ -52,7 +56,7 @@ Note that a 32-bit unsigned integer constant is characterized by no suffix.
 {uint}
 {1.4.9}
 {uint}
-{Returns an \nomType{uint} object that contains the number of warnings.}
+{Returns an \galgas{@uint} object that contains the number of warnings.}
 {The returned value is the cumulative count of warnings from the beginning of execution.}
 
 \section{Readers}
@@ -61,8 +65,8 @@ Note that a 32-bit unsigned integer constant is characterized by no suffix.
 {uint}
 {1.9.8}
 {@double}
-{Returns the receiver's value converted in a \nomType{double} object.}
-{as a 32-bit integer value can always be converted in a \nomType{double} value, this reader never fails.}
+{Returns the receiver's value converted in a \galgas{@double} object.}
+{as a 32-bit integer value can always be converted in a \galgas{@double} value, this reader never fails.}
 
 
 
@@ -80,8 +84,8 @@ Note that a 32-bit unsigned integer constant is characterized by no suffix.
 {2.3.0}
 {@bool}
 {@range}
-{Returns an \nomType{range} value indicating whether the receiver'value belongs to a range.}
-{for a receiver's value equal to $v$ and a range of length $length$ starting at $start$, it returns \motCle{true} if $((v \geqslant start)~and~(v<(start+length)))$, and \motCle{false} otherwise.}
+{Returns an \galgas{@range} value indicating whether the receiver'value belongs to a range.}
+{for a receiver's value equal to $v$ and a range of length $length$ starting at $start$, it returns \galgas{true} if $((v \geqslant start)~and~(v<(start+length)))$, and \galgas{false} otherwise.}
 
 
 
@@ -89,13 +93,14 @@ Note that a 32-bit unsigned integer constant is characterized by no suffix.
 {uint}
 {1.8.3}
 {@bool}
-{Returns an \nomType{bool} value indicating whether the receiver'value represents an assigned Unicode character.}
-{it returns \motCle{true} if the receiver value represents an assigned Unicode character, \motCle{false} and otherwise.}
+{Returns an \galgas{@bool} value indicating whether the receiver'value represents an assigned Unicode character.}
+{it returns \galgas{true} if the receiver value represents an assigned Unicode character, \galgas{false} and otherwise.}
 
-\exempleDeuxLignes
-{}
-{[0xFFFF isUnicodeValueAssigned] \# is false, as \textbackslash uFFFF is not assigned.}
-{[0x41 isUnicodeValueAssigned] \# is true, as \textbackslash u0041 is assigned (LATIN CAPITAL LETTER A).}
+\textbf{Exemple :}
+\begin{galgascode}
+[0xFFFF isUnicodeValueAssigned] # is false, as \uFFFF is not assigned.
+[0x41 isUnicodeValueAssigned] # is true, as \u0041 is assigned (LATIN CAPITAL LETTER A).
+\end{galgascode}
 
 
 
@@ -103,14 +108,14 @@ Note that a 32-bit unsigned integer constant is characterized by no suffix.
 {uint}
 {1.6.12}
 {uint}
-{Returns an \nomType{uint} value of the index of the most significant bit of the receiver value.}
+{Returns an \galgas{@uint} value of the index of the most significant bit of the receiver value.}
 {it raises a run-time error if the receiver value is zero.}
 
-Example :
-
-\texttt{@uint value := 192 ; \# 192 is 11000000 in binary}
-
-\texttt{@uint x := [value lsbIndex] ; \# x is equal to 7}
+\textbf{Exemple :}
+\begin{galgascode}
+@uint value := 192 ; # 192 is 11000000 in binary
+@uint x := [value lsbIndex] ; # x is equal to 7
+\end{galgascode}
 
 The most significant bit of 192 is the 7th bit.
 
@@ -124,11 +129,12 @@ The most significant bit of 192 is the 7th bit.
 {Returns the number of bits needed to express the receiver value.}
 {it the receiver value is zero, it returns 0 ; otherwise, it returns the most significant bit index plus one.}
 
-Example :
+\textbf{Exemple :}
+\begin{galgascode}
+@uint value := 145 ; # 145 is 10010001 in binary
+@uint x := [value significantBitCount] ; # x is equal to 8
+\end{galgascode}
 
-\texttt{@uint value := 145 ; \# 145 is 10010001 in binary}
-
-\texttt{@uint x := [value significantBitCount] ; \# x is equal to 8}
 
 
 
@@ -194,13 +200,13 @@ This reader is the only way to convert an \refTypePredefini{uint} object into an
 
 The \refTypePredefini{uint} supports incrementation and decrementation instructions.
 
-\texttt{@uint n := ... ; n ++ ; \# Incrementation}
+\begin{galgascode}
+@uint n := ... ; n ++ ; # Incrementation
+@uint p := ... ; p -- ; # Decrementation
+\end{galgascode}
 
-\texttt{@uint p := ... ; p -- ; \# Decrementation}\newline
 
-The incrementation instruction raises an error if receiver's value is equal to $2^{32}-1$.\newline
-
-The incrementation instruction raises an error if receiver's value is equal to 0.\newline
+The incrementation instruction raises an error if receiver's value is equal to $2^{32}-1$ ; the incrementation instruction raises an error if receiver's value is equal to 0.
 
 Note that incrementation and decrementation are not available within an expression.
 
@@ -209,7 +215,7 @@ Note that incrementation and decrementation are not available within an expressi
 
 \section{Arithmetic Operators}
 
-The \nomType{uint} type supports the five arithmetic diadic operators:\newline
+The \galgas{@uint} type supports the five arithmetic diadic operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -225,11 +231,11 @@ $\%$ & Modulo \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{uint} objects.\newline
+Theses operators require both arguments to be \galgas{@uint} objects.\newline
 
 A run-time error is raised if the operation leads to a 32-bit unsigned overflow.
 
-The \nomType{uint} type supports the following arithmetic unary operator:\newline
+The \galgas{@uint} type supports the following arithmetic unary operator:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -237,7 +243,7 @@ $+$ & No operation \\
 \hline
 \end{tabular}
 
-This operator returns the receiver's value (an  \nomType{uint} object).
+This operator returns the receiver's value (an  \galgas{@uint} object).
 
 
 
@@ -247,7 +253,7 @@ This operator returns the receiver's value (an  \nomType{uint} object).
 \section{Shift Operators}
 
 
-The \nomType{uint} type supports right and left shift operators:\newline
+The \galgas{@uint} type supports right and left shift operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -257,7 +263,7 @@ $>>$ & Right shift \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{uint} objects.\newline
+Theses operators require both arguments to be \galgas{@uint} objects.\newline
 
 Note the right shift inserts always a zero bit in the most significant bit location (it is a logical right shift).\newline
 
@@ -268,7 +274,7 @@ The actual amount of the shift is the value of the right-hand operand masked by 
 
 \section{Logical Operators}
 
-The \nomType{uint} type supports the three bit-wise logical operators:\newline
+The \galgas{@uint} type supports the three bit-wise logical operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -280,10 +286,10 @@ $\&$ & Bit-wise and \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{uint} objects.\newline
+Theses operators require both arguments to be \galgas{@uint} objects.\newline
 
 
-The \nomType{uint} type supports the bit-wise logical unary operator:\newline
+The \galgas{@uint} type supports the bit-wise logical unary operator:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -291,7 +297,7 @@ $\sim$ & Bit-wise complementation \\
 \hline
 \end{tabular}
 
-This operator returns an \nomType{uint} object.
+This operator returns an \galgas{@uint} object.
 
 
 
@@ -301,7 +307,7 @@ This operator returns an \nomType{uint} object.
 
 \section{Comparison Operators}
 
-The \nomType{uint} type supports the six comparison operators:\newline
+The \galgas{@uint} type supports the six comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -320,6 +326,6 @@ $>=$  & Greater or Equal \\
 \end{tabular}
 
 \vspace{2mm}
-Theses operators require both arguments to be \nomType{uint} objects, and return a \nomType{bool} object.
+Theses operators require both arguments to be \galgas{@uint} objects, and return a \galgas{@bool} object.
 
 

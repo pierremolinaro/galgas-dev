@@ -184,6 +184,8 @@
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
+\usepackage{relsize}
+
 \input{galgas-book-latex-inclusions/galgas-language-definitions.tex}
 
 %-----------------------------------------------------------------------------------------------------------------------*
@@ -248,7 +250,20 @@
 }
 \hypersetup{breaklinks=true}
 
-%------------------------------------------------------------------------------------------ RÉFÉRENCES À UNE SECTION
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
+%   R É F É R N C E S                                                                                                   *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+% Au lieu d'écrire \chapter{titre-chapitre}, on écrit \chapterLabel{titre-chapitre}{label-chapitre}
+\newcommand \chapterLabel[2]{\chapter{#1}\label{chapter:#2}}
+
+% \refChapter{label-chapter} ---> "chapitre n"
+\newcommand \refChapter[1]{\hyperref[chapter:#1]{chapitre \ref*{chapter:#1}}}
+
+\newcommand \refChapterPage[1]{\hyperref[chapter:#1]{chapitre \ref*{chapter:#1} page \pageref{chapter:#1}}}
+
 % Au lieu d'écrire \section{titre-section}, on écrit \sectionLabel{titre-section}{label-section}
 \newcommand \sectionLabel[2]{\section{#1}\label{sec:#2}}
 

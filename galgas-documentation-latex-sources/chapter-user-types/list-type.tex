@@ -7,7 +7,7 @@
 
 \section{List Type Declaration}
 
-A \lstinline[language=galgas]!list! type declaration names all attributes of the list elements:
+A \galgas{@list} type declaration names all attributes of the list elements:
 
 \begin{lstlisting}[language=galgas]
 list @MyList {
@@ -18,16 +18,16 @@ list @MyList {
 
 \section{Constructors}
 
-\subsection{The \lstinline[language=galgas]!emptyList! constructor}
+\subsection{The \texttt{emptyList} constructor}
 
-For every list, an \lstinline[language=galgas]!emptyList! constructor is implicitly declared. It returns an empty list:
+For every list, an \galgas{emptyList} constructor is implicitly declared. It returns an empty list:
 
 \begin{lstlisting}[language=galgas]
 @MyList aList := [@MyList emptyList] ;
 \end{lstlisting}
 
 
-\subsection{The \lstinline[language=galgas]!listWithValue! constructor}
+\subsection{The \texttt{listWithValue} constructor}
 
 A list can be constructed directly with one value:
 
@@ -45,9 +45,9 @@ aList += !"c" !3 ;
 
 \section{Adding elements}
 
-\subsection{The \lstinline[language=galgas]!+=! operator}
+\subsection{The \texttt{+=} operator}
 
-The  \lstinline[language=galgas]!+=! operator adds a new element at the end of the list. The right side expressions should correspond to the attributes declared in the \lstinline[language=galgas]!list! declaration:\\
+The  \galgas{+=} operator adds a new element at the end of the list. The right side expressions should correspond to the attributes declared in the \galgas{list} declaration:\\
 
 \begin{lstlisting}[language=galgas]
 @MyList aList := ... ;
@@ -57,9 +57,9 @@ aList += !aString !aBool ;''
 \end{lstlisting}
 
 
-\subsection{The \lstinline[language=galgas]!.=! operator}
+\subsection{The \texttt{.=} operator}
 
-The \lstinline[language=galgas]!.=! operator concats a list at the end of the target list:
+The \galgas{.=} operator concats a list at the end of the target list:
 
 \begin{lstlisting}[language=galgas]
 @MyList aList := ... ;
@@ -69,9 +69,9 @@ aList .= secondList ;''
 
 
 
-\subsection{The \lstinline[language=galgas]!prependValue! modifier}
+\subsection{The \texttt{prependValue} modifier}
 
-The \lstinline[language=galgas]!prependValue! modifier adds a new element at the begining of the list. The right side expressions should correspond to the attributes declared in the  \lstinline[language=galgas]!list! declaration:
+The \galgas{prependValue} modifier adds a new element at the begining of the list. The right side expressions should correspond to the attributes declared in the  \galgas{list} declaration:
 
 \begin{lstlisting}[language=galgas]
 @MyList aList := ... ;
@@ -82,7 +82,7 @@ The \lstinline[language=galgas]!prependValue! modifier adds a new element at the
 
 \subsection{The concatenation operator}
 
-The «~\lstinline[language=galgas]!.!~» operator can be used fot concatenating two lists of the same type:
+The «~\galgas{.}~» operator can be used fot concatenating two lists of the same type:
 
 
 \begin{lstlisting}[language=galgas]
@@ -93,7 +93,7 @@ The «~\lstinline[language=galgas]!.!~» operator can be used fot concatenating 
 
 \section{Removing elements}
 
-\subsection{The \lstinline[language=galgas]!popFirst! modifier}
+\subsection{The \texttt{popFirst} modifier}
 
 
 The \lstinline[language=galgas]!popFirst! modifier removes and returns the first element of the list. The right side expressions should correspond to the attributes declared in the \lstinline[language=galgas]!list! declaration:\\
@@ -263,7 +263,7 @@ end foreach ;
 
 \section{Direct Access of an element attribute}
 
-In GALGAS 1.7.5 and later, lists can be used as an array. Each element of a list is associated with an \nomType{uint} index, spanning from 0 to element count (value returned by \lstinline[language=galgas]!length! reader) minus one.
+In GALGAS 1.7.5 and later, lists can be used as an array. Each element of a list is associated with an \galgas{@uint} index, spanning from 0 to element count (value returned by \lstinline[language=galgas]!length! reader) minus one.
 
 The element retrieved with \lstinline[language=galgas]!first! method is at index 0.
 
@@ -271,7 +271,7 @@ The element retrieved with \lstinline[language=galgas]!last! method is at index 
 
 \subsection{Read Access}
 
-By default and for every attribute, a reader is provided to retrieve the value of this attribute for an element at a given index. For example, for an attribute named \emph{name}, the \emph{nameAtIndex} reader is provided. It accepts one \nomType{uint} argument, the value of the index.
+By default and for every attribute, a reader is provided to retrieve the value of this attribute for an element at a given index. For example, for an attribute named \emph{name}, the \emph{nameAtIndex} reader is provided. It accepts one \galgas{@uint} argument, the value of the index.
 
 You can disable the default reader generation, by using the «~\lstinline[language=galgas]!feature nogetter!~» qualifier.
 
@@ -291,9 +291,9 @@ One reader is available: \lstinline[language=galgas]!mFirstAttributeAtIndex!; th
 
 \subsection{Write Access}
 
-By default, no modifier is provided for performing a direct write access to an attribute at a given index. You should use the «~\lstinline[language=galgas]!feature setter!~» qualifier for enabling setter generation for a given attribute.
+By default, no modifier is provided for performing a direct write access to an attribute at a given index. You should use the «~\galgas{@feature setter}~» qualifier for enabling setter generation for a given attribute.
 
-The modifier name is the name of the attribute with the first letter capitalized, prefixed by \emph{set} and suffixed by \emph{AtIndex}: for an attribute named \emph{name}, the modifier is named \emph{setNameAtIndex}. It accepts two arguments, the first one is the new attribute's value, the second one an \nomType{uint} argument, the value of the index.
+The modifier name is the name of the attribute with the first letter capitalized, prefixed by \emph{set} and suffixed by \emph{AtIndex}: for an attribute named \emph{name}, the modifier is named \emph{setNameAtIndex}. It accepts two arguments, the first one is the new attribute's value, the second one an \galgas{@uint} argument, the value of the index.
 
 For example:
 
@@ -307,7 +307,7 @@ list @MyList {
 [!?aList setMFirstAttributeAtIndex !s !1] ;
 \end{lstlisting}
 
-One modifier is available: \lstinline[language=galgas]!setMFirstAttributeAtIndex!; the \lstinline[language=galgas]!setMSecondAttributeAtIndex! modifier is not available.
+One modifier is available: \galgas{@setMFirstAttributeAtIndex}; the \galgas{@setMSecondAttributeAtIndex} modifier is not available.
 
 \subsection{Example of read and write accesses}
 

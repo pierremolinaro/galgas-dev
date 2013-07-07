@@ -3,7 +3,7 @@
 
 \chapitreTypePredefiniLabelIndex{stringset}
 
-An \nomType{stringset} object value is a set of \nomType{string} values.\\
+An \galgas{@stringset} object value is a set of \galgas{@string} values.\\
 
 \section{Constructors}
 
@@ -11,7 +11,7 @@ An \nomType{stringset} object value is a set of \nomType{string} values.\\
 {stringset}
 {1.3.0}
 {stringset}
-{Creates and returns an empty \nomType{stringset} object.}
+{Creates and returns an empty \galgas{@stringset} object.}
 {}
 
 \constructeurUnArgument{setWithString}
@@ -19,7 +19,7 @@ An \nomType{stringset} object value is a set of \nomType{string} values.\\
 {1.3.0}
 {stringset}
 {@string inString}
-{Creates and returns an \nomType{stringset} object that contains the value of the \emph{inString} argument object.}
+{Creates and returns an \galgas{@stringset} object that contains the value of the \emph{inString} argument object.}
 {}
 
 \section{Readers}
@@ -39,7 +39,7 @@ An \nomType{stringset} object value is a set of \nomType{string} values.\\
 {bool}
 {@string inString}
 {Returns a boolean value that indicates whether the value of \emph{inString} argument is present in the set.}
-{returns \motCle{true} if the value of \emph{inString} argument is present in the set, \motCle{false} otherwise.}
+{returns \galgas{true} if the value of \emph{inString} argument is present in the set, \galgas{false} otherwise.}
 
 
 \section{Modifier}
@@ -60,11 +60,12 @@ An \nomType{stringset} object value is a set of \nomType{string} values.\\
 
 The \emph{+=} operator adds a string value to the receiver. If the receiver's value already contains the added value, this operator has no effect.
 
-\exempleTroisLignes
-{}
-{@string aString := ... ;}
-{@stringset aStringSet := ... ;}
-{aStringSet += !aString ;}
+\textbf{exemple :}
+\begin{galgascode}
+@string aString := ... ;
+@stringset aStringSet := ... ;
+aStringSet += !aString ;
+\end{galgascode}
 
 
 
@@ -73,11 +74,12 @@ The \emph{+=} operator adds a string value to the receiver. If the receiver's va
 
 The \emph{$\&$} operator returns the intersection of its operand values.
 
-\exempleTroisLignes
-{}
-{@stringset s1 := ... ;}
-{@stringset s2 := ... ;}
-{@stringset s := s1 \& s2 ; \# s is the intersection of s1 and s2}
+\textbf{exemple :}
+\begin{galgascode}
+@stringset s1 := ... ;
+@stringset s2 := ... ;
+@stringset s := s1 & s2 ; # s is the intersection of s1 and s2
+\end{galgascode}
 
 
 
@@ -88,11 +90,12 @@ The \emph{$\&$} operator returns the intersection of its operand values.
 
 The \emph{$\textbar$} operator returns the union of its operand values.
 
-\exempleTroisLignes
-{}
-{@stringset s1 := ... ;}
-{@stringset s2 := ... ;}
-{@stringset s := s1 \textbar s2 ; \# s is the union of s1 and s2}
+\textbf{exemple :}
+\begin{galgascode}
+@stringset s1 := ... ;
+@stringset s2 := ... ;
+@stringset s := s1 \textbar s2 ; \# s is the union of s1 and s2
+\end{galgascode}
 
 
 
@@ -103,11 +106,12 @@ The \emph{$\textbar$} operator returns the union of its operand values.
 
 The \emph{$-$} operator returns the difference of its operand values.
 
-\exempleTroisLignes
-{}
-{@stringset s1 := ... ;}
-{@stringset s2 := ... ;}
-{@stringset s := s1 - s2 ; \# s is the difference of s1 and s2}
+\textbf{exemple :}
+\begin{galgascode}
+@stringset s1 := ... ;
+@stringset s2 := ... ;
+@stringset s := s1 - s2 ; \# s is the difference of s1 and s2
+\end{galgascode}
 
 
 
@@ -116,10 +120,10 @@ The \emph{$-$} operator returns the difference of its operand values.
 
 
 
-\section{Enumerating \nomType{stringset} objects}
+\section{Enumerating \galgas{@stringset} objects}
 
 
-The \motCle{foreach} instruction can be used for enumerating \nomType{stringset} values; enumeration is performed in the ascending order, or in the reverse alphabetical order using the '>' qualifier.
+The \galgas{foreach} instruction can be used for enumerating \galgas{@stringset} values; enumeration is performed in the ascending order, or in the reverse alphabetical order using the '>' qualifier.
 
 \texttt{@stringset s := ... ;}\newline
 \textbf{foreach} \texttt {s} \textbf {do}\newline
@@ -134,7 +138,7 @@ The \motCle{foreach} instruction can be used for enumerating \nomType{stringset}
 
 \section{Comparison Operators}
 
-The \nomType{stringset} type supports the six comparison operators:\newline
+The \galgas{@stringset} type supports the six comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -152,6 +156,6 @@ $>=$  & Greater or Equality \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{stringset} objects, and return a \nomType{stringset} object.
+Theses operators require both arguments to be \galgas{@stringset} objects, and return a \galgas{@stringset} object.
 
 

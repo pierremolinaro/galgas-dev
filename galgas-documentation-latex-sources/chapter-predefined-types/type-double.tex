@@ -3,11 +3,11 @@
 
 \chapitreTypePredefiniLabelIndex{double}
 
-The \nomType{double} object values correspond to the C type \nomType{double} values. You can initialize an \nomType{double} object from a float constant:
+The \galgas{@double} object values correspond to the C type \galgas{@double} values. You can initialize an \galgas{@double} object from a float constant:
 
 \texttt{@double myDouble := 123.456 ;}
 
-Note that a \nomType{double} constant is characterized by the occurrence of the decimal point (.)
+Note that a \galgas{@double} constant is characterized by the occurrence of the decimal point (.)
 
 \section{Constructor}
 
@@ -31,7 +31,7 @@ Note that a \nomType{double} constant is characterized by the occurrence of the 
 \readerSansArgument{binaryImage}
 {double}
 {2.4.7}
-{@uint64}
+{uint64}
 {Returns the binary image of the value of receiver's value.}
 {}
 
@@ -61,9 +61,9 @@ Note that a \nomType{double} constant is characterized by the occurrence of the 
 \readerSansArgument{sint}
 {double}
 {1.9.9}
-{@sint}
+{sint}
 {Returns the receiver's value in an \refTypePredefini{sint} (32-bit signed integer) object.}
-{if receiver's value is outside \nomType{sint} bounds, a runtime error is raised.}
+{if receiver's value is outside \galgas{@sint} bounds, a runtime error is raised.}
 
 
 
@@ -72,7 +72,7 @@ Note that a \nomType{double} constant is characterized by the occurrence of the 
 {1.9.9}
 {@sint64}
 {Returns the receiver's value in an \refTypePredefini{sint64} (64-bit signed integer) object.}
-{if receiver's value is outside \nomType{sint64} bounds, a runtime error is raised.}
+{if receiver's value is outside \galgas{@sint64} bounds, a runtime error is raised.}
 
 
 
@@ -80,7 +80,7 @@ Note that a \nomType{double} constant is characterized by the occurrence of the 
 \readerSansArgument{string}
 {double}
 {1.7.7}
-{@string}
+{string}
 {Returns a decimal string representation of the receiver's value.}
 {this reader never fails.}
 
@@ -105,7 +105,7 @@ Note that a \nomType{double} constant is characterized by the occurrence of the 
 {1.9.9}
 {uint}
 {Returns the receiver's value in an \refTypePredefini{uint} (32-bit unsigned integer) object.}
-{if receiver's value is outside \nomType{uint} bounds, a runtime error is raised.}
+{if receiver's value is outside \galgas{@uint} bounds, a runtime error is raised.}
 
 
 
@@ -116,14 +116,14 @@ Note that a \nomType{double} constant is characterized by the occurrence of the 
 {1.9.9}
 {uint64}
 {Returns the receiver's value in an \refTypePredefini{uint64} (64-bit unsigned integer) object.}
-{if receiver's value is outside \nomType{uint64} bounds, a runtime error is raised.}
+{if receiver's value is outside \galgas{@uint64} bounds, a runtime error is raised.}
 
 
 
 
 \section{Arithmetic Operators}
 
-The \nomType{double} type supports the five arithmetic diadic operators:\newline
+The \galgas{@double} type supports the five arithmetic diadic operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -139,11 +139,11 @@ $\%$ & Modulo \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{double} objects.\newline
+Theses operators require both arguments to be \galgas{@double} objects.\newline
 
 A run-time error is raised if the operation leads to an overflow.
 
-The \nomType{double} type supports the following arithmetic unary operators:\newline
+The \galgas{@double} type supports the following arithmetic unary operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -152,7 +152,7 @@ $-$ & Negate \\
 \hline
 \end{tabular}
 
-This operator returns the receiver's value (an \nomType{double} object).
+This operator returns the receiver's value (an \galgas{@double} object).
 
 
 
@@ -161,7 +161,7 @@ This operator returns the receiver's value (an \nomType{double} object).
 
 \section{Comparison Operators}
 
-The \nomType{double} type supports the six comparison operators:\newline
+The \galgas{@double} type supports the six comparison operators:\newline
 
 \begin{tabular}{|c|c|}
 \hline
@@ -179,6 +179,6 @@ $>=$  & Greater or Equal \\
 \hline
 \end{tabular}
 
-Theses operators require both arguments to be \nomType{double} objects, and return a \nomType{bool} object.
+Theses operators require both arguments to be \galgas{@double} objects, and return a \galgas{@bool} object.
 
 
