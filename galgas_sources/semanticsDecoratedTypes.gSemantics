@@ -336,9 +336,16 @@ class @literalTypeInExpressionForGeneration extends @semanticExpressionForGenera
 
 class @castInExpressionForGeneration extends @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression ;
-  @bool mUseKindOfClass ;
   @string mTypeName ;
   @semanticExpressionForGeneration mErrorLocationExpression ;
+  @semanticExpressionForGeneration mErrorMessageExpression ;
+}
+
+#---------------------------------------------------------------------------*
+
+class @testDynamicClassInExpressionForGeneration extends @semanticExpressionForGeneration {
+  @semanticExpressionForGeneration mReceiverExpression ;
+  @string mTypeName ;
 }
 
 #---------------------------------------------------------------------------*
@@ -347,6 +354,7 @@ class @extractObjectInExpressionForGeneration extends @semanticExpressionForGene
   @semanticExpressionForGeneration mReceiverExpression ;
   @string mTypeName ;
   @semanticExpressionForGeneration mErrorLocationExpression ;
+  @semanticExpressionForGeneration mErrorMessageExpression ;
 }
 
 #---------------------------------------------------------------------------*
@@ -800,7 +808,7 @@ class @matchInstructionForGeneration extends @semanticInstructionForGeneration {
 #---------------------------------------------------------------------------*
 
 list @castInstructionBranchListForGeneration {
-  @bool mUseKindOfClass ;
+  @bool mStrictTypeEquality ;
   @unifiedTypeMapProxy mType ;
   @string mCastedVarCppName ; # Empty string if no var
   @semanticInstructionListForGeneration mInstructionList ;

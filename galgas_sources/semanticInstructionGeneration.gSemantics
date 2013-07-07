@@ -756,19 +756,30 @@ override method @structuredCastInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode
 :
 #--- Cast expression
-  @string castCppVarName ;
-  [mExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?castCppVarName] ;
+  [mExpression generateExpression
+    !?ioGeneratedCode
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?@string castCppVarName
+  ] ;
 #---
   ioGeneratedCode .= "if (" . castCppVarName . ".isValid ()) {\n" ;
   [!?ioGeneratedCode incIndentation !2] ;
   foreach mCastBranchList do
-    if mUseKindOfClass then
-      ioGeneratedCode .= "if (NULL != dynamic_cast <const cPtr_" . [mType identifierRepresentation] . " *> (" . castCppVarName . ".ptr ())) {\n" ;
+    if mStrictTypeEquality then
+      ioGeneratedCode .= "if (" . castCppVarName
+      . ".dynamicTypeDescriptor () == & kTypeDescriptor_GALGAS_"
+      . [mType identifierRepresentation] . ") {\n" ;
     else
-      ioGeneratedCode .= "if (" . castCppVarName . ".dynamicTypeDescriptor () == & kTypeDescriptor_GALGAS_" . [mType identifierRepresentation] . ") {\n" ;
+      ioGeneratedCode .= "if (NULL != dynamic_cast <const cPtr_"
+      . [mType identifierRepresentation]
+      . " *> (" . castCppVarName . ".ptr ())) {\n" ;
     end if ;
     if [mCastedVarCppName length] > 0 then
-      ioGeneratedCode .= "  GALGAS_" . [mType identifierRepresentation] . " " . mCastedVarCppName . " ((cPtr_" . [mType identifierRepresentation] . " *) " . castCppVarName . ".ptr ()) ;\n" ;
+      ioGeneratedCode .=
+        "  GALGAS_" . [mType identifierRepresentation]
+      . " " . mCastedVarCppName . " ((cPtr_" . [mType identifierRepresentation]
+      . " *) " . castCppVarName . ".ptr ()) ;\n" ;
     end if ;
     generateInstructionList
       !inGenerateCheckValid

@@ -292,44 +292,56 @@ end rule ;
 #------------------------------------------------------------------------------*
 #                                                                              *
 #   P R I M A R Y  :    ( EXPRESSION )                                         *
-#                       (cast EXP if >= @T else error ERROR_LOCATION_EXP)      *
-#                       (cast EXP if == @T else error ERROR_LOCATION_EXP)      *
+#                       (EXP to @T error ERROR_LOCATION : ERROR_MESSAGE)       *
+#                       (EXP is @T)                                            *
 #                                                                              *
 #------------------------------------------------------------------------------*
 
 rule <primary> !@semanticExpressionAST outExpression :
   $($ ;
-  select
-    <expression> ? outExpression ;
-  or
-    $cast$ ;
-    @semanticExpressionAST receiverExpression ;
-    <expression> ? receiverExpression ;
-    const @location endOfReceiverExpression := here ;
-    $if$ ;
-    @bool useKindOfClass ;
-    select
-      $>=$ ;
-      useKindOfClass := true ;
-    or
-      $==$ ;
-      useKindOfClass := false ;
-    end select ;
-    @lstring typeName ;
-    $type_name$ ? typeName ;
-    $else$ ;
-    $error$ ;
-    @semanticExpressionAST errorLocationExpression ;
-    <expression> ? errorLocationExpression ;
-    outExpression := [@castInExpressionAST new
-      !receiverExpression
-      !endOfReceiverExpression
-      !useKindOfClass
-      !typeName
-      !errorLocationExpression
-      !here
-    ] ;
-  end select ;
+  <expression> ? outExpression ;
+  $)$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression :
+  $($ ;
+  <expression> ?@semanticExpressionAST receiverExpression ;
+  const @location endOfReceiverExpression := here ;
+  $is$ ;
+  $type_name$ ?@lstring typeName ;
+  outExpression := [@testDynamicClassInExpressionAST new
+    !receiverExpression
+    !endOfReceiverExpression
+    !typeName
+  ] ;
+  $)$ ;
+end rule ;
+
+#------------------------------------------------------------------------------*
+
+rule <primary> !@semanticExpressionAST outExpression :
+  $($ ;
+  <expression> ?@semanticExpressionAST receiverExpression ;
+  const @location endOfReceiverExpression := here ;
+  $to$ ;
+  $type_name$ ?@lstring typeName ;
+  $error$ ;
+  <expression> ?@semanticExpressionAST errorLocationExpression ;
+  const @location endOfErrorLocationExpression := here ;
+  $:$ ;
+  <expression> ?@semanticExpressionAST errorMessageExpression ;
+  const @location endOfErrorMessageExpression := here ;
+  outExpression := [@castInExpressionAST new
+    !receiverExpression
+    !endOfReceiverExpression
+    !typeName
+    !errorLocationExpression
+    !endOfErrorLocationExpression
+    !errorMessageExpression
+    !endOfErrorMessageExpression
+  ] ;
   $)$ ;
 end rule ;
 

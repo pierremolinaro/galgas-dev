@@ -1694,7 +1694,7 @@ end method ;
 
 #---------------------------------------------------------------------------*
 
-override method @castInExpressionAST analyzeSemanticExpression
+override method @testDynamicClassInExpressionAST analyzeSemanticExpression
   ??@analysisContext inAnalysisContext
   ?!@variableMap ioVariableMap
   !@semanticExpressionForGeneration outExpression
@@ -1704,7 +1704,7 @@ override method @castInExpressionAST analyzeSemanticExpression
   [mReceiverExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?expression] ;
 #--- Get type information
    const @unifiedTypeMapProxy type [searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
-#--- This type is either a class or the @object type
+#--- This type is either a class
   if [[expression mType] mTypeKindEnum] == [@typeKindEnum classType] then
   #--- Check expression type is a descendant of named type
     @unifiedTypeMapProxy t := type ;
@@ -1719,15 +1719,72 @@ override method @castInExpressionAST analyzeSemanticExpression
       :"the '@" . mTypeName . "' is not a descendant of the '@" . [[expression mType] key] . "' type of the cast expression"
       ;
     end if ;
+  else
+    error [expression mLocation]: "expression should be a class instance: it is an @"
+     .  [[expression mType] key] . " instance" ;
+  end if ;
+#--- Generate expression
+  outExpression := [@testDynamicClassInExpressionForGeneration new
+    !inAnalysisContext->mPredefinedTypes->mBoolType
+    ![mTypeName location]
+    !expression
+    ![mTypeName string]
+  ] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @castInExpressionAST analyzeSemanticExpression
+  ??@analysisContext inAnalysisContext
+  ?!@variableMap ioVariableMap
+  !@semanticExpressionForGeneration outExpression
+:
+#--- Receiver expression analysis
+  [mReceiverExpression analyzeSemanticExpression
+    !inAnalysisContext 
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration expression
+   ] ;
+#--- Get type information
+   const @unifiedTypeMapProxy type [searchKey
+     !inAnalysisContext->mSemanticContext->mTypeMap
+     !mTypeName
+   ] ;
+#--- This type is an @object type
+  if [[expression mType] mTypeKindEnum] == [@typeKindEnum classType] then
+  #--- Check expression type is a descendant of named type
+    @unifiedTypeMapProxy t := type ;
+    @bool found := t == [expression mType] ;
+    loop [inAnalysisContext->mSemanticContext->mTypeMap count] + 1
+    while (not found) & not [[t mSuperType] isNull] do
+      t := [t mSuperType] ;
+      found := t == [expression mType] ;
+    end loop ;
+    if not found then
+      error mTypeName
+      :"the '@" . mTypeName . "' is not a descendant of the '@"
+      . [[expression mType] key] . "' type of the cast expression"
+      ;
+    end if ;
   elsif [[expression mType] key] != "object" then
-    error [expression mLocation]: "cast expression should be an @object or a class instance: it is an @"
+#    error [expression mLocation]
+#     : "cast expression should be an @object instance: it is an @"
+#     .  [[expression mType] key] . " instance" ;
+#  else
+    error [expression mLocation]:
+      "cast expression should be a class instance or an @object instance: it is an @"
      .  [[expression mType] key] . " instance" ;
   end if ;
 #--- Error location expression
-  @semanticExpressionForGeneration errorLocationExpression ;
-  [mErrorLocationExpression analyzeSemanticExpression !inAnalysisContext !?ioVariableMap ?errorLocationExpression] ;
+  [mErrorLocationExpression analyzeSemanticExpression
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration errorLocationExpression
+  ] ;
 #--- Check location expression type is either @location either has a correct location reader
-  const @bool useLocationReader := [errorLocationExpression mType] != inAnalysisContext->mPredefinedTypes->mLocationType ;
+  const @bool useLocationReader :=
+     [errorLocationExpression mType] != inAnalysisContext->mPredefinedTypes->mLocationType
+  ;
   if useLocationReader then
     const @readerMap readerMap := [[errorLocationExpression mType] mReaderMap] ;
     with readerMap hasKey !"location" do
@@ -1760,6 +1817,16 @@ override method @castInExpressionAST analyzeSemanticExpression
       ;
     end with ;
   end if ;
+#--- Error message expression
+  [mErrorMessageExpression analyzeSemanticExpression
+    !inAnalysisContext
+    !?ioVariableMap
+    ?@semanticExpressionForGeneration errorMessageExpression
+  ] ;
+#--- Check error message expression type is an @string
+  if [errorMessageExpression mType] != inAnalysisContext->mPredefinedTypes->mStringType then
+    error mEndOfErrorMessageExpression : "the error message should be an @string expression" ;
+  end if ;
 #--- Generate expression
   if [[expression mType] key] == "object" then
     outExpression := [@extractObjectInExpressionForGeneration new
@@ -1768,15 +1835,16 @@ override method @castInExpressionAST analyzeSemanticExpression
       !expression
       ![mTypeName string]
       !errorLocationExpression
+      !errorMessageExpression
     ] ;
   else
     outExpression := [@castInExpressionForGeneration new
       !type
       ![mTypeName location]
       !expression
-      !mUseKindOfClass
       ![mTypeName string]
       !errorLocationExpression
+      !errorMessageExpression
     ] ;
   end if ;
 end method ;

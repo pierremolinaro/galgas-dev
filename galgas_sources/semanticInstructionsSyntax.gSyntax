@@ -1241,37 +1241,28 @@ end rule ;
 
 rule <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstructionBranchList :
   $when$ ;
-  @bool mUseKindOfClass ;
+  @bool strictTypeEquality ;
   select
-    $>=$ ;
-    mUseKindOfClass := true ;
-  or
     $==$ ;
-    mUseKindOfClass := false ;
+    strictTypeEquality := true ;
+  or
+    $>=$ ;
+    strictTypeEquality := true ;
   end select ;
   $type_name$ ? @lstring mTypeName ;
   @lstring mConstantVarName ; # Empty string if no constant var
-  @bool mConstantVarNameIsUnused ; # true if no constant var
   select
     $identifier$ ?mConstantVarName ;
-    mConstantVarNameIsUnused := false ;
-  or
-    $unused$ ;
-    $identifier$ ?mConstantVarName ;
-    mConstantVarNameIsUnused := true ;
   or
     mConstantVarName := [@lstring new !"" !here] ;
-    mConstantVarNameIsUnused := true ;
   end select ;
-  $do$ ;
-  @semanticInstructionListAST mCastBranchInstructionList ;
-  <semantic_instruction_list> ? mCastBranchInstructionList ;
+  $:$ ;
+  <semantic_instruction_list> ?@semanticInstructionListAST mCastBranchInstructionList ;
   ioCastInstructionBranchList +=
-    !mUseKindOfClass
     !mTypeName
     !mConstantVarName
-    !mConstantVarNameIsUnused
     !mCastBranchInstructionList
+    !strictTypeEquality
     !here
   ;
 end rule ;
@@ -1321,7 +1312,6 @@ rule <semantic_instruction>
   const @location instructionLocation := here ;
   @semanticExpressionAST mExpression ;
   <expression> ? mExpression ;
-  $:$ ;
   @castInstructionBranchListAST mCastInstructionBranchList [emptyList] ;
   repeat
     <cast_instruction_branch> !? mCastInstructionBranchList ;

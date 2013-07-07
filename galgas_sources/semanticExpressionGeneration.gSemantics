@@ -782,18 +782,51 @@ override method @extractObjectInExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  ioGeneratedCode .= "//--- @extractObjectInExpressionForGeneration\n" ;
   outCppExpression := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
 #--- Receiver expression
   @string receiverExpression ;
   [mReceiverExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverExpression] ;
-#--- Error expression
-  @string errorLocationExpression ;
-  [mErrorLocationExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?errorLocationExpression] ;
+#--- Error location expression
+  [mErrorLocationExpression generateExpression
+    !?ioGeneratedCode
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?@string errorLocationExpression
+  ] ;
+#--- Error message expression
+  [mErrorMessageExpression generateExpression
+    !?ioGeneratedCode
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?@string errorMessageExpression
+  ] ;
 #--- Generate code
-  outCppExpression := "GALGAS_" . [mType identifierRepresentation] . "::extractObject (" . receiverExpression
-                  . ", " . compilerCppName [] . ", " . errorLocationExpression  . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
+  outCppExpression := "GALGAS_" . [mType identifierRepresentation]
+  . "::extractObject (" . receiverExpression
+  . ", " . compilerCppName [] . ", " . errorLocationExpression . ", " . errorMessageExpression
+  . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
+end method ;
+
+#---------------------------------------------------------------------------*
+
+override method @testDynamicClassInExpressionForGeneration generateExpression
+  ?!@string ioGeneratedCode
+  ?!@uint ioTemporaryVariableIndex
+  ?!@stringset ioUnusedVariableCppNameSet
+  !@string outCppExpression
+:
+#--- Receiver expression
+  [mReceiverExpression generateExpression
+    !?ioGeneratedCode
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?@string receiverExpression
+  ] ;
+#--- Generated test
+  outCppExpression := "GALGAS_bool (NULL != dynamic_cast <const cPtr_"
+  . [mTypeName identifierRepresentation]
+  . " *> (" . receiverExpression . ".ptr ()))" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -804,27 +837,46 @@ override method @castInExpressionForGeneration generateExpression
   ?!@stringset ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  ioGeneratedCode .= "//--- @castInExpressionForGeneration\n" ;
-  outCppExpression := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
+  outCppExpression := "temp_" . [ioTemporaryVariableIndex string] ;
+  ioTemporaryVariableIndex ++ ;
 #--- Receiver expression
-  @string receiverExpression ;
-  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverExpression] ;
-  ioGeneratedCode .= "GALGAS_" . [mTypeName identifierRepresentation] . " " . outCppExpression . " ;\n" ;
-  ioGeneratedCode .= "if (" . receiverExpression . ".isValid ()) {\n" ;
+  [mReceiverExpression generateExpression
+    !?ioGeneratedCode
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?@string receiverExpression
+  ] ;
+#---
+  ioGeneratedCode .= "GALGAS_" . [mTypeName identifierRepresentation]
+  . " " . outCppExpression . " ;\n"
+  . "if (" . receiverExpression . ".isValid ()) {\n" ;
   [!?ioGeneratedCode incIndentation !2] ;
 #--- 
-  if mUseKindOfClass then
-    ioGeneratedCode .= "if (NULL != dynamic_cast <const cPtr_" . [mTypeName identifierRepresentation] . " *> (" . receiverExpression . ".ptr ())) {\n" ;
-  else
-    ioGeneratedCode .= "if (" . receiverExpression . ".ptr (HERE)->typeDescriptor () == & kTypeDescriptor_GALGAS_" . [mTypeName identifierRepresentation] . ") {\n" ;
-  end if ;
-  ioGeneratedCode .= "  " . outCppExpression . " = (cPtr_" . [mTypeName identifierRepresentation] . " *) " . receiverExpression . ".ptr () ;\n" ;
-  ioGeneratedCode .= "}else{\n" ;
+  ioGeneratedCode .=
+    "if (NULL != dynamic_cast <const cPtr_"
+  . [mTypeName identifierRepresentation]
+  . " *> (" . receiverExpression . ".ptr ())) {\n"
+  . "  " . outCppExpression . " = (cPtr_" . [mTypeName identifierRepresentation] . " *) "
+  . receiverExpression . ".ptr () ;\n"
+  . "}else{\n" ;
   [!?ioGeneratedCode incIndentation !2] ;
-  @string errorLocationExpression ;
-  [mErrorLocationExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?errorLocationExpression] ;
-  ioGeneratedCode .= compilerCppName [] . "->castInExpressionErrorAtLocation (" . errorLocationExpression
-                  . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n" ;
+  [mErrorLocationExpression generateExpression
+    !?ioGeneratedCode
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?@string errorLocationExpression
+  ] ;
+  [mErrorMessageExpression generateExpression
+    !?ioGeneratedCode
+    !?ioTemporaryVariableIndex
+    !?ioUnusedVariableCppNameSet
+    ?@string errorMessageExpression
+  ] ;
+  ioGeneratedCode .=
+    compilerCppName [] . "->emitSemanticError ("
+  . errorLocationExpression . ", " . errorMessageExpression
+  . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n"
+  ;
   [!?ioGeneratedCode decIndentation !2] ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .= "}\n" ;
