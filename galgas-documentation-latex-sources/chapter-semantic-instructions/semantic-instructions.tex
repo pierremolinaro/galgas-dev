@@ -27,9 +27,9 @@
 \section{Drop Instruction}
 
 {\lstset{emph={variable}, emphstyle=\emph}
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 drop variable, ... ;
-\end{lstlisting}
+\end{galgascode}
 }
 
 \section{Error Instruction}
@@ -69,7 +69,7 @@ drop variable, ... ;
 
 The \emph{if} instruction has the following syntax:
 {\lstset{emph={expression, instructions, expression2, instructions2, else_instructions}, emphstyle=\emph}
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 if expression then
   instructions
 elsif expression2 then
@@ -78,7 +78,7 @@ elsif expression2 then
 else
   else_instructions
 end if ;  
-\end{lstlisting}
+\end{galgascode}
 }
 
 More precisely, it contains :
@@ -96,7 +96,7 @@ No \emph{else} branch is equivalent to an \emph{else} branch without any instruc
 
 The \emph{elsif} branches are just syntactic sugar: it is semantically equivalent to use embedded \emph{if} instructions instead. For example:
 {\lstset{emph={expression, instructions, expression2, instructions2, else_instructions}, emphstyle=\emph}
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 if expression then
   instructions
 elsif expression2 then
@@ -104,11 +104,11 @@ elsif expression2 then
 else
   else_instructions
 end if ;  
-\end{lstlisting}
+\end{galgascode}
 }
 is equivalent to:
 {\lstset{emph={expression, instructions, expression2, instructions2, else_instructions}, emphstyle=\emph}
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 if expression then
   instructions
 else
@@ -118,18 +118,18 @@ else
     else_instructions
   end if ;  
 end if ;  
-\end{lstlisting}
+\end{galgascode}
 }
 
 So, for describing \emph{if} instruction static and dynamic semantics, we only need to describe an \emph{if} instruction without any \emph{elsif} branch and with an \emph{else} branch:
 {\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 if expression then
   instructions
 else
   else_instructions
 end if ;
-\end{lstlisting}
+\end{galgascode}
 }
 
 The static semantics evaluates the \emph{expression} type, and applies the following rules until success:
@@ -143,57 +143,57 @@ Most expressions you write fall in the first case.
 
 Applying the second rule enables to use an \refTypePredefini{lbool} expression as an \emph{if} expression. For example:
 {\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 @lbool var := ... ;
 if var then
   instructions
 else
   else_instructions
 end if ;
-\end{lstlisting}
+\end{galgascode}
 }
 
 The \emph{var} object belongs to the \refTypePredefini{lbool} type: so first rule fails. But \refTypePredefini{lbool} is a \emph{structure} type, it has a \emph{bool} attribute with the \refTypePredefini{bool} type, so the second rule succeeds. It is semantically equivalent to write:
 {\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 @lbool var := ... ;
 if var->bool then
   instructions
 else
   else_instructions
 end if ;
-\end{lstlisting}
+\end{galgascode}
 }
 
 The third rule applies on a \emph{class} type that defines a category reader with argument named \emph{bool} that returns a \refTypePredefini{bool} type. For example, declaring:
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 class @myClass { ... }
 
 reader @myClass bool -> @bool outResult : ... end reader ;
-\end{lstlisting}
+\end{galgascode}
 
 enables to write:
 {\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 @myClass myObject := ... ;
 if myObject then
   instructions
 else
   else_instructions
 end if ;
-\end{lstlisting}
+\end{galgascode}
 }
 
 It is semantically equivalent to write:
 {\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 @myClass myObject := ... ;
 if [myObject bool] then
   instructions
 else
   else_instructions
 end if ;
-\end{lstlisting}
+\end{galgascode}
 }
 
 
@@ -201,13 +201,13 @@ end if ;
 
 According to the preceding section, we only need to describe the dynamic semantic of an \emph{if} instruction without any \emph{elsif} branch and with an \emph{else} branch:
 {\lstset{emph={expression, instructions, else_instructions}, emphstyle=\emph}
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 if expression then
   instructions
 else
   else_instructions
 end if ;  
-\end{lstlisting}
+\end{galgascode}
 }
 
 
@@ -226,21 +226,21 @@ The \emph{expression} is first computed :
 
 
 {\lstset{emph={variable}, emphstyle=\emph}
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 @type variable ;
-\end{lstlisting}
+\end{galgascode}
 }
 
 {\lstset{emph={variable, expression}, emphstyle=\emph}
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 @type variable := expression ;
-\end{lstlisting}
+\end{galgascode}
 }
 
 {\lstset{emph={variable, constructor, arguments}, emphstyle=\emph}
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 @type variable [constructor arguments] ;
-\end{lstlisting}
+\end{galgascode}
 }
 
 
@@ -249,7 +249,7 @@ The \emph{expression} is first computed :
 
 
 
-\section{Log Instruction}
+\sectionLabel{L'instruction \texttt{log}}{instructionLog}
 
 
 
@@ -261,23 +261,23 @@ The \emph{expression} is first computed :
 
 The \emph{loop} instruction has the following syntax:
 {\lstset{emph={expression, instructions_1, instructions_2, variant_expression}, emphstyle=\emph}
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 loop variant_expression
 : instructions_1
 while expression do
   instructions_2
 end loop ;  
-\end{lstlisting}
+\end{galgascode}
 }
 
 The \emph{instructions\_1} and \emph{instructions\_2} are possibly empty instruction lists. If the \emph{instructions\_1} is empty, the preceeding « : » can be omitted :
 {\lstset{emph={expression, instructions_1, instructions_2, variant_expression}, emphstyle=\emph}
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 loop variant_expression
 while expression do
   instructions_2
 end loop ;  
-\end{lstlisting}
+\end{galgascode}
 }
 
 \subsection{Semantics}
@@ -290,27 +290,33 @@ The \emph{loop} instruction execution is illustrated by the flowchart given in \
 
 \begin{figure}[ht]
   \centering
+  \small
   \begin{tikzpicture}[very thick]
     \node [rounded corners=5pt, shape=rectangle, draw] (start) {\textsc{begin}} ;
     \node [shape=rectangle, draw] (variant) [below=of start] {$variant := variant\_expression~value$} ;
-    \node [shape=rectangle, draw] (body0) [below=of variant] {$instructions\_1$} ;
+    \node [shape=diamond, draw] (premierTest) [below=of variant] {$variant > 0$} ;
+    \node [shape=rectangle, draw] (error1) [right=of premierTest] {$loop~variant~error$} ;
+    \node [shape=rectangle, draw] (body0) [below=of premierTest] {$instructions\_1$} ;
     \node [shape=diamond, draw] (exp) [below=of body0] {$expression$} ;
     \node [shape=diamond, draw] (variantTest) [below=of exp] {$variant > 0$} ;
-    \node [shape=rectangle, draw] (decTest) [below=of variantTest] {$variant {-}{-}$} ;
-    \node [shape=rectangle, draw] (body1) [below=of decTest] {$instructions\_2$} ;
+    \node [shape=rectangle, draw] (decTest) [left=of variantTest] {$variant {-}{-}$} ;
+    \node [shape=rectangle, draw] (body1) [above=of decTest] {$instructions\_2$} ;
     \node [shape=rectangle, draw] (error) [right=of variantTest] {$loop~variant~error$} ;
     \node [rounded corners=5pt, shape=rectangle, draw] (end) [right=of error] {\textsc{end}} ;
     
     \draw [->] (start) -- (variant) ;
-    \draw [->] (variant) -- (body0) ;
+    \draw [->] (variant) -- (premierTest) ;
+    \draw [->] (premierTest) to node[right] {$yes$} (body0) ;
+    \draw [->] (premierTest) to node[above] {$no$} (error1) ;
     \draw [->] (body0) -- (exp) ;
     \draw [->] (exp) to node[right] {$true$} (variantTest) ;
-    \draw [->] (variantTest) to node[right] {$yes$} (decTest) ;
+    \draw [->] (variantTest) to node[above] {$yes$} (decTest) ;
     \draw [->] (variantTest) to node[above] {$no$} (error) ;
     \draw [->] (decTest) -- (body1) ;
     \draw [->, bend left] (exp.east) to node[above] {$false$} (end.north) ;
-    \draw [->] (body1.west) .. controls +(left:5cm) and +(left:5cm) .. (body0.west) ;
+    \draw [->] (body1.north) .. controls +(north:2cm) and +(left:2cm) .. (body0.west) ;
     \draw [->] (error) -- (end) ;
+    \draw [->] (error1.east) .. controls +(right:2cm) .. (end) ;
   \end{tikzpicture}
   \caption{\emph{loop} instruction flowchart}
   \labelFigure{loopInstructionFlowchart}
