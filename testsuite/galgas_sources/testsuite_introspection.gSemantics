@@ -36,7 +36,7 @@ message "*************************************** begin of introspection test\n" 
   const @uint x := 2 ;
   @object object := [x object] ;
   log object ;
-  const @uint y := (cast object if == @uint else error here) ;
+  const @uint y := (object to @uint error here : "internal error") ;
   log y ;
 #--- Type
 #  @type t := [x dynamicType] ;

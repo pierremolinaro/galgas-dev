@@ -2,5 +2,253 @@
 %!TEX root = ../galgas-book.tex
 
 %--------------------------------------------------------------
-\chapter{Sorted list type}
+\chapter{Le type \texttt{sortedlist}}
 %-------------------------------------------------------------
+
+Le type \galgas{sortedlist} permet de construire des listes ordonnées de valeurs.
+
+
+
+
+\section{Déclaration}
+
+La déclaration d'une \galgas{sortedlist} nomme tous les attributs qui composent un élément de liste et la description du tri. Par Exemple :
+
+\begin{galgascode}
+sortedlist @MaListeOrdonnee {
+  @char mCaractere ;
+  @uint mEntier ;
+}{
+  mCaractere <, mEntier >
+}
+\end{galgascode}
+
+La description du tri est exprimée par la liste ordonnée des attributs qui interviennent dans le tri, chacun d'eux étant suivi de l'ordre du tri (\galgas{<} pour croissant, et \galgas{>} pour décroissant). Ainsi, les élements des instances du type liste ordonnée ci-dessus sont triés par ordre croissant du champ caractère, puis par ordre décroissant du champ entier.
+
+Déclarer une \galgas{sortedlist} définit implicitement :
+\begin{itemize}
+  \item le constructeur \galgas{emptySortedList} qui construit une liste vide (\refSubsectionPage{constructeurSortedlistEmptySortedList}) ;
+  \item le constructeur \galgas{sortedListWithValue} qui construit une liste contenant un élément (\refSubsectionPage{constructeurSortedlistSortedListWithValue}) ;
+  \item l'opérateur \galgas{+=} pour ajouter un élément à une liste ordonnée (\refSubsectionPage{operateurSortedListPlusEgal}) ;
+  \item l'opérateur \galgas{.=} pour ajouter tous les éléments d'une liste à une liste ordonnée (\refSubsectionPage{operateurSortedListPointEgal}) ;
+  \item l'opérateur \galgas{.} pour construire une liste ordonnée à partir de deux listes ordonnées (\refSubsectionPage{operateurSortedListPoint}) ;
+  \item le \emph{reader} \galgas{length}, qui retourne le nombre d'éléments d'une liste (\refSectionPage{readerSortedListLength}) ;
+  \item le \emph{modifier} \galgas{popGreatest}, qui retourne les champs du plus grand élément d'une liste, et retire cet élément de cette liste (\refSubsectionPage{modifierSortedListPopGreatest}) ;
+  \item le \emph{modifier} \galgas{popSmallest}, qui retourne les champs du plus grand élément d'une liste, et retire cet élément de cette liste (\refSubsectionPage{modifierSortedListPopSmallest}) ;
+  \item la \emph{méthode} \galgas{greatest}, qui retourne les champs du plus grand élément d'une liste sans la modifier (\refSubsectionPage{methodeSortedListGreatest}) ;
+  \item la \emph{méthode} \galgas{smallest}, qui retourne les champs du plus petit élément d'une liste sans la modifier (\refSubsectionPage{methodeSortedListSmallest}).
+\end{itemize}
+
+
+
+
+
+
+
+
+\section{Constructeurs}
+
+\subsectionLabel{Constructeur \texttt{emptySortedList}}{constructeurSortedlistEmptySortedList}
+
+Le constructeur \galgas{emptySortedList} construit et retourne une liste vide. Par exemple :
+\begin{galgascode}
+@MaListeOrdonnee uneListe [emptySortedList] ;
+\end{galgascode}
+
+
+\subsectionLabel{Constructeur \texttt{sortedListWithValue}}{constructeurSortedlistSortedListWithValue}
+
+Le constructeur \galgas{sortedListWithValue} construit et retourne une liste comprenant un élément. Cet élément est spécifié par les arguments effectifs de l'appel : ce constructeur présente une séquence d'arguments en entrée correspondant aux champs de l'élément. Par exemple :
+
+\begin{galgascode}
+@MaListeOrdonnee uneListe [sortedListWithValue
+  !'a' # Affecte au champ mCaractere
+  !10  # Affecte au champ mEntier
+] ;
+\end{galgascode}
+
+
+
+
+
+
+\section{Opérateurs}
+
+
+\subsectionLabel{L'opérateur \texttt{+=}}{operateurSortedListPlusEgal}
+
+L'opérateur \galgas{+=} ajoute un élément à la liste ordonnée, en maintenant la relation d'ordre. L'élément ajouté est spécifié par la séquences des valeurs à affecter à ses champs. Si il y a un ou plusieurs éléments égaux à l'élément ajouté, ce dernier est placé après les éléments existants. 
+
+
+Cette opération est effectuée en $O(log (n))$ où $n$ est le nombre d'éléments de la liste.
+
+Exemple :
+
+\begin{galgascode}
+@MaListeOrdonnee uneListe [emptySortedList] ;
+uneListe += !'b' ! 1 ; # b1
+uneListe += !'b' ! 2 ; # b2
+uneListe += !'d' ! 1 ; # d1
+uneListe += !'f' ! 1 ; # f1
+uneListe += !'a' ! 1 ; # a1
+uneListe += !'c' ! 1 ; # c1
+uneListe += !'f' ! 2 ; # f2
+\end{galgascode}
+
+\subsectionLabel{L'opérateur \texttt{.=}}{operateurSortedListPointEgal}
+
+L'opérateur \galgas{.=} ajoute tous les éléments de l'expression à la liste ordonnée, en maintenant la relation d'ordre. Si il y a un ou plusieurs éléments égaux à chaque élément ajouté, ce dernier est placé après les éléments existants. 
+
+Exemple :
+\begin{galgascode}
+@MaListeOrdonnee uneListe := ... ;
+@MaListeOrdonnee autreListe := ... ;
+uneListe .= autreListe ;
+\end{galgascode}
+
+\subsectionLabel{L'opérateur \texttt{.}}{operateurSortedListPoint}
+
+L'opérateur \galgas{.} combine deux listes ordonnées. Les éléments de la seconde liste égaux à ceux de la première liste sont placés après ceux de la première liste.
+
+Exemple :
+\begin{galgascode}
+@MaListeOrdonnee uneListe := ... ;
+@MaListeOrdonnee autreListe := ... ;
+@MaListeOrdonnee troisiemeListe := uneListe . autreListe ;
+\end{galgascode}
+
+
+
+
+
+
+
+\sectionLabel{Le reader \texttt{length}}{readerSortedListLength}
+
+Le reader \galgas{length} retourne un \galgas{@uint} contenant le nombre d'éléments de la liste ordonnée.
+
+
+
+
+
+
+\section{Modifiers}
+
+\subsectionLabel{Le modifier \texttt{popGreatest}}{modifierSortedListPopGreatest}
+
+Ce \emph{modifier} retourne les champs du plus grand élément de la liste ordonnée, et le retire. Si la liste est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
+
+\begin{galgascode}
+@MaListeOrdonnee uneListe := ... ;
+...
+[!?uneListe popGreatest
+  ?@char c
+  ?@uint n
+] ;
+\end{galgascode}
+
+Si \galgas{uneListe} est vide, les variables \galgas{c} et \galgas{n} sont placées dans l'état \emph{invalide}.
+
+
+\subsectionLabel{Le modifier \texttt{popSmallest}}{modifierSortedListPopSmallest}
+
+Ce \emph{modifier} retourne les champs du plus petit élément de la liste ordonnée, et le retire. Si la liste est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
+
+\begin{galgascode}
+@MaListeOrdonnee uneListe := ... ;
+...
+[!?uneListe popSmallest
+  ?@char c
+  ?@uint n
+] ;
+\end{galgascode}
+
+Si \galgas{uneListe} est vide, les variables \galgas{c} et \galgas{n} sont placées dans l'état \emph{invalide}.
+
+
+
+
+
+
+
+
+
+
+\section{Méthodes}
+
+\subsectionLabel{La méthode \texttt{greatest}}{methodeSortedListGreatest}
+
+Ce \emph{modifier} retourne les champs du plus grand élément de la liste ordonnée, sans le retirer. La liste n'est donc pas modifiée. Si elle est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
+
+\begin{galgascode}
+@MaListeOrdonnee uneListe := ... ;
+...
+[uneListe greatest
+  ?@char c
+  ?@uint n
+] ;
+\end{galgascode}
+
+Si \galgas{uneListe} est vide, les variables \galgas{c} et \galgas{n} sont placées dans l'état \emph{invalide}.
+
+
+\subsectionLabel{La méthode \texttt{smallest}}{methodeSortedListSmallest}
+
+Ce \emph{modifier} retourne les champs du plus petit élément de la liste ordonnée, sans le retirer. La liste n'est donc pas modifiée. Si elle est vide, un message d'erreur est affiché, et les variables destinées à recevoir les valeurs des champs sont placées dans l'état \emph{invalide}. Par exemple :
+
+\begin{galgascode}
+@MaListeOrdonnee uneListe := ... ;
+...
+[uneListe smallest
+  ?@char c
+  ?@uint n
+] ;
+\end{galgascode}
+
+Si \galgas{uneListe} est vide, les variables \galgas{c} et \galgas{n} sont placées dans l'état \emph{invalide}.
+
+
+
+
+\section{Énumération avec l'instruction \texttt{foreach}}
+
+L'instruction \galgas{foreach} (\refSectionPage{instructionForeach}) permet d'énumérer les éléments d'une liste ordonnée, par ordre croissant ou décroissant.
+
+Pour effectuer l'énumération par ordre croissant, écrire :
+\begin{galgascode}
+foreach uneListe do
+  ...
+end foreach ;
+\end{galgascode}
+
+Pour effectuer l'énumération par ordre décroissant, écrire :
+\begin{galgascode}
+foreach > uneListe do
+  ...
+end foreach ;
+\end{galgascode}
+
+À l'intérieur de la boucle, pour chaque champ des éléments de la liste, un constante dont le nom est celui du champ est définie et prend la valeur du champ correspondant de l'élément courant.
+
+Par exemple :
+
+\begin{galgascode}
+@MaListeOrdonnee uneListe [emptySortedList] ;
+uneListe += !'b' ! 1 ; # b1
+uneListe += !'b' ! 2 ; # b2
+uneListe += !'d' ! 1 ; # d1
+uneListe += !'f' ! 1 ; # f1
+uneListe += !'a' ! 1 ; # a1
+uneListe += !'c' ! 1 ; # c1
+uneListe += !'f' ! 2 ; # f2
+@string s := "" ;
+foreach uneListe do
+  s .= [mCaractere string] . [mEntier string] . " " ;
+end foreach ;
+message s . "\n" ; # Affiche "a1 b2 b1 c1 d1 f2 f1"
+s := "" ;
+foreach > uneListe do
+  s .= [mCaractere string] . [mEntier string] . " " ;
+end foreach ;
+message s . "\n" ; # Affiche "f1 f2 d1 c1 b1 b2 a1"
+\end{galgascode}

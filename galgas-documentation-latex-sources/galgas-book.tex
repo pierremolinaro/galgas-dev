@@ -203,8 +203,25 @@
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
+% Grâce au package "fancyhdr"
+% voir http://www.exomatik.net/U-Latex/Personnaliser#toc2
+%      http://www.trustonme.net/didactels/250.html
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+%--- Numéro de page : à gauche pages paires, à droite pages impaires
+\fancyhead[EL,OR]{\thepage}
+%--- Nom de chapitre : à droite page paires
+\fancyhead[ER]{\leftmark}
+%--- Nom de section : à gauche page impaires
+\fancyhead[OL]{\rightmark}
+%--- Version GALGAS : au milieu du pied de chaque page
+\fancyfoot[C]{GALGAS GALGAS-CURRENT-VERSION}
+%--- filet en haut et en bas de chaque page
+\renewcommand{\headrulewidth}{0.5 pt}
+\renewcommand{\footrulewidth}{0.5 pt}
+
+\renewcommand{\chaptermark}[1]{\markboth{\bsc{\chaptername~\thechapter{}.} #1}{}}
+\renewcommand{\sectionmark}[1]{\markright{\bsc{\thesection{}.} #1}{}}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -400,11 +417,7 @@
 
 \input{chapter-lexical-elements/lexical-elements.tex}
 
-\input{chapter-project-component/project-component.tex}
-
-\input{chapter-lexique-component/lexique-component.tex}
-
-\input{chapter-option-component/option-component.tex}
+\part{Le système de types}
 
 \input{chapter-predefined-types/predefined-types.tex}
 
@@ -448,17 +461,29 @@
 
 \input{chapter-user-types/graph-type.tex}
 
+\part{Sous-programmes}
+
 \input{chapter-categories/categories.tex}
+
+\part{Instructions et expressions}
 
 \input{chapter-semantic-instructions/semantic-instructions.tex}
 
 \input{chapter-semantic-expressions/semantic-expressions.tex}
 
+\part{Composants}
+
+\input{chapter-lexique-component/lexique-component.tex}
+
 \input{chapter-parser-grammar-component/parser-grammar-component.tex}
 
 \input{chapter-gui-component/gui-component.tex}
 
+\input{chapter-option-component/option-component.tex}
+
 \input{chapter-program-component/program-component.tex}
+
+\input{chapter-project-component/project-component.tex}
 
 \input{chapter-cocoa-features/chapter-cocoa-features.tex}
 

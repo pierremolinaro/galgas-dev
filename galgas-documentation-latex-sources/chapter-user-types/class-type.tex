@@ -13,10 +13,10 @@ abstract class @A {
   @uint mA ;
 }
 class @B extends @A {
-  @uint mB ;
+  @string mB ;
 }
 class @C extends @B {
- @uint mC ;
+  @data mC ;
 }
 \end{galgascode}
 
@@ -29,40 +29,126 @@ abstract class @D extends @C {
  }
 \end{galgascode}
 
-Une classe non abstraite défini implicitement le constructeur \galgas{new}. Une classe ne définit ni méthode, ni reader, ni modifier. Pour cela, utiliser les catégories (\refChapterPage{categories}).
+Une classe non abstraite définit implicitement le constructeur \galgas{new}, et des \emph{readers} pour lire les attributs, et des \emph{modifiers} pour les écrire. On ne peut pas définir explicitement d'autres constructeurs, \emph{readers} ou \emph{modifiers} à l'intérieur de la classe. Cependant,  les catégories (\refChapterPage{categories}) permettent de définir \emph{readers}, \emph{méthodes} et \emph{modifiers} associés à une classe.
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Le constructeur \texttt{new}}
+
+Le constructeur \galgas{new} est implicitement pour toute classe non abstraite (c'est à dire les classes \galgas{@B} et \galgas{@C}). Ce constructeur présente un argument par attribut déclaré dans la classe instanciée et dans toutes les classes mère. L'ordre des arguments est celui obtenu en parcourant la hiérarchie de classes, en commençant par la classe racine. Par exemple on écrira :
+
+\begin{galgascode}
+@B b [new
+  !0 # Attribut mA de @A
+  !"Hello" # Attribut mB de @B
+] ;
+@C c [new
+  !0 # Attribut mA de @A
+  !"Hello" # Attribut mB de @B
+  ![@data emptyData] # Attribut mC de @C
+] ;
+\end{galgascode}
+
+
+
+
+
+
+
+
+\section{Lecture d'un attribut}
+
+Par défaut, la lecture d'un attribut est activée par la définition implicite d'un \emph{reader}, dont le nom est le nom de l'attribut. Ainsi, pour une variable \galgas{b} de type \galgas{@B}, on pourra écrire :
+
+\begin{galgascode}
+@uint v := [b mA] ;
+@string s := [b mB] ;
+\end{galgascode}
+
+Il est possible d'inhiber la génération implicite d'un \emph{reader} de lecture d'un attribut en complétant sa déclaration par \galgas{feature nogetter}, comme par exemple :
+
+\begin{galgascode}
+abstract class @A {
+  @uint mA feature nogetter ;
+}
+\end{galgascode}
+
+L'écriture \galgas{[b mA]} sera alors rejetée par le compilateur.
+
+
+
+
+
+
+
+
+
+\section{Écriture d'un attribut}
+
+Par défaut, l'écriture d'un attribut n'est pas activée.
+
+Pour activer la génération d'un \emph{modifier} permettant décrire un attribut, compléter la déclaration de cet attribut par \galgas{feature setter}. Un \emph{modifier} est alors engendré, et porte le nom \texttt{set<Attribut>}, c'est à dire le nom de l'attribut avec sa première lettre en majuscule, précédé par \texttt{set}. Par exemple :
+
+\begin{galgascode}
+abstract class @A {
+  @uint mA feature setter ;
+}
+\end{galgascode}
+
+
+Pour modifier l'attribut \galgas{mA}, on écrira :
+
+\begin{galgascode}
+[!?b setMA !12] ;
+\end{galgascode}
+
+Si on veut à la fois inhiber la génération implicite d'un \emph{reader} de lecture d'un attribut et engendrer le \emph{modifier} d'écriture, il suffit de déclarer l'attribut par :
+
+\begin{galgascode}
+  @uint mA feature nogetter, setter ;
+\end{galgascode}
+
+Ou encore :
+
+\begin{galgascode}
+  @uint mA feature setter, nogetter ;
+\end{galgascode}
+
+
+
+
+
+
+
+
+
+
 
 
 \section{Conversions entre objets de classes différentes}
 
-Pour toute cette section, nous illustrons les constructions décrites en nous basant sur les trois classes \galgas{@A}, \galgas{@B} et \galgas{@C} suivantes :
+Pour toute cette section, nous illustrons les constructions décrites en nous basant sur les trois variables suivantes :
 
 \begin{galgascode}
-class @A { ... }
-class @B extends @A { ... }
-class @C extends @B { ... }
-\end{galgascode}
-
-Et les variables :
-
-\begin{galgascode}
-@A a := ... ;
+@A a ;
 @B b := ... ;
 @C c := ... ;
 \end{galgascode}
 
 \subsection{Affectation polymorphique}
 
-GALGAS accepte l'affectation polymorphique. Par exemple, en déclarant les classes :
+GALGAS accepte l'affectation polymorphique qui est par exemple \galgas{a := b ;}. Elle est autorisée aussi lors de l'affectation d'une expression effective à un paramètre formel dans une instruction d'appel (de routine, de fonction, de méthode, ...)
 
-\begin{galgascode}
-class @A { ... }
-class @B extends @A { ... }
-\end{galgascode}
- 
-
-L'affectation polymorphique est « \galgas{a := b ;} ». Elle est autorisée aussi lors de l'affectation d'une expression effective à un paramètre formel dans une instruction d'appel (de routine, de fonction, de méthode, ...)
-
-L'affectation polymorphique inverse (qui consisterait à écrire « \galgas{b := a ;} ») est logiquement refusée par le compilateur.
+L'affectation polymorphique inverse (qui consisterait à écrire \galgas{b := a ;}) est logiquement refusée par le compilateur.
 
 Il y a trois constructions qui permettent d'effectuer cette opération :
 \begin{itemize}
@@ -96,11 +182,11 @@ Si le type dynamique de l' \galgas{expression} est \galgas{@T} ou une de ses cla
 Alliée à la construction précédente, elle permet de lancer une conversion uniquement si elle est possible :
 
 \begin{galgascode}
-if (expression is @T) then
-  @T var := (expression to @T error position_erreur : "erreur interne") ;
+if (expression is @B) then
+  @B var := (expression to @T error position_erreur : "erreur interne") ;
   ...
-elsif (expression is @T2) then
-  @T2 var := (expression to @T2 error position_erreur : "erreur interne") ;
+elsif (expression is @C) then
+  @C var := (expression to @C error position_erreur : "erreur interne") ;
   ...
 else
   message "conversion impossible" ;
@@ -126,7 +212,7 @@ Syntaxiquement, l'instruction accepte une ou plusieurs branches \galgas{when}, e
 
 Lors de l'exécution, le type dynamique de \galgas{expression} est comparé successivement aux types (\galgas{@T}) des branches \galgas{when} ; dès que ce type dynamique est de la classe \galgas{@T} ou de l'une de ses classes héritières, \galgas{variable} prend la valeur de \galgas{expression} et les instructions de la branche correspondante sont exécutées.
 
-Si toutes les comparaisons échouent, la branche {else} est exécutée (si elle existe).
+Si toutes les comparaisons échouent, la branche \galgas{else} est exécutée (si elle existe).
 
 
 Ainsi, l'instruction \galgas{if} de la section précédente s'écrit :
@@ -134,15 +220,15 @@ Ainsi, l'instruction \galgas{if} de la section précédente s'écrit :
 
 \begin{galgascode}
 cast expression
-when @T var :
+when @B var :
   ...
-when @T2 var
+when @C var :
   ...
 else
   message "conversion impossible"
 end if ;
 \end{galgascode}
 
-Note : si la variable \galgas{var} n'est pas utilisée dans la branche correspondante, une alerte est émise. Pour la supprimer, ne pas mentionner la variable en écrivant « \galgas{when @T :} ».
+Note : si la variable \galgas{var} n'est pas utilisée dans la branche correspondante, une alerte est émise. Pour la supprimer, ne pas mentionner la variable en écrivant \galgas{when @T :}.
 
 

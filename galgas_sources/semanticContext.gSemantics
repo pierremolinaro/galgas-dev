@@ -2718,7 +2718,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     ![@withAccessorMap emptyMap]
     !false # Do not generate header in separate file
     ![@unifiedTypeMapProxy null] # Type for enumerated element for "for" instruction
-    !"new" # Default constructor
+    !"" # No default constructor
   ] ;
 end method ;
 
