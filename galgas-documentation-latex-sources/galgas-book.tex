@@ -108,16 +108,6 @@
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
-%   G E S T I O N   D E    L A     C O U L E U R                                                                        *
-%                                                                                                                       *
-%-----------------------------------------------------------------------------------------------------------------------*
-
-%--- Ce paquetage permet de définir des couleurs de la forme yellow!50 (jaune à 50 %)
-%\usepackage[svgnames]{xcolor}
-
-
-%-----------------------------------------------------------------------------------------------------------------------*
-%                                                                                                                       *
 %   E X T E N S I O N S    P O U R    L ' É C R I T U R E    D E S     F O R M U L E S    M A T H É M A T I Q U E S     *
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
@@ -297,6 +287,19 @@
 
 \setcounter{tocdepth}{3}
 
+%\titlespacing{\chapter} {0pt} {*0} {*0} {}
+%\titlespacing{\section} {4ex} {*0} {*0} {}
+%\titlespacing{\subsection} {10ex} {*0} {*0} {}
+%\titlespacing{\subsubsection} {\subsubsectskip} {*0} {*0} {}
+
+%\setlength{\parindent}{50pt}
+%\makeatletter
+%\renewcommand\paragraph{\@startsection{paragraph}{4}{\z@}%
+%                                    {3.25ex \@plus 1ex \@minus .2ex}%
+%                                    {2.3ex \ at plus.2ex}%
+%                                    {\normalfont\normalsize\bfseries}}
+%\makeatother
+
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
 %   H Y P E R R E F                                                                                                     *
@@ -471,11 +474,13 @@
   \input{partie-types/type-char.tex}
   \input{partie-types/type-double.tex}
   \input{partie-types/type-location.tex}
+  \input{partie-types/type-object.tex}
   \input{partie-types/type-sint.tex}
   \input{partie-types/type-sint64.tex}
   \input{partie-types/type-string.tex}
   \input{partie-types/type-stringset.tex}
   \input{partie-types/type-uint.tex}
+  \input{partie-types/type-type.tex}
   \input{partie-types/type-uint64.tex}
   \input{partie-types/list-type.tex}
   \input{partie-types/sortedlist-type.tex}
@@ -521,7 +526,7 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 \cleardoublepage % Pour commencer a une page impaire
-\phantomsection  % Pour faire correctement pointer l'hyperlien dans la table des matieres
+\phantomsection  % Pour faire correctement pointer l'hyperlien dans la table des matières
 
 %--- Ecrire l'index
 {\small

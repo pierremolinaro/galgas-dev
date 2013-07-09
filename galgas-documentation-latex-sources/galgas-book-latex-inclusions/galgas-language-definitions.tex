@@ -63,11 +63,11 @@
 
 % Exemple d'appel : \sectionTypePredefiniLabelIndex{bool}
 
-\newcommand \chapitreTypePredefiniLabelIndex[1] {\chapter{The \texttt{@#1} Type}\label{type:#1}\index{Type!"@#1}}
+\newcommand \chapitreTypePredefiniLabelIndex[1] {\chapter{Le type \texttt{@#1}}\label{type:#1}\index{Type!"@#1}}
 
-\newcommand \sectionTypePredefiniLabelIndex[1] {\section{The \texttt{@#1} Type}\label{type:#1}\index{Type!"@#1}}
+\newcommand \sectionTypePredefiniLabelIndex[1] {\section{Le type \texttt{@#1}}\label{type:#1}\index{Type!"@#1}}
 
-\newcommand \subsectionTypePredefiniLabelIndex[1] {\subsection{The \texttt{@#1} Type}\label{type:#1}\index{Type!"@#1}}
+\newcommand \subsectionTypePredefiniLabelIndex[1] {\subsection{Le type \texttt{@#1}}\label{type:#1}\index{Type!"@#1}}
 
 
 
@@ -75,7 +75,7 @@
 %--- Cette macro établit un hyperlien vers un type prédéfini
 % Exemple d'appel : \refTypePredefini{bool} -- affiche --> @bool type (page xx)
 
-\newcommand \refTypePredefini[1] {\hyperref[type:#1]{\texttt{@#1} type (page \pageref{type:#1})}}
+\newcommand \refTypePredefini[1] {\hyperref[type:#1]{type \texttt{@#1} (page \pageref{type:#1})}}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *

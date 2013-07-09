@@ -1,9 +1,125 @@
 %!TEX encoding = UTF-8 Unicode
 %!TEX root = ../galgas-book.tex
 
-%--------------------------------------------------------------
-\chapter{Présentation du systèmes de types}
-%-------------------------------------------------------------
+\chapter{Présentation du système de types}
+
+
+
+
+
+
+\section{Opérations définies pour tous les types}
+
+Tout type implémente implicitement :
+\begin{itemize}
+  \item l'opérateur \galgas{==} ;
+  \item l'opérateur \galgas{\!=} ;
+  \item le \emph{reader} \galgas{description} ;
+  \item le \emph{reader} \galgas{dynamicType} ;
+  \item le \emph{reader} \galgas{object}.
+\end{itemize}
+
+La plupart des types implémentent le constructeur par défaut \galgas{default} (voir \refSectionPage{constructeurParDefaut}). 
+
+
+\subsection{L'opérateur \texttt{==}}
+
+\begin{galgascode}
+operator @T == -> @bool ;
+\end{galgascode}
+
+Cet opérateur permet de tester l'identité entre de deux objets de même type. 
+
+\subsection{L'opérateur \texttt{!=}}
+
+\begin{galgascode}
+operator @T != -> @bool ;
+\end{galgascode}
+
+Cet opérateur permet de tester la non identité entre de deux objets de même type. Il renvoie le complément logique du résultat de l'application de l'opérateur \galgas{==}.
+
+
+
+
+
+\subsection{Le reader \texttt{description}}
+
+\begin{galgascode}
+reader @T description -> @string ;
+\end{galgascode}
+
+Le \emph{reader} \galgas{description} retourne une description textuelle du receveur, la même que celle affichée par l'instruction \galgas{log} (\refSectionPage{instructionLog}).
+
+
+
+\subsection{Le reader \texttt{dynamicType}}
+
+\begin{galgascode}
+reader @T dynamicType -> @type ;
+\end{galgascode}
+
+Le \emph{reader} \galgas{dynamicType} retourne un objet de type \galgas{@type}, dont la valeur représente le type dynamique du receveur (voir aussi la définition du \refTypePredefini{type}).
+
+Pour tous les types sauf les classes, leurs instances sont du même type que le type statique :
+
+\begin{galgascode}
+@uint n := 2 ;
+@type t := [n dynamicType] ;
+log t ; # Affiche @uint
+\end{galgascode}
+
+Pour les instances de classes, le jeu des affectations polymorphiques peut entraîner que le type dynamique soit une classe héritière du type statique.
+
+Par exemple, en déclarant :
+\begin{galgascode}
+class @A { }
+class @B extends @A { }
+\end{galgascode}
+
+Et avec la séquence d'instructions suivante :
+\begin{galgascode}
+@B b [new] ;
+@type t := [b dynamicType] ;
+log t ; # Affiche @B, type statique de b : @B
+@A a := b ; # Affectation polymorphique
+t := [a dynamicType] ;
+log t ; # Affiche @B, type statique de a : @A
+\end{galgascode}
+
+
+
+
+
+\subsection{Le reader \texttt{object}}
+
+\begin{galgascode}
+reader @T object -> @object ;
+\end{galgascode}
+
+
+Le \emph{reader} \galgas{object} retourne un objet de type \galgas{@object}. Une variable de \refTypePredefini{object} peut encapsuler tout type de valeur.
+
+%====== Readers ======
+%===== description =====
+%
+%''**reader** description %%->%% @string ;''\\
+%
+%This reader returns a string representation of the receiver's value.
+%
+%===== dynamicType =====
+%
+%|Available on GALGAS 1.9.5 and later|
+%
+%''**reader** dynamicType %%->%% @type ;''\\
+%
+%This reader returns the dynamic type of the receiver's value.
+%===== object =====
+%
+%|Available on GALGAS 1.9.5 and later|
+%
+%''**reader** object %%->%% @object ;''\\
+%
+%This reader returns an ''@object'' instance that embeds the receiver's value.
 
 
 
@@ -15,11 +131,7 @@
 
 
 
-
-
-
-
-\section{Les constructeurs par défaut}
+\sectionLabel{Constructeur par défaut}{constructeurParDefaut}
 
 Pour la plupart des types, un constructeur par défaut est implicitement défini (voir le détail \refSubsectionPage{constructeurParDefautPourChaqueType}). Celui-ci est invoqué par le mot réservé \galgas{default}.
 
@@ -64,7 +176,7 @@ Avec le constructeur par défaut, cette instruction s'écrit simplement :
 @T variable [default] ;
 \end{galgascode}
 
-Pour une structure, comme on va le voir plus bas, le constructeur par défaut appelle le constructeur par défaut pour chaque champ ; le constructeur par défaut d'une \galgas{map} est \galgas{emptyMap}, celui d'une \galgas{list} est \galgas{emptyList}, et celui d'un \galgas{@stringset} est \galgas{emptySet}.
+Pour une structure, comme on va le voir plus bas, le constructeur par défaut appelle le constructeur par défaut pour chaque champ ; le constructeur par défaut d'une \galgas{map} est équivalent à \galgas{emptyMap}, celui d'une \galgas{list}  équivalent à \galgas{emptyList}, et celui d'un \galgas{@stringset}  équivalent à \galgas{emptySet}.
 
 
 \subsection{Appel dans la déclaration d'une variable ou d'une constante}
