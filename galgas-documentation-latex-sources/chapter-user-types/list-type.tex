@@ -273,7 +273,7 @@ The element retrieved with \lstinline[language=galgas]!last! method is at index 
 
 By default and for every attribute, a reader is provided to retrieve the value of this attribute for an element at a given index. For example, for an attribute named \emph{name}, the \emph{nameAtIndex} reader is provided. It accepts one \galgas{@uint} argument, the value of the index.
 
-You can disable the default reader generation, by using the «~\lstinline[language=galgas]!feature nogetter!~» qualifier.
+You can disable the default reader generation, by using \galgas{feature nogetter}.
 
 For example:
 \begin{lstlisting}[language=galgas]
@@ -286,12 +286,12 @@ list @MyList {
 @string s := [aList mFirstAttributeAtIndex !1] ;
 \end{lstlisting}
 
-One reader is available: \lstinline[language=galgas]!mFirstAttributeAtIndex!; the \lstinline[language=galgas]!mSecondAttributeAtIndex! reader is not available.
+One reader is available: \lstinline[language=galgas]!mFirstAttributeAtIndex!; the \galgas{mSecondAttributeAtIndex} reader is not available.
 
 
 \subsection{Write Access}
 
-By default, no modifier is provided for performing a direct write access to an attribute at a given index. You should use the «~\galgas{@feature setter}~» qualifier for enabling setter generation for a given attribute.
+By default, no modifier is provided for performing a direct write access to an attribute at a given index. You should use \galgas{feature setter} for enabling setter generation for a given attribute.
 
 The modifier name is the name of the attribute with the first letter capitalized, prefixed by \emph{set} and suffixed by \emph{AtIndex}: for an attribute named \emph{name}, the modifier is named \emph{setNameAtIndex}. It accepts two arguments, the first one is the new attribute's value, the second one an \galgas{@uint} argument, the value of the index.
 
