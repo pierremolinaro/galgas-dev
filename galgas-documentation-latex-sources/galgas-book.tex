@@ -113,7 +113,7 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 %--- Ce paquetage permet de définir des couleurs de la forme yellow!50 (jaune à 50 %)
-\usepackage[svgnames]{xcolor}
+%\usepackage[svgnames]{xcolor}
 
 
 %-----------------------------------------------------------------------------------------------------------------------*
@@ -144,11 +144,57 @@
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
+%   E X T E N S I O N S    P O U R    P R É S E N T E R    L E S    T A B L E A U X                                     *
+%                                                                                                                       *
+%-----------------------------------------------------------------------------------------------------------------------*
+
+\usepackage{array}
+\usepackage[table]{xcolor} % À placer avant \usepackage{listings}
+
+%\renewcommand{\arraystretch}{1.2}
+
+%--- Couleur de fond alternée des tableaux
+\ifthenelse{\equal{\sortieEnCouleur}{true}}{
+  \newcommand\fondTableau{yellow!25}
+}{
+  \newcommand\fondTableau{gray!25}
+}
+
+
+%--- Ce paquetage permet de changer le style des légendes des tableaux et des figures (voir caption-eng.pdf) :
+%  - l'étiquette est en italique gras
+%  - le titre est en italique.
+\usepackage[font=it, labelfont=bf]{caption}
+
+%--- Par défaut, le paquetage nomme "Table" les tableaux. La commande
+%   suivante impose le nom "Tableau"
+% Voir http://fr.wikibooks.org/wiki/LaTeX/Éléments_flottants_et_figures
+\addto\captionsfrench{\def\tablename{Tableau}}
+
+%------------------------------------------------------------------------------------------ RÉFÉRENCES À UN TABLEAU
+% La référence au tableau "nom-du-tableau" est définie par \labelTableau{nom-du-tableau}
+\newcommand\labelTableau[1]{\label{tab:#1}}
+% Latex autorise deux types d'appel à une référence \ref{tab:nom-du-tableau} et \pageref{tab:nom-du-tableau}
+
+% \refTableau{}{nom-du-tableau} ---> "tableau x.y"   où x.y est le n° du tableau
+\newcommand\refTableau[1]{\hyperref[tab:#1]{tableau \ref*{tab:#1}}}
+
+% \refTableauSansPrefixe{}{nom-du-tableau} ---> "x.y"   où x.y est le n° du tableau
+\newcommand\refTableauSansPrefixe[1]{\hyperref[tab:#1]{\ref*{tab:#1}}}
+
+% \refTableauPage{}{nom-du-tableau} ---> "tableau x.y page n"   où x.y est le n° du tableau
+\newcommand\refTableauPage[1]{\hyperref[tab:#1]{tableau \ref*{tab:#1} page \pageref{tab:#1}}}
+
+% \refTableauPageSansPrefixe{}{nom-du-tableau} ---> "x.y page n"   où x.y est le n° du tableau
+\newcommand\refTableauPageSansPrefixe[1]{\hyperref[tab:#1]{\ref*{tab:#1} page \pageref{tab:#1}}}
+
+%-----------------------------------------------------------------------------------------------------------------------*
+%                                                                                                                       *
 %   P A Q U E T A G E    « L I S T I N G S »                                                                            *
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-\usepackage{listings}
+\usepackage{listings} % À placer après \usepackage[table]{xcolor}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -195,7 +241,7 @@
 %-----------------------------------------------------------------------------------------------------------------------*
 
 %--- Pour afficher correctement des tables sur plusieurs pages
-\usepackage{longtable}
+%\usepackage{longtable}
 
 %-----------------------------------------------------------------------------------------------------------------------*
 %                                                                                                                       *
@@ -215,7 +261,7 @@
 %--- Nom de section : à gauche page impaires
 \fancyhead[OL]{\rightmark}
 %--- Version GALGAS : au milieu du pied de chaque page
-\fancyfoot[C]{GALGAS GALGASCURRENTVERSION}
+\fancyfoot[C]{GALGAS, version GALGASCURRENTVERSION}
 %--- filet en haut et en bas de chaque page
 \renewcommand{\headrulewidth}{0.5 pt}
 \renewcommand{\footrulewidth}{0.5 pt}
@@ -373,7 +419,7 @@
 %                                                                                                                       *
 %-----------------------------------------------------------------------------------------------------------------------*
 
-\title{\Huge{\textbf{GALGAS Book}}\\~\\ \normalsize{For release GALGASCURRENTVERSION}}
+\title{\Huge{\textbf{GALGAS}}\\~\\ \normalsize{Version GALGASCURRENTVERSION}}
 \author{Jean-Luc Béchennec\\Mikaël Briday\\Pierre Molinaro}
 \date \today 
 
@@ -418,48 +464,28 @@
 \input{chapter-lexical-elements/lexical-elements.tex}
 
 \part{Le système de types}
-
-\input{chapter-predefined-types/predefined-types.tex}
-
-\input{chapter-predefined-types/type-binaryset.tex}
-
-\input{chapter-predefined-types/type-bool.tex}
-
-\input{chapter-predefined-types/type-char.tex}
-
-\input{chapter-predefined-types/type-double.tex}
-
-\input{chapter-predefined-types/type-location.tex}
-
-\input{chapter-predefined-types/type-sint.tex}
-
-\input{chapter-predefined-types/type-sint64.tex}
-
-\input{chapter-predefined-types/type-string.tex}
-
-\input{chapter-predefined-types/type-stringset.tex}
-
-\input{chapter-predefined-types/type-uint.tex}
-
-\input{chapter-predefined-types/type-uint64.tex}
-
-\input{chapter-user-types/list-type.tex}
-
-\input{chapter-user-types/sortedlist-type.tex}
-
-\input{chapter-user-types/array-type.tex}
-
-\input{chapter-user-types/class-type.tex}
-
-\input{chapter-user-types/map-type.tex}
-
-\input{chapter-user-types/mapproxy-type.tex}
-
-\input{chapter-user-types/struct-type.tex}
-
-\input{chapter-predefined-types/predefined-structure-types.tex}
-
-\input{chapter-user-types/graph-type.tex}
+  \input{partie-types/presentation-systeme-de-types.tex}
+  \input{partie-types/predefined-types.tex}
+  \input{partie-types/type-binaryset.tex}
+  \input{partie-types/type-bool.tex}
+  \input{partie-types/type-char.tex}
+  \input{partie-types/type-double.tex}
+  \input{partie-types/type-location.tex}
+  \input{partie-types/type-sint.tex}
+  \input{partie-types/type-sint64.tex}
+  \input{partie-types/type-string.tex}
+  \input{partie-types/type-stringset.tex}
+  \input{partie-types/type-uint.tex}
+  \input{partie-types/type-uint64.tex}
+  \input{partie-types/list-type.tex}
+  \input{partie-types/sortedlist-type.tex}
+  \input{partie-types/array-type.tex}
+  \input{partie-types/class-type.tex}
+  \input{partie-types/graph-type.tex}
+  \input{partie-types/map-type.tex}
+  \input{partie-types/mapproxy-type.tex}
+  \input{partie-types/struct-type.tex}
+  \input{partie-types/predefined-structure-types.tex}
 
 \part{Sous-programmes}
 
