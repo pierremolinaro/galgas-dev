@@ -210,10 +210,6 @@ class @castInExpressionAST extends @semanticExpressionAST {
   @semanticExpressionAST mReceiverExpression ;
   @location mEndOfReceiverExpression ;
   @lstring mTypeName ;
-  @semanticExpressionAST mErrorLocationExpression ;
-  @location mEndOfErrorLocationExpression ;
-  @semanticExpressionAST mErrorMessageExpression ;
-  @location mEndOfErrorMessageExpression ;
 }
 
 #---------------------------------------------------------------------------*

@@ -323,24 +323,15 @@ end rule ;
 
 rule <primary> !@semanticExpressionAST outExpression :
   $($ ;
+  $cast$ ;
   <expression> ?@semanticExpressionAST receiverExpression ;
   const @location endOfReceiverExpression := here ;
-  $to$ ;
-  $type_name$ ?@lstring typeName ;
-  $error$ ;
-  <expression> ?@semanticExpressionAST errorLocationExpression ;
-  const @location endOfErrorLocationExpression := here ;
   $:$ ;
-  <expression> ?@semanticExpressionAST errorMessageExpression ;
-  const @location endOfErrorMessageExpression := here ;
+  $type_name$ ?@lstring typeName ;
   outExpression := [@castInExpressionAST new
     !receiverExpression
     !endOfReceiverExpression
     !typeName
-    !errorLocationExpression
-    !endOfErrorLocationExpression
-    !errorMessageExpression
-    !endOfErrorMessageExpression
   ] ;
   $)$ ;
 end rule ;

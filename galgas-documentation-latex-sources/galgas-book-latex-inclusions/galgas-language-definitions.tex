@@ -22,7 +22,7 @@
   style=galgas
 }
 
-\newcommand\couleurCodeGALGAS{green!20}
+\newcommand\couleurCodeGALGAS{green!25}
 
 
 \ifthenelse{\equal{\sortieEnCouleur}{true}}{
@@ -30,6 +30,8 @@
     basicstyle=\ttfamily\smaller,
 %    keywordstyle=\color{red}\textbf,
 %    frame=l,
+    upquote=true,
+    xleftmargin=16pt,
     keywordstyle=[2]\color{blue},
     backgroundcolor=\color{\couleurCodeGALGAS},
     identifierstyle=\color{brown},
@@ -39,7 +41,7 @@
 }{
   \lstdefinestyle{galgas}{
     basicstyle=\ttfamily,
-%    frame=l,
+    upquote=true,
     keywordstyle=\sffamily\textbf
   }
 }

@@ -172,6 +172,11 @@ class C_Compiler : public C_SharedObject {
                                                const GALGAS_location & inExistingKeyLocation
                                                COMMA_LOCATION_ARGS) ;
 
+//--- Cast error
+  public : void castError (const C_String & inTargetTypeName,
+                           const C_galgas_type_descriptor * inObjectDynamicTypeDescriptor
+                           COMMA_LOCATION_ARGS) ;
+
 //--- enterPragma
   private : TC_UniqueArray <C_String> mCheckedVariableList ;
   public : PMSInt32 checkedVariableListEntryCount (void) const ;

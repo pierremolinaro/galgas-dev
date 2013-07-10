@@ -337,8 +337,6 @@ class @literalTypeInExpressionForGeneration extends @semanticExpressionForGenera
 class @castInExpressionForGeneration extends @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression ;
   @string mTypeName ;
-  @semanticExpressionForGeneration mErrorLocationExpression ;
-  @semanticExpressionForGeneration mErrorMessageExpression ;
 }
 
 #---------------------------------------------------------------------------*
@@ -353,8 +351,6 @@ class @testDynamicClassInExpressionForGeneration extends @semanticExpressionForG
 class @extractObjectInExpressionForGeneration extends @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression ;
   @string mTypeName ;
-  @semanticExpressionForGeneration mErrorLocationExpression ;
-  @semanticExpressionForGeneration mErrorMessageExpression ;
 }
 
 #---------------------------------------------------------------------------*
