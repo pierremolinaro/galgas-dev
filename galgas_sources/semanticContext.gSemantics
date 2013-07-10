@@ -825,11 +825,11 @@ override method @mapDeclarationAST enterInSemanticContext
 #--- Readers
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"levels" !"uint" !false ;
   enterInheritedReaderWith2Arguments !?readerMap !?ioSemanticContext->mTypeMap !"hasKeyAtLevel" !"string" !"uint" !"bool" !false ;
-  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeys" !"stringset" !false ;
-  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeyList" !"lstringlist" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"keySet" !"stringset" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"keyList" !"lstringlist" !false ;
   enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"hasKey" !"string" !"bool" !false ;
   enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"locationForKey" !"string" !"location" !true ;
-  enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"overriddenMap" ![mMapTypeName string] !false ;
+  enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"overriddenMap" ![mMapTypeName string] !true ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"count" !"uint" !false ;
 #--- enableContextualHelp
   @formalParameterSignature insertMethodFormalArgumentList [emptyList] ;
@@ -1305,7 +1305,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
   foreach mapTypedAttributeList do
     if [inheritedReaderMap hasKey ![mAttributeName string]] then
       @string s := "" ;
-      foreach [inheritedReaderMap allKeys]
+      foreach [inheritedReaderMap keySet]
         do s .= "'" . key . "'" ;
         between s .= ", " ;
       end foreach ;

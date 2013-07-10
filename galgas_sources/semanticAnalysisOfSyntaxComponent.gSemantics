@@ -135,8 +135,8 @@ local routine enterNonterminalNonTerminalInMapAndCheck
   ?!@nonterminalMap ioNonterminalDeclarationMap 
 :
   with ioNonterminalDeclarationMap hasKey ![inNonTerminalName string] do
-    const @stringset firstDeclarationLabelSet := [mLabelMap allKeys] ;
-    const @stringset reDeclarationLabelSet := [inNonterminalLabelMap allKeys] ;
+    const @stringset firstDeclarationLabelSet := [mLabelMap keySet] ;
+    const @stringset reDeclarationLabelSet := [inNonterminalLabelMap keySet] ;
     const @stringset missingLabelSet := firstDeclarationLabelSet - reDeclarationLabelSet ;
     if [missingLabelSet count] > 0 then
       @string s := "" ;

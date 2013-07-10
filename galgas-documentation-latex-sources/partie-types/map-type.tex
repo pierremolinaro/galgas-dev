@@ -2,5 +2,571 @@
 %!TEX root = ../galgas-book.tex
 
 %--------------------------------------------------------------
-\chapter{Map Type}
+\chapter{Le type \texttt{map}}
 %-------------------------------------------------------------
+
+Un objet de type \galgas{map} est une table de symboles, chaque symbole étant associé à des valeurs.
+
+\section{Déclaration}
+
+La déclaration d'un type \galgas{map} nomme :
+\begin{itemize}
+  \item les attributs qui sont associés à une clé ;
+  \item les \emph{modifiers} d'insertion ;
+  \item les \emph{méthodes} de recherche ;
+  \item les \emph{modifiers} de retrait ;
+\end{itemize}
+
+Les clés sont déclarées implicitement et sont du \refTypePredefini{lstring}.
+
+Par exemple :
+
+\begin{galgascode}
+map @MyMap {
+  @string mFirstAttribute ;
+  @bool mSecondAttribute ;
+  insert insertKey error message "the '%K' key is already declared in %L" ;
+  search searchKey error message "the '%K' key is not defined" ;
+  remove removeKey error message "the '%K' key is not defined" ;
+}
+\end{galgascode}
+
+
+
+
+
+
+\section{Modifiers d'insertion}
+
+Une \galgas{map} peut déclarer zéro, un ou plusieurs \emph{modifiers} d'insertion. Un \emph{modifier} d'insertion permet d'insérer une nouvelle entrée à une table. Une erreur est déclenchée en cas de tentative d'une clé déjà existante.
+
+
+Un \emph{modifier} d'insertion est déclaré par :
+
+\lstset{emph={nom}, emphstyle=\emph}
+\begin{galgascode}
+insert nom error message "message_erreur" ;
+\end{galgascode}
+
+L'identificateur \galgas{nom} donne un nom au \emph{modifier} d'insertion ; ce nom doit être unique parmi les \emph{modifiers} d'insertion et de retrait. La chaîne de caractères \galgas{"message_erreur"} définit le message d'erreur qui est affiché en cas de tentative d'une clé déjà existante. Cette chaîne accepte deux séquences d'échappement :
+\begin{itemize}
+  \item \galgas{\%K}, qui est remplacée par la chaîne de caractères de la clé existante ;
+  \item \galgas{\%L}, qui est remplacée par la chaîne décrivant la position de la clé existante dans les fichiers source.
+\end{itemize}
+
+
+Un \emph{modifier} d'insertion est appelé dans une \emph{instruction d'appel de modifier}, comprenant tous ses arguments en sortie :
+\begin{itemize}
+  \item le premier argument est une expression de type \galgas{@lstring} qui caractérise la clé à insérer ;
+  \item ensuite, pour chaque attribut déclaré, une expression du type de cet attribut.
+\end{itemize}
+
+Par exemple :
+\begin{galgascode}
+@MyMap uneTable [emptyMap] ;
+@lstring clef := ... ;
+@string s := ... ;
+@uint v := ... ;
+[!?uneTable insertKey !clef !s !v] ;
+\end{galgascode}
+
+
+
+
+
+
+
+
+
+
+
+\section{Méthodes de recherche}
+
+Une \galgas{map} peut déclarer zéro, une ou plusieurs \emph{méthodes} de recherche. Une \emph{méthode} de recherche permet de rechercher une entrée d'une table, et retourne la valeur de ses attributs associés. Une erreur est déclenchée si la clé n'existe pas.
+
+
+Une \emph{méthode} de recherche est déclarée par :
+
+\lstset{emph={nom}, emphstyle=\emph}
+\begin{galgascode}
+search nom error message "message_erreur" ;
+\end{galgascode}
+
+L'identificateur \galgas{nom} donne un nom à la \emph{méthode} de recherche ; ce nom doit être unique parmi ces \emph{méthodes}. La chaîne de caractères \galgas{"message_erreur"} définit le message d'erreur qui est affiché en cas de recherche d'une clé inexistante. Cette chaîne accepte une séquence d'échappement :
+\begin{itemize}
+  \item \galgas{\%K}, qui est remplacée par la chaîne de caractères de la clé inexistante recherchée ;
+\end{itemize}
+
+
+Une \emph{méthode} de recherche est appelée dans une \emph{instruction d'appel de méthode} :
+\begin{itemize}
+  \item le premier argument (sortie) est une expression de type \galgas{@lstring} qui caractérise la clé à rechercher ;
+  \item ensuite, pour chaque attribut déclaré, un argument en entrée nommant une variable destinée à recevoir la valeur de l'attribut correspondant.
+\end{itemize}
+
+Par exemple :
+\begin{galgascode}
+@MyMap uneTable [emptyMap] ;
+...
+@lstring clef := ... ;
+[!?uneTable searchKey !clef ?@string s ?@uint v] ;
+\end{galgascode}
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{Modifiers de retrait}
+
+Une \galgas{map} peut déclarer zéro, un ou plusieurs \emph{modifiers} de retrait. Un \emph{modifier} de recherche permet de retirer une entrée d'une table, et retourne la valeur des attributs de la clé retirée. Une erreur est déclenchée si la clé n'existe pas.
+
+
+Un \emph{modifier} de retrait est déclaré par :
+
+\lstset{emph={nom}, emphstyle=\emph}
+\begin{galgascode}
+remove nom error message "message_erreur" ;
+\end{galgascode}
+
+L'identificateur \galgas{nom} donne un nom au \emph{modifier} de retrait ; ce nom doit être unique parmi les \emph{modifiers} d'insertion et de retrait. La chaîne de caractères \galgas{"message_erreur"} définit le message d'erreur qui est affiché en cas de recherche d'une clé inexistante. Cette chaîne accepte une séquence d'échappement :
+\begin{itemize}
+  \item \galgas{\%K}, qui est remplacée par la chaîne de caractères de la clé inexistante à retirer ;
+\end{itemize}
+
+
+Un \emph{modifier} de retrait est appelé dans une \emph{instruction d'appel de modifier} :
+\begin{itemize}
+  \item le premier argument (sortie) est une expression de type \galgas{@lstring} qui caractérise la clé à retirer ;
+  \item ensuite, pour chaque attribut déclaré, un argument en entrée nommant une variable destinée à recevoir la valeur de l'attribut correspondant de la clé retirée.
+\end{itemize}
+
+Par exemple :
+\begin{galgascode}
+@MyMap uneTable [emptyMap] ;
+...
+@lstring clef := ... ;
+[!?uneTable removeKey !clef ?@string s ?@uint v] ;
+\end{galgascode}
+
+
+
+
+
+
+\section{Constructeurs}
+
+\subsection{Constructeur \texttt{emptyMap}}
+
+\begin{galgascode}
+constructor @T emptyMap -> @T ;
+\end{galgascode}
+
+Ce constructeur permet d'instancier une table vide. Exemple :
+\begin{galgascode}
+@MyMap uneTable [emptyMap] ;
+\end{galgascode}
+
+ 
+
+\subsection{Constructeur \texttt{mapWithMapToOverride}}
+
+\begin{galgascode}
+constructor @T mapWithMapToOverride ?@T inMapToOverride -> @T ;
+\end{galgascode}
+
+Ce constructeur permet d'instancier une table vide, qui surcharge la table \galgas{inMapToOverride} citée en argument. Exemple :
+\begin{galgascode}
+@MyMap uneTable [emptyMap] ;
+@MyMap autreTableTable [inMapToOverride !uneTable] ;
+\end{galgascode}
+
+\section{Readers}
+
+%\subsection{Le reader \texttt{allKeyList}}
+%
+%\begin{galgascode}
+%reader @T allKeyList -> @lstringlist ;
+%\end{galgascode}
+%
+%Le \emph{reader} \galgas{allKeyList} retourne la liste construite avec toutes les clés du receveur, dans la table de premier niveau et dans les tables surchargées. L'ordre de la liste est :
+%\begin{itemize}
+%  \item d'abord les clés de la table de premier niveau, puis celles des tables surchargées, dans l'ordre de la surcharge ;
+%  \itel pour chaque table, les clés apparaissent dans l'ordre alphabétique croissant.
+%\end{itemize}
+
+\subsection{Le reader \texttt{count}}
+
+\begin{galgascode}
+reader @T count -> @uint ;
+\end{galgascode}
+
+
+Le \emph{reader} \galgas{count} retourne un \galgas{@uint} qui contient le nombre d'entrées de la table de premier niveau du receveur.
+
+
+
+\subsection{Le reader \texttt{hasKey}}
+
+\begin{galgascode}
+reader @T hasKey ??@string inKey -> @bool ;
+\end{galgascode}
+
+
+Le \emph{reader} \galgas{hasKey} retourne un \galgas{@bool} qui est \galgas{true} si la clé \galgas{inKey} est dans la table de premier niveau du receveur, \galgas{false} dans le cas contraire.
+
+
+
+\subsection{Le reader \texttt{keyList}}
+
+\begin{galgascode}
+reader @T keyList -> @lstringlist ;
+\end{galgascode}
+
+
+Le \emph{reader} \galgas{keyList} retourne la liste construite avec toutes les clés de la table de premier niveau du receveur. L'ordre de la liste est l'ordre alphabétique croissant des clés.
+
+
+
+\subsection{Le reader \texttt{keySet}}
+
+\begin{galgascode}
+reader @T keySet -> @stringset ;
+\end{galgascode}
+
+
+Le \emph{reader} \galgas{keySet} retourne l'ensemble de toutes les clés de la table de premier niveau du receveur.
+
+
+
+
+
+\subsection{Le reader \texttt{locationForKey}}
+
+\begin{galgascode}
+reader @T locationForKey ??@string inKey -> @location ;
+\end{galgascode}
+
+
+Le \emph{reader} \galgas{locationForKey} retourne un \galgas{@location} qui contient l'information de position de la clé \galgas{inKey} dans la table de premier niveau du receveur. Une erreur d'exécution est déclenchée si cette clé n'existe pas.
+
+
+
+
+
+
+
+
+\subsection{Le reader \texttt{overriddenMap}}
+
+\begin{galgascode}
+reader @T overriddenMap -> @T ;
+\end{galgascode}
+
+
+Le \emph{reader} \galgas{overriddenMap} retourne la table obtenue en amputant de la valeur du receveur la table de premier niveau. Si le receveur n'a pas de table surchargée, une erreur d'exécution est déclenchée.
+
+
+
+%====== Insertion Modifier Invocation ======
+%
+%The insertion modifier invokation obeys to the general //modifier// invokation syntax:
+%
+%[!?//map_object_name// //insertion_modifier_name// !//key_object_expression// !//first_attribute_expression// !//second_attribute_expression// ...] ;
+%
+%For example, given the map declaration:
+%
+%map @MyMap {
+%  @string mFirstAttribute ;
+%  @bool mSecondAttribute ;
+%  insert insertKey, insertKeyAndGetIndex error message "the '%K' key is already declared in %L" ;
+%  ...
+%}
+%
+%An example of map insertion instruction is the following:
+%
+%@MyMap aMap [emptyMap] ; # Short-cut for @MyMap aMap := [@MyMap emptyMap] ;
+%@lstring theKey := ... ;
+%@string theFirstAttribute := ... ;
+%@bool theSecondAttribute := ... ;
+%[!?aMap insertKey !theKey !theFirstAttribute !theSecondAttribute] ;
+%
+%If you invoke the alternate insertion modifier, you need to add an @luint input argument after the key argument:\\
+%
+%@MyMap aMap [emptyMap] ; # Short-cut for @MyMap aMap := [@MyMap emptyMap] ;
+%@lstring theKey := ... ;
+%@string theFirstAttribute := ... ;
+%@bool theSecondAttribute := ... ;
+%@luint theIndex ;
+%[!?aMap insertKeyAndGetIndex !theKey ?theIndex !theFirstAttribute !theSecondAttribute] ;
+%
+%The //theIndex// argument receives the location value of the //theIndex// object value, and an unsigned value corresponding to the entry insertion order in the map: the first inserted pair is associated with the value 0, the second one with the value 1, ...
+%
+%====== Search Method Invocation ======
+%
+%The search method invokation obeys to the general //instruction reader// invokation syntax:
+%
+%[//map_object_name// //search_method_name// !//key_object_expression// ?//first_attribute_object// ?//second_attribute_object// ...] ;
+%
+%For example, given the map declaration:
+%
+%map @MyMap {
+%  @string mFirstAttribute ;
+%  @bool mSecondAttribute ;
+%  search searchKey, searchKeyAndGetIndex error message "the %%'%K'%% key is not defined" ;
+%  ...
+%}
+%
+%An example of map insertion instruction is the following:
+%
+%@MyMap aMap [emptyMap] ;
+%@lstring theKey := ... ;
+%@string theFirstValue ;
+%@bool theSecondValue ;
+%[aMap searchKey !theKey ?theFirstValue ?theSecondValue] ;
+%
+%Note that if you are not interested by an input value, you can use the %%'*'%% symbol instead:
+%
+%[aMap searchKey !theKey ?theFirstValue ?*] ;
+%
+%
+%If you invoke the alternate search method, you need to supply an @luint input argument after the key argument:\\
+%
+%@MyMap aMap [emptyMap] ;
+%@lstring theKey := ... ;
+%@string theFirstValue ;
+%@bool theSecondValue ;
+%@luint theIndex ;
+%[aMap searchKeyAndGetIndex !theKey ?theIndex ?theFirstValue ?theSecondValue] ;
+%
+%The //theIndex// argument receives the location value of the //theIndex// object value, and an unsigned value corresponding to the entry insertion order in the map: the first inserted pair is associated with the value 0, the second one with the value 1, ...
+%
+%====== Remove Modifier Invocation ======
+%
+%|Remove modifiers are available in GALGAS 1.5.3 and later.|
+%
+%The remove modifier invokation obeys to the general //modifier// invokation syntax:
+%
+%[!?//map_object_name// //remove_modifier_name// !//key_object_expression// ?//first_object// ?//second_object// ...] ;
+%
+%For example, given the map declaration:
+%
+%map @MyMap {
+%  @string mFirstAttribute ;
+%  @bool mSecondAttribute ;
+%  remove removeKey, removeKeyAndGetIndex error message "the '%K' key is not declared" ;
+%  ...
+%}
+%
+%An example of map remove instruction is the following:
+%
+%@MyMap aMap [emptyMap] ; # Short-cut for @MyMap aMap := [@MyMap emptyMap] ;
+%@lstring theKey := ... ;
+%@string theFirstAttribute ;
+%@bool theSecondAttribute ;
+%[!?aMap removeKey !theKey ?theFirstAttribute ?theSecondAttribute] ;
+%
+%If you invoke the alternate remove modifier, you need to add an @luint input argument after the key argument:\\
+%
+%@MyMap aMap [emptyMap] ; # Short-cut for @MyMap aMap := [@MyMap emptyMap] ;
+%@lstring theKey := ... ;
+%@string theFirstAttribute ;
+%@bool theSecondAttribute ;
+%@luint theIndex ;
+%[!?aMap removeKeyAndGetIndex !theKey ?theIndex ?theFirstAttribute ?theSecondAttribute] ;
+%
+%The //theIndex// argument receives the location value of the //theIndex// object value, and an unsigned value corresponding to the entry insertion order in the map: the first inserted pair is associated with the value 0, the second one with the value 1, ...
+%
+%====== Enumerating a map with the foreach Instruction ======
+%
+%The foreach instruction can be used for enumerating @stringset objects, list objects and map objects.
+%
+%Map objects are enumerated in the ascending order of their keys, or in the descending order using the > qualifier.
+%
+%Given the map declaration:
+%
+%map @MyMap {
+%  @string mFirstAttribute ;
+%  @bool mSecondAttribute ;
+%  ...
+%}
+%
+%foreach aMap do
+%  # the current entry of the //aMap// map can be accessed (in read only mode) throught the key identifier,
+%  # the //mFirstAttribute// of current entry of the //aMap// map can be accessed (in read only mode) throught the mFirstAttribute identifier,
+%  # the //mSecondAttribute// of current entry of the //aMap// map can be accessed (in read only mode) throught the mSecondAttribute identifier,
+%end foreach ;
+%
+%For enumerating in the descending order of the keys, use the > qualifier:
+%
+%foreach > aMap do
+%  ...
+%end foreach ;
+%
+%^The following is an obsolete syntax.^
+%
+%foreach aMap (@lstring kKey @string kString @bool kBool) do
+%  # the //kKey// constant receives the value of the key of current entry of the //aMap// map,
+%  # the //kString// constant receives the value of the //mFirstAttribute// of current entry of the //aMap// map,
+%  # and the //kBool// constant receives the value of the //mSecondAttribute// of current entry of the //aMap// map,
+%end foreach ;
+%
+%In the above sample, the object are in the ascending order of their keys.
+%
+%For enumerating in the descending order of the keys, use the > qualifier:
+%
+%foreach > aMap (@lstring kKey @string kString @bool kBool) do
+%  ...
+%end foreach ;
+%
+%====== Setting an attribute of an entry ======
+%
+%^Available in GALGAS 1.8.4 and later. ^
+%
+%Given a key, you can directly set an attribute of a map entry.
+%
+%In order to enable this feature, you have to associate the setter feature to the given attribute.
+%
+%map @MyMap {
+%  @string mFirstAttribute ;
+%  @bool mSecondAttribute feature setter ;
+%}
+%
+%For every attribute declared with this feature, a modifier is available; its name is build by the concatenation of three patterns:
+%  - the string set;
+%  - the attribute name, with the first letter capitalized;
+%  - the string ForKey.
+%
+%So, for the mSecondAttribute attribute, the associated modifier name is setMSecondAttributeForKey.
+%
+%The modifier has two input arguments:
+%  - the key, an @string expression;
+%  - the value to set to the attribute.
+%
+%For example:
+%
+%@MyMap aMap := ... ;
+%@string s := ... ;
+%@bool v := ... ;
+%[!?aMap setMSecondAttributeForKey !s !v] ;
+%
+%A run-time error is raised if the key value does not exist in the map.
+%
+%====== Using the with instruction on a map object ======
+%
+%^Available in GALGAS 1.8.4 and later. ^
+%
+%The with instruction enables a direct access on all attributes of an entry. Its syntax is:
+%
+%with //prefix// !?//map_object// //search_method// !//key_expression// do
+%  ...
+%else
+%  ...
+%end with ;
+%
+%The //prefix// and the else part are optional.
+%
+%There are two different behaviours, depending from the //search_method//:
+%  * the //search_method// is one declared in the search declarations;
+%  * the //search_method// is the predefined hasKey identifier.
+%
+%===== with instruction naming a declared search method =====
+%
+%The //key_expression// should be an @lstring expression.
+%
+%Given this map type declaration:
+%
+%map @MyMap {
+%  @string mFirstAttribute ;
+%  @bool mSecondAttribute ;
+%  search searchKey error message "the %%'%K'%% key is not defined" ;
+%  ...
+%}
+%
+%You can write:
+%
+%@MyMap aMap := ... ;
+%@lstring aKey := ... ;
+%with !?aMap searchKey !aKey do
+%  # ... 
+%else
+%  # ...
+%end with ;
+%
+%The aMap object is accessed in read/write mode.
+%
+%If the aKey object value does not correspond to an existing entry, an error message is displayed and the else part is executed. The error message is based upon the search method name, here searchKey. The error location is given by aKey location.
+%
+%If the aKey object value corresponds to an existing entry, the do part is executed. The entry's attributes can be fully accessed in this part (you can read, write or modify them), using directly their names. The entry's key (an @lstring object) can be accessed in read mode (you cannot modify it), using the key identifier. For example:
+%
+%
+%@MyMap aMap := ... ;
+%@lstring aKey := ... ;
+%with !?aMap searchKey !aKey do
+%  mFirstAttribute .= %%"xyz"%% ; # mFirstAttribute is accessed in read/write mode
+%  mSecondAttribute := true ; # mSecondAttribute is accessed in write mode
+%  log key ; # key is can only be accessed in read mode
+%end with ;
+%
+%The only constraint is that all attributes should be valuated at the end of the do part.
+%
+%===== with instruction naming the predefined hasKey method =====
+%
+%The //key_expression// should be an @string expression.
+%
+%Given this map type declaration:
+%
+%map @MyMap {
+%  @string mFirstAttribute ;
+%  @bool mSecondAttribute ;
+%  ...
+%}
+%
+%You can write:
+%
+%@MyMap aMap := ... ;
+%@string aKey := ... ;
+%with !?aMap hasKey !aKey do
+%  # ... 
+%else
+%  # ...
+%end with ;
+%
+%The aMap object is accessed in read/write mode.
+%
+%If the aKey object value does not correspond to an existing entry, no error message is displayed and the else part is executed.
+%
+%If the aKey object value corresponds to an existing entry, the do part is executed.  The entry's attributes can be fully accessed in this part (you can read, write or modify them), using directly their names, the entry's key (an @lstring object) can be accessed in read mode (you cannot modify it), using the key identifier, exactly as in the previously described behaviour.
+%
+%===== Using a prefix =====
+%
+%This feature enables to prepend with a prefix the names used for accessing the attributes and the key in the do part. It could be useful for avoiding name conflicts.
+%
+%It is available for both search methods.
+%
+%Given this map type declaration:
+%
+%map @MyMap {
+%  @string mFirstAttribute ;
+%  @bool mSecondAttribute ;
+%  ...
+%}
+%
+%You can write:
+%
+%@MyMap aMap := ... ;
+%@string aKey := ... ;
+%with xyz_ : !?aMap hasKey !aKey do
+%  xyz_mFirstAttribute .= %%"xyz"%% ; # mFirstAttribute is accessed in read/write mode
+%  xyz_mSecondAttribute := true ; # mSecondAttribute is accessed in write mode
+%  log xyz_key ; # key is can only be accessed in read mode
+%end with ;
+%
+%Using the xyz_ prefix, all attributes and the key should be accessed using this prefix. 
