@@ -784,26 +784,16 @@ override method @extractObjectInExpressionForGeneration generateExpression
 :
   outCppExpression := "temp_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
 #--- Receiver expression
-  @string receiverExpression ;
-  [mReceiverExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?receiverExpression] ;
-#--- Error location expression
-  [mErrorLocationExpression generateExpression
+  [mReceiverExpression generateExpression
     !?ioGeneratedCode
     !?ioTemporaryVariableIndex
     !?ioUnusedVariableCppNameSet
-    ?@string errorLocationExpression
-  ] ;
-#--- Error message expression
-  [mErrorMessageExpression generateExpression
-    !?ioGeneratedCode
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
-    ?@string errorMessageExpression
+    ?@string receiverExpression
   ] ;
 #--- Generate code
   outCppExpression := "GALGAS_" . [mType identifierRepresentation]
   . "::extractObject (" . receiverExpression
-  . ", " . compilerCppName [] . ", " . errorLocationExpression . ", " . errorMessageExpression
+  . ", " . compilerCppName []
   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . "))" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
 end method ;
@@ -860,21 +850,10 @@ override method @castInExpressionForGeneration generateExpression
   . receiverExpression . ".ptr () ;\n"
   . "}else{\n" ;
   [!?ioGeneratedCode incIndentation !2] ;
-  [mErrorLocationExpression generateExpression
-    !?ioGeneratedCode
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
-    ?@string errorLocationExpression
-  ] ;
-  [mErrorMessageExpression generateExpression
-    !?ioGeneratedCode
-    !?ioTemporaryVariableIndex
-    !?ioUnusedVariableCppNameSet
-    ?@string errorMessageExpression
-  ] ;
   ioGeneratedCode .=
-    compilerCppName [] . "->emitSemanticError ("
-  . errorLocationExpression . ", " . errorMessageExpression
+    compilerCppName [] . "->castError (\""
+  . [mTypeName identifierRepresentation] 
+  . "\", " . receiverExpression . ".ptr ()->classDescriptor ()"
   . " COMMA_SOURCE_FILE_AT_LINE (" . [[mLocation line] string] . ")) ;\n"
   ;
   [!?ioGeneratedCode decIndentation !2] ;

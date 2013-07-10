@@ -831,20 +831,9 @@ override method @mapDeclarationAST enterInSemanticContext
   enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"locationForKey" !"string" !"location" !true ;
   enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"overriddenMap" ![mMapTypeName string] !true ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"count" !"uint" !false ;
-#--- enableContextualHelp
-  @formalParameterSignature insertMethodFormalArgumentList [emptyList] ;
-  insertMethodFormalArgumentList += !boolTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  [!?modifierMap insertOrReplace
-    !["enableContextualHelp" nowhere]
-    ![@methodKind definedAsMember]
-    !insertMethodFormalArgumentList
-    !true
-    ![@methodQualifier isInherited]
-    !""
-  ] ;
 #--- Handle attributes
+  @formalParameterSignature insertMethodFormalArgumentList [emptyList] ;
   @typedAttributeList typedAttributeList [emptyList] ;
-  insertMethodFormalArgumentList := [@formalParameterSignature  emptyList] ;
   insertMethodFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
   @formalParameterSignature removeMethodFormalArgumentList [emptyList] ;
   removeMethodFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;

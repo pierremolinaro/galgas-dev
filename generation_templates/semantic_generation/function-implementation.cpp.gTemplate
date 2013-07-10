@@ -30,14 +30,12 @@ if [FORMAL_ARGUMENT_LIST length] == 0 then
 else
   %static GALGAS_object functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
                                              !^%const cObjectArray & inEffectiveParameterArray,\n%
-                                             !^%const GALGAS_location & inErrorLocation\n%
+                                             !^%const GALGAS_location & /* §§ inErrorLocation */\n%
                                              !^%COMMA_LOCATION_ARGS) {\n%
   foreach FORMAL_ARGUMENT_LIST do index IDX
     %  const GALGAS_%![mFormalArgumentType identifierRepresentation]% operand%![IDX string]% = GALGAS_%![mFormalArgumentType identifierRepresentation]
     %::extractObject (%?^%inEffectiveParameterArray.objectAtIndex (%![IDX string]% COMMA_HERE),
-  %!^%inCompiler,
-  %!^%inErrorLocation,
-  %!^%GALGAS_string ("operand %![IDX string]% is not an @%![mFormalArgumentType key]%")
+  %!^%inCompiler
   %!^%COMMA_THERE) ;\n%
   end foreach
   %  return function_%![FUNCTION_NAME identifierRepresentation]% (%?^

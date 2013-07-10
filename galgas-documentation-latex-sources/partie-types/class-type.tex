@@ -162,10 +162,10 @@ Il y a trois constructions qui permettent d'effectuer cette opération :
 L'expression de conversion polymorphique inverse a la syntaxe suivante (les parenthèses sont obligatoires) :
 
 \begin{galgascode}
-(expression to @T error position_erreur : message_erreur)
+(cast expression : @T)
 \end{galgascode}
 
-Si le type dynamique de l'\galgas{expression} est \galgas{@T} ou une de ses classes héritières, l'expression de conversion polymorphique renvoie un objet de type \galgas{@T} contenant la valeur de \galgas{expression}. Dans le cas contraire, l'instruction d'erreur est exécutée, et la valeur renvoyée est non construite.
+Si le type dynamique de l'\galgas{expression} est \galgas{@T} ou une de ses classes héritières, l'expression de conversion polymorphique renvoie un objet de type \galgas{@T} contenant la valeur de \galgas{expression}. Dans le cas contraire, un message d'erreur est affiché, et la valeur renvoyée est non construite.
 
 L'exécution échoue donc avec émission de message d'erreur si la conversion n'est pas possible. 
 
@@ -183,10 +183,10 @@ Alliée à la construction précédente, elle permet de lancer une conversion un
 
 \begin{galgascode}
 if (expression is @B) then
-  @B var := (expression to @T error position_erreur : "erreur interne") ;
+  @B var := (cast expression : @T) ;
   ...
 elsif (expression is @C) then
-  @C var := (expression to @C error position_erreur : "erreur interne") ;
+  @C var := (cast expression : @C) ;
   ...
 else
   message "conversion impossible" ;

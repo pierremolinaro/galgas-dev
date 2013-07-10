@@ -249,13 +249,17 @@ void C_Compiler::loopRunTimeVariantError (LOCATION_ARGS) {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= GALGAS 2 here
+  #pragma mark ========= Cast error
 #endif
 
 //---------------------------------------------------------------------------*
 
-GALGAS_location C_Compiler::here (void) const {
-  return GALGAS_location (mCurrentLocation, mCurrentLocation, mSourceTextPtr) ;
+void C_Compiler::castError (const C_String & inTargetTypeName,
+                            const C_galgas_type_descriptor * inObjectDynamicTypeDescriptor
+                            COMMA_LOCATION_ARGS) {
+  C_String m ;
+  m << "cannot cast an @" << inObjectDynamicTypeDescriptor->mGalgasTypeName << " to an @" << inTargetTypeName ;
+  onTheFlyRunTimeError (m COMMA_THERE) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -425,6 +429,18 @@ void C_Compiler::
 onTheFlyRunTimeError (const C_String & inRunTimeErrorMessage
                       COMMA_LOCATION_ARGS) {
   signalRunTimeError (inRunTimeErrorMessage COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark ========= GALGAS 2 here
+#endif
+
+//---------------------------------------------------------------------------*
+
+GALGAS_location C_Compiler::here (void) const {
+  return GALGAS_location (mCurrentLocation, mCurrentLocation, mSourceTextPtr) ;
 }
 
 //---------------------------------------------------------------------------*

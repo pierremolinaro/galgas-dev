@@ -1775,58 +1775,6 @@ override method @castInExpressionAST analyzeSemanticExpression
       "cast expression should be a class instance or an @object instance: it is an @"
      .  [[expression mType] key] . " instance" ;
   end if ;
-#--- Error location expression
-  [mErrorLocationExpression analyzeSemanticExpression
-    !inAnalysisContext
-    !?ioVariableMap
-    ?@semanticExpressionForGeneration errorLocationExpression
-  ] ;
-#--- Check location expression type is either @location either has a correct location reader
-  const @bool useLocationReader :=
-     [errorLocationExpression mType] != inAnalysisContext->mPredefinedTypes->mLocationType
-  ;
-  if useLocationReader then
-    const @readerMap readerMap := [[errorLocationExpression mType] mReaderMap] ;
-    with readerMap hasKey !"location" do
-      if [mArgumentTypeList length] != 0 then
-        error mEndOfErrorLocationExpression
-        :"the error location expression type is '@" . [[errorLocationExpression mType] key]
-        . "' and defines a 'location' reader with arguments; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"
-        ;      
-      elsif mReturnedType != inAnalysisContext->mPredefinedTypes->mLocationType then
-        error mEndOfErrorLocationExpression
-        :"the error location expression type is '@" . [[errorLocationExpression mType] key]
-        . "' and defines a 'location' reader that returns an '@" . [mReturnedType key]
-        . "' object; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"
-        ;      
-      end if ;
-      errorLocationExpression := [@readerCallExpressionForGeneration new
-        !inAnalysisContext->mPredefinedTypes->mLocationType
-        !mEndOfErrorLocationExpression
-        !mKind
-        !errorLocationExpression
-        ![@stringlist emptyList]
-        !"location"
-        ![@semanticExpressionListForGeneration emptyList]
-        !mHasCompilerArgument
-      ] ;
-    else
-      error mEndOfErrorLocationExpression
-      :"the error location expression type is '@" . [[errorLocationExpression mType] key]
-      . "' and does not define a 'location' reader; it should be either of the '@location' type, either defines a 'location' reader without argument that returns an '@location' object"
-      ;
-    end with ;
-  end if ;
-#--- Error message expression
-  [mErrorMessageExpression analyzeSemanticExpression
-    !inAnalysisContext
-    !?ioVariableMap
-    ?@semanticExpressionForGeneration errorMessageExpression
-  ] ;
-#--- Check error message expression type is an @string
-  if [errorMessageExpression mType] != inAnalysisContext->mPredefinedTypes->mStringType then
-    error mEndOfErrorMessageExpression : "the error message should be an @string expression" ;
-  end if ;
 #--- Generate expression
   if [[expression mType] key] == "object" then
     outExpression := [@extractObjectInExpressionForGeneration new
@@ -1834,8 +1782,6 @@ override method @castInExpressionAST analyzeSemanticExpression
       !mEndOfReceiverExpression
       !expression
       ![mTypeName string]
-      !errorLocationExpression
-      !errorMessageExpression
     ] ;
   else
     outExpression := [@castInExpressionForGeneration new
@@ -1843,8 +1789,6 @@ override method @castInExpressionAST analyzeSemanticExpression
       ![mTypeName location]
       !expression
       ![mTypeName string]
-      !errorLocationExpression
-      !errorMessageExpression
     ] ;
   end if ;
 end method ;

@@ -22,10 +22,10 @@ Les clés sont déclarées implicitement et sont du \refTypePredefini{lstring}.
 Par exemple :
 
 \begin{galgascode}
-map @MyMap {
-  @string mFirstAttribute ;
-  @bool mSecondAttribute ;
-  insert insertKey error message "the '%K' key is already declared in %L" ;
+map @MaTable {
+  @string mPremier ;
+  @bool mSecond ;
+  insert insertKey error message "the '%K' key is already declared in %L";
   search searchKey error message "the '%K' key is not defined" ;
   remove removeKey error message "the '%K' key is not defined" ;
 }
@@ -63,7 +63,7 @@ Un \emph{modifier} d'insertion est appelé dans une \emph{instruction d'appel de
 
 Par exemple :
 \begin{galgascode}
-@MyMap uneTable [emptyMap] ;
+@MaTable uneTable [emptyMap] ;
 @lstring clef := ... ;
 @string s := ... ;
 @uint v := ... ;
@@ -106,7 +106,7 @@ Une \emph{méthode} de recherche est appelée dans une \emph{instruction d'appel
 
 Par exemple :
 \begin{galgascode}
-@MyMap uneTable [emptyMap] ;
+@MaTable uneTable [emptyMap] ;
 ...
 @lstring clef := ... ;
 [!?uneTable searchKey !clef ?@string s ?@uint v] ;
@@ -150,7 +150,7 @@ Un \emph{modifier} de retrait est appelé dans une \emph{instruction d'appel de 
 
 Par exemple :
 \begin{galgascode}
-@MyMap uneTable [emptyMap] ;
+@MaTable uneTable [emptyMap] ;
 ...
 @lstring clef := ... ;
 [!?uneTable removeKey !clef ?@string s ?@uint v] ;
@@ -171,7 +171,7 @@ constructor @T emptyMap -> @T ;
 
 Ce constructeur permet d'instancier une table vide. Exemple :
 \begin{galgascode}
-@MyMap uneTable [emptyMap] ;
+@MaTable uneTable [emptyMap] ;
 \end{galgascode}
 
  
@@ -184,8 +184,8 @@ constructor @T mapWithMapToOverride ?@T inMapToOverride -> @T ;
 
 Ce constructeur permet d'instancier une table vide, qui surcharge la table \galgas{inMapToOverride} citée en argument. Exemple :
 \begin{galgascode}
-@MyMap uneTable [emptyMap] ;
-@MyMap autreTableTable [inMapToOverride !uneTable] ;
+@MaTable uneTable [emptyMap] ;
+@MaTable autreTableTable [inMapToOverride !uneTable] ;
 \end{galgascode}
 
 \section{Readers}
@@ -275,157 +275,35 @@ Le \emph{reader} \galgas{overriddenMap} retourne la table obtenue en amputant de
 
 
 
-%====== Insertion Modifier Invocation ======
-%
-%The insertion modifier invokation obeys to the general //modifier// invokation syntax:
-%
-%[!?//map_object_name// //insertion_modifier_name// !//key_object_expression// !//first_attribute_expression// !//second_attribute_expression// ...] ;
-%
-%For example, given the map declaration:
-%
-%map @MyMap {
-%  @string mFirstAttribute ;
-%  @bool mSecondAttribute ;
-%  insert insertKey, insertKeyAndGetIndex error message "the '%K' key is already declared in %L" ;
-%  ...
-%}
-%
-%An example of map insertion instruction is the following:
-%
-%@MyMap aMap [emptyMap] ; # Short-cut for @MyMap aMap := [@MyMap emptyMap] ;
-%@lstring theKey := ... ;
-%@string theFirstAttribute := ... ;
-%@bool theSecondAttribute := ... ;
-%[!?aMap insertKey !theKey !theFirstAttribute !theSecondAttribute] ;
-%
-%If you invoke the alternate insertion modifier, you need to add an @luint input argument after the key argument:\\
-%
-%@MyMap aMap [emptyMap] ; # Short-cut for @MyMap aMap := [@MyMap emptyMap] ;
-%@lstring theKey := ... ;
-%@string theFirstAttribute := ... ;
-%@bool theSecondAttribute := ... ;
-%@luint theIndex ;
-%[!?aMap insertKeyAndGetIndex !theKey ?theIndex !theFirstAttribute !theSecondAttribute] ;
-%
-%The //theIndex// argument receives the location value of the //theIndex// object value, and an unsigned value corresponding to the entry insertion order in the map: the first inserted pair is associated with the value 0, the second one with the value 1, ...
-%
-%====== Search Method Invocation ======
-%
-%The search method invokation obeys to the general //instruction reader// invokation syntax:
-%
-%[//map_object_name// //search_method_name// !//key_object_expression// ?//first_attribute_object// ?//second_attribute_object// ...] ;
-%
-%For example, given the map declaration:
-%
-%map @MyMap {
-%  @string mFirstAttribute ;
-%  @bool mSecondAttribute ;
-%  search searchKey, searchKeyAndGetIndex error message "the %%'%K'%% key is not defined" ;
-%  ...
-%}
-%
-%An example of map insertion instruction is the following:
-%
-%@MyMap aMap [emptyMap] ;
-%@lstring theKey := ... ;
-%@string theFirstValue ;
-%@bool theSecondValue ;
-%[aMap searchKey !theKey ?theFirstValue ?theSecondValue] ;
-%
-%Note that if you are not interested by an input value, you can use the %%'*'%% symbol instead:
-%
-%[aMap searchKey !theKey ?theFirstValue ?*] ;
-%
-%
-%If you invoke the alternate search method, you need to supply an @luint input argument after the key argument:\\
-%
-%@MyMap aMap [emptyMap] ;
-%@lstring theKey := ... ;
-%@string theFirstValue ;
-%@bool theSecondValue ;
-%@luint theIndex ;
-%[aMap searchKeyAndGetIndex !theKey ?theIndex ?theFirstValue ?theSecondValue] ;
-%
-%The //theIndex// argument receives the location value of the //theIndex// object value, and an unsigned value corresponding to the entry insertion order in the map: the first inserted pair is associated with the value 0, the second one with the value 1, ...
-%
-%====== Remove Modifier Invocation ======
-%
-%|Remove modifiers are available in GALGAS 1.5.3 and later.|
-%
-%The remove modifier invokation obeys to the general //modifier// invokation syntax:
-%
-%[!?//map_object_name// //remove_modifier_name// !//key_object_expression// ?//first_object// ?//second_object// ...] ;
-%
-%For example, given the map declaration:
-%
-%map @MyMap {
-%  @string mFirstAttribute ;
-%  @bool mSecondAttribute ;
-%  remove removeKey, removeKeyAndGetIndex error message "the '%K' key is not declared" ;
-%  ...
-%}
-%
-%An example of map remove instruction is the following:
-%
-%@MyMap aMap [emptyMap] ; # Short-cut for @MyMap aMap := [@MyMap emptyMap] ;
-%@lstring theKey := ... ;
-%@string theFirstAttribute ;
-%@bool theSecondAttribute ;
-%[!?aMap removeKey !theKey ?theFirstAttribute ?theSecondAttribute] ;
-%
-%If you invoke the alternate remove modifier, you need to add an @luint input argument after the key argument:\\
-%
-%@MyMap aMap [emptyMap] ; # Short-cut for @MyMap aMap := [@MyMap emptyMap] ;
-%@lstring theKey := ... ;
-%@string theFirstAttribute ;
-%@bool theSecondAttribute ;
-%@luint theIndex ;
-%[!?aMap removeKeyAndGetIndex !theKey ?theIndex ?theFirstAttribute ?theSecondAttribute] ;
-%
-%The //theIndex// argument receives the location value of the //theIndex// object value, and an unsigned value corresponding to the entry insertion order in the map: the first inserted pair is associated with the value 0, the second one with the value 1, ...
-%
-%====== Enumerating a map with the foreach Instruction ======
-%
-%The foreach instruction can be used for enumerating @stringset objects, list objects and map objects.
-%
-%Map objects are enumerated in the ascending order of their keys, or in the descending order using the > qualifier.
-%
-%Given the map declaration:
-%
-%map @MyMap {
-%  @string mFirstAttribute ;
-%  @bool mSecondAttribute ;
-%  ...
-%}
-%
-%foreach aMap do
-%  # the current entry of the //aMap// map can be accessed (in read only mode) throught the key identifier,
-%  # the //mFirstAttribute// of current entry of the //aMap// map can be accessed (in read only mode) throught the mFirstAttribute identifier,
-%  # the //mSecondAttribute// of current entry of the //aMap// map can be accessed (in read only mode) throught the mSecondAttribute identifier,
-%end foreach ;
-%
-%For enumerating in the descending order of the keys, use the > qualifier:
-%
-%foreach > aMap do
-%  ...
-%end foreach ;
-%
-%^The following is an obsolete syntax.^
-%
-%foreach aMap (@lstring kKey @string kString @bool kBool) do
-%  # the //kKey// constant receives the value of the key of current entry of the //aMap// map,
-%  # the //kString// constant receives the value of the //mFirstAttribute// of current entry of the //aMap// map,
-%  # and the //kBool// constant receives the value of the //mSecondAttribute// of current entry of the //aMap// map,
-%end foreach ;
-%
-%In the above sample, the object are in the ascending order of their keys.
-%
-%For enumerating in the descending order of the keys, use the > qualifier:
-%
-%foreach > aMap (@lstring kKey @string kString @bool kBool) do
-%  ...
-%end foreach ;
-%
+
+
+\section{Énumération}
+
+L'instruction \galgas{foreach} permet d'énumérer des objets de type \galgas{map}. Uniquement la table de premier niveau est énumérée. Par défaut, l'énumération s'effectue dans l'ordre croissant des clés. Pour énumérer dans l'ordre décroissant, utiliser le qualifier \galgas{>}.
+
+À l'intérieur du coprs de la boucle, sont implicitement définies :
+\begin{itemize}
+  \item la constante \galgas{lkey}, de type \galgas{@lstring}, qui a pour valeur la clé de l'entrée courante ;
+  \item pour chaque attribut, une constante du type de l'attribut, et portant le nom de cet attribut, qui a pour valeur la valeur de cet attribut de l'entrée courante.
+\end{itemize}
+
+Par exemple :
+\begin{galgascode}
+@MaTable uneTable [emptyMap] ;
+[!?uneTable insertKey ![@lstring new !"z" !here] !"world" !5] ;
+[!?uneTable insertKey ![@lstring new !"a" !here] !"hello" !10] ;
+foreach aMap do
+  message lkey->string . " " . mPremier . " " . mSecond . "\n" ;
+end foreach ;
+\end{galgascode}
+
+L'affichage produit est :
+
+\begin{galgascode}
+a hello 10
+z world 5
+\end{galgascode}
+
 %====== Setting an attribute of an entry ======
 %
 %^Available in GALGAS 1.8.4 and later. ^
@@ -434,9 +312,9 @@ Le \emph{reader} \galgas{overriddenMap} retourne la table obtenue en amputant de
 %
 %In order to enable this feature, you have to associate the setter feature to the given attribute.
 %
-%map @MyMap {
-%  @string mFirstAttribute ;
-%  @bool mSecondAttribute feature setter ;
+%map @MaTable {
+%  @string mPremier ;
+%  @bool mSecond feature setter ;
 %}
 %
 %For every attribute declared with this feature, a modifier is available; its name is build by the concatenation of three patterns:
@@ -444,7 +322,7 @@ Le \emph{reader} \galgas{overriddenMap} retourne la table obtenue en amputant de
 %  - the attribute name, with the first letter capitalized;
 %  - the string ForKey.
 %
-%So, for the mSecondAttribute attribute, the associated modifier name is setMSecondAttributeForKey.
+%So, for the mSecond attribute, the associated modifier name is setmSecondForKey.
 %
 %The modifier has two input arguments:
 %  - the key, an @string expression;
@@ -452,10 +330,10 @@ Le \emph{reader} \galgas{overriddenMap} retourne la table obtenue en amputant de
 %
 %For example:
 %
-%@MyMap aMap := ... ;
+%@MaTable aMap := ... ;
 %@string s := ... ;
 %@bool v := ... ;
-%[!?aMap setMSecondAttributeForKey !s !v] ;
+%[!?aMap setmSecondForKey !s !v] ;
 %
 %A run-time error is raised if the key value does not exist in the map.
 %
@@ -483,16 +361,16 @@ Le \emph{reader} \galgas{overriddenMap} retourne la table obtenue en amputant de
 %
 %Given this map type declaration:
 %
-%map @MyMap {
-%  @string mFirstAttribute ;
-%  @bool mSecondAttribute ;
+%map @MaTable {
+%  @string mPremier ;
+%  @bool mSecond ;
 %  search searchKey error message "the %%'%K'%% key is not defined" ;
 %  ...
 %}
 %
 %You can write:
 %
-%@MyMap aMap := ... ;
+%@MaTable aMap := ... ;
 %@lstring aKey := ... ;
 %with !?aMap searchKey !aKey do
 %  # ... 
@@ -507,11 +385,11 @@ Le \emph{reader} \galgas{overriddenMap} retourne la table obtenue en amputant de
 %If the aKey object value corresponds to an existing entry, the do part is executed. The entry's attributes can be fully accessed in this part (you can read, write or modify them), using directly their names. The entry's key (an @lstring object) can be accessed in read mode (you cannot modify it), using the key identifier. For example:
 %
 %
-%@MyMap aMap := ... ;
+%@MaTable aMap := ... ;
 %@lstring aKey := ... ;
 %with !?aMap searchKey !aKey do
-%  mFirstAttribute .= %%"xyz"%% ; # mFirstAttribute is accessed in read/write mode
-%  mSecondAttribute := true ; # mSecondAttribute is accessed in write mode
+%  mPremier .= %%"xyz"%% ; # mPremier is accessed in read/write mode
+%  mSecond := true ; # mSecond is accessed in write mode
 %  log key ; # key is can only be accessed in read mode
 %end with ;
 %
@@ -523,15 +401,15 @@ Le \emph{reader} \galgas{overriddenMap} retourne la table obtenue en amputant de
 %
 %Given this map type declaration:
 %
-%map @MyMap {
-%  @string mFirstAttribute ;
-%  @bool mSecondAttribute ;
+%map @MaTable {
+%  @string mPremier ;
+%  @bool mSecond ;
 %  ...
 %}
 %
 %You can write:
 %
-%@MyMap aMap := ... ;
+%@MaTable aMap := ... ;
 %@string aKey := ... ;
 %with !?aMap hasKey !aKey do
 %  # ... 
@@ -553,19 +431,19 @@ Le \emph{reader} \galgas{overriddenMap} retourne la table obtenue en amputant de
 %
 %Given this map type declaration:
 %
-%map @MyMap {
-%  @string mFirstAttribute ;
-%  @bool mSecondAttribute ;
+%map @MaTable {
+%  @string mPremier ;
+%  @bool mSecond ;
 %  ...
 %}
 %
 %You can write:
 %
-%@MyMap aMap := ... ;
+%@MaTable aMap := ... ;
 %@string aKey := ... ;
 %with xyz_ : !?aMap hasKey !aKey do
-%  xyz_mFirstAttribute .= %%"xyz"%% ; # mFirstAttribute is accessed in read/write mode
-%  xyz_mSecondAttribute := true ; # mSecondAttribute is accessed in write mode
+%  xyz_mPremier .= %%"xyz"%% ; # mPremier is accessed in read/write mode
+%  xyz_mSecond := true ; # mSecond is accessed in write mode
 %  log xyz_key ; # key is can only be accessed in read mode
 %end with ;
 %
