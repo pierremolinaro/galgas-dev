@@ -101,9 +101,10 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_mapWithMapToOve
 
 //---------------------------------------------------------------------------*
 
-GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_overriddenMap (UNUSED_LOCATION_ARGS) const {
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_overriddenMap (%?^%C_Compiler * inCompiler\n%
+        !^%COMMA_LOCATION_ARGS) const {
   GALGAS_%!TYPE_IDENTIFIER% result ;
-  getOverridenMap (result) ;
+  getOverridenMap (result, inCompiler COMMA_THERE) ;
   return result ;
 }
 %foreach INSERT_METHOD_LIST do

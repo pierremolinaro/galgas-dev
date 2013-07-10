@@ -604,7 +604,7 @@ override method @uniqueMapDeclarationAST semanticAnalysis
     end foreach ;
   end foreach ;
 #--- Check automaton actions are all defined
-  const @stringset allActions := [mapAutomatonActionMap allKeys] ;
+  const @stringset allActions := [mapAutomatonActionMap keySet] ;
   @mapStateSortedList mapStateSortedList [emptySortedList] ;
   foreach mMapStateList do
     @stringset actionsForCurrentState [emptySet] ;
@@ -662,7 +662,7 @@ override method @uniqueMapDeclarationAST semanticAnalysis
       end if ;
     end foreach ;
   end loop ;
-  const @stringset uselessStates := [mapAutomatonStateMap allKeys] - accessibleStates ;
+  const @stringset uselessStates := [mapAutomatonStateMap keySet] - accessibleStates ;
   if [uselessStates count] > 0 then
     @string s := "" ;
     foreach uselessStates

@@ -129,9 +129,9 @@ class cSharedMapRoot : public C_SharedObject {
                                                                C_Compiler * inCompiler
                                                                COMMA_LOCATION_ARGS) const ;
 
-  protected : VIRTUAL_IN_DEBUG GALGAS_stringset allKeys (LOCATION_ARGS) const ;
+  protected : VIRTUAL_IN_DEBUG GALGAS_stringset keySet (LOCATION_ARGS) const ;
 
-  protected : VIRTUAL_IN_DEBUG GALGAS_lstringlist allKeyList (LOCATION_ARGS) const ;
+  protected : VIRTUAL_IN_DEBUG GALGAS_lstringlist keyList (LOCATION_ARGS) const ;
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
@@ -812,7 +812,7 @@ PMUInt32 AC_GALGAS_map::count (void) const {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Reader "allKeys"
+  #pragma mark Reader "keySet"
 #endif
 
 //---------------------------------------------------------------------------*
@@ -829,7 +829,7 @@ static void enterKeyInStringSet (const cMapNode * inNode,
 
 //---------------------------------------------------------------------------*
 
-GALGAS_stringset cSharedMapRoot::allKeys (LOCATION_ARGS) const {
+GALGAS_stringset cSharedMapRoot::keySet (LOCATION_ARGS) const {
   GALGAS_stringset result = GALGAS_stringset::constructor_emptySet (THERE) ;
   enterKeyInStringSet (mRoot, result) ;
   return result ;
@@ -837,10 +837,10 @@ GALGAS_stringset cSharedMapRoot::allKeys (LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------*
 
-GALGAS_stringset AC_GALGAS_map::reader_allKeys (LOCATION_ARGS) const {
+GALGAS_stringset AC_GALGAS_map::reader_keySet (LOCATION_ARGS) const {
   GALGAS_stringset result ;
   if (isValid ()) {
-    result = mSharedMap->allKeys (THERE) ;
+    result = mSharedMap->keySet (THERE) ;
   }
   return result ;
 }
@@ -848,7 +848,7 @@ GALGAS_stringset AC_GALGAS_map::reader_allKeys (LOCATION_ARGS) const {
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Reader "allKeyList"
+  #pragma mark Reader "keyList"
 #endif
 
 //---------------------------------------------------------------------------*
@@ -868,7 +868,7 @@ static void enterKeyInLStringList (cMapNode * inNode,
 
 //---------------------------------------------------------------------------*
 
-GALGAS_lstringlist cSharedMapRoot::allKeyList (LOCATION_ARGS) const {
+GALGAS_lstringlist cSharedMapRoot::keyList (LOCATION_ARGS) const {
   GALGAS_lstringlist result = GALGAS_lstringlist::constructor_emptyList (THERE) ;
   enterKeyInLStringList (mRoot, result) ;
   return result ;
@@ -876,10 +876,10 @@ GALGAS_lstringlist cSharedMapRoot::allKeyList (LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------*
 
-GALGAS_lstringlist AC_GALGAS_map::reader_allKeyList (LOCATION_ARGS) const {
+GALGAS_lstringlist AC_GALGAS_map::reader_keyList (LOCATION_ARGS) const {
   GALGAS_lstringlist result ;
   if (isValid ()) {
-    result = mSharedMap->allKeyList (THERE) ;
+    result = mSharedMap->keyList (THERE) ;
   }
   return result ;
 }
@@ -1453,15 +1453,23 @@ typeComparisonResult AC_GALGAS_map::objectCompare (const AC_GALGAS_map & inOpera
 
 //---------------------------------------------------------------------------*
 
-void AC_GALGAS_map::getOverridenMap (AC_GALGAS_map & outMap) const {
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark map overriden map
+#endif
+
+//---------------------------------------------------------------------------*
+
+void AC_GALGAS_map::getOverridenMap (AC_GALGAS_map & outMap,
+                                     C_Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) const {
+  outMap.drop () ;
   if (isValid ()) {
     if (NULL == mSharedMap->mOverridenMap) {
-      outMap.makeNewEmptyMap (HERE) ;
+ //     outMap.makeNewEmptyMap (HERE) ;
+      inCompiler->onTheFlySemanticError ("reader 'overriddenMap': no overriden map" COMMA_THERE) ;
     }else{
       macroAssignSharedObject (outMap.mSharedMap, mSharedMap->mOverridenMap) ;
     }
-  }else{
-    outMap.drop () ;
   }
 }
 
