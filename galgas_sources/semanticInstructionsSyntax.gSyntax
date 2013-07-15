@@ -1247,7 +1247,7 @@ rule <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstruction
     strictTypeEquality := true ;
   or
     $>=$ ;
-    strictTypeEquality := true ;
+    strictTypeEquality := false ;
   end select ;
   $type_name$ ? @lstring mTypeName ;
   @lstring mConstantVarName ; # Empty string if no constant var
