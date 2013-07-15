@@ -245,29 +245,29 @@ end reader ;
 # @unifiedTypeMap map, for indicating the handled operators.                *
 #---------------------------------------------------------------------------*
 
-once binaryAddOperator -> @uint outMask : outMask := 1 ; end once ;
-once binarySubOperator -> @uint outMask : outMask := 1 << 1 ; end once ;
-once binaryMulOperator -> @uint outMask : outMask := 1 << 2 ; end once ;
-once binaryDivOperator -> @uint outMask : outMask := 1 << 3 ; end once ;
-once binaryModOperator -> @uint outMask : outMask := 1 << 4 ; end once ;
+once binaryAddOperator   -> @uint outMask : outMask := 1 ; end once ;
+once binarySubOperator   -> @uint outMask : outMask := 1 << 1 ; end once ;
+once binaryMulOperator   -> @uint outMask : outMask := 1 << 2 ; end once ;
+once binaryDivOperator   -> @uint outMask : outMask := 1 << 3 ; end once ;
+once binaryModOperator   -> @uint outMask : outMask := 1 << 4 ; end once ;
 once binaryShiftOperator -> @uint outMask : outMask := 1 << 5 ; end once ;
-once unaryPlusOperator -> @uint outMask : outMask := 1 << 6 ; end once ;
-once unaryMinusOperator -> @uint outMask : outMask := 1 << 7 ; end once ;
-once unaryTildeOperator -> @uint outMask : outMask := 1 << 8 ; end once ;
-once incDecOperator -> @uint outMask : outMask := 1 << 9 ; end once ;
+once unaryPlusOperator   -> @uint outMask : outMask := 1 << 6 ; end once ;
+once unaryMinusOperator  -> @uint outMask : outMask := 1 << 7 ; end once ;
+once unaryTildeOperator  -> @uint outMask : outMask := 1 << 8 ; end once ;
+once incDecOperator      -> @uint outMask : outMask := 1 << 9 ; end once ;
 
 once binaryAndOperator -> @uint outMask : outMask := 1 << 10 ; end once ;
-once binaryOrOperator -> @uint outMask : outMask := 1 << 11 ; end once ;
+once binaryOrOperator  -> @uint outMask : outMask := 1 << 11 ; end once ;
 once binaryXorOperator -> @uint outMask : outMask := 1 << 12 ; end once ;
-once unaryNotOperator -> @uint outMask : outMask := 1 << 13 ; end once ;
+once unaryNotOperator  -> @uint outMask : outMask := 1 << 13 ; end once ;
 
 once binaryConcatOperator -> @uint outMask : outMask := 1 << 14 ; end once ; # exp1 . exp2
-once dotAssignOperator -> @uint outMask : outMask := 1 << 15 ; end once ; # var .= exp ;
-once isComparable -> @uint outMask : outMask := 1 << 16 ; end once ; # Supports <, <=, >, >= operators
+once dotAssignOperator    -> @uint outMask : outMask := 1 << 15 ; end once ; # var .= exp ;
+once isComparable         -> @uint outMask : outMask := 1 << 16 ; end once ; # Supports <, <=, >, >= operators
 
-once generateEnumerationHelperMethods -> @uint outMask : outMask := 1 << 28 ; end once ;
-once doNotGenererateObjectCompare -> @uint outMask : outMask := 1 << 29 ; end once ;
-once generateDescriptionReaderUtilityMethod -> @uint outMask : outMask := 1 << 30 ; end once ;
+once generateEnumerationHelperMethods             -> @uint outMask : outMask := 1 << 28 ; end once ;
+once doNotGenererateObjectCompare                 -> @uint outMask : outMask := 1 << 29 ; end once ;
+once generateDescriptionReaderUtilityMethod       -> @uint outMask : outMask := 1 << 30 ; end once ;
 once generateCopyConstructorAndAssignmentOperator -> @uint outMask : outMask := 1 << 31 ; end once ;
 
 #---------------------------------------------------------------------------*
