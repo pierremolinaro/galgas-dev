@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2008, ..., 2011 Pierre Molinaro.                           *
+//  Copyright (C) 2008, ..., 2013 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -137,9 +137,10 @@ class cSharedUniqueMapRoot : public C_SharedObject {
   public : VIRTUAL_IN_DEBUG typeComparisonResult mapCompare (const cSharedUniqueMapRoot * inOperand) const ;
 
 //--------------------------------- Internal method for inserting proxy
-  protected : VIRTUAL_IN_DEBUG cUniqueMapNode * performInsertProxy (const C_String & inKey) ;
+  protected : VIRTUAL_IN_DEBUG cUniqueMapNode * performInsertProxy (const C_String & inKey,
+                                                                    const GALGAS_location & inLocation) ;
 
-  protected : VIRTUAL_IN_DEBUG void unsolvedProxyKeyList (GALGAS_stringlist & ioList) const ;
+  protected : VIRTUAL_IN_DEBUG void unsolvedProxyKeyList (GALGAS_lstringlist & ioList) const ;
 
 //--------------------------------- Check Map Automatons state
   public : VIRTUAL_IN_DEBUG void checkAutomatonStates (const GALGAS_location & inErrorLocation,
@@ -219,6 +220,7 @@ class cUniqueMapNode {
   public : const C_String mKey ;
   public : capCollectionElement mAttributes ;
   private : cSharedProxy * mProxy ;
+  public : TC_UniqueArray <GALGAS_location> mInvocationLocationArray ;
 //--- For state
   public : PMUInt32 mCurrentState ;
   public : cOverrideStateDescriptor * mStateArray ;
@@ -228,6 +230,11 @@ class cUniqueMapNode {
   public : cUniqueMapNode (const C_String & inKey,
                            const PMUInt32 inInitialState,
                            capCollectionElement & inAttributes) ;
+
+//--- Solved ?
+  public : inline VIRTUAL_IN_DEBUG bool isSolved (void) const {
+    return NULL != mAttributes.ptr () ;
+  }
 
 //--- Destructor
   public : virtual ~ cUniqueMapNode (void) ;
@@ -276,6 +283,7 @@ mBalance (0),
 mKey (inKey),
 mAttributes (inAttributes),
 mProxy (NULL),
+mInvocationLocationArray (),
 mCurrentState (inInitialState),
 mStateArray (NULL),
 mStateArraySize (0) {
@@ -591,10 +599,11 @@ static cUniqueMapNode * internalInsert (cUniqueMapNode * & ioRootPtr,
           ioExtension = false;
         }
       }
-    }else{ // Error, entry already exists
+    }else{
       matchingEntry = ioRootPtr ;
+      matchingEntry->mInvocationLocationArray.setCountToZero () ;
       ioExtension = false ;
-      outEntryAlreadyExists = NULL != matchingEntry->mAttributes.ptr () ;
+      outEntryAlreadyExists = matchingEntry->isSolved () ;
       if (! outEntryAlreadyExists) {
         matchingEntry->mAttributes = inAttributes ;
       }
@@ -812,12 +821,19 @@ GALGAS_uint AC_GALGAS_uniqueMap::reader_unsolvedProxyCount (UNUSED_LOCATION_ARGS
 //---------------------------------------------------------------------------*
 
 static void recursiveUnsolvedKeyList (cUniqueMapNode * inNode,
-                                      GALGAS_stringlist & ioResult) {
+                                      GALGAS_lstringlist & ioResult) {
   if (inNode != NULL) {
     recursiveUnsolvedKeyList (inNode->mInfPtr, ioResult) ;
-    if (inNode->mAttributes.ptr () == NULL) {
-      GALGAS_string s (inNode->mKey) ;
-      ioResult.addAssign_operation (s COMMA_HERE) ;
+    if (! inNode->isSolved ()) {
+      if (inNode->mInvocationLocationArray.count () == 0) {
+        GALGAS_lstring s (inNode->mKey, GALGAS_location::constructor_nowhere (HERE)) ;
+        ioResult.addAssign_operation (s COMMA_HERE) ;
+      }else{
+        for (PMSInt32 i=0 ; i<inNode->mInvocationLocationArray.count () ; i++) {
+          GALGAS_lstring s (inNode->mKey, inNode->mInvocationLocationArray (i COMMA_HERE)) ;
+          ioResult.addAssign_operation (s COMMA_HERE) ;
+        }
+      }
     }
     recursiveUnsolvedKeyList (inNode->mSupPtr, ioResult) ;
   }
@@ -825,15 +841,15 @@ static void recursiveUnsolvedKeyList (cUniqueMapNode * inNode,
 
 //---------------------------------------------------------------------------*
 
-void cSharedUniqueMapRoot::unsolvedProxyKeyList (GALGAS_stringlist & ioList) const {
-  ioList = GALGAS_stringlist::constructor_emptyList (HERE) ;
+void cSharedUniqueMapRoot::unsolvedProxyKeyList (GALGAS_lstringlist & ioList) const {
+  ioList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
   recursiveUnsolvedKeyList (mRoot, ioList) ;
 }
 
 //---------------------------------------------------------------------------*
 
-GALGAS_stringlist AC_GALGAS_uniqueMap::reader_unsolvedProxyKeyList (UNUSED_LOCATION_ARGS) const {
-  GALGAS_stringlist result ;
+GALGAS_lstringlist AC_GALGAS_uniqueMap::reader_unsolvedProxyList (UNUSED_LOCATION_ARGS) const {
+  GALGAS_lstringlist result ;
   if (isValid ()) {
     mSharedMap->unsolvedProxyKeyList (result) ;
   }
@@ -2037,7 +2053,7 @@ void AC_GALGAS_uniqueMapProxy::description (C_String & ioString,
       macroValidPointer (mSharedProxy->mNode) ;
       ioString.appendCLiteralStringConstant (mSharedProxy->mNode->mKey) ;
       ioString << ", "
-               << ((NULL != mSharedProxy->mNode->mAttributes.ptr ()) ? "solved" : "unsolved")
+               << (mSharedProxy->mNode->isSolved () ? "solved" : "unsolved")
                << ")" ;
     }
     break ;
@@ -2080,18 +2096,22 @@ void AC_GALGAS_uniqueMapProxy::internalMakeRegularProxyBySearchingKey (const AC_
 
 static cUniqueMapNode * internalInsertProxy (cUniqueMapNode * & ioRootPtr,
                                              const C_String & inKey,
+                                             const GALGAS_location & inLocation,
                                              bool & ioExtension) {
   cUniqueMapNode * matchingEntry = NULL ;
   if (ioRootPtr == NULL) {
     capCollectionElement emptyAttributes ;
     macroMyNew (ioRootPtr, cUniqueMapNode (inKey, 0, emptyAttributes)) ;
+    if (inLocation.isValidAndNotNowhere ()) {
+      ioRootPtr->mInvocationLocationArray.addObject (inLocation) ;
+    }
     ioExtension = true ;
     matchingEntry = ioRootPtr ;
   }else{
     macroValidPointer (ioRootPtr) ;
     const PMSInt32 comparaison = ioRootPtr->mKey.compare (inKey) ;
     if (comparaison > 0) {
-      matchingEntry = internalInsertProxy (ioRootPtr->mInfPtr, inKey, ioExtension) ;
+      matchingEntry = internalInsertProxy (ioRootPtr->mInfPtr, inKey, inLocation, ioExtension) ;
       if (ioExtension) {
         ioRootPtr->mBalance ++ ;
         if (ioRootPtr->mBalance == 0) {
@@ -2105,7 +2125,7 @@ static cUniqueMapNode * internalInsertProxy (cUniqueMapNode * & ioRootPtr,
         }
       }
     }else if (comparaison < 0) {
-      matchingEntry = internalInsertProxy (ioRootPtr->mSupPtr, inKey, ioExtension) ;
+      matchingEntry = internalInsertProxy (ioRootPtr->mSupPtr, inKey, inLocation, ioExtension) ;
       if (ioExtension) {
         ioRootPtr->mBalance-- ;
         if (ioRootPtr->mBalance == 0) {
@@ -2120,6 +2140,9 @@ static cUniqueMapNode * internalInsertProxy (cUniqueMapNode * & ioRootPtr,
       }
     }else{ // Ok, entry already exists
       matchingEntry = ioRootPtr ;
+      if (inLocation.isValidAndNotNowhere () && (! ioRootPtr->isSolved ())) {
+        ioRootPtr->mInvocationLocationArray.addObject (inLocation) ;
+      }
       ioExtension = false ;
     }
   }
@@ -2128,30 +2151,49 @@ static cUniqueMapNode * internalInsertProxy (cUniqueMapNode * & ioRootPtr,
 
 //---------------------------------------------------------------------------*
 
-cUniqueMapNode * cSharedUniqueMapRoot::performInsertProxy (const C_String & inKey) {
+cUniqueMapNode * cSharedUniqueMapRoot::performInsertProxy (const C_String & inKey,
+                                                           const GALGAS_location & inLocation) {
   bool extension = false ; // Unused here
-  return internalInsertProxy (mRoot, inKey, extension) ;
+  return internalInsertProxy (mRoot, inKey, inLocation, extension) ;
 }
 
 //---------------------------------------------------------------------------*
 
-cUniqueMapNode * AC_GALGAS_uniqueMap::performInsertProxy (const C_String & inKey
+cUniqueMapNode * AC_GALGAS_uniqueMap::performInsertProxy (const C_String & inKey,
+                                                          const GALGAS_location & inLocation
                                                           COMMA_UNUSED_LOCATION_ARGS) {
   cUniqueMapNode * result = NULL ;
   if (isValid ()) {
-    result = mSharedMap->performInsertProxy (inKey) ;
+    result = mSharedMap->performInsertProxy (inKey, inLocation) ;
   }
   return result ;
 }
 
 //---------------------------------------------------------------------------*
 
-void AC_GALGAS_uniqueMapProxy::internalMakeRegularProxy (AC_GALGAS_uniqueMap & ioMap,
-                                                         const GALGAS_string & inKey
-                                                         COMMA_LOCATION_ARGS) {
+void AC_GALGAS_uniqueMapProxy::internalMakeProxy (AC_GALGAS_uniqueMap & ioMap,
+                                                  const GALGAS_lstring & inKey
+                                                  COMMA_LOCATION_ARGS) {
   drop () ;
   if (inKey.isValid ()) {
-    cUniqueMapNode * node = ioMap.performInsertProxy (inKey.stringValue () COMMA_THERE) ;
+    cUniqueMapNode * node = ioMap.performInsertProxy (inKey.reader_string (THERE).stringValue (),
+                                                      inKey.reader_location (THERE)
+                                                      COMMA_THERE) ;
+    macroValidPointer (node) ;
+    attachProxyToMapNode (node) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void AC_GALGAS_uniqueMapProxy::internalMakeProxyFromString (AC_GALGAS_uniqueMap & ioMap,
+                                                            const GALGAS_string & inKey
+                                                            COMMA_LOCATION_ARGS) {
+  drop () ;
+  if (inKey.isValid ()) {
+    cUniqueMapNode * node = ioMap.performInsertProxy (inKey.stringValue (),
+                                                      GALGAS_location ()
+                                                      COMMA_THERE) ;
     macroValidPointer (node) ;
     attachProxyToMapNode (node) ;
   }

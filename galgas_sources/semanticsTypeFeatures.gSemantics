@@ -33,7 +33,7 @@ override method @stringsetPredefinedTypeAST getEnumerationList
   !@string outEnumeratedType
 :
   @unifiedTypeMapProxy stringTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"string" ?stringTypeIndex] ;
+  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringTypeIndex] ;
   outEnumerationList := [@enumerationDescriptorList emptyList] ;
   outEnumerationList += !stringTypeIndex !"key" ;
   outEnumerationVariant := [@stringlist emptyList] ;
@@ -51,7 +51,7 @@ override method @dataPredefinedTypeAST getEnumerationList
   !@string outEnumeratedType
 :
   @unifiedTypeMapProxy uintTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"uint" ?uintTypeIndex] ;
+  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"uint" ?uintTypeIndex] ;
   outEnumerationList := [@enumerationDescriptorList emptyList] ;
   outEnumerationList += !uintTypeIndex !"data" ;
   outEnumerationVariant := [@stringlist emptyList] ;
@@ -71,7 +71,7 @@ override method @stringsetPredefinedTypeAST getModifierMap
   !@modifierMap outModifierMap
 :
   @unifiedTypeMapProxy stringType ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"string" ?stringType] ;
+  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringType] ;
   outModifierMap := [@modifierMap emptyMap] ;
   [!?outModifierMap insertKey
     ![@lstring new !"removeKey" !here]
@@ -253,7 +253,7 @@ override method @stringsetPredefinedTypeAST getAddAssignArgumentList
   !@unifiedTypeMapProxyList outAddAssignArgumentList
 :
   @unifiedTypeMapProxy stringTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"string" ?stringTypeIndex] ;
+  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringTypeIndex] ;
   outAddAssignArgumentList := [@unifiedTypeMapProxyList listWithValue !stringTypeIndex] ;
 end method ;
 

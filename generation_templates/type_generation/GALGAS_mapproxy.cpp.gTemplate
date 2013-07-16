@@ -14,11 +14,20 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_null (LOCATION_
 
 //---------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::class_method_makeRegularProxy (%?^%GALGAS_%!ASSOCIATED_MAP_TYPE_IDENTIFIER% & ioMap,
+void GALGAS_%!TYPE_IDENTIFIER%::class_method_makeProxy (%?^%GALGAS_%!ASSOCIATED_MAP_TYPE_IDENTIFIER% & ioMap,
+                                       %!^%GALGAS_lstring inKey,
+                                       %!^%GALGAS_%!TYPE_IDENTIFIER% & outProxy
+                                       %!^%COMMA_LOCATION_ARGS) {
+  outProxy.internalMakeProxy (ioMap, inKey COMMA_THERE) ;
+}
+
+//---------------------------------------------------------------------------*
+
+void GALGAS_%!TYPE_IDENTIFIER%::class_method_makeProxyFromString (%?^%GALGAS_%!ASSOCIATED_MAP_TYPE_IDENTIFIER% & ioMap,
                                        %!^%GALGAS_string inKey,
                                        %!^%GALGAS_%!TYPE_IDENTIFIER% & outProxy
                                        %!^%COMMA_LOCATION_ARGS) {
-  outProxy.internalMakeRegularProxy (ioMap, inKey COMMA_THERE) ;
+  outProxy.internalMakeProxyFromString (ioMap, inKey COMMA_THERE) ;
 }
 
 %foreach ATTRIBUTE_LIST do index IDX

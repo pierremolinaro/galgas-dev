@@ -2222,17 +2222,12 @@ end function ;
 routine performSemanticAnalysis
   ??@semanticDeclarationListAST inDeclarationList
   ??@semanticContext inSemanticContext
-  ??@location inEndOfSource
   !@semanticDeclarationSortedListForGeneration outDecoratedDeclarationListForGeneration
 :
 #------ Check there is no undefined types
-  if [inSemanticContext->mTypeMap unsolvedProxyCount] > 0 then
-    @string s := "the following types are not defined:" ;
-    foreach [inSemanticContext->mTypeMap unsolvedProxyKeyList] do
-      s .= "\n  - @" . mValue ;
-    end foreach ;
-    error inEndOfSource:s ;
-  end if ;  
+  foreach [inSemanticContext->mTypeMap unsolvedProxyList] do
+    error mValue : "the '" . mValue . "' type is undefined" ;
+  end foreach ;
 #------ Create associated type (@TYPE:element) for lists, maps, ...
   @semanticDeclarationListAST semanticDeclarationList := inDeclarationList ;
   foreach inDeclarationList do
