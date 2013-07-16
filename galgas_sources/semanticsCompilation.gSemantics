@@ -410,7 +410,6 @@ routine compileSemanticsComponentAST
   performSemanticAnalysis
     ![inSemanticsComponentRoot mSemanticDeclarationList]
     !semanticContext
-    ![inSemanticsComponentRoot mEndOfSourceFile]
     ?decoratedDeclarationListForGeneration
   ;
 #------ Generate Header File

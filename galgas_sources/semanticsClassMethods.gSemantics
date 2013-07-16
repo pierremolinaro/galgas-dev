@@ -29,7 +29,7 @@ routine enterClassMethodWithStringInputArgument
   ??@bool inHasCompilerArgument
 :
   @unifiedTypeMapProxy argumentTypeIndex ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"string" ?argumentTypeIndex] ;
+  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
   argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?ioClassMethodMap insertOrReplace
@@ -51,7 +51,7 @@ override method @stringPredefinedTypeAST getClassMethodMap
   enterClassMethodWithStringInputArgument !?outClassMethodMap !?ioUnifiedTypeMap !"removeEmptyDirectory" !true ;
   enterClassMethodWithStringInputArgument !?outClassMethodMap !?ioUnifiedTypeMap !"removeDirectoryRecursively" !true ;
   @unifiedTypeMapProxy stringType ;
-  [@unifiedTypeMapProxy makeRegularProxy !?ioUnifiedTypeMap !"string" ?stringType] ;
+  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringType] ;
   @formalParameterSignature argList [emptyList] ;
   argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
   argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
