@@ -38,14 +38,14 @@ message "a source text file with the .lbb extension"
     @connectionMap connectionMap [emptyMap] ;
     foreach portNameList, mConnectionList do
       @boxInstanceProxy connectedBoxProxy ;
-      [@boxInstanceProxy makeRegularProxy !?boxInstanceMap !mConnectedBoxName->string ?connectedBoxProxy] ;
+      [@boxInstanceProxy makeProxy !?boxInstanceMap !mConnectedBoxName ?connectedBoxProxy] ;
       [!?connectionMap insertKey !mValue !connectedBoxProxy !mOppositePortName] ;
     end foreach ;
     [!?boxInstanceMap insertKey !mBoxInstanceName !connectionMap] ;
   end foreach ;
 #--- Raise an error for every undefined box
-  foreach [boxInstanceMap unsolvedProxyKeyList] do
-    error [programAST mEndOfSourceLine] : "the '" . mValue . "' box is not defined" ;
+  foreach [boxInstanceMap unsolvedProxyList] do
+    error mValue : "the '" . mValue . "' box is not defined" ;
   end foreach ;
 #--- Check connections
   if [@uint errorCount] == 0 then

@@ -82,8 +82,8 @@ routine testsuite_map :
   for e in otherMap do
     message "  key '" . e->lkey . "', value: " . e->value . "\n" ;
   end for ;
-  for key in [otherMap allKeys] do
-    [!?otherMap removeKey ![key nowhere] ?*] ;
+  for key in [otherMap keyList] do
+    [!?otherMap removeKey !key->mValue ?*] ;
   end for ;
 end routine ;
 
