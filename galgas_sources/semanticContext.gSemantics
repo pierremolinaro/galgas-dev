@@ -1007,6 +1007,9 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
 #--- lstring type index
   @unifiedTypeMapProxy lstringTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioSemanticContext->mTypeMap !"lstring" ?lstringTypeIndex] ;
+#--- lstringlist type index
+  @unifiedTypeMapProxy lstringlistTypeIndex ;
+  [@unifiedTypeMapProxy makeProxyFromString !?ioSemanticContext->mTypeMap !"lstringlist" ?lstringlistTypeIndex] ;
 #--- current map type index
   @unifiedTypeMapProxy currentMapTypeIndex ;
   [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mMapTypeName ?currentMapTypeIndex] ;
@@ -1030,6 +1033,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"count" !"uint" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"unsolvedProxyCount" !"uint" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"unsolvedProxyList" !"lstringlist" !false ;
+  enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"edgeGraphvizRepresentation" !"string" !false ;
 #--- Handle attributes
   @typedAttributeList typedAttributeList [emptyList] ;
   @formalParameterSignature insertMethodFormalArgumentList [emptyList] ;
@@ -1046,7 +1050,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     insertMethodFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
     removeMethodFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
   end foreach ;
-#--- Handle insert modifiers
+#-------------------------- Insert Modifiers
   foreach mInsertMethodList do
     if [modifierMap hasKey ![mInsertMethodName string]] then
       error mInsertMethodName:"the '" . mInsertMethodName . "' insert method is already declared" ;
@@ -1061,6 +1065,31 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
       ] ;
     end if ;
   end foreach ;
+#--------------------------- EnterEdge Modifier
+  @formalParameterSignature enterEdgeFormalArgumentList [emptyList] ;
+  enterEdgeFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  enterEdgeFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  [!?modifierMap insertOrReplace
+    !["enterEdge" nowhere]
+    ![@methodKind definedAsMember]
+    !enterEdgeFormalArgumentList
+    !false
+    ![@methodQualifier isInherited]
+    !"" # No error message
+  ] ;
+#--------------------------- topologicalSort Method
+  @formalParameterSignature topologicalSortFormalArgumentList [emptyList] ;
+  topologicalSortFormalArgumentList += !lstringlistTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
+  topologicalSortFormalArgumentList += !lstringlistTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
+  [!?instanceMethodMap insertKey
+    !["topologicalSort" nowhere]
+    ![@methodKind definedAsMember]
+    !topologicalSortFormalArgumentList
+    !here
+    !true
+    ![@methodQualifier isInherited]
+    !"" # No error message
+  ] ;
 #--- Handle search methods (methods if no state, modifiers if states)
   if [mMapStateList length] == 0 then
     foreach mSearchMethodList do
