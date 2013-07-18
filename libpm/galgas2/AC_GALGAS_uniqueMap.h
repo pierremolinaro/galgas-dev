@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2008, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 2008, ..., 2013 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -218,6 +218,17 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
 //--- Create a new map
   protected : VIRTUAL_IN_DEBUG void makeNewEmptyMap (LOCATION_ARGS) ;
 
+//--------------------------------- 'enterEdge' modifier declaration
+  public : VIRTUAL_IN_DEBUG void modifier_enterEdge (const GALGAS_lstring & inSource,
+                                                     const GALGAS_lstring & inTarget
+                                                     COMMA_LOCATION_ARGS) ;
+
+//--------------------------------- 'topologicalSort' method declaration
+  public : VIRTUAL_IN_DEBUG void method_topologicalSort (GALGAS_lstringlist & outSortedKeys,
+                                                         GALGAS_lstringlist & outUnsortedKeys,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
+
 //--------------------------------- Insert
   protected : VIRTUAL_IN_DEBUG void performInsert (capCollectionElement & inAttributes,
                                                    C_Compiler * inCompiler,
@@ -270,6 +281,8 @@ class AC_GALGAS_uniqueMap : public AC_GALGAS_root {
 //--------------------------------- Readers
   public : VIRTUAL_IN_DEBUG GALGAS_bool reader_hasKey (const GALGAS_string & inKey
                                                        COMMA_LOCATION_ARGS) const ;
+
+  public : VIRTUAL_IN_DEBUG GALGAS_string reader_edgeGraphvizRepresentation (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_locationForKey (const GALGAS_string & inKey,
                                                                    C_Compiler * inCompiler

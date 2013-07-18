@@ -37,6 +37,24 @@
 class cUniqueMapNode ;
 
 //---------------------------------------------------------------------------*
+
+typedef struct {
+  cUniqueMapNode * mSource ;
+  cUniqueMapNode * mTarget ;
+} structDependanceEdge ;
+
+//---------------------------------------------------------------------------*
+
+static bool operator == (const structDependanceEdge & inOperand1,
+                         const structDependanceEdge & inOperand2) {
+  return
+    (inOperand1.mSource == inOperand2.mSource)
+  &&
+    (inOperand1.mTarget == inOperand2.mTarget)
+  ;
+}
+
+//---------------------------------------------------------------------------*
 //                                                                           *
 //  c S h a r e d M a p R o o t                                              *
 //                                                                           *
@@ -45,8 +63,10 @@ class cUniqueMapNode ;
 class cSharedUniqueMapRoot : public C_SharedObject {
 //--------------------------------- Attributes
   private : cUniqueMapNode * mRoot ;
-  private : PMUInt32 mCount ;
+  private : PMUInt32 mNodeCount ;
   protected : cSharedUniqueMapRoot * mOverridenMap ;
+  private : TC_UniqueArray <structDependanceEdge> mDependenceEdges ;
+
 //--- For automaton and block overrides
   public : const cBranchOverrideTransformationDescriptor * mBranchBehaviourArray ;
   public : PMUInt32 mBranchBehaviourArraySize ;
@@ -59,7 +79,7 @@ class cSharedUniqueMapRoot : public C_SharedObject {
   
 //--------------------------------- Accessors
   public : inline const cUniqueMapNode * root (void) const { return mRoot ; }
-  public : inline PMUInt32 count (void) const { return mCount ; }
+  public : inline PMUInt32 count (void) const { return mNodeCount ; }
 
 //--------------------------------- Constructor
   protected : cSharedUniqueMapRoot (LOCATION_ARGS) ;
@@ -70,6 +90,17 @@ class cSharedUniqueMapRoot : public C_SharedObject {
 //--------------------------------- No copy
   private : cSharedUniqueMapRoot (const cSharedUniqueMapRoot &) ;
   private : cSharedUniqueMapRoot & operator = (const cSharedUniqueMapRoot &) ;
+
+//--------------------------------- EnterEdge
+  public : void enterEdge (cUniqueMapNode * inSource,
+                           cUniqueMapNode * inTarget) ;
+
+//--------------------------------- Edge graphviz representation
+  public : VIRTUAL_IN_DEBUG C_String edgeGraphvizRepresentation (void) const ;
+
+//--------------------------------- internalTopologicalSort
+  public : VIRTUAL_IN_DEBUG void internalTopologicalSort (GALGAS_lstringlist & outSortedNodeKeyList,
+                                                          GALGAS_lstringlist & outUnsortedNodeKeyList) const ;
 
 //--------------------------------- Unsolved Proxy Count
   public : VIRTUAL_IN_DEBUG PMUInt32 unsolvedProxyCount (void) const ;
@@ -218,6 +249,7 @@ class cUniqueMapNode {
   public : cUniqueMapNode * mSupPtr ;
   public : PMSInt32 mBalance ;
   public : const C_String mKey ;
+  public : GALGAS_location mDefinitionLocation ;
   public : capCollectionElement mAttributes ;
   private : cSharedProxy * mProxy ;
   public : TC_UniqueArray <GALGAS_location> mInvocationLocationArray ;
@@ -253,8 +285,9 @@ class cUniqueMapNode {
 cSharedUniqueMapRoot::cSharedUniqueMapRoot (LOCATION_ARGS) :
 C_SharedObject (THERE),
 mRoot (NULL),
-mCount (0),
+mNodeCount (0),
 mOverridenMap (NULL),
+mDependenceEdges (),
 mBranchBehaviourArray (NULL),
 mBranchBehaviourArraySize (0),
 mBranchCombinationArray (NULL),
@@ -281,6 +314,7 @@ mInfPtr (NULL),
 mSupPtr (NULL),
 mBalance (0),
 mKey (inKey),
+mDefinitionLocation (),
 mAttributes (inAttributes),
 mProxy (NULL),
 mInvocationLocationArray (),
@@ -329,7 +363,7 @@ cUniqueMapNode::~cUniqueMapNode (void) {
   void cSharedUniqueMapRoot::checkMap (LOCATION_ARGS) const {
     PMUInt32 n = 0 ;
     checkNode (mRoot, n) ;
-    MF_AssertThere (n == mCount, "n (%lld) != mCount (%lld)", n, mCount) ;
+    MF_AssertThere (n == mNodeCount, "n (%lld) != mNodeCount (%lld)", n, mNodeCount) ;
   }
 #endif
 
@@ -632,7 +666,8 @@ cUniqueMapNode * cSharedUniqueMapRoot::performInsert (capCollectionElement & inA
     cUniqueMapNode * matchingEntry = internalInsert (mRoot, key, inInitialState, inAttributes, entryAlreadyExists, extension) ;
     if (! entryAlreadyExists) {
       result = matchingEntry ;
-      mCount ++ ;
+      matchingEntry->mDefinitionLocation = p->mAttribute_lkey.mAttribute_location ;
+      mNodeCount ++ ;
       const C_String shadowErrorMessage (inShadowErrorMessage) ;
       const PMSInt32 shadowErrorMessageLength = shadowErrorMessage.length () ;
       if (shadowErrorMessageLength > 0) {
@@ -675,6 +710,198 @@ void AC_GALGAS_uniqueMap::performInsert (capCollectionElement & inAttributes,
   if (isValid ()) {
     /* cUniqueMapNode * node = */ mSharedMap->performInsert (inAttributes, inCompiler, inInitialState, inInsertErrorMessage, inShadowErrorMessage COMMA_THERE) ;
   }
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Modifier enterEdge
+#endif
+
+//---------------------------------------------------------------------------*
+
+void cSharedUniqueMapRoot::enterEdge (cUniqueMapNode * inSource,
+                                      cUniqueMapNode * inTarget) {
+  const structDependanceEdge e = {inSource, inTarget} ;
+  mDependenceEdges.addObjectIfUnique (e) ;
+}
+
+//---------------------------------------------------------------------------*
+
+void AC_GALGAS_uniqueMap::modifier_enterEdge (const GALGAS_lstring & inSource,
+                                              const GALGAS_lstring & inTarget
+                                              COMMA_LOCATION_ARGS) {
+  if (isValid () && inSource.isValid () && inTarget.isValid( )) {
+    cUniqueMapNode * source = mSharedMap->performInsertProxy (inSource.reader_string (THERE).stringValue (), inSource.reader_location (THERE)) ;
+    cUniqueMapNode * target = mSharedMap->performInsertProxy (inTarget.reader_string (THERE).stringValue (), inTarget.reader_location (THERE)) ;
+    mSharedMap->enterEdge (source, target) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Modifier enterEdge
+#endif
+
+//---------------------------------------------------------------------------*
+
+class cTopologicalSortElement {
+  public : PMUInt32 mDependencyCount ;
+  public : TC_Array <PMSInt32> mDependenceArray ; // Node indexes of nodes after current node
+  public : PMSInt32 mExplorationLink ;
+  public : GALGAS_lstring mKey ;
+
+//--- Constructor
+  public : cTopologicalSortElement (void) ;
+} ;
+
+//---------------------------------------------------------------------------*
+
+cTopologicalSortElement::cTopologicalSortElement (void) :
+mDependencyCount (0),
+mDependenceArray (),
+mExplorationLink (-1),
+mKey () {
+}
+
+//---------------------------------------------------------------------------*
+
+static void enterNodes (const cUniqueMapNode * inNode,
+                        TC_UniqueArray <cTopologicalSortElement> & ioArray,
+                        TC_UniqueArray <const cUniqueMapNode *> & ioNodeArray) {
+  if (NULL != inNode) {
+    enterNodes (inNode->mInfPtr, ioArray, ioNodeArray) ;
+    ioNodeArray.addObject (inNode) ;
+    const PMSInt32 idx = ioArray.count () ;
+    ioArray.addObject (cTopologicalSortElement ()) ;
+    GALGAS_lstring lkey ;
+    lkey.mAttribute_string = inNode->mKey ;
+    lkey.mAttribute_location = inNode->mDefinitionLocation ;
+    ioArray (idx COMMA_HERE).mKey = lkey ;
+    enterNodes (inNode->mSupPtr, ioArray, ioNodeArray) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void cSharedUniqueMapRoot::internalTopologicalSort (GALGAS_lstringlist & outSortedNodeKeyList,
+                                                    GALGAS_lstringlist & outUnsortedNodeKeyList) const {
+//--- Enter nodes
+  TC_UniqueArray <const cUniqueMapNode *> nodeArray ;
+  TC_UniqueArray <cTopologicalSortElement> array ;
+  enterNodes (mRoot, array, nodeArray) ;
+//--- Enter arcs
+  for (PMSInt32 i=0 ; i<mDependenceEdges.count () ; i++) {
+    const PMSInt32 sourceNodeID = nodeArray.indexOfFirstObjectEqualTo (mDependenceEdges (i COMMA_HERE).mSource) ;
+    const PMSInt32 targetNodeID = nodeArray.indexOfFirstObjectEqualTo (mDependenceEdges (i COMMA_HERE).mTarget) ;
+    cTopologicalSortElement & source = array (sourceNodeID COMMA_HERE) ;
+    cTopologicalSortElement & target = array (targetNodeID COMMA_HERE) ;
+    source.mDependencyCount ++ ;
+    target.mDependenceArray.addObject (sourceNodeID) ;
+  }
+//--- Make exploration link
+  for (PMSInt32 i=1 ; i<array.count () ; i++) {
+    array (i-1 COMMA_HERE).mExplorationLink = i ;
+  }
+  PMSInt32 root = (mNodeCount > 0) ? 0 : -1 ;
+//--- Display
+ /*  printf ("*** Working array:\n") ;
+    for (PMSInt32 i=0 ; i<array.count () ; i++) {
+      cTopologicalSortElement & entry = array (i COMMA_HERE) ;
+      printf ("#%d '%s' dep %d :", i, entry.mKey.reader_string (HERE).stringValue ().cString (HERE), entry.mDependencyCount) ;
+      for (PMSInt32 j=0 ; j<entry.mDependenceArray.count () ; j++) {
+        printf (" %d", entry.mDependenceArray (j COMMA_HERE)) ;
+      }
+      printf ("\n") ;
+    } */
+//--- Loop for accumulating sorted nodes
+  outSortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
+  bool loop = true ;
+  while (loop) {
+    loop = false ;
+    PMSInt32 p = root ;
+    root = -1 ;
+    while (p >= 0) {
+      cTopologicalSortElement & entry = array (p COMMA_HERE) ;
+      const PMSInt32 next = entry.mExplorationLink ;
+      if (0 == entry.mDependencyCount) {
+        loop = true ;
+        for (PMSInt32 i=0 ; i<entry.mDependenceArray.count () ; i++) {
+          array (entry.mDependenceArray (i COMMA_HERE) COMMA_HERE).mDependencyCount -- ;
+        }
+        outSortedNodeKeyList.addAssign_operation (entry.mKey COMMA_HERE) ;
+      }else{
+        entry.mExplorationLink = root ;
+        root = p ;
+      }
+      p = next ;
+    }
+  }
+//--- Add unsorted nodes
+  outUnsortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
+  PMSInt32 p = root ;
+  while (p >= 0) {
+    cTopologicalSortElement & entry = array (p COMMA_HERE) ;
+    outUnsortedNodeKeyList.addAssign_operation (entry.mKey COMMA_HERE) ;
+    p = entry.mExplorationLink ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void AC_GALGAS_uniqueMap::method_topologicalSort (GALGAS_lstringlist & outSortedKeys,
+                                                  GALGAS_lstringlist & outUnsortedKeys,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  outSortedKeys.drop () ;
+  outUnsortedKeys.drop () ;
+  if (isValid ()) {
+    PMUInt32 undefinedNodeCount = mSharedMap->unsolvedProxyCount () ;
+    if (0 != undefinedNodeCount) {
+      C_String s ;
+      s << "Cannot apply graph topologicalSort: there " ;
+      if (undefinedNodeCount > 1) {
+        s << "are " << cStringWithUnsigned (undefinedNodeCount) << " undefined nodes" ;
+      }else{
+        s << "is 1 undefined node" ;
+      }
+      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+    }else{
+      mSharedMap->internalTopologicalSort (outSortedKeys, outUnsortedKeys) ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Reader edgeGraphvizRepresentation
+#endif
+
+//---------------------------------------------------------------------------*
+
+C_String cSharedUniqueMapRoot::edgeGraphvizRepresentation (void) const {
+  C_String s ;
+  s << "digraph G {\n" ;
+  for (PMSInt32 i=0 ; i<mDependenceEdges.count () ; i++) {
+    const structDependanceEdge edge = mDependenceEdges (i COMMA_HERE) ;
+    s << "  \"" << edge.mSource->mKey
+      << "\" -> \"" << edge.mTarget->mKey
+      << "\" ;\n" ;
+  }  
+  s << "}\n" ;
+  return s ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_string AC_GALGAS_uniqueMap::reader_edgeGraphvizRepresentation (UNUSED_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid ()) {
+    result = GALGAS_string (mSharedMap->edgeGraphvizRepresentation ()) ;
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1588,7 +1815,7 @@ void cSharedUniqueMapRoot::closeBranch (const GALGAS_location & inErrorLocation,
     }
   //--- Remove all entries of first level
     macroMyDelete (mRoot) ;
-    mCount = 0 ;
+    mNodeCount = 0 ;
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkMap (HERE) ;
     #endif
@@ -1779,7 +2006,7 @@ static void enterDescendingEnumeration (cUniqueMapNode * inNode,
 void cSharedUniqueMapRoot::populateEnumerationArray (capCollectionElementArray & ioEnumerationArray,
                                                      const typeEnumerationOrder inEnumerationOrder) const {
   // printf ("MAP COUNT %u\n", count ()) ;
-  ioEnumerationArray.setCapacity (mCount) ;
+  ioEnumerationArray.setCapacity (mNodeCount) ;
   switch (enumerationOrderValue (inEnumerationOrder)) {
   case kENUMERATION_UP  :
     enterAscendingEnumeration (mRoot, ioEnumerationArray) ;
@@ -1792,7 +2019,7 @@ void cSharedUniqueMapRoot::populateEnumerationArray (capCollectionElementArray &
     MF_RunTimeError ("invalid inEnumerationOrder %lld", enumerationOrderValue (inEnumerationOrder), 0) ;
     break ;
   }
-  MF_Assert (mCount == ioEnumerationArray.count (), "mCount (%lld) != ioEnumerationArray.count () (%lld)", mCount, ioEnumerationArray.count ()) ;
+  MF_Assert (mNodeCount == ioEnumerationArray.count (), "mNodeCount (%lld) != ioEnumerationArray.count () (%lld)", mNodeCount, ioEnumerationArray.count ()) ;
 }
 
 //---------------------------------------------------------------------------*
