@@ -96,7 +96,7 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
   public : virtual const C_galgas_type_descriptor * staticTypeDescriptor (void) const = 0 ;
 
 //--- Description
-  protected : VIRTUAL_IN_DEBUG void description (C_String & ioString,
+  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
                                                  const PMSInt32 inIndentation) const ;
 
 //--- Internal methods for handling graph
