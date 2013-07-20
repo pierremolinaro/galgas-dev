@@ -203,6 +203,7 @@ local routine build_LIBPM_COCOA_GALGAS_group
   append_m_h_files !?fileList !"OC_GGS_Scroller" ;
   append_m_h_files !?fileList !"PMIssueInRuler" ;
   append_m_h_files !?fileList !"OC_GGS_BuildTask" ;
+  append_m_h_files !?fileList !"PMUndoManager" ;
   fileList += !"I_Stop.tiff" ;
   fileList += !"F_CocoaWrapperForGalgas.h" ;
   fileList += !"PP_CocoaGalgasPrefix.pch" ;
@@ -796,6 +797,7 @@ local routine build_COCOA_APP_files_for_sources_build_phase
   fileList += !"OC_GGS_Scroller.m" ;
   fileList += !"PMIssueInRuler.m" ;
   fileList += !"OC_GGS_BuildTask.m" ;
+  fileList += !"PMUndoManager.m" ;
 #---------- "Application Update" Files
   if inImplementsUpdate then
     fileList += !"PMApplicationUpdate.m" ;

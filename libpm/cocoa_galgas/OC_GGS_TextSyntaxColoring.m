@@ -15,6 +15,7 @@
 #import "PMIssueDescriptor.h"
 #import "OC_GGS_DocumentData.h"
 #import "PMDebug.h"
+#import "PMUndoManager.h"
 
 //---------------------------------------------------------------------------*
 
@@ -122,13 +123,25 @@
     mSourceTextStorage = [NSTextStorage new] ;
     mTokenArray = [NSMutableArray new] ;
     mTemplateTextAttributeDictionary = [NSMutableDictionary new] ;
-    mUndoManager = [NSUndoManager new] ;
+    mUndoManager = [PMUndoManager new] ;
     mTextDisplayDescriptorSet = [NSMutableSet new] ;
   //---
     [[NSNotificationCenter defaultCenter]
       addObserver:self
       selector:@selector (undoManagerCheckPointNotification:)
       name:NSUndoManagerCheckpointNotification
+      object:mUndoManager
+    ] ;
+    [[NSNotificationCenter defaultCenter]
+      addObserver:self
+      selector:@selector (undoManagerCheckPointNotification:)
+      name:NSUndoManagerDidUndoChangeNotification
+      object:mUndoManager
+    ] ;
+    [[NSNotificationCenter defaultCenter]
+      addObserver:self
+      selector:@selector (undoManagerCheckPointNotification:)
+      name:NSUndoManagerDidRedoChangeNotification
       object:mUndoManager
     ] ;
   //---
@@ -275,6 +288,16 @@
   [[NSNotificationCenter defaultCenter]
     removeObserver:self
     name:NSUndoManagerCheckpointNotification
+    object:mUndoManager
+  ] ;
+  [[NSNotificationCenter defaultCenter]
+    removeObserver:self
+    name:NSUndoManagerDidUndoChangeNotification
+    object:mUndoManager
+  ] ;
+  [[NSNotificationCenter defaultCenter]
+    removeObserver:self
+    name:NSUndoManagerDidRedoChangeNotification
     object:mUndoManager
   ] ;
 //---
@@ -780,8 +803,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSArray * undoStack = [mUndoManager valueForKey:@"_undoStack"] ;
-  //NSArray * redoStack = [mUndoManager valueForKey:@"_redoStack"] ;
+  NSArray * undoStack = [mUndoManager undoStack] ;
   //NSLog (@"undoManagerCheckPointNotification: undoStack %lu, redoStack %lu", undoStack.count, redoStack.count) ;
 //---
   isDirty = (mSavePointUndoStackCount != undoStack.count) ;
@@ -796,8 +818,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSArray * undoStack = [mUndoManager valueForKey:@"_undoStack"] ;
-  // NSArray * redoStack = [mUndoManager valueForKey:@"_redoStack"] ;
+  NSArray * undoStack = [mUndoManager undoStack] ;
   mSavePointUndoStackCount = undoStack.count ;
   // NSLog (@"documentHasBeenSaved: undoStack %lu, redoStack %lu", mSavePointUndoStackCount, mSavePointRedoStackCount) ;
   [self undoManagerCheckPointNotification:nil] ;

@@ -11,6 +11,8 @@
 @class OC_GGS_TextDisplayDescriptor ;
 @class OC_Lexique ;
 @class OC_GGS_DocumentData ;
+@class PMUndoManager ;
+
 
 @interface OC_GGS_TextSyntaxColoring : NSObject {
   @private NSMutableSet * mTextDisplayDescriptorSet ; // Of OC_GGS_TextDisplayDescriptor
@@ -25,7 +27,7 @@
   @private NSUInteger mSavePointUndoStackCount ;
   
 //--- Undo manager
-  @private NSUndoManager * mUndoManager ;
+  @private PMUndoManager * mUndoManager ;
   
 //--- Attributes for syntax coloring
   @private NSMutableArray * mTokenArray ;
