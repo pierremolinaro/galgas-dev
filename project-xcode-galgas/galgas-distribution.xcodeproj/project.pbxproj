@@ -286,6 +286,7 @@
 		CFBC4D0A1152370D006CAD14 /* projectGlobalCheckings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBC4D071152370D006CAD14 /* projectGlobalCheckings.cpp */; };
 		CFBC4D1111523723006CAD14 /* semanticContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBC4D0F11523723006CAD14 /* semanticContext.cpp */; };
 		CFBC4D1211523723006CAD14 /* semanticContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBC4D0F11523723006CAD14 /* semanticContext.cpp */; };
+		CFBF7012179AF06800789D8A /* PMUndoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBF7011179AF06800789D8A /* PMUndoManager.m */; };
 		CFC07E0D11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */; };
 		CFC07E0E11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */; };
 		CFC153030FF6A76700A61DE8 /* guiGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */; };
@@ -841,6 +842,8 @@
 		CFBDACE9137BD130008FB334 /* uint-type.h.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uint-type.h.gTemplate"; sourceTree = "<group>"; };
 		CFBDACEA137BD130008FB334 /* uint64-type.h.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uint64-type.h.gTemplate"; sourceTree = "<group>"; };
 		CFBDACEB137BD130008FB334 /* unified-class-body-for-type.h.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "unified-class-body-for-type.h.gTemplate"; sourceTree = "<group>"; };
+		CFBF7010179AF06800789D8A /* PMUndoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMUndoManager.h; sourceTree = "<group>"; };
+		CFBF7011179AF06800789D8A /* PMUndoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMUndoManager.m; sourceTree = "<group>"; };
 		CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticAnalysisOfSyntaxComponent.cpp; sourceTree = "<group>"; };
 		CFC07E0C11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticAnalysisOfSyntaxComponent.h; sourceTree = "<group>"; };
 		CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guiGrammar.cpp; sourceTree = "<group>"; };
@@ -1229,6 +1232,8 @@
 		CFAD482E0591BCF700BF8381 /* cocoa_galgas */ = {
 			isa = PBXGroup;
 			children = (
+				CFBF7010179AF06800789D8A /* PMUndoManager.h */,
+				CFBF7011179AF06800789D8A /* PMUndoManager.m */,
 				CF42221F160E5F3000CB5466 /* OC_GGS_ApplicationDelegate.h */,
 				CF422220160E5F3000CB5466 /* OC_GGS_ApplicationDelegate.m */,
 				CF51F03515C92B8C00387A48 /* PMDebug.xib */,
@@ -2081,6 +2086,7 @@
 				CF51F03215C92B8400387A48 /* OC_GGS_RulerViewForBuildOutput.m in Sources */,
 				CF51F03315C92B8400387A48 /* PMDebug.m in Sources */,
 				CF422221160E5F3000CB5466 /* OC_GGS_ApplicationDelegate.m in Sources */,
+				CFBF7012179AF06800789D8A /* PMUndoManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

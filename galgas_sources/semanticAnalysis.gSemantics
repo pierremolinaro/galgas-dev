@@ -1607,6 +1607,9 @@ override method @overridingCategoryMethodAST semanticAnalysis
     end if ;
     superType := [superType mSuperType] ;
   end loop ;
+  if baseTypeName == "" then
+    error mOverridingCategoryMethodName:"this method is not declared by a super class" ;
+  end if ;
 #--- Analyze instruction list
   @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
@@ -1683,6 +1686,9 @@ override method @overridingAbstractCategoryMethodAST semanticAnalysis
     end if ;
     superType := [superType mSuperType] ;
   end loop ;
+  if baseTypeName == "" then
+    error mOverridingCategoryMethodName:"this reader is not declared by a super class" ;
+  end if ;
 #--- Analyze formal argument list
   @variableMap variableMap [emptyMap] ;
   @formalParameterListForGeneration formalParameterListForGeneration ;
@@ -1826,6 +1832,9 @@ override method @overridingCategoryModifierAST semanticAnalysis
     end if ;
     superType := [superType mSuperType] ;
   end loop ;
+  if baseTypeName == "" then
+    error mOverridingCategoryModifierName:"this modifier is not declared by a super class" ;
+  end if ;
 #--- Analyze instruction list
   @formalParameterListForGeneration formalParameterListForGeneration [emptyList] ;
   @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
@@ -1902,6 +1911,9 @@ override method @overridingAbstractCategoryModifierAST semanticAnalysis
     end if ;
     superType := [superType mSuperType] ;
   end loop ;
+  if baseTypeName == "" then
+    error mOverridingCategoryModifierName:"this modifier is not declared by a super class" ;
+  end if ;
 #--- Analyze formal argument list
   @variableMap variableMap [emptyMap] ;
   @formalParameterListForGeneration formalParameterListForGeneration ;
@@ -2064,6 +2076,9 @@ override method @overridingCategoryReaderAST semanticAnalysis
     end if ;
     superType := [superType mSuperType] ;
   end loop ;
+  if baseTypeName == "" then
+    error mOverridingCategoryReaderName:"this reader is not declared by a super class" ;
+  end if ;
 #--- Analyze instruction list
   const @analysisContext analysisContext [new
     !inSemanticContext
@@ -2160,6 +2175,9 @@ override method @overridingAbstractCategoryReaderAST semanticAnalysis
     end if ;
     superType := [superType mSuperType] ;
   end loop ;
+  if baseTypeName == "" then
+    error mAbstractCategoryReaderName:"this reader is not declared by a super class" ;
+  end if ;
 #--- Check Signature
   if baseTypeName != "" then
     @formalInputParameterListForGeneration formalParameterListForGeneration [emptyList] ;

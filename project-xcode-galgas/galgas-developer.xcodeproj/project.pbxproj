@@ -288,6 +288,7 @@
 		CFBC4D0C1152370D006CAD14 /* projectGlobalCheckings.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBC4D071152370D006CAD14 /* projectGlobalCheckings.cpp */; };
 		CFBC4D1311523723006CAD14 /* semanticContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBC4D0F11523723006CAD14 /* semanticContext.cpp */; };
 		CFBC4D1411523723006CAD14 /* semanticContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFBC4D0F11523723006CAD14 /* semanticContext.cpp */; };
+		CFBF7006179ACAD400789D8A /* PMUndoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBF7005179ACAD400789D8A /* PMUndoManager.m */; };
 		CFC07E0F11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */; };
 		CFC07E1011A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */; };
 		CFC1042C161DFE2000253307 /* C_BigUInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC1042A161DFE2000253307 /* C_BigUInt.cpp */; };
@@ -837,6 +838,8 @@
 		CFBDACE9137BD130008FB334 /* uint-type.h.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uint-type.h.gTemplate"; sourceTree = "<group>"; };
 		CFBDACEA137BD130008FB334 /* uint64-type.h.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "uint64-type.h.gTemplate"; sourceTree = "<group>"; };
 		CFBDACEB137BD130008FB334 /* unified-class-body-for-type.h.gTemplate */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "unified-class-body-for-type.h.gTemplate"; sourceTree = "<group>"; };
+		CFBF7004179ACAD400789D8A /* PMUndoManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMUndoManager.h; sourceTree = "<group>"; };
+		CFBF7005179ACAD400789D8A /* PMUndoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMUndoManager.m; sourceTree = "<group>"; };
 		CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticAnalysisOfSyntaxComponent.cpp; sourceTree = "<group>"; };
 		CFC07E0C11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticAnalysisOfSyntaxComponent.h; sourceTree = "<group>"; };
 		CFC1042A161DFE2000253307 /* C_BigUInt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_BigUInt.cpp; sourceTree = "<group>"; };
@@ -1281,6 +1284,8 @@
 				CF3C17A714E97CCC0016A381 /* OC_GGS_BuildTask.m */,
 				CF82596C08536A130077AEAF /* F_CocoaWrapperForGalgas.h */,
 				CF82597B08536A130077AEAF /* PP_CocoaGalgasPrefix.pch */,
+				CFBF7004179ACAD400789D8A /* PMUndoManager.h */,
+				CFBF7005179ACAD400789D8A /* PMUndoManager.m */,
 			);
 			path = cocoa_galgas;
 			sourceTree = "<group>";
@@ -2461,6 +2466,7 @@
 				CF9DE67E15C8766700D44EE3 /* OC_GGS_RulerViewForBuildOutput.m in Sources */,
 				CF51F02715C9201800387A48 /* PMDebug.m in Sources */,
 				CFCAEE67160E5D3D0081F715 /* OC_GGS_ApplicationDelegate.m in Sources */,
+				CFBF7006179ACAD400789D8A /* PMUndoManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2552,7 +2558,7 @@
 				GCC_C_LANGUAGE_STANDARD = c99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_ASM_KEYWORD = NO;
-				GCC_ENABLE_OBJC_GC = unsupported;
+				GCC_ENABLE_OBJC_GC = required;
 				GCC_ENABLE_PASCAL_STRINGS = NO;
 				GCC_OPTIMIZATION_LEVEL = s;
 				GCC_PREPROCESSOR_DEFINITIONS = "LIBPM_MULTI_THREADING=1";
@@ -2647,7 +2653,6 @@
 				COPY_PHASE_STRIP = NO;
 				DEPLOYMENT_LOCATION = NO;
 				GCC_ENABLE_CPP_RTTI = NO;
-				GCC_ENABLE_OBJC_GC = required;
 				GCC_ENABLE_TRIGRAPHS = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = YES;
 				GCC_OPTIMIZATION_LEVEL = 1;
