@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2008, ..., 2012 Pierre Molinaro.                           *
+//  Copyright (C) 2008, ..., 2013 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -126,12 +126,11 @@ class cSharedGraph : public C_SharedObject {
 //--------------------------------- Attributes
   private : cGraphNode * mRoot ;
   public : inline const cGraphNode * root (void) const { return mRoot ; }
-  private : PMUInt32 mAllNodeCount ;
   private : TC_UniqueArray <cArcStruct> mArcArray ;
   private : TC_UniqueArray <cGraphNode *> mNodeArray ;
 
 //--- Count
-  public : inline PMUInt32 allNodeCount (void) const { return mAllNodeCount ; }
+  public : inline PMUInt32 allNodeCount (void) const { return mNodeArray.count () ; }
 
 //--- Constructor
   public : cSharedGraph (LOCATION_ARGS) ;
@@ -182,7 +181,6 @@ class cSharedGraph : public C_SharedObject {
 cSharedGraph::cSharedGraph (LOCATION_ARGS) :
 C_SharedObject (THERE),
 mRoot (NULL),
-mAllNodeCount (0),
 mArcArray (),
 mNodeArray () {
 }
@@ -211,15 +209,26 @@ mAttributes (inNode->mAttributes),
 mDefinitionLocation (inNode->mDefinitionLocation),
 mReferenceLocationArray (),
 mIsDefined (inNode->mIsDefined) {
+  mReferenceLocationArray.makeRoom (inNode->mReferenceLocationArray.count ()) ;
+  for (PMSInt32 i=0 ; i<inNode->mReferenceLocationArray.count () ; i++) {
+    mReferenceLocationArray.addObject (inNode->mReferenceLocationArray (i COMMA_HERE)) ;
+  }
   if (NULL != inNode->mInfPtr) {
     macroMyNew (mInfPtr, cGraphNode (inNode->mInfPtr)) ;
   }
   if (NULL != inNode->mSupPtr) {
     macroMyNew (mSupPtr, cGraphNode (inNode->mSupPtr)) ;
   }
-  mReferenceLocationArray.makeRoom (inNode->mReferenceLocationArray.count ()) ;
-  for (PMSInt32 i=0 ; i<inNode->mReferenceLocationArray.count () ; i++) {
-    mReferenceLocationArray.addObject (inNode->mReferenceLocationArray (i COMMA_HERE)) ;
+}
+
+//---------------------------------------------------------------------------*
+
+static void buildNodeArray (cGraphNode * inNode,
+                            TC_UniqueArray <cGraphNode *> & ioNodeArray) {
+  if (NULL != inNode) {
+    ioNodeArray (inNode->mNodeID COMMA_HERE) = inNode ;
+    buildNodeArray (inNode->mInfPtr, ioNodeArray) ;
+    buildNodeArray (inNode->mSupPtr, ioNodeArray) ;
   }
 }
 
@@ -229,10 +238,10 @@ void cSharedGraph::copyFrom (const cSharedGraph * inSource) {
   macroUniqueSharedObject (this) ;
   if (NULL != inSource->mRoot) {
     macroMyNew (mRoot, cGraphNode (inSource->mRoot)) ;
-    mAllNodeCount = inSource->mAllNodeCount ;
-    mArcArray.makeRoom (inSource->mArcArray.count ()) ;
+    mNodeArray.addObjects (inSource->mNodeArray.count (), NULL) ;
+    buildNodeArray (mRoot, mNodeArray) ;
     for (PMSInt32 i=0 ; i<inSource->mArcArray.count () ; i++) {
-      mArcArray (i COMMA_HERE) = inSource->mArcArray (i COMMA_HERE) ;
+      mArcArray.addObject (inSource->mArcArray (i COMMA_HERE)) ;
     }
   }
 }
@@ -242,8 +251,10 @@ void cSharedGraph::copyFrom (const cSharedGraph * inSource) {
 void cSharedGraph::description (C_String & ioString,
                                 const PMSInt32 /* inIndentation */) const {
   ioString << " ("
-           << cStringWithUnsigned (mAllNodeCount)
-           << " node" << ((mAllNodeCount > 1) ? "s" : "")
+           << cStringWithUnsigned (mNodeArray.count ())
+           << " node" << ((mNodeArray.count () > 1) ? "s" : "")
+           << ", " << cStringWithUnsigned (mArcArray.count ())
+           << " edge" << ((mArcArray.count () > 1) ? "s" : "")
            << ")" ;
 }
 
@@ -435,10 +446,9 @@ cGraphNode * cSharedGraph::internalInsert (cGraphNode * & ioRootPtr,
                                            bool & ioExtension) {
   cGraphNode * matchingEntry = NULL ;
   if (ioRootPtr == NULL) {
-    macroMyNew (ioRootPtr, cGraphNode (inKey, mAllNodeCount)) ;
+    macroMyNew (ioRootPtr, cGraphNode (inKey, mNodeArray.count ())) ;
     mNodeArray.addObject (ioRootPtr) ;
     ioExtension = true ;
-    mAllNodeCount ++ ;
     matchingEntry = ioRootPtr ;
   }else{
     macroValidPointer (ioRootPtr) ;
@@ -564,8 +574,8 @@ void cSharedGraph::addArc (const C_String & inSourceNodeKey,
   cGraphNode * targetNode = findOrAddNodeForKey (inTargetNodeKey) ;
   targetNode->mReferenceLocationArray.addObject (inTargetNodeLocation) ;
   const cArcStruct arc (sourceNode->mNodeID, targetNode->mNodeID) ;
-  mArcArray.addObjectInOrderedArray (arc) ;
-//  mArcArray.addObjectIfUnique (arc) ;
+//  mArcArray.addObjectInOrderedArray (arc) ;
+  mArcArray.addObjectIfUnique (arc) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -752,8 +762,8 @@ void cSharedGraph::internalTopologicalSort (cSharedList * & outSortedList,
                                             GALGAS_lstringlist & outSortedNodeKeyList,
                                             cSharedList * & outUnsortedList,
                                             GALGAS_lstringlist & outUnsortedNodeKeyList) const {
-  TC_UniqueArray <cTopologicalSortEntry> array ((PMSInt32) mAllNodeCount COMMA_HERE) ;
-  array.addObjects ((PMSInt32) mAllNodeCount, cTopologicalSortEntry ()) ;
+  TC_UniqueArray <cTopologicalSortEntry> array (mNodeArray.count () COMMA_HERE) ;
+  array.addObjects (mNodeArray.count (), cTopologicalSortEntry ()) ;
 //--- Enter nodes
   enterNodes (mRoot, array) ;
 //--- Enter arcs
@@ -768,7 +778,7 @@ void cSharedGraph::internalTopologicalSort (cSharedList * & outSortedList,
   for (PMSInt32 i=1 ; i<array.count () ; i++) {
     array (i-1 COMMA_HERE).mLink = i ;
   }
-  PMSInt32 root = (mAllNodeCount > 0) ? 0 : -1 ;
+  PMSInt32 root = (mNodeArray.count () > 0) ? 0 : -1 ;
 //--- Display
   /* printf ("*** Working array:\n") ;
     for (PMSInt32 i=0 ; i<array.count () ; i++) {
