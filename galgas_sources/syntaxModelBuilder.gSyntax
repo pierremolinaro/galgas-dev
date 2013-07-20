@@ -215,7 +215,7 @@ rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList 
     @localVariableDeclarationListAST localVariableDeclarationList [emptyList] ;
     <semantic_instruction> ? instruction !?localVariableDeclarationList ;
     foreach localVariableDeclarationList do
-      outSyntaxInstructionList += ![@localVariableDeclarationAST new ![mTypeName location] !mTypeName !mVariableName] ;
+      outSyntaxInstructionList += ![@localVariableDeclarationAST new ![mTypeName location] !mTypeName !mVariableName !mIsUndefinedConstant] ;
     end foreach ;
     outSyntaxInstructionList += !instruction ;
   while
@@ -223,7 +223,7 @@ rule <syntax_instruction_list> !@syntaxInstructionList outSyntaxInstructionList 
     @localVariableDeclarationListAST localVariableDeclarationList [emptyList] ;
     <syntax_instruction> ? instruction !?localVariableDeclarationList ;
     foreach localVariableDeclarationList do
-      outSyntaxInstructionList += ![@localVariableDeclarationAST new ![mTypeName location] !mTypeName !mVariableName] ;
+      outSyntaxInstructionList += ![@localVariableDeclarationAST new ![mTypeName location] !mTypeName !mVariableName !mIsUndefinedConstant] ;
     end foreach ;
     outSyntaxInstructionList += !instruction ;
   end repeat ;

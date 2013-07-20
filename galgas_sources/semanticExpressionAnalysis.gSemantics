@@ -47,6 +47,14 @@ uniquemap @variableMap {
     dropAccess      -> usedLocalConstant error "a constant cannot be drop"
   }
 
+#--- Undefined Local constant
+  state undefinedLocalConstant warning "the '%K' constant value is unused" {
+    readAccess      -> undefinedLocalConstant error "the constant is undefined"
+    writeAccess     -> localConstant
+    readWriteAccess -> undefinedLocalConstant error "the constant is undefined"
+    dropAccess      -> undefinedLocalConstant error "the constant is undefined"
+  }
+
 #--- Local variable
   state undefinedLocalVariable warning "the '%K' local variable is unused" {
     readAccess      -> undefinedLocalVariable error "an undefined local variable cannot be read"
@@ -193,6 +201,7 @@ uniquemap @variableMap {
   insert insertNonMutableAttribute state currentInstanceAttribute error message "redefinition of '%K' attribute (previous declaration was in %L)" ;
   insert insertUndefinedLocalVariable state undefinedLocalVariable error message "redefinition of '%K' variable (previous declaration was in %L)" ;
   insert insertDefinedLocalVariable state definedLocalVariable error message "redefinition of '%K' variable (previous declaration was in %L)" ;
+  insert insertUndefinedLocalConstant state undefinedLocalConstant error message "redefinition of '%K' variable (previous declaration was in %L)" ;
   insert insertLocalConstant state localConstant error message "redefinition of '%K' variable (previous declaration was in %L)" ;
   insert insertUsedLocalConstant state usedLocalConstant error message "redefinition of '%K' variable (previous declaration was in %L)" ;
   insert insertInputFormalArgument state inputFormalParameter error message "redefinition of '%K' variable (previous declaration was in %L)" ;
@@ -239,6 +248,8 @@ uniquemap @variableMap {
     droppedLocalVariable:usedLocalVariable -> usedLocalVariable
     undefinedLocalVariable:droppedLocalVariable -> droppedLocalVariable
     undefinedLocalVariable:usedLocalVariable -> usedLocalVariable
+    undefinedLocalConstant:localConstant -> undefinedLocalConstant error "this branch defines the '%K' variable, while previous ones let it undefined"
+    undefinedLocalConstant:usedLocalConstant -> undefinedLocalConstant error "this branch defines the '%K' variable, while previous ones let it undefined"
   }{
     currentInstanceAttributeInModifier:currentInstanceDroppedAttributeInModifier -> currentInstanceAttributeInModifier error "this branch drops the '%K' attribute, while previous ones let it defined"
     currentInstanceDroppedAttributeInModifier:currentInstanceAttributeInModifier -> currentInstanceAttributeInModifier error "this branch lets the '%K' attribute defined, while previous ones drop it"
@@ -276,6 +287,8 @@ uniquemap @variableMap {
 
 #--- 'repeatBlock' override definitions
   override repeatBlock {
+    undefinedLocalConstant:localConstant -> undefinedLocalConstant error "the repeated branch should not define the '%K' variable"
+    undefinedLocalConstant:usedLocalConstant -> undefinedLocalConstant error "the repeated branch should not define the '%K' variable"
     currentInstanceAttributeInModifier:currentInstanceDroppedAttributeInModifier -> currentInstanceAttributeInModifier error "the repeated branch should not drop the '%K' attribute"
     currentInstanceDroppedAttributeInModifier:currentInstanceAttributeInModifier -> currentInstanceAttributeInModifier
     constantInputFormalArgument:usedConstantInputFormalArgument -> usedConstantInputFormalArgument

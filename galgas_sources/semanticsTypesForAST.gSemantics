@@ -339,6 +339,7 @@ class @outputInputActualParameterAST extends @actualParameterAST {
 
 class @inputActualParameterAST extends @actualParameterAST {
   @lstring mInputActualParameterName ;
+  @bool mIsContant ;
 }
 
 #---------------------------------------------------------------------------*
@@ -462,13 +463,15 @@ class @onceFunctionDeclarationAST extends @semanticDeclarationAST {
 class @localVariableDeclarationAST extends @semanticInstructionAST {
   @lstring mTypeName ;
   @lstring mVariableName ;
+  @bool mIsUndefinedConstant ;
 }
 
 #---------------------------------------------------------------------------*
 
 list @localVariableDeclarationListAST {
-  @lstring mTypeName feature nogetter ;
-  @lstring mVariableName feature nogetter ;
+  @lstring mTypeName ;
+  @lstring mVariableName ;
+  @bool mIsUndefinedConstant ;
 }
 
 #---------------------------------------------------------------------------*

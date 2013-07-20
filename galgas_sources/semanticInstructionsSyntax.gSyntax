@@ -70,7 +70,7 @@ rule <semantic_instruction_list> !@semanticInstructionListAST outInstructionsLis
     @localVariableDeclarationListAST localVariableDeclarationList [emptyList] ;
     <semantic_instruction> ? instruction !?localVariableDeclarationList ;
     foreach localVariableDeclarationList do
-      outInstructionsList += ![@localVariableDeclarationAST new ![mTypeName location] !mTypeName !mVariableName] ;
+      outInstructionsList += ![@localVariableDeclarationAST new ![mTypeName location] !mTypeName !mVariableName !mIsUndefinedConstant] ;
     end foreach ;
     outInstructionsList += !instruction ;
   end repeat ;
@@ -255,7 +255,7 @@ rule <semantic_instruction>
   $type_name$ ?@lstring typeName ;
   $identifier$ ?@lstring variableName ;
   select
-    outInstruction := [@localVariableDeclarationAST new ![typeName location] !typeName !variableName] ;
+    outInstruction := [@localVariableDeclarationAST new ![typeName location] !typeName !variableName !false] ;
   or
     $:=$ ;
     @semanticExpressionAST sourceExpression ;
