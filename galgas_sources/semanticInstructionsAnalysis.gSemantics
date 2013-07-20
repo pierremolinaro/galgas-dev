@@ -174,11 +174,10 @@ override method @localVariableOrConstantDeclarationWithAssignmentAST analyzeSema
   ?!@variableMap ioVariableMap
 :
 #--- Analyze source expression
-  @semanticExpressionForGeneration expression ;
   [mSourceExpression analyzeSemanticExpression
     !inAnalysisContext
     !?ioVariableMap
-    ?expression
+    ?@semanticExpressionForGeneration expression
   ] ;
 #--- Check target variable
   const @unifiedTypeMapProxy targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
@@ -209,7 +208,11 @@ override method @localVariableDeclarationAST analyzeSemanticInstruction
 #--- Check target variable
   const @unifiedTypeMapProxy targetType := [@unifiedTypeMapProxy searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeName] ;
   const @string targetVariableCppName := "var_" . [mVariableName identifierRepresentation] ;
-  [!?ioVariableMap insertUndefinedLocalVariable !mVariableName !targetType !targetVariableCppName !targetVariableCppName] ;
+  if mIsUndefinedConstant then
+    [!?ioVariableMap insertUndefinedLocalConstant !mVariableName !targetType !targetVariableCppName !targetVariableCppName] ;
+  else
+    [!?ioVariableMap insertUndefinedLocalVariable !mVariableName !targetType !targetVariableCppName !targetVariableCppName] ;
+  end if ;
 #--- Generate instruction
   ioInstructionListForGeneration += ![@localVariableDeclarationForGeneration new
     !targetType
@@ -531,9 +534,12 @@ override method @inputActualParameterAST checkAgainstFormalArgument
     . "' passing mode: this parameter should be passed with '" . [inFormalArgumentPassingMode correspondingEffectiveParameterString] . "'"
     ;
   end if ;
-  @unifiedTypeMapProxy parameterType ;
-  @string targetVariableCppName ;
-  [!?ioVariableMap searchForWriteAccess !mInputActualParameterName ?parameterType ?targetVariableCppName ?*] ;
+  [!?ioVariableMap searchForWriteAccess
+    !mInputActualParameterName
+    ?@unifiedTypeMapProxy parameterType
+    ?@string targetVariableCppName
+    ?*
+  ] ;
 #--- Check type
   if inFormalArgumentType != parameterType then
     error mInputActualParameterName

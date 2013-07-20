@@ -137,11 +137,28 @@ rule <actual_parameter_list>
     or
       $type_name$ ? @lstring declarationTypeName ;
       $identifier$ ?inputActualParameterName ;
-      ioLocalVariableDeclarationList += !declarationTypeName !inputActualParameterName ;
+      ioLocalVariableDeclarationList += !declarationTypeName !inputActualParameterName !false ;
     end select ;
     outActualParameterList += ![@inputActualParameterAST new
       !qualifierLocation
       !inputActualParameterName
+      !false # is not constant
+    ] ;
+  while
+    $??$ ;
+    const @location qualifierLocation := here ;
+    @lstring inputActualParameterName ;
+    select
+      $identifier$ ?inputActualParameterName ;
+    or
+      $type_name$ ? @lstring declarationTypeName ;
+      $identifier$ ?inputActualParameterName ;
+      ioLocalVariableDeclarationList += !declarationTypeName !inputActualParameterName !true ;
+    end select ;
+    outActualParameterList += ![@inputActualParameterAST new
+      !qualifierLocation
+      !inputActualParameterName
+      !true # Is contant
     ] ;
   end repeat ;
 end rule ;
