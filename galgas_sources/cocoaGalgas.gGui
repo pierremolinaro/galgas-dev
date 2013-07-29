@@ -57,6 +57,10 @@ with lexique "galgas_scanner.gLexique" {
   label $override$, $reader$, $type_name$, $identifier$ ;
   label $reader$, $type_name$, $identifier$ ;
   label $when$, $.$, $literal_string$ ;
+  label * $commentMark$ (2, 0) ;
+  label $terminal$, $!$ * ;
+  label $terminal$, $error$ * ;
+
   
   textMacro "Types/Class" :
     "class @aClassName : extends @superClassName {\n"

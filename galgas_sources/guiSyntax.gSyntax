@@ -70,15 +70,42 @@ rule <gui_component_start_symbol>
       repeat
       while
         $label$ ;
-        @lstringlist terminalList [emptyList] ;
+        @uint displayStyle ;
+        select
+          displayStyle := 0 ;
+        or
+          $*$ ;
+          displayStyle := 1 ;
+        end select ;
+        @terminalLabelListAST terminalList [emptyList] ;
         repeat
           $terminal$ ? @lstring terminal ;
-          terminalList += !terminal ;
+          @uint displayFlags ;
+          select
+            displayFlags := 0 ; # Default
+          or
+            $*$ ;
+            displayFlags := 0xFFFF ; # Do not diplay
+          or
+            $($ ;
+            $unsigned_literal_integer$ ?@luint leadingStrip ;
+            if leadingStrip->uint > 15 then
+              error leadingStrip:"leading strip should be <= 15" ;
+            end if ;
+            $,$ ;
+            $unsigned_literal_integer$ ?@luint endingStrip ;
+            if endingStrip->uint > 15 then
+              error endingStrip:"tail strip should be <= 15" ;
+            end if ;
+            displayFlags := (leadingStrip->uint << 4) | endingStrip ;
+           $)$ ;
+          end select ;
+          terminalList += !terminal !displayFlags ;
         while
           $,$ ;
         end repeat ;
         $;$ ;
-        labels += !terminalList !here ;
+        labels += !displayStyle !terminalList !here ;
       while
         $identifier$ ?@lstring key ;
         $literal_string$ ?@lstring name ;

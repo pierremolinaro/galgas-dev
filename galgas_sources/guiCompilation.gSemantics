@@ -2,7 +2,7 @@
 #                                                                           *
 #  'gui' component compilation                                              *
 #                                                                           *
-#  Copyright (C) 2008, ..., 2008 Pierre Molinaro.                           *
+#  Copyright (C) 2008, ..., 2013 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -167,9 +167,9 @@ routine compileGuiComponentFromAST
   #--- Check labels
     foreach mLabels do
       foreach mTerminalList do
-        if not [terminalSymbolSet hasKey ![mValue string]] then
-          error mValue: "the '$"
-            . mValue
+        if not [terminalSymbolSet hasKey ![mTerminal string]] then
+          error mTerminal: "the '$"
+            . mTerminal
             . "$' terminal symbol is not declared by the '"
             . mLexiqueFileName
             . "' lexique"
