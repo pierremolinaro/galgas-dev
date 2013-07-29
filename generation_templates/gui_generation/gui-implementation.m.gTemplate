@@ -64,9 +64,10 @@ end foreach
   %//                                                                           *\n%
   %//---------------------------------------------------------------------------*\n\n%
   foreach mLabels do
-    %static const UInt16 gPopUpData_%![mLexiqueClassName identifierRepresentation]%_%![[mLocation locationIndex] string]% [%![[mTerminalList length] + 1 string]%] = {\n%
+    %static const UInt16 gPopUpData_%![mLexiqueClassName identifierRepresentation]%_%![[mLocation locationIndex] string]% [%![ 2 * [mTerminalList length] + 2 string]%] = {\n%
+    %  %![mLeadingCharacterStrippedCount string]%, // Leading character count to strip\n%
       foreach mTerminalList do
-        %  %!mLexiqueClassName%_1_%![mValue identifierRepresentation]%,\n%
+        %  %!mLexiqueClassName%_1_%![mTerminal identifierRepresentation]%, %![mDisplayFlags string]%,\n%
       end foreach    
     %  0\n%
     %} ;\n\n%

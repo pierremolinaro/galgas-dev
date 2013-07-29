@@ -711,11 +711,20 @@ end rule ;
 
 # ------------------------------------ Comment ----------------------------
 $comment$ error message "a comment" style commentStyle feature nonAtomicSelection ;
+$commentMark$ error message "a comment" style commentStyle feature nonAtomicSelection ;
 rule '#' :
-  repeat
-  while '\u0001' -> '\u0009' | '\u000B' | '\u000C' | '\u000E' -> '\uFFFD' :
-  end repeat ;
-  drop $comment$ ;
+  select
+  when '!' :
+    repeat
+    while '\u0001' -> '\u0009' | '\u000B' | '\u000C' | '\u000E' -> '\uFFFD' :
+    end repeat ;
+    drop $commentMark$ ;
+  default
+    repeat
+    while '\u0001' -> '\u0009' | '\u000B' | '\u000C' | '\u000E' -> '\uFFFD' :
+    end repeat ;
+    drop $comment$ ;
+  end select ;
 end rule ;
 
 # --------------------- separators -----------------------------------------
