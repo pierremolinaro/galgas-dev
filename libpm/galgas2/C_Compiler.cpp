@@ -541,11 +541,6 @@ generateFileWithPatternFromPathes (const C_String & inStartPath,
     //printf ("inFileName '%s'\n", inFileName.cString (HERE)) ;
     //printf ("fileName '%s'\n", fileName.cString (HERE)) ;
     const C_String directory = fileName.stringByDeletingLastPathComponent () ;
-    if (gOption_galgas_5F_builtin_5F_options_noteFileAccess.mValue) {
-      C_String s ;
-      s << "- Note file access: create '" << directory << "' directory if does not exist\n" ;
-      printMessage (s COMMA_HERE) ;
-    }
     C_FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (performGeneration ()) {
       C_TextFileWrite f (fileName) ;
@@ -688,11 +683,6 @@ generateFileFromPathes (const C_String & inStartPath,
     //printf ("inFileName '%s'\n", inFileName.cString (HERE)) ;
     //printf ("fileName '%s'\n", fileName.cString (HERE)) ;
     const C_String directory = fileName.stringByDeletingLastPathComponent () ;
-    if (gOption_galgas_5F_builtin_5F_options_noteFileAccess.mValue) {
-      C_String s ;
-      s << "- Note file access: create '" << directory << "' directory if does not exist\n" ;
-      printMessage (s COMMA_HERE) ;
-    }
     C_FileManager::makeDirectoryIfDoesNotExist (directory) ;
     if (performGeneration ()) {
       C_TextFileWrite f (fileName) ;
