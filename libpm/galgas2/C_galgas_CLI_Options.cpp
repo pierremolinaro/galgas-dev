@@ -49,14 +49,6 @@ C_BoolCommandLineOption gOption_galgas_5F_builtin_5F_options_trace ("galgas_buil
 
 //---------------------------------------------------------------------------*
 
-C_BoolCommandLineOption gOption_galgas_5F_builtin_5F_options_noteFileAccess ("galgas_builtin_options",
-                                         "noteFileAccess",
-                                         0,
-                                         "note-file-access",
-                                         "Print a message for every file access") ;
-
-//---------------------------------------------------------------------------*
-
 C_BoolCommandLineOption
 gOption_galgas_5F_builtin_5F_options_verbose_5F_output ("galgas_builtin_options",
                                                     "verbose_output",
@@ -143,8 +135,7 @@ void setExecutionMode (C_String & outErrorMessage) {
     outErrorMessage << "** Fatal Error: invalid '--mode=" << mode << "' parameter; it should be:\n"
       "  --mode=                     default mode: perform compilation;\n"
       "  --mode=lexical-only         perform only lexical analysis;\n"
-      "  --mode=syntax-only          perform only syntax analysis;\n"
-      "  --mode=indexing             output indexing files.\n" ;
+      "  --mode=syntax-only          perform only syntax analysis.\n" ;
   }
 }
 

@@ -42,10 +42,6 @@ extern C_BoolCommandLineOption gOption_galgas_5F_builtin_5F_options_outputConcre
 
 //---------------------------------------------------------------------------*
 
-extern C_BoolCommandLineOption gOption_galgas_5F_builtin_5F_options_noteFileAccess ;
-
-//---------------------------------------------------------------------------*
-
 extern C_BoolCommandLineOption gOption_galgas_5F_builtin_5F_options_verbose_5F_output ;
 
 //---------------------------------------------------------------------------*
