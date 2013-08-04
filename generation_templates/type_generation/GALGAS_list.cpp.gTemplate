@@ -184,6 +184,34 @@ void GALGAS_%!TYPE_IDENTIFIER%::addAssign_operation (%?^
 
 //---------------------------------------------------------------------------*
 
+void GALGAS_%!TYPE_IDENTIFIER%::modifier_insertAtIndex (%?^
+  foreach ATTRIBUTE_LIST do index IDX
+    %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inOperand%![IDX string]%,\n%!^
+  end foreach
+   %const GALGAS_uint inInsertionIndex,\n%!^
+   %C_Compiler * inCompiler\n%!^
+   %COMMA_LOCATION_ARGS) {
+  if (isValid () && inInsertionIndex.isValid ()%
+  foreach ATTRIBUTE_LIST
+  do index IDX % && inOperand%![IDX string]%.isValid ()%
+  end foreach
+  %) {
+    cCollectionElement * p = NULL ;
+    macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
+    foreach ATTRIBUTE_LIST
+    do index IDX %inOperand%![IDX string]
+    between %, %
+    end foreach
+    % COMMA_THERE)) ;
+    capCollectionElement attributes ;
+    attributes.setPointer (p) ;
+    macroDetachSharedObject (p) ;
+    addObjectAtIndex (attributes, inInsertionIndex.uintValue (), inCompiler COMMA_THERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
 void GALGAS_%!TYPE_IDENTIFIER%::modifier_prependValue (%?^
   foreach ATTRIBUTE_LIST
   do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inOperand%![IDX string]
@@ -252,7 +280,6 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_popLast (%?^
   end foreach
 %  }else{
     macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
-    macroUniqueSharedObject (p) ;
 %
  foreach ATTRIBUTE_LIST do index IDX
     %    outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%

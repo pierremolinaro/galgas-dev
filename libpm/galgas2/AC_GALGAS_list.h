@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2008, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 2008, ..., 2013 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -100,6 +100,11 @@ class AC_GALGAS_list : public AC_GALGAS_root {
 
 //--- Internal methods for handling list
   protected : VIRTUAL_IN_DEBUG void addObject (const capCollectionElement & inElementToAdd) ;
+  
+  protected : VIRTUAL_IN_DEBUG void addObjectAtIndex (const capCollectionElement & inElementToAdd,
+                                                      const PMUInt32 inInsertionIndex,
+                                                      C_Compiler * inCompiler
+                                                      COMMA_LOCATION_ARGS) ;
   
   private : VIRTUAL_IN_DEBUG void insulateList (LOCATION_ARGS) ;
   

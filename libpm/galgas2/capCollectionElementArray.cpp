@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 2010, ..., 2013 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -25,6 +25,11 @@
 
 #include "capCollectionElementArray.h"
 #include "utilities/MF_MemoryControl.h"
+
+//---------------------------------------------------------------------------*
+
+#include "strings/C_String.h"
+#include "galgas2/C_Compiler.h"
 
 //---------------------------------------------------------------------------*
 
@@ -98,6 +103,26 @@ void capCollectionElementArray::addObject (const capCollectionElement & inObject
   MF_Assert (mCount < mCapacity, "mCount (%lld) >= mCapacity (%lld)", mCount, mCapacity) ;
   mArray [mCount] = inObject ;
   mCount ++ ;
+}
+
+//---------------------------------------------------------------------------*
+
+void capCollectionElementArray::addObjectAtIndex (const capCollectionElement & inObject,
+                                                  const PMUInt32 inInsertionIndex,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  MF_Assert (mCount < mCapacity, "mCount (%lld) >= mCapacity (%lld)", mCount, mCapacity) ;
+  if (inInsertionIndex <= mCount) {
+    for (PMUInt32 i=mCount ; i>inInsertionIndex ; i--) {
+      mArray [i] = mArray [i-1] ;
+    }
+    mArray [inInsertionIndex] = inObject ;
+    mCount ++ ;
+  }else{
+    C_String s = "insertAtIndex: insertion index (" ;
+    s << inInsertionIndex << ") > length (" << mCount << ")" ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }
 }
 
 //---------------------------------------------------------------------------*

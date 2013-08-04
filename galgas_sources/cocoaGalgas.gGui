@@ -58,8 +58,8 @@ with lexique "galgas_scanner.gLexique" {
   label $reader$, $type_name$, $identifier$ ;
   label $when$, $.$, $literal_string$ ;
   label * $commentMark$ (2, 0) ;
-  label $terminal$, $!$ * ;
-  label $terminal$, $error$ * ;
+  label $terminal$, $!$ - ;
+  label $terminal$, $error$ - ;
 
   
   textMacro "Types/Class" :
