@@ -1974,7 +1974,7 @@ override method @listDeclarationAST enterInSemanticContext
       ] ;
     end if ;
   end foreach ;
-#--- Modifiers
+#----------------------------------------- Modifiers
   @modifierMap modifierMap [emptyMap] ;
   [!?modifierMap insertOrReplace
     ![@lstring new !"popFirst" !here]
@@ -2015,7 +2015,18 @@ override method @listDeclarationAST enterInSemanticContext
       ] ;
     end if ;
   end foreach ;
-#--- Instance methods
+#--- Modifier 'insertAtIndex'
+  modifierInputFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] ; # At insertion index argument
+  [!?modifierMap insertOrReplace
+    ![@lstring new !"insertAtIndex" !here]
+    ![@methodKind definedAsMember]
+    !modifierInputFormalArgumentList
+    !true
+    ![@methodQualifier isBasic]
+    !"" # No error message
+  ] ;
+  drop modifierInputFormalArgumentList ;
+#------------------------- Instance methods
   @instanceMethodMap instanceMethodMap [emptyMap] ;
   [!?instanceMethodMap insertKey
     ![@lstring new !"first" !here]

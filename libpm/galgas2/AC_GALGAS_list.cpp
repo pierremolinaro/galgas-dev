@@ -76,6 +76,11 @@ class cSharedList : public C_SharedObject {
 
   protected : void addObject (const capCollectionElement & inObjectArray) ;
 
+  protected : void addObjectAtIndex (const capCollectionElement & inElementToAdd,
+                                     const PMSInt32 inInsertionIndex,
+                                     C_Compiler * inCompiler
+                                     COMMA_LOCATION_ARGS) ;
+
   protected : void removeFirstObject (capCollectionElement & outObjectAttributeArray,
                                    C_Compiler * inCompiler
                                    COMMA_LOCATION_ARGS) ;
@@ -123,6 +128,18 @@ void cSharedList::addObject (const capCollectionElement & inObject) {
   mObjectArray.setCapacity (mObjectArray.count () + 1) ;
   mObjectArray.addObject (inObject) ;
 }
+
+//---------------------------------------------------------------------------*
+
+void cSharedList::addObjectAtIndex (const capCollectionElement & inObject,
+                                    const PMSInt32 inInsertionIndex,
+                                    C_Compiler * inCompiler
+                                    COMMA_LOCATION_ARGS) {
+  macroUniqueSharedObject (this) ;
+  mObjectArray.setCapacity (mObjectArray.count () + 1) ;
+  mObjectArray.addObjectAtIndex (inObject, inInsertionIndex, inCompiler COMMA_THERE) ;
+}
+
 
 //---------------------------------------------------------------------------*
 
@@ -497,6 +514,18 @@ void AC_GALGAS_list::addObject (const capCollectionElement & inElementToAdd) {
   insulateList (HERE) ;
   if (NULL != mSharedList) {
     mSharedList->addObject (inElementToAdd) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void AC_GALGAS_list::addObjectAtIndex (const capCollectionElement & inElementToAdd,
+                                       const PMUInt32 inInsertionIndex,
+                                       C_Compiler * inCompiler
+                                       COMMA_LOCATION_ARGS) {
+  insulateList (HERE) ;
+  if (NULL != mSharedList) {
+    mSharedList->addObjectAtIndex (inElementToAdd, inInsertionIndex, inCompiler COMMA_THERE) ;
   }
 }
 

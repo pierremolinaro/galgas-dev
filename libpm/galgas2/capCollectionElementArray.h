@@ -4,7 +4,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                           *
+//  Copyright (C) 2010, ..., 2013 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -32,6 +32,10 @@
 
 //---------------------------------------------------------------------------*
 
+class C_Compiler ;
+
+//---------------------------------------------------------------------------*
+
 class capCollectionElementArray {
 //--- Default constructor
   public : capCollectionElementArray (void) ;
@@ -53,6 +57,11 @@ class capCollectionElementArray {
 //    Array should be allocated (with setCapacity)
 //    Added object should not be NULL
   public : void addObject (const capCollectionElement & inObject) ;
+
+  public : void addObjectAtIndex (const capCollectionElement & inObject,
+                                  const PMUInt32 inInsertionIndex,
+                                  C_Compiler * inCompiler
+                                  COMMA_LOCATION_ARGS) ;
 
 //--- Replace Object
 //    Argument object should not be NULL

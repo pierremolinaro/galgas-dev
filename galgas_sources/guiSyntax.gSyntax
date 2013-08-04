@@ -84,18 +84,18 @@ rule <gui_component_start_symbol>
           select
             displayFlags := 0 ; # Default
           or
-            $*$ ;
+            $-$ ;
             displayFlags := 0xFFFF ; # Do not diplay
           or
             $($ ;
             $unsigned_literal_integer$ ?@luint leadingStrip ;
-            if leadingStrip->uint > 15 then
-              error leadingStrip:"leading strip should be <= 15" ;
+            if leadingStrip->uint >= 15 then
+              error leadingStrip:"leading strip should be < 15" ;
             end if ;
             $,$ ;
             $unsigned_literal_integer$ ?@luint endingStrip ;
-            if endingStrip->uint > 15 then
-              error endingStrip:"tail strip should be <= 15" ;
+            if endingStrip->uint >= 15 then
+              error endingStrip:"tail strip should be < 15" ;
             end if ;
             displayFlags := (leadingStrip->uint << 4) | endingStrip ;
            $)$ ;
