@@ -1557,7 +1557,16 @@ override method @graphDeclarationAST enterInSemanticContext
   formalParameterList += !associatedListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
   formalParameterList += !lstringListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
   [!?instanceMethodMap insertKey
-    ![@lstring new !"topologicalSort" !here]
+    ![@lstring new !"breathFirstTopologicalSort" !here]
+    ![@methodKind definedAsMember]
+    !formalParameterList
+    !here
+    !true # Has Compiler Argument
+    ![@methodQualifier isBasic]
+    !"" # No error message
+  ] ;
+  [!?instanceMethodMap insertKey
+    ![@lstring new !"depthFirstTopologicalSort" !here]
     ![@methodKind definedAsMember]
     !formalParameterList
     !here
@@ -1597,11 +1606,11 @@ override method @graphDeclarationAST enterInSemanticContext
     !"string"
     !false # No compiler argument
   ;
-#--- Reader 'arcs'
+#--- Reader 'egdes'
   enterInheritedReaderWithoutArgument
     !?readerMap
     !?ioSemanticContext->mTypeMap
-    !"arcs"
+    !"edges"
     !"2stringlist"
     !false # No compiler argument
   ;
@@ -1628,18 +1637,29 @@ override method @graphDeclarationAST enterInSemanticContext
       !"" # No error message
     ] ;
   end foreach ;
+  drop formalParameterList ;
+#--- Modifier 'removeEdgeToDominators'
+  [!?modifierMap insertKey
+    ![@lstring new !"removeCircularities" !here]
+    ![@methodKind definedAsMember]
+    ![@formalParameterSignature emptyList]
+    !false # No compiler argument
+    ![@methodQualifier isInherited]
+    !"" # No error message
+  ] ;
 #--- Modifier 'enterArc'
   formalParameterList := [@formalParameterSignature emptyList] ;
   formalParameterList += !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
   formalParameterList += !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
   [!?modifierMap insertKey
-    ![@lstring new !"addArc" !here]
+    ![@lstring new !"addEdge" !here]
     ![@methodKind definedAsMember]
     !formalParameterList
     !false # No compiler argument
     ![@methodQualifier isInherited]
     !"" # No error message
   ] ;
+  drop formalParameterList ;
 #--- Modifier 'noteNode'
   formalParameterList := [@formalParameterSignature emptyList] ;
   formalParameterList += !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
@@ -1651,6 +1671,7 @@ override method @graphDeclarationAST enterInSemanticContext
     ![@methodQualifier isInherited]
     !"" # No error message
   ] ;
+  drop formalParameterList ;
 #--- Add Categories
   addCategories
     !inCategoryMethodMapForBuildingContext
@@ -2912,10 +2933,10 @@ override method @classDeclarationAST enterDeclarationInGraph
   const @lstring key [new !"@" . mClassTypeName ![mClassTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   if mSuperClassName->string != "" then
-    [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mSuperClassName ![mSuperClassName location]]] ;
+    [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mSuperClassName ![mSuperClassName location]]] ;
   end if ;
   foreach mAttributeList do
-    [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mAttributeTypeName ![mAttributeTypeName location]]] ;
+    [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mAttributeTypeName ![mAttributeTypeName location]]] ;
  #   [!?ioSemanticTypePrecedenceGraph noteNode ![@lstring new !"@" . mAttributeTypeName ![mAttributeTypeName location]]] ;
   end foreach ;
 end method ;
@@ -2948,7 +2969,7 @@ override method @structDeclarationAST enterDeclarationInGraph
   const @lstring key [new !"@" . mStructTypeName ![mStructTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
   foreach mAttributeList do
-    [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mAttributeTypeName ![mAttributeTypeName location]]] ;
+    [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mAttributeTypeName ![mAttributeTypeName location]]] ;
   end foreach ;
 end method ;
 
@@ -2992,7 +3013,7 @@ override method @arrayDeclarationAST enterDeclarationInGraph
 :
   const @lstring key [new !"@" . mArrayTypeName ![mArrayTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mElementTypeName ![mElementTypeName location]]] ;
+  [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mElementTypeName ![mElementTypeName location]]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -3006,7 +3027,7 @@ override method @listmapDeclarationAST enterDeclarationInGraph
 :
   const @lstring key [new !"@" . mListmapTypeName ![mListmapTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mAssociatedListTypeName ![mAssociatedListTypeName location]]] ;
+  [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mAssociatedListTypeName ![mAssociatedListTypeName location]]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -3052,7 +3073,7 @@ override method @mapProxyDeclarationAST enterDeclarationInGraph
 :
   const @lstring key [new !"@" . mMapProxyTypeName ![mMapProxyTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mAssociatedMapTypeName ![mAssociatedMapTypeName location]]] ;
+  [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mAssociatedMapTypeName ![mAssociatedMapTypeName location]]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -3066,7 +3087,7 @@ override method @graphDeclarationAST enterDeclarationInGraph
 :
   const @lstring key [new !"@" . mGraphTypeName ![mGraphTypeName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mAssociatedListTypeName ![mAssociatedListTypeName location]]] ;
+  [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mAssociatedListTypeName ![mAssociatedListTypeName location]]] ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -3201,7 +3222,7 @@ override method @categoryReaderAST enterDeclarationInGraph
 :
   const @lstring key [new !"category reader @" . mTypeName . " " . mCategoryReaderName ![mCategoryReaderName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
+  [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 #---
   if not [ioCategoryReaderMapForBuildingContext hasKey ![mTypeName string]] then
     [!?ioCategoryReaderMapForBuildingContext insertKey
@@ -3229,7 +3250,7 @@ override method @categoryMethodAST enterDeclarationInGraph
 :
   const @lstring key [new !"category method @" . mTypeName . " " . mCategoryMethodName ![mCategoryMethodName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
+  [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 #---
   if not [ioCategoryMethodMapForBuildingContext hasKey ![mTypeName string]] then
     [!?ioCategoryMethodMapForBuildingContext insertKey
@@ -3256,7 +3277,7 @@ override method @categoryModifierAST enterDeclarationInGraph
 :
   const @lstring key [new !"category modifier @" . mTypeName . " " . mCategoryModifierName ![mCategoryModifierName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
+  [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 #---
   if not [ioCategoryModifierMapForBuildingContext hasKey ![mTypeName string]] then
     [!?ioCategoryModifierMapForBuildingContext insertKey
@@ -3295,7 +3316,7 @@ override method @abstractCategoryReaderAST enterDeclarationInGraph
 :
   const @lstring key [new !"category reader @" . mTypeName . " " . mAbstractCategoryReaderName ![mAbstractCategoryReaderName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
+  [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 #---
   if not [ioCategoryReaderMapForBuildingContext hasKey ![mTypeName string]] then
     [!?ioCategoryReaderMapForBuildingContext insertKey
@@ -3323,7 +3344,7 @@ override method @abstractCategoryMethodAST enterDeclarationInGraph
 :
   const @lstring key [new !"category method @" . mTypeName . " " . mAbstractCategoryMethodName ![mAbstractCategoryMethodName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
+  [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 #---
   if not [ioCategoryMethodMapForBuildingContext hasKey ![mTypeName string]] then
     [!?ioCategoryMethodMapForBuildingContext insertKey
@@ -3350,7 +3371,7 @@ override method @abstractCategoryModifierAST enterDeclarationInGraph
 :
   const @lstring key [new !"category modifier @" . mTypeName . " " . mAbstractCategoryModifierName ![mAbstractCategoryModifierName location]] ;
   [!?ioSemanticTypePrecedenceGraph addNode !key !selfcopy] ;
-  [!?ioSemanticTypePrecedenceGraph addArc !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
+  [!?ioSemanticTypePrecedenceGraph addEdge !key ![@lstring new !"@" . mTypeName ![mTypeName location]]] ;
 #---
   if not [ioCategoryModifierMapForBuildingContext hasKey ![mTypeName string]] then
     [!?ioCategoryModifierMapForBuildingContext insertKey
@@ -3507,7 +3528,7 @@ routine buildSemanticContext
     end foreach ;
     error inEndOfSourceFile : "semantic analysis not performed, due to undefined type error(s)" : outSemanticContext ;
   else
-    [semanticTypePrecedenceGraph topologicalSort
+    [semanticTypePrecedenceGraph breathFirstTopologicalSort
       ?@semanticDeclarationListAST sortedSemanticDeclarationListAST
       ?*
       ?@semanticDeclarationListAST unsortedSemanticDeclarationListAST
