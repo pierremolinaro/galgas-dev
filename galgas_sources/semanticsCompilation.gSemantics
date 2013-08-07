@@ -115,7 +115,7 @@ local routine recursivelyImportSemanticComponent
         ioGrammarComponentASTList += !grammarComponentAST ;
         ioImplementationIncludeList += ![[grammarComponentAST mGrammarName] string] ;
       elsif extension == "gSemantics" then
-        [!?ioSemanticImportDependenceGraph addArc
+        [!?ioSemanticImportDependenceGraph addEdge
           ![@lstring new ![inFilePath lastPathComponent] ![inFilePath location]]
           ![@lstring new ![mValue lastPathComponent] ![mValue location]]
         ] ;
@@ -149,7 +149,7 @@ local routine recursivelyImportSemanticComponent
         ;
       end if ;
     elsif extension == "gSemantics" then
-        [!?ioSemanticImportDependenceGraph addArc
+        [!?ioSemanticImportDependenceGraph addEdge
           ![@lstring new ![inFilePath lastPathComponent] ![inFilePath location]]
           ![@lstring new ![mValue lastPathComponent] ![mValue location]]
         ] ;
@@ -188,7 +188,7 @@ routine recursivelyImportSemanticComponentAndCheckNoCircularityInImportSemantics
   ;
 #------ Check there is no import circularities
   @lstringlist circularityList;
-  [semanticImportDependenceGraph topologicalSort ?* ?* ?* ?circularityList] ;
+  [semanticImportDependenceGraph breathFirstTopologicalSort ?* ?* ?* ?circularityList] ;
   if [circularityList length] > 0 then
     @string s := "theses components are involved in a circular import:" ;
     foreach circularityList do
@@ -376,7 +376,7 @@ routine compileSemanticsComponentAST
   ;
 #------ Check there is no import circularities
   @lstringlist circularityList;
-  [semanticImportDependenceGraph topologicalSort ?* ?* ?* ?circularityList] ;
+  [semanticImportDependenceGraph breathFirstTopologicalSort ?* ?* ?* ?circularityList] ;
 #------ Add predefined types to semantics declarations
   @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes := semanticDeclarationList ;
   appendPredefinedTypesASTs !?semanticDeclarationListWithPredefinedTypes ;
