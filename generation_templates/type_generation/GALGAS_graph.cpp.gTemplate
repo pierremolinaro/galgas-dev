@@ -40,7 +40,7 @@ end foreach
 %
 //---------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::method_breathFirstTopologicalSort(%?^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outSortedList,
+void GALGAS_%!TYPE_IDENTIFIER%::method_topologicalSort(%?^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outSortedList,
                        %!^%GALGAS_lstringlist & outSortedKeyList,
                        %!^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outUnsortedList,
                        %!^%GALGAS_lstringlist & outUnsortedKeyList,
@@ -48,7 +48,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_breathFirstTopologicalSort(%?^%GALGAS_%![
                        %!^%COMMA_LOCATION_ARGS) const {
   cSharedList * sortedList = NULL ;
   cSharedList * unsortedList = NULL ;
-  internalBreathFirstTopologicalSort (sortedList, outSortedKeyList, unsortedList, outUnsortedKeyList, inCompiler COMMA_THERE) ;
+  internalTopologicalSort (sortedList, outSortedKeyList, unsortedList, outUnsortedKeyList, inCompiler COMMA_THERE) ;
   outSortedList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (sortedList) ;
   outUnsortedList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (unsortedList) ;
   GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::detachSharedList (sortedList) ;
@@ -66,40 +66,6 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_depthFirstTopologicalSort(%?^%GALGAS_%![A
   cSharedList * sortedList = NULL ;
   cSharedList * unsortedList = NULL ;
   internalDepthFirstTopologicalSort (sortedList, outSortedKeyList, unsortedList, outUnsortedKeyList, inCompiler COMMA_THERE) ;
-  outSortedList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (sortedList) ;
-  outUnsortedList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (unsortedList) ;
-  GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::detachSharedList (sortedList) ;
-  GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::detachSharedList (unsortedList) ;
-}
-
-//---------------------------------------------------------------------------*
-
-void GALGAS_%!TYPE_IDENTIFIER%::method_reverseBreathFirstTopologicalSort(%?^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outSortedList,
-                       %!^%GALGAS_lstringlist & outSortedKeyList,
-                       %!^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outUnsortedList,
-                       %!^%GALGAS_lstringlist & outUnsortedKeyList,
-                       %!^%C_Compiler * inCompiler
-                       %!^%COMMA_LOCATION_ARGS) const {
-  cSharedList * sortedList = NULL ;
-  cSharedList * unsortedList = NULL ;
-  internalReverseBreathFirstTopologicalSort (sortedList, outSortedKeyList, unsortedList, outUnsortedKeyList, inCompiler COMMA_THERE) ;
-  outSortedList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (sortedList) ;
-  outUnsortedList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (unsortedList) ;
-  GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::detachSharedList (sortedList) ;
-  GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::detachSharedList (unsortedList) ;
-}
-
-//---------------------------------------------------------------------------*
-
-void GALGAS_%!TYPE_IDENTIFIER%::method_reverseDepthFirstTopologicalSort(%?^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outSortedList,
-                       %!^%GALGAS_lstringlist & outSortedKeyList,
-                       %!^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outUnsortedList,
-                       %!^%GALGAS_lstringlist & outUnsortedKeyList,
-                       %!^%C_Compiler * inCompiler
-                       %!^%COMMA_LOCATION_ARGS) const {
-  cSharedList * sortedList = NULL ;
-  cSharedList * unsortedList = NULL ;
-  internalReverseDepthFirstTopologicalSort (sortedList, outSortedKeyList, unsortedList, outUnsortedKeyList, inCompiler COMMA_THERE) ;
   outSortedList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (sortedList) ;
   outUnsortedList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (unsortedList) ;
   GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::detachSharedList (sortedList) ;

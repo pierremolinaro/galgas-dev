@@ -30,6 +30,7 @@
 
 #include "collections/TC_Array.h"
 #include "utilities/C_UIntSet.h"
+#include "strings/C_String.h"
 
 //---------------------------------------------------------------------------*
 
@@ -48,7 +49,9 @@ class C_DirectedGraph {
   public : static void example (void) ;
   
 //--- Methods
-  public : void defineNode (const PMUInt32 inNodeIndex) ;
+  public : void addNode (const PMUInt32 inNodeIndex) ;
+
+  public : void removeNode (const PMUInt32 inNodeIndex) ;
 
   public : void addEdge (const PMUInt32 inSourceNodeIndex,
                          const PMUInt32 inTargetNodeIndex) ;
@@ -56,9 +59,11 @@ class C_DirectedGraph {
   public : void print (void) const ;
 
 //--- Accessors
-  public : void definedNodes (TC_UniqueArray <bool> & outNodes) const ;
+  public : C_String graphvizString (const TC_UniqueArray <C_String> & inNodeNameArray) const ;
   
-  public : void definedNodeArray (TC_Array <PMUInt32> & outNodes) const ;
+  public : void getNodeBoolArray (TC_UniqueArray <bool> & outNodes) const ;
+  
+  public : void getNodeValueArray (TC_UniqueArray <PMUInt32> & outNodes) const ;
   
   public : bool isNodeDefined (const PMUInt32 inNodeIndex) const ;
   
@@ -74,8 +79,11 @@ class C_DirectedGraph {
   
   public : void edges (TC_UniqueArray <cEdge> & outEdges) const ;
   
-  public : void breathFirstTopologicalSort (TC_UniqueArray <PMUInt32> & outSortedNodes,
+  public : void topologicalSort (TC_UniqueArray <PMUInt32> & outSortedNodes,
                                             TC_UniqueArray <PMUInt32> & outUnsortedNodes) const ;
+  
+  public : void depthFirstTopologicalSort (TC_UniqueArray <PMUInt32> & outSortedNodes,
+                                           TC_UniqueArray <PMUInt32> & outUnsortedNodes) const ;
   
   public : C_DirectedGraph reversedGraph (void) const ;
   

@@ -115,12 +115,12 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
 
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_undefinedNodeReferenceList (LOCATION_ARGS) const ;
 
-  protected : VIRTUAL_IN_DEBUG void internalBreathFirstTopologicalSort (cSharedList * & outSortedList,
-                                                                        GALGAS_lstringlist & outSortedNodeKeyList,
-                                                                        cSharedList * & outUnsortedList,
-                                                                        GALGAS_lstringlist & outUnsortedNodeKeyList,
-                                                                        C_Compiler * inCompiler
-                                                                        COMMA_LOCATION_ARGS) const ;
+  protected : VIRTUAL_IN_DEBUG void internalTopologicalSort (cSharedList * & outSortedList,
+                                                             GALGAS_lstringlist & outSortedNodeKeyList,
+                                                             cSharedList * & outUnsortedList,
+                                                             GALGAS_lstringlist & outUnsortedNodeKeyList,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) const ;
 
   protected : VIRTUAL_IN_DEBUG void internalDepthFirstTopologicalSort (cSharedList * & outSortedList,
                                                                        GALGAS_lstringlist & outSortedNodeKeyList,
@@ -128,20 +128,6 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
                                                                        GALGAS_lstringlist & outUnsortedNodeKeyList,
                                                                        C_Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const ;
-
-  protected : VIRTUAL_IN_DEBUG void internalReverseBreathFirstTopologicalSort (cSharedList * & outSortedList,
-                                                                               GALGAS_lstringlist & outSortedNodeKeyList,
-                                                                               cSharedList * & outUnsortedList,
-                                                                               GALGAS_lstringlist & outUnsortedNodeKeyList,
-                                                                               C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const ;
-
-  protected : VIRTUAL_IN_DEBUG void internalReverseDepthFirstTopologicalSort (cSharedList * & outSortedList,
-                                                                              GALGAS_lstringlist & outSortedNodeKeyList,
-                                                                              cSharedList * & outUnsortedList,
-                                                                              GALGAS_lstringlist & outUnsortedNodeKeyList,
-                                                                              C_Compiler * inCompiler
-                                                                              COMMA_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_graphviz (UNUSED_LOCATION_ARGS) const ;
 

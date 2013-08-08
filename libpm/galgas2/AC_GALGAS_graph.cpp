@@ -164,26 +164,16 @@ class cSharedGraph : public C_SharedObject {
 
   public : void removeCircularities (LOCATION_ARGS) ;
 
-  public : void internalBreathFirstTopologicalSort (cSharedList * & outSortedList,
-                                                    GALGAS_lstringlist & outSortedNodeKeyList,
-                                                    cSharedList * & outUnsortedList,
-                                                    GALGAS_lstringlist & outUnsortedNodeKeyList,
-                                                    TC_UniqueArray <const cGraphNode *> & outUnsortedNodes) const ;
+  public : void internalTopologicalSort (cSharedList * & outSortedList,
+                                         GALGAS_lstringlist & outSortedNodeKeyList,
+                                         cSharedList * & outUnsortedList,
+                                         GALGAS_lstringlist & outUnsortedNodeKeyList,
+                                         TC_UniqueArray <const cGraphNode *> & outUnsortedNodes) const ;
 
   public : void internalDepthFirstTopologicalSort (cSharedList * & outSortedList,
                                                    GALGAS_lstringlist & outSortedNodeKeyList,
                                                    cSharedList * & outUnsortedList,
                                                    GALGAS_lstringlist & outUnsortedNodeKeyList) const ;
-
-  public : void internalReverseBreathFirstTopologicalSort (cSharedList * & outSortedList,
-                                                           GALGAS_lstringlist & outSortedNodeKeyList,
-                                                           cSharedList * & outUnsortedList,
-                                                           GALGAS_lstringlist & outUnsortedNodeKeyList) const ;
-
-  public : void internalReverseDepthFirstTopologicalSort (cSharedList * & outSortedList,
-                                                          GALGAS_lstringlist & outSortedNodeKeyList,
-                                                          cSharedList * & outUnsortedList,
-                                                          GALGAS_lstringlist & outUnsortedNodeKeyList) const ;
 
   public : C_String reader_graphviz (void) const ;
 
@@ -818,11 +808,11 @@ static void enterNodes (const cGraphNode * inNode,
 
 //---------------------------------------------------------------------------*
 
-void cSharedGraph::internalBreathFirstTopologicalSort (cSharedList * & outSortedList,
-                                                       GALGAS_lstringlist & outSortedNodeKeyList,
-                                                       cSharedList * & outUnsortedList,
-                                                       GALGAS_lstringlist & outUnsortedNodeKeyList,
-                                                       TC_UniqueArray <const cGraphNode *> & outUnsortedNodes) const {
+void cSharedGraph::internalTopologicalSort (cSharedList * & outSortedList,
+                                            GALGAS_lstringlist & outSortedNodeKeyList,
+                                            cSharedList * & outUnsortedList,
+                                            GALGAS_lstringlist & outUnsortedNodeKeyList,
+                                            TC_UniqueArray <const cGraphNode *> & outUnsortedNodes) const {
   TC_UniqueArray <cTopologicalSortEntry> array (mNodeArray.count () COMMA_HERE) ;
   array.addObjects (mNodeArray.count (), cTopologicalSortEntry ()) ;
 //--- Enter nodes
@@ -891,12 +881,12 @@ void cSharedGraph::internalBreathFirstTopologicalSort (cSharedList * & outSorted
 
 //---------------------------------------------------------------------------*
 
-void AC_GALGAS_graph::internalBreathFirstTopologicalSort (cSharedList * & outSortedList,
-                                                          GALGAS_lstringlist & outSortedNodeKeyList,
-                                                          cSharedList * & outUnsortedList,
-                                                          GALGAS_lstringlist & outUnsortedNodeKeyList,
-                                                          C_Compiler * inCompiler
-                                                          COMMA_LOCATION_ARGS) const {
+void AC_GALGAS_graph::internalTopologicalSort (cSharedList * & outSortedList,
+                                               GALGAS_lstringlist & outSortedNodeKeyList,
+                                               cSharedList * & outUnsortedList,
+                                               GALGAS_lstringlist & outUnsortedNodeKeyList,
+                                               C_Compiler * inCompiler
+                                               COMMA_LOCATION_ARGS) const {
   outSortedNodeKeyList.drop () ;
   outUnsortedNodeKeyList.drop () ;
   if (isValid ()) {
@@ -913,101 +903,7 @@ void AC_GALGAS_graph::internalBreathFirstTopologicalSort (cSharedList * & outSor
       inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
     }else{
       TC_UniqueArray <const cGraphNode *> unsortedNodes ;
-      mSharedGraph->internalBreathFirstTopologicalSort (outSortedList, outSortedNodeKeyList, outUnsortedList, outUnsortedNodeKeyList, unsortedNodes) ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Reverse Breath First Topological sort
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cSharedGraph::internalReverseBreathFirstTopologicalSort (cSharedList * & outSortedList,
-                                                              GALGAS_lstringlist & outSortedNodeKeyList,
-                                                              cSharedList * & outUnsortedList,
-                                                              GALGAS_lstringlist & outUnsortedNodeKeyList) const {
-  TC_UniqueArray <cTopologicalSortEntry> array (mNodeArray.count () COMMA_HERE) ;
-  array.addObjects (mNodeArray.count (), cTopologicalSortEntry ()) ;
-//--- Enter nodes
-  enterNodes (mRoot, array) ;
-//--- Enter arcs
-  for (PMSInt32 i=0 ; i<mEdgeArray.count () ; i++) {
-    const PMUInt32 sourceNodeID = mEdgeArray (i COMMA_HERE).sourceNodeID () ;
-    cTopologicalSortEntry & target = array ((PMSInt32) sourceNodeID COMMA_HERE) ;
-    cTopologicalSortEntry & source = array ((PMSInt32) mEdgeArray (i COMMA_HERE).targetNodeID () COMMA_HERE) ;
-    source.mDependencyCount ++ ;
-    target.mDependenceArray.addObject (sourceNodeID) ;
-  }
-//--- Make exploration link
-  for (PMSInt32 i=1 ; i<array.count () ; i++) {
-    array (i-1 COMMA_HERE).mLink = i ;
-  }
-  PMSInt32 root = (mNodeArray.count () > 0) ? 0 : -1 ;
-//--- Loop for accumulating sorted nodes
-  AC_GALGAS_list::makeNewSharedList (outSortedList COMMA_HERE) ;
-  outSortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
-  bool loop = true ;
-  while (loop) {
-    loop = false ;
-    PMSInt32 p = root ;
-    root = -1 ;
-    while (p >= 0) {
-      cTopologicalSortEntry & entry = array (p COMMA_HERE) ;
-      const PMSInt32 next = entry.mLink ;
-      if (0 == entry.mDependencyCount) {
-        loop = true ;
-        for (PMSInt32 i=0 ; i<entry.mDependenceArray.count () ; i++) {
-          array ((PMSInt32) entry.mDependenceArray (i COMMA_HERE) COMMA_HERE).mDependencyCount -- ;
-        }
-        AC_GALGAS_list::insertInSharedList (outSortedList, entry.mAttributes) ;
-        outSortedNodeKeyList.addAssign_operation (entry.mKey COMMA_HERE) ;
-      }else{
-        entry.mLink = root ;
-        root = p ;
-      }
-      p = next ;
-    }
-  }
-//--- Add unsorted nodes
-  AC_GALGAS_list::makeNewSharedList (outUnsortedList COMMA_HERE) ;
-  outUnsortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
-  PMSInt32 p = root ;
-  while (p >= 0) {
-    cTopologicalSortEntry & entry = array (p COMMA_HERE) ;
-    AC_GALGAS_list::insertInSharedList (outUnsortedList, entry.mAttributes) ;
-    outUnsortedNodeKeyList.addAssign_operation (entry.mKey COMMA_HERE) ;
-    p = entry.mLink ;
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-void AC_GALGAS_graph::internalReverseBreathFirstTopologicalSort (cSharedList * & outSortedList,
-                                                                 GALGAS_lstringlist & outSortedNodeKeyList,
-                                                                 cSharedList * & outUnsortedList,
-                                                                 GALGAS_lstringlist & outUnsortedNodeKeyList,
-                                                                 C_Compiler * inCompiler
-                                                                 COMMA_LOCATION_ARGS) const {
-  outSortedNodeKeyList.drop () ;
-  outUnsortedNodeKeyList.drop () ;
-  if (isValid ()) {
-    PMUInt32 undefinedNodeCount = 0 ;
-    countUndefinedNodeCount (mSharedGraph->root (), undefinedNodeCount) ;
-    if (0 != undefinedNodeCount) {
-      C_String s ;
-      s << "Cannot apply graph topologicalSort: there " ;
-      if (undefinedNodeCount > 1) {
-        s << "are " << cStringWithUnsigned (undefinedNodeCount) << " undefined nodes" ;
-      }else{
-        s << "is 1 undefined node" ;
-      }
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }else{
-      mSharedGraph->internalReverseBreathFirstTopologicalSort (outSortedList, outSortedNodeKeyList, outUnsortedList, outUnsortedNodeKeyList) ;
+      mSharedGraph->internalTopologicalSort (outSortedList, outSortedNodeKeyList, outUnsortedList, outUnsortedNodeKeyList, unsortedNodes) ;
     }
   }
 }
@@ -1115,106 +1011,6 @@ void AC_GALGAS_graph::internalDepthFirstTopologicalSort (cSharedList * & outSort
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Reverse Depth First Topological sort
-#endif
-
-//---------------------------------------------------------------------------*
-
-void cSharedGraph::internalReverseDepthFirstTopologicalSort (cSharedList * & outSortedList,
-                                                             GALGAS_lstringlist & outSortedNodeKeyList,
-                                                             cSharedList * & outUnsortedList,
-                                                             GALGAS_lstringlist & outUnsortedNodeKeyList) const {
-  TC_UniqueArray <cTopologicalSortEntry> array (mNodeArray.count () COMMA_HERE) ;
-  array.addObjects (mNodeArray.count (), cTopologicalSortEntry ()) ;
-//--- Enter nodes
-  enterNodes (mRoot, array) ;
-//--- Enter egdes
-  for (PMSInt32 i=0 ; i<mEdgeArray.count () ; i++) {
-    const PMUInt32 sourceNodeID = mEdgeArray (i COMMA_HERE).sourceNodeID () ;
-    cTopologicalSortEntry & target = array ((PMSInt32) sourceNodeID COMMA_HERE) ;
-    cTopologicalSortEntry & source = array ((PMSInt32) mEdgeArray (i COMMA_HERE).targetNodeID () COMMA_HERE) ;
-    source.mDependencyCount ++ ;
-    target.mDependenceArray.addObject (sourceNodeID) ;
-  }
-//--- Make exploration link
-  for (PMSInt32 i=1 ; i<array.count () ; i++) {
-    array (i-1 COMMA_HERE).mLink = i ;
-  }
-//  printf ("-------- Sort\n") ;
-//--- Loop for accumulating sorted nodes
-  AC_GALGAS_list::makeNewSharedList (outSortedList COMMA_HERE) ;
-  outSortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
-  bool loop = true ;
-  TC_UniqueArray <cTopologicalSortEntry *> workingArray ;
-  while (loop) {
-  //--- Find a node without any dependence  
-    for (PMSInt32 i=0 ; (i<array.count ()) && (workingArray.count () == 0) ; i++) {
-      if ((! array (i COMMA_HERE).mHandled) && (array (i COMMA_HERE).mDependencyCount == 0)) {
-        cTopologicalSortEntry *  entry = & array (i COMMA_HERE) ;
-        entry->mHandled = true ; // So that this entry will not match any more
-        workingArray.addObject (entry) ;
-      }
-    }
-    loop = workingArray.count () > 0 ;
-    if (loop) {
-      cTopologicalSortEntry * entry = workingArray.lastObject (HERE) ;
-      workingArray.removeLastObject (HERE) ;
-      AC_GALGAS_list::insertInSharedList (outSortedList, entry->mAttributes) ;
-      // printf ("  %s\n", entry->mKey.mAttribute_string.stringValue().cString (HERE)) ;
-      outSortedNodeKeyList.addAssign_operation (entry->mKey COMMA_HERE) ;
-      for (PMSInt32 i=0 ; i<entry->mDependenceArray.count () ; i++) {
-        cTopologicalSortEntry * candidate = & array ((PMSInt32) entry->mDependenceArray (i COMMA_HERE) COMMA_HERE) ;
-        candidate->mDependencyCount -- ;
-        if (candidate->mDependencyCount == 0) {
-          workingArray.addObject (candidate) ;
-          candidate->mHandled = true ;
-        }
-      }
-    }
-  }
-//--- Add unsorted nodes
-  AC_GALGAS_list::makeNewSharedList (outUnsortedList COMMA_HERE) ;
-  outUnsortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
-  for (PMSInt32 i=0 ; i<array.count () ; i++) {
-    if (! array (i COMMA_HERE).mHandled) {
-      cTopologicalSortEntry & entry = array (i COMMA_HERE) ;
-      AC_GALGAS_list::insertInSharedList (outUnsortedList, entry.mAttributes) ;
-      outUnsortedNodeKeyList.addAssign_operation (entry.mKey COMMA_HERE) ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-void AC_GALGAS_graph::internalReverseDepthFirstTopologicalSort (cSharedList * & outSortedList,
-                                                                GALGAS_lstringlist & outSortedNodeKeyList,
-                                                                cSharedList * & outUnsortedList,
-                                                                GALGAS_lstringlist & outUnsortedNodeKeyList,
-                                                                C_Compiler * inCompiler
-                                                                COMMA_LOCATION_ARGS) const {
-  outSortedNodeKeyList.drop () ;
-  outUnsortedNodeKeyList.drop () ;
-  if (isValid ()) {
-    PMUInt32 undefinedNodeCount = 0 ;
-    countUndefinedNodeCount (mSharedGraph->root (), undefinedNodeCount) ;
-    if (0 != undefinedNodeCount) {
-      C_String s ;
-      s << "Cannot apply graph topologicalSort: there " ;
-      if (undefinedNodeCount > 1) {
-        s << "are " << cStringWithUnsigned (undefinedNodeCount) << " undefined nodes" ;
-      }else{
-        s << "is 1 undefined node" ;
-      }
-      inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
-    }else{
-      mSharedGraph->internalReverseDepthFirstTopologicalSort (outSortedList, outSortedNodeKeyList, outUnsortedList, outUnsortedNodeKeyList) ;
-    }
-  }
-}
-
-//---------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark reader_undefinedNodeReferenceList
 #endif
 
@@ -1274,11 +1070,11 @@ void cSharedGraph::removeCircularities (UNUSED_LOCATION_ARGS) {
     cSharedList * unsortedList = NULL ; // Unused
     GALGAS_lstringlist unsortedNodeKeyList ; // Unused
     TC_UniqueArray <const cGraphNode *> unsortedNodes ;
-    internalBreathFirstTopologicalSort (sortedList,
-                                        sortedNodeKeyList,
-                                        unsortedList,
-                                        unsortedNodeKeyList,
-                                        unsortedNodes) ;
+    internalTopologicalSort (sortedList,
+                             sortedNodeKeyList,
+                             unsortedList,
+                             unsortedNodeKeyList,
+                             unsortedNodes) ;
     loop = unsortedNodes.count() != 0 ;
     if (loop) { // Suppress all incoming edges of this node
       const PMUInt32 nodeID =  unsortedNodes (0 COMMA_HERE)->mNodeID ;
