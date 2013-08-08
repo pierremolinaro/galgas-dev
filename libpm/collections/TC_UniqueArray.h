@@ -77,9 +77,12 @@ template <typename TYPE> class TC_UniqueArray {
 //--- Virtual Destructor
   public : virtual ~TC_UniqueArray (void) ;
 
-//--- No copy
+//--- No implicit copy
   private : TC_UniqueArray (const TC_UniqueArray <TYPE> &) ;
   private : TC_UniqueArray <TYPE> & operator = (const TC_UniqueArray <TYPE> &) ;
+
+//--- Copy
+  public : void copyTo (TC_UniqueArray <TYPE> & outArray) const ;
 
 //--- Get Count
   public : inline PMSInt32 count (void) const { return mCount ; }
@@ -93,7 +96,7 @@ template <typename TYPE> class TC_UniqueArray {
 //--- Methods for making room
   public : void makeRoom (const PMSInt32 inNewCapacity) ;
   public : void makeRoomUsingSwap (const PMSInt32 inNewCapacity) ;
-
+  
 //--- Allocation with provided data
   public : void setDataFromPointer (TYPE * & ioDataPtr,
                                     const PMSInt32 inDataLength) ;
@@ -403,6 +406,20 @@ TC_UniqueArray <TYPE>::~TC_UniqueArray (void) {
 template <typename TYPE>
 void TC_UniqueArray <TYPE>::setCountToZero (void) {
   mCount = 0 ;
+}
+
+//---------------------------------------------------------------------------*
+//                                                                           *
+//   Method for making room using copy                                       *
+//                                                                           *
+//---------------------------------------------------------------------------*
+
+template <typename TYPE>
+void TC_UniqueArray <TYPE>::copyTo (TC_UniqueArray <TYPE> & outArray) const {
+  outArray.setCountToZero () ;
+  for (PMSInt32 i=0 ; i<mCount ; i++) {
+    outArray.addObject (mArray [i]) ;
+  }
 }
 
 //---------------------------------------------------------------------------*
