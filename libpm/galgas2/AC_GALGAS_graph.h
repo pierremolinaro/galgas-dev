@@ -129,6 +129,20 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
                                                                        C_Compiler * inCompiler
                                                                        COMMA_LOCATION_ARGS) const ;
 
+  protected : VIRTUAL_IN_DEBUG void internalReverseBreathFirstTopologicalSort (cSharedList * & outSortedList,
+                                                                               GALGAS_lstringlist & outSortedNodeKeyList,
+                                                                               cSharedList * & outUnsortedList,
+                                                                               GALGAS_lstringlist & outUnsortedNodeKeyList,
+                                                                               C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const ;
+
+  protected : VIRTUAL_IN_DEBUG void internalReverseDepthFirstTopologicalSort (cSharedList * & outSortedList,
+                                                                              GALGAS_lstringlist & outSortedNodeKeyList,
+                                                                              cSharedList * & outUnsortedList,
+                                                                              GALGAS_lstringlist & outUnsortedNodeKeyList,
+                                                                              C_Compiler * inCompiler
+                                                                              COMMA_LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_graphviz (UNUSED_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG GALGAS__32_stringlist reader_edges (UNUSED_LOCATION_ARGS) const ;

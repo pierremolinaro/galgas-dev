@@ -1373,7 +1373,7 @@ countObjectsThatRespondsTrueToFunction (bool (inFunction) (const TYPE & inObject
 template <typename TYPE>
 void TC_UniqueArray <TYPE>::
 intersectionWithArray (const TC_UniqueArray <TYPE> & inOperand,
-                   TC_UniqueArray <TYPE> & outResult) const {
+                       TC_UniqueArray <TYPE> & outResult) const {
 //--- Empty destination array
   outResult.clear () ;
   outResult.makeRoom (mCount) ;

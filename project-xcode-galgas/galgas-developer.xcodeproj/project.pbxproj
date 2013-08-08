@@ -275,6 +275,10 @@
 		CFAD9C69147FA4D300B1B88A /* PMButtonWithRemove.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD9C68147FA4D300B1B88A /* PMButtonWithRemove.m */; };
 		CFAE5AA110021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */; };
 		CFAE5B1C10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */; };
+		CFB3190417B38D98009424C2 /* C_DirectedGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190317B38D98009424C2 /* C_DirectedGraph.cpp */; };
+		CFB3190517B38D98009424C2 /* C_DirectedGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190317B38D98009424C2 /* C_DirectedGraph.cpp */; };
+		CFB3190817B3C553009424C2 /* C_UIntSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190717B3C553009424C2 /* C_UIntSet.cpp */; };
+		CFB3190917B3C553009424C2 /* C_UIntSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190717B3C553009424C2 /* C_UIntSet.cpp */; };
 		CFB697DF1483D47900BCAE41 /* PMIssueInRuler.m in Sources */ = {isa = PBXBuildFile; fileRef = CFB697DE1483D47900BCAE41 /* PMIssueInRuler.m */; };
 		CFB6B6DC1160D26100604D8C /* predefinedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6B6D81160D26100604D8C /* predefinedTypes.cpp */; };
 		CFB6B6DD1160D26100604D8C /* predefinedTypes.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB6B6D81160D26100604D8C /* predefinedTypes.cpp */; };
@@ -715,6 +719,10 @@
 		CFAE5B1910024AA50068DEC9 /* enterDefaultCommandLineOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = enterDefaultCommandLineOptions.h; sourceTree = "<group>"; };
 		CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = enterDefaultCommandLineOptions.m; sourceTree = "<group>"; };
 		CFAED8501598842900E485C7 /* M_Threads.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = M_Threads.h; sourceTree = "<group>"; };
+		CFB3190217B38D76009424C2 /* C_DirectedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; path = C_DirectedGraph.h; sourceTree = "<group>"; };
+		CFB3190317B38D98009424C2 /* C_DirectedGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_DirectedGraph.cpp; sourceTree = "<group>"; };
+		CFB3190617B3C545009424C2 /* C_UIntSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_UIntSet.h; sourceTree = "<group>"; };
+		CFB3190717B3C553009424C2 /* C_UIntSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_UIntSet.cpp; sourceTree = "<group>"; };
 		CFB697DD1483D47900BCAE41 /* PMIssueInRuler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PMIssueInRuler.h; sourceTree = "<group>"; };
 		CFB697DE1483D47900BCAE41 /* PMIssueInRuler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PMIssueInRuler.m; sourceTree = "<group>"; };
 		CFB6B6D81160D26100604D8C /* predefinedTypes.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = predefinedTypes.cpp; sourceTree = "<group>"; };
@@ -1872,6 +1880,10 @@
 				CF825A7708536B780077AEAF /* TF_inf.h */,
 				CF825A7808536B780077AEAF /* TF_sup.h */,
 				CF825A7908536B780077AEAF /* TF_Swap.h */,
+				CFB3190217B38D76009424C2 /* C_DirectedGraph.h */,
+				CFB3190317B38D98009424C2 /* C_DirectedGraph.cpp */,
+				CFB3190617B3C545009424C2 /* C_UIntSet.h */,
+				CFB3190717B3C553009424C2 /* C_UIntSet.cpp */,
 			);
 			path = utilities;
 			sourceTree = "<group>";
@@ -2244,6 +2256,8 @@
 				CF1C0C9914E8502300F79BD0 /* C_BinaryFileWrite.cpp in Sources */,
 				CFE71EC515010F3500EAD989 /* cEnumerator_range.cpp in Sources */,
 				CFC1042C161DFE2000253307 /* C_BigUInt.cpp in Sources */,
+				CFB3190417B38D98009424C2 /* C_DirectedGraph.cpp in Sources */,
+				CFB3190817B3C553009424C2 /* C_UIntSet.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2430,6 +2444,8 @@
 				CF1C0C9A14E8502300F79BD0 /* C_BinaryFileWrite.cpp in Sources */,
 				CFE71EC615010F3500EAD989 /* cEnumerator_range.cpp in Sources */,
 				CFC1042D161DFE2000253307 /* C_BigUInt.cpp in Sources */,
+				CFB3190517B38D98009424C2 /* C_DirectedGraph.cpp in Sources */,
+				CFB3190917B3C553009424C2 /* C_UIntSet.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
