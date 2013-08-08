@@ -1557,7 +1557,7 @@ override method @graphDeclarationAST enterInSemanticContext
   formalParameterList += !associatedListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
   formalParameterList += !lstringListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
   [!?instanceMethodMap insertKey
-    ![@lstring new !"breathFirstTopologicalSort" !here]
+    ![@lstring new !"topologicalSort" !here]
     ![@methodKind definedAsMember]
     !formalParameterList
     !here
@@ -1567,24 +1567,6 @@ override method @graphDeclarationAST enterInSemanticContext
   ] ;
   [!?instanceMethodMap insertKey
     ![@lstring new !"depthFirstTopologicalSort" !here]
-    ![@methodKind definedAsMember]
-    !formalParameterList
-    !here
-    !true # Has Compiler Argument
-    ![@methodQualifier isBasic]
-    !"" # No error message
-  ] ;
-  [!?instanceMethodMap insertKey
-    ![@lstring new !"reverseBreathFirstTopologicalSort" !here]
-    ![@methodKind definedAsMember]
-    !formalParameterList
-    !here
-    !true # Has Compiler Argument
-    ![@methodQualifier isBasic]
-    !"" # No error message
-  ] ;
-  [!?instanceMethodMap insertKey
-    ![@lstring new !"reverseDepthFirstTopologicalSort" !here]
     ![@methodKind definedAsMember]
     !formalParameterList
     !here
@@ -3546,7 +3528,7 @@ routine buildSemanticContext
     end foreach ;
     error inEndOfSourceFile : "semantic analysis not performed, due to undefined type error(s)" : outSemanticContext ;
   else
-    [semanticTypePrecedenceGraph breathFirstTopologicalSort
+    [semanticTypePrecedenceGraph topologicalSort
       ?@semanticDeclarationListAST sortedSemanticDeclarationListAST
       ?*
       ?@semanticDeclarationListAST unsortedSemanticDeclarationListAST

@@ -188,7 +188,7 @@ routine recursivelyImportSemanticComponentAndCheckNoCircularityInImportSemantics
   ;
 #------ Check there is no import circularities
   @lstringlist circularityList;
-  [semanticImportDependenceGraph breathFirstTopologicalSort ?* ?* ?* ?circularityList] ;
+  [semanticImportDependenceGraph topologicalSort ?* ?* ?* ?circularityList] ;
   if [circularityList length] > 0 then
     @string s := "theses components are involved in a circular import:" ;
     foreach circularityList do
@@ -376,7 +376,7 @@ routine compileSemanticsComponentAST
   ;
 #------ Check there is no import circularities
   @lstringlist circularityList;
-  [semanticImportDependenceGraph breathFirstTopologicalSort ?* ?* ?* ?circularityList] ;
+  [semanticImportDependenceGraph topologicalSort ?* ?* ?* ?circularityList] ;
 #------ Add predefined types to semantics declarations
   @semanticDeclarationListAST semanticDeclarationListWithPredefinedTypes := semanticDeclarationList ;
   appendPredefinedTypesASTs !?semanticDeclarationListWithPredefinedTypes ;
