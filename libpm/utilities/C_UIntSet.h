@@ -42,9 +42,13 @@ class C_UIntSet {
 //--- Methods
   public : void add (const PMUInt32 inNodeIndex) ;
 
+  public : void remove (const PMUInt32 inNodeIndex) ;
+
   public : void operator &= (const C_UIntSet & inOther) ;
 
   public : void operator |= (const C_UIntSet & inOther) ;
+
+  public : void operator -= (const C_UIntSet & inOther) ;
 
   public : bool operator == (const C_UIntSet & inOther) const ;
 
@@ -56,6 +60,8 @@ class C_UIntSet {
   public : void getValueArray (TC_UniqueArray <PMUInt32> & outValueArray) const ;
   
   public : bool contains (const PMUInt32 inNodeIndex) const ;
+  
+  public : PMUInt32 count (void) const ;
   
   public : inline bool isEmpty (void) const {
     return mDefinition.count () == 0 ;

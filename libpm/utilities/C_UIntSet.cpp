@@ -50,6 +50,18 @@ void C_UIntSet::add (const PMUInt32 inNodeIndex) {
 
 //---------------------------------------------------------------------------*
 
+void C_UIntSet::remove (const PMUInt32 inNodeIndex) {
+  const PMSInt32 idx = (PMSInt32) (inNodeIndex >> 6) ;
+  if (idx < mDefinition.count ()) {
+    mDefinition (idx COMMA_HERE) &= ~ (((PMUInt64) 1) << (inNodeIndex & 63)) ;
+    while ((mDefinition.count () > 0) && (mDefinition.lastObject (HERE) == 0)) {
+      mDefinition.removeLastObject (HERE) ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
 void C_UIntSet::getBoolValueArray (TC_UniqueArray <bool> & outBoolValueArray) const {
   outBoolValueArray.setCountToZero () ;
   for (PMSInt32 i=0 ; i<mDefinition.count () ; i++) {
@@ -89,6 +101,20 @@ bool C_UIntSet::contains (const PMUInt32 inNodeIndex) const {
 
 //---------------------------------------------------------------------------*
 
+PMUInt32 C_UIntSet::count (void) const {
+  PMUInt32 result = 0 ;
+  for (PMSInt32 i=0 ; i<mDefinition.count () ; i++) {
+    PMUInt64 v = mDefinition (i COMMA_HERE) ;
+    while (v != 0) {
+      result += (v & 1) != 0 ;
+      v >>= 1 ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
 void C_UIntSet::operator &= (const C_UIntSet & inOther) {
   while (mDefinition.count () > inOther.mDefinition.count ()) {
     mDefinition.removeLastObject (HERE) ;
@@ -109,6 +135,24 @@ void C_UIntSet::operator |= (const C_UIntSet & inOther) {
   }
   for (PMSInt32 i=0 ; i<mDefinition.count () ; i++) {
     mDefinition (i COMMA_HERE) |= inOther.mDefinition (i COMMA_HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+static inline PMSInt32 minSInt32 (const PMSInt32 inA, const PMSInt32 inB) {
+  return (inA < inB) ? inA : inB ;
+}
+
+//---------------------------------------------------------------------------*
+
+void C_UIntSet::operator -= (const C_UIntSet & inOther) {
+  const PMSInt32 n = minSInt32 (mDefinition.count (), inOther.mDefinition.count ()) ;
+  for (PMSInt32 i=0 ; i<n ; i++) {
+    mDefinition (i COMMA_HERE) &= ~ inOther.mDefinition (i COMMA_HERE) ;
+  }
+  while ((mDefinition.count () > 0) && (mDefinition.lastObject (HERE) == 0)) {
+    mDefinition.removeLastObject (HERE) ;
   }
 }
 
