@@ -101,6 +101,24 @@ bool C_DirectedGraph::isNodeDefined (const PMUInt32 inNodeIndex) const {
 
 //---------------------------------------------------------------------------*
 
+PMUInt32 C_DirectedGraph::nodeCount (void) const {
+  return mNodeDefinition.count () ;
+}
+
+//---------------------------------------------------------------------------*
+
+PMUInt32 C_DirectedGraph::edgeCount (void) const {
+  PMUInt32 result = 0 ;
+  for (PMSInt32 i=0 ; i<mEdges.count () ; i++) {
+    if (isNodeDefined (i)) {
+      result += mEdges (i COMMA_HERE).count () ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
 C_String C_DirectedGraph::graphvizString (const TC_UniqueArray <C_String> & inNodeNameArray) const {
   C_String s = "digraph G {\n" ;
   for (PMSInt32 i=0 ; i<mEdges.count () ; i++) {
@@ -144,11 +162,11 @@ C_String C_DirectedGraph::graphvizString (const TC_UniqueArray <C_String> & inNo
 
 //---------------------------------------------------------------------------*
 
-void C_DirectedGraph::edges (TC_UniqueArray <cEdge> & outEdges) const {
+void C_DirectedGraph::getEdges (TC_UniqueArray <cEdge> & outEdges) const {
   outEdges.setCountToZero () ;
   for (PMSInt32 i=0 ; i<mEdges.count () ; i++) {
     TC_UniqueArray <PMUInt32> targetList ; mEdges (i COMMA_HERE).getValueArray (targetList) ;
-    for (PMSInt32 j=0 ; j<targetList.count () ; i++) {
+    for (PMSInt32 j=0 ; j<targetList.count () ; j++) {
       const cEdge edge = {(PMUInt32) i, targetList (j COMMA_HERE)} ;
       outEdges.addObject (edge) ;
     }

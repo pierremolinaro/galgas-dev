@@ -67,6 +67,10 @@ class C_DirectedGraph {
   
   public : bool isNodeDefined (const PMUInt32 inNodeIndex) const ;
   
+  public : PMUInt32 nodeCount (void) const ;
+  
+  public : PMUInt32 edgeCount (void) const ;
+  
   public : void getNodesWithNoPredecessor (TC_UniqueArray <PMUInt32> & outNodes) const ;
   
   public : void getNodesWithNoSuccessor (TC_UniqueArray <PMUInt32> & outNodes) const ;
@@ -77,10 +81,10 @@ class C_DirectedGraph {
   
   public : void removeEdgesToDominators (void) ;
   
-  public : void edges (TC_UniqueArray <cEdge> & outEdges) const ;
+  public : void getEdges (TC_UniqueArray <cEdge> & outEdges) const ;
   
   public : void topologicalSort (TC_UniqueArray <PMUInt32> & outSortedNodes,
-                                            TC_UniqueArray <PMUInt32> & outUnsortedNodes) const ;
+                                 TC_UniqueArray <PMUInt32> & outUnsortedNodes) const ;
   
   public : void depthFirstTopologicalSort (TC_UniqueArray <PMUInt32> & outSortedNodes,
                                            TC_UniqueArray <PMUInt32> & outUnsortedNodes) const ;
