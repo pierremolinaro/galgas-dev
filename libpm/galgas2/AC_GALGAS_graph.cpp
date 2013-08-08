@@ -85,6 +85,8 @@ class cSharedGraph : public C_SharedObject {
 
   public : void copyFrom (const cSharedGraph * inSource) ;
 
+  public : void copyReversedGraphFrom (const cSharedGraph * inSource) ;
+
   public : PMSInt32 graphCompare (const cSharedGraph * inOperand) const ;
 
   public : cGraphNode * findOrAddNodeForKey (const C_String & inKey) ;
@@ -199,7 +201,6 @@ void cSharedGraph::copyFrom (const cSharedGraph * inSource) {
     checkGraph (HERE) ;
   #endif
 }
-
 //---------------------------------------------------------------------------*
 
 void cSharedGraph::description (C_String & ioString,
@@ -314,6 +315,39 @@ void AC_GALGAS_graph::insulateGraph (LOCATION_ARGS) {
     #endif
   }
   macroMutexUnlock (gInsulationMutex) ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Reversed Graph
+#endif
+
+
+//---------------------------------------------------------------------------*
+
+void cSharedGraph::copyReversedGraphFrom (const cSharedGraph * inSource) {
+  macroUniqueSharedObject (this) ;
+  if (NULL != inSource->mRoot) {
+    macroMyNew (mRoot, cGraphNode (inSource->mRoot)) ;
+    mNodeArray.addObjects (inSource->mNodeArray.count (), NULL) ;
+    buildNodeArray (mRoot, mNodeArray) ;
+    mDirectedGraph = inSource->mDirectedGraph.reversedGraph () ;
+  }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkGraph (HERE) ;
+  #endif
+}
+
+//---------------------------------------------------------------------------*
+
+void AC_GALGAS_graph::reversedGraphFromGraph (const AC_GALGAS_graph & inGraph
+                                              COMMA_LOCATION_ARGS) {
+  macroDetachSharedObject (mSharedGraph) ;
+  if (inGraph.isValid ()) {
+    macroMyNew (mSharedGraph, cSharedGraph (THERE)) ;
+    mSharedGraph->copyReversedGraphFrom (inGraph.mSharedGraph) ;
+  }
 }
 
 //---------------------------------------------------------------------------*

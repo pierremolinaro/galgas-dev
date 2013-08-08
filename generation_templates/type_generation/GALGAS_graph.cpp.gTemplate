@@ -40,7 +40,7 @@ end foreach
 %
 //---------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::method_topologicalSort(%?^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outSortedList,
+void GALGAS_%!TYPE_IDENTIFIER%::method_topologicalSort (%?^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outSortedList,
                        %!^%GALGAS_lstringlist & outSortedKeyList,
                        %!^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outUnsortedList,
                        %!^%GALGAS_lstringlist & outUnsortedKeyList,
@@ -57,7 +57,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_topologicalSort(%?^%GALGAS_%![ASSOCIATED_
 
 //---------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::method_depthFirstTopologicalSort(%?^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outSortedList,
+void GALGAS_%!TYPE_IDENTIFIER%::method_depthFirstTopologicalSort (%?^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outSortedList,
                        %!^%GALGAS_lstringlist & outSortedKeyList,
                        %!^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outUnsortedList,
                        %!^%GALGAS_lstringlist & outUnsortedKeyList,
@@ -70,5 +70,14 @@ void GALGAS_%!TYPE_IDENTIFIER%::method_depthFirstTopologicalSort(%?^%GALGAS_%![A
   outUnsortedList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (unsortedList) ;
   GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::detachSharedList (sortedList) ;
   GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::detachSharedList (unsortedList) ;
+}
+
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_reversedGraph (LOCATION_ARGS) const {
+  GALGAS_%!TYPE_IDENTIFIER% result ;
+  result.reversedGraphFromGraph (*this COMMA_THERE) ;
+  return result ;
 }
 

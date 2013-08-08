@@ -102,6 +102,9 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
                                                  const PMSInt32 inIndentation) const ;
 
 //--- Internal methods for handling graph
+  protected : VIRTUAL_IN_DEBUG void reversedGraphFromGraph (const AC_GALGAS_graph & inGraph
+                                                            COMMA_LOCATION_ARGS) ;
+
   private : VIRTUAL_IN_DEBUG void insulateGraph (LOCATION_ARGS) ;
 
   protected : VIRTUAL_IN_DEBUG void internalAddNode (const GALGAS_lstring & inKey,
