@@ -77,17 +77,16 @@ class C_DirectedGraph {
   public : void breathFirstTopologicalSort (TC_UniqueArray <PMUInt32> & outSortedNodes,
                                             TC_UniqueArray <PMUInt32> & outUnsortedNodes) const ;
   
-  public : void reverseBreathFirstTopologicalSort (TC_UniqueArray <PMUInt32> & outSortedNodes,
-                                                   TC_UniqueArray <PMUInt32> & outUnsortedNodes) const ;
-
+  public : C_DirectedGraph reversedGraph (void) const ;
+  
   #ifndef DO_NOT_GENERATE_CHECKINGS
     protected : void checkGraph (LOCATION_ARGS) const ;
   #endif
 
 //--- Attributes
   private : C_UIntSet mNodeDefinition ;
-  private : TC_Array < TC_Array <PMUInt32> > mEdges ;
-  private : TC_Array < TC_Array <PMUInt32> > mReverseEdges ;
+  private : TC_Array <C_UIntSet> mEdges ;
+  private : TC_Array <C_UIntSet> mReverseEdges ;
 } ;
 
 //---------------------------------------------------------------------------*
