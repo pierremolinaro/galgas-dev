@@ -119,6 +119,16 @@ PMUInt32 C_DirectedGraph::edgeCount (void) const {
 
 //---------------------------------------------------------------------------*
 
+PMUInt32 C_DirectedGraph::unusedNodeIndex (void) const {
+  PMUInt32 result = nodeCount () ;
+  while (isNodeDefined (result)) {
+    result ++ ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
 C_String C_DirectedGraph::graphvizString (const TC_UniqueArray <C_String> & inNodeNameArray) const {
   C_String s = "digraph G {\n" ;
   for (PMSInt32 i=0 ; i<mEdges.count () ; i++) {

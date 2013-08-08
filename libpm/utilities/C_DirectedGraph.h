@@ -59,6 +59,8 @@ class C_DirectedGraph {
   public : void print (void) const ;
 
 //--- Accessors
+  public : PMUInt32 unusedNodeIndex (void) const ;
+
   public : C_String graphvizString (const TC_UniqueArray <C_String> & inNodeNameArray) const ;
   
   public : void getNodeBoolArray (TC_UniqueArray <bool> & outNodes) const ;
