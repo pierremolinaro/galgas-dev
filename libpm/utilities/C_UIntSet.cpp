@@ -103,6 +103,17 @@ void C_UIntSet::operator &= (const C_UIntSet & inOther) {
 
 //---------------------------------------------------------------------------*
 
+void C_UIntSet::operator |= (const C_UIntSet & inOther) {
+  while (mDefinition.count () < inOther.mDefinition.count ()) {
+    mDefinition.addObject (0) ;
+  }
+  for (PMSInt32 i=0 ; i<mDefinition.count () ; i++) {
+    mDefinition (i COMMA_HERE) |= inOther.mDefinition (i COMMA_HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
 bool C_UIntSet::operator == (const C_UIntSet & inOther) const {
   bool result = mDefinition.count () == inOther.mDefinition.count () ;
   for (PMSInt32 i=0 ; (i<mDefinition.count ()) && result ; i++) {
