@@ -62,11 +62,11 @@ class C_DirectedGraph {
   
   public : bool isNodeDefined (const PMUInt32 inNodeIndex) const ;
   
-  public : void nodesWithNoPredecessor (TC_UniqueArray <PMUInt32> & outNodes) const ;
+  public : void getNodesWithNoPredecessor (TC_UniqueArray <PMUInt32> & outNodes) const ;
   
-  public : void nodesWithNoSuccessor (TC_UniqueArray <PMUInt32> & outNodes) const ;
+  public : void getNodesWithNoSuccessor (TC_UniqueArray <PMUInt32> & outNodes) const ;
   
-  public : void nodesInvolvedInCircularities (TC_UniqueArray <PMUInt32> & outNodes) const ;
+  public : void getNodesInvolvedInCircularities (TC_UniqueArray <PMUInt32> & outNodes) const ;
   
   public : void getDominators (TC_UniqueArray <C_UIntSet> & outDominators) const ;
   
@@ -79,7 +79,11 @@ class C_DirectedGraph {
   
   public : void reverseBreathFirstTopologicalSort (TC_UniqueArray <PMUInt32> & outSortedNodes,
                                                    TC_UniqueArray <PMUInt32> & outUnsortedNodes) const ;
-  
+
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    protected : void checkGraph (LOCATION_ARGS) const ;
+  #endif
+
 //--- Attributes
   private : C_UIntSet mNodeDefinition ;
   private : TC_Array < TC_Array <PMUInt32> > mEdges ;
