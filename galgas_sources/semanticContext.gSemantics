@@ -1574,6 +1574,24 @@ override method @graphDeclarationAST enterInSemanticContext
     ![@methodQualifier isBasic]
     !"" # No error message
   ] ;
+  [!?instanceMethodMap insertKey
+    ![@lstring new !"reverseBreathFirstTopologicalSort" !here]
+    ![@methodKind definedAsMember]
+    !formalParameterList
+    !here
+    !true # Has Compiler Argument
+    ![@methodQualifier isBasic]
+    !"" # No error message
+  ] ;
+  [!?instanceMethodMap insertKey
+    ![@lstring new !"reverseDepthFirstTopologicalSort" !here]
+    ![@methodKind definedAsMember]
+    !formalParameterList
+    !here
+    !true # Has Compiler Argument
+    ![@methodQualifier isBasic]
+    !"" # No error message
+  ] ;
 #--- Reader 'undefinedNodeCount'
   enterInheritedReaderWithoutArgument
     !?readerMap
