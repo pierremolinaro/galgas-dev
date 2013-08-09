@@ -28,7 +28,7 @@
 //---------------------------------------------------------------------------*
 
 #include "utilities/M_machine.h"
-#include "utilities/C_BigUInt.h"
+#include "utilities/PMUInt128.h"
 #include "collections/TC_UniqueArray.h"
 #include "collections/TC_Array.h"
 
@@ -136,15 +136,17 @@ class C_BDD {
                                                const PMUInt32 inBitCount) ;
 
 //--- Get BDD values count
-  public : PMUInt64 valueCount (const PMUInt32 inVariableCount) const ;
+  public : PMUInt64 valueCount64 (const PMUInt32 inVariableCount) const ;
 
-  public : C_BigUInt valueCountUsingCache (const PMUInt32 inVariableCount,
-                                          TC_UniqueArray <C_BigUInt> & ioDirectCacheArray,
-                                          TC_UniqueArray <C_BigUInt> & ioComplementCacheArray) const ;
+  public : PMUInt128 valueCount128 (const PMUInt32 inVariableCount) const ;
 
   public : PMUInt64 valueCount64UsingCache (const PMUInt32 inVariableCount,
                                             TC_UniqueArray <PMUInt64> & ioDirectCacheArray,
                                             TC_UniqueArray <PMUInt64> & ioComplementCacheArray) const ;
+
+  public : PMUInt128 valueCount128UsingCache (const PMUInt32 inVariableCount,
+                                              TC_UniqueArray <PMUInt128> & ioDirectCacheArray,
+                                              TC_UniqueArray <PMUInt128> & ioComplementCacheArray) const ;
 
 //--- Return highest bit index + 1 
   public : PMUInt32 significantVariableCount (void) const ;

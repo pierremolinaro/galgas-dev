@@ -301,7 +301,7 @@ C_BDD_Set1 C_BDD_Set2::getAccessibility (const C_BDD_Set1 & inInitialValue,
 //----------------------------------------------------------------------------*
 
 PMUInt32 C_BDD_Set2::getValuesCount (void) const {
-  return (PMUInt32) (mBDD.valueCount ((PMUInt32) (mDescriptor1.getBDDbitsSize () + mDescriptor2.getBDDbitsSize ())) & PMUINT32_MAX) ;
+  return (PMUInt32) (mBDD.valueCount64 ((PMUInt32) (mDescriptor1.getBDDbitsSize () + mDescriptor2.getBDDbitsSize ())) & PMUINT32_MAX) ;
 }
 
 //---------------------------------------------------------------------------*

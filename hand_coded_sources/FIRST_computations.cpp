@@ -183,7 +183,7 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
   if (! ntInError.isEqualToBDD (ex_ntInError.bdd ())) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
   }
-  const PMSInt32 ntInErrorCount2 = (PMSInt32) ntInError.valueCount (inBDDBitCount) ;
+  const PMSInt32 ntInErrorCount2 = (PMSInt32) ntInError.valueCount64 (inBDDBitCount) ;
   const PMSInt32 ntInErrorCount = (PMSInt32) ex_ntInError.getValuesCount () ;
   if (ntInErrorCount2 != ntInErrorCount) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
