@@ -81,3 +81,36 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_reversedGraph (LOCAT
   return result ;
 }
 
+//---------------------------------------------------------------------------*
+
+void GALGAS_%!TYPE_IDENTIFIER%::method_nodesWithNoSuccessor (%?^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outInfoList,
+                       %!^%GALGAS_lstringlist & outKeyList
+                       %!^%COMMA_LOCATION_ARGS) const {
+  cSharedList * infoList = NULL ;
+  internalNodesWithNoSuccessor (infoList, outKeyList COMMA_THERE) ;
+  outInfoList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (infoList) ;
+  GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::detachSharedList (infoList) ;
+}
+
+//---------------------------------------------------------------------------*
+
+void GALGAS_%!TYPE_IDENTIFIER%::method_nodesWithNoPredecessor (%?^%GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% & outInfoList,
+                       %!^%GALGAS_lstringlist & outKeyList
+                       %!^%COMMA_LOCATION_ARGS) const {
+  cSharedList * infoList = NULL ;
+  internalNodesWithNoPredecessor (infoList, outKeyList COMMA_THERE) ;
+  outInfoList = GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]% (infoList) ;
+  GALGAS_%![ASSOCIATED_LIST_TYPE identifierRepresentation]%::detachSharedList (infoList) ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_subgraphFromNodes (%?^%const GALGAS_lstringlist & inStartKeyList,
+                                        %!^%const GALGAS_stringset & inKeysToExclude,
+                                        %!^%C_Compiler * inCompiler
+                                        %!^%COMMA_LOCATION_ARGS) const {
+  GALGAS_%!TYPE_IDENTIFIER% result ;
+  subGraph (result, inStartKeyList, inKeysToExclude, inCompiler COMMA_THERE) ;
+  return result ;
+}
+

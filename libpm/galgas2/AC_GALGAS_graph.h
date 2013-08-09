@@ -80,6 +80,8 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
 //--------------------------------- Readers
   public : VIRTUAL_IN_DEBUG GALGAS_uint reader_count (LOCATION_ARGS) const ;
 
+  public : VIRTUAL_IN_DEBUG GALGAS_stringlist reader_keyList (LOCATION_ARGS) const ;
+
   public : VIRTUAL_IN_DEBUG GALGAS_uint reader_undefinedNodeCount (LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG GALGAS_stringlist reader_undefinedNodeKeyList (LOCATION_ARGS) const ;
@@ -99,11 +101,17 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
 
 //--- Description
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                                 const PMSInt32 inIndentation) const ;
+                                              const PMSInt32 inIndentation) const ;
 
 //--- Internal methods for handling graph
   protected : VIRTUAL_IN_DEBUG void reversedGraphFromGraph (const AC_GALGAS_graph & inGraph
                                                             COMMA_LOCATION_ARGS) ;
+
+  protected : VIRTUAL_IN_DEBUG void subGraph (AC_GALGAS_graph & outResultingGraph,
+                                              const GALGAS_lstringlist & inStartNodes,
+                                              const GALGAS_stringset & inNodesToExclude,
+                                              C_Compiler * inCompiler
+                                              COMMA_LOCATION_ARGS) const ;
 
   private : VIRTUAL_IN_DEBUG void insulateGraph (LOCATION_ARGS) ;
 
@@ -125,6 +133,14 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
                                                              C_Compiler * inCompiler
                                                              COMMA_LOCATION_ARGS) const ;
 
+  protected : VIRTUAL_IN_DEBUG void internalNodesWithNoPredecessor (cSharedList * & outSortedList,
+                                                                    GALGAS_lstringlist & outSortedNodeKeyList
+                                                                    COMMA_LOCATION_ARGS) const ;
+
+  protected : VIRTUAL_IN_DEBUG void internalNodesWithNoSuccessor (cSharedList * & outSortedList,
+                                                                  GALGAS_lstringlist & outSortedNodeKeyList
+                                                                  COMMA_LOCATION_ARGS) const ;
+
   protected : VIRTUAL_IN_DEBUG void internalDepthFirstTopologicalSort (cSharedList * & outSortedList,
                                                                        GALGAS_lstringlist & outSortedNodeKeyList,
                                                                        cSharedList * & outUnsortedList,
@@ -135,6 +151,8 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_graphviz (UNUSED_LOCATION_ARGS) const ;
 
   public : VIRTUAL_IN_DEBUG GALGAS__32_stringlist reader_edges (UNUSED_LOCATION_ARGS) const ;
+
+  friend class cSharedGraph ;
 } ;
 
 //---------------------------------------------------------------------------*

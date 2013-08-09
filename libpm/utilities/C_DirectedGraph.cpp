@@ -65,6 +65,20 @@ void C_DirectedGraph::addNode (const PMUInt32 inNodeIndex) {
 
 //---------------------------------------------------------------------------*
 
+void C_DirectedGraph::addNodes (const C_UIntSet inNodes) {
+  mNodeDefinition |= inNodes ;
+  const PMUInt32 lastPlusOne = mNodeDefinition.firstValueNotIsSet () ;
+  while (lastPlusOne > (PMUInt32) mEdges.count ()) {
+    mEdges.addObject (C_UIntSet ()) ;
+    mReverseEdges.addObject (C_UIntSet ()) ;
+  }
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkGraph (HERE) ;
+  #endif
+}
+
+//---------------------------------------------------------------------------*
+
 void C_DirectedGraph::removeNode (const PMUInt32 inNodeIndex) {
   if (inNodeIndex < (PMUInt32) mEdges.count ()) {
     mNodeDefinition.remove (inNodeIndex) ;
@@ -75,6 +89,11 @@ void C_DirectedGraph::removeNode (const PMUInt32 inNodeIndex) {
       mReverseEdges (targetIndex COMMA_HERE).remove(inNodeIndex) ;
     }
     mEdges (inNodeIndex COMMA_HERE) = C_UIntSet () ;
+  }
+  const PMUInt32 f = mNodeDefinition.firstValueNotIsSet () ;
+  while (f < (PMUInt32) mEdges.count ()) {
+    mEdges.removeLastObject (HERE) ;
+    mReverseEdges.removeLastObject (HERE) ;
   }
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkGraph (HERE) ;
@@ -151,6 +170,7 @@ C_String C_DirectedGraph::graphvizString (const TC_UniqueArray <C_String> & inNo
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void C_DirectedGraph::checkGraph (LOCATION_ARGS) const {
     MF_AssertThere (mEdges.count () == mReverseEdges.count (), "mEdges.count () %lld != mReverseEdges.count () %lld", mEdges.count (), mReverseEdges.count ()) ;
+    MF_AssertThere (mNodeDefinition.firstValueNotIsSet () == (PMUInt32) (mEdges.count ()), "mNodeDefinition.firstValueNotIsSet () %lld != mEdges.count () %lld", mNodeDefinition.firstValueNotIsSet (), mEdges.count ()) ;
   //---
     for (PMSInt32 i=0 ; i<mEdges.count () ; i++) {
       TC_UniqueArray <PMUInt32> targetList ; mEdges (i COMMA_HERE).getValueArray (targetList) ;
@@ -245,6 +265,37 @@ void C_DirectedGraph::getNodesInvolvedInCircularities (TC_UniqueArray <PMUInt32>
       outNodes.addObject (i) ;
     }
   }
+}
+
+//---------------------------------------------------------------------------*
+
+C_DirectedGraph C_DirectedGraph::subGraphFromNodes (const C_UIntSet & inStartNodes,
+                                                    const C_UIntSet & inNodesToExclude) const {
+  TC_UniqueArray <bool> nodeBoolArray ; mNodeDefinition.getBoolValueArray (nodeBoolArray) ;
+  C_DirectedGraph result ;  
+  C_UIntSet nodeSet = inStartNodes ;
+  nodeSet -= inNodesToExclude ;
+  result.addNodes (nodeSet) ;
+  bool loop = true ;
+  while (loop) {
+    loop = false ;
+    TC_UniqueArray <PMUInt32> sourceNodeArray ; nodeSet.getValueArray (sourceNodeArray) ;
+    for (PMSInt32 i=0 ; i<sourceNodeArray.count () ; i++) {
+      const PMUInt32 sourceNodeIndex = sourceNodeArray (i COMMA_HERE) ;
+      if (nodeBoolArray (sourceNodeIndex COMMA_HERE)) {
+        loop = true ;
+        nodeBoolArray (sourceNodeIndex COMMA_HERE) = false ;
+        C_UIntSet s = mEdges (sourceNodeIndex COMMA_HERE) ;
+        s -= inNodesToExclude ;
+        nodeSet |= s ;
+        TC_UniqueArray <PMUInt32> targetNodeArray ; s.getValueArray (targetNodeArray) ;
+        for (PMSInt32 j=0 ; j<targetNodeArray.count () ; j++) {
+          result.addEdge (sourceNodeIndex, targetNodeArray (j COMMA_HERE)) ;
+        }
+      }
+    }
+  }
+  return result ;
 }
 
 //---------------------------------------------------------------------------*
