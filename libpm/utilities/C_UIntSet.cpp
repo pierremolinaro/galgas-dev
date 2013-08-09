@@ -101,6 +101,21 @@ bool C_UIntSet::contains (const PMUInt32 inNodeIndex) const {
 
 //---------------------------------------------------------------------------*
 
+PMUInt32 C_UIntSet::firstValueNotIsSet (void) const {
+  PMUInt32 result = 0 ;
+  if (mDefinition.count () > 0) {
+    result = 64 * (mDefinition.count () - 1) ;
+    PMUInt64 v = mDefinition.lastObject (HERE) ;
+    while (v != 0) {
+      result ++ ;
+      v >>= 1 ;
+    }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
 PMUInt32 C_UIntSet::count (void) const {
   PMUInt32 result = 0 ;
   for (PMSInt32 i=0 ; i<mDefinition.count () ; i++) {
@@ -133,7 +148,7 @@ void C_UIntSet::operator |= (const C_UIntSet & inOther) {
   while (mDefinition.count () < inOther.mDefinition.count ()) {
     mDefinition.addObject (0) ;
   }
-  for (PMSInt32 i=0 ; i<mDefinition.count () ; i++) {
+  for (PMSInt32 i=0 ; i<inOther.mDefinition.count () ; i++) {
     mDefinition (i COMMA_HERE) |= inOther.mDefinition (i COMMA_HERE) ;
   }
 }

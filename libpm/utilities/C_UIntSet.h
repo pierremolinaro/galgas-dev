@@ -61,6 +61,8 @@ class C_UIntSet {
   
   public : bool contains (const PMUInt32 inNodeIndex) const ;
   
+  public : PMUInt32 firstValueNotIsSet (void) const ;
+  
   public : PMUInt32 count (void) const ;
   
   public : inline bool isEmpty (void) const {

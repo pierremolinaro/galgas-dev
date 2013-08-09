@@ -1550,7 +1550,7 @@ override method @graphDeclarationAST enterInSemanticContext
   @modifierMap modifierMap [emptyMap] ;
   @instanceMethodMap instanceMethodMap [emptyMap] ;
   @classMethodMap classMethodMap [emptyMap] ;
-#--- Method 'topologicalSort'
+#--- Methods 'topologicalSort', 'depthFirstTopologicalSort'
   @formalParameterSignature formalParameterList [emptyList] ;
   formalParameterList += !associatedListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
   formalParameterList += !lstringListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
@@ -1574,6 +1574,30 @@ override method @graphDeclarationAST enterInSemanticContext
     ![@methodQualifier isBasic]
     !"" # No error message
   ] ;
+  drop formalParameterList ;
+#--- Methods 'nodesWithNoSuccessor', 'nodesWithNoPredecessor'
+  formalParameterList := [@formalParameterSignature emptyList] ;
+  formalParameterList += !associatedListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
+  formalParameterList += !lstringListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
+  [!?instanceMethodMap insertKey
+    ![@lstring new !"nodesWithNoSuccessor" !here]
+    ![@methodKind definedAsMember]
+    !formalParameterList
+    !here
+    !false # No Compiler Argument
+    ![@methodQualifier isBasic]
+    !"" # No error message
+  ] ;
+  [!?instanceMethodMap insertKey
+    ![@lstring new !"nodesWithNoPredecessor" !here]
+    ![@methodKind definedAsMember]
+    !formalParameterList
+    !here
+    !false # No Compiler Argument
+    ![@methodQualifier isBasic]
+    !"" # No error message
+  ] ;
+  drop formalParameterList ;
 #--- Reader 'reversedGraph'
   enterBaseFinalReaderWithoutArgument
     !?readerMap
@@ -1614,6 +1638,14 @@ override method @graphDeclarationAST enterInSemanticContext
     !"string"
     !false # No compiler argument
   ;
+#--- Reader 'keyList'
+  enterInheritedReaderWithoutArgument
+    !?readerMap
+    !?ioSemanticContext->mTypeMap
+    !"keyList"
+    !"stringlist"
+    !false # No compiler argument
+  ;
 #--- Reader 'egdes'
   enterInheritedReaderWithoutArgument
     !?readerMap
@@ -1621,6 +1653,16 @@ override method @graphDeclarationAST enterInSemanticContext
     !"edges"
     !"2stringlist"
     !false # No compiler argument
+  ;
+#--- Reader 'subgraphFromNodes'
+  enterBaseReaderWith2Arguments
+    !?readerMap
+    !?ioSemanticContext->mTypeMap
+    !"subgraphFromNodes"
+    !"lstringlist"
+    !"stringset"
+    !mGraphTypeName->string
+    !true # has compiler argument
   ;
 #--- Constructor 'emptyGraph'
   [!?constructorMap insertKey

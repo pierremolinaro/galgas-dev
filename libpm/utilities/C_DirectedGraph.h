@@ -51,6 +51,8 @@ class C_DirectedGraph {
 //--- Methods
   public : void addNode (const PMUInt32 inNodeIndex) ;
 
+  public : void addNodes (const C_UIntSet inNodes) ;
+
   public : void removeNode (const PMUInt32 inNodeIndex) ;
 
   public : void addEdge (const PMUInt32 inSourceNodeIndex,
@@ -92,6 +94,9 @@ class C_DirectedGraph {
                                            TC_UniqueArray <PMUInt32> & outUnsortedNodes) const ;
   
   public : C_DirectedGraph reversedGraph (void) const ;
+  
+  public : C_DirectedGraph subGraphFromNodes (const C_UIntSet & inStartNodes,
+                                              const C_UIntSet & inNodesToExclude) const ;
   
   #ifndef DO_NOT_GENERATE_CHECKINGS
     protected : void checkGraph (LOCATION_ARGS) const ;
