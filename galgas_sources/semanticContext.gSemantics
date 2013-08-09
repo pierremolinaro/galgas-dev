@@ -1648,7 +1648,7 @@ override method @graphDeclarationAST enterInSemanticContext
   drop formalParameterList ;
 #--- Modifier 'removeEdgeToDominators'
   [!?modifierMap insertKey
-    ![@lstring new !"removeCircularities" !here]
+    ![@lstring new !"removeEdgesToDominators" !here]
     ![@methodKind definedAsMember]
     ![@formalParameterSignature emptyList]
     !false # No compiler argument

@@ -81,7 +81,7 @@ class C_DirectedGraph {
   
   public : void getDominators (TC_UniqueArray <C_UIntSet> & outDominators) const ;
   
-  public : void removeEdgesToDominators (void) ;
+  public : void removeEdgesToDominator (void) ;
   
   public : void getEdges (TC_UniqueArray <cEdge> & outEdges) const ;
   
