@@ -295,8 +295,8 @@
 		CFBF7006179ACAD400789D8A /* PMUndoManager.m in Sources */ = {isa = PBXBuildFile; fileRef = CFBF7005179ACAD400789D8A /* PMUndoManager.m */; };
 		CFC07E0F11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */; };
 		CFC07E1011A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */; };
-		CFC1042C161DFE2000253307 /* C_BigUInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC1042A161DFE2000253307 /* C_BigUInt.cpp */; };
-		CFC1042D161DFE2000253307 /* C_BigUInt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC1042A161DFE2000253307 /* C_BigUInt.cpp */; };
+		CFC1042C161DFE2000253307 /* PMUInt128.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC1042A161DFE2000253307 /* PMUInt128.cpp */; };
+		CFC1042D161DFE2000253307 /* PMUInt128.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC1042A161DFE2000253307 /* PMUInt128.cpp */; };
 		CFC153050FF6A76700A61DE8 /* guiGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */; };
 		CFC153060FF6A76700A61DE8 /* guiGrammar.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */; };
 		CFC3A1C0119059210021E9A1 /* semanticExpressionAnalysis.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC3A1BC119059210021E9A1 /* semanticExpressionAnalysis.cpp */; };
@@ -719,7 +719,7 @@
 		CFAE5B1910024AA50068DEC9 /* enterDefaultCommandLineOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = enterDefaultCommandLineOptions.h; sourceTree = "<group>"; };
 		CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = enterDefaultCommandLineOptions.m; sourceTree = "<group>"; };
 		CFAED8501598842900E485C7 /* M_Threads.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = M_Threads.h; sourceTree = "<group>"; };
-		CFB3190217B38D76009424C2 /* C_DirectedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; path = C_DirectedGraph.h; sourceTree = "<group>"; };
+		CFB3190217B38D76009424C2 /* C_DirectedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_DirectedGraph.h; sourceTree = "<group>"; };
 		CFB3190317B38D98009424C2 /* C_DirectedGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_DirectedGraph.cpp; sourceTree = "<group>"; };
 		CFB3190617B3C545009424C2 /* C_UIntSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_UIntSet.h; sourceTree = "<group>"; };
 		CFB3190717B3C553009424C2 /* C_UIntSet.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_UIntSet.cpp; sourceTree = "<group>"; };
@@ -850,8 +850,8 @@
 		CFBF7005179ACAD400789D8A /* PMUndoManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMUndoManager.m; sourceTree = "<group>"; };
 		CFC07E0B11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticAnalysisOfSyntaxComponent.cpp; sourceTree = "<group>"; };
 		CFC07E0C11A67549001EA6EA /* semanticAnalysisOfSyntaxComponent.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticAnalysisOfSyntaxComponent.h; sourceTree = "<group>"; };
-		CFC1042A161DFE2000253307 /* C_BigUInt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_BigUInt.cpp; sourceTree = "<group>"; };
-		CFC1042B161DFE2000253307 /* C_BigUInt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_BigUInt.h; sourceTree = "<group>"; };
+		CFC1042A161DFE2000253307 /* PMUInt128.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = PMUInt128.cpp; sourceTree = "<group>"; };
+		CFC1042B161DFE2000253307 /* PMUInt128.h */ = {isa = PBXFileReference; fileEncoding = 4; lineEnding = 0; path = PMUInt128.h; sourceTree = "<group>"; };
 		CFC153010FF6A76700A61DE8 /* guiGrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guiGrammar.cpp; sourceTree = "<group>"; };
 		CFC153020FF6A76700A61DE8 /* guiGrammar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = guiGrammar.h; sourceTree = "<group>"; };
 		CFC3A1BC119059210021E9A1 /* semanticExpressionAnalysis.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticExpressionAnalysis.cpp; sourceTree = "<group>"; };
@@ -1852,8 +1852,8 @@
 		CFF5381F057A549B00854C83 /* utilities */ = {
 			isa = PBXGroup;
 			children = (
-				CFC1042A161DFE2000253307 /* C_BigUInt.cpp */,
-				CFC1042B161DFE2000253307 /* C_BigUInt.h */,
+				CFC1042A161DFE2000253307 /* PMUInt128.cpp */,
+				CFC1042B161DFE2000253307 /* PMUInt128.h */,
 				CFAED8501598842900E485C7 /* M_Threads.h */,
 				CF3FDE2014E6CD4E0040331C /* C_Data.cpp */,
 				CF3FDE2314E6D3CD0040331C /* C_Data.h */,
@@ -2255,7 +2255,7 @@
 				CF1C0C9414E8477100F79BD0 /* AC_FileHandleForWriting.cpp in Sources */,
 				CF1C0C9914E8502300F79BD0 /* C_BinaryFileWrite.cpp in Sources */,
 				CFE71EC515010F3500EAD989 /* cEnumerator_range.cpp in Sources */,
-				CFC1042C161DFE2000253307 /* C_BigUInt.cpp in Sources */,
+				CFC1042C161DFE2000253307 /* PMUInt128.cpp in Sources */,
 				CFB3190417B38D98009424C2 /* C_DirectedGraph.cpp in Sources */,
 				CFB3190817B3C553009424C2 /* C_UIntSet.cpp in Sources */,
 			);
@@ -2443,7 +2443,7 @@
 				CF1C0C9514E8477100F79BD0 /* AC_FileHandleForWriting.cpp in Sources */,
 				CF1C0C9A14E8502300F79BD0 /* C_BinaryFileWrite.cpp in Sources */,
 				CFE71EC615010F3500EAD989 /* cEnumerator_range.cpp in Sources */,
-				CFC1042D161DFE2000253307 /* C_BigUInt.cpp in Sources */,
+				CFC1042D161DFE2000253307 /* PMUInt128.cpp in Sources */,
 				CFB3190517B38D98009424C2 /* C_DirectedGraph.cpp in Sources */,
 				CFB3190917B3C553009424C2 /* C_UIntSet.cpp in Sources */,
 			);

@@ -179,7 +179,7 @@ SOURCES += F_GetPrime.cpp
 SOURCES += MF_MemoryControl.cpp
 SOURCES += cpp-allocation.cpp
 SOURCES += basic-allocation.cpp
-SOURCES += C_BigUInt.cpp
+SOURCES += PMUInt128.cpp
 SOURCES += C_UIntSet.cpp
 SOURCES += C_DirectedGraph.cpp
 

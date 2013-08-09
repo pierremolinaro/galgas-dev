@@ -956,12 +956,12 @@ C_BDD C_BDD::BDDWithPredicateString (const C_String & inPredicateStringValue
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Value Count
+  #pragma mark Value Count (64)
 #endif
 
 //---------------------------------------------------------------------*
 
-static void nombreValeursInterne (const PMUInt32 inValue,
+static void internalValueCount64 (const PMUInt32 inValue,
                                   const PMUInt32 inVariableCount,
                                   PMUInt64 & nombreDirect,
                                   PMUInt64 & nombreComplement
@@ -976,10 +976,8 @@ static void nombreValeursInterne (const PMUInt32 inValue,
   }else{
     const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
     PMUInt64 nd0, nc0, nd1, nc1 ;
-    nombreValeursInterne (gNodeArray [nodeIndex].mELSEbranch, var, nd0, nc0 COMMA_THERE) ;
-    nombreValeursInterne (gNodeArray [nodeIndex].mTHENbranch, var, nd1, nc1 COMMA_THERE) ;
-//    nombreDirect = (nd0 + nd1) << (inVariableCount - var - 1) ;
-//    nombreComplement = (nc0 + nc1) << (inVariableCount - var - 1) ;
+    internalValueCount64 (gNodeArray [nodeIndex].mELSEbranch, var, nd0, nc0 COMMA_THERE) ;
+    internalValueCount64 (gNodeArray [nodeIndex].mTHENbranch, var, nd1, nc1 COMMA_THERE) ;
     nombreDirect = nd0 + nd1 ;
     nombreComplement = nc0 + nc1 ;
     for (PMUInt32 i=(PMUInt32) (var+1) ; i<inVariableCount ; i++) {
@@ -996,22 +994,70 @@ static void nombreValeursInterne (const PMUInt32 inValue,
 
 //---------------------------------------------------------------------*
 
-PMUInt64 C_BDD::valueCount (const PMUInt32 inVariableCount) const {
+PMUInt64 C_BDD::valueCount64 (const PMUInt32 inVariableCount) const {
   PMUInt64 nombreDirect = 0 ;
   PMUInt64 nombreComplement = 0 ;
-  nombreValeursInterne (mBDDvalue, inVariableCount, nombreDirect, nombreComplement COMMA_HERE) ;
+  internalValueCount64 (mBDDvalue, inVariableCount, nombreDirect, nombreComplement COMMA_HERE) ;
+  return nombreDirect ;
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Value Count (128)
+#endif
+
+//---------------------------------------------------------------------*
+
+static void internalValueCount128 (const PMUInt32 inValue,
+                                   const PMUInt32 inVariableCount,
+                                   PMUInt128 & nombreDirect,
+                                   PMUInt128 & nombreComplement
+                                   COMMA_LOCATION_ARGS) {
+  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
+  if (gNodeArray [nodeIndex].mBranches == 0) {
+    nombreDirect = 0 ;
+    nombreComplement = 1 ;
+    for (PMUInt32 i=0 ; i<inVariableCount ; i++) {
+      nombreComplement += nombreComplement ;
+    }
+  }else{
+    const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
+    PMUInt128 nd0, nc0, nd1, nc1 ;
+    internalValueCount128 (gNodeArray [nodeIndex].mELSEbranch, var, nd0, nc0 COMMA_THERE) ;
+    internalValueCount128 (gNodeArray [nodeIndex].mTHENbranch, var, nd1, nc1 COMMA_THERE) ;
+    nombreDirect = nd0 + nd1 ;
+    nombreComplement = nc0 + nc1 ;
+    for (PMUInt32 i=(PMUInt32) (var+1) ; i<inVariableCount ; i++) {
+      nombreDirect += nombreDirect ;
+      nombreComplement += nombreComplement ;
+    }
+  }
+  if ((inValue & 1) != 0) {
+    const PMUInt128 tempo = nombreDirect ;
+    nombreDirect = nombreComplement ;
+    nombreComplement = tempo ;
+  }
+}
+
+//---------------------------------------------------------------------*
+
+PMUInt128 C_BDD::valueCount128 (const PMUInt32 inVariableCount) const {
+  PMUInt128 nombreDirect = 0 ;
+  PMUInt128 nombreComplement = 0 ;
+  internalValueCount128 (mBDDvalue, inVariableCount, nombreDirect, nombreComplement COMMA_HERE) ;
   return nombreDirect ;
 }
 
 //---------------------------------------------------------------------*
 
-static void internalValueCountUsingCache (const PMUInt32 inValue,
-                                          const PMUInt32 inVariableCount,
-                                          C_BigUInt & nombreDirect,
-                                          C_BigUInt & nombreComplement,
-                                          TC_UniqueArray <C_BigUInt> & ioDirectCacheArray,
-                                          TC_UniqueArray <C_BigUInt> & ioComplementCacheArray
-                                          COMMA_LOCATION_ARGS) {
+static void internalValueCount128UsingCache (const PMUInt32 inValue,
+                                             const PMUInt32 inVariableCount,
+                                             PMUInt128 & nombreDirect,
+                                             PMUInt128 & nombreComplement,
+                                             TC_UniqueArray <PMUInt128> & ioDirectCacheArray,
+                                             TC_UniqueArray <PMUInt128> & ioComplementCacheArray
+                                             COMMA_LOCATION_ARGS) {
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
   if (gNodeArray [nodeIndex].mBranches == 0) {
     nombreDirect = 0 ;
@@ -1022,9 +1068,9 @@ static void internalValueCountUsingCache (const PMUInt32 inValue,
     nombreComplement = ioComplementCacheArray (inValue / 2 COMMA_HERE) ;
   }else{
     const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
-    C_BigUInt nd0, nc0, nd1, nc1 ;
-    internalValueCountUsingCache (gNodeArray [nodeIndex].mELSEbranch, var, nd0, nc0, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
-    internalValueCountUsingCache (gNodeArray [nodeIndex].mTHENbranch, var, nd1, nc1, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
+    PMUInt128 nd0, nc0, nd1, nc1 ;
+    internalValueCount128UsingCache (gNodeArray [nodeIndex].mELSEbranch, var, nd0, nc0, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
+    internalValueCount128UsingCache (gNodeArray [nodeIndex].mTHENbranch, var, nd1, nc1, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
     nombreDirect = nd0 + nd1 ;
     nombreComplement = nc0 + nc1 ;
     for (PMUInt32 i=(PMUInt32) (var+1) ; i<inVariableCount ; i++) {
@@ -1035,7 +1081,7 @@ static void internalValueCountUsingCache (const PMUInt32 inValue,
     ioComplementCacheArray.forceObjectAtIndex (inValue / 2, nombreComplement, 0 COMMA_HERE) ;
   }
   if ((inValue & 1) != 0) {
-    const C_BigUInt tempo = nombreDirect ;
+    const PMUInt128 tempo = nombreDirect ;
     nombreDirect = nombreComplement ;
     nombreComplement = tempo ;
   }
@@ -1043,12 +1089,12 @@ static void internalValueCountUsingCache (const PMUInt32 inValue,
 
 //---------------------------------------------------------------------*
 
-C_BigUInt C_BDD::valueCountUsingCache (const PMUInt32 inVariableCount,
-                                       TC_UniqueArray <C_BigUInt> & ioDirectCacheArray,
-                                       TC_UniqueArray <C_BigUInt> & ioComplementCacheArray) const {
-  C_BigUInt nombreDirect = 0 ;
-  C_BigUInt nombreComplement = 0 ;
-  internalValueCountUsingCache (mBDDvalue, inVariableCount, nombreDirect, nombreComplement, ioDirectCacheArray, ioComplementCacheArray COMMA_HERE) ;
+PMUInt128 C_BDD::valueCount128UsingCache (const PMUInt32 inVariableCount,
+                                          TC_UniqueArray <PMUInt128> & ioDirectCacheArray,
+                                          TC_UniqueArray <PMUInt128> & ioComplementCacheArray) const {
+  PMUInt128 nombreDirect = 0 ;
+  PMUInt128 nombreComplement = 0 ;
+  internalValueCount128UsingCache (mBDDvalue, inVariableCount, nombreDirect, nombreComplement, ioDirectCacheArray, ioComplementCacheArray COMMA_HERE) ;
   return nombreDirect ;
 }
 
@@ -1131,10 +1177,10 @@ obtenirIemeBDDinterne (const PMUInt32 inValue,
     const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
     PMUInt64 nd0 = 0UL ;
     PMUInt64 nc0 = 0UL ; // Non utilise ici
-    nombreValeursInterne (gNodeArray [nodeIndex].mELSEbranch ^ complement, inVariableCount - 1, nd0, nc0 COMMA_HERE) ;
+    internalValueCount64 (gNodeArray [nodeIndex].mELSEbranch ^ complement, inVariableCount - 1, nd0, nc0 COMMA_HERE) ;
     PMUInt64 nd1 = 0UL ;
     PMUInt64 nc1 = 0UL ; // Non utilise ici
-    nombreValeursInterne (gNodeArray [nodeIndex].mTHENbranch ^ complement, inVariableCount - 1, nd1, nc1 COMMA_HERE) ;
+    internalValueCount64 (gNodeArray [nodeIndex].mTHENbranch ^ complement, inVariableCount - 1, nd1, nc1 COMMA_HERE) ;
     PMUInt64 total = nd0 + nd1 ;
     for (PMUInt32 i = (PMUInt32) (inVariableCount-1) ; i>var ; i--) {
       total >>= 1 ;
@@ -1196,7 +1242,7 @@ obtenirValeurAbsolueBDDInterne (const PMUInt32 inValue) {
 
 PMUInt64 C_BDD::getBDDabsoluteValue (const PMUInt32 inVariableCount) const {
   PMUInt64 result = 0 ;
-  if (valueCount (inVariableCount) == 1) {
+  if (valueCount64 (inVariableCount) == 1) {
     result = obtenirValeurAbsolueBDDInterne (mBDDvalue) ;
   }
   return result ;
@@ -1226,10 +1272,10 @@ rangBDDinterne (const PMUInt32 inValue,
       rang = 1UL << gNodeArray [testedValueNodeIndex].mVariableIndex ;
       rang += rangBDDinterne (inValue, gNodeArray [testedValueNodeIndex].mTHENbranch ^ complementValeurTestee, inVariableCount - 1) ;
     }else if (gNodeArray [nodeIndex].mVariableIndex == gNodeArray [testedValueNodeIndex].mVariableIndex) {
-      nombreValeursInterne (gNodeArray [nodeIndex].mELSEbranch ^ complement, inVariableCount - 1, rang, nc COMMA_HERE) ;
+      internalValueCount64 (gNodeArray [nodeIndex].mELSEbranch ^ complement, inVariableCount - 1, rang, nc COMMA_HERE) ;
       rang += rangBDDinterne (gNodeArray [nodeIndex].mTHENbranch ^ complement, gNodeArray [testedValueNodeIndex].mTHENbranch ^ complementValeurTestee, inVariableCount - 1) ;
     }else{
-      nombreValeursInterne (inValue, inVariableCount - 1, rang, nc COMMA_HERE) ;
+      internalValueCount64 (inValue, inVariableCount - 1, rang, nc COMMA_HERE) ;
       rang += rangBDDinterne (inValue, gNodeArray [testedValueNodeIndex].mTHENbranch ^ complementValeurTestee, inVariableCount - 1) ;
     }
   }else{
@@ -1250,7 +1296,7 @@ PMUInt64 C_BDD::
 getBDDrange (const C_BDD & inOperand,
              const PMUInt32 inVariableCount) const {
   PMUInt64 rang = 0 ;
-  if (inOperand.valueCount (inVariableCount) == 1) {
+  if (inOperand.valueCount64 (inVariableCount) == 1) {
     rang = rangBDDinterne (mBDDvalue, inOperand.mBDDvalue, inVariableCount) ;
   }
   return rang ;

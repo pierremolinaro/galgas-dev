@@ -156,7 +156,7 @@ C_BDD_Set2 C_BDD_Set1::operator * (const C_BDD_Set1 & inOperand) const {
 //----------------------------------------------------------------------------*
 
 PMUInt32 C_BDD_Set1::getValuesCount (void) const {
-  return (PMUInt32) (mBDD.valueCount (mDescriptor.getBDDbitsSize ()) & PMUINT32_MAX) ;
+  return (PMUInt32) (mBDD.valueCount64 (mDescriptor.getBDDbitsSize ()) & PMUINT32_MAX) ;
 }
 
 //---------------------------------------------------------------------------*

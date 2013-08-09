@@ -377,7 +377,7 @@ C_BDD_Set1 C_BDD_Set3::projeterSurAxe1 (void) const {
 //----------------------------------------------------------------------------*
 
 PMUInt32 C_BDD_Set3::getValuesCount (void) const {
-  return (PMUInt32) (mBDD.valueCount ((PMUInt32) (mDescriptor1.getBDDbitsSize ()
+  return (PMUInt32) (mBDD.valueCount64 ((PMUInt32) (mDescriptor1.getBDDbitsSize ()
                                                   + mDescriptor2.getBDDbitsSize ()
                                                   + mDescriptor3.getBDDbitsSize ())) & PMUINT32_MAX) ;
 }

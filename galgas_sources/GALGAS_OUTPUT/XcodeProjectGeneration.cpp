@@ -961,7 +961,7 @@ void routine_build_5F_LIBPM_5F_UTILITIES_5F_group (GALGAS_XcodeProjectDescriptio
   routine_append_5F_cpp_5F_h_5F_files (var_fileList, GALGAS_string ("C_PrologueEpilogue"), inCompiler COMMA_SOURCE_FILE_AT_LINE (452)) ;
   }
   {
-  routine_append_5F_cpp_5F_h_5F_files (var_fileList, GALGAS_string ("C_BigUInt"), inCompiler COMMA_SOURCE_FILE_AT_LINE (453)) ;
+  routine_append_5F_cpp_5F_h_5F_files (var_fileList, GALGAS_string ("PMUInt128"), inCompiler COMMA_SOURCE_FILE_AT_LINE (453)) ;
   }
   {
   routine_append_5F_cpp_5F_h_5F_files (var_fileList, GALGAS_string ("C_UIntSet"), inCompiler COMMA_SOURCE_FILE_AT_LINE (454)) ;
@@ -993,7 +993,7 @@ void routine_build_5F_LIBPM_5F_UTILITIES_5F_files_5F_for_5F_sources_5F_build_5F_
   GALGAS_stringlist var_fileList = GALGAS_stringlist::constructor_emptyList (SOURCE_FILE_AT_LINE (475)) ;
   var_fileList.addAssign_operation (GALGAS_string ("C_SharedObject.cpp") COMMA_SOURCE_FILE_AT_LINE (476)) ;
   var_fileList.addAssign_operation (GALGAS_string ("C_Data.cpp") COMMA_SOURCE_FILE_AT_LINE (477)) ;
-  var_fileList.addAssign_operation (GALGAS_string ("C_BigUInt.cpp") COMMA_SOURCE_FILE_AT_LINE (478)) ;
+  var_fileList.addAssign_operation (GALGAS_string ("PMUInt128.cpp") COMMA_SOURCE_FILE_AT_LINE (478)) ;
   var_fileList.addAssign_operation (GALGAS_string ("C_UIntSet.cpp") COMMA_SOURCE_FILE_AT_LINE (479)) ;
   var_fileList.addAssign_operation (GALGAS_string ("C_DirectedGraph.cpp") COMMA_SOURCE_FILE_AT_LINE (480)) ;
   var_fileList.addAssign_operation (GALGAS_string ("C_PrologueEpilogue.cpp") COMMA_SOURCE_FILE_AT_LINE (481)) ;

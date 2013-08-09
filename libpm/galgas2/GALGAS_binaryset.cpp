@@ -547,7 +547,7 @@ GALGAS_uint_36__34_ GALGAS_binaryset::reader_valueCount (const GALGAS_uint & inV
     if (mBDD.significantVariableCount () > inVariableCount.uintValue ()) {
       inCompiler->onTheFlyRunTimeError ("needed variable count is greater than variable count argument" COMMA_THERE) ;
     }else{
-      result = GALGAS_uint_36__34_ (mBDD.valueCount (inVariableCount.uintValue ())) ;
+      result = GALGAS_uint_36__34_ (mBDD.valueCount64 (inVariableCount.uintValue ())) ;
     }
   }
   return result ;
