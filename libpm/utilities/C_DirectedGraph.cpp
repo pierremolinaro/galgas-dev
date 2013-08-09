@@ -133,11 +133,11 @@ C_String C_DirectedGraph::graphvizString (const TC_UniqueArray <C_String> & inNo
   C_String s = "digraph G {\n" ;
   for (PMSInt32 i=0 ; i<mEdges.count () ; i++) {
     if (isNodeDefined (i)) {
-      s << "  node \"" << inNodeNameArray (i COMMA_HERE) << "\" ;\n" ;
+      s << "  \"" << inNodeNameArray (i COMMA_HERE) << "\" ;\n" ;
       const C_UIntSet targetSet = mEdges (i COMMA_HERE) ;
       TC_Array <PMUInt32> targetList ; targetSet.getValueArray (targetList) ;
-      for (PMSInt32 i=0 ; i<targetList.count () ; i++) {
-        const PMUInt32 targetIndex = targetList (i COMMA_HERE) ;
+      for (PMSInt32 j=0 ; j<targetList.count () ; j++) {
+        const PMUInt32 targetIndex = targetList (j COMMA_HERE) ;
         s << "  \"" << inNodeNameArray (i COMMA_HERE) << "\" -> \"" << inNodeNameArray (targetIndex COMMA_HERE) << "\" ;\n" ;
       }
     }
@@ -411,7 +411,7 @@ void C_DirectedGraph::getDominators (TC_UniqueArray <C_UIntSet> & outDominators)
 
 //---------------------------------------------------------------------------*
 
-void C_DirectedGraph::removeEdgesToDominators (void) {
+void C_DirectedGraph::removeEdgesToDominator (void) {
   TC_UniqueArray <C_UIntSet> dominators ; getDominators (dominators) ;
   for (PMSInt32 node=0 ; node<mEdges.count () ; node++) {
     if (isNodeDefined (node)) {
@@ -545,7 +545,7 @@ void C_DirectedGraph::example (void) {
   }
   printf ("\n") ;
   printf ("--- Remove edges to dominators:\n") ;
-  g.removeEdgesToDominators () ;
+  g.removeEdgesToDominator () ;
   g.print () ;
   printf ("--- Reverse topological sort\n") ;
   g.reversedGraph ().topologicalSort (sortedNodes, unsortedNodes) ;

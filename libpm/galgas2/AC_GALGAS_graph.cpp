@@ -105,7 +105,7 @@ class cSharedGraph : public C_SharedObject {
                          const C_String & inTargetNodeKey,
                          const GALGAS_location & inTargetNodeLocation) ;
 
-  public : void removeCircularities (LOCATION_ARGS) ;
+  public : void removeEdgesToDominators (LOCATION_ARGS) ;
 
   public : void internalTopologicalSort (cSharedList * & outSortedList,
                                          GALGAS_lstringlist & outSortedNodeKeyList,
@@ -833,64 +833,6 @@ void cSharedGraph::internalDepthFirstTopologicalSort (cSharedList * & outSortedL
     lkey.mAttribute_string = GALGAS_string (nodePtr->mKey) ;
     outUnsortedNodeKeyList.addAssign_operation (lkey COMMA_HERE) ;
   }
-/*  TC_UniqueArray <cTopologicalSortEntry> array (mNodeArray.count () COMMA_HERE) ;
-  array.addObjects (mNodeArray.count (), cTopologicalSortEntry ()) ;
-//--- Enter nodes
-  enterNodes (mRoot, array) ;
-//--- Enter egdes
-  for (PMSInt32 i=0 ; i<mEdgeArray.count () ; i++) {
-    const PMUInt32 sourceNodeID = mEdgeArray (i COMMA_HERE).sourceNodeID () ;
-    cTopologicalSortEntry & source = array ((PMSInt32) sourceNodeID COMMA_HERE) ;
-    cTopologicalSortEntry & target = array ((PMSInt32) mEdgeArray (i COMMA_HERE).targetNodeID () COMMA_HERE) ;
-    source.mDependencyCount ++ ;
-    target.mDependenceArray.addObject (sourceNodeID) ;
-  }
-//--- Make exploration link
-  for (PMSInt32 i=1 ; i<array.count () ; i++) {
-    array (i-1 COMMA_HERE).mLink = i ;
-  }
-//  printf ("-------- Sort\n") ;
-//--- Loop for accumulating sorted nodes
-  AC_GALGAS_list::makeNewSharedList (outSortedList COMMA_HERE) ;
-  outSortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
-  bool loop = true ;
-  TC_UniqueArray <cTopologicalSortEntry *> workingArray ;
-  while (loop) {
-  //--- Find a node without any dependence  
-    for (PMSInt32 i=0 ; (i<array.count ()) && (workingArray.count () == 0) ; i++) {
-      if ((! array (i COMMA_HERE).mHandled) && (array (i COMMA_HERE).mDependencyCount == 0)) {
-        cTopologicalSortEntry *  entry = & array (i COMMA_HERE) ;
-        entry->mHandled = true ; // So that this entry will not match any more
-        workingArray.addObject (entry) ;
-      }
-    }
-    loop = workingArray.count () > 0 ;
-    if (loop) {
-      cTopologicalSortEntry * entry = workingArray.lastObject (HERE) ;
-      workingArray.removeLastObject (HERE) ;
-      AC_GALGAS_list::insertInSharedList (outSortedList, entry->mAttributes) ;
-      // printf ("  %s\n", entry->mKey.mAttribute_string.stringValue().cString (HERE)) ;
-      outSortedNodeKeyList.addAssign_operation (entry->mKey COMMA_HERE) ;
-      for (PMSInt32 i=0 ; i<entry->mDependenceArray.count () ; i++) {
-        cTopologicalSortEntry * candidate = & array ((PMSInt32) entry->mDependenceArray (i COMMA_HERE) COMMA_HERE) ;
-        candidate->mDependencyCount -- ;
-        if (candidate->mDependencyCount == 0) {
-          workingArray.addObject (candidate) ;
-          candidate->mHandled = true ;
-        }
-      }
-    }
-  }
-//--- Add unsorted nodes
-  AC_GALGAS_list::makeNewSharedList (outUnsortedList COMMA_HERE) ;
-  outUnsortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
-  for (PMSInt32 i=0 ; i<array.count () ; i++) {
-    if (! array (i COMMA_HERE).mHandled) {
-      cTopologicalSortEntry & entry = array (i COMMA_HERE) ;
-      AC_GALGAS_list::insertInSharedList (outUnsortedList, entry.mAttributes) ;
-      outUnsortedNodeKeyList.addAssign_operation (entry.mKey COMMA_HERE) ;
-    }
-  }*/
 }
 
 //---------------------------------------------------------------------------*
@@ -959,50 +901,37 @@ GALGAS_lstringlist AC_GALGAS_graph::reader_undefinedNodeReferenceList (LOCATION_
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Modifier removeCircularities
+  #pragma mark Modifier removeEdgesToDominators
 #endif
 
 //---------------------------------------------------------------------------*
 
-void AC_GALGAS_graph::modifier_removeCircularities (LOCATION_ARGS) {
+void AC_GALGAS_graph::modifier_removeEdgesToDominators (LOCATION_ARGS) {
   if (isValid ()) {
     insulateGraph (HERE) ;
     MF_Assert (NULL != mSharedGraph, "mSharedGraph == NULL", 0, 0) ;
     if (NULL != mSharedGraph) {
-      mSharedGraph->removeCircularities (THERE) ;
+      mSharedGraph->removeEdgesToDominators (THERE) ;
     }
   }
 }
 
 //---------------------------------------------------------------------------*
 
-void cSharedGraph::removeCircularities (UNUSED_LOCATION_ARGS) {
-/*  bool loop = true ;
-  while (loop) {
-    cSharedList * sortedList = NULL ; // Unused
-    GALGAS_lstringlist sortedNodeKeyList ; // Unused
-    cSharedList * unsortedList = NULL ; // Unused
-    GALGAS_lstringlist unsortedNodeKeyList ; // Unused
-    TC_UniqueArray <const cGraphNode *> unsortedNodes ;
-    internalTopologicalSort (sortedList,
-                             sortedNodeKeyList,
-                             unsortedList,
-                             unsortedNodeKeyList,
-                             unsortedNodes) ;
-    loop = unsortedNodes.count() != 0 ;
-    if (loop) { // Suppress all incoming edges of this node
-      const PMUInt32 nodeID =  unsortedNodes (0 COMMA_HERE)->mNodeID ;
-      PMSInt32 idx = 0 ;
-      while (idx < mEdgeArray.count ()) {
-        const PMUInt32 sourceNodeID = mEdgeArray (idx COMMA_HERE).sourceNodeID () ;
-        if (sourceNodeID == nodeID) {
-          mEdgeArray.removeObjectAtIndex (idx COMMA_HERE) ;
-        }else{
-          idx ++ ;
-        }
-      }
-    }
-  }*/
+void cSharedGraph::removeEdgesToDominators (UNUSED_LOCATION_ARGS) {
+//--- Find start nodes
+  TC_UniqueArray <PMUInt32> startNodes ;
+  mDirectedGraph.getNodesWithNoPredecessor (startNodes) ;
+//--- Add a dummy start node for handling case where there several start nodes
+  const PMUInt32 dummyNodeIndex = mDirectedGraph.unusedNodeIndex () ;
+//--- Add edges from dummy node to start nodes
+  for (PMSInt32 i=0 ; i<startNodes.count () ; i++) {
+    mDirectedGraph.addEdge (dummyNodeIndex, startNodes (i COMMA_HERE)) ;
+  }
+//--- Remove edge to dominator
+  mDirectedGraph.removeEdgesToDominator () ;
+//--- Remove dummy node
+  mDirectedGraph.removeNode (dummyNodeIndex) ;
 }
 
 //---------------------------------------------------------------------------*
