@@ -212,28 +212,29 @@ void GALGAS_%!TYPE_IDENTIFIER%::modifier_insertAtIndex (%?^
 
 //---------------------------------------------------------------------------*
 
-void GALGAS_%!TYPE_IDENTIFIER%::modifier_prependValue (%?^
-  foreach ATTRIBUTE_LIST
-  do index IDX %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inOperand%![IDX string]
-  between %,\n%!^
+void GALGAS_%!TYPE_IDENTIFIER%::modifier_removeAtIndex (%?^
+  foreach ATTRIBUTE_LIST do index IDX
+    %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outOperand%![IDX string]%,\n%!^
   end foreach
-  %\n%!^%COMMA_LOCATION_ARGS) {
-  if (isValid ()%
-    foreach ATTRIBUTE_LIST
-      do index IDX % && inOperand%![IDX string]%.isValid ()%
-    end foreach
-  %) {
-    cCollectionElement * p = NULL ;
-    macroMyNew (p, cCollectionElement_%!TYPE_IDENTIFIER% (%
-    foreach ATTRIBUTE_LIST
-    do index IDX %inOperand%![IDX string]
-    between %, %
-    end foreach
-    % COMMA_THERE)) ;
+   %const GALGAS_uint inRemoveIndex,\n%!^
+   %C_Compiler * inCompiler\n%!^
+   %COMMA_LOCATION_ARGS) {
+  if (isValid () && inRemoveIndex.isValid ()) {
     capCollectionElement attributes ;
-    attributes.setPointer (p) ;
-    macroDetachSharedObject (p) ;
-    prependAttributeArray (attributes) ;
+    removeObjectAtIndex (attributes, inRemoveIndex.uintValue (), inCompiler COMMA_THERE) ;
+    cCollectionElement_%!TYPE_IDENTIFIER% * p = (cCollectionElement_%!TYPE_IDENTIFIER% *) attributes.ptr () ;
+    if (NULL == p) {
+%
+ foreach ATTRIBUTE_LIST do index IDX
+    %      outOperand%![IDX string] %.drop () ;\n%
+  end foreach
+%    }else{
+      macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
+%
+ foreach ATTRIBUTE_LIST do index IDX
+    %      outOperand%![IDX string] % = p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
+  end foreach
+%    }
   }
 }
 

@@ -121,16 +121,18 @@ class c_LR0_items_set {
 
 //--- Compare two items sets
   public : static PMSInt32 compare_LR0_items_sets (const c_LR0_items_set & inItemsSet1,
-                                               const c_LR0_items_set & inItemsSet2) ;
+                                                   const c_LR0_items_set & inItemsSet2) ;
 
 //--- Search from a LR0 items set (used for building 'reduce' actions of SLR table)
   public : void getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProductionRules,
                                                     TC_UniqueArray <PMSInt32> & outProductionsSet,
                                                     bool & outAcceptCondition) ;
 
-//--- No copy
-  private : c_LR0_items_set (c_LR0_items_set &) ;
-  private : c_LR0_items_set & operator = (c_LR0_items_set &) ;
+//--- Handle Copy
+  public : c_LR0_items_set (const c_LR0_items_set &) ;
+
+//--- No assignment
+  private : c_LR0_items_set & operator = (const c_LR0_items_set &) ;
 
 //--- Friend
   friend void swap (c_LR0_items_set & ioOperand1, c_LR0_items_set & ioOperand2) ;
@@ -140,6 +142,13 @@ class c_LR0_items_set {
 
 c_LR0_items_set::c_LR0_items_set (void) :
 mItemsSet () {
+}
+
+//---------------------------------------------------------------------------*
+
+c_LR0_items_set::c_LR0_items_set (const c_LR0_items_set & inSource) :
+mItemsSet () {
+  inSource.mItemsSet.copyTo (mItemsSet) ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1341,9 +1350,8 @@ SLR_computations (C_Compiler * inCompiler,
     for (PMSInt32 p=0 ; p<productionsSet.count () ; p++) {
       const PMSInt32 productionIndex = productionsSet (p COMMA_HERE) ;
       const PMSInt32 leftNonTerminal = inProductionRules (productionIndex COMMA_HERE).aNumeroNonTerminalGauche ;
-      const TC_UniqueArray <PMSInt32> & followsArray = inFOLLOWarray (leftNonTerminal COMMA_HERE) ;
-      for (PMSInt32 f=0 ; f<followsArray.count () ; f++) {
-        const PMSInt32 terminal = followsArray (f COMMA_HERE) ;
+      for (PMSInt32 f=0 ; f<inFOLLOWarray (leftNonTerminal COMMA_HERE).count () ; f++) {
+        const PMSInt32 terminal = inFOLLOWarray (leftNonTerminal COMMA_HERE) (f COMMA_HERE) ;
         if (inHTMLfile != NULL) {
           inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
           *inHTMLfile << "Action [S"

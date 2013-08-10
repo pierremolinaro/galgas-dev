@@ -163,19 +163,11 @@ const cCollectionElement * capCollectionElementArray::pointerAtIndexForReadAcces
 
 //---------------------------------------------------------------------------*
 
-void capCollectionElementArray::removeFirstObject (void) {
-  MF_Assert (mCount > 0, "mCount (%ld) <= 0", mCount, 0) ;
-  for (PMUInt32 i=1 ; i<mCount ; i++) {
+void capCollectionElementArray::removeObjectAtIndex (const PMUInt32 inIndex) {
+  MF_Assert (mCount > inIndex, "mCount (%ld) <= inIndex (%lld)", mCount, inIndex) ;
+  for (PMUInt32 i=inIndex+1 ; i<mCount ; i++) {
     mArray [i - 1] = mArray [i] ;
   }
-  mCount -- ;
-  mArray [mCount].drop () ;
-}
-
-//---------------------------------------------------------------------------*
-
-void capCollectionElementArray::removeLastObject (void) {
-  MF_Assert (mCount > 0, "mCount (%lld) <= 0", mCount, 0) ;
   mCount -- ;
   mArray [mCount].drop () ;
 }
@@ -191,22 +183,6 @@ void capCollectionElementArray::predendObject (const capCollectionElement & inOb
   mCount ++ ;
 }
 
-//---------------------------------------------------------------------------*
-
-/* void capCollectionElementArray::exchange (capCollectionElementArray & ioObjectArray) {
-  PMUInt32 temp = mCapacity ;
-  mCapacity = ioObjectArray.mCapacity ;
-  ioObjectArray.mCapacity = temp ;
-//---
-  temp = mCount ;
-  mCount = ioObjectArray.mCount ;
-  ioObjectArray.mCount = temp ;
-//---
-  capCollectionElement * tempArray = mArray ;
-  mArray = ioObjectArray.mArray ;
-  ioObjectArray.mArray = tempArray ;  
-}
- */
 //---------------------------------------------------------------------------*
 
 void capCollectionElementArray::removeAllObjects (void) {

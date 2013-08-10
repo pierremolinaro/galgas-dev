@@ -108,7 +108,10 @@ class AC_GALGAS_list : public AC_GALGAS_root {
   
   private : VIRTUAL_IN_DEBUG void insulateList (LOCATION_ARGS) ;
   
-  protected : VIRTUAL_IN_DEBUG void prependAttributeArray (const capCollectionElement & inElementToPrepend) ;
+  protected : VIRTUAL_IN_DEBUG void removeObjectAtIndex (capCollectionElement & outAttributes,
+                                                         const PMUInt32 inRemoveIndex,
+                                                         C_Compiler * inCompiler
+                                                         COMMA_LOCATION_ARGS) ;
 
   protected : VIRTUAL_IN_DEBUG void removeFirstObject (capCollectionElement & outAttributes,
                                                        C_Compiler * inCompiler

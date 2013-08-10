@@ -224,7 +224,7 @@ template <typename TYPE> class TC_UniqueArray {
 //  inSortFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
   public : void
   sortArrayUsingFunction (PMSInt32 (* inSortFunction) (const TYPE & inOperand1,
-                                                     const TYPE & inOperand2)) ;
+                                                       const TYPE & inOperand2)) ;
 
 //--- Sort array with a sort function (does nothing if inSortFunction == NULL)
 //  inSortFunction (inOperand1, inOperand2) < 0 means inOperand1 < inOperand2
@@ -233,30 +233,13 @@ template <typename TYPE> class TC_UniqueArray {
                                                               const TYPE & inOperand2)) ;
 
 //--- Array access (with index checking)
-  #ifndef DO_NOT_GENERATE_CHECKINGS
-    public : TYPE & operator () (const PMSInt32 inIndex
-                                 COMMA_LOCATION_ARGS) ;
-    public : TYPE & operator () (const PMSInt32 inIndex
-                                 COMMA_LOCATION_ARGS) const ;
-    public : TYPE & lastObject (LOCATION_ARGS) ;
-    public : const TYPE & lastObject (LOCATION_ARGS) const ;
-  #endif
+  public : TYPE lastObject (LOCATION_ARGS) const ;
 
-//--- Array access (without index checking)
-  #ifdef DO_NOT_GENERATE_CHECKINGS
-    public : inline TYPE & operator () (const PMSInt32 inIndex) {
-      return mArray [inIndex] ;
-    }
-    public : inline TYPE & operator () (const PMSInt32 inIndex) const {
-      return mArray [inIndex] ;
-    }
-    public : inline TYPE & lastObject (void) {
-      return mArray [mCount-1] ;
-    }
-    public : inline const TYPE & lastObject (void) const {
-      return mArray [mCount-1] ;
-    }
-  #endif
+  public : TYPE & operator () (const PMSInt32 inIndex
+                               COMMA_LOCATION_ARGS) ;
+
+  public : TYPE & operator () (const PMSInt32 inIndex
+                               COMMA_LOCATION_ARGS) const ;
 
 //--- Private methods
   private : void internalSortArrayUsingOperators (const PMSInt32 inFirst,
@@ -274,12 +257,12 @@ template <typename TYPE> class TC_UniqueArray {
   private : void internalSortArrayUsingFunction (const PMSInt32 inFirst,
                                                  const PMSInt32 inLast,
                                                  PMSInt32 (* inSortFunction) (const TYPE & inOperand1,
-                                                                            const TYPE & inOperand2)) ;
+                                                                              const TYPE & inOperand2)) ;
 
   private : void internalReverseSortArrayUsingFunction (const PMSInt32 inFirst,
                                                         const PMSInt32 inLast,
                                                         PMSInt32 (* inSortFunction) (const TYPE & inOperand1,
-                                                                                   const TYPE & inOperand2)) ;
+                                                                                     const TYPE & inOperand2)) ;
 //--- Index checking
   #ifndef DO_NOT_GENERATE_CHECKINGS
     protected : void checkIndex (const PMSInt32 inIndex COMMA_LOCATION_ARGS) const ;
@@ -884,45 +867,35 @@ indexOfFirstObjectEqualTo (const TYPE & inValue) const {
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  template <typename TYPE>
-  TYPE & TC_UniqueArray <TYPE>::
-  operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) {
+template <typename TYPE>
+TYPE & TC_UniqueArray <TYPE>::
+operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) {
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (inIndex COMMA_THERE) ;
-    return mArray [inIndex] ;
-  }
-#endif
+  #endif
+  return mArray [inIndex] ;
+}
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  template <typename TYPE>
-  TYPE & TC_UniqueArray <TYPE>::
-  operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) const {
+template <typename TYPE>
+TYPE & TC_UniqueArray <TYPE>::
+operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) const {
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (inIndex COMMA_THERE) ;
-    return mArray [inIndex] ;
-  }
-#endif
+  #endif
+  return mArray [inIndex] ;
+}
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  template <typename TYPE>
-  TYPE & TC_UniqueArray <TYPE>::lastObject (LOCATION_ARGS) {
+template <typename TYPE>
+TYPE TC_UniqueArray <TYPE>::lastObject (LOCATION_ARGS) const {
+  #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (mCount-1 COMMA_THERE) ;
-    return mArray [mCount-1] ;
-  }
-#endif
-
-//---------------------------------------------------------------------------*
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  template <typename TYPE>
-  const TYPE & TC_UniqueArray <TYPE>::lastObject (LOCATION_ARGS) const {
-    checkIndex (mCount-1 COMMA_THERE) ;
-    return mArray [mCount-1] ;
-  }
-#endif
+  #endif
+  return mArray [mCount-1] ;
+}
 
 //---------------------------------------------------------------------------*
 //                                                                           *

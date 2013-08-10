@@ -78,21 +78,10 @@ void C_Data::free (void) {
 
 //---------------------------------------------------------------------------*
 
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  PMUInt8 & C_Data::operator () (const PMSInt32 inIndex
-                                 COMMA_LOCATION_ARGS) {
-    return mBinaryData (inIndex COMMA_THERE) ;
-  }
-#endif
-
-//---------------------------------------------------------------------------*
-
-#ifndef DO_NOT_GENERATE_CHECKINGS
-  PMUInt8 & C_Data::operator () (const PMSInt32 inIndex
-                                 COMMA_LOCATION_ARGS) const {
-    return mBinaryData (inIndex COMMA_THERE) ;
-  }
-#endif
+PMUInt8 C_Data::operator () (const PMSInt32 inIndex
+                             COMMA_LOCATION_ARGS) const {
+  return mBinaryData (inIndex COMMA_THERE) ;
+}
 
 //---------------------------------------------------------------------------*
 
