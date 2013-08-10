@@ -543,10 +543,6 @@ class c_LR1_items_set {
 //--- Hash code
   public : inline PMUInt32 hashCode (void) const { return mHashCode ; }
 
-//--- No copy
-  private : c_LR1_items_set (c_LR1_items_set &) ;
-  private : c_LR1_items_set & operator = (c_LR1_items_set &) ;
-
 //--- Friend
   friend void swap (c_LR1_items_set & ioOperand1, c_LR1_items_set & ioOperand2) ;
 } ;
@@ -630,10 +626,9 @@ close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
             theFirst.addObject (symbol) ;
             emptyStringAccepted = false ;
           }else{
-            const TC_UniqueArray <PMSInt32> & f = inFIRSTarray (symbol COMMA_HERE) ;
-            const PMSInt32 nFirst = f.count () ;
+            const PMSInt32 nFirst = inFIRSTarray (symbol COMMA_HERE).count () ;
             for (PMSInt32 s=0 ; s<nFirst ; s++) {
-              theFirst.addObject (f (s COMMA_HERE)) ;
+              theFirst.addObject (inFIRSTarray (symbol COMMA_HERE) (s COMMA_HERE)) ;
             }
             emptyStringAccepted = inVocabularyDerivingToEmpty_Array (symbol COMMA_HERE) ;
           }

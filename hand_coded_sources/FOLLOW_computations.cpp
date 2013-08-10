@@ -155,11 +155,10 @@ printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <PMSInt32> > & inFOLLOWarr
       inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
       inVocabulary.printInFile (inHTMLfile, i COMMA_HERE) ;
       inHTMLfile.outputRawData ("</code></td><td><code>") ;
-      TC_UniqueArray <PMSInt32> & s = inFOLLOWarray (i COMMA_HERE) ;
-      const PMSInt32 n = s.count () ;
+      const PMSInt32 n = inFOLLOWarray (i COMMA_HERE).count () ;
       for (PMSInt32 j=0 ; j<n ; j++) {
         inHTMLfile << " " ;
-        inVocabulary.printInFile (inHTMLfile, s (j COMMA_HERE) COMMA_HERE) ;
+        inVocabulary.printInFile (inHTMLfile, inFOLLOWarray (i COMMA_HERE) (j COMMA_HERE) COMMA_HERE) ;
       }
       inHTMLfile.outputRawData ("</code></td></tr>") ;
     }

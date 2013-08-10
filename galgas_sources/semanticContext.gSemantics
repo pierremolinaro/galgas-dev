@@ -2045,6 +2045,26 @@ override method @listDeclarationAST enterInSemanticContext
       ] ;
     end if ;
   end foreach ;
+#------------------------- Instance methods
+  @instanceMethodMap instanceMethodMap [emptyMap] ;
+  [!?instanceMethodMap insertKey
+    ![@lstring new !"first" !here]
+    ![@methodKind definedAsMember]
+    !modifierOutputFormalArgumentList
+    !here
+    !true
+    ![@methodQualifier isBasic]
+    !""
+  ] ;
+  [!?instanceMethodMap insertKey
+    ![@lstring new !"last" !here]
+    ![@methodKind definedAsMember]
+    !modifierOutputFormalArgumentList
+    !here
+    !true
+    ![@methodQualifier isBasic]
+    !""
+  ] ;
 #----------------------------------------- Modifiers
   @modifierMap modifierMap [emptyMap] ;
   [!?modifierMap insertOrReplace
@@ -2063,14 +2083,16 @@ override method @listDeclarationAST enterInSemanticContext
     ![@methodQualifier isBasic]
     !""
   ] ;
+  modifierOutputFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] ;
   [!?modifierMap insertOrReplace
-    ![@lstring new !"prependValue" !here]
+    ![@lstring new !"removeAtIndex" !here]
     ![@methodKind definedAsMember]
-    !modifierInputFormalArgumentList
-    !false
+    !modifierOutputFormalArgumentList
+    !true
     ![@methodQualifier isBasic]
-    !"" # No error message
+    !""
   ] ;
+  drop modifierOutputFormalArgumentList ;
   foreach typedAttributeList do
     if mHasSetter then
       @formalParameterSignature setterFormalArgumentList [emptyList] ;
@@ -2097,26 +2119,7 @@ override method @listDeclarationAST enterInSemanticContext
     !"" # No error message
   ] ;
   drop modifierInputFormalArgumentList ;
-#------------------------- Instance methods
-  @instanceMethodMap instanceMethodMap [emptyMap] ;
-  [!?instanceMethodMap insertKey
-    ![@lstring new !"first" !here]
-    ![@methodKind definedAsMember]
-    !modifierOutputFormalArgumentList
-    !here
-    !true
-    ![@methodQualifier isBasic]
-    !""
-  ] ;
-  [!?instanceMethodMap insertKey
-    ![@lstring new !"last" !here]
-    ![@methodKind definedAsMember]
-    !modifierOutputFormalArgumentList
-    !here
-    !true
-    ![@methodQualifier isBasic]
-    !""
-  ] ;
+#--- Enumeration variants
   @stringlist enumerationVariants [emptyList] ;
   enumerationVariants += !"up" ;
   enumerationVariants += !"down" ;

@@ -89,11 +89,8 @@ class capCollectionElementArray {
 //--- Get count
   public : inline PMUInt32 count (void) const { return mCount ; }
 
-//--- Remove first objects (at index 0)
-  public : void removeFirstObject (void) ;
-
-//--- Remove last object (at index mCount - 1)
-  public : void removeLastObject (void) ;
+//--- Remove an object
+  public : void removeObjectAtIndex (const PMUInt32 inIndex) ;
 
 //--- Prepend object (insert them from index 0)
   public : void predendObject (const capCollectionElement & inObject) ;
