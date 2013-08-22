@@ -481,7 +481,7 @@ GALGAS_char GALGAS_string::reader_characterAtIndex (const GALGAS_uint & inIndex,
                                                       C_Compiler * inCompiler
                                                       COMMA_LOCATION_ARGS) const {
   GALGAS_char result ;
-  if (inIndex.isValid ()) {
+  if (isValid () && inIndex.isValid ()) {
     const PMSInt32 idx = (PMSInt32) inIndex.uintValue () ;
     const PMSInt32 stringLength = mString.length () ;
     if (idx >= stringLength) {
@@ -491,6 +491,17 @@ GALGAS_char GALGAS_string::reader_characterAtIndex (const GALGAS_uint & inIndex,
     }else{
       result = GALGAS_char (mString (idx COMMA_HERE)) ;
     }
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+GALGAS_bool GALGAS_string::reader_containsCharacter (const GALGAS_char & inCharacter
+                                                     COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_bool result ;
+  if (isValid () && inCharacter.isValid ()) {
+    result = GALGAS_bool (mString.containsCharacter (inCharacter.charValue ())) ;
   }
   return result ;
 }
