@@ -339,6 +339,21 @@ utf32 C_String::lastCharacter (LOCATION_ARGS) const {
 
 //---------------------------------------------------------------------------*
 
+bool C_String::containsCharacter (const utf32 inCharacter) const {
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkString (HERE) ;
+  #endif
+  bool found = false ;
+  if (NULL != mEmbeddedString) {
+    for (PMUInt32 i=0 ; (i<mEmbeddedString->mLength) && ! found ; i++) {
+      found = UNICODE_VALUE (mEmbeddedString->mString [i]) == UNICODE_VALUE (inCharacter) ;
+    }
+  }
+  return found ;
+}
+
+//---------------------------------------------------------------------------*
+
 PMSInt32 C_String::length (void) const {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkString (HERE) ;

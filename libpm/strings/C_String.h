@@ -141,6 +141,9 @@ class C_String : public AC_OutputStream {
 //--- Set a character
   public : void setUnicodeCharacterAtIndex (const utf32 inCharacter, const PMSInt32 inIndex COMMA_LOCATION_ARGS) ;
 
+//--- Contains a character
+  public : bool containsCharacter (const utf32 inCharacter) const ;
+
 //--- Get last character
   public : utf32 lastCharacter (LOCATION_ARGS) const ;
 
