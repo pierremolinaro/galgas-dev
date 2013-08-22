@@ -1697,6 +1697,18 @@ override method @graphDeclarationAST enterInSemanticContext
     ![@methodQualifier isInherited]
     !"" # No error message
   ] ;
+#--- Modifier 'removeEdgeToDominators'
+  formalParameterList := [@formalParameterSignature emptyList] ;
+  formalParameterList += !stringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
+  [!?modifierMap insertKey
+    ![@lstring new !"removeEdgesToNode" !here]
+    ![@methodKind definedAsMember]
+    !formalParameterList
+    !true # Compiler argument
+    ![@methodQualifier isInherited]
+    !"" # No error message
+  ] ;
+  drop formalParameterList ;
 #--- Modifier 'enterArc'
   formalParameterList := [@formalParameterSignature emptyList] ;
   formalParameterList += !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;

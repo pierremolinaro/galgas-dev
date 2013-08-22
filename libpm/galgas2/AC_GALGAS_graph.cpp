@@ -107,6 +107,10 @@ class cSharedGraph : public C_SharedObject {
 
   public : void removeEdgesToDominators (LOCATION_ARGS) ;
 
+  public : void removeEdgesToNode (const C_String & inNodeName,
+                                   C_Compiler * inCompiler
+                                   COMMA_LOCATION_ARGS) ;
+
   public : void internalTopologicalSort (cSharedList * & outSortedList,
                                          GALGAS_lstringlist & outSortedNodeKeyList,
                                          cSharedList * & outUnsortedList,
@@ -1134,6 +1138,43 @@ GALGAS_lstringlist AC_GALGAS_graph::reader_undefinedNodeReferenceList (LOCATION_
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
+  #pragma mark Modifier removeEdgesToNode
+#endif
+
+//---------------------------------------------------------------------------*
+
+void AC_GALGAS_graph::modifier_removeEdgesToNode (const GALGAS_string & inNodeName,
+                                                  C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) {
+  if (isValid () && inNodeName.isValid ()) {
+    insulateGraph (HERE) ;
+    MF_Assert (NULL != mSharedGraph, "mSharedGraph == NULL", 0, 0) ;
+    if (NULL != mSharedGraph) {
+      mSharedGraph->removeEdgesToNode (inNodeName.stringValue (), inCompiler COMMA_THERE) ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+void cSharedGraph::removeEdgesToNode (const C_String & inNodeName,
+                                      C_Compiler * inCompiler
+                                      COMMA_LOCATION_ARGS) {
+//--- Find node
+  const cGraphNode * node = findNode (inNodeName, mRoot) ;
+  if (NULL == node) {
+    C_String s = "graph removeEdgesToNode: node '" ;
+    s << inNodeName << "' does not exist" ;
+    inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
+  }else{
+    const PMUInt32 nodeIndex = node->mNodeID ;
+    mDirectedGraph.removeEdgesToNode (nodeIndex COMMA_HERE) ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Modifier removeEdgesToDominators
 #endif
 
@@ -1151,7 +1192,7 @@ void AC_GALGAS_graph::modifier_removeEdgesToDominators (LOCATION_ARGS) {
 
 //---------------------------------------------------------------------------*
 
-void cSharedGraph::removeEdgesToDominators (UNUSED_LOCATION_ARGS) {
+void cSharedGraph::removeEdgesToDominators (LOCATION_ARGS) {
 //--- Find start nodes
   TC_UniqueArray <PMUInt32> startNodes ;
   mDirectedGraph.getNodesWithNoPredecessor (startNodes) ;
@@ -1162,7 +1203,7 @@ void cSharedGraph::removeEdgesToDominators (UNUSED_LOCATION_ARGS) {
     mDirectedGraph.addEdge (dummyNodeIndex, startNodes (i COMMA_HERE)) ;
   }
 //--- Remove edge to dominator
-  mDirectedGraph.removeEdgesToDominator () ;
+  mDirectedGraph.removeEdgesToDominator (THERE) ;
 //--- Remove dummy node
   mDirectedGraph.removeNode (dummyNodeIndex) ;
 }

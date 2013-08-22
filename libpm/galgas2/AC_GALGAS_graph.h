@@ -91,6 +91,10 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
                                                    const GALGAS_lstring & inTargetNodeKey
                                                    COMMA_LOCATION_ARGS) ;
 
+  public : VIRTUAL_IN_DEBUG void modifier_removeEdgesToNode (const GALGAS_string & inNodeName,
+                                                             C_Compiler * inCompiler
+                                                             COMMA_LOCATION_ARGS) ;
+
   public : VIRTUAL_IN_DEBUG void modifier_removeEdgesToDominators (LOCATION_ARGS) ;
 
 //--------------------------------- Comparison

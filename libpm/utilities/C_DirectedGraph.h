@@ -81,9 +81,12 @@ class C_DirectedGraph {
   
   public : void getNodesInvolvedInCircularities (TC_UniqueArray <PMUInt32> & outNodes) const ;
   
-  public : void getDominators (TC_UniqueArray <C_UIntSet> & outDominators) const ;
+  public : void getDominators (TC_UniqueArray <C_UIntSet> & outDominators
+                               COMMA_LOCATION_ARGS) const ;
   
-  public : void removeEdgesToDominator (void) ;
+  public : void removeEdgesToDominator (LOCATION_ARGS) ;
+  
+  public : void removeEdgesToNode (const PMUInt32 inNodeIndex COMMA_LOCATION_ARGS) ;
   
   public : void getEdges (TC_UniqueArray <cEdge> & outEdges) const ;
   
