@@ -300,6 +300,26 @@ C_DirectedGraph C_DirectedGraph::subGraphFromNodes (const C_UIntSet & inStartNod
 
 //---------------------------------------------------------------------------*
 
+void C_DirectedGraph::removeEdgesToNode (const PMUInt32 inNodeIndex
+                                         COMMA_LOCATION_ARGS) {
+//--- get nodes that have edges to this node
+  const C_UIntSet nodeSet = mReverseEdges (inNodeIndex COMMA_THERE) ;
+//--- Remove edges in reverse egde array
+  mReverseEdges (inNodeIndex COMMA_THERE) = C_UIntSet () ;
+//--- Remove edge in direct edge array
+  TC_UniqueArray <PMUInt32> sourceNodeArray ; nodeSet.getValueArray (sourceNodeArray) ;
+  for (PMSInt32 i=0 ; i<sourceNodeArray.count () ; i++) {
+    const PMUInt32 sourceNodeIndex = sourceNodeArray (i COMMA_HERE) ;
+    mEdges (sourceNodeIndex COMMA_HERE).remove (inNodeIndex) ;
+  }
+//--- Check
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkGraph (HERE) ;
+  #endif
+}
+
+//---------------------------------------------------------------------------*
+
 void C_DirectedGraph::addEdge (const PMUInt32 inSourceNodeIndex,
                               const PMUInt32 inTargetNodeIndex) {
   addNode (inSourceNodeIndex) ;
@@ -418,7 +438,8 @@ void C_DirectedGraph::depthFirstTopologicalSort (TC_UniqueArray <PMUInt32> & out
 // http://en.wikipedia.org/wiki/Dominator_(graph_theory)
 // a node d dominates a node n if every path from the start node to n must go through d
 
-void C_DirectedGraph::getDominators (TC_UniqueArray <C_UIntSet> & outDominators) const {
+void C_DirectedGraph::getDominators (TC_UniqueArray <C_UIntSet> & outDominators
+                                     COMMA_LOCATION_ARGS) const {
   outDominators.setCountToZero () ;
 //--- Enter initial dominators
   TC_UniqueArray <bool> startNodeFlag ;
@@ -429,7 +450,7 @@ void C_DirectedGraph::getDominators (TC_UniqueArray <C_UIntSet> & outDominators)
 //--- Start nodes are their own dominator
   TC_UniqueArray <PMUInt32> startNodeArray ;
   getNodesWithNoPredecessor (startNodeArray) ;
-  MF_Assert (startNodeArray.count () == 1, "startNodeArray.count () == %lld != 1", startNodeArray.count (), 0) ;
+  MF_AssertThere (startNodeArray.count () == 1, "startNodeArray.count () == %lld != 1", startNodeArray.count (), 0) ;
   for (PMSInt32 i=0 ; i<startNodeArray.count () ; i++) {
     const PMUInt32 startNode = startNodeArray (i COMMA_HERE) ;
     outDominators (startNode COMMA_HERE) = C_UIntSet (startNode) ;
@@ -462,8 +483,8 @@ void C_DirectedGraph::getDominators (TC_UniqueArray <C_UIntSet> & outDominators)
 
 //---------------------------------------------------------------------------*
 
-void C_DirectedGraph::removeEdgesToDominator (void) {
-  TC_UniqueArray <C_UIntSet> dominators ; getDominators (dominators) ;
+void C_DirectedGraph::removeEdgesToDominator (LOCATION_ARGS) {
+  TC_UniqueArray <C_UIntSet> dominators ; getDominators (dominators COMMA_THERE) ;
   for (PMSInt32 node=0 ; node<mEdges.count () ; node++) {
     if (isNodeDefined (node)) {
       const C_UIntSet dom = dominators (node COMMA_HERE) ;
@@ -569,7 +590,7 @@ void C_DirectedGraph::example (void) {
   }
   printf ("\n") ;
   TC_UniqueArray <C_UIntSet> dominators  ;
-  g.getDominators (dominators) ;
+  g.getDominators (dominators COMMA_HERE) ;
   printf ("--- Dominators:\n") ;
   for (PMSInt32 i=0 ; i<dominators.count () ; i++) {
     if (g.isNodeDefined (i)) {
@@ -596,7 +617,7 @@ void C_DirectedGraph::example (void) {
   }
   printf ("\n") ;
   printf ("--- Remove edges to dominators:\n") ;
-  g.removeEdgesToDominator () ;
+  g.removeEdgesToDominator (HERE) ;
   g.print () ;
   printf ("--- Reverse topological sort\n") ;
   g.reversedGraph ().topologicalSort (sortedNodes, unsortedNodes) ;
