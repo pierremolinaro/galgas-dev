@@ -7,7 +7,6 @@ semantics projectMetamodel :
 enum @sourceFileKind {
   externSourceFile, lexiqueSourceFile, guiSourceFile, optionSourceFile,
   syntaxSourceFile, semanticsSourceFile, grammarSourceFile, programSourceFile
-}{
 }
 
 #------------------------------------------------------------------------------*

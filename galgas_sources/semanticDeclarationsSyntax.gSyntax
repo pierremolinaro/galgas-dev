@@ -570,8 +570,6 @@ rule <semantic_declaration>
    $,$ ;
   end repeat ;
   $}$ ;
-  ${$ ;
-  $}$ ;
   ioSemanticDeclarations += ![@enumDeclarationAST new
     !true # Is global
     !mEnumTypeName
