@@ -7,7 +7,6 @@ enum @lexicalTypeEnum {
   lexicalType_string, lexicalType_char, lexicalType_uint,
   lexicalType_uint64, lexicalType_sint, lexicalType_sint64,
   lexicalType_double
-}{
 }
 
 #---------------------------------------------------------------------------*

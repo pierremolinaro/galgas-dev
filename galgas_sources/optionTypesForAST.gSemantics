@@ -23,7 +23,6 @@ semantics optionTypesForAST :
 
 enum @optionDefaultValueEnumAST {
   noDefaultValue, unsignedDefaultValue, stringDefaultValue
-}{
 }
 
 #---------------------------------------------------------------------------*

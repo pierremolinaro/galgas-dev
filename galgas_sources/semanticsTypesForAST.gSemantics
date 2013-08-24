@@ -249,7 +249,6 @@ class @filewrapperTemplateInExpressionAST extends @semanticExpressionAST {
 
 enum @formalArgumentPassingModeAST {
   argumentIn, argumentOut, argumentInOut, argumentConstantIn
-}{
 }
 
 #---------------------------------------------------------------------------*
@@ -1164,7 +1163,6 @@ class @listmapDeclarationAST extends @semanticDeclarationAST {
 
 enum @mapAutomatonMessageKind {
   noMessage, warningMessage, errorMessage
-}{
 }
 
 #---------------------------------------------------------------------------*

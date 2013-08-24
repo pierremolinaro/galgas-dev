@@ -288,7 +288,7 @@ The \emph{expression} is an \galgas{@bool} expression that expresses repetitive 
 
 The \emph{loop} instruction execution is illustrated by the flowchart given in \refFigure{}{loopInstructionFlowchart}.
 
-\begin{figure}[ht]
+\begin{figure}[!ht]
   \centering
   \small
   \begin{tikzpicture}[very thick]
@@ -349,7 +349,59 @@ The \emph{loop} instruction execution is illustrated by the flowchart given in \
 
 
 
-\section{Switch Instruction}
+
+
+
+
+
+
+
+
+
+\sectionLabel{L'instruction \texttt{switch}}{instructionSwitch}
+
+L'instruction \galgas{switch} est dédiée aux types énumérés. Elle présente la syntaxe suivante :
+
+\lstset{emph={constante, expression, liste_instructions}, emphstyle=\emph}
+\begin{galgascode}
+switch expression
+when constante, constante, ... :
+  liste_instructions
+when constante, constante, ... :
+  liste_instructions
+...
+end switch ;
+\end{galgascode}
+
+
+Où \galgas{expression} est une expression d'un type énuméré. Toutes les constantes de ce type doivent être nommées dans les branches \galgas{when}, une et une seule fois.
+
+Par exemple, avec la déclaration :
+
+\begin{galgascode}
+enum @feuTricolore {
+  vert, orange, rouge   
+}
+\end{galgascode}
+
+On peut écrire :
+
+\begin{galgascode}
+@feuTricolore feu := ... ;
+
+switch feu
+when vert, orange:
+  ...
+when rouge :
+  ...
+end switch ;
+\end{galgascode}
+
+
+
+
+
+
 
 
 

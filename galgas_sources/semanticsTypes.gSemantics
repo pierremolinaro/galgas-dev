@@ -48,14 +48,12 @@ map @constructorMap {
 
 enum @methodQualifier {
   isAbstract, isBasic, isBasicFinal, isInherited, isOverriding, isOverridingAbstract
-}{
 }
 
 #---------------------------------------------------------------------------*
 
 enum @methodKind {
   definedAsMember, definedAsCategory
-}{
 }
 
 #---------------------------------------------------------------------------*
@@ -195,7 +193,6 @@ enum @predefinedTypeKindEnum {
   predefined_data,
   predefined_filewrapper,
   predefined_application
-}{
 }
 
 #---------------------------------------------------------------------------*
@@ -216,7 +213,6 @@ enum @typeKindEnum {
   structType,
   graphType,
   predefinedType
-}{
 }
 
 #---------------------------------------------------------------------------*

@@ -342,7 +342,6 @@ class @lexicalLogInstructionAST extends @lexicalInstructionAST {
 
 enum @lexicalArgumentModeAST {
   lexicalInputMode, lexicalInputOutputMode
-}{
 }
 
 reader @lexicalArgumentModeAST lexicalFormalModeName -> @string outResult :

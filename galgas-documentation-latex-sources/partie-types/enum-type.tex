@@ -1,0 +1,48 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapter{Le type \texttt{enum}}
+%-------------------------------------------------------------
+
+Galgas permet à l'utilisateur de définir des types énumérés.
+
+\section{Déclaration}
+
+La déclaration d'un type \galgas{enum} nomme l'ensemble des constantes associées à ce type.
+
+Par exemple :
+
+\begin{galgascode}
+enum @feuTricolore {
+  vert, orange, rouge   
+}
+\end{galgascode}
+
+Plusieurs types énumérés peuvent définir des constantes de même nom.
+
+\section{Instanciation}
+
+Chaque constante définit un constructeur de même nom. On peut ainsi écrire :
+
+\begin{galgascode}
+@feuTricolore feu := [@feuTricolore vert] ;
+\end{galgascode}
+
+Ou encore :
+
+\begin{galgascode}
+@feuTricolore feu [vert] ;
+\end{galgascode}
+
+\section{Comparaison}
+
+Un type enuméré accpete les six opérateurs de comparaison (\galgas{==}, \galgas{\!=}, \galgas{<}, \galgas{<=}, \galgas{>} et \galgas{>}). L'ordre est celui de la déclaration, c'est-à-dire que :
+\begin{galgascode}
+  [@feuTricolore vert] < [@feuTricolore orange] < [@feuTricolore rouge]
+\end{galgascode}
+
+
+\section{L'instruction \texttt{switch}}
+
+L'instruction \galgas{switch} (\refSectionPage{instructionSwitch}) est dédiée aux types énumérés.
