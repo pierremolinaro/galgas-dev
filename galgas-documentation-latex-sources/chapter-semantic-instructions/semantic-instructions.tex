@@ -48,6 +48,138 @@ drop variable, ... ;
 
 \sectionLabel{L'instruction \texttt{foreach}}{instructionForeach}
 
+L'instruction \galgas{foreach} permet d'énumérer :
+\begin{itemize}
+  \item une collection ;
+  \item plusieurs collections de manière synchrone.
+\end{itemize}
+
+Cette instruction s'est présentée sous plusieurs formes au cours des versions successives de GALGAS, seules les versions non obsolètes sont exposées.
+
+\subsection{Syntaxe}
+
+La syntaxe de cette instruction est la suivante :
+
+\lstset{emph={expression, sens, condition, nom_index, instructions_before, instructions_between, instructions_after, instructions\_do}, emphstyle=\emph}
+\begin{galgascode}
+foreach sens expression
+index nom_index # Optionnel
+while condition # Optionnel
+before instructions_before  # Optionnel
+do instructions_do
+between instructions_between  # Optionnel
+after instructions_after  # Optionnel
+end foreach ;
+\end{galgascode}
+
+
+L'organigramme illustrant l'exécution de cette instruction est donné à la \refFigure{}{organigrammeForeach}.
+
+\begin{figure}[!ht]
+  \centering
+  \small
+  \begin{tikzpicture}[
+      cloud/.style ={draw=red, thick, ellipse,fill=red!20, minimum height=2em},
+      block/.style ={rectangle, draw=blue, thick, fill=green!20, align=center},
+      decision/.style={chamfered rectangle, draw=blue, thick, fill=green!20},
+      node distance=7mm
+    ]
+    \node [cloud] (start) {\textsc{begin}} ;
+    \node [block] (init) [below=of start] {loop\_index := 0} ;
+    \node [decision] (premierTest) [below=of init] {has element \& {\tt \emph{while\_expression}} ?} ;
+    \node [block] (before) [below=of premierTest] {\tt \emph{before\_instructions}} ;
+    \node [block] (gotoFirst) [below=of before] {goto first element} ;
+    \node [block] (doInstructions) [below=of gotoFirst] {\tt \emph{instructions\_do}} ;
+    \node [block] (incLoopIndex) [below=of doInstructions] {loop\_index~++} ;
+    \node [decision] (exp) [below=of incLoopIndex] {has next element \& {\tt \emph{while\_expression}} ?} ;
+    \node [block] (after) [below=of exp] {\tt \emph{instructions\_after}} ;
+    \node [cloud] (end) [below=of after] {\textsc{end}} ;
+    \node [block] (between) [right=of doInstructions] {\tt \emph{instructions\_between}} ;
+    \node [block] (gotoNext) [below=of between] {goto next element} ;
+    
+    \draw [-stealth, thick] (start) -- (init) ;
+    \draw [-stealth, thick] (init) -- (premierTest) ;
+    \draw [-stealth, thick] (premierTest) to node[right] {\bf yes} (before) ;
+    \draw [-stealth, thick] (premierTest.west) -- node[above] {\bf no} +(-1, 0) |- (end.west) ;
+    \draw [-stealth, thick] (before) -- (gotoFirst) ;
+    \draw [-stealth, thick] (gotoFirst) -- (doInstructions) ;
+    \draw [-stealth, thick] (doInstructions) -- (incLoopIndex) ;
+    \draw [-stealth, thick] (incLoopIndex) -- (exp) ;
+    \draw [-stealth, thick] (exp) to node[right] {\bf no} (after) ;
+    \draw [-stealth, thick] (exp.east) -| node[right] {\bf yes} (gotoNext.south) ;
+    \draw [-stealth, thick] (after) -- (end) ;
+    \draw [-stealth, thick] (gotoNext) -- (between) ;
+    \draw [-stealth, thick] (between) -- (doInstructions) ;
+  \end{tikzpicture}
+  \caption{Organigramme d'exécution d'une instruction \texttt{foreach}}
+  \labelFigure{organigrammeForeach}
+\end{figure}
+
+Plusieurs de ses champs sont optionnels.
+
+\textbf{nom\_index}. Vous pouvez mentionner un identificateur après le mot réservé \galgas{index}. Cet identificateur est le nom d'une variable qui a implicitement le type \galgas{@uint} et qui est initialisée à 0 avant toute exécution de la boucle, et incrémentée après chaque exécution des \galgas{instructions\_do}, et avant l'exécution des \galgas{instructions\_between}. Vous ne pouvez pas vous même changer la valeur de cette variable. Sa visibilité inclut l'ensemble des constructions optionnelles.
+
+\textbf{while}. L'énumération est exécutée tant que l'\galgas{expression} est vraie. L'absence de cette construction est équivalent à \galgas{while true} et permet d'énumérer toutes les valeurs.
+
+
+\textbf{before}. Ces instructions sont exécutées une seule fois, au début de l'exécution de l'instruction. Aucun accès aux objets énumérés n'est possible. Si l'énumération est vide, ces instructions ne sont pas exécutées.
+
+\textbf{before}. Ces instructions sont exécutées entre deux exécutions consécutives des \galgas{instructions\_do}. Aucun accès aux objets énumérés n'est possible.
+
+\textbf{after}. Ces instructions sont exécutées une seule fois, à la fin de l'exécution de l'instruction. Aucun accès aux objets énumérés n'est possible. Si l'énumération est vide, ces instructions ne sont pas exécutées.
+
+
+
+
+%\begin{figure}[!ht]
+%  \centering
+%  \small
+%  \begin{tikzpicture}
+%    [auto,
+%      decision/.style={diamond, draw=blue, thick, fill=blue!20,
+%                       text width=4.5em,align=flush center,
+%                       inner sep=1pt},
+%      block/.style ={rectangle, draw=blue, thick, fill=blue!20,
+%                     text width=5em,align=center, rounded corners,
+%                     minimum height=4em},
+%      cloud/.style ={draw=red, thick, ellipse,fill=red!20,
+%                     minimum height=2em}
+%      line/.style ={draw, thick, -latex’,shorten >=2pt},
+%    ]
+%    \matrix [column sep=5mm,row sep=7mm] {
+%%  row 1
+%  \node [cloud] (expert) {expert}; &
+%  \node [block] (init) {initialize model}; &
+%  \node [cloud] (system) {system}; \\
+%  %  row 2
+%    & \node [block] (identify) {identify candidate model}; & \\
+%  %  row 3
+%    \node [block] (update)   {update model};  &
+%    \node [block] (evaluate) {evaluate candidate models}; & \\
+%  %  row 4
+%    & \node [decision] (decide) {is best candidate}; & \\
+%  %  row 5
+%    & \node [block] (stop)      {stop}; & \\
+%  };
+%%  \begin{scope}[every path/.style=line]
+%    \draw          (init)     -- (identify);
+%    \draw          (identify) -- (evaluate);
+%    \draw          (evaluate) -- (decide);
+%    \draw          (update) |- (identify);
+%    \draw          (decide) -| node [near start] {yes} (update);
+%    \draw          (decide) -- node [midway] {no} (stop);
+%    \draw [dashed] (expert) -- (init);
+%    \draw [dashed] (system) -- (init);
+%    \draw [dashed] (system) |- (evaluate);
+%%  \end{scope}
+%  \end{tikzpicture}
+%  \caption{Organigramme d'exécution d'une instruction \emph{foreach}}
+%  \labelFigure{organigrammeForeach}
+%\end{figure}
+
+
+
+
 
 
 
@@ -62,7 +194,7 @@ drop variable, ... ;
 
 
 
-\section{If Instruction}
+\section{L'instruction \texttt{if}}
 
 
 \subsection{Syntax}
@@ -254,7 +386,7 @@ The \emph{expression} is first computed :
 
 
 
-\section{Loop Instruction}
+\section{L'instruction \texttt{loop}}
 
 
 \subsection{Syntax}
@@ -288,41 +420,80 @@ The \emph{expression} is an \galgas{@bool} expression that expresses repetitive 
 
 The \emph{loop} instruction execution is illustrated by the flowchart given in \refFigure{}{loopInstructionFlowchart}.
 
+%\begin{figure}[!ht]
+%  \centering
+%  \small
+%  \begin{tikzpicture}[very thick]
+%    \node [rounded corners=5pt, shape=rectangle, draw] (start) {\textsc{begin}} ;
+%    \node [shape=rectangle, draw] (variant) [below=of start] {$variant := variant\_expression~value$} ;
+%    \node [shape=diamond, draw] (premierTest) [below=of variant] {$variant > 0$} ;
+%    \node [shape=rectangle, draw] (error1) [right=of premierTest] {$loop~variant~error$} ;
+%    \node [shape=rectangle, draw] (body0) [below=of premierTest] {$instructions\_1$} ;
+%    \node [shape=diamond, draw] (exp) [below=of body0] {$expression$} ;
+%    \node [shape=diamond, draw] (variantTest) [below=of exp] {$variant > 0$} ;
+%    \node [shape=rectangle, draw] (decTest) [left=of variantTest] {$variant {-}{-}$} ;
+%    \node [shape=rectangle, draw] (body1) [above=of decTest] {$instructions\_2$} ;
+%    \node [shape=rectangle, draw] (error) [right=of variantTest] {$loop~variant~error$} ;
+%    \node [rounded corners=5pt, shape=rectangle, draw] (end) [right=of error] {\textsc{end}} ;
+%    
+%    \draw [->] (start) -- (variant) ;
+%    \draw [->] (variant) -- (premierTest) ;
+%    \draw [->] (premierTest) to node[right] {$yes$} (body0) ;
+%    \draw [->] (premierTest) to node[above] {$no$} (error1) ;
+%    \draw [->] (body0) -- (exp) ;
+%    \draw [->] (exp) to node[right] {$true$} (variantTest) ;
+%    \draw [->] (variantTest) to node[above] {$yes$} (decTest) ;
+%    \draw [->] (variantTest) to node[above] {$no$} (error) ;
+%    \draw [->] (decTest) -- (body1) ;
+%    \draw [->, bend left] (exp.east) to node[above] {$false$} (end.north) ;
+%    \draw [->] (body1.north) .. controls +(north:2cm) and +(left:2cm) .. (body0.west) ;
+%    \draw [->] (error) -- (end) ;
+%    \draw [->] (error1.east) .. controls +(right:2cm) .. (end) ;
+%  \end{tikzpicture}
+%  \caption{\emph{loop} instruction flowchart}
+%  \labelFigure{loopInstructionFlowchart}
+%\end{figure}
+
+
 \begin{figure}[!ht]
   \centering
   \small
-  \begin{tikzpicture}[very thick]
-    \node [rounded corners=5pt, shape=rectangle, draw] (start) {\textsc{begin}} ;
-    \node [shape=rectangle, draw] (variant) [below=of start] {$variant := variant\_expression~value$} ;
-    \node [shape=diamond, draw] (premierTest) [below=of variant] {$variant > 0$} ;
-    \node [shape=rectangle, draw] (error1) [right=of premierTest] {$loop~variant~error$} ;
-    \node [shape=rectangle, draw] (body0) [below=of premierTest] {$instructions\_1$} ;
-    \node [shape=diamond, draw] (exp) [below=of body0] {$expression$} ;
-    \node [shape=diamond, draw] (variantTest) [below=of exp] {$variant > 0$} ;
-    \node [shape=rectangle, draw] (decTest) [left=of variantTest] {$variant {-}{-}$} ;
-    \node [shape=rectangle, draw] (body1) [above=of decTest] {$instructions\_2$} ;
-    \node [shape=rectangle, draw] (error) [right=of variantTest] {$loop~variant~error$} ;
-    \node [rounded corners=5pt, shape=rectangle, draw] (end) [right=of error] {\textsc{end}} ;
+  \begin{tikzpicture}[
+      cloud/.style ={draw=red, thick, ellipse,fill=red!20, minimum height=2em},
+      block/.style ={rectangle, draw=blue, thick, fill=green!20, align=center},
+      error/.style ={rectangle, draw=red, thick, fill=green!20, align=center},
+      decision/.style={chamfered rectangle, draw=blue, thick, fill=green!20},
+      node distance=7mm
+    ]
+    \node [cloud] (start) {\textsc{begin}} ;
+    \node [block] (affectationVariant) [below=of start] {variant := {\tt \emph{variant\_expression}}} ;
+    \node [decision] (premierTest) [below=of affectationVariant] {variant > 0 ?} ;
+    \node [error] (loopVariantError) [right=of premierTest] {loop variant error} ;
+    \node [block] (instructions1) [below=of premierTest] {\tt \emph{instructions\_1}} ;
+    \node [decision] (expression) [below=of instructions1] {\tt \emph{expression} ?} ;
+    \node [decision] (secondTest) [below=of expression] {variant > 0 ?} ;
+    \node [error] (loopVariantError2) [right=of secondTest] {loop variant error} ;
+    \node [block] (decVariant) [below=of secondTest] {variant {-}{-}} ;
+    \node [block] (instructions2) [below=of decVariant] {\tt \emph{instructions\_2}} ;
+    \node [cloud] (end) [below=of instructions2] {\textsc{end}} ;
     
-    \draw [->] (start) -- (variant) ;
-    \draw [->] (variant) -- (premierTest) ;
-    \draw [->] (premierTest) to node[right] {$yes$} (body0) ;
-    \draw [->] (premierTest) to node[above] {$no$} (error1) ;
-    \draw [->] (body0) -- (exp) ;
-    \draw [->] (exp) to node[right] {$true$} (variantTest) ;
-    \draw [->] (variantTest) to node[above] {$yes$} (decTest) ;
-    \draw [->] (variantTest) to node[above] {$no$} (error) ;
-    \draw [->] (decTest) -- (body1) ;
-    \draw [->, bend left] (exp.east) to node[above] {$false$} (end.north) ;
-    \draw [->] (body1.north) .. controls +(north:2cm) and +(left:2cm) .. (body0.west) ;
-    \draw [->] (error) -- (end) ;
-    \draw [->] (error1.east) .. controls +(right:2cm) .. (end) ;
+    \draw [-stealth, thick] (start) -- (affectationVariant) ;
+    \draw [-stealth, thick] (affectationVariant) -- (premierTest) ;
+    \draw [-stealth, thick] (premierTest) -- node[above] {\bf no} (loopVariantError) ;
+    \draw [-stealth, thick] (secondTest) -- node[above] {\bf no} (loopVariantError2) ;
+    \draw [-stealth, thick] (loopVariantError.east) -- +(1, 0) |- (end.east) ;
+    \draw [-stealth, thick] (loopVariantError2.east) -- +(1, 0) ;
+    \draw [-stealth, thick] (expression.east) -- node[above] {\bf false} +(4.5, 0) ;
+    \draw [-stealth, thick] (instructions1) -- (expression) ;
+    \draw [-stealth, thick] (premierTest) to node[right] {\bf yes} (instructions1) ;
+    \draw [-stealth, thick] (expression) -- node[right] {\bf true} (secondTest) ;
+    \draw [-stealth, thick] (secondTest) -- node[right] {\bf yes} (decVariant) ;
+    \draw [-stealth, thick] (decVariant) -- (instructions2) ;
+    \draw [-stealth, thick] (instructions2.west) -- +(-1, 0) |- (instructions1.west) ;
   \end{tikzpicture}
-  \caption{\emph{loop} instruction flowchart}
+  \caption{Organigramme d'exécution d'une instruction \texttt{loop}}
   \labelFigure{loopInstructionFlowchart}
 \end{figure}
-
-
 
 
 
