@@ -158,7 +158,7 @@ local routine enterNonterminalNonTerminalInMapAndCheck
       ;
     end if ;
     if ([missingLabelSet count] == 0) & ([newLabelSet count] == 0) then
-      foreach mLabelMap, inNonterminalLabelMap prefixedby new_ do
+      foreach mLabelMap, inNonterminalLabelMap : new_ do
         @formalParameterSignature newSignature [emptyList] ;
         foreach new_mSignature do
           newSignature += !mFormalArgumentType !mFormalArgumentPassingMode ;

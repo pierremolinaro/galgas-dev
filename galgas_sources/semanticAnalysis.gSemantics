@@ -40,7 +40,7 @@ routine checkMethodSignatures
     ;
     error inReferenceLocation:"overriden method is declared here" ;
   else
-    foreach inReferenceSignature prefixedby ref_, inTestedSignature do
+    foreach inReferenceSignature : ref_, inTestedSignature do
       if ref_mFormalArgumentPassingMode != mFormalArgumentPassingMode then
         error mFormalArgumentName : "the '" . mFormalArgumentName . "' formal parameter is declared as "
         . [mFormalArgumentPassingMode formalArgumentMessage] . ", but overriden method declares it as " 
@@ -83,7 +83,7 @@ routine checkReaderSignatures
     ;
     error inReferenceLocation:"overriden reader is declared here" ;
   else
-    foreach inReferenceSignature prefixedby ref_, inTestedSignature do
+    foreach inReferenceSignature : ref_, inTestedSignature do
       if [mFormalArgumentType key] != [ref_mType key] then
         error mFormalArgumentName : "the '" . mFormalArgumentName . "' formal parameter has the '@"
         . [mFormalArgumentType key] . "' type, but overriden reader declares with the '@" 

@@ -112,7 +112,6 @@ list galgasKeyWordList error message "the '%K' keyword" style keywordsStyle :
   "or",
   "override",
   "parse",
-  "prefixedby",
   "project",
   "program",
   "reader",

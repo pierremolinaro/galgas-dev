@@ -94,7 +94,7 @@ The \emph{$\textbar$} operator returns the union of its operand values.
 \begin{galgascode}
 @stringset s1 := ... ;
 @stringset s2 := ... ;
-@stringset s := s1 \textbar s2 ; \# s is the union of s1 and s2
+@stringset s := s1 | s2 ; # s is the union of s1 and s2
 \end{galgascode}
 
 
@@ -120,7 +120,7 @@ The \emph{$-$} operator returns the difference of its operand values.
 
 
 
-\section{Enumerating \galgas{@stringset} objects}
+\section{Enumerating \texttt{@stringset} objects}
 
 
 The \galgas{foreach} instruction can be used for enumerating \galgas{@stringset} values; enumeration is performed in the ascending order, or in the reverse alphabetical order using the '>' qualifier.

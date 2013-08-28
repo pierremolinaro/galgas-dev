@@ -414,7 +414,7 @@ override reader @lexicalImplicitRuleAST generateCode
   @tokenSortedlist tokenSortedList ;
   [[inLexiqueAnalysisContext mLexicalTokenListMap] searchKey !mListName ?* ?tokenSortedList ?*] ;
   outGeneratedCode := "" ;
-  foreach \down tokenSortedList do
+  foreach > tokenSortedList do
     outGeneratedCode .= "if (testForInputUTF32String (kUnicodeString_" ;
     outGeneratedCode .= [mName identifierRepresentation] ;
     outGeneratedCode .= ", " ;

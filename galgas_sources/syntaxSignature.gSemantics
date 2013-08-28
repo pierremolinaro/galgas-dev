@@ -171,7 +171,7 @@ function compareSyntaxSignature
   ->@bool outOk
 :
   outOk := true ;
-  foreach inReferenceSignature prefixedby ref_, inTestedSignature prefixedby test_ while outOk do
+  foreach inReferenceSignature : ref_, inTestedSignature : test_ while outOk do
      outOk := [ref_mInstruction compareSyntaxInstruction !test_mInstruction] ;
   end foreach ;
   if outOk & ([inReferenceSignature length] < [inTestedSignature length]) then
@@ -278,7 +278,7 @@ override reader @repeatInstructionForGeneration compareSyntaxInstruction
         ;
       outOk := false ;
     end if ;
-    foreach mListOfSemanticInstructionListForGeneration prefixedby ref_, [si mListOfSemanticInstructionListForGeneration] prefixedby test_ while outOk do
+    foreach mListOfSemanticInstructionListForGeneration : ref_, [si mListOfSemanticInstructionListForGeneration] : test_ while outOk do
       outOk := compareSyntaxSignature [!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList] ;    
     end foreach ;
   when >= @syntaxInstructionForGeneration si :
@@ -315,7 +315,7 @@ override reader @selectInstructionForGeneration compareSyntaxInstruction
         ;
       outOk := false ;
     end if ;
-    foreach mListOfSemanticInstructionListForGeneration prefixedby ref_, [si mListOfSemanticInstructionListForGeneration] prefixedby test_ while outOk do
+    foreach mListOfSemanticInstructionListForGeneration : ref_, [si mListOfSemanticInstructionListForGeneration] : test_ while outOk do
       outOk := compareSyntaxSignature [!ref_mInstructionList !test_mInstructionList !test_mEndOfInstructionList] ;    
     end foreach ;
   when >= @syntaxInstructionForGeneration si :

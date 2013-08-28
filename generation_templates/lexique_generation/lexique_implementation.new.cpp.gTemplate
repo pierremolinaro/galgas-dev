@@ -122,7 +122,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::appendTerminalMessageToSyntaxErrorMessage 
   end foreach
 %
 %
-  foreach LEXICAL_TOKEN_LIST_MAP prefixedby tokenList_ do
+  foreach LEXICAL_TOKEN_LIST_MAP : tokenList_ do
     %//---------------------------------------------------------------------------*\n%
     %//                                                                           *\n%
     %//             Key words table '%![tokenList_lkey string]%'                            *\n%
