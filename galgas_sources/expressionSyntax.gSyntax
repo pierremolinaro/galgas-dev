@@ -291,8 +291,8 @@ end rule ;
 
 #------------------------------------------------------------------------------*
 #                                                                              *
-#   P R I M A R Y  :    ( EXPRESSION )                                         *
-#                       (EXP to @T error ERROR_LOCATION : ERROR_MESSAGE)       *
+#   P R I M A R Y  :    (EXPRESSION)                                           *
+#                       (cast EXP : @T)                                        *
 #                       (EXP is @T)                                            *
 #                                                                              *
 #------------------------------------------------------------------------------*
@@ -487,7 +487,6 @@ end rule ;
 #------------------------------------------------------------------------------*
 #                                                                              *
 #                         P R I M A R Y                                        *
-#   description         :   [expression description]                           *
 #   reader call         :   [expression reader !... ]                          *
 #   constructor call    :   [@class method !... ]                              *
 #   default constructor :   [@class default]                                   *

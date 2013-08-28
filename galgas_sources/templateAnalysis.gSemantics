@@ -74,11 +74,15 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
   @bool hasCompilerArgument ;
   @unifiedTypeMapProxy returnedType ;
   @stringlist fieldList [emptyList] ;
-  with readerMap hasKey ![mReaderName string] do
-    readerFormalArgumentTypeList := mArgumentTypeList ;
-    hasCompilerArgument := mHasCompilerArgument ;
-    returnedType := mReturnedType ;
-    kind := mKind ;
+  if [readerMap hasKey ![mReaderName string]] then
+    [readerMap searchKey !mReaderName
+      ?kind
+      ?readerFormalArgumentTypeList
+      ?*
+      ?hasCompilerArgument
+      ?returnedType
+      ?2*
+    ] ;
   else
     @uint matchingReaderCount := 0 ;
     if [receiverType mTypeKindEnum] == [@typeKindEnum structType] then
@@ -136,7 +140,7 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
       : readerFormalArgumentTypeList, hasCompilerArgument, returnedType, kind
       ;
     end if ;
-  end with ;
+  end if ;
 #--- Analysis arguments
   if [mExpressionList length] != [readerFormalArgumentTypeList length] then
     error mReaderName: "calling the '" . mReaderName . "' reader of '@" . [receiverType key] . "' requires "

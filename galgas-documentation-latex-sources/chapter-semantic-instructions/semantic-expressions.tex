@@ -1,0 +1,159 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapter{Expressions}
+%-------------------------------------------------------------
+
+D'une manière classique, une expression est constituée d'\emph{opérandes} (\refSectionPage{operandesDansExpression}) et d'\emph{opérateurs} (\refSectionPage{operateursDansExpression}). La priorité des opérateurs est définie dans le \refTableauPage{prioriteOperateurs}.
+
+
+
+%-------------------------------------------------------------
+
+\sectionLabel{Opérandes}{operandesDansExpression}
+
+\subsection{Identificateur}
+
+\subsection{\texttt{selfcopy}}
+
+\subsectionLabel{Expression de conversion polymorphique inverse}{expConversionPolymorphiqueInverse}
+
+\lstset{emph={expression}, emphstyle=\emph}
+
+La syntaxe de l'\emph{expression de conversion polymorphique inverse} est : \galgas{(cast expression : @T)}. Les parenthèses sont obligatoires. Elle permet de renvoyer la valeur de \galgas{expression} sous la forme d'un objet de type statique \galgas{@T}. À l'exécution, la conversion échoue si le type dynamique de l'\galgas{expression} n'est pas \galgas{@T} ou une de ses classes héritières ; une erreur sémantique est alors déclenchée, et l'expression renvoie un objet \emph{non construit}.
+
+Pour tester le type dynamique de l'expression avant d'effectuer la conversion, utiliser la construction décrite à la \refSubsectionPage{testTypeDynamiqueExpression}. On peut aussi utiliser l'instruction \galgas{cast} (\refSectionPage{instructionCast}).
+
+\subsectionLabel{Test du type dynamique d'une expression}{testTypeDynamiqueExpression}
+
+L'opérande \galgas{(expression is @T)} renvoie \galgas{true} si le type dynamique de l'\galgas{expression} est \galgas{@T} ou une de ses classes héritières, et \galgas{false} dans le cas contraire. Les parenthèses sont obligatoires.
+
+Alliée à la construction précédente, elle permet de lancer une conversion uniquement si elle est possible :
+
+\begin{galgascode}
+if (expression is @B) then
+  @B var := (cast expression : @T) ;
+  ...
+elsif (expression is @C) then
+  @C var := (cast expression : @C) ;
+  ...
+else
+  message "conversion impossible" ;
+end if ;
+\end{galgascode}
+
+\subsection{Parenthèses}
+
+
+\subsection{\texttt{true} et \texttt{false}}
+
+\subsection{\texttt{here}}
+
+\subsection{Constante Chaîne de caractères}
+
+\subsection{Constante caractère}
+
+\subsection{Constante entière}
+
+Pas de suffixe : \galgas{@uint}
+
+Suffixe \galgas{S} : \galgas{@sint}
+
+Suffixe \galgas{L} : \galgas{@uint64}
+
+Suffixe \galgas{LS} : \galgas{@sint64}
+
+\subsection{Constante flottante}
+
+\subsection{Expression \texttt{if}}
+
+\subsection{Appel de reader}
+
+
+\subsection{Appel de constructeur}
+
+
+
+\subsection{Constructeur par défaut}
+
+L'expression \galgas{[@T default]} invoque le constructeur par défaut du type \galgas{@T} et renvoie un objet initialisé du type \galgas{@T}.
+
+Pour la plupart des types, un constructeur par défaut est implicitement défini (voir le détail \refSectionPage{constructeurParDefaut}).
+
+
+
+
+\subsection{Valeur d'une option}
+
+
+
+
+
+
+%-------------------------------------------------------------------
+
+\sectionLabel{Opérateurs}{operateursDansExpression}
+
+La priorité des opérateurs est définie dans le \refTableau{prioriteOperateurs}. Pour des opérateurs de même priorité, le groupement s'effectue de gauche à droite. Les parenthèses permettent de forcer l'ordre d'évaluation. Par exemple, \galgas{4 + 3 - 2 - 3} est équivalent à \galgas{((4 + 3) - 2) - 3}.
+
+\begin{table}[!ht]
+  \centering
+%  \rowcolors{2}{\fondTableau}{}
+  \begin{tabular}{llll}
+  \textbf{Priorité} & \textbf{Opérateur}  & \textbf{Commentaire} & \textbf{Référence}\\
+  \hline
+  0 (plus faible) & \galgas{.} & Concaténation & \refSubsectionPage{operateurConcatenation}\\
+  1 & \galgas{\|} & « ou » logique & \refSubsectionPage{operateursLogiques}\\
+    & \galgas{\^} & « ou exclusif » logique & \refSubsectionPage{operateursLogiques}\\
+  2 & \galgas{\&} & « et » logique & \refSubsectionPage{operateursLogiques}\\
+  3 & \galgas{==}, \galgas{\!=} & Comparaison & \refSubsectionPage{operateursComparaison}\\
+    & \galgas{<}, \galgas{<=} & Comparaison & \refSubsectionPage{operateursComparaison}\\
+    & \galgas{>}, \galgas{>=} & Comparaison & \refSubsectionPage{operateursComparaison}\\
+  4 & \galgas{<<}, \galgas{>>} & Décalage & \refSubsectionPage{operateursDecalage}\\
+    & \galgas{+} & Addition & \refSubsectionPage{operateursArithmétique}\\
+    & \galgas{-} & Soustraction & \refSubsectionPage{operateursArithmétique}\\
+  5 & \galgas{*} & Multiplication & \refSubsectionPage{operateursArithmétique}\\
+    & \galgas{/} & Division & \refSubsectionPage{operateursArithmétique}\\
+    & \galgas{mod} & Modulo & \refSubsectionPage{operateursArithmétique}\\
+  6 & \galgas{-} & Négation arithmétique & \refSubsectionPage{operateursArithmétique}\\
+  7 & \galgas{not} & Complémentation booléenne & \refSubsectionPage{operateursLogiques}\\
+  8 & \galgas{\~} & Complémentation bit-à-bit & \refSubsectionPage{complementationBitABit}\\
+  9 (plus forte) & \galgas{->} & Accès à un champ d'une structure & \refSubsectionPage{accesChampStructure}\\
+  \hline
+  \end{tabular}
+  \caption{Priorité des opérateurs}
+  \labelTableau{prioriteOperateurs}
+\end{table}
+
+\subsectionLabel{Concaténation}{operateurConcatenation}
+
+
+\subsectionLabel{Logique}{operateursLogiques}
+
+\galgas{\|}, \galgas{\^}, \galgas{\&}, \galgas{not}
+
+\subsectionLabel{Complémentation bit-à-bit}{complementationBitABit}
+
+ \galgas{\~}
+ 
+ 
+\subsectionLabel{Comparaison}{operateursComparaison}
+
+
+\subsectionLabel{Décalage}{operateursDecalage}
+
+\galgas{<<} et \galgas{>>}
+
+\subsectionLabel{Arithmétique}{operateursArithmétique}
+
+\galgas{+}, \galgas{-}, \galgas{*}, \galgas{/}, \galgas{mod}.
+
+\galgas{-} unaire.
+
+
+\subsectionLabel{Accès à un champ d'une structure}{accesChampStructure}
+
+\galgas{->}
+
+

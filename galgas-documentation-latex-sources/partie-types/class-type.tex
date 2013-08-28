@@ -152,83 +152,47 @@ L'affectation polymorphique inverse (qui consisterait à écrire \galgas{b := a 
 
 Il y a trois constructions qui permettent d'effectuer cette opération :
 \begin{itemize}
-  \item l'expression de conversion polymorphique inverse ;
-  \item l'expression de test ;
-  \item l'instruction \galgas{cast}.
+  \item l'expression de conversion polymorphique inverse (\refSubsectionPage{expConversionPolymorphiqueInverse}) ;
+  \item l'expression de test du type dynamique (\refSubsectionPage{testTypeDynamiqueExpression}) ;
+  \item l'instruction \galgas{cast} (\refSectionPage{instructionCast}).
 \end{itemize}
 
-\subsection{L'expression de conversion polymorphique inverse}
-
-L'expression de conversion polymorphique inverse a la syntaxe suivante (les parenthèses sont obligatoires) :
+Pour effectuer ponctuellement une affectation polymorphique inverse, on écrit (les parenthèses sont obligatoires) :
 
 \begin{galgascode}
-(cast expression : @T)
+@T resultat := (cast expression : @T) ;
 \end{galgascode}
 
-Si le type dynamique de l'\galgas{expression} est \galgas{@T} ou une de ses classes héritières, l'expression de conversion polymorphique renvoie un objet de type \galgas{@T} contenant la valeur de \galgas{expression}. Dans le cas contraire, un message d'erreur est affiché, et la valeur renvoyée est non construite.
+Si le type dynamique de l'\galgas{expression} est \galgas{@T} ou une de ses classes héritières, l'expression de conversion polymorphique renvoie un objet de type \galgas{@T} contenant la valeur de \galgas{expression}. Dans le cas contraire, un message d'erreur est affiché, et la variable \galgas{resultat} est non construite.
 
 L'exécution échoue donc avec émission de message d'erreur si la conversion n'est pas possible. 
 
-\subsection{L'expression de test}
 
-L'expression de test a la syntaxe suivante (les parenthèses sont obligatoires) :
-
-\begin{galgascode}
-(expression is @T)
-\end{galgascode}
-
-Si le type dynamique de l' \galgas{expression} est \galgas{@T} ou une de ses classes héritières, l'expression de conversion polymorphique renvoie un objet de type \galgas{@bool} contenant la valeur \galgas{true}. Dans le cas contraire, la valeur renvoyée est \galgas{false}.
-
-Alliée à la construction précédente, elle permet de lancer une conversion uniquement si elle est possible :
+Grâce à l'\emph{expression de test du type dynamique}, il est possible de tester si une conversion est possible. On peut donc écrire :
 
 \begin{galgascode}
 if (expression is @B) then
-  @B var := (cast expression : @T) ;
+  const @B variable := (cast expression : @B) ;
   ...
 elsif (expression is @C) then
-  @C var := (cast expression : @C) ;
+  const @C variable := (cast expression : @C) ;
   ...
 else
   message "conversion impossible" ;
 end if ;
 \end{galgascode}
 
-\subsection{L'instruction \texttt{cast}}
-
-L'instruction \galgas{cast} permet simplement d'exprimer de manière plus élégante une série de test de conversion. Sa syntaxe est :
+L'instruction \galgas{cast} permet simplement d'exprimer de manière plus élégante une série de test de conversion. La forme équivalent à l'instruction \galgas{if} précédente est :
 
 \begin{galgascode}
 cast expression
-when @T1 variable :
+when >= @B variable :
   ...
-when @T2 variable :
+when >= @C variable :
   ...
 else
-  ...
+  message "conversion impossible" ;
 end cast ;
 \end{galgascode}
-
-Syntaxiquement, l'instruction accepte une ou plusieurs branches \galgas{when}, et zéro ou une branche \galgas{else}.
-
-Lors de l'exécution, le type dynamique de \galgas{expression} est comparé successivement aux types (\galgas{@T}) des branches \galgas{when} ; dès que ce type dynamique est de la classe \galgas{@T} ou de l'une de ses classes héritières, \galgas{variable} prend la valeur de \galgas{expression} et les instructions de la branche correspondante sont exécutées.
-
-Si toutes les comparaisons échouent, la branche \galgas{else} est exécutée (si elle existe).
-
-
-Ainsi, l'instruction \galgas{if} de la section précédente s'écrit :
-
-
-\begin{galgascode}
-cast expression
-when @B var :
-  ...
-when @C var :
-  ...
-else
-  message "conversion impossible"
-end if ;
-\end{galgascode}
-
-Note : si la variable \galgas{var} n'est pas utilisée dans la branche correspondante, une alerte est émise. Pour la supprimer, ne pas mentionner la variable en écrivant \galgas{when @T :}.
 
 

@@ -45,7 +45,7 @@ aList += !"c" !3 ;
 
 \section{Adding elements}
 
-\subsection{The \texttt{+=} operator}
+\subsectionLabel{The \texttt{+=} operator}{operatorPlusEgalSurListe}
 
 The  \galgas{+=} operator adds a new element at the end of the list. The right side expressions should correspond to the attributes declared in the \galgas{list} declaration:\\
 
@@ -57,9 +57,9 @@ aList += !aString !aBool ;''
 \end{lstlisting}
 
 
-\subsection{The \texttt{.=} operator}
+\subsection{L'instruction \texttt{.=}}
 
-The \galgas{.=} operator concats a list at the end of the target list:
+L'instruction \galgas{cible .= expression ;} concatène la liste définie par la valeur de \galgas{expression} à la la liste \galgas{cible} :
 
 \begin{lstlisting}[language=galgas]
 @MyList aList := ... ;
@@ -71,6 +71,8 @@ aList .= secondList ;''
 
 \subsection{The \texttt{prependValue} modifier}
 
+{\bf \textcolor{red}{Ce modifier a été supprimé ; utiliser le modifier \emph{insertAtIndex}.}}
+
 The \galgas{prependValue} modifier adds a new element at the begining of the list. The right side expressions should correspond to the attributes declared in the  \galgas{list} declaration:
 
 \begin{lstlisting}[language=galgas]
@@ -80,9 +82,31 @@ The \galgas{prependValue} modifier adds a new element at the begining of the lis
 [!?aList prependValue !aString !aBool];
 \end{lstlisting}
 
+
+
+
+\subsection{Modifier \texttt{insertAtIndex}}
+
+Le modifier \galgas{insertAtIndex} permet d'insérer un nouvel élément à une position quelconque de la liste. Si le type \galgas{list} correspondant déclare $n$ champs, l'appel du modifier comprend $n+1$ arguments :
+\begin{itemize}
+  \item les $n$ premiers correspondent aux valeurs des champs du nouvel élément inséré ;
+  \item le dernier est l'indice d'insertion, une valeur de type \galgas{@uint}.
+\end{itemize}
+
+L'indice d'insertion peut varier entre $0$ (insertion au début, comme le faisait le modifier \emph{prependValue}), et la longueur courante de la liste (insertion à la fin, comme le fait l'opérateur \galgas{+=}, \refSubsectionPage{operatorPlusEgalSurListe}). Si la liste est vide, insérer à l'indice $0$ est donc la seule possibilité.
+
+Par exemple :
+
+\begin{lstlisting}[language=galgas]
+@MyList aList := ... ;
+@string aString := ... ;
+@bool aBool := ... ;
+[!?aList insertAtIndex !aString !aBool !0];
+\end{lstlisting}
+
 \subsection{The concatenation operator}
 
-The «~\galgas{.}~» operator can be used fot concatenating two lists of the same type:
+The «~\galgas{.}~» operator can be used for concatenating two lists of the same type:
 
 
 \begin{lstlisting}[language=galgas]
@@ -96,7 +120,7 @@ The «~\galgas{.}~» operator can be used fot concatenating two lists of the sam
 \subsection{The \texttt{popFirst} modifier}
 
 
-The \lstinline[language=galgas]!popFirst! modifier removes and returns the first element of the list. The right side expressions should correspond to the attributes declared in the \lstinline[language=galgas]!list! declaration:\\
+The \galgas{popFirst} modifier removes and returns the first element of the list. The right side expressions should correspond to the attributes declared in the \galgas{list} declaration:\\
 
 \begin{lstlisting}[language=galgas]
 @MyList aList := ... ;
@@ -105,12 +129,12 @@ The \lstinline[language=galgas]!popFirst! modifier removes and returns the first
 [!?aList popFirst ?aString ?aBool];
 \end{lstlisting}
 
-If the list is empty when \lstinline[language=galgas]!popFirst! modifier is invoked, a run-time error is raised and the input arguments are not valuated.
+If the list is empty when \galgas{popFirst} modifier is invoked, a run-time error is raised and the input arguments are not valuated.
 
-\subsection{The \lstinline[language=galgas]!popLast! modifier}
+\subsection{The \texttt{popLast} modifier}
 
 
-The \lstinline[language=galgas]!popLast! modifier removes and returns the last element of the list. The right side expressions should correspond to the attributes declared in the \lstinline[language=galgas]!list! declaration:
+The \galgas{popLast} modifier removes and returns the last element of the list. The right side expressions should correspond to the attributes declared in the \galgas{list} declaration:
 
 \begin{lstlisting}[language=galgas]
 @MyList aList := ... ;
@@ -119,13 +143,13 @@ The \lstinline[language=galgas]!popLast! modifier removes and returns the last e
 [!?aList popLast ?aString ?aBool];
 \end{lstlisting}
 
-If the list is empty when \lstinline[language=galgas]!popLast! is invoked, a run-time error is raised and the input arguments are not valuated.
+If the list is empty when \galgas{popLast} is invoked, a run-time error is raised and the input arguments are not valuated.
 
 \section{Methods}
 
-\subsection{The \lstinline[language=galgas]!first! method}
+\subsection{The \texttt{first} method}
 
-The \lstinline[language=galgas]!first! method returns the first element of the list. The element is not removed. The right side expressions should correspond to the attributes declared in the \lstinline[language=galgas]!list! declaration:
+The \galgas{first} method returns the first element of the list. The element is not removed. The right side expressions should correspond to the attributes declared in the \galgas{list} declaration:
 
 \begin{lstlisting}[language=galgas]
 @MyList aList := ... ;
@@ -134,11 +158,11 @@ The \lstinline[language=galgas]!first! method returns the first element of the l
 [aList first ?aString ?aBool];
 \end{lstlisting}
 
-If the list is empty when \lstinline[language=galgas]!first! is invoked, a run-time error is raised and the input arguments are not valuated.
+If the list is empty when \galgas{first} is invoked, a run-time error is raised and the input arguments are not valuated.
 
-\subsection{The \lstinline[language=galgas]!last! method}
+\subsection{The \texttt{last} method}
 
-The \lstinline[language=galgas]!last! method returns the last element of the list. The element is not removed. The right side expressions should correspond to the attributes declared in the \lstinline[language=galgas]!list! declaration:\\
+The \galgas{last} method returns the last element of the list. The element is not removed. The right side expressions should correspond to the attributes declared in the \galgas{list} declaration:\\
 
 \begin{lstlisting}[language=galgas]
 @MyList aList := ... ;
@@ -148,7 +172,7 @@ The \lstinline[language=galgas]!last! method returns the last element of the lis
 \end{lstlisting}
 
 
-If the list is empty when \lstinline[language=galgas]!last! is invoked, a run-time error is raised and the input arguments are not valuated.
+If the list is empty when \galgas{last} is invoked, a run-time error is raised and the input arguments are not valuated.
 
 
 
@@ -159,36 +183,36 @@ If the list is empty when \lstinline[language=galgas]!last! is invoked, a run-ti
 
 \section{Readers}
 
-\subsection{The \lstinline[language=galgas]!length! reader}
+\subsection{Le reader \texttt{length}r}
 
 \begin{lstlisting}[language=galgas]
 reader length -> @uint ;
 \end{lstlisting}
 
-The \lstinline[language=galgas]!length! reader returns the number of elements in the receiver's value.
+Le reader \galgas{length} reader retourne le nombre d'éléments du receveur.
 
 
-\subsection{The \lstinline[language=galgas]!range! reader}
+\subsection{The \texttt{range} reader}
 
 \begin{lstlisting}[language=galgas]
 reader range -> @range ;
 \end{lstlisting}
 
-The \lstinline[language=galgas]!range! reader returns a range starting at $0$ of length equal to the number of elements of the receiver.
+The \galgas{range} reader returns a range starting at $0$ of length equal to the number of elements of the receiver.
 
 
 
 
-\subsection{The \lstinline[language=galgas]!subListFromIndex! reader}
+\subsection{The \texttt{subListFromIndex} reader}
 
 \begin{lstlisting}[language=galgas]
 reader subListFromIndex ?@uint inIndex -> @self
 \end{lstlisting}
 
-This reader returns a new list containing the elements of the receiver from the one at a given index to the end. The  \lstinline[language=galgas]!inIndex! value should be lower or equal to the length of the receiver's value. If \lstinline[language=galgas]!inIndex! is equal to the length of the receiver, the reader returns an empty list.
+This reader returns a new list containing the elements of the receiver from the one at a given index to the end. The  \galgas{inIndex} value should be lower or equal to the length of the receiver's value. If \galgas{inIndex} is equal to the length of the receiver, the reader returns an empty list.
 
 
-\subsection{The \lstinline[language=galgas]!subListWithRange! reader}
+\subsection{The \texttt{subListWithRange} reader}
 
 \begin{lstlisting}[language=galgas]
 reader subListWithRange
@@ -204,7 +228,7 @@ This reader returns a list containing the elements of the receiver that lie with
 
 \section{Enumerating a list with a foreach instruction}
 
-The \lstinline[language=galgas]!foreach! instruction can be used for enumerating list objects. By default, lists are enumerated in the insertion order; enumeration in the reverse order is performed using the «~\lstinline[language=galgas]!>!~» qualifier.
+The \galgas{foreach} instruction can be used for enumerating list objects. By default, lists are enumerated in the insertion order; enumeration in the reverse order is performed using the \galgas{>} qualifier.
 
 There are two ways for accessing element values:
 \begin{itemize}
@@ -223,7 +247,7 @@ list @MyList {
 
 \subsection{Enumeration using the implicitly declared constants}
 
-For every attribute, a constant of the same name is available in the \lstinline[language=galgas]!do! instruction list. Theses constants receive the value of the corresponding attribute of the current element.
+For every attribute, a constant of the same name is available in the \galgas{do} instruction list. Theses constants receive the value of the corresponding attribute of the current element.
 
 \begin{lstlisting}[language=galgas]
 foreach aList do
@@ -236,7 +260,7 @@ end foreach ;
 
 \subsection{Enumeration using the explicitly declared constants}
 
-The \lstinline[language=galgas]!foreach! header declares a sequence of constants, corresponding to the attribute list of the \lstinline[language=galgas]!do! declaration. Theses constants receive the value of the corresponding attribute of the current element.
+The \galgas{foreach} header declares a sequence of constants, corresponding to the attribute list of the \galgas{do} declaration. Theses constants receive the value of the corresponding attribute of the current element.
 
 
 \begin{lstlisting}[language=galgas]
@@ -250,7 +274,7 @@ end foreach ;
 
 \subsection{Enumeration in the reverse order}
 
-In GALGAS 1.7.3 and later, you can enumerate a list in the reverse order using the «~\lstinline[language=galgas]!>!~» qualifier:
+In GALGAS 1.7.3 and later, you can enumerate a list in the reverse order using the \galgas{>} qualifier:
 
 \begin{lstlisting}[language=galgas]
 foreach > aList (@string kString @bool kBool) do
@@ -263,11 +287,11 @@ end foreach ;
 
 \section{Direct Access of an element attribute}
 
-In GALGAS 1.7.5 and later, lists can be used as an array. Each element of a list is associated with an \galgas{@uint} index, spanning from 0 to element count (value returned by \lstinline[language=galgas]!length! reader) minus one.
+In GALGAS 1.7.5 and later, lists can be used as an array. Each element of a list is associated with an \galgas{@uint} index, spanning from 0 to element count (value returned by \galgas{length} reader) minus one.
 
-The element retrieved with \lstinline[language=galgas]!first! method is at index 0.
+The element retrieved with \galgas{first} method is at index 0.
 
-The element retrieved with \lstinline[language=galgas]!last! method is at index equal to element count minus one.
+The element retrieved with \galgas{last} method is at index equal to element count minus one.
 
 \subsection{Read Access}
 
@@ -286,7 +310,7 @@ list @MyList {
 @string s := [aList mFirstAttributeAtIndex !1] ;
 \end{lstlisting}
 
-One reader is available: \lstinline[language=galgas]!mFirstAttributeAtIndex!; the \galgas{mSecondAttributeAtIndex} reader is not available.
+One reader is available: \galgas{mFirstAttributeAtIndex}; the \galgas{mSecondAttributeAtIndex} reader is not available.
 
 
 \subsection{Write Access}

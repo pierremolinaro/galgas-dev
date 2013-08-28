@@ -159,7 +159,7 @@ end method ;
 override method @lexicalErrorByDefaultAST checkLexicalDefaultAction
   ?!@lexiqueAnalysisContext ioLexiqueAnalysisContext
 :
-  with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mDefaultErrorMessageName prefixedby xyz_ do
+  with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mDefaultErrorMessageName : xyz_ do
     xyz_mMessageIsUsed := true ;
   end with ;
 end method ;
@@ -634,7 +634,7 @@ override method @lexicalRoutineInstructionAST checkLexicalInstruction
   end if ;
 #--- Check error messages are actually defined
   foreach mErrorMessageList do
-    with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mValue prefixedby xyz_ do
+    with !?ioLexiqueAnalysisContext->mLexicalMessageMap searchKey !mValue : xyz_ do
       xyz_mMessageIsUsed := true ;
     end with ;
   end foreach ;

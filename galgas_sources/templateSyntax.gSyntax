@@ -649,7 +649,7 @@ rule <template_instruction>
   select
     foreachPrefix := "" ;
   or
-    $prefixedby$ ;
+    $:$ ;
     $identifier$ ? @lstring prefixString ;
     foreachPrefix := [prefixString string] ;
   end select ;

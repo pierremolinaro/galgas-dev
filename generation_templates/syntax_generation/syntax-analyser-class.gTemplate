@@ -10,7 +10,7 @@ class cParser_%![COMPONENT_NAME identifierRepresentation]% {
 
 //--- Non terminal declarations
 %foreach NONTERMINAL_MAP do
-  foreach mLabelMap prefixedby label_ do
+  foreach mLabelMap : label_ do
   %  protected : virtual void nt_%![lkey identifierRepresentation]%_%![label_lkey identifierRepresentation]% (%?^
     foreach label_mSignature do index IDX
       if mFormalArgumentPassingMode == [@formalArgumentPassingModeAST argumentConstantIn] then

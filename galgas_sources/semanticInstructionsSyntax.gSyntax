@@ -530,13 +530,12 @@ rule <foreach_enumerated_object>
   or
     $<$ ;
     enumerationOrder := [@lstring new !"up" !here] ;
-    warning here:"obsolete construction : now use '\\up'" ;
   or
     $>$ ;
     enumerationOrder := [@lstring new !"down" !here] ;
-    warning here:"obsolete construction : now use '\\down'" ;
   or
     $variant$ ? enumerationOrder ;
+    warning here:"obsolete construction : now use '>' or '<'" ;
   end select ;
   @semanticExpressionAST mEnumeratedExpression ;
   <expression> ? mEnumeratedExpression ;
@@ -548,7 +547,7 @@ rule <foreach_enumerated_object>
     mEndsWithEllipsis := false ;
     prefix := [@lstring new !"" !here] ;
   or
-    $prefixedby$ ;
+    $:$ ;
     $identifier$ ? prefix ;
     mEndsWithEllipsis := false ;
   or
@@ -1034,7 +1033,7 @@ rule <semantic_instruction>
   select
     withPrefix := [@lstring new !"" !here] ;
   or
-    $prefixedby$ ;
+    $:$ ;
     $identifier$ ? withPrefix ;
   end select ;
   $do$ ;
@@ -1084,7 +1083,7 @@ rule <semantic_instruction>
   select
     withPrefix := [@lstring new !"" !here] ;
   or
-    $prefixedby$ ;
+    $:$ ;
     $identifier$ ? withPrefix ;
   end select ;
   $do$ ;

@@ -2,7 +2,7 @@
 %!TEX root = ../galgas-book.tex
 
 %--------------------------------------------------------------
-\chapter{Semantic Instructions}
+\chapter{Instructions sémantiques}
 %-------------------------------------------------------------
 
 
@@ -13,7 +13,47 @@
 \sectionLabel{Assignment Instruction}{assignmentInstruction}
 
 
-\section{Cast Instruction}
+\sectionLabel{L'instruction \texttt{cast}}{instructionCast}
+
+L'instruction \galgas{cast} permet simplement d'exprimer de manière élégante une série de tests de conversions polymorphiques inverses. Sa syntaxe est :
+
+\lstset{emph={expression, variable, conversion}, emphstyle=\emph}
+\begin{galgascode}
+cast expression
+when conversion @T1 variable :
+  ...
+when conversion @T2 variable :
+  ...
+else
+  ...
+end cast ;
+\end{galgascode}
+
+L'instruction accepte une ou plusieurs branches \galgas{when}, et zéro ou une branche \galgas{else}. \galgas{conversion} est soit \galgas{==}, soit \galgas{>=}. \galgas{variable} est une constante dont le type est le type nommé dans la branche \galgas{when} qui la déclare, et dont la portée est limitée à cette branche \galgas{when}.
+
+Lors de l'exécution, le type dynamique de \galgas{expression} est comparé successivement aux types (\galgas{@T1}, \galgas{@T2}) nommés dans les branches \galgas{when} ; dès que ce type dynamique est :
+\begin{itemize}
+  \item exactement la classe \galgas{@T} (\galgas{conversion} est \galgas{==}), 
+  \item la classe \galgas{@T} ou de l'une de ses classes héritières (\galgas{conversion} est \galgas{>=}),
+\end{itemize}
+\galgas{variable} prend la valeur de \galgas{expression} et les instructions de la branche correspondante sont exécutées.
+
+Si toutes les comparaisons échouent, la branche \galgas{else} est exécutée (si elle existe). La forme typique de cette instruction est donc :
+
+
+\begin{galgascode}
+cast expression
+when >= @B variable :
+  ...
+when >= @C variable :
+  ...
+else
+  message "conversion impossible"
+end if ;
+\end{galgascode}
+
+Note : si la variable \galgas{var} n'est pas utilisée dans la branche correspondante, une alerte est émise. Pour la supprimer, ne pas mentionner la variable en écrivant \galgas{when @T :}.
+
 
 
 \sectionLabel{Concat Instruction}{concatInstruction}
@@ -24,13 +64,16 @@
 
 
 
-\section{Drop Instruction}
+\section{L'instruction \texttt{drop}}
 
+La syntaxe de l'instruction \galgas{drop} est la suivante :
 {\lstset{emph={variable}, emphstyle=\emph}
 \begin{galgascode}
 drop variable, ... ;
 \end{galgascode}
 }
+
+Chaque variable nommée est placée dans l'état \emph{non construit}.
 
 \section{Error Instruction}
 
@@ -46,6 +89,17 @@ drop variable, ... ;
 
 
 
+
+
+
+
+
+
+
+
+
+%-----------------------------------------------------------------------------------
+
 \sectionLabel{L'instruction \texttt{foreach}}{instructionForeach}
 
 L'instruction \galgas{foreach} permet d'énumérer :
@@ -54,13 +108,13 @@ L'instruction \galgas{foreach} permet d'énumérer :
   \item plusieurs collections de manière synchrone.
 \end{itemize}
 
-Cette instruction s'est présentée sous plusieurs formes au cours des versions successives de GALGAS, seules les versions non obsolètes sont exposées.
+Cette instruction s'est présentée sous plusieurs formes au cours des versions successives de GALGAS, seule la version non obsolète est exposée.
 
-\subsection{Syntaxe}
+\subsection{Présentation}
 
-La syntaxe de cette instruction est la suivante :
+Pour énumérer une collection, la syntaxe est la suivante :
 
-\lstset{emph={expression, sens, condition, nom_index, instructions_before, instructions_between, instructions_after, instructions\_do}, emphstyle=\emph}
+\lstset{emph={expression, sens, condition, nom_index, instructions_before, instructions_between, instructions_after, instructions\_do, expression1, sens1, expression2, sens2}, emphstyle=\emph}
 \begin{galgascode}
 foreach sens expression
 index nom_index # Optionnel
@@ -73,7 +127,49 @@ end foreach ;
 \end{galgascode}
 
 
-L'organigramme illustrant l'exécution de cette instruction est donné à la \refFigure{}{organigrammeForeach}.
+Pour énumérer plusieurs collections, la syntaxe est :
+\begin{galgascode}
+foreach sens1 expression1, sens2 expression2, ...
+index nom_index # Optionnel
+while condition # Optionnel
+before instructions_before  # Optionnel
+do instructions_do
+between instructions_between  # Optionnel
+after instructions_after  # Optionnel
+end foreach ;
+\end{galgascode}
+
+Les collections à énumérer sont les valeurs de \galgas{expression}, \galgas{expression1}, \galgas{expression2}. Les types pouvant être énumérés sont listés dans le \refTableau{typesEnumerablesForeach}. Pour accéder aux valeurs courantes énumérées, à chaque \galgas{expression} correspond des constantes implicitement déclarées dont les noms sont indiqués dans la dernière colonne du \refTableau{typesEnumerablesForeach}. Cette caractéristique peut provoquer des conflits de noms, que l'on résoud en indiquant explicitement un préfixe (voir \refSubsectionPage{prefixageConstantesForeach}).
+
+Par exemple, pour énumérer une valeur de type \galgas{@stringset}, on écrira :
+\begin{galgascode}
+@stringset v := ... ;
+foreach v do
+  log key ; # Affichage des cles dans l'ordre alphabetique
+end foreach ;
+\end{galgascode}
+
+\begin{table}[ht]
+  \centering
+%  \rowcolors{2}{\fondTableau}{}
+  \begin{tabular}{llp{7cm}}
+  \textbf{Type} & \textbf{Ordre d'énumération}  & \textbf{Constantes déclarées}\\
+  \hline
+  \galgas{@data} & Ordre croissant des indices & \galgas{data}, de type \galgas{@uint}\\
+  \galgas{list @T} & Ordre croissant des indices & À chaque champ de la liste, correspond une constante de même nom.\\
+  \galgas{map @T} & Ordre alphabétique des clés & \galgas{lkey}, de type \galgas{@lstring}, qui représente la clé, et à chaque champ de la table, correspond une constante de même nom.\\
+  \galgas{listmap @T} & Ordre alphabétique des clés & \galgas{key}, de type \galgas{@string}, qui représente la clé, et \galgas{mList}, qui représente la liste associée.\\
+  \galgas{sortedlist @T} & Ordre croissant des indices & À chaque champ de la liste, correspond une constante de même nom.\\
+  \galgas{@stringset} & Ordre alphabétique & \galgas{key}, de type \galgas{@string} \\
+  \hline
+  \end{tabular}
+  \caption{Types énumérables par l'instruction \texttt{foreach}}
+  \labelTableau{typesEnumerablesForeach}
+\end{table}
+
+\subsection{Organigramme d'exécution}
+
+L'organigramme illustrant l'exécution de l'instruction \galgas{foreach} est donné à la \refFigure{}{organigrammeForeach}.
 
 \begin{figure}[!ht]
   \centering
@@ -85,12 +181,12 @@ L'organigramme illustrant l'exécution de cette instruction est donné à la \re
       node distance=7mm
     ]
     \node [cloud] (start) {\textsc{begin}} ;
-    \node [block] (init) [below=of start] {loop\_index := 0} ;
+    \node [block] (init) [below=of start] {{\tt \emph{nom\_index}} := 0} ;
     \node [decision] (premierTest) [below=of init] {has element \& {\tt \emph{while\_expression}} ?} ;
     \node [block] (before) [below=of premierTest] {\tt \emph{before\_instructions}} ;
     \node [block] (gotoFirst) [below=of before] {goto first element} ;
     \node [block] (doInstructions) [below=of gotoFirst] {\tt \emph{instructions\_do}} ;
-    \node [block] (incLoopIndex) [below=of doInstructions] {loop\_index~++} ;
+    \node [block] (incLoopIndex) [below=of doInstructions] {{\tt \emph{nom\_index}} ++} ;
     \node [decision] (exp) [below=of incLoopIndex] {has next element \& {\tt \emph{while\_expression}} ?} ;
     \node [block] (after) [below=of exp] {\tt \emph{instructions\_after}} ;
     \node [cloud] (end) [below=of after] {\textsc{end}} ;
@@ -115,69 +211,76 @@ L'organigramme illustrant l'exécution de cette instruction est donné à la \re
   \labelFigure{organigrammeForeach}
 \end{figure}
 
-Plusieurs de ses champs sont optionnels.
 
-\textbf{nom\_index}. Vous pouvez mentionner un identificateur après le mot réservé \galgas{index}. Cet identificateur est le nom d'une variable qui a implicitement le type \galgas{@uint} et qui est initialisée à 0 avant toute exécution de la boucle, et incrémentée après chaque exécution des \galgas{instructions\_do}, et avant l'exécution des \galgas{instructions\_between}. Vous ne pouvez pas vous même changer la valeur de cette variable. Sa visibilité inclut l'ensemble des constructions optionnelles.
+\subsection{Champs optionnels}
 
-\textbf{while}. L'énumération est exécutée tant que l'\galgas{expression} est vraie. L'absence de cette construction est équivalent à \galgas{while true} et permet d'énumérer toutes les valeurs.
+Plusieurs champs de l'instruction \galgas{foreach} sont optionnels.
 
-
-\textbf{before}. Ces instructions sont exécutées une seule fois, au début de l'exécution de l'instruction. Aucun accès aux objets énumérés n'est possible. Si l'énumération est vide, ces instructions ne sont pas exécutées.
-
-\textbf{before}. Ces instructions sont exécutées entre deux exécutions consécutives des \galgas{instructions\_do}. Aucun accès aux objets énumérés n'est possible.
-
-\textbf{after}. Ces instructions sont exécutées une seule fois, à la fin de l'exécution de l'instruction. Aucun accès aux objets énumérés n'est possible. Si l'énumération est vide, ces instructions ne sont pas exécutées.
-
+\galgas{sens}. Ce champ peut prendre trois valeurs, et fixe l'ordre dans lequel les éléments sont énumérés :
+\begin{itemize}
+  \item si le champ est vide, dans l'ordre indiqué par le tableau \refTableau{typesEnumerablesForeach} ;
+  \item \galgas{<}, dans l'ordre indiqué par le tableau \refTableau{typesEnumerablesForeach} ;
+  \item \galgas{>}, dans l'ordre inverse à celui indiqué par le tableau \refTableau{typesEnumerablesForeach}.
+\end{itemize}
 
 
+\galgas{index nom\_index}. Vous pouvez mentionner un identificateur après le mot réservé \galgas{index}. Cet identificateur est le nom d'une variable qui a implicitement le type \galgas{@uint} et qui est initialisée à 0 avant toute exécution de la boucle, et incrémentée après chaque exécution des \galgas{instructions\_do}, et avant l'exécution des \galgas{instructions\_between}. Vous ne pouvez pas vous même changer la valeur de cette variable. Sa visibilité inclut l'ensemble des constructions optionnelles.
 
-%\begin{figure}[!ht]
-%  \centering
-%  \small
-%  \begin{tikzpicture}
-%    [auto,
-%      decision/.style={diamond, draw=blue, thick, fill=blue!20,
-%                       text width=4.5em,align=flush center,
-%                       inner sep=1pt},
-%      block/.style ={rectangle, draw=blue, thick, fill=blue!20,
-%                     text width=5em,align=center, rounded corners,
-%                     minimum height=4em},
-%      cloud/.style ={draw=red, thick, ellipse,fill=red!20,
-%                     minimum height=2em}
-%      line/.style ={draw, thick, -latex’,shorten >=2pt},
-%    ]
-%    \matrix [column sep=5mm,row sep=7mm] {
-%%  row 1
-%  \node [cloud] (expert) {expert}; &
-%  \node [block] (init) {initialize model}; &
-%  \node [cloud] (system) {system}; \\
-%  %  row 2
-%    & \node [block] (identify) {identify candidate model}; & \\
-%  %  row 3
-%    \node [block] (update)   {update model};  &
-%    \node [block] (evaluate) {evaluate candidate models}; & \\
-%  %  row 4
-%    & \node [decision] (decide) {is best candidate}; & \\
-%  %  row 5
-%    & \node [block] (stop)      {stop}; & \\
-%  };
-%%  \begin{scope}[every path/.style=line]
-%    \draw          (init)     -- (identify);
-%    \draw          (identify) -- (evaluate);
-%    \draw          (evaluate) -- (decide);
-%    \draw          (update) |- (identify);
-%    \draw          (decide) -| node [near start] {yes} (update);
-%    \draw          (decide) -- node [midway] {no} (stop);
-%    \draw [dashed] (expert) -- (init);
-%    \draw [dashed] (system) -- (init);
-%    \draw [dashed] (system) |- (evaluate);
-%%  \end{scope}
-%  \end{tikzpicture}
-%  \caption{Organigramme d'exécution d'une instruction \emph{foreach}}
-%  \labelFigure{organigrammeForeach}
-%\end{figure}
+\galgas{while expression}. L'énumération est exécutée tant que l'\galgas{expression} est vraie. L'absence de cette construction est équivalent à \galgas{while true} et permet d'énumérer toutes les valeurs.
 
 
+\galgas{before instructions\_before}. Ces instructions sont exécutées une seule fois, au début de l'exécution de l'instruction. Aucun accès aux objets énumérés n'est possible. Si l'énumération est vide, ces instructions ne sont pas exécutées.
+
+\galgas{between instructions\_between}. Ces instructions sont exécutées entre deux exécutions consécutives des \galgas{instructions\_do}. Aucun accès aux objets énumérés n'est possible.
+
+\galgas{after instructions\_after}. Ces instructions sont exécutées une seule fois, à la fin de l'exécution de l'instruction. Aucun accès aux objets énumérés n'est possible. Si l'énumération est vide, ces instructions ne sont pas exécutées.
+
+\subsectionLabel{Préfixage des constantes}{prefixageConstantesForeach}
+
+Considérons l'exemple suivant :
+
+\begin{galgascode}
+@stringlist v1 := ... ;
+@stringlist v2 := ... ;
+foreach v1, v2 do # Erreur !
+ ...
+end foreach ;
+\end{galgascode}
+
+Le compilateur GALGAS déclenche une erreur, car il y a ambiguïté sur la signification de \galgas{mValue} à l'intérieur de la boucle : désigne-t'elle l'élément courant de \galgas{v1} ou l'élément courant de \galgas{v2} ?
+
+Pour lever l'ambiguïté, on complète l'instruction en précisant un \emph{préfixe} pour l'une des deux listes (par exemple la seconde) :
+\begin{galgascode}
+@stringlist v1 := ... ;
+@stringlist v2 := ... ;
+foreach v1, v2 : l2_ do
+  ...
+end foreach ;
+\end{galgascode}
+
+La déclaration du préfixe \galgas{l2\_} signifie que les constantes associées à la seconde liste auront leur nom préfixé par \galgas{l2\_}. De cette façon, \galgas{l2\_mValue} désigne la valeur courante de la seconde liste, et \galgas{mValue} désigne sans ambiguïté la valeur courante de la première liste.
+\begin{galgascode}
+@stringlist v1 := ... ;
+@stringlist v2 := ... ;
+foreach v1, v2 : l2_ do
+  log mValue, l2_mValue ;
+end foreach ;
+\end{galgascode}
+
+\subsection{Modification de la collection}
+
+Au début de l'exécution de l'instruction \galgas{foreach}, les valeurs des \galgas{expression} enumérées sont capturées et mémorisées. L'énumération s'effectue sur ces valeurs mémorisées. Aussi, il est possible de modifier la collection en cours d'énumération sans que cela affectue les itérations :
+\begin{galgascode}
+@stringlist v [emptyList] ;
+v += !"A" ;
+v += !"B" ;
+v += !"C" ;
+log v ; # "A", "B", "C"
+foreach v do
+  v += !mValue ;
+end foreach ;
+log v ; # "A", "B", "C", "A", "B", "C"
+\end{galgascode}
 
 
 
@@ -583,5 +686,10 @@ end switch ;
 
 
 \section{Warning Instruction}
+
+
+
+
+\section{L'instruction \texttt{with}}
 
 

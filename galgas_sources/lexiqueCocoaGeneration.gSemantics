@@ -413,7 +413,7 @@ override reader @lexicalImplicitRuleAST generateCocoaCode
   @tokenSortedlist tokenSortedList ;
   [[inLexiqueAnalysisContext mLexicalTokenListMap] searchKey !mListName ?* ?tokenSortedList ?*] ;
   outGeneratedCode := "" ;
-  foreach \down tokenSortedList do
+  foreach > tokenSortedList do
     outGeneratedCode .= "if (scanningOk && [self testForInputString:@" ;
     outGeneratedCode .= [mName utf8Representation] ;
     outGeneratedCode .= " advance:YES]) {\n" ;
