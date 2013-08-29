@@ -93,7 +93,7 @@ rule <actual_parameter_list>
       if n == 0 then
         error count: "the count value should be > 0" ;
       else
-        loop n
+        loop n :
         while n > 0 do
           outActualParameterList += ![@inputJokerActualParameterAST new !qualifierLocation !n] ;
           n -- ;

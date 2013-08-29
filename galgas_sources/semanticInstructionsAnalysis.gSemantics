@@ -1798,7 +1798,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
   #--- Check named type is a descendant of receiver type
     @unifiedTypeMapProxy t := type ;
     @bool found := t == [castExpression mType] ;
-    loop [inAnalysisContext->mSemanticContext->mTypeMap count] + 1
+    loop [inAnalysisContext->mSemanticContext->mTypeMap count] + 1 :
     while (not found) & not [[t mSuperType] isNull] do
       t := [t mSuperType] ;
       found := t == [castExpression mType] ;
@@ -2248,7 +2248,7 @@ override method @matchInstructionAST analyzeSemanticInstruction
             const @unifiedTypeMapProxy namedType [searchKey !inAnalysisContext->mSemanticContext->mTypeMap !mTypeNameOrEnumerationConstantName] ;
             @unifiedTypeMapProxy t := type ;
             @bool found := t == namedType ;
-            loop [inAnalysisContext->mSemanticContext->mTypeMap count] + 1
+            loop [inAnalysisContext->mSemanticContext->mTypeMap count] + 1 :
             while (not found) & not [[t mSuperType] isNull] do
               t := [t mSuperType] ;
               found := t == namedType ;

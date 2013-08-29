@@ -2734,7 +2734,7 @@ override method @arrayDeclarationAST enterInSemanticContext
 #---
   @unifiedTypeMapProxyList uintArgs [emptyList] ;
   @uint idx := 0 ;
-  loop [mDimension uint] while idx < [mDimension uint] do
+  loop [mDimension uint] : while idx < [mDimension uint] do
     uintArgs += !uintType ;
     idx ++ ;
   end loop ;
@@ -2773,7 +2773,7 @@ override method @arrayDeclarationAST enterInSemanticContext
   @formalParameterSignature modifierFormalArgumentList [emptyList] ;
   modifierFormalArgumentList += !elementTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
   idx := 0 ;
-  loop [mDimension uint] while idx < [mDimension uint] do
+  loop [mDimension uint] : while idx < [mDimension uint] do
     modifierFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] ;
     idx ++ ;
   end loop ;

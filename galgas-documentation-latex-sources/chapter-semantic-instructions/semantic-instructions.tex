@@ -269,7 +269,7 @@ end foreach ;
 
 \subsection{Modification de la collection}
 
-Au début de l'exécution de l'instruction \galgas{foreach}, les valeurs des \galgas{expression} enumérées sont capturées et mémorisées. L'énumération s'effectue sur ces valeurs mémorisées. Aussi, il est possible de modifier la collection en cours d'énumération sans que cela affectue les itérations :
+Au début de l'exécution de l'instruction \galgas{foreach}, les valeurs des \galgas{expression} enumérées sont capturées et mémorisées. L'énumération s'effectue sur ces valeurs mémorisées. Aussi, il est possible de modifier la collection en cours d'énumération sans que cela affecte l'exécution :
 \begin{galgascode}
 @stringlist v [emptyList] ;
 v += !"A" ;
@@ -492,70 +492,28 @@ The \emph{expression} is first computed :
 \section{L'instruction \texttt{loop}}
 
 
-\subsection{Syntax}
+\subsection{Syntaxe}
 
-The \emph{loop} instruction has the following syntax:
-{\lstset{emph={expression, instructions_1, instructions_2, variant_expression}, emphstyle=\emph}
+L'instruction \galgas{loop} a la syntaxe suivante :
+\lstset{emph={expression, instructions_1, instructions_2, variant_expression}, emphstyle=\emph}
 \begin{galgascode}
-loop variant_expression
-: instructions_1
+loop variant_expression :
+  instructions_1
 while expression do
   instructions_2
 end loop ;  
 \end{galgascode}
-}
 
-The \emph{instructions\_1} and \emph{instructions\_2} are possibly empty instruction lists. If the \emph{instructions\_1} is empty, the preceeding « : » can be omitted :
-{\lstset{emph={expression, instructions_1, instructions_2, variant_expression}, emphstyle=\emph}
-\begin{galgascode}
-loop variant_expression
-while expression do
-  instructions_2
-end loop ;  
-\end{galgascode}
-}
 
-\subsection{Semantics}
+Les \galgas{instructions\_1} et \galgas{instructions\_2} sont des listes d'instructions qui peuvent être vides.
 
-The \emph{variant\_expression} is an \galgas{@uint} expression that ensures the loop is not endless: it is computed at the beginning of the loop execution, and is decremented by one at the end of every iteration. If it reaches zero, a run-time error is raised.
+\subsection{Sémantique}
 
-The \emph{expression} is an \galgas{@bool} expression that expresses repetitive execution.
+Le \galgas{variant\_expression} est une expression de type \galgas{@uint} qui assure que la boucle n'est pas sans fin : elle est calculée au début de l'exécution de l'instruction, et décrémentée après chaque itération. Si sa valeur atteint zéro, une erreur d'exécution est déclenchée.
 
-The \emph{loop} instruction execution is illustrated by the flowchart given in \refFigure{}{loopInstructionFlowchart}.
+L'\galgas{expression} est une expression de type \galgas{@bool} qui exprime la continuation de l'exécution de la boucle.
 
-%\begin{figure}[!ht]
-%  \centering
-%  \small
-%  \begin{tikzpicture}[very thick]
-%    \node [rounded corners=5pt, shape=rectangle, draw] (start) {\textsc{begin}} ;
-%    \node [shape=rectangle, draw] (variant) [below=of start] {$variant := variant\_expression~value$} ;
-%    \node [shape=diamond, draw] (premierTest) [below=of variant] {$variant > 0$} ;
-%    \node [shape=rectangle, draw] (error1) [right=of premierTest] {$loop~variant~error$} ;
-%    \node [shape=rectangle, draw] (body0) [below=of premierTest] {$instructions\_1$} ;
-%    \node [shape=diamond, draw] (exp) [below=of body0] {$expression$} ;
-%    \node [shape=diamond, draw] (variantTest) [below=of exp] {$variant > 0$} ;
-%    \node [shape=rectangle, draw] (decTest) [left=of variantTest] {$variant {-}{-}$} ;
-%    \node [shape=rectangle, draw] (body1) [above=of decTest] {$instructions\_2$} ;
-%    \node [shape=rectangle, draw] (error) [right=of variantTest] {$loop~variant~error$} ;
-%    \node [rounded corners=5pt, shape=rectangle, draw] (end) [right=of error] {\textsc{end}} ;
-%    
-%    \draw [->] (start) -- (variant) ;
-%    \draw [->] (variant) -- (premierTest) ;
-%    \draw [->] (premierTest) to node[right] {$yes$} (body0) ;
-%    \draw [->] (premierTest) to node[above] {$no$} (error1) ;
-%    \draw [->] (body0) -- (exp) ;
-%    \draw [->] (exp) to node[right] {$true$} (variantTest) ;
-%    \draw [->] (variantTest) to node[above] {$yes$} (decTest) ;
-%    \draw [->] (variantTest) to node[above] {$no$} (error) ;
-%    \draw [->] (decTest) -- (body1) ;
-%    \draw [->, bend left] (exp.east) to node[above] {$false$} (end.north) ;
-%    \draw [->] (body1.north) .. controls +(north:2cm) and +(left:2cm) .. (body0.west) ;
-%    \draw [->] (error) -- (end) ;
-%    \draw [->] (error1.east) .. controls +(right:2cm) .. (end) ;
-%  \end{tikzpicture}
-%  \caption{\emph{loop} instruction flowchart}
-%  \labelFigure{loopInstructionFlowchart}
-%\end{figure}
+L'exécution de l'instruction \galgas{loop} est illustrée par l'organigramme de la \refFigure{}{loopInstructionFlowchart}.
 
 
 \begin{figure}[!ht]

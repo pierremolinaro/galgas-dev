@@ -545,7 +545,7 @@ routine compileGrammarComponentFromAST
         !?addedNonTerminalCount
       ;
       @uint i := 0 ;
-      loop addedNonTerminalCount while i < (addedNonTerminalCount - addedNonTerminalCountRef) do
+      loop addedNonTerminalCount : while i < (addedNonTerminalCount - addedNonTerminalCountRef) do
         nonTerminalToAddList += !syntaxComponentName !i ;
         i++ ;
       end loop ;

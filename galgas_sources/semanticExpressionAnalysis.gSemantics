@@ -340,7 +340,7 @@ routine checkAssignmentTypes
 :
   @unifiedTypeMapProxy sourceType := inSourceType ;
   @bool ok := inTargetType == inSourceType ;
-  loop [@uint max] while (not ok) & (not [[sourceType mSuperType] isNull]) do
+  loop [@uint max] : while (not ok) & (not [[sourceType mSuperType] isNull]) do
     sourceType := [sourceType mSuperType] ;
     ok := inTargetType == sourceType ;
   end loop ;
@@ -866,7 +866,7 @@ routine checkDiadicOperator
   else
     @unifiedTypeMapProxy rightType := inRightType ;
     @bool ok := inLeftType == rightType ;
-    loop [@uint max] while (not ok) & (not [[rightType mSuperType] isNull]) do
+    loop [@uint max] : while (not ok) & (not [[rightType mSuperType] isNull]) do
       rightType := [rightType mSuperType] ;
       ok := inLeftType == rightType ;
     end loop ;
@@ -1722,7 +1722,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
   #--- Check expression type is a descendant of named type
     @unifiedTypeMapProxy t := type ;
     @bool found := t == [expression mType] ;
-    loop [inAnalysisContext->mSemanticContext->mTypeMap count] + 1
+    loop [inAnalysisContext->mSemanticContext->mTypeMap count] + 1 :
     while (not found) & not [[t mSuperType] isNull] do
       t := [t mSuperType] ;
       found := t == [expression mType] ;
@@ -1768,7 +1768,7 @@ override method @castInExpressionAST analyzeSemanticExpression
   #--- Check expression type is a descendant of named type
     @unifiedTypeMapProxy t := type ;
     @bool found := t == [expression mType] ;
-    loop [inAnalysisContext->mSemanticContext->mTypeMap count] + 1
+    loop [inAnalysisContext->mSemanticContext->mTypeMap count] + 1 :
     while (not found) & not [[t mSuperType] isNull] do
       t := [t mSuperType] ;
       found := t == [expression mType] ;
@@ -1896,7 +1896,7 @@ override method @filewrapperInExpressionAST analyzeSemanticExpression
   ] ;
 #--- Search for file
   @string builtPath := "" ;
-  loop [filewrapperDirectoryMap count] + 1
+  loop [filewrapperDirectoryMap count] + 1 :
   while [directoryList length] > 0 do
     @string directoryName ;
     [!?directoryList popFirst ?directoryName] ;
