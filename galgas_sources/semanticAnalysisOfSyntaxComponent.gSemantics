@@ -108,7 +108,7 @@ override reader @syntaxDeclarationForGeneration appendDeclaration1 -> @string ou
 :
   @uintlist selectMethodList [emptyList] ;
   @uint idx := 0 ;
-  loop mSelectMethodCount + 1
+  loop mSelectMethodCount + 1 :
   while idx < mSelectMethodCount do
     selectMethodList += !idx ;
     idx ++ ;

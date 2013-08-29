@@ -565,7 +565,7 @@ rule <foreach_enumerated_object>
       if n == 0 then
         error count: "this value should be > 0" ;
       end if ;
-      loop n
+      loop n :
       while n > 0 do
         mElementList += ![@lstring new !"" !here] ![@lstring new !"" !here] ;
         n -- ;
@@ -1449,17 +1449,12 @@ rule <semantic_instruction>
 :
   $loop$ ;
   const @location instructionLocation := here ;
-  @semanticExpressionAST mVariantExpression ;
-  <expression> ? mVariantExpression ;
+#--- Variant
+  <expression> ?@semanticExpressionAST mVariantExpression ;
   const @location mEndOfVariantExpression := here ;
+  $:$ ;
 #---
-  @semanticInstructionListAST mFirstInstructions ;
-  select
-    $:$ ;
-    <semantic_instruction_list> ? mFirstInstructions ;
-  or
-    mFirstInstructions := [@semanticInstructionListAST emptyList] ;
-  end select ;
+    <semantic_instruction_list> ?@semanticInstructionListAST mFirstInstructions ;
 #---
   const @location mEndOfFirstInstructions := here ;
   $while$ ;

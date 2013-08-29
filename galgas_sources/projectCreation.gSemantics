@@ -74,7 +74,7 @@ routine projectCreation
     const @string projectName := [inProjectPath lastPathComponent] ;
     @bool ok := [[projectName characterAtIndex !0] isalpha] ;
     @uint idx := 1 ;
-    loop [projectName length]
+    loop [projectName length] :
     while (idx < [projectName length]) & ok do
       @char c := [projectName characterAtIndex !idx] ;
       ok := [c isalnum] | (c == '_') ;

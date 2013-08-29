@@ -649,7 +649,7 @@ override method @uniqueMapDeclarationAST semanticAnalysis
 #--- Check for useful automaton states
   @stringset accessibleStates := initialStateSet ;
   @bool progress := true ;
-  loop [mMapStateList length] + 1 while progress do
+  loop [mMapStateList length] + 1 : while progress do
     progress := false ;
     foreach mMapStateList do
       if [accessibleStates hasKey ![mStateName string]] then
@@ -679,7 +679,7 @@ override method @uniqueMapDeclarationAST semanticAnalysis
     @stringset reachableStates [emptySet] ;
     reachableStates += ![lkey string] ;
     @bool progress := true ;
-    loop [mapAutomatonStateMap count] + 1 while progress do
+    loop [mapAutomatonStateMap count] + 1 : while progress do
       progress := false ;
       foreach mMapStateList do
         if [reachableStates hasKey ![mStateName string]] then
@@ -1219,7 +1219,7 @@ override method @classDeclarationAST semanticAnalysis
 #------ Compute sort string (used for sorting generated code)
   @string sortString := [selfType key] ;
   @unifiedTypeMapProxy t := [selfType mSuperType] ;
-  loop [inSemanticContext->mTypeMap count] + 1
+  loop [inSemanticContext->mTypeMap count] + 1 :
   while not [t isNull] do
     sortString := [t key] . "." . sortString ;
     t := [t mSuperType] ;
@@ -1596,7 +1596,7 @@ override method @overridingCategoryMethodAST semanticAnalysis
   @unifiedTypeMapProxy superType := [selfType mSuperType] ;
   @formalParameterSignature inheritedSignature [emptyList] ;
   @location inheritedDeclarationLocation := here ;
-  loop [inSemanticContext->mTypeMap count] + 1
+  loop [inSemanticContext->mTypeMap count] + 1 :
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mInstanceMethodMap] hasKey ![mOverridingCategoryMethodName string]] then
       @methodQualifier qualifier ;
@@ -1675,7 +1675,7 @@ override method @overridingAbstractCategoryMethodAST semanticAnalysis
   @unifiedTypeMapProxy superType := [selfType mSuperType] ;
   @formalParameterSignature inheritedSignature [emptyList] ;
   @location inheritedDeclarationLocation := here ;
-  loop [inSemanticContext->mTypeMap count] + 1
+  loop [inSemanticContext->mTypeMap count] + 1 :
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mInstanceMethodMap] hasKey ![mOverridingCategoryMethodName string]] then
       @methodQualifier qualifier ;
@@ -1821,7 +1821,7 @@ override method @overridingCategoryModifierAST semanticAnalysis
   @unifiedTypeMapProxy superType := [selfType mSuperType] ;
   @formalParameterSignature inheritedSignature [emptyList] ;
   @location inheritedDeclarationLocation := here ;
-  loop [inSemanticContext->mTypeMap count] + 1
+  loop [inSemanticContext->mTypeMap count] + 1 :
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mModifierMap] hasKey ![mOverridingCategoryModifierName string]] then
       @methodQualifier qualifier ;
@@ -1900,7 +1900,7 @@ override method @overridingAbstractCategoryModifierAST semanticAnalysis
   @unifiedTypeMapProxy superType := [selfType mSuperType] ;
   @formalParameterSignature inheritedSignature [emptyList] ;
   @location inheritedDeclarationLocation := here ;
-  loop [inSemanticContext->mTypeMap count] + 1
+  loop [inSemanticContext->mTypeMap count] + 1 :
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mModifierMap] hasKey ![mOverridingCategoryModifierName string]] then
       @methodQualifier qualifier ;
@@ -2056,7 +2056,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
   @unifiedTypeMapProxyList inheritedSignature [emptyList] ;
   @unifiedTypeMapProxy inheritedReturnType [null] ;
   @location inheritedDeclarationLocation := here ;
-  loop [inSemanticContext->mTypeMap count] + 1
+  loop [inSemanticContext->mTypeMap count] + 1 :
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mReaderMap] hasKey ![mOverridingCategoryReaderName string]] then
       @methodQualifier qualifier ;
@@ -2155,7 +2155,7 @@ override method @overridingAbstractCategoryReaderAST semanticAnalysis
   @unifiedTypeMapProxyList inheritedSignature [emptyList] ;
   @unifiedTypeMapProxy inheritedReturnType [null] ;
   @location inheritedDeclarationLocation := here ;
-  loop [inSemanticContext->mTypeMap count] + 1
+  loop [inSemanticContext->mTypeMap count] + 1 :
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mReaderMap] hasKey ![mAbstractCategoryReaderName string]] then
       @methodQualifier qualifier ;

@@ -1555,7 +1555,7 @@ end reader ;
 override reader @arrayTypeForGeneration appendSpecificImplementation ->@string outImplementation :
   @stringlist suffixList [emptyList] ;
   @uint idx := 0 ;
-  loop mDimension while idx < mDimension do
+  loop mDimension : while idx < mDimension do
     suffixList += ![idx string] ;
     idx ++ ;
   end loop ;
