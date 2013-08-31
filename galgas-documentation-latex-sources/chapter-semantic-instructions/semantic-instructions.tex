@@ -7,6 +7,49 @@
 
 
 
+\sectionLabel{Cible}{ciblePour Instruction}
+
+\lstset{emph={cible}, emphstyle=\emph}
+
+La notation \galgas{cible} apparaît dans plusieurs instructions :
+\begin{itemize}
+  \item l'instruction d'affectation (\refSectionPage{assignmentInstruction}) ;
+\end{itemize}
+
+Cette notation est décrite par le diagramme syntaxique de la \refFigure{}{diagrammeSyntaxiqueCible}.
+
+\begin{figure}[!ht]
+  \centering
+  \small
+  \begin{tikzpicture}[
+      point/.style={coordinate},
+      nonterminal/.style={rectangle, minimum size=6mm, very thick, draw=red!50!black!50, top color=white, bottom color=red!50!black!20, font=\it},
+      terminal/.style={rectangle, rounded corners=3mm, minimum size=6mm, very thick, draw=black!50, top color=white, bottom color=black!20, font=\ttfamily}
+    ]
+    \matrix[row sep=1mm,column sep=5mm] {
+      \node (a) [nonterminal] {cible} ; &
+      \node (start) {} ; &
+      \node (idf) [terminal] {identificateur} ; &
+      \node (p1)[point] {} ; &
+      \node (fleche) [terminal] {->} ; &
+      \node (idf2) [terminal] {identificateur} ; &
+      \node (p2)[point] {} ; &
+      \node (p3)[point] {} ; &
+      \node (end) {} ;\\
+    } ;
+    \draw [o-stealth] (start) -- (idf) ;
+    \draw [-stealth] (idf) -- (fleche) ;
+    \draw [-stealth] (fleche) -- (idf2) ;
+    \draw [-stealth] (idf2) -- (p2) ;
+    \draw [-stealth] (p1) -- +(0, 0.8) -| (p3) -- (end) ;
+    \draw [-stealth] (p2) -- +(0, -0.8) -| (p1) ;
+  \end{tikzpicture}
+  \caption{Diagramme syntaxique de \texttt{cible}}
+  \labelFigure{diagrammeSyntaxiqueCible}
+\end{figure}
+
+Un identificateur seul représente une variable. 
+
 \sectionLabel{Append Instruction}{appendInstruction}
 
 
