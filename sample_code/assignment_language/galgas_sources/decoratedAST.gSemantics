@@ -15,8 +15,6 @@ class @cstInExpressionForGeneration extends @expressionForGeneration {
 
 enum @diadicOperation {
  addition, multiplication
-} {
-
 }
 
 class @diadicForGeneration extends @expressionForGeneration {

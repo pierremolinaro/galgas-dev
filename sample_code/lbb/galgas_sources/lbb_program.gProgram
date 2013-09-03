@@ -49,7 +49,7 @@ message "a source text file with the .lbb extension"
   end foreach ;
 #--- Check connections
   if [@uint errorCount] == 0 then
-    foreach boxInstanceMap prefixedby box_ do
+    foreach boxInstanceMap : box_ do
       foreach box_mConnectionMap do
         @connectionMap oppositeConnectionMap := [mBoxProxy mConnectionMap] ;
         @boxInstanceProxy oppositeOfOppositeBox ;

@@ -70,7 +70,7 @@ modifier @uintlist appendSquare ??@uint inValue :
 end modifier ;
 
 modifier @uint64list prependSquare ??@uint64 inValue :
-  [!?self prependValue ![inValue square]] ;
+  [!?self insertAtIndex ![inValue square] !0] ;
 end modifier ;
 
 modifier @string concatList ??@stringlist inList :
