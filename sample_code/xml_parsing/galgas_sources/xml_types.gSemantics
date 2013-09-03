@@ -4,7 +4,6 @@ semantics xml_types :
 
 enum @xmlNodeType {
   element, text, comment
-}{
 }
 
 #------------------------------------------------------------*

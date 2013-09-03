@@ -35,7 +35,7 @@ override method @classWithSuperClassAST buildGraph
   ?!@inheritanceGraph ioGraph
 :
   [!?ioGraph addNode !mClassName !selfcopy] ;
-  [!?ioGraph addArc  !mClassName !mSuperClassName] ;
+  [!?ioGraph addEdge  !mClassName !mSuperClassName] ;
 end method ;
 
 
