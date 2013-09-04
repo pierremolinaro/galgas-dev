@@ -26,13 +26,11 @@ indexing with class_sample_language_grammar
     end foreach ;
   else
   #--- Topologic sort
-    @declarationListAST sortedDeclarationListAST ;
-    @lstringlist circularDefinitionClassNameList ;
     [inheritanceGraph topologicalSort
-      ?sortedDeclarationListAST
+      ??@declarationListAST sortedDeclarationListAST
       ?*
       ?*
-      ?circularDefinitionClassNameList
+      ??@lstringlist circularDefinitionClassNameList
     ] ;
     if [circularDefinitionClassNameList length] > 0 then
       foreach circularDefinitionClassNameList do

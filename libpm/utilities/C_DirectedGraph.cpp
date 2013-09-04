@@ -362,6 +362,7 @@ void C_DirectedGraph::topologicalSort (TC_UniqueArray <PMUInt32> & outSortedNode
   }
 //--- Loop
   bool loop = true ;
+  TC_UniqueArray <PMUInt32> s ;
   while (loop) {
     loop = false ;
     for (PMSInt32 i=0 ; i<nodes.count () ; i++) {
@@ -369,7 +370,7 @@ void C_DirectedGraph::topologicalSort (TC_UniqueArray <PMUInt32> & outSortedNode
         loop = true ;
         outSortedNodes.addObject (i) ;
         nodes (i COMMA_HERE) = false ;
-        TC_UniqueArray <PMUInt32> s ; mReverseEdges (i COMMA_HERE).getValueArray (s) ;
+        mReverseEdges (i COMMA_HERE).getValueArray (s) ;
         for (PMSInt32 j=0 ; j<s.count () ; j++) {
           dependencyCount (s (j COMMA_HERE) COMMA_HERE) -- ;
         }
@@ -401,6 +402,7 @@ void C_DirectedGraph::depthFirstTopologicalSort (TC_UniqueArray <PMUInt32> & out
   }
 //--- Loop
   TC_UniqueArray <PMUInt32> workingArray ;
+  TC_UniqueArray <PMUInt32> s ;
   bool loop = true ;
   while (loop) {
   //--- Find a node without any dependence  
@@ -415,7 +417,7 @@ void C_DirectedGraph::depthFirstTopologicalSort (TC_UniqueArray <PMUInt32> & out
       const PMUInt32 node = workingArray.lastObject (HERE) ;
       workingArray.removeLastObject (HERE) ;
       outSortedNodes.addObject (node) ;
-      TC_UniqueArray <PMUInt32> s ; mReverseEdges (node COMMA_HERE).getValueArray (s) ;
+      mReverseEdges (node COMMA_HERE).getValueArray (s) ;
       for (PMSInt32 j=0 ; j<s.count () ; j++) {
         const PMUInt32 candidate = s (j COMMA_HERE) ;
         dependencyCount (candidate COMMA_HERE) -- ;

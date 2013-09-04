@@ -79,11 +79,14 @@ void C_UIntSet::getBoolValueArray (TC_UniqueArray <bool> & outBoolValueArray) co
 
 void C_UIntSet::getValueArray (TC_UniqueArray <PMUInt32> & outValueArray) const {
   outValueArray.setCountToZero () ;
-  TC_UniqueArray <bool> definedNodeBoolArray ;
-  getBoolValueArray (definedNodeBoolArray) ;
-  for (PMSInt32 i=0 ; i<definedNodeBoolArray.count () ; i++) {
-    if (definedNodeBoolArray (i COMMA_HERE)) {
-      outValueArray.addObject (i) ;
+  PMUInt32 idx = 0 ;
+  for (PMSInt32 i=0 ; i<mDefinition.count () ; i++) {
+    for (PMUInt32 j=0 ; j<64 ; j++) {
+      const bool exists = (mDefinition (i COMMA_HERE) & (((PMUInt64) 1) << j)) != 0 ;
+      if (exists) {
+        outValueArray.addObject (idx) ;
+      }
+      idx ++ ;
     }
   }
 }
