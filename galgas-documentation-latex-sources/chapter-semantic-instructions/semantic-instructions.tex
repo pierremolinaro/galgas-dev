@@ -78,6 +78,7 @@ Lors de l'exécution, le type dynamique de \galgas{expression} est comparé succ
 \begin{itemize}
   \item exactement la classe \galgas{@T} (\galgas{conversion} est \galgas{==}), 
   \item la classe \galgas{@T} ou de l'une de ses classes héritières (\galgas{conversion} est \galgas{>=}),
+  \item une classe héritière de la classe \galgas{@T}, mais pas la classe \galgas{@T} (\galgas{conversion} est \galgas{>}),
 \end{itemize}
 \galgas{variable} prend la valeur de \galgas{expression} et les instructions de la branche correspondante sont exécutées.
 
@@ -95,7 +96,7 @@ else
 end if ;
 \end{galgascode}
 
-Note : si la variable \galgas{var} n'est pas utilisée dans la branche correspondante, une alerte est émise. Pour la supprimer, ne pas mentionner la variable en écrivant \galgas{when @T :}.
+Note : si la variable \galgas{var} n'est pas utilisée dans la branche correspondante, une alerte est émise. Pour la supprimer, ne pas mentionner la variable en écrivant \galgas{when >= @T :}.
 
 
 

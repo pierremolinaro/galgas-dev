@@ -753,7 +753,7 @@ list @castInstructionBranchListAST {
   @lstring mTypeName ;
   @lstring mConstantVarName ; # Empty string if no constant var
   @semanticInstructionListAST mInstructionList ;
-  @bool mStrictTypeEquality ;
+  @dynamicTypeComparisonKind mTypeComparisonKind ;
   @location mEndOfInstructions ;
 }
 

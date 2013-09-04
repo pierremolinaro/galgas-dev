@@ -766,15 +766,22 @@ override method @structuredCastInstructionForGeneration generateInstruction
   ioGeneratedCode .= "if (" . castCppVarName . ".isValid ()) {\n" ;
   [!?ioGeneratedCode incIndentation !2] ;
   foreach mCastBranchList do
-    if mStrictTypeEquality then
+    switch mTypeComparisonKind
+    when equal :
       ioGeneratedCode .= "if (" . castCppVarName
       . ".dynamicTypeDescriptor () == & kTypeDescriptor_GALGAS_"
       . [mType identifierRepresentation] . ") {\n" ;
-    else
+    when inherited :
       ioGeneratedCode .= "if (NULL != dynamic_cast <const cPtr_"
       . [mType identifierRepresentation]
       . " *> (" . castCppVarName . ".ptr ())) {\n" ;
-    end if ;
+    when strictlyInherited :
+      ioGeneratedCode .= "if ((" . castCppVarName
+      . ".dynamicTypeDescriptor () != & kTypeDescriptor_GALGAS_"
+      . [mType identifierRepresentation] . ") && (NULL != dynamic_cast <const cPtr_"
+      . [mType identifierRepresentation]
+      . " *> (" . castCppVarName . ".ptr ()))) {\n" ;
+    end switch ;
     if [mCastedVarCppName length] > 0 then
       ioGeneratedCode .=
         "  GALGAS_" . [mType identifierRepresentation]

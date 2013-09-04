@@ -1833,7 +1833,7 @@ override method @structuredCastInstructionAST analyzeSemanticInstruction
       !?ioVariableMap
       ?instructionList
     ;
-    castBranchList += !mStrictTypeEquality !type !localConstantName !instructionList ;
+    castBranchList += !mTypeComparisonKind !type !localConstantName !instructionList ;
   end foreach ;
 #--- else or default branch
   @semanticInstructionListForGeneration else_instructionList ;

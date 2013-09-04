@@ -1240,13 +1240,13 @@ end rule ;
 
 rule <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstructionBranchList :
   $when$ ;
-  @bool strictTypeEquality ;
+  @dynamicTypeComparisonKind kind ;
   select
-    $==$ ;
-    strictTypeEquality := true ;
+    $==$ ; kind := [@dynamicTypeComparisonKind equal] ;
   or
-    $>=$ ;
-    strictTypeEquality := false ;
+    $>=$ ; kind := [@dynamicTypeComparisonKind inherited] ;
+  or
+    $>$ ; kind := [@dynamicTypeComparisonKind strictlyInherited] ;
   end select ;
   $type_name$ ? @lstring mTypeName ;
   @lstring mConstantVarName ; # Empty string if no constant var
@@ -1261,7 +1261,7 @@ rule <cast_instruction_branch> ?!@castInstructionBranchListAST ioCastInstruction
     !mTypeName
     !mConstantVarName
     !mCastBranchInstructionList
-    !strictTypeEquality
+    !kind
     !here
   ;
 end rule ;
