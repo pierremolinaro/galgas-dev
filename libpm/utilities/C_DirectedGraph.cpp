@@ -348,7 +348,7 @@ void C_DirectedGraph::print (void) const {
 //---------------------------------------------------------------------------*
 
 void C_DirectedGraph::topologicalSort (TC_UniqueArray <PMUInt32> & outSortedNodes,
-                                                 TC_UniqueArray <PMUInt32> & outUnsortedNodes) const {
+                                       TC_UniqueArray <PMUInt32> & outUnsortedNodes) const {
   outSortedNodes.setCountToZero () ;
   outUnsortedNodes.setCountToZero () ;
 //--- Get working copies
