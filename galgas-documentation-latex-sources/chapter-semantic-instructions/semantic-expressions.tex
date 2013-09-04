@@ -19,23 +19,37 @@ D'une manière classique, une expression est constituée d'\emph{opérandes} (\r
 
 \subsectionLabel{Expression de conversion polymorphique inverse}{expConversionPolymorphiqueInverse}
 
-\lstset{emph={expression}, emphstyle=\emph}
+\lstset{emph={expression, conversion}, emphstyle=\emph}
 
 La syntaxe de l'\emph{expression de conversion polymorphique inverse} est : \galgas{(cast expression : @T)}. Les parenthèses sont obligatoires. Elle permet de renvoyer la valeur de \galgas{expression} sous la forme d'un objet de type statique \galgas{@T}. À l'exécution, la conversion échoue si le type dynamique de l'\galgas{expression} n'est pas \galgas{@T} ou une de ses classes héritières ; une erreur sémantique est alors déclenchée, et l'expression renvoie un objet \emph{non construit}.
 
 Pour tester le type dynamique de l'expression avant d'effectuer la conversion, utiliser la construction décrite à la \refSubsectionPage{testTypeDynamiqueExpression}. On peut aussi utiliser l'instruction \galgas{cast} (\refSectionPage{instructionCast}).
 
+
+
+
+
+
+
 \subsectionLabel{Test du type dynamique d'une expression}{testTypeDynamiqueExpression}
 
-L'opérande \galgas{(expression is @T)} renvoie \galgas{true} si le type dynamique de l'\galgas{expression} est \galgas{@T} ou une de ses classes héritières, et \galgas{false} dans le cas contraire. Les parenthèses sont obligatoires.
+L'opérande \galgas{(expression is conversion @T)} (les parenthèses sont obligatoires) teste le type dynamique de \galgas{expression} vis à vis du type \galgas{@T} :
+\begin{itemize}
+\item si \galgas{conversion} est \galgas{==}, la valeur renvoyée est \galgas{true} si le type dynamique de l'\galgas{expression} est exactement \galgas{@T}, et \galgas{false} dans le cas contraire ;
+\item si \galgas{conversion} est \galgas{>=}, la valeur renvoyée est \galgas{true} si le type dynamique de l'\galgas{expression} est \galgas{@T} ou une de ses classes héritières, et \galgas{false} dans le cas contraire ;
+\item si \galgas{conversion} est \galgas{>}, la valeur renvoyée est \galgas{true} si le type dynamique de l'\galgas{expression} n'est pas \galgas{@T} mais une de ses classes héritières, et \galgas{false} dans le cas contraire.
+\end{itemize}
+
+
+.
 
 Alliée à la construction précédente, elle permet de lancer une conversion uniquement si elle est possible :
 
 \begin{galgascode}
-if (expression is @B) then
+if (expression is == @B) then
   @B var := (cast expression : @T) ;
   ...
-elsif (expression is @C) then
+elsif (expression is >= @C) then
   @C var := (cast expression : @C) ;
   ...
 else

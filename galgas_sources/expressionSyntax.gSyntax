@@ -310,10 +310,19 @@ rule <primary> !@semanticExpressionAST outExpression :
   <expression> ?@semanticExpressionAST receiverExpression ;
   const @location endOfReceiverExpression := here ;
   $is$ ;
+  @dynamicTypeComparisonKind kind ;
+  select
+    $==$ ; kind := [@dynamicTypeComparisonKind equal] ;
+  or
+    $>=$ ; kind := [@dynamicTypeComparisonKind inherited] ;
+  or
+    $>$ ; kind := [@dynamicTypeComparisonKind strictlyInherited] ;
+  end select ;
   $type_name$ ?@lstring typeName ;
   outExpression := [@testDynamicClassInExpressionAST new
     !receiverExpression
     !endOfReceiverExpression
+    !kind
     !typeName
   ] ;
   $)$ ;

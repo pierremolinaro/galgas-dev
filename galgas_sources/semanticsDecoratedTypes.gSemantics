@@ -343,6 +343,7 @@ class @castInExpressionForGeneration extends @semanticExpressionForGeneration {
 
 class @testDynamicClassInExpressionForGeneration extends @semanticExpressionForGeneration {
   @semanticExpressionForGeneration mReceiverExpression ;
+  @dynamicTypeComparisonKind mTypeComparisonKind ;
   @string mTypeName ;
 }
 
