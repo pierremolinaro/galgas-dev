@@ -805,7 +805,7 @@ class @matchInstructionForGeneration extends @semanticInstructionForGeneration {
 #---------------------------------------------------------------------------*
 
 list @castInstructionBranchListForGeneration {
-  @bool mStrictTypeEquality ;
+  @dynamicTypeComparisonKind mTypeComparisonKind ;
   @unifiedTypeMapProxy mType ;
   @string mCastedVarCppName ; # Empty string if no var
   @semanticInstructionListForGeneration mInstructionList ;
