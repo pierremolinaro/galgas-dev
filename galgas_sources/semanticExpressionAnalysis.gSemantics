@@ -1741,6 +1741,7 @@ override method @testDynamicClassInExpressionAST analyzeSemanticExpression
     !inAnalysisContext->mPredefinedTypes->mBoolType
     ![mTypeName location]
     !expression
+    !mTypeComparisonKind
     ![mTypeName string]
   ] ;
 end method ;

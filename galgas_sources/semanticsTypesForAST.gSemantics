@@ -214,9 +214,18 @@ class @castInExpressionAST extends @semanticExpressionAST {
 
 #---------------------------------------------------------------------------*
 
+enum @dynamicTypeComparisonKind {
+  equal, # ==
+  inherited, # >=
+  strictlyInherited # >
+}
+
+#---------------------------------------------------------------------------*
+
 class @testDynamicClassInExpressionAST extends @semanticExpressionAST {
   @semanticExpressionAST mReceiverExpression ;
   @location mEndOfReceiverExpression ;
+  @dynamicTypeComparisonKind mTypeComparisonKind ;
   @lstring mTypeName ;
 }
 

@@ -814,9 +814,22 @@ override method @testDynamicClassInExpressionForGeneration generateExpression
     ?@string receiverExpression
   ] ;
 #--- Generated test
-  outCppExpression := "GALGAS_bool (NULL != dynamic_cast <const cPtr_"
-  . [mTypeName identifierRepresentation]
-  . " *> (" . receiverExpression . ".ptr ()))" ;
+  switch mTypeComparisonKind
+  when equal :
+    outCppExpression := "GALGAS_bool (" . receiverExpression
+      . ".dynamicTypeDescriptor () == & kTypeDescriptor_GALGAS_"
+      . [mTypeName identifierRepresentation] . ")" ;
+  when inherited :
+    outCppExpression := "GALGAS_bool (NULL != dynamic_cast <const cPtr_"
+    . [mTypeName identifierRepresentation]
+    . " *> (" . receiverExpression . ".ptr ()))" ;
+  when strictlyInherited :
+    outCppExpression := "GALGAS_bool ((" . receiverExpression
+      . ".dynamicTypeDescriptor () != & kTypeDescriptor_GALGAS_"
+      . [mTypeName identifierRepresentation] . ") && (NULL != dynamic_cast <const cPtr_"
+    . [mTypeName identifierRepresentation]
+    . " *> (" . receiverExpression . ".ptr ())))" ;
+  end switch ;
 end method ;
 
 #---------------------------------------------------------------------------*
