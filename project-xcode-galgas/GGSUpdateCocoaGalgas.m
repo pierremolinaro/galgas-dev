@@ -581,8 +581,7 @@
    // NSLog (@"TOOL NAME ARRAY '%@'", toolNameArray) ;
     NSMutableString * s = [NSMutableString new] ;
     [s appendFormat:@"This installs in the %@ directory the following tools:", installationPath] ;
-    unsigned i ;
-    for (i=0 ; i<[toolNameArray count] ; i++) {
+    for (NSUInteger i=0 ; i<[toolNameArray count] ; i++) {
       [s appendFormat:@"\n  - %@", [toolNameArray objectAtIndex:i]] ;
     }
     NSAlert * alert = [NSAlert
@@ -645,8 +644,7 @@
     ] ;
   }
 //--- Installing tools
-  unsigned i ;
-  for (i=0 ; (i<[toolNameArray count]) && (myStatus == 0) ; i++) {
+  for (NSUInteger i=0 ; (i<[toolNameArray count]) && (myStatus == 0) ; i++) {
     NSString * toolSourcePath = [resourcePath stringByAppendingString:[toolNameArray objectAtIndex:i]] ;
     const char * copyArgs [] = {[toolSourcePath cStringUsingEncoding:NSUTF8StringEncoding], [installationPath cStringUsingEncoding:NSUTF8StringEncoding], NULL} ;
     myStatus = [self
@@ -791,10 +789,8 @@
   const AuthorizationFlags myFlags = kAuthorizationFlagDefaults | kAuthorizationFlagInteractionAllowed |kAuthorizationFlagExtendRights ; 
   AuthorizationRef authorizationRef = 0 ;
   AuthorizationCreate (NULL, kAuthorizationEmptyEnvironment, myFlags, & authorizationRef) ; 
-//  NSFileManager * fm = [NSFileManager defaultManager] ;
 //--- Installing tools
-  unsigned i ;
-  for (i=0 ; (i<[toolNameArray count]) && (myStatus == 0) ; i++) {
+  for (NSUInteger i=0 ; (i<[toolNameArray count]) && (myStatus == 0) ; i++) {
     NSString * toolPath = [NSString stringWithFormat:@"%@/%@", installationPath, [toolNameArray objectAtIndex:i]] ;
     const char * copyArgs [] = {[toolPath cStringUsingEncoding:NSUTF8StringEncoding], NULL} ;
     myStatus = [self
