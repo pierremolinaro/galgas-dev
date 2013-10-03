@@ -276,7 +276,7 @@ routine updateTargets
       elsif extension == "framework" then
         externSourceSet_tool += ![mFilePath string] ;
         externSourceSet_app += ![mFilePath string] ;
-        handCodedSourceList += ![mFilePath lastPathComponent] ;
+    #    handCodedSourceList += ![mFilePath lastPathComponent] ;
         if [mFilePath stringByDeletingLastPathComponent] == "" then
           handCodedSourceDirectorySet += !"../hand_coded_sources" ;
         else

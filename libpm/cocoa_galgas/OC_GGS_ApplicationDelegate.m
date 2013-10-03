@@ -495,8 +495,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 - (void) setTextColorsPreferences {
   NSArray * tokenizerArray = tokenizers () ;
-  unsigned t ;
-  for (t=0 ; t<[tokenizerArray count] ; t++) {
+  for (NSUInteger t=0 ; t<[tokenizerArray count] ; t++) {
     OC_Lexique * tokenizer = [tokenizerArray objectAtIndex:t] ;
     [self setTextColorsAndFontForTokenizer:tokenizer atIndex:t] ;
   }
@@ -972,8 +971,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //--- Update opened documents
   NSArray * docArray = [[NSApplication sharedApplication] orderedDocuments] ;
 //  printf ("%u %u\n", [docArray count], rulerIsVisible) ;
-  unsigned d ;
-  for (d=0 ; d<[docArray count] ; d++) {
+  for (NSUInteger d=0 ; d<[docArray count] ; d++) {
     OC_GGS_Document * doc = [docArray objectAtIndex: d] ;
     [doc changeTextRulerVisible:rulerIsVisible forRuleThickness:ruleThickness] ;
   }
