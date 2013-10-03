@@ -265,8 +265,17 @@ routine updateTargets
   #---
     switch mSourceKind
     when externSourceFile :
-      if (extension == "cpp") | (extension == "mm") | (extension == "framework") then
+      if (extension == "cpp") | (extension == "mm") then
         externSourceSet_tool += ![mFilePath string] ;
+        handCodedSourceList += ![mFilePath lastPathComponent] ;
+        if [mFilePath stringByDeletingLastPathComponent] == "" then
+          handCodedSourceDirectorySet += !"../hand_coded_sources" ;
+        else
+          handCodedSourceDirectorySet += !"../hand_coded_sources/" . [mFilePath stringByDeletingLastPathComponent] ;
+        end if ;
+      elsif extension == "framework" then
+        externSourceSet_tool += ![mFilePath string] ;
+        externSourceSet_app += ![mFilePath string] ;
         handCodedSourceList += ![mFilePath lastPathComponent] ;
         if [mFilePath stringByDeletingLastPathComponent] == "" then
           handCodedSourceDirectorySet += !"../hand_coded_sources" ;
