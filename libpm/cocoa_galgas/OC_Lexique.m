@@ -344,7 +344,7 @@
         ] ;
         [item setTag:(NSInteger) [[inTokenArray objectAtIndex:tokenIndex] range].location] ;
         [menu addItem:item] ;
-        tokenIndex ++ ;
+        // tokenIndex ++ ;
       }
     }
   }
