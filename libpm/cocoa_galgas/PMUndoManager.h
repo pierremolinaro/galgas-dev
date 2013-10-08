@@ -12,4 +12,6 @@
 
 - (NSArray *) undoStack ;
 
+- (NSArray *) redoStack ;
+
 @end

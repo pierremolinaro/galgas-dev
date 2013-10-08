@@ -803,10 +803,15 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSArray * undoStack = [mUndoManager undoStack] ;
+  NSArray * undoStack = mUndoManager.undoStack ;
+  NSArray * redoStack = mUndoManager.redoStack ;
   //NSLog (@"undoManagerCheckPointNotification: undoStack %lu, redoStack %lu", undoStack.count, redoStack.count) ;
 //---
-  isDirty = (mSavePointUndoStackCount != undoStack.count) ;
+  isDirty =
+    (mSavePointUndoStackCount != undoStack.count)
+  ||
+    (mSavePointRedoStackCount != redoStack.count)
+  ;
   for (OC_GGS_TextDisplayDescriptor * textDisplayDescriptor in mTextDisplayDescriptorSet) {
     textDisplayDescriptor.isDirty = isDirty ;
   }
@@ -818,8 +823,10 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSArray * undoStack = [mUndoManager undoStack] ;
+  NSArray * undoStack = mUndoManager.undoStack ;
   mSavePointUndoStackCount = undoStack.count ;
+  NSArray * redoStack = mUndoManager.redoStack ;
+  mSavePointRedoStackCount = redoStack.count ;
   // NSLog (@"documentHasBeenSaved: undoStack %lu, redoStack %lu", mSavePointUndoStackCount, mSavePointRedoStackCount) ;
   [self undoManagerCheckPointNotification:nil] ;
 }
