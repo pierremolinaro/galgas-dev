@@ -5,3 +5,134 @@
 \chapterLabel{Sous-programmes}{sousprgm}\index{Sous-programmes}
 %-------------------------------------------------------------
 
+GALGAS définit les sous-programmes suivants :
+\begin{itemize}
+  \item les \emph{routines} (\refChapterPage{routines}) ;
+  \item les \emph{fonctions} (\refChapterPage{fonctions}) ;
+  \item les \emph{méthodes} (\refSectionPage{categoryMethod}) ;
+  \item les \emph{readers} (\refSectionPage{categoryReader}) ;
+  \item les \emph{modifiers} (\refSectionPage{categoryModifier}).
+\end{itemize}
+
+En GALGAS, \emph{méthodes}, \emph{readers} et \emph{modifiers} s'appliquent sur un objet d'un type quelconque (qui n'est donc pas forcément un type \emph{classe}). Pour les types définis par le programmeur, \emph{méthodes}, \emph{readers} et \emph{modifiers} sont toujours déclarés en dehors de la déclaration du type auquel ils s'appliquent.
+
+Un sous-programme peut donc être directement déclaré dans :
+\begin{itemize}
+\item un composant \emph{semantics} ;
+\item un composant \emph{syntax} ;
+\item un composant \emph{program}.
+\end{itemize}
+
+À chaque nature de sous-programme correspond une construction particulière pour l'appeler (\refTableau{appelSousProgramme}).
+
+\begin{table}[ht]
+  \centering
+    \begin{tabular}{lll}
+      \textbf{Sous-programme} & \textbf{Construction}  & \textbf{Référence} \\
+      \hline
+      \emph{routine} & Instruction d'appel de routine & \refSectionPage{appelRoutine} \\
+      \emph{fonction} & Appel de fonction (dans une expression) & \refSubsectionPage{appelFonction} \\
+      \emph{méthode} & Instruction d'appel de méthode & \refSectionPage{methodCallInstruction} \\
+      \emph{reader} & Appel de reader (dans une expression) & \refSubsectionPage{appelReader} \\
+      \emph{modifier} & Instruction d'appel de modifier & \refSectionPage{modifierCallInstruction} \\
+      \hline
+    \end{tabular}
+  \caption{Constructions d'appel de sous programme}
+  \labelTableau{appelSousProgramme}
+\end{table}
+
+
+
+
+
+
+
+
+\section{Arguments formels et paramètres effectifs}
+
+\subsection{Argument formel en entrée}
+
+\begin{table}[ht]
+  \centering
+  \subfloat[Argument formel]{
+    \begin{tabular}{ll}
+      \textbf{Syntaxe} & \textbf{Remarque} \\
+      \hline
+      \galgas{\?@T var} & \galgas{var} est modifiable localement \\
+      \galgas{\?@T unused var} & \galgas{var} n'est pas utilisée \\
+      \galgas{\?\?@T var} & \galgas{var} est une constante \\
+      \galgas{\?@T unused var} & \galgas{var} est une constante inutilisée \\
+      \hline
+    \end{tabular}
+  }
+  \subfloat[Paramètre effectif]{
+    \begin{tabular}{ll}
+      \textbf{Syntaxe} \\
+      \hline
+      \galgas{\!expression}~~~~~~~~~~~\\
+      \\
+      \\
+      \\
+      \hline
+    \end{tabular}
+  }
+  \caption{Argument formel en entrée, paramètre effectif en sortie}
+  \labelTableau{ArgumentFormelEntree}
+\end{table}
+
+\subsection{Argument formel en entrée/sortie}
+
+\begin{table}[ht]
+  \centering
+  \subfloat[Argument formel]{
+    \begin{tabular}{ll}
+      \textbf{Syntaxe} & \textbf{Remarque} \\
+      \hline
+      \galgas{\?\!@T var} & \galgas{var} est modifiable \\
+      \galgas{\?\!@T unused var} & \galgas{var} n'est pas utilisée \\
+      \hline
+    \end{tabular}
+  }
+  \subfloat[Paramètre effectif]{
+    \begin{tabular}{l}
+      \textbf{Syntaxe} \\
+      \hline
+      \galgas{\!\?cible}~~~~~~~~~~~\\
+      \\
+      \hline
+    \end{tabular}
+  }
+  \caption{Argument formel en entrée/sortie, paramètre effectif en sortie/entrée}
+  \labelTableau{ArgumentFormelEntreeSortie}
+\end{table}
+
+\subsection{Argument formel en sortie}
+
+\begin{table}[ht]
+  \centering
+  \subfloat[Argument formel]{
+    \begin{tabular}{ll}
+      \textbf{Syntaxe} \\
+      \hline
+      \galgas{\!@T var}~~~~~~~~~~~~\\
+      \\
+      \\
+      \\
+      \hline
+    \end{tabular}
+  }
+  \subfloat[Paramètre effectif]{
+    \begin{tabular}{ll}
+      \textbf{Syntaxe} & \textbf{Remarque} \\
+      \hline
+      \galgas{\?nom} & Affectation d'une variable \\
+      \galgas{\?@T nom} & Déclaration et affectation d'une variable \\
+      \galgas{\?*} & Variable anonyme \\
+      \galgas{\?\?@T nom} & Déclaration et affectation d'une constante \\
+      \hline
+    \end{tabular}
+  }
+  \caption{Argument formel en sortie, paramètre effectif en entrée}
+  \labelTableau{ArgumentFormelSortie}
+\end{table}
+
