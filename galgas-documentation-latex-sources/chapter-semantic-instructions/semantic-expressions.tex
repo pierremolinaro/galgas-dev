@@ -15,7 +15,25 @@ D'une manière classique, une expression est constituée d'\emph{opérandes} (\r
 
 \subsection{Identificateur}
 
-\subsection{\texttt{selfcopy}}
+\subsection{\texttt{selfcopy}}\index{selfcopy}
+
+\galgas{selfcopy} représente une copie de l'objet courant. On ne peut donc utiliser \galgas{selfcopy} que dans une expression à l'intérieur d'une \emph{méthode}, d'un \emph{reader}, d'un \emph{modifier}, ou d'une catégorie (\refChapterPage{categories}). Sont donc exclues les routines et les fonctions.
+
+\galgas{selfcopy} effectue un accès en lecture seule de l'objet courant. 
+
+Voici un exemple extrait de la section décrivant les \emph{reader catégorie} (\refSectionPage{categoryReader}) :
+\begin{lstlisting}[language=galgas]
+reader @uint64 square -> @uint64 outResult :
+  outResult := selfcopy * selfcopy ;
+end reader ;
+\end{lstlisting}
+
+
+
+
+
+
+
 
 \subsectionLabel{Expression de conversion polymorphique inverse}{expConversionPolymorphiqueInverse}
 
@@ -59,10 +77,15 @@ end if ;
 
 \subsection{Parenthèses}
 
+Les parenthèses \galgas{(} et \galgas{)} permettent de forcer le groupement d'opérandes.
 
 \subsection{\texttt{true} et \texttt{false}}
 
+\galgas{true} et \galgas{false} sont les constantes du type \galgas{@bool}.
+
 \subsection{\texttt{here}}
+
+\galgas{here} est une constante de type \galgas{@location}. Elle a pour valeur la position courante de la lecture du fichier source.
 
 \subsection{Constante Chaîne de caractères}
 
@@ -70,19 +93,21 @@ end if ;
 
 \subsection{Constante entière}
 
-Pas de suffixe : \galgas{@uint}
-
-Suffixe \galgas{S} : \galgas{@sint}
-
-Suffixe \galgas{L} : \galgas{@uint64}
-
-Suffixe \galgas{LS} : \galgas{@sint64}
+Une constante entière est une séquence de chiffres décimaux, éventuellement séparés par le caractère de soulignement \galgas{_}, et terminé par un suffixe. Ce suffixe détermine le type de la constante :
+\begin{itemize}
+  \item pas de suffixe : \galgas{@uint} ;
+  \item suffixe \galgas{S} : \galgas{@sint} ;
+  \item suffixe \galgas{L} : \galgas{@uint64} ;
+  \item suffixe \galgas{LS} : \galgas{@sint64}.
+\end{itemize}
 
 \subsection{Constante flottante}
 
 \subsection{Expression \texttt{if}}
 
-\subsection{Appel de reader}
+\subsectionLabel{Appel de fonction}{appelFonction}
+
+\subsectionLabel{Appel de reader}{appelReader}
 
 
 \subsection{Appel de constructeur}
