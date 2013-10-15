@@ -125,6 +125,47 @@ Pour la plupart des types, un constructeur par défaut est implicitement défini
 
 \subsectionLabel{Valeur d'une option}{appelOption}
 
+Les options de la ligne de commande sont définies dans un composant \galgas{option} (\refChapterPage{composantOption}). L'opérande \emph{appel d'option} permet d'obtenir des informations sur une option.
+
+\lstset{emph={nom_composant_option, nom_option, nom_info}, emphstyle=\emph}
+Sa syntaxe est \galgas{[option nom_composant_option.nom_option nom_info]}, où :
+\begin{itemize}
+  \item \galgas{nom_composant_option} est le nom du composant \galgas{option} qui déclare l'option ;
+  \item \galgas{nom_option} est le nom donné à l'option lors de sa déclaration ;
+  \item \galgas{nom_info} est le nom de l'information dont la valeur sera retournée par l'opérande.
+\end{itemize}
+
+
+Les informations qui peuvent être ainsi obtenues sont décrites dans le \refTableau{infosDeAppelOption}.
+\begin{table}[!ht]
+  \centering
+  \begin{tabular}{llll}
+  \textbf{nom\_info} & \textbf{Commentaire}  & \textbf{Type de la valeur retournée}\\
+  \hline
+  \galgas{value} & Valeur de l'option & \galgas{@T} (le type de l'option)\\
+  \galgas{char} & Caractère d'appel de l'option & \galgas{@char}\\
+  \galgas{string} & Chaîne d'appel de l'option & \galgas{@string}\\
+  \galgas{comment} & Description de l'option & \galgas{@string}\\
+  \hline
+  \end{tabular}
+  \caption{Informations relatives à une option de la ligne de commande}
+  \labelTableau{infosDeAppelOption}
+\end{table}
+
+Par exemple, si un composant \galgas{option} est déclaré comme suit :
+\begin{galgascode}
+option mesOptions :
+  @bool extractOption : 'S', "asm" -> "Extract assembly code" ;
+end  option ;
+\end{galgascode}
+
+Alors :
+\begin{itemize}
+  \item \galgas{[option mesOptions.extractOption value]} renvoie un \galgas{@bool} qui vaut \galgas{true} si l'option a été activée, \galgas{false} dans le cas contraire ;
+  \item \galgas{[option mesOptions.extractOption char]} renvoie un \galgas{@char} qui vaut \galgas{'S'} ;
+  \item \galgas{[option mesOptions.extractOption string]} renvoie un \galgas{@string} qui vaut \galgas{"asm"} ;
+  \item \galgas{[option mesOptions.extractOption comment]} renvoie un \galgas{@string} qui vaut \galgas{"Extract assembly code"}.
+\end{itemize}
 
 
 
@@ -169,6 +210,7 @@ La priorité des opérateurs est définie dans le \refTableau{prioriteOperateurs
 
 \subsectionLabel{Concaténation}{operateurConcatenation}
 
+\galgas{.}
 
 \subsectionLabel{Logique}{operateursLogiques}
 

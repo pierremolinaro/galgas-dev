@@ -9,19 +9,19 @@
 Le composant \galgas{option} permet de définir des options qui sont appelables à partir de la ligne de commande. Dans le code, la valeur d'une option est obtenue à partir de l'opérande \emph{appel d'une option}, décrit dans la \refSubsectionPage{appelOption}.
 
 Voici l'exemple d'un composant \galgas{option} qui déclare une option (évidement, un composant \galgas{option} peut déclarer un nombre quelconque d'options) :
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
 option nom_composant :
   @bool nom_option : 'S', "asm" -> "Extract assembly code" ;
 end  option ;
-\end{lstlisting}
+\end{galgascode}
 
 
 \section{Déclaration d'une option}
 
 La déclaration d'une option présente le syntaxe suivante :
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
   @T nom_option : caractere, chaine -> description ;
-\end{lstlisting}
+\end{galgascode}
 
 Les cinq champs qui définissent une option sont :
 \begin{itemize}
@@ -42,9 +42,9 @@ Les cinq champs qui définissent une option sont :
 \section{Option booléenne}
 
 Le champ qui définit le type de l'option est \galgas{@bool} ; par exemple :
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
   @bool nom_option : 'S', "asm" -> "Extract assembly code" ;
-\end{lstlisting}
+\end{galgascode}
 
 Dans la ligne de commande, l'option est activée par \texttt{-A} ou \texttt{-{}-asm}.
 
@@ -60,9 +60,9 @@ Par défaut, l'option n'est pas activée, et sa valeur associée est \galgas{fal
 \section{Option entière}
 
 Le champ qui définit le type de l'option est \galgas{@uint} ; par exemple :
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
   @uint nom_option : 'M', "max-iterations-count" -> "Max of iteration count";
-\end{lstlisting}
+\end{galgascode}
 
 Dans la ligne de commande, l'option est activée par \texttt{-N=xxx} ou \texttt{-{}-max-iterations-count=xxx}, où \texttt{xxx} est un nombre entier positif ou nul (et inférieur ou égal à $2^{32}-1$).
 
@@ -80,9 +80,9 @@ Par défaut, l'option n'est pas activée, et sa valeur associée est $0$. Quand 
 \section{Option chaîne de caractères}
 
 Le champ qui définit le type de l'option est \galgas{@string} ; par exemple :
-\begin{lstlisting}[language=galgas]
+\begin{galgascode}
   @string nom_option : 'F', "file-name" -> "File name";
-\end{lstlisting}
+\end{galgascode}
 
 Dans la ligne de commande, l'option est activée par \texttt{-F=abc} ou \texttt{-{}-file-name=abc}, où \texttt{abc} est une chaîne de caractères sans espaces. Si vous voulez entrer une chaîne de caractères qui comprend des espaces, écrivez : \texttt{"-F=abc"} ou \texttt{"-{}-file-name=abc"}.
 
