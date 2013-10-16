@@ -673,7 +673,8 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   //--- Comment text
     tx = [[NSTextField alloc] init] ;
     NSString * title = [option title] ;
-    [tx setTitleWithMnemonic: title] ;
+ //   [tx setTitleWithMnemonic: title] ;
+    [tx setStringValue:title] ;
     [tx setAutoresizingMask: NSViewMaxXMargin | NSViewMinYMargin] ;
     NSDictionary * d = [NSDictionary dictionaryWithObjectsAndKeys:
       [tx font], NSFontAttributeName,
@@ -731,7 +732,8 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   //--- Comment text
     tx = [[NSTextField alloc] init] ;
     NSString * title = [option title] ;
-    [tx setTitleWithMnemonic: title] ;
+//    [tx setTitleWithMnemonic: title] ;
+    [tx setStringValue:title] ;
     [tx setAutoresizingMask: NSViewMaxXMargin | NSViewMinYMargin] ;
     NSDictionary * d = [NSDictionary dictionaryWithObjectsAndKeys:
       [tx font], NSFontAttributeName,
