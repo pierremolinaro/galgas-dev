@@ -1,0 +1,55 @@
+%!TEX encoding = UTF-8 Unicode
+%!TEX root = ../galgas-book.tex
+
+%--------------------------------------------------------------
+\chapter{Filewrappers}
+%-------------------------------------------------------------
+
+Un \emph{filewrapper} permet d'embarquer dans le code engendré une arborescence de fichiers. Comme on va le voir dans la section suivante, la déclaration d'un \emph{filewrapper} désigne un répertoire, qui va être exploré au moment de la compilation GALGAS de façon à embarquer dans le code engendré la copie de certains fichiers. Ces  fichiers peuvent être de trois sortes :
+\begin{itemize}
+  \item des fichiers \emph{texte} ; ils sont sélectionnés par leur extension : la déclaration d'un \emph{filewrapper} liste toutes les extensions des fichiers texte embarqués ;
+  \item des fichiers \emph{binaires} ; de même, ils sont sélectionnés par leur extension, et la déclaration d'un \emph{filewrapper} liste toutes les extensions des fichiers binaires embarqués ;
+  \item des \emph{templates}, qui sont sélectionnés par leur nom ; ils sont analysés lors de leur lecture.
+\end{itemize}
+
+
+L'exploration des fichiers embarqués peut s'effectuer soit de manière statique, soit dynamique à l'aide d'un objet de \refTypePredefini{filewrapper}.
+
+
+
+
+
+
+
+
+
+\section{Déclararation d'un \texttt{filewrapper}}
+
+Un \emph{filewrapper} peut être déclaré dans un composant \emph{syntax}, \emph{semantics} ou \emph{program}. Sa déclaration est la suivante :
+
+\begin{galgascode}
+filewrapper nom in "chemin" {
+ "extension_texte", ...
+}{
+ "extension_binaire", ...
+}{
+ declaration_de_templates
+}
+\end{galgascode}
+
+Où :
+\begin{itemize}
+  \item \galgas{nom} est le nom, interne à GALGAS, donné au \emph{filewrapper} ; ce nom doit être unique à chaque \emph{filewrapper} ;
+  \item \galgas{"chemin"} est le chemin du répertoire qui va être exploré récursivement au moment de la compilation ;
+\end{itemize}
+
+La déclaration est divisée en trois parties délimitées par des accolades \galgas{\{ ... \}} :
+\begin{itemize}
+  \item la première partie (\galgas{"extension_texte", ...}) liste les extensions des fichiers texte qui sont embarqués ; à la compilation GALGAS, le répertoire désigné est exploré récursivement, et les fichiers dont l'extension est l'une des extensions citées sont embarqués, ainsi que leurs chemins relatifs ;
+  \item la deuxième partie (\galgas{"extension_binaire", ...}) liste les extensions des fichiers binaires qui sont embarqués ; de même, à la compilation GALGAS, le répertoire désigné est exploré récursivement, et les fichiers dont l'extension est l'une des extensions citées sont embarqués, ainsi que leurs chemins relatifs ;
+  \item la troisième et dernière partie (\galgas{declaration_de_templates}) contient les déclarations de \emph{templates}.
+\end{itemize}
+
+Chacune de ces parties peut être vide si on ne veut pas embarquer de ficher ou ne définir aucun template.
+
+
