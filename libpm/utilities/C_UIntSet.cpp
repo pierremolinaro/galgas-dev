@@ -107,7 +107,7 @@ bool C_UIntSet::contains (const PMUInt32 inNodeIndex) const {
 PMUInt32 C_UIntSet::firstValueNotIsSet (void) const {
   PMUInt32 result = 0 ;
   if (mDefinition.count () > 0) {
-    result = 64 * (mDefinition.count () - 1) ;
+    result = 64 * (((PMUInt32) mDefinition.count ()) - 1) ;
     PMUInt64 v = mDefinition.lastObject (HERE) ;
     while (v != 0) {
       result ++ ;

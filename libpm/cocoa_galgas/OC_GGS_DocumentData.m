@@ -36,10 +36,10 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 //    -locationForLineInSource:                                              *
 //---------------------------------------------------------------------------*
 
-- (NSUInteger) locationForLineInSource: (NSInteger) inLine {
+- (NSUInteger) locationForLineInSource: (NSUInteger) inLine {
    NSString * sourceString = mTextSyntaxColoring.sourceString ;
   const NSUInteger sourceStringLength = sourceString.length ;
-  NSInteger lineIndex = 0 ;
+  NSUInteger lineIndex = 0 ;
   NSUInteger idx = 0 ;
   BOOL found = NO ;
   while ((idx < sourceStringLength) && ! found) {

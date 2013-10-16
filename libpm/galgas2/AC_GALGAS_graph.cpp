@@ -71,7 +71,7 @@ class cSharedGraph : public C_SharedObject {
   private : TC_UniqueArray <cGraphNode *> mNodeArray ;
 
 //--- Count
-  public : inline PMUInt32 allNodeCount (void) const { return mNodeArray.count () ; }
+  public : inline PMUInt32 allNodeCount (void) const { return (PMUInt32) mNodeArray.count () ; }
 
 //--- Constructor
   public : cSharedGraph (LOCATION_ARGS) ;
@@ -198,8 +198,8 @@ mIsDefined (inNode->mIsDefined) {
 static void buildNodeArray (cGraphNode * inNode,
                             TC_UniqueArray <cGraphNode *> & ioNodeArray) {
   if (NULL != inNode) {
-    MF_Assert (ioNodeArray (inNode->mNodeID COMMA_HERE) == NULL, "ioNodeArray (%lld COMMA_HERE) != NULL", inNode->mNodeID, 0) ;
-    ioNodeArray (inNode->mNodeID COMMA_HERE) = inNode ;
+    MF_Assert (ioNodeArray ((PMSInt32) inNode->mNodeID COMMA_HERE) == NULL, "ioNodeArray (%lld COMMA_HERE) != NULL", inNode->mNodeID, 0) ;
+    ioNodeArray ((PMSInt32) inNode->mNodeID COMMA_HERE) = inNode ;
     buildNodeArray (inNode->mInfPtr, ioNodeArray) ;
     buildNodeArray (inNode->mSupPtr, ioNodeArray) ;
   }
@@ -241,7 +241,7 @@ void cSharedGraph::description (C_String & ioString,
     MF_AssertThere (nodeArray.count() == mNodeArray.count (), "nodeArray.count() == %lld != mNodeArray.count () %lld", nodeArray.count(), mNodeArray.count ()) ;
     for (PMSInt32 i=0 ; i<nodeArray.count() ; i++) {
       MF_AssertThere (nodeArray (i COMMA_HERE) == mNodeArray (i COMMA_HERE), "nodeArray.(%lld) != mNodeArray.(%lld)", i, i) ;
-      MF_AssertThere (mDirectedGraph.isNodeDefined (i), "! mDirectedGraph.isNodeDefined (i) : %lld != 0", i, 0) ;
+      MF_AssertThere (mDirectedGraph.isNodeDefined ((PMUInt32) i), "! mDirectedGraph.isNodeDefined (i) : %lld != 0", i, 0) ;
     }
   }
 #endif
@@ -436,7 +436,7 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
   TC_UniqueArray <PMUInt32> nodeArray ; subGraph.getNodeValueArray (nodeArray) ;
   for (PMSInt32 i=0 ; i<nodeArray.count () ; i++) {
     const PMUInt32 nodeIndex = nodeArray (i COMMA_HERE) ;
-    const cGraphNode * nodePtr = mNodeArray (nodeIndex COMMA_THERE) ;
+    const cGraphNode * nodePtr = mNodeArray ((PMSInt32) nodeIndex COMMA_THERE) ;
     GALGAS_lstring lkey ;
     lkey.mAttribute_string = nodePtr->mKey ;
     lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
@@ -450,12 +450,12 @@ void cSharedGraph::subGraph (AC_GALGAS_graph & outResultingGraph,
   TC_UniqueArray <cEdge> edgeArray ; subGraph.getEdges (edgeArray) ;
   for (PMSInt32 i=0 ; i<edgeArray.count () ; i++) {
     const PMUInt32 sourceNodeIndex = edgeArray (i COMMA_HERE).mSource ;
-    const cGraphNode * sourceNodePtr = mNodeArray (sourceNodeIndex COMMA_THERE) ;
+    const cGraphNode * sourceNodePtr = mNodeArray ((PMSInt32) sourceNodeIndex COMMA_THERE) ;
     GALGAS_lstring source ;
     source.mAttribute_string = sourceNodePtr->mKey ;
     source.mAttribute_location = sourceNodePtr->mDefinitionLocation ;
     const PMUInt32 targetNodeIndex = edgeArray (i COMMA_HERE).mTarget ;
-    const cGraphNode * targetNodePtr = mNodeArray (targetNodeIndex COMMA_THERE) ;
+    const cGraphNode * targetNodePtr = mNodeArray ((PMSInt32) targetNodeIndex COMMA_THERE) ;
     GALGAS_lstring target ;
     target.mAttribute_string = targetNodePtr->mKey ;
     target.mAttribute_location = targetNodePtr->mDefinitionLocation ;
@@ -614,8 +614,8 @@ cGraphNode * cSharedGraph::internalInsert (cGraphNode * & ioRootPtr,
                                            bool & ioExtension) {
   cGraphNode * matchingEntry = NULL ;
   if (ioRootPtr == NULL) {
-    macroMyNew (ioRootPtr, cGraphNode (inKey, mNodeArray.count ())) ;
-    mDirectedGraph.addNode (mNodeArray.count ()) ;
+    macroMyNew (ioRootPtr, cGraphNode (inKey, (PMUInt32) mNodeArray.count ())) ;
+    mDirectedGraph.addNode ((PMUInt32) mNodeArray.count ()) ;
     mNodeArray.addObject (ioRootPtr) ;
     ioExtension = true ;
     matchingEntry = ioRootPtr ;
@@ -812,8 +812,8 @@ void cSharedGraph::edges (GALGAS__32_stringlist & ioList) const {
   TC_UniqueArray <cEdge> edgeArray ; mDirectedGraph.getEdges (edgeArray) ;
   for (PMSInt32 i=0 ; i<edgeArray.count () ; i++) {
     const cEdge edge = edgeArray (i COMMA_HERE) ;
-    ioList.addAssign_operation (mNodeArray (edge.mSource COMMA_HERE)->mKey,
-                                mNodeArray (edge.mTarget COMMA_HERE)->mKey
+    ioList.addAssign_operation (mNodeArray ((PMSInt32) edge.mSource COMMA_HERE)->mKey,
+                                mNodeArray ((PMSInt32) edge.mTarget COMMA_HERE)->mKey
                                 COMMA_HERE) ;
   }  
 }
@@ -905,7 +905,7 @@ void cSharedGraph::internalNodesWithNoPredecessor (cSharedList * & outInfoList,
   outNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
   for (PMSInt32 i=0 ; i<nodeArray.count () ; i++) {
     const PMUInt32 nodeIndex = nodeArray (i COMMA_HERE) ;
-    const cGraphNode * nodePtr = mNodeArray (nodeIndex COMMA_HERE) ;
+    const cGraphNode * nodePtr = mNodeArray ((PMSInt32) nodeIndex COMMA_HERE) ;
     AC_GALGAS_list::insertInSharedList (outInfoList, nodePtr->mAttributes) ;
     GALGAS_lstring lkey ;
     lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
@@ -942,7 +942,7 @@ void cSharedGraph::internalNodesWithNoSuccessor (cSharedList * & outInfoList,
   outNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
   for (PMSInt32 i=0 ; i<nodeArray.count () ; i++) {
     const PMUInt32 nodeIndex = nodeArray (i COMMA_HERE) ;
-    const cGraphNode * nodePtr = mNodeArray (nodeIndex COMMA_HERE) ;
+    const cGraphNode * nodePtr = mNodeArray ((PMSInt32) nodeIndex COMMA_HERE) ;
     AC_GALGAS_list::insertInSharedList (outInfoList, nodePtr->mAttributes) ;
     GALGAS_lstring lkey ;
     lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
@@ -982,7 +982,7 @@ void cSharedGraph::internalTopologicalSort (cSharedList * & outSortedList,
   outSortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
   for (PMSInt32 i=0 ; i<sortedNodes.count () ; i++) {
     const PMUInt32 nodeIndex = sortedNodes (i COMMA_HERE) ;
-    const cGraphNode * nodePtr = mNodeArray (nodeIndex COMMA_HERE) ;
+    const cGraphNode * nodePtr = mNodeArray ((PMSInt32) nodeIndex COMMA_HERE) ;
     AC_GALGAS_list::insertInSharedList (outSortedList, nodePtr->mAttributes) ;
     GALGAS_lstring lkey ;
     lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
@@ -994,7 +994,7 @@ void cSharedGraph::internalTopologicalSort (cSharedList * & outSortedList,
   outUnsortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
   for (PMSInt32 i=0 ; i<unsortedNodes.count () ; i++) {
     const PMUInt32 nodeIndex = unsortedNodes (i COMMA_HERE) ;
-    const cGraphNode * nodePtr = mNodeArray (nodeIndex COMMA_HERE) ;
+    const cGraphNode * nodePtr = mNodeArray ((PMSInt32) nodeIndex COMMA_HERE) ;
     AC_GALGAS_list::insertInSharedList (outUnsortedList, nodePtr->mAttributes) ;
     GALGAS_lstring lkey ;
     lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
@@ -1051,7 +1051,7 @@ void cSharedGraph::internalDepthFirstTopologicalSort (cSharedList * & outSortedL
   outSortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
   for (PMSInt32 i=0 ; i<sortedNodes.count () ; i++) {
     const PMUInt32 nodeIndex = sortedNodes (i COMMA_HERE) ;
-    const cGraphNode * nodePtr = mNodeArray (nodeIndex COMMA_HERE) ;
+    const cGraphNode * nodePtr = mNodeArray ((PMSInt32) nodeIndex COMMA_HERE) ;
     AC_GALGAS_list::insertInSharedList (outSortedList, nodePtr->mAttributes) ;
     GALGAS_lstring lkey ;
     lkey.mAttribute_location = nodePtr->mDefinitionLocation ;
@@ -1063,7 +1063,7 @@ void cSharedGraph::internalDepthFirstTopologicalSort (cSharedList * & outSortedL
   outUnsortedNodeKeyList = GALGAS_lstringlist::constructor_emptyList (HERE) ;
   for (PMSInt32 i=0 ; i<unsortedNodes.count () ; i++) {
     const PMUInt32 nodeIndex = unsortedNodes (i COMMA_HERE) ;
-    const cGraphNode * nodePtr = mNodeArray (nodeIndex COMMA_HERE) ;
+    const cGraphNode * nodePtr = mNodeArray ((PMSInt32) nodeIndex COMMA_HERE) ;
     AC_GALGAS_list::insertInSharedList (outUnsortedList, nodePtr->mAttributes) ;
     GALGAS_lstring lkey ;
     lkey.mAttribute_location = nodePtr->mDefinitionLocation ;

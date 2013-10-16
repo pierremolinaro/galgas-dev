@@ -311,33 +311,33 @@ appendUnsignedWithZeroFill (const PMUInt64 inValue, const PMUInt32 inWidth) {
 
 //---------------------------------------------------------------------------*
 
-void AC_OutputStream::appendUnsignedHex (const PMUInt32 inValue) {
-  char s [20] = "" ;
-  snprintf (s, 19, "%X", inValue) ;
+void AC_OutputStream::appendUnsignedHex (const PMUInt64 inValue) {
+  char s [32] = "" ;
+  snprintf (s, 31, "%llX", inValue) ;
   genericCharArrayOutput (s, (PMSInt32) (strlen (s) & PMUINT32_MAX)) ;
 }
 
 //---------------------------------------------------------------------------*
 
-void AC_OutputStream::appendUnsignedHex2 (const PMUInt32 inValue) {
-  char s [20] = "" ;
-  snprintf (s, 19, "%02X", inValue & 0xFF) ;
+void AC_OutputStream::appendUnsignedHex2 (const PMUInt64 inValue) {
+  char s [32] = "" ;
+  snprintf (s, 31, "%02llX", inValue & 0xFF) ;
   genericCharArrayOutput (s, (PMSInt32) (strlen (s) & PMUINT32_MAX)) ;
 }
 
 //---------------------------------------------------------------------------*
 
-void AC_OutputStream::appendUnsignedHex4 (const PMUInt32 inValue) {
-  char s [20] = "" ;
-  snprintf (s, 19, "%04X", inValue & 0xFFFF) ;
+void AC_OutputStream::appendUnsignedHex4 (const PMUInt64 inValue) {
+  char s [32] = "" ;
+  snprintf (s, 31, "%04llX", inValue & 0xFFFF) ;
   genericCharArrayOutput (s, (PMSInt32) (strlen (s) & PMUINT32_MAX)) ;
 }
 
 //---------------------------------------------------------------------------*
 
-void AC_OutputStream::appendUnsignedHex8 (const PMUInt32 inValue) {
-  char s [20] = "" ;
-  snprintf (s, 19, "%08X", inValue) ;
+void AC_OutputStream::appendUnsignedHex8 (const PMUInt64 inValue) {
+  char s [32] = "" ;
+  snprintf (s, 31, "%08llX", inValue) ;
   genericCharArrayOutput (s, (PMSInt32) (strlen (s) & PMUINT32_MAX)) ;
 }
 

@@ -182,11 +182,10 @@ mArray (outArray) {
 
 //---------------------------------------------------------------------------*
 
-void cBuildArrayForSet1::
-action (const bool inValuesArray [],
-        const PMUInt32 inBDDbitsSize) {
+void cBuildArrayForSet1::action (const bool inValuesArray [],
+                                 const PMUInt32 inBDDbitsSize) {
   PMSInt32 element = 0L ;
-  for (PMSInt32 i=inBDDbitsSize - 1 ; i>=0 ; i--) {
+  for (PMSInt32 i=((PMSInt32) inBDDbitsSize) - 1 ; i>=0 ; i--) {
     element = (element << 1) + inValuesArray [i] ;
   }
   mArray (element COMMA_HERE) = true ;

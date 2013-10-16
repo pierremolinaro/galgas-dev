@@ -171,7 +171,7 @@
         [mTemplateTextAttributeDictionary setObject:[NSColor blackColor] forKey:NSForegroundColorAttributeName] ;
       }
     }
-    for (NSUInteger i=0 ; i<[mTokenizer styleCount] ; i++) {
+    for (NSInteger i=0 ; i< (NSInteger) mTokenizer.styleCount ; i++) {
       NSString * keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_named_color, [mTokenizer styleIdentifierForStyleIndex:i]] ;
       [udc
         addObserver:self
@@ -198,7 +198,7 @@
         [mTemplateTextAttributeDictionary setObject:[NSColor blackColor] forKey:NSBackgroundColorAttributeName] ;
       }
     }
-    for (NSUInteger i=0 ; i<[mTokenizer styleCount] ; i++) {
+    for (NSInteger i=0 ; i<(NSInteger) mTokenizer.styleCount ; i++) {
       NSString * keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_named_background_color, [mTokenizer styleIdentifierForStyleIndex:i]] ;
       [udc
         addObserver:self
@@ -224,7 +224,7 @@
         [mTemplateTextAttributeDictionary setObject:font forKey:NSFontAttributeName] ;
       }
     }
-    for (NSUInteger i=0 ; i<mTokenizer.styleCount ; i++) {
+    for (NSInteger i=0 ; i<(NSInteger) mTokenizer.styleCount ; i++) {
       NSString * keyPath = [NSString stringWithFormat:@"values.%@_%@", GGS_named_font, [mTokenizer styleIdentifierForStyleIndex:i]] ;
       [udc
         addObserver:self
@@ -236,7 +236,7 @@
   //---
     // NSLog (@"%p [mTokenizer styleCount] %u", mTokenizer, [mTokenizer styleCount]) ;
     mFontAttributesDictionaryArray = [NSMutableArray new] ;
-    for (NSUInteger i=0 ; i<[mTokenizer styleCount] ; i++) {
+    for (NSInteger i=0 ; i<(NSInteger) mTokenizer.styleCount ; i++) {
       NSMutableDictionary * attributeDictionary = [NSMutableDictionary new] ;
     //--- Add foreground color   
       NSString * name = [NSString stringWithFormat:@"%@_%@", GGS_named_color, [mTokenizer styleIdentifierForStyleIndex:i]] ;
@@ -409,7 +409,7 @@
         
         }else if (colorIndex > 0) {
           [mSourceTextStorage
-            addAttributes:[mFontAttributesDictionaryArray objectAtIndex:colorIndex]
+            addAttributes:[mFontAttributesDictionaryArray objectAtIndex:(NSUInteger) colorIndex]
             range:range
           ] ;
         }
@@ -432,7 +432,7 @@
           
           }else if (colorIndex > 0) {
             [mSourceTextStorage
-              addAttributes:[mFontAttributesDictionaryArray objectAtIndex:colorIndex]
+              addAttributes:[mFontAttributesDictionaryArray objectAtIndex:(NSUInteger) colorIndex]
               range:range
             ] ;
           }
@@ -489,7 +489,7 @@
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   // NSLog (@"inEditedRange %lu:%lu, inChangeInLength %ld", inEditedRange.location, inEditedRange.length, inChangeInLength) ;
-  const NSRange previousRange = {inEditedRange.location, inEditedRange.length - inChangeInLength} ;
+  const NSRange previousRange = {inEditedRange.location, inEditedRange.length - (NSUInteger) inChangeInLength} ;
   for (PMIssueDescriptor * issue in mIssueArray) {
     [issue updateLocationForPreviousRange:previousRange changeInLength:inChangeInLength] ;
   }
@@ -517,7 +517,7 @@
 
 - (void) updateSyntaxColoringForEditedRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength {
-  const NSInteger textLength = mSourceTextStorage.string.length ;
+  const NSUInteger textLength = mSourceTextStorage.string.length ;
   if (textLength > 0) {
     #ifdef DEBUG_MESSAGES
       NSLog (@"%s, edited range [%lu, %lu], changeInLength %ld", __PRETTY_FUNCTION__, inEditedRange.location, inEditedRange.length, inChangeInLength) ;
@@ -540,11 +540,11 @@
       NSLog (@"scanThenGetStyledRangeArray DONE (%lu)", [mFontAttributesDictionaryArray count]) ;
     #endif
   //--- Erase text attributes
-    if (eraseRangeEnd >= textLength) {
-      eraseRangeEnd = textLength - 1 ;
+    if (eraseRangeEnd >= (NSInteger) textLength) {
+      eraseRangeEnd = (NSInteger) (textLength - 1) ;
     }
     if (eraseRangeStart < eraseRangeEnd) {
-      const NSRange eraseRange = {eraseRangeStart, eraseRangeEnd - eraseRangeStart} ;
+      const NSRange eraseRange = {(NSUInteger) eraseRangeStart, (NSUInteger) (eraseRangeEnd - eraseRangeStart)} ;
       #ifdef DEBUG_MESSAGES
         NSLog (@"PERFORM REMOVE ATTRIBUTE range [%lu, %lu] text length %lu", eraseRange.location, eraseRange.length, textLength) ;
       #endif
@@ -561,7 +561,7 @@
      NSLog (@"COLORING from %ld to %ld", firstIndexToRedraw, lastIndexToRedraw) ;
     #endif
     for (NSInteger i=firstIndexToRedraw ; i<=lastIndexToRedraw ; i++) {
-      OC_Token * token = [mTokenArray objectAtIndex:i] ;
+      OC_Token * token = [mTokenArray objectAtIndex:(NSUInteger) i] ;
       const NSRange range = [token range] ;
       #ifdef DEBUG_MESSAGES
         NSLog (@"PERFORM COLORING '%@' range [%lu, %lu] [mSourceTextStorage length] %lu", [mSourceTextStorage.string substringWithRange:range], range.location, range.length, mSourceTextStorage.string.length) ;
@@ -580,7 +580,7 @@
         ] ;
       }else if (style > 0) {
         [mSourceTextStorage
-          addAttributes:[mFontAttributesDictionaryArray objectAtIndex:style]
+          addAttributes:[mFontAttributesDictionaryArray objectAtIndex:(NSUInteger) style]
           range:range
         ] ;
       }
@@ -671,7 +671,7 @@
 //---
   [mSourceTextStorage endEditing] ;
 //--- Update selected range
-  const NSRange newSelectedRange = NSMakeRange (inSelectedRangeValue.location, inSelectedRangeValue.length + insertedCharsCount) ;
+  const NSRange newSelectedRange = NSMakeRange (inSelectedRangeValue.location, inSelectedRangeValue.length + (NSUInteger) insertedCharsCount) ;
 //--- Register undo
   [mUndoManager
     registerUndoWithTarget:self
@@ -718,8 +718,8 @@
 
 //---------------------------------------------------------------------------*
 
-static inline NSInteger imin (const NSInteger a, const NSInteger b) { return a < b ? a : b ; }
-static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a > b ? a : b ; }
+static inline NSUInteger imin (const NSUInteger a, const NSUInteger b) { return a < b ? a : b ; }
+static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return a > b ? a : b ; }
 
 //---------------------------------------------------------------------------*
 
@@ -756,16 +756,16 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       [mutableSourceString replaceCharactersInRange:NSMakeRange (currentLineRange.location, blockCommentLength) withString:@""] ;
     //--- Examen du nombre de caractères à l'intérieur de la sélection
       const NSInteger withinSelectionCharacterCount = 
-        imin (currentLineRange.location + blockCommentLength, finalSelectedRange.location + finalSelectedRange.length)
+        (NSInteger) imin (currentLineRange.location + blockCommentLength, finalSelectedRange.location + finalSelectedRange.length)
       -
-        imax (currentLineRange.location, finalSelectedRange.location) ;
+        (NSInteger) imax (currentLineRange.location, finalSelectedRange.location) ;
       if (withinSelectionCharacterCount > 0) {
-        finalSelectedRange.length -= withinSelectionCharacterCount ;
+        finalSelectedRange.length -= (NSUInteger) withinSelectionCharacterCount ;
       }
     //--- Examen du nombre de caractères avant la sélection
-      const NSInteger beforeSelectionCharacterCount = finalSelectedRange.location - currentLineRange.location ;
+      const NSInteger beforeSelectionCharacterCount = ((NSInteger) finalSelectedRange.location) - ((NSInteger) currentLineRange.location) ;
       if (beforeSelectionCharacterCount > 0) {
-        finalSelectedRange.location -= imin (blockCommentLength, beforeSelectionCharacterCount) ;
+        finalSelectedRange.location -= imin (blockCommentLength, (NSUInteger) beforeSelectionCharacterCount) ;
       }
       #ifdef DEBUG_UNCOMMENTRANGE
         NSLog (@"withinSelectionCharacterCount %d, beforeSelectionCharacterCount %d", withinSelectionCharacterCount, beforeSelectionCharacterCount) ;
@@ -860,7 +860,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       }
       d = [mFontAttributesDictionaryArray objectAtIndex:idx] ;
       [d setObject:color forKey:NSForegroundColorAttributeName] ;
-      [self applyTextAttributeForIndex:idx] ;
+      [self applyTextAttributeForIndex:(NSInteger) idx] ;
       break;
     case TAG_FOR_TEMPLATE_FOREGROUND_COLOR:
       if (data == nil) {
@@ -879,7 +879,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       }
       d = [mFontAttributesDictionaryArray objectAtIndex:idx] ;
       [d setObject:color forKey:NSBackgroundColorAttributeName] ;
-      [self applyTextAttributeForIndex:idx] ;
+      [self applyTextAttributeForIndex:(NSInteger) idx] ;
       break;
     case TAG_FOR_TEMPLATE_BACKGROUND_COLOR:
       if (data == nil) {
@@ -894,7 +894,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       d = [mFontAttributesDictionaryArray objectAtIndex:idx] ;
       [d setObject:[NSUnarchiver unarchiveObjectWithData:data] forKey:NSFontAttributeName] ;
       [self computeMaxLineHeight: & lineHeightDidChange] ;
-      [self applyTextAttributeForIndex:lineHeightDidChange ? 0 : idx] ;
+      [self applyTextAttributeForIndex:lineHeightDidChange ? 0 : (NSInteger) idx] ;
       break;
     case TAG_FOR_TEMPLATE_FONT_ATTRIBUTE:
       [mTemplateTextAttributeDictionary setObject:[NSUnarchiver unarchiveObjectWithData:data] forKey:NSFontAttributeName] ;
@@ -1120,11 +1120,11 @@ static NSInteger numericSort (NSString * inOperand1,
       }else{
         [menu addItem:[NSMenuItem separatorItem]] ;
       }
-      const NSUInteger kind = [kindObject integerValue] ;
+      const NSInteger kind = [kindObject integerValue] ;
       NSArray * references = [kindDictionary objectForKey:kindObject] ;
       NSString * title = [NSString
         stringWithFormat:@"%@ (%ld item%@)",
-        [indexingTitles objectAtIndex:kind],
+        [indexingTitles objectAtIndex:(NSUInteger) kind],
         [references count],
         (([references count] > 1) ? @"s" : @"")
       ] ;

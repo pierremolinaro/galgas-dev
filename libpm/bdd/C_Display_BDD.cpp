@@ -56,7 +56,7 @@ void C_Display_BDD::vider (void) {
 
 void C_Display_BDD::allouer (const PMUInt32 nombreChaines) {
   vider () ;
-  aTab.makeRoom (nombreChaines) ;
+  aTab.makeRoom ((PMSInt32) nombreChaines) ;
   macroMyDeleteArray (aDimensions) ;
   macroMyNewArray (aDimensions, PMUInt32, nombreChaines) ;
   if (aDimensions != NULL) {
@@ -82,7 +82,7 @@ void C_Display_BDD::defineVariableName (const PMUInt32 indice,
 //---------------------------------------------------------------------*
 
 PMSInt32 C_Display_BDD::longueur (const PMUInt32 indice) const  {
-  return aTab (indice COMMA_HERE).length () ;
+  return aTab ((PMSInt32) indice COMMA_HERE).length () ;
 }
 
 //---------------------------------------------------------------------*
@@ -98,10 +98,9 @@ obtenirDimension (const PMUInt32 indice) const {
 
 //---------------------------------------------------------------------*
 
-void C_Display_BDD::
-ecrire (const PMUInt32 indice,
-        AC_OutputStream & inStream) const {
-  inStream << aTab (indice COMMA_HERE) ;
+void C_Display_BDD::ecrire (const PMUInt32 indice,
+                            AC_OutputStream & inStream) const {
+  inStream << aTab ((PMSInt32) indice COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------*

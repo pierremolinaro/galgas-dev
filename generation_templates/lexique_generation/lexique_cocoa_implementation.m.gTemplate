@@ -128,7 +128,7 @@ end if%
         between %,\n%
         end foreach
       %\n} ;\n\n%
-      %static NSUInteger search_into_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%![tokenList_lkey string]% (NSString * inSearchedString) {\n%
+      %static NSInteger search_into_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%![tokenList_lkey string]% (NSString * inSearchedString) {\n%
       %  return searchStringInTable (inSearchedString, ktable_for_%![LEXIQUE_CLASS_NAME identifierRepresentation]%_%![tokenList_lkey string]%, %![[tokenList_mExplicitTokenListMap count] string]%) ;\n%
       %}\n\n%
     end if
@@ -149,7 +149,7 @@ end if%
 %
   if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
 %    if ((mMatchedTemplateDelimiterIndex >= 0) && ([[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:mMatchedTemplateDelimiterIndex] startString].length > 0)) {
-      const BOOL foundEndDelimitor = [self testForInputString:[[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:mMatchedTemplateDelimiterIndex] endString] advance:YES] ;
+      const BOOL foundEndDelimitor = [self testForInputString:[[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] endString] advance:YES] ;
       if (foundEndDelimitor) {
         mMatchedTemplateDelimiterIndex = -1 ;
       }

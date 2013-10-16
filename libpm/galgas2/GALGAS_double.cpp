@@ -273,7 +273,7 @@ GALGAS_uint_36__34_ GALGAS_double::reader_uint_36__34_ (C_Compiler * inCompiler
     s << ") to @uint64" ;
     inCompiler->onTheFlyRunTimeError (s COMMA_THERE) ;
   }else{
-    result = GALGAS_uint_36__34_ (lround (mDoubleValue)) ;
+    result = GALGAS_uint_36__34_ ((PMUInt64) lround (mDoubleValue)) ;
   }
   return result ;
 }

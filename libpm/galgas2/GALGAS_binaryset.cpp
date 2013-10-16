@@ -94,7 +94,7 @@ GALGAS_binaryset GALGAS_binaryset::constructor_binarySetWithPredicateString (con
       }
       if (s.length () > 0) {
         C_BDD v ; v.setToTrue () ;
-        PMSInt32 bitIndex = 0 ;
+        PMUInt32 bitIndex = 0 ;
         for (PMSInt32 i=s.length () - 1 ; i>=0 ; i--) {
           const utf32 c = s (i COMMA_HERE) ;
           if (UNICODE_VALUE (c) == '0') {

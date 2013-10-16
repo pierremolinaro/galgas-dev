@@ -336,10 +336,10 @@ action (const bool inValuesArray [],
         const PMUInt32 inBDDbitsSize) {
   PMSInt32 index1 = 0L ;
   PMSInt32 index2 = 0L ;
-  for (PMSInt32 i=mBitsSize1 - 1 ; i>=0 ; i--) {
+  for (PMSInt32 i=((PMSInt32) mBitsSize1) - 1 ; i>=0 ; i--) {
     index1 = (index1 << 1) + inValuesArray [i] ;
   }
-  for (PMSInt32 j=inBDDbitsSize - 1 ; j>=(PMSInt32) mBitsSize1 ; j--) {
+  for (PMSInt32 j=((PMSInt32) inBDDbitsSize) - 1 ; j>=(PMSInt32) mBitsSize1 ; j--) {
     index2 = (index2 << 1) + inValuesArray [j] ;
   }
   mArray (index1 COMMA_HERE).addObject (index2) ;

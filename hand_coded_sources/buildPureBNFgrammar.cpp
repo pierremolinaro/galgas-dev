@@ -131,8 +131,7 @@ buildRightDerivation (const PMSInt32 inTerminalSymbolsCount,
                       const PMSInt32 /* inOriginalGrammarSymbolCount */,
                       TC_UniqueArray <PMSInt16> & ioInstructionsList) {
 
-  ioInstructionsList.addObject ((PMSInt16) (mAttribute_mNonterminalSymbolIndex.uintValue ()
-                                           + inTerminalSymbolsCount)) ;
+  ioInstructionsList.addObject ((PMSInt16) (mAttribute_mNonterminalSymbolIndex.uintValue () + (PMUInt32) inTerminalSymbolsCount)) ;
 }
 
 //---------------------------------------------------------------------------*
