@@ -96,7 +96,7 @@ PMSInt32 C_Data::compareWithData (const C_Data & inData) const {
 //---------------------------------------------------------------------------*
 
 void C_Data::removeLengthFromStart (const PMUInt32 inLength) {
-  mBinaryData.removeObjectsAtIndex (inLength, 0 COMMA_HERE) ;
+  mBinaryData.removeObjectsAtIndex ((PMSInt32) inLength, 0 COMMA_HERE) ;
 }
 
 //---------------------------------------------------------------------------*

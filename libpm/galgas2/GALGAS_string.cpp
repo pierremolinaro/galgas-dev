@@ -372,7 +372,7 @@ GALGAS_string GALGAS_string::reader_stringByLeftPadding (const GALGAS_uint & inP
     const utf32 paddingChar = inPaddingChar.charValue () ;
     const PMSInt32 paddedStringLength = (PMSInt32) inPaddedStringLength.uintValue () ;
     const PMSInt32 paddingLength = paddedStringLength - mString.length () ;
-    C_String s ; s.setCapacity (paddedStringLength) ;
+    C_String s ; s.setCapacity ((PMUInt32) paddedStringLength) ;
     for (PMSInt32 i=0 ; i<paddingLength ; i++) {
       s.appendUnicodeCharacter (paddingChar COMMA_HERE) ;
     }
@@ -392,7 +392,7 @@ GALGAS_string GALGAS_string::reader_stringByRightPadding (const GALGAS_uint & in
     const utf32 paddingChar = inPaddingChar.charValue () ;
     const PMSInt32 paddedStringLength = (PMSInt32) inPaddedStringLength.uintValue () ;
     const PMSInt32 paddingLength = paddedStringLength - mString.length () ;
-    C_String s ; s.setCapacity (paddedStringLength) ;
+    C_String s ; s.setCapacity ((PMUInt32) paddedStringLength) ;
     s << mString ;
     for (PMSInt32 i=0 ; i<paddingLength ; i++) {
       s.appendUnicodeCharacter (paddingChar COMMA_HERE) ;
@@ -412,7 +412,7 @@ GALGAS_string GALGAS_string::reader_stringByLeftAndRightPadding (const GALGAS_ui
     const utf32 paddingChar = inPaddingChar.charValue () ;
     const PMSInt32 paddedStringLength = (PMSInt32) inPaddedStringLength.uintValue () ;
     const PMSInt32 paddingLength = paddedStringLength - mString.length () ;
-    C_String s ; s.setCapacity (paddedStringLength) ;
+    C_String s ; s.setCapacity ((PMUInt32) paddedStringLength) ;
     for (PMSInt32 i=0 ; i<(paddingLength / 2) ; i++) {
       s.appendUnicodeCharacter (paddingChar COMMA_HERE) ;
     }
@@ -1319,7 +1319,7 @@ void GALGAS_string::modifier_setCapacity (GALGAS_uint inNewCapacity,
                                           COMMA_LOCATION_ARGS) {
   if (inNewCapacity.isValid ()) {
     if (inNewCapacity.uintValue () <= ((PMUInt32) PMSINT32_MAX)) {
-      mString.setCapacity ((PMSInt32) inNewCapacity.uintValue ()) ; 
+      mString.setCapacity (inNewCapacity.uintValue ()) ; 
     }else{
       C_String message ;
       message << "setCapacity argument value (" ;

@@ -31,8 +31,8 @@
 
 //---------------------------------------------------------------------------*
 
-static inline NSInteger imin (const NSInteger a, const NSInteger b) { return a < b ? a : b ; }
-static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a > b ? a : b ; }
+static inline NSUInteger imin (const NSUInteger a, const NSUInteger b) { return a < b ? a : b ; }
+static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return a > b ? a : b ; }
 
 //---------------------------------------------------------------------------*
 
@@ -406,16 +406,16 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
       [mutableSourceString replaceCharactersInRange:NSMakeRange (currentLineRange.location, twoSpaceLength) withString:@""] ;
     //--- Examen du nombre de caractères à l'intérieur de la sélection
       const NSInteger withinSelectionCharacterCount = 
-        imin (currentLineRange.location + twoSpaceLength, finalSelectedRange.location + finalSelectedRange.length)
+        (NSInteger) imin (currentLineRange.location + twoSpaceLength, finalSelectedRange.location + finalSelectedRange.length)
       -
-        imax (currentLineRange.location, finalSelectedRange.location) ;
+        (NSInteger) imax (currentLineRange.location, finalSelectedRange.location) ;
       if (withinSelectionCharacterCount > 0) {
-        finalSelectedRange.length -= withinSelectionCharacterCount ;
+        finalSelectedRange.length -= (NSUInteger) withinSelectionCharacterCount ;
       }
     //--- Examen du nombre de caractères avant la sélection
-      const NSInteger beforeSelectionCharacterCount = finalSelectedRange.location - currentLineRange.location ;
+      const NSInteger beforeSelectionCharacterCount = ((NSInteger) finalSelectedRange.location) - (NSInteger) currentLineRange.location ;
       if (beforeSelectionCharacterCount > 0) {
-        finalSelectedRange.location -= imin (twoSpaceLength, beforeSelectionCharacterCount) ;
+        finalSelectedRange.location -= imin (twoSpaceLength, (NSUInteger) beforeSelectionCharacterCount) ;
       }
       #ifdef DEBUG_UNCOMMENTRANGE
         NSLog (@"withinSelectionCharacterCount %d, beforeSelectionCharacterCount %d", withinSelectionCharacterCount, beforeSelectionCharacterCount) ;
@@ -456,7 +456,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  NSString * macroString = [documentData.textSyntaxColoring.tokenizer textMacroContentAtIndex:[inSender tag]] ;
+  NSString * macroString = [documentData.textSyntaxColoring.tokenizer textMacroContentAtIndex:(NSUInteger) inSender.tag] ;
   [mTextView insertText:macroString] ;
 }
 
@@ -473,7 +473,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   NSMenu * menu = inMenu.copy ;
   [mEntryListPopUpButton setAutoenablesItems:NO] ;
 
-  const NSUInteger n = [menu numberOfItems] ;
+  const NSInteger n = menu.numberOfItems ;
   if (n == 0) {
     [menu
       addItemWithTitle:@"No entry"
@@ -483,7 +483,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
     [[menu itemAtIndex:0] setEnabled:NO] ;
     [mEntryListPopUpButton setEnabled:NO] ;
   }else{
-    for (NSUInteger i=0 ; i<n ; i++) {
+    for (NSInteger i=0 ; i<n ; i++) {
       NSMenuItem * item = [menu itemAtIndex:i] ;
       [item setTarget:self] ;
       [item setAction:@selector (gotoEntry:)] ;
@@ -500,7 +500,7 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s, TAG %ld", __PRETTY_FUNCTION__, [inSender tag]) ;
   #endif
-  const NSRange range = {[inSender tag], 0} ;
+  const NSRange range = {(NSUInteger) [inSender tag], 0} ;
   [mTextView setSelectedRange:range] ;
   [mTextView scrollRangeToVisible:range] ;
 }
@@ -515,11 +515,10 @@ static inline NSInteger imax (const NSInteger a, const NSInteger b) { return a >
   NSArray * menuItemArray = [mEntryListPopUpButton itemArray] ;
   if ([mEntryListPopUpButton isEnabled]) {
     NSInteger idx = NSNotFound ;
-    NSInteger i ;
-    const NSInteger n = [menuItemArray count] ;
-    for (i=n-1 ; (i>=0) && (idx == NSNotFound) ; i--) {
-      NSMenuItem * item = [menuItemArray objectAtIndex:i] ;
-      const NSUInteger startPoint = [item tag] ;
+    const NSInteger n = (NSInteger) menuItemArray.count ;
+    for (NSInteger i=n-1 ; (i>=0) && (idx == NSNotFound) ; i--) {
+      NSMenuItem * item = [menuItemArray objectAtIndex:(NSUInteger) i] ;
+      const NSUInteger startPoint = (NSUInteger) [item tag] ;
       if (selectionStart >= startPoint) {
         idx = i ;
       }

@@ -44,7 +44,7 @@
 
 - (BOOL) performSaveToURL: (NSURL *) inAbsoluteURL ;
 
-- (NSUInteger) locationForLineInSource: (NSInteger) inLine ;
+- (NSUInteger) locationForLineInSource: (NSUInteger) inLine ;
 
 + (void) broadcastIssueArray: (NSArray *) inIssueArray ;
 

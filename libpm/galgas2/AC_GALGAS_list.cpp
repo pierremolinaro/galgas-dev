@@ -142,7 +142,7 @@ void cSharedList::addObjectAtIndex (const capCollectionElement & inObject,
                                     COMMA_LOCATION_ARGS) {
   macroUniqueSharedObject (this) ;
   mObjectArray.setCapacity (mObjectArray.count () + 1) ;
-  mObjectArray.addObjectAtIndex (inObject, inInsertionIndex, inCompiler COMMA_THERE) ;
+  mObjectArray.addObjectAtIndex (inObject, (PMUInt32) inInsertionIndex, inCompiler COMMA_THERE) ;
 }
 
 
@@ -599,7 +599,7 @@ void AC_GALGAS_list::addObjectAtIndex (const capCollectionElement & inElementToA
                                        COMMA_LOCATION_ARGS) {
   insulateList (HERE) ;
   if (NULL != mSharedList) {
-    mSharedList->addObjectAtIndex (inElementToAdd, inInsertionIndex, inCompiler COMMA_THERE) ;
+    mSharedList->addObjectAtIndex (inElementToAdd, (PMSInt32) inInsertionIndex, inCompiler COMMA_THERE) ;
   }
 }
 

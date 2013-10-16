@@ -230,7 +230,7 @@
   BOOL found = NO ;
   
   while ((templateIndex < (SInt32) inTemplateDelimiterArray.count) && ! found) {
-    OC_GGS_TemplateDelimiter * td = [inTemplateDelimiterArray objectAtIndex:templateIndex] ;
+    OC_GGS_TemplateDelimiter * td = [inTemplateDelimiterArray objectAtIndex:(NSUInteger) templateIndex] ;
     found = [self
       testForInputString:td.startString
       advance:td.discardStartString

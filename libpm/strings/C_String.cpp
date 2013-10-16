@@ -517,12 +517,12 @@ void C_String::performActualUnicodeArrayOutput (const utf32 * inUTF32CharArray,
   #endif
   if (inArrayCount > 0) {
     const PMSInt32 kNewLength = length () + inArrayCount ;
-    insulateEmbeddedString (kNewLength + 1) ;
+    insulateEmbeddedString ((PMUInt32) (kNewLength + 1)) ;
     MF_Assert (mEmbeddedString->retainCount () == 1, "mEmbeddedString->retainCount () == (%lld) != 1", mEmbeddedString->retainCount () == 1, 0) ;
     for (PMSInt32 i=0 ; i<inArrayCount ; i++) {
-      mEmbeddedString->mString [mEmbeddedString->mLength + i] = inUTF32CharArray [i] ;
+      mEmbeddedString->mString [mEmbeddedString->mLength + (PMUInt32) i] = inUTF32CharArray [i] ;
     }
-    mEmbeddedString->mLength = kNewLength ;
+    mEmbeddedString->mLength = (PMUInt32) kNewLength ;
     mEmbeddedString->mString [kNewLength] = TO_UNICODE ('\0') ;
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkString (HERE) ;
@@ -540,13 +540,13 @@ void C_String::performActualCharArrayOutput (const char * inCharArray,
     checkString (HERE) ;
   #endif
   if (inArrayCount != 0) {
-    insulateEmbeddedString (length () + inArrayCount + 1) ;
+    insulateEmbeddedString ((PMUInt32) (length () + inArrayCount + 1)) ;
     PMSInt32 idx = 0 ;
-    PMSInt32 newLength = mEmbeddedString->mLength ;
+    PMSInt32 newLength = (PMSInt32) mEmbeddedString->mLength ;
     bool ok = true ;
     while ((idx < inArrayCount) && ok) {
       if ((inCharArray [idx] & 0x80) == 0) { // ASCII
-        mEmbeddedString->mString [newLength] = TO_UNICODE (inCharArray [idx]) ;
+        mEmbeddedString->mString [newLength] = TO_UNICODE ((PMUInt32) inCharArray [idx]) ;
         idx ++ ;
         newLength ++ ;
       }else{
@@ -555,7 +555,7 @@ void C_String::performActualCharArrayOutput (const char * inCharArray,
         newLength ++ ;
       }
     }
-    mEmbeddedString->mLength = newLength ;
+    mEmbeddedString->mLength = (PMUInt32) newLength ;
     mEmbeddedString->mString [newLength] = TO_UNICODE ('\0') ;
     #ifndef DO_NOT_GENERATE_CHECKINGS
       checkString (HERE) ;
@@ -613,7 +613,7 @@ suppress (const PMSInt32 inLocation,
     MF_AssertThere ((PMUInt32) inLength <= mEmbeddedString->mLength,
                    "inLength (%ld) > string length (%ld)",
                     inLength, mEmbeddedString->mLength) ;
-    const PMSInt32 longueurAdeplacer = 1 + mEmbeddedString->mLength - inLength - inLocation ;
+    const PMSInt32 longueurAdeplacer = 1 + ((PMSInt32) mEmbeddedString->mLength) - inLength - inLocation ;
     if ((inLocation >= 0) && (longueurAdeplacer > 0)) {
       ::memmove (& mEmbeddedString->mString [inLocation],
                  & mEmbeddedString->mString [inLocation + inLength],
@@ -621,7 +621,7 @@ suppress (const PMSInt32 inLocation,
       MF_Assert (mEmbeddedString->mLength >= (PMUInt32) inLength,
                "mLength (%lld) < inLength (%lld)",
                 mEmbeddedString->mLength, inLength) ;
-      mEmbeddedString->mLength -= inLength ;
+      mEmbeddedString->mLength -= (PMUInt32) inLength ;
       #ifndef DO_NOT_GENERATE_CHECKINGS
         checkString (HERE) ;
       #endif
@@ -951,7 +951,7 @@ C_String C_String::
 stringByCapitalizingFirstCharacter (void) const {
   C_String s ;
   const PMSInt32 receiver_length = length () ;
-  s.setCapacity (receiver_length) ;
+  s.setCapacity ((PMUInt32) receiver_length) ;
   const utf32 * ptr = utf32String (HERE) ;
   if (receiver_length > 0) {
     s.appendUnicodeCharacter (unicodeToUpper (ptr [0]) COMMA_HERE) ;
@@ -968,7 +968,7 @@ C_String C_String::
 lowercaseString (void) const {
   C_String s ;
   const PMSInt32 receiver_length = length () ;
-  s.setCapacity (receiver_length) ;
+  s.setCapacity ((PMUInt32) receiver_length) ;
   const utf32 * ptr = utf32String (HERE) ;
   for (PMSInt32 i=0 ; i<receiver_length ; i++) {
     s.appendUnicodeCharacter (unicodeToLower (ptr [i]) COMMA_HERE) ;
@@ -981,7 +981,7 @@ lowercaseString (void) const {
 C_String C_String::stringByTrimmingSeparators (void) const {
   C_String s ;
   const PMSInt32 receiver_length = length () ;
-  s.setCapacity (receiver_length) ;
+  s.setCapacity ((PMUInt32) receiver_length) ;
   const utf32 * ptr = utf32String (HERE) ;
 //--- Trim left
   PMSInt32 idx = 0 ;
@@ -1012,7 +1012,7 @@ C_String C_String::
 uppercaseString (void) const {
   C_String s ;
   const PMSInt32 receiver_length = length () ;
-  s.setCapacity (receiver_length) ;
+  s.setCapacity ((PMUInt32) receiver_length) ;
   const utf32 * ptr = utf32String (HERE) ;
   for (PMSInt32 i=0 ; i<receiver_length ; i++) {
     s.appendUnicodeCharacter (unicodeToUpper (ptr [i]) COMMA_HERE) ;
@@ -1026,7 +1026,7 @@ C_String C_String::
 reversedString (void) const {
   C_String s ;
   const PMSInt32 receiver_length = length () ;
-  s.setCapacity (receiver_length) ;
+  s.setCapacity ((PMUInt32) receiver_length) ;
   const utf32 * ptr = utf32String (HERE) ;
   for (PMSInt32 i=receiver_length-1 ; i>=0 ; i--) {
     s.appendUnicodeCharacter (ptr [i] COMMA_HERE) ;
@@ -1092,7 +1092,7 @@ C_String C_String::
 identifierRepresentation (void) const {
   C_String s ;
   const PMSInt32 receiver_length = length () ;
-  s.setCapacity (receiver_length) ;
+  s.setCapacity ((PMUInt32) receiver_length) ;
   const utf32 * ptr = utf32String (HERE) ;
   for (PMSInt32 i=0 ; i<receiver_length ; i++) {
     const utf32 c = ptr [i] ;

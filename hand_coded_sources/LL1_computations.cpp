@@ -61,8 +61,8 @@ mVocabulary (inVocabulary) {
 
 void cAffichagePremiersProduction::action (const bool tableauDesValeurs [],
                                            const PMUInt32 nombreVariables) {
-  PMSInt32 element = 0L ;
-  for (PMSInt32 i=nombreVariables - 1 ; i>=0 ; i--) {
+  PMSInt32 element = 0 ;
+  for (PMSInt32 i=((PMSInt32) nombreVariables) - 1 ; i>=0 ; i--) {
     element = (element << 1) + tableauDesValeurs [i] ;
   }
   mFichierBNF << " " ;
@@ -244,7 +244,7 @@ aIndice (0) {
 void cEcrireNonTerminal::action (const bool tableauDesValeurs [],
                                  const PMUInt32 nombreVariables) {
   PMSInt32 element = 0L ;
-  for (PMSInt32 i=nombreVariables - 1 ; i>=0 ; i--) {
+  for (PMSInt32 i=((PMSInt32) nombreVariables) - 1 ; i>=0 ; i--) {
     element = (element << 1) + tableauDesValeurs [i] ;
   }
   aIndice ++ ;
@@ -342,7 +342,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
       cProduction & p = inPureBNFproductions (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
       C_String title ;
       inVocabulary.printInFile (title, p.aNumeroNonTerminalGauche COMMA_HERE) ;
-      const C_ProductionNameDescriptor description (title, p.mSourceFileName, ioProductionIndex) ;
+      const C_ProductionNameDescriptor description (title, p.mSourceFileName, (PMUInt32) ioProductionIndex) ;
       ioProductionRuleDescription.addObject (description) ;
       title << ", in file '" 
             << p.mSourceFileName
@@ -429,7 +429,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
         inCppFile << "-1, // Choice "
                   << cStringWithSigned ((PMSInt32)(j - firstProduction + 1))
                   << "\n" ;
-        ioDecisionTableIndex = (PMSInt16) (ioDecisionTableIndex + p.aPremierDeProduction.getValuesCount ()) ;
+        ioDecisionTableIndex = (PMSInt16) (ioDecisionTableIndex + (PMSInt16) p.aPremierDeProduction.getValuesCount ()) ;
         ioDecisionTableIndex ++ ;
       }
       inCppFile << "  -1,\n" ;

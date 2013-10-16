@@ -328,7 +328,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
       withSettingTitle:@"Template String"
     ] ;
   }
-  for (NSUInteger i=0; i<[inTokenizer styleCount] ; i++) {
+  for (NSInteger i=0; i<(NSInteger) inTokenizer.styleCount ; i++) {
   //--- By default, find an old style foreground color
     NSString * name = [NSString stringWithFormat:@"%@_%@", GGS_named_color, [inTokenizer styleIdentifierForStyleIndex:i]] ;
     // NSLog (@"name '%@'", name) ;
