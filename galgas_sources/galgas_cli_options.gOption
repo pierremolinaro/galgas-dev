@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS Command Line Option Definition                                    *
 #                                                                           *
-#  Copyright (C) 2004, ..., 2012 Pierre Molinaro.                           *
+#  Copyright (C) 2004, ..., 2013 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -18,6 +18,7 @@
 
 option galgas_cli_options :
   @bool outputHTMLgrammarFile: '\0', "output-html-grammar-file" -> "Output a HTML file for every grammar component" ;
+  @bool outputHTMLTypeListFile: 'T', "output-html-type-dump-file" -> "Output a HTML file that contains all defined types" ;
   @string create_project     : '\0', "create-project" -> "Create a new GALGAS Project" ;
   @bool printPredefinedLexicalActions: '\0', "print-predefined-lexical-actions" -> "Print the list of predefined lexical routines and functions" ;
   @bool printPredefinedTypes: '\0', "print-predefined-types" -> "Print the list of predefined types" ;

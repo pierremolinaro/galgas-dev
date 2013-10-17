@@ -247,7 +247,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   [ioView addSubview:colorWell] ;
   *ioEnclosingRect = NSUnionRect (*ioEnclosingRect, *ioRect) ;
 //--- Add text
-  NSTextField * f = [[NSTextField alloc] init] ;
+  NSTextField * f = [NSTextField new] ;
   [f setEditable: NO] ;
   [f setSelectable: NO] ;
   [f setDrawsBackground: NO] ;
@@ -605,7 +605,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   r.size.height = 20.0 ;
   for (NSUInteger i=0 ; i<[mBoolOptionArray count] ; i++) {
     OC_GGS_CommandLineOption * option = [mBoolOptionArray objectAtIndex:i] ;
-    NSButton * cb = [[NSButton alloc] init] ;
+    NSButton * cb = [NSButton new] ;
     NSString * title = [option title] ;
     NSDictionary * d = [NSDictionary dictionaryWithObjectsAndKeys:
       [cb font], NSFontAttributeName,
@@ -649,10 +649,10 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   for (i=0 ; i<[mUIntOptionArray count] ; i++) {
     OC_GGS_CommandLineOption * option = [mUIntOptionArray objectAtIndex:i] ;
   //--- Input text field
-    NSTextField * tx = [[NSTextField alloc] init] ;
+    NSTextField * tx = [NSTextField new] ;
     [tx setAutoresizingMask: NSViewMaxXMargin | NSViewMinYMargin] ;
   //--- Add formatter
-    NSNumberFormatter * format = [[NSNumberFormatter alloc] init] ;
+    NSNumberFormatter * format = [NSNumberFormatter new] ;
     [format setFormat:@"#0;0;-#0"] ;
     [format setMinimum:[NSDecimalNumber zero]] ;
     [format setAllowsFloats:NO] ;
@@ -671,7 +671,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     [inView addSubview: tx] ;
     *ioRect = NSUnionRect (*ioRect, r) ;
   //--- Comment text
-    tx = [[NSTextField alloc] init] ;
+    tx = [NSTextField new] ;
     NSString * title = [option title] ;
  //   [tx setTitleWithMnemonic: title] ;
     [tx setStringValue:title] ;
@@ -715,7 +715,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   for (i=0 ; i<[mStringOptionArray count] ; i++) {
     OC_GGS_CommandLineOption * option = [mStringOptionArray objectAtIndex:i] ;
   //--- Input text field
-    NSTextField * tx = [[NSTextField alloc] init] ;
+    NSTextField * tx = [NSTextField new] ;
     [tx setAutoresizingMask: NSViewMaxXMargin | NSViewMinYMargin] ;
     r.origin.y -= 25.0 ;
     r.origin.x = 10.0 ;
@@ -730,7 +730,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     [inView addSubview:tx] ;
     viewFrame = NSUnionRect (viewFrame, r) ;
   //--- Comment text
-    tx = [[NSTextField alloc] init] ;
+    tx = [NSTextField new] ;
     NSString * title = [option title] ;
 //    [tx setTitleWithMnemonic: title] ;
     [tx setStringValue:title] ;
@@ -1154,7 +1154,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     //--- Show Run window
       [mRunWindow makeKeyAndOrderFront:self] ;
     //--- Create task
-      mTask = [[NSTask alloc] init] ;
+      mTask = [NSTask new] ;
       [mTask setLaunchPath:[commandLineArray objectAtIndex:0]] ;
       [mTask setArguments:[commandLineArray subarrayWithRange:NSMakeRange (1, [commandLineArray count]-1)]] ;
     //--- Set standard output notification

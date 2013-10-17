@@ -816,7 +816,7 @@ override method @mapDeclarationAST enterInSemanticContext
   enumerationVariants += !"down" ;
 #---
   @constructorMap constructorMap [emptyMap] ;
-  @readerMap readerMap [emptyMap] ;
+  commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?@readerMap readerMap ;
   @modifierMap modifierMap [emptyMap] ;
   @instanceMethodMap instanceMethodMap [emptyMap] ;
 #--- Constructors
@@ -1020,7 +1020,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
   enumerationVariants += !"down" ;
 #---
   @constructorMap constructorMap [emptyMap] ;
-  @readerMap readerMap [emptyMap] ;
+  commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?@readerMap readerMap ;
   @modifierMap modifierMap [emptyMap] ;
   @instanceMethodMap instanceMethodMap [emptyMap] ;
 #--- Constructors
@@ -1270,7 +1270,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
   end if ;
 #---
   @constructorMap constructorMap [emptyMap] ;
-  @readerMap readerMap [emptyMap] ;
+  commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?@readerMap readerMap ;
   @modifierMap modifierMap [emptyMap] ;
   @instanceMethodMap instanceMethodMap [emptyMap] ;
   @classMethodMap classMethodMap [emptyMap] ;
@@ -1400,7 +1400,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext
 :
 #---
-  @readerMap readerMap [emptyMap] ;
+  commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?@readerMap readerMap ;
   @constructorMap constructorMap [emptyMap] ;
   @modifierMap modifierMap [emptyMap] ;
   @instanceMethodMap instanceMethodMap [emptyMap] ;
@@ -1545,7 +1545,7 @@ override method @graphDeclarationAST enterInSemanticContext
   @unifiedTypeMapProxy lstringListTypeProxy ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioSemanticContext->mTypeMap !"lstringlist" ?lstringListTypeProxy] ;
 #---
-  @readerMap readerMap [emptyMap] ;
+  commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?@readerMap readerMap ;
   @constructorMap constructorMap [emptyMap] ;
   @modifierMap modifierMap [emptyMap] ;
   @instanceMethodMap instanceMethodMap [emptyMap] ;
@@ -2038,7 +2038,7 @@ override method @listDeclarationAST enterInSemanticContext
     !listTypeIndex
   ] ;
 #--- Readers
-  @readerMap readerMap [emptyMap] ;
+  commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?@readerMap readerMap ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"length" !"uint" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"range" !"range" !false ;
   enterBaseReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"subListFromIndex" !"uint" ![mListTypeName string] !true ;
@@ -2220,7 +2220,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     !listTypeIndex
   ] ;
 #--- Readers
-  @readerMap readerMap [emptyMap] ;
+  commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?@readerMap readerMap ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"length" !"uint" !false ;
 #--- Modifiers
   @modifierMap modifierMap [emptyMap] ;
@@ -2722,7 +2722,7 @@ override method @arrayDeclarationAST enterInSemanticContext
   [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mElementTypeName ?elementTypeIndex] ;
 #---
   @constructorMap constructorMap [emptyMap] ;
-  @readerMap readerMap [emptyMap] ;
+  commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?@readerMap readerMap ;
   @modifierMap modifierMap [emptyMap] ;
   @instanceMethodMap instanceMethodMap [emptyMap] ;
 #--- 
@@ -2873,7 +2873,7 @@ override method @listmapDeclarationAST enterInSemanticContext
   end if ;
 #---
   @constructorMap constructorMap [emptyMap] ;
-  @readerMap readerMap [emptyMap] ;
+  commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?@readerMap readerMap ;
   @modifierMap modifierMap [emptyMap] ;
   @instanceMethodMap instanceMethodMap [emptyMap] ;
 #--- Associated map type index
