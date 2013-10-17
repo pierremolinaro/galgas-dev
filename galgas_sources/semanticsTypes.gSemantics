@@ -303,7 +303,7 @@ uniquemap @unifiedTypeMap {
   @withAccessorMap mWithAccessorMap ; # Method for with accessor
   @bool mGenerateHeaderInSeparateFile ; # Significant only for classes
   @unifiedTypeMapProxy mTypeForEnumeratedElement ;
-  @string mDefaultConstructorName ; # Used in [@xxx default]
+  @string mDefaultConstructorName ; # Used in [@xxx default] (empty string if no default constructor)
 
   insert insertKey error message "the '@%K' type has been already declared in %L" ;
   search searchKey error message "the '@%K' type is not declared" ;
