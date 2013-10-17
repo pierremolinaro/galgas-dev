@@ -28,14 +28,19 @@ routine enterConstructorWithoutArgument
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
-  @unifiedTypeMapProxy returnedTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
-  [!?ioConstructorMap insertKey
-    ![@lstring new !inConstructorName !here]
-    ![@unifiedTypeMapProxyList emptyList]
-    !inHasLexiqueAndLocationArguments
-    !returnedTypeIndex
-  ] ;
+  if not [ioConstructorMap hasKey !inConstructorName] then
+    [@unifiedTypeMapProxy makeProxyFromString
+      !?ioUnifiedTypeMap
+      !inReturnedTypeName
+      ??@unifiedTypeMapProxy returnedTypeIndex
+    ] ;
+    [!?ioConstructorMap insertKey
+      ![@lstring new !inConstructorName !here]
+      ![@unifiedTypeMapProxyList emptyList]
+      !inHasLexiqueAndLocationArguments
+      !returnedTypeIndex
+    ] ;
+  end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*

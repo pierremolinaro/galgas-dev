@@ -3,3 +3,138 @@
 
 \chapitreTypePredefiniLabelIndex{filewrapper}
 
+Le type \galgas{@filewrapper} permet d'accéder à un \emph{filewrapper}, c'est à dire à des fichiers embarqués dans l'exécutable (voir \refChapterPage{filewrapper}).
+
+\section{Constructor}
+
+\section{Modifier}
+
+\subsection{Modifier \texttt{setCurrentDirectory}}
+
+\begin{galgascode}
+modifier setCurrentDirectory ??@string inDirectory ;
+\end{galgascode}
+
+
+\section{Readers}
+
+
+
+
+\subsection{Reader \texttt{allTextFilePathes}}
+
+\begin{galgascode}
+reader allTextFilePathes -> @stringlist ;
+\end{galgascode}
+
+
+
+
+
+
+\subsection{Reader \texttt{allDirectoryPathes}}
+
+\begin{galgascode}
+reader allDirectoryPathes -> @stringlist ;
+\end{galgascode}
+
+
+
+
+
+
+\subsection{Reader \texttt{currentDirectory}}
+
+\begin{galgascode}
+reader currentDirectory -> @string ;
+\end{galgascode}
+
+
+
+
+
+
+
+
+\subsection{Reader \texttt{allFilePathesWithExtension}}
+
+\begin{galgascode}
+reader allFilePathesWithExtension ??@string inExtension -> @stringlist ;
+\end{galgascode}
+
+
+
+
+
+
+
+
+
+
+\subsection{Reader \texttt{directoryExistsAtPath}}
+
+\begin{galgascode}
+reader directoryExistsAtPath ??@string inPath -> @bool ;
+\end{galgascode}
+
+
+
+
+
+
+
+
+
+
+\subsection{Reader \texttt{fileExistsAtPath}}
+
+\begin{galgascode}
+reader fileExistsAtPath ??@string inPath -> @bool ;
+\end{galgascode}
+
+
+
+
+
+
+
+
+
+
+\subsection{Reader \texttt{textFileContentsAtPath}}
+
+\begin{galgascode}
+reader textFileContentsAtPath ??@string inPath -> @string ;
+\end{galgascode}
+
+
+
+
+
+
+
+
+
+
+\subsection{Reader \texttt{binaryFileContentsAtPath}}
+
+\begin{galgascode}
+reader binaryFileContentsAtPath ??@string inPath -> @data ;
+\end{galgascode}
+
+
+
+
+
+
+
+
+
+
+\subsection{Reader \texttt{absolutePathForPath}}
+
+\begin{galgascode}
+reader absolutePathForPath ??@string inPath -> @string ;
+\end{galgascode}
+
+

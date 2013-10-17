@@ -500,6 +500,7 @@ end rule ;
 #   constructor call    :   [@class method !... ]                              *
 #   default constructor :   [@class default]                                   *
 #   option value        :   [option option_component_name.option_name]         *
+#   filewrapper object  :   [filewrapper filewrapper_name]                     *
 #                                                                              *
 #------------------------------------------------------------------------------*
 

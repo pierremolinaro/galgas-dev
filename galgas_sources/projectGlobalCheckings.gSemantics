@@ -487,6 +487,7 @@ end routine ;
 
 routine performProjectGlobalCheckings
   ??@parsedComponentStruct inParsedComponentStruct
+  ??@string inProjectSourceFilePath
   ??@location inEndOfSourceFile
 :
   @semanticDeclarationListAST semanticDeclarationList [emptyList] ;
@@ -711,6 +712,120 @@ routine performProjectGlobalCheckings
       end foreach ;
     end foreach ;
   end if ;
+#--- Build a text file that contains all declared types
+  @string typeDumpString := [[semanticContext->mTypeMap count] string] . " types.\n\n" ;
+  foreach semanticContext->mTypeMap : type_ do
+    typeDumpString .= "TYPE --------- @" . type_lkey . " ------------\n\n" ;
+  #--- Kind
+    typeDumpString .= "Kind: " ;
+    if not type_mIsConcrete then
+      typeDumpString .= "abstract " ;
+    end if ;
+    switch type_mTypeKindEnum
+    when classType : typeDumpString .= "class" ;
+    when enumType : typeDumpString .= "enum" ;
+    when listType : typeDumpString .= "list" ;
+    when sortedListType : typeDumpString .= "sorted list" ;
+    when mapType : typeDumpString .= "map" ;
+    when uniqueMapType : typeDumpString .= "unique map" ;
+    when mapProxyType : typeDumpString .= "map proxy" ;
+    when listMapType : typeDumpString .= "list map" ;
+    when structType : typeDumpString .= "struct" ;
+    when graphType : typeDumpString .= "graph" ;
+    when predefinedType : typeDumpString .= "predefined type" ;
+    end switch ;
+    typeDumpString .= "\n" ;
+    if not [type_mSuperType isNull] then
+      typeDumpString .= "Superclass: @" . [type_mSuperType key] . "\n" ;  
+    end if ;
+    typeDumpString .= "\n" ;
+  #--- Constructors
+    foreach type_mConstructorMap
+    before
+      typeDumpString .= "Constructors:\n" ;
+    do
+      typeDumpString .= "  constructor " . lkey ;
+      foreach mArgumentTypeList do
+        typeDumpString .= " ?@" . [mType key] ;
+      end foreach ;
+      typeDumpString .= " -> @" . [mReturnedType key] . " ;\n" ;
+    after
+      typeDumpString .= "\n" ;
+    end foreach ;
+  #--- Readers
+    foreach type_mReaderMap
+    before
+      typeDumpString .= "Readers:\n" ;
+    do
+      typeDumpString .= "  reader " . lkey ;
+      foreach mArgumentTypeList do
+        typeDumpString .= " ?@" . [mType key] ;
+      end foreach ;
+      typeDumpString .= " -> @" . [mReturnedType key] . " ;\n" ;
+    after
+      typeDumpString .= "\n" ;
+    end foreach ;
+  #--- Methods
+    foreach type_mInstanceMethodMap
+    before
+      typeDumpString .= "Methods:\n" ;
+    do
+      typeDumpString .= "  method " . lkey ;
+      foreach mParameterList do
+        switch mFormalArgumentPassingMode
+        when argumentConstantIn : typeDumpString .= " ??" ;
+        when argumentIn         : typeDumpString .= " ?" ;
+        when argumentInOut      : typeDumpString .= " ?!" ;
+        when argumentOut        : typeDumpString .= " !" ;
+        end switch ;
+        typeDumpString .= "@" . [mFormalArgumentType key] ;
+      end foreach ;
+      typeDumpString .= " ;\n" ;
+    after
+      typeDumpString .= "\n" ;
+    end foreach ;
+  #--- Modifiers
+    foreach type_mModifierMap
+    before
+      typeDumpString .= "Modifiers:\n" ;
+    do
+      typeDumpString .= "  modifier " . lkey ;
+      foreach mParameterList do
+        switch mFormalArgumentPassingMode
+        when argumentConstantIn : typeDumpString .= " ??" ;
+        when argumentIn         : typeDumpString .= " ?" ;
+        when argumentInOut      : typeDumpString .= " ?!" ;
+        when argumentOut        : typeDumpString .= " !" ;
+        end switch ;
+        typeDumpString .= "@" . [mFormalArgumentType key] ;
+      end foreach ;
+      typeDumpString .= " ;\n" ;
+    after
+      typeDumpString .= "\n" ;
+    end foreach ;
+  #--- class methods
+    foreach type_mInstanceMethodMap
+    before
+      typeDumpString .= "Class methods:\n" ;
+    do
+      typeDumpString .= "  class method " . lkey ;
+      foreach mParameterList do
+        switch mFormalArgumentPassingMode
+        when argumentConstantIn : typeDumpString .= " ??" ;
+        when argumentIn         : typeDumpString .= " ?" ;
+        when argumentInOut      : typeDumpString .= " ?!" ;
+        when argumentOut        : typeDumpString .= " !" ;
+        end switch ;
+        typeDumpString .= "@" . [mFormalArgumentType key] ;
+      end foreach ;
+      typeDumpString .= " ;\n" ;
+    after
+      typeDumpString .= "\n" ;
+    end foreach ;
+  end foreach ;
+#--- Write file
+  const @string typeDumpFilePath := inProjectSourceFilePath . ".txt" ;
+  [typeDumpString writeToFileWhenDifferentContents !typeDumpFilePath ?*] ;
 end routine ;
 
 #---------------------------------------------------------------------------*

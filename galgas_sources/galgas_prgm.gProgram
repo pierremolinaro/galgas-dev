@@ -194,16 +194,16 @@ indexing with programSLRgrammar
 when . "gProject"
 message "a GALGAS project source file"
 indexing with projectLL1grammar
-??@lstring inSourceFile {
-  const @string outputDirectory := outputDirectory [!inSourceFile] ;
+??@lstring inProjectSourceFile {
+  const @string outputDirectory := outputDirectory [!inProjectSourceFile] ;
 #--- Parse metamodel component
   @projectComponentAST projectComponentAST ;
-  grammar projectLL1grammar in inSourceFile ?projectComponentAST ;
+  grammar projectLL1grammar in inProjectSourceFile ?projectComponentAST ;
 #--- Check project name
-  if [[projectComponentAST mProjectName] string] != [[inSourceFile lastPathComponent] stringByDeletingPathExtension] then
+  if [[projectComponentAST mProjectName] string] != [[inProjectSourceFile lastPathComponent] stringByDeletingPathExtension] then
     error [projectComponentAST mProjectName] 
     :"the project name ('" . [projectComponentAST mProjectName] . "') should be the same as the source file base name ('"
-    . [[inSourceFile lastPathComponent] stringByDeletingPathExtension] . "')" ;
+    . [[inProjectSourceFile lastPathComponent] stringByDeletingPathExtension] . "')" ;
   end if ;
 #--- Check target name
   const @string targetName := [[projectComponentAST mTargetName] string] ;
@@ -236,7 +236,7 @@ indexing with projectLL1grammar
       ![mFilePath location]
     ] ;
     const @lstring fullFilePath [new
-      ![inSourceFile stringByDeletingLastPathComponent] . "/" . [mFilePath string]
+      ![inProjectSourceFile stringByDeletingLastPathComponent] . "/" . [mFilePath string]
       ![mFilePath location]
     ] ;
     switch mSourceKind
@@ -431,12 +431,16 @@ indexing with projectLL1grammar
     if [option .verbose_output value] then
       message "*** Perform global checkings\n" ;
     end if ;
-    performProjectGlobalCheckings !parsedComponentStruct ![projectComponentAST mEndOfSourceFile] ;
+    performProjectGlobalCheckings
+      !parsedComponentStruct
+      !inProjectSourceFile->string
+      ![projectComponentAST mEndOfSourceFile]
+    ;
   end if ;
 #--- Update targets
   if 0 == [@uint errorCount] then
     updateTargets
-      !inSourceFile
+      !inProjectSourceFile
       ![projectComponentAST->mMajorVersion->uint string] . "." . projectComponentAST->mMinorVersion->uint . "." . projectComponentAST->mRevisionVersion->uint
       ![projectComponentAST mProjectName]
       !targetName
@@ -447,7 +451,7 @@ indexing with projectLL1grammar
     ;
   end if ;
 #--- Build project files
-  buildProject !inSourceFile->string ;
+  buildProject !inProjectSourceFile->string ;
 }
 
 #----------------------------------------------------------------------------*
