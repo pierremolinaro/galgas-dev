@@ -2,7 +2,7 @@
 %!TEX root = ../galgas-book.tex
 
 %--------------------------------------------------------------
-\chapter{Filewrappers}
+\chapterLabel{Filewrappers}{filewrapper}
 %-------------------------------------------------------------
 
 Un \emph{filewrapper} permet d'embarquer dans le code engendré une arborescence de fichiers. Comme on va le voir dans la section suivante, la déclaration d'un \emph{filewrapper} désigne un répertoire, qui va être exploré au moment de la compilation GALGAS de façon à embarquer dans le code engendré la copie de certains fichiers. Ces  fichiers peuvent être de trois sortes :
@@ -40,7 +40,7 @@ filewrapper nom in "chemin" {
 Où :
 \begin{itemize}
   \item \galgas{nom} est le nom, interne à GALGAS, donné au \emph{filewrapper} ; ce nom doit être unique à chaque \emph{filewrapper} ;
-  \item \galgas{"chemin"} est le chemin du répertoire qui va être exploré récursivement au moment de la compilation ;
+  \item \galgas{"chemin"} est le chemin du répertoire qui va être exploré récursivement au moment de la compilation ; c'est soit un chemin absolu (il commence par un \galgas{/}), soit un chemin relatif, par rapport au répertoire qui contient le fichier source qui déclare le \emph{filewrapper}.
 \end{itemize}
 
 La déclaration est divisée en trois parties délimitées par des accolades \galgas{\{ ... \}} :
