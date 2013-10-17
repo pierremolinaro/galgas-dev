@@ -712,8 +712,22 @@ routine performProjectGlobalCheckings
     end foreach ;
   end if ;
 #--- Build a text file that contains all declared types
-  @string typeDumpString := [[semanticContext->mTypeMap count] string] . " types.\n\n" ;
-  foreach semanticContext->mTypeMap : type_ do
+  const @string typeDumpFilePath := inProjectSourceFilePath . ".txt" ;
+  if [option galgas_cli_options.outputHTMLTypeListFile value] then
+    dumpTypes !semanticContext->mTypeMap !typeDumpFilePath ;
+  else
+    [@string deleteFileIfExists !typeDumpFilePath] ;
+  end if ;
+end routine ;
+
+#---------------------------------------------------------------------------*
+
+local routine dumpTypes
+  ??@unifiedTypeMap inUnifiedTypeMap
+  ??@string inTypeDumpFilePath
+:
+  @string typeDumpString := [[inUnifiedTypeMap count] string] . " types.\n\n" ;
+  foreach inUnifiedTypeMap : type_ do
     typeDumpString .= "TYPE --------- @" . type_lkey . " ------------\n\n" ;
   #--- Kind
     typeDumpString .= "Kind: " ;
@@ -945,8 +959,7 @@ routine performProjectGlobalCheckings
     end foreach ;
   end foreach ;
 #--- Write file
-  const @string typeDumpFilePath := inProjectSourceFilePath . ".txt" ;
-  [typeDumpString writeToFileWhenDifferentContents !typeDumpFilePath ?*] ;
+  [typeDumpString writeToFileWhenDifferentContents !inTypeDumpFilePath ?*] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
