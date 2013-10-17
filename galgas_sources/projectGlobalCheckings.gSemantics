@@ -2,7 +2,7 @@
 #                                                                           *
 #  GALGAS LL1 routines                                                      *
 #                                                                           *
-#  Copyright (C) 2007, ..., 2010 Pierre Molinaro.                           *
+#  Copyright (C) 2007, ..., 2013 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -504,12 +504,11 @@ routine performProjectGlobalCheckings
     semanticDeclarationList .= [mProgramComponentAST mSemanticDeclarationList] ;
   end foreach ;
 #------ Generate declarations
-  @semanticContext semanticContext ;
   buildSemanticContext
     !""
     !semanticDeclarationList
     !inEndOfSourceFile
-    ?semanticContext
+    ??@semanticContext semanticContext
   ;
 #------ Build descendant type list map
 # For every type, a list of its directed descendants is associated
@@ -739,6 +738,89 @@ routine performProjectGlobalCheckings
       typeDumpString .= "Superclass: @" . [type_mSuperType key] . "\n" ;  
     end if ;
     typeDumpString .= "\n" ;
+  #--- Handled operators
+    typeDumpString .= "Handled operators\n" ;
+    if (type_mHandledOperatorFlags & binaryAddOperator []) != 0 then
+      typeDumpString .= "  addition: @" . type_lkey . " + @" . type_lkey . " -> @" . type_lkey . "\n" ;
+    end if ;
+    if (type_mHandledOperatorFlags & binarySubOperator []) != 0 then
+      typeDumpString .= "  substraction: @" . type_lkey . " - @" . type_lkey . " -> @" . type_lkey . "\n" ;
+    end if ;
+    if (type_mHandledOperatorFlags & binaryMulOperator []) != 0 then
+      typeDumpString .= "  multiplication: @" . type_lkey . " * @" . type_lkey . " -> @" . type_lkey . "\n" ;
+    end if ;
+    if (type_mHandledOperatorFlags & binaryDivOperator []) != 0 then
+      typeDumpString .= "  division: @" . type_lkey . " / @" . type_lkey . " -> @" . type_lkey . "\n" ;
+    end if ;
+    if (type_mHandledOperatorFlags & binaryModOperator []) != 0 then
+      typeDumpString .= "  modulo: @" . type_lkey . " mod @" . type_lkey . " -> @" . type_lkey . "\n" ;
+    end if ;
+    if (type_mHandledOperatorFlags & binaryShiftOperator []) != 0 then
+      typeDumpString .= "  left shift: @" . type_lkey . " << @uint -> @" . type_lkey . "\n" ;
+      typeDumpString .= "  right shift: @" . type_lkey . " >> @uint -> @" . type_lkey . "\n" ;
+    end if ;
+    if (type_mHandledOperatorFlags & unaryPlusOperator []) != 0 then
+      typeDumpString .= "  unary +: + @" . type_lkey . " -> @" . type_lkey . "\n" ;
+    end if ;
+    if (type_mHandledOperatorFlags & unaryMinusOperator []) != 0 then
+      typeDumpString .= "  unary -: - @" . type_lkey . " -> @" . type_lkey . "\n" ;
+    end if ;
+    if (type_mHandledOperatorFlags & unaryTildeOperator []) != 0 then
+      typeDumpString .= "  bit wise negation: ~ @" . type_lkey . " -> @" . type_lkey . "\n" ;
+    end if ;
+    if (type_mHandledOperatorFlags & binaryAndOperator []) != 0 then
+      typeDumpString .= "  boolean and: @" . type_lkey . " & @" . type_lkey . " -> @" . type_lkey . "\n" ;
+    end if ;
+    if (type_mHandledOperatorFlags & binaryOrOperator []) != 0 then
+      typeDumpString .= "  inclusive or: @" . type_lkey . " | @" . type_lkey . " -> @" . type_lkey . "\n" ;
+    end if ;
+    if (type_mHandledOperatorFlags & binaryXorOperator []) != 0 then
+      typeDumpString .= "  exclusive or: @" . type_lkey . " ^ @" . type_lkey . " -> @" . type_lkey . "\n" ;
+    end if ;
+    if (type_mHandledOperatorFlags & unaryNotOperator []) != 0 then
+      typeDumpString .= "  boolean negation: not @" . type_lkey . " -> @" . type_lkey . "\n" ;
+    end if ;
+    typeDumpString .= "  equality test: @" . type_lkey . " == @" . type_lkey . " -> @bool\n" ;
+    typeDumpString .= "  inequality test: @" . type_lkey . " != @" . type_lkey . " -> @bool\n" ;
+    if (type_mHandledOperatorFlags & isComparable []) != 0 then
+      typeDumpString .= "  lower than test: @" . type_lkey . " < @" . type_lkey . " -> @bool\n" ;
+      typeDumpString .= "  lower or equal test: @" . type_lkey . " <= @" . type_lkey . " -> @bool\n" ;
+      typeDumpString .= "  greater than test: @" . type_lkey . " > @" . type_lkey . " -> @bool\n" ;
+      typeDumpString .= "  greater or equal test: @" . type_lkey . " >= @" . type_lkey . " -> @bool\n" ;
+    end if ;
+    if (type_mHandledOperatorFlags & binaryConcatOperator []) != 0 then
+      typeDumpString .= "  concatenation: @" . type_lkey . " . @" . type_lkey . " -> @" . type_lkey . "\n" ;
+    end if ;
+    if (type_mHandledOperatorFlags & dotAssignOperator []) != 0 then
+      typeDumpString .= "  appending instruction: @" . type_lkey . " .= @" . type_lkey . "\n" ;
+    end if ;
+    if (type_mHandledOperatorFlags & incDecOperator []) != 0 then
+      typeDumpString .= "  incrementation instruction: @" . type_lkey . " ++\n" ;
+      typeDumpString .= "  decrementation instruction: @" . type_lkey . " --\n" ;
+    end if ;
+    typeDumpString .= "\n" ;
+  #--- += Operator arguments
+    foreach type_mAddAssignOperatorArguments
+    before
+      typeDumpString .= "+= instruction arguments:\n" ;
+    do
+      typeDumpString .= "  @" . [mType key] . "\n" ;
+    after
+      typeDumpString .= "\n" ;
+    end foreach ;
+  #--- Enumeration by foreach
+    foreach type_mEnumerationDescriptor
+    before
+      typeDumpString .= "foreach instruction enumeration constants:\n" ;
+    do
+      typeDumpString .= "  @" . [mEnumeratedType key] . " " . mEnumerationName . "\n" ;
+    after
+      typeDumpString .= "\n" ;
+    end foreach ;
+  #--- Enumeration by for
+    if not [type_mTypeForEnumeratedElement isNull] then
+      typeDumpString .= "for instruction enumeration type: @" . [type_mTypeForEnumeratedElement key] . "\n\n" ;
+    end if ;
   #--- Constructors
     foreach type_mConstructorMap
     before
@@ -757,7 +839,20 @@ routine performProjectGlobalCheckings
     before
       typeDumpString .= "Readers:\n" ;
     do
-      typeDumpString .= "  reader " . lkey ;
+      typeDumpString .= "  " ;
+      switch mKind
+      when definedAsMember :
+      when definedAsCategory : typeDumpString .= "(category) " ;
+      end switch ;
+      switch mQualifier
+      when isAbstract : typeDumpString .= "abstract " ;
+      when isBasic :
+      when isBasicFinal :
+      when isInherited :
+      when isOverriding : typeDumpString .= "override " ;
+      when isOverridingAbstract : typeDumpString .= "abstract override " ;
+      end switch ;
+      typeDumpString .= "reader " . lkey ;
       foreach mArgumentTypeList do
         typeDumpString .= " ?@" . [mType key] ;
       end foreach ;
@@ -770,7 +865,20 @@ routine performProjectGlobalCheckings
     before
       typeDumpString .= "Methods:\n" ;
     do
-      typeDumpString .= "  method " . lkey ;
+      typeDumpString .= "  " ;
+      switch mKind
+      when definedAsMember :
+      when definedAsCategory : typeDumpString .= "(category) " ;
+      end switch ;
+      switch mQualifier
+      when isAbstract : typeDumpString .= "abstract " ;
+      when isBasic :
+      when isBasicFinal :
+      when isInherited :
+      when isOverriding : typeDumpString .= "override " ;
+      when isOverridingAbstract : typeDumpString .= "abstract override " ;
+      end switch ;
+      typeDumpString .= "method " . lkey ;
       foreach mParameterList do
         switch mFormalArgumentPassingMode
         when argumentConstantIn : typeDumpString .= " ??" ;
@@ -789,7 +897,20 @@ routine performProjectGlobalCheckings
     before
       typeDumpString .= "Modifiers:\n" ;
     do
-      typeDumpString .= "  modifier " . lkey ;
+      typeDumpString .= "  " ;
+      switch mKind
+      when definedAsMember :
+      when definedAsCategory : typeDumpString .= "(category) " ;
+      end switch ;
+      switch mQualifier
+      when isAbstract : typeDumpString .= "abstract " ;
+      when isBasic :
+      when isBasicFinal :
+      when isInherited :
+      when isOverriding : typeDumpString .= "override " ;
+      when isOverridingAbstract : typeDumpString .= "abstract override " ;
+      end switch ;
+      typeDumpString .= "modifier " . lkey ;
       foreach mParameterList do
         switch mFormalArgumentPassingMode
         when argumentConstantIn : typeDumpString .= " ??" ;
@@ -804,7 +925,7 @@ routine performProjectGlobalCheckings
       typeDumpString .= "\n" ;
     end foreach ;
   #--- class methods
-    foreach type_mInstanceMethodMap
+    foreach type_mClassMethodMap
     before
       typeDumpString .= "Class methods:\n" ;
     do
