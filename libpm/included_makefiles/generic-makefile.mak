@@ -144,7 +144,7 @@ $(COMPILER_PATH):
 	tar xf $(TOOL_CHAIN_ARCHIVE).tar
 	rm $(TOOL_CHAIN_ARCHIVE).tar
 	@echo "****** INSTALLING..."
-	sudo mv $(TOOL_CHAIN_ARCHIVE) $(TOOL_CHAIN_INSTALL_PATH)
+	sudo mv -f $(TOOL_CHAIN_ARCHIVE) $(TOOL_CHAIN_INSTALL_PATH)
 	@echo "****** DONE."
 
 #----------------------------------------------------------------------------*
