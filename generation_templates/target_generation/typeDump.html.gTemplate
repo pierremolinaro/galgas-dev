@@ -87,55 +87,55 @@ end if%
 <tr class="result_line"><td>Operators</td>
   <td>
     %if (type_mHandledOperatorFlags & binaryAddOperator []) != 0 then
-      %addition: %!linkForType [!type_lkey->string]% + %!linkForType [!type_lkey->string]% -&gt; %!linkForType [!type_lkey->string]%<br>%
+      %addition: %!linkForType [!type_lkey->string]% + %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!type_lkey->string]%<br>%
     end if
     if (type_mHandledOperatorFlags & binarySubOperator []) != 0 then
-      %substraction: %!linkForType [!type_lkey->string]% - %!linkForType [!type_lkey->string]% -&gt; %!linkForType [!type_lkey->string]%<br>%
+      %substraction: %!linkForType [!type_lkey->string]% - %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!type_lkey->string]%<br>%
     end if
     if (type_mHandledOperatorFlags & binaryMulOperator []) != 0 then
-      %multiplication: %!linkForType [!type_lkey->string]% * %!linkForType [!type_lkey->string]% -&gt; %!linkForType [!type_lkey->string]%<br>%
+      %multiplication: %!linkForType [!type_lkey->string]% * %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!type_lkey->string]%<br>%
     end if
     if (type_mHandledOperatorFlags & binaryDivOperator []) != 0 then
-      %division: %!linkForType [!type_lkey->string]% / %!linkForType [!type_lkey->string]% -&gt; %!linkForType [!type_lkey->string]%<br>%
+      %division: %!linkForType [!type_lkey->string]% / %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!type_lkey->string]%<br>%
     end if
     if (type_mHandledOperatorFlags & binaryModOperator []) != 0 then
-      %modulo: %!linkForType [!type_lkey->string]% <b>mod</b> %!linkForType [!type_lkey->string]% -&gt; %!linkForType [!type_lkey->string]%<br>%
+      %modulo: %!linkForType [!type_lkey->string]% <b>mod</b> %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!type_lkey->string]%<br>%
     end if
     if (type_mHandledOperatorFlags & binaryShiftOperator []) != 0 then
-      %left shift: %!linkForType [!type_lkey->string]% &lt;&lt; %!linkForType [!"uint"]% -&gt; %!linkForType [!type_lkey->string]%<br>%
-      %right shift: %!linkForType [!type_lkey->string]% &gt;&gt; %!linkForType [!"uint"]% -&gt; %!linkForType [!type_lkey->string]%<br>%
+      %left shift: %!linkForType [!type_lkey->string]% &lt;&lt; %!linkForType [!"uint"]% &rarr; %!linkForType [!type_lkey->string]%<br>%
+      %right shift: %!linkForType [!type_lkey->string]% &gt;&gt; %!linkForType [!"uint"]% &rarr; %!linkForType [!type_lkey->string]%<br>%
     end if
     if (type_mHandledOperatorFlags & unaryPlusOperator []) != 0 then
-      %unary +: + %!linkForType [!type_lkey->string]% -&gt; %!linkForType [!type_lkey->string]%<br>%
+      %unary +: + %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!type_lkey->string]%<br>%
     end if
     if (type_mHandledOperatorFlags & unaryMinusOperator []) != 0 then
-      %unary -: - %!linkForType [!type_lkey->string]% -&gt; %!linkForType [!type_lkey->string]%<br>%
+      %unary -: - %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!type_lkey->string]%<br>%
     end if
     if (type_mHandledOperatorFlags & unaryTildeOperator []) != 0 then
-      %bit wise negation: ~ %!linkForType [!type_lkey->string]% -&gt; %!linkForType [!type_lkey->string]%<br>%
+      %bit wise negation: ~ %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!type_lkey->string]%<br>%
     end if
     if (type_mHandledOperatorFlags & binaryAndOperator []) != 0 then
-      %boolean and: %!linkForType [!type_lkey->string]% &amp; %!linkForType [!type_lkey->string]% -&gt; %!linkForType [!type_lkey->string]%<br>%
+      %boolean and: %!linkForType [!type_lkey->string]% &amp; %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!type_lkey->string]%<br>%
     end if
     if (type_mHandledOperatorFlags & binaryOrOperator []) != 0 then
-      %inclusive or: %!linkForType [!type_lkey->string]% | %!linkForType [!type_lkey->string]% -&gt; %!linkForType [!type_lkey->string]%<br>%
+      %inclusive or: %!linkForType [!type_lkey->string]% | %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!type_lkey->string]%<br>%
     end if
     if (type_mHandledOperatorFlags & binaryXorOperator []) != 0 then
-      %exclusive or: %!linkForType [!type_lkey->string]% ^ %!linkForType [!type_lkey->string]% -&gt; %!linkForType [!type_lkey->string]%<br>%
+      %exclusive or: %!linkForType [!type_lkey->string]% ^ %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!type_lkey->string]%<br>%
     end if
     if (type_mHandledOperatorFlags & unaryNotOperator []) != 0 then
-      %boolean negation: <b>not</b> %!linkForType [!type_lkey->string]% -&gt; %!linkForType [!type_lkey->string]%<br>%
+      %boolean negation: <b>not</b> %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!type_lkey->string]%<br>%
     end if
-    %equality test: %!linkForType [!type_lkey->string]% == %!linkForType [!type_lkey->string]% -&gt; %!linkForType [!"bool"]%<br>%
-    %inequality test: %!linkForType [!type_lkey->string]% != %!linkForType [!type_lkey->string]% -&gt; %!linkForType [!"bool"]%<br>%
+    %equality test: %!linkForType [!type_lkey->string]% == %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!"bool"]%<br>%
+    %inequality test: %!linkForType [!type_lkey->string]% != %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!"bool"]%<br>%
     if (type_mHandledOperatorFlags & isComparable []) != 0 then
-      %lower than test: %!linkForType [!type_lkey->string]% &lt; %!linkForType [!type_lkey->string]% -&gt; %!linkForType [!"bool"]%<br>%
-      %lower or equal test: %!linkForType [!type_lkey->string]% &lt;= %!linkForType [!type_lkey->string]% -&gt; %!linkForType [!"bool"]%<br>%
-      %greater than test: %!linkForType [!type_lkey->string]% &gt; %!linkForType [!type_lkey->string]% -&gt; %!linkForType [!"bool"]%<br>%
-      %greater or equal test: %!linkForType [!type_lkey->string]% &gt;= %!linkForType [!type_lkey->string]% -&gt; %!linkForType [!"bool"]%<br>%
+      %lower than test: %!linkForType [!type_lkey->string]% &lt; %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!"bool"]%<br>%
+      %lower or equal test: %!linkForType [!type_lkey->string]% &lt;= %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!"bool"]%<br>%
+      %greater than test: %!linkForType [!type_lkey->string]% &gt; %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!"bool"]%<br>%
+      %greater or equal test: %!linkForType [!type_lkey->string]% &gt;= %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!"bool"]%<br>%
     end if
     if (type_mHandledOperatorFlags & binaryConcatOperator []) != 0 then
-      %concatenation: %!linkForType [!type_lkey->string]% . %!linkForType [!type_lkey->string]% -&gt; %!linkForType [!type_lkey->string]%<br>%
+      %concatenation: %!linkForType [!type_lkey->string]% . %!linkForType [!type_lkey->string]% &rarr; %!linkForType [!type_lkey->string]%<br>%
     end if
     if (type_mHandledOperatorFlags & dotAssignOperator []) != 0 then
       %appending instruction: %!linkForType [!type_lkey->string]% .= %!linkForType [!type_lkey->string]%<br>%
@@ -172,7 +172,7 @@ if [type_mConstructorMap count] > 0 then
     foreach mArgumentTypeList do
       % ?%!linkForType [![mType key]]
     end foreach
-    %<br>%
+    % &rarr; %!linkForType [![mReturnedType key]] %<br>%
   end foreach
 end if
 #--- Readers
@@ -195,7 +195,7 @@ if [type_mReaderMap count] > 0 then
     foreach mArgumentTypeList do
       % ?%!linkForType [![mType key]]
     end foreach
-    % -&gt; %!linkForType [![mReturnedType key]] %<br>%
+    % &rarr; %!linkForType [![mReturnedType key]] %<br>%
   end foreach
   %</td></tr>%
 end if
