@@ -712,256 +712,58 @@ routine performProjectGlobalCheckings
     end foreach ;
   end if ;
 #--- Build a text file that contains all declared types
-  const @string typeDumpFilePath := inProjectSourceFilePath . ".txt" ;
+  const @string typeDumpFilePath := inProjectSourceFilePath . ".html" ;
   if [option galgas_cli_options.outputHTMLTypeListFile value] then
-    dumpTypes !semanticContext->mTypeMap !typeDumpFilePath ;
+    @stringset firstLetterSet [emptySet] ;
+    foreach semanticContext->mTypeMap do
+      firstLetterSet += ![[lkey->string characterAtIndex!0] string] ;
+    end foreach ;
+    @string tableOfTypeString := "" ;
+    @char currentFirstLetter := ' ' ;
+    foreach semanticContext->mTypeMap : type_ do
+      if currentFirstLetter != [type_lkey->string characterAtIndex !0] then
+        currentFirstLetter := [type_lkey->string characterAtIndex !0] ;
+        tableOfTypeString .= "<br><a name=\"" . [currentFirstLetter uint] . "\"><b>" . currentFirstLetter . "</b></a><br>" ;
+      end if ;
+      tableOfTypeString .= linkForType [!type_lkey->string] . "<br>" ;
+    end foreach ;
+#    tableOfTypeString .= "</p>" ;
+    const @string typeDumpString := [filewrapper typeDumpGenerationTemplate.typeDump
+      ![inProjectSourceFilePath lastPathComponent]
+      !semanticContext->mTypeMap
+      !firstLetterSet
+      !tableOfTypeString
+    ] ;
+    [typeDumpString writeToFileWhenDifferentContents !typeDumpFilePath ?*] ;
   else
     [@string deleteFileIfExists !typeDumpFilePath] ;
   end if ;
 end routine ;
 
 #---------------------------------------------------------------------------*
+#                                                                           *
+#           G E N E R A T I O N    F I L E W R A P P E R S                  *
+#                                                                           *
+#---------------------------------------------------------------------------*
 
-local routine dumpTypes
-  ??@unifiedTypeMap inUnifiedTypeMap
-  ??@string inTypeDumpFilePath
-:
-  @string typeDumpString := [[inUnifiedTypeMap count] string] . " types.\n\n" ;
-  foreach inUnifiedTypeMap : type_ do
-    typeDumpString .= "TYPE --------- @" . type_lkey . " ------------\n\n" ;
-  #--- Kind
-    typeDumpString .= "Kind: " ;
-    if not type_mIsConcrete then
-      typeDumpString .= "abstract " ;
-    end if ;
-    switch type_mTypeKindEnum
-    when classType : typeDumpString .= "class" ;
-    when enumType : typeDumpString .= "enum" ;
-    when listType : typeDumpString .= "list" ;
-    when sortedListType : typeDumpString .= "sorted list" ;
-    when mapType : typeDumpString .= "map" ;
-    when uniqueMapType : typeDumpString .= "unique map" ;
-    when mapProxyType : typeDumpString .= "map proxy" ;
-    when listMapType : typeDumpString .= "list map" ;
-    when structType : typeDumpString .= "struct" ;
-    when graphType : typeDumpString .= "graph" ;
-    when predefinedType : typeDumpString .= "predefined type" ;
-    end switch ;
-    typeDumpString .= "\n" ;
-    if not [type_mSuperType isNull] then
-      typeDumpString .= "Superclass: @" . [type_mSuperType key] . "\n" ;  
-    end if ;
-    typeDumpString .= "\n" ;
-  #--- Handled operators
-    typeDumpString .= "Handled operators\n" ;
-    if (type_mHandledOperatorFlags & binaryAddOperator []) != 0 then
-      typeDumpString .= "  addition: @" . type_lkey . " + @" . type_lkey . " -> @" . type_lkey . "\n" ;
-    end if ;
-    if (type_mHandledOperatorFlags & binarySubOperator []) != 0 then
-      typeDumpString .= "  substraction: @" . type_lkey . " - @" . type_lkey . " -> @" . type_lkey . "\n" ;
-    end if ;
-    if (type_mHandledOperatorFlags & binaryMulOperator []) != 0 then
-      typeDumpString .= "  multiplication: @" . type_lkey . " * @" . type_lkey . " -> @" . type_lkey . "\n" ;
-    end if ;
-    if (type_mHandledOperatorFlags & binaryDivOperator []) != 0 then
-      typeDumpString .= "  division: @" . type_lkey . " / @" . type_lkey . " -> @" . type_lkey . "\n" ;
-    end if ;
-    if (type_mHandledOperatorFlags & binaryModOperator []) != 0 then
-      typeDumpString .= "  modulo: @" . type_lkey . " mod @" . type_lkey . " -> @" . type_lkey . "\n" ;
-    end if ;
-    if (type_mHandledOperatorFlags & binaryShiftOperator []) != 0 then
-      typeDumpString .= "  left shift: @" . type_lkey . " << @uint -> @" . type_lkey . "\n" ;
-      typeDumpString .= "  right shift: @" . type_lkey . " >> @uint -> @" . type_lkey . "\n" ;
-    end if ;
-    if (type_mHandledOperatorFlags & unaryPlusOperator []) != 0 then
-      typeDumpString .= "  unary +: + @" . type_lkey . " -> @" . type_lkey . "\n" ;
-    end if ;
-    if (type_mHandledOperatorFlags & unaryMinusOperator []) != 0 then
-      typeDumpString .= "  unary -: - @" . type_lkey . " -> @" . type_lkey . "\n" ;
-    end if ;
-    if (type_mHandledOperatorFlags & unaryTildeOperator []) != 0 then
-      typeDumpString .= "  bit wise negation: ~ @" . type_lkey . " -> @" . type_lkey . "\n" ;
-    end if ;
-    if (type_mHandledOperatorFlags & binaryAndOperator []) != 0 then
-      typeDumpString .= "  boolean and: @" . type_lkey . " & @" . type_lkey . " -> @" . type_lkey . "\n" ;
-    end if ;
-    if (type_mHandledOperatorFlags & binaryOrOperator []) != 0 then
-      typeDumpString .= "  inclusive or: @" . type_lkey . " | @" . type_lkey . " -> @" . type_lkey . "\n" ;
-    end if ;
-    if (type_mHandledOperatorFlags & binaryXorOperator []) != 0 then
-      typeDumpString .= "  exclusive or: @" . type_lkey . " ^ @" . type_lkey . " -> @" . type_lkey . "\n" ;
-    end if ;
-    if (type_mHandledOperatorFlags & unaryNotOperator []) != 0 then
-      typeDumpString .= "  boolean negation: not @" . type_lkey . " -> @" . type_lkey . "\n" ;
-    end if ;
-    typeDumpString .= "  equality test: @" . type_lkey . " == @" . type_lkey . " -> @bool\n" ;
-    typeDumpString .= "  inequality test: @" . type_lkey . " != @" . type_lkey . " -> @bool\n" ;
-    if (type_mHandledOperatorFlags & isComparable []) != 0 then
-      typeDumpString .= "  lower than test: @" . type_lkey . " < @" . type_lkey . " -> @bool\n" ;
-      typeDumpString .= "  lower or equal test: @" . type_lkey . " <= @" . type_lkey . " -> @bool\n" ;
-      typeDumpString .= "  greater than test: @" . type_lkey . " > @" . type_lkey . " -> @bool\n" ;
-      typeDumpString .= "  greater or equal test: @" . type_lkey . " >= @" . type_lkey . " -> @bool\n" ;
-    end if ;
-    if (type_mHandledOperatorFlags & binaryConcatOperator []) != 0 then
-      typeDumpString .= "  concatenation: @" . type_lkey . " . @" . type_lkey . " -> @" . type_lkey . "\n" ;
-    end if ;
-    if (type_mHandledOperatorFlags & dotAssignOperator []) != 0 then
-      typeDumpString .= "  appending instruction: @" . type_lkey . " .= @" . type_lkey . "\n" ;
-    end if ;
-    if (type_mHandledOperatorFlags & incDecOperator []) != 0 then
-      typeDumpString .= "  incrementation instruction: @" . type_lkey . " ++\n" ;
-      typeDumpString .= "  decrementation instruction: @" . type_lkey . " --\n" ;
-    end if ;
-    typeDumpString .= "\n" ;
-  #--- += Operator arguments
-    foreach type_mAddAssignOperatorArguments
-    before
-      typeDumpString .= "+= instruction arguments:\n" ;
-    do
-      typeDumpString .= "  @" . [mType key] . "\n" ;
-    after
-      typeDumpString .= "\n" ;
-    end foreach ;
-  #--- Enumeration by foreach
-    foreach type_mEnumerationDescriptor
-    before
-      typeDumpString .= "foreach instruction enumeration constants:\n" ;
-    do
-      typeDumpString .= "  @" . [mEnumeratedType key] . " " . mEnumerationName . "\n" ;
-    after
-      typeDumpString .= "\n" ;
-    end foreach ;
-  #--- Enumeration by for
-    if not [type_mTypeForEnumeratedElement isNull] then
-      typeDumpString .= "for instruction enumeration type: @" . [type_mTypeForEnumeratedElement key] . "\n\n" ;
-    end if ;
-  #--- Constructors
-    foreach type_mConstructorMap
-    before
-      typeDumpString .= "Constructors:\n" ;
-    do
-      typeDumpString .= "  constructor " . lkey ;
-      foreach mArgumentTypeList do
-        typeDumpString .= " ?@" . [mType key] ;
-      end foreach ;
-      typeDumpString .= " -> @" . [mReturnedType key] . " ;\n" ;
-    after
-      typeDumpString .= "\n" ;
-    end foreach ;
-  #--- Readers
-    foreach type_mReaderMap
-    before
-      typeDumpString .= "Readers:\n" ;
-    do
-      typeDumpString .= "  " ;
-      switch mKind
-      when definedAsMember :
-      when definedAsCategory : typeDumpString .= "(category) " ;
-      end switch ;
-      switch mQualifier
-      when isAbstract : typeDumpString .= "abstract " ;
-      when isBasic :
-      when isBasicFinal :
-      when isInherited :
-      when isOverriding : typeDumpString .= "override " ;
-      when isOverridingAbstract : typeDumpString .= "abstract override " ;
-      end switch ;
-      typeDumpString .= "reader " . lkey ;
-      foreach mArgumentTypeList do
-        typeDumpString .= " ?@" . [mType key] ;
-      end foreach ;
-      typeDumpString .= " -> @" . [mReturnedType key] . " ;\n" ;
-    after
-      typeDumpString .= "\n" ;
-    end foreach ;
-  #--- Methods
-    foreach type_mInstanceMethodMap
-    before
-      typeDumpString .= "Methods:\n" ;
-    do
-      typeDumpString .= "  " ;
-      switch mKind
-      when definedAsMember :
-      when definedAsCategory : typeDumpString .= "(category) " ;
-      end switch ;
-      switch mQualifier
-      when isAbstract : typeDumpString .= "abstract " ;
-      when isBasic :
-      when isBasicFinal :
-      when isInherited :
-      when isOverriding : typeDumpString .= "override " ;
-      when isOverridingAbstract : typeDumpString .= "abstract override " ;
-      end switch ;
-      typeDumpString .= "method " . lkey ;
-      foreach mParameterList do
-        switch mFormalArgumentPassingMode
-        when argumentConstantIn : typeDumpString .= " ??" ;
-        when argumentIn         : typeDumpString .= " ?" ;
-        when argumentInOut      : typeDumpString .= " ?!" ;
-        when argumentOut        : typeDumpString .= " !" ;
-        end switch ;
-        typeDumpString .= "@" . [mFormalArgumentType key] ;
-      end foreach ;
-      typeDumpString .= " ;\n" ;
-    after
-      typeDumpString .= "\n" ;
-    end foreach ;
-  #--- Modifiers
-    foreach type_mModifierMap
-    before
-      typeDumpString .= "Modifiers:\n" ;
-    do
-      typeDumpString .= "  " ;
-      switch mKind
-      when definedAsMember :
-      when definedAsCategory : typeDumpString .= "(category) " ;
-      end switch ;
-      switch mQualifier
-      when isAbstract : typeDumpString .= "abstract " ;
-      when isBasic :
-      when isBasicFinal :
-      when isInherited :
-      when isOverriding : typeDumpString .= "override " ;
-      when isOverridingAbstract : typeDumpString .= "abstract override " ;
-      end switch ;
-      typeDumpString .= "modifier " . lkey ;
-      foreach mParameterList do
-        switch mFormalArgumentPassingMode
-        when argumentConstantIn : typeDumpString .= " ??" ;
-        when argumentIn         : typeDumpString .= " ?" ;
-        when argumentInOut      : typeDumpString .= " ?!" ;
-        when argumentOut        : typeDumpString .= " !" ;
-        end switch ;
-        typeDumpString .= "@" . [mFormalArgumentType key] ;
-      end foreach ;
-      typeDumpString .= " ;\n" ;
-    after
-      typeDumpString .= "\n" ;
-    end foreach ;
-  #--- class methods
-    foreach type_mClassMethodMap
-    before
-      typeDumpString .= "Class methods:\n" ;
-    do
-      typeDumpString .= "  class method " . lkey ;
-      foreach mParameterList do
-        switch mFormalArgumentPassingMode
-        when argumentConstantIn : typeDumpString .= " ??" ;
-        when argumentIn         : typeDumpString .= " ?" ;
-        when argumentInOut      : typeDumpString .= " ?!" ;
-        when argumentOut        : typeDumpString .= " !" ;
-        end switch ;
-        typeDumpString .= "@" . [mFormalArgumentType key] ;
-      end foreach ;
-      typeDumpString .= " ;\n" ;
-    after
-      typeDumpString .= "\n" ;
-    end foreach ;
-  end foreach ;
-#--- Write file
-  [typeDumpString writeToFileWhenDifferentContents !inTypeDumpFilePath ?*] ;
-end routine ;
+filewrapper typeDumpGenerationTemplate in "../generation_templates/target_generation" {
+}{
+}{
+  template typeDump "typeDump.html.gTemplate"
+    ?@string PROJECT_NAME
+    ?@unifiedTypeMap UNIFIED_TYPE_MAP
+    ?@stringset FIRST_LETTER_SET
+    ?@string TABLE_OF_TYPES_STRING
+  ;
+}
 
+#---------------------------------------------------------------------------*
+
+local function linkForType ??@string inTypeName -> @string outResult :
+  outResult := "<a class=\"header_link\" href=\"#" . inTypeName . "\">@" . inTypeName . "</a>" ;
+end function ;
+
+#---------------------------------------------------------------------------*
 #---------------------------------------------------------------------------*
 
 end semantics ;
