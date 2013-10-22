@@ -26,13 +26,14 @@ routine enterModifierWithInputArgument
   ?!@modifierMap ioModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ??@string inInputArgumentTypeName
+  ??@string inInputArgumentName
   ??@string inModifierName
   ??@bool inHasCompilerArgument
 :
   @unifiedTypeMapProxy argumentTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
-  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !inInputArgumentName ;
   [!?ioModifierMap insertOrReplace
     ![@lstring new !inModifierName !here]
     ![@methodKind definedAsMember]
@@ -48,14 +49,15 @@ end routine ;
 routine enterModifierWithOutputArgument
   ?!@modifierMap ioModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  ??@string inInputArgumentTypeName
+  ??@string inOutputArgumentTypeName
+  ??@string inOutputArgumentName
   ??@string inModifierName
   ??@bool inHasCompilerArgument
 :
   @unifiedTypeMapProxy argumentTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?argumentTypeIndex] ;
+  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
-  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
+  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentOut] !inOutputArgumentName ;
   [!?ioModifierMap insertOrReplace
     ![@lstring new !inModifierName !here]
     ![@methodKind definedAsMember]
@@ -72,16 +74,18 @@ routine enterModifierWith2InputArguments
   ?!@modifierMap ioModifierMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ??@string inInputArgument1TypeName
+  ??@string inInputArgument1Name
   ??@string inInputArgument2TypeName
+  ??@string inInputArgument2Name
   ??@string inModifierName
   ??@bool inHasCompilerArgument
 :
   @formalParameterSignature argList [emptyList] ;
   @unifiedTypeMapProxy argumentTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument1TypeName ?argumentTypeIndex] ;
-  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !inInputArgument1Name ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgument2TypeName ?argumentTypeIndex] ;
-  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !inInputArgument2Name ;
   [!?ioModifierMap insertOrReplace
     ![@lstring new !inModifierName !here]
     ![@methodKind definedAsMember]
@@ -116,11 +120,11 @@ override method @stringPredefinedTypeAST getModifierMap
   !@modifierMap outModifierMap
 :
   outModifierMap := [@modifierMap emptyMap] ;
-  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"setCapacity" !true ;
-  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"incIndentation" !true ;
-  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"decIndentation" !true ;
-  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"appendSpacesUntilColumn" !true ;
-  enterModifierWith2InputArguments !?outModifierMap !?ioUnifiedTypeMap !"char" !"uint" !"setCharacterAtIndex" !true ;
+  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inCapacity" !"setCapacity" !true ;
+  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inAmount" !"incIndentation" !true ;
+  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inAmount" !"decIndentation" !true ;
+  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inColumnIndex" !"appendSpacesUntilColumn" !true ;
+  enterModifierWith2InputArguments !?outModifierMap !?ioUnifiedTypeMap !"char" !"inChar" !"uint" !"inIndex" !"setCharacterAtIndex" !true ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -130,13 +134,13 @@ override method @dataPredefinedTypeAST getModifierMap
   !@modifierMap outModifierMap
 :
   outModifierMap := [@modifierMap emptyMap] ;
-  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"appendByte" !true ;
-  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"appendShortBE" !true ;
-  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"appendShortLE" !true ;
-  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"appendUIntBE" !false ;
-  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"appendUIntLE" !false ;
-  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"string" !"appendUTF8String" !false ;
-  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"data" !"appendData" !false ;
+  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !"appendByte" !true ;
+  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !"appendShortBE" !true ;
+  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !"appendShortLE" !true ;
+  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !"appendUIntBE" !false ;
+  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"uint" !"inValue" !"appendUIntLE" !false ;
+  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"string" !"inValue" !"appendUTF8String" !false ;
+  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"data" !"inValue" !"appendData" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -146,7 +150,7 @@ override method @filewrapperPredefinedTypeAST getModifierMap
   !@modifierMap outModifierMap
 :
   outModifierMap := [@modifierMap emptyMap] ;
-  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"string" !"setCurrentDirectory" !true ;
+  enterModifierWithInputArgument !?outModifierMap !?ioUnifiedTypeMap !"string" !"inDirectoryPath" !"setCurrentDirectory" !true ;
 end method ;
 
 #---------------------------------------------------------------------------*

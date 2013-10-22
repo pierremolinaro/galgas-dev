@@ -1,8 +1,8 @@
 #---------------------------------------------------------------------------*
 #                                                                           *
-#  Type constructors                             *
+#  Type constructors                                                        *
 #                                                                           *
-#  Copyright (C) 2009, ..., 2012 Pierre Molinaro.                           *
+#  Copyright (C) 2009, ..., 2013 Pierre Molinaro.                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
 #  This program is free software; you can redistribute it and/or modify it  *
@@ -28,19 +28,17 @@ routine enterConstructorWithoutArgument
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
-  if not [ioConstructorMap hasKey !inConstructorName] then
-    [@unifiedTypeMapProxy makeProxyFromString
-      !?ioUnifiedTypeMap
-      !inReturnedTypeName
-      ??@unifiedTypeMapProxy returnedTypeIndex
-    ] ;
-    [!?ioConstructorMap insertKey
-      ![@lstring new !inConstructorName !here]
-      ![@unifiedTypeMapProxyList emptyList]
-      !inHasLexiqueAndLocationArguments
-      !returnedTypeIndex
-    ] ;
-  end if ;
+  [@unifiedTypeMapProxy makeProxyFromString
+    !?ioUnifiedTypeMap
+    !inReturnedTypeName
+    ??@unifiedTypeMapProxy returnedTypeIndex
+  ] ;
+  [!?ioConstructorMap insertOrReplace
+    ![@lstring new !inConstructorName !here]
+    ![@unifiedTypeMapProxyList emptyList]
+    !inHasLexiqueAndLocationArguments
+    !returnedTypeIndex
+  ] ;
 end routine ;
 
 #---------------------------------------------------------------------------*
@@ -57,7 +55,7 @@ routine enterConstructorWithArgument
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   @unifiedTypeMapProxy t ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
-  [!?ioConstructorMap insertKey
+  [!?ioConstructorMap insertOrReplace
     ![@lstring new !inConstructorName !here]
     ![@unifiedTypeMapProxyList listWithValue !t]
     !inHasLexiqueAndLocationArguments
@@ -84,7 +82,7 @@ routine enterConstructorWith2Arguments
   argumentTypeList += !t ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
   argumentTypeList += !t ;
-  [!?ioConstructorMap insertKey
+  [!?ioConstructorMap insertOrReplace
     ![@lstring new !inConstructorName !here]
     !argumentTypeList
     !inHasLexiqueAndLocationArguments
@@ -114,7 +112,7 @@ routine enterConstructorWith3Arguments
   argumentTypeList += !t ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument3TypeName ?t] ;
   argumentTypeList += !t ;
-  [!?ioConstructorMap insertKey
+  [!?ioConstructorMap insertOrReplace
     ![@lstring new !inConstructorName !here]
     !argumentTypeList
     !inHasLexiqueAndLocationArguments

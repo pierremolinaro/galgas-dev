@@ -161,7 +161,7 @@ local routine enterNonterminalNonTerminalInMapAndCheck
       foreach mLabelMap, inNonterminalLabelMap : new_ do
         @formalParameterSignature newSignature [emptyList] ;
         foreach new_mSignature do
-          newSignature += !mFormalArgumentType !mFormalArgumentPassingMode ;
+          newSignature += !mFormalArgumentType !mFormalArgumentPassingMode !mFormalArgumentName ;
         end foreach ;
         checkMethodSignatures
           !mSignatureForGeneration
@@ -193,7 +193,7 @@ local routine buildNonterminalDeclarationsMap
       foreach mFormalArgumentList do
         const @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
         signatureForGeneration += !mFormalArgumentPassingMode !t !mFormalArgumentName ![mFormalArgumentName string] ;
-        signature += !t !mFormalArgumentPassingMode ;
+        signature += !t !mFormalArgumentPassingMode !mFormalArgumentName->string ;
       end foreach ;
       [!?nonterminalLabelMap insertKey !mLabelName !signatureForGeneration !signature !mEndOfArgumentLocation] ;
     end foreach ;
@@ -992,7 +992,7 @@ routine semanticAnalysisOfRuleLabel
 #---
   outSignature := [@formalParameterSignature emptyList] ;
   foreach outSignatureForGeneration do
-    outSignature += !mFormalArgumentType !mFormalArgumentPassingMode ;
+    outSignature += !mFormalArgumentType !mFormalArgumentPassingMode !mFormalArgumentName->string ;
   end foreach ;
 #--- Semantic analysis of instruction list
   outInstructionListForGeneration := [@semanticInstructionListForGeneration emptyList] ;
@@ -1048,7 +1048,7 @@ routine semanticAnalysisOfSyntaxComponent
       foreach mFormalArguments do
         const @unifiedTypeMapProxy type [searchKey !inSemanticContext->mTypeMap !mFormalArgumentTypeName] ;
         signatureForGeneration += !mFormalArgumentPassingMode !type !mFormalArgumentName !"argument_" . mFormalArgumentName ;
-        signature += !type !mFormalArgumentPassingMode ;
+        signature += !type !mFormalArgumentPassingMode !mFormalArgumentName->string ;
       end foreach ;
       [!?nonterminalLabelMap insertKey !mLabelName !signatureForGeneration !signature !mEndOfArgumentLocation] ;
     end foreach ;

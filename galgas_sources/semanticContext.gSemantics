@@ -494,9 +494,12 @@ local routine addCategories
     foreach categoryMethodMapForType do
       @formalParameterSignature formalArgumentList [emptyList] ;
       foreach mFormalParameterList do
-        @unifiedTypeMapProxy typeIndex ;
-        [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mFormalArgumentTypeName ?typeIndex] ;
-        formalArgumentList += !typeIndex !mFormalArgumentPassingMode ;
+        [@unifiedTypeMapProxy makeProxy
+          !?ioSemanticContext->mTypeMap
+          !mFormalArgumentTypeName
+          ??@unifiedTypeMapProxy typeIndex
+        ] ;
+        formalArgumentList += !typeIndex !mFormalArgumentPassingMode !mFormalArgumentName->string ;
       end foreach ;
       [!?ioInstanceMethodMap insertKey
         !lkey
@@ -543,7 +546,7 @@ local routine addCategories
       foreach mFormalParameterList do
         @unifiedTypeMapProxy typeIndex ;
         [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mFormalArgumentTypeName ?typeIndex] ;
-        formalArgumentList += !typeIndex !mFormalArgumentPassingMode ;
+        formalArgumentList += !typeIndex !mFormalArgumentPassingMode !mFormalArgumentName->string ;
       end foreach ;
       [!?ioModifierMap insertKey
         !lkey
@@ -834,9 +837,9 @@ override method @mapDeclarationAST enterInSemanticContext
 #--- Handle attributes
   @formalParameterSignature insertMethodFormalArgumentList [emptyList] ;
   @typedAttributeList typedAttributeList [emptyList] ;
-  insertMethodFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  insertMethodFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !"inLKey" ;
   @formalParameterSignature removeMethodFormalArgumentList [emptyList] ;
-  removeMethodFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  removeMethodFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !"inLKey" ;
   foreach mAttributeList do
     @unifiedTypeMapProxy attributeTypeIndex ;
     [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
@@ -844,8 +847,8 @@ override method @mapDeclarationAST enterInSemanticContext
     @bool hasSetter := true ;
     typedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter ;
     enumerationDescriptor += !attributeTypeIndex ![mAttributeName string] ;
-    insertMethodFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
-    removeMethodFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
+    insertMethodFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !mAttributeName->string ;
+    removeMethodFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentOut] !mAttributeName->string ;
   end foreach ;
 #--- Handle insert modifiers
   foreach mInsertMethodList do
@@ -924,8 +927,8 @@ override method @mapDeclarationAST enterInSemanticContext
     @unifiedTypeMapProxy attributeTypeIndex ;
     [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
     @formalParameterSignature accessorFormalArgumentList [emptyList] ;
-    accessorFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
-    accessorFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    accessorFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !mAttributeName->string ;
+    accessorFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !mAttributeName->string ;
     [!?modifierMap insertOrReplace
       !accessorName
       ![@methodKind definedAsMember]
@@ -1037,9 +1040,9 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
 #--- Handle attributes
   @typedAttributeList typedAttributeList [emptyList] ;
   @formalParameterSignature insertMethodFormalArgumentList [emptyList] ;
-  insertMethodFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  insertMethodFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !"inLKey" ;
   @formalParameterSignature removeMethodFormalArgumentList [emptyList] ;
-  removeMethodFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  removeMethodFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !"inLKey" ;
   foreach mAttributeList do
     @unifiedTypeMapProxy attributeTypeIndex ;
     [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
@@ -1047,8 +1050,8 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     @bool hasSetter := true ;
     typedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter ;
     enumerationDescriptor += !attributeTypeIndex ![mAttributeName string] ;
-    insertMethodFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
-    removeMethodFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
+    insertMethodFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !mAttributeName->string ;
+    removeMethodFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentOut] !mAttributeName->string ;
   end foreach ;
 #-------------------------- Insert Modifiers
   foreach mInsertMethodList do
@@ -1067,8 +1070,8 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
   end foreach ;
 #--------------------------- EnterEdge Modifier
   @formalParameterSignature enterEdgeFormalArgumentList [emptyList] ;
-  enterEdgeFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  enterEdgeFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  enterEdgeFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !"inSource" ;
+  enterEdgeFormalArgumentList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !"inTarget" ;
   [!?modifierMap insertOrReplace
     !["enterEdge" nowhere]
     ![@methodKind definedAsMember]
@@ -1079,8 +1082,8 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
   ] ;
 #--------------------------- topologicalSort Method
   @formalParameterSignature topologicalSortFormalArgumentList [emptyList] ;
-  topologicalSortFormalArgumentList += !lstringlistTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
-  topologicalSortFormalArgumentList += !lstringlistTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
+  topologicalSortFormalArgumentList += !lstringlistTypeIndex ![@formalArgumentPassingModeAST argumentOut] !"outSortedLKeys" ;
+  topologicalSortFormalArgumentList += !lstringlistTypeIndex ![@formalArgumentPassingModeAST argumentOut] !"outUnsortedLKeys" ;
   [!?instanceMethodMap insertKey
     !["topologicalSort" nowhere]
     ![@methodKind definedAsMember]
@@ -1130,7 +1133,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     [!?modifierMap insertKey
       ![@lstring new !"closeBranch" !here]
       ![@methodKind definedAsMember]
-      ![@formalParameterSignature listWithValue !locationTypeIndex ![@formalArgumentPassingModeAST argumentIn]]
+      ![@formalParameterSignature listWithValue !locationTypeIndex ![@formalArgumentPassingModeAST argumentIn] !"inErrorLocation"]
       !true
       ![@methodQualifier isBasic]
       !"" # No error message
@@ -1138,7 +1141,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     [!?modifierMap insertKey
       ![@lstring new !"closeOverride" !here]
       ![@methodKind definedAsMember]
-      ![@formalParameterSignature listWithValue !locationTypeIndex ![@formalArgumentPassingModeAST argumentIn]]
+      ![@formalParameterSignature listWithValue !locationTypeIndex ![@formalArgumentPassingModeAST argumentIn] !"inErrorLocation"]
       !true
       ![@methodQualifier isInherited]
       !"" # No error message
@@ -1146,7 +1149,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     [!?instanceMethodMap insertKey
       ![@lstring new !"checkAutomatonStates" !here]
       ![@methodKind definedAsMember]
-      ![@formalParameterSignature listWithValue !locationTypeIndex ![@formalArgumentPassingModeAST argumentIn]]
+      ![@formalParameterSignature listWithValue !locationTypeIndex ![@formalArgumentPassingModeAST argumentIn] !"inErrorLocation"]
       !here
       !true
       ![@methodQualifier isBasic]
@@ -1185,8 +1188,8 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     @unifiedTypeMapProxy attributeTypeIndex ;
     [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
     @formalParameterSignature accessorFormalArgumentList [emptyList] ;
-    accessorFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
-    accessorFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    accessorFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !mAttributeName->string ;
+    accessorFormalArgumentList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !mAttributeName->string ;
     [!?modifierMap insertOrReplace
       !accessorName
       ![@methodKind definedAsMember]
@@ -1288,9 +1291,9 @@ override method @mapProxyDeclarationAST enterInSemanticContext
   [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mMapProxyTypeName ?mapProxyTypeProxy] ;
 #--- class method : makeProxy
   @formalParameterSignature argList [emptyList] ;
-  argList += !associatedMapTypeIndex ![@formalArgumentPassingModeAST argumentInOut] ;
-  argList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  argList += !mapProxyTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
+  argList += !associatedMapTypeIndex ![@formalArgumentPassingModeAST argumentInOut] !"ioMap" ;
+  argList += !lstringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !"inLKey" ;
+  argList += !mapProxyTypeProxy ![@formalArgumentPassingModeAST argumentOut] !"outProxy" ;
   [!?classMethodMap insertKey
     ![@lstring new !"makeProxy" !here]
     !argList
@@ -1298,9 +1301,9 @@ override method @mapProxyDeclarationAST enterInSemanticContext
   ] ;
 #--- class method : makeProxyFromString
   argList := [@formalParameterSignature emptyList] ;
-  argList += !associatedMapTypeIndex ![@formalArgumentPassingModeAST argumentInOut] ;
-  argList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  argList += !mapProxyTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
+  argList += !associatedMapTypeIndex ![@formalArgumentPassingModeAST argumentInOut] !"ioMap" ;
+  argList += !stringTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !"inLKey" ;
+  argList += !mapProxyTypeProxy ![@formalArgumentPassingModeAST argumentOut] !"outProxy" ;
   [!?classMethodMap insertKey
     ![@lstring new !"makeProxyFromString" !here]
     !argList
@@ -1451,13 +1454,12 @@ override method @externTypeDeclarationAST enterInSemanticContext
   foreach mExternTypeModifierList do
     @formalParameterSignature routineSignature [emptyList] ;
     foreach mFormalParameterList do
-      @unifiedTypeMapProxy parameterTypeIndex ;
       [@unifiedTypeMapProxy makeProxy
         !?ioSemanticContext->mTypeMap
         !mFormalArgumentTypeName
-        ?parameterTypeIndex
+        ??@unifiedTypeMapProxy parameterTypeIndex
       ] ;
-      routineSignature += !parameterTypeIndex !mFormalArgumentPassingMode ;
+      routineSignature += !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName->string ;
     end foreach ;
   #---
     [!?modifierMap insertKey
@@ -1479,7 +1481,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
         !mFormalArgumentTypeName
         ?parameterTypeIndex
       ] ;
-      routineSignature += !parameterTypeIndex !mFormalArgumentPassingMode ;
+      routineSignature += !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName->string ;
     end foreach ;
   #---
     [!?instanceMethodMap insertKey
@@ -1552,10 +1554,10 @@ override method @graphDeclarationAST enterInSemanticContext
   @classMethodMap classMethodMap [emptyMap] ;
 #--- Methods 'topologicalSort', 'depthFirstTopologicalSort'
   @formalParameterSignature formalParameterList [emptyList] ;
-  formalParameterList += !associatedListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
-  formalParameterList += !lstringListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
-  formalParameterList += !associatedListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
-  formalParameterList += !lstringListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
+  formalParameterList += !associatedListTypeProxy ![@formalArgumentPassingModeAST argumentOut] !"outSortedInformationList" ;
+  formalParameterList += !lstringListTypeProxy ![@formalArgumentPassingModeAST argumentOut] !"outSortedLKeyList" ;
+  formalParameterList += !associatedListTypeProxy ![@formalArgumentPassingModeAST argumentOut] !"outUnsortedInformationList" ;
+  formalParameterList += !lstringListTypeProxy ![@formalArgumentPassingModeAST argumentOut] !"outUnsortedLKeyList" ;
   [!?instanceMethodMap insertKey
     ![@lstring new !"topologicalSort" !here]
     ![@methodKind definedAsMember]
@@ -1577,8 +1579,8 @@ override method @graphDeclarationAST enterInSemanticContext
   drop formalParameterList ;
 #--- Methods 'nodesWithNoSuccessor', 'nodesWithNoPredecessor'
   formalParameterList := [@formalParameterSignature emptyList] ;
-  formalParameterList += !associatedListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
-  formalParameterList += !lstringListTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
+  formalParameterList += !associatedListTypeProxy ![@formalArgumentPassingModeAST argumentOut] !"outInformationList" ;
+  formalParameterList += !lstringListTypeProxy ![@formalArgumentPassingModeAST argumentOut] !"outLKeyList" ;
   [!?instanceMethodMap insertKey
     ![@lstring new !"nodesWithNoSuccessor" !here]
     ![@methodKind definedAsMember]
@@ -1673,9 +1675,9 @@ override method @graphDeclarationAST enterInSemanticContext
   ] ;
 #--- Modifier 'enterNode'
   formalParameterList := [@formalParameterSignature emptyList] ;
-  formalParameterList += !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
+  formalParameterList += !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] !"inLKey" ;
   foreach [associatedListTypeProxy mAddAssignOperatorArguments] do
-    formalParameterList += !mType ![@formalArgumentPassingModeAST argumentIn] ;
+    formalParameterList += !mType ![@formalArgumentPassingModeAST argumentIn] !"" ; #  !mFormalArgumentName->string ;
   end foreach ;
   foreach mInsertModifierList do
     [!?modifierMap insertOrReplace
@@ -1697,9 +1699,9 @@ override method @graphDeclarationAST enterInSemanticContext
     ![@methodQualifier isInherited]
     !"" # No error message
   ] ;
-#--- Modifier 'removeEdgeToDominators'
+#--- Modifier 'removeEdgesToNode'
   formalParameterList := [@formalParameterSignature emptyList] ;
-  formalParameterList += !stringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
+  formalParameterList += !stringTypeProxy ![@formalArgumentPassingModeAST argumentIn] !"inNodeName" ;
   [!?modifierMap insertKey
     ![@lstring new !"removeEdgesToNode" !here]
     ![@methodKind definedAsMember]
@@ -1709,10 +1711,10 @@ override method @graphDeclarationAST enterInSemanticContext
     !"" # No error message
   ] ;
   drop formalParameterList ;
-#--- Modifier 'enterArc'
+#--- Modifier 'addEdge'
   formalParameterList := [@formalParameterSignature emptyList] ;
-  formalParameterList += !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
-  formalParameterList += !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
+  formalParameterList += !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] !"inSourceNodeLKey" ;
+  formalParameterList += !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] !"inTargetNodeLKey" ;
   [!?modifierMap insertKey
     ![@lstring new !"addEdge" !here]
     ![@methodKind definedAsMember]
@@ -1724,7 +1726,7 @@ override method @graphDeclarationAST enterInSemanticContext
   drop formalParameterList ;
 #--- Modifier 'noteNode'
   formalParameterList := [@formalParameterSignature emptyList] ;
-  formalParameterList += !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] ;
+  formalParameterList += !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] !"inNodeLKey" ;
   [!?modifierMap insertKey
     ![@lstring new !"noteNode" !here]
     ![@methodKind definedAsMember]
@@ -2025,8 +2027,8 @@ override method @listDeclarationAST enterInSemanticContext
   foreach typedAttributeList do
     enumerationDescriptor += !mAttributeTypeProxy ![mAttributeName string] ;
     constructorAttributeTypeList += !mAttributeTypeProxy ;
-    modifierOutputFormalArgumentList += !mAttributeTypeProxy ![@formalArgumentPassingModeAST argumentOut] ;
-    modifierInputFormalArgumentList += !mAttributeTypeProxy ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    modifierOutputFormalArgumentList += !mAttributeTypeProxy ![@formalArgumentPassingModeAST argumentOut] !mAttributeName->string ;
+    modifierInputFormalArgumentList += !mAttributeTypeProxy ![@formalArgumentPassingModeAST argumentConstantIn] !mAttributeName->string ;
   end foreach ;
 #--- Constructors
   @constructorMap constructorMap [emptyMap] ;
@@ -2095,7 +2097,7 @@ override method @listDeclarationAST enterInSemanticContext
     ![@methodQualifier isBasic]
     !""
   ] ;
-  modifierOutputFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  modifierOutputFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] !"inIndex" ;
   [!?modifierMap insertOrReplace
     ![@lstring new !"removeAtIndex" !here]
     ![@methodKind definedAsMember]
@@ -2108,8 +2110,8 @@ override method @listDeclarationAST enterInSemanticContext
   foreach typedAttributeList do
     if mHasSetter then
       @formalParameterSignature setterFormalArgumentList [emptyList] ;
-      setterFormalArgumentList += !mAttributeTypeProxy ![@formalArgumentPassingModeAST argumentConstantIn] ;
-      setterFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] ;
+      setterFormalArgumentList += !mAttributeTypeProxy ![@formalArgumentPassingModeAST argumentConstantIn] !mAttributeName->string ;
+      setterFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] !mAttributeName->string ;
       [!?modifierMap insertOrReplace
         ![@lstring new !"set" . [[mAttributeName string] stringByCapitalizingFirstCharacter] . "AtIndex" ![mAttributeName location]]
         ![@methodKind definedAsMember]
@@ -2121,7 +2123,7 @@ override method @listDeclarationAST enterInSemanticContext
     end if ;
   end foreach ;
 #--- Modifier 'insertAtIndex'
-  modifierInputFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] ; # At insertion index argument
+  modifierInputFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] !"inInsertionIndex" ;
   [!?modifierMap insertOrReplace
     ![@lstring new !"insertAtIndex" !here]
     ![@methodKind definedAsMember]
@@ -2208,7 +2210,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
     typedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter ;
     enumerationDescriptor += !attributeTypeIndex ![mAttributeName string] ;
     constructorAttributeTypeList += !attributeTypeIndex ;
-    modifierFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
+    modifierFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentOut] !mAttributeName->string ;
   end foreach ;
 #--- Constructors
   @constructorMap constructorMap [emptyMap] ;
@@ -2587,7 +2589,7 @@ override method @classDeclarationAST enterInSemanticContext
       [!?modifierMap insertKey
         ![@lstring new !"set". [[mAttributeName string] stringByCapitalizingFirstCharacter] !here]
         ![@methodKind definedAsMember]
-        ![@formalParameterSignature listWithValue !mAttributeTypeProxy ![@formalArgumentPassingModeAST argumentIn]]
+        ![@formalParameterSignature listWithValue !mAttributeTypeProxy ![@formalArgumentPassingModeAST argumentIn] !mAttributeName->string]
         !false # No compiler argument
         ![@methodQualifier isBasicFinal]
         !"" # No error message
@@ -2659,7 +2661,7 @@ override method @externRoutineDeclarationAST enterInSemanticContext # Handles al
   foreach mFormalArgumentList do
     @unifiedTypeMapProxy parameterTypeIndex ;
     [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mFormalArgumentTypeName ?parameterTypeIndex] ;
-    routineSignature += !parameterTypeIndex !mFormalArgumentPassingMode ;
+    routineSignature += !parameterTypeIndex !mFormalArgumentPassingMode !mFormalArgumentName->string ;
   end foreach ;
 #--- Enter routine in routine map
   [!?ioSemanticContext->mRoutineMap insertKey !mRoutineName !routineSignature] ;
@@ -2771,10 +2773,10 @@ override method @arrayDeclarationAST enterInSemanticContext
   ] ;
 #--- Modifiers
   @formalParameterSignature modifierFormalArgumentList [emptyList] ;
-  modifierFormalArgumentList += !elementTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  modifierFormalArgumentList += !elementTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !"InValue" ;
   idx := 0 ;
   loop [mDimension uint] : while idx < [mDimension uint] do
-    modifierFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] ;
+    modifierFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] !"inIndex" . idx ;
     idx ++ ;
   end loop ;
   [!?modifierMap insertKey
@@ -2793,7 +2795,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     ![@methodQualifier isBasicFinal]
     !""
   ] ;
-  [!?modifierFormalArgumentList popFirst ?* ?*] ;
+  [!?modifierFormalArgumentList popFirst ?3*] ;
   [!?modifierMap insertKey
     !["invalidateValueAtIndex" nowhere]
     ![@methodKind definedAsMember]
@@ -2811,8 +2813,8 @@ override method @arrayDeclarationAST enterInSemanticContext
     !""
   ] ;
   modifierFormalArgumentList := [@formalParameterSignature emptyList] ;
-  modifierFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  modifierFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  modifierFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] !"inSize" ;
+  modifierFormalArgumentList += !uintType ![@formalArgumentPassingModeAST argumentConstantIn] !"inAxisIndex" ;
   [!?modifierMap insertKey
     !["setSizeForAxis" nowhere]
     ![@methodKind definedAsMember]
