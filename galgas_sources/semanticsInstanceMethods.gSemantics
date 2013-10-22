@@ -44,13 +44,14 @@ routine enterInstanceMethodWithInputArgument
   ?!@instanceMethodMap ioInstanceMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ??@string inInputArgumentTypeName
+  ??@string inInputArgumentName
   ??@lstring inInstanceMethodName
   ??@bool inHasCompilerArgument
 :
   @unifiedTypeMapProxy argumentTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
-  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] !inInputArgumentName ;
   [!?ioInstanceMethodMap insertKey
     !inInstanceMethodName
     ![@methodKind definedAsMember]
@@ -67,14 +68,15 @@ end routine ;
 routine enterInstanceMethodWithOutputArgument
   ?!@instanceMethodMap ioInstanceMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  ??@string inInputArgumentTypeName
+  ??@string inOutputArgumentTypeName
+  ??@string inOutputArgumentName
   ??@lstring inInstanceMethodName
   ??@bool inHasCompilerArgument
 :
   @unifiedTypeMapProxy argumentTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inInputArgumentTypeName ?argumentTypeIndex] ;
+  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inOutputArgumentTypeName ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
-  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentOut] ;
+  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentOut] !inOutputArgumentName ;
   [!?ioInstanceMethodMap insertKey
     !inInstanceMethodName
     ![@methodKind definedAsMember]
@@ -93,14 +95,14 @@ override method @dataPredefinedTypeAST getInstanceMethodMap
   !@instanceMethodMap outInstanceMethodMap
 :
   outInstanceMethodMap := [@instanceMethodMap emptyMap] ;
-  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" ![@lstring new !"writeToFile" !here] !true ;
-  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" ![@lstring new !"writeToExecutableFile" !here] !true ;
+  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !["writeToFile" nowhere] !true ;
+  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" !["writeToExecutableFile" nowhere] !true ;
   @formalParameterSignature argList [emptyList] ;
   @unifiedTypeMapProxy t ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?t] ;
-  argList += !t ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += !t ![@formalArgumentPassingModeAST argumentConstantIn] !"inFilePath" ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"bool" ?t] ;
-  argList += !t ![@formalArgumentPassingModeAST argumentOut] ;
+  argList += !t ![@formalArgumentPassingModeAST argumentOut] !"outFileModified" ;
   [!?outInstanceMethodMap insertKey
     ![@lstring new !"writeToFileWhenDifferentContents" !here]
     ![@methodKind definedAsMember]
@@ -119,17 +121,17 @@ override method @stringPredefinedTypeAST getInstanceMethodMap
   !@instanceMethodMap outInstanceMethodMap
 :
   outInstanceMethodMap := [@instanceMethodMap emptyMap] ;
-  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" ![@lstring new !"writeToFile" !here] !true ;
-  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" ![@lstring new !"writeToExecutableFile" !here] !true ;
-  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" ![@lstring new !"makeDirectoryAndWriteToFile" !here] !true ;
-  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" ![@lstring new !"makeSymbolicLinkWithPath" !here] !true ;
+  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" ![@lstring new !"writeToFile" !here] !true ;
+  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" ![@lstring new !"writeToExecutableFile" !here] !true ;
+  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" ![@lstring new !"makeDirectoryAndWriteToFile" !here] !true ;
+  enterInstanceMethodWithInputArgument !?outInstanceMethodMap !?ioUnifiedTypeMap !"string" !"inFilePath" ![@lstring new !"makeSymbolicLinkWithPath" !here] !true ;
   enterInstanceMethodWithoutArgument !?outInstanceMethodMap ![@lstring new !"makeDirectory" !here] !true ;
   @formalParameterSignature argList [emptyList] ;
   @unifiedTypeMapProxy t ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?t] ;
-  argList += !t ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += !t ![@formalArgumentPassingModeAST argumentConstantIn] !"inFilePath" ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"bool" ?t] ;
-  argList += !t ![@formalArgumentPassingModeAST argumentOut] ;
+  argList += !t ![@formalArgumentPassingModeAST argumentOut] !"outFileModified" ;
   [!?outInstanceMethodMap insertKey
     ![@lstring new !"writeToFileWhenDifferentContents" !here]
     ![@methodKind definedAsMember]

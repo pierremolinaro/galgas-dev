@@ -40,6 +40,7 @@ map @constructorMap {
   @unifiedTypeMapProxyList mArgumentTypeList ;
   @bool mHasCompilerArgument ;
   @unifiedTypeMapProxy mReturnedType ;
+  insert or replace ;
   insert insertKey error message "the '%K' constructor has been already defined" ;
   search searchKey error message "the '%K' constuctor is not declared" ;
 }
@@ -86,6 +87,7 @@ map @readerMap {
 list @formalParameterSignature {
   @unifiedTypeMapProxy mFormalArgumentType ;
   @formalArgumentPassingModeAST mFormalArgumentPassingMode ;
+  @string mFormalArgumentName ;
 }
 
 #---------------------------------------------------------------------------*

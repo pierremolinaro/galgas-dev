@@ -76,7 +76,7 @@ override method @stringsetPredefinedTypeAST getModifierMap
   [!?outModifierMap insertKey
     ![@lstring new !"removeKey" !here]
     ![@methodKind definedAsMember]
-    ![@formalParameterSignature listWithValue !stringType ![@formalArgumentPassingModeAST argumentIn]]
+    ![@formalParameterSignature listWithValue !stringType ![@formalArgumentPassingModeAST argumentIn] !"inKey"]
     !false # No Compiler argument
     ![@methodQualifier isBasic]
     !""

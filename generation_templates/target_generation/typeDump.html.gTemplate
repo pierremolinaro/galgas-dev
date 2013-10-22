@@ -223,7 +223,7 @@ if [type_mInstanceMethodMap count] > 0 then
       when argumentInOut      : % ?!%
       when argumentOut        : % !%
       end switch
-      !linkForType [![mFormalArgumentType key]]
+      !linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName
     end foreach
     %<br>%
   end foreach
@@ -253,7 +253,7 @@ if [type_mModifierMap count] > 0 then
       when argumentInOut      : % ?!%
       when argumentOut        : % !%
       end switch
-      !linkForType [![mFormalArgumentType key]]
+      !linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName
     end foreach
     %<br>%
   end foreach
@@ -271,7 +271,7 @@ if [type_mClassMethodMap count] > 0 then
       when argumentInOut      : % ?!%
       when argumentOut        : % !%
       end switch
-      !linkForType [![mFormalArgumentType key]]
+      !linkForType [![mFormalArgumentType key]] % % !mFormalArgumentName
     end foreach
     %<br>%
   end foreach

@@ -1104,16 +1104,15 @@ void GALGAS_string::class_method_generateFile (GALGAS_string inStartPath,
 
 //---------------------------------------------------------------------------*
 
-void GALGAS_string::
-class_method_generateFileWithPattern (GALGAS_string inStartPath,
-                                      GALGAS_string inFileName,
-                                      GALGAS_string inLineCommentPrefix,
-                                      GALGAS_string inDefaultUserZone1,
-                                      GALGAS_string inGeneratedZone2,
-                                      GALGAS_string inDefaultUserZone2,
-                                      GALGAS_string inGeneratedZone3,
-                                      C_Compiler * inCompiler
-                                      COMMA_UNUSED_LOCATION_ARGS) {
+void GALGAS_string::class_method_generateFileWithPattern (GALGAS_string inStartPath,
+                                                          GALGAS_string inFileName,
+                                                          GALGAS_string inLineCommentPrefix,
+                                                          GALGAS_string inDefaultUserZone1,
+                                                          GALGAS_string inGeneratedZone2,
+                                                          GALGAS_string inDefaultUserZone2,
+                                                          GALGAS_string inGeneratedZone3,
+                                                          C_Compiler * inCompiler
+                                                          COMMA_UNUSED_LOCATION_ARGS) {
   const bool built = (inStartPath.isValid ())
     && (inFileName.isValid ())
     && (inLineCommentPrefix.isValid ())

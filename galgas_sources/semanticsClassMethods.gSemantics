@@ -26,12 +26,13 @@ routine enterClassMethodWithStringInputArgument
   ?!@classMethodMap ioClassMethodMap
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ??@string inClassMethodName
+  ??@string inStringArgumentName
   ??@bool inHasCompilerArgument
 :
   @unifiedTypeMapProxy argumentTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?argumentTypeIndex] ;
   @formalParameterSignature argList [emptyList] ;
-  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += !argumentTypeIndex ![@formalArgumentPassingModeAST argumentConstantIn] ! inStringArgumentName ;
   [!?ioClassMethodMap insertOrReplace
     ![@lstring new !inClassMethodName !here]
     !argList
@@ -46,25 +47,29 @@ override method @stringPredefinedTypeAST getClassMethodMap
   !@classMethodMap outClassMethodMap
 :
   outClassMethodMap := [@classMethodMap emptyMap] ;
-  enterClassMethodWithStringInputArgument !?outClassMethodMap !?ioUnifiedTypeMap !"deleteFile" !true ;
-  enterClassMethodWithStringInputArgument !?outClassMethodMap !?ioUnifiedTypeMap !"deleteFileIfExists" !true ;
-  enterClassMethodWithStringInputArgument !?outClassMethodMap !?ioUnifiedTypeMap !"removeEmptyDirectory" !true ;
-  enterClassMethodWithStringInputArgument !?outClassMethodMap !?ioUnifiedTypeMap !"removeDirectoryRecursively" !true ;
+  enterClassMethodWithStringInputArgument !?outClassMethodMap !?ioUnifiedTypeMap !"deleteFile" !"inFilePath" !true ;
+  enterClassMethodWithStringInputArgument !?outClassMethodMap !?ioUnifiedTypeMap !"deleteFileIfExists" !"inFilePath" !true ;
+  enterClassMethodWithStringInputArgument !?outClassMethodMap !?ioUnifiedTypeMap !"removeEmptyDirectory" !"inDirectoryPath" !true ;
+  enterClassMethodWithStringInputArgument !?outClassMethodMap !?ioUnifiedTypeMap !"removeDirectoryRecursively" !"inDirectoryPath" !true ;
   @unifiedTypeMapProxy stringType ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringType] ;
   @formalParameterSignature argList [emptyList] ;
-  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inStartPath" ;
+  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inFileName" ;
+  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inContents" ;
   [!?outClassMethodMap insertOrReplace
     ![@lstring new !"generateFile" !here]
     !argList
     !true
   ] ;
-  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
-  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] ;
+  argList := [@formalParameterSignature emptyList] ;
+  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inStartPath" ;
+  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inFileName" ;
+  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inLineCommentPrefix" ;
+  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inDefaultUserZone1" ;
+  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inGeneratedZone2" ;
+  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inDefaultUserZone2" ;
+  argList += !stringType ![@formalArgumentPassingModeAST argumentConstantIn] !"inGeneratedZone3" ;
   [!?outClassMethodMap insertOrReplace
     ![@lstring new !"generateFileWithPattern" !here]
     !argList
