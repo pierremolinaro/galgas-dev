@@ -69,7 +69,7 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
 #--- Get reader map
   const @readerMap readerMap := [receiverType mReaderMap] ;
 #--- Search contructor
-  @unifiedTypeMapProxyList readerFormalArgumentTypeList ;
+  @unifiedTypeMapProxyAndParameterList readerFormalArgumentTypeList ;
   @methodKind kind ;
   @bool hasCompilerArgument ;
   @unifiedTypeMapProxy returnedType ;
@@ -86,7 +86,7 @@ override method @templateReaderCallInExpressionAST templateExpressionAnalysis
   else
     @uint matchingReaderCount := 0 ;
     if [receiverType mTypeKindEnum] == [@typeKindEnum structType] then
-      readerFormalArgumentTypeList := [@unifiedTypeMapProxyList emptyList] ;
+      readerFormalArgumentTypeList := [@unifiedTypeMapProxyAndParameterList emptyList] ;
       hasCompilerArgument := true ;
       returnedType := [@unifiedTypeMapProxy null] ;
       kind := [@methodKind definedAsMember] ;
@@ -181,7 +181,7 @@ override method @templateConstructorAST templateExpressionAnalysis
 #--- Search contructor
   @unifiedTypeMapProxy returnedType ;
   @bool hasCompilerArgument ;
-  @unifiedTypeMapProxyList constructorFormalArgumentTypeList ;
+  @unifiedTypeMapProxyAndParameterList constructorFormalArgumentTypeList ;
   with constructorMap hasKey ![mConstructorName string] do
     constructorFormalArgumentTypeList := mArgumentTypeList ;
     hasCompilerArgument := mHasCompilerArgument ;

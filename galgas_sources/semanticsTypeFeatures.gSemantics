@@ -250,11 +250,10 @@ end reader ;
 
 override method @stringsetPredefinedTypeAST getAddAssignArgumentList
   ?!@unifiedTypeMap ioUnifiedTypeMap
-  !@unifiedTypeMapProxyList outAddAssignArgumentList
+  !@unifiedTypeMapProxyAndParameterList outAddAssignArgumentList
 :
-  @unifiedTypeMapProxy stringTypeIndex ;
-  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"string" ?stringTypeIndex] ;
-  outAddAssignArgumentList := [@unifiedTypeMapProxyList listWithValue !stringTypeIndex] ;
+  [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !"string" ??@unifiedTypeMapProxy stringTypeIndex] ;
+  outAddAssignArgumentList := [@unifiedTypeMapProxyAndParameterList listWithValue !stringTypeIndex !"inString"] ;
 end method ;
 
 #---------------------------------------------------------------------------*
