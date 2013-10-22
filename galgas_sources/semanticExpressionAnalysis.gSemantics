@@ -537,7 +537,7 @@ routine analyzeConstructorInvocation
 #--- Get constructor map from type map
   const @constructorMap constructorMap := [outConstructorType mConstructorMap] ;
 #--- Search contructor
-  @unifiedTypeMapProxyList constructorFormalArgumentTypeList ;
+  @unifiedTypeMapProxyAndParameterList constructorFormalArgumentTypeList ;
   with constructorMap hasKey ![inConstructorName string] do
     constructorFormalArgumentTypeList := mArgumentTypeList ;
     outHasCompilerArgument := mHasCompilerArgument ;
@@ -649,7 +649,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
 #--- Get reader map
   const @readerMap readerMap := [receiverType mReaderMap] ;
 #--- Search reader
-  @unifiedTypeMapProxyList readerFormalArgumentTypeList ;
+  @unifiedTypeMapProxyAndParameterList readerFormalArgumentTypeList ;
   @methodKind kind ;
   @bool hasCompilerArgument ;
   @unifiedTypeMapProxy returnedType ;
@@ -665,7 +665,7 @@ override method @readerCallExpressionAST analyzeSemanticExpression
   else
     @uint matchingReaderCount := 0 ;
     if [receiverType mTypeKindEnum] == [@typeKindEnum structType] then
-      readerFormalArgumentTypeList := [@unifiedTypeMapProxyList emptyList] ;
+      readerFormalArgumentTypeList := [@unifiedTypeMapProxyAndParameterList emptyList] ;
       hasCompilerArgument := true ;
       returnedType := [@unifiedTypeMapProxy null] ;
       kind := [@methodKind definedAsCategory] ;
@@ -874,14 +874,13 @@ routine checkDiadicOperator
     if not ok then
     #--- Check if there is a conversion reader
       if [[inRightType mReaderMap] hasKey ![inLeftType key]] then
-        @unifiedTypeMapProxyList argumentTypeList ;
         @bool hasCompilerArgument ;
         @unifiedTypeMapProxy returnedType ;
         @methodKind kind ;
         [[inRightType mReaderMap] searchKey
           ![inLeftType lkey]
           ?kind
-          ?argumentTypeList
+          ?@unifiedTypeMapProxyAndParameterList argumentTypeList
           ?*
           ?hasCompilerArgument
           ?returnedType

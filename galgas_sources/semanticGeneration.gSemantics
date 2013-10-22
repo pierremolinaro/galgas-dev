@@ -501,7 +501,7 @@ filewrapper typeGenerationTemplate in "../generation_templates/type_generation" 
     ?@classMethodMap CLASS_METHOD_MAP
     ?@enumerationDescriptorList ENUMERATION_DESCRIPTOR_LIST # Empty List if cannot be enumerated
     ?@uint SUPPORTED_OPERATORS
-    ?@unifiedTypeMapProxyList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
+    ?@unifiedTypeMapProxyAndParameterList ADD_ASSIGN_ARGUMENT_LIST # Empty list if operator is not supported
     ?@withAccessorMap WITH_ACCESSOR_MAP
     ?@unifiedTypeMapProxy ENUMERATED_OBJECT_TYPE
   ;

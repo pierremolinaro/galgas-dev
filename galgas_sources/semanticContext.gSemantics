@@ -517,11 +517,11 @@ local routine addCategories
     @categoryReaderMapForType categoryReaderMapForType ;
     [inCategoryReaderMapForBuildingContext searchKey !inTypeName ?categoryReaderMapForType] ;
     foreach categoryReaderMapForType do
-      @unifiedTypeMapProxyList formalArgumentList [emptyList] ;
+      @unifiedTypeMapProxyAndParameterList formalArgumentList [emptyList] ;
       foreach mInputFormalParameterList do
         @unifiedTypeMapProxy typeIndex ;
         [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mFormalArgumentTypeName ?typeIndex] ;
-        formalArgumentList += !typeIndex ;
+        formalArgumentList += !typeIndex !mFormalArgumentName->string ;
       end foreach ;
       @unifiedTypeMapProxy returnedType ;
       [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mResultTypeName ?returnedType] ;
@@ -724,7 +724,7 @@ override method @predefinedTypeAST enterInSemanticContext
   [selfcopy getModifierMap !?ioSemanticContext->mTypeMap ?@modifierMap modifierMap] ;
   [selfcopy getInstanceMethodMap !?ioSemanticContext->mTypeMap ?@instanceMethodMap instanceMethodMap] ;
   [selfcopy getClassMethodMap !?ioSemanticContext->mTypeMap ?@classMethodMap classMethodMap] ;
-  [selfcopy getAddAssignArgumentList !?ioSemanticContext->mTypeMap ?@unifiedTypeMapProxyList addAssignArgumentList] ;
+  [selfcopy getAddAssignArgumentList !?ioSemanticContext->mTypeMap ?@unifiedTypeMapProxyAndParameterList addAssignArgumentList] ;
   [selfcopy getEnumerationList
     !?ioSemanticContext->mTypeMap
     ?@enumerationDescriptorList enumerationList
@@ -824,14 +824,14 @@ override method @mapDeclarationAST enterInSemanticContext
   @instanceMethodMap instanceMethodMap [emptyMap] ;
 #--- Constructors
   enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"emptyMap" ![mMapTypeName string] !false ;
-  enterConstructorWithArgument !?constructorMap !?ioSemanticContext->mTypeMap !"mapWithMapToOverride" ![mMapTypeName string] ![mMapTypeName string] !false ;
+  enterConstructorWithArgument !?constructorMap !?ioSemanticContext->mTypeMap !"inMap" !"mapWithMapToOverride" ![mMapTypeName string] ![mMapTypeName string] !false ;
 #--- Readers
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"levels" !"uint" !false ;
-  enterInheritedReaderWith2Arguments !?readerMap !?ioSemanticContext->mTypeMap !"hasKeyAtLevel" !"string" !"uint" !"bool" !false ;
+  enterInheritedReaderWith2Arguments !?readerMap !?ioSemanticContext->mTypeMap !"hasKeyAtLevel" !"string" !"inKey" !"uint" !"inLevel" !"bool" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"keySet" !"stringset" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"keyList" !"lstringlist" !false ;
-  enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"hasKey" !"string" !"bool" !false ;
-  enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"locationForKey" !"string" !"location" !true ;
+  enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"hasKey" !"string" !"inKey" !"bool" !false ;
+  enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"locationForKey" !"string" !"inKey" !"location" !true ;
   enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"overriddenMap" ![mMapTypeName string] !true ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"count" !"uint" !false ;
 #--- Handle attributes
@@ -900,7 +900,7 @@ override method @mapDeclarationAST enterInSemanticContext
     [!?readerMap insertOrReplace
       !accessorName
       ![@methodKind definedAsMember]
-      ![@unifiedTypeMapProxyList listWithValue !stringTypeIndex]
+      ![@unifiedTypeMapProxyAndParameterList listWithValue !stringTypeIndex !"inKey"]
       !here
       !true
       !attributeTypeIndex
@@ -981,7 +981,7 @@ override method @mapDeclarationAST enterInSemanticContext
     !enumerationDescriptor
     !enumerationVariants
     !doNotGenererateObjectCompare []
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyAndParameterList emptyList]
     ![@stringset emptySet]
     ![@lstringlist emptyList]
     !mSearchMethodList
@@ -1031,8 +1031,8 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
 #--- Readers
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeys" !"stringset" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeyList" !"lstringlist" !false ;
-  enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"hasKey" !"string" !"bool" !false ;
-  enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"locationForKey" !"string" !"location" !true ;
+  enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"hasKey" !"string" !"inKey" !"bool" !false ;
+  enterInheritedReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"locationForKey" !"string" !"inKey" !"location" !true ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"count" !"uint" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"unsolvedProxyCount" !"uint" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"unsolvedProxyList" !"lstringlist" !false ;
@@ -1174,7 +1174,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     [!?readerMap insertOrReplace
       !accessorName
       ![@methodKind definedAsMember]
-      ![@unifiedTypeMapProxyList listWithValue !stringTypeIndex]
+      ![@unifiedTypeMapProxyAndParameterList listWithValue !stringTypeIndex !"inKey"]
       !here
       !true
       !attributeTypeIndex
@@ -1236,7 +1236,7 @@ override method @uniqueMapDeclarationAST enterInSemanticContext
     !enumerationDescriptor
     !enumerationVariants
     !doNotGenererateObjectCompare []
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyAndParameterList emptyList]
     ![@stringset emptySet]
     ![@lstringlist emptyList]
     !mSearchMethodList
@@ -1312,9 +1312,9 @@ override method @mapProxyDeclarationAST enterInSemanticContext
 #--- null constructor
   enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"null" ![mMapProxyTypeName string] !false ;
 #--- Search methods of associated map as constructors
-  @unifiedTypeMapProxyList constructorAttributeTypeList [emptyList] ;
-  constructorAttributeTypeList += !associatedMapTypeIndex ;
-  constructorAttributeTypeList += !lstringTypeIndex ;
+  @unifiedTypeMapProxyAndParameterList constructorAttributeTypeList [emptyList] ;
+  constructorAttributeTypeList += !associatedMapTypeIndex !"inMap" ;
+  constructorAttributeTypeList += !lstringTypeIndex !"inLKey" ;
   foreach searchMethodList do
     [!?constructorMap insertKey
       !mSearchMethodName
@@ -1345,7 +1345,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
       [!?readerMap insertKey
         !mAttributeName
         ![@methodKind definedAsMember]
-        ![@unifiedTypeMapProxyList emptyList]
+        ![@unifiedTypeMapProxyAndParameterList emptyList]
         !here
         !true
         !mAttributeTypeProxy
@@ -1382,7 +1382,7 @@ override method @mapProxyDeclarationAST enterInSemanticContext
     ![@enumerationDescriptorList emptyList]
     ![@stringlist emptyList]
     !doNotGenererateObjectCompare []
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyAndParameterList emptyList]
     ![@stringset emptySet]
     ![@lstringlist emptyList]
     ![@mapSearchMethodListAST emptyList]
@@ -1413,11 +1413,11 @@ override method @externTypeDeclarationAST enterInSemanticContext
     @unifiedTypeMapProxy returnedTypeProxy ;
     [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mResultTypeName ?returnedTypeProxy] ;
   #---
-    @unifiedTypeMapProxyList arguments [emptyList] ;
-    foreach mArgumentTypeNameList do
+    @unifiedTypeMapProxyAndParameterList arguments [emptyList] ;
+    foreach mParameterList do
       @unifiedTypeMapProxy argumentTypeProxy ;
-      [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mValue ?argumentTypeProxy] ;
-      arguments += !argumentTypeProxy ;
+      [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mFormalParameterTypeName ?argumentTypeProxy] ;
+      arguments += !argumentTypeProxy !mFormalParameterName ;
     end foreach ;
   #---
     [!?constructorMap insertKey
@@ -1432,11 +1432,11 @@ override method @externTypeDeclarationAST enterInSemanticContext
     @unifiedTypeMapProxy returnedTypeProxy ;
     [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mResultTypeName ?returnedTypeProxy] ;
   #---
-    @unifiedTypeMapProxyList arguments [emptyList] ;
-    foreach mArgumentTypeNameList do
+    @unifiedTypeMapProxyAndParameterList arguments [emptyList] ;
+    foreach mParameterList do
       @unifiedTypeMapProxy argumentTypeProxy ;
-      [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mValue ?argumentTypeProxy] ;
-      arguments += !argumentTypeProxy ;
+      [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mFormalParameterTypeName ?argumentTypeProxy] ;
+      arguments += !argumentTypeProxy !mFormalParameterName ;
     end foreach ;
   #---
     [!?readerMap insertKey
@@ -1511,7 +1511,7 @@ override method @externTypeDeclarationAST enterInSemanticContext
     ![@enumerationDescriptorList emptyList]
     ![@stringlist emptyList]
     !0
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyAndParameterList emptyList]
     ![@stringset emptySet]
     ![@lstringlist emptyList]
     ![@mapSearchMethodListAST emptyList]
@@ -1662,14 +1662,16 @@ override method @graphDeclarationAST enterInSemanticContext
     !?ioSemanticContext->mTypeMap
     !"subgraphFromNodes"
     !"lstringlist"
+    !"inStartNodeLStringList"
     !"stringset"
+    !"inNodesToExclude"
     !mGraphTypeName->string
     !true # has compiler argument
   ;
 #--- Constructor 'emptyGraph'
   [!?constructorMap insertKey
     ![@lstring new !"emptyGraph" !here]
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyAndParameterList emptyList]
     !false # No compiler argument
     !graphTypeProxy
   ] ;
@@ -1677,7 +1679,7 @@ override method @graphDeclarationAST enterInSemanticContext
   formalParameterList := [@formalParameterSignature emptyList] ;
   formalParameterList += !lstringTypeProxy ![@formalArgumentPassingModeAST argumentIn] !"inLKey" ;
   foreach [associatedListTypeProxy mAddAssignOperatorArguments] do
-    formalParameterList += !mType ![@formalArgumentPassingModeAST argumentIn] !"" ; #  !mFormalArgumentName->string ;
+    formalParameterList += !mType ![@formalArgumentPassingModeAST argumentIn] !mFormalParameterName ;
   end foreach ;
   foreach mInsertModifierList do
     [!?modifierMap insertOrReplace
@@ -1764,7 +1766,7 @@ override method @graphDeclarationAST enterInSemanticContext
     ![@enumerationDescriptorList emptyList]
     ![@stringlist emptyList]
     !doNotGenererateObjectCompare []
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyAndParameterList emptyList]
     ![@stringset emptySet]
     ![@lstringlist emptyList]
     ![@mapSearchMethodListAST emptyList]
@@ -1830,7 +1832,7 @@ override method @enumDeclarationAST enterInSemanticContext
     ![@enumerationDescriptorList emptyList]
     ![@stringlist emptyList]
     !generateDescriptionReaderUtilityMethod [] | isComparable []
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyAndParameterList emptyList]
     !constantSet
     !mConstantList
     ![@mapSearchMethodListAST emptyList]
@@ -2021,12 +2023,12 @@ override method @listDeclarationAST enterInSemanticContext
   [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mListTypeName ?listTypeIndex] ;
 #--- Attribute description
   @enumerationDescriptorList enumerationDescriptor [emptyList] ;
-  @unifiedTypeMapProxyList constructorAttributeTypeList [emptyList] ;
+  @unifiedTypeMapProxyAndParameterList constructorAttributeTypeList [emptyList] ;
   @formalParameterSignature modifierOutputFormalArgumentList [emptyList] ;
   @formalParameterSignature modifierInputFormalArgumentList [emptyList] ;
   foreach typedAttributeList do
     enumerationDescriptor += !mAttributeTypeProxy ![mAttributeName string] ;
-    constructorAttributeTypeList += !mAttributeTypeProxy ;
+    constructorAttributeTypeList += !mAttributeTypeProxy !mAttributeName->string ;
     modifierOutputFormalArgumentList += !mAttributeTypeProxy ![@formalArgumentPassingModeAST argumentOut] !mAttributeName->string ;
     modifierInputFormalArgumentList += !mAttributeTypeProxy ![@formalArgumentPassingModeAST argumentConstantIn] !mAttributeName->string ;
   end foreach ;
@@ -2043,14 +2045,14 @@ override method @listDeclarationAST enterInSemanticContext
   commonReaderMapForAllTypes !?ioSemanticContext->mTypeMap ?@readerMap readerMap ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"length" !"uint" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"range" !"range" !false ;
-  enterBaseReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"subListFromIndex" !"uint" ![mListTypeName string] !true ;
-  enterBaseReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"subListWithRange" !"range" ![mListTypeName string] !true ;
+  enterBaseReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"subListFromIndex" !"uint" !"inIndex" ![mListTypeName string] !true ;
+  enterBaseReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"subListWithRange" !"range" !"inRange" ![mListTypeName string] !true ;
   foreach typedAttributeList do
     if mHasGetter then
       [!?readerMap insertOrReplace
         ![@lstring new ![mAttributeName string] . "AtIndex" ![mAttributeName location]]
         ![@methodKind definedAsMember]
-        ![@unifiedTypeMapProxyList listWithValue !uintType]
+        ![@unifiedTypeMapProxyAndParameterList listWithValue !uintType !"inIndex"]
         !here
         !true
         !mAttributeTypeProxy
@@ -2199,7 +2201,7 @@ override method @sortedListDeclarationAST enterInSemanticContext
   [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mSortedListTypeName ?listTypeIndex] ;
 #--- Enumeration description
   @enumerationDescriptorList enumerationDescriptor [emptyList] ;
-  @unifiedTypeMapProxyList constructorAttributeTypeList [emptyList] ;
+  @unifiedTypeMapProxyAndParameterList constructorAttributeTypeList [emptyList] ;
   @formalParameterSignature modifierFormalArgumentList [emptyList] ;
   @typedAttributeList typedAttributeList [emptyList] ;
   foreach mAttributeList do
@@ -2208,8 +2210,8 @@ override method @sortedListDeclarationAST enterInSemanticContext
     @bool hasGetter := true ;
     @bool hasSetter := true ;
     typedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter ;
-    enumerationDescriptor += !attributeTypeIndex ![mAttributeName string] ;
-    constructorAttributeTypeList += !attributeTypeIndex ;
+    enumerationDescriptor += !attributeTypeIndex !mAttributeName->string ;
+    constructorAttributeTypeList += !attributeTypeIndex !mAttributeName->string ;
     modifierFormalArgumentList += !attributeTypeIndex ![@formalArgumentPassingModeAST argumentOut] !mAttributeName->string ;
   end foreach ;
 #--- Constructors
@@ -2327,12 +2329,12 @@ override method @structDeclarationAST enterInSemanticContext
 #--- Constructors and attribute map
   @attributeMap attributeMap [emptyMap] ;
   @constructorMap constructorMap [emptyMap] ;
-  @unifiedTypeMapProxyList constructorAttributeTypeList [emptyList] ;
+  @unifiedTypeMapProxyAndParameterList constructorAttributeTypeList [emptyList] ;
   @typedAttributeList typedAttributeList [emptyList] ;
   foreach mAttributeList do
     @unifiedTypeMapProxy attributeTypeIndex ;
     [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
-    constructorAttributeTypeList += !attributeTypeIndex ;
+    constructorAttributeTypeList += !attributeTypeIndex !mAttributeName->string ;
     @bool hasSetter := false ;
     @bool hasGetter := true ;
     typedAttributeList += !attributeTypeIndex !mAttributeName !hasSetter !hasGetter ;
@@ -2409,7 +2411,7 @@ override method @structDeclarationAST enterInSemanticContext
     ![@enumerationDescriptorList emptyList]
     ![@stringlist emptyList]
     !generateDescriptionReaderUtilityMethod []
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyAndParameterList emptyList]
     ![@stringset emptySet]
     ![@lstringlist emptyList]
     ![@mapSearchMethodListAST emptyList]
@@ -2518,14 +2520,14 @@ override method @classDeclarationAST enterInSemanticContext
     end foreach ;
   end if ;
 #--- Build attribute Map and constructor argument list
-  @unifiedTypeMapProxyList constructorAttributeTypeList [emptyList] ;
+  @unifiedTypeMapProxyAndParameterList constructorAttributeTypeList [emptyList] ;
   foreach inheritedTypedAttributeList do
-    constructorAttributeTypeList += !mAttributeTypeProxy ;
+    constructorAttributeTypeList += !mAttributeTypeProxy !mAttributeName->string ;
   end foreach ;
   foreach mAttributeList do
     @unifiedTypeMapProxy attributeTypeIndex ;
     [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mAttributeTypeName ?attributeTypeIndex] ;
-    constructorAttributeTypeList += !attributeTypeIndex ;
+    constructorAttributeTypeList += !attributeTypeIndex !mAttributeName->string ;
     [!?attributeMap insertKey !mAttributeName !attributeTypeIndex] ;
     if [readerMap hasKey ![mAttributeName string]] then
       error mAttributeName: "'" . mAttributeName . "' is the name of a prefefined or a user defined reader" ;
@@ -2568,7 +2570,7 @@ override method @classDeclarationAST enterInSemanticContext
       [!?readerMap insertKey
         !mAttributeName
         ![@methodKind definedAsMember]
-        ![@unifiedTypeMapProxyList emptyList] # No argument
+        ![@unifiedTypeMapProxyAndParameterList emptyList] # No argument
         !here
         !false # No Compiler argument
         !attributeTypeIndex # Returned type
@@ -2636,7 +2638,7 @@ override method @classDeclarationAST enterInSemanticContext
     ![@enumerationDescriptorList emptyList]
     ![@stringlist emptyList]
     !0
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyAndParameterList emptyList]
     ![@stringset emptySet]
     ![@lstringlist emptyList]
     ![@mapSearchMethodListAST emptyList]
@@ -2734,10 +2736,10 @@ override method @arrayDeclarationAST enterInSemanticContext
   @unifiedTypeMapProxy uintType ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioSemanticContext->mTypeMap !"uint" ?uintType] ;
 #---
-  @unifiedTypeMapProxyList uintArgs [emptyList] ;
+  @unifiedTypeMapProxyAndParameterList uintArgs [emptyList] ;
   @uint idx := 0 ;
   loop [mDimension uint] : while idx < [mDimension uint] do
-    uintArgs += !uintType ;
+    uintArgs += !uintType !"inSize" . idx ;
     idx ++ ;
   end loop ;
 #--- Constructor
@@ -2749,8 +2751,8 @@ override method @arrayDeclarationAST enterInSemanticContext
   ] ;
 #--- Readers
   enterBaseReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"axisCount" !"uint" !false ;
-  enterBaseReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"sizeForAxis" !"uint" !"uint" !true ;
-  enterBaseReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"rangeForAxis" !"uint" !"range" !true ;
+  enterBaseReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"sizeForAxis" !"uint" !"inAxisIndex" !"uint" !true ;
+  enterBaseReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"rangeForAxis" !"uint" !"inAxisIndex" !"range" !true ;
   [!?readerMap insertOrReplace
     ![@lstring new !"isValueValidAtIndex" !here]
     ![@methodKind definedAsMember]
@@ -2840,7 +2842,7 @@ override method @arrayDeclarationAST enterInSemanticContext
     ![@enumerationDescriptorList emptyList]
     ![@stringlist emptyList]
     !0
-    ![@unifiedTypeMapProxyList emptyList] # addAssignOperatorDescription
+    ![@unifiedTypeMapProxyAndParameterList emptyList] # addAssignOperatorDescription
     ![@stringset emptySet]
     ![@lstringlist emptyList]
     ![@mapSearchMethodListAST emptyList]
@@ -2891,7 +2893,7 @@ override method @listmapDeclarationAST enterInSemanticContext
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"count" !"uint" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"allKeys" !"stringset" !false ;
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"keyList" !"stringlist" !false ;
-  enterBaseReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"listForKey" !"string" ![mAssociatedListTypeName string] !false ;
+  enterBaseReaderWithArgument !?readerMap !?ioSemanticContext->mTypeMap !"listForKey" !"string" !"inKey" ![mAssociatedListTypeName string] !false ;
 #--- Constructors
   enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"emptyMap" ![mListmapTypeName string] !false ;
 #--- Enumerator description
@@ -2899,10 +2901,10 @@ override method @listmapDeclarationAST enterInSemanticContext
   enumeratorDescriptor += !stringTypeIndex !"key" ;
   enumeratorDescriptor += !associatedListTypeIndex !"mList" ;
 #--- Add assign operator description
-  @unifiedTypeMapProxyList addAssignOperatorDescription [emptyList] ;
-  addAssignOperatorDescription += !stringTypeIndex ;
+  @unifiedTypeMapProxyAndParameterList addAssignOperatorDescription [emptyList] ;
+  addAssignOperatorDescription += !stringTypeIndex !"inKey" ;
   foreach listTypedAttributeList do
-    addAssignOperatorDescription += !mAttributeTypeProxy ;
+    addAssignOperatorDescription += !mAttributeTypeProxy !mAttributeName->string ;
   end foreach ;
 #--- Enumeration variants
   @stringlist enumerationVariants [emptyList] ;

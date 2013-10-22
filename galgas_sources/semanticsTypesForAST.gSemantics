@@ -1421,10 +1421,17 @@ class @externTypeDeclarationAST extends @semanticDeclarationAST {
 
 #---------------------------------------------------------------------------*
 
+list @typeNameFormalParameterNameList {
+  @lstring mFormalParameterTypeName ;
+  @string mFormalParameterName ;
+}
+
+#---------------------------------------------------------------------------*
+
 list @externTypeConstructorList {
   @lstring mConstructorName ;
   @lstring mResultTypeName ;
-  @lstringlist mArgumentTypeNameList ;
+  @typeNameFormalParameterNameList mParameterList ;
 }
 
 #---------------------------------------------------------------------------*
@@ -1432,7 +1439,7 @@ list @externTypeConstructorList {
 list @externTypeReaderList {
   @lstring mReaderName ;
   @lstring mResultTypeName ;
-  @lstringlist mArgumentTypeNameList ;
+  @typeNameFormalParameterNameList mParameterList ;
 }
 
 #---------------------------------------------------------------------------*

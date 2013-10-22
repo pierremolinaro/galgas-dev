@@ -35,7 +35,7 @@ routine enterConstructorWithoutArgument
   ] ;
   [!?ioConstructorMap insertOrReplace
     ![@lstring new !inConstructorName !here]
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyAndParameterList emptyList]
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
   ] ;
@@ -48,6 +48,7 @@ routine enterConstructorWithArgument
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ??@string inConstructorName
   ??@string inArgument1TypeName
+  ??@string inArgument1Name
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
@@ -57,7 +58,7 @@ routine enterConstructorWithArgument
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
   [!?ioConstructorMap insertOrReplace
     ![@lstring new !inConstructorName !here]
-    ![@unifiedTypeMapProxyList listWithValue !t]
+    ![@unifiedTypeMapProxyAndParameterList listWithValue !t !inArgument1Name]
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
   ] ;
@@ -70,18 +71,20 @@ routine enterConstructorWith2Arguments
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ??@string inConstructorName
   ??@string inArgument1TypeName
+  ??@string inArgument1Name
   ??@string inArgument2TypeName
+  ??@string inArgument2Name
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
   @unifiedTypeMapProxy returnedTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
-  @unifiedTypeMapProxyList argumentTypeList [emptyList] ;
+  @unifiedTypeMapProxyAndParameterList argumentTypeList [emptyList] ;
   @unifiedTypeMapProxy t ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
-  argumentTypeList += !t ;
+  argumentTypeList += !t !inArgument1Name ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
-  argumentTypeList += !t ;
+  argumentTypeList += !t !inArgument2Name ;
   [!?ioConstructorMap insertOrReplace
     ![@lstring new !inConstructorName !here]
     !argumentTypeList
@@ -97,8 +100,11 @@ routine enterConstructorWith3Arguments
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ??@string inConstructorName
   ??@string inArgument1TypeName
+  ??@string inArgument1Name
   ??@string inArgument2TypeName
+  ??@string inArgument2Name
   ??@string inArgument3TypeName
+  ??@string inArgument3Name
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
@@ -106,12 +112,12 @@ routine enterConstructorWith3Arguments
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
   @unifiedTypeMapProxy t ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
-  @unifiedTypeMapProxyList argumentTypeList [emptyList] ;
-  argumentTypeList += !t ;
+  @unifiedTypeMapProxyAndParameterList argumentTypeList [emptyList] ;
+  argumentTypeList += !t !inArgument1Name ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
-  argumentTypeList += !t ;
+  argumentTypeList += !t !inArgument2Name ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument3TypeName ?t] ;
-  argumentTypeList += !t ;
+  argumentTypeList += !t !inArgument3Name ;
   [!?ioConstructorMap insertOrReplace
     ![@lstring new !inConstructorName !here]
     !argumentTypeList
@@ -138,21 +144,21 @@ override method @stringPredefinedTypeAST getConstructorMap
 :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"retrieveAndResetTemplateString" !"string" !true ;
-  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"stringWithSymbolicLinkContents" !"string" !"string" !true ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"stringWithSymbolicLinkContents" !"string" !"inPath" !"string" !true ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringWithVersionString" !"string" !false ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringWithSourceFilePath" !"string" !true ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringWithCurrentDirectory" !"string" !false ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringWithMainFirstArgument" !"string" !false ;
-  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"stringWithContentsOfFile" !"string" !"string" !true ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"stringWithContentsOfFile" !"string" !"inFilePath" !"string" !true ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringWithCurrentDateTime" !"string" !false ;
-  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"stringWithEnvironmentVariable" !"string" !"string" !true ;
-  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"stringWithEnvironmentVariableOrEmpty" !"string" !"string" !false ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"stringWithEnvironmentVariable" !"string" !"inEnvironmentVariable" !"string" !true ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"stringWithEnvironmentVariableOrEmpty" !"string" !"inEnvironmentVariable" !"string" !false ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"CppLineComment" !"string" !false ;
-  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"CppTitleComment" !"string" !"string" !false ;
-  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"CppString" !"string" !"string" !false ;
-  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"CppChar" !"char" !"string" !false ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"componentsJoinedByString" !"stringlist" !"string" !"string" !false ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringWithSequenceOfCharacters" !"char" !"uint" !"string" !false ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"CppTitleComment" !"string" !"inString" !"string" !false ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"CppString" !"string" !"inString" !"string" !false ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"CppChar" !"char" !"inChar" !"string" !false ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"componentsJoinedByString" !"stringlist" !"inComponents" !"string" !"inString" !"string" !false ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringWithSequenceOfCharacters" !"char" !"inChar" !"uint" !"inCount" !"string" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -164,19 +170,19 @@ override method @applicationPredefinedTypeAST getConstructorMap
   outMap := [@constructorMap emptyMap] ;
 #--- Constructors for "bool" options
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"boolOptionNameList" !"2stringlist" !false ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"boolOptionInvocationLetter" !"string" !"string" !"char" !false ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"boolOptionInvocationString" !"string" !"string" !"string" !false ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"boolOptionCommentString" !"string" !"string" !"string" !false ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"boolOptionInvocationLetter" !"string" !"inOptionComponentName" !"string" !"inOptionName" !"char" !false ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"boolOptionInvocationString" !"string" !"inOptionComponentName" !"string" !"inOptionName" !"string" !false ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"boolOptionCommentString" !"string" !"inOptionComponentName" !"string" !"inOptionName" !"string" !false ;
 #--- Constructors for "uint" options
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"uintOptionNameList" !"2stringlist" !false ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"uintOptionInvocationLetter" !"string" !"string" !"char" !false ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"uintOptionInvocationString" !"string" !"string" !"string" !false ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"uintOptionCommentString" !"string" !"string" !"string" !false ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"uintOptionInvocationLetter" !"string" !"inOptionComponentName" !"string" !"inOptionName" !"char" !false ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"uintOptionInvocationString" !"string" !"inOptionComponentName" !"string" !"inOptionName" !"string" !false ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"uintOptionCommentString" !"string" !"inOptionComponentName" !"string" !"inOptionName" !"string" !false ;
 #--- Constructors for "string" options
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringOptionNameList" !"2stringlist" !false ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringOptionInvocationLetter" !"string" !"string" !"char" !false ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringOptionInvocationString" !"string" !"string" !"string" !false ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringOptionCommentString" !"string" !"string" !"string" !false ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringOptionInvocationLetter" !"string" !"inOptionComponentName" !"string" !"inOptionName" !"char" !false ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringOptionInvocationString" !"string" !"inOptionComponentName" !"string" !"inOptionName" !"string" !false ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringOptionCommentString" !"string" !"inOptionComponentName" !"string" !"inOptionName" !"string" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -187,7 +193,7 @@ override method @charPredefinedTypeAST getConstructorMap
 :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"replacementCharacter" !"char" !false ;
-  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"unicodeCharacterWithUnsigned" !"uint" !"char" !false ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"unicodeCharacterWithUnsigned" !"uint" !"inValue" !"char" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -201,7 +207,7 @@ override method @uintPredefinedTypeAST getConstructorMap
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"max" !"uint" !false ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"errorCount" !"uint" !false ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"warningCount" !"uint" !false ;
-  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"valueWithMask" !"uint" !"uint" !"uint" !true ;
+  enterConstructorWith2Arguments !?outMap !?ioUnifiedTypeMap !"valueWithMask" !"uint" !"inLowerIndex" !"uint" !"inUpperIndex" !"uint" !true ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -223,9 +229,9 @@ override method @uint64PredefinedTypeAST getConstructorMap
 :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"max" !"uint64" !false ;
-  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"uint64MaskWithCompressedBitString" !"string" !"uint64" !true ;
-  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"uint64BaseValueWithCompressedBitString" !"string"  !"uint64" !true ;
-  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"uint64WithBitString" !"string"  !"uint64" !true ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"uint64MaskWithCompressedBitString" !"string" !"inBitString" !"uint64" !true ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"uint64BaseValueWithCompressedBitString" !"string" !"inBitString" !"uint64" !true ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"uint64WithBitString" !"string" !"inBitString" !"uint64" !true ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -247,9 +253,9 @@ override method @stringsetPredefinedTypeAST getConstructorMap
 :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"emptySet" !"stringset" !false ;
-  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"setWithString" !"string" !"stringset" !false ;
-  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"setWithStringList" !"stringlist" !"stringset" !false ;
-  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"setWithLStringList" !"lstringlist" !"stringset" !false ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"setWithString" !"string" !"inString" !"stringset" !false ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"setWithStringList" !"stringlist" !"inStringList" !"stringset" !false ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"setWithLStringList" !"lstringlist" !"inLStringList" !"stringset" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -259,23 +265,23 @@ override method @binarysetPredefinedTypeAST getConstructorMap
   !@constructorMap outMap
 :
   outMap := [@constructorMap emptyMap] ;
-  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"binarySetWithBit" !"uint" !"binaryset" !true ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"binarySetWithBit" !"uint" !"inBitIndex" !"binaryset" !true ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"emptyBinarySet" !"binaryset" !false ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"fullBinarySet" !"binaryset" !false ;
-  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"binarySetWithPredicateString" !"string" !"binaryset" !true ;
-  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithNotEqualComparison" !"uint" !"uint" !"uint" !"binaryset" !true ;
-  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithEqualComparison" !"uint" !"uint" !"uint" !"binaryset" !true ;
-  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithStrictLowerComparison" !"uint" !"uint" !"uint" !"binaryset" !true ;
-  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithStrictGreaterComparison" !"uint" !"uint" !"uint" !"binaryset" !true ;
-  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithLowerOrEqualComparison" !"uint" !"uint" !"uint" !"binaryset" !true ;
-  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithGreaterOrEqualComparison" !"uint" !"uint" !"uint" !"binaryset" !true ;
-  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithEqualToConstant" !"uint" !"uint" !"uint64" !"binaryset" !true ;
-  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithNotEqualToConstant" !"uint" !"uint" !"uint64" !"binaryset" !true ;
-  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithStrictLowerThanConstant" !"uint" !"uint" !"uint64" !"binaryset" !true ;
-  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithStrictGreaterThanConstant" !"uint" !"uint" !"uint64" !"binaryset" !true ;
-  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithLowerOrEqualToConstant" !"uint" !"uint" !"uint64" !"binaryset" !true ;
-  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithGreaterOrEqualToConstant" !"uint" !"uint" !"uint64" !"binaryset" !true ;
-  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithITE" !"binaryset" !"binaryset" !"binaryset" !"binaryset" !false ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"binarySetWithPredicateString" !"string" !"inPredicateString" !"binaryset" !true ;
+  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithNotEqualComparison" !"uint" !"inLeftFirstIndex" !"uint" !"inBitCount" !"uint" !"inRightFirstIndex" !"binaryset" !true ;
+  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithEqualComparison" !"uint" !"inLeftFirstIndex" !"uint" !"inBitCount" !"uint" !"inRightFirstIndex" !"binaryset" !true ;
+  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithStrictLowerComparison" !"uint" !"inLeftFirstIndex" !"uint" !"inBitCount" !"uint" !"inRightFirstIndex" !"binaryset" !true ;
+  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithStrictGreaterComparison" !"uint" !"inLeftFirstIndex" !"uint" !"inBitCount" !"uint" !"inRightFirstIndex" !"binaryset" !true ;
+  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithLowerOrEqualComparison" !"uint" !"inLeftFirstIndex" !"uint" !"inBitCount" !"uint" !"inRightFirstIndex" !"binaryset" !true ;
+  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithGreaterOrEqualComparison" !"uint" !"inLeftFirstIndex" !"uint" !"inBitCount" !"uint" !"inRightFirstIndex" !"binaryset"  !true ;
+  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithEqualToConstant" !"uint" !"inBitIndex" !"uint" !"inBitCount" !"uint64" !"inConstant" !"binaryset" !true ;
+  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithNotEqualToConstant" !"uint" !"inBitIndex" !"uint" !"inBitCount" !"uint64" !"inConstant" !"binaryset" !true ;
+  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithStrictLowerThanConstant" !"uint" !"inBitIndex" !"uint" !"inBitCount" !"uint64" !"inConstant" !"binaryset" !true ;
+  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithStrictGreaterThanConstant" !"uint" !"inBitIndex" !"uint" !"inBitCount" !"uint64" !"inConstant" !"binaryset" !true ;
+  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithLowerOrEqualToConstant" !"uint" !"inBitIndex" !"uint" !"inBitCount" !"uint64" !"inConstant" !"binaryset" !true ;
+  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithGreaterOrEqualToConstant" !"uint" !"inBitIndex" !"uint" !"inBitCount" !"uint64" !"inConstant" !"binaryset" !true ;
+#  enterConstructorWith3Arguments !?outMap !?ioUnifiedTypeMap !"binarySetWithITE" !"binaryset" !"binaryset" !"binaryset" !"binaryset" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -296,7 +302,7 @@ override method @dataPredefinedTypeAST getConstructorMap
 :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"emptyData" !"data" !false ;
-  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"dataWithContentsOfFile" !"string" !"data" !true ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"dataWithContentsOfFile" !"string" !"inFilePath" !"data" !true ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -307,8 +313,8 @@ override method @functionPredefinedTypeAST getConstructorMap
 :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"functionList" !"functionlist" !false ;
-  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"functionWithName" !"string" !"function" !false ;
-  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"isFunctionDefined" !"string" !"bool" !false ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"functionWithName" !"string" !"inName" !"function" !false ;
+  enterConstructorWithArgument !?outMap !?ioUnifiedTypeMap !"isFunctionDefined" !"string" !"inFunctionName" !"bool" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -319,7 +325,7 @@ override method @doublePredefinedTypeAST getConstructorMap
 :
   outMap := [@constructorMap emptyMap] ;
   enterConstructorWithoutArgument !?outMap !?ioUnifiedTypeMap !"pi" !"double" !false ;
-  enterConstructorWithArgument    !?outMap !?ioUnifiedTypeMap !"doubleWithBinaryImage" !"uint64" !"double" !false ;
+  enterConstructorWithArgument    !?outMap !?ioUnifiedTypeMap !"doubleWithBinaryImage" !"uint64" !"inBinaryImage" !"double" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*

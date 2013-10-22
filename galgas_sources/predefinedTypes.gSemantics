@@ -434,7 +434,7 @@ routine printFeaturesOfType
   ??@instanceMethodMap inInstanceMethodMap
   ??@classMethodMap inClassMethodMap
   ??@uint inHandledOperatorFlags
-  ??@unifiedTypeMapProxyList inAddAssignOperatorArguments
+  ??@unifiedTypeMapProxyAndParameterList inAddAssignOperatorArguments
   ??@withAccessorMap inWithAccessorMap
 :
   @string s := "Features of @" . inTypeName . " type:\n" ;
