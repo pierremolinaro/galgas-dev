@@ -34,7 +34,7 @@ routine enterBaseFinalReaderWithoutArgument
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     ![@methodKind definedAsMember]
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyAndParameterList emptyList]
     !here
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
@@ -57,7 +57,7 @@ routine enterInheritedReaderWithoutArgument
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     ![@methodKind definedAsMember]
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyAndParameterList emptyList]
     !here
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
@@ -73,15 +73,16 @@ routine enterInheritedReaderWithArgument
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ??@string inReaderName
   ??@string inArgument1TypeName
+  ??@string inArgument1Name
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
   @unifiedTypeMapProxy returnedTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
-  @unifiedTypeMapProxyList argList [emptyList] ;
+  @unifiedTypeMapProxyAndParameterList argList [emptyList] ;
   @unifiedTypeMapProxy t ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
-  argList += !t ;
+  argList += !t !inArgument1Name ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     ![@methodKind definedAsMember]
@@ -101,18 +102,20 @@ routine enterInheritedReaderWith2Arguments
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ??@string inReaderName
   ??@string inArgument1TypeName
+  ??@string inArgument1Name
   ??@string inArgument2TypeName
+  ??@string inArgument2Name
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
   @unifiedTypeMapProxy returnedTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
-  @unifiedTypeMapProxyList argList [emptyList] ;
+  @unifiedTypeMapProxyAndParameterList argList [emptyList] ;
   @unifiedTypeMapProxy t ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
-  argList += !t ;
+  argList += !t !inArgument1Name ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
-  argList += !t ;
+  argList += !t !inArgument2Name ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     ![@methodKind definedAsMember]
@@ -139,7 +142,7 @@ routine enterBaseReaderWithoutArgument
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     ![@methodKind definedAsMember]
-    ![@unifiedTypeMapProxyList emptyList]
+    ![@unifiedTypeMapProxyAndParameterList emptyList]
     !here
     !inHasLexiqueAndLocationArguments
     !returnedTypeIndex
@@ -155,15 +158,16 @@ routine enterBaseReaderWithArgument
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ??@string inReaderName
   ??@string inArgument1TypeName
+  ??@string inArgument1Name
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
   @unifiedTypeMapProxy returnedTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
-  @unifiedTypeMapProxyList argList [emptyList] ;
+  @unifiedTypeMapProxyAndParameterList argList [emptyList] ;
   @unifiedTypeMapProxy t ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
-  argList += !t ;
+  argList += !t !inArgument1Name ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     ![@methodKind definedAsMember]
@@ -183,16 +187,17 @@ routine enterBaseReaderWithArgumentAndMessage
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ??@string inReaderName
   ??@string inArgument1TypeName
+  ??@string inArgument1Name
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
   ??@string inMessage
 :
   @unifiedTypeMapProxy returnedTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
-  @unifiedTypeMapProxyList argList [emptyList] ;
+  @unifiedTypeMapProxyAndParameterList argList [emptyList] ;
   @unifiedTypeMapProxy t ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
-  argList += !t ;
+  argList += !t !inArgument1Name ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     ![@methodKind definedAsMember]
@@ -212,15 +217,16 @@ routine enterBaseFinalReaderWithArgument
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ??@string inReaderName
   ??@string inArgument1TypeName
+  ??@string inArgument1Name
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
   @unifiedTypeMapProxy returnedTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
-  @unifiedTypeMapProxyList argList [emptyList] ;
+  @unifiedTypeMapProxyAndParameterList argList [emptyList] ;
   @unifiedTypeMapProxy t ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
-  argList += !t ;
+  argList += !t !inArgument1Name ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     ![@methodKind definedAsMember]
@@ -240,18 +246,20 @@ routine enterBaseReaderWith2Arguments
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ??@string inReaderName
   ??@string inArgument1TypeName
+  ??@string inArgument1Name
   ??@string inArgument2TypeName
+  ??@string inArgument2Name
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
   @unifiedTypeMapProxy returnedTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
-  @unifiedTypeMapProxyList argList [emptyList] ;
+  @unifiedTypeMapProxyAndParameterList argList [emptyList] ;
   @unifiedTypeMapProxy t ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
-  argList += !t ;
+  argList += !t !inArgument1Name ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
-  argList += !t ;
+  argList += !t !inArgument2Name ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     ![@methodKind definedAsMember]
@@ -271,19 +279,21 @@ routine enterBaseReaderWith2ArgumentsAndMessage
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ??@string inReaderName
   ??@string inArgument1TypeName
+  ??@string inArgument1Name
   ??@string inArgument2TypeName
+  ??@string inArgument2Name
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
   ??@string inMessage
 :
   @unifiedTypeMapProxy returnedTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
-  @unifiedTypeMapProxyList argList [emptyList] ;
+  @unifiedTypeMapProxyAndParameterList argList [emptyList] ;
   @unifiedTypeMapProxy t ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
-  argList += !t ;
+  argList += !t !inArgument1Name ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
-  argList += !t ;
+  argList += !t !inArgument2Name ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     ![@methodKind definedAsMember]
@@ -303,18 +313,20 @@ routine enterBaseFinalReaderWith2Arguments
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ??@string inReaderName
   ??@string inArgument1TypeName
+  ??@string inArgument1Name
   ??@string inArgument2TypeName
+  ??@string inArgument2Name
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
   @unifiedTypeMapProxy returnedTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
-  @unifiedTypeMapProxyList argList [emptyList] ;
+  @unifiedTypeMapProxyAndParameterList argList [emptyList] ;
   @unifiedTypeMapProxy t ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
-  argList += !t ;
+  argList += !t !inArgument1Name ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
-  argList += !t ;
+  argList += !t !inArgument2Name ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     ![@methodKind definedAsMember]
@@ -334,21 +346,24 @@ routine enterBaseReaderWith3Arguments
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ??@string inReaderName
   ??@string inArgument1TypeName
+  ??@string inArgument1Name
   ??@string inArgument2TypeName
+  ??@string inArgument2Name
   ??@string inArgument3TypeName
+  ??@string inArgument3Name
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
   @unifiedTypeMapProxy returnedTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
-  @unifiedTypeMapProxyList argList [emptyList] ;
+  @unifiedTypeMapProxyAndParameterList argList [emptyList] ;
   @unifiedTypeMapProxy t ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
-  argList += !t ;
+  argList += !t !inArgument1Name ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
-  argList += !t ;
+  argList += !t !inArgument2Name ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument3TypeName ?t] ;
-  argList += !t ;
+  argList += !t !inArgument3Name ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     ![@methodKind definedAsMember]
@@ -368,21 +383,24 @@ routine enterBaseFinalReaderWith3Arguments
   ?!@unifiedTypeMap ioUnifiedTypeMap
   ??@string inReaderName
   ??@string inArgument1TypeName
+  ??@string inArgument1Name
   ??@string inArgument2TypeName
+  ??@string inArgument2Name
   ??@string inArgument3TypeName
+  ??@string inArgument3Name
   ??@string inReturnedTypeName
   ??@bool inHasLexiqueAndLocationArguments
 :
   @unifiedTypeMapProxy returnedTypeIndex ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inReturnedTypeName ?returnedTypeIndex] ;
-  @unifiedTypeMapProxyList argList [emptyList] ;
+  @unifiedTypeMapProxyAndParameterList argList [emptyList] ;
   @unifiedTypeMapProxy t ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument1TypeName ?t] ;
-  argList += !t ;
+  argList += !t !inArgument1Name ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument2TypeName ?t] ;
-  argList += !t ;
+  argList += !t !inArgument2Name ;
   [@unifiedTypeMapProxy makeProxyFromString !?ioUnifiedTypeMap !inArgument3TypeName ?t] ;
-  argList += !t ;
+  argList += !t !inArgument3Name ;
   [!?ioReaderMap insertOrReplace
     ![@lstring new !inReaderName !here]
     ![@methodKind definedAsMember]
@@ -460,24 +478,24 @@ override method @stringPredefinedTypeAST getReaderMap
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"currentColumn" !"uint" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"system" !"sint" !false ;
   enterBaseReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"popen" !"string" !true ;
-  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"characterAtIndex" !"uint" !"char" !true ;
-  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"containsCharacter" !"char" !"bool" !false ;
-  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"stringByRemovingCharacterAtIndex" !"uint" !"string" !true ;
-  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"rightSubString" !"uint" !"string" !false ;
-  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"leftSubString" !"uint" !"string" !false ;
-  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"subString" !"uint" !"uint" !"string" !false ;
-  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"absolutePathFromPath" !"string" !"string" !false ;
-  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"relativePathFromPath" !"string" !"string" !false ;
-  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"componentsSeparatedByString" !"string" !"stringlist" !false ;
-  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringByLeftPadding" !"uint" !"char" !"string" !false ;
-  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringByRightPadding" !"uint" !"char" !"string" !false ;
-  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringByLeftAndRightPadding" !"uint" !"char" !"string" !false ;
-  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringByReplacingStringByString" !"string" !"string" !"string" !true ;
-  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"regularFiles" !"bool" !"stringlist" !false ;
-  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"hiddenFiles" !"bool" !"stringlist" !false ;
-  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"directories"  !"bool" !"stringlist" !false ;
-  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"directoriesWithExtensions" !"bool" !"stringlist" !"stringlist" !false ;
-  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"regularFilesWithExtensions" !"bool" !"stringlist" !"stringlist" !false ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"characterAtIndex" !"uint" !"inIndex" !"char" !true ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"containsCharacter" !"char" !"inCharacter" !"bool" !false ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"stringByRemovingCharacterAtIndex" !"uint" !"inIndex" !"string" !true ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"rightSubString" !"uint" !"inLength" !"string" !false ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"leftSubString" !"uint" !"inLength" !"string" !false ;
+  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"subString" !"uint" !"inStart" !"uint" !"inLength" !"string" !false ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"absolutePathFromPath" !"string" !"inPath" !"string" !false ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"relativePathFromPath" !"string" !"inPath" !"string" !false ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"componentsSeparatedByString" !"string" !"inSeparator" !"stringlist" !false ;
+  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringByLeftPadding" !"uint" !"inPaddedStringLength" !"char" !"inPaddingChar" !"string" !false ;
+  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringByRightPadding" !"uint" !"inPaddedStringLength" !"char" !"inPaddingChar" !"string" !false ;
+  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringByLeftAndRightPadding" !"uint" !"inPaddedStringLength" !"char" !"inPaddingChar" !"string" !false ;
+  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringByReplacingStringByString" !"string" !"inSearchedString" !"string" !"inReplacementString" !"string" !true ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"regularFiles" !"bool" !"inRecursiveSearch" !"stringlist" !false ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"hiddenFiles" !"bool" !"inRecursiveSearch" !"stringlist" !false ;
+  enterBaseReaderWithArgument !?outMap !?ioUnifiedTypeMap !"directories"  !"bool" !"inRecursiveSearch" !"stringlist" !false ;
+  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"directoriesWithExtensions" !"bool" !"inRecursiveSearch" !"stringlist" !"inExtensionList" !"stringlist" !false ;
+  enterBaseReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"regularFilesWithExtensions" !"bool" !"inRecursiveSearch" !"stringlist" !"inExtensionList" !"stringlist" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -542,7 +560,7 @@ override method @uintPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"hexString" !"string" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"xString" !"string" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"isUnicodeValueAssigned" !"bool" !false ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"isInRange" !"range" !"bool" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"isInRange" !"range" !"inRange" !"bool" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -570,7 +588,7 @@ override method @uint64PredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"sint" !"sint" !true ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"sint64" !"sint64" !true ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"uint" !"uint" !true ;
-  enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"uintSlice" !"uint" !"uint" !"uint" !true ;
+  enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"uintSlice" !"uint" !"inStartBit" !"uint" !"inBitCount" !"uint" !true ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"string" !"string" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"hexString" !"string" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"xString" !"string" !false ;
@@ -613,7 +631,7 @@ override method @doublePredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"sinDegree" !"double" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"tanDegree" !"double" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"sqrt" !"double" !true ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"power" !"double" !"double" !true ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"power" !"double" !"inExponant" !"double" !true ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"binaryImage" !"uint64" !false ;
 end method ;
 
@@ -624,7 +642,7 @@ override method @stringsetPredefinedTypeAST getReaderMap
   !@readerMap outMap
 :
   commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"hasKey" !"string" !"bool" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"hasKey" !"string" !"inString" !"bool" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"count" !"uint" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringList" !"stringlist" !false ;
 end method ;
@@ -639,26 +657,26 @@ override method @binarysetPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"isFull" !"bool" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"isEmpty" !"bool" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"significantVariableCount" !"uint" !false ;
-  enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"ITE" !"binaryset" !"binaryset" !"binaryset" !false ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"forAllOnBitIndex" !"uint" !"binaryset" !false ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"forAllOnBitIndexAndBeyond" !"uint" !"binaryset" !false ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"existOnBitIndex" !"uint" !"binaryset" !false ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"existOnBitIndexAndBeyond" !"uint" !"binaryset" !false ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"valueCount" !"uint" !"uint64" !true  ;
+  enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"ITE" !"binaryset" !"inTHENoperand" !"binaryset" !"inELSEoperand" !"binaryset" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"forAllOnBitIndex" !"uint" !"inBitIndex" !"binaryset" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"forAllOnBitIndexAndBeyond" !"uint" !"inBitIndex" !"binaryset" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"existOnBitIndex" !"uint" !"inBitIndex" !"binaryset" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"existOnBitIndexAndBeyond" !"uint" !"inBitIndex" !"binaryset" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"valueCount" !"uint" !"inBitCount" !"uint64" !true  ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"compressedValueCount" !"uint64" !false ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"uint64ValueList" !"uint" !"uint64list" !false ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"stringValueList" !"uint" !"stringlist" !false ;
-  enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringValueListWithNameList" !"uint" !"stringlist" !"stringlist" !true ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"uint64ValueList" !"uint" !"inBitCount" !"uint64list" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"stringValueList" !"uint" !"inBitCount" !"stringlist" !false ;
+  enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"stringValueListWithNameList" !"uint" !"inBitCount" !"stringlist" !"inNameList" !"stringlist" !true ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"predicateStringValue" !"string" !false ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"compressedStringValueList" !"uint" !"stringlist" !true ;
-  enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"swap21" !"uint" !"uint" !"binaryset" !false ;
-  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap132" !"uint" !"uint" !"uint" !"binaryset" !false ;
-  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap213" !"uint" !"uint" !"uint" !"binaryset" !false ;
-  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap231" !"uint" !"uint" !"uint" !"binaryset" !false ;
-  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap312" !"uint" !"uint" !"uint" !"binaryset" !false ;
-  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap321" !"uint" !"uint" !"uint"!"binaryset" !false ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"transitiveClosure" !"uint" !"binaryset" !false ;
-  enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"accessibleStates" !"binaryset" !"uint" !"binaryset" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"compressedStringValueList" !"uint" !"inBitCount" !"stringlist" !true ;
+  enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"swap21" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"binaryset" !false ;
+  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap132" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !"binaryset" !false ;
+  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap213" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !"binaryset" !false ;
+  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap231" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !"binaryset" !false ;
+  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap312" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !"binaryset" !false ;
+  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap321" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !"binaryset" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"transitiveClosure" !"uint" !"inBitCount" !"binaryset" !false ;
+  enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"accessibleStates" !"binaryset" !"inInitialStateSet" !"uint" !"inBitCount" !"binaryset" !false ;
   enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"equalTo" !"binaryset" !"binaryset" !false ;
   enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"notEqualTo" !"binaryset" !"binaryset" !false ;
   enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"lowerOrEqualTo" !"binaryset" !"binaryset" !false ;
@@ -703,7 +721,7 @@ override method @functionPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"name" !"string" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"resultType" !"type" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"formalParameterTypeList" !"typelist" !false ;
-  enterBaseFinalReaderWith2Arguments  !?outMap !?ioUnifiedTypeMap !"invoke" !"objectlist" !"location" !"object" !true ;
+  enterBaseFinalReaderWith2Arguments  !?outMap !?ioUnifiedTypeMap !"invoke" !"objectlist" !"inParameters" !"location" !"inErrorLocation" !"object" !true ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -728,12 +746,12 @@ override method @filewrapperPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"allBinaryFilePathes" !"stringlist" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"allDirectoryPathes" !"stringlist" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"currentDirectory" !"string" !false ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"allFilePathesWithExtension" !"string" !"stringlist" !false ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"directoryExistsAtPath" !"string" !"bool" !true ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"fileExistsAtPath" !"string" !"bool" !true ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"textFileContentsAtPath" !"string" !"string" !true ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"binaryFileContentsAtPath" !"string" !"data" !true ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"absolutePathForPath" !"string" !"string" !true ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"allFilePathesWithExtension" !"string" !"inExtension" !"stringlist" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"directoryExistsAtPath" !"string" !"inPath" !"bool" !true ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"fileExistsAtPath" !"string" !"inPath" !"bool" !true ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"textFileContentsAtPath" !"string" !"inPath" !"string" !true ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"binaryFileContentsAtPath" !"string" !"inPath" !"data" !true ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"absolutePathForPath" !"string" !"inPath" !"string" !true ;
 end method ;
 
 #---------------------------------------------------------------------------*

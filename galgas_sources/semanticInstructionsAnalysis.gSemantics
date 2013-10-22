@@ -965,7 +965,7 @@ override method @plusEqualInstructionAST analyzeSemanticInstruction # +=
     [attributeMap searchKey !mValue ?targetType] ;
   end foreach ;
 #--- Check target variable type support '+=' operator
-  const @unifiedTypeMapProxyList addAssignOperatorArguments:= [targetType mAddAssignOperatorArguments] ; # Empty list if += operator is not supported
+  const @unifiedTypeMapProxyAndParameterList addAssignOperatorArguments:= [targetType mAddAssignOperatorArguments] ; # Empty list if += operator is not supported
   if [addAssignOperatorArguments length] == 0 then
     error mInstructionLocation
     :"the target object has the '@" . [targetType key] . "' type, but this type does not support the '+=' operator"
@@ -1018,7 +1018,7 @@ override method @selfPlusEqualInstructionAST analyzeSemanticInstruction
     selfTypeProxy := inAnalysisContext->mSelfTypeProxy ;
   end if ;
 #--- Check target variable type support '+=' operator
-  const @unifiedTypeMapProxyList addAssignOperatorArguments:= [selfTypeProxy mAddAssignOperatorArguments] ; # Empty list if += operator is not supported
+  const @unifiedTypeMapProxyAndParameterList addAssignOperatorArguments:= [selfTypeProxy mAddAssignOperatorArguments] ; # Empty list if += operator is not supported
   if [addAssignOperatorArguments length] == 0 then
     error mInstructionLocation
     :"the target object has the '@" . [selfTypeProxy key] . "' type, but this type does not support the '+=' operator"

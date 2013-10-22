@@ -31,13 +31,20 @@ list @unifiedTypeMapProxyList {
 }
 
 #---------------------------------------------------------------------------*
+
+list @unifiedTypeMapProxyAndParameterList {
+  @unifiedTypeMapProxy mType ;
+  @string mFormalParameterName ;
+}
+
+#---------------------------------------------------------------------------*
 #                                                                           *
 #  C O N S T R U C T O R    M A P                                           *
 #                                                                           *
 #---------------------------------------------------------------------------*
 
 map @constructorMap {
-  @unifiedTypeMapProxyList mArgumentTypeList ;
+  @unifiedTypeMapProxyAndParameterList mArgumentTypeList ;
   @bool mHasCompilerArgument ;
   @unifiedTypeMapProxy mReturnedType ;
   insert or replace ;
@@ -65,7 +72,7 @@ enum @methodKind {
 
 map @readerMap {
   @methodKind mKind ;
-  @unifiedTypeMapProxyList mArgumentTypeList ;
+  @unifiedTypeMapProxyAndParameterList mArgumentTypeList ;
   @location mDeclarationLocation ;
   @bool mHasCompilerArgument ;
   @unifiedTypeMapProxy mReturnedType ;
@@ -297,7 +304,7 @@ uniquemap @unifiedTypeMap {
   @enumerationDescriptorList mEnumerationDescriptor ; # Empty List if cannot be enumerated
   @stringlist mEnumeratorVariants ; # Empty List if cannot be enumerated; first item is default item
   @uint mHandledOperatorFlags ;
-  @unifiedTypeMapProxyList mAddAssignOperatorArguments ; # Empty list if += operator is not supported
+  @unifiedTypeMapProxyAndParameterList mAddAssignOperatorArguments ; # Empty list if += operator is not supported
   @stringset mEnumConstantSet ;
   @lstringlist mEnumConstantList ;
   @mapSearchMethodListAST mMapSearchMethodList ; # For a map, the list of search methods
@@ -419,9 +426,9 @@ end reader ;
 
 method @predefinedTypeAST getAddAssignArgumentList
   ?!@unifiedTypeMap unused ioUnifiedTypeMap
-  !@unifiedTypeMapProxyList outAddAssignArgumentList
+  !@unifiedTypeMapProxyAndParameterList outAddAssignArgumentList
 :
-  outAddAssignArgumentList := [@unifiedTypeMapProxyList emptyList] ; # += is not supported
+  outAddAssignArgumentList := [@unifiedTypeMapProxyAndParameterList emptyList] ; # += is not supported
 end method ;
 
 #---------------------------------------------------------------------------*

@@ -67,7 +67,7 @@ routine checkReaderSignatures
   ??@formalInputParameterListForGeneration inTestedSignature
   ??@unifiedTypeMapProxy inReturnType
   ??@location inErrorLocation
-  ??@unifiedTypeMapProxyList inReferenceSignature
+  ??@unifiedTypeMapProxyAndParameterList inReferenceSignature
   ??@unifiedTypeMapProxy inInheritedReturnType
   ??@location inReferenceLocation
 :
@@ -2053,7 +2053,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
 #--- Find base type name
   @string baseTypeName := "" ;
   @unifiedTypeMapProxy superType := [selfType mSuperType] ;
-  @unifiedTypeMapProxyList inheritedSignature [emptyList] ;
+  @unifiedTypeMapProxyAndParameterList inheritedSignature [emptyList] ;
   @unifiedTypeMapProxy inheritedReturnType [null] ;
   @location inheritedDeclarationLocation := here ;
   loop [inSemanticContext->mTypeMap count] + 1 :
@@ -2152,7 +2152,7 @@ override method @overridingAbstractCategoryReaderAST semanticAnalysis
 #--- Find base type name
   @string baseTypeName := "" ;
   @unifiedTypeMapProxy superType := [selfType mSuperType] ;
-  @unifiedTypeMapProxyList inheritedSignature [emptyList] ;
+  @unifiedTypeMapProxyAndParameterList inheritedSignature [emptyList] ;
   @unifiedTypeMapProxy inheritedReturnType [null] ;
   @location inheritedDeclarationLocation := here ;
   loop [inSemanticContext->mTypeMap count] + 1 :

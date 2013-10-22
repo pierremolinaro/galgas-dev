@@ -444,8 +444,8 @@ GALGAS_bool GALGAS_binaryset::reader_containsValue (const GALGAS_uint_36__34_ & 
 //---------------------------------------------------------------------------*
 
 GALGAS_binaryset GALGAS_binaryset::reader_ITE (const GALGAS_binaryset & inTHENoperand,
-                                                 const GALGAS_binaryset & inELSEoperand                                             
-                                                 COMMA_UNUSED_LOCATION_ARGS) const {
+                                               const GALGAS_binaryset & inELSEoperand                                             
+                                               COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if ((inTHENoperand.isValid ()) && (inELSEoperand.isValid ())) {
     result = GALGAS_binaryset (C_BDD::ite (mBDD, inTHENoperand.mBDD, inELSEoperand.mBDD)) ;
@@ -696,8 +696,8 @@ GALGAS_binaryset GALGAS_binaryset::reader_existOnBitIndexAndBeyond (const GALGAS
 //---------------------------------------------------------------------------*
 
 GALGAS_binaryset GALGAS_binaryset::reader_swap_32__31_ (const GALGAS_uint & inBitCount1,
-                                                          const GALGAS_uint & inBitCount2
-                                                          COMMA_UNUSED_LOCATION_ARGS) const {
+                                                        const GALGAS_uint & inBitCount2
+                                                        COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if ((inBitCount1.isValid ()) && (inBitCount2.isValid ())) {
     const PMUInt32 bitSize1 = inBitCount1.uintValue () ;
@@ -710,9 +710,9 @@ GALGAS_binaryset GALGAS_binaryset::reader_swap_32__31_ (const GALGAS_uint & inBi
 //---------------------------------------------------------------------------*
 
 GALGAS_binaryset GALGAS_binaryset::reader_swap_31__33__32_ (const GALGAS_uint & inBitCount1,
-                                                              const GALGAS_uint & inBitCount2,
-                                                              const GALGAS_uint & inBitCount3
-                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+                                                            const GALGAS_uint & inBitCount2,
+                                                            const GALGAS_uint & inBitCount3
+                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if ((inBitCount1.isValid ()) && (inBitCount2.isValid ()) && (inBitCount3.isValid ())) {
     const PMUInt32 bitSize1 = inBitCount1.uintValue () ;
@@ -726,9 +726,9 @@ GALGAS_binaryset GALGAS_binaryset::reader_swap_31__33__32_ (const GALGAS_uint & 
 //---------------------------------------------------------------------------*
 
 GALGAS_binaryset GALGAS_binaryset::reader_swap_32__31__33_ (const GALGAS_uint & inBitCount1,
-                                                              const GALGAS_uint & inBitCount2,
-                                                              const GALGAS_uint & inBitCount3
-                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+                                                            const GALGAS_uint & inBitCount2,
+                                                            const GALGAS_uint & inBitCount3
+                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if ((inBitCount1.isValid ()) && (inBitCount2.isValid ()) && (inBitCount3.isValid ())) {
     const PMUInt32 bitSize1 = inBitCount1.uintValue () ;
@@ -742,9 +742,9 @@ GALGAS_binaryset GALGAS_binaryset::reader_swap_32__31__33_ (const GALGAS_uint & 
 //---------------------------------------------------------------------------*
 
 GALGAS_binaryset GALGAS_binaryset::reader_swap_32__33__31_ (const GALGAS_uint & inBitCount1,
-                                                              const GALGAS_uint & inBitCount2,
-                                                              const GALGAS_uint & inBitCount3
-                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+                                                            const GALGAS_uint & inBitCount2,
+                                                            const GALGAS_uint & inBitCount3
+                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if ((inBitCount1.isValid ()) && (inBitCount2.isValid ()) && (inBitCount3.isValid ())) {
     const PMUInt32 bitSize1 = inBitCount1.uintValue () ;
@@ -758,9 +758,9 @@ GALGAS_binaryset GALGAS_binaryset::reader_swap_32__33__31_ (const GALGAS_uint & 
 //---------------------------------------------------------------------------*
 
 GALGAS_binaryset GALGAS_binaryset::reader_swap_33__31__32_ (const GALGAS_uint & inBitCount1,
-                                                              const GALGAS_uint & inBitCount2,
-                                                              const GALGAS_uint & inBitCount3
-                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+                                                            const GALGAS_uint & inBitCount2,
+                                                            const GALGAS_uint & inBitCount3
+                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if ((inBitCount1.isValid ()) && (inBitCount2.isValid ()) && (inBitCount3.isValid ())) {
     const PMUInt32 bitSize1 = inBitCount1.uintValue () ;
@@ -774,9 +774,9 @@ GALGAS_binaryset GALGAS_binaryset::reader_swap_33__31__32_ (const GALGAS_uint & 
 //---------------------------------------------------------------------------*
 
 GALGAS_binaryset GALGAS_binaryset::reader_swap_33__32__31_ (const GALGAS_uint & inBitCount1,
-                                                              const GALGAS_uint & inBitCount2,
-                                                              const GALGAS_uint & inBitCount3
-                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+                                                            const GALGAS_uint & inBitCount2,
+                                                            const GALGAS_uint & inBitCount3
+                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if ((inBitCount1.isValid ()) && (inBitCount2.isValid ()) && (inBitCount3.isValid ())) {
     const PMUInt32 bitSize1 = inBitCount1.uintValue () ;
@@ -802,15 +802,15 @@ GALGAS_binaryset GALGAS_binaryset::reader_transitiveClosure (const GALGAS_uint &
 //---------------------------------------------------------------------------*
 
 GALGAS_binaryset GALGAS_binaryset::reader_accessibleStates (const GALGAS_binaryset & inInitialStateSet,
-                                                              const GALGAS_uint & inBitSize
-                                                              COMMA_UNUSED_LOCATION_ARGS) const {
+                                                            const GALGAS_uint & inBitCount
+                                                            COMMA_UNUSED_LOCATION_ARGS) const {
 //--- Current object is edge [x, y].
 //    Accessible states set is computed by:
 // accessible [x] += initial [x] | exists y (accessible [y] & edge [y, x]) ;
   GALGAS_binaryset result ;
-  if ((inInitialStateSet.isValid ()) && (inBitSize.isValid ())) {
+  if ((inInitialStateSet.isValid ()) && (inBitCount.isValid ())) {
     result = GALGAS_binaryset (mBDD.accessibleStates (inInitialStateSet.mBDD,
-                               inBitSize.uintValue (),
+                               inBitCount.uintValue (),
                                NULL)) ;
   }
   return result ;
