@@ -824,7 +824,7 @@ override method @mapDeclarationAST enterInSemanticContext
   @instanceMethodMap instanceMethodMap [emptyMap] ;
 #--- Constructors
   enterConstructorWithoutArgument !?constructorMap !?ioSemanticContext->mTypeMap !"emptyMap" ![mMapTypeName string] !false ;
-  enterConstructorWithArgument !?constructorMap !?ioSemanticContext->mTypeMap !"inMap" !"mapWithMapToOverride" ![mMapTypeName string] ![mMapTypeName string] !false ;
+  enterConstructorWithArgument !?constructorMap !?ioSemanticContext->mTypeMap !"mapWithMapToOverride" ![mMapTypeName string] !"inMap" ![mMapTypeName string] !false ;
 #--- Readers
   enterInheritedReaderWithoutArgument !?readerMap !?ioSemanticContext->mTypeMap !"levels" !"uint" !false ;
   enterInheritedReaderWith2Arguments !?readerMap !?ioSemanticContext->mTypeMap !"hasKeyAtLevel" !"string" !"inKey" !"uint" !"inLevel" !"bool" !false ;
@@ -2700,8 +2700,7 @@ override method @onceFunctionDeclarationAST enterInSemanticContext
   ?!@semanticContext ioSemanticContext
 :
 #--- Result type
-  @unifiedTypeMapProxy resultTypeIndex ;
-  [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mResultTypeName ?resultTypeIndex] ;
+  [@unifiedTypeMapProxy makeProxy !?ioSemanticContext->mTypeMap !mResultTypeName ??@unifiedTypeMapProxy resultTypeIndex] ;
 #--- Enter function in routine map
   [!?ioSemanticContext->mFunctionMap insertKey !mFunctionName ![@unifiedTypeMapProxyList emptyList] !resultTypeIndex] ;
 end method ;

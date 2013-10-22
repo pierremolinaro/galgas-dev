@@ -677,15 +677,15 @@ override method @binarysetPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap321" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !"binaryset" !false ;
   enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"transitiveClosure" !"uint" !"inBitCount" !"binaryset" !false ;
   enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"accessibleStates" !"binaryset" !"inInitialStateSet" !"uint" !"inBitCount" !"binaryset" !false ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"equalTo" !"binaryset" !"binaryset" !false ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"notEqualTo" !"binaryset" !"binaryset" !false ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"lowerOrEqualTo" !"binaryset" !"binaryset" !false ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"greaterOrEqualTo" !"binaryset" !"binaryset" !false ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"strictGreaterThan" !"binaryset" !"binaryset" !false ;
-  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"strictLowerThan" !"binaryset" !"binaryset" !false ;
-  enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"binarySetByTranslatingFromIndex" !"uint" !"uint" !"binaryset" !false ;
-  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"containsValue" !"uint64" !"uint" !"uint" !"bool" !false ;
-  enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"existsOnBitRange" !"uint" !"uint" !"binaryset" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"equalTo" !"binaryset" !"inOperand" !"binaryset" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"notEqualTo" !"binaryset" !"inOperand" !"binaryset" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"lowerOrEqualTo" !"binaryset" !"inOperand" !"binaryset" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"greaterOrEqualTo" !"binaryset" !"inOperand" !"binaryset" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"strictGreaterThan" !"binaryset" !"inOperand" !"binaryset" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"strictLowerThan" !"binaryset" !"inOperand" !"binaryset" !false ;
+  enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"binarySetByTranslatingFromIndex" !"uint" !"inFirstIndexToTranslate" !"uint" !"inTranslation" !"binaryset" !false ;
+  enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"containsValue" !"uint64" !"inValue" !"uint" !"inFirstBit" !"uint" !"inBitCount" !"bool" !false ;
+  enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"existsOnBitRange" !"uint" !"inFirstBit" !"uint" !"inBitCount" !"binaryset" !false ;
 end method ;
 
 #---------------------------------------------------------------------------*

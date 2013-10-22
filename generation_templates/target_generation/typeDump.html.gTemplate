@@ -150,7 +150,7 @@ end if%
 if [type_mAddAssignOperatorArguments length] > 0 then
   %<tr class="result_line"><td>+= instruction arguments</td><td>%
   foreach type_mAddAssignOperatorArguments do
-    !linkForType [![mType key]]%<br>%
+    !linkForType [![mType key]] % % !mFormalParameterName %<br>%
   end foreach
   %</td></tr>%
 end if
@@ -170,7 +170,8 @@ if [type_mConstructorMap count] > 0 then
   foreach type_mConstructorMap do
     %<b>constructor</b> %!lkey->string
     foreach mArgumentTypeList do
-      % ?%!linkForType [![mType key]]
+      %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
+      % ?%!linkForType [![mType key]] % % !mFormalParameterName
     end foreach
     % &rarr; %!linkForType [![mReturnedType key]] %<br>%
   end foreach
@@ -193,7 +194,8 @@ if [type_mReaderMap count] > 0 then
     end switch
     %<b>reader</b> %!lkey->string
     foreach mArgumentTypeList do
-      % ?%!linkForType [![mType key]]
+      %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
+      % ?%!linkForType [![mType key]] % % !mFormalParameterName
     end foreach
     % &rarr; %!linkForType [![mReturnedType key]] %<br>%
   end foreach
@@ -217,6 +219,7 @@ if [type_mInstanceMethodMap count] > 0 then
     end switch
     %<b>method</b> %!lkey->string
     foreach mParameterList do
+      %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode
       when argumentConstantIn : % ??%
       when argumentIn         : % ?%
@@ -247,6 +250,7 @@ if [type_mModifierMap count] > 0 then
     end switch
     %<b>modifier</b> %!lkey->string
     foreach mParameterList do
+      %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode
       when argumentConstantIn : % ??%
       when argumentIn         : % ?%
@@ -265,6 +269,7 @@ if [type_mClassMethodMap count] > 0 then
   foreach type_mClassMethodMap do
     %<b>class method</b> %!lkey->string
     foreach mParameterList do
+      %<br>&nbsp;&nbsp;&nbsp;&nbsp;%
       switch mFormalArgumentPassingMode
       when argumentConstantIn : % ??%
       when argumentIn         : % ?%

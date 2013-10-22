@@ -1361,12 +1361,13 @@ rule <semantic_declaration>
   while
     $constructor$ ;
     $identifier$ ? @lstring constructorName ;
-    @lstringlist argumentTypeList [emptyList] ;
+    @typeNameFormalParameterNameList argumentTypeList [emptyList] ;
     repeat
     while
       $??$ ;
       $type_name$ ? @lstring argumentTypeName ;
-      argumentTypeList += !argumentTypeName ;
+      $identifier$ ? @lstring argumentName ;
+      argumentTypeList += !argumentTypeName !argumentName->string ;
     end repeat ;
     $->$ ;
     $type_name$ ? @lstring resultTypeName ;
@@ -1379,12 +1380,13 @@ rule <semantic_declaration>
   while
     $reader$ ;
     $identifier$ ? @lstring readerName ;
-    @lstringlist argumentTypeList [emptyList] ;
+    @typeNameFormalParameterNameList argumentTypeList [emptyList] ;
     repeat
     while
       $??$ ;
       $type_name$ ? @lstring argumentTypeName ;
-      argumentTypeList += !argumentTypeName ;
+      $identifier$ ? @lstring argumentName ;
+      argumentTypeList += !argumentTypeName !argumentName->string ;
     end repeat ;
     $->$ ;
     $type_name$ ? @lstring resultTypeName ;

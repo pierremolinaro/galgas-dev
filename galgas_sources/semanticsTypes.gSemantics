@@ -21,10 +21,6 @@ semantics semanticsTypes :
 import "semanticsTypesForAST.gSemantics" ;
 
 #---------------------------------------------------------------------------*
-#                                                                           *
-#  U N I F I E D    T Y P E    M A P                                        *
-#                                                                           *
-#---------------------------------------------------------------------------*
 
 list @unifiedTypeMapProxyList {
   @unifiedTypeMapProxy mType ;
