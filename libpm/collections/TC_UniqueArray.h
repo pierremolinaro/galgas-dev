@@ -232,14 +232,16 @@ template <typename TYPE> class TC_UniqueArray {
   reverseSortArrayUsingFunction (PMSInt32 (* inSortFunction) (const TYPE & inOperand1,
                                                               const TYPE & inOperand2)) ;
 
-//--- Array access (with index checking)
+//--- Element access (with index checking)
   public : TYPE lastObject (LOCATION_ARGS) const ;
 
-  public : TYPE & operator () (const PMSInt32 inIndex
-                               COMMA_LOCATION_ARGS) ;
+  public : void setObjectAtIndex (const TYPE & inObject,
+                                  const PMSInt32 inIndex
+                                  COMMA_LOCATION_ARGS) ;
 
-  public : TYPE & operator () (const PMSInt32 inIndex
-                               COMMA_LOCATION_ARGS) const ;
+  public : TYPE & operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) ;
+
+  public : const TYPE & operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) const ;
 
 //--- Private methods
   private : void internalSortArrayUsingOperators (const PMSInt32 inFirst,
@@ -868,8 +870,19 @@ indexOfFirstObjectEqualTo (const TYPE & inValue) const {
 //---------------------------------------------------------------------------*
 
 template <typename TYPE>
-TYPE & TC_UniqueArray <TYPE>::
-operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) {
+void TC_UniqueArray <TYPE>::setObjectAtIndex (const TYPE & inObject,
+                                              const PMSInt32 inIndex
+                                              COMMA_LOCATION_ARGS) {
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkIndex (inIndex COMMA_THERE) ;
+  #endif
+  mArray [inIndex] = inObject ;
+}
+
+//---------------------------------------------------------------------------*
+
+template <typename TYPE>
+TYPE & TC_UniqueArray <TYPE>::operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (inIndex COMMA_THERE) ;
   #endif
@@ -879,8 +892,7 @@ operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) {
 //---------------------------------------------------------------------------*
 
 template <typename TYPE>
-TYPE & TC_UniqueArray <TYPE>::
-operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) const {
+const TYPE & TC_UniqueArray <TYPE>::operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) const {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (inIndex COMMA_THERE) ;
   #endif

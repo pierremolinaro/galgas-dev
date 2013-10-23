@@ -188,7 +188,7 @@ void cBuildArrayForSet1::action (const bool inValuesArray [],
   for (PMSInt32 i=((PMSInt32) inBDDbitsSize) - 1 ; i>=0 ; i--) {
     element = (element << 1) + inValuesArray [i] ;
   }
-  mArray (element COMMA_HERE) = true ;
+  mArray.setObjectAtIndex (true, element COMMA_HERE) ;
 }
 
 //----------------------------------------------------------------------------*
