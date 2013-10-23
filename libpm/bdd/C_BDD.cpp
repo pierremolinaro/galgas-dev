@@ -1370,7 +1370,7 @@ void cBuildArrayForSet::action (const bool inValuesArray [],
   for (PMSInt32 i=((PMSInt32) inBDDbitsSize) - 1 ; i>=0 ; i--) {
     element = (element << 1) + inValuesArray [i] ;
   }
-  mArray (element COMMA_HERE) = true ;
+  mArray.setObjectAtIndex (true, element COMMA_HERE) ;
 }
 
 //----------------------------------------------------------------------------*
@@ -1786,16 +1786,16 @@ ecrireBDDinterne (AC_OutputStream & inStream,
   }else{
     const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
     while (numeroVariable > var) {
-      chaineAffichage ((PMSInt32) numeroVariable COMMA_HERE) = 'X' ;
+      chaineAffichage.setObjectAtIndex ('X', (PMSInt32) numeroVariable COMMA_HERE) ;
       numeroVariable -- ;
     }
   //--- Branche Zero
     const PMUInt32 branche0 = gNodeArray [nodeIndex].mELSEbranch ^ complement ;
     if (branche0 != 0) {
-      chaineAffichage ((PMSInt32) var COMMA_HERE) = '0' ;
+      chaineAffichage.setObjectAtIndex ('0', (PMSInt32) var COMMA_HERE) ;
       if (branche0 == 1) {
         for (PMUInt32 i=0 ; i<var ; i++) {
-          chaineAffichage ((PMSInt32) i COMMA_HERE) = 'X' ;
+          chaineAffichage.setObjectAtIndex ('X', (PMSInt32) i COMMA_HERE) ;
         }
         ecrireLigneBDD (inStream, chaineAffichage, inVariablesNames) ;
       }else{
@@ -1806,10 +1806,10 @@ ecrireBDDinterne (AC_OutputStream & inStream,
   //--- Branche 1
     const PMUInt32 branche1 = gNodeArray [nodeIndex].mTHENbranch ^ complement ;
     if (branche1 != 0) {
-      chaineAffichage ((PMSInt32) var COMMA_HERE) = '1' ;
+      chaineAffichage.setObjectAtIndex ('1', (PMSInt32) var COMMA_HERE) ;
       if (branche1 == 1) {
         for (PMUInt32 i=0 ; i<var ; i++) {
-          chaineAffichage ((PMSInt32) i COMMA_HERE) = 'X' ;
+          chaineAffichage.setObjectAtIndex ('X', (PMSInt32) i COMMA_HERE) ;
         }
         ecrireLigneBDD (inStream, chaineAffichage, inVariablesNames) ;
       }else{
@@ -1881,16 +1881,16 @@ internalPrintBDD (const PMUInt32 inValue,
   }else{
     const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
     while (inVariableIndex > var) {
-      inDisplayString ((PMSInt32) inVariableIndex COMMA_HERE) = 'X' ;
+      inDisplayString.setObjectAtIndex ('X', (PMSInt32) inVariableIndex COMMA_HERE) ;
       inVariableIndex -- ;
     }
   //--- Branche Zero
     const PMUInt32 branche0 = gNodeArray [nodeIndex].mELSEbranch ^ complement ;
     if (branche0 != 0) {
-      inDisplayString ((PMSInt32) var COMMA_HERE) = '0' ;
+      inDisplayString.setObjectAtIndex ('0', (PMSInt32) var COMMA_HERE) ;
       if (branche0 == 1) {
         for (PMUInt32 i=0 ; i<var ; i++) {
-          inDisplayString ((PMSInt32) i COMMA_HERE) = 'X' ;
+          inDisplayString.setObjectAtIndex ('X', (PMSInt32) i COMMA_HERE) ;
         }
         printBDDline (inDisplayString, inNameLengthArray, inLeadingSpacesCount) ;
       }else{
@@ -1900,10 +1900,10 @@ internalPrintBDD (const PMUInt32 inValue,
   //--- Branche 1
     const PMUInt32 branche1 = gNodeArray [nodeIndex].mTHENbranch ^ complement ;
     if (branche1 != 0) {
-      inDisplayString ((PMSInt32) var COMMA_HERE) = '1' ;
+      inDisplayString.setObjectAtIndex ('1', (PMSInt32) var COMMA_HERE) ;
       if (branche1 == 1) {
         for (PMUInt32 i=0 ; i<var ; i++) {
-          inDisplayString ((PMSInt32) i COMMA_HERE) = 'X' ;
+          inDisplayString.setObjectAtIndex ('X', (PMSInt32) i COMMA_HERE) ;
         }
         printBDDline (inDisplayString, inNameLengthArray, inLeadingSpacesCount) ;
       }else{
@@ -2015,16 +2015,16 @@ internalPrintBDDWithSeparator (const PMUInt32 inValue,
   }else{
     const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
     while (inVariableIndex > var) {
-      inDisplayString ((PMSInt32) inVariableIndex COMMA_HERE) = 'X' ;
+      inDisplayString.setObjectAtIndex ('X', (PMSInt32) inVariableIndex COMMA_HERE) ;
       inVariableIndex -- ;
     }
   //--- Branche Zero
     const PMUInt32 branche0 = gNodeArray [nodeIndex].mELSEbranch ^ complement ;
     if (branche0 != 0) {
-      inDisplayString ((PMSInt32) var COMMA_HERE) = '0' ;
+      inDisplayString.setObjectAtIndex ('0', (PMSInt32) var COMMA_HERE) ;
       if (branche0 == 1) {
         for (PMUInt32 i=0 ; i<var ; i++) {
-          inDisplayString ((PMSInt32) i COMMA_HERE) = 'X' ;
+          inDisplayString.setObjectAtIndex ('X', (PMSInt32) i COMMA_HERE) ;
         }
         printBDDlineWithSeparator (inSeparatorArray, inDisplayString) ;
       }else{
@@ -2034,10 +2034,10 @@ internalPrintBDDWithSeparator (const PMUInt32 inValue,
   //--- Branche 1
     const PMUInt32 branche1 = gNodeArray [nodeIndex].mTHENbranch ^ complement ;
     if (branche1 != 0) {
-      inDisplayString ((PMSInt32) var COMMA_HERE) = '1' ;
+      inDisplayString.setObjectAtIndex ('1', (PMSInt32) var COMMA_HERE) ;
       if (branche1 == 1) {
         for (PMUInt32 i=0 ; i<var ; i++) {
-          inDisplayString ((PMSInt32) i COMMA_HERE) = 'X' ;
+          inDisplayString.setObjectAtIndex ('X', (PMSInt32) i COMMA_HERE) ;
         }
         printBDDlineWithSeparator (inSeparatorArray, inDisplayString) ;
       }else{
