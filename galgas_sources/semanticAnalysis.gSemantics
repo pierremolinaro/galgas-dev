@@ -250,15 +250,18 @@ override method @structDeclarationAST semanticAnalysis
   ??@predefinedTypes unused inPredefinedTypes
   ?!@semanticDeclarationSortedListForGeneration ioSemanticDeclarationListForGeneration
 :
+  if [mAttributeList length] == 0 then
+    error mStructTypeName: "a structure cannot be empty: it must have at least one field" ; 
+  end if ;
   @typedAttributeList typedAttributeList [emptyList] ;
   @attributeIndexMap attributeMap [emptyMap] ;
   foreach mAttributeList do
-    @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
+    const @unifiedTypeMapProxy t [searchKey !inSemanticContext->mTypeMap !mAttributeTypeName] ;
     foreach mFeatureList do
-      error mValue : "a struct attribute accepts no feature" ;
+      error mValue : "a struct attribute does not accept any feature" ;
     end foreach ;
-    @bool hasSetter := false ;
-    @bool hasGetter := false ;
+    const @bool hasSetter := false ;
+    const @bool hasGetter := false ;
     typedAttributeList +=
       !t
       !mAttributeName
