@@ -17,7 +17,7 @@
 #                                                                           *
 #---------------------------------------------------------------------------*
 
-project all_galgas (2:5:2) -> "galgas" :
+project all_galgas (2:5:3) -> "galgas" :
 #  feature "multi-threading" ;
   feature libpmAtPath : "../libpm" ;
 #--- Targets

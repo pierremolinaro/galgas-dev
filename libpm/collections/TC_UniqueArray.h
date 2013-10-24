@@ -233,7 +233,7 @@ template <typename TYPE> class TC_UniqueArray {
                                                               const TYPE & inOperand2)) ;
 
 //--- Element access (with index checking)
-  public : TYPE lastObject (LOCATION_ARGS) const ;
+  public : const TYPE lastObject (LOCATION_ARGS) const ;
 
   public : void setObjectAtIndex (const TYPE & inObject,
                                   const PMSInt32 inIndex
@@ -902,7 +902,7 @@ const TYPE & TC_UniqueArray <TYPE>::operator () (const PMSInt32 inIndex COMMA_LO
 //---------------------------------------------------------------------------*
 
 template <typename TYPE>
-TYPE TC_UniqueArray <TYPE>::lastObject (LOCATION_ARGS) const {
+const TYPE TC_UniqueArray <TYPE>::lastObject (LOCATION_ARGS) const {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (mCount-1 COMMA_THERE) ;
   #endif
