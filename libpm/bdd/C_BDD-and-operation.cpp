@@ -265,16 +265,16 @@ PMUInt32 internalANDoperation (const PMUInt32 opf,
   //--- Compute
     if (varF < varG) {
       result = find_or_add (varG,
-                            internalANDoperation (f, gNodeArray [nodeG].mELSEbranch ^ compG),
-                            internalANDoperation (f, gNodeArray [nodeG].mTHENbranch ^ compG) COMMA_HERE) ;
+                            internalANDoperation (f, gNodeArray [nodeG].mELSE ^ compG),
+                            internalANDoperation (f, gNodeArray [nodeG].mTHEN ^ compG) COMMA_HERE) ;
     }else if (varF == varG) {
       result = find_or_add (varF,
-                            internalANDoperation (gNodeArray [nodeF].mELSEbranch ^ compF, gNodeArray [nodeG].mELSEbranch ^ compG),
-                            internalANDoperation (gNodeArray [nodeF].mTHENbranch ^ compF, gNodeArray [nodeG].mTHENbranch ^ compG) COMMA_HERE) ;
+                            internalANDoperation (gNodeArray [nodeF].mELSE ^ compF, gNodeArray [nodeG].mELSE ^ compG),
+                            internalANDoperation (gNodeArray [nodeF].mTHEN ^ compF, gNodeArray [nodeG].mTHEN ^ compG) COMMA_HERE) ;
     }else{ // varF > varG
       result = find_or_add (varF,
-                            internalANDoperation (gNodeArray [nodeF].mELSEbranch ^ compF, g),
-                            internalANDoperation (gNodeArray [nodeF].mTHENbranch ^ compF, g) COMMA_HERE) ;
+                            internalANDoperation (gNodeArray [nodeF].mELSE ^ compF, g),
+                            internalANDoperation (gNodeArray [nodeF].mTHEN ^ compF, g) COMMA_HERE) ;
     }
   //--- Insert result into cache
     enterInANDOperationCache (f, g, result) ;

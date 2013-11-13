@@ -34,13 +34,26 @@
 //            Declaration de la classe 'cBDDnode'                      *
 //               definissant un element d'un BDD                       *
 //                                                                     *
-//---------------------------------------------------------------------*
+///---------------------------------------------------------------------*
 
 class cBDDnode {
-  public : union {
-    struct {PMUInt32 mTHENbranch ; PMUInt32 mELSEbranch ; } ;
-    PMUInt64 mBranches ;
-  } ;
+  public : inline cBDDnode (const PMUInt32 inTHENbranch,
+                            const PMUInt32 inELSEbranch,
+                            const PMUInt32 inVariableIndex) :
+  mTHEN (inTHENbranch),
+  mELSE (inELSEbranch),
+  mVariableIndex (inVariableIndex),
+  mAuxiliary (0) {
+  }
+  
+  public : inline PMUInt64 bothBranches (void) const {
+    PMUInt64 result = mTHEN ;
+    result <<= 32 ;
+    result |= mELSE ;
+    return result ;
+  }
+  public : PMUInt32 mTHEN ;
+  public : PMUInt32 mELSE ;
   public : PMUInt32 mVariableIndex ;
   public : PMUInt32 mAuxiliary ;
 } ;

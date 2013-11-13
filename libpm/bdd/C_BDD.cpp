@@ -167,10 +167,10 @@ static PMUInt32 internalOpposite (const PMUInt32 inValue) {
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const PMUInt32 complement = inValue & 1 ;
   PMUInt32 result = 0 ;
-  if (gNodeArray [nodeIndex].mBranches != 0) {
+  if (gNodeArray [nodeIndex].bothBranches () != 0) {
     result = find_or_add (gNodeArray [nodeIndex].mVariableIndex,
-                          internalOpposite (gNodeArray [nodeIndex].mTHENbranch),
-                          internalOpposite (gNodeArray [nodeIndex].mELSEbranch) COMMA_HERE) ;
+                          internalOpposite (gNodeArray [nodeIndex].mTHEN),
+                          internalOpposite (gNodeArray [nodeIndex].mELSE) COMMA_HERE) ;
   }
   return result ^ complement ;
 }
@@ -442,7 +442,7 @@ varCompareVar (const PMUInt32 inLeftFirstIndex,
 PMUInt32 C_BDD::significantVariableCount (void) const {
   PMUInt32 bitCount = 0 ;
   const PMUInt32 nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].mBranches != 0) {
+  if (gNodeArray [nodeIndex].bothBranches () != 0) {
     bitCount = gNodeArray [nodeIndex].mVariableIndex + 1 ;
   }
   return bitCount ;
@@ -467,7 +467,7 @@ static bool recursiveContainsValue64 (const PMUInt32 inBDD,
   bool result ;
   const PMUInt32 nodeIndex = nodeIndexForRoot (inBDD COMMA_HERE) ;
   const PMUInt32 complement = inBDD & 1 ;
-  if (gNodeArray [nodeIndex].mBranches == 0) {
+  if (gNodeArray [nodeIndex].bothBranches () == 0) {
     result = complement != 0 ;
     #ifdef DEBUG_CONTAINS_VALUE
       printf ("result %s\n", result ? "YES" : "NO") ;
@@ -478,12 +478,12 @@ static bool recursiveContainsValue64 (const PMUInt32 inBDD,
       #ifdef DEBUG_CONTAINS_VALUE
         printf ("var %u\n", var) ;
       #endif
-      result = recursiveContainsValue64 (gNodeArray [nodeIndex].mTHENbranch ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
+      result = recursiveContainsValue64 (gNodeArray [nodeIndex].mTHEN ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
       #ifdef DEBUG_CONTAINS_VALUE
         printf ("var %u branch THEN returns %s\n", var, result ? "YES" : "NO") ;
       #endif
       if (! result) {
-        result = recursiveContainsValue64 (gNodeArray [nodeIndex].mELSEbranch ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
+        result = recursiveContainsValue64 (gNodeArray [nodeIndex].mELSE ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
         #ifdef DEBUG_CONTAINS_VALUE
           printf ("var %u branch ELSE returns %s\n", var, result ? "YES" : "NO") ;
         #endif
@@ -499,9 +499,9 @@ static bool recursiveContainsValue64 (const PMUInt32 inBDD,
         printf ("var %u, bitvalue %s\n", var, bitValue ? "YES" : "NO") ;
       #endif
       if (bitValue) {
-        result = recursiveContainsValue64 (gNodeArray [nodeIndex].mTHENbranch ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
+        result = recursiveContainsValue64 (gNodeArray [nodeIndex].mTHEN ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
       }else{
-        result = recursiveContainsValue64 (gNodeArray [nodeIndex].mELSEbranch ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
+        result = recursiveContainsValue64 (gNodeArray [nodeIndex].mELSE ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
       }
       #ifdef DEBUG_CONTAINS_VALUE
         printf ("var %u, bitvalue %s returns %s\n", var, bitValue ? "YES" : "NO", result ? "YES" : "NO") ;
@@ -531,7 +531,7 @@ static bool recursiveContainsValue (const PMUInt32 inBDD,
   bool result ;
   const PMUInt32 nodeIndex = nodeIndexForRoot (inBDD COMMA_HERE) ;
   const PMUInt32 complement = inBDD & 1 ;
-  if (gNodeArray [nodeIndex].mBranches == 0) {
+  if (gNodeArray [nodeIndex].bothBranches () == 0) {
     result = complement != 0 ;
     #ifdef DEBUG_CONTAINS_VALUE
       printf ("result %s\n", result ? "YES" : "NO") ;
@@ -542,12 +542,12 @@ static bool recursiveContainsValue (const PMUInt32 inBDD,
       #ifdef DEBUG_CONTAINS_VALUE
         printf ("var %u\n", var) ;
       #endif
-      result = recursiveContainsValue (gNodeArray [nodeIndex].mTHENbranch ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
+      result = recursiveContainsValue (gNodeArray [nodeIndex].mTHEN ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
       #ifdef DEBUG_CONTAINS_VALUE
         printf ("var %u branch THEN returns %s\n", var, result ? "YES" : "NO") ;
       #endif
       if (! result) {
-        result = recursiveContainsValue (gNodeArray [nodeIndex].mELSEbranch ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
+        result = recursiveContainsValue (gNodeArray [nodeIndex].mELSE ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
         #ifdef DEBUG_CONTAINS_VALUE
           printf ("var %u branch ELSE returns %s\n", var, result ? "YES" : "NO") ;
         #endif
@@ -563,9 +563,9 @@ static bool recursiveContainsValue (const PMUInt32 inBDD,
         printf ("var %u, bitvalue %s\n", var, bitValue ? "YES" : "NO") ;
       #endif
       if (bitValue) {
-        result = recursiveContainsValue (gNodeArray [nodeIndex].mTHENbranch ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
+        result = recursiveContainsValue (gNodeArray [nodeIndex].mTHEN ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
       }else{
-        result = recursiveContainsValue (gNodeArray [nodeIndex].mELSEbranch ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
+        result = recursiveContainsValue (gNodeArray [nodeIndex].mELSE ^ complement, inValue, inFirstBit, inLastBitPlusOne) ;
       }
       #ifdef DEBUG_CONTAINS_VALUE
         printf ("var %u, bitvalue %s returns %s\n", var, bitValue ? "YES" : "NO", result ? "YES" : "NO") ;
@@ -597,14 +597,14 @@ bool C_BDD::containsValue (const TC_Array <bool> & inValue,
 static void parcoursBDDinterneParNoeud (const PMUInt32 inValue,
                                         C_bdd_node_traversing & inTraversing) {
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if ((gNodeArray [nodeIndex].mBranches != 0) && ! isNodeMarkedThenMark (inValue COMMA_HERE)) {
-    parcoursBDDinterneParNoeud (gNodeArray [nodeIndex].mELSEbranch, inTraversing) ;
-    parcoursBDDinterneParNoeud (gNodeArray [nodeIndex].mTHENbranch, inTraversing) ;
+  if ((gNodeArray [nodeIndex].bothBranches () != 0) && ! isNodeMarkedThenMark (inValue COMMA_HERE)) {
+    parcoursBDDinterneParNoeud (gNodeArray [nodeIndex].mELSE, inTraversing) ;
+    parcoursBDDinterneParNoeud (gNodeArray [nodeIndex].mTHEN, inTraversing) ;
     inTraversing.action (inValue & ~1U,
                          gNodeArray [nodeIndex].mVariableIndex,
-                         gNodeArray [nodeIndex].mELSEbranch,
-                         gNodeArray [nodeIndex].mTHENbranch & ~1U,
-                         gNodeArray [nodeIndex].mTHENbranch & 1) ;
+                         gNodeArray [nodeIndex].mELSE,
+                         gNodeArray [nodeIndex].mTHEN & ~1U,
+                         gNodeArray [nodeIndex].mTHEN & 1) ;
   }
 }
 
@@ -635,9 +635,9 @@ parcoursBDDinterneParValeur (const PMUInt32 inValue,
       if (variable == variableCourante) {
         const PMUInt32 complement = inValue & 1 ;
         tableauDesValeurs [variableCourante] = false ;
-        parcoursBDDinterneParValeur (gNodeArray [nodeIndex].mELSEbranch ^ complement, inTraversing, tableauDesValeurs, variableCourante, inVariableCount) ;
+        parcoursBDDinterneParValeur (gNodeArray [nodeIndex].mELSE ^ complement, inTraversing, tableauDesValeurs, variableCourante, inVariableCount) ;
         tableauDesValeurs [variableCourante] = true ;
-        parcoursBDDinterneParValeur (gNodeArray [nodeIndex].mTHENbranch ^ complement, inTraversing, tableauDesValeurs, variableCourante, inVariableCount) ;
+        parcoursBDDinterneParValeur (gNodeArray [nodeIndex].mTHEN ^ complement, inTraversing, tableauDesValeurs, variableCourante, inVariableCount) ;
       }else if (variable < variableCourante) {
         tableauDesValeurs [variableCourante] = false ;
         parcoursBDDinterneParValeur (inValue, inTraversing, tableauDesValeurs, variableCourante, inVariableCount) ;
@@ -967,7 +967,7 @@ static void internalValueCount64 (const PMUInt32 inValue,
                                   PMUInt64 & nombreComplement
                                   COMMA_LOCATION_ARGS) {
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
-  if (gNodeArray [nodeIndex].mBranches == 0) {
+  if (gNodeArray [nodeIndex].bothBranches () == 0) {
     nombreDirect = 0 ;
     nombreComplement = 1 ;
     for (PMUInt32 i=0 ; i<inVariableCount ; i++) {
@@ -976,8 +976,8 @@ static void internalValueCount64 (const PMUInt32 inValue,
   }else{
     const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
     PMUInt64 nd0, nc0, nd1, nc1 ;
-    internalValueCount64 (gNodeArray [nodeIndex].mELSEbranch, var, nd0, nc0 COMMA_THERE) ;
-    internalValueCount64 (gNodeArray [nodeIndex].mTHENbranch, var, nd1, nc1 COMMA_THERE) ;
+    internalValueCount64 (gNodeArray [nodeIndex].mELSE, var, nd0, nc0 COMMA_THERE) ;
+    internalValueCount64 (gNodeArray [nodeIndex].mTHEN, var, nd1, nc1 COMMA_THERE) ;
     nombreDirect = nd0 + nd1 ;
     nombreComplement = nc0 + nc1 ;
     for (PMUInt32 i=(PMUInt32) (var+1) ; i<inVariableCount ; i++) {
@@ -1015,7 +1015,7 @@ static void internalValueCount128 (const PMUInt32 inValue,
                                    PMUInt128 & nombreComplement
                                    COMMA_LOCATION_ARGS) {
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
-  if (gNodeArray [nodeIndex].mBranches == 0) {
+  if (gNodeArray [nodeIndex].bothBranches () == 0) {
     nombreDirect = 0 ;
     nombreComplement = 1 ;
     for (PMUInt32 i=0 ; i<inVariableCount ; i++) {
@@ -1024,8 +1024,8 @@ static void internalValueCount128 (const PMUInt32 inValue,
   }else{
     const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
     PMUInt128 nd0, nc0, nd1, nc1 ;
-    internalValueCount128 (gNodeArray [nodeIndex].mELSEbranch, var, nd0, nc0 COMMA_THERE) ;
-    internalValueCount128 (gNodeArray [nodeIndex].mTHENbranch, var, nd1, nc1 COMMA_THERE) ;
+    internalValueCount128 (gNodeArray [nodeIndex].mELSE, var, nd0, nc0 COMMA_THERE) ;
+    internalValueCount128 (gNodeArray [nodeIndex].mTHEN, var, nd1, nc1 COMMA_THERE) ;
     nombreDirect = nd0 + nd1 ;
     nombreComplement = nc0 + nc1 ;
     for (PMUInt32 i=(PMUInt32) (var+1) ; i<inVariableCount ; i++) {
@@ -1059,7 +1059,7 @@ static void internalValueCount128UsingCache (const PMUInt32 inValue,
                                              TC_UniqueArray <PMUInt128> & ioComplementCacheArray
                                              COMMA_LOCATION_ARGS) {
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
-  if (gNodeArray [nodeIndex].mBranches == 0) {
+  if (gNodeArray [nodeIndex].bothBranches () == 0) {
     nombreDirect = 0 ;
     nombreComplement = 1 << inVariableCount ;
   }else if ((ioDirectCacheArray.count () > (PMSInt32) (inValue / 2))
@@ -1069,8 +1069,8 @@ static void internalValueCount128UsingCache (const PMUInt32 inValue,
   }else{
     const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
     PMUInt128 nd0, nc0, nd1, nc1 ;
-    internalValueCount128UsingCache (gNodeArray [nodeIndex].mELSEbranch, var, nd0, nc0, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
-    internalValueCount128UsingCache (gNodeArray [nodeIndex].mTHENbranch, var, nd1, nc1, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
+    internalValueCount128UsingCache (gNodeArray [nodeIndex].mELSE, var, nd0, nc0, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
+    internalValueCount128UsingCache (gNodeArray [nodeIndex].mTHEN, var, nd1, nc1, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
     nombreDirect = nd0 + nd1 ;
     nombreComplement = nc0 + nc1 ;
     for (PMUInt32 i=(PMUInt32) (var+1) ; i<inVariableCount ; i++) {
@@ -1108,7 +1108,7 @@ static void internalValueCount64UsingCache (const PMUInt32 inValue,
                                             TC_UniqueArray <PMUInt64> & ioComplementCacheArray
                                             COMMA_LOCATION_ARGS) {
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
-  if (gNodeArray [nodeIndex].mBranches == 0) {
+  if (gNodeArray [nodeIndex].bothBranches () == 0) {
     nombreDirect = 0 ;
     nombreComplement = 1 << inVariableCount ;
   }else if ((ioDirectCacheArray.count () > (PMSInt32) (inValue / 2))
@@ -1119,8 +1119,8 @@ static void internalValueCount64UsingCache (const PMUInt32 inValue,
   }else{
     const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
     PMUInt64 nd0, nc0, nd1, nc1 ;
-    internalValueCount64UsingCache (gNodeArray [nodeIndex].mELSEbranch, var, nd0, nc0, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
-    internalValueCount64UsingCache (gNodeArray [nodeIndex].mTHENbranch, var, nd1, nc1, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
+    internalValueCount64UsingCache (gNodeArray [nodeIndex].mELSE, var, nd0, nc0, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
+    internalValueCount64UsingCache (gNodeArray [nodeIndex].mTHEN, var, nd1, nc1, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
     nombreDirect = nd0 + nd1 ;
     nombreComplement = nc0 + nc1 ;
     ioDirectCacheArray.forceObjectAtIndex (inValue / 2, nombreDirect, 0 COMMA_HERE) ;
@@ -1163,7 +1163,7 @@ obtenirIemeBDDinterne (const PMUInt32 inValue,
   const PMUInt32 complement = inValue & 1 ;
   PMUInt64 iEme ;
   C_BDD result ;
-  if (gNodeArray [nodeIndex].mBranches == 0) {
+  if (gNodeArray [nodeIndex].bothBranches () == 0) {
     if (complement == 1) { // Decomposer inNthBDDvalue en binaire
       result = ~ result ;
       iEme = inNthBDDvalue ;
@@ -1177,10 +1177,10 @@ obtenirIemeBDDinterne (const PMUInt32 inValue,
     const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
     PMUInt64 nd0 = 0UL ;
     PMUInt64 nc0 = 0UL ; // Non utilise ici
-    internalValueCount64 (gNodeArray [nodeIndex].mELSEbranch ^ complement, inVariableCount - 1, nd0, nc0 COMMA_HERE) ;
+    internalValueCount64 (gNodeArray [nodeIndex].mELSE ^ complement, inVariableCount - 1, nd0, nc0 COMMA_HERE) ;
     PMUInt64 nd1 = 0UL ;
     PMUInt64 nc1 = 0UL ; // Non utilise ici
-    internalValueCount64 (gNodeArray [nodeIndex].mTHENbranch ^ complement, inVariableCount - 1, nd1, nc1 COMMA_HERE) ;
+    internalValueCount64 (gNodeArray [nodeIndex].mTHEN ^ complement, inVariableCount - 1, nd1, nc1 COMMA_HERE) ;
     PMUInt64 total = nd0 + nd1 ;
     for (PMUInt32 i = (PMUInt32) (inVariableCount-1) ; i>var ; i--) {
       total >>= 1 ;
@@ -1193,9 +1193,9 @@ obtenirIemeBDDinterne (const PMUInt32 inValue,
       quotient >>= 1 ;
     }
     if (iEme < nd0) {
-      result = result & C_BDD (var, false) & obtenirIemeBDDinterne (gNodeArray [nodeIndex].mELSEbranch ^ complement, iEme, var) ;
+      result = result & C_BDD (var, false) & obtenirIemeBDDinterne (gNodeArray [nodeIndex].mELSE ^ complement, iEme, var) ;
     }else if (iEme < total) {
-      result = result & C_BDD (var, true) & obtenirIemeBDDinterne (gNodeArray [nodeIndex].mTHENbranch ^ complement, iEme - nd0, var) ;
+      result = result & C_BDD (var, true) & obtenirIemeBDDinterne (gNodeArray [nodeIndex].mTHEN ^ complement, iEme - nd0, var) ;
     }else{
       result = C_BDD () ; // Vide
     }
@@ -1224,15 +1224,15 @@ obtenirValeurAbsolueBDDInterne (const PMUInt32 inValue) {
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const PMUInt32 complement = inValue & 1 ;
   PMUInt64 result = 1 ^ complement ;
-  if (gNodeArray [nodeIndex].mBranches != 0) {
-    if ((gNodeArray [nodeIndex].mELSEbranch ^ complement) != 0) {
-      result = obtenirValeurAbsolueBDDInterne (gNodeArray [nodeIndex].mELSEbranch ^ complement) ;
+  if (gNodeArray [nodeIndex].bothBranches () != 0) {
+    if ((gNodeArray [nodeIndex].mELSE ^ complement) != 0) {
+      result = obtenirValeurAbsolueBDDInterne (gNodeArray [nodeIndex].mELSE ^ complement) ;
     }else{
       result = 1 ;
       for (PMUInt32 i = 1 ; i <= gNodeArray [nodeIndex].mVariableIndex ; i++) {
         result <<= 1 ;
       }
-      result += obtenirValeurAbsolueBDDInterne (gNodeArray [nodeIndex].mTHENbranch ^ complement) ;
+      result += obtenirValeurAbsolueBDDInterne (gNodeArray [nodeIndex].mTHEN ^ complement) ;
     }
   }
   return result ;
@@ -1266,25 +1266,25 @@ rangBDDinterne (const PMUInt32 inValue,
   const PMUInt32 complement = inValue & 1 ;
   PMUInt64 rang = 0 ;
   PMUInt64 nc ; // non utilise
-  if (gNodeArray [testedValueNodeIndex].mBranches == 0) {
-  }else if ((gNodeArray [testedValueNodeIndex].mELSEbranch ^ complementValeurTestee) == 0) {
-    if ((gNodeArray [nodeIndex].mTHENbranch == 0) && (gNodeArray [nodeIndex].mELSEbranch == 0)) {
+  if (gNodeArray [testedValueNodeIndex].bothBranches () == 0) {
+  }else if ((gNodeArray [testedValueNodeIndex].mELSE ^ complementValeurTestee) == 0) {
+    if ((gNodeArray [nodeIndex].mTHEN == 0) && (gNodeArray [nodeIndex].mELSE == 0)) {
       rang = 1UL << gNodeArray [testedValueNodeIndex].mVariableIndex ;
-      rang += rangBDDinterne (inValue, gNodeArray [testedValueNodeIndex].mTHENbranch ^ complementValeurTestee, inVariableCount - 1) ;
+      rang += rangBDDinterne (inValue, gNodeArray [testedValueNodeIndex].mTHEN ^ complementValeurTestee, inVariableCount - 1) ;
     }else if (gNodeArray [nodeIndex].mVariableIndex == gNodeArray [testedValueNodeIndex].mVariableIndex) {
-      internalValueCount64 (gNodeArray [nodeIndex].mELSEbranch ^ complement, inVariableCount - 1, rang, nc COMMA_HERE) ;
-      rang += rangBDDinterne (gNodeArray [nodeIndex].mTHENbranch ^ complement, gNodeArray [testedValueNodeIndex].mTHENbranch ^ complementValeurTestee, inVariableCount - 1) ;
+      internalValueCount64 (gNodeArray [nodeIndex].mELSE ^ complement, inVariableCount - 1, rang, nc COMMA_HERE) ;
+      rang += rangBDDinterne (gNodeArray [nodeIndex].mTHEN ^ complement, gNodeArray [testedValueNodeIndex].mTHEN ^ complementValeurTestee, inVariableCount - 1) ;
     }else{
       internalValueCount64 (inValue, inVariableCount - 1, rang, nc COMMA_HERE) ;
-      rang += rangBDDinterne (inValue, gNodeArray [testedValueNodeIndex].mTHENbranch ^ complementValeurTestee, inVariableCount - 1) ;
+      rang += rangBDDinterne (inValue, gNodeArray [testedValueNodeIndex].mTHEN ^ complementValeurTestee, inVariableCount - 1) ;
     }
   }else{
-    if ((gNodeArray [nodeIndex].mTHENbranch == 0) && (gNodeArray [nodeIndex].mELSEbranch == 0)) {
-      rang = rangBDDinterne (inValue, gNodeArray [testedValueNodeIndex].mELSEbranch ^ complementValeurTestee, inVariableCount - 1) ;
+    if ((gNodeArray [nodeIndex].mTHEN == 0) && (gNodeArray [nodeIndex].mELSE == 0)) {
+      rang = rangBDDinterne (inValue, gNodeArray [testedValueNodeIndex].mELSE ^ complementValeurTestee, inVariableCount - 1) ;
     }else if (gNodeArray [nodeIndex].mVariableIndex == gNodeArray [testedValueNodeIndex].mVariableIndex) {
-      rang = rangBDDinterne (gNodeArray [nodeIndex].mELSEbranch ^ complement, gNodeArray [testedValueNodeIndex].mELSEbranch ^ complementValeurTestee, inVariableCount - 1) ;
+      rang = rangBDDinterne (gNodeArray [nodeIndex].mELSE ^ complement, gNodeArray [testedValueNodeIndex].mELSE ^ complementValeurTestee, inVariableCount - 1) ;
     }else{
-      rang = rangBDDinterne (inValue, gNodeArray [testedValueNodeIndex].mELSEbranch ^ complementValeurTestee, inVariableCount - 1) ;
+      rang = rangBDDinterne (inValue, gNodeArray [testedValueNodeIndex].mELSE ^ complementValeurTestee, inVariableCount - 1) ;
     }
   }
   return rang ;
@@ -1313,11 +1313,11 @@ getBDDrange (const C_BDD & inOperand,
 static PMUInt32 internalRecursiveNodeCount (const PMUInt32 inValue) {
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   PMUInt32 n = 0 ;
-  if (gNodeArray [nodeIndex].mBranches != 0) {
+  if (gNodeArray [nodeIndex].bothBranches () != 0) {
     if (! isNodeMarkedThenMark (inValue COMMA_HERE)) {
       n = 1 ;
-      n += internalRecursiveNodeCount (gNodeArray [nodeIndex].mELSEbranch) ;
-      n += internalRecursiveNodeCount (gNodeArray [nodeIndex].mTHENbranch) ;
+      n += internalRecursiveNodeCount (gNodeArray [nodeIndex].mELSE) ;
+      n += internalRecursiveNodeCount (gNodeArray [nodeIndex].mTHEN) ;
     }
   }
   return n ;
@@ -1328,7 +1328,7 @@ static PMUInt32 internalRecursiveNodeCount (const PMUInt32 inValue) {
 PMUInt32 C_BDD::getBDDnodesCount (void) const {
   const PMUInt32 nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
   PMUInt32 result = 0 ;
-  if (gNodeArray [nodeIndex].mBranches != 0) {
+  if (gNodeArray [nodeIndex].bothBranches () != 0) {
     unmarkAllExistingBDDnodes () ;
     result = internalRecursiveNodeCount (mBDDvalue) ;
   }
@@ -1403,14 +1403,14 @@ internalRecursiveUpdateRelation (const PMUInt32 inValue,
                                  const PMUInt32 inTranslationVector []) {
   PMUInt32 result = inValue ;
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].mBranches != 0) {
+  if (gNodeArray [nodeIndex].bothBranches () != 0) {
     const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
     if (inTranslationVector [var] != var) {
       const PMUInt32 complement = inValue & 1 ;
       result = internalITEoperation (
         find_or_add (inTranslationVector [var], 1, 0 COMMA_HERE),
-        internalRecursiveUpdateRelation (gNodeArray [nodeIndex].mELSEbranch ^ complement, inTranslationVector),
-        internalRecursiveUpdateRelation (gNodeArray [nodeIndex].mTHENbranch ^ complement, inTranslationVector)
+        internalRecursiveUpdateRelation (gNodeArray [nodeIndex].mELSE ^ complement, inTranslationVector),
+        internalRecursiveUpdateRelation (gNodeArray [nodeIndex].mTHEN ^ complement, inTranslationVector)
       ) ;
       PMUInt32 preceeding = (PMUInt32) (inTranslationVector [var - 1] + 1) ;
       while (preceeding < inTranslationVector [var]) {
@@ -1779,7 +1779,7 @@ ecrireBDDinterne (AC_OutputStream & inStream,
                   const C_Display_BDD & inVariablesNames) {
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const PMUInt32 complement = inValue & 1 ;
-  if (gNodeArray [nodeIndex].mBranches == 0) {
+  if (gNodeArray [nodeIndex].bothBranches () == 0) {
     if (complement == 1) {
       ecrireLigneBDD (inStream, chaineAffichage, inVariablesNames) ;
     }
@@ -1790,7 +1790,7 @@ ecrireBDDinterne (AC_OutputStream & inStream,
       numeroVariable -- ;
     }
   //--- Branche Zero
-    const PMUInt32 branche0 = gNodeArray [nodeIndex].mELSEbranch ^ complement ;
+    const PMUInt32 branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
     if (branche0 != 0) {
       chaineAffichage.setObjectAtIndex ('0', (PMSInt32) var COMMA_HERE) ;
       if (branche0 == 1) {
@@ -1804,7 +1804,7 @@ ecrireBDDinterne (AC_OutputStream & inStream,
       }
     }
   //--- Branche 1
-    const PMUInt32 branche1 = gNodeArray [nodeIndex].mTHENbranch ^ complement ;
+    const PMUInt32 branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
     if (branche1 != 0) {
       chaineAffichage.setObjectAtIndex ('1', (PMSInt32) var COMMA_HERE) ;
       if (branche1 == 1) {
@@ -1874,7 +1874,7 @@ internalPrintBDD (const PMUInt32 inValue,
                   const PMSInt32 inLeadingSpacesCount) {
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const PMUInt32 complement = inValue & 1 ;
-  if (gNodeArray [nodeIndex].mBranches == 0) {
+  if (gNodeArray [nodeIndex].bothBranches () == 0) {
     if (complement == 1) {
       printBDDline (inDisplayString, inNameLengthArray, inLeadingSpacesCount) ;
     }
@@ -1885,7 +1885,7 @@ internalPrintBDD (const PMUInt32 inValue,
       inVariableIndex -- ;
     }
   //--- Branche Zero
-    const PMUInt32 branche0 = gNodeArray [nodeIndex].mELSEbranch ^ complement ;
+    const PMUInt32 branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
     if (branche0 != 0) {
       inDisplayString.setObjectAtIndex ('0', (PMSInt32) var COMMA_HERE) ;
       if (branche0 == 1) {
@@ -1898,7 +1898,7 @@ internalPrintBDD (const PMUInt32 inValue,
       }
     }
   //--- Branche 1
-    const PMUInt32 branche1 = gNodeArray [nodeIndex].mTHENbranch ^ complement ;
+    const PMUInt32 branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
     if (branche1 != 0) {
       inDisplayString.setObjectAtIndex ('1', (PMSInt32) var COMMA_HERE) ;
       if (branche1 == 1) {
@@ -2008,7 +2008,7 @@ internalPrintBDDWithSeparator (const PMUInt32 inValue,
                                PMUInt32 inVariableIndex) {
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const PMUInt32 complement = inValue & 1 ;
-  if (gNodeArray [nodeIndex].mBranches == 0) {
+  if (gNodeArray [nodeIndex].bothBranches () == 0) {
     if (complement == 1) {
       printBDDlineWithSeparator (inSeparatorArray, inDisplayString) ;
     }
@@ -2019,7 +2019,7 @@ internalPrintBDDWithSeparator (const PMUInt32 inValue,
       inVariableIndex -- ;
     }
   //--- Branche Zero
-    const PMUInt32 branche0 = gNodeArray [nodeIndex].mELSEbranch ^ complement ;
+    const PMUInt32 branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
     if (branche0 != 0) {
       inDisplayString.setObjectAtIndex ('0', (PMSInt32) var COMMA_HERE) ;
       if (branche0 == 1) {
@@ -2032,7 +2032,7 @@ internalPrintBDDWithSeparator (const PMUInt32 inValue,
       }
     }
   //--- Branche 1
-    const PMUInt32 branche1 = gNodeArray [nodeIndex].mTHENbranch ^ complement ;
+    const PMUInt32 branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
     if (branche1 != 0) {
       inDisplayString.setObjectAtIndex ('1', (PMSInt32) var COMMA_HERE) ;
       if (branche1 == 1) {
@@ -2088,7 +2088,7 @@ internalPrintBDDInLittleEndianStringArray (const PMUInt32 inValue,
                                COMMA_LOCATION_ARGS) {
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const PMUInt32 complement = inValue & 1 ;
-  if (gNodeArray [nodeIndex].mBranches == 0) {
+  if (gNodeArray [nodeIndex].bothBranches () == 0) {
     if (complement == 1) {
       outStringArray.addObject (ioDisplayString) ;
     }
@@ -2099,7 +2099,7 @@ internalPrintBDDInLittleEndianStringArray (const PMUInt32 inValue,
       inVariableIndex -- ;
     }
   //--- Branche Zero
-    const PMUInt32 branche0 = gNodeArray [nodeIndex].mELSEbranch ^ complement ;
+    const PMUInt32 branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
     if (branche0 != 0) {
       ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('0'), (PMSInt32) var COMMA_HERE) ;
       if (branche0 == 1) {
@@ -2112,7 +2112,7 @@ internalPrintBDDInLittleEndianStringArray (const PMUInt32 inValue,
       }
     }
   //--- Branche 1
-    const PMUInt32 branche1 = gNodeArray [nodeIndex].mTHENbranch ^ complement ;
+    const PMUInt32 branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
     if (branche1 != 0) {
       ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('1'), (PMSInt32) var COMMA_HERE) ;
       if (branche1 == 1) {
@@ -2133,7 +2133,7 @@ void C_BDD::
 buildCompressedLittleEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray
                                              COMMA_LOCATION_ARGS) const {
   const PMUInt32 nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].mBranches != 0) {
+  if (gNodeArray [nodeIndex].bothBranches () != 0) {
     C_String displayString ;
     for (PMSInt32 i=0 ; i<=((PMSInt32) gNodeArray [nodeIndex].mVariableIndex) ; i++) {
       displayString << "X" ;
@@ -2166,7 +2166,7 @@ internalPrintBDDInBigEndianStringArray (const PMUInt32 inValue,
                                COMMA_LOCATION_ARGS) {
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const PMUInt32 complement = inValue & 1 ;
-  if (gNodeArray [nodeIndex].mBranches == 0) {
+  if (gNodeArray [nodeIndex].bothBranches () == 0) {
     if (complement == 1) {
       outStringArray.addObject (ioDisplayString) ;
     }
@@ -2177,7 +2177,7 @@ internalPrintBDDInBigEndianStringArray (const PMUInt32 inValue,
       inVariableIndex -- ;
     }
   //--- Branche Zero
-    const PMUInt32 branche0 = gNodeArray [nodeIndex].mELSEbranch ^ complement ;
+    const PMUInt32 branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
     if (branche0 != 0) {
       ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('0'), (PMSInt32) (inTotalVariableCountMinusOne - var) COMMA_THERE) ;
       if (branche0 == 1) {
@@ -2190,7 +2190,7 @@ internalPrintBDDInBigEndianStringArray (const PMUInt32 inValue,
       }
     }
   //--- Branche 1
-    const PMUInt32 branche1 = gNodeArray [nodeIndex].mTHENbranch ^ complement ;
+    const PMUInt32 branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
     if (branche1 != 0) {
       ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('1'), (PMSInt32) (inTotalVariableCountMinusOne - var) COMMA_HERE) ;
       if (branche1 == 1) {
@@ -2211,7 +2211,7 @@ void C_BDD::
 buildCompressedBigEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray
                                           COMMA_LOCATION_ARGS) const {
   const PMUInt32 nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].mBranches != 0) {
+  if (gNodeArray [nodeIndex].bothBranches () != 0) {
     C_String displayString ;
     for (PMSInt32 i=0 ; i<=((PMSInt32) gNodeArray [nodeIndex].mVariableIndex) ; i++) {
       displayString << "X" ;
@@ -2259,16 +2259,16 @@ static void ecrireCompositionBDDrecursif (AC_OutputStream & inStream,
                                           const PMUInt32 inValue,
                                           const C_Display_BDD & inVariablesNames) {
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if ((gNodeArray [nodeIndex].mBranches != 0) && ! isNodeMarkedThenMark (inValue COMMA_HERE)) {
+  if ((gNodeArray [nodeIndex].bothBranches () != 0) && ! isNodeMarkedThenMark (inValue COMMA_HERE)) {
     inStream << "  node " << cStringWithUnsigned (inValue >> 1) << ": if " ;
     inVariablesNames.ecrire (gNodeArray [nodeIndex].mVariableIndex, inStream) ;
     inStream << " (#" << cStringWithUnsigned (gNodeArray [nodeIndex].mVariableIndex)  << ") then " ;
-    displayBranchCode (inStream, gNodeArray [nodeIndex].mTHENbranch) ;
+    displayBranchCode (inStream, gNodeArray [nodeIndex].mTHEN) ;
     inStream << " else " ;
-    displayBranchCode (inStream, gNodeArray [nodeIndex].mELSEbranch) ;
+    displayBranchCode (inStream, gNodeArray [nodeIndex].mELSE) ;
     inStream << "\n" ;
-    ecrireCompositionBDDrecursif (inStream, gNodeArray [nodeIndex].mELSEbranch, inVariablesNames) ;
-    ecrireCompositionBDDrecursif (inStream, gNodeArray [nodeIndex].mTHENbranch, inVariablesNames) ;
+    ecrireCompositionBDDrecursif (inStream, gNodeArray [nodeIndex].mELSE, inVariablesNames) ;
+    ecrireCompositionBDDrecursif (inStream, gNodeArray [nodeIndex].mTHEN, inVariablesNames) ;
   }
 }
 
@@ -2281,7 +2281,7 @@ printBDDnodes (AC_OutputStream & inStream,
   displayBranchCode (inStream, mBDDvalue) ;
   inStream << "\n" ;
   const PMUInt32 nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].mBranches != 0) {
+  if (gNodeArray [nodeIndex].bothBranches () != 0) {
     unmarkAllExistingBDDnodes () ;
     ecrireCompositionBDDrecursif (inStream, mBDDvalue, inVariablesNames) ;
   }
