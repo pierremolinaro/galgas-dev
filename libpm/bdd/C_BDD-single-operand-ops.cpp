@@ -191,7 +191,7 @@ internalForAllOnBitRange (const PMUInt32 inValue,
   const PMUInt32 complement = inValue & 1 ;
   PMUInt32 result = complement ;
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].mBranches == 0) {
+  if (gNodeArray [nodeIndex].bothBranches () == 0) {
     gSingleOperandOperationCacheTrivialOperationCount ++ ;
   }else{
     const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
@@ -202,14 +202,14 @@ internalForAllOnBitRange (const PMUInt32 inValue,
   //    gForAllOperationCache.getCacheEntry (inValue, key, cacheSuccess, hashCode, result) ;
       if (! cacheSuccess) {
         result = find_or_add (var,
-          internalForAllOnBitRange (gNodeArray [nodeIndex].mELSEbranch ^ complement, inFirstBit, inBitCount),
-          internalForAllOnBitRange (gNodeArray [nodeIndex].mTHENbranch ^ complement, inFirstBit, inBitCount) COMMA_HERE) ;
+          internalForAllOnBitRange (gNodeArray [nodeIndex].mELSE ^ complement, inFirstBit, inBitCount),
+          internalForAllOnBitRange (gNodeArray [nodeIndex].mTHEN ^ complement, inFirstBit, inBitCount) COMMA_HERE) ;
   //      gForAllOperationCache.writeCacheEntry (inValue, key, hashCode, result) ;
       }
     }else if (var >= inFirstBit) {
       result = internalANDoperation (
-         internalForAllOnBitRange (gNodeArray [nodeIndex].mELSEbranch ^ complement, inFirstBit, inBitCount),
-         internalForAllOnBitRange (gNodeArray [nodeIndex].mTHENbranch ^ complement, inFirstBit, inBitCount)) ;
+         internalForAllOnBitRange (gNodeArray [nodeIndex].mELSE ^ complement, inFirstBit, inBitCount),
+         internalForAllOnBitRange (gNodeArray [nodeIndex].mTHEN ^ complement, inFirstBit, inBitCount)) ;
     }else{ // var < numeroBit
       result = inValue ;
       gSingleOperandOperationCacheTrivialOperationCount ++ ;
@@ -226,19 +226,19 @@ operationQuelqueSoitSurBitSupNumeroInterne (const PMUInt32 inValue,
   const PMUInt32 complement = inValue & 1 ;
   PMUInt32 result = complement ;
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].mBranches == 0) {
+  if (gNodeArray [nodeIndex].bothBranches () == 0) {
     gSingleOperandOperationCacheTrivialOperationCount ++ ;
   }else{
     const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
     if (var > numeroBit) {
       if (! searchInSingleOperandOperationCache (inValue, result)) {
         result = internalANDoperation (
-              operationQuelqueSoitSurBitSupNumeroInterne (gNodeArray [nodeIndex].mELSEbranch ^ complement, numeroBit),
-              operationQuelqueSoitSurBitSupNumeroInterne (gNodeArray [nodeIndex].mTHENbranch ^ complement, numeroBit)) ;
+              operationQuelqueSoitSurBitSupNumeroInterne (gNodeArray [nodeIndex].mELSE ^ complement, numeroBit),
+              operationQuelqueSoitSurBitSupNumeroInterne (gNodeArray [nodeIndex].mTHEN ^ complement, numeroBit)) ;
         enterInSingleOperandOperationCache (inValue, result) ;
       }
     }else if (var == numeroBit) {
-      result = internalANDoperation (gNodeArray [nodeIndex].mELSEbranch ^ complement, gNodeArray [nodeIndex].mTHENbranch ^ complement) ;
+      result = internalANDoperation (gNodeArray [nodeIndex].mELSE ^ complement, gNodeArray [nodeIndex].mTHEN ^ complement) ;
     }else{ // var < numeroBit
       result = inValue ;
       gSingleOperandOperationCacheTrivialOperationCount ++ ;
@@ -307,7 +307,7 @@ static PMUInt32 internalRecursiveSubstitution (const PMUInt32 inValue,
                                                COMMA_LOCATION_ARGS) {
   PMUInt32 result = inValue ;
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].mBranches == 0) {
+  if (gNodeArray [nodeIndex].bothBranches () == 0) {
     gSingleOperandOperationCacheTrivialOperationCount ++ ;
   }else{
     const PMUInt32 complement = inValue & 1 ;
@@ -319,8 +319,8 @@ static PMUInt32 internalRecursiveSubstitution (const PMUInt32 inValue,
     }else if (! searchInSingleOperandOperationCache (inValue, result)) {
       result = internalITEoperation (
         find_or_add (vecteurSubstitutionBool [var], 1, 0 COMMA_HERE),
-        internalRecursiveSubstitution (gNodeArray [nodeIndex].mELSEbranch ^ complement, vecteurSubstitutionBool, inNoChangeIndex, inBDDvariablesCount COMMA_THERE),
-        internalRecursiveSubstitution (gNodeArray [nodeIndex].mTHENbranch ^ complement, vecteurSubstitutionBool, inNoChangeIndex, inBDDvariablesCount COMMA_THERE)
+        internalRecursiveSubstitution (gNodeArray [nodeIndex].mELSE ^ complement, vecteurSubstitutionBool, inNoChangeIndex, inBDDvariablesCount COMMA_THERE),
+        internalRecursiveSubstitution (gNodeArray [nodeIndex].mTHEN ^ complement, vecteurSubstitutionBool, inNoChangeIndex, inBDDvariablesCount COMMA_THERE)
       ) ;
       enterInSingleOperandOperationCache (inValue, result) ;
     }
@@ -380,28 +380,28 @@ internalExchangeVariables (const PMUInt32 inValue,
                            const PMUInt32 var2) {
   PMUInt32 result = inValue ;
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].mBranches != 0) {
+  if (gNodeArray [nodeIndex].bothBranches () != 0) {
     const PMUInt32 complement = inValue & 1 ;
     if (gNodeArray [nodeIndex].mVariableIndex > var1) {
       result = internalITEoperation (
                      find_or_add (gNodeArray [nodeIndex].mVariableIndex, 0, 1 COMMA_HERE),
-                     internalExchangeVariables (gNodeArray [nodeIndex].mTHENbranch ^ complement, var1, var2),
-                     internalExchangeVariables (gNodeArray [nodeIndex].mELSEbranch ^ complement, var1, var2)) ;
+                     internalExchangeVariables (gNodeArray [nodeIndex].mTHEN ^ complement, var1, var2),
+                     internalExchangeVariables (gNodeArray [nodeIndex].mELSE ^ complement, var1, var2)) ;
     }else if (gNodeArray [nodeIndex].mVariableIndex == var1) {
       result = internalITEoperation (
                      find_or_add (var2, 0, 1 COMMA_HERE),
-                     internalExchangeVariables (gNodeArray [nodeIndex].mTHENbranch ^ complement, var1, var2),
-                     internalExchangeVariables (gNodeArray [nodeIndex].mELSEbranch ^ complement, var1, var2)) ;
+                     internalExchangeVariables (gNodeArray [nodeIndex].mTHEN ^ complement, var1, var2),
+                     internalExchangeVariables (gNodeArray [nodeIndex].mELSE ^ complement, var1, var2)) ;
     }else if (gNodeArray [nodeIndex].mVariableIndex > var2) {
       result = internalITEoperation (
                      find_or_add (gNodeArray [nodeIndex].mVariableIndex, 0, 1 COMMA_HERE),
-                     internalExchangeVariables (gNodeArray [nodeIndex].mTHENbranch ^ complement, var1, var2),
-                     internalExchangeVariables (gNodeArray [nodeIndex].mELSEbranch ^ complement, var1, var2)) ;
+                     internalExchangeVariables (gNodeArray [nodeIndex].mTHEN ^ complement, var1, var2),
+                     internalExchangeVariables (gNodeArray [nodeIndex].mELSE ^ complement, var1, var2)) ;
     }else if (gNodeArray [nodeIndex].mVariableIndex == var2) {
       result = internalITEoperation (
                      find_or_add (var1, 0, 1 COMMA_HERE),
-                     internalExchangeVariables (gNodeArray [nodeIndex].mTHENbranch ^ complement, var1, var2),
-                     internalExchangeVariables (gNodeArray [nodeIndex].mELSEbranch ^ complement, var1, var2)) ;
+                     internalExchangeVariables (gNodeArray [nodeIndex].mTHEN ^ complement, var1, var2),
+                     internalExchangeVariables (gNodeArray [nodeIndex].mELSE ^ complement, var1, var2)) ;
     }     
   }
   return result ;
@@ -433,23 +433,23 @@ internalRollDown (const PMUInt32 inValue,
                   const PMUInt32 inLowVar) {
   PMUInt32 result = inValue ;
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].mBranches != 0) {
+  if (gNodeArray [nodeIndex].bothBranches () != 0) {
     const PMUInt32 complement = inValue & 1 ;
     if (gNodeArray [nodeIndex].mVariableIndex > inHighVar) {
       result = internalITEoperation (
                      find_or_add (gNodeArray [nodeIndex].mVariableIndex, 0, 1 COMMA_HERE),
-                     internalRollDown (gNodeArray [nodeIndex].mTHENbranch ^ complement, inHighVar, inLowVar),
-                     internalRollDown (gNodeArray [nodeIndex].mELSEbranch ^ complement, inHighVar, inLowVar)) ;
+                     internalRollDown (gNodeArray [nodeIndex].mTHEN ^ complement, inHighVar, inLowVar),
+                     internalRollDown (gNodeArray [nodeIndex].mELSE ^ complement, inHighVar, inLowVar)) ;
     }else if (gNodeArray [nodeIndex].mVariableIndex > inLowVar) {
       result = internalITEoperation (
                      find_or_add ((PMUInt32) (gNodeArray [nodeIndex].mVariableIndex - 1), 0, 1 COMMA_HERE),
-                     internalRollDown (gNodeArray [nodeIndex].mTHENbranch ^ complement, inHighVar, inLowVar),
-                     internalRollDown (gNodeArray [nodeIndex].mELSEbranch ^ complement, inHighVar, inLowVar)) ;
+                     internalRollDown (gNodeArray [nodeIndex].mTHEN ^ complement, inHighVar, inLowVar),
+                     internalRollDown (gNodeArray [nodeIndex].mELSE ^ complement, inHighVar, inLowVar)) ;
     }else if (gNodeArray [nodeIndex].mVariableIndex == inLowVar) {
       result = internalITEoperation (
                      find_or_add (inHighVar, 0, 1 COMMA_HERE),
-                     internalRollDown (gNodeArray [nodeIndex].mTHENbranch ^ complement, inHighVar, inLowVar),
-                     internalRollDown (gNodeArray [nodeIndex].mELSEbranch ^ complement, inHighVar, inLowVar)) ;
+                     internalRollDown (gNodeArray [nodeIndex].mTHEN ^ complement, inHighVar, inLowVar),
+                     internalRollDown (gNodeArray [nodeIndex].mELSE ^ complement, inHighVar, inLowVar)) ;
     }     
   }
   return result ;
@@ -479,23 +479,23 @@ internalRollUp (const PMUInt32 inValue,
                 const PMUInt32 var2) {
   PMUInt32 result = inValue ;
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].mBranches != 0) {
+  if (gNodeArray [nodeIndex].bothBranches () != 0) {
     const PMUInt32 complement = inValue & 1 ;
     if (gNodeArray [nodeIndex].mVariableIndex > var1) {
       result = internalITEoperation (
                      find_or_add (gNodeArray [nodeIndex].mVariableIndex, 0, 1 COMMA_HERE),
-                     internalRollUp (gNodeArray [nodeIndex].mTHENbranch ^ complement, var1, var2),
-                     internalRollUp (gNodeArray [nodeIndex].mELSEbranch ^ complement, var1, var2)) ;
+                     internalRollUp (gNodeArray [nodeIndex].mTHEN ^ complement, var1, var2),
+                     internalRollUp (gNodeArray [nodeIndex].mELSE ^ complement, var1, var2)) ;
     }else if (gNodeArray [nodeIndex].mVariableIndex == var1) {
       result = internalITEoperation (
                      find_or_add (var2, 0, 1 COMMA_HERE),
-                     internalRollUp (gNodeArray [nodeIndex].mTHENbranch ^ complement, var1, var2),
-                     internalRollUp (gNodeArray [nodeIndex].mELSEbranch ^ complement, var1, var2)) ;
+                     internalRollUp (gNodeArray [nodeIndex].mTHEN ^ complement, var1, var2),
+                     internalRollUp (gNodeArray [nodeIndex].mELSE ^ complement, var1, var2)) ;
     }else if (gNodeArray [nodeIndex].mVariableIndex >= var2) {
       result = internalITEoperation (
                      find_or_add ((PMUInt32) (gNodeArray [nodeIndex].mVariableIndex + 1), 0, 1 COMMA_HERE),
-                     internalRollUp (gNodeArray [nodeIndex].mTHENbranch ^ complement, var1, var2),
-                     internalRollUp (gNodeArray [nodeIndex].mELSEbranch ^ complement, var1, var2)) ;
+                     internalRollUp (gNodeArray [nodeIndex].mTHEN ^ complement, var1, var2),
+                     internalRollUp (gNodeArray [nodeIndex].mELSE ^ complement, var1, var2)) ;
     }     
   }
   return result ;
@@ -524,13 +524,13 @@ static PMUInt32 internalLeftShift (const PMUInt32 inValue,
                                    const PMUInt32 inLeftShiftCount) {
   PMUInt32 result = inValue ;
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].mBranches == 0) {
+  if (gNodeArray [nodeIndex].bothBranches () == 0) {
     gSingleOperandOperationCacheTrivialOperationCount ++ ;
   }else if (! searchInSingleOperandOperationCache (inValue, result)) {
     const PMUInt32 complement = inValue & 1 ;
     result = find_or_add (gNodeArray [nodeIndex].mVariableIndex + inLeftShiftCount,
-                          internalLeftShift (gNodeArray [nodeIndex].mELSEbranch ^ complement, inLeftShiftCount),
-                          internalLeftShift (gNodeArray [nodeIndex].mTHENbranch ^ complement, inLeftShiftCount)
+                          internalLeftShift (gNodeArray [nodeIndex].mELSE ^ complement, inLeftShiftCount),
+                          internalLeftShift (gNodeArray [nodeIndex].mTHEN ^ complement, inLeftShiftCount)
                           COMMA_HERE) ;
     enterInSingleOperandOperationCache (inValue, result) ;
   }
@@ -558,7 +558,7 @@ static PMUInt32 internalRightShift (const PMUInt32 inValue,
                                     const PMUInt32 inRightShiftCount) {
   PMUInt32 result = inValue ;
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].mBranches == 0) {
+  if (gNodeArray [nodeIndex].bothBranches () == 0) {
     gSingleOperandOperationCacheTrivialOperationCount ++ ;
   }else if (gNodeArray [nodeIndex].mVariableIndex < inRightShiftCount) {
     result = 1 ;
@@ -566,8 +566,8 @@ static PMUInt32 internalRightShift (const PMUInt32 inValue,
   }else if (! searchInSingleOperandOperationCache (inValue, result)) {
     const PMUInt32 complement = inValue & 1 ;
     result = find_or_add (gNodeArray [nodeIndex].mVariableIndex - inRightShiftCount,
-                          internalRightShift (gNodeArray [nodeIndex].mELSEbranch ^ complement, inRightShiftCount),
-                          internalRightShift (gNodeArray [nodeIndex].mTHENbranch ^ complement, inRightShiftCount)
+                          internalRightShift (gNodeArray [nodeIndex].mELSE ^ complement, inRightShiftCount),
+                          internalRightShift (gNodeArray [nodeIndex].mTHEN ^ complement, inRightShiftCount)
                           COMMA_HERE) ;
     enterInSingleOperandOperationCache (inValue, result) ;
   }
