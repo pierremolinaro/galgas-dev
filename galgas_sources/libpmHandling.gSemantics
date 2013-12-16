@@ -46,7 +46,7 @@ routine updateLIBPMatPath ??@string inLIBPMPath :
   foreach uselessFileSet do
     [@string deleteFile !inLIBPMPath . key] ;
   end foreach ;
- end routine ;
+end routine ;
 
 #---------------------------------------------------------------------------*
 
