@@ -839,16 +839,16 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
     [mPreferenceWindow setTitle:preferencesWindowTitle] ;
   }
 //--- Get default font, used when there is no preference setting
-  if ([defaults stringForKey:GGS_build_text_font] == nil) {
-    NSFont * defaultFont = [NSFont fontWithName:@"Courier-Bold" size:13.0] ;
-    [defaults setObject:[NSArchiver archivedDataWithRootObject:defaultFont] forKey:GGS_build_text_font] ;
-  }
   [mCurrentBuildWindowFontAndSizeSettingsButton
     bind:@"fontValue"
     toObject:[NSUserDefaultsController sharedUserDefaultsController]
     withKeyPath:[NSString stringWithFormat:@"values.%@", GGS_build_text_font]
     options:NULL
   ] ;
+  if ([defaults objectForKey:GGS_build_text_font] == nil) {
+    NSFont * defaultFont = [NSFont fontWithName:@"Courier" size:13.0] ;
+    [defaults setObject:[NSArchiver archivedDataWithRootObject:defaultFont] forKey:GGS_build_text_font] ;
+  }
 //--- 'Enable Completion' checkbox
   if ([defaults objectForKey:GGS_enable_completion] == nil) {
     [defaults setBool:YES forKey:GGS_enable_completion] ;

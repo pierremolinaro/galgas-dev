@@ -138,7 +138,6 @@ extern OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 
 - (IBAction) showAllocationWindow: (id) inSender ;
 
-
 - (void) updateSourceTextPreferenceCount ;
 
 - (NSArray *) commandLineItemArray ;

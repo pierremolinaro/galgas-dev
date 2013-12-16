@@ -727,7 +727,6 @@ routine performProjectGlobalCheckings
       end if ;
       tableOfTypeString .= linkForType [!type_lkey->string] . "<br>" ;
     end foreach ;
-#    tableOfTypeString .= "</p>" ;
     const @string typeDumpString := [filewrapper typeDumpGenerationTemplate.typeDump
       ![inProjectSourceFilePath lastPathComponent]
       !semanticContext->mTypeMap
@@ -763,7 +762,6 @@ local function linkForType ??@string inTypeName -> @string outResult :
   outResult := "<a class=\"header_link\" href=\"#" . inTypeName . "\">@" . inTypeName . "</a>" ;
 end function ;
 
-#---------------------------------------------------------------------------*
 #---------------------------------------------------------------------------*
 
 end semantics ;
