@@ -3011,7 +3011,7 @@
 				DEAD_CODE_STRIPPING = YES;
 				DEPLOYMENT_LOCATION = NO;
 				GCC_GENERATE_DEBUGGING_SYMBOLS = NO;
-				GCC_OPTIMIZATION_LEVEL = 2;
+				GCC_OPTIMIZATION_LEVEL = 3;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = ../libpm/galgas2/PP_GalgasPrefix.pch;
 				HEADER_SEARCH_PATHS = (
@@ -3019,7 +3019,6 @@
 					../hand_coded_sources,
 					"../libpm/**",
 				);
-				LLVM_LTO = NO;
 				PRODUCT_NAME = "galgas-developer";
 			};
 			name = Default;
