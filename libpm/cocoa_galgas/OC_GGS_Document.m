@@ -2,7 +2,7 @@
 //                                                                           *
 //  This file is part of libpm library                                       *
 //                                                                           *
-//  Copyright (C) 2003, ..., 2012 Pierre Molinaro.                           *
+//  Copyright (C) 2003, ..., 2013 Pierre Molinaro.                           *
 //                                                                           *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 //                                                                           *
@@ -65,7 +65,23 @@
     mDisplayDescriptorArray = [NSMutableArray new] ;
     self.undoManager = nil ;
     self.hasUndoManager = NO ;
-  }
+  //---
+    NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
+    NSData * data = [ud objectForKey:GGS_build_text_font] ;
+    if (nil != data) {
+      mBuildTextFont = [NSUnarchiver unarchiveObjectWithData:data] ;
+    }
+    if (nil == mBuildTextFont) {
+      mBuildTextFont = [NSFont fontWithName:@"Courier" size:13.0] ;
+    }
+  //--- Add font change observer
+    [ud
+      addObserver:self
+      forKeyPath:GGS_build_text_font
+      options:0
+      context:NULL
+    ] ;
+   }
   return self;
 }
 
@@ -326,6 +342,12 @@
   ] ;
   [mStopBuildButton
     unbind:@"hidden"
+  ] ;
+//---
+  NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
+  [ud
+    removeObserver:self
+    forKeyPath:GGS_build_text_font
   ] ;
 //---
   mSourceDisplayArrayController = nil ;
@@ -848,8 +870,8 @@
   mBuildTask = [[OC_GGS_BuildTask alloc] initWithDocument:self] ;
   self.mBuildTaskIsRunning = YES ;
 //---
-  NSDictionary * defaultDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-    [NSFont fontWithName:@"Courier" size:13.0], NSFontAttributeName,
+   NSDictionary * defaultDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
+    mBuildTextFont, NSFontAttributeName,
     [NSColor orangeColor], NSForegroundColorAttributeName,
     nil
   ] ;
@@ -925,7 +947,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   NSArray * messageArray = [message componentsSeparatedByString:[NSString stringWithFormat:@"%c", 0x1B]] ;
 //--- Default attributes dictionary
   NSDictionary * defaultDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-    [NSFont fontWithName:@"Courier" size:13.0], NSFontAttributeName,
+    mBuildTextFont, NSFontAttributeName,
     nil
   ] ;
   NSMutableAttributedString * outputAttributedString = [[NSMutableAttributedString alloc]
@@ -1012,7 +1034,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   [OC_GGS_DocumentData broadcastIssueArray:mIssueArray] ;
 //---
   NSDictionary * defaultDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
-    [NSFont fontWithName:@"Courier" size:13.0], NSFontAttributeName,
+    mBuildTextFont, NSFontAttributeName,
     [NSColor orangeColor], NSForegroundColorAttributeName,
     nil
   ] ;
@@ -1168,14 +1190,24 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s, keyPath: %@", __PRETTY_FUNCTION__, inKeyPath) ;
   #endif
-  if ([inKeyPath isEqualToString:@"selectionIndex"]) {
+  NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
+  if ((inObject == ud) && [inKeyPath isEqualToString:GGS_build_text_font]) {
+    NSData * data = [ud objectForKey:GGS_build_text_font] ;
+    if (nil != data) {
+      mBuildTextFont = [NSUnarchiver unarchiveObjectWithData:data] ;
+    }
+    if (nil == mBuildTextFont) {
+      mBuildTextFont = [NSFont fontWithName:@"Courier" size:13.0] ;
+    }
+    [mOutputTextView setFont:mBuildTextFont] ;
+  }else if ([inKeyPath isEqualToString:@"selectionIndex"]) {
     for (NSView * subview in mSourceHostView.subviews.copy) {
       [subview removeFromSuperview] ;
     }
     NSArray * arrangedObjects = mSourceDisplayArrayController.arrangedObjects ;
     const NSUInteger sel = mSourceDisplayArrayController.selectionIndex ;
     NSString * key = [NSString stringWithFormat:@"SELECTED-TAB:%@", self.fileURL.path] ;
-    [[NSUserDefaults standardUserDefaults] setInteger:(NSInteger) sel forKey:key] ;
+    [ud setInteger:(NSInteger) sel forKey:key] ;
     // NSLog (@"WRITE %@ -> %lu", key, sel) ;
     if (sel != NSNotFound) {
       OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel] ;

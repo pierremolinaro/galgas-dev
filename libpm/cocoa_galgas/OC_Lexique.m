@@ -279,7 +279,7 @@
     const NSUInteger tokenCount = inTokenArray.count ;
     for (NSUInteger tokenIndex=0 ; tokenIndex<tokenCount ; tokenIndex++) {
       OC_Token * token = [inTokenArray objectAtIndex:tokenIndex] ;
-      const NSUInteger terminal = [token tokenCode] ;
+      const NSUInteger terminal = token.tokenCode ;
       // printf ("terminal %u\n", terminal) ;
       BOOL found = NO ;
       NSUInteger idx = 0 ;
@@ -344,7 +344,7 @@
         ] ;
         [item setTag:(NSInteger) [[inTokenArray objectAtIndex:tokenIndex] range].location] ;
         [menu addItem:item] ;
-        // tokenIndex ++ ;
+        tokenIndex += labelLength ;
       }
     }
   }
