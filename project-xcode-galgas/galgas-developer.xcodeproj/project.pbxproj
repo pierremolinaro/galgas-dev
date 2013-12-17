@@ -62,7 +62,6 @@
 		CF2D3B9E129725F800E93E98 /* AC_GALGAS_graph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2D3B99129725F800E93E98 /* AC_GALGAS_graph.cpp */; };
 		CF2DEAA91101C4C400AE8D35 /* semanticsTypeFeatures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2DEAA51101C4C400AE8D35 /* semanticsTypeFeatures.cpp */; };
 		CF2DEAAA1101C4C400AE8D35 /* semanticsTypeFeatures.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2DEAA51101C4C400AE8D35 /* semanticsTypeFeatures.cpp */; };
-		CF2ECB54147F78A50018894F /* PMTabBarView.m in Sources */ = {isa = PBXBuildFile; fileRef = CF2ECB52147F78A50018894F /* PMTabBarView.m */; };
 		CF31B5400DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
 		CF31B5420DFE88C7001C97A7 /* semanticsCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */; };
 		CF333686126B07C1008DA1DE /* AC_GALGAS_class.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF33366E126B07C1008DA1DE /* AC_GALGAS_class.cpp */; };
@@ -272,7 +271,6 @@
 		CFA5C5D20DFBEF3500DD782E /* optionCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5CE0DFBEF3500DD782E /* optionCompilation.cpp */; };
 		CFA5C5DE0DFC003F00DD782E /* guiCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */; };
 		CFA5C5E00DFC003F00DD782E /* guiCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */; };
-		CFAD9C69147FA4D300B1B88A /* PMButtonWithRemove.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAD9C68147FA4D300B1B88A /* PMButtonWithRemove.m */; };
 		CFAE5AA110021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */; };
 		CFAE5B1C10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */; };
 		CFB3190417B38D98009424C2 /* C_DirectedGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190317B38D98009424C2 /* C_DirectedGraph.cpp */; };
@@ -685,8 +683,6 @@
 		CF2D3B9A129725F800E93E98 /* AC_GALGAS_graph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = AC_GALGAS_graph.h; sourceTree = "<group>"; };
 		CF2DEAA51101C4C400AE8D35 /* semanticsTypeFeatures.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsTypeFeatures.cpp; sourceTree = "<group>"; };
 		CF2DEAA61101C4C400AE8D35 /* semanticsTypeFeatures.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsTypeFeatures.h; sourceTree = "<group>"; };
-		CF2ECB51147F78A50018894F /* PMTabBarView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PMTabBarView.h; sourceTree = "<group>"; };
-		CF2ECB52147F78A50018894F /* PMTabBarView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PMTabBarView.m; sourceTree = "<group>"; };
 		CF31B53A0DFE88C7001C97A7 /* semanticsCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsCompilation.cpp; sourceTree = "<group>"; };
 		CF31B53B0DFE88C7001C97A7 /* semanticsCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticsCompilation.h; sourceTree = "<group>"; };
 		CF33366E126B07C1008DA1DE /* AC_GALGAS_class.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = AC_GALGAS_class.cpp; sourceTree = "<group>"; };
@@ -893,8 +889,6 @@
 		CFA5C5CF0DFBEF3500DD782E /* optionCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = optionCompilation.h; sourceTree = "<group>"; };
 		CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = guiCompilation.cpp; sourceTree = "<group>"; };
 		CFA5C5DD0DFC003F00DD782E /* guiCompilation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = guiCompilation.h; sourceTree = "<group>"; };
-		CFAD9C67147FA4D300B1B88A /* PMButtonWithRemove.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = PMButtonWithRemove.h; sourceTree = "<group>"; };
-		CFAD9C68147FA4D300B1B88A /* PMButtonWithRemove.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = PMButtonWithRemove.m; sourceTree = "<group>"; };
 		CFAE5A9E10021A400068DEC9 /* OC_GGS_CommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OC_GGS_CommandLineOption.h; sourceTree = "<group>"; };
 		CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OC_GGS_CommandLineOption.m; sourceTree = "<group>"; };
 		CFAE5B1910024AA50068DEC9 /* enterDefaultCommandLineOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = enterDefaultCommandLineOptions.h; sourceTree = "<group>"; };
@@ -1459,10 +1453,6 @@
 				CFEE63DB147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.m */,
 				CFEE63DE147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.h */,
 				CFEE63DF147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m */,
-				CF2ECB51147F78A50018894F /* PMTabBarView.h */,
-				CF2ECB52147F78A50018894F /* PMTabBarView.m */,
-				CFAD9C67147FA4D300B1B88A /* PMButtonWithRemove.h */,
-				CFAD9C68147FA4D300B1B88A /* PMButtonWithRemove.m */,
 				CF9BA5FC14824EEB009DF1C8 /* OC_GGS_TextView.h */,
 				CF9BA5FD14824EEB009DF1C8 /* OC_GGS_TextView.m */,
 				CF82597708536A130077AEAF /* OC_GGS_RulerViewForTextView.h */,
@@ -2672,8 +2662,6 @@
 				CFFCE7BD14686081009DB6D5 /* PMIssueDescriptor.m in Sources */,
 				CFEE63DC147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.m in Sources */,
 				CFEE63E0147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m in Sources */,
-				CF2ECB54147F78A50018894F /* PMTabBarView.m in Sources */,
-				CFAD9C69147FA4D300B1B88A /* PMButtonWithRemove.m in Sources */,
 				CF9BA5FE14824EEB009DF1C8 /* OC_GGS_TextView.m in Sources */,
 				CF9BA6021482733F009DF1C8 /* OC_GGS_Scroller.m in Sources */,
 				CFB697DF1483D47900BCAE41 /* PMIssueInRuler.m in Sources */,

@@ -43,6 +43,8 @@
 
 - (void) detachTextDisplayDescriptor ;
 
+- (NSImage *) imageForClosingInUserInterface ;
+
 - (NSURL *) sourceURL ;
 
 - (NSString *) title ;

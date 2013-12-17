@@ -195,8 +195,6 @@ local routine build_LIBPM_COCOA_GALGAS_group
   append_m_h_files !?fileList !"PMIssueDescriptor" ;
   append_m_h_files !?fileList !"OC_GGS_TextDisplayDescriptor" ;
   append_m_h_files !?fileList !"OC_GGS_TextSyntaxColoring" ;
-  append_m_h_files !?fileList !"PMTabBarView" ;
-  append_m_h_files !?fileList !"PMButtonWithRemove" ;
   append_m_h_files !?fileList !"OC_GGS_TextView" ;
   append_m_h_files !?fileList !"OC_GGS_RulerViewForBuildOutput" ;
   append_m_h_files !?fileList !"OC_GGS_RulerViewForTextView" ;
@@ -793,8 +791,6 @@ local routine build_COCOA_APP_files_for_sources_build_phase
   fileList += !"PMIssueDescriptor.m" ;
   fileList += !"OC_GGS_TextDisplayDescriptor.m" ;
   fileList += !"OC_GGS_TextSyntaxColoring.m" ;
-  fileList += !"PMTabBarView.m" ;
-  fileList += !"PMButtonWithRemove.m" ;
   fileList += !"OC_GGS_TextView.m" ;
   fileList += !"OC_GGS_RulerViewForTextView.m" ;
   fileList += !"OC_GGS_RulerViewForBuildOutput.m" ;

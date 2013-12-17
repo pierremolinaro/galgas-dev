@@ -21,17 +21,12 @@
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-#import "PMTabBarView.h"
-
-//---------------------------------------------------------------------------*
-
 @class OC_GGS_TextView ;
 @class OC_GGS_DelegateForSyntaxColoring ;
 @class OC_Lexique ;
 @class OC_GGS_RulerViewForCompileMessageView ;
 @class OC_GGS_ErrorOrWarningDescriptor ;
 @class OC_GGS_TextSyntaxColoring ;
-@class PMTabBarView ;
 @class OC_GGS_SourceScrollView ;
 @class OC_GGS_BuildTask ;
 @class OC_GGS_TextDisplayDescriptor ;
@@ -40,11 +35,7 @@
 
 //---------------------------------------------------------------------------*
 
-@interface OC_GGS_Document : NSDocument <PMTabBarViewDelegateProtocol
-#if MAC_OS_X_VERSION_MIN_REQUIRED > MAC_OS_X_VERSION_10_5
-  , NSTextViewDelegate, NSSplitViewDelegate, NSWindowDelegate
-#endif
-> {
+@interface OC_GGS_Document : NSDocument <NSTextViewDelegate, NSSplitViewDelegate, NSWindowDelegate> {
   @private IBOutlet NSSplitView * mIssueSplitView ;
 
   @private IBOutlet NSView * mSourceHostView ;
@@ -54,7 +45,6 @@
   @private NSFont * mBuildTextFont ;
 
   @private IBOutlet NSPanel * mUpdateFromFileSystemPanel ;
-  @private IBOutlet NSPopUpButton * mTabPopUpButton ;
 
   @private OC_GGS_BuildTask * mBuildTask ;
   @private BOOL mBuildTaskHasBeenAborted ;
@@ -63,8 +53,7 @@
   @private NSArrayController * mSourceDisplayArrayController ;
   @private OC_GGS_DocumentData * mDocumentData ;
   @private NSArray * mDisplayDescriptorArray ;
-//---
-  @private IBOutlet PMTabBarView * mTabBarView ;
+  @private IBOutlet NSTableView * mDisplayDescriptorTableView ;
 
 //--- "Goto Line" sheet
   @private IBOutlet NSWindow * mGotoWindow ;
@@ -89,8 +78,6 @@
 - (IBAction) collapseIssuesAction: (id) inSender ;
 
 - (IBAction) actionGotoLine: (id) inSender ;
-
-- (IBAction) duplicateSelectedSourceViewAction: (id) inSender ;
 
 - (IBAction) actionComment: (id) sender ;
 - (IBAction) actionUncomment: (id) sender ;
