@@ -29,7 +29,6 @@
 #import "PMIssueDescriptor.h"
 #import "OC_GGS_TextSyntaxColoring.h"
 #import "OC_GGS_TextDisplayDescriptor.h"
-#import "PMTabBarView.h"
 #import "OC_GGS_BuildTask.h"
 #import "OC_GGS_DocumentData.h"
 #import "OC_GGS_RulerViewForBuildOutput.h"
@@ -165,12 +164,6 @@
     options:0
     context:NULL
   ] ;
-  [mSourceDisplayArrayController
-    addObserver:mTabBarView 
-    forKeyPath:@"selectionIndex"
-    options:0
-    context:NULL
-  ] ;
 //---
   [mSourceDisplayArrayController
     addObserver:self 
@@ -179,33 +172,29 @@
     context:NULL
   ] ;
 //---
-  [mSourceDisplayArrayController
-    addObserver:mTabBarView 
-    forKeyPath:@"selection.sourcePath"
-    options:0
-    context:NULL
-  ] ;
-//---
-  [mSourceDisplayArrayController
-    addObserver:mTabBarView
-    forKeyPath:@"arrangedObjects"
-    options:0
-    context:NULL
-  ] ;
-//---
-  [mTabPopUpButton
-    bind:@"contentValues"
+  [[mDisplayDescriptorTableView tableColumnWithIdentifier:@"source"]
+    bind:@"value"
     toObject:mSourceDisplayArrayController
     withKeyPath:@"arrangedObjects.title"
     options:nil    
   ] ;
-//---
-  [mTabPopUpButton
-    bind:@"selectedIndex"
+//--- 
+  [[mDisplayDescriptorTableView tableColumnWithIdentifier:@"source"]
+    bind:@"fontBold"
     toObject:mSourceDisplayArrayController
-    withKeyPath:@"selectionIndex"
+    withKeyPath:@"arrangedObjects.isDirty"
     options:nil    
   ] ;
+//--- 
+  [[mDisplayDescriptorTableView tableColumnWithIdentifier:@"remove"]
+    bind:@"value"
+    toObject:mSourceDisplayArrayController
+    withKeyPath:@"arrangedObjects.imageForClosingInUserInterface"
+    options:nil    
+  ] ;
+//---
+  mDisplayDescriptorTableView.target = self ;
+  mDisplayDescriptorTableView.action = @selector (clickOnSourceTableView:) ;
 //---
   [mBuildProgressIndicator startAnimation:nil] ;
   NSDictionary * negateTransformer = [NSDictionary
@@ -246,8 +235,6 @@
   if (nil != textDisplayDescriptor) {
     [mSourceDisplayArrayController addObject:textDisplayDescriptor] ;
     [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:textDisplayDescriptor]] ;
-  //---
-    [mTabBarView setTarget:self] ;
   //---
     mRulerViewForBuildOutput = [[OC_GGS_RulerViewForBuildOutput alloc] initWithDocument:self] ;
     [mOutputScrollView setVerticalRulerView:mRulerViewForBuildOutput] ;
@@ -291,7 +278,6 @@
   }
 //---
   [mRulerViewForBuildOutput detach] ;
-  [mTabBarView detach] ;
   for (NSView * subview in mSourceHostView.subviews.copy) {
     [subview removeFromSuperview] ;
   }
@@ -303,32 +289,10 @@
     removeObserver:self 
     forKeyPath:@"selectionIndex"
   ] ;
-  [mSourceDisplayArrayController
-    removeObserver:mTabBarView 
-    forKeyPath:@"selectionIndex"
-  ] ;
 //---
   [mSourceDisplayArrayController
     removeObserver:self 
     forKeyPath:@"selection.textSelectionStart"
-  ] ;
-//---
-  [mSourceDisplayArrayController
-    removeObserver:mTabBarView 
-    forKeyPath:@"selection.sourcePath"
-  ] ;
-//---
-  [mSourceDisplayArrayController
-    removeObserver:mTabBarView
-    forKeyPath:@"arrangedObjects"
-  ] ;
-//---
-  [mTabPopUpButton
-    unbind:@"selectedIndex"
-  ] ;
-//---
-  [mTabPopUpButton
-    unbind:@"contentValues"
   ] ;
 //---
   [mStartBuildButton
@@ -342,6 +306,16 @@
   ] ;
   [mStopBuildButton
     unbind:@"hidden"
+  ] ;
+//---
+  [[mDisplayDescriptorTableView tableColumnWithIdentifier:@"source"]
+    unbind:@"value"
+  ] ;
+  [[mDisplayDescriptorTableView tableColumnWithIdentifier:@"source"]
+    unbind:@"fontBold"
+  ] ;
+  [[mDisplayDescriptorTableView tableColumnWithIdentifier:@"remove"]
+    unbind:@"value"
   ] ;
 //---
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
@@ -364,7 +338,19 @@
 
 //---------------------------------------------------------------------------*
 
-- (IBAction) duplicateSelectedSourceViewAction: (id) inSender {
+- (void) clickOnSourceTableView: (id) inSEnder {
+  if (mDisplayDescriptorTableView.clickedColumn == 1) {
+    const NSInteger row = mDisplayDescriptorTableView.clickedRow ;
+    if (row >= 0) {
+      OC_GGS_TextDisplayDescriptor * desc = [mSourceDisplayArrayController.arrangedObjects objectAtIndex: (NSUInteger) row] ;
+      [self removeSelectedTabAction:desc] ;
+    }
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+/*- (IBAction) duplicateSelectedSourceViewAction: (id) inSender {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
@@ -375,7 +361,7 @@
   ] ;
   [mSourceDisplayArrayController addObject:textDisplayDescriptor] ;
   [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:textDisplayDescriptor]] ;
-}
+}*/
 
 //---------------------------------------------------------------------------*
 

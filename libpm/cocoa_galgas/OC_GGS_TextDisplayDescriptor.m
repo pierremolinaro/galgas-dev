@@ -45,6 +45,18 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 
 //---------------------------------------------------------------------------*
 
+- (NSString *) description {
+  return documentData.fileURL.path ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSImage *) imageForClosingInUserInterface {
+  return [NSImage imageNamed:NSImageNameStopProgressTemplate] ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (void) refreshShowInvisibleCharacters {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
