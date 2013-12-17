@@ -370,21 +370,28 @@
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
 //---
-  [mSourceDisplayArrayController removeObject:inTextDisplayDescriptor] ;
-//--- Update users preferences
-  NSMutableArray * tabFiles = [NSMutableArray new] ;
-  for (OC_GGS_TextDisplayDescriptor * source in mSourceDisplayArrayController.arrangedObjects) {
-    [tabFiles addObject:source.sourceURL.path] ;
+  if ([mSourceDisplayArrayController.arrangedObjects count] == 1) {
+    [mSourceDisplayArrayController removeObject:inTextDisplayDescriptor] ;
+    [inTextDisplayDescriptor detachTextDisplayDescriptor] ;
+    [OC_GGS_DocumentData cocoaDocumentWillClose:nil] ;
+    [self close] ;
+  }else{
+    [mSourceDisplayArrayController removeObject:inTextDisplayDescriptor] ;
+  //--- Update users preferences
+    NSMutableArray * tabFiles = [NSMutableArray new] ;
+    for (OC_GGS_TextDisplayDescriptor * source in mSourceDisplayArrayController.arrangedObjects) {
+      [tabFiles addObject:source.sourceURL.path] ;
+    }
+    [tabFiles removeObjectAtIndex:0] ; 
+    NSString * key = [NSString stringWithFormat:@"TABS:%@", self.fileURL.path] ;
+    [[NSUserDefaults standardUserDefaults]
+      setObject:tabFiles
+      forKey:key
+    ] ;
+  //---
+    [inTextDisplayDescriptor detachTextDisplayDescriptor] ;
+    [OC_GGS_DocumentData cocoaDocumentWillClose:nil] ;
   }
-  [tabFiles removeObjectAtIndex:0] ; 
-  NSString * key = [NSString stringWithFormat:@"TABS:%@", self.fileURL.path] ;
-  [[NSUserDefaults standardUserDefaults]
-    setObject:tabFiles
-    forKey:key
-  ] ;
-//---
-  [inTextDisplayDescriptor detachTextDisplayDescriptor] ;
-  [OC_GGS_DocumentData cocoaDocumentWillClose:nil] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1192,13 +1199,12 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     }
     NSArray * arrangedObjects = mSourceDisplayArrayController.arrangedObjects ;
     const NSUInteger sel = mSourceDisplayArrayController.selectionIndex ;
-    NSString * key = [NSString stringWithFormat:@"SELECTED-TAB:%@", self.fileURL.path] ;
-    [ud setInteger:(NSInteger) sel forKey:key] ;
-    // NSLog (@"WRITE %@ -> %lu", key, sel) ;
     if (sel != NSNotFound) {
+      NSString * key = [NSString stringWithFormat:@"SELECTED-TAB:%@", self.fileURL.path] ;
+      [ud setInteger:(NSInteger) sel forKey:key] ;
       OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel] ;
+      [self setFileURL:object.sourceURL] ;
       object.enclosingView.frame = mSourceHostView.bounds ;
-      // NSLog (@"object.scrollView %d", object.scrollView.autoresizesSubviews) ;
       [mSourceHostView addSubview:object.enclosingView] ;
       [mSourceHostView.window makeFirstResponder:object.textView] ;
     }
