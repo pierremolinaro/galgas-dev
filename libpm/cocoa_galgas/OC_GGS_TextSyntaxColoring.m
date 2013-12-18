@@ -544,7 +544,7 @@
       eraseRangeEnd = (NSInteger) (textLength - 1) ;
     }
     if (eraseRangeStart < eraseRangeEnd) {
-      const NSRange eraseRange = {(NSUInteger) eraseRangeStart, (NSUInteger) (eraseRangeEnd - eraseRangeStart)} ;
+      const NSRange eraseRange = {(NSUInteger) eraseRangeStart, (NSUInteger) (eraseRangeEnd - eraseRangeStart + 1)} ;
       #ifdef DEBUG_MESSAGES
         NSLog (@"PERFORM REMOVE ATTRIBUTE range [%lu, %lu] text length %lu", eraseRange.location, eraseRange.length, textLength) ;
       #endif
@@ -923,8 +923,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
   // NSLog (@"infoDictionary '%@'", infoDictionary) ;
   NSArray * allDocumentTypes = [infoDictionary objectForKey:@"CFBundleDocumentTypes"] ;
   // NSLog (@"allDocumentTypes '%@'", allDocumentTypes) ;
-  for (NSUInteger i=0 ; i<[allDocumentTypes count] ; i++) {
-    NSDictionary * docTypeDict = [allDocumentTypes objectAtIndex:i] ;
+  for (NSDictionary * docTypeDict in allDocumentTypes) {
     // NSLog (@"docTypeDict '%@'", docTypeDict) ;
     NSArray * documentTypeExtensions = [docTypeDict objectForKey:@"CFBundleTypeExtensions"] ;
     // NSLog (@"documentTypeExtensions '%@'", documentTypeExtensions) ;
