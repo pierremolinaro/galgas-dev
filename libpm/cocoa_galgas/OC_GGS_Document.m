@@ -869,7 +869,7 @@
     nil
   ] ;
   NSAttributedString * attributedString = [[NSAttributedString alloc]
-    initWithString:@"Compiling…\n"
+    initWithString:[NSString stringWithFormat:@"Compiling %@…\n", self.fileURL.path.lastPathComponent]
     attributes:defaultDictionary
   ] ;
   [mOutputTextView.textStorage setAttributedString:attributedString] ;
