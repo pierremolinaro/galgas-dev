@@ -137,14 +137,10 @@
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   [super windowControllerDidLoadNib: inWindowController];
-//--- Record selected tab
-  NSString * key = [NSString stringWithFormat:@"SELECTED-TAB:%@", self.fileURL.path] ;
-  const NSUInteger selection = (NSUInteger) [[NSUserDefaults standardUserDefaults] integerForKey:key] ;
-  // NSLog (@"READ %@ -> %lu", key, selection) ;
 //--- Tell to window controller that closing the source text window closes the document
   [inWindowController setShouldCloseDocument: YES] ;
 //--- Set up windows location
-  key = [NSString stringWithFormat: @"frame_for_source:%@", self.lastComponentOfFileName] ;
+  NSString * key = [NSString stringWithFormat: @"frame_for_source:%@", self.lastComponentOfFileName] ;
   [self.windowForSheet setFrameAutosaveName:key] ;
 
 //--- Add Split view binding
@@ -243,13 +239,17 @@
     [mOutputScrollView setRulersVisible:YES] ;
   }
 //--- Open tabs
-  key = [NSString stringWithFormat:@"TABS:%@", self.fileURL.path] ;
-  NSArray * tabFiles = [[NSUserDefaults standardUserDefaults] objectForKey:key] ;
+  NSString * openedFilePath = self.fileURL.path ;
+  key = [NSString stringWithFormat:@"CONFIG:%@", openedFilePath] ;
+  NSArray * tabFiles = [[[NSUserDefaults standardUserDefaults] objectForKey:key] copy] ;
   // NSLog (@"prefs '%@' -> %@", key, tabFiles) ;
   for (NSString * fileAbsolutePath in tabFiles) {
     [self findOrAddNewTabForFile:fileAbsolutePath] ;
   }
-//--- Set selected tab
+//--- Record selected tab
+  key = [NSString stringWithFormat:@"SELECTED-TAB:%@", openedFilePath] ;
+  const NSUInteger selection = (NSUInteger) [[NSUserDefaults standardUserDefaults] integerForKey:key] ;
+  // NSLog (@"READ %@ -> %lu", key, selection) ;
   NSArray * sourceDisplayArray = mSourceDisplayArrayController.arrangedObjects ;
   if ((selection != NSNotFound) && (selection < sourceDisplayArray.count)) {
     [mSourceDisplayArrayController setSelectionIndex:selection] ;
@@ -365,32 +365,35 @@
 
 //---------------------------------------------------------------------------*
 
+- (void) registerConfigurationInPreferences {
+  NSMutableArray * configurationArray = [NSMutableArray new] ;
+  for (OC_GGS_TextDisplayDescriptor * source in mSourceDisplayArrayController.arrangedObjects) {
+    [configurationArray addObject:source.sourceURL.path] ;
+  }
+  NSString * key = [NSString stringWithFormat:@"CONFIG:%@", [configurationArray objectAtIndex:0]] ;
+  [configurationArray removeObjectAtIndex:0] ;
+  [[NSUserDefaults standardUserDefaults]
+    setObject:configurationArray
+    forKey:key
+  ] ;
+  // NSLog (@"Write Prefs '%@' -> %@", key, configurationArray) ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (void) removeSelectedTabAction: (OC_GGS_TextDisplayDescriptor *) inTextDisplayDescriptor {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
 //---
-  if ([mSourceDisplayArrayController.arrangedObjects count] == 1) {
-    [mSourceDisplayArrayController removeObject:inTextDisplayDescriptor] ;
-    [inTextDisplayDescriptor detachTextDisplayDescriptor] ;
-    [OC_GGS_DocumentData cocoaDocumentWillClose:nil] ;
-    [self close] ;
+  const BOOL lastSourceWillClose = [mSourceDisplayArrayController.arrangedObjects count] == 1 ;
+  [mSourceDisplayArrayController removeObject:inTextDisplayDescriptor] ;
+  [inTextDisplayDescriptor detachTextDisplayDescriptor] ;
+  [OC_GGS_DocumentData cocoaDocumentWillClose:nil] ;
+  if (lastSourceWillClose) {
+    [self.windowForSheet performClose:nil] ;
   }else{
-    [mSourceDisplayArrayController removeObject:inTextDisplayDescriptor] ;
-  //--- Update users preferences
-    NSMutableArray * tabFiles = [NSMutableArray new] ;
-    for (OC_GGS_TextDisplayDescriptor * source in mSourceDisplayArrayController.arrangedObjects) {
-      [tabFiles addObject:source.sourceURL.path] ;
-    }
-    [tabFiles removeObjectAtIndex:0] ; 
-    NSString * key = [NSString stringWithFormat:@"TABS:%@", self.fileURL.path] ;
-    [[NSUserDefaults standardUserDefaults]
-      setObject:tabFiles
-      forKey:key
-    ] ;
-  //---
-    [inTextDisplayDescriptor detachTextDisplayDescriptor] ;
-    [OC_GGS_DocumentData cocoaDocumentWillClose:nil] ;
+    [self registerConfigurationInPreferences] ;
   }
 }
 
@@ -506,20 +509,6 @@
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
   [OC_GGS_DocumentData saveAllDocuments] ;
-}
-
-//---------------------------------------------------------------------------*
-
-- (IBAction) actionCloseTab: (id) inSender {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  if ([mSourceDisplayArrayController.arrangedObjects count] > 1) {
-    OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
-    [self removeSelectedTabAction:selectedObject] ;
-  }else{
-    [self.windowForSheet performClose:inSender] ;
-  }
 }
 
 //---------------------------------------------------------------------------*
@@ -1153,17 +1142,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
       ] ;
       [mSourceDisplayArrayController addObject:foundSourceText] ;
     //--- Update users preferences
-      NSMutableArray * tabFiles = [NSMutableArray new] ;
-      for (OC_GGS_TextDisplayDescriptor * source in mSourceDisplayArrayController.arrangedObjects) {
-        [tabFiles addObject:source.sourceURL.path] ;
-      }
-      [tabFiles removeObjectAtIndex:0] ; 
-      NSString * key = [NSString stringWithFormat:@"TABS:%@", self.fileURL.path] ;
-      [[NSUserDefaults standardUserDefaults]
-        setObject:tabFiles
-        forKey:key
-      ] ;
-      // NSLog (@"prefs '%@' -> %@", key, tabFiles) ;
+      [self registerConfigurationInPreferences] ;
     }
     [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:foundSourceText]] ;
   }
@@ -1200,7 +1179,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     NSArray * arrangedObjects = mSourceDisplayArrayController.arrangedObjects ;
     const NSUInteger sel = mSourceDisplayArrayController.selectionIndex ;
     if (sel != NSNotFound) {
-      NSString * key = [NSString stringWithFormat:@"SELECTED-TAB:%@", self.fileURL.path] ;
+      NSString * key = [NSString stringWithFormat:@"SELECTED-TAB:%@", [[arrangedObjects objectAtIndex:0] sourceURL].path] ;
       [ud setInteger:(NSInteger) sel forKey:key] ;
       OC_GGS_TextDisplayDescriptor * object = [arrangedObjects objectAtIndex:sel] ;
       [self setFileURL:object.sourceURL] ;
