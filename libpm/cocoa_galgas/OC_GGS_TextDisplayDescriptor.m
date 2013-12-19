@@ -52,7 +52,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 //---------------------------------------------------------------------------*
 
 - (NSImage *) imageForClosingInUserInterface {
-  return [NSImage imageNamed:NSImageNameStopProgressFreestandingTemplate] ;
+  return [NSImage imageNamed:@"closeSourceFile"] ; // NSImageNameStopProgressFreestandingTemplate] ;
 }
 
 //---------------------------------------------------------------------------*
