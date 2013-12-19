@@ -204,6 +204,7 @@ local routine build_LIBPM_COCOA_GALGAS_group
   append_m_h_files !?fileList !"PMUndoManager" ;
   append_m_h_files !?fileList !"PMTableViewRefusesFirstResponder" ;
   fileList += !"I_Stop.tiff" ;
+  fileList += !"closeSourceFile.tiff" ;
   fileList += !"F_CocoaWrapperForGalgas.h" ;
   fileList += !"PP_CocoaGalgasPrefix.pch" ;
 #--- Enter Resource files
@@ -746,6 +747,7 @@ local routine build_RESOURCES_for_resources_build_phase
   fileList += !inProjectName ;
   fileList += !inProjectName . "_debug" ;
   fileList += !"I_Stop.tiff" ;
+  fileList += !"closeSourceFile.tiff" ;
   fileList += !"PMDebug.xib" ;
   fileList += !"MainMenu.xib" ;
   fileList += !"OC_GGS_Document.xib" ;

@@ -306,6 +306,7 @@
 		CFC7E13D119DC04E00CC87F8 /* semanticExpressionGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC7E138119DC04E00CC87F8 /* semanticExpressionGeneration.cpp */; };
 		CFC80673137C3FB80028907B /* libpmHandling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC8066F137C3FB80028907B /* libpmHandling.cpp */; };
 		CFC80674137C3FB80028907B /* libpmHandling.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFC8066F137C3FB80028907B /* libpmHandling.cpp */; };
+		CFC8FE1618637C510035BBBE /* closeSourceFile.tiff in Resources */ = {isa = PBXBuildFile; fileRef = CFC8FE1518637C510035BBBE /* closeSourceFile.tiff */; };
 		CFCAEE67160E5D3D0081F715 /* OC_GGS_ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCAEE66160E5D3D0081F715 /* OC_GGS_ApplicationDelegate.m */; };
 		CFCB12850D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB125B0D9D74330016BE3F /* galgasTemplateScanner.cpp */; };
 		CFCB12970D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB125B0D9D74330016BE3F /* galgasTemplateScanner.cpp */; };
@@ -1041,6 +1042,7 @@
 		CFC7E139119DC04E00CC87F8 /* semanticExpressionGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = semanticExpressionGeneration.h; sourceTree = "<group>"; };
 		CFC8066F137C3FB80028907B /* libpmHandling.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = libpmHandling.cpp; sourceTree = "<group>"; };
 		CFC80670137C3FB80028907B /* libpmHandling.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = libpmHandling.h; sourceTree = "<group>"; };
+		CFC8FE1518637C510035BBBE /* closeSourceFile.tiff */ = {isa = PBXFileReference; lastKnownFileType = image.tiff; path = closeSourceFile.tiff; sourceTree = "<group>"; };
 		CFC92D7C11181F6300ACA25F /* GALGAS_binaryset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_binaryset.cpp; sourceTree = "<group>"; };
 		CFCAEE65160E5D3D0081F715 /* OC_GGS_ApplicationDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OC_GGS_ApplicationDelegate.h; sourceTree = "<group>"; };
 		CFCAEE66160E5D3D0081F715 /* OC_GGS_ApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OC_GGS_ApplicationDelegate.m; sourceTree = "<group>"; };
@@ -1430,6 +1432,7 @@
 				CF51F02615C9201800387A48 /* PMDebug.m */,
 				CF51F02115C9200E00387A48 /* PMDebug.xib */,
 				CF06F5C51049592F005F03FA /* MainMenu.xib */,
+				CFC8FE1518637C510035BBBE /* closeSourceFile.tiff */,
 				CF82596F08536A130077AEAF /* I_Stop.tiff */,
 				CFCEEFBF13CF24C10074BDE9 /* OC_GGS_searchInFolders.h */,
 				CFCEEFC013CF24C10074BDE9 /* OC_GGS_searchInFolders.m */,
@@ -2262,6 +2265,7 @@
 				CFFE6C9014861DFB00FD9FF8 /* OC_GGS_Document.xib in Resources */,
 				CF51F02315C9200E00387A48 /* PMDebug.xib in Resources */,
 				CF20C0AD160DE46800AC054C /* GGSUpdateCocoaGalgas.xib in Resources */,
+				CFC8FE1618637C510035BBBE /* closeSourceFile.tiff in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
