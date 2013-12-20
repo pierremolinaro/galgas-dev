@@ -52,7 +52,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 //---------------------------------------------------------------------------*
 
 - (NSImage *) imageForClosingInUserInterface {
-  return [NSImage imageNamed:@"closeSourceFile"] ; // NSImageNameStopProgressFreestandingTemplate] ;
+  return [NSImage imageNamed:@"closeSourceFile"] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -319,8 +319,7 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
   const NSUInteger spaceCount = (NSUInteger) [[NSUserDefaults standardUserDefaults] integerForKey:@"PMShiftLeftInsertedSpaceCount"] ;
   //NSLog (@"spaceCount %u", spaceCount) ;
   NSMutableString * s = [[NSMutableString alloc] init] ;
-  NSUInteger i ;
-  for (i=0 ; i<spaceCount ; i++) {
+  for (NSUInteger i=0 ; i<spaceCount ; i++) {
     [s appendString:@" "] ;
   }
   return s ;

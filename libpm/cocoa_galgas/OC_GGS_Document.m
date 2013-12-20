@@ -147,6 +147,8 @@
 // Note : use [self lastComponentOfFileName] instead of [window title], because window title may not set at this point
   key = [NSString stringWithFormat:@"values.issue-split-fraction:%@", self.lastComponentOfFileName] ;
   [mIssueSplitView setAutosaveName:key] ;
+  key = [NSString stringWithFormat:@"values.build-split-fraction:%@", self.lastComponentOfFileName] ;
+  [mBuildAndSourceSplitView setAutosaveName:key] ;
 //---
   [mSourceDisplayArrayController
     bind:@"contentArray"
