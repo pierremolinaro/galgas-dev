@@ -544,7 +544,7 @@
       eraseRangeEnd = (NSInteger) (textLength - 1) ;
     }
     if (eraseRangeStart < eraseRangeEnd) {
-      const NSRange eraseRange = {(NSUInteger) eraseRangeStart, (NSUInteger) (eraseRangeEnd - eraseRangeStart + 1)} ;
+      const NSRange eraseRange = {(NSUInteger) eraseRangeStart, (NSUInteger) (eraseRangeEnd - eraseRangeStart)} ;
       #ifdef DEBUG_MESSAGES
         NSLog (@"PERFORM REMOVE ATTRIBUTE range [%lu, %lu] text length %lu", eraseRange.location, eraseRange.length, textLength) ;
       #endif
