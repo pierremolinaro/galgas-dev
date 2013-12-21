@@ -20,11 +20,7 @@
 
 //---------------------------------------------------------------------------*
 
-@interface OC_GGS_TextDisplayDescriptor : NSObject
-#if MAC_OS_X_VERSION_MIN_REQUIRED > MAC_OS_X_VERSION_10_5
-  <NSTextViewDelegate, NSPortDelegate>
-#endif
-{
+@interface OC_GGS_TextDisplayDescriptor : NSObject <NSTextViewDelegate, NSPortDelegate> {
 
   @private OC_GGS_TextView * mTextView ;
   @private NSPopUpButton * mEntryListPopUpButton ;
