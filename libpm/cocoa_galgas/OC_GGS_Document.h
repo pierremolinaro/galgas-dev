@@ -55,6 +55,7 @@
   @private OC_GGS_DocumentData * mDocumentData ;
   @private NSArray * mDisplayDescriptorArray ;
   @private IBOutlet NSTableView * mDisplayDescriptorTableView ;
+  @private IBOutlet NSTextField * mSourceFilePathTextField ;
 
 //--- "Goto Line" sheet
   @private IBOutlet NSWindow * mGotoWindow ;
@@ -70,9 +71,30 @@
   @private IBOutlet NSTextField * mWarningCountTextField ;
   @private OC_GGS_RulerViewForBuildOutput * mRulerViewForBuildOutput ;
   @private NSMutableArray * mIssueArray ;
+
+//--- Search view
+  @private IBOutlet NSView * mSearchView ;
+  @private IBOutlet NSButton * mCaseSensitiveSearchCheckbox ;
+  @private IBOutlet NSTextField * mGlobalSearchTextField ;
+  @private IBOutlet NSTextField * mOccurenceFoundCountTextField ;
+  @private IBOutlet NSMatrix * mSearchMatrix ;
+  @private IBOutlet NSOutlineView * mResultOutlineView ;
+  @private NSMutableArray * mResultArray ;
+  @private NSUInteger mResultCount ;
+  @private NSTreeController * mFoundEntryTreeController ;
 }
 
 @property (assign PROPERTY_COMMA_ATOMIC) BOOL mBuildTaskIsRunning ;
+
+- (IBAction) openSourceInNewWindowAction: (id) inSender ;
+- (IBAction) moveSourceInNewWindowAction: (id) inSender ;
+- (IBAction) duplicateSourceAction: (id) inSender ;
+- (IBAction) revealInFinderAction: (id) inSender ;
+- (IBAction) closeAction: (id) inSender ;
+- (IBAction) closeOthersAction: (id) inSender ;
+
+- (IBAction) closeSearchAndReplaceView: (id) inSender ;
+- (IBAction) globalFindAction: (id) inSender ;
 
 - (OC_GGS_TextDisplayDescriptor *) findOrAddNewTabForFile: (NSString *) inDocumentPath ;
 
