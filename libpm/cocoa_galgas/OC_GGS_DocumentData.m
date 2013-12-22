@@ -308,6 +308,12 @@ static NSArray * gIssueArray ;
 
 //---------------------------------------------------------------------------*
 
++ (OC_GGS_DocumentData *) findDocumentDataForFilePath: (NSString *) inFilePath {
+  return [gDocumentDataDictionary objectForKey:[NSURL fileURLWithPath:inFilePath]] ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (OC_GGS_TextDisplayDescriptor *) newSourceDisplayDescriptorForDocument: (OC_GGS_Document *) inDocumentUsedForDisplaying {
   OC_GGS_TextDisplayDescriptor * tdd = [[OC_GGS_TextDisplayDescriptor alloc]
     initWithDocumentData:self
@@ -332,6 +338,13 @@ static NSArray * gIssueArray ;
 
 - (void) replaceSourceStringWithString: (NSString *) inString {
   [mTextSyntaxColoring replaceSourceStringWithString:inString] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) replaceCharactersInRange: (NSRange) inRange
+         withString: (NSString *) inReplaceString {
+  [mTextSyntaxColoring replaceCharactersInRange:inRange withString:inReplaceString] ;
 }
 
 //---------------------------------------------------------------------------*

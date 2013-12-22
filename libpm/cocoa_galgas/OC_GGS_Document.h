@@ -76,6 +76,7 @@
   @private IBOutlet NSView * mSearchView ;
   @private IBOutlet NSButton * mCaseSensitiveSearchCheckbox ;
   @private IBOutlet NSSearchField * mGlobalSearchTextField ;
+  @private IBOutlet NSTextField * mGlobalReplaceTextField ;
   @private IBOutlet NSTextField * mOccurenceFoundCountTextField ;
   @private IBOutlet NSMatrix * mSearchMatrix ;
   @private IBOutlet NSOutlineView * mResultOutlineView ;
@@ -95,6 +96,7 @@
 
 - (IBAction) closeSearchAndReplaceView: (id) inSender ;
 - (IBAction) globalFindAction: (id) inSender ;
+- (IBAction) globalReplaceAllAction: (id) inSender ;
 
 - (void) updateSearchResultForFile: (NSString *) inFilePath
          previousRange: (NSRange) inPreviousRange
@@ -115,7 +117,6 @@
 - (IBAction) stopBuild: (id) sender ;
 
 - (NSString *) sourceStringForGlobalSearch ;
-- (void) replaceSourceStringWithString: (NSString *) inString ;
 
 - (void) triggerDocumentEditedStatusUpdate ;
 
