@@ -16,6 +16,7 @@
 #import "OC_GGS_DocumentData.h"
 #import "PMDebug.h"
 #import "PMUndoManager.h"
+#import "OC_GGS_Document.h"
 
 //---------------------------------------------------------------------------*
 
@@ -496,6 +497,14 @@
 //---
   for (OC_GGS_TextDisplayDescriptor * textDisplay in mTextDisplayDescriptorSet) {
     [textDisplay setTextDisplayIssueArray:mIssueArray] ; 
+  }
+//---
+  for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
+    [doc
+      updateSearchResultForFile:self.documentData.fileURL.path
+      previousRange:previousRange
+      changeInLength:inChangeInLength
+    ] ; 
   }
 }
 

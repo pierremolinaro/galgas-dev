@@ -58,6 +58,7 @@ end routine ;
 local routine getGALGAS_2_source_file_list
   !@stringlist out_fileList
 :
+
   out_fileList := [@stringlist emptyList] ;
   out_fileList += !"typeComparisonResult.cpp" ;
   out_fileList += !"typeComparisonResult.h" ;
@@ -182,7 +183,7 @@ local routine build_LIBPM_COCOA_GALGAS_group
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
-  append_m_h_files !?fileList !"OC_GGS_searchInFolders" ;
+  append_m_h_files !?fileList !"PMSearchResultDescriptor" ;
   append_m_h_files !?fileList !"PMDebug" ;
   append_m_h_files !?fileList !"PMFontButton" ;
   append_m_h_files !?fileList !"OC_Token" ;
@@ -782,7 +783,7 @@ local routine build_COCOA_APP_files_for_sources_build_phase
   fileList += !"PMCancelButtonForPanel.m" ;
   fileList += !"PMOkButtonForPanel.m" ;
   fileList += !"unicode_character_m.m" ;
-  fileList += !"OC_GGS_searchInFolders.m" ;
+  fileList += !"PMSearchResultDescriptor.m" ;
   fileList += !"PMFontButton.m" ;
   fileList += !"OC_Token.m" ;
   fileList += !"OC_Lexique.m" ;

@@ -9,6 +9,7 @@
 #import "OC_GGS_searchInFolders.h"
 #import "OC_GGS_Document.h"
 #import "OC_GGS_TextDisplayDescriptor.h"
+#import "PMSearchResultDescriptor.h"
 
 //---------------------------------------------------------------------------*
 
@@ -335,9 +336,9 @@
   // NSLog (@"allDocumentTypes %@", allDocumentTypes) ;
   NSWorkspace * ws = [NSWorkspace sharedWorkspace] ;
 //--- Find selection
-  for (NSDictionary * selectedObject in [mResultArrayTreeController selectedObjects]) {
+  for (PMSearchResultDescriptor * selectedObject in [mResultArrayTreeController selectedObjects]) {
    // NSLog (@"selectedObject %@", selectedObject) ;
-    NSString * filePath = [selectedObject valueForKey:@"filePath"] ;
+    NSString * filePath = selectedObject.foundItem ;
     if ([allDocumentTypes containsObject:[filePath pathExtension]]) {
       OC_GGS_Document * document = [dc documentForURL:[NSURL fileURLWithPath:filePath]] ;
       [[document windowForSheet] makeKeyAndOrderFront:nil] ;
@@ -349,9 +350,8 @@
         ] ;
       }
       // NSLog (@"document %@", document) ;
-      NSString * rangeString = [selectedObject valueForKey:@"rangeString"] ;
-      if (nil != rangeString) {
-        const NSRange searchRange = NSRangeFromString (rangeString) ;
+      const NSRange searchRange = selectedObject.range ;
+      if (searchRange.length > 0) {
         OC_GGS_TextDisplayDescriptor * tdd = [document findOrAddNewTabForFile:filePath] ;
         [tdd setSelectionRangeAndMakeItVisible:searchRange] ;
 //       NSBeep () ; NSLog (@"%s", __PRETTY_FUNCTION__) ;

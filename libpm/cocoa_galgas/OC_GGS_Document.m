@@ -34,6 +34,7 @@
 #import "OC_GGS_RulerViewForBuildOutput.h"
 #import "OC_GGS_Scroller.h"
 #import "PMDebug.h"
+#import "PMSearchResultDescriptor.h"
 
 //---------------------------------------------------------------------------*
 
@@ -146,9 +147,12 @@
 //--- Add Split view binding
 // Note : use [self lastComponentOfFileName] instead of [window title], because window title may not set at this point
   key = [NSString stringWithFormat:@"values.issue-split-fraction:%@", self.lastComponentOfFileName] ;
-  [mIssueSplitView setAutosaveName:key] ;
+  [mFirstSplitView setAutosaveName:key] ;
   key = [NSString stringWithFormat:@"values.build-split-fraction:%@", self.lastComponentOfFileName] ;
-  [mBuildAndSourceSplitView setAutosaveName:key] ;
+  [mSecondSplitView setAutosaveName:key] ;
+//---
+  mFirstSplitView.delegate = self ;
+  mSecondSplitView.delegate = self ;
 //---
   mOccurenceFoundCountTextField.stringValue = @"" ;
 //--- Global search result display
@@ -308,6 +312,35 @@
     withKeyPath:@"values.SENSITIVE-SEARCH" 
     options:nil
   ] ;
+//--- Configuring recent search menu
+  NSMenu * cellMenu = [[NSMenu alloc]
+    initWithTitle:NSLocalizedString(@"Search Menu", @"Search Menu title")
+  ] ;
+  NSMenuItem * item = [[NSMenuItem alloc]
+    initWithTitle:NSLocalizedString(@"Clear", @"Clear menu title")
+    action:NULL
+    keyEquivalent:@""
+  ];
+  [item setTag:NSSearchFieldClearRecentsMenuItemTag];
+  [cellMenu insertItem:item atIndex:0];
+  item = [NSMenuItem separatorItem];
+  [item setTag:NSSearchFieldRecentsTitleMenuItemTag];
+  [cellMenu insertItem:item atIndex:1];
+  item = [[NSMenuItem alloc]
+    initWithTitle:NSLocalizedString(@"Recent Searches", @"Recent Searches menu title")
+    action:NULL keyEquivalent:@""
+  ];
+  [item setTag:NSSearchFieldRecentsTitleMenuItemTag];
+  [cellMenu insertItem:item atIndex:2];
+  item = [[NSMenuItem alloc]
+    initWithTitle:@"Recents"
+    action:NULL
+    keyEquivalent:@""
+  ];
+  [item setTag:NSSearchFieldRecentsMenuItemTag];
+  [cellMenu insertItem:item atIndex:3];
+  id searchCell = [mGlobalSearchTextField cell];
+  [searchCell setSearchMenuTemplate:cellMenu];
 }
 
 //---------------------------------------------------------------------------*
@@ -473,7 +506,7 @@
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  [mIssueSplitView setPosition:0.0 ofDividerAtIndex:0] ;
+  [mFirstSplitView setPosition:0.0 ofDividerAtIndex:0] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1355,14 +1388,6 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 
 //---------------------------------------------------------------------------*
 
-- (CGFloat) splitView:(NSSplitView *)splitView
-            constrainMinCoordinate:(CGFloat)proposedMin
-            ofSubviewAt:(NSInteger) inDividerIndex {
-  return 40.0 ;
-}
-
-//---------------------------------------------------------------------------*
-
 #pragma mark Open Quickly
 
 //---------------------------------------------------------------------------*
@@ -1457,14 +1482,94 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 - (double) positionOfDividerAtIndex:(NSInteger)dividerIndex {
   // It looks like NSSplitView relies on its subviews being ordered left->right or top->bottom so we can too.
   // It also raises w/ array bounds exception if you use its API with dividerIndex > count of subviews.
-  while ((dividerIndex >= 0) && [mBuildAndSourceSplitView isSubviewCollapsed:[mBuildAndSourceSplitView.subviews objectAtIndex: (NSUInteger) dividerIndex]]) {
+  while ((dividerIndex >= 0) && [mSecondSplitView isSubviewCollapsed:[mSecondSplitView.subviews objectAtIndex: (NSUInteger) dividerIndex]]) {
     dividerIndex-- ;
     if (dividerIndex < 0) {
       return 0.0 ;
     }
   }
-  const NSRect priorViewFrame = [[mBuildAndSourceSplitView.subviews objectAtIndex:(NSUInteger) dividerIndex] frame];
-  return mBuildAndSourceSplitView.isVertical ? NSMaxX (priorViewFrame) : NSMaxY (priorViewFrame);
+  const NSRect priorViewFrame = [[mSecondSplitView.subviews objectAtIndex:(NSUInteger) dividerIndex] frame];
+  return mSecondSplitView.isVertical ? NSMaxX (priorViewFrame) : NSMaxY (priorViewFrame);
+}
+
+//---------------------------------------------------------------------------*
+// NSPlitView delegate method
+
+- (CGFloat) splitView:(NSSplitView *) inSplitView
+            constrainMinCoordinate: (CGFloat) inProposedMin
+            ofSubviewAt: (NSInteger) inDividerIndex {
+  CGFloat result = inProposedMin ;
+  const CGFloat minFirstSplitViewValue = 250.0 ;
+  const CGFloat minSecondSplitViewValue = 50.0 ;
+  if ((inDividerIndex == 0) && (inSplitView == mFirstSplitView) && (inProposedMin < minFirstSplitViewValue)) {
+    result = minFirstSplitViewValue ;
+  }else if ((inDividerIndex == 0) && (inSplitView == mSecondSplitView) && (inProposedMin < minSecondSplitViewValue)) {
+    result = minSecondSplitViewValue ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+// NSPlitView delegate method
+
+- (CGFloat) splitView:(NSSplitView *) inSplitView
+            constrainMaxCoordinate: (CGFloat) inProposedMax
+            ofSubviewAt: (NSInteger) inDividerIndex {
+  CGFloat result = inProposedMax ;
+  const CGFloat minSecondSplitViewValue = 250.0 ;
+  CGFloat max = inSplitView.bounds.size.height - minSecondSplitViewValue ;
+  if ((inDividerIndex == 0) && (inSplitView == mSecondSplitView) && (inProposedMax > max)) {
+    result = max  ;
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
+// http://stackoverflow.com/questions/17441877/nssplitview-fixed-splitter-on-window-resize
+
+- (void) splitView:(NSSplitView *) inSplitView
+         resizeSubviewsWithOldSize: (NSSize) inOldSize {
+  const CGFloat dividerThickness = inSplitView.dividerThickness ;
+  const NSRect newFrame = inSplitView.frame ;
+  if (inSplitView == mFirstSplitView) {
+    const NSRect leftRect  = [[inSplitView.subviews objectAtIndex:0] frame] ;
+    const CGFloat minFirstSplitViewValue = 250.0 ;
+    NSRect newLeftRect = {{0.0, 0.0}, {floor (leftRect.size.width * newFrame.size.width / inOldSize.width), newFrame.size.height}} ;
+    if (newLeftRect.size.width < minFirstSplitViewValue) {
+      newLeftRect.size.width = minFirstSplitViewValue ;
+    }
+    const NSRect newRightRect = {
+      {newLeftRect.origin.x + newLeftRect.size.width + dividerThickness, 0.0},
+      {newFrame.size.width - newLeftRect.size.width - dividerThickness, newFrame.size.height}
+    } ;
+    [[inSplitView.subviews objectAtIndex:0] setFrame:newLeftRect];
+    [[inSplitView.subviews objectAtIndex:1] setFrame:newRightRect];
+  }else if (inSplitView == mSecondSplitView) {
+    const NSRect bottomRect  = [[inSplitView.subviews objectAtIndex:1] frame] ;
+  /*  const NSRect topRect  = [[inSplitView.subviews objectAtIndex:0] frame] ;
+    NSLog (@"0:%p, 1:%p, mOutputScrollView:%p, mSearchView:%p", [inSplitView.subviews objectAtIndex:0], [inSplitView.subviews objectAtIndex:1], mOutputScrollView, mSearchView) ;
+    NSLog (@"inSplitView.isFlipped %d", inSplitView.isFlipped) ;
+    NSLog (@"topRect {{%g, %g}, {%g, %g}}", topRect.origin.x, topRect.origin.y, topRect.size.width, topRect.size.height) ;
+    NSLog (@"bottomRect {{%g, %g}, {%g, %g}}", bottomRect.origin.x, bottomRect.origin.y, bottomRect.size.width, bottomRect.size.height) ;*/
+    NSRect newBottomRect = {
+      {0.0, 0.0 /* temporary */},
+      {newFrame.size.width, floor (bottomRect.size.height * newFrame.size.height / inOldSize.height)}
+    } ;
+    const CGFloat minSecondSplitViewValue = 250.0 ;
+    if (newBottomRect.size.height > (newFrame.size.height - dividerThickness)) {
+      newBottomRect.size.height = newFrame.size.height - dividerThickness ;
+    }else if (newBottomRect.size.height < minSecondSplitViewValue) {
+      newBottomRect.size.height = minSecondSplitViewValue ;
+    }
+    newBottomRect.origin.y = newFrame.size.height - newBottomRect.size.height ;
+    const NSRect newTopRect = {
+      {0.0, 0.0},
+      {newFrame.size.width, newFrame.size.height - newBottomRect.size.height - dividerThickness}
+    } ;
+    [[inSplitView.subviews objectAtIndex:0] setFrame:newTopRect];
+    [[inSplitView.subviews objectAtIndex:1] setFrame:newBottomRect];
+  }
 }
 
 //---------------------------------------------------------------------------*
@@ -1472,9 +1577,9 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 - (IBAction) showSearchAndReplaceView: (id) inSender {
   const double position = [self positionOfDividerAtIndex:0] ;
   [mOutputScrollView removeFromSuperview] ;
-  [mBuildAndSourceSplitView addSubview:mSearchView] ;
-  [mBuildAndSourceSplitView adjustSubviews] ;
-  [mBuildAndSourceSplitView setPosition:position ofDividerAtIndex:0] ;
+  [mSecondSplitView addSubview:mSearchView] ;
+  [mSecondSplitView adjustSubviews] ;
+  [mSecondSplitView setPosition:position ofDividerAtIndex:0] ;
   [mGlobalSearchTextField.window makeFirstResponder:mGlobalSearchTextField] ;
 }
 
@@ -1483,9 +1588,9 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 - (IBAction) closeSearchAndReplaceView: (id) inSender {
   const double position = [self positionOfDividerAtIndex:0] ;
   [mSearchView removeFromSuperview] ;
-  [mBuildAndSourceSplitView addSubview:mOutputScrollView] ;
-  [mBuildAndSourceSplitView adjustSubviews] ;
-  [mBuildAndSourceSplitView setPosition:position ofDividerAtIndex:0] ;
+  [mSecondSplitView addSubview:mOutputScrollView] ;
+  [mSecondSplitView adjustSubviews] ;
+  [mSecondSplitView setPosition:position ofDividerAtIndex:0] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1532,7 +1637,7 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     [self
       recursiveSearchInDirectory:directoryPath
       recursive:YES
-      extensionList:[NSArray arrayWithObject:@"gSemantics"]
+      extensionList:self.allTypesOfCurrentApplication
     ] ;
   }
 }
@@ -1561,6 +1666,19 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
       }
     }
   }
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSArray *) allTypesOfCurrentApplication {
+  NSMutableArray * allTypes = [NSMutableArray new] ;
+  NSDictionary * infoDictionary = [[NSBundle mainBundle] infoDictionary] ;
+  NSArray * allDocumentTypes = [infoDictionary objectForKey:@"CFBundleDocumentTypes"] ;
+  for (NSDictionary * type in allDocumentTypes) {
+    NSArray * a = [type objectForKey:@"CFBundleTypeExtensions"] ;
+    [allTypes addObjectsFromArray:a] ;  
+  }
+  return allTypes ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1635,11 +1753,10 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
          range: (NSRange) inFoundRange
          toArray: (NSMutableArray *) ioFoundEntries {
   const NSRange lineRange = [inSourceString lineRangeForRange:inFoundRange] ;
-  NSDictionary * d = [NSDictionary dictionaryWithObjectsAndKeys:
-    [inSourceString substringWithRange:lineRange], @"foundItem",
-    inSourceFilePath, @"filePath",
-    NSStringFromRange (inFoundRange), @"rangeString",
-    nil
+  PMSearchResultDescriptor * d = [[PMSearchResultDescriptor alloc]
+    initWithLine:[inSourceString substringWithRange:lineRange]
+    range:inFoundRange
+    sourceFilePath:inSourceFilePath
   ] ;
   [ioFoundEntries addObject:d] ;
 //---
@@ -1652,13 +1769,11 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
          forFilePath:(NSString *) inSourceFilePath {
   if (inFoundEntries.count > 0) {
     [self willChangeValueForKey:@"mResultArray"] ;
-    [mResultArray addObject:[NSDictionary dictionaryWithObjectsAndKeys:
-      [NSNumber numberWithUnsignedInteger:inFoundEntries.count], @"countString",
-      [NSNumber numberWithBool:YES], @"boldDisplay",
-      inFoundEntries, @"children",
-      inSourceFilePath, @"foundItem",
-      nil
-    ]] ;
+    PMSearchResultDescriptor * d = [[PMSearchResultDescriptor alloc]
+      initWithEntries:inFoundEntries
+      sourceFilePath:inSourceFilePath
+    ] ;
+    [mResultArray addObject:d] ;
     [self didChangeValueForKey:@"mResultArray"] ;
     [mResultOutlineView display] ;
     [self updateOccurrenceFoundTextField] ;
@@ -1672,16 +1787,29 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
   if (selectedObjects.count > 1) {
     NSBeep () ;
   }else if (selectedObjects.count == 1) {
-    NSDictionary * d = [selectedObjects objectAtIndex:0] ;
-    NSString * filePath = [d objectForKey:@"filePath"] ;
-    NSString * rangeString = [d objectForKey:@"rangeString"] ;
-    if ((nil != filePath) && (nil != rangeString)) {
+    PMSearchResultDescriptor * d = [selectedObjects objectAtIndex:0] ;
+    NSString * filePath = d.filePath ;
+    if (nil != filePath) {
       OC_GGS_TextDisplayDescriptor * tdd = [self findOrAddNewTabForFile:filePath] ;
-      [tdd setSelectionRangeAndMakeItVisible:NSRangeFromString (rangeString)] ;
+      [tdd setSelectionRangeAndMakeItVisible:d.range] ;
       [mResultOutlineView.window makeFirstResponder:mResultOutlineView] ;
     }
   }
 }
+
+//---------------------------------------------------------------------------*
+
+- (void) updateSearchResultForFile: (NSString *) inFilePath
+         previousRange: (NSRange) inPreviousRange
+         changeInLength: (NSInteger) inChangeInLength {
+  for (PMSearchResultDescriptor * d in mResultArray) {
+    [d
+      updateSearchResultForFile:inFilePath
+      previousRange:inPreviousRange
+      changeInLength:inChangeInLength
+    ] ;
+  }
+} 
 
 //---------------------------------------------------------------------------*
 

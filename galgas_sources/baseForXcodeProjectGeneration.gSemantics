@@ -22,7 +22,6 @@ list @XcodeObjectReferenceList {
 abstract class @Xcode_PBXFileReference_abstract {
   @uint mSequenceNumber ;
   @string mFileName  ;
-
 }
 
 #---------------------------------------------------------------------------*
