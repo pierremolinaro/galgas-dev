@@ -64,6 +64,8 @@
 - (NSString *) sourceString ;
 - (void) replaceSourceStringWithString: (NSString *) inString ;
 
+- (void) replaceCharactersInRange: (NSRange) inRange withString: (NSString *) inReplaceString ;
+
 - (void) updateSyntaxColoringForEditedRange: (NSRange) inEditedRange
          changeInLength: (NSInteger) inChangeInLength ;
 

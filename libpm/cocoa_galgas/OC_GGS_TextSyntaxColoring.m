@@ -337,6 +337,43 @@
 
 //---------------------------------------------------------------------------*
 
+- (void) replaceCharactersInRange: (NSRange) inRange
+         withString: (NSString *) inReplaceString {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+ // NSLog (@"inRange [%lu, %lu], inReplaceString '%@'", inRange.location, inRange.length, inReplaceString) ;
+  const NSRange replacementRange = {inRange.location, inReplaceString.length} ;
+  NSDictionary * d = [NSDictionary dictionaryWithObjectsAndKeys:
+    [mSourceTextStorage.string substringWithRange:inRange], @"str",
+    NSStringFromRange (replacementRange), @"range",
+    nil
+  ] ;
+  [mUndoManager
+    registerUndoWithTarget:self
+    selector:@selector (replaceUsingDictionary:)
+    object:d
+  ] ;
+  [mSourceTextStorage beginEditing] ;
+  [mSourceTextStorage replaceCharactersInRange:inRange withString:inReplaceString] ;
+  [mSourceTextStorage endEditing] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) replaceUsingDictionary: (NSDictionary *) inDictionary {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+//  NSLog (@"-------- replace --------") ;
+  [self
+    replaceCharactersInRange:NSRangeFromString([inDictionary objectForKey:@"range"])
+    withString:[inDictionary objectForKey:@"str"]
+  ] ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (NSUndoManager *) undoManager {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;

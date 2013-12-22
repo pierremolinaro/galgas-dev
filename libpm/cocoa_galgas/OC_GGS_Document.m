@@ -103,15 +103,6 @@
 
 //---------------------------------------------------------------------------*
 
-- (void) replaceSourceStringWithString: (NSString *) inString {
-  #ifdef DEBUG_MESSAGES
-    NSLog (@"%s", __PRETTY_FUNCTION__) ;
-  #endif
-  [mDocumentData replaceSourceStringWithString:inString] ;
-}
-
-//---------------------------------------------------------------------------*
-
 #pragma mark Nib relative Actions
 
 //---------------------------------------------------------------------------*
@@ -312,6 +303,18 @@
     withKeyPath:@"values.SENSITIVE-SEARCH" 
     options:nil
   ] ;
+  [mGlobalReplaceTextField
+    bind:@"value"
+    toObject:[NSUserDefaultsController sharedUserDefaultsController] 
+    withKeyPath:@"values.GLOBAL-REPLACE-FIELD" 
+    options:nil
+  ] ;
+  [mSearchMatrix
+    bind:@"selectedIndex"
+    toObject:[NSUserDefaultsController sharedUserDefaultsController] 
+    withKeyPath:@"values.SEARCH-MATRIX" 
+    options:nil
+  ] ;
 //--- Configuring recent search menu
   NSMenu * cellMenu = [[NSMenu alloc]
     initWithTitle:NSLocalizedString(@"Search Menu", @"Search Menu title")
@@ -431,6 +434,12 @@
 //---
   [mCaseSensitiveSearchCheckbox
     unbind:@"value"
+  ] ;
+  [mGlobalReplaceTextField
+    unbind:@"value"
+  ] ;
+  [mSearchMatrix
+    unbind:@"selectedIndex"
   ] ;
 //---
   mSourceDisplayArrayController = nil ;
@@ -1810,6 +1819,35 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     ] ;
   }
 } 
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) globalReplaceAllAction: (id) inSender {
+  NSString * replaceString = mGlobalReplaceTextField.stringValue ;
+  for (PMSearchResultDescriptor * d in mResultArray) {
+    NSString * filePath = d.filePath ;
+    // NSLog (@"filePath %@", filePath) ;
+    NSArray * foundEntries = d.children ;
+    OC_GGS_DocumentData * documentData = [OC_GGS_DocumentData findDocumentDataForFilePath:filePath] ;
+    if (nil == documentData) {
+      NSMutableString * contents = [[NSString stringWithContentsOfFile:filePath encoding:NSUTF8StringEncoding error:nil] mutableCopy] ;
+      if (nil != contents) {
+        for (PMSearchResultDescriptor * entry in foundEntries.reverseObjectEnumerator) {
+          const NSRange r = entry.range ;
+          // NSLog (@"r [%lu, %lu]", r.location, r.length) ;
+          [contents replaceCharactersInRange:r withString:replaceString] ;
+        }
+      }
+      [contents writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil] ;
+    }else{
+      for (PMSearchResultDescriptor * entry in foundEntries.reverseObjectEnumerator) {
+        const NSRange r = entry.range ;
+        // NSLog (@"r [%lu, %lu]", r.location, r.length) ;
+        [documentData replaceCharactersInRange:r withString:replaceString] ;
+      }
+    }
+  }
+}
 
 //---------------------------------------------------------------------------*
 

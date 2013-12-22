@@ -311,7 +311,6 @@
 		CFCAEE67160E5D3D0081F715 /* OC_GGS_ApplicationDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCAEE66160E5D3D0081F715 /* OC_GGS_ApplicationDelegate.m */; };
 		CFCB12850D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB125B0D9D74330016BE3F /* galgasTemplateScanner.cpp */; };
 		CFCB12970D9D74330016BE3F /* galgasTemplateScanner.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFCB125B0D9D74330016BE3F /* galgasTemplateScanner.cpp */; };
-		CFCEEFC113CF24C10074BDE9 /* OC_GGS_searchInFolders.m in Sources */ = {isa = PBXBuildFile; fileRef = CFCEEFC013CF24C10074BDE9 /* OC_GGS_searchInFolders.m */; };
 		CFD2EA850FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */; };
 		CFD2EA860FD45D080085EC05 /* predefinedLexicalActions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */; };
 		CFD396F0110E1EAF001549E6 /* cpp-allocation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFD396EF110E1EAF001549E6 /* cpp-allocation.cpp */; };
@@ -1051,8 +1050,6 @@
 		CFCAEE66160E5D3D0081F715 /* OC_GGS_ApplicationDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OC_GGS_ApplicationDelegate.m; sourceTree = "<group>"; };
 		CFCB125B0D9D74330016BE3F /* galgasTemplateScanner.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = galgasTemplateScanner.cpp; sourceTree = "<group>"; };
 		CFCB125C0D9D74330016BE3F /* galgasTemplateScanner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = galgasTemplateScanner.h; sourceTree = "<group>"; };
-		CFCEEFBF13CF24C10074BDE9 /* OC_GGS_searchInFolders.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = OC_GGS_searchInFolders.h; sourceTree = "<group>"; };
-		CFCEEFC013CF24C10074BDE9 /* OC_GGS_searchInFolders.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = OC_GGS_searchInFolders.m; sourceTree = "<group>"; };
 		CFD2223C11085598003C83A5 /* GALGAS_function.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_function.cpp; sourceTree = "<group>"; };
 		CFD2EA810FD45D080085EC05 /* predefinedLexicalActions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = predefinedLexicalActions.cpp; sourceTree = "<group>"; };
 		CFD2EA820FD45D080085EC05 /* predefinedLexicalActions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = predefinedLexicalActions.h; sourceTree = "<group>"; };
@@ -1437,8 +1434,6 @@
 				CF06F5C51049592F005F03FA /* MainMenu.xib */,
 				CFC8FE1518637C510035BBBE /* closeSourceFile.tiff */,
 				CF82596F08536A130077AEAF /* I_Stop.tiff */,
-				CFCEEFBF13CF24C10074BDE9 /* OC_GGS_searchInFolders.h */,
-				CFCEEFC013CF24C10074BDE9 /* OC_GGS_searchInFolders.m */,
 				CF3CFB2B0FEBEA6C00CE4488 /* PMFontButton.h */,
 				CF3CFB2C0FEBEA6C00CE4488 /* PMFontButton.m */,
 				CF9E55F90FF5372D007692D1 /* OC_Token.h */,
@@ -2672,7 +2667,6 @@
 				CFAE5AA110021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */,
 				CFAE5B1C10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */,
 				CFD94B7B129068CF00864538 /* cocoaGalgas.m in Sources */,
-				CFCEEFC113CF24C10074BDE9 /* OC_GGS_searchInFolders.m in Sources */,
 				CFFCE7BD14686081009DB6D5 /* PMIssueDescriptor.m in Sources */,
 				CFEE63DC147E9F500012C0A9 /* OC_GGS_TextDisplayDescriptor.m in Sources */,
 				CFEE63E0147EA7750012C0A9 /* OC_GGS_TextSyntaxColoring.m in Sources */,
