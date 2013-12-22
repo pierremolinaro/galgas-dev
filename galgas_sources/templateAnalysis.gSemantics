@@ -248,11 +248,6 @@ override method @templateFileWrapperWithStaticPathAST templateExpressionAnalysis
   error mFileWrapperName:"unhandled @templateFileWrapperWithStaticPathAST templateExpressionAnalysis":outExpression ;
 end method ;
 
-#class @templateFileWrapperWithStaticPathAST extends @templateExpressionAST {
-#  @lstring mFileWrapperName ;
-#  @uint mFileIndex ;
-#}
- 
 #---------------------------------------------------------------------------*
 #   F I L E W R A P P E R    T E M P L A T E     C A L L                    *
 #---------------------------------------------------------------------------*
@@ -263,22 +258,6 @@ override method @templateFileWrapperTemplateCallAST templateExpressionAnalysis
 :
   error mFileWrapperName:"unhandled @templateFileWrapperTemplateCallAST templateExpressionAnalysis":outExpression ;
 end method ;
-
-#class @templateFileWrapperTemplateCallAST extends @templateExpressionAST {
-#  @lstring mFileWrapperName ;
-#  @lstring mTemplateName ;
-#  @templateExpressionListAST mOutExpressionList ;
-#}
- 
-#---------------------------------------------------------------------------*
-#   C A T E G O R Y    T E M P L A T E     C A L L                          *
-#---------------------------------------------------------------------------*
-
-#class @templateCategoryTemplateCallAST extends @templateExpressionAST {
-#  @templateExpressionAST mExpressionValue ;
-#  @lstring mTemplateName ;
-#  @templateExpressionListAST mOutExpressionList ;
-#}
  
 #---------------------------------------------------------------------------*
 #   B O O L E A N    O P E R A T I O N S                                    *

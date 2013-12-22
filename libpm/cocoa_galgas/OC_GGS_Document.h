@@ -36,8 +36,8 @@
 //---------------------------------------------------------------------------*
 
 @interface OC_GGS_Document : NSDocument <NSTextViewDelegate, NSSplitViewDelegate, NSWindowDelegate> {
-  @private IBOutlet NSSplitView * mIssueSplitView ;
-  @private IBOutlet NSSplitView * mBuildAndSourceSplitView ;
+  @private IBOutlet NSSplitView * mFirstSplitView ;
+  @private IBOutlet NSSplitView * mSecondSplitView ;
 
   @private IBOutlet NSView * mSourceHostView ;
   
@@ -75,7 +75,7 @@
 //--- Search view
   @private IBOutlet NSView * mSearchView ;
   @private IBOutlet NSButton * mCaseSensitiveSearchCheckbox ;
-  @private IBOutlet NSTextField * mGlobalSearchTextField ;
+  @private IBOutlet NSSearchField * mGlobalSearchTextField ;
   @private IBOutlet NSTextField * mOccurenceFoundCountTextField ;
   @private IBOutlet NSMatrix * mSearchMatrix ;
   @private IBOutlet NSOutlineView * mResultOutlineView ;
@@ -95,6 +95,10 @@
 
 - (IBAction) closeSearchAndReplaceView: (id) inSender ;
 - (IBAction) globalFindAction: (id) inSender ;
+
+- (void) updateSearchResultForFile: (NSString *) inFilePath
+         previousRange: (NSRange) inPreviousRange
+         changeInLength: (NSInteger) inChangeInLength ; 
 
 - (OC_GGS_TextDisplayDescriptor *) findOrAddNewTabForFile: (NSString *) inDocumentPath ;
 

@@ -55,6 +55,7 @@
 		CF2382D4124D126000A57965 /* C_galgas_function_descriptor.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2382CF124D126000A57965 /* C_galgas_function_descriptor.cpp */; };
 		CF26963C127C6829006DC98C /* targetGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF269638127C6829006DC98C /* targetGeneration.cpp */; };
 		CF26963D127C6829006DC98C /* targetGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF269638127C6829006DC98C /* targetGeneration.cpp */; };
+		CF273B09186741EF00DD528D /* PMSearchResultDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = CF273B08186741EF00DD528D /* PMSearchResultDescriptor.m */; };
 		CF27F1E11279FE7A0068C230 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF27F1DD1279FE7A0068C230 /* C_galgas_CLI_Options.cpp */; };
 		CF27F1E21279FE7A0068C230 /* C_galgas_CLI_Options.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF27F1DD1279FE7A0068C230 /* C_galgas_CLI_Options.cpp */; };
 		CF2A85F214E5BDB100C52116 /* C_FileManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF2A85F114E5BDB100C52116 /* C_FileManager.cpp */; };
@@ -680,6 +681,8 @@
 		CF24DF09114C29F300ACF6DE /* GALGAS_object.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_object.cpp; sourceTree = "<group>"; };
 		CF269638127C6829006DC98C /* targetGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = targetGeneration.cpp; sourceTree = "<group>"; };
 		CF269639127C6829006DC98C /* targetGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = targetGeneration.h; sourceTree = "<group>"; };
+		CF273B07186741EF00DD528D /* PMSearchResultDescriptor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PMSearchResultDescriptor.h; sourceTree = "<group>"; };
+		CF273B08186741EF00DD528D /* PMSearchResultDescriptor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PMSearchResultDescriptor.m; sourceTree = "<group>"; };
 		CF27F1DD1279FE7A0068C230 /* C_galgas_CLI_Options.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_galgas_CLI_Options.cpp; sourceTree = "<group>"; };
 		CF27F1DE1279FE7A0068C230 /* C_galgas_CLI_Options.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_galgas_CLI_Options.h; sourceTree = "<group>"; };
 		CF2A85F114E5BDB100C52116 /* C_FileManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_FileManager.cpp; sourceTree = "<group>"; };
@@ -1446,13 +1449,15 @@
 				CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */,
 				CFAE5B1910024AA50068DEC9 /* enterDefaultCommandLineOptions.h */,
 				CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */,
-				CF59565A15C81988000E6B8B /* OC_GGS_DocumentData.h */,
-				CF59565B15C81988000E6B8B /* OC_GGS_DocumentData.m */,
 				CF13F1181861CD5700A875A4 /* PMTableViewRefusesFirstResponder.h */,
 				CF13F1191861CD5700A875A4 /* PMTableViewRefusesFirstResponder.m */,
+				CF59565A15C81988000E6B8B /* OC_GGS_DocumentData.h */,
+				CF59565B15C81988000E6B8B /* OC_GGS_DocumentData.m */,
 				CFFE6C8E14861DFB00FD9FF8 /* OC_GGS_Document.xib */,
 				CF82597308536A130077AEAF /* OC_GGS_Document.h */,
 				CF82597408536A130077AEAF /* OC_GGS_Document.m */,
+				CF273B07186741EF00DD528D /* PMSearchResultDescriptor.h */,
+				CF273B08186741EF00DD528D /* PMSearchResultDescriptor.m */,
 				CFFCE7BB14686081009DB6D5 /* PMIssueDescriptor.h */,
 				CFFCE7BC14686081009DB6D5 /* PMIssueDescriptor.m */,
 				CF9DE67C15C8766600D44EE3 /* OC_GGS_RulerViewForBuildOutput.h */,
@@ -2681,6 +2686,7 @@
 				CFCAEE67160E5D3D0081F715 /* OC_GGS_ApplicationDelegate.m in Sources */,
 				CFBF7006179ACAD400789D8A /* PMUndoManager.m in Sources */,
 				CF13F11A1861CD5700A875A4 /* PMTableViewRefusesFirstResponder.m in Sources */,
+				CF273B09186741EF00DD528D /* PMSearchResultDescriptor.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
