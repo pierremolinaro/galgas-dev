@@ -9,9 +9,9 @@ extern @complex {
   "  private : double mReal ;\n"
   "  private : double mImaginary ;\n"
 }{
-  constructor new ??@double ??@double -> @complex ;
-  reader real ->@double ;
-  reader imaginary ->@double ;
+  constructor new ??@double real ??@double imaginary -> @complex ;
+  reader real -> @double ;
+  reader imaginary -> @double ;
 }
 
 #---------------------------------------------------------------------------*
