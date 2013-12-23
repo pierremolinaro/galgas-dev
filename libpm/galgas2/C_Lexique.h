@@ -81,6 +81,9 @@ class C_Lexique : public C_Compiler {
   protected : cToken * mCurrentTokenPtr ;
   protected : void enterTokenFromPointer (cToken * inToken) ;
 
+//--- Handle 'here' in GALGAS
+//  public : virtual GALGAS_location here (void) const ;
+
 //--- Current character
   protected : utf32 mCurrentChar ;
 

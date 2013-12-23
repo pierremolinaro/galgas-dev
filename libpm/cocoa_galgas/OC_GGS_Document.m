@@ -199,8 +199,8 @@
     options:0
     context:NULL
   ] ;
-//---
-  [mSourceFilePathTextField
+//--- 
+  [mSourceFilePathControl
     bind:@"value"
     toObject:mSourceDisplayArrayController
     withKeyPath:@"selection.sourceURL.path"
@@ -369,7 +369,7 @@
     [subview removeFromSuperview] ;
   }
 //---
-  [mSourceFilePathTextField
+  [mSourceFilePathControl
     unbind:@"value"
   ] ;
 //---
@@ -611,6 +611,23 @@
     const NSRange r = {[tdd.documentData locationForLineInSource:inLine], 0} ;
     [tdd setSelectionRangeAndMakeItVisible:r] ;
   }
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) actionPathControl: (id) inSender {
+  NSArray * cells = mSourceFilePathControl.pathComponentCells ;
+  NSCell * clickedCell = mSourceFilePathControl.clickedPathComponentCell ;
+  NSUInteger clickedCellIndex = [cells indexOfObject:clickedCell] ;
+  // NSLog (@"%lu", clickedCellIndex) ;
+  NSMutableString * rootPath = [NSMutableString new] ;
+  for (NSUInteger i=0 ; i<clickedCellIndex ; i++) {
+    [rootPath appendFormat:@"/%@", [[cells objectAtIndex:i] title]] ;
+  }
+  // NSLog (@"path '%@'", path) ;
+  NSWorkspace * ws = [NSWorkspace sharedWorkspace] ;
+  NSString * path = [NSString stringWithFormat:@"%@/%@", rootPath, [[cells objectAtIndex:clickedCellIndex] title]] ; 
+  [ws selectFile:path inFileViewerRootedAtPath:rootPath] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -920,7 +937,27 @@
 
 //---------------------------------------------------------------------------*
 
-- (IBAction) actionBuild: (id) inUnusedSender {
+- (IBAction) actionBuildSelected: (id) inUnusedSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  OC_GGS_TextDisplayDescriptor * tdd = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
+  [self compileFileAtPath:tdd.sourceURL.path] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) actionBuildFirst: (id) inUnusedSender {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  OC_GGS_TextDisplayDescriptor * tdd = [mDisplayDescriptorArray objectAtIndex:0] ;
+  [self compileFileAtPath:tdd.sourceURL.path] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) compileFileAtPath: (NSString *) inFilePath {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
@@ -941,7 +978,10 @@
   }
 //---
   [OC_GGS_DocumentData broadcastIssueArray:nil] ;
-  mBuildTask = [[OC_GGS_BuildTask alloc] initWithDocument:self] ;
+  mBuildTask = [[OC_GGS_BuildTask alloc]
+    initWithDocument:self
+    filePath:inFilePath
+  ] ;
   self.mBuildTaskIsRunning = YES ;
 //---
    NSDictionary * defaultDictionary = [NSDictionary dictionaryWithObjectsAndKeys:
@@ -950,7 +990,7 @@
     nil
   ] ;
   NSAttributedString * attributedString = [[NSAttributedString alloc]
-    initWithString:[NSString stringWithFormat:@"Compiling %@…\n", self.fileURL.path.lastPathComponent]
+    initWithString:[NSString stringWithFormat:@"Compiling %@…\n", inFilePath.lastPathComponent]
     attributes:defaultDictionary
   ] ;
   [mOutputTextView.textStorage setAttributedString:attributedString] ;

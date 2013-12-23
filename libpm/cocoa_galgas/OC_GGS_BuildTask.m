@@ -28,7 +28,8 @@
 
 //---------------------------------------------------------------------------*
 
-- (OC_GGS_BuildTask *) initWithDocument: (OC_GGS_Document *) inDocument {
+- (OC_GGS_BuildTask *) initWithDocument: (OC_GGS_Document *) inDocument
+                       filePath: (NSString *) inFilePath {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
@@ -56,7 +57,7 @@
     }else{
       NSMutableArray * arguments = [NSMutableArray new] ;
       [arguments addObjectsFromArray:[commandLineArray subarrayWithRange:NSMakeRange (1, [commandLineArray count]-1)]] ;
-      [arguments addObject:inDocument.fileURL.path] ;
+      [arguments addObject:inFilePath] ;
       [arguments addObject:@"--cocoa"] ;
    //--- Create task
       mTask = [NSTask new] ;
