@@ -598,8 +598,17 @@
 							<array class="NSMutableArray" key="NSMenuItems">
 								<object class="NSMenuItem" id="206713656">
 									<reference key="NSMenu" ref="475820896"/>
-									<string key="NSTitle">Build</string>
+									<string key="NSTitle">Build First</string>
 									<string key="NSKeyEquiv">b</string>
+									<int key="NSKeyEquivModMask">1048576</int>
+									<int key="NSMnemonicLoc">2147483647</int>
+									<reference key="NSOnImage" ref="950411432"/>
+									<reference key="NSMixedImage" ref="850908681"/>
+								</object>
+								<object class="NSMenuItem" id="686707666">
+									<reference key="NSMenu" ref="475820896"/>
+									<string key="NSTitle">Build Selected</string>
+									<string key="NSKeyEquiv">B</string>
 									<int key="NSKeyEquivModMask">1048576</int>
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="950411432"/>
@@ -2148,14 +2157,6 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">actionBuild:</string>
-						<reference key="source" ref="945557785"/>
-						<reference key="destination" ref="206713656"/>
-					</object>
-					<int key="connectionID">595</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">actionGotoLine:</string>
 						<reference key="source" ref="945557785"/>
 						<reference key="destination" ref="509144036"/>
@@ -2249,6 +2250,22 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<reference key="destination" ref="764064012"/>
 					</object>
 					<int key="connectionID">1526</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">actionBuildFirst:</string>
+						<reference key="source" ref="945557785"/>
+						<reference key="destination" ref="206713656"/>
+					</object>
+					<int key="connectionID">1529</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">actionBuildSelected:</string>
+						<reference key="source" ref="945557785"/>
+						<reference key="destination" ref="686707666"/>
+					</object>
+					<int key="connectionID">1530</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -2869,6 +2886,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<array class="NSMutableArray" key="children">
 							<reference ref="509144036"/>
 							<reference ref="206713656"/>
+							<reference ref="686707666"/>
 						</array>
 						<reference key="parent" ref="93293219"/>
 					</object>
@@ -3532,6 +3550,11 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<reference key="object" ref="114374785"/>
 						<reference key="parent" ref="572744647"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">1527</int>
+						<reference key="object" ref="686707666"/>
+						<reference key="parent" ref="475820896"/>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -3618,6 +3641,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 				<string key="1516.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1517.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="1518.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
+				<string key="1527.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="156.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="157.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
 				<string key="158.IBPluginDependency">com.apple.InterfaceBuilder.CocoaPlugin</string>
@@ -3709,7 +3733,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1526</int>
+			<int key="maxID">1530</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -3884,7 +3908,8 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 					<string key="className">OC_GGS_Document</string>
 					<string key="superclassName">NSDocument</string>
 					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="actionBuild:">id</string>
+						<string key="actionBuildFirst:">id</string>
+						<string key="actionBuildSelected:">id</string>
 						<string key="actionComment:">id</string>
 						<string key="actionGotoLine:">id</string>
 						<string key="actionShiftLeft:">id</string>
@@ -3903,8 +3928,12 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<string key="stopBuild:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="actionBuild:">
-							<string key="name">actionBuild:</string>
+						<object class="IBActionInfo" key="actionBuildFirst:">
+							<string key="name">actionBuildFirst:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="actionBuildSelected:">
+							<string key="name">actionBuildSelected:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="actionComment:">

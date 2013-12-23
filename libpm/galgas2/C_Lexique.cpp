@@ -1484,6 +1484,13 @@ void C_Lexique::generateIndexFile (void) {
 
 //---------------------------------------------------------------------------*
 
+/*GALGAS_location C_Lexique::here (void) const {
+  macroValidSharedObject (mCurrentTokenPtr, cToken) ;
+  return GALGAS_location (mCurrentTokenPtr->mStartLocation, mCurrentTokenPtr->mEndLocation, sourceText ()) ;
+}*/
+
+//---------------------------------------------------------------------------*
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark ========= Handling Parsing context
 #endif

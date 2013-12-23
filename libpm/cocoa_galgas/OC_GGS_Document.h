@@ -55,7 +55,7 @@
   @private OC_GGS_DocumentData * mDocumentData ;
   @private NSArray * mDisplayDescriptorArray ;
   @private IBOutlet NSTableView * mDisplayDescriptorTableView ;
-  @private IBOutlet NSTextField * mSourceFilePathTextField ;
+  @private IBOutlet NSPathControl * mSourceFilePathControl ;
 
 //--- "Goto Line" sheet
   @private IBOutlet NSWindow * mGotoWindow ;
@@ -106,6 +106,8 @@
 
 - (IBAction) collapseIssuesAction: (id) inSender ;
 
+- (IBAction) actionPathControl: (id) inSender ;
+
 - (IBAction) actionGotoLine: (id) inSender ;
 
 - (IBAction) actionComment: (id) sender ;
@@ -113,7 +115,8 @@
 - (IBAction) actionShiftLeft: (id) sender  ;
 - (IBAction) actionShiftRight: (id) sender ;
 
-- (IBAction) actionBuild: (id) sender ;
+- (IBAction) actionBuildFirst: (id) sender ;
+- (IBAction) actionBuildSelected: (id) sender ;
 - (IBAction) stopBuild: (id) sender ;
 
 - (NSString *) sourceStringForGlobalSearch ;

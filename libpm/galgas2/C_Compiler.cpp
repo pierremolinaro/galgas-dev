@@ -434,12 +434,14 @@ onTheFlyRunTimeError (const C_String & inRunTimeErrorMessage
 //---------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark ========= GALGAS 2 here
+  #pragma mark ========= here
 #endif
 
 //---------------------------------------------------------------------------*
 
 GALGAS_location C_Compiler::here (void) const {
+//  macroValidSharedObject (mCurrentTokenPtr, cTokenFor_galgas_5F_scanner) ;
+//  GALGAS_location currentLocation (mCurrentTokenPtr->mStartLocation, mCurrentTokenPtr->mEndLocation, sourceText ()) ;
   return GALGAS_location (mCurrentLocation, mCurrentLocation, mSourceTextPtr) ;
 }
 
