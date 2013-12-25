@@ -179,6 +179,12 @@
     withKeyPath:@"arrangedObjects.boldDisplay"
     options:nil
   ] ;
+  [[mResultOutlineView tableColumnWithIdentifier:@"result"]
+    bind:@"textColor"
+    toObject:mFoundEntryTreeController
+    withKeyPath:@"arrangedObjects.color"
+    options:nil
+  ] ;
 //---
   [mSourceDisplayArrayController
     bind:@"contentArray"
@@ -425,6 +431,9 @@
   [[mResultOutlineView tableColumnWithIdentifier:@"result"]
     unbind:@"fontBold"
   ] ;
+  [[mResultOutlineView tableColumnWithIdentifier:@"result"]
+    unbind:@"textColor"
+  ] ;
 //---
   NSUserDefaults * ud = [NSUserDefaults standardUserDefaults] ;
   [ud
@@ -628,6 +637,36 @@
   NSWorkspace * ws = [NSWorkspace sharedWorkspace] ;
   NSString * path = [NSString stringWithFormat:@"%@/%@", rootPath, [[cells objectAtIndex:clickedCellIndex] title]] ; 
   [ws selectFile:path inFileViewerRootedAtPath:rootPath] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) copyFilePath: (id) inSender {
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
+  NSString * filePath = selectedObject.sourceURL.path ;
+  NSPasteboard * pasteboard = [NSPasteboard generalPasteboard] ;
+  [pasteboard clearContents] ;
+  [pasteboard writeObjects:[NSArray arrayWithObject:filePath]] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) copyFileName: (id) inSender {
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
+  NSString * fileName = selectedObject.sourceURL.path.lastPathComponent ;
+  NSPasteboard * pasteboard = [NSPasteboard generalPasteboard] ;
+  [pasteboard clearContents] ;
+  [pasteboard writeObjects:[NSArray arrayWithObject:fileName]] ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (IBAction) copyFileDirectory: (id) inSender {
+  OC_GGS_TextDisplayDescriptor * selectedObject = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
+  NSString * fileDirectory = selectedObject.sourceURL.path.stringByDeletingLastPathComponent ;
+  NSPasteboard * pasteboard = [NSPasteboard generalPasteboard] ;
+  [pasteboard clearContents] ;
+  [pasteboard writeObjects:[NSArray arrayWithObject:fileDirectory]] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1501,7 +1540,11 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 //---------------------------------------------------------------------------*
 
 - (void) actionOpenFromSelectionInNewWindow: (id) sender {
-  NSString * newDocumentPath = [self fileNameFromSelection] ;
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  NSString * newDocumentPath = self.fileNameFromSelection ;
+  //NSLog (@"%@", newDocumentPath) ;
   NSError * error = nil ;
   NSDocument * doc = [[NSDocumentController sharedDocumentController]
     openDocumentWithContentsOfURL:[NSURL fileURLWithPath:newDocumentPath]
@@ -1515,11 +1558,11 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
 
 //---------------------------------------------------------------------------*
 
-- (void) actionOpenQuickly: (id) sender {
+- (void) actionOpenFromSelection: (id) sender {
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s", __PRETTY_FUNCTION__) ;
   #endif
-  [self findOrAddNewTabForFile:[self fileNameFromSelection]] ;
+  [self findOrAddNewTabForFile:self.fileNameFromSelection] ;
 }
 
 //---------------------------------------------------------------------------*
@@ -1840,8 +1883,13 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
     NSString * filePath = d.filePath ;
     if (nil != filePath) {
       OC_GGS_TextDisplayDescriptor * tdd = [self findOrAddNewTabForFile:filePath] ;
-      [tdd setSelectionRangeAndMakeItVisible:d.range] ;
-      [mResultOutlineView.window makeFirstResponder:mResultOutlineView] ;
+      const NSRange range = d.range ;
+      if ((range.location + range.length) > 0) {
+        [tdd setSelectionRangeAndMakeItVisible:range] ;
+        [mResultOutlineView.window makeFirstResponder:mResultOutlineView] ;
+      }else if (nil == d.children) {
+        NSBeep () ;
+      }
     }
   }
 }

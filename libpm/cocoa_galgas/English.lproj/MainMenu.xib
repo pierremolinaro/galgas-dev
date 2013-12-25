@@ -224,7 +224,7 @@
 								</object>
 								<object class="NSMenuItem" id="829245688">
 									<reference key="NSMenu" ref="142073635"/>
-									<string key="NSTitle">Open From Selection in Tab</string>
+									<string key="NSTitle">Open From Selection</string>
 									<string key="NSKeyEquiv">d</string>
 									<int key="NSKeyEquivModMask">1048576</int>
 									<int key="NSMnemonicLoc">2147483647</int>
@@ -234,8 +234,7 @@
 								<object class="NSMenuItem" id="1012961251">
 									<reference key="NSMenu" ref="142073635"/>
 									<string key="NSTitle">Open From Selection in New Window</string>
-									<string key="NSKeyEquiv">d</string>
-									<int key="NSKeyEquivModMask">1310720</int>
+									<string key="NSKeyEquiv"/>
 									<int key="NSMnemonicLoc">2147483647</int>
 									<reference key="NSOnImage" ref="950411432"/>
 									<reference key="NSMixedImage" ref="850908681"/>
@@ -2149,14 +2148,6 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
-						<string key="label">actionOpenQuickly:</string>
-						<reference key="source" ref="945557785"/>
-						<reference key="destination" ref="829245688"/>
-					</object>
-					<int key="connectionID">403</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
 						<string key="label">actionGotoLine:</string>
 						<reference key="source" ref="945557785"/>
 						<reference key="destination" ref="509144036"/>
@@ -2170,14 +2161,6 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<reference key="destination" ref="778931080"/>
 					</object>
 					<int key="connectionID">1492</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBActionConnection" key="connection">
-						<string key="label">actionCloseTab:</string>
-						<reference key="source" ref="945557785"/>
-						<reference key="destination" ref="460499144"/>
-					</object>
-					<int key="connectionID">1499</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -2266,6 +2249,38 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<reference key="destination" ref="686707666"/>
 					</object>
 					<int key="connectionID">1530</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">actionOpenFromSelection:</string>
+						<reference key="source" ref="945557785"/>
+						<reference key="destination" ref="829245688"/>
+					</object>
+					<int key="connectionID">1531</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">actionOpenFromSelectionInNewWindow:</string>
+						<reference key="source" ref="945557785"/>
+						<reference key="destination" ref="1012961251"/>
+					</object>
+					<int key="connectionID">1532</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">revealInFinderAction:</string>
+						<reference key="source" ref="945557785"/>
+						<reference key="destination" ref="290043976"/>
+					</object>
+					<int key="connectionID">1533</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBActionConnection" key="connection">
+						<string key="label">closeAction:</string>
+						<reference key="source" ref="945557785"/>
+						<reference key="destination" ref="460499144"/>
+					</object>
+					<int key="connectionID">1534</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBActionConnection" key="connection">
@@ -3733,33 +3748,33 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">1530</int>
+			<int key="maxID">1534</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
 				<object class="IBPartialClassDescription">
 					<string key="className">FirstResponder</string>
 					<dictionary class="NSMutableDictionary" key="actions">
-						<string key="centerSelectionInVisibleArea:">id</string>
-						<string key="paste:">id</string>
-						<string key="performFindPanelAction:">id</string>
-						<string key="redo:">id</string>
+						<string key="actionOpenFromSelection:">id</string>
+						<string key="actionOpenFromSelectionInNewWindow:">id</string>
+						<string key="closeAction:">id</string>
+						<string key="revealInFinderAction:">id</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="actionInfosByName">
-						<object class="IBActionInfo" key="centerSelectionInVisibleArea:">
-							<string key="name">centerSelectionInVisibleArea:</string>
+						<object class="IBActionInfo" key="actionOpenFromSelection:">
+							<string key="name">actionOpenFromSelection:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="paste:">
-							<string key="name">paste:</string>
+						<object class="IBActionInfo" key="actionOpenFromSelectionInNewWindow:">
+							<string key="name">actionOpenFromSelectionInNewWindow:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="performFindPanelAction:">
-							<string key="name">performFindPanelAction:</string>
+						<object class="IBActionInfo" key="closeAction:">
+							<string key="name">closeAction:</string>
 							<string key="candidateClassName">id</string>
 						</object>
-						<object class="IBActionInfo" key="redo:">
-							<string key="name">redo:</string>
+						<object class="IBActionInfo" key="revealInFinderAction:">
+							<string key="name">revealInFinderAction:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 					</dictionary>
@@ -3912,6 +3927,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<string key="actionBuildSelected:">id</string>
 						<string key="actionComment:">id</string>
 						<string key="actionGotoLine:">id</string>
+						<string key="actionPathControl:">id</string>
 						<string key="actionShiftLeft:">id</string>
 						<string key="actionShiftRight:">id</string>
 						<string key="actionUncomment:">id</string>
@@ -3919,6 +3935,9 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<string key="closeOthersAction:">id</string>
 						<string key="closeSearchAndReplaceView:">id</string>
 						<string key="collapseIssuesAction:">id</string>
+						<string key="copyFileDirectory:">id</string>
+						<string key="copyFileName:">id</string>
+						<string key="copyFilePath:">id</string>
 						<string key="duplicateSourceAction:">id</string>
 						<string key="globalFindAction:">id</string>
 						<string key="globalReplaceAllAction:">id</string>
@@ -3942,6 +3961,10 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						</object>
 						<object class="IBActionInfo" key="actionGotoLine:">
 							<string key="name">actionGotoLine:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="actionPathControl:">
+							<string key="name">actionPathControl:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="actionShiftLeft:">
@@ -3970,6 +3993,18 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						</object>
 						<object class="IBActionInfo" key="collapseIssuesAction:">
 							<string key="name">collapseIssuesAction:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="copyFileDirectory:">
+							<string key="name">copyFileDirectory:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="copyFileName:">
+							<string key="name">copyFileName:</string>
+							<string key="candidateClassName">id</string>
+						</object>
+						<object class="IBActionInfo" key="copyFilePath:">
+							<string key="name">copyFilePath:</string>
 							<string key="candidateClassName">id</string>
 						</object>
 						<object class="IBActionInfo" key="duplicateSourceAction:">
@@ -4018,7 +4053,7 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 						<string key="mSearchMatrix">NSMatrix</string>
 						<string key="mSearchView">NSView</string>
 						<string key="mSecondSplitView">NSSplitView</string>
-						<string key="mSourceFilePathTextField">NSTextField</string>
+						<string key="mSourceFilePathControl">NSPathControl</string>
 						<string key="mSourceHostView">NSView</string>
 						<string key="mStartBuildButton">NSButton</string>
 						<string key="mStopBuildButton">NSButton</string>
@@ -4090,9 +4125,9 @@ AAEAAQAAAT0AAwAAAAEAAgAAAVIAAwAAAAEAAQAAAVMAAwAAAAIAAQABAAAAAA</bytes>
 							<string key="name">mSecondSplitView</string>
 							<string key="candidateClassName">NSSplitView</string>
 						</object>
-						<object class="IBToOneOutletInfo" key="mSourceFilePathTextField">
-							<string key="name">mSourceFilePathTextField</string>
-							<string key="candidateClassName">NSTextField</string>
+						<object class="IBToOneOutletInfo" key="mSourceFilePathControl">
+							<string key="name">mSourceFilePathControl</string>
+							<string key="candidateClassName">NSPathControl</string>
 						</object>
 						<object class="IBToOneOutletInfo" key="mSourceHostView">
 							<string key="name">mSourceHostView</string>

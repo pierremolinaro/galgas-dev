@@ -16,6 +16,7 @@
   @private NSRange mRange ;
   @private NSString * mFilePath ;
   @private NSArray * mEntryArray ;
+  @private NSColor * mColor ;
 }
 
 - (PMSearchResultDescriptor *) initWithLine: (NSString *) inLine
@@ -30,6 +31,8 @@
 - (NSString *) filePath ;
 
 - (NSString *) countString ;
+
+- (NSColor *) color ;
 
 - (NSRange) range ;
 

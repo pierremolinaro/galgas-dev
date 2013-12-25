@@ -23,6 +23,7 @@
     mFoundItem = inLine ;
     mRange = inRange ;
     mFilePath = inFilePath.copy ;
+    mColor = [NSColor blackColor] ;
   }
   return self ;
 }
@@ -36,6 +37,7 @@
     mFoundItem = inFilePath.copy ;
     mEntryArray = inEntryArray ;
     mFilePath = inFilePath.copy ;
+    mColor = [NSColor blackColor] ;
   }
   return self ;
 }
@@ -78,22 +80,39 @@
 
 //---------------------------------------------------------------------------*
 
+- (NSColor *) color {
+  return mColor ;
+}
+
+//---------------------------------------------------------------------------*
+
 - (void) updateSearchResultForFile: (NSString *) inFilePath
          previousRange: (NSRange) inPreviousRange
          changeInLength: (NSInteger) inChangeInLength {
   // NSLog (@"mFilePath %@, inFilePath %@", mFilePath, inFilePath) ;
-  if (nil == mFilePath) {
-    for (PMSearchResultDescriptor * d in mEntryArray) {
-      [d
-        updateSearchResultForFile:inFilePath
-        previousRange:inPreviousRange
-        changeInLength:inChangeInLength
-      ] ;
-    }
-  }else if ([mFilePath isEqualToString:inFilePath]) {
+  if ((nil != mFilePath) && [mFilePath isEqualToString:inFilePath] && ((mRange.location + mRange.length) > 0)) {
+    // NSLog (@"mRange [%lu, %lu], inPreviousRange [%lu, %lu], inChangeInLength %ld", mRange.location, mRange.length, inPreviousRange.location, inPreviousRange.length, inChangeInLength) ;
     if ((inPreviousRange.location + inPreviousRange.length) <= mRange.location) { // Change before
       mRange.location += (NSUInteger) inChangeInLength ;
+      // NSLog (@" - Change before -> mRange [%lu, %lu]", mRange.location, mRange.length) ;
+    }else if (inPreviousRange.location > (mRange.location + mRange.length)) { // Change after
+      // NSLog (@" - Change after") ;
+    }else{ // Change within
+      mRange.location = 0 ;
+      mRange.length = 0 ;
+      // NSLog (@" - Change within -> mRange [%lu, %lu]", mRange.location, mRange.length) ;
+      [self willChangeValueForKey:@"mColor"] ;
+        mColor = [NSColor redColor] ;
+      [self didChangeValueForKey:@"mColor"] ;
     }
+  }
+//---
+  for (PMSearchResultDescriptor * d in mEntryArray) {
+    [d
+      updateSearchResultForFile:inFilePath
+      previousRange:inPreviousRange
+      changeInLength:inChangeInLength
+    ] ;
   }
 }
 

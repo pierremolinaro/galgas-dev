@@ -19,7 +19,7 @@
 semantics syntaxSignature :
 import "semanticsCompilation.gSemantics" ;
 import "lexiqueCompilation.gSemantics" ;
-
+    
 #---------------------------------------------------------------------------*
 #                                                                           *
 #    S Y N T A X    S I G N A T U R E                                       *
@@ -29,7 +29,7 @@ import "lexiqueCompilation.gSemantics" ;
 method @semanticInstructionForGeneration appendSyntaxSignature # Capture all semantic instructions
   ??@string unused inPosfix
   ?!@semanticInstructionListForGeneration unused ioInstructionListForGeneration
-:
+ :
 end method ;
 
 #---------------------------------------------------------------------------*
