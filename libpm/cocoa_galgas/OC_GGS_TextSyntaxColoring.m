@@ -271,7 +271,6 @@
     [self computeMaxLineHeight:NULL] ;
   //--- Enter source string
     [mSourceTextStorage beginEditing] ;
-   // NSLog (@"mSourceTextStorage.length %lu, inSource '%@'", mSourceTextStorage.length, inSource) ;
     [mSourceTextStorage replaceCharactersInRange:NSMakeRange (0, mSourceTextStorage.length) withString:inSource] ;
     [mSourceTextStorage endEditing] ;
   //---
@@ -528,6 +527,7 @@
   #endif
   // NSLog (@"inEditedRange %lu:%lu, inChangeInLength %ld", inEditedRange.location, inEditedRange.length, inChangeInLength) ;
   const NSRange previousRange = {inEditedRange.location, inEditedRange.length - (NSUInteger) inChangeInLength} ;
+  // NSLog (@"mIssueArray %@", mIssueArray) ;
   for (PMIssueDescriptor * issue in mIssueArray) {
     [issue updateLocationForPreviousRange:previousRange changeInLength:inChangeInLength] ;
   }
@@ -535,13 +535,17 @@
   for (OC_GGS_TextDisplayDescriptor * textDisplay in mTextDisplayDescriptorSet) {
     [textDisplay setTextDisplayIssueArray:mIssueArray] ; 
   }
-//---
-  for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
-    [doc
-      updateSearchResultForFile:self.documentData.fileURL.path
-      previousRange:previousRange
-      changeInLength:inChangeInLength
-    ] ; 
+//--- mIssueArray is nil on init, so this prevent search result to be changed
+//    by insertion of file contents
+  if (nil != mIssueArray) {
+  
+    for (OC_GGS_Document * doc in [[NSDocumentController sharedDocumentController] documents]) {
+      [doc
+        updateSearchResultForFile:self.documentData.fileURL.path
+        previousRange:previousRange
+        changeInLength:inChangeInLength
+      ] ; 
+    }
   }
 }
 

@@ -590,10 +590,14 @@ static inline NSUInteger imax (const NSUInteger a, const NSUInteger b) { return 
 
 - (void) setSelectionRangeAndMakeItVisible: (NSRange) inRange {
   #ifdef DEBUG_MESSAGES
-    NSLog (@"%s [%lu, %lu]", __PRETTY_FUNCTION__, inRange.location, inRange.length) ;
+    NSLog (@"%s [%lu, %lu], source length %lu", __PRETTY_FUNCTION__, inRange.location, inRange.length, mTextView.string.length) ;
   #endif
-  [mTextView setSelectedRange:inRange] ;
-  [mTextView scrollRangeToVisible:inRange] ;
+  NSRange range = inRange ;
+  if (NSMaxRange (inRange) >= mTextView.string.length) {
+    range = NSMakeRange (mTextView.string.length, 0) ;
+  }
+  [mTextView setSelectedRange:range] ;
+  [mTextView scrollRangeToVisible:range] ;
   [mTextView.window makeFirstResponder:mTextView] ;
   #ifdef DEBUG_MESSAGES
     NSLog (@"%s:DONE", __PRETTY_FUNCTION__) ;
