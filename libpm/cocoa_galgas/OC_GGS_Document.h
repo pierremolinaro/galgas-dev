@@ -35,7 +35,7 @@
 
 //---------------------------------------------------------------------------*
 
-@interface OC_GGS_Document : NSDocument <NSTextViewDelegate, NSSplitViewDelegate, NSWindowDelegate> {
+@interface OC_GGS_Document : NSDocument <NSTextViewDelegate, NSSplitViewDelegate, NSWindowDelegate, NSTableViewDataSource> {
   @private IBOutlet NSSplitView * mFirstSplitView ;
   @private IBOutlet NSSplitView * mSecondSplitView ;
 
