@@ -563,15 +563,14 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
   // NSLog (@"mTextMacroMenu %@", mTextMacroMenu) ;
   NSArray * tokenizerArray = tokenizers () ;
   NSUInteger macroCount = 0 ;
-  for (NSUInteger i=0 ; i<[tokenizerArray count] ; i++) {
-    OC_Lexique * tokenizer = [tokenizerArray objectAtIndex:i] ;
+  for (OC_Lexique * tokenizer in tokenizerArray) {
     macroCount += [tokenizer textMacroCount] ;
   }
   if (macroCount == 0) {
     NSMenu * mainMenu = [NSApp mainMenu] ;
     [mainMenu removeItemAtIndex:[mainMenu indexOfItemWithSubmenu:mTextMacroMenu]];
   }else{
-    for (NSUInteger i=0 ; i<[tokenizerArray count] ; i++) {
+    for (NSUInteger i=0 ; i<tokenizerArray.count ; i++) {
       OC_Lexique * tokenizer = [tokenizerArray objectAtIndex:i] ;
       for (NSUInteger j=0 ; j<[tokenizer textMacroCount] ; j++) {
         NSString * title = [tokenizer textMacroTitleAtIndex:j] ;

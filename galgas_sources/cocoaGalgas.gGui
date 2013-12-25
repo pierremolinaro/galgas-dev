@@ -65,21 +65,12 @@ with lexique "galgas_scanner.gLexique" {
   textMacro "Types/Class" :
     "class @aClassName : extends @superClassName {\n"
     "  @aType mAnAttribute ;\n"
-    "  override method myMethod !@string outResult :\n"
-    "    outResult := \"a string\" ;\n"
-    "  end method ;\n"
     "}\n"
   ;
   
   textMacro "Types/Enum" :
     "enum @aType {\n"
-    "  constructor constant1 ;\n"
-    "  constructor constant2 ;\n"
-    "}{\n"
-    "  reader actualArgumentMessage :\n"
-    "    constant1 -> \"message for constant1\" ;\n"
-    "    constant2 -> \"message for constant2\" ;\n"
-    "  end reader ;\n"
+    "  constant1, constant2\n"
     "}\n"
   ;
   

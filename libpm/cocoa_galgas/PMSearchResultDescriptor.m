@@ -15,6 +15,10 @@
 
 //---------------------------------------------------------------------------*
 
+//#define DEBUG_MESSAGES
+
+//---------------------------------------------------------------------------*
+
 - (PMSearchResultDescriptor *) initWithLine: (NSString *) inLine
     range: (NSRange) inRange
     sourceFilePath: (NSString *) inFilePath {
@@ -36,7 +40,7 @@
   if (self) {
     mFoundItem = inFilePath.copy ;
     mEntryArray = inEntryArray ;
-    mFilePath = inFilePath.copy ;
+    //mFilePath = inFilePath.copy ;
     mColor = [NSColor blackColor] ;
   }
   return self ;
@@ -89,18 +93,28 @@
 - (void) updateSearchResultForFile: (NSString *) inFilePath
          previousRange: (NSRange) inPreviousRange
          changeInLength: (NSInteger) inChangeInLength {
-  // NSLog (@"mFilePath %@, inFilePath %@", mFilePath, inFilePath) ;
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"mFilePath %@, inFilePath %@", mFilePath, inFilePath) ;
+  #endif
   if ((nil != mFilePath) && [mFilePath isEqualToString:inFilePath] && ((mRange.location + mRange.length) > 0)) {
-    // NSLog (@"mRange [%lu, %lu], inPreviousRange [%lu, %lu], inChangeInLength %ld", mRange.location, mRange.length, inPreviousRange.location, inPreviousRange.length, inChangeInLength) ;
+    #ifdef DEBUG_MESSAGES
+      NSLog (@"mRange [%lu, %lu], inPreviousRange [%lu, %lu], inChangeInLength %ld", mRange.location, mRange.length, inPreviousRange.location, inPreviousRange.length, inChangeInLength) ;
+    #endif
     if ((inPreviousRange.location + inPreviousRange.length) <= mRange.location) { // Change before
       mRange.location += (NSUInteger) inChangeInLength ;
-      // NSLog (@" - Change before -> mRange [%lu, %lu]", mRange.location, mRange.length) ;
+      #ifdef DEBUG_MESSAGES
+        NSLog (@" - Change before -> mRange [%lu, %lu]", mRange.location, mRange.length) ;
+      #endif
     }else if (inPreviousRange.location > (mRange.location + mRange.length)) { // Change after
-      // NSLog (@" - Change after") ;
+      #ifdef DEBUG_MESSAGES
+        NSLog (@" - Change after") ;
+      #endif
     }else{ // Change within
       mRange.location = 0 ;
       mRange.length = 0 ;
-      // NSLog (@" - Change within -> mRange [%lu, %lu]", mRange.location, mRange.length) ;
+      #ifdef DEBUG_MESSAGES
+        NSLog (@" - Change within -> mRange [%lu, %lu]", mRange.location, mRange.length) ;
+      #endif
       [self willChangeValueForKey:@"mColor"] ;
         mColor = [NSColor redColor] ;
       [self didChangeValueForKey:@"mColor"] ;
