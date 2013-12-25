@@ -98,6 +98,14 @@
 - (IBAction) globalFindAction: (id) inSender ;
 - (IBAction) globalReplaceAllAction: (id) inSender ;
 
+- (IBAction) copyFilePath: (id) inSender ;
+- (IBAction) copyFileName: (id) inSender ;
+- (IBAction) copyFileDirectory: (id) inSender ;
+
+- (void) actionOpenFromSelectionInNewWindow: (id) sender ;
+- (void) actionOpenFromSelection: (id) sender ;
+- (IBAction) revealInFinderAction: (id) inSender ;
+
 - (void) updateSearchResultForFile: (NSString *) inFilePath
          previousRange: (NSRange) inPreviousRange
          changeInLength: (NSInteger) inChangeInLength ; 
