@@ -71,6 +71,7 @@ override method @terminalCheckInstructionForGeneration appendSyntaxSignature
     !mLexiqueIdentifier
     ![@terminalCheckAssignementList emptyList]
     !mIndexingKeyList
+#    !"" # No location var
   ] ;
 end method ;
 

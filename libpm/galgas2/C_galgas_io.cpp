@@ -173,9 +173,8 @@ PMSInt32 totalWarningCount (void) {
 //                                                                           *
 //---------------------------------------------------------------------------*
 
-C_String
-errorOrWarningLocationString (const C_LocationInSource & inErrorLocation,
-                              const C_SourceTextInString * inSourceTextPtr) {
+C_String errorOrWarningLocationString (const C_LocationInSource & inErrorLocation,
+                                       const C_SourceTextInString * inSourceTextPtr) {
   C_String result ;
   if (inSourceTextPtr != NULL) {
     macroValidSharedObject (inSourceTextPtr, const C_SourceTextInString) ;

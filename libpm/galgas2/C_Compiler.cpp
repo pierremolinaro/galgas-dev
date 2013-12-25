@@ -91,6 +91,8 @@ mTemplateString (),
 mTemplateStringLocation (),
 mSourceTextPtr (NULL),
 mCurrentLocation (),
+mStartLocationForHere (),
+mEndLocationForHere (),
 mCheckedVariableList () {
   macroAssignSharedObject (mCallerCompiler, inCallerCompiler) ;
 }
@@ -170,9 +172,8 @@ void C_Compiler::resetAndLoadSourceFromText (C_SourceTextInString * & ioSourceTe
 
 //---------------------------------------------------------------------------*
 
-void C_Compiler::
-onTheFlySemanticError (const C_String & inErrorMessage
-                       COMMA_LOCATION_ARGS) {
+void C_Compiler::onTheFlySemanticError (const C_String & inErrorMessage
+                                        COMMA_LOCATION_ARGS) {
   signalSemanticError (sourceText (),
                        mCurrentLocation,
                        inErrorMessage
@@ -187,9 +188,8 @@ onTheFlySemanticError (const C_String & inErrorMessage
 
 //---------------------------------------------------------------------------*
 
-void C_Compiler::
-onTheFlySemanticWarning (const C_String & inWarningMessage
-                         COMMA_LOCATION_ARGS) {
+void C_Compiler::onTheFlySemanticWarning (const C_String & inWarningMessage
+                                          COMMA_LOCATION_ARGS) {
   signalSemanticWarning (sourceText (), 
                          mCurrentLocation,
                          inWarningMessage
@@ -425,9 +425,8 @@ void C_Compiler::emitSemanticWarning (const GALGAS_location & inWarningLocation,
 
 //---------------------------------------------------------------------------*
 
-void C_Compiler::
-onTheFlyRunTimeError (const C_String & inRunTimeErrorMessage
-                      COMMA_LOCATION_ARGS) {
+void C_Compiler::onTheFlyRunTimeError (const C_String & inRunTimeErrorMessage
+                                       COMMA_LOCATION_ARGS) {
   signalRunTimeError (inRunTimeErrorMessage COMMA_THERE) ;
 }
 
@@ -440,9 +439,7 @@ onTheFlyRunTimeError (const C_String & inRunTimeErrorMessage
 //---------------------------------------------------------------------------*
 
 GALGAS_location C_Compiler::here (void) const {
-//  macroValidSharedObject (mCurrentTokenPtr, cTokenFor_galgas_5F_scanner) ;
-//  GALGAS_location currentLocation (mCurrentTokenPtr->mStartLocation, mCurrentTokenPtr->mEndLocation, sourceText ()) ;
-  return GALGAS_location (mCurrentLocation, mCurrentLocation, mSourceTextPtr) ;
+  return GALGAS_location (mStartLocationForHere, mEndLocationForHere, mSourceTextPtr) ;
 }
 
 //---------------------------------------------------------------------------*
