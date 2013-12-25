@@ -99,6 +99,8 @@ class C_Compiler : public C_SharedObject {
   public : void loopRunTimeVariantError (LOCATION_ARGS) ;
 
 //--- Handle 'here' in GALGAS
+  protected : C_LocationInSource mStartLocationForHere ; // Set by lexique
+  protected : C_LocationInSource mEndLocationForHere ; // Set by lexique
   public : GALGAS_location here (void) const ;
 
 //--- Source file name

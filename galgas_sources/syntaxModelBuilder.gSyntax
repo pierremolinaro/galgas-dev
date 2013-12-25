@@ -284,12 +284,20 @@ rule <syntax_instruction>
       $,$ ;
     end repeat ;
   end select ;
+#  @lstring terminalLocationConstantName ;
+#  select
+#    terminalLocationConstantName := ["" nowhere] ;
+#  or
+#    $:$ ;
+#     $identifier$ ?terminalLocationConstantName ;
+#  end select ;
   $;$ ;
   outInstruction := [@terminalCheckInstruction new
     ![mTerminalName location]
     !mTerminalName
     !mActualInputParameterList
     !indexNameList
+#    !terminalLocationConstantName
   ] ;
 end rule ;
 

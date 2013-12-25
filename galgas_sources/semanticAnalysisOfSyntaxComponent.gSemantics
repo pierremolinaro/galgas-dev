@@ -289,7 +289,7 @@ override method @nonterminalInstructionForGeneration generateInstruction
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "//-------- @nonterminalInstructionForGeneration\n" ;
+#  ioGeneratedCode .= "//-------- @nonterminalInstructionForGeneration\n" ;
 #--- Parameters
   @stringlist parameterCppNameList [emptyList] ;
   @stringlist jokerParametersToReleaseList [emptyList] ;
@@ -333,8 +333,7 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
   ?!@variableMap ioVariableMap
   ?!@uint unused ioSelectMethodCount
 :
-  @lexicalSentValueList sentAttributeList ;
-  [inTerminalMap searchKey !mTerminalName ?sentAttributeList] ;
+  [inTerminalMap searchKey !mTerminalName ??@lexicalSentValueList sentAttributeList] ;
 #---
   if [mActualInputParameterList length] != [sentAttributeList length] then
     error mTerminalName
@@ -392,12 +391,19 @@ override method @terminalCheckInstruction analyzeSyntaxInstruction
     end if ;
   end foreach ;
 #---
+#  if mTerminalLocationConstantName->string != "" then
+#    const @string cppName := "var_" . [mTerminalLocationConstantName identifierRepresentation] ;
+#    const @unifiedTypeMapProxy type [searchKey !inAnalysisContext->mSemanticContext->mTypeMap !["location" nowhere]] ;
+#    [!?ioVariableMap insertLocalConstant !mTerminalLocationConstantName !type !cppName !cppName] ;
+#  end if ;
+#---
   ioInstructionListForGeneration += ![@terminalCheckInstructionForGeneration new
     !mInstructionLocation
     !mTerminalName
     !inLexiqueName
     !terminalCheckAssignementList
     !mIndexingKeyList
+#    !mTerminalLocationConstantName->string
   ] ;
 end method ;
 
@@ -409,7 +415,7 @@ override method @terminalCheckInstructionForGeneration generateInstruction
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "//-------- @terminalCheckInstructionForGeneration\n" ;
+#  ioGeneratedCode .= "//-------- @terminalCheckInstructionForGeneration\n" ;
 #--- Get synthetized attributes
   foreach mTerminalCheckAssignementList do
     if mTypeName != "" then
@@ -424,6 +430,10 @@ override method @terminalCheckInstructionForGeneration generateInstruction
   foreach mIndexingKeyList do
     ioGeneratedCode .= compilerCppName [] . "->enterIndexing (C_Lexique_" . mLexiqueIdentifier . "::kIndexing_" . [mValue identifierRepresentation] . ") ;\n" ;
   end foreach ;
+#--- Location constant
+#  if mTerminalLocationConstantName != "" then
+#    ioGeneratedCode .= "const GALGAS_location var_" . [mTerminalLocationConstantName identifierRepresentation] . " = " . compilerCppName [] . "->currentTokenLocation () ;\n" ;
+#  end if ;
 #--- Check terminal symbol
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .= compilerCppName [] . "->acceptTerminal (ACCEPT_TERMINAL (C_Lexique_"
@@ -547,7 +557,7 @@ override method @repeatInstructionForGeneration generateInstruction
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "//-------- @repeatInstructionForGeneration\n" ;
+#  ioGeneratedCode .= "//-------- @repeatInstructionForGeneration\n" ;
   const @string repeatFlagCppName := "repeatFlag_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "bool " . repeatFlagCppName . " = true ;\n" ;
   ioGeneratedCode .= "while (" . repeatFlagCppName . ") {\n" ;
@@ -633,7 +643,7 @@ override method @selectInstructionForGeneration generateInstruction
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "//-------- @selectInstructionForGeneration\n" ;
+#  ioGeneratedCode .= "//-------- @selectInstructionForGeneration\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   ioGeneratedCode .= "switch (select_" . [mSyntaxComponentName identifierRepresentation] . "_" . [mChoiceIndex string] . " (" . compilerCppName [] . ")) {\n" ;
   foreach mListOfSemanticInstructionListForGeneration index IDX do
@@ -714,7 +724,7 @@ override method @parseRewindInstructionForGeneration generateInstruction
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "//-------- @parseRewindInstructionForGeneration\n" ;
+#  ioGeneratedCode .= "//-------- @parseRewindInstructionForGeneration\n" ;
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
   const @string parsingContextVar := "parsingContext_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "const C_parsingContext " . parsingContextVar . " = " . compilerCppName [] . "->parsingContext () ;\n" ;
@@ -810,7 +820,7 @@ override method @parseLoopInstructionForGeneration generateInstruction
   ?!@string ioGeneratedCode
 :
   [!?ioUnusedVariableCppNameSet removeKey !compilerCppName []] ;
-  ioGeneratedCode .= "//-------- @parseLoopInstructionForGeneration\n" ;
+#  ioGeneratedCode .= "//-------- @parseLoopInstructionForGeneration\n" ;
 #--- Variant
   @string variantVarCppName ;
   [mVariantExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?variantVarCppName] ;
@@ -939,7 +949,7 @@ override method @parseWhenInstructionForGeneration generateInstruction
   ?!@stringset ioUnusedVariableCppNameSet
   ?!@string ioGeneratedCode
 :
-  ioGeneratedCode .= "//--------- @parseWhenInstructionForGeneration\n" ;
+#  ioGeneratedCode .= "//--------- @parseWhenInstructionForGeneration\n" ;
   @string sourceVar ;
   [mWhenExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?sourceVar] ;
   ioGeneratedCode .= "if (" . sourceVar . ".isValidAndTrue ()) {\n" ;
