@@ -236,6 +236,13 @@
 //---
   mDisplayDescriptorTableView.target = self ;
   mDisplayDescriptorTableView.action = @selector (clickOnSourceTableView:) ;
+  [mDisplayDescriptorTableView setDataSource:self] ;
+  [mDisplayDescriptorTableView
+    registerForDraggedTypes:[NSArray arrayWithObjects:
+      (NSString*)kUTTypeFileURL,
+      nil
+    ]
+  ] ;
 //---
   [mBuildProgressIndicator startAnimation:nil] ;
   NSDictionary * negateTransformer = [NSDictionary
@@ -1935,6 +1942,62 @@ static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
       }
     }
   }
+}
+
+//---------------------------------------------------------------------------*
+
+#pragma mark Drag and Drop in source table View
+
+// http://stackoverflow.com/questions/10308008/nstableview-and-drag-and-drop-from-finder
+
+//---------------------------------------------------------------------------*
+
+- (BOOL) tableView: (NSTableView *)tv
+         writeRowsWithIndexes: (NSIndexSet *) inRowIndexes
+         toPasteboard: (NSPasteboard*) inPasteboard {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  OC_GGS_TextDisplayDescriptor * tdd = [mSourceDisplayArrayController.selectedObjects objectAtIndex:0] ;
+  [inPasteboard declareTypes:[NSArray arrayWithObject:(NSString *)kPasteboardTypeFileURLPromise] owner:self] ;
+  [inPasteboard writeObjects:[NSArray arrayWithObject:tdd.sourceURL]] ;
+  return YES;
+}
+
+//---------------------------------------------------------------------------*
+
+- (NSDragOperation) tableView:(NSTableView*)tv
+                    validateDrop:(id <NSDraggingInfo>)info
+                    proposedRow:(NSInteger)row
+                    proposedDropOperation:(NSTableViewDropOperation)op {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  return NSDragOperationEvery ;
+}
+
+//---------------------------------------------------------------------------*
+
+- (BOOL) tableView: (NSTableView *)aTableView
+         acceptDrop: (id <NSDraggingInfo>)info
+         row: (NSInteger) inRow
+         dropOperation:(NSTableViewDropOperation)operation {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  NSURL * fileURL = [NSURL URLFromPasteboard:info.draggingPasteboard] ;
+//---
+  OC_GGS_DocumentData * documentData = [self findOrAddDocumentWithPath:fileURL.path] ;
+  if (nil != documentData) { // Find a text display descriptor
+    OC_GGS_TextDisplayDescriptor * tdd = [[OC_GGS_TextDisplayDescriptor alloc]
+      initWithDocumentData:documentData
+      displayDocument:self
+    ] ;
+    [mSourceDisplayArrayController insertObject:tdd atArrangedObjectIndex:(NSUInteger) inRow] ;
+    [mSourceDisplayArrayController setSelectedObjects:[NSArray arrayWithObject:tdd]] ;
+    [self registerConfigurationInPreferences] ;
+  }
+  return YES ;
 }
 
 //---------------------------------------------------------------------------*
