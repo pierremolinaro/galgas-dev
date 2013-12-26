@@ -14,7 +14,7 @@ GALGAS définit les sous-programmes suivants :
   \item les \emph{modifiers} (\refSectionPage{categoryModifier}).
 \end{itemize}
 
-En GALGAS, \emph{méthodes}, \emph{readers} et \emph{modifiers} s'appliquent sur un objet d'un type quelconque (qui n'est donc pas forcément un type \emph{classe}). Pour les types définis par le programmeur, \emph{méthodes}, \emph{readers} et \emph{modifiers} sont toujours déclarés en dehors de la déclaration du type auquel ils s'appliquent.
+En GALGAS, \emph{méthodes}, \emph{readers} et \emph{modifiers} s'appliquent sur un objet d'un type quelconque (qui n'est donc pas forcément un type \emph{classe}). Pour les types définis par l'utilisateur, \emph{méthodes}, \emph{readers} et \emph{modifiers} sont toujours déclarés en dehors de la déclaration du type auquel ils s'appliquent.
 
 Un sous-programme peut donc être directement déclaré dans :
 \begin{itemize}
@@ -52,7 +52,9 @@ Un sous-programme peut donc être directement déclaré dans :
 
 \subsection{Argument formel en entrée}
 
-\begin{table}[ht]
+Le \refTableau{ArgumentFormelEntree} liste les différentes formes d'un argument formel en entrée. Le paramètre effectif correspondant est une expression précédée par \galgas{\!}.
+
+\begin{table}[!ht]
   \centering
   \subfloat[Argument formel]{
     \begin{tabular}{ll}
@@ -82,7 +84,9 @@ Un sous-programme peut donc être directement déclaré dans :
 
 \subsection{Argument formel en entrée/sortie}
 
-\begin{table}[ht]
+Le \refTableau{ArgumentFormelEntreeSortie} liste les différentes formes d'un argument formel en entrée. Le paramètre effectif correspondant est une \emph{cible} précédée par \galgas{\!\?}. Une \emph{cible} est soit une variable, soit l'accès à un champ d'une variable de type \galgas{struct}.
+
+\begin{table}[!ht]
   \centering
   \subfloat[Argument formel]{
     \begin{tabular}{ll}
@@ -108,7 +112,7 @@ Un sous-programme peut donc être directement déclaré dans :
 
 \subsection{Argument formel en sortie}
 
-\begin{table}[ht]
+\begin{table}[!ht]
   \centering
   \subfloat[Argument formel]{
     \begin{tabular}{ll}
