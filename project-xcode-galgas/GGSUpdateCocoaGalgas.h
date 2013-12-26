@@ -46,6 +46,12 @@
   
   @private PMDownloadData * mDownloadData ;
   @private PMDownloadFile * mDownloadFile ;
+
+//--- Create new project
+  @private IBOutlet NSTextView * mResultTextView ;
+  @private NSTask * mTask ;
+  @private NSPipe * mPipe ;
+  @private NSMutableData * mResultData ;
 }
 
 - (IBAction) checkForNewVersion: (id) inSender ;
