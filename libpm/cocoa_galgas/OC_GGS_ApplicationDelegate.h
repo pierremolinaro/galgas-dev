@@ -109,17 +109,6 @@ extern OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 //--- Changing all fonts
   @private NSArray * mCurrentFontArray ;
 
-//--- "Run" Window
-  @private IBOutlet NSWindow * mRunWindow ;
-
-  @private IBOutlet NSTextView * mRunTextView ;
-
-//--- 'Run' Button
-  @private NSButton * mRunButton ;
-
-//--- Task for 'Run' command
-  @private NSTask * mTask ;
-
 //--- Command line option
   @private NSMutableArray * mBoolOptionArray ;
   @private NSMutableArray * mUIntOptionArray ;
@@ -133,8 +122,6 @@ extern OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
 - (IBAction) clearSourceDocumentPreferencesEntries: (id) inSender ;
 
 - (IBAction) setTextRulerVisible: (id) inSender ;
-
-- (IBAction) runActionFromPreferences: (id) inSender ;
 
 - (IBAction) showAllocationWindow: (id) inSender ;
 

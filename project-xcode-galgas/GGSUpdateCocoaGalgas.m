@@ -162,7 +162,17 @@
   [prefsTabView addTabViewItem:tabViewItem] ;
   NSURL * url = [NSURL URLWithString:@"http://galgas.rts-software.org/download/changeLog.html"] ;
   [[mChangeLogInPreferencePaneWebView mainFrame] loadRequest:[NSURLRequest requestWithURL:url]];
-//--- Check for new version  
+//----------------------------------------- Add "Create new project" menu item
+  NSMenuItem * mi = [[NSMenuItem alloc]
+    initWithTitle:@"New Project…"
+    action:@selector (createNewProjectAction:)
+    keyEquivalent:@""
+  ] ;
+  mi.target = self ;
+  NSMenu * menubar = [NSApplication sharedApplication].mainMenu ;
+  NSMenu * fileMenu = [menubar itemWithTitle:@"File"].submenu ;
+  [fileMenu insertItem:mi atIndex:0] ;
+//----------------------------------------- Check for new version  
   [self checkForNewVersion:nil] ;
 }
 
@@ -828,6 +838,103 @@
       didEndSelector:NULL
       contextInfo:NULL
     ] ;
+  }
+}
+
+//--------------------------------------------------------------------------*
+
+#pragma mark Create a new project
+
+//--------------------------------------------------------------------------*
+
+- (void) createNewProjectAction: (id) inSender {
+  NSSavePanel * op = [NSSavePanel savePanel] ;
+  op.title = @"Create a new GALGAS Project" ;
+  op.canCreateDirectories = YES ;
+  op.message = @"Enter New Project Directory:" ;
+  [op beginWithCompletionHandler: ^(NSInteger inResult) {
+    if (NSFileHandlingPanelOKButton == inResult) {
+      NSURL * directory = op.directoryURL ;
+      NSString * projectName = op.nameFieldStringValue ;
+      NSString * option = [NSString stringWithFormat:
+        @"--create-project=%@/%@",
+        directory.path,
+        projectName
+      ] ;
+      [self launchTaskWithOption:option] ;
+    }
+  }] ;
+}
+
+//------------------------------------------------------------------*
+
+- (void) launchTaskWithOption: (NSString *) inOption {
+  NSArray * commandLineArray = [gCocoaApplicationDelegate commandLineItemArray] ;
+//--- Command line tool does actually exist ? (First argument is not "?")
+  if ([[commandLineArray objectAtIndex:0] isEqualToString:@"?"]) {
+    NSAlert * alert = [NSAlert alertWithMessageText:@"Error"
+      defaultButton: nil
+      alternateButton: nil
+      otherButton: nil
+      informativeTextWithFormat:@"No command line Tool is currently embedded by application."
+    ] ;
+    [alert
+      beginSheetModalForWindow:nil
+      modalDelegate:nil
+      didEndSelector:0
+      contextInfo:NULL
+    ] ;
+  }else{
+ //--- Create task
+    mTask = [NSTask new] ;
+    [mTask setLaunchPath:[commandLineArray objectAtIndex:0]] ;
+    [mTask setArguments:[NSArray arrayWithObject:inOption]] ;
+    // NSLog (@"'%@' %@", [mTask launchPath], arguments) ;
+  //--- Set standard output notification
+    mPipe = [NSPipe pipe] ;
+    [mTask setStandardOutput:mPipe] ;
+    [mTask setStandardError:mPipe] ;
+    mResultData = [NSMutableData new] ;
+  //---
+    [[NSNotificationCenter defaultCenter]
+      addObserver:self
+      selector:@selector (getDataFromTaskOutput:)
+      name:NSFileHandleReadCompletionNotification
+      object:[mPipe fileHandleForReading]
+    ] ;
+    [mPipe.fileHandleForReading readInBackgroundAndNotify] ;
+  //--- Start task
+    [mTask launch] ;
+  //---
+    mResultTextView.string = @"" ;
+    [mResultTextView.window makeKeyAndOrderFront:nil] ;
+  }
+}
+
+//---------------------------------------------------------------------------*
+
+- (void) getDataFromTaskOutput: (NSNotification *) inNotification {
+  #ifdef DEBUG_MESSAGES
+    NSLog (@"%s", __PRETTY_FUNCTION__) ;
+  #endif
+  NSData * data = [[inNotification userInfo] objectForKey:NSFileHandleNotificationDataItem];
+  if (data.length > 0) {
+    [mResultData appendData:data] ;
+    [inNotification.object readInBackgroundAndNotify] ;
+  }else{
+    [[NSNotificationCenter defaultCenter]
+      removeObserver:self
+      name:NSFileHandleReadCompletionNotification
+      object:[mPipe fileHandleForReading]
+    ] ;
+    [[mPipe fileHandleForReading] closeFile] ;
+    mTask = nil ;
+    mPipe = nil ;
+    mResultTextView.string = [[NSString alloc]
+      initWithData:mResultData 
+      encoding:NSUTF8StringEncoding
+    ] ;
+    mResultData = nil ;
   }
 }
 
