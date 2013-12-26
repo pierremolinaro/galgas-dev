@@ -39,7 +39,7 @@ project all_galgas (2:5:4) -> "galgas" :
 
 #--- Project Creation
   semantics "projectCreation.gSemantics" ;
- 
+
 #--- Template
   lexique   "galgasTemplateScanner.gLexique" ;
   semantics "templateTypesForAST.gSemantics" ;
