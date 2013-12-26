@@ -576,7 +576,7 @@ OC_GGS_ApplicationDelegate * gCocoaApplicationDelegate ;
         NSString * title = [tokenizer textMacroTitleAtIndex:j] ;
         NSArray * components = [title componentsSeparatedByString:@"/"] ;
         [self
-          insertTextMacroWithIndex:i
+          insertTextMacroWithIndex:j
           titleComponents:components
           intoMenu:mTextMacroMenu
         ] ;

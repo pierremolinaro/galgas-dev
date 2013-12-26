@@ -100,7 +100,7 @@ with lexique "galgas_scanner.gLexique" {
     "  @string mFirstAttribute ;\n"
     "  @bool mSecondAttribute ;\n"
     "}{\n"
-    "mFirstAttribute >, mSecondAttribute <\n"
+    "  mFirstAttribute >, mSecondAttribute <\n"
     "}\n"
   ;
   
