@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 45;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -2029,7 +2029,7 @@
 				ORGANIZATIONNAME = IRCCyN;
 			};
 			buildConfigurationList = CF0DA6A4085630E800F38E67 /* Build configuration list for PBXProject "galgas-developer" */;
-			compatibilityVersion = "Xcode 3.2";
+			compatibilityVersion = "Xcode 3.1";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (

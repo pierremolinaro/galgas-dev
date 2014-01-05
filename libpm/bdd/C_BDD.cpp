@@ -1366,7 +1366,7 @@ mArray (outArray) {
 
 void cBuildArrayForSet::action (const bool inValuesArray [],
                                 const PMUInt32 inBDDbitsSize) {
-  PMSInt32 element = 0L ;
+  PMSInt32 element = 0 ;
   for (PMSInt32 i=((PMSInt32) inBDDbitsSize) - 1 ; i>=0 ; i--) {
     element = (element << 1) + inValuesArray [i] ;
   }
@@ -1590,11 +1590,10 @@ mBitsSize1 (inBitsSize1) {
 
 //---------------------------------------------------------------------------*
 
-void cBuildArrayForRelation2::
-action (const bool inValuesArray [],
-        const PMUInt32 inBDDbitsSize) {
-  PMSInt32 index1 = 0L ;
-  PMSInt32 index2 = 0L ;
+void cBuildArrayForRelation2::action (const bool inValuesArray [],
+                                      const PMUInt32 inBDDbitsSize) {
+  PMSInt32 index1 = 0 ;
+  PMSInt32 index2 = 0 ;
   for (PMSInt32 i=((PMSInt32) mBitsSize1) - 1 ; i>=0 ; i--) {
     index1 = (index1 << 1) + inValuesArray [i] ;
   }

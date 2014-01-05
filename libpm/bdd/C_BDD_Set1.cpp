@@ -184,7 +184,7 @@ mArray (outArray) {
 
 void cBuildArrayForSet1::action (const bool inValuesArray [],
                                  const PMUInt32 inBDDbitsSize) {
-  PMSInt32 element = 0L ;
+  PMSInt32 element = 0 ;
   for (PMSInt32 i=((PMSInt32) inBDDbitsSize) - 1 ; i>=0 ; i--) {
     element = (element << 1) + inValuesArray [i] ;
   }

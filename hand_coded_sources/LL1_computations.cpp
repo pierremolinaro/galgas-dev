@@ -243,7 +243,7 @@ aIndice (0) {
 
 void cEcrireNonTerminal::action (const bool tableauDesValeurs [],
                                  const PMUInt32 nombreVariables) {
-  PMSInt32 element = 0L ;
+  PMSInt32 element = 0 ;
   for (PMSInt32 i=((PMSInt32) nombreVariables) - 1 ; i>=0 ; i--) {
     element = (element << 1) + tableauDesValeurs [i] ;
   }
