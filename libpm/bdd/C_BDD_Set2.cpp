@@ -331,11 +331,10 @@ mBitsSize1 (inBitsSize1) {
 
 //---------------------------------------------------------------------------*
 
-void cBuildArrayForSet2::
-action (const bool inValuesArray [],
-        const PMUInt32 inBDDbitsSize) {
-  PMSInt32 index1 = 0L ;
-  PMSInt32 index2 = 0L ;
+void cBuildArrayForSet2::action (const bool inValuesArray [],
+                                 const PMUInt32 inBDDbitsSize) {
+  PMSInt32 index1 = 0 ;
+  PMSInt32 index2 = 0 ;
   for (PMSInt32 i=((PMSInt32) mBitsSize1) - 1 ; i>=0 ; i--) {
     index1 = (index1 << 1) + inValuesArray [i] ;
   }
