@@ -38,6 +38,26 @@ void GALGAS_complex::description (C_String & ioString,
 
 //---------------------------------------------------------------------------*
 
+typeComparisonResult GALGAS_complex::objectCompare (const GALGAS_complex & inOperand) const {
+  typeComparisonResult result = kOperandNotValid ;
+  if (isValid () && inOperand.isValid ()) {
+    if (mReal < inOperand.mReal) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mReal > inOperand.mReal) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else if (mImaginary < inOperand.mImaginary) {
+      result = kFirstOperandLowerThanSecond ;
+    }else if (mImaginary > inOperand.mImaginary) {
+      result = kFirstOperandGreaterThanSecond ;
+    }else{
+      result = kOperandEqual ;
+    }  
+  }
+  return result ;
+}
+
+//---------------------------------------------------------------------------*
+
 GALGAS_complex GALGAS_complex::constructor_new (const GALGAS_double & inReal,
                                                 const GALGAS_double & inImaginary,
                                                 C_Compiler * /* inCompiler */
