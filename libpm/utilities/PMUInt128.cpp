@@ -6,7 +6,7 @@
 //                                                                           *
 //  Copyright (C) 2012, ..., 2012 Pierre Molinaro.                           *
 //                                                                           *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                             *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
 //                                                                           *
