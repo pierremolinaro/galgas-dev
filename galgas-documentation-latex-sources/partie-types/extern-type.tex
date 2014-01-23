@@ -6,11 +6,11 @@
 
 %-------------------------------------------------------------
 
-Un type \galgas{extern} est déclaré et spécifié en GALGAS, et implémenté en C++. Ceci permet de définir des types qui seraient difficilement exprimables en GALGAS. 
+Un type \galgas{extern} est déclaré et spécifié en GALGAS, et implémenté par une classe C++. Ceci permet de définir des types qui seraient difficilement exprimables en GALGAS.
 
 On va voir sur un exemple comment déclarer et implémenter :
 \begin{itemize}
-  \item un type externe basique ;
+  \item un type externe minimum ;
   \item un constructeur ;
   \item un \emph{modifier} ;
   \item une \emph{méthode} ;
@@ -18,8 +18,37 @@ On va voir sur un exemple comment déclarer et implémenter :
   \item une \emph{méthode} de classe.
 \end{itemize}
 
+L'exemple consiste à implémenter le type \galgas{@complex} qui représente les nombres complexes.
 
-\section{Type externe basique}
+\section{Type externe minimum}
+
+L'implémentation minimum ne sera pas opérationnelle, car elle ne comprendra pas de constructeur : on ne pourra donc pas instancier d'objet du type \galgas{@complex}. L'ajout de constructeur sera présenté à la section suivante. De même, cette implémentation minimum ne définira ni \emph{modifier}, ni \emph{méthode}, ni \emph{reader}.
+
+
+\subsection{Déclaration en GALGAS}
+
+La description minimum est la suivante :
+\begin{galgascode}
+extern @complex {
+  "// No Predeclaration\n"
+}{
+  "  private : bool mIsValid ;\n"
+  "  private : double mReal ;\n"
+  "  private : double mImaginary ;\n"
+}{
+}
+\end{galgascode}
+
+Cette description est divisée en trois parties, délimitées par les accolades \galgas{\{} et \galgas{\}}.
+
+\textbf{Première partie.} Elle cite une séquence de chaînes de caractères, qui seront écrites telles quelles dans le fichier d'en-tête C++ engendré, juste avant la déclaration de la classe C++ ; on peut y placer là des pré-déclarations de classe, des inclusions de fichier, … Pour le type \galgas{@complex}, aucune pré-déclaration n'est nécessaire, aussi on place un simple commentaire C++, de façon à le localiser dans le fichier d'en-tête C++ engendré.
+
+\subsection{Implémentation en C++}
+
+
+
+
+
 
 \section{Constructeur}
 

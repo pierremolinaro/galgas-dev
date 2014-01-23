@@ -1,6 +1,6 @@
 //---------------------------------------------------------------------------*
 //                                                                           *
-//  unicode_string_routines: this file implements PMUInt32 * string routines,  *
+//  unicode_string_routines: this file implements PMUInt32 * string routines,*
 //  that are in direct correspondance with char * C string routines of C     *
 //  library.                                                                 *
 //                                                                           *
@@ -8,7 +8,7 @@
 //                                                                           *
 //  Copyright (C) 2008, ..., 2008 Pierre Molinaro.                           *
 //                                                                           *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                             *
 //                                                                           *
 //  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
 //  ECN, Ecole Centrale de Nantes (France)                                   *
