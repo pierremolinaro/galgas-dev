@@ -3,9 +3,10 @@
 //%!["@" . TYPE_NAME . " extern type" stringByLeftAndRightPadding !75 !' ']%*
 //                                                                           *
 //---------------------------------------------------------------------------*
+//  Predeclarations (from GALGAS extern type declaration                     *
+//---------------------------------------------------------------------------*
 
 %!PRE_DECLARATION%
-
 //---------------------------------------------------------------------------*
 
 class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
@@ -20,6 +21,6 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
   public : virtual void description (C_String & ioString,
                                      const PMSInt32 inIndentation) const ;
 
-//--- Code (from declaration)
+//--- Code (from GALGAS extern type declaration)
 %!CODE%
 
