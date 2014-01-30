@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 cMapElement_%!TYPE_IDENTIFIER%::cMapElement_%!TYPE_IDENTIFIER% (%?^%const GALGAS_lstring & inKey%
   foreach ATTRIBUTE_LIST
@@ -13,7 +13,7 @@ end foreach
 % {
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 bool cMapElement_%!TYPE_IDENTIFIER%::isValid (void) const {
   return mAttribute_lkey.isValid ()%
@@ -23,7 +23,7 @@ bool cMapElement_%!TYPE_IDENTIFIER%::isValid (void) const {
   % ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 cMapElement * cMapElement_%!TYPE_IDENTIFIER%::copy (void) {
   cMapElement * result = NULL ;
@@ -35,7 +35,7 @@ cMapElement * cMapElement_%!TYPE_IDENTIFIER%::copy (void) {
   return result ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 %if [ATTRIBUTE_LIST length] == 0 then
   %void cMapElement_%!TYPE_IDENTIFIER%::description (C_String & /* ioString */, const PMSInt32 /* inIndentation */) const {\n%
@@ -50,7 +50,7 @@ else
 end if
 %}
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 typeComparisonResult cMapElement_%!TYPE_IDENTIFIER%::compare (const cCollectionElement * inOperand) const {
   cMapElement_%!TYPE_IDENTIFIER% * operand = (cMapElement_%!TYPE_IDENTIFIER% *) inOperand ;
@@ -63,26 +63,26 @@ typeComparisonResult cMapElement_%!TYPE_IDENTIFIER%::compare (const cCollectionE
 %  return result ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 AC_GALGAS_map () {
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const GALGAS_%!TYPE_IDENTIFIER% & inSource) :
 AC_GALGAS_map (inSource) {
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% & GALGAS_%!TYPE_IDENTIFIER%::operator = (const GALGAS_%!TYPE_IDENTIFIER% & inSource) {
   * ((AC_GALGAS_map *) this) = inSource ;
   return * this ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCATION_ARGS) {
   GALGAS_%!TYPE_IDENTIFIER% result ;
@@ -90,7 +90,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCAT
   return result ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_mapWithMapToOverride (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inMapToOverride
                                                    %!^%COMMA_LOCATION_ARGS) {
@@ -99,7 +99,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_mapWithMapToOve
   return result ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_overriddenMap (%?^%C_Compiler * inCompiler\n%
         !^%COMMA_LOCATION_ARGS) const {
@@ -108,7 +108,7 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_overriddenMap (%?^%C
   return result ;
 }
 %foreach INSERT_METHOD_LIST do
-  %//---------------------------------------------------------------------------*\n\n%
+  %//-----------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mInsertMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
     foreach ATTRIBUTE_LIST
       do index IDX %,\n%!^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inArgument%![IDX string]
@@ -133,9 +133,9 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::reader_overriddenMap (%?^%C
 end foreach
 
 foreach SEARCH_METHOD_LIST do
-  %//---------------------------------------------------------------------------*\n\n%
+  %//-----------------------------------------------------------------------------*\n\n%
   %const char * kSearchErrorMessage_%!TYPE_IDENTIFIER%_%![mSearchMethodName identifierRepresentation]% = %![mErrorMessage utf8Representation]% ;\n\n%
-  %//---------------------------------------------------------------------------*\n\n%
+  %//-----------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::method_%![mSearchMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
     foreach ATTRIBUTE_LIST
       do index IDX %,\n%!^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outArgument%![IDX string]
@@ -163,7 +163,7 @@ end foreach
 
 
 foreach REMOVE_METHOD_LIST do
-  %//---------------------------------------------------------------------------*\n\n%
+  %//-----------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::modifier_%![mMethodName identifierRepresentation]% (%?^%GALGAS_lstring inKey%
     foreach ATTRIBUTE_LIST
       do index IDX %,\n%!^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & outArgument%![IDX string]
@@ -186,7 +186,7 @@ foreach REMOVE_METHOD_LIST do
 end foreach
 
 if HAS_INSERT_OR_REPLACE then
-  %//---------------------------------------------------------------------------*\n\n%
+  %//-----------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::modifier_insertOrReplace (%?^%GALGAS_lstring inKey%
   foreach ATTRIBUTE_LIST
     do index IDX %,\n%!^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inArgument%![IDX string]
@@ -206,7 +206,7 @@ if HAS_INSERT_OR_REPLACE then
 end if
 
 foreach ATTRIBUTE_LIST do index IDX
-  %//---------------------------------------------------------------------------*\n\n%
+  %//-----------------------------------------------------------------------------*\n\n%
   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]%ForKey (%?^%const GALGAS_string & inKey,\n%
   %                                               %!^%C_Compiler * inCompiler\n%
   %                                               %!^%COMMA_LOCATION_ARGS) const {\n%
@@ -222,7 +222,7 @@ foreach ATTRIBUTE_LIST do index IDX
 end foreach 
 
 foreach ATTRIBUTE_LIST do index IDX
-  %//---------------------------------------------------------------------------*\n\n%
+  %//-----------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]%ForKey (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inAttributeValue,\n%
   %                           %!^%GALGAS_string inKey,\n%
   %                           %!^%C_Compiler * inCompiler\n%
@@ -237,7 +237,7 @@ foreach ATTRIBUTE_LIST do index IDX
 end foreach 
 
 foreach WITH_ACCESSOR_MAP do
-  %//---------------------------------------------------------------------------*\n\n%
+  %//-----------------------------------------------------------------------------*\n\n%
   %cMapElement_%!TYPE_IDENTIFIER% * GALGAS_%!TYPE_IDENTIFIER%::readWriteAccessForWithInstruction_%![lkey identifierRepresentation]% (%?^%C_Compiler * inCompiler,\n%
   !^%const GALGAS_%![mArgumentType identifierRepresentation]% & inKey\n%
   !^%COMMA_LOCATION_ARGS) {\n%
@@ -251,7 +251,7 @@ foreach WITH_ACCESSOR_MAP do
   %  return result ;\n%
   %}\n\n%
 end foreach
-%//---------------------------------------------------------------------------*
+%//-----------------------------------------------------------------------------*
 
 cEnumerator_%!TYPE_IDENTIFIER%::cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
                        %!^%const typeEnumerationOrder inOrder) :
@@ -259,7 +259,7 @@ cGenericAbstractEnumerator () {
   inEnumeratedObject.populateEnumerationArray (mEnumerationArray, inOrder) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%_2E_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
   const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
@@ -271,7 +271,7 @@ end foreach
 %) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 GALGAS_lstring cEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
@@ -280,7 +280,7 @@ GALGAS_lstring cEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) cons
 }
 
 %foreach ATTRIBUTE_LIST do index IDX
-  %//---------------------------------------------------------------------------*\n\n%
+  %//-----------------------------------------------------------------------------*\n\n%
   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
   %  macroValidSharedObject (p, const cMapElement_%!TYPE_IDENTIFIER%) ;\n%

@@ -1,8 +1,8 @@
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //%!["Category method '@" . CLASS_NAME . " " . METHOD_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 typedef void (*categoryMethodSignature_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%) (%?^
 %const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
@@ -21,12 +21,12 @@ typedef void (*categoryMethodSignature_%![CLASS_NAME identifierRepresentation]%_
   %,\n%!^%C_Compiler * inCompiler%
   %\n %!^%COMMA_LOCATION_ARGS) ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void enterCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const PMSInt32 inClassIndex,
                %!^%categoryMethodSignature_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% inMethod) ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void callCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   foreach FORMAL_ARGUMENT_LIST do

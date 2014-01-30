@@ -321,9 +321,9 @@ if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
 } ; // End of GALGAS_%!TYPE_IDENTIFIER% class
 
 %if [ENUMERATION_DESCRIPTOR_LIST length] > 0 then
-%//---------------------------------------------------------------------------*
+%//-----------------------------------------------------------------------------*
 //   Enumerator declaration                                                  *
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 class cEnumerator_%!TYPE_IDENTIFIER% : public cGenericAbstractEnumerator {
   public : cEnumerator_%!TYPE_IDENTIFIER% (%?^%const GALGAS_%!TYPE_IDENTIFIER% & inEnumeratedObject,
@@ -340,7 +340,7 @@ class cEnumerator_%!TYPE_IDENTIFIER% : public cGenericAbstractEnumerator {
 %} ;\n%
 end if
 %
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ;
 

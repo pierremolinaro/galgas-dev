@@ -1,32 +1,32 @@
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //  Pure BNF grammar vocabulary                                              *
-//                                                                           *
-//  Copyright (C) 1999, ..., 2010 Pierre Molinaro.                           *
+//                                                                             *
+//  Copyright (C) 1999, ..., 2010 Pierre Molinaro.                             *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-//  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
-//  ECN, Ecole Centrale de Nantes (France)                                   *
-//                                                                           *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
+//  ECN, École Centrale de Nantes (France)                                     *
+//                                                                             *
 //  This program is free software; you can redistribute it and/or modify it  *
 //  under the terms of the GNU General Public License as published by the    *
 //  Free Software Foundation.                                                *
-//                                                                           *
-//  This program is distributed in the hope it will be useful, but WITHOUT   *
-//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-//  more details.                                                            *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//  This program is distributed in the hope it will be useful, but WITHOUT     *
+//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or      *
+//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for   *
+//  more details.                                                              *
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 #include "utilities/MF_MemoryControl.h"
 #include "files/C_TextFileWrite.h"
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #include "cVocabulary.h"
 #include "grammarCompilation.h"
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 cVocabulary::cVocabulary (void) :
 mStringsArray (),
@@ -36,12 +36,12 @@ mOriginalGrammarSymbolsCount (0),
 mStartSymbol (0) {
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 cVocabulary::~cVocabulary (void) {
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void cVocabulary::
 buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
@@ -84,44 +84,44 @@ buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalS
   mStartSymbol = mTerminalSymbolsCount + (PMSInt32) inOriginalGrammarStartSymbol ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMSInt32 cVocabulary::getEmptyStringTerminalSymbolIndex (void) const {
   return mTerminalSymbolsCount - 1 ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_String cVocabulary::getSymbol (const PMSInt32 inSymbolIndex
                                  COMMA_LOCATION_ARGS) const {
   return mStringsArray (inSymbolIndex COMMA_THERE) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMSInt32 cVocabulary::getStartSymbol (void) const {
   return mStartSymbol ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMSInt32 cVocabulary::getTerminalSymbolsCount (void) const {
   return mTerminalSymbolsCount ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMSInt32 cVocabulary::getAllSymbolsCount (void) const {
   return mStringsArray.count () ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMSInt32 cVocabulary::getNonTerminalSymbolsCount (void) const {
   return mStringsArray.count () - mTerminalSymbolsCount ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void cVocabulary::addNonTerminalSymbol (const char * inPrefix,
                                         const C_String & inClassName,
@@ -136,21 +136,21 @@ void cVocabulary::addNonTerminalSymbol (const char * inPrefix,
   mGenerateChoiceArray.addObject (inGenerateChoice) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void cVocabulary::addAugmentedSymbol (void) {
   mStringsArray.addObject ("") ;
   mGenerateChoiceArray.addObject (false) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 bool cVocabulary::needToGenerateChoice (const PMSInt32 inSymbolIndex
                                         COMMA_LOCATION_ARGS) const {
   return mGenerateChoiceArray (inSymbolIndex COMMA_THERE) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void cVocabulary::printInFile (AC_OutputStream & inHTMLfile,
                                const PMSInt32 inSymbolIndex
@@ -162,4 +162,4 @@ void cVocabulary::printInFile (AC_OutputStream & inHTMLfile,
   }
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*

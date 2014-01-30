@@ -1,33 +1,33 @@
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 // Routines for computing empty string derivations                           *
-//                                                                           *
+//                                                                             *
 //  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-//  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
-//  ECN, Ecole Centrale de Nantes (France)                                   *
-//                                                                           *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
+//  ECN, École Centrale de Nantes (France)                                     *
+//                                                                             *
 //  This program is free software; you can redistribute it and/or modify it  *
 //  under the terms of the GNU General Public License as published by the    *
 //  Free Software Foundation.                                                *
-//                                                                           *
-//  This program is distributed in the hope it will be useful, but WITHOUT   *
-//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-//  more details.                                                            *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//  This program is distributed in the hope it will be useful, but WITHOUT     *
+//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or      *
+//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for   *
+//  more details.                                                              *
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 #include "files/C_HTML_FileWrite.h"
 #include "bdd/C_BDD_Set1.h"
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #include "empty_strings_computations.h"
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static C_BDD_Set1
 computeNonterminalSymbolsHavingEmptyDerivation (const cPureBNFproductionsList & inProductionRules,
@@ -45,7 +45,7 @@ computeNonterminalSymbolsHavingEmptyDerivation (const cPureBNFproductionsList & 
   return nonterminalSymbolsHavingEmptyDerivation ;
 }
   
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static void
 printNonterminalSymbolsHavingEmptyDerivation (const C_BDD_Set1 & inNonterminalSymbolsHavingEmptyDerivation,
@@ -79,7 +79,7 @@ printNonterminalSymbolsHavingEmptyDerivation (const C_BDD_Set1 & inNonterminalSy
   }
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static C_BDD_Set1
 computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProductionRules,
@@ -129,7 +129,7 @@ computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProdu
   return nonTerminauxSeDerivantEnVide ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static void
 printNonterminalDerivingInEmptyString (const C_BDD_Set1 & inVocabularyDerivingToEmpty_BDD,
@@ -180,7 +180,7 @@ printNonterminalDerivingInEmptyString (const C_BDD_Set1 & inVocabularyDerivingTo
   }
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void
 empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
@@ -225,4 +225,4 @@ empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions
                                          inVerboseOptionOn) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*

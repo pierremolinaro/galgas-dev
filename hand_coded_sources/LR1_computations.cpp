@@ -1,24 +1,24 @@
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //     Routines for LR(1) grammar computations                               *
-//                                                                           *
-//  Copyright (C) 2002, ..., 2010 Pierre Molinaro.                           *
-//                                                                           *
+//                                                                             *
+//  Copyright (C) 2002, ..., 2010 Pierre Molinaro.                             *
+//                                                                             *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-//                                                                           *
-//  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
-//  ECN, Ecole Centrale de Nantes (France)                                   *
-//                                                                           *
+//                                                                             *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
+//  ECN, École Centrale de Nantes (France)                                     *
+//                                                                             *
 //  This program is free software; you can redistribute it and/or modify it  *
 //  under the terms of the GNU General Public License as published by the    *
 //  Free Software Foundation.                                                *
-//                                                                           *
-//  This program is distributed in the hope it will be useful, but WITHOUT   *
-//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-//  more details.                                                            *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//  This program is distributed in the hope it will be useful, but WITHOUT     *
+//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or      *
+//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for   *
+//  more details.                                                              *
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 #include "files/C_HTML_FileWrite.h"
 #include "files/C_TextFileWrite.h"
@@ -26,7 +26,7 @@
 #include "galgas2/C_Compiler.h"
 #include "collections/TC_UniqueArray2.h"
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #include "LR1_computations.h"
 #include "cPureBNFproductionsList.h"
@@ -34,11 +34,11 @@
 #include "cDecisionTableElement.h"
 #include "grammarCompilation.h"
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //    C L A S S    F O R   L R 1    I T E M                                  *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 static PMUInt32
 computeHashCode (const PMSInt32 inProductionRuleIndex,
@@ -50,7 +50,7 @@ computeHashCode (const PMSInt32 inProductionRuleIndex,
   return h ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 class c_LR1_item {
   public : const PMSInt32 mLocationIndex ;
@@ -73,7 +73,7 @@ class c_LR1_item {
                      const c_LR1_item & inItem2) ;
 } ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMSInt32  c_LR1_item::
 compare_LR1_items (const c_LR1_item & inItem1,
@@ -88,17 +88,17 @@ compare_LR1_items (const c_LR1_item & inItem1,
   return result ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 // C L A S S    F O R   I T E M S    A V L    T R E E                        *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 class cLR1_items_AVL_tree {
   public : cLR1_items_AVL_tree * mPtrToInf ;
@@ -120,7 +120,7 @@ class cLR1_items_AVL_tree {
   private : cLR1_items_AVL_tree & operator = (cLR1_items_AVL_tree &) ;
 } ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 cLR1_items_AVL_tree::
 cLR1_items_AVL_tree (const c_LR1_item & inLR1item) :
@@ -130,18 +130,18 @@ mLR1item (inLR1item),
 mBalance (0) {
 } ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 cLR1_items_AVL_tree::~cLR1_items_AVL_tree (void) {
   macroMyDelete (mPtrToInf) ;
   macroMyDelete (mPtrToSup) ;
 } ;
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //       Rotate left                                                         *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 static void rotateLeft (cLR1_items_AVL_tree * & ioPtr) {
 //--- Rotate 
@@ -160,11 +160,11 @@ static void rotateLeft (cLR1_items_AVL_tree * & ioPtr) {
   ioPtr = ptr ;
 } 
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //       Rotate right                                                        *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 static void rotateRight (cLR1_items_AVL_tree * & ioPtr) {
 //--- Rotate 
@@ -183,7 +183,7 @@ static void rotateRight (cLR1_items_AVL_tree * & ioPtr) {
   ioPtr = ptr ;
 }
  
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 cLR1_items_AVL_tree * cLR1_items_AVL_tree::
 recursiveSearchOrInsertLR1Item (cLR1_items_AVL_tree * & ioRootPointer,
@@ -249,13 +249,13 @@ recursiveSearchOrInsertLR1Item (cLR1_items_AVL_tree * & ioRootPointer,
   return result ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Class cLR1ItemUniqueArray
 #endif
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 class cLR1ItemUniqueArray {
 //--- Default Constructor
@@ -318,7 +318,7 @@ class cLR1ItemUniqueArray {
 
 } ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void swap (cLR1ItemUniqueArray & ioOperand1,
            cLR1ItemUniqueArray & ioOperand2) {
@@ -327,11 +327,11 @@ void swap (cLR1ItemUniqueArray & ioOperand1,
   swap (ioOperand1.mCapacity, ioOperand2.mCapacity) ;
 }
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //   Default Constructor                                                     *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 cLR1ItemUniqueArray::cLR1ItemUniqueArray (void) :
 mArray (NULL),
@@ -339,11 +339,11 @@ mCount (0),
 mCapacity (0) {
 }
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //   Allocation Constructor                                                  *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 cLR1ItemUniqueArray::
 cLR1ItemUniqueArray (const PMSInt32 inAllocatedSize COMMA_LOCATION_ARGS) :
@@ -362,21 +362,21 @@ mCapacity (0) {
   }
 }
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //   Destructor                                                              *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 cLR1ItemUniqueArray::~cLR1ItemUniqueArray (void) {
   delete [] mArray ;
 }
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //   Method for making room using copy                                       *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 void cLR1ItemUniqueArray::makeRoom (const PMSInt32 inNewCapacity) {
   if (mCapacity < inNewCapacity) {
@@ -394,11 +394,11 @@ void cLR1ItemUniqueArray::makeRoom (const PMSInt32 inNewCapacity) {
   }
 }
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //   Remove all objects and deallocate                                       *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 void cLR1ItemUniqueArray::free (void) {
   mCount = 0 ;
@@ -406,11 +406,11 @@ void cLR1ItemUniqueArray::free (void) {
   mCapacity = 0 ;
 }
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //   Add object at the end of the array                                      *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 void cLR1ItemUniqueArray::addObject (const cLR1_items_AVL_tree * inValue) {
   if (mCount >= mCapacity) {
@@ -420,11 +420,11 @@ void cLR1ItemUniqueArray::addObject (const cLR1_items_AVL_tree * inValue) {
   mCount ++ ;
 }
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //   Check index before insertion                                            *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cLR1ItemUniqueArray::
@@ -434,11 +434,11 @@ void cLR1ItemUniqueArray::addObject (const cLR1_items_AVL_tree * inValue) {
   }
 #endif
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //   Array Access                                                            *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   void cLR1ItemUniqueArray::
@@ -448,7 +448,7 @@ void cLR1ItemUniqueArray::addObject (const cLR1_items_AVL_tree * inValue) {
   }
 #endif
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   const c_LR1_item & cLR1ItemUniqueArray::
@@ -458,7 +458,7 @@ void cLR1ItemUniqueArray::addObject (const cLR1_items_AVL_tree * inValue) {
   }
 #endif
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   const c_LR1_item & cLR1ItemUniqueArray::
@@ -468,17 +468,17 @@ void cLR1ItemUniqueArray::addObject (const cLR1_items_AVL_tree * inValue) {
   }
 #endif
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Class c_LR1_items_set
 #endif
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //    C L A S S    F O R   L R 1    I T E M S    S E T                       *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 class c_LR1_items_set {
 //--- Private data
@@ -547,7 +547,7 @@ class c_LR1_items_set {
   friend void swap (c_LR1_items_set & ioOperand1, c_LR1_items_set & ioOperand2) ;
 } ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 c_LR1_items_set::c_LR1_items_set (void) :
 mItemsSet (),
@@ -556,13 +556,13 @@ mHashCode (0),
 mArrayIsSorted (true) {
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 c_LR1_items_set::~c_LR1_items_set (void) {
   macroMyDelete (mRoot) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void c_LR1_items_set::clear (void) {
   mItemsSet.clear () ;
@@ -570,7 +570,7 @@ void c_LR1_items_set::clear (void) {
   mHashCode = 0 ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void c_LR1_items_set::
 recursiveBuildSortedArray (cLR1_items_AVL_tree * inPointer) {
@@ -581,7 +581,7 @@ recursiveBuildSortedArray (cLR1_items_AVL_tree * inPointer) {
   }
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void c_LR1_items_set::
 add_LR1_item (const PMSInt32 inProductionRuleIndex,
@@ -601,7 +601,7 @@ add_LR1_item (const PMSInt32 inProductionRuleIndex,
   }
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void c_LR1_items_set::
 close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
@@ -654,13 +654,13 @@ close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
   }
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 bool c_LR1_items_set::isEmptySet (void) const {
   return mItemsSet.count () == 0 ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void c_LR1_items_set::
 display (const cPureBNFproductionsList & inProductionRules,
@@ -690,7 +690,7 @@ display (const cPureBNFproductionsList & inProductionRules,
   }
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void c_LR1_items_set::
 getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
@@ -710,7 +710,7 @@ getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
   }
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void c_LR1_items_set::
 getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProductionRules,
@@ -734,7 +734,7 @@ getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProduction
   }  
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMSInt32 c_LR1_items_set::
 compare_LR1_items_sets (c_LR1_items_set & inItemsSet1,
@@ -760,7 +760,7 @@ compare_LR1_items_sets (c_LR1_items_set & inItemsSet1,
   return result ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void swap (c_LR1_items_set & ioOperand1, c_LR1_items_set & ioOperand2) {
   swap (ioOperand1.mItemsSet, ioOperand2.mItemsSet) ;
@@ -769,17 +769,17 @@ void swap (c_LR1_items_set & ioOperand1, c_LR1_items_set & ioOperand2) {
   swap (ioOperand1.mHashCode, ioOperand2.mHashCode) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 // C L A S S    F O R   I T E M S    S E T    A V L    T R E E               *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 class cLR1_items_sets_AVL_tree {
   public : cLR1_items_sets_AVL_tree * mPtrToInf ;
@@ -806,7 +806,7 @@ class cLR1_items_sets_AVL_tree {
   private : cLR1_items_sets_AVL_tree & operator = (cLR1_items_sets_AVL_tree &) ;
 } ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 cLR1_items_sets_AVL_tree::cLR1_items_sets_AVL_tree (const PMSInt32 inInfo) :
 mPtrToInf (NULL),
@@ -815,14 +815,14 @@ mInfoIndex (inInfo),
 mBalance (0) {
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 cLR1_items_sets_AVL_tree::~cLR1_items_sets_AVL_tree (void) {
   macroMyDelete (mPtrToInf) ;
   macroMyDelete (mPtrToSup) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMSInt32 cLR1_items_sets_AVL_tree::
 compare (c_LR1_items_set & in_LR1_items_set,
@@ -830,11 +830,11 @@ compare (c_LR1_items_set & in_LR1_items_set,
   return c_LR1_items_set::compare_LR1_items_sets (in_LR1_items_sets_array (mInfoIndex COMMA_HERE), in_LR1_items_set) ;
 }
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //       Rotate left                                                         *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 static void rotateLeft (cLR1_items_sets_AVL_tree * & ioPtr) {
 //--- Rotate 
@@ -853,11 +853,11 @@ static void rotateLeft (cLR1_items_sets_AVL_tree * & ioPtr) {
   ioPtr = ptr ;
 } 
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //       Rotate right                                                        *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 static void rotateRight (cLR1_items_sets_AVL_tree * & ioPtr) {
 //--- Rotate 
@@ -876,7 +876,7 @@ static void rotateRight (cLR1_items_sets_AVL_tree * & ioPtr) {
   ioPtr = ptr ;
 }
  
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMSInt32 cLR1_items_sets_AVL_tree::
 recursiveSearchOrInsert (cLR1_items_sets_AVL_tree * & ioRootPointer,
@@ -947,17 +947,17 @@ recursiveSearchOrInsert (cLR1_items_sets_AVL_tree * & ioRootPointer,
   return result ;
 }
  
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 // C L A S S    F O R   L R 1    I T E M S    S E T S   C O L L E C T I O N  *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 static const PMUInt32 kSlotCount = 46489 ;
 
@@ -999,7 +999,7 @@ class c_LR1_items_sets_collection {
   private : cLR1_items_sets_AVL_tree * mRoot [kSlotCount] ;
 } ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 c_LR1_items_sets_collection::c_LR1_items_sets_collection (void) :
 m_LR1_items_sets_array () {
@@ -1009,7 +1009,7 @@ m_LR1_items_sets_array () {
   }
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 c_LR1_items_sets_collection::
 ~c_LR1_items_sets_collection (void) {
@@ -1018,7 +1018,7 @@ c_LR1_items_sets_collection::
   }
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMSInt32 c_LR1_items_sets_collection::
 searchOrInsert_LR1_itemSet (c_LR1_items_set & ioItemSet) {
@@ -1027,7 +1027,7 @@ searchOrInsert_LR1_itemSet (c_LR1_items_set & ioItemSet) {
   return cLR1_items_sets_AVL_tree::recursiveSearchOrInsert (mRoot [h], ioItemSet, m_LR1_items_sets_array, extension) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void c_LR1_items_sets_collection::
 display (const cPureBNFproductionsList & inProductionRules,
@@ -1042,13 +1042,13 @@ display (const cPureBNFproductionsList & inProductionRules,
   }
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMSInt32 c_LR1_items_sets_collection::getStateCount (void) {
   return m_LR1_items_sets_array.count () ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void c_LR1_items_sets_collection::getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
                                                      const PMSInt32 inStateIndex,
@@ -1057,7 +1057,7 @@ void c_LR1_items_sets_collection::getTransitionFrom (const cPureBNFproductionsLi
   m_LR1_items_sets_array (inStateIndex COMMA_HERE).getTransitionFrom (inProductionRules, inSymbol, out_LR1_item_set) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void c_LR1_items_sets_collection::getProductionsWhereLocationIsRight (const PMSInt32 inStateIndex,
                                             const cPureBNFproductionsList & inProductionRules,
@@ -1071,17 +1071,17 @@ void c_LR1_items_sets_collection::getProductionsWhereLocationIsRight (const PMSI
                                             outAcceptCondition) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 // L R 1    A U T O M A T O N    T R A N S I T I O N                         *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 class c_LR1_automaton_transition {
   public : const PMSInt32 mSourceState ;
@@ -1096,17 +1096,17 @@ class c_LR1_automaton_transition {
   }
 } ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 // G E N E R A T E    L R ( 1 )    A N A L Y Z E R                           *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 static void
 generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
@@ -1627,11 +1627,11 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
                                     generatedZone3) ;
 }
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 // C O M P U T E    L R 1    A U T O M A T O N                               *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 static void
 compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
@@ -1671,11 +1671,11 @@ compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
   // printf ("************** LR1 AUTOMATON END *****************\n") ; co.flush () ;
 }
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 // L R ( 1 )    C O M P U T A T I O N S                                      *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 void
 LR1_computations (C_Compiler * inCompiler,
@@ -1923,4 +1923,4 @@ LR1_computations (C_Compiler * inCompiler,
   outOk = conflictCount == 0 ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*

@@ -1,18 +1,18 @@
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //%!["Overriding category reader '@" . CLASS_NAME . " " . READER_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 %!READER_IMPLEMENTATION%
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static void defineCategoryReader_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]% (void) {
   enterCategoryReader_%![READER_NAME identifierRepresentation]% (%?^%kTypeDescriptor_GALGAS_%![CLASS_NAME identifierRepresentation]%.mSlotID,
         %!^%categoryReader_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]%) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_PrologueEpilogue gReader_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]% (defineCategoryReader_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]%, NULL) ;
 

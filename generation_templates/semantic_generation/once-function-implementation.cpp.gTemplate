@@ -1,19 +1,19 @@
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //%!["Once function '" . FUNCTION_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 %!FUNCTION_IMPLEMENTATION%
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 //  Function implementation                                                  *
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static bool gOnceFunctionResultAvailable_%![FUNCTION_NAME identifierRepresentation]% = false ;
 static GALGAS_%!RETURN_TYPE_IDENTIFIER% gOnceFunctionResult_%![FUNCTION_NAME identifierRepresentation]% ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 GALGAS_%!RETURN_TYPE_IDENTIFIER% function_%![FUNCTION_NAME identifierRepresentation]% (%!^%C_Compiler * inCompiler
               %!^%COMMA_LOCATION_ARGS) {
@@ -24,20 +24,20 @@ GALGAS_%!RETURN_TYPE_IDENTIFIER% function_%![FUNCTION_NAME identifierRepresentat
   return gOnceFunctionResult_%![FUNCTION_NAME identifierRepresentation]% ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static void releaseOnceFunctionResult_%![FUNCTION_NAME identifierRepresentation]% (void) {
   gOnceFunctionResult_%![FUNCTION_NAME identifierRepresentation]%.drop () ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_PrologueEpilogue gEpilogueForOnceFunction_%![FUNCTION_NAME identifierRepresentation]% (%?^%NULL,
         %!^%releaseOnceFunctionResult_%![FUNCTION_NAME identifierRepresentation]%) ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 //  Function introspection                                                   *
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static const C_galgas_type_descriptor * functionArgs_%![FUNCTION_NAME identifierRepresentation]% [%![[FORMAL_ARGUMENT_LIST length] + 1 string]%] = {
 %
@@ -47,7 +47,7 @@ static const C_galgas_type_descriptor * functionArgs_%![FUNCTION_NAME identifier
 %  NULL
 } ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 %
 if [FORMAL_ARGUMENT_LIST length] == 0 then
@@ -73,7 +73,7 @@ else
   %}\n%
 end if
 %
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_galgas_function_descriptor functionDescriptor_%![FUNCTION_NAME identifierRepresentation]% (%?^![FUNCTION_NAME utf8Representation]%,\n%
                                             !^%functionWithGenericHeader_%![FUNCTION_NAME identifierRepresentation]%,\n%

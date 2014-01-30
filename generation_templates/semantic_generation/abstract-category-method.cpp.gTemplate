@@ -1,30 +1,30 @@
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //%!["Abstract category method '@" . CLASS_NAME . " " . METHOD_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 static TC_UniqueArray <categoryMethodSignature_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%> gCategoryMethodTable_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void enterCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const PMSInt32 inClassIndex,
                %!^%categoryMethodSignature_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% inMethod) {
   gCategoryMethodTable_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static void freeCategoryMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (void) {
   gCategoryMethodTable_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.free () ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_PrologueEpilogue gMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (%?^%NULL,
        %!^%freeCategoryMethod_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%) ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void callCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   foreach FORMAL_ARGUMENT_LIST do

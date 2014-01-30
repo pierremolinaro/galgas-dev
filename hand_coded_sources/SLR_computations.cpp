@@ -1,31 +1,31 @@
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //     Routines for SLR grammar computations                                 *
-//                                                                           *
-//  Copyright (C) 2002, ..., 2010 Pierre Molinaro.                           *
-//                                                                           *
+//                                                                             *
+//  Copyright (C) 2002, ..., 2010 Pierre Molinaro.                             *
+//                                                                             *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-//                                                                           *
-//  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
-//  ECN, Ecole Centrale de Nantes (France)                                   *
-//                                                                           *
+//                                                                             *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
+//  ECN, École Centrale de Nantes (France)                                     *
+//                                                                             *
 //  This program is free software; you can redistribute it and/or modify it  *
 //  under the terms of the GNU General Public License as published by the    *
 //  Free Software Foundation.                                                *
-//                                                                           *
-//  This program is distributed in the hope it will be useful, but WITHOUT   *
-//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
+//                                                                             *
+//  This program is distributed in the hope it will be useful, but WITHOUT     *
+//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or      *
+//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for   *
 //   more details.                                                           *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 #include "files/C_HTML_FileWrite.h"
 #include "files/C_TextFileWrite.h"
 #include "collections/TC_UniqueArray2.h"
 #include "galgas2/C_Compiler.h"
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #include "SLR_computations.h"
 #include "cPureBNFproductionsList.h"
@@ -33,11 +33,11 @@
 #include "cDecisionTableElement.h"
 #include "grammarCompilation.h"
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //    C L A S S    F O R   L R 0    I T E M                                  *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 class c_LR0_item {
   public : PMSInt32 mProductionRuleIndex ;
@@ -52,14 +52,14 @@ class c_LR0_item {
                                             const c_LR0_item & inItem2) ;
 } ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 c_LR0_item::c_LR0_item (void) :
 mProductionRuleIndex (-1),
 mLocationIndex (-1) {
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 c_LR0_item::c_LR0_item (const PMSInt32 inProductionRuleIndex,
                         const PMSInt32 inLocationIndex) :
@@ -67,7 +67,7 @@ mProductionRuleIndex (inProductionRuleIndex),
 mLocationIndex (inLocationIndex) {
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMSInt32 c_LR0_item::
 compare_LR0_items (const c_LR0_item & inItem1,
@@ -79,17 +79,17 @@ compare_LR0_items (const c_LR0_item & inItem1,
   return result ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //    C L A S S    F O R   L R 0    I T E M S    S E T                       *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 class c_LR0_items_set {
 //--- Private data
@@ -138,20 +138,20 @@ class c_LR0_items_set {
   friend void swap (c_LR0_items_set & ioOperand1, c_LR0_items_set & ioOperand2) ;
 } ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 c_LR0_items_set::c_LR0_items_set (void) :
 mItemsSet () {
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 c_LR0_items_set::c_LR0_items_set (const c_LR0_items_set & inSource) :
 mItemsSet () {
   inSource.mItemsSet.copyTo (mItemsSet) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 bool c_LR0_items_set::
 add_LR0_item (const PMSInt32 inProductionRuleIndex,
@@ -170,7 +170,7 @@ add_LR0_item (const PMSInt32 inProductionRuleIndex,
   return ! found ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 
 void c_LR0_items_set::
@@ -200,13 +200,13 @@ close_items_set (const cPureBNFproductionsList & inProductionRules,
   }
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 bool c_LR0_items_set::isEmptySet (void) const {
   return mItemsSet.count () == 0 ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void c_LR0_items_set::
 display (const cPureBNFproductionsList & inProductionRules,
@@ -234,7 +234,7 @@ display (const cPureBNFproductionsList & inProductionRules,
   }
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void c_LR0_items_set::
 getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
@@ -254,7 +254,7 @@ getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
   }
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void c_LR0_items_set::
 getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProductionRules,
@@ -275,7 +275,7 @@ getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProduction
   }  
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMSInt32 c_LR0_items_set::
 compare_LR0_items_sets (const c_LR0_items_set & inItemsSet1,
@@ -294,23 +294,23 @@ compare_LR0_items_sets (const c_LR0_items_set & inItemsSet1,
   return result ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void swap (c_LR0_items_set & ioOperand1, c_LR0_items_set & ioOperand2) {
   swap (ioOperand1.mItemsSet, ioOperand2.mItemsSet) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 // E L E M E N T    C L A S S    F O R   A V L    T R E E                    *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 class cLR0_items_sets_AVL_tree {
   public : cLR0_items_sets_AVL_tree * mPtrToInf ;
@@ -332,7 +332,7 @@ class cLR0_items_sets_AVL_tree {
   private : cLR0_items_sets_AVL_tree & operator = (cLR0_items_sets_AVL_tree &) ;
 } ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 cLR0_items_sets_AVL_tree::
 cLR0_items_sets_AVL_tree (const PMSInt32 inInfo) :
@@ -342,7 +342,7 @@ mInfo (inInfo),
 mBalance (0) {
 } ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 cLR0_items_sets_AVL_tree::
 ~cLR0_items_sets_AVL_tree (void) {
@@ -350,7 +350,7 @@ cLR0_items_sets_AVL_tree::
   macroMyDelete (mPtrToSup) ;
 } ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMSInt32 cLR0_items_sets_AVL_tree::
 compare (const c_LR0_items_set & in_LR0_items_set,
@@ -358,11 +358,11 @@ compare (const c_LR0_items_set & in_LR0_items_set,
   return c_LR0_items_set::compare_LR0_items_sets (in_LR0_items_sets_array (mInfo COMMA_HERE), in_LR0_items_set) ;
 }
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //       Rotate left                                                         *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 static void rotateLeft (cLR0_items_sets_AVL_tree * & ioPtr) {
 //--- Rotate 
@@ -381,11 +381,11 @@ static void rotateLeft (cLR0_items_sets_AVL_tree * & ioPtr) {
   ioPtr = ptr ;
 } 
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //       Rotate right                                                        *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 static void rotateRight (cLR0_items_sets_AVL_tree * & ioPtr) {
 //--- Rotate 
@@ -404,7 +404,7 @@ static void rotateRight (cLR0_items_sets_AVL_tree * & ioPtr) {
   ioPtr = ptr ;
 }
  
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMSInt32 cLR0_items_sets_AVL_tree::
 recursiveSearchOrInsert (cLR0_items_sets_AVL_tree * & ioRootPointer,
@@ -483,17 +483,17 @@ recursiveSearchOrInsert (cLR0_items_sets_AVL_tree * & ioRootPointer,
 }
 
  
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 // C L A S S    F O R   L R 0    I T E M S    S E T S   C O L L E C T I O N  *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 class c_LR0_items_sets_collection {
 //--- Default constructor and destructor
@@ -532,7 +532,7 @@ class c_LR0_items_sets_collection {
   private : cLR0_items_sets_AVL_tree * mRoot ;
 } ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 c_LR0_items_sets_collection::c_LR0_items_sets_collection (void) :
 m_LR0_items_sets_array (),
@@ -540,13 +540,13 @@ mRoot (NULL) {
   m_LR0_items_sets_array.makeRoomUsingSwap (500) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 c_LR0_items_sets_collection::~c_LR0_items_sets_collection (void) {
   macroMyDelete (mRoot) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMSInt32 c_LR0_items_sets_collection::
 searchOrInsert_LR0_itemSet (c_LR0_items_set & ioItemSet) {
@@ -554,7 +554,7 @@ searchOrInsert_LR0_itemSet (c_LR0_items_set & ioItemSet) {
   return cLR0_items_sets_AVL_tree::recursiveSearchOrInsert (mRoot, ioItemSet, m_LR0_items_sets_array, extension) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void c_LR0_items_sets_collection::
 display (const cPureBNFproductionsList & inProductionRules,
@@ -569,13 +569,13 @@ display (const cPureBNFproductionsList & inProductionRules,
   }
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMSInt32 c_LR0_items_sets_collection::getStatesCount (void) {
   return m_LR0_items_sets_array.count () ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void c_LR0_items_sets_collection::
 getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
@@ -585,7 +585,7 @@ getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
   m_LR0_items_sets_array (inStateIndex COMMA_HERE).getTransitionFrom (inProductionRules, inSymbol, out_LR0_item_set) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void c_LR0_items_sets_collection::
 getProductionsWhereLocationIsRight (const PMSInt32 inStateIndex,
@@ -598,17 +598,17 @@ getProductionsWhereLocationIsRight (const PMSInt32 inStateIndex,
                                             outAcceptCondition) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 // L R 0    A U T O M A T O N    T R A N S I T I O N                         *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 class c_LR0_automaton_transition {
   public : PMSInt32 mSourceState ;
@@ -619,7 +619,7 @@ class c_LR0_automaton_transition {
                                        const PMSInt32 inTargetState) ;
 } ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 c_LR0_automaton_transition::
 c_LR0_automaton_transition (const PMSInt32 inSourceState,
@@ -630,23 +630,23 @@ mAction (inAction),
 mTargetState (inTargetState) {
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark -
 #endif
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 // G E N E R A T E    S L R    A N A L Y Z E R                               *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 static void
 generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
@@ -1171,15 +1171,15 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
                                     generatedZone3) ;
 }
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 // G E N E R A T E    S L R    A N A L Y Z E R                               *
-//                                                                           *
-//---------------------------------------------------------------------------*
-//                                                                           *
+//                                                                             *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 // C O M P U T E    L R 0    A U T O M A T O N                               *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 static void
 compute_LR0_automation (const cPureBNFproductionsList & inProductionRules,
@@ -1207,11 +1207,11 @@ compute_LR0_automation (const cPureBNFproductionsList & inProductionRules,
   }
 }
 
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 // S L R    C O M P U T A T I O N S                                          *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 void
 SLR_computations (C_Compiler * inCompiler,
@@ -1446,4 +1446,4 @@ SLR_computations (C_Compiler * inCompiler,
   outOk = conflictCount == 0 ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*

@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 mEnum (kNotBuilt) {
@@ -6,7 +6,7 @@ mEnum (kNotBuilt) {
 
 %
 foreach CONSTANT_LIST do
-  %//---------------------------------------------------------------------------*\n\n%
+  %//-----------------------------------------------------------------------------*\n\n%
   %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_%![mValue identifierRepresentation]% (UNUSED_LOCATION_ARGS) {\n%
   %  GALGAS_%!TYPE_IDENTIFIER% result ;\n%
   %  result.mEnum = kEnum_%![mValue identifierRepresentation]% ;\n%
@@ -14,7 +14,7 @@ foreach CONSTANT_LIST do
   %}\n\n%
 end foreach
 
-%//---------------------------------------------------------------------------*
+%//-----------------------------------------------------------------------------*
 
 static const char * gEnumNameArrayFor_%!TYPE_IDENTIFIER% [%![[CONSTANT_LIST length] + 1 string]%] = {
   "(not built)"%
@@ -23,14 +23,14 @@ foreach CONSTANT_LIST
 end foreach%
 } ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
 %                                       !^%const PMSInt32 /* inIndentation */) const {
   ioString << "<enum @%!TYPE_NAME%: " << gEnumNameArrayFor_%!TYPE_IDENTIFIER% [mEnum] << ">" ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
