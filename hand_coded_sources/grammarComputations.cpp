@@ -1,28 +1,28 @@
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //  This file handles all computations performed on grammars                 *
-//                                                                           *
-//  Copyright (C) 1999, ..., 2012 Pierre Molinaro.                           *
-//                                                                           *
+//                                                                             *
+//  Copyright (C) 1999, ..., 2012 Pierre Molinaro.                             *
+//                                                                             *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-//                                                                           *
-//  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
-//  ECN, Ecole Centrale de Nantes (France)                                   *
-//                                                                           *
+//                                                                             *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
+//  ECN, École Centrale de Nantes (France)                                     *
+//                                                                             *
 //  This program is free software; you can redistribute it and/or modify it  *
 //  under the terms of the GNU General Public License as published by the    *
 //  Free Software Foundation.                                                *
-//                                                                           *
-//  This program is distributed in the hope it will be useful, but WITHOUT   *
-//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-//  more details.                                                            *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//  This program is distributed in the hope it will be useful, but WITHOUT     *
+//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or      *
+//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for   *
+//  more details.                                                              *
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 // #define LOG_GRAMMAR_COMPUTATIONS
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #include "files/C_HTML_FileWrite.h"
 #include "files/C_TextFileWrite.h"
@@ -37,7 +37,7 @@
 #include "galgas_cli_options.h"
 #include "galgas2/C_galgas_io.h"
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #include "useful_symbols_computations.h"
 #include "empty_strings_computations.h"
@@ -53,7 +53,7 @@
 #include "buildPureBNFgrammar.h"
 #include "grammarCompilation.h"
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 cProduction::cProduction (void) :
 mSourceFileName (),
@@ -65,7 +65,7 @@ aPremierDeProduction (),
 mProductionIndex (0) {
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 cPureBNFproductionsList::cPureBNFproductionsList (void) :
 tableauIndicePremiereProduction (),
@@ -76,7 +76,7 @@ mLastProductionIndex (),
 mProductionIndex () {
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void cProduction::
 engendrerAppelProduction (const PMSInt16 nombreDeParametres,
@@ -94,7 +94,7 @@ engendrerAppelProduction (const PMSInt16 nombreDeParametres,
   fichierCPP << ") ;\n" ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void swap (cProduction & ioProduction1, cProduction & ioProduction2) {
   swap (ioProduction1.mSourceFileName, ioProduction2.mSourceFileName) ;
@@ -106,7 +106,7 @@ void swap (cProduction & ioProduction1, cProduction & ioProduction2) {
   swap (ioProduction1.mProductionIndex, ioProduction2.mProductionIndex) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static bool
 searchForIdenticalProductions (const cPureBNFproductionsList & productions,
@@ -152,7 +152,7 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
   return ok ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static const char k_default_style [] = {
   "body {\n"
@@ -253,7 +253,7 @@ static const char k_default_style [] = {
   "}\n"
 } ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static PMUInt16 bddBitCountForVocabulary (const cVocabulary & inVocabulary) {
   PMUInt16 bddBitCount = 0 ;
@@ -266,7 +266,7 @@ static PMUInt16 bddBitCountForVocabulary (const cVocabulary & inVocabulary) {
   return bddBitCount ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static void
 analyzeGrammar (C_Compiler * inCompiler,
@@ -669,7 +669,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   macroMyDelete (HTMLfile) ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void
 routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
@@ -711,4 +711,4 @@ routine_grammarAnalysisAndGeneration (const GALGAS_lstring inTargetFileName,
   }
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*

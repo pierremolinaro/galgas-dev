@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #include "predefined-types.h"
 #include "cCollectionElement.h"
@@ -6,7 +6,7 @@
 #include "capSortedListElement.h"
 #include "galgas2/C_Compiler.h"
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 cMapElement::cMapElement (const GALGAS_lstring & inLKey
                           COMMA_LOCATION_ARGS) :

@@ -1,4 +1,4 @@
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 %
@@ -8,12 +8,12 @@ foreach ATTRIBUTE_LIST
 end foreach% {
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::~ GALGAS_%!TYPE_IDENTIFIER% (void) {
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (%?^
 foreach ATTRIBUTE_LIST
@@ -28,7 +28,7 @@ end foreach
 }
 
 %if HAS_DEFAULT_CONSTRUCTOR then
-%//---------------------------------------------------------------------------*
+%//-----------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_default (UNUSED_LOCATION_ARGS) {
   return GALGAS_%!TYPE_IDENTIFIER% (%?^
@@ -39,7 +39,7 @@ end foreach%) ;
 }
 
 %end if
-%//---------------------------------------------------------------------------*
+%//-----------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
 foreach ATTRIBUTE_LIST
@@ -64,7 +64,7 @@ end foreach
   return result ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
    typeComparisonResult result = kOperandEqual ;
@@ -76,7 +76,7 @@ end foreach
 %  return result ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
   return %
@@ -87,7 +87,7 @@ bool GALGAS_%!TYPE_IDENTIFIER%::isValid (void) const {
 % ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
 %  foreach ATTRIBUTE_LIST
@@ -95,7 +95,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
   end foreach
 %}
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
                               %!^%const PMSInt32 inIndentation) const {
@@ -113,7 +113,7 @@ end foreach
 }
 
 %foreach ATTRIBUTE_LIST do
-  %//---------------------------------------------------------------------------*\n\n%
+  %//-----------------------------------------------------------------------------*\n\n%
   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
   %  return mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%

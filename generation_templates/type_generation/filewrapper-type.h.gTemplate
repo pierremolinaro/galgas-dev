@@ -1,8 +1,8 @@
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //%!["@filewrapper type" stringByLeftAndRightPadding !75 !' ']%*
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 class cRegularFileWrapper {
   public : const char * mName ;
@@ -23,7 +23,7 @@ class cRegularFileWrapper {
   private : cRegularFileWrapper & operator = (const cRegularFileWrapper &) ;
 } ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 class cDirectoryWrapper {
   public : const char * mDirectoryName ;
@@ -44,7 +44,7 @@ class cDirectoryWrapper {
   private : cDirectoryWrapper & operator = (const cDirectoryWrapper &) ;
 } ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 class GALGAS_filewrapper : public AC_GALGAS_root {
 //--------------------------------- Private data members

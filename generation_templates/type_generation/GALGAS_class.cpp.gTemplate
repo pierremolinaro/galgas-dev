@@ -1,6 +1,6 @@
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 //   Object comparison                                                       *
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 %
 if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] == 0) then
@@ -8,7 +8,7 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] == 0) then
   return kOperandEqual ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 %end if
 
 if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
@@ -24,7 +24,7 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
 %  return result ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 %end if%
 
 typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TYPE_IDENTIFIER% & inOperand) const {
@@ -43,14 +43,14 @@ typeComparisonResult GALGAS_%!TYPE_IDENTIFIER%::objectCompare (const GALGAS_%!TY
   return result ;
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (void) :
 %if SUPER_TYPE_IDENTIFIER == "" then %AC_GALGAS_class% else %GALGAS_%!SUPER_TYPE_IDENTIFIER end if% () {
 }
 
 %if HAS_DEFAULT_CONSTRUCTOR & not IS_ABSTRACT then
-%//---------------------------------------------------------------------------*
+%//-----------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_default (LOCATION_ARGS) {
   return GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
@@ -66,7 +66,7 @@ end if
 }
 
 %end if
-%//---------------------------------------------------------------------------*
+%//-----------------------------------------------------------------------------*
 
 GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const cPtr_%!TYPE_IDENTIFIER% * inSourcePtr) :
 %if SUPER_TYPE_IDENTIFIER == "" then %AC_GALGAS_class% else %GALGAS_%!SUPER_TYPE_IDENTIFIER end if% (inSourcePtr) {
@@ -75,7 +75,7 @@ GALGAS_%!TYPE_IDENTIFIER%::GALGAS_%!TYPE_IDENTIFIER% (const cPtr_%!TYPE_IDENTIFI
 
 %
 if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] == 0) then
-  %//---------------------------------------------------------------------------*\n\n%
+  %//-----------------------------------------------------------------------------*\n\n%
   %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (LOCATION_ARGS) {\n%
   %  GALGAS_%!TYPE_IDENTIFIER% result ;\n%
   %  macroMyNew (result.mObjectPtr, cPtr_%!TYPE_IDENTIFIER% (THERE)) ;\n%
@@ -84,7 +84,7 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] == 0) then
 end if
 
 if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
-  %//---------------------------------------------------------------------------*\n\n%
+  %//-----------------------------------------------------------------------------*\n\n%
   %GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_new (%?^
   foreach ALL_ATTRIBUTE_LIST
     do %const GALGAS_%![mAttributeTypeProxy identifierRepresentation]% & inAttribute_%![mAttributeName identifierRepresentation]
@@ -115,7 +115,7 @@ if (not IS_ABSTRACT) & ([ALL_ATTRIBUTE_LIST length] > 0) then
 end if
 
 if ([ALL_ATTRIBUTE_LIST length] > 0) & not IS_ABSTRACT then
-  %//---------------------------------------------------------------------------*\n\n%
+  %//-----------------------------------------------------------------------------*\n\n%
   %void GALGAS_%!TYPE_IDENTIFIER%::insulate (LOCATION_ARGS) {\n%
   %  macroMutexLock (gInsulationMutex) ;\n%
   %  if (isValid () && (mObjectPtr->retainCount () > 1)) {\n%
@@ -137,7 +137,7 @@ end if
 
 foreach CURRENT_ATTRIBUTE_LIST do
   if mHasGetter then
-    %//---------------------------------------------------------------------------*\n\n%
+    %//-----------------------------------------------------------------------------*\n\n%
     %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% GALGAS_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
     %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
     %  if (NULL != mObjectPtr) {\n%
@@ -147,7 +147,7 @@ foreach CURRENT_ATTRIBUTE_LIST do
     %  }\n%
     %  return result ;\n%
     %}\n\n%
-    %//---------------------------------------------------------------------------*\n\n%
+    %//-----------------------------------------------------------------------------*\n\n%
     %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cPtr_%!TYPE_IDENTIFIER%::reader_%![mAttributeName identifierRepresentation]% (UNUSED_LOCATION_ARGS) const {\n%
     %  return mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
     %}\n\n%
@@ -156,7 +156,7 @@ end foreach
 
 foreach CURRENT_ATTRIBUTE_LIST do
   if mHasSetter then
-    %//---------------------------------------------------------------------------*\n\n%
+    %//-----------------------------------------------------------------------------*\n\n%
     %void GALGAS_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inValue\n%
                           !^%COMMA_LOCATION_ARGS) {\n%
     %  if (NULL != mObjectPtr) {\n%
@@ -166,7 +166,7 @@ foreach CURRENT_ATTRIBUTE_LIST do
     %    p->mAttribute_%![mAttributeName identifierRepresentation]% = inValue ;\n%
     %  }\n%
     %}\n\n%
-    %//---------------------------------------------------------------------------*\n\n%
+    %//-----------------------------------------------------------------------------*\n\n%
     %void cPtr_%!TYPE_IDENTIFIER%::modifier_set%![[mAttributeName stringByCapitalizingFirstCharacter] identifierRepresentation]% (%?^%GALGAS_%![mAttributeTypeProxy identifierRepresentation]% inValue\n%
                           !^%COMMA_UNUSED_LOCATION_ARGS) {\n%
     %  mAttribute_%![mAttributeName identifierRepresentation]% = inValue ;\n%
@@ -174,9 +174,9 @@ foreach CURRENT_ATTRIBUTE_LIST do
   end if
 end foreach
 
-%//---------------------------------------------------------------------------*
+%//-----------------------------------------------------------------------------*
 //%!["Pointer class for @" . TYPE_NAME . " class" stringByLeftAndRightPadding !75 !' ']%*
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^
   foreach ALL_ATTRIBUTE_LIST
@@ -208,7 +208,7 @@ cPtr_%!TYPE_IDENTIFIER%::cPtr_%!TYPE_IDENTIFIER% (%?^
 
 %
 if not IS_ABSTRACT then
-  %//---------------------------------------------------------------------------*\n\n%
+  %//-----------------------------------------------------------------------------*\n\n%
   %const C_galgas_type_descriptor * cPtr_%!TYPE_IDENTIFIER%::classDescriptor (void) const {\n%
   %  return & kTypeDescriptor_GALGAS_%!TYPE_IDENTIFIER% ;\n%
   %}\n\n%

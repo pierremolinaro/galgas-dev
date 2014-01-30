@@ -1,8 +1,8 @@
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //%!["Category reader '@" . CLASS_NAME . " " . READER_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 typedef GALGAS_%![RETURN_TYPE identifierRepresentation]% (*categoryReaderSignature_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]%) (%?^
 %const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
@@ -17,12 +17,12 @@ typedef GALGAS_%![RETURN_TYPE identifierRepresentation]% (*categoryReaderSignatu
   %,\n%!^%C_Compiler * inCompiler%
   %\n %!^%COMMA_LOCATION_ARGS) ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void enterCategoryReader_%![READER_NAME identifierRepresentation]% (%?^%const PMSInt32 inClassIndex,
                %!^%categoryReaderSignature_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]% inReader) ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 GALGAS_%![RETURN_TYPE identifierRepresentation]% callCategoryReader_%![READER_NAME identifierRepresentation]% (%?^%const cPtr_%![CLASS_NAME identifierRepresentation]% * inObject%
   foreach FORMAL_ARGUMENT_LIST do

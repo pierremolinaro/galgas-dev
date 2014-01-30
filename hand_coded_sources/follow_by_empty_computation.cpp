@@ -1,33 +1,33 @@
-//---------------------------------------------------------------------------*
-//                                                                           *
+//-----------------------------------------------------------------------------*
+//                                                                             *
 //  Routines for computing followed by empty strings symbols                 *
-//                                                                           *
+//                                                                             *
 //  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
-//  IRCCyN, Institut de Recherche en Communications et Cybernetique de Nantes*
-//  ECN, Ecole Centrale de Nantes (France)                                   *
-//                                                                           *
+//  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
+//  ECN, École Centrale de Nantes (France)                                     *
+//                                                                             *
 //  This program is free software; you can redistribute it and/or modify it  *
 //  under the terms of the GNU General Public License as published by the    *
 //  Free Software Foundation.                                                *
-//                                                                           *
-//  This program is distributed in the hope it will be useful, but WITHOUT   *
-//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or    *
-//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for *
-//  more details.                                                            *
-//                                                                           *
-//---------------------------------------------------------------------------*
+//                                                                             *
+//  This program is distributed in the hope it will be useful, but WITHOUT     *
+//  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or      *
+//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for   *
+//  more details.                                                              *
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 #include "follow_by_empty_computation.h"
 #include "files/C_HTML_FileWrite.h"
 #include "bdd/C_BDD_Set1.h"
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #include "cPureBNFproductionsList.h"
 #include "cVocabulary.h"
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static void
 computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionRules,
@@ -75,7 +75,7 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
   }
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
  
 static void
 displayNonterminalSymbolsFollowedByEmpty (const C_BDD_Set1 & inVocabularyFollowedByEmpty_BDD,
@@ -117,7 +117,7 @@ displayNonterminalSymbolsFollowedByEmpty (const C_BDD_Set1 & inVocabularyFollowe
   }
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void
 follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductions,
@@ -152,4 +152,4 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
                                            inVerboseOptionOn) ; 
 }
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*

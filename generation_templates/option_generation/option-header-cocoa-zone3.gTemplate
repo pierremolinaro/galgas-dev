@@ -1,10 +1,10 @@
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void enterOptionsFor_%![OPTION_COMPONENT_NAME identifierRepresentation]% (NSMutableArray * ioBoolOptionArray,
                                                        NSMutableArray * ioUIntOptionArray,
                                                        NSMutableArray * ioStringOptionArray) ;
 
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #endif
