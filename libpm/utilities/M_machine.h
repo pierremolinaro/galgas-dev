@@ -32,15 +32,15 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                  P L A T F O R M   D E T E C T I O N                      *
+//                  P L A T F O R M   D E T E C T I O N                        *
 //                                                                             *
-// * WIN32 is defined when compiling for Microsoft Windows                   *
-// * __APPLE__is defined, but __NEXT_RUNTIME__ is not when compiling for     *
-//   Mac OS X Darwin (command line tools)                                    * 
-// * __APPLE__and __NEXT_RUNTIME__ are both defined when compiling for       *
-//   Mac OS X Cocoa (GUI applications)                                       * 
-// * __MINGW32__ is defined when compiling by MinGW (for Windows)            *
-// * __linux is defined when compiling by GCC (for Linux)                    *
+// * WIN32 is defined when compiling for Microsoft Windows                     *
+// * __APPLE__is defined, but __NEXT_RUNTIME__ is not when compiling for       *
+//   Mac OS X Darwin (command line tools)                                      * 
+// * __APPLE__and __NEXT_RUNTIME__ are both defined when compiling for         *
+//   Mac OS X Cocoa (GUI applications)                                         * 
+// * __MINGW32__ is defined when compiling by MinGW (for Windows)              *
+// * __linux is defined when compiling by GCC (for Linux)                      *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -72,7 +72,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                  C O M P I L E R   D E T E C T I O N                      *
+//                  C O M P I L E R   D E T E C T I O N                        *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -108,7 +108,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-// D E F I N E    M I N    A N D    M A X     F O R    I N T    T Y P E S    *
+// D E F I N E    M I N    A N D    M A X     F O R    I N T    T Y P E S      *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -132,12 +132,12 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-// I N T E G E R    T Y P E S ,    3 2    O R    6 4    B I T S              *
+// I N T E G E R    T Y P E S ,    3 2    O R    6 4    B I T S                *
 //                                                                             *
-// When building 32-bit tools, PMUInt is a 32-bit unsigned integer,          *
-// PMSInt is a 32-bit signed integer.                                        *
-// When building 64-bit tools, PMUInt is a 64-bit unsigned integer,          *
-// PMSInt is a 64-bit signed integer.                                        *
+// When building 32-bit tools, PMUInt is a 32-bit unsigned integer,            *
+// PMSInt is a 32-bit signed integer.                                          *
+// When building 64-bit tools, PMUInt is a 64-bit unsigned integer,            *
+// PMSInt is a 64-bit signed integer.                                          *
 //-----------------------------------------------------------------------------*
 
 #ifdef __LP64__
@@ -156,7 +156,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//             M I N ,    M A X    F U N C T I O N S                         *
+//             M I N ,    M A X    F U N C T I O N S                           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -172,7 +172,7 @@ static inline PMUInt32 uimax32 (const PMUInt32 inA, const PMUInt32 inB) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                      U T F 3 2    T Y P E                                 *
+//                      U T F 3 2    T Y P E                                   *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
