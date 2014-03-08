@@ -1,10 +1,10 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  GALGAS_stringset                                                         *
+//  GALGAS_stringset                                                           *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 2005, ..., 2013 Pierre Molinaro.                             *
+//  Copyright (C) 2005, ..., 2014 Pierre Molinaro.                             *
 //                                                                             *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //                                                                             *
@@ -26,9 +26,10 @@
 #include "predefined-types.h"
 #include "utilities/MF_MemoryControl.h"
 #include "cCollectionElement.h"
+#include "galgas2/C_Compiler.h"
 
 //-----------------------------------------------------------------------------*
-//   cCollectionElement_stringset                                            *
+//   cCollectionElement_stringset                                              *
 //-----------------------------------------------------------------------------*
 
 class cCollectionElement_stringset : public cCollectionElement {
@@ -96,7 +97,7 @@ void cCollectionElement_stringset::description (C_String & ioString, const PMSIn
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  c S t r i n g s e t N o d e                                              *
+//  c S t r i n g s e t N o d e                                                *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -385,7 +386,7 @@ static void internalRemoveRecursively (cStringsetNode * & ioRoot,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  cSharedStringsetRoot                                                     *
+//  cSharedStringsetRoot                                                       *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -414,6 +415,9 @@ class cSharedStringsetRoot : public C_SharedObject {
                                        PMUInt32 & ioCount) const ;
     public : void checkStringset (LOCATION_ARGS) const ;
   #endif
+
+//--- Get root key
+  public : C_String rootKey (void) const ;
 
 //--- Add entry
   public : void addKey (const C_String & inKey) ;
@@ -513,6 +517,13 @@ void cSharedStringsetRoot::addKey (const C_String & inKey) {
 
 //-----------------------------------------------------------------------------*
 
+C_String cSharedStringsetRoot::rootKey (void) const {
+  macroValidPointer (mRoot) ;
+  return mRoot->mKey ;
+}
+
+//-----------------------------------------------------------------------------*
+
 void cSharedStringsetRoot::copyFrom (const cSharedStringsetRoot * inSharedRootToCopy) {
   macroValidSharedObject (inSharedRootToCopy, const cSharedStringsetRoot) ;
   if (NULL != inSharedRootToCopy->mRoot) {
@@ -593,7 +604,7 @@ void cSharedStringsetRoot::addToStringList (GALGAS_stringlist & ioResult) const 
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  G A L G A S _ s t r i n g s e t                                          *
+//  G A L G A S _ s t r i n g s e t                                            *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -716,7 +727,7 @@ void GALGAS_stringset::modifier_removeKey (GALGAS_string inKey
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//    I N T E R S E C T I O N                                                *
+//    I N T E R S E C T I O N                                                  *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -867,13 +878,29 @@ GALGAS_uint GALGAS_stringset::reader_count (UNUSED_LOCATION_ARGS) const {
 
 //-----------------------------------------------------------------------------*
 
+GALGAS_string GALGAS_stringset::reader_anyString (C_Compiler * inCompiler
+                                                  COMMA_LOCATION_ARGS) const {
+  GALGAS_string result ;
+  if (isValid ()) {
+    if (mSharedRoot->count () == 0) {
+      C_String message = "@stringset anyString: receiver is empty" ;
+      inCompiler->onTheFlySemanticError(message COMMA_THERE) ;
+     }else{
+      result = GALGAS_string (mSharedRoot->rootKey ()) ;
+    }
+  }
+  return result ;
+}
+
+//-----------------------------------------------------------------------------*
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark stringset cEnumerator
 #endif
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                 'GALGAS_stringset::cEnumerator' class                     *
+//                 'GALGAS_stringset::cEnumerator' class                       *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -956,7 +983,7 @@ GALGAS_string cEnumerator_stringset::current (LOCATION_ARGS) const {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//    C O M P A R I S O N                                                    *
+//    C O M P A R I S O N                                                      *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

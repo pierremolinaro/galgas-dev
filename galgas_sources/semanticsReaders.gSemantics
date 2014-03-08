@@ -644,6 +644,7 @@ override method @stringsetPredefinedTypeAST getReaderMap
   commonReaderMapForAllTypes !?ioUnifiedTypeMap ?outMap ;
   enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"hasKey" !"string" !"inString" !"bool" !false ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"count" !"uint" !false ;
+  enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"anyString" !"string" !true ;
   enterBaseFinalReaderWithoutArgument !?outMap !?ioUnifiedTypeMap !"stringList" !"stringlist" !false ;
 end method ;
 
