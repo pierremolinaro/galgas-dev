@@ -854,7 +854,7 @@ indexOfFirstObjectEqualTo (const TYPE & inValue) const {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Array Access                                                            *
+//   Array Access                                                              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -876,7 +876,9 @@ void TC_UniqueArray <TYPE>::setObjectAtIndex (const TYPE & inObject,
   #ifndef DO_NOT_GENERATE_CHECKINGS
     checkIndex (inIndex COMMA_THERE) ;
   #endif
-  mArray [inIndex] = inObject ;
+  if (NULL != mArray) {
+    mArray [inIndex] = inObject ;
+  }
 }
 
 //-----------------------------------------------------------------------------*
