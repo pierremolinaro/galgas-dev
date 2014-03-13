@@ -1847,10 +1847,9 @@ void C_BDD::printBDD (AC_OutputStream & inStream,
 
 //---------------------------------------------------------------------*
 
-static void
-printBDDline (const TC_UniqueArray <char> & inDisplayString,
-              const TC_UniqueArray <PMSInt32> & inNameLengthArray,
-              const PMSInt32 inLeadingSpacesCount) {
+static void printBDDline (const TC_UniqueArray <char> & inDisplayString,
+                          const TC_UniqueArray <PMSInt32> & inNameLengthArray,
+                          const PMSInt32 inLeadingSpacesCount) {
   for (PMSInt32 i=0 ; i<inLeadingSpacesCount ; i++) {
     co << " " ;
   }

@@ -1629,11 +1629,11 @@ PMUInt32 C_String::LevenshteinDistanceFromString (const C_String & inOperand) co
   TC_UniqueArray2 <PMUInt32> distance (myLength + 1, operandLength + 1) ;
 
   for (PMSInt32 i=0 ; i<=myLength ; i++) {
-    distance (i, 0 COMMA_HERE) = (PMUInt32) i ;
+    distance.setObjectAtIndexes ((PMUInt32) i, i, 0 COMMA_HERE) ;
   }
  
   for (PMSInt32 j=0 ; j<=operandLength ; j++) {
-    distance (0, j COMMA_HERE) = (PMUInt32) j ;
+    distance.setObjectAtIndexes ((PMUInt32) j, 0, j COMMA_HERE) ;
   }
  
   for (PMSInt32 j=1 ; j<=operandLength ; j++) {
