@@ -2,7 +2,7 @@
 //                                                                             *
 //   GALGAS_double                                                           *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2002, ..., 2013 Pierre Molinaro.                             *
 //                                                                             *

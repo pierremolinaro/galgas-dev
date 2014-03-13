@@ -2,7 +2,7 @@
 //                                                                             *
 //  Class for date handling.                                                 *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 1999, ..., 2009 Pierre Molinaro.                             *
 //                                                                             *

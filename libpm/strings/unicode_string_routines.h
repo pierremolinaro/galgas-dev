@@ -4,7 +4,7 @@
 //  that are in direct correspondance with char * C string routines of C     *
 //  library.                                                                 *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2008, ..., 2008 Pierre Molinaro.                             *
 //                                                                             *

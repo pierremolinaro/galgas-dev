@@ -2,7 +2,7 @@
 //                                                                             *
 //  'C_SourceTextInString'                                                   *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 1996, ..., 2010 Pierre Molinaro.                             *
 //                                                                             *

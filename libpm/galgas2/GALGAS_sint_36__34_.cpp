@@ -2,7 +2,7 @@
 //                                                                             *
 //  'GALGAS_sint64' : galgas sint64                                          *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2006, ..., 2011 Pierre Molinaro.                             *
 //                                                                             *

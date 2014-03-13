@@ -5,7 +5,7 @@
 //   --version : Display software current version                            *
 //   --no-color: Do not issue colored messages                               *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2003, ..., 2012 Pierre Molinaro.                             *
 //                                                                             *

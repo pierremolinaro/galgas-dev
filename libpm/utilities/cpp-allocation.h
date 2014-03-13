@@ -2,7 +2,7 @@
 //                                                                             *
 //  Implementation of routines for handling dynamic allocation checking.     *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 1994, ..., 2010 Pierre Molinaro.                             *
 //                                                                             *

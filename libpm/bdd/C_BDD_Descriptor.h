@@ -2,7 +2,7 @@
 //                                                                             *
 //     C++ class for descripting BDD sets                                    *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2002, ..., 2005 Pierre Molinaro.                             *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *

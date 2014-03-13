@@ -2,7 +2,7 @@
 //                                                                             *
 //  AC_GALGAS_map : Base class for GALGAS map                                *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2008, ..., 2011 Pierre Molinaro.                             *
 //                                                                             *

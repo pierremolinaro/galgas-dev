@@ -2,7 +2,7 @@
 //                                                                             *
 //  'C_Compiler' : the compiler base class ;                                 *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2009, ..., 2012 Pierre Molinaro.                             *
 //                                                                             *

@@ -23,7 +23,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                               Constructors                                *
+//                               Constructors                                  *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -65,7 +65,7 @@ C_Lexique (inCallerCompiler, inSourceString, inStringForError COMMA_THERE)%
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                 I N D E X I N G    D I R E C T O R Y                      *
+//                 I N D E X I N G    D I R E C T O R Y                        *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -75,7 +75,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                        Lexical error message list                         *
+//                        Lexical error message list                           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 %
@@ -85,7 +85,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
 %
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//          Syntax error messages, for every terminal symbol                 *
+//          Syntax error messages, for every terminal symbol                   *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 %
@@ -96,7 +96,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
 %
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                appendTerminalMessageToSyntaxErrorMessage                  *
+//                appendTerminalMessageToSyntaxErrorMessage                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -112,7 +112,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::appendTerminalMessageToSyntaxErrorMessage 
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                      U N I C O D E    S T R I N G S                       *
+//                      U N I C O D E    S T R I N G S                         *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 %
@@ -142,7 +142,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::appendTerminalMessageToSyntaxErrorMessage 
 %
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                          getCurrentTokenString                            *
+//                          getCurrentTokenString                              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -176,7 +176,7 @@ end foreach
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                           Template Delimiters                             *
+//                           Template Delimiters                               *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -197,7 +197,7 @@ end foreach
 %
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                           Template Replacements                           *
+//                           Template Replacements                             *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -218,21 +218,23 @@ end foreach
 %
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//            Terminal Symbols as end of script in template mark             *
+//            Terminal Symbols as end of script in template mark               *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-% foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList]
-    before %static const bool kEndOfScriptInTemplateArray [%![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string]%] = {\n%
-    do %  %![mIsEndOfTemplateMark cString]% /* %![mTerminalName string]% */%
-    between %,\n%
-    after %\n} ;\n%
-  end foreach
+% if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
+    foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList]
+      before %static const bool kEndOfScriptInTemplateArray [%![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string]%] = {\n%
+      do %  %![mIsEndOfTemplateMark cString]% /* %![mTerminalName string]% */%
+      between %,\n%
+      after %\n} ;\n%
+    end foreach
+  end if
 %
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//               P A R S E    L E X I C A L    T O K E N                     *
+//               P A R S E    L E X I C A L    T O K E N                       *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -334,7 +336,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                         E N T E R    T O K E N                            *
+//                         E N T E R    T O K E N                              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -354,7 +356,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDEN
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//               A T T R I B U T E   A C C E S S                             *
+//               A T T R I B U T E   A C C E S S                               *
 //                                                                             *
 %
   foreach LEXICAL_ATTRIBUTE_MAP do
@@ -366,7 +368,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDEN
   end foreach
 %//-----------------------------------------------------------------------------*
 //                                                                             *
-//         A S S I G N    F R O M    A T T R I B U T E                       *
+//         A S S I G N    F R O M    A T T R I B U T E                         *
 //                                                                             *
 %
   foreach LEXICAL_ATTRIBUTE_MAP do
@@ -382,7 +384,7 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::enterToken (const cTokenFor_%!LEXIQUE_IDEN
   end foreach
 %//-----------------------------------------------------------------------------*
 //                                                                             *
-//                         I N T R O S P E C T I O N                         *
+//                         I N T R O S P E C T I O N                           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

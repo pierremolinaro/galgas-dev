@@ -4,7 +4,7 @@
 //                                                                             *
 //  Started february 23th, 2008.                                             *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2008, ..., 2011 Pierre Molinaro.                             *
 //                                                                             *

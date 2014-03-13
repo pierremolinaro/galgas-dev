@@ -3,7 +3,7 @@
 //  Routine 'F_Analyze_CLI_Options' : a way for automatic command            *
 //  line options analysis for MacOS, Win32 and Unix.                         *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2001, ..., 2012 Pierre Molinaro.                             *
 //                                                                             *

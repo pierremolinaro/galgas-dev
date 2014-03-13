@@ -8,7 +8,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                           Template Replacments                            *
+//                           Template Replacements                             *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -18,7 +18,7 @@ end if%
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                           Template Delimiters                             *
+//                           Template Delimiters                               *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -76,7 +76,7 @@ end if%
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                 I N D E X I N G    D I R E C T O R Y                      *
+//                 I N D E X I N G    D I R E C T O R Y                        *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -86,7 +86,7 @@ end if%
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                 I N D E X I N G    T I T L E S                            *
+//                 I N D E X I N G    T I T L E S                              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -102,16 +102,18 @@ end if%
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//            Terminal Symbols as end of script in template mark             *
+//            Terminal Symbols as end of script in template mark               *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-% foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList]
-    before %static const BOOL kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [%![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string]%] = {\n%
-    do %  %![mIsEndOfTemplateMark ocString]% /* %![mTerminalName string]% */%
-    between %,\n%
-    after %\n} ;\n%
-  end foreach
+% if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
+   foreach [LEXIQUE_ANALYSIS_CONTEXT mTerminalList]
+      before %static const BOOL kEndOfScriptInTemplateArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% [%![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string]%] = {\n%
+      do %  %![mIsEndOfTemplateMark ocString]% /* %![mTerminalName string]% */%
+      between %,\n%
+      after %\n} ;\n%
+    end foreach
+  end if
 %
 
 %
@@ -136,7 +138,7 @@ end if%
 %
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//               P A R S E    L E X I C A L    T O K E N                     *
+//               P A R S E    L E X I C A L    T O K E N                       *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -148,7 +150,7 @@ end if%
     mTokenStartLocation = mCurrentLocation ;
 %
   if [[LEXIQUE_COMPONENT_ROOT mTemplateDelimitorList] length] > 0 then
-%    if ((mMatchedTemplateDelimiterIndex >= 0) && ([[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:mMatchedTemplateDelimiterIndex] startString].length > 0)) {
+%    if ((mMatchedTemplateDelimiterIndex >= 0) && ([[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] startString].length > 0)) {
       const BOOL foundEndDelimitor = [self testForInputString:[[kTemplateDefinitionArray_%![LEXIQUE_CLASS_NAME identifierRepresentation]% objectAtIndex:(NSUInteger) mMatchedTemplateDelimiterIndex] endString] advance:YES] ;
       if (foundEndDelimitor) {
         mMatchedTemplateDelimiterIndex = -1 ;
@@ -214,7 +216,7 @@ end if%
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                   T E R M I N A L    C O U N T                            *
+//                   T E R M I N A L    C O U N T                              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -224,7 +226,7 @@ end if%
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                     S T Y L E   C O U N T                                 *
+//                     S T Y L E   C O U N T                                   *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -234,7 +236,7 @@ end if%
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                I S    T E M P L A T E    L E X I Q U E                    *
+//                I S    T E M P L A T E    L E X I Q U E                      *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -244,7 +246,7 @@ end if%
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//              S T Y L E   F O R    T E R M I N A L                         *
+//              S T Y L E   F O R    T E R M I N A L                           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -258,7 +260,7 @@ end foreach%\n  } ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//    A T O M I C    S E L E C T I O N   F O R    T E R M I N A L            *
+//    A T O M I C    S E L E C T I O N   F O R    T E R M I N A L              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -272,7 +274,7 @@ end foreach%\n  } ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//             S T Y L E   N A M E    F O R    I N D E X                     *
+//             S T Y L E   N A M E    F O R    I N D E X                       *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -291,7 +293,7 @@ end foreach%\n    } ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//         S T Y L E   I D E N T I F I E R    F O R    I N D E X             *
+//         S T Y L E   I D E N T I F I E R    F O R    I N D E X               *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -311,7 +313,7 @@ end foreach
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//         L E X I Q U E   I D E N T I F I E R                               *
+//         L E X I Q U E   I D E N T I F I E R                                 *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

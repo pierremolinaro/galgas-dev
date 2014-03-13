@@ -2,7 +2,7 @@
 //                                                                             *
 //  'C_ErrorOut' : a class for console output                                *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2006, ..., 2009 Pierre Molinaro.                             *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *

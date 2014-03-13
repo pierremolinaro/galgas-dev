@@ -2,7 +2,7 @@
 //                                                                             *
 //  GALGAS introspection classes                                             *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2009, ..., 2009 Pierre Molinaro.                             *
 //                                                                             *

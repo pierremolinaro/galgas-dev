@@ -1,8 +1,8 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  unicode_character : an implementation of Unicode character               *
+//  unicode_character : an implementation of Unicode character                 *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2008, ..., 2009 Pierre Molinaro.                             *
 //                                                                             *
@@ -50,7 +50,7 @@ typedef SInt64 PMSInt64 ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-// D E F I N E    M I N    A N D    M A X     F O R    I N T    T Y P E S    *
+// D E F I N E    M I N    A N D    M A X     F O R    I N T    T Y P E S      *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

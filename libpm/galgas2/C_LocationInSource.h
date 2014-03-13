@@ -2,7 +2,7 @@
 //                                                                             *
 //  'C_LocationInSource'                                                     *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 1996, ..., 2011 Pierre Molinaro.                             *
 //                                                                             *

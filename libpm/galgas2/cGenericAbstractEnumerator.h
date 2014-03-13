@@ -2,7 +2,7 @@
 //                                                                             *
 //  cGenericAbstractEnumerator: base class for enumerating GALGAS enumerable objects*
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                             *
 //                                                                             *

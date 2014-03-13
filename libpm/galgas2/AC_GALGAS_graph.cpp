@@ -1,8 +1,8 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  AC_GALGAS_graph : Base class for GALGAS graph                            *
+//  AC_GALGAS_graph : Base class for GALGAS graph                              *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2008, ..., 2013 Pierre Molinaro.                             *
 //                                                                             *

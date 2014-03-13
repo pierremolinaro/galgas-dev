@@ -2,7 +2,7 @@
 //                                                                             *
 //  'C_TCPSocketOut' : a class for sending data as TCP socket client         *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2011, ..., 2011 Pierre Molinaro.                             *
 //                                                                             *

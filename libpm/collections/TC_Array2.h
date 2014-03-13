@@ -10,7 +10,7 @@
 //                                                                             *
 //  COPY OF ITS INSTANCES IS ALLOWED AND FULLY IMPLEMENTED BY DUPLICATION.   *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 1997 Pierre Molinaro.                                      *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *

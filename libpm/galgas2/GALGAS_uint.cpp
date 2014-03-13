@@ -2,7 +2,7 @@
 //                                                                             *
 //  'GALGAS_uint' : galgas uint32                                            *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2009, ..., 2011 Pierre Molinaro.                             *
 //                                                                             *

@@ -2,7 +2,7 @@
 //                                                                             *
 //  'C_ColoredConsole' : a class for colored console output                  *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2011, ..., 2011 Pierre Molinaro.                             *
 //                                                                             *

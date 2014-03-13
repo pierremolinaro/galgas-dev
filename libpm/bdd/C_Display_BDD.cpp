@@ -2,7 +2,7 @@
 //                                                                             *
 //     C++ class for displaying BDDs (use with the BDD package 'C_BDD.cpp')  *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2000, ..., 2005 Pierre Molinaro.                             *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *

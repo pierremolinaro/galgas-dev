@@ -2,7 +2,7 @@
 //                                                                             *
 //   G E N E R I C     A R R A Y                                             *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  This library is free software; you can redistribute it and/or modify it    *
 //  under the terms of the GNU Lesser General Public License as published      *

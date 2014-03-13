@@ -2,7 +2,7 @@
 //                                                                             *
 //  C_UIntSet : algorithms on sets of PMUInt32                               *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2013, ..., 2013 Pierre Molinaro.                             *
 //                                                                             *
