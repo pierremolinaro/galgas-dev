@@ -2,7 +2,7 @@
 //                                                                             *
 //   GALGAS_bool : this class implements the GALGAS 'bool' native type       *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2009, ..., 2010 Pierre Molinaro.                             *
 //                                                                             *

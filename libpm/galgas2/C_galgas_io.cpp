@@ -1,10 +1,10 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  'C_galgas_io'                                                            *
+//  'C_galgas_io'                                                              *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 1996, ..., 2011 Pierre Molinaro.                             *
+//  Copyright (C) 1996, ..., 2014 Pierre Molinaro.                             *
 //                                                                             *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //                                                                             *
@@ -12,7 +12,7 @@
 //  ECN, École Centrale de Nantes (France)                                     *
 //                                                                             *
 //  This library is free software; you can redistribute it and/or modify it    *
-//  under the terms of the GNU Lesser General Public License as published    *
+//  under the terms of the GNU Lesser General Public License as published      *
 //  by the Free Software Foundation; either version 2 of the License, or       *
 //  (at your option) any later version.                                        *
 //                                                                             *
@@ -73,7 +73,7 @@ C_UserCancelException:: C_UserCancelException (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Exception raised when maximum error count is reached                     *
+//  Exception raised when maximum error count is reached                       *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -83,7 +83,7 @@ const char * max_error_count_reached_exception::what (void) const throw () {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Exception raised when maximum warning count is reached                   *
+//  Exception raised when maximum warning count is reached                     *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -169,7 +169,7 @@ PMSInt32 totalWarningCount (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//    Construct error or warning location message                            *
+//    Construct error or warning location message                              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -209,7 +209,7 @@ void constructErrorOrWarningLocationMessage (C_String & ioMessage,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//    This method is called by lexique for signaling lexical warning         *
+//    This method is called by lexique for signaling lexical warning           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -234,7 +234,7 @@ void signalLexicalWarning (const C_SourceTextInString * inSourceTextPtr,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//    This method is called by lexique for signaling lexical error           *
+//    This method is called by lexique for signaling lexical error             *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -258,7 +258,7 @@ void signalLexicalError (const C_SourceTextInString * inSourceTextPtr,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//    This method is called by lexique for signaling parsing error           *
+//    This method is called by lexique for signaling parsing error             *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -287,7 +287,7 @@ void signalParsingError (const C_SourceTextInString * inSourceTextPtr,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//            Method called for signaling an extract error                   *
+//            Method called for signaling an extract error                     *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -337,7 +337,7 @@ void signalExtractError (const C_SourceTextInString * inSourceTextPtr,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//            Method called for signaling a cast error                       *
+//            Method called for signaling a cast error                         *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -513,14 +513,12 @@ void signalRunTimeWarning (const C_String & inWarningMessage
 //-----------------------------------------------------------------------------*
 
 static const utf32 COCOA_MESSAGE_ID = TO_UNICODE (1) ;
-static const utf32 COCOA_REWRITE_SUCCESS_ID = TO_UNICODE (2) ;
 static const utf32 COCOA_WARNING_ID = TO_UNICODE (3) ;
 static const utf32 COCOA_ERROR_ID   = TO_UNICODE (4) ;
-//static const utf32 COCOA_FILE_CREATION_SUCCESS_ID = TO_UNICODE (5) ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//    Method called for printing an error                                    *
+//    Method called for printing an error                                      *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -564,7 +562,7 @@ void ggs_printError (const C_SourceTextInString * inSourceTextPtr,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//    Method called for printing a warning                                   *
+//    Method called for printing a warning                                     *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -609,7 +607,7 @@ void ggs_printWarning (const C_SourceTextInString * inSourceTextPtr,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//    Method called for printing a success message                           *
+//    Method called for printing a success message                             *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -637,7 +635,7 @@ void ggs_printFileOperationSuccess (const C_String & inMessage
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//    Methods called for printing a message                                  *
+//    Methods called for printing a message                                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

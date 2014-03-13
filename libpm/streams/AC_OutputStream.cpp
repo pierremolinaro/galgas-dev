@@ -2,7 +2,7 @@
 //                                                                             *
 //  AC_OutputStream : an abstract output stream class                        *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 1997, ..., 2009 Pierre Molinaro.                             *
 //                                                                             *

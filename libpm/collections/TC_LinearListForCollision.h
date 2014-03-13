@@ -9,7 +9,7 @@
 //  COPY OF ITS INSTANCES IS FORBIDDEN BY REDEFINITION OF COPY CONSTRUCTOR   *
 //  AND ASSIGNMENT OPERATOR.                                                 *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2001 Pierre Molinaro.                                      *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *

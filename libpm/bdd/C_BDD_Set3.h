@@ -2,7 +2,7 @@
 //                                                                             *
 //  Managing a set with BDD                                                  *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2001, ..., 2005 Pierre Molinaro.                             *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *

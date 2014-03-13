@@ -2,7 +2,7 @@
 //                                                                             *
 //  GALGAS_binaryset                                                         *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Created january 22, 2007.                                                *
 //                                                                             *

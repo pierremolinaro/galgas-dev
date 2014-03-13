@@ -2,7 +2,7 @@
 //                                                                             *
 //  acPtr_class : Base class for GALGAS class                                 *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2008, ..., 2010 Pierre Molinaro.                             *
 //                                                                             *

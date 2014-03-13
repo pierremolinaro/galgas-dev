@@ -2,7 +2,7 @@
 //                                                                             *
 //  'AC_FileHandle' : an abstract class for handling files handles           *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2012, ..., 2012 Pierre Molinaro.                             *
 //                                                                             *

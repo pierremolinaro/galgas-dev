@@ -2,7 +2,7 @@
 //                                                                             *
 //  Collection of macros for determining machine and compiler.               *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 1997, ..., 2012 Pierre Molinaro.                             *
 //                                                                             *

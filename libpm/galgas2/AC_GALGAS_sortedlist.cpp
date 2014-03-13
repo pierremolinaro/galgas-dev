@@ -2,7 +2,7 @@
 //                                                                             *
 //  AC_GALGAS_sortedlist                                                     *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2005, ..., 2010 Pierre Molinaro.                             *
 //                                                                             *

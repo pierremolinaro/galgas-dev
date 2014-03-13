@@ -2,7 +2,7 @@
 //                                                                             *
 //  Routine 'main' (call user supplied 'mainForLIBPM' routine).              *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2002, ..., 2012 Pierre Molinaro.                             *
 //                                                                             *

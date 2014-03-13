@@ -2,7 +2,7 @@
 //                                                                             *
 //  GALGAS_enumerable : Base class for GALGAS enumerable object              *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2010, ..., 2010 Pierre Molinaro.                             *
 //                                                                             *

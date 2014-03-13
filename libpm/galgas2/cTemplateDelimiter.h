@@ -3,7 +3,7 @@
 //  'C_Lexique' : an abstract lexique class ;                                *
 //  Galgas generated scanner classes inherit from this class.                *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 1996, ..., 2010 Pierre Molinaro.                             *
 //                                                                             *

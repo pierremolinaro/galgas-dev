@@ -1,10 +1,10 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  C_String : an implementation of fully dynamic character string           *
+//  C_String : an implementation of fully dynamic character string             *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 1997, ..., 2011 Pierre Molinaro.                             *
+//  Copyright (C) 1997, ..., 2014 Pierre Molinaro.                             *
 //                                                                             *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //                                                                             *
@@ -199,7 +199,7 @@ void cEmbeddedString::reallocEmbeddedString (const PMUInt32 inCapacity) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   C O N S T R U C T O R S                                                 *
+//   C O N S T R U C T O R S                                                   *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -235,7 +235,7 @@ mEmbeddedString (NULL) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   D E S T R U C T O R                                                     *
+//   D E S T R U C T O R                                                       *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -251,7 +251,7 @@ PMUInt32 C_String::capacity (void) const {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   A S S I G N M E N T    O P E R A T O R S                                *
+//   A S S I G N M E N T    O P E R A T O R S                                  *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -300,7 +300,7 @@ PMUInt32 C_String::hash (void) const {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   G E T    M E T H O D S                                                  *
+//   G E T    M E T H O D S                                                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -327,7 +327,7 @@ utf32 C_String::readCharOrNul (const PMSInt32 inIndex COMMA_LOCATION_ARGS) const
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   lastCharacter                                                           *
+//   lastCharacter                                                             *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -459,7 +459,7 @@ void C_String::setLengthToZero (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   S E T   F R O M    S T R I N G                                          *
+//   S E T   F R O M    S T R I N G                                            *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -471,7 +471,7 @@ void C_String::setFromString (const C_String & inString) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   S E T    C A P A C I T Y                                                *
+//   S E T    C A P A C I T Y                                                  *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1621,9 +1621,6 @@ static inline PMUInt32 minimum (const PMUInt32 inA, const PMUInt32 inB) { return
 //-----------------------------------------------------------------------------*
 
 PMUInt32 C_String::LevenshteinDistanceFromString (const C_String & inOperand) const {
-
-//char s[1..m], char t[1..n])
-//{
   const PMSInt32 myLength = length () ;
   const PMSInt32 operandLength = inOperand.length () ;
   // for all i and j, d[i,j] will hold the Levenshtein distance between

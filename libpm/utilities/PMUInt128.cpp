@@ -2,7 +2,7 @@
 //                                                                             *
 //  Handing unsigned integer of arbitrary size                               *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2012, ..., 2012 Pierre Molinaro.                             *
 //                                                                             *

@@ -2,7 +2,7 @@
 //                                                                             *
 //  GALGAS prologue / epilogue handling class                                *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2009, ..., 2010 Pierre Molinaro.                             *
 //                                                                             *

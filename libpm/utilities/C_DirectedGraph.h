@@ -2,7 +2,7 @@
 //                                                                             *
 //  C_DirectedGraph : algorithms on ordered graphs                           *
 //                                                                             *
-//  This file is part of libpm library                                       *
+//  This file is part of libpm library                                         *
 //                                                                             *
 //  Copyright (C) 2013, ..., 2013 Pierre Molinaro.                             *
 //                                                                             *
