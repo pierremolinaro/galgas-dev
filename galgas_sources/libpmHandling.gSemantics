@@ -6,7 +6,7 @@ semantics libpmHandling :
 
 
 local filewrapper libpmFileWrapper in "../libpm" {
- "h", "cpp", "m", "mak", "pch"
+ "h", "cpp", "m", "mak", "pch", "py"
 }{
  "tiff", "png", "xib", "gif"
 }{
@@ -27,7 +27,11 @@ routine updateLIBPMatPath ??@string inLIBPMPath :
   foreach [fw allTextFilePathes] do
     const @string contents := [fw textFileContentsAtPath !mValue] ;
     const @string actualFilePath := inLIBPMPath . mValue ;
-    [contents writeToFileWhenDifferentContents !actualFilePath ?*] ;
+    if [actualFilePath pathExtension] == "py" then
+      [contents writeToExecutableFileWhenDifferentContents !actualFilePath ?*] ;
+    else
+      [contents writeToFileWhenDifferentContents !actualFilePath ?*] ;
+    end if ;
     allNeededFileSet += !mValue ;
   end foreach ;
 #--- Update binary files
