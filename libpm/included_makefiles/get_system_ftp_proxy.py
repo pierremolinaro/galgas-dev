@@ -3,7 +3,7 @@
  
 import urllib
  
-ftp_proxy = urllib.getproxies()['ftp']
+proxies = urllib.getproxies ()
 
-if ftp_proxy != "" :
-  print "--proxy " + ftp_proxy
+if 'ftp' in proxies :
+  print "--proxy " + proxies ['ftp']
