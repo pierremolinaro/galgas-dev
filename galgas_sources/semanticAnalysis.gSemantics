@@ -1559,7 +1559,10 @@ override method @categoryMethodAST semanticAnalysis
     !analysisContext
     !mCategoryMethodFormalParameterList
     ![@localConstantList emptyList]
-    ![selfType mAllTypedAttributeList]
+    !if ([selfType mTypeKindEnum] == [@typeKindEnum classType]) | ([selfType mTypeKindEnum] == [@typeKindEnum structType])
+       then [selfType mAllTypedAttributeList]
+       else [@typedAttributeList emptyList]
+     end
     ![@typedAttributeList emptyList]
     !selfObjectAccessor
     !mCategoryMethodInstructionList
@@ -1627,7 +1630,11 @@ override method @overridingCategoryMethodAST semanticAnalysis
     !analysisContext
     !mOverridingCategoryMethodFormalParameterList
     ![@localConstantList emptyList]
-    ![selfType mAllTypedAttributeList]
+#    ![selfType mAllTypedAttributeList]
+    !if ([selfType mTypeKindEnum] == [@typeKindEnum classType]) | ([selfType mTypeKindEnum] == [@typeKindEnum structType])
+       then [selfType mAllTypedAttributeList]
+       else [@typedAttributeList emptyList]
+     end
     ![@typedAttributeList emptyList]
     !"object->"
     !mOverridingCategoryMethodInstructionList
@@ -2013,7 +2020,11 @@ override method @categoryReaderAST semanticAnalysis
   analyzeFunctionBody
     !analysisContext
     !mCategoryReaderFormalInputParameterList
-    ![selfType mAllTypedAttributeList]
+#    ![selfType mAllTypedAttributeList]
+    !if ([selfType mTypeKindEnum] == [@typeKindEnum classType]) | ([selfType mTypeKindEnum] == [@typeKindEnum structType])
+       then [selfType mAllTypedAttributeList]
+       else [@typedAttributeList emptyList]
+     end
     !selfObjectAccessor
     !mCategoryReaderInstructionList
     !mCategoryReaderReturnedVariableName
@@ -2097,7 +2108,11 @@ override method @overridingCategoryReaderAST semanticAnalysis
   analyzeFunctionBody
     !analysisContext
     !mOverridingCategoryReaderFormalInputParameterList
-    ![selfType mAllTypedAttributeList]
+#    ![selfType mAllTypedAttributeList]
+    !if ([selfType mTypeKindEnum] == [@typeKindEnum classType]) | ([selfType mTypeKindEnum] == [@typeKindEnum structType])
+       then [selfType mAllTypedAttributeList]
+       else [@typedAttributeList emptyList]
+     end
     !"object->"
     !mOverridingCategoryReaderInstructionList
     !mOverridingCategoryReaderReturnedVariableName
