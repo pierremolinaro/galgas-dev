@@ -4,9 +4,11 @@
 #                                                               *
 #---------------------------------------------------------------*
 
-TOOL_CHAIN_ARCHIVE := gcc-4.8.0-for-linux32
-TOOL_CHAIN_URL := http://crossgcc.rts-software.org/download/gcc-4.8.0-for-linux32-linux64/$(TOOL_CHAIN_ARCHIVE).tar.bz2
+TOOL_CHAIN_VERSION := 4.8.1
+TOOL_CHAIN_ARCHIVE := gcc-$(TOOL_CHAIN_VERSION)-for-linux32
 TOOL_CHAIN_INSTALL_PATH := /usr/local/$(TOOL_CHAIN_ARCHIVE)
+
+TOOL_CHAIN_URL := http://crossgcc.rts-software.org/download/gcc-$(TOOL_CHAIN_VERSION)-for-linux32-linux64/$(TOOL_CHAIN_ARCHIVE).tar.bz2
 
 #---------------------------------------------------------------*
 
