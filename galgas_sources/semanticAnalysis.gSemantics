@@ -2073,7 +2073,6 @@ override method @overridingCategoryReaderAST semanticAnalysis
   loop [inSemanticContext->mTypeMap count] + 1 :
   while (not [superType isNull]) & (baseTypeName == "") do
     if [[superType mReaderMap] hasKey ![mOverridingCategoryReaderName string]] then
-      @methodQualifier qualifier ;
       [[superType mReaderMap] searchKey
         !mOverridingCategoryReaderName
         ?*
@@ -2081,7 +2080,7 @@ override method @overridingCategoryReaderAST semanticAnalysis
         ?inheritedDeclarationLocation
         ?*
         ?inheritedReturnType
-        ?qualifier
+        ??@methodQualifier qualifier
         ?*
       ] ;
       if qualifier <= [@methodQualifier isBasicFinal] then
@@ -2101,10 +2100,6 @@ override method @overridingCategoryReaderAST semanticAnalysis
     !"object"
     ![@unifiedTypeMapProxy null]
   ] ;
-  @unifiedTypeMapProxy returnType ;
-  @string returnVariableCppName ;
-  @formalInputParameterListForGeneration formalParameterListForGeneration ;
-  @semanticInstructionListForGeneration semanticInstructionListForGeneration ;
   analyzeFunctionBody
     !analysisContext
     !mOverridingCategoryReaderFormalInputParameterList
@@ -2118,10 +2113,10 @@ override method @overridingCategoryReaderAST semanticAnalysis
     !mOverridingCategoryReaderReturnedVariableName
     !mOverridingCategoryReaderReturnedTypeName
     !mEndOfReaderLocation
-    ?formalParameterListForGeneration
-    ?returnType
-    ?returnVariableCppName
-    ?semanticInstructionListForGeneration
+    ??@formalInputParameterListForGeneration formalParameterListForGeneration
+    ??@unifiedTypeMapProxy returnType
+    ??@string returnVariableCppName
+    ??@semanticInstructionListForGeneration semanticInstructionListForGeneration
   ;
 #--- Check Signature
   if baseTypeName != "" then
@@ -2135,17 +2130,18 @@ override method @overridingCategoryReaderAST semanticAnalysis
     ;
   end if ;
 #---
-  ioSemanticDeclarationListForGeneration += ![@overrideCategoryReaderForGeneration new
-    !mIsGlobal
-    ![mTypeName string]
-    !baseTypeName
-    ![mOverridingCategoryReaderName string]
-    !returnType
-    !returnVariableCppName
-    !formalParameterListForGeneration
-    ![selfType mAllTypedAttributeList]
-    !semanticInstructionListForGeneration
-  ]
+  ioSemanticDeclarationListForGeneration +=
+    ![@overrideCategoryReaderForGeneration new
+      !mIsGlobal
+      ![mTypeName string]
+      !baseTypeName
+      ![mOverridingCategoryReaderName string]
+      !returnType
+      !returnVariableCppName
+      !formalParameterListForGeneration
+      ![selfType mAllTypedAttributeList]
+      !semanticInstructionListForGeneration
+    ]
   !"~" # So that category are declared at the end of the file
   ;
 end method ;
