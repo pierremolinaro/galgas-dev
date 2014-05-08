@@ -2,7 +2,7 @@
 #                                                                           *
 #  semantics definitions for semantics component                            *
 #                                                                           *
-#  Copyright (C) 2009, ..., 2013 Pierre Molinaro.                           *
+#  Copyright (C) 2009, ..., 2014 Pierre Molinaro.                           *
 #                                                                           *
 #  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
 #                                                                           *
@@ -678,6 +678,7 @@ override method @binarysetPredefinedTypeAST getReaderMap
   enterBaseFinalReaderWith3Arguments !?outMap !?ioUnifiedTypeMap !"swap321" !"uint" !"inBitCount1" !"uint" !"inBitCount2" !"uint" !"inBitCount3" !"binaryset" !false ;
   enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"transitiveClosure" !"uint" !"inBitCount" !"binaryset" !false ;
   enterBaseFinalReaderWith2Arguments !?outMap !?ioUnifiedTypeMap !"accessibleStates" !"binaryset" !"inInitialStateSet" !"uint" !"inBitCount" !"binaryset" !false ;
+  enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"implies" !"binaryset" !"inOperand" !"binaryset" !false ;
   enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"equalTo" !"binaryset" !"inOperand" !"binaryset" !false ;
   enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"notEqualTo" !"binaryset" !"inOperand" !"binaryset" !false ;
   enterBaseFinalReaderWithArgument !?outMap !?ioUnifiedTypeMap !"lowerOrEqualTo" !"binaryset" !"inOperand" !"binaryset" !false ;

@@ -455,6 +455,17 @@ GALGAS_binaryset GALGAS_binaryset::reader_ITE (const GALGAS_binaryset & inTHENop
 
 //-----------------------------------------------------------------------------*
 
+GALGAS_binaryset GALGAS_binaryset::reader_implies (const GALGAS_binaryset & inOperand
+                                                   COMMA_UNUSED_LOCATION_ARGS) const {
+  GALGAS_binaryset result ;
+  if (inOperand.isValid ()) {
+    result = GALGAS_binaryset ((~ mBDD) | inOperand.mBDD) ;
+  }
+  return result ;
+}
+
+//-----------------------------------------------------------------------------*
+
 GALGAS_binaryset GALGAS_binaryset::reader_equalTo (const GALGAS_binaryset & inOperand
                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
