@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  GALGAS_bool : this class implements introspection for GALGAS types       *
+//  GALGAS_bool : this class implements introspection for GALGAS types         *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -28,7 +28,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                     'GALGAS_type' class                                   *
+//                     'GALGAS_type' class                                     *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

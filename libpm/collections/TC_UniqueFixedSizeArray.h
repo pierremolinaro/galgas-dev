@@ -2,16 +2,16 @@
 //                                                                             *
 // Declaration and implementation of the template class 'TC_UniqueFixedSizeArray'*
 //                                                                             *
-//  It implements a generic fixed size vector.                               *
+//  It implements a generic fixed size vector.                                 *
 //                                                                             *
-//  COPY OF ITS INSTANCES IS NOT ALLOWED.                                    *
+//  COPY OF ITS INSTANCES IS NOT ALLOWED.                                      *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 1997-2002 Pierre Molinaro.                                 *
+//  Copyright (C) 1997-2002 Pierre Molinaro.                                   *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
-//  ECN, Ecole Centrale de Nantes                                            *
+//  ECN, École Centrale de Nantes                                              *
 //                                                                             *
 //  This library is free software; you can redistribute it and/or modify it    *
 //  under the terms of the GNU Lesser General Public License as published      *
@@ -74,7 +74,7 @@ template <class TYPE, PMSInt32 SIZE> class TC_UniqueFixedSizeArray {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                 Implementation                                            *
+//                 Implementation                                              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -114,7 +114,7 @@ void TC_UniqueFixedSizeArray <TYPE, SIZE>::exchangeItemAtIndex (const PMSInt32 i
   exchange (mFixedArray [inIndex], ioItem) ;
 }
 
-//-----------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 template <class TYPE, PMSInt32 SIZE>
 void exchange (TC_UniqueFixedSizeArray <TYPE, SIZE> & ioOperand1,

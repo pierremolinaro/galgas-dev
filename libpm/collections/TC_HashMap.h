@@ -1,11 +1,11 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//     C++ template class for implementing a map using hashing               *
+//     C++ template class for implementing a map using hashing                 *
 //                                                                             *
-//  Copyright (C) 2001 Pierre Molinaro.                                      *
+//  Copyright (C) 2001 Pierre Molinaro.                                        *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
-//  ECN, Ecole Centrale de Nantes                                            *
+//  ECN, École Centrale de Nantes                                              *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -30,33 +30,33 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  This template can be used in the following way :                         *
-//    - MAP_TYPE is a class that defines the way collisions are handled ;    *
-//    - INFO is a class that defines element information.                    *
+//  This template can be used in the following way :                           *
+//    - MAP_TYPE is a class that defines the way collisions are handled ;      *
+//    - INFO is a class that defines element information.                      *
 //                                                                             *
-//  Class INFO must define the following public method :                     *
+//  Class INFO must define the following public method :                       *
 //                     PMUInt32 getHashCodeForMap (void) const ;               *
-//      this method is used for getting the element hash code.               *
+//      this method is used for getting the element hash code.                 *
 //                                                                             *
-//  Class MAP_TYPE must defines the following public methods :               *
-//            INFO * search_or_insert (const INFO & inInfo,                  *
-//                                     bool & outInsertionPerformed) ;       *
-//            void sweepUnmarkedObjects (void) ;                             *
+//  Class MAP_TYPE must defines the following public methods :                 *
+//            INFO * search_or_insert (const INFO & inInfo,                    *
+//                                     bool & outInsertionPerformed) ;         *
+//            void sweepUnmarkedObjects (void) ;                               *
 //                                                                             *
-//  For class INFO, you can use a map template class, such as :              *
-//     - TC_LinearListForCollision ;                                         *
-//     - TC_AVL_TreeForCollision ;                                           *
-//     - TC_Block_AVL_TreeForCollision.                                      *
+//  For class INFO, you can use a map template class, such as :                *
+//     - TC_LinearListForCollision ;                                           *
+//     - TC_AVL_TreeForCollision ;                                             *
+//     - TC_Block_AVL_TreeForCollision.                                        *
 //                                                                             *
-//  Example :                                                                *
-// //--- Declaration of map type used for collisions resolution              *
-//   typedef TC_AVL_TreeForCollision <myInfoType> cMapType ;                 *
-// //--- Allocation variable declaration                                     *
-//   cMapType::cAllocInfo cMapType::smAllocInfo ;                            *
-// //--- Hash map declaration                                                *
-//   TC_HashMap <cMapType, myInfoType> gMap (66029) ;                        *
+//  Example :                                                                  *
+// //--- Declaration of map type used for collisions resolution                *
+//   typedef TC_AVL_TreeForCollision <myInfoType> cMapType ;                   *
+// //--- Allocation variable declaration                                       *
+//   cMapType::cAllocInfo cMapType::smAllocInfo ;                              *
+// //--- Hash map declaration                                                  *
+//   TC_HashMap <cMapType, myInfoType> gMap (66029) ;                          *
 //                                                                             *
-//  See also 'C_VDD.cpp' for an other example.                               *
+//  See also 'C_VDD.cpp' for an other example.                                 *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

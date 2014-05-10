@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  'C_SourceTextInString'                                                   *
+//  'C_SourceTextInString'                                                     *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

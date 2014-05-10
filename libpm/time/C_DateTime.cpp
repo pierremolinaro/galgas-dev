@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Class for date handling.                                                 *
+//  Class for date handling.                                                   *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -103,7 +103,7 @@ const char * C_DateTime::getDayName (void) const {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//    Date comparisons                                                       *
+//    Date comparisons                                                         *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

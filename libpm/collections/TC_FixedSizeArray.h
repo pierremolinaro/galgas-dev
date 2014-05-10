@@ -1,14 +1,14 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Declaration and implementation of the template class 'TC_FixedSizeArray' *
+//  Declaration and implementation of the template class 'TC_FixedSizeArray'   *
 //                                                                             *
-//  It implements a generic fixed size vector.                               *
+//  It implements a generic fixed size vector.                                 *
 //                                                                             *
-//  COPY OF ITS INSTANCES IS ALLOWED.                                        *
+//  COPY OF ITS INSTANCES IS ALLOWED.                                          *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 1997-2002 Pierre Molinaro.                                 *
+//  Copyright (C) 1997-2002 Pierre Molinaro.                                   *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
@@ -35,7 +35,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Predeclarations                                                         *
+//   Predeclarations                                                           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -47,7 +47,7 @@ void swap (TC_FixedSizeArray <TYPE, SIZE> & ioOperand1,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Template class declaration                                              *
+//   Template class declaration                                                *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -81,7 +81,7 @@ template <class TYPE, PMSInt32 SIZE> class TC_FixedSizeArray {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                 Implementation                                            *
+//                 Implementation                                              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

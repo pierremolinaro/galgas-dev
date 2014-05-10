@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   GALGAS_data : this class implements the GALGAS 'data' native type       *
+//   GALGAS_data : this class implements the GALGAS 'data' native type         *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -37,7 +37,7 @@
 #include <ctype.h>
 
 //-----------------------------------------------------------------------------*
-//   GALGAS_data                                                             *
+//   GALGAS_data                                                               *
 //-----------------------------------------------------------------------------*
 
 GALGAS_data::GALGAS_data (void) :

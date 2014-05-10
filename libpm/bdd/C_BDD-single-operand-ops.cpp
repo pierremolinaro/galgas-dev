@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  BDD package (implementation of ROBDD)                                    *
+//  BDD package (implementation of ROBDD)                                      *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -32,18 +32,18 @@
   #pragma mark Cache for Single Operand Operations
 #endif
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static const PMSInt32 kSingleOperandOperationCacheInitialSize = 131101 ;
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 typedef struct {
   PMUInt32 mOperand ;
   PMUInt32 mResult ;
 } tStructSingleOperandOperationCacheEntry ;
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static tStructSingleOperandOperationCacheEntry * gSingleOperandOperationCacheMap ;
 static PMUInt32 gSingleOperandOperationMapSize ;
@@ -52,13 +52,13 @@ static PMUInt64 gSingleOperandOperationCacheTrivialOperationCount ;
 static PMUInt32 gSingleOperandOperationCacheMaxPowerOfTwoSize = 31 ;
 static bool gSingleOperandOperationCacheExpandable = true ;
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMUInt32 singleOperandOperationCacheMemoryUsage (void) {
   return (gSingleOperandOperationMapSize * (PMUInt32) sizeof (PMUInt64)) / 1000000 ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void releaseSingleOperandOperationCache (void) {
   gSingleOperandOperationCacheMapUsedEntryCount = 0 ;
@@ -66,7 +66,7 @@ void releaseSingleOperandOperationCache (void) {
   gSingleOperandOperationCacheExpandable = true ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static void clearSingleOperandOperationCache (void) {
   gSingleOperandOperationCacheMapUsedEntryCount = 0 ;
@@ -86,7 +86,7 @@ static void clearSingleOperandOperationCache (void) {
   }
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static void reallocSingleOperandOperationCache (const PMUInt32 inNewSize) {
   gSingleOperandOperationCacheMapUsedEntryCount = 0 ;
@@ -135,7 +135,7 @@ static void reallocSingleOperandOperationCache (const PMUInt32 inNewSize) {
   }
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static bool searchInSingleOperandOperationCache (const PMUInt32 inOperand,
                                                  PMUInt32 & outResult) {
@@ -150,7 +150,7 @@ static bool searchInSingleOperandOperationCache (const PMUInt32 inOperand,
   return found ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static void enterInSingleOperandOperationCache (const PMUInt32 inOperand,
                                                 const PMUInt32 inResult) {
@@ -182,7 +182,7 @@ void C_BDD::setSingleOperandOperationCacheMaxSize (const PMUInt32 inPowerOfTwo) 
   #pragma mark Forall Operation
 #endif
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static PMUInt32
 internalForAllOnBitRange (const PMUInt32 inValue,
@@ -218,7 +218,7 @@ internalForAllOnBitRange (const PMUInt32 inValue,
   return result ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static PMUInt32
 operationQuelqueSoitSurBitSupNumeroInterne (const PMUInt32 inValue,
@@ -247,14 +247,14 @@ operationQuelqueSoitSurBitSupNumeroInterne (const PMUInt32 inValue,
   return result ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::forallOnBitNumber (const PMUInt32 numeroBit) const {
   clearSingleOperandOperationCache () ;
   return C_BDD (internalForAllOnBitRange (mBDDvalue, numeroBit, 1)) ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::forallOnBitsAfterNumber (const PMUInt32 numeroBit) const {
   clearSingleOperandOperationCache () ;
@@ -267,7 +267,7 @@ C_BDD C_BDD::forallOnBitsAfterNumber (const PMUInt32 numeroBit) const {
   #pragma mark Exist Operation
 #endif
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::existsOnBitNumber (const PMUInt32 numeroBit) const {
   clearSingleOperandOperationCache () ;
@@ -275,7 +275,7 @@ C_BDD C_BDD::existsOnBitNumber (const PMUInt32 numeroBit) const {
   return C_BDD (internalForAllOnBitRange (mBDDvalue ^ 1, numeroBit, 1) ^ 1) ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::
 existsOnBitRange (const PMUInt32 inFirstBit,
@@ -284,7 +284,7 @@ existsOnBitRange (const PMUInt32 inFirstBit,
   return C_BDD (internalForAllOnBitRange (mBDDvalue ^ 1, inFirstBit, inBitCount) ^ 1) ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::existsOnBitsAfterNumber (const PMUInt32 numeroBit) const {
 // ilExiste x : F <=> non (quelquesoit x : non (F))
@@ -298,7 +298,7 @@ C_BDD C_BDD::existsOnBitsAfterNumber (const PMUInt32 numeroBit) const {
   #pragma mark Substitute variables
 #endif
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static PMUInt32 internalRecursiveSubstitution (const PMUInt32 inValue,
                                                const PMUInt32 vecteurSubstitutionBool [],
@@ -328,7 +328,7 @@ static PMUInt32 internalRecursiveSubstitution (const PMUInt32 inValue,
   return result ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::substitution (const PMUInt32 inSubstitutionArray [],
                            const PMUInt32 inBDDvariablesCount
@@ -352,7 +352,7 @@ C_BDD C_BDD::substitution (const PMUInt32 inSubstitutionArray [],
   #pragma mark Translate BDD variables
 #endif
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::translate (const PMUInt32 inBDDvariablesCount,
                         const PMUInt32 inTranslation) const {
@@ -372,7 +372,7 @@ C_BDD C_BDD::translate (const PMUInt32 inBDDvariablesCount,
   #pragma mark Exchange Variables
 #endif
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static PMUInt32
 internalExchangeVariables (const PMUInt32 inValue,
@@ -407,7 +407,7 @@ internalExchangeVariables (const PMUInt32 inValue,
   return result ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::exchangeVariables (const PMUInt32 var1, const PMUInt32 var2) const {
   C_BDD result (mBDDvalue) ;
@@ -425,7 +425,7 @@ C_BDD C_BDD::exchangeVariables (const PMUInt32 var1, const PMUInt32 var2) const 
   #pragma mark Roll Down
 #endif
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static PMUInt32
 internalRollDown (const PMUInt32 inValue,
@@ -455,7 +455,7 @@ internalRollDown (const PMUInt32 inValue,
   return result ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::rollDownVariables (const PMUInt32 var1, const PMUInt32 var2) const {
   C_BDD result (mBDDvalue) ;
@@ -471,7 +471,7 @@ C_BDD C_BDD::rollDownVariables (const PMUInt32 var1, const PMUInt32 var2) const 
   #pragma mark Roll Up
 #endif
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static PMUInt32
 internalRollUp (const PMUInt32 inValue,
@@ -501,7 +501,7 @@ internalRollUp (const PMUInt32 inValue,
   return result ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::
 rollUpVariables (const PMUInt32 var1, const PMUInt32 var2) const {
@@ -518,7 +518,7 @@ rollUpVariables (const PMUInt32 var1, const PMUInt32 var2) const {
   #pragma mark Left shift
 #endif
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static PMUInt32 internalLeftShift (const PMUInt32 inValue,
                                    const PMUInt32 inLeftShiftCount) {
@@ -537,7 +537,7 @@ static PMUInt32 internalLeftShift (const PMUInt32 inValue,
   return result ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::bddByLeftShifting (const PMUInt32 inLeftShiftCount) const {
   clearSingleOperandOperationCache () ;
@@ -552,7 +552,7 @@ C_BDD C_BDD::bddByLeftShifting (const PMUInt32 inLeftShiftCount) const {
   #pragma mark Right shift
 #endif
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static PMUInt32 internalRightShift (const PMUInt32 inValue,
                                     const PMUInt32 inRightShiftCount) {
@@ -574,7 +574,7 @@ static PMUInt32 internalRightShift (const PMUInt32 inValue,
   return result ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::bddByRightShifting (const PMUInt32 inRightShiftCount) const {
   clearSingleOperandOperationCache () ;
@@ -583,4 +583,4 @@ C_BDD C_BDD::bddByRightShifting (const PMUInt32 inRightShiftCount) const {
   return result ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*

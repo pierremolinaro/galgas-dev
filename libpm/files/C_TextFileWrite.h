@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  'C_TextFileWrite' : a class for stream writing text files                *
+//  'C_TextFileWrite' : a class for stream writing text files                  *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

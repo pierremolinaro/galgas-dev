@@ -1,20 +1,20 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Declaration and implementation of the template class                     *
-//                'TC_LinearListForCollision'                                *
+//  Declaration and implementation of the template class                       *
+//                'TC_LinearListForCollision'                                  *
 //                                                                             *
-//  This class implements hash table collision resolution with a linear      *
-//  ordered list.                                                            *
+//  This class implements hash table collision resolution with a linear        *
+//  ordered list.                                                              *
 //                                                                             *
-//  COPY OF ITS INSTANCES IS FORBIDDEN BY REDEFINITION OF COPY CONSTRUCTOR   *
-//  AND ASSIGNMENT OPERATOR.                                                 *
+//  COPY OF ITS INSTANCES IS FORBIDDEN BY REDEFINITION OF COPY CONSTRUCTOR     *
+//  AND ASSIGNMENT OPERATOR.                                                   *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 2001 Pierre Molinaro.                                      *
+//  Copyright (C) 2001 Pierre Molinaro.                                        *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
-//  ECN, Ecole Centrale de Nantes                                            *
+//  ECN, École Centrale de Nantes                                              *
 //                                                                             *
 //  This library is free software; you can redistribute it and/or modify it    *
 //  under the terms of the GNU Lesser General Public License as published      *
@@ -37,7 +37,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Class of linear list                                                *
+//       Class of linear list                                                  *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -108,7 +108,7 @@ class TC_LinearListForCollision {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Constructor for linear list                                         *
+//       Constructor for linear list                                           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -119,7 +119,7 @@ TC_LinearListForCollision<INFO>::TC_LinearListForCollision (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Destructor for linear list                                          *
+//       Destructor for linear list                                            *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -134,7 +134,7 @@ TC_LinearListForCollision<INFO>::~TC_LinearListForCollision (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Search and insert if not found                                      *
+//       Search and insert if not found                                        *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -171,7 +171,7 @@ INFO * TC_LinearListForCollision<INFO>::search_or_insert (const INFO & inInfo,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Insert element                                                      *
+//       Insert element                                                        *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -205,7 +205,7 @@ bool TC_LinearListForCollision<INFO>::insertElement (TC_linearlist_element * inE
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Sweep unmarked objects                                              *
+//       Sweep unmarked objects                                                *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -248,7 +248,7 @@ void TC_LinearListForCollision<INFO>::unmarkAllObjects (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Tranfert objects in a new map array                                 *
+//       Tranfert objects in a new map array                                   *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

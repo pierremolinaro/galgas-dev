@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Collection of macros for determining machine and compiler.               *
+//  Collection of macros for determining machine and compiler.                 *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

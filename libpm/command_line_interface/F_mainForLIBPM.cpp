@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Routine 'main' (call user supplied 'mainForLIBPM' routine).              *
+//  Routine 'main' (call user supplied 'mainForLIBPM' routine).                *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

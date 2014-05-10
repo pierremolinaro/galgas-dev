@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  'C_Compiler' : the compiler base class ;                                 *
+//  'C_Compiler' : the compiler base class ;                                   *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -34,7 +34,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//        Syntax error message for 'end of source':                          *
+//        Syntax error message for 'end of source':                            *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -75,7 +75,7 @@ bool C_Compiler::performLogFileRead (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//        Constructor and destructor                                         *
+//        Constructor and destructor                                           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -450,7 +450,7 @@ GALGAS_location C_Compiler::here (void) const {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   C H E C K    A N D    G E N E R A T E   F I L E                         *
+//   C H E C K    A N D    G E N E R A T E   F I L E                           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -575,7 +575,6 @@ generateFileWithPatternFromPathes (const C_String & inStartPath,
     C_String firstGeneratedPart ;
     C_String secondGeneratedPart ;
     logFileRead (fullPathName) ;
-//    addDependancyOutputFilePath (fullPathName) ;
     C_String s = C_FileManager::stringWithContentOfFile (fullPathName) ;
     TC_UniqueArray <C_String> stringArray ;
     s.componentsSeparatedByString (kSTART_OF_USER_ZONE_1, stringArray) ;
@@ -761,7 +760,7 @@ C_String C_Compiler::checkedVariableAtIndex (const PMSInt32 inIndex COMMA_LOCATI
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   T R A C E                                                               *
+//   T R A C E                                                                 *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

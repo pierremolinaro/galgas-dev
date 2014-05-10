@@ -1,15 +1,15 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//            Template routines for managing AVL trees                       *
+//            Template routines for managing AVL trees                         *
 //                                                                             *
-//  References :                                                             *
-//  Niklaus Wirth, "Algorithms + Data Structures = Programs",                *
-//  Prentice-Hall Eds, Series in Automatic Computations,                     *
-//  1976, pages 215-225                                                      *
+//  References :                                                               *
+//  Niklaus Wirth, "Algorithms + Data Structures = Programs",                  *
+//  Prentice-Hall Eds, Series in Automatic Computations,                       *
+//  1976, pages 215-225                                                        *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 2001 Pierre Molinaro.                                      *
+//  Copyright (C) 2001 Pierre Molinaro.                                        *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
@@ -31,16 +31,16 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//      An ELEMENT class must have the following members :                   *
-//        INFO mInfo                                                         *
-//        ELEMENT * mPtrToInf                                                *
-//        ELEMENT * mPtrToSup                                                *
-//        PMSInt8 mBalance  (can also be declared as PMSInt16 or PMSInt32)         *
+//      An ELEMENT class must have the following members :                     *
+//        INFO mInfo                                                           *
+//        ELEMENT * mPtrToInf                                                  *
+//        ELEMENT * mPtrToSup                                                  *
+//        PMSInt8 mBalance  (can also be declared as PMSInt16 or PMSInt32)     *
 //                                                                             *
-//     An ELEMENT class must have the following constructor :                *
-//        ELEMENT (const INFO & inInfo) ;                                    *
+//     An ELEMENT class must have the following constructor :                  *
+//        ELEMENT (const INFO & inInfo) ;                                      *
 //                                                                             *
-//     An INFO class must have the following method :                        *
+//     An INFO class must have the following method :                          *
 //        PMSInt32 compare (const INFO & inInfo) ;                             *
 //                                                                             *
 //-----------------------------------------------------------------------------*
@@ -51,7 +51,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Rotate left                                                         *
+//       Rotate left                                                           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -75,7 +75,7 @@ inline void rotateLeft (ELEMENT * & ioPtr) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Rotate right                                                        *
+//       Rotate right                                                          *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -99,7 +99,7 @@ inline void rotateRight (ELEMENT * & ioPtr) {
  
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Recursive search and insert                                         *
+//       Recursive search and insert                                           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -124,7 +124,7 @@ INFO * TF_avltree_search (ELEMENT * ioRootPointer,
  
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Recursive search and insert                                         *
+//       Recursive search and insert                                           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -334,7 +334,7 @@ INFO * recursiveSearchOrInsertInfo3 (ELEMENT * & ioRootPointer,
  
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Recursive search and insert                                         *
+//       Recursive search and insert                                           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -468,7 +468,7 @@ void recursiveInsertElement (ELEMENT * & ioRootPointer,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Verify an AVL tree                                                  *
+//       Verify an AVL tree                                                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

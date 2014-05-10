@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  'cIndexingDictionary': dictionary for indexing soures                    *
+//  'cIndexingDictionary': dictionary for indexing soures                      *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

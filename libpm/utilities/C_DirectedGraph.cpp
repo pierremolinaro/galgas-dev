@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  C_DirectedGraph : algorithms on ordered graphs                           *
+//  C_DirectedGraph : algorithms on ordered graphs                             *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -508,7 +508,7 @@ void C_DirectedGraph::removeEdgesToDominator (LOCATION_ARGS) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//    E X A M P L E                                                          *
+//    E X A M P L E                                                            *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

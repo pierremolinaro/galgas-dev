@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  AC_GALGAS_list : Base class for GALGAS list                              *
+//  AC_GALGAS_list : Base class for GALGAS list                                *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -450,7 +450,7 @@ void AC_GALGAS_list::detachSharedList (cSharedList * & ioSharedList) {
 }
 
 //-----------------------------------------------------------------------------*
-//    AC_GALGAS_list                                                         *
+//    AC_GALGAS_list                                                           *
 //-----------------------------------------------------------------------------*
 
 AC_GALGAS_list::AC_GALGAS_list (void) :

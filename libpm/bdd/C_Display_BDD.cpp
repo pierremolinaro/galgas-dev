@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//     C++ class for displaying BDDs (use with the BDD package 'C_BDD.cpp')  *
+//     C++ class for displaying BDDs (use with the BDD package 'C_BDD.cpp')    *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -25,11 +25,11 @@
 #include "streams/AC_OutputStream.h"
 #include "utilities/MF_MemoryControl.h"
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #include <string.h>
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_Display_BDD::C_Display_BDD (const PMUInt32 nombreChaines) :
 aNombreChaines (0),
@@ -38,13 +38,13 @@ aDimensions (NULL) {
   allouer (nombreChaines) ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_Display_BDD::~C_Display_BDD (void) {
   vider () ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_Display_BDD::vider (void) {
   aTab.free () ;
@@ -52,7 +52,7 @@ void C_Display_BDD::vider (void) {
   aNombreChaines = 0 ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_Display_BDD::allouer (const PMUInt32 nombreChaines) {
   vider () ;
@@ -67,7 +67,7 @@ void C_Display_BDD::allouer (const PMUInt32 nombreChaines) {
   }
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_Display_BDD::defineVariableName (const PMUInt32 indice,
                                         const C_String & chaine,
@@ -79,13 +79,13 @@ void C_Display_BDD::defineVariableName (const PMUInt32 indice,
   }
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMSInt32 C_Display_BDD::longueur (const PMUInt32 indice) const  {
   return aTab ((PMSInt32) indice COMMA_HERE).length () ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMUInt32 C_Display_BDD::
 obtenirDimension (const PMUInt32 indice) const {
@@ -96,11 +96,11 @@ obtenirDimension (const PMUInt32 indice) const {
   return dim ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_Display_BDD::ecrire (const PMUInt32 indice,
                             AC_OutputStream & inStream) const {
   inStream << aTab ((PMSInt32) indice COMMA_HERE) ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*

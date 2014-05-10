@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  'C_HTML_FileWrite' : a class for stream writing html text files          *
-//    (with facility for outputing C++ code)                                 *
+//  'C_HTML_FileWrite' : a class for stream writing html text files            *
+//    (with facility for outputing C++ code)                                   *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

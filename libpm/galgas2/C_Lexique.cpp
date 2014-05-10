@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  'C_Lexique' : an abstract lexique class ;                                *
-//  Galgas generated scanner classes inherit from this class.                *
+//  'C_Lexique' : an abstract lexique class ;                                  *
+//  Galgas generated scanner classes inherit from this class.                  *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -274,7 +274,7 @@ PMSInt32 C_Lexique::findTemplateDelimiterIndex (const cTemplateDelimiter inTempl
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   performLexicalAnalysis                                                  *
+//   performLexicalAnalysis                                                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -293,7 +293,7 @@ void C_Lexique::performLexicalAnalysis (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//        Methods for scanning                                               *
+//        Methods for scanning                                                 *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -410,8 +410,8 @@ void C_Lexique::lexicalLog (LOCATION_ARGS) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                     Search in an ordered list                             *
-//          (used for searching into scanner generated tables)               *
+//                     Search in an ordered list                               *
+//          (used for searching into scanner generated tables)                 *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -459,7 +459,7 @@ void C_Lexique::internalBottomUpParserError (LOCATION_ARGS) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//           Lexical error                                                   *
+//           Lexical error                                                     *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -547,7 +547,7 @@ void C_Lexique::lexicalWarning (const C_String & inLexicalWarningMessage
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Test if a terminal symbol can be accepted in current context            *
+//   Test if a terminal symbol can be accepted in current context              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -654,7 +654,7 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const PMSInt16 inTerminal,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Build expected terminals array on syntax error with LL (1) parser       *
+//   Build expected terminals array on syntax error with LL (1) parser         *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -781,7 +781,7 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const PMSInt16 inError
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Perform top down parsing (called by LL (1) parser)                      *
+//   Perform top down parsing (called by LL (1) parser)                        *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1074,8 +1074,8 @@ bool C_Lexique::performTopDownParsing (const PMSInt16 inProductions [],
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Test if a given terminal symbol can be accepted for signaling an error  *
-//          (for bottom-up parsing)                                          *
+//   Test if a given terminal symbol can be accepted for signaling an error    *
+//          (for bottom-up parsing)                                            *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1139,7 +1139,7 @@ static bool acceptExpectedTerminalForBottomUpParsingError (const PMSInt16 inExpe
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Perform bottom up parsing (called by SLR and LR (1) parsers)            *
+//   Perform bottom up parsing (called by SLR and LR (1) parsers)              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1402,7 +1402,7 @@ bool C_Lexique::performBottomUpParsing (const PMSInt16 inActionTable [],
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                         Get next production index                         *
+//                         Get next production index                           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1417,7 +1417,7 @@ PMSInt16 C_Lexique::nextProductionIndex (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Accept current token by shifting it                                     *
+//   Accept current token by shifting it                                       *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1494,7 +1494,7 @@ void C_Lexique::generateIndexFile (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//Handling parsing context (for parse ... rewind ... end parse ; instruction)*
+//Handling parsing context (for parse ... rewind ... end parse ; instruction)  *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1528,7 +1528,7 @@ void C_Lexique::setParsingContext (const C_parsingContext & inContext) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  For Debugging parser                                                     *
+//  For Debugging parser                                                       *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

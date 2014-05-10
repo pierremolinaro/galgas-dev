@@ -1,8 +1,8 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  unicode_string_routines: this file implements PMUInt32 * string routines,*
-//  that are in direct correspondance with char * C string routines of C     *
-//  library.                                                                 *
+//  unicode_string_routines: this file implements PMUInt32 * string routines,  *
+//  that are in direct correspondance with char * C string routines of C       *
+//  library.                                                                   *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -156,22 +156,5 @@ utf32_strstr (const utf32 * haystack, const utf32 * needle) {
     }
   } while (1);
 }
-
-//-----------------------------------------------------------------------------*
-
-/*const utf32 *
-utf32_strstr (const utf32 * haystack, const utf32 * needle) {
-  utf32 c, sc;
-  if (UNICODE_VALUE (c = *needle++) != 0) {
-    const PMSInt32 len = utf32_strlen (needle);
-    do {
-      do {
-      if (UNICODE_VALUE (sc = *haystack++) == 0) return (NULL);
-      } while (UNICODE_VALUE (sc) != UNICODE_VALUE (c));
-    } while (utf32_strncmp (haystack, needle, len) != 0) ;
-    haystack-- ;
-  }
-  return haystack ;
-}*/
 
 //-----------------------------------------------------------------------------*

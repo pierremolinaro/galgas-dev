@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   GALGAS_double                                                           *
+//   GALGAS_double                                                             *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

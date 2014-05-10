@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  AC_GALGAS_sortedlist                                                     *
+//  AC_GALGAS_sortedlist                                                       *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -32,7 +32,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  c S t r i n g s e t N o d e                                              *
+//  c S t r i n g s e t N o d e                                                *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -103,7 +103,7 @@ static void disposeNodes (cSortedListNode * inNode) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//    cSharedSortedListRoot                                                  *
+//    cSharedSortedListRoot                                                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -601,23 +601,6 @@ static void infBranchDecreased (cSortedListNode * & ioRoot,
 
 //-----------------------------------------------------------------------------*
 
-/* static void getPreviousElement (cSortedListNode * & ioRoot,
-                                cSortedListNode * & ioElement,
-                                bool & ioBranchHasBeenRemoved) {
-  if (ioRoot->mSupPtr == NULL) {
-    ioElement = ioRoot ;
-    ioRoot = ioRoot->mInfPtr ;
-    ioBranchHasBeenRemoved = true ;
-  }else{
-    getPreviousElement (ioRoot->mSupPtr, ioElement, ioBranchHasBeenRemoved) ;
-    if (ioBranchHasBeenRemoved) {
-      supBranchDecreased (ioRoot, ioBranchHasBeenRemoved) ;
-    }
-  }
-} */
-
-//-----------------------------------------------------------------------------*
-
 static void internalRemoveLowestElement (cSortedListNode * & ioRoot,
                                          bool & ioBranchHasBeenRemoved) {
   if (ioRoot->mInfPtr != NULL) {
@@ -909,7 +892,7 @@ void AC_GALGAS_sortedlist::greatestObjectAttributeList (capSortedListElement & o
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                 'AC_GALGAS_sortedlist::cEnumerator' class                 *
+//                 'AC_GALGAS_sortedlist::cEnumerator' class                   *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

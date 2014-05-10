@@ -1,10 +1,10 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//            Declaration and implementation of the template class           *
-//                         'TC_UniqueArray'                                  *
+//            Declaration and implementation of the template class             *
+//                         'TC_UniqueArray'                                    *
 //                                                                             *
-//  COPY OF ITS INSTANCES IS FORBIDDEN BY REDEFINITION OF COPY CONSTRUCTOR   *
-//  AND ASSIGNMENT OPERATOR.                                                 *
+//  COPY OF ITS INSTANCES IS FORBIDDEN BY REDEFINITION OF COPY CONSTRUCTOR     *
+//  AND ASSIGNMENT OPERATOR.                                                   *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -39,7 +39,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Template class predeclaration                                           *
+//   Template class predeclaration                                             *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -47,7 +47,7 @@ template <typename TYPE> class TC_UniqueArray ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   swap function for TC_UniqueArray <TYPE> classes                         *
+//   swap function for TC_UniqueArray <TYPE> classes                           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -57,7 +57,7 @@ void swap (TC_UniqueArray <TYPE> & ioOperand1,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Template class declaration                                              *
+//   Template class declaration                                                *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -287,7 +287,7 @@ template <typename TYPE> class TC_UniqueArray {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Default Constructor                                                     *
+//   Default Constructor                                                       *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -300,7 +300,7 @@ mCapacity (0) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Allocation Constructor                                                  *
+//   Allocation Constructor                                                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -321,7 +321,7 @@ mCapacity (0) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Allocation Constructor                                                  *
+//   Allocation Constructor                                                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -347,7 +347,7 @@ mCapacity (0) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Allocation Constructor                                                  *
+//   Allocation Constructor                                                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -373,7 +373,7 @@ void TC_UniqueArray <TYPE>::appendDataFromPointer (const TYPE * inDataPtr,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Destructor                                                              *
+//   Destructor                                                                *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -384,7 +384,7 @@ TC_UniqueArray <TYPE>::~TC_UniqueArray (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Destructor                                                              *
+//   Destructor                                                                *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -395,7 +395,7 @@ void TC_UniqueArray <TYPE>::setCountToZero (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Method for making room using copy                                       *
+//   Method for making room using copy                                         *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -409,7 +409,7 @@ void TC_UniqueArray <TYPE>::copyTo (TC_UniqueArray <TYPE> & outArray) const {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Method for making room using copy                                       *
+//   Method for making room using copy                                         *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -432,7 +432,7 @@ void TC_UniqueArray <TYPE>::makeRoom (const PMSInt32 inNewCapacity) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Method for making room using copy                                       *
+//   Method for making room using copy                                         *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -466,7 +466,7 @@ forceObjectAtIndex (const PMSInt32 inIndex,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Method for making room using swap function                              *
+//   Method for making room using swap function                                *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -489,7 +489,7 @@ void TC_UniqueArray <TYPE>::makeRoomUsingSwap (const PMSInt32 inNewCapacity) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Remove all objects and deallocate                                       *
+//   Remove all objects and deallocate                                         *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -502,7 +502,7 @@ void TC_UniqueArray <TYPE>::free (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Add object at the end of the array                                      *
+//   Add object at the end of the array                                        *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -517,7 +517,7 @@ void TC_UniqueArray <TYPE>::addObject (const TYPE & inValue) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Add object in array, maintaining array sorted                           *
+//   Add object in array, maintaining array sorted                             *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -561,7 +561,7 @@ void TC_UniqueArray <TYPE>::addObjectInOrderedArray (const TYPE & inValue) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Add object at the end of the array, if object is not already in array   *
+//   Add object at the end of the array, if object is not already in array     *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -580,7 +580,7 @@ void TC_UniqueArray <TYPE>::addObjectIfUnique (const TYPE & inValue) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Add objects at the end of the array                                     *
+//   Add objects at the end of the array                                       *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -599,7 +599,7 @@ addObjects (const PMSInt32 inCount, const TYPE & inValue) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Add object at the end of the array                                      *
+//   Add object at the end of the array                                        *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -612,7 +612,7 @@ void TC_UniqueArray <TYPE>::addObjectUsingSwap (TYPE & ioValue) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Add default object at the end of the array                              *
+//   Add default object at the end of the array                                *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -626,7 +626,7 @@ void TC_UniqueArray <TYPE>::addDefaultObjectUsingSwap (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Add objects at the end of the array                                     *
+//   Add objects at the end of the array                                       *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -644,7 +644,7 @@ addObjectsUsingClear (const PMSInt32 inObjectCount) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Add objects at the end of the array from an other array                 *
+//   Add objects at the end of the array from an other array                   *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -662,7 +662,7 @@ addObjectsFromArray (const TC_UniqueArray <TYPE> &  inObjectArray) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Check index before insertion                                            *
+//   Check index before insertion                                              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -677,7 +677,7 @@ addObjectsFromArray (const TC_UniqueArray <TYPE> &  inObjectArray) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Insert object at index                                                  *
+//   Insert object at index                                                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -697,7 +697,7 @@ insertObjectAtIndex (const TYPE & inValue, const PMSInt32 inIndex COMMA_LOCATION
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Insert objects at index                                                 *
+//   Insert objects at index                                                   *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -721,7 +721,7 @@ insertObjectsAtIndex (const PMSInt32 inCount, const TYPE & inValue, const PMSInt
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Insert objects at index using swap                                      *
+//   Insert objects at index using swap                                        *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -741,7 +741,7 @@ insertObjectUsingSwap (TYPE & ioValue, const PMSInt32 inIndex COMMA_LOCATION_ARG
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Insert objects at index using default constructor                       *
+//   Insert objects at index using default constructor                         *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -765,7 +765,7 @@ insertObjectsUsingExchangeAndClear (const PMSInt32 inCount, const PMSInt32 inSta
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   remove last object                                                      *
+//   remove last object                                                        *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -780,7 +780,7 @@ removeLastObject (LOCATION_ARGS) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   remove last objects                                                     *
+//   remove last objects                                                       *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -797,7 +797,7 @@ removeLastObjects (const PMSInt32 inCount COMMA_LOCATION_ARGS) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   remove object at index (0 <= index < count)                             *
+//   remove object at index (0 <= index < count)                               *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -815,7 +815,7 @@ removeObjectAtIndex (const PMSInt32 inIndex COMMA_LOCATION_ARGS) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   delete objects from index (0<=index<mCount), ((index+inCount)<=mCount)  *
+//   delete objects from index (0<=index<mCount), ((index+inCount)<=mCount)    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -836,7 +836,7 @@ removeObjectsAtIndex (const PMSInt32 inCount, const PMSInt32 inStartingIndex COM
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Search Objects                                                          *
+//   Search Objects                                                            *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -913,7 +913,7 @@ const TYPE TC_UniqueArray <TYPE>::lastObject (LOCATION_ARGS) const {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Extract sub array                                                       *
+//   Extract sub array                                                         *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -934,7 +934,7 @@ subArrayUsingFunction (bool (* inFunction) (const TYPE & inObject),
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Sort array with >= and <= operators                                     *
+//   Sort array with >= and <= operators                                       *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -972,7 +972,7 @@ void TC_UniqueArray<TYPE>::sortArrayUsingComparisonOperators (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Reverse sort array with >= and <= operators                             *
+//   Reverse sort array with >= and <= operators                               *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1010,7 +1010,7 @@ void TC_UniqueArray<TYPE>::reverseSortArrayUsingComparisonOperators (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Sort array with >= and <= operators                                     *
+//   Sort array with >= and <= operators                                       *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1048,7 +1048,7 @@ void TC_UniqueArray<TYPE>::sortArrayUsingCompareMethod (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Reverse sort array with >= and <= operators                             *
+//   Reverse sort array with >= and <= operators                               *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1086,7 +1086,7 @@ void TC_UniqueArray<TYPE>::reverseSortArrayUsingCompareMethod (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Sort array with comparison function                                     *
+//   Sort array with comparison function                                       *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1132,7 +1132,7 @@ sortArrayUsingFunction (PMSInt32 (* inSortFunction) (const TYPE & inOperand1,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Reverse sort array with comparison function                             *
+//   Reverse sort array with comparison function                               *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1178,7 +1178,7 @@ reverseSortArrayUsingFunction (PMSInt32 (* inSortFunction) (const TYPE & inOpera
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Comparisons (based on == operator on objects)                           *
+//   Comparisons (based on == operator on objects)                             *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1194,7 +1194,7 @@ operator == (const TC_UniqueArray <TYPE> & inOperand) const {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Remove from an other array (using assignment operator)                  *
+//   Remove from an other array (using assignment operator)                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1225,7 +1225,7 @@ removeObjectsFromArray (const TC_UniqueArray <TYPE> & inArray) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Remove from an other array (using swap function)                        *
+//   Remove from an other array (using swap function)                          *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1259,7 +1259,7 @@ removeObjectsFromArrayUsingSwapAndClear (const TC_UniqueArray <TYPE> & inArray) 
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Remove identical objects (based on == operator)                         *
+//   Remove identical objects (based on == operator)                           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1288,7 +1288,7 @@ void TC_UniqueArray <TYPE>::removeIdenticalObjects (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Remove identical objects (based on == operator)                         *
+//   Remove identical objects (based on == operator)                           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1320,7 +1320,7 @@ void TC_UniqueArray <TYPE>::removeIdenticalObjectsUsingSwapAndClear (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-// Has objects equal to method actual argument value (based on == operator)*
+// Has objects equal to method actual argument value (based on == operator)    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1336,7 +1336,7 @@ containsObjectEqualTo (const TYPE & inObject) const {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-// Count objects equal to method actual argument value (based on == operator)*
+// Count objects equal to method actual argument value (based on == operator)  *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1352,7 +1352,7 @@ countObjectsEqualTo (const TYPE & inObject) const {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//        Count objects that respond true to function                        *
+//        Count objects that respond true to function                          *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1370,7 +1370,7 @@ countObjectsThatRespondsTrueToFunction (bool (inFunction) (const TYPE & inObject
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Intersection with an other array                                        *
+//   Intersection with an other array                                          *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1401,7 +1401,7 @@ intersectionWithArray (const TC_UniqueArray <TYPE> & inOperand,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Multi Set Intersection with an other array                              *
+//   Multi Set Intersection with an other array                                *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1443,7 +1443,7 @@ multiSetIntersectionWithArray (const TC_UniqueArray <TYPE> & inOperand,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Union with an other array                                               *
+//   Union with an other array                                                 *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1474,7 +1474,7 @@ unionWithArray (const TC_UniqueArray <TYPE> & inOperand,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Union with an other array                                               *
+//   Union with an other array                                                 *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1484,7 +1484,7 @@ template <typename TYPE> const TYPE * TC_UniqueArray <TYPE>::arrayPointer (void)
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   swap function for TC_UniqueArray <TYPE> classes                         *
+//   swap function for TC_UniqueArray <TYPE> classes                           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

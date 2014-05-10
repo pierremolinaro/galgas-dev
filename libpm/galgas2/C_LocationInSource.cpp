@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  'C_LocationInSource'                                                     *
+//  'C_LocationInSource'                                                       *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

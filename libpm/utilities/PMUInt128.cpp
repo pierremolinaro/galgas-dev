@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Handing unsigned integer of arbitrary size                               *
+//  Handing unsigned integer of arbitrary size                                 *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  AC_GALGAS_root : root type for all GALGAS types (on debug mode only)     *
+//  AC_GALGAS_root : root type for all GALGAS types (on debug mode only)       *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -44,7 +44,7 @@ class C_String ;
 class C_galgas_type_descriptor ;
 
 //-----------------------------------------------------------------------------*
-//   VIRTUAL_IN_DEBUG                                                        *
+//   VIRTUAL_IN_DEBUG                                                          *
 //-----------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -54,7 +54,7 @@ class C_galgas_type_descriptor ;
 #endif
 
 //-----------------------------------------------------------------------------*
-//   AC_GALGAS_root                                                          *
+//   AC_GALGAS_root                                                            *
 //-----------------------------------------------------------------------------*
 
 class AC_GALGAS_root {

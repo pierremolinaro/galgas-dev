@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  GALGAS_function : this class implements introspection for GALGAS functions  *
+//  GALGAS_function : this class implements introspection for GALGAS functions *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -31,7 +31,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                     'GALGAS_function' class                               *
+//                     'GALGAS_function' class                                 *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

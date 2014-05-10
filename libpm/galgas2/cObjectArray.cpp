@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  cObjectArray                                                             *
+//  cObjectArray                                                               *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

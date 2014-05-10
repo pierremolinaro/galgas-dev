@@ -1,20 +1,20 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Declaration and implementation of the template class                     *
-//  'TC_AVL_TreeForCollision'                                                *
+//  Declaration and implementation of the template class                       *
+//  'TC_AVL_TreeForCollision'                                                  *
 //                                                                             *
-//  This class implements a generic ordered binary AVL tree for hash map     *
-//  table collision.                                                         *
+//  This class implements a generic ordered binary AVL tree for hash map       *
+//  table collision.                                                           *
 //                                                                             *
-//  COPY OF ITS INSTANCES IS FORBIDDEN BY REDEFINITION OF COPY CONSTRUCTOR   *
-//  AND ASSIGNMENT OPERATOR.                                                 *
+//  COPY OF ITS INSTANCES IS FORBIDDEN BY REDEFINITION OF COPY CONSTRUCTOR     *
+//  AND ASSIGNMENT OPERATOR.                                                   *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 2001 Pierre Molinaro.                                      *
+//  Copyright (C) 2001 Pierre Molinaro.                                        *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
-//  ECN, Ecole Centrale de Nantes                                            *
+//  ECN, Ecole Centrale de Nantes                                              *
 //                                                                             *
 //  This library is free software; you can redistribute it and/or modify it    *
 //  under the terms of the GNU Lesser General Public License as published      *
@@ -41,7 +41,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Class of avl trees                                                  *
+//       Class of avl trees                                                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -125,7 +125,7 @@ class TC_AVL_TreeForCollision {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Constructor for avl tree                                            *
+//       Constructor for avl tree                                              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -136,7 +136,7 @@ TC_AVL_TreeForCollision<INFO>::TC_AVL_TreeForCollision (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Destructor for avl tree                                             *
+//       Destructor for avl tree                                               *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -147,7 +147,7 @@ TC_AVL_TreeForCollision<INFO>::~TC_AVL_TreeForCollision (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Search and insert if not found                                      *
+//       Search and insert if not found                                        *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -184,7 +184,7 @@ INFO * TC_AVL_TreeForCollision<INFO>::search_or_insert (const INFO & inInfo,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Sweep unmarked objects                                              *
+//       Sweep unmarked objects                                                *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -239,7 +239,7 @@ void TC_AVL_TreeForCollision<INFO>::unmarkAllObjects (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Tranfert objects in a new map array                                 *
+//       Tranfert objects in a new map array                                   *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

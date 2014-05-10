@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  AC_GALGAS_sortedlist : base class for GALGAS sorted list                 *
+//  AC_GALGAS_sortedlist : base class for GALGAS sorted list                   *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  C_SharedObject : Base class for GALGAS object handling                   *
+//  C_SharedObject : Base class for GALGAS object handling                     *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

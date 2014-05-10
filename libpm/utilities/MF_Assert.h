@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Definition of 'MF_Assert' and related routine prototypes                 *
+//  Definition of 'MF_Assert' and related routine prototypes                   *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -46,7 +46,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//            Macro 'MF_Assert'  definition                                  *
+//            Macro 'MF_Assert'  definition                                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

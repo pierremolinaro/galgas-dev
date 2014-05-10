@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  AC_OutputStream : an abstract output stream class                        *
+//  AC_OutputStream : an abstract output stream class                          *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

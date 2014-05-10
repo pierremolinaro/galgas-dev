@@ -1,8 +1,8 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  GALGAS_filewrapper : class for GALGAS file wrappers                      *
+//  GALGAS_filewrapper : class for GALGAS file wrappers                        *
 //                                                                             *
-//  Started february 23th, 2008.                                             *
+//  Started february 23th, 2008.                                               *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

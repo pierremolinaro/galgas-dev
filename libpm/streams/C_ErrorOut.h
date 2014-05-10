@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  'C_ErrorOut' : a class for console output                                *
+//  'C_ErrorOut' : a class for console output                                  *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

@@ -1,22 +1,22 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Declaration and implementation of the template class                     *
-//                    'TC_Block_AVL_TreeForCollision'                        *
+//  Declaration and implementation of the template class                       *
+//                    'TC_Block_AVL_TreeForCollision'                          *
 //                                                                             *
-//  This class implements a generic ordered binary AVL tree for hash map     *
-//   collisions.                                                             *
+//  This class implements a generic ordered binary AVL tree for hash map       *
+//   collisions.                                                               *
 //                                                                             *
-//  For heap efficiency, element are allocated by blocks.                    *
+//  For heap efficiency, element are allocated by blocks.                      *
 //                                                                             *
-//  COPY OF ITS INSTANCES IS FORBIDDEN BY REDEFINITION OF COPY CONSTRUCTOR   *
-//  AND ASSIGNMENT OPERATOR.                                                 *
+//  COPY OF ITS INSTANCES IS FORBIDDEN BY REDEFINITION OF COPY CONSTRUCTOR     *
+//  AND ASSIGNMENT OPERATOR.                                                   *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 2001 Pierre Molinaro.                                      *
+//  Copyright (C) 2001 Pierre Molinaro.                                        *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
-//  ECN, Ecole Centrale de Nantes                                            *
+//  ECN, École Centrale de Nantes                                              *
 //                                                                             *
 //  This library is free software; you can redistribute it and/or modify it    *
 //  under the terms of the GNU Lesser General Public License as published      *
@@ -43,7 +43,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Class of avl trees                                                  *
+//       Class of avl trees                                                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -154,7 +154,7 @@ class TC_Block_AVL_TreeForCollision {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Constructor for avl tree                                            *
+//       Constructor for avl tree                                              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -191,7 +191,7 @@ void TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::TC_blockavltree_element_fo
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Constructor for avl tree                                            *
+//       Constructor for avl tree                                              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -231,7 +231,7 @@ void TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::allocBlock (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Constructor for avl tree                                            *
+//       Constructor for avl tree                                              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -242,7 +242,7 @@ TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::TC_Block_AVL_TreeForCollision (
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Destructor for avl tree                                             *
+//       Destructor for avl tree                                               *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -253,7 +253,7 @@ TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::~TC_Block_AVL_TreeForCollision 
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Get allocated size (in bytes)                                       *
+//       Get allocated size (in bytes)                                         *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -264,7 +264,7 @@ PMUInt32 TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::getAllocatedSizeInByte
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Search and insert if not found                                      *
+//       Search and insert if not found                                        *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -278,7 +278,7 @@ search_or_insert (const INFO & inInfo,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Search only                                                         *
+//       Search only                                                           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -290,7 +290,7 @@ search (const INFO & inInfo) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Sweep unmarked objects                                              *
+//       Sweep unmarked objects                                                *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -327,7 +327,7 @@ PMUInt32 TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::sweepUnmarkedObjects (
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Tranfert objects in a new map array                                 *
+//       Tranfert objects in a new map array                                   *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

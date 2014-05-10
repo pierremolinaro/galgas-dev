@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  'C_TCPSocketOut' : a class for sending data as TCP socket client         *
+//  'C_TCPSocketOut' : a class for sending data as TCP socket client           *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
