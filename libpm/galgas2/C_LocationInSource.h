@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  'C_LocationInSource'                                                     *
+//  'C_LocationInSource'                                                       *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -36,7 +36,7 @@ class C_String ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                 Class for referencing a location in source text           *
+//                 Class for referencing a location in source text             *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

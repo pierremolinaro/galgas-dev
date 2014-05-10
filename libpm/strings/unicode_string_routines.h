@@ -1,8 +1,8 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  unicode_string_routines: this file implements PMUInt32 * string routines,*
-//  that are in direct correspondance with char * C string routines of C     *
-//  library.                                                                 *
+//  unicode_string_routines: this file implements PMUInt32 * string routines,  *
+//  that are in direct correspondance with char * C string routines of C       *
+//  library.                                                                   *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

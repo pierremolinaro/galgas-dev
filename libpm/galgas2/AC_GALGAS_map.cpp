@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  AC_GALGAS_map : Base class for GALGAS map                                *
+//  AC_GALGAS_map : Base class for GALGAS map                                  *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -37,7 +37,7 @@ class cMapNode ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  c S h a r e d M a p R o o t                                              *
+//  c S h a r e d M a p R o o t                                                *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -157,7 +157,7 @@ class cSharedMapRoot : public C_SharedObject {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  c M a p N o d e                                                          *
+//  c M a p N o d e                                                            *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -498,7 +498,7 @@ static void rotateLeft (cMapNode * & ioRootPtr) {
   ioRootPtr = b ;
 }
 
-//---------------------------------------------------------------------
+//-----------------------------------------------------------------------------*
 
 static void rotateRight (cMapNode * & ioRootPtr) {
   cMapNode * b = ioRootPtr->mInfPtr ;

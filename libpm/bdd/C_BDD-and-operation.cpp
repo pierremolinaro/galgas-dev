@@ -47,11 +47,11 @@ typedef struct {
   public : PMUInt32 mResult ;
 } tStructANDOperationCacheEntry ;
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static const PMSInt32 kANDOperationCacheInitialSize = 262145 ;
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static PMUInt64 * gANDOperationCacheOperandMap ;
 static PMUInt32 * gANDOperationCacheResultMap ;
@@ -61,13 +61,13 @@ static PMUInt64 gANDOperationCacheTrivialOperationCount ;
 static bool gANDOperationCacheExpandable = true ;
 static PMUInt32 gANDOperationCacheMaxPowerOfTwoSize = 31 ;
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMUInt32 ANDCacheMemoryUsage (void) {
   return (gANDOperationMapSize * (PMUInt32) (sizeof (PMUInt32) + sizeof (PMUInt64))) / 1000000 ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void releaseANDOperationCache (void) {
   gANDOperationCacheMapUsedEntryCount = 0 ;
@@ -77,7 +77,7 @@ void releaseANDOperationCache (void) {
   gANDOperationCacheExpandable = true ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void clearANDOperationCache (void) {
   gANDOperationCacheMapUsedEntryCount = 0 ;
@@ -86,7 +86,7 @@ void clearANDOperationCache (void) {
   }
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static inline PMUInt64 getOperands (const PMUInt32 inOperand1,
                                     const PMUInt32 inOperand2) {
@@ -96,7 +96,7 @@ static inline PMUInt64 getOperands (const PMUInt32 inOperand1,
   return operands ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static bool searchInANDOperationCache (const PMUInt32 inOperand1,
                                        const PMUInt32 inOperand2,
@@ -126,7 +126,7 @@ static bool searchInANDOperationCache (const PMUInt32 inOperand1,
   return found ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static void reallocANDOperationCache (const PMUInt32 inNewSize) {
   if (0 < inNewSize) {
@@ -161,7 +161,7 @@ static void reallocANDOperationCache (const PMUInt32 inNewSize) {
   }
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static void enterInANDOperationCache (const PMUInt32 inOperand1,
                                       const PMUInt32 inOperand2,
@@ -220,11 +220,11 @@ void C_BDD::setANDOperationCacheMaxSize (const PMUInt32 inPowerOfTwo) {
   #pragma mark AND operation
 #endif
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 //                                                                     *
 //                        Operation AND                                *
 //                                                                     *
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMUInt32 internalANDoperation (const PMUInt32 opf,
                                const PMUInt32 opg) {

@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  scanner_actions:                                                         *
-//  hand-coded routines for building attribute values during scanning.       *
+//  scanner_actions:                                                           *
+//  hand-coded routines for building attribute values during scanning.         *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -43,7 +43,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   P R E D E F I N E D    S C A N N E R    A C T I O N S                   *
+//   P R E D E F I N E D    S C A N N E R    A C T I O N S                     *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

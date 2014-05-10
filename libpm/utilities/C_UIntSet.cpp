@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  C_UIntSet : algorithms on sets of PMUInt32                               *
+//  C_UIntSet : algorithms on sets of PMUInt32                                 *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

@@ -247,7 +247,7 @@ void cSharedGraph::description (C_String & ioString,
 #endif
 
 //-----------------------------------------------------------------------------*
-//    AC_GALGAS_graph                                                        *
+//    AC_GALGAS_graph                                                          *
 //-----------------------------------------------------------------------------*
 
 AC_GALGAS_graph::AC_GALGAS_graph (void) :
@@ -572,7 +572,7 @@ static void rotateLeft (cGraphNode * & ioRootPtr) {
   ioRootPtr = b ;
 }
 
-//---------------------------------------------------------------------
+//-----------------------------------------------------------------------------*
 
 static void rotateRight (cGraphNode * & ioRootPtr) {
   cGraphNode * b = ioRootPtr->mInfPtr ;

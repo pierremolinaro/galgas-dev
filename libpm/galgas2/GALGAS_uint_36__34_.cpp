@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  'GALGAS_uint_36__34_' : galgas uint64                                    *
+//  'GALGAS_uint_36__34_' : galgas uint64                                      *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

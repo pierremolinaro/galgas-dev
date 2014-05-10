@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  'C_FileManager' : a class for handling files,                            *
-//  independantly from platform                                              *
+//  'C_FileManager' : a class for handling files,                              *
+//  independantly from platform                                                *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -49,7 +49,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Converting into Unix Path                                               *
+//   Converting into Unix Path                                                 *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -97,7 +97,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Converting into Native Path                                             *
+//   Converting into Native Path                                               *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -971,7 +971,7 @@ C_String C_FileManager::relativePathFromPath (const C_String & inPath,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Delete file                                                              *
+//  Delete file                                                                *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

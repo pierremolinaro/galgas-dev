@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  C_DirectedGraph : algorithms on ordered graphs                           *
+//  C_DirectedGraph : algorithms on ordered graphs                             *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  GALGAS Type Inspector (for introspection)                                *
+//  GALGAS Type Inspector (for introspection)                                  *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -32,7 +32,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  GALGAS type reference (for type introspection)                           *
+//  GALGAS type reference (for type introspection)                             *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

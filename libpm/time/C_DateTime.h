@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Class for date handling.                                                 *
+//  Class for date handling.                                                   *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

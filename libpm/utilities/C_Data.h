@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  C_Data : a class for handling arbitrary data array                       *
+//  C_Data : a class for handling arbitrary data array                         *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

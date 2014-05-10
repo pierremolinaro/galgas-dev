@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Built-in GALGAS Command Line Interface Options                           *
+//  Built-in GALGAS Command Line Interface Options                             *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

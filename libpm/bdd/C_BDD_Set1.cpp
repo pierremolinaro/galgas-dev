@@ -25,25 +25,25 @@
 #include "bdd/C_BDD_Set2.h"
 #include "utilities/MF_Assert.h"
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 //                                                                            *
 //    Constructor (build an empty set)                                        *
 //                                                                            *
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set1::C_BDD_Set1 (void) :
 mBDD (),
 mDescriptor (C_BDD_Descriptor (0)) {
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set1::C_BDD_Set1 (const C_BDD_Descriptor & inDescriptor) :
 mBDD (),
 mDescriptor (inDescriptor) {
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set1::C_BDD_Set1 (const C_BDD_Descriptor & inDescriptor,
                         const C_BDD & inBDD) :
@@ -51,16 +51,16 @@ mBDD (inBDD),
 mDescriptor (inDescriptor) {
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 //                                                                            *
 //    Destructor                                                              *
 //                                                                            *
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set1::~C_BDD_Set1 (void) {
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set1::init (const C_BDD::compareEnum inComparisonKind,
                        const PMUInt32 inValue) {
@@ -75,7 +75,7 @@ void C_BDD_Set1::init (const C_BDD::compareEnum inComparisonKind,
   mBDD &= mDescriptor.getMask () ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 bool C_BDD_Set1::isEqualTo (const C_BDD_Set1 & inOperand COMMA_LOCATION_ARGS) const {
   MF_AssertThere (mDescriptor.getMaxValue () == inOperand.mDescriptor.getMaxValue (),
@@ -85,13 +85,13 @@ bool C_BDD_Set1::isEqualTo (const C_BDD_Set1 & inOperand COMMA_LOCATION_ARGS) co
   return mBDD.isEqualToBDD (inOperand.mBDD) ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set1::clear (void) {
   mBDD.setToFalse () ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set1::operator &= (const C_BDD_Set1 & inOperand) {
   MF_Assert (mDescriptor.getMaxValue () <= inOperand.mDescriptor.getMaxValue (),
@@ -101,7 +101,7 @@ void C_BDD_Set1::operator &= (const C_BDD_Set1 & inOperand) {
   mBDD &= inOperand.mBDD ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set1::operator |= (const C_BDD_Set1 & inOperand) {
   MF_Assert (mDescriptor.getMaxValue () <= inOperand.mDescriptor.getMaxValue (),
@@ -111,7 +111,7 @@ void C_BDD_Set1::operator |= (const C_BDD_Set1 & inOperand) {
   mBDD |= inOperand.mBDD ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set1 C_BDD_Set1::operator & (const C_BDD_Set1 & inOperand) const {
   MF_Assert (mDescriptor.getMaxValue () <= inOperand.mDescriptor.getMaxValue (),
@@ -123,7 +123,7 @@ C_BDD_Set1 C_BDD_Set1::operator & (const C_BDD_Set1 & inOperand) const {
   return r ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set1 C_BDD_Set1::operator | (const C_BDD_Set1 & inOperand) const {
   MF_Assert (mDescriptor.getMaxValue () <= inOperand.mDescriptor.getMaxValue (),
@@ -135,7 +135,7 @@ C_BDD_Set1 C_BDD_Set1::operator | (const C_BDD_Set1 & inOperand) const {
   return r ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set1 C_BDD_Set1::operator ~ (void) const {
   C_BDD_Set1 r = *this ;
@@ -144,7 +144,7 @@ C_BDD_Set1 C_BDD_Set1::operator ~ (void) const {
   return r ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set2 C_BDD_Set1::operator * (const C_BDD_Set1 & inOperand) const {
   C_BDD_Set2 r (mDescriptor, inOperand.mDescriptor) ;
@@ -153,7 +153,7 @@ C_BDD_Set2 C_BDD_Set1::operator * (const C_BDD_Set1 & inOperand) const {
   return r ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMUInt32 C_BDD_Set1::getValuesCount (void) const {
   return (PMUInt32) (mBDD.valueCount64 (mDescriptor.getBDDbitsSize ()) & PMUINT32_MAX) ;
@@ -191,7 +191,7 @@ void cBuildArrayForSet1::action (const bool inValuesArray [],
   mArray.setObjectAtIndex (true, element COMMA_HERE) ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set1::
 getArray (TC_UniqueArray <bool> & outArray) const {
@@ -203,4 +203,4 @@ getArray (TC_UniqueArray <bool> & outArray) const {
   mBDD.traverseBDDvalues (s, mDescriptor.getBDDbitsSize ()) ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*

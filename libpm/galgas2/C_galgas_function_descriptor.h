@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  GALGAS introspection classes                                             *
+//  GALGAS introspection classes                                               *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -41,7 +41,7 @@ class cObjectArray ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  GALGAS function prototype (for function introspection)                   *
+//  GALGAS function prototype (for function introspection)                     *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -52,7 +52,7 @@ typedef GALGAS_object (*functionPrototypeForIntrospection) (C_Compiler * inCompi
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  GALGAS function descriptor (for function introspection)                  *
+//  GALGAS function descriptor (for function introspection)                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

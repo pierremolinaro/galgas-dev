@@ -33,7 +33,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 @synthesize fileURL ;
 
 //-----------------------------------------------------------------------------*
-//    -locationForLineInSource:                                              *
+//    -locationForLineInSource:                                                *
 //-----------------------------------------------------------------------------*
 
 - (NSUInteger) locationForLineInSource: (NSUInteger) inLine {
@@ -55,7 +55,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 }
 
 //-----------------------------------------------------------------------------*
-//    setIssueArray:                                                         *
+//    setIssueArray:                                                           *
 //-----------------------------------------------------------------------------*
 
 - (void) setIssueArray: (NSArray *) inIssueArray {
@@ -71,7 +71,7 @@ static NSMutableDictionary * gDocumentDataDictionary ;
 }
 
 //-----------------------------------------------------------------------------*
-//    broadcastIssueArray:                                                   *
+//    broadcastIssueArray:                                                     *
 //-----------------------------------------------------------------------------*
 
 static NSArray * gIssueArray ;
@@ -350,6 +350,7 @@ static NSArray * gIssueArray ;
 //-----------------------------------------------------------------------------*
 
 - (BOOL) performSaveToURL: (NSURL *) inAbsoluteURL {
+//  NSLog (@"performSaveToURL %@, fileURL %@", inAbsoluteURL, fileURL) ;
   [mTextSyntaxColoring breakUndoCoalescing] ;
   NSString * string = mTextSyntaxColoring.sourceString ;
   NSError * error = nil ;
@@ -371,11 +372,13 @@ static NSArray * gIssueArray ;
 //-----------------------------------------------------------------------------*
 
 - (void) save {
+//  NSLog (@"isDirty: %@", mTextSyntaxColoring.isDirty ? @"yes" : @"no") ;
   if (mTextSyntaxColoring.isDirty) {
-    if (nil == document) {
+   // NSLog (@"document: %@", fileURL) ;
+    if (nil == self.document) {
       [self performSaveToURL:nil] ;
     }else{
-      [document saveDocument:nil] ;
+      [self.document saveDocument:nil] ;
     }
   }
 }

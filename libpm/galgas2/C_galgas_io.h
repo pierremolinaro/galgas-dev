@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  'C_galgas_io'                                                            *
+//  'C_galgas_io'                                                              *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -40,7 +40,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Exception raised when maximum error count is reached                     *
+//  Exception raised when maximum error count is reached                       *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -50,7 +50,7 @@ class max_error_count_reached_exception : public M_STD_NAMESPACE exception {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Exception raised when maximum warning count is reached                   *
+//  Exception raised when maximum warning count is reached                     *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -60,7 +60,7 @@ class max_warning_count_reached_exception : public M_STD_NAMESPACE exception {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//     Internal exception thrown when a lexical error has been detected      *
+//     Internal exception thrown when a lexical error has been detected        *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -75,7 +75,7 @@ class C_UserCancelException : public M_STD_NAMESPACE exception {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Class used for defining a reserved words table entry                    *
+//   Class used for defining a reserved words table entry                      *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -95,7 +95,7 @@ class C_unicode_lexique_table_entry {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                 Token class                                               *
+//                 Token class                                                 *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -116,8 +116,8 @@ class cToken {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                 Class for handling parsing context                        *
-//          (used by parse ... rewind ... end parse ; instruction)           *
+//                 Class for handling parsing context                          *
+//          (used by parse ... rewind ... end parse ; instruction)             *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -140,7 +140,7 @@ class C_parsingContext {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//         Abstract class for GALGAS input/output                            *
+//         Abstract class for GALGAS input/output                              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

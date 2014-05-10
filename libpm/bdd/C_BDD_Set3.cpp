@@ -24,11 +24,11 @@
 #include "bdd/C_BDD_Set3.h"
 #include "utilities/MF_Assert.h"
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 //                                                                            *
 //                   Implementation des ensembles a 3 dimensions              *
 //                                                                            *
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set3::
 C_BDD_Set3 (const C_BDD_Descriptor & inDescriptor1,
@@ -51,7 +51,7 @@ mDescriptor3 (inDescriptor3) {
                                     inDescriptor3.getMaxValue ()) ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set3::
 C_BDD_Set3 (const C_BDD_Descriptor & inDescriptor1,
@@ -75,13 +75,13 @@ mDescriptor3 (inDescriptor3) {
                                     inDescriptor3.getMaxValue ()) ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set3::clear (void) {
   mBDD.setToFalse () ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set3::
 initDimension1 (const C_BDD::compareEnum inComparison1,
@@ -93,7 +93,7 @@ initDimension1 (const C_BDD::compareEnum inComparison1,
   mBDD &= mMask3 ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set3::
 initDimension2 (const C_BDD::compareEnum inComparison2,
@@ -105,7 +105,7 @@ initDimension2 (const C_BDD::compareEnum inComparison2,
   mBDD &= mMask3 ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set3::
 initDimension3 (const C_BDD::compareEnum inComparison3,
@@ -118,14 +118,14 @@ initDimension3 (const C_BDD::compareEnum inComparison3,
   mBDD &= mMask3 ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set3::initDimension1 (const C_BDD_Set1 & inSource) {
   mBDD = inSource.mBDD ;
   mBDD &= mMask3 ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set3::initDimension2 (const C_BDD_Set1 & inSource) {
   PMUInt32 * tab = NULL ;
@@ -138,7 +138,7 @@ void C_BDD_Set3::initDimension2 (const C_BDD_Set1 & inSource) {
   mBDD &= mMask3 ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set3::initDimension3 (const C_BDD_Set1 & inSource) {
   PMUInt32 * tab = NULL ;
@@ -151,19 +151,19 @@ void C_BDD_Set3::initDimension3 (const C_BDD_Set1 & inSource) {
   mBDD &= mMask3 ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set3::operator &= (const C_BDD_Set3 & inOperand) {
   mBDD &= inOperand.mBDD ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set3::operator |= (const C_BDD_Set3 & inOperand) {
   mBDD |= inOperand.mBDD ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set3 C_BDD_Set3::operator & (const C_BDD_Set3 & inOperand) const {
   C_BDD_Set3 r = *this ;
@@ -171,7 +171,7 @@ C_BDD_Set3 C_BDD_Set3::operator & (const C_BDD_Set3 & inOperand) const {
   return r ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set3 C_BDD_Set3::operator | (const C_BDD_Set3 & inOperand) const {
   C_BDD_Set3 r = *this ;
@@ -179,7 +179,7 @@ C_BDD_Set3 C_BDD_Set3::operator | (const C_BDD_Set3 & inOperand) const {
   return r ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set3 C_BDD_Set3::operator ~ (void) const {
   C_BDD_Set3 r = *this ;
@@ -188,7 +188,7 @@ C_BDD_Set3 C_BDD_Set3::operator ~ (void) const {
   return r ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set3::initDimension13 (const C_BDD_Set2 & inSource) {
   const PMUInt32 totalSize = (PMUInt32) (mDescriptor1.getBDDbitsSize () + mDescriptor3.getBDDbitsSize ()) ;
@@ -205,7 +205,7 @@ void C_BDD_Set3::initDimension13 (const C_BDD_Set2 & inSource) {
   macroMyDeleteArray (tab) ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set3::initDimension32 (const C_BDD_Set2 & inSource) {
   const PMUInt32 totalSize = (PMUInt32) (mDescriptor3.getBDDbitsSize () + mDescriptor2.getBDDbitsSize ()) ;
@@ -222,7 +222,7 @@ void C_BDD_Set3::initDimension32 (const C_BDD_Set2 & inSource) {
   macroMyDeleteArray (tab) ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set3::initDimension31 (const C_BDD_Set2 & inSource) {
   const PMUInt32 size1 = mDescriptor1.getBDDbitsSize () ;
@@ -242,7 +242,7 @@ void C_BDD_Set3::initDimension31 (const C_BDD_Set2 & inSource) {
   macroMyDeleteArray (tab) ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set3::swap132 (void) {
   const PMUInt32 size1 = mDescriptor1.getBDDbitsSize () ;
@@ -265,7 +265,7 @@ void C_BDD_Set3::swap132 (void) {
   mBDD &= mMask3 ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set3::swap231 (void) {
   const PMUInt32 size1 = mDescriptor1.getBDDbitsSize () ;
@@ -288,7 +288,7 @@ void C_BDD_Set3::swap231 (void) {
   mBDD &= mMask3 ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set3::swap213 (void) {
   const PMUInt32 size1 = mDescriptor1.getBDDbitsSize () ;
@@ -311,7 +311,7 @@ void C_BDD_Set3::swap213 (void) {
   mBDD &= mMask3 ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set3::swap321 (void) {
   const PMUInt32 size1 = mDescriptor1.getBDDbitsSize () ;
@@ -334,7 +334,7 @@ void C_BDD_Set3::swap321 (void) {
   mBDD &= mMask3 ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set3::swap312 (void) {
   const PMUInt32 size1 = mDescriptor1.getBDDbitsSize () ;
@@ -357,7 +357,7 @@ void C_BDD_Set3::swap312 (void) {
   mBDD &= mMask3 ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set2 C_BDD_Set3::projeterSurAxe12 (void) const {
   C_BDD_Set2 r (mDescriptor1, mDescriptor1) ;
@@ -366,7 +366,7 @@ C_BDD_Set2 C_BDD_Set3::projeterSurAxe12 (void) const {
   return r ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set1 C_BDD_Set3::projeterSurAxe1 (void) const {
   C_BDD_Set1 r (mDescriptor1) ;
@@ -374,7 +374,7 @@ C_BDD_Set1 C_BDD_Set3::projeterSurAxe1 (void) const {
   return r ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMUInt32 C_BDD_Set3::getValuesCount (void) const {
   return (PMUInt32) (mBDD.valueCount64 ((PMUInt32) (mDescriptor1.getBDDbitsSize ()
@@ -382,10 +382,10 @@ PMUInt32 C_BDD_Set3::getValuesCount (void) const {
                                                   + mDescriptor3.getBDDbitsSize ())) & PMUINT32_MAX) ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 bool C_BDD_Set3::isEqualTo (const C_BDD_Set3 & inOperand) const {
   return mBDD.isEqualToBDD (inOperand.mBDD) ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*

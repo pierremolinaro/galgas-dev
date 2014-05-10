@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  AC_GALGAS_uniqueMap : Base class for GALGAS map                          *
+//  AC_GALGAS_uniqueMap : Base class for GALGAS map                            *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -56,7 +56,7 @@ static bool operator == (const structDependanceEdge & inOperand1,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  c S h a r e d M a p R o o t                                              *
+//  c S h a r e d M a p R o o t                                                *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -216,7 +216,7 @@ class cSharedUniqueMapRoot : public C_SharedObject {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//     c S h a r e d P r o x y                                               *
+//     c S h a r e d P r o x y                                                 *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -240,7 +240,7 @@ class cSharedProxy : public C_SharedObject {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  c M a p N o d e                                                          *
+//  c M a p N o d e                                                            *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -569,7 +569,7 @@ static void rotateLeft (cUniqueMapNode * & ioRootPtr) {
   ioRootPtr = b ;
 }
 
-//---------------------------------------------------------------------
+//-----------------------------------------------------------------------------*
 
 static void rotateRight (cUniqueMapNode * & ioRootPtr) {
   cUniqueMapNode * b = ioRootPtr->mInfPtr ;

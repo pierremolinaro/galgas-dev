@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  AC_GALGAS_graph : Base class for GALGAS graph                            *
+//  AC_GALGAS_graph : Base class for GALGAS graph                              *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -47,7 +47,7 @@ class GALGAS__32_stringlist ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  A C _ G A L G A S _ g r a p h                                            *
+//  A C _ G A L G A S _ g r a p h                                              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

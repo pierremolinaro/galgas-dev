@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  'GALGAS_sint' : galgas sint32                                            *
+//  'GALGAS_sint' : galgas sint32                                              *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

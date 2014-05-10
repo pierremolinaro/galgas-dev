@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   GALGAS_bool : this class implements the GALGAS 'bool' native type       *
+//   GALGAS_bool : this class implements the GALGAS 'bool' native type         *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -28,7 +28,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                     'GALGAS_bool' class                                   *
+//                     'GALGAS_bool' class                                     *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

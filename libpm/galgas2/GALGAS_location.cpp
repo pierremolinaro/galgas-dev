@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  'GALGAS_location'                                                        *
+//  'GALGAS_location'                                                          *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *

@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//     BDD package (implementation of ROBDD)                                 *
+//     BDD package (implementation of ROBDD)                                   *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -36,7 +36,7 @@
 #include <string.h>
 #include <limits.h>
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMUInt32 C_BDD::getBDDnodeSize (void) {
   return (PMUInt32) sizeof (cBDDnode) ;
@@ -44,7 +44,7 @@ PMUInt32 C_BDD::getBDDnodeSize (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  BDD objects unique table                                                 *
+//  BDD objects unique table                                                   *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -53,19 +53,19 @@ cBDDnode * gNodeArray = NULL ;
 static PMUInt64 * gMarkTable = NULL ;
 static PMUInt32 gCurrentNodeCount = 0 ;
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMUInt32 nodeMapMemoryUsage (void) {
   return (gNodeArraySize * C_BDD::getBDDnodeSize ()) / 1000000 ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMUInt32 C_BDD::getCreatedNodesCount (void) {
   return gNodeArraySize ;
 }
 
-//------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMUInt32 C_BDD::getExistingNodesCount (void) {
   return gCurrentNodeCount ;
@@ -78,13 +78,13 @@ static PMUInt32 gCollisionMapSize = 0 ;
 static PMUInt32 gHashMapPowerOfTwoMaxSize = 31 ;
 static bool gHashMapExpandable = true ;
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMUInt32 hashMapMemoryUsage (void) {
   return (PMUInt32) ((gCollisionMapSize * sizeof (PMUInt32)) / 1000000) ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 inline PMUInt64 nodeHashCode (const cBDDnode inNode) {
   PMUInt64 result = inNode.bothBranches () % (PMUInt64) gCollisionMapSize ;
@@ -93,7 +93,7 @@ inline PMUInt64 nodeHashCode (const cBDDnode inNode) {
   return result ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static void reallocHashMap (const PMUInt32 inNewSize) {
   if ((0 < inNewSize) && (inNewSize != gCollisionMapSize)) {
@@ -177,7 +177,7 @@ static PMUInt32 addNewNode (const cBDDnode inNode) {
   return gCurrentNodeCount ;
 }
 
-//------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD::unmarkAllExistingBDDnodes (void) {
   MF_Assert ((gNodeArraySize % 64) == 0, "gNodeArraySize (%lld) is not a multiple of 64", gNodeArraySize, 0) ;
@@ -186,7 +186,7 @@ void C_BDD::unmarkAllExistingBDDnodes (void) {
   }
 }
 
-//------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static bool isNodeMarked (const PMUInt32 inValue COMMA_LOCATION_ARGS) {
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
@@ -201,7 +201,7 @@ static bool isNodeMarked (const PMUInt32 inValue COMMA_LOCATION_ARGS) {
   return marked ;
 }
 
-//------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 bool isNodeMarkedThenMark (const PMUInt32 inValue COMMA_LOCATION_ARGS) {
   const PMUInt32 nodeIndex = inValue >> 1 ;
@@ -214,7 +214,7 @@ bool isNodeMarkedThenMark (const PMUInt32 inValue COMMA_LOCATION_ARGS) {
   return isMarked ;
 }
 
-//------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void markNode (const PMUInt32 inValue) {
   const PMUInt32 nodeIndex = inValue >> 1 ;
@@ -241,7 +241,7 @@ PMUInt32 C_BDD::getMarkedNodesCount (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  BDD objects hash map                                                     *
+//  BDD objects hash map                                                       *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -249,7 +249,7 @@ static const PMSInt32 kInitialCollisionMapPowerOfTwoSize = 20 ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       BDD unique table implementation                                     *
+//       BDD unique table implementation                                       *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -288,7 +288,7 @@ PMUInt32 find_or_add (const PMUInt32 inBoolVar,
   return result ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD::setHashMapMaxSize (const PMUInt32 inPowerOfTwoSize) {
   gHashMapPowerOfTwoMaxSize = inPowerOfTwoSize ;
@@ -297,11 +297,11 @@ void C_BDD::setHashMapMaxSize (const PMUInt32 inPowerOfTwoSize) {
   }
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static C_BDD gBDDinstancesListRoot ;
 
-//------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMUInt32 C_BDD::getBDDinstancesCount (void) {
   PMUInt32 n = 0 ;
@@ -319,7 +319,7 @@ PMUInt32 C_BDD::getBDDinstancesCount (void) {
   #pragma mark Mark and Sweep
 #endif
 
-//------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 static void recursiveMarkBDDNodes (const PMUInt32 inValue) {
   const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
@@ -331,13 +331,13 @@ static void recursiveMarkBDDNodes (const PMUInt32 inValue) {
   }
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD::markAllBDDnodes (void) {
   recursiveMarkBDDNodes (mBDDvalue) ;
 }
 
-//------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD::markAndSweepUnusedNodes (void) {
   C_Timer timer ;
@@ -434,7 +434,7 @@ void C_BDD::markAndSweepUnusedNodes (void) {
   #pragma mark BDD constructors, destructor, assignment
 #endif
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD::C_BDD (void) :
 mBDDvalue (0),
@@ -443,7 +443,7 @@ mPtrToNextBDD (NULL) {
   initLinks () ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD::C_BDD (const PMUInt32 inValue) :
 mBDDvalue (inValue),
@@ -452,7 +452,7 @@ mPtrToNextBDD (NULL) {
   initLinks () ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD::C_BDD (const PMUInt32 variable,
               const bool inSign) :
@@ -464,7 +464,7 @@ mPtrToNextBDD (NULL) {
   mBDDvalue = find_or_add (variable, complement, complement ^ 1 COMMA_HERE) ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD::C_BDD (const C_BDD & inSource) :
 mBDDvalue (inSource.mBDDvalue),
@@ -477,7 +477,7 @@ mPtrToNextBDD (NULL) {
 
 macroDeclareStaticMutex (semaphoreLink)
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD::initLinks (void) {
   mPtrToPreviousBDD = this ;
@@ -491,7 +491,7 @@ void C_BDD::initLinks (void) {
   macroMutexUnlock (semaphoreLink) ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD::~C_BDD (void) {
   mBDDvalue = 0 ;
@@ -503,7 +503,7 @@ C_BDD::~C_BDD (void) {
   macroMutexUnlock (semaphoreLink) ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD & C_BDD::operator = (const C_BDD & inSource) {
   mBDDvalue = inSource.mBDDvalue ;
@@ -599,7 +599,7 @@ void C_BDD::setMaximumMemoryUsage (const PMUInt32 inMaxMemoryUsage) { // In MB
   #pragma mark BDD Package stats
 #endif
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD::printBDDpackageOperationsSummary (AC_OutputStream & inStream) {
   #ifdef __LP64__
@@ -664,4 +664,4 @@ void C_BDD::freeBDDStataStructures (void) {
   }
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*

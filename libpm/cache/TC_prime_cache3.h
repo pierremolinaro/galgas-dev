@@ -25,19 +25,19 @@
 #ifndef CLASS_TEMPLATE_PRIME_CACHE3_DEFINED
 #define CLASS_TEMPLATE_PRIME_CACHE3_DEFINED
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #include "F_GetPrime.h"
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #include <math.h>
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 //                                                                     *
 //       Template for implementing three-operands cache                *
 //                                                                     *
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 template <class RESULT>
 class TC_prime_cache3 {
@@ -119,7 +119,7 @@ class TC_prime_cache3 {
   private : TC_prime_cache3 <RESULT> & operator = (TC_prime_cache3 <RESULT> &) ;
 } ;
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 template <class RESULT>
 TC_prime_cache3 <RESULT>::TC_prime_cache3 (const PMSInt32 inCacheSize) {
@@ -132,14 +132,14 @@ TC_prime_cache3 <RESULT>::TC_prime_cache3 (const PMSInt32 inCacheSize) {
   clearAllCacheEntries () ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 template <class RESULT>
 TC_prime_cache3 <RESULT>::~TC_prime_cache3 (void) {
   delete [] mCache ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 template <class RESULT>
 void TC_prime_cache3 <RESULT>::reallocCache (const PMSInt32 inCacheSize) {
@@ -178,7 +178,7 @@ void TC_prime_cache3 <RESULT>::reallocCache (const PMSInt32 inCacheSize) {
   }
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 template <class RESULT>
 void TC_prime_cache3 <RESULT>::getCacheEntry (const PMSInt32 inOperand1,
@@ -201,7 +201,7 @@ void TC_prime_cache3 <RESULT>::getCacheEntry (const PMSInt32 inOperand1,
   outResult = mCache [outHashCode].mResult ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 template <class RESULT>
 void TC_prime_cache3 <RESULT>::writeCacheEntry (const PMSInt32 inOperand1,
@@ -220,7 +220,7 @@ void TC_prime_cache3 <RESULT>::writeCacheEntry (const PMSInt32 inOperand1,
   mCache [inHashCode].mResult = inResult ;
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 template <class RESULT>
 void TC_prime_cache3 <RESULT>::clearAllCacheEntries (void) {
@@ -229,6 +229,6 @@ void TC_prime_cache3 <RESULT>::clearAllCacheEntries (void) {
   }
 }
 
-//---------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 #endif

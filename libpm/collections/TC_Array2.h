@@ -1,18 +1,14 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  T H I S   C L A S S   H A S   N O T   B E E N   T E S T E D              *
+//  Declaration and implementation of the template class 'TC_Array2'           *
 //                                                                             *
-//-----------------------------------------------------------------------------*
+//  It implements a generic two dimensions dynamic sized array.                *
 //                                                                             *
-//  Declaration and implementation of the template class 'TC_Array2'         *
-//                                                                             *
-//  It implements a generic two dimensions dynamic sized array.              *
-//                                                                             *
-//  COPY OF ITS INSTANCES IS ALLOWED AND FULLY IMPLEMENTED BY DUPLICATION.   *
+//  COPY OF ITS INSTANCES IS ALLOWED AND FULLY IMPLEMENTED BY DUPLICATION.     *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 1997 Pierre Molinaro.                                      *
+//  Copyright (C) 1997 Pierre Molinaro.                                        *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
@@ -110,7 +106,7 @@ template <typename TYPE> class TC_Array2 {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                         Implementation                                    *
+//                         Implementation                                      *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

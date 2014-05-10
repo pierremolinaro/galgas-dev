@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  'C_ErrorOut' : a class for console output                                *
+//  'C_ErrorOut' : a class for console output                                  *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -35,7 +35,7 @@ C_ErrorOut::C_ErrorOut (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                  Flush output                                             *
+//                  Flush output                                               *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -45,7 +45,7 @@ void C_ErrorOut::flush (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                  Write a character string on the console                  *
+//                  Write a character string on the console                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -71,7 +71,7 @@ performActualUnicodeArrayOutput (const utf32 * inCharArray,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  C O N S O L E    O U T    G L O B A L   V A R I A B L E                  *
+//  C O N S O L E    O U T    G L O B A L   V A R I A B L E                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

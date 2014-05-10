@@ -63,25 +63,25 @@ mDescriptor2 (inDescriptor2) {
                                     inDescriptor2.getMaxValue ()) ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set2::clear (void) {
   mBDD.setToFalse () ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Descriptor C_BDD_Set2::getDescriptor1 (void) const {
   return mDescriptor1 ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Descriptor C_BDD_Set2::getDescriptor2 (void) const {
   return mDescriptor2 ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 bool C_BDD_Set2::isEqualTo (const C_BDD_Set2 & inOperand COMMA_LOCATION_ARGS) const {
   MF_AssertThere (mDescriptor1.getMaxValue () == inOperand.mDescriptor1.getMaxValue (),
@@ -95,7 +95,7 @@ bool C_BDD_Set2::isEqualTo (const C_BDD_Set2 & inOperand COMMA_LOCATION_ARGS) co
   return mBDD.isEqualToBDD (inOperand.mBDD) ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set2::
 init (const C_BDD::compareEnum inComparison) {
@@ -106,7 +106,7 @@ init (const C_BDD::compareEnum inComparison) {
   mBDD &= mMask2 ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set2::
 initDimension1 (const C_BDD_Set1 & inSource COMMA_LOCATION_ARGS) {
@@ -118,7 +118,7 @@ initDimension1 (const C_BDD_Set1 & inSource COMMA_LOCATION_ARGS) {
   mBDD &= mMask2 ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set2::
 initDimension2 (const C_BDD_Set1 & inSource COMMA_LOCATION_ARGS) {
@@ -137,7 +137,7 @@ initDimension2 (const C_BDD_Set1 & inSource COMMA_LOCATION_ARGS) {
   mBDD &= mMask2 ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set2::
 initDimension1 (const C_BDD::compareEnum inComparison1,
@@ -149,7 +149,7 @@ initDimension1 (const C_BDD::compareEnum inComparison1,
   mBDD &= mMask2 ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set2::
 initDimension2 (const C_BDD::compareEnum inComparison2,
@@ -161,19 +161,19 @@ initDimension2 (const C_BDD::compareEnum inComparison2,
   mBDD &= mMask2 ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set2::operator &= (const C_BDD_Set2 & inOperand) {
   mBDD &= inOperand.mBDD ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set2::operator |= (const C_BDD_Set2 & inOperand) {
   mBDD |= inOperand.mBDD ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set2 C_BDD_Set2::operator & (const C_BDD_Set2 & inOperand) const {
   C_BDD_Set2 r = *this ;
@@ -181,7 +181,7 @@ C_BDD_Set2 C_BDD_Set2::operator & (const C_BDD_Set2 & inOperand) const {
   return r ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set2 C_BDD_Set2::operator | (const C_BDD_Set2 & inOperand) const {
   C_BDD_Set2 r = *this ;
@@ -189,7 +189,7 @@ C_BDD_Set2 C_BDD_Set2::operator | (const C_BDD_Set2 & inOperand) const {
   return r ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set2 C_BDD_Set2::operator ~ (void) const {
   C_BDD_Set2 r = *this ;
@@ -199,7 +199,7 @@ C_BDD_Set2 C_BDD_Set2::operator ~ (void) const {
   return r ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set2 C_BDD_Set2::getTransposedSet (void) const {
   C_BDD_Set2 r (mDescriptor2, mDescriptor1) ;
@@ -219,7 +219,7 @@ C_BDD_Set2 C_BDD_Set2::getTransposedSet (void) const {
   return r ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set1 C_BDD_Set2::projeterSurAxe1 (void) const {
   C_BDD_Set1 r (mDescriptor1) ;
@@ -227,13 +227,13 @@ C_BDD_Set1 C_BDD_Set2::projeterSurAxe1 (void) const {
   return r ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set1 C_BDD_Set2::projeterSurAxe2 (void) const {
   return getTransposedSet ().projeterSurAxe1 () ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set2 C_BDD_Set2::getTransitiveClosure (PMSInt32 & outIterationsCount) const {
   MF_Assert (mDescriptor1.getMaxValue () == mDescriptor2.getMaxValue (),
@@ -261,7 +261,7 @@ C_BDD_Set2 C_BDD_Set2::getTransitiveClosure (PMSInt32 & outIterationsCount) cons
   return closure ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set2 C_BDD_Set2::getReflexiveTransitiveClosure (PMSInt32 & outIterationsCount) const {
   C_BDD_Set2 e = *this ; 
@@ -269,7 +269,7 @@ C_BDD_Set2 C_BDD_Set2::getReflexiveTransitiveClosure (PMSInt32 & outIterationsCo
   return getTransitiveClosure (outIterationsCount) | e ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 C_BDD_Set1 C_BDD_Set2::getAccessibility (const C_BDD_Set1 & inInitialValue,
                                          PMSInt32 & outIterationsCount) const {  
@@ -298,7 +298,7 @@ C_BDD_Set1 C_BDD_Set2::getAccessibility (const C_BDD_Set1 & inInitialValue,
   return partieAccessible ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 PMUInt32 C_BDD_Set2::getValuesCount (void) const {
   return (PMUInt32) (mBDD.valueCount64 ((PMUInt32) (mDescriptor1.getBDDbitsSize () + mDescriptor2.getBDDbitsSize ())) & PMUINT32_MAX) ;
@@ -344,7 +344,7 @@ void cBuildArrayForSet2::action (const bool inValuesArray [],
   mArray (index1 COMMA_HERE).addObject (index2) ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
 
 void C_BDD_Set2::getArray (TC_UniqueArray <TC_UniqueArray <PMSInt32> > & outArray) const {
   const PMSInt32 size1 = ((PMSInt32) mDescriptor1.getMaxValue ()) + 1 ;
@@ -358,4 +358,4 @@ void C_BDD_Set2::getArray (TC_UniqueArray <TC_UniqueArray <PMSInt32> > & outArra
   mBDD.traverseBDDvalues (s, (PMUInt32) (mDescriptor1.getBDDbitsSize () + mDescriptor2.getBDDbitsSize ())) ;
 }
 
-//----------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*

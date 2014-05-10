@@ -1,7 +1,7 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  'C_FileManager' : a class for handling files,                            *
-//  independantly from platform                                              *
+//  'C_FileManager' : a class for handling files,                              *
+//  independantly from platform                                                *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
