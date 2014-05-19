@@ -62,7 +62,7 @@ class AC_GALGAS_sortedlist : public AC_GALGAS_root {
   public : VIRTUAL_IN_DEBUG bool isValid (void) const { return NULL != mSharedRoot ; }
 
 //--- count
-  public : VIRTUAL_IN_DEBUG PMUInt32 count (void) const ;
+  public : VIRTUAL_IN_DEBUG uint32_t count (void) const ;
 
 //--------------------------------- Create a new sorted list
   protected : VIRTUAL_IN_DEBUG void createNewEmptySortedList (LOCATION_ARGS) ;
@@ -72,7 +72,7 @@ class AC_GALGAS_sortedlist : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
 //--- Enumeration handling
   protected : void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,

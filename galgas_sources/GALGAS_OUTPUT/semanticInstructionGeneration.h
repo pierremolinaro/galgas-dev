@@ -92,7 +92,7 @@ typedef void (*categoryMethodSignature_actualParameterForGeneration_generateActu
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_generateActualParameter (const PMSInt32 inClassIndex,
+void enterCategoryMethod_generateActualParameter (const int32_t inClassIndex,
                                                   categoryMethodSignature_actualParameterForGeneration_generateActualParameter inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -123,7 +123,7 @@ typedef void (*categoryMethodSignature_semanticInstructionForGeneration_generate
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_generateInstruction (const PMSInt32 inClassIndex,
+void enterCategoryMethod_generateInstruction (const int32_t inClassIndex,
                                               categoryMethodSignature_semanticInstructionForGeneration_generateInstruction inMethod) ;
 
 //-----------------------------------------------------------------------------*

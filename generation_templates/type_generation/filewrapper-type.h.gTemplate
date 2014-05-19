@@ -8,14 +8,14 @@ class cRegularFileWrapper {
   public : const char * mName ;
   public : const char * mExtension ;
   public : const bool mIsTextFile ; // True: text file, false: binary file
-  public : const PMUInt32 mFileLength ;
+  public : const uint32_t mFileLength ;
   public : const char * mContents ;
 
 //--- Constructor
   public : cRegularFileWrapper (const char * inName,
                                 const char * inExtension,
                                 const bool inIsTextFile,
-                                const PMUInt32 inFileLength,
+                                const uint32_t inFileLength,
                                 const char * inContents) ;
 
 //--- No copy
@@ -27,16 +27,16 @@ class cRegularFileWrapper {
 
 class cDirectoryWrapper {
   public : const char * mDirectoryName ;
-  public : const PMUInt32 mFileCount ;
+  public : const uint32_t mFileCount ;
   public : const cRegularFileWrapper * * const mFiles ;
-  public : const PMUInt32 mDirectoryCount ;
+  public : const uint32_t mDirectoryCount ;
   public : const cDirectoryWrapper * * mDirectories ;
 
 //--- Constructor
   public : cDirectoryWrapper (const char * inDirectoryName,
-                              const PMUInt32 inFileCount,
+                              const uint32_t inFileCount,
                               const cRegularFileWrapper * * const inFiles,
-                              const PMUInt32 inDirectoryCount,
+                              const uint32_t inDirectoryCount,
                               const cDirectoryWrapper * * inDirectories) ;
 
 //--- No copy

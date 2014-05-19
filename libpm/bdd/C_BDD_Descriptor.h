@@ -34,15 +34,15 @@
 
 class C_BDD_Descriptor {
 //--- Constructor et destructor
-  public : C_BDD_Descriptor (const PMUInt32 inMaxValue) ;
+  public : C_BDD_Descriptor (const uint32_t inMaxValue) ;
   public : virtual ~C_BDD_Descriptor (void) ;
 
 //--- Getters
-  public : PMUInt32 getMaxValue (void) const {
+  public : uint32_t getMaxValue (void) const {
     return mMaxValue ;
   }
 
-  public : PMUInt16 getBDDbitsSize (void) const {
+  public : uint16_t getBDDbitsSize (void) const {
     return mBDDbits ;
   }
   
@@ -51,8 +51,8 @@ class C_BDD_Descriptor {
   }
 
 //--- Private attributes
-  private : PMUInt32 mMaxValue ;
-  private : PMUInt16 mBDDbits ;
+  private : uint32_t mMaxValue ;
+  private : uint16_t mBDDbits ;
   private : C_BDD mMask ;
 } ;
 

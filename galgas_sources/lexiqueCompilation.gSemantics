@@ -31,10 +31,10 @@ reader @lexicalTypeEnum cppTypeName -> @string outResult :
   switch selfcopy
     when lexicalType_string : outResult := "C_String" ;
     when lexicalType_char   : outResult := "utf32" ;
-    when lexicalType_uint   : outResult := "PMUInt32" ;
-    when lexicalType_uint64 : outResult := "PMUInt64" ;
-    when lexicalType_sint   : outResult := "PMSInt32" ;
-    when lexicalType_sint64 : outResult := "PMSInt64" ;
+    when lexicalType_uint   : outResult := "uint32_t" ;
+    when lexicalType_uint64 : outResult := "uint64_t" ;
+    when lexicalType_sint   : outResult := "int32_t" ;
+    when lexicalType_sint64 : outResult := "int64_t" ;
     when lexicalType_double : outResult := "double" ;
   end switch ;
 end reader ;

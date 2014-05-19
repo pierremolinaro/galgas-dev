@@ -575,7 +575,7 @@ typedef GALGAS_string (*categoryReaderSignature_semanticDeclarationForGeneration
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_appendDeclaration_31_ (const PMSInt32 inClassIndex,
+void enterCategoryReader_appendDeclaration_31_ (const int32_t inClassIndex,
                                                 categoryReaderSignature_semanticDeclarationForGeneration_appendDeclaration_31_ inReader) ;
 
 //-----------------------------------------------------------------------------*
@@ -597,7 +597,7 @@ typedef GALGAS_string (*categoryReaderSignature_semanticDeclarationForGeneration
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_appendDeclaration_32_ (const PMSInt32 inClassIndex,
+void enterCategoryReader_appendDeclaration_32_ (const int32_t inClassIndex,
                                                 categoryReaderSignature_semanticDeclarationForGeneration_appendDeclaration_32_ inReader) ;
 
 //-----------------------------------------------------------------------------*
@@ -619,7 +619,7 @@ typedef GALGAS_string (*categoryReaderSignature_semanticDeclarationForGeneration
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_appendTypeGenericImplementation (const PMSInt32 inClassIndex,
+void enterCategoryReader_appendTypeGenericImplementation (const int32_t inClassIndex,
                                                           categoryReaderSignature_semanticDeclarationForGeneration_appendTypeGenericImplementation inReader) ;
 
 //-----------------------------------------------------------------------------*
@@ -640,7 +640,7 @@ typedef GALGAS_string (*categoryReaderSignature_semanticDeclarationForGeneration
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_appendSpecificImplementation (const PMSInt32 inClassIndex,
+void enterCategoryReader_appendSpecificImplementation (const int32_t inClassIndex,
                                                        categoryReaderSignature_semanticDeclarationForGeneration_appendSpecificImplementation inReader) ;
 
 //-----------------------------------------------------------------------------*
@@ -695,7 +695,7 @@ class GALGAS_keySortedList_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_keySortedList_2E_element & inOperand) const ;
 

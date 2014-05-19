@@ -59,7 +59,7 @@ end foreach%
 
 //--- Select methods
 %foreach SELECT_METHOD_LIST do
-  %  protected : virtual PMSInt32 select_%![COMPONENT_NAME identifierRepresentation]%_%![mValue string]% (C_Lexique_%!LEXIQUE_NAME% *) = 0 ;\n\n%
+  %  protected : virtual int32_t select_%![COMPONENT_NAME identifierRepresentation]%_%![mValue string]% (C_Lexique_%!LEXIQUE_NAME% *) = 0 ;\n\n%
 end foreach%
 } ;
 

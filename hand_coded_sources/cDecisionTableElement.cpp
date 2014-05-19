@@ -42,7 +42,7 @@ mDecision (inSource.mDecision) {
 //-----------------------------------------------------------------------------*
 
 cDecisionTableElement::
-cDecisionTableElement (const PMSInt32 inParameter, const enumDecision inDecision) :
+cDecisionTableElement (const int32_t inParameter, const enumDecision inDecision) :
 mParameter (inParameter),
 mDecision (inDecision) {
 }
@@ -50,7 +50,7 @@ mDecision (inDecision) {
 //-----------------------------------------------------------------------------*
 
 cDecisionTableElement cDecisionTableElement::
-shiftDecision (const PMSInt32 inNextState) {
+shiftDecision (const int32_t inNextState) {
   cDecisionTableElement d (inNextState, kDecisionShift) ;
   return d ;
 }
@@ -58,7 +58,7 @@ shiftDecision (const PMSInt32 inNextState) {
 //-----------------------------------------------------------------------------*
 
 cDecisionTableElement cDecisionTableElement::
-reduceDecision (const PMSInt32 inReduceProduction) {
+reduceDecision (const int32_t inReduceProduction) {
   cDecisionTableElement d (inReduceProduction, kDecisionReduce) ;
   return d ;
 }

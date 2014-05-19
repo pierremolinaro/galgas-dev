@@ -59,7 +59,7 @@ class C_HTML_FileWrite : public C_TextFileWrite {
 //--- General stream methods
   protected : virtual void
   performActualCharArrayOutput (const char * inCharArray,
-                                const PMSInt32 inArrayCount) ;
+                                const int32_t inArrayCount) ;
 
 //--- Method for writing a HTML table
   public : void appendCppTitleComment (const C_String & inCommentString,

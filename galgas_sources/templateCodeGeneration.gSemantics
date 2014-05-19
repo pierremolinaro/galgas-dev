@@ -85,7 +85,7 @@ override method @templateBlockInstructionForGeneration templateCodeGeneration
   @string indendationVarCppName ;
   [mExpression generateExpression !?ioGeneratedCode !?ioTemporaryVariableIndex !?ioUnusedVariableCppNameSet ?indendationVarCppName] ;
   ioGeneratedCode .= "if (" . indendationVarCppName . ".isValid ()) {\n" ;
-  ioGeneratedCode .= "  result.incIndentation ((PMSInt32) " . indendationVarCppName . ".uintValue ()) ;\n" ;
+  ioGeneratedCode .= "  result.incIndentation ((int32_t) " . indendationVarCppName . ".uintValue ()) ;\n" ;
   ioGeneratedCode .= "}\n" ;
   templateCodeGenerationForListInstruction
     !mBlockInstructionList
@@ -95,7 +95,7 @@ override method @templateBlockInstructionForGeneration templateCodeGeneration
     !?ioUseColumnMarker
   ;
   ioGeneratedCode .= "if (" . indendationVarCppName . ".isValid ()) {\n" ;
-  ioGeneratedCode .= "  result.incIndentation (- ((PMSInt32) " . indendationVarCppName . ".uintValue ())) ;\n" ;
+  ioGeneratedCode .= "  result.incIndentation (- ((int32_t) " . indendationVarCppName . ".uintValue ())) ;\n" ;
   ioGeneratedCode .= "}\n" ;
 end method ;
 

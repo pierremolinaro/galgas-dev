@@ -38,12 +38,12 @@ class AC_OutputStream ;
 
 class C_Display_BDD {
 //--- Attributs
-  protected : PMUInt32 aNombreChaines ;
+  protected : uint32_t aNombreChaines ;
   protected : TC_UniqueArray <C_String> aTab ;
-  protected : PMUInt32 * aDimensions ;
+  protected : uint32_t * aDimensions ;
   
 //--- Constructeur et destructeur
-  public : C_Display_BDD (const PMUInt32 nombreChaines) ;
+  public : C_Display_BDD (const uint32_t nombreChaines) ;
   public : virtual ~C_Display_BDD (void) ;
 
 //--- Allocation (efface les chaines existantes)
@@ -53,24 +53,24 @@ class C_Display_BDD {
   public : inline bool isFalse (void) const { return aNombreChaines == 0 ; }
 
 //--- Nombre de chaines entrees ?
-  public : PMUInt32 nombreEntrees (void) const { return aNombreChaines ; }
+  public : uint32_t nombreEntrees (void) const { return aNombreChaines ; }
 
 //--- Allocation (efface les chaines existantes)
-  public : void allouer (const PMUInt32 nombreChaines) ;
+  public : void allouer (const uint32_t nombreChaines) ;
 
 //--- Definir une chaine
-  public : void defineVariableName (const PMUInt32 indice,
+  public : void defineVariableName (const uint32_t indice,
                                     const C_String & chaine,
-                                    const PMUInt32 dimensions) ;
+                                    const uint32_t dimensions) ;
 
 //--- Obtenir la longueur d'une chaine
-  public : PMSInt32 longueur (const PMUInt32 indice) const ;
+  public : int32_t longueur (const uint32_t indice) const ;
 
 //--- Obtenir la dimension d'une variable
-  public : PMUInt32 obtenirDimension (const PMUInt32 indice) const ;
+  public : uint32_t obtenirDimension (const uint32_t indice) const ;
 
 //--- Ecrire une chaine
-  public : void ecrire (const PMUInt32 indice,
+  public : void ecrire (const uint32_t indice,
                         AC_OutputStream & inStream) const ;
 
 //--- Interdire la duplication

@@ -54,13 +54,13 @@ class C_BDD_Set3 {
 
 //--- Initialization 
   public : void initDimension1 (const C_BDD::compareEnum inComparison1,
-                                const PMUInt32 inValue1) ;
+                                const uint32_t inValue1) ;
 
   public : void initDimension2 (const C_BDD::compareEnum inComparison2,
-                                const PMUInt32 inValue2) ;
+                                const uint32_t inValue2) ;
 
   public : void initDimension3 (const C_BDD::compareEnum inComparison3,
-                                const PMUInt32 inValue3) ;
+                                const uint32_t inValue3) ;
 
   public : void initDimension1 (const C_BDD_Set1 & inSource) ;
 
@@ -103,7 +103,7 @@ class C_BDD_Set3 {
   public : inline bool isFalse (void) const { return mBDD.isFalse () ; }
 
 //--- Values count
-  public : PMUInt32 getValuesCount (void) const ;
+  public : uint32_t getValuesCount (void) const ;
 
 //--- Print BDD nodes
  public : void printBDDnodes (C_Display_BDD & tableauDesNoms) ;

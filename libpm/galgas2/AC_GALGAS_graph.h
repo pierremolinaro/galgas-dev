@@ -62,7 +62,7 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
   public : virtual ~ AC_GALGAS_graph (void) ;
 
 //--- count
-  public : VIRTUAL_IN_DEBUG PMUInt32 count (void) const ;
+  public : VIRTUAL_IN_DEBUG uint32_t count (void) const ;
 
 //--- isValid
   public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mSharedGraph != NULL ; }
@@ -105,7 +105,7 @@ class AC_GALGAS_graph : public AC_GALGAS_root {
 
 //--- Description
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 
 //--- Internal methods for handling graph
   protected : VIRTUAL_IN_DEBUG void reversedGraphFromGraph (const AC_GALGAS_graph & inGraph

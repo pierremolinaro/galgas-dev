@@ -70,7 +70,7 @@ class AC_GALGAS_map : public AC_GALGAS_root {
   public : AC_GALGAS_map & operator = (const AC_GALGAS_map & inSource) ;
 
 //--- count
-  public : VIRTUAL_IN_DEBUG PMUInt32 count (void) const ;
+  public : VIRTUAL_IN_DEBUG uint32_t count (void) const ;
 
 //--- isValid
   public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mSharedMap != NULL ; }
@@ -157,7 +157,7 @@ class AC_GALGAS_map : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const AC_GALGAS_map & inOperand) const ;

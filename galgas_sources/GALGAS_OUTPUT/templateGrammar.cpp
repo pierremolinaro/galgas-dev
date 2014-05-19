@@ -104,7 +104,7 @@ static const char * gNonTerminalNames [42] = {
 #define ACCEPT (1)
 #define END (-1)
 
-static const PMSInt16 gActionTable [] = {
+static const int16_t gActionTable [] = {
 // State S0 (index = 0)
   C_Lexique_galgasTemplateScanner::kToken__21_, SHIFT (1)
 , C_Lexique_galgasTemplateScanner::kToken__3F__5E_, SHIFT (2)
@@ -3457,7 +3457,7 @@ static const PMSInt16 gActionTable [] = {
 , C_Lexique_galgasTemplateScanner::kToken_, REDUCE (28)
 , END} ;
 
-static const PMUInt32 gActionTableIndex [202] = {
+static const uint32_t gActionTableIndex [202] = {
   0  // S0
 , 17  // S1
 , 48  // S2
@@ -3671,11 +3671,11 @@ static const PMUInt32 gActionTableIndex [202] = {
 // Successor tables handle non terminal successors ;
 // an entry is (non_terminal_symbol, n) ; successor is state n.
 
-static const PMSInt16 gSuccessorTable0 [7] = {9, 8,
+static const int16_t gSuccessorTable0 [7] = {9, 8,
   10, 9,
   40, 10, -1} ;
 
-static const PMSInt16 gSuccessorTable1 [17] = {0, 26,
+static const int16_t gSuccessorTable1 [17] = {0, 26,
   1, 27,
   2, 28,
   3, 29,
@@ -3684,7 +3684,7 @@ static const PMSInt16 gSuccessorTable1 [17] = {0, 26,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable4 [17] = {0, 34,
+static const int16_t gSuccessorTable4 [17] = {0, 34,
   1, 27,
   2, 28,
   3, 29,
@@ -3693,9 +3693,9 @@ static const PMSInt16 gSuccessorTable4 [17] = {0, 34,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable5 [3] = {23, 37, -1} ;
+static const int16_t gSuccessorTable5 [3] = {23, 37, -1} ;
 
-static const PMSInt16 gSuccessorTable6 [17] = {0, 38,
+static const int16_t gSuccessorTable6 [17] = {0, 38,
   1, 27,
   2, 28,
   3, 29,
@@ -3704,7 +3704,7 @@ static const PMSInt16 gSuccessorTable6 [17] = {0, 38,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable7 [17] = {0, 39,
+static const int16_t gSuccessorTable7 [17] = {0, 39,
   1, 27,
   2, 28,
   3, 29,
@@ -3713,19 +3713,19 @@ static const PMSInt16 gSuccessorTable7 [17] = {0, 39,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable8 [5] = {9, 8,
+static const int16_t gSuccessorTable8 [5] = {9, 8,
   40, 40, -1} ;
 
-static const PMSInt16 gSuccessorTable11 [5] = {6, 41,
+static const int16_t gSuccessorTable11 [5] = {6, 41,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable13 [5] = {6, 43,
+static const int16_t gSuccessorTable13 [5] = {6, 43,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable14 [5] = {6, 44,
+static const int16_t gSuccessorTable14 [5] = {6, 44,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable15 [17] = {0, 45,
+static const int16_t gSuccessorTable15 [17] = {0, 45,
   1, 27,
   2, 28,
   3, 29,
@@ -3734,9 +3734,9 @@ static const PMSInt16 gSuccessorTable15 [17] = {0, 45,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable24 [3] = {18, 47, -1} ;
+static const int16_t gSuccessorTable24 [3] = {18, 47, -1} ;
 
-static const PMSInt16 gSuccessorTable25 [19] = {0, 52,
+static const int16_t gSuccessorTable25 [19] = {0, 52,
   1, 27,
   2, 28,
   3, 29,
@@ -3746,21 +3746,21 @@ static const PMSInt16 gSuccessorTable25 [19] = {0, 52,
   7, 33,
   19, 53, -1} ;
 
-static const PMSInt16 gSuccessorTable27 [3] = {11, 55, -1} ;
+static const int16_t gSuccessorTable27 [3] = {11, 55, -1} ;
 
-static const PMSInt16 gSuccessorTable28 [3] = {12, 58, -1} ;
+static const int16_t gSuccessorTable28 [3] = {12, 58, -1} ;
 
-static const PMSInt16 gSuccessorTable29 [3] = {13, 60, -1} ;
+static const int16_t gSuccessorTable29 [3] = {13, 60, -1} ;
 
-static const PMSInt16 gSuccessorTable30 [3] = {14, 67, -1} ;
+static const int16_t gSuccessorTable30 [3] = {14, 67, -1} ;
 
-static const PMSInt16 gSuccessorTable31 [3] = {15, 72, -1} ;
+static const int16_t gSuccessorTable31 [3] = {15, 72, -1} ;
 
-static const PMSInt16 gSuccessorTable32 [3] = {16, 76, -1} ;
+static const int16_t gSuccessorTable32 [3] = {16, 76, -1} ;
 
-static const PMSInt16 gSuccessorTable33 [3] = {17, 78, -1} ;
+static const int16_t gSuccessorTable33 [3] = {17, 78, -1} ;
 
-static const PMSInt16 gSuccessorTable37 [17] = {0, 80,
+static const int16_t gSuccessorTable37 [17] = {0, 80,
   1, 27,
   2, 28,
   3, 29,
@@ -3769,14 +3769,14 @@ static const PMSInt16 gSuccessorTable37 [17] = {0, 80,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable39 [3] = {37, 83, -1} ;
+static const int16_t gSuccessorTable39 [3] = {37, 83, -1} ;
 
-static const PMSInt16 gSuccessorTable42 [5] = {8, 85,
+static const int16_t gSuccessorTable42 [5] = {8, 85,
   21, 86, -1} ;
 
-static const PMSInt16 gSuccessorTable46 [3] = {18, 88, -1} ;
+static const int16_t gSuccessorTable46 [3] = {18, 88, -1} ;
 
-static const PMSInt16 gSuccessorTable48 [17] = {0, 89,
+static const int16_t gSuccessorTable48 [17] = {0, 89,
   1, 27,
   2, 28,
   3, 29,
@@ -3785,9 +3785,9 @@ static const PMSInt16 gSuccessorTable48 [17] = {0, 89,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable51 [3] = {20, 94, -1} ;
+static const int16_t gSuccessorTable51 [3] = {20, 94, -1} ;
 
-static const PMSInt16 gSuccessorTable54 [15] = {1, 97,
+static const int16_t gSuccessorTable54 [15] = {1, 97,
   2, 28,
   3, 29,
   4, 30,
@@ -3795,90 +3795,90 @@ static const PMSInt16 gSuccessorTable54 [15] = {1, 97,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable56 [13] = {2, 98,
+static const int16_t gSuccessorTable56 [13] = {2, 98,
   3, 29,
   4, 30,
   5, 31,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable57 [13] = {2, 99,
+static const int16_t gSuccessorTable57 [13] = {2, 99,
   3, 29,
   4, 30,
   5, 31,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable59 [11] = {3, 100,
+static const int16_t gSuccessorTable59 [11] = {3, 100,
   4, 30,
   5, 31,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable61 [9] = {4, 101,
+static const int16_t gSuccessorTable61 [9] = {4, 101,
   5, 31,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable62 [9] = {4, 102,
+static const int16_t gSuccessorTable62 [9] = {4, 102,
   5, 31,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable63 [9] = {4, 103,
+static const int16_t gSuccessorTable63 [9] = {4, 103,
   5, 31,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable64 [9] = {4, 104,
+static const int16_t gSuccessorTable64 [9] = {4, 104,
   5, 31,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable65 [9] = {4, 105,
+static const int16_t gSuccessorTable65 [9] = {4, 105,
   5, 31,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable66 [9] = {4, 106,
+static const int16_t gSuccessorTable66 [9] = {4, 106,
   5, 31,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable68 [7] = {5, 107,
+static const int16_t gSuccessorTable68 [7] = {5, 107,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable69 [7] = {5, 108,
+static const int16_t gSuccessorTable69 [7] = {5, 108,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable70 [7] = {5, 109,
+static const int16_t gSuccessorTable70 [7] = {5, 109,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable71 [7] = {5, 110,
+static const int16_t gSuccessorTable71 [7] = {5, 110,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable73 [5] = {6, 111,
+static const int16_t gSuccessorTable73 [5] = {6, 111,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable74 [5] = {6, 112,
+static const int16_t gSuccessorTable74 [5] = {6, 112,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable75 [5] = {6, 113,
+static const int16_t gSuccessorTable75 [5] = {6, 113,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable79 [5] = {9, 115,
+static const int16_t gSuccessorTable79 [5] = {9, 115,
   22, 116, -1} ;
 
-static const PMSInt16 gSuccessorTable80 [3] = {24, 118, -1} ;
+static const int16_t gSuccessorTable80 [3] = {24, 118, -1} ;
 
-static const PMSInt16 gSuccessorTable81 [5] = {9, 119,
+static const int16_t gSuccessorTable81 [5] = {9, 119,
   34, 120, -1} ;
 
-static const PMSInt16 gSuccessorTable84 [17] = {0, 123,
+static const int16_t gSuccessorTable84 [17] = {0, 123,
   1, 27,
   2, 28,
   3, 29,
@@ -3887,57 +3887,57 @@ static const PMSInt16 gSuccessorTable84 [17] = {0, 123,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable90 [5] = {8, 126,
+static const int16_t gSuccessorTable90 [5] = {8, 126,
   21, 86, -1} ;
 
-static const PMSInt16 gSuccessorTable95 [5] = {8, 130,
+static const int16_t gSuccessorTable95 [5] = {8, 130,
   21, 86, -1} ;
 
-static const PMSInt16 gSuccessorTable97 [3] = {11, 131, -1} ;
+static const int16_t gSuccessorTable97 [3] = {11, 131, -1} ;
 
-static const PMSInt16 gSuccessorTable98 [3] = {12, 132, -1} ;
+static const int16_t gSuccessorTable98 [3] = {12, 132, -1} ;
 
-static const PMSInt16 gSuccessorTable99 [3] = {12, 133, -1} ;
+static const int16_t gSuccessorTable99 [3] = {12, 133, -1} ;
 
-static const PMSInt16 gSuccessorTable100 [3] = {13, 134, -1} ;
+static const int16_t gSuccessorTable100 [3] = {13, 134, -1} ;
 
-static const PMSInt16 gSuccessorTable107 [3] = {15, 135, -1} ;
+static const int16_t gSuccessorTable107 [3] = {15, 135, -1} ;
 
-static const PMSInt16 gSuccessorTable108 [3] = {15, 136, -1} ;
+static const int16_t gSuccessorTable108 [3] = {15, 136, -1} ;
 
-static const PMSInt16 gSuccessorTable109 [3] = {15, 137, -1} ;
+static const int16_t gSuccessorTable109 [3] = {15, 137, -1} ;
 
-static const PMSInt16 gSuccessorTable110 [3] = {15, 138, -1} ;
+static const int16_t gSuccessorTable110 [3] = {15, 138, -1} ;
 
-static const PMSInt16 gSuccessorTable111 [3] = {16, 139, -1} ;
+static const int16_t gSuccessorTable111 [3] = {16, 139, -1} ;
 
-static const PMSInt16 gSuccessorTable112 [3] = {16, 140, -1} ;
+static const int16_t gSuccessorTable112 [3] = {16, 140, -1} ;
 
-static const PMSInt16 gSuccessorTable113 [3] = {16, 141, -1} ;
+static const int16_t gSuccessorTable113 [3] = {16, 141, -1} ;
 
-static const PMSInt16 gSuccessorTable114 [3] = {17, 142, -1} ;
+static const int16_t gSuccessorTable114 [3] = {17, 142, -1} ;
 
-static const PMSInt16 gSuccessorTable115 [5] = {9, 115,
+static const int16_t gSuccessorTable115 [5] = {9, 115,
   22, 143, -1} ;
 
-static const PMSInt16 gSuccessorTable118 [3] = {25, 147, -1} ;
+static const int16_t gSuccessorTable118 [3] = {25, 147, -1} ;
 
-static const PMSInt16 gSuccessorTable119 [5] = {9, 119,
+static const int16_t gSuccessorTable119 [5] = {9, 119,
   34, 148, -1} ;
 
-static const PMSInt16 gSuccessorTable120 [3] = {33, 150, -1} ;
+static const int16_t gSuccessorTable120 [3] = {33, 150, -1} ;
 
-static const PMSInt16 gSuccessorTable121 [3] = {38, 152, -1} ;
+static const int16_t gSuccessorTable121 [3] = {38, 152, -1} ;
 
-static const PMSInt16 gSuccessorTable123 [3] = {21, 154, -1} ;
+static const int16_t gSuccessorTable123 [3] = {21, 154, -1} ;
 
-static const PMSInt16 gSuccessorTable125 [5] = {8, 155,
+static const int16_t gSuccessorTable125 [5] = {8, 155,
   21, 86, -1} ;
 
-static const PMSInt16 gSuccessorTable146 [5] = {9, 160,
+static const int16_t gSuccessorTable146 [5] = {9, 160,
   26, 161, -1} ;
 
-static const PMSInt16 gSuccessorTable149 [17] = {0, 163,
+static const int16_t gSuccessorTable149 [17] = {0, 163,
   1, 27,
   2, 28,
   3, 29,
@@ -3946,60 +3946,60 @@ static const PMSInt16 gSuccessorTable149 [17] = {0, 163,
   6, 32,
   7, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable150 [3] = {35, 165, -1} ;
+static const int16_t gSuccessorTable150 [3] = {35, 165, -1} ;
 
-static const PMSInt16 gSuccessorTable156 [5] = {8, 168,
+static const int16_t gSuccessorTable156 [5] = {8, 168,
   21, 86, -1} ;
 
-static const PMSInt16 gSuccessorTable160 [5] = {9, 160,
+static const int16_t gSuccessorTable160 [5] = {9, 160,
   26, 170, -1} ;
 
-static const PMSInt16 gSuccessorTable162 [3] = {27, 172, -1} ;
+static const int16_t gSuccessorTable162 [3] = {27, 172, -1} ;
 
-static const PMSInt16 gSuccessorTable164 [5] = {9, 174,
+static const int16_t gSuccessorTable164 [5] = {9, 174,
   36, 175, -1} ;
 
-static const PMSInt16 gSuccessorTable166 [3] = {38, 177, -1} ;
+static const int16_t gSuccessorTable166 [3] = {38, 177, -1} ;
 
-static const PMSInt16 gSuccessorTable167 [5] = {9, 178,
+static const int16_t gSuccessorTable167 [5] = {9, 178,
   39, 179, -1} ;
 
-static const PMSInt16 gSuccessorTable172 [5] = {9, 181,
+static const int16_t gSuccessorTable172 [5] = {9, 181,
   28, 182, -1} ;
 
-static const PMSInt16 gSuccessorTable173 [5] = {9, 119,
+static const int16_t gSuccessorTable173 [5] = {9, 119,
   34, 183, -1} ;
 
-static const PMSInt16 gSuccessorTable174 [5] = {9, 174,
+static const int16_t gSuccessorTable174 [5] = {9, 174,
   36, 184, -1} ;
 
-static const PMSInt16 gSuccessorTable178 [5] = {9, 178,
+static const int16_t gSuccessorTable178 [5] = {9, 178,
   39, 186, -1} ;
 
-static const PMSInt16 gSuccessorTable179 [3] = {37, 187, -1} ;
+static const int16_t gSuccessorTable179 [3] = {37, 187, -1} ;
 
-static const PMSInt16 gSuccessorTable181 [5] = {9, 181,
+static const int16_t gSuccessorTable181 [5] = {9, 181,
   28, 188, -1} ;
 
-static const PMSInt16 gSuccessorTable182 [3] = {29, 190, -1} ;
+static const int16_t gSuccessorTable182 [3] = {29, 190, -1} ;
 
-static const PMSInt16 gSuccessorTable183 [3] = {33, 191, -1} ;
+static const int16_t gSuccessorTable183 [3] = {33, 191, -1} ;
 
-static const PMSInt16 gSuccessorTable189 [5] = {9, 192,
+static const int16_t gSuccessorTable189 [5] = {9, 192,
   30, 193, -1} ;
 
-static const PMSInt16 gSuccessorTable190 [3] = {31, 195, -1} ;
+static const int16_t gSuccessorTable190 [3] = {31, 195, -1} ;
 
-static const PMSInt16 gSuccessorTable192 [5] = {9, 192,
+static const int16_t gSuccessorTable192 [5] = {9, 192,
   30, 196, -1} ;
 
-static const PMSInt16 gSuccessorTable194 [5] = {9, 197,
+static const int16_t gSuccessorTable194 [5] = {9, 197,
   32, 198, -1} ;
 
-static const PMSInt16 gSuccessorTable197 [5] = {9, 197,
+static const int16_t gSuccessorTable197 [5] = {9, 197,
   32, 200, -1} ;
 
-static const PMSInt16 * gSuccessorTable [202] = {
+static const int16_t * gSuccessorTable [202] = {
 gSuccessorTable0, gSuccessorTable1, NULL, NULL, 
   gSuccessorTable4, gSuccessorTable5, gSuccessorTable6, gSuccessorTable7, 
   gSuccessorTable8, NULL, NULL, gSuccessorTable11, 
@@ -4058,7 +4058,7 @@ gSuccessorTable0, gSuccessorTable1, NULL, NULL,
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static const PMSInt16 gProductionsTable [108 * 2] = {
+static const int16_t gProductionsTable [108 * 2] = {
   0, 2,
   1, 2,
   2, 2,
@@ -4674,7 +4674,7 @@ void cGrammar_templateGrammar::_performSourceStringParsing_ (C_Compiler * inComp
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_0 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_0 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 32 33
   return inLexique->nextProductionIndex () - 31 ;
 }
@@ -4685,7 +4685,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_0 (C_Lexique_galgasTemp
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_1 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_1 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 34 35 36
   return inLexique->nextProductionIndex () - 33 ;
 }
@@ -4696,7 +4696,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_1 (C_Lexique_galgasTemp
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_2 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_2 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 37 38
   return inLexique->nextProductionIndex () - 36 ;
 }
@@ -4707,7 +4707,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_2 (C_Lexique_galgasTemp
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_3 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_3 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 39 40 41 42 43 44 45
   return inLexique->nextProductionIndex () - 38 ;
 }
@@ -4718,7 +4718,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_3 (C_Lexique_galgasTemp
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_4 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_4 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 46 47 48 49 50
   return inLexique->nextProductionIndex () - 45 ;
 }
@@ -4729,7 +4729,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_4 (C_Lexique_galgasTemp
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_5 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_5 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 51 52 53 54
   return inLexique->nextProductionIndex () - 50 ;
 }
@@ -4740,7 +4740,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_5 (C_Lexique_galgasTemp
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_6 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_6 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 55 56
   return inLexique->nextProductionIndex () - 54 ;
 }
@@ -4751,7 +4751,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_6 (C_Lexique_galgasTemp
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_7 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_7 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 57 58
   return inLexique->nextProductionIndex () - 56 ;
 }
@@ -4762,7 +4762,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_7 (C_Lexique_galgasTemp
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_8 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_8 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 59 60 61 62 63
   return inLexique->nextProductionIndex () - 58 ;
 }
@@ -4773,7 +4773,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_8 (C_Lexique_galgasTemp
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_9 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_9 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 64 65
   return inLexique->nextProductionIndex () - 63 ;
 }
@@ -4784,7 +4784,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_9 (C_Lexique_galgasTemp
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_10 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_10 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 66 67
   return inLexique->nextProductionIndex () - 65 ;
 }
@@ -4795,7 +4795,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_10 (C_Lexique_galgasTem
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_11 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_11 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 68 69
   return inLexique->nextProductionIndex () - 67 ;
 }
@@ -4806,7 +4806,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_11 (C_Lexique_galgasTem
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_12 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_12 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 70 71 72
   return inLexique->nextProductionIndex () - 69 ;
 }
@@ -4817,7 +4817,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_12 (C_Lexique_galgasTem
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_13 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_13 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 73 74
   return inLexique->nextProductionIndex () - 72 ;
 }
@@ -4828,7 +4828,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_13 (C_Lexique_galgasTem
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_14 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_14 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 75 76
   return inLexique->nextProductionIndex () - 74 ;
 }
@@ -4839,7 +4839,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_14 (C_Lexique_galgasTem
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_15 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_15 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 77 78
   return inLexique->nextProductionIndex () - 76 ;
 }
@@ -4850,7 +4850,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_15 (C_Lexique_galgasTem
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_16 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_16 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 79 80
   return inLexique->nextProductionIndex () - 78 ;
 }
@@ -4861,7 +4861,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_16 (C_Lexique_galgasTem
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_17 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_17 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 81 82
   return inLexique->nextProductionIndex () - 80 ;
 }
@@ -4872,7 +4872,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_17 (C_Lexique_galgasTem
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_18 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_18 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 83 84
   return inLexique->nextProductionIndex () - 82 ;
 }
@@ -4883,7 +4883,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_18 (C_Lexique_galgasTem
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_19 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_19 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 85 86
   return inLexique->nextProductionIndex () - 84 ;
 }
@@ -4894,7 +4894,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_19 (C_Lexique_galgasTem
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_20 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_20 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 87 88
   return inLexique->nextProductionIndex () - 86 ;
 }
@@ -4905,7 +4905,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_20 (C_Lexique_galgasTem
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_21 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_21 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 89 90
   return inLexique->nextProductionIndex () - 88 ;
 }
@@ -4916,7 +4916,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_21 (C_Lexique_galgasTem
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_22 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_22 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 91 92
   return inLexique->nextProductionIndex () - 90 ;
 }
@@ -4927,7 +4927,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_22 (C_Lexique_galgasTem
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_23 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_23 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 93 94
   return inLexique->nextProductionIndex () - 92 ;
 }
@@ -4938,7 +4938,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_23 (C_Lexique_galgasTem
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_24 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_24 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 95 96
   return inLexique->nextProductionIndex () - 94 ;
 }
@@ -4949,7 +4949,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_24 (C_Lexique_galgasTem
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_25 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_25 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 97 98
   return inLexique->nextProductionIndex () - 96 ;
 }
@@ -4960,7 +4960,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_25 (C_Lexique_galgasTem
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_26 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_26 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 99 100
   return inLexique->nextProductionIndex () - 98 ;
 }
@@ -4971,7 +4971,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_26 (C_Lexique_galgasTem
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_27 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_27 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 101 102
   return inLexique->nextProductionIndex () - 100 ;
 }
@@ -4982,7 +4982,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_27 (C_Lexique_galgasTem
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_28 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_28 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 103 104
   return inLexique->nextProductionIndex () - 102 ;
 }
@@ -4993,7 +4993,7 @@ PMSInt32 cGrammar_templateGrammar::select_templateSyntax_28 (C_Lexique_galgasTem
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_templateGrammar::select_templateSyntax_29 (C_Lexique_galgasTemplateScanner * inLexique) {
+int32_t cGrammar_templateGrammar::select_templateSyntax_29 (C_Lexique_galgasTemplateScanner * inLexique) {
 // Productions numbers : 105 106
   return inLexique->nextProductionIndex () - 104 ;
 }

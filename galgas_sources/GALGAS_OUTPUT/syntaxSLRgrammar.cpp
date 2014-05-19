@@ -241,7 +241,7 @@ static const char * gNonTerminalNames [179] = {
 #define ACCEPT (1)
 #define END (-1)
 
-static const PMSInt16 gActionTable [] = {
+static const int16_t gActionTable [] = {
 // State S0 (index = 0)
   C_Lexique_galgas_5F_scanner::kToken_syntax, SHIFT (1)
 , END
@@ -12662,7 +12662,7 @@ static const PMSInt16 gActionTable [] = {
 , C_Lexique_galgas_5F_scanner::kToken__3B_, REDUCE (431)
 , END} ;
 
-static const PMUInt32 gActionTableIndex [1248] = {
+static const uint32_t gActionTableIndex [1248] = {
   0  // S0
 , 3  // S1
 , 6  // S2
@@ -13922,11 +13922,11 @@ static const PMUInt32 gActionTableIndex [1248] = {
 // Successor tables handle non terminal successors ;
 // an entry is (non_terminal_symbol, n) ; successor is state n.
 
-static const PMSInt16 gSuccessorTable0 [3] = {9, 2, -1} ;
+static const int16_t gSuccessorTable0 [3] = {9, 2, -1} ;
 
-static const PMSInt16 gSuccessorTable7 [3] = {35, 9, -1} ;
+static const int16_t gSuccessorTable7 [3] = {35, 9, -1} ;
 
-static const PMSInt16 gSuccessorTable9 [17] = {4, 30,
+static const int16_t gSuccessorTable9 [17] = {4, 30,
   10, 31,
   11, 32,
   24, 33,
@@ -13935,7 +13935,7 @@ static const PMSInt16 gSuccessorTable9 [17] = {4, 30,
   143, 36,
   155, 37, -1} ;
 
-static const PMSInt16 gSuccessorTable30 [17] = {4, 30,
+static const int16_t gSuccessorTable30 [17] = {4, 30,
   10, 31,
   11, 32,
   24, 33,
@@ -13944,7 +13944,7 @@ static const PMSInt16 gSuccessorTable30 [17] = {4, 30,
   143, 36,
   155, 37, -1} ;
 
-static const PMSInt16 gSuccessorTable31 [17] = {4, 30,
+static const int16_t gSuccessorTable31 [17] = {4, 30,
   10, 31,
   11, 32,
   24, 33,
@@ -13953,7 +13953,7 @@ static const PMSInt16 gSuccessorTable31 [17] = {4, 30,
   143, 36,
   155, 37, -1} ;
 
-static const PMSInt16 gSuccessorTable32 [17] = {4, 30,
+static const int16_t gSuccessorTable32 [17] = {4, 30,
   10, 31,
   11, 32,
   24, 33,
@@ -13962,153 +13962,153 @@ static const PMSInt16 gSuccessorTable32 [17] = {4, 30,
   143, 36,
   155, 37, -1} ;
 
-static const PMSInt16 gSuccessorTable38 [3] = {35, 76, -1} ;
+static const int16_t gSuccessorTable38 [3] = {35, 76, -1} ;
 
-static const PMSInt16 gSuccessorTable39 [9] = {2, 81,
+static const int16_t gSuccessorTable39 [9] = {2, 81,
   6, 82,
   61, 83,
   62, 84, -1} ;
 
-static const PMSInt16 gSuccessorTable40 [9] = {2, 85,
+static const int16_t gSuccessorTable40 [9] = {2, 85,
   7, 86,
   61, 83,
   62, 84, -1} ;
 
-static const PMSInt16 gSuccessorTable60 [7] = {2, 108,
+static const int16_t gSuccessorTable60 [7] = {2, 108,
   61, 83,
   62, 84, -1} ;
 
-static const PMSInt16 gSuccessorTable62 [7] = {2, 110,
+static const int16_t gSuccessorTable62 [7] = {2, 110,
   61, 83,
   62, 84, -1} ;
 
-static const PMSInt16 gSuccessorTable64 [7] = {22, 114,
+static const int16_t gSuccessorTable64 [7] = {22, 114,
   68, 115,
   69, 116, -1} ;
 
-static const PMSInt16 gSuccessorTable82 [3] = {37, 126, -1} ;
+static const int16_t gSuccessorTable82 [3] = {37, 126, -1} ;
 
-static const PMSInt16 gSuccessorTable86 [3] = {39, 130, -1} ;
+static const int16_t gSuccessorTable86 [3] = {39, 130, -1} ;
 
-static const PMSInt16 gSuccessorTable87 [3] = {173, 132, -1} ;
+static const int16_t gSuccessorTable87 [3] = {173, 132, -1} ;
 
-static const PMSInt16 gSuccessorTable88 [7] = {2, 133,
+static const int16_t gSuccessorTable88 [7] = {2, 133,
   61, 83,
   62, 84, -1} ;
 
-static const PMSInt16 gSuccessorTable89 [7] = {22, 134,
+static const int16_t gSuccessorTable89 [7] = {22, 134,
   68, 115,
   69, 116, -1} ;
 
-static const PMSInt16 gSuccessorTable92 [5] = {32, 141,
+static const int16_t gSuccessorTable92 [5] = {32, 141,
   133, 142, -1} ;
 
-static const PMSInt16 gSuccessorTable93 [5] = {32, 147,
+static const int16_t gSuccessorTable93 [5] = {32, 147,
   134, 148, -1} ;
 
-static const PMSInt16 gSuccessorTable104 [5] = {32, 159,
+static const int16_t gSuccessorTable104 [5] = {32, 159,
   149, 160, -1} ;
 
-static const PMSInt16 gSuccessorTable105 [5] = {32, 161,
+static const int16_t gSuccessorTable105 [5] = {32, 161,
   150, 162, -1} ;
 
-static const PMSInt16 gSuccessorTable106 [5] = {32, 163,
+static const int16_t gSuccessorTable106 [5] = {32, 163,
   152, 164, -1} ;
 
-static const PMSInt16 gSuccessorTable108 [3] = {163, 169, -1} ;
+static const int16_t gSuccessorTable108 [3] = {163, 169, -1} ;
 
-static const PMSInt16 gSuccessorTable109 [7] = {2, 170,
+static const int16_t gSuccessorTable109 [7] = {2, 170,
   61, 83,
   62, 84, -1} ;
 
-static const PMSInt16 gSuccessorTable110 [3] = {169, 174, -1} ;
+static const int16_t gSuccessorTable110 [3] = {169, 174, -1} ;
 
-static const PMSInt16 gSuccessorTable111 [7] = {2, 175,
+static const int16_t gSuccessorTable111 [7] = {2, 175,
   61, 83,
   62, 84, -1} ;
 
-static const PMSInt16 gSuccessorTable117 [7] = {22, 178,
+static const int16_t gSuccessorTable117 [7] = {22, 178,
   68, 115,
   69, 116, -1} ;
 
-static const PMSInt16 gSuccessorTable119 [7] = {2, 180,
+static const int16_t gSuccessorTable119 [7] = {2, 180,
   61, 83,
   62, 84, -1} ;
 
-static const PMSInt16 gSuccessorTable120 [7] = {22, 181,
+static const int16_t gSuccessorTable120 [7] = {22, 181,
   68, 115,
   69, 116, -1} ;
 
-static const PMSInt16 gSuccessorTable123 [3] = {144, 185, -1} ;
+static const int16_t gSuccessorTable123 [3] = {144, 185, -1} ;
 
-static const PMSInt16 gSuccessorTable125 [3] = {38, 189, -1} ;
+static const int16_t gSuccessorTable125 [3] = {38, 189, -1} ;
 
-static const PMSInt16 gSuccessorTable127 [3] = {63, 192, -1} ;
+static const int16_t gSuccessorTable127 [3] = {63, 192, -1} ;
 
-static const PMSInt16 gSuccessorTable128 [9] = {1, 217,
+static const int16_t gSuccessorTable128 [9] = {1, 217,
   12, 218,
   13, 219,
   40, 220, -1} ;
 
-static const PMSInt16 gSuccessorTable131 [3] = {173, 223, -1} ;
+static const int16_t gSuccessorTable131 [3] = {173, 223, -1} ;
 
-static const PMSInt16 gSuccessorTable138 [3] = {33, 232, -1} ;
+static const int16_t gSuccessorTable138 [3] = {33, 232, -1} ;
 
-static const PMSInt16 gSuccessorTable141 [5] = {32, 141,
+static const int16_t gSuccessorTable141 [5] = {32, 141,
   133, 235, -1} ;
 
-static const PMSInt16 gSuccessorTable144 [3] = {33, 238, -1} ;
+static const int16_t gSuccessorTable144 [3] = {33, 238, -1} ;
 
-static const PMSInt16 gSuccessorTable147 [5] = {32, 147,
+static const int16_t gSuccessorTable147 [5] = {32, 147,
   134, 241, -1} ;
 
-static const PMSInt16 gSuccessorTable152 [7] = {2, 246,
+static const int16_t gSuccessorTable152 [7] = {2, 246,
   61, 83,
   62, 84, -1} ;
 
-static const PMSInt16 gSuccessorTable153 [7] = {2, 247,
+static const int16_t gSuccessorTable153 [7] = {2, 247,
   61, 83,
   62, 84, -1} ;
 
-static const PMSInt16 gSuccessorTable154 [7] = {22, 248,
+static const int16_t gSuccessorTable154 [7] = {22, 248,
   68, 115,
   69, 116, -1} ;
 
-static const PMSInt16 gSuccessorTable156 [7] = {2, 250,
+static const int16_t gSuccessorTable156 [7] = {2, 250,
   61, 83,
   62, 84, -1} ;
 
-static const PMSInt16 gSuccessorTable157 [7] = {2, 251,
+static const int16_t gSuccessorTable157 [7] = {2, 251,
   61, 83,
   62, 84, -1} ;
 
-static const PMSInt16 gSuccessorTable158 [7] = {22, 252,
+static const int16_t gSuccessorTable158 [7] = {22, 252,
   68, 115,
   69, 116, -1} ;
 
-static const PMSInt16 gSuccessorTable159 [5] = {32, 159,
+static const int16_t gSuccessorTable159 [5] = {32, 159,
   149, 253, -1} ;
 
-static const PMSInt16 gSuccessorTable161 [5] = {32, 161,
+static const int16_t gSuccessorTable161 [5] = {32, 161,
   150, 255, -1} ;
 
-static const PMSInt16 gSuccessorTable163 [5] = {32, 163,
+static const int16_t gSuccessorTable163 [5] = {32, 163,
   152, 257, -1} ;
 
-static const PMSInt16 gSuccessorTable165 [3] = {154, 260, -1} ;
+static const int16_t gSuccessorTable165 [3] = {154, 260, -1} ;
 
-static const PMSInt16 gSuccessorTable177 [3] = {70, 275, -1} ;
+static const int16_t gSuccessorTable177 [3] = {70, 275, -1} ;
 
-static const PMSInt16 gSuccessorTable185 [3] = {145, 283, -1} ;
+static const int16_t gSuccessorTable185 [3] = {145, 283, -1} ;
 
-static const PMSInt16 gSuccessorTable187 [9] = {2, 81,
+static const int16_t gSuccessorTable187 [9] = {2, 81,
   6, 285,
   61, 83,
   62, 84, -1} ;
 
-static const PMSInt16 gSuccessorTable189 [3] = {37, 286, -1} ;
+static const int16_t gSuccessorTable189 [3] = {37, 286, -1} ;
 
-static const PMSInt16 gSuccessorTable193 [15] = {3, 293,
+static const int16_t gSuccessorTable193 [15] = {3, 293,
   64, 294,
   80, 295,
   82, 296,
@@ -14116,22 +14116,22 @@ static const PMSInt16 gSuccessorTable193 [15] = {3, 293,
   121, 298,
   122, 299, -1} ;
 
-static const PMSInt16 gSuccessorTable194 [3] = {41, 302, -1} ;
+static const int16_t gSuccessorTable194 [3] = {41, 302, -1} ;
 
-static const PMSInt16 gSuccessorTable196 [5] = {5, 307,
+static const int16_t gSuccessorTable196 [5] = {5, 307,
   71, 308, -1} ;
 
-static const PMSInt16 gSuccessorTable197 [9] = {1, 217,
+static const int16_t gSuccessorTable197 [9] = {1, 217,
   12, 309,
   13, 219,
   40, 220, -1} ;
 
-static const PMSInt16 gSuccessorTable198 [9] = {1, 217,
+static const int16_t gSuccessorTable198 [9] = {1, 217,
   12, 310,
   13, 219,
   40, 220, -1} ;
 
-static const PMSInt16 gSuccessorTable199 [17] = {0, 330,
+static const int16_t gSuccessorTable199 [17] = {0, 330,
   14, 331,
   15, 332,
   16, 333,
@@ -14140,7 +14140,7 @@ static const PMSInt16 gSuccessorTable199 [17] = {0, 330,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable201 [17] = {0, 339,
+static const int16_t gSuccessorTable201 [17] = {0, 339,
   14, 331,
   15, 332,
   16, 333,
@@ -14149,7 +14149,7 @@ static const PMSInt16 gSuccessorTable201 [17] = {0, 339,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable202 [19] = {0, 340,
+static const int16_t gSuccessorTable202 [19] = {0, 340,
   14, 331,
   15, 332,
   16, 333,
@@ -14159,7 +14159,7 @@ static const PMSInt16 gSuccessorTable202 [19] = {0, 340,
   20, 337,
   27, 341, -1} ;
 
-static const PMSInt16 gSuccessorTable203 [17] = {0, 344,
+static const int16_t gSuccessorTable203 [17] = {0, 344,
   14, 331,
   15, 332,
   16, 333,
@@ -14168,12 +14168,12 @@ static const PMSInt16 gSuccessorTable203 [17] = {0, 344,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable207 [5] = {25, 355,
+static const int16_t gSuccessorTable207 [5] = {25, 355,
   84, 356, -1} ;
 
-static const PMSInt16 gSuccessorTable208 [3] = {26, 358, -1} ;
+static const int16_t gSuccessorTable208 [3] = {26, 358, -1} ;
 
-static const PMSInt16 gSuccessorTable209 [17] = {0, 359,
+static const int16_t gSuccessorTable209 [17] = {0, 359,
   14, 331,
   15, 332,
   16, 333,
@@ -14182,7 +14182,7 @@ static const PMSInt16 gSuccessorTable209 [17] = {0, 359,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable210 [17] = {0, 360,
+static const int16_t gSuccessorTable210 [17] = {0, 360,
   14, 331,
   15, 332,
   16, 333,
@@ -14191,7 +14191,7 @@ static const PMSInt16 gSuccessorTable210 [17] = {0, 360,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable211 [17] = {0, 362,
+static const int16_t gSuccessorTable211 [17] = {0, 362,
   14, 331,
   15, 332,
   16, 333,
@@ -14200,7 +14200,7 @@ static const PMSInt16 gSuccessorTable211 [17] = {0, 362,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable212 [17] = {0, 363,
+static const int16_t gSuccessorTable212 [17] = {0, 363,
   14, 331,
   15, 332,
   16, 333,
@@ -14209,7 +14209,7 @@ static const PMSInt16 gSuccessorTable212 [17] = {0, 363,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable213 [17] = {0, 364,
+static const int16_t gSuccessorTable213 [17] = {0, 364,
   14, 331,
   15, 332,
   16, 333,
@@ -14218,9 +14218,9 @@ static const PMSInt16 gSuccessorTable213 [17] = {0, 364,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable214 [3] = {124, 367, -1} ;
+static const int16_t gSuccessorTable214 [3] = {124, 367, -1} ;
 
-static const PMSInt16 gSuccessorTable216 [17] = {0, 369,
+static const int16_t gSuccessorTable216 [17] = {0, 369,
   14, 331,
   15, 332,
   16, 333,
@@ -14229,79 +14229,79 @@ static const PMSInt16 gSuccessorTable216 [17] = {0, 369,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable217 [7] = {1, 217,
+static const int16_t gSuccessorTable217 [7] = {1, 217,
   13, 219,
   40, 370, -1} ;
 
-static const PMSInt16 gSuccessorTable219 [7] = {1, 217,
+static const int16_t gSuccessorTable219 [7] = {1, 217,
   13, 219,
   40, 371, -1} ;
 
-static const PMSInt16 gSuccessorTable221 [9] = {2, 85,
+static const int16_t gSuccessorTable221 [9] = {2, 85,
   7, 372,
   61, 83,
   62, 84, -1} ;
 
-static const PMSInt16 gSuccessorTable229 [3] = {129, 379, -1} ;
+static const int16_t gSuccessorTable229 [3] = {129, 379, -1} ;
 
-static const PMSInt16 gSuccessorTable230 [3] = {131, 381, -1} ;
+static const int16_t gSuccessorTable230 [3] = {131, 381, -1} ;
 
-static const PMSInt16 gSuccessorTable232 [5] = {32, 141,
+static const int16_t gSuccessorTable232 [5] = {32, 141,
   133, 383, -1} ;
 
-static const PMSInt16 gSuccessorTable237 [3] = {135, 388, -1} ;
+static const int16_t gSuccessorTable237 [3] = {135, 388, -1} ;
 
-static const PMSInt16 gSuccessorTable238 [5] = {32, 147,
+static const int16_t gSuccessorTable238 [5] = {32, 147,
   134, 389, -1} ;
 
-static const PMSInt16 gSuccessorTable239 [3] = {138, 391, -1} ;
+static const int16_t gSuccessorTable239 [3] = {138, 391, -1} ;
 
-static const PMSInt16 gSuccessorTable243 [7] = {2, 393,
+static const int16_t gSuccessorTable243 [7] = {2, 393,
   61, 83,
   62, 84, -1} ;
 
-static const PMSInt16 gSuccessorTable244 [7] = {2, 394,
+static const int16_t gSuccessorTable244 [7] = {2, 394,
   61, 83,
   62, 84, -1} ;
 
-static const PMSInt16 gSuccessorTable245 [7] = {22, 395,
+static const int16_t gSuccessorTable245 [7] = {22, 395,
   68, 115,
   69, 116, -1} ;
 
-static const PMSInt16 gSuccessorTable261 [7] = {1, 407,
+static const int16_t gSuccessorTable261 [7] = {1, 407,
   23, 408,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable264 [3] = {163, 412, -1} ;
+static const int16_t gSuccessorTable264 [3] = {163, 412, -1} ;
 
-static const PMSInt16 gSuccessorTable266 [7] = {1, 407,
+static const int16_t gSuccessorTable266 [7] = {1, 407,
   23, 414,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable267 [7] = {1, 407,
+static const int16_t gSuccessorTable267 [7] = {1, 407,
   23, 415,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable268 [3] = {171, 417, -1} ;
+static const int16_t gSuccessorTable268 [3] = {171, 417, -1} ;
 
-static const PMSInt16 gSuccessorTable270 [3] = {169, 419, -1} ;
+static const int16_t gSuccessorTable270 [3] = {169, 419, -1} ;
 
-static const PMSInt16 gSuccessorTable272 [7] = {1, 407,
+static const int16_t gSuccessorTable272 [7] = {1, 407,
   23, 421,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable278 [7] = {1, 407,
+static const int16_t gSuccessorTable278 [7] = {1, 407,
   23, 426,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable281 [3] = {144, 429, -1} ;
+static const int16_t gSuccessorTable281 [3] = {144, 429, -1} ;
 
-static const PMSInt16 gSuccessorTable283 [3] = {146, 432, -1} ;
+static const int16_t gSuccessorTable283 [3] = {146, 432, -1} ;
 
-static const PMSInt16 gSuccessorTable287 [5] = {61, 434,
+static const int16_t gSuccessorTable287 [5] = {61, 434,
   62, 84, -1} ;
 
-static const PMSInt16 gSuccessorTable289 [17] = {0, 436,
+static const int16_t gSuccessorTable289 [17] = {0, 436,
   14, 331,
   15, 332,
   16, 333,
@@ -14310,18 +14310,18 @@ static const PMSInt16 gSuccessorTable289 [17] = {0, 436,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable290 [5] = {65, 441,
+static const int16_t gSuccessorTable290 [5] = {65, 441,
   67, 442, -1} ;
 
-static const PMSInt16 gSuccessorTable302 [5] = {3, 451,
+static const int16_t gSuccessorTable302 [5] = {3, 451,
   64, 294, -1} ;
 
-static const PMSInt16 gSuccessorTable303 [9] = {1, 217,
+static const int16_t gSuccessorTable303 [9] = {1, 217,
   12, 452,
   13, 219,
   40, 220, -1} ;
 
-static const PMSInt16 gSuccessorTable304 [17] = {0, 453,
+static const int16_t gSuccessorTable304 [17] = {0, 453,
   14, 331,
   15, 332,
   16, 333,
@@ -14330,7 +14330,7 @@ static const PMSInt16 gSuccessorTable304 [17] = {0, 453,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable305 [17] = {0, 454,
+static const int16_t gSuccessorTable305 [17] = {0, 454,
   14, 331,
   15, 332,
   16, 333,
@@ -14339,11 +14339,11 @@ static const PMSInt16 gSuccessorTable305 [17] = {0, 454,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable306 [3] = {72, 456, -1} ;
+static const int16_t gSuccessorTable306 [3] = {72, 456, -1} ;
 
-static const PMSInt16 gSuccessorTable307 [3] = {42, 458, -1} ;
+static const int16_t gSuccessorTable307 [3] = {42, 458, -1} ;
 
-static const PMSInt16 gSuccessorTable312 [17] = {0, 463,
+static const int16_t gSuccessorTable312 [17] = {0, 463,
   14, 331,
   15, 332,
   16, 333,
@@ -14352,18 +14352,18 @@ static const PMSInt16 gSuccessorTable312 [17] = {0, 463,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable313 [3] = {55, 465, -1} ;
+static const int16_t gSuccessorTable313 [3] = {55, 465, -1} ;
 
-static const PMSInt16 gSuccessorTable314 [5] = {19, 466,
+static const int16_t gSuccessorTable314 [5] = {19, 466,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable315 [5] = {19, 467,
+static const int16_t gSuccessorTable315 [5] = {19, 467,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable316 [5] = {19, 468,
+static const int16_t gSuccessorTable316 [5] = {19, 468,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable327 [17] = {0, 469,
+static const int16_t gSuccessorTable327 [17] = {0, 469,
   14, 331,
   15, 332,
   16, 333,
@@ -14372,7 +14372,7 @@ static const PMSInt16 gSuccessorTable327 [17] = {0, 469,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable328 [19] = {0, 474,
+static const int16_t gSuccessorTable328 [19] = {0, 474,
   14, 331,
   15, 332,
   16, 333,
@@ -14382,25 +14382,25 @@ static const PMSInt16 gSuccessorTable328 [19] = {0, 474,
   20, 337,
   56, 475, -1} ;
 
-static const PMSInt16 gSuccessorTable331 [3] = {47, 479, -1} ;
+static const int16_t gSuccessorTable331 [3] = {47, 479, -1} ;
 
-static const PMSInt16 gSuccessorTable332 [3] = {48, 482, -1} ;
+static const int16_t gSuccessorTable332 [3] = {48, 482, -1} ;
 
-static const PMSInt16 gSuccessorTable333 [3] = {49, 484, -1} ;
+static const int16_t gSuccessorTable333 [3] = {49, 484, -1} ;
 
-static const PMSInt16 gSuccessorTable334 [3] = {50, 491, -1} ;
+static const int16_t gSuccessorTable334 [3] = {50, 491, -1} ;
 
-static const PMSInt16 gSuccessorTable335 [3] = {51, 496, -1} ;
+static const int16_t gSuccessorTable335 [3] = {51, 496, -1} ;
 
-static const PMSInt16 gSuccessorTable336 [3] = {52, 500, -1} ;
+static const int16_t gSuccessorTable336 [3] = {52, 500, -1} ;
 
-static const PMSInt16 gSuccessorTable337 [3] = {53, 502, -1} ;
+static const int16_t gSuccessorTable337 [3] = {53, 502, -1} ;
 
-static const PMSInt16 gSuccessorTable338 [3] = {76, 505, -1} ;
+static const int16_t gSuccessorTable338 [3] = {76, 505, -1} ;
 
-static const PMSInt16 gSuccessorTable339 [3] = {30, 507, -1} ;
+static const int16_t gSuccessorTable339 [3] = {30, 507, -1} ;
 
-static const PMSInt16 gSuccessorTable346 [17] = {0, 515,
+static const int16_t gSuccessorTable346 [17] = {0, 515,
   14, 331,
   15, 332,
   16, 333,
@@ -14409,10 +14409,10 @@ static const PMSInt16 gSuccessorTable346 [17] = {0, 515,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable349 [5] = {21, 519,
+static const int16_t gSuccessorTable349 [5] = {21, 519,
   60, 520, -1} ;
 
-static const PMSInt16 gSuccessorTable350 [17] = {0, 521,
+static const int16_t gSuccessorTable350 [17] = {0, 521,
   14, 331,
   15, 332,
   16, 333,
@@ -14421,11 +14421,11 @@ static const PMSInt16 gSuccessorTable350 [17] = {0, 521,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable351 [3] = {81, 523, -1} ;
+static const int16_t gSuccessorTable351 [3] = {81, 523, -1} ;
 
-static const PMSInt16 gSuccessorTable355 [3] = {88, 525, -1} ;
+static const int16_t gSuccessorTable355 [3] = {88, 525, -1} ;
 
-static const PMSInt16 gSuccessorTable356 [17] = {0, 526,
+static const int16_t gSuccessorTable356 [17] = {0, 526,
   14, 331,
   15, 332,
   16, 333,
@@ -14434,66 +14434,66 @@ static const PMSInt16 gSuccessorTable356 [17] = {0, 526,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable358 [3] = {95, 529, -1} ;
+static const int16_t gSuccessorTable358 [3] = {95, 529, -1} ;
 
-static const PMSInt16 gSuccessorTable367 [3] = {123, 538, -1} ;
+static const int16_t gSuccessorTable367 [3] = {123, 538, -1} ;
 
-static const PMSInt16 gSuccessorTable368 [3] = {125, 540, -1} ;
+static const int16_t gSuccessorTable368 [3] = {125, 540, -1} ;
 
-static const PMSInt16 gSuccessorTable372 [3] = {39, 542, -1} ;
+static const int16_t gSuccessorTable372 [3] = {39, 542, -1} ;
 
-static const PMSInt16 gSuccessorTable374 [3] = {174, 545, -1} ;
+static const int16_t gSuccessorTable374 [3] = {174, 545, -1} ;
 
-static const PMSInt16 gSuccessorTable392 [3] = {139, 561, -1} ;
+static const int16_t gSuccessorTable392 [3] = {139, 561, -1} ;
 
-static const PMSInt16 gSuccessorTable396 [7] = {1, 407,
+static const int16_t gSuccessorTable396 [7] = {1, 407,
   23, 565,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable397 [7] = {1, 407,
+static const int16_t gSuccessorTable397 [7] = {1, 407,
   23, 566,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable403 [3] = {34, 570, -1} ;
+static const int16_t gSuccessorTable403 [3] = {34, 570, -1} ;
 
-static const PMSInt16 gSuccessorTable404 [3] = {154, 571, -1} ;
+static const int16_t gSuccessorTable404 [3] = {154, 571, -1} ;
 
-static const PMSInt16 gSuccessorTable406 [5] = {1, 407,
+static const int16_t gSuccessorTable406 [5] = {1, 407,
   74, 572, -1} ;
 
-static const PMSInt16 gSuccessorTable407 [5] = {1, 407,
+static const int16_t gSuccessorTable407 [5] = {1, 407,
   74, 573, -1} ;
 
-static const PMSInt16 gSuccessorTable410 [3] = {164, 576, -1} ;
+static const int16_t gSuccessorTable410 [3] = {164, 576, -1} ;
 
-static const PMSInt16 gSuccessorTable411 [3] = {165, 578, -1} ;
+static const int16_t gSuccessorTable411 [3] = {165, 578, -1} ;
 
-static const PMSInt16 gSuccessorTable418 [3] = {170, 585, -1} ;
+static const int16_t gSuccessorTable418 [3] = {170, 585, -1} ;
 
-static const PMSInt16 gSuccessorTable422 [3] = {166, 591, -1} ;
+static const int16_t gSuccessorTable422 [3] = {166, 591, -1} ;
 
-static const PMSInt16 gSuccessorTable423 [5] = {68, 592,
+static const int16_t gSuccessorTable423 [5] = {68, 592,
   69, 116, -1} ;
 
-static const PMSInt16 gSuccessorTable425 [3] = {172, 595, -1} ;
+static const int16_t gSuccessorTable425 [3] = {172, 595, -1} ;
 
-static const PMSInt16 gSuccessorTable433 [3] = {156, 602, -1} ;
+static const int16_t gSuccessorTable433 [3] = {156, 602, -1} ;
 
-static const PMSInt16 gSuccessorTable435 [11] = {80, 603,
+static const int16_t gSuccessorTable435 [11] = {80, 603,
   82, 604,
   83, 605,
   121, 606,
   122, 607, -1} ;
 
-static const PMSInt16 gSuccessorTable436 [3] = {64, 608, -1} ;
+static const int16_t gSuccessorTable436 [3] = {64, 608, -1} ;
 
-static const PMSInt16 gSuccessorTable441 [3] = {64, 611, -1} ;
+static const int16_t gSuccessorTable441 [3] = {64, 611, -1} ;
 
-static const PMSInt16 gSuccessorTable442 [3] = {64, 612, -1} ;
+static const int16_t gSuccessorTable442 [3] = {64, 612, -1} ;
 
-static const PMSInt16 gSuccessorTable444 [3] = {66, 615, -1} ;
+static const int16_t gSuccessorTable444 [3] = {66, 615, -1} ;
 
-static const PMSInt16 gSuccessorTable446 [17] = {0, 616,
+static const int16_t gSuccessorTable446 [17] = {0, 616,
   14, 331,
   15, 332,
   16, 333,
@@ -14502,10 +14502,10 @@ static const PMSInt16 gSuccessorTable446 [17] = {0, 616,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable449 [5] = {21, 619,
+static const int16_t gSuccessorTable449 [5] = {21, 619,
   60, 520, -1} ;
 
-static const PMSInt16 gSuccessorTable450 [17] = {0, 620,
+static const int16_t gSuccessorTable450 [17] = {0, 620,
   14, 331,
   15, 332,
   16, 333,
@@ -14514,22 +14514,22 @@ static const PMSInt16 gSuccessorTable450 [17] = {0, 620,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable456 [3] = {73, 627, -1} ;
+static const int16_t gSuccessorTable456 [3] = {73, 627, -1} ;
 
-static const PMSInt16 gSuccessorTable459 [9] = {1, 217,
+static const int16_t gSuccessorTable459 [9] = {1, 217,
   12, 630,
   13, 219,
   40, 220, -1} ;
 
-static const PMSInt16 gSuccessorTable460 [9] = {1, 217,
+static const int16_t gSuccessorTable460 [9] = {1, 217,
   12, 631,
   13, 219,
   40, 220, -1} ;
 
-static const PMSInt16 gSuccessorTable461 [5] = {21, 632,
+static const int16_t gSuccessorTable461 [5] = {21, 632,
   60, 520, -1} ;
 
-static const PMSInt16 gSuccessorTable462 [17] = {0, 633,
+static const int16_t gSuccessorTable462 [17] = {0, 633,
   14, 331,
   15, 332,
   16, 333,
@@ -14538,15 +14538,15 @@ static const PMSInt16 gSuccessorTable462 [17] = {0, 633,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable464 [3] = {55, 636, -1} ;
+static const int16_t gSuccessorTable464 [3] = {55, 636, -1} ;
 
-static const PMSInt16 gSuccessorTable471 [3] = {57, 642, -1} ;
+static const int16_t gSuccessorTable471 [3] = {57, 642, -1} ;
 
-static const PMSInt16 gSuccessorTable477 [7] = {1, 407,
+static const int16_t gSuccessorTable477 [7] = {1, 407,
   23, 647,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable478 [15] = {14, 648,
+static const int16_t gSuccessorTable478 [15] = {14, 648,
   15, 332,
   16, 333,
   17, 334,
@@ -14554,84 +14554,84 @@ static const PMSInt16 gSuccessorTable478 [15] = {14, 648,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable480 [13] = {15, 649,
+static const int16_t gSuccessorTable480 [13] = {15, 649,
   16, 333,
   17, 334,
   18, 335,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable481 [13] = {15, 650,
+static const int16_t gSuccessorTable481 [13] = {15, 650,
   16, 333,
   17, 334,
   18, 335,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable483 [11] = {16, 651,
+static const int16_t gSuccessorTable483 [11] = {16, 651,
   17, 334,
   18, 335,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable485 [9] = {17, 652,
+static const int16_t gSuccessorTable485 [9] = {17, 652,
   18, 335,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable486 [9] = {17, 653,
+static const int16_t gSuccessorTable486 [9] = {17, 653,
   18, 335,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable487 [9] = {17, 654,
+static const int16_t gSuccessorTable487 [9] = {17, 654,
   18, 335,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable488 [9] = {17, 655,
+static const int16_t gSuccessorTable488 [9] = {17, 655,
   18, 335,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable489 [9] = {17, 656,
+static const int16_t gSuccessorTable489 [9] = {17, 656,
   18, 335,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable490 [9] = {17, 657,
+static const int16_t gSuccessorTable490 [9] = {17, 657,
   18, 335,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable492 [7] = {18, 658,
+static const int16_t gSuccessorTable492 [7] = {18, 658,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable493 [7] = {18, 659,
+static const int16_t gSuccessorTable493 [7] = {18, 659,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable494 [7] = {18, 660,
+static const int16_t gSuccessorTable494 [7] = {18, 660,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable495 [7] = {18, 661,
+static const int16_t gSuccessorTable495 [7] = {18, 661,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable497 [5] = {19, 662,
+static const int16_t gSuccessorTable497 [5] = {19, 662,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable498 [5] = {19, 663,
+static const int16_t gSuccessorTable498 [5] = {19, 663,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable499 [5] = {19, 664,
+static const int16_t gSuccessorTable499 [5] = {19, 664,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable503 [3] = {77, 668, -1} ;
+static const int16_t gSuccessorTable503 [3] = {77, 668, -1} ;
 
-static const PMSInt16 gSuccessorTable504 [17] = {0, 669,
+static const int16_t gSuccessorTable504 [17] = {0, 669,
   14, 331,
   15, 332,
   16, 333,
@@ -14640,27 +14640,27 @@ static const PMSInt16 gSuccessorTable504 [17] = {0, 669,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable506 [3] = {118, 674, -1} ;
+static const int16_t gSuccessorTable506 [3] = {118, 674, -1} ;
 
-static const PMSInt16 gSuccessorTable507 [5] = {30, 675,
+static const int16_t gSuccessorTable507 [5] = {30, 675,
   120, 676, -1} ;
 
-static const PMSInt16 gSuccessorTable508 [7] = {1, 407,
+static const int16_t gSuccessorTable508 [7] = {1, 407,
   23, 677,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable510 [5] = {3, 679,
+static const int16_t gSuccessorTable510 [5] = {3, 679,
   64, 294, -1} ;
 
-static const PMSInt16 gSuccessorTable511 [3] = {102, 681, -1} ;
+static const int16_t gSuccessorTable511 [3] = {102, 681, -1} ;
 
-static const PMSInt16 gSuccessorTable513 [5] = {3, 683,
+static const int16_t gSuccessorTable513 [5] = {3, 683,
   64, 294, -1} ;
 
-static const PMSInt16 gSuccessorTable514 [5] = {78, 687,
+static const int16_t gSuccessorTable514 [5] = {78, 687,
   79, 688, -1} ;
 
-static const PMSInt16 gSuccessorTable518 [17] = {0, 690,
+static const int16_t gSuccessorTable518 [17] = {0, 690,
   14, 331,
   15, 332,
   16, 333,
@@ -14669,20 +14669,20 @@ static const PMSInt16 gSuccessorTable518 [17] = {0, 690,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable524 [5] = {25, 695,
+static const int16_t gSuccessorTable524 [5] = {25, 695,
   84, 356, -1} ;
 
-static const PMSInt16 gSuccessorTable525 [3] = {89, 697, -1} ;
+static const int16_t gSuccessorTable525 [3] = {89, 697, -1} ;
 
-static const PMSInt16 gSuccessorTable526 [3] = {85, 700, -1} ;
+static const int16_t gSuccessorTable526 [3] = {85, 700, -1} ;
 
-static const PMSInt16 gSuccessorTable527 [3] = {94, 702, -1} ;
+static const int16_t gSuccessorTable527 [3] = {94, 702, -1} ;
 
-static const PMSInt16 gSuccessorTable528 [3] = {26, 703, -1} ;
+static const int16_t gSuccessorTable528 [3] = {26, 703, -1} ;
 
-static const PMSInt16 gSuccessorTable529 [3] = {96, 705, -1} ;
+static const int16_t gSuccessorTable529 [3] = {96, 705, -1} ;
 
-static const PMSInt16 gSuccessorTable530 [17] = {0, 706,
+static const int16_t gSuccessorTable530 [17] = {0, 706,
   14, 331,
   15, 332,
   16, 333,
@@ -14691,7 +14691,7 @@ static const PMSInt16 gSuccessorTable530 [17] = {0, 706,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable531 [17] = {0, 707,
+static const int16_t gSuccessorTable531 [17] = {0, 707,
   14, 331,
   15, 332,
   16, 333,
@@ -14700,9 +14700,9 @@ static const PMSInt16 gSuccessorTable531 [17] = {0, 707,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable532 [3] = {105, 709, -1} ;
+static const int16_t gSuccessorTable532 [3] = {105, 709, -1} ;
 
-static const PMSInt16 gSuccessorTable534 [17] = {0, 711,
+static const int16_t gSuccessorTable534 [17] = {0, 711,
   14, 331,
   15, 332,
   16, 333,
@@ -14711,7 +14711,7 @@ static const PMSInt16 gSuccessorTable534 [17] = {0, 711,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable536 [17] = {0, 712,
+static const int16_t gSuccessorTable536 [17] = {0, 712,
   14, 331,
   15, 332,
   16, 333,
@@ -14720,63 +14720,63 @@ static const PMSInt16 gSuccessorTable536 [17] = {0, 712,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable537 [3] = {124, 713, -1} ;
+static const int16_t gSuccessorTable537 [3] = {124, 713, -1} ;
 
-static const PMSInt16 gSuccessorTable540 [3] = {126, 718, -1} ;
+static const int16_t gSuccessorTable540 [3] = {126, 718, -1} ;
 
-static const PMSInt16 gSuccessorTable544 [3] = {174, 720, -1} ;
+static const int16_t gSuccessorTable544 [3] = {174, 720, -1} ;
 
-static const PMSInt16 gSuccessorTable548 [3] = {130, 725, -1} ;
+static const int16_t gSuccessorTable548 [3] = {130, 725, -1} ;
 
-static const PMSInt16 gSuccessorTable552 [5] = {32, 141,
+static const int16_t gSuccessorTable552 [5] = {32, 141,
   133, 727, -1} ;
 
-static const PMSInt16 gSuccessorTable557 [3] = {136, 731, -1} ;
+static const int16_t gSuccessorTable557 [3] = {136, 731, -1} ;
 
-static const PMSInt16 gSuccessorTable569 [3] = {151, 742, -1} ;
+static const int16_t gSuccessorTable569 [3] = {151, 742, -1} ;
 
-static const PMSInt16 gSuccessorTable570 [3] = {153, 744, -1} ;
+static const int16_t gSuccessorTable570 [3] = {153, 744, -1} ;
 
-static const PMSInt16 gSuccessorTable574 [3] = {163, 745, -1} ;
+static const int16_t gSuccessorTable574 [3] = {163, 745, -1} ;
 
-static const PMSInt16 gSuccessorTable576 [3] = {163, 747, -1} ;
+static const int16_t gSuccessorTable576 [3] = {163, 747, -1} ;
 
-static const PMSInt16 gSuccessorTable581 [3] = {169, 751, -1} ;
+static const int16_t gSuccessorTable581 [3] = {169, 751, -1} ;
 
-static const PMSInt16 gSuccessorTable582 [3] = {171, 752, -1} ;
+static const int16_t gSuccessorTable582 [3] = {171, 752, -1} ;
 
-static const PMSInt16 gSuccessorTable583 [7] = {1, 407,
+static const int16_t gSuccessorTable583 [7] = {1, 407,
   23, 753,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable585 [3] = {169, 755, -1} ;
+static const int16_t gSuccessorTable585 [3] = {169, 755, -1} ;
 
-static const PMSInt16 gSuccessorTable598 [7] = {1, 407,
+static const int16_t gSuccessorTable598 [7] = {1, 407,
   23, 767,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable599 [3] = {147, 769, -1} ;
+static const int16_t gSuccessorTable599 [3] = {147, 769, -1} ;
 
-static const PMSInt16 gSuccessorTable600 [5] = {32, 770,
+static const int16_t gSuccessorTable600 [5] = {32, 770,
   148, 771, -1} ;
 
-static const PMSInt16 gSuccessorTable601 [3] = {157, 773, -1} ;
+static const int16_t gSuccessorTable601 [3] = {157, 773, -1} ;
 
-static const PMSInt16 gSuccessorTable613 [3] = {64, 775, -1} ;
+static const int16_t gSuccessorTable613 [3] = {64, 775, -1} ;
 
-static const PMSInt16 gSuccessorTable615 [3] = {64, 777, -1} ;
+static const int16_t gSuccessorTable615 [3] = {64, 777, -1} ;
 
-static const PMSInt16 gSuccessorTable622 [9] = {1, 217,
+static const int16_t gSuccessorTable622 [9] = {1, 217,
   12, 781,
   13, 219,
   40, 220, -1} ;
 
-static const PMSInt16 gSuccessorTable623 [9] = {1, 217,
+static const int16_t gSuccessorTable623 [9] = {1, 217,
   12, 782,
   13, 219,
   40, 220, -1} ;
 
-static const PMSInt16 gSuccessorTable624 [17] = {0, 783,
+static const int16_t gSuccessorTable624 [17] = {0, 783,
   14, 331,
   15, 332,
   16, 333,
@@ -14785,17 +14785,17 @@ static const PMSInt16 gSuccessorTable624 [17] = {0, 783,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable627 [3] = {71, 784, -1} ;
+static const int16_t gSuccessorTable627 [3] = {71, 784, -1} ;
 
-static const PMSInt16 gSuccessorTable628 [3] = {43, 786, -1} ;
+static const int16_t gSuccessorTable628 [3] = {43, 786, -1} ;
 
-static const PMSInt16 gSuccessorTable630 [3] = {44, 788, -1} ;
+static const int16_t gSuccessorTable630 [3] = {44, 788, -1} ;
 
-static const PMSInt16 gSuccessorTable631 [3] = {45, 790, -1} ;
+static const int16_t gSuccessorTable631 [3] = {45, 790, -1} ;
 
-static const PMSInt16 gSuccessorTable635 [3] = {54, 796, -1} ;
+static const int16_t gSuccessorTable635 [3] = {54, 796, -1} ;
 
-static const PMSInt16 gSuccessorTable637 [17] = {0, 797,
+static const int16_t gSuccessorTable637 [17] = {0, 797,
   14, 331,
   15, 332,
   16, 333,
@@ -14804,64 +14804,64 @@ static const PMSInt16 gSuccessorTable637 [17] = {0, 797,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable638 [5] = {21, 798,
+static const int16_t gSuccessorTable638 [5] = {21, 798,
   60, 520, -1} ;
 
-static const PMSInt16 gSuccessorTable644 [3] = {58, 803, -1} ;
+static const int16_t gSuccessorTable644 [3] = {58, 803, -1} ;
 
-static const PMSInt16 gSuccessorTable645 [5] = {21, 804,
+static const int16_t gSuccessorTable645 [5] = {21, 804,
   60, 520, -1} ;
 
-static const PMSInt16 gSuccessorTable648 [3] = {47, 806, -1} ;
+static const int16_t gSuccessorTable648 [3] = {47, 806, -1} ;
 
-static const PMSInt16 gSuccessorTable649 [3] = {48, 807, -1} ;
+static const int16_t gSuccessorTable649 [3] = {48, 807, -1} ;
 
-static const PMSInt16 gSuccessorTable650 [3] = {48, 808, -1} ;
+static const int16_t gSuccessorTable650 [3] = {48, 808, -1} ;
 
-static const PMSInt16 gSuccessorTable651 [3] = {49, 809, -1} ;
+static const int16_t gSuccessorTable651 [3] = {49, 809, -1} ;
 
-static const PMSInt16 gSuccessorTable652 [3] = {50, 810, -1} ;
+static const int16_t gSuccessorTable652 [3] = {50, 810, -1} ;
 
-static const PMSInt16 gSuccessorTable653 [3] = {50, 811, -1} ;
+static const int16_t gSuccessorTable653 [3] = {50, 811, -1} ;
 
-static const PMSInt16 gSuccessorTable654 [3] = {50, 812, -1} ;
+static const int16_t gSuccessorTable654 [3] = {50, 812, -1} ;
 
-static const PMSInt16 gSuccessorTable655 [3] = {50, 813, -1} ;
+static const int16_t gSuccessorTable655 [3] = {50, 813, -1} ;
 
-static const PMSInt16 gSuccessorTable656 [3] = {50, 814, -1} ;
+static const int16_t gSuccessorTable656 [3] = {50, 814, -1} ;
 
-static const PMSInt16 gSuccessorTable657 [3] = {50, 815, -1} ;
+static const int16_t gSuccessorTable657 [3] = {50, 815, -1} ;
 
-static const PMSInt16 gSuccessorTable658 [3] = {51, 816, -1} ;
+static const int16_t gSuccessorTable658 [3] = {51, 816, -1} ;
 
-static const PMSInt16 gSuccessorTable659 [3] = {51, 817, -1} ;
+static const int16_t gSuccessorTable659 [3] = {51, 817, -1} ;
 
-static const PMSInt16 gSuccessorTable660 [3] = {51, 818, -1} ;
+static const int16_t gSuccessorTable660 [3] = {51, 818, -1} ;
 
-static const PMSInt16 gSuccessorTable661 [3] = {51, 819, -1} ;
+static const int16_t gSuccessorTable661 [3] = {51, 819, -1} ;
 
-static const PMSInt16 gSuccessorTable662 [3] = {52, 820, -1} ;
+static const int16_t gSuccessorTable662 [3] = {52, 820, -1} ;
 
-static const PMSInt16 gSuccessorTable663 [3] = {52, 821, -1} ;
+static const int16_t gSuccessorTable663 [3] = {52, 821, -1} ;
 
-static const PMSInt16 gSuccessorTable664 [3] = {52, 822, -1} ;
+static const int16_t gSuccessorTable664 [3] = {52, 822, -1} ;
 
-static const PMSInt16 gSuccessorTable665 [3] = {53, 823, -1} ;
+static const int16_t gSuccessorTable665 [3] = {53, 823, -1} ;
 
-static const PMSInt16 gSuccessorTable666 [5] = {21, 824,
+static const int16_t gSuccessorTable666 [5] = {21, 824,
   60, 520, -1} ;
 
-static const PMSInt16 gSuccessorTable675 [5] = {30, 675,
+static const int16_t gSuccessorTable675 [5] = {30, 675,
   120, 827, -1} ;
 
-static const PMSInt16 gSuccessorTable676 [3] = {31, 830, -1} ;
+static const int16_t gSuccessorTable676 [3] = {31, 830, -1} ;
 
-static const PMSInt16 gSuccessorTable677 [3] = {101, 833, -1} ;
+static const int16_t gSuccessorTable677 [3] = {101, 833, -1} ;
 
-static const PMSInt16 gSuccessorTable682 [5] = {3, 838,
+static const int16_t gSuccessorTable682 [5] = {3, 838,
   64, 294, -1} ;
 
-static const PMSInt16 gSuccessorTable686 [17] = {0, 841,
+static const int16_t gSuccessorTable686 [17] = {0, 841,
   14, 331,
   15, 332,
   16, 333,
@@ -14870,17 +14870,17 @@ static const PMSInt16 gSuccessorTable686 [17] = {0, 841,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable690 [3] = {60, 844, -1} ;
+static const int16_t gSuccessorTable690 [3] = {60, 844, -1} ;
 
-static const PMSInt16 gSuccessorTable693 [3] = {81, 845, -1} ;
+static const int16_t gSuccessorTable693 [3] = {81, 845, -1} ;
 
-static const PMSInt16 gSuccessorTable695 [3] = {88, 846, -1} ;
+static const int16_t gSuccessorTable695 [3] = {88, 846, -1} ;
 
-static const PMSInt16 gSuccessorTable697 [3] = {90, 849, -1} ;
+static const int16_t gSuccessorTable697 [3] = {90, 849, -1} ;
 
-static const PMSInt16 gSuccessorTable698 [3] = {86, 853, -1} ;
+static const int16_t gSuccessorTable698 [3] = {86, 853, -1} ;
 
-static const PMSInt16 gSuccessorTable702 [17] = {0, 855,
+static const int16_t gSuccessorTable702 [17] = {0, 855,
   14, 331,
   15, 332,
   16, 333,
@@ -14889,9 +14889,9 @@ static const PMSInt16 gSuccessorTable702 [17] = {0, 855,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable703 [3] = {95, 856, -1} ;
+static const int16_t gSuccessorTable703 [3] = {95, 856, -1} ;
 
-static const PMSInt16 gSuccessorTable704 [17] = {0, 857,
+static const int16_t gSuccessorTable704 [17] = {0, 857,
   14, 331,
   15, 332,
   16, 333,
@@ -14900,11 +14900,11 @@ static const PMSInt16 gSuccessorTable704 [17] = {0, 857,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable705 [3] = {97, 859, -1} ;
+static const int16_t gSuccessorTable705 [3] = {97, 859, -1} ;
 
-static const PMSInt16 gSuccessorTable706 [3] = {103, 861, -1} ;
+static const int16_t gSuccessorTable706 [3] = {103, 861, -1} ;
 
-static const PMSInt16 gSuccessorTable710 [17] = {0, 865,
+static const int16_t gSuccessorTable710 [17] = {0, 865,
   14, 331,
   15, 332,
   16, 333,
@@ -14913,11 +14913,11 @@ static const PMSInt16 gSuccessorTable710 [17] = {0, 865,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable711 [3] = {115, 867, -1} ;
+static const int16_t gSuccessorTable711 [3] = {115, 867, -1} ;
 
-static const PMSInt16 gSuccessorTable713 [3] = {123, 868, -1} ;
+static const int16_t gSuccessorTable713 [3] = {123, 868, -1} ;
 
-static const PMSInt16 gSuccessorTable718 [17] = {0, 869,
+static const int16_t gSuccessorTable718 [17] = {0, 869,
   14, 331,
   15, 332,
   16, 333,
@@ -14926,58 +14926,58 @@ static const PMSInt16 gSuccessorTable718 [17] = {0, 869,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable719 [3] = {128, 871, -1} ;
+static const int16_t gSuccessorTable719 [3] = {128, 871, -1} ;
 
-static const PMSInt16 gSuccessorTable743 [3] = {34, 887, -1} ;
+static const int16_t gSuccessorTable743 [3] = {34, 887, -1} ;
 
-static const PMSInt16 gSuccessorTable746 [3] = {164, 889, -1} ;
+static const int16_t gSuccessorTable746 [3] = {164, 889, -1} ;
 
-static const PMSInt16 gSuccessorTable748 [3] = {165, 890, -1} ;
+static const int16_t gSuccessorTable748 [3] = {165, 890, -1} ;
 
-static const PMSInt16 gSuccessorTable749 [7] = {1, 407,
+static const int16_t gSuccessorTable749 [7] = {1, 407,
   23, 891,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable754 [3] = {170, 894, -1} ;
+static const int16_t gSuccessorTable754 [3] = {170, 894, -1} ;
 
-static const PMSInt16 gSuccessorTable757 [7] = {1, 407,
+static const int16_t gSuccessorTable757 [7] = {1, 407,
   23, 896,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable758 [3] = {168, 898, -1} ;
+static const int16_t gSuccessorTable758 [3] = {168, 898, -1} ;
 
-static const PMSInt16 gSuccessorTable760 [3] = {166, 900, -1} ;
+static const int16_t gSuccessorTable760 [3] = {166, 900, -1} ;
 
-static const PMSInt16 gSuccessorTable762 [7] = {1, 407,
+static const int16_t gSuccessorTable762 [7] = {1, 407,
   23, 902,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable766 [7] = {1, 407,
+static const int16_t gSuccessorTable766 [7] = {1, 407,
   23, 905,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable770 [5] = {32, 770,
+static const int16_t gSuccessorTable770 [5] = {32, 770,
   148, 908, -1} ;
 
-static const PMSInt16 gSuccessorTable776 [3] = {66, 912, -1} ;
+static const int16_t gSuccessorTable776 [3] = {66, 912, -1} ;
 
-static const PMSInt16 gSuccessorTable781 [3] = {46, 914, -1} ;
+static const int16_t gSuccessorTable781 [3] = {46, 914, -1} ;
 
-static const PMSInt16 gSuccessorTable782 [3] = {8, 917, -1} ;
+static const int16_t gSuccessorTable782 [3] = {8, 917, -1} ;
 
-static const PMSInt16 gSuccessorTable787 [9] = {1, 217,
+static const int16_t gSuccessorTable787 [9] = {1, 217,
   12, 920,
   13, 219,
   40, 220, -1} ;
 
-static const PMSInt16 gSuccessorTable789 [9] = {1, 217,
+static const int16_t gSuccessorTable789 [9] = {1, 217,
   12, 922,
   13, 219,
   40, 220, -1} ;
 
-static const PMSInt16 gSuccessorTable802 [3] = {59, 932, -1} ;
+static const int16_t gSuccessorTable802 [3] = {59, 932, -1} ;
 
-static const PMSInt16 gSuccessorTable805 [17] = {0, 933,
+static const int16_t gSuccessorTable805 [17] = {0, 933,
   14, 331,
   15, 332,
   16, 333,
@@ -14986,17 +14986,17 @@ static const PMSInt16 gSuccessorTable805 [17] = {0, 933,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable826 [3] = {119, 935, -1} ;
+static const int16_t gSuccessorTable826 [3] = {119, 935, -1} ;
 
-static const PMSInt16 gSuccessorTable828 [7] = {1, 407,
+static const int16_t gSuccessorTable828 [7] = {1, 407,
   23, 936,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable831 [7] = {1, 407,
+static const int16_t gSuccessorTable831 [7] = {1, 407,
   23, 939,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable832 [19] = {0, 340,
+static const int16_t gSuccessorTable832 [19] = {0, 340,
   14, 331,
   15, 332,
   16, 333,
@@ -15006,15 +15006,15 @@ static const PMSInt16 gSuccessorTable832 [19] = {0, 340,
   20, 337,
   27, 940, -1} ;
 
-static const PMSInt16 gSuccessorTable836 [3] = {102, 942, -1} ;
+static const int16_t gSuccessorTable836 [3] = {102, 942, -1} ;
 
-static const PMSInt16 gSuccessorTable837 [5] = {3, 943,
+static const int16_t gSuccessorTable837 [5] = {3, 943,
   64, 294, -1} ;
 
-static const PMSInt16 gSuccessorTable840 [5] = {21, 946,
+static const int16_t gSuccessorTable840 [5] = {21, 946,
   60, 520, -1} ;
 
-static const PMSInt16 gSuccessorTable848 [17] = {0, 947,
+static const int16_t gSuccessorTable848 [17] = {0, 947,
   14, 331,
   15, 332,
   16, 333,
@@ -15023,21 +15023,21 @@ static const PMSInt16 gSuccessorTable848 [17] = {0, 947,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable849 [3] = {91, 949, -1} ;
+static const int16_t gSuccessorTable849 [3] = {91, 949, -1} ;
 
-static const PMSInt16 gSuccessorTable850 [3] = {86, 950, -1} ;
+static const int16_t gSuccessorTable850 [3] = {86, 950, -1} ;
 
-static const PMSInt16 gSuccessorTable853 [3] = {87, 954, -1} ;
+static const int16_t gSuccessorTable853 [3] = {87, 954, -1} ;
 
-static const PMSInt16 gSuccessorTable858 [7] = {1, 407,
+static const int16_t gSuccessorTable858 [7] = {1, 407,
   23, 955,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable863 [3] = {105, 959, -1} ;
+static const int16_t gSuccessorTable863 [3] = {105, 959, -1} ;
 
-static const PMSInt16 gSuccessorTable865 [3] = {108, 962, -1} ;
+static const int16_t gSuccessorTable865 [3] = {108, 962, -1} ;
 
-static const PMSInt16 gSuccessorTable866 [17] = {0, 963,
+static const int16_t gSuccessorTable866 [17] = {0, 963,
   14, 331,
   15, 332,
   16, 333,
@@ -15046,53 +15046,53 @@ static const PMSInt16 gSuccessorTable866 [17] = {0, 963,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable869 [5] = {3, 965,
+static const int16_t gSuccessorTable869 [5] = {3, 965,
   64, 294, -1} ;
 
-static const PMSInt16 gSuccessorTable872 [3] = {175, 972, -1} ;
+static const int16_t gSuccessorTable872 [3] = {175, 972, -1} ;
 
-static const PMSInt16 gSuccessorTable873 [3] = {130, 973, -1} ;
+static const int16_t gSuccessorTable873 [3] = {130, 973, -1} ;
 
-static const PMSInt16 gSuccessorTable874 [3] = {132, 975, -1} ;
+static const int16_t gSuccessorTable874 [3] = {132, 975, -1} ;
 
-static const PMSInt16 gSuccessorTable875 [5] = {32, 141,
+static const int16_t gSuccessorTable875 [5] = {32, 141,
   133, 976, -1} ;
 
-static const PMSInt16 gSuccessorTable876 [5] = {32, 141,
+static const int16_t gSuccessorTable876 [5] = {32, 141,
   133, 977, -1} ;
 
-static const PMSInt16 gSuccessorTable878 [5] = {32, 147,
+static const int16_t gSuccessorTable878 [5] = {32, 147,
   134, 979, -1} ;
 
-static const PMSInt16 gSuccessorTable881 [3] = {141, 983, -1} ;
+static const int16_t gSuccessorTable881 [3] = {141, 983, -1} ;
 
-static const PMSInt16 gSuccessorTable885 [7] = {1, 407,
+static const int16_t gSuccessorTable885 [7] = {1, 407,
   23, 987,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable887 [3] = {153, 988, -1} ;
+static const int16_t gSuccessorTable887 [3] = {153, 988, -1} ;
 
-static const PMSInt16 gSuccessorTable893 [3] = {169, 990, -1} ;
+static const int16_t gSuccessorTable893 [3] = {169, 990, -1} ;
 
-static const PMSInt16 gSuccessorTable899 [3] = {167, 995, -1} ;
+static const int16_t gSuccessorTable899 [3] = {167, 995, -1} ;
 
-static const PMSInt16 gSuccessorTable907 [3] = {147, 1001, -1} ;
+static const int16_t gSuccessorTable907 [3] = {147, 1001, -1} ;
 
-static const PMSInt16 gSuccessorTable910 [3] = {157, 1002, -1} ;
+static const int16_t gSuccessorTable910 [3] = {157, 1002, -1} ;
 
-static const PMSInt16 gSuccessorTable911 [3] = {158, 1004, -1} ;
+static const int16_t gSuccessorTable911 [3] = {158, 1004, -1} ;
 
-static const PMSInt16 gSuccessorTable913 [9] = {1, 217,
+static const int16_t gSuccessorTable913 [9] = {1, 217,
   12, 1005,
   13, 219,
   40, 220, -1} ;
 
-static const PMSInt16 gSuccessorTable915 [9] = {1, 217,
+static const int16_t gSuccessorTable915 [9] = {1, 217,
   12, 1007,
   13, 219,
   40, 220, -1} ;
 
-static const PMSInt16 gSuccessorTable916 [17] = {0, 1008,
+static const int16_t gSuccessorTable916 [17] = {0, 1008,
   14, 331,
   15, 332,
   16, 333,
@@ -15101,18 +15101,18 @@ static const PMSInt16 gSuccessorTable916 [17] = {0, 1008,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable918 [9] = {1, 217,
+static const int16_t gSuccessorTable918 [9] = {1, 217,
   12, 1010,
   13, 219,
   40, 220, -1} ;
 
-static const PMSInt16 gSuccessorTable919 [3] = {43, 1011, -1} ;
+static const int16_t gSuccessorTable919 [3] = {43, 1011, -1} ;
 
-static const PMSInt16 gSuccessorTable920 [3] = {44, 1012, -1} ;
+static const int16_t gSuccessorTable920 [3] = {44, 1012, -1} ;
 
-static const PMSInt16 gSuccessorTable922 [3] = {45, 1014, -1} ;
+static const int16_t gSuccessorTable922 [3] = {45, 1014, -1} ;
 
-static const PMSInt16 gSuccessorTable926 [17] = {0, 1018,
+static const int16_t gSuccessorTable926 [17] = {0, 1018,
   14, 331,
   15, 332,
   16, 333,
@@ -15121,10 +15121,10 @@ static const PMSInt16 gSuccessorTable926 [17] = {0, 1018,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable930 [5] = {21, 1020,
+static const int16_t gSuccessorTable930 [5] = {21, 1020,
   60, 520, -1} ;
 
-static const PMSInt16 gSuccessorTable937 [17] = {0, 1023,
+static const int16_t gSuccessorTable937 [17] = {0, 1023,
   14, 331,
   15, 332,
   16, 333,
@@ -15133,19 +15133,19 @@ static const PMSInt16 gSuccessorTable937 [17] = {0, 1023,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable948 [7] = {1, 407,
+static const int16_t gSuccessorTable948 [7] = {1, 407,
   23, 1027,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable951 [3] = {86, 1029, -1} ;
+static const int16_t gSuccessorTable951 [3] = {86, 1029, -1} ;
 
-static const PMSInt16 gSuccessorTable952 [3] = {86, 1030, -1} ;
+static const int16_t gSuccessorTable952 [3] = {86, 1030, -1} ;
 
-static const PMSInt16 gSuccessorTable956 [3] = {98, 1033, -1} ;
+static const int16_t gSuccessorTable956 [3] = {98, 1033, -1} ;
 
-static const PMSInt16 gSuccessorTable957 [3] = {104, 1035, -1} ;
+static const int16_t gSuccessorTable957 [3] = {104, 1035, -1} ;
 
-static const PMSInt16 gSuccessorTable960 [17] = {0, 1036,
+static const int16_t gSuccessorTable960 [17] = {0, 1036,
   14, 331,
   15, 332,
   16, 333,
@@ -15154,212 +15154,212 @@ static const PMSInt16 gSuccessorTable960 [17] = {0, 1036,
   19, 336,
   20, 337, -1} ;
 
-static const PMSInt16 gSuccessorTable963 [3] = {115, 1039, -1} ;
+static const int16_t gSuccessorTable963 [3] = {115, 1039, -1} ;
 
-static const PMSInt16 gSuccessorTable964 [3] = {29, 1041, -1} ;
+static const int16_t gSuccessorTable964 [3] = {29, 1041, -1} ;
 
-static const PMSInt16 gSuccessorTable966 [3] = {128, 1043, -1} ;
+static const int16_t gSuccessorTable966 [3] = {128, 1043, -1} ;
 
-static const PMSInt16 gSuccessorTable967 [7] = {1, 407,
+static const int16_t gSuccessorTable967 [7] = {1, 407,
   23, 1044,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable978 [3] = {137, 1054, -1} ;
+static const int16_t gSuccessorTable978 [3] = {137, 1054, -1} ;
 
-static const PMSInt16 gSuccessorTable980 [5] = {32, 147,
+static const int16_t gSuccessorTable980 [5] = {32, 147,
   134, 1055, -1} ;
 
-static const PMSInt16 gSuccessorTable989 [3] = {163, 1060, -1} ;
+static const int16_t gSuccessorTable989 [3] = {163, 1060, -1} ;
 
-static const PMSInt16 gSuccessorTable991 [3] = {166, 1061, -1} ;
+static const int16_t gSuccessorTable991 [3] = {166, 1061, -1} ;
 
-static const PMSInt16 gSuccessorTable992 [3] = {168, 1062, -1} ;
+static const int16_t gSuccessorTable992 [3] = {168, 1062, -1} ;
 
-static const PMSInt16 gSuccessorTable993 [7] = {1, 407,
+static const int16_t gSuccessorTable993 [7] = {1, 407,
   23, 1063,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable995 [3] = {166, 1065, -1} ;
+static const int16_t gSuccessorTable995 [3] = {166, 1065, -1} ;
 
-static const PMSInt16 gSuccessorTable1003 [3] = {159, 1071, -1} ;
+static const int16_t gSuccessorTable1003 [3] = {159, 1071, -1} ;
 
-static const PMSInt16 gSuccessorTable1005 [3] = {46, 1073, -1} ;
+static const int16_t gSuccessorTable1005 [3] = {46, 1073, -1} ;
 
-static const PMSInt16 gSuccessorTable1021 [7] = {1, 407,
+static const int16_t gSuccessorTable1021 [7] = {1, 407,
   23, 1081,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable1022 [7] = {1, 407,
+static const int16_t gSuccessorTable1022 [7] = {1, 407,
   23, 1082,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable1028 [7] = {1, 407,
+static const int16_t gSuccessorTable1028 [7] = {1, 407,
   23, 1085,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable1033 [7] = {1, 407,
+static const int16_t gSuccessorTable1033 [7] = {1, 407,
   23, 1087,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable1036 [3] = {106, 1090, -1} ;
+static const int16_t gSuccessorTable1036 [3] = {106, 1090, -1} ;
 
-static const PMSInt16 gSuccessorTable1038 [7] = {1, 407,
+static const int16_t gSuccessorTable1038 [7] = {1, 407,
   23, 1091,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable1040 [3] = {28, 1094, -1} ;
+static const int16_t gSuccessorTable1040 [3] = {28, 1094, -1} ;
 
-static const PMSInt16 gSuccessorTable1041 [5] = {29, 1095,
+static const int16_t gSuccessorTable1041 [5] = {29, 1095,
   116, 1096, -1} ;
 
-static const PMSInt16 gSuccessorTable1044 [3] = {127, 1098, -1} ;
+static const int16_t gSuccessorTable1044 [3] = {127, 1098, -1} ;
 
-static const PMSInt16 gSuccessorTable1045 [7] = {2, 1099,
+static const int16_t gSuccessorTable1045 [7] = {2, 1099,
   61, 83,
   62, 84, -1} ;
 
-static const PMSInt16 gSuccessorTable1046 [7] = {2, 1100,
+static const int16_t gSuccessorTable1046 [7] = {2, 1100,
   61, 83,
   62, 84, -1} ;
 
-static const PMSInt16 gSuccessorTable1047 [3] = {177, 1102, -1} ;
+static const int16_t gSuccessorTable1047 [3] = {177, 1102, -1} ;
 
-static const PMSInt16 gSuccessorTable1048 [3] = {176, 1104, -1} ;
+static const int16_t gSuccessorTable1048 [3] = {176, 1104, -1} ;
 
-static const PMSInt16 gSuccessorTable1054 [3] = {136, 1107, -1} ;
+static const int16_t gSuccessorTable1054 [3] = {136, 1107, -1} ;
 
-static const PMSInt16 gSuccessorTable1056 [3] = {140, 1110, -1} ;
+static const int16_t gSuccessorTable1056 [3] = {140, 1110, -1} ;
 
-static const PMSInt16 gSuccessorTable1058 [5] = {32, 147,
+static const int16_t gSuccessorTable1058 [5] = {32, 147,
   134, 1112, -1} ;
 
-static const PMSInt16 gSuccessorTable1064 [3] = {167, 1115, -1} ;
+static const int16_t gSuccessorTable1064 [3] = {167, 1115, -1} ;
 
-static const PMSInt16 gSuccessorTable1075 [9] = {1, 217,
+static const int16_t gSuccessorTable1075 [9] = {1, 217,
   12, 1122,
   13, 219,
   40, 220, -1} ;
 
-static const PMSInt16 gSuccessorTable1085 [3] = {92, 1127, -1} ;
+static const int16_t gSuccessorTable1085 [3] = {92, 1127, -1} ;
 
-static const PMSInt16 gSuccessorTable1087 [3] = {99, 1129, -1} ;
+static const int16_t gSuccessorTable1087 [3] = {99, 1129, -1} ;
 
-static const PMSInt16 gSuccessorTable1088 [3] = {104, 1130, -1} ;
+static const int16_t gSuccessorTable1088 [3] = {104, 1130, -1} ;
 
-static const PMSInt16 gSuccessorTable1091 [3] = {109, 1134, -1} ;
+static const int16_t gSuccessorTable1091 [3] = {109, 1134, -1} ;
 
-static const PMSInt16 gSuccessorTable1093 [3] = {110, 1136, -1} ;
+static const int16_t gSuccessorTable1093 [3] = {110, 1136, -1} ;
 
-static const PMSInt16 gSuccessorTable1094 [3] = {114, 1138, -1} ;
+static const int16_t gSuccessorTable1094 [3] = {114, 1138, -1} ;
 
-static const PMSInt16 gSuccessorTable1095 [5] = {29, 1095,
+static const int16_t gSuccessorTable1095 [5] = {29, 1095,
   116, 1139, -1} ;
 
-static const PMSInt16 gSuccessorTable1096 [3] = {117, 1141, -1} ;
+static const int16_t gSuccessorTable1096 [3] = {117, 1141, -1} ;
 
-static const PMSInt16 gSuccessorTable1110 [3] = {139, 1152, -1} ;
+static const int16_t gSuccessorTable1110 [3] = {139, 1152, -1} ;
 
-static const PMSInt16 gSuccessorTable1114 [3] = {166, 1155, -1} ;
+static const int16_t gSuccessorTable1114 [3] = {166, 1155, -1} ;
 
-static const PMSInt16 gSuccessorTable1117 [3] = {172, 1156, -1} ;
+static const int16_t gSuccessorTable1117 [3] = {172, 1156, -1} ;
 
-static const PMSInt16 gSuccessorTable1119 [3] = {159, 1157, -1} ;
+static const int16_t gSuccessorTable1119 [3] = {159, 1157, -1} ;
 
-static const PMSInt16 gSuccessorTable1120 [3] = {160, 1159, -1} ;
+static const int16_t gSuccessorTable1120 [3] = {160, 1159, -1} ;
 
-static const PMSInt16 gSuccessorTable1122 [3] = {8, 1160, -1} ;
+static const int16_t gSuccessorTable1122 [3] = {8, 1160, -1} ;
 
-static const PMSInt16 gSuccessorTable1126 [7] = {1, 407,
+static const int16_t gSuccessorTable1126 [7] = {1, 407,
   23, 1163,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable1127 [3] = {93, 1165, -1} ;
+static const int16_t gSuccessorTable1127 [3] = {93, 1165, -1} ;
 
-static const PMSInt16 gSuccessorTable1128 [7] = {1, 407,
+static const int16_t gSuccessorTable1128 [7] = {1, 407,
   23, 1166,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable1129 [3] = {100, 1168, -1} ;
+static const int16_t gSuccessorTable1129 [3] = {100, 1168, -1} ;
 
-static const PMSInt16 gSuccessorTable1132 [7] = {1, 407,
+static const int16_t gSuccessorTable1132 [7] = {1, 407,
   23, 1169,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable1133 [7] = {1, 407,
+static const int16_t gSuccessorTable1133 [7] = {1, 407,
   23, 1170,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable1136 [3] = {111, 1173, -1} ;
+static const int16_t gSuccessorTable1136 [3] = {111, 1173, -1} ;
 
-static const PMSInt16 gSuccessorTable1137 [3] = {28, 1174, -1} ;
+static const int16_t gSuccessorTable1137 [3] = {28, 1174, -1} ;
 
-static const PMSInt16 gSuccessorTable1140 [7] = {1, 407,
+static const int16_t gSuccessorTable1140 [7] = {1, 407,
   23, 1176,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable1142 [3] = {128, 1178, -1} ;
+static const int16_t gSuccessorTable1142 [3] = {128, 1178, -1} ;
 
-static const PMSInt16 gSuccessorTable1144 [3] = {175, 1180, -1} ;
+static const int16_t gSuccessorTable1144 [3] = {175, 1180, -1} ;
 
-static const PMSInt16 gSuccessorTable1145 [3] = {175, 1181, -1} ;
+static const int16_t gSuccessorTable1145 [3] = {175, 1181, -1} ;
 
-static const PMSInt16 gSuccessorTable1164 [7] = {1, 407,
+static const int16_t gSuccessorTable1164 [7] = {1, 407,
   23, 1190,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable1167 [7] = {1, 407,
+static const int16_t gSuccessorTable1167 [7] = {1, 407,
   23, 1192,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable1169 [3] = {107, 1195, -1} ;
+static const int16_t gSuccessorTable1169 [3] = {107, 1195, -1} ;
 
-static const PMSInt16 gSuccessorTable1172 [3] = {112, 1200, -1} ;
+static const int16_t gSuccessorTable1172 [3] = {112, 1200, -1} ;
 
-static const PMSInt16 gSuccessorTable1174 [3] = {114, 1201, -1} ;
+static const int16_t gSuccessorTable1174 [3] = {114, 1201, -1} ;
 
-static const PMSInt16 gSuccessorTable1175 [7] = {1, 407,
+static const int16_t gSuccessorTable1175 [7] = {1, 407,
   23, 1202,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable1182 [3] = {177, 1206, -1} ;
+static const int16_t gSuccessorTable1182 [3] = {177, 1206, -1} ;
 
-static const PMSInt16 gSuccessorTable1184 [3] = {176, 1208, -1} ;
+static const int16_t gSuccessorTable1184 [3] = {176, 1208, -1} ;
 
-static const PMSInt16 gSuccessorTable1186 [3] = {142, 1212, -1} ;
+static const int16_t gSuccessorTable1186 [3] = {142, 1212, -1} ;
 
-static const PMSInt16 gSuccessorTable1194 [7] = {1, 407,
+static const int16_t gSuccessorTable1194 [7] = {1, 407,
   23, 1216,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable1197 [3] = {112, 1219, -1} ;
+static const int16_t gSuccessorTable1197 [3] = {112, 1219, -1} ;
 
-static const PMSInt16 gSuccessorTable1200 [3] = {113, 1223, -1} ;
+static const int16_t gSuccessorTable1200 [3] = {113, 1223, -1} ;
 
-static const PMSInt16 gSuccessorTable1204 [7] = {1, 407,
+static const int16_t gSuccessorTable1204 [7] = {1, 407,
   23, 1225,
   74, 409, -1} ;
 
-static const PMSInt16 gSuccessorTable1207 [3] = {175, 1226, -1} ;
+static const int16_t gSuccessorTable1207 [3] = {175, 1226, -1} ;
 
-static const PMSInt16 gSuccessorTable1209 [3] = {175, 1227, -1} ;
+static const int16_t gSuccessorTable1209 [3] = {175, 1227, -1} ;
 
-static const PMSInt16 gSuccessorTable1212 [3] = {141, 1230, -1} ;
+static const int16_t gSuccessorTable1212 [3] = {141, 1230, -1} ;
 
-static const PMSInt16 gSuccessorTable1213 [3] = {161, 1232, -1} ;
+static const int16_t gSuccessorTable1213 [3] = {161, 1232, -1} ;
 
-static const PMSInt16 gSuccessorTable1220 [3] = {112, 1236, -1} ;
+static const int16_t gSuccessorTable1220 [3] = {112, 1236, -1} ;
 
-static const PMSInt16 gSuccessorTable1221 [3] = {112, 1237, -1} ;
+static const int16_t gSuccessorTable1221 [3] = {112, 1237, -1} ;
 
-static const PMSInt16 gSuccessorTable1225 [3] = {127, 1239, -1} ;
+static const int16_t gSuccessorTable1225 [3] = {127, 1239, -1} ;
 
-static const PMSInt16 gSuccessorTable1240 [3] = {162, 1244, -1} ;
+static const int16_t gSuccessorTable1240 [3] = {162, 1244, -1} ;
 
-static const PMSInt16 gSuccessorTable1241 [3] = {160, 1245, -1} ;
+static const int16_t gSuccessorTable1241 [3] = {160, 1245, -1} ;
 
-static const PMSInt16 gSuccessorTable1246 [3] = {161, 1247, -1} ;
+static const int16_t gSuccessorTable1246 [3] = {161, 1247, -1} ;
 
-static const PMSInt16 * gSuccessorTable [1248] = {
+static const int16_t * gSuccessorTable [1248] = {
 gSuccessorTable0, NULL, NULL, NULL, 
   NULL, NULL, NULL, gSuccessorTable7, 
   NULL, gSuccessorTable9, NULL, NULL, 
@@ -15679,7 +15679,7 @@ gSuccessorTable0, NULL, NULL, NULL,
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static const PMSInt16 gProductionsTable [477 * 2] = {
+static const int16_t gProductionsTable [477 * 2] = {
   9, 11,
   6, 1,
   10, 5,
@@ -18464,7 +18464,7 @@ void cGrammar_syntaxSLRgrammar::nt_sortedlist_5F_sort_5F_descriptor_ (GALGAS_sor
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_0 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_0 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 129 130
   return inLexique->nextProductionIndex () - 128 ;
 }
@@ -18475,7 +18475,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_0 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_1 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_1 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 131 132 133 134
   return inLexique->nextProductionIndex () - 130 ;
 }
@@ -18486,7 +18486,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_1 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_2 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_2 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 135 136
   return inLexique->nextProductionIndex () - 134 ;
 }
@@ -18497,7 +18497,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_2 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_3 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_3 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 137 138
   return inLexique->nextProductionIndex () - 136 ;
 }
@@ -18508,7 +18508,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_3 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_4 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_4 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 139 140
   return inLexique->nextProductionIndex () - 138 ;
 }
@@ -18519,7 +18519,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_4 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_5 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_5 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 141 142 143
   return inLexique->nextProductionIndex () - 140 ;
 }
@@ -18530,7 +18530,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_5 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_6 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_6 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 144 145 146
   return inLexique->nextProductionIndex () - 143 ;
 }
@@ -18541,7 +18541,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_6 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_7 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_7 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 147 148
   return inLexique->nextProductionIndex () - 146 ;
 }
@@ -18552,7 +18552,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_7 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_8 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_8 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 149 150
   return inLexique->nextProductionIndex () - 148 ;
 }
@@ -18563,7 +18563,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_8 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_9 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_9 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 151 152
   return inLexique->nextProductionIndex () - 150 ;
 }
@@ -18574,7 +18574,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_9 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_10 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_10 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 153 154
   return inLexique->nextProductionIndex () - 152 ;
 }
@@ -18585,7 +18585,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_10 (C_Lexique_galg
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_11 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_11 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 155 156
   return inLexique->nextProductionIndex () - 154 ;
 }
@@ -18596,7 +18596,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_syntaxModelBuilder_11 (C_Lexique_galg
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_0 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_expressionSyntax_0 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 157 158
   return inLexique->nextProductionIndex () - 156 ;
 }
@@ -18607,7 +18607,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_0 (C_Lexique_galgas_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_1 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_expressionSyntax_1 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 159 160 161
   return inLexique->nextProductionIndex () - 158 ;
 }
@@ -18618,7 +18618,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_1 (C_Lexique_galgas_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_2 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_expressionSyntax_2 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 162 163
   return inLexique->nextProductionIndex () - 161 ;
 }
@@ -18629,7 +18629,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_2 (C_Lexique_galgas_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_3 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_expressionSyntax_3 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 164 165 166 167 168 169 170
   return inLexique->nextProductionIndex () - 163 ;
 }
@@ -18640,7 +18640,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_3 (C_Lexique_galgas_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_4 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_expressionSyntax_4 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 171 172 173 174 175
   return inLexique->nextProductionIndex () - 170 ;
 }
@@ -18651,7 +18651,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_4 (C_Lexique_galgas_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_5 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_expressionSyntax_5 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 176 177 178 179
   return inLexique->nextProductionIndex () - 175 ;
 }
@@ -18662,7 +18662,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_5 (C_Lexique_galgas_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_6 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_expressionSyntax_6 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 180 181
   return inLexique->nextProductionIndex () - 179 ;
 }
@@ -18673,7 +18673,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_6 (C_Lexique_galgas_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_7 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_expressionSyntax_7 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 182 183 184
   return inLexique->nextProductionIndex () - 181 ;
 }
@@ -18684,7 +18684,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_7 (C_Lexique_galgas_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_8 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_expressionSyntax_8 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 185 186
   return inLexique->nextProductionIndex () - 184 ;
 }
@@ -18695,7 +18695,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_8 (C_Lexique_galgas_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_9 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_expressionSyntax_9 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 187 188 189 190 191 192
   return inLexique->nextProductionIndex () - 186 ;
 }
@@ -18706,7 +18706,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_9 (C_Lexique_galgas_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_10 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_expressionSyntax_10 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 193 194
   return inLexique->nextProductionIndex () - 192 ;
 }
@@ -18717,7 +18717,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_10 (C_Lexique_galgas
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_11 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_expressionSyntax_11 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 195 196
   return inLexique->nextProductionIndex () - 194 ;
 }
@@ -18728,7 +18728,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_11 (C_Lexique_galgas
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_12 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_expressionSyntax_12 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 197 198
   return inLexique->nextProductionIndex () - 196 ;
 }
@@ -18739,7 +18739,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_12 (C_Lexique_galgas
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_13 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_expressionSyntax_13 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 199 200
   return inLexique->nextProductionIndex () - 198 ;
 }
@@ -18750,7 +18750,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_expressionSyntax_13 (C_Lexique_galgas
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_0 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_0 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 201 202
   return inLexique->nextProductionIndex () - 200 ;
 }
@@ -18761,7 +18761,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_0 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_1 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_1 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 203 204 205 206
   return inLexique->nextProductionIndex () - 202 ;
 }
@@ -18772,7 +18772,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_1 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_2 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_2 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 207 208
   return inLexique->nextProductionIndex () - 206 ;
 }
@@ -18783,7 +18783,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_2 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_3 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_3 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 209 210 211 212 213 214
   return inLexique->nextProductionIndex () - 208 ;
 }
@@ -18794,7 +18794,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_3 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_4 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_4 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 215 216
   return inLexique->nextProductionIndex () - 214 ;
 }
@@ -18805,7 +18805,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_4 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_5 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_5 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 217 218
   return inLexique->nextProductionIndex () - 216 ;
 }
@@ -18816,7 +18816,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_5 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_6 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_6 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 219 220
   return inLexique->nextProductionIndex () - 218 ;
 }
@@ -18827,7 +18827,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_6 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_7 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_7 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 221 222
   return inLexique->nextProductionIndex () - 220 ;
 }
@@ -18838,7 +18838,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_7 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_8 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_8 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 223 224
   return inLexique->nextProductionIndex () - 222 ;
 }
@@ -18849,7 +18849,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_8 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_9 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_9 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 225 226
   return inLexique->nextProductionIndex () - 224 ;
 }
@@ -18860,7 +18860,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_9 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_10 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_10 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 227 228
   return inLexique->nextProductionIndex () - 226 ;
 }
@@ -18871,7 +18871,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_10 (C_Lexique
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_11 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_11 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 229 230
   return inLexique->nextProductionIndex () - 228 ;
 }
@@ -18882,7 +18882,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_11 (C_Lexique
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_12 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_12 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 231 232
   return inLexique->nextProductionIndex () - 230 ;
 }
@@ -18893,7 +18893,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_parameterArgumentSyntax_12 (C_Lexique
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_0 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_0 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 233 234 235
   return inLexique->nextProductionIndex () - 232 ;
 }
@@ -18904,7 +18904,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_0 (C_Lexiq
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_1 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_1 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 236 237
   return inLexique->nextProductionIndex () - 235 ;
 }
@@ -18915,7 +18915,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_1 (C_Lexiq
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_2 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_2 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 238 239 240
   return inLexique->nextProductionIndex () - 237 ;
 }
@@ -18926,7 +18926,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_2 (C_Lexiq
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_3 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_3 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 241 242
   return inLexique->nextProductionIndex () - 240 ;
 }
@@ -18937,7 +18937,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_3 (C_Lexiq
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_4 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_4 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 243 244
   return inLexique->nextProductionIndex () - 242 ;
 }
@@ -18948,7 +18948,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_4 (C_Lexiq
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_5 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_5 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 245 246
   return inLexique->nextProductionIndex () - 244 ;
 }
@@ -18959,7 +18959,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_5 (C_Lexiq
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_6 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_6 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 247 248
   return inLexique->nextProductionIndex () - 246 ;
 }
@@ -18970,7 +18970,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_6 (C_Lexiq
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_7 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_7 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 249 250
   return inLexique->nextProductionIndex () - 248 ;
 }
@@ -18981,7 +18981,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_7 (C_Lexiq
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_8 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_8 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 251 252
   return inLexique->nextProductionIndex () - 250 ;
 }
@@ -18992,7 +18992,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_8 (C_Lexiq
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_9 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_9 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 253 254
   return inLexique->nextProductionIndex () - 252 ;
 }
@@ -19003,7 +19003,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_9 (C_Lexiq
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_10 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_10 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 255 256 257 258
   return inLexique->nextProductionIndex () - 254 ;
 }
@@ -19014,7 +19014,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_10 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_11 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_11 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 259 260 261
   return inLexique->nextProductionIndex () - 258 ;
 }
@@ -19025,7 +19025,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_11 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_12 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_12 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 262 263 264 265
   return inLexique->nextProductionIndex () - 261 ;
 }
@@ -19036,7 +19036,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_12 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_13 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_13 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 266 267
   return inLexique->nextProductionIndex () - 265 ;
 }
@@ -19047,7 +19047,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_13 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_14 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_14 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 268 269
   return inLexique->nextProductionIndex () - 267 ;
 }
@@ -19058,7 +19058,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_14 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_15 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_15 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 270 271
   return inLexique->nextProductionIndex () - 269 ;
 }
@@ -19069,7 +19069,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_15 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_16 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_16 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 272 273
   return inLexique->nextProductionIndex () - 271 ;
 }
@@ -19080,7 +19080,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_16 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_17 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_17 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 274 275
   return inLexique->nextProductionIndex () - 273 ;
 }
@@ -19091,7 +19091,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_17 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_18 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_18 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 276 277
   return inLexique->nextProductionIndex () - 275 ;
 }
@@ -19102,7 +19102,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_18 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_19 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_19 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 278 279
   return inLexique->nextProductionIndex () - 277 ;
 }
@@ -19113,7 +19113,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_19 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_20 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_20 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 280 281
   return inLexique->nextProductionIndex () - 279 ;
 }
@@ -19124,7 +19124,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_20 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_21 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_21 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 282 283
   return inLexique->nextProductionIndex () - 281 ;
 }
@@ -19135,7 +19135,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_21 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_22 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_22 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 284 285
   return inLexique->nextProductionIndex () - 283 ;
 }
@@ -19146,7 +19146,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_22 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_23 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_23 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 286 287
   return inLexique->nextProductionIndex () - 285 ;
 }
@@ -19157,7 +19157,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_23 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_24 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_24 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 288 289
   return inLexique->nextProductionIndex () - 287 ;
 }
@@ -19168,7 +19168,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_24 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_25 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_25 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 290 291
   return inLexique->nextProductionIndex () - 289 ;
 }
@@ -19179,7 +19179,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_25 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_26 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_26 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 292 293
   return inLexique->nextProductionIndex () - 291 ;
 }
@@ -19190,7 +19190,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_26 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_27 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_27 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 294 295 296
   return inLexique->nextProductionIndex () - 293 ;
 }
@@ -19201,7 +19201,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_27 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_28 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_28 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 297 298
   return inLexique->nextProductionIndex () - 296 ;
 }
@@ -19212,7 +19212,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_28 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_29 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_29 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 299 300
   return inLexique->nextProductionIndex () - 298 ;
 }
@@ -19223,7 +19223,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_29 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_30 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_30 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 301 302
   return inLexique->nextProductionIndex () - 300 ;
 }
@@ -19234,7 +19234,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_30 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_31 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_31 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 303 304
   return inLexique->nextProductionIndex () - 302 ;
 }
@@ -19245,7 +19245,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_31 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_32 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_32 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 305 306
   return inLexique->nextProductionIndex () - 304 ;
 }
@@ -19256,7 +19256,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_32 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_33 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_33 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 307 308
   return inLexique->nextProductionIndex () - 306 ;
 }
@@ -19267,7 +19267,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_33 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_34 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_34 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 309 310
   return inLexique->nextProductionIndex () - 308 ;
 }
@@ -19278,7 +19278,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_34 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_35 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_35 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 311 312
   return inLexique->nextProductionIndex () - 310 ;
 }
@@ -19289,7 +19289,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_35 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_36 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_36 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 313 314
   return inLexique->nextProductionIndex () - 312 ;
 }
@@ -19300,7 +19300,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_36 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_37 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_37 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 315 316
   return inLexique->nextProductionIndex () - 314 ;
 }
@@ -19311,7 +19311,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_37 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_38 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_38 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 317 318 319 320
   return inLexique->nextProductionIndex () - 316 ;
 }
@@ -19322,7 +19322,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_38 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_39 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_39 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 321 322
   return inLexique->nextProductionIndex () - 320 ;
 }
@@ -19333,7 +19333,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_39 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_40 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_40 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 323 324
   return inLexique->nextProductionIndex () - 322 ;
 }
@@ -19344,7 +19344,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_40 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_41 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_41 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 325 326
   return inLexique->nextProductionIndex () - 324 ;
 }
@@ -19355,7 +19355,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_41 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_42 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_42 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 327 328
   return inLexique->nextProductionIndex () - 326 ;
 }
@@ -19366,7 +19366,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_42 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_43 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_43 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 329 330
   return inLexique->nextProductionIndex () - 328 ;
 }
@@ -19377,7 +19377,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_43 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_44 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_44 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 331 332 333
   return inLexique->nextProductionIndex () - 330 ;
 }
@@ -19388,7 +19388,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_44 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_45 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_45 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 334 335
   return inLexique->nextProductionIndex () - 333 ;
 }
@@ -19399,7 +19399,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_45 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_46 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_46 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 336 337
   return inLexique->nextProductionIndex () - 335 ;
 }
@@ -19410,7 +19410,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_46 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_47 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_47 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 338 339
   return inLexique->nextProductionIndex () - 337 ;
 }
@@ -19421,7 +19421,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_47 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_48 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_48 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 340 341
   return inLexique->nextProductionIndex () - 339 ;
 }
@@ -19432,7 +19432,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_48 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_49 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_49 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 342 343
   return inLexique->nextProductionIndex () - 341 ;
 }
@@ -19443,7 +19443,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_49 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_50 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_50 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 344 345
   return inLexique->nextProductionIndex () - 343 ;
 }
@@ -19454,7 +19454,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_50 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_51 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_51 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 346 347
   return inLexique->nextProductionIndex () - 345 ;
 }
@@ -19465,7 +19465,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_51 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_52 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_52 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 348 349
   return inLexique->nextProductionIndex () - 347 ;
 }
@@ -19476,7 +19476,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_52 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_53 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_53 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 350 351
   return inLexique->nextProductionIndex () - 349 ;
 }
@@ -19487,7 +19487,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_53 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_54 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_54 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 352 353
   return inLexique->nextProductionIndex () - 351 ;
 }
@@ -19498,7 +19498,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticInstructionsSyntax_54 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_0 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_0 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 354 355
   return inLexique->nextProductionIndex () - 353 ;
 }
@@ -19509,7 +19509,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_0 (C_Lexiq
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_1 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_1 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 356 357
   return inLexique->nextProductionIndex () - 355 ;
 }
@@ -19520,7 +19520,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_1 (C_Lexiq
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_2 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_2 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 358 359
   return inLexique->nextProductionIndex () - 357 ;
 }
@@ -19531,7 +19531,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_2 (C_Lexiq
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_3 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_3 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 360 361
   return inLexique->nextProductionIndex () - 359 ;
 }
@@ -19542,7 +19542,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_3 (C_Lexiq
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_4 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_4 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 362 363 364 365 366 367
   return inLexique->nextProductionIndex () - 361 ;
 }
@@ -19553,7 +19553,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_4 (C_Lexiq
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_5 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_5 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 368 369 370 371 372 373
   return inLexique->nextProductionIndex () - 367 ;
 }
@@ -19564,7 +19564,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_5 (C_Lexiq
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_6 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_6 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 374 375 376
   return inLexique->nextProductionIndex () - 373 ;
 }
@@ -19575,7 +19575,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_6 (C_Lexiq
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_7 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_7 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 377 378
   return inLexique->nextProductionIndex () - 376 ;
 }
@@ -19586,7 +19586,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_7 (C_Lexiq
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_8 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_8 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 379 380 381
   return inLexique->nextProductionIndex () - 378 ;
 }
@@ -19597,7 +19597,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_8 (C_Lexiq
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_9 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_9 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 382 383
   return inLexique->nextProductionIndex () - 381 ;
 }
@@ -19608,7 +19608,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_9 (C_Lexiq
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_10 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_10 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 384 385
   return inLexique->nextProductionIndex () - 383 ;
 }
@@ -19619,7 +19619,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_10 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_11 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_11 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 386 387 388
   return inLexique->nextProductionIndex () - 385 ;
 }
@@ -19630,7 +19630,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_11 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_12 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_12 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 389 390
   return inLexique->nextProductionIndex () - 388 ;
 }
@@ -19641,7 +19641,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_12 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_13 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_13 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 391 392 393
   return inLexique->nextProductionIndex () - 390 ;
 }
@@ -19652,7 +19652,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_13 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_14 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_14 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 394 395
   return inLexique->nextProductionIndex () - 393 ;
 }
@@ -19663,7 +19663,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_14 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_15 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_15 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 396 397
   return inLexique->nextProductionIndex () - 395 ;
 }
@@ -19674,7 +19674,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_15 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_16 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_16 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 398 399
   return inLexique->nextProductionIndex () - 397 ;
 }
@@ -19685,7 +19685,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_16 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_17 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_17 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 400 401
   return inLexique->nextProductionIndex () - 399 ;
 }
@@ -19696,7 +19696,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_17 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_18 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_18 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 402 403
   return inLexique->nextProductionIndex () - 401 ;
 }
@@ -19707,7 +19707,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_18 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_19 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_19 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 404 405
   return inLexique->nextProductionIndex () - 403 ;
 }
@@ -19718,7 +19718,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_19 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_20 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_20 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 406 407
   return inLexique->nextProductionIndex () - 405 ;
 }
@@ -19729,7 +19729,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_20 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_21 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_21 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 408 409
   return inLexique->nextProductionIndex () - 407 ;
 }
@@ -19740,7 +19740,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_21 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_22 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_22 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 410 411
   return inLexique->nextProductionIndex () - 409 ;
 }
@@ -19751,7 +19751,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_22 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_23 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_23 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 412 413
   return inLexique->nextProductionIndex () - 411 ;
 }
@@ -19762,7 +19762,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_23 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_24 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_24 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 414 415
   return inLexique->nextProductionIndex () - 413 ;
 }
@@ -19773,7 +19773,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_24 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_25 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_25 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 416 417
   return inLexique->nextProductionIndex () - 415 ;
 }
@@ -19784,7 +19784,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_25 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_26 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_26 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 418 419
   return inLexique->nextProductionIndex () - 417 ;
 }
@@ -19795,7 +19795,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_26 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_27 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_27 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 420 421
   return inLexique->nextProductionIndex () - 419 ;
 }
@@ -19806,7 +19806,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_27 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_28 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_28 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 422 423
   return inLexique->nextProductionIndex () - 421 ;
 }
@@ -19817,7 +19817,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_28 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_29 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_29 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 424 425
   return inLexique->nextProductionIndex () - 423 ;
 }
@@ -19828,7 +19828,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_29 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_30 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_30 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 426 427
   return inLexique->nextProductionIndex () - 425 ;
 }
@@ -19839,7 +19839,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_30 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_31 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_31 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 428 429
   return inLexique->nextProductionIndex () - 427 ;
 }
@@ -19850,7 +19850,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_31 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_32 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_32 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 430 431
   return inLexique->nextProductionIndex () - 429 ;
 }
@@ -19861,7 +19861,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_32 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_33 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_33 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 432 433
   return inLexique->nextProductionIndex () - 431 ;
 }
@@ -19872,7 +19872,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_33 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_34 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_34 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 434 435 436 437 438
   return inLexique->nextProductionIndex () - 433 ;
 }
@@ -19883,7 +19883,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_34 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_35 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_35 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 439 440
   return inLexique->nextProductionIndex () - 438 ;
 }
@@ -19894,7 +19894,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_35 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_36 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_36 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 441 442
   return inLexique->nextProductionIndex () - 440 ;
 }
@@ -19905,7 +19905,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_36 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_37 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_37 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 443 444 445 446 447
   return inLexique->nextProductionIndex () - 442 ;
 }
@@ -19916,7 +19916,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_37 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_38 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_38 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 448 449
   return inLexique->nextProductionIndex () - 447 ;
 }
@@ -19927,7 +19927,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_38 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_39 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_39 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 450 451
   return inLexique->nextProductionIndex () - 449 ;
 }
@@ -19938,7 +19938,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_39 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_40 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_40 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 452 453 454 455 456
   return inLexique->nextProductionIndex () - 451 ;
 }
@@ -19949,7 +19949,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_40 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_41 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_41 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 457 458
   return inLexique->nextProductionIndex () - 456 ;
 }
@@ -19960,7 +19960,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_41 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_42 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_42 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 459 460
   return inLexique->nextProductionIndex () - 458 ;
 }
@@ -19971,7 +19971,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_42 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_43 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_43 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 461 462
   return inLexique->nextProductionIndex () - 460 ;
 }
@@ -19982,7 +19982,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_43 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_44 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_44 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 463 464
   return inLexique->nextProductionIndex () - 462 ;
 }
@@ -19993,7 +19993,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_44 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_45 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_45 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 465 466
   return inLexique->nextProductionIndex () - 464 ;
 }
@@ -20004,7 +20004,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_45 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_46 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_46 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 467 468 469 470 471
   return inLexique->nextProductionIndex () - 466 ;
 }
@@ -20015,7 +20015,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_46 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_47 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_47 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 472 473
   return inLexique->nextProductionIndex () - 471 ;
 }
@@ -20026,7 +20026,7 @@ PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_47 (C_Lexi
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_48 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_syntaxSLRgrammar::select_semanticDeclarationsSyntax_48 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 474 475
   return inLexique->nextProductionIndex () - 473 ;
 }

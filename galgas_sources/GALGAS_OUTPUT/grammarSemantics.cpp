@@ -54,7 +54,7 @@ class cCollectionElement_signatureForGrammarAnalysis : public cCollectionElement
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -82,7 +82,7 @@ cCollectionElement * cCollectionElement_signatureForGrammarAnalysis::copy (void)
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_signatureForGrammarAnalysis::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_signatureForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mFormalArgumentPassingModeForGrammarAnalysis" ":" ;
@@ -457,7 +457,7 @@ cMapElement * cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis::copy (voi
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mFormalParametersList" ":" ;
@@ -708,7 +708,7 @@ class cCollectionElement_syntaxInstructionListForGrammarAnalysis : public cColle
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -735,7 +735,7 @@ cCollectionElement * cCollectionElement_syntaxInstructionListForGrammarAnalysis:
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_syntaxInstructionListForGrammarAnalysis::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_syntaxInstructionListForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mInstruction" ":" ;
@@ -1064,7 +1064,7 @@ class cCollectionElement_productionRuleListForGrammarAnalysis : public cCollecti
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -1094,7 +1094,7 @@ cCollectionElement * cCollectionElement_productionRuleListForGrammarAnalysis::co
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_productionRuleListForGrammarAnalysis::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_productionRuleListForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLeftNonterminalSymbol" ":" ;
@@ -1563,7 +1563,7 @@ cMapElement * cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis::copy (vo
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mNonTerminalIndex" ":" ;
@@ -1785,7 +1785,7 @@ cMapElement * cMapElement_nonTerminalSymbolMapForGrammarAnalysis::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_nonTerminalSymbolMapForGrammarAnalysis::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_nonTerminalSymbolMapForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mNonTerminalIndex" ":" ;
@@ -2086,7 +2086,7 @@ class cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis : public 
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 
 //--- Virtual method that comparing element for sorting
   public : virtual typeComparisonResult compareForSorting (const cSortedListElement * inOperand) const ;
@@ -2118,7 +2118,7 @@ cSortedListElement * cSortedListElement_nonTerminalSymbolSortedListForGrammarAna
 
 //-----------------------------------------------------------------------------*
 
-void cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cSortedListElement_nonTerminalSymbolSortedListForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mNonTerminalSymbol" ":" ;
@@ -2417,7 +2417,7 @@ class cCollectionElement_branchListForGrammarAnalysis : public cCollectionElemen
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -2444,7 +2444,7 @@ cCollectionElement * cCollectionElement_branchListForGrammarAnalysis::copy (void
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_branchListForGrammarAnalysis::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_branchListForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mSyntaxInstructionList" ":" ;
@@ -2771,7 +2771,7 @@ class cCollectionElement_syntaxComponentListForGrammarAnalysis : public cCollect
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -2799,7 +2799,7 @@ cCollectionElement * cCollectionElement_syntaxComponentListForGrammarAnalysis::c
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_syntaxComponentListForGrammarAnalysis::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_syntaxComponentListForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mProductionRulesList" ":" ;
@@ -3174,7 +3174,7 @@ cMapElement * cMapElement_terminalSymbolsMapForGrammarAnalysis::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_terminalSymbolsMapForGrammarAnalysis::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_terminalSymbolsMapForGrammarAnalysis::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mTerminalIndex" ":" ;
@@ -3411,8 +3411,8 @@ GALGAS_terminalSymbolsMapForGrammarAnalysis GALGAS_terminalSymbolsMapForGrammarA
 typeComparisonResult GALGAS_abstractSyntaxInstructionForGrammarAnalysis::objectCompare (const GALGAS_abstractSyntaxInstructionForGrammarAnalysis & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -3536,8 +3536,8 @@ typeComparisonResult cPtr_nonTerminalInstructionForGrammarAnalysis::dynamicObjec
 typeComparisonResult GALGAS_nonTerminalInstructionForGrammarAnalysis::objectCompare (const GALGAS_nonTerminalInstructionForGrammarAnalysis & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -3655,7 +3655,7 @@ const C_galgas_type_descriptor * cPtr_nonTerminalInstructionForGrammarAnalysis::
 }
 
 void cPtr_nonTerminalInstructionForGrammarAnalysis::description (C_String & ioString,
-                                                                 const PMSInt32 inIndentation) const {
+                                                                 const int32_t inIndentation) const {
   ioString << "[@nonTerminalInstructionForGrammarAnalysis:" ;
   mAttribute_mStartLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -3736,8 +3736,8 @@ typeComparisonResult cPtr_repeatInstructionForGrammarAnalysis::dynamicObjectComp
 typeComparisonResult GALGAS_repeatInstructionForGrammarAnalysis::objectCompare (const GALGAS_repeatInstructionForGrammarAnalysis & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -3855,7 +3855,7 @@ const C_galgas_type_descriptor * cPtr_repeatInstructionForGrammarAnalysis::class
 }
 
 void cPtr_repeatInstructionForGrammarAnalysis::description (C_String & ioString,
-                                                            const PMSInt32 inIndentation) const {
+                                                            const int32_t inIndentation) const {
   ioString << "[@repeatInstructionForGrammarAnalysis:" ;
   mAttribute_mStartLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -3936,8 +3936,8 @@ typeComparisonResult cPtr_selectInstructionForGrammarAnalysis::dynamicObjectComp
 typeComparisonResult GALGAS_selectInstructionForGrammarAnalysis::objectCompare (const GALGAS_selectInstructionForGrammarAnalysis & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -4055,7 +4055,7 @@ const C_galgas_type_descriptor * cPtr_selectInstructionForGrammarAnalysis::class
 }
 
 void cPtr_selectInstructionForGrammarAnalysis::description (C_String & ioString,
-                                                            const PMSInt32 inIndentation) const {
+                                                            const int32_t inIndentation) const {
   ioString << "[@selectInstructionForGrammarAnalysis:" ;
   mAttribute_mStartLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -4136,8 +4136,8 @@ typeComparisonResult cPtr_terminalInstructionForGrammarAnalysis::dynamicObjectCo
 typeComparisonResult GALGAS_terminalInstructionForGrammarAnalysis::objectCompare (const GALGAS_terminalInstructionForGrammarAnalysis & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -4255,7 +4255,7 @@ const C_galgas_type_descriptor * cPtr_terminalInstructionForGrammarAnalysis::cla
 }
 
 void cPtr_terminalInstructionForGrammarAnalysis::description (C_String & ioString,
-                                                              const PMSInt32 inIndentation) const {
+                                                              const int32_t inIndentation) const {
   ioString << "[@terminalInstructionForGrammarAnalysis:" ;
   mAttribute_mStartLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -4378,7 +4378,7 @@ void GALGAS_signatureForGrammarAnalysis_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_signatureForGrammarAnalysis_2E_element::description (C_String & ioString,
-                                                                 const PMSInt32 inIndentation) const {
+                                                                 const int32_t inIndentation) const {
   ioString << "<struct @signatureForGrammarAnalysis.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -4515,7 +4515,7 @@ void GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2E_element::drop (void) 
 //-----------------------------------------------------------------------------*
 
 void GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2E_element::description (C_String & ioString,
-                                                                                 const PMSInt32 inIndentation) const {
+                                                                                 const int32_t inIndentation) const {
   ioString << "<struct @nonterminalSymbolLabelMapForGrammarAnalysis.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -4637,7 +4637,7 @@ void GALGAS_syntaxInstructionListForGrammarAnalysis_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_syntaxInstructionListForGrammarAnalysis_2E_element::description (C_String & ioString,
-                                                                             const PMSInt32 inIndentation) const {
+                                                                             const int32_t inIndentation) const {
   ioString << "<struct @syntaxInstructionListForGrammarAnalysis.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -4784,7 +4784,7 @@ void GALGAS_productionRuleListForGrammarAnalysis_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_productionRuleListForGrammarAnalysis_2E_element::description (C_String & ioString,
-                                                                          const PMSInt32 inIndentation) const {
+                                                                          const int32_t inIndentation) const {
   ioString << "<struct @productionRuleListForGrammarAnalysis.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -4937,7 +4937,7 @@ void GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element::drop (void)
 //-----------------------------------------------------------------------------*
 
 void GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element::description (C_String & ioString,
-                                                                                  const PMSInt32 inIndentation) const {
+                                                                                  const int32_t inIndentation) const {
   ioString << "<struct @unusedNonTerminalSymbolMapForGrammarAnalysis.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -5083,7 +5083,7 @@ void GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2E_element::description (C_String & ioString,
-                                                                            const PMSInt32 inIndentation) const {
+                                                                            const int32_t inIndentation) const {
   ioString << "<struct @nonTerminalSymbolMapForGrammarAnalysis.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -5237,7 +5237,7 @@ void GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element::drop (void
 //-----------------------------------------------------------------------------*
 
 void GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element::description (C_String & ioString,
-                                                                                   const PMSInt32 inIndentation) const {
+                                                                                   const int32_t inIndentation) const {
   ioString << "<struct @nonTerminalSymbolSortedListForGrammarAnalysis.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -5373,7 +5373,7 @@ void GALGAS_branchListForGrammarAnalysis_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_branchListForGrammarAnalysis_2E_element::description (C_String & ioString,
-                                                                  const PMSInt32 inIndentation) const {
+                                                                  const int32_t inIndentation) const {
   ioString << "<struct @branchListForGrammarAnalysis.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -5502,7 +5502,7 @@ void GALGAS_syntaxComponentListForGrammarAnalysis_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_syntaxComponentListForGrammarAnalysis_2E_element::description (C_String & ioString,
-                                                                           const PMSInt32 inIndentation) const {
+                                                                           const int32_t inIndentation) const {
   ioString << "<struct @syntaxComponentListForGrammarAnalysis.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -5639,7 +5639,7 @@ void GALGAS_terminalSymbolsMapForGrammarAnalysis_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_terminalSymbolsMapForGrammarAnalysis_2E_element::description (C_String & ioString,
-                                                                          const PMSInt32 inIndentation) const {
+                                                                          const int32_t inIndentation) const {
   ioString << "<struct @terminalSymbolsMapForGrammarAnalysis.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;

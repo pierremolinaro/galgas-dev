@@ -26,7 +26,7 @@ class cSortedListElement_%!TYPE_IDENTIFIER% : public cSortedListElement {
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 
 //--- Virtual method that comparing element for sorting
   public : virtual typeComparisonResult compareForSorting (const cSortedListElement * inOperand) const ;
@@ -71,7 +71,7 @@ cSortedListElement * cSortedListElement_%!TYPE_IDENTIFIER%::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cSortedListElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cSortedListElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, const int32_t inIndentation) const {
 %
   foreach ATTRIBUTE_LIST do
     %  ioString << "\\n" ;\n%

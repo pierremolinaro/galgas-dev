@@ -54,7 +54,7 @@ class cCollectionElement_guiSimpleAttributeListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -82,7 +82,7 @@ cCollectionElement * cCollectionElement_guiSimpleAttributeListAST::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_guiSimpleAttributeListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_guiSimpleAttributeListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mKey" ":" ;
@@ -457,7 +457,7 @@ class cCollectionElement_guiCompoundAttributeListAST : public cCollectionElement
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -486,7 +486,7 @@ cCollectionElement * cCollectionElement_guiCompoundAttributeListAST::copy (void)
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_guiCompoundAttributeListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_guiCompoundAttributeListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mKey" ":" ;
@@ -907,7 +907,7 @@ class cCollectionElement_terminalLabelListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -935,7 +935,7 @@ cCollectionElement * cCollectionElement_terminalLabelListAST::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_terminalLabelListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_terminalLabelListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mTerminal" ":" ;
@@ -1310,7 +1310,7 @@ class cCollectionElement_guiLabelListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -1339,7 +1339,7 @@ cCollectionElement * cCollectionElement_guiLabelListAST::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_guiLabelListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_guiLabelListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLeadingCharacterStrippedCount" ":" ;
@@ -1762,7 +1762,7 @@ class cCollectionElement_withLexiqueListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -1792,7 +1792,7 @@ cCollectionElement * cCollectionElement_withLexiqueListAST::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_withLexiqueListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_withLexiqueListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLexiqueFileName" ":" ;
@@ -2331,7 +2331,7 @@ void GALGAS_guiComponentAST::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_guiComponentAST::description (C_String & ioString,
-                                          const PMSInt32 inIndentation) const {
+                                          const int32_t inIndentation) const {
   ioString << "<struct @guiComponentAST:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -2492,7 +2492,7 @@ void GALGAS_guiSimpleAttributeListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_guiSimpleAttributeListAST_2E_element::description (C_String & ioString,
-                                                               const PMSInt32 inIndentation) const {
+                                                               const int32_t inIndentation) const {
   ioString << "<struct @guiSimpleAttributeListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -2638,7 +2638,7 @@ void GALGAS_guiCompoundAttributeListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_guiCompoundAttributeListAST_2E_element::description (C_String & ioString,
-                                                                 const PMSInt32 inIndentation) const {
+                                                                 const int32_t inIndentation) const {
   ioString << "<struct @guiCompoundAttributeListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -2783,7 +2783,7 @@ void GALGAS_terminalLabelListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_terminalLabelListAST_2E_element::description (C_String & ioString,
-                                                          const PMSInt32 inIndentation) const {
+                                                          const int32_t inIndentation) const {
   ioString << "<struct @terminalLabelListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -2929,7 +2929,7 @@ void GALGAS_guiLabelListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_guiLabelListAST_2E_element::description (C_String & ioString,
-                                                     const PMSInt32 inIndentation) const {
+                                                     const int32_t inIndentation) const {
   ioString << "<struct @guiLabelListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -3092,7 +3092,7 @@ void GALGAS_withLexiqueListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_withLexiqueListAST_2E_element::description (C_String & ioString,
-                                                        const PMSInt32 inIndentation) const {
+                                                        const int32_t inIndentation) const {
   ioString << "<struct @withLexiqueListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;

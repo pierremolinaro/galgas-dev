@@ -236,7 +236,7 @@ class GALGAS_templateAnalysisContext : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_templateAnalysisContext & inOperand) const ;
 
@@ -277,7 +277,7 @@ typedef void (*categoryMethodSignature_templateExpressionAST_templateExpressionA
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_templateExpressionAnalysis (const PMSInt32 inClassIndex,
+void enterCategoryMethod_templateExpressionAnalysis (const int32_t inClassIndex,
                                                      categoryMethodSignature_templateExpressionAST_templateExpressionAnalysis inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -302,7 +302,7 @@ typedef void (*categoryMethodSignature_templateInstructionAST_templateInstructio
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_templateInstructionAnalysis (const PMSInt32 inClassIndex,
+void enterCategoryMethod_templateInstructionAnalysis (const int32_t inClassIndex,
                                                       categoryMethodSignature_templateInstructionAST_templateInstructionAnalysis inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -362,7 +362,7 @@ class GALGAS_templateVariableMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_templateVariableMap_2E_element & inOperand) const ;
 
@@ -416,7 +416,7 @@ class cMapElement_templateVariableMap : public cMapElement {
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--- START OF USER ZONE 2

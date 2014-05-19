@@ -147,7 +147,7 @@ end if
 if (SUPPORTED_OPERATORS & generateDescriptionReaderUtilityMethod []) != 0 then
   %//--------------------------------- Implementation of reader 'description'\n%
   %  public : VIRTUAL_IN_DEBUG void description (C_String & ioString,\n%
-  %                                              const PMSInt32 inIndentation) const ;\n%
+  %                                              const int32_t inIndentation) const ;\n%
 end if
 
 if (SUPPORTED_OPERATORS & doNotGenererateObjectCompare []) == 0 then

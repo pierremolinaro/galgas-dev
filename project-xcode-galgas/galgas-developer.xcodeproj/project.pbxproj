@@ -931,6 +931,8 @@
 		CFDD30700C11C9440089A9F3 /* grammarMetamodel.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammarMetamodel.h; sourceTree = "<group>"; };
 		CFDD30710C11C9440089A9F3 /* grammarModelBuilder.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = grammarModelBuilder.cpp; sourceTree = "<group>"; };
 		CFDD30720C11C9440089A9F3 /* grammarModelBuilder.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = grammarModelBuilder.h; sourceTree = "<group>"; };
+		CFDE878B192A4239009D75C2 /* TC_LinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_LinkedList.h; sourceTree = "<group>"; };
+		CFDE878D192A424C009D75C2 /* TC_FIFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_FIFO.h; sourceTree = "<group>"; };
 		CFE10E73111738CF00E972AA /* GALGAS_char.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_char.cpp; sourceTree = "<group>"; };
 		CFE167820E8E7A2B00AFDAFC /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = main.m; sourceTree = "<group>"; };
 		CFE26CD70C12FD100066ACB3 /* programMetamodel.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = programMetamodel.cpp; sourceTree = "<group>"; };
@@ -1299,6 +1301,8 @@
 		CFB9E4850DF28AC500885084 /* collections */ = {
 			isa = PBXGroup;
 			children = (
+				CFDE878D192A424C009D75C2 /* TC_FIFO.h */,
+				CFDE878B192A4239009D75C2 /* TC_LinkedList.h */,
 				CFB9E4860DF28AC500885084 /* TC_AVL_TreeForCollision.h */,
 				CFB9E4870DF28AC500885084 /* TC_Array.h */,
 				CFB9E4880DF28AC500885084 /* TC_Array2.h */,

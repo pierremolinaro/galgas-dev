@@ -40,7 +40,7 @@ typedef GALGAS_string (*categoryReaderSignature_lexicalExpressionAST_generateCoc
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_generateCocoaConditionCode (const PMSInt32 inClassIndex,
+void enterCategoryReader_generateCocoaConditionCode (const int32_t inClassIndex,
                                                      categoryReaderSignature_lexicalExpressionAST_generateCocoaConditionCode inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -62,7 +62,7 @@ typedef GALGAS_string (*categoryReaderSignature_lexicalRoutineOrFunctionFormalIn
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_generateCocoaRoutineOrFunctionArgument (const PMSInt32 inClassIndex,
+void enterCategoryReader_generateCocoaRoutineOrFunctionArgument (const int32_t inClassIndex,
                                                                  categoryReaderSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateCocoaRoutineOrFunctionArgument inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -84,7 +84,7 @@ typedef GALGAS_string (*categoryReaderSignature_abstractLexicalRoutineActualArgu
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_generateCocoaRoutineArgument (const PMSInt32 inClassIndex,
+void enterCategoryReader_generateCocoaRoutineArgument (const int32_t inClassIndex,
                                                        categoryReaderSignature_abstractLexicalRoutineActualArgumentAST_generateCocoaRoutineArgument inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -107,7 +107,7 @@ typedef GALGAS_string (*categoryReaderSignature_lexicalSendDefaultActionAST_gene
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_generateCocoaDefaultSendCode (const PMSInt32 inClassIndex,
+void enterCategoryReader_generateCocoaDefaultSendCode (const int32_t inClassIndex,
                                                        categoryReaderSignature_lexicalSendDefaultActionAST_generateCocoaDefaultSendCode inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -131,7 +131,7 @@ typedef GALGAS_string (*categoryReaderSignature_lexicalInstructionAST_generateCo
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_generateCocoaInstructionCode (const PMSInt32 inClassIndex,
+void enterCategoryReader_generateCocoaInstructionCode (const int32_t inClassIndex,
                                                        categoryReaderSignature_lexicalInstructionAST_generateCocoaInstructionCode inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -156,7 +156,7 @@ typedef GALGAS_string (*categoryReaderSignature_abstractLexicalRuleAST_generateC
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_generateCocoaCode (const PMSInt32 inClassIndex,
+void enterCategoryReader_generateCocoaCode (const int32_t inClassIndex,
                                             categoryReaderSignature_abstractLexicalRuleAST_generateCocoaCode inMethod) ;
 
 //-----------------------------------------------------------------------------*

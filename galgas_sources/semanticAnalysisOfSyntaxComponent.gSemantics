@@ -828,7 +828,7 @@ override method @parseLoopInstructionForGeneration generateInstruction
   ioGeneratedCode .= "if (" . variantVarCppName . ".isValid ()) {\n" ;
   [!?ioGeneratedCode incIndentation !2] ;
   const @string variantVar := "variant_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
-  ioGeneratedCode .= "PMUInt32 " . variantVar . " = " . variantVarCppName . ".uintValue () ;\n" ;
+  ioGeneratedCode .= "uint32_t " . variantVar . " = " . variantVarCppName . ".uintValue () ;\n" ;
 #--- loop
   const @string loopVar := "loop_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
   ioGeneratedCode .= "bool " . loopVar . " = true ;\n" ;

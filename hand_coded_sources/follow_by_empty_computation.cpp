@@ -34,12 +34,12 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
                                    const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                                    const cVocabulary & inVocabulary,
                                    C_BDD_Set1 & outVocabularyFollowedByEmpty_BDD,
-                                   PMSInt32 & outIterationsCount) {
-  const PMSInt32 allSymbolsCount = inVocabulary.getAllSymbolsCount () ;
+                                   int32_t & outIterationsCount) {
+  const int32_t allSymbolsCount = inVocabulary.getAllSymbolsCount () ;
   TC_UniqueArray <bool> vocabularyFollowedByEmpty_Array (allSymbolsCount, false COMMA_HERE) ;
   vocabularyFollowedByEmpty_Array (inVocabulary.getStartSymbol () COMMA_HERE) = true ;
 
-  const PMSInt32 productionsCount = inProductionRules.length () ;
+  const int32_t productionsCount = inProductionRules.length () ;
   TC_UniqueArray <bool> productionIsHandled (productionsCount, false COMMA_HERE) ;
 
   outIterationsCount = 0 ;
@@ -47,13 +47,13 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
   while (loop) {
     loop = false ;
     outIterationsCount ++ ;
-    for (PMSInt32 i=0 ; i<productionsCount ; i++) {
+    for (int32_t i=0 ; i<productionsCount ; i++) {
       const cProduction & p = inProductionRules (i COMMA_HERE) ;
       if (! productionIsHandled (i COMMA_HERE)) {
         if (vocabularyFollowedByEmpty_Array (p.aNumeroNonTerminalGauche COMMA_HERE)) {
-          const PMSInt32 n = p.aDerivation.count () ;
+          const int32_t n = p.aDerivation.count () ;
           bool followedByEmpty = true ;
-          for (PMSInt32 j=n-1 ; (j>=0) && followedByEmpty ; j--) {
+          for (int32_t j=n-1 ; (j>=0) && followedByEmpty ; j--) {
             vocabularyFollowedByEmpty_Array (p.aDerivation (j COMMA_HERE) COMMA_HERE) = true ;
             followedByEmpty = inVocabularyDerivingToEmpty_Array (p.aDerivation (j COMMA_HERE) COMMA_HERE) ;
           }
@@ -67,9 +67,9 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
 //--- Contruire le bdd, limite aux seuls non terminaux
   outVocabularyFollowedByEmpty_BDD.clear () ;
   C_BDD_Set1 temp (outVocabularyFollowedByEmpty_BDD) ;
-  for (PMSInt32 i=inVocabulary.getTerminalSymbolsCount () ; i< allSymbolsCount ; i++) {
+  for (int32_t i=inVocabulary.getTerminalSymbolsCount () ; i< allSymbolsCount ; i++) {
     if (vocabularyFollowedByEmpty_Array (i COMMA_HERE)) {
-      temp.init (C_BDD::kEqual, (PMUInt32) i) ;
+      temp.init (C_BDD::kEqual, (uint32_t) i) ;
       outVocabularyFollowedByEmpty_BDD |= temp ;
     }
   }
@@ -81,9 +81,9 @@ static void
 displayNonterminalSymbolsFollowedByEmpty (const C_BDD_Set1 & inVocabularyFollowedByEmpty_BDD,
                                           C_HTML_FileWrite * inHTMLfile,
                                           const cVocabulary & inVocabulary,
-                                          const PMSInt32 inIterationsCount,
+                                          const int32_t inIterationsCount,
                                           const bool inVerboseOptionOn) { 
-  const PMUInt32 n = inVocabularyFollowedByEmpty_BDD.getValuesCount () ;
+  const uint32_t n = inVocabularyFollowedByEmpty_BDD.getValuesCount () ;
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("<p><a name=\"follow_by_empty\"></a>") ;
     *inHTMLfile << "Calculus completed in "
@@ -99,9 +99,9 @@ displayNonterminalSymbolsFollowedByEmpty (const C_BDD_Set1 & inVocabularyFollowe
     inHTMLfile->outputRawData ("</p>") ;
     TC_UniqueArray <bool> array ;
     inVocabularyFollowedByEmpty_BDD.getArray (array) ;
-    const PMSInt32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
+    const int32_t symbolsCount = inVocabulary.getAllSymbolsCount () ;
     inHTMLfile->outputRawData ("<table class=\"result\">") ;
-    for (PMSInt32 symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
+    for (int32_t symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
       if (array (symbol COMMA_HERE)) {
         inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         inVocabulary.printInFile (*inHTMLfile, symbol COMMA_HERE) ;
@@ -137,7 +137,7 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
   }
 
 //--- Compute nonterminal symbols followed by empty 
-  PMSInt32 iterationsCount = 0 ;
+  int32_t iterationsCount = 0 ;
   computeNonterminalFollowedByEmpty (inPureBNFproductions,
                                      inVocabularyDerivingToEmpty_Array,
                                      inVocabulary,

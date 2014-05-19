@@ -66,7 +66,7 @@ class C_Timer {
 
   public : void startTimer (void) ;
 
-  public : PMUInt32 msFromStart (void) const ;
+  public : uint32_t msFromStart (void) const ;
 
   public : C_String timeString (void) const ;
 

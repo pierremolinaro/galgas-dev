@@ -121,11 +121,11 @@ class cParser_optionSyntax {
 
 
 //--- Select methods
-  protected : virtual PMSInt32 select_optionSyntax_0 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_optionSyntax_0 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_optionSyntax_1 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_optionSyntax_1 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_optionSyntax_2 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_optionSyntax_2 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
 
 } ;

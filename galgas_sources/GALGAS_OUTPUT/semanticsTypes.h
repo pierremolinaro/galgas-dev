@@ -520,7 +520,7 @@ class GALGAS_methodQualifier : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_methodQualifier & inOperand) const ;
 
@@ -583,7 +583,7 @@ class GALGAS_methodKind : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_methodKind & inOperand) const ;
 
@@ -1939,7 +1939,7 @@ class GALGAS_predefinedTypeKindEnum : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_predefinedTypeKindEnum & inOperand) const ;
 
@@ -2029,7 +2029,7 @@ class GALGAS_typeKindEnum : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_typeKindEnum & inOperand) const ;
 
@@ -4019,7 +4019,7 @@ typedef void (*categoryMethodSignature_predefinedTypeAST_getConstructorMap) (con
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_getConstructorMap (const PMSInt32 inClassIndex,
+void enterCategoryMethod_getConstructorMap (const int32_t inClassIndex,
                                             categoryMethodSignature_predefinedTypeAST_getConstructorMap inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -4044,7 +4044,7 @@ typedef void (*categoryMethodSignature_predefinedTypeAST_getReaderMap) (const cP
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_getReaderMap (const PMSInt32 inClassIndex,
+void enterCategoryMethod_getReaderMap (const int32_t inClassIndex,
                                        categoryMethodSignature_predefinedTypeAST_getReaderMap inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -4069,7 +4069,7 @@ typedef void (*categoryMethodSignature_predefinedTypeAST_getModifierMap) (const 
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_getModifierMap (const PMSInt32 inClassIndex,
+void enterCategoryMethod_getModifierMap (const int32_t inClassIndex,
                                          categoryMethodSignature_predefinedTypeAST_getModifierMap inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -4094,7 +4094,7 @@ typedef void (*categoryMethodSignature_predefinedTypeAST_getInstanceMethodMap) (
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_getInstanceMethodMap (const PMSInt32 inClassIndex,
+void enterCategoryMethod_getInstanceMethodMap (const int32_t inClassIndex,
                                                categoryMethodSignature_predefinedTypeAST_getInstanceMethodMap inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -4119,7 +4119,7 @@ typedef void (*categoryMethodSignature_predefinedTypeAST_getClassMethodMap) (con
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_getClassMethodMap (const PMSInt32 inClassIndex,
+void enterCategoryMethod_getClassMethodMap (const int32_t inClassIndex,
                                             categoryMethodSignature_predefinedTypeAST_getClassMethodMap inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -4142,7 +4142,7 @@ typedef GALGAS_uint (*categoryReaderSignature_predefinedTypeAST_getSupportedOper
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_getSupportedOperatorFlags (const PMSInt32 inClassIndex,
+void enterCategoryReader_getSupportedOperatorFlags (const int32_t inClassIndex,
                                                     categoryReaderSignature_predefinedTypeAST_getSupportedOperatorFlags inReader) ;
 
 //-----------------------------------------------------------------------------*
@@ -4165,7 +4165,7 @@ typedef void (*categoryMethodSignature_predefinedTypeAST_getAddAssignArgumentLis
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_getAddAssignArgumentList (const PMSInt32 inClassIndex,
+void enterCategoryMethod_getAddAssignArgumentList (const int32_t inClassIndex,
                                                    categoryMethodSignature_predefinedTypeAST_getAddAssignArgumentList inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -4192,7 +4192,7 @@ typedef void (*categoryMethodSignature_predefinedTypeAST_getEnumerationList) (co
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_getEnumerationList (const PMSInt32 inClassIndex,
+void enterCategoryMethod_getEnumerationList (const int32_t inClassIndex,
                                              categoryMethodSignature_predefinedTypeAST_getEnumerationList inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -4248,7 +4248,7 @@ class GALGAS_unifiedTypeMapProxyList_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_unifiedTypeMapProxyList_2E_element & inOperand) const ;
 
@@ -4317,7 +4317,7 @@ class GALGAS_unifiedTypeMapProxyAndParameterList_2E_element : public AC_GALGAS_r
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_unifiedTypeMapProxyAndParameterList_2E_element & inOperand) const ;
 
@@ -4394,7 +4394,7 @@ class GALGAS_constructorMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_constructorMap_2E_element & inOperand) const ;
 
@@ -4487,7 +4487,7 @@ class GALGAS_readerMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_readerMap_2E_element & inOperand) const ;
 
@@ -4573,7 +4573,7 @@ class GALGAS_formalParameterSignature_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_formalParameterSignature_2E_element & inOperand) const ;
 
@@ -4658,7 +4658,7 @@ class GALGAS_modifierMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_modifierMap_2E_element & inOperand) const ;
 
@@ -4752,7 +4752,7 @@ class GALGAS_instanceMethodMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_instanceMethodMap_2E_element & inOperand) const ;
 
@@ -4836,7 +4836,7 @@ class GALGAS_classMethodMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_classMethodMap_2E_element & inOperand) const ;
 
@@ -4909,7 +4909,7 @@ class GALGAS_withAccessorMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_withAccessorMap_2E_element & inOperand) const ;
 
@@ -4980,7 +4980,7 @@ class GALGAS_enumerationDescriptorList_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_enumerationDescriptorList_2E_element & inOperand) const ;
 
@@ -5057,7 +5057,7 @@ class GALGAS_typedAttributeList_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_typedAttributeList_2E_element & inOperand) const ;
 
@@ -5132,7 +5132,7 @@ class GALGAS_attributeMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_attributeMap_2E_element & inOperand) const ;
 
@@ -5186,7 +5186,7 @@ class cMapElement_constructorMap : public cMapElement {
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -5226,7 +5226,7 @@ class cMapElement_readerMap : public cMapElement {
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -5262,7 +5262,7 @@ class cMapElement_modifierMap : public cMapElement {
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -5300,7 +5300,7 @@ class cMapElement_instanceMethodMap : public cMapElement {
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -5330,7 +5330,7 @@ class cMapElement_classMethodMap : public cMapElement {
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -5358,7 +5358,7 @@ class cMapElement_withAccessorMap : public cMapElement {
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -5386,7 +5386,7 @@ class cMapElement_attributeMap : public cMapElement {
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -5458,7 +5458,7 @@ class cMapElement_unifiedTypeMap : public cMapElement {
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -5483,7 +5483,7 @@ class cPtr_predefinedTypeAST : public cPtr_semanticDeclarationAST {
   public : VIRTUAL_IN_DEBUG GALGAS_predefinedTypeKindEnum reader_mKind (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const = 0 ;
+                                     const int32_t inIndentation) const = 0 ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
 
@@ -5509,7 +5509,7 @@ class cPtr_applicationPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5535,7 +5535,7 @@ class cPtr_binarysetPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5561,7 +5561,7 @@ class cPtr_boolPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5587,7 +5587,7 @@ class cPtr_charPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5613,7 +5613,7 @@ class cPtr_dataPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5639,7 +5639,7 @@ class cPtr_doublePredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5665,7 +5665,7 @@ class cPtr_filewrapperPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5691,7 +5691,7 @@ class cPtr_functionPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5717,7 +5717,7 @@ class cPtr_locationPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5743,7 +5743,7 @@ class cPtr_objectPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5769,7 +5769,7 @@ class cPtr_sint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5795,7 +5795,7 @@ class cPtr_sintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5821,7 +5821,7 @@ class cPtr_stringPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5847,7 +5847,7 @@ class cPtr_stringsetPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5873,7 +5873,7 @@ class cPtr_typePredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5899,7 +5899,7 @@ class cPtr_uint_36__34_PredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5925,7 +5925,7 @@ class cPtr_uintPredefinedTypeAST : public cPtr_predefinedTypeAST {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 

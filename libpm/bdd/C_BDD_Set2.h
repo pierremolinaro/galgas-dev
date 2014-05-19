@@ -57,10 +57,10 @@ class C_BDD_Set2 {
   public : void init (const C_BDD::compareEnum inComparison) ;
 
   public : void initDimension1 (const C_BDD::compareEnum inComparison1,
-                                const PMUInt32 inValue1) ;
+                                const uint32_t inValue1) ;
 
   public : void initDimension2 (const C_BDD::compareEnum inComparison2,
-                                const PMUInt32 inValue2) ;
+                                const uint32_t inValue2) ;
 
   public : void initDimension1 (const C_BDD_Set1 & inSource COMMA_LOCATION_ARGS) ;
 
@@ -85,12 +85,12 @@ class C_BDD_Set2 {
   public : C_BDD_Set1 projeterSurAxe2 (void) const ;
 
 //--- Transitive closure
-  public : C_BDD_Set2 getTransitiveClosure (PMSInt32 & outIterationsCount) const ;
-  public : C_BDD_Set2 getReflexiveTransitiveClosure (PMSInt32 & outIterationsCount) const ;
+  public : C_BDD_Set2 getTransitiveClosure (int32_t & outIterationsCount) const ;
+  public : C_BDD_Set2 getReflexiveTransitiveClosure (int32_t & outIterationsCount) const ;
 
 //--- Accessibility
   public : C_BDD_Set1 getAccessibility (const C_BDD_Set1 & valeurInitiale,
-                                        PMSInt32 & outIterationsCount) const ;  
+                                        int32_t & outIterationsCount) const ;  
 
 //--- Make set empty
   public : void clear (void) ;
@@ -103,10 +103,10 @@ class C_BDD_Set2 {
   public : C_BDD_Descriptor getDescriptor2 (void) const ;
 
 //--- Values count
-  public : PMUInt32 getValuesCount (void) const ;
+  public : uint32_t getValuesCount (void) const ;
 
 //--- Get values as an array
-  public : void getArray (TC_UniqueArray <TC_UniqueArray <PMSInt32> > & outArray) const ;
+  public : void getArray (TC_UniqueArray <TC_UniqueArray <int32_t> > & outArray) const ;
 
 //--- Friend classes
   friend class C_BDD_Set3 ;

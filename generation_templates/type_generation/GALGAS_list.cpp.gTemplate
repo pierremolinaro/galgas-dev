@@ -26,7 +26,7 @@ class cCollectionElement_%!TYPE_IDENTIFIER% : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -68,7 +68,7 @@ cCollectionElement * cCollectionElement_%!TYPE_IDENTIFIER%::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, const int32_t inIndentation) const {
 %
   foreach ATTRIBUTE_LIST do
     %  ioString << "\\n" ;\n%

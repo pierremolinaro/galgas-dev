@@ -518,29 +518,29 @@ class cParser_syntaxModelBuilder {
 
 
 //--- Select methods
-  protected : virtual PMSInt32 select_syntaxModelBuilder_0 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_syntaxModelBuilder_0 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_syntaxModelBuilder_1 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_syntaxModelBuilder_1 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_syntaxModelBuilder_2 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_syntaxModelBuilder_2 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_syntaxModelBuilder_3 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_syntaxModelBuilder_3 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_syntaxModelBuilder_4 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_syntaxModelBuilder_4 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_syntaxModelBuilder_5 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_syntaxModelBuilder_5 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_syntaxModelBuilder_6 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_syntaxModelBuilder_6 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_syntaxModelBuilder_7 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_syntaxModelBuilder_7 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_syntaxModelBuilder_8 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_syntaxModelBuilder_8 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_syntaxModelBuilder_9 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_syntaxModelBuilder_9 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_syntaxModelBuilder_10 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_syntaxModelBuilder_10 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_syntaxModelBuilder_11 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_syntaxModelBuilder_11 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
 
 } ;

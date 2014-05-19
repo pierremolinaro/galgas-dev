@@ -72,7 +72,7 @@ static const char * gNonTerminalNames [10] = {
 #define ACCEPT (1)
 #define END (-1)
 
-static const PMSInt16 gActionTable [] = {
+static const int16_t gActionTable [] = {
 // State S0 (index = 0)
   C_Lexique_galgas_5F_scanner::kToken_gui, SHIFT (1)
 , END
@@ -289,7 +289,7 @@ static const PMSInt16 gActionTable [] = {
 , C_Lexique_galgas_5F_scanner::kToken__3B_, REDUCE (15)
 , END} ;
 
-static const PMUInt32 gActionTableIndex [60] = {
+static const uint32_t gActionTableIndex [60] = {
   0  // S0
 , 3  // S1
 , 6  // S2
@@ -361,43 +361,43 @@ static const PMUInt32 gActionTableIndex [60] = {
 // Successor tables handle non terminal successors ;
 // an entry is (non_terminal_symbol, n) ; successor is state n.
 
-static const PMSInt16 gSuccessorTable0 [3] = {0, 2, -1} ;
+static const int16_t gSuccessorTable0 [3] = {0, 2, -1} ;
 
-static const PMSInt16 gSuccessorTable5 [3] = {1, 8, -1} ;
+static const int16_t gSuccessorTable5 [3] = {1, 8, -1} ;
 
-static const PMSInt16 gSuccessorTable7 [3] = {3, 12, -1} ;
+static const int16_t gSuccessorTable7 [3] = {3, 12, -1} ;
 
-static const PMSInt16 gSuccessorTable12 [3] = {1, 17, -1} ;
+static const int16_t gSuccessorTable12 [3] = {1, 17, -1} ;
 
-static const PMSInt16 gSuccessorTable14 [3] = {2, 20, -1} ;
+static const int16_t gSuccessorTable14 [3] = {2, 20, -1} ;
 
-static const PMSInt16 gSuccessorTable19 [3] = {2, 24, -1} ;
+static const int16_t gSuccessorTable19 [3] = {2, 24, -1} ;
 
-static const PMSInt16 gSuccessorTable22 [3] = {4, 28, -1} ;
+static const int16_t gSuccessorTable22 [3] = {4, 28, -1} ;
 
-static const PMSInt16 gSuccessorTable25 [3] = {1, 29, -1} ;
+static const int16_t gSuccessorTable25 [3] = {1, 29, -1} ;
 
-static const PMSInt16 gSuccessorTable27 [3] = {5, 33, -1} ;
+static const int16_t gSuccessorTable27 [3] = {5, 33, -1} ;
 
-static const PMSInt16 gSuccessorTable37 [3] = {7, 42, -1} ;
+static const int16_t gSuccessorTable37 [3] = {7, 42, -1} ;
 
-static const PMSInt16 gSuccessorTable38 [3] = {8, 44, -1} ;
+static const int16_t gSuccessorTable38 [3] = {8, 44, -1} ;
 
-static const PMSInt16 gSuccessorTable39 [3] = {4, 45, -1} ;
+static const int16_t gSuccessorTable39 [3] = {4, 45, -1} ;
 
-static const PMSInt16 gSuccessorTable42 [3] = {6, 48, -1} ;
+static const int16_t gSuccessorTable42 [3] = {6, 48, -1} ;
 
-static const PMSInt16 gSuccessorTable43 [3] = {8, 49, -1} ;
+static const int16_t gSuccessorTable43 [3] = {8, 49, -1} ;
 
-static const PMSInt16 gSuccessorTable50 [3] = {4, 54, -1} ;
+static const int16_t gSuccessorTable50 [3] = {4, 54, -1} ;
 
-static const PMSInt16 gSuccessorTable52 [3] = {7, 56, -1} ;
+static const int16_t gSuccessorTable52 [3] = {7, 56, -1} ;
 
-static const PMSInt16 gSuccessorTable53 [3] = {4, 57, -1} ;
+static const int16_t gSuccessorTable53 [3] = {4, 57, -1} ;
 
-static const PMSInt16 gSuccessorTable56 [3] = {6, 59, -1} ;
+static const int16_t gSuccessorTable56 [3] = {6, 59, -1} ;
 
-static const PMSInt16 * gSuccessorTable [60] = {
+static const int16_t * gSuccessorTable [60] = {
 gSuccessorTable0, NULL, NULL, NULL, 
   NULL, gSuccessorTable5, NULL, gSuccessorTable7, 
   NULL, NULL, NULL, NULL, 
@@ -420,7 +420,7 @@ gSuccessorTable0, NULL, NULL, NULL,
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static const PMSInt16 gProductionsTable [22 * 2] = {
+static const int16_t gProductionsTable [22 * 2] = {
   0, 8,
   1, 0,
   1, 6,
@@ -573,7 +573,7 @@ void cGrammar_guiGrammar::_performSourceStringParsing_ (C_Compiler * inCompiler,
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_guiGrammar::select_guiSyntax_0 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_guiGrammar::select_guiSyntax_0 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 1 2 3
   return inLexique->nextProductionIndex () - 0 ;
 }
@@ -584,7 +584,7 @@ PMSInt32 cGrammar_guiGrammar::select_guiSyntax_0 (C_Lexique_galgas_5F_scanner * 
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_guiGrammar::select_guiSyntax_1 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_guiGrammar::select_guiSyntax_1 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 4 5
   return inLexique->nextProductionIndex () - 3 ;
 }
@@ -595,7 +595,7 @@ PMSInt32 cGrammar_guiGrammar::select_guiSyntax_1 (C_Lexique_galgas_5F_scanner * 
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_guiGrammar::select_guiSyntax_2 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_guiGrammar::select_guiSyntax_2 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 6 7
   return inLexique->nextProductionIndex () - 5 ;
 }
@@ -606,7 +606,7 @@ PMSInt32 cGrammar_guiGrammar::select_guiSyntax_2 (C_Lexique_galgas_5F_scanner * 
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_guiGrammar::select_guiSyntax_3 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_guiGrammar::select_guiSyntax_3 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 8 9 10 11
   return inLexique->nextProductionIndex () - 7 ;
 }
@@ -617,7 +617,7 @@ PMSInt32 cGrammar_guiGrammar::select_guiSyntax_3 (C_Lexique_galgas_5F_scanner * 
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_guiGrammar::select_guiSyntax_4 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_guiGrammar::select_guiSyntax_4 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 12 13
   return inLexique->nextProductionIndex () - 11 ;
 }
@@ -628,7 +628,7 @@ PMSInt32 cGrammar_guiGrammar::select_guiSyntax_4 (C_Lexique_galgas_5F_scanner * 
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_guiGrammar::select_guiSyntax_5 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_guiGrammar::select_guiSyntax_5 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 14 15
   return inLexique->nextProductionIndex () - 13 ;
 }
@@ -639,7 +639,7 @@ PMSInt32 cGrammar_guiGrammar::select_guiSyntax_5 (C_Lexique_galgas_5F_scanner * 
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_guiGrammar::select_guiSyntax_6 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_guiGrammar::select_guiSyntax_6 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 16 17 18
   return inLexique->nextProductionIndex () - 15 ;
 }
@@ -650,7 +650,7 @@ PMSInt32 cGrammar_guiGrammar::select_guiSyntax_6 (C_Lexique_galgas_5F_scanner * 
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_guiGrammar::select_guiSyntax_7 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_guiGrammar::select_guiSyntax_7 (C_Lexique_galgas_5F_scanner * inLexique) {
 // Productions numbers : 19 20
   return inLexique->nextProductionIndex () - 18 ;
 }

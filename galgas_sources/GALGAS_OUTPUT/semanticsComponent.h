@@ -301,9 +301,9 @@ class cParser_semanticsComponent {
 
 
 //--- Select methods
-  protected : virtual PMSInt32 select_semanticsComponent_0 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticsComponent_0 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticsComponent_1 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticsComponent_1 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
 
 } ;

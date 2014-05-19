@@ -53,7 +53,7 @@ class cCollectionElement_templateInstructionListAST : public cCollectionElement 
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -80,7 +80,7 @@ cCollectionElement * cCollectionElement_templateInstructionListAST::copy (void) 
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_templateInstructionListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_templateInstructionListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mInstruction" ":" ;
@@ -407,7 +407,7 @@ class cCollectionElement_templateExpressionListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -435,7 +435,7 @@ cCollectionElement * cCollectionElement_templateExpressionListAST::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_templateExpressionListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_templateExpressionListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mExpression" ":" ;
@@ -809,7 +809,7 @@ class cCollectionElement_templateInstructionIfBranchListAST : public cCollection
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -837,7 +837,7 @@ cCollectionElement * cCollectionElement_templateInstructionIfBranchListAST::copy
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_templateInstructionIfBranchListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_templateInstructionIfBranchListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mExpression" ":" ;
@@ -1211,7 +1211,7 @@ class cCollectionElement_templateInstructionSwitchBranchListAST : public cCollec
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -1239,7 +1239,7 @@ cCollectionElement * cCollectionElement_templateInstructionSwitchBranchListAST::
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_templateInstructionSwitchBranchListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_templateInstructionSwitchBranchListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mConstantList" ":" ;
@@ -1598,8 +1598,8 @@ GALGAS_templateInstructionSwitchBranchListAST GALGAS_templateInstructionSwitchBr
 typeComparisonResult GALGAS_templateExpressionAST::objectCompare (const GALGAS_templateExpressionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -1703,8 +1703,8 @@ typeComparisonResult cPtr_structFieldAccessTemplateExpressionAST::dynamicObjectC
 typeComparisonResult GALGAS_structFieldAccessTemplateExpressionAST::objectCompare (const GALGAS_structFieldAccessTemplateExpressionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -1832,7 +1832,7 @@ const C_galgas_type_descriptor * cPtr_structFieldAccessTemplateExpressionAST::cl
 }
 
 void cPtr_structFieldAccessTemplateExpressionAST::description (C_String & ioString,
-                                                               const PMSInt32 inIndentation) const {
+                                                               const int32_t inIndentation) const {
   ioString << "[@structFieldAccessTemplateExpressionAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -1913,8 +1913,8 @@ typeComparisonResult cPtr_templateAddOperationAST::dynamicObjectCompare (const a
 typeComparisonResult GALGAS_templateAddOperationAST::objectCompare (const GALGAS_templateAddOperationAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -2042,7 +2042,7 @@ const C_galgas_type_descriptor * cPtr_templateAddOperationAST::classDescriptor (
 }
 
 void cPtr_templateAddOperationAST::description (C_String & ioString,
-                                                const PMSInt32 inIndentation) const {
+                                                const int32_t inIndentation) const {
   ioString << "[@templateAddOperationAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -2123,8 +2123,8 @@ typeComparisonResult cPtr_templateAndOperationAST::dynamicObjectCompare (const a
 typeComparisonResult GALGAS_templateAndOperationAST::objectCompare (const GALGAS_templateAndOperationAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -2252,7 +2252,7 @@ const C_galgas_type_descriptor * cPtr_templateAndOperationAST::classDescriptor (
 }
 
 void cPtr_templateAndOperationAST::description (C_String & ioString,
-                                                const PMSInt32 inIndentation) const {
+                                                const int32_t inIndentation) const {
   ioString << "[@templateAndOperationAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -2333,8 +2333,8 @@ typeComparisonResult cPtr_templateCategoryTemplateCallAST::dynamicObjectCompare 
 typeComparisonResult GALGAS_templateCategoryTemplateCallAST::objectCompare (const GALGAS_templateCategoryTemplateCallAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -2462,7 +2462,7 @@ const C_galgas_type_descriptor * cPtr_templateCategoryTemplateCallAST::classDesc
 }
 
 void cPtr_templateCategoryTemplateCallAST::description (C_String & ioString,
-                                                        const PMSInt32 inIndentation) const {
+                                                        const int32_t inIndentation) const {
   ioString << "[@templateCategoryTemplateCallAST:" ;
   mAttribute_mExpressionValue.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -2537,8 +2537,8 @@ typeComparisonResult cPtr_templateClassToTypeOperandAST::dynamicObjectCompare (c
 typeComparisonResult GALGAS_templateClassToTypeOperandAST::objectCompare (const GALGAS_templateClassToTypeOperandAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -2631,7 +2631,7 @@ const C_galgas_type_descriptor * cPtr_templateClassToTypeOperandAST::classDescri
 }
 
 void cPtr_templateClassToTypeOperandAST::description (C_String & ioString,
-                                                      const PMSInt32 inIndentation) const {
+                                                      const int32_t inIndentation) const {
   ioString << "[@templateClassToTypeOperandAST:" ;
   mAttribute_mTypeName.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -2708,8 +2708,8 @@ typeComparisonResult cPtr_templateConcatOperationAST::dynamicObjectCompare (cons
 typeComparisonResult GALGAS_templateConcatOperationAST::objectCompare (const GALGAS_templateConcatOperationAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -2837,7 +2837,7 @@ const C_galgas_type_descriptor * cPtr_templateConcatOperationAST::classDescripto
 }
 
 void cPtr_templateConcatOperationAST::description (C_String & ioString,
-                                                   const PMSInt32 inIndentation) const {
+                                                   const int32_t inIndentation) const {
   ioString << "[@templateConcatOperationAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -2918,8 +2918,8 @@ typeComparisonResult cPtr_templateConstructorAST::dynamicObjectCompare (const ac
 typeComparisonResult GALGAS_templateConstructorAST::objectCompare (const GALGAS_templateConstructorAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -3056,7 +3056,7 @@ const C_galgas_type_descriptor * cPtr_templateConstructorAST::classDescriptor (v
 }
 
 void cPtr_templateConstructorAST::description (C_String & ioString,
-                                               const PMSInt32 inIndentation) const {
+                                               const int32_t inIndentation) const {
   ioString << "[@templateConstructorAST:" ;
   mAttribute_mTypeName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -3137,8 +3137,8 @@ typeComparisonResult cPtr_templateDivideOperationAST::dynamicObjectCompare (cons
 typeComparisonResult GALGAS_templateDivideOperationAST::objectCompare (const GALGAS_templateDivideOperationAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -3266,7 +3266,7 @@ const C_galgas_type_descriptor * cPtr_templateDivideOperationAST::classDescripto
 }
 
 void cPtr_templateDivideOperationAST::description (C_String & ioString,
-                                                   const PMSInt32 inIndentation) const {
+                                                   const int32_t inIndentation) const {
   ioString << "[@templateDivideOperationAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -3347,8 +3347,8 @@ typeComparisonResult cPtr_templateEqualTestAST::dynamicObjectCompare (const acPt
 typeComparisonResult GALGAS_templateEqualTestAST::objectCompare (const GALGAS_templateEqualTestAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -3476,7 +3476,7 @@ const C_galgas_type_descriptor * cPtr_templateEqualTestAST::classDescriptor (voi
 }
 
 void cPtr_templateEqualTestAST::description (C_String & ioString,
-                                             const PMSInt32 inIndentation) const {
+                                             const int32_t inIndentation) const {
   ioString << "[@templateEqualTestAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -3551,8 +3551,8 @@ typeComparisonResult cPtr_templateFalseBoolAST::dynamicObjectCompare (const acPt
 typeComparisonResult GALGAS_templateFalseBoolAST::objectCompare (const GALGAS_templateFalseBoolAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -3645,7 +3645,7 @@ const C_galgas_type_descriptor * cPtr_templateFalseBoolAST::classDescriptor (voi
 }
 
 void cPtr_templateFalseBoolAST::description (C_String & ioString,
-                                             const PMSInt32 inIndentation) const {
+                                             const int32_t inIndentation) const {
   ioString << "[@templateFalseBoolAST:" ;
   mAttribute_mLocation.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -3722,8 +3722,8 @@ typeComparisonResult cPtr_templateFileWrapperTemplateCallAST::dynamicObjectCompa
 typeComparisonResult GALGAS_templateFileWrapperTemplateCallAST::objectCompare (const GALGAS_templateFileWrapperTemplateCallAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -3860,7 +3860,7 @@ const C_galgas_type_descriptor * cPtr_templateFileWrapperTemplateCallAST::classD
 }
 
 void cPtr_templateFileWrapperTemplateCallAST::description (C_String & ioString,
-                                                           const PMSInt32 inIndentation) const {
+                                                           const int32_t inIndentation) const {
   ioString << "[@templateFileWrapperTemplateCallAST:" ;
   mAttribute_mFileWrapperName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -3938,8 +3938,8 @@ typeComparisonResult cPtr_templateFileWrapperWithStaticPathAST::dynamicObjectCom
 typeComparisonResult GALGAS_templateFileWrapperWithStaticPathAST::objectCompare (const GALGAS_templateFileWrapperWithStaticPathAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -4054,7 +4054,7 @@ const C_galgas_type_descriptor * cPtr_templateFileWrapperWithStaticPathAST::clas
 }
 
 void cPtr_templateFileWrapperWithStaticPathAST::description (C_String & ioString,
-                                                             const PMSInt32 inIndentation) const {
+                                                             const int32_t inIndentation) const {
   ioString << "[@templateFileWrapperWithStaticPathAST:" ;
   mAttribute_mFileWrapperName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -4130,8 +4130,8 @@ typeComparisonResult cPtr_templateFunctionCallAST::dynamicObjectCompare (const a
 typeComparisonResult GALGAS_templateFunctionCallAST::objectCompare (const GALGAS_templateFunctionCallAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -4246,7 +4246,7 @@ const C_galgas_type_descriptor * cPtr_templateFunctionCallAST::classDescriptor (
 }
 
 void cPtr_templateFunctionCallAST::description (C_String & ioString,
-                                                const PMSInt32 inIndentation) const {
+                                                const int32_t inIndentation) const {
   ioString << "[@templateFunctionCallAST:" ;
   mAttribute_mFunctionName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -4328,8 +4328,8 @@ typeComparisonResult cPtr_templateIfThenElseExpressionAST::dynamicObjectCompare 
 typeComparisonResult GALGAS_templateIfThenElseExpressionAST::objectCompare (const GALGAS_templateIfThenElseExpressionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -4478,7 +4478,7 @@ const C_galgas_type_descriptor * cPtr_templateIfThenElseExpressionAST::classDesc
 }
 
 void cPtr_templateIfThenElseExpressionAST::description (C_String & ioString,
-                                                        const PMSInt32 inIndentation) const {
+                                                        const int32_t inIndentation) const {
   ioString << "[@templateIfThenElseExpressionAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -4561,8 +4561,8 @@ typeComparisonResult cPtr_templateInfOrEqualTestAST::dynamicObjectCompare (const
 typeComparisonResult GALGAS_templateInfOrEqualTestAST::objectCompare (const GALGAS_templateInfOrEqualTestAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -4690,7 +4690,7 @@ const C_galgas_type_descriptor * cPtr_templateInfOrEqualTestAST::classDescriptor
 }
 
 void cPtr_templateInfOrEqualTestAST::description (C_String & ioString,
-                                                  const PMSInt32 inIndentation) const {
+                                                  const int32_t inIndentation) const {
   ioString << "[@templateInfOrEqualTestAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -4771,8 +4771,8 @@ typeComparisonResult cPtr_templateLeftShiftOperationAST::dynamicObjectCompare (c
 typeComparisonResult GALGAS_templateLeftShiftOperationAST::objectCompare (const GALGAS_templateLeftShiftOperationAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -4900,7 +4900,7 @@ const C_galgas_type_descriptor * cPtr_templateLeftShiftOperationAST::classDescri
 }
 
 void cPtr_templateLeftShiftOperationAST::description (C_String & ioString,
-                                                      const PMSInt32 inIndentation) const {
+                                                      const int32_t inIndentation) const {
   ioString << "[@templateLeftShiftOperationAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -4975,8 +4975,8 @@ typeComparisonResult cPtr_templateLiteralCharExpressionAST::dynamicObjectCompare
 typeComparisonResult GALGAS_templateLiteralCharExpressionAST::objectCompare (const GALGAS_templateLiteralCharExpressionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -5069,7 +5069,7 @@ const C_galgas_type_descriptor * cPtr_templateLiteralCharExpressionAST::classDes
 }
 
 void cPtr_templateLiteralCharExpressionAST::description (C_String & ioString,
-                                                         const PMSInt32 inIndentation) const {
+                                                         const int32_t inIndentation) const {
   ioString << "[@templateLiteralCharExpressionAST:" ;
   mAttribute_mLiteralChar.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -5140,8 +5140,8 @@ typeComparisonResult cPtr_templateLiteralDoubleExpressionAST::dynamicObjectCompa
 typeComparisonResult GALGAS_templateLiteralDoubleExpressionAST::objectCompare (const GALGAS_templateLiteralDoubleExpressionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -5234,7 +5234,7 @@ const C_galgas_type_descriptor * cPtr_templateLiteralDoubleExpressionAST::classD
 }
 
 void cPtr_templateLiteralDoubleExpressionAST::description (C_String & ioString,
-                                                           const PMSInt32 inIndentation) const {
+                                                           const int32_t inIndentation) const {
   ioString << "[@templateLiteralDoubleExpressionAST:" ;
   mAttribute_mLiteralDouble.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -5305,8 +5305,8 @@ typeComparisonResult cPtr_templateLiteralSInt_36__34_ExpressionAST::dynamicObjec
 typeComparisonResult GALGAS_templateLiteralSInt_36__34_ExpressionAST::objectCompare (const GALGAS_templateLiteralSInt_36__34_ExpressionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -5399,7 +5399,7 @@ const C_galgas_type_descriptor * cPtr_templateLiteralSInt_36__34_ExpressionAST::
 }
 
 void cPtr_templateLiteralSInt_36__34_ExpressionAST::description (C_String & ioString,
-                                                                 const PMSInt32 inIndentation) const {
+                                                                 const int32_t inIndentation) const {
   ioString << "[@templateLiteralSInt64ExpressionAST:" ;
   mAttribute_mLiteralInt.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -5470,8 +5470,8 @@ typeComparisonResult cPtr_templateLiteralSIntExpressionAST::dynamicObjectCompare
 typeComparisonResult GALGAS_templateLiteralSIntExpressionAST::objectCompare (const GALGAS_templateLiteralSIntExpressionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -5564,7 +5564,7 @@ const C_galgas_type_descriptor * cPtr_templateLiteralSIntExpressionAST::classDes
 }
 
 void cPtr_templateLiteralSIntExpressionAST::description (C_String & ioString,
-                                                         const PMSInt32 inIndentation) const {
+                                                         const int32_t inIndentation) const {
   ioString << "[@templateLiteralSIntExpressionAST:" ;
   mAttribute_mLiteralInt.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -5638,8 +5638,8 @@ typeComparisonResult cPtr_templateLiteralStringExpressionAST::dynamicObjectCompa
 typeComparisonResult GALGAS_templateLiteralStringExpressionAST::objectCompare (const GALGAS_templateLiteralStringExpressionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -5754,7 +5754,7 @@ const C_galgas_type_descriptor * cPtr_templateLiteralStringExpressionAST::classD
 }
 
 void cPtr_templateLiteralStringExpressionAST::description (C_String & ioString,
-                                                           const PMSInt32 inIndentation) const {
+                                                           const int32_t inIndentation) const {
   ioString << "[@templateLiteralStringExpressionAST:" ;
   mAttribute_mLiteralStringList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -5827,8 +5827,8 @@ typeComparisonResult cPtr_templateLiteralUInt_36__34_ExpressionAST::dynamicObjec
 typeComparisonResult GALGAS_templateLiteralUInt_36__34_ExpressionAST::objectCompare (const GALGAS_templateLiteralUInt_36__34_ExpressionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -5921,7 +5921,7 @@ const C_galgas_type_descriptor * cPtr_templateLiteralUInt_36__34_ExpressionAST::
 }
 
 void cPtr_templateLiteralUInt_36__34_ExpressionAST::description (C_String & ioString,
-                                                                 const PMSInt32 inIndentation) const {
+                                                                 const int32_t inIndentation) const {
   ioString << "[@templateLiteralUInt64ExpressionAST:" ;
   mAttribute_mLiteralInt.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -5992,8 +5992,8 @@ typeComparisonResult cPtr_templateLiteralUIntExpressionAST::dynamicObjectCompare
 typeComparisonResult GALGAS_templateLiteralUIntExpressionAST::objectCompare (const GALGAS_templateLiteralUIntExpressionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -6086,7 +6086,7 @@ const C_galgas_type_descriptor * cPtr_templateLiteralUIntExpressionAST::classDes
 }
 
 void cPtr_templateLiteralUIntExpressionAST::description (C_String & ioString,
-                                                         const PMSInt32 inIndentation) const {
+                                                         const int32_t inIndentation) const {
   ioString << "[@templateLiteralUIntExpressionAST:" ;
   mAttribute_mLiteralInt.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -6160,8 +6160,8 @@ typeComparisonResult cPtr_templateLogicalNegateAST::dynamicObjectCompare (const 
 typeComparisonResult GALGAS_templateLogicalNegateAST::objectCompare (const GALGAS_templateLogicalNegateAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -6268,7 +6268,7 @@ const C_galgas_type_descriptor * cPtr_templateLogicalNegateAST::classDescriptor 
 }
 
 void cPtr_templateLogicalNegateAST::description (C_String & ioString,
-                                                 const PMSInt32 inIndentation) const {
+                                                 const int32_t inIndentation) const {
   ioString << "[@templateLogicalNegateAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -6347,8 +6347,8 @@ typeComparisonResult cPtr_templateModuloOperationAST::dynamicObjectCompare (cons
 typeComparisonResult GALGAS_templateModuloOperationAST::objectCompare (const GALGAS_templateModuloOperationAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -6476,7 +6476,7 @@ const C_galgas_type_descriptor * cPtr_templateModuloOperationAST::classDescripto
 }
 
 void cPtr_templateModuloOperationAST::description (C_String & ioString,
-                                                   const PMSInt32 inIndentation) const {
+                                                   const int32_t inIndentation) const {
   ioString << "[@templateModuloOperationAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -6557,8 +6557,8 @@ typeComparisonResult cPtr_templateMultiplyOperationAST::dynamicObjectCompare (co
 typeComparisonResult GALGAS_templateMultiplyOperationAST::objectCompare (const GALGAS_templateMultiplyOperationAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -6686,7 +6686,7 @@ const C_galgas_type_descriptor * cPtr_templateMultiplyOperationAST::classDescrip
 }
 
 void cPtr_templateMultiplyOperationAST::description (C_String & ioString,
-                                                     const PMSInt32 inIndentation) const {
+                                                     const int32_t inIndentation) const {
   ioString << "[@templateMultiplyOperationAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -6767,8 +6767,8 @@ typeComparisonResult cPtr_templateNonEqualTestAST::dynamicObjectCompare (const a
 typeComparisonResult GALGAS_templateNonEqualTestAST::objectCompare (const GALGAS_templateNonEqualTestAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -6896,7 +6896,7 @@ const C_galgas_type_descriptor * cPtr_templateNonEqualTestAST::classDescriptor (
 }
 
 void cPtr_templateNonEqualTestAST::description (C_String & ioString,
-                                                const PMSInt32 inIndentation) const {
+                                                const int32_t inIndentation) const {
   ioString << "[@templateNonEqualTestAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -6974,8 +6974,8 @@ typeComparisonResult cPtr_templateNotOperatorAST::dynamicObjectCompare (const ac
 typeComparisonResult GALGAS_templateNotOperatorAST::objectCompare (const GALGAS_templateNotOperatorAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -7082,7 +7082,7 @@ const C_galgas_type_descriptor * cPtr_templateNotOperatorAST::classDescriptor (v
 }
 
 void cPtr_templateNotOperatorAST::description (C_String & ioString,
-                                               const PMSInt32 inIndentation) const {
+                                               const int32_t inIndentation) const {
   ioString << "[@templateNotOperatorAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -7161,8 +7161,8 @@ typeComparisonResult cPtr_templateOptionAccessAST::dynamicObjectCompare (const a
 typeComparisonResult GALGAS_templateOptionAccessAST::objectCompare (const GALGAS_templateOptionAccessAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -7299,7 +7299,7 @@ const C_galgas_type_descriptor * cPtr_templateOptionAccessAST::classDescriptor (
 }
 
 void cPtr_templateOptionAccessAST::description (C_String & ioString,
-                                                const PMSInt32 inIndentation) const {
+                                                const int32_t inIndentation) const {
   ioString << "[@templateOptionAccessAST:" ;
   mAttribute_mOptionComponentName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -7380,8 +7380,8 @@ typeComparisonResult cPtr_templateOrOperationAST::dynamicObjectCompare (const ac
 typeComparisonResult GALGAS_templateOrOperationAST::objectCompare (const GALGAS_templateOrOperationAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -7509,7 +7509,7 @@ const C_galgas_type_descriptor * cPtr_templateOrOperationAST::classDescriptor (v
 }
 
 void cPtr_templateOrOperationAST::description (C_String & ioString,
-                                               const PMSInt32 inIndentation) const {
+                                               const int32_t inIndentation) const {
   ioString << "[@templateOrOperationAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -7590,8 +7590,8 @@ typeComparisonResult cPtr_templateReaderCallInExpressionAST::dynamicObjectCompar
 typeComparisonResult GALGAS_templateReaderCallInExpressionAST::objectCompare (const GALGAS_templateReaderCallInExpressionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -7719,7 +7719,7 @@ const C_galgas_type_descriptor * cPtr_templateReaderCallInExpressionAST::classDe
 }
 
 void cPtr_templateReaderCallInExpressionAST::description (C_String & ioString,
-                                                          const PMSInt32 inIndentation) const {
+                                                          const int32_t inIndentation) const {
   ioString << "[@templateReaderCallInExpressionAST:" ;
   mAttribute_mReceiverExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -7800,8 +7800,8 @@ typeComparisonResult cPtr_templateRightShiftOperationAST::dynamicObjectCompare (
 typeComparisonResult GALGAS_templateRightShiftOperationAST::objectCompare (const GALGAS_templateRightShiftOperationAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -7929,7 +7929,7 @@ const C_galgas_type_descriptor * cPtr_templateRightShiftOperationAST::classDescr
 }
 
 void cPtr_templateRightShiftOperationAST::description (C_String & ioString,
-                                                       const PMSInt32 inIndentation) const {
+                                                       const int32_t inIndentation) const {
   ioString << "[@templateRightShiftOperationAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -8010,8 +8010,8 @@ typeComparisonResult cPtr_templateStrictInfTestAST::dynamicObjectCompare (const 
 typeComparisonResult GALGAS_templateStrictInfTestAST::objectCompare (const GALGAS_templateStrictInfTestAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -8139,7 +8139,7 @@ const C_galgas_type_descriptor * cPtr_templateStrictInfTestAST::classDescriptor 
 }
 
 void cPtr_templateStrictInfTestAST::description (C_String & ioString,
-                                                 const PMSInt32 inIndentation) const {
+                                                 const int32_t inIndentation) const {
   ioString << "[@templateStrictInfTestAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -8220,8 +8220,8 @@ typeComparisonResult cPtr_templateStrictSupTestAST::dynamicObjectCompare (const 
 typeComparisonResult GALGAS_templateStrictSupTestAST::objectCompare (const GALGAS_templateStrictSupTestAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -8349,7 +8349,7 @@ const C_galgas_type_descriptor * cPtr_templateStrictSupTestAST::classDescriptor 
 }
 
 void cPtr_templateStrictSupTestAST::description (C_String & ioString,
-                                                 const PMSInt32 inIndentation) const {
+                                                 const int32_t inIndentation) const {
   ioString << "[@templateStrictSupTestAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -8430,8 +8430,8 @@ typeComparisonResult cPtr_templateSubOperationAST::dynamicObjectCompare (const a
 typeComparisonResult GALGAS_templateSubOperationAST::objectCompare (const GALGAS_templateSubOperationAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -8559,7 +8559,7 @@ const C_galgas_type_descriptor * cPtr_templateSubOperationAST::classDescriptor (
 }
 
 void cPtr_templateSubOperationAST::description (C_String & ioString,
-                                                const PMSInt32 inIndentation) const {
+                                                const int32_t inIndentation) const {
   ioString << "[@templateSubOperationAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -8640,8 +8640,8 @@ typeComparisonResult cPtr_templateSupOrEqualTestAST::dynamicObjectCompare (const
 typeComparisonResult GALGAS_templateSupOrEqualTestAST::objectCompare (const GALGAS_templateSupOrEqualTestAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -8769,7 +8769,7 @@ const C_galgas_type_descriptor * cPtr_templateSupOrEqualTestAST::classDescriptor
 }
 
 void cPtr_templateSupOrEqualTestAST::description (C_String & ioString,
-                                                  const PMSInt32 inIndentation) const {
+                                                  const int32_t inIndentation) const {
   ioString << "[@templateSupOrEqualTestAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -8844,8 +8844,8 @@ typeComparisonResult cPtr_templateTrueBoolAST::dynamicObjectCompare (const acPtr
 typeComparisonResult GALGAS_templateTrueBoolAST::objectCompare (const GALGAS_templateTrueBoolAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -8938,7 +8938,7 @@ const C_galgas_type_descriptor * cPtr_templateTrueBoolAST::classDescriptor (void
 }
 
 void cPtr_templateTrueBoolAST::description (C_String & ioString,
-                                            const PMSInt32 inIndentation) const {
+                                            const int32_t inIndentation) const {
   ioString << "[@templateTrueBoolAST:" ;
   mAttribute_mLocation.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -9012,8 +9012,8 @@ typeComparisonResult cPtr_templateUnaryMinusOperationAST::dynamicObjectCompare (
 typeComparisonResult GALGAS_templateUnaryMinusOperationAST::objectCompare (const GALGAS_templateUnaryMinusOperationAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -9120,7 +9120,7 @@ const C_galgas_type_descriptor * cPtr_templateUnaryMinusOperationAST::classDescr
 }
 
 void cPtr_templateUnaryMinusOperationAST::description (C_String & ioString,
-                                                       const PMSInt32 inIndentation) const {
+                                                       const int32_t inIndentation) const {
   ioString << "[@templateUnaryMinusOperationAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -9193,8 +9193,8 @@ typeComparisonResult cPtr_templateVarInExpressionAST::dynamicObjectCompare (cons
 typeComparisonResult GALGAS_templateVarInExpressionAST::objectCompare (const GALGAS_templateVarInExpressionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -9287,7 +9287,7 @@ const C_galgas_type_descriptor * cPtr_templateVarInExpressionAST::classDescripto
 }
 
 void cPtr_templateVarInExpressionAST::description (C_String & ioString,
-                                                   const PMSInt32 inIndentation) const {
+                                                   const int32_t inIndentation) const {
   ioString << "[@templateVarInExpressionAST:" ;
   mAttribute_mVarName.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -9364,8 +9364,8 @@ typeComparisonResult cPtr_templateXorOperationAST::dynamicObjectCompare (const a
 typeComparisonResult GALGAS_templateXorOperationAST::objectCompare (const GALGAS_templateXorOperationAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -9493,7 +9493,7 @@ const C_galgas_type_descriptor * cPtr_templateXorOperationAST::classDescriptor (
 }
 
 void cPtr_templateXorOperationAST::description (C_String & ioString,
-                                                const PMSInt32 inIndentation) const {
+                                                const int32_t inIndentation) const {
   ioString << "[@templateXorOperationAST:" ;
   mAttribute_mOperatorLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -9557,8 +9557,8 @@ GALGAS_templateXorOperationAST GALGAS_templateXorOperationAST::extractObject (co
 typeComparisonResult GALGAS_templateInstructionAST::objectCompare (const GALGAS_templateInstructionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -9662,8 +9662,8 @@ typeComparisonResult cPtr_templateBlockInstructionAST::dynamicObjectCompare (con
 typeComparisonResult GALGAS_templateBlockInstructionAST::objectCompare (const GALGAS_templateBlockInstructionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -9791,7 +9791,7 @@ const C_galgas_type_descriptor * cPtr_templateBlockInstructionAST::classDescript
 }
 
 void cPtr_templateBlockInstructionAST::description (C_String & ioString,
-                                                    const PMSInt32 inIndentation) const {
+                                                    const int32_t inIndentation) const {
   ioString << "[@templateBlockInstructionAST:" ;
   mAttribute_mExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -9869,8 +9869,8 @@ typeComparisonResult cPtr_templateInstructionExpressionAST::dynamicObjectCompare
 typeComparisonResult GALGAS_templateInstructionExpressionAST::objectCompare (const GALGAS_templateInstructionExpressionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -9977,7 +9977,7 @@ const C_galgas_type_descriptor * cPtr_templateInstructionExpressionAST::classDes
 }
 
 void cPtr_templateInstructionExpressionAST::description (C_String & ioString,
-                                                         const PMSInt32 inIndentation) const {
+                                                         const int32_t inIndentation) const {
   ioString << "[@templateInstructionExpressionAST:" ;
   mAttribute_mExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -10071,8 +10071,8 @@ typeComparisonResult cPtr_templateInstructionForeachAST::dynamicObjectCompare (c
 typeComparisonResult GALGAS_templateInstructionForeachAST::objectCompare (const GALGAS_templateInstructionForeachAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -10305,7 +10305,7 @@ const C_galgas_type_descriptor * cPtr_templateInstructionForeachAST::classDescri
 }
 
 void cPtr_templateInstructionForeachAST::description (C_String & ioString,
-                                                      const PMSInt32 inIndentation) const {
+                                                      const int32_t inIndentation) const {
   ioString << "[@templateInstructionForeachAST:" ;
   mAttribute_mIsAscending.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -10384,8 +10384,8 @@ typeComparisonResult cPtr_templateInstructionGetColumnLocationAST::dynamicObject
 typeComparisonResult GALGAS_templateInstructionGetColumnLocationAST::objectCompare (const GALGAS_templateInstructionGetColumnLocationAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -10439,7 +10439,7 @@ const C_galgas_type_descriptor * cPtr_templateInstructionGetColumnLocationAST::c
 }
 
 void cPtr_templateInstructionGetColumnLocationAST::description (C_String & ioString,
-                                                                const PMSInt32 /* inIndentation */) const {
+                                                                const int32_t /* inIndentation */) const {
   ioString << "[@templateInstructionGetColumnLocationAST]" ;
 }
 
@@ -10502,8 +10502,8 @@ typeComparisonResult cPtr_templateInstructionGotoColumnLocationAST::dynamicObjec
 typeComparisonResult GALGAS_templateInstructionGotoColumnLocationAST::objectCompare (const GALGAS_templateInstructionGotoColumnLocationAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -10557,7 +10557,7 @@ const C_galgas_type_descriptor * cPtr_templateInstructionGotoColumnLocationAST::
 }
 
 void cPtr_templateInstructionGotoColumnLocationAST::description (C_String & ioString,
-                                                                 const PMSInt32 /* inIndentation */) const {
+                                                                 const int32_t /* inIndentation */) const {
   ioString << "[@templateInstructionGotoColumnLocationAST]" ;
 }
 
@@ -10629,8 +10629,8 @@ typeComparisonResult cPtr_templateInstructionIfAST::dynamicObjectCompare (const 
 typeComparisonResult GALGAS_templateInstructionIfAST::objectCompare (const GALGAS_templateInstructionIfAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -10745,7 +10745,7 @@ const C_galgas_type_descriptor * cPtr_templateInstructionIfAST::classDescriptor 
 }
 
 void cPtr_templateInstructionIfAST::description (C_String & ioString,
-                                                 const PMSInt32 inIndentation) const {
+                                                 const int32_t inIndentation) const {
   ioString << "[@templateInstructionIfAST:" ;
   mAttribute_mTemplateInstructionIfBranchList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -10818,8 +10818,8 @@ typeComparisonResult cPtr_templateInstructionStringAST::dynamicObjectCompare (co
 typeComparisonResult GALGAS_templateInstructionStringAST::objectCompare (const GALGAS_templateInstructionStringAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -10912,7 +10912,7 @@ const C_galgas_type_descriptor * cPtr_templateInstructionStringAST::classDescrip
 }
 
 void cPtr_templateInstructionStringAST::description (C_String & ioString,
-                                                     const PMSInt32 inIndentation) const {
+                                                     const int32_t inIndentation) const {
   ioString << "[@templateInstructionStringAST:" ;
   mAttribute_mTemplateString.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -10986,8 +10986,8 @@ typeComparisonResult cPtr_templateInstructionSwitchAST::dynamicObjectCompare (co
 typeComparisonResult GALGAS_templateInstructionSwitchAST::objectCompare (const GALGAS_templateInstructionSwitchAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -11094,7 +11094,7 @@ const C_galgas_type_descriptor * cPtr_templateInstructionSwitchAST::classDescrip
 }
 
 void cPtr_templateInstructionSwitchAST::description (C_String & ioString,
-                                                     const PMSInt32 inIndentation) const {
+                                                     const int32_t inIndentation) const {
   ioString << "[@templateInstructionSwitchAST:" ;
   mAttribute_mSwitchExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -11200,7 +11200,7 @@ void GALGAS_templateInstructionListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_templateInstructionListAST_2E_element::description (C_String & ioString,
-                                                                const PMSInt32 inIndentation) const {
+                                                                const int32_t inIndentation) const {
   ioString << "<struct @templateInstructionListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -11322,7 +11322,7 @@ void GALGAS_templateExpressionListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_templateExpressionListAST_2E_element::description (C_String & ioString,
-                                                               const PMSInt32 inIndentation) const {
+                                                               const int32_t inIndentation) const {
   ioString << "<struct @templateExpressionListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -11452,7 +11452,7 @@ void GALGAS_templateInstructionIfBranchListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_templateInstructionIfBranchListAST_2E_element::description (C_String & ioString,
-                                                                        const PMSInt32 inIndentation) const {
+                                                                        const int32_t inIndentation) const {
   ioString << "<struct @templateInstructionIfBranchListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -11589,7 +11589,7 @@ void GALGAS_templateInstructionSwitchBranchListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_templateInstructionSwitchBranchListAST_2E_element::description (C_String & ioString,
-                                                                            const PMSInt32 inIndentation) const {
+                                                                            const int32_t inIndentation) const {
   ioString << "<struct @templateInstructionSwitchBranchListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;

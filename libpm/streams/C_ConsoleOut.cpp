@@ -53,11 +53,11 @@ void C_ConsoleOut::flush (void) {
 
 void C_ConsoleOut::
 performActualCharArrayOutput (const char * inCharArray,
-                              const PMSInt32 inArrayCount) {
+                              const int32_t inArrayCount) {
   if (inArrayCount > 0) {
     printf ("%.*s", (int) inArrayCount, inCharArray) ;
   }
-  /* for (PMSInt32 i=0 ; i<inArrayCount ; i++) {
+  /* for (int32_t i=0 ; i<inArrayCount ; i++) {
     if ((inCharArray [i] & 0x80) == 0) {
       printf ("%c", inCharArray [i]) ;
     }else{
@@ -71,8 +71,8 @@ performActualCharArrayOutput (const char * inCharArray,
 
 void C_ConsoleOut::
 performActualUnicodeArrayOutput (const utf32 * inCharArray,
-                                 const PMSInt32 inArrayCount) {
-  for (PMSInt32 i=0 ; i<inArrayCount ; i++) {
+                                 const int32_t inArrayCount) {
+  for (int32_t i=0 ; i<inArrayCount ; i++) {
     char buffer [5] ;
     UTF8StringFromUTF32Character (inCharArray [i], buffer) ;
     printf ("%s", buffer) ;

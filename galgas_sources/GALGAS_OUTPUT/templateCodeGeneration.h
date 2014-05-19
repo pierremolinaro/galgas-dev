@@ -79,7 +79,7 @@ typedef void (*categoryMethodSignature_templateInstructionForGeneration_template
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_templateCodeGeneration (const PMSInt32 inClassIndex,
+void enterCategoryMethod_templateCodeGeneration (const int32_t inClassIndex,
                                                  categoryMethodSignature_templateInstructionForGeneration_templateCodeGeneration inMethod) ;
 
 //-----------------------------------------------------------------------------*

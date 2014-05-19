@@ -824,7 +824,7 @@ class cCollectionElement_luintlist : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -851,7 +851,7 @@ cCollectionElement * cCollectionElement_luintlist::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_luintlist::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_luintlist::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue" ":" ;
@@ -1191,7 +1191,7 @@ class cCollectionElement_uintlist : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -1218,7 +1218,7 @@ cCollectionElement * cCollectionElement_uintlist::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_uintlist::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_uintlist::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue" ":" ;
@@ -1558,7 +1558,7 @@ class cCollectionElement_uint_36__34_list : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -1585,7 +1585,7 @@ cCollectionElement * cCollectionElement_uint_36__34_list::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_uint_36__34_list::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_uint_36__34_list::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue" ":" ;
@@ -1925,7 +1925,7 @@ class cCollectionElement_functionlist : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -1952,7 +1952,7 @@ cCollectionElement * cCollectionElement_functionlist::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_functionlist::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_functionlist::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue" ":" ;
@@ -2292,7 +2292,7 @@ class cCollectionElement_stringlist : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -2319,7 +2319,7 @@ cCollectionElement * cCollectionElement_stringlist::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_stringlist::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_stringlist::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue" ":" ;
@@ -2659,7 +2659,7 @@ class cCollectionElement_lstringlist : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -2686,7 +2686,7 @@ cCollectionElement * cCollectionElement_lstringlist::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_lstringlist::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_lstringlist::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue" ":" ;
@@ -3026,7 +3026,7 @@ class cCollectionElement_typelist : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -3053,7 +3053,7 @@ cCollectionElement * cCollectionElement_typelist::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_typelist::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_typelist::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue" ":" ;
@@ -3393,7 +3393,7 @@ class cCollectionElement_objectlist : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -3420,7 +3420,7 @@ cCollectionElement * cCollectionElement_objectlist::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_objectlist::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_objectlist::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue" ":" ;
@@ -3761,7 +3761,7 @@ class cCollectionElement__32_stringlist : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -3789,7 +3789,7 @@ cCollectionElement * cCollectionElement__32_stringlist::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement__32_stringlist::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement__32_stringlist::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mValue0" ":" ;
@@ -4235,7 +4235,7 @@ void GALGAS_lbool::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lbool::description (C_String & ioString,
-                                const PMSInt32 inIndentation) const {
+                                const int32_t inIndentation) const {
   ioString << "<struct @lbool:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -4372,7 +4372,7 @@ void GALGAS_luint::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_luint::description (C_String & ioString,
-                                const PMSInt32 inIndentation) const {
+                                const int32_t inIndentation) const {
   ioString << "<struct @luint:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -4509,7 +4509,7 @@ void GALGAS_luint_36__34_::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_luint_36__34_::description (C_String & ioString,
-                                        const PMSInt32 inIndentation) const {
+                                        const int32_t inIndentation) const {
   ioString << "<struct @luint64:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -4646,7 +4646,7 @@ void GALGAS_lsint::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lsint::description (C_String & ioString,
-                                const PMSInt32 inIndentation) const {
+                                const int32_t inIndentation) const {
   ioString << "<struct @lsint:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -4783,7 +4783,7 @@ void GALGAS_lsint_36__34_::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lsint_36__34_::description (C_String & ioString,
-                                        const PMSInt32 inIndentation) const {
+                                        const int32_t inIndentation) const {
   ioString << "<struct @lsint64:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -4920,7 +4920,7 @@ void GALGAS_lchar::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lchar::description (C_String & ioString,
-                                const PMSInt32 inIndentation) const {
+                                const int32_t inIndentation) const {
   ioString << "<struct @lchar:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -5057,7 +5057,7 @@ void GALGAS_ldouble::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_ldouble::description (C_String & ioString,
-                                  const PMSInt32 inIndentation) const {
+                                  const int32_t inIndentation) const {
   ioString << "<struct @ldouble:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -5194,7 +5194,7 @@ void GALGAS_lstring::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lstring::description (C_String & ioString,
-                                  const PMSInt32 inIndentation) const {
+                                  const int32_t inIndentation) const {
   ioString << "<struct @lstring:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -5331,7 +5331,7 @@ void GALGAS_range::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_range::description (C_String & ioString,
-                                const PMSInt32 inIndentation) const {
+                                const int32_t inIndentation) const {
   ioString << "<struct @range:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -5459,7 +5459,7 @@ void GALGAS_luintlist_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_luintlist_2E_element::description (C_String & ioString,
-                                               const PMSInt32 inIndentation) const {
+                                               const int32_t inIndentation) const {
   ioString << "<struct @luintlist.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -5579,7 +5579,7 @@ void GALGAS_uintlist_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_uintlist_2E_element::description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const {
+                                              const int32_t inIndentation) const {
   ioString << "<struct @uintlist.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -5699,7 +5699,7 @@ void GALGAS_uint_36__34_list_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_uint_36__34_list_2E_element::description (C_String & ioString,
-                                                      const PMSInt32 inIndentation) const {
+                                                      const int32_t inIndentation) const {
   ioString << "<struct @uint64list.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -5813,7 +5813,7 @@ void GALGAS_functionlist_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_functionlist_2E_element::description (C_String & ioString,
-                                                  const PMSInt32 inIndentation) const {
+                                                  const int32_t inIndentation) const {
   ioString << "<struct @functionlist.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -5933,7 +5933,7 @@ void GALGAS_stringlist_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_stringlist_2E_element::description (C_String & ioString,
-                                                const PMSInt32 inIndentation) const {
+                                                const int32_t inIndentation) const {
   ioString << "<struct @stringlist.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -6053,7 +6053,7 @@ void GALGAS_lstringlist_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lstringlist_2E_element::description (C_String & ioString,
-                                                 const PMSInt32 inIndentation) const {
+                                                 const int32_t inIndentation) const {
   ioString << "<struct @lstringlist.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -6167,7 +6167,7 @@ void GALGAS_typelist_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_typelist_2E_element::description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const {
+                                              const int32_t inIndentation) const {
   ioString << "<struct @typelist.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -6281,7 +6281,7 @@ void GALGAS_objectlist_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_objectlist_2E_element::description (C_String & ioString,
-                                                const PMSInt32 inIndentation) const {
+                                                const int32_t inIndentation) const {
   ioString << "<struct @objectlist.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -6410,7 +6410,7 @@ void GALGAS__32_stringlist_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS__32_stringlist_2E_element::description (C_String & ioString,
-                                                    const PMSInt32 inIndentation) const {
+                                                    const int32_t inIndentation) const {
   ioString << "<struct @2stringlist.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;

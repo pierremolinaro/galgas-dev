@@ -105,7 +105,7 @@ void capCollectionElement::insulate (void) {
 
 //-----------------------------------------------------------------------------*
 
-void capCollectionElement::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void capCollectionElement::description (C_String & ioString, const int32_t inIndentation) const {
   if (NULL == mPtr) {
     ioString << "NULL" ;
   }else{

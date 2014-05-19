@@ -98,7 +98,7 @@ typedef void (*categoryMethodSignature_semanticInstructionForGeneration_appendSy
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_appendSyntaxSignature (const PMSInt32 inClassIndex,
+void enterCategoryMethod_appendSyntaxSignature (const int32_t inClassIndex,
                                                 categoryMethodSignature_semanticInstructionForGeneration_appendSyntaxSignature inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -122,7 +122,7 @@ typedef GALGAS_bool (*categoryReaderSignature_semanticInstructionForGeneration_c
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_compareSyntaxInstruction (const PMSInt32 inClassIndex,
+void enterCategoryReader_compareSyntaxInstruction (const int32_t inClassIndex,
                                                    categoryReaderSignature_semanticInstructionForGeneration_compareSyntaxInstruction inReader) ;
 
 //-----------------------------------------------------------------------------*

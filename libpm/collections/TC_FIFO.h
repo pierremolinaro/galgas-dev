@@ -53,7 +53,7 @@ template <typename TYPE> class TC_FIFO {
   private : void operator = (TC_FIFO <TYPE> &) ;
 
 //--- Length
-  public : inline PMSInt32 length (void) const { return mListLength ; }
+  public : inline int32_t length (void) const { return mListLength ; }
 
 //--- Empty ?
   public : inline bool isEmpty (void) const { return mListLength == 0 ; }
@@ -70,8 +70,8 @@ template <typename TYPE> class TC_FIFO {
   public : void getByExchangeAndSuppressLastItem (TYPE & outInfo) ;
 
 //--- Direct access
-  public : TYPE & operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) ;
-  public : TYPE & operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) const ;
+  public : TYPE & operator () (const int32_t inIndex COMMA_LOCATION_ARGS) ;
+  public : TYPE & operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
 
 //------- Element class ---------------------
   private : class TC_FIFO_element {
@@ -94,7 +94,7 @@ template <typename TYPE> class TC_FIFO {
 //--- Data members
   private : TC_FIFO_element * mFirstItem ;
   private : TC_FIFO_element * mLastItem ;
-  private : PMSInt32 mListLength ;
+  private : int32_t mListLength ;
   private : mutable TC_FIFO_element * * mItemsArray ;
 } ;
 
@@ -234,7 +234,7 @@ getByExchangeAndSuppressLastItem (TYPE & outInfo) {
 
  template <typename TYPE>
  TYPE & TC_FIFO<TYPE>::
- operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) {
+ operator () (const int32_t inIndex COMMA_LOCATION_ARGS) {
    MF_AssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
    MF_AssertThere (inIndex < mListLength, "inIndex (%ld) >= mListLength (%ld)", inIndex, mListLength) ;
    TC_FIFO_element * p = (TC_FIFO_element *) NULL ;
@@ -246,7 +246,7 @@ getByExchangeAndSuppressLastItem (TYPE & outInfo) {
      if (mItemsArray == NULL) {
        macroMyNewArray (mItemsArray, TC_FIFO_element *, mListLength) ;
        p = mFirstItem ;
-       for (PMSInt32 i=0 ; i<mListLength ; i++) {
+       for (int32_t i=0 ; i<mListLength ; i++) {
          mItemsArray [i] = p ;
          p = p->mNextItem ;
        }
@@ -260,7 +260,7 @@ getByExchangeAndSuppressLastItem (TYPE & outInfo) {
 
  template <typename TYPE>
  TYPE & TC_FIFO <TYPE>::
- operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) const {
+ operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const {
    MF_AssertThere (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
    MF_AssertThere (inIndex < mListLength, "inIndex (%ld) >= mListLength (%ld)", inIndex, mListLength) ;
    TC_FIFO_element * p = (TC_FIFO_element *) NULL ;
@@ -272,7 +272,7 @@ getByExchangeAndSuppressLastItem (TYPE & outInfo) {
      if (mItemsArray == NULL) {
        macroMyNewArray (mItemsArray, TC_FIFO_element *, mListLength) ;
        p = mFirstItem ;
-       for (PMSInt32 i=0 ; i<mListLength ; i++) {
+       for (int32_t i=0 ; i<mListLength ; i++) {
          mItemsArray [i] = p ;
          p = p->mNextItem ;
        }

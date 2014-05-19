@@ -55,7 +55,7 @@ cMapElement * cMapElement_parsedLexiqueComponentMap::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_parsedLexiqueComponentMap::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_parsedLexiqueComponentMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLexiqueComponentAST" ":" ;
@@ -312,7 +312,7 @@ cMapElement * cMapElement_parsedOptionComponentMap::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_parsedOptionComponentMap::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_parsedOptionComponentMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mBoolOptionMap" ":" ;
@@ -663,7 +663,7 @@ cMapElement * cMapElement_parsedSemanticsComponentMap::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_parsedSemanticsComponentMap::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_parsedSemanticsComponentMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mSourceFullFilePath" ":" ;
@@ -966,7 +966,7 @@ cMapElement * cMapElement_parsedGrammarComponentMap::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_parsedGrammarComponentMap::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_parsedGrammarComponentMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mSourceFullFilePath" ":" ;
@@ -1269,7 +1269,7 @@ cMapElement * cMapElement_parsedSyntaxComponentMap::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_parsedSyntaxComponentMap::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_parsedSyntaxComponentMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mSourceFullFilePath" ":" ;
@@ -1572,7 +1572,7 @@ cMapElement * cMapElement_parsedProgramComponentMap::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_parsedProgramComponentMap::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_parsedProgramComponentMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mSourceFullFilePath" ":" ;
@@ -1875,7 +1875,7 @@ cMapElement * cMapElement_parsedGuiComponentMap::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_parsedGuiComponentMap::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_parsedGuiComponentMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mSourceFullFilePath" ":" ;
@@ -2264,7 +2264,7 @@ void GALGAS_parsedComponentStruct::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_parsedComponentStruct::description (C_String & ioString,
-                                                const PMSInt32 inIndentation) const {
+                                                const int32_t inIndentation) const {
   ioString << "<struct @parsedComponentStruct:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -2441,7 +2441,7 @@ void GALGAS_parsedLexiqueComponentMap_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_parsedLexiqueComponentMap_2E_element::description (C_String & ioString,
-                                                               const PMSInt32 inIndentation) const {
+                                                               const int32_t inIndentation) const {
   ioString << "<struct @parsedLexiqueComponentMap.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -2596,7 +2596,7 @@ void GALGAS_parsedOptionComponentMap_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_parsedOptionComponentMap_2E_element::description (C_String & ioString,
-                                                              const PMSInt32 inIndentation) const {
+                                                              const int32_t inIndentation) const {
   ioString << "<struct @parsedOptionComponentMap.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -2758,7 +2758,7 @@ void GALGAS_parsedSemanticsComponentMap_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_parsedSemanticsComponentMap_2E_element::description (C_String & ioString,
-                                                                 const PMSInt32 inIndentation) const {
+                                                                 const int32_t inIndentation) const {
   ioString << "<struct @parsedSemanticsComponentMap.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -2912,7 +2912,7 @@ void GALGAS_parsedGrammarComponentMap_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_parsedGrammarComponentMap_2E_element::description (C_String & ioString,
-                                                               const PMSInt32 inIndentation) const {
+                                                               const int32_t inIndentation) const {
   ioString << "<struct @parsedGrammarComponentMap.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -3066,7 +3066,7 @@ void GALGAS_parsedSyntaxComponentMap_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_parsedSyntaxComponentMap_2E_element::description (C_String & ioString,
-                                                              const PMSInt32 inIndentation) const {
+                                                              const int32_t inIndentation) const {
   ioString << "<struct @parsedSyntaxComponentMap.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -3220,7 +3220,7 @@ void GALGAS_parsedProgramComponentMap_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_parsedProgramComponentMap_2E_element::description (C_String & ioString,
-                                                               const PMSInt32 inIndentation) const {
+                                                               const int32_t inIndentation) const {
   ioString << "<struct @parsedProgramComponentMap.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -3374,7 +3374,7 @@ void GALGAS_parsedGuiComponentMap_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_parsedGuiComponentMap_2E_element::description (C_String & ioString,
-                                                           const PMSInt32 inIndentation) const {
+                                                           const int32_t inIndentation) const {
   ioString << "<struct @parsedGuiComponentMap.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;

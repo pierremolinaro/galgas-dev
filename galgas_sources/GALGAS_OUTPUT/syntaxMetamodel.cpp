@@ -53,7 +53,7 @@ class cCollectionElement_syntaxInstructionList : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -80,7 +80,7 @@ cCollectionElement * cCollectionElement_syntaxInstructionList::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_syntaxInstructionList::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_syntaxInstructionList::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mInstruction" ":" ;
@@ -393,7 +393,7 @@ class cCollectionElement_nonTerminalLabelListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -422,7 +422,7 @@ cCollectionElement * cCollectionElement_nonTerminalLabelListAST::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_nonTerminalLabelListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_nonTerminalLabelListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLabelName" ":" ;
@@ -798,7 +798,7 @@ class cCollectionElement_nonterminalDeclarationListAST : public cCollectionEleme
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -826,7 +826,7 @@ cCollectionElement * cCollectionElement_nonterminalDeclarationListAST::copy (voi
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_nonterminalDeclarationListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_nonterminalDeclarationListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mNonterminalName" ":" ;
@@ -1173,7 +1173,7 @@ class cCollectionElement_syntaxRuleLabelListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -1204,7 +1204,7 @@ cCollectionElement * cCollectionElement_syntaxRuleLabelListAST::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_syntaxRuleLabelListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_syntaxRuleLabelListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLabelName" ":" ;
@@ -1644,7 +1644,7 @@ class cCollectionElement_syntaxRuleListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -1672,7 +1672,7 @@ cCollectionElement * cCollectionElement_syntaxRuleListAST::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_syntaxRuleListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_syntaxRuleListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mNonterminalName" ":" ;
@@ -2016,7 +2016,7 @@ class cCollectionElement_listOfSyntaxInstructionList : public cCollectionElement
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -2044,7 +2044,7 @@ cCollectionElement * cCollectionElement_listOfSyntaxInstructionList::copy (void)
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_listOfSyntaxInstructionList::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_listOfSyntaxInstructionList::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mSyntaxInstructionList" ":" ;
@@ -2393,8 +2393,8 @@ typeComparisonResult cPtr_nonterminalCallInstruction::dynamicObjectCompare (cons
 typeComparisonResult GALGAS_nonterminalCallInstruction::objectCompare (const GALGAS_nonterminalCallInstruction & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -2534,7 +2534,7 @@ const C_galgas_type_descriptor * cPtr_nonterminalCallInstruction::classDescripto
 }
 
 void cPtr_nonterminalCallInstruction::description (C_String & ioString,
-                                                   const PMSInt32 inIndentation) const {
+                                                   const int32_t inIndentation) const {
   ioString << "[@nonterminalCallInstruction:" ;
   mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -2629,8 +2629,8 @@ typeComparisonResult cPtr_parseLoopInstruction::dynamicObjectCompare (const acPt
 typeComparisonResult GALGAS_parseLoopInstruction::objectCompare (const GALGAS_parseLoopInstruction & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -2823,7 +2823,7 @@ const C_galgas_type_descriptor * cPtr_parseLoopInstruction::classDescriptor (voi
 }
 
 void cPtr_parseLoopInstruction::description (C_String & ioString,
-                                             const PMSInt32 inIndentation) const {
+                                             const int32_t inIndentation) const {
   ioString << "[@parseLoopInstruction:" ;
   mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -2912,8 +2912,8 @@ typeComparisonResult cPtr_parseRewindInstruction::dynamicObjectCompare (const ac
 typeComparisonResult GALGAS_parseRewindInstruction::objectCompare (const GALGAS_parseRewindInstruction & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -3031,7 +3031,7 @@ const C_galgas_type_descriptor * cPtr_parseRewindInstruction::classDescriptor (v
 }
 
 void cPtr_parseRewindInstruction::description (C_String & ioString,
-                                               const PMSInt32 inIndentation) const {
+                                               const int32_t inIndentation) const {
   ioString << "[@parseRewindInstruction:" ;
   mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -3124,8 +3124,8 @@ typeComparisonResult cPtr_parseWhenInstruction::dynamicObjectCompare (const acPt
 typeComparisonResult GALGAS_parseWhenInstruction::objectCompare (const GALGAS_parseWhenInstruction & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -3318,7 +3318,7 @@ const C_galgas_type_descriptor * cPtr_parseWhenInstruction::classDescriptor (voi
 }
 
 void cPtr_parseWhenInstruction::description (C_String & ioString,
-                                             const PMSInt32 inIndentation) const {
+                                             const int32_t inIndentation) const {
   ioString << "[@parseWhenInstruction:" ;
   mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -3413,8 +3413,8 @@ typeComparisonResult cPtr_repeatInstruction::dynamicObjectCompare (const acPtr_c
 typeComparisonResult GALGAS_repeatInstruction::objectCompare (const GALGAS_repeatInstruction & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -3576,7 +3576,7 @@ const C_galgas_type_descriptor * cPtr_repeatInstruction::classDescriptor (void) 
 }
 
 void cPtr_repeatInstruction::description (C_String & ioString,
-                                          const PMSInt32 inIndentation) const {
+                                          const int32_t inIndentation) const {
   ioString << "[@repeatInstruction:" ;
   mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -3661,8 +3661,8 @@ typeComparisonResult cPtr_selectInstruction::dynamicObjectCompare (const acPtr_c
 typeComparisonResult GALGAS_selectInstruction::objectCompare (const GALGAS_selectInstruction & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -3780,7 +3780,7 @@ const C_galgas_type_descriptor * cPtr_selectInstruction::classDescriptor (void) 
 }
 
 void cPtr_selectInstruction::description (C_String & ioString,
-                                          const PMSInt32 inIndentation) const {
+                                          const int32_t inIndentation) const {
   ioString << "[@selectInstruction:" ;
   mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -3864,8 +3864,8 @@ typeComparisonResult cPtr_terminalCheckInstruction::dynamicObjectCompare (const 
 typeComparisonResult GALGAS_terminalCheckInstruction::objectCompare (const GALGAS_terminalCheckInstruction & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -4005,7 +4005,7 @@ const C_galgas_type_descriptor * cPtr_terminalCheckInstruction::classDescriptor 
 }
 
 void cPtr_terminalCheckInstruction::description (C_String & ioString,
-                                                 const PMSInt32 inIndentation) const {
+                                                 const int32_t inIndentation) const {
   ioString << "[@terminalCheckInstruction:" ;
   mAttribute_mInstructionLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -4175,7 +4175,7 @@ void GALGAS_syntaxComponentAST::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_syntaxComponentAST::description (C_String & ioString,
-                                             const PMSInt32 inIndentation) const {
+                                             const int32_t inIndentation) const {
   ioString << "<struct @syntaxComponentAST:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -4337,7 +4337,7 @@ void GALGAS_syntaxInstructionList_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_syntaxInstructionList_2E_element::description (C_String & ioString,
-                                                           const PMSInt32 inIndentation) const {
+                                                           const int32_t inIndentation) const {
   ioString << "<struct @syntaxInstructionList.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -4475,7 +4475,7 @@ void GALGAS_nonTerminalLabelListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_nonTerminalLabelListAST_2E_element::description (C_String & ioString,
-                                                             const PMSInt32 inIndentation) const {
+                                                             const int32_t inIndentation) const {
   ioString << "<struct @nonTerminalLabelListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -4620,7 +4620,7 @@ void GALGAS_nonterminalDeclarationListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_nonterminalDeclarationListAST_2E_element::description (C_String & ioString,
-                                                                   const PMSInt32 inIndentation) const {
+                                                                   const int32_t inIndentation) const {
   ioString << "<struct @nonterminalDeclarationListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -4784,7 +4784,7 @@ void GALGAS_syntaxRuleLabelListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_syntaxRuleLabelListAST_2E_element::description (C_String & ioString,
-                                                            const PMSInt32 inIndentation) const {
+                                                            const int32_t inIndentation) const {
   ioString << "<struct @syntaxRuleLabelListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -4945,7 +4945,7 @@ void GALGAS_syntaxRuleListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_syntaxRuleListAST_2E_element::description (C_String & ioString,
-                                                       const PMSInt32 inIndentation) const {
+                                                       const int32_t inIndentation) const {
   ioString << "<struct @syntaxRuleListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -5082,7 +5082,7 @@ void GALGAS_listOfSyntaxInstructionList_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_listOfSyntaxInstructionList_2E_element::description (C_String & ioString,
-                                                                 const PMSInt32 inIndentation) const {
+                                                                 const int32_t inIndentation) const {
   ioString << "<struct @listOfSyntaxInstructionList.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;

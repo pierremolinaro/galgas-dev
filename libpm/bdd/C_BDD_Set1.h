@@ -57,7 +57,7 @@ class C_BDD_Set1 {
 
 //--- Initialization 
   public : void init (const C_BDD::compareEnum inComparison,
-                      const PMUInt32 inValue) ;
+                      const uint32_t inValue) ;
 
 //--- Get descriptor
   public : C_BDD_Descriptor getDescriptor (void) const {
@@ -84,7 +84,7 @@ class C_BDD_Set1 {
   public : inline bool isFalse (void) const { return mBDD.isFalse () ; }
  
 //--- Values count
-  public : PMUInt32 getValuesCount (void) const ;
+  public : uint32_t getValuesCount (void) const ;
 
 //--- Get values array
   public : void getArray (TC_UniqueArray <bool> & outArray) const ;

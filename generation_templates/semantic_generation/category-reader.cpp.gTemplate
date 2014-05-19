@@ -8,7 +8,7 @@ static TC_UniqueArray <categoryReaderSignature_%![CLASS_NAME identifierRepresent
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_%![READER_NAME identifierRepresentation]% (%?^%const PMSInt32 inClassIndex,
+void enterCategoryReader_%![READER_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
                %!^%categoryReaderSignature_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]% inReader) {
   gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
@@ -31,7 +31,7 @@ GALGAS_%![RETURN_TYPE identifierRepresentation]% callCategoryReader_%![READER_NA
   if (NULL != inObject) {
     macroValidSharedObject (inObject, const cPtr_%![CLASS_NAME identifierRepresentation]%) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const PMSInt32 classIndex = info->mSlotID ;
+    const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]% f = NULL ;
     if (classIndex < gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]%.count ()) {
       f = gCategoryReaderTable_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]% (classIndex COMMA_HERE) ;

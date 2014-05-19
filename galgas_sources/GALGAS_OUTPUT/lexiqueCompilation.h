@@ -187,7 +187,7 @@ typedef void (*categoryMethodSignature_lexicalSendDefaultActionAST_checkLexicalD
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_checkLexicalDefaultAction (const PMSInt32 inClassIndex,
+void enterCategoryMethod_checkLexicalDefaultAction (const int32_t inClassIndex,
                                                     categoryMethodSignature_lexicalSendDefaultActionAST_checkLexicalDefaultAction inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -210,7 +210,7 @@ typedef void (*categoryMethodSignature_lexicalExpressionAST_checkLexicalExpressi
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_checkLexicalExpression (const PMSInt32 inClassIndex,
+void enterCategoryMethod_checkLexicalExpression (const int32_t inClassIndex,
                                                  categoryMethodSignature_lexicalExpressionAST_checkLexicalExpression inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -234,7 +234,7 @@ typedef void (*categoryMethodSignature_lexicalRoutineOrFunctionFormalInputArgume
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_checkLexicalFunctionCallArgument (const PMSInt32 inClassIndex,
+void enterCategoryMethod_checkLexicalFunctionCallArgument (const int32_t inClassIndex,
                                                            categoryMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalFunctionCallArgument inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -259,7 +259,7 @@ typedef void (*categoryMethodSignature_lexicalRoutineOrFunctionFormalInputArgume
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_checkLexicalRoutineCallArgument (const PMSInt32 inClassIndex,
+void enterCategoryMethod_checkLexicalRoutineCallArgument (const int32_t inClassIndex,
                                                           categoryMethodSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_checkLexicalRoutineCallArgument inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -285,7 +285,7 @@ typedef void (*categoryMethodSignature_abstractLexicalRoutineActualArgumentAST_c
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_checkLexicalRoutineCallArgument (const PMSInt32 inClassIndex,
+void enterCategoryMethod_checkLexicalRoutineCallArgument (const int32_t inClassIndex,
                                                           categoryMethodSignature_abstractLexicalRoutineActualArgumentAST_checkLexicalRoutineCallArgument inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -311,7 +311,7 @@ typedef void (*categoryMethodSignature_lexicalInstructionAST_checkLexicalInstruc
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_checkLexicalInstruction (const PMSInt32 inClassIndex,
+void enterCategoryMethod_checkLexicalInstruction (const int32_t inClassIndex,
                                                   categoryMethodSignature_lexicalInstructionAST_checkLexicalInstruction inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -335,7 +335,7 @@ typedef void (*categoryMethodSignature_abstractLexicalRuleAST_checkLexicalRule) 
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_checkLexicalRule (const PMSInt32 inClassIndex,
+void enterCategoryMethod_checkLexicalRule (const int32_t inClassIndex,
                                            categoryMethodSignature_abstractLexicalRuleAST_checkLexicalRule inMethod) ;
 
 //-----------------------------------------------------------------------------*

@@ -3917,7 +3917,7 @@ class GALGAS_templateInstructionListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_templateInstructionListAST_2E_element & inOperand) const ;
 
@@ -3983,7 +3983,7 @@ class GALGAS_templateExpressionListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_templateExpressionListAST_2E_element & inOperand) const ;
 
@@ -4051,7 +4051,7 @@ class GALGAS_templateInstructionIfBranchListAST_2E_element : public AC_GALGAS_ro
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_templateInstructionIfBranchListAST_2E_element & inOperand) const ;
 
@@ -4122,7 +4122,7 @@ class GALGAS_templateInstructionSwitchBranchListAST_2E_element : public AC_GALGA
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_templateInstructionSwitchBranchListAST_2E_element & inOperand) const ;
 
@@ -4162,7 +4162,7 @@ class cPtr_templateExpressionAST : public acPtr_class {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const = 0 ;
+                                     const int32_t inIndentation) const = 0 ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
 
@@ -4194,7 +4194,7 @@ class cPtr_structFieldAccessTemplateExpressionAST : public cPtr_templateExpressi
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mStructFieldName (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4226,7 +4226,7 @@ class cPtr_templateAddOperationAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mRightExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4258,7 +4258,7 @@ class cPtr_templateAndOperationAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mRightExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4290,7 +4290,7 @@ class cPtr_templateCategoryTemplateCallAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionListAST reader_mOutExpressionList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4316,7 +4316,7 @@ class cPtr_templateClassToTypeOperandAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTypeName (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4348,7 +4348,7 @@ class cPtr_templateConcatOperationAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mRightExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4380,7 +4380,7 @@ class cPtr_templateConstructorAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionListAST reader_mExpressionList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4412,7 +4412,7 @@ class cPtr_templateDivideOperationAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mRightExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4444,7 +4444,7 @@ class cPtr_templateEqualTestAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mRightExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4470,7 +4470,7 @@ class cPtr_templateFalseBoolAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_mLocation (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4502,7 +4502,7 @@ class cPtr_templateFileWrapperTemplateCallAST : public cPtr_templateExpressionAS
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionListAST reader_mOutExpressionList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4531,7 +4531,7 @@ class cPtr_templateFileWrapperWithStaticPathAST : public cPtr_templateExpression
   public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mFileIndex (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4560,7 +4560,7 @@ class cPtr_templateFunctionCallAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionListAST reader_mExpressionList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4595,7 +4595,7 @@ class cPtr_templateIfThenElseExpressionAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mElseExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4627,7 +4627,7 @@ class cPtr_templateInfOrEqualTestAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mRightExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4659,7 +4659,7 @@ class cPtr_templateLeftShiftOperationAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mRightExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4685,7 +4685,7 @@ class cPtr_templateLiteralCharExpressionAST : public cPtr_templateExpressionAST 
   public : VIRTUAL_IN_DEBUG GALGAS_lchar reader_mLiteralChar (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4711,7 +4711,7 @@ class cPtr_templateLiteralDoubleExpressionAST : public cPtr_templateExpressionAS
   public : VIRTUAL_IN_DEBUG GALGAS_ldouble reader_mLiteralDouble (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4737,7 +4737,7 @@ class cPtr_templateLiteralSInt_36__34_ExpressionAST : public cPtr_templateExpres
   public : VIRTUAL_IN_DEBUG GALGAS_lsint_36__34_ reader_mLiteralInt (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4763,7 +4763,7 @@ class cPtr_templateLiteralSIntExpressionAST : public cPtr_templateExpressionAST 
   public : VIRTUAL_IN_DEBUG GALGAS_lsint reader_mLiteralInt (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4792,7 +4792,7 @@ class cPtr_templateLiteralStringExpressionAST : public cPtr_templateExpressionAS
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_mLocation (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4818,7 +4818,7 @@ class cPtr_templateLiteralUInt_36__34_ExpressionAST : public cPtr_templateExpres
   public : VIRTUAL_IN_DEBUG GALGAS_luint_36__34_ reader_mLiteralInt (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4844,7 +4844,7 @@ class cPtr_templateLiteralUIntExpressionAST : public cPtr_templateExpressionAST 
   public : VIRTUAL_IN_DEBUG GALGAS_luint reader_mLiteralInt (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4873,7 +4873,7 @@ class cPtr_templateLogicalNegateAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4905,7 +4905,7 @@ class cPtr_templateModuloOperationAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mRightExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4937,7 +4937,7 @@ class cPtr_templateMultiplyOperationAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mRightExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4969,7 +4969,7 @@ class cPtr_templateNonEqualTestAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mRightExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4998,7 +4998,7 @@ class cPtr_templateNotOperatorAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5030,7 +5030,7 @@ class cPtr_templateOptionAccessAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mReaderName (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5062,7 +5062,7 @@ class cPtr_templateOrOperationAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mRightExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5094,7 +5094,7 @@ class cPtr_templateReaderCallInExpressionAST : public cPtr_templateExpressionAST
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionListAST reader_mExpressionList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5126,7 +5126,7 @@ class cPtr_templateRightShiftOperationAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mRightExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5158,7 +5158,7 @@ class cPtr_templateStrictInfTestAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mRightExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5190,7 +5190,7 @@ class cPtr_templateStrictSupTestAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mRightExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5222,7 +5222,7 @@ class cPtr_templateSubOperationAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mRightExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5254,7 +5254,7 @@ class cPtr_templateSupOrEqualTestAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mRightExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5280,7 +5280,7 @@ class cPtr_templateTrueBoolAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_mLocation (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5309,7 +5309,7 @@ class cPtr_templateUnaryMinusOperationAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5335,7 +5335,7 @@ class cPtr_templateVarInExpressionAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mVarName (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5367,7 +5367,7 @@ class cPtr_templateXorOperationAST : public cPtr_templateExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateExpressionAST reader_mRightExpression (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5390,7 +5390,7 @@ class cPtr_templateInstructionAST : public acPtr_class {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const = 0 ;
+                                     const int32_t inIndentation) const = 0 ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
 
@@ -5422,7 +5422,7 @@ class cPtr_templateBlockInstructionAST : public cPtr_templateInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateInstructionListAST reader_mBlockInstructionList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5451,7 +5451,7 @@ class cPtr_templateInstructionExpressionAST : public cPtr_templateInstructionAST
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_mLocation (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5498,7 +5498,7 @@ class cPtr_templateInstructionForeachAST : public cPtr_templateInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateInstructionListAST reader_mAfterInstructionList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5521,7 +5521,7 @@ class cPtr_templateInstructionGetColumnLocationAST : public cPtr_templateInstruc
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5544,7 +5544,7 @@ class cPtr_templateInstructionGotoColumnLocationAST : public cPtr_templateInstru
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5573,7 +5573,7 @@ class cPtr_templateInstructionIfAST : public cPtr_templateInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateInstructionListAST reader_mElseInstructionList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5599,7 +5599,7 @@ class cPtr_templateInstructionStringAST : public cPtr_templateInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_mTemplateString (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5628,7 +5628,7 @@ class cPtr_templateInstructionSwitchAST : public cPtr_templateInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_templateInstructionSwitchBranchListAST reader_mTemplateInstructionSwitchBranchList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 

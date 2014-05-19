@@ -283,7 +283,7 @@ typedef void (*categoryMethodSignature_syntaxInstructionAST_transformInstruction
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_transformInstruction (const PMSInt32 inClassIndex,
+void enterCategoryMethod_transformInstruction (const int32_t inClassIndex,
                                                categoryMethodSignature_syntaxInstructionAST_transformInstruction inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -342,7 +342,7 @@ class GALGAS_nonTerminalToAddList_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_nonTerminalToAddList_2E_element & inOperand) const ;
 

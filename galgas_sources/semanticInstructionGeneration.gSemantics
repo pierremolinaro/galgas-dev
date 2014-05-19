@@ -931,7 +931,7 @@ override method @loopInstructionForGeneration generateInstruction
   ioGeneratedCode .= "if (" . variantCppVarName . ".isValid ()) {\n" ;
   [!?ioGeneratedCode incIndentation !2] ;
   const @string variantVar := "variant_" . [[mInstructionLocation locationIndex] string] ;
-  ioGeneratedCode .= "PMUInt32 " . variantVar . " = " . variantCppVarName . ".uintValue () ;\n" ;
+  ioGeneratedCode .= "uint32_t " . variantVar . " = " . variantCppVarName . ".uintValue () ;\n" ;
   const @string loopVar := "loop_" . [[mInstructionLocation locationIndex] string] ;
   ioGeneratedCode .= "bool " . loopVar . " = true ;\n"
                   . "while (" . loopVar . ") {\n" ;
@@ -1090,7 +1090,7 @@ override method @foreachInstructionForGeneration generateInstruction
   if (([mBeforeInstructionList length] + [mAfterInstructionList length]) > 0) | not whileExpressionIsAllwaysTrue then
   #--- Index
     if mIndexVariableCppName != "" then
-      ioGeneratedCode .= "GALGAS_uint " . mIndexVariableCppName . " ((PMUInt32) 0) ;\n" ;
+      ioGeneratedCode .= "GALGAS_uint " . mIndexVariableCppName . " ((uint32_t) 0) ;\n" ;
     end if ;
     const @string boolVarCppName := "bool_" . [ioTemporaryVariableIndex string] ; ioTemporaryVariableIndex ++ ;
     if whileExpressionIsAllwaysTrue then
@@ -1178,7 +1178,7 @@ override method @foreachInstructionForGeneration generateInstruction
     ioGeneratedCode .= "}\n" ;
   else #----- foreach instruction without 'before', 'after', while expression
     if mIndexVariableCppName != "" then
-      ioGeneratedCode .= "GALGAS_uint " . mIndexVariableCppName . " ((PMUInt32) 0) ;\n" ;
+      ioGeneratedCode .= "GALGAS_uint " . mIndexVariableCppName . " ((uint32_t) 0) ;\n" ;
     end if ;
     ioGeneratedCode .= "while (" ;
     foreach mEnumeratedObjectList

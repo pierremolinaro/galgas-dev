@@ -30,11 +30,11 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-C_BDD_Descriptor::C_BDD_Descriptor (const PMUInt32 inMaxValue) :
+C_BDD_Descriptor::C_BDD_Descriptor (const uint32_t inMaxValue) :
 mMaxValue (inMaxValue),
 mBDDbits (0),
 mMask () {
-  PMUInt32 temp = inMaxValue ;
+  uint32_t temp = inMaxValue ;
   while (temp != 0) {
     temp >>= 1 ;
     mBDDbits ++ ;

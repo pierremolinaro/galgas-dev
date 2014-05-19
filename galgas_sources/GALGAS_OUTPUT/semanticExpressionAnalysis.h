@@ -488,7 +488,7 @@ class GALGAS_predefinedTypes : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_predefinedTypes & inOperand) const ;
 
@@ -598,7 +598,7 @@ class GALGAS_analysisContext : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_analysisContext & inOperand) const ;
 
@@ -644,7 +644,7 @@ typedef void (*categoryMethodSignature_semanticExpressionAST_analyzeSemanticExpr
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_analyzeSemanticExpression (const PMSInt32 inClassIndex,
+void enterCategoryMethod_analyzeSemanticExpression (const int32_t inClassIndex,
                                                     categoryMethodSignature_semanticExpressionAST_analyzeSemanticExpression inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -685,7 +685,7 @@ class cMapElement_variableMap : public cMapElement {
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--- START OF USER ZONE 2

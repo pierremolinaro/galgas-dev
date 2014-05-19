@@ -61,7 +61,7 @@ cMapElement * cMapElement_commandLineOptionMap::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_commandLineOptionMap::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_commandLineOptionMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mOptionChar" ":" ;
@@ -528,7 +528,7 @@ void GALGAS_commandLineOptionMap_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_commandLineOptionMap_2E_element::description (C_String & ioString,
-                                                          const PMSInt32 inIndentation) const {
+                                                          const int32_t inIndentation) const {
   ioString << "<struct @commandLineOptionMap.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;

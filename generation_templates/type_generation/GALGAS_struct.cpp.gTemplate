@@ -98,7 +98,7 @@ void GALGAS_%!TYPE_IDENTIFIER%::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_%!TYPE_IDENTIFIER%::description (%?^%C_String & ioString,
-                              %!^%const PMSInt32 inIndentation) const {
+                              %!^%const int32_t inIndentation) const {
   ioString << "<struct @%!TYPE_NAME%:" ;
   if (! isValid ()) {
     ioString << " not built" ;

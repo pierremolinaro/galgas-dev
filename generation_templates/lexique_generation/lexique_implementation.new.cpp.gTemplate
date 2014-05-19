@@ -100,7 +100,7 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-void C_Lexique_%!LEXIQUE_IDENTIFIER%::appendTerminalMessageToSyntaxErrorMessage (const PMSInt16 inTerminalIndex,
+void C_Lexique_%!LEXIQUE_IDENTIFIER%::appendTerminalMessageToSyntaxErrorMessage (const int16_t inTerminalIndex,
                                            C_String & outSyntaxErrorMessage) {
   static const utf32 * syntaxErrorMessageArray [%![[TERMINAL_LIST length] + 1 string]%] = {kEndOfSourceLexicalErrorMessage%
   foreach TERMINAL_LIST do
@@ -128,14 +128,14 @@ void C_Lexique_%!LEXIQUE_IDENTIFIER%::appendTerminalMessageToSyntaxErrorMessage 
     %//             Key words table '%![tokenList_lkey string]%'                            *\n%
     %//                                                                             *\n%
     %//-----------------------------------------------------------------------------*\n%
-    %\nstatic const PMSInt32 ktable_size_%![tokenList_lkey string]% = %![[tokenList_mExplicitTokenListMap count] string]% ;\n\n%
+    %\nstatic const int32_t ktable_size_%![tokenList_lkey string]% = %![[tokenList_mExplicitTokenListMap count] string]% ;\n\n%
     %static const C_unicode_lexique_table_entry ktable_for_%![tokenList_lkey string]% [ktable_size_%![tokenList_lkey string]%] = {\n%
       foreach tokenList_mTokenSortedList
       do %  C_unicode_lexique_table_entry (kUnicodeString_%![mName identifierRepresentation]%, %![mLength string]%, C_Lexique_%!LEXIQUE_IDENTIFIER%::kToken_%![mTerminalName identifierRepresentation]%)%
       between %,\n%
       end foreach
     %\n} ;\n\n%
-    %PMSInt16 C_Lexique_%!LEXIQUE_IDENTIFIER%::search_into_%![tokenList_lkey string]% (const C_String & inSearchedString) {\n%
+    %int16_t C_Lexique_%!LEXIQUE_IDENTIFIER%::search_into_%![tokenList_lkey string]% (const C_String & inSearchedString) {\n%
     %  return searchInList (inSearchedString, ktable_for_%![tokenList_lkey string]%, ktable_size_%![tokenList_lkey string]%) ;\n%
     %}\n\n%
   end foreach
@@ -256,7 +256,7 @@ bool C_Lexique_%!LEXIQUE_IDENTIFIER%::parseLexicalToken (void) {
       }
     }
     while ((mMatchedTemplateDelimiterIndex < 0) && (UNICODE_VALUE (mCurrentChar) != '\0')) {
-      PMSInt32 replacementIndex = 0 ;
+      int32_t replacementIndex = 0 ;
       while (replacementIndex >= 0) {
         replacementIndex = findTemplateDelimiterIndex (kTemplateReplacementArray, %![[[LEXIQUE_COMPONENT_ROOT mTemplateReplacementList] length] string]%) ;
         if (replacementIndex >= 0) {

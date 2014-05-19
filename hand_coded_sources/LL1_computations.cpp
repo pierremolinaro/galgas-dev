@@ -46,7 +46,7 @@ class cAffichagePremiersProduction : public C_bdd_value_traversing {
 
 //--- Methode virtelle appelee pour chaque valeur
   public : virtual void action (const bool tableauDesValeurs [],
-                                const PMUInt32 nombreVariables) ;
+                                const uint32_t nombreVariables) ;
 } ;
   
 //-----------------------------------------------------------------------------*
@@ -60,9 +60,9 @@ mVocabulary (inVocabulary) {
 //-----------------------------------------------------------------------------*
 
 void cAffichagePremiersProduction::action (const bool tableauDesValeurs [],
-                                           const PMUInt32 nombreVariables) {
-  PMSInt32 element = 0 ;
-  for (PMSInt32 i=((PMSInt32) nombreVariables) - 1 ; i>=0 ; i--) {
+                                           const uint32_t nombreVariables) {
+  int32_t element = 0 ;
+  for (int32_t i=((int32_t) nombreVariables) - 1 ; i>=0 ; i--) {
     element = (element << 1) + tableauDesValeurs [i] ;
   }
   mFichierBNF << " " ;
@@ -95,16 +95,16 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
   C_BDD_Set2 t (inFOLLOWsets) ; t.clear () ;
   C_BDD_Set1 premierDeProduction (inFOLLOWsets.getDescriptor1 ()) ;
   C_BDD_Set2 temp (inFOLLOWsets) ;
-  PMSInt16 nombreDeConflits = 0 ;
-  const PMSInt32 nombreNonTerminaux = inVocabulary.getNonTerminalSymbolsCount () ;
-  const PMSInt32 terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
+  int16_t nombreDeConflits = 0 ;
+  const int32_t nombreNonTerminaux = inVocabulary.getNonTerminalSymbolsCount () ;
+  const int32_t terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("<table class=\"result\">") ;
   }
-  for (PMSInt32 i=0 ; i<nombreNonTerminaux ; i++) {
-    const PMSInt32 first = inPureBNFproductions.tableauIndicePremiereProduction (i COMMA_HERE) ;
+  for (int32_t i=0 ; i<nombreNonTerminaux ; i++) {
+    const int32_t first = inPureBNFproductions.tableauIndicePremiereProduction (i COMMA_HERE) ;
       if (first >= 0) { // first<0 means the non terminal symbol is unuseful
-      const PMSInt32 derniere = inPureBNFproductions.tableauIndiceDerniereProduction (i COMMA_HERE) ;
+      const int32_t derniere = inPureBNFproductions.tableauIndiceDerniereProduction (i COMMA_HERE) ;
       if (derniere > first) { // Plusieurs inPureBNFproductions d'un meme non-terminal
       //--- Calculer et afficher les premiers
         if (inHTMLfile != NULL) {
@@ -112,8 +112,8 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
           inVocabulary.printInFile (*inHTMLfile, i + terminalSymbolsCount COMMA_HERE) ;
           inHTMLfile->outputRawData ("</code></td></tr>") ;
         }
-        for (PMSInt32 j=first ; j<=derniere ; j++) {
-          const PMSInt32 numeroProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;
+        for (int32_t j=first ; j<=derniere ; j++) {
+          const int32_t numeroProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;
           if (inHTMLfile != NULL) {
             inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><a href=\"#pure_bnf_") ;
             *inHTMLfile << cStringWithSigned (numeroProduction) ;
@@ -124,16 +124,16 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
           cProduction & p = inPureBNFproductions (numeroProduction COMMA_HERE) ;
           premierDeProduction.clear () ;
           if (p.aDerivation.count () == 0) {
-            temp.initDimension1 (C_BDD::kEqual, (PMUInt32) p.aNumeroNonTerminalGauche) ;
+            temp.initDimension1 (C_BDD::kEqual, (uint32_t) p.aNumeroNonTerminalGauche) ;
             p.aPremierDeProduction = (temp & inFOLLOWsets).projeterSurAxe2 () ;
           }else{
-            const PMUInt32 elementEnTete = (PMUInt32) p.aDerivation (0 COMMA_HERE) ;
+            const uint32_t elementEnTete = (uint32_t) p.aDerivation (0 COMMA_HERE) ;
             t.initDimension1 (C_BDD::kEqual, elementEnTete) ;
-            if (((PMSInt32) elementEnTete) < terminalSymbolsCount) {
+            if (((int32_t) elementEnTete) < terminalSymbolsCount) {
               p.aPremierDeProduction = t.projeterSurAxe1 () ;
             }else{
               p.aPremierDeProduction = (t & inFIRSTsets).projeterSurAxe2 () ;
-              if (vocabulaireSeDerivantEnVide ((PMSInt32) elementEnTete COMMA_HERE)) {
+              if (vocabulaireSeDerivantEnVide ((int32_t) elementEnTete COMMA_HERE)) {
                 p.aPremierDeProduction |= (t & inFOLLOWsets).projeterSurAxe2 () ;
               }
             }
@@ -141,8 +141,8 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
           if (inHTMLfile != NULL) {
             TC_UniqueArray <bool> array ;
             p.aPremierDeProduction.getArray (array) ;
-            const PMSInt32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
-            for (PMSInt32 symbol=0 ; symbol < symbolsCount ; symbol++) {
+            const int32_t symbolsCount = inVocabulary.getAllSymbolsCount () ;
+            for (int32_t symbol=0 ; symbol < symbolsCount ; symbol++) {
               if (array (symbol COMMA_HERE)) {
                 inVocabulary.printInFile (*inHTMLfile, symbol COMMA_HERE) ;
                 *inHTMLfile << " " ;
@@ -152,10 +152,10 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
           }
         }
      //--- Verifier l'absence de conflit
-        for (PMSInt32 pr1=first ; pr1<derniere ; pr1++) {
-          const PMSInt32 numeroProductionJ = inPureBNFproductions.tableauIndirectionProduction (pr1 COMMA_HERE) ;
-          for (PMSInt32 k=pr1+1 ; k<=derniere ; k++) {
-            const PMSInt32 numeroProductionK = inPureBNFproductions.tableauIndirectionProduction (k COMMA_HERE) ;
+        for (int32_t pr1=first ; pr1<derniere ; pr1++) {
+          const int32_t numeroProductionJ = inPureBNFproductions.tableauIndirectionProduction (pr1 COMMA_HERE) ;
+          for (int32_t k=pr1+1 ; k<=derniere ; k++) {
+            const int32_t numeroProductionK = inPureBNFproductions.tableauIndirectionProduction (k COMMA_HERE) ;
             if (! (inPureBNFproductions(numeroProductionJ COMMA_HERE).aPremierDeProduction &
                   inPureBNFproductions(numeroProductionK COMMA_HERE).aPremierDeProduction).isFalse ()) {
               nombreDeConflits ++ ;
@@ -215,7 +215,7 @@ class cEcrireNonTerminal : public C_bdd_value_traversing {
   protected : C_HTML_FileWrite & mFichierBNF ;
   protected : const cVocabulary & mVocabulary ;
   protected : C_String aNomClasseLexique ;
-  protected : PMSInt16 aIndice ;
+  protected : int16_t aIndice ;
 
 //--- Constructeur
   public : cEcrireNonTerminal (C_HTML_FileWrite & inHTMLfile,
@@ -224,7 +224,7 @@ class cEcrireNonTerminal : public C_bdd_value_traversing {
 
 //--- Methode virtuelle appelee pour chaque valeur
   public : virtual void action (const bool tableauDesValeurs [],
-                                const PMUInt32 nombreVariables) ;
+                                const uint32_t nombreVariables) ;
 } ;
   
 //-----------------------------------------------------------------------------*
@@ -242,9 +242,9 @@ aIndice (0) {
 //-----------------------------------------------------------------------------*
 
 void cEcrireNonTerminal::action (const bool tableauDesValeurs [],
-                                 const PMUInt32 nombreVariables) {
-  PMSInt32 element = 0 ;
-  for (PMSInt32 i=((PMSInt32) nombreVariables) - 1 ; i>=0 ; i--) {
+                                 const uint32_t nombreVariables) {
+  int32_t element = 0 ;
+  for (int32_t i=((int32_t) nombreVariables) - 1 ; i>=0 ; i--) {
     element = (element << 1) + tableauDesValeurs [i] ;
   }
   aIndice ++ ;
@@ -261,22 +261,22 @@ void cEcrireNonTerminal::action (const bool tableauDesValeurs [],
 
 static void
 engendrerAiguillageNonTerminaux (const cVocabulary & inVocabulary,
-                                 const PMSInt32 inOriginalGrammarProductionLeftNonTerminalIndex,
-                                 const PMSInt16 nombreDeParametres,
+                                 const int32_t inOriginalGrammarProductionLeftNonTerminalIndex,
+                                 const int16_t nombreDeParametres,
                                  const cPureBNFproductionsList & inPureBNFproductions,
                                  AC_OutputStream & fichierCPP,
                                  const C_String & inAltName) {
-  const PMSInt32 first = inPureBNFproductions.tableauIndicePremiereProduction (inOriginalGrammarProductionLeftNonTerminalIndex COMMA_HERE) ;
+  const int32_t first = inPureBNFproductions.tableauIndicePremiereProduction (inOriginalGrammarProductionLeftNonTerminalIndex COMMA_HERE) ;
   if (first >= 0) { // Au moins une production
-    const PMSInt32 derniere = inPureBNFproductions.tableauIndiceDerniereProduction (inOriginalGrammarProductionLeftNonTerminalIndex COMMA_HERE) ;
+    const int32_t derniere = inPureBNFproductions.tableauIndiceDerniereProduction (inOriginalGrammarProductionLeftNonTerminalIndex COMMA_HERE) ;
     if (first == derniere) { // Une seule production, pas de conflit
-      const PMSInt32 indiceProduction = inPureBNFproductions.tableauIndirectionProduction (first COMMA_HERE) ;
+      const int32_t indiceProduction = inPureBNFproductions.tableauIndirectionProduction (first COMMA_HERE) ;
       inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP) ;
     }else{ // Plusieurs inPureBNFproductions : engendrer l'aiguillage
       fichierCPP << "  switch (inLexique->nextProductionIndex ()) {\n" ;
-      for (PMSInt32 j=first ; j<=derniere ; j++) {
-        fichierCPP << "  case " << cStringWithSigned ((PMSInt32)(j - first + 1)) << " :\n  " ;
-        const PMSInt32 indiceProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;
+      for (int32_t j=first ; j<=derniere ; j++) {
+        fichierCPP << "  case " << cStringWithSigned ((int32_t)(j - first + 1)) << " :\n  " ;
+        const int32_t indiceProduction = inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) ;
         inPureBNFproductions (indiceProduction COMMA_HERE).engendrerAppelProduction (nombreDeParametres, inVocabulary, inAltName, fichierCPP) ;
         fichierCPP << "    break ;\n" ;
       }
@@ -292,13 +292,13 @@ engendrerAiguillageNonTerminaux (const cVocabulary & inVocabulary,
 class C_ProductionNameDescriptor {
   public : C_String mName ;
   public : C_String mFileName ;
-  public : PMUInt32 mLineNumber ;
+  public : uint32_t mLineNumber ;
   
   public : C_ProductionNameDescriptor (void) ;
   
   public : C_ProductionNameDescriptor (const C_String & inName,
                                        const C_String & inFileName,
-                                       const PMUInt32 inLineNumber) ;
+                                       const uint32_t inLineNumber) ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -313,7 +313,7 @@ mLineNumber (0) {
 
 C_ProductionNameDescriptor::C_ProductionNameDescriptor (const C_String & inName,
                                                         const C_String & inFileName,
-                                                        const PMUInt32 inLineNumber) :
+                                                        const uint32_t inLineNumber) :
 mName (inName),
 mFileName (inFileName),
 mLineNumber (inLineNumber) {
@@ -325,24 +325,24 @@ static void
 printProductions (const cPureBNFproductionsList & inPureBNFproductions,
                   const cVocabulary & inVocabulary,
                   const C_String & inLexiqueName,
-                  const PMSInt32 inNonterminalIndex,
-                  PMSInt16 & ioProductionIndex,
+                  const int32_t inNonterminalIndex,
+                  int16_t & ioProductionIndex,
                   bool & ioFirst,
-                  TC_UniqueArray <PMSInt16> & ioProductionRulesIndex,
+                  TC_UniqueArray <int16_t> & ioProductionRulesIndex,
                   TC_UniqueArray <C_String> & ioProductionRulesTitle,
                   TC_UniqueArray <C_ProductionNameDescriptor> & ioProductionRuleDescription,
-                  TC_UniqueArray <PMSInt16> & ioFirstProductionRuleIndex,
+                  TC_UniqueArray <int16_t> & ioFirstProductionRuleIndex,
                   AC_OutputStream & inCppFile) {
-  ioFirstProductionRuleIndex.addObject ((PMSInt16) ioProductionRulesIndex.count ()) ;
-  const PMSInt32 firstProduction = inPureBNFproductions.tableauIndicePremiereProduction (inNonterminalIndex COMMA_HERE) ;
+  ioFirstProductionRuleIndex.addObject ((int16_t) ioProductionRulesIndex.count ()) ;
+  const int32_t firstProduction = inPureBNFproductions.tableauIndicePremiereProduction (inNonterminalIndex COMMA_HERE) ;
   if (firstProduction >= 0) {
-    const PMSInt32 lastProduction = inPureBNFproductions.tableauIndiceDerniereProduction (inNonterminalIndex COMMA_HERE) ;
-    for (PMSInt32 j=firstProduction ; j<=lastProduction ; j++) {
+    const int32_t lastProduction = inPureBNFproductions.tableauIndiceDerniereProduction (inNonterminalIndex COMMA_HERE) ;
+    for (int32_t j=firstProduction ; j<=lastProduction ; j++) {
       ioProductionRulesIndex.addObject (ioProductionIndex) ;
       cProduction & p = inPureBNFproductions (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
       C_String title ;
       inVocabulary.printInFile (title, p.aNumeroNonTerminalGauche COMMA_HERE) ;
-      const C_ProductionNameDescriptor description (title, p.mSourceFileName, (PMUInt32) ioProductionIndex) ;
+      const C_ProductionNameDescriptor description (title, p.mSourceFileName, (uint32_t) ioProductionIndex) ;
       ioProductionRuleDescription.addObject (description) ;
       title << ", in file '" 
             << p.mSourceFileName
@@ -354,8 +354,8 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
                 << title 
                 << "\n" ;
       ioProductionRulesTitle.addObjectUsingSwap (title) ;
-      const PMSInt32 derivationLength = p.aDerivation.count () ;
-      for (PMSInt32 item=0 ; item<=derivationLength ; item++) {
+      const int32_t derivationLength = p.aDerivation.count () ;
+      for (int32_t item=0 ; item<=derivationLength ; item++) {
         if (ioFirst) {
           inCppFile << "  " ;
           ioFirst = false ;
@@ -363,7 +363,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
           inCppFile << ", " ;
         }
         if (item < derivationLength) {
-          const PMSInt32 v = p.aDerivation (item COMMA_HERE) ;
+          const int32_t v = p.aDerivation (item COMMA_HERE) ;
           if (v < inVocabulary.getTerminalSymbolsCount ()) {
             inCppFile << "TERMINAL ("
                     << "C_Lexique_" << inLexiqueName.identifierRepresentation ()
@@ -374,7 +374,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
                     << "$\n" ;
           }else{
             inCppFile << "NONTERMINAL ("
-                      << cStringWithSigned ((PMSInt32) (v - inVocabulary.getTerminalSymbolsCount ()))
+                      << cStringWithSigned ((int32_t) (v - inVocabulary.getTerminalSymbolsCount ()))
                       << ") // <"
                       << inVocabulary.getSymbol (v COMMA_HERE) 
                       << ">\n" ;        
@@ -383,7 +383,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
           inCppFile << "END_PRODUCTION\n" ;
         }
       }
-      ioProductionIndex = (PMSInt16) (ioProductionIndex + derivationLength + 1) ;
+      ioProductionIndex = (int16_t) (ioProductionIndex + derivationLength + 1) ;
     }
   }
 }
@@ -394,9 +394,9 @@ static void
 printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
                     const cVocabulary & inVocabulary,
                     const C_String & inLexiqueName,
-                    const PMSInt32 inNonterminalIndex,
-                    PMSInt16 & ioDecisionTableIndex,
-                    TC_UniqueArray <PMSInt16> & ioProductionDecisionTableIndex,
+                    const int32_t inNonterminalIndex,
+                    int16_t & ioDecisionTableIndex,
+                    TC_UniqueArray <int16_t> & ioProductionDecisionTableIndex,
                     AC_OutputStream & inCppFile) {
   ioProductionDecisionTableIndex.addObject (ioDecisionTableIndex) ;
   inCppFile << "// At index "
@@ -404,21 +404,21 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
             << " : <"
             << inVocabulary.getSymbol (inNonterminalIndex + inVocabulary.getTerminalSymbolsCount () COMMA_HERE)
             << ">" ;
-  const PMSInt32 firstProduction = inPureBNFproductions.tableauIndicePremiereProduction (inNonterminalIndex COMMA_HERE) ;
+  const int32_t firstProduction = inPureBNFproductions.tableauIndicePremiereProduction (inNonterminalIndex COMMA_HERE) ;
   if (firstProduction >= 0) { // At least one production
-    const PMSInt32 lastProduction = inPureBNFproductions.tableauIndiceDerniereProduction (inNonterminalIndex COMMA_HERE) ;
+    const int32_t lastProduction = inPureBNFproductions.tableauIndiceDerniereProduction (inNonterminalIndex COMMA_HERE) ;
     if (firstProduction == lastProduction) { // Only one production, no choice
       inCppFile << " only one production, no choice\n"
                    "  -1,\n" ;
       ioDecisionTableIndex ++ ;
     }else{ // Several productions : generate decision table
       inCppFile << "\n" ;
-      for (PMSInt32 j=firstProduction ; j<=lastProduction ; j++) {
+      for (int32_t j=firstProduction ; j<=lastProduction ; j++) {
         cProduction & p = inPureBNFproductions (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
         TC_UniqueArray <bool> array ;
         p.aPremierDeProduction.getArray (array) ;
-        const PMSInt32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
-        for (PMSInt32 symbol=0 ; symbol < symbolsCount ; symbol++) {
+        const int32_t symbolsCount = inVocabulary.getAllSymbolsCount () ;
+        for (int32_t symbol=0 ; symbol < symbolsCount ; symbol++) {
           if (array (symbol COMMA_HERE)) {
             inCppFile << "C_Lexique_" << inLexiqueName.identifierRepresentation ()
                       << "::kToken_"
@@ -427,9 +427,9 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
           }
         }
         inCppFile << "-1, // Choice "
-                  << cStringWithSigned ((PMSInt32)(j - firstProduction + 1))
+                  << cStringWithSigned ((int32_t)(j - firstProduction + 1))
                   << "\n" ;
-        ioDecisionTableIndex = (PMSInt16) (ioDecisionTableIndex + (PMSInt16) p.aPremierDeProduction.getValuesCount ()) ;
+        ioDecisionTableIndex = (int16_t) (ioDecisionTableIndex + (int16_t) p.aPremierDeProduction.getValuesCount ()) ;
         ioDecisionTableIndex ++ ;
       }
       inCppFile << "  -1,\n" ;
@@ -445,7 +445,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
 static void
 generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
                                const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
-                               const PMUInt32 inOriginalGrammarStartSymbol,
+                               const uint32_t inOriginalGrammarStartSymbol,
                                const C_String & inTargetFileName,
                                const C_String & inOutputDirectoryForCppFiles,
                                const C_String & inLexiqueName,
@@ -472,9 +472,9 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
 
 //--- Generate LL(1) tables
   C_String generatedZone3 ; generatedZone3.setCapacity (2000000) ;
-  const PMSInt32 productionsCount = inPureBNFproductions.length () ;
-  TC_UniqueArray <PMSInt16> productionRulesIndex (500 COMMA_HERE);
-  TC_UniqueArray <PMSInt16> firstProductionRuleIndex (500 COMMA_HERE) ;
+  const int32_t productionsCount = inPureBNFproductions.length () ;
+  TC_UniqueArray <int16_t> productionRulesIndex (500 COMMA_HERE);
+  TC_UniqueArray <int16_t> firstProductionRuleIndex (500 COMMA_HERE) ;
   TC_UniqueArray <C_ProductionNameDescriptor> productionRuleDescription ;
   TC_UniqueArray <C_String> productionRulesTitle (500 COMMA_HERE) ;
 
@@ -482,20 +482,20 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
   generatedZone3 << "#define TERMINAL(t)     ((t)+1)\n"
                     "#define NONTERMINAL(nt) ((-nt)-1)\n"
                     "#define END_PRODUCTION  (0)\n\n"
-                    "static const PMSInt16 gProductions [] = {\n" ;
+                    "static const int16_t gProductions [] = {\n" ;
   cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, kEnumeration_up) ;
-  PMSInt16 productionIndex = 0 ;
+  int16_t productionIndex = 0 ;
   bool first = true ;
   while (nonTerminal.hasCurrentObject ()) {
     printProductions (inPureBNFproductions, inVocabulary,  inLexiqueName,
-                      (PMSInt32) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), productionIndex, first,
+                      (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), productionIndex, first,
                       productionRulesIndex, productionRulesTitle,
                       productionRuleDescription,
                       firstProductionRuleIndex, generatedZone3) ;
     nonTerminal.gotoNextObject () ;
   }
   generatedZone3 << "//---- Added productions from 'select' and 'repeat' instructions\n" ;  
-  for (PMSInt32 i=inVocabulary.getTerminalSymbolsCount () + (PMSInt32) inNonTerminalSymbolSortedListForGrammarAnalysis.count () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
+  for (int32_t i=inVocabulary.getTerminalSymbolsCount () + (int32_t) inNonTerminalSymbolSortedListForGrammarAnalysis.count () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
     printProductions (inPureBNFproductions, inVocabulary,  inLexiqueName,
                       i - inVocabulary.getTerminalSymbolsCount (),
                       productionIndex, first,
@@ -510,7 +510,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
   generatedZone3 << "static const cProductionNameDescriptor gProductionNames ["
                  << cStringWithSigned (productionRuleDescription.count ())
                  << "] = {\n" ;
-  for (PMSInt32 p=0 ; p<productionRuleDescription.count () ; p++) {
+  for (int32_t p=0 ; p<productionRuleDescription.count () ; p++) {
     generatedZone3 << " {\"" << productionRuleDescription (p COMMA_HERE).mName
                    << "\", \""
                    << productionRuleDescription (p COMMA_HERE).mFileName
@@ -524,10 +524,10 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
 
 //--- Generate productions indexes table
   generatedZone3.appendCppTitleComment ("L L ( 1 )    P R O D U C T I O N    I N D E X E S") ;
-  generatedZone3 << "static const PMSInt16 gProductionIndexes ["
+  generatedZone3 << "static const int16_t gProductionIndexes ["
                  << cStringWithSigned (productionRulesIndex.count ())
                  << "] = {\n" ;
-  for (PMSInt32 p=0 ; p<productionRulesIndex.count () ; p++) {
+  for (int32_t p=0 ; p<productionRulesIndex.count () ; p++) {
     generatedZone3 << cStringWithSigned (productionRulesIndex (p COMMA_HERE))
             << ((p == (productionsCount-1)) ? "" : ",")
             << " // index " << cStringWithSigned (p)
@@ -539,10 +539,10 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
 
 //--- Generate decision tables indexes
   generatedZone3.appendCppTitleComment ("L L ( 1 )    F I R S T    P R O D U C T I O N    I N D E X E S") ;
-  generatedZone3 << "static const PMSInt16 gFirstProductionIndexes ["
-          << cStringWithSigned ((PMSInt32)(firstProductionRuleIndex.count () + 1))
+  generatedZone3 << "static const int16_t gFirstProductionIndexes ["
+          << cStringWithSigned ((int32_t)(firstProductionRuleIndex.count () + 1))
           << "] = {\n" ;
-  { for (PMSInt32 i=0 ; i<firstProductionRuleIndex.count () ; i++) {
+  { for (int32_t i=0 ; i<firstProductionRuleIndex.count () ; i++) {
       generatedZone3 << cStringWithSigned (firstProductionRuleIndex (i COMMA_HERE))
               << ", // at " << cStringWithSigned (i) <<  " : <"
               << inVocabulary.getSymbol ((i + inVocabulary.getTerminalSymbolsCount ()) COMMA_HERE)
@@ -552,19 +552,19 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
   generatedZone3 << "0} ;\n\n" ;
   
 //--- Generate decision tables  
-  TC_UniqueArray <PMSInt16> productionDecisionIndex (500 COMMA_HERE) ;
+  TC_UniqueArray <int16_t> productionDecisionIndex (500 COMMA_HERE) ;
   generatedZone3.appendCppTitleComment ("L L ( 1 )    D E C I S I O N    T A B L E S") ;
-  generatedZone3 << "static const PMSInt16 gDecision [] = {\n" ;
-  PMSInt16 decisionTableIndex = 0 ;
+  generatedZone3 << "static const int16_t gDecision [] = {\n" ;
+  int16_t decisionTableIndex = 0 ;
   nonTerminal.rewind () ;
   while (nonTerminal.hasCurrentObject ()) {
     printDecisionTable (inPureBNFproductions, inVocabulary, inLexiqueName,
-                        (PMSInt32) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), decisionTableIndex,
+                        (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), decisionTableIndex,
                         productionDecisionIndex, generatedZone3) ;
     nonTerminal.gotoNextObject () ;
   }
   generatedZone3 << "//---- Added non terminal symbols from 'select' and 'repeat' instructions\n" ;  
-  { for (PMSInt32 i=inVocabulary.getTerminalSymbolsCount () + (PMSInt32) inNonTerminalSymbolSortedListForGrammarAnalysis.count () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
+  { for (int32_t i=inVocabulary.getTerminalSymbolsCount () + (int32_t) inNonTerminalSymbolSortedListForGrammarAnalysis.count () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
       printDecisionTable (inPureBNFproductions, inVocabulary, inLexiqueName,
                           i - inVocabulary.getTerminalSymbolsCount (), decisionTableIndex,
                           productionDecisionIndex, generatedZone3) ;
@@ -574,10 +574,10 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
 
 //--- Generate decision tables indexes
   generatedZone3.appendCppTitleComment ("L L ( 1 )    D E C I S I O N    T A B L E S    I N D E X E S") ;
-  generatedZone3 << "static const PMSInt16 gDecisionIndexes ["
-          << cStringWithSigned ((PMSInt32)(productionDecisionIndex.count () + 1))
+  generatedZone3 << "static const int16_t gDecisionIndexes ["
+          << cStringWithSigned ((int32_t)(productionDecisionIndex.count () + 1))
           << "] = {\n" ;
-  for (PMSInt32 i=0 ; i<productionDecisionIndex.count () ; i++) {
+  for (int32_t i=0 ; i<productionDecisionIndex.count () ; i++) {
   generatedZone3 << cStringWithSigned (productionDecisionIndex (i COMMA_HERE))
                 << ", // at " << cStringWithSigned (i) << " : <"
                 << inVocabulary.getSymbol ((i + inVocabulary.getTerminalSymbolsCount ()) COMMA_HERE)
@@ -589,13 +589,13 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
   nonTerminal.rewind () ;
   while (nonTerminal.hasCurrentObject ()) {
     generatedZone3.appendCppTitleComment (C_String ("'") + nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue () + "' non terminal implementation") ;
-    const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction ((PMSInt32) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () COMMA_HERE) >= 0 ;
+    const bool existeProduction = inPureBNFproductions.tableauIndicePremiereProduction ((int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () COMMA_HERE) >= 0 ;
   //--- Parse label
       generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                  << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                  << "_parse (C_Lexique_" << inLexiqueName.identifierRepresentation () << " * " << (existeProduction ? "inLexique" : "")
                  << ") {\n" ; 
-    engendrerAiguillageNonTerminaux (inVocabulary, (PMSInt32) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), 0,
+    engendrerAiguillageNonTerminaux (inVocabulary, (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), 0,
                                      inPureBNFproductions, generatedZone3,
                                      "parse") ;
     generatedZone3 << "}\n\n" ;
@@ -605,7 +605,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
                    << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                    << "_indexing (C_Lexique_" << inLexiqueName.identifierRepresentation () << " * " << (existeProduction ? "inLexique" : "")
                    << ") {\n" ; 
-      engendrerAiguillageNonTerminaux (inVocabulary, (PMSInt32) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), 0,
+      engendrerAiguillageNonTerminaux (inVocabulary, (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), 0,
                                        inPureBNFproductions, generatedZone3,
                                        "indexing") ;
       generatedZone3 << "}\n\n" ;
@@ -617,7 +617,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
                      << "_" << currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                      << " (" ;
       cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), kEnumeration_up) ;
-      PMSInt16 numeroParametre = 1 ;
+      int16_t numeroParametre = 1 ;
       while (parametre.hasCurrentObject ()) {
         switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
@@ -648,7 +648,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
       }
       generatedZone3 << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * " << (existeProduction ? "inLexique" : "")
                      << ") {\n" ; 
-      engendrerAiguillageNonTerminaux (inVocabulary, (PMSInt32) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), numeroParametre,
+      engendrerAiguillageNonTerminaux (inVocabulary, (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue (), numeroParametre,
                                        inPureBNFproductions, generatedZone3,
                                        currentAltForNonTerminal.current_lkey (HERE).mAttribute_string.stringValue ()) ;
       generatedZone3 << "}\n\n" ;
@@ -687,7 +687,7 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
                           ",\n                                "
                           "GALGAS_lstring inFilePath" ;
         cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), kEnumeration_up) ;
-        PMSInt16 numeroParametre = 1 ;
+        int16_t numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           generatedZone3 << ",\n                                " ;
           switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
@@ -847,10 +847,10 @@ generate_LL1_grammar_Cpp_file (C_Compiler * inCompiler,
   }
 
 //--- Implement non terminal from 'select' and 'repeat' instructions
-  for (PMSInt32 nt=inVocabulary.getTerminalSymbolsCount () ; nt<inVocabulary.getAllSymbolsCount () ; nt++) {
+  for (int32_t nt=inVocabulary.getTerminalSymbolsCount () ; nt<inVocabulary.getAllSymbolsCount () ; nt++) {
     if (inVocabulary.needToGenerateChoice (nt COMMA_HERE)) {
       generatedZone3.appendCppTitleComment (C_String ("'") + inVocabulary.getSymbol (nt COMMA_HERE) + "' added non terminal implementation") ;
-      generatedZone3 << "PMSInt32 cGrammar_" << inTargetFileName.identifierRepresentation ()
+      generatedZone3 << "int32_t cGrammar_" << inTargetFileName.identifierRepresentation ()
               << "::" << inVocabulary.getSymbol (nt COMMA_HERE)
               << " (C_Lexique_" << inLexiqueName.identifierRepresentation ()
               << " * inLexique) {\n"
@@ -885,7 +885,7 @@ LL1_computations (C_Compiler * inCompiler,
                   const C_BDD_Set2 & inFIRSTsets,
                   const C_BDD_Set2 & inFOLLOWsets,
                   const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
-                  const PMUInt32 inOriginalGrammarStartSymbol,
+                  const uint32_t inOriginalGrammarStartSymbol,
                   const C_String & inTargetFileName,
                   const C_String & inOutputDirectoryForCppFiles,
                   const C_String & inLexiqueName,

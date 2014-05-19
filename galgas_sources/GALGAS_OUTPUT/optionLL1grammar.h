@@ -63,11 +63,11 @@ class cGrammar_optionLL_31_grammar : public cParser_optionSyntax {
   public : static void performIndexing (C_Compiler * inCompiler,
                                         const C_String & inSourceFilePath) ;
 
-  public : virtual PMSInt32 select_optionSyntax_0 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_optionSyntax_0 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_optionSyntax_1 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_optionSyntax_1 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_optionSyntax_2 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_optionSyntax_2 (C_Lexique_galgas_5F_scanner *) ;
 } ;
 
 //-----------------------------------------------------------------------------*

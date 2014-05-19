@@ -47,7 +47,7 @@
 #define NONTERMINAL(nt) ((-nt)-1)
 #define END_PRODUCTION  (0)
 
-static const PMSInt16 gProductions [] = {
+static const int16_t gProductions [] = {
 // At index 0 : <option_component_start_symbol>, in file 'optionSyntax.ggs', line 25
   TERMINAL (C_Lexique_galgas_5F_scanner::kToken_option) // $option$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
@@ -117,7 +117,7 @@ static const cProductionNameDescriptor gProductionNames [9] = {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static const PMSInt16 gProductionIndexes [9] = {
+static const int16_t gProductionIndexes [9] = {
 0, // index 0 : <option_component_start_symbol>, in file 'optionSyntax.ggs', line 25
 8, // index 1 : <option>, in file 'optionSyntax.ggs', line 49
 19, // index 2 : <select_optionSyntax_0>, in file 'optionSyntax.ggs', line 34
@@ -135,7 +135,7 @@ static const PMSInt16 gProductionIndexes [9] = {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static const PMSInt16 gFirstProductionIndexes [7] = {
+static const int16_t gFirstProductionIndexes [7] = {
 0, // at 0 : <option_component_start_symbol>
 1, // at 1 : <option>
 2, // at 2 : <select_optionSyntax_0>
@@ -150,7 +150,7 @@ static const PMSInt16 gFirstProductionIndexes [7] = {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static const PMSInt16 gDecision [] = {
+static const int16_t gDecision [] = {
 // At index 0 : <option_component_start_symbol> only one production, no choice
   -1,
 // At index 1 : <option> only one production, no choice
@@ -178,7 +178,7 @@ C_Lexique_galgas_5F_scanner::kToken_unsigned_5F_literal_5F_integer, -1, // Choic
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static const PMSInt16 gDecisionIndexes [7] = {
+static const int16_t gDecisionIndexes [7] = {
 0, // at 0 : <option_component_start_symbol>
 1, // at 1 : <option>
 2, // at 2 : <select_optionSyntax_0>
@@ -312,7 +312,7 @@ void cGrammar_optionLL_31_grammar::nt_option_ (GALGAS_commandLineOptionListAST &
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_optionLL_31_grammar::select_optionSyntax_0 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_optionLL_31_grammar::select_optionSyntax_0 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -322,7 +322,7 @@ PMSInt32 cGrammar_optionLL_31_grammar::select_optionSyntax_0 (C_Lexique_galgas_5
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_optionLL_31_grammar::select_optionSyntax_1 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_optionLL_31_grammar::select_optionSyntax_1 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -332,7 +332,7 @@ PMSInt32 cGrammar_optionLL_31_grammar::select_optionSyntax_1 (C_Lexique_galgas_5
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_optionLL_31_grammar::select_optionSyntax_2 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_optionLL_31_grammar::select_optionSyntax_2 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 

@@ -75,7 +75,7 @@ class capSortedListElement {
   public : capSortedListElement copy (void) ;
 
 //--- Description
- public : void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : void description (C_String & ioString, const int32_t inIndentation) const ;
 
 //--- Virtual method that comparing element for sorting
   public : typeComparisonResult compareForSorting (const capSortedListElement & inOperand) ;

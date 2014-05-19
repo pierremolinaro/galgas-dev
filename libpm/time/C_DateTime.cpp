@@ -107,8 +107,8 @@ const char * C_DateTime::getDayName (void) const {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 C_DateTime::compare (const C_DateTime & inDate) const {
-  PMSInt32 result = getYearCount () - inDate.getYearCount () ;
+int32_t C_DateTime::compare (const C_DateTime & inDate) const {
+  int32_t result = getYearCount () - inDate.getYearCount () ;
   if (result == 0) {
     result = getMonthCount () - inDate.getMonthCount () ;
   }
@@ -167,7 +167,7 @@ bool C_DateTime::operator <= (const C_DateTime & inDate) const {
 
 AC_OutputStream & operator << (AC_OutputStream & inStream,
                                 const C_DateTime & inDate) {
-  const PMSInt32 dayOfMonth = inDate.getDayOfMonth () ;
+  const int32_t dayOfMonth = inDate.getDayOfMonth () ;
   inStream << inDate.getMonthName ()
            << " "
            << cStringWithSigned (dayOfMonth) ;

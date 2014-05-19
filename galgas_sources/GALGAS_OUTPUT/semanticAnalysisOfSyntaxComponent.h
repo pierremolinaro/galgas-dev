@@ -852,7 +852,7 @@ typedef void (*categoryMethodSignature_syntaxInstructionAST_analyzeSyntaxInstruc
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_analyzeSyntaxInstruction (const PMSInt32 inClassIndex,
+void enterCategoryMethod_analyzeSyntaxInstruction (const int32_t inClassIndex,
                                                    categoryMethodSignature_syntaxInstructionAST_analyzeSyntaxInstruction inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -922,7 +922,7 @@ class GALGAS_nonterminalLabelMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_nonterminalLabelMap_2E_element & inOperand) const ;
 
@@ -997,7 +997,7 @@ class GALGAS_nonterminalMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_nonterminalMap_2E_element & inOperand) const ;
 
@@ -1077,7 +1077,7 @@ class GALGAS_ruleLabelImplementationList_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_ruleLabelImplementationList_2E_element & inOperand) const ;
 
@@ -1157,7 +1157,7 @@ class GALGAS_ruleDeclarationList_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_ruleDeclarationList_2E_element & inOperand) const ;
 
@@ -1213,7 +1213,7 @@ class cMapElement_nonterminalLabelMap : public cMapElement {
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -1241,7 +1241,7 @@ class cMapElement_nonterminalMap : public cMapElement {
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -1278,7 +1278,7 @@ class cPtr_syntaxDeclarationForGeneration : public cPtr_semanticDeclarationForGe
   public : VIRTUAL_IN_DEBUG GALGAS_bool reader_mHasIndexing (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 

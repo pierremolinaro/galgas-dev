@@ -39,7 +39,7 @@
 class cSortedListNode {
   public : cSortedListNode * mInfPtr ;
   public : cSortedListNode * mSupPtr ;
-  public : PMSInt32 mBalance ;
+  public : int32_t mBalance ;
   public : cSortedListNode * mNextPtr ;
   public : cSortedListNode * mPreviousPtr ;
   public : capSortedListElement mAttributes ;
@@ -112,7 +112,7 @@ class cSharedSortedListRoot : public C_SharedObject {
   private : cSortedListNode * mRoot ; // For AVL tree
   private : cSortedListNode * mFirst ;
   private : cSortedListNode * mLast ;
-  private : PMUInt32 mCount ;
+  private : uint32_t mCount ;
 
 //--------------------------------- Native constructor
   protected : cSharedSortedListRoot (LOCATION_ARGS) ;
@@ -125,11 +125,11 @@ class cSharedSortedListRoot : public C_SharedObject {
   private : cSharedSortedListRoot & operator = (const cSharedSortedListRoot &) ;
 
 //--------------------------------- Accessor
-  protected : inline PMUInt32 count (void) const { return mCount ; }
+  protected : inline uint32_t count (void) const { return mCount ; }
 
 //--------------------------------- Implementation of reader 'description'
   protected : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
 //--- Enumeration handling
   protected : virtual void populateEnumerationArray (capCollectionElementArray & inEnumerationArray,
@@ -200,7 +200,7 @@ cSharedSortedListRoot::~ cSharedSortedListRoot (void) {
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   static void populateCheckArray (const cSortedListNode * inNode,
-                                  PMUInt32 & ioIndex,
+                                  uint32_t & ioIndex,
                                   const cSortedListNode * * ioArray) {
     if (NULL != inNode) {
       macroValidSharedObject (inNode, const cSortedListNode) ;
@@ -217,13 +217,13 @@ cSharedSortedListRoot::~ cSharedSortedListRoot (void) {
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   static void checkSortedList (const cSortedListNode * inRoot,
-                               const PMUInt32 inCount,
+                               const uint32_t inCount,
                                const cSortedListNode * inFirst,
                                const cSortedListNode * inLast
                                COMMA_LOCATION_ARGS) {
     const cSortedListNode * * array = NULL ;
     macroMyNewPODArray (array, const cSortedListNode *, inCount) ; 
-    PMUInt32 idx = 0 ;
+    uint32_t idx = 0 ;
     // printf ("-----\n") ;
     populateCheckArray (inRoot, idx, array) ;
     MF_AssertThere (idx == inCount, "a: idx (%lld) != inCount (%lld)", idx, inCount) ;
@@ -231,7 +231,7 @@ cSharedSortedListRoot::~ cSharedSortedListRoot (void) {
     const cSortedListNode * p = inFirst ;
     idx = 0 ;
     while (p != NULL) {
-      MF_AssertThere (p == array [idx], "b: p (%p) != array [idx] (%p)", (PMSInt64) p, (PMSInt64) array [idx]) ;
+      MF_AssertThere (p == array [idx], "b: p (%p) != array [idx] (%p)", (int64_t) p, (int64_t) array [idx]) ;
       idx ++ ;
       p = p->mNextPtr ;
     }
@@ -241,7 +241,7 @@ cSharedSortedListRoot::~ cSharedSortedListRoot (void) {
     idx = inCount ;
     while (p != NULL) {
       idx -- ;
-      MF_AssertThere (p == array [idx], "d: p (%p) != array [idx] (%p)", (PMSInt64) p, (PMSInt64) array [idx]) ;
+      MF_AssertThere (p == array [idx], "d: p (%p) != array [idx] (%p)", (int64_t) p, (int64_t) array [idx]) ;
       p = p->mPreviousPtr ;
     }
     MF_AssertThere (idx == 0, "idx (%lld) != 0", idx, 0) ;
@@ -304,9 +304,9 @@ void cSharedSortedListRoot::copyFrom (const cSharedSortedListRoot * inList) {
     macroValidSharedObject (inList, const cSharedSortedListRoot) ;
     mCount = inList->mCount ;
     macroMyNew (mRoot, cSortedListNode (inList->mRoot)) ;
-    MF_Assert (mFirst == NULL, "mFirst (%p) != NULL", (PMSInt64) mFirst, 0) ;
+    MF_Assert (mFirst == NULL, "mFirst (%p) != NULL", (int64_t) mFirst, 0) ;
     buildDirectLinksOnCopy (mRoot, mFirst) ;
-    MF_Assert (mLast == NULL, "mLast (%p) != NULL", (PMSInt64) mLast, 0) ;
+    MF_Assert (mLast == NULL, "mLast (%p) != NULL", (int64_t) mLast, 0) ;
     buildReverseLinksOnCopy (mRoot, mLast) ;
   }
   #ifndef DO_NOT_GENERATE_CHECKINGS
@@ -466,11 +466,11 @@ void cSharedSortedListRoot::addEntry (cSortedListNode * & ioRootPtr,
 //-----------------------------------------------------------------------------*
 
 /* static void imprimerArbre (cSortedListNode * inRoot,
-                           const PMUInt32 inElementSize) {
+                           const uint32_t inElementSize) {
   if (inRoot != NULL) {
     imprimerArbre (inRoot->mInfPtr, inElementSize) ;
     C_String s ;
-    for (PMUInt32 i=0 ; i<inElementSize ; i++) {
+    for (uint32_t i=0 ; i<inElementSize ; i++) {
       inRoot->mAttributes [i]->description (s, 0) ;
     }
     printf ("%s\n", s.cString (HERE)) ;
@@ -777,13 +777,13 @@ void AC_GALGAS_sortedlist::createNewEmptySortedList (LOCATION_ARGS) {
 //-----------------------------------------------------------------------------*
 
 void cSharedSortedListRoot::description (C_String & ioString,
-                                         const PMSInt32 inIndentation) const {
+                                         const int32_t inIndentation) const {
   ioString << " ("
            << cStringWithUnsigned (mCount)
            << " object" << ((mCount > 1) ? "s" : "")
            << "): " ;
   const cSortedListNode * p = mFirst ;
-  PMUInt32 idx = 0 ;
+  uint32_t idx = 0 ;
   while (p != NULL) {
     ioString << "\n" ;
     ioString.writeStringMultiple ("| ", inIndentation) ;
@@ -798,7 +798,7 @@ void cSharedSortedListRoot::description (C_String & ioString,
 //-----------------------------------------------------------------------------*
 
 void AC_GALGAS_sortedlist::description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const {
+                                     const int32_t inIndentation) const {
   ioString << "<@"<< staticTypeDescriptor ()->mGalgasTypeName ;
   if (NULL == mSharedRoot) {
     ioString << " not built" ;
@@ -826,8 +826,8 @@ GALGAS_uint AC_GALGAS_sortedlist::reader_length (UNUSED_LOCATION_ARGS) const {
 
 //-----------------------------------------------------------------------------*
 
-PMUInt32 AC_GALGAS_sortedlist::count () const {
-  PMUInt32 result = 0 ;
+uint32_t AC_GALGAS_sortedlist::count () const {
+  uint32_t result = 0 ;
   if (isValid ()) {
     result = mSharedRoot->count () ;
   }

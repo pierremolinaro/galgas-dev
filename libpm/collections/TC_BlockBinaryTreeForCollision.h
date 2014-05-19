@@ -47,7 +47,7 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 class TC_BlockBinaryTreeForCollision {
 //--- Constructor and destructor
   public : TC_BlockBinaryTreeForCollision (void) ;
@@ -58,10 +58,10 @@ class TC_BlockBinaryTreeForCollision {
                                            bool & outInsertionPerformed) ;
 
 //--- Get marked nodes count
-  public : PMSInt32 getMarkedNodesCount (void) const ;
+  public : int32_t getMarkedNodesCount (void) const ;
 
 //--- Sweep unmarked objects
-  public : PMUInt32 sweepUnmarkedObjects (void) ;
+  public : uint32_t sweepUnmarkedObjects (void) ;
 
 //--- No copy
   private : TC_BlockBinaryTreeForCollision (const TC_BlockBinaryTreeForCollision <INFO, BLOCK_SIZE> &) ;
@@ -80,7 +80,7 @@ class TC_BlockBinaryTreeForCollision {
       delete mPtrToSup ;
       delete mPtrToInf ;
     }
-    public : PMSInt32 compare (const TC_element & inElement) const {
+    public : int32_t compare (const TC_element & inElement) const {
       return mInfo.compare (inElement.mInfo) ;
     }
     public : void * operator new (const size_t inByteSize) ;
@@ -95,11 +95,11 @@ class TC_BlockBinaryTreeForCollision {
 //--- Class of allocation info
   protected : class cAllocInfo {
     public : char * * mAllocatedBlockList ;
-    public : PMSInt32 mAllocatedBlockListSize ;
-    public : PMSInt32 mAllocatedBlockCount ;
+    public : int32_t mAllocatedBlockListSize ;
+    public : int32_t mAllocatedBlockCount ;
     public : TC_element * mFreeList ;
-    public : PMSInt32 mAllocatedObjectsCount ;
-    public : PMSInt32 mCreatedObjectsCount ;
+    public : int32_t mAllocatedObjectsCount ;
+    public : int32_t mCreatedObjectsCount ;
     public : cAllocInfo (void) {
       mAllocatedBlockList = (char * *)  NULL ;
       mFreeList = (TC_element *) NULL ;
@@ -111,16 +111,16 @@ class TC_BlockBinaryTreeForCollision {
   } ;
 
 //--- Get node size (in bytes)
-  public : static PMUInt32 getNodeSize (void) { return sizeof (TC_element) ; }
+  public : static uint32_t getNodeSize (void) { return sizeof (TC_element) ; }
 
 //--- Allocation info (static variable)
   protected : static cAllocInfo smAllocInfo ;
 
 //--- Get created element count
-  public : static PMSInt32 getCreatedObjectsCount (void) { return smAllocInfo.mCreatedObjectsCount ; }
+  public : static int32_t getCreatedObjectsCount (void) { return smAllocInfo.mCreatedObjectsCount ; }
 
 //--- Get currently used element count
-  public : static PMSInt32 getCurrentObjectsCount (void) { return smAllocInfo.mAllocatedObjectsCount ; }
+  public : static int32_t getCurrentObjectsCount (void) { return smAllocInfo.mAllocatedObjectsCount ; }
 
 //--- Unmarked all objects
   public : void unmarkAllObjects (void) ;
@@ -130,7 +130,7 @@ class TC_BlockBinaryTreeForCollision {
 
 //--- Tranfert object in a new map array
   public : void transfertElementsInNewMapArray (TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE> * inNewMapArray,
-                                                const PMUInt32 inNewSize) ;
+                                                const uint32_t inNewSize) ;
 
 //--- Internal methods
   private : static INFO * recursiveSearchOrInsert (TC_element * & ioRootPointer,
@@ -138,13 +138,13 @@ class TC_BlockBinaryTreeForCollision {
                                             bool & outInsertionPerformed) ;
   private : static void recursiveInsertElement (TC_element * & ioRootPointer,
                         TC_element * const inElementPointer) ;
-  private : PMSInt32 internalMarkedNodeCount (const TC_element * const inElement) const ;
-  private : PMUInt32 internalRecursiveSweep (TC_element * inElement) ;
+  private : int32_t internalMarkedNodeCount (const TC_element * const inElement) const ;
+  private : uint32_t internalRecursiveSweep (TC_element * inElement) ;
   private : void internalRecursiveUnmark (TC_element * inElement) ;
   private : static void recursiveTransfertElementsInNewMapArray
                                              (TC_element * inElementPointer,
                                               TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE> * inNewMapArray,
-                                              const PMUInt32 inNewSize) ;
+                                              const uint32_t inNewSize) ;
 //--- Friend
   friend class TC_element ;
 } ;
@@ -155,7 +155,7 @@ class TC_BlockBinaryTreeForCollision {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 void * TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::TC_element::operator new (const size_t /*inByteSize*/) {
   if (smAllocInfo.mFreeList == NULL) {
     allocBlock () ;
@@ -168,14 +168,14 @@ void * TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::TC_element::operator ne
 
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 void TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::TC_element::operator delete (void * inPtr) {
   TC_element * p = (TC_element *) inPtr ;
   p->mPtrToSup = smAllocInfo.mFreeList ;
   smAllocInfo.mFreeList = p ;
   smAllocInfo.mAllocatedObjectsCount -- ;
   if (smAllocInfo.mAllocatedObjectsCount == 0) {
-    for (PMSInt32 i=0 ; i<smAllocInfo.mAllocatedBlockCount ; i++) {
+    for (int32_t i=0 ; i<smAllocInfo.mAllocatedBlockCount ; i++) {
       delete [] smAllocInfo.mAllocatedBlockList [i] ;
     }
     delete [] smAllocInfo.mAllocatedBlockList ;
@@ -192,13 +192,13 @@ void TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::TC_element::operator dele
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 void TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::allocBlock (void) {
 //--- Realloc block list ?
   if (smAllocInfo.mAllocatedBlockListSize <= smAllocInfo.mAllocatedBlockCount) {
-    const PMSInt32 newSize = smAllocInfo.mAllocatedBlockCount + 1024 ;
+    const int32_t newSize = smAllocInfo.mAllocatedBlockCount + 1024 ;
     char ** newBlockList = new char * [newSize] ;
-    for (PMSInt32 i=0 ; i<smAllocInfo.mAllocatedBlockCount ; i++) {
+    for (int32_t i=0 ; i<smAllocInfo.mAllocatedBlockCount ; i++) {
       newBlockList [i] = smAllocInfo.mAllocatedBlockList [i] ;
     }
     delete [] smAllocInfo.mAllocatedBlockList ;
@@ -209,15 +209,15 @@ void TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::allocBlock (void) {
   smAllocInfo.mAllocatedBlockList [smAllocInfo.mAllocatedBlockCount] = new char [BLOCK_SIZE] ;
   char * ptr = & (smAllocInfo.mAllocatedBlockList [smAllocInfo.mAllocatedBlockCount] [0]) ;
   smAllocInfo.mAllocatedBlockCount ++ ;
-  PMSInt32 blockSize = BLOCK_SIZE ;
-  const PMSInt32 ALIGNMENT = 32 ;
+  int32_t blockSize = BLOCK_SIZE ;
+  const int32_t ALIGNMENT = 32 ;
 //--- Align pointer
-  if ((((PMSInt32) ptr) % ALIGNMENT) != 0) {
-    ptr = (char *) (((((PMSInt32) ptr) / ALIGNMENT) + 1) * ALIGNMENT) ;
+  if ((((int32_t) ptr) % ALIGNMENT) != 0) {
+    ptr = (char *) (((((int32_t) ptr) / ALIGNMENT) + 1) * ALIGNMENT) ;
     blockSize -= ALIGNMENT ;
   }
-  const PMSInt32 nbNewObjects = blockSize / ((PMSInt32) sizeof (TC_element)) ;
-  for (PMSInt32 i=0 ; i<nbNewObjects ; i++) {
+  const int32_t nbNewObjects = blockSize / ((int32_t) sizeof (TC_element)) ;
+  for (int32_t i=0 ; i<nbNewObjects ; i++) {
     TC_element * newObjectPtr = (TC_element *) ptr ;
     newObjectPtr->mPtrToSup = smAllocInfo.mFreeList ;
     smAllocInfo.mFreeList = newObjectPtr ;
@@ -232,7 +232,7 @@ void TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::allocBlock (void) {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::TC_BlockBinaryTreeForCollision (void) {
   mRoot = (TC_element *) NULL ;
 }
@@ -243,7 +243,7 @@ TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::TC_BlockBinaryTreeForCollision
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::~TC_BlockBinaryTreeForCollision (void) {
   delete mRoot ;
 }
@@ -254,7 +254,7 @@ TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::~TC_BlockBinaryTreeForCollisio
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 INFO * TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>
 ::recursiveSearchOrInsert (TC_element * & ioRootPointer,
                            const INFO & inInfo,
@@ -266,7 +266,7 @@ INFO * TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>
     outInsertionPerformed = true ;
   }else{
     outInsertionPerformed = false ;
-    const PMSInt32 comp = ioRootPointer->mInfo.compare (inInfo) ;
+    const int32_t comp = ioRootPointer->mInfo.compare (inInfo) ;
     if (comp > 0) {
       result = recursiveSearchOrInsert (ioRootPointer->mPtrToSup, inInfo, outInsertionPerformed) ;
     }else if (comp < 0) {
@@ -281,7 +281,7 @@ INFO * TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>
  
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 INFO * TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>
 ::search_or_insert (const INFO & inInfo,
                     bool & outInsertionPerformed) {
@@ -294,7 +294,7 @@ INFO * TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 void TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::
 recursiveInsertElement (TC_element * & ioRootPointer,
                         TC_element * const inElementPointer) {
@@ -303,7 +303,7 @@ recursiveInsertElement (TC_element * & ioRootPointer,
     inElementPointer->mPtrToInf = (TC_element *) NULL ;
     inElementPointer->mPtrToSup = (TC_element *) NULL ;
   }else{
-    const PMSInt32 comp = ioRootPointer->compare (* inElementPointer) ;
+    const int32_t comp = ioRootPointer->compare (* inElementPointer) ;
     if (comp > 0) {
       recursiveInsertElement (ioRootPointer->mPtrToSup, inElementPointer) ;
     }else if (comp < 0) {
@@ -316,10 +316,10 @@ recursiveInsertElement (TC_element * & ioRootPointer,
 
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
-PMUInt32 TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
+uint32_t TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>
 ::internalRecursiveSweep (TC_element * inElement) {
-  PMUInt32 sweepedNodes = 0 ;
+  uint32_t sweepedNodes = 0 ;
   if (inElement != NULL) {
     sweepedNodes += internalRecursiveSweep (inElement->mPtrToInf) ;
     sweepedNodes += internalRecursiveSweep (inElement->mPtrToSup) ;
@@ -338,8 +338,8 @@ PMUInt32 TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>
 
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
-PMUInt32 TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::sweepUnmarkedObjects (void) {
+template <class INFO, int32_t BLOCK_SIZE>
+uint32_t TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::sweepUnmarkedObjects (void) {
   TC_element * temporaryRoot = mRoot ;
   mRoot = (TC_element *) NULL ;
   return internalRecursiveSweep (temporaryRoot) ;
@@ -351,34 +351,34 @@ PMUInt32 TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::sweepUnmarkedObjects 
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 void TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>
    ::recursiveTransfertElementsInNewMapArray (TC_element * inElementPointer,
                                               TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE> * inNewMapArray,
-                                              const PMUInt32 inNewSize) {
+                                              const uint32_t inNewSize) {
   if (inElementPointer != NULL) {
     recursiveTransfertElementsInNewMapArray (inElementPointer->mPtrToInf, inNewMapArray, inNewSize) ;
     recursiveTransfertElementsInNewMapArray (inElementPointer->mPtrToSup, inNewMapArray, inNewSize) ;
     inElementPointer->mPtrToInf = (TC_element *) NULL ;
     inElementPointer->mPtrToSup = (TC_element *) NULL ;
-    const PMUInt32 hash = inElementPointer->mInfo.getHashCodeForMap () % inNewSize ;
+    const uint32_t hash = inElementPointer->mInfo.getHashCodeForMap () % inNewSize ;
     recursiveInsertElement (inNewMapArray [hash].mRoot, inElementPointer) ;
   }
 }
 
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 void TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>
       ::transfertElementsInNewMapArray (TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE> * inNewMapArray,
-                                        const PMUInt32 inNewSize) {
+                                        const uint32_t inNewSize) {
   recursiveTransfertElementsInNewMapArray (mRoot, inNewMapArray, inNewSize) ;
   mRoot = (TC_element *) NULL ;
 }
 
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 void TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::internalRecursiveUnmark (TC_element * inElement) {
   if (inElement != NULL) {
     inElement->mInfo.unmark () ;
@@ -389,16 +389,16 @@ void TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::internalRecursiveUnmark (
 
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 void TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::unmarkAllObjects (void) {
   internalRecursiveUnmark (mRoot) ;
 }
 
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
-PMSInt32 TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::internalMarkedNodeCount (const TC_element * const inElement) const {
-  PMSInt32 result = 0 ;
+template <class INFO, int32_t BLOCK_SIZE>
+int32_t TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::internalMarkedNodeCount (const TC_element * const inElement) const {
+  int32_t result = 0 ;
   if (inElement != NULL) {
     if (inElement->mInfo.isMarked ()) {
       result ++ ;
@@ -411,8 +411,8 @@ PMSInt32 TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::internalMarkedNodeCou
 
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
-PMSInt32 TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::getMarkedNodesCount (void) const {
+template <class INFO, int32_t BLOCK_SIZE>
+int32_t TC_BlockBinaryTreeForCollision<INFO, BLOCK_SIZE>::getMarkedNodesCount (void) const {
   return internalMarkedNodeCount (mRoot) ;
 }
 

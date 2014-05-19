@@ -38,9 +38,9 @@ mSourceText () {
 //-----------------------------------------------------------------------------*
 
 C_LocationInSource::C_LocationInSource (const C_SourceTextInString * inSourceText,
-                                        const PMSInt32 inIndex,
-                                        const PMSInt32 inLine,
-                                        const PMSInt32 inColumn) :
+                                        const int32_t inIndex,
+                                        const int32_t inLine,
+                                        const int32_t inColumn) :
 mIndex (inIndex),
 mLineNumber (inLine),
 mColumnNumber (inColumn),

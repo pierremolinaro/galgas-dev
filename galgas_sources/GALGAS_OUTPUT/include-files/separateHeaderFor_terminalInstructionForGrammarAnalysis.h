@@ -24,14 +24,14 @@ class cPtr_terminalInstructionForGrammarAnalysis : public cPtr_abstractSyntaxIns
 
   public : virtual void fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
                                                   const C_String & inSyntaxComponentName,
-                                                  PMSInt32 & ioCount) ;
+                                                  int32_t & ioCount) ;
 
-  public : virtual void buildRightDerivation (const PMSInt32 inTerminalSymbolsCount,
-                                              const PMSInt32 inOriginalGrammarSymbolCount,
-                                              TC_UniqueArray <PMSInt16> & ioInstructionsList) ;
+  public : virtual void buildRightDerivation (const int32_t inTerminalSymbolsCount,
+                                              const int32_t inOriginalGrammarSymbolCount,
+                                              TC_UniqueArray <int16_t> & ioInstructionsList) ;
 
-  public : virtual void buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
-                                                         const PMSInt32 inOriginalGrammarSymbolCount,
+  public : virtual void buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
+                                                         const int32_t inOriginalGrammarSymbolCount,
                                                          const C_String & inSyntaxComponentName,
                                                          cPureBNFproductionsList & ioProductions) ;
 
@@ -52,7 +52,7 @@ class cPtr_terminalInstructionForGrammarAnalysis : public cPtr_abstractSyntaxIns
   public : VIRTUAL_IN_DEBUG GALGAS_uint reader_mTerminalSymbolIndex (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 

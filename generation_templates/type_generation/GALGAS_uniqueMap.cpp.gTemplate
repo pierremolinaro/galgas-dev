@@ -38,9 +38,9 @@ cMapElement * cMapElement_%!TYPE_IDENTIFIER%::copy (void) {
 //-----------------------------------------------------------------------------*
 
 %if [ATTRIBUTE_LIST length] == 0 then
-  %void cMapElement_%!TYPE_IDENTIFIER%::description (C_String & /* ioString */, const PMSInt32 /* inIndentation */) const {\n%
+  %void cMapElement_%!TYPE_IDENTIFIER%::description (C_String & /* ioString */, const int32_t /* inIndentation */) const {\n%
 else
-  %void cMapElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, const PMSInt32 inIndentation) const {\n%
+  %void cMapElement_%!TYPE_IDENTIFIER%::description (C_String & ioString, const int32_t inIndentation) const {\n%
   foreach ATTRIBUTE_LIST do
     %  ioString << "\\n" ;\n%
     %  ioString.writeStringMultiple ("| ", inIndentation) ;\n%
@@ -98,10 +98,10 @@ GALGAS_%!TYPE_IDENTIFIER% GALGAS_%!TYPE_IDENTIFIER%::constructor_emptyMap (LOCAT
 foreach MAP_AUTOMATON_STATE_MAP
 before
   %#ifndef DO_NOT_GENERATE_CHECKINGS\n%
-  %  static const PMUInt32 kMapStateCount_%!TYPE_IDENTIFIER% = %![[MAP_AUTOMATON_STATE_MAP count] string]% ;\n%
+  %  static const uint32_t kMapStateCount_%!TYPE_IDENTIFIER% = %![[MAP_AUTOMATON_STATE_MAP count] string]% ;\n%
   %#endif\n%
 do
-  %static const PMUInt32 kMapState_%!TYPE_IDENTIFIER%_%![lkey identifierRepresentation]% = %![mStateIndex string]% ;\n%
+  %static const uint32_t kMapState_%!TYPE_IDENTIFIER%_%![lkey identifierRepresentation]% = %![mStateIndex string]% ;\n%
 end foreach
 %
 //-----------------------------------------------------------------------------*
@@ -127,9 +127,9 @@ end foreach
 %
 foreach MAP_AUTOMATON_ACTION_MAP
 before
-  %static const PMUInt32 kMapActionCount_%!TYPE_IDENTIFIER% = %![[MAP_AUTOMATON_ACTION_MAP count] string]% ;\n%
+  %static const uint32_t kMapActionCount_%!TYPE_IDENTIFIER% = %![[MAP_AUTOMATON_ACTION_MAP count] string]% ;\n%
 do
-  %static const PMUInt32 kMapAction_%!TYPE_IDENTIFIER%_%![lkey identifierRepresentation]% = %![mActionIndex string]% ;\n%
+  %static const uint32_t kMapAction_%!TYPE_IDENTIFIER%_%![lkey identifierRepresentation]% = %![mActionIndex string]% ;\n%
 end foreach
 %
 //-----------------------------------------------------------------------------*

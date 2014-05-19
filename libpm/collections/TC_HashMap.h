@@ -35,7 +35,7 @@
 //    - INFO is a class that defines element information.                      *
 //                                                                             *
 //  Class INFO must define the following public method :                       *
-//                     PMUInt32 getHashCodeForMap (void) const ;               *
+//                     uint32_t getHashCodeForMap (void) const ;               *
 //      this method is used for getting the element hash code.                 *
 //                                                                             *
 //  Class MAP_TYPE must defines the following public methods :                 *
@@ -76,23 +76,23 @@ class TC_HashMap {
   public : inline INFO * search (const INFO & inInfo) ;
 
 //--- Change size
-  public : void reallocMap (const PMSInt32 inNewSize) ;
+  public : void reallocMap (const int32_t inNewSize) ;
 
 //--- Get map size (in bytes)
-  public : PMUInt32 getMapSizeInBytes (void) const ;
+  public : uint32_t getMapSizeInBytes (void) const ;
 
 //--- Get marked nodes count
-  public : PMSInt32 getMarkedNodesCount (void) const ;
+  public : int32_t getMarkedNodesCount (void) const ;
 
 //--- Sweep unmarked objects
-  public : PMUInt32 sweepUnmarkedObjects (void) ;
+  public : uint32_t sweepUnmarkedObjects (void) ;
 
 //--- Unmarked all objects
   public : void unmarkAllObjects (void) ;
 
 //--- Current size
-  protected : PMSInt32 mCurrentEntriesCount ;
-  public : inline PMSInt32 getHashMapEntriesCount (void) const { return mCurrentEntriesCount ; }
+  protected : int32_t mCurrentEntriesCount ;
+  public : inline int32_t getHashMapEntriesCount (void) const { return mCurrentEntriesCount ; }
 
 //--- Minimum map array (1 entry)
   protected : MAP_TYPE mMinimumMapArray ;
@@ -129,8 +129,8 @@ template <class MAP_TYPE, class INFO>
 INFO * TC_HashMap<MAP_TYPE, INFO>::
 search_or_insert (const INFO & inInfo,
                   bool & outInsertionPerformed) {
-  PMUInt32 hashCode = inInfo.getHashCodeForMap () ;
-  hashCode %= (PMUInt32) mCurrentEntriesCount ;
+  uint32_t hashCode = inInfo.getHashCodeForMap () ;
+  hashCode %= (uint32_t) mCurrentEntriesCount ;
   return mMapArray [hashCode].search_or_insert (inInfo, outInsertionPerformed) ;
 }
 
@@ -139,17 +139,17 @@ search_or_insert (const INFO & inInfo,
 template <class MAP_TYPE, class INFO>
 INFO * TC_HashMap<MAP_TYPE, INFO>::
 search (const INFO & inInfo) {
-  PMUInt32 hashCode = inInfo.getHashCodeForMap () ;
-  hashCode %= (PMUInt32) mCurrentEntriesCount ;
+  uint32_t hashCode = inInfo.getHashCodeForMap () ;
+  hashCode %= (uint32_t) mCurrentEntriesCount ;
   return mMapArray [hashCode].search (inInfo) ;
 }
 
 //-----------------------------------------------------------------------------*
 
 template <class MAP_TYPE, class INFO>
-PMUInt32 TC_HashMap<MAP_TYPE, INFO>::sweepUnmarkedObjects (void) {
-  PMUInt32 sweepedNodes = 0 ;
-  for (PMSInt32 i=0 ; i<mCurrentEntriesCount ; i++) {
+uint32_t TC_HashMap<MAP_TYPE, INFO>::sweepUnmarkedObjects (void) {
+  uint32_t sweepedNodes = 0 ;
+  for (int32_t i=0 ; i<mCurrentEntriesCount ; i++) {
     sweepedNodes += mMapArray [i].sweepUnmarkedObjects () ;
   }
   return sweepedNodes ;
@@ -158,21 +158,21 @@ PMUInt32 TC_HashMap<MAP_TYPE, INFO>::sweepUnmarkedObjects (void) {
 //-----------------------------------------------------------------------------*
 
 template <class MAP_TYPE, class INFO>
-PMUInt32 TC_HashMap<MAP_TYPE, INFO>
+uint32_t TC_HashMap<MAP_TYPE, INFO>
 ::getMapSizeInBytes (void) const {
-  return ((PMUInt32) mCurrentEntriesCount) * sizeof (MAP_TYPE) ;
+  return ((uint32_t) mCurrentEntriesCount) * sizeof (MAP_TYPE) ;
 }
 
 //-----------------------------------------------------------------------------*
 
 template <class MAP_TYPE, class INFO>
 void TC_HashMap<MAP_TYPE, INFO>
-::reallocMap (const PMSInt32 inNewSize) {
-  const PMSInt32 newSize = (inNewSize < 1) ? 1 : getPrimeGreaterThan (inNewSize) ;
+::reallocMap (const int32_t inNewSize) {
+  const int32_t newSize = (inNewSize < 1) ? 1 : getPrimeGreaterThan (inNewSize) ;
   if (newSize != mCurrentEntriesCount) {
     MAP_TYPE * newMapArray = (newSize > 1) ? new MAP_TYPE [newSize] : (& mMinimumMapArray) ;
-    for (PMSInt32 i=0 ; i<mCurrentEntriesCount ; i++) {
-      mMapArray [i].transfertElementsInNewMapArray (newMapArray, (PMUInt32) newSize) ;
+    for (int32_t i=0 ; i<mCurrentEntriesCount ; i++) {
+      mMapArray [i].transfertElementsInNewMapArray (newMapArray, (uint32_t) newSize) ;
     }
     if (mCurrentEntriesCount > 1) {
       delete [] mMapArray ;
@@ -186,7 +186,7 @@ void TC_HashMap<MAP_TYPE, INFO>
 
 template <class MAP_TYPE, class INFO>
 void TC_HashMap<MAP_TYPE, INFO>::unmarkAllObjects (void) {
-  for (PMSInt32 i=0 ; i<mCurrentEntriesCount ; i++) {
+  for (int32_t i=0 ; i<mCurrentEntriesCount ; i++) {
     mMapArray [i].unmarkAllObjects () ;
   }
 }
@@ -194,9 +194,9 @@ void TC_HashMap<MAP_TYPE, INFO>::unmarkAllObjects (void) {
 //-----------------------------------------------------------------------------*
 
 template <class MAP_TYPE, class INFO>
-PMSInt32 TC_HashMap<MAP_TYPE, INFO>::getMarkedNodesCount (void) const {
-  PMSInt32 count = 0 ;
-  for (PMSInt32 i=0 ; i<mCurrentEntriesCount ; i++) {
+int32_t TC_HashMap<MAP_TYPE, INFO>::getMarkedNodesCount (void) const {
+  int32_t count = 0 ;
+  for (int32_t i=0 ; i<mCurrentEntriesCount ; i++) {
     count += mMapArray [i].getMarkedNodesCount () ;
   }
   return count ;

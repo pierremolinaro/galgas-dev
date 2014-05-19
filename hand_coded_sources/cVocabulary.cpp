@@ -46,10 +46,10 @@ cVocabulary::~cVocabulary (void) {
 void cVocabulary::
 buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalSymbolMap,
                  const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
-                 const PMUInt32 inOriginalGrammarStartSymbol) {
+                 const uint32_t inOriginalGrammarStartSymbol) {
   mOriginalGrammarSymbolsCount = 0 ;
 //--- Append terminal symbols
-  mTerminalSymbolsCount = (PMSInt32) inTerminalSymbolMap.count () ;
+  mTerminalSymbolsCount = (int32_t) inTerminalSymbolMap.count () ;
   cEnumerator_terminalSymbolsMapForGrammarAnalysis t (inTerminalSymbolMap, kEnumeration_up) ;
   while (t.hasCurrentObject ()) {
     mStringsArray.addObject ("") ;  
@@ -58,7 +58,7 @@ buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalS
   t.rewind () ;
   while (t.hasCurrentObject ()) {
    // printf ("ENTER TERMINAL: %u '%s'\n", t.current_mTerminalIndex ().uintValue (), t.current_lkey (HERE).mAttribute_string.stringValue ().cString (HERE)) ;
-    const PMSInt32 idx = (PMSInt32) t.current_mTerminalIndex (HERE).uintValue () ;
+    const int32_t idx = (int32_t) t.current_mTerminalIndex (HERE).uintValue () ;
     mStringsArray (idx COMMA_HERE) = t.current_lkey (HERE).mAttribute_string.stringValue () ;  
     t.gotoNextObject () ;
   }
@@ -71,7 +71,7 @@ buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalS
     mStringsArray.addObject (nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ()) ;  
     nonTerminal.gotoNextObject () ;
   }
-/* for (PMSInt32 i=0 ; i<mStringsArray.count () ; i++) {
+/* for (int32_t i=0 ; i<mStringsArray.count () ; i++) {
     printf ("VOCABULARY '%s'\n", mStringsArray (i COMMA_HERE).cString (HERE));
   }
   printf ("----------------\n") ;
@@ -81,43 +81,43 @@ buildVocabulary (const GALGAS_terminalSymbolsMapForGrammarAnalysis & inTerminalS
   mGenerateChoiceArray.setCountToZero () ;
   mGenerateChoiceArray.addObjects (mOriginalGrammarSymbolsCount, false) ;
 //--- Define pure BNF grammar start symbol index
-  mStartSymbol = mTerminalSymbolsCount + (PMSInt32) inOriginalGrammarStartSymbol ;
+  mStartSymbol = mTerminalSymbolsCount + (int32_t) inOriginalGrammarStartSymbol ;
 }
 
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cVocabulary::getEmptyStringTerminalSymbolIndex (void) const {
+int32_t cVocabulary::getEmptyStringTerminalSymbolIndex (void) const {
   return mTerminalSymbolsCount - 1 ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_String cVocabulary::getSymbol (const PMSInt32 inSymbolIndex
+C_String cVocabulary::getSymbol (const int32_t inSymbolIndex
                                  COMMA_LOCATION_ARGS) const {
   return mStringsArray (inSymbolIndex COMMA_THERE) ;
 }
 
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cVocabulary::getStartSymbol (void) const {
+int32_t cVocabulary::getStartSymbol (void) const {
   return mStartSymbol ;
 }
 
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cVocabulary::getTerminalSymbolsCount (void) const {
+int32_t cVocabulary::getTerminalSymbolsCount (void) const {
   return mTerminalSymbolsCount ;
 }
 
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cVocabulary::getAllSymbolsCount (void) const {
+int32_t cVocabulary::getAllSymbolsCount (void) const {
   return mStringsArray.count () ;
 }
 
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cVocabulary::getNonTerminalSymbolsCount (void) const {
+int32_t cVocabulary::getNonTerminalSymbolsCount (void) const {
   return mStringsArray.count () - mTerminalSymbolsCount ;
 }
 
@@ -125,7 +125,7 @@ PMSInt32 cVocabulary::getNonTerminalSymbolsCount (void) const {
 
 void cVocabulary::addNonTerminalSymbol (const char * inPrefix,
                                         const C_String & inClassName,
-                                        const PMSInt32 inOrderInSourceFile,
+                                        const int32_t inOrderInSourceFile,
                                         const bool inGenerateChoice) {
   C_String nt  ;
   nt << inPrefix
@@ -145,7 +145,7 @@ void cVocabulary::addAugmentedSymbol (void) {
 
 //-----------------------------------------------------------------------------*
 
-bool cVocabulary::needToGenerateChoice (const PMSInt32 inSymbolIndex
+bool cVocabulary::needToGenerateChoice (const int32_t inSymbolIndex
                                         COMMA_LOCATION_ARGS) const {
   return mGenerateChoiceArray (inSymbolIndex COMMA_THERE) ;
 }
@@ -153,7 +153,7 @@ bool cVocabulary::needToGenerateChoice (const PMSInt32 inSymbolIndex
 //-----------------------------------------------------------------------------*
 
 void cVocabulary::printInFile (AC_OutputStream & inHTMLfile,
-                               const PMSInt32 inSymbolIndex
+                               const int32_t inSymbolIndex
                                COMMA_LOCATION_ARGS) const {
   if (inSymbolIndex < mTerminalSymbolsCount) {
     inHTMLfile << "$" << mStringsArray (inSymbolIndex COMMA_THERE) << "$" ;
