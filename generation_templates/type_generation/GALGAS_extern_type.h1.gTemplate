@@ -19,7 +19,7 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 
 //--- For log instruction
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
 //--- Code (from GALGAS extern type declaration)
 %!CODE%

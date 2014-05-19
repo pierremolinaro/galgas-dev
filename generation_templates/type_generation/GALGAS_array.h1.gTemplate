@@ -37,5 +37,5 @@ class GALGAS_%!TYPE_IDENTIFIER% : public AC_GALGAS_root {
 
 //--- Drop
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 

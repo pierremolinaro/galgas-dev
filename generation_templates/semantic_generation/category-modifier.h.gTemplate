@@ -23,7 +23,7 @@ typedef void (*categoryModifierSignature_%![CLASS_NAME identifierRepresentation]
 
 //---------------------------------------------------------------------------*
 
-void enterCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%const PMSInt32 inClassIndex,
+void enterCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
                %!^%categoryModifierSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% inModifier) ;
 
 //---------------------------------------------------------------------------*

@@ -305,7 +305,7 @@ void AC_OutputStream::appendBool (const bool inValue) {
 void AC_OutputStream::
 appendUnsignedWithZeroFill (const uint64_t inValue, const uint32_t inWidth) {
   char s [32] = "" ;
-  snprintf (s, 31, "%0*llu", inWidth, inValue) ;
+  snprintf (s, 31, "%0*llu", inWidth, (unsigned long long) inValue) ;
   appendCString (s) ;
 }
 
@@ -313,7 +313,7 @@ appendUnsignedWithZeroFill (const uint64_t inValue, const uint32_t inWidth) {
 
 void AC_OutputStream::appendUnsignedHex (const uint64_t inValue) {
   char s [32] = "" ;
-  snprintf (s, 31, "%llX", inValue) ;
+  snprintf (s, 31, "%llX", (unsigned long long) inValue) ;
   genericCharArrayOutput (s, (int32_t) (strlen (s) & UINT32_MAX)) ;
 }
 
@@ -321,7 +321,7 @@ void AC_OutputStream::appendUnsignedHex (const uint64_t inValue) {
 
 void AC_OutputStream::appendUnsignedHex2 (const uint64_t inValue) {
   char s [32] = "" ;
-  snprintf (s, 31, "%02llX", inValue & 0xFF) ;
+  snprintf (s, 31, "%02llX", (unsigned long long) (inValue & 0xFF)) ;
   genericCharArrayOutput (s, (int32_t) (strlen (s) & UINT32_MAX)) ;
 }
 
@@ -329,7 +329,7 @@ void AC_OutputStream::appendUnsignedHex2 (const uint64_t inValue) {
 
 void AC_OutputStream::appendUnsignedHex4 (const uint64_t inValue) {
   char s [32] = "" ;
-  snprintf (s, 31, "%04llX", inValue & 0xFFFF) ;
+  snprintf (s, 31, "%04llX", (unsigned long long) (inValue & 0xFFFF)) ;
   genericCharArrayOutput (s, (int32_t) (strlen (s) & UINT32_MAX)) ;
 }
 
@@ -337,7 +337,7 @@ void AC_OutputStream::appendUnsignedHex4 (const uint64_t inValue) {
 
 void AC_OutputStream::appendUnsignedHex8 (const uint64_t inValue) {
   char s [32] = "" ;
-  snprintf (s, 31, "%08llX", inValue) ;
+  snprintf (s, 31, "%08llX", (unsigned long long) (inValue)) ;
   genericCharArrayOutput (s, (int32_t) (strlen (s) & UINT32_MAX)) ;
 }
 

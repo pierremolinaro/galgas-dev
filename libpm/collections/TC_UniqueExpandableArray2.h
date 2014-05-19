@@ -47,8 +47,8 @@ template <typename TYPE> class TC_UniqueExpandableArray2 : public TC_UniqueArray
   private : TC_UniqueExpandableArray2 <TYPE> & operator = (TC_UniqueExpandableArray2 <TYPE> & inSource) ;
 
 //--- Force entry
-  public : void forceEntry (const PMSInt32 inRowIndex,
-                            const PMSInt32 inColumnIndex,
+  public : void forceEntry (const int32_t inRowIndex,
+                            const int32_t inColumnIndex,
                             const TYPE inValue
                             COMMA_LOCATION_ARGS) ;
 } ;
@@ -68,28 +68,28 @@ mDefaultValue (inDefaultValue) {
 //---------------------------------------------------------------------------*
 
 template <typename TYPE>
-void TC_UniqueExpandableArray2 <TYPE>::forceEntry (const PMSInt32 inRowIndex,
-                                                   const PMSInt32 inColumnIndex,
+void TC_UniqueExpandableArray2 <TYPE>::forceEntry (const int32_t inRowIndex,
+                                                   const int32_t inColumnIndex,
                                                    const TYPE inValue
                                                    COMMA_LOCATION_ARGS) {
   MF_AssertThere (inRowIndex >= 0, "row index (%ld) < 0", inRowIndex, 0) ;
   MF_AssertThere (inColumnIndex >= 0, "column index (%ld) < 0", inColumnIndex, 0) ;
   const bool resize = (inRowIndex >= this->mCurrentRowCount) || (inColumnIndex >= this->mCurrentColumnCount) ;
   if (resize) {
-    const PMSInt32 newRowCount = (inRowIndex >= this->mCurrentRowCount) ? (inRowIndex + 1) : this->mCurrentRowCount ;
-    const PMSInt32 newColumnCount = (inColumnIndex >= this->mCurrentColumnCount) ? (inColumnIndex + 1) : this->mCurrentColumnCount ;
+    const int32_t newRowCount = (inRowIndex >= this->mCurrentRowCount) ? (inRowIndex + 1) : this->mCurrentRowCount ;
+    const int32_t newColumnCount = (inColumnIndex >= this->mCurrentColumnCount) ? (inColumnIndex + 1) : this->mCurrentColumnCount ;
     TYPE * newArray = NULL ;
     macroMyNewArray (newArray, TYPE, newRowCount * newColumnCount) ;
-    for (PMSInt32 i=0 ; i<this->mCurrentRowCount ; i++) {
-      for (PMSInt32 j=0 ; j<this->mCurrentColumnCount ; j++) {
+    for (int32_t i=0 ; i<this->mCurrentRowCount ; i++) {
+      for (int32_t j=0 ; j<this->mCurrentColumnCount ; j++) {
         newArray [i * newColumnCount + j] = this->mArray [i * this->mCurrentColumnCount + j] ;
       }
-      for (PMSInt32 j=this->mCurrentColumnCount ; j<newColumnCount ; j++) {
+      for (int32_t j=this->mCurrentColumnCount ; j<newColumnCount ; j++) {
         newArray [i * newColumnCount + j] = this->mDefaultValue ;
       }
     }
-    for (PMSInt32 i=this->mCurrentRowCount ; i<newRowCount ; i++) {
-      for (PMSInt32 j=0 ; j<newColumnCount ; j++) {
+    for (int32_t i=this->mCurrentRowCount ; i<newRowCount ; i++) {
+      for (int32_t j=0 ; j<newColumnCount ; j++) {
         newArray [i * newColumnCount + j] = this->mDefaultValue ;
       }
     }
