@@ -801,7 +801,7 @@ class GALGAS_guiComponentAST : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_guiComponentAST & inOperand) const ;
 
@@ -878,7 +878,7 @@ class GALGAS_guiSimpleAttributeListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_guiSimpleAttributeListAST_2E_element & inOperand) const ;
 
@@ -952,7 +952,7 @@ class GALGAS_guiCompoundAttributeListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_guiCompoundAttributeListAST_2E_element & inOperand) const ;
 
@@ -1025,7 +1025,7 @@ class GALGAS_terminalLabelListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_terminalLabelListAST_2E_element & inOperand) const ;
 
@@ -1099,7 +1099,7 @@ class GALGAS_guiLabelListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_guiLabelListAST_2E_element & inOperand) const ;
 
@@ -1178,7 +1178,7 @@ class GALGAS_withLexiqueListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_withLexiqueListAST_2E_element & inOperand) const ;
 

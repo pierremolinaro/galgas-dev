@@ -55,7 +55,7 @@ class cCollectionElement_templateInstructionIfBranchListForGeneration : public c
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -83,7 +83,7 @@ cCollectionElement * cCollectionElement_templateInstructionIfBranchListForGenera
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_templateInstructionIfBranchListForGeneration::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_templateInstructionIfBranchListForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mExpression" ":" ;
@@ -457,7 +457,7 @@ class cCollectionElement_templateInstructionSwitchBranchListForGeneration : publ
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -485,7 +485,7 @@ cCollectionElement * cCollectionElement_templateInstructionSwitchBranchListForGe
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_templateInstructionSwitchBranchListForGeneration::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_templateInstructionSwitchBranchListForGeneration::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mConstantList" ":" ;
@@ -861,8 +861,8 @@ typeComparisonResult cPtr_templateBlockInstructionForGeneration::dynamicObjectCo
 typeComparisonResult GALGAS_templateBlockInstructionForGeneration::objectCompare (const GALGAS_templateBlockInstructionForGeneration & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -990,7 +990,7 @@ const C_galgas_type_descriptor * cPtr_templateBlockInstructionForGeneration::cla
 }
 
 void cPtr_templateBlockInstructionForGeneration::description (C_String & ioString,
-                                                              const PMSInt32 inIndentation) const {
+                                                              const int32_t inIndentation) const {
   ioString << "[@templateBlockInstructionForGeneration:" ;
   mAttribute_mExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -1065,8 +1065,8 @@ typeComparisonResult cPtr_templateInstructionExpressionForGeneration::dynamicObj
 typeComparisonResult GALGAS_templateInstructionExpressionForGeneration::objectCompare (const GALGAS_templateInstructionExpressionForGeneration & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -1152,7 +1152,7 @@ const C_galgas_type_descriptor * cPtr_templateInstructionExpressionForGeneration
 }
 
 void cPtr_templateInstructionExpressionForGeneration::description (C_String & ioString,
-                                                                   const PMSInt32 inIndentation) const {
+                                                                   const int32_t inIndentation) const {
   ioString << "[@templateInstructionExpressionForGeneration:" ;
   mAttribute_mExpression.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -1244,8 +1244,8 @@ typeComparisonResult cPtr_templateInstructionForeachForGeneration::dynamicObject
 typeComparisonResult GALGAS_templateInstructionForeachForGeneration::objectCompare (const GALGAS_templateInstructionForeachForGeneration & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -1478,7 +1478,7 @@ const C_galgas_type_descriptor * cPtr_templateInstructionForeachForGeneration::c
 }
 
 void cPtr_templateInstructionForeachForGeneration::description (C_String & ioString,
-                                                                const PMSInt32 inIndentation) const {
+                                                                const int32_t inIndentation) const {
   ioString << "[@templateInstructionForeachForGeneration:" ;
   mAttribute_mIsAscending.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -1557,8 +1557,8 @@ typeComparisonResult cPtr_templateInstructionGetColumnLocationForGeneration::dyn
 typeComparisonResult GALGAS_templateInstructionGetColumnLocationForGeneration::objectCompare (const GALGAS_templateInstructionGetColumnLocationForGeneration & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -1612,7 +1612,7 @@ const C_galgas_type_descriptor * cPtr_templateInstructionGetColumnLocationForGen
 }
 
 void cPtr_templateInstructionGetColumnLocationForGeneration::description (C_String & ioString,
-                                                                          const PMSInt32 /* inIndentation */) const {
+                                                                          const int32_t /* inIndentation */) const {
   ioString << "[@templateInstructionGetColumnLocationForGeneration]" ;
 }
 
@@ -1675,8 +1675,8 @@ typeComparisonResult cPtr_templateInstructionGotoColumnLocationForGeneration::dy
 typeComparisonResult GALGAS_templateInstructionGotoColumnLocationForGeneration::objectCompare (const GALGAS_templateInstructionGotoColumnLocationForGeneration & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -1730,7 +1730,7 @@ const C_galgas_type_descriptor * cPtr_templateInstructionGotoColumnLocationForGe
 }
 
 void cPtr_templateInstructionGotoColumnLocationForGeneration::description (C_String & ioString,
-                                                                           const PMSInt32 /* inIndentation */) const {
+                                                                           const int32_t /* inIndentation */) const {
   ioString << "[@templateInstructionGotoColumnLocationForGeneration]" ;
 }
 
@@ -1802,8 +1802,8 @@ typeComparisonResult cPtr_templateInstructionIfForGeneration::dynamicObjectCompa
 typeComparisonResult GALGAS_templateInstructionIfForGeneration::objectCompare (const GALGAS_templateInstructionIfForGeneration & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -1918,7 +1918,7 @@ const C_galgas_type_descriptor * cPtr_templateInstructionIfForGeneration::classD
 }
 
 void cPtr_templateInstructionIfForGeneration::description (C_String & ioString,
-                                                           const PMSInt32 inIndentation) const {
+                                                           const int32_t inIndentation) const {
   ioString << "[@templateInstructionIfForGeneration:" ;
   mAttribute_mTemplateInstructionIfBranchList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -1991,8 +1991,8 @@ typeComparisonResult cPtr_templateInstructionStringForGeneration::dynamicObjectC
 typeComparisonResult GALGAS_templateInstructionStringForGeneration::objectCompare (const GALGAS_templateInstructionStringForGeneration & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -2085,7 +2085,7 @@ const C_galgas_type_descriptor * cPtr_templateInstructionStringForGeneration::cl
 }
 
 void cPtr_templateInstructionStringForGeneration::description (C_String & ioString,
-                                                               const PMSInt32 inIndentation) const {
+                                                               const int32_t inIndentation) const {
   ioString << "[@templateInstructionStringForGeneration:" ;
   mAttribute_mTemplateString.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -2159,8 +2159,8 @@ typeComparisonResult cPtr_templateInstructionSwitchForGeneration::dynamicObjectC
 typeComparisonResult GALGAS_templateInstructionSwitchForGeneration::objectCompare (const GALGAS_templateInstructionSwitchForGeneration & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -2267,7 +2267,7 @@ const C_galgas_type_descriptor * cPtr_templateInstructionSwitchForGeneration::cl
 }
 
 void cPtr_templateInstructionSwitchForGeneration::description (C_String & ioString,
-                                                               const PMSInt32 inIndentation) const {
+                                                               const int32_t inIndentation) const {
   ioString << "[@templateInstructionSwitchForGeneration:" ;
   mAttribute_mSwitchExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -2381,7 +2381,7 @@ void GALGAS_templateInstructionIfBranchListForGeneration_2E_element::drop (void)
 //-----------------------------------------------------------------------------*
 
 void GALGAS_templateInstructionIfBranchListForGeneration_2E_element::description (C_String & ioString,
-                                                                                  const PMSInt32 inIndentation) const {
+                                                                                  const int32_t inIndentation) const {
   ioString << "<struct @templateInstructionIfBranchListForGeneration.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -2518,7 +2518,7 @@ void GALGAS_templateInstructionSwitchBranchListForGeneration_2E_element::drop (v
 //-----------------------------------------------------------------------------*
 
 void GALGAS_templateInstructionSwitchBranchListForGeneration_2E_element::description (C_String & ioString,
-                                                                                      const PMSInt32 inIndentation) const {
+                                                                                      const int32_t inIndentation) const {
   ioString << "<struct @templateInstructionSwitchBranchListForGeneration.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;

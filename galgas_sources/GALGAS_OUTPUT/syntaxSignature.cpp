@@ -203,7 +203,7 @@ static TC_UniqueArray <categoryMethodSignature_semanticInstructionForGeneration_
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_appendSyntaxSignature (const PMSInt32 inClassIndex,
+void enterCategoryMethod_appendSyntaxSignature (const int32_t inClassIndex,
                                                 categoryMethodSignature_semanticInstructionForGeneration_appendSyntaxSignature inMethod) {
   gCategoryMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
@@ -218,7 +218,7 @@ void callCategoryMethod_appendSyntaxSignature (const cPtr_semanticInstructionFor
   if (NULL != inObject) {
     macroValidSharedObject (inObject, const cPtr_semanticInstructionForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const PMSInt32 classIndex = info->mSlotID ;
+    const int32_t classIndex = info->mSlotID ;
     categoryMethodSignature_semanticInstructionForGeneration_appendSyntaxSignature f = NULL ;
     if (classIndex < gCategoryMethodTable_semanticInstructionForGeneration_appendSyntaxSignature.count ()) {
       f = gCategoryMethodTable_semanticInstructionForGeneration_appendSyntaxSignature (classIndex COMMA_HERE) ;
@@ -475,7 +475,7 @@ static TC_UniqueArray <categoryReaderSignature_semanticInstructionForGeneration_
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_compareSyntaxInstruction (const PMSInt32 inClassIndex,
+void enterCategoryReader_compareSyntaxInstruction (const int32_t inClassIndex,
                                                    categoryReaderSignature_semanticInstructionForGeneration_compareSyntaxInstruction inReader) {
   gCategoryReaderTable_semanticInstructionForGeneration_compareSyntaxInstruction.forceObjectAtIndex (inClassIndex, inReader, NULL COMMA_HERE) ;
 }
@@ -491,7 +491,7 @@ GALGAS_bool callCategoryReader_compareSyntaxInstruction (const cPtr_semanticInst
   if (NULL != inObject) {
     macroValidSharedObject (inObject, const cPtr_semanticInstructionForGeneration) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const PMSInt32 classIndex = info->mSlotID ;
+    const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_semanticInstructionForGeneration_compareSyntaxInstruction f = NULL ;
     if (classIndex < gCategoryReaderTable_semanticInstructionForGeneration_compareSyntaxInstruction.count ()) {
       f = gCategoryReaderTable_semanticInstructionForGeneration_compareSyntaxInstruction (classIndex COMMA_HERE) ;

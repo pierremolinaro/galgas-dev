@@ -34,7 +34,7 @@
 
 //-----------------------------------------------------------------------------*
 
-void F_default_display_exception (const M_STD_NAMESPACE exception & inException) ;
+void F_default_display_exception (const ::std:: exception & inException) ;
 
 void F_default_display_unknown_exception (void) ;
 

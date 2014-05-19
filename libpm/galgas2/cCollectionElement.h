@@ -55,7 +55,7 @@ class cCollectionElement : public C_SharedObject {
   public : virtual cCollectionElement * copy (void) = 0 ;
 
 //--- Description
-  public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const = 0 ;
+  public : virtual void description (C_String & ioString, const int32_t inIndentation) const = 0 ;
 } ;
 
 //-----------------------------------------------------------------------------*

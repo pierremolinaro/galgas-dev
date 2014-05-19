@@ -36,8 +36,8 @@
 
 //-----------------------------------------------------------------------------*
 
-static PMUInt32 gCreationIndex ;
-static PMUInt32 gObjectCurrentCount ;
+static uint32_t gCreationIndex ;
+static uint32_t gObjectCurrentCount ;
 
 //--- List of existing objects
 static C_SharedObject * gFirstObject ;

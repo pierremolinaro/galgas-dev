@@ -2037,7 +2037,7 @@ class GALGAS_lexicalArgumentModeAST : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalArgumentModeAST & inOperand) const ;
 
@@ -4955,7 +4955,7 @@ class GALGAS_lexiqueComponentAST : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexiqueComponentAST & inOperand) const ;
 
@@ -5044,7 +5044,7 @@ class GALGAS_lexicalInstructionListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalInstructionListAST_2E_element & inOperand) const ;
 
@@ -5116,7 +5116,7 @@ class GALGAS_metamodelTemplateDelimitorListAST_2E_element : public AC_GALGAS_roo
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_metamodelTemplateDelimitorListAST_2E_element & inOperand) const ;
 
@@ -5192,7 +5192,7 @@ class GALGAS_templateReplacementListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_templateReplacementListAST_2E_element & inOperand) const ;
 
@@ -5259,7 +5259,7 @@ class GALGAS_lexicalRuleListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalRuleListAST_2E_element & inOperand) const ;
 
@@ -5328,7 +5328,7 @@ class GALGAS_lexicalMessageDeclarationListAST_2E_element : public AC_GALGAS_root
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalMessageDeclarationListAST_2E_element & inOperand) const ;
 
@@ -5399,7 +5399,7 @@ class GALGAS_lexicalAttributeListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalAttributeListAST_2E_element & inOperand) const ;
 
@@ -5470,7 +5470,7 @@ class GALGAS_lexicalStyleListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalStyleListAST_2E_element & inOperand) const ;
 
@@ -5550,7 +5550,7 @@ class GALGAS_terminalDeclarationListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_terminalDeclarationListAST_2E_element & inOperand) const ;
 
@@ -5630,7 +5630,7 @@ class GALGAS_lexicalListEntryListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalListEntryListAST_2E_element & inOperand) const ;
 
@@ -5712,7 +5712,7 @@ class GALGAS_lexicalListDeclarationListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalListDeclarationListAST_2E_element & inOperand) const ;
 
@@ -5789,7 +5789,7 @@ class GALGAS_lexicalSendSearchListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalSendSearchListAST_2E_element & inOperand) const ;
 
@@ -5857,7 +5857,7 @@ class GALGAS_lexicalWhileBranchListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalWhileBranchListAST_2E_element & inOperand) const ;
 
@@ -5925,7 +5925,7 @@ class GALGAS_lexicalSelectBranchListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalSelectBranchListAST_2E_element & inOperand) const ;
 
@@ -5990,7 +5990,7 @@ class GALGAS_lexicalRoutineCallActualArgumentListAST_2E_element : public AC_GALG
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalRoutineCallActualArgumentListAST_2E_element & inOperand) const ;
 
@@ -6053,7 +6053,7 @@ class GALGAS_lexicalFunctionCallActualArgumentListAST_2E_element : public AC_GAL
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalFunctionCallActualArgumentListAST_2E_element & inOperand) const ;
 
@@ -6125,7 +6125,7 @@ class GALGAS_lexicalExternRoutineFormalArgumentListAST_2E_element : public AC_GA
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalExternRoutineFormalArgumentListAST_2E_element & inOperand) const ;
 
@@ -6201,7 +6201,7 @@ class GALGAS_externRoutineListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_externRoutineListAST_2E_element & inOperand) const ;
 
@@ -6274,7 +6274,7 @@ class GALGAS_lexicalExternFunctionFormalArgumentListAST_2E_element : public AC_G
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lexicalExternFunctionFormalArgumentListAST_2E_element & inOperand) const ;
 
@@ -6348,7 +6348,7 @@ class GALGAS_externFunctionListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_externFunctionListAST_2E_element & inOperand) const ;
 
@@ -6421,7 +6421,7 @@ class GALGAS_indexingListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_indexingListAST_2E_element & inOperand) const ;
 
@@ -6464,7 +6464,7 @@ class cPtr_abstractLexicalRoutineActualArgumentAST : public acPtr_class {
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_mActualPassingModeLocation (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const = 0 ;
+                                     const int32_t inIndentation) const = 0 ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
 
@@ -6491,7 +6491,7 @@ class cPtr_lexicalAttributeInputOutputArgumentAST : public cPtr_abstractLexicalR
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mAttributeName (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -6518,7 +6518,7 @@ class cPtr_lexicalFormalInputArgumentAST : public cPtr_abstractLexicalRoutineAct
   public : VIRTUAL_IN_DEBUG GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST reader_mRoutineOrFunctionFormalInputArgument (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -6541,7 +6541,7 @@ class cPtr_abstractLexicalRuleAST : public acPtr_class {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const = 0 ;
+                                     const int32_t inIndentation) const = 0 ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
 
@@ -6570,7 +6570,7 @@ class cPtr_lexicalExplicitRuleAST : public cPtr_abstractLexicalRuleAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lexicalInstructionListAST reader_mInstructionList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -6596,7 +6596,7 @@ class cPtr_lexicalImplicitRuleAST : public cPtr_abstractLexicalRuleAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mListName (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -6619,7 +6619,7 @@ class cPtr_lexicalExpressionAST : public acPtr_class {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const = 0 ;
+                                     const int32_t inIndentation) const = 0 ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
 
@@ -6648,7 +6648,7 @@ class cPtr_lexicalCharacterIntervalMatchAST : public cPtr_lexicalExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lchar reader_mUpperBound (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -6674,7 +6674,7 @@ class cPtr_lexicalCharacterMatchAST : public cPtr_lexicalExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lchar reader_mCharacter (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -6700,7 +6700,7 @@ class cPtr_lexicalCharacterSetMatchAST : public cPtr_lexicalExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mCharacterSetName (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -6729,7 +6729,7 @@ class cPtr_lexicalOrExpressionAST : public cPtr_lexicalExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lexicalExpressionAST reader_mRightOperand (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -6755,7 +6755,7 @@ class cPtr_lexicalStringMatchAST : public cPtr_lexicalExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mString (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -6784,7 +6784,7 @@ class cPtr_lexicalStringNotMatchAST : public cPtr_lexicalExpressionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mErrorMessage (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -6807,7 +6807,7 @@ class cPtr_lexicalInstructionAST : public acPtr_class {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const = 0 ;
+                                     const int32_t inIndentation) const = 0 ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
 
@@ -6833,7 +6833,7 @@ class cPtr_lexicalDropInstructionAST : public cPtr_lexicalInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTerminalName (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -6859,7 +6859,7 @@ class cPtr_lexicalErrorInstructionAST : public cPtr_lexicalInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mErrorMessageName (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -6882,7 +6882,7 @@ class cPtr_lexicalLogInstructionAST : public cPtr_lexicalInstructionAST {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -6911,7 +6911,7 @@ class cPtr_lexicalRepeatInstructionAST : public cPtr_lexicalInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lexicalWhileBranchListAST reader_mLexicalWhileBranchList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -6940,7 +6940,7 @@ class cPtr_lexicalRewindInstructionAST : public cPtr_lexicalInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mTerminalName (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -6972,7 +6972,7 @@ class cPtr_lexicalRoutineInstructionAST : public cPtr_lexicalInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_mErrorMessageList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -7001,7 +7001,7 @@ class cPtr_lexicalSelectInstructionAST : public cPtr_lexicalInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lexicalInstructionListAST reader_mDefaultInstructionList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -7027,7 +7027,7 @@ class cPtr_lexicalSimpleSendInstructionAST : public cPtr_lexicalInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mSentTerminal (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -7056,7 +7056,7 @@ class cPtr_lexicalStructuredSendInstructionAST : public cPtr_lexicalInstructionA
   public : VIRTUAL_IN_DEBUG GALGAS_lexicalSendDefaultActionAST reader_mLexicalSendDefaultAction (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -7082,7 +7082,7 @@ class cPtr_lexicalTagInstructionAST : public cPtr_lexicalInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mLexicalTagName (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -7108,7 +7108,7 @@ class cPtr_lexicalWarningInstructionAST : public cPtr_lexicalInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mWarningMessageName (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -7131,7 +7131,7 @@ class cPtr_lexicalRoutineOrFunctionFormalInputArgumentAST : public acPtr_class {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const = 0 ;
+                                     const int32_t inIndentation) const = 0 ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
 
@@ -7157,7 +7157,7 @@ class cPtr_lexicalAttributeInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mAttributeName (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -7183,7 +7183,7 @@ class cPtr_lexicalCharacterInputArgumentAST : public cPtr_lexicalRoutineOrFuncti
   public : VIRTUAL_IN_DEBUG GALGAS_lchar reader_mCharacter (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -7209,7 +7209,7 @@ class cPtr_lexicalCurrentCharacterInputArgumentAST : public cPtr_lexicalRoutineO
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_mLocation (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -7238,7 +7238,7 @@ class cPtr_lexicalFunctionInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
   public : VIRTUAL_IN_DEBUG GALGAS_lexicalFunctionCallActualArgumentListAST reader_mFunctionActualArgumentList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -7264,7 +7264,7 @@ class cPtr_lexicalUnsignedInputArgumentAST : public cPtr_lexicalRoutineOrFunctio
   public : VIRTUAL_IN_DEBUG GALGAS_luint reader_mUnsigned (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -7287,7 +7287,7 @@ class cPtr_lexicalSendDefaultActionAST : public acPtr_class {
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const = 0 ;
+                                     const int32_t inIndentation) const = 0 ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
 
@@ -7313,7 +7313,7 @@ class cPtr_lexicalErrorByDefaultAST : public cPtr_lexicalSendDefaultActionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mDefaultErrorMessageName (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -7339,7 +7339,7 @@ class cPtr_lexicalSendTerminalByDefaultAST : public cPtr_lexicalSendDefaultActio
   public : VIRTUAL_IN_DEBUG GALGAS_lstring reader_mDefaultSentTerminal (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 

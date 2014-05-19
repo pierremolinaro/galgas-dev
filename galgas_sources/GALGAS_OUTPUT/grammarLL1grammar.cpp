@@ -47,7 +47,7 @@
 #define NONTERMINAL(nt) ((-nt)-1)
 #define END_PRODUCTION  (0)
 
-static const PMSInt16 gProductions [] = {
+static const int16_t gProductions [] = {
 // At index 0 : <grammar_component_start_symbol>, in file 'grammarModelBuilder.ggs', line 30
   NONTERMINAL (3) // <select_grammarModelBuilder_0>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_grammar) // $grammar$
@@ -206,7 +206,7 @@ static const cProductionNameDescriptor gProductionNames [27] = {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static const PMSInt16 gProductionIndexes [27] = {
+static const int16_t gProductionIndexes [27] = {
 0, // index 0 : <grammar_component_start_symbol>, in file 'grammarModelBuilder.ggs', line 30
 19, // index 1 : <grammar_start_symbol_label>, in file 'grammarModelBuilder.ggs', line 101
 21, // index 2 : <label_formal_parameter>, in file 'grammarModelBuilder.ggs', line 121
@@ -242,7 +242,7 @@ static const PMSInt16 gProductionIndexes [27] = {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static const PMSInt16 gFirstProductionIndexes [15] = {
+static const int16_t gFirstProductionIndexes [15] = {
 0, // at 0 : <grammar_component_start_symbol>
 1, // at 1 : <grammar_start_symbol_label>
 2, // at 2 : <label_formal_parameter>
@@ -265,7 +265,7 @@ static const PMSInt16 gFirstProductionIndexes [15] = {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static const PMSInt16 gDecision [] = {
+static const int16_t gDecision [] = {
 // At index 0 : <grammar_component_start_symbol> only one production, no choice
   -1,
 // At index 1 : <grammar_start_symbol_label> only one production, no choice
@@ -327,7 +327,7 @@ C_Lexique_galgas_5F_scanner::kToken_unused, -1, // Choice 2
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static const PMSInt16 gDecisionIndexes [15] = {
+static const int16_t gDecisionIndexes [15] = {
 0, // at 0 : <grammar_component_start_symbol>
 1, // at 1 : <grammar_start_symbol_label>
 2, // at 2 : <label_formal_parameter>
@@ -535,7 +535,7 @@ void cGrammar_grammarLL_31_grammar::nt_label_5F_formal_5F_parameter_ (GALGAS_lst
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_0 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_0 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -545,7 +545,7 @@ PMSInt32 cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_0 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_1 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_1 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -555,7 +555,7 @@ PMSInt32 cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_1 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_2 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_2 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -565,7 +565,7 @@ PMSInt32 cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_2 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_3 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_3 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -575,7 +575,7 @@ PMSInt32 cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_3 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_4 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_4 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -585,7 +585,7 @@ PMSInt32 cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_4 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_5 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_5 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -595,7 +595,7 @@ PMSInt32 cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_5 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_6 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_6 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -605,7 +605,7 @@ PMSInt32 cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_6 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_7 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_7 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -615,7 +615,7 @@ PMSInt32 cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_7 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_8 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_8 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -625,7 +625,7 @@ PMSInt32 cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_8 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_9 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_grammarLL_31_grammar::select_grammarModelBuilder_9 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 

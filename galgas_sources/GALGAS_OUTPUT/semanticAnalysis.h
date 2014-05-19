@@ -663,7 +663,7 @@ typedef void (*categoryMethodSignature_semanticDeclarationAST_semanticAnalysis) 
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_semanticAnalysis (const PMSInt32 inClassIndex,
+void enterCategoryMethod_semanticAnalysis (const int32_t inClassIndex,
                                            categoryMethodSignature_semanticDeclarationAST_semanticAnalysis inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -721,7 +721,7 @@ class GALGAS_attributeIndexMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_attributeIndexMap_2E_element & inOperand) const ;
 
@@ -792,7 +792,7 @@ class GALGAS_constantIndexMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_constantIndexMap_2E_element & inOperand) const ;
 
@@ -860,7 +860,7 @@ class GALGAS_insertMethodMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_insertMethodMap_2E_element & inOperand) const ;
 
@@ -926,7 +926,7 @@ class GALGAS_searchMethodMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_searchMethodMap_2E_element & inOperand) const ;
 
@@ -992,7 +992,7 @@ class GALGAS_declaredMethodMap_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_declaredMethodMap_2E_element & inOperand) const ;
 
@@ -1040,7 +1040,7 @@ class cMapElement_attributeIndexMap : public cMapElement {
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -1068,7 +1068,7 @@ class cMapElement_constantIndexMap : public cMapElement {
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -1094,7 +1094,7 @@ class cMapElement_insertMethodMap : public cMapElement {
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -1120,7 +1120,7 @@ class cMapElement_searchMethodMap : public cMapElement {
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -1146,7 +1146,7 @@ class cMapElement_declaredMethodMap : public cMapElement {
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //--- START OF USER ZONE 2

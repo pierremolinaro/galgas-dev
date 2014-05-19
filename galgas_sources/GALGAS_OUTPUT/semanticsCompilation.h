@@ -389,7 +389,7 @@ typedef void (*categoryMethodSignature_semanticDeclarationForGeneration_addCppTy
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_addCppTypeForPredeclarationInHeaderFile (const PMSInt32 inClassIndex,
+void enterCategoryMethod_addCppTypeForPredeclarationInHeaderFile (const int32_t inClassIndex,
                                                                   categoryMethodSignature_semanticDeclarationForGeneration_addCppTypeForPredeclarationInHeaderFile inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -442,7 +442,7 @@ class GALGAS_grammarComponentASTList_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_grammarComponentASTList_2E_element & inOperand) const ;
 

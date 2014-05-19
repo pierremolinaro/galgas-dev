@@ -76,25 +76,25 @@ class cGrammar_grammarLL_31_grammar : public cParser_grammarModelBuilder {
                                                           GALGAS_formalParameterListAST & ioArgument1,
                                                           C_Lexique_galgas_5F_scanner * inCompiler) ;
 
-  public : virtual PMSInt32 select_grammarModelBuilder_0 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_grammarModelBuilder_0 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_grammarModelBuilder_1 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_grammarModelBuilder_1 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_grammarModelBuilder_2 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_grammarModelBuilder_2 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_grammarModelBuilder_3 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_grammarModelBuilder_3 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_grammarModelBuilder_4 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_grammarModelBuilder_4 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_grammarModelBuilder_5 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_grammarModelBuilder_5 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_grammarModelBuilder_6 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_grammarModelBuilder_6 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_grammarModelBuilder_7 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_grammarModelBuilder_7 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_grammarModelBuilder_8 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_grammarModelBuilder_8 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_grammarModelBuilder_9 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_grammarModelBuilder_9 (C_Lexique_galgas_5F_scanner *) ;
 } ;
 
 //-----------------------------------------------------------------------------*

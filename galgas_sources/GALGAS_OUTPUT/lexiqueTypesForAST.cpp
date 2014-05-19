@@ -53,7 +53,7 @@ class cCollectionElement_lexicalInstructionListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -80,7 +80,7 @@ cCollectionElement * cCollectionElement_lexicalInstructionListAST::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_lexicalInstructionListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_lexicalInstructionListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mInstruction" ":" ;
@@ -393,7 +393,7 @@ class cCollectionElement_metamodelTemplateDelimitorListAST : public cCollectionE
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -422,7 +422,7 @@ cCollectionElement * cCollectionElement_metamodelTemplateDelimitorListAST::copy 
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_metamodelTemplateDelimitorListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_metamodelTemplateDelimitorListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mStartString" ":" ;
@@ -799,7 +799,7 @@ class cCollectionElement_templateReplacementListAST : public cCollectionElement 
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -828,7 +828,7 @@ cCollectionElement * cCollectionElement_templateReplacementListAST::copy (void) 
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_templateReplacementListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_templateReplacementListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mMatchString" ":" ;
@@ -1203,7 +1203,7 @@ class cCollectionElement_lexicalRuleListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -1230,7 +1230,7 @@ cCollectionElement * cCollectionElement_lexicalRuleListAST::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_lexicalRuleListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_lexicalRuleListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLexicalRule" ":" ;
@@ -1542,7 +1542,7 @@ class cCollectionElement_lexicalMessageDeclarationListAST : public cCollectionEl
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -1570,7 +1570,7 @@ cCollectionElement * cCollectionElement_lexicalMessageDeclarationListAST::copy (
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_lexicalMessageDeclarationListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_lexicalMessageDeclarationListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mMessageName" ":" ;
@@ -1914,7 +1914,7 @@ class cCollectionElement_lexicalAttributeListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -1942,7 +1942,7 @@ cCollectionElement * cCollectionElement_lexicalAttributeListAST::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_lexicalAttributeListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_lexicalAttributeListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mTypeName" ":" ;
@@ -2286,7 +2286,7 @@ class cCollectionElement_lexicalStyleListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -2314,7 +2314,7 @@ cCollectionElement * cCollectionElement_lexicalStyleListAST::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_lexicalStyleListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_lexicalStyleListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mName" ":" ;
@@ -2661,7 +2661,7 @@ class cCollectionElement_terminalDeclarationListAST : public cCollectionElement 
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -2692,7 +2692,7 @@ cCollectionElement * cCollectionElement_terminalDeclarationListAST::copy (void) 
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_terminalDeclarationListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_terminalDeclarationListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mName" ":" ;
@@ -3133,7 +3133,7 @@ class cCollectionElement_lexicalListEntryListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -3162,7 +3162,7 @@ cCollectionElement * cCollectionElement_lexicalListEntryListAST::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_lexicalListEntryListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_lexicalListEntryListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mEntrySpelling" ":" ;
@@ -3541,7 +3541,7 @@ class cCollectionElement_lexicalListDeclarationListAST : public cCollectionEleme
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -3572,7 +3572,7 @@ cCollectionElement * cCollectionElement_lexicalListDeclarationListAST::copy (voi
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_lexicalListDeclarationListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_lexicalListDeclarationListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mName" ":" ;
@@ -4012,7 +4012,7 @@ class cCollectionElement_lexicalSendSearchListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -4040,7 +4040,7 @@ cCollectionElement * cCollectionElement_lexicalSendSearchListAST::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_lexicalSendSearchListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_lexicalSendSearchListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mAttributeName" ":" ;
@@ -4384,7 +4384,7 @@ class cCollectionElement_lexicalWhileBranchListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -4412,7 +4412,7 @@ cCollectionElement * cCollectionElement_lexicalWhileBranchListAST::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_lexicalWhileBranchListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_lexicalWhileBranchListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mWhileExpression" ":" ;
@@ -4756,7 +4756,7 @@ class cCollectionElement_lexicalSelectBranchListAST : public cCollectionElement 
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -4784,7 +4784,7 @@ cCollectionElement * cCollectionElement_lexicalSelectBranchListAST::copy (void) 
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_lexicalSelectBranchListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_lexicalSelectBranchListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mSelectExpression" ":" ;
@@ -5127,7 +5127,7 @@ class cCollectionElement_lexicalRoutineCallActualArgumentListAST : public cColle
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -5154,7 +5154,7 @@ cCollectionElement * cCollectionElement_lexicalRoutineCallActualArgumentListAST:
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_lexicalRoutineCallActualArgumentListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_lexicalRoutineCallActualArgumentListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLexicalRoutineActualArgument" ":" ;
@@ -5465,7 +5465,7 @@ class cCollectionElement_lexicalFunctionCallActualArgumentListAST : public cColl
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -5492,7 +5492,7 @@ cCollectionElement * cCollectionElement_lexicalFunctionCallActualArgumentListAST
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_lexicalFunctionCallActualArgumentListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_lexicalFunctionCallActualArgumentListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLexicalActualInputArgument" ":" ;
@@ -5813,7 +5813,7 @@ static const char * gEnumNameArrayFor_lexicalArgumentModeAST [3] = {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalArgumentModeAST::description (C_String & ioString,
-                                                 const PMSInt32 /* inIndentation */) const {
+                                                 const int32_t /* inIndentation */) const {
   ioString << "<enum @lexicalArgumentModeAST: " << gEnumNameArrayFor_lexicalArgumentModeAST [mEnum] << ">" ;
 }
 
@@ -5901,7 +5901,7 @@ class cCollectionElement_lexicalExternRoutineFormalArgumentListAST : public cCol
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -5930,7 +5930,7 @@ cCollectionElement * cCollectionElement_lexicalExternRoutineFormalArgumentListAS
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_lexicalExternRoutineFormalArgumentListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_lexicalExternRoutineFormalArgumentListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mPassingMode" ":" ;
@@ -6307,7 +6307,7 @@ class cCollectionElement_externRoutineListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -6336,7 +6336,7 @@ cCollectionElement * cCollectionElement_externRoutineListAST::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_externRoutineListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_externRoutineListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mRoutineName" ":" ;
@@ -6712,7 +6712,7 @@ class cCollectionElement_lexicalExternFunctionFormalArgumentListAST : public cCo
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -6740,7 +6740,7 @@ cCollectionElement * cCollectionElement_lexicalExternFunctionFormalArgumentListA
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_lexicalExternFunctionFormalArgumentListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_lexicalExternFunctionFormalArgumentListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLexicalTypeName" ":" ;
@@ -7085,7 +7085,7 @@ class cCollectionElement_externFunctionListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -7114,7 +7114,7 @@ cCollectionElement * cCollectionElement_externFunctionListAST::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_externFunctionListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_externFunctionListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mFunctionName" ":" ;
@@ -7490,7 +7490,7 @@ class cCollectionElement_indexingListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -7518,7 +7518,7 @@ cCollectionElement * cCollectionElement_indexingListAST::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_indexingListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_indexingListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mIndexName" ":" ;
@@ -7847,8 +7847,8 @@ GALGAS_indexingListAST GALGAS_indexingListAST::extractObject (const GALGAS_objec
 typeComparisonResult GALGAS_abstractLexicalRoutineActualArgumentAST::objectCompare (const GALGAS_abstractLexicalRoutineActualArgumentAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -7969,8 +7969,8 @@ typeComparisonResult cPtr_lexicalAttributeInputOutputArgumentAST::dynamicObjectC
 typeComparisonResult GALGAS_lexicalAttributeInputOutputArgumentAST::objectCompare (const GALGAS_lexicalAttributeInputOutputArgumentAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -8066,7 +8066,7 @@ const C_galgas_type_descriptor * cPtr_lexicalAttributeInputOutputArgumentAST::cl
 }
 
 void cPtr_lexicalAttributeInputOutputArgumentAST::description (C_String & ioString,
-                                                               const PMSInt32 inIndentation) const {
+                                                               const int32_t inIndentation) const {
   ioString << "[@lexicalAttributeInputOutputArgumentAST:" ;
   mAttribute_mActualPassingModeLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -8142,8 +8142,8 @@ typeComparisonResult cPtr_lexicalFormalInputArgumentAST::dynamicObjectCompare (c
 typeComparisonResult GALGAS_lexicalFormalInputArgumentAST::objectCompare (const GALGAS_lexicalFormalInputArgumentAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -8231,7 +8231,7 @@ const C_galgas_type_descriptor * cPtr_lexicalFormalInputArgumentAST::classDescri
 }
 
 void cPtr_lexicalFormalInputArgumentAST::description (C_String & ioString,
-                                                      const PMSInt32 inIndentation) const {
+                                                      const int32_t inIndentation) const {
   ioString << "[@lexicalFormalInputArgumentAST:" ;
   mAttribute_mActualPassingModeLocation.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -8293,8 +8293,8 @@ GALGAS_lexicalFormalInputArgumentAST GALGAS_lexicalFormalInputArgumentAST::extra
 typeComparisonResult GALGAS_abstractLexicalRuleAST::objectCompare (const GALGAS_abstractLexicalRuleAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -8395,8 +8395,8 @@ typeComparisonResult cPtr_lexicalExplicitRuleAST::dynamicObjectCompare (const ac
 typeComparisonResult GALGAS_lexicalExplicitRuleAST::objectCompare (const GALGAS_lexicalExplicitRuleAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -8503,7 +8503,7 @@ const C_galgas_type_descriptor * cPtr_lexicalExplicitRuleAST::classDescriptor (v
 }
 
 void cPtr_lexicalExplicitRuleAST::description (C_String & ioString,
-                                               const PMSInt32 inIndentation) const {
+                                               const int32_t inIndentation) const {
   ioString << "[@lexicalExplicitRuleAST:" ;
   mAttribute_mLexicalRuleExpression.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -8576,8 +8576,8 @@ typeComparisonResult cPtr_lexicalImplicitRuleAST::dynamicObjectCompare (const ac
 typeComparisonResult GALGAS_lexicalImplicitRuleAST::objectCompare (const GALGAS_lexicalImplicitRuleAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -8670,7 +8670,7 @@ const C_galgas_type_descriptor * cPtr_lexicalImplicitRuleAST::classDescriptor (v
 }
 
 void cPtr_lexicalImplicitRuleAST::description (C_String & ioString,
-                                               const PMSInt32 inIndentation) const {
+                                               const int32_t inIndentation) const {
   ioString << "[@lexicalImplicitRuleAST:" ;
   mAttribute_mListName.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -8730,8 +8730,8 @@ GALGAS_lexicalImplicitRuleAST GALGAS_lexicalImplicitRuleAST::extractObject (cons
 typeComparisonResult GALGAS_lexicalExpressionAST::objectCompare (const GALGAS_lexicalExpressionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -8832,8 +8832,8 @@ typeComparisonResult cPtr_lexicalCharacterIntervalMatchAST::dynamicObjectCompare
 typeComparisonResult GALGAS_lexicalCharacterIntervalMatchAST::objectCompare (const GALGAS_lexicalCharacterIntervalMatchAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -8948,7 +8948,7 @@ const C_galgas_type_descriptor * cPtr_lexicalCharacterIntervalMatchAST::classDes
 }
 
 void cPtr_lexicalCharacterIntervalMatchAST::description (C_String & ioString,
-                                                         const PMSInt32 inIndentation) const {
+                                                         const int32_t inIndentation) const {
   ioString << "[@lexicalCharacterIntervalMatchAST:" ;
   mAttribute_mLowerBound.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -9021,8 +9021,8 @@ typeComparisonResult cPtr_lexicalCharacterMatchAST::dynamicObjectCompare (const 
 typeComparisonResult GALGAS_lexicalCharacterMatchAST::objectCompare (const GALGAS_lexicalCharacterMatchAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -9115,7 +9115,7 @@ const C_galgas_type_descriptor * cPtr_lexicalCharacterMatchAST::classDescriptor 
 }
 
 void cPtr_lexicalCharacterMatchAST::description (C_String & ioString,
-                                                 const PMSInt32 inIndentation) const {
+                                                 const int32_t inIndentation) const {
   ioString << "[@lexicalCharacterMatchAST:" ;
   mAttribute_mCharacter.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -9186,8 +9186,8 @@ typeComparisonResult cPtr_lexicalCharacterSetMatchAST::dynamicObjectCompare (con
 typeComparisonResult GALGAS_lexicalCharacterSetMatchAST::objectCompare (const GALGAS_lexicalCharacterSetMatchAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -9280,7 +9280,7 @@ const C_galgas_type_descriptor * cPtr_lexicalCharacterSetMatchAST::classDescript
 }
 
 void cPtr_lexicalCharacterSetMatchAST::description (C_String & ioString,
-                                                    const PMSInt32 inIndentation) const {
+                                                    const int32_t inIndentation) const {
   ioString << "[@lexicalCharacterSetMatchAST:" ;
   mAttribute_mCharacterSetName.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -9354,8 +9354,8 @@ typeComparisonResult cPtr_lexicalOrExpressionAST::dynamicObjectCompare (const ac
 typeComparisonResult GALGAS_lexicalOrExpressionAST::objectCompare (const GALGAS_lexicalOrExpressionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -9462,7 +9462,7 @@ const C_galgas_type_descriptor * cPtr_lexicalOrExpressionAST::classDescriptor (v
 }
 
 void cPtr_lexicalOrExpressionAST::description (C_String & ioString,
-                                               const PMSInt32 inIndentation) const {
+                                               const int32_t inIndentation) const {
   ioString << "[@lexicalOrExpressionAST:" ;
   mAttribute_mLeftOperand.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -9535,8 +9535,8 @@ typeComparisonResult cPtr_lexicalStringMatchAST::dynamicObjectCompare (const acP
 typeComparisonResult GALGAS_lexicalStringMatchAST::objectCompare (const GALGAS_lexicalStringMatchAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -9629,7 +9629,7 @@ const C_galgas_type_descriptor * cPtr_lexicalStringMatchAST::classDescriptor (vo
 }
 
 void cPtr_lexicalStringMatchAST::description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const {
+                                              const int32_t inIndentation) const {
   ioString << "[@lexicalStringMatchAST:" ;
   mAttribute_mString.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -9703,8 +9703,8 @@ typeComparisonResult cPtr_lexicalStringNotMatchAST::dynamicObjectCompare (const 
 typeComparisonResult GALGAS_lexicalStringNotMatchAST::objectCompare (const GALGAS_lexicalStringNotMatchAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -9819,7 +9819,7 @@ const C_galgas_type_descriptor * cPtr_lexicalStringNotMatchAST::classDescriptor 
 }
 
 void cPtr_lexicalStringNotMatchAST::description (C_String & ioString,
-                                                 const PMSInt32 inIndentation) const {
+                                                 const int32_t inIndentation) const {
   ioString << "[@lexicalStringNotMatchAST:" ;
   mAttribute_mString.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -9881,8 +9881,8 @@ GALGAS_lexicalStringNotMatchAST GALGAS_lexicalStringNotMatchAST::extractObject (
 typeComparisonResult GALGAS_lexicalInstructionAST::objectCompare (const GALGAS_lexicalInstructionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -9980,8 +9980,8 @@ typeComparisonResult cPtr_lexicalDropInstructionAST::dynamicObjectCompare (const
 typeComparisonResult GALGAS_lexicalDropInstructionAST::objectCompare (const GALGAS_lexicalDropInstructionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -10074,7 +10074,7 @@ const C_galgas_type_descriptor * cPtr_lexicalDropInstructionAST::classDescriptor
 }
 
 void cPtr_lexicalDropInstructionAST::description (C_String & ioString,
-                                                  const PMSInt32 inIndentation) const {
+                                                  const int32_t inIndentation) const {
   ioString << "[@lexicalDropInstructionAST:" ;
   mAttribute_mTerminalName.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -10145,8 +10145,8 @@ typeComparisonResult cPtr_lexicalErrorInstructionAST::dynamicObjectCompare (cons
 typeComparisonResult GALGAS_lexicalErrorInstructionAST::objectCompare (const GALGAS_lexicalErrorInstructionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -10239,7 +10239,7 @@ const C_galgas_type_descriptor * cPtr_lexicalErrorInstructionAST::classDescripto
 }
 
 void cPtr_lexicalErrorInstructionAST::description (C_String & ioString,
-                                                   const PMSInt32 inIndentation) const {
+                                                   const int32_t inIndentation) const {
   ioString << "[@lexicalErrorInstructionAST:" ;
   mAttribute_mErrorMessageName.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -10304,8 +10304,8 @@ typeComparisonResult cPtr_lexicalLogInstructionAST::dynamicObjectCompare (const 
 typeComparisonResult GALGAS_lexicalLogInstructionAST::objectCompare (const GALGAS_lexicalLogInstructionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -10359,7 +10359,7 @@ const C_galgas_type_descriptor * cPtr_lexicalLogInstructionAST::classDescriptor 
 }
 
 void cPtr_lexicalLogInstructionAST::description (C_String & ioString,
-                                                 const PMSInt32 /* inIndentation */) const {
+                                                 const int32_t /* inIndentation */) const {
   ioString << "[@lexicalLogInstructionAST]" ;
 }
 
@@ -10431,8 +10431,8 @@ typeComparisonResult cPtr_lexicalRepeatInstructionAST::dynamicObjectCompare (con
 typeComparisonResult GALGAS_lexicalRepeatInstructionAST::objectCompare (const GALGAS_lexicalRepeatInstructionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -10547,7 +10547,7 @@ const C_galgas_type_descriptor * cPtr_lexicalRepeatInstructionAST::classDescript
 }
 
 void cPtr_lexicalRepeatInstructionAST::description (C_String & ioString,
-                                                    const PMSInt32 inIndentation) const {
+                                                    const int32_t inIndentation) const {
   ioString << "[@lexicalRepeatInstructionAST:" ;
   mAttribute_mRepeatedInstructionList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -10623,8 +10623,8 @@ typeComparisonResult cPtr_lexicalRewindInstructionAST::dynamicObjectCompare (con
 typeComparisonResult GALGAS_lexicalRewindInstructionAST::objectCompare (const GALGAS_lexicalRewindInstructionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -10739,7 +10739,7 @@ const C_galgas_type_descriptor * cPtr_lexicalRewindInstructionAST::classDescript
 }
 
 void cPtr_lexicalRewindInstructionAST::description (C_String & ioString,
-                                                    const PMSInt32 inIndentation) const {
+                                                    const int32_t inIndentation) const {
   ioString << "[@lexicalRewindInstructionAST:" ;
   mAttribute_mLexicalTagName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -10818,8 +10818,8 @@ typeComparisonResult cPtr_lexicalRoutineInstructionAST::dynamicObjectCompare (co
 typeComparisonResult GALGAS_lexicalRoutineInstructionAST::objectCompare (const GALGAS_lexicalRoutineInstructionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -10956,7 +10956,7 @@ const C_galgas_type_descriptor * cPtr_lexicalRoutineInstructionAST::classDescrip
 }
 
 void cPtr_lexicalRoutineInstructionAST::description (C_String & ioString,
-                                                     const PMSInt32 inIndentation) const {
+                                                     const int32_t inIndentation) const {
   ioString << "[@lexicalRoutineInstructionAST:" ;
   mAttribute_mRoutineName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -11034,8 +11034,8 @@ typeComparisonResult cPtr_lexicalSelectInstructionAST::dynamicObjectCompare (con
 typeComparisonResult GALGAS_lexicalSelectInstructionAST::objectCompare (const GALGAS_lexicalSelectInstructionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -11150,7 +11150,7 @@ const C_galgas_type_descriptor * cPtr_lexicalSelectInstructionAST::classDescript
 }
 
 void cPtr_lexicalSelectInstructionAST::description (C_String & ioString,
-                                                    const PMSInt32 inIndentation) const {
+                                                    const int32_t inIndentation) const {
   ioString << "[@lexicalSelectInstructionAST:" ;
   mAttribute_mLexicalSelectBranchList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -11223,8 +11223,8 @@ typeComparisonResult cPtr_lexicalSimpleSendInstructionAST::dynamicObjectCompare 
 typeComparisonResult GALGAS_lexicalSimpleSendInstructionAST::objectCompare (const GALGAS_lexicalSimpleSendInstructionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -11317,7 +11317,7 @@ const C_galgas_type_descriptor * cPtr_lexicalSimpleSendInstructionAST::classDesc
 }
 
 void cPtr_lexicalSimpleSendInstructionAST::description (C_String & ioString,
-                                                        const PMSInt32 inIndentation) const {
+                                                        const int32_t inIndentation) const {
   ioString << "[@lexicalSimpleSendInstructionAST:" ;
   mAttribute_mSentTerminal.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -11391,8 +11391,8 @@ typeComparisonResult cPtr_lexicalStructuredSendInstructionAST::dynamicObjectComp
 typeComparisonResult GALGAS_lexicalStructuredSendInstructionAST::objectCompare (const GALGAS_lexicalStructuredSendInstructionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -11499,7 +11499,7 @@ const C_galgas_type_descriptor * cPtr_lexicalStructuredSendInstructionAST::class
 }
 
 void cPtr_lexicalStructuredSendInstructionAST::description (C_String & ioString,
-                                                            const PMSInt32 inIndentation) const {
+                                                            const int32_t inIndentation) const {
   ioString << "[@lexicalStructuredSendInstructionAST:" ;
   mAttribute_mLexicalSendSearchList.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -11572,8 +11572,8 @@ typeComparisonResult cPtr_lexicalTagInstructionAST::dynamicObjectCompare (const 
 typeComparisonResult GALGAS_lexicalTagInstructionAST::objectCompare (const GALGAS_lexicalTagInstructionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -11666,7 +11666,7 @@ const C_galgas_type_descriptor * cPtr_lexicalTagInstructionAST::classDescriptor 
 }
 
 void cPtr_lexicalTagInstructionAST::description (C_String & ioString,
-                                                 const PMSInt32 inIndentation) const {
+                                                 const int32_t inIndentation) const {
   ioString << "[@lexicalTagInstructionAST:" ;
   mAttribute_mLexicalTagName.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -11737,8 +11737,8 @@ typeComparisonResult cPtr_lexicalWarningInstructionAST::dynamicObjectCompare (co
 typeComparisonResult GALGAS_lexicalWarningInstructionAST::objectCompare (const GALGAS_lexicalWarningInstructionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -11831,7 +11831,7 @@ const C_galgas_type_descriptor * cPtr_lexicalWarningInstructionAST::classDescrip
 }
 
 void cPtr_lexicalWarningInstructionAST::description (C_String & ioString,
-                                                     const PMSInt32 inIndentation) const {
+                                                     const int32_t inIndentation) const {
   ioString << "[@lexicalWarningInstructionAST:" ;
   mAttribute_mWarningMessageName.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -11891,8 +11891,8 @@ GALGAS_lexicalWarningInstructionAST GALGAS_lexicalWarningInstructionAST::extract
 typeComparisonResult GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST::objectCompare (const GALGAS_lexicalRoutineOrFunctionFormalInputArgumentAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -11990,8 +11990,8 @@ typeComparisonResult cPtr_lexicalAttributeInputArgumentAST::dynamicObjectCompare
 typeComparisonResult GALGAS_lexicalAttributeInputArgumentAST::objectCompare (const GALGAS_lexicalAttributeInputArgumentAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -12084,7 +12084,7 @@ const C_galgas_type_descriptor * cPtr_lexicalAttributeInputArgumentAST::classDes
 }
 
 void cPtr_lexicalAttributeInputArgumentAST::description (C_String & ioString,
-                                                         const PMSInt32 inIndentation) const {
+                                                         const int32_t inIndentation) const {
   ioString << "[@lexicalAttributeInputArgumentAST:" ;
   mAttribute_mAttributeName.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -12155,8 +12155,8 @@ typeComparisonResult cPtr_lexicalCharacterInputArgumentAST::dynamicObjectCompare
 typeComparisonResult GALGAS_lexicalCharacterInputArgumentAST::objectCompare (const GALGAS_lexicalCharacterInputArgumentAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -12249,7 +12249,7 @@ const C_galgas_type_descriptor * cPtr_lexicalCharacterInputArgumentAST::classDes
 }
 
 void cPtr_lexicalCharacterInputArgumentAST::description (C_String & ioString,
-                                                         const PMSInt32 inIndentation) const {
+                                                         const int32_t inIndentation) const {
   ioString << "[@lexicalCharacterInputArgumentAST:" ;
   mAttribute_mCharacter.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -12320,8 +12320,8 @@ typeComparisonResult cPtr_lexicalCurrentCharacterInputArgumentAST::dynamicObject
 typeComparisonResult GALGAS_lexicalCurrentCharacterInputArgumentAST::objectCompare (const GALGAS_lexicalCurrentCharacterInputArgumentAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -12414,7 +12414,7 @@ const C_galgas_type_descriptor * cPtr_lexicalCurrentCharacterInputArgumentAST::c
 }
 
 void cPtr_lexicalCurrentCharacterInputArgumentAST::description (C_String & ioString,
-                                                                const PMSInt32 inIndentation) const {
+                                                                const int32_t inIndentation) const {
   ioString << "[@lexicalCurrentCharacterInputArgumentAST:" ;
   mAttribute_mLocation.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -12488,8 +12488,8 @@ typeComparisonResult cPtr_lexicalFunctionInputArgumentAST::dynamicObjectCompare 
 typeComparisonResult GALGAS_lexicalFunctionInputArgumentAST::objectCompare (const GALGAS_lexicalFunctionInputArgumentAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -12604,7 +12604,7 @@ const C_galgas_type_descriptor * cPtr_lexicalFunctionInputArgumentAST::classDesc
 }
 
 void cPtr_lexicalFunctionInputArgumentAST::description (C_String & ioString,
-                                                        const PMSInt32 inIndentation) const {
+                                                        const int32_t inIndentation) const {
   ioString << "[@lexicalFunctionInputArgumentAST:" ;
   mAttribute_mFunctionName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -12677,8 +12677,8 @@ typeComparisonResult cPtr_lexicalUnsignedInputArgumentAST::dynamicObjectCompare 
 typeComparisonResult GALGAS_lexicalUnsignedInputArgumentAST::objectCompare (const GALGAS_lexicalUnsignedInputArgumentAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -12771,7 +12771,7 @@ const C_galgas_type_descriptor * cPtr_lexicalUnsignedInputArgumentAST::classDesc
 }
 
 void cPtr_lexicalUnsignedInputArgumentAST::description (C_String & ioString,
-                                                        const PMSInt32 inIndentation) const {
+                                                        const int32_t inIndentation) const {
   ioString << "[@lexicalUnsignedInputArgumentAST:" ;
   mAttribute_mUnsigned.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -12831,8 +12831,8 @@ GALGAS_lexicalUnsignedInputArgumentAST GALGAS_lexicalUnsignedInputArgumentAST::e
 typeComparisonResult GALGAS_lexicalSendDefaultActionAST::objectCompare (const GALGAS_lexicalSendDefaultActionAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -12930,8 +12930,8 @@ typeComparisonResult cPtr_lexicalErrorByDefaultAST::dynamicObjectCompare (const 
 typeComparisonResult GALGAS_lexicalErrorByDefaultAST::objectCompare (const GALGAS_lexicalErrorByDefaultAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -13024,7 +13024,7 @@ const C_galgas_type_descriptor * cPtr_lexicalErrorByDefaultAST::classDescriptor 
 }
 
 void cPtr_lexicalErrorByDefaultAST::description (C_String & ioString,
-                                                 const PMSInt32 inIndentation) const {
+                                                 const int32_t inIndentation) const {
   ioString << "[@lexicalErrorByDefaultAST:" ;
   mAttribute_mDefaultErrorMessageName.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -13095,8 +13095,8 @@ typeComparisonResult cPtr_lexicalSendTerminalByDefaultAST::dynamicObjectCompare 
 typeComparisonResult GALGAS_lexicalSendTerminalByDefaultAST::objectCompare (const GALGAS_lexicalSendTerminalByDefaultAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -13189,7 +13189,7 @@ const C_galgas_type_descriptor * cPtr_lexicalSendTerminalByDefaultAST::classDesc
 }
 
 void cPtr_lexicalSendTerminalByDefaultAST::description (C_String & ioString,
-                                                        const PMSInt32 inIndentation) const {
+                                                        const int32_t inIndentation) const {
   ioString << "[@lexicalSendTerminalByDefaultAST:" ;
   mAttribute_mDefaultSentTerminal.description (ioString, inIndentation+1) ;
   ioString << "]" ;
@@ -13540,7 +13540,7 @@ void GALGAS_lexiqueComponentAST::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexiqueComponentAST::description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const {
+                                              const int32_t inIndentation) const {
   ioString << "<struct @lexiqueComponentAST:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -13758,7 +13758,7 @@ void GALGAS_lexicalInstructionListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalInstructionListAST_2E_element::description (C_String & ioString,
-                                                               const PMSInt32 inIndentation) const {
+                                                               const int32_t inIndentation) const {
   ioString << "<struct @lexicalInstructionListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -13896,7 +13896,7 @@ void GALGAS_metamodelTemplateDelimitorListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_metamodelTemplateDelimitorListAST_2E_element::description (C_String & ioString,
-                                                                       const PMSInt32 inIndentation) const {
+                                                                       const int32_t inIndentation) const {
   ioString << "<struct @metamodelTemplateDelimitorListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -14050,7 +14050,7 @@ void GALGAS_templateReplacementListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_templateReplacementListAST_2E_element::description (C_String & ioString,
-                                                                const PMSInt32 inIndentation) const {
+                                                                const int32_t inIndentation) const {
   ioString << "<struct @templateReplacementListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -14180,7 +14180,7 @@ void GALGAS_lexicalRuleListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalRuleListAST_2E_element::description (C_String & ioString,
-                                                        const PMSInt32 inIndentation) const {
+                                                        const int32_t inIndentation) const {
   ioString << "<struct @lexicalRuleListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -14309,7 +14309,7 @@ void GALGAS_lexicalMessageDeclarationListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalMessageDeclarationListAST_2E_element::description (C_String & ioString,
-                                                                      const PMSInt32 inIndentation) const {
+                                                                      const int32_t inIndentation) const {
   ioString << "<struct @lexicalMessageDeclarationListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -14446,7 +14446,7 @@ void GALGAS_lexicalAttributeListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalAttributeListAST_2E_element::description (C_String & ioString,
-                                                             const PMSInt32 inIndentation) const {
+                                                             const int32_t inIndentation) const {
   ioString << "<struct @lexicalAttributeListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -14583,7 +14583,7 @@ void GALGAS_lexicalStyleListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalStyleListAST_2E_element::description (C_String & ioString,
-                                                         const PMSInt32 inIndentation) const {
+                                                         const int32_t inIndentation) const {
   ioString << "<struct @lexicalStyleListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -14747,7 +14747,7 @@ void GALGAS_terminalDeclarationListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_terminalDeclarationListAST_2E_element::description (C_String & ioString,
-                                                                const PMSInt32 inIndentation) const {
+                                                                const int32_t inIndentation) const {
   ioString << "<struct @terminalDeclarationListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -14917,7 +14917,7 @@ void GALGAS_lexicalListEntryListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalListEntryListAST_2E_element::description (C_String & ioString,
-                                                             const PMSInt32 inIndentation) const {
+                                                             const int32_t inIndentation) const {
   ioString << "<struct @lexicalListEntryListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -15089,7 +15089,7 @@ void GALGAS_lexicalListDeclarationListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalListDeclarationListAST_2E_element::description (C_String & ioString,
-                                                                   const PMSInt32 inIndentation) const {
+                                                                   const int32_t inIndentation) const {
   ioString << "<struct @lexicalListDeclarationListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -15250,7 +15250,7 @@ void GALGAS_lexicalSendSearchListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalSendSearchListAST_2E_element::description (C_String & ioString,
-                                                              const PMSInt32 inIndentation) const {
+                                                              const int32_t inIndentation) const {
   ioString << "<struct @lexicalSendSearchListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -15380,7 +15380,7 @@ void GALGAS_lexicalWhileBranchListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalWhileBranchListAST_2E_element::description (C_String & ioString,
-                                                               const PMSInt32 inIndentation) const {
+                                                               const int32_t inIndentation) const {
   ioString << "<struct @lexicalWhileBranchListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -15510,7 +15510,7 @@ void GALGAS_lexicalSelectBranchListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalSelectBranchListAST_2E_element::description (C_String & ioString,
-                                                                const PMSInt32 inIndentation) const {
+                                                                const int32_t inIndentation) const {
   ioString << "<struct @lexicalSelectBranchListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -15632,7 +15632,7 @@ void GALGAS_lexicalRoutineCallActualArgumentListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalRoutineCallActualArgumentListAST_2E_element::description (C_String & ioString,
-                                                                             const PMSInt32 inIndentation) const {
+                                                                             const int32_t inIndentation) const {
   ioString << "<struct @lexicalRoutineCallActualArgumentListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -15746,7 +15746,7 @@ void GALGAS_lexicalFunctionCallActualArgumentListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalFunctionCallActualArgumentListAST_2E_element::description (C_String & ioString,
-                                                                              const PMSInt32 inIndentation) const {
+                                                                              const int32_t inIndentation) const {
   ioString << "<struct @lexicalFunctionCallActualArgumentListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -15884,7 +15884,7 @@ void GALGAS_lexicalExternRoutineFormalArgumentListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalExternRoutineFormalArgumentListAST_2E_element::description (C_String & ioString,
-                                                                               const PMSInt32 inIndentation) const {
+                                                                               const int32_t inIndentation) const {
   ioString << "<struct @lexicalExternRoutineFormalArgumentListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -16038,7 +16038,7 @@ void GALGAS_externRoutineListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_externRoutineListAST_2E_element::description (C_String & ioString,
-                                                          const PMSInt32 inIndentation) const {
+                                                          const int32_t inIndentation) const {
   ioString << "<struct @externRoutineListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -16183,7 +16183,7 @@ void GALGAS_lexicalExternFunctionFormalArgumentListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalExternFunctionFormalArgumentListAST_2E_element::description (C_String & ioString,
-                                                                                const PMSInt32 inIndentation) const {
+                                                                                const int32_t inIndentation) const {
   ioString << "<struct @lexicalExternFunctionFormalArgumentListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -16329,7 +16329,7 @@ void GALGAS_externFunctionListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_externFunctionListAST_2E_element::description (C_String & ioString,
-                                                           const PMSInt32 inIndentation) const {
+                                                           const int32_t inIndentation) const {
   ioString << "<struct @externFunctionListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -16474,7 +16474,7 @@ void GALGAS_indexingListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_indexingListAST_2E_element::description (C_String & ioString,
-                                                     const PMSInt32 inIndentation) const {
+                                                     const int32_t inIndentation) const {
   ioString << "<struct @indexingListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;

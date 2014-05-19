@@ -1380,7 +1380,7 @@ class GALGAS_syntaxComponentAST : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_syntaxComponentAST & inOperand) const ;
 
@@ -1455,7 +1455,7 @@ class GALGAS_syntaxInstructionList_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_syntaxInstructionList_2E_element & inOperand) const ;
 
@@ -1527,7 +1527,7 @@ class GALGAS_nonTerminalLabelListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_nonTerminalLabelListAST_2E_element & inOperand) const ;
 
@@ -1600,7 +1600,7 @@ class GALGAS_nonterminalDeclarationListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_nonterminalDeclarationListAST_2E_element & inOperand) const ;
 
@@ -1680,7 +1680,7 @@ class GALGAS_syntaxRuleLabelListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_syntaxRuleLabelListAST_2E_element & inOperand) const ;
 
@@ -1757,7 +1757,7 @@ class GALGAS_syntaxRuleListAST_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_syntaxRuleListAST_2E_element & inOperand) const ;
 
@@ -1828,7 +1828,7 @@ class GALGAS_listOfSyntaxInstructionList_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_listOfSyntaxInstructionList_2E_element & inOperand) const ;
 
@@ -1878,7 +1878,7 @@ class cPtr_nonterminalCallInstruction : public cPtr_syntaxInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_actualParameterListAST reader_mActualParameterList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -1920,7 +1920,7 @@ class cPtr_parseLoopInstruction : public cPtr_syntaxInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOfInstructionList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -1950,7 +1950,7 @@ class cPtr_parseRewindInstruction : public cPtr_syntaxInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOfParseDoInstruction (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -1992,7 +1992,7 @@ class cPtr_parseWhenInstruction : public cPtr_syntaxInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOfElseInstructionList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -2028,7 +2028,7 @@ class cPtr_repeatInstruction : public cPtr_syntaxInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOf_5F_repeat_5F_instruction (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -2058,7 +2058,7 @@ class cPtr_selectInstruction : public cPtr_syntaxInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_mEndOf_5F_select_5F_instruction (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -2091,7 +2091,7 @@ class cPtr_terminalCheckInstruction : public cPtr_syntaxInstructionAST {
   public : VIRTUAL_IN_DEBUG GALGAS_lstringlist reader_mIndexingKeyList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 

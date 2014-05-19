@@ -42,10 +42,10 @@ class C_ConsoleOut : public C_ColoredConsole {
 //--- General stream method
   protected : virtual void
   performActualCharArrayOutput (const char * inCharArray,
-                                const PMSInt32 inArrayCount) ;
+                                const int32_t inArrayCount) ;
 
   protected : virtual void
-  performActualUnicodeArrayOutput (const utf32 * inCharArray, const PMSInt32 inArrayCount) ;
+  performActualUnicodeArrayOutput (const utf32 * inCharArray, const int32_t inArrayCount) ;
 
 } ;
 

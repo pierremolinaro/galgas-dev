@@ -36,29 +36,29 @@
 static void
 computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
                    const C_BDD_Set1 & inNonterminalSymbolsFollowedByEmpty,
-                   const PMUInt16 inBDDBitCount,
+                   const uint16_t inBDDBitCount,
                    const cVocabulary & inVocabulary,
                    const TC_UniqueArray <bool> & inNonterminalSymbolsDerivingInEmpty,
                    const C_BDD_Set2 & inFIRSTsets,
-                   const PMSInt32 inTerminalSymbolsCount,
+                   const int32_t inTerminalSymbolsCount,
                    C_BDD_Set2 & ex_outFOLLOWsets,
-                   TC_UniqueArray <TC_UniqueArray <PMSInt32> > & outFOLLOWarray,
-                   PMSInt32 & outIterationsCount) {
+                   TC_UniqueArray <TC_UniqueArray <int32_t> > & outFOLLOWarray,
+                   int32_t & outIterationsCount) {
   C_BDD directFollowers ;
   C_BDD lastOfProduction ;
-  const PMUInt16 twoBDDBitCount = (PMUInt16) (inBDDBitCount + inBDDBitCount) ;
+  const uint16_t twoBDDBitCount = (uint16_t) (inBDDBitCount + inBDDBitCount) ;
 //--- Build the directFollower and lastOfProduction sets
-  for (PMSInt32 ip=0 ; ip<inProductionRules.length () ; ip++) {
+  for (int32_t ip=0 ; ip<inProductionRules.length () ; ip++) {
     const cProduction & p = inProductionRules (ip COMMA_HERE) ;
-    const PMSInt32 derivationLength = p.aDerivation.count () ;
+    const int32_t derivationLength = p.aDerivation.count () ;
   //--- Direct follower
     if (derivationLength > 1) { // The right sequence has more than one element (from 0 to derivationLength-1)
-      for (PMSInt32 i=1 ; i<derivationLength ; i++) {
-        const C_BDD current = C_BDD::varCompareConst (0, inBDDBitCount, C_BDD::kEqual, (PMUInt32) p.aDerivation (i-1 COMMA_HERE)) ;
+      for (int32_t i=1 ; i<derivationLength ; i++) {
+        const C_BDD current = C_BDD::varCompareConst (0, inBDDBitCount, C_BDD::kEqual, (uint32_t) p.aDerivation (i-1 COMMA_HERE)) ;
         C_BDD s ;
-        PMSInt32 j = i ;
+        int32_t j = i ;
         do{
-          const C_BDD t = C_BDD::varCompareConst (inBDDBitCount, inBDDBitCount, C_BDD::kEqual, (PMUInt32) p.aDerivation (j COMMA_HERE)) ;
+          const C_BDD t = C_BDD::varCompareConst (inBDDBitCount, inBDDBitCount, C_BDD::kEqual, (uint32_t) p.aDerivation (j COMMA_HERE)) ;
           s |= t ;
           j++ ;
         }while ((j<derivationLength) && inNonterminalSymbolsDerivingInEmpty (p.aDerivation (j-1 COMMA_HERE) COMMA_HERE)) ;
@@ -70,14 +70,14 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
       const C_BDD left = C_BDD::varCompareConst (twoBDDBitCount,
                                                  inBDDBitCount,
                                                  C_BDD::kEqual,
-                                                 (PMUInt32) p.aNumeroNonTerminalGauche) ;
+                                                 (uint32_t) p.aNumeroNonTerminalGauche) ;
       C_BDD d ;
-      PMSInt32 j = derivationLength-1 ; // last one of right sequence
+      int32_t j = derivationLength-1 ; // last one of right sequence
       do{
         const C_BDD t = C_BDD::varCompareConst (0,
                                                 inBDDBitCount,
                                                 C_BDD::kEqual,
-                                                (PMUInt32) p.aDerivation (j COMMA_HERE)) ;      
+                                                (uint32_t) p.aDerivation (j COMMA_HERE)) ;      
         d |= t ;
         j -- ;
       }while ((j>=0) && inNonterminalSymbolsDerivingInEmpty (p.aDerivation (j+1 COMMA_HERE) COMMA_HERE)) ;
@@ -106,21 +106,21 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
   outFOLLOWsets &= C_BDD::varCompareConst (inBDDBitCount,
                                            inBDDBitCount,
                                            C_BDD::kLowerOrEqual,
-                                           (PMUInt32) (inTerminalSymbolsCount - 1)) ;
+                                           (uint32_t) (inTerminalSymbolsCount - 1)) ;
 
 //--- FOLLOW, with nonterminal symbols followed by empty string
   const C_BDD emptyStringBDD = C_BDD::varCompareConst (inBDDBitCount,
                                            inBDDBitCount,
                                            C_BDD::kEqual,
-                                           (PMUInt32) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ;
+                                           (uint32_t) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ;
   outFOLLOWsets |= inNonterminalSymbolsFollowedByEmpty.bdd () & emptyStringBDD ;
   
 //--- FOLLOW sets, given with an array
-  { TC_UniqueArray <TC_UniqueArray <PMSInt32> > tempArray (inVocabulary.getAllSymbolsCount () COMMA_HERE) ;
+  { TC_UniqueArray <TC_UniqueArray <int32_t> > tempArray (inVocabulary.getAllSymbolsCount () COMMA_HERE) ;
     swap (outFOLLOWarray, tempArray) ;
   }
   outFOLLOWsets.getArray2 (outFOLLOWarray,
-                           (PMUInt32) inVocabulary.getAllSymbolsCount (),
+                           (uint32_t) inVocabulary.getAllSymbolsCount (),
                            inBDDBitCount,
                            inBDDBitCount) ;
 
@@ -131,11 +131,11 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
 //-----------------------------------------------------------------------------*
 
 static void
-printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <PMSInt32> > & inFOLLOWarray,
+printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <int32_t> > & inFOLLOWarray,
                  const cVocabulary & inVocabulary,
                  C_HTML_FileWrite & inHTMLfile,
-                 const PMUInt32 inValuesCount,
-                 const PMSInt32 inIterationsCount) {
+                 const uint32_t inValuesCount,
+                 const int32_t inIterationsCount) {
 //--- Print messages
   inHTMLfile.outputRawData ("<p>") ;
   inHTMLfile << "Calculus completed in " ;
@@ -149,14 +149,14 @@ printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <PMSInt32> > & inFOLLOWarr
 
 //--- Print FOLLOW sets (don't display last symbol, the '<>' added non terminal)
   inHTMLfile.outputRawData ("<table class=\"result\">") ;
-  const PMSInt32 symbolsToDisplayCount = inFOLLOWarray.count () - 1 ;
-  for (PMSInt32 i=0 ; i<symbolsToDisplayCount ; i++) {
+  const int32_t symbolsToDisplayCount = inFOLLOWarray.count () - 1 ;
+  for (int32_t i=0 ; i<symbolsToDisplayCount ; i++) {
     if (i != inVocabulary.getEmptyStringTerminalSymbolIndex ()) { // Don't print follower of empty string
       inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
       inVocabulary.printInFile (inHTMLfile, i COMMA_HERE) ;
       inHTMLfile.outputRawData ("</code></td><td><code>") ;
-      const PMSInt32 n = inFOLLOWarray (i COMMA_HERE).count () ;
-      for (PMSInt32 j=0 ; j<n ; j++) {
+      const int32_t n = inFOLLOWarray (i COMMA_HERE).count () ;
+      for (int32_t j=0 ; j<n ; j++) {
         inHTMLfile << " " ;
         inVocabulary.printInFile (inHTMLfile, inFOLLOWarray (i COMMA_HERE) (j COMMA_HERE) COMMA_HERE) ;
       }
@@ -178,7 +178,7 @@ checkFOLLOWsets (C_HTML_FileWrite * inHTMLfile,
 
 //--- Construire le BDD des non-terminaux pouvant etre suivis du vide
   C_BDD_Set1 temp1 (inUsefulSymbols) ;
-  temp1.init (C_BDD::kEqual, (PMUInt16) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ;
+  temp1.init (C_BDD::kEqual, (uint16_t) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ;
   const C_BDD_Set2 ntVide = inNonterminalSymbolsFollowedByEmpty * temp1 ;
 
 //--- Suivants, avec nt pouvant etre suivis du vide, limites aux non terminaux utilisateur
@@ -196,13 +196,13 @@ checkFOLLOWsets (C_HTML_FileWrite * inHTMLfile,
   }
 //--- Obtenir les non terminaux en erreur
   C_BDD_Set1 nterminauxAverifier (inUsefulSymbols) ;
-  nterminauxAverifier.init (C_BDD::kGreaterOrEqual, (PMUInt32) inVocabulary.getTerminalSymbolsCount ()) ;
-  temp1.init (C_BDD::kLowerOrEqual, (PMUInt32) (inVocabulary.getAllSymbolsCount () - 1)) ;
+  nterminauxAverifier.init (C_BDD::kGreaterOrEqual, (uint32_t) inVocabulary.getTerminalSymbolsCount ()) ;
+  temp1.init (C_BDD::kLowerOrEqual, (uint32_t) (inVocabulary.getAllSymbolsCount () - 1)) ;
   nterminauxAverifier &= temp1 ;
   const C_BDD_Set1 ntErreurSuivants = nterminauxAverifier & inUsefulSymbols & ~(suivantsPlusVide.projeterSurAxe1 ()) ; 
 
 //--- Afficher les non-terminaux en erreur
-  const PMUInt32 n = ntErreurSuivants.getValuesCount () ;
+  const uint32_t n = ntErreurSuivants.getValuesCount () ;
   if (inVerboseOptionOn) {
     if (n == 0L) {
       co << "ok.\n" ;
@@ -227,8 +227,8 @@ checkFOLLOWsets (C_HTML_FileWrite * inHTMLfile,
       TC_UniqueArray <bool> array ;
       ntErreurSuivants.getArray (array) ;
       inHTMLfile->outputRawData ("<table class=\"result\">") ;
-      const PMSInt32 symbolsCount = inVocabulary.getAllSymbolsCount () ;
-      for (PMSInt32 symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
+      const int32_t symbolsCount = inVocabulary.getAllSymbolsCount () ;
+      for (int32_t symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
         if (array (symbol COMMA_HERE)) {
           inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
           inVocabulary.printInFile (*inHTMLfile, symbol COMMA_HERE) ;
@@ -246,14 +246,14 @@ checkFOLLOWsets (C_HTML_FileWrite * inHTMLfile,
 void
 FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                      C_HTML_FileWrite * inHTMLfile,
-                     const PMUInt16 inBDDBitCount,
+                     const uint16_t inBDDBitCount,
                      const cVocabulary & inVocabulary,
                      const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                      const C_BDD_Set1 & inUsefulSymbols,
                      const C_BDD_Set2 & inFIRSTsets,
                      const C_BDD_Set1 & inNonterminalSymbolsFollowedByEmpty,
                      C_BDD_Set2 & ex_outFOLLOWsets,
-                     TC_UniqueArray <TC_UniqueArray <PMSInt32> > & outFOLLOWarray,
+                     TC_UniqueArray <TC_UniqueArray <int32_t> > & outFOLLOWarray,
                      bool & outOk,
                      const bool inVerboseOptionOn) {
 //--- Console display
@@ -267,7 +267,7 @@ FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
     inHTMLfile->appendCppTitleComment ("Computing the FOLLOW sets", "title") ;
   }
 //--- Compute FOLLOW (with BDD)
-  PMSInt32 iterationsCount = 0 ;
+  int32_t iterationsCount = 0 ;
   computeFOLLOWsets (inPureBNFproductions,
                      inNonterminalSymbolsFollowedByEmpty,
                      inBDDBitCount,

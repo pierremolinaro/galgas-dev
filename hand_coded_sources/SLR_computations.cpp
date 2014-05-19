@@ -40,15 +40,15 @@
 //-----------------------------------------------------------------------------*
 
 class c_LR0_item {
-  public : PMSInt32 mProductionRuleIndex ;
-  public : PMSInt32 mLocationIndex ;
+  public : int32_t mProductionRuleIndex ;
+  public : int32_t mLocationIndex ;
 //--- Default constructor
   public : c_LR0_item (void) ;
 //--- Constructor
-  public : c_LR0_item (const PMSInt32 inProductionRuleIndex,
-                       const PMSInt32 inLocationIndex) ;
+  public : c_LR0_item (const int32_t inProductionRuleIndex,
+                       const int32_t inLocationIndex) ;
 //--- Compare two items
-  public : static PMSInt32 compare_LR0_items (const c_LR0_item & inItem1,
+  public : static int32_t compare_LR0_items (const c_LR0_item & inItem1,
                                             const c_LR0_item & inItem2) ;
 } ;
 
@@ -61,18 +61,18 @@ mLocationIndex (-1) {
 
 //-----------------------------------------------------------------------------*
 
-c_LR0_item::c_LR0_item (const PMSInt32 inProductionRuleIndex,
-                        const PMSInt32 inLocationIndex) :
+c_LR0_item::c_LR0_item (const int32_t inProductionRuleIndex,
+                        const int32_t inLocationIndex) :
 mProductionRuleIndex (inProductionRuleIndex),
 mLocationIndex (inLocationIndex) {
 }
 
 //-----------------------------------------------------------------------------*
 
-PMSInt32 c_LR0_item::
+int32_t c_LR0_item::
 compare_LR0_items (const c_LR0_item & inItem1,
                    const c_LR0_item & inItem2) {
-  PMSInt32 result = inItem1.mProductionRuleIndex - inItem2.mProductionRuleIndex ;
+  int32_t result = inItem1.mProductionRuleIndex - inItem2.mProductionRuleIndex ;
   if (result == 0) {
     result = inItem1.mLocationIndex - inItem2.mLocationIndex ;
   }
@@ -99,17 +99,17 @@ class c_LR0_items_set {
   public : c_LR0_items_set (void) ;
 
 //--- Add a new LR0 item (returns false if already present)
-  public : bool add_LR0_item (const PMSInt32 inProductionRuleIndex,
-                              const PMSInt32 inLocationIndex) ;
+  public : bool add_LR0_item (const int32_t inProductionRuleIndex,
+                              const int32_t inLocationIndex) ;
 
 //--- Get transitions LR0 item set from a state for a symbol
   public : void getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
-                                   const PMSInt32 inSymbol,
+                                   const int32_t inSymbol,
                                    c_LR0_items_set & out_LR0_item_set) ;
 
 //--- Closing the LR0 items set
   public : void close_items_set (const cPureBNFproductionsList & inProductionRules,
-                                 const PMSInt32 inTerminalSymbolsCount) ;
+                                 const int32_t inTerminalSymbolsCount) ;
 
 //--- Empty set ?
   public : bool isEmptySet (void) const ;
@@ -120,12 +120,12 @@ class c_LR0_items_set {
                          C_HTML_FileWrite & inHTMLfile) ;
 
 //--- Compare two items sets
-  public : static PMSInt32 compare_LR0_items_sets (const c_LR0_items_set & inItemsSet1,
+  public : static int32_t compare_LR0_items_sets (const c_LR0_items_set & inItemsSet1,
                                                    const c_LR0_items_set & inItemsSet2) ;
 
 //--- Search from a LR0 items set (used for building 'reduce' actions of SLR table)
   public : void getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProductionRules,
-                                                    TC_UniqueArray <PMSInt32> & outProductionsSet,
+                                                    TC_UniqueArray <int32_t> & outProductionsSet,
                                                     bool & outAcceptCondition) ;
 
 //--- Handle Copy
@@ -154,12 +154,12 @@ mItemsSet () {
 //-----------------------------------------------------------------------------*
 
 bool c_LR0_items_set::
-add_LR0_item (const PMSInt32 inProductionRuleIndex,
-              const PMSInt32 inLocationIndex) {
+add_LR0_item (const int32_t inProductionRuleIndex,
+              const int32_t inLocationIndex) {
   c_LR0_item item (inProductionRuleIndex, inLocationIndex) ;
 //--- First, search for this item
   bool found = false ;
-  for (PMSInt32 i=0 ; (i<mItemsSet.count ()) && ! found ; i++) {
+  for (int32_t i=0 ; (i<mItemsSet.count ()) && ! found ; i++) {
     found = c_LR0_item::compare_LR0_items (mItemsSet (i COMMA_HERE), item) == 0 ;
   }
 //--- If not found, add it
@@ -175,22 +175,22 @@ add_LR0_item (const PMSInt32 inProductionRuleIndex,
 
 void c_LR0_items_set::
 close_items_set (const cPureBNFproductionsList & inProductionRules,
-                 const PMSInt32 inTerminalSymbolsCount) {
+                 const int32_t inTerminalSymbolsCount) {
   bool loop = true ;
   while (loop) {
     loop = false ;
-    for (PMSInt32 i=0 ; i<mItemsSet.count () ; i++) {
-      const PMSInt32 locationIndex = mItemsSet (i COMMA_HERE).mLocationIndex ;
-      const PMSInt32 productionRule = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
+    for (int32_t i=0 ; i<mItemsSet.count () ; i++) {
+      const int32_t locationIndex = mItemsSet (i COMMA_HERE).mLocationIndex ;
+      const int32_t productionRule = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
       if (locationIndex < inProductionRules (productionRule COMMA_HERE).aDerivation.count ()) {
-        const PMSInt32 prodX = inProductionRules (productionRule COMMA_HERE).aDerivation (locationIndex COMMA_HERE) - inTerminalSymbolsCount ;
+        const int32_t prodX = inProductionRules (productionRule COMMA_HERE).aDerivation (locationIndex COMMA_HERE) - inTerminalSymbolsCount ;
         if (prodX >= 0) {
-          const PMSInt32 first = inProductionRules.tableauIndicePremiereProduction (prodX COMMA_HERE) ;
+          const int32_t first = inProductionRules.tableauIndicePremiereProduction (prodX COMMA_HERE) ;
           MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
-          const PMSInt32 last = inProductionRules.tableauIndiceDerniereProduction (prodX COMMA_HERE) ;
+          const int32_t last = inProductionRules.tableauIndiceDerniereProduction (prodX COMMA_HERE) ;
           MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
-          for (PMSInt32 j=first ; j<=last ; j++) {
-            const PMSInt32 ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
+          for (int32_t j=first ; j<=last ; j++) {
+            const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
             const bool inserted = add_LR0_item (ip, 0) ;
             loop = loop || inserted ;
           }
@@ -212,14 +212,14 @@ void c_LR0_items_set::
 display (const cPureBNFproductionsList & inProductionRules,
          const cVocabulary & inVocabulary,
          C_HTML_FileWrite & inHTMLfile) {
-  for (PMSInt32 i=0 ; i<mItemsSet.count () ; i++) {
+  for (int32_t i=0 ; i<mItemsSet.count () ; i++) {
     const cProduction & p = inProductionRules (mItemsSet (i COMMA_HERE).mProductionRuleIndex COMMA_HERE) ;
-    const PMSInt32 location = mItemsSet (i COMMA_HERE).mLocationIndex ;
+    const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
     inHTMLfile.outputRawData ("<span class=\"list\">") ;
     inHTMLfile << "[" ;
     inVocabulary.printInFile (inHTMLfile, p.aNumeroNonTerminalGauche COMMA_HERE) ;
     inHTMLfile << " ->" ;
-    for (PMSInt32 j=0 ; j<p.aDerivation.count () ; j++) {
+    for (int32_t j=0 ; j<p.aDerivation.count () ; j++) {
       if (j == location) {
         inHTMLfile << " ." ;      
       }
@@ -238,15 +238,15 @@ display (const cPureBNFproductionsList & inProductionRules,
 
 void c_LR0_items_set::
 getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
-                   const PMSInt32 inSymbol,
+                   const int32_t inSymbol,
                    c_LR0_items_set & out_LR0_item_set) {
   out_LR0_item_set.mItemsSet.setCountToZero () ;
-  for (PMSInt32 i=0 ; i<mItemsSet.count () ; i++) {
-    const PMSInt32 productionRuleIndex = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
+  for (int32_t i=0 ; i<mItemsSet.count () ; i++) {
+    const int32_t productionRuleIndex = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
     const cProduction & p = inProductionRules (productionRuleIndex COMMA_HERE) ;
-    const PMSInt32 location = mItemsSet (i COMMA_HERE).mLocationIndex ;
+    const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
     if (location < p.aDerivation.count ()) {
-      const PMSInt32 symbol = p.aDerivation (location COMMA_HERE) ;
+      const int32_t symbol = p.aDerivation (location COMMA_HERE) ;
       if (symbol == inSymbol) {
         out_LR0_item_set.add_LR0_item (productionRuleIndex, location + 1) ;
       }
@@ -258,14 +258,14 @@ getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
 
 void c_LR0_items_set::
 getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProductionRules,
-                                    TC_UniqueArray <PMSInt32> & outProductionsSet,
+                                    TC_UniqueArray <int32_t> & outProductionsSet,
                                     bool & outAcceptCondition) {
   outProductionsSet.setCountToZero () ;
   outAcceptCondition = false ;
-  for (PMSInt32 i=0 ; i<mItemsSet.count () ; i++) {
-    const PMSInt32 productionRuleIndex = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
+  for (int32_t i=0 ; i<mItemsSet.count () ; i++) {
+    const int32_t productionRuleIndex = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
     const cProduction & p = inProductionRules (productionRuleIndex COMMA_HERE) ;
-    const PMSInt32 location = mItemsSet (i COMMA_HERE).mLocationIndex ;
+    const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
     if (location == p.aDerivation.count ()) {
       outProductionsSet.addObject (productionRuleIndex) ;
     }
@@ -277,16 +277,16 @@ getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProduction
 
 //-----------------------------------------------------------------------------*
 
-PMSInt32 c_LR0_items_set::
+int32_t c_LR0_items_set::
 compare_LR0_items_sets (const c_LR0_items_set & inItemsSet1,
                         const c_LR0_items_set & inItemsSet2) {
-  PMSInt32 result = c_LR0_item::
+  int32_t result = c_LR0_item::
     compare_LR0_items (inItemsSet1.mItemsSet (0 COMMA_HERE),
                        inItemsSet2.mItemsSet (0 COMMA_HERE)) ;
   if (result == 0) {
-    const PMSInt32 length1 = inItemsSet1.mItemsSet.count () ;
+    const int32_t length1 = inItemsSet1.mItemsSet.count () ;
     result = length1 - inItemsSet2.mItemsSet.count () ;
-    for (PMSInt32 i=1 ; (i<length1) && (result==0) ; i++) {
+    for (int32_t i=1 ; (i<length1) && (result==0) ; i++) {
       result = c_LR0_item::compare_LR0_items (inItemsSet1.mItemsSet (i COMMA_HERE),
                                               inItemsSet2.mItemsSet (i COMMA_HERE)) ;
     }
@@ -315,13 +315,13 @@ void swap (c_LR0_items_set & ioOperand1, c_LR0_items_set & ioOperand2) {
 class cLR0_items_sets_AVL_tree {
   public : cLR0_items_sets_AVL_tree * mPtrToInf ;
   public : cLR0_items_sets_AVL_tree * mPtrToSup ;
-  private : const PMSInt32 mInfo ;
-  public : PMSInt32 mBalance ;
-  protected : cLR0_items_sets_AVL_tree (const PMSInt32 inInfo) ;
+  private : const int32_t mInfo ;
+  public : int32_t mBalance ;
+  protected : cLR0_items_sets_AVL_tree (const int32_t inInfo) ;
   public : virtual ~cLR0_items_sets_AVL_tree (void) ;
-  private : PMSInt32 compare (const c_LR0_items_set & in_LR0_items_set,
+  private : int32_t compare (const c_LR0_items_set & in_LR0_items_set,
                          const TC_UniqueArray <c_LR0_items_set> & in_LR0_items_sets_array) ;
-  public : static PMSInt32 recursiveSearchOrInsert
+  public : static int32_t recursiveSearchOrInsert
                          (cLR0_items_sets_AVL_tree * & ioRootPointer,
                           c_LR0_items_set & io_LR0_items_set,
                           TC_UniqueArray <c_LR0_items_set> & io_LR0_items_sets_array,
@@ -335,7 +335,7 @@ class cLR0_items_sets_AVL_tree {
 //-----------------------------------------------------------------------------*
 
 cLR0_items_sets_AVL_tree::
-cLR0_items_sets_AVL_tree (const PMSInt32 inInfo) :
+cLR0_items_sets_AVL_tree (const int32_t inInfo) :
 mPtrToInf (NULL),
 mPtrToSup (NULL),
 mInfo (inInfo),
@@ -352,7 +352,7 @@ cLR0_items_sets_AVL_tree::
 
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cLR0_items_sets_AVL_tree::
+int32_t cLR0_items_sets_AVL_tree::
 compare (const c_LR0_items_set & in_LR0_items_set,
          const TC_UniqueArray <c_LR0_items_set> & in_LR0_items_sets_array) {
   return c_LR0_items_set::compare_LR0_items_sets (in_LR0_items_sets_array (mInfo COMMA_HERE), in_LR0_items_set) ;
@@ -406,12 +406,12 @@ static void rotateRight (cLR0_items_sets_AVL_tree * & ioPtr) {
  
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cLR0_items_sets_AVL_tree::
+int32_t cLR0_items_sets_AVL_tree::
 recursiveSearchOrInsert (cLR0_items_sets_AVL_tree * & ioRootPointer,
                          c_LR0_items_set & io_LR0_items_set,
                          TC_UniqueArray <c_LR0_items_set> & io_LR0_items_sets_array,
                          bool & outExtension) {
-  PMSInt32 result ;
+  int32_t result ;
   if (ioRootPointer == NULL) {
     result = io_LR0_items_sets_array.count () ;
     macroMyNew (ioRootPointer, cLR0_items_sets_AVL_tree (result)) ;
@@ -419,7 +419,7 @@ recursiveSearchOrInsert (cLR0_items_sets_AVL_tree * & ioRootPointer,
     outExtension = true ;
   }else{
     macroValidPointer (ioRootPointer) ;
-    const PMSInt32 comp = ioRootPointer->compare (io_LR0_items_set, io_LR0_items_sets_array) ;
+    const int32_t comp = ioRootPointer->compare (io_LR0_items_set, io_LR0_items_sets_array) ;
     if (comp > 0) {
       result = recursiveSearchOrInsert (ioRootPointer->mPtrToSup,
                                         io_LR0_items_set,
@@ -505,15 +505,15 @@ class c_LR0_items_sets_collection {
   private : c_LR0_items_sets_collection & operator = (c_LR0_items_sets_collection &) ;
 
 //--- Search or insert a LR0 items set (return set index)
-  public : PMSInt32 searchOrInsert_LR0_itemSet (c_LR0_items_set & ioItemSet) ;
+  public : int32_t searchOrInsert_LR0_itemSet (c_LR0_items_set & ioItemSet) ;
 
 //--- States count
-  public : PMSInt32 getStatesCount (void) ;
+  public : int32_t getStatesCount (void) ;
 
 //--- Get transitions LR0 item set from a state for a symbol
   public : void getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
-                                   const PMSInt32 inStateIndex,
-                                   const PMSInt32 inSymbol,
+                                   const int32_t inStateIndex,
+                                   const int32_t inSymbol,
                                    c_LR0_items_set & out_LR0_item_set) ;
 
 //--- Display LR0 items set
@@ -522,9 +522,9 @@ class c_LR0_items_sets_collection {
                          C_HTML_FileWrite & inHTMLfile) ;
 
 //--- Search from a LR0 items set (used for building 'reduce' actions of SLR table)
-  public : void getProductionsWhereLocationIsRight (const PMSInt32 inStateIndex,
+  public : void getProductionsWhereLocationIsRight (const int32_t inStateIndex,
                                                     const cPureBNFproductionsList & inProductionRules,
-                                                    TC_UniqueArray <PMSInt32> & outProductionsSet,
+                                                    TC_UniqueArray <int32_t> & outProductionsSet,
                                                     bool & outAcceptCondition) ;
 
 //--- Private data
@@ -548,7 +548,7 @@ c_LR0_items_sets_collection::~c_LR0_items_sets_collection (void) {
 
 //-----------------------------------------------------------------------------*
 
-PMSInt32 c_LR0_items_sets_collection::
+int32_t c_LR0_items_sets_collection::
 searchOrInsert_LR0_itemSet (c_LR0_items_set & ioItemSet) {
   bool extension = false ;
   return cLR0_items_sets_AVL_tree::recursiveSearchOrInsert (mRoot, ioItemSet, m_LR0_items_sets_array, extension) ;
@@ -560,7 +560,7 @@ void c_LR0_items_sets_collection::
 display (const cPureBNFproductionsList & inProductionRules,
          const cVocabulary & inVocabulary,
          C_HTML_FileWrite & inHTMLfile) {
-  for (PMSInt32 i=0 ; i<m_LR0_items_sets_array.count () ; i++) {
+  for (int32_t i=0 ; i<m_LR0_items_sets_array.count () ; i++) {
     inHTMLfile.outputRawData ("<tr class=\"result_line\"><td class=\"result_line\">") ;
     inHTMLfile << "S" << cStringWithSigned (i) ;
     inHTMLfile.outputRawData ("</td><td><code>") ;
@@ -571,7 +571,7 @@ display (const cPureBNFproductionsList & inProductionRules,
 
 //-----------------------------------------------------------------------------*
 
-PMSInt32 c_LR0_items_sets_collection::getStatesCount (void) {
+int32_t c_LR0_items_sets_collection::getStatesCount (void) {
   return m_LR0_items_sets_array.count () ;
 }
 
@@ -579,8 +579,8 @@ PMSInt32 c_LR0_items_sets_collection::getStatesCount (void) {
 
 void c_LR0_items_sets_collection::
 getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
-                   const PMSInt32 inStateIndex,
-                   const PMSInt32 inSymbol,
+                   const int32_t inStateIndex,
+                   const int32_t inSymbol,
                    c_LR0_items_set & out_LR0_item_set) {
   m_LR0_items_sets_array (inStateIndex COMMA_HERE).getTransitionFrom (inProductionRules, inSymbol, out_LR0_item_set) ;
 }
@@ -588,9 +588,9 @@ getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
 //-----------------------------------------------------------------------------*
 
 void c_LR0_items_sets_collection::
-getProductionsWhereLocationIsRight (const PMSInt32 inStateIndex,
+getProductionsWhereLocationIsRight (const int32_t inStateIndex,
                                     const cPureBNFproductionsList & inProductionRules,
-                                    TC_UniqueArray <PMSInt32> & outProductionsSet,
+                                    TC_UniqueArray <int32_t> & outProductionsSet,
                                     bool & outAcceptCondition) {
   m_LR0_items_sets_array (inStateIndex COMMA_HERE)
        .getProductionsWhereLocationIsRight (inProductionRules,
@@ -611,20 +611,20 @@ getProductionsWhereLocationIsRight (const PMSInt32 inStateIndex,
 //-----------------------------------------------------------------------------*
 
 class c_LR0_automaton_transition {
-  public : PMSInt32 mSourceState ;
-  public : PMSInt32 mAction ;
-  public : PMSInt32 mTargetState ;
-  public : c_LR0_automaton_transition (const PMSInt32 inSourceState,
-                                       const PMSInt32 inAction,
-                                       const PMSInt32 inTargetState) ;
+  public : int32_t mSourceState ;
+  public : int32_t mAction ;
+  public : int32_t mTargetState ;
+  public : c_LR0_automaton_transition (const int32_t inSourceState,
+                                       const int32_t inAction,
+                                       const int32_t inTargetState) ;
 } ;
 
 //-----------------------------------------------------------------------------*
 
 c_LR0_automaton_transition::
-c_LR0_automaton_transition (const PMSInt32 inSourceState,
-                            const PMSInt32 inAction,
-                            const PMSInt32 inTargetState) :
+c_LR0_automaton_transition (const int32_t inSourceState,
+                            const int32_t inAction,
+                            const int32_t inTargetState) :
 mSourceState (inSourceState),
 mAction (inAction),
 mTargetState (inTargetState) {
@@ -655,7 +655,7 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
                                const TC_UniqueArray2 <cDecisionTableElement> & inSLRdecisionTable,
                                const TC_FIFO <c_LR0_automaton_transition> & inTransitionList,
                                const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
-                               const PMUInt32 inOriginalGrammarStartSymbol,
+                               const uint32_t inOriginalGrammarStartSymbol,
                                const C_String & inLexiqueName,
                                const C_String & inTargetFileName,
                                const C_String & inOutputDirectoryForCppFiles,
@@ -684,7 +684,7 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
   generatedZone3.appendCppTitleComment ("N O N    T E R M I N A L    N A M E S") ;
   generatedZone3 << "static const char * gNonTerminalNames ["
                  << cStringWithSigned (inVocabulary.getNonTerminalSymbolsCount ()) << "] = {\n" ;
-  for (PMSInt32 i=inVocabulary.getTerminalSymbolsCount () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
+  for (int32_t i=inVocabulary.getTerminalSymbolsCount () ; i<inVocabulary.getAllSymbolsCount () ; i++) {
     generatedZone3 << "  \"<" << inVocabulary.getSymbol (i COMMA_HERE) << ">\""
                    << (((i+1)<inVocabulary.getAllSymbolsCount ()) ? "," : "")
                    << "// Index " << cStringWithSigned (i - inVocabulary.getTerminalSymbolsCount ()) << "\n" ;
@@ -693,10 +693,10 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
 
 //--- Generate SLR analyze action table --------------------------------------
   generatedZone3.appendCppTitleComment ("S L R    A N A L Y Z E R    A C T I O N    T A B L E") ;
-  const PMSInt32 rowsCount = inSLRdecisionTable.rowCount () ; // Number of states
-  const PMSInt32 columnsCount = inSLRdecisionTable.columnCount () ; // Number of terminal symbols
+  const int32_t rowsCount = inSLRdecisionTable.rowCount () ; // Number of states
+  const int32_t columnsCount = inSLRdecisionTable.columnCount () ; // Number of terminal symbols
 //--- State action tables
-  TC_UniqueArray <PMSInt32> startIndexArray (rowsCount COMMA_HERE) ;
+  TC_UniqueArray <int32_t> startIndexArray (rowsCount COMMA_HERE) ;
   generatedZone3 << "// Action tables handle shift and reduce actions ;\n"
                     "//  - a shift action is (terminal_symbol, SHIFT (n)) : if shifts to state n ;\n"
                     "//  - the accept action is (terminal_symbol, ACCEPT) ;\n"
@@ -705,14 +705,14 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
                     "#define REDUCE(a) (-(a) - 1)\n"
                     "#define ACCEPT (1)\n"
                     "#define END (-1)\n\n" ;
-  generatedZone3 << "static const PMSInt16 gActionTable [] = {" ;
+  generatedZone3 << "static const int16_t gActionTable [] = {" ;
   bool isFirst = true ;
-  PMSInt32 startIndex = 0 ;
-  for (PMSInt32 i=0 ; i<rowsCount ; i++) {
+  int32_t startIndex = 0 ;
+  for (int32_t i=0 ; i<rowsCount ; i++) {
     startIndexArray.addObject (startIndex) ;
     generatedZone3 <<"\n// State S" << cStringWithSigned (i) << " (index = " << cStringWithSigned (startIndex) << ")" ;
-    for (PMSInt32 j=0 ; j<columnsCount ; j++) {
-      const PMSInt32 parameter = inSLRdecisionTable (i, j COMMA_HERE).parameter () ;
+    for (int32_t j=0 ; j<columnsCount ; j++) {
+      const int32_t parameter = inSLRdecisionTable (i, j COMMA_HERE).parameter () ;
       const cDecisionTableElement::enumDecision decision = inSLRdecisionTable (i, j COMMA_HERE).decision () ;
       if (decision != cDecisionTableElement::kUndefinedState) {
         startIndex += 2 ;
@@ -739,9 +739,9 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
     startIndex ++ ;
   }
   generatedZone3 << "} ;\n\n"
-                    "static const PMUInt32 gActionTableIndex [" << cStringWithSigned (rowsCount) << "] = {" ;
+                    "static const uint32_t gActionTableIndex [" << cStringWithSigned (rowsCount) << "] = {" ;
   isFirst = true ;
-  for (PMSInt32 i=0 ; i<rowsCount ; i++) {
+  for (int32_t i=0 ; i<rowsCount ; i++) {
     generatedZone3 << "\n" ;
     if (isFirst) {
       isFirst = false ;
@@ -755,9 +755,9 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
 //--- Generate state successor table -----------------------------------------
   generatedZone3.appendCppTitleComment ("SLR states successors table") ;
 //--- Get successor count, by state
-  TC_UniqueArray <PMSInt32> stateSuccessorsCount (rowsCount, 0 COMMA_HERE) ;
-  const PMSInt32 transitionsCount = inTransitionList.length () ;
-  for (PMSInt32 i=0 ; i<transitionsCount ; i++) {
+  TC_UniqueArray <int32_t> stateSuccessorsCount (rowsCount, 0 COMMA_HERE) ;
+  const int32_t transitionsCount = inTransitionList.length () ;
+  for (int32_t i=0 ; i<transitionsCount ; i++) {
     if (inTransitionList (i COMMA_HERE).mAction >= columnsCount) {
       stateSuccessorsCount (inTransitionList (i COMMA_HERE).mSourceState COMMA_HERE) ++ ;
     }
@@ -766,20 +766,20 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
 //--- Write successor table, state by state ----------------------------------
   generatedZone3 << "// Successor tables handle non terminal successors ;\n"
                     "// an entry is (non_terminal_symbol, n) ; successor is state n.\n\n" ;
-  PMSInt32 currentSourceState = -1 ; // No state
-  for (PMSInt32 t=0 ; t<transitionsCount ; t++) {
-    const PMSInt32 nonterminal =  inTransitionList (t COMMA_HERE).mAction - columnsCount ; 
+  int32_t currentSourceState = -1 ; // No state
+  for (int32_t t=0 ; t<transitionsCount ; t++) {
+    const int32_t nonterminal =  inTransitionList (t COMMA_HERE).mAction - columnsCount ; 
     if (nonterminal >= 0) {
-      const PMSInt32 sourceState = inTransitionList (t COMMA_HERE).mSourceState ;
+      const int32_t sourceState = inTransitionList (t COMMA_HERE).mSourceState ;
       if (currentSourceState == sourceState) {
         generatedZone3 << ",\n  " ;
       }else{
         if (currentSourceState >= 0) {
           generatedZone3 << ", -1} ;\n\n" ;
         }
-        generatedZone3 << "static const PMSInt16 gSuccessorTable"
+        generatedZone3 << "static const int16_t gSuccessorTable"
                 << cStringWithSigned (sourceState) << " ["
-                << cStringWithSigned ((PMSInt32)(2 * stateSuccessorsCount (sourceState COMMA_HERE) + 1))
+                << cStringWithSigned ((int32_t)(2 * stateSuccessorsCount (sourceState COMMA_HERE) + 1))
                 << "] = {" ;
         currentSourceState = sourceState ;
       }
@@ -788,11 +788,11 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
   }
   generatedZone3 << ", -1} ;\n\n" ;
 //--- Write global state successor table
-  generatedZone3 << "static const PMSInt16 * gSuccessorTable ["
+  generatedZone3 << "static const int16_t * gSuccessorTable ["
           << cStringWithSigned (rowsCount)
           << "] = {\n" ;
-  PMSInt32 itemInSameLineCount = 0 ;
-  for (PMSInt32 r=0 ; r<rowsCount ; r++) {
+  int32_t itemInSameLineCount = 0 ;
+  for (int32_t r=0 ; r<rowsCount ; r++) {
     if (r != 0) generatedZone3 << ", " ;
     if (itemInSameLineCount == 4) {
       generatedZone3 << "\n  " ;
@@ -809,12 +809,12 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
 
 //--- Write for every production, its left non terminal, ---------------------
 //    and the size of right string
-  const PMSInt32 productionsCount = inProductionRules.length () ;
+  const int32_t productionsCount = inProductionRules.length () ;
   generatedZone3.appendCppTitleComment ("Production rules infos (left non terminal, size of right string)") ;
-  generatedZone3 << "static const PMSInt16 gProductionsTable ["
+  generatedZone3 << "static const int16_t gProductionsTable ["
           << cStringWithSigned (productionsCount)
           << " * 2] = {\n" ;
-  for (PMSInt32 p=0 ; p<productionsCount ; p++) {
+  for (int32_t p=0 ; p<productionsCount ; p++) {
     if (p > 0) {
       generatedZone3 << ",\n" ;
     }
@@ -828,8 +828,8 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
   cEnumerator_nonTerminalSymbolSortedListForGrammarAnalysis nonTerminal (inNonTerminalSymbolSortedListForGrammarAnalysis, kEnumeration_up) ;
   while (nonTerminal.hasCurrentObject ()) {
     generatedZone3.appendCppTitleComment (C_String ("'") + nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue () + "' non terminal implementation") ;
-    const PMSInt32 pureBNFleftNonterminalIndex = (PMSInt32) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () ;
-    const PMSInt32 first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
+    const int32_t pureBNFleftNonterminalIndex = (int32_t) nonTerminal.current_mNonTerminalIndex (HERE).uintValue () ;
+    const int32_t first = inProductionRules.tableauIndicePremiereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
   //--- Parse label
     generatedZone3 << "void cGrammar_" << inTargetFileName.identifierRepresentation ()
                  << "::nt_" << nonTerminal.current_mNonTerminalSymbol (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
@@ -838,10 +838,10 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
                     "  switch (inLexique->nextProductionIndex ()) {\n" ;
     if (first >= 0) { // first<0 means the non terminal symbol is unuseful
       MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
-      const PMSInt32 last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
+      const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
       MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
-      for (PMSInt32 j=first ; j<=last ; j++) {
-        const PMSInt32 ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
+      for (int32_t j=first ; j<=last ; j++) {
+        const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
         generatedZone3 << "  case " << cStringWithSigned (ip) << " :\n    " ;
         inProductionRules (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                     inVocabulary,
@@ -864,10 +864,10 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
                       "  switch (inLexique->nextProductionIndex ()) {\n" ;
       if (first >= 0) { // first<0 means the non terminal symbol is unuseful
         MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
-        const PMSInt32 last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
+        const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
         MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
-        for (PMSInt32 j=first ; j<=last ; j++) {
-          const PMSInt32 ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
+        for (int32_t j=first ; j<=last ; j++) {
+          const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
           generatedZone3 << "  case " << cStringWithSigned (ip) << " :\n    " ;
           inProductionRules (ip COMMA_HERE).engendrerAppelProduction (0,
                                                                       inVocabulary,
@@ -889,7 +889,7 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
                      << "_" << currentAltForNonTerminal2.current_lkey (HERE).mAttribute_string.stringValue ().identifierRepresentation ()
                      << " (" ;
       cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal2.current_mFormalParametersList (HERE), kEnumeration_up) ;
-      PMSInt16 numeroParametre = 1 ;
+      int16_t numeroParametre = 1 ;
       while (parametre.hasCurrentObject ()) {
         switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
         case GALGAS_formalArgumentPassingModeAST::kEnum_argumentConstantIn :
@@ -922,10 +922,10 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
                         "  switch (inLexique->nextProductionIndex ()) {\n" ;
       if (first >= 0) { // first<0 means the non terminal symbol is unuseful
         MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
-        const PMSInt32 last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
+        const int32_t last = inProductionRules.tableauIndiceDerniereProduction (pureBNFleftNonterminalIndex COMMA_HERE) ;
         MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
-        for (PMSInt32 j=first ; j<=last ; j++) {
-          const PMSInt32 ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
+        for (int32_t j=first ; j<=last ; j++) {
+          const int32_t ip = inProductionRules.tableauIndirectionProduction (j COMMA_HERE) ;
           generatedZone3 << "  case " << cStringWithSigned (ip) << " :\n    " ;
           inProductionRules (ip COMMA_HERE).engendrerAppelProduction (numeroParametre,
                                                                       inVocabulary,
@@ -972,7 +972,7 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
                           ",\n                                "
                           "GALGAS_lstring inFilePath" ;
         cEnumerator_signatureForGrammarAnalysis parametre (currentAltForNonTerminal.current_mFormalParametersList (HERE), kEnumeration_up) ;
-        PMSInt32 numeroParametre = 1 ;
+        int32_t numeroParametre = 1 ;
         while (parametre.hasCurrentObject ()) {
           generatedZone3 << ",\n                                " ;
           switch (parametre.current_mFormalArgumentPassingModeForGrammarAnalysis (HERE).enumValue ()) {
@@ -1131,26 +1131,26 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
   }
 
 //--- Implement non terminal from 'select' and 'repeat' instructions ---------
-  const PMSInt32 terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
-  for (PMSInt32 ts=terminalSymbolsCount ; ts<inVocabulary.getAllSymbolsCount () ; ts++) {
+  const int32_t terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
+  for (int32_t ts=terminalSymbolsCount ; ts<inVocabulary.getAllSymbolsCount () ; ts++) {
     if (inVocabulary.needToGenerateChoice (ts COMMA_HERE)) {
       generatedZone3.appendCppTitleComment (C_String ("'") + inVocabulary.getSymbol (ts COMMA_HERE) +"' non terminal implementation") ;
-      generatedZone3 << "PMSInt32 cGrammar_" << inTargetFileName.identifierRepresentation ()
+      generatedZone3 << "int32_t cGrammar_" << inTargetFileName.identifierRepresentation ()
               << "::" << inVocabulary.getSymbol (ts COMMA_HERE) << " ("
               << "C_Lexique_" << inLexiqueName.identifierRepresentation () << " * inLexique"
               << ") {\n" ;
       generatedZone3 << "// Productions numbers :" ;
 
-      const PMSInt32 first = inProductionRules.tableauIndicePremiereProduction (ts - terminalSymbolsCount COMMA_HERE) ;
+      const int32_t first = inProductionRules.tableauIndicePremiereProduction (ts - terminalSymbolsCount COMMA_HERE) ;
       MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
-      const PMSInt32 last = inProductionRules.tableauIndiceDerniereProduction (ts - terminalSymbolsCount COMMA_HERE) ;
+      const int32_t last = inProductionRules.tableauIndiceDerniereProduction (ts - terminalSymbolsCount COMMA_HERE) ;
       MF_Assert (last >= first, "last (%ld) < first (%ld)", last, first) ;
-      for (PMSInt32 j=first ; j<=last ; j++) {
+      for (int32_t j=first ; j<=last ; j++) {
         generatedZone3 << " " << cStringWithSigned (inProductionRules.tableauIndirectionProduction (j COMMA_HERE)) ;
       }
       generatedZone3 << "\n"
                  "  return inLexique->nextProductionIndex () - "
-              << cStringWithSigned ((PMSInt32)(first - 1))
+              << cStringWithSigned ((int32_t)(first - 1))
               << " ;\n"
                  "}\n\n" ;
     }
@@ -1187,19 +1187,19 @@ compute_LR0_automation (const cPureBNFproductionsList & inProductionRules,
                         c_LR0_items_sets_collection & outLR0_items_sets_collection,
                         TC_FIFO <c_LR0_automaton_transition> & outTransitionList) {
 //--- Create initial LR0 items set (SLR automaton initial state I0)
-  const PMSInt32 vocabularyCount = inVocabulary.getAllSymbolsCount () ;
+  const int32_t vocabularyCount = inVocabulary.getAllSymbolsCount () ;
   c_LR0_items_set LR0_items_set ;
 //--- Add last production, that is the added production <> -> <start_symbol>
   LR0_items_set.add_LR0_item (inProductionRules.length () - 1, 0) ;
   LR0_items_set.close_items_set (inProductionRules, inVocabulary.getTerminalSymbolsCount ()) ;
   outLR0_items_sets_collection.searchOrInsert_LR0_itemSet (LR0_items_set) ;
 //--- Calculate LR0 automaton
-  for (PMSInt32 explorationIndex=0 ; explorationIndex<outLR0_items_sets_collection.getStatesCount () ; explorationIndex++) {
-    for (PMSInt32 s=0 ; s<vocabularyCount ; s++) {
+  for (int32_t explorationIndex=0 ; explorationIndex<outLR0_items_sets_collection.getStatesCount () ; explorationIndex++) {
+    for (int32_t s=0 ; s<vocabularyCount ; s++) {
       outLR0_items_sets_collection.getTransitionFrom (inProductionRules, explorationIndex, s, LR0_items_set) ;
       if (! LR0_items_set.isEmptySet ()) {
         LR0_items_set.close_items_set (inProductionRules, inVocabulary.getTerminalSymbolsCount ()) ;
-        const PMSInt32 target = outLR0_items_sets_collection.searchOrInsert_LR0_itemSet (LR0_items_set) ;
+        const int32_t target = outLR0_items_sets_collection.searchOrInsert_LR0_itemSet (LR0_items_set) ;
         c_LR0_automaton_transition t (explorationIndex, s, target) ;
         outTransitionList.insertByCopy (t) ;
       }
@@ -1218,9 +1218,9 @@ SLR_computations (C_Compiler * inCompiler,
                   const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
                   C_HTML_FileWrite * inHTMLfile,
-                  const TC_UniqueArray <TC_UniqueArray <PMSInt32> > & inFOLLOWarray,
+                  const TC_UniqueArray <TC_UniqueArray <int32_t> > & inFOLLOWarray,
                   const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
-                  const PMUInt32 inOriginalGrammarStartSymbol,
+                  const uint32_t inOriginalGrammarStartSymbol,
                   const C_String & inTargetFileName,
                   const C_String & inOutputDirectoryForCppFiles,
                   const C_String & inLexiqueName,
@@ -1264,7 +1264,7 @@ SLR_computations (C_Compiler * inCompiler,
     inHTMLfile->outputRawData ("<p></p><table class=\"result\"><tr><td class=\"result_title\">") ;
     *inHTMLfile << "LR0 automaton transitions" ;
     inHTMLfile->outputRawData ("</td></tr>") ;
-    for (PMSInt32 i=0 ; i<transitionList.length () ; i++) {
+    for (int32_t i=0 ; i<transitionList.length () ; i++) {
       inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
       *inHTMLfile << "  S" << cStringWithSigned (transitionList (i COMMA_HERE).mSourceState)
                   << " |- " ;
@@ -1287,22 +1287,22 @@ SLR_computations (C_Compiler * inCompiler,
   }
 
 //--- Build SLR table... detect if grammar is not SLR
-  const PMSInt32 terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
+  const int32_t terminalSymbolsCount = inVocabulary.getTerminalSymbolsCount () ;
   TC_UniqueArray2 <cDecisionTableElement> SLRdecisionTable (LR0_items_sets_collection.getStatesCount (), terminalSymbolsCount) ;
-  PMSInt32 shiftActions = 0 ;
-  PMSInt32 reduceActions = 0 ;
-  PMSInt32 successorEntries = 0 ;
+  int32_t shiftActions = 0 ;
+  int32_t reduceActions = 0 ;
+  int32_t successorEntries = 0 ;
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("<p></p><table class=\"result\"><tr><td class=\"result_title\">") ;
     *inHTMLfile << "SLR decision table" ;
     inHTMLfile->outputRawData ("</td></tr>") ;
   }
 //--- Shift actions
-  for (PMSInt32 index=0 ; index<transitionList.length () ; index++) {
+  for (int32_t index=0 ; index<transitionList.length () ; index++) {
     if (transitionList (index COMMA_HERE).mAction < terminalSymbolsCount) {
-      const PMSInt32 sourceState = transitionList (index COMMA_HERE).mSourceState ;
-      const PMSInt32 targetState = transitionList (index COMMA_HERE).mTargetState ;
-      const PMSInt32 terminal = transitionList (index COMMA_HERE).mAction ;
+      const int32_t sourceState = transitionList (index COMMA_HERE).mSourceState ;
+      const int32_t targetState = transitionList (index COMMA_HERE).mTargetState ;
+      const int32_t terminal = transitionList (index COMMA_HERE).mAction ;
       if (inHTMLfile != NULL) {
         inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         *inHTMLfile << "Action [S" << cStringWithSigned (sourceState) << ", " ;
@@ -1315,16 +1315,16 @@ SLR_computations (C_Compiler * inCompiler,
     }
   }
 //--- Reduce actions
-  PMSInt32 conflictCount = 0 ;
-  TC_UniqueArray <PMSInt32> productionsSet ;
-  for (PMSInt32 state=0 ; state<LR0_items_sets_collection.getStatesCount () ; state++) {
+  int32_t conflictCount = 0 ;
+  TC_UniqueArray <int32_t> productionsSet ;
+  for (int32_t state=0 ; state<LR0_items_sets_collection.getStatesCount () ; state++) {
     bool acceptCondition = false ;
     LR0_items_sets_collection.getProductionsWhereLocationIsRight (state,
                                                                   inProductionRules,
                                                                   productionsSet,
                                                                   acceptCondition) ;
     if (acceptCondition) {
-      const PMSInt32 terminal = inVocabulary.getEmptyStringTerminalSymbolIndex () ;
+      const int32_t terminal = inVocabulary.getEmptyStringTerminalSymbolIndex () ;
       if (inHTMLfile != NULL) {
         inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         *inHTMLfile << "Action [S"
@@ -1347,11 +1347,11 @@ SLR_computations (C_Compiler * inCompiler,
         inHTMLfile->outputRawData ("</td></tr>") ;
       }
     }
-    for (PMSInt32 p=0 ; p<productionsSet.count () ; p++) {
-      const PMSInt32 productionIndex = productionsSet (p COMMA_HERE) ;
-      const PMSInt32 leftNonTerminal = inProductionRules (productionIndex COMMA_HERE).aNumeroNonTerminalGauche ;
-      for (PMSInt32 f=0 ; f<inFOLLOWarray (leftNonTerminal COMMA_HERE).count () ; f++) {
-        const PMSInt32 terminal = inFOLLOWarray (leftNonTerminal COMMA_HERE) (f COMMA_HERE) ;
+    for (int32_t p=0 ; p<productionsSet.count () ; p++) {
+      const int32_t productionIndex = productionsSet (p COMMA_HERE) ;
+      const int32_t leftNonTerminal = inProductionRules (productionIndex COMMA_HERE).aNumeroNonTerminalGauche ;
+      for (int32_t f=0 ; f<inFOLLOWarray (leftNonTerminal COMMA_HERE).count () ; f++) {
+        const int32_t terminal = inFOLLOWarray (leftNonTerminal COMMA_HERE) (f COMMA_HERE) ;
         if (inHTMLfile != NULL) {
           inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
           *inHTMLfile << "Action [S"
@@ -1379,7 +1379,7 @@ SLR_computations (C_Compiler * inCompiler,
     }
   }
 //--- Successors
-  for (PMSInt32 t=0 ; t<transitionList.length () ; t++) {
+  for (int32_t t=0 ; t<transitionList.length () ; t++) {
     if (transitionList (t COMMA_HERE).mAction >= terminalSymbolsCount) {
       successorEntries ++ ;
       if (inHTMLfile != NULL) {

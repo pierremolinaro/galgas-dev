@@ -38,14 +38,14 @@ class C_Lexique ;
 
 void
 FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
-                    const PMUInt16 inBDDBitCount,
+                    const uint16_t inBDDBitCount,
                     C_HTML_FileWrite * inHTMLfile,
                     const cVocabulary & inVocabulary,
                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                     const C_BDD_Set1 & inVocabularyDerivingToEmpty_BDD,
                     const C_BDD_Set1 & inUsefulSymbols,
                     C_BDD_Set2 & outFIRSTsets,
-                    TC_UniqueArray <TC_UniqueArray <PMSInt32> > & outFIRSTarray,
+                    TC_UniqueArray <TC_UniqueArray <int32_t> > & outFIRSTarray,
                     const C_BDD_Descriptor & inDescriptor,
                     bool & outOk,
                     const bool inVerboseOptionOn) ;

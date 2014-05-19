@@ -8,7 +8,7 @@ static TC_UniqueArray <categoryMethodSignature_%![CLASS_NAME identifierRepresent
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const PMSInt32 inClassIndex,
+void enterCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
                %!^%categoryMethodSignature_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% inMethod) {
   gCategoryMethodTable_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inMethod, NULL COMMA_HERE) ;
 }
@@ -39,7 +39,7 @@ void callCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const cPt
 %  if (NULL != inObject) {
     macroValidSharedObject (inObject, const cPtr_%![CLASS_NAME identifierRepresentation]%) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const PMSInt32 classIndex = info->mSlotID ;
+    const int32_t classIndex = info->mSlotID ;
     categoryMethodSignature_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% f = NULL ;
     if (classIndex < gCategoryMethodTable_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]%.count ()) {
       f = gCategoryMethodTable_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% (classIndex COMMA_HERE) ;

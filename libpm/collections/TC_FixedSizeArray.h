@@ -39,9 +39,9 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class TYPE, PMSInt32 SIZE> class TC_FixedSizeArray ;
+template <class TYPE, int32_t SIZE> class TC_FixedSizeArray ;
 
-template <class TYPE, PMSInt32 SIZE>
+template <class TYPE, int32_t SIZE>
 void swap (TC_FixedSizeArray <TYPE, SIZE> & ioOperand1,
            TC_FixedSizeArray <TYPE, SIZE> & ioOperand2) ;
 
@@ -51,24 +51,24 @@ void swap (TC_FixedSizeArray <TYPE, SIZE> & ioOperand1,
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class TYPE, PMSInt32 SIZE> class TC_FixedSizeArray {
+template <class TYPE, int32_t SIZE> class TC_FixedSizeArray {
 //--- Destructor  
   public : virtual ~TC_FixedSizeArray (void) ;
   
 //--- Item access (with index checking)
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    public : TYPE & operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) ;
-    public : const TYPE & operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) const ;
+    public : TYPE & operator () (const int32_t inIndex COMMA_LOCATION_ARGS) ;
+    public : const TYPE & operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
   #endif
 
 //--- Item access (without index checking)
   #ifdef DO_NOT_GENERATE_CHECKINGS
-    public : inline TYPE & operator () (const PMSInt32 inIndex) { return mFixedArray [inIndex] ; }
-    public : inline const TYPE & operator () (const PMSInt32 inIndex) const { return mFixedArray [inIndex] ; }
+    public : inline TYPE & operator () (const int32_t inIndex) { return mFixedArray [inIndex] ; }
+    public : inline const TYPE & operator () (const int32_t inIndex) const { return mFixedArray [inIndex] ; }
   #endif
 
 //--- Exchange item at index
-  public : void exchangeItemAtIndex (const PMSInt32 inIndex,
+  public : void exchangeItemAtIndex (const int32_t inIndex,
                                      TYPE & ioItem COMMA_LOCATION_ARGS) ;
 
 //--- Exchange
@@ -85,15 +85,15 @@ template <class TYPE, PMSInt32 SIZE> class TC_FixedSizeArray {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class TYPE, PMSInt32 SIZE>
+template <class TYPE, int32_t SIZE>
 TC_FixedSizeArray<TYPE, SIZE>::~TC_FixedSizeArray (void) {
 }
 
 //-----------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS 
-  template <class TYPE, PMSInt32 SIZE>
-  TYPE & TC_FixedSizeArray<TYPE, SIZE>::operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) {
+  template <class TYPE, int32_t SIZE>
+  TYPE & TC_FixedSizeArray<TYPE, SIZE>::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) {
     M_assert_there (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
     M_assert_there (inIndex < SIZE, "inIndex (%ld) >= SIZE (%ld)", inIndex, SIZE) ;
     return mFixedArray [inIndex] ;
@@ -103,8 +103,8 @@ TC_FixedSizeArray<TYPE, SIZE>::~TC_FixedSizeArray (void) {
 //-----------------------------------------------------------------------------*
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
-  template <class TYPE, PMSInt32 SIZE>
-  const TYPE & TC_FixedSizeArray<TYPE, SIZE>::operator () (const PMSInt32 inIndex COMMA_LOCATION_ARGS) const {
+  template <class TYPE, int32_t SIZE>
+  const TYPE & TC_FixedSizeArray<TYPE, SIZE>::operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const {
     M_assert_there (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
     M_assert_there (inIndex < SIZE, "inIndex (%ld) >= SIZE (%ld)", inIndex, SIZE) ;
     return mFixedArray [inIndex] ;
@@ -113,8 +113,8 @@ TC_FixedSizeArray<TYPE, SIZE>::~TC_FixedSizeArray (void) {
 
 //-----------------------------------------------------------------------------*
 
-template <class TYPE, PMSInt32 SIZE>
-void TC_FixedSizeArray <TYPE, SIZE>::exchangeItemAtIndex (const PMSInt32 inIndex,
+template <class TYPE, int32_t SIZE>
+void TC_FixedSizeArray <TYPE, SIZE>::exchangeItemAtIndex (const int32_t inIndex,
                                                      TYPE & ioItem COMMA_LOCATION_ARGS) {
   M_assert_there (inIndex >= 0, "inIndex (%ld) < 0", inIndex, 0) ;
   M_assert_there (inIndex < SIZE, "inIndex (%ld) >= SIZE (%ld)", inIndex, SIZE) ;
@@ -123,10 +123,10 @@ void TC_FixedSizeArray <TYPE, SIZE>::exchangeItemAtIndex (const PMSInt32 inIndex
 
 //-----------------------------------------------------------------------------*
 
-template <class TYPE, PMSInt32 SIZE>
+template <class TYPE, int32_t SIZE>
 void swap (TC_FixedSizeArray <TYPE, SIZE> & ioOperand1,
            TC_FixedSizeArray <TYPE, SIZE> & ioOperand2) {
-  for (PMSInt32 i=0 ; i<SIZE ; i++) {
+  for (int32_t i=0 ; i<SIZE ; i++) {
     swap (ioOperand1.mFixedArray [i], ioOperand2.mFixedArray [i]) ;
   }
 }

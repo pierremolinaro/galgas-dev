@@ -47,7 +47,7 @@
 #define NONTERMINAL(nt) ((-nt)-1)
 #define END_PRODUCTION  (0)
 
-static const PMSInt16 gProductions [] = {
+static const int16_t gProductions [] = {
 // At index 0 : <lexique_component_start_symbol>, in file 'lexiqueSyntax.ggs', line 26
   NONTERMINAL (20) // <select_lexiqueSyntax_0>
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_lexique) // $lexique$
@@ -711,7 +711,7 @@ static const cProductionNameDescriptor gProductionNames [122] = {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static const PMSInt16 gProductionIndexes [122] = {
+static const int16_t gProductionIndexes [122] = {
 0, // index 0 : <lexique_component_start_symbol>, in file 'lexiqueSyntax.ggs', line 26
 10, // index 1 : <template_delimitor>, in file 'lexiqueSyntax.ggs', line 115
 17, // index 2 : <template_replacement>, in file 'lexiqueSyntax.ggs', line 139
@@ -842,7 +842,7 @@ static const PMSInt16 gProductionIndexes [122] = {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static const PMSInt16 gFirstProductionIndexes [59] = {
+static const int16_t gFirstProductionIndexes [59] = {
 0, // at 0 : <lexique_component_start_symbol>
 1, // at 1 : <template_delimitor>
 2, // at 2 : <template_replacement>
@@ -909,7 +909,7 @@ static const PMSInt16 gFirstProductionIndexes [59] = {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static const PMSInt16 gDecision [] = {
+static const int16_t gDecision [] = {
 // At index 0 : <lexique_component_start_symbol> only one production, no choice
   -1,
 // At index 1 : <template_delimitor> only one production, no choice
@@ -1141,7 +1141,7 @@ C_Lexique_galgas_5F_scanner::kToken__3F_, -1, // Choice 2
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static const PMSInt16 gDecisionIndexes [59] = {
+static const int16_t gDecisionIndexes [59] = {
 0, // at 0 : <lexique_component_start_symbol>
 1, // at 1 : <template_delimitor>
 2, // at 2 : <template_replacement>
@@ -1914,7 +1914,7 @@ void cGrammar_lexiqueLL_31_grammar::nt_extern_5F_routine_5F_or_5F_function_5F_de
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_0 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_0 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -1924,7 +1924,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_0 (C_Lexique_galgas
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_1 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_1 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -1934,7 +1934,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_1 (C_Lexique_galgas
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_2 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_2 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -1944,7 +1944,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_2 (C_Lexique_galgas
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_3 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_3 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -1954,7 +1954,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_3 (C_Lexique_galgas
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_4 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_4 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -1964,7 +1964,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_4 (C_Lexique_galgas
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_5 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_5 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -1974,7 +1974,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_5 (C_Lexique_galgas
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_6 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_6 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -1984,7 +1984,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_6 (C_Lexique_galgas
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_7 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_7 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -1994,7 +1994,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_7 (C_Lexique_galgas
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_8 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_8 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2004,7 +2004,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_8 (C_Lexique_galgas
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_9 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_9 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2014,7 +2014,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_9 (C_Lexique_galgas
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_10 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_10 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2024,7 +2024,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_10 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_11 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_11 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2034,7 +2034,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_11 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_12 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_12 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2044,7 +2044,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_12 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_13 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_13 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2054,7 +2054,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_13 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_14 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_14 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2064,7 +2064,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_14 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_15 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_15 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2074,7 +2074,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_15 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_16 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_16 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2084,7 +2084,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_16 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_17 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_17 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2094,7 +2094,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_17 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_18 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_18 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2104,7 +2104,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_18 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_19 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_19 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2114,7 +2114,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_19 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_20 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_20 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2124,7 +2124,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_20 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_21 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_21 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2134,7 +2134,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_21 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_22 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_22 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2144,7 +2144,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_22 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_23 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_23 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2154,7 +2154,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_23 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_24 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_24 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2164,7 +2164,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_24 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_25 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_25 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2174,7 +2174,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_25 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_26 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_26 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2184,7 +2184,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_26 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_27 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_27 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2194,7 +2194,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_27 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_28 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_28 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2204,7 +2204,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_28 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_29 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_29 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2214,7 +2214,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_29 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_30 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_30 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2224,7 +2224,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_30 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_31 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_31 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2234,7 +2234,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_31 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_32 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_32 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2244,7 +2244,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_32 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_33 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_33 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2254,7 +2254,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_33 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_34 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_34 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2264,7 +2264,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_34 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_35 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_35 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -2274,7 +2274,7 @@ PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_35 (C_Lexique_galga
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_36 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_lexiqueLL_31_grammar::select_lexiqueSyntax_36 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 

@@ -152,7 +152,7 @@ void GALGAS_grammarComponentAST::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_grammarComponentAST::description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const {
+                                              const int32_t inIndentation) const {
   ioString << "<struct @grammarComponentAST:" ;
   if (! isValid ()) {
     ioString << " not built" ;

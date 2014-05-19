@@ -159,7 +159,7 @@ class GALGAS_application : public AC_GALGAS_root
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_application & inOperand) const ;
 
@@ -190,14 +190,14 @@ class cRegularFileWrapper {
   public : const char * mName ;
   public : const char * mExtension ;
   public : const bool mIsTextFile ; // True: text file, false: binary file
-  public : const PMUInt32 mFileLength ;
+  public : const uint32_t mFileLength ;
   public : const char * mContents ;
 
 //--- Constructor
   public : cRegularFileWrapper (const char * inName,
                                 const char * inExtension,
                                 const bool inIsTextFile,
-                                const PMUInt32 inFileLength,
+                                const uint32_t inFileLength,
                                 const char * inContents) ;
 
 //--- No copy
@@ -209,16 +209,16 @@ class cRegularFileWrapper {
 
 class cDirectoryWrapper {
   public : const char * mDirectoryName ;
-  public : const PMUInt32 mFileCount ;
+  public : const uint32_t mFileCount ;
   public : const cRegularFileWrapper * * const mFiles ;
-  public : const PMUInt32 mDirectoryCount ;
+  public : const uint32_t mDirectoryCount ;
   public : const cDirectoryWrapper * * mDirectories ;
 
 //--- Constructor
   public : cDirectoryWrapper (const char * inDirectoryName,
-                              const PMUInt32 inFileCount,
+                              const uint32_t inFileCount,
                               const cRegularFileWrapper * * const inFiles,
-                              const PMUInt32 inDirectoryCount,
+                              const uint32_t inDirectoryCount,
                               const cDirectoryWrapper * * inDirectories) ;
 
 //--- No copy
@@ -259,7 +259,7 @@ class GALGAS_filewrapper : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_filewrapper & inOperand) const ;
 
@@ -362,7 +362,7 @@ class GALGAS_object : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_object & inOperand) const ;
 
@@ -451,7 +451,7 @@ class GALGAS_bool : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_bool & inOperand) const ;
 
@@ -493,12 +493,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_bool ;
 class GALGAS_uint : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private : bool mIsValid ;
-  private : PMUInt32 mUIntValue ;
+  private : uint32_t mUIntValue ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
   public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }
-  public : inline PMUInt32 uintValue (void) const { return mUIntValue ; }
+  public : inline uint32_t uintValue (void) const { return mUIntValue ; }
   public : inline void increment (void) { mUIntValue ++ ; }
 
 //--------------------------------- Default constructor
@@ -508,8 +508,8 @@ class GALGAS_uint : public AC_GALGAS_root {
   public : static GALGAS_uint constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Native constructors
-  public : GALGAS_uint (const PMUInt32 inValue) ;
-  public : GALGAS_uint (const bool inValid, const PMUInt32 inValue) ;
+  public : GALGAS_uint (const uint32_t inValue) ;
+  public : GALGAS_uint (const bool inValid, const uint32_t inValue) ;
 
 //-- Start of generic part --*
 
@@ -591,7 +591,7 @@ public : VIRTUAL_IN_DEBUG GALGAS_uint right_shift_operation (const GALGAS_uint i
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_uint & inOperand) const ;
 
@@ -649,12 +649,12 @@ class GALGAS_uint_36__34_ : public AC_GALGAS_root
  {
 //--------------------------------- Private data members
   private : bool mIsValid ;
-  private : PMUInt64 mUInt64Value ;
+  private : uint64_t mUInt64Value ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
   public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }
-  public : inline PMUInt64 uint64Value (void) const { return mUInt64Value ; }
+  public : inline uint64_t uint64Value (void) const { return mUInt64Value ; }
 
 //--------------------------------- Default constructor
   public : GALGAS_uint_36__34_ (void) ;
@@ -663,7 +663,7 @@ class GALGAS_uint_36__34_ : public AC_GALGAS_root
   public : static GALGAS_uint_36__34_ constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_uint_36__34_ (const PMUInt64 inValue) ;
+  public : GALGAS_uint_36__34_ (const uint64_t inValue) ;
 
 //-- Start of generic part --*
 
@@ -746,7 +746,7 @@ public : VIRTUAL_IN_DEBUG GALGAS_uint_36__34_ right_shift_operation (const GALGA
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_uint_36__34_ & inOperand) const ;
 
@@ -798,12 +798,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_uint_36__34_ ;
 class GALGAS_sint : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private : bool mIsValid ;
-  private : PMSInt32 mSIntValue ;
+  private : int32_t mSIntValue ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
   public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }
-  public : inline PMSInt32 sintValue (void) const { return mSIntValue ; }
+  public : inline int32_t sintValue (void) const { return mSIntValue ; }
 
 //--------------------------------- Default constructor
   public : GALGAS_sint (void) ;
@@ -812,7 +812,7 @@ class GALGAS_sint : public AC_GALGAS_root {
   public : static GALGAS_sint constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_sint (const PMSInt32 inValue) ;
+  public : GALGAS_sint (const int32_t inValue) ;
 
 //-- Start of generic part --*
 
@@ -889,7 +889,7 @@ public : VIRTUAL_IN_DEBUG GALGAS_sint right_shift_operation (const GALGAS_uint i
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_sint & inOperand) const ;
 
@@ -931,12 +931,12 @@ extern const C_galgas_type_descriptor kTypeDescriptor_GALGAS_sint ;
 class GALGAS_sint_36__34_ : public AC_GALGAS_root {
 //--------------------------------- Private data members
   private : bool mIsValid ;
-  private : PMSInt64 mSInt64Value ;
+  private : int64_t mSInt64Value ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
   public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }
-  public : inline PMSInt64 uint64Value (void) const { return mSInt64Value ; }
+  public : inline int64_t uint64Value (void) const { return mSInt64Value ; }
 
 //--------------------------------- Default constructor
   public : GALGAS_sint_36__34_ (void) ;
@@ -945,7 +945,7 @@ class GALGAS_sint_36__34_ : public AC_GALGAS_root {
   public : static GALGAS_sint_36__34_ constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_sint_36__34_ (const PMSInt64 inValue) ;
+  public : GALGAS_sint_36__34_ (const int64_t inValue) ;
 
 //-- Start of generic part --*
 
@@ -1022,7 +1022,7 @@ public : VIRTUAL_IN_DEBUG GALGAS_sint_36__34_ right_shift_operation (const GALGA
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_sint_36__34_ & inOperand) const ;
 
@@ -1099,7 +1099,7 @@ class GALGAS_char : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_char & inOperand) const ;
 
@@ -1232,7 +1232,7 @@ class GALGAS_double : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_double & inOperand) const ;
 
@@ -1407,7 +1407,7 @@ class GALGAS_string : public AC_GALGAS_root
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_string & inOperand) const ;
 
@@ -1697,7 +1697,7 @@ class GALGAS_location : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_location & inOperand) const ;
 
@@ -1809,7 +1809,7 @@ class GALGAS_stringset : public AC_GALGAS_root
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_stringset & inOperand) const ;
 
@@ -1916,7 +1916,7 @@ class GALGAS_function : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_function & inOperand) const ;
 
@@ -1992,7 +1992,7 @@ class GALGAS_type : public AC_GALGAS_root
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_type & inOperand) const ;
 
@@ -2165,7 +2165,7 @@ public : VIRTUAL_IN_DEBUG GALGAS_binaryset right_shift_operation (const GALGAS_u
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_binaryset & inOperand) const ;
 
@@ -2342,7 +2342,7 @@ class GALGAS_data : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_data & inOperand) const ;
 
@@ -3587,7 +3587,7 @@ class GALGAS_lbool : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lbool & inOperand) const ;
 
@@ -3658,7 +3658,7 @@ class GALGAS_luint : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_luint & inOperand) const ;
 
@@ -3729,7 +3729,7 @@ class GALGAS_luint_36__34_ : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_luint_36__34_ & inOperand) const ;
 
@@ -3800,7 +3800,7 @@ class GALGAS_lsint : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lsint & inOperand) const ;
 
@@ -3871,7 +3871,7 @@ class GALGAS_lsint_36__34_ : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lsint_36__34_ & inOperand) const ;
 
@@ -3942,7 +3942,7 @@ class GALGAS_lchar : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lchar & inOperand) const ;
 
@@ -4013,7 +4013,7 @@ class GALGAS_ldouble : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_ldouble & inOperand) const ;
 
@@ -4084,7 +4084,7 @@ class GALGAS_lstring : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lstring & inOperand) const ;
 
@@ -4155,7 +4155,7 @@ class GALGAS_range : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_range & inOperand) const ;
 
@@ -4223,7 +4223,7 @@ class GALGAS_luintlist_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_luintlist_2E_element & inOperand) const ;
 
@@ -4289,7 +4289,7 @@ class GALGAS_uintlist_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_uintlist_2E_element & inOperand) const ;
 
@@ -4355,7 +4355,7 @@ class GALGAS_uint_36__34_list_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_uint_36__34_list_2E_element & inOperand) const ;
 
@@ -4418,7 +4418,7 @@ class GALGAS_functionlist_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_functionlist_2E_element & inOperand) const ;
 
@@ -4484,7 +4484,7 @@ class GALGAS_stringlist_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_stringlist_2E_element & inOperand) const ;
 
@@ -4550,7 +4550,7 @@ class GALGAS_lstringlist_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_lstringlist_2E_element & inOperand) const ;
 
@@ -4613,7 +4613,7 @@ class GALGAS_typelist_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_typelist_2E_element & inOperand) const ;
 
@@ -4676,7 +4676,7 @@ class GALGAS_objectlist_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_objectlist_2E_element & inOperand) const ;
 
@@ -4745,7 +4745,7 @@ class GALGAS__32_stringlist_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS__32_stringlist_2E_element & inOperand) const ;
 

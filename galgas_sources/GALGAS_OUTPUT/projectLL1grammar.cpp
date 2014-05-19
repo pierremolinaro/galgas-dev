@@ -47,7 +47,7 @@
 #define NONTERMINAL(nt) ((-nt)-1)
 #define END_PRODUCTION  (0)
 
-static const PMSInt16 gProductions [] = {
+static const int16_t gProductions [] = {
 // At index 0 : <project_component_start_symbol>, in file 'projectModelBuilder.ggs', line 32
   TERMINAL (C_Lexique_galgas_5F_scanner::kToken_project) // $project$
 , TERMINAL (C_Lexique_galgas_5F_scanner::kToken_identifier) // $identifier$
@@ -155,7 +155,7 @@ static const cProductionNameDescriptor gProductionNames [17] = {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static const PMSInt16 gProductionIndexes [17] = {
+static const int16_t gProductionIndexes [17] = {
 0, // index 0 : <project_component_start_symbol>, in file 'projectModelBuilder.ggs', line 32
 11, // index 1 : <select_projectModelBuilder_0>, in file 'projectModelBuilder.ggs', line 40
 12, // index 2 : <select_projectModelBuilder_0>, in file 'projectModelBuilder.ggs', line 40
@@ -181,7 +181,7 @@ static const PMSInt16 gProductionIndexes [17] = {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static const PMSInt16 gFirstProductionIndexes [7] = {
+static const int16_t gFirstProductionIndexes [7] = {
 0, // at 0 : <project_component_start_symbol>
 1, // at 1 : <select_projectModelBuilder_0>
 3, // at 2 : <select_projectModelBuilder_1>
@@ -196,7 +196,7 @@ static const PMSInt16 gFirstProductionIndexes [7] = {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static const PMSInt16 gDecision [] = {
+static const int16_t gDecision [] = {
 // At index 0 : <project_component_start_symbol> only one production, no choice
   -1,
 //---- Added non terminal symbols from 'select' and 'repeat' instructions
@@ -233,7 +233,7 @@ C_Lexique_galgas_5F_scanner::kToken_program, -1, // Choice 8
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static const PMSInt16 gDecisionIndexes [7] = {
+static const int16_t gDecisionIndexes [7] = {
 0, // at 0 : <project_component_start_symbol>
 1, // at 1 : <select_projectModelBuilder_0>
 6, // at 2 : <select_projectModelBuilder_1>
@@ -348,7 +348,7 @@ void cGrammar_projectLL_31_grammar::_performSourceStringParsing_ (C_Compiler * i
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_projectLL_31_grammar::select_projectModelBuilder_0 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_projectLL_31_grammar::select_projectModelBuilder_0 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -358,7 +358,7 @@ PMSInt32 cGrammar_projectLL_31_grammar::select_projectModelBuilder_0 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_projectLL_31_grammar::select_projectModelBuilder_1 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_projectLL_31_grammar::select_projectModelBuilder_1 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -368,7 +368,7 @@ PMSInt32 cGrammar_projectLL_31_grammar::select_projectModelBuilder_1 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_projectLL_31_grammar::select_projectModelBuilder_2 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_projectLL_31_grammar::select_projectModelBuilder_2 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 
@@ -378,7 +378,7 @@ PMSInt32 cGrammar_projectLL_31_grammar::select_projectModelBuilder_2 (C_Lexique_
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMSInt32 cGrammar_projectLL_31_grammar::select_projectModelBuilder_3 (C_Lexique_galgas_5F_scanner * inLexique) {
+int32_t cGrammar_projectLL_31_grammar::select_projectModelBuilder_3 (C_Lexique_galgas_5F_scanner * inLexique) {
   return inLexique->nextProductionIndex () ;
 }
 

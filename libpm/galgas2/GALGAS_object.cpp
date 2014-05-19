@@ -82,7 +82,7 @@ const AC_GALGAS_root * GALGAS_object::embeddedObject (void) const {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_object::description (C_String & /* ioString */,
-                                 const PMSInt32 /* inIndentation */) const {
+                                 const int32_t /* inIndentation */) const {
 }
 
 //-----------------------------------------------------------------------------*

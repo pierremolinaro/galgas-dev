@@ -125,65 +125,65 @@ class cGrammar_templateGrammar : public cParser_templateSyntax {
   public : virtual void nt_term_ (GALGAS_templateExpressionAST & outArgument0,
                                   C_Lexique_galgasTemplateScanner * inCompiler) ;
 
-  public : virtual PMSInt32 select_templateSyntax_0 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_0 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_1 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_1 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_2 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_2 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_3 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_3 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_4 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_4 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_5 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_5 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_6 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_6 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_7 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_7 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_8 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_8 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_9 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_9 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_10 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_10 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_11 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_11 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_12 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_12 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_13 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_13 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_14 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_14 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_15 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_15 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_16 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_16 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_17 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_17 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_18 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_18 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_19 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_19 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_20 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_20 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_21 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_21 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_22 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_22 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_23 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_23 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_24 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_24 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_25 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_25 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_26 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_26 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_27 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_27 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_28 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_28 (C_Lexique_galgasTemplateScanner *) ;
 
-  public : virtual PMSInt32 select_templateSyntax_29 (C_Lexique_galgasTemplateScanner *) ;
+  public : virtual int32_t select_templateSyntax_29 (C_Lexique_galgasTemplateScanner *) ;
 } ;
 
 //-----------------------------------------------------------------------------*

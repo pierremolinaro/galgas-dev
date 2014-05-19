@@ -79,7 +79,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
                          print_tool_help_message) ;
 //---
   bool verboseOptionOn = true ;
-  PMSInt16 returnCode = 0 ; // No error
+  int16_t returnCode = 0 ; // No error
 //--- Set Execution mode
   C_String executionModeOptionErrorMessage ;
   setExecutionMode (executionModeOptionErrorMessage) ;
@@ -93,7 +93,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
     try{
       routine_before (commonLexique COMMA_HERE) ;
       verboseOptionOn = gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ;
-      for (PMSInt32 i=0 ; i<sourceFilesArray.count () ; i++) {
+      for (int32_t i=0 ; i<sourceFilesArray.count () ; i++) {
         setCurrentCompiledFilePath (sourceFilesArray (i COMMA_HERE)) ;
         if (gOption_galgas_5F_builtin_5F_options_trace.mValue) {
           enableTraceWithPath (sourceFilesArray (i COMMA_HERE)) ;
@@ -102,7 +102,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
         const GALGAS_string sfp = GALGAS_string (sourceFilesArray (i COMMA_HERE)) ;
         const GALGAS_location location = commonLexique->here () ;
         const GALGAS_lstring sourceFilePath (sfp, location) ;
-        PMSInt16 r = 0 ;
+        int16_t r = 0 ;
         %
           foreach PROGRAM_RULE_LIST 
           do index IDX
@@ -167,7 +167,7 @@ int mainForLIBPM (int inArgc, const char * inArgv []) {
         message << ".\\n" ;
         ggs_printMessage (message COMMA_HERE) ;
       }
-    }catch (const M_STD_NAMESPACE exception & e) {
+    }catch (const ::std:: exception & e) {
       F_default_display_exception (e) ;
       returnCode = 1 ; // Error code
     }catch (...) {

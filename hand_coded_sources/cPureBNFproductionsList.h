@@ -37,18 +37,18 @@ class C_TextFileWrite ;
 
 class cProduction {
   public : C_String mSourceFileName ;
-  public : PMSInt32 aLigneDefinition ;
-  public : PMSInt32 aColonneDefinition ;
-  public : PMSInt32 aNumeroNonTerminalGauche ;
-  public : TC_UniqueArray <PMSInt16> aDerivation ;
+  public : int32_t aLigneDefinition ;
+  public : int32_t aColonneDefinition ;
+  public : int32_t aNumeroNonTerminalGauche ;
+  public : TC_UniqueArray <int16_t> aDerivation ;
   public : C_BDD_Set1 aPremierDeProduction ;
-  public : PMUInt32 mProductionIndex ;
+  public : uint32_t mProductionIndex ;
 
 //--- Constructor
   public : cProduction (void) ;
 
 //--- Generate a C++ call instruction of this production
-  public : void engendrerAppelProduction (const PMSInt16 nombreDeParametres,
+  public : void engendrerAppelProduction (const int16_t nombreDeParametres,
                                           const cVocabulary & inVocabulary,
                                           const C_String & inAltName,
                                           AC_OutputStream & fichierCPP) const ;
@@ -64,16 +64,16 @@ class cProduction {
 //-----------------------------------------------------------------------------*
 
 class cPureBNFproductionsList : public TC_FIFO <cProduction> {
-  public : TC_UniqueArray <PMSInt32> tableauIndicePremiereProduction ;
-  public : TC_UniqueArray <PMSInt32> tableauIndiceDerniereProduction ;
-  public : TC_UniqueArray <PMSInt32> tableauIndirectionProduction ;
+  public : TC_UniqueArray <int32_t> tableauIndicePremiereProduction ;
+  public : TC_UniqueArray <int32_t> tableauIndiceDerniereProduction ;
+  public : TC_UniqueArray <int32_t> tableauIndirectionProduction ;
 
-  public : TC_UniqueArray <PMSInt32> mFirstProductionIndex ;
-  public : TC_UniqueArray <PMSInt32> mLastProductionIndex ;
-  public : TC_UniqueArray <PMSInt32> mProductionIndex ;
+  public : TC_UniqueArray <int32_t> mFirstProductionIndex ;
+  public : TC_UniqueArray <int32_t> mLastProductionIndex ;
+  public : TC_UniqueArray <int32_t> mProductionIndex ;
 
-  public : void buildProductionsArray (const PMSInt32 inTerminalSymbolsCount,
-                                       const PMSInt32 inNonTerminalSymbolsCount) ;
+  public : void buildProductionsArray (const int32_t inTerminalSymbolsCount,
+                                       const int32_t inNonTerminalSymbolsCount) ;
   public : cPureBNFproductionsList (void) ;
 } ;
 

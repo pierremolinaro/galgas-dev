@@ -111,7 +111,7 @@ TC_Array <TYPE>::TC_Array (const TC_Array <TYPE> & inOperand) :
 TC_UniqueArray <TYPE> () {
   if (inOperand.mCount > 0) {
     macroMyNewArray (this->mArray, TYPE, inOperand.mCount) ;
-    for (PMSInt32 i=0 ; i<inOperand.mCount ; i++) {
+    for (int32_t i=0 ; i<inOperand.mCount ; i++) {
       this->mArray [i] = inOperand.mArray [i] ;
     }
     this->mCount = inOperand.mCount ;
@@ -132,7 +132,7 @@ TC_Array <TYPE> & TC_Array <TYPE>::operator = (const TC_Array <TYPE> & inOperand
     macroMyNewArray (this->mArray, TYPE, inOperand.mCount) ;
     this->mCapacity = inOperand.mCount ;
   }
-  for (PMSInt32 i=0 ; i<inOperand.mCount ; i++) {
+  for (int32_t i=0 ; i<inOperand.mCount ; i++) {
     this->mArray [i] = inOperand.mArray [i] ;
   }
   this->mCount = inOperand.mCount ;

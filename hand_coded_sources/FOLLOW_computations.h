@@ -40,14 +40,14 @@ class C_Lexique ;
 void
 FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                      C_HTML_FileWrite * inHTMLfile,
-                     const PMUInt16 inBDDBitCount,
+                     const uint16_t inBDDBitCount,
                      const cVocabulary & inVocabulary,
                      const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                      const C_BDD_Set1 & inUsefulSymbols,
                      const C_BDD_Set2 & inFIRSTsets,
                      const C_BDD_Set1 & nonTerminauxPouvantEtreSuivisDuVide,
                      C_BDD_Set2 & outFOLLOWsets,
-                     TC_UniqueArray <TC_UniqueArray <PMSInt32> > & outFOLLOWarray,
+                     TC_UniqueArray <TC_UniqueArray <int32_t> > & outFOLLOWarray,
                      bool & outOk,
                      const bool inVerboseOptionOn) ;
 

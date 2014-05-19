@@ -51,7 +51,7 @@
 //-----------------------------------------------------------------------------*
 
 #ifdef COMPILE_FOR_WIN32
-  void F_default_display_exception (const M_STD_NAMESPACE exception & inException) {
+  void F_default_display_exception (const ::std:: exception & inException) {
     ::MessageBox ((HWND__ *) NULL,
                   inException.what (),
                   "C++ exception",
@@ -66,7 +66,7 @@
 //-----------------------------------------------------------------------------*
 
 #ifdef UNIX_TOOL
-  void F_default_display_exception (const M_STD_NAMESPACE exception & inException) {
+  void F_default_display_exception (const ::std:: exception & inException) {
     co.flush () ;
     ce << "\n*** Exception: " << inException.what () << " ***\n" ;
   }

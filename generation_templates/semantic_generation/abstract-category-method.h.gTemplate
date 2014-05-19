@@ -23,7 +23,7 @@ typedef void (*categoryMethodSignature_%![CLASS_NAME identifierRepresentation]%_
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const PMSInt32 inClassIndex,
+void enterCategoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
                %!^%categoryMethodSignature_%![CLASS_NAME identifierRepresentation]%_%![METHOD_NAME identifierRepresentation]% inMethod) ;
 
 //-----------------------------------------------------------------------------*

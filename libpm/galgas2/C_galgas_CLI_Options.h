@@ -80,9 +80,9 @@ bool executionModeIsSyntaxAnalysisOnly (void) ;
 
 bool executionModeIsIndexing (void) ;
 
-PMUInt32 contextHelpStartLocation (void) ;
+uint32_t contextHelpStartLocation (void) ;
 
-PMUInt32 contextHelpEndLocation (void) ;
+uint32_t contextHelpEndLocation (void) ;
 
 void setCurrentCompiledFilePath (const C_String & inPath) ;
 

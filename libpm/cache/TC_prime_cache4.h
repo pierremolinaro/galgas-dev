@@ -43,84 +43,84 @@
 template <class RESULT>
 class TC_prime_cache4 {
 //--- Constructor
-  public : TC_prime_cache4 (const PMSInt32 inDefaultValueForOperand1,
-                                     const PMSInt32 inOperand1NumberOfValues,
-                                     const PMSInt32 inCacheSize) ;
+  public : TC_prime_cache4 (const int32_t inDefaultValueForOperand1,
+                                     const int32_t inOperand1NumberOfValues,
+                                     const int32_t inCacheSize) ;
 
 //--- Destructor
   public : virtual ~TC_prime_cache4 (void) ;
 
 //--- Cache entry type
   protected : class cCacheEntry {
-    public : PMSInt32 mOperand1 ;
-    public : PMSInt32 mOperand2 ;
-    public : PMSInt32 mOperand3 ;
-    public : PMSInt32 mOperand4 ;
+    public : int32_t mOperand1 ;
+    public : int32_t mOperand2 ;
+    public : int32_t mOperand3 ;
+    public : int32_t mOperand4 ;
     public : RESULT mResult ;
   } ;
 
 //--- Cache read
-  public : inline void getCacheEntry (const PMSInt32 inOperand1,
-                                      const PMSInt32 inOperand2,
-                                      const PMSInt32 inOperand3,
-                                      const PMSInt32 inOperand4,
+  public : inline void getCacheEntry (const int32_t inOperand1,
+                                      const int32_t inOperand2,
+                                      const int32_t inOperand3,
+                                      const int32_t inOperand4,
                                       bool & outCacheSuccess,
-                                      PMSInt32 & outHashCode,
-                                      PMSInt32 & outTag,
+                                      int32_t & outHashCode,
+                                      int32_t & outTag,
                                       RESULT & outResult) ;
 
 //--- Cache write
-  public : inline void writeCacheEntry (const PMSInt32 inOperand1,
-                                        const PMSInt32 inOperand2,
-                                        const PMSInt32 inOperand3,
-                                        const PMSInt32 inOperand4,
-                                        const PMSInt32 inHashCode,
-                                        const PMSInt32 inTag,
+  public : inline void writeCacheEntry (const int32_t inOperand1,
+                                        const int32_t inOperand2,
+                                        const int32_t inOperand3,
+                                        const int32_t inOperand4,
+                                        const int32_t inHashCode,
+                                        const int32_t inTag,
                                         const RESULT inResult) ;
 
 //--- Clear all cache entries
   public : void clearAllCacheEntries (void) ;
 
 //--- Realloc cache
-  public : void reallocCache (const PMSInt32 inCacheNewSize) ;
+  public : void reallocCache (const int32_t inCacheNewSize) ;
 
 //--- Cache array pointer
   protected : cCacheEntry * mCache ;
 
 //--- Number of value of operand 1
-  public : PMSInt32 cmOperand1NumberOfValues ;
+  public : int32_t cmOperand1NumberOfValues ;
 
 //--- Cache size
-  protected : PMSInt32 mCacheSize ;
+  protected : int32_t mCacheSize ;
 
 //--- Integer parameters for computing hashcode
-  protected : PMSInt32 mParameter3 ;
-  protected : PMSInt32 mParameter4 ;
+  protected : int32_t mParameter3 ;
+  protected : int32_t mParameter4 ;
 
 //--- Default value for operand 1
-  public : const PMSInt32 cmDefaultValueForOperand1 ;
+  public : const int32_t cmDefaultValueForOperand1 ;
 
 //--- Cache successes
-  protected : PMSInt32 mCacheSuccessCount ;
-  public : PMSInt32 getCacheSuccessCount (void) const { return mCacheSuccessCount ; }
+  protected : int32_t mCacheSuccessCount ;
+  public : int32_t getCacheSuccessCount (void) const { return mCacheSuccessCount ; }
 
 //--- Cache missises
-  protected : PMSInt32 mCacheMissCount ;
-  public : PMSInt32 getCacheMissCount (void) const { return mCacheMissCount ; }
+  protected : int32_t mCacheMissCount ;
+  public : int32_t getCacheMissCount (void) const { return mCacheMissCount ; }
 
 //--- Cache missises
-  protected : PMSInt32 mCacheOverridesCount ;
-  public : PMSInt32 getCacheOverrideCount (void) const { return mCacheOverridesCount ; }
+  protected : int32_t mCacheOverridesCount ;
+  public : int32_t getCacheOverrideCount (void) const { return mCacheOverridesCount ; }
 
 //--- Get cache entries count
-  public : PMSInt32 getCacheEntriesCount (void) {
+  public : int32_t getCacheEntriesCount (void) {
     return mCacheSize ;
   }
 
 //--- Get unused entries count
-  public : PMSInt32 getUnusedCacheEntriesCount (void) const {
-    PMSInt32 unusedEntriesCount = 0 ;
-    for (PMSInt32 i=0 ; i<mCacheSize ; i++) {
+  public : int32_t getUnusedCacheEntriesCount (void) const {
+    int32_t unusedEntriesCount = 0 ;
+    for (int32_t i=0 ; i<mCacheSize ; i++) {
       unusedEntriesCount += (mCache [i].mOperand1 == cmDefaultValueForOperand1) ;
     }
     return unusedEntriesCount ;
@@ -135,13 +135,13 @@ class TC_prime_cache4 {
 //-----------------------------------------------------------------------------*
 
 template <class RESULT>
-TC_prime_cache4 <RESULT>::TC_prime_cache4 (const PMSInt32 inDefaultValueForOperand1,
-                                           const PMSInt32 inOperand1NumberOfValues,
-                                           const PMSInt32 inCacheSize) :
+TC_prime_cache4 <RESULT>::TC_prime_cache4 (const int32_t inDefaultValueForOperand1,
+                                           const int32_t inOperand1NumberOfValues,
+                                           const int32_t inCacheSize) :
 cmOperand1NumberOfValues ((inOperand1NumberOfValues < 1) ? 1 : inOperand1NumberOfValues),
 cmDefaultValueForOperand1 (inDefaultValueForOperand1) {
   mCacheSize = getPrimeGreaterThan ((inCacheSize < 1) ? 1 : inCacheSize) ;
-  mParameter3 = (PMSInt32) (::pow (mCacheSize / cmOperand1NumberOfValues, 1./3.)) ;
+  mParameter3 = (int32_t) (::pow (mCacheSize / cmOperand1NumberOfValues, 1./3.)) ;
   mParameter4 = mParameter3 * mParameter3 ;
   mParameter3 *= cmOperand1NumberOfValues ;
   mParameter4 *= cmOperand1NumberOfValues ;
@@ -162,27 +162,27 @@ TC_prime_cache4 <RESULT>::~TC_prime_cache4 (void) {
 //-----------------------------------------------------------------------------*
 
 template <class RESULT>
-void TC_prime_cache4 <RESULT>::reallocCache (const PMSInt32 inCacheSize) {
-  const PMSInt32 newCacheSize = getPrimeGreaterThan (inCacheSize) ;
+void TC_prime_cache4 <RESULT>::reallocCache (const int32_t inCacheSize) {
+  const int32_t newCacheSize = getPrimeGreaterThan (inCacheSize) ;
   if (newCacheSize != mCacheSize) {
     cCacheEntry * newCache = new cCacheEntry [newCacheSize] ;
     if (newCache != NULL) {
       cCacheEntry * previousCache = mCache ;
       mCache = newCache ;
-      const PMSInt32 previousCacheSize = mCacheSize ;
+      const int32_t previousCacheSize = mCacheSize ;
       mCacheSize = newCacheSize ;
-      for (PMSInt32 i=0 ; i<newCacheSize ; i++) {
+      for (int32_t i=0 ; i<newCacheSize ; i++) {
         mCache [i].mOperand1 = cmDefaultValueForOperand1 ;
       }
-      mParameter3 = (PMSInt32) (::pow (mCacheSize / cmOperand1NumberOfValues, 1./3.)) ;
+      mParameter3 = (int32_t) (::pow (mCacheSize / cmOperand1NumberOfValues, 1./3.)) ;
       mParameter4 = mParameter3 * mParameter3 ;
       mParameter3 *= cmOperand1NumberOfValues ;
       mParameter4 *= cmOperand1NumberOfValues ;
       bool cacheSuccess ;
-      PMSInt32 hashCode ;
+      int32_t hashCode ;
       RESULT cacheResult ;
-      PMSInt32 tag = 0 ; 
-      for (PMSInt32 i=0 ; i<previousCacheSize ; i++) {
+      int32_t tag = 0 ; 
+      for (int32_t i=0 ; i<previousCacheSize ; i++) {
         getCacheEntry (previousCache [i].mOperand1,
                        previousCache [i].mOperand2,
                        previousCache [i].mOperand3,
@@ -209,19 +209,19 @@ void TC_prime_cache4 <RESULT>::reallocCache (const PMSInt32 inCacheSize) {
 //-----------------------------------------------------------------------------*
 
 template <class RESULT>
-void TC_prime_cache4 <RESULT>::getCacheEntry (const PMSInt32 inOperand1,
-                                                       const PMSInt32 inOperand2,
-                                                       const PMSInt32 inOperand3,
-                                                       const PMSInt32 inOperand4,
+void TC_prime_cache4 <RESULT>::getCacheEntry (const int32_t inOperand1,
+                                                       const int32_t inOperand2,
+                                                       const int32_t inOperand3,
+                                                       const int32_t inOperand4,
                                                        bool & outCacheSuccess,
-                                                       PMSInt32 & outHashCode,
-                                                       PMSInt32 & /* outTag */,
+                                                       int32_t & outHashCode,
+                                                       int32_t & /* outTag */,
                                                        RESULT & outResult) {
 //--- Compute hash code
-  outHashCode = (PMSInt32) (((PMUInt32) ((inOperand4 * mParameter4)
+  outHashCode = (int32_t) (((uint32_t) ((inOperand4 * mParameter4)
                                         + (inOperand3 * mParameter3)
                                         + (inOperand2 * cmOperand1NumberOfValues)
-                                        + inOperand1)) % ((PMUInt32) mCacheSize)) ;
+                                        + inOperand1)) % ((uint32_t) mCacheSize)) ;
 //--- Cache success ?
   outCacheSuccess = (inOperand1 == mCache [outHashCode].mOperand1)
                  && (inOperand2 == mCache [outHashCode].mOperand2)
@@ -237,12 +237,12 @@ void TC_prime_cache4 <RESULT>::getCacheEntry (const PMSInt32 inOperand1,
 //-----------------------------------------------------------------------------*
 
 template <class RESULT>
-void TC_prime_cache4 <RESULT>::writeCacheEntry (const PMSInt32 inOperand1,
-                                                         const PMSInt32 inOperand2,
-                                                         const PMSInt32 inOperand3,
-                                                         const PMSInt32 inOperand4,
-                                                         const PMSInt32 inHashCode,
-                                                         const PMSInt32 /* inTag */,
+void TC_prime_cache4 <RESULT>::writeCacheEntry (const int32_t inOperand1,
+                                                         const int32_t inOperand2,
+                                                         const int32_t inOperand3,
+                                                         const int32_t inOperand4,
+                                                         const int32_t inHashCode,
+                                                         const int32_t /* inTag */,
                                                          const RESULT inResult) {
 //--- Cache overrides ?
   mCacheOverridesCount += (mCache [inHashCode].mOperand1 != cmDefaultValueForOperand1) ;
@@ -259,7 +259,7 @@ void TC_prime_cache4 <RESULT>::writeCacheEntry (const PMSInt32 inOperand1,
 
 template <class RESULT>
 void TC_prime_cache4 <RESULT>::clearAllCacheEntries (void) {
-  for (PMSInt32 i=0 ; i<mCacheSize ; i++) {
+  for (int32_t i=0 ; i<mCacheSize ; i++) {
     mCache [i].mOperand1 = cmDefaultValueForOperand1 ;
   }
 }

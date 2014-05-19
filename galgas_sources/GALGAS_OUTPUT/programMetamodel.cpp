@@ -54,7 +54,7 @@ class cCollectionElement_prologueEpilogueList : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -82,7 +82,7 @@ cCollectionElement * cCollectionElement_prologueEpilogueList::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_prologueEpilogueList::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_prologueEpilogueList::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mInstructionList" ":" ;
@@ -461,7 +461,7 @@ class cCollectionElement_programRuleList : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -494,7 +494,7 @@ cCollectionElement * cCollectionElement_programRuleList::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_programRuleList::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_programRuleList::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mSourceFileExtension" ":" ;
@@ -1192,7 +1192,7 @@ void GALGAS_programComponentAST::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_programComponentAST::description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const {
+                                              const int32_t inIndentation) const {
   ioString << "<struct @programComponentAST:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -1369,7 +1369,7 @@ void GALGAS_prologueEpilogueList_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_prologueEpilogueList_2E_element::description (C_String & ioString,
-                                                          const PMSInt32 inIndentation) const {
+                                                          const int32_t inIndentation) const {
   ioString << "<struct @prologueEpilogueList.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -1551,7 +1551,7 @@ void GALGAS_programRuleList_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_programRuleList_2E_element::description (C_String & ioString,
-                                                     const PMSInt32 inIndentation) const {
+                                                     const int32_t inIndentation) const {
   ioString << "<struct @programRuleList.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;

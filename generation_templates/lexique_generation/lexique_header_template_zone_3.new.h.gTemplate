@@ -8,7 +8,7 @@
 %
   foreach DELIMITOR_LIST_LIST do
     %\n//--- Key words table '%![mName string]%'\n%
-    %  public : static PMSInt16 search_into_%![mName string]% (const C_String & inSearchedString) ;\n%
+    %  public : static int16_t search_into_%![mName string]% (const C_String & inSearchedString) ;\n%
   end foreach
 %  
 
@@ -42,11 +42,11 @@
   protected : virtual bool parseLexicalToken (void) ;
 
 //--- Append terminal message
-  protected : virtual void appendTerminalMessageToSyntaxErrorMessage (const PMSInt16 numeroTerminal,
+  protected : virtual void appendTerminalMessageToSyntaxErrorMessage (const int16_t numeroTerminal,
                                                               C_String & messageErreur) ;
 
 //--- Get terminal count
-  public : virtual PMSInt16 terminalVocabularyCount (void) const { return %![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string]% ; }
+  public : virtual int16_t terminalVocabularyCount (void) const { return %![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string]% ; }
 
 //--- Get Token String
   public : virtual C_String getCurrentTokenString (const cToken * inTokenPtr) const ;

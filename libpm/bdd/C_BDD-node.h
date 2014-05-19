@@ -37,25 +37,25 @@
 //-----------------------------------------------------------------------------*
 
 class cBDDnode {
-  public : inline cBDDnode (const PMUInt32 inTHENbranch,
-                            const PMUInt32 inELSEbranch,
-                            const PMUInt32 inVariableIndex) :
+  public : inline cBDDnode (const uint32_t inTHENbranch,
+                            const uint32_t inELSEbranch,
+                            const uint32_t inVariableIndex) :
   mTHEN (inTHENbranch),
   mELSE (inELSEbranch),
   mVariableIndex (inVariableIndex),
   mAuxiliary (0) {
   }
   
-  public : inline PMUInt64 bothBranches (void) const {
-    PMUInt64 result = mTHEN ;
+  public : inline uint64_t bothBranches (void) const {
+    uint64_t result = mTHEN ;
     result <<= 32 ;
     result |= mELSE ;
     return result ;
   }
-  public : PMUInt32 mTHEN ;
-  public : PMUInt32 mELSE ;
-  public : PMUInt32 mVariableIndex ;
-  public : PMUInt32 mAuxiliary ;
+  public : uint32_t mTHEN ;
+  public : uint32_t mELSE ;
+  public : uint32_t mVariableIndex ;
+  public : uint32_t mAuxiliary ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -66,21 +66,21 @@ class cBDDnode {
 
 extern cBDDnode * gNodeArray ;
 
-inline PMUInt32 nodeIndexForRoot (const PMUInt32 inRoot
+inline uint32_t nodeIndexForRoot (const uint32_t inRoot
                                   COMMA_LOCATION_ARGS) {
   MF_AssertThere ((inRoot >> 1) <= C_BDD::getExistingNodesCount (), "nodeIndex (%lld) should be <= current node count (%lld)", inRoot >> 1, C_BDD::getExistingNodesCount ()) ;
   return inRoot >> 1 ;
 }
 
-bool isNodeMarkedThenMark (const PMUInt32 inValue COMMA_LOCATION_ARGS) ;
+bool isNodeMarkedThenMark (const uint32_t inValue COMMA_LOCATION_ARGS) ;
 
-void markNode (const PMUInt32 inValue) ;
+void markNode (const uint32_t inValue) ;
 
 //-----------------------------------------------------------------------------*
 
-PMUInt32 find_or_add (const PMUInt32 inBoolVar,
-                      const PMUInt32 inELSEbranch,
-                      const PMUInt32 inTHENbranch
+uint32_t find_or_add (const uint32_t inBoolVar,
+                      const uint32_t inELSEbranch,
+                      const uint32_t inTHENbranch
                       COMMA_LOCATION_ARGS) ;
 
 //-----------------------------------------------------------------------------*
@@ -89,12 +89,12 @@ PMUInt32 find_or_add (const PMUInt32 inBoolVar,
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMUInt32 internalANDoperation (const PMUInt32 opf,
-                               const PMUInt32 opg) ;
+uint32_t internalANDoperation (const uint32_t opf,
+                               const uint32_t opg) ;
 
-PMUInt32 internalITEoperation (const PMUInt32 opf, 
-                               const PMUInt32 opg,
-                               const PMUInt32 oph) ;
+uint32_t internalITEoperation (const uint32_t opf, 
+                               const uint32_t opg,
+                               const uint32_t oph) ;
 
 void clearANDOperationCache (void) ;
 
@@ -108,13 +108,13 @@ void releaseSingleOperandOperationCache (void) ;
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-PMUInt32 ANDCacheMemoryUsage (void) ;
+uint32_t ANDCacheMemoryUsage (void) ;
 
-PMUInt32 singleOperandOperationCacheMemoryUsage (void) ;
+uint32_t singleOperandOperationCacheMemoryUsage (void) ;
 
-PMUInt32 nodeMapMemoryUsage (void) ;
+uint32_t nodeMapMemoryUsage (void) ;
 
-PMUInt32 hashMapMemoryUsage (void) ;
+uint32_t hashMapMemoryUsage (void) ;
 
 //-----------------------------------------------------------------------------*
 

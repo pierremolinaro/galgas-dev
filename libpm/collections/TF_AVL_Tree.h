@@ -35,13 +35,13 @@
 //        INFO mInfo                                                           *
 //        ELEMENT * mPtrToInf                                                  *
 //        ELEMENT * mPtrToSup                                                  *
-//        PMSInt8 mBalance  (can also be declared as PMSInt16 or PMSInt32)     *
+//        int8_t mBalance  (can also be declared as int16_t or int32_t)     *
 //                                                                             *
 //     An ELEMENT class must have the following constructor :                  *
 //        ELEMENT (const INFO & inInfo) ;                                      *
 //                                                                             *
 //     An INFO class must have the following method :                          *
-//        PMSInt32 compare (const INFO & inInfo) ;                             *
+//        int32_t compare (const INFO & inInfo) ;                             *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -110,7 +110,7 @@ INFO * TF_avltree_search (ELEMENT * ioRootPointer,
   if (ioRootPointer == NULL) {
     result = (INFO *) NULL ;
   }else{
-    const PMSInt32 comp = ioRootPointer->mInfo.compare (inInfo) ;
+    const int32_t comp = ioRootPointer->mInfo.compare (inInfo) ;
     if (comp > 0) {
       result = TF_avltree_search (ioRootPointer->mPtrToSup, inInfo) ;
     }else if (comp < 0) {
@@ -141,7 +141,7 @@ INFO * recursiveSearchOrInsert (ELEMENT * & ioRootPointer,
     outInsertionPerformed = true ;
   }else{
     outInsertionPerformed = false ;
-    const PMSInt32 comp = ioRootPointer->mInfo.compare (inInfo) ;
+    const int32_t comp = ioRootPointer->mInfo.compare (inInfo) ;
     if (comp > 0) {
       result = recursiveSearchOrInsert (ioRootPointer->mPtrToSup, inInfo, outExtension, outInsertionPerformed) ;
       if (outExtension) {
@@ -209,7 +209,7 @@ ELEMENT * recursiveSearchOrInsert3 (ELEMENT * & ioRootPointer,
     outInsertionPerformed = true ;
   }else{
     outInsertionPerformed = false ;
-    const PMSInt32 comp = ioRootPointer->compare (inOperand1, inOperand2, inOperand3) ;
+    const int32_t comp = ioRootPointer->compare (inOperand1, inOperand2, inOperand3) ;
     if (comp > 0) {
       result = recursiveSearchOrInsert3 <ELEMENT, ARG1, ARG2, ARG3>
                  (ioRootPointer->mPtrToSup, inOperand1, inOperand2, inOperand3, outExtension, outInsertionPerformed) ;
@@ -279,7 +279,7 @@ INFO * recursiveSearchOrInsertInfo3 (ELEMENT * & ioRootPointer,
     outInsertionPerformed = true ;
   }else{
     outInsertionPerformed = false ;
-    const PMSInt32 comp = ioRootPointer->mInfo.compare (inOperand1, inOperand2, inOperand3) ;
+    const int32_t comp = ioRootPointer->mInfo.compare (inOperand1, inOperand2, inOperand3) ;
     if (comp > 0) {
       result = recursiveSearchOrInsertInfo3 <ELEMENT, INFO, ARG1, ARG2, ARG3>
                  (ioRootPointer->mPtrToSup, inOperand1, inOperand2, inOperand3, outExtension, outInsertionPerformed) ;
@@ -351,7 +351,7 @@ void recursiveInsertElementWithInfo (ELEMENT * & ioRootPointer,
     outExtension = true ;
     outInsertionPerformed = true ;
   }else{
-    const PMSInt32 comp = ioRootPointer->mInfo.compare (inElementPointer->mInfo) ;
+    const int32_t comp = ioRootPointer->mInfo.compare (inElementPointer->mInfo) ;
     if (comp > 0) {
       recursiveInsertElementWithInfo (ioRootPointer->mPtrToSup, inElementPointer, outExtension, outInsertionPerformed) ;
       if (outExtension) {
@@ -416,7 +416,7 @@ void recursiveInsertElement (ELEMENT * & ioRootPointer,
     outExtension = true ;
     outInsertionPerformed = true ;
   }else{
-    const PMSInt32 comp = ioRootPointer->compare (* inElementPointer) ;
+    const int32_t comp = ioRootPointer->compare (* inElementPointer) ;
     if (comp > 0) {
       recursiveInsertElement (ioRootPointer->mPtrToSup, inElementPointer, outExtension, outInsertionPerformed) ;
       if (outExtension) {
@@ -476,18 +476,18 @@ template <class ELEMENT, class INFO>
 bool recursiveVerifyAVLtree (const ELEMENT * inPointer,
                              const INFO * inInfPointer,
                              const INFO * inSupPointer,
-                             const PMSInt32 inMaxLevelToExplore,
-                             const PMSInt32 inCurrentLevel,
-                             PMSInt32 & outMaxLevels,
+                             const int32_t inMaxLevelToExplore,
+                             const int32_t inCurrentLevel,
+                             int32_t & outMaxLevels,
                              FILE * inOutputFile) ;
 
 template <class ELEMENT, class INFO>
 bool recursiveVerifyAVLtree (const ELEMENT * const inPointer,
                              const INFO * const inInfPointer,
                              const INFO * const inSupPointer,
-                             const PMSInt32 inMaxLevelToExplore,
-                             const PMSInt32 inCurrentLevel,
-                             PMSInt32 & outMaxLevels,
+                             const int32_t inMaxLevelToExplore,
+                             const int32_t inCurrentLevel,
+                             int32_t & outMaxLevels,
                              FILE * inOutputFile) {
   bool ok = true ;
   if (inPointer == NULL) {
@@ -508,7 +508,7 @@ bool recursiveVerifyAVLtree (const ELEMENT * const inPointer,
       ::fprintf (inOutputFile, "inf error.\n") ;
       ok = false ;
     }
-    PMSInt32 max1, max2 ;
+    int32_t max1, max2 ;
     const bool ok1 = recursiveVerifyAVLtree (inPointer->mPtrToInf,
                                              inInfPointer,
                                              & inPointer->mInfo,
@@ -524,7 +524,7 @@ bool recursiveVerifyAVLtree (const ELEMENT * const inPointer,
                                              max2,
                                              inOutputFile) ;
     ok = ok && ok1 && ok2 ;
-    const PMSInt32 balance = max1 - max2 ;
+    const int32_t balance = max1 - max2 ;
     if (balance != inPointer->mBalance) {
       ::fprintf (inOutputFile, "Check balance error (inPointer->mBalance:%ld, balance:%ld).\n",
                 inPointer->mBalance, balance) ;
@@ -539,8 +539,8 @@ bool recursiveVerifyAVLtree (const ELEMENT * const inPointer,
 
 template <class ELEMENT, class INFO>
 bool verifyAVLtree (const ELEMENT * inRootPointer,
-                    const PMSInt32 inMaxLevelsToExplore,
-                    PMSInt32 & outMaxLevels,
+                    const int32_t inMaxLevelsToExplore,
+                    int32_t & outMaxLevels,
                     FILE * inOutputFile) {
   return recursiveVerifyAVLtree (inRootPointer,
                                  (INFO *) NULL,

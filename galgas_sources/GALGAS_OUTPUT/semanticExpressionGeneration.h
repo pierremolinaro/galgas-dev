@@ -69,7 +69,7 @@ typedef GALGAS_bool (*categoryReaderSignature_semanticExpressionForGeneration_is
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_isTrueExpression (const PMSInt32 inClassIndex,
+void enterCategoryReader_isTrueExpression (const int32_t inClassIndex,
                                            categoryReaderSignature_semanticExpressionForGeneration_isTrueExpression inReader) ;
 
 //-----------------------------------------------------------------------------*
@@ -94,7 +94,7 @@ typedef void (*categoryMethodSignature_semanticExpressionForGeneration_generateE
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_generateExpression (const PMSInt32 inClassIndex,
+void enterCategoryMethod_generateExpression (const int32_t inClassIndex,
                                              categoryMethodSignature_semanticExpressionForGeneration_generateExpression inMethod) ;
 
 //-----------------------------------------------------------------------------*

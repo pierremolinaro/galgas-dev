@@ -42,7 +42,7 @@
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   #define ACCEPT_TERMINAL(t) t
-  #define FORMAL_ARG_ACCEPT_TERMINAL const PMSInt16 inExpectedTerminal
+  #define FORMAL_ARG_ACCEPT_TERMINAL const int16_t inExpectedTerminal
 #else
   #define ACCEPT_TERMINAL(t)
   #define FORMAL_ARG_ACCEPT_TERMINAL
@@ -114,15 +114,15 @@ class C_Compiler : public C_SharedObject {
     return mCurrentLocation ;
   }
 
-  public : inline PMSInt32 location (void) const {
+  public : inline int32_t location (void) const {
     return mCurrentLocation.index () ;
   }
 
-  public : inline PMSInt32 lineNumber (void) const {
+  public : inline int32_t lineNumber (void) const {
     return mCurrentLocation.lineNumber () ;
   }
 
-  public : inline PMSInt32 columnNumber (void) const {
+  public : inline int32_t columnNumber (void) const {
     return mCurrentLocation.columnNumber () ;
   }
 
@@ -181,8 +181,8 @@ class C_Compiler : public C_SharedObject {
 
 //--- enterPragma
   private : TC_UniqueArray <C_String> mCheckedVariableList ;
-  public : PMSInt32 checkedVariableListEntryCount (void) const ;
-  public : C_String checkedVariableAtIndex (const PMSInt32 inIndex COMMA_LOCATION_ARGS) const ;
+  public : int32_t checkedVariableListEntryCount (void) const ;
+  public : C_String checkedVariableAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
   public : void enterPragma (const GALGAS_lstring & inPragmaName,
                              const GALGAS_lstring & inPragmaArgument
                              COMMA_LOCATION_ARGS) ;

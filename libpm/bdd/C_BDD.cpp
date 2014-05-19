@@ -57,9 +57,9 @@ void C_BDD::setDisplaysInformationMessages (const bool inFlag) {
 
 //-----------------------------------------------------------------------------*
 
-PMUInt32 internalITEoperation (const PMUInt32 opf, 
-                               const PMUInt32 opg,
-                               const PMUInt32 oph) {
+uint32_t internalITEoperation (const uint32_t opf, 
+                               const uint32_t opg,
+                               const uint32_t oph) {
   return internalANDoperation (internalANDoperation (opf, opg)     ^ 1,
                                internalANDoperation (opf ^ 1, oph) ^ 1) ^ 1 ;
 }
@@ -163,10 +163,10 @@ C_BDD C_BDD::operator >= (const C_BDD & inOperand) const {
 
 //-----------------------------------------------------------------------------*
 
-static PMUInt32 internalOpposite (const PMUInt32 inValue) {
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  const PMUInt32 complement = inValue & 1 ;
-  PMUInt32 result = 0 ;
+static uint32_t internalOpposite (const uint32_t inValue) {
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+  const uint32_t complement = inValue & 1 ;
+  uint32_t result = 0 ;
   if (gNodeArray [nodeIndex].bothBranches () != 0) {
     result = find_or_add (gNodeArray [nodeIndex].mVariableIndex,
                           internalOpposite (gNodeArray [nodeIndex].mTHEN),
@@ -254,14 +254,14 @@ bool C_BDD::isComplemented (void) const {
 
 //-----------------------------------------------------------------------------*
 
-C_BDD C_BDD::bddWithConstants (const PMUInt32 inValues [],
-                               const PMUInt32 inBitCount [],
-                               const PMSInt32 inEntryCount) {
-  PMUInt32 result = 1 ; // true
-  PMUInt32 idx = 0 ;
-  for (PMSInt32 i=0 ; i<inEntryCount ; i++) {
-    PMUInt32 v = inValues [i] ;
-    for (PMUInt32 j=0 ; j<inBitCount [i] ; j++) {
+C_BDD C_BDD::bddWithConstants (const uint32_t inValues [],
+                               const uint32_t inBitCount [],
+                               const int32_t inEntryCount) {
+  uint32_t result = 1 ; // true
+  uint32_t idx = 0 ;
+  for (int32_t i=0 ; i<inEntryCount ; i++) {
+    uint32_t v = inValues [i] ;
+    for (uint32_t j=0 ; j<inBitCount [i] ; j++) {
       if ((v & 1) == 0) {
         result = find_or_add (idx, result, 0 COMMA_HERE) ;
       }else{
@@ -274,9 +274,9 @@ C_BDD C_BDD::bddWithConstants (const PMUInt32 inValues [],
 //--- Check
 /*  C_BDD r ; r.setToTrue () ;
   idx = 0 ;
-  for (PMSInt32 i=0 ; i<inEntryCount ; i++) {
-    PMUInt32 v = inValues [i] ;
-    for (PMUInt32 j=0 ; j<inBitCount [i] ; j++) {
+  for (int32_t i=0 ; i<inEntryCount ; i++) {
+    uint32_t v = inValues [i] ;
+    for (uint32_t j=0 ; j<inBitCount [i] ; j++) {
       r &= C_BDD (idx, ((v & 1) == 0) ? false : true) ;
       v >>= 1 ;
       idx ++ ;
@@ -297,15 +297,15 @@ C_BDD C_BDD::bddWithConstants (const PMUInt32 inValues [],
 
 //-----------------------------------------------------------------------------*
 
-static C_BDD construireInfEgal (const PMUInt32 inFirstIndex,
-                                const PMUInt32 indiceMax,
-                                const PMUInt64 inValue) {
+static C_BDD construireInfEgal (const uint32_t inFirstIndex,
+                                const uint32_t indiceMax,
+                                const uint64_t inValue) {
   C_BDD result ;
   if (inFirstIndex < indiceMax) {
     if (((1 << (indiceMax - inFirstIndex)) & inValue) != 0) {
-      result = C_BDD (indiceMax, false) | (C_BDD (indiceMax, true) & construireInfEgal (inFirstIndex, (PMUInt32) (indiceMax - 1), inValue)) ;
+      result = C_BDD (indiceMax, false) | (C_BDD (indiceMax, true) & construireInfEgal (inFirstIndex, (uint32_t) (indiceMax - 1), inValue)) ;
     }else{
-      result = C_BDD (indiceMax, false) & construireInfEgal (inFirstIndex, (PMUInt32) (indiceMax - 1), inValue) ;
+      result = C_BDD (indiceMax, false) & construireInfEgal (inFirstIndex, (uint32_t) (indiceMax - 1), inValue) ;
     }
   }else{
     result = ((inValue & 1) != 0) ? (~C_BDD ()) : C_BDD (indiceMax, false) ;
@@ -315,15 +315,15 @@ static C_BDD construireInfEgal (const PMUInt32 inFirstIndex,
 
 //-----------------------------------------------------------------------------*
 
-static C_BDD construireSupEgal (const PMUInt32 inFirstIndex,
-                                const PMUInt32 indiceMax,
-                                const PMUInt64 inValue) {
+static C_BDD construireSupEgal (const uint32_t inFirstIndex,
+                                const uint32_t indiceMax,
+                                const uint64_t inValue) {
   C_BDD result ;
   if (inFirstIndex < indiceMax) {
     if (((1 << (indiceMax - inFirstIndex)) & inValue) == 0) {
-      result = C_BDD (indiceMax, true) | (C_BDD (indiceMax, false) & construireSupEgal (inFirstIndex, (PMUInt32) (indiceMax - 1), inValue)) ;
+      result = C_BDD (indiceMax, true) | (C_BDD (indiceMax, false) & construireSupEgal (inFirstIndex, (uint32_t) (indiceMax - 1), inValue)) ;
     }else{
-      result = C_BDD (indiceMax, true) & construireSupEgal (inFirstIndex, (PMUInt32) (indiceMax - 1), inValue) ;
+      result = C_BDD (indiceMax, true) & construireSupEgal (inFirstIndex, (uint32_t) (indiceMax - 1), inValue) ;
     }
   }else{
     result = ((inValue & 1) == 0) ? (~C_BDD ()) : C_BDD (indiceMax, true) ;
@@ -333,18 +333,18 @@ static C_BDD construireSupEgal (const PMUInt32 inFirstIndex,
 
 //-----------------------------------------------------------------------------*
 
-C_BDD C_BDD::varCompareConst (const PMUInt32 inFirstIndex,
-                              const PMUInt32 inDimension,
+C_BDD C_BDD::varCompareConst (const uint32_t inFirstIndex,
+                              const uint32_t inDimension,
                               const compareEnum inComparison,
-                              const PMUInt64 inComparisonConstant) {
+                              const uint64_t inComparisonConstant) {
   if (inDimension == 0) {
     printf ("*** BDD Error in %s:%d: inDimension should be > 0 ***\n", __FILE__, __LINE__) ;
     exit (1) ;
   }
   C_BDD result ;
-  PMUInt32 i ;
-  PMUInt64 val = inComparisonConstant ;
-  const PMUInt32 indiceMax = (PMUInt32) (inFirstIndex + inDimension - 1) ;
+  uint32_t i ;
+  uint64_t val = inComparisonConstant ;
+  const uint32_t indiceMax = (uint32_t) (inFirstIndex + inDimension - 1) ;
   switch (inComparison) {
   case kEqual : case kNotEqual : // on construit l'egalite
     result.mBDDvalue = 1 ;
@@ -381,16 +381,16 @@ C_BDD C_BDD::varCompareConst (const PMUInt32 inFirstIndex,
 //-----------------------------------------------------------------------------*
 
 static C_BDD
-construireSupVariable (const PMUInt32 inLeftFirstIndex,
-                       const PMUInt32 inDimension,
-                       const PMUInt32 inRightFirstIndex) {
+construireSupVariable (const uint32_t inLeftFirstIndex,
+                       const uint32_t inDimension,
+                       const uint32_t inRightFirstIndex) {
   C_BDD result ;
-  const C_BDD gauche = C_BDD ((PMUInt32) (inLeftFirstIndex + inDimension - 1), true) ;
-  const C_BDD droite = C_BDD ((PMUInt32) (inRightFirstIndex + inDimension - 1), true) ;
+  const C_BDD gauche = C_BDD ((uint32_t) (inLeftFirstIndex + inDimension - 1), true) ;
+  const C_BDD droite = C_BDD ((uint32_t) (inRightFirstIndex + inDimension - 1), true) ;
   if (inDimension > 1) {
     result = (gauche > droite) |
       ((gauche == droite) &
-      construireSupVariable (inLeftFirstIndex, (PMUInt32) (inDimension - 1), inRightFirstIndex)) ;
+      construireSupVariable (inLeftFirstIndex, (uint32_t) (inDimension - 1), inRightFirstIndex)) ;
   }else{
     result = gauche > droite ;
   }
@@ -400,16 +400,16 @@ construireSupVariable (const PMUInt32 inLeftFirstIndex,
 //-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::
-varCompareVar (const PMUInt32 inLeftFirstIndex,
-               const PMUInt32 inDimension,
+varCompareVar (const uint32_t inLeftFirstIndex,
+               const uint32_t inDimension,
                const compareEnum inComparison,
-               const PMUInt32 inRightFirstIndex) {
+               const uint32_t inRightFirstIndex) {
   C_BDD result ;
   switch (inComparison) {
   case kEqual : case kNotEqual :
     result = ~ result ;
-    for (PMUInt32 i=0 ; i<inDimension ; i++) {
-      result &= C_BDD ((PMUInt32) (inLeftFirstIndex + i), false) == C_BDD ((PMUInt32) (inRightFirstIndex + i), false) ;
+    for (uint32_t i=0 ; i<inDimension ; i++) {
+      result &= C_BDD ((uint32_t) (inLeftFirstIndex + i), false) == C_BDD ((uint32_t) (inRightFirstIndex + i), false) ;
     }
     break ;
   case kStrictLower : case kGreaterOrEqual :
@@ -439,9 +439,9 @@ varCompareVar (const PMUInt32 inLeftFirstIndex,
 
 //-----------------------------------------------------------------------------*
 
-PMUInt32 C_BDD::significantVariableCount (void) const {
-  PMUInt32 bitCount = 0 ;
-  const PMUInt32 nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
+uint32_t C_BDD::significantVariableCount (void) const {
+  uint32_t bitCount = 0 ;
+  const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
   if (gNodeArray [nodeIndex].bothBranches () != 0) {
     bitCount = gNodeArray [nodeIndex].mVariableIndex + 1 ;
   }
@@ -460,20 +460,20 @@ PMUInt32 C_BDD::significantVariableCount (void) const {
  
 //-----------------------------------------------------------------------------*
 
-static bool recursiveContainsValue64 (const PMUInt32 inBDD,
-                                      const PMUInt64 inValue,
-                                      const PMUInt32 inFirstBit,
-                                      const PMUInt32 inLastBitPlusOne) {
+static bool recursiveContainsValue64 (const uint32_t inBDD,
+                                      const uint64_t inValue,
+                                      const uint32_t inFirstBit,
+                                      const uint32_t inLastBitPlusOne) {
   bool result ;
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inBDD COMMA_HERE) ;
-  const PMUInt32 complement = inBDD & 1 ;
+  const uint32_t nodeIndex = nodeIndexForRoot (inBDD COMMA_HERE) ;
+  const uint32_t complement = inBDD & 1 ;
   if (gNodeArray [nodeIndex].bothBranches () == 0) {
     result = complement != 0 ;
     #ifdef DEBUG_CONTAINS_VALUE
       printf ("result %s\n", result ? "YES" : "NO") ;
     #endif
   }else{
-    const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     if (var >= inLastBitPlusOne) {
       #ifdef DEBUG_CONTAINS_VALUE
         printf ("var %u\n", var) ;
@@ -513,31 +513,31 @@ static bool recursiveContainsValue64 (const PMUInt32 inBDD,
 
 //-----------------------------------------------------------------------------*
 
-bool C_BDD::containsValue64 (const PMUInt64 inValue,
-                             const PMUInt32 inFirstBit,
-                             const PMUInt32 inBitCount) const {
+bool C_BDD::containsValue64 (const uint64_t inValue,
+                             const uint32_t inFirstBit,
+                             const uint32_t inBitCount) const {
   return recursiveContainsValue64 (mBDDvalue,
                                    inValue,
                                    inFirstBit,
-                                   (PMUInt32) (inFirstBit + inBitCount)) ;
+                                   (uint32_t) (inFirstBit + inBitCount)) ;
 }
 
 //-----------------------------------------------------------------------------*
 
-static bool recursiveContainsValue (const PMUInt32 inBDD,
+static bool recursiveContainsValue (const uint32_t inBDD,
                                     const TC_Array <bool> & inValue,
-                                    const PMUInt32 inFirstBit,
-                                    const PMUInt32 inLastBitPlusOne) {
+                                    const uint32_t inFirstBit,
+                                    const uint32_t inLastBitPlusOne) {
   bool result ;
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inBDD COMMA_HERE) ;
-  const PMUInt32 complement = inBDD & 1 ;
+  const uint32_t nodeIndex = nodeIndexForRoot (inBDD COMMA_HERE) ;
+  const uint32_t complement = inBDD & 1 ;
   if (gNodeArray [nodeIndex].bothBranches () == 0) {
     result = complement != 0 ;
     #ifdef DEBUG_CONTAINS_VALUE
       printf ("result %s\n", result ? "YES" : "NO") ;
     #endif
   }else{
-    const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     if (var >= inLastBitPlusOne) {
       #ifdef DEBUG_CONTAINS_VALUE
         printf ("var %u\n", var) ;
@@ -558,7 +558,7 @@ static bool recursiveContainsValue (const PMUInt32 inBDD,
       #endif
       result = true ;
     }else{
-      const bool bitValue = inValue ((PMSInt32) (var - inFirstBit) COMMA_HERE) ;
+      const bool bitValue = inValue ((int32_t) (var - inFirstBit) COMMA_HERE) ;
       #ifdef DEBUG_CONTAINS_VALUE
         printf ("var %u, bitvalue %s\n", var, bitValue ? "YES" : "NO") ;
       #endif
@@ -578,12 +578,12 @@ static bool recursiveContainsValue (const PMUInt32 inBDD,
 //-----------------------------------------------------------------------------*
 
 bool C_BDD::containsValue (const TC_Array <bool> & inValue,
-                           const PMUInt32 inFirstBit,
-                           const PMUInt32 inBitCount) const {
+                           const uint32_t inFirstBit,
+                           const uint32_t inBitCount) const {
   return recursiveContainsValue (mBDDvalue,
                                  inValue,
                                  inFirstBit,
-                                 (PMUInt32) (inFirstBit + inBitCount)) ;
+                                 (uint32_t) (inFirstBit + inBitCount)) ;
 }
 
 //-----------------------------------------------------------------------------*
@@ -594,9 +594,9 @@ bool C_BDD::containsValue (const TC_Array <bool> & inValue,
 
 //-----------------------------------------------------------------------------*
 
-static void parcoursBDDinterneParNoeud (const PMUInt32 inValue,
+static void parcoursBDDinterneParNoeud (const uint32_t inValue,
                                         C_bdd_node_traversing & inTraversing) {
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   if ((gNodeArray [nodeIndex].bothBranches () != 0) && ! isNodeMarkedThenMark (inValue COMMA_HERE)) {
     parcoursBDDinterneParNoeud (gNodeArray [nodeIndex].mELSE, inTraversing) ;
     parcoursBDDinterneParNoeud (gNodeArray [nodeIndex].mTHEN, inTraversing) ;
@@ -617,11 +617,11 @@ void C_BDD::traversBDDnodes (C_bdd_node_traversing & inTraversing) const {
 //-----------------------------------------------------------------------------*
 
 static void
-parcoursBDDinterneParValeur (const PMUInt32 inValue,
+parcoursBDDinterneParValeur (const uint32_t inValue,
                              C_bdd_value_traversing & inTraversing,
                              bool tableauDesValeurs [],
-                             PMUInt32 variableCourante,
-                             const PMUInt32 inVariableCount) {
+                             uint32_t variableCourante,
+                             const uint32_t inVariableCount) {
   if (variableCourante != 0) {
     variableCourante -- ;
     if (inValue == 1) {
@@ -630,10 +630,10 @@ parcoursBDDinterneParValeur (const PMUInt32 inValue,
       tableauDesValeurs [variableCourante] = true ;
       parcoursBDDinterneParValeur (inValue, inTraversing, tableauDesValeurs, variableCourante, inVariableCount) ;
     }else if (inValue != 0) {
-      const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-      const PMUInt32 variable = gNodeArray [nodeIndex].mVariableIndex ;
+      const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+      const uint32_t variable = gNodeArray [nodeIndex].mVariableIndex ;
       if (variable == variableCourante) {
-        const PMUInt32 complement = inValue & 1 ;
+        const uint32_t complement = inValue & 1 ;
         tableauDesValeurs [variableCourante] = false ;
         parcoursBDDinterneParValeur (gNodeArray [nodeIndex].mELSE ^ complement, inTraversing, tableauDesValeurs, variableCourante, inVariableCount) ;
         tableauDesValeurs [variableCourante] = true ;
@@ -653,7 +653,7 @@ parcoursBDDinterneParValeur (const PMUInt32 inValue,
 //-----------------------------------------------------------------------------*
 
 void C_BDD::traverseBDDvalues (C_bdd_value_traversing & inTraversing,
-                               const PMUInt32 inVariableCount) const {
+                               const uint32_t inVariableCount) const {
   bool * tableauDesValeurs = NULL ;
   macroMyNewArray (tableauDesValeurs, bool, inVariableCount) ;
   parcoursBDDinterneParValeur (mBDDvalue, inTraversing, tableauDesValeurs, inVariableCount, inVariableCount) ;
@@ -663,15 +663,15 @@ void C_BDD::traverseBDDvalues (C_bdd_value_traversing & inTraversing,
 //-----------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Build an array of PMUInt64 values
+  #pragma mark Build an array of uint64_t values
 #endif
 
 //-----------------------------------------------------------------------------*
 
 class C_build_values64_array : public C_bdd_value_traversing {
-  private : TC_UniqueArray <PMUInt64> * mPtr ;
+  private : TC_UniqueArray <uint64_t> * mPtr ;
 
-  public : inline C_build_values64_array (TC_UniqueArray <PMUInt64> * inPtr) :
+  public : inline C_build_values64_array (TC_UniqueArray <uint64_t> * inPtr) :
   mPtr (inPtr) {
   }
 
@@ -681,15 +681,15 @@ class C_build_values64_array : public C_bdd_value_traversing {
 
 //--- Virtual method called for every value
   public : virtual void action (const bool tableauDesValeurs [],
-                                const PMUInt32 inVariableCount) ;
+                                const uint32_t inVariableCount) ;
 } ;
 
 //-----------------------------------------------------------------------------*
 
 void C_build_values64_array::action (const bool tableauDesValeurs [],
-                                   const PMUInt32 inVariableCount) {
-  PMUInt64 value = 0 ;
-  for (PMUInt32 i=1 ; i<=inVariableCount ; i++) {
+                                   const uint32_t inVariableCount) {
+  uint64_t value = 0 ;
+  for (uint32_t i=1 ; i<=inVariableCount ; i++) {
     value = (value << 1) | tableauDesValeurs [inVariableCount - i] ;
   }
   mPtr->addObject (value) ;
@@ -697,9 +697,9 @@ void C_build_values64_array::action (const bool tableauDesValeurs [],
 
 //-----------------------------------------------------------------------------*
 
-void C_BDD::buildValue64Array (TC_UniqueArray <PMUInt64> & outValuesArray,
-                               const PMUInt32 inVariableCount) const {
-  MF_Assert(inVariableCount < 64, "inVariableCount == %ld >= 64", (PMSInt64) inVariableCount, 0) ;
+void C_BDD::buildValue64Array (TC_UniqueArray <uint64_t> & outValuesArray,
+                               const uint32_t inVariableCount) const {
+  MF_Assert(inVariableCount < 64, "inVariableCount == %ld >= 64", (int64_t) inVariableCount, 0) ;
   outValuesArray.setCountToZero () ;
   C_build_values64_array builder (& outValuesArray) ;
   bool * tableauDesValeurs = NULL ;
@@ -729,15 +729,15 @@ class C_build_values_array : public C_bdd_value_traversing {
 
 //--- Virtual method called for every value
   public : virtual void action (const bool tableauDesValeurs [],
-                                const PMUInt32 inVariableCount) ;
+                                const uint32_t inVariableCount) ;
 } ;
 
 //-----------------------------------------------------------------------------*
 
 void C_build_values_array::action (const bool tableauDesValeurs [],
-                                   const PMUInt32 inVariableCount) {
+                                   const uint32_t inVariableCount) {
   TC_Array <bool> value ;
-  for (PMUInt32 i=0 ; i<inVariableCount ; i++) {
+  for (uint32_t i=0 ; i<inVariableCount ; i++) {
     value.addObject (tableauDesValeurs [i]) ;
   }
   mPtr->addObject (value) ;
@@ -746,7 +746,7 @@ void C_build_values_array::action (const bool tableauDesValeurs [],
 //-----------------------------------------------------------------------------*
 
 void C_BDD::buildValueArray (TC_UniqueArray <TC_Array <bool> > & outValuesArray,
-                             const PMUInt32 inVariableCount) const {
+                             const uint32_t inVariableCount) const {
   outValuesArray.setCountToZero () ;
   C_build_values_array builder (& outValuesArray) ;
   bool * tableauDesValeurs = NULL ;
@@ -776,16 +776,16 @@ class cLittleEndianStringValueBuilder : public C_bdd_value_traversing {
 
 //--- Virtual method called for every value
   public : virtual void action (const bool tableauDesValeurs [],
-                                const PMUInt32 inVariableCount) ;
+                                const uint32_t inVariableCount) ;
 } ;
 
 //-----------------------------------------------------------------------------*
 
 void cLittleEndianStringValueBuilder::
 action (const bool tableauDesValeurs [],
-        const PMUInt32 inVariableCount) {
+        const uint32_t inVariableCount) {
   C_String value ;
-  for (PMUInt32 i=0 ; i<inVariableCount ; i++) {
+  for (uint32_t i=0 ; i<inVariableCount ; i++) {
     value << cStringWithCharacter ((char) ('0' + tableauDesValeurs [i])) ;
   }
   mPtr->addObject (value) ;
@@ -795,7 +795,7 @@ action (const bool tableauDesValeurs [],
 
 void C_BDD::
 buildLittleEndianStringValueArray (TC_UniqueArray <C_String> & outValuesArray,
-                                   const PMUInt32 inVariableCount) const {
+                                   const uint32_t inVariableCount) const {
   outValuesArray.setCountToZero () ;
   cLittleEndianStringValueBuilder builder (& outValuesArray) ;
   bool * tableauDesValeurs = NULL ;
@@ -819,16 +819,16 @@ class cBuildBigEndianStringValueArray : public C_bdd_value_traversing {
 
 //--- Virtual method called for every value
   public : virtual void action (const bool tableauDesValeurs [],
-                                const PMUInt32 inVariableCount) ;
+                                const uint32_t inVariableCount) ;
 } ;
 
 //-----------------------------------------------------------------------------*
 
 void cBuildBigEndianStringValueArray::
 action (const bool tableauDesValeurs [],
-        const PMUInt32 inVariableCount) {
+        const uint32_t inVariableCount) {
   C_String value ;
-  for (PMUInt32 i=inVariableCount ; i>0 ; i--) {
+  for (uint32_t i=inVariableCount ; i>0 ; i--) {
     value << cStringWithCharacter ((char) ('0' + tableauDesValeurs [i-1])) ;
   }
   mPtr->addObject (value) ;
@@ -838,7 +838,7 @@ action (const bool tableauDesValeurs [],
 
 void C_BDD::
 buildBigEndianStringValueArray (TC_UniqueArray <C_String> & outValuesArray,
-                                const PMUInt32 inVariableCount) const {
+                                const uint32_t inVariableCount) const {
   outValuesArray.setCountToZero () ;
   cBuildBigEndianStringValueArray builder (& outValuesArray) ;
   bool * tableauDesValeurs = NULL ;
@@ -863,19 +863,19 @@ class cBuildQueryString : public C_bdd_value_traversing {
 
 //--- Virtual method called for every value
   public : virtual void action (const bool tableauDesValeurs [],
-                                const PMUInt32 inVariableCount) ;
+                                const uint32_t inVariableCount) ;
 } ;
 
 //-----------------------------------------------------------------------------*
 
 void cBuildQueryString::
 action (const bool tableauDesValeurs [],
-        const PMUInt32 inVariableCount) {
+        const uint32_t inVariableCount) {
   C_String value ;
   if (mStringPtr->length () > 0) {
     *mStringPtr << "|" ;
   }
-  for (PMUInt32 i=inVariableCount ; i>0 ; i--) {
+  for (uint32_t i=inVariableCount ; i>0 ; i--) {
     *mStringPtr << cStringWithCharacter ((char) ('0' + tableauDesValeurs [i-1])) ;
   }
 }
@@ -892,7 +892,7 @@ queryStringValue (LOCATION_ARGS) const {
     buildCompressedBigEndianStringValueArray (stringArray COMMA_THERE) ;
     if (stringArray.count () > 0) {
       s << stringArray (0 COMMA_HERE) ;
-      for (PMSInt32 i=1 ; i<stringArray.count () ; i++) {
+      for (int32_t i=1 ; i<stringArray.count () ; i++) {
         s << "|" << stringArray (i COMMA_HERE) ;
       }
     }
@@ -911,8 +911,8 @@ queryStringValue (LOCATION_ARGS) const {
 C_BDD C_BDD::BDDWithPredicateString (const C_String & inPredicateStringValue
                                      COMMA_LOCATION_ARGS) {
   C_BDD result ;
-  const PMSInt32 stringLength = inPredicateStringValue.length () ;
-  PMSInt32 stringIndex = 0 ;
+  const int32_t stringLength = inPredicateStringValue.length () ;
+  int32_t stringIndex = 0 ;
   bool ok = true ;
   while ((stringIndex < stringLength) && ok) {
     utf32 cc = inPredicateStringValue (stringIndex COMMA_HERE) ;
@@ -926,14 +926,14 @@ C_BDD C_BDD::BDDWithPredicateString (const C_String & inPredicateStringValue
     }
     if (s.length () > 0) {
       C_BDD v ; v.setToTrue () ;
-      PMSInt32 bitIndex = 0 ;
-      for (PMSInt32 i=s.length () - 1 ; i>=0 ; i--) {
+      int32_t bitIndex = 0 ;
+      for (int32_t i=s.length () - 1 ; i>=0 ; i--) {
         const utf32 c = s (i COMMA_HERE) ;
         if (UNICODE_VALUE (c) == '0') {
-          v &= C_BDD ((PMUInt32) (((PMUInt32) bitIndex) & PMUINT16_MAX), false) ;
+          v &= C_BDD ((uint32_t) (((uint32_t) bitIndex) & UINT16_MAX), false) ;
           bitIndex ++ ;
         }else if (UNICODE_VALUE (c) == '1') {
-          v &= C_BDD ((PMUInt32) (((PMUInt32) bitIndex) & PMUINT16_MAX), true) ;
+          v &= C_BDD ((uint32_t) (((uint32_t) bitIndex) & UINT16_MAX), true) ;
           bitIndex ++ ;
         }else if (UNICODE_VALUE (c) == 'X') {
           bitIndex ++ ;
@@ -961,32 +961,32 @@ C_BDD C_BDD::BDDWithPredicateString (const C_String & inPredicateStringValue
 
 //-----------------------------------------------------------------------------*
 
-static void internalValueCount64 (const PMUInt32 inValue,
-                                  const PMUInt32 inVariableCount,
-                                  PMUInt64 & nombreDirect,
-                                  PMUInt64 & nombreComplement
+static void internalValueCount64 (const uint32_t inValue,
+                                  const uint32_t inVariableCount,
+                                  uint64_t & nombreDirect,
+                                  uint64_t & nombreComplement
                                   COMMA_LOCATION_ARGS) {
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
   if (gNodeArray [nodeIndex].bothBranches () == 0) {
     nombreDirect = 0 ;
     nombreComplement = 1 ;
-    for (PMUInt32 i=0 ; i<inVariableCount ; i++) {
+    for (uint32_t i=0 ; i<inVariableCount ; i++) {
       nombreComplement += nombreComplement ;
     }
   }else{
-    const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
-    PMUInt64 nd0, nc0, nd1, nc1 ;
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
+    uint64_t nd0, nc0, nd1, nc1 ;
     internalValueCount64 (gNodeArray [nodeIndex].mELSE, var, nd0, nc0 COMMA_THERE) ;
     internalValueCount64 (gNodeArray [nodeIndex].mTHEN, var, nd1, nc1 COMMA_THERE) ;
     nombreDirect = nd0 + nd1 ;
     nombreComplement = nc0 + nc1 ;
-    for (PMUInt32 i=(PMUInt32) (var+1) ; i<inVariableCount ; i++) {
+    for (uint32_t i=(uint32_t) (var+1) ; i<inVariableCount ; i++) {
       nombreDirect += nombreDirect ;
       nombreComplement += nombreComplement ;
     }
   }
   if ((inValue & 1) != 0) {
-    const PMUInt64 tempo = nombreDirect ;
+    const uint64_t tempo = nombreDirect ;
     nombreDirect = nombreComplement ;
     nombreComplement = tempo ;
   }
@@ -994,9 +994,9 @@ static void internalValueCount64 (const PMUInt32 inValue,
 
 //-----------------------------------------------------------------------------*
 
-PMUInt64 C_BDD::valueCount64 (const PMUInt32 inVariableCount) const {
-  PMUInt64 nombreDirect = 0 ;
-  PMUInt64 nombreComplement = 0 ;
+uint64_t C_BDD::valueCount64 (const uint32_t inVariableCount) const {
+  uint64_t nombreDirect = 0 ;
+  uint64_t nombreComplement = 0 ;
   internalValueCount64 (mBDDvalue, inVariableCount, nombreDirect, nombreComplement COMMA_HERE) ;
   return nombreDirect ;
 }
@@ -1009,26 +1009,26 @@ PMUInt64 C_BDD::valueCount64 (const PMUInt32 inVariableCount) const {
 
 //-----------------------------------------------------------------------------*
 
-static void internalValueCount128 (const PMUInt32 inValue,
-                                   const PMUInt32 inVariableCount,
+static void internalValueCount128 (const uint32_t inValue,
+                                   const uint32_t inVariableCount,
                                    PMUInt128 & nombreDirect,
                                    PMUInt128 & nombreComplement
                                    COMMA_LOCATION_ARGS) {
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
   if (gNodeArray [nodeIndex].bothBranches () == 0) {
     nombreDirect = 0 ;
     nombreComplement = 1 ;
-    for (PMUInt32 i=0 ; i<inVariableCount ; i++) {
+    for (uint32_t i=0 ; i<inVariableCount ; i++) {
       nombreComplement += nombreComplement ;
     }
   }else{
-    const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     PMUInt128 nd0, nc0, nd1, nc1 ;
     internalValueCount128 (gNodeArray [nodeIndex].mELSE, var, nd0, nc0 COMMA_THERE) ;
     internalValueCount128 (gNodeArray [nodeIndex].mTHEN, var, nd1, nc1 COMMA_THERE) ;
     nombreDirect = nd0 + nd1 ;
     nombreComplement = nc0 + nc1 ;
-    for (PMUInt32 i=(PMUInt32) (var+1) ; i<inVariableCount ; i++) {
+    for (uint32_t i=(uint32_t) (var+1) ; i<inVariableCount ; i++) {
       nombreDirect += nombreDirect ;
       nombreComplement += nombreComplement ;
     }
@@ -1042,7 +1042,7 @@ static void internalValueCount128 (const PMUInt32 inValue,
 
 //-----------------------------------------------------------------------------*
 
-PMUInt128 C_BDD::valueCount128 (const PMUInt32 inVariableCount) const {
+PMUInt128 C_BDD::valueCount128 (const uint32_t inVariableCount) const {
   PMUInt128 nombreDirect = 0 ;
   PMUInt128 nombreComplement = 0 ;
   internalValueCount128 (mBDDvalue, inVariableCount, nombreDirect, nombreComplement COMMA_HERE) ;
@@ -1051,29 +1051,29 @@ PMUInt128 C_BDD::valueCount128 (const PMUInt32 inVariableCount) const {
 
 //-----------------------------------------------------------------------------*
 
-static void internalValueCount128UsingCache (const PMUInt32 inValue,
-                                             const PMUInt32 inVariableCount,
+static void internalValueCount128UsingCache (const uint32_t inValue,
+                                             const uint32_t inVariableCount,
                                              PMUInt128 & nombreDirect,
                                              PMUInt128 & nombreComplement,
                                              TC_UniqueArray <PMUInt128> & ioDirectCacheArray,
                                              TC_UniqueArray <PMUInt128> & ioComplementCacheArray
                                              COMMA_LOCATION_ARGS) {
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
   if (gNodeArray [nodeIndex].bothBranches () == 0) {
     nombreDirect = 0 ;
     nombreComplement = 1 << inVariableCount ;
-  }else if ((ioDirectCacheArray.count () > (PMSInt32) (inValue / 2))
+  }else if ((ioDirectCacheArray.count () > (int32_t) (inValue / 2))
     && (((ioDirectCacheArray (inValue / 2 COMMA_HERE) != 0) || (ioComplementCacheArray (inValue / 2 COMMA_HERE) != 0)))) {
     nombreDirect = ioDirectCacheArray (inValue / 2 COMMA_HERE) ;
     nombreComplement = ioComplementCacheArray (inValue / 2 COMMA_HERE) ;
   }else{
-    const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     PMUInt128 nd0, nc0, nd1, nc1 ;
     internalValueCount128UsingCache (gNodeArray [nodeIndex].mELSE, var, nd0, nc0, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
     internalValueCount128UsingCache (gNodeArray [nodeIndex].mTHEN, var, nd1, nc1, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
     nombreDirect = nd0 + nd1 ;
     nombreComplement = nc0 + nc1 ;
-    for (PMUInt32 i=(PMUInt32) (var+1) ; i<inVariableCount ; i++) {
+    for (uint32_t i=(uint32_t) (var+1) ; i<inVariableCount ; i++) {
       nombreDirect += nombreDirect ;
       nombreComplement += nombreComplement ;
     }
@@ -1089,7 +1089,7 @@ static void internalValueCount128UsingCache (const PMUInt32 inValue,
 
 //-----------------------------------------------------------------------------*
 
-PMUInt128 C_BDD::valueCount128UsingCache (const PMUInt32 inVariableCount,
+PMUInt128 C_BDD::valueCount128UsingCache (const uint32_t inVariableCount,
                                           TC_UniqueArray <PMUInt128> & ioDirectCacheArray,
                                           TC_UniqueArray <PMUInt128> & ioComplementCacheArray) const {
   PMUInt128 nombreDirect = 0 ;
@@ -1100,25 +1100,25 @@ PMUInt128 C_BDD::valueCount128UsingCache (const PMUInt32 inVariableCount,
 
 //-----------------------------------------------------------------------------*
 
-static void internalValueCount64UsingCache (const PMUInt32 inValue,
-                                            const PMUInt32 inVariableCount,
-                                            PMUInt64 & nombreDirect,
-                                            PMUInt64 & nombreComplement,
-                                            TC_UniqueArray <PMUInt64> & ioDirectCacheArray,
-                                            TC_UniqueArray <PMUInt64> & ioComplementCacheArray
+static void internalValueCount64UsingCache (const uint32_t inValue,
+                                            const uint32_t inVariableCount,
+                                            uint64_t & nombreDirect,
+                                            uint64_t & nombreComplement,
+                                            TC_UniqueArray <uint64_t> & ioDirectCacheArray,
+                                            TC_UniqueArray <uint64_t> & ioComplementCacheArray
                                             COMMA_LOCATION_ARGS) {
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
   if (gNodeArray [nodeIndex].bothBranches () == 0) {
     nombreDirect = 0 ;
     nombreComplement = 1 << inVariableCount ;
-  }else if ((ioDirectCacheArray.count () > (PMSInt32) (inValue / 2))
+  }else if ((ioDirectCacheArray.count () > (int32_t) (inValue / 2))
       && ((ioDirectCacheArray (inValue / 2 COMMA_HERE) != 0) || (ioComplementCacheArray (inValue / 2 COMMA_HERE) != 0))) {
-    const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     nombreDirect = ioDirectCacheArray (inValue / 2 COMMA_HERE) << (inVariableCount - var - 1) ;
     nombreComplement = ioComplementCacheArray (inValue / 2 COMMA_HERE) << (inVariableCount - var - 1) ;
   }else{
-    const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
-    PMUInt64 nd0, nc0, nd1, nc1 ;
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
+    uint64_t nd0, nc0, nd1, nc1 ;
     internalValueCount64UsingCache (gNodeArray [nodeIndex].mELSE, var, nd0, nc0, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
     internalValueCount64UsingCache (gNodeArray [nodeIndex].mTHEN, var, nd1, nc1, ioDirectCacheArray, ioComplementCacheArray COMMA_THERE) ;
     nombreDirect = nd0 + nd1 ;
@@ -1130,7 +1130,7 @@ static void internalValueCount64UsingCache (const PMUInt32 inValue,
   }
 //---
   if ((inValue & 1) != 0) {
-    const PMUInt64 tempo = nombreDirect ;
+    const uint64_t tempo = nombreDirect ;
     nombreDirect = nombreComplement ;
     nombreComplement = tempo ;
   }
@@ -1138,11 +1138,11 @@ static void internalValueCount64UsingCache (const PMUInt32 inValue,
 
 //-----------------------------------------------------------------------------*
 
-PMUInt64 C_BDD::valueCount64UsingCache (const PMUInt32 inVariableCount,
-                                        TC_UniqueArray <PMUInt64> & ioDirectCacheArray,
-                                        TC_UniqueArray <PMUInt64> & ioComplementCacheArray) const {
-  PMUInt64 nombreDirect = 0 ;
-  PMUInt64 nombreComplement = 0 ;
+uint64_t C_BDD::valueCount64UsingCache (const uint32_t inVariableCount,
+                                        TC_UniqueArray <uint64_t> & ioDirectCacheArray,
+                                        TC_UniqueArray <uint64_t> & ioComplementCacheArray) const {
+  uint64_t nombreDirect = 0 ;
+  uint64_t nombreComplement = 0 ;
   internalValueCount64UsingCache (mBDDvalue, inVariableCount, nombreDirect, nombreComplement, ioDirectCacheArray, ioComplementCacheArray COMMA_HERE) ;
   return nombreDirect ;
 }
@@ -1156,39 +1156,39 @@ PMUInt64 C_BDD::valueCount64UsingCache (const PMUInt32 inVariableCount,
 //-----------------------------------------------------------------------------*
 
 static C_BDD
-obtenirIemeBDDinterne (const PMUInt32 inValue,
-                       const PMUInt64 inNthBDDvalue,
-                       const PMUInt32 inVariableCount) {
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  const PMUInt32 complement = inValue & 1 ;
-  PMUInt64 iEme ;
+obtenirIemeBDDinterne (const uint32_t inValue,
+                       const uint64_t inNthBDDvalue,
+                       const uint32_t inVariableCount) {
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+  const uint32_t complement = inValue & 1 ;
+  uint64_t iEme ;
   C_BDD result ;
   if (gNodeArray [nodeIndex].bothBranches () == 0) {
     if (complement == 1) { // Decomposer inNthBDDvalue en binaire
       result = ~ result ;
       iEme = inNthBDDvalue ;
-      for (PMUInt32 i=0 ; i<inVariableCount ; i++) {
+      for (uint32_t i=0 ; i<inVariableCount ; i++) {
         result = result & C_BDD (i, ((iEme & 1) == 0) ? false : true) ;
         iEme >>= 1 ;
       }
     }
   }else{
     result = ~ result ;
-    const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
-    PMUInt64 nd0 = 0UL ;
-    PMUInt64 nc0 = 0UL ; // Non utilise ici
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
+    uint64_t nd0 = 0UL ;
+    uint64_t nc0 = 0UL ; // Non utilise ici
     internalValueCount64 (gNodeArray [nodeIndex].mELSE ^ complement, inVariableCount - 1, nd0, nc0 COMMA_HERE) ;
-    PMUInt64 nd1 = 0UL ;
-    PMUInt64 nc1 = 0UL ; // Non utilise ici
+    uint64_t nd1 = 0UL ;
+    uint64_t nc1 = 0UL ; // Non utilise ici
     internalValueCount64 (gNodeArray [nodeIndex].mTHEN ^ complement, inVariableCount - 1, nd1, nc1 COMMA_HERE) ;
-    PMUInt64 total = nd0 + nd1 ;
-    for (PMUInt32 i = (PMUInt32) (inVariableCount-1) ; i>var ; i--) {
+    uint64_t total = nd0 + nd1 ;
+    for (uint32_t i = (uint32_t) (inVariableCount-1) ; i>var ; i--) {
       total >>= 1 ;
       nd0 >>= 1 ;
     }
     iEme = inNthBDDvalue % total ;
-    PMUInt64 quotient = inNthBDDvalue / total ;
-    for (PMUInt32 j = (PMUInt32) (var+1) ; j<inVariableCount ; j++) {
+    uint64_t quotient = inNthBDDvalue / total ;
+    for (uint32_t j = (uint32_t) (var+1) ; j<inVariableCount ; j++) {
       result = result & C_BDD (j, ((quotient & 1) == 0) ? false : true) ;
       quotient >>= 1 ;
     }
@@ -1205,8 +1205,8 @@ obtenirIemeBDDinterne (const PMUInt32 inValue,
 
 //-----------------------------------------------------------------------------*
 
-C_BDD C_BDD::getNthBDD (const PMUInt64 inNthBDDvalue,
-                        const PMUInt32 inVariableCount) const {
+C_BDD C_BDD::getNthBDD (const uint64_t inNthBDDvalue,
+                        const uint32_t inVariableCount) const {
   return obtenirIemeBDDinterne (mBDDvalue, inNthBDDvalue, inVariableCount) ;
 }
   
@@ -1214,22 +1214,22 @@ C_BDD C_BDD::getNthBDD (const PMUInt64 inNthBDDvalue,
 //-----------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Get i-th value as PMUInt64
+  #pragma mark Get i-th value as uint64_t
 #endif
 
 //-----------------------------------------------------------------------------*
 
-static PMUInt64
-obtenirValeurAbsolueBDDInterne (const PMUInt32 inValue) {
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  const PMUInt32 complement = inValue & 1 ;
-  PMUInt64 result = 1 ^ complement ;
+static uint64_t
+obtenirValeurAbsolueBDDInterne (const uint32_t inValue) {
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+  const uint32_t complement = inValue & 1 ;
+  uint64_t result = 1 ^ complement ;
   if (gNodeArray [nodeIndex].bothBranches () != 0) {
     if ((gNodeArray [nodeIndex].mELSE ^ complement) != 0) {
       result = obtenirValeurAbsolueBDDInterne (gNodeArray [nodeIndex].mELSE ^ complement) ;
     }else{
       result = 1 ;
-      for (PMUInt32 i = 1 ; i <= gNodeArray [nodeIndex].mVariableIndex ; i++) {
+      for (uint32_t i = 1 ; i <= gNodeArray [nodeIndex].mVariableIndex ; i++) {
         result <<= 1 ;
       }
       result += obtenirValeurAbsolueBDDInterne (gNodeArray [nodeIndex].mTHEN ^ complement) ;
@@ -1240,8 +1240,8 @@ obtenirValeurAbsolueBDDInterne (const PMUInt32 inValue) {
 
 //-----------------------------------------------------------------------------*
 
-PMUInt64 C_BDD::getBDDabsoluteValue (const PMUInt32 inVariableCount) const {
-  PMUInt64 result = 0 ;
+uint64_t C_BDD::getBDDabsoluteValue (const uint32_t inVariableCount) const {
+  uint64_t result = 0 ;
   if (valueCount64 (inVariableCount) == 1) {
     result = obtenirValeurAbsolueBDDInterne (mBDDvalue) ;
   }
@@ -1256,16 +1256,16 @@ PMUInt64 C_BDD::getBDDabsoluteValue (const PMUInt32 inVariableCount) const {
 
 //-----------------------------------------------------------------------------*
 
-static PMUInt64
-rangBDDinterne (const PMUInt32 inValue,
-                const PMUInt32 valeurTestee,
-                const PMUInt32 inVariableCount) {
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  const PMUInt32 testedValueNodeIndex = nodeIndexForRoot (valeurTestee COMMA_HERE) ;
-  const PMUInt32 complementValeurTestee = valeurTestee & 1 ;
-  const PMUInt32 complement = inValue & 1 ;
-  PMUInt64 rang = 0 ;
-  PMUInt64 nc ; // non utilise
+static uint64_t
+rangBDDinterne (const uint32_t inValue,
+                const uint32_t valeurTestee,
+                const uint32_t inVariableCount) {
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+  const uint32_t testedValueNodeIndex = nodeIndexForRoot (valeurTestee COMMA_HERE) ;
+  const uint32_t complementValeurTestee = valeurTestee & 1 ;
+  const uint32_t complement = inValue & 1 ;
+  uint64_t rang = 0 ;
+  uint64_t nc ; // non utilise
   if (gNodeArray [testedValueNodeIndex].bothBranches () == 0) {
   }else if ((gNodeArray [testedValueNodeIndex].mELSE ^ complementValeurTestee) == 0) {
     if ((gNodeArray [nodeIndex].mTHEN == 0) && (gNodeArray [nodeIndex].mELSE == 0)) {
@@ -1292,10 +1292,10 @@ rangBDDinterne (const PMUInt32 inValue,
 
 //-----------------------------------------------------------------------------*
 
-PMUInt64 C_BDD::
+uint64_t C_BDD::
 getBDDrange (const C_BDD & inOperand,
-             const PMUInt32 inVariableCount) const {
-  PMUInt64 rang = 0 ;
+             const uint32_t inVariableCount) const {
+  uint64_t rang = 0 ;
   if (inOperand.valueCount64 (inVariableCount) == 1) {
     rang = rangBDDinterne (mBDDvalue, inOperand.mBDDvalue, inVariableCount) ;
   }
@@ -1310,9 +1310,9 @@ getBDDrange (const C_BDD & inOperand,
 
 //-----------------------------------------------------------------------------*
 
-static PMUInt32 internalRecursiveNodeCount (const PMUInt32 inValue) {
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  PMUInt32 n = 0 ;
+static uint32_t internalRecursiveNodeCount (const uint32_t inValue) {
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+  uint32_t n = 0 ;
   if (gNodeArray [nodeIndex].bothBranches () != 0) {
     if (! isNodeMarkedThenMark (inValue COMMA_HERE)) {
       n = 1 ;
@@ -1325,9 +1325,9 @@ static PMUInt32 internalRecursiveNodeCount (const PMUInt32 inValue) {
 
 //-----------------------------------------------------------------------------*
 
-PMUInt32 C_BDD::getBDDnodesCount (void) const {
-  const PMUInt32 nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
-  PMUInt32 result = 0 ;
+uint32_t C_BDD::getBDDnodesCount (void) const {
+  const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
+  uint32_t result = 0 ;
   if (gNodeArray [nodeIndex].bothBranches () != 0) {
     unmarkAllExistingBDDnodes () ;
     result = internalRecursiveNodeCount (mBDDvalue) ;
@@ -1352,7 +1352,7 @@ class cBuildArrayForSet : public C_bdd_value_traversing {
 
 //--- Methode virtuelle appelee pour chaque valeur
   public : virtual void action (const bool inValuesArray [],
-                                const PMUInt32 inBDDbitsSize) ;
+                                const uint32_t inBDDbitsSize) ;
 } ;
   
 //-----------------------------------------------------------------------------*
@@ -1365,9 +1365,9 @@ mArray (outArray) {
 //-----------------------------------------------------------------------------*
 
 void cBuildArrayForSet::action (const bool inValuesArray [],
-                                const PMUInt32 inBDDbitsSize) {
-  PMSInt32 element = 0 ;
-  for (PMSInt32 i=((PMSInt32) inBDDbitsSize) - 1 ; i>=0 ; i--) {
+                                const uint32_t inBDDbitsSize) {
+  int32_t element = 0 ;
+  for (int32_t i=((int32_t) inBDDbitsSize) - 1 ; i>=0 ; i--) {
     element = (element << 1) + inValuesArray [i] ;
   }
   mArray.setObjectAtIndex (true, element COMMA_HERE) ;
@@ -1377,11 +1377,11 @@ void cBuildArrayForSet::action (const bool inValuesArray [],
 
 void C_BDD::
 getBoolArray (TC_UniqueArray <bool> & outArray,
-              const PMUInt32 inMaxValues,
-              const PMUInt32 inBitSize) const {
+              const uint32_t inMaxValues,
+              const uint32_t inBitSize) const {
   outArray.setCountToZero () ;
-  outArray.makeRoom ((PMSInt32) inMaxValues) ;
-  outArray.addObjects ((PMSInt32) inMaxValues, false) ;
+  outArray.makeRoom ((int32_t) inMaxValues) ;
+  outArray.addObjects ((int32_t) inMaxValues, false) ;
   cBuildArrayForSet s (outArray) ;
   traverseBDDvalues (s, inBitSize) ;
 }
@@ -1398,21 +1398,21 @@ getBoolArray (TC_UniqueArray <bool> & outArray,
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-static PMUInt32
-internalRecursiveUpdateRelation (const PMUInt32 inValue,
-                                 const PMUInt32 inTranslationVector []) {
-  PMUInt32 result = inValue ;
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+static uint32_t
+internalRecursiveUpdateRelation (const uint32_t inValue,
+                                 const uint32_t inTranslationVector []) {
+  uint32_t result = inValue ;
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   if (gNodeArray [nodeIndex].bothBranches () != 0) {
-    const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     if (inTranslationVector [var] != var) {
-      const PMUInt32 complement = inValue & 1 ;
+      const uint32_t complement = inValue & 1 ;
       result = internalITEoperation (
         find_or_add (inTranslationVector [var], 1, 0 COMMA_HERE),
         internalRecursiveUpdateRelation (gNodeArray [nodeIndex].mELSE ^ complement, inTranslationVector),
         internalRecursiveUpdateRelation (gNodeArray [nodeIndex].mTHEN ^ complement, inTranslationVector)
       ) ;
-      PMUInt32 preceeding = (PMUInt32) (inTranslationVector [var - 1] + 1) ;
+      uint32_t preceeding = (uint32_t) (inTranslationVector [var - 1] + 1) ;
       while (preceeding < inTranslationVector [var]) {
         result = internalITEoperation (find_or_add (preceeding, 1, 0 COMMA_HERE), result, 0) ;
         preceeding ++ ;
@@ -1425,42 +1425,42 @@ internalRecursiveUpdateRelation (const PMUInt32 inValue,
 //-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::
-updateRelation (const PMUInt32 inRelationBitNeededCount [], 
-                PMUInt32 * inRelationBitCurrentCount [], 
-                const PMSInt32 inRelationCardinality) const {
-  PMUInt32 result = mBDDvalue ;
+updateRelation (const uint32_t inRelationBitNeededCount [], 
+                uint32_t * inRelationBitCurrentCount [], 
+                const int32_t inRelationCardinality) const {
+  uint32_t result = mBDDvalue ;
 //--- Check if update is needed
   bool updateIsNeeded = false ;
-  for (PMSInt32 i=0 ; (i<inRelationCardinality) && ! updateIsNeeded ; i++) {
+  for (int32_t i=0 ; (i<inRelationCardinality) && ! updateIsNeeded ; i++) {
     updateIsNeeded = inRelationBitNeededCount [i] > * (inRelationBitCurrentCount [i]) ;
   }
 //--- Perform updating
   if (updateIsNeeded) {
     //printf ("BEFORE '%s'\n", queryStringValue ().cString (HERE)) ;
-    PMUInt32 totalCurrentBitCount = 0 ;
-    PMUInt32 newNeededTotalBitCount = 0 ;
-    for (PMSInt32 i=0 ; i<inRelationCardinality ; i++) {
-      totalCurrentBitCount = (PMUInt32) (totalCurrentBitCount + * (inRelationBitCurrentCount [i])) ;
-      newNeededTotalBitCount = (PMUInt32) (newNeededTotalBitCount + inRelationBitNeededCount [i]) ;
+    uint32_t totalCurrentBitCount = 0 ;
+    uint32_t newNeededTotalBitCount = 0 ;
+    for (int32_t i=0 ; i<inRelationCardinality ; i++) {
+      totalCurrentBitCount = (uint32_t) (totalCurrentBitCount + * (inRelationBitCurrentCount [i])) ;
+      newNeededTotalBitCount = (uint32_t) (newNeededTotalBitCount + inRelationBitNeededCount [i]) ;
     }
-    PMUInt32 * translationVector = NULL ;
-    macroMyNewArray (translationVector, PMUInt32, totalCurrentBitCount) ;
-    PMSInt32 idx = 0 ;
-    PMSInt32 newIdx = 0 ;
-    for (PMSInt32 i=0 ; i<inRelationCardinality ; i++) {
-      for (PMUInt32 j=0 ; j<* (inRelationBitCurrentCount [i]) ; j++) {
-        translationVector [idx] = (PMUInt32) ((((PMUInt32) newIdx) + j) & PMUINT16_MAX) ;
+    uint32_t * translationVector = NULL ;
+    macroMyNewArray (translationVector, uint32_t, totalCurrentBitCount) ;
+    int32_t idx = 0 ;
+    int32_t newIdx = 0 ;
+    for (int32_t i=0 ; i<inRelationCardinality ; i++) {
+      for (uint32_t j=0 ; j<* (inRelationBitCurrentCount [i]) ; j++) {
+        translationVector [idx] = (uint32_t) ((((uint32_t) newIdx) + j) & UINT16_MAX) ;
         idx ++ ;
       }
       newIdx += inRelationBitNeededCount [i] ;
     }
     printf ("[") ;
-    for (PMUInt32 i=0 ; i<totalCurrentBitCount ; i++) {
+    for (uint32_t i=0 ; i<totalCurrentBitCount ; i++) {
       printf (" %u", translationVector [i]) ;
     }
     printf ("] %u\n", newNeededTotalBitCount) ;
     result = internalRecursiveUpdateRelation (mBDDvalue, translationVector) ;
-    PMUInt32  finalTranslatedIndex = (PMUInt32) (newNeededTotalBitCount
+    uint32_t  finalTranslatedIndex = (uint32_t) (newNeededTotalBitCount
       + (* (inRelationBitCurrentCount [inRelationCardinality - 1]))
       - inRelationBitNeededCount [inRelationCardinality - 1]) ;
     while (finalTranslatedIndex < newNeededTotalBitCount) {
@@ -1474,7 +1474,7 @@ updateRelation (const PMUInt32 inRelationBitNeededCount [],
   }
 //--- Register updating
   if (updateIsNeeded) {
-    for (PMSInt32 i=0 ; i<inRelationCardinality; i++) {
+    for (int32_t i=0 ; i<inRelationCardinality; i++) {
       //printf ("%d -> %d\n", * (inRelationBitCurrentCount [i]), inRelationBitNeededCount [i]) ;
       * (inRelationBitCurrentCount [i]) = inRelationBitNeededCount [i] ;
     }
@@ -1492,15 +1492,15 @@ updateRelation (const PMUInt32 inRelationBitNeededCount [],
 //-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::
-swap21 (const PMUInt32 inBitSize1,
-        const PMUInt32 inBitSize2) const {
-  const PMUInt32 totalSize = (PMUInt32) (inBitSize1 + inBitSize2) ;
-  PMUInt32 * tab = NULL ;
-  macroMyNewArray (tab, PMUInt32, totalSize) ;
-  for (PMUInt32 i=0 ; i<inBitSize1 ; i++) {
-    tab [i] = (PMUInt32) (i + inBitSize2) ;
+swap21 (const uint32_t inBitSize1,
+        const uint32_t inBitSize2) const {
+  const uint32_t totalSize = (uint32_t) (inBitSize1 + inBitSize2) ;
+  uint32_t * tab = NULL ;
+  macroMyNewArray (tab, uint32_t, totalSize) ;
+  for (uint32_t i=0 ; i<inBitSize1 ; i++) {
+    tab [i] = (uint32_t) (i + inBitSize2) ;
   }
-  for (PMUInt32 j=0 ; j<inBitSize2 ; j++) {
+  for (uint32_t j=0 ; j<inBitSize2 ; j++) {
     tab [j + inBitSize1] = j ;
   }
   const C_BDD result = substitution (tab, totalSize COMMA_HERE) ;
@@ -1512,8 +1512,8 @@ swap21 (const PMUInt32 inBitSize1,
 
 C_BDD C_BDD::
 accessibleStates (const C_BDD & inInitialStateSet,
-                  const PMUInt32 inBitSize,
-                  PMSInt32 * outIterationCount) const {
+                  const uint32_t inBitSize,
+                  int32_t * outIterationCount) const {
 //--- Current object is edge [x, y].
 //    Accessible states set is computed by:
 // accessible [x] += initial [x] | exists y (accessible [y] & edge [y, x]) ;
@@ -1523,7 +1523,7 @@ accessibleStates (const C_BDD & inInitialStateSet,
   C_BDD accessible = inInitialStateSet ;
   C_BDD v ;
   C_BDD accessibleY ;
-  PMSInt32 iterationCount = 0 ;
+  int32_t iterationCount = 0 ;
   do{
     v = accessible ;
     iterationCount ++ ;
@@ -1539,16 +1539,16 @@ accessibleStates (const C_BDD & inInitialStateSet,
 //-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::
-transitiveClosure (const PMUInt32 inBitSize,
-                   PMSInt32 * outIterationCount) const {
+transitiveClosure (const uint32_t inBitSize,
+                   int32_t * outIterationCount) const {
 //--- Transitive closure is computed by:
 // closure [x, y] += relation [x, y] | exists z (closure [x, z] & closure [z, y]) ;
   C_BDD closure = *this ;
   C_BDD XZclosure ;
   C_BDD ZYclosure ;
   C_BDD v ;
-  const PMUInt32 bitCount2 = (PMUInt32) (inBitSize + inBitSize) ;
-  PMSInt32 iterationCount = 0 ;
+  const uint32_t bitCount2 = (uint32_t) (inBitSize + inBitSize) ;
+  int32_t iterationCount = 0 ;
   do{
     v = closure ;
     iterationCount ++ ;
@@ -1566,24 +1566,24 @@ transitiveClosure (const PMUInt32 inBitSize,
 
 class cBuildArrayForRelation2 : public C_bdd_value_traversing {
 //--- Attributes
-  protected : TC_UniqueArray <TC_UniqueArray <PMSInt32> > & mArray ;
-  protected : PMUInt32 mBitsSize1 ;
+  protected : TC_UniqueArray <TC_UniqueArray <int32_t> > & mArray ;
+  protected : uint32_t mBitsSize1 ;
 
 //--- Constructor
   public :
-  cBuildArrayForRelation2 (TC_UniqueArray <TC_UniqueArray <PMSInt32> > & outArray,
-                           const PMUInt32 inBitsSize1) ;
+  cBuildArrayForRelation2 (TC_UniqueArray <TC_UniqueArray <int32_t> > & outArray,
+                           const uint32_t inBitsSize1) ;
 
 //--- Virtual method called for every value
   public : virtual void action (const bool inValuesArray [],
-                                const PMUInt32 inBDDbitsSize) ;
+                                const uint32_t inBDDbitsSize) ;
 } ;
   
 //-----------------------------------------------------------------------------*
 
 cBuildArrayForRelation2::
-cBuildArrayForRelation2 (TC_UniqueArray <TC_UniqueArray <PMSInt32> > & outArray,
-                         const PMUInt32 inBitsSize1) :
+cBuildArrayForRelation2 (TC_UniqueArray <TC_UniqueArray <int32_t> > & outArray,
+                         const uint32_t inBitsSize1) :
 mArray (outArray),
 mBitsSize1 (inBitsSize1) {
 }
@@ -1591,13 +1591,13 @@ mBitsSize1 (inBitsSize1) {
 //-----------------------------------------------------------------------------*
 
 void cBuildArrayForRelation2::action (const bool inValuesArray [],
-                                      const PMUInt32 inBDDbitsSize) {
-  PMSInt32 index1 = 0 ;
-  PMSInt32 index2 = 0 ;
-  for (PMSInt32 i=((PMSInt32) mBitsSize1) - 1 ; i>=0 ; i--) {
+                                      const uint32_t inBDDbitsSize) {
+  int32_t index1 = 0 ;
+  int32_t index2 = 0 ;
+  for (int32_t i=((int32_t) mBitsSize1) - 1 ; i>=0 ; i--) {
     index1 = (index1 << 1) + inValuesArray [i] ;
   }
-  for (PMSInt32 j=((PMSInt32) inBDDbitsSize) - 1 ; j>= (PMSInt32) mBitsSize1 ; j--) {
+  for (int32_t j=((int32_t) inBDDbitsSize) - 1 ; j>= (int32_t) mBitsSize1 ; j--) {
     index2 = (index2 << 1) + inValuesArray [j] ;
   }
   mArray (index1 COMMA_HERE).addObject (index2) ;
@@ -1606,17 +1606,17 @@ void cBuildArrayForRelation2::action (const bool inValuesArray [],
 //-----------------------------------------------------------------------------*
 
 void C_BDD::
-getArray2 (TC_UniqueArray <TC_UniqueArray <PMSInt32> > & outArray,
-           const PMUInt32 inMaxValueCount,
-           const PMUInt32 inBitSize1,
-           const PMUInt32 inBitSize2) const {
+getArray2 (TC_UniqueArray <TC_UniqueArray <int32_t> > & outArray,
+           const uint32_t inMaxValueCount,
+           const uint32_t inBitSize1,
+           const uint32_t inBitSize2) const {
   outArray.setCountToZero () ;
-  outArray.makeRoomUsingSwap ((PMSInt32) inMaxValueCount) ;
-  for (PMUInt32 i=0 ; i<inMaxValueCount ; i++) {
+  outArray.makeRoomUsingSwap ((int32_t) inMaxValueCount) ;
+  for (uint32_t i=0 ; i<inMaxValueCount ; i++) {
     outArray.addDefaultObjectUsingSwap () ;
   }
   cBuildArrayForRelation2 s (outArray, inBitSize1) ;
-  traverseBDDvalues (s, (PMUInt32) (inBitSize1 + inBitSize2)) ;
+  traverseBDDvalues (s, (uint32_t) (inBitSize1 + inBitSize2)) ;
 }
 
 //-----------------------------------------------------------------------------*
@@ -1628,20 +1628,20 @@ getArray2 (TC_UniqueArray <TC_UniqueArray <PMSInt32> > & outArray,
 //-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::
-swap132 (const PMUInt32 inBitSize1,
-         const PMUInt32 inBitSize2,
-         const PMUInt32 inBitSize3) const {
-  const PMUInt32 totalSize = (PMUInt32) (inBitSize1 + inBitSize2 + inBitSize3) ;
-  PMUInt32 * tab = NULL ;
-  macroMyNewArray (tab, PMUInt32, totalSize) ;
-  for (PMUInt32 i=0 ; i<inBitSize1 ; i++) {
+swap132 (const uint32_t inBitSize1,
+         const uint32_t inBitSize2,
+         const uint32_t inBitSize3) const {
+  const uint32_t totalSize = (uint32_t) (inBitSize1 + inBitSize2 + inBitSize3) ;
+  uint32_t * tab = NULL ;
+  macroMyNewArray (tab, uint32_t, totalSize) ;
+  for (uint32_t i=0 ; i<inBitSize1 ; i++) {
     tab [i] = i ;
   }
-  for (PMUInt32 j=0 ; j<inBitSize2 ; j++) {
-    tab [j + inBitSize1] = (PMUInt32) (j + inBitSize1 + inBitSize3) ;
+  for (uint32_t j=0 ; j<inBitSize2 ; j++) {
+    tab [j + inBitSize1] = (uint32_t) (j + inBitSize1 + inBitSize3) ;
   }
-  for (PMUInt32 k=0 ; k<inBitSize3 ; k++) {
-    tab [k + inBitSize1 + inBitSize2] = (PMUInt32) (k + inBitSize1) ;
+  for (uint32_t k=0 ; k<inBitSize3 ; k++) {
+    tab [k + inBitSize1 + inBitSize2] = (uint32_t) (k + inBitSize1) ;
   }
   const C_BDD bdd = substitution (tab, totalSize COMMA_HERE) ;
   macroMyDeleteArray (tab) ;
@@ -1651,20 +1651,20 @@ swap132 (const PMUInt32 inBitSize1,
 //-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::
-swap231 (const PMUInt32 inBitSize1,
-         const PMUInt32 inBitSize2,
-         const PMUInt32 inBitSize3) const {
-  const PMUInt32 totalSize = (PMUInt32) (inBitSize1 + inBitSize2 + inBitSize3) ;
-  PMUInt32 * tab = NULL ;
-  macroMyNewArray (tab, PMUInt32, totalSize) ;
-  for (PMUInt32 i=0 ; i<inBitSize1 ; i++) {
-    tab [i] = (PMUInt32) (i + inBitSize1 + inBitSize2) ;
+swap231 (const uint32_t inBitSize1,
+         const uint32_t inBitSize2,
+         const uint32_t inBitSize3) const {
+  const uint32_t totalSize = (uint32_t) (inBitSize1 + inBitSize2 + inBitSize3) ;
+  uint32_t * tab = NULL ;
+  macroMyNewArray (tab, uint32_t, totalSize) ;
+  for (uint32_t i=0 ; i<inBitSize1 ; i++) {
+    tab [i] = (uint32_t) (i + inBitSize1 + inBitSize2) ;
   }
-  for (PMUInt32 j=0 ; j<inBitSize2 ; j++) {
+  for (uint32_t j=0 ; j<inBitSize2 ; j++) {
     tab [j + inBitSize1] = j ;
   }
-  for (PMUInt32 k=0 ; k<inBitSize3 ; k++) {
-    tab [k + inBitSize1 + inBitSize2] = (PMUInt32) (k + inBitSize2) ;
+  for (uint32_t k=0 ; k<inBitSize3 ; k++) {
+    tab [k + inBitSize1 + inBitSize2] = (uint32_t) (k + inBitSize2) ;
   }
   const C_BDD bdd = substitution (tab, totalSize COMMA_HERE) ;
   macroMyDeleteArray (tab) ;
@@ -1674,20 +1674,20 @@ swap231 (const PMUInt32 inBitSize1,
 //-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::
-swap213 (const PMUInt32 inBitSize1,
-         const PMUInt32 inBitSize2,
-         const PMUInt32 inBitSize3) const {
-  const PMUInt32 totalSize = (PMUInt32) (inBitSize1 + inBitSize2 + inBitSize3) ;
-  PMUInt32 * tab = NULL ;
-  macroMyNewArray (tab, PMUInt32, totalSize) ;
-  for (PMUInt32 i=0 ; i<inBitSize1 ; i++) {
-    tab [i] = (PMUInt32) (i + inBitSize2) ;
+swap213 (const uint32_t inBitSize1,
+         const uint32_t inBitSize2,
+         const uint32_t inBitSize3) const {
+  const uint32_t totalSize = (uint32_t) (inBitSize1 + inBitSize2 + inBitSize3) ;
+  uint32_t * tab = NULL ;
+  macroMyNewArray (tab, uint32_t, totalSize) ;
+  for (uint32_t i=0 ; i<inBitSize1 ; i++) {
+    tab [i] = (uint32_t) (i + inBitSize2) ;
   }
-  for (PMUInt32 j=0 ; j<inBitSize2 ; j++) {
+  for (uint32_t j=0 ; j<inBitSize2 ; j++) {
     tab [j + inBitSize1] = j ;
   }
-  for (PMUInt32 k=0 ; k<inBitSize3 ; k++) {
-    tab [k + inBitSize1 + inBitSize2] = (PMUInt32) (k + inBitSize1 + inBitSize2) ;
+  for (uint32_t k=0 ; k<inBitSize3 ; k++) {
+    tab [k + inBitSize1 + inBitSize2] = (uint32_t) (k + inBitSize1 + inBitSize2) ;
   }
   const C_BDD bdd = substitution (tab, totalSize COMMA_HERE) ;
   macroMyDeleteArray (tab) ;
@@ -1697,19 +1697,19 @@ swap213 (const PMUInt32 inBitSize1,
 //-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::
-swap321 (const PMUInt32 inBitSize1,
-         const PMUInt32 inBitSize2,
-         const PMUInt32 inBitSize3) const {
-  const PMUInt32 totalSize = (PMUInt32) (inBitSize1 + inBitSize2 + inBitSize3) ;
-  PMUInt32 * tab = NULL ;
-  macroMyNewArray (tab, PMUInt32, totalSize) ;
-  for (PMUInt32 i=0 ; i<inBitSize1 ; i++) {
-    tab [i] = (PMUInt32) (i + inBitSize1 + inBitSize2) ;
+swap321 (const uint32_t inBitSize1,
+         const uint32_t inBitSize2,
+         const uint32_t inBitSize3) const {
+  const uint32_t totalSize = (uint32_t) (inBitSize1 + inBitSize2 + inBitSize3) ;
+  uint32_t * tab = NULL ;
+  macroMyNewArray (tab, uint32_t, totalSize) ;
+  for (uint32_t i=0 ; i<inBitSize1 ; i++) {
+    tab [i] = (uint32_t) (i + inBitSize1 + inBitSize2) ;
   }
-  for (PMUInt32 j=0 ; j<inBitSize2 ; j++) {
-    tab [j + inBitSize1] = (PMUInt32) (j + inBitSize3) ;
+  for (uint32_t j=0 ; j<inBitSize2 ; j++) {
+    tab [j + inBitSize1] = (uint32_t) (j + inBitSize3) ;
   }
-  for (PMUInt32 k=0 ; k<inBitSize3 ; k++) {
+  for (uint32_t k=0 ; k<inBitSize3 ; k++) {
     tab [k + inBitSize1 + inBitSize2] = k ;
   }
   const C_BDD bdd = substitution (tab, totalSize COMMA_HERE) ;
@@ -1720,19 +1720,19 @@ swap321 (const PMUInt32 inBitSize1,
 //-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::
-swap312 (const PMUInt32 inBitSize1,
-         const PMUInt32 inBitSize2,
-         const PMUInt32 inBitSize3) const {
-  const PMUInt32 totalSize = (PMUInt32) (inBitSize1 + inBitSize2 + inBitSize3) ;
-  PMUInt32 * tab = NULL ;
-  macroMyNewArray (tab, PMUInt32, totalSize) ;
-  for (PMUInt32 i=0 ; i<inBitSize1 ; i++) {
-    tab [i] = (PMUInt32) (i + inBitSize3) ;
+swap312 (const uint32_t inBitSize1,
+         const uint32_t inBitSize2,
+         const uint32_t inBitSize3) const {
+  const uint32_t totalSize = (uint32_t) (inBitSize1 + inBitSize2 + inBitSize3) ;
+  uint32_t * tab = NULL ;
+  macroMyNewArray (tab, uint32_t, totalSize) ;
+  for (uint32_t i=0 ; i<inBitSize1 ; i++) {
+    tab [i] = (uint32_t) (i + inBitSize3) ;
   }
-  for (PMUInt32 j=0 ; j<inBitSize2 ; j++) {
-    tab [j + inBitSize1] = (PMUInt32) (j + inBitSize1 + inBitSize3) ;
+  for (uint32_t j=0 ; j<inBitSize2 ; j++) {
+    tab [j + inBitSize1] = (uint32_t) (j + inBitSize1 + inBitSize3) ;
   }
-  for (PMUInt32 k=0 ; k<inBitSize3 ; k++) {
+  for (uint32_t k=0 ; k<inBitSize3 ; k++) {
     tab [k + inBitSize1 + inBitSize2] = k ;
   }
   const C_BDD bdd = substitution (tab, totalSize COMMA_HERE) ;
@@ -1753,12 +1753,12 @@ ecrireLigneBDD (AC_OutputStream & inStream,
                 TC_UniqueArray <char> & chaineAffichage,
                 const C_Display_BDD & inVariablesNames) {
 //--- Ecriture des valeurs booleennes
-  PMSInt32 indiceBDD = 0 ;
-  for (PMUInt32 i=0 ; i<inVariablesNames.nombreEntrees () ; i++) {
-    const PMSInt32 lg = ::TF_sup (inVariablesNames.longueur (i), (PMSInt32) inVariablesNames.obtenirDimension (i)) ;
-    const PMSInt32 espaces = 1 + lg - (PMSInt32) inVariablesNames.obtenirDimension (i) ;
+  int32_t indiceBDD = 0 ;
+  for (uint32_t i=0 ; i<inVariablesNames.nombreEntrees () ; i++) {
+    const int32_t lg = ::TF_sup (inVariablesNames.longueur (i), (int32_t) inVariablesNames.obtenirDimension (i)) ;
+    const int32_t espaces = 1 + lg - (int32_t) inVariablesNames.obtenirDimension (i) ;
     inStream.appendSpaces (espaces) ;
-    for (PMSInt32 k=(PMSInt32) inVariablesNames.obtenirDimension (i) ; k>0 ; k--) {
+    for (int32_t k=(int32_t) inVariablesNames.obtenirDimension (i) ; k>0 ; k--) {
       inStream << cStringWithCharacter (chaineAffichage (indiceBDD + k - 1 COMMA_HERE)) ;
     }
     indiceBDD += inVariablesNames.obtenirDimension (i) ;
@@ -1771,48 +1771,48 @@ ecrireLigneBDD (AC_OutputStream & inStream,
 
 static void
 ecrireBDDinterne (AC_OutputStream & inStream,
-                  const PMUInt32 inValue,
+                  const uint32_t inValue,
                   TC_UniqueArray <char> & chaineAffichage,
-                  PMUInt32 numeroVariable,
-                  const PMUInt32 inVariableCount,
+                  uint32_t numeroVariable,
+                  const uint32_t inVariableCount,
                   const C_Display_BDD & inVariablesNames) {
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  const PMUInt32 complement = inValue & 1 ;
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+  const uint32_t complement = inValue & 1 ;
   if (gNodeArray [nodeIndex].bothBranches () == 0) {
     if (complement == 1) {
       ecrireLigneBDD (inStream, chaineAffichage, inVariablesNames) ;
     }
   }else{
-    const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     while (numeroVariable > var) {
-      chaineAffichage.setObjectAtIndex ('X', (PMSInt32) numeroVariable COMMA_HERE) ;
+      chaineAffichage.setObjectAtIndex ('X', (int32_t) numeroVariable COMMA_HERE) ;
       numeroVariable -- ;
     }
   //--- Branche Zero
-    const PMUInt32 branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
+    const uint32_t branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
     if (branche0 != 0) {
-      chaineAffichage.setObjectAtIndex ('0', (PMSInt32) var COMMA_HERE) ;
+      chaineAffichage.setObjectAtIndex ('0', (int32_t) var COMMA_HERE) ;
       if (branche0 == 1) {
-        for (PMUInt32 i=0 ; i<var ; i++) {
-          chaineAffichage.setObjectAtIndex ('X', (PMSInt32) i COMMA_HERE) ;
+        for (uint32_t i=0 ; i<var ; i++) {
+          chaineAffichage.setObjectAtIndex ('X', (int32_t) i COMMA_HERE) ;
         }
         ecrireLigneBDD (inStream, chaineAffichage, inVariablesNames) ;
       }else{
-        ecrireBDDinterne (inStream, branche0, chaineAffichage, (PMUInt32) (var - 1), inVariableCount,
+        ecrireBDDinterne (inStream, branche0, chaineAffichage, (uint32_t) (var - 1), inVariableCount,
                           inVariablesNames) ;
       }
     }
   //--- Branche 1
-    const PMUInt32 branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
+    const uint32_t branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
     if (branche1 != 0) {
-      chaineAffichage.setObjectAtIndex ('1', (PMSInt32) var COMMA_HERE) ;
+      chaineAffichage.setObjectAtIndex ('1', (int32_t) var COMMA_HERE) ;
       if (branche1 == 1) {
-        for (PMUInt32 i=0 ; i<var ; i++) {
-          chaineAffichage.setObjectAtIndex ('X', (PMSInt32) i COMMA_HERE) ;
+        for (uint32_t i=0 ; i<var ; i++) {
+          chaineAffichage.setObjectAtIndex ('X', (int32_t) i COMMA_HERE) ;
         }
         ecrireLigneBDD (inStream, chaineAffichage, inVariablesNames) ;
       }else{
-        ecrireBDDinterne (inStream, branche1, chaineAffichage, (PMUInt32) (var - 1), inVariableCount,
+        ecrireBDDinterne (inStream, branche1, chaineAffichage, (uint32_t) (var - 1), inVariableCount,
                           inVariablesNames) ;
       }
     }
@@ -1822,12 +1822,12 @@ ecrireBDDinterne (AC_OutputStream & inStream,
 //-----------------------------------------------------------------------------*
 
 void C_BDD::printBDD (AC_OutputStream & inStream,
-                      const PMUInt32 inVariableCount,
+                      const uint32_t inVariableCount,
                       const C_Display_BDD & inVariablesNames) const {
 //--- Imprimer les variables
-  for (PMUInt32 i=0 ; i<inVariablesNames.nombreEntrees () ; i++) {
-    const PMSInt32 lg = ::TF_sup (inVariablesNames.longueur (i), (PMSInt32) inVariablesNames.obtenirDimension (i)) ;
-    const PMSInt32 espaces = 1 + lg - inVariablesNames.longueur (i) ;
+  for (uint32_t i=0 ; i<inVariablesNames.nombreEntrees () ; i++) {
+    const int32_t lg = ::TF_sup (inVariablesNames.longueur (i), (int32_t) inVariablesNames.obtenirDimension (i)) ;
+    const int32_t espaces = 1 + lg - inVariablesNames.longueur (i) ;
     inStream.appendSpaces (espaces) ;
     inVariablesNames.ecrire (i, inStream) ;
   }
@@ -1836,10 +1836,10 @@ void C_BDD::printBDD (AC_OutputStream & inStream,
   if (mBDDvalue == 0) {
     inStream << "(false)\n" ;
   }else if (mBDDvalue == 1) {
-    TC_UniqueArray <char> chaineAffichage ((PMSInt32) inVariableCount, 'X' COMMA_HERE) ;
+    TC_UniqueArray <char> chaineAffichage ((int32_t) inVariableCount, 'X' COMMA_HERE) ;
     ecrireLigneBDD (inStream, chaineAffichage, inVariablesNames) ;
   }else{
-    TC_UniqueArray <char> chaineAffichage ((PMSInt32) inVariableCount, 'X' COMMA_HERE) ;
+    TC_UniqueArray <char> chaineAffichage ((int32_t) inVariableCount, 'X' COMMA_HERE) ;
     ecrireBDDinterne (inStream, mBDDvalue, chaineAffichage, inVariableCount - 1, inVariableCount, inVariablesNames) ;
   }
 }
@@ -1848,13 +1848,13 @@ void C_BDD::printBDD (AC_OutputStream & inStream,
 //-----------------------------------------------------------------------------*
 
 static void printBDDline (const TC_UniqueArray <char> & inDisplayString,
-                          const TC_UniqueArray <PMSInt32> & inNameLengthArray,
-                          const PMSInt32 inLeadingSpacesCount) {
-  for (PMSInt32 i=0 ; i<inLeadingSpacesCount ; i++) {
+                          const TC_UniqueArray <int32_t> & inNameLengthArray,
+                          const int32_t inLeadingSpacesCount) {
+  for (int32_t i=0 ; i<inLeadingSpacesCount ; i++) {
     co << " " ;
   }
-  for (PMSInt32 i=0 ; i<inDisplayString.count () ; i++) {
-    for (PMSInt32 c=0 ; c<inNameLengthArray (i COMMA_HERE) ; c++) {
+  for (int32_t i=0 ; i<inDisplayString.count () ; i++) {
+    for (int32_t c=0 ; c<inNameLengthArray (i COMMA_HERE) ; c++) {
       co << " " ;
     }
     co << cStringWithCharacter (inDisplayString (i COMMA_HERE)) ;
@@ -1865,47 +1865,47 @@ static void printBDDline (const TC_UniqueArray <char> & inDisplayString,
 //-----------------------------------------------------------------------------*
 
 static void
-internalPrintBDD (const PMUInt32 inValue,
+internalPrintBDD (const uint32_t inValue,
                   TC_UniqueArray <char> & inDisplayString,
-                  const TC_UniqueArray <PMSInt32> & inNameLengthArray,
-                  PMUInt32 inVariableIndex,
-                  const PMSInt32 inLeadingSpacesCount) {
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  const PMUInt32 complement = inValue & 1 ;
+                  const TC_UniqueArray <int32_t> & inNameLengthArray,
+                  uint32_t inVariableIndex,
+                  const int32_t inLeadingSpacesCount) {
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+  const uint32_t complement = inValue & 1 ;
   if (gNodeArray [nodeIndex].bothBranches () == 0) {
     if (complement == 1) {
       printBDDline (inDisplayString, inNameLengthArray, inLeadingSpacesCount) ;
     }
   }else{
-    const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     while (inVariableIndex > var) {
-      inDisplayString.setObjectAtIndex ('X', (PMSInt32) inVariableIndex COMMA_HERE) ;
+      inDisplayString.setObjectAtIndex ('X', (int32_t) inVariableIndex COMMA_HERE) ;
       inVariableIndex -- ;
     }
   //--- Branche Zero
-    const PMUInt32 branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
+    const uint32_t branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
     if (branche0 != 0) {
-      inDisplayString.setObjectAtIndex ('0', (PMSInt32) var COMMA_HERE) ;
+      inDisplayString.setObjectAtIndex ('0', (int32_t) var COMMA_HERE) ;
       if (branche0 == 1) {
-        for (PMUInt32 i=0 ; i<var ; i++) {
-          inDisplayString.setObjectAtIndex ('X', (PMSInt32) i COMMA_HERE) ;
+        for (uint32_t i=0 ; i<var ; i++) {
+          inDisplayString.setObjectAtIndex ('X', (int32_t) i COMMA_HERE) ;
         }
         printBDDline (inDisplayString, inNameLengthArray, inLeadingSpacesCount) ;
       }else{
-        internalPrintBDD (branche0, inDisplayString, inNameLengthArray, (PMUInt32) (inVariableIndex - 1), inLeadingSpacesCount) ;
+        internalPrintBDD (branche0, inDisplayString, inNameLengthArray, (uint32_t) (inVariableIndex - 1), inLeadingSpacesCount) ;
       }
     }
   //--- Branche 1
-    const PMUInt32 branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
+    const uint32_t branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
     if (branche1 != 0) {
-      inDisplayString.setObjectAtIndex ('1', (PMSInt32) var COMMA_HERE) ;
+      inDisplayString.setObjectAtIndex ('1', (int32_t) var COMMA_HERE) ;
       if (branche1 == 1) {
-        for (PMUInt32 i=0 ; i<var ; i++) {
-          inDisplayString.setObjectAtIndex ('X', (PMSInt32) i COMMA_HERE) ;
+        for (uint32_t i=0 ; i<var ; i++) {
+          inDisplayString.setObjectAtIndex ('X', (int32_t) i COMMA_HERE) ;
         }
         printBDDline (inDisplayString, inNameLengthArray, inLeadingSpacesCount) ;
       }else{
-        internalPrintBDD (branche1, inDisplayString, inNameLengthArray, (PMUInt32) (inVariableIndex - 1), inLeadingSpacesCount) ;
+        internalPrintBDD (branche1, inDisplayString, inNameLengthArray, (uint32_t) (inVariableIndex - 1), inLeadingSpacesCount) ;
       }
     }
   }
@@ -1915,7 +1915,7 @@ internalPrintBDD (const PMUInt32 inValue,
 
 void C_BDD::
 printBDD (const TC_UniqueArray <C_String> & inVariablesNames,
-          const PMSInt32 inLeadingSpacesCount) const {
+          const int32_t inLeadingSpacesCount) const {
   printBDD (inVariablesNames, inVariablesNames.count (), inLeadingSpacesCount) ;
 }
 
@@ -1923,13 +1923,13 @@ printBDD (const TC_UniqueArray <C_String> & inVariablesNames,
 
 void C_BDD::
 printBDDHeader (const TC_UniqueArray <C_String> & inVariablesNames,
-                const PMSInt32 inVariableCount,
-                const PMSInt32 inLeadingSpacesCount) const {
+                const int32_t inVariableCount,
+                const int32_t inLeadingSpacesCount) const {
 //--- Imprimer les variables
-  for (PMSInt32 i=0 ; i<inLeadingSpacesCount ; i++) {
+  for (int32_t i=0 ; i<inLeadingSpacesCount ; i++) {
     co << " " ;
   }
-  for (PMSInt32 i=0 ; i<inVariableCount ; i++) {
+  for (int32_t i=0 ; i<inVariableCount ; i++) {
     co << " " << inVariablesNames (i COMMA_HERE) ;
   }
   co << "\n" ;
@@ -1939,8 +1939,8 @@ printBDDHeader (const TC_UniqueArray <C_String> & inVariablesNames,
 
 void C_BDD::
 printBDD (const TC_UniqueArray <C_String> & inVariablesNames,
-          const PMSInt32 inVariableCount,
-          const PMSInt32 inLeadingSpacesCount) const {
+          const int32_t inVariableCount,
+          const int32_t inLeadingSpacesCount) const {
 //--- Print header
   printBDDHeader (inVariablesNames, inVariableCount, inLeadingSpacesCount) ;
 //--- Print without header
@@ -1950,16 +1950,16 @@ printBDD (const TC_UniqueArray <C_String> & inVariablesNames,
 //-----------------------------------------------------------------------------*
 
 void C_BDD::printBDDwithoutHeader (const TC_UniqueArray <C_String> & inVariablesNames,
-                                   const PMSInt32 inVariableCount,
-                                   const PMSInt32 inLeadingSpacesCount) const {
+                                   const int32_t inVariableCount,
+                                   const int32_t inLeadingSpacesCount) const {
 //--- Compute header size
-  TC_UniqueArray <PMSInt32> nameLengthArray (inVariableCount COMMA_HERE) ;
-  for (PMSInt32 i=0 ; i<inVariableCount ; i++) {
+  TC_UniqueArray <int32_t> nameLengthArray (inVariableCount COMMA_HERE) ;
+  for (int32_t i=0 ; i<inVariableCount ; i++) {
     nameLengthArray.addObject (inVariablesNames (i COMMA_HERE).length ()) ;
   }
 //--- Print BDD
   if (mBDDvalue == 0) {
-    for (PMSInt32 i=0 ; i<inLeadingSpacesCount ; i++) {
+    for (int32_t i=0 ; i<inLeadingSpacesCount ; i++) {
       co << " " ;
     }
     co << " (false)\n" ;
@@ -1967,8 +1967,8 @@ void C_BDD::printBDDwithoutHeader (const TC_UniqueArray <C_String> & inVariables
     TC_UniqueArray <char> displayString (inVariableCount, 'X' COMMA_HERE) ;
     printBDDline (displayString, nameLengthArray, inLeadingSpacesCount) ;
   }else{
-    const PMUInt32 nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
-    const PMSInt32 var = (PMSInt32) gNodeArray [nodeIndex].mVariableIndex ;
+    const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
+    const int32_t var = (int32_t) gNodeArray [nodeIndex].mVariableIndex ;
     if (var >= inVariableCount) {
       co << "** ERROR in "
          << __FILE__
@@ -1981,7 +1981,7 @@ void C_BDD::printBDDwithoutHeader (const TC_UniqueArray <C_String> & inVariables
          << ") **\n" ;
     }else{
       TC_UniqueArray <char> displayString (inVariableCount, 'X' COMMA_HERE) ;
-      internalPrintBDD (mBDDvalue, displayString, nameLengthArray, (PMUInt32) (inVariableCount - 1), inLeadingSpacesCount) ;
+      internalPrintBDD (mBDDvalue, displayString, nameLengthArray, (uint32_t) (inVariableCount - 1), inLeadingSpacesCount) ;
     }
   }
 }
@@ -1991,7 +1991,7 @@ void C_BDD::printBDDwithoutHeader (const TC_UniqueArray <C_String> & inVariables
 static void
 printBDDlineWithSeparator (const TC_UniqueArray <C_String> & inSeparatorArray,
                            const TC_UniqueArray <char> & inValueArray) {
-  for (PMSInt32 i=0 ; i<inSeparatorArray.count () ; i++) {
+  for (int32_t i=0 ; i<inSeparatorArray.count () ; i++) {
     printf ("%s%c", inSeparatorArray (i COMMA_HERE).cString(HERE), inValueArray (i COMMA_HERE)) ;
   }
   printf ("\n") ;
@@ -2000,46 +2000,46 @@ printBDDlineWithSeparator (const TC_UniqueArray <C_String> & inSeparatorArray,
 //-----------------------------------------------------------------------------*
 
 static void
-internalPrintBDDWithSeparator (const PMUInt32 inValue,
+internalPrintBDDWithSeparator (const uint32_t inValue,
                                TC_UniqueArray <char> & inDisplayString,
                                const TC_UniqueArray <C_String> & inSeparatorArray,
-                               PMUInt32 inVariableIndex) {
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  const PMUInt32 complement = inValue & 1 ;
+                               uint32_t inVariableIndex) {
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+  const uint32_t complement = inValue & 1 ;
   if (gNodeArray [nodeIndex].bothBranches () == 0) {
     if (complement == 1) {
       printBDDlineWithSeparator (inSeparatorArray, inDisplayString) ;
     }
   }else{
-    const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     while (inVariableIndex > var) {
-      inDisplayString.setObjectAtIndex ('X', (PMSInt32) inVariableIndex COMMA_HERE) ;
+      inDisplayString.setObjectAtIndex ('X', (int32_t) inVariableIndex COMMA_HERE) ;
       inVariableIndex -- ;
     }
   //--- Branche Zero
-    const PMUInt32 branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
+    const uint32_t branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
     if (branche0 != 0) {
-      inDisplayString.setObjectAtIndex ('0', (PMSInt32) var COMMA_HERE) ;
+      inDisplayString.setObjectAtIndex ('0', (int32_t) var COMMA_HERE) ;
       if (branche0 == 1) {
-        for (PMUInt32 i=0 ; i<var ; i++) {
-          inDisplayString.setObjectAtIndex ('X', (PMSInt32) i COMMA_HERE) ;
+        for (uint32_t i=0 ; i<var ; i++) {
+          inDisplayString.setObjectAtIndex ('X', (int32_t) i COMMA_HERE) ;
         }
         printBDDlineWithSeparator (inSeparatorArray, inDisplayString) ;
       }else{
-        internalPrintBDDWithSeparator (branche0, inDisplayString, inSeparatorArray, (PMUInt32) (inVariableIndex - 1)) ;
+        internalPrintBDDWithSeparator (branche0, inDisplayString, inSeparatorArray, (uint32_t) (inVariableIndex - 1)) ;
       }
     }
   //--- Branche 1
-    const PMUInt32 branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
+    const uint32_t branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
     if (branche1 != 0) {
-      inDisplayString.setObjectAtIndex ('1', (PMSInt32) var COMMA_HERE) ;
+      inDisplayString.setObjectAtIndex ('1', (int32_t) var COMMA_HERE) ;
       if (branche1 == 1) {
-        for (PMUInt32 i=0 ; i<var ; i++) {
-          inDisplayString.setObjectAtIndex ('X', (PMSInt32) i COMMA_HERE) ;
+        for (uint32_t i=0 ; i<var ; i++) {
+          inDisplayString.setObjectAtIndex ('X', (int32_t) i COMMA_HERE) ;
         }
         printBDDlineWithSeparator (inSeparatorArray, inDisplayString) ;
       }else{
-        internalPrintBDDWithSeparator (branche1, inDisplayString, inSeparatorArray, (PMUInt32) (inVariableIndex - 1)) ;
+        internalPrintBDDWithSeparator (branche1, inDisplayString, inSeparatorArray, (uint32_t) (inVariableIndex - 1)) ;
       }
     }
   }
@@ -2048,14 +2048,14 @@ internalPrintBDDWithSeparator (const PMUInt32 inValue,
 //-----------------------------------------------------------------------------*
 
 void C_BDD::printBDDwithSeparator (const TC_UniqueArray <C_String> & inSeparatorArray) const {
-  const PMUInt32 variablesCount = (PMUInt32) inSeparatorArray.count () ;
+  const uint32_t variablesCount = (uint32_t) inSeparatorArray.count () ;
 //--- Print BDD
   if (mBDDvalue == 1) {
-    TC_UniqueArray <char> displayString ((PMSInt32) variablesCount, 'X' COMMA_HERE) ;
+    TC_UniqueArray <char> displayString ((int32_t) variablesCount, 'X' COMMA_HERE) ;
     printBDDlineWithSeparator (inSeparatorArray, displayString) ;
   }else if (mBDDvalue != 0) {
-    const PMUInt32 nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
-    const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
+    const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     if (var >= variablesCount) {
       co << "** ERROR in "
          << __FILE__
@@ -2067,11 +2067,11 @@ void C_BDD::printBDDwithSeparator (const TC_UniqueArray <C_String> & inSeparator
          << cStringWithSigned (variablesCount)
          << ") **\n" ;
     }else{
-      TC_UniqueArray <char> displayString ((PMSInt32) variablesCount, 'X' COMMA_HERE) ;
+      TC_UniqueArray <char> displayString ((int32_t) variablesCount, 'X' COMMA_HERE) ;
       internalPrintBDDWithSeparator (mBDDvalue,
                                      displayString,
                                      inSeparatorArray,
-                                     (PMUInt32) ((variablesCount - 1) & PMUINT16_MAX)) ;
+                                     (uint32_t) ((variablesCount - 1) & UINT16_MAX)) ;
     }
   }
 }
@@ -2079,47 +2079,47 @@ void C_BDD::printBDDwithSeparator (const TC_UniqueArray <C_String> & inSeparator
 //-----------------------------------------------------------------------------*
 
 static void
-internalPrintBDDInLittleEndianStringArray (const PMUInt32 inValue,
+internalPrintBDDInLittleEndianStringArray (const uint32_t inValue,
                                C_String & ioDisplayString,
-                               PMUInt32 inVariableIndex,
+                               uint32_t inVariableIndex,
                                TC_UniqueArray <C_String> & outStringArray
                                COMMA_LOCATION_ARGS) {
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  const PMUInt32 complement = inValue & 1 ;
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+  const uint32_t complement = inValue & 1 ;
   if (gNodeArray [nodeIndex].bothBranches () == 0) {
     if (complement == 1) {
       outStringArray.addObject (ioDisplayString) ;
     }
   }else{
-    const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     while (inVariableIndex > var) {
-      ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('X'), (PMSInt32) inVariableIndex COMMA_THERE) ;
+      ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('X'), (int32_t) inVariableIndex COMMA_THERE) ;
       inVariableIndex -- ;
     }
   //--- Branche Zero
-    const PMUInt32 branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
+    const uint32_t branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
     if (branche0 != 0) {
-      ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('0'), (PMSInt32) var COMMA_HERE) ;
+      ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('0'), (int32_t) var COMMA_HERE) ;
       if (branche0 == 1) {
-        for (PMUInt32 i=0 ; i<var ; i++) {
-          ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('X'), (PMSInt32) i COMMA_HERE) ;
+        for (uint32_t i=0 ; i<var ; i++) {
+          ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('X'), (int32_t) i COMMA_HERE) ;
         }
         outStringArray.addObject (ioDisplayString) ;
       }else{
-        internalPrintBDDInLittleEndianStringArray (branche0, ioDisplayString, (PMUInt32) (inVariableIndex - 1), outStringArray COMMA_THERE) ;
+        internalPrintBDDInLittleEndianStringArray (branche0, ioDisplayString, (uint32_t) (inVariableIndex - 1), outStringArray COMMA_THERE) ;
       }
     }
   //--- Branche 1
-    const PMUInt32 branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
+    const uint32_t branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
     if (branche1 != 0) {
-      ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('1'), (PMSInt32) var COMMA_HERE) ;
+      ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('1'), (int32_t) var COMMA_HERE) ;
       if (branche1 == 1) {
-        for (PMUInt32 i=0 ; i<var ; i++) {
-          ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('X'), (PMSInt32) i COMMA_HERE) ;
+        for (uint32_t i=0 ; i<var ; i++) {
+          ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('X'), (int32_t) i COMMA_HERE) ;
         }
         outStringArray.addObject (ioDisplayString) ;
       }else{
-        internalPrintBDDInLittleEndianStringArray (branche1, ioDisplayString, (PMUInt32) (inVariableIndex - 1), outStringArray COMMA_THERE) ;
+        internalPrintBDDInLittleEndianStringArray (branche1, ioDisplayString, (uint32_t) (inVariableIndex - 1), outStringArray COMMA_THERE) ;
       }
     }
   }
@@ -2130,10 +2130,10 @@ internalPrintBDDInLittleEndianStringArray (const PMUInt32 inValue,
 void C_BDD::
 buildCompressedLittleEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray
                                              COMMA_LOCATION_ARGS) const {
-  const PMUInt32 nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
+  const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
   if (gNodeArray [nodeIndex].bothBranches () != 0) {
     C_String displayString ;
-    for (PMSInt32 i=0 ; i<=((PMSInt32) gNodeArray [nodeIndex].mVariableIndex) ; i++) {
+    for (int32_t i=0 ; i<=((int32_t) gNodeArray [nodeIndex].mVariableIndex) ; i++) {
       displayString << "X" ;
     }
     internalPrintBDDInLittleEndianStringArray (mBDDvalue, displayString, gNodeArray [nodeIndex].mVariableIndex, outStringArray COMMA_THERE) ;
@@ -2144,10 +2144,10 @@ buildCompressedLittleEndianStringValueArray (TC_UniqueArray <C_String> & outStri
 
 void C_BDD::
 buildCompressedLittleEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray,
-                                             const PMUInt32 inVariableCount
+                                             const uint32_t inVariableCount
                                              COMMA_LOCATION_ARGS) const {
   C_String displayString ;
-  for (PMSInt32 i=0 ; i<((PMSInt32) inVariableCount) ; i++) {
+  for (int32_t i=0 ; i<((int32_t) inVariableCount) ; i++) {
     displayString << "X" ;
   }
   internalPrintBDDInLittleEndianStringArray (mBDDvalue, displayString, inVariableCount, outStringArray COMMA_THERE) ;
@@ -2156,48 +2156,48 @@ buildCompressedLittleEndianStringValueArray (TC_UniqueArray <C_String> & outStri
 //-----------------------------------------------------------------------------*
 
 static void
-internalPrintBDDInBigEndianStringArray (const PMUInt32 inValue,
+internalPrintBDDInBigEndianStringArray (const uint32_t inValue,
                                C_String & ioDisplayString,
-                               PMUInt32 inVariableIndex,
-                               const PMUInt32 inTotalVariableCountMinusOne,
+                               uint32_t inVariableIndex,
+                               const uint32_t inTotalVariableCountMinusOne,
                                TC_UniqueArray <C_String> & outStringArray
                                COMMA_LOCATION_ARGS) {
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  const PMUInt32 complement = inValue & 1 ;
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+  const uint32_t complement = inValue & 1 ;
   if (gNodeArray [nodeIndex].bothBranches () == 0) {
     if (complement == 1) {
       outStringArray.addObject (ioDisplayString) ;
     }
   }else{
-    const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     while (inVariableIndex > var) {
-      ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('X'), (PMSInt32) (inTotalVariableCountMinusOne - inVariableIndex) COMMA_THERE) ;
+      ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('X'), (int32_t) (inTotalVariableCountMinusOne - inVariableIndex) COMMA_THERE) ;
       inVariableIndex -- ;
     }
   //--- Branche Zero
-    const PMUInt32 branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
+    const uint32_t branche0 = gNodeArray [nodeIndex].mELSE ^ complement ;
     if (branche0 != 0) {
-      ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('0'), (PMSInt32) (inTotalVariableCountMinusOne - var) COMMA_THERE) ;
+      ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('0'), (int32_t) (inTotalVariableCountMinusOne - var) COMMA_THERE) ;
       if (branche0 == 1) {
-        for (PMUInt32 i=0 ; i<var ; i++) {
-          ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('X'), (PMSInt32) (inTotalVariableCountMinusOne - i) COMMA_THERE) ;
+        for (uint32_t i=0 ; i<var ; i++) {
+          ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('X'), (int32_t) (inTotalVariableCountMinusOne - i) COMMA_THERE) ;
         }
         outStringArray.addObject (ioDisplayString) ;
       }else{
-        internalPrintBDDInBigEndianStringArray (branche0, ioDisplayString, (PMUInt32) (inVariableIndex - 1), inTotalVariableCountMinusOne, outStringArray COMMA_THERE) ;
+        internalPrintBDDInBigEndianStringArray (branche0, ioDisplayString, (uint32_t) (inVariableIndex - 1), inTotalVariableCountMinusOne, outStringArray COMMA_THERE) ;
       }
     }
   //--- Branche 1
-    const PMUInt32 branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
+    const uint32_t branche1 = gNodeArray [nodeIndex].mTHEN ^ complement ;
     if (branche1 != 0) {
-      ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('1'), (PMSInt32) (inTotalVariableCountMinusOne - var) COMMA_HERE) ;
+      ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('1'), (int32_t) (inTotalVariableCountMinusOne - var) COMMA_HERE) ;
       if (branche1 == 1) {
-        for (PMUInt32 i=0 ; i<var ; i++) {
-          ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('X'), (PMSInt32) (inTotalVariableCountMinusOne - i) COMMA_HERE) ;
+        for (uint32_t i=0 ; i<var ; i++) {
+          ioDisplayString.setUnicodeCharacterAtIndex (TO_UNICODE ('X'), (int32_t) (inTotalVariableCountMinusOne - i) COMMA_HERE) ;
         }
         outStringArray.addObject (ioDisplayString) ;
       }else{
-        internalPrintBDDInBigEndianStringArray (branche1, ioDisplayString, (PMUInt32) (inVariableIndex - 1), inTotalVariableCountMinusOne, outStringArray COMMA_THERE) ;
+        internalPrintBDDInBigEndianStringArray (branche1, ioDisplayString, (uint32_t) (inVariableIndex - 1), inTotalVariableCountMinusOne, outStringArray COMMA_THERE) ;
       }
     }
   }
@@ -2208,10 +2208,10 @@ internalPrintBDDInBigEndianStringArray (const PMUInt32 inValue,
 void C_BDD::
 buildCompressedBigEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray
                                           COMMA_LOCATION_ARGS) const {
-  const PMUInt32 nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
+  const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
   if (gNodeArray [nodeIndex].bothBranches () != 0) {
     C_String displayString ;
-    for (PMSInt32 i=0 ; i<=((PMSInt32) gNodeArray [nodeIndex].mVariableIndex) ; i++) {
+    for (int32_t i=0 ; i<=((int32_t) gNodeArray [nodeIndex].mVariableIndex) ; i++) {
       displayString << "X" ;
     }
     internalPrintBDDInBigEndianStringArray (mBDDvalue, displayString, gNodeArray [nodeIndex].mVariableIndex, gNodeArray [nodeIndex].mVariableIndex, outStringArray COMMA_THERE) ;
@@ -2222,10 +2222,10 @@ buildCompressedBigEndianStringValueArray (TC_UniqueArray <C_String> & outStringA
 
 void C_BDD::
 buildCompressedBigEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray,
-                                 const PMUInt32 inVariableCount
+                                 const uint32_t inVariableCount
                                  COMMA_LOCATION_ARGS) const {
   C_String displayString ;
-  for (PMSInt32 i=0 ; i<((PMSInt32) inVariableCount) ; i++) {
+  for (int32_t i=0 ; i<((int32_t) inVariableCount) ; i++) {
     displayString << "X" ;
   }
   internalPrintBDDInBigEndianStringArray (mBDDvalue,
@@ -2238,7 +2238,7 @@ buildCompressedBigEndianStringValueArray (TC_UniqueArray <C_String> & outStringA
 //-----------------------------------------------------------------------------*
 
 static void displayBranchCode (AC_OutputStream & inStream,
-                               const PMUInt32 inBranchValue) {
+                               const uint32_t inBranchValue) {
   if (inBranchValue == 0) {
     inStream << "FALSE" ;
   }else if (inBranchValue == 1) {
@@ -2254,9 +2254,9 @@ static void displayBranchCode (AC_OutputStream & inStream,
 //-----------------------------------------------------------------------------*
 
 static void ecrireCompositionBDDrecursif (AC_OutputStream & inStream,
-                                          const PMUInt32 inValue,
+                                          const uint32_t inValue,
                                           const C_Display_BDD & inVariablesNames) {
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   if ((gNodeArray [nodeIndex].bothBranches () != 0) && ! isNodeMarkedThenMark (inValue COMMA_HERE)) {
     inStream << "  node " << cStringWithUnsigned (inValue >> 1) << ": if " ;
     inVariablesNames.ecrire (gNodeArray [nodeIndex].mVariableIndex, inStream) ;
@@ -2278,7 +2278,7 @@ printBDDnodes (AC_OutputStream & inStream,
   inStream << "BDD root: " ;
   displayBranchCode (inStream, mBDDvalue) ;
   inStream << "\n" ;
-  const PMUInt32 nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
+  const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
   if (gNodeArray [nodeIndex].bothBranches () != 0) {
     unmarkAllExistingBDDnodes () ;
     ecrireCompositionBDDrecursif (inStream, mBDDvalue, inVariablesNames) ;
@@ -2291,27 +2291,27 @@ printBDDnodes (AC_OutputStream & inStream,
   #pragma mark Build BDD from value list
 #endif
 
-static inline void swapValueArray (PMUInt64 ioValueArray [],
-                                   const PMSInt32 inIndex1,
-                                   const PMSInt32 inIndex2) {
-  const PMUInt64 v = ioValueArray [inIndex1] ;
+static inline void swapValueArray (uint64_t ioValueArray [],
+                                   const int32_t inIndex1,
+                                   const int32_t inIndex2) {
+  const uint64_t v = ioValueArray [inIndex1] ;
   ioValueArray [inIndex1] = ioValueArray [inIndex2] ;
   ioValueArray [inIndex2] = v ;
 }
 
 //----------------------------------------------------------------
 
-static void sortValueArray (PMUInt64 ioValueArray [],
-                            const PMSInt32 inLeftIndex,
-                            const PMSInt32 inRightIndex) {
+static void sortValueArray (uint64_t ioValueArray [],
+                            const int32_t inLeftIndex,
+                            const int32_t inRightIndex) {
   if (inLeftIndex < inRightIndex) {
-    const PMSInt32 pivotIndex = (inRightIndex + inLeftIndex) / 2 ;
-    const PMUInt64 pivotValue = ioValueArray [pivotIndex] ;
+    const int32_t pivotIndex = (inRightIndex + inLeftIndex) / 2 ;
+    const uint64_t pivotValue = ioValueArray [pivotIndex] ;
   //--- Move pivot to the end
     swapValueArray (ioValueArray, pivotIndex, inRightIndex) ;
   //--- storeIndex := left
-    PMSInt32 storeIndex = inLeftIndex ;
-    for (PMSInt32 i=inLeftIndex ; i<inRightIndex ; i++) {
+    int32_t storeIndex = inLeftIndex ;
+    for (int32_t i=inLeftIndex ; i<inRightIndex ; i++) {
       if (ioValueArray [i] <= pivotValue) {
         swapValueArray (ioValueArray, i, storeIndex) ;
         storeIndex ++ ;
@@ -2330,9 +2330,9 @@ static void sortValueArray (PMUInt64 ioValueArray [],
 
 //----------------------------------------------------------------
 
-C_BDD C_BDD::buildBDDFromValueList (PMUInt64 ioValueList [],
-                                    const PMUInt32 inValueCount,
-                                    const PMUInt32 inBitCount) {
+C_BDD C_BDD::buildBDDFromValueList (uint64_t ioValueList [],
+                                    const uint32_t inValueCount,
+                                    const uint32_t inBitCount) {
 //---
   if (0 == inBitCount) {
     printf ("*** error in %s:%d: inBitCount is zero (should be > 0)***\n", __FILE__, __LINE__) ;
@@ -2346,14 +2346,14 @@ C_BDD C_BDD::buildBDDFromValueList (PMUInt64 ioValueList [],
   C_BDD result ;
   if (inValueCount > 0) {
   //--- Sort value list in ascending order
-    sortValueArray (ioValueList, 0, (PMSInt32) (inValueCount - 1)) ;
+    sortValueArray (ioValueList, 0, (int32_t) (inValueCount - 1)) ;
   //--- Check values are sorted
-  //  for (PMUInt32 i=1 ; i<inValueCount ; i++) {
+  //  for (uint32_t i=1 ; i<inValueCount ; i++) {
   //    MF_Assert (ioValueList [i-1] < ioValueList [i], "ioValueList [i-1] < ioValueList [i] for i=%lld, inValueCount:%lld", i, inValueCount) ;
   //  }
   //--- Search for duplicates
-    PMUInt32 duplicates = 0 ;
-    for (PMUInt32 i=1 ; i<inValueCount ; i++) {
+    uint32_t duplicates = 0 ;
+    for (uint32_t i=1 ; i<inValueCount ; i++) {
       duplicates += ioValueList [i-1] == ioValueList [i] ;
     }
     if (duplicates > 0) {
@@ -2365,11 +2365,11 @@ C_BDD C_BDD::buildBDDFromValueList (PMUInt64 ioValueList [],
     #endif
     C_BDD * accumulatorArray = NULL ;
     macroMyNewArray (accumulatorArray, C_BDD, inBitCount) ;
-    PMUInt64 referenceValue = ioValueList [0] ;
-    for (PMUInt32 i=0 ; i<inValueCount ; i++) {
-      const PMUInt64 currentTransition = ioValueList [i] ;
-      PMUInt64 mask = 1ULL << (inBitCount - 1) ;
-      PMSInt32 firstDifferentBit = ((PMSInt32) inBitCount) - 1 ;
+    uint64_t referenceValue = ioValueList [0] ;
+    for (uint32_t i=0 ; i<inValueCount ; i++) {
+      const uint64_t currentTransition = ioValueList [i] ;
+      uint64_t mask = 1ULL << (inBitCount - 1) ;
+      int32_t firstDifferentBit = ((int32_t) inBitCount) - 1 ;
       while ((firstDifferentBit >= 0) && (((currentTransition ^ referenceValue) & mask) == 0)) {
         firstDifferentBit -- ;
         mask >>=1 ;
@@ -2377,8 +2377,8 @@ C_BDD C_BDD::buildBDDFromValueList (PMUInt64 ioValueList [],
       if (firstDifferentBit >= 0) {
         C_BDD accumulatorBDD ; accumulatorBDD.setToTrue () ;
         mask = 1ULL ;
-        for (PMSInt32 idx=0 ; idx<=firstDifferentBit ; idx++) {
-          accumulatorBDD = (C_BDD ((PMUInt32) (((PMUInt32) idx) & PMUINT16_MAX), (referenceValue & mask) != 0) & accumulatorBDD) | accumulatorArray [idx] ;
+        for (int32_t idx=0 ; idx<=firstDifferentBit ; idx++) {
+          accumulatorBDD = (C_BDD ((uint32_t) (((uint32_t) idx) & UINT16_MAX), (referenceValue & mask) != 0) & accumulatorBDD) | accumulatorArray [idx] ;
           accumulatorArray [idx].setToFalse () ;
           mask <<= 1 ;
         }
@@ -2390,9 +2390,9 @@ C_BDD C_BDD::buildBDDFromValueList (PMUInt64 ioValueList [],
       #endif
     }
     result.setToTrue () ;
-    PMUInt64 mask = 1ULL ;
-    for (PMUInt32 idx=0 ; idx<inBitCount ; idx++) {
-      result = (C_BDD ((PMUInt32) (((PMUInt32) idx) & PMUINT16_MAX), (referenceValue & mask) != 0) & result) | accumulatorArray [idx] ;
+    uint64_t mask = 1ULL ;
+    for (uint32_t idx=0 ; idx<inBitCount ; idx++) {
+      result = (C_BDD ((uint32_t) (((uint32_t) idx) & UINT16_MAX), (referenceValue & mask) != 0) & result) | accumulatorArray [idx] ;
       mask <<= 1 ;
     }
     macroMyDeleteArray (accumulatorArray) ;

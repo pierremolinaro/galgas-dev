@@ -27,14 +27,14 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acPtr_class {
 
   public : virtual void fixNewNonterminalSymbols (cVocabulary & ioVocabulary,
                                                   const C_String & inSyntaxComponentName,
-                                                  PMSInt32 & ioCount) = 0 ;
+                                                  int32_t & ioCount) = 0 ;
 
-  public : virtual void buildRightDerivation (const PMSInt32 inTerminalSymbolsCount,
-                                              const PMSInt32 inOriginalGrammarSymbolCount,
-                                              TC_UniqueArray <PMSInt16> & ioInstructionsList) = 0 ;
+  public : virtual void buildRightDerivation (const int32_t inTerminalSymbolsCount,
+                                              const int32_t inOriginalGrammarSymbolCount,
+                                              TC_UniqueArray <int16_t> & ioInstructionsList) = 0 ;
 
-  public : virtual void buildSelectAndRepeatProductions (const PMSInt32 inTerminalSymbolsCount,
-                                                         const PMSInt32 inOriginalGrammarSymbolCount,
+  public : virtual void buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
+                                                         const int32_t inOriginalGrammarSymbolCount,
                                                          const C_String & inSyntaxComponentName,
                                                          cPureBNFproductionsList & ioProductions) = 0 ;
 
@@ -51,7 +51,7 @@ class cPtr_abstractSyntaxInstructionForGrammarAnalysis : public acPtr_class {
   public : VIRTUAL_IN_DEBUG GALGAS_location reader_mStartLocation (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const = 0 ;
+                                     const int32_t inIndentation) const = 0 ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
 

@@ -1633,7 +1633,7 @@ class GALGAS_signatureForGrammarAnalysis_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_signatureForGrammarAnalysis_2E_element & inOperand) const ;
 
@@ -1704,7 +1704,7 @@ class GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2E_element : public AC_
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_nonterminalSymbolLabelMapForGrammarAnalysis_2E_element & inOperand) const ;
 
@@ -1769,7 +1769,7 @@ class GALGAS_syntaxInstructionListForGrammarAnalysis_2E_element : public AC_GALG
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_syntaxInstructionListForGrammarAnalysis_2E_element & inOperand) const ;
 
@@ -1844,7 +1844,7 @@ class GALGAS_productionRuleListForGrammarAnalysis_2E_element : public AC_GALGAS_
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_productionRuleListForGrammarAnalysis_2E_element & inOperand) const ;
 
@@ -1919,7 +1919,7 @@ class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element : public AC
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis_2E_element & inOperand) const ;
 
@@ -1993,7 +1993,7 @@ class GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2E_element : public AC_GALGA
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_nonTerminalSymbolMapForGrammarAnalysis_2E_element & inOperand) const ;
 
@@ -2069,7 +2069,7 @@ class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element : public A
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis_2E_element & inOperand) const ;
 
@@ -2139,7 +2139,7 @@ class GALGAS_branchListForGrammarAnalysis_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_branchListForGrammarAnalysis_2E_element & inOperand) const ;
 
@@ -2208,7 +2208,7 @@ class GALGAS_syntaxComponentListForGrammarAnalysis_2E_element : public AC_GALGAS
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_syntaxComponentListForGrammarAnalysis_2E_element & inOperand) const ;
 
@@ -2279,7 +2279,7 @@ class GALGAS_terminalSymbolsMapForGrammarAnalysis_2E_element : public AC_GALGAS_
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_terminalSymbolsMapForGrammarAnalysis_2E_element & inOperand) const ;
 
@@ -2329,7 +2329,7 @@ class cMapElement_nonterminalSymbolLabelMapForGrammarAnalysis : public cMapEleme
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -2357,7 +2357,7 @@ class cMapElement_unusedNonTerminalSymbolMapForGrammarAnalysis : public cMapElem
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -2387,7 +2387,7 @@ class cMapElement_nonTerminalSymbolMapForGrammarAnalysis : public cMapElement {
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -2415,7 +2415,7 @@ class cMapElement_terminalSymbolsMapForGrammarAnalysis : public cMapElement {
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 #include "separateHeaderFor_abstractSyntaxInstructionForGrammarAnalysis.h"

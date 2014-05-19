@@ -109,13 +109,13 @@ class cParser_projectModelBuilder {
 
 
 //--- Select methods
-  protected : virtual PMSInt32 select_projectModelBuilder_0 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_projectModelBuilder_0 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_projectModelBuilder_1 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_projectModelBuilder_1 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_projectModelBuilder_2 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_projectModelBuilder_2 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_projectModelBuilder_3 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_projectModelBuilder_3 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
 
 } ;

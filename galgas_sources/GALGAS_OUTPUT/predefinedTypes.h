@@ -123,7 +123,7 @@ typedef GALGAS_string (*categoryReaderSignature_semanticDeclarationForGeneration
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_appendPrimitiveTypeDeclaration (const PMSInt32 inClassIndex,
+void enterCategoryReader_appendPrimitiveTypeDeclaration (const int32_t inClassIndex,
                                                          categoryReaderSignature_semanticDeclarationForGeneration_appendPrimitiveTypeDeclaration inReader) ;
 
 //-----------------------------------------------------------------------------*

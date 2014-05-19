@@ -58,7 +58,7 @@ class C_BoolCommandLineOption : public C_CommandLineOption {
                                                       bool & outFound,
                                                       bool & outCocoaOutput) ;
   public : static void printUsageOfBoolOptions (void) ;
-  public : static void printBoolOptions (const PMUInt32 inDisplayLength) ;
+  public : static void printBoolOptions (const uint32_t inDisplayLength) ;
 
 //--- Option introspection
   public : static void getBoolOptionNameList (TC_UniqueArray <C_String> & outArray) ;

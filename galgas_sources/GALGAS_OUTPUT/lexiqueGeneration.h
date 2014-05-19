@@ -40,7 +40,7 @@ typedef GALGAS_string (*categoryReaderSignature_lexicalExpressionAST_generateCon
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_generateConditionCode (const PMSInt32 inClassIndex,
+void enterCategoryReader_generateConditionCode (const int32_t inClassIndex,
                                                 categoryReaderSignature_lexicalExpressionAST_generateConditionCode inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -62,7 +62,7 @@ typedef GALGAS_string (*categoryReaderSignature_lexicalRoutineOrFunctionFormalIn
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_generateRoutineOrFunctionArgument (const PMSInt32 inClassIndex,
+void enterCategoryReader_generateRoutineOrFunctionArgument (const int32_t inClassIndex,
                                                             categoryReaderSignature_lexicalRoutineOrFunctionFormalInputArgumentAST_generateRoutineOrFunctionArgument inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -83,7 +83,7 @@ typedef GALGAS_string (*categoryReaderSignature_abstractLexicalRoutineActualArgu
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_generateRoutineArgument (const PMSInt32 inClassIndex,
+void enterCategoryReader_generateRoutineArgument (const int32_t inClassIndex,
                                                   categoryReaderSignature_abstractLexicalRoutineActualArgumentAST_generateRoutineArgument inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -105,7 +105,7 @@ typedef GALGAS_string (*categoryReaderSignature_lexicalSendDefaultActionAST_gene
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_generateDefaultSendCode (const PMSInt32 inClassIndex,
+void enterCategoryReader_generateDefaultSendCode (const int32_t inClassIndex,
                                                   categoryReaderSignature_lexicalSendDefaultActionAST_generateDefaultSendCode inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -129,7 +129,7 @@ typedef GALGAS_string (*categoryReaderSignature_lexicalInstructionAST_generateIn
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_generateInstructionCode (const PMSInt32 inClassIndex,
+void enterCategoryReader_generateInstructionCode (const int32_t inClassIndex,
                                                   categoryReaderSignature_lexicalInstructionAST_generateInstructionCode inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -154,7 +154,7 @@ typedef GALGAS_string (*categoryReaderSignature_abstractLexicalRuleAST_generateC
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_generateCode (const PMSInt32 inClassIndex,
+void enterCategoryReader_generateCode (const int32_t inClassIndex,
                                        categoryReaderSignature_abstractLexicalRuleAST_generateCode inMethod) ;
 
 //-----------------------------------------------------------------------------*

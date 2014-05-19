@@ -46,7 +46,7 @@
 //-----------------------------------------------------------------------------*
 
 static C_galgas_type_descriptor * gGalgasTypeListRoot = NULL ;
-static PMSInt32 gSlotID = 0 ;
+static int32_t gSlotID = 0 ;
 
 //-----------------------------------------------------------------------------*
 
@@ -136,7 +136,7 @@ void C_galgas_type_descriptor::recursiveInsert (C_galgas_type_descriptor * & ioR
     ioExtension = true ;
     ioRootPtr = inDescriptor ;
   }else{
-    const PMSInt32 comparaison = strcmp (ioRootPtr->mGalgasTypeName, inDescriptor->mGalgasTypeName) ;
+    const int32_t comparaison = strcmp (ioRootPtr->mGalgasTypeName, inDescriptor->mGalgasTypeName) ;
     if (comparaison > 0) {
       recursiveInsert (ioRootPtr->mPreviousType, inDescriptor, ioExtension) ;
       if (ioExtension) {

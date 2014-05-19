@@ -117,7 +117,7 @@ printInstructionForGrammar (C_HTML_FileWrite & inHTMLfile) {
 void printOriginalGrammar (C_HTML_FileWrite & inHTMLfile,
                            const GALGAS_syntaxComponentListForGrammarAnalysis & inSyntaxComponentsList) {
 //--- Print message
-  PMSInt32 productionsCount = 0 ;
+  int32_t productionsCount = 0 ;
   cEnumerator_syntaxComponentListForGrammarAnalysis currentSyntaxComponent (inSyntaxComponentsList, kEnumeration_up) ;
   while (currentSyntaxComponent.hasCurrentObject ()) {
     productionsCount += currentSyntaxComponent.current_mProductionRulesList (HERE).count () ;

@@ -44,8 +44,8 @@
 
 C_unicode_lexique_table_entry::
 C_unicode_lexique_table_entry (const utf32 * inEntryString,
-                               const PMSInt16 inEntryStringLength,
-                               const PMSInt16 inTokenCode) :
+                               const int16_t inEntryStringLength,
+                               const int16_t inTokenCode) :
 mEntryString (inEntryString),
 mEntryStringLength (inEntryStringLength),
 mTokenCode (inTokenCode) {
@@ -99,39 +99,39 @@ const char * max_warning_count_reached_exception::what (void) const throw () {
 
 //-----------------------------------------------------------------------------*
 
-static PMUInt32 mCheckedLines ;
+static uint32_t mCheckedLines ;
 
-PMUInt32 checkedLineCount (void) { return mCheckedLines ; } ;
+uint32_t checkedLineCount (void) { return mCheckedLines ; } ;
 
-void incrementCheckedFileCount (const PMUInt32 inIncrement) {
+void incrementCheckedFileCount (const uint32_t inIncrement) {
   mCheckedLines += inIncrement ;
 }
 
 //-----------------------------------------------------------------------------*
 
-static PMUInt32 mGeneratedLines ;
+static uint32_t mGeneratedLines ;
 
-PMUInt32 generatedLineCount (void) { return mGeneratedLines ; } ;
+uint32_t generatedLineCount (void) { return mGeneratedLines ; } ;
 
-void incrementGeneratedLileCount (const PMUInt32 inIncrement) {
+void incrementGeneratedLileCount (const uint32_t inIncrement) {
   mGeneratedLines += inIncrement ;
 }
 
 //-----------------------------------------------------------------------------*
 
-static PMUInt32 mPreservedLines ;
+static uint32_t mPreservedLines ;
 
-PMUInt32 preservedLineCount (void) { return mPreservedLines ; }
+uint32_t preservedLineCount (void) { return mPreservedLines ; }
 
-void incrementPreservedLileCount (const PMUInt32 inIncrement) {
+void incrementPreservedLileCount (const uint32_t inIncrement) {
   mPreservedLines += inIncrement ;
 }
 
 //-----------------------------------------------------------------------------*
 
-static PMUInt32 mGeneratedFileCount ;
+static uint32_t mGeneratedFileCount ;
 
-PMUInt32 generatedFileCount (void) { return mGeneratedFileCount ; } ;
+uint32_t generatedFileCount (void) { return mGeneratedFileCount ; } ;
 
 void incrementGeneratedFileCount (void) {
   mGeneratedFileCount ++ ;
@@ -139,31 +139,31 @@ void incrementGeneratedFileCount (void) {
 
 //-----------------------------------------------------------------------------*
 
-PMSInt32 maxErrorCount (void) {
-  PMSInt32 result = (PMSInt32) gOption_galgas_5F_builtin_5F_options_max_5F_errors.mValue ;
+int32_t maxErrorCount (void) {
+  int32_t result = (int32_t) gOption_galgas_5F_builtin_5F_options_max_5F_errors.mValue ;
   return (result == 0) ? 100 : result ;
 }
 
 //-----------------------------------------------------------------------------*
 
-static PMSInt32 mErrorTotalCount ;
+static int32_t mErrorTotalCount ;
 
-PMSInt32 totalErrorCount (void) {
+int32_t totalErrorCount (void) {
   return mErrorTotalCount ;
 }
 
 //-----------------------------------------------------------------------------*
 
-PMSInt32 maxWarningCount (void) {
-  PMSInt32 result = (PMSInt32) gOption_galgas_5F_builtin_5F_options_max_5F_warnings.mValue ;
+int32_t maxWarningCount (void) {
+  int32_t result = (int32_t) gOption_galgas_5F_builtin_5F_options_max_5F_warnings.mValue ;
   return (result == 0) ? 100 : result ;
 }
 
 //-----------------------------------------------------------------------------*
 
-static PMSInt32 mTotalWarningCount ;
+static int32_t mTotalWarningCount ;
 
-PMSInt32 totalWarningCount (void) {
+int32_t totalWarningCount (void) {
   return mTotalWarningCount ;
 }
 
@@ -199,7 +199,7 @@ void constructErrorOrWarningLocationMessage (C_String & ioMessage,
     if (gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue) {
       ioMessage << "\n" << textLine << "\n" ;
     //--- Point out column error
-      for (PMSInt32 i=1 ; i<inErrorLocation.columnNumber () ; i++) {
+      for (int32_t i=1 ; i<inErrorLocation.columnNumber () ; i++) {
         ioMessage << "-" ;
       }
       ioMessage << "^\n" ;
@@ -274,7 +274,7 @@ void signalParsingError (const C_SourceTextInString * inSourceTextPtr,
 //--- Construct parsing error message
   errorMessage << (gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue ? "syntax " : "")
                << "error: found " << inFoundTokenMessage <<", accepted:\n" ;  
-  for (PMSInt32 i=0 ; i<inAcceptedTokenNames.count () ; i++) {
+  for (int32_t i=0 ; i<inAcceptedTokenNames.count () ; i++) {
     errorMessage << "-  " << inAcceptedTokenNames (i COMMA_HERE) << "\n" ;  
   }
 //--- Print
@@ -318,7 +318,7 @@ void signalExtractError (const C_SourceTextInString * inSourceTextPtr,
                  << "error: " ;
   }
   errorMessage << "  - " << inExpectedClassesErrorStringsArray (0 COMMA_HERE) ;
-  for (PMSInt32 i=1 ; i<inExpectedClassesErrorStringsArray.count () ; i++) {
+  for (int32_t i=1 ; i<inExpectedClassesErrorStringsArray.count () ; i++) {
     errorMessage << ";\n" ;
     if (! gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue) {
       errorMessage << errorOrWarningLocationString (inErrorLocation, inSourceTextPtr)
@@ -398,7 +398,7 @@ void signalCastError (const C_SourceTextInString * inSourceTextPtr,
                  << "error: " ;
   }
   errorMessage << "  - " << expectedClassMessageArray (0 COMMA_HERE) ;
-  for (PMSInt32 i=1 ; i<expectedClassMessageArray.count () ; i++) {
+  for (int32_t i=1 ; i<expectedClassMessageArray.count () ; i++) {
     errorMessage << ";\n" ;
     if (! gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue) {
       errorMessage << errorOrWarningLocationString (inErrorLocation, inSourceTextPtr)

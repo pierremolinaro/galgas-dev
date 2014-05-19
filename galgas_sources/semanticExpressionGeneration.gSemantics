@@ -152,7 +152,7 @@ override method @literalUIntExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  outCppExpression := "GALGAS_uint ((PMUInt32) " . [mValue string]. "U)" ;
+  outCppExpression := "GALGAS_uint ((uint32_t) " . [mValue string]. "U)" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -163,7 +163,7 @@ override method @literalUInt64ExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  outCppExpression := "GALGAS_uint_36__34_ ((PMUInt64) " . [mValue string]. "ULL)" ;
+  outCppExpression := "GALGAS_uint_36__34_ ((uint64_t) " . [mValue string]. "ULL)" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -174,7 +174,7 @@ override method @literalSIntExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  outCppExpression := "GALGAS_sint ((PMSInt32) " . [mValue string]. "L)" ;
+  outCppExpression := "GALGAS_sint ((int32_t) " . [mValue string]. "L)" ;
 end method ;
 
 #---------------------------------------------------------------------------*
@@ -185,7 +185,7 @@ override method @literalSInt64ExpressionForGeneration generateExpression
   ?!@stringset unused ioUnusedVariableCppNameSet
   !@string outCppExpression
 :
-  outCppExpression := "GALGAS_sint_36__34_ ((PMSInt64) " . [mValue string]. "LL)" ;
+  outCppExpression := "GALGAS_sint_36__34_ ((int64_t) " . [mValue string]. "LL)" ;
 end method ;
 
 #---------------------------------------------------------------------------*

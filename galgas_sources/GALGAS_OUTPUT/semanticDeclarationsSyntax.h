@@ -546,103 +546,103 @@ class cParser_semanticDeclarationsSyntax {
 
 
 //--- Select methods
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_0 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_0 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_1 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_1 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_2 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_2 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_3 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_3 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_4 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_4 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_5 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_5 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_6 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_6 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_7 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_7 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_8 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_8 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_9 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_9 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_10 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_10 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_11 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_11 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_12 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_12 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_13 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_13 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_14 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_14 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_15 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_15 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_16 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_16 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_17 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_17 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_18 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_18 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_19 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_19 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_20 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_20 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_21 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_21 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_22 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_22 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_23 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_23 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_24 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_24 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_25 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_25 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_26 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_26 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_27 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_27 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_28 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_28 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_29 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_29 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_30 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_30 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_31 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_31 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_32 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_32 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_33 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_33 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_34 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_34 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_35 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_35 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_36 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_36 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_37 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_37 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_38 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_38 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_39 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_39 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_40 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_40 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_41 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_41 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_42 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_42 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_43 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_43 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_44 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_44 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_45 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_45 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_46 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_46 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_47 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_47 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_semanticDeclarationsSyntax_48 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_semanticDeclarationsSyntax_48 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
 
 } ;

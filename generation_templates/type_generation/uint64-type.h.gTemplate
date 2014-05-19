@@ -8,12 +8,12 @@ class GALGAS_uint_36__34_ : public AC_GALGAS_root
  {
 //--------------------------------- Private data members
   private : bool mIsValid ;
-  private : PMUInt64 mUInt64Value ;
+  private : uint64_t mUInt64Value ;
 
 //--------------------------------- Accessors
   public : VIRTUAL_IN_DEBUG inline bool isValid (void) const { return mIsValid ; }
   public : VIRTUAL_IN_DEBUG inline void drop (void) { mIsValid = false ; }
-  public : inline PMUInt64 uint64Value (void) const { return mUInt64Value ; }
+  public : inline uint64_t uint64Value (void) const { return mUInt64Value ; }
 
 //--------------------------------- Default constructor
   public : GALGAS_uint_36__34_ (void) ;
@@ -22,7 +22,7 @@ class GALGAS_uint_36__34_ : public AC_GALGAS_root
   public : static GALGAS_uint_36__34_ constructor_default (LOCATION_ARGS) ;
 
 //--------------------------------- Native constructor
-  public : GALGAS_uint_36__34_ (const PMUInt64 inValue) ;
+  public : GALGAS_uint_36__34_ (const uint64_t inValue) ;
 
 %
 

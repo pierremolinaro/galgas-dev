@@ -47,7 +47,7 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 class TC_Block_AVL_TreeForCollision {
 //--- Constructor and destructor
   public : TC_Block_AVL_TreeForCollision (void) ;
@@ -61,10 +61,10 @@ class TC_Block_AVL_TreeForCollision {
   public : inline INFO * search (const INFO & inInfo) ;
 
 //--- Get marked nodes count
-  public : PMSInt32 getMarkedNodesCount (void) const ;
+  public : int32_t getMarkedNodesCount (void) const ;
 
 //--- Sweep unmarked objects
-  public : PMUInt32 sweepUnmarkedObjects (void) ;
+  public : uint32_t sweepUnmarkedObjects (void) ;
 
 //--- No copy
   private : TC_Block_AVL_TreeForCollision (const TC_Block_AVL_TreeForCollision <INFO, BLOCK_SIZE> &) ;
@@ -75,7 +75,7 @@ class TC_Block_AVL_TreeForCollision {
     public : INFO mInfo ;
     public : TC_blockavltree_element_for_collision * mPtrToSup ;
     public : TC_blockavltree_element_for_collision * mPtrToInf ;
-    public : PMSInt32 mBalance ;
+    public : int32_t mBalance ;
     public : TC_blockavltree_element_for_collision (const INFO & inInfo) : mInfo (inInfo) {
       mPtrToSup = (TC_blockavltree_element_for_collision *) NULL ;
       mPtrToInf = (TC_blockavltree_element_for_collision *) NULL ;
@@ -85,7 +85,7 @@ class TC_Block_AVL_TreeForCollision {
       delete mPtrToSup ;
       delete mPtrToInf ;
     }
-    public : PMSInt32 compare (const TC_blockavltree_element_for_collision & inElement) const {
+    public : int32_t compare (const TC_blockavltree_element_for_collision & inElement) const {
       return mInfo.compare (inElement.mInfo) ;
     }
     public : void * operator new (const size_t inByteSize) ;
@@ -100,11 +100,11 @@ class TC_Block_AVL_TreeForCollision {
 //--- Class of allocation info
   protected : class cAllocInfo {
     public : char * * mAllocatedBlockList ;
-    public : PMSInt32 mAllocatedBlockListSize ;
-    public : PMSInt32 mAllocatedBlockCount ;
+    public : int32_t mAllocatedBlockListSize ;
+    public : int32_t mAllocatedBlockCount ;
     public : TC_blockavltree_element_for_collision * mFreeList ;
-    public : PMSInt32 mAllocatedObjectsCount ;
-    public : PMSInt32 mCreatedObjectsCount ;
+    public : int32_t mAllocatedObjectsCount ;
+    public : int32_t mCreatedObjectsCount ;
     public : cAllocInfo (void) {
       mAllocatedBlockList = (char * *)  NULL ;
       mFreeList = (TC_blockavltree_element_for_collision *) NULL ;
@@ -116,16 +116,16 @@ class TC_Block_AVL_TreeForCollision {
   } ;
 
 //--- Get node size (in bytes)
-  public : static PMUInt32 getNodeSize (void) { return sizeof (TC_blockavltree_element_for_collision) ; }
+  public : static uint32_t getNodeSize (void) { return sizeof (TC_blockavltree_element_for_collision) ; }
 
 //--- Allocation info (static variable)
   protected : static cAllocInfo smAllocInfo ;
 
 //--- Get created element count
-  public : static PMSInt32 getCreatedObjectsCount (void) { return smAllocInfo.mCreatedObjectsCount ; }
+  public : static int32_t getCreatedObjectsCount (void) { return smAllocInfo.mCreatedObjectsCount ; }
 
 //--- Get currently used element count
-  public : static PMSInt32 getCurrentObjectsCount (void) { return smAllocInfo.mAllocatedObjectsCount ; }
+  public : static int32_t getCurrentObjectsCount (void) { return smAllocInfo.mAllocatedObjectsCount ; }
 
 //--- Unmarked all objects
   public : void unmarkAllObjects (void) ;
@@ -134,20 +134,20 @@ class TC_Block_AVL_TreeForCollision {
   public : static void allocBlock (void) ;
 
 //--- Get allocated size (in bytes)
-  public : static PMUInt32 getAllocatedSizeInBytes (void) ;
+  public : static uint32_t getAllocatedSizeInBytes (void) ;
 
 //--- Transfer object in a new map array
   public : void transfertElementsInNewMapArray (TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE> * inNewMapArray,
-                                                const PMUInt32 inNewSize) ;
+                                                const uint32_t inNewSize) ;
 
 //--- Internal methods
-  protected : PMSInt32 internalMarkedNodeCount (const TC_blockavltree_element_for_collision * const inElement) const ;
-  protected : PMUInt32 internalRecursiveSweep (TC_blockavltree_element_for_collision * inElement) ;
+  protected : int32_t internalMarkedNodeCount (const TC_blockavltree_element_for_collision * const inElement) const ;
+  protected : uint32_t internalRecursiveSweep (TC_blockavltree_element_for_collision * inElement) ;
   protected : void internalRecursiveUnmark (TC_blockavltree_element_for_collision * inElement) ;
   protected : static void recursiveTransfertElementsInNewMapArray
                                              (TC_blockavltree_element_for_collision * inElementPointer,
                                               TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE> * inNewMapArray,
-                                              const PMUInt32 inNewSize) ;
+                                              const uint32_t inNewSize) ;
 //--- Friend
   friend class TC_blockavltree_element_for_collision ;
 } ;
@@ -158,7 +158,7 @@ class TC_Block_AVL_TreeForCollision {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 void * TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::TC_blockavltree_element_for_collision::operator new (const size_t /*inByteSize*/) {
   if (smAllocInfo.mFreeList == NULL) {
     allocBlock () ;
@@ -171,14 +171,14 @@ void * TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::TC_blockavltree_element_
 
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 void TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::TC_blockavltree_element_for_collision::operator delete (void * inPtr) {
   TC_blockavltree_element_for_collision * p = (TC_blockavltree_element_for_collision *) inPtr ;
   p->mPtrToSup = smAllocInfo.mFreeList ;
   smAllocInfo.mFreeList = p ;
   smAllocInfo.mAllocatedObjectsCount -- ;
   if (smAllocInfo.mAllocatedObjectsCount == 0) {
-    for (PMSInt32 i=0 ; i<smAllocInfo.mAllocatedBlockCount ; i++) {
+    for (int32_t i=0 ; i<smAllocInfo.mAllocatedBlockCount ; i++) {
       delete [] smAllocInfo.mAllocatedBlockList [i] ;
     }
     delete [] smAllocInfo.mAllocatedBlockList ;
@@ -195,13 +195,13 @@ void TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::TC_blockavltree_element_fo
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 void TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::allocBlock (void) {
 //--- Realloc block list ?
   if (smAllocInfo.mAllocatedBlockListSize <= smAllocInfo.mAllocatedBlockCount) {
-    const PMSInt32 newSize = smAllocInfo.mAllocatedBlockCount + 1024 ;
+    const int32_t newSize = smAllocInfo.mAllocatedBlockCount + 1024 ;
     char ** newBlockList = new char * [newSize] ;
-    for (PMSInt32 i=0 ; i<smAllocInfo.mAllocatedBlockCount ; i++) {
+    for (int32_t i=0 ; i<smAllocInfo.mAllocatedBlockCount ; i++) {
       newBlockList [i] = smAllocInfo.mAllocatedBlockList [i] ;
     }
     delete [] smAllocInfo.mAllocatedBlockList ;
@@ -212,15 +212,15 @@ void TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::allocBlock (void) {
   smAllocInfo.mAllocatedBlockList [smAllocInfo.mAllocatedBlockCount] = new char [BLOCK_SIZE] ;
   char * ptr = & (smAllocInfo.mAllocatedBlockList [smAllocInfo.mAllocatedBlockCount] [0]) ;
   smAllocInfo.mAllocatedBlockCount ++ ;
-  PMSInt32 blockSize = BLOCK_SIZE ;
-  const PMSInt32 ALIGNMENT = 32 ;
+  int32_t blockSize = BLOCK_SIZE ;
+  const int32_t ALIGNMENT = 32 ;
 //--- Align pointer
-  if ((((PMSInt32) ptr) % ALIGNMENT) != 0) {
-    ptr = (char *) (((((PMSInt32) ptr) / ALIGNMENT) + 1) * ALIGNMENT) ;
+  if ((((int32_t) ptr) % ALIGNMENT) != 0) {
+    ptr = (char *) (((((int32_t) ptr) / ALIGNMENT) + 1) * ALIGNMENT) ;
     blockSize -= ALIGNMENT ;
   }
-  const PMSInt32 nbNewObjects = blockSize / ((PMSInt32) sizeof (TC_blockavltree_element_for_collision)) ;
-  for (PMSInt32 i=0 ; i<nbNewObjects ; i++) {
+  const int32_t nbNewObjects = blockSize / ((int32_t) sizeof (TC_blockavltree_element_for_collision)) ;
+  for (int32_t i=0 ; i<nbNewObjects ; i++) {
     TC_blockavltree_element_for_collision * newObjectPtr = (TC_blockavltree_element_for_collision *) ptr ;
     newObjectPtr->mPtrToSup = smAllocInfo.mFreeList ;
     smAllocInfo.mFreeList = newObjectPtr ;
@@ -235,7 +235,7 @@ void TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::allocBlock (void) {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::TC_Block_AVL_TreeForCollision (void) {
   mRoot = (TC_blockavltree_element_for_collision *) NULL ;
 }
@@ -246,7 +246,7 @@ TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::TC_Block_AVL_TreeForCollision (
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::~TC_Block_AVL_TreeForCollision (void) {
   delete mRoot ;
 }
@@ -257,9 +257,9 @@ TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::~TC_Block_AVL_TreeForCollision 
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
-PMUInt32 TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::getAllocatedSizeInBytes (void) {
-  return (PMUInt32) (BLOCK_SIZE * smAllocInfo.mAllocatedBlockCount) ;
+template <class INFO, int32_t BLOCK_SIZE>
+uint32_t TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::getAllocatedSizeInBytes (void) {
+  return (uint32_t) (BLOCK_SIZE * smAllocInfo.mAllocatedBlockCount) ;
 }
 
 //-----------------------------------------------------------------------------*
@@ -268,7 +268,7 @@ PMUInt32 TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::getAllocatedSizeInByte
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 INFO * TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::
 search_or_insert (const INFO & inInfo,
                   bool & outInsertionPerformed) {
@@ -282,7 +282,7 @@ search_or_insert (const INFO & inInfo,
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 INFO * TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::
 search (const INFO & inInfo) {
   return TF_avltree_search (mRoot, inInfo) ;
@@ -294,9 +294,9 @@ search (const INFO & inInfo) {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
-PMUInt32 TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::internalRecursiveSweep (TC_blockavltree_element_for_collision * inElement) {
-  PMUInt32 sweepedNodes = 0 ;
+template <class INFO, int32_t BLOCK_SIZE>
+uint32_t TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::internalRecursiveSweep (TC_blockavltree_element_for_collision * inElement) {
+  uint32_t sweepedNodes = 0 ;
   if (inElement != NULL) {
     sweepedNodes += internalRecursiveSweep (inElement->mPtrToInf) ;
     sweepedNodes += internalRecursiveSweep (inElement->mPtrToSup) ;
@@ -318,8 +318,8 @@ PMUInt32 TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::internalRecursiveSweep
 
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
-PMUInt32 TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::sweepUnmarkedObjects (void) {
+template <class INFO, int32_t BLOCK_SIZE>
+uint32_t TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::sweepUnmarkedObjects (void) {
   TC_blockavltree_element_for_collision * temporaryRoot = mRoot ;
   mRoot = (TC_blockavltree_element_for_collision *) NULL ;
   return internalRecursiveSweep (temporaryRoot) ;
@@ -331,18 +331,18 @@ PMUInt32 TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::sweepUnmarkedObjects (
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 void TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::
 recursiveTransfertElementsInNewMapArray (TC_blockavltree_element_for_collision * inElementPointer,
                                          TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE> * inNewMapArray,
-                                         const PMUInt32 inNewSize) {
+                                         const uint32_t inNewSize) {
   if (inElementPointer != NULL) {
     recursiveTransfertElementsInNewMapArray (inElementPointer->mPtrToInf, inNewMapArray, inNewSize) ;
     recursiveTransfertElementsInNewMapArray (inElementPointer->mPtrToSup, inNewMapArray, inNewSize) ;
     inElementPointer->mPtrToInf = (TC_blockavltree_element_for_collision *) NULL ;
     inElementPointer->mPtrToSup = (TC_blockavltree_element_for_collision *) NULL ;
     inElementPointer->mBalance = 0 ;
-    const PMUInt32 hash = inElementPointer->mInfo.getHashCodeForMap () % inNewSize ;
+    const uint32_t hash = inElementPointer->mInfo.getHashCodeForMap () % inNewSize ;
     bool extension ; // Unused
     bool insertionPerformed ; // Unused
     recursiveInsertElement (inNewMapArray [hash].mRoot, inElementPointer, extension, insertionPerformed) ;
@@ -351,17 +351,17 @@ recursiveTransfertElementsInNewMapArray (TC_blockavltree_element_for_collision *
 
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 void TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::
 transfertElementsInNewMapArray (TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE> * inNewMapArray,
-                                const PMUInt32 inNewSize) {
+                                const uint32_t inNewSize) {
   recursiveTransfertElementsInNewMapArray (mRoot, inNewMapArray, inNewSize) ;
   mRoot = (TC_blockavltree_element_for_collision *) NULL ;
 }
 
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 void TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::
 internalRecursiveUnmark (TC_blockavltree_element_for_collision * inElement) {
   if (inElement != NULL) {
@@ -373,7 +373,7 @@ internalRecursiveUnmark (TC_blockavltree_element_for_collision * inElement) {
 
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
+template <class INFO, int32_t BLOCK_SIZE>
 void TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::
 unmarkAllObjects (void) {
   internalRecursiveUnmark (mRoot) ;
@@ -381,10 +381,10 @@ unmarkAllObjects (void) {
 
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
-PMSInt32 TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::
+template <class INFO, int32_t BLOCK_SIZE>
+int32_t TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::
 internalMarkedNodeCount (const TC_blockavltree_element_for_collision * const inElement) const {
-  PMSInt32 result = 0 ;
+  int32_t result = 0 ;
   if (inElement != NULL) {
     if (inElement->mInfo.isMarked ()) {
       result ++ ;
@@ -397,8 +397,8 @@ internalMarkedNodeCount (const TC_blockavltree_element_for_collision * const inE
 
 //-----------------------------------------------------------------------------*
 
-template <class INFO, PMSInt32 BLOCK_SIZE>
-PMSInt32 TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::
+template <class INFO, int32_t BLOCK_SIZE>
+int32_t TC_Block_AVL_TreeForCollision<INFO, BLOCK_SIZE>::
 getMarkedNodesCount (void) const {
   return internalMarkedNodeCount (mRoot) ;
 }

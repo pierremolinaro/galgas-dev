@@ -108,7 +108,7 @@ static const char * gEnumNameArrayFor_lexicalTypeEnum [8] = {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalTypeEnum::description (C_String & ioString,
-                                          const PMSInt32 /* inIndentation */) const {
+                                          const int32_t /* inIndentation */) const {
   ioString << "<enum @lexicalTypeEnum: " << gEnumNameArrayFor_lexicalTypeEnum [mEnum] << ">" ;
 }
 
@@ -194,7 +194,7 @@ class cCollectionElement_lexicalTypeList : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -221,7 +221,7 @@ cCollectionElement * cCollectionElement_lexicalTypeList::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_lexicalTypeList::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_lexicalTypeList::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLexicalType" ":" ;
@@ -549,7 +549,7 @@ cMapElement * cMapElement_lexicalTypeMap::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_lexicalTypeMap::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_lexicalTypeMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLexicalType" ":" ;
@@ -802,7 +802,7 @@ cMapElement * cMapElement_lexicalAttributeMap::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_lexicalAttributeMap::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_lexicalAttributeMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLexicalType" ":" ;
@@ -1054,7 +1054,7 @@ class cCollectionElement_lexicalSentValueList : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -1082,7 +1082,7 @@ cCollectionElement * cCollectionElement_lexicalSentValueList::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_lexicalSentValueList::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_lexicalSentValueList::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLexicalAttributeName" ":" ;
@@ -1457,7 +1457,7 @@ cMapElement * cMapElement_terminalMap::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_terminalMap::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_terminalMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mSentAttributeList" ":" ;
@@ -1713,7 +1713,7 @@ class cCollectionElement_terminalList : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -1745,7 +1745,7 @@ cCollectionElement * cCollectionElement_terminalList::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_terminalList::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_terminalList::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mTerminalName" ":" ;
@@ -2310,7 +2310,7 @@ cMapElement * cMapElement_lexicalExplicitTokenListMap::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_lexicalExplicitTokenListMap::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_lexicalExplicitTokenListMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mTerminal" ":" ;
@@ -2611,7 +2611,7 @@ class cSortedListElement_tokenSortedlist : public cSortedListElement {
   public : virtual typeComparisonResult compare (const cCollectionElement * inOperand) const ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 
 //--- Virtual method that comparing element for sorting
   public : virtual typeComparisonResult compareForSorting (const cSortedListElement * inOperand) const ;
@@ -2643,7 +2643,7 @@ cSortedListElement * cSortedListElement_tokenSortedlist::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cSortedListElement_tokenSortedlist::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cSortedListElement_tokenSortedlist::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLength" ":" ;
@@ -2951,7 +2951,7 @@ cMapElement * cMapElement_lexicalExplicitTokenListMapMap::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_lexicalExplicitTokenListMapMap::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_lexicalExplicitTokenListMapMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mExplicitTokenListMap" ":" ;
@@ -3302,7 +3302,7 @@ cMapElement * cMapElement_lexicalMessageMap::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_lexicalMessageMap::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_lexicalMessageMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLexicalMessage" ":" ;
@@ -3603,7 +3603,7 @@ class cCollectionElement_lexicalRoutineFormalArgumentList : public cCollectionEl
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -3632,7 +3632,7 @@ cCollectionElement * cCollectionElement_lexicalRoutineFormalArgumentList::copy (
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_lexicalRoutineFormalArgumentList::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_lexicalRoutineFormalArgumentList::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLexicalFormalArgumentMode" ":" ;
@@ -4058,7 +4058,7 @@ cMapElement * cMapElement_lexicalRoutineMap::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_lexicalRoutineMap::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_lexicalRoutineMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLexicalRoutineFormalArgumentList" ":" ;
@@ -4406,7 +4406,7 @@ class cCollectionElement_lexicalFunctionFormalArgumentList : public cCollectionE
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -4434,7 +4434,7 @@ cCollectionElement * cCollectionElement_lexicalFunctionFormalArgumentList::copy 
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_lexicalFunctionFormalArgumentList::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_lexicalFunctionFormalArgumentList::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLexicalType" ":" ;
@@ -4815,7 +4815,7 @@ cMapElement * cMapElement_lexicalFunctionMap::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_lexicalFunctionMap::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_lexicalFunctionMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mLexicalTypeList" ":" ;
@@ -5212,7 +5212,7 @@ class cCollectionElement_templateDelimitorList : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -5241,7 +5241,7 @@ cCollectionElement * cCollectionElement_templateDelimitorList::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_templateDelimitorList::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_templateDelimitorList::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mStartString" ":" ;
@@ -5665,7 +5665,7 @@ cMapElement * cMapElement_styleMap::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_styleMap::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cMapElement_styleMap::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mComment" ":" ;
@@ -5964,7 +5964,7 @@ cMapElement * cMapElement_lexicalTagMap::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cMapElement_lexicalTagMap::description (C_String & /* ioString */, const PMSInt32 /* inIndentation */) const {
+void cMapElement_lexicalTagMap::description (C_String & /* ioString */, const int32_t /* inIndentation */) const {
 }
 
 //-----------------------------------------------------------------------------*
@@ -6293,7 +6293,7 @@ void GALGAS_lexiqueAnalysisContext::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexiqueAnalysisContext::description (C_String & ioString,
-                                                 const PMSInt32 inIndentation) const {
+                                                 const int32_t inIndentation) const {
   ioString << "<struct @lexiqueAnalysisContext:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -6493,7 +6493,7 @@ void GALGAS_lexicalTypeList_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalTypeList_2E_element::description (C_String & ioString,
-                                                     const PMSInt32 inIndentation) const {
+                                                     const int32_t inIndentation) const {
   ioString << "<struct @lexicalTypeList.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -6622,7 +6622,7 @@ void GALGAS_lexicalTypeMap_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalTypeMap_2E_element::description (C_String & ioString,
-                                                    const PMSInt32 inIndentation) const {
+                                                    const int32_t inIndentation) const {
   ioString << "<struct @lexicalTypeMap.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -6759,7 +6759,7 @@ void GALGAS_lexicalAttributeMap_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalAttributeMap_2E_element::description (C_String & ioString,
-                                                         const PMSInt32 inIndentation) const {
+                                                         const int32_t inIndentation) const {
   ioString << "<struct @lexicalAttributeMap.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -6896,7 +6896,7 @@ void GALGAS_lexicalSentValueList_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalSentValueList_2E_element::description (C_String & ioString,
-                                                          const PMSInt32 inIndentation) const {
+                                                          const int32_t inIndentation) const {
   ioString << "<struct @lexicalSentValueList.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -7033,7 +7033,7 @@ void GALGAS_terminalMap_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_terminalMap_2E_element::description (C_String & ioString,
-                                                 const PMSInt32 inIndentation) const {
+                                                 const int32_t inIndentation) const {
   ioString << "<struct @terminalMap.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -7206,7 +7206,7 @@ void GALGAS_terminalList_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_terminalList_2E_element::description (C_String & ioString,
-                                                  const PMSInt32 inIndentation) const {
+                                                  const int32_t inIndentation) const {
   ioString << "<struct @terminalList.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -7384,7 +7384,7 @@ void GALGAS_lexicalExplicitTokenListMap_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalExplicitTokenListMap_2E_element::description (C_String & ioString,
-                                                                 const PMSInt32 inIndentation) const {
+                                                                 const int32_t inIndentation) const {
   ioString << "<struct @lexicalExplicitTokenListMap.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -7538,7 +7538,7 @@ void GALGAS_tokenSortedlist_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_tokenSortedlist_2E_element::description (C_String & ioString,
-                                                     const PMSInt32 inIndentation) const {
+                                                     const int32_t inIndentation) const {
   ioString << "<struct @tokenSortedlist.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -7701,7 +7701,7 @@ void GALGAS_lexicalExplicitTokenListMapMap_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalExplicitTokenListMapMap_2E_element::description (C_String & ioString,
-                                                                    const PMSInt32 inIndentation) const {
+                                                                    const int32_t inIndentation) const {
   ioString << "<struct @lexicalExplicitTokenListMapMap.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -7863,7 +7863,7 @@ void GALGAS_lexicalMessageMap_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalMessageMap_2E_element::description (C_String & ioString,
-                                                       const PMSInt32 inIndentation) const {
+                                                       const int32_t inIndentation) const {
   ioString << "<struct @lexicalMessageMap.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -8017,7 +8017,7 @@ void GALGAS_lexicalRoutineFormalArgumentList_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalRoutineFormalArgumentList_2E_element::description (C_String & ioString,
-                                                                      const PMSInt32 inIndentation) const {
+                                                                      const int32_t inIndentation) const {
   ioString << "<struct @lexicalRoutineFormalArgumentList.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -8180,7 +8180,7 @@ void GALGAS_lexicalRoutineMap_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalRoutineMap_2E_element::description (C_String & ioString,
-                                                       const PMSInt32 inIndentation) const {
+                                                       const int32_t inIndentation) const {
   ioString << "<struct @lexicalRoutineMap.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -8333,7 +8333,7 @@ void GALGAS_lexicalFunctionFormalArgumentList_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalFunctionFormalArgumentList_2E_element::description (C_String & ioString,
-                                                                       const PMSInt32 inIndentation) const {
+                                                                       const int32_t inIndentation) const {
   ioString << "<struct @lexicalFunctionFormalArgumentList.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -8497,7 +8497,7 @@ void GALGAS_lexicalFunctionMap_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalFunctionMap_2E_element::description (C_String & ioString,
-                                                        const PMSInt32 inIndentation) const {
+                                                        const int32_t inIndentation) const {
   ioString << "<struct @lexicalFunctionMap.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -8667,7 +8667,7 @@ void GALGAS_templateDelimitorList_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_templateDelimitorList_2E_element::description (C_String & ioString,
-                                                           const PMSInt32 inIndentation) const {
+                                                           const int32_t inIndentation) const {
   ioString << "<struct @templateDelimitorList.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -8821,7 +8821,7 @@ void GALGAS_styleMap_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_styleMap_2E_element::description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const {
+                                              const int32_t inIndentation) const {
   ioString << "<struct @styleMap.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;
@@ -8957,7 +8957,7 @@ void GALGAS_lexicalTagMap_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_lexicalTagMap_2E_element::description (C_String & ioString,
-                                                   const PMSInt32 inIndentation) const {
+                                                   const int32_t inIndentation) const {
   ioString << "<struct @lexicalTagMap.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;

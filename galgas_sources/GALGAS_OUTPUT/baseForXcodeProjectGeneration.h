@@ -3481,7 +3481,7 @@ typedef void (*categoryMethodSignature_Xcode_5F_PBXFileReference_5F_abstract_bui
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_buildXcodeProject (const PMSInt32 inClassIndex,
+void enterCategoryMethod_buildXcodeProject (const int32_t inClassIndex,
                                             categoryMethodSignature_Xcode_5F_PBXFileReference_5F_abstract_buildXcodeProject inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -3504,7 +3504,7 @@ typedef void (*categoryMethodSignature_Xcode_5F_productFileReference_productExte
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_productExtension (const PMSInt32 inClassIndex,
+void enterCategoryMethod_productExtension (const int32_t inClassIndex,
                                            categoryMethodSignature_Xcode_5F_productFileReference_productExtension inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -3527,7 +3527,7 @@ typedef void (*categoryMethodSignature_Xcode_5F_PBXBuildFile_buildXcodeProject) 
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_buildXcodeProject (const PMSInt32 inClassIndex,
+void enterCategoryMethod_buildXcodeProject (const int32_t inClassIndex,
                                             categoryMethodSignature_Xcode_5F_PBXBuildFile_buildXcodeProject inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -3550,7 +3550,7 @@ typedef void (*categoryMethodSignature_Xcode_5F_PBXFrameworksBuildPhase_buildXco
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_buildXcodeProject (const PMSInt32 inClassIndex,
+void enterCategoryMethod_buildXcodeProject (const int32_t inClassIndex,
                                             categoryMethodSignature_Xcode_5F_PBXFrameworksBuildPhase_buildXcodeProject inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -3642,7 +3642,7 @@ class GALGAS_XcodeProjectDescription : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_XcodeProjectDescription & inOperand) const ;
 
@@ -3737,7 +3737,7 @@ class GALGAS_XcodeObjectReferenceList_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_XcodeObjectReferenceList_2E_element & inOperand) const ;
 
@@ -3805,7 +3805,7 @@ class GALGAS_Xcode_5F_PBXFileReference_5F_map_2E_element : public AC_GALGAS_root
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFileReference_5F_map_2E_element & inOperand) const ;
 
@@ -3870,7 +3870,7 @@ class GALGAS_Xcode_5F_PBXBuildFile_5F_list_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXBuildFile_5F_list_2E_element & inOperand) const ;
 
@@ -3936,7 +3936,7 @@ class GALGAS_Xcode_5F_PBXSourcesBuildPhase_5F_list_2E_element : public AC_GALGAS
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXSourcesBuildPhase_5F_list_2E_element & inOperand) const ;
 
@@ -4002,7 +4002,7 @@ class GALGAS_Xcode_5F_PBXResourcesBuildPhase_5F_list_2E_element : public AC_GALG
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXResourcesBuildPhase_5F_list_2E_element & inOperand) const ;
 
@@ -4068,7 +4068,7 @@ class GALGAS_Xcode_5F_PBXCopyBuildPhase_5F_list_2E_element : public AC_GALGAS_ro
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXCopyBuildPhase_5F_list_2E_element & inOperand) const ;
 
@@ -4134,7 +4134,7 @@ class GALGAS_Xcode_5F_PBXFrameworksBuildPhase_5F_list_2E_element : public AC_GAL
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXFrameworksBuildPhase_5F_list_2E_element & inOperand) const ;
 
@@ -4200,7 +4200,7 @@ class GALGAS_Xcode_5F_PBXGroup_5F_list_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXGroup_5F_list_2E_element & inOperand) const ;
 
@@ -4266,7 +4266,7 @@ class GALGAS_Xcode_5F_XCBuildConfiguration_5F_list_2E_element : public AC_GALGAS
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_XCBuildConfiguration_5F_list_2E_element & inOperand) const ;
 
@@ -4350,7 +4350,7 @@ class GALGAS_Xcode_5F_PBXNativeTarget_5F_list_2E_element : public AC_GALGAS_root
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXNativeTarget_5F_list_2E_element & inOperand) const ;
 
@@ -4430,7 +4430,7 @@ class GALGAS_Xcode_5F_targetDependencyDescription_5F_list_2E_element : public AC
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_targetDependencyDescription_5F_list_2E_element & inOperand) const ;
 
@@ -4502,7 +4502,7 @@ class GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2E_element : public AC_GALGAS_root
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_Xcode_5F_PBXVariantGroup_5F_list_2E_element & inOperand) const ;
 
@@ -4554,7 +4554,7 @@ class cMapElement_Xcode_5F_PBXFileReference_5F_map : public cMapElement {
   public : virtual cMapElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -4578,7 +4578,7 @@ class cPtr_Xcode_5F_PBXBuildFile : public acPtr_class {
   public : VIRTUAL_IN_DEBUG GALGAS_Xcode_5F_PBXFileReference_5F_abstract reader_mSourceFile (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4616,7 +4616,7 @@ class cPtr_Xcode_5F_PBXCopyBuildPhase : public acPtr_class {
   public : VIRTUAL_IN_DEBUG GALGAS_Xcode_5F_PBXBuildFile_5F_list reader_mFileReferenceList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4645,7 +4645,7 @@ class cPtr_Xcode_5F_PBXFileReference_5F_abstract : public acPtr_class {
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_mFileName (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const = 0 ;
+                                     const int32_t inIndentation) const = 0 ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
 
@@ -4670,7 +4670,7 @@ class cPtr_Xcode_5F_PBXFileReference_5F_cppSourceFile : public cPtr_Xcode_5F_PBX
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4695,7 +4695,7 @@ class cPtr_Xcode_5F_PBXFileReference_5F_frameworkFile : public cPtr_Xcode_5F_PBX
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4720,7 +4720,7 @@ class cPtr_Xcode_5F_PBXFileReference_5F_gifFile : public cPtr_Xcode_5F_PBXFileRe
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4745,7 +4745,7 @@ class cPtr_Xcode_5F_PBXFileReference_5F_hSourceFile : public cPtr_Xcode_5F_PBXFi
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4770,7 +4770,7 @@ class cPtr_Xcode_5F_PBXFileReference_5F_icnsFile : public cPtr_Xcode_5F_PBXFileR
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4795,7 +4795,7 @@ class cPtr_Xcode_5F_PBXFileReference_5F_mSourceFile : public cPtr_Xcode_5F_PBXFi
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4820,7 +4820,7 @@ class cPtr_Xcode_5F_PBXFileReference_5F_mmSourceFile : public cPtr_Xcode_5F_PBXF
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4845,7 +4845,7 @@ class cPtr_Xcode_5F_PBXFileReference_5F_pchSourceFile : public cPtr_Xcode_5F_PBX
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4870,7 +4870,7 @@ class cPtr_Xcode_5F_PBXFileReference_5F_plistFile : public cPtr_Xcode_5F_PBXFile
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4898,7 +4898,7 @@ class cPtr_Xcode_5F_PBXFileReference_5F_plistStringFile : public cPtr_Xcode_5F_P
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_mFilePath (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4923,7 +4923,7 @@ class cPtr_Xcode_5F_PBXFileReference_5F_pngFile : public cPtr_Xcode_5F_PBXFileRe
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4948,7 +4948,7 @@ class cPtr_Xcode_5F_PBXFileReference_5F_tiffFile : public cPtr_Xcode_5F_PBXFileR
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -4976,7 +4976,7 @@ class cPtr_Xcode_5F_PBXFileReference_5F_xibFile : public cPtr_Xcode_5F_PBXFileRe
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_mFilePath (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5001,7 +5001,7 @@ class cPtr_Xcode_5F_productFileReference : public cPtr_Xcode_5F_PBXFileReference
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const = 0 ;
+                                     const int32_t inIndentation) const = 0 ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const = 0 ;
 
@@ -5026,7 +5026,7 @@ class cPtr_Xcode_5F_PBXFileReference_5F_Application : public cPtr_Xcode_5F_produ
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5051,7 +5051,7 @@ class cPtr_Xcode_5F_PBXFileReference_5F_CompiledMachOExecutable : public cPtr_Xc
 //--- Attribute accessors
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5083,7 +5083,7 @@ class cPtr_Xcode_5F_PBXFrameworksBuildPhase : public acPtr_class {
   public : VIRTUAL_IN_DEBUG GALGAS_Xcode_5F_PBXBuildFile_5F_list reader_mFileReferenceList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5118,7 +5118,7 @@ class cPtr_Xcode_5F_PBXGroup : public acPtr_class {
   public : VIRTUAL_IN_DEBUG GALGAS_XcodeObjectReferenceList reader_mChildrenGroupList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5150,7 +5150,7 @@ class cPtr_Xcode_5F_PBXResourcesBuildPhase : public acPtr_class {
   public : VIRTUAL_IN_DEBUG GALGAS_Xcode_5F_PBXBuildFile_5F_list reader_mFileReferenceList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5182,7 +5182,7 @@ class cPtr_Xcode_5F_PBXSourcesBuildPhase : public acPtr_class {
   public : VIRTUAL_IN_DEBUG GALGAS_Xcode_5F_PBXBuildFile_5F_list reader_mFileReferenceList (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5214,7 +5214,7 @@ class cPtr_Xcode_5F_XCBuildConfiguration : public acPtr_class {
   public : VIRTUAL_IN_DEBUG GALGAS_stringlist reader_mSettings (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 
@@ -5243,7 +5243,7 @@ class cPtr_Xcode_5F_targetDependencyDescription : public acPtr_class {
   public : VIRTUAL_IN_DEBUG GALGAS_string reader_mDependencyTarget (UNUSED_LOCATION_ARGS) const ;
 //--- Description
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 
   public : virtual typeComparisonResult dynamicObjectCompare (const acPtr_class * inOperandPtr) const ;
 

@@ -75,7 +75,7 @@ class capCollectionElement {
   public : capCollectionElement copy (void) ;
 
 //--- Description
- public : void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*

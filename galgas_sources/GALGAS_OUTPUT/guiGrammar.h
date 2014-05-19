@@ -52,21 +52,21 @@ class cGrammar_guiGrammar : public cParser_guiSyntax {
   public : static void performIndexing (C_Compiler * inCompiler,
                                         const C_String & inSourceFilePath) ;
 
-  public : virtual PMSInt32 select_guiSyntax_0 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_guiSyntax_0 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_guiSyntax_1 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_guiSyntax_1 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_guiSyntax_2 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_guiSyntax_2 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_guiSyntax_3 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_guiSyntax_3 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_guiSyntax_4 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_guiSyntax_4 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_guiSyntax_5 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_guiSyntax_5 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_guiSyntax_6 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_guiSyntax_6 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_guiSyntax_7 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_guiSyntax_7 (C_Lexique_galgas_5F_scanner *) ;
 } ;
 
 //-----------------------------------------------------------------------------*

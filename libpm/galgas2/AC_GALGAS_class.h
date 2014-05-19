@@ -66,7 +66,7 @@ class AC_GALGAS_class : public AC_GALGAS_root {
   public : virtual const C_galgas_type_descriptor * dynamicTypeDescriptor (void) const ;
 
   public : virtual void description (C_String & ioString,
-                                     const PMSInt32 inIndentation) const ;
+                                     const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*

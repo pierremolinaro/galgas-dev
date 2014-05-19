@@ -22,7 +22,7 @@ GALGAS_string filewrapperTemplate_%![FILEWRAPPER_NAME identifierRepresentation]%
   C_String result ;
 %
  if USES_COLUMN_MARKER then
-   %  PMUInt32 columnMarker = 0 ;\n%
+   %  uint32_t columnMarker = 0 ;\n%
  end if
  block 2 :
  !GENERATED_INSTRUCTION_STRING

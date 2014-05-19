@@ -52,13 +52,13 @@ class cGrammar_projectLL_31_grammar : public cParser_projectModelBuilder {
   public : static void performIndexing (C_Compiler * inCompiler,
                                         const C_String & inSourceFilePath) ;
 
-  public : virtual PMSInt32 select_projectModelBuilder_0 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_projectModelBuilder_0 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_projectModelBuilder_1 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_projectModelBuilder_1 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_projectModelBuilder_2 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_projectModelBuilder_2 (C_Lexique_galgas_5F_scanner *) ;
 
-  public : virtual PMSInt32 select_projectModelBuilder_3 (C_Lexique_galgas_5F_scanner *) ;
+  public : virtual int32_t select_projectModelBuilder_3 (C_Lexique_galgas_5F_scanner *) ;
 } ;
 
 //-----------------------------------------------------------------------------*

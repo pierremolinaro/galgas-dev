@@ -451,7 +451,7 @@ typedef void (*categoryMethodSignature_semanticInstructionAST_analyzeSemanticIns
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_analyzeSemanticInstruction (const PMSInt32 inClassIndex,
+void enterCategoryMethod_analyzeSemanticInstruction (const int32_t inClassIndex,
                                                      categoryMethodSignature_semanticInstructionAST_analyzeSemanticInstruction inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -481,7 +481,7 @@ typedef void (*categoryMethodSignature_actualParameterAST_checkAgainstFormalArgu
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryMethod_checkAgainstFormalArgument (const PMSInt32 inClassIndex,
+void enterCategoryMethod_checkAgainstFormalArgument (const int32_t inClassIndex,
                                                      categoryMethodSignature_actualParameterAST_checkAgainstFormalArgument inMethod) ;
 
 //-----------------------------------------------------------------------------*
@@ -558,7 +558,7 @@ class GALGAS_localConstantList_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_localConstantList_2E_element & inOperand) const ;
 
@@ -636,7 +636,7 @@ class GALGAS_localInitializedVariableList_2E_element : public AC_GALGAS_root {
 
 //--------------------------------- Implementation of reader 'description'
   public : VIRTUAL_IN_DEBUG void description (C_String & ioString,
-                                              const PMSInt32 inIndentation) const ;
+                                              const int32_t inIndentation) const ;
 //--------------------------------- Comparison
   public : typeComparisonResult objectCompare (const GALGAS_localInitializedVariableList_2E_element & inOperand) const ;
 

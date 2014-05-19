@@ -34,28 +34,28 @@
 
 //-----------------------------------------------------------------------------*
 
-static const PMSInt32 kSingleOperandOperationCacheInitialSize = 131101 ;
+static const int32_t kSingleOperandOperationCacheInitialSize = 131101 ;
 
 //-----------------------------------------------------------------------------*
 
 typedef struct {
-  PMUInt32 mOperand ;
-  PMUInt32 mResult ;
+  uint32_t mOperand ;
+  uint32_t mResult ;
 } tStructSingleOperandOperationCacheEntry ;
 
 //-----------------------------------------------------------------------------*
 
 static tStructSingleOperandOperationCacheEntry * gSingleOperandOperationCacheMap ;
-static PMUInt32 gSingleOperandOperationMapSize ;
-static PMUInt32 gSingleOperandOperationCacheMapUsedEntryCount ;
-static PMUInt64 gSingleOperandOperationCacheTrivialOperationCount ;
-static PMUInt32 gSingleOperandOperationCacheMaxPowerOfTwoSize = 31 ;
+static uint32_t gSingleOperandOperationMapSize ;
+static uint32_t gSingleOperandOperationCacheMapUsedEntryCount ;
+static uint64_t gSingleOperandOperationCacheTrivialOperationCount ;
+static uint32_t gSingleOperandOperationCacheMaxPowerOfTwoSize = 31 ;
 static bool gSingleOperandOperationCacheExpandable = true ;
 
 //-----------------------------------------------------------------------------*
 
-PMUInt32 singleOperandOperationCacheMemoryUsage (void) {
-  return (gSingleOperandOperationMapSize * (PMUInt32) sizeof (PMUInt64)) / 1000000 ;
+uint32_t singleOperandOperationCacheMemoryUsage (void) {
+  return (gSingleOperandOperationMapSize * (uint32_t) sizeof (uint64_t)) / 1000000 ;
 }
 
 //-----------------------------------------------------------------------------*
@@ -78,28 +78,28 @@ static void clearSingleOperandOperationCache (void) {
               gSingleOperandOperationMapSize / 1000000,
               (gSingleOperandOperationMapSize / 1000) % 1000,
               gSingleOperandOperationMapSize % 1000,
-              (gSingleOperandOperationMapSize * (PMUInt32) sizeof (tStructSingleOperandOperationCacheEntry)) / 1000000) ;
+              (gSingleOperandOperationMapSize * (uint32_t) sizeof (tStructSingleOperandOperationCacheEntry)) / 1000000) ;
     }
   }
-  for (PMUInt32 i=0 ; i<gSingleOperandOperationMapSize ; i++) {
+  for (uint32_t i=0 ; i<gSingleOperandOperationMapSize ; i++) {
     gSingleOperandOperationCacheMap [i].mOperand = 0 ;
   }
 }
 
 //-----------------------------------------------------------------------------*
 
-static void reallocSingleOperandOperationCache (const PMUInt32 inNewSize) {
+static void reallocSingleOperandOperationCache (const uint32_t inNewSize) {
   gSingleOperandOperationCacheMapUsedEntryCount = 0 ;
   tStructSingleOperandOperationCacheEntry * newCache = NULL ;
   if (inNewSize << (1U << gSingleOperandOperationCacheMaxPowerOfTwoSize)) {
-    PMUInt32 newMemoryUsage = C_BDD::currentMemoryUsage () ;
+    uint32_t newMemoryUsage = C_BDD::currentMemoryUsage () ;
     newMemoryUsage -= singleOperandOperationCacheMemoryUsage () ;
-    newMemoryUsage += (PMUInt32) ((inNewSize * sizeof (PMUInt64)) / 1000000) ;
+    newMemoryUsage += (uint32_t) ((inNewSize * sizeof (uint64_t)) / 1000000) ;
     if (newMemoryUsage < C_BDD::maximumMemoryUsage ()) {
       macroMyNewPODArray (newCache, tStructSingleOperandOperationCacheEntry, inNewSize) ;
-      for (PMUInt32 i=0 ; i<gSingleOperandOperationMapSize ; i++) {
+      for (uint32_t i=0 ; i<gSingleOperandOperationMapSize ; i++) {
         if (gSingleOperandOperationCacheMap [i].mOperand != 0) {
-          const PMUInt32 newIndex = gSingleOperandOperationCacheMap [i].mOperand % inNewSize ;
+          const uint32_t newIndex = gSingleOperandOperationCacheMap [i].mOperand % inNewSize ;
           newCache [newIndex].mOperand = gSingleOperandOperationCacheMap [i].mOperand ;
           newCache [newIndex].mResult = gSingleOperandOperationCacheMap [i].mResult ;
           gSingleOperandOperationCacheMapUsedEntryCount += newCache [newIndex].mOperand == 0 ;
@@ -113,7 +113,7 @@ static void reallocSingleOperandOperationCache (const PMUInt32 inNewSize) {
                 gSingleOperandOperationMapSize / 1000000,
                 (gSingleOperandOperationMapSize / 1000) % 1000,
                 gSingleOperandOperationMapSize % 1000,
-                (gSingleOperandOperationMapSize * (PMUInt32) sizeof (tStructSingleOperandOperationCacheEntry)) / 1000000) ;
+                (gSingleOperandOperationMapSize * (uint32_t) sizeof (tStructSingleOperandOperationCacheEntry)) / 1000000) ;
       }
     }else{
       gSingleOperandOperationCacheExpandable = false ;
@@ -137,12 +137,12 @@ static void reallocSingleOperandOperationCache (const PMUInt32 inNewSize) {
 
 //-----------------------------------------------------------------------------*
 
-static bool searchInSingleOperandOperationCache (const PMUInt32 inOperand,
-                                                 PMUInt32 & outResult) {
+static bool searchInSingleOperandOperationCache (const uint32_t inOperand,
+                                                 uint32_t & outResult) {
   if (0 == gSingleOperandOperationMapSize) {
     reallocSingleOperandOperationCache (getPrimeGreaterThan (1024)) ;
   }
-  const PMUInt32 idx = inOperand % gSingleOperandOperationMapSize ;
+  const uint32_t idx = inOperand % gSingleOperandOperationMapSize ;
   const bool found = gSingleOperandOperationCacheMap [idx].mOperand == inOperand ;
   if (found) {
     outResult = gSingleOperandOperationCacheMap [idx].mResult ;
@@ -152,9 +152,9 @@ static bool searchInSingleOperandOperationCache (const PMUInt32 inOperand,
 
 //-----------------------------------------------------------------------------*
 
-static void enterInSingleOperandOperationCache (const PMUInt32 inOperand,
-                                                const PMUInt32 inResult) {
-  const PMUInt32 idx = inOperand % gSingleOperandOperationMapSize ;
+static void enterInSingleOperandOperationCache (const uint32_t inOperand,
+                                                const uint32_t inResult) {
+  const uint32_t idx = inOperand % gSingleOperandOperationMapSize ;
   const bool entryWasUnused = gSingleOperandOperationCacheMap [idx].mOperand == 0 ;
   gSingleOperandOperationCacheMap [idx].mOperand = inOperand ;
   gSingleOperandOperationCacheMap [idx].mResult = inResult ;
@@ -169,7 +169,7 @@ static void enterInSingleOperandOperationCache (const PMUInt32 inOperand,
 
 //-----------------------------------------------------------------------------*
 
-void C_BDD::setSingleOperandOperationCacheMaxSize (const PMUInt32 inPowerOfTwo) {
+void C_BDD::setSingleOperandOperationCacheMaxSize (const uint32_t inPowerOfTwo) {
   gSingleOperandOperationCacheMaxPowerOfTwoSize = inPowerOfTwo ;
   if (C_BDD::displaysInformationMessages ()) {
     printf ("BDD package info: single operand operation cache max size limited < 2 ** %u\n", gSingleOperandOperationCacheMaxPowerOfTwoSize) ;
@@ -184,21 +184,21 @@ void C_BDD::setSingleOperandOperationCacheMaxSize (const PMUInt32 inPowerOfTwo) 
 
 //-----------------------------------------------------------------------------*
 
-static PMUInt32
-internalForAllOnBitRange (const PMUInt32 inValue,
-                          const PMUInt32 inFirstBit,
-                          const PMUInt32 inBitCount) {
-  const PMUInt32 complement = inValue & 1 ;
-  PMUInt32 result = complement ;
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+static uint32_t
+internalForAllOnBitRange (const uint32_t inValue,
+                          const uint32_t inFirstBit,
+                          const uint32_t inBitCount) {
+  const uint32_t complement = inValue & 1 ;
+  uint32_t result = complement ;
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   if (gNodeArray [nodeIndex].bothBranches () == 0) {
     gSingleOperandOperationCacheTrivialOperationCount ++ ;
   }else{
-    const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     if (var >= (inFirstBit + inBitCount)) {
       bool cacheSuccess = false ;
-      // PMSInt32 hashCode ;
-      // const PMUInt32 key = ((PMUInt32) inBitCount) | (((PMUInt32) inFirstBit) << 16) ;
+      // int32_t hashCode ;
+      // const uint32_t key = ((uint32_t) inBitCount) | (((uint32_t) inFirstBit) << 16) ;
   //    gForAllOperationCache.getCacheEntry (inValue, key, cacheSuccess, hashCode, result) ;
       if (! cacheSuccess) {
         result = find_or_add (var,
@@ -220,16 +220,16 @@ internalForAllOnBitRange (const PMUInt32 inValue,
 
 //-----------------------------------------------------------------------------*
 
-static PMUInt32
-operationQuelqueSoitSurBitSupNumeroInterne (const PMUInt32 inValue,
-                                            const PMUInt32 numeroBit) {
-  const PMUInt32 complement = inValue & 1 ;
-  PMUInt32 result = complement ;
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+static uint32_t
+operationQuelqueSoitSurBitSupNumeroInterne (const uint32_t inValue,
+                                            const uint32_t numeroBit) {
+  const uint32_t complement = inValue & 1 ;
+  uint32_t result = complement ;
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   if (gNodeArray [nodeIndex].bothBranches () == 0) {
     gSingleOperandOperationCacheTrivialOperationCount ++ ;
   }else{
-    const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     if (var > numeroBit) {
       if (! searchInSingleOperandOperationCache (inValue, result)) {
         result = internalANDoperation (
@@ -249,14 +249,14 @@ operationQuelqueSoitSurBitSupNumeroInterne (const PMUInt32 inValue,
 
 //-----------------------------------------------------------------------------*
 
-C_BDD C_BDD::forallOnBitNumber (const PMUInt32 numeroBit) const {
+C_BDD C_BDD::forallOnBitNumber (const uint32_t numeroBit) const {
   clearSingleOperandOperationCache () ;
   return C_BDD (internalForAllOnBitRange (mBDDvalue, numeroBit, 1)) ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_BDD C_BDD::forallOnBitsAfterNumber (const PMUInt32 numeroBit) const {
+C_BDD C_BDD::forallOnBitsAfterNumber (const uint32_t numeroBit) const {
   clearSingleOperandOperationCache () ;
   return C_BDD (operationQuelqueSoitSurBitSupNumeroInterne (mBDDvalue, numeroBit)) ;
 }
@@ -269,7 +269,7 @@ C_BDD C_BDD::forallOnBitsAfterNumber (const PMUInt32 numeroBit) const {
 
 //-----------------------------------------------------------------------------*
 
-C_BDD C_BDD::existsOnBitNumber (const PMUInt32 numeroBit) const {
+C_BDD C_BDD::existsOnBitNumber (const uint32_t numeroBit) const {
   clearSingleOperandOperationCache () ;
 //--- ilExiste x : F <=> non (quelquesoit x : non (F))
   return C_BDD (internalForAllOnBitRange (mBDDvalue ^ 1, numeroBit, 1) ^ 1) ;
@@ -278,15 +278,15 @@ C_BDD C_BDD::existsOnBitNumber (const PMUInt32 numeroBit) const {
 //-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::
-existsOnBitRange (const PMUInt32 inFirstBit,
-                  const PMUInt32 inBitCount) const {
+existsOnBitRange (const uint32_t inFirstBit,
+                  const uint32_t inBitCount) const {
   clearSingleOperandOperationCache () ;
   return C_BDD (internalForAllOnBitRange (mBDDvalue ^ 1, inFirstBit, inBitCount) ^ 1) ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_BDD C_BDD::existsOnBitsAfterNumber (const PMUInt32 numeroBit) const {
+C_BDD C_BDD::existsOnBitsAfterNumber (const uint32_t numeroBit) const {
 // ilExiste x : F <=> non (quelquesoit x : non (F))
   clearSingleOperandOperationCache () ;
   return C_BDD (operationQuelqueSoitSurBitSupNumeroInterne (mBDDvalue ^ 1, numeroBit) ^ 1) ;
@@ -300,18 +300,18 @@ C_BDD C_BDD::existsOnBitsAfterNumber (const PMUInt32 numeroBit) const {
 
 //-----------------------------------------------------------------------------*
 
-static PMUInt32 internalRecursiveSubstitution (const PMUInt32 inValue,
-                                               const PMUInt32 vecteurSubstitutionBool [],
-                                               const PMUInt32 inNoChangeIndex,
-                                               const PMUInt32 inBDDvariablesCount
+static uint32_t internalRecursiveSubstitution (const uint32_t inValue,
+                                               const uint32_t vecteurSubstitutionBool [],
+                                               const uint32_t inNoChangeIndex,
+                                               const uint32_t inBDDvariablesCount
                                                COMMA_LOCATION_ARGS) {
-  PMUInt32 result = inValue ;
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+  uint32_t result = inValue ;
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   if (gNodeArray [nodeIndex].bothBranches () == 0) {
     gSingleOperandOperationCacheTrivialOperationCount ++ ;
   }else{
-    const PMUInt32 complement = inValue & 1 ;
-    const PMUInt32 var = gNodeArray [nodeIndex].mVariableIndex ;
+    const uint32_t complement = inValue & 1 ;
+    const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     MF_AssertThere (var < inBDDvariablesCount, "var (%lld) < inBDDvariablesCount (%lld)", var, inBDDvariablesCount) ;
     if (var < inNoChangeIndex) {
       result = inValue ;
@@ -330,14 +330,14 @@ static PMUInt32 internalRecursiveSubstitution (const PMUInt32 inValue,
 
 //-----------------------------------------------------------------------------*
 
-C_BDD C_BDD::substitution (const PMUInt32 inSubstitutionArray [],
-                           const PMUInt32 inBDDvariablesCount
+C_BDD C_BDD::substitution (const uint32_t inSubstitutionArray [],
+                           const uint32_t inBDDvariablesCount
                            COMMA_LOCATION_ARGS) const {
   clearSingleOperandOperationCache () ;
 //--- Le vecteur subsitution est-il l'identite ?
   bool estIdentite = true ;
-  PMUInt32 noChangeIndex = 0 ;
-  for (PMUInt32 i=0 ; estIdentite && (i<inBDDvariablesCount) ; i++) {
+  uint32_t noChangeIndex = 0 ;
+  for (uint32_t i=0 ; estIdentite && (i<inBDDvariablesCount) ; i++) {
     estIdentite = inSubstitutionArray [i] == i ;
     noChangeIndex ++ ;
   }
@@ -354,14 +354,14 @@ C_BDD C_BDD::substitution (const PMUInt32 inSubstitutionArray [],
 
 //-----------------------------------------------------------------------------*
 
-C_BDD C_BDD::translate (const PMUInt32 inBDDvariablesCount,
-                        const PMUInt32 inTranslation) const {
-  PMUInt32 * substitionVector = NULL ;
-  macroMyNewArray (substitionVector, PMUInt32, inBDDvariablesCount) ;
-  for (PMUInt32 i=0 ; i<inBDDvariablesCount ; i++) {
-    substitionVector [i] = (PMUInt32) (i + inTranslation) ;
+C_BDD C_BDD::translate (const uint32_t inBDDvariablesCount,
+                        const uint32_t inTranslation) const {
+  uint32_t * substitionVector = NULL ;
+  macroMyNewArray (substitionVector, uint32_t, inBDDvariablesCount) ;
+  for (uint32_t i=0 ; i<inBDDvariablesCount ; i++) {
+    substitionVector [i] = (uint32_t) (i + inTranslation) ;
   }
-  const PMUInt32 result = internalRecursiveSubstitution (mBDDvalue, substitionVector, 0, inBDDvariablesCount COMMA_HERE) ;
+  const uint32_t result = internalRecursiveSubstitution (mBDDvalue, substitionVector, 0, inBDDvariablesCount COMMA_HERE) ;
   macroMyDeleteArray (substitionVector) ;
   return C_BDD (result) ;
 }
@@ -374,14 +374,14 @@ C_BDD C_BDD::translate (const PMUInt32 inBDDvariablesCount,
 
 //-----------------------------------------------------------------------------*
 
-static PMUInt32
-internalExchangeVariables (const PMUInt32 inValue,
-                           const PMUInt32 var1,
-                           const PMUInt32 var2) {
-  PMUInt32 result = inValue ;
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+static uint32_t
+internalExchangeVariables (const uint32_t inValue,
+                           const uint32_t var1,
+                           const uint32_t var2) {
+  uint32_t result = inValue ;
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   if (gNodeArray [nodeIndex].bothBranches () != 0) {
-    const PMUInt32 complement = inValue & 1 ;
+    const uint32_t complement = inValue & 1 ;
     if (gNodeArray [nodeIndex].mVariableIndex > var1) {
       result = internalITEoperation (
                      find_or_add (gNodeArray [nodeIndex].mVariableIndex, 0, 1 COMMA_HERE),
@@ -409,7 +409,7 @@ internalExchangeVariables (const PMUInt32 inValue,
 
 //-----------------------------------------------------------------------------*
 
-C_BDD C_BDD::exchangeVariables (const PMUInt32 var1, const PMUInt32 var2) const {
+C_BDD C_BDD::exchangeVariables (const uint32_t var1, const uint32_t var2) const {
   C_BDD result (mBDDvalue) ;
   if (var1 > var2) {
     result.mBDDvalue = internalExchangeVariables (mBDDvalue, var1, var2) ;
@@ -427,14 +427,14 @@ C_BDD C_BDD::exchangeVariables (const PMUInt32 var1, const PMUInt32 var2) const 
 
 //-----------------------------------------------------------------------------*
 
-static PMUInt32
-internalRollDown (const PMUInt32 inValue,
-                  const PMUInt32 inHighVar,
-                  const PMUInt32 inLowVar) {
-  PMUInt32 result = inValue ;
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+static uint32_t
+internalRollDown (const uint32_t inValue,
+                  const uint32_t inHighVar,
+                  const uint32_t inLowVar) {
+  uint32_t result = inValue ;
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   if (gNodeArray [nodeIndex].bothBranches () != 0) {
-    const PMUInt32 complement = inValue & 1 ;
+    const uint32_t complement = inValue & 1 ;
     if (gNodeArray [nodeIndex].mVariableIndex > inHighVar) {
       result = internalITEoperation (
                      find_or_add (gNodeArray [nodeIndex].mVariableIndex, 0, 1 COMMA_HERE),
@@ -442,7 +442,7 @@ internalRollDown (const PMUInt32 inValue,
                      internalRollDown (gNodeArray [nodeIndex].mELSE ^ complement, inHighVar, inLowVar)) ;
     }else if (gNodeArray [nodeIndex].mVariableIndex > inLowVar) {
       result = internalITEoperation (
-                     find_or_add ((PMUInt32) (gNodeArray [nodeIndex].mVariableIndex - 1), 0, 1 COMMA_HERE),
+                     find_or_add ((uint32_t) (gNodeArray [nodeIndex].mVariableIndex - 1), 0, 1 COMMA_HERE),
                      internalRollDown (gNodeArray [nodeIndex].mTHEN ^ complement, inHighVar, inLowVar),
                      internalRollDown (gNodeArray [nodeIndex].mELSE ^ complement, inHighVar, inLowVar)) ;
     }else if (gNodeArray [nodeIndex].mVariableIndex == inLowVar) {
@@ -457,7 +457,7 @@ internalRollDown (const PMUInt32 inValue,
 
 //-----------------------------------------------------------------------------*
 
-C_BDD C_BDD::rollDownVariables (const PMUInt32 var1, const PMUInt32 var2) const {
+C_BDD C_BDD::rollDownVariables (const uint32_t var1, const uint32_t var2) const {
   C_BDD result (mBDDvalue) ;
   if (var1 > var2) {
     result.mBDDvalue = internalRollDown (mBDDvalue, var1, var2) ;
@@ -473,14 +473,14 @@ C_BDD C_BDD::rollDownVariables (const PMUInt32 var1, const PMUInt32 var2) const 
 
 //-----------------------------------------------------------------------------*
 
-static PMUInt32
-internalRollUp (const PMUInt32 inValue,
-                const PMUInt32 var1,
-                const PMUInt32 var2) {
-  PMUInt32 result = inValue ;
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+static uint32_t
+internalRollUp (const uint32_t inValue,
+                const uint32_t var1,
+                const uint32_t var2) {
+  uint32_t result = inValue ;
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   if (gNodeArray [nodeIndex].bothBranches () != 0) {
-    const PMUInt32 complement = inValue & 1 ;
+    const uint32_t complement = inValue & 1 ;
     if (gNodeArray [nodeIndex].mVariableIndex > var1) {
       result = internalITEoperation (
                      find_or_add (gNodeArray [nodeIndex].mVariableIndex, 0, 1 COMMA_HERE),
@@ -493,7 +493,7 @@ internalRollUp (const PMUInt32 inValue,
                      internalRollUp (gNodeArray [nodeIndex].mELSE ^ complement, var1, var2)) ;
     }else if (gNodeArray [nodeIndex].mVariableIndex >= var2) {
       result = internalITEoperation (
-                     find_or_add ((PMUInt32) (gNodeArray [nodeIndex].mVariableIndex + 1), 0, 1 COMMA_HERE),
+                     find_or_add ((uint32_t) (gNodeArray [nodeIndex].mVariableIndex + 1), 0, 1 COMMA_HERE),
                      internalRollUp (gNodeArray [nodeIndex].mTHEN ^ complement, var1, var2),
                      internalRollUp (gNodeArray [nodeIndex].mELSE ^ complement, var1, var2)) ;
     }     
@@ -504,7 +504,7 @@ internalRollUp (const PMUInt32 inValue,
 //-----------------------------------------------------------------------------*
 
 C_BDD C_BDD::
-rollUpVariables (const PMUInt32 var1, const PMUInt32 var2) const {
+rollUpVariables (const uint32_t var1, const uint32_t var2) const {
   C_BDD result (mBDDvalue) ;
   if (var1 > var2) {
     result.mBDDvalue = internalRollUp (mBDDvalue, var1, var2) ;
@@ -520,14 +520,14 @@ rollUpVariables (const PMUInt32 var1, const PMUInt32 var2) const {
 
 //-----------------------------------------------------------------------------*
 
-static PMUInt32 internalLeftShift (const PMUInt32 inValue,
-                                   const PMUInt32 inLeftShiftCount) {
-  PMUInt32 result = inValue ;
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+static uint32_t internalLeftShift (const uint32_t inValue,
+                                   const uint32_t inLeftShiftCount) {
+  uint32_t result = inValue ;
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   if (gNodeArray [nodeIndex].bothBranches () == 0) {
     gSingleOperandOperationCacheTrivialOperationCount ++ ;
   }else if (! searchInSingleOperandOperationCache (inValue, result)) {
-    const PMUInt32 complement = inValue & 1 ;
+    const uint32_t complement = inValue & 1 ;
     result = find_or_add (gNodeArray [nodeIndex].mVariableIndex + inLeftShiftCount,
                           internalLeftShift (gNodeArray [nodeIndex].mELSE ^ complement, inLeftShiftCount),
                           internalLeftShift (gNodeArray [nodeIndex].mTHEN ^ complement, inLeftShiftCount)
@@ -539,7 +539,7 @@ static PMUInt32 internalLeftShift (const PMUInt32 inValue,
 
 //-----------------------------------------------------------------------------*
 
-C_BDD C_BDD::bddByLeftShifting (const PMUInt32 inLeftShiftCount) const {
+C_BDD C_BDD::bddByLeftShifting (const uint32_t inLeftShiftCount) const {
   clearSingleOperandOperationCache () ;
   C_BDD result ;
   result.mBDDvalue = internalLeftShift (mBDDvalue, inLeftShiftCount) ;
@@ -554,17 +554,17 @@ C_BDD C_BDD::bddByLeftShifting (const PMUInt32 inLeftShiftCount) const {
 
 //-----------------------------------------------------------------------------*
 
-static PMUInt32 internalRightShift (const PMUInt32 inValue,
-                                    const PMUInt32 inRightShiftCount) {
-  PMUInt32 result = inValue ;
-  const PMUInt32 nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
+static uint32_t internalRightShift (const uint32_t inValue,
+                                    const uint32_t inRightShiftCount) {
+  uint32_t result = inValue ;
+  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   if (gNodeArray [nodeIndex].bothBranches () == 0) {
     gSingleOperandOperationCacheTrivialOperationCount ++ ;
   }else if (gNodeArray [nodeIndex].mVariableIndex < inRightShiftCount) {
     result = 1 ;
     gSingleOperandOperationCacheTrivialOperationCount ++ ;
   }else if (! searchInSingleOperandOperationCache (inValue, result)) {
-    const PMUInt32 complement = inValue & 1 ;
+    const uint32_t complement = inValue & 1 ;
     result = find_or_add (gNodeArray [nodeIndex].mVariableIndex - inRightShiftCount,
                           internalRightShift (gNodeArray [nodeIndex].mELSE ^ complement, inRightShiftCount),
                           internalRightShift (gNodeArray [nodeIndex].mTHEN ^ complement, inRightShiftCount)
@@ -576,7 +576,7 @@ static PMUInt32 internalRightShift (const PMUInt32 inValue,
 
 //-----------------------------------------------------------------------------*
 
-C_BDD C_BDD::bddByRightShifting (const PMUInt32 inRightShiftCount) const {
+C_BDD C_BDD::bddByRightShifting (const uint32_t inRightShiftCount) const {
   clearSingleOperandOperationCache () ;
   C_BDD result ;
   result.mBDDvalue = internalRightShift (mBDDvalue, inRightShiftCount) ;

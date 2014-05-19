@@ -89,7 +89,7 @@ template <typename TYPE> class TC_LinkedList {
 //--- Data members
   private : cElement * mTopItem ;
   private : cElement * mBottomItem ;
-  private : PMSInt32 mCount ;
+  private : int32_t mCount ;
 
 //--- Copy into an array
   public : void copyIntoArray (TC_UniqueArray <TYPE> & outArray) ;

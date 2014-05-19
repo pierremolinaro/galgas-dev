@@ -19,7 +19,7 @@ typedef GALGAS_%![RETURN_TYPE identifierRepresentation]% (*categoryReaderSignatu
 
 //-----------------------------------------------------------------------------*
 
-void enterCategoryReader_%![READER_NAME identifierRepresentation]% (%?^%const PMSInt32 inClassIndex,
+void enterCategoryReader_%![READER_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
                %!^%categoryReaderSignature_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]% inReader) ;
 
 //-----------------------------------------------------------------------------*

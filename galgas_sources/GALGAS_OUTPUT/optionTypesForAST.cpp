@@ -72,7 +72,7 @@ static const char * gEnumNameArrayFor_optionDefaultValueEnumAST [4] = {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_optionDefaultValueEnumAST::description (C_String & ioString,
-                                                    const PMSInt32 /* inIndentation */) const {
+                                                    const int32_t /* inIndentation */) const {
   ioString << "<enum @optionDefaultValueEnumAST: " << gEnumNameArrayFor_optionDefaultValueEnumAST [mEnum] << ">" ;
 }
 
@@ -164,7 +164,7 @@ class cCollectionElement_commandLineOptionListAST : public cCollectionElement {
   public : virtual cCollectionElement * copy (void) ;
 
 //--- Description
- public : virtual void description (C_String & ioString, const PMSInt32 inIndentation) const ;
+ public : virtual void description (C_String & ioString, const int32_t inIndentation) const ;
 } ;
 
 //-----------------------------------------------------------------------------*
@@ -197,7 +197,7 @@ cCollectionElement * cCollectionElement_commandLineOptionListAST::copy (void) {
 
 //-----------------------------------------------------------------------------*
 
-void cCollectionElement_commandLineOptionListAST::description (C_String & ioString, const PMSInt32 inIndentation) const {
+void cCollectionElement_commandLineOptionListAST::description (C_String & ioString, const int32_t inIndentation) const {
   ioString << "\n" ;
   ioString.writeStringMultiple ("| ", inIndentation) ;
   ioString << "mOptionTypeName" ":" ;
@@ -805,8 +805,8 @@ typeComparisonResult cPtr_optionComponentAST::dynamicObjectCompare (const acPtr_
 typeComparisonResult GALGAS_optionComponentAST::objectCompare (const GALGAS_optionComponentAST & inOperand) const {
   typeComparisonResult result = kOperandNotValid ;
   if (isValid () && inOperand.isValid ()) {
-    const PMSInt32 mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
-    const PMSInt32 operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t mySlot = mObjectPtr->classDescriptor ()->mSlotID ;
+    const int32_t operandSlot = inOperand.mObjectPtr->classDescriptor ()->mSlotID ;
     if (mySlot < operandSlot) {
       result = kFirstOperandLowerThanSecond ;
     }else if (mySlot > operandSlot) {
@@ -921,7 +921,7 @@ const C_galgas_type_descriptor * cPtr_optionComponentAST::classDescriptor (void)
 }
 
 void cPtr_optionComponentAST::description (C_String & ioString,
-                                           const PMSInt32 inIndentation) const {
+                                           const int32_t inIndentation) const {
   ioString << "[@optionComponentAST:" ;
   mAttribute_mOptionComponentName.description (ioString, inIndentation+1) ;
   ioString << ", " ;
@@ -1087,7 +1087,7 @@ void GALGAS_commandLineOptionListAST_2E_element::drop (void) {
 //-----------------------------------------------------------------------------*
 
 void GALGAS_commandLineOptionListAST_2E_element::description (C_String & ioString,
-                                                              const PMSInt32 inIndentation) const {
+                                                              const int32_t inIndentation) const {
   ioString << "<struct @commandLineOptionListAST.element:" ;
   if (! isValid ()) {
     ioString << " not built" ;

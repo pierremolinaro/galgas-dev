@@ -553,33 +553,33 @@ class cParser_expressionSyntax {
 
 
 //--- Select methods
-  protected : virtual PMSInt32 select_expressionSyntax_0 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_expressionSyntax_0 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_expressionSyntax_1 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_expressionSyntax_1 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_expressionSyntax_2 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_expressionSyntax_2 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_expressionSyntax_3 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_expressionSyntax_3 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_expressionSyntax_4 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_expressionSyntax_4 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_expressionSyntax_5 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_expressionSyntax_5 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_expressionSyntax_6 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_expressionSyntax_6 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_expressionSyntax_7 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_expressionSyntax_7 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_expressionSyntax_8 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_expressionSyntax_8 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_expressionSyntax_9 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_expressionSyntax_9 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_expressionSyntax_10 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_expressionSyntax_10 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_expressionSyntax_11 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_expressionSyntax_11 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_expressionSyntax_12 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_expressionSyntax_12 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_expressionSyntax_13 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_expressionSyntax_13 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
 
 } ;

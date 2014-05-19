@@ -373,25 +373,25 @@ class cParser_grammarModelBuilder {
 
 
 //--- Select methods
-  protected : virtual PMSInt32 select_grammarModelBuilder_0 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_grammarModelBuilder_0 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_grammarModelBuilder_1 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_grammarModelBuilder_1 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_grammarModelBuilder_2 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_grammarModelBuilder_2 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_grammarModelBuilder_3 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_grammarModelBuilder_3 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_grammarModelBuilder_4 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_grammarModelBuilder_4 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_grammarModelBuilder_5 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_grammarModelBuilder_5 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_grammarModelBuilder_6 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_grammarModelBuilder_6 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_grammarModelBuilder_7 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_grammarModelBuilder_7 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_grammarModelBuilder_8 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_grammarModelBuilder_8 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_grammarModelBuilder_9 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_grammarModelBuilder_9 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
 
 } ;

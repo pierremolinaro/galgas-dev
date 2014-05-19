@@ -44,7 +44,7 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-class max_error_count_reached_exception : public M_STD_NAMESPACE exception {
+class max_error_count_reached_exception : public ::std:: exception {
   public : virtual const char * what (void) const throw () ;
 } ;
 
@@ -54,7 +54,7 @@ class max_error_count_reached_exception : public M_STD_NAMESPACE exception {
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-class max_warning_count_reached_exception : public M_STD_NAMESPACE exception {
+class max_warning_count_reached_exception : public ::std:: exception {
   public : virtual const char * what (void) const throw () ;
 } ;
 
@@ -69,7 +69,7 @@ class C_lexicalErrorException {
 
 //-----------------------------------------------------------------------------*
 
-class C_UserCancelException : public M_STD_NAMESPACE exception {
+class C_UserCancelException : public ::std:: exception {
   public : C_UserCancelException (void) ;
 } ;
 
@@ -81,13 +81,13 @@ class C_UserCancelException : public M_STD_NAMESPACE exception {
 
 class C_unicode_lexique_table_entry {
   public : const utf32 * mEntryString ;
-  public : const PMSInt16 mEntryStringLength ;
-  public : const PMSInt16 mTokenCode ;
+  public : const int16_t mEntryStringLength ;
+  public : const int16_t mTokenCode ;
 
 //--- Constructor
   public : C_unicode_lexique_table_entry (const utf32 * inEntryString,
-                                          const PMSInt16 inEntryStringLength,
-                                          const PMSInt16 inTokenCode) ;
+                                          const int16_t inEntryStringLength,
+                                          const int16_t inTokenCode) ;
 //--- No copy
   public : C_unicode_lexique_table_entry (const C_unicode_lexique_table_entry & inOperand) ;
   private : C_unicode_lexique_table_entry & operator = (const C_unicode_lexique_table_entry &) ;
@@ -104,7 +104,7 @@ class cToken {
   public : C_LocationInSource mStartLocation ;
   public : C_LocationInSource mEndLocation ;
   public : C_String mTemplateStringBeforeToken ; // Template string before the token
-  public : PMSInt16 mTokenCode ;
+  public : int16_t mTokenCode ;
 
   public : cToken (void) ;
   public : virtual ~cToken (void) ;
@@ -122,7 +122,7 @@ class cToken {
 //-----------------------------------------------------------------------------*
 
 class C_parsingContext {
-  private : PMSInt32 mParsingArrayIndex ;
+  private : int32_t mParsingArrayIndex ;
   private : C_LocationInSource mLocation ;
   private : cToken * mCurrentTokenPtr ;
   private : utf32 mCurrentChar ;
@@ -152,14 +152,14 @@ void constructErrorOrWarningLocationMessage (C_String & ioMessage,
                                              const C_SourceTextInString * inSourceTextPtr) ;
 
 //--- Errors count
-PMSInt32 maxErrorCount (void) ;
+int32_t maxErrorCount (void) ;
 
-PMSInt32 totalErrorCount (void) ;
+int32_t totalErrorCount (void) ;
 
 //--- Warnings count
-PMSInt32 maxWarningCount (void) ;
+int32_t maxWarningCount (void) ;
 
-PMSInt32 totalWarningCount (void) ;
+int32_t totalWarningCount (void) ;
  
 void signalParsingError (const C_SourceTextInString * inSourceTextPtr,
                          const C_LocationInSource & inErrorLocation,
@@ -232,22 +232,22 @@ void ggs_printMessage (const C_String & inMessage
 
 //-----------------------------------------------------------------------------*
 
-PMUInt32 checkedLineCount (void) ;
-void incrementCheckedFileCount (const PMUInt32 inIncrement) ;
+uint32_t checkedLineCount (void) ;
+void incrementCheckedFileCount (const uint32_t inIncrement) ;
 
 //-----------------------------------------------------------------------------*
 
-PMUInt32 generatedLineCount (void) ;
-void incrementGeneratedLileCount (const PMUInt32 inIncrement) ;
+uint32_t generatedLineCount (void) ;
+void incrementGeneratedLileCount (const uint32_t inIncrement) ;
 
 //-----------------------------------------------------------------------------*
 
-PMUInt32 preservedLineCount (void) ;
-void incrementPreservedLileCount (const PMUInt32 inIncrement) ;
+uint32_t preservedLineCount (void) ;
+void incrementPreservedLileCount (const uint32_t inIncrement) ;
 
 //-----------------------------------------------------------------------------*
 
-PMUInt32 generatedFileCount (void) ;
+uint32_t generatedFileCount (void) ;
 void incrementGeneratedFileCount (void) ;
 
 //-----------------------------------------------------------------------------*

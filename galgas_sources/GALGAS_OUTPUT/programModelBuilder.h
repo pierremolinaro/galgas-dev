@@ -314,15 +314,15 @@ class cParser_programModelBuilder {
 
 
 //--- Select methods
-  protected : virtual PMSInt32 select_programModelBuilder_0 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_programModelBuilder_0 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_programModelBuilder_1 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_programModelBuilder_1 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_programModelBuilder_2 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_programModelBuilder_2 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_programModelBuilder_3 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_programModelBuilder_3 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
-  protected : virtual PMSInt32 select_programModelBuilder_4 (C_Lexique_galgas_5F_scanner *) = 0 ;
+  protected : virtual int32_t select_programModelBuilder_4 (C_Lexique_galgas_5F_scanner *) = 0 ;
 
 
 } ;

@@ -82,7 +82,7 @@ C_HTML_FileWrite::~C_HTML_FileWrite (void) {
 //-----------------------------------------------------------------------------*
 
 void C_HTML_FileWrite::outputRawData (const char * in_Cstring) {
-  inherited::performActualCharArrayOutput (in_Cstring, (PMSInt32) (strlen (in_Cstring) & PMUINT32_MAX)) ;
+  inherited::performActualCharArrayOutput (in_Cstring, (int32_t) (strlen (in_Cstring) & UINT32_MAX)) ;
 }
 
 //-----------------------------------------------------------------------------*
@@ -90,8 +90,8 @@ void C_HTML_FileWrite::outputRawData (const char * in_Cstring) {
 //  Performs HTML character translation (i.e. '<' --> '&lt;', ...)           *
 //-----------------------------------------------------------------------------*
 
-void C_HTML_FileWrite::performActualCharArrayOutput (const char * inCharArray, const PMSInt32 inArrayCount) {
-  for (PMSInt32 i=0 ; i<inArrayCount ; i++) {
+void C_HTML_FileWrite::performActualCharArrayOutput (const char * inCharArray, const int32_t inArrayCount) {
+  for (int32_t i=0 ; i<inArrayCount ; i++) {
     const char c = inCharArray [i] ;
     switch (c) {
     case '<' :
