@@ -8,7 +8,7 @@ static TC_UniqueArray <categoryModifierSignature_%![CLASS_NAME identifierReprese
 
 //---------------------------------------------------------------------------*
 
-void enterCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%const PMSInt32 inClassIndex,
+void enterCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%const int32_t inClassIndex,
                %!^%categoryModifierSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% inModifier) {
   gCategoryModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.forceObjectAtIndex (inClassIndex, inModifier, NULL COMMA_HERE) ;
 }
@@ -52,7 +52,7 @@ void callCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%cPtr_
   if (NULL != inObject) {
     macroValidSharedObject (inObject, const cPtr_%![CLASS_NAME identifierRepresentation]%) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
-    const PMSInt32 classIndex = info->mSlotID ;
+    const int32_t classIndex = info->mSlotID ;
     categoryModifierSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% f = NULL ;
     if (classIndex < gCategoryModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]%.count ()) {
       f = gCategoryModifierTable_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% (classIndex COMMA_HERE) ;

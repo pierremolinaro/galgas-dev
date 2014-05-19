@@ -32,15 +32,15 @@
 
 class C_CRC32 {
 //--- Valeur initiale de la somme
-  public : static PMUInt32 getInitialValue (void) {
+  public : static uint32_t getInitialValue (void) {
      return 0xCAFECAFEUL ;
   }
 
-  public : static void addCharToChecksum (const char car, PMUInt32 & somme) ;
-  public : static void addLongToChecksum (const PMSInt32 v, PMUInt32 & somme) ;
-  public : static void addUnsignedLongToChecksum (const PMUInt32 v, PMUInt32 & somme) ;
-  public : static void addShortToChecksum (const PMSInt16 v, PMUInt32 & somme) ;
-  public : static void addStringToChecksum (const char * chaine, PMUInt32 & somme) ;
+  public : static void addCharToChecksum (const char car, uint32_t & somme) ;
+  public : static void addLongToChecksum (const int32_t v, uint32_t & somme) ;
+  public : static void addUnsignedLongToChecksum (const uint32_t v, uint32_t & somme) ;
+  public : static void addShortToChecksum (const int16_t v, uint32_t & somme) ;
+  public : static void addStringToChecksum (const char * chaine, uint32_t & somme) ;
 } ;
 
 //---------------------------------------------------------------------------*
