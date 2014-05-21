@@ -88,7 +88,7 @@ void C_DirectedGraph::removeNode (const uint32_t inNodeIndex) {
       const uint32_t targetIndex = targetList (i COMMA_HERE) ;
       mReverseEdges ((int32_t) targetIndex COMMA_HERE).remove (inNodeIndex) ;
     }
-    mEdges ((int32_t) inNodeIndex COMMA_HERE) = C_UIntSet () ;
+    mEdges.setObjectAtIndex (C_UIntSet (), (int32_t) inNodeIndex COMMA_HERE) ;
   }
   const uint32_t f = mNodeDefinition.firstValueNotIsSet () ;
   while (f < (uint32_t) mEdges.count ()) {
@@ -246,14 +246,14 @@ void C_DirectedGraph::getNodesInvolvedInCircularities (TC_UniqueArray <uint32_t>
     for (int32_t i=0 ; i<nodes.count () ; i++) {
       if (nodes (i COMMA_HERE) && ((successorCount (i COMMA_HERE) == 0) || (predecessorCount (i COMMA_HERE) == 0))) {
         loop = true ;
-        nodes (i COMMA_HERE) = false ;
+        nodes.setObjectAtIndex (false, i COMMA_HERE) ;
         TC_UniqueArray <uint32_t> s ; mEdges (i COMMA_HERE).getValueArray (s) ;
         for (int32_t j=0 ; j<s.count () ; j++) {
-          predecessorCount ((int32_t) s (j COMMA_HERE) COMMA_HERE) -- ;
+          predecessorCount.decrementAtIndex ((int32_t) s (j COMMA_HERE) COMMA_HERE) ;
         }
         mReverseEdges (i COMMA_HERE).getValueArray (s) ;
         for (int32_t j=0 ; j<s.count () ; j++) {
-          successorCount ((int32_t) s (j COMMA_HERE) COMMA_HERE) -- ;
+          successorCount.decrementAtIndex ((int32_t) s (j COMMA_HERE) COMMA_HERE) ;
         }
       }
     }
@@ -284,7 +284,7 @@ C_DirectedGraph C_DirectedGraph::subGraphFromNodes (const C_UIntSet & inStartNod
       const uint32_t sourceNodeIndex = sourceNodeArray (i COMMA_HERE) ;
       if (nodeBoolArray ((int32_t) sourceNodeIndex COMMA_HERE)) {
         loop = true ;
-        nodeBoolArray ((int32_t) sourceNodeIndex COMMA_HERE) = false ;
+        nodeBoolArray.setObjectAtIndex (false, (int32_t) sourceNodeIndex COMMA_HERE) ;
         C_UIntSet s = mEdges ((int32_t) sourceNodeIndex COMMA_HERE) ;
         s -= inNodesToExclude ;
         nodeSet |= s ;
@@ -305,7 +305,7 @@ void C_DirectedGraph::removeEdgesToNode (const uint32_t inNodeIndex
 //--- get nodes that have edges to this node
   const C_UIntSet nodeSet = mReverseEdges ((int32_t) inNodeIndex COMMA_THERE) ;
 //--- Remove edges in reverse egde array
-  mReverseEdges ((int32_t) inNodeIndex COMMA_THERE) = C_UIntSet () ;
+  mReverseEdges.setObjectAtIndex (C_UIntSet (), (int32_t) inNodeIndex COMMA_THERE) ;
 //--- Remove edge in direct edge array
   TC_UniqueArray <uint32_t> sourceNodeArray ; nodeSet.getValueArray (sourceNodeArray) ;
   for (int32_t i=0 ; i<sourceNodeArray.count () ; i++) {
@@ -357,7 +357,7 @@ void C_DirectedGraph::topologicalSort (TC_UniqueArray <uint32_t> & outSortedNode
   for (int32_t i=0 ; i<mReverseEdges.count () ; i++) {
     TC_UniqueArray <uint32_t> s ; mReverseEdges (i COMMA_HERE).getValueArray (s) ;
     for (int32_t j=0 ; j<s.count () ; j++) {
-      dependencyCount ((int32_t) s (j COMMA_HERE) COMMA_HERE) ++ ;
+      dependencyCount.incrementAtIndex ((int32_t) s (j COMMA_HERE) COMMA_HERE) ;
     }
   }
 //--- Loop
@@ -369,10 +369,10 @@ void C_DirectedGraph::topologicalSort (TC_UniqueArray <uint32_t> & outSortedNode
       if (nodes (i COMMA_HERE) && (dependencyCount (i COMMA_HERE) == 0)) {
         loop = true ;
         outSortedNodes.addObject ((uint32_t) i) ;
-        nodes (i COMMA_HERE) = false ;
+        nodes.setObjectAtIndex (false, i COMMA_HERE) ;
         mReverseEdges (i COMMA_HERE).getValueArray (s) ;
         for (int32_t j=0 ; j<s.count () ; j++) {
-          dependencyCount ((int32_t) s (j COMMA_HERE) COMMA_HERE) -- ;
+          dependencyCount.decrementAtIndex ((int32_t) s (j COMMA_HERE) COMMA_HERE) ;
         }
       }
     }
@@ -397,7 +397,7 @@ void C_DirectedGraph::depthFirstTopologicalSort (TC_UniqueArray <uint32_t> & out
   for (int32_t i=0 ; i<mReverseEdges.count () ; i++) {
     TC_UniqueArray <uint32_t> s ; mReverseEdges (i COMMA_HERE).getValueArray (s) ;
     for (int32_t j=0 ; j<s.count () ; j++) {
-      dependencyCount ((int32_t) s (j COMMA_HERE) COMMA_HERE) ++ ;
+      dependencyCount.incrementAtIndex ((int32_t) s (j COMMA_HERE) COMMA_HERE) ;
     }
   }
 //--- Loop
@@ -408,7 +408,7 @@ void C_DirectedGraph::depthFirstTopologicalSort (TC_UniqueArray <uint32_t> & out
   //--- Find a node without any dependence  
     for (int32_t i=0 ; (i<dependencyCount.count ()) && (workingArray.count () == 0) ; i++) {
       if (nodes (i COMMA_HERE) && (dependencyCount (i COMMA_HERE) == 0)) {
-        nodes (i COMMA_HERE) = false ;
+        nodes.setObjectAtIndex (false, i COMMA_HERE) ;
         workingArray.addObject ((uint32_t) i) ;
       }
     }
@@ -420,10 +420,10 @@ void C_DirectedGraph::depthFirstTopologicalSort (TC_UniqueArray <uint32_t> & out
       mReverseEdges ((int32_t) node COMMA_HERE).getValueArray (s) ;
       for (int32_t j=0 ; j<s.count () ; j++) {
         const uint32_t candidate = s (j COMMA_HERE) ;
-        dependencyCount ((int32_t) candidate COMMA_HERE) -- ;
+        dependencyCount.decrementAtIndex ((int32_t) candidate COMMA_HERE) ;
         if (dependencyCount ((int32_t) candidate COMMA_HERE) == 0) {
           workingArray.addObject (candidate) ;
-          nodes ((int32_t) candidate COMMA_HERE) = false ;
+          nodes.setObjectAtIndex (false, (int32_t) candidate COMMA_HERE) ;
         }
       }
     }
@@ -455,8 +455,8 @@ void C_DirectedGraph::getDominators (TC_UniqueArray <C_UIntSet> & outDominators
   MF_AssertThere (startNodeArray.count () == 1, "startNodeArray.count () == %lld != 1", startNodeArray.count (), 0) ;
   for (int32_t i=0 ; i<startNodeArray.count () ; i++) {
     const uint32_t startNode = startNodeArray (i COMMA_HERE) ;
-    outDominators ((int32_t) startNode COMMA_HERE) = C_UIntSet (startNode) ;
-    startNodeFlag ((int32_t) startNode COMMA_HERE) = true ;
+    outDominators.setObjectAtIndex (C_UIntSet (startNode), (int32_t) startNode COMMA_HERE) ;
+    startNodeFlag.setObjectAtIndex (true, (int32_t) startNode COMMA_HERE) ;
   }
 //--- 
   bool loop = true ;
@@ -475,7 +475,7 @@ void C_DirectedGraph::getDominators (TC_UniqueArray <C_UIntSet> & outDominators
         newDominators.add ((uint32_t) node) ;
       //--- Replace if not equal
         if (newDominators != outDominators (node COMMA_HERE)) {
-          outDominators (node COMMA_HERE) = newDominators ;
+          outDominators.setObjectAtIndex (newDominators, node COMMA_HERE) ;
           loop = true ;
         }
       }    

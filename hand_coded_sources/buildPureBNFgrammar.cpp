@@ -514,19 +514,19 @@ buildProductionsArray (const int32_t inTerminalSymbolsCount,
   for (int32_t i=0 ; i<nombreProductions ; i++) {
     cProduction & p = this->operator () (i COMMA_HERE) ;
     if (! productionTraitee (i COMMA_HERE)) {
-      productionTraitee (i COMMA_HERE) = true ;
+      productionTraitee.setObjectAtIndex (true, i COMMA_HERE) ;
       const int32_t g = ((int32_t) p.aNumeroNonTerminalGauche) - inTerminalSymbolsCount ;
-      tableauIndicePremiereProduction (g COMMA_HERE) = indiceIndirection ;
-      tableauIndirectionProduction (indiceIndirection COMMA_HERE) = i ;
+      tableauIndicePremiereProduction.setObjectAtIndex (indiceIndirection, g COMMA_HERE) ;
+      tableauIndirectionProduction.setObjectAtIndex (i, indiceIndirection COMMA_HERE) ;
       for (int32_t j=i+1 ; j<nombreProductions ; j++) {
         cProduction & pj = this->operator () (j COMMA_HERE) ;
         if (p.aNumeroNonTerminalGauche == pj.aNumeroNonTerminalGauche) {
           indiceIndirection ++ ;
-          tableauIndirectionProduction (indiceIndirection COMMA_HERE) = j ;
-          productionTraitee (j COMMA_HERE) = true ;
+          tableauIndirectionProduction.setObjectAtIndex (j, indiceIndirection COMMA_HERE) ;
+          productionTraitee.setObjectAtIndex (true, j COMMA_HERE) ;
         }
       }
-      tableauIndiceDerniereProduction (g COMMA_HERE) = indiceIndirection ;
+      tableauIndiceDerniereProduction.setObjectAtIndex (indiceIndirection, g COMMA_HERE) ;
       indiceIndirection ++ ;
     }
   }

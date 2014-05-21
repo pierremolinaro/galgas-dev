@@ -494,7 +494,7 @@ void C_Lexique::lexicalErrorAtLocation (const C_String & inLexicalErrorMessage,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                Signaler une erreur syntaxique                             *
+//                Signaler une erreur syntaxique                               *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -502,12 +502,11 @@ void C_Lexique::parsingError (const TC_UniqueArray <int16_t> & inExpectedTermina
                               const int16_t inCurrentTokenCode
                               COMMA_LOCATION_ARGS) {
 //--- Build error message
-  C_String foundTokenMessage ;
-  appendTerminalMessageToSyntaxErrorMessage (inCurrentTokenCode, foundTokenMessage) ;
+  C_String foundTokenMessage = getMessageForTerminal (inCurrentTokenCode) ;
   const int32_t expectedTerminalsCount = inExpectedTerminalsArray.count () ;
   TC_UniqueArray <C_String> expectedTokenNames (expectedTerminalsCount, C_String () COMMA_HERE) ;
   for (int32_t i=0 ; i<expectedTerminalsCount ; i++) {
-    appendTerminalMessageToSyntaxErrorMessage (inExpectedTerminalsArray (i COMMA_HERE), expectedTokenNames (i COMMA_HERE)) ;
+    expectedTokenNames (i COMMA_HERE) = getMessageForTerminal (inExpectedTerminalsArray (i COMMA_HERE)) ;
   }
 //--- Sort expected token name array
   expectedTokenNames.sortArrayUsingCompareMethod () ;
@@ -560,8 +559,7 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int16_t inTerminal,
                                                  const TC_Array <int16_t> & inErrorStack,
                                                  const int16_t inErrorProgramCounter) {
   #ifdef TRACE_LL1_PARSING
-    C_String m ;
-    appendTerminalMessageToSyntaxErrorMessage (inTerminal, m) ;
+    C_String m = getMessageForTerminal (inTerminal) ;
     co << "------ Enter 'acceptTerminalForErrorSignaling' with '"
        << m
        << "' ("
@@ -582,7 +580,7 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int16_t inTerminal,
       accept = reachedTerminal == inTerminal ;
       #ifdef TRACE_LL1_PARSING
         m.removeAllObjects () ;
-        appendTerminalMessageToSyntaxErrorMessage (reachedTerminal, m) ;
+        m = getMessageForTerminal (reachedTerminal) ;
         co << "reached '"
            << m
            << "' terminal"
@@ -615,7 +613,7 @@ bool C_Lexique::acceptTerminalForErrorSignaling (const int16_t inTerminal,
             found = inDecisionTable [nonTerminalEntry] == inTerminal ;
             #ifdef TRACE_LL1_PARSING
               m.removeAllObjects () ;
-              appendTerminalMessageToSyntaxErrorMessage (inDecisionTable [nonTerminalEntry], m) ;
+              m = getMessageForTerminal (inDecisionTable [nonTerminalEntry]) ;
               co << "try '" << m << "' non terminal" << (found ? " (accepted)": "") << "\n" ; co.flush () ;
             #endif
             if (found) {
@@ -692,8 +690,7 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int16_t inErrorP
     if (inProductions [programCounter] > 0) { // We reach a terminal (when >0)
       loop = false ;
       #ifdef TRACE_LL1_PARSING
-        C_String m ;
-        appendTerminalMessageToSyntaxErrorMessage (inProductions [programCounter], m) ;
+        C_String m = getMessageForTerminal (inProductions [programCounter]) ;
         co << "Terminal '" << m << "' (" << inProductions [programCounter] << ") reached\n" ;
         co.flush () ;
       #endif
@@ -742,8 +739,7 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int16_t inErrorP
     const int16_t terminalSymbol = (int16_t) (inProductions [programCounter] - 1) ;
     outExpectedTerminalsArray.addObject (terminalSymbol) ;
     #ifdef TRACE_LL1_PARSING
-      C_String m ;
-      appendTerminalMessageToSyntaxErrorMessage (inProductions [programCounter], m) ;
+      C_String m = getMessageForTerminal (inProductions [programCounter]) ;
       co << "add '" << m << "' (" << inProductions [programCounter] << ") to outExpectedTerminalsArray\n" ;
       co.flush () ;
     #endif
@@ -762,8 +758,7 @@ void C_Lexique::buildExpectedTerminalsArrayOnSyntaxError (const int16_t inErrorP
                                                         programCounter) ;
         if (ok) {
           #ifdef TRACE_LL1_PARSING
-            C_String m ;
-            appendTerminalMessageToSyntaxErrorMessage (inDecisionTable [nonTerminalEntry], m) ;
+            C_String m = getMessageForTerminal (inDecisionTable [nonTerminalEntry]) ;
             co << "add '" << m << "' (" << inDecisionTable [nonTerminalEntry] << ") to outExpectedTerminalsArray\n" ;
             co.flush () ;
           #endif
@@ -906,8 +901,7 @@ bool C_Lexique::performTopDownParsing (const int16_t inProductions [],
             while ((inDecisionTable [nonTerminalEntry] >= 0) && ! found) {
               found = currentToken == inDecisionTable [nonTerminalEntry] ;
               #ifdef TRACE_LL1_PARSING
-                C_String m ;
-                appendTerminalMessageToSyntaxErrorMessage (inDecisionTable [nonTerminalEntry], m) ;
+                C_String m = getMessageForTerminal (inDecisionTable [nonTerminalEntry]) ;
                 co << " try " << m << " (" << inDecisionTable [nonTerminalEntry]
                    << ")" << (found ? " (accepted)" : "") << "\n" ;
                 co.flush () ;
@@ -1440,10 +1434,8 @@ void C_Lexique::acceptTerminal (FORMAL_ARG_ACCEPT_TERMINAL COMMA_LOCATION_ARGS) 
   }
   #ifndef DO_NOT_GENERATE_CHECKINGS
     if (currentTokenCode != inExpectedTerminal) {
-      C_String currentTokenString ;
-      appendTerminalMessageToSyntaxErrorMessage (currentTokenCode, currentTokenString) ;
-      C_String expectedTokenString ;
-      appendTerminalMessageToSyntaxErrorMessage (inExpectedTerminal, expectedTokenString) ;
+      const C_String currentTokenString = getMessageForTerminal (currentTokenCode) ;
+      const C_String expectedTokenString = getMessageForTerminal (inExpectedTerminal) ;
       MF_AssertThere (false,
                       "Internal second pass parsing error (current token:%s, expected token:%s)",
                       (intptr_t) currentTokenString.cString (HERE),

@@ -41,9 +41,8 @@
 //--- Parse lexical token
   protected : virtual bool parseLexicalToken (void) ;
 
-//--- Append terminal message
-  protected : virtual void appendTerminalMessageToSyntaxErrorMessage (const int16_t numeroTerminal,
-                                                              C_String & messageErreur) ;
+//--- Get terminal message
+  protected : virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const ;
 
 //--- Get terminal count
   public : virtual int16_t terminalVocabularyCount (void) const { return %![[[LEXIQUE_ANALYSIS_CONTEXT mTerminalList] length] string]% ; }
