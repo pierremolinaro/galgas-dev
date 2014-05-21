@@ -8,7 +8,7 @@
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 1997, ..., 2012 Pierre Molinaro.                             *
+//  Copyright (C) 1997, ..., 2014 Pierre Molinaro.                             *
 //                                                                             *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //                                                                             *
@@ -136,7 +136,14 @@ template <typename TYPE> class TC_UniqueArray {
 
 //--- Remove all objects and deallocate
   public : void free (void) ;
-  
+
+//--- Increment, decrement
+  public : void incrementAtIndex (const int32_t inIndex
+                                  COMMA_LOCATION_ARGS) ; // ++ on object
+
+  public : void decrementAtIndex (const int32_t inIndex
+                                  COMMA_LOCATION_ARGS) ; // -- on object
+
 //--- Add objects at the end of the array
   public : void addObject (const TYPE & inValue) ; // inValue is copied
   public : void addObjectIfUnique (const TYPE & inValue) ; // Test is based on == operator, and inValue is copied
@@ -240,9 +247,9 @@ template <typename TYPE> class TC_UniqueArray {
                                   COMMA_LOCATION_ARGS) ;
 
   public : TYPE & operator () (const int32_t inIndex COMMA_LOCATION_ARGS) ;
-
+    
   public : const TYPE & operator () (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
-
+    
 //--- Private methods
   private : void internalSortArrayUsingOperators (const int32_t inFirst,
                                                   const int32_t inLast) ;
@@ -879,6 +886,28 @@ void TC_UniqueArray <TYPE>::setObjectAtIndex (const TYPE & inObject,
   if (NULL != mArray) {
     mArray [inIndex] = inObject ;
   }
+}
+
+//-----------------------------------------------------------------------------*
+
+template <typename TYPE>
+void TC_UniqueArray <TYPE>::incrementAtIndex (const int32_t inIndex
+                                              COMMA_LOCATION_ARGS) {
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkIndex (inIndex COMMA_THERE) ;
+  #endif
+  mArray [inIndex] ++ ;
+}
+
+//-----------------------------------------------------------------------------*
+
+template <typename TYPE>
+void TC_UniqueArray <TYPE>::decrementAtIndex (const int32_t inIndex
+                                              COMMA_LOCATION_ARGS) {
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    checkIndex (inIndex COMMA_THERE) ;
+  #endif
+  mArray [inIndex] -- ;
 }
 
 //-----------------------------------------------------------------------------*

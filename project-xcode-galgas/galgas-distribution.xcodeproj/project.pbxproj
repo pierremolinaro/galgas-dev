@@ -2657,7 +2657,7 @@
 				);
 				INSTALL_PATH = /usr/local/bin;
 				LD_GENERATE_MAP_FILE = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 			};
 			name = Default;
 		};

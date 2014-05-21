@@ -1,9 +1,9 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-// Routines for FOLLOWS sets                                                 *
+// Routines for FOLLOWS sets                                                   *
 //                                                                             *
 //  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                             *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
 //                                                                             *

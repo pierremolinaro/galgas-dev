@@ -96,18 +96,17 @@ C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::indexingDirectory (void) const {
 %
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                appendTerminalMessageToSyntaxErrorMessage                    *
+//                getMessageForTerminal                                        *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-void C_Lexique_%!LEXIQUE_IDENTIFIER%::appendTerminalMessageToSyntaxErrorMessage (const int16_t inTerminalIndex,
-                                           C_String & outSyntaxErrorMessage) {
+C_String C_Lexique_%!LEXIQUE_IDENTIFIER%::getMessageForTerminal (const int16_t inTerminalIndex) const {
   static const utf32 * syntaxErrorMessageArray [%![[TERMINAL_LIST length] + 1 string]%] = {kEndOfSourceLexicalErrorMessage%
   foreach TERMINAL_LIST do
    %,\n    gSyntaxErrorMessage_%![[mTerminalName string] identifierRepresentation]
   end foreach
 %} ;
-  outSyntaxErrorMessage << syntaxErrorMessageArray [inTerminalIndex] ;
+  return syntaxErrorMessageArray [inTerminalIndex] ;
 }
 
 //-----------------------------------------------------------------------------*

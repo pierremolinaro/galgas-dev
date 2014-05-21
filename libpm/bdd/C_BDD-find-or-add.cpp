@@ -631,7 +631,7 @@ void C_BDD::printBDDpackageOperationsSummary (AC_OutputStream & inStream) {
       nodeIndex = gNodeArray [nodeIndex].mAuxiliary ;
     }
     if (entrySizeArray.count () > length) {
-      entrySizeArray (length COMMA_HERE) ++ ;
+      entrySizeArray.incrementAtIndex (length COMMA_HERE) ;
     }else{
       entrySizeArray.forceObjectAtIndex (length, 1, 0 COMMA_HERE) ;
     }

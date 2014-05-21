@@ -397,14 +397,16 @@ void signalCastError (const C_SourceTextInString * inSourceTextPtr,
     errorMessage << errorOrWarningLocationString (inErrorLocation, inSourceTextPtr)
                  << "error: " ;
   }
-  errorMessage << "  - " << expectedClassMessageArray (0 COMMA_HERE) ;
-  for (int32_t i=1 ; i<expectedClassMessageArray.count () ; i++) {
-    errorMessage << ";\n" ;
-    if (! gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue) {
-      errorMessage << errorOrWarningLocationString (inErrorLocation, inSourceTextPtr)
-                   << "error: " ;
+  if (expectedClassMessageArray.count () > 0) {
+    errorMessage << "  - " << expectedClassMessageArray (0 COMMA_HERE) ;
+    for (int32_t i=1 ; i<expectedClassMessageArray.count () ; i++) {
+      errorMessage << ";\n" ;
+      if (! gOption_galgas_5F_builtin_5F_options_verbose_5F_output.mValue) {
+        errorMessage << errorOrWarningLocationString (inErrorLocation, inSourceTextPtr)
+                     << "error: " ;
+      }
+      errorMessage << "  - " << expectedClassMessageArray (i COMMA_HERE) ;
     }
-    errorMessage << "  - " << expectedClassMessageArray (i COMMA_HERE) ;  
   }
   errorMessage << ".\n" ;
 //--- Print

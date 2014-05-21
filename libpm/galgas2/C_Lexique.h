@@ -144,8 +144,8 @@ class C_Lexique : public C_Compiler {
                                  const int16_t inCurrentTokenCode
                                  COMMA_LOCATION_ARGS) ;
 
-  protected : virtual void appendTerminalMessageToSyntaxErrorMessage (const int16_t inTerminalSymbol,
-                                                                      C_String & ioErrorMessage) = 0 ;
+//--- Get message for terminal
+  protected : virtual C_String getMessageForTerminal (const int16_t inTerminalSymbol) const = 0 ;
 
 //--- Static method for searching a string in an ordered list
 //    returns -1 if not found, and associated code if found
