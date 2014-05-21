@@ -353,12 +353,10 @@ local routine build_LIBPM_COLLECTIONS_group
   fileList += !"TC_Array2.h" ;
   fileList += !"TC_BlockBinaryTreeForCollision.h" ;
   fileList += !"TC_Block_AVL_TreeForCollision.h" ;
-  fileList += !"TC_FixedSizeArray.h" ;
   fileList += !"TC_HashMap.h" ;
   fileList += !"TC_LinearListForCollision.h" ;
   fileList += !"TC_UniqueArray.h" ;
   fileList += !"TC_UniqueArray2.h" ;
-  fileList += !"TC_UniqueFixedSizeArray.h" ;
   fileList += !"TF_AVL_Tree.h" ;
 #---
   enter_files_in_group

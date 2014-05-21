@@ -71,7 +71,7 @@ template <typename TYPE> class TC_Array2 {
 //--- Acces
   #ifndef DO_NOT_GENERATE_CHECKINGS
     public : TYPE & operator () (const int32_t indiceLigne, const int32_t indiceColonne COMMA_LOCATION_ARGS) ;
-    public : const TYPE & operator () (const int32_t indiceLigne, const int32_t indiceColonne COMMA_LOCATION_ARGS) const ;
+    public : const TYPE operator () (const int32_t indiceLigne, const int32_t indiceColonne COMMA_LOCATION_ARGS) const ;
     protected : size_t long2size_t (const int32_t indiceLigne, const int32_t indiceColonne COMMA_LOCATION_ARGS) const {
       MF_AssertThere (indiceLigne >= 0, "indice ligne (%ld) < 0", indiceLigne, 0) ;
       MF_AssertThere (indiceLigne < mCurrentRowCount, "indice ligne (%ld) >= nombre de lignes (%ld)", indiceLigne, mCurrentRowCount) ;
@@ -79,6 +79,10 @@ template <typename TYPE> class TC_Array2 {
       MF_AssertThere (indiceColonne < mCurrentColumnCount, "indice ligne (%ld) >= nombre de colonnes (%ld)", indiceColonne, mCurrentColumnCount) ;
       return (size_t) (indiceLigne * mCurrentColumnCount + indiceColonne) ;
     }
+    public : void setObjectAtIndexes (const TYPE & inObject,
+                                      const int32_t indiceLigne,
+                                      const int32_t indiceColonne
+                                      COMMA_LOCATION_ARGS) ;
   #endif
 
   #ifdef DO_NOT_GENERATE_CHECKINGS
@@ -86,9 +90,15 @@ template <typename TYPE> class TC_Array2 {
                                         const int32_t indiceColonne) {
       return mArray [(size_t) (indiceLigne * mCurrentColumnCount + indiceColonne)] ;
     }
-    public : inline const TYPE & operator () (const int32_t indiceLigne,
-                                              const int32_t indiceColonne) const {
+    public : inline const TYPE operator () (const int32_t indiceLigne,
+                                            const int32_t indiceColonne) const {
       return mArray [(size_t) (indiceLigne * mCurrentColumnCount + indiceColonne)] ;
+    }
+    public : inline void setObjectAtIndexes (const TYPE & inObject,
+                                             const int32_t indiceLigne,
+                                             const int32_t indiceColonne
+                                             COMMA_LOCATION_ARGS) {
+      mArray [(size_t) (indiceLigne * mCurrentColumnCount + indiceColonne)] = inObject ;
     }
   #endif
 
@@ -219,7 +229,9 @@ reallocArray (const int32_t inRowCount,
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   template <typename TYPE>
-  TYPE & TC_Array2 <TYPE>::operator () (const int32_t indiceLigne, const int32_t indiceColonne COMMA_LOCATION_ARGS) {
+  TYPE & TC_Array2 <TYPE>::operator () (const int32_t indiceLigne,
+                                        const int32_t indiceColonne
+                                        COMMA_LOCATION_ARGS) {
     return mArray [long2size_t (indiceLigne, indiceColonne COMMA_THERE)] ;
   }
 #endif
@@ -228,8 +240,22 @@ reallocArray (const int32_t inRowCount,
 
 #ifndef DO_NOT_GENERATE_CHECKINGS
   template <typename TYPE>
-  const TYPE & TC_Array2 <TYPE>::operator () (const int32_t indiceLigne, const int32_t indiceColonne COMMA_LOCATION_ARGS) const {
+  const TYPE TC_Array2 <TYPE>::operator () (const int32_t indiceLigne,
+                                            const int32_t indiceColonne
+                                            COMMA_LOCATION_ARGS) const {
     return mArray [long2size_t (indiceLigne, indiceColonne COMMA_THERE)] ;
+  }
+#endif
+
+//-----------------------------------------------------------------------------*
+
+#ifndef DO_NOT_GENERATE_CHECKINGS
+  template <typename TYPE>
+  void TC_Array2 <TYPE>::setObjectAtIndexes (const TYPE & inObject,
+                                             const int32_t indiceLigne,
+                                             const int32_t indiceColonne
+                                             COMMA_LOCATION_ARGS) {
+    mArray [long2size_t (indiceLigne, indiceColonne COMMA_THERE)] = inObject ;
   }
 #endif
 
