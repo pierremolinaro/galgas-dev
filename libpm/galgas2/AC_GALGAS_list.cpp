@@ -23,7 +23,7 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-#include "predefined-types.h"
+#include "galgas2/predefined-types.h"
 #include "utilities/MF_MemoryControl.h"
 #include "utilities/M_Threads.h"
 #include "galgas2/C_Compiler.h"

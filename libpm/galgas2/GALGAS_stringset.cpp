@@ -23,9 +23,9 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-#include "predefined-types.h"
+#include "galgas2/predefined-types.h"
 #include "utilities/MF_MemoryControl.h"
-#include "cCollectionElement.h"
+#include "galgas2/cCollectionElement.h"
 #include "galgas2/C_Compiler.h"
 
 //-----------------------------------------------------------------------------*

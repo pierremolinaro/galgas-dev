@@ -1,9 +1,11 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Pure BNF production rules list                                           *
+//  Pure BNF production rules list                                             *
 //                                                                             *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  Copyright (C) 1999-2014 Pierre Molinaro.                                   *
+//                                                                             *
+//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
+//                                                                             *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
 //                                                                             *
@@ -36,16 +38,37 @@ class C_TextFileWrite ;
 //-----------------------------------------------------------------------------*
 
 class cProduction {
-  public : C_String mSourceFileName ;
-  public : int32_t aLigneDefinition ;
-  public : int32_t aColonneDefinition ;
-  public : int32_t aNumeroNonTerminalGauche ;
-  public : TC_UniqueArray <int16_t> aDerivation ;
-  public : C_BDD_Set1 aPremierDeProduction ;
-  public : uint32_t mProductionIndex ;
+  private : C_String mSourceFileName ;
+  private : int32_t mLineDefinition ;
+  private : int32_t mColumnDefinition ;
+  private : int32_t mLeftNonTerminalIndex ;
+  private : TC_UniqueArray <int16_t> mDerivation ;
+  public : C_BDD_Set1 mDerivationFirst ;
+  private : uint32_t mProductionIndex ;
 
 //--- Constructor
   public : cProduction (void) ;
+  public : cProduction (const C_String & inSourceFileName,
+                        const int32_t inDefinitionLine,
+                        const int32_t inColumnDefinition,
+                        const int32_t inLeftNonTerminalIndex,
+                        TC_UniqueArray <int16_t> & ioDerivation, // Swap
+                        const uint32_t inProductionIndex) ;
+  public : cProduction (const C_String & inSourceFileName,
+                        const int32_t inDefinitionLine,
+                        const int32_t inColumnDefinition,
+                        const int32_t inLeftNonTerminalIndex) ;
+
+//--- Accessors
+  public : inline C_String sourceFileName (void) const { return mSourceFileName ; }
+  public : inline int32_t lineDefinition (void) const { return mLineDefinition ; }
+  public : inline int32_t columnDefinition (void) const { return mColumnDefinition ; }
+  public : inline int32_t leftNonTerminalIndex (void) const { return mLeftNonTerminalIndex ; }
+  public : inline uint32_t productionIndex (void) const { return mProductionIndex ; }
+  public : inline C_BDD_Set1 derivationFirst (void) const { return mDerivationFirst ; }
+
+  public : inline int32_t derivationLength (void) const { return mDerivation.count () ; }
+  public : inline int16_t derivationAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const { return mDerivation (inIndex COMMA_THERE) ; }
 
 //--- Generate a C++ call instruction of this production
   public : void engendrerAppelProduction (const int16_t nombreDeParametres,
@@ -56,6 +79,7 @@ class cProduction {
 //--- No copy
   private : cProduction (const cProduction &) ;
   private : cProduction & operator = (const cProduction &) ;
+
 
   friend void swap (cProduction & ioProduction1, cProduction & ioProduction2) ;
 } ;

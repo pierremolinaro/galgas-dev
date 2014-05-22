@@ -425,7 +425,7 @@ void cCollectionElement_data::description (C_String & ioString, const int32_t in
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//     cEnumerator_data class                                                *
+//     cEnumerator_data class                                                  *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

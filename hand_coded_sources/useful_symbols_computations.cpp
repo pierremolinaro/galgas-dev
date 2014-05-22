@@ -1,10 +1,10 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Routines for computing useful symbols of the pure BNF grammar            *
+//  Routines for computing useful symbols of the pure BNF grammar              *
 //                                                                             *
 //  Copyright (C) 1999, ..., 2009 Pierre Molinaro.                             *
 //                                                                             *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
 //                                                                             *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
@@ -16,7 +16,7 @@
 //  This program is distributed in the hope it will be useful, but WITHOUT     *
 //  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or      *
 //  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for   *
-//   more details.                                                           *
+//   more details.                                                             *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -48,26 +48,26 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
   C_BDD accessibility ;
   for (int32_t i=0 ; i<inPureBNFproductions.length () ; i++) {
     const cProduction & p = inPureBNFproductions (i COMMA_HERE) ;
-    if (p.aDerivation.count () > 0) {
+    if (p.derivationLength () > 0) {
       ex_rightVocabulary.clear () ;
       C_BDD rightVocabulary ;
-      for (int32_t j=0 ; j<p.aDerivation.count () ; j++) {
-        ex_rightSymbol.initDimension2 (C_BDD::kEqual, (uint16_t) p.aDerivation (j COMMA_HERE)) ;
+      for (int32_t j=0 ; j<p.derivationLength () ; j++) {
+        ex_rightSymbol.initDimension2 (C_BDD::kEqual, (uint16_t) p.derivationAtIndex (j COMMA_HERE)) ;
         ex_rightVocabulary |= ex_rightSymbol ;
         const C_BDD rightSymbol =
            C_BDD::varCompareConst (inBDDBitCount,
                                    inBDDBitCount,
                                    C_BDD::kEqual,
-                                   (uint32_t) p.aDerivation (j COMMA_HERE)) ;  
+                                   (uint32_t) p.derivationAtIndex (j COMMA_HERE)) ;  
         rightVocabulary |= rightSymbol ;
       }
       const C_BDD leftNonterminal =
            C_BDD::varCompareConst (0,
                                    inBDDBitCount,
                                    C_BDD::kEqual,
-                                   (uint32_t) p.aNumeroNonTerminalGauche) ;  
+                                   (uint32_t) p.leftNonTerminalIndex ()) ;  
       accessibility |= leftNonterminal & rightVocabulary ;
-      ex_leftNonterminal.initDimension1 (C_BDD::kEqual, (uint16_t) p.aNumeroNonTerminalGauche) ;
+      ex_leftNonterminal.initDimension1 (C_BDD::kEqual, (uint16_t) p.leftNonTerminalIndex ()) ;
       ex_accessibility |= ex_leftNonterminal & ex_rightVocabulary ;
     }
   } 

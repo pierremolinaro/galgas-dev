@@ -24,7 +24,7 @@
 //-----------------------------------------------------------------------------*
 
 #include "strings/unicode_character_cpp.h"
-#include "strings/cUnicodeData.h"
+#include "cUnicodeData.h"
 #include "strings/C_String.h"
 
 //-----------------------------------------------------------------------------*

@@ -23,11 +23,8 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-#include "capCollectionElementArray.h"
+#include "galgas2/capCollectionElementArray.h"
 #include "utilities/MF_MemoryControl.h"
-
-//-----------------------------------------------------------------------------*
-
 #include "strings/C_String.h"
 #include "galgas2/C_Compiler.h"
 

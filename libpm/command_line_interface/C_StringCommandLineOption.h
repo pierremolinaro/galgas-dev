@@ -28,7 +28,7 @@
 
 //-----------------------------------------------------------------------------*
 
-#include "command_line_interface/C_CommandLineOption.h"
+#include "C_CommandLineOption.h"
 #include "strings/C_String.h"
 
 //-----------------------------------------------------------------------------*

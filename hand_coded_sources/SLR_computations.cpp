@@ -1,10 +1,10 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//     Routines for SLR grammar computations                                 *
+//     Routines for SLR grammar computations                                   *
 //                                                                             *
 //  Copyright (C) 2002, ..., 2010 Pierre Molinaro.                             *
 //                                                                             *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
 //                                                                             *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
@@ -16,7 +16,7 @@
 //  This program is distributed in the hope it will be useful, but WITHOUT     *
 //  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or      *
 //  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for   *
-//   more details.                                                           *
+//   more details.                                                             *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -35,7 +35,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//    C L A S S    F O R   L R 0    I T E M                                  *
+//    C L A S S    F O R   L R 0    I T E M                                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -87,7 +87,7 @@ compare_LR0_items (const c_LR0_item & inItem1,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//    C L A S S    F O R   L R 0    I T E M S    S E T                       *
+//    C L A S S    F O R   L R 0    I T E M S    S E T                         *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -182,8 +182,8 @@ close_items_set (const cPureBNFproductionsList & inProductionRules,
     for (int32_t i=0 ; i<mItemsSet.count () ; i++) {
       const int32_t locationIndex = mItemsSet (i COMMA_HERE).mLocationIndex ;
       const int32_t productionRule = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
-      if (locationIndex < inProductionRules (productionRule COMMA_HERE).aDerivation.count ()) {
-        const int32_t prodX = inProductionRules (productionRule COMMA_HERE).aDerivation (locationIndex COMMA_HERE) - inTerminalSymbolsCount ;
+      if (locationIndex < inProductionRules (productionRule COMMA_HERE).derivationLength ()) {
+        const int32_t prodX = inProductionRules (productionRule COMMA_HERE).derivationAtIndex (locationIndex COMMA_HERE) - inTerminalSymbolsCount ;
         if (prodX >= 0) {
           const int32_t first = inProductionRules.tableauIndicePremiereProduction (prodX COMMA_HERE) ;
           MF_Assert (first >= 0, "first (%ld) < 0", first, 0) ;
@@ -217,16 +217,16 @@ display (const cPureBNFproductionsList & inProductionRules,
     const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
     inHTMLfile.outputRawData ("<span class=\"list\">") ;
     inHTMLfile << "[" ;
-    inVocabulary.printInFile (inHTMLfile, p.aNumeroNonTerminalGauche COMMA_HERE) ;
+    inVocabulary.printInFile (inHTMLfile, p.leftNonTerminalIndex () COMMA_HERE) ;
     inHTMLfile << " ->" ;
-    for (int32_t j=0 ; j<p.aDerivation.count () ; j++) {
+    for (int32_t j=0 ; j<p.derivationLength () ; j++) {
       if (j == location) {
         inHTMLfile << " ." ;      
       }
       inHTMLfile << " " ;
-      inVocabulary.printInFile (inHTMLfile, p.aDerivation (j COMMA_HERE) COMMA_HERE) ;
+      inVocabulary.printInFile (inHTMLfile, p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) ;
     }
-    if (location == p.aDerivation.count ()) {
+    if (location == p.derivationLength ()) {
       inHTMLfile << " ." ;      
     }
     inHTMLfile << "]" ;
@@ -245,8 +245,8 @@ getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
     const int32_t productionRuleIndex = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
     const cProduction & p = inProductionRules (productionRuleIndex COMMA_HERE) ;
     const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
-    if (location < p.aDerivation.count ()) {
-      const int32_t symbol = p.aDerivation (location COMMA_HERE) ;
+    if (location < p.derivationLength ()) {
+      const int32_t symbol = p.derivationAtIndex (location COMMA_HERE) ;
       if (symbol == inSymbol) {
         out_LR0_item_set.add_LR0_item (productionRuleIndex, location + 1) ;
       }
@@ -266,7 +266,7 @@ getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProduction
     const int32_t productionRuleIndex = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
     const cProduction & p = inProductionRules (productionRuleIndex COMMA_HERE) ;
     const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
-    if (location == p.aDerivation.count ()) {
+    if (location == p.derivationLength ()) {
       outProductionsSet.addObject (productionRuleIndex) ;
     }
     if ((productionRuleIndex == (inProductionRules.length () - 1)) && (location == 1)) {
@@ -308,7 +308,7 @@ void swap (c_LR0_items_set & ioOperand1, c_LR0_items_set & ioOperand2) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-// E L E M E N T    C L A S S    F O R   A V L    T R E E                    *
+// E L E M E N T    C L A S S    F O R   A V L    T R E E                      *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -360,7 +360,7 @@ compare (const c_LR0_items_set & in_LR0_items_set,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Rotate left                                                         *
+//       Rotate left                                                           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -383,7 +383,7 @@ static void rotateLeft (cLR0_items_sets_AVL_tree * & ioPtr) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//       Rotate right                                                        *
+//       Rotate right                                                          *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -491,7 +491,7 @@ recursiveSearchOrInsert (cLR0_items_sets_AVL_tree * & ioRootPointer,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-// C L A S S    F O R   L R 0    I T E M S    S E T S   C O L L E C T I O N  *
+// C L A S S    F O R   L R 0    I T E M S    S E T S   C O L L E C T I O N    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -606,7 +606,7 @@ getProductionsWhereLocationIsRight (const int32_t inStateIndex,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-// L R 0    A U T O M A T O N    T R A N S I T I O N                         *
+// L R 0    A U T O M A T O N    T R A N S I T I O N                           *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -644,7 +644,7 @@ mTargetState (inTargetState) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-// G E N E R A T E    S L R    A N A L Y Z E R                               *
+// G E N E R A T E    S L R    A N A L Y Z E R                                 *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -818,9 +818,9 @@ generate_SLR_grammar_cpp_file (C_Compiler * inCompiler,
     if (p > 0) {
       generatedZone3 << ",\n" ;
     }
-    generatedZone3 << "  " << cStringWithSigned (inProductionRules (p COMMA_HERE).aNumeroNonTerminalGauche - columnsCount)
+    generatedZone3 << "  " << cStringWithSigned (inProductionRules (p COMMA_HERE).leftNonTerminalIndex () - columnsCount)
             << ", "
-            << cStringWithSigned (inProductionRules (p COMMA_HERE).aDerivation.count ()) ;
+            << cStringWithSigned (inProductionRules (p COMMA_HERE).derivationLength ()) ;
   }
   generatedZone3 << "\n} ;\n\n" ;
 
@@ -1349,7 +1349,7 @@ SLR_computations (C_Compiler * inCompiler,
     }
     for (int32_t p=0 ; p<productionsSet.count () ; p++) {
       const int32_t productionIndex = productionsSet (p COMMA_HERE) ;
-      const int32_t leftNonTerminal = inProductionRules (productionIndex COMMA_HERE).aNumeroNonTerminalGauche ;
+      const int32_t leftNonTerminal = inProductionRules (productionIndex COMMA_HERE).leftNonTerminalIndex () ;
       for (int32_t f=0 ; f<inFOLLOWarray (leftNonTerminal COMMA_HERE).count () ; f++) {
         const int32_t terminal = inFOLLOWarray (leftNonTerminal COMMA_HERE) (f COMMA_HERE) ;
         if (inHTMLfile != NULL) {

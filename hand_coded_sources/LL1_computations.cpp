@@ -1,10 +1,10 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Routines for checking LL(1) condition                                    *
+//  Routines for checking LL(1) condition                                      *
 //                                                                             *
-//  Copyright (C) 1994, ..., 2010 Pierre Molinaro.                             *
+//  Copyright (C) 1994, ..., 2014 Pierre Molinaro.                             *
 //                                                                             *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
 //                                                                             *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
@@ -123,24 +123,24 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
           }
           cProduction & p = inPureBNFproductions (numeroProduction COMMA_HERE) ;
           premierDeProduction.clear () ;
-          if (p.aDerivation.count () == 0) {
-            temp.initDimension1 (C_BDD::kEqual, (uint32_t) p.aNumeroNonTerminalGauche) ;
-            p.aPremierDeProduction = (temp & inFOLLOWsets).projeterSurAxe2 () ;
+          if (p.derivationLength () == 0) {
+            temp.initDimension1 (C_BDD::kEqual, (uint32_t) p.leftNonTerminalIndex ()) ;
+            p.mDerivationFirst = (temp & inFOLLOWsets).projeterSurAxe2 () ;
           }else{
-            const uint32_t elementEnTete = (uint32_t) p.aDerivation (0 COMMA_HERE) ;
+            const uint32_t elementEnTete = (uint32_t) p.derivationAtIndex (0 COMMA_HERE) ;
             t.initDimension1 (C_BDD::kEqual, elementEnTete) ;
             if (((int32_t) elementEnTete) < terminalSymbolsCount) {
-              p.aPremierDeProduction = t.projeterSurAxe1 () ;
+              p.mDerivationFirst = t.projeterSurAxe1 () ;
             }else{
-              p.aPremierDeProduction = (t & inFIRSTsets).projeterSurAxe2 () ;
+              p.mDerivationFirst = (t & inFIRSTsets).projeterSurAxe2 () ;
               if (vocabulaireSeDerivantEnVide ((int32_t) elementEnTete COMMA_HERE)) {
-                p.aPremierDeProduction |= (t & inFOLLOWsets).projeterSurAxe2 () ;
+                p.mDerivationFirst |= (t & inFOLLOWsets).projeterSurAxe2 () ;
               }
             }
           }
           if (inHTMLfile != NULL) {
             TC_UniqueArray <bool> array ;
-            p.aPremierDeProduction.getArray (array) ;
+            p.derivationFirst ().getArray (array) ;
             const int32_t symbolsCount = inVocabulary.getAllSymbolsCount () ;
             for (int32_t symbol=0 ; symbol < symbolsCount ; symbol++) {
               if (array (symbol COMMA_HERE)) {
@@ -156,8 +156,8 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
           const int32_t numeroProductionJ = inPureBNFproductions.tableauIndirectionProduction (pr1 COMMA_HERE) ;
           for (int32_t k=pr1+1 ; k<=derniere ; k++) {
             const int32_t numeroProductionK = inPureBNFproductions.tableauIndirectionProduction (k COMMA_HERE) ;
-            if (! (inPureBNFproductions(numeroProductionJ COMMA_HERE).aPremierDeProduction &
-                  inPureBNFproductions(numeroProductionK COMMA_HERE).aPremierDeProduction).isFalse ()) {
+            if (! (inPureBNFproductions(numeroProductionJ COMMA_HERE).derivationFirst () &
+                  inPureBNFproductions(numeroProductionK COMMA_HERE).derivationFirst ()).isFalse ()) {
               nombreDeConflits ++ ;
               if (inHTMLfile != NULL) {
                 inHTMLfile->outputRawData ("<tr><td colspan=\"2\"><span class=\"error\">") ;
@@ -341,20 +341,20 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
       ioProductionRulesIndex.addObject (ioProductionIndex) ;
       cProduction & p = inPureBNFproductions (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
       C_String title ;
-      inVocabulary.printInFile (title, p.aNumeroNonTerminalGauche COMMA_HERE) ;
-      const C_ProductionNameDescriptor description (title, p.mSourceFileName, (uint32_t) ioProductionIndex) ;
+      inVocabulary.printInFile (title, p.leftNonTerminalIndex () COMMA_HERE) ;
+      const C_ProductionNameDescriptor description (title, p.sourceFileName (), (uint32_t) ioProductionIndex) ;
       ioProductionRuleDescription.addObject (description) ;
       title << ", in file '" 
-            << p.mSourceFileName
+            << p.sourceFileName ()
             << ".ggs', line "
-            << cStringWithSigned (p.aLigneDefinition) ;
+            << cStringWithSigned (p.lineDefinition ()) ;
       inCppFile << "// At index "
                 << cStringWithSigned (ioProductionIndex)
                 << " : "
                 << title 
                 << "\n" ;
       ioProductionRulesTitle.addObjectUsingSwap (title) ;
-      const int32_t derivationLength = p.aDerivation.count () ;
+      const int32_t derivationLength = p.derivationLength () ;
       for (int32_t item=0 ; item<=derivationLength ; item++) {
         if (ioFirst) {
           inCppFile << "  " ;
@@ -363,7 +363,7 @@ printProductions (const cPureBNFproductionsList & inPureBNFproductions,
           inCppFile << ", " ;
         }
         if (item < derivationLength) {
-          const int32_t v = p.aDerivation (item COMMA_HERE) ;
+          const int32_t v = p.derivationAtIndex (item COMMA_HERE) ;
           if (v < inVocabulary.getTerminalSymbolsCount ()) {
             inCppFile << "TERMINAL ("
                     << "C_Lexique_" << inLexiqueName.identifierRepresentation ()
@@ -416,7 +416,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
       for (int32_t j=firstProduction ; j<=lastProduction ; j++) {
         cProduction & p = inPureBNFproductions (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
         TC_UniqueArray <bool> array ;
-        p.aPremierDeProduction.getArray (array) ;
+        p.derivationFirst ().getArray (array) ;
         const int32_t symbolsCount = inVocabulary.getAllSymbolsCount () ;
         for (int32_t symbol=0 ; symbol < symbolsCount ; symbol++) {
           if (array (symbol COMMA_HERE)) {
@@ -429,7 +429,7 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
         inCppFile << "-1, // Choice "
                   << cStringWithSigned ((int32_t)(j - firstProduction + 1))
                   << "\n" ;
-        ioDecisionTableIndex = (int16_t) (ioDecisionTableIndex + (int16_t) p.aPremierDeProduction.getValuesCount ()) ;
+        ioDecisionTableIndex = (int16_t) (ioDecisionTableIndex + (int16_t) p.derivationFirst ().getValuesCount ()) ;
         ioDecisionTableIndex ++ ;
       }
       inCppFile << "  -1,\n" ;

@@ -23,9 +23,9 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-#include "predefined-types.h"
-#include "C_galgas_function_descriptor.h"
-#include "C_galgas_type_descriptor.h"
+#include "galgas2/predefined-types.h"
+#include "galgas2/C_galgas_function_descriptor.h"
+#include "galgas2/C_galgas_type_descriptor.h"
 #include "galgas2/C_Compiler.h"
 #include "galgas2/cObjectArray.h"
 

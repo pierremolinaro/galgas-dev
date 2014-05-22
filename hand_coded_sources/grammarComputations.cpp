@@ -57,11 +57,44 @@
 
 cProduction::cProduction (void) :
 mSourceFileName (),
-aLigneDefinition (0),
-aColonneDefinition (0),
-aNumeroNonTerminalGauche (0),
-aDerivation (),
-aPremierDeProduction (),
+mLineDefinition (0),
+mColumnDefinition (0),
+mLeftNonTerminalIndex (0),
+mDerivation (),
+mDerivationFirst (),
+mProductionIndex (0) {
+}
+
+//-----------------------------------------------------------------------------*
+
+cProduction::cProduction (const C_String & inSourceFileName,
+                          const int32_t inDefinitionLine,
+                          const int32_t inColumnDefinition,
+                          const int32_t inLeftNonTerminalIndex,
+                          TC_UniqueArray <int16_t> & ioDerivation, // Swap
+                          const uint32_t inProductionIndex) :
+mSourceFileName (inSourceFileName),
+mLineDefinition (inDefinitionLine),
+mColumnDefinition (inColumnDefinition),
+mLeftNonTerminalIndex (inLeftNonTerminalIndex),
+mDerivation (),
+mDerivationFirst (),
+mProductionIndex (inProductionIndex) {
+  swap (mDerivation, ioDerivation) ;
+}
+
+//-----------------------------------------------------------------------------*
+
+cProduction::cProduction (const C_String & inSourceFileName,
+                          const int32_t inDefinitionLine,
+                          const int32_t inColumnDefinition,
+                          const int32_t inLeftNonTerminalIndex) :
+mSourceFileName (inSourceFileName),
+mLineDefinition (inDefinitionLine),
+mColumnDefinition (inColumnDefinition),
+mLeftNonTerminalIndex (inLeftNonTerminalIndex),
+mDerivation (),
+mDerivationFirst (),
 mProductionIndex (0) {
 }
 
@@ -84,7 +117,7 @@ engendrerAppelProduction (const int16_t nombreDeParametres,
                           const C_String & inAltName,
                           AC_OutputStream & fichierCPP) const {
   fichierCPP << "  rule_" << mSourceFileName.identifierRepresentation ()
-             << "_" << inVocabulary.getSymbol (aNumeroNonTerminalGauche COMMA_HERE).identifierRepresentation ()
+             << "_" << inVocabulary.getSymbol (mLeftNonTerminalIndex COMMA_HERE).identifierRepresentation ()
              << "_i" << cStringWithUnsigned (mProductionIndex)
              << "_" << inAltName.identifierRepresentation () << "(" ;
   for (int32_t i=1 ; i<nombreDeParametres ; i++) {
@@ -98,11 +131,11 @@ engendrerAppelProduction (const int16_t nombreDeParametres,
 
 void swap (cProduction & ioProduction1, cProduction & ioProduction2) {
   swap (ioProduction1.mSourceFileName, ioProduction2.mSourceFileName) ;
-  swap (ioProduction1.aLigneDefinition, ioProduction2.aLigneDefinition) ;
-  swap (ioProduction1.aColonneDefinition, ioProduction2.aColonneDefinition) ;
-  swap (ioProduction1.aNumeroNonTerminalGauche, ioProduction2.aNumeroNonTerminalGauche) ;
-  swap (ioProduction1.aDerivation, ioProduction2.aDerivation) ;
-  swap (ioProduction1.aPremierDeProduction, ioProduction2.aPremierDeProduction) ;
+  swap (ioProduction1.mLineDefinition, ioProduction2.mLineDefinition) ;
+  swap (ioProduction1.mColumnDefinition, ioProduction2.mColumnDefinition) ;
+  swap (ioProduction1.mLeftNonTerminalIndex, ioProduction2.mLeftNonTerminalIndex) ;
+  swap (ioProduction1.mDerivation, ioProduction2.mDerivation) ;
+  swap (ioProduction1.mDerivationFirst, ioProduction2.mDerivationFirst) ;
   swap (ioProduction1.mProductionIndex, ioProduction2.mProductionIndex) ;
 }
 
@@ -120,11 +153,11 @@ searchForIdenticalProductions (const cPureBNFproductionsList & productions,
     const cProduction & pi = productions (i COMMA_HERE) ;
     for (int32_t j=i+1 ; j<productions.length () ; j++) {
       const cProduction & pj = productions (j COMMA_HERE) ;
-      bool identiques = pi.aNumeroNonTerminalGauche == pj.aNumeroNonTerminalGauche ;
+      bool identiques = pi.leftNonTerminalIndex () == pj.leftNonTerminalIndex () ;
       if (identiques) {
-        identiques = pi.aDerivation.count () == pj.aDerivation.count () ;
-        for (int32_t t=0 ; (t<pi.aDerivation.count ()) && identiques ; t++) {
-          identiques = pi.aDerivation (t COMMA_HERE) == pj.aDerivation (t COMMA_HERE) ;
+        identiques = pi.derivationLength () == pj.derivationLength () ;
+        for (int32_t t=0 ; (t<pi.derivationLength ()) && identiques ; t++) {
+          identiques = pi.derivationAtIndex (t COMMA_HERE) == pj.derivationAtIndex (t COMMA_HERE) ;
         }
       }
       if (identiques) {

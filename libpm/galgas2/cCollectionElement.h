@@ -29,7 +29,7 @@
 //-----------------------------------------------------------------------------*
 
 #include "utilities/C_SharedObject.h"
-#include "typeComparisonResult.h"
+#include "galgas2/typeComparisonResult.h"
 
 //-----------------------------------------------------------------------------*
 

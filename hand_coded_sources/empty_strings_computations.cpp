@@ -1,9 +1,9 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-// Routines for computing empty string derivations                           *
+// Routines for computing empty string derivations                             *
 //                                                                             *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  Copyright (C) 1999-2002 Pierre Molinaro.                                   *
+//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
 //                                                                             *
@@ -36,8 +36,8 @@ computeNonterminalSymbolsHavingEmptyDerivation (const cPureBNFproductionsList & 
   C_BDD_Set1 temp (inDescriptor);
   for (int32_t i=0 ; i<inProductionRules.length () ; i++) {
     const cProduction & p = inProductionRules (i COMMA_HERE) ;
-    if (p.aDerivation.count () == 0L) {
-      temp.init (C_BDD::kEqual, (uint32_t) p.aNumeroNonTerminalGauche) ;
+    if (p.derivationLength () == 0L) {
+      temp.init (C_BDD::kEqual, (uint32_t) p.leftNonTerminalIndex ()) ;
       nonterminalSymbolsHavingEmptyDerivation |= temp ;
     }
   }
@@ -102,13 +102,13 @@ computeNonterminalDerivingInEmptyString (const cPureBNFproductionsList & inProdu
     for (int32_t i=0 ; i<nombreDeProductions ; i++) {
       const cProduction & p = inProductionRules (i COMMA_HERE) ;
       if (! productionTraitee (i COMMA_HERE)) {
-        const int32_t n = p.aDerivation.count () ;
+        const int32_t n = p.derivationLength () ;
         bool estVide = true ;
         for (int32_t j=0 ; (j<n) && estVide ; j++) {
-          estVide = vocabulaireSeDerivantEnVide (p.aDerivation (j COMMA_HERE) COMMA_HERE) ;
+          estVide = vocabulaireSeDerivantEnVide (p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) ;
         }
         if (estVide) {
-          vocabulaireSeDerivantEnVide (p.aNumeroNonTerminalGauche COMMA_HERE) = true ;
+          vocabulaireSeDerivantEnVide (p.leftNonTerminalIndex () COMMA_HERE) = true ;
           productionTraitee (i COMMA_HERE) = true ;
           onProgresse = true ;
         }

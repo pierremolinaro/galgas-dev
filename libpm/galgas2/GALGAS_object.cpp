@@ -23,8 +23,8 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-#include "predefined-types.h"
-#include "cPtr_object.h"
+#include "galgas2/predefined-types.h"
+#include "galgas2/cPtr_object.h"
 
 //-----------------------------------------------------------------------------*
 

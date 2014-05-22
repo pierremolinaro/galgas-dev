@@ -45,19 +45,19 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
   C_BDD directFIRST ;
   for (int32_t i=0 ; i<inProductionRules.length () ; i++) {
     const cProduction & p = inProductionRules (i COMMA_HERE) ;
-    const int32_t n = p.aDerivation.count () ;
+    const int32_t n = p.derivationLength () ;
     if (n > 0) {
-      const C_BDD left = C_BDD::varCompareConst (0, inBDDBitCount, C_BDD::kEqual, (uint32_t) p.aNumeroNonTerminalGauche) ;
-      ex_left.initDimension1 (C_BDD::kEqual, (uint32_t) p.aNumeroNonTerminalGauche) ;
+      const C_BDD left = C_BDD::varCompareConst (0, inBDDBitCount, C_BDD::kEqual, (uint32_t) p.leftNonTerminalIndex ()) ;
+      ex_left.initDimension1 (C_BDD::kEqual, (uint32_t) p.leftNonTerminalIndex ()) ;
       int32_t j = 0 ;
       ex_pr.clear () ;
       C_BDD pr ;
       do{
-        temp.initDimension2 (C_BDD::kEqual, (uint32_t) p.aDerivation (j COMMA_HERE)) ;
+        temp.initDimension2 (C_BDD::kEqual, (uint32_t) p.derivationAtIndex (j COMMA_HERE)) ;
         ex_pr |= temp ;
-        pr |= C_BDD::varCompareConst (inBDDBitCount, inBDDBitCount, C_BDD::kEqual, (uint32_t) p.aDerivation (j COMMA_HERE)) ;
+        pr |= C_BDD::varCompareConst (inBDDBitCount, inBDDBitCount, C_BDD::kEqual, (uint32_t) p.derivationAtIndex (j COMMA_HERE)) ;
         j++ ;
-      }while ((j<n) && inVocabularyDerivingInEmptyString (p.aDerivation (j-1 COMMA_HERE) COMMA_HERE)) ;
+      }while ((j<n) && inVocabularyDerivingInEmptyString (p.derivationAtIndex (j-1 COMMA_HERE) COMMA_HERE)) ;
       ex_directFIRST |= ex_left & ex_pr ;
       directFIRST |= left & pr ;
     }
