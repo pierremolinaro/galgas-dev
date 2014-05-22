@@ -26,7 +26,6 @@
 #include "galgas2/C_galgas_io.h"
 #include "streams/C_ConsoleOut.h"
 #include "streams/C_ErrorOut.h"
-#include "collections/TC_LinkedList.h"
 #include "command_line_interface/C_builtin_CLI_Options.h"
 #include "command_line_interface/F_Analyze_CLI_Options.h"
 #include "galgas2/C_galgas_CLI_Options.h"

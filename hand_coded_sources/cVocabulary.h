@@ -1,9 +1,9 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Pure BNF grammar vocabulary                                              *
+//  Pure BNF grammar vocabulary                                                *
 //                                                                             *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  Copyright (C) 1999-2002 Pierre Molinaro.                                   *
+//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
 //                                                                             *
@@ -33,7 +33,7 @@ class GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  This class handles vocabulary of a pure BNF grammar                      *
+//  This class handles vocabulary of a pure BNF grammar                        *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

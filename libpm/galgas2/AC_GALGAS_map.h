@@ -28,8 +28,8 @@
 
 //-----------------------------------------------------------------------------*
 
-#include "AC_GALGAS_root.h"
-#include "typeComparisonResult.h"
+#include "galgas2/AC_GALGAS_root.h"
+#include "galgas2/typeComparisonResult.h"
 
 //-----------------------------------------------------------------------------*
 

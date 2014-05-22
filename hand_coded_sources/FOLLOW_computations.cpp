@@ -29,7 +29,7 @@
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//    C O M P U T E    F O L L O W    S E T S                                *
+//    C O M P U T E    F O L L O W    S E T S                                  *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -50,18 +50,18 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
 //--- Build the directFollower and lastOfProduction sets
   for (int32_t ip=0 ; ip<inProductionRules.length () ; ip++) {
     const cProduction & p = inProductionRules (ip COMMA_HERE) ;
-    const int32_t derivationLength = p.aDerivation.count () ;
+    const int32_t derivationLength = p.derivationLength () ;
   //--- Direct follower
     if (derivationLength > 1) { // The right sequence has more than one element (from 0 to derivationLength-1)
       for (int32_t i=1 ; i<derivationLength ; i++) {
-        const C_BDD current = C_BDD::varCompareConst (0, inBDDBitCount, C_BDD::kEqual, (uint32_t) p.aDerivation (i-1 COMMA_HERE)) ;
+        const C_BDD current = C_BDD::varCompareConst (0, inBDDBitCount, C_BDD::kEqual, (uint32_t) p.derivationAtIndex (i-1 COMMA_HERE)) ;
         C_BDD s ;
         int32_t j = i ;
         do{
-          const C_BDD t = C_BDD::varCompareConst (inBDDBitCount, inBDDBitCount, C_BDD::kEqual, (uint32_t) p.aDerivation (j COMMA_HERE)) ;
+          const C_BDD t = C_BDD::varCompareConst (inBDDBitCount, inBDDBitCount, C_BDD::kEqual, (uint32_t) p.derivationAtIndex (j COMMA_HERE)) ;
           s |= t ;
           j++ ;
-        }while ((j<derivationLength) && inNonterminalSymbolsDerivingInEmpty (p.aDerivation (j-1 COMMA_HERE) COMMA_HERE)) ;
+        }while ((j<derivationLength) && inNonterminalSymbolsDerivingInEmpty (p.derivationAtIndex (j-1 COMMA_HERE) COMMA_HERE)) ;
         directFollowers |= current & s ;
       }
     }
@@ -70,17 +70,17 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
       const C_BDD left = C_BDD::varCompareConst (twoBDDBitCount,
                                                  inBDDBitCount,
                                                  C_BDD::kEqual,
-                                                 (uint32_t) p.aNumeroNonTerminalGauche) ;
+                                                 (uint32_t) p.leftNonTerminalIndex ()) ;
       C_BDD d ;
       int32_t j = derivationLength-1 ; // last one of right sequence
       do{
         const C_BDD t = C_BDD::varCompareConst (0,
                                                 inBDDBitCount,
                                                 C_BDD::kEqual,
-                                                (uint32_t) p.aDerivation (j COMMA_HERE)) ;      
+                                                (uint32_t) p.derivationAtIndex (j COMMA_HERE)) ;      
         d |= t ;
         j -- ;
-      }while ((j>=0) && inNonterminalSymbolsDerivingInEmpty (p.aDerivation (j+1 COMMA_HERE) COMMA_HERE)) ;
+      }while ((j>=0) && inNonterminalSymbolsDerivingInEmpty (p.derivationAtIndex (j+1 COMMA_HERE) COMMA_HERE)) ;
       lastOfProduction |= left & d ;
     }
   }

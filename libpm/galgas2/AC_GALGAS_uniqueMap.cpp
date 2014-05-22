@@ -23,9 +23,9 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-#include "predefined-types.h"
-#include "capCollectionElement.h"
-#include "C_galgas_type_descriptor.h"
+#include "galgas2/predefined-types.h"
+#include "galgas2/capCollectionElement.h"
+#include "galgas2/C_galgas_type_descriptor.h"
 #include "utilities/MF_Assert.h"
 #include "galgas2/C_Compiler.h"
 #include "strings/unicode_string_routines.h"

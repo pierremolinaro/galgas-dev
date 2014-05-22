@@ -194,13 +194,18 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
       p->buildRightDerivation (inTerminalSymbolsCount, inOriginalGrammarSymbolCount, derivation) ;
       instruction.gotoNextObject () ;
     }
-    cProduction p ;
-    p.mSourceFileName = inSyntaxComponentName ;
-    p.aLigneDefinition = mAttribute_mStartLocation.startLocation ().lineNumber () ;
-    p.aColonneDefinition = mAttribute_mStartLocation.startLocation ().columnNumber () ;
-    const int32_t idx = ((int32_t) mAttribute_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
-    p.aNumeroNonTerminalGauche = idx ;
-    swap (p.aDerivation, derivation) ;
+    cProduction p (inSyntaxComponentName,
+                   mAttribute_mStartLocation.startLocation ().lineNumber (),
+                   mAttribute_mStartLocation.startLocation ().columnNumber (),
+                   ((int32_t) mAttribute_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount,
+                   derivation,
+                   0) ;
+//    p.mSourceFileName = inSyntaxComponentName ;
+//    p.mDefinitionLine = mAttribute_mStartLocation.startLocation ().lineNumber () ;
+//    p.mColumnDefinition = mAttribute_mStartLocation.startLocation ().columnNumber () ;
+//    const int32_t idx = ((int32_t) mAttribute_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
+//    p.mLeftNonTerminalIndex = idx ;
+//    swap (p.mDerivation, derivation) ;
     ioProductions.insertByExchange (p) ;
     currentBranch.gotoNextObject () ;
   }
@@ -244,12 +249,15 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
 //         ...
 
 //--- Insert empty production <T>=.
-  { cProduction p ;
-    p.mSourceFileName = inSyntaxComponentName ;
-    p.aLigneDefinition = mAttribute_mStartLocation.startLocation ().lineNumber () ;
-    p.aColonneDefinition = mAttribute_mStartLocation.startLocation ().columnNumber () ;
+  { cProduction p (inSyntaxComponentName,
+                   mAttribute_mStartLocation.startLocation ().lineNumber (),
+                   mAttribute_mStartLocation.startLocation ().columnNumber (),
+                   ((int32_t) mAttribute_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount) ;
+/*    p.mSourceFileName = inSyntaxComponentName ;
+    p.mDefinitionLine = mAttribute_mStartLocation.startLocation ().lineNumber () ;
+    p.mColumnDefinition = mAttribute_mStartLocation.startLocation ().columnNumber () ;
     const int32_t idx = ((int32_t) mAttribute_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
-    p.aNumeroNonTerminalGauche = idx ;
+    p.mLeftNonTerminalIndex = idx ;*/
     ioProductions.insertByExchange (p) ;
   }
 
@@ -279,12 +287,17 @@ buildSelectAndRepeatProductions (const int32_t inTerminalSymbolsCount,
   //--- insert <T> production call
     const int32_t idx = ((int32_t) mAttribute_mAddedNonTerminalSymbolIndex.uintValue ()) + inOriginalGrammarSymbolCount ;
     derivation.addObject ((int16_t) idx) ;
-    cProduction p ;
-    p.mSourceFileName = inSyntaxComponentName ;
-    p.aLigneDefinition = mAttribute_mStartLocation.startLocation ().lineNumber () ;
-    p.aColonneDefinition = mAttribute_mStartLocation.startLocation ().columnNumber () ;
-    p.aNumeroNonTerminalGauche = idx ;
-    swap (p.aDerivation, derivation) ;
+    cProduction p (inSyntaxComponentName,
+                   mAttribute_mStartLocation.startLocation ().lineNumber (),
+                   mAttribute_mStartLocation.startLocation ().columnNumber (),
+                   idx,
+                   derivation,
+                   0) ;
+/*    p.mSourceFileName = inSyntaxComponentName ;
+    p.mDefinitionLine = mAttribute_mStartLocation.startLocation ().lineNumber () ;
+    p.mColumnDefinition = mAttribute_mStartLocation.startLocation ().columnNumber () ;
+    p.mLeftNonTerminalIndex = idx ;
+    swap (p.mDerivation, derivation) ;*/
     ioProductions.insertByExchange (p) ;
     currentBranch.gotoNextObject () ;
   }
@@ -367,14 +380,19 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
         p->buildRightDerivation (terminalSymbolsCount, orginalGrammarSymbolCount, derivation) ;
         instruction.gotoNextObject () ;
       }
-      cProduction p ;
-      p.mSourceFileName = currentComponent.current_mSyntaxComponentName (HERE).mAttribute_string.stringValue () ;
-      p.aLigneDefinition = currentRule.current_mLeftNonterminalSymbol (HERE).mAttribute_location.startLocation ().lineNumber () ;
-      p.aColonneDefinition = currentRule.current_mLeftNonterminalSymbol (HERE).mAttribute_location.startLocation ().columnNumber () ;
+      cProduction p (currentComponent.current_mSyntaxComponentName (HERE).mAttribute_string.stringValue (),
+                     currentRule.current_mLeftNonterminalSymbol (HERE).mAttribute_location.startLocation ().lineNumber (),
+                     currentRule.current_mLeftNonterminalSymbol (HERE).mAttribute_location.startLocation ().columnNumber (),
+                     terminalSymbolsCount + (int32_t) currentRule.current_mLeftNonterminalSymbolIndex (HERE).uintValue (),
+                     derivation,
+                     currentRule.current_mProductionIndex (HERE).uintValue ()) ;
+/*      p.mSourceFileName = currentComponent.current_mSyntaxComponentName (HERE).mAttribute_string.stringValue () ;
+      p.mDefinitionLine = currentRule.current_mLeftNonterminalSymbol (HERE).mAttribute_location.startLocation ().lineNumber () ;
+      p.mColumnDefinition = currentRule.current_mLeftNonterminalSymbol (HERE).mAttribute_location.startLocation ().columnNumber () ;
       p.mProductionIndex = currentRule.current_mProductionIndex (HERE).uintValue () ;
-      p.aNumeroNonTerminalGauche = terminalSymbolsCount
+      p.mLeftNonTerminalIndex = terminalSymbolsCount
                                  + (int32_t) currentRule.current_mLeftNonterminalSymbolIndex (HERE).uintValue () ;
-      swap (p.aDerivation, derivation) ;
+      swap (p.mDerivation, derivation) ;*/
       ioProductions.insertByExchange (p) ;
       currentRule.gotoNextObject () ;
     }
@@ -404,13 +422,18 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
 //--- Augment grammar by a new non terminal symbol (denoted <>), and...
   ioVocabulary.addAugmentedSymbol () ;
 //--- ... add the production <> -> <start_symbol>
-  { cProduction p ;
-    p.aLigneDefinition = 0 ;
-    p.aColonneDefinition = 0 ;
-    p.aNumeroNonTerminalGauche = ioVocabulary.getAllSymbolsCount () - 1 ;
-    TC_UniqueArray <int16_t> derivation ;
+  { TC_UniqueArray <int16_t> derivation ;
     derivation.addObject ((int16_t) ioVocabulary.getStartSymbol ()) ;
-    swap (p.aDerivation, derivation) ;
+    cProduction p ("",
+                   0,
+                   0,
+                   ioVocabulary.getAllSymbolsCount () - 1,
+                   derivation,
+                   0) ;
+/*    p.mDefinitionLine = 0 ;
+    p.mColumnDefinition = 0 ;
+    p.mLeftNonTerminalIndex = ioVocabulary.getAllSymbolsCount () - 1 ;
+    swap (p.mDerivation, derivation) ;*/
     ioProductions.insertByExchange (p) ;
   }
 //--- Build productions arraies
@@ -418,7 +441,6 @@ buildPureBNFgrammar (const GALGAS_syntaxComponentListForGrammarAnalysis & inSynt
                                        ioVocabulary.getNonTerminalSymbolsCount ()) ;
 }
 
-//-----------------------------------------------------------------------------*
 //-----------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
@@ -449,7 +471,7 @@ printPureBNFgrammarInBNFfile (C_HTML_FileWrite & inHTMLfile,
     inHTMLfile.outputRawData ("</a></td><td class=\"result_line\">") ;
     inHTMLfile << "rule " ;
     inHTMLfile.outputRawData ("<code>") ;
-    inVocabulary.printInFile (inHTMLfile, p.aNumeroNonTerminalGauche COMMA_HERE) ;
+    inVocabulary.printInFile (inHTMLfile, p.leftNonTerminalIndex () COMMA_HERE) ;
     inHTMLfile.outputRawData ("</code>") ;
     if (i == (productionsCount - 1)) {
       inHTMLfile.outputRawData ("<br>") ;
@@ -457,18 +479,18 @@ printPureBNFgrammarInBNFfile (C_HTML_FileWrite & inHTMLfile,
     }else{
       inHTMLfile.outputRawData ("<br>") ;
       inHTMLfile << "file '"
-                 << p.mSourceFileName
+                 << p.sourceFileName ()
                  << "'" ;
       inHTMLfile.outputRawData ("<br>") ;
       inHTMLfile << "line " ;
-      inHTMLfile.appendSigned (p.aLigneDefinition) ;
+      inHTMLfile.appendSigned (p.lineDefinition ()) ;
     }
     inHTMLfile.outputRawData ("</td><td><code>") ;
-    for (int32_t d=0 ; d<p.aDerivation.count () ; d++) {
+    for (int32_t d=0 ; d<p.derivationLength () ; d++) {
       if (d != 0) {
         inHTMLfile.outputRawData ("<br>") ;
       }
-      inVocabulary.printInFile (inHTMLfile, p.aDerivation (d COMMA_HERE) COMMA_HERE) ;
+      inVocabulary.printInFile (inHTMLfile, p.derivationAtIndex (d COMMA_HERE) COMMA_HERE) ;
     }
     inHTMLfile.outputRawData ("</code></td></tr>") ;
   }
@@ -515,12 +537,12 @@ buildProductionsArray (const int32_t inTerminalSymbolsCount,
     cProduction & p = this->operator () (i COMMA_HERE) ;
     if (! productionTraitee (i COMMA_HERE)) {
       productionTraitee.setObjectAtIndex (true, i COMMA_HERE) ;
-      const int32_t g = ((int32_t) p.aNumeroNonTerminalGauche) - inTerminalSymbolsCount ;
+      const int32_t g = ((int32_t) p.leftNonTerminalIndex ()) - inTerminalSymbolsCount ;
       tableauIndicePremiereProduction.setObjectAtIndex (indiceIndirection, g COMMA_HERE) ;
       tableauIndirectionProduction.setObjectAtIndex (i, indiceIndirection COMMA_HERE) ;
       for (int32_t j=i+1 ; j<nombreProductions ; j++) {
         cProduction & pj = this->operator () (j COMMA_HERE) ;
-        if (p.aNumeroNonTerminalGauche == pj.aNumeroNonTerminalGauche) {
+        if (p.leftNonTerminalIndex () == pj.leftNonTerminalIndex ()) {
           indiceIndirection ++ ;
           tableauIndirectionProduction.setObjectAtIndex (j, indiceIndirection COMMA_HERE) ;
           productionTraitee.setObjectAtIndex (true, j COMMA_HERE) ;

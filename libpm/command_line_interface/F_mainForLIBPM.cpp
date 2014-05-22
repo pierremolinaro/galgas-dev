@@ -144,8 +144,8 @@ checkDataTypesSize (int & ioReturnCode) {
 
 //-----------------------------------------------------------------------------*
 
-// #include "PMUInt128.h"
-// #include "C_DirectedGraph.h"
+// #include "utilities/PMUInt128.h"
+// #include "galgas2/C_DirectedGraph.h"
 
 //-----------------------------------------------------------------------------*
 

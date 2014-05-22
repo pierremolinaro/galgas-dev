@@ -23,8 +23,8 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-#include "capCollectionElement.h"
-#include "cCollectionElement.h"
+#include "galgas2/capCollectionElement.h"
+#include "galgas2/cCollectionElement.h"
 #include "strings/C_String.h"
 
 //-----------------------------------------------------------------------------*

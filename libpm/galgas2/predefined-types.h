@@ -22,13 +22,13 @@
 #include "galgas2/C_galgas_type_descriptor.h"
 #include "galgas2/typeComparisonResult.h"
 #include "galgas2/cGenericAbstractEnumerator.h"
-#include "galgas2/cEnumerator_range.h"
-#include "galgas2/AC_GALGAS_list.h"
+#include "cEnumerator_range.h"
+#include "AC_GALGAS_list.h"
 #include "galgas2/AC_GALGAS_sortedlist.h"
-#include "galgas2/AC_GALGAS_map.h"
-#include "galgas2/AC_GALGAS_uniqueMap.h"
+#include "AC_GALGAS_map.h"
+#include "AC_GALGAS_uniqueMap.h"
 #include "galgas2/AC_GALGAS_class.h"
-#include "galgas2/AC_GALGAS_graph.h"
+#include "AC_GALGAS_graph.h"
 #include "galgas2/acPtr_class.h"
 
 //-----------------------------------------------------------------------------*

@@ -50,12 +50,12 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
     for (int32_t i=0 ; i<productionsCount ; i++) {
       const cProduction & p = inProductionRules (i COMMA_HERE) ;
       if (! productionIsHandled (i COMMA_HERE)) {
-        if (vocabularyFollowedByEmpty_Array (p.aNumeroNonTerminalGauche COMMA_HERE)) {
-          const int32_t n = p.aDerivation.count () ;
+        if (vocabularyFollowedByEmpty_Array (p.leftNonTerminalIndex () COMMA_HERE)) {
+          const int32_t n = p.derivationLength () ;
           bool followedByEmpty = true ;
           for (int32_t j=n-1 ; (j>=0) && followedByEmpty ; j--) {
-            vocabularyFollowedByEmpty_Array (p.aDerivation (j COMMA_HERE) COMMA_HERE) = true ;
-            followedByEmpty = inVocabularyDerivingToEmpty_Array (p.aDerivation (j COMMA_HERE) COMMA_HERE) ;
+            vocabularyFollowedByEmpty_Array (p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) = true ;
+            followedByEmpty = inVocabularyDerivingToEmpty_Array (p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) ;
           }
           productionIsHandled (i COMMA_HERE) = true ;
           loop = true ;

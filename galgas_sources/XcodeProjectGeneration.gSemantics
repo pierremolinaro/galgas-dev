@@ -352,16 +352,12 @@ local routine build_LIBPM_COLLECTIONS_group
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
-  fileList += !"TC_AVL_TreeForCollision.h" ;
+  fileList += !"TC_FIFO.h" ;
+  fileList += !"TC_LinkedList.h" ;
   fileList += !"TC_Array.h" ;
   fileList += !"TC_Array2.h" ;
-  fileList += !"TC_BlockBinaryTreeForCollision.h" ;
-  fileList += !"TC_Block_AVL_TreeForCollision.h" ;
-  fileList += !"TC_HashMap.h" ;
-  fileList += !"TC_LinearListForCollision.h" ;
   fileList += !"TC_UniqueArray.h" ;
   fileList += !"TC_UniqueArray2.h" ;
-  fileList += !"TF_AVL_Tree.h" ;
 #---
   enter_files_in_group
    !?ioXcodeProjectDescription

@@ -23,7 +23,7 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-#include "C_galgas_type_descriptor.h"
+#include "galgas2/C_galgas_type_descriptor.h"
 #include "strings/C_String.h"
 #include "galgas2/C_galgas_io.h"
 

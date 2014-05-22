@@ -29,7 +29,7 @@
 //-----------------------------------------------------------------------------*
 
 #include "collections/TC_Array.h"
-#include "utilities/C_UIntSet.h"
+#include "C_UIntSet.h"
 #include "strings/C_String.h"
 
 //-----------------------------------------------------------------------------*

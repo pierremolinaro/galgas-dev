@@ -7,8 +7,8 @@
 //
 //-----------------------------------------------------------------------------*
 
-#include "C_Relation.h"
-#include "C_SharedObject.h"
+#include "bdd/C_Relation.h"
+#include "utilities/C_SharedObject.h"
 
 //-----------------------------------------------------------------------------*
 //  C_Relation::cVariables                                                     *

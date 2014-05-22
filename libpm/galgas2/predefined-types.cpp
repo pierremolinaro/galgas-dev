@@ -13,10 +13,10 @@
 
 //-----------------------------------------------------------------------------*
 
-#include "predefined-types.h"
-#include "cCollectionElement.h"
-#include "cSortedListElement.h"
-#include "capSortedListElement.h"
+#include "galgas2/predefined-types.h"
+#include "galgas2/cCollectionElement.h"
+#include "galgas2/cSortedListElement.h"
+#include "galgas2/capSortedListElement.h"
 #include "galgas2/C_Compiler.h"
 
 //-----------------------------------------------------------------------------*

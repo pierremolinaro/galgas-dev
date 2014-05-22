@@ -612,16 +612,16 @@ close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
     const int32_t locationIndex = mItemsSet (i COMMA_HERE).mLocationIndex ;
     const int32_t productionRule = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
     const cProduction & p = inProductionRules (productionRule COMMA_HERE) ;
-    const int32_t derivationLength = p.aDerivation.count () ;
+    const int32_t derivationLength = p.derivationLength () ;
     if (locationIndex < derivationLength) {
-      const int32_t prodX = p.aDerivation (locationIndex COMMA_HERE) - inTerminalSymbolsCount ;
+      const int32_t prodX = p.derivationAtIndex (locationIndex COMMA_HERE) - inTerminalSymbolsCount ;
       if (prodX >= 0) {
       //--- Evaluate FIRSTs of derivation following prodX
         int32_t derivationIndex = locationIndex + 1 ;
         bool emptyStringAccepted = true ;
         TC_UniqueArray <int32_t> theFirst ;
         while (emptyStringAccepted && (derivationIndex < derivationLength)) {
-          const int32_t symbol = p.aDerivation (derivationIndex COMMA_HERE) ;
+          const int32_t symbol = p.derivationAtIndex (derivationIndex COMMA_HERE) ;
           if (symbol < inTerminalSymbolsCount) {
             theFirst.addObject (symbol) ;
             emptyStringAccepted = false ;
@@ -671,16 +671,16 @@ display (const cPureBNFproductionsList & inProductionRules,
     const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
     inHTMLfile.outputRawData ("<span class=\"list\">") ;
     inHTMLfile << "[" ;
-    inVocabulary.printInFile (inHTMLfile, p.aNumeroNonTerminalGauche COMMA_HERE) ;
+    inVocabulary.printInFile (inHTMLfile, p.leftNonTerminalIndex () COMMA_HERE) ;
     inHTMLfile << " ->" ;
-    for (int32_t j=0 ; j<p.aDerivation.count () ; j++) {
+    for (int32_t j=0 ; j<p.derivationLength () ; j++) {
       if (j == location) {
         inHTMLfile << " ." ;      
       }
       inHTMLfile << " " ;
-      inVocabulary.printInFile (inHTMLfile, p.aDerivation (j COMMA_HERE) COMMA_HERE) ;
+      inVocabulary.printInFile (inHTMLfile, p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) ;
     }
-    if (location == p.aDerivation.count ()) {
+    if (location == p.derivationLength ()) {
       inHTMLfile << " ." ;      
     }
     inHTMLfile << ", " ;
@@ -701,8 +701,8 @@ getTransitionFrom (const cPureBNFproductionsList & inProductionRules,
     const int32_t productionRuleIndex = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
     const cProduction & p = inProductionRules (productionRuleIndex COMMA_HERE) ;
     const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
-    if (location < p.aDerivation.count ()) {
-      const int32_t symbol = p.aDerivation (location COMMA_HERE) ;
+    if (location < p.derivationLength ()) {
+      const int32_t symbol = p.derivationAtIndex (location COMMA_HERE) ;
       if (symbol == inSymbol) {
         out_LR1_item_set.add_LR1_item (productionRuleIndex, location + 1, mItemsSet (i COMMA_HERE).mTerminalSymbol) ;
       }
@@ -724,7 +724,7 @@ getProductionsWhereLocationIsRight (const cPureBNFproductionsList & inProduction
     const int32_t productionRuleIndex = mItemsSet (i COMMA_HERE).mProductionRuleIndex ;
     const cProduction & p = inProductionRules (productionRuleIndex COMMA_HERE) ;
     const int32_t location = mItemsSet (i COMMA_HERE).mLocationIndex ;
-    if (location == p.aDerivation.count ()) {
+    if (location == p.derivationLength ()) {
       outProductionsSet.addObject (productionRuleIndex) ;
       outTerminalArray.addObject (mItemsSet (i COMMA_HERE).mTerminalSymbol) ;
     }
@@ -1104,7 +1104,7 @@ class c_LR1_automaton_transition {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-// G E N E R A T E    L R ( 1 )    A N A L Y Z E R                           *
+// G E N E R A T E    L R ( 1 )    A N A L Y Z E R                             *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1277,9 +1277,9 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
     if (p > 0) {
       generatedZone3 << ",\n" ;
     }
-    generatedZone3 << "  " << cStringWithSigned (inProductionRules (p COMMA_HERE).aNumeroNonTerminalGauche - columnsCount)
+    generatedZone3 << "  " << cStringWithSigned (inProductionRules (p COMMA_HERE).leftNonTerminalIndex () - columnsCount)
             << ", "
-            << cStringWithSigned (inProductionRules (p COMMA_HERE).aDerivation.count ()) ;
+            << cStringWithSigned (inProductionRules (p COMMA_HERE).derivationLength ()) ;
   }
   generatedZone3 << "\n} ;\n\n" ;
 
@@ -1820,7 +1820,7 @@ LR1_computations (C_Compiler * inCompiler,
   //--- Reduce
     for (int32_t p=0 ; p<productionsSet.count () ; p++) {
       const int32_t productionIndex = productionsSet (p COMMA_HERE) ;
-      const int32_t leftNonTerminal = inProductionRules (productionIndex COMMA_HERE).aNumeroNonTerminalGauche ;
+      const int32_t leftNonTerminal = inProductionRules (productionIndex COMMA_HERE).leftNonTerminalIndex () ;
       if (leftNonTerminal != (inVocabulary.getAllSymbolsCount () - 1)) {
         const int32_t terminal = terminalArray (p COMMA_HERE) ;
         reduceActions ++ ;

@@ -23,8 +23,8 @@
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
-#include "capSortedListElement.h"
-#include "cSortedListElement.h"
+#include "galgas2/capSortedListElement.h"
+#include "galgas2/cSortedListElement.h"
 #include "strings/C_String.h"
 
 //-----------------------------------------------------------------------------*
