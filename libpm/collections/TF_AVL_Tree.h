@@ -35,13 +35,13 @@
 //        INFO mInfo                                                           *
 //        ELEMENT * mPtrToInf                                                  *
 //        ELEMENT * mPtrToSup                                                  *
-//        int8_t mBalance  (can also be declared as int16_t or int32_t)     *
+//        int8_t mBalance  (can also be declared as int16_t or int32_t)        *
 //                                                                             *
 //     An ELEMENT class must have the following constructor :                  *
 //        ELEMENT (const INFO & inInfo) ;                                      *
 //                                                                             *
 //     An INFO class must have the following method :                          *
-//        int32_t compare (const INFO & inInfo) ;                             *
+//        int32_t compare (const INFO & inInfo) ;                              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

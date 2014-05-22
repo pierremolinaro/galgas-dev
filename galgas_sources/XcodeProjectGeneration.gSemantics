@@ -16,6 +16,8 @@ local routine build_LIBPM_BDD_group
   append_cpp_h_files !?fileList !"C_BDD_Set2" ;
   append_cpp_h_files !?fileList !"C_BDD_Set3" ;
   append_cpp_h_files !?fileList !"C_BDD" ;
+  append_cpp_h_files !?fileList !"C_TypeInRelation" ;
+  append_cpp_h_files !?fileList !"C_Relation" ;
   fileList += !"C_BDD-find-or-add.cpp" ;
   fileList += !"C_BDD-and-operation.cpp" ;
   fileList += !"C_BDD-single-operand-ops.cpp" ;
@@ -45,6 +47,8 @@ local routine build_LIBPM_BDD_source_files_for_sources_build_phase
   fileList += !"C_BDD-and-operation.cpp" ;
   fileList += !"C_BDD-single-operand-ops.cpp" ;
   fileList += !"C_Display_BDD.cpp" ;
+  fileList += !"C_TypeInRelation.cpp" ;
+  fileList += !"C_Relation.cpp" ;
 #---
   enter_file_list_for_sources_build_phase
    !?ioXcodeProjectDescription

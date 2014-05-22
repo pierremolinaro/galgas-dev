@@ -4,7 +4,7 @@
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 1997, ..., 2009 Pierre Molinaro.                             *
+//  Copyright (C) 1997, ..., 2014 Pierre Molinaro.                             *
 //                                                                             *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //                                                                             *

@@ -1,8 +1,8 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//     C++ class for displaying BDDs (use with the BDD package 'C_BDD.cpp')  *
+//     C++ class for displaying BDDs (use with the BDD package 'C_BDD.cpp')    *
 //                                                                             *
-//  This file is part of libpm Libary                                        *
+//  This file is part of libpm Libary                                          *
 //                                                                             *
 //  Copyright (C) 2000, ..., 2005 Pierre Molinaro.                             *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
@@ -16,8 +16,8 @@
 //                                                                             *
 //  This program is distributed in the hope it will be useful, but WITHOUT     *
 //  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or      *
-//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public      *
-//  License for more details.                                                *
+//  FITNESS FOR A PARTICULAR PURPOSE. See the GNU Lesser General Public        *
+//  License for more details.                                                  *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

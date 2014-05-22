@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//     BDD package (implementation of ROBDD)                                 *
+//     BDD package (implementation of ROBDD)                                   *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -33,12 +33,15 @@
 #include <string.h>
 #include <limits.h>
 
+//-----------------------------------------------------------------------------*
+
 #ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Cache for AND Operation
 #endif
+
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  And computation cache                                                    *
+//  And computation cache                                                      *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -221,9 +224,9 @@ void C_BDD::setANDOperationCacheMaxSize (const uint32_t inPowerOfTwo) {
 #endif
 
 //-----------------------------------------------------------------------------*
-//                                                                     *
-//                        Operation AND                                *
-//                                                                     *
+//                                                                             *
+//                        Operation AND                                        *
+//                                                                             *
 //-----------------------------------------------------------------------------*
 
 uint32_t internalANDoperation (const uint32_t opf,
