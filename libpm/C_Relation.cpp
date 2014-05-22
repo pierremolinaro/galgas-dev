@@ -24,6 +24,7 @@ class C_Relation::cVariables : public C_SharedObject {
                              const C_TypeInRelation & inType) ;
 
 //--- Attributes
+  private : TC_UniqueArray <uint32_t> mBDDStartIndexArray ;
   private : TC_UniqueArray <C_String> mVariableNameArray ;
   private : TC_UniqueArray <C_TypeInRelation> mVariableTypeArray ;
 } ;
@@ -32,6 +33,7 @@ class C_Relation::cVariables : public C_SharedObject {
 
 C_Relation::cVariables::cVariables (LOCATION_ARGS) :
 C_SharedObject (THERE),
+mBDDStartIndexArray (),
 mVariableNameArray (),
 mVariableTypeArray () {
 }
@@ -44,6 +46,7 @@ C_SharedObject (THERE),
 mVariableNameArray (),
 mVariableTypeArray () {
   macroValidSharedObject (inPtr, cVariables) ;
+  mBDDStartIndexArray.addObjectsFromArray (inPtr->mBDDStartIndexArray) ;
   mVariableNameArray.addObjectsFromArray (inPtr->mVariableNameArray) ;
   mVariableTypeArray.addObjectsFromArray (inPtr->mVariableTypeArray) ;
 }
@@ -52,6 +55,13 @@ mVariableTypeArray () {
 
 void C_Relation::cVariables::addVariable (const C_String & inVariableName,
                                           const C_TypeInRelation & inType) {
+  if (mBDDStartIndexArray.count () == 0) {
+    mBDDStartIndexArray.addObject (0) ;
+  }else{
+    const uint32_t lastIndex = mBDDStartIndexArray.lastObject (HERE) ;
+    const uint32_t bitCount = mVariableTypeArray.lastObject (HERE).BDDBitCount() ;
+    mBDDStartIndexArray.addObject (lastIndex + bitCount) ;
+  }
   mVariableNameArray.addObject (inVariableName) ;
   mVariableTypeArray.addObject (inType) ;
 }
