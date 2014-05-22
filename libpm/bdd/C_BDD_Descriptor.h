@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//     C++ class for descripting BDD sets                                    *
+//     C++ class for descripting BDD sets                                      *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
