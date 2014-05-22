@@ -115,3 +115,15 @@ void C_Relation::addVariable (const C_String & inVariableName,
 }
 
 //-----------------------------------------------------------------------------*
+
+void C_Relation::setToEmpty (void) {
+  mBDD.setToFalse () ;
+}
+
+//-----------------------------------------------------------------------------*
+
+void C_Relation::setToFull (void) {
+  mBDD.setToTrue () ;
+}
+
+//-----------------------------------------------------------------------------*

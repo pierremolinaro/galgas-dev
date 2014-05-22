@@ -19,7 +19,7 @@
 
 class C_Relation {
   private : class cVariables ;
-//--- Default constructor (no variable)
+//--- Default constructor (no variable, empty)
   public : C_Relation (void) ;
 
 //--- Destructor
@@ -33,6 +33,10 @@ class C_Relation {
   public : void addVariable (const C_String & inVariableName,
                              const C_TypeInRelation & inType) ;
 
+//--- Set
+  public : void setToEmpty (void) ;
+  public : void setToFull (void) ;
+  
 //--- Attributes
   private : cVariables * mVariablesPtr ; 
   private : C_BDD mBDD ;

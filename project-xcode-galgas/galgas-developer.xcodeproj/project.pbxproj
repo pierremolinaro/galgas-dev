@@ -21,6 +21,10 @@
 		CF074C361000E29F00F45986 /* C_UIntCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF074C2E1000E29F00F45986 /* C_UIntCommandLineOption.cpp */; };
 		CF074CA11000EFF500F45986 /* C_StringCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF074C9B1000EFF500F45986 /* C_StringCommandLineOption.cpp */; };
 		CF074CA31000EFF500F45986 /* C_StringCommandLineOption.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF074C9B1000EFF500F45986 /* C_StringCommandLineOption.cpp */; };
+		CF079F9D192E418B008FEFF6 /* C_Relation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF079F99192E418B008FEFF6 /* C_Relation.cpp */; };
+		CF079F9E192E418B008FEFF6 /* C_Relation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF079F99192E418B008FEFF6 /* C_Relation.cpp */; };
+		CF079F9F192E418B008FEFF6 /* C_TypeInRelation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF079F9B192E418B008FEFF6 /* C_TypeInRelation.cpp */; };
+		CF079FA0192E418B008FEFF6 /* C_TypeInRelation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF079F9B192E418B008FEFF6 /* C_TypeInRelation.cpp */; };
 		CF0AF9130FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0AF90F0FED2CCB0007E6B2 /* lexiqueGeneration.cpp */; };
 		CF0AF9140FED2CCB0007E6B2 /* lexiqueGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0AF90F0FED2CCB0007E6B2 /* lexiqueGeneration.cpp */; };
 		CF0AF9360FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CF0AF9320FED32DB0007E6B2 /* lexiqueCocoaGeneration.cpp */; };
@@ -277,10 +281,6 @@
 		CFA5C5E00DFC003F00DD782E /* guiCompilation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFA5C5DC0DFC003F00DD782E /* guiCompilation.cpp */; };
 		CFAE5AA110021A400068DEC9 /* OC_GGS_CommandLineOption.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5A9F10021A400068DEC9 /* OC_GGS_CommandLineOption.m */; };
 		CFAE5B1C10024AA50068DEC9 /* enterDefaultCommandLineOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */; };
-		CFB0F145192E158900F601E9 /* C_TypeInRelation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB0F144192E158900F601E9 /* C_TypeInRelation.cpp */; };
-		CFB0F146192E158900F601E9 /* C_TypeInRelation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB0F144192E158900F601E9 /* C_TypeInRelation.cpp */; };
-		CFB0F14B192E251700F601E9 /* C_Relation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB0F14A192E251700F601E9 /* C_Relation.cpp */; };
-		CFB0F14C192E251700F601E9 /* C_Relation.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB0F14A192E251700F601E9 /* C_Relation.cpp */; };
 		CFB3190417B38D98009424C2 /* C_DirectedGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190317B38D98009424C2 /* C_DirectedGraph.cpp */; };
 		CFB3190517B38D98009424C2 /* C_DirectedGraph.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190317B38D98009424C2 /* C_DirectedGraph.cpp */; };
 		CFB3190817B3C553009424C2 /* C_UIntSet.cpp in Sources */ = {isa = PBXBuildFile; fileRef = CFB3190717B3C553009424C2 /* C_UIntSet.cpp */; };
@@ -463,6 +463,10 @@
 		CF074C2E1000E29F00F45986 /* C_UIntCommandLineOption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_UIntCommandLineOption.cpp; sourceTree = "<group>"; };
 		CF074C9A1000EFF500F45986 /* C_StringCommandLineOption.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = C_StringCommandLineOption.h; sourceTree = "<group>"; };
 		CF074C9B1000EFF500F45986 /* C_StringCommandLineOption.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = C_StringCommandLineOption.cpp; sourceTree = "<group>"; };
+		CF079F99192E418B008FEFF6 /* C_Relation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = C_Relation.cpp; path = bdd/C_Relation.cpp; sourceTree = "<group>"; };
+		CF079F9A192E418B008FEFF6 /* C_Relation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = C_Relation.h; path = bdd/C_Relation.h; sourceTree = "<group>"; };
+		CF079F9B192E418B008FEFF6 /* C_TypeInRelation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = C_TypeInRelation.cpp; path = bdd/C_TypeInRelation.cpp; sourceTree = "<group>"; };
+		CF079F9C192E418B008FEFF6 /* C_TypeInRelation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = C_TypeInRelation.h; path = bdd/C_TypeInRelation.h; sourceTree = "<group>"; };
 		CF085E4E11176CDA00A23487 /* GALGAS_location.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = GALGAS_location.cpp; sourceTree = "<group>"; };
 		CF0AF90F0FED2CCB0007E6B2 /* lexiqueGeneration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = lexiqueGeneration.cpp; sourceTree = "<group>"; };
 		CF0AF9100FED2CCB0007E6B2 /* lexiqueGeneration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = lexiqueGeneration.h; sourceTree = "<group>"; };
@@ -743,10 +747,6 @@
 		CFAE5B1910024AA50068DEC9 /* enterDefaultCommandLineOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = enterDefaultCommandLineOptions.h; sourceTree = "<group>"; };
 		CFAE5B1A10024AA50068DEC9 /* enterDefaultCommandLineOptions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = enterDefaultCommandLineOptions.m; sourceTree = "<group>"; };
 		CFAED8501598842900E485C7 /* M_Threads.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; lineEnding = 0; path = M_Threads.h; sourceTree = "<group>"; };
-		CFB0F144192E158900F601E9 /* C_TypeInRelation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_TypeInRelation.cpp; sourceTree = "<group>"; };
-		CFB0F148192E159F00F601E9 /* C_TypeInRelation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_TypeInRelation.h; sourceTree = "<group>"; };
-		CFB0F149192E250000F601E9 /* C_Relation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_Relation.h; sourceTree = "<group>"; };
-		CFB0F14A192E251700F601E9 /* C_Relation.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_Relation.cpp; sourceTree = "<group>"; };
 		CFB3190217B38D76009424C2 /* C_DirectedGraph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_DirectedGraph.h; sourceTree = "<group>"; };
 		CFB3190317B38D98009424C2 /* C_DirectedGraph.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_DirectedGraph.cpp; sourceTree = "<group>"; };
 		CFB3190617B3C545009424C2 /* C_UIntSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_UIntSet.h; sourceTree = "<group>"; };
@@ -1982,6 +1982,10 @@
 		CFF538F7057A560F00854C83 /* BDD */ = {
 			isa = PBXGroup;
 			children = (
+				CF079F99192E418B008FEFF6 /* C_Relation.cpp */,
+				CF079F9A192E418B008FEFF6 /* C_Relation.h */,
+				CF079F9B192E418B008FEFF6 /* C_TypeInRelation.cpp */,
+				CF079F9C192E418B008FEFF6 /* C_TypeInRelation.h */,
 				CFFC0F1311EDC44200C97B85 /* C_BDD-and-operation.cpp */,
 				CFFC0F1411EDC44200C97B85 /* C_BDD-find-or-add.cpp */,
 				CFFC0F1511EDC44200C97B85 /* C_BDD-node.h */,
@@ -1998,10 +2002,6 @@
 				CF9F4E37092A71F10055C8C3 /* C_BDD.h */,
 				CF9F4E38092A71F10055C8C3 /* C_Display_BDD.cpp */,
 				CF9F4E39092A71F10055C8C3 /* C_Display_BDD.h */,
-				CFB0F144192E158900F601E9 /* C_TypeInRelation.cpp */,
-				CFB0F148192E159F00F601E9 /* C_TypeInRelation.h */,
-				CFB0F14A192E251700F601E9 /* C_Relation.cpp */,
-				CFB0F149192E250000F601E9 /* C_Relation.h */,
 			);
 			name = BDD;
 			sourceTree = "<group>";
@@ -2308,8 +2308,8 @@
 				CFB3190417B38D98009424C2 /* C_DirectedGraph.cpp in Sources */,
 				CFB3190817B3C553009424C2 /* C_UIntSet.cpp in Sources */,
 				CF802963192A8FB00048D8CC /* C_CRC32.cpp in Sources */,
-				CFB0F145192E158900F601E9 /* C_TypeInRelation.cpp in Sources */,
-				CFB0F14B192E251700F601E9 /* C_Relation.cpp in Sources */,
+				CF079F9D192E418B008FEFF6 /* C_Relation.cpp in Sources */,
+				CF079F9F192E418B008FEFF6 /* C_TypeInRelation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2499,8 +2499,8 @@
 				CFB3190517B38D98009424C2 /* C_DirectedGraph.cpp in Sources */,
 				CFB3190917B3C553009424C2 /* C_UIntSet.cpp in Sources */,
 				CF802964192A8FB00048D8CC /* C_CRC32.cpp in Sources */,
-				CFB0F146192E158900F601E9 /* C_TypeInRelation.cpp in Sources */,
-				CFB0F14C192E251700F601E9 /* C_Relation.cpp in Sources */,
+				CF079F9E192E418B008FEFF6 /* C_Relation.cpp in Sources */,
+				CF079FA0192E418B008FEFF6 /* C_TypeInRelation.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
