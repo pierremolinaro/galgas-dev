@@ -5,7 +5,7 @@
 #---------------------------------------------------------------*
 
 COMPILER_TOOL := gcc
-LINKER_TOOL   := g++ -Wl,--gc-sections
+LINKER_TOOL   := g++
 STRIP_TOOL    := strip
 SUDO_TOOL     := sudo
 COMPILATION_MESSAGE := Compiling for Unix
