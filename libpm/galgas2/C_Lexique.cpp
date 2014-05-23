@@ -233,8 +233,6 @@ void C_Lexique::resetForSecondPass (void) {
   mPreviousChar = TO_UNICODE ('\0') ;
   mCurrentTokenPtr = mFirstToken ;
   if (mCurrentTokenPtr != NULL) {
- //   mStartLocationForHere = mCurrentTokenPtr->mStartLocation ;
- //   mEndLocationForHere = mCurrentTokenPtr->mEndLocation ;
     mTemplateString << mCurrentTokenPtr->mTemplateStringBeforeToken ;
     mCurrentLocation = mCurrentTokenPtr->mEndLocation ;
   }
