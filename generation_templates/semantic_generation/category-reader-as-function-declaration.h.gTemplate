@@ -1,8 +1,8 @@
-//---------------------------------------------------------------------------*
-//                                                                           *
-//%!["Category Reader '@" . TYPE_NAME . " " . READER_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
-//                                                                           *
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
+//                                                                             *
+//%!["Category Reader '@" . TYPE_NAME . " " . READER_NAME . "'" stringByLeftAndRightPadding !77 !' ']%*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 GALGAS_%!RETURN_TYPE_IDENTIFIER% categoryReader_%![READER_NAME identifierRepresentation]% (%?^%const GALGAS_%![TYPE_NAME identifierRepresentation]% & inObject%
   foreach FORMAL_ARGUMENT_LIST do index IDX

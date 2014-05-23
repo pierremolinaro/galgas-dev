@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//%!["Pointer class for @" . TYPE_NAME . " class" stringByLeftAndRightPadding !75 !' ']%*
+//%!["Pointer class for @" . TYPE_NAME . " class" stringByLeftAndRightPadding !77 !' ']%*
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

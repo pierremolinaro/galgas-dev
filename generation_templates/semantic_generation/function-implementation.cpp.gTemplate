@@ -1,12 +1,12 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//%!["Function '" . FUNCTION_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
+//%!["Function '" . FUNCTION_NAME . "'" stringByLeftAndRightPadding !77 !' ']%*
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
 %!FUNCTION_IMPLEMENTATION%
 //-----------------------------------------------------------------------------*
-//  Function introspection                                                   *
+//  Function introspection                                                     *
 //-----------------------------------------------------------------------------*
 
 static const C_galgas_type_descriptor * functionArgs_%![FUNCTION_NAME identifierRepresentation]% [%![[FORMAL_ARGUMENT_LIST length] + 1 string]%] = {
