@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//%!["Overriding category reader '@" . CLASS_NAME . " " . READER_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
+//%!["Overriding category reader '@" . CLASS_NAME . " " . READER_NAME . "'" stringByLeftAndRightPadding !77 !' ']%*
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

@@ -1,13 +1,13 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//%!["Once function '" . FUNCTION_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
+//%!["Once function '" . FUNCTION_NAME . "'" stringByLeftAndRightPadding !77 !' ']%*
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
 %!FUNCTION_IMPLEMENTATION%
 
 //-----------------------------------------------------------------------------*
-//  Function implementation                                                  *
+//  Function implementation                                                    *
 //-----------------------------------------------------------------------------*
 
 static bool gOnceFunctionResultAvailable_%![FUNCTION_NAME identifierRepresentation]% = false ;
@@ -36,7 +36,7 @@ C_PrologueEpilogue gEpilogueForOnceFunction_%![FUNCTION_NAME identifierRepresent
         %!^%releaseOnceFunctionResult_%![FUNCTION_NAME identifierRepresentation]%) ;
 
 //-----------------------------------------------------------------------------*
-//  Function introspection                                                   *
+//  Function introspection                                                     *
 //-----------------------------------------------------------------------------*
 
 static const C_galgas_type_descriptor * functionArgs_%![FUNCTION_NAME identifierRepresentation]% [%![[FORMAL_ARGUMENT_LIST length] + 1 string]%] = {

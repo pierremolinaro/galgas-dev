@@ -1,8 +1,8 @@
-//---------------------------------------------------------------------------*
-//                                                                           *
-//%!["Category method '@" . TYPE_NAME . " " . METHOD_NAME . "'" stringByLeftAndRightPadding !75 !' ']%*
-//                                                                           *
-//---------------------------------------------------------------------------*
+//-----------------------------------------------------------------------------*
+//                                                                             *
+//%!["Category method '@" . TYPE_NAME . " " . METHOD_NAME . "'" stringByLeftAndRightPadding !77 !' ']%*
+//                                                                             *
+//-----------------------------------------------------------------------------*
 
 void categoryMethod_%![METHOD_NAME identifierRepresentation]% (%?^%const GALGAS_%![TYPE_NAME identifierRepresentation]% inObject%
   foreach FORMAL_ARGUMENT_LIST do
