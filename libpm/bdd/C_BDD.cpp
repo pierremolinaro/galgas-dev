@@ -2368,7 +2368,7 @@ C_BDD C_BDD::buildBDDFromValueList (uint64_t ioValueList [],
     uint64_t referenceValue = ioValueList [0] ;
     for (uint32_t i=0 ; i<inValueCount ; i++) {
       const uint64_t currentTransition = ioValueList [i] ;
-      uint64_t mask = 1ULL << (inBitCount - 1) ;
+      uint64_t mask = 1UL << (inBitCount - 1) ;
       int32_t firstDifferentBit = ((int32_t) inBitCount) - 1 ;
       while ((firstDifferentBit >= 0) && (((currentTransition ^ referenceValue) & mask) == 0)) {
         firstDifferentBit -- ;
@@ -2376,7 +2376,7 @@ C_BDD C_BDD::buildBDDFromValueList (uint64_t ioValueList [],
       }
       if (firstDifferentBit >= 0) {
         C_BDD accumulatorBDD ; accumulatorBDD.setToTrue () ;
-        mask = 1ULL ;
+        mask = 1UL ;
         for (int32_t idx=0 ; idx<=firstDifferentBit ; idx++) {
           accumulatorBDD = (C_BDD ((uint32_t) (((uint32_t) idx) & UINT16_MAX), (referenceValue & mask) != 0) & accumulatorBDD) | accumulatorArray [idx] ;
           accumulatorArray [idx].setToFalse () ;
@@ -2390,7 +2390,7 @@ C_BDD C_BDD::buildBDDFromValueList (uint64_t ioValueList [],
       #endif
     }
     result.setToTrue () ;
-    uint64_t mask = 1ULL ;
+    uint64_t mask = 1UL ;
     for (uint32_t idx=0 ; idx<inBitCount ; idx++) {
       result = (C_BDD ((uint32_t) (((uint32_t) idx) & UINT16_MAX), (referenceValue & mask) != 0) & result) | accumulatorArray [idx] ;
       mask <<= 1 ;
