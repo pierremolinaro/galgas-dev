@@ -2642,7 +2642,7 @@
 				HEADER_SEARCH_PATHS = (
 					../galgas_sources/GALGAS_OUTPUT,
 					../hand_coded_sources,
-					"libpm/**",
+					libpm,
 				);
 				INSTALL_PATH = /usr/local/bin;
 				LD_GENERATE_MAP_FILE = NO;

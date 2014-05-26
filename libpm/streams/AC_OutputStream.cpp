@@ -210,11 +210,11 @@ static void
 printfUINT64 (char ioString [],
               const uint64_t inValue,
               int32_t & ioLength) {
-  const uint64_t quotient = inValue / 10ULL ;
+  const uint64_t quotient = inValue / 10UL ;
   if (quotient != 0) {
     printfUINT64 (ioString, quotient, ioLength) ;
   }
-  const uint32_t v = (uint32_t) ((inValue % 10ULL) & UINT32_MAX) ;
+  const uint32_t v = (uint32_t) ((inValue % 10UL) & UINT32_MAX) ;
   ioString [ioLength] = (char) (('0' + v) & 255) ;
   ioLength ++ ;
 }
@@ -240,7 +240,7 @@ printfUINT64Hex (char ioString [],
   if (quotient != 0) {
     printfUINT64Hex (ioString, quotient, ioLength) ;
   }
-  const uint32_t v = (uint32_t) (inValue & 15ULL) ;
+  const uint32_t v = (uint32_t) (inValue & 15UL) ;
   sprintf (& ioString [ioLength], "%X", v) ;
   ioLength ++ ;
 }

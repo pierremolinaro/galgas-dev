@@ -611,6 +611,9 @@
 		CF6CEB781278B57400E8F785 /* C_SourceTextInString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_SourceTextInString.h; sourceTree = "<group>"; };
 		CF6CEC571278CBD500E8F785 /* scanner_actions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = scanner_actions.cpp; sourceTree = "<group>"; };
 		CF6CEC581278CBD500E8F785 /* scanner_actions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanner_actions.h; sourceTree = "<group>"; };
+		CF6F631B192FB15300F4723E /* TC_FIFO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_FIFO.h; sourceTree = "<group>"; };
+		CF6F631C192FB15300F4723E /* TC_LinkedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_LinkedList.h; sourceTree = "<group>"; };
+		CF6F631D192FB15300F4723E /* TC_UniqueSparseArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_UniqueSparseArray.h; sourceTree = "<group>"; };
 		CF70273E137C53D600FA7C3E /* C_ColoredConsole.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_ColoredConsole.cpp; sourceTree = "<group>"; };
 		CF78D0BD14E70AED0020D786 /* C_Data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = C_Data.cpp; sourceTree = "<group>"; };
 		CF78D0BE14E70AED0020D786 /* C_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = C_Data.h; sourceTree = "<group>"; };
@@ -738,18 +741,10 @@
 		CFB7E4B7127F2F7F005B9851 /* Carbon.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Carbon.framework; path = System/Library/Frameworks/Carbon.framework; sourceTree = SDKROOT; };
 		CFB822110BC2D8DE009B1920 /* semanticsSLRgrammar.cpp */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.cpp.cpp; path = semanticsSLRgrammar.cpp; sourceTree = "<group>"; };
 		CFB822120BC2D8DE009B1920 /* semanticsSLRgrammar.h */ = {isa = PBXFileReference; fileEncoding = 5; lastKnownFileType = sourcecode.c.h; path = semanticsSLRgrammar.h; sourceTree = "<group>"; };
-		CFB9E4860DF28AC500885084 /* TC_AVL_TreeForCollision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_AVL_TreeForCollision.h; sourceTree = "<group>"; };
 		CFB9E4870DF28AC500885084 /* TC_Array.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_Array.h; sourceTree = "<group>"; };
 		CFB9E4880DF28AC500885084 /* TC_Array2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_Array2.h; sourceTree = "<group>"; };
-		CFB9E4890DF28AC500885084 /* TC_BlockBinaryTreeForCollision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_BlockBinaryTreeForCollision.h; sourceTree = "<group>"; };
-		CFB9E48A0DF28AC500885084 /* TC_Block_AVL_TreeForCollision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_Block_AVL_TreeForCollision.h; sourceTree = "<group>"; };
-		CFB9E48B0DF28AC500885084 /* TC_FixedSizeArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_FixedSizeArray.h; sourceTree = "<group>"; };
-		CFB9E48C0DF28AC500885084 /* TC_HashMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_HashMap.h; sourceTree = "<group>"; };
-		CFB9E48D0DF28AC500885084 /* TC_LinearListForCollision.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_LinearListForCollision.h; sourceTree = "<group>"; };
 		CFB9E48E0DF28AC500885084 /* TC_UniqueArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_UniqueArray.h; sourceTree = "<group>"; };
 		CFB9E48F0DF28AC500885084 /* TC_UniqueArray2.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_UniqueArray2.h; sourceTree = "<group>"; };
-		CFB9E4900DF28AC500885084 /* TC_UniqueFixedSizeArray.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TC_UniqueFixedSizeArray.h; sourceTree = "<group>"; };
-		CFB9E4910DF28AC500885084 /* TF_AVL_Tree.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TF_AVL_Tree.h; sourceTree = "<group>"; };
 		CFBC4D071152370D006CAD14 /* projectGlobalCheckings.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = projectGlobalCheckings.cpp; sourceTree = "<group>"; };
 		CFBC4D081152370D006CAD14 /* projectGlobalCheckings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = projectGlobalCheckings.h; sourceTree = "<group>"; };
 		CFBC4D0F11523723006CAD14 /* semanticContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = semanticContext.cpp; sourceTree = "<group>"; };
@@ -1295,18 +1290,13 @@
 		CFB9E4850DF28AC500885084 /* collections */ = {
 			isa = PBXGroup;
 			children = (
-				CFB9E4860DF28AC500885084 /* TC_AVL_TreeForCollision.h */,
+				CF6F631B192FB15300F4723E /* TC_FIFO.h */,
+				CF6F631C192FB15300F4723E /* TC_LinkedList.h */,
+				CF6F631D192FB15300F4723E /* TC_UniqueSparseArray.h */,
 				CFB9E4870DF28AC500885084 /* TC_Array.h */,
 				CFB9E4880DF28AC500885084 /* TC_Array2.h */,
-				CFB9E4890DF28AC500885084 /* TC_BlockBinaryTreeForCollision.h */,
-				CFB9E48A0DF28AC500885084 /* TC_Block_AVL_TreeForCollision.h */,
-				CFB9E48B0DF28AC500885084 /* TC_FixedSizeArray.h */,
-				CFB9E48C0DF28AC500885084 /* TC_HashMap.h */,
-				CFB9E48D0DF28AC500885084 /* TC_LinearListForCollision.h */,
 				CFB9E48E0DF28AC500885084 /* TC_UniqueArray.h */,
 				CFB9E48F0DF28AC500885084 /* TC_UniqueArray2.h */,
-				CFB9E4900DF28AC500885084 /* TC_UniqueFixedSizeArray.h */,
-				CFB9E4910DF28AC500885084 /* TF_AVL_Tree.h */,
 			);
 			path = collections;
 			sourceTree = "<group>";
@@ -2627,7 +2617,6 @@
 				GCC_THREADSAFE_STATICS = NO;
 				GCC_TREAT_IMPLICIT_FUNCTION_DECLARATIONS_AS_ERRORS = YES;
 				GCC_TREAT_WARNINGS_AS_ERRORS = YES;
-				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_FIELD_INITIALIZERS = YES;
 				GCC_WARN_ABOUT_MISSING_NEWLINE = YES;
@@ -2640,7 +2629,6 @@
 				GCC_WARN_MISSING_PARENTHESES = YES;
 				GCC_WARN_NON_VIRTUAL_DESTRUCTOR = YES;
 				GCC_WARN_PEDANTIC = NO;
-				GCC_WARN_SHADOW = NO;
 				GCC_WARN_SIGN_COMPARE = YES;
 				GCC_WARN_TYPECHECK_CALLS_TO_PRINTF = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;
@@ -2657,7 +2645,7 @@
 				);
 				INSTALL_PATH = /usr/local/bin;
 				LD_GENERATE_MAP_FILE = NO;
-				SDKROOT = macosx;
+				SDKROOT = macosx10.6;
 			};
 			name = Default;
 		};
