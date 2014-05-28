@@ -1,10 +1,10 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//     BDD package (implementation of ROBDD)                                 *
+//     BDD package (implementation of ROBDD)                                   *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 1999, ..., 2010 Pierre Molinaro.                             *
+//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                             *
 //                                                                             *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
@@ -356,7 +356,7 @@ class C_BDD {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Abstract class for value traversing of a BDD                            *
+//   Abstract class for value traversing of a BDD                              *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -376,7 +376,7 @@ class C_bdd_value_traversing {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//   Abstract class for node traversing of a BDD                             *
+//   Abstract class for node traversing of a BDD                               *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 

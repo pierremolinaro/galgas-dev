@@ -191,7 +191,7 @@ internalForAllOnBitRange (const uint32_t inValue,
   const uint32_t complement = inValue & 1 ;
   uint32_t result = complement ;
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].bothBranches () == 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
     gSingleOperandOperationCacheTrivialOperationCount ++ ;
   }else{
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
@@ -226,7 +226,7 @@ operationQuelqueSoitSurBitSupNumeroInterne (const uint32_t inValue,
   const uint32_t complement = inValue & 1 ;
   uint32_t result = complement ;
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].bothBranches () == 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
     gSingleOperandOperationCacheTrivialOperationCount ++ ;
   }else{
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
@@ -307,7 +307,7 @@ static uint32_t internalRecursiveSubstitution (const uint32_t inValue,
                                                COMMA_LOCATION_ARGS) {
   uint32_t result = inValue ;
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].bothBranches () == 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
     gSingleOperandOperationCacheTrivialOperationCount ++ ;
   }else{
     const uint32_t complement = inValue & 1 ;
@@ -380,7 +380,7 @@ internalExchangeVariables (const uint32_t inValue,
                            const uint32_t var2) {
   uint32_t result = inValue ;
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].bothBranches () != 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) != 0) {
     const uint32_t complement = inValue & 1 ;
     if (gNodeArray [nodeIndex].mVariableIndex > var1) {
       result = internalITEoperation (
@@ -433,7 +433,7 @@ internalRollDown (const uint32_t inValue,
                   const uint32_t inLowVar) {
   uint32_t result = inValue ;
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].bothBranches () != 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) != 0) {
     const uint32_t complement = inValue & 1 ;
     if (gNodeArray [nodeIndex].mVariableIndex > inHighVar) {
       result = internalITEoperation (
@@ -479,7 +479,7 @@ internalRollUp (const uint32_t inValue,
                 const uint32_t var2) {
   uint32_t result = inValue ;
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].bothBranches () != 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) != 0) {
     const uint32_t complement = inValue & 1 ;
     if (gNodeArray [nodeIndex].mVariableIndex > var1) {
       result = internalITEoperation (
@@ -524,7 +524,7 @@ static uint32_t internalLeftShift (const uint32_t inValue,
                                    const uint32_t inLeftShiftCount) {
   uint32_t result = inValue ;
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].bothBranches () == 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
     gSingleOperandOperationCacheTrivialOperationCount ++ ;
   }else if (! searchInSingleOperandOperationCache (inValue, result)) {
     const uint32_t complement = inValue & 1 ;
@@ -558,7 +558,7 @@ static uint32_t internalRightShift (const uint32_t inValue,
                                     const uint32_t inRightShiftCount) {
   uint32_t result = inValue ;
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].bothBranches () == 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
     gSingleOperandOperationCacheTrivialOperationCount ++ ;
   }else if (gNodeArray [nodeIndex].mVariableIndex < inRightShiftCount) {
     result = 1 ;

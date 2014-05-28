@@ -4,7 +4,7 @@
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 1999, ..., 2010 Pierre Molinaro.                             *
+//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                             *
 //                                                                             *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
@@ -30,13 +30,17 @@
 #include "bdd/C_BDD.h"
 
 //-----------------------------------------------------------------------------*
-//                                                                             *
-//            Declaration de la classe 'cBDDnode'                              *
-//               definissant un element d'un BDD                               *
-//                                                                             *
+
+typedef struct {
+  uint32_t mTHEN ;
+  uint32_t mELSE ;
+  uint32_t mVariableIndex ;
+  uint32_t mAuxiliary ;
+} cBDDnode ;
+
 //-----------------------------------------------------------------------------*
 
-class cBDDnode {
+/*class cBDDnode {
   public : inline cBDDnode (const uint32_t inTHENbranch,
                             const uint32_t inELSEbranch,
                             const uint32_t inVariableIndex) :
@@ -45,23 +49,26 @@ class cBDDnode {
   mVariableIndex (inVariableIndex),
   mAuxiliary (0) {
   }
-  
-  public : inline uint64_t bothBranches (void) const {
-    uint64_t result = mTHEN ;
-    result <<= 32 ;
-    result |= mELSE ;
-    return result ;
-  }
+
   public : uint32_t mTHEN ;
   public : uint32_t mELSE ;
   public : uint32_t mVariableIndex ;
   public : uint32_t mAuxiliary ;
-} ;
+} ;*/
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
 //  Utilities                                                                  *
 //                                                                             *
+//-----------------------------------------------------------------------------*
+
+inline uint64_t bothBranches (const cBDDnode & inNode) {
+  uint64_t result = inNode.mTHEN ;
+  result <<= 32 ;
+  result |= inNode.mELSE ;
+  return result ;
+}
+
 //-----------------------------------------------------------------------------*
 
 extern cBDDnode * gNodeArray ;
@@ -72,7 +79,11 @@ inline uint32_t nodeIndexForRoot (const uint32_t inRoot
   return inRoot >> 1 ;
 }
 
+//-----------------------------------------------------------------------------*
+
 bool isNodeMarkedThenMark (const uint32_t inValue COMMA_LOCATION_ARGS) ;
+
+//-----------------------------------------------------------------------------*
 
 void markNode (const uint32_t inValue) ;
 

@@ -87,7 +87,7 @@ uint32_t hashMapMemoryUsage (void) {
 //-----------------------------------------------------------------------------*
 
 inline uint64_t nodeHashCode (const cBDDnode inNode) {
-  uint64_t result = inNode.bothBranches () % (uint64_t) gCollisionMapSize ;
+  uint64_t result = bothBranches (inNode) % (uint64_t) gCollisionMapSize ;
   result <<= 32 ;
   result = (result | inNode.mVariableIndex) % (uint64_t) gCollisionMapSize ;
   return result ;
@@ -270,12 +270,13 @@ uint32_t find_or_add (const uint32_t inBoolVar,
       const uint32_t complement = inELSEbranch & 1 ;
       const uint32_t c1 = inTHENbranch ^ complement ;
       const uint32_t c0 = inELSEbranch ^ complement ;
-      const cBDDnode candidateNode = cBDDnode (c1, c0, inBoolVar) ;
+ //     const cBDDnode candidateNode = cBDDnode (c1, c0, inBoolVar) ;
+      const cBDDnode candidateNode = {c1, c0, inBoolVar, 0} ;
       // printf ("candidateNode %llu gCollisionMapSize %u\n", candidateNode, gCollisionMapSize) ;
       const uint64_t hashCode = nodeHashCode (candidateNode) ;
       uint32_t nodeIndex = gCollisionMap [hashCode] ;
       while ((0 != nodeIndex)
-         && ((gNodeArray [nodeIndex].bothBranches () != candidateNode.bothBranches ())
+         && ((bothBranches (gNodeArray [nodeIndex]) != bothBranches (candidateNode))
           || (gNodeArray [nodeIndex].mVariableIndex != candidateNode.mVariableIndex))) {
         nodeIndex = gNodeArray [nodeIndex].mAuxiliary ;
       }
@@ -324,7 +325,7 @@ uint32_t C_BDD::getBDDinstancesCount (void) {
 static void recursiveMarkBDDNodes (const uint32_t inValue) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   if ((nodeIndex > 0) && ! isNodeMarkedThenMark (inValue COMMA_HERE)) {
-    if (gNodeArray [nodeIndex].bothBranches () != 0) {
+    if (bothBranches (gNodeArray [nodeIndex]) != 0) {
       recursiveMarkBDDNodes (gNodeArray [nodeIndex].mTHEN) ;
       recursiveMarkBDDNodes (gNodeArray [nodeIndex].mELSE) ;
     }
@@ -522,7 +523,7 @@ static void internalCheckBDDIsWellFormed (const uint32_t inBDD,
                                           const uint32_t inCurrentVar
                                           COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inBDD COMMA_HERE) ;
-  if (0 != gNodeArray [nodeIndex].bothBranches ()) {
+  if (0 != bothBranches (gNodeArray [nodeIndex])) {
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     if (var >= inCurrentVar) {
      #ifndef DO_NOT_GENERATE_CHECKINGS
