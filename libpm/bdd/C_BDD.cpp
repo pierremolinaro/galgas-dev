@@ -167,7 +167,7 @@ static uint32_t internalOpposite (const uint32_t inValue) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const uint32_t complement = inValue & 1 ;
   uint32_t result = 0 ;
-  if (gNodeArray [nodeIndex].bothBranches () != 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) != 0) {
     result = find_or_add (gNodeArray [nodeIndex].mVariableIndex,
                           internalOpposite (gNodeArray [nodeIndex].mTHEN),
                           internalOpposite (gNodeArray [nodeIndex].mELSE) COMMA_HERE) ;
@@ -442,7 +442,7 @@ varCompareVar (const uint32_t inLeftFirstIndex,
 uint32_t C_BDD::significantVariableCount (void) const {
   uint32_t bitCount = 0 ;
   const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].bothBranches () != 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) != 0) {
     bitCount = gNodeArray [nodeIndex].mVariableIndex + 1 ;
   }
   return bitCount ;
@@ -467,7 +467,7 @@ static bool recursiveContainsValue64 (const uint32_t inBDD,
   bool result ;
   const uint32_t nodeIndex = nodeIndexForRoot (inBDD COMMA_HERE) ;
   const uint32_t complement = inBDD & 1 ;
-  if (gNodeArray [nodeIndex].bothBranches () == 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
     result = complement != 0 ;
     #ifdef DEBUG_CONTAINS_VALUE
       printf ("result %s\n", result ? "YES" : "NO") ;
@@ -531,7 +531,7 @@ static bool recursiveContainsValue (const uint32_t inBDD,
   bool result ;
   const uint32_t nodeIndex = nodeIndexForRoot (inBDD COMMA_HERE) ;
   const uint32_t complement = inBDD & 1 ;
-  if (gNodeArray [nodeIndex].bothBranches () == 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
     result = complement != 0 ;
     #ifdef DEBUG_CONTAINS_VALUE
       printf ("result %s\n", result ? "YES" : "NO") ;
@@ -597,7 +597,7 @@ bool C_BDD::containsValue (const TC_Array <bool> & inValue,
 static void parcoursBDDinterneParNoeud (const uint32_t inValue,
                                         C_bdd_node_traversing & inTraversing) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if ((gNodeArray [nodeIndex].bothBranches () != 0) && ! isNodeMarkedThenMark (inValue COMMA_HERE)) {
+  if ((bothBranches (gNodeArray [nodeIndex]) != 0) && ! isNodeMarkedThenMark (inValue COMMA_HERE)) {
     parcoursBDDinterneParNoeud (gNodeArray [nodeIndex].mELSE, inTraversing) ;
     parcoursBDDinterneParNoeud (gNodeArray [nodeIndex].mTHEN, inTraversing) ;
     inTraversing.action (inValue & ~1U,
@@ -967,7 +967,7 @@ static void internalValueCount64 (const uint32_t inValue,
                                   uint64_t & nombreComplement
                                   COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
-  if (gNodeArray [nodeIndex].bothBranches () == 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
     nombreDirect = 0 ;
     nombreComplement = 1 ;
     for (uint32_t i=0 ; i<inVariableCount ; i++) {
@@ -1015,7 +1015,7 @@ static void internalValueCount128 (const uint32_t inValue,
                                    PMUInt128 & nombreComplement
                                    COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
-  if (gNodeArray [nodeIndex].bothBranches () == 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
     nombreDirect = 0 ;
     nombreComplement = 1 ;
     for (uint32_t i=0 ; i<inVariableCount ; i++) {
@@ -1059,7 +1059,7 @@ static void internalValueCount128UsingCache (const uint32_t inValue,
                                              TC_UniqueArray <PMUInt128> & ioComplementCacheArray
                                              COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
-  if (gNodeArray [nodeIndex].bothBranches () == 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
     nombreDirect = 0 ;
     nombreComplement = 1 << inVariableCount ;
   }else if ((ioDirectCacheArray.count () > (int32_t) (inValue / 2))
@@ -1108,7 +1108,7 @@ static void internalValueCount64UsingCache (const uint32_t inValue,
                                             TC_UniqueArray <uint64_t> & ioComplementCacheArray
                                             COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_THERE) ;
-  if (gNodeArray [nodeIndex].bothBranches () == 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
     nombreDirect = 0 ;
     nombreComplement = 1 << inVariableCount ;
   }else if ((ioDirectCacheArray.count () > (int32_t) (inValue / 2))
@@ -1163,7 +1163,7 @@ obtenirIemeBDDinterne (const uint32_t inValue,
   const uint32_t complement = inValue & 1 ;
   uint64_t iEme ;
   C_BDD result ;
-  if (gNodeArray [nodeIndex].bothBranches () == 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
     if (complement == 1) { // Decomposer inNthBDDvalue en binaire
       result = ~ result ;
       iEme = inNthBDDvalue ;
@@ -1224,7 +1224,7 @@ obtenirValeurAbsolueBDDInterne (const uint32_t inValue) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const uint32_t complement = inValue & 1 ;
   uint64_t result = 1 ^ complement ;
-  if (gNodeArray [nodeIndex].bothBranches () != 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) != 0) {
     if ((gNodeArray [nodeIndex].mELSE ^ complement) != 0) {
       result = obtenirValeurAbsolueBDDInterne (gNodeArray [nodeIndex].mELSE ^ complement) ;
     }else{
@@ -1266,7 +1266,7 @@ rangBDDinterne (const uint32_t inValue,
   const uint32_t complement = inValue & 1 ;
   uint64_t rang = 0 ;
   uint64_t nc ; // non utilise
-  if (gNodeArray [testedValueNodeIndex].bothBranches () == 0) {
+  if (bothBranches (gNodeArray [testedValueNodeIndex]) == 0) {
   }else if ((gNodeArray [testedValueNodeIndex].mELSE ^ complementValeurTestee) == 0) {
     if ((gNodeArray [nodeIndex].mTHEN == 0) && (gNodeArray [nodeIndex].mELSE == 0)) {
       rang = 1UL << gNodeArray [testedValueNodeIndex].mVariableIndex ;
@@ -1313,7 +1313,7 @@ getBDDrange (const C_BDD & inOperand,
 static uint32_t internalRecursiveNodeCount (const uint32_t inValue) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   uint32_t n = 0 ;
-  if (gNodeArray [nodeIndex].bothBranches () != 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) != 0) {
     if (! isNodeMarkedThenMark (inValue COMMA_HERE)) {
       n = 1 ;
       n += internalRecursiveNodeCount (gNodeArray [nodeIndex].mELSE) ;
@@ -1328,7 +1328,7 @@ static uint32_t internalRecursiveNodeCount (const uint32_t inValue) {
 uint32_t C_BDD::getBDDnodesCount (void) const {
   const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
   uint32_t result = 0 ;
-  if (gNodeArray [nodeIndex].bothBranches () != 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) != 0) {
     unmarkAllExistingBDDnodes () ;
     result = internalRecursiveNodeCount (mBDDvalue) ;
   }
@@ -1403,7 +1403,7 @@ internalRecursiveUpdateRelation (const uint32_t inValue,
                                  const uint32_t inTranslationVector []) {
   uint32_t result = inValue ;
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].bothBranches () != 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) != 0) {
     const uint32_t var = gNodeArray [nodeIndex].mVariableIndex ;
     if (inTranslationVector [var] != var) {
       const uint32_t complement = inValue & 1 ;
@@ -1778,7 +1778,7 @@ ecrireBDDinterne (AC_OutputStream & inStream,
                   const C_Display_BDD & inVariablesNames) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const uint32_t complement = inValue & 1 ;
-  if (gNodeArray [nodeIndex].bothBranches () == 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
     if (complement == 1) {
       ecrireLigneBDD (inStream, chaineAffichage, inVariablesNames) ;
     }
@@ -1872,7 +1872,7 @@ internalPrintBDD (const uint32_t inValue,
                   const int32_t inLeadingSpacesCount) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const uint32_t complement = inValue & 1 ;
-  if (gNodeArray [nodeIndex].bothBranches () == 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
     if (complement == 1) {
       printBDDline (inDisplayString, inNameLengthArray, inLeadingSpacesCount) ;
     }
@@ -2006,7 +2006,7 @@ internalPrintBDDWithSeparator (const uint32_t inValue,
                                uint32_t inVariableIndex) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const uint32_t complement = inValue & 1 ;
-  if (gNodeArray [nodeIndex].bothBranches () == 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
     if (complement == 1) {
       printBDDlineWithSeparator (inSeparatorArray, inDisplayString) ;
     }
@@ -2086,7 +2086,7 @@ internalPrintBDDInLittleEndianStringArray (const uint32_t inValue,
                                COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const uint32_t complement = inValue & 1 ;
-  if (gNodeArray [nodeIndex].bothBranches () == 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
     if (complement == 1) {
       outStringArray.addObject (ioDisplayString) ;
     }
@@ -2131,7 +2131,7 @@ void C_BDD::
 buildCompressedLittleEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray
                                              COMMA_LOCATION_ARGS) const {
   const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].bothBranches () != 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) != 0) {
     C_String displayString ;
     for (int32_t i=0 ; i<=((int32_t) gNodeArray [nodeIndex].mVariableIndex) ; i++) {
       displayString << "X" ;
@@ -2164,7 +2164,7 @@ internalPrintBDDInBigEndianStringArray (const uint32_t inValue,
                                COMMA_LOCATION_ARGS) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
   const uint32_t complement = inValue & 1 ;
-  if (gNodeArray [nodeIndex].bothBranches () == 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) == 0) {
     if (complement == 1) {
       outStringArray.addObject (ioDisplayString) ;
     }
@@ -2209,7 +2209,7 @@ void C_BDD::
 buildCompressedBigEndianStringValueArray (TC_UniqueArray <C_String> & outStringArray
                                           COMMA_LOCATION_ARGS) const {
   const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].bothBranches () != 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) != 0) {
     C_String displayString ;
     for (int32_t i=0 ; i<=((int32_t) gNodeArray [nodeIndex].mVariableIndex) ; i++) {
       displayString << "X" ;
@@ -2257,7 +2257,7 @@ static void ecrireCompositionBDDrecursif (AC_OutputStream & inStream,
                                           const uint32_t inValue,
                                           const C_Display_BDD & inVariablesNames) {
   const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if ((gNodeArray [nodeIndex].bothBranches () != 0) && ! isNodeMarkedThenMark (inValue COMMA_HERE)) {
+  if ((bothBranches (gNodeArray [nodeIndex]) != 0) && ! isNodeMarkedThenMark (inValue COMMA_HERE)) {
     inStream << "  node " << cStringWithUnsigned (inValue >> 1) << ": if " ;
     inVariablesNames.ecrire (gNodeArray [nodeIndex].mVariableIndex, inStream) ;
     inStream << " (#" << cStringWithUnsigned (gNodeArray [nodeIndex].mVariableIndex)  << ") then " ;
@@ -2279,7 +2279,7 @@ printBDDnodes (AC_OutputStream & inStream,
   displayBranchCode (inStream, mBDDvalue) ;
   inStream << "\n" ;
   const uint32_t nodeIndex = nodeIndexForRoot (mBDDvalue COMMA_HERE) ;
-  if (gNodeArray [nodeIndex].bothBranches () != 0) {
+  if (bothBranches (gNodeArray [nodeIndex]) != 0) {
     unmarkAllExistingBDDnodes () ;
     ecrireCompositionBDDrecursif (inStream, mBDDvalue, inVariablesNames) ;
   }
