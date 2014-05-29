@@ -38,7 +38,7 @@ class C_RelationSingleType::cType : public C_SharedObject {
   }
 
 //--- Accessors
-  public : virtual uint32_t valueCount (void) const = 0 ;
+  public : virtual uint32_t constantCount (void) const = 0 ;
   public : virtual C_String nameForValue (const uint32_t inIndex
                                           COMMA_LOCATION_ARGS) const = 0 ;
 
@@ -58,7 +58,7 @@ class C_EnumeratedTypeInRelation : public C_RelationSingleType::cType {
                                        COMMA_LOCATION_ARGS) ;
 
 //--- Accessors
-  public : virtual uint32_t valueCount (void) const {
+  public : virtual uint32_t constantCount (void) const {
     return (uint32_t) mConstantNameArray.count () ;
   }
 
@@ -104,7 +104,7 @@ class C_UnsignedTypeInRelation : public C_RelationSingleType::cType {
                                      COMMA_LOCATION_ARGS) ;
 
 //--- Accessors
-  public : virtual uint32_t valueCount (void) const {
+  public : virtual uint32_t constantCount (void) const {
     return mValueCount ;
   }
 
@@ -155,9 +155,9 @@ uint32_t C_RelationSingleType::BDDBitCount (void) const {
 
 //-----------------------------------------------------------------------------*
 
-uint32_t C_RelationSingleType::valueCount (void) const {
+uint32_t C_RelationSingleType::constantCount (void) const {
   macroValidPointer (mTypePtr) ;
-  return mTypePtr->valueCount () ;
+  return mTypePtr->constantCount () ;
 }
 
 //-----------------------------------------------------------------------------*

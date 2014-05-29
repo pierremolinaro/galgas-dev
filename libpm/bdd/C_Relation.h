@@ -14,40 +14,7 @@
 
 #include "bdd/C_BDD.h"
 #include "bdd/C_RelationSingleType.h"
-
-//-----------------------------------------------------------------------------*
-
-class C_RelationConfiguration {
-  private : class cVariables ;
-//--- Default constructor (no variable, empty)
-  public : C_RelationConfiguration (void) ;
-
-//--- Destructor
-  public : virtual ~ C_RelationConfiguration (void) ;
-
-//--- Handling copy
-  public : C_RelationConfiguration (const C_RelationConfiguration & inSource) ;
-  public : C_RelationConfiguration & operator = (const C_RelationConfiguration & inSource) ;
-
-//--- Add variable
-  public : void addVariable (const C_String & inVariableName,
-                             const C_RelationSingleType & inType) ;
-
-//--- Accessors
-  public : uint32_t variableCount (void) const ;
-  public : uint32_t bitCount (void) const ;
-  public : uint32_t bddStartBitIndexForVariable (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
-  public : uint32_t bddBitCountForVariable (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
-  public : C_String constantNameForVariableAndValue (const int32_t inIndex,
-                                                     const uint32_t inValue
-                                                     COMMA_LOCATION_ARGS) const ;
-
-//---
-  public : void checkIdenticalTo (const C_RelationConfiguration & inConfiguration) const ;
-  
-//--- Attributes
-  private : cVariables * mVariablesPtr ; 
-} ;
+#include "bdd/C_RelationConfiguration.h"
 
 //-----------------------------------------------------------------------------*
 
@@ -101,6 +68,8 @@ class C_Relation {
                                COMMA_LOCATION_ARGS) const ;
 
   public : void getValueArray (TC_UniqueArray <uint64_t> & outArray) const ;
+
+  public : uint64_t value64Count (void) const ;
 
 //--- Accessors
   public : inline uint32_t variableCount (void) const {
