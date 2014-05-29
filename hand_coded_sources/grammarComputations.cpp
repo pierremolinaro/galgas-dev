@@ -506,16 +506,17 @@ analyzeGrammar (C_Compiler * inCompiler,
   #ifdef LOG_GRAMMAR_COMPUTATIONS
     printf ("GETTING USEFUL SYMBOLS DONE\n") ; fflush (stdout) ;
   #endif
-//--- Calculer l'ensemble des non terminaux pouvant se deriver en vide --------------------------------
+//--- Calculer l'ensemble des non terminaux pouvant se dériver en vide --------------------------------
   TC_UniqueArray <bool> vocabularyDerivingToEmpty_Array ;
   C_BDD_Set1 vocabularyDerivingToEmpty_BDD (vocabularyDescriptor) ;
+  C_Relation vocabularyDerivingToEmpty ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
-    empty_strings_computations (pureBNFproductions,
-                                HTMLfile,
-                                vocabulary,
-                                vocabularyDerivingToEmpty_Array,
-                                vocabularyDerivingToEmpty_BDD,
-                                verboseOptionOn) ;
+    vocabularyDerivingToEmpty = empty_strings_computations (pureBNFproductions,
+                                                            HTMLfile,
+                                                            vocabularyDerivingToEmpty_Array,
+                                                            vocabularyDerivingToEmpty_BDD,
+                                                            usefulSymbolsRelation.configuration (),
+                                                            verboseOptionOn) ;
   }
 //--- Computing FIRST sets ---------------------------------------------------------------
   C_BDD_Set2 FIRSTsets (vocabularyDescriptor, vocabularyDescriptor) ;

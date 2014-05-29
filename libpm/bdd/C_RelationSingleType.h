@@ -36,7 +36,7 @@ class C_RelationSingleType {
 //--- Accessors
   public : C_String typeName (void) const ;
   public : uint32_t BDDBitCount (void) const ;
-  public : uint32_t valueCount (void) const ;
+  public : uint32_t constantCount (void) const ;
   public : C_String nameForValue (const uint32_t inIndex
                                   COMMA_LOCATION_ARGS) const ;
 

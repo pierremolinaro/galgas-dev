@@ -138,6 +138,7 @@ SOURCES += C_BDD-find-or-add.cpp
 SOURCES += C_BDD-single-operand-ops.cpp
 SOURCES += C_BDD-and-operation.cpp
 SOURCES += C_RelationSingleType.cpp
+SOURCES += C_RelationConfiguration.cpp
 SOURCES += C_Relation.cpp
 SOURCES += C_Display_BDD.cpp
 SOURCES += C_BDD_Set1.cpp

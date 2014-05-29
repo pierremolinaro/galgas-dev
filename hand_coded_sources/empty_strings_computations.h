@@ -1,9 +1,11 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-// Routines for computing empty string derivations                           *
+// Routines for computing empty string derivations                             *
 //                                                                             *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                             *
+//                                                                             *
+//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
+//                                                                             *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
 //                                                                             *
@@ -29,18 +31,20 @@
 
 class cPureBNFproductionsList ;
 class C_HTML_FileWrite ;
-class cVocabulary ;
-class C_BDD_Set1 ;
 class C_Lexique ;
+class C_Relation ;
+class C_RelationConfiguration ;
+
+class C_BDD_Set1 ;
 
 //-----------------------------------------------------------------------------*
 
-void
+C_Relation
 empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
                             C_HTML_FileWrite * inHTMLfile,
-                            const cVocabulary & inVocabulary,
                             TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
                             C_BDD_Set1 & outVocabularyDerivingToEmpty_BDD,
+                            const C_RelationConfiguration & inVocabularyConfiguration,
                             const bool inVerboseOptionOn) ;
 
 //-----------------------------------------------------------------------------*
