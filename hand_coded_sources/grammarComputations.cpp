@@ -1,10 +1,10 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  This file handles all computations performed on grammars                 *
+//  This file handles all computations performed on grammars                   *
 //                                                                             *
 //  Copyright (C) 1999, ..., 2012 Pierre Molinaro.                             *
 //                                                                             *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
 //                                                                             *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
@@ -27,15 +27,17 @@
 #include "files/C_HTML_FileWrite.h"
 #include "files/C_TextFileWrite.h"
 #include "files/C_FileManager.h"
-#include "bdd/C_BDD_Descriptor.h"
-#include "bdd/C_BDD_Set1.h"
-#include "bdd/C_BDD_Set2.h"
+#include "bdd/C_Relation.h"
 #include "utilities/MF_MemoryControl.h"
 #include "streams/C_ConsoleOut.h"
 #include "galgas2/C_galgas_CLI_Options.h"
 #include "galgas2/C_Compiler.h"
 #include "galgas_cli_options.h"
 #include "galgas2/C_galgas_io.h"
+
+#include "bdd/C_BDD_Descriptor.h"
+#include "bdd/C_BDD_Set1.h"
+#include "bdd/C_BDD_Set2.h"
 
 //-----------------------------------------------------------------------------*
 
@@ -487,6 +489,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     printf ("GETTING USEFUL SYMBOLS\n") ; fflush (stdout) ;
   #endif
   C_BDD_Set1 usefulSymbols (vocabularyDescriptor) ;
+  C_Relation usefulSymbolsRelation ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     useful_symbols_computations (inCompiler,
                                  inErrorLocation,
@@ -496,6 +499,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                                  vocabulary,
                                  HTMLfile,
                                  usefulSymbols,
+                                 usefulSymbolsRelation,
                                  warningFlag,
                                  verboseOptionOn) ;
   }

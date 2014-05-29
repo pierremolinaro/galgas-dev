@@ -366,7 +366,7 @@ GALGAS_binaryset GALGAS_binaryset::operator_xor (const GALGAS_binaryset & inOper
                                                  COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if (isValid () && inOperand2.isValid ()) {
-    result = GALGAS_binaryset (mBDD != inOperand2.mBDD) ;
+    result = GALGAS_binaryset (mBDD.notEqualTo (inOperand2.mBDD)) ;
   }
   return result ;
 }
@@ -470,7 +470,7 @@ GALGAS_binaryset GALGAS_binaryset::reader_equalTo (const GALGAS_binaryset & inOp
                                                    COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if (inOperand.isValid ()) {
-    result = GALGAS_binaryset (mBDD == inOperand.mBDD) ;
+    result = GALGAS_binaryset (mBDD.equalTo (inOperand.mBDD)) ;
   }
   return result ;
 }
@@ -481,7 +481,7 @@ GALGAS_binaryset GALGAS_binaryset::reader_notEqualTo (const GALGAS_binaryset & i
                                                       COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if (inOperand.isValid ()) {
-    result = GALGAS_binaryset (mBDD != inOperand.mBDD) ;
+    result = GALGAS_binaryset (mBDD.notEqualTo (inOperand.mBDD)) ;
   }
   return result ;
 }
@@ -492,7 +492,7 @@ GALGAS_binaryset GALGAS_binaryset::reader_lowerOrEqualTo (const GALGAS_binaryset
                                                           COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if (inOperand.isValid ()) {
-    result = GALGAS_binaryset (mBDD <= inOperand.mBDD) ;
+    result = GALGAS_binaryset (mBDD.lowerOrEqual (inOperand.mBDD)) ;
   }
   return result ;
 }
@@ -503,7 +503,7 @@ GALGAS_binaryset GALGAS_binaryset::reader_greaterOrEqualTo (const GALGAS_binarys
                                                             COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if (inOperand.isValid ()) {
-    result = GALGAS_binaryset (mBDD >= inOperand.mBDD) ;
+    result = GALGAS_binaryset (mBDD.greaterOrEqual (inOperand.mBDD)) ;
   }
   return result ;
 }
@@ -514,7 +514,7 @@ GALGAS_binaryset GALGAS_binaryset::reader_strictLowerThan (const GALGAS_binaryse
                                                            COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if (inOperand.isValid ()) {
-    result = GALGAS_binaryset (mBDD < inOperand.mBDD) ;
+    result = GALGAS_binaryset (mBDD.lowerThan (inOperand.mBDD)) ;
   }
   return result ;
 }
@@ -525,7 +525,7 @@ GALGAS_binaryset GALGAS_binaryset::reader_strictGreaterThan (const GALGAS_binary
                                                              COMMA_UNUSED_LOCATION_ARGS) const {
   GALGAS_binaryset result ;
   if (inOperand.isValid ()) {
-    result = GALGAS_binaryset (mBDD > inOperand.mBDD) ;
+    result = GALGAS_binaryset (mBDD.greaterThan (inOperand.mBDD)) ;
   }
   return result ;
 }

@@ -34,8 +34,13 @@ class C_RelationConfiguration {
                              const C_RelationSingleType & inType) ;
 
 //--- Accessors
+  public : uint32_t variableCount (void) const ;
+  public : uint32_t bitCount (void) const ;
   public : uint32_t bddStartBitIndexForVariable (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
   public : uint32_t bddBitCountForVariable (const int32_t inIndex COMMA_LOCATION_ARGS) const ;
+  public : C_String constantNameForVariableAndValue (const int32_t inIndex,
+                                                     const uint32_t inValue
+                                                     COMMA_LOCATION_ARGS) const ;
 
 //---
   public : void checkIdenticalTo (const C_RelationConfiguration & inConfiguration) const ;
@@ -53,6 +58,10 @@ class C_Relation {
 //--- Constructor (variables, empty or full)
   public : C_Relation (const C_RelationConfiguration & inConfiguration,
                        const bool isFull) ;
+
+//--- Private constructor (variables, eBDD)
+  private : C_Relation (const C_RelationConfiguration & inConfiguration,
+                        const C_BDD inBDD) ;
 
 //--- Constructor (Variable compared with constant)
   public : C_Relation (const C_RelationConfiguration & inConfiguration,
@@ -77,9 +86,31 @@ class C_Relation {
   public : void setToFull (void) ;
 
 //--- Operators
+  public : void operator &= (const C_Relation & inRelation) ;
   public : void operator |= (const C_Relation & inRelation) ;
+  public : C_Relation operator & (const C_Relation & inRelation) const ;
+  public : C_Relation operator | (const C_Relation & inRelation) const ;
+  public : C_Relation operator ~ (void) const ;
+
+  public : C_Relation accessibleStatesFrom (const C_Relation & inStartStates,
+                                            int32_t * outIterationCount
+                                            COMMA_LOCATION_ARGS) const ;
+
+  public : bool containsValue (const int32_t inVariableIndex,
+                               const uint64_t inValue
+                               COMMA_LOCATION_ARGS) const ;
+
+  public : void getValueArray (TC_UniqueArray <uint64_t> & outArray) const ;
 
 //--- Accessors
+  public : inline uint32_t variableCount (void) const {
+    return mConfiguration.variableCount () ;
+  }
+  
+  public : inline uint32_t bitCount (void) const {
+    return mConfiguration.bitCount () ;
+  }
+  
   public : C_RelationConfiguration configuration (void) const ;
   public : C_BDD bdd (void) const ;
   

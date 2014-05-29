@@ -75,8 +75,9 @@ class C_BDD {
   public : inline bool isFalse (void) const { return mBDDvalue == 0 ; }
   public : inline bool isTrue (void) const { return mBDDvalue == 1 ; }
   public : bool isComplemented (void) const ;
-//  public : bool infPtr (const C_BDD & inOperand) const ;
-  public : inline bool isEqualToBDD (const C_BDD & inOperand) const { return mBDDvalue == inOperand.mBDDvalue ; }
+
+  public : inline bool operator == (const C_BDD & inOperand) const { return mBDDvalue == inOperand.mBDDvalue ; }
+  public : inline bool operator != (const C_BDD & inOperand) const { return mBDDvalue != inOperand.mBDDvalue ; }
   public : inline uint32_t integerValue (void) const { return mBDDvalue ; }
 
 //--- Operations on a BDD
@@ -87,12 +88,12 @@ class C_BDD {
 //--- Operations between BDDs
   public : C_BDD operator & (const C_BDD & inOperand) const ; // And
   public : C_BDD operator | (const C_BDD & inOperand) const ; // Or
-  public : C_BDD operator == (const C_BDD & inOperand) const ; // Equivalent
-  public : C_BDD operator != (const C_BDD & inOperand) const ; // Different
-  public : C_BDD operator <= (const C_BDD & inOperand) const ; 
-  public : C_BDD operator < (const C_BDD & inOperand) const ;
-  public : C_BDD operator >= (const C_BDD & inOperand) const ;
-  public : C_BDD operator > (const C_BDD & inOperand) const ;
+  public : C_BDD equalTo (const C_BDD & inOperand) const ; // Equivalent
+  public : C_BDD notEqualTo (const C_BDD & inOperand) const ; // Different
+  public : C_BDD lowerOrEqual (const C_BDD & inOperand) const ; 
+  public : C_BDD lowerThan (const C_BDD & inOperand) const ;
+  public : C_BDD greaterOrEqual (const C_BDD & inOperand) const ;
+  public : C_BDD greaterThan (const C_BDD & inOperand) const ;
   public : C_BDD implies (const C_BDD & inOperand) const ; // ->
   public : static C_BDD ite (const C_BDD & f, const C_BDD & g, const C_BDD & h) ; // ite (f, g, h)
   public : C_BDD operator ~ (void) const ; // get complement

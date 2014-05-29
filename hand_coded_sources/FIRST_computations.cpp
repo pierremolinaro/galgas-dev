@@ -62,7 +62,7 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
       directFIRST |= left & pr ;
     }
   }
-  if (! directFIRST.isEqualToBDD (ex_directFIRST.bdd ())) {
+  if (directFIRST != ex_directFIRST.bdd ()) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
     printf ("inBDDBitCount %hu\n", inBDDBitCount) ;
     printf ("directFIRST '%s'\n", directFIRST.queryStringValue (HERE).cString (HERE)) ;
@@ -73,7 +73,7 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
 //--- Perform transitive closure of 'directFIRST'
   C_BDD_Set2 ex_FIRST = ex_directFIRST.getTransitiveClosure (outIterationsCount) ;
   C_BDD FIRST = directFIRST.transitiveClosure (inBDDBitCount, NULL) ;
-  if (! FIRST.isEqualToBDD (ex_FIRST.bdd ())) {
+  if (FIRST != (ex_FIRST.bdd ())) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
   }
 
@@ -84,7 +84,7 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
                                    inBDDBitCount,
                                    C_BDD::kLowerOrEqual,
                                    (uint32_t) (inTerminalSymbolsCount - 1)) ;
-  if (! FIRST.isEqualToBDD (ex_FIRST.bdd ())) {
+  if (FIRST != (ex_FIRST.bdd ())) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
   }
 
@@ -115,7 +115,7 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
                             C_BDD::kEqual,
                             (uint32_t) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ; 
   const C_BDD nt_x_empty = inVocabularyDerivingInEmptyString.bdd () & emptyStringTerminalSymbolIndex ;
-  if (! nt_x_empty.isEqualToBDD (ex_nt_x_empty.bdd ())) {
+  if (nt_x_empty != (ex_nt_x_empty.bdd ())) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
     printf ("nt_x_empty   : %s\n", nt_x_empty.queryStringValue (HERE).cString (HERE)) ;
     printf ("ex_nt_x_empty: %s\n", ex_nt_x_empty.bdd ().queryStringValue (HERE).cString (HERE)) ;
@@ -124,7 +124,7 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
 //--- FIRST union nt symbols deriring in empty string
   const C_BDD_Set2 ex_FIRST_with_empty = ex_nt_x_empty | inFIRSTsets ;
   const C_BDD FIRST_with_empty = nt_x_empty | inFIRSTsets.bdd () ;
-  if (! FIRST_with_empty.isEqualToBDD (ex_FIRST_with_empty.bdd ())) {
+  if (FIRST_with_empty != (ex_FIRST_with_empty.bdd ())) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
   }
 
@@ -180,7 +180,7 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
 //--- Get nonterminal symbols in error
   const C_BDD_Set1 ex_ntInError = ex_ntToCheck & inUsefulSymbols & ~(ex_FIRST_with_empty.projeterSurAxe1 ()) ; 
   const C_BDD ntInError = ntToCheck & inUsefulSymbols.bdd () & ~(FIRST_with_empty.existsOnBitsAfterNumber (inBDDBitCount)) ; 
-  if (! ntInError.isEqualToBDD (ex_ntInError.bdd ())) {
+  if (ntInError != (ex_ntInError.bdd ())) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
   }
   const int32_t ntInErrorCount2 = (int32_t) ntInError.valueCount64 (inBDDBitCount) ;
