@@ -92,7 +92,7 @@ bool C_BDD_Set2::isEqualTo (const C_BDD_Set2 & inOperand COMMA_LOCATION_ARGS) co
                   "Invalid BDD set (max value 2 : %ld, expected : %ld)",
                   (int32_t) inOperand.mDescriptor2.getMaxValue (),
                   (int32_t) mDescriptor2.getMaxValue ()) ;
-  return mBDD.isEqualToBDD (inOperand.mBDD) ;
+  return mBDD == inOperand.mBDD ;
 }
 
 //-----------------------------------------------------------------------------*

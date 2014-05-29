@@ -385,7 +385,7 @@ uint32_t C_BDD_Set3::getValuesCount (void) const {
 //-----------------------------------------------------------------------------*
 
 bool C_BDD_Set3::isEqualTo (const C_BDD_Set3 & inOperand) const {
-  return mBDD.isEqualToBDD (inOperand.mBDD) ;
+  return mBDD == inOperand.mBDD ;
 }
 
 //-----------------------------------------------------------------------------*

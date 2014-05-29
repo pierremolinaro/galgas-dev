@@ -100,7 +100,7 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
     outFOLLOWsets = constant ;
     const C_BDD t = v.swap321 (inBDDBitCount, inBDDBitCount, inBDDBitCount) ;
     outFOLLOWsets |= (lastOfProduction & t).existsOnBitsAfterNumber (twoBDDBitCount) ;
-  }while (! v.isEqualToBDD (outFOLLOWsets)) ;
+  }while (v != outFOLLOWsets) ;
 
 //--- Suppress nonterminal symbols in the FOLLOW sets
   outFOLLOWsets &= C_BDD::varCompareConst (inBDDBitCount,

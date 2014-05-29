@@ -28,10 +28,12 @@
 class cPureBNFproductionsList ;
 class cVocabulary ;
 class C_HTML_FileWrite ;
-class C_BDD_Set1 ;
 class C_Compiler ;
 class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis ;
 class C_RelationSingleType ;
+class C_Relation ;
+
+class C_BDD_Set1 ;
 
 //-----------------------------------------------------------------------------*
 
@@ -43,6 +45,7 @@ void useful_symbols_computations (C_Compiler * inCompiler,
                                   const cVocabulary & inVocabulary,
                                   C_HTML_FileWrite * inHTMLfile,
                                   C_BDD_Set1 & outUsefulSymbols,
+                                  C_Relation & outUsefulSymbolsRelation,
                                   bool & outWarningFlag,
                                   const bool inVerboseOptionOn) ;
 

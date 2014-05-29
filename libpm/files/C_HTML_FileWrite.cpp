@@ -5,7 +5,7 @@
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
-//  Copyright (C) 2003, ..., 2011 Pierre Molinaro.                             *
+//  Copyright (C) 2003, ..., 2014 Pierre Molinaro.                             *
 //                                                                             *
 //  e-mail : pierre.molinaro@irccyn.ec-nantes.fr                               *
 //                                                                             *
@@ -61,7 +61,7 @@ C_TextFileWrite (inFileName) {
 }
 
 //-----------------------------------------------------------------------------*
-//                     Close                                                 *
+//                     Close                                                   *
 //-----------------------------------------------------------------------------*
 
 bool C_HTML_FileWrite::close (void) {
@@ -70,7 +70,7 @@ bool C_HTML_FileWrite::close (void) {
 }
 
 //-----------------------------------------------------------------------------*
-//  Destructor writes html ending code, the closes the file                  *
+//  Destructor writes html ending code, the closes the file                    *
 //-----------------------------------------------------------------------------*
 
 C_HTML_FileWrite::~C_HTML_FileWrite (void) {
@@ -78,7 +78,7 @@ C_HTML_FileWrite::~C_HTML_FileWrite (void) {
 }
 
 //-----------------------------------------------------------------------------*
-//  Write a character string into the file WITHOUT any translation           *
+//  Write a character string into the file WITHOUT any translation             *
 //-----------------------------------------------------------------------------*
 
 void C_HTML_FileWrite::outputRawData (const char * in_Cstring) {
@@ -86,11 +86,12 @@ void C_HTML_FileWrite::outputRawData (const char * in_Cstring) {
 }
 
 //-----------------------------------------------------------------------------*
-//                  Write a character string into the file                   *
-//  Performs HTML character translation (i.e. '<' --> '&lt;', ...)           *
+//                  Write a character string into the file                     *
+//  Performs HTML character translation (i.e. '<' --> '&lt;', ...)             *
 //-----------------------------------------------------------------------------*
 
-void C_HTML_FileWrite::performActualCharArrayOutput (const char * inCharArray, const int32_t inArrayCount) {
+void C_HTML_FileWrite::performActualCharArrayOutput (const char * inCharArray,
+                                                     const int32_t inArrayCount) {
   for (int32_t i=0 ; i<inArrayCount ; i++) {
     const char c = inCharArray [i] ;
     switch (c) {
@@ -111,7 +112,30 @@ void C_HTML_FileWrite::performActualCharArrayOutput (const char * inCharArray, c
 }
 
 //-----------------------------------------------------------------------------*
-//                 Comments as a table                                       *
+
+void C_HTML_FileWrite::performActualUnicodeArrayOutput (const utf32 * inCharArray,
+                                                        const int32_t inArrayCount) {
+  for (int32_t i=0 ; i<inArrayCount ; i++) {
+    const utf32 codePoint = inCharArray [i] ;
+    switch (UNICODE_VALUE (codePoint)) {
+    case '<' :
+      inherited::performActualCharArrayOutput ("&lt;", 4) ;
+      break ;
+    case '>' :
+      inherited::performActualCharArrayOutput ("&gt;", 4) ;
+      break ;
+    case '&' :
+      inherited::performActualCharArrayOutput ("&amp;", 4) ;
+      break ;
+    default :
+      inherited::performActualUnicodeArrayOutput (& codePoint, 1) ;
+      break ;
+    }
+  }
+}
+
+//-----------------------------------------------------------------------------*
+//                 Comments as a table                                         *
 //-----------------------------------------------------------------------------*
 
 void C_HTML_FileWrite::appendCppTitleComment (const C_String & inCommentString,

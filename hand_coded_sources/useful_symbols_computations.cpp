@@ -40,6 +40,7 @@ static void
 computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
                       const C_RelationSingleType & inVocabularyBDDType,
                       C_BDD_Set1 & ex_outUsefulSymbols,
+                      C_Relation & outUsefulSymbolsRelation,
                       const uint16_t inStartSymbolIndex,
                       int32_t & outIterationsCount) {
 //--- Traverse all productions for getting direct accessibility
@@ -48,8 +49,9 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
   C_BDD_Set2 ex_rightVocabulary (ex_outUsefulSymbols.getDescriptor (), ex_outUsefulSymbols.getDescriptor ()) ;
   C_BDD_Set2 ex_rightSymbol (ex_outUsefulSymbols.getDescriptor (), ex_outUsefulSymbols.getDescriptor ()) ;
   C_BDD accessibility ;
-  C_RelationConfiguration vocabulary2 ;
-  vocabulary2.addVariable ("source", inVocabularyBDDType) ;
+  C_RelationConfiguration vocabulary ;
+  vocabulary.addVariable ("source", inVocabularyBDDType) ;
+  C_RelationConfiguration vocabulary2 = vocabulary ;
   vocabulary2.addVariable ("target", inVocabularyBDDType) ;
   C_Relation accessibilityRelation (vocabulary2, false) ;
   for (int32_t i=0 ; i<inPureBNFproductions.length () ; i++) {
@@ -66,19 +68,28 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
                                                           inVocabularyBDDType.BDDBitCount (),
                                                           C_BDD::kEqual,
                                                           (uint32_t) p.derivationAtIndex (j COMMA_HERE)) ;  
- //       rightVocabularyRelation |= C_Relation (vocabulary2, 1, C_BDD::kEqual, (uint64_t) p.derivationAtIndex (j COMMA_HERE)) ; 
+        rightVocabularyRelation |= C_Relation (vocabulary2, 1, C_BDD::kEqual, (uint64_t) p.derivationAtIndex (j COMMA_HERE) COMMA_HERE) ; 
         rightVocabulary |= rightSymbol ;
       }
       const C_BDD leftNonterminal = C_BDD::varCompareConst (0,
                                                             inVocabularyBDDType.BDDBitCount (),
                                                             C_BDD::kEqual,
                                                             (uint32_t) p.leftNonTerminalIndex ()) ;  
+      const C_Relation leftNonterminalRelation = C_Relation (vocabulary2, 0, C_BDD::kEqual, (uint64_t) p.leftNonTerminalIndex () COMMA_HERE) ; 
+      accessibilityRelation |= leftNonterminalRelation & rightVocabularyRelation ;
       accessibility |= leftNonterminal & rightVocabulary ;
       ex_leftNonterminal.initDimension1 (C_BDD::kEqual, (uint16_t) p.leftNonTerminalIndex ()) ;
       ex_accessibility |= ex_leftNonterminal & ex_rightVocabulary ;
     }
   } 
 //--- Compute useful vocabulary
+  if (accessibility != (accessibilityRelation.bdd())) {
+    printf ("*** ! accessibility.isEqualToBDD(accessibilityRelation.bdd() ***\n") ;
+    exit (1) ;
+  }
+  const C_Relation initialValueRelation (vocabulary, 0, C_BDD::kEqual, inStartSymbolIndex COMMA_HERE) ;
+  outUsefulSymbolsRelation = accessibilityRelation.accessibleStatesFrom (initialValueRelation, & outIterationsCount COMMA_HERE) ;
+
   C_BDD_Set1 ex_initialValue (ex_outUsefulSymbols) ;
   ex_initialValue.init (C_BDD::kEqual, inStartSymbolIndex) ;
   ex_outUsefulSymbols = ex_accessibility.getAccessibility (ex_initialValue, outIterationsCount) ;
@@ -87,15 +98,10 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
                                                      C_BDD::kEqual,
                                                      (uint32_t) inStartSymbolIndex) ;  
   C_BDD outUsefulSymbols = accessibility.accessibleStates (initialValue, inVocabularyBDDType.BDDBitCount (), NULL) ;
-  if (! outUsefulSymbols.isEqualToBDD (ex_outUsefulSymbols.bdd ())) {
-    printf ("\n********* USEFUL SYMBOLS ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
-    printf ("inVocabularyBDDType.BDDBitCount () %u\n", inVocabularyBDDType.BDDBitCount ()) ;
-    printf ("initialValue '%s'\n", initialValue.queryStringValue (HERE).cString (HERE)) ;
-    printf ("accessibility '%s'\n", accessibility.queryStringValue (HERE).cString (HERE)) ;
-    printf ("outUsefulSymbols '%s'\n", outUsefulSymbols.queryStringValue (HERE).cString (HERE)) ;
-    printf ("ex_initialValue '%s'\n", ex_initialValue.bdd ().queryStringValue (HERE).cString (HERE)) ;
-    printf ("ex_accessibility '%s'\n", ex_accessibility.bdd ().queryStringValue (HERE).cString (HERE)) ;
-    printf ("ex_outUsefulSymbols '%s'\n", ex_outUsefulSymbols.bdd ().queryStringValue (HERE).cString (HERE)) ;
+
+  if (outUsefulSymbols != (outUsefulSymbolsRelation.bdd())) {
+    printf ("*** ! outUsefulSymbols.isEqualToBDD (outUsefulSymbolsRelation.bdd() ***\n") ;
+    exit (1) ;
   }
 }
 
@@ -104,22 +110,11 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
 static bool displayUnusefulSymbols (C_Compiler * inCompiler,
                                     const GALGAS_location & inErrorLocation,
                                     const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
-                                    const C_BDD_Set1 & inUsefulSymbols,
-                                    const C_RelationSingleType & inVocabularyBDDType,
+                                    const C_Relation & inUsefulSymbolsRelation,
                                     C_HTML_FileWrite * inHTMLfile,
                                     const cVocabulary & inVocabulary,
                                     const int32_t inIterationCount,
                                     const bool inVerboseOptionOn) {
-  TC_UniqueArray <uint32_t> unusedNonTerminalArray ;
-  cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis currentNT (inUnusedNonTerminalSymbolsForGrammar, kEnumeration_up) ;
-  while (currentNT.hasCurrentObject ()) {
-    const uint32_t nt = currentNT.current_mNonTerminalIndex (HERE).uintValue () + (uint32_t) inVocabulary.getTerminalSymbolsCount () ;
-    unusedNonTerminalArray.addObject (nt) ;
-    // printf ("DECLARED UNUSED %u ", nt) ;
-    currentNT.gotoNextObject () ;
-  }
-
-  bool warning = false ;
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("<p><a name=\"useful_symbols\"></a>") ;
     *inHTMLfile << "Calculus completed in "
@@ -127,10 +122,42 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
                 << " iterations.\n" ;
     inHTMLfile->outputRawData ("</p>") ;
   }
-//--- Get index of last non terminal to check (don't check augmented symbol '<>')
-  const uint32_t lastNonterminalToCheck = (uint32_t) (inVocabulary.getAllSymbolsCount () - 2) ;
 
-  C_BDD_Set1 ex_unusefulSymbols = (~ inUsefulSymbols) ;
+//------------------------------------------------------ Compute useless symbols
+  C_Relation uselessSymbols = ~ inUsefulSymbolsRelation ;
+//--- Remove augmented symbol '<>'
+//  const uint32_t lastNonterminalToCheck = (uint32_t) (inVocabulary.getAllSymbolsCount () - 2) ;
+  const uint32_t lastNonterminalToCheck = (uint32_t) (inVocabulary.originalGrammarSymbolsCount () - 1) ;
+  uselessSymbols &= C_Relation (uselessSymbols.configuration(), 0, C_BDD::kLowerOrEqual, lastNonterminalToCheck COMMA_HERE) ;
+//--- Remove terminal symbol and 'empty string' symbol
+  uselessSymbols &= C_Relation (uselessSymbols.configuration(), 0, C_BDD::kStrictGreater, (uint64_t) inVocabulary.getEmptyStringTerminalSymbolIndex () COMMA_HERE) ;
+  C_Relation uselessSymbolsForWarning = uselessSymbols ;
+
+//--------------------- Compute array of used symbols declared as unused by user
+  cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis currentNT (inUnusedNonTerminalSymbolsForGrammar, kEnumeration_up) ;
+  TC_UniqueArray <C_String> usedSymbolDeclaredAsUnusedArray ;
+  while (currentNT.hasCurrentObject ()) {
+    const uint32_t nt = currentNT.current_mNonTerminalIndex (HERE).uintValue () + (uint32_t) inVocabulary.getTerminalSymbolsCount () ;
+    // printf ("*** UNUSED DECLARED SYMBOL %u *** \n", nt) ;
+    if (uselessSymbols.containsValue (0, nt COMMA_HERE)) {
+      uselessSymbolsForWarning &= ~ C_Relation (uselessSymbols.configuration (), 0, C_BDD::kEqual, nt COMMA_HERE) ;
+    }else{
+      usedSymbolDeclaredAsUnusedArray.addObject (uselessSymbols.configuration ().constantNameForVariableAndValue (0, nt COMMA_HERE)) ;
+    }
+    currentNT.gotoNextObject () ;
+  }
+
+//---------------------------------------------- Compute array of unused symbols
+  TC_UniqueArray <uint64_t> unusedSymbolArrayForWarning ;
+  uselessSymbolsForWarning.getValueArray (unusedSymbolArrayForWarning) ;
+
+
+
+
+
+
+//--- Get index of last non terminal to check (don't check augmented symbol '<>')
+/*  C_BDD_Set1 ex_unusefulSymbols = (~ inUsefulSymbols) ;
   C_BDD_Set1 temp (ex_unusefulSymbols) ;
   temp.init (C_BDD::kLowerOrEqual, lastNonterminalToCheck) ;
   ex_unusefulSymbols &= temp ;
@@ -142,8 +169,21 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
     & C_BDD::varCompareConst (0, inVocabularyBDDType.BDDBitCount (), C_BDD::kStrictGreater, (uint32_t) inVocabulary.getEmptyStringTerminalSymbolIndex ())
   ;
 
+  if (! uselessSymbols.bdd ().isEqualToBDD (unusefulSymbols)) {
+    printf ("**** ! uselessSymbols.bdd ().isEqualToBDD (unusefulSymbols) ****\n") ;
+    exit (1) ;
+  }
 //--- Compute user useless symbol count
-  TC_UniqueArray <bool> uselessArray ;
+  TC_UniqueArray <uint32_t> unusedNonTerminalArray ;
+  currentNT.rewind () ;
+//  cEnumerator_unusedNonTerminalSymbolMapForGrammarAnalysis currentNT (inUnusedNonTerminalSymbolsForGrammar, kEnumeration_up) ;
+  while (currentNT.hasCurrentObject ()) {
+    const uint32_t nt = currentNT.current_mNonTerminalIndex (HERE).uintValue () + (uint32_t) inVocabulary.getTerminalSymbolsCount () ;
+    unusedNonTerminalArray.addObject (nt) ;
+    // printf ("DECLARED UNUSED %u ", nt) ;
+    currentNT.gotoNextObject () ;
+  }*/
+/*  TC_UniqueArray <bool> uselessArray ;
   ex_unusefulSymbols.getArray (uselessArray) ;
   uint32_t userUselessSymbolCount = 0 ;
   const int32_t symbolsCount = inVocabulary.originalGrammarSymbolsCount () ;
@@ -152,97 +192,83 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
       userUselessSymbolCount += uselessArray (symbol COMMA_HERE) ;
       // printf ("ACTUALLY UNUSED %u ", symbol) ;
     }
-  }
+  }*/
   
+/*  if (usedSymbolDeclaredAsUnused.count() != (int32_t) userUselessSymbolCount) {
+    printf ("*** usedSymbolDeclaredAsUnused.count() != (int32_t) userUselessSymbolCount ***\n") ;
+    exit (1) ;
+  }*/
+  
+//  const int32_t userUselessSymbolCount = usedSymbolDeclaredAsUnusedArray.count() ;
+
+//---------------------------------------------------------- Print in HTML file  
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("<p>") ;
-  }
-  if (userUselessSymbolCount == 0) {
-    if (inHTMLfile != NULL) {
+    if (unusedSymbolArrayForWarning.count () == 0) {
       inHTMLfile->outputRawData ("<span class=\"success\">") ;
       *inHTMLfile << "All terminal and nonterminal symbols are useful.\n\n" ;
       inHTMLfile->outputRawData ("</span>") ;
-    }
-    if (inVerboseOptionOn) {
-      co << "all, ok.\n" ;
-    }
-  }else{
-    if (inHTMLfile != NULL) {
+    }else{
       inHTMLfile->outputRawData ("<span class=\"warning\">") ;
       *inHTMLfile << "The vocabulary has " ;
-      inHTMLfile->appendUnsigned (userUselessSymbolCount) ;
+      inHTMLfile->appendSigned (unusedSymbolArrayForWarning.count ()) ;
       *inHTMLfile << " useless symbol(s) : \n" ;
-      TC_UniqueArray <bool> array ;
-      ex_unusefulSymbols.getArray (array) ;
       inHTMLfile->outputRawData ("<code>") ;
-      for (int32_t symbol=0 ; symbol < symbolsCount ; symbol++) {
-        if (array (symbol COMMA_HERE)) {
-          inHTMLfile->outputRawData ("<br>") ;
-          inVocabulary.printInFile (*inHTMLfile, symbol COMMA_HERE) ;
-        }
+      for (int32_t symbol=0 ; symbol < unusedSymbolArrayForWarning.count () ; symbol++) {
+        inHTMLfile->outputRawData ("<br>") ;
+        *inHTMLfile << uselessSymbolsForWarning.configuration().constantNameForVariableAndValue (0, (uint32_t) unusedSymbolArrayForWarning (symbol COMMA_HERE) COMMA_HERE) ;
       }
       inHTMLfile->outputRawData ("</code></span>") ;
     }
-    if (inVerboseOptionOn) {
-      co << "warning.\n" ;
-    }
-    warning = true ;
-  }
-  if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("</p>") ;
   }
+//---------------------------------------- Print messages and warnings on stdout
+//--- Ok, or warning ?
+  const bool warning = (usedSymbolDeclaredAsUnusedArray.count () > 0) || (unusedSymbolArrayForWarning.count () > 0) ;
+  if (inVerboseOptionOn) {
+    co << (warning ? "warning.\n" : "all, ok.\n") ;
+  }
   co.flush () ;
-//--- Print warning
-  if (userUselessSymbolCount > 0) {
+//--- Warn for unused symbols
+  if (unusedSymbolArrayForWarning.count () > 0) {
     C_String warningMessage ;
-    if (userUselessSymbolCount == 1) {
+    if (unusedSymbolArrayForWarning.count () == 1) {
       warningMessage << "there is 1 useless symbol, not declared as unused: " ;
     }else{
       warningMessage << "there are " ;
-      warningMessage.appendUnsigned (userUselessSymbolCount) ;
+      warningMessage.appendSigned (unusedSymbolArrayForWarning.count ()) ;
       warningMessage << " useless symbols, not declared as unused: " ;
     }
     bool first = true ;
-    for (int32_t symbol=0 ; symbol < symbolsCount ; symbol++) {
-      if (uselessArray (symbol COMMA_HERE) && ! unusedNonTerminalArray.containsObjectEqualTo ((uint32_t) symbol)) {
-        if (first) {
-          first = false ;
-        }else{
-          warningMessage << ", " ;
-        }
-        inVocabulary.printInFile (warningMessage, symbol COMMA_HERE) ;
+    for (int32_t symbol=0 ; symbol < unusedSymbolArrayForWarning.count () ; symbol++) {
+      if (first) {
+        first = false ;
+      }else{
+        warningMessage << ", " ;
       }
+      warningMessage << uselessSymbolsForWarning.configuration().constantNameForVariableAndValue (0, (uint32_t) unusedSymbolArrayForWarning (symbol COMMA_HERE) COMMA_HERE) ;
+      // inVocabulary.printInFile (warningMessage, symbol COMMA_HERE) ;
     }
     inCompiler->semanticWarningAtLocation (inErrorLocation, warningMessage COMMA_HERE) ;
   }
-  
-//--- Check if there are nonterminal symbols declared as unused and actually used
-  uint32_t declaredUnusedAndActuallyUsedCount = 0 ;
-  for (int32_t i=0 ; i<unusedNonTerminalArray.count () ; i++) {
-    if (! uselessArray ((int32_t) unusedNonTerminalArray (i COMMA_HERE) COMMA_HERE)) {
-      declaredUnusedAndActuallyUsedCount ++ ;
-    }
-  }
-  if (declaredUnusedAndActuallyUsedCount > 0) {
+  //--- Warn for used symbols declared as unused
+  if (usedSymbolDeclaredAsUnusedArray.count () > 0) {
     C_String warningMessage ;
-    if (declaredUnusedAndActuallyUsedCount == 1) {
+    if (usedSymbolDeclaredAsUnusedArray.count () == 1) {
       warningMessage << "there is 1 useful symbol declared as unused: " ;
     }else{
       warningMessage << "there are " ;
-      warningMessage.appendUnsigned (declaredUnusedAndActuallyUsedCount) ;
+      warningMessage.appendSigned (usedSymbolDeclaredAsUnusedArray.count ()) ;
       warningMessage << " useful symbols declared as unused: " ;
     }
     bool first = true ;
-    for (int32_t i=0 ; i<unusedNonTerminalArray.count () ; i++) {
-      const int32_t symbol = (int32_t) unusedNonTerminalArray (i COMMA_HERE) ;
-      if (! uselessArray (symbol COMMA_HERE)) {
-        if (first) {
-          first = false ;
-        }else{
-          warningMessage << ", " ;
-        }
-        inVocabulary.printInFile (warningMessage, symbol COMMA_HERE) ;
+    for (int32_t i=0 ; i<usedSymbolDeclaredAsUnusedArray.count () ; i++) {
+      if (first) {
+        first = false ;
+      }else{
+        warningMessage << ", " ;
       }
+      warningMessage << usedSymbolDeclaredAsUnusedArray (i COMMA_HERE) ;
     }
     inCompiler->semanticWarningAtLocation (inErrorLocation, warningMessage COMMA_HERE) ;
   }
@@ -260,6 +286,7 @@ void useful_symbols_computations (C_Compiler * inCompiler,
                                   const cVocabulary & inVocabulary,
                                   C_HTML_FileWrite * inHTMLfile,
                                   C_BDD_Set1 & outUsefulSymbols,
+                                  C_Relation & outUsefulSymbolsRelation,
                                   bool & outWarningFlag,
                                   const bool inVerboseOptionOn) {
 //--- Console display
@@ -275,13 +302,17 @@ void useful_symbols_computations (C_Compiler * inCompiler,
   computeUsefulSymbols (inPureBNFproductions,
                         inVocabularyBDDType,
                         outUsefulSymbols,
+                        outUsefulSymbolsRelation,
                         (uint16_t) inVocabulary.getStartSymbol (),
                         iterationsCount) ;
+  if (outUsefulSymbolsRelation.bdd () != (outUsefulSymbols.bdd())) {
+    printf ("*** ! outUsefulSymbolsRelation.bdd ().isEqualToBDD(outUsefulSymbols.bdd() ***\n") ;
+    exit (1) ;
+  }
   const bool warning = displayUnusefulSymbols (inCompiler,
                                                inErrorLocation,
                                                inUnusedNonTerminalSymbolsForGrammar,
-                                               outUsefulSymbols,
-                                               inVocabularyBDDType,
+                                               outUsefulSymbolsRelation,
                                                inHTMLfile,
                                                inVocabulary,
                                                iterationsCount,

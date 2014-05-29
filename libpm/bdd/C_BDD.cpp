@@ -121,37 +121,37 @@ void C_BDD::operator |= (const C_BDD & inOperand) {
 
 //-----------------------------------------------------------------------------*
 
-C_BDD C_BDD::operator == (const C_BDD & inOperand) const {
+C_BDD C_BDD::equalTo(const C_BDD & inOperand) const {
   return C_BDD (internalITEoperation (mBDDvalue, inOperand.mBDDvalue, inOperand.mBDDvalue ^ 1)) ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_BDD C_BDD::operator != (const C_BDD & inOperand) const {
+C_BDD C_BDD::notEqualTo (const C_BDD & inOperand) const {
   return C_BDD (internalITEoperation (mBDDvalue, inOperand.mBDDvalue ^ 1, inOperand.mBDDvalue)) ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_BDD C_BDD::operator <= (const C_BDD & inOperand) const {
+C_BDD C_BDD::lowerOrEqual (const C_BDD & inOperand) const { // <=
   return C_BDD (internalANDoperation (mBDDvalue, inOperand.mBDDvalue ^ 1) ^ 1) ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_BDD C_BDD::operator > (const C_BDD & inOperand) const {
+C_BDD C_BDD::greaterThan (const C_BDD & inOperand) const { // >
   return C_BDD (internalANDoperation (mBDDvalue, inOperand.mBDDvalue ^ 1)) ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_BDD C_BDD::operator < (const C_BDD & inOperand) const {
+C_BDD C_BDD::lowerThan (const C_BDD & inOperand) const { // <
   return C_BDD (internalANDoperation (mBDDvalue ^ 1, inOperand.mBDDvalue)) ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_BDD C_BDD::operator >= (const C_BDD & inOperand) const {
+C_BDD C_BDD::greaterOrEqual (const C_BDD & inOperand) const { // >=
   return C_BDD (internalANDoperation (mBDDvalue ^ 1, inOperand.mBDDvalue) ^ 1) ;
 }
 
@@ -167,22 +167,22 @@ C_BDD C_BDD::compareWithBDD (const compareEnum inComparison, const C_BDD & inOpe
   C_BDD result ;
   switch (inComparison) {
   case kEqual :
-    result = (* this) == inOperand ;
+    result = equalTo (inOperand) ;
     break ;
   case kNotEqual :
-    result = (* this) != inOperand ;
+    result = notEqualTo (inOperand) ;
     break ;
   case kLowerOrEqual :
-    result = (* this) <= inOperand ;
+    result = lowerOrEqual (inOperand) ;
     break ;
   case kStrictLower :
-    result = (* this) < inOperand ;
+    result = lowerThan (inOperand) ;
     break ;
   case kGreaterOrEqual :
-    result = (* this) >= inOperand ;
+    result = greaterOrEqual (inOperand) ;
     break ;
   case kStrictGreater :
-    result = (* this) > inOperand ;
+    result = greaterThan (inOperand) ;
     break ;
   default :
     ;
@@ -362,11 +362,11 @@ construireSupVariable (const uint32_t inLeftFirstIndex,
   const C_BDD gauche = C_BDD ((uint32_t) (inLeftFirstIndex + inDimension - 1), true) ;
   const C_BDD droite = C_BDD ((uint32_t) (inRightFirstIndex + inDimension - 1), true) ;
   if (inDimension > 1) {
-    result = (gauche > droite) |
-      ((gauche == droite) &
+    result = (gauche.greaterThan (droite)) |
+      ((gauche.equalTo (droite)) &
       construireSupVariable (inLeftFirstIndex, (uint32_t) (inDimension - 1), inRightFirstIndex)) ;
   }else{
-    result = gauche > droite ;
+    result = gauche.greaterThan (droite) ;
   }
   return result ;
 }
@@ -383,7 +383,7 @@ varCompareVar (const uint32_t inLeftFirstIndex,
   case kEqual : case kNotEqual :
     result = ~ result ;
     for (uint32_t i=0 ; i<inDimension ; i++) {
-      result &= C_BDD ((uint32_t) (inLeftFirstIndex + i), false) == C_BDD ((uint32_t) (inRightFirstIndex + i), false) ;
+      result &= C_BDD ((uint32_t) (inLeftFirstIndex + i), false).equalTo (C_BDD ((uint32_t) (inRightFirstIndex + i), false)) ;
     }
     break ;
   case kStrictLower : case kGreaterOrEqual :
@@ -1475,7 +1475,7 @@ accessibleStates (const C_BDD & inInitialStateSet,
     iterationCount ++ ;
     accessibleY = accessible.translate (inBitSize, inBitSize) ;
     accessible |= (accessibleY & edgeYX).existsOnBitsAfterNumber (inBitSize) ;
-  }while (! v.isEqualToBDD (accessible)) ;
+  }while (v != accessible) ;
   if (outIterationCount != NULL) {
     * outIterationCount = iterationCount ;
   }
@@ -1501,7 +1501,7 @@ transitiveClosure (const uint32_t inBitSize,
     XZclosure = closure.swap132 (inBitSize, inBitSize, inBitSize) ;
     ZYclosure = closure.swap321 (inBitSize, inBitSize, inBitSize) ;
     closure |= (XZclosure & ZYclosure).existsOnBitsAfterNumber (bitCount2) ;
-  }while (! closure.isEqualToBDD (v)) ;
+  }while (closure != v) ;
   if (outIterationCount != NULL) {
     * outIterationCount = iterationCount ;
   }

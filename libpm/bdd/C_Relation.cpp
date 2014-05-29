@@ -24,6 +24,12 @@ class C_RelationConfiguration::cVariables : public C_SharedObject {
                              const C_RelationSingleType & inType) ;
 
 //--- Accessors
+  public : uint32_t bitCount (void) const ;
+
+  public : inline uint32_t variableCount (void) const {
+    return (uint32_t) mBDDStartIndexArray.count () ;
+  }
+
   public : inline uint32_t bddStartBitIndexForVariable (const int32_t inIndex
                                                         COMMA_LOCATION_ARGS) const {
     return mBDDStartIndexArray (inIndex COMMA_THERE) ;
@@ -33,6 +39,10 @@ class C_RelationConfiguration::cVariables : public C_SharedObject {
                                                    COMMA_LOCATION_ARGS) const {
     return mVariableTypeArray (inIndex COMMA_THERE).BDDBitCount () ;
   }
+
+  public : C_String constantNameForVariableAndValue (const int32_t inIndex,
+                                                     const uint32_t inValue
+                                                     COMMA_LOCATION_ARGS) const ;
 
 //---
   public : void checkIdenticalTo (const cVariables * inVariables) const ;
@@ -73,9 +83,7 @@ void C_RelationConfiguration::cVariables::addVariable (const C_String & inVariab
   if (mBDDStartIndexArray.count () == 0) {
     mBDDStartIndexArray.addObject (0) ;
   }else{
-    const uint32_t lastIndex = mBDDStartIndexArray.lastObject (HERE) ;
-    const uint32_t bitCount = mVariableTypeArray.lastObject (HERE).BDDBitCount() ;
-    mBDDStartIndexArray.addObject (lastIndex + bitCount) ;
+    mBDDStartIndexArray.addObject (bitCount ()) ;
   }
   mVariableNameArray.addObject (inVariableName) ;
   mVariableTypeArray.addObject (inType) ;
@@ -95,6 +103,20 @@ void C_RelationConfiguration::cVariables::checkIdenticalTo (const cVariables * i
 }
 
 //-----------------------------------------------------------------------------*
+
+uint32_t C_RelationConfiguration::cVariables::bitCount (void) const {
+  return mBDDStartIndexArray.lastObject (HERE) + mVariableTypeArray.lastObject (HERE).BDDBitCount() ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_String C_RelationConfiguration::cVariables::constantNameForVariableAndValue (const int32_t inIndex,
+                                                                               const uint32_t inValue
+                                                                               COMMA_LOCATION_ARGS) const {
+  return mVariableTypeArray (inIndex COMMA_THERE).nameForValue(inValue COMMA_THERE) ;
+}
+
+//-----------------------------------------------------------------------------*
 //  C_RelationConfiguration                                                    *
 //-----------------------------------------------------------------------------*
 
@@ -105,6 +127,7 @@ mVariablesPtr (NULL) {
 //-----------------------------------------------------------------------------*
 
 C_RelationConfiguration::~C_RelationConfiguration (void) {
+  macroDetachSharedObject (mVariablesPtr) ;
 }
 
 //-----------------------------------------------------------------------------*
@@ -143,6 +166,28 @@ void C_RelationConfiguration::addVariable (const C_String & inVariableName,
 
 //-----------------------------------------------------------------------------*
 
+uint32_t C_RelationConfiguration::bitCount (void) const {
+  uint32_t result = 0 ;
+  if (NULL != mVariablesPtr) {
+    macroValidSharedObject (mVariablesPtr, cVariables) ;
+    result = mVariablesPtr->bitCount () ;
+  }
+  return result ;
+}
+
+//-----------------------------------------------------------------------------*
+
+uint32_t C_RelationConfiguration::variableCount (void) const {
+  uint32_t result = 0 ;
+  if (NULL != mVariablesPtr) {
+    macroValidSharedObject (mVariablesPtr, cVariables) ;
+    result = mVariablesPtr->variableCount () ;
+  }
+  return result ;
+}
+
+//-----------------------------------------------------------------------------*
+
 uint32_t C_RelationConfiguration::bddStartBitIndexForVariable (const int32_t inIndex
                                                                COMMA_LOCATION_ARGS) const {
   macroValidSharedObject (mVariablesPtr, cVariables) ;
@@ -155,6 +200,15 @@ uint32_t C_RelationConfiguration::bddBitCountForVariable (const int32_t inIndex
                                                           COMMA_LOCATION_ARGS) const {
   macroValidSharedObject (mVariablesPtr, cVariables) ;
   return mVariablesPtr->bddBitCountForVariable (inIndex COMMA_THERE) ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_String C_RelationConfiguration::constantNameForVariableAndValue (const int32_t inIndex,
+                                                                   const uint32_t inValue
+                                                                   COMMA_LOCATION_ARGS) const {
+  macroValidSharedObject (mVariablesPtr, cVariables) ;
+  return mVariablesPtr->constantNameForVariableAndValue (inIndex, inValue COMMA_THERE) ;
 }
 
 //-----------------------------------------------------------------------------*
@@ -177,6 +231,14 @@ void C_RelationConfiguration::checkIdenticalTo (const C_RelationConfiguration & 
 C_Relation::C_Relation (void) :
 mConfiguration (),
 mBDD () {
+}
+
+//-----------------------------------------------------------------------------*
+
+C_Relation::C_Relation (const C_RelationConfiguration & inConfiguration,
+                        const C_BDD inBDD) :
+mConfiguration (inConfiguration),
+mBDD (inBDD) {
 }
 
 //-----------------------------------------------------------------------------*
@@ -260,9 +322,93 @@ mBDD () {
 
 //-----------------------------------------------------------------------------*
 
+void C_Relation::operator &= (const C_Relation & inRelation) {
+  mConfiguration.checkIdenticalTo (inRelation.mConfiguration) ;
+  mBDD &= inRelation.mBDD ;
+}
+
+//-----------------------------------------------------------------------------*
+
 void C_Relation::operator |= (const C_Relation & inRelation) {
   mConfiguration.checkIdenticalTo (inRelation.mConfiguration) ;
   mBDD |= inRelation.mBDD ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_Relation C_Relation::operator & (const C_Relation & inRelation) const {
+  C_Relation result = *this ;
+  result &= inRelation ;
+  return result ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_Relation C_Relation::operator | (const C_Relation & inRelation) const {
+  C_Relation result = *this ;
+  result |= inRelation ;
+  return result ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_Relation C_Relation::operator ~ (void) const {
+  C_Relation result = *this ;
+  result.mBDD.negate () ;
+  return result ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_Relation C_Relation::accessibleStatesFrom (const C_Relation & inStartStates,
+                                             int32_t * outIterationCount
+                                             COMMA_LOCATION_ARGS) const {
+  #ifndef DO_NOT_GENERATE_CHECKINGS
+    const uint32_t startRelationVariableCount = inStartStates.variableCount () ;
+    const uint32_t accessibilityVariableCount = variableCount () ;
+  #endif
+  MF_AssertThere ((startRelationVariableCount + startRelationVariableCount) == accessibilityVariableCount,
+                  "C_Relation::accessibleStatesFrom error: start state has %lld variables, accessibility relation has %lld variables",
+                  (int64_t) startRelationVariableCount,
+                  (int64_t) accessibilityVariableCount) ;
+  const uint32_t bitCount = inStartStates.bitCount () ;
+//--- Current object is edge [x, y].
+//    Accessible states set is computed by:
+// accessible [x] += initial [x] | exists y (accessible [y] & edge [y, x]) ;
+//
+//--- Compute edge [y, x]
+  const C_BDD edgeYX = mBDD.swap21 (bitCount, bitCount) ;
+  C_BDD accessible = inStartStates.mBDD ;
+  C_BDD v ;
+  C_BDD accessibleY ;
+  int32_t iterationCount = 0 ;
+  do{
+    v = accessible ;
+    iterationCount ++ ;
+    accessibleY = accessible.translate (bitCount, bitCount) ;
+    accessible |= (accessibleY & edgeYX).existsOnBitsAfterNumber (bitCount) ;
+  }while (v != accessible) ;
+  if (outIterationCount != NULL) {
+    * outIterationCount = iterationCount ;
+  }
+  return C_Relation (inStartStates.configuration(), accessible) ;
+
+}
+
+//-----------------------------------------------------------------------------*
+
+bool C_Relation::containsValue (const int32_t inVariableIndex,
+                                const uint64_t inValue
+                                COMMA_LOCATION_ARGS) const {
+  return mBDD.containsValue64 (inValue,
+                               mConfiguration.bddStartBitIndexForVariable (inVariableIndex COMMA_THERE),
+                               mConfiguration.bddBitCountForVariable (inVariableIndex COMMA_THERE)) ;
+}
+
+//-----------------------------------------------------------------------------*
+
+void C_Relation::getValueArray (TC_UniqueArray <uint64_t> & outArray) const {
+  mBDD.buildValue64Array (outArray, mConfiguration.bitCount ()) ;
 }
 
 //-----------------------------------------------------------------------------*
