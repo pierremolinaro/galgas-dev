@@ -2,7 +2,7 @@
 //                                                                             *
 //  Pure BNF grammar vocabulary                                                *
 //                                                                             *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                   *
+//  Copyright (C) 1999-2014 Pierre Molinaro.                                   *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
@@ -24,6 +24,7 @@
 //-----------------------------------------------------------------------------*
 
 #include "strings/C_String.h"
+#include "bdd/C_RelationSingleType.h"
 
 //-----------------------------------------------------------------------------*
 
@@ -86,6 +87,9 @@ class cVocabulary {
 //--- Is choice must be generated for a non terminal ?
   public : bool needToGenerateChoice (const int32_t inSymbolIndex
                                       COMMA_LOCATION_ARGS) const ;
+
+//--- Get BDD type
+  public : C_RelationSingleType getVocabularyBDDType (void) const ;
 
 //--- No copy
   private : cVocabulary (cVocabulary &) ;

@@ -158,32 +158,6 @@ C_BDD C_BDD::operator >= (const C_BDD & inOperand) const {
 //-----------------------------------------------------------------------------*
 
 #ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Opposite BDD
-#endif
-
-//-----------------------------------------------------------------------------*
-
-static uint32_t internalOpposite (const uint32_t inValue) {
-  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  const uint32_t complement = inValue & 1 ;
-  uint32_t result = 0 ;
-  if (bothBranches (gNodeArray [nodeIndex]) != 0) {
-    result = find_or_add (gNodeArray [nodeIndex].mVariableIndex,
-                          internalOpposite (gNodeArray [nodeIndex].mTHEN),
-                          internalOpposite (gNodeArray [nodeIndex].mELSE) COMMA_HERE) ;
-  }
-  return result ^ complement ;
-}
-
-//-----------------------------------------------------------------------------*
-
-C_BDD C_BDD::getOpposite (void) const {
-  return C_BDD (internalOpposite (mBDDvalue)) ;
-}
-
-//-----------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
   #pragma mark Compare BDDs
 #endif
 
@@ -584,34 +558,6 @@ bool C_BDD::containsValue (const TC_Array <bool> & inValue,
                                  inValue,
                                  inFirstBit,
                                  (uint32_t) (inFirstBit + inBitCount)) ;
-}
-
-//-----------------------------------------------------------------------------*
-
-#ifdef PRAGMA_MARK_ALLOWED
-  #pragma mark Traverse BDD values
-#endif
-
-//-----------------------------------------------------------------------------*
-
-static void parcoursBDDinterneParNoeud (const uint32_t inValue,
-                                        C_bdd_node_traversing & inTraversing) {
-  const uint32_t nodeIndex = nodeIndexForRoot (inValue COMMA_HERE) ;
-  if ((bothBranches (gNodeArray [nodeIndex]) != 0) && ! isNodeMarkedThenMark (inValue COMMA_HERE)) {
-    parcoursBDDinterneParNoeud (gNodeArray [nodeIndex].mELSE, inTraversing) ;
-    parcoursBDDinterneParNoeud (gNodeArray [nodeIndex].mTHEN, inTraversing) ;
-    inTraversing.action (inValue & ~1U,
-                         gNodeArray [nodeIndex].mVariableIndex,
-                         gNodeArray [nodeIndex].mELSE,
-                         gNodeArray [nodeIndex].mTHEN & ~1U,
-                         gNodeArray [nodeIndex].mTHEN & 1) ;
-  }
-}
-
-//-----------------------------------------------------------------------------*
-
-void C_BDD::traversBDDnodes (C_bdd_node_traversing & inTraversing) const {
-  parcoursBDDinterneParNoeud (mBDDvalue, inTraversing) ;
 }
 
 //-----------------------------------------------------------------------------*

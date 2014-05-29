@@ -405,7 +405,7 @@ bool cCollectionElement_data::isValid (void) const {
 
 typeComparisonResult cCollectionElement_data::compare (const cCollectionElement * inOperand) const {
   const cCollectionElement_data * operand = (const cCollectionElement_data *) inOperand ;
-  macroValidSharedObject (operand, const cCollectionElement_data) ;
+  macroValidSharedObject (operand, cCollectionElement_data) ;
   return mAttribute_data.objectCompare (operand->mAttribute_data) ;
 }
 
@@ -478,7 +478,7 @@ cGenericAbstractEnumerator () {
 
 GALGAS_uint cEnumerator_data::current_data (LOCATION_ARGS) const {
   const cCollectionElement_data * p = (const cCollectionElement_data *) (currentObjectPtr (THERE)) ;
-  macroValidSharedObject (p, const cCollectionElement_data) ;
+  macroValidSharedObject (p, cCollectionElement_data) ;
   return p->attribute_data () ;
 }
 
@@ -486,7 +486,7 @@ GALGAS_uint cEnumerator_data::current_data (LOCATION_ARGS) const {
 
 GALGAS_uint cEnumerator_data::current (LOCATION_ARGS) const {
   const cCollectionElement_data * p = (const cCollectionElement_data *) (currentObjectPtr (THERE)) ;
-  macroValidSharedObject (p, const cCollectionElement_data) ;
+  macroValidSharedObject (p, cCollectionElement_data) ;
   return p->attribute_data () ;
 }
 

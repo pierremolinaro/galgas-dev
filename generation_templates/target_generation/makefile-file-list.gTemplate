@@ -54,11 +54,13 @@ SOURCES += C_galgas_CLI_Options.cpp
 SOURCES += F_Analyze_CLI_Options.cpp
 
 #--- BDD
-SOURCES += C_Display_BDD.cpp
 SOURCES += C_BDD.cpp
 SOURCES += C_BDD-find-or-add.cpp
 SOURCES += C_BDD-single-operand-ops.cpp
 SOURCES += C_BDD-and-operation.cpp
+SOURCES += C_RelationSingleType.cpp
+SOURCES += C_Relation.cpp
+SOURCES += C_Display_BDD.cpp
 SOURCES += C_BDD_Set1.cpp
 SOURCES += C_BDD_Set2.cpp
 SOURCES += C_BDD_Set3.cpp

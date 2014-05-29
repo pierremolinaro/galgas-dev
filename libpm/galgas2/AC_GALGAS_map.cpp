@@ -575,7 +575,7 @@ void cSharedMapRoot::performInsertOrReplace (const capCollectionElement & inAttr
 //--- If all attributes are built, perform insertion
   if (inAttributes.isValid ()) {
     const cMapElement * p = (cMapElement *) inAttributes.ptr () ;
-    macroValidSharedObject (p, const cMapElement) ;
+    macroValidSharedObject (p, cMapElement) ;
     const GALGAS_string string_key = p->mAttribute_lkey.mAttribute_string ;
     const C_String key = string_key.stringValue () ;
   //--- Insert or replace
@@ -630,7 +630,7 @@ void cSharedMapRoot::copyFrom (const cSharedMapRoot * inSource) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     inSource->checkMap (HERE) ;
   #endif
-  macroValidSharedObject (inSource, const cSharedMapRoot) ;
+  macroValidSharedObject (inSource, cSharedMapRoot) ;
   mCount = inSource->mCount ;
   if (NULL != inSource->mRoot) {
     macroMyNew (mRoot, cMapNode (inSource->mRoot)) ;
@@ -1107,7 +1107,7 @@ const cMapElement * cSharedMapRoot::searchForReadingAttribute (const GALGAS_stri
     cMapNode * node = findEntryInMap (key, this) ;
     if (NULL != node) {
       result = (const cMapElement *) node->mAttributes.ptr () ;
-      macroValidSharedObject (result, const cMapElement) ;
+      macroValidSharedObject (result, cMapElement) ;
     }else{
     //--- Build error message
       C_String message ;

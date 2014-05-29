@@ -50,7 +50,7 @@ void callCategoryModifier_%![MODIFIER_NAME identifierRepresentation]% (%?^%cPtr_
   end foreach
 %//--- Find modifier
   if (NULL != inObject) {
-    macroValidSharedObject (inObject, const cPtr_%![CLASS_NAME identifierRepresentation]%) ;
+    macroValidSharedObject (inObject, cPtr_%![CLASS_NAME identifierRepresentation]%) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryModifierSignature_%![CLASS_NAME identifierRepresentation]%_%![MODIFIER_NAME identifierRepresentation]% f = NULL ;

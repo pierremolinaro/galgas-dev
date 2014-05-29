@@ -2,7 +2,7 @@
 //                                                                             *
 //  Routines for computing useful symbols of the pure BNF grammar              *
 //                                                                             *
-//  Copyright (C) 1999, ..., 2009 Pierre Molinaro.                             *
+//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                             *
 //                                                                             *
 //  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
 //                                                                             *
@@ -21,6 +21,8 @@
 //-----------------------------------------------------------------------------*
 
 #include "files/C_HTML_FileWrite.h"
+#include "bdd/C_Relation.h"
+#include "bdd/C_RelationSingleType.h"
 #include "bdd/C_BDD_Set2.h"
 #include "utilities/MF_MemoryControl.h"
 #include "galgas2/C_Compiler.h"
@@ -36,7 +38,7 @@
 
 static void
 computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
-                      const uint16_t inBDDBitCount,
+                      const C_RelationSingleType & inVocabularyBDDType,
                       C_BDD_Set1 & ex_outUsefulSymbols,
                       const uint16_t inStartSymbolIndex,
                       int32_t & outIterationsCount) {
@@ -46,26 +48,31 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
   C_BDD_Set2 ex_rightVocabulary (ex_outUsefulSymbols.getDescriptor (), ex_outUsefulSymbols.getDescriptor ()) ;
   C_BDD_Set2 ex_rightSymbol (ex_outUsefulSymbols.getDescriptor (), ex_outUsefulSymbols.getDescriptor ()) ;
   C_BDD accessibility ;
+  C_RelationConfiguration vocabulary2 ;
+  vocabulary2.addVariable ("source", inVocabularyBDDType) ;
+  vocabulary2.addVariable ("target", inVocabularyBDDType) ;
+  C_Relation accessibilityRelation (vocabulary2, false) ;
   for (int32_t i=0 ; i<inPureBNFproductions.length () ; i++) {
     const cProduction & p = inPureBNFproductions (i COMMA_HERE) ;
     if (p.derivationLength () > 0) {
       ex_rightVocabulary.clear () ;
       C_BDD rightVocabulary ;
+      C_Relation rightVocabularyRelation (vocabulary2, false) ;
+      rightVocabularyRelation.setToEmpty () ;
       for (int32_t j=0 ; j<p.derivationLength () ; j++) {
         ex_rightSymbol.initDimension2 (C_BDD::kEqual, (uint16_t) p.derivationAtIndex (j COMMA_HERE)) ;
         ex_rightVocabulary |= ex_rightSymbol ;
-        const C_BDD rightSymbol =
-           C_BDD::varCompareConst (inBDDBitCount,
-                                   inBDDBitCount,
-                                   C_BDD::kEqual,
-                                   (uint32_t) p.derivationAtIndex (j COMMA_HERE)) ;  
+        const C_BDD rightSymbol = C_BDD::varCompareConst (inVocabularyBDDType.BDDBitCount (),
+                                                          inVocabularyBDDType.BDDBitCount (),
+                                                          C_BDD::kEqual,
+                                                          (uint32_t) p.derivationAtIndex (j COMMA_HERE)) ;  
+ //       rightVocabularyRelation |= C_Relation (vocabulary2, 1, C_BDD::kEqual, (uint64_t) p.derivationAtIndex (j COMMA_HERE)) ; 
         rightVocabulary |= rightSymbol ;
       }
-      const C_BDD leftNonterminal =
-           C_BDD::varCompareConst (0,
-                                   inBDDBitCount,
-                                   C_BDD::kEqual,
-                                   (uint32_t) p.leftNonTerminalIndex ()) ;  
+      const C_BDD leftNonterminal = C_BDD::varCompareConst (0,
+                                                            inVocabularyBDDType.BDDBitCount (),
+                                                            C_BDD::kEqual,
+                                                            (uint32_t) p.leftNonTerminalIndex ()) ;  
       accessibility |= leftNonterminal & rightVocabulary ;
       ex_leftNonterminal.initDimension1 (C_BDD::kEqual, (uint16_t) p.leftNonTerminalIndex ()) ;
       ex_accessibility |= ex_leftNonterminal & ex_rightVocabulary ;
@@ -76,13 +83,13 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
   ex_initialValue.init (C_BDD::kEqual, inStartSymbolIndex) ;
   ex_outUsefulSymbols = ex_accessibility.getAccessibility (ex_initialValue, outIterationsCount) ;
   const C_BDD initialValue = C_BDD::varCompareConst (0,
-                                                     inBDDBitCount,
+                                                     inVocabularyBDDType.BDDBitCount (),
                                                      C_BDD::kEqual,
                                                      (uint32_t) inStartSymbolIndex) ;  
-  C_BDD outUsefulSymbols = accessibility.accessibleStates (initialValue, inBDDBitCount, NULL) ;
+  C_BDD outUsefulSymbols = accessibility.accessibleStates (initialValue, inVocabularyBDDType.BDDBitCount (), NULL) ;
   if (! outUsefulSymbols.isEqualToBDD (ex_outUsefulSymbols.bdd ())) {
     printf ("\n********* USEFUL SYMBOLS ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
-    printf ("inBDDBitCount %hu\n", inBDDBitCount) ;
+    printf ("inVocabularyBDDType.BDDBitCount () %u\n", inVocabularyBDDType.BDDBitCount ()) ;
     printf ("initialValue '%s'\n", initialValue.queryStringValue (HERE).cString (HERE)) ;
     printf ("accessibility '%s'\n", accessibility.queryStringValue (HERE).cString (HERE)) ;
     printf ("outUsefulSymbols '%s'\n", outUsefulSymbols.queryStringValue (HERE).cString (HERE)) ;
@@ -98,7 +105,7 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
                                     const GALGAS_location & inErrorLocation,
                                     const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                                     const C_BDD_Set1 & inUsefulSymbols,
-                                    const uint16_t inBDDBitCount,
+                                    const C_RelationSingleType & inVocabularyBDDType,
                                     C_HTML_FileWrite * inHTMLfile,
                                     const cVocabulary & inVocabulary,
                                     const int32_t inIterationCount,
@@ -131,8 +138,8 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
   ex_unusefulSymbols &= temp ;
 
   const C_BDD unusefulSymbols = (~ inUsefulSymbols.bdd ())
-    & C_BDD::varCompareConst (0, inBDDBitCount, C_BDD::kLowerOrEqual, lastNonterminalToCheck)
-    & C_BDD::varCompareConst (0, inBDDBitCount, C_BDD::kStrictGreater, (uint32_t) inVocabulary.getEmptyStringTerminalSymbolIndex ())
+    & C_BDD::varCompareConst (0, inVocabularyBDDType.BDDBitCount (), C_BDD::kLowerOrEqual, lastNonterminalToCheck)
+    & C_BDD::varCompareConst (0, inVocabularyBDDType.BDDBitCount (), C_BDD::kStrictGreater, (uint32_t) inVocabulary.getEmptyStringTerminalSymbolIndex ())
   ;
 
 //--- Compute user useless symbol count
@@ -249,7 +256,7 @@ void useful_symbols_computations (C_Compiler * inCompiler,
                                   const GALGAS_location & inErrorLocation,
                                   const GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis & inUnusedNonTerminalSymbolsForGrammar,
                                   const cPureBNFproductionsList & inPureBNFproductions,
-                                  const uint16_t inBDDBitCount,
+                                  const C_RelationSingleType & inVocabularyBDDType,
                                   const cVocabulary & inVocabulary,
                                   C_HTML_FileWrite * inHTMLfile,
                                   C_BDD_Set1 & outUsefulSymbols,
@@ -266,7 +273,7 @@ void useful_symbols_computations (C_Compiler * inCompiler,
   }
   int32_t iterationsCount = 0 ;
   computeUsefulSymbols (inPureBNFproductions,
-                        inBDDBitCount,
+                        inVocabularyBDDType,
                         outUsefulSymbols,
                         (uint16_t) inVocabulary.getStartSymbol (),
                         iterationsCount) ;
@@ -274,7 +281,7 @@ void useful_symbols_computations (C_Compiler * inCompiler,
                                                inErrorLocation,
                                                inUnusedNonTerminalSymbolsForGrammar,
                                                outUsefulSymbols,
-                                               inBDDBitCount,
+                                               inVocabularyBDDType,
                                                inHTMLfile,
                                                inVocabulary,
                                                iterationsCount,

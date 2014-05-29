@@ -1930,14 +1930,14 @@ static void recursiveCheckAutomatonStates (const cUniqueMapNode * inNode,
       switch (issue.mIssue) {
         case kMapAutomatonIssueWarning : {
           const C_String warningMessage = buildIssueMessage (issue.mIssueMessage, inNode->mKey) ;
-          macroValidSharedObject (inNode->mAttributes.ptr (), const cMapElement) ;
+          macroValidSharedObject (inNode->mAttributes.ptr (), cMapElement) ;
           const GALGAS_location loc = ((const cMapElement *) inNode->mAttributes.ptr ())->mAttribute_lkey.mAttribute_location ;
           inCompiler->semanticWarningAtLocation (loc, warningMessage COMMA_THERE) ;
           }
           break ;
         case kMapAutomatonIssueError : {
           const C_String errorMessage = buildIssueMessage (issue.mIssueMessage, inNode->mKey) ;
-          macroValidSharedObject (inNode->mAttributes.ptr (), const cMapElement) ;
+          macroValidSharedObject (inNode->mAttributes.ptr (), cMapElement) ;
           const GALGAS_location loc = ((const cMapElement *) inNode->mAttributes.ptr ())->mAttribute_lkey.mAttribute_location ;
           inCompiler->semanticErrorAtLocation (loc, errorMessage COMMA_THERE) ;
           }
@@ -2119,7 +2119,7 @@ void AC_GALGAS_uniqueMapProxy::makeNullProxy (LOCATION_ARGS) {
 void AC_GALGAS_uniqueMapProxy::attachProxyToMapNode (cUniqueMapNode * inMapNode) {
   MF_Assert (kNotValid == mState, "invalid state for 'makeNullProxy'", 0, 0) ;
   if (NULL != inMapNode) {
-    macroValidSharedObject (inMapNode, const cUniqueMapNode) ;
+    macroValidSharedObject (inMapNode, cUniqueMapNode) ;
     if (NULL == inMapNode->mProxy) {
       macroMyNew (mSharedProxy, cSharedProxy (inMapNode COMMA_HERE)) ;
     }else{
@@ -2190,7 +2190,7 @@ const cMapElement * AC_GALGAS_uniqueMapProxy::getAttributeListPointer (C_Compile
     }else{
       macroValidPointer (mSharedProxy->mNode) ;
       result = (const cMapElement *) mSharedProxy->mNode->mAttributes.ptr () ;
-      macroNullOrValidSharedObject (result, const cMapElement) ;
+      macroNullOrValidSharedObject (result, cMapElement) ;
     }
     break ;
   case kNotValid :
@@ -2206,7 +2206,7 @@ GALGAS_lstring AC_GALGAS_uniqueMapProxy::reader_lkey (C_Compiler * inCompiler
   GALGAS_lstring result ;
   const cMapElement * p = getAttributeListPointer (inCompiler, "lkey" COMMA_THERE) ;
   if (NULL != p) {
-    macroValidSharedObject (p, const cMapElement) ;
+    macroValidSharedObject (p, cMapElement) ;
     result = p->mAttribute_lkey ;
   }
   return result ;

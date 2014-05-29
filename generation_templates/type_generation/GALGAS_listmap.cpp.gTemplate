@@ -53,7 +53,7 @@ cGenericAbstractEnumerator () {
 
 GALGAS_%!TYPE_IDENTIFIER%_2E_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
   const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, const cListMapElement) ;
+  macroValidSharedObject (p, cListMapElement) ;
   return GALGAS_%!TYPE_IDENTIFIER%_2E_element (p->mKey, p->mSharedListMapList) ;
 }
 
@@ -61,7 +61,7 @@ GALGAS_%!TYPE_IDENTIFIER%_2E_element cEnumerator_%!TYPE_IDENTIFIER%::current (LO
 
 GALGAS_string cEnumerator_%!TYPE_IDENTIFIER%::current_key (LOCATION_ARGS) const {
   const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, const cListMapElement) ;
+  macroValidSharedObject (p, cListMapElement) ;
   return GALGAS_string (p->mKey) ;
 }
 
@@ -69,7 +69,7 @@ GALGAS_string cEnumerator_%!TYPE_IDENTIFIER%::current_key (LOCATION_ARGS) const 
 
 GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER% cEnumerator_%!TYPE_IDENTIFIER%::current_mList (LOCATION_ARGS) const {
   const cListMapElement * p = (const cListMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, const cListMapElement) ;
+  macroValidSharedObject (p, cListMapElement) ;
   return GALGAS_%!ASSOCIATED_LIST_TYPE_IDENTIFIER% (p->mSharedListMapList) ;
 }
 

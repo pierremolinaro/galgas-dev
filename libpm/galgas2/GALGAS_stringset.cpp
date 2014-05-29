@@ -76,7 +76,7 @@ bool cCollectionElement_stringset::isValid (void) const {
 
 typeComparisonResult cCollectionElement_stringset::compare (const cCollectionElement * inOperand) const {
   const cCollectionElement_stringset * operand = (const cCollectionElement_stringset *) inOperand ;
-  macroValidSharedObject (operand, const cCollectionElement_stringset) ;
+  macroValidSharedObject (operand, cCollectionElement_stringset) ;
   return mAttribute_key.objectCompare (operand->mAttribute_key) ;
 }
 
@@ -525,7 +525,7 @@ C_String cSharedStringsetRoot::rootKey (void) const {
 //-----------------------------------------------------------------------------*
 
 void cSharedStringsetRoot::copyFrom (const cSharedStringsetRoot * inSharedRootToCopy) {
-  macroValidSharedObject (inSharedRootToCopy, const cSharedStringsetRoot) ;
+  macroValidSharedObject (inSharedRootToCopy, cSharedStringsetRoot) ;
   if (NULL != inSharedRootToCopy->mRoot) {
     macroMyNew (mRoot, cStringsetNode (inSharedRootToCopy->mRoot, mEntryCount)) ;
   }
@@ -969,7 +969,7 @@ cGenericAbstractEnumerator () {
 
 GALGAS_string cEnumerator_stringset::current_key (LOCATION_ARGS) const {
   const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, const cCollectionElement_stringset) ;
+  macroValidSharedObject (p, cCollectionElement_stringset) ;
   return p->attribute_key () ;
 }
 
@@ -977,7 +977,7 @@ GALGAS_string cEnumerator_stringset::current_key (LOCATION_ARGS) const {
 
 GALGAS_string cEnumerator_stringset::current (LOCATION_ARGS) const {
   const cCollectionElement_stringset * p = (const cCollectionElement_stringset *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, const cCollectionElement_stringset) ;
+  macroValidSharedObject (p, cCollectionElement_stringset) ;
   return p->attribute_key () ;
 }
 

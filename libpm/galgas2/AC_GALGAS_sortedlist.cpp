@@ -203,7 +203,7 @@ cSharedSortedListRoot::~ cSharedSortedListRoot (void) {
                                   uint32_t & ioIndex,
                                   const cSortedListNode * * ioArray) {
     if (NULL != inNode) {
-      macroValidSharedObject (inNode, const cSortedListNode) ;
+      macroValidSharedObject (inNode, cSortedListNode) ;
       populateCheckArray (inNode->mInfPtr, ioIndex, ioArray) ;
       // printf ("Node %p at index %u\n", inNode, ioIndex) ;
       ioArray [ioIndex] = inNode ;
@@ -301,7 +301,7 @@ void cSharedSortedListRoot::copyFrom (const cSharedSortedListRoot * inList) {
       checkSortedList (inList->mRoot, inList->mCount, inList->mFirst, inList->mLast COMMA_HERE) ;
     #endif
     MF_Assert (mCount == 0, "mCount (%lld) != 0", mCount, 0) ;
-    macroValidSharedObject (inList, const cSharedSortedListRoot) ;
+    macroValidSharedObject (inList, cSharedSortedListRoot) ;
     mCount = inList->mCount ;
     macroMyNew (mRoot, cSortedListNode (inList->mRoot)) ;
     MF_Assert (mFirst == NULL, "mFirst (%p) != NULL", (int64_t) mFirst, 0) ;

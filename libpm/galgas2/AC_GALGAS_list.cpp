@@ -723,7 +723,7 @@ typeComparisonResult AC_GALGAS_list::objectCompare (const AC_GALGAS_list & inOpe
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  c L i s t M a p N o d e                                                  *
+//  c L i s t M a p N o d e                                                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -767,7 +767,7 @@ cListMapNode::~ cListMapNode (void) {
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  c L i s t M a p N o d e                                                  *
+//  c L i s t M a p N o d e                                                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1054,7 +1054,7 @@ void cSharedListMapRoot::copyFrom (const cSharedListMapRoot * inSource) {
   #ifndef DO_NOT_GENERATE_CHECKINGS
     // inSource->checkMap (HERE) ;
   #endif
-  macroValidSharedObject (inSource, const cSharedListMapRoot) ;
+  macroValidSharedObject (inSource, cSharedListMapRoot) ;
   mCount = inSource->mCount ;
   if (NULL != inSource->mRoot) {
     macroMyNew (mRoot, cListMapNode (inSource->mRoot)) ;

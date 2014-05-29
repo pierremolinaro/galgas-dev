@@ -163,3 +163,16 @@ void cVocabulary::printInFile (AC_OutputStream & inHTMLfile,
 }
 
 //-----------------------------------------------------------------------------*
+
+C_RelationSingleType cVocabulary::getVocabularyBDDType (void) const {
+  TC_UniqueArray <C_String> constantNameArray ;
+  for (int32_t i=0 ; i<mTerminalSymbolsCount ; i++) {
+    constantNameArray.addObject (C_String ("$") + mStringsArray (i COMMA_HERE) + "$") ;
+  }
+  for (int32_t i=mTerminalSymbolsCount ; i<mStringsArray.count () ; i++) {
+    constantNameArray.addObject (C_String ("<") + mStringsArray (i COMMA_HERE) + ">") ;
+  }
+  return C_RelationSingleType (".vocabulary.", constantNameArray COMMA_HERE) ;
+}
+
+//-----------------------------------------------------------------------------*

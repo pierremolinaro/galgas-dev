@@ -152,7 +152,7 @@ foreach SEARCH_METHOD_LIST do
       %  outArgument%![IDX string]%.drop () ;\n%
     end foreach
     %}else{\n%
-    %  macroValidSharedObject (p, const cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+    %  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
     foreach ATTRIBUTE_LIST do index IDX
       %  outArgument%![IDX string]% = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
     end foreach
@@ -214,7 +214,7 @@ foreach ATTRIBUTE_LIST do index IDX
   %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) attributes ;\n%
   %  GALGAS_%![mAttributeTypeProxy identifierRepresentation]% result ;\n%
   %  if (NULL != p) {\n%
-  %    macroValidSharedObject (p, const cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+  %    macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
   %    result = p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %  }\n%
   %  return result ;\n%
@@ -263,7 +263,7 @@ cGenericAbstractEnumerator () {
 
 GALGAS_%!TYPE_IDENTIFIER%_2E_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
   const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, const cMapElement_%!TYPE_IDENTIFIER%) ;
+  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;
   return GALGAS_%!TYPE_IDENTIFIER%_2E_element (p->mAttribute_lkey%
 foreach ATTRIBUTE_LIST do
   %, p->mAttribute_%![mAttributeName identifierRepresentation]
@@ -275,7 +275,7 @@ end foreach
 
 GALGAS_lstring cEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) const {
   const cMapElement * p = (const cMapElement *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, const cMapElement) ;
+  macroValidSharedObject (p, cMapElement) ;
   return p->mAttribute_lkey ;
 }
 
@@ -283,7 +283,7 @@ GALGAS_lstring cEnumerator_%!TYPE_IDENTIFIER%::current_lkey (LOCATION_ARGS) cons
   %//-----------------------------------------------------------------------------*\n\n%
   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cMapElement_%!TYPE_IDENTIFIER% * p = (const cMapElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
-  %  macroValidSharedObject (p, const cMapElement_%!TYPE_IDENTIFIER%) ;\n%
+  %  macroValidSharedObject (p, cMapElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return p->mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%
 end foreach 

@@ -92,7 +92,8 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
                    "for inPureBNFproductions numbering) :\n\n" ;
     inHTMLfile->outputRawData ("</p>") ;
   }
-  C_BDD_Set2 t (inFOLLOWsets) ; t.clear () ;
+  C_BDD_Set2 t (inFOLLOWsets) ;
+  t.clear () ;
   C_BDD_Set1 premierDeProduction (inFOLLOWsets.getDescriptor1 ()) ;
   C_BDD_Set2 temp (inFOLLOWsets) ;
   int16_t nombreDeConflits = 0 ;

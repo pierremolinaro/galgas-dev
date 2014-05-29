@@ -431,10 +431,10 @@ analyzeGrammar (C_Compiler * inCompiler,
 
 //--- Define vocabulary BDD sets descriptor
   const C_BDD_Descriptor vocabularyDescriptor ((uint32_t) (vocabulary.getAllSymbolsCount () - 1)) ;
+  const C_RelationSingleType vocabularyBDDType = vocabulary.getVocabularyBDDType () ;
 
 //--- Compute the BDD bit count
   const uint16_t bddBitCount = bddBitCountForVocabulary (vocabulary) ;
-
 //--- Search for identical productions -----------------------------------------------------------
   #ifdef LOG_GRAMMAR_COMPUTATIONS
     printf ("SEARCH FOR IDENTICAL PRODUCTIONS\n") ; fflush (stdout) ;
@@ -492,7 +492,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                                  inErrorLocation,
                                  inUnusedNonTerminalSymbolsForGrammar,
                                  pureBNFproductions,
-                                 bddBitCount,
+                                 vocabularyBDDType,
                                  vocabulary,
                                  HTMLfile,
                                  usefulSymbols,

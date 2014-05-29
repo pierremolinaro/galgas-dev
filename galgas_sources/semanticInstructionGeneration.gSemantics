@@ -998,7 +998,7 @@ override method @readOnlyWithInstructionForGeneration generateInstruction
                      . " COMMA_SOURCE_FILE_AT_LINE (" . [[mInstructionLocation line] string] . ")) ;\n" ;
   end if ;
   ioGeneratedCode .= "if (NULL != " . mObjectArrayCppName . ") {\n"
-                  .  "    macroValidSharedObject (" . mObjectArrayCppName . ", const cMapElement_" . [receiverType identifierRepresentation] . ") ;\n" ;
+                  .  "    macroValidSharedObject (" . mObjectArrayCppName . ", cMapElement_" . [receiverType identifierRepresentation] . ") ;\n" ;
   generateInstructionList
     !inGenerateCheckValid
     !mDoBranchInstructions

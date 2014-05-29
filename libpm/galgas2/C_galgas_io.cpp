@@ -176,7 +176,7 @@ C_String errorOrWarningLocationString (const C_LocationInSource & inErrorLocatio
                                        const C_SourceTextInString * inSourceTextPtr) {
   C_String result ;
   if (inSourceTextPtr != NULL) {
-    macroValidSharedObject (inSourceTextPtr, const C_SourceTextInString) ;
+    macroValidSharedObject (inSourceTextPtr, C_SourceTextInString) ;
     const C_String textLine = inSourceTextPtr->getLineForLocation (inErrorLocation) ;
     result << inSourceTextPtr->sourceFilePath ()
            << ":" << cStringWithSigned (inErrorLocation.lineNumber ())
@@ -191,7 +191,7 @@ void constructErrorOrWarningLocationMessage (C_String & ioMessage,
                                              const C_LocationInSource & inErrorLocation,
                                              const C_SourceTextInString * inSourceTextPtr) {
   if (inSourceTextPtr != NULL) {
-    macroValidSharedObject (inSourceTextPtr, const C_SourceTextInString) ;
+    macroValidSharedObject (inSourceTextPtr, C_SourceTextInString) ;
     const C_String textLine = inSourceTextPtr->getLineForLocation (inErrorLocation) ;
   //--- Construct message
     ioMessage << errorOrWarningLocationString (inErrorLocation, inSourceTextPtr) ;
@@ -538,7 +538,7 @@ void ggs_printError (const C_SourceTextInString * inSourceTextPtr,
   errorMessage << inMessage ;
 //--- Append source string
   if (inSourceTextPtr != NULL) {
-    macroValidSharedObject (inSourceTextPtr, const C_SourceTextInString) ;
+    macroValidSharedObject (inSourceTextPtr, C_SourceTextInString) ;
     inSourceTextPtr->appendSourceContents (errorMessage) ;
   }
   if (! executionModeIsIndexing ()) {
@@ -583,7 +583,7 @@ void ggs_printWarning (const C_SourceTextInString * inSourceTextPtr,
   warningMessage << inMessage ;
 //--- Append source string
   if (inSourceTextPtr != NULL) {
-    macroValidSharedObject (inSourceTextPtr, const C_SourceTextInString) ;
+    macroValidSharedObject (inSourceTextPtr, C_SourceTextInString) ;
     inSourceTextPtr->appendSourceContents (warningMessage) ;
   }
   if (! executionModeIsIndexing ()) {
