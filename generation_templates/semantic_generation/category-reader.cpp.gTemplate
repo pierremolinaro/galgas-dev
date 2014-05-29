@@ -29,7 +29,7 @@ GALGAS_%![RETURN_TYPE identifierRepresentation]% callCategoryReader_%![READER_NA
   GALGAS_%![RETURN_TYPE identifierRepresentation]% result ;
 //--- Find Reader
   if (NULL != inObject) {
-    macroValidSharedObject (inObject, const cPtr_%![CLASS_NAME identifierRepresentation]%) ;
+    macroValidSharedObject (inObject, cPtr_%![CLASS_NAME identifierRepresentation]%) ;
     const C_galgas_type_descriptor * info = inObject->classDescriptor () ;
     const int32_t classIndex = info->mSlotID ;
     categoryReaderSignature_%![CLASS_NAME identifierRepresentation]%_%![READER_NAME identifierRepresentation]% f = NULL ;

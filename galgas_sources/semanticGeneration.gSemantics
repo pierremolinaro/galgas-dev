@@ -368,7 +368,7 @@ local function generateCategoryMethod
     else
       outGeneratedCode .= "  const cPtr_" . [inClassName identifierRepresentation] . " * object = (const cPtr_" . [inClassName identifierRepresentation] . " *) inObject ;\n" ;
     end if ;
-    outGeneratedCode .= "  macroValidSharedObject (object, const cPtr_" . [inClassName identifierRepresentation] . ") ;\n" ;
+    outGeneratedCode .= "  macroValidSharedObject (object, cPtr_" . [inClassName identifierRepresentation] . ") ;\n" ;
   end if ;
   outGeneratedCode .= routineBody ;
 #---
@@ -462,7 +462,7 @@ local function generateCategoryReader
     else
       outGeneratedCode .= "  const cPtr_" . [inClassName identifierRepresentation] . " * object = (const cPtr_" . [inClassName identifierRepresentation] . " *) inObject ;\n" ;
     end if ;
-    outGeneratedCode .= "  macroValidSharedObject (object, const cPtr_" . [inClassName identifierRepresentation] . ") ;\n" ;
+    outGeneratedCode .= "  macroValidSharedObject (object, cPtr_" . [inClassName identifierRepresentation] . ") ;\n" ;
   end if ;
   outGeneratedCode .= routineBody ;
 #--- Generate return instruction

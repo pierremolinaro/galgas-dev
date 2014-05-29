@@ -424,7 +424,7 @@ cGenericAbstractEnumerator () {
 
 GALGAS_%!TYPE_IDENTIFIER%_2E_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
   const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, const cCollectionElement_%!TYPE_IDENTIFIER%) ;
+  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;
   return p->mObject ;
 }
 
@@ -433,7 +433,7 @@ GALGAS_%!TYPE_IDENTIFIER%_2E_element cEnumerator_%!TYPE_IDENTIFIER%::current (LO
   %//-----------------------------------------------------------------------------*\n\n%
   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cCollectionElement_%!TYPE_IDENTIFIER% * p = (const cCollectionElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
-  %  macroValidSharedObject (p, const cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
+  %  macroValidSharedObject (p, cCollectionElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%
 end foreach

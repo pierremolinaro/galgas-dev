@@ -1,5 +1,5 @@
 //
-//  C_TypeInRelation.h
+//  C_RelationSingleType.h
 //  galgas-developer
 //
 //  Created by Pierre Molinaro on 22/05/14.
@@ -16,22 +16,22 @@
 
 //-----------------------------------------------------------------------------*
 
-class C_TypeInRelation {
+class C_RelationSingleType {
 //--- Internal class
   public : class cType ;
 
 //--- Default constructor
-  public : inline C_TypeInRelation (void) : mTypePtr (NULL) {}
+  public : inline C_RelationSingleType (void) : mTypePtr (NULL) {}
 
 //--- Constructor with an enumerated type
-  public : C_TypeInRelation (const C_String & inTypeName,
-                             const TC_UniqueArray <C_String> & inConstantNameArray
-                             COMMA_LOCATION_ARGS) ;
+  public : C_RelationSingleType (const C_String & inTypeName,
+                                 const TC_UniqueArray <C_String> & inConstantNameArray
+                                 COMMA_LOCATION_ARGS) ;
 
 //--- Constructor with an unsigned type
-  public : C_TypeInRelation (const C_String & inTypeName,
-                             const uint32_t inValueCount // [0, inValueCount - 1]
-                             COMMA_LOCATION_ARGS) ;
+  public : C_RelationSingleType (const C_String & inTypeName,
+                                 const uint32_t inValueCount // [0, inValueCount - 1]
+                                 COMMA_LOCATION_ARGS) ;
 
 //--- Accessors
   public : C_String typeName (void) const ;
@@ -41,11 +41,11 @@ class C_TypeInRelation {
                                   COMMA_LOCATION_ARGS) const ;
 
 //--- Destructor
-  public : virtual ~ C_TypeInRelation (void) ;
+  public : virtual ~ C_RelationSingleType (void) ;
 
 //--- Handling copy
-  public : C_TypeInRelation (const C_TypeInRelation & inSource) ;
-  public : C_TypeInRelation & operator = (const C_TypeInRelation & inSource) ;
+  public : C_RelationSingleType (const C_RelationSingleType & inSource) ;
+  public : C_RelationSingleType & operator = (const C_RelationSingleType & inSource) ;
   
 //--- Attribute
   private : cType * mTypePtr ;

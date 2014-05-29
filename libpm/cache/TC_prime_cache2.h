@@ -151,7 +151,7 @@ TC_prime_cache2 <RESULT>::~TC_prime_cache2 (void) {
 
 template <class RESULT>
 uint32_t TC_prime_cache2 <RESULT>::getCacheSizeInBytes (void) const {
-  return ((uint32_t) mCacheSize) * sizeof (cCacheEntry) ;
+  return (uint32_t) (mCacheSize * sizeof (cCacheEntry)) ;
 }
 
 //-----------------------------------------------------------------------------*

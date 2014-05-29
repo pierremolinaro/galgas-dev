@@ -1,5 +1,5 @@
 //
-//  C_TypeInRelation.cpp
+//  C_RelationSingleType.cpp
 //  galgas-developer
 //
 //  Created by Pierre Molinaro on 22/05/14.
@@ -7,7 +7,7 @@
 //
 //-----------------------------------------------------------------------------*
 
-#include "C_TypeInRelation.h"
+#include "bdd/C_RelationSingleType.h"
 #include "utilities/C_SharedObject.h"
 #include "strings/C_String.h"
 
@@ -24,10 +24,10 @@ static uint32_t bitCountForCount (const uint32_t inCount) {
 }
 
 //-----------------------------------------------------------------------------*
-//  C_TypeInRelation::cType                                                    *
+//  C_RelationSingleType::cType                                                *
 //-----------------------------------------------------------------------------*
 
-class C_TypeInRelation::cType : public C_SharedObject {
+class C_RelationSingleType::cType : public C_SharedObject {
 //--- Constructor
   public : inline cType (const C_String & inTypeName,
                          const uint32_t inBDDBitCount
@@ -51,7 +51,7 @@ class C_TypeInRelation::cType : public C_SharedObject {
 //  C_EnumeratedTypeInRelation                                                 *
 //-----------------------------------------------------------------------------*
 
-class C_EnumeratedTypeInRelation : public C_TypeInRelation::cType {
+class C_EnumeratedTypeInRelation : public C_RelationSingleType::cType {
 //--- Constructor
   public : C_EnumeratedTypeInRelation (const C_String & inTypeName,
                                        const TC_UniqueArray <C_String> & inConstantNameArray
@@ -85,8 +85,8 @@ mConstantNameArray () {
 
 //-----------------------------------------------------------------------------*
 
-C_TypeInRelation::
-C_TypeInRelation (const C_String & inTypeName,
+C_RelationSingleType::
+C_RelationSingleType (const C_String & inTypeName,
                   const TC_UniqueArray <C_String> & inConstantNameArray
                   COMMA_LOCATION_ARGS) :
 mTypePtr (NULL) {
@@ -97,7 +97,7 @@ mTypePtr (NULL) {
 //  C_UnsignedTypeInRelation                                                   *
 //-----------------------------------------------------------------------------*
 
-class C_UnsignedTypeInRelation : public C_TypeInRelation::cType {
+class C_UnsignedTypeInRelation : public C_RelationSingleType::cType {
 //--- Constructor
   public : C_UnsignedTypeInRelation (const C_String & inTypeName,
                                      const uint32_t inValueCount
@@ -129,8 +129,8 @@ mValueCount (inValueCount) {
 
 //-----------------------------------------------------------------------------*
 
-C_TypeInRelation::
-C_TypeInRelation (const C_String & inTypeName,
+C_RelationSingleType::
+C_RelationSingleType (const C_String & inTypeName,
                   const uint32_t inMaxValue
                   COMMA_LOCATION_ARGS) :
 mTypePtr (NULL) {
@@ -141,28 +141,28 @@ mTypePtr (NULL) {
 //  Accessors                                                                  *
 //-----------------------------------------------------------------------------*
 
-C_String C_TypeInRelation::typeName (void) const {
+C_String C_RelationSingleType::typeName (void) const {
   macroValidPointer (mTypePtr) ;
   return mTypePtr->mTypeName ;
 }
 
 //-----------------------------------------------------------------------------*
 
-uint32_t C_TypeInRelation::BDDBitCount (void) const {
+uint32_t C_RelationSingleType::BDDBitCount (void) const {
   macroValidPointer (mTypePtr) ;
   return mTypePtr->mBDDBitCount ;
 }
 
 //-----------------------------------------------------------------------------*
 
-uint32_t C_TypeInRelation::valueCount (void) const {
+uint32_t C_RelationSingleType::valueCount (void) const {
   macroValidPointer (mTypePtr) ;
   return mTypePtr->valueCount () ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_String C_TypeInRelation::nameForValue (const uint32_t inIndex
+C_String C_RelationSingleType::nameForValue (const uint32_t inIndex
                                          COMMA_LOCATION_ARGS) const {
   macroValidPointer (mTypePtr) ;
   return mTypePtr->nameForValue (inIndex COMMA_THERE) ;
@@ -172,20 +172,20 @@ C_String C_TypeInRelation::nameForValue (const uint32_t inIndex
 //  Handling copy                                                              *
 //-----------------------------------------------------------------------------*
 
-C_TypeInRelation::~C_TypeInRelation (void) {
+C_RelationSingleType::~C_RelationSingleType (void) {
   macroDetachSharedObject (mTypePtr) ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_TypeInRelation::C_TypeInRelation (const C_TypeInRelation & inSource) :
+C_RelationSingleType::C_RelationSingleType (const C_RelationSingleType & inSource) :
 mTypePtr (NULL) {
   macroAssignSharedObject (mTypePtr, inSource.mTypePtr) ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_TypeInRelation & C_TypeInRelation::operator = (const C_TypeInRelation & inSource) {
+C_RelationSingleType & C_RelationSingleType::operator = (const C_RelationSingleType & inSource) {
   macroAssignSharedObject (mTypePtr, inSource.mTypePtr) ;
   return * this ;
 }

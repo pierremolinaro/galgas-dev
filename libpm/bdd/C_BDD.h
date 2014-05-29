@@ -38,7 +38,6 @@
 
 //-----------------------------------------------------------------------------*
 
-class C_bdd_node_traversing ;
 class C_bdd_value_traversing ;
 class C_Display_BDD ;
 class C_String ;
@@ -97,7 +96,6 @@ class C_BDD {
   public : C_BDD implies (const C_BDD & inOperand) const ; // ->
   public : static C_BDD ite (const C_BDD & f, const C_BDD & g, const C_BDD & h) ; // ite (f, g, h)
   public : C_BDD operator ~ (void) const ; // get complement
-  public : C_BDD getOpposite (void) const ;
   public : C_BDD bddByLeftShifting (const uint32_t inLeftShiftCount) const ;
   public : C_BDD bddByRightShifting (const uint32_t inRightShiftCount) const ;
 
@@ -308,9 +306,6 @@ class C_BDD {
   public : void traverseBDDvalues (C_bdd_value_traversing & inTraversing,
                                    const uint32_t inVariableCount) const ;
 
-//--- Traversing BBD (call C_bdd_node_traversing::action method for every node) 
-  public : void traversBDDnodes (C_bdd_node_traversing & inTraversing) const ;
-
 //--- Internal method
   private : void initLinks (void) ;
 
@@ -372,29 +367,6 @@ class C_bdd_value_traversing {
 //--- No instance copy
   private : C_bdd_value_traversing (const C_bdd_value_traversing &) ;
   private : C_bdd_value_traversing & operator = (const C_bdd_value_traversing &) ;
-} ;
-
-//-----------------------------------------------------------------------------*
-//                                                                             *
-//   Abstract class for node traversing of a BDD                               *
-//                                                                             *
-//-----------------------------------------------------------------------------*
-
-class C_bdd_node_traversing {
-//--- Constructor et destructor
-  public : C_bdd_node_traversing (void) {}
-  public : virtual ~C_bdd_node_traversing (void) {}
-
-//--- Virtual method called for every node
-  public : virtual void action (const uint32_t inNodeID,
-                                const uint32_t inVariable,
-                                const uint32_t inBranchIfFalse,
-                                const uint32_t inTrueBranchComplement,
-                                const uint32_t inBranchIfTrue) = 0 ;
-  
-//--- No instance copy
-  private : C_bdd_node_traversing (const C_bdd_node_traversing &) ;
-  private : C_bdd_node_traversing & operator = (const C_bdd_node_traversing &) ;
 } ;
 
 //-----------------------------------------------------------------------------*

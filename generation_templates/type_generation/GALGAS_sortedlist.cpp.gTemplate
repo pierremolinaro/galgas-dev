@@ -100,7 +100,7 @@ AC_GALGAS_sortedlist () {
 typeComparisonResult cSortedListElement_%!TYPE_IDENTIFIER%::compareForSorting (const cSortedListElement * inOperand) const {
   typeComparisonResult result = kOperandEqual ;
   const cSortedListElement_%!TYPE_IDENTIFIER% * operand = (const cSortedListElement_%!TYPE_IDENTIFIER% *) inOperand ;
-  macroValidSharedObject (operand, const cSortedListElement_%!TYPE_IDENTIFIER%) ;
+  macroValidSharedObject (operand, cSortedListElement_%!TYPE_IDENTIFIER%) ;
 % foreach SORT_ATTRIBUTE_LIST do
     %  if (result == kOperandEqual) {\n%
     %    result = %
@@ -304,7 +304,7 @@ cGenericAbstractEnumerator () {
 
 GALGAS_%!TYPE_IDENTIFIER%_2E_element cEnumerator_%!TYPE_IDENTIFIER%::current (LOCATION_ARGS) const {
   const cSortedListElement_%!TYPE_IDENTIFIER% * p = (const cSortedListElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;
-  macroValidSharedObject (p, const cSortedListElement_%!TYPE_IDENTIFIER%) ;
+  macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;
   return p->mObject ;
 }
 
@@ -312,7 +312,7 @@ GALGAS_%!TYPE_IDENTIFIER%_2E_element cEnumerator_%!TYPE_IDENTIFIER%::current (LO
   %//-----------------------------------------------------------------------------*\n\n%
   %GALGAS_%![mAttributeTypeProxy identifierRepresentation]% cEnumerator_%!TYPE_IDENTIFIER%::current_%![mAttributeName identifierRepresentation]% (LOCATION_ARGS) const {\n%
   %  const cSortedListElement_%!TYPE_IDENTIFIER% * p = (const cSortedListElement_%!TYPE_IDENTIFIER% *) currentObjectPtr (THERE) ;\n%
-  %  macroValidSharedObject (p, const cSortedListElement_%!TYPE_IDENTIFIER%) ;\n%
+  %  macroValidSharedObject (p, cSortedListElement_%!TYPE_IDENTIFIER%) ;\n%
   %  return p->mObject.mAttribute_%![mAttributeName identifierRepresentation]% ;\n%
   %}\n\n%
 end foreach

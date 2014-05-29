@@ -1,6 +1,6 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Managing a set with BDD                                                  *
+//  Managing a set with BDD                                                    *
 //                                                                             *
 //  This file is part of libpm library                                         *
 //                                                                             *
@@ -36,7 +36,7 @@ template <typename TYPE> class TC_UniqueArray ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Managing a set with BBD                                                  *
+//  Managing a set with BBD                                                    *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
