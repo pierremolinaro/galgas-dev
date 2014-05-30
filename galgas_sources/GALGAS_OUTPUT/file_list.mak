@@ -219,6 +219,8 @@ SOURCES += AC_GALGAS_graph.cpp
 SOURCES += acPtr_class.cpp
 SOURCES += cPtr_object.cpp
 
+SOURCES += predefined-types.cpp
+SOURCES += scanner_actions.cpp
 SOURCES += GALGAS_application.cpp
 SOURCES += GALGAS_binaryset.cpp
 SOURCES += GALGAS_bool.cpp
@@ -236,8 +238,6 @@ SOURCES += GALGAS_type.cpp
 SOURCES += GALGAS_object.cpp
 SOURCES += GALGAS_uint.cpp
 SOURCES += GALGAS_uint_36__34_.cpp
-SOURCES += predefined-types.cpp
-SOURCES += scanner_actions.cpp
 
 
 #------------------------------------------------------------------------------*

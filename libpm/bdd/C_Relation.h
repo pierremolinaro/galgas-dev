@@ -22,6 +22,11 @@ class C_Relation {
 //--- Default constructor (no variable, empty)
   public : C_Relation (void) ;
 
+//--- Constructor (One variable, type, empty or full)
+  public : C_Relation (const C_String & inVariableName,
+                       const C_RelationSingleType & inVariableType,
+                       const bool isFull) ;
+
 //--- Constructor (variables, empty or full)
   public : C_Relation (const C_RelationConfiguration & inConfiguration,
                        const bool isFull) ;
