@@ -514,7 +514,7 @@ class c_LR1_items_set {
   public : void
   close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
                        const int32_t inTerminalSymbolsCount,
-                       const TC_UniqueArray <TC_UniqueArray <int32_t> > & inFIRSTarray,
+                       const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFIRSTarray,
                        const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array) ;
 
   public : void clear (void) ;
@@ -606,7 +606,7 @@ add_LR1_item (const int32_t inProductionRuleIndex,
 void c_LR1_items_set::
 close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
                      const int32_t inTerminalSymbolsCount,
-                     const TC_UniqueArray <TC_UniqueArray <int32_t> > & inFIRSTarray,
+                     const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFIRSTarray,
                      const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array) {
   for (int32_t i=0 ; i<mItemsSet.count () ; i++) {
     const int32_t locationIndex = mItemsSet (i COMMA_HERE).mLocationIndex ;
@@ -628,7 +628,7 @@ close_LR1_items_set (const cPureBNFproductionsList & inProductionRules,
           }else{
             const int32_t nFirst = inFIRSTarray (symbol COMMA_HERE).count () ;
             for (int32_t s=0 ; s<nFirst ; s++) {
-              theFirst.addObject (inFIRSTarray (symbol COMMA_HERE) (s COMMA_HERE)) ;
+              theFirst.addObject ((int32_t) inFIRSTarray (symbol COMMA_HERE) (s COMMA_HERE)) ;
             }
             emptyStringAccepted = inVocabularyDerivingToEmpty_Array (symbol COMMA_HERE) ;
           }
@@ -1629,14 +1629,14 @@ generate_LR1_grammar_cpp_file (C_Compiler * inCompiler,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-// C O M P U T E    L R 1    A U T O M A T O N                               *
+// C O M P U T E    L R 1    A U T O M A T O N                                 *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
 static void
 compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
                         const cVocabulary & inVocabulary,
-                        const TC_UniqueArray <TC_UniqueArray <int32_t> > & inFIRSTarray,
+                        const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFIRSTarray,
                         c_LR1_items_sets_collection & outLR1_items_sets_collection,
                         const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                         TC_FIFO <c_LR1_automaton_transition> & outTransitionList) {
@@ -1673,7 +1673,7 @@ compute_LR1_automation (const cPureBNFproductionsList & inProductionRules,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-// L R ( 1 )    C O M P U T A T I O N S                                      *
+// L R ( 1 )    C O M P U T A T I O N S                                        *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1682,7 +1682,7 @@ LR1_computations (C_Compiler * inCompiler,
                   const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
                   C_HTML_FileWrite * inHTMLfile,
-                  const TC_UniqueArray <TC_UniqueArray <int32_t> > & inFIRSTarray,
+                  const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFIRSTarray,
                   const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                   const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,

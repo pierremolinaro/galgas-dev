@@ -42,7 +42,7 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
                    const C_BDD_Set2 & inFIRSTsets,
                    const int32_t inTerminalSymbolsCount,
                    C_BDD_Set2 & ex_outFOLLOWsets,
-                   TC_UniqueArray <TC_UniqueArray <int32_t> > & outFOLLOWarray,
+                   TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFOLLOWarray,
                    int32_t & outIterationsCount) {
   C_BDD directFollowers ;
   C_BDD lastOfProduction ;
@@ -116,7 +116,7 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
   outFOLLOWsets |= inNonterminalSymbolsFollowedByEmpty.bdd () & emptyStringBDD ;
   
 //--- FOLLOW sets, given with an array
-  { TC_UniqueArray <TC_UniqueArray <int32_t> > tempArray (inVocabulary.getAllSymbolsCount () COMMA_HERE) ;
+  { TC_UniqueArray <TC_UniqueArray <uint64_t> > tempArray (inVocabulary.getAllSymbolsCount () COMMA_HERE) ;
     swap (outFOLLOWarray, tempArray) ;
   }
   outFOLLOWsets.getArray2 (outFOLLOWarray,
@@ -131,7 +131,7 @@ computeFOLLOWsets (const cPureBNFproductionsList & inProductionRules,
 //-----------------------------------------------------------------------------*
 
 static void
-printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <int32_t> > & inFOLLOWarray,
+printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarray,
                  const cVocabulary & inVocabulary,
                  C_HTML_FileWrite & inHTMLfile,
                  const uint32_t inValuesCount,
@@ -158,7 +158,7 @@ printFOLLOWsets (const TC_UniqueArray <TC_UniqueArray <int32_t> > & inFOLLOWarra
       const int32_t n = inFOLLOWarray (i COMMA_HERE).count () ;
       for (int32_t j=0 ; j<n ; j++) {
         inHTMLfile << " " ;
-        inVocabulary.printInFile (inHTMLfile, inFOLLOWarray (i COMMA_HERE) (j COMMA_HERE) COMMA_HERE) ;
+        inVocabulary.printInFile (inHTMLfile, (int32_t) inFOLLOWarray (i COMMA_HERE) (j COMMA_HERE) COMMA_HERE) ;
       }
       inHTMLfile.outputRawData ("</code></td></tr>") ;
     }
@@ -253,7 +253,7 @@ FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                      const C_BDD_Set2 & inFIRSTsets,
                      const C_BDD_Set1 & inNonterminalSymbolsFollowedByEmpty,
                      C_BDD_Set2 & ex_outFOLLOWsets,
-                     TC_UniqueArray <TC_UniqueArray <int32_t> > & outFOLLOWarray,
+                     TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFOLLOWarray,
                      bool & outOk,
                      const bool inVerboseOptionOn) {
 //--- Console display

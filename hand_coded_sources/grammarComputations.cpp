@@ -520,7 +520,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   }
 //--- Computing FIRST sets ---------------------------------------------------------------
   C_BDD_Set2 EX_FIRSTsets (vocabularyDescriptor, vocabularyDescriptor) ;
-  TC_UniqueArray <TC_UniqueArray <int32_t> > FIRSTarray ;
+  TC_UniqueArray <TC_UniqueArray <uint64_t> > FIRSTarray ;
   C_Relation FIRSTsets ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     bool ok = false ;
@@ -555,7 +555,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   }
 //--- Computing FOLLOW sets ---------------------------------------------------------------
   C_BDD_Set2 FOLLOWsets (vocabularyDescriptor, vocabularyDescriptor) ;
-  TC_UniqueArray <TC_UniqueArray <int32_t> > FOLLOWarray ;
+  TC_UniqueArray <TC_UniqueArray <uint64_t> > FOLLOWarray ;
   if ((errorFlag == kNoError) &&
       (grammarClass != kGrammarClassError) &&
       (grammarClass != kLR1grammar)) { // Follow are not used by LR(1) computations

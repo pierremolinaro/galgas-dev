@@ -75,7 +75,7 @@ class C_Relation {
 
   public : uint64_t value64Count (void) const ;
 
-  public : void getArray (TC_UniqueArray <TC_UniqueArray <int32_t> > & outArray
+  public : void getArray (TC_UniqueArray <TC_UniqueArray <uint64_t> > & outArray
                           COMMA_LOCATION_ARGS) const ;
 
   public : C_Relation relationByDeletingLastVariable (LOCATION_ARGS) const ;

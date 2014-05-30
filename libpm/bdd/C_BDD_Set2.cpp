@@ -308,11 +308,11 @@ uint32_t C_BDD_Set2::getValuesCount (void) const {
 
 class cBuildArrayForSet2 : public C_bdd_value_traversing {
 //--- Attributs
-  protected : TC_UniqueArray <TC_UniqueArray <int32_t> > & mArray ;
+  protected : TC_UniqueArray <TC_UniqueArray <uint64_t> > & mArray ;
   protected : uint32_t mBitsSize1 ;
 
 //--- Constructeur
-  public : cBuildArrayForSet2 (TC_UniqueArray <TC_UniqueArray <int32_t> > & outArray,
+  public : cBuildArrayForSet2 (TC_UniqueArray <TC_UniqueArray <uint64_t> > & outArray,
                                const uint32_t inBitsSize1) ;
 
 //--- Methode virtelle appelee pour chaque valeur
@@ -323,7 +323,7 @@ class cBuildArrayForSet2 : public C_bdd_value_traversing {
 //-----------------------------------------------------------------------------*
 
 cBuildArrayForSet2::
-cBuildArrayForSet2 (TC_UniqueArray <TC_UniqueArray <int32_t> > & outArray,
+cBuildArrayForSet2 (TC_UniqueArray <TC_UniqueArray <uint64_t> > & outArray,
                     const uint32_t inBitsSize1) :
 mArray (outArray),
 mBitsSize1 (inBitsSize1) {
@@ -334,7 +334,7 @@ mBitsSize1 (inBitsSize1) {
 void cBuildArrayForSet2::action (const bool inValuesArray [],
                                  const uint32_t inBDDbitsSize) {
   int32_t index1 = 0 ;
-  int32_t index2 = 0 ;
+  uint64_t index2 = 0 ;
   for (int32_t i=((int32_t) mBitsSize1) - 1 ; i>=0 ; i--) {
     index1 = (index1 << 1) + inValuesArray [i] ;
   }
@@ -346,9 +346,9 @@ void cBuildArrayForSet2::action (const bool inValuesArray [],
 
 //-----------------------------------------------------------------------------*
 
-void C_BDD_Set2::getArray (TC_UniqueArray <TC_UniqueArray <int32_t> > & outArray) const {
+void C_BDD_Set2::getArray (TC_UniqueArray <TC_UniqueArray <uint64_t> > & outArray) const {
   const int32_t size1 = ((int32_t) mDescriptor1.getMaxValue ()) + 1 ;
-  { TC_UniqueArray <TC_UniqueArray <int32_t> > temp (size1 COMMA_HERE) ;
+  { TC_UniqueArray <TC_UniqueArray <uint64_t> > temp (size1 COMMA_HERE) ;
     for (int32_t i=0 ; i<size1 ; i++) {
       temp.addDefaultObjectUsingSwap () ;
     }

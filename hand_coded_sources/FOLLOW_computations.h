@@ -1,9 +1,9 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-// Routines for FOLLOWS sets                                                 *
+// Routines for FOLLOWS sets                                                   *
 //                                                                             *
-//  Copyright (C) 1999, ..., 2007 Pierre Molinaro.                             *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                             *
+//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
 //                                                                             *
@@ -47,7 +47,7 @@ FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                      const C_BDD_Set2 & inFIRSTsets,
                      const C_BDD_Set1 & nonTerminauxPouvantEtreSuivisDuVide,
                      C_BDD_Set2 & outFOLLOWsets,
-                     TC_UniqueArray <TC_UniqueArray <int32_t> > & outFOLLOWarray,
+                     TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFOLLOWarray,
                      bool & outOk,
                      const bool inVerboseOptionOn) ;
 

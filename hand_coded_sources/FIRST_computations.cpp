@@ -149,7 +149,7 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
                           const C_Relation & inUsefulSymbols,
                           const C_BDD_Set2 & inFIRSTsetsEX,
                           const C_Relation & inFIRSTsets,
-                          TC_UniqueArray <TC_UniqueArray <int32_t> > & outFIRSTarray,
+                          TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFIRSTarray,
                           const int32_t inIterationsCount,
                           const bool inVerboseOptionOn) {
   const int32_t symbolsCountEX = inVocabulary.getAllSymbolsCount () ;
@@ -161,7 +161,7 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
   C_RelationConfiguration vocabulary2Config = inUsefulSymbols.configuration() ;
   vocabulary2Config.appendConfiguration (inUsefulSymbols.configuration()) ;
 //--- Build cartesian product 'inVocabularyDerivingInEmptyString' * 'empty string terminal symbol'
-  const C_Relation empty (vocabulary2Config, 1, C_BDD::kEqual, (uint16_t) inVocabulary.getEmptyStringTerminalSymbolIndex () COMMA_HERE) ;
+  const C_Relation empty (vocabulary2Config, 1, C_BDD::kEqual, (uint64_t) inVocabulary.getEmptyStringTerminalSymbolIndex () COMMA_HERE) ;
   C_Relation vocabularyDerivingInEmptyString = inVocabularyDerivingInEmptyString ;
   vocabularyDerivingInEmptyString.appendConfiguration (inUsefulSymbols.configuration()) ;
   const C_Relation nt_x_empty_relation = vocabularyDerivingInEmptyString.andOp (empty COMMA_HERE) ;
@@ -200,11 +200,11 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
   }
 
 //--- Compute FIRST array
-  TC_UniqueArray <TC_UniqueArray <int32_t> > FIRSTarray_relation ;
+  TC_UniqueArray <TC_UniqueArray <uint64_t> > FIRSTarray_relation ;
   FIRST_with_empty_relation.getArray (FIRSTarray_relation COMMA_HERE) ;
   ex_FIRST_with_empty.getArray (outFIRSTarray) ;
 
-  TC_UniqueArray <TC_UniqueArray <int32_t> > FIRSTArray ;
+  TC_UniqueArray <TC_UniqueArray <uint64_t> > FIRSTArray ;
   FIRST_with_empty.getArray2 (FIRSTArray, (uint32_t) inVocabulary.getAllSymbolsCount(), inBDDBitCount, inBDDBitCount) ;
   if (outFIRSTarray != FIRSTArray) {
     printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
@@ -238,7 +238,7 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
       const int32_t length = outFIRSTarray (symbol COMMA_HERE).count () ;
       for (int32_t e=0 ; e<length ; e++) {
         *inHTMLfile << " " ;
-        inVocabulary.printInFile (*inHTMLfile, outFIRSTarray (symbol COMMA_HERE) (e COMMA_HERE) COMMA_HERE) ;
+        inVocabulary.printInFile (*inHTMLfile, (int32_t) outFIRSTarray (symbol COMMA_HERE) (e COMMA_HERE) COMMA_HERE) ;
       }
       inHTMLfile->outputRawData ("</code></td></tr>") ;
     }
@@ -346,7 +346,7 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
                     const C_BDD_Set1 & inUsefulSymbolsEX,
                     const C_Relation & inUsefulSymbols,
                     C_BDD_Set2 & outFIRSTsetsEX,
-                    TC_UniqueArray <TC_UniqueArray <int32_t> > & outFIRSTarray,
+                    TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFIRSTarray,
                     const C_BDD_Descriptor & inDescriptor,
                     C_Relation & outFIRSTsets,
                     bool & outOk,

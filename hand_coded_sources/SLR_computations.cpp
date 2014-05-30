@@ -1209,7 +1209,7 @@ compute_LR0_automation (const cPureBNFproductionsList & inProductionRules,
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-// S L R    C O M P U T A T I O N S                                          *
+// S L R    C O M P U T A T I O N S                                            *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -1218,7 +1218,7 @@ SLR_computations (C_Compiler * inCompiler,
                   const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
                   C_HTML_FileWrite * inHTMLfile,
-                  const TC_UniqueArray <TC_UniqueArray <int32_t> > & inFOLLOWarray,
+                  const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarray,
                   const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,
                   const C_String & inTargetFileName,
@@ -1351,7 +1351,7 @@ SLR_computations (C_Compiler * inCompiler,
       const int32_t productionIndex = productionsSet (p COMMA_HERE) ;
       const int32_t leftNonTerminal = inProductionRules (productionIndex COMMA_HERE).leftNonTerminalIndex () ;
       for (int32_t f=0 ; f<inFOLLOWarray (leftNonTerminal COMMA_HERE).count () ; f++) {
-        const int32_t terminal = inFOLLOWarray (leftNonTerminal COMMA_HERE) (f COMMA_HERE) ;
+        const int32_t terminal = (int32_t) inFOLLOWarray (leftNonTerminal COMMA_HERE) (f COMMA_HERE) ;
         if (inHTMLfile != NULL) {
           inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
           *inHTMLfile << "Action [S"
