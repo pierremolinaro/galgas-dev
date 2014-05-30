@@ -488,8 +488,8 @@ analyzeGrammar (C_Compiler * inCompiler,
   #ifdef LOG_GRAMMAR_COMPUTATIONS
     printf ("GETTING USEFUL SYMBOLS\n") ; fflush (stdout) ;
   #endif
-  C_BDD_Set1 usefulSymbols (vocabularyDescriptor) ;
-  C_Relation usefulSymbolsRelation ;
+  C_BDD_Set1 usefulSymbolsEX (vocabularyDescriptor) ;
+  C_Relation usefulSymbols ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     useful_symbols_computations (inCompiler,
                                  inErrorLocation,
@@ -498,8 +498,8 @@ analyzeGrammar (C_Compiler * inCompiler,
                                  vocabularyBDDType,
                                  vocabulary,
                                  HTMLfile,
+                                 usefulSymbolsEX,
                                  usefulSymbols,
-                                 usefulSymbolsRelation,
                                  warningFlag,
                                  verboseOptionOn) ;
   }
@@ -515,12 +515,13 @@ analyzeGrammar (C_Compiler * inCompiler,
                                                             HTMLfile,
                                                             vocabularyDerivingToEmpty_Array,
                                                             vocabularyDerivingToEmpty_BDD,
-                                                            usefulSymbolsRelation.configuration (),
+                                                            usefulSymbols.configuration (),
                                                             verboseOptionOn) ;
   }
 //--- Computing FIRST sets ---------------------------------------------------------------
-  C_BDD_Set2 FIRSTsets (vocabularyDescriptor, vocabularyDescriptor) ;
+  C_BDD_Set2 EX_FIRSTsets (vocabularyDescriptor, vocabularyDescriptor) ;
   TC_UniqueArray <TC_UniqueArray <int32_t> > FIRSTarray ;
+  C_Relation FIRSTsets ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     bool ok = false ;
     FIRST_computations (pureBNFproductions,
@@ -529,10 +530,13 @@ analyzeGrammar (C_Compiler * inCompiler,
                         vocabulary,
                         vocabularyDerivingToEmpty_Array,
                         vocabularyDerivingToEmpty_BDD,
+                        vocabularyDerivingToEmpty,
+                        usefulSymbolsEX,
                         usefulSymbols,
-                        FIRSTsets,
+                        EX_FIRSTsets,
                         FIRSTarray,
                         vocabularyDescriptor,
+                        FIRSTsets,
                         ok,
                         verboseOptionOn) ;
     if (! ok) {
@@ -561,8 +565,8 @@ analyzeGrammar (C_Compiler * inCompiler,
                          bddBitCount,
                          vocabulary,
                          vocabularyDerivingToEmpty_Array,
-                         usefulSymbols,
-                         FIRSTsets,
+                         usefulSymbolsEX,
+                         EX_FIRSTsets,
                          nonTerminalSymbolsFollowedByEmpty,
                          FOLLOWsets,
                          FOLLOWarray,
@@ -584,7 +588,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                       HTMLfile,
                       vocabulary,
                       vocabularyDerivingToEmpty_Array,
-                      FIRSTsets,
+                      EX_FIRSTsets,
                       FOLLOWsets,
                       inNonTerminalSymbolSortedListForGrammarAnalysis,
                       inOriginalGrammarStartSymbol.uintValue (),

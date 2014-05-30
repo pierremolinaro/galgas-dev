@@ -1,9 +1,11 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//  Perform FIRST computations for pure BNF grammar.                         *
+//  Perform FIRST computations for pure BNF grammar.                           *
 //                                                                             *
-//  Copyright (C) 1999-2002 Pierre Molinaro.                                 *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  Copyright (C) 1999, ..., 2014 Pierre Molinaro.                             *
+//                                                                             *
+//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
+//                                                                             *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
 //                                                                             *
@@ -30,9 +32,11 @@
 class cPureBNFproductionsList ;
 class C_HTML_FileWrite ;
 class cVocabulary ;
+class C_Lexique ;
+class C_Relation ;
+
 class C_BDD_Set1 ;
 class C_BDD_Set2 ;
-class C_Lexique ;
 
 //-----------------------------------------------------------------------------*
 
@@ -43,10 +47,13 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
                     const cVocabulary & inVocabulary,
                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                     const C_BDD_Set1 & inVocabularyDerivingToEmpty_BDD,
-                    const C_BDD_Set1 & inUsefulSymbols,
-                    C_BDD_Set2 & outFIRSTsets,
+                    const C_Relation & inVocabularyDerivingToEmpty,
+                    const C_BDD_Set1 & inUsefulSymbolsEX,
+                    const C_Relation & inUsefulSymbols,
+                    C_BDD_Set2 & outEXFIRSTsets,
                     TC_UniqueArray <TC_UniqueArray <int32_t> > & outFIRSTarray,
                     const C_BDD_Descriptor & inDescriptor,
+                    C_Relation & outFIRSTsets,
                     bool & outOk,
                     const bool inVerboseOptionOn) ;
 

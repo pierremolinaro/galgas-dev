@@ -208,6 +208,11 @@ class C_BDD {
   public : C_BDD transitiveClosure (const uint32_t inBitSize,
                                     int32_t * outIterationCount) const ;
 
+  public : void getArray2 (TC_UniqueArray <TC_UniqueArray <int32_t> > & outArray,
+                           const uint32_t inMaxValueCount,
+                           const uint32_t inBitSize1,
+                           const uint32_t inBitSize2) const ;
+
 //--- BDD as 3-relations
   public : C_BDD swap132 (const uint32_t inBitSize1,
                           const uint32_t inBitSize2,
@@ -229,11 +234,6 @@ class C_BDD {
                           const uint32_t inBitSize2,
                           const uint32_t inBitSize3) const ;
 
-  public : void
-  getArray2 (TC_UniqueArray <TC_UniqueArray <int32_t> > & outArray,
-             const uint32_t inMaxValueCount,
-             const uint32_t inBitSize1,
-             const uint32_t inBitSize2) const ;
 
 
 //--- Printing

@@ -48,20 +48,24 @@ class C_Relation {
   public : void addVariable (const C_String & inVariableName,
                              const C_RelationSingleType & inType) ;
 
+  public : void appendConfiguration (const C_RelationConfiguration & inConfiguration) ;
+
 //--- Set
   public : void setToEmpty (void) ;
   public : void setToFull (void) ;
 
 //--- Operators
-  public : void operator &= (const C_Relation & inRelation) ;
+  public : void andWith (const C_Relation & inRelation COMMA_LOCATION_ARGS) ;
   public : void operator |= (const C_Relation & inRelation) ;
-  public : C_Relation operator & (const C_Relation & inRelation) const ;
+  public : C_Relation andOp (const C_Relation & inRelation COMMA_LOCATION_ARGS) const ;
   public : C_Relation operator | (const C_Relation & inRelation) const ;
   public : C_Relation operator ~ (void) const ;
 
   public : C_Relation accessibleStatesFrom (const C_Relation & inStartStates,
                                             int32_t * outIterationCount
                                             COMMA_LOCATION_ARGS) const ;
+
+  public : C_Relation transitiveClosure (int32_t * outIterationCount) const ;
 
   public : bool containsValue (const int32_t inVariableIndex,
                                const uint64_t inValue
@@ -71,8 +75,13 @@ class C_Relation {
 
   public : uint64_t value64Count (void) const ;
 
+  public : void getArray (TC_UniqueArray <TC_UniqueArray <int32_t> > & outArray
+                          COMMA_LOCATION_ARGS) const ;
+
+  public : C_Relation relationByDeletingLastVariable (LOCATION_ARGS) const ;
+  
 //--- Accessors
-  public : inline uint32_t variableCount (void) const {
+  public : inline int32_t variableCount (void) const {
     return mConfiguration.variableCount () ;
   }
   
