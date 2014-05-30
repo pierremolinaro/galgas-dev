@@ -1512,12 +1512,12 @@ transitiveClosure (const uint32_t inBitSize,
 
 class cBuildArrayForRelation2 : public C_bdd_value_traversing {
 //--- Attributes
-  protected : TC_UniqueArray <TC_UniqueArray <int32_t> > & mArray ;
+  protected : TC_UniqueArray <TC_UniqueArray <uint64_t> > & mArray ;
   protected : uint32_t mBitsSize1 ;
 
 //--- Constructor
   public :
-  cBuildArrayForRelation2 (TC_UniqueArray <TC_UniqueArray <int32_t> > & outArray,
+  cBuildArrayForRelation2 (TC_UniqueArray <TC_UniqueArray <uint64_t> > & outArray,
                            const uint32_t inBitsSize1) ;
 
 //--- Virtual method called for every value
@@ -1528,7 +1528,7 @@ class cBuildArrayForRelation2 : public C_bdd_value_traversing {
 //-----------------------------------------------------------------------------*
 
 cBuildArrayForRelation2::
-cBuildArrayForRelation2 (TC_UniqueArray <TC_UniqueArray <int32_t> > & outArray,
+cBuildArrayForRelation2 (TC_UniqueArray <TC_UniqueArray <uint64_t> > & outArray,
                          const uint32_t inBitsSize1) :
 mArray (outArray),
 mBitsSize1 (inBitsSize1) {
@@ -1539,7 +1539,7 @@ mBitsSize1 (inBitsSize1) {
 void cBuildArrayForRelation2::action (const bool inValuesArray [],
                                       const uint32_t inBDDbitsSize) {
   int32_t index1 = 0 ;
-  int32_t index2 = 0 ;
+  uint64_t index2 = 0 ;
   for (int32_t i=((int32_t) mBitsSize1) - 1 ; i>=0 ; i--) {
     index1 = (index1 << 1) + inValuesArray [i] ;
   }
@@ -1551,7 +1551,7 @@ void cBuildArrayForRelation2::action (const bool inValuesArray [],
 
 //-----------------------------------------------------------------------------*
 
-void C_BDD::getArray2 (TC_UniqueArray <TC_UniqueArray <int32_t> > & outArray,
+void C_BDD::getArray2 (TC_UniqueArray <TC_UniqueArray <uint64_t> > & outArray,
                        const uint32_t inMaxValueCount,
                        const uint32_t inBitSize1,
                        const uint32_t inBitSize2) const {

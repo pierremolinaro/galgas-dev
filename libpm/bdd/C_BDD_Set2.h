@@ -34,7 +34,7 @@ template <typename TYPE> class TC_UniqueArray ;
 
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//                   Implementation des ensembles a 2 dimensions             *
+//                   Implementation des ensembles a 2 dimensions               *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -106,7 +106,7 @@ class C_BDD_Set2 {
   public : uint32_t getValuesCount (void) const ;
 
 //--- Get values as an array
-  public : void getArray (TC_UniqueArray <TC_UniqueArray <int32_t> > & outArray) const ;
+  public : void getArray (TC_UniqueArray <TC_UniqueArray <uint64_t> > & outArray) const ;
 
 //--- Friend classes
   friend class C_BDD_Set3 ;

@@ -208,7 +208,7 @@ class C_BDD {
   public : C_BDD transitiveClosure (const uint32_t inBitSize,
                                     int32_t * outIterationCount) const ;
 
-  public : void getArray2 (TC_UniqueArray <TC_UniqueArray <int32_t> > & outArray,
+  public : void getArray2 (TC_UniqueArray <TC_UniqueArray <uint64_t> > & outArray,
                            const uint32_t inMaxValueCount,
                            const uint32_t inBitSize1,
                            const uint32_t inBitSize2) const ;

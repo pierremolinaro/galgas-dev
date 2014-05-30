@@ -1,9 +1,9 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//     Routines for LR(1) grammar computations                               *
+//     Routines for LR(1) grammar computations                                 *
 //                                                                             *
 //  Copyright (C) 2002, ..., 2007 Pierre Molinaro.                             *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
 //                                                                             *
@@ -40,7 +40,7 @@ void LR1_computations (C_Compiler * inCompiler,
                        const cPureBNFproductionsList & inProductionRules,
                        const cVocabulary & inVocabulary,
                        C_HTML_FileWrite * inHTMLfile,
-                       const TC_UniqueArray <TC_UniqueArray <int32_t> > & FIRSTarray,
+                       const TC_UniqueArray <TC_UniqueArray <uint64_t> > & FIRSTarray,
                        const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                        const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                        const uint32_t inOriginalGrammarStartSymbol,

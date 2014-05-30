@@ -202,7 +202,7 @@ uint64_t C_Relation::value64Count (void) const {
 //   getArray                                                                  *
 //-----------------------------------------------------------------------------*
 
-void C_Relation::getArray (TC_UniqueArray <TC_UniqueArray <int32_t> > & outArray
+void C_Relation::getArray (TC_UniqueArray <TC_UniqueArray <uint64_t> > & outArray
                            COMMA_LOCATION_ARGS) const {
   MF_AssertThere (variableCount () == 2,
                   "C_Relation::getArray error: variableCount () == %lld != 2",

@@ -1,9 +1,9 @@
 //-----------------------------------------------------------------------------*
 //                                                                             *
-//     Routines for SLR (1) grammar computations                             *
+//     Routines for SLR (1) grammar computations                               *
 //                                                                             *
 //  Copyright (C) 2002, ..., 2007 Pierre Molinaro.                             *
-//  e-mail : molinaro@irccyn.ec-nantes.fr                                    *
+//  e-mail : molinaro@irccyn.ec-nantes.fr                                      *
 //  IRCCyN, Institut de Recherche en Communications et Cybernétique de Nantes  *
 //  ECN, École Centrale de Nantes (France)                                     *
 //                                                                             *
@@ -14,7 +14,7 @@
 //  This program is distributed in the hope it will be useful, but WITHOUT     *
 //  ANY WARRANTY; without even the implied warranty of MERCHANDIBILITY or      *
 //  FITNESS FOR A PARTICULAR PURPOSE. See the GNU General Public License for   *
-//   more details.                                                           *
+//   more details.                                                             *
 //                                                                             *
 //-----------------------------------------------------------------------------*
 
@@ -41,7 +41,7 @@ SLR_computations (C_Compiler * inCompiler,
                   const cPureBNFproductionsList & inProductionRules,
                   const cVocabulary & inVocabulary,
                   C_HTML_FileWrite * inHTMLfile,
-                  const TC_UniqueArray <TC_UniqueArray <int32_t> > & inFOLLOWarray,
+                  const TC_UniqueArray <TC_UniqueArray <uint64_t> > & inFOLLOWarray,
                   const GALGAS_nonTerminalSymbolSortedListForGrammarAnalysis & inNonTerminalSymbolSortedListForGrammarAnalysis,
                   const uint32_t inOriginalGrammarStartSymbol,
                   const C_String & inTargetFileName,
