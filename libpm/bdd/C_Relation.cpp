@@ -38,6 +38,19 @@ mBDD () {
 
 //-----------------------------------------------------------------------------*
 
+C_Relation::C_Relation (const C_String & inVariableName,
+                        const C_RelationSingleType & inVariableType,
+                        const bool isFull) :
+mConfiguration (),
+mBDD () {
+  if (isFull) {
+    mBDD.setToTrue () ;
+  }
+  mConfiguration.addVariable (inVariableName, inVariableType) ;
+}
+
+//-----------------------------------------------------------------------------*
+
 C_Relation::~C_Relation (void) {
 }
 

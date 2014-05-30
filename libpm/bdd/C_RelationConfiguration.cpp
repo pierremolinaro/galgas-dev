@@ -81,7 +81,7 @@ C_SharedObject (THERE),
 mBDDStartIndexArray (),
 mVariableNameArray (),
 mVariableTypeArray () {
-  macroValidSharedObject (inPtr, cVariablesInRelationConfiguration) ;
+  macroValidSharedObjectThere (inPtr, cVariablesInRelationConfiguration) ;
   mBDDStartIndexArray.addObjectsFromArray (inPtr->mBDDStartIndexArray) ;
   mVariableNameArray.addObjectsFromArray (inPtr->mVariableNameArray) ;
   mVariableTypeArray.addObjectsFromArray (inPtr->mVariableTypeArray) ;
@@ -104,7 +104,7 @@ void cVariablesInRelationConfiguration::addVariable (const C_String & inVariable
 
 void cVariablesInRelationConfiguration::checkIdenticalTo (const cVariablesInRelationConfiguration * inVariables
                                                           COMMA_LOCATION_ARGS) const {
-  macroValidSharedObject (inVariables, cVariablesInRelationConfiguration) ;
+  macroValidSharedObjectThere (inVariables, cVariablesInRelationConfiguration) ;
   bool same = mVariableNameArray.count() == inVariables->mVariableNameArray.count() ;
   MF_AssertThere (same,
                   "cVariablesInRelationConfiguration::checkIdenticalTo failure",
@@ -198,14 +198,14 @@ C_RelationConfiguration & C_RelationConfiguration::operator = (const C_RelationC
 
 //-----------------------------------------------------------------------------*
 
-void C_RelationConfiguration::insulate (void) {
+void C_RelationConfiguration::insulate (LOCATION_ARGS) {
   if (NULL == mVariablesPtr) {
-    macroMyNew (mVariablesPtr, cVariablesInRelationConfiguration (HERE)) ;
+    macroMyNew (mVariablesPtr, cVariablesInRelationConfiguration (THERE)) ;
   }else{
-    macroValidSharedObject (mVariablesPtr, cVariablesInRelationConfiguration) ;
+    macroValidSharedObjectThere (mVariablesPtr, cVariablesInRelationConfiguration) ;
     if (mVariablesPtr->retainCount () > 1) {
       cVariablesInRelationConfiguration * ptr = NULL ;
-      macroMyNew (ptr, cVariablesInRelationConfiguration (mVariablesPtr COMMA_HERE)) ;
+      macroMyNew (ptr, cVariablesInRelationConfiguration (mVariablesPtr COMMA_THERE)) ;
       macroAssignSharedObject (mVariablesPtr, ptr) ;
       macroDetachSharedObject (ptr) ;
     }
@@ -216,14 +216,15 @@ void C_RelationConfiguration::insulate (void) {
 
 void C_RelationConfiguration::addVariable (const C_String & inVariableName,
                                            const C_RelationSingleType & inType) {
-  insulate () ;
+  insulate (HERE) ;
+  macroValidSharedObject (mVariablesPtr, cVariablesInRelationConfiguration) ;
   mVariablesPtr->addVariable (inVariableName, inType) ;
 }
 
 //-----------------------------------------------------------------------------*
 
 void C_RelationConfiguration::appendConfiguration (const C_RelationConfiguration & inConfiguration) {
-  insulate () ;
+  insulate (HERE) ;
   for (int32_t i=0 ; i<inConfiguration.variableCount() ; i++) {
     const C_String variableName = inConfiguration.nameForVariable (i COMMA_HERE) ;
     const C_RelationSingleType type = inConfiguration.typeForVariable (i COMMA_HERE) ;
@@ -235,7 +236,7 @@ void C_RelationConfiguration::appendConfiguration (const C_RelationConfiguration
 
 C_String C_RelationConfiguration::nameForVariable (const int32_t inIndex
                                                    COMMA_LOCATION_ARGS) const {
-  macroValidSharedObject (mVariablesPtr, cVariablesInRelationConfiguration) ;
+  macroValidSharedObjectThere (mVariablesPtr, cVariablesInRelationConfiguration) ;
   return mVariablesPtr->nameForVariable (inIndex COMMA_THERE) ;
 }
 
@@ -243,7 +244,7 @@ C_String C_RelationConfiguration::nameForVariable (const int32_t inIndex
 
 C_RelationSingleType C_RelationConfiguration::typeForVariable (const int32_t inIndex
                                                                COMMA_LOCATION_ARGS) const {
-  macroValidSharedObject (mVariablesPtr, cVariablesInRelationConfiguration) ;
+  macroValidSharedObjectThere (mVariablesPtr, cVariablesInRelationConfiguration) ;
   return mVariablesPtr->typeForVariable (inIndex COMMA_THERE) ;
 }
 
@@ -272,7 +273,7 @@ int32_t C_RelationConfiguration::variableCount (void) const {
 //-----------------------------------------------------------------------------*
 
 uint32_t C_RelationConfiguration::constantCountForVariable (const int32_t inIndex COMMA_LOCATION_ARGS) const {
-  macroValidSharedObject (mVariablesPtr, cVariablesInRelationConfiguration) ;
+  macroValidSharedObjectThere (mVariablesPtr, cVariablesInRelationConfiguration) ;
   return mVariablesPtr->constantCountForVariable (inIndex COMMA_THERE) ;
 }
 
@@ -280,7 +281,7 @@ uint32_t C_RelationConfiguration::constantCountForVariable (const int32_t inInde
 
 uint32_t C_RelationConfiguration::bddStartBitIndexForVariable (const int32_t inIndex
                                                                COMMA_LOCATION_ARGS) const {
-  macroValidSharedObject (mVariablesPtr, cVariablesInRelationConfiguration) ;
+  macroValidSharedObjectThere (mVariablesPtr, cVariablesInRelationConfiguration) ;
   return mVariablesPtr->bddStartBitIndexForVariable (inIndex COMMA_THERE) ;
 }
 
@@ -288,7 +289,7 @@ uint32_t C_RelationConfiguration::bddStartBitIndexForVariable (const int32_t inI
 
 uint32_t C_RelationConfiguration::bddBitCountForVariable (const int32_t inIndex
                                                           COMMA_LOCATION_ARGS) const {
-  macroValidSharedObject (mVariablesPtr, cVariablesInRelationConfiguration) ;
+  macroValidSharedObjectThere (mVariablesPtr, cVariablesInRelationConfiguration) ;
   return mVariablesPtr->bddBitCountForVariable (inIndex COMMA_THERE) ;
 }
 
@@ -297,7 +298,7 @@ uint32_t C_RelationConfiguration::bddBitCountForVariable (const int32_t inIndex
 C_String C_RelationConfiguration::constantNameForVariableAndValue (const int32_t inIndex,
                                                                    const uint32_t inValue
                                                                    COMMA_LOCATION_ARGS) const {
-  macroValidSharedObject (mVariablesPtr, cVariablesInRelationConfiguration) ;
+  macroValidSharedObjectThere (mVariablesPtr, cVariablesInRelationConfiguration) ;
   return mVariablesPtr->constantNameForVariableAndValue (inIndex, inValue COMMA_THERE) ;
 }
 
@@ -307,7 +308,7 @@ void C_RelationConfiguration::checkIdenticalTo (const C_RelationConfiguration & 
                                                  COMMA_LOCATION_ARGS) const {
   bool same = mVariablesPtr == inConfiguration.mVariablesPtr ;
   if ((! same) && (NULL != mVariablesPtr) && (NULL != inConfiguration.mVariablesPtr)) {
-    macroValidSharedObject (mVariablesPtr, cVariablesInRelationConfiguration) ;
+    macroValidSharedObjectThere (mVariablesPtr, cVariablesInRelationConfiguration) ;
     mVariablesPtr->checkIdenticalTo (inConfiguration.mVariablesPtr COMMA_THERE) ;
   }else if (! same) {
     printf ("*** C_RelationConfiguration::checkIdenticalTo failure ***\n") ;
@@ -318,16 +319,16 @@ void C_RelationConfiguration::checkIdenticalTo (const C_RelationConfiguration & 
 //-----------------------------------------------------------------------------*
 
 void C_RelationConfiguration::deleteVariableAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) {
-  insulate () ;
-  macroValidSharedObject (mVariablesPtr, cVariablesInRelationConfiguration) ;
+  insulate (THERE) ;
+  macroValidSharedObjectThere (mVariablesPtr, cVariablesInRelationConfiguration) ;
   return mVariablesPtr->deleteVariableAtIndex (inIndex COMMA_THERE) ;
 }
 
 //-----------------------------------------------------------------------------*
 
 void C_RelationConfiguration::deleteLastVariable (LOCATION_ARGS) {
-  insulate () ;
-  macroValidSharedObject (mVariablesPtr, cVariablesInRelationConfiguration) ;
+  insulate (THERE) ;
+  macroValidSharedObjectThere (mVariablesPtr, cVariablesInRelationConfiguration) ;
   return mVariablesPtr->deleteLastVariable (THERE) ;
 }
 

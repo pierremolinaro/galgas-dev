@@ -30,8 +30,10 @@
 class cPureBNFproductionsList ;
 class C_HTML_FileWrite ;
 class cVocabulary ;
-class C_BDD_Set1 ;
 class C_Lexique ;
+class C_Relation ;
+
+class C_BDD_Set1 ;
 
 //-----------------------------------------------------------------------------*
 
@@ -41,6 +43,7 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
                               const cVocabulary & inVocabulary,
                               const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                               C_BDD_Set1 & outVocabularyFollowedByEmpty_BDD,
+                              C_Relation & outVocabularyFollowedByEmpty,
                               const bool inVerboseOptionOn) ;
 
 //-----------------------------------------------------------------------------*

@@ -53,7 +53,7 @@ class C_RelationConfiguration {
                                   COMMA_LOCATION_ARGS) const ;
 
 //--- Private method
-  private : void insulate (void) ;
+  private : void insulate (LOCATION_ARGS) ;
 
 //--- Attributes
   private : class cVariablesInRelationConfiguration * mVariablesPtr ; 

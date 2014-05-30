@@ -20,6 +20,8 @@
 
 #include "follow_by_empty_computation.h"
 #include "files/C_HTML_FileWrite.h"
+#include "bdd/C_Relation.h"
+
 #include "bdd/C_BDD_Set1.h"
 
 //-----------------------------------------------------------------------------*
@@ -33,7 +35,8 @@ static void
 computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionRules,
                                    const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                                    const cVocabulary & inVocabulary,
-                                   C_BDD_Set1 & outVocabularyFollowedByEmpty_BDD,
+                                   C_BDD_Set1 & outVocabularyFollowedByEmpty_EX,
+                                   C_Relation & outVocabularyFollowedByEmpty,
                                    int32_t & outIterationsCount) {
   const int32_t allSymbolsCount = inVocabulary.getAllSymbolsCount () ;
   TC_UniqueArray <bool> vocabularyFollowedByEmpty_Array (allSymbolsCount, false COMMA_HERE) ;
@@ -65,25 +68,36 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
   }
   
 //--- Contruire le bdd, limite aux seuls non terminaux
-  outVocabularyFollowedByEmpty_BDD.clear () ;
-  C_BDD_Set1 temp (outVocabularyFollowedByEmpty_BDD) ;
-  for (int32_t i=inVocabulary.getTerminalSymbolsCount () ; i< allSymbolsCount ; i++) {
+  outVocabularyFollowedByEmpty_EX.clear () ;
+  C_BDD_Set1 temp (outVocabularyFollowedByEmpty_EX) ;
+  for (int32_t i=inVocabulary.getTerminalSymbolsCount () ; i<allSymbolsCount ; i++) {
     if (vocabularyFollowedByEmpty_Array (i COMMA_HERE)) {
       temp.init (C_BDD::kEqual, (uint32_t) i) ;
-      outVocabularyFollowedByEmpty_BDD |= temp ;
+      outVocabularyFollowedByEmpty_EX |= temp ;
+      outVocabularyFollowedByEmpty |= C_Relation (outVocabularyFollowedByEmpty.configuration (), 0, C_BDD::kEqual, (uint32_t) i COMMA_HERE) ;
     }
+  }
+  if (outVocabularyFollowedByEmpty_EX.bdd () != outVocabularyFollowedByEmpty.bdd ()){
+    printf ("\n********* FOLLWED BY EMPTY ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
+    exit (1) ;
   }
 }
 
 //-----------------------------------------------------------------------------*
  
 static void
-displayNonterminalSymbolsFollowedByEmpty (const C_BDD_Set1 & inVocabularyFollowedByEmpty_BDD,
+displayNonterminalSymbolsFollowedByEmpty (const C_Relation & inVocabularyFollowedByEmpty,
+                                    //      const C_BDD_Set1 & inVocabularyFollowedByEmpty_EX,
                                           C_HTML_FileWrite * inHTMLfile,
                                           const cVocabulary & inVocabulary,
                                           const int32_t inIterationsCount,
                                           const bool inVerboseOptionOn) { 
-  const uint32_t n = inVocabularyFollowedByEmpty_BDD.getValuesCount () ;
+//  const uint32_t n = inVocabularyFollowedByEmpty_EX.getValuesCount () ;
+  const uint64_t n = inVocabularyFollowedByEmpty.value64Count () ;
+/*  if (n != inVocabularyFollowedByEmpty_EX.getValuesCount ()) {
+    printf ("\n********* FOLLWED BY EMPTY ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
+    exit (1) ;
+  }*/
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("<p><a name=\"follow_by_empty\"></a>") ;
     *inHTMLfile << "Calculus completed in "
@@ -97,16 +111,25 @@ displayNonterminalSymbolsFollowedByEmpty (const C_BDD_Set1 & inVocabularyFollowe
        inHTMLfile->appendCString (" nonterminal symbols (including the start symbol) can be followed by the empty string.\n") ;
     }
     inHTMLfile->outputRawData ("</p>") ;
-    TC_UniqueArray <bool> array ;
-    inVocabularyFollowedByEmpty_BDD.getArray (array) ;
-    const int32_t symbolsCount = inVocabulary.getAllSymbolsCount () ;
+/*    const int32_t symbolsCount = inVocabulary.getAllSymbolsCount () ;
+    TC_UniqueArray <bool> arrayEX ;
+    inVocabularyFollowedByEmpty_EX.getArray (arrayEX) ;
     inHTMLfile->outputRawData ("<table class=\"result\">") ;
     for (int32_t symbol=inVocabulary.getTerminalSymbolsCount () ; symbol < symbolsCount ; symbol++) {
-      if (array (symbol COMMA_HERE)) {
+      if (arrayEX (symbol COMMA_HERE)) {
         inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
         inVocabulary.printInFile (*inHTMLfile, symbol COMMA_HERE) ;
         inHTMLfile->outputRawData ("</code></td></tr>") ;
       }
+    }*/
+    TC_UniqueArray <uint64_t> array ;
+    inVocabularyFollowedByEmpty.getValueArray (array) ;
+    inHTMLfile->outputRawData ("<table class=\"result\">") ;
+    for (int32_t i=0 ; i < array.count () ; i++) {
+      inHTMLfile->outputRawData ("<tr class=\"result_line\"><td class=\"result_line\"><code>") ;
+      const uint64_t symbol = array (i COMMA_HERE) ;
+      inVocabulary.printInFile (*inHTMLfile, (int32_t) symbol COMMA_HERE) ;
+      inHTMLfile->outputRawData ("</code></td></tr>") ;
     }
     inHTMLfile->outputRawData ("</table>") ;
   }
@@ -124,7 +147,8 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
                               C_HTML_FileWrite * inHTMLfile,
                               const cVocabulary & inVocabulary,
                               const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                              C_BDD_Set1 & outVocabularyFollowedByEmpty_BDD,
+                              C_BDD_Set1 & outVocabularyFollowedByEmpty_EX,
+                              C_Relation & outVocabularyFollowedByEmpty,
                               const bool inVerboseOptionOn) {
 //--- Console display
   if (inVerboseOptionOn) {
@@ -141,11 +165,13 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
   computeNonterminalFollowedByEmpty (inPureBNFproductions,
                                      inVocabularyDerivingToEmpty_Array,
                                      inVocabulary,
-                                     outVocabularyFollowedByEmpty_BDD,
+                                     outVocabularyFollowedByEmpty_EX,
+                                     outVocabularyFollowedByEmpty,
                                      iterationsCount) ;
 
 //--- Display nonterminal symbols followed by empty 
- displayNonterminalSymbolsFollowedByEmpty (outVocabularyFollowedByEmpty_BDD,
+ displayNonterminalSymbolsFollowedByEmpty (outVocabularyFollowedByEmpty,
+                                       //    outVocabularyFollowedByEmpty_EX,
                                            inHTMLfile,
                                            inVocabulary,
                                            iterationsCount,

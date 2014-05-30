@@ -432,7 +432,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   #endif
 
 //--- Define vocabulary BDD sets descriptor
-  const C_BDD_Descriptor vocabularyDescriptor ((uint32_t) (vocabulary.getAllSymbolsCount () - 1)) ;
+  const C_BDD_Descriptor vocabularyDescriptorEX ((uint32_t) (vocabulary.getAllSymbolsCount () - 1)) ;
   const C_RelationSingleType vocabularyBDDType = vocabulary.getVocabularyBDDType () ;
 
 //--- Compute the BDD bit count
@@ -477,7 +477,7 @@ analyzeGrammar (C_Compiler * inCompiler,
     *HTMLfile << "whole vocabulary : "
               << cStringWithSigned (vocabulary.getAllSymbolsCount ())
               << " elements, "
-              << cStringWithSigned (vocabularyDescriptor.getBDDbitsSize ())
+              << cStringWithUnsigned (vocabularyBDDType.BDDBitCount ())
               << " bits for BDDs." ;
     HTMLfile->outputRawData ("</li>\n</ul>\n") ;
   }
@@ -488,7 +488,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   #ifdef LOG_GRAMMAR_COMPUTATIONS
     printf ("GETTING USEFUL SYMBOLS\n") ; fflush (stdout) ;
   #endif
-  C_BDD_Set1 usefulSymbolsEX (vocabularyDescriptor) ;
+  C_BDD_Set1 usefulSymbolsEX (vocabularyDescriptorEX) ;
   C_Relation usefulSymbols ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     useful_symbols_computations (inCompiler,
@@ -508,7 +508,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   #endif
 //--- Calculer l'ensemble des non terminaux pouvant se dériver en vide --------------------------------
   TC_UniqueArray <bool> vocabularyDerivingToEmpty_Array ;
-  C_BDD_Set1 vocabularyDerivingToEmpty_BDD (vocabularyDescriptor) ;
+  C_BDD_Set1 vocabularyDerivingToEmpty_BDD (vocabularyDescriptorEX) ;
   C_Relation vocabularyDerivingToEmpty ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     vocabularyDerivingToEmpty = empty_strings_computations (pureBNFproductions,
@@ -519,7 +519,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                                                             verboseOptionOn) ;
   }
 //--- Computing FIRST sets ---------------------------------------------------------------
-  C_BDD_Set2 EX_FIRSTsets (vocabularyDescriptor, vocabularyDescriptor) ;
+  C_BDD_Set2 EX_FIRSTsets (vocabularyDescriptorEX, vocabularyDescriptorEX) ;
   TC_UniqueArray <TC_UniqueArray <uint64_t> > FIRSTarray ;
   C_Relation FIRSTsets ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
@@ -535,7 +535,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                         usefulSymbols,
                         EX_FIRSTsets,
                         FIRSTarray,
-                        vocabularyDescriptor,
+                        vocabularyDescriptorEX,
                         FIRSTsets,
                         ok,
                         verboseOptionOn) ;
@@ -544,17 +544,19 @@ analyzeGrammar (C_Compiler * inCompiler,
     }
   }
 //--- Calcul de l'ensemble des non-terminaux pouvant etre suivi du vide -------------------------------
-  C_BDD_Set1 nonTerminalSymbolsFollowedByEmpty (vocabularyDescriptor) ;
+  C_BDD_Set1 EX_nonTerminalSymbolsFollowedByEmpty (vocabularyDescriptorEX) ;
+  C_Relation nonTerminalSymbolsFollowedByEmpty (usefulSymbols.configuration (), false) ;
   if ((errorFlag == kNoError) && (grammarClass != kGrammarClassError)) {
     follow_by_empty_computations (pureBNFproductions,
                                   HTMLfile,
                                   vocabulary,
                                   vocabularyDerivingToEmpty_Array,
+                                  EX_nonTerminalSymbolsFollowedByEmpty,
                                   nonTerminalSymbolsFollowedByEmpty,
                                   verboseOptionOn) ;
   }
 //--- Computing FOLLOW sets ---------------------------------------------------------------
-  C_BDD_Set2 FOLLOWsets (vocabularyDescriptor, vocabularyDescriptor) ;
+  C_BDD_Set2 EX_FOLLOWsets (vocabularyDescriptorEX, vocabularyDescriptorEX) ;
   TC_UniqueArray <TC_UniqueArray <uint64_t> > FOLLOWarray ;
   if ((errorFlag == kNoError) &&
       (grammarClass != kGrammarClassError) &&
@@ -567,8 +569,8 @@ analyzeGrammar (C_Compiler * inCompiler,
                          vocabularyDerivingToEmpty_Array,
                          usefulSymbolsEX,
                          EX_FIRSTsets,
-                         nonTerminalSymbolsFollowedByEmpty,
-                         FOLLOWsets,
+                         EX_nonTerminalSymbolsFollowedByEmpty,
+                         EX_FOLLOWsets,
                          FOLLOWarray,
                          ok,
                          verboseOptionOn) ;
@@ -589,7 +591,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                       vocabulary,
                       vocabularyDerivingToEmpty_Array,
                       EX_FIRSTsets,
-                      FOLLOWsets,
+                      EX_FOLLOWsets,
                       inNonTerminalSymbolSortedListForGrammarAnalysis,
                       inOriginalGrammarStartSymbol.uintValue (),
                       inTargetFileName.mAttribute_string.stringValue (),
@@ -654,9 +656,7 @@ analyzeGrammar (C_Compiler * inCompiler,
   }
 
 //--- Final step ---------------------------------------------------------------------
-//  C_BDD::checkAllBDDsAreWellFormed (HERE) ;
   C_BDD::markAndSweepUnusedNodes () ;
-//  C_BDD::checkAllBDDsAreWellFormed (HERE) ;
   if (errorFlag != kNoError) {
     C_String s ; s << "ENDING ON ERROR, STEP" << cStringWithSigned ((uint16_t) errorFlag) ;
     if (HTMLfile != NULL) {
