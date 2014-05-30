@@ -67,6 +67,12 @@ void C_Relation::addVariable (const C_String & inVariableName,
 
 //-----------------------------------------------------------------------------*
 
+void C_Relation::appendConfiguration (const C_RelationConfiguration & inConfiguration) {
+  mConfiguration.appendConfiguration (inConfiguration) ;
+}
+
+//-----------------------------------------------------------------------------*
+
 C_RelationConfiguration C_Relation::configuration (void) const {
   return mConfiguration ;
 }
@@ -106,23 +112,23 @@ mBDD () {
 
 //-----------------------------------------------------------------------------*
 
-void C_Relation::operator &= (const C_Relation & inRelation) {
-  mConfiguration.checkIdenticalTo (inRelation.mConfiguration) ;
+void C_Relation::andWith (const C_Relation & inRelation COMMA_LOCATION_ARGS) {
+  mConfiguration.checkIdenticalTo (inRelation.mConfiguration COMMA_THERE) ;
   mBDD &= inRelation.mBDD ;
 }
 
 //-----------------------------------------------------------------------------*
 
 void C_Relation::operator |= (const C_Relation & inRelation) {
-  mConfiguration.checkIdenticalTo (inRelation.mConfiguration) ;
+  mConfiguration.checkIdenticalTo (inRelation.mConfiguration COMMA_HERE) ;
   mBDD |= inRelation.mBDD ;
 }
 
 //-----------------------------------------------------------------------------*
 
-C_Relation C_Relation::operator & (const C_Relation & inRelation) const {
+C_Relation C_Relation::andOp (const C_Relation & inRelation COMMA_LOCATION_ARGS) const {
   C_Relation result = *this ;
-  result &= inRelation ;
+  result.andWith (inRelation COMMA_THERE) ;
   return result ;
 }
 
@@ -148,35 +154,26 @@ C_Relation C_Relation::accessibleStatesFrom (const C_Relation & inStartStates,
                                              int32_t * outIterationCount
                                              COMMA_LOCATION_ARGS) const {
   #ifndef DO_NOT_GENERATE_CHECKINGS
-    const uint32_t startRelationVariableCount = inStartStates.variableCount () ;
-    const uint32_t accessibilityVariableCount = variableCount () ;
+    const int32_t startRelationVariableCount = inStartStates.variableCount () ;
+    const int32_t accessibilityVariableCount = variableCount () ;
   #endif
   MF_AssertThere ((startRelationVariableCount + startRelationVariableCount) == accessibilityVariableCount,
                   "C_Relation::accessibleStatesFrom error: start state has %lld variables, accessibility relation has %lld variables",
                   (int64_t) startRelationVariableCount,
                   (int64_t) accessibilityVariableCount) ;
-  const uint32_t bitCount = inStartStates.bitCount () ;
-//--- Current object is edge [x, y].
-//    Accessible states set is computed by:
-// accessible [x] += initial [x] | exists y (accessible [y] & edge [y, x]) ;
-//
-//--- Compute edge [y, x]
-  const C_BDD edgeYX = mBDD.swap21 (bitCount, bitCount) ;
-  C_BDD accessible = inStartStates.mBDD ;
-  C_BDD v ;
-  C_BDD accessibleY ;
-  int32_t iterationCount = 0 ;
-  do{
-    v = accessible ;
-    iterationCount ++ ;
-    accessibleY = accessible.translate (bitCount, bitCount) ;
-    accessible |= (accessibleY & edgeYX).existsOnBitsAfterNumber (bitCount) ;
-  }while (v != accessible) ;
-  if (outIterationCount != NULL) {
-    * outIterationCount = iterationCount ;
-  }
-  return C_Relation (inStartStates.configuration(), accessible) ;
+  return C_Relation (
+    inStartStates.configuration(),
+    mBDD.accessibleStates (inStartStates.mBDD, inStartStates.bitCount (), outIterationCount)
+  ) ;
+}
 
+//-----------------------------------------------------------------------------*
+
+C_Relation C_Relation::transitiveClosure (int32_t * outIterationCount) const {
+  return C_Relation (
+    mConfiguration,
+    mBDD.transitiveClosure (bitCount () / 2, outIterationCount)
+  ) ;
 }
 
 //-----------------------------------------------------------------------------*
@@ -199,6 +196,37 @@ void C_Relation::getValueArray (TC_UniqueArray <uint64_t> & outArray) const {
 
 uint64_t C_Relation::value64Count (void) const {
   return mBDD.valueCount64 (mConfiguration.bitCount ()) ;
+}
+
+//-----------------------------------------------------------------------------*
+//   getArray                                                                  *
+//-----------------------------------------------------------------------------*
+
+void C_Relation::getArray (TC_UniqueArray <TC_UniqueArray <int32_t> > & outArray
+                           COMMA_LOCATION_ARGS) const {
+  MF_AssertThere (variableCount () == 2,
+                  "C_Relation::getArray error: variableCount () == %lld != 2",
+                  (int64_t) variableCount (),
+                  0) ;
+
+  const uint32_t bitCount0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
+  const uint32_t bitCount1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
+  const uint32_t size0 = mConfiguration.constantCountForVariable (0 COMMA_THERE) ;
+  mBDD.getArray2 (outArray,
+                  size0,
+                  bitCount0,
+                  bitCount1) ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_Relation C_Relation::relationByDeletingLastVariable (LOCATION_ARGS) const {
+  C_Relation result = *this ;
+  const int32_t lastVariableIndex = variableCount () - 1 ;
+  result.mBDD = result.mBDD.existsOnBitRange (mConfiguration.bddStartBitIndexForVariable (lastVariableIndex COMMA_THERE),
+                                              mConfiguration.bddBitCountForVariable (lastVariableIndex COMMA_THERE)) ;
+  result.mConfiguration.deleteLastVariable (THERE) ;
+  return result ;
 }
 
 //-----------------------------------------------------------------------------*

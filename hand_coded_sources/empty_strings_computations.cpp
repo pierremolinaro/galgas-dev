@@ -208,7 +208,7 @@ printNonterminalDerivingInEmptyString (const C_Relation & inVocabularyDerivingTo
     inHTMLfile->appendSigned (inIterationsCount) ;
     *inHTMLfile << " iterations.\n" ;
     inHTMLfile->outputRawData ("</p>") ;
-    const C_Relation newNonterminal = inVocabularyDerivingToEmpty & ~ inNonTerminalHavingEmptyDerivation ;
+    const C_Relation newNonterminal = inVocabularyDerivingToEmpty.andOp (~ inNonTerminalHavingEmptyDerivation COMMA_HERE) ;
     const uint64_t n = newNonterminal.value64Count () ;
     if (n == 0) {
       inHTMLfile->outputRawData ("<p>") ;

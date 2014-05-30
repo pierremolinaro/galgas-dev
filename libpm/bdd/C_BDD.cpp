@@ -1551,11 +1551,10 @@ void cBuildArrayForRelation2::action (const bool inValuesArray [],
 
 //-----------------------------------------------------------------------------*
 
-void C_BDD::
-getArray2 (TC_UniqueArray <TC_UniqueArray <int32_t> > & outArray,
-           const uint32_t inMaxValueCount,
-           const uint32_t inBitSize1,
-           const uint32_t inBitSize2) const {
+void C_BDD::getArray2 (TC_UniqueArray <TC_UniqueArray <int32_t> > & outArray,
+                       const uint32_t inMaxValueCount,
+                       const uint32_t inBitSize1,
+                       const uint32_t inBitSize2) const {
   outArray.setCountToZero () ;
   outArray.makeRoomUsingSwap ((int32_t) inMaxValueCount) ;
   for (uint32_t i=0 ; i<inMaxValueCount ; i++) {

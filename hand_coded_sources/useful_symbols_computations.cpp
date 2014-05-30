@@ -76,7 +76,7 @@ computeUsefulSymbols (const cPureBNFproductionsList & inPureBNFproductions,
                                                             C_BDD::kEqual,
                                                             (uint32_t) p.leftNonTerminalIndex ()) ;  
       const C_Relation leftNonterminalRelation = C_Relation (vocabulary2, 0, C_BDD::kEqual, (uint64_t) p.leftNonTerminalIndex () COMMA_HERE) ; 
-      accessibilityRelation |= leftNonterminalRelation & rightVocabularyRelation ;
+      accessibilityRelation |= leftNonterminalRelation.andOp (rightVocabularyRelation COMMA_HERE) ;
       accessibility |= leftNonterminal & rightVocabulary ;
       ex_leftNonterminal.initDimension1 (C_BDD::kEqual, (uint16_t) p.leftNonTerminalIndex ()) ;
       ex_accessibility |= ex_leftNonterminal & ex_rightVocabulary ;
@@ -128,9 +128,9 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
 //--- Remove augmented symbol '<>'
 //  const uint32_t lastNonterminalToCheck = (uint32_t) (inVocabulary.getAllSymbolsCount () - 2) ;
   const uint32_t lastNonterminalToCheck = (uint32_t) (inVocabulary.originalGrammarSymbolsCount () - 1) ;
-  uselessSymbols &= C_Relation (uselessSymbols.configuration(), 0, C_BDD::kLowerOrEqual, lastNonterminalToCheck COMMA_HERE) ;
+  uselessSymbols.andWith (C_Relation (uselessSymbols.configuration(), 0, C_BDD::kLowerOrEqual, lastNonterminalToCheck COMMA_HERE) COMMA_HERE) ;
 //--- Remove terminal symbol and 'empty string' symbol
-  uselessSymbols &= C_Relation (uselessSymbols.configuration(), 0, C_BDD::kStrictGreater, (uint64_t) inVocabulary.getEmptyStringTerminalSymbolIndex () COMMA_HERE) ;
+  uselessSymbols.andWith (C_Relation (uselessSymbols.configuration(), 0, C_BDD::kStrictGreater, (uint64_t) inVocabulary.getEmptyStringTerminalSymbolIndex () COMMA_HERE) COMMA_HERE) ;
   C_Relation uselessSymbolsForWarning = uselessSymbols ;
 
 //--------------------- Compute array of used symbols declared as unused by user
@@ -140,7 +140,7 @@ static bool displayUnusefulSymbols (C_Compiler * inCompiler,
     const uint32_t nt = currentNT.current_mNonTerminalIndex (HERE).uintValue () + (uint32_t) inVocabulary.getTerminalSymbolsCount () ;
     // printf ("*** UNUSED DECLARED SYMBOL %u *** \n", nt) ;
     if (uselessSymbols.containsValue (0, nt COMMA_HERE)) {
-      uselessSymbolsForWarning &= ~ C_Relation (uselessSymbols.configuration (), 0, C_BDD::kEqual, nt COMMA_HERE) ;
+      uselessSymbolsForWarning.andWith (~ C_Relation (uselessSymbols.configuration (), 0, C_BDD::kEqual, nt COMMA_HERE) COMMA_HERE) ;
     }else{
       usedSymbolDeclaredAsUnusedArray.addObject (uselessSymbols.configuration ().constantNameForVariableAndValue (0, nt COMMA_HERE)) ;
     }
