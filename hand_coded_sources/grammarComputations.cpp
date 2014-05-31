@@ -560,7 +560,7 @@ analyzeGrammar (C_Compiler * inCompiler,
                                   verboseOptionOn) ;
   }
 //--- Computing FOLLOW sets ---------------------------------------------------------------
-  C_BDD_Set2 EX_FOLLOWsets (vocabularyDescriptorEX, vocabularyDescriptorEX) ;
+//  C_BDD_Set2 EX_FOLLOWsets (vocabularyDescriptorEX, vocabularyDescriptorEX) ;
   TC_UniqueArray <TC_UniqueArray <uint64_t> > FOLLOWarray ;
   C_Relation FOLLOWsets ;
   if ((errorFlag == kNoError) &&
@@ -572,13 +572,13 @@ analyzeGrammar (C_Compiler * inCompiler,
                          bddBitCount,
                          vocabulary,
                          vocabularyDerivingToEmpty_Array,
-                         usefulSymbolsEX,
+                   //      usefulSymbolsEX,
                          usefulSymbols,
-                         EX_FIRSTsets,
+                    //     EX_FIRSTsets,
                          FIRSTsets,
-                         EX_nonTerminalSymbolsFollowedByEmpty,
+                    //     EX_nonTerminalSymbolsFollowedByEmpty,
                          nonTerminalSymbolsFollowedByEmpty,
-                         EX_FOLLOWsets,
+                     //    EX_FOLLOWsets,
                          FOLLOWsets,
                          FOLLOWarray,
                          ok,
