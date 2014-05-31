@@ -11,10 +11,6 @@ local routine build_LIBPM_BDD_group
   ?!@XcodeObjectReferenceList ioFileListForGroup
 :
   @stringlist fileList [emptyList] ;
-  append_cpp_h_files !?fileList !"C_BDD_Descriptor" ;
-  append_cpp_h_files !?fileList !"C_BDD_Set1" ;
-  append_cpp_h_files !?fileList !"C_BDD_Set2" ;
-  append_cpp_h_files !?fileList !"C_BDD_Set3" ;
   append_cpp_h_files !?fileList !"C_BDD" ;
   append_cpp_h_files !?fileList !"C_RelationSingleType" ;
   append_cpp_h_files !?fileList !"C_RelationConfiguration" ;
@@ -39,10 +35,6 @@ local routine build_LIBPM_BDD_source_files_for_sources_build_phase
   ?!@Xcode_PBXBuildFile_list ioBuildPhaseList
 :
   @stringlist fileList [emptyList] ;
-  fileList += !"C_BDD_Descriptor.cpp" ;
-  fileList += !"C_BDD_Set1.cpp" ;
-  fileList += !"C_BDD_Set2.cpp" ;
-  fileList += !"C_BDD_Set3.cpp" ;
   fileList += !"C_BDD.cpp" ;
   fileList += !"C_BDD-find-or-add.cpp" ;
   fileList += !"C_BDD-and-operation.cpp" ;

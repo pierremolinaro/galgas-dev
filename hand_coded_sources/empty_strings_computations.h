@@ -35,15 +35,12 @@ class C_Lexique ;
 class C_Relation ;
 class C_RelationConfiguration ;
 
-// class C_BDD_Set1 ;
-
 //-----------------------------------------------------------------------------*
 
 C_Relation
 empty_strings_computations (const cPureBNFproductionsList & inPureBNFproductions,
                             C_HTML_FileWrite * inHTMLfile,
                             TC_UniqueArray <bool> & outVocabularyDerivingToEmpty_Array,
-                       //     C_BDD_Set1 & outVocabularyDerivingToEmpty_BDD,
                             const C_RelationConfiguration & inVocabularyConfiguration,
                             const bool inVerboseOptionOn) ;
 

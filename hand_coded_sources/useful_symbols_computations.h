@@ -33,8 +33,6 @@ class GALGAS_unusedNonTerminalSymbolMapForGrammarAnalysis ;
 class C_RelationSingleType ;
 class C_Relation ;
 
-//class C_BDD_Set1 ;
-
 //-----------------------------------------------------------------------------*
 
 void useful_symbols_computations (C_Compiler * inCompiler,
@@ -44,7 +42,6 @@ void useful_symbols_computations (C_Compiler * inCompiler,
                                   const C_RelationSingleType & inVocabularyBDDType,
                                   const cVocabulary & inVocabulary,
                                   C_HTML_FileWrite * inHTMLfile,
-                            //      C_BDD_Set1 & outUsefulSymbols,
                                   C_Relation & outUsefulSymbolsRelation,
                                   bool & outWarningFlag,
                                   const bool inVerboseOptionOn) ;

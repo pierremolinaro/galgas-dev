@@ -24,8 +24,6 @@
 #include "bdd/C_Relation.h"
 #include "collections/TC_Array2.h"
 
-#include "bdd/C_BDD_Set2.h"
-
 //-----------------------------------------------------------------------------*
 
 #include "FIRST_computations.h"
@@ -76,78 +74,11 @@ computeFIRSTsets (const cPureBNFproductionsList & inProductionRules,
 
 //-----------------------------------------------------------------------------*
 
-/*static C_BDD_Set2
-computeFIRSTsetsEX (const cPureBNFproductionsList & inProductionRules,
-                  const uint16_t inBDDBitCount,
-                  const TC_UniqueArray <bool> & inVocabularyDerivingInEmptyString,
-                  const int32_t inTerminalSymbolsCount,
-                  const C_BDD_Descriptor & inDescriptor,
-                  int32_t & outIterationsCount) {
-//--- Compute direct firsts with each production
-  C_BDD_Set2 ex_directFIRST (inDescriptor, inDescriptor) ;
-  C_BDD_Set2 ex_pr (inDescriptor, inDescriptor) ;
-  C_BDD_Set2 temp (inDescriptor, inDescriptor) ;
-  C_BDD_Set2 ex_left (inDescriptor, inDescriptor) ;
-  C_BDD directFIRST ;
-  for (int32_t i=0 ; i<inProductionRules.length () ; i++) {
-    const cProduction & p = inProductionRules (i COMMA_HERE) ;
-    const int32_t n = p.derivationLength () ;
-    if (n > 0) {
-      const C_BDD left = C_BDD::varCompareConst (0, inBDDBitCount, C_BDD::kEqual, (uint32_t) p.leftNonTerminalIndex ()) ;
-      ex_left.initDimension1 (C_BDD::kEqual, (uint32_t) p.leftNonTerminalIndex ()) ;
-      int32_t j = 0 ;
-      ex_pr.clear () ;
-      C_BDD pr ;
-      do{
-        temp.initDimension2 (C_BDD::kEqual, (uint32_t) p.derivationAtIndex (j COMMA_HERE)) ;
-        ex_pr |= temp ;
-        pr |= C_BDD::varCompareConst (inBDDBitCount, inBDDBitCount, C_BDD::kEqual, (uint32_t) p.derivationAtIndex (j COMMA_HERE)) ;
-        j++ ;
-      }while ((j<n) && inVocabularyDerivingInEmptyString (p.derivationAtIndex (j-1 COMMA_HERE) COMMA_HERE)) ;
-      ex_directFIRST |= ex_left & ex_pr ;
-      directFIRST |= left & pr ;
-    }
-  }
-  if (directFIRST != ex_directFIRST.bdd ()) {
-    printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
-    printf ("inBDDBitCount %hu\n", inBDDBitCount) ;
-    printf ("directFIRST '%s'\n", directFIRST.queryStringValue (HERE).cString (HERE)) ;
-    printf ("ex_directFIRST '%s'\n", ex_directFIRST.bdd ().queryStringValue (HERE).cString (HERE)) ;
-  }
-
-
-//--- Perform transitive closure of 'directFIRST'
-  C_BDD_Set2 ex_FIRST = ex_directFIRST.getTransitiveClosure (outIterationsCount) ;
-  C_BDD FIRST = directFIRST.transitiveClosure (inBDDBitCount, NULL) ;
-  if (FIRST != (ex_FIRST.bdd ())) {
-    printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
-  }
-
-//--- Delete nonterminal symbols in FIRST
-  temp.initDimension2 (C_BDD::kLowerOrEqual, (uint32_t) (inTerminalSymbolsCount - 1)) ;
-  ex_FIRST &= temp ;
-  FIRST &= C_BDD::varCompareConst (inBDDBitCount,
-                                   inBDDBitCount,
-                                   C_BDD::kLowerOrEqual,
-                                   (uint32_t) (inTerminalSymbolsCount - 1)) ;
-  if (FIRST != (ex_FIRST.bdd ())) {
-    printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
-  }
-
-  return ex_FIRST ;
-}
-*/
-//-----------------------------------------------------------------------------*
-
 static bool
 displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
-                     //     const uint16_t inBDDBitCount,
-                     //     const C_BDD_Set1 & inVocabularyDerivingInEmptyStringEX,
                           const C_Relation & inVocabularyDerivingInEmptyString,
                           const cVocabulary & inVocabulary,
-                     //     const C_BDD_Set1 & inUsefulSymbolsEX,
                           const C_Relation & inUsefulSymbols,
-                     //     const C_BDD_Set2 & inFIRSTsetsEX,
                           const C_Relation & inFIRSTsets,
                           TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFIRSTarray,
                           const int32_t inIterationsCount,
@@ -166,61 +97,14 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
   vocabularyDerivingInEmptyString.appendConfiguration (inUsefulSymbols.configuration()) ;
   const C_Relation nt_x_empty_relation = vocabularyDerivingInEmptyString.andOp (empty COMMA_HERE) ;
 
-/*  C_BDD_Set1 temp (inVocabularyDerivingInEmptyStringEX) ;
-  temp.init (C_BDD::kEqual, (uint16_t) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ;
-  const C_BDD_Set2 ex_nt_x_empty = inVocabularyDerivingInEmptyStringEX * temp ;
-
-  const C_BDD emptyStringTerminalSymbolIndex =
-    C_BDD::varCompareConst (inBDDBitCount,
-                            inBDDBitCount,
-                            C_BDD::kEqual,
-                            (uint32_t) inVocabulary.getEmptyStringTerminalSymbolIndex ()) ; 
-  const C_BDD nt_x_empty = inVocabularyDerivingInEmptyStringEX.bdd () & emptyStringTerminalSymbolIndex ;
-  if (nt_x_empty != (nt_x_empty_relation.bdd ())) {
-    printf ("*** nt_x_empty != (nt_x_empty_relation.bdd () ***\n") ;
-    exit (1) ;
-  }
-  if (nt_x_empty != (ex_nt_x_empty.bdd ())) {
-    printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
-    printf ("nt_x_empty   : %s\n", nt_x_empty.queryStringValue (HERE).cString (HERE)) ;
-    printf ("ex_nt_x_empty: %s\n", ex_nt_x_empty.bdd ().queryStringValue (HERE).cString (HERE)) ;
-  }
-*/
 //--- FIRST union nt symbols deriring in empty string
   const C_Relation FIRST_with_empty_relation = nt_x_empty_relation.orOp (inFIRSTsets COMMA_HERE) ;
-/*  const C_BDD_Set2 ex_FIRST_with_empty = ex_nt_x_empty | inFIRSTsetsEX ;
-  const C_BDD FIRST_with_empty = nt_x_empty | inFIRSTsetsEX.bdd () ;
-  if (FIRST_with_empty != (ex_FIRST_with_empty.bdd ())) {
-    printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
-    exit (1) ;
-  }
-  if (FIRST_with_empty != (FIRST_with_empty_relation.bdd ())) {
-    printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
-    exit (1) ;
-  }*/
 
 //--- Compute FIRST array
-//  TC_UniqueArray <TC_UniqueArray <uint64_t> > FIRSTarray_relation ;
   FIRST_with_empty_relation.getArray (outFIRSTarray COMMA_HERE) ;
-//  ex_FIRST_with_empty.getArray (outFIRSTarray) ;
-
-/*  TC_UniqueArray <TC_UniqueArray <uint64_t> > FIRSTArray ;
-  FIRST_with_empty.getArray2 (FIRSTArray, (uint32_t) inVocabulary.getAllSymbolsCount(), inBDDBitCount, inBDDBitCount) ;
-  if (outFIRSTarray != FIRSTArray) {
-    printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
-    exit (1) ;
-  }
-  if (outFIRSTarray != FIRSTarray_relation) {
-    printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
-    exit (1) ;
-  }*/
 
 //--- Display FIRST
   const uint64_t m = FIRST_with_empty_relation.value64Count() ;
-/*  if (m != ex_FIRST_with_empty.getValuesCount ()){
-    printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
-    exit (1) ;
-  }*/
   if (inHTMLfile != NULL) {
     inHTMLfile->outputRawData ("<p>") ;
     *inHTMLfile << "Calculus completed in "
@@ -256,37 +140,6 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
     .andOp (~(FIRST_with_empty_relation.relationByDeletingLastVariable (HERE)) COMMA_HERE)
   ; 
   const uint64_t ntInErrorCount = ntInError_relation.value64Count () ;
-
-//--- Ensemble des non-terminaux a verifier
-/*  C_BDD_Set1 ex_ntToCheck (inUsefulSymbolsEX) ;
-  ex_ntToCheck.init (C_BDD::kGreaterOrEqual,(uint32_t) inVocabulary.getTerminalSymbolsCount ()) ;
-
-  const C_BDD ntToCheck = C_BDD::varCompareConst (0,
-                                                  inBDDBitCount,
-                                                  C_BDD::kGreaterOrEqual,
-                                                  (uint32_t) inVocabulary.getTerminalSymbolsCount ()) ; */
-
-//--- Get nonterminal symbols in error
-/*  const C_BDD_Set1 ex_ntInError = ex_ntToCheck & inUsefulSymbolsEX & ~(ex_FIRST_with_empty.projeterSurAxe1 ()) ; 
-  const C_BDD ntInError = ntToCheck & inUsefulSymbolsEX.bdd () & ~(FIRST_with_empty.existsOnBitsAfterNumber (inBDDBitCount)) ; 
-  if (ntInError != (ex_ntInError.bdd ())) {
-    printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
-    exit (1) ;
-  }
-  if (ntInError != (ntInError_relation.bdd ())) {
-    printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
-    exit (1) ;
-  } */
-/*  const uint64_t ntInErrorCount2 = ntInError.valueCount64 (inBDDBitCount) ;
-  const uint64_t ntInErrorCount = ex_ntInError.getValuesCount () ;
-  if (ntInErrorCount2 != ntInErrorCount) {
-    printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
-    exit (1) ;
-  }
-  if (ntInErrorCount_relation != ntInErrorCount) {
-    printf ("\n********* FIRST SET ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
-    exit (1) ;
-  }*/
 
 //--- Display nonterminal symbols in error
   if (inHTMLfile != NULL) {
@@ -337,17 +190,12 @@ displayAndCheckFIRSTsets (C_HTML_FileWrite * inHTMLfile,
 
 void
 FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
-             //       const uint16_t inBDDBitCount,
                     C_HTML_FileWrite * inHTMLfile,
                     const cVocabulary & inVocabulary,
                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-              //      const C_BDD_Set1 & inVocabularyDerivingToEmpty_BDD,
                     const C_Relation & inVocabularyDerivingToEmpty,
-               //     const C_BDD_Set1 & inUsefulSymbolsEX,
                     const C_Relation & inUsefulSymbols,
-                //    C_BDD_Set2 & outFIRSTsetsEX,
                     TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFIRSTarray,
-                //    const C_BDD_Descriptor & inDescriptor,
                     C_Relation & outFIRSTsets,
                     bool & outOk,
                     const bool inVerboseOptionOn) {
@@ -365,32 +213,17 @@ FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
 
 //--- Compute FIRST sets
   int32_t iterationsCount = 0 ;
-/*  outFIRSTsetsEX = computeFIRSTsetsEX (inPureBNFproductions,
-                                   inBDDBitCount,
-                                   inVocabularyDerivingToEmpty_Array,
-                                   inVocabulary.getTerminalSymbolsCount (),
-                                   inDescriptor,
-                                   iterationsCount) ; */
-
   outFIRSTsets = computeFIRSTsets (inPureBNFproductions,
                                    inVocabularyDerivingToEmpty_Array,
                                    inVocabulary.getTerminalSymbolsCount (),
                                    vocabularyConfiguration,
                                    iterationsCount) ;
 
-/*  if (outFIRSTsets.bdd () != outFIRSTsetsEX.bdd ()) {
-    printf ("*** outFIRSTsets.bdd () != outFIRSTsetsEX.bdd () ***\n") ;
-    exit (1) ;
-  }*/
 //--- Display and Check FIRST
  outOk = displayAndCheckFIRSTsets (inHTMLfile,
-                              //     inBDDBitCount,
-                              //     inVocabularyDerivingToEmpty_BDD,
-                                   inVocabularyDerivingToEmpty,
+                                  inVocabularyDerivingToEmpty,
                                    inVocabulary,
-                              //     inUsefulSymbolsEX,
                                    inUsefulSymbols,
-                             //      outFIRSTsetsEX,
                                    outFIRSTsets,
                                    outFIRSTarray,
                                    iterationsCount,

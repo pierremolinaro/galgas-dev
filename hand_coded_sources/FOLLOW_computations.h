@@ -35,9 +35,6 @@ class C_HTML_FileWrite ;
 class C_Lexique ;
 class C_Relation ;
 
-//class C_BDD_Set1 ;
-//class C_BDD_Set2 ;
-
 //-----------------------------------------------------------------------------*
 
 void
@@ -46,13 +43,9 @@ FOLLOW_computations (const cPureBNFproductionsList & inPureBNFproductions,
                      const uint16_t inBDDBitCount,
                      const cVocabulary & inVocabulary,
                      const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                 //    const C_BDD_Set1 & inUsefulSymbolsEX,
                      const C_Relation & inUsefulSymbols,
-                 //    const C_BDD_Set2 & inFIRSTsetsEX,
                      const C_Relation & inFIRSTsets,
-                //     const C_BDD_Set1 & inNonterminalSymbolsFollowedByEmptyEX,
                      const C_Relation & inNonterminalSymbolsFollowedByEmpty,
-              //       C_BDD_Set2 & outFOLLOWsetsEX,
                      C_Relation & outFOLLOWsets,
                      TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFOLLOWarray,
                      bool & outOk,

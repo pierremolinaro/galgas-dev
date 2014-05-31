@@ -35,24 +35,16 @@ class cVocabulary ;
 class C_Lexique ;
 class C_Relation ;
 
-// class C_BDD_Set1 ;
-// class C_BDD_Set2 ;
-
 //-----------------------------------------------------------------------------*
 
 void
 FIRST_computations (const cPureBNFproductionsList & inPureBNFproductions,
-              //      const uint16_t inBDDBitCount,
                     C_HTML_FileWrite * inHTMLfile,
                     const cVocabulary & inVocabulary,
                     const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                //    const C_BDD_Set1 & inVocabularyDerivingToEmpty_BDD,
                     const C_Relation & inVocabularyDerivingToEmpty,
-               //     const C_BDD_Set1 & inUsefulSymbolsEX,
                     const C_Relation & inUsefulSymbols,
-              //      C_BDD_Set2 & outEXFIRSTsets,
                     TC_UniqueArray <TC_UniqueArray <uint64_t> > & outFIRSTarray,
-               //     const C_BDD_Descriptor & inDescriptor,
                     C_Relation & outFIRSTsets,
                     bool & outOk,
                     const bool inVerboseOptionOn) ;
