@@ -205,8 +205,17 @@ check_LL1_condition (const cPureBNFproductionsList & inPureBNFproductions,
           const int32_t numeroProductionJ = inPureBNFproductions.tableauIndirectionProduction (pr1 COMMA_HERE) ;
           for (int32_t k=pr1+1 ; k<=derniere ; k++) {
             const int32_t numeroProductionK = inPureBNFproductions.tableauIndirectionProduction (k COMMA_HERE) ;
-            if (! (inPureBNFproductions (numeroProductionJ COMMA_HERE).derivationFirstEX () &
-                   inPureBNFproductions (numeroProductionK COMMA_HERE).derivationFirstEX ()).isFalse ()) {
+            const bool exOk = (inPureBNFproductions (numeroProductionJ COMMA_HERE).derivationFirstEX () &
+                   inPureBNFproductions (numeroProductionK COMMA_HERE).derivationFirstEX ()).isFalse () ;
+            const C_Relation rJ = inPureBNFproductions (numeroProductionJ COMMA_HERE).derivationFirst (HERE) ;
+            const C_Relation rK = inPureBNFproductions (numeroProductionK COMMA_HERE).derivationFirst (HERE) ;
+            const bool ok = rJ.andOp (rK COMMA_HERE).isEmpty () ;
+            if (ok != exOk){
+              printf ("\n********* LL1 ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
+              exit (1) ;
+            }
+            
+            if (! exOk) {
               nombreDeConflits ++ ;
               if (inHTMLfile != NULL) {
                 inHTMLfile->outputRawData ("<tr><td colspan=\"2\"><span class=\"error\">") ;
@@ -464,21 +473,36 @@ printDecisionTable (const cPureBNFproductionsList & inPureBNFproductions,
       inCppFile << "\n" ;
       for (int32_t j=firstProduction ; j<=lastProduction ; j++) {
         cProduction & p = inPureBNFproductions (inPureBNFproductions.tableauIndirectionProduction (j COMMA_HERE) COMMA_HERE) ;
-        TC_UniqueArray <bool> array ;
-        p.derivationFirstEX ().getArray (array) ;
+        TC_UniqueArray <uint64_t> array ;
+        p.derivationFirst (HERE).getValueArray (array) ;
+        for (int32_t i=0 ; i < array.count () ; i++) {
+          const uint64_t symbol = array (i COMMA_HERE) ;
+          inCppFile << "C_Lexique_" << inLexiqueName.identifierRepresentation ()
+                    << "::kToken_"
+                    << inVocabulary.getSymbol ((int32_t) symbol COMMA_HERE).identifierRepresentation ()
+                    << ", " ;
+        }
+
+/*        TC_UniqueArray <bool> arrayEX ;
+        p.derivationFirstEX ().getArray (arrayEX) ;
         const int32_t symbolsCount = inVocabulary.getAllSymbolsCount () ;
         for (int32_t symbol=0 ; symbol < symbolsCount ; symbol++) {
-          if (array (symbol COMMA_HERE)) {
+          if (arrayEX (symbol COMMA_HERE)) {
             inCppFile << "C_Lexique_" << inLexiqueName.identifierRepresentation ()
                       << "::kToken_"
                       << inVocabulary.getSymbol (symbol COMMA_HERE).identifierRepresentation ()
                       << ", " ;
           }
-        }
+        }*/
         inCppFile << "-1, // Choice "
                   << cStringWithSigned ((int32_t)(j - firstProduction + 1))
                   << "\n" ;
-        ioDecisionTableIndex = (int16_t) (ioDecisionTableIndex + (int16_t) p.derivationFirstEX ().getValuesCount ()) ;
+        const int16_t decisionTableIndexEX = (int16_t) (ioDecisionTableIndex + (int16_t) p.derivationFirstEX ().getValuesCount ()) ;
+        ioDecisionTableIndex = (int16_t) (ioDecisionTableIndex + (int16_t) p.derivationFirst (HERE).value64Count ()) ;
+        if (ioDecisionTableIndex != decisionTableIndexEX) {
+          printf ("\n********* LL1 ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
+          exit (1) ;
+        }
         ioDecisionTableIndex ++ ;
       }
       inCppFile << "  -1,\n" ;

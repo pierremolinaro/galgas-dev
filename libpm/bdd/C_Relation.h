@@ -60,6 +60,9 @@ class C_Relation {
   public : void setToFull (void) ;
 
 //--- Operators
+  public : inline bool isEmpty (void) const { return mBDD.isFalse () ; }
+  public : inline bool isFull (void) const { return mBDD.isTrue () ; }
+
   public : bool operator == (const C_Relation & inRelation) const ;
   public : bool operator != (const C_Relation & inRelation) const ;
 
