@@ -22,7 +22,7 @@
 #include "files/C_HTML_FileWrite.h"
 #include "bdd/C_Relation.h"
 
-#include "bdd/C_BDD_Set1.h"
+// #include "bdd/C_BDD_Set1.h"
 
 //-----------------------------------------------------------------------------*
 
@@ -35,7 +35,7 @@ static void
 computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionRules,
                                    const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
                                    const cVocabulary & inVocabulary,
-                                   C_BDD_Set1 & outVocabularyFollowedByEmpty_EX,
+                              //     C_BDD_Set1 & outVocabularyFollowedByEmpty_EX,
                                    C_Relation & outVocabularyFollowedByEmpty,
                                    int32_t & outIterationsCount) {
   const int32_t allSymbolsCount = inVocabulary.getAllSymbolsCount () ;
@@ -68,19 +68,19 @@ computeNonterminalFollowedByEmpty (const cPureBNFproductionsList & inProductionR
   }
   
 //--- Contruire le bdd, limite aux seuls non terminaux
-  outVocabularyFollowedByEmpty_EX.clear () ;
-  C_BDD_Set1 temp (outVocabularyFollowedByEmpty_EX) ;
+//  outVocabularyFollowedByEmpty_EX.clear () ;
+//  C_BDD_Set1 temp (outVocabularyFollowedByEmpty_EX) ;
   for (int32_t i=inVocabulary.getTerminalSymbolsCount () ; i<allSymbolsCount ; i++) {
     if (vocabularyFollowedByEmpty_Array (i COMMA_HERE)) {
-      temp.init (C_BDD::kEqual, (uint32_t) i) ;
-      outVocabularyFollowedByEmpty_EX |= temp ;
+    //  temp.init (C_BDD::kEqual, (uint32_t) i) ;
+    //  outVocabularyFollowedByEmpty_EX |= temp ;
       outVocabularyFollowedByEmpty.orWith (C_Relation (outVocabularyFollowedByEmpty.configuration (), 0, C_BDD::kEqual, (uint32_t) i COMMA_HERE) COMMA_HERE) ;
     }
   }
-  if (outVocabularyFollowedByEmpty_EX.bdd () != outVocabularyFollowedByEmpty.bdd ()){
+/*  if (outVocabularyFollowedByEmpty_EX.bdd () != outVocabularyFollowedByEmpty.bdd ()){
     printf ("\n********* FOLLWED BY EMPTY ERROR line %d: WARN PIERRE MOLINARO ***************\n", __LINE__) ;
     exit (1) ;
-  }
+  }*/
 }
 
 //-----------------------------------------------------------------------------*
@@ -147,7 +147,7 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
                               C_HTML_FileWrite * inHTMLfile,
                               const cVocabulary & inVocabulary,
                               const TC_UniqueArray <bool> & inVocabularyDerivingToEmpty_Array,
-                              C_BDD_Set1 & outVocabularyFollowedByEmpty_EX,
+                           //   C_BDD_Set1 & outVocabularyFollowedByEmpty_EX,
                               C_Relation & outVocabularyFollowedByEmpty,
                               const bool inVerboseOptionOn) {
 //--- Console display
@@ -165,7 +165,7 @@ follow_by_empty_computations (const cPureBNFproductionsList & inPureBNFproductio
   computeNonterminalFollowedByEmpty (inPureBNFproductions,
                                      inVocabularyDerivingToEmpty_Array,
                                      inVocabulary,
-                                     outVocabularyFollowedByEmpty_EX,
+                                  //   outVocabularyFollowedByEmpty_EX,
                                      outVocabularyFollowedByEmpty,
                                      iterationsCount) ;
 
