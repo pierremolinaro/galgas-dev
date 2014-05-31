@@ -246,7 +246,7 @@ C_Relation C_Relation::relationByDeletingLastVariable (LOCATION_ARGS) const {
 
 C_Relation C_Relation::swap132 (LOCATION_ARGS) const {
   MF_AssertThere (variableCount () == 3,
-                  "C_Relation::getArray error: variableCount () == %lld != 3",
+                  "C_Relation::swap132 error: variableCount () == %lld != 3",
                   (int64_t) variableCount (),
                   0) ;
 
@@ -262,7 +262,7 @@ C_Relation C_Relation::swap132 (LOCATION_ARGS) const {
 
 C_Relation C_Relation::swap213 (LOCATION_ARGS) const {
   MF_AssertThere (variableCount () == 3,
-                  "C_Relation::getArray error: variableCount () == %lld != 3",
+                  "C_Relation::swap213 error: variableCount () == %lld != 3",
                   (int64_t) variableCount (),
                   0) ;
 
@@ -278,7 +278,7 @@ C_Relation C_Relation::swap213 (LOCATION_ARGS) const {
 
 C_Relation C_Relation::swap231 (LOCATION_ARGS) const {
   MF_AssertThere (variableCount () == 3,
-                  "C_Relation::getArray error: variableCount () == %lld != 3",
+                  "C_Relation::swap231 error: variableCount () == %lld != 3",
                   (int64_t) variableCount (),
                   0) ;
 
@@ -294,7 +294,7 @@ C_Relation C_Relation::swap231 (LOCATION_ARGS) const {
 
 C_Relation C_Relation::swap312 (LOCATION_ARGS) const {
   MF_AssertThere (variableCount () == 3,
-                  "C_Relation::getArray error: variableCount () == %lld != 3",
+                  "C_Relation::swap312 error: variableCount () == %lld != 3",
                   (int64_t) variableCount (),
                   0) ;
 
@@ -310,7 +310,7 @@ C_Relation C_Relation::swap312 (LOCATION_ARGS) const {
 
 C_Relation C_Relation::swap321 (LOCATION_ARGS) const {
   MF_AssertThere (variableCount () == 3,
-                  "C_Relation::getArray error: variableCount () == %lld != 3",
+                  "C_Relation::swap321 error: variableCount () == %lld != 3",
                   (int64_t) variableCount (),
                   0) ;
 
@@ -345,6 +345,37 @@ bool C_Relation::operator == (const C_Relation & inRelation) const {
 bool C_Relation::operator != (const C_Relation & inRelation) const {
   mConfiguration.checkIdenticalTo (inRelation.mConfiguration COMMA_HERE) ;
   return mBDD != inRelation.mBDD ;
+}
+
+//-----------------------------------------------------------------------------*
+
+C_Relation C_Relation::transposedRelation (LOCATION_ARGS) const {
+  MF_AssertThere (variableCount () == 2,
+                  "C_Relation::transposedRelation error: variableCount () == %lld != 2",
+                  (int64_t) variableCount (),
+                  0) ;
+  const uint32_t bitSize0 = mConfiguration.bddBitCountForVariable (0 COMMA_THERE) ;
+  const uint32_t bitSize1 = mConfiguration.bddBitCountForVariable (1 COMMA_THERE) ;
+  const uint32_t totalSize = (uint32_t) (bitSize0 + bitSize1) ;
+  uint32_t * tab = NULL ;
+  macroMyNewArray (tab, uint32_t, totalSize) ;
+  for (uint32_t i=0 ; i<bitSize0 ; i++) {
+    tab [i] = (uint32_t) (i + bitSize1) ;
+  }
+  for (uint32_t j=0 ; j<bitSize1 ; j++) {
+    tab [j + bitSize0] = j ;
+  }
+  const C_BDD r = mBDD.substitution (tab, totalSize COMMA_HERE) ;
+  macroMyDeleteArray (tab) ;
+//---
+  const C_String name0 = mConfiguration.nameForVariable (0 COMMA_HERE) ;
+  const C_RelationSingleType type0 = mConfiguration.typeForVariable (0 COMMA_HERE) ;
+  const C_String name1 = mConfiguration.nameForVariable (1 COMMA_HERE) ;
+  const C_RelationSingleType type1 = mConfiguration.typeForVariable (1 COMMA_HERE) ;
+  C_RelationConfiguration config ;
+  config.addVariable (name1, type1) ;
+  config.addVariable (name0, type0) ;
+  return C_Relation (config, r) ;
 }
 
 //-----------------------------------------------------------------------------*

@@ -26,9 +26,11 @@
 //-----------------------------------------------------------------------------*
 
 #include "collections/TC_FIFO.h"
-#include "bdd/C_BDD_Set1.h"
+#include "bdd/C_Relation.h"
 #include "strings/C_String.h"
 #include "utilities/TF_Swap.h"
+
+#include "bdd/C_BDD_Set1.h"
 
 //-----------------------------------------------------------------------------*
 
@@ -43,7 +45,8 @@ class cProduction {
   private : int32_t mColumnDefinition ;
   private : int32_t mLeftNonTerminalIndex ;
   private : TC_UniqueArray <int16_t> mDerivation ;
-  public : C_BDD_Set1 mDerivationFirst ;
+  public : C_BDD_Set1 mDerivationFirstEX ;
+  public : C_Relation mDerivationFirst ;
   private : uint32_t mProductionIndex ;
 
 //--- Constructor
@@ -65,7 +68,13 @@ class cProduction {
   public : inline int32_t columnDefinition (void) const { return mColumnDefinition ; }
   public : inline int32_t leftNonTerminalIndex (void) const { return mLeftNonTerminalIndex ; }
   public : inline uint32_t productionIndex (void) const { return mProductionIndex ; }
-  public : inline C_BDD_Set1 derivationFirst (void) const { return mDerivationFirst ; }
+  public : inline C_BDD_Set1 derivationFirstEX (void) const { return mDerivationFirstEX ; }
+  public : inline C_Relation derivationFirst (LOCATION_ARGS) const {
+    MF_AssertThere (mDerivationFirstEX.bdd () == mDerivationFirst.bdd (),
+                    "mDerivationFirstEX.bdd () != mDerivationFirst.bdd ()",
+                    0, 0) ;
+    return mDerivationFirst ;
+  }
 
   public : inline int32_t derivationLength (void) const { return mDerivation.count () ; }
   public : inline int16_t derivationAtIndex (const int32_t inIndex COMMA_LOCATION_ARGS) const { return mDerivation (inIndex COMMA_THERE) ; }
